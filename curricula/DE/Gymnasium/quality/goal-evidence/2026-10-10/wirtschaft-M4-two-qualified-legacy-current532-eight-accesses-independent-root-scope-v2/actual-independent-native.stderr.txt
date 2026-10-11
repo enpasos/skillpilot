@@ -1,0 +1,26 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+0 !== 1
+
+    at assert (/tmp/skillpilot-economics-current-merged-native-root-_x0aqs8o/app/scripts/rootIndependentTwoLegacyCurrent532EightRefsScopeV1.ts:13:377)
+    at Object.<anonymous> (/tmp/skillpilot-economics-current-merged-native-root-_x0aqs8o/app/scripts/rootIndependentTwoLegacyCurrent532EightRefsScopeV1.ts:14:100)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at cjsLoader (node:internal/modules/esm/translators:298:15)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 1,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

@@ -1,0 +1,185 @@
+{
+  "phase": "remote-7fc-targeted-merge-final",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "native-chemistry-atlas-regenerate",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+      ],
+      "startedAt": "2026-10-10T19:56:44.259226+00:00",
+      "elapsedSeconds": 0.916,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.01.native-chemistry-atlas-regenerate.raw.txt",
+      "rawOutputSha256": "148dce18ff108fca9cf355dc7a6907b292df447b60fb5ad804a2b7599fc6b102"
+    },
+    {
+      "name": "native-chemistry-atlas-check",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "--check"
+      ],
+      "startedAt": "2026-10-10T19:56:45.175638+00:00",
+      "elapsedSeconds": 0.896,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.02.native-chemistry-atlas-check.raw.txt",
+      "rawOutputSha256": "daa99e7d9261cb921708a474784c4146c64747b0fedbe8ef017b08c0c0dba3a6"
+    },
+    {
+      "name": "native-atlas-regression",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "-e",
+        "import { testGoalBookSourceAtlasInputs } from \"./app/scripts/testGoalBookSourceAtlasInputs.ts\"; testGoalBookSourceAtlasInputs();"
+      ],
+      "startedAt": "2026-10-10T19:56:46.072305+00:00",
+      "elapsedSeconds": 2.344,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.03.native-atlas-regression.raw.txt",
+      "rawOutputSha256": "dcdf3d0ec05b843dbca234b9b93921089a5fc01af222ae6fc3483e66034337b8"
+    },
+    {
+      "name": "remote-qualified-chemistry-evidence-watch",
+      "command": [
+        "bash",
+        "scripts/run_canonical_chemistry_evidence_watch.sh"
+      ],
+      "startedAt": "2026-10-10T19:56:48.416625+00:00",
+      "elapsedSeconds": 0.461,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.04.remote-qualified-chemistry-evidence-watch.raw.txt",
+      "rawOutputSha256": "e82aa0aa93de049d61e4bbd3baaa475470794d54a471d721172ca65a8d6e5f8e"
+    },
+    {
+      "name": "quality:source-coverage-audit",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit"
+      ],
+      "startedAt": "2026-10-10T19:56:48.878500+00:00",
+      "elapsedSeconds": 8.855,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.05.quality-source-coverage-audit.raw.txt",
+      "rawOutputSha256": "de62e59a2aa6c45f7f0fc8a1c796bb256f47014a403400993fcddaf2c123bd72"
+    },
+    {
+      "name": "quality:source-coverage-audit:check",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit:check"
+      ],
+      "startedAt": "2026-10-10T19:56:57.733935+00:00",
+      "elapsedSeconds": 13.875,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.06.quality-source-coverage-audit-check.raw.txt",
+      "rawOutputSha256": "2168500ba5019ebb9c41b612f47c298c69eae3a5ab9bea0f8f41b7236afd7f6e"
+    },
+    {
+      "name": "quality:curriculum-status",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "startedAt": "2026-10-10T19:57:11.609897+00:00",
+      "elapsedSeconds": 102.837,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.07.quality-curriculum-status.raw.txt",
+      "rawOutputSha256": "fa014a2b5075c87a4fe5b4fa80696b0b18cbf827f21b0ba16e6cc52211ca1447"
+    },
+    {
+      "name": "check:curriculum-maturity-floors",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "startedAt": "2026-10-10T19:58:54.447482+00:00",
+      "elapsedSeconds": 0.341,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.08.check-curriculum-maturity-floors.raw.txt",
+      "rawOutputSha256": "959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d"
+    },
+    {
+      "name": "docs:generated-status-registry",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "docs:generated-status-registry"
+      ],
+      "startedAt": "2026-10-10T19:58:54.789422+00:00",
+      "elapsedSeconds": 0.428,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.09.docs-generated-status-registry.raw.txt",
+      "rawOutputSha256": "65e9ae08c8545d9b7d342fbc53947a3177012476690d2911d101842ff3a56cff"
+    },
+    {
+      "name": "check:generated-status-registry",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "startedAt": "2026-10-10T19:58:55.217605+00:00",
+      "elapsedSeconds": 0.528,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.10.check-generated-status-registry.raw.txt",
+      "rawOutputSha256": "b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626"
+    },
+    {
+      "name": "check:docs-links",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "startedAt": "2026-10-10T19:58:55.745723+00:00",
+      "elapsedSeconds": 0.42,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.11.check-docs-links.raw.txt",
+      "rawOutputSha256": "b0879e78a17a83b3312d5c560f9c00659f492e4ca914929dca563fea82170947"
+    },
+    {
+      "name": "check:docs-indexes",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "startedAt": "2026-10-10T19:58:56.165948+00:00",
+      "elapsedSeconds": 0.332,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.12.check-docs-indexes.raw.txt",
+      "rawOutputSha256": "2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0"
+    }
+  ],
+  "phaseComplete": true
+}

@@ -1,0 +1,94 @@
+{
+  "version": "A.v1",
+  "executionType": "explicit single-reviewer role simulation; no real interpersonal team claimed",
+  "roles": {
+    "A": "Ana — data checks",
+    "B": "Ben — calculations",
+    "C": "Cora — diagram",
+    "D": "Deniz — integration and approval"
+  },
+  "network": {
+    "durations": {
+      "A": 2,
+      "B": 3,
+      "C": 2,
+      "D": 1
+    },
+    "predecessors": {
+      "A": [],
+      "B": [
+        "A"
+      ],
+      "C": [
+        "A"
+      ],
+      "D": [
+        "B",
+        "C"
+      ]
+    },
+    "earliestStart": {
+      "A": 0,
+      "B": 2,
+      "C": 2,
+      "D": 5
+    },
+    "earliestFinish": {
+      "A": 2,
+      "B": 5,
+      "C": 4,
+      "D": 6
+    },
+    "latestStart": {
+      "D": 5,
+      "C": 3,
+      "B": 2,
+      "A": 0
+    },
+    "latestFinish": {
+      "D": 6,
+      "C": 5,
+      "B": 5,
+      "A": 2
+    },
+    "totalFloat": {
+      "A": 0,
+      "B": 0,
+      "C": 1,
+      "D": 0
+    },
+    "completion": 6,
+    "criticalPaths": [
+      [
+        "A",
+        "B",
+        "D"
+      ]
+    ]
+  },
+  "costs": {
+    "disposable": 20,
+    "reusable": 17
+  },
+  "actualSubjectArtefact": "Kostenbericht für 100 Nutzungen: Einweg 20; Mehrweg 17. Diagramm: Einweg #################### 20; Mehrweg ################# 17. Keine Aussage zu Umweltwirkung.",
+  "digitalMediumReason": "Readable text/CSV and shared versioned JSON hold the small numerical result, assigned checks, graph and actual changes without specialised software.",
+  "simulationActionsActuallyExecuted": [
+    [
+      "Ana",
+      "Checked 100 uses and the supplied cost units."
+    ],
+    [
+      "Ben",
+      "Actually calculated 0.20*100 and 12+0.05*100 and wrote the cost values."
+    ],
+    [
+      "Cora",
+      "Actually drew the proportional 20/17 text bars and checked their counts."
+    ],
+    [
+      "Deniz",
+      "Integrated the cost text and forward/backward network, approved conditional cost-only conclusion and recorded no environmental claim."
+    ]
+  ],
+  "parentSnapshotSHA": null
+}

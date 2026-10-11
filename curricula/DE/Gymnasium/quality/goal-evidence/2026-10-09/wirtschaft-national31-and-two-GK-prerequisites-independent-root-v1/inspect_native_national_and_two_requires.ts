@@ -1,0 +1,84 @@
+import assert from 'node:assert/strict'
+import {readFileSync, writeFileSync} from 'node:fs'
+import {createHash} from 'node:crypto'
+import {normalizeCanonicalLandscape, validateCanonicalLandscape} from '../../../../../../../app/src/utils/authoring/canonicalAuthoring'
+import {compileCompositionView, collectCompositionProjectionRoleGoalIds} from '../../../../../../../app/src/utils/authoring/compositionViewAuthoring'
+const nativeProjectionModule = process.env.SKILLPILOT_ROOT_NATIVE_PROJECTION_MODULE
+assert(nativeProjectionModule, 'Provide the exact source-plus-export module in the external execution capsule')
+const {collectRenderedAtomicGoalIdsFromCompositionView} = require(nativeProjectionModule)
+import {validateHardDirectAtomicRoutes} from '../../../../../../../app/scripts/lib/hardLearningRouteValidation'
+
+const date = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/'
+const source = date + 'wirtschaft-current125-native-mapping-and-explicit-BE-course-author-20261009-v1/'
+const output = date + 'wirtschaft-national31-and-two-GK-prerequisites-independent-root-v1/'
+const read = (p: string) => JSON.parse(readFileSync(p, 'utf8'))
+const binding = (p: string) => ({path: p, sha256: createHash('sha256').update(readFileSync(p)).digest('hex')})
+const indexPath = source + 'two-operative-national-DE-union-view-current31-real13-endpoints-truthful-metadata-successor-v4.json'
+const index = read(indexPath)
+const deltaPath = source + 'two-existing-GK-motivation-actual-prerequisite-content-remedy-author-v1/two-individual-whole-current-contract-P-and-actual-prerequisite-content-author-proposals.json'
+const delta = read(deltaPath)
+const semanticPath = date + 'wirtschaft-current485-qualified-semantic-kinds-root-native-binding-v1/semantic485.current-whole-qualified-kind-bindings.inert.json'
+const kinds = new Map<string, any>(read(semanticPath).decisions.map((d: any) => [d.goalId, d.semanticKind]))
+const memoryPath = date + 'wirtschaft-four-SourceMemory-current-origin-AM-card-and-BE-visibility-technical-binding-v1/memory-full336.review.jsonl'
+const memory = readFileSync(memoryPath, 'utf8').trim().split('\n').map(line => JSON.parse(line))
+const ordinary = new Set(memory.map((r: any) => r.goalId))
+const required = memory.filter((r: any) => r.status === 'memory_required')
+assert.equal(ordinary.size, 336)
+assert.equal(required.length, 65)
+const localNavigationIds = ['14c05eec-87af-5fd6-832a-4f5d9d280e66','1f0ed7e7-5f8b-512a-8d94-4bf05a065bbc','a1c0e891-cb5b-56ef-9aa7-ac782e2099c3','0fb8833c-4017-5052-819a-ecb5f6ebb36f','5113c64b-405d-5f4b-bae9-70fe530b5e69','f8922e23-f00e-53f7-be2f-1016e2b0ddf2','5982abda-0b0e-51a5-930f-1f58bd757f30','5317d078-413b-58bb-9262-d57387d51655','cb53b170-d531-5267-9571-ec57004b0fb3','f761852b-a0df-5ea6-a033-67bf3fb94ec1','bc977eaf-b2f0-5cb2-af48-2dff948830af','a5689d99-1ff6-57d1-b83e-b64c2dad480d','d2b41a54-0d32-5cee-948f-77954b0c6e79']
+const frames = []
+for (const input of [delta.canonicalBefore, delta.canonicalAfter]) {
+  assert.deepEqual(binding(input.path), {path: input.path, sha256: input.sha256})
+  const can = read(input.path)
+  const normalized = normalizeCanonicalLandscape(can)
+  const goals = new Map<string, any>(can.goals.map((g: any) => [g.id, g]))
+  const graphErrors = validateCanonicalLandscape(normalized).filter(f => f.severity === 'error')
+  assert.equal(graphErrors.length, 0)
+  const leaves = (id: string, seen = new Set<string>()): string[] => {
+    if (seen.has(id)) return []
+    seen.add(id)
+    const goal = goals.get(id)
+    assert(goal)
+    return goal.contains?.length ? goal.contains.flatMap((child: string) => leaves(child, seen)) : [id]
+  }
+  const allTerminalIds = [...new Set(localNavigationIds.flatMap(id => leaves(id)))]
+  assert(allTerminalIds.every(id => kinds.get(id) === 'practiceAssessment'))
+  assert.equal(leaves('5317d078-413b-58bb-9262-d57387d51655').length, 13)
+  assert.equal(leaves('5317d078-413b-58bb-9262-d57387d51655').filter(id => leaves('5982abda-0b0e-51a5-930f-1f58bd757f30').includes(id)).length, 0)
+  const rows = []
+  const union = new Set<string>()
+  for (const viewRow of index.views) {
+    const view = read(viewRow.after.path)
+    const compiled = compileCompositionView(view, normalized)
+    const compilerErrors = compiled.findings.filter((f: any) => f.severity === 'error')
+    assert.equal(compilerErrors.length, 0)
+    const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, new Map(normalized.goals.map((g: any) => [g.id, g])))
+    const visible = collectRenderedAtomicGoalIdsFromCompositionView(can, viewRow.after.path, [viewRow.courseProfile])
+    const routeScope = collectRenderedAtomicGoalIdsFromCompositionView(can, viewRow.after.path, [viewRow.courseProfile], true)
+    const visibleOrdinary = [...visible].filter(id => ordinary.has(id)).sort()
+    visibleOrdinary.forEach(id => union.add(id))
+    const requiredHere = required.filter((r: any) => visible.has(r.goalId))
+    const missingMemory = requiredHere.filter((r: any) => !r.memoryGoalIds.some((id: string) => visible.has(id)))
+    assert.equal(missingMemory.length, 0)
+    const placementRows = viewRow.explicitCurrentOrdinaryThirtyOneTargetPlacements.map((id: string) => ({goalId: id, actualTargetRole: roles.targetGoalIds.has(id), actualCourseFilteredVisible: visible.has(id), unchangedCourseTags: goals.get(id).tags}))
+    assert.equal(placementRows.length, 31)
+    assert(placementRows.every((r: any) => r.actualTargetRole && r.actualCourseFilteredVisible))
+    const routeFindings = validateHardDirectAtomicRoutes(can.goals, kinds, {scopeLabel: 'Independent Root actual current national pool ' + viewRow.courseProfile, motivationAnchorGoalIds: ['6bf2d1cc-e745-50dd-a617-71c06a6c6945'], terminalGoalClusterIds: allTerminalIds.filter(id => visible.has(id)), routeGoalSelector: (g: any) => routeScope.has(g.id), goalSelector: (g: any) => ordinary.has(g.id) && visible.has(g.id)})
+    rows.push({courseProfile: viewRow.courseProfile, view: binding(viewRow.after.path), compilerErrors, allCompilerFindings: compiled.findings, actualOrdinaryTargets: visibleOrdinary, actualRequiredOriginChecks: requiredHere.length, missingRequiredMemory: missingMemory, actualMemoryTargets: [...visible].filter(id => kinds.get(id) === 'memory').sort(), actualThirtyOnePlacements: placementRows, actualHardRouteFindings: routeFindings})
+  }
+  assert.equal(union.size, 336)
+  assert([...ordinary].every(id => union.has(id)))
+  assert(required.every((r: any) => rows.some(row => row.actualOrdinaryTargets.includes(r.goalId))))
+  frames.push({canonical: input, graphErrors, localNavigationIds, actualTerminalLeafIds: allTerminalIds, actual336OrdinaryUnion: [...union].sort(), national: rows})
+}
+for (let i = 0; i < 2; i++) {
+  assert.deepEqual(frames[0].national[i].actualOrdinaryTargets, frames[1].national[i].actualOrdinaryTargets)
+  assert.deepEqual(frames[0].national[i].actualMemoryTargets, frames[1].national[i].actualMemoryTargets)
+}
+assert.equal(frames[0].national[0].actualHardRouteFindings.length, 16)
+assert.equal(frames[1].national[0].actualHardRouteFindings.length, 14)
+assert.equal(frames[0].national[1].actualHardRouteFindings.length, 0)
+assert.equal(frames[1].national[1].actualHardRouteFindings.length, 0)
+const result = {role: 'Actual independent native projection and two genuinely reviewed prerequisite delta probe. Remaining fourteen GK terminal findings are retained.', index: binding(indexPath), deltaInput: binding(deltaPath), retainedSemanticKinds: binding(semanticPath), currentWholeMemoryDecisions: binding(memoryPath), frames, universalCountryCourseApproval: false, humanApproval: false, completeGKRouteApproval: false, newStrictClosures: 0, strictNetGain: 0}
+writeFileSync(output + 'actual-independent-native-two-national-projections-31-roles-336-union-memory-and-two-requires-deltas.json', JSON.stringify(result, null, 2) + '\n')
+console.log(JSON.stringify({frames: frames.map(f => ({canonical: f.canonical.sha256, graphErrors: f.graphErrors.length, ordinaryUnion: f.actual336OrdinaryUnion.length, national: f.national.map(n => ({course: n.courseProfile, ordinary: n.actualOrdinaryTargets.length, requiredMemoryChecks: n.actualRequiredOriginChecks, memory: n.actualMemoryTargets.length, missingMemory: n.missingRequiredMemory.length, compilerErrors: n.compilerErrors.length, routeFindings: n.actualHardRouteFindings.length}))})), scopeChanges: 0, humanApproval: false, strictNetGain: 0}))

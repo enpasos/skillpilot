@@ -1,0 +1,1101 @@
+[
+  {
+    "materialId": "f93f2aed-6a14-5b72-8ca5-27cf7e837a83",
+    "wholeGoalId": "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+    "wholeOriginalP": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-economics-q2-labour-twelve-positive-author-20261008-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:405f74a6d8de42befd7dd680fae8e1aa4e7bb799dc012988faa2c4a84bf0ee55",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "goalId": "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+      "goalFingerprint": "sha256:0e0fc70b733343ceb424cfcca30fcadc4ac4faffaffc6f9463ca4948ea2b9c8d",
+      "reviewInputFingerprint": "sha256:ab091a08e3c4f419bab5d3cb26ccbd498266f9b16fb5a34da326b377a3edba19",
+      "profileFingerprint": "sha256:571cfb86f2e7c1f6e9af8e19e33cd981013c63aed5be494cbcf46c1a35c0ac1d",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-08T08:26:10.768621+00:00",
+      "reviewer": "codex-economics-q2-labour-twelve-author-20261008-v2",
+      "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Arbeitsmarktmodelle verbinden Beschäftigung, Lohnbildung und Preise unter Annahmen. NAIRU ist eine geschätzte Modellgröße für nicht beschleunigende Inflation, keine beobachtete oder moralisch gewünschte Arbeitslosenquote. Tarifpolitik kann Löhne, Nachfrage, Kosten und Koordination beeinflussen; Beschäftigungsfolgen hängen von Marktform, Produktivität und Nachfrage ab. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Labour-market models connect employment, wage-setting and prices under assumptions. The NAIRU is an estimated model quantity for non-accelerating inflation, not an observed or morally desired unemployment rate. Collective bargaining can affect pay, demand, costs and coordination; employment effects depend on market structure, productivity and demand. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "content-specific-understanding",
+            "essentialUnderstandingDe": "Arbeitsmarktmodelle verbinden Beschäftigung, Lohnbildung und Preise unter Annahmen. NAIRU ist eine geschätzte Modellgröße für nicht beschleunigende Inflation, keine beobachtete oder moralisch gewünschte Arbeitslosenquote. Tarifpolitik kann Löhne, Nachfrage, Kosten und Koordination beeinflussen; Beschäftigungsfolgen hängen von Marktform, Produktivität und Nachfrage ab.",
+            "essentialUnderstandingEn": "Labour-market models connect employment, wage-setting and prices under assumptions. The NAIRU is an estimated model quantity for non-accelerating inflation, not an observed or morally desired unemployment rate. Collective bargaining can affect pay, demand, costs and coordination; employment effects depend on market structure, productivity and demand.",
+            "observablePerformanceDe": "Die Person erläutert in neuen Fällen NAIRU und tarifpolitische Einflüsse mithilfe bereitgestellter Modelle, legt Annahmen und unterschiedliche Wirkungskanäle offen und trennt Modellrechnung von unsicherer empirischer Schätzung.",
+            "observablePerformanceEn": "In new cases, the learner explains the NAIRU and collective-bargaining effects using supplied models, makes assumptions and distinct channels explicit, and separates model calculations from uncertain empirical estimation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "content-specific-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "model",
+            "textDe": "Bereitgestellter Inflations-/Beschäftigungszusammenhang oder revidierte Schätzung.",
+            "textEn": "Supplied inflation/employment relationship or revised estimate."
+          },
+          {
+            "id": "bargaining-context",
+            "textDe": "Produktivität, Nachfrage, Koordination und Marktform.",
+            "textEn": "Productivity, demand, coordination and market structure."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "nairu-gap-and-pay-channel",
+            "taskDemandDe": "Ein fiktives Modell gibt Δπ=−0,5(u−u*) mit u*=6 und tatsächlichem u=8 vor; ein Tarifabschluss erhöht Nominallöhne, Produktivität ist unverändert. Erläutere NAIRU, Modellreaktion und mögliche Kosten-/Nachfragewege des Abschlusses.",
+            "taskDemandEn": "A fictional model gives Δπ=−0.5(u−u*) with u*=6 and actual u=8; a collective agreement raises nominal wages while productivity is unchanged. Explain the NAIRU, model response and possible cost/demand channels of the agreement.",
+            "expectedPerformanceDe": "Die Person berechnet −1 Prozentpunkt Inflationsänderung im gegebenen Modell und erklärt u* als nicht direkt beobachteten Schwellenparameter. Sie erläutert steigende Stückkosten und mögliche Einkommens-/Nachfragewirkungen, nennt Margen oder Nachfrage als Bedingungen und macht aus u*=6 weder eine sichere Prognose noch ein politisches Soll.",
+            "expectedPerformanceEn": "The learner calculates a minus-one-percentage-point inflation change in the supplied model and explains u* as an unobserved threshold parameter. They explain higher unit costs and possible income/demand effects, qualify them by margins or demand, and do not treat u*=6 as a certain forecast or political ideal.",
+            "understandingFocusDe": "NAIRU-Rechnung und Tarifwege mit Annahmen erläutern.",
+            "understandingFocusEn": "Explain the NAIRU calculation and bargaining channels with assumptions."
+          },
+          {
+            "id": "bargaining-and-estimate-revision",
+            "taskDemandDe": "Ein unabhängiger Fall hat koordinierte Lohnabschlüsse von4%, Produktivitätszuwachs2% und nach einer Erholung eine nach unten revidierte NAIRU-Schätzung. Erkläre Stückkosten, Nachfragemöglichkeiten und die Bedeutung der Revision für die Modelldeutung.",
+            "taskDemandEn": "An independent case has coordinated pay agreements of4%, productivity growth2%, and a downward-revised NAIRU estimate after a recovery. Explain unit costs, possible demand effects and what the revision means for interpreting the model.",
+            "expectedPerformanceDe": "Die Person bestimmt unter gleicher Beschäftigungs-/Outputbasis Stückkostenänderung1,04/1,02−1≈1,96%, unterscheidet dies vom nominalen Lohnzuwachs und erläutert koordinierte Erwartungen und Kaufkraftbedingungen. Sie erklärt die Revision als Schätz-/Modellunsicherheit und verlangt zusätzliche Daten, statt sie als Beweis für eine tatsächlich gemessene natürliche Quote zu behandeln.",
+            "expectedPerformanceEn": "Using the same employment/output basis, the learner obtains unit-cost growth1.04/1.02−1≈1.96%, distinguishes this from nominal pay growth, and explains coordinated expectations and purchasing-power conditions. They interpret revision as estimation/model uncertainty and request further evidence rather than treating it as proof of a directly measured natural rate.",
+            "understandingFocusDe": "Tarifmechanismen und unsichere Modellschwelle gemeinsam deuten.",
+            "understandingFocusEn": "Interpret bargaining mechanisms and an uncertain model threshold together."
+          }
+        ]
+      }
+    },
+    "actualTwoCases": true,
+    "wholeTaskSolutionFourMarkCriteria": [
+      {
+        "taskDe": "Erkläre NAIRU und berechne für A die Inflationsänderung und neue Inflationsrate. Welche Art von Größe ist u*?",
+        "taskEn": "Explain NAIRU, calculate A’s Δπ and resulting inflation, and distinguish the estimate from observed or politically desirable unemployment.",
+        "solutionDe": "NAIRU ist die geschätzte Modellschwelle für nicht beschleunigende Inflation. Δπ=−1 Prozentpunkt, neue Inflation 2%; Preise steigen weiterhin. u*=6% ist weder die beobachtete Arbeitslosigkeit noch ein politisches Soll.",
+        "solutionEn": "NAIRU is the estimated model threshold for non-accelerating inflation. Δπ=−1 percentage point and resulting inflation2%; prices still rise. Six percent is neither the observed rate nor a normative employment target.",
+        "fourMarksDe": [
+          "Bedeutung der NAIRU",
+          "−1 Prozentpunkt",
+          "Inflation 2%, kein Preisrückgang",
+          "Schätzung statt Beobachtung oder Soll"
+        ]
+      },
+      {
+        "taskDe": "Berechne A-Stücklohnkosten vorher und nachher. Erkläre einen Kosten-/Preis- und einen Einkommens-/Nachfragekanal mit Bedingung.",
+        "taskEn": "Calculate A’s old/new unit labour costs and explain a cost/price and an income/demand channel with conditions.",
+        "solutionDe": "20/10=2 und 21/10=2,10 Euro je Stück, also +5%. Wettbewerb und Nachfrage begrenzen Preisüberwälzung; Margen können sinken. Zusatzeinkommen kann Konsum erhöhen, abhängig etwa von Sparen und Preisen.",
+        "solutionEn": "Costs rise from20/10=2 to21/10=2.10 per unit, +5%. Competition/demand affect pass-through, otherwise margins may fall. Higher income may support consumption depending on saving, prices and employment.",
+        "fourMarksDe": [
+          "Stückkostenrechnung",
+          "Kosten-/Preiskanal",
+          "Einkommens-/Nachfragekanal",
+          "konkrete Bedingung"
+        ]
+      },
+      {
+        "taskDe": "Prüfe: „Das Modell beweist Jobverluste durch Tarifplus und die Notwendigkeit genau 6% Arbeitslosigkeit“. Begründe ein bedingtes Urteil und eine Informationsfrage.",
+        "taskEn": "Assess “The model proves a pay rise destroys jobs and exactly6% unemployment is required”; give a conditional judgement for A and identify missing evidence.",
+        "solutionDe": "Das Inflationsmodell gibt keine sichere Beschäftigungsreaktion des Abschlusses an. Kosten und Nachfrage können gegenläufig wirken; Aufträge oder Margen sind zu prüfen. Eine unsichere Schwelle ist kein politischer Auftrag.",
+        "solutionEn": "The supplied inflation model identifies no certain bargaining-induced employment response. Costs and demand may work differently; examine margins, orders or market structure. An uncertain threshold is no policy mandate; justify both limits.",
+        "fourMarksDe": [
+          "Inflation von Jobprognose getrennt",
+          "gegenläufige Tarifwege",
+          "Schätz-/Sollgrenze",
+          "gezielter Datenbedarf"
+        ]
+      },
+      {
+        "taskDe": "Berechne für B Stückkosten- und Reallohnänderung und erkläre die unterschiedlichen Nenner.",
+        "taskEn": "Calculate B’s unit-cost and real-pay changes and explain their distinct denominators.",
+        "solutionDe": "Stückkosten: 1,04/1,02−1≈1,96%. Reallohn: 1,04/1,03−1≈0,97%. Produktivität ist der Stückkostennenner, Preise der Kaufkraftnenner; beide unterscheiden sich von nominal +4%.",
+        "solutionEn": "Unit costs:1.04/1.02−1≈1.96%; real pay:1.04/1.03−1≈0.97%. Productivity is the cost denominator and prices the purchasing-power denominator; nominal4% differs.",
+        "fourMarksDe": [
+          "Stückkosten 1,96%",
+          "Reallohn 0,97%",
+          "Produktivitätsnenner",
+          "Preisnenner gegenüber nominalem Lohn"
+        ]
+      },
+      {
+        "taskDe": "Berechne B-Δπ vor und nach Revision. Deute die Revision und einen möglichen Mechanismus koordinierter Tarifverhandlungen.",
+        "taskEn": "Calculate B’s Δπ using both estimates, interpret revision and one possible coordination mechanism.",
+        "solutionDe": "Mit u*=6% folgt +0,4 Prozentpunkt, mit 5% folgt null. Revision verändert eine unsichere Modelldeutung, beweist keine gemessene Naturkonstante. Koordination kann Erwartungen abstimmen; Nachfrage und Produktivität bleiben Bedingungen.",
+        "solutionEn": "The old estimate gives+0.4 percentage point and the revision0. Revision changes interpretation without proving a measured natural constant or actual inflation change. Coordination may align wage/price expectations subject to demand/productivity conditions.",
+        "fourMarksDe": [
+          "vorher +0,4",
+          "nachher null",
+          "Revision als Schätzung",
+          "begründeter Koordinationskanal"
+        ]
+      },
+      {
+        "taskDe": "Prüfe für B die behauptete Beschäftigungsgarantie durch revidierte NAIRU und höheren Reallohn. Nenne Alternative und prüfbare Information.",
+        "taskEn": "Assess “A revised NAIRU and rising real pay guarantee more employment”; identify an alternative development and testable information.",
+        "solutionDe": "Keine Garantie: Nachfrage kann Jobs stützen, geringe Margen oder schwache Aufträge andere Reaktionen bewirken. Der Schätzwert ist kein kausaler Tarifeffekt. Aufträge, Kosten und zeitliche Schätzgrundlage wären zu prüfen.",
+        "solutionEn": "No guarantee: demand may support employment, while weak orders/margins may imply other responses. An estimate alone measures no causal agreement/job effect. Specify evidence on orders, costs/output and estimation dates.",
+        "fourMarksDe": [
+          "begründete Garantiegrenze",
+          "plausible andere Entwicklung",
+          "Schätzung gegen Kausalbeweis",
+          "prüfbare Information"
+        ]
+      }
+    ],
+    "necessaryCoreBoundaryDe": "Fehlt die NAIRU-/Modellschwellendeutung vollständig oder ist sie durchgehend falsch, oder fehlen sämtliche fallbezogenen tariflichen Wirkungskanäle in der ganzen Arbeit, sind höchstens 14 Punkte möglich.",
+    "necessaryCoreBoundaryEn": "Wholly absent/consistently wrong interpretation of the NAIRU/model threshold, or no case-based bargaining channels anywhere, limits the total to14. Meaningful uncertain/incomplete interpretation earns marks.",
+    "scopeAndReleaseIndependentReviewPending": true
+  },
+  {
+    "materialId": "072278ce-e91a-5b55-a5ad-fbfb484a8986",
+    "wholeGoalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+    "wholeOriginalP": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-economics-q2-labour-twelve-positive-author-20261008-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:405f74a6d8de42befd7dd680fae8e1aa4e7bb799dc012988faa2c4a84bf0ee55",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "goalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+      "goalFingerprint": "sha256:5178d6c7abaf06dbf1d258cd7274aeb3c1a22449b6913613a56c77fd42c473b2",
+      "reviewInputFingerprint": "sha256:5c63befebd9e8c87703230692ac5faea80c3be93094660928e58dfd13411a859",
+      "profileFingerprint": "sha256:869ddb6d558b2d630c4b584e890e0f2af18aeaccba23edfd807fda5feca0f187",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-08T08:26:10.768621+00:00",
+      "reviewer": "codex-economics-q2-labour-twelve-author-20261008-v2",
+      "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Tarifauseinandersetzungen verbinden Interessen und Verhandlungsmacht von Gewerkschaften und Arbeitgebern mit Lohn-, Arbeitszeit- und Beschäftigungsbedingungen. Ein Abschluss verändert nominale und reale Einkommen sowie Kosten und Nachfrage; ein Arbeitskampf hat unmittelbare und indirekte Wirkungen. Tarifautonomie bedeutet keinen garantierten wirtschaftlichen Ausgang. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Collective bargaining disputes connect union and employer interests and bargaining power with pay, hours and employment conditions. Agreements affect nominal and real income, costs and demand; industrial action has direct and indirect effects. Bargaining autonomy guarantees no economic outcome. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "content-specific-understanding",
+            "essentialUnderstandingDe": "Tarifauseinandersetzungen verbinden Interessen und Verhandlungsmacht von Gewerkschaften und Arbeitgebern mit Lohn-, Arbeitszeit- und Beschäftigungsbedingungen. Ein Abschluss verändert nominale und reale Einkommen sowie Kosten und Nachfrage; ein Arbeitskampf hat unmittelbare und indirekte Wirkungen. Tarifautonomie bedeutet keinen garantierten wirtschaftlichen Ausgang.",
+            "essentialUnderstandingEn": "Collective bargaining disputes connect union and employer interests and bargaining power with pay, hours and employment conditions. Agreements affect nominal and real income, costs and demand; industrial action has direct and indirect effects. Bargaining autonomy guarantees no economic outcome.",
+            "observablePerformanceDe": "Die Person analysiert in neuen Konflikten beide Tarifparteien, Streitpunkte, Macht-/Rahmenbedingungen und mindestens zwei begründete wirtschaftliche Wirkungsketten, unterscheidet nominale und reale Größen und erklärt mögliche Kompromisse bedingt.",
+            "observablePerformanceEn": "In new disputes, the learner analyses both bargaining parties, contested issues, power/context conditions and at least two justified economic chains, distinguishes nominal from real quantities, and conditionally explains possible compromises."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "content-specific-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dispute",
+            "textDe": "Lohn-/Preiskonflikt oder Arbeitszeit-/Sicherheitskonflikt.",
+            "textEn": "Pay/price dispute or hours/security dispute."
+          },
+          {
+            "id": "effects",
+            "textDe": "Reale Größen, Stückkosten, Nachfrage oder Lieferbeziehungen.",
+            "textEn": "Real quantities, unit costs, demand or supply relationships."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "pay-agreement-and-real-wage",
+            "taskDemandDe": "Eine fiktive Gewerkschaft verlangt einen Kaufkraftausgleich, Arbeitgeber nennen Kostendruck. Abschluss:4%Lohnplus bei5%Preissteigerung und2%Produktivitätszuwachs. Analysiere Interessen, reale Lohnwirkung und Kosten-/Nachfragefolgen.",
+            "taskDemandEn": "A fictional union seeks purchasing-power compensation while employers cite cost pressure. An agreement gives4%pay growth with5%price growth and2%productivity growth. Analyse interests, real pay and cost/demand effects.",
+            "expectedPerformanceDe": "Die Person erklärt Kaufkraft-/Sicherheits- und Kosten-/Wettbewerbsinteressen, berechnet reale Änderung1,04/1,05−1≈−0,95% und Stückkostenänderung≈1,96%. Sie trennt diese Größen und erläutert bedingte Konsum-, Margen-, Preis- und Beschäftigungsreaktionen statt automatischer vollständiger Preisüberwälzung.",
+            "expectedPerformanceEn": "The learner explains purchasing-power/security and cost/competition interests, calculates real pay1.04/1.05−1≈−0.95% and unit-cost growth≈1.96%, and separates these quantities. They explain conditional consumption, margin, price and employment responses rather than automatic full pass-through.",
+            "understandingFocusDe": "Konflikt und ökonomische Abschlusswirkungen analysieren.",
+            "understandingFocusEn": "Analyse the dispute and economic agreement effects."
+          },
+          {
+            "id": "hours-security-and-strike",
+            "taskDemandDe": "In einem zweiten fiktiven Konflikt ist Arbeitszeitplanbarkeit statt Lohnerhöhung zentral. Befristeter Streik unterbricht Zulieferungen; ein Kompromiss bietet feste Dienstpläne und eine Beschäftigungszusage gegen flexiblere Schichten. Analysiere beide Seiten und Folgen.",
+            "taskDemandEn": "In a second fictional dispute, predictable hours rather than higher pay are central. A temporary strike disrupts supplies; a compromise offers stable rosters and employment assurances in exchange for flexible shifts. Analyse both sides and consequences.",
+            "expectedPerformanceDe": "Die Person analysiert Vereinbarkeit, Einkommen und Sicherheit gegenüber Kapazitäts-/Kosteninteressen, erklärt Produktions-/Lieferausfälle und Folgewirkungen bei Partnern. Sie prüft Planbarkeit, Nachfrage und Umsetzbarkeit des Kompromisses, ohne feste Dienstpläne oder Zusagen als garantierte Beschäftigung auf Dauer zu behandeln.",
+            "expectedPerformanceEn": "The learner analyses reconciliation of work and other obligations, income and security versus capacity/cost interests, and explains production/supply losses and spillovers to partners. They examine predictability, demand and implementation conditions without treating rosters or assurances as perpetual guaranteed employment.",
+            "understandingFocusDe": "Nichtmonetäre Streitpunkte und indirekte Effekte übertragen.",
+            "understandingFocusEn": "Transfer analysis to non-pay disputes and indirect effects."
+          }
+        ]
+      }
+    },
+    "actualTwoCases": true,
+    "wholeTaskSolutionFourMarkCriteria": [
+      {
+        "taskDe": "Analysiere A-Parteien, Streitpunkt und eine Macht-/Rahmenbedingung. Warum kann der Abschluss ein Kompromiss sein?",
+        "taskEn": "Analyse A’s parties, issue and one power/context factor each; explain a possible compromise.",
+        "solutionDe": "Gewerkschaft: Einkommen und Kaufkraft. Arbeitgeber: Kosten und Wettbewerb. Organisation, Alternativen und Aufträge beeinflussen Verhandlungsmacht. +4% kann höhere Einkommen gegen Kosten abwägen, ohne vollen Kaufkraftschutz.",
+        "solutionEn": "The union seeks income/purchasing power; employers costs/competition. Organisation/industrial action and demand/alternatives influence power without predetermined winners. Four percent may balance higher pay against costs without full purchasing-power protection.",
+        "fourMarksDe": [
+          "Gewerkschaftsinteresse",
+          "Arbeitgeberinteresse",
+          "Macht-/Rahmenbedingung",
+          "bedingter Kompromiss"
+        ]
+      },
+      {
+        "taskDe": "Berechne A-Nominallohn, Reallohn- und Stückkostenänderung; unterscheide die Bezugsgrößen.",
+        "taskEn": "Calculate A’s nominal pay, real-pay change and unit-cost change; distinguish bases.",
+        "solutionDe": "Neuer Lohn 26 Euro. Reallohn 1,04/1,05−1≈−0,95%; Stückkosten 1,04/1,02−1≈+1,96%. Nominale Euro, reale Kaufkraft und Kosten je Output sind unterschiedliche Größen.",
+        "solutionEn": "New pay EUR26. Real pay1.04/1.05−1≈−0.95%; unit costs1.04/1.02−1≈+1.96%. Nominal pay does not guarantee increased purchasing power; prices and productivity are distinct denominators.",
+        "fourMarksDe": [
+          "26 Euro",
+          "Reallohn −0,95%",
+          "Stückkosten +1,96%",
+          "Bezugsgrößen getrennt"
+        ]
+      },
+      {
+        "taskDe": "Erkläre für A zwei wirtschaftliche Wirkungsketten und einen bedingten Gesamtbefund, ohne automatische volle Preisüberwälzung.",
+        "taskEn": "Explain two economic chains in A and a conditional judgement without automatic full price pass-through.",
+        "solutionDe": "Mehr Stückkosten können Marge, Preise oder Investition verändern; Wettbewerb begrenzt Überwälzung. Einkommen und reale Kaufkraft beeinflussen Konsum, abhängig von Sparen und anderen Einkommen. Nachfrage und Produktivität bestimmen Beschäftigung mit.",
+        "solutionEn": "Higher unit costs may affect margins/prices/investment, with competition limiting pass-through. Nominal incomes rise but purchasing power slightly falls, so consumption depends on saving/other income. Demand/productivity also shape employment; weigh both channels.",
+        "fourMarksDe": [
+          "Kostenkette",
+          "Nachfragekette",
+          "konkrete Bedingung",
+          "bedingte Gesamtanalyse"
+        ]
+      },
+      {
+        "taskDe": "Analysiere B-Interessen, direkte und indirekte Streikfolgen. Berechne den ungedeckten Teilebedarf des Abnehmers.",
+        "taskEn": "Analyse B’s interests and direct/indirect strike effects; calculate the customer’s two-day shortfall.",
+        "solutionDe": "Beschäftigte suchen Planbarkeit und Sicherheit, Betrieb Kapazitätsflexibilität. Beim Zulieferer fehlen 400 Teile. 400 Bedarf minus 300 Puffer lassen 100 ungedeckt; Produktion beim Partner kann ausfallen. Stückzahl ist kein feststehender Umsatzverlust.",
+        "solutionEn": "Workers seek predictable hours/security; the firm capacity flexibility/cost control. The supplier loses400parts; customer demand400 minus stock300 leaves100uncovered. Production/delivery may be delayed;100parts is not a proven revenue loss.",
+        "fourMarksDe": [
+          "beide nichtmonetären Interessen",
+          "400 Teile fehlen",
+          "100 Bedarf ungedeckt",
+          "indirekte Folge mit Grenze"
+        ]
+      },
+      {
+        "taskDe": "Prüfe B-Kompromiss auf Planbarkeit, Stundenumfang und Umsetzbarkeit. Welche Garantie ist nicht belegt?",
+        "taskEn": "Evaluate B’s compromise for predictability, demand and implementation; explain unchanged total hours and open issues.",
+        "solutionDe": "14 Tage Vorlauf erleichtern Planung, vereinbarte Ausnahmen brauchen Umsetzung. Flexible Lage reduziert nicht den Umfang. Die zwölfmonatige Zusage hängt an Aufträgen und sichert keine dauerhafte Beschäftigung; Verteilungsfolgen bleiben offen.",
+        "solutionEn": "Fourteen days supports planning; exceptions need workable agreement. Flexible timing may aid coverage but does not reduce total hours. The12-month assurance depends on orders and is no permanent guarantee; clarify income and burden allocation.",
+        "fourMarksDe": [
+          "Planbarkeitsvorteil",
+          "Lage gegen Stundenumfang",
+          "Auftrags-/Umsetzungsbedingung",
+          "keine dauerhafte Garantie"
+        ]
+      },
+      {
+        "taskDe": "Formuliere einen begründeten alternativen B-Kompromiss und zwei prüfbare Folgen. Erkläre die Ergebnisgrenze der Tarifautonomie.",
+        "taskEn": "Give a justified alternative B compromise and two testable consequences; explain why bargaining autonomy fixes no economic outcome.",
+        "solutionDe": "Ein Grundraster mit freiwilligem Tausch, Fristen und Ausgleich ist denkbar. Es könnte Änderungen reduzieren, aber Abdeckungskosten verändern; Bedarf und faire Lasten sind zu prüfen. Eigenständiges Aushandeln garantiert weder Absatz noch Einkommen.",
+        "solutionEn": "For example, fixed baseline rosters with voluntary swaps and agreed notice/compensation; assess demand and fairness. Test fewer sudden changes and possible coverage costs/retention. Autonomous bargaining guarantees neither sales nor permanent income.",
+        "fourMarksDe": [
+          "begründete Alternative",
+          "Beschäftigtenfolge",
+          "Betriebs-/Partnerfolge",
+          "Autonomie ohne Ergebnisgarantie"
+        ]
+      }
+    ],
+    "necessaryCoreBoundaryDe": "Fehlt jede tatsächliche Analyse beider Tarifparteien oder jede begründete wirtschaftliche Wirkungskette in der ganzen Arbeit, sind höchstens 14 Punkte möglich.",
+    "necessaryCoreBoundaryEn": "No actual analysis of both parties anywhere, or no justified economic chains, limits the total to14; an incomplete balance or arithmetic slip does not.",
+    "scopeAndReleaseIndependentReviewPending": true
+  },
+  {
+    "materialId": "f08e0a97-bcdd-504d-a9d9-7b1d8e6d4f96",
+    "wholeGoalId": "dd38e0c5-d77b-5893-815c-548ea2a84429",
+    "wholeOriginalP": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-economics-q2-labour-twelve-positive-author-20261008-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:405f74a6d8de42befd7dd680fae8e1aa4e7bb799dc012988faa2c4a84bf0ee55",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "goalId": "dd38e0c5-d77b-5893-815c-548ea2a84429",
+      "goalFingerprint": "sha256:94e15efedcbf0fb6c5c6963c72e7e88514b14af57a2f3225ec1c16467f6aac00",
+      "reviewInputFingerprint": "sha256:8b84f4f1b5328f99a204614bb661e736789b178eb136469356db7ea3c0ed7516",
+      "profileFingerprint": "sha256:2b0c9bf2c6d32b367d261e7a875fff7b41fa107599e90812cf4ed42442264d79",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-08T08:26:10.768621+00:00",
+      "reviewer": "codex-economics-q2-labour-twelve-author-20261008-v2",
+      "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Arbeitszeit verändert Stunden und Beschäftigtenzahl unterschiedlich. Beteiligung kann Information, Koordination und Bindung stärken oder Einkommens-/Entscheidungsrisiken verändern; organisatorische Mitwirkung und finanzielle Beteiligung sind verschieden. Wirkungen hängen von Auftragsvolumen, Produktivität, Regeln und Freiwilligkeit ab. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Working-time changes affect hours and headcount differently. Participation may improve information, coordination and retention or change income/decision risks; organisational involvement differs from financial participation. Effects depend on order volumes, productivity, rules and voluntariness. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "content-specific-understanding",
+            "essentialUnderstandingDe": "Arbeitszeit verändert Stunden und Beschäftigtenzahl unterschiedlich. Beteiligung kann Information, Koordination und Bindung stärken oder Einkommens-/Entscheidungsrisiken verändern; organisatorische Mitwirkung und finanzielle Beteiligung sind verschieden. Wirkungen hängen von Auftragsvolumen, Produktivität, Regeln und Freiwilligkeit ab.",
+            "essentialUnderstandingEn": "Working-time changes affect hours and headcount differently. Participation may improve information, coordination and retention or change income/decision risks; organisational involvement differs from financial participation. Effects depend on order volumes, productivity, rules and voluntariness.",
+            "observablePerformanceDe": "Die Person analysiert in neuen Fällen flexible Arbeitszeit und Beteiligungsmodelle, trennt Stunden-, Kopfzahl- und Einkommenseffekte und erklärt mögliche Beschäftigungs-/Koordinationswirkungen sowie Bedingungen und Nebenwirkungen.",
+            "observablePerformanceEn": "In new cases, the learner analyses flexible hours and participation models, separates hours, headcount and income effects, and explains possible employment/coordination effects with conditions and side effects."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "content-specific-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "hours-model",
+            "textDe": "Stundenverkürzung, Gleitzeit oder Aufstockung.",
+            "textEn": "Shorter hours, flexitime or additional hours."
+          },
+          {
+            "id": "participation",
+            "textDe": "Organisatorische Mitsprache oder finanzielle Gewinnbeteiligung.",
+            "textEn": "Organisational voice or financial profit-sharing."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "hours-sharing-and-employee-voice",
+            "taskDemandDe": "Ein fiktiver Betrieb mit100Beschäftigten à40Stunden benötigt vorübergehend3200Stunden statt4000. Vergleiche32Stunden für alle mit20Entlassungen bei sonst40Stunden; Stundenlohn und Produktivität bleiben gleich. Ein gemeinsam beratenes Dienstplanmodell ist gegeben. Analysiere Arbeit, Einkommen und Beteiligung.",
+            "taskDemandEn": "A fictional firm with100workers at40hours temporarily needs3200hours instead of4000. Compare32hours for everyone with20dismissals and40hours for the remainder; hourly pay and productivity are unchanged. A jointly discussed roster model is supplied. Analyse work, income and participation.",
+            "expectedPerformanceDe": "Die Person berechnet in beiden Varianten3200Stunden beziehungsweise80Vollzeitäquivalente, trennt100von80Köpfen und erklärt20%individuellen Einkommensverlust beim proportional bezahlten Stundenmodell. Sie analysiert Verteilung, Bindung und Mitsprache sowie Nachfrage-/Vertragsbedingungen, ohne kostenlose Arbeitsplatzsicherung zu behaupten.",
+            "expectedPerformanceEn": "The learner calculates3200hours and80full-time equivalents in both versions, distinguishes100from80people, and explains a20%individual income loss under proportionally paid shorter hours. They analyse distribution, retention and voice with demand/contract conditions rather than free job security.",
+            "understandingFocusDe": "Stundenrechnung mit organisatorischer Beteiligung verbinden.",
+            "understandingFocusEn": "Connect hours accounting with organisational participation."
+          },
+          {
+            "id": "flexitime-profit-sharing-and-risk",
+            "taskDemandDe": "Ein unabhängiger fiktiver Betrieb erlaubt Gleitzeit mit Abdeckungsfenstern und bietet Gewinnbeteiligung statt einer gleich hohen festen Zusatzvergütung. Material zeigt schwankende Gewinne, Servicebedarf und Beteiligungsregeln. Analysiere Beschäftigung und Einkommen.",
+            "taskDemandEn": "An independent fictional firm permits flexitime with coverage windows and offers profit-sharing instead of an equally sized fixed extra payment. Materials show variable profits, service needs and participation rules. Analyse employment and income.",
+            "expectedPerformanceDe": "Die Person erklärt mögliche bessere Stundenpassung und Bindung unter Abdeckungsbedingungen, unterscheidet flexible Lage der Arbeit von weniger Gesamtstunden und finanzielle von Entscheidungsbeteiligung. Sie analysiert variable Einkommen, Anreize und Belastungsverteilung und nennt Grenzen, wenn Gewinne oder Nachfrage ausbleiben.",
+            "expectedPerformanceEn": "The learner explains possible better hour matching and retention under coverage conditions, distinguishes flexible timing from fewer total hours and financial from decision participation, and analyses variable incomes, incentives and burden distribution with limits under weak profits or demand.",
+            "understandingFocusDe": "Arbeitszeit und finanzielle Beteiligung in neuem Dienstleistungskontext analysieren.",
+            "understandingFocusEn": "Analyse working time and financial participation in a new service context."
+          }
+        ]
+      }
+    },
+    "actualTwoCases": true,
+    "wholeTaskSolutionFourMarkCriteria": [
+      {
+        "taskDe": "Berechne A-Stunden, Vollzeitäquivalente auf 40-Stunden-Basis und Köpfe in K/E. Erkläre die Unterscheidung.",
+        "taskEn": "Calculate A’s hours,40-hour full-time equivalents and headcounts in K/E; explain the difference.",
+        "solutionDe": "K: 100×32=3200 Stunden, 80 VZÄ, 100 Köpfe. E: 80×40=3200 Stunden, 80 VZÄ, 80 Köpfe. VZÄ rechnen Stunden um, nicht Personen; gleiche Stunden haben verschiedene Verteilung.",
+        "solutionEn": "K100×32=3200hours=80FTEwith100people;E80×40=3200=80FTEwith80people. FTEconverts hours, not headcount; equal hours differ in distribution.",
+        "fourMarksDe": [
+          "K 3200 Stunden",
+          "E 3200 Stunden",
+          "beide 80 VZÄ",
+          "100 gegen 80 Köpfe"
+        ]
+      },
+      {
+        "taskDe": "Vergleiche A-Wocheneinkommen und Lastenverteilung. Ist K kostenlose Arbeitsplatzsicherung?",
+        "taskEn": "Compare A’s weekly incomes/burden distribution; is K free job protection?",
+        "solutionDe": "Vorher 800 Euro, K 640 Euro je Person, −20%. In E erhalten Verbleibende 800, Entlassene keinen Betriebslohn; andere Einkommen sind unbekannt. K verteilt Kürzung und hält Köpfe, kostet Einkommen und braucht Nachfrage/Umsetzung.",
+        "solutionEn": "Previous pay800, K640per person(−20%), E800for remaining staff and no firm pay for20dismissed people; other income unknown. Kshares cuts/retains headcount but reduces income and requires orders/agreed implementation.",
+        "fourMarksDe": [
+          "800 und 640 Euro",
+          "−20% in K",
+          "Lastenverteilung K/E",
+          "keine kostenlose Garantie"
+        ]
+      },
+      {
+        "taskDe": "Analysiere A-Mitsprache hinsichtlich Information, Koordination und Bindung; nenne Bedingung und Nebenwirkung.",
+        "taskEn": "Analyse A’s employee voice for information, coordination and retention; name a condition and side effect.",
+        "solutionDe": "Zeitwünsche liefern Information; gemeinsame Abdeckung kann Koordination und Bindung stärken. Faire Regeln und Nachfrage sind Bedingungen. Planung kostet Zeit und Wünsche können kollidieren; Mitsprache verändert nicht automatisch Kopfzahl.",
+        "solutionEn": "Preferences provide information; shared coverage can improve coordination/retention. Fair reliable rules and actual demand matter; planning takes time and preferences may conflict. Voice does not automatically change pay/headcount.",
+        "fourMarksDe": [
+          "Informationskanal",
+          "Koordinations-/Bindungskanal",
+          "konkrete Bedingung",
+          "Nebenwirkung oder Grenze"
+        ]
+      },
+      {
+        "taskDe": "Prüfe B-Abdeckung und Gesamtstunden. Was kann Gleitzeit verbessern und welche Beschäftigungsbehauptung folgt nicht?",
+        "taskEn": "Check B’s coverage and total hours; what can flexitime improve and what job claim does not follow?",
+        "solutionDe": "20×40=800 Stunden bleiben. Alt zehn liegt unter zwölf; neu 14 liefert zwei Pufferpersonen. Andere Fenster sind nicht geprüft. Passende Lage kann Service stützen, schafft aber nicht automatisch mehr Stunden oder Jobs.",
+        "solutionEn": "Total remains20×40=800hours. Old10misses12;new14gives2spare, without proving all other windows covered. Timing may improve service/fit but creates neither extra hours nor guaranteed jobs; examine demand and remaining periods.",
+        "fourMarksDe": [
+          "800 Stunden",
+          "zehn unzureichend, 14 ausreichend",
+          "andere Fenster offen",
+          "Lage ohne automatische Jobs"
+        ]
+      },
+      {
+        "taskDe": "Berechne G-Zahlung je Person für alle drei Gewinnfälle. Vergleiche F und trenne finanziellen Anteil von organisatorischer Mitsprache.",
+        "taskEn": "Calculate G’s payment per person for each profit case, compare F and distinguish financial participation from voice.",
+        "solutionDe": "G: 500, 1000 oder null Euro. F: sicher 1000 im Modell. G ist variabel und nur bei 200000 Gewinn gleich hoch. Gewinnanteile allein gewähren keine Entscheidungsrechte; A enthält dagegen tatsächliche Mitsprache.",
+        "solutionEn": "Ggives0.10×100000/20=500,1000at200000,and0at zero profit. Fis fixed1000under the model; Gvaries. Aprofit share alone supplies no voting/voice rights, unlike A’s actual organisational rules.",
+        "fourMarksDe": [
+          "500 Euro",
+          "1000 und null Euro",
+          "variable gegen feste Zahlung",
+          "finanzieller Anteil gegen Mitsprache"
+        ]
+      },
+      {
+        "taskDe": "Beurteile B-Anreize, Einkommensrisiko und bedingte Beschäftigungswirkung. Begründe eine faire Regel ohne erfundenen Erwartungswert.",
+        "taskEn": "Assess B’s incentives, income risk and possible employment/retention effects; propose a conditional fair rule without inventing expected values.",
+        "solutionDe": "Ergebnisinteresse kann Bindung fördern, Gewinne hängen aber auch von Fremdfaktoren ab. Bei Schwäche fällt Zusatzeinkommen. Service/Bindung können Jobs stützen, nicht garantieren. Freiwillige Wahl und transparente Basisabsicherung sind denkbar; Wahrscheinlichkeiten fehlen.",
+        "solutionEn": "Gmay align performance interests but profit also depends on outside factors and supplements vanish in weak periods. Retention/service may support, not guarantee jobs. Voluntary choice/transparent calculation with basic protection is defensible; no probabilities means no expected payment.",
+        "fourMarksDe": [
+          "begründeter Anreiz",
+          "Einkommens-/Fremdfaktorrisiko",
+          "bedingte Beschäftigungswirkung",
+          "faire Regel ohne erfundene Wahrscheinlichkeit"
+        ]
+      }
+    ],
+    "necessaryCoreBoundaryDe": "Fehlt vollständig die Stunden-/Kopfzahlunterscheidung oder jede Analyse organisatorischer gegenüber finanzieller Beteiligung in der ganzen Arbeit, sind höchstens 14 Punkte möglich.",
+    "necessaryCoreBoundaryEn": "Wholly absent hours/headcount distinction or no actual organisational-versus-financial participation analysis limits the total to14. An isolated wrong number, incomplete side effect or justified alternative rule is not total absence.",
+    "scopeAndReleaseIndependentReviewPending": true
+  },
+  {
+    "materialId": "712e57db-3756-5d23-a3b3-b37d9422c220",
+    "wholeGoalId": "8dee6c0a-0f76-5717-87b6-04ec89229371",
+    "wholeOriginalP": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-economics-project-markets-international-methods-twenty-positive-author-20261008-v3",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:fb04bfb85c28cf22c67bbfad07788f1778634873158066e082d3556f8739291d",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "goalId": "8dee6c0a-0f76-5717-87b6-04ec89229371",
+      "goalFingerprint": "sha256:877d0bc616be225701159f29ba76aa2e79993f1900f3a0ad6a5f94e081ee2590",
+      "reviewInputFingerprint": "sha256:f7d3c8483ecbd4bb0dc1aa94acb57cb5cdaef22a8dc2839c116722dab6a76c46",
+      "profileFingerprint": "sha256:dc6d272c5dd717d8c879483525b32856c65f11a806de4b32034055dd4e0f5cc8",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-08T14:34:53.656638+00:00",
+      "reviewer": "/root/economics_gate_audit; original P author, no independent approval claimed",
+      "reason": "DE: Eigener inaktiver P-Autorkandidat nach ganzer aktueller DE/EN-Ziel-, direkter Quellen- und bestehender A/M-Lektüre. Berufliche Passung ist ein begründeter Vergleich von Interessen, Werten, Fähigkeiten und Zukunftsvorstellungen mit belegten Tätigkeits-/Anforderungsprofilen. Ein Testwert oder Berufsetikett beweist keine unveränderliche Eignung; Entwicklungsmöglichkeiten, Rahmenbedingungen und Informationsgrenzen gehören zum selben Vergleich. Zwei eigenständige konkrete Fälle sind didaktische Erwartungen; es wurden keine Lernenden beobachtet, keine menschliche Freigabe und kein unabhängiger Review behauptet. EN: Own inert author candidate after reading the whole current bilingual goal, direct source and existing A/M decisions. Career fit is a reasoned comparison of interests,values,abilities and future plans with evidenced work requirements. A test score or job label establishes no fixed suitability;development opportunities,conditions and information limits belong to the same comparison. Two distinct concrete cases specify expected understanding, not observed learner performance, human approval or an independent review.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "content-specific-understanding",
+            "essentialUnderstandingDe": "Berufliche Passung ist ein begründeter Vergleich von Interessen, Werten, Fähigkeiten und Zukunftsvorstellungen mit belegten Tätigkeits-/Anforderungsprofilen. Ein Testwert oder Berufsetikett beweist keine unveränderliche Eignung; Entwicklungsmöglichkeiten, Rahmenbedingungen und Informationsgrenzen gehören zum selben Vergleich.",
+            "essentialUnderstandingEn": "Career fit is a reasoned comparison of interests,values,abilities and future plans with evidenced work requirements. A test score or job label establishes no fixed suitability;development opportunities,conditions and information limits belong to the same comparison.",
+            "observablePerformanceDe": "Die Person erarbeitet ein eigenes lokal bleibendes Profil oder eine ausdrücklich simulierte anonymisierte Profilversion, vergleicht alle vier Dimensionen mit zwei bereitgestellten Anforderungsprofilen und begründet Passungen, Spannungen und einen nächsten überprüfbaren Klärschritt ohne Privatdatenoffenlegung.",
+            "observablePerformanceEn": "The learner prepares a personal profile kept locally or an explicitly simulated anonymised version,compares all four dimensions with two supplied work profiles and justifies fits,tensions and a verifiable next clarification step without disclosure of private data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "content-specific-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "profile-dimensions",
+            "textDe": "Interessen/Werte gegenüber vorhandenen Fähigkeiten und Zukunftsvorstellungen.",
+            "textEn": "Interests/values versus present abilities and future plans."
+          },
+          {
+            "id": "change-and-evidence",
+            "textDe": "Neue Tätigkeitsinformation und veränderbare Fähigkeiten statt endgültiger Testentscheidung.",
+            "textEn": "New work information and developable skills instead of a final test-based decision."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "own-or-simulated-two-job-profile",
+            "taskDemandDe": "Erstelle privat ein Vier-Dimensionen-Profil zu Interessen, Werten, Fähigkeiten und Zukunftsvorstellungen; persönliche Angaben bleiben lokal. Für die bewertbare Unterrichtsdarstellung darf eine klar als Simulation markierte Profilversion verwendet werden: gern konkrete technische Probleme lösen, Wert auf verlässliche Zeit, derzeit gute Genauigkeit, Wunsch nach Weiterbildung. Vergleiche bereitgestellte Profile für technischen Service mit wechselnden Bereitschaftszeiten und kaufmännische Sachbearbeitung mit festen Bürozeiten und Kundenkommunikation.",
+            "taskDemandEn": "Privately prepare a four-dimension profile of interests,values,abilities and future plans;personal details remain local. An explicitly simulated profile may be used for the assessable classroom demonstration:enjoys practical technical problems,values predictable time,currently accurate and wants further training. Compare supplied technical-service requirements with variable on-call hours and administrative-office requirements with fixed hours and customer communication.",
+            "expectedPerformanceDe": "Die Person vergleicht alle vier Dimensionen anhand tatsächlicher Anforderungen, benennt etwa technische Interessenpassung und Zeitkonflikt im Service sowie mögliche Genauigkeits-/Zeitpassung und offene Kommunikationsanforderung im Büro. Sie begründet einen Erkundungs-/Klärschritt, unterscheidet privates Profil und simulierte Darstellung und behauptet weder echte Eignungsdiagnose noch sicheren Ausbildungszugang.",
+            "expectedPerformanceEn": "The learner compares all four dimensions against requirements,identifying technical-interest fit and time tension in service versus possible accuracy/time fit and open communication requirements in office work. They justify an exploration step,distinguish private profile from simulated demonstration and claim neither actual aptitude diagnosis nor guaranteed training access.",
+            "understandingFocusDe": "Eigenes beziehungsweise transparent simuliertes Profil mit Anforderungen mehrdimensional vergleichen.",
+            "understandingFocusEn": "Compare a personal or transparently simulated profile with requirements across dimensions."
+          },
+          {
+            "id": "changed-requirements-learning-profile",
+            "taskDemandDe": "In einem zweiten lokal geführten oder ausdrücklich simulierten Vergleich interessieren dich analytische Aufgaben, ein gesellschaftlicher Beitrag, selbstständiges Arbeiten und planbare Weiterbildung. Die zwei bereitgestellten Arbeitsprofile sind Datenanalyse mit hoher Dokumentations-/Teamkommunikation und soziale Beratung mit intensiver Interaktion und geregelten Datenschutzanforderungen. Eine neue Information zeigt zusätzliche Teamkommunikation im Analyseberuf. Überarbeite deinen Vergleich und benenne eine erlernbare Fähigkeit sowie eine echte offene Frage.",
+            "taskDemandEn": "In a second locally kept or explicitly simulated comparison,you are interested in analytical work,social contribution,independence and predictable further training. Supplied profiles cover data analysis with substantial documentation/team communication and social counselling with intensive interaction and privacy duties. New information reveals additional teamwork in analysis. Revise the comparison and identify a learnable skill and a genuine unresolved question.",
+            "expectedPerformanceDe": "Die Person berücksichtigt die neue Anforderung statt Berufsbilder zu stereotypisieren, vergleicht Interessen, Werte, aktuelle Fähigkeiten und Zukunftsplanung in beiden Profilen und entwickelt eine bedingte Lern-/Erkundungsoption. Der Wunsch nach gesellschaftlichem Beitrag oder Selbstständigkeit beweist weder einen einzig passenden Beruf noch die Abwesenheit von Teamarbeit.",
+            "expectedPerformanceEn": "The learner accounts for the new requirement rather than stereotyping occupations,compares interests,values,current abilities and future plans across both and proposes a conditional learning/exploration option. A wish for social contribution or independence proves neither a unique suitable occupation nor absence of teamwork.",
+            "understandingFocusDe": "Veränderbarer Anforderungsvergleich mit Informationsreaktion und ohne Eignungszertifikat.",
+            "understandingFocusEn": "An adaptable requirements comparison responding to information without aptitude certification."
+          }
+        ]
+      }
+    },
+    "actualTwoCases": true,
+    "wholeTaskSolutionFourMarkCriteria": [
+      {
+        "taskDe": "Vergleiche A in allen vier Dimensionen mit S/B; nenne konkrete Anforderung und Passung oder Spannung.",
+        "taskEn": "Create A’s four-dimension comparison for S/B, identifying actual demands and matches/tensions in each dimension.",
+        "solutionDe": "Technikinteresse passt zu S; Kundenkommunikation in B bleibt offen. Zeitwert kollidiert mit S-Bereitschaft, passt zu B. Genauigkeit hilft beiden Dokumentationen. Weiterbildung betrifft verschiedene Inhalte.",
+        "solutionEn": "Technical interest fits Swhile Bcommunication is open; time predictability conflicts with Son-call hours and fits B; accuracy aids both; future learning concerns distinct technical/administrative content. Labels alone are not comparison.",
+        "fourMarksDe": [
+          "Interesse in beiden Rollen",
+          "Wert in beiden Rollen",
+          "Fähigkeit in beiden Rollen",
+          "Zukunft in beiden Rollen"
+        ]
+      },
+      {
+        "taskDe": "Begründe A-Präferenz und einen entwickelbaren Bereich. Trenne Interesse von nachgewiesener Kompetenz.",
+        "taskEn": "Justify A’s tentative preference and a developable area; distinguish interest from demonstrated competence.",
+        "solutionDe": "S bei geklärter Bereitschaft oder B mit Kommunikationstraining sind plausibel. Genauigkeit ist begrenzte Evidenz; Interesse belegt keine sichere Fehlersuche. Eine Fähigkeit kann gelernt werden, statt eine Person als ungeeignet festzulegen.",
+        "solutionEn": "Either is conditionally defensible: Ssubject to on-call clarification or Bwith communication development. Technical interest proves no troubleshooting competence; accuracy is limited evidence. Alearnable area is not fixed unfitness.",
+        "fourMarksDe": [
+          "fallbezogene Präferenz",
+          "Passung oder Spannung",
+          "konkreter Lernbereich",
+          "Interesse ist kein Kompetenzbeweis"
+        ]
+      },
+      {
+        "taskDe": "Plane A-Klärschritte für beide Optionen, zwei gezielte Fragen und die Grenze einer Zugangszusage.",
+        "taskEn": "Plan a checkable clarification for both Aoptions and two focused questions; explain why admission is unproven.",
+        "solutionDe": "Vorliegende Tätigkeitsprotokolle oder simulierte Erkundungen beider Rollen vergleichen; Fragen zu Bereitschaft, Kommunikation oder Weiterbildung stellen. Die Profile enthalten keine Zulassungszusage. Es wird kein realer Kontakt ausgeführt.",
+        "solutionEn": "Compare a simulated activity record/supplied shadowing account with both S/B; ask about on-call frequency and communication/training. These profiles establish no admission or application success. No real contact is required.",
+        "fourMarksDe": [
+          "Klärung für S",
+          "Klärung für B",
+          "Fragen mit Informationszweck",
+          "keine Zugangs-/Erfolgszusage"
+        ]
+      },
+      {
+        "taskDe": "Vergleiche B in allen vier Dimensionen mit D/C; vermeide eindeutige Berufszuteilung durch Werte oder Selbstständigkeit.",
+        "taskEn": "Compare all four Bdimensions with D/C; avoid treating social contribution or independence as a unique job assignment.",
+        "solutionDe": "Analytik unterstützt D, möglicherweise auch C-Fallstrukturierung. Beitrag ist in beiden möglich. Datenordnung hilft Dokumentation, Interaktion bleibt Lernbereich. Training/Projektfristen prüfen; Selbstständigkeit bedeutet keine Teamfreiheit.",
+        "solutionEn": "Analysis fits Dand possibly case organisation in C; social contribution can occur in both. Data organisation aids records; presentation/interaction are learning areas. Examine training and project/case times; independence does not mean no team.",
+        "fourMarksDe": [
+          "Interesse in beiden Profilen",
+          "Wert in beiden Profilen",
+          "Fähigkeit in beiden Profilen",
+          "Zukunft und Bedingungen"
+        ]
+      },
+      {
+        "taskDe": "Überarbeite B nach der neuen Information. Benenne eine erlernbare Fähigkeit und eine echte offene Frage.",
+        "taskEn": "Revise B’s comparison using new information; name a learnable skill and an unresolved question.",
+        "solutionDe": "D-Präsentationen erhöhen das Gewicht von Kommunikationslernen; C-Übungen öffnen einen Lernweg. Ein konkretes Präsentations-/Feedbacktraining ist möglich. Trainingszeiten oder Fristen bleiben zu klären, statt Berufe zu stereotypisieren.",
+        "solutionEn": "D’s weekly presentation increases communication-learning relevance; C’s guided practice offers development. Replace “analysis=working alone” with practice/feedback; clarify training time or project deadlines.",
+        "fourMarksDe": [
+          "neue D-Anforderung",
+          "C-Entwicklungsmöglichkeit",
+          "erlernbare Fähigkeit",
+          "echte offene Frage"
+        ]
+      },
+      {
+        "taskDe": "Begründe einen angepassten B-Erkundungsplan mit Alternative und Materialgrenze. Ist die Simulation eine echte Eignungsdiagnose?",
+        "taskEn": "Justify B’s adapted exploration plan with an alternative and evidence limits; may a simulation be presented as your actual diagnosis?",
+        "solutionDe": "Kleine Analyse mit Teampräsentation und simulierte Beratung vergleichen; D oder C begründet offenhalten. Der Plan reagiert auf neue Anforderungen. Simulierte Profile und Dossiers liefern keine echte Personendiagnose; private Angaben bleiben lokal.",
+        "solutionEn": "Compare a small analysis/team presentation with a simulated counselling exercise, keeping DorCopen. The supplied profile is simulated and dossiers establish no personal aptitude; private facts stay local. Alternative reasoned choices count.",
+        "fourMarksDe": [
+          "angepasster Plan",
+          "begründete Alternative",
+          "Simulation und Evidenzgrenze",
+          "Orientierung statt Eignungsdiagnose"
+        ]
+      }
+    ],
+    "necessaryCoreBoundaryDe": "Fehlt jeder tatsächliche mehrdimensionale Anforderungsvergleich oder werden Profile durchgehend als starre Eignungszertifikate behandelt, sind höchstens 14 Punkte möglich. Eine einzelne unvollständige Dimension löst diese Grenze nicht aus.",
+    "necessaryCoreBoundaryEn": "Wholly absent multidimensional requirements comparison or consistently treating profiles as fixed aptitude certificates limits the total to14; one incomplete dimension or tentative preference earns partial marks without that limit.",
+    "scopeAndReleaseIndependentReviewPending": true
+  },
+  {
+    "materialId": "54c71d60-f188-5d2c-9820-3d120022f67d",
+    "wholeGoalId": "980a3f45-b0ad-500d-8d5b-975948362b68",
+    "wholeOriginalP": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-economics-project-markets-international-methods-twenty-positive-author-20261008-v3",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:fb04bfb85c28cf22c67bbfad07788f1778634873158066e082d3556f8739291d",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "goalId": "980a3f45-b0ad-500d-8d5b-975948362b68",
+      "goalFingerprint": "sha256:3949aaac040d53bf02b7cbd320ae6065c2b821cd8f91d88855a384c8b382936b",
+      "reviewInputFingerprint": "sha256:074968fd5e894c488dce1996c748f580246dec33285ffa01841748ec8d54b095",
+      "profileFingerprint": "sha256:3d2538d32c6378ecf59534d24e2fcaa4d878df7981700d463efb9b80f3257c1c",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-08T14:34:53.656638+00:00",
+      "reviewer": "/root/economics_gate_audit; original P author, no independent approval claimed",
+      "reason": "DE: Eigener inaktiver P-Autorkandidat nach ganzer aktueller DE/EN-Ziel-, direkter Quellen- und bestehender A/M-Lektüre. Berufs-/Studieninformationen werden nach konkreter Frage, Quellenfunktion, Aktualität, Zugangsvoraussetzungen und Interessenlage ausgewählt und gegengeprüft. Medien, Beratungsangebote und Institutionen liefern unterschiedliche Beiträge; ein begründeter Zukunftsentwurf bleibt revisierbar und setzt keine reale persönliche Kontaktaufnahme oder vertrauliche Angaben voraus. Zwei eigenständige konkrete Fälle sind didaktische Erwartungen; es wurden keine Lernenden beobachtet, keine menschliche Freigabe und kein unabhängiger Review behauptet. EN: Own inert author candidate after reading the whole current bilingual goal, direct source and existing A/M decisions. Career/study information is selected and cross-checked by question,source function,currency,entry requirements and interests. Media,advisory services and institutions contribute differently;a justified future plan remains revisable and requires neither actual personal contact nor confidential data. Two distinct concrete cases specify expected understanding, not observed learner performance, human approval or an independent review.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "content-specific-understanding",
+            "essentialUnderstandingDe": "Berufs-/Studieninformationen werden nach konkreter Frage, Quellenfunktion, Aktualität, Zugangsvoraussetzungen und Interessenlage ausgewählt und gegengeprüft. Medien, Beratungsangebote und Institutionen liefern unterschiedliche Beiträge; ein begründeter Zukunftsentwurf bleibt revisierbar und setzt keine reale persönliche Kontaktaufnahme oder vertrauliche Angaben voraus.",
+            "essentialUnderstandingEn": "Career/study information is selected and cross-checked by question,source function,currency,entry requirements and interests. Media,advisory services and institutions contribute differently;a justified future plan remains revisable and requires neither actual personal contact nor confidential data.",
+            "observablePerformanceDe": "Die Person nutzt bereitgestellte aktuelle Medien-, Beratungs- und Institutionsmaterialien gezielt, dokumentiert Fragen und Quellenkritik, leitet daraus einen begründeten Zukunftsentwurf mit Alternativen ab und korrigiert ihn bei neuen Zugangsinformationen.",
+            "observablePerformanceEn": "The learner uses supplied current media,advisory and institutional material purposefully,documents questions and source critique,derives a reasoned future plan with alternatives and corrects it when entry information changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "content-specific-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "information-function",
+            "textDe": "Berufsbild, individuelle Beratung und verbindliche Zulassungsinformation.",
+            "textEn": "Work profile,individual advice and authoritative admission information."
+          },
+          {
+            "id": "plan-revision",
+            "textDe": "Widersprechende oder veraltete Medienaussage gegenüber aktuellem offiziellen Material.",
+            "textEn": "A conflicting or outdated media claim versus current official material."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "training-source-triangulation",
+            "taskDemandDe": "Für einen ausdrücklich fiktiven beruflichen Zukunftsentwurf stehen drei datierte Materialien bereit: ein Medienbericht zum Tätigkeitsalltag, eine simulierte Berufsberatungsnotiz mit offenen Passungsfragen und ein aktuelles institutionelles Ausbildungsblatt mit Zugang, Dauer und Bewerbungsfrist. Nutze jedes Material für eine konkrete Frage, erstelle einen überprüfbaren Informationsplan und begründe einen vorläufigen Ausbildungsweg mit Alternative. Keine Bewerbungsunterlagen werden versendet.",
+            "taskDemandEn": "For an explicitly fictional career plan,three dated materials are supplied:a media report on daily work,a simulated careers-advice note with open fit questions and a current institutional training sheet with entry requirements,duration and deadline. Use each for a specific question,create a verifiable information plan and justify a provisional training route with an alternative. No applications are sent.",
+            "expectedPerformanceDe": "Die Person verwendet Medien für ein kritisches Tätigkeitsbild, Beratung für Reflexions-/Nachfragen und die Institution für definierte Zugangsdaten. Sie vergleicht Datum, Herausgeber und Interessen, leitet einen bedingten Weg mit rechtzeitigem nächsten Schritt ab und behandelt Beratungsmeinung oder Medienanekdote nicht als verbindliche Zulassungsentscheidung.",
+            "expectedPerformanceEn": "The learner uses media for a critical work picture,advice for reflection/questions and the institution for stated entry information. They compare dates,publishers and interests,derive a conditional route with a timely next step and do not treat advice or a media anecdote as a binding admission decision.",
+            "understandingFocusDe": "Medien, Beratung und Institution gezielt verbinden und einen begründeten Plan ableiten.",
+            "understandingFocusEn": "Combine media,advice and institutions purposefully and derive a reasoned plan."
+          },
+          {
+            "id": "study-admission-update",
+            "taskDemandDe": "Ein zweites fiktives Materialpaket enthält ein älteres Forum mit pauschaler Zulassungsbehauptung, eine aktuelle Hochschulseite mit Auswahlverfahren und Fristen sowie eine simulierte Beratung, die einen alternativen Berufsweg nennt. Ordne Informationen einer Studienfrage zu, löse den Datums-/Verbindlichkeitskonflikt und überarbeite einen Zukunftsentwurf mit einer konkreten offenen Rückfrage. Reale Zulassungsregeln werden nur aus im Aufgabenzeitpunkt bereitgestellten datierten Materialien übernommen.",
+            "taskDemandEn": "A second fictional pack contains an older forum making a blanket admission claim,a current university page specifying selection and deadlines and simulated advice suggesting an alternative career route. Assign information to a study question,resolve the conflict in date/authority and revise a future plan with a specific open question. Real admission rules are taken only from dated materials supplied at task time.",
+            "expectedPerformanceDe": "Die Person priorisiert aktuelle institutionelle Zugangsvorgaben, hält die Forumsaussage als unverbindliche und gegebenenfalls überholte Erfahrung getrennt und nutzt Beratung für Alternativen und gezielte Klärung. Sie dokumentiert eine begründete Planänderung samt Frist-/Informationsschritt, ohne eine echte Studienplatzzusage oder erfolgreiche Beratungskontaktaufnahme zu behaupten.",
+            "expectedPerformanceEn": "The learner prioritises current institutional requirements,separates the forum claim as non-binding and possibly outdated experience and uses advice for alternatives and focused clarification. They document a reasoned plan revision and deadline/information step without claiming an actual study offer or successful advice contact.",
+            "understandingFocusDe": "Aktuelle Informationen quellenkritisch in einen überprüfbaren Zukunftsentwurf überführen.",
+            "understandingFocusEn": "Translate current information critically into a verifiable future plan."
+          }
+        ]
+      }
+    },
+    "actualTwoCases": true,
+    "wholeTaskSolutionFourMarkCriteria": [
+      {
+        "taskDe": "Nutze A-Medien, Beratung und Institution für je eine konkrete Frage; prüfe Datum, Herausgeber und Interesse.",
+        "taskEn": "Use A’s media, advice and institution for one concrete question each; evaluate dates, publishers and interests.",
+        "solutionDe": "M liefert ein kritisches Tätigkeitsbild mit Werbung/Einzelfallgrenze. B dient Reflexion und Alternativen, nicht Zulassung. I gibt Modellzugang, Dauer und Frist. Funktion und Autorität zählen neben dem Datum; neu heißt nicht automatisch vollständig.",
+        "solutionEn": "Musefully informs a critical work picture but is anecdotal/advertising; Bsupports reflection/options, not admission; Ispecifies model requirements/duration/deadlines. Later dates alone guarantee no completeness; compare authority/functions.",
+        "fourMarksDe": [
+          "Medienfrage mit Grenze",
+          "Beratungsfrage mit Funktion",
+          "Institutionsfrage mit Autorität",
+          "Datum und Interessen geprüft"
+        ]
+      },
+      {
+        "taskDe": "Erstelle A-Informationsprotokoll mit zwei prüfbaren Nachfragen und Fristfolge; kein realer Kontakt.",
+        "taskEn": "Create A’s information log with two checkable follow-up questions and deadline sequencing, without real contact.",
+        "solutionDe": "Quelle, Datum und Frage etwa zu Bereitschaft und Auswahlunterlagen festhalten. T vor 30.10, V vor 20.11 prüfen: 20 beziehungsweise 41 Kalendertage ab 10.10. Ein dokumentierter Plan ist keine bestätigte Beratung.",
+        "solutionEn": "Record M/date/question on working times and I/date/question on selection documents, with simulated advice on V. Investigate Tbefore30October and Vbefore20November;20and41calendar days remain. Aplan is not a confirmed contact.",
+        "fourMarksDe": [
+          "Quellenprotokoll",
+          "zwei gezielte Fragen",
+          "T/V-Fristfolge",
+          "Plan ist kein tatsächlicher Kontakt"
+        ]
+      },
+      {
+        "taskDe": "Begründe A-Zukunftsentwurf mit Alternative und Zugangsbedingung. Was beweist das Interview nicht?",
+        "taskEn": "Derive A’s reasoned provisional plan with alternative/entry condition; what does the interview fail to establish?",
+        "solutionDe": "T passt bedingt zu technischem Interesse; Zeiten und Kommunikation prüfen. V ist eine begründete Alternative mit anderer Auswahl. Zugang und Frist aus I nutzen. Das Interview belegt weder allgemeinen Alltag noch Aufnahme.",
+        "solutionEn": "Tconditionally suits technical interest subject to hours/communication; Vis a reasoned alternative with separate selection. Take duration/deadline/entry from I, not an anecdote. The interview proves neither general daily work nor admission; other reasoned choices count.",
+        "fourMarksDe": [
+          "begründeter Entwurf",
+          "tatsächliche Alternative",
+          "institutionelle Bedingung",
+          "Medienanekdote ohne Zusage"
+        ]
+      },
+      {
+        "taskDe": "Löse B-Konflikt F/H, nutze N für seine Funktion und benenne eine offene Information.",
+        "taskEn": "Resolve B’s F/Hconflict, use Nfor its own function and identify specific open information.",
+        "solutionDe": "F ist eine ältere unverbindliche Erfahrung; H nennt das aktuelle Modellverfahren. N erschließt Alternative C, nicht eine H-Zusage. Auswahlablauf, Unterlagen oder Nachreichen von X bleiben gezielt zu klären.",
+        "solutionEn": "F’s2023anecdote is non-binding and conflicts with H’s current selection. Hstates model requirements; Nsupports alternative C/fit, not university admission. Clarify selection/documents or language-evidence submission rules.",
+        "fourMarksDe": [
+          "Forum kritisch eingeordnet",
+          "H priorisiert",
+          "Beratung gezielt für Alternative",
+          "offene Informationsfrage"
+        ]
+      },
+      {
+        "taskDe": "Überarbeite B wegen X: tatsächliche Planänderung, Frist, nächster Informationsschritt; keine erfundene Nachreichregel.",
+        "taskEn": "Revise B’s plan after the Xupdate; document actual change, deadline and next information step without inventing later-submission permission.",
+        "solutionDe": "Fehlendes X festhalten und D zunächst davon abhängig machen. Vor 15.01.2027 Erwerbs- oder Nachreichbedingungen prüfen, C ausbauen. Ein vormals einfacher D-Plan wird tatsächlich geändert; unvollständige Unterlagen geben keine Zulassung.",
+        "solutionEn": "Dbecomes conditional: record absent X, clarify acquisition/later-submission conditions before15January2027 and develop Cas needed. Explicitly revise the previous plan to resolving Xfirst; incomplete documents justify no admission claim.",
+        "fourMarksDe": [
+          "fehlendes X beachtet",
+          "konkrete Planänderung",
+          "Frist und Prüfschritt",
+          "keine erfundene Erlaubnis oder Zusage"
+        ]
+      },
+      {
+        "taskDe": "Begründe B-Entwurf, Alternative und Informationsgrenze. Warum ist kein realer Studienplatz belegt?",
+        "taskEn": "Justify B’s future plan with an alternative/evidence limit; why does no source establish a real study place?",
+        "solutionDe": "D kann analytische Interessen, C gesellschaftliche Interaktion tragen. Anforderungen gegen das Profil abwägen. Modellinformationen geben keine echte Zusage, Beratung entscheidet nicht. Alle Institutionen sind Simulationen; Erfolg und Kontakte sind nicht belegt.",
+        "solutionEn": "Dcan support analytical interest and Csocial interaction; weigh demands/learning against the selected profile. H/Istate model entry, not an offer; advice is no admission decision. Institutions are fictional and no real contact/success is established.",
+        "fourMarksDe": [
+          "bedingter Entwurf",
+          "begründete Alternative",
+          "Informationsfunktionen getrennt",
+          "Simulations-/Zusagegrenze"
+        ]
+      }
+    ],
+    "necessaryCoreBoundaryDe": "Fehlt jede zielgerichtete Nutzung unterschiedlicher Medien-, Beratungs- und Institutionsfunktionen oder jeder begründete Zukunftsentwurf mit Informationsfolge, sind höchstens 14 Punkte möglich.",
+    "necessaryCoreBoundaryEn": "No purposeful use of distinct media/advice/institution functions anywhere, or no reasoned future plan with an information sequence, limits the total to14; one incomplete question/date error does not.",
+    "scopeAndReleaseIndependentReviewPending": true
+  },
+  {
+    "materialId": "0d8dd65c-8bf4-537d-b18f-75f2d690d48b",
+    "wholeGoalId": "9cb6bd3b-1ecf-57af-8127-853fc969d7f5",
+    "wholeOriginalP": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-economics-e-company-twenty-positive-author-20261008-v1-bounded-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "goalId": "9cb6bd3b-1ecf-57af-8127-853fc969d7f5",
+      "goalFingerprint": "sha256:2aee1f754f3d0b2387a64cab2c85dd6f94a649bba7a35ad488b729a7c0287703",
+      "reviewInputFingerprint": "sha256:e4e46167b45cdc8c4d2730fc6dad125d9a405e459bb288576cbd9e05726edbd7",
+      "profileFingerprint": "sha256:bc1bc001093d60ca2dc15c8e3761e6831868df0aa765425c56e68232db6f7c96",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-08T11:16:13.683805+00:00",
+      "reviewer": "codex-economics-e-company-twenty-author-v1; immutable bounded successor for actual independent findings",
+      "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Aktuelle Arbeitsweltentwicklungen werden mit datierten belastbaren Materialien und konkreten Tätigkeitsbedingungen beurteilt. Neue Technik oder flexible Arbeit kann Ressourcen und Belastungen zugleich verändern; Folgen hängen von Gestaltung, Tätigkeit und Betroffenen ab. Eigene Berufsorientierung bleibt eine begründete offene Entscheidung, keine Vorhersage. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Current changes at work are evaluated using dated reliable materials and concrete task conditions. New technology/flexible work can change resources and strain together; effects depend on design, activity and people affected. Personal career orientation remains a justified open decision, not a prediction. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "content-specific-understanding",
+            "essentialUnderstandingDe": "Aktuelle Arbeitsweltentwicklungen werden mit datierten belastbaren Materialien und konkreten Tätigkeitsbedingungen beurteilt. Neue Technik oder flexible Arbeit kann Ressourcen und Belastungen zugleich verändern; Folgen hängen von Gestaltung, Tätigkeit und Betroffenen ab. Eigene Berufsorientierung bleibt eine begründete offene Entscheidung, keine Vorhersage.",
+            "essentialUnderstandingEn": "Current changes at work are evaluated using dated reliable materials and concrete task conditions. New technology/flexible work can change resources and strain together; effects depend on design, activity and people affected. Personal career orientation remains a justified open decision, not a prediction.",
+            "observablePerformanceDe": "Die Person beurteilt neue aktuelle, datiert belegte Entwicklungen der Arbeitswelt mit benannten Chancen/Risiken und Bedingungen, berücksichtigt unterschiedliche Tätigkeiten und leitet begründete Konsequenzen für eigene berufliche Erkundung oder Kompetenzentwicklung ab.",
+            "observablePerformanceEn": "The learner evaluates new current changes using dated evidence, names opportunities/risks and conditions, considers different tasks and derives justified implications for personal career exploration or skills development."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "content-specific-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "change",
+            "textDe": "Digitale Assistenz versus hybride/moblie Arbeitsorganisation.",
+            "textEn": "Digital assistance versus hybrid/mobile organisation."
+          },
+          {
+            "id": "condition",
+            "textDe": "Erhebungsgrenzen, Tätigkeitsunterschiede und konkrete Gestaltung.",
+            "textEn": "Study limits, task differences and concrete design."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "digital-assistance-and-task-design",
+            "taskDemandDe": "Nutze bereitgestelltes datiertes BAuA-Primärmaterial zur Digitalisierung/KI in der Arbeitswelt, einschließlich Erhebungsjahr und Grenzen. Der ergänzende fiktive Fall vergleicht digitale Assistenz im Kundenservice: entlastende Informationssuche, aber zusätzliche parallele Anfragen und unverändert nötige menschliche Fehlerprüfung. Beurteile Chancen/Risiken und leite einen eigenen Erkundungs- oder Lernschritt ab.",
+            "taskDemandEn": "Use provided dated primary BAuA material on digitalisation/AI at work, including study year/limits. An accompanying fictional case compares digital assistance in customer service: easier information retrieval but more simultaneous enquiries and continued human error checking. Evaluate opportunities/risks and derive a personal exploration or learning step.",
+            "expectedPerformanceDe": "Die Person unterscheidet empirisch belegte Aussagen von Fallannahmen, wägt Entlastung, Handlungsspielraum, Intensivierung und Fehlerverantwortung unter konkreter Gestaltung ab und vermeidet pauschale Jobverlust-/Erfolgsvorhersagen. Sie begründet etwa Erkundung tatsächlicher Aufgaben und Entwicklung fachlicher Prüf-/Kooperationskompetenz für ihre gewählte Orientierung.",
+            "expectedPerformanceEn": "The learner separates empirical evidence from case assumptions, weighs relief, autonomy, intensification and error responsibility under concrete design and avoids blanket job-loss/success predictions. They justify e.g. exploring actual tasks and developing domain checking/cooperation skills for their chosen orientation.",
+            "understandingFocusDe": "Technische Entlastung und neue Belastung können gleichzeitig bestehen.",
+            "understandingFocusEn": "Technical relief and new strain can coexist."
+          },
+          {
+            "id": "hybrid-and-onsite-work",
+            "taskDemandDe": "Nutze anderes bereitgestelltes datiertes BAuA-Primärmaterial zu mobiler Arbeit/Erreichbarkeit. Ein fiktiver Entwicklungsbetrieb bietet hybride Bildschirmarbeit mit vereinbarten Kontaktzeiten, während seine Produktionsarbeit vor Ort stattfinden muss; Grenzen können bei ständigen Nachrichten verschwimmen. Beurteile Chancen und Risiken für beide Tätigkeiten und leite Konsequenzen für eine von dir gewählte berufliche Orientierung ab.",
+            "taskDemandEn": "Use other provided dated primary BAuA material on mobile work/reachability. A fictional development firm offers hybrid screen work with agreed contact times, while production must be on site; constant messages can blur boundaries. Evaluate opportunities/risks for both tasks and derive implications for a career direction you choose.",
+            "expectedPerformanceDe": "Die Person wägt Flexibilität/Pendelentlastung gegen Abgrenzungs-, Kooperations- und Zugangsprobleme ab, berücksichtigt ungleiche Tätigkeitsmöglichkeiten und konkrete Kontaktregeln. Sie begründet für eigene Orientierung Fragen zu Arbeitsbedingungen und Kompetenzen, statt mobile Arbeit generell besser zu nennen oder einzelne Fallbedingungen als gesamtdeutschen Trend auszugeben.",
+            "expectedPerformanceEn": "The learner weighs flexibility/less commuting against boundary, cooperation and access problems, considers unequal task possibilities and concrete contact rules and derives personal questions on conditions/skills rather than declaring mobile work universally better or generalising one case to Germany.",
+            "understandingFocusDe": "Arbeitsform und ungleiche Tätigkeitsbedingungen als eigenständiger Transfer.",
+            "understandingFocusEn": "Work form and unequal task conditions as an independent transfer."
+          }
+        ]
+      }
+    },
+    "actualTwoCases": true,
+    "wholeTaskSolutionFourMarkCriteria": [
+      {
+        "taskDe": "Ordne A-Berichtjahr, Erhebung, empirische Aussage und Fallannahme zu. Berechne Suchzeitentlastung und prüfe die pauschale Kausalbehauptung.",
+        "taskEn": "Identify A’s report/survey years, empirical statement and fictional assumption; calculate search-time relief and assess “AIalways causes less strain”.",
+        "solutionDe": "Bericht 2025, Erhebung 2024; Arbeitsqualitätszusammenhänge sind empirisch, 20→12 Minuten fiktiv. Acht Minuten sind 40% weniger. Höhere Parallelität kann Entlastung überlagern; Befragung und Fall beweisen nicht „KI verursacht immer weniger Belastung“.",
+        "solutionEn": "Report2025/survey2024; the work-quality associations are empirical, while20→12is fictional. Search time falls8minutes=40%; concurrency can offset relief. Neither survey nor case proves causality or “always”.",
+        "fourMarksDe": [
+          "2025 und 2024 unterschieden",
+          "Empirie gegen Fiktion",
+          "acht Minuten und 40%",
+          "begründete Kausal-/Pauschalgrenze"
+        ]
+      },
+      {
+        "taskDe": "Wäge A-Entlastung, Handlungsspielraum, Intensivierung und Fehlerverantwortung ab; begründe eine Gestaltungsbedingung.",
+        "taskEn": "Weigh A’s relief, autonomy, intensification and error responsibility; justify one concrete design condition.",
+        "solutionDe": "Schnellere Suche und Wahlmöglichkeiten können helfen; drei auf fünf parallele Anfragen, +66,7%, können Druck erhöhen. Fachliche Fehlerprüfung bleibt nötig. Begrenzte Parallelität, Prüfzeit und Unterstützung können Vorteile tragen; der Nettoeffekt ist offen.",
+        "solutionEn": "Faster search/discretion may help; concurrency rises3→5(+66.7%)and interruptions may increase strain. Human domain checks remain necessary. Limit concurrency, allow checking time/support; no automatic net benefit follows.",
+        "fourMarksDe": [
+          "Entlastung/Spielraum",
+          "Intensivierungsmechanismus",
+          "Fehlerverantwortung",
+          "begründete Gestaltungsbedingung"
+        ]
+      },
+      {
+        "taskDe": "Leite für A aus freiwilligen oder simulierten Bezugspunkten einen Erkundungs- und Lernschritt ab; was bleibt offen?",
+        "taskEn": "Use voluntary personal points or A’s simulation to derive a justified exploration and learning step; identify what remains open.",
+        "solutionDe": "Genauigkeit und Informationsinteresse mit Prüfaufgaben verbinden. Serviceabläufe im Unterrichtsdossier erkunden; Kommunikation und Fachprüfung üben. Nach realer Prüfzeit oder Parallelitätsregeln fragen, ohne privaten Kontakt oder sichere Jobprognose.",
+        "solutionEn": "Connect accuracy/information interest to checking, explore service workflows in supplied dossiers and practise communication/domain checks. Clarify actual checking time/concurrency rules as a plan. No job-loss/success prediction or real private contact.",
+        "fourMarksDe": [
+          "Profilbezug",
+          "fallbezogener Erkundungsschritt",
+          "konkreter Lernschritt",
+          "offene Frage ohne Jobvorhersage"
+        ]
+      },
+      {
+        "taskDe": "Ordne B-Quellenjahre und Grenzen zu; berechne Pendelentlastung und vergleiche Tätigkeitszugänge.",
+        "taskEn": "Identify B’s source years/limits, calculate commuting relief and compare screen/production access.",
+        "solutionDe": "Bericht 2026, Erhebung 2023. 120 Minuten sind fiktive Entlastung für die Bildschirmrolle. Die Befragungsassoziation beweist keine individuelle Regelwirkung. Produktion bleibt hier vor Ort; gleiches Unternehmen bedeutet keinen gleichen Zugang.",
+        "solutionEn": "Report2026/survey2023;120minutes is fictional screen-role relief. Association proves no universal rule effectiveness. Production cannot be location-flexible here; the same firm gives unequal access, with other on-site design options open.",
+        "fourMarksDe": [
+          "2026 und 2023 unterschieden",
+          "empirische Grenze",
+          "120 Minuten als Fallannahme",
+          "ungleiche Tätigkeitszugänge"
+        ]
+      },
+      {
+        "taskDe": "Beurteile B-Flexibilität, Abgrenzung, Kooperation und Erholung. Prüfe die Kontaktregel und ihre Umsetzung.",
+        "taskEn": "Evaluate B’s flexibility, boundaries, cooperation and recovery; assess contact rules and no evening reply duty.",
+        "solutionDe": "Weniger Pendeln kann helfen; Nachrichten, Isolation und Abstimmung können belasten. Das Fenster 10–14 Uhr unterstützt Kooperation nur bei Umsetzung und fairer Abstimmung. Keine Abendantwortpflicht schützt Erholung potenziell; Erwartungen müssen dazu passen.",
+        "solutionEn": "Less commuting/time choice may help, while messages, isolation or coordination can burden. The10–14window supports teamwork with implementation and fair production coordination. No reply duty may protect recovery if management/expectations respect it; hybrid work is not universally superior.",
+        "fourMarksDe": [
+          "Flexibilitätschance",
+          "Abgrenzungs-/Kooperationsrisiko",
+          "Regel mit Umsetzung",
+          "begründete Erholungs-/Gestaltungsfolge"
+        ]
+      },
+      {
+        "taskDe": "Entwickle B-Orientierungsfolge und Alternative aus einem freiwilligen oder simulierten Profil; trenne den Fall vom Deutschlandtrend.",
+        "taskEn": "Derive B’s conditional career implication and alternative from voluntary/simulated points; distinguish the model firm from a national trend.",
+        "solutionDe": "Produktinteresse und Erholungswert mit beiden Rollen prüfen; digitale Absprachen üben, Zeiten/Erreichbarkeit erkunden. Planbare Vor-Ort-Arbeit ist eine Alternative. Ein Modellbetrieb beweist keinen Deutschlandtrend oder persönliche Eignung.",
+        "solutionEn": "Examine product interest/recovery values across roles, practise digital coordination and clarify availability/hours; predictable on-site work is an alternative. One firm proves no national trend or personal aptitude; other reasoned orientations count.",
+        "fourMarksDe": [
+          "Profilbezug",
+          "bedingter Erkundungs-/Lernschritt",
+          "begründete Alternative",
+          "Fall-/Trend-/Eignungsgrenze"
+        ]
+      }
+    ],
+    "necessaryCoreBoundaryDe": "Fehlt vollständig jede tatsächliche Chancen-/Risikenabwägung oder jede begründete Konsequenz für eine eigene oder ausdrücklich simulierte Berufsorientierung, sind höchstens 14 Punkte möglich.",
+    "necessaryCoreBoundaryEn": "Wholly absent opportunities/risks evaluation or no justified personal/explicitly simulated career implications anywhere limits the total to14. One incomplete limit or wrong source year earns partial credit; evidence elsewhere counts.",
+    "scopeAndReleaseIndependentReviewPending": true
+  },
+  {
+    "materialId": "c10cf627-0ab1-5b94-8410-b903e13555ae",
+    "wholeGoalId": "96ab60e8-7645-5c34-84be-62e1c2a3cb16",
+    "wholeOriginalP": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-economics-e-company-twenty-positive-author-20261008-v1-bounded-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "goalId": "96ab60e8-7645-5c34-84be-62e1c2a3cb16",
+      "goalFingerprint": "sha256:57e186fa2dd46769e3bd3b52f6857490fba06b1584f231b83c65d425b3c2ccf1",
+      "reviewInputFingerprint": "sha256:5de4e04eeb4989d45d8ee8f0229a6477fca2bade482bf4d3709158de3cb22883",
+      "profileFingerprint": "sha256:d7f520e329fe9b3efc2381e14a5b114c783fc77df5afee442d885b12684b83d6",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-08T11:16:13.683805+00:00",
+      "reviewer": "codex-economics-e-company-twenty-author-v1; immutable bounded successor for actual independent findings",
+      "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Berufliche Orientierung vergleicht freiwillig ausgewählte eigene Interessen/Stärken mit konkreten Tätigkeitsanforderungen an Unternehmensgründung und Beschäftigung. Fähigkeiten können entwickelt werden; Persönlichkeitslisten beweisen weder Eignung noch Nichteignung oder späteren Erfolg. Ein begründeter Erkundungsschritt hält Möglichkeiten offen. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Career orientation compares freely selected personal interests/strengths with concrete demands of entrepreneurship and employment. Skills can develop; personality lists prove neither fitness/unfitness nor later success. A justified exploration step keeps options open. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "content-specific-understanding",
+            "essentialUnderstandingDe": "Berufliche Orientierung vergleicht freiwillig ausgewählte eigene Interessen/Stärken mit konkreten Tätigkeitsanforderungen an Unternehmensgründung und Beschäftigung. Fähigkeiten können entwickelt werden; Persönlichkeitslisten beweisen weder Eignung noch Nichteignung oder späteren Erfolg. Ein begründeter Erkundungsschritt hält Möglichkeiten offen.",
+            "essentialUnderstandingEn": "Career orientation compares freely selected personal interests/strengths with concrete demands of entrepreneurship and employment. Skills can develop; personality lists prove neither fitness/unfitness nor later success. A justified exploration step keeps options open.",
+            "observablePerformanceDe": "Die Person vergleicht ausgewählte eigene Interessen/Stärken mit Anforderungen an Unternehmer- und Beschäftigtenrollen anhand neuer Tätigkeitsprofile, benennt Passungen und Entwicklungsbedarf und leitet begründete nächste Erkundungsschritte ohne starres Eignungsurteil ab.",
+            "observablePerformanceEn": "The learner compares selected personal interests/strengths with demands in entrepreneurial and employee roles using new task profiles, identifies matches/development needs and derives justified exploration steps without a rigid fitness verdict."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "content-specific-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "role",
+            "textDe": "Selbstständigkeit und Beschäftigung in zwei unterschiedlichen Tätigkeitsfeldern.",
+            "textEn": "Entrepreneurship and employment in two different fields."
+          },
+          {
+            "id": "reflection",
+            "textDe": "Eigene ausgewählte Interessen, Stärken und entwickelbare Fähigkeiten.",
+            "textEn": "Selected personal interests, strengths and developable skills."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "repair-enterprise-and-employed-team",
+            "taskDemandDe": "Vergleiche anhand bereitgestellter fiktiver Profile eine selbstständige Reparaturdienstleistung mit einer Beschäftigtenrolle im Reparaturteam: Auftragsklärung, sichere fachliche Arbeit und Kooperation sind beiden gemeinsam; die Gründung umfasst zusätzlich Planung, Finanzierung und Verantwortung für den Betrieb. Wähle eigene Interessen/Stärken, die du nennen möchtest, und begründe einen Erkundungsschritt.",
+            "taskDemandEn": "Use provided fictional profiles to compare self-employed repair work with an employee role in a repair team. Both need order clarification, safe skilled work and cooperation; entrepreneurship additionally involves planning, finance and responsibility for the business. Select interests/strengths you wish to mention and justify an exploration step.",
+            "expectedPerformanceDe": "Die Person vergleicht gemeinsame und unterschiedliche Anforderungen mit ihren gewählten Interessen/Stärken, nennt eine passende Tätigkeit und einen entwickelbaren Bereich und begründet etwa Berufsgespräch oder Erkundung beider Rollen. Sie vermeidet Gleichsetzungen wie kreativ=geeignet, zurückhaltend=ungeeignet oder Interesse=nachgewiesene Fachkompetenz.",
+            "expectedPerformanceEn": "The learner compares shared/distinct requirements with selected personal interests/strengths, identifies a matching task and a developable area and justifies e.g. a career conversation or exploration of both roles, avoiding creativity=fit, quiet=unfit or interest=proven competence.",
+            "understandingFocusDe": "Gemeinsame fachliche Anforderungen mit zusätzlicher Gründungsverantwortung.",
+            "understandingFocusEn": "Shared skilled demands with additional entrepreneurial responsibilities."
+          },
+          {
+            "id": "creative-digital-role-and-changing-interest",
+            "taskDemandDe": "Andere bereitgestellte fiktive Profile beschreiben eine angestellte digitale Gestaltungsrolle mit Kundengesprächen und Fristen sowie eine eigene kleine Gestaltungsagentur mit zusätzlicher Akquise, Kalkulation und Teamkoordination. Wähle ein für dich interessantes Tätigkeitsfeld, vergleiche eigene Stärken/Interessen mit beiden Rollen und überprüfe die Orientierung unter neu entdecktem Interesse an Teamorganisation.",
+            "taskDemandEn": "Other provided fictional profiles describe an employed digital design role with client conversations/deadlines and a small own agency adding customer acquisition, costing and team coordination. Choose an interesting field, compare your interests/strengths with both roles and reconsider orientation after discovering an interest in team organisation.",
+            "expectedPerformanceDe": "Die Person begründet eine vorläufige Orientierung aus Tätigkeitsanforderungen und freiwillig gewählten eigenen Bezugspunkten, prüft Organisation als gemeinsame beziehungsweise zusätzliche Anforderung und passt einen Erkundungs-/Entwicklungsschritt nachvollziehbar an. Sie behandelt die neue Information als Anlass zur offenen Erkundung statt endgültiger Berufszuweisung.",
+            "expectedPerformanceEn": "The learner justifies tentative orientation using job demands and freely selected personal points, checks organisation as a shared/additional demand and adapts an exploration/development step, treating new information as a prompt for open exploration rather than a definitive career assignment.",
+            "understandingFocusDe": "Geändertes Interesse prüft eine begründete vorläufige Orientierung.",
+            "understandingFocusEn": "A changed interest tests justified tentative orientation."
+          }
+        ]
+      }
+    },
+    "actualTwoCases": true,
+    "wholeTaskSolutionFourMarkCriteria": [
+      {
+        "taskDe": "Vergleiche A-Interessen und Stärken mit gemeinsamen und unterschiedlichen Anforderungen beider Rollen; nutze Tätigkeiten.",
+        "taskEn": "Compare A’s interests/strengths with both roles’ shared/distinct demands using actual tasks rather than personality labels.",
+        "solutionDe": "Sorgfalt und Genauigkeit können Facharbeit/Dokumentation in beiden Rollen tragen. Finanzierung und Akquise sind zusätzliche Gründungsanforderungen; Kooperation gilt beiden. Bezugspunkte und tatsächliche Aufgaben ersetzen Persönlichkeitsetiketten.",
+        "solutionEn": "Care/accuracy may support skilled work/records in both roles; acquisition/finance are additional entrepreneurial demands and cooperation is shared. Connect selected points to actual tasks, not “creative=boss”.",
+        "fourMarksDe": [
+          "gewählte Bezugspunkte",
+          "gemeinsame Anforderungen",
+          "zusätzliche Gründungsanforderungen",
+          "konkreter Vergleich beider Rollen"
+        ]
+      },
+      {
+        "taskDe": "Benenne A-Passung und einen entwickelbaren Bereich; prüfe „wenig Finanzwissen=ungeeignet“ und „Interesse=Kompetenz“.",
+        "taskEn": "Name A’s match/developable area and assess “little finance knowledge=unfit” and “interest=competence”.",
+        "solutionDe": "Genauigkeit ist begrenzter Passungshinweis. Finanzplanung kann gelernt werden; technische Neugier belegt keine sichere Reparatur. Wenig Erfahrung bedeutet keinen dauerhaften Ausschluss, und Sicherheit muss tatsächlich gelernt werden.",
+        "solutionEn": "Accuracy offers limited fit evidence; financing is learnable. Interest does not prove safe repair competence, and limited experience means no permanent exclusion. Skills need learning/checking, not personality labels.",
+        "fourMarksDe": [
+          "begründete Passung",
+          "entwickelbarer Bereich",
+          "kein starrer Ausschluss",
+          "Interesse ist kein Kompetenzbeweis"
+        ]
+      },
+      {
+        "taskDe": "Begründe A-Erkundung beider Rollen und vorläufige Orientierung mit Grenze; kein realer Kontakt.",
+        "taskEn": "Justify A’s next exploration for both roles and tentative orientation with a limit; no real contact is required.",
+        "solutionDe": "Simulierte Gespräche oder bereitgestellte Tätigkeitsdossiers zu Auftragsklärung und Finanzierung vergleichen; eine Lernübung planen. Beide Rollen sind bedingt begründbar. Keine echte Eignung oder Erfolgsgarantie, auch Akquise ist lernbar.",
+        "solutionEn": "Compare supplied simulated conversations/task dossiers for both roles on orders/finance, and plan a learning exercise. Either role is conditionally defensible, without aptitude/success guarantees; quieter people can learn acquisition.",
+        "fourMarksDe": [
+          "Erkundung beider Rollen",
+          "konkrete Informations-/Lernfrage",
+          "vorläufige Orientierung",
+          "offene Eignungs-/Erfolgsgrenze"
+        ]
+      },
+      {
+        "taskDe": "Vergleiche B-Bezugspunkte mit beiden Gestaltungsrollen; nenne konkrete Tätigkeitsanforderungen.",
+        "taskEn": "Compare B’s selected personal/simulated points with both design roles and name three work demands.",
+        "solutionDe": "Visuelle Erklärung hilft Grafik und Kundengesprächen in beiden Rollen; Fristen und Abstimmung sind gemeinsam. Agentur ergänzt Finanzierung, Kalkulation und Akquise. Auch Angestellte organisieren; neues Interesse kann beide Wege stützen.",
+        "solutionEn": "Visual explanation may aid graphics/client conversations in both roles; deadlines/teamwork are shared. The agency adds acquisition/costing/finance without implying employees never organise. Organisation interest can support either.",
+        "fourMarksDe": [
+          "gewählte Bezugspunkte",
+          "gemeinsame Gestaltungsanforderungen",
+          "zusätzliche Agenturanforderungen",
+          "Vergleich beider Rollen"
+        ]
+      },
+      {
+        "taskDe": "Verarbeite das neue Teamorganisationsinteresse und passe einen Erkundungs-/Entwicklungsschritt tatsächlich an.",
+        "taskEn": "Use the new team-organisation interest to actually revise exploration/development, rather than merely selecting “agency”.",
+        "solutionDe": "Dem bisherigen Gestaltungsplan eine kleine Teamaufgabe mit Zeit- und Rollenkoordination hinzufügen, Feedback auswerten und beide Koordinationsrollen prüfen. Kalkulation gezielt üben. Interesse wird erprobt, nicht als Eignungsbeweis behandelt.",
+        "solutionEn": "Add a small team scheduling/role exercise to the earlier design plan, review feedback and compare coordination in agency/employment. Practise costing; organisation interest is explored rather than treated as proof.",
+        "fourMarksDe": [
+          "neues Interesse berücksichtigt",
+          "tatsächliche Planänderung",
+          "konkrete Entwicklungsübung",
+          "Erkundung statt Beweis"
+        ]
+      },
+      {
+        "taskDe": "Begründe B-Orientierung mit Alternative und Grenze; welche zusätzliche Information könnte das Urteil ändern?",
+        "taskEn": "Justify B’s open orientation with an alternative/limit; what new information could change it?",
+        "solutionDe": "Beschäftigung mit Teamkoordination erkunden und Agentur mit Finanzierungslernen offenhalten, oder umgekehrt begründet. Zeiten, Risiken und Kundenarbeit können Gewichtungen ändern. Simulation diagnostiziert keine Person; Fähigkeiten lassen sich entwickeln.",
+        "solutionEn": "For example, first explore employment/team coordination while retaining agency/finance learning as an alternative, or reverse with reasons. Time/risk/client/finance information may change the view. Fictional profiles diagnose no real person; developing skills keeps options open.",
+        "fourMarksDe": [
+          "begründete Orientierung",
+          "tatsächliche Alternative",
+          "urteilverändernde Frage",
+          "offene Entwicklung ohne Zuweisung"
+        ]
+      }
+    ],
+    "necessaryCoreBoundaryDe": "Fehlt jeder tatsächliche Bezug freiwilliger oder simulierter Interessen/Stärken auf Anforderungen beider Rollen oder jeder begründete Erkundungs-/Entwicklungsschritt, sind höchstens 14 Punkte möglich.",
+    "necessaryCoreBoundaryEn": "Wholly absent links between voluntary/simulated interests/strengths and both roles’ demands, or no justified exploration/development step anywhere, limits the total to14. An incomplete match or undecided tentative choice is not total absence.",
+    "scopeAndReleaseIndependentReviewPending": true
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "actualSources": [
+    {
+      "name": "ONS",
+      "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/families/methodologies/theginicoefficient",
+      "actualGETStatus": 200,
+      "sha256": "73b1a3828921431fe6dd28ee3372c473b3c0ed3249c4a2396d39d2d9f0df5c76",
+      "privateCachePath": "/tmp/skillpilot-economics-pure-Gini-primary-B-20261010/ONS.html",
+      "privateGETIsSuccessfulSourceText": true,
+      "actualWebPrimaryReadCompletedSeparately": true
+    },
+    {
+      "name": "OECD",
+      "url": "https://www.oecd.org/en/data/indicators/income-inequality.html",
+      "actualGETStatus": 403,
+      "sha256": "14547407810033f9d4cb7f68c197e071b062c84d969ccfe4295f51c1e90609dc",
+      "privateCachePath": "/tmp/skillpilot-economics-pure-Gini-primary-B-20261010/OECD.HTTP-error.txt",
+      "privateGETIsSuccessfulSourceText": false,
+      "actualWebPrimaryReadCompletedSeparately": true
+    }
+  ],
+  "preservedInitialRequestsAttemptBoundary": "Own first request loop successfully fetched ONS then stopped on OECD HTTP403. All54Fractionchecks and6counterworks had completed before that source-transport failure; actual web OECD definition read succeeded. No HTTP403 page is claimed as successful source text.",
+  "actualWebWholeMethodAndOECDDefinitionRead": true,
+  "limitedOwnAid": "ONS describes ascending income ranking and cumulative population/income shares, explains the Lorenz-area measure and why additional distribution metrics are useful. OECD defines disposable-income dispersion and uses a0–1Gini scale. Our full four-unit data and straight segments yield the specified empirical finite-four maximum0.75; we verify this directly and do not copy a continuum-limit graphic or rescale the results silently. Equal household size and common income definition avoid a hidden equivalisation comparison. All datasets and tasks are own fictitious teaching examples, not OECD/ONS country observations.",
+  "fullThirdPartyTextStoredOnlyPrivately": true,
+  "contentLicense": "Own didactic material CC-BY-4.0; cited primary-source pages are not relicensed."
+}

@@ -1,0 +1,84 @@
+{
+  "role": "Own bounded factual reading aid, not a copy or relicensing of official full pages",
+  "readDate": "2026-10-10",
+  "frozenPrimaryDownloadReceipts": [
+    {
+      "id": "official2023",
+      "officialURL": "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Unternehmen/Unternehmensregister/Tabellen/stat-unternehmen-beschaeftigten-groessenklassen-wz08.html",
+      "responseURL": "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Unternehmen/Unternehmensregister/Tabellen/stat-unternehmen-beschaeftigten-groessenklassen-wz08.html",
+      "status": 200,
+      "sha256": "fdcd277fc9e053773affcacf9b49722c03e625351eb0ae5859e27fa449e48f93",
+      "bytes": 76780,
+      "localOriginalCache": "/tmp/skillpilot-economics-business-material-primary-cache-20261010/official2023.actual.bytes",
+      "wholeLocallyReadPageText": {
+        "path": "/tmp/skillpilot-economics-business-material-primary-cache-20261010/official2023.whole-page-reading.txt",
+        "sha256": "f105c6b31704a94910c4a93650aa381bfe7acf2473975a6b9398d630f0774b6a",
+        "bytes": 5531
+      },
+      "fullOriginalOutsideCurricula": true,
+      "notRequiredCommittedSourceInput": true
+    },
+    {
+      "id": "officialCraft2024",
+      "officialURL": "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Handwerk/Tabellen/unternehmen-beschaeftigte-umsatz-wirtschaftsabschnitte.html",
+      "responseURL": "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Handwerk/Tabellen/unternehmen-beschaeftigte-umsatz-wirtschaftsabschnitte.html",
+      "status": 200,
+      "sha256": "309fdfa828d00f4ac119002fbd81c096d7e23336fbc4436416082a436857cba1",
+      "bytes": 75912,
+      "localOriginalCache": "/tmp/skillpilot-economics-business-material-primary-cache-20261010/officialCraft2024.actual.bytes",
+      "wholeLocallyReadPageText": {
+        "path": "/tmp/skillpilot-economics-business-material-primary-cache-20261010/officialCraft2024.whole-page-reading.txt",
+        "sha256": "882a664bc92c098fa70b4f22bf5d111f9407d039350e3af5dded623217103144",
+        "bytes": 3965
+      },
+      "fullOriginalOutsideCurricula": true,
+      "notRequiredCommittedSourceInput": true
+    }
+  ],
+  "actualCurrentEnterpriseTable": {
+    "officialURL": "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Unternehmen/Unternehmensregister/Tabellen/stat-unternehmen-beschaeftigten-groessenklassen-wz08.html",
+    "year": 2024,
+    "pageStand": "3 August 2026",
+    "tableRowC": {
+      "statisticalEnterprises": 198362,
+      "employmentRelationshipsAnnualMean": 7801230
+    },
+    "tableRowG": {
+      "statisticalEnterprises": 538248,
+      "employmentRelationshipsAnnualMean": 6017332
+    },
+    "ownMethodDecisions": [
+      "Use statistical enterprises rather than assume legal units or establishments.",
+      "Scope B–N contains market producers and excludes Arbeitsgemeinschaften.",
+      "Employment relationships are annual means; the same person can count multiple jobs. Do not label these unique employees.",
+      "Means employment/enterprise are descriptive aggregates, not a typical individual enterprise or a career guarantee."
+    ],
+    "retrievalBoundary": "The locally named official2023 cache contains the freshly retrieved current 2024 page. The cache name records the URL intake origin, not the actual table year. Search indexing still displayed 2023; it was not silently presented as the current direct response. Existing frozen P 2023 cases remain historical valid candidates unchanged."
+  },
+  "actualCraftTable": {
+    "officialURL": "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Handwerk/Tabellen/unternehmen-beschaeftigte-umsatz-wirtschaftsabschnitte.html",
+    "year": 2024,
+    "pageStand": "23 April 2026",
+    "units": "rounded thousands of legal units",
+    "manufacturing": {
+      "total": 210,
+      "craft": 86,
+      "officialUnroundedInputBasedSharePercent": 40.9
+    },
+    "construction": {
+      "total": 388,
+      "craft": 253,
+      "officialUnroundedInputBasedSharePercent": 65.2
+    },
+    "ownMethodDecisions": [
+      "Calculated rounded-input ratios are 40.95% and 65.21%; 41.0% need not reproduce a published 40.9% derived from unrounded inputs.",
+      "Legal units and statistical enterprises are different definitions; never add or compare levels across tables without checking units.",
+      "This task computes company-count shares, not employment shares.",
+      "Whole source methods/footnotes distinguish register/craft-census bases; no unsupported cross-table employment-share inference is required."
+    ]
+  },
+  "twoIndependentlyUsableVariations": "Tasks require actual spreadsheet charts and formulas for enterprise/employment comparisons and a separately defined percentage comparison. The new fresh data variation operationalises the unchanged whole goal contract; no current P body/case/status is altered.",
+  "humanOrSourceWholeCourseApproval": false,
+  "thirdPartyFullPageCopiedIntoCurricula": false,
+  "ownPedagogicalContentLicence": "CC-BY-4.0; attribution and official facts/source rights remain separate"
+}

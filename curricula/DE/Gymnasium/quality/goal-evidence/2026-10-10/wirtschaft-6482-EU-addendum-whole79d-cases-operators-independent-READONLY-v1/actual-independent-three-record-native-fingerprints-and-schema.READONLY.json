@@ -1,0 +1,68 @@
+{
+  "status": "passed bounded read-only native recomputation",
+  "node": "v20.20.2",
+  "tsx": "4.21.0",
+  "ajv": "8.17.1",
+  "nativeSource": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+  "exactCalls": [
+    "fingerprintGoalForPositiveEvidence(goal,kind)",
+    "fingerprintPositiveGoalEvidenceReviewInput(goal,criteriaSha256,actualResourceDigests,kind)",
+    "fingerprintPositiveGoalEvidenceProfile(record.profile)",
+    "validatePositiveGoalEvidenceRecordSemantics(record,goal,actualResourceDigests,kind)"
+  ],
+  "checks": [
+    {
+      "label": "whole_current79d_active_P",
+      "goalId": "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+      "semanticKindBinding": "actual current authoritative semantic ledger",
+      "criteriaPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/authoring-review.criteria.md",
+      "criteriaSha256": "sha256:f9e0bdece3688b92285f74533315ec4fc321ba1eb45c14c99993ed7c9446eb3c",
+      "resourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/79d244e0-049e-59e9-a2fb-b8f8670b315a/79d244e0-049e-59e9-a2fb-b8f8670b315a.png": "sha256:650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b"
+      },
+      "expected": {
+        "goalFingerprint": "sha256:a005af72b447b21de0b692c034f5dfd2e7e4df38b9fdd652a2d0ef86e2990236",
+        "reviewInputFingerprint": "sha256:d96b7f92eb3aa9e1a17d299239991d883ff49fed2981da023d243b5d52d30e62",
+        "profileFingerprint": "sha256:3dc3ab3ca112446dc58bece8e8223ab509416dda01d907b20b4fba496ebae65c"
+      },
+      "allThreeStoredNativeFingerprintsMatch": true,
+      "schemaAndNativeRecordSemanticsPassed": true
+    },
+    {
+      "label": "whole79d_two_new_fictional_cases_parent_P",
+      "goalId": "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+      "semanticKindBinding": "actual current authoritative semantic ledger",
+      "criteriaPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-6482-bounded-grammar-and79d-demand-ADDENDUM-INERT-round-b-v1/history/author-criteria.txt",
+      "criteriaSha256": "sha256:d7e7a0a2d4b535ae850d5b7cfb98d5e14d19b2ee8adf166a13f356e2e75a464a",
+      "resourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/79d244e0-049e-59e9-a2fb-b8f8670b315a/79d244e0-049e-59e9-a2fb-b8f8670b315a.png": "sha256:650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b"
+      },
+      "expected": {
+        "goalFingerprint": "sha256:a005af72b447b21de0b692c034f5dfd2e7e4df38b9fdd652a2d0ef86e2990236",
+        "reviewInputFingerprint": "sha256:722c861ef386dc89bd43cbe695793fe2fcaaa3a44606579d333ba448c951585a",
+        "profileFingerprint": "sha256:bf420e6efbda7a60298b6662c594312e8963c9b6f8cab89bdee7db82c4415035"
+      },
+      "allThreeStoredNativeFingerprintsMatch": true,
+      "schemaAndNativeRecordSemanticsPassed": true
+    },
+    {
+      "label": "budget_grammar_addendum_only",
+      "goalId": "5aaf5abf-5e70-57c6-b030-1d08a35d17b8",
+      "semanticKindBinding": "explicit proposed candidate kind; no active/new authoritative classification claimed",
+      "criteriaPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-6482-bounded-grammar-and79d-demand-ADDENDUM-INERT-round-b-v1/author-criteria.txt",
+      "criteriaSha256": "sha256:bdd29dbb5e85ede93efcc81831dc086fe67fe319c1d910d272b08b4ebdc3e3a3",
+      "resourceDigests": {},
+      "expected": {
+        "goalFingerprint": "sha256:666b6d8734d12362664d9bd57aa47807576cad4e05d4e6d1f6ddab86519694b3",
+        "reviewInputFingerprint": "sha256:e78a98fad966fde13cbdde6e26e198b1fe68592adf72e5a1d4aa61b38c68a3c8",
+        "profileFingerprint": "sha256:95e675f780beebb029210f729ee8aba1dcd4397a74d6a91a7a686e72bab5d0a7"
+      },
+      "allThreeStoredNativeFingerprintsMatch": true,
+      "schemaAndNativeRecordSemanticsPassed": true
+    }
+  ],
+  "sourceOrNativeLogicChanged": false,
+  "noAuthorCandidateMutated": true,
+  "noActiveWrite": true,
+  "notScienceOrReleaseApproval": true
+}

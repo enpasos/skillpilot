@@ -1,0 +1,311 @@
+{
+  "role": "Original author calculation verification; not independent science approval or learner evidence",
+  "method": "Rational arithmetic derived from provided numerical data, separate from expected solution wording",
+  "checks": [
+    {
+      "id": "cycle-demand-initial",
+      "actual": "160",
+      "expected": "160",
+      "PASS": true
+    },
+    {
+      "id": "cycle-investment-drop",
+      "actual": "144",
+      "expected": "144",
+      "PASS": true
+    },
+    {
+      "id": "cycle-income-change",
+      "actual": "-16",
+      "expected": "-16",
+      "PASS": true
+    },
+    {
+      "id": "cycle-multiplier",
+      "actual": "4",
+      "expected": "4",
+      "PASS": true
+    },
+    {
+      "id": "cycle-capacity-change",
+      "actual": "-1/16",
+      "expected": "-1/16",
+      "PASS": true
+    },
+    {
+      "id": "cycle-price-change",
+      "actual": "7/100",
+      "expected": "7/100",
+      "PASS": true
+    },
+    {
+      "id": "sustain-total-before",
+      "actual": "1200",
+      "expected": "1200",
+      "PASS": true
+    },
+    {
+      "id": "sustain-total-after",
+      "actual": "1280",
+      "expected": "1280",
+      "PASS": true
+    },
+    {
+      "id": "sustain-total-change",
+      "actual": "1/15",
+      "expected": "1/15",
+      "PASS": true
+    },
+    {
+      "id": "sustain-intensity-change",
+      "actual": "-1/3",
+      "expected": "-1/3",
+      "PASS": true
+    },
+    {
+      "id": "sustain-volume-change",
+      "actual": "3/5",
+      "expected": "3/5",
+      "PASS": true
+    },
+    {
+      "id": "sustain-cap-unit",
+      "actual": "25/4",
+      "expected": "25/4",
+      "PASS": true
+    },
+    {
+      "id": "distribution-before-cumulatives",
+      "actual": "[Fraction(0, 1), Fraction(1, 10), Fraction(1, 4), Fraction(1, 2), Fraction(1, 1)]",
+      "expected": "[Fraction(0, 1), Fraction(1, 10), Fraction(1, 4), Fraction(1, 2), Fraction(1, 1)]",
+      "PASS": true
+    },
+    {
+      "id": "distribution-before-gini",
+      "actual": "13/40",
+      "expected": "13/40",
+      "PASS": true
+    },
+    {
+      "id": "distribution-after-cumulatives",
+      "actual": "[Fraction(0, 1), Fraction(3, 20), Fraction(7, 20), Fraction(3, 5), Fraction(1, 1)]",
+      "expected": "[Fraction(0, 1), Fraction(3, 20), Fraction(7, 20), Fraction(3, 5), Fraction(1, 1)]",
+      "PASS": true
+    },
+    {
+      "id": "distribution-after-gini",
+      "actual": "1/5",
+      "expected": "1/5",
+      "PASS": true
+    },
+    {
+      "id": "transfer-low-before-mean",
+      "actual": "100",
+      "expected": "100",
+      "PASS": true
+    },
+    {
+      "id": "transfer-high-before",
+      "actual": "300",
+      "expected": "300",
+      "PASS": true
+    },
+    {
+      "id": "transfer-low-after",
+      "actual": "120",
+      "expected": "120",
+      "PASS": true
+    },
+    {
+      "id": "transfer-high-after",
+      "actual": "280",
+      "expected": "280",
+      "PASS": true
+    },
+    {
+      "id": "transfer-budget-before",
+      "actual": "2000",
+      "expected": "2000",
+      "PASS": true
+    },
+    {
+      "id": "transfer-budget-after",
+      "actual": "4000",
+      "expected": "4000",
+      "PASS": true
+    },
+    {
+      "id": "transfer-extra-funded",
+      "actual": "2000",
+      "expected": "2000",
+      "PASS": true
+    },
+    {
+      "id": "digital-payout",
+      "actual": "90",
+      "expected": "90",
+      "PASS": true
+    },
+    {
+      "id": "digital-driver-payout",
+      "actual": "45",
+      "expected": "45",
+      "PASS": true
+    },
+    {
+      "id": "digital-extra-cost-margin-delta",
+      "actual": "-2",
+      "expected": "-2",
+      "PASS": true
+    },
+    {
+      "id": "model-demand-k",
+      "actual": "5",
+      "expected": "5",
+      "PASS": true
+    },
+    {
+      "id": "model-demand-impulse",
+      "actual": "60",
+      "expected": "60",
+      "PASS": true
+    },
+    {
+      "id": "model-import-k",
+      "actual": "5/2",
+      "expected": "5/2",
+      "PASS": true
+    },
+    {
+      "id": "model-import-impulse",
+      "actual": "30",
+      "expected": "30",
+      "PASS": true
+    },
+    {
+      "id": "model-full-capacity",
+      "actual": "200",
+      "expected": "200",
+      "PASS": true
+    },
+    {
+      "id": "model-completing",
+      "actual": "16",
+      "expected": "16",
+      "PASS": true
+    },
+    {
+      "id": "model-qualified-capacity",
+      "actual": "160",
+      "expected": "160",
+      "PASS": true
+    },
+    {
+      "id": "account-goods",
+      "actual": "-20",
+      "expected": "-20",
+      "PASS": true
+    },
+    {
+      "id": "account-services",
+      "actual": "20",
+      "expected": "20",
+      "PASS": true
+    },
+    {
+      "id": "account-primary",
+      "actual": "-10",
+      "expected": "-10",
+      "PASS": true
+    },
+    {
+      "id": "account-secondary",
+      "actual": "-10",
+      "expected": "-10",
+      "PASS": true
+    },
+    {
+      "id": "account-receipts",
+      "actual": "174",
+      "expected": "174",
+      "PASS": true
+    },
+    {
+      "id": "account-payments",
+      "actual": "194",
+      "expected": "194",
+      "PASS": true
+    },
+    {
+      "id": "account-total",
+      "actual": "-20",
+      "expected": "-20",
+      "PASS": true
+    },
+    {
+      "id": "account-financial",
+      "actual": "-20",
+      "expected": "-20",
+      "PASS": true
+    },
+    {
+      "id": "account-net-funding",
+      "actual": "20",
+      "expected": "20",
+      "PASS": true
+    },
+    {
+      "id": "rubric-total-344aed45-70d3-5267-bed4-048a6b50090b",
+      "actual": "48",
+      "expected": "48",
+      "PASS": true
+    },
+    {
+      "id": "rubric-total-ebab1f99-acb5-5eff-bf53-8d63c4cbf477",
+      "actual": "22",
+      "expected": "22",
+      "PASS": true
+    },
+    {
+      "id": "rubric-total-6d28abb4-503d-53b1-99f6-3e6e2c55aef0",
+      "actual": "24",
+      "expected": "24",
+      "PASS": true
+    },
+    {
+      "id": "rubric-total-5721a967-0a6f-5d57-bfdc-737b11354067",
+      "actual": "24",
+      "expected": "24",
+      "PASS": true
+    },
+    {
+      "id": "rubric-total-5838c453-ab65-5338-bca4-16e588f98fba",
+      "actual": "24",
+      "expected": "24",
+      "PASS": true
+    },
+    {
+      "id": "rubric-total-8f603e75-a3da-5ec5-94ba-d3c51c7f1906",
+      "actual": "24",
+      "expected": "24",
+      "PASS": true
+    },
+    {
+      "id": "rubric-total-fa2d07bc-684d-5ee4-8878-20416fdb72d7",
+      "actual": "26",
+      "expected": "26",
+      "PASS": true
+    },
+    {
+      "id": "rubric-total-6a5efa74-66c8-5682-8371-b0a93d17f986",
+      "actual": "24",
+      "expected": "24",
+      "PASS": true
+    }
+  ],
+  "checksCount": 50,
+  "arithmeticChecks": 42,
+  "rubricSumChecks": 8,
+  "newHumanApproval": false,
+  "strictGain": 0
+}

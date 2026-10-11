@@ -1,0 +1,47 @@
+{
+  "role": "UNOBSERVED_INDEPENDENT_REVIEW_PROBES_ONLY",
+  "cases": [
+    {
+      "goalId": "ec1e8644-bd6d-53ef-a154-9a6efb69e1c7",
+      "taskDe": "Sechs unabhängige Anbieter verkaufen identische Ware zu sichtbaren Preisen. Verträge verhindern den Wechsel bis Jahresende; Eintritt erfordert eine knappe Genehmigung. Eine Reform veröffentlicht nur noch mehr Preisinformation, lässt Verträge und Eintritt aber unverändert. Folgt vollständige Preisnehmerrolle?",
+      "taskEn": "Six independent suppliers sell homogeneous goods at visible prices. Contracts prevent switching until year end and entry requires scarce permission. A reform adds price information but leaves switching and entry unchanged. Does full price-taking follow?",
+      "expectedDe": "Nein. Mehr Information beseitigt weder Bindung noch Eintrittsgrenze. Aus sechs oder sichtbaren Preisen allein folgt kein verschwundener Preisspielraum; seine genaue Größe ist unbestimmt.",
+      "expectedEn": "No. Information alone removes neither lock-in nor the entry barrier. Count or price visibility does not eliminate pricing scope, whose size is unspecified.",
+      "targetedWrongInference": "Supplier count/information alone implies effective competition."
+    },
+    {
+      "goalId": "8820a8d9-605a-565b-bc13-1961a4df60ed",
+      "taskDe": "Ein neuer Fall gibt bei Preis 8 die Einzelmenge 7 unter eigener Preisänderung und die Gesamtmenge 500 bei gemeinsamer Preisänderung an. Menge ist horizontal, Preis vertikal. Darf der Punkt(500, 8) die Einzelanbieterbeziehung ersetzen? Was belegt nur eine Tabelle ohne Rivalenreaktionsregel?",
+      "taskEn": "A fresh case gives individual quantity 7 at price 8 under an own-price change and aggregate 500 under a common price change. Quantity is horizontal and price vertical. May(500, 8) replace the individual relationship? What does a table without rival-response rules establish?",
+      "expectedDe": "Nein: Einzelpunkt (7,8), Gesamtpunkt (500,8), auf getrennten Skalen. Die Tabelle bestimmt Materialpunkte und erlaubte Verbindungen, keine universelle Knickform, Rivalenstrategie oder Extrapolation.",
+      "expectedEn": "No: use individual(7, 8) and aggregate(500, 8) on distinct scales. A table establishes supplied points/allowed connections, not a universal kink, rival strategy or extrapolation.",
+      "targetedWrongInference": "Aggregate demand can be used as individual demand; slopes dictate rival strategy."
+    },
+    {
+      "goalId": "646c5663-bf14-5b4a-893e-be01df701d54",
+      "taskDe": "Neuer ausdrücklich beschränkter Vergleich: Einheitspreis 10 verkauft 20 Einheiten; variableKosten 4 jeEinheit, Fixkosten 40. GetrenntePreise 8 und 12 verkaufen 12 und 10 Einheiten. Zusätzlich kostet die Trennung 9; Weiterverkaufistunmöglich. VergleicheGewinnmitdemgegebenenEinheitspreis 10. Beweist der größere differenzierte Umsatz eine Gewinnsteigerung?",
+      "taskEn": "Fresh bounded comparison: uniform price 10 sells 20 units, unit cost 4 and fixed cost 40. Separate prices 8/12 sell 12/10 units, with extra separation cost 9 and no resale. Compare with the supplied uniform 10. Does higher differentiated revenue prove a profit gain?",
+      "expectedDe": "Einheit: 200−80−40=80. Getrennt: 96+120−88−40−9=79. Umsatz 216 istgrößerals 200, aberGewinn 79 istkleinerals 80. Ohne 9 Zusatzkostenwäre 88 erreicht; Trennung/keinWeiterverkaufalleinsichertkeinenGewinn. NichtgelieferteEinheitspreisebleibenoffen.",
+      "expectedEn": "Uniform profit is 200−80−40=80. Differentiation gives 96+120−88−40−9=79. Revenue 216 exceeds 200 while profit 79 falls below 80; without the extra 9 it would be 88. Separation/no resale alone guarantees no gain, and unsupplied uniform prices remain open.",
+      "ownNumbers": {
+        "uniformProfit": 80,
+        "differentiatedRevenue": 216,
+        "differentiatedProfitBeforeExtraCost": 88,
+        "differentiatedProfitWithCost9": 79
+      },
+      "targetedWrongInference": "Higher revenue/more sales/segmentation always increases profit."
+    },
+    {
+      "goalId": "2dea7d3c-cbac-5246-b0b1-6463c8e6dad6",
+      "taskDe": "Im neuen Fall bleiben QD=100−2 p und QS=2 p. Ein Mindestpreis 22 wird durchgesetzt; oberhalb 22 sindfreiePreiseerlaubt. Muss der tatsächlichePreis 22 sein und ein staatlicher Überschussankauf entstehen?",
+      "taskEn": "A fresh case keeps QD=100−2 p and QS=2 p. A floor 22 is enforced, but prices above 22 are allowed. Must the actual price be 22 and must surplus purchases arise?",
+      "expectedDe": "Nein. Das Gleichgewichtp 25, Q 50 erfülltdieUntergrenze 22 schon; die Regel bindet hier nicht. Nachfrage 56/Angebot 44 bei 22 sindnichtdie tatsächlichen Gleichgewichtsmengen. Ohne weitere Regel bleibtp 25, Q 50, kein aus dieser Grenze erzwungener Überschussankauf.",
+      "expectedEn": "No. Equilibrium 25/50 already meets floor 22, so it is non-binding. Demand 56/supply 44 at 22 are not the resulting market equilibrium. Absent another rule, 25/50 remains, without surplus purchases forced by this floor.",
+      "targetedWrongInference": "Every announced price floor fixes the market price and causes excess supply."
+    }
+  ],
+  "purpose": "Test actual limits and overgeneralisation; no learner evidence, case quota or new P-author objects.",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1"
+}

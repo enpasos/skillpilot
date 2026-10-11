@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b01.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.507
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b01.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/native/current336-final56-b01/root-eight-qualified-two-open.synthesis-authoring.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.551
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b01.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/native/current336-final56-b01/synthesis-decisions.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.765
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b01.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.762
+    }
+  ],
+  "allFourPassed": true,
+  "activeRegistryWrites": 0,
+  "claimedStrictIncrease": 0
+}

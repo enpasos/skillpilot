@@ -1,0 +1,427 @@
+{
+  "method": "Own Decimal arithmetic from given dossier inputs; independent of author numeric receipts.",
+  "allPassed": true,
+  "count": 59,
+  "checks": [
+    {
+      "id": "CETA-small-initial",
+      "actual": "2200",
+      "expected": "2200",
+      "interpretation": "Same quantity; stipulated initial tariff."
+    },
+    {
+      "id": "CETA-small-final",
+      "actual": "2040",
+      "expected": "2040",
+      "interpretation": "Fixed documentation added once, not per unit."
+    },
+    {
+      "id": "CETA-small-saving",
+      "actual": "160",
+      "expected": "160",
+      "interpretation": "Importer gross saving before sharing, not whole-economy welfare."
+    },
+    {
+      "id": "CETA-small-unit",
+      "actual": "102",
+      "expected": "102",
+      "interpretation": "Average landed cost."
+    },
+    {
+      "id": "CETA-large-initial",
+      "actual": "22000",
+      "expected": "22000",
+      "interpretation": "Same original 200 units."
+    },
+    {
+      "id": "CETA-large-final",
+      "actual": "20040",
+      "expected": "20040",
+      "interpretation": "Identical one-off documentation cost."
+    },
+    {
+      "id": "CETA-large-saving",
+      "actual": "1960",
+      "expected": "1960",
+      "interpretation": "Own gross saving."
+    },
+    {
+      "id": "CETA-large-unit",
+      "actual": "100.2",
+      "expected": "100.2",
+      "interpretation": "Scale only spreads fixed documentation; no productivity claim."
+    },
+    {
+      "id": "CETA-small-doc-unit",
+      "actual": "2",
+      "expected": "2",
+      "interpretation": "Compliance relative burden."
+    },
+    {
+      "id": "CETA-large-doc-unit",
+      "actual": "0.2",
+      "expected": "0.2",
+      "interpretation": "Compliance relative burden."
+    },
+    {
+      "id": "CETA-buyers-total",
+      "actual": "80",
+      "expected": "80",
+      "interpretation": "Stipulated half pass-through, not observed price evidence."
+    },
+    {
+      "id": "CETA-buyer-unit-discount",
+      "actual": "4",
+      "expected": "4",
+      "interpretation": "Per-unit buyer share."
+    },
+    {
+      "id": "CETA-buyer-final-price",
+      "actual": "106",
+      "expected": "106",
+      "interpretation": "Conditional final buyer price."
+    },
+    {
+      "id": "CETA-importer-retained",
+      "actual": "80",
+      "expected": "80",
+      "interpretation": "Other changes expressly excluded."
+    },
+    {
+      "id": "CETA-competitor-unit-revenue",
+      "actual": "-5",
+      "expected": "-5",
+      "interpretation": "Fixed quantity and costs, no inferred employment decline."
+    },
+    {
+      "id": "EPA-Japan-initial",
+      "actual": "1000",
+      "expected": "1000",
+      "interpretation": "Stipulated prices, not actual tariff line."
+    },
+    {
+      "id": "EPA-outsider-initial",
+      "actual": "920",
+      "expected": "920",
+      "interpretation": "Initially cheaper admissible supply."
+    },
+    {
+      "id": "EPA-Japan-final",
+      "actual": "904",
+      "expected": "904",
+      "interpretation": "Documentation four for the shipment."
+    },
+    {
+      "id": "EPA-outsider-final",
+      "actual": "920",
+      "expected": "920",
+      "interpretation": "No preference for the outsider in this model."
+    },
+    {
+      "id": "EPA-buyer-saving",
+      "actual": "16",
+      "expected": "16",
+      "interpretation": "Buyer benefit distinct from resource efficiency."
+    },
+    {
+      "id": "EPA-real-production-before",
+      "actual": "820",
+      "expected": "820",
+      "interpretation": "Offer explicitly equated to real production cost."
+    },
+    {
+      "id": "EPA-real-production-after",
+      "actual": "900",
+      "expected": "900",
+      "interpretation": "Partner resource cost, not customs payment."
+    },
+    {
+      "id": "EPA-real-production-change",
+      "actual": "80",
+      "expected": "80",
+      "interpretation": "Model diversion to a more costly producer."
+    },
+    {
+      "id": "EPA-tariff-revenue-change",
+      "actual": "-100",
+      "expected": "-100",
+      "interpretation": "Government transfer disappears; not a resource saving."
+    },
+    {
+      "id": "EPA-B2-Japan",
+      "actual": "940",
+      "expected": "940",
+      "interpretation": "Higher compliance cost makes preference unused."
+    },
+    {
+      "id": "A-created-loans",
+      "actual": "270",
+      "expected": "270",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "A-created-deposits",
+      "actual": "450",
+      "expected": "450",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "A-created-total",
+      "actual": "520",
+      "expected": "520",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "A-paid-reserves",
+      "actual": "175",
+      "expected": "175",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "A-paid-deposits",
+      "actual": "375",
+      "expected": "375",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "A-paid-total",
+      "actual": "445",
+      "expected": "445",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "B-paid-reserves",
+      "actual": "255",
+      "expected": "255",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "B-paid-deposits",
+      "actual": "435",
+      "expected": "435",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "B-paid-total",
+      "actual": "475",
+      "expected": "475",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "K-after-payment",
+      "actual": "45",
+      "expected": "45",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "seller-after-payment",
+      "actual": "75",
+      "expected": "75",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "system-deposits-before",
+      "actual": "690",
+      "expected": "690",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "system-deposits-after",
+      "actual": "810",
+      "expected": "810",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "system-loans-before",
+      "actual": "370",
+      "expected": "370",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "system-loans-after",
+      "actual": "490",
+      "expected": "490",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "system-reserves-before",
+      "actual": "430",
+      "expected": "430",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "system-reserves-after",
+      "actual": "430",
+      "expected": "430",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "K-net-wealth-after-loan",
+      "actual": "0",
+      "expected": "0",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "K-net-wealth-after-purchase",
+      "actual": "0",
+      "expected": "0",
+      "interpretation": "Matched balance entries or separate system/customer stocks; no reserve/deposit double count."
+    },
+    {
+      "id": "C-repaid-loans",
+      "actual": "180",
+      "expected": "180",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "C-repaid-deposits",
+      "actual": "210",
+      "expected": "210",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "C-repaid-total",
+      "actual": "270",
+      "expected": "270",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "D-repaid-loan",
+      "actual": "50",
+      "expected": "50",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "D-repaid-deposit",
+      "actual": "50",
+      "expected": "50",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "D-after-transfer",
+      "actual": "30",
+      "expected": "30",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "recipient-after-transfer",
+      "actual": "20",
+      "expected": "20",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "C-internal-total",
+      "actual": "270",
+      "expected": "270",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "C-external-reserves",
+      "actual": "70",
+      "expected": "70",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "C-external-deposits",
+      "actual": "190",
+      "expected": "190",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "C-external-total",
+      "actual": "250",
+      "expected": "250",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "E-reserve-change",
+      "actual": "20",
+      "expected": "20",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "E-deposit-change",
+      "actual": "20",
+      "expected": "20",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "C-E-deposit-net-change",
+      "actual": "-30",
+      "expected": "-30",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    },
+    {
+      "id": "C-E-reserve-net-change",
+      "actual": "0",
+      "expected": "0",
+      "interpretation": "Principal repayment contracts paired claims/liabilities; payment redistributes deposits/reserves."
+    }
+  ],
+  "computedWholeBankBalances": {
+    "Ainitial": {
+      "reserves": 250,
+      "loans": 150,
+      "deposits": 330,
+      "equity": 70,
+      "total": 400
+    },
+    "Binitial": {
+      "reserves": 180,
+      "loans": 220,
+      "deposits": 360,
+      "equity": 40,
+      "total": 400
+    },
+    "AafterLoan": {
+      "reserves": 250,
+      "loans": 270,
+      "deposits": 450,
+      "equity": 70,
+      "total": 520
+    },
+    "AafterPayment": {
+      "reserves": 175,
+      "loans": 270,
+      "deposits": 375,
+      "equity": 70,
+      "total": 445
+    },
+    "BafterPayment": {
+      "reserves": 255,
+      "loans": 220,
+      "deposits": 435,
+      "equity": 40,
+      "total": 475
+    },
+    "Cinitial": {
+      "reserves": 90,
+      "loans": 210,
+      "deposits": 240,
+      "equity": 60,
+      "total": 300
+    },
+    "CafterRepayment": {
+      "reserves": 90,
+      "loans": 180,
+      "deposits": 210,
+      "equity": 60,
+      "total": 270
+    },
+    "CafterInternalPayment": {
+      "reserves": 90,
+      "loans": 180,
+      "deposits": 210,
+      "equity": 60,
+      "total": 270
+    },
+    "CafterExternalPayment": {
+      "reserves": 70,
+      "loans": 180,
+      "deposits": 190,
+      "equity": 60,
+      "total": 250
+    }
+  },
+  "scope": "Fictional economic model calculations; no actual tariff-line advice, measured treaty effects or real-world bank solvency claim."
+}

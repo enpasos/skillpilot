@@ -1,0 +1,11 @@
+{
+  "role": "TECHNICAL_AUTHOR_FINALIZATION_FAILURE_NOT_SCIENCE_FAILURE",
+  "error": "TypeError: Object of type Decimal is not JSON serializable",
+  "actualCompletedBeforeFailure": [
+    "whole36 authorworks/432 manual marks",
+    "60 exact Fraction checks",
+    "all4 XLSX products saved and actual saved formulas parsed/evaluated"
+  ],
+  "failedArtifactWasNotCreated": "actual-own-four-XLSX-linked-budget-products-parsed-formulas-and-two-real-input-mutations.json",
+  "fix": "New completion reads the actual unchanged four saved workbooks, executes formulas again and serializes numeric inputs explicitly as decimal strings; no rerun/overwrite of earlier evidence."
+}

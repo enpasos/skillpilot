@@ -1,0 +1,16 @@
+Die vier ausgewählten Wirtschaftswissenschaften-PNGs erhalten jeweils ein unabhängiges fachliches V-KEEP für die genau gebundenen Assets und aktuellen ganzen Ziel-/P2-Verträge. Tatsächlich gesehen wurden zwölf Ansichten: pro Bild das native 1672 × 941-Original sowie die vorhandenen 360 × 203- und 680 × 383-Derivate. Als Stilreferenz wurde zusätzlich das gute bestehende c351-Bild tatsächlich angesehen und erhalten.
+
+| Ziel | Entscheidung | Fachlicher und visueller Kern |
+| --- | --- | --- |
+| 0489aa68-7059-51dd-92bb-6d801c568449 | KEEP, erstes Original | Zusammenhängender Leuchtenprototyp mit Forschung, Entwicklung und frühem Fertigungsfeedback; Modellkurve ohne konkrete Prognose. |
+| 4c9b844f-a5fb-595b-935f-27cbc66610ae | KEEP, erstes Original | Dokumentierte Beispielmehrheit, eigenständige Veto-Sperre und offene Firmenplanung; keine inferierte Koalitionszusage oder Lobbykausalität. |
+| f0b1bd59-a2ce-562b-bb63-6927f590dce2 | KEEP nach gezielter Regeneration | Gegenwärtige Fälligkeit, Zukunftsplanung und Vermögens-/Schuldendeckung getrennt; Fortführung bleibt eine Frage. Beide gehaltenen Blätter zeigen korrekt blanke Rückseiten. |
+| 2790f704-116b-577d-aca7-b502d57a21f6 | KEEP nach gezielter Regeneration | Antrag und bedingte Kostenprüfung mit Eröffnung/Abweisung sowie kollektivem Fall; blanke Blatt-Rückseite der Gerichtsperson. |
+
+Bei 360 Pixel Breite bleiben die fachlichen Hauptmotive und erforderlichen Beziehungen erkennbar. Die kurze zusätzliche Hintergrundbeschriftung „Unser Betrieb“ im Verfahrensbild gehört nicht zum ursprünglichen Vier-Wörter-Prompt; sie ist fakultativ und begründet keinen fachlichen oder visuellen Blocker. Eine perfekte Promptbefolgung wird damit nicht behauptet. Die Illustration behauptet weder eine durch das Gericht angeordnete Betriebsschließung noch garantierte Unternehmensfortführung oder vollständige Gläubigerzahlungen.
+
+Alle vier ganzen aktuellen DE/EN-Ziele, alle acht gepaarten bilingualen P-Fälle, exakte Provider-Prompts und vorbereitete Metadaten wurden für den Bildbezug gelesen. Die Provider-Originale stimmen bytegenau mit den ausgewählten PNGs überein. Die Herkunft ist der tatsächliche OpenAI/Codex image_gen-Aufruf des Root-Autors; eine nicht offengelegte Modellversion wird nicht erschlossen. Das nahe native 16:9-Querformat wird fachlich und nach den echten Größenansichten bestätigt. Der Reviewer hat keine Bilder erzeugt, bearbeitet oder verkleinert.
+
+58 vorher gebundene Dateien und die während des Reviews gebundene Stilreferenz sind anschließend unverändert. Das gesonderte Source57-Abschlussreceipt bleibt exakt. Historische Originale und Befunde wurden erhalten; frühere verworfene Bildversionen wurden hier nicht erneut als eigene historische Sichtprüfung ausgegeben.
+
+Diese Entscheidung ist ausschließlich ein unabhängiger fachlicher Sichtreview für vier konkrete Assets. Nativer Import, aktuelle QA-/Quellen-/Kontextbindungen und D-Abschluss sind getrennte Integrationsschritte. Keine P-, ganze Quellen-, Kurs-, Mastery- oder menschliche Freigabe folgt daraus; needs_human_review und E1/G1 bleiben erhalten. Zentraler Ausgangsstand laut gebundener Integration: 300/311; Nettozuwachs, neue strenge fachliche Abschlüsse und wiederhergestellte native Bindungen aus diesem inerten Paket jeweils 0.

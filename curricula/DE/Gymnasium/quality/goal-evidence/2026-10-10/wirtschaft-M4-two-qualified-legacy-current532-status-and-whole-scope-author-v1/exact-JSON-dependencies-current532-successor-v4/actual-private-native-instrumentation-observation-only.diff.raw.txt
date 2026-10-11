@@ -1,0 +1,19 @@
+--- app/scripts/generateCurriculumQualityStatus.ts
++++ private-observation-only/app/scripts/generateCurriculumQualityStatus.ts
+@@ -2398,6 +2398,7 @@
+           (terminalId) => hasVisibleReverseDirectPath(goal.id, terminalId),
+         ))
+         : []
++      ownProjectedScopeRows.push({viewPath:toRepoPath(file),jurisdiction,scopeFilters,scopeLabel,ordinaryTargetIds:visibleSelectedGoals.map(g=>g.id),visibleAllAtomicIds:[...visibleAtomicGoalIds],visibleTargetAtomicIds:[...visibleTargetAtomicGoalIds],expectedTerminalIds:expectedTerminalGoalIds,actualTerminalIds:actualTerminalGoalIds,missingEffectiveTerminalTargetIds:goalsMissingEffectiveTerminalRoute.map(g=>g.id),wholeMaterialCoverageBindingIssues:terminalMaterialCoverageBindingIssues,wholeMaterialPrerequisiteClosureIssues});
+       visibleSelectedAtomicGoalOccurrences += visibleSelectedGoals.length
+       visibleProfileSelectedAtomicGoalOccurrences += visibleProfileSelectedGoals.length
+       visibleProjectedRouteTargetGoalOccurrences += visibleProjectedRouteTargetGoals.length
+@@ -6247,3 +6248,8 @@
+     process.exitCode = 1
+   })
+ }
++
++export const ownProjectedScopeRows:any[]=[];
++export {routeProfiles,evaluateRouteProfile,collectWholeMaterialPrerequisiteClosure,readJurisdictionCoverageByLandscapeId,evaluateJurisdictionCoverage};
++
++export {evaluateGraphIntegrity};

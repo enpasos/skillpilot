@@ -1,0 +1,53 @@
+import json,pathlib,hashlib,shutil
+R=pathlib.Path('/home/enpasos/projects/skillpilot');D=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-twelve-local-consumption-communication-media-one-contract-author-a-v1';O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-twelve-consumer-whole-science-independent-merge-audit-v1';O.mkdir(exist_ok=True)
+def rd(p):return json.load(open(p))
+def rec(p):
+ p=pathlib.Path(p);b=p.read_bytes();return {'path':str(p.relative_to(R)),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+def wr(n,d):
+ p=O/n;v=json.dumps(d,ensure_ascii=False,indent=2)+'\n'
+ if p.exists():assert p.read_text()==v
+ else:p.write_text(v)
+ return rec(p)
+hp=D/'actual-final-twelve-local-consumption-communication-media-current597-whole-DRAFT.author-handoff.json';h=rd(hp);b=rd(R/h['wholeFinalTwelveDEENMaterials']['path'])['materials'];c=rd(R/h['wholeCurrent12GoalContractsAndOriginalP24']['path']);cur=rd(R/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json');cm={g['id']:g for g in cur['goals']};book=rd(R/'app/scripts/config/goal-books/de-gym-economics-current-canonical.json');pp=R/book['evidenceReviewPaths'][0];ps=[json.loads(x) for x in pp.read_text().splitlines() if x.strip()];pm={p['goalId']:p for p in ps};assert len(ps)==336 and sum(len(p['profile']['applicationCaseBriefs']) for p in ps)==685
+for row in c['actual12Rows']:assert row['wholeCurrentDEENGoal']==cm[row['goalId']] and row['wholeOriginalPositiveV2Record']==pm[row['goalId']]
+inputs=[]
+for p in [hp,R/h['wholeFinalTwelveDEENMaterials']['path'],R/h['wholeCurrent12GoalContractsAndOriginalP24']['path'],R/h['wholeCurrent597Before']['path'],pp]:
+ dst=O/'whole-inputs'/p.relative_to(R);dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,dst);inputs.append({'original':rec(p),'ownFrozenWhole':rec(dst)})
+wr('actual-whole-twelve-consumer-DEEN-goals-P24-and-final-original-bodies.current-intake.independent.json',{'reviewer':'/root/economics_merge_audit','actualCurrentGoalCount':len(cur['goals']),'whole12CurrentGoalAndP24Exact':True,'actualWholeGoalP24Rows':c['actual12Rows'],'actualWholeInputs':inputs,'P336685OriginalBodiesStatusesExact':True,'wholeScienceDEENActuallyRead':True,'authorWorksAndCountersNotReadOrCountedAsIndependent':True,'draftStatus12Retained':True,'nativeUnnavigatedScopeErrorsNotQualifiedAsScience':True,'activeWrites':0})
+works=[]
+def counter(i,answers,marks,missing,rationale):
+ raw=sum(sum(x) for x in marks);assert len(answers)==len(marks)==6 and all(len(x)==2 for x in marks)
+ works.append({'materialId':b[i]['id'],'currentOrdinaryGoalId':c['actual12Rows'][i]['goalId'],'wholeFrozenTaskSolutionRubric':b[i],'wholeCurrentGoal':c['actual12Rows'][i]['wholeCurrentDEENGoal'],'wholeCurrentProfile':c['actual12Rows'][i]['wholeOriginalPositiveV2Record'],'actualCompleteSixAnswerCounterwork':answers,'actualManualTwoCriterionMarks':marks,'raw':raw,'publishedPassing':15,'missingWholeEssentialPerformance':missing,'currentlyWrittenCombinedBoundary':b[i]['examData']['taskContent'].split('begrenzt: ')[-1].split(' Es gibt')[0],'scientificIndividualDecision':'REVISE','whyThisIsNotPerfectDetailOrTaskQuota':rationale,'noAuthorBodyMutation':True})
+counter(2,[
+ 'Ich wähle die Reparatur für45: Sie liegt unter75, lässt30 übrig und löst im Modell den Mobilitätsbedarf. Zubehör für60 lässt15, löst den Defekt aber nicht. Beides kostet105 und übersteigt75; die45 können dann nicht anderweitig verwendet werden.',
+ 'Mein eigenes Interesse ist ein möglichst verlässlicher täglicher Weg; der beworbene Zugehörigkeitsvorteil ist mir weniger wichtig. Ich mache in dieser gesamten Arbeit keinerlei Aussage zu Materialverbrauch, Ersatzbedarf, Umweltfolgen oder Nachhaltigkeit und berücksichtige dafür keine Informationsgrenzen.',
+ 'Nur heute setzt mich unter Zeitdruck, die Zugehörigkeitsbotschaft appelliert an meinen Wunsch mitzuhalten. Ohne diese Gestaltung priorisiere ich weiterhin den funktionsfähigen Weg und prüfe Preis und Bedarf statt den Countdown.',
+ 'X kostet anfangs30 und lässt60, Y kostet80 und lässt10. Beide passen in90. Erwartete Jahreskosten ohne zusätzliche Reparaturkosten sind30/1=30 und80/4=20; Haltbarkeit und reale Reparaturkosten sind ungewiss.',
+ 'Ich bevorzuge Y, weil längere erwartete Nutzung mir wichtig ist, solange der verbleibende Liquiditätspuffer10 genügt. Für meine private Planung fehlen konkrete Reparaturkosten, tatsächliche Haltbarkeit und Informationen über zusätzliche dringend fällige eigene Ausgaben. Eine ökologische Perspektive liefere ich auch hier nicht.',
+ 'Ohne Countdown bleibt meine bedingte Präferenz Y:20 erwartete Jahreskosten und weniger häufige private Kaufvorgänge passen zu meinem Wunsch nach Ruhe, sofern80 jetzt tragbar sind. Der Countdown verändert weder Qualität noch meinen verfügbaren Betrag. Zu Nachhaltigkeitsfolgen trifft die gesamte Antwort keinerlei Aussage.'
+ ],[[2,2],[2,0],[2,2],[2,2],[1,2],[2,2]],'Sämtliche fallbezogene Nachhaltigkeits-/ökologische Folgen und deren Evidenzgrenzen über beide Fälle hinweg.','Die aktuelle kombinierte Kernaussage enthält Anreize UND Nachhaltigkeitsfolgen. Konkrete Anreize sind richtig vorhanden; die ökologische Verantwortung ist vollständig abwesend. Raw21 kann deshalb bestehen, ohne dass die formulierte gemeinsame Totalabsenz vorliegt. Das aktuelle whole a60/P2 fordert diese Perspektive ausdrücklich; einzelne echte Teilleistungen würden bereits zählen.')
+counter(3,[
+ 'Ich habe die eigene initiale Tabelle A erstellt: B2=240,B3=90,B4=100,B5=35,B6=SUM(B3:B4),B7=B2-B6-B5. Sie berechnet Ausgaben190 und Rest15. Ich gebe genau diese ursprüngliche Datei ab.',
+ 'Ich ändere ausdrücklich keinerlei Eingabe und führe in keinem Programm eine Mutation oder Neuberechnung aus. Nur hypothetisch: Wenn B4=115 wäre, müssten die unveränderten Zellformeln205 und0 liefern. Die tatsächlich abgegebene Datei bleibt100/190/15.',
+ 'Das Sparziel35 lässt unter den ersten Erwartungen15 Puffer. Bei der rein hypothetischen Mehrbelastung wäre kein Puffer vorhanden. Variable Ausgaben senken oder bedingt weniger sparen wären Optionen; die Erwartungen können abweichen.',
+ 'Die unabhängig erstellte initiale Tabelle B enthält B2=360,B3=170,B4=110,B5=180,B6=50,B7=B5/12,B8=SUM(B3:B4)+B7,B9=B2-B8-B6. Rücklage15, Summe295, Rest15. Eine180-Jahreszahlung wird nicht noch einmal voll monatlich abgezogen.',
+ 'Die Jahreszelle bleibt ausdrücklich180 in sämtlichen Dateien. Ich führe keine Änderung auf300 aus. Ich kann nur erwarten, dass eine hypothetische Rechnung300/12=25 und360-170-110-25-50=5 ergäbe. Ich liefere keine tatsächlich geänderte Eingabe oder aktualisierte Tabelle.',
+ '15 Monatsrücklage ist ein erwarteter Fluss zum Reservenbestand, keine sofortige Jahreszahlung. Startbestand und Fälligkeit fehlen; positiver Monatsrest beweist kein verfügbares Geld am frühen Termin. Ohne ausreichend aufgebauten Bestand kann die fällige Rechnung ungedeckt sein.'
+ ],[[2,2],[0,0],[2,2],[2,2],[0,0],[2,2]],'Jede tatsächlich ausgeführte Eingabeänderung und deren automatisch beobachtete Verknüpfung.','Konservativ geben beide Änderungsaufgaben0, auch keine hypothetischen Erklärungspunkte. Vier andere tatsächlich richtige Leistungen tragen16/24. Erstellte verknüpfte Tabellen sind aber vorhanden, sodass die kombinierte Grenze Tabellenformeln UND Eingabeänderung keine vollständig abwesende gemeinsame Leistung vorfindet. Das whole e5b/P2 fordert die wirkliche Mutation, nicht eine ideale Tabelle oder bestimmte Software.')
+# The two initial tables underlying counter3 are real own products; no input mutation is performed here.
+import zipfile,html
+def actual_xlsx(path,data):
+ cells=[]
+ for cell,value in data.items():
+  body='<f>'+html.escape(value[1:])+'</f>' if isinstance(value,str) else '<v>'+str(value)+'</v>'
+  cells.append('<row r="'+str(int(cell[1:]))+'"><c r="'+cell+'">'+body+'</c></row>')
+ with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as z:
+  z.writestr('[Content_Types].xml','<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>')
+  z.writestr('_rels/.rels','<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>')
+  z.writestr('xl/workbook.xml','<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Budget" sheetId="1" r:id="rId1"/></sheets><calcPr calcId="0" fullCalcOnLoad="1"/></workbook>')
+  z.writestr('xl/_rels/workbook.xml.rels','<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/></Relationships>')
+  z.writestr('xl/worksheets/sheet1.xml','<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>'+''.join(cells)+'</sheetData></worksheet>')
+for n,data in [('counter-budget-A.initial-only.xlsx',{'B2':240,'B3':90,'B4':100,'B5':35,'B6':'=SUM(B3:B4)','B7':'=B2-B6-B5'}),('counter-budget-B.initial-only.xlsx',{'B2':360,'B3':170,'B4':110,'B5':180,'B6':50,'B7':'=B5/12','B8':'=SUM(B3:B4)+B7','B9':'=B2-B8-B6'})]:
+ actual_xlsx(O/n,data)
+wr('actual-two-complete-consumer-core-absence-counterworks-and-individual-REVISE.independent.json',{'reviewer':'/root/economics_merge_audit','actualWholeCounterworks':works,'actualConservativeRawScores':[w['raw'] for w in works],'originalBodyUnchanged':True,'narrowRemedyBoundary':'Separate only the actually required wholly absent dimension/action; meaningful incomplete performances count anywhere. No perfect detail, per-task quota or raised total threshold required.','actualInitialSpreadsheetCounterProducts':[rec(O/'counter-budget-A.initial-only.xlsx'),rec(O/'counter-budget-B.initial-only.xlsx')],'sourceScopeReleaseHumanStrictApproval':False})
+print(json.dumps({'folder':str(O.relative_to(R)),'counterworks':rec(O/'actual-two-complete-consumer-core-absence-counterworks-and-individual-REVISE.independent.json'),'scores':[w['raw'] for w in works]}))

@@ -1,0 +1,567 @@
+{
+  "runtimeSchema": {
+    "path": "docs/landscape-runtime.schema.json",
+    "sha256": "d25cf1c930d1a21838264b34d713f32788715089c6b8ff2b7430bdbc6079e59a",
+    "errors": [],
+    "exitCode": 0
+  },
+  "graphChecks": [
+    {
+      "graph": "requires",
+      "unresolved": [],
+      "cycles": 0,
+      "nodes": 416
+    },
+    {
+      "graph": "contains",
+      "unresolved": [],
+      "cycles": 0,
+      "nodes": 416
+    },
+    {
+      "graph": "union",
+      "unresolved": [],
+      "cycles": 0,
+      "nodes": 416
+    }
+  ],
+  "actualExactArithmeticChecks": [
+    {
+      "id": "labour-force-before",
+      "actualExact": "1300",
+      "expectedExact": "1300",
+      "pass": true
+    },
+    {
+      "id": "labour-force-after",
+      "actualExact": "1350",
+      "expectedExact": "1350",
+      "pass": true
+    },
+    {
+      "id": "programme-diff",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "pass": true
+    },
+    {
+      "id": "labour-real-pay",
+      "actualExact": "-1/104",
+      "expectedExact": "-1/104",
+      "pass": true
+    },
+    {
+      "id": "labour-unit-cost",
+      "actualExact": "2/101",
+      "expectedExact": "2/101",
+      "pass": true
+    },
+    {
+      "id": "labour-nairu",
+      "actualExact": "-4/5",
+      "expectedExact": "-4/5",
+      "pass": true
+    },
+    {
+      "id": "refill-10",
+      "actualExact": "15",
+      "expectedExact": "15",
+      "pass": true
+    },
+    {
+      "id": "refill-20",
+      "actualExact": "18",
+      "expectedExact": "18",
+      "pass": true
+    },
+    {
+      "id": "enterprise-gap",
+      "actualExact": "4000",
+      "expectedExact": "4000",
+      "pass": true
+    },
+    {
+      "id": "sale-loss",
+      "actualExact": "-2000",
+      "expectedExact": "-2000",
+      "pass": true
+    },
+    {
+      "id": "enterprise-break-even",
+      "actualExact": "1000",
+      "expectedExact": "1000",
+      "pass": true
+    },
+    {
+      "id": "enterprise-loss",
+      "actualExact": "-3200",
+      "expectedExact": "-3200",
+      "pass": true
+    },
+    {
+      "id": "enterprise-cycle",
+      "actualExact": "160",
+      "expectedExact": "160",
+      "pass": true
+    },
+    {
+      "id": "enterprise-cycle-revised",
+      "actualExact": "150",
+      "expectedExact": "150",
+      "pass": true
+    },
+    {
+      "id": "market-consumer",
+      "actualExact": "3000",
+      "expectedExact": "3000",
+      "pass": true
+    },
+    {
+      "id": "market-B2B-reachable",
+      "actualExact": "1250",
+      "expectedExact": "1250",
+      "pass": true
+    },
+    {
+      "id": "inflation-index27",
+      "actualExact": "119",
+      "expectedExact": "119",
+      "pass": true
+    },
+    {
+      "id": "inflation-index28",
+      "actualExact": "11711/100",
+      "expectedExact": "11711/100",
+      "pass": true
+    },
+    {
+      "id": "inflation27",
+      "actualExact": "19/100",
+      "expectedExact": "19/100",
+      "pass": true
+    },
+    {
+      "id": "inflation28",
+      "actualExact": "-27/1700",
+      "expectedExact": "-27/1700",
+      "pass": true
+    },
+    {
+      "id": "personal-index28",
+      "actualExact": "2393/20",
+      "expectedExact": "2393/20",
+      "pass": true
+    },
+    {
+      "id": "multiplier",
+      "actualExact": "50",
+      "expectedExact": "50",
+      "pass": true
+    },
+    {
+      "id": "Phillips7",
+      "actualExact": "1",
+      "expectedExact": "1",
+      "pass": true
+    },
+    {
+      "id": "Phillips4",
+      "actualExact": "5/2",
+      "expectedExact": "5/2",
+      "pass": true
+    },
+    {
+      "id": "Phillips-supply",
+      "actualExact": "4",
+      "expectedExact": "4",
+      "pass": true
+    },
+    {
+      "id": "nairu-low",
+      "actualExact": "-4/5",
+      "expectedExact": "-4/5",
+      "pass": true
+    },
+    {
+      "id": "nairu-high",
+      "actualExact": "2/5",
+      "expectedExact": "2/5",
+      "pass": true
+    },
+    {
+      "id": "adaptive-expectation",
+      "actualExact": "16/5",
+      "expectedExact": "16/5",
+      "pass": true
+    },
+    {
+      "id": "rational-expectation",
+      "actualExact": "29/10",
+      "expectedExact": "29/10",
+      "pass": true
+    },
+    {
+      "id": "credibility40",
+      "actualExact": "19/5",
+      "expectedExact": "19/5",
+      "pass": true
+    },
+    {
+      "id": "growth-emissions-before",
+      "actualExact": "1200",
+      "expectedExact": "1200",
+      "pass": true
+    },
+    {
+      "id": "growth-emissions-after",
+      "actualExact": "1280",
+      "expectedExact": "1280",
+      "pass": true
+    },
+    {
+      "id": "grant-cap",
+      "actualExact": "30",
+      "expectedExact": "30",
+      "pass": true
+    },
+    {
+      "id": "policy-combined",
+      "actualExact": "4536/5",
+      "expectedExact": "4536/5",
+      "pass": true
+    },
+    {
+      "id": "policy-sensitivity",
+      "actualExact": "5054/5",
+      "expectedExact": "5054/5",
+      "pass": true
+    },
+    {
+      "id": "skills-A-FTE",
+      "actualExact": "160",
+      "expectedExact": "160",
+      "pass": true
+    },
+    {
+      "id": "skills-B-FTE",
+      "actualExact": "192",
+      "expectedExact": "192",
+      "pass": true
+    },
+    {
+      "id": "skills-population-before",
+      "actualExact": "6000",
+      "expectedExact": "6000",
+      "pass": true
+    },
+    {
+      "id": "skills-population-after",
+      "actualExact": "6300",
+      "expectedExact": "6300",
+      "pass": true
+    },
+    {
+      "id": "skills-diff",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "pass": true
+    },
+    {
+      "id": "skills-cost-ratio",
+      "actualExact": "5000",
+      "expectedExact": "5000",
+      "pass": true
+    },
+    {
+      "id": "gini-before",
+      "actualExact": "13/40",
+      "expectedExact": "13/40",
+      "pass": true
+    },
+    {
+      "id": "gini-after",
+      "actualExact": "1/5",
+      "expectedExact": "1/5",
+      "pass": true
+    },
+    {
+      "id": "transfer-L-before",
+      "actualExact": "100",
+      "expectedExact": "100",
+      "pass": true
+    },
+    {
+      "id": "transfer-L-after",
+      "actualExact": "120",
+      "expectedExact": "120",
+      "pass": true
+    },
+    {
+      "id": "transfer-H-after",
+      "actualExact": "280",
+      "expectedExact": "280",
+      "pass": true
+    },
+    {
+      "id": "poverty-threshold",
+      "actualExact": "1320",
+      "expectedExact": "1320",
+      "pass": true
+    },
+    {
+      "id": "pension-old-new",
+      "actualExact": "140",
+      "expectedExact": "140",
+      "pass": true
+    },
+    {
+      "id": "rail-service",
+      "actualExact": "7/5",
+      "expectedExact": "7/5",
+      "pass": true
+    },
+    {
+      "id": "tarif-U-profit",
+      "actualExact": "35",
+      "expectedExact": "35",
+      "pass": true
+    },
+    {
+      "id": "tarif-V-profit",
+      "actualExact": "0",
+      "expectedExact": "0",
+      "pass": true
+    },
+    {
+      "id": "universal-budget",
+      "actualExact": "100000",
+      "expectedExact": "100000",
+      "pass": true
+    },
+    {
+      "id": "means-budget",
+      "actualExact": "100000",
+      "expectedExact": "100000",
+      "pass": true
+    },
+    {
+      "id": "means-takeup",
+      "actualExact": "80000",
+      "expectedExact": "80000",
+      "pass": true
+    },
+    {
+      "id": "score-q2-LK-competition-sustainable-mobility",
+      "actualExact": "56",
+      "expectedExact": "56",
+      "pass": true
+    },
+    {
+      "id": "score-q2-LK-distribution-social-security",
+      "actualExact": "50",
+      "expectedExact": "50",
+      "pass": true
+    },
+    {
+      "id": "score-q2-LK-inflation-and-cycle",
+      "actualExact": "46",
+      "expectedExact": "46",
+      "pass": true
+    },
+    {
+      "id": "score-q2-LK-money-and-currency-union",
+      "actualExact": "40",
+      "expectedExact": "40",
+      "pass": true
+    },
+    {
+      "id": "score-q2-LK-skills-and-hours",
+      "actualExact": "44",
+      "expectedExact": "44",
+      "pass": true
+    },
+    {
+      "id": "score-q2-outside-national-policy-hearing",
+      "actualExact": "48",
+      "expectedExact": "48",
+      "pass": true
+    },
+    {
+      "id": "score-q2-shared-enterprise-refill",
+      "actualExact": "60",
+      "expectedExact": "60",
+      "pass": true
+    },
+    {
+      "id": "score-q2-shared-labour-transition",
+      "actualExact": "44",
+      "expectedExact": "44",
+      "pass": true
+    },
+    {
+      "id": "score-q2-shared-legal-purchase-and-tort",
+      "actualExact": "38",
+      "expectedExact": "38",
+      "pass": true
+    }
+  ],
+  "curriculum_symlink_errors": [],
+  "wholeJSONFilesParsedWithActualTrailingNewlines": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/whole-nine-Q2-new-DRAFT-assessment-goals.author-candidates.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/whole-CAN407-plus-nine-Q2-DRAFT-material-endpoints.inert-author-candidate.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/actual-whole-forty-gap-coverage-and-nine-dossier-context-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-LK-money-and-currency-union.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-LK-competition-sustainable-mobility.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-LK-distribution-social-security.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-LK-skills-and-hours.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-LK-inflation-and-cycle.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-shared-enterprise-refill.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-shared-legal-purchase-and-tort.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-outside-national-policy-hearing.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/q2-shared-labour-transition.whole-material-and-performance-map.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-skills-and-hours.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-competition-sustainable-mobility.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-shared-labour-transition.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/actual-original-v17-inherited-navigation-runtime-schema-negative-diagnostic.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-outside-national-policy-hearing.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-shared-enterprise-refill.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-inflation-and-cycle.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-inflation-and-cycle.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/actual-one-inherited-navigation-schema-only-fieldwise-metadata-proposal.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-money-and-currency-union.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-shared-enterprise-refill.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/whole-nine-Q2-new-DRAFT-assessment-goals.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/whole-CAN407-plus-nine-Q2-DRAFT-materials-and-one-inherited-navigation-schema-field.final-inert-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-outside-national-policy-hearing.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-distribution-social-security.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-shared-legal-purchase-and-tort.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-skills-and-hours.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-money-and-currency-union.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-shared-labour-transition.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-competition-sustainable-mobility.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-shared-legal-purchase-and-tort.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/q2-LK-distribution-social-security.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v3/actual-author-exact-arithmetic-negative-diagnostic.inflation-index119-not122.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-skills-and-hours.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-competition-sustainable-mobility.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-shared-labour-transition.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/actual-original-v17-inherited-navigation-runtime-schema-negative-diagnostic.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-outside-national-policy-hearing.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-shared-enterprise-refill.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-inflation-and-cycle.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-inflation-and-cycle.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/actual-one-inherited-navigation-schema-only-fieldwise-metadata-proposal.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-money-and-currency-union.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-shared-enterprise-refill.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/whole-nine-Q2-new-DRAFT-assessment-goals.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/whole-CAN407-plus-nine-Q2-DRAFT-materials-and-one-inherited-navigation-schema-field.final-inert-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-outside-national-policy-hearing.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-distribution-social-security.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-shared-legal-purchase-and-tort.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-skills-and-hours.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-money-and-currency-union.whole-material-and-performance-map.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-shared-labour-transition.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-competition-sustainable-mobility.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-shared-legal-purchase-and-tort.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-Q2-final-DRAFT-candidate-freeze-v4/q2-LK-distribution-social-security.whole-DE-EN-task-solution-rubric.final-author-v3.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/inputs/whole-reviewed-route-author-SEM407.exact.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/inputs/actual-input-origin-whole-byte-guards.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/inputs/four-whole-related-current-companion-goals-and-P-records.exact-extraction.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/inputs/whole-reviewed-route-author-CAN407.exact.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/inputs/actual-forty-whole-native-gap-goals-P-records-and-case-indexes.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-skills-and-hours.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-outside-national-policy-hearing.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-inflation-and-cycle.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-shared-enterprise-refill.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-skills-and-hours.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-shared-legal-purchase-and-tort.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-shared-legal-purchase-and-tort.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-inflation-and-cycle.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-distribution-social-security.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-competition-sustainable-mobility.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-shared-labour-transition.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-money-and-currency-union.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-distribution-social-security.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-shared-labour-transition.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-shared-enterprise-refill.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-outside-national-policy-hearing.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-competition-sustainable-mobility.whole-material-and-performance-map.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/actual-nine-self-contained-material-deltas-and-primary-portability.author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/whole-CAN407-plus-nine-Q2-fully-supplied-DRAFT-materials.final-inert-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/whole-nine-Q2-new-DRAFT-assessment-goals.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/nine-whole-fully-supplied-final-materials-readable-successor-v2/q2-LK-money-and-currency-union.whole-DE-EN-task-solution-rubric.final-author-v2.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-36.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/actual-two-additional-statutory-primary-captures.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-1.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/ecb-money-inflation-20230925.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-32f.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-433.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/rentenbericht-2025-model.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-434.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/actual-exact-primary-capture-provenance.author-inputs.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gesamtmetall-2026-verteilung.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gkv-finanzkommission-20260330.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/igmetall-2026-tarifrunde.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bundestag-20260526-21-6169.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-439.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-929.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-19.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-823.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-40.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-39.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-437.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-41.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-2.exact-primary-bytes.base64.json"
+  ],
+  "allRequiredPrimaryInputsCommittable": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-36.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/actual-two-additional-statutory-primary-captures.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-40.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-1.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/ecb-money-inflation-20230925.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bundestag-20260526-21-6169.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-19.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gkv-finanzkommission-20260330.actual-PDF-page-1.png",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-32f.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-36.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-823.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-433.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/rentenbericht-2025-model.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-434.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/actual-exact-primary-capture-provenance.author-inputs.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bundestag-20260526-21-6169.actual-PDF-page-1.png",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-434.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-929.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gesamtmetall-2026-verteilung.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/igmetall-2026-tarifrunde.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gkv-finanzkommission-20260330.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-41.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/igmetall-2026-tarifrunde.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-32f.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bundestag-20260526-21-6169.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-439.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-929.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-1.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-439.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-433.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-437.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-19.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-823.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-40.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-39.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-39.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bgb-437.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/bundestag-20260526-21-6169.actual-PDF-page-3.png",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gesamtmetall-2026-verteilung.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/rentenbericht-2025-model.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-41.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-2.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gwb-2.exact-primary-bytes.base64.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/ecb-money-inflation-20230925.actual-whole.txt",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Q2-forty-native-terminal-gaps-nine-whole-materials-author-v1/primary/gkv-finanzkommission-20260330.actual-whole.txt"
+  ],
+  "liveCANBeforeAndAfterSHA256": "ced16a782bd880239011f33731c57cf59d54d02b923c55c31c918492610ebfaa",
+  "newMaterialIndependentReviewNeeded": true,
+  "noNativeCourseOrSourceClosureClaim": true,
+  "strictNetGain": 0
+}

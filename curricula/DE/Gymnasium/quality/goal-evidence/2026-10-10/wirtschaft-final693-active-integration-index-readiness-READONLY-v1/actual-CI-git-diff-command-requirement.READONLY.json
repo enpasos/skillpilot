@@ -1,0 +1,40 @@
+{
+  "currentCommittedWorkflowBinding": {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "sha256:73bb53ebf9d5568c409223eb466998fa63cb8e77408e725882f5c2f5018381d6",
+    "bytes": 32447
+  },
+  "workflowGitDiffCommands": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "line": 179,
+      "text": "git diff --exit-code -- \\"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "line": 529,
+      "text": "git diff --exit-code -- ../docs/qa-ci/status"
+    }
+  ],
+  "githubWorkflowsRequireGitDiffWhitespaceCheck": false,
+  "exactWhitespaceCommandFoundInGithubWorkflows": false,
+  "rootLocalBundledCIHelperWhitespaceChecks": [
+    {
+      "executionHelperPath": "/tmp/economics_stable_checkpoint346_ci_root.py",
+      "line": 28,
+      "text": "commands.append(['git-diff-check',['git','diff','--check']])"
+    },
+    {
+      "executionHelperPath": "/tmp/economics_stable_checkpoint_ci_root.py",
+      "line": 27,
+      "text": "commands.append(['git-diff-check',['git','diff','--check']])"
+    }
+  ],
+  "statusReadmeValidation": {
+    "path": "docs/qa-ci/status/README.md",
+    "line": 62,
+    "command": "git diff --check"
+  },
+  "cachedCheckRole": "Additional index readiness audit requested by Root; no cached whitespace check invocation found in current workflow/package scripts.",
+  "committedWorkflowExitCodeChecksAreGeneratedFileParityNotWhitespaceChecks": true
+}

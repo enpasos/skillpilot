@@ -1,0 +1,137 @@
+{
+  "scope": "Independent targeted native technical verification only; no description or image science",
+  "privateRoot": "/tmp/economics-v19-technical-independent-a-99upu_x7/capsule",
+  "officialSEMsourceFingerprintRows": 678,
+  "SEM2ChangedValues": [
+    {
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "expected": "sha256:542d34012aed555338d50775b0322c9c586c4460f49b42e6473b5b60f51a8100",
+      "original": "sha256:1b621d923924c29af69f57ed2ef3bf375a0d4218b93f68c4dccd3158f9227c67"
+    },
+    {
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "expected": "sha256:8cff8ec4e93392357a37fba1bc027496857b9526405eebc598cff8815f640bf3",
+      "original": "sha256:c86db2e5a3d9365b81fdcd622b1fa812ed6b871bee1d4ced35f813b832932347"
+    }
+  ],
+  "closedSEMSchemaErrors": 0,
+  "fullAggregateCounts": {
+    "profiles": 336,
+    "cases": 685
+  },
+  "targetedPpositives": [
+    {
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "goalFingerprint": "sha256:bd8e4429b8563e12f3352fac296162fb680fb1747123c9da4293927ee1103504",
+      "reviewInputFingerprint": "sha256:0d5ce3762bce7a0323d78841dfa0cdf1532b6652e6d2d15351a92dba796e108e",
+      "caseCount": 2,
+      "status": "needs_human_review",
+      "authority": "ai_candidate",
+      "nativeErrors": []
+    },
+    {
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "goalFingerprint": "sha256:684e03afa688756a0ee6b3ce40bb04204aa16539607937c1e4c25477d833722d",
+      "reviewInputFingerprint": "sha256:d9238625d25ce58cc5c8e69877b3e8d2dfae373544504bac0c087e938b54fca1",
+      "caseCount": 4,
+      "status": "needs_human_review",
+      "authority": "ai_candidate",
+      "nativeErrors": []
+    }
+  ],
+  "atomicityMemoryResults": [
+    {
+      "kind": "A",
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "fingerprint": "sha256:9391d91892f8eda3f16d78cdde0d1ff83ab5d3703590d3d3382c183f262dc90e",
+      "status": "atomic",
+      "unchangedJudgmentAndReason": true,
+      "oldFingerprintNativeMismatchDetected": true
+    },
+    {
+      "kind": "A",
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "fingerprint": "sha256:9744b5711df106ed1cb44fd56c33bc90c9cce25fa3c07f4a1d49bd030fb2dde8",
+      "status": "atomic",
+      "unchangedJudgmentAndReason": true,
+      "oldFingerprintNativeMismatchDetected": true
+    },
+    {
+      "kind": "M",
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "fingerprint": "sha256:145ccd07812b7e7e09a634ceda3ca3caf30f46091a14ed5da23ef890e5e0757d",
+      "status": "no_memory_needed",
+      "unchangedJudgmentAndReason": true,
+      "oldFingerprintNativeMismatchDetected": true
+    },
+    {
+      "kind": "M",
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "fingerprint": "sha256:b9e1ab8d916e9997a4b313ae9b6886f88815e8bde8fd08a445dc627293ceebc2",
+      "status": "no_memory_needed",
+      "unchangedJudgmentAndReason": true,
+      "oldFingerprintNativeMismatchDetected": true
+    }
+  ],
+  "wholeTargetedPConfigNativeResults": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-two-descriptions-native-binding-author-v19/v19/configs/16.positive.config.json",
+      "records": 27,
+      "cases": 54,
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 27,
+        "rejected": 0
+      },
+      "nativeErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-two-descriptions-native-binding-author-v19/v19/configs/43.positive.config.json",
+      "records": 1,
+      "cases": 4,
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 1,
+        "rejected": 0
+      },
+      "nativeErrors": []
+    }
+  ],
+  "ownGenuinePStaleNegativeCases": [
+    {
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "case": "oldGoalFingerprintOnly",
+      "nativeErrors": [
+        "04809186-3f65-579d-b300-af9ed3e100c1: stale goalFingerprint; expected sha256:bd8e4429b8563e12f3352fac296162fb680fb1747123c9da4293927ee1103504"
+      ],
+      "detected": true
+    },
+    {
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "case": "oldReviewInputFingerprintOnly",
+      "nativeErrors": [
+        "04809186-3f65-579d-b300-af9ed3e100c1: stale reviewInputFingerprint; expected sha256:0d5ce3762bce7a0323d78841dfa0cdf1532b6652e6d2d15351a92dba796e108e"
+      ],
+      "detected": true
+    },
+    {
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "case": "oldGoalFingerprintOnly",
+      "nativeErrors": [
+        "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644: stale goalFingerprint; expected sha256:684e03afa688756a0ee6b3ce40bb04204aa16539607937c1e4c25477d833722d"
+      ],
+      "detected": true
+    },
+    {
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "case": "oldReviewInputFingerprintOnly",
+      "nativeErrors": [
+        "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644: stale reviewInputFingerprint; expected sha256:d9238625d25ce58cc5c8e69877b3e8d2dfae373544504bac0c087e938b54fca1"
+      ],
+      "detected": true
+    }
+  ],
+  "AMOriginalFPMismatches": 4,
+  "newScientificOrHumanOrM7Approvals": 0,
+  "activeWrites": 0
+}

@@ -1,0 +1,95 @@
+# Wirtschaftswissenschaften: M7-Fortsetzung bei 291/346
+
+Der tatsächlich erzeugte zentrale Bericht vom **11. Oktober 2026, 00:29:29 UTC**
+bestätigt **291/346 streng abgeschlossene aktuelle curricularAtomic-Ziele
+(84,1 %), 55 offen, M6**. Maßgeblich bleiben aktuelle Ziel-IDs und gültige
+Nachweise. Ungeprüfte Kandidaten zählen nicht mit.
+
+| Gate | Aktuell gültig |
+| --- | ---: |
+| D: zwei unabhängige Beschreibungsreviews mit aufgelösten Befunden | 291/346 |
+| P: positive-understanding-evidence-v2 | 346/346 |
+| A: semantische Atomarität | 346/346 |
+| M: Memory-Entscheidungen, Karten und Sichtbarkeit | 346/346 |
+| V: aktuelle maschinelle Bildfreigaben | 346/346 |
+
+**CQR-303 bleibt FAIL**, mit fünf von sechs erforderlichen Checks und 60
+konkreten Blockern. Alte gemeinsame Beschreibungsindizes blockieren auch gültige
+Einzelnachfolger, solange ihr übriger betroffener Kontext nicht aktuell gebunden
+ist. Die erfolgreiche Ausführung eines Berichtsgenerators ist kein M7-Abschluss.
+
+Seit dem [vorherigen 225-Stand](wirtschaft-m7-current225-m6-ci-green-2026-10-11.md)
+wurden vier gezielt qualifizierte Pakete integriert:
+
+| Paket | Streng danach | Netto | Neue fachliche Abschlüsse | Wiederhergestellte Bindungen |
+| --- | ---: | ---: | ---: | ---: |
+| Vier historische Owner und zwanzig aktuelle Kontexte | 246 | +21 | 0 | 21 |
+| Zwölf aktuelle unabhängige Reviewpaare und acht Kontextbindungen | 257 | +11 | 3 | 8 |
+| Zehn erste aktuelle unabhängige Reviewpaare | 267 | +10 | 10 | 0 |
+| 45 qualifizierte historische Owner und begrenzte indirekte Kontexte | 291 | +24 | 3 | 21 |
+
+Der Nettozuwachs beträgt **+66: 16 neue fachliche strenge Abschlüsse und 50
+wiederhergestellte Bindungen**. Tatsächlich wurden 22 neue aktuelle unabhängige
+Beschreibungsreviewpaare erstellt; davon sind 16 streng abgeschlossen und sechs
+durch alte gemeinsame Nachweisketten weiterhin blockiert. Reviewarbeit und
+strenger Abschluss werden getrennt gezählt. Die ursprünglichen wissenschaftlichen
+Urteile, Reviewpersonen, Runangaben und Zeiten bleiben bei Bindungsfolgern erhalten.
+
+Zwei konkrete P-Formulierungen wurden nach den tatsächlichen Reviewbefunden
+gezielt korrigiert und unabhängig ganz geprüft: Plattformbeziehungen werden
+nicht als drei Stromarten bezeichnet; SDGs als Zielrahmen und Pariser Abkommen
+werden unterschieden. Acht tatsächliche DE/EN-Textfelder ändern sich; die vier
+ganzen Fälle und ihre Ergebnisse bleiben erhalten. Die 344 anderen P-Nachweise
+bleiben fachlich unverändert. Alle AI-Profile behalten ihren wahrheitsgemäßen
+Status `needs_human_review`, E1/G1 und die getrennte menschliche Freigabe.
+
+Die native zentrale Aktualitätsprüfung, der vollständige statistische
+Fünf-Gate-Bericht und alle geschützten Reifegrad-Untergrenzen bestehen. Die 20
+übrigen zentralen Curriculumzeilen sind vollständig gleich zum CI-Commit
+`43461b9064`. Mathematik **807/807, M7** und Physik **478/478, M7** bleiben
+geschützt. Wirtschaft hat weiterhin **2136/2136 abgedeckte Quellenziele** in
+16 vollständigen Länderprojektionen und keine unbelegte Zuordnung. Alle 346
+Atomaritäts- und Memory-Entscheidungen, 67 erforderlichen Primärkarten und 48
+Sichtbereiche bestehen; 1376 geprüfte Memory-Ziel-/Sichtpaare haben keine
+fehlenden sichtbaren Memory-Knoten. Diese QS ist maschinell.
+
+Die regulären fünf Lernzielbuchpublikationen, ihre Originalquellen- und
+Publikationsprüfungen bestehen am stabilen Stand. Wirtschaft besitzt 346
+Zielseiten. Nur sein Buch wurde nach den zwei qualifizierten P-Korrekturen neu
+gerendert; die vier anderen Bücher wurden nach Eingabe-/Ausgabeprüfung
+wiederverwendet. Weitere reine Beschreibungsindexbindungen lösen keinen
+erneuten Buchbuild aus.
+
+Der Ledger entfernt genau zwanzig inzwischen streng abgeschlossene Claims;
+24 offene Economics-Claims und die sechs fachfremden Claims bleiben erhalten.
+Der neueste `origin/main`-Stand `5344554de0` ist konfliktfrei integriert. Seine
+Chemie-/Biologie-Archive und Dokumentation bleiben erhalten; keine aktive
+fachfremde Landschaft oder Qualitätsgrenze wurde geändert.
+
+Der gepushte [M6-Commit `43461b9064`](https://github.com/enpasos/skillpilot/commit/43461b906438572f4f3b64d056112f4189dca4f4)
+hat weiterhin **13/13 erfolgreiche GitHub-Jobs in drei Workflows**;
+[PR #72](https://github.com/enpasos/skillpilot/pull/72) ist bereit. Diese
+GitHub-Läufe prüfen ausschließlich den M6-Commit. Die hier dokumentierten
+lokalen M7-Folger sind noch nicht committed oder durch GitHub-CI geprüft.
+
+Der nächste Schritt verbindet vier bereits unabhängig qualifizierte
+P-/Praxis-Kontexte mit zwei qualifizierten Projekt-/Source-Kontexten und
+prüft die tatsächlich erreichbaren gemeinsamen Nachweisketten. Parallel
+werden vierzehn geänderte Quellen-, Kurs-, P- und Voraussetzungskontexte
+gezielt fachlich geprüft. Offene Grenzfälle und gültige, aber noch blockierte
+Einzelcontainer bleiben ungezählt. Unveränderte Ziele werden nicht erneut
+fachlich geprüft.
+
+Aktuelle Nachweise:
+
+- [Zentraler Bericht](status/curriculum-quality-status.md)
+- [Unveränderlicher 291-Abschluss, acht tatsächliche native Checks und zwanzig gleiche fremde Zeilen](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/02-actual-current291-stable-native-checkpoint-twenty-foreign-rows-exact.receipt.json)
+- [Zwölf aktuelle Reviewpaare und acht gezielte Kontextbindungen](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-third-M7-twelve-current-dual-description-synthesis-root-v1/10-actual-twelve-current-dual-pairs-and-eight-contexts-registry-activation.receipt.json)
+- [Zehn erste unabhängige aktuelle Reviewpaare](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-fourth-M7-ten-first-current-dual-description-synthesis-root-v1/06-actual-ten-first-scientific-current-pairs-registry-activation.receipt.json)
+- [45 historische Owner und getrennt qualifizierte indirekte Gewinne](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-fifth-M7-forty-five-qualified-owner-and-bounded-indirect-context-integration-root-v1/03-actual-qualified45-owner-registry-activation-current291.receipt.json)
+- [Tatsächliche zwei unabhängig qualifizierte P-Terminologiekorrekturen](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-two-P-terminology-followup-to-current-D-recommendations-AUTHOR-INERT-root-v1/03-actual-two-independently-qualified-P-terminology-corrections-and-Book-follower-activated.receipt.json)
+- [Native Ledgerprüfung der zwanzig abgeschlossenen Claims](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/01-actual-native-ledger-twenty-current-strict-claims-retired-retains24-open.receipt.json)
+
+Menschliche Prüfung, Freigaben und Erprobung bleiben separate Release-Gates.
+Runtime-, Datenschutz-, Sicherheits-, Plugin- und Veröffentlichungsänderungen
+gehören nicht zu diesem QS-Paket; private Daten bleiben lokal.

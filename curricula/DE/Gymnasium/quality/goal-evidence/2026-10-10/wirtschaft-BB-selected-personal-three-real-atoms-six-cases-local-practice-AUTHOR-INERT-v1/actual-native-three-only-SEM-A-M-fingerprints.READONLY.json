@@ -1,0 +1,98 @@
+{
+  "role": "native_fingerprints_only_not_independent_science",
+  "wholeCoreHash": "sha256:430a2fe7b5c2052e190bc37ed0a84b30def2633c1189c958ae0e8d209df77df1",
+  "rows": [
+    {
+      "goalId": "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+      "SEM": "sha256:fdf92aee8179dd1ba4369a3f519c72662819edb68fc9c0283c33b402593920e0",
+      "A": "sha256:1cf57be0239b129ab993dafe3508a00d44c6a38988596a1a3e49139e56239180",
+      "M": "sha256:e976fc19ee4d883a20f263e19772e251f147f22410cadd9129fa999ae0fb565c"
+    },
+    {
+      "goalId": "8e065dac-4345-5b88-aee1-dbca803a2631",
+      "SEM": "sha256:8bb46071e205290c6c37f21f91820481a30e38a648ad9c0c5b47fe1eae5479fa",
+      "A": "sha256:a57a07c2741ca369de9c4eaf48c766f8f5e59fb2d5610097ea05502cda0a7577",
+      "M": "sha256:68c5b8b37924920c5b9c0b7604311045c05e4a04cfadf305effb7890b1c23ec4"
+    },
+    {
+      "goalId": "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+      "SEM": "sha256:291459ff4ac55e40b29898ffe871531c446c6ab65ecba8a3b5bdc5c011fc57e5",
+      "A": "sha256:7c85c35f49d236853b8fd98a05da26a5e8ab5a5c27addd3f7e31109e134fef89",
+      "M": "sha256:4e4a541a0b7a77bd4d7767fea198e377b0f6329c2b26e04665fada584ea321dc"
+    }
+  ],
+  "codeContracts": [
+    {
+      "sourcePath": "app/scripts/semanticAtomicityReview.ts",
+      "wholeOriginalSourceSha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9",
+      "functions": [
+        {
+          "name": "normalizeText",
+          "exactSourceSha256": "sha256:1d79da7ca7826ba5abe06e7c2c7ec02db76de4d1453fb207f6088f136d7c9629"
+        },
+        {
+          "name": "stableJson",
+          "exactSourceSha256": "sha256:437cab799d1714f1113610b518fb2e4e3973e31faece05ea9096547d313bbb0b"
+        },
+        {
+          "name": "getSemanticPayload",
+          "exactSourceSha256": "sha256:b8f71a85b623dfe2a4dcdb161a1ce310f16d4bb72a5577e2510fb3f8a09daadf"
+        },
+        {
+          "name": "fingerprintGoal",
+          "exactSourceSha256": "sha256:678e348a5cd2e4f4450cbf2692bbfc34f13f5022b72ba1880f32d87b9a92dead"
+        }
+      ],
+      "method": "Exact TypeScript AST FunctionDeclaration source slices; only type erasure, no checker edits",
+      "wholeSourceAfterExact": true
+    },
+    {
+      "sourcePath": "app/scripts/memoryCardReview.ts",
+      "wholeOriginalSourceSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672",
+      "functions": [
+        {
+          "name": "normalizeText",
+          "exactSourceSha256": "sha256:1d79da7ca7826ba5abe06e7c2c7ec02db76de4d1453fb207f6088f136d7c9629"
+        },
+        {
+          "name": "stableJson",
+          "exactSourceSha256": "sha256:437cab799d1714f1113610b518fb2e4e3973e31faece05ea9096547d313bbb0b"
+        },
+        {
+          "name": "fingerprintGoal",
+          "exactSourceSha256": "sha256:da8ffa82067df1cc64c36d81cde2d7d23619235f512d5c1c25fe4529f823ea0a"
+        }
+      ],
+      "method": "Exact TypeScript AST FunctionDeclaration source slices; only type erasure, no checker edits",
+      "wholeSourceAfterExact": true
+    },
+    {
+      "sourcePath": "app/scripts/generateCurriculumQualityStatus.ts",
+      "wholeOriginalSourceSha256": "sha256:656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+      "functions": [
+        {
+          "name": "isAtomicGoal",
+          "exactSourceSha256": "sha256:5ab4946692e60923890fa51cb205f0d727cf2dd0a89f9d133efea5ebbc3e16c8"
+        },
+        {
+          "name": "parseReference",
+          "exactSourceSha256": "sha256:cc7ba2844aa72ef01bb75d9ab82709263c7b4ef87b2ad9d39df2ec9f8f37da34"
+        },
+        {
+          "name": "buildAtomicDirectRequiresEdges",
+          "exactSourceSha256": "sha256:3f7de06f3723919bbc8f37e8d7578b34a8894090354e69573b6f83907b765e8f"
+        },
+        {
+          "name": "buildReverseEdges",
+          "exactSourceSha256": "sha256:d8a1ee209eb489e601d2819341d22b3b75abf7f404d1662da354c2c98740870b"
+        },
+        {
+          "name": "createPathChecker",
+          "exactSourceSha256": "sha256:ec554265bae8485f4e315cc84e0de0cc9a9fa8d717c1e74a7f0e3294d094d3b1"
+        }
+      ],
+      "method": "Exact TypeScript AST FunctionDeclaration source slices; only type erasure, no checker edits",
+      "wholeSourceAfterExact": true
+    }
+  ]
+}

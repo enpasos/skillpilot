@@ -1,0 +1,22 @@
+{"label":"negative-one-real-BB-GK-indicators-practice-reference-drop","compiler":{"goals":568,"errors":0,"warnings":0,"diagnostics":1457},"source":{"jurisdictions":16,"sourceAtoms":2134,"unsupported":0,"reverse":0},"metrics":{"relevantCompositionViews":34,"evaluatedProjectionScopes":64,"requiredMotivationAnchors":1,"minimumRequiredTerminalAutonomyGoals":34,"requiredTerminalAutonomyGoals":147,"projectionScopesMissingMotivationAnchors":0,"projectionScopesMissingTerminalAutonomyGoals":7,"projectionScopesWithUnexpectedTerminalAutonomyGoals":0,"projectionScopesWithoutExpectedTerminalAutonomyGoals":0,"terminalGoalsMissingCompiledApplicability":0,"projectionScopesWithInvalidStageStructure":0,"nationalProjectionScopesUsingJurisdictionStageAuthority":32,"nationalProjectionScopesMissingJurisdictionStageAuthority":0,"nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority":0,"nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority":404,"nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority":285,"nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority":122,"projectionScopesWithIncompleteExplicitTerminalPrerequisites":0,"explicitTerminalPrerequisiteOccurrencesMissingFromProjection":0,"projectionScopesWithIncompleteWholeMaterialCoverageBindings":0,"wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath":0,"projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure":0,"wholeMaterialPrerequisiteOccurrencesMissingFromProjection":0,"uniqueExplicitTerminalPrerequisitesMissingFromProjection":0,"projectionLocalRouteChecksEnabled":1,"visibleSelectedAtomicGoalOccurrences":6974,"visibleProfileSelectedAtomicGoalOccurrences":6974,"visibleProjectedRouteTargetGoalOccurrences":6974,"visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector":0,"uniqueProjectedRouteTargetsExcludedByProfileSelector":0,"visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks":0,"projectionScopesMissingEffectiveMotivationRoutes":0,"projectionScopesMissingDirectMotivationRoutes":0,"projectionScopesMissingEffectiveTerminalRoutes":62,"projectionScopesMissingDirectTerminalRoutes":62,"visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute":0,"visibleSelectedGoalOccurrencesMissingDirectMotivationRoute":0,"visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute":1012,"visibleSelectedGoalOccurrencesMissingDirectTerminalRoute":1012,"profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute":0,"profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute":0,"profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute":0,"profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute":0,"uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute":0,"uniqueVisibleSelectedGoalsMissingDirectMotivationRoute":0,"uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute":115,"uniqueVisibleSelectedGoalsMissingDirectTerminalRoute":115}}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  metrics(after)
+
+    at <anonymous> (/tmp/skillpilot-econ-macro13-current555-author-B-j6gvz9gw/capsule/app/scripts/actualAuthorMacro13OnlyActualBBNegativesCompletionV2.mts:10:315)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v20.20.2
+

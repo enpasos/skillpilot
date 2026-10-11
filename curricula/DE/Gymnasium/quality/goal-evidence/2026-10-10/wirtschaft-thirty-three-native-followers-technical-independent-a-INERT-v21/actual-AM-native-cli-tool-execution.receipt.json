@@ -1,0 +1,73 @@
+{
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "reviewer": "/root/economics_special2_blind_round_a",
+  "createdAt": "2026-10-10T10:37:11.036Z",
+  "actualToolsExecCommandResults": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "atomicity-current",
+        "script": "semanticAtomicityReview.ts",
+        "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-thirty-three-native-followers-technical-independent-a-INERT-v21/portable/atomicity336.INERT.config.json",
+        "expected": 0,
+        "result": {
+          "chunk_id": "4751c1",
+          "wall_time_seconds": 0.077032192,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "memory-current",
+        "script": "memoryCardReview.ts",
+        "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-thirty-three-native-followers-technical-independent-a-INERT-v21/portable/memory336.INERT.config.json",
+        "expected": 0,
+        "result": {
+          "chunk_id": "7cec25",
+          "wall_time_seconds": 0.099112388,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "atomicity-negative",
+        "script": "semanticAtomicityReview.ts",
+        "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-thirty-three-native-followers-technical-independent-a-INERT-v21/negative/atomicity336.old-records-on-new-CAN.INERT.config.json",
+        "expected": 1,
+        "result": {
+          "chunk_id": "2b6134",
+          "wall_time_seconds": 0.072858623,
+          "exit_code": 1,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "memory-negative",
+        "script": "memoryCardReview.ts",
+        "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-thirty-three-native-followers-technical-independent-a-INERT-v21/negative/memory336.old-records-on-new-CAN.INERT.config.json",
+        "expected": 1,
+        "result": {
+          "chunk_id": "ed93a9",
+          "wall_time_seconds": 0.094711214,
+          "exit_code": 1,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    }
+  ],
+  "activeWrites": 0
+}

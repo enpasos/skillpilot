@@ -1,0 +1,46 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import ts from '../../../../../../../app/node_modules/typescript/lib/typescript.js';
+import {normalizeCanonicalLandscape,buildCanonicalGraphIndex} from '../../../../../../../app/src/utils/authoring/canonicalAuthoring.ts';
+import {normalizeCompositionView,compileCompositionView,collectCompositionProjectionRoleGoalIds} from '../../../../../../../app/src/utils/authoring/compositionViewAuthoring.ts';
+
+const own=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(own,'../../../../../../..');
+const author=path.resolve(own,'../wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1');
+const guards=new Map<string,{path:string,sha256:string,bytes:number}>();
+const sha=(b:Buffer|string)=>'sha256:'+createHash('sha256').update(b).digest('hex');
+function bytes(p:string){const b=fs.readFileSync(p);guards.set(p,{path:path.relative(root,p),sha256:sha(b),bytes:b.length});return b;}
+const json=(p:string)=>JSON.parse(bytes(p).toString('utf8'));
+const sourcePath='app/scripts/generateCurriculumQualityStatus.ts',source=bytes(path.join(root,sourcePath)).toString('utf8');
+const names=['isAtomicGoal','parseReference','buildParentByChild','buildDirectRequiresEdges','buildEffectiveRequiresEdges','collectWholeMaterialPrerequisiteClosure'];
+const tree=ts.createSourceFile(sourcePath,source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TS);
+const slices=tree.statements.filter((s:any)=>ts.isFunctionDeclaration(s)&&s.name&&names.includes(s.name.text)).map((s:any)=>({name:s.name.text,text:source.slice(s.getStart(tree),s.end)}));
+if(slices.length!==names.length)throw Error('Actual native function absent');
+const context:any={Map,Set,exports:{}};
+vm.runInNewContext(ts.transpileModule(slices.map(s=>s.text).join('\n'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText+'\n'+names.map(n=>`exports.${n}=${n};`).join('\n'),context);
+const core=json(path.join(author,'candidate-core/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json'));
+const can=normalizeCanonicalLandscape(core),index=buildCanonicalGraphIndex(can),by=new Map<string,any>(core.goals.map((g:any)=>[g.id,g]));
+const ids=['b6f352e1-bcbd-57d7-a502-b15e54d1400c','8e065dac-4345-5b88-aee1-dbca803a2631','1839e595-3e30-53ec-904f-b38e2ed4e4e0'];
+const terminal='b1440271-2fcd-582c-8a53-c084ada87acc';
+const covered=[...ids,'776457c2-8bb3-53b9-838b-a028319175fb','fab48742-756b-564d-87ef-cd6f3c75f348'];
+const effective=context.exports.buildEffectiveRequiresEdges(core),closure=context.exports.collectWholeMaterialPrerequisiteClosure(core,terminal);
+const views=['gk','lk'].map(course=>{
+ const v=normalizeCompositionView(json(path.join(author,`candidate-views/de-bb-gym-economics-${course}.view.json`)));
+ const compiled=compileCompositionView(v,can),roles=collectCompositionProjectionRoleGoalIds(v.rootNodes,index.goalById);
+ return {course,compileErrors:compiled.findings.filter((x:any)=>x.severity==='error'),newThree:ids.map(goalId=>({goalId,role:roles.targetGoalIds.has(goalId)?'target':roles.prerequisiteOnlyGoalIds.has(goalId)?'prerequisiteOnly':'absent'})),wholePracticeRole:roles.targetGoalIds.has(terminal)?'target':'absent',coveredGoalRoles:covered.map(goalId=>({goalId,target:roles.targetGoalIds.has(goalId)})),fullPrerequisiteRoles:[...closure.atomicGoalIds].map((goalId:any)=>({goalId,target:roles.targetGoalIds.has(goalId),prerequisiteOnly:roles.prerequisiteOnlyGoalIds.has(goalId)})),unsupported912Target:roles.targetGoalIds.has('912ab267-ee00-581b-a31c-dfc0b3587184'),unsupportedOld81dTarget:[...roles.targetGoalIds].some((id:string)=>id.startsWith('81dfe'))};
+});
+const terminalGoal=by.get(terminal);
+if(JSON.stringify(terminalGoal.requires)!==JSON.stringify(covered)||JSON.stringify(terminalGoal.examData.coveredGoalIds)!==JSON.stringify(covered))throw Error('Five-contract boundary changed');
+if(closure.unresolvedReferences.size||views.some(v=>v.compileErrors.length||v.unsupported912Target||v.unsupportedOld81dTarget))throw Error('Scope/prerequisite failure');
+const lk=views.find(v=>v.course==='lk')!,gk=views.find(v=>v.course==='gk')!;
+if(lk.newThree.some(x=>x.role!=='target')||lk.wholePracticeRole!=='target'||lk.coveredGoalRoles.some(x=>!x.target)||lk.fullPrerequisiteRoles.some(x=>!x.target&&!x.prerequisiteOnly)||gk.newThree.some(x=>x.role!=='absent')||gk.wholePracticeRole!=='absent')throw Error('Authored scope role failure');
+const endguards=[...guards.entries()].map(([p,before])=>({before,after:{path:before.path,sha256:sha(fs.readFileSync(p)),bytes:fs.statSync(p).size},exact:before.sha256===sha(fs.readFileSync(p))}));
+if(endguards.some(g=>!g.exact))throw Error('Input changed during own read-only run');
+const outputArg=process.argv.find(x=>x.startsWith('--output='))?.slice('--output='.length);
+if(outputArg&&(outputArg.includes('/')||outputArg.includes('..')))throw Error('Own basename only');
+const target=path.join(own,outputArg??'actual-own-native-effective-prerequisites-BB-two-role-compilers.READONLY.json');
+if(fs.existsSync(target))throw Error('No overwrite of own evidence');
+fs.writeFileSync(target,JSON.stringify({role:'BOUNDED_OWN_NATIVE_EFFECTIVE_PREREQUISITE_AND_TWO_VIEW_CHECK_NOT_CENTRAL_CI',completedAt:new Date().toISOString(),nativeMethods:{sourcePath,sourceSHA256:sha(source),functions:slices.map(s=>({name:s.name,exactASTSourceSHA256:sha(s.text)})),typeErasureOnly:true,checkerModified:false},wholeCoreNodes:core.goals.length,ownEffectiveRequires:[...ids,terminal].map(goalId=>({goalId,direct:by.get(goalId).requires,effective:effective.get(goalId)})),wholeMaterialAtomicPrerequisiteClosure:[...closure.atomicGoalIds].sort(),unresolvedReferences:[...closure.unresolvedReferences],views,endguards,activeWrites:0,newImagesReadOrProduced:false,wholeCentralM6M7PassClaimed:false},null,2)+'\n');
+console.log(JSON.stringify({nodes:core.goals.length,views:2,fullPrerequisites:closure.atomicGoalIds.size,errors:0,activeWrites:0}));

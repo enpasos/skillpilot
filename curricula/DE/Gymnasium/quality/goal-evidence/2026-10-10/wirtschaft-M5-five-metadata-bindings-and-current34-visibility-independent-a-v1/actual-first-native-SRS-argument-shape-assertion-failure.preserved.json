@@ -1,0 +1,9 @@
+{
+  "status": "TECHNICAL_DIAGNOSTIC_FAILURE_BEFORE_ACCEPTANCE",
+  "scriptSHA256": "6dd7285f7632fcc0c8772c4c0087d0a7b29f996d2768be67f921b8598cd87a0b",
+  "actualFailure": "getSrsFilterTags received a whole Goal object instead of its tags array. It truthfully returned [], so comparison with the valid historical GK/LK/canonical filter failed. No runtime KEEP or source result was produced.",
+  "exitCode": 1,
+  "requiredCorrection": "Pass actual wholeGoal.tags to unchanged getSrsFilterTags; retain all frozen input and byte guards.",
+  "curriculumInputsModified": false,
+  "historicalEvidenceModified": false
+}

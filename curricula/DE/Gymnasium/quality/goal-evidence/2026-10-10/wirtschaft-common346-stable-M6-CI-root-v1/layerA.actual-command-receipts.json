@@ -1,0 +1,116 @@
+{
+  "phase": "layerA",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "prepare:runtime-assets",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "prepare:runtime-assets"
+      ],
+      "startedAt": "2026-10-10T17:15:24.612701+00:00",
+      "elapsedSeconds": 5.865,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/layerA.01.prepare-runtime-assets.raw.txt",
+      "rawOutputSha256": "sha256:da4e71c6d656a8281bed9de35f3257e7ba458621e03b9d38e7492a9f7bf3cd73"
+    },
+    {
+      "name": "validate_schemas.py",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/validate_schemas.py"
+      ],
+      "startedAt": "2026-10-10T17:15:30.477861+00:00",
+      "elapsedSeconds": 80.787,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/layerA.02.validate_schemas.py.raw.txt",
+      "rawOutputSha256": "sha256:3bb1fab47c20c4e711e529cfacd5c850e142f51153ed6b94cbe529a4d62f2be4"
+    },
+    {
+      "name": "validate_goal_ids_uuid.py",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/validate_goal_ids_uuid.py"
+      ],
+      "startedAt": "2026-10-10T17:16:51.265632+00:00",
+      "elapsedSeconds": 1.35,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/layerA.03.validate_goal_ids_uuid.py.raw.txt",
+      "rawOutputSha256": "sha256:6a1204731efb1c657289194f1d041bbd330debf627f41819ff64b5349067a657"
+    },
+    {
+      "name": "validate_competency_wording.py",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/validate_competency_wording.py"
+      ],
+      "startedAt": "2026-10-10T17:16:52.616111+00:00",
+      "elapsedSeconds": 38.504,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/layerA.04.validate_competency_wording.py.raw.txt",
+      "rawOutputSha256": "sha256:bbb69e157be96454e60d030755694fe2b30e04f8222d093ed3dcef3166588f19"
+    },
+    {
+      "name": "schema-symlink-regressions",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/test_validate_schemas_symlinks.py",
+        "-v"
+      ],
+      "startedAt": "2026-10-10T17:17:31.121191+00:00",
+      "elapsedSeconds": 0.174,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/layerA.05.schema-symlink-regressions.raw.txt",
+      "rawOutputSha256": "sha256:a61daa736cd14cf4ba638fc03ec7054be87a7b02a24482fbef654ff7befe5b90"
+    },
+    {
+      "name": "spelling-regressions",
+      "command": [
+        "node",
+        "--test",
+        "scripts/check_curriculum_spelling.test.mjs"
+      ],
+      "startedAt": "2026-10-10T17:17:31.295983+00:00",
+      "elapsedSeconds": 0.138,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/layerA.06.spelling-regressions.raw.txt",
+      "rawOutputSha256": "sha256:02c3f700d04b8d9e703920cd103f652dabfb3d25c4399850abdb0f5eade6fe95"
+    },
+    {
+      "name": "curriculum-spelling",
+      "command": [
+        "node",
+        "scripts/check_curriculum_spelling.mjs"
+      ],
+      "startedAt": "2026-10-10T17:17:31.434202+00:00",
+      "elapsedSeconds": 0.091,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/layerA.07.curriculum-spelling.raw.txt",
+      "rawOutputSha256": "sha256:706e8b7abc1d901f391cb41b74993c9f322b4dc2456eafcfa4ca4ced47dfd943"
+    },
+    {
+      "name": "validate:graph",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "startedAt": "2026-10-10T17:17:31.525491+00:00",
+      "elapsedSeconds": 1.982,
+      "exitCode": 1,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/layerA.08.validate-graph.raw.txt",
+      "rawOutputSha256": "sha256:2339aa85cc5e5ee01ff02d0ec05b2c1eec5d4c11eb39c7fb43dcef07c7a9ea1e"
+    }
+  ],
+  "phaseComplete": false
+}

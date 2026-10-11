@@ -1,0 +1,150 @@
+{
+  "role": "actual additive six unchanged-input Layer A stages only; composition-view repair and other dependent Layer A stages remain separately required; no overall M6 closing claim",
+  "inputGuards": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "6bfa382a2b174a1645d883f746ef42c0693813ec2d447561fca3290ca98a0b09",
+      "bytes": 5247711
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "65ffa1ff8a78c2470a59c0154f86ba2155bf4dfb5c6baf2adf7be5168d19896b",
+      "bytes": 214527
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "720f554fdcbafd5d3a71a21773908bdf3f654ee211fb04c29e755b1a59d4883b",
+      "bytes": 1128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/wirtschaftswissenschaften.semantic-kinds.json",
+      "sha256": "08f0d327eb6933738e79bedf32c05ae18c9301057d709451693778fc4eff7f5f",
+      "bytes": 218757
+    }
+  ],
+  "allActiveInputGuardsRemainExact": true,
+  "actualParallelIndependentLanes": [
+    {
+      "lane": "layerA-unaffected-six",
+      "requiredStages": 6,
+      "commands": [
+        {
+          "label": "runtime-landscape-schemas-and-portable-curriculum-links",
+          "argv": [
+            "python3",
+            "-B",
+            "scripts/validate_schemas.py"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot",
+          "actualExitCode": 0,
+          "seconds": 70.604,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/runtime-landscape-schemas-and-portable-curriculum-links.stdout.txt",
+            "sha256": "f1d23bd1c856283c45b5108f2a8a3b3660170b32ec52fe819ef6da423e3ea3b1",
+            "bytes": 180
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/runtime-landscape-schemas-and-portable-curriculum-links.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "goal-IDs-UUID",
+          "argv": [
+            "python3",
+            "-B",
+            "scripts/validate_goal_ids_uuid.py"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot",
+          "actualExitCode": 0,
+          "seconds": 0.87,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/goal-IDs-UUID.stdout.txt",
+            "sha256": "899bc4adcf1183d90f33b1620da973709464f0496868488f44816c7a6048e210",
+            "bytes": 68
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/goal-IDs-UUID.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "competency-wording",
+          "argv": [
+            "python3",
+            "-B",
+            "scripts/validate_competency_wording.py"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot",
+          "actualExitCode": 0,
+          "seconds": 31.945,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/competency-wording.stdout.txt",
+            "sha256": "2bc3cfc284d26c9da5044f925a5f933fc0a79d3df3ad5aac97fec23b82b46912",
+            "bytes": 100
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/competency-wording.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "goal-visualization-assets",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "check:goal-visualization-assets"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 15.345,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/goal-visualization-assets.stdout.txt",
+            "sha256": "6a47680e6c309523e50231b0f3f6c4da9c1e0aaba03ebf9f7e3dd61142186cab",
+            "bytes": 75
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/goal-visualization-assets.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "ai-transparency-inventory",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "check:ai-transparency-inventory"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 1,
+          "seconds": 8.698,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/ai-transparency-inventory.stdout.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/unaffected-six-layerA-stages-additive-run-v5/ai-transparency-inventory.stderr.txt",
+            "sha256": "2c0920a03806e5c3945633f836dfc28f6f22aca8721580d49ee1777ecbc7ff79",
+            "bytes": 8685
+          }
+        }
+      ],
+      "pass": false
+    }
+  ],
+  "allRequiredUnchangedInputSubsetStagesPassed": false,
+  "newScientificStrictClosures": 0,
+  "restoredStrictBindings": 0,
+  "strictNet": 0,
+  "runtimePluginPrivacyDeploymentChanges": false,
+  "humanReleaseTrialApproval": false,
+  "imagesGenerated": 0,
+  "commitCreated": false
+}

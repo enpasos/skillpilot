@@ -1,0 +1,48 @@
+{
+  "actualConfigSchema": {
+    "path": "contracts/goal-description-review/v1/goal-description-rollout-batch-config.schema.json",
+    "sha256": "sha256:f36f619b4155357e429bfd1a7ea03535b4cf5ce89b07006c81a5dda4f5e00655",
+    "bytes": 2045
+  },
+  "actualLedgerSchema": {
+    "path": "contracts/goal-description-review/v1/goal-description-rollout-in-flight-ledger.schema.json",
+    "sha256": "sha256:3f36926dc19f65d78b6f7fae068bf64100b80a09746f8e66875656e0b29d99d8",
+    "bytes": 989
+  },
+  "validator": "Python jsonschema Draft202012Validator with the actual repository schemas",
+  "passedConfigs": 13,
+  "maxConfiguredGoals": 17,
+  "uniqueCurrentIDs": 124,
+  "futureLedger20Paths": {
+    "preservedForeign": 7,
+    "removedOldEconomicClaims": 9,
+    "plannedNewEconomicClaims": 13,
+    "schemaPass": true,
+    "staticDuplicateClaims": []
+  },
+  "negativeSchemaCases": [
+    {
+      "case": "21IDs",
+      "staticSchemaRejected": true,
+      "errors": [
+        "['5d8c708f-699b-535d-84c7-a92e67f7bac6', 'fcf756f1-7252-54cb-9257-de8259090021', '8adaa076-10ad-5fbf-8a22-247b52046da4', '9b6ef4f1-229b-5560-b692-0a6b6de79de7', 'c3512617-8522-5751-8660-5241a6379790', '5262a0ba-0ede-5f47-a6a2-4778d24fc95a', '4552c393-5d49-53a7-ad03-fe80b8b63d2f', 'bd413a7c-775a-5318-813c-0b75578f9a11', '98136a27-120d-5278-b9b9-d833c0ea5fc0', 'c4f27b51-958c-5416-a2de-d96a6e59e8b5', '2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2', 'e90586d8-8e0a-5355-87d0-4ecd90dbe021', 'b4a82d8d-6311-5575-b222-cbaf6ea90d32', '053f1522-31a7-583f-85f5-366ed724d3c5', '643cb9b3-5b7c-59f6-8383-1af413426c88', 'a6a609cb-e8bf-5136-805b-67bddab6b28e', 'a307a7f1-9f14-50e5-b7ba-1e70c8465ee7', 'f5d76508-c5bb-5782-8b39-2ba21d7fe539', '167bfd78-9202-5599-9325-66d7a1579185', '577f0e2d-643a-5a0c-833b-301622a6cb00', '7a926b77-2fbe-52de-810f-954c054b35c2'] is too long"
+      ]
+    },
+    {
+      "case": "duplicateGoal",
+      "staticSchemaRejected": true,
+      "errors": [
+        "['943fd59c-661a-5163-b5a4-c6bb5a983855', '943fd59c-661a-5163-b5a4-c6bb5a983855'] has non-unique elements"
+      ]
+    },
+    {
+      "case": "prematureFingerprintProperty",
+      "staticSchemaRejected": true,
+      "errors": [
+        "Additional properties are not allowed ('currentPageFingerprint' was unexpected)"
+      ]
+    }
+  ],
+  "nativeLoaderOrSelectionRun": false,
+  "nativePrepareRun": false
+}

@@ -1,0 +1,166 @@
+{
+  "role": "Actual current-v21 orientation restoration and D48 stable integration; machine-only; no human release or trial approval",
+  "inputGuards": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "41839e18856594db1a98855dbdc88f866c8bd32e51d534d19f1dd967c4ea0b9f",
+      "bytes": 5248022
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "ad0341ac48f8692fe64ad28ebe2e83e14a9244c91cdf30f519eb71487a2cf73f",
+      "bytes": 254779
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "645668aa45827a9d8d4a7699d7043f9ab43adb0fd5ccc7c296570df6c913a607",
+      "bytes": 1158
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json",
+      "sha256": "228f85907dd8b7721019451abb2c3f0df4f5763d5babd28bf32c5da40a3d9387",
+      "bytes": 417326
+    }
+  ],
+  "allInputGuardsRemainExact": true,
+  "commands": [
+    {
+      "label": "central",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "actualExitCode": 0,
+      "seconds": 98.027,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D48-stable-central-root-v1/central.stdout.txt",
+        "sha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861",
+        "bytes": 108
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D48-stable-central-root-v1/central.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "floors",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/checkCurriculumMaturityFloors.ts"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.195,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D48-stable-central-root-v1/floors.stdout.txt",
+        "sha256": "1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+        "bytes": 58
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D48-stable-central-root-v1/floors.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "allTwoPassed": true,
+  "currentEconomicsMaturity": "M6",
+  "currentCQR303": {
+    "id": "CQR-303",
+    "status": "fail",
+    "summary": "Deep curriculum QA is incomplete: 234/336 current curricularAtomic goals strictly complete.",
+    "metrics": {
+      "expectedGoals": 336,
+      "remaining": 102,
+      "strictComplete": 234,
+      "currentDescriptionResolutions": 234,
+      "currentPositiveEvidenceProfiles": 336,
+      "currentSemanticAtomicityDecisions": 336,
+      "currentMemoryReviewDecisions": 336,
+      "currentVisualizationQaRecords": 336,
+      "deferredVisualizations": 0,
+      "requiredChecksPassed": 5,
+      "requiredChecksTotal": 6,
+      "blockingIssues": 103
+    },
+    "details": [
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 04809186-3f65-579d-b300-af9ed3e100c1",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 04c17efe-4451-52bd-8116-1042d1501c41",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 053f1522-31a7-583f-85f5-366ed724d3c5",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 09e58ea8-1920-5600-bd2b-cc1f199d051f",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 13b6317a-d42a-5a13-8358-c85d883cb4c7",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 15d18bd1-0ae1-58c8-89fd-623bebe12041",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 1c92b15e-88c0-5e1d-9d72-30508164f038",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 1d989a89-4b1b-53d3-86ab-dd4986fc5839",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 21dc877b-e281-5269-8244-05be788f7771",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 25278ecf-2e77-556e-9fe6-8f0b954cc680",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 2ccb9f7e-1512-5970-85a1-71ec42734eb9",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 36ebee6c-ec32-53e2-a5da-f50185e61a55",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 3897fc05-a8fc-5045-8d7f-9efeabcd098d",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 40676995-14fc-55a9-89ae-440b2ee3ab33",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 424bae9f-8f2e-5093-a17d-ee5eadb6edde",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 5262a0ba-0ede-5f47-a6a2-4778d24fc95a",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 52e6731e-71e9-53b1-8bb9-b03da445decf",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 53829f76-2d9c-5cdd-8521-c249f57f738d"
+    ]
+  },
+  "protectedMathPhysics": [
+    {
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "subject": "Physik",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 478,
+          "remaining": 0,
+          "strictComplete": 478,
+          "currentDescriptionResolutions": 478,
+          "currentPositiveEvidenceProfiles": 478,
+          "currentSemanticAtomicityDecisions": 478,
+          "currentMemoryReviewDecisions": 478,
+          "currentVisualizationQaRecords": 478,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    }
+  ],
+  "newScientificStrictCompletionsThisPackage": 23,
+  "restoredStrictBindingsThisPackage": 0,
+  "newScientificStrictCompletionsSince186": 48,
+  "netStrictSince186": 48,
+  "humanReleaseTrialSeparate": true,
+  "commitCreated": false,
+  "imagesGenerated": 0
+}

@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-author-written-negative-diagnostics-not-learner-data-or-independent-approval",
+  "sourceWholeSHA256": "1da3e7c9d60617beb729c72d054bf9b2053ca2c78711f526a1983feeb6378f4c",
+  "answers": [
+    {
+      "goalId": "88228c0a-2a1e-5c59-8426-c291e49f3f35",
+      "label": "All-five-courts and procedural-category confusions",
+      "origin": "New intentional author-written synthetic diagnostic answer; no actual learner, runtime observation or independent reviewer.",
+      "completeTaskResponses": [
+        {
+          "task": 1,
+          "answer": "A gehört zum Finanzgericht, weil Geld verlangt wird. B gehört zum Sozialgericht, weil es um eine Person geht. C gehört zum Arbeitsgericht, weil eine Werkstatt arbeitet. D gehört zum ordentlichen Gericht, weil die Bundesagentur eine Behörde ist. E gehört zum Verwaltungsgericht, weil jedes Behördenhandeln dort geprüft wird."
+        },
+        {
+          "task": 2,
+          "answer": "Im Zivilprozess klagt der Staatsanwalt Nina wegen Schuld an; Ben ist Richter. Im Strafverfahren verlangt Nina als Klägerin von Ben Ersatz; das Gericht ermittelt als ihr privater Vertreter. Beide Verfahren haben ausschließlich den Zweck, Ben Geld zu geben."
+        },
+        {
+          "task": 3,
+          "answer": "Zivil: Verurteilung, danach Klage, danach Untersuchung. Straf: Zahlung der 300 EUR, danach Urteil, danach Anzeige. Ein Ergebnis ist von Anfang an fest."
+        },
+        {
+          "task": 4,
+          "answer": "Beide behaupteten Folgen stimmen. Eine Anzeige beweist Ninas Schuld und erteilt zugleich einen Zahlungstitel für 300 EUR."
+        }
+      ],
+      "actualAuthorRubricApplication": [
+        {
+          "stepId": "s1",
+          "maximum": 10,
+          "awarded": 0,
+          "actualAuthorReason": "All five branch assignments and purported rules are wrong; none earns either assignment or case-rule credit."
+        },
+        {
+          "stepId": "s2",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Purposes and all named procedural roles are confused; no credit for naming a role without assigning it correctly."
+        },
+        {
+          "stepId": "s3",
+          "maximum": 4,
+          "awarded": 0,
+          "actualAuthorReason": "Neither sequence is meaningful, and neither outcome is left open."
+        },
+        {
+          "stepId": "s4",
+          "maximum": 4,
+          "awarded": 0,
+          "actualAuthorReason": "Affirms both exact misconceptions rather than explaining either boundary."
+        }
+      ],
+      "actualAuthorTotal": 0,
+      "maximum": 24,
+      "passingThreshold": 15,
+      "belowPassingThreshold": true
+    },
+    {
+      "goalId": "88228c0a-2a1e-5c59-8426-c291e49f3f35",
+      "label": "Correct three branches and roles but automatic outcome",
+      "origin": "New intentional author-written synthetic diagnostic answer; no actual learner, runtime observation or independent reviewer.",
+      "completeTaskResponses": [
+        {
+          "task": 1,
+          "answer": "A: ordentliche Gerichtsbarkeit, privater Ersatzstreit. B: Arbeitsgerichtsbarkeit, Arbeitnehmer-Arbeitgeber-Streit aus dem Arbeitsvertrag. C: Verwaltungsgerichtsbarkeit, öffentlich-rechtliche kommunale Erlaubnis ohne Sonderzuweisung. D: Finanzgericht, weil die Leistung mit Geld bezahlt wird. E: Sozialgericht, weil die Inhaberin Steuern sozial ungerecht findet."
+        },
+        {
+          "task": 2,
+          "answer": "Zivil wird Bens privater Ersatzanspruch geklärt: Ben ist Kläger und Nina Beklagte. Strafrechtlich ist Nina Beschuldigte, Ben Geschädigter/Anzeigender. Der Staat verfolgt den Vorwurf; die Staatsanwaltschaft ermittelt und entscheidet über Anklage oder Einstellung, das unabhängige Gericht entscheidet über den Vorwurf."
+        },
+        {
+          "task": 3,
+          "answer": "Zivil: fertige Entscheidung, erst dann Klagezustellung, schließlich Beweise. Straf: Urteil, danach Anzeige, danach Staatsanwaltschaft. Weil eine Anzeige vorliegt, ist in beiden Fällen das Ergebnis schon fest."
+        },
+        {
+          "task": 4,
+          "answer": "Nina muss verurteilt werden, da Ben Anzeige erstattet hat. Damit wird der private Anspruch automatisch anerkannt und Nina muss Ben die 300 EUR zahlen."
+        }
+      ],
+      "actualAuthorRubricApplication": [
+        {
+          "stepId": "s1",
+          "maximum": 10,
+          "awarded": 6,
+          "actualAuthorReason": "A/B/C each earn assignment1 plus actual rule/case reason1; D/E both wrong, no points."
+        },
+        {
+          "stepId": "s2",
+          "maximum": 6,
+          "awarded": 6,
+          "actualAuthorReason": "Both purposes, Ben/Nina and prosecution/independent court are correctly separated: full six, despite later contradictory outcome claims."
+        },
+        {
+          "stepId": "s3",
+          "maximum": 4,
+          "awarded": 0,
+          "actualAuthorReason": "Both sequences reversed and open outcome expressly denied: no sequence or openness credit."
+        },
+        {
+          "stepId": "s4",
+          "maximum": 4,
+          "awarded": 0,
+          "actualAuthorReason": "Both automatic consequences remain explicitly asserted: no credit."
+        }
+      ],
+      "actualAuthorTotal": 12,
+      "maximum": 24,
+      "passingThreshold": 15,
+      "belowPassingThreshold": true
+    },
+    {
+      "goalId": "c659edea-7786-59b3-90f3-9c9983388c83",
+      "label": "Nationalisation and payoff/dataset misread",
+      "origin": "New intentional author-written synthetic diagnostic answer; no actual learner, runtime observation or independent reviewer.",
+      "completeTaskResponses": [
+        {
+          "task": 1,
+          "answer": "S und G schaffen laut Material privates Eigentum und Marktpreise ab. In beiden legt der Staat alle Produktionsmengen fest, und G berücksichtigt ausschließlich Geldgewinn. Das trifft auf sämtliche GWÖ-Konzepte weltweit zu."
+        },
+        {
+          "task": 2,
+          "answer": "Für jedes y maximiert x=10 die eigene Auszahlung, weil eine höhere eigene Übertragung den Term k*y vergrößert. Daher wählen beide10. Bei k=2 erhalten beide bei(0,0)0 und bei(10,10)40. Es müssen alle immer nur fair handeln."
+        },
+        {
+          "task": 3,
+          "answer": "Die Tabelle zeigt, dass 100% der Personen überhaupt nichts übertragen und22,4% alles. Damit handelt jede Person wie mein Modell; weitere Grenzen gibt es nicht."
+        },
+        {
+          "task": 4,
+          "answer": "Das beweist, dass G eine ganze Volkswirtschaft besser steuert, weil jeder im Versuch in G lebte und das eine kontrollierte Landesstudie war."
+        }
+      ],
+      "actualAuthorRubricApplication": [
+        {
+          "stepId": "s1",
+          "maximum": 8,
+          "awarded": 0,
+          "actualAuthorReason": "All three axes contradict supplied S/G, and an unsupported universal claim replaces the explicit bound."
+        },
+        {
+          "stepId": "s2",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Own x does not change k*y; prediction, control values and stated behavioural assumption are wrong."
+        },
+        {
+          "stepId": "s3",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Percentages/categories swapped; no valid comparison, plausible cautious explanation or two bounds."
+        },
+        {
+          "stepId": "s4",
+          "maximum": 4,
+          "awarded": 0,
+          "actualAuthorReason": "Invents a regime implementation and macro experiment; neither required boundary is acknowledged."
+        }
+      ],
+      "actualAuthorTotal": 0,
+      "maximum": 24,
+      "passingThreshold": 15,
+      "belowPassingThreshold": true
+    },
+    {
+      "goalId": "c659edea-7786-59b3-90f3-9c9983388c83",
+      "label": "Correct supplied concepts but cooperative-dominance and causal overclaim",
+      "origin": "New intentional author-written synthetic diagnostic answer; no actual learner, runtime observation or independent reviewer.",
+      "completeTaskResponses": [
+        {
+          "task": 1,
+          "answer": "S verbindet wirtschaftliche Freiheit/Marktkoordination mit Wettbewerbsregeln und sozialem Ausgleich. G ergänzt im vorgegebenen Entwurf soziale/ökologische Ziele durch Gemeinwohlbericht und vorgeschlagenen Vergabevorteil. Beide erhalten private Betriebe und Marktpreise; G verändert den Zusatzmechanismus. Diese Aussagen gelten nur für den bereitgestellten Entwurf, nicht automatisch für andere GWÖ-Varianten."
+        },
+        {
+          "task": 2,
+          "answer": "Bei k=2 geben(0,0)10/10,(10,10)20/20 und(0,10)30/0. Daher ist x=10 für jedes y die individuell geldmaximierende Wahl; beide werden10 übertragen. Andere Verhaltensannahmen muss man nicht nennen."
+        },
+        {
+          "task": 3,
+          "answer": "Die rein individuelle Null/Null-Vorhersage passt nicht zu allen Entscheidungen: nur22,4% übertragen nichts. Das beweist eindeutig eine angeborene faire Persönlichkeit aller anderen; Modell, Teilnehmerauswahl und verschiedene k können keinerlei Grenze verursachen."
+        },
+        {
+          "task": 4,
+          "answer": "Die hohen Kooperationszahlen beweisen unmittelbar die volkswirtschaftliche Überlegenheit von G gegenüber S, einschließlich eines kausalen Effekts des Gemeinwohlberichts."
+        }
+      ],
+      "actualAuthorRubricApplication": [
+        {
+          "stepId": "s1",
+          "maximum": 8,
+          "awarded": 8,
+          "actualAuthorReason": "All supplied comparison axes plus exact scope bound correctly stated: full eight."
+        },
+        {
+          "stepId": "s2",
+          "maximum": 6,
+          "awarded": 2,
+          "actualAuthorReason": "All control payoffs correct earn2; wrong marginal mechanism/own optimum/joint prediction and absent assumption earn0 remaining."
+        },
+        {
+          "stepId": "s3",
+          "maximum": 6,
+          "awarded": 2,
+          "actualAuthorReason": "Concrete 22.4% comparison earns2; unique causal personality claim earns no cautious explanation, and boundaries are denied."
+        },
+        {
+          "stepId": "s4",
+          "maximum": 4,
+          "awarded": 0,
+          "actualAuthorReason": "Affirms unsupported macro and report causal inferences, no boundary credit."
+        }
+      ],
+      "actualAuthorTotal": 12,
+      "maximum": 24,
+      "passingThreshold": 15,
+      "belowPassingThreshold": true
+    },
+    {
+      "goalId": "a01084fe-43a3-5327-8887-c8b07777f89f",
+      "label": "Absolute capital, multiplied reserve and fixed calendar date",
+      "origin": "New intentional author-written synthetic diagnostic answer; no actual learner, runtime observation or independent reviewer.",
+      "completeTaskResponses": [
+        {
+          "task": 1,
+          "answer": "Nord L/K=0,5 und Süd L/K=1. Textil L/K=1/6 und Maschine L/K=2. Nord ist kapitalreich, Textil kapitalintensiv, Maschine arbeitsintensiv."
+        },
+        {
+          "task": 2,
+          "answer": "Nord exportiert Maschinen, weil200 Menschen stets200 Maschinen bedeuten. Süd exportiert Textilien, weil ein absolutes K von100 niedrig ist. Keine Annahmen sind relevant."
+        },
+        {
+          "task": 3,
+          "answer": "Reichweite A=120*4=480 Jahre, B=150*5=750 Jahre, C=120*6=720 Jahre. Wenn beide Zähler und Nenner steigen, muss der Quotient steigen; die Einheiten sind Tonnen."
+        },
+        {
+          "task": 4,
+          "answer": "Kupferreserve R und Maschinenkapital K sind dasselbe. Mehr Kupfer in Süd garantiert Maschinenexporte. 30 Jahre bedeutet das genaue Ende in30 Kalenderjahren, selbst wenn sich Fördermenge, Preis oder Technik ändern."
+        }
+      ],
+      "actualAuthorRubricApplication": [
+        {
+          "stepId": "s1",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "All relevant numerical/relative classifications are wrong."
+        },
+        {
+          "stepId": "s2",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Neither conditional linked trade inference nor two actual assumptions is supplied."
+        },
+        {
+          "stepId": "s3",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "All three quotients and proportional/unit explanations wrong."
+        },
+        {
+          "stepId": "s4",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Affirms K/R conflation, unprovided reserve, unconditional trade and fixed exhaustion date; no valid bounds."
+        }
+      ],
+      "actualAuthorTotal": 0,
+      "maximum": 24,
+      "passingThreshold": 15,
+      "belowPassingThreshold": true
+    },
+    {
+      "goalId": "a01084fe-43a3-5327-8887-c8b07777f89f",
+      "label": "Correct relative factors but unconditional trade and stale production denominator",
+      "origin": "New intentional author-written synthetic diagnostic answer; no actual learner, runtime observation or independent reviewer.",
+      "completeTaskResponses": [
+        {
+          "task": 1,
+          "answer": "Nord L/K=200/100=2, Süd=100/100=1; Nord ist relativ arbeitsreicher, Süd relativ kapitalreicher. Textil L/K=6, Maschine=2/4=0,5; Textil ist relativ arbeitsintensiv, Maschine relativ kapitalintensiv."
+        },
+        {
+          "task": 2,
+          "answer": "Nord exportiert Textilien, weil Nord relativ arbeitsreicher ist und Textil relativ mehr Arbeit braucht. Süd exportiert Maschinen, weil Süd relativ kapitalreicher ist und Maschine Kapital intensiver nutzt. Diese Muster gelten ausnahmslos in der Realität; Technologien, Kosten und andere Modellannahmen muss man nicht prüfen."
+        },
+        {
+          "task": 3,
+          "answer": "A hat30 Jahre Reichweite, B ebenfalls30 Jahre, C bleibt ebenfalls30 Jahre, weil dieselbe Reserve wie A vorliegt. Wenn R und P steigen, kann ich die proportionalen Änderungen nicht erklären. Eine Einheitenbegründung fehlt."
+        },
+        {
+          "task": 4,
+          "answer": "Eine größere Kupferreserve Süd ist bewiesen und entspricht automatisch Maschinenkapital. Das garantiert Maschinenexporte. Die30 Jahre legen das reale Erschöpfungsdatum endgültig fest; Veränderungen sind irrelevant."
+        }
+      ],
+      "actualAuthorRubricApplication": [
+        {
+          "stepId": "s1",
+          "maximum": 6,
+          "awarded": 6,
+          "actualAuthorReason": "Four quotients earn4; both relative country and good classifications earn1 each."
+        },
+        {
+          "stepId": "s2",
+          "maximum": 6,
+          "awarded": 4,
+          "actualAuthorReason": "Both linked model trade patterns earn2 each; explicit rejection of actual assumptions earns0 boundary points."
+        },
+        {
+          "stepId": "s3",
+          "maximum": 6,
+          "awarded": 2,
+          "actualAuthorReason": "A/B each correct with year unit earn1; C wrong, no proportional or dimensional explanation."
+        },
+        {
+          "stepId": "s4",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Every required distinction/information boundary is denied:0."
+        }
+      ],
+      "actualAuthorTotal": 12,
+      "maximum": 24,
+      "passingThreshold": 15,
+      "belowPassingThreshold": true
+    },
+    {
+      "goalId": "efbdb94b-e694-53d7-91a7-610e2a1ed1c2",
+      "label": "Unweighted returns and general safety promise",
+      "origin": "New intentional author-written synthetic diagnostic answer; no actual learner, runtime observation or independent reviewer.",
+      "completeTaskResponses": [
+        {
+          "task": 1,
+          "answer": "Da beide Portfolios aus zwei Anlagen bestehen, gilt überall der einfache Durchschnitt. P und Q haben in I3%, in II−1% und in III−7,5%; die Endwerte sind1030,990 und925, unabhängig von den Gewichten."
+        },
+        {
+          "task": 2,
+          "answer": "A und B steigen in allen drei Fällen gemeinsam. Diversifikation garantiert deshalb schon wegen zweier Anlagen einen Gewinn; Gewichte sind ohne Einfluss."
+        },
+        {
+          "task": 3,
+          "answer": "Beide Portfolios erfüllen in jedem Szenario die5%-Grenze, weil zwei Anlagen stets jedes Risiko ausschalten."
+        },
+        {
+          "task": 4,
+          "answer": "Q ist generell sicher. Drei erfundene Alternativszenarien beweisen dauerhafte negative Korrelation, und weitere Daten, Kosten oder Wahrscheinlichkeiten fehlen nicht."
+        }
+      ],
+      "actualAuthorRubricApplication": [
+        {
+          "stepId": "s1",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "None of six weighted return or end-value pairs is correct; no half-credit for a method contradicted by weights."
+        },
+        {
+          "stepId": "s2",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Signs, weighting and guarantee reasoning wrong, no points."
+        },
+        {
+          "stepId": "s3",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Neither actual threshold violation nor valid bounded comparison identified."
+        },
+        {
+          "stepId": "s4",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Affirms both target misconceptions and denies information needs:0."
+        }
+      ],
+      "actualAuthorTotal": 0,
+      "maximum": 24,
+      "passingThreshold": 15,
+      "belowPassingThreshold": true
+    },
+    {
+      "goalId": "efbdb94b-e694-53d7-91a7-610e2a1ed1c2",
+      "label": "All calculations and joint movements correct but threshold and inference fail",
+      "origin": "New intentional author-written synthetic diagnostic answer; no actual learner, runtime observation or independent reviewer.",
+      "completeTaskResponses": [
+        {
+          "task": 1,
+          "answer": "P: I4% und1040; II−2% und980; III−8% und920. Q: I0% und1000; II2% und1020; III−6% und940. Dafür verwende ich jeweils die angegebenen Anfangsgewichte."
+        },
+        {
+          "task": 2,
+          "answer": "In I und II bewegen sich A und B gegensinnig; der Gewinn eines Anteils gleicht den Verlust des anderen abhängig vom Gewicht teilweise aus. In III fallen beide; Q ist stärker in die dort weniger fallende B-Anlage gewichtet und verliert weniger. Diversifikation verhindert daher gemeinsame Verluste nicht."
+        },
+        {
+          "task": 3,
+          "answer": "Für die5%-Grenze muss man nur I prüfen; weil dort kein Portfolio verliert, erfüllen beide die Grenze in allen Szenarien. Einen Gewinn-/Verlustvergleich der beiden brauche ich nicht."
+        },
+        {
+          "task": 4,
+          "answer": "Q ist generell sicher, und die drei Szenarien beweisen dauerhafte negative Korrelation. Es fehlen weder Wahrscheinlichkeiten noch gemeinsame Zeitreihen oder andere Informationen."
+        }
+      ],
+      "actualAuthorRubricApplication": [
+        {
+          "stepId": "s1",
+          "maximum": 6,
+          "awarded": 6,
+          "actualAuthorReason": "All six weighted return and end-value pairs earn0.5+0.5 each:6."
+        },
+        {
+          "stepId": "s2",
+          "maximum": 6,
+          "awarded": 6,
+          "actualAuthorReason": "Correct opposing signs/weights, joint negative scenario and absence of guarantee:6."
+        },
+        {
+          "stepId": "s3",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "Neither numerical violation nor proper bounded comparison; wrongly narrows all-scenario requirement to I:0."
+        },
+        {
+          "stepId": "s4",
+          "maximum": 6,
+          "awarded": 0,
+          "actualAuthorReason": "General safety/correlation claim affirmed and both information needs denied:0."
+        }
+      ],
+      "actualAuthorTotal": 12,
+      "maximum": 24,
+      "passingThreshold": 15,
+      "belowPassingThreshold": true
+    }
+  ],
+  "allEightBelow15": true,
+  "qualityApproval": false,
+  "runtimeAcceptance": false,
+  "realLearnerEvidence": false,
+  "newStrictClosures": 0
+}

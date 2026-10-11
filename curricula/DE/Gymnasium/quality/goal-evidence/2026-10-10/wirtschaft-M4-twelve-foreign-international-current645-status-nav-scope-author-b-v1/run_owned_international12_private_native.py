@@ -1,0 +1,8 @@
+import pathlib,json,subprocess,sys,time,hashlib
+R=pathlib.Path('/home/enpasos/projects/skillpilot');O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-twelve-foreign-international-current645-status-nav-scope-author-b-v1';CAP=pathlib.Path('/tmp/skillpilot-international12-current645-author-B-2zzno41h/capsule');label=sys.argv[1]
+argv=['/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node',str(R/'app/node_modules/tsx/dist/cli.mjs'),str(CAP/'app/scripts/nativeInternational12Current645ScopeAuthorB.mts'),str(CAP),str(O),str(R),label]
+t=time.monotonic();p=subprocess.run(argv,cwd=CAP/'app',capture_output=True,text=True)
+(O/(label+'.stdout.txt')).write_text(p.stdout);(O/(label+'.stderr.txt')).write_text(p.stderr)
+def b(path):return dict(path=str(path.relative_to(R)),sha256=hashlib.sha256(path.read_bytes()).hexdigest(),bytes=path.stat().st_size)
+a={'role':'AUTHOR native physical probe, no independent Scope verdict','argv':argv,'cwd':str(CAP/'app'),'exitCode':p.returncode,'durationSeconds':time.monotonic()-t,'stdout':b(O/(label+'.stdout.txt')),'stderr':b(O/(label+'.stderr.txt')),'nativeOutput':b(O/(label+'.actual-native.json.gz')) if (O/(label+'.actual-native.json.gz')).exists() else None,'summary':b(O/(label+'.actual-native-summary.json')) if (O/(label+'.actual-native-summary.json')).exists() else None}
+(O/(label+'.actual-command-exit.json')).write_text(json.dumps(a,indent=2)+'\n');summary=json.loads((O/(label+'.actual-native-summary.json')).read_text()) if (O/(label+'.actual-native-summary.json')).exists() else {};summary.pop('eligibleAbovePOnly',None);print(json.dumps({'exitCode':p.returncode,'actual':summary}));sys.exit(p.returncode)

@@ -1,0 +1,14 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {validateCanonicalLandscape} from './app/src/utils/authoring/canonicalAuthoring.ts';
+import {buildApplicabilityCompilation} from './app/scripts/applicabilityCompiler.ts';
+import {routeProfiles,evaluateRouteProfile,ownProjectedScopeRows,collectWholeMaterialPrerequisiteClosure,readJurisdictionCoverageByLandscapeId,evaluateJurisdictionCoverage} from './app/scripts/generateCurriculumQualityStatus.ts';
+const land=JSON.parse(readFileSync('./curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json','utf8'));
+const all=buildApplicabilityCompilation(),report=all.reports.find(r=>r.landscapeId===land.landscapeId)!;
+const profile=routeProfiles.find(p=>p.landscapeId===land.landscapeId)!;
+const route=evaluateRouteProfile(land,profile,{...all,reports:[report]});
+const source=evaluateJurisdictionCoverage(readJurisdictionCoverageByLandscapeId(all).get(land.landscapeId));
+const ids=land.goals.filter(g=>g.examData).map(g=>g.id);
+const materials=ids.map(id=>{const g=land.goals.find(g=>g.id===id),c=collectWholeMaterialPrerequisiteClosure(land,id);return {id,directRequires:g.requires,wholeMaterialPrerequisites:[...c.atomicGoalIds],unresolvedReferences:[...c.unresolvedReferences],actualCompiled:report.goals.find(x=>x.goalId===id),actuallyVisibleScopeKeys:ownProjectedScopeRows.filter(r=>r.actualTerminalIds.includes(id)).map(r=>r.viewPath+'|'+r.jurisdiction+'|'+JSON.stringify(r.scopeFilters))};});
+const graph=validateCanonicalLandscape(land);if(graph.some(g=>g.severity==='error'))throw new Error(JSON.stringify(graph));
+writeFileSync(process.argv[2],JSON.stringify({goalCount:land.goals.length,graph,compilerSummary:report.summary,compilerGoals:report.goals,nativeRules:route.rules,sourceRule:source,materials,allScopeRows:ownProjectedScopeRows},null,2)+'\n');
+console.log(JSON.stringify({goalCount:land.goals.length,graphErrors:graph.filter(g=>g.severity==='error').length,compilerSummary:report.summary,sourceRule:source,rules:route.rules.map(r=>({id:r.id,status:r.status,metrics:r.metrics}))},null,2));

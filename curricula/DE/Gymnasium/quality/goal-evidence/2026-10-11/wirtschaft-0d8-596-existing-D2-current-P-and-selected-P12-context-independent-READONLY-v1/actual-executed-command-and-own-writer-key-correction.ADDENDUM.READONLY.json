@@ -1,0 +1,35 @@
+{
+  "status": "READONLY-command-receipt-additive-no-science-change",
+  "actualUTC": "2026-10-11T00:28:53.506968+00:00",
+  "cwd": "/home/enpasos/projects/skillpilot",
+  "actualCommand": "python3 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-0d8-596-existing-D2-current-P-and-selected-P12-context-independent-READONLY-v1/write-whole-project-context-and-own-answers.READONLY.py",
+  "firstAttempt": {
+    "exitCode": 1,
+    "failure": "KeyError sourceGoalId at source-edge lookup before any output materialisation",
+    "correctiveChange": "Own unsealed writer uses actual mapping legacyGoalId key; no source or checker mutation"
+  },
+  "actualSuccessfulAttempt": {
+    "exitCode": 0,
+    "output": {
+      "goalIds": [
+        "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+        "596c02e3-6263-5084-8593-c5f51808326b"
+      ],
+      "contextDecisions": [
+        "KEEP",
+        "KEEP"
+      ],
+      "current0dWholePExact": false,
+      "current596WholePExact": true,
+      "oldFourCasesExact": true,
+      "guards": 24,
+      "activeWrites": 0,
+      "newD2Reviews": 0
+    }
+  },
+  "originalScienceSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-0d8-596-existing-D2-current-P-and-selected-P12-context-independent-READONLY-v1/SEALED-two-existing-project-D2-current-P4-and-selected-P12-context-KEEP.READONLY.json",
+    "sha256": "sha256:82ecbc17bab0ee2361db977cab7399d83a20e6e0ca04d9334d27c55419375933"
+  },
+  "noNewReviewOrSourceApproval": true
+}

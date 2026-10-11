@@ -1,0 +1,167 @@
+from pathlib import Path
+from copy import deepcopy
+from hashlib import sha256
+from datetime import datetime, timezone
+import json
+import subprocess
+import sys
+from jsonschema import Draft202012Validator
+
+OUT = Path(__file__).resolve().parent
+ROOT = next(p for p in OUT.parents if (p / 'AGENTS.md').is_file())
+BASE = OUT.parent
+def read(p): return json.loads(p.read_text())
+def bind(p): return {'path': str(p.relative_to(ROOT)), 'sha256': sha256(p.read_bytes()).hexdigest()}
+def write(name, data):
+    p = OUT / name
+    with p.open('x') as f: f.write(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+    read(p)
+    return bind(p)
+
+q2 = BASE / 'wirtschaft-nine-reviewed-Q2-materials-root-bounded-assembly-v1'
+q3a = BASE / 'wirtschaft-Q3-thirtyfour-seven-coherent-material-author-v1'
+q3four = BASE / 'wirtschaft-four-Q3-EU-private-criminal-global-trade-independent-whole-material-review-v1'
+q3three = BASE / 'wirtschaft-three-Q3-FX-finance-macro-independent-whole-material-review-v1'
+q14a = BASE / 'wirtschaft-Q1-Q4-fifteen-five-coherent-material-author-v1'
+q14r = BASE / 'wirtschaft-Q1-Q4-fifteen-five-coherent-material-independent-whole-review-v1'
+base_path = q2 / 'whole-CAN425-reviewed-E9-plus-reviewed-Q2-nine-and-one-navigation-candidate.inert.json'
+review_paths = [
+    q3four / 'actual-final-independent-four-Q3-EU-private-criminal-global-trade-whole-materials-KEEP.receipt.json',
+    q3three / 'actual-final-independent-three-Q3-FX-finance-macro-whole-materials-KEEP.receipt.json',
+    q14r / 'actual-final-five-coherent-Q1-Q4-materials-fifteen-whole-performances-independent-KEEP-and-inert-machine-release.receipt.json',
+    q14r / 'actual-final-five-KEEP-fifteen-performance-P30-seven-native-kind-bindings-and-one-partial-mark-successor-v2.receipt.json',
+    q2 / 'actual-final-nine-reviewed-Q2-native-CAN425-existing-navigation-and-current-production-bounded-KEEP.receipt.json',
+]
+expected_reviews = [
+    'bb6c826d382212fb4f3dbd2a044657a1a32a0262b3a5c992a7202e36b7f99040',
+    '09e7ce4168b6a1b5d1cb60998f8e6efab8dbc4f9a9c7c7d3025d436f763f7a2c',
+    'def70a49f3a356dc0dc75bf5664eaa0fe817e6ca97ded598694e9d35277dc182',
+    None,
+    '07850db263851931e26dbd500528f464551ac1dbe859fd51cbf78c24637b3a01',
+]
+for p, expected in zip(review_paths, expected_reviews):
+    if expected: assert bind(p)['sha256'] == expected
+    read(p)
+release_paths = [
+    q3four / 'whole-four-Q3-materials.independently-reviewed-machine-released.inert.candidate.json',
+    q3three / 'whole-three-independent-KEEP-Q3-materials.only-machine-material-status-released.inert.json',
+    q14r / 'whole-five-KEEP-material-bodies.machine-released-inert-independent-candidate.json',
+]
+author_paths = [
+    q3a / 'whole-seven-coherent-Q3-thirtyfour-materials.DRAFT-terminal-goals.author-candidate.json',
+    q14a / 'whole-five-Q1-Q4-fifteen-materials.DRAFT-terminal-goals.author-candidate.json',
+]
+nav_paths = [
+    q3a / 'whole-one-Q3-prerequisite-free-seven-material-navigation.cluster.author-candidate.json',
+    q14a / 'whole-two-Q1-Q4-prerequisite-free-material-navigation.cluster.author-candidates.json',
+]
+kind_path = q14r / 'seven-individual-independent-assessment-and-pure-navigation-kind-decisions.json'
+inputs = [base_path, kind_path] + review_paths + release_paths + author_paths + nav_paths
+guards = [bind(p) for p in inputs]
+originals = [g for p in author_paths for g in read(p)]
+released = {g['id']: g for p in release_paths for g in read(p)}
+assert len(originals) == len(released) == 12
+assert set(released) == {g['id'] for g in originals}
+materials = []
+for original in originals:
+    current = released[original['id']]
+    old = deepcopy(original)
+    assert old['examData']['reviewStatus'] == 'draft'
+    old['examData']['reviewStatus'] = 'released'
+    # The actual four-material reviewer additionally wrote a truthful machine
+    # review note. This retained metadata is not a changed task or rubric.
+    if current['id'] in {g['id'] for g in read(release_paths[0])}:
+        assert 'reviewNote' not in original['examData']
+        note = current['examData']['reviewNote']
+        assert note.startswith('Independent machine material review by /root/economics_be20_independent_need_review on 2026-10-09:')
+        assert 'no human release' in note
+        old['examData']['reviewNote'] = note
+    assert old == current, original['id']
+    assert current['requires'] == current['examData']['coveredGoalIds']
+    materials.append(current)
+navs = [read(nav_paths[0])] + read(nav_paths[1])
+by_material = {g['id']: g for g in materials}
+for nav in navs:
+    assert nav['type'] == 'cluster' and nav['requires'] == []
+    assert nav['weight'] == len(nav['contains'])
+    assert all(i in by_material for i in nav['contains'])
+    assert all(by_material[i]['phase'] == nav['phase'] for i in nav['contains'])
+    assert 'Practice' in nav['tags'] and 'Assessment' in nav['tags']
+assert navs[0]['contains'] == [g['id'] for g in materials[:7]]
+assert len(navs[1]['contains']) == 3 and len(navs[2]['contains']) == 2
+
+# Root actually read the entire seven outer Q3 bilingual goal contracts,
+# scoring headers and this whole navigation goal. Whole material science was
+# separately completed by the two independent reviewers bound above.
+q3_kind = []
+for goal in materials[:7] + navs[:1]:
+    q3_kind.append({
+        'goalId': goal['id'], 'semanticKind': 'practiceAssessment',
+        'decisionStatus': 'authoritative',
+        'decisionBasis': 'reviewed-current-pilot-practice-assessment',
+        'reviewer': '/root', 'independentOfOriginalAuthor': True,
+        'wholeOuterDEENTitleDescriptionRequiresAndMetadataActuallyRead': True,
+        'classificationReasonDe': 'Eigenständiger materialgestützter Aufgabenendpunkt mit examData beziehungsweise ausschließlich dessen voraussetzungsfreie Übungsnavigation. Kein weiteres curricularAtomic-Inhaltsziel, keine Abrufpflicht und kein Orientierungsabschluss. Die tatsächlichen ganzen Leistungsprüfungen bleiben durch die eigenständigen unabhängigen Reviewkörper belegt.',
+        'wholeMaterialScienceApprovedByThisKindReview': False,
+        'wholeCourseAndTargetRolesApproved': False,
+        'humanApproval': False,
+    })
+q3_kind_binding = write('eight-individual-independent-Q3-assessment-and-navigation-kind-decisions.json', q3_kind)
+q3_nav_binding = write('actual-independent-whole-Q3-DEEN-seven-material-navigation-KEEP.json', {
+    'reviewer': '/root', 'author': '/root/economics_independent_continuation_a',
+    'decision': 'KEEP', 'scope': 'Whole bilingual navigation description, empty prerequisite contract and seven exact independently accepted outer material contracts.',
+    'wholeNavigationGoal': navs[0],
+    'wholeTitlesAndDEENDescriptionsRead': [g['id'] for g in materials[:7]],
+    'actualReasonDe': 'Die sieben genannten Themen entsprechen den sieben tatsächlichen Materialaufträgen: Devisen, Finanzsystem, EU, digitaler Handel/Sanktionen, Verträge, Strafrecht, Preis/Zins/Geld. Der Ordner hat selbst keine Voraussetzung; jeder Endpunkt benennt nur seine ausdrücklich bewerteten Leistungsziele. Beide Sprachfassungen bewahren diese gleiche Funktion. Die vorhandene breit voraussetzungsbelastete Q3-Navigation wird nicht verändert.',
+    'nativeCourseVisibilityAndFourMacroTargetRolesApproved': False,
+    'currentDualRoundOwnerPageDGateApproved': False, 'humanApproval': False,
+})
+frame = read(base_path)
+old = deepcopy(frame)
+assert len(frame['goals']) == 425
+before = {g['id']: g for g in frame['goals']}
+assert not set(before).intersection(g['id'] for g in materials + navs)
+root_id = '96183c48-b499-54d7-8530-578f6ff40207'
+root_goal = next(g for g in frame['goals'] if g['id'] == root_id)
+root_goal['contains'].extend(g['id'] for g in navs)
+frame['goals'].extend(deepcopy(materials + navs))
+after = {g['id']: g for g in frame['goals']}
+assert len(after) == 440
+assert all(after[i] == g for i, g in before.items() if i != root_id)
+assert {k: v for k, v in after[root_id].items() if k != 'contains'} == {k: v for k, v in before[root_id].items() if k != 'contains'}
+old_exams = {g['id']: g['examData'] for g in old['goals'] if g.get('examData')}
+assert len(old_exams) == 65 and all(after[i]['examData'] == e for i, e in old_exams.items())
+schema_errors = [{'path': list(e.path), 'message': e.message} for e in Draft202012Validator(read(ROOT / 'docs/landscape-runtime.schema.json')).iter_errors(frame)]
+assert not schema_errors, schema_errors
+sys.path.insert(0, str(ROOT / 'scripts'))
+from validate_schemas import curriculum_symlink_errors
+symlink_errors = curriculum_symlink_errors(ROOT)
+assert not symlink_errors, symlink_errors
+material_binding = write('whole-twelve-Q3-Q1-Q4-materials.only-actual-independent-reviewed-releases.json', materials)
+frame_binding = write('whole-CAN440-reviewed-E9-Q2-Q3-Q1-Q4-and-three-navigation-KEEP.inert.json', frame)
+assert guards == [bind(p) for p in inputs]
+ignored = subprocess.run(['git', 'check-ignore', '--no-index', '--'] + [str(p.relative_to(ROOT)) for p in inputs + list(OUT.iterdir())], cwd=ROOT, capture_output=True, text=True)
+assert not ignored.stdout.strip(), ignored.stdout
+final = write('actual-final-twelve-reviewed-Q3-Q1-Q4-materials-additive-CAN440-schema-and-bounded-Q3-navigation.receipt.json', {
+    'at': datetime.now(timezone.utc).isoformat(), 'integrator': '/root',
+    'frozenActualWholeInputs': guards,
+    'independentlyReviewedWholeMaterialBodies': 12,
+    'wholeAssessedPerformanceContractsQ3': 34,
+    'wholeAssessedPerformanceContractsQ1Q4': 15,
+    'acceptedMaterials': material_binding, 'currentInertFrame440': frame_binding,
+    'independentQ3Kinds': q3_kind_binding, 'independentQ3Navigation': q3_nav_binding,
+    'independentQ1Q4Kinds': bind(kind_path),
+    'other424WholeGoalsExact': True, 'all65OldWholeExamDataExact': True,
+    'actualReleaseDeltaFields': ['examData.reviewStatus', 'examData.reviewNote on the four independently reviewed Q3 copies only'],
+    'retainedPresealNegativePreparation': 'The first assembly expected only a status field. It failed before writing candidates because four exact independent release copies also carry an honest machine reviewNote. Original preparation source and actual negative stderr are retained; the bounded successor permits only this exact qualified metadata plus status, while requiring whole outer/task/solution/rubric/threshold equality.',
+    'wholeFrameSchemaErrors': schema_errors, 'curriculumSymlinkErrors': symlink_errors,
+    'onlyRootContainsThreePureNavigationReferencesAdded': True,
+    'native440BookOwnerRoutesAndSemanticInputBindingsPerformed': False,
+    'actualQSRegistryOrWholeCompositionViewsChanged': False,
+    'wholeSource125CourseScopeAndMacroFutureTargetRolesApproved': False,
+    'actualCurrentDualRoundDescriptionOwnerPagesApproved': False,
+    'liveWrites': False, 'humanApproval': False,
+    'newStrictAcademicClosures': 0, 'restoredStrictBindings': 0, 'strictNetGain': 0,
+    'nextStep': 'Add only independently accepted Katalog materials and integrate the reviewed SourceGoal/resources/current whole course roles field by field; then run one stable native book/owner/routes freeze and current independent D rounds.'
+})
+print(json.dumps({'receipt': final, 'frameGoals': 440, 'newReviewedWholeMaterials': 12, 'oldWholeExamDataExact': 65, 'schemaErrors': 0, 'strictNetGain': 0}))

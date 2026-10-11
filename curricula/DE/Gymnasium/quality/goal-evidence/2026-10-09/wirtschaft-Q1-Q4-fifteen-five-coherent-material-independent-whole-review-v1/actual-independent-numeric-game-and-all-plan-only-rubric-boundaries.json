@@ -1,0 +1,575 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/economics_source3_independent_final_performance_need",
+  "checks": [
+    {
+      "name": "policy-index-change-percent",
+      "actual": "4.00",
+      "expected": "4",
+      "independentMeaning": "Index points become a percent only using the base100; this proves no policy effect.",
+      "passed": true
+    },
+    {
+      "name": "dated-ECB-predecessor-rate",
+      "actual": "2.25",
+      "expected": "2.25",
+      "independentMeaning": "The10September2026 increase is25basis points; not today’s rate claim.",
+      "passed": true
+    },
+    {
+      "name": "dated-ECB-basis-points",
+      "actual": "25.00",
+      "expected": "25",
+      "independentMeaning": "Percentage points and relative percentages differ.",
+      "passed": true
+    },
+    {
+      "name": "D1-minutes-saved",
+      "actual": "4",
+      "expected": "4",
+      "independentMeaning": "Actual supplied fictional waiting-time reduction.",
+      "passed": true
+    },
+    {
+      "name": "D1-time-reduction-percent",
+      "actual": "40.0",
+      "expected": "40",
+      "independentMeaning": "Efficiency gain does not remove wrong information or cost/affected-group uncertainty.",
+      "passed": true
+    },
+    {
+      "name": "D1-error-percent",
+      "actual": "8.00",
+      "expected": "8",
+      "independentMeaning": "Supplied error share is fictional, not official AI performance.",
+      "passed": true
+    },
+    {
+      "name": "B1-bus-oneoff",
+      "actual": "25000",
+      "expected": "25000",
+      "independentMeaning": "Recurring4000 is a separate unresolved budget, not silently counted as funded.",
+      "passed": true
+    },
+    {
+      "name": "B1-repair-oneoff",
+      "actual": "21000",
+      "expected": "21000",
+      "independentMeaning": "Recurring2000 remains separate.",
+      "passed": true
+    },
+    {
+      "name": "B1-oneoff-cost-difference",
+      "actual": "4000",
+      "expected": "4000",
+      "independentMeaning": "A cheaper option alone does not settle access/priorities.",
+      "passed": true
+    },
+    {
+      "name": "B1-bus-unused-oneoff",
+      "actual": "5000",
+      "expected": "5000",
+      "independentMeaning": "One-off remaining budget is not a guarantee of permanent funding.",
+      "passed": true
+    },
+    {
+      "name": "B1-repair-unused-oneoff",
+      "actual": "9000",
+      "expected": "9000",
+      "independentMeaning": "Resource comparison retains all given cost components.",
+      "passed": true
+    },
+    {
+      "name": "B2-A-acquisition-per-assumed-year",
+      "actual": "100",
+      "expected": "100",
+      "independentMeaning": "Only acquisition divided by model life; no total ownership or environmental claim.",
+      "passed": true
+    },
+    {
+      "name": "B2-B-acquisition-per-assumed-year",
+      "actual": "160",
+      "expected": "160",
+      "independentMeaning": "New information can reverse apparent cheapest-price choice.",
+      "passed": true
+    },
+    {
+      "name": "B2-per-year-difference",
+      "actual": "60",
+      "expected": "60",
+      "independentMeaning": "Repair costs, actual life and environmental impacts remain unknown.",
+      "passed": true
+    },
+    {
+      "name": "Gini-scale-harmonisation",
+      "actual": "0.3",
+      "expected": "0.30",
+      "independentMeaning": "Harmonising scale cannot harmonise2023/2025 or income/consumption.",
+      "passed": true
+    },
+    {
+      "name": "illustrative-HDI-gap",
+      "actual": "0.10",
+      "expected": "0.10",
+      "independentMeaning": "An aggregate gap is not every person’s welfare gap.",
+      "passed": true
+    },
+    {
+      "name": "illustrative-Gini-gap",
+      "actual": "0.20",
+      "expected": "0.20",
+      "independentMeaning": "Higher aggregate development can coexist with higher inequality.",
+      "passed": true
+    },
+    {
+      "name": "model-poverty-shortfall",
+      "actual": "50",
+      "expected": "50",
+      "independentMeaning": "Equal low income can be below an explicitly fictional poverty line.",
+      "passed": true
+    },
+    {
+      "name": "L1-1200-above-threshold",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Given standalone domestic connection qualifies; no group/temp-worker inference needed.",
+      "passed": true
+    },
+    {
+      "name": "L1-200-below-threshold",
+      "actual": "False",
+      "expected": "False",
+      "independentMeaning": "This alone erases neither responsibility nor other possible duties.",
+      "passed": true
+    },
+    {
+      "name": "ESG-A-weights",
+      "actual": "1.0",
+      "expected": "1",
+      "independentMeaning": "Own model weights form a complete weighted mean.",
+      "passed": true
+    },
+    {
+      "name": "ESG-B-weights",
+      "actual": "1.0",
+      "expected": "1",
+      "independentMeaning": "Different methodology remains visible.",
+      "passed": true
+    },
+    {
+      "name": "ESG-A-score",
+      "actual": "74.0",
+      "expected": "74",
+      "independentMeaning": "Score is a rating under own2024 model, not causal impact.",
+      "passed": true
+    },
+    {
+      "name": "ESG-B-score",
+      "actual": "64.0",
+      "expected": "64",
+      "independentMeaning": "Own2025 model score is not directly comparable without method/year scrutiny.",
+      "passed": true
+    },
+    {
+      "name": "ESG-score-gap",
+      "actual": "10",
+      "expected": "10",
+      "independentMeaning": "A ten-point difference proves no uniform superiority or guaranteed return.",
+      "passed": true
+    },
+    {
+      "name": "housing-activity-ratio",
+      "actual": "80.0",
+      "expected": "80",
+      "independentMeaning": "80% rented is an activity proportion, not verified affordability/additionality.",
+      "passed": true
+    },
+    {
+      "name": "K2-A-false-rejection-percent",
+      "actual": "20.0",
+      "expected": "20",
+      "independentMeaning": "Population is qualified applicants, not all applicants.",
+      "passed": true
+    },
+    {
+      "name": "K2-B-false-rejection-percent",
+      "actual": "5.00",
+      "expected": "5",
+      "independentMeaning": "Same supplied group denominator permits the stated comparison.",
+      "passed": true
+    },
+    {
+      "name": "K2-group-gap-percentage-points",
+      "actual": "15",
+      "expected": "15",
+      "independentMeaning": "Fifteen percentage points is not an average fairness guarantee.",
+      "passed": true
+    },
+    {
+      "name": "K2-qualified-admitted",
+      "actual": "175",
+      "expected": "175",
+      "independentMeaning": "Only true admissions within this qualified sample.",
+      "passed": true
+    },
+    {
+      "name": "K2-qualified-correct-admissions-percent",
+      "actual": "87.500",
+      "expected": "87.5",
+      "independentMeaning": "This is not overall classifier accuracy; unqualified false positives are not supplied.",
+      "passed": true
+    },
+    {
+      "name": "K1-fee-share-budget100",
+      "actual": "5.00",
+      "expected": "5",
+      "independentMeaning": "Solution’s explicit illustrative budget; task does not require an unprovided real budget.",
+      "passed": true
+    },
+    {
+      "name": "K1-fee-share-budget500",
+      "actual": "1.00",
+      "expected": "1",
+      "independentMeaning": "Same fee can have unequal access burden.",
+      "passed": true
+    },
+    {
+      "name": "global-A-monthly-finance-gap",
+      "actual": "20",
+      "expected": "20",
+      "independentMeaning": "A funding need, not automatic IMF approval.",
+      "passed": true
+    },
+    {
+      "name": "global-A-reserve-months",
+      "actual": "0.5",
+      "expected": "0.5",
+      "independentMeaning": "Reserves cover only half a model month of net need.",
+      "passed": true
+    },
+    {
+      "name": "global-B-monthly-finance-gap",
+      "actual": "40",
+      "expected": "40",
+      "independentMeaning": "Changed crisis context changes the need.",
+      "passed": true
+    },
+    {
+      "name": "global-B-reserve-months",
+      "actual": "0.5",
+      "expected": "0.5",
+      "independentMeaning": "Same reserve duration with different gross figures.",
+      "passed": true
+    },
+    {
+      "name": "global-water-finance",
+      "actual": "24",
+      "expected": "24",
+      "independentMeaning": "Proposed development contribution still requires assessment.",
+      "passed": true
+    },
+    {
+      "name": "global-NDC-finance",
+      "actual": "40",
+      "expected": "40",
+      "independentMeaning": "Funding equality uses explicitly given commitments, not universal finance entitlement.",
+      "passed": true
+    },
+    {
+      "name": "global-model-emissions-reduction-percent",
+      "actual": "30.0",
+      "expected": "30",
+      "independentMeaning": "Target reduction is conditional on actual implementation.",
+      "passed": true
+    },
+    {
+      "name": "global-levy-lowbudget-percent",
+      "actual": "20.0",
+      "expected": "20",
+      "independentMeaning": "Given disposable model budget.",
+      "passed": true
+    },
+    {
+      "name": "global-levy-highbudget-percent",
+      "actual": "2.00",
+      "expected": "2",
+      "independentMeaning": "Same monetary burden differs by income share.",
+      "passed": true
+    },
+    {
+      "name": "global-B-project-sum",
+      "actual": "20",
+      "expected": "20",
+      "independentMeaning": "Both unchanged exceed the18 budget.",
+      "passed": true
+    },
+    {
+      "name": "global-B-budget-shortfall",
+      "actual": "2",
+      "expected": "2",
+      "independentMeaning": "Funding/prioritisation must account for the shortfall.",
+      "passed": true
+    },
+    {
+      "name": "G1-complete-outage-stock-months",
+      "actual": "2",
+      "expected": "2",
+      "independentMeaning": "Exactly the solution’s expressly conditional complete-outage calculation.",
+      "passed": true
+    },
+    {
+      "name": "G1-complete-outage-replacement-gap",
+      "actual": "4",
+      "expected": "4",
+      "independentMeaning": "Not a claim of the uniquely determined actual partial-flow shortage.",
+      "passed": true
+    },
+    {
+      "name": "G1-before-receipts",
+      "actual": "300",
+      "expected": "300",
+      "independentMeaning": "Prices stipulated unchanged in this partial model.",
+      "passed": true
+    },
+    {
+      "name": "G1-after-receipts",
+      "actual": "150",
+      "expected": "150",
+      "independentMeaning": "Lost receipts are borne by X exporters.",
+      "passed": true
+    },
+    {
+      "name": "G1-receipts-loss",
+      "actual": "150",
+      "expected": "150",
+      "independentMeaning": "Lost receipts alone do not prove political success.",
+      "passed": true
+    },
+    {
+      "name": "G1-own-boundary-if-other-supply-70-maintained",
+      "actual": "13.33333333333333333333333333",
+      "expected": "13.33333333333333333333333333",
+      "independentMeaning": "Independent conditional counterexample: if previously other70 remains, stock lasts13.33months; those other flows are not supplied, so the actual gap is underdetermined.",
+      "passed": true
+    },
+    {
+      "name": "G1-own-boundary-if-no-other-flow",
+      "actual": "2.352941176470588235294117647",
+      "expected": "2.352941176470588235294117647",
+      "independentMeaning": "Independent conditional counterexample:15 continuing imports gives2.35months; no fixed actual4month gap follows.",
+      "passed": true
+    },
+    {
+      "name": "G1-own-enumerated-pure-NE",
+      "actual": "[['D', 'D']]",
+      "expected": "[['D', 'D']]",
+      "independentMeaning": "All unilateral deviations independently enumerated for both players.",
+      "passed": true
+    },
+    {
+      "name": "G2-own-enumerated-pure-NE",
+      "actual": "[['A', 'A'], ['B', 'B']]",
+      "expected": "[['A', 'A'], ['B', 'B']]",
+      "independentMeaning": "Distinct coordination incentives; not copied prisoner dilemma logic.",
+      "passed": true
+    },
+    {
+      "name": "G1-player0-response-to-K",
+      "actual": "D",
+      "expected": "D",
+      "independentMeaning": "D strictly dominates in the one-shot supplied matrix.",
+      "passed": true
+    },
+    {
+      "name": "G1-player0-response-to-D",
+      "actual": "D",
+      "expected": "D",
+      "independentMeaning": "D strictly dominates in the one-shot supplied matrix.",
+      "passed": true
+    },
+    {
+      "name": "G1-player1-response-to-K",
+      "actual": "D",
+      "expected": "D",
+      "independentMeaning": "D strictly dominates in the one-shot supplied matrix.",
+      "passed": true
+    },
+    {
+      "name": "G1-player1-response-to-D",
+      "actual": "D",
+      "expected": "D",
+      "independentMeaning": "D strictly dominates in the one-shot supplied matrix.",
+      "passed": true
+    },
+    {
+      "name": "G2-player0-response-to-A",
+      "actual": "A",
+      "expected": "A",
+      "independentMeaning": "Best response switches with the other choice; no universal dominant deviation.",
+      "passed": true
+    },
+    {
+      "name": "G2-player0-response-to-B",
+      "actual": "B",
+      "expected": "B",
+      "independentMeaning": "Best response switches with the other choice; no universal dominant deviation.",
+      "passed": true
+    },
+    {
+      "name": "G2-player1-response-to-A",
+      "actual": "A",
+      "expected": "A",
+      "independentMeaning": "Best response switches with the other choice; no universal dominant deviation.",
+      "passed": true
+    },
+    {
+      "name": "G2-player1-response-to-B",
+      "actual": "B",
+      "expected": "B",
+      "independentMeaning": "Best response switches with the other choice; no universal dominant deviation.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw0-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw1-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw2-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw3-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw4-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw5-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw6-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw7-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw8-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw9-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw10-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw11-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw12-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw13-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw14-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw15-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw16-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw17-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-plan-only-raw18-capped-below-pass",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "Task3 execution earns0 for a plan; even18 fully correct other-task points cannot pass after the binding total cap.",
+      "passed": true
+    },
+    {
+      "name": "digital-imperfect-observed-partial-not-full-quota",
+      "actual": "True",
+      "expected": "True",
+      "independentMeaning": "A hypothetical observed but imperfect execution can contribute partial marks; all6 execution points or political agreement are not a gate. This arithmetic is no learner evidence.",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "wholeAnswersAreScoredIndependentlyBelowNotByKeywords": true
+}

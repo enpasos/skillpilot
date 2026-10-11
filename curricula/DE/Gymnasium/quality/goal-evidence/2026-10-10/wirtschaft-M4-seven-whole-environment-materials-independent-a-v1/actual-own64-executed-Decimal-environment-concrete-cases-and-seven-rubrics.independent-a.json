@@ -1,0 +1,521 @@
+{
+  "role": "OWN_EXECUTED_DECIMAL_CHECKS_INDEPENDENT_A",
+  "actualCheckCount": 64,
+  "failures": 0,
+  "author35ChecksReusedAsOwn": false,
+  "checks": [
+    {
+      "checkId": "lamp-repair",
+      "executedExpression": "80*0.2",
+      "actualDecimal": "16.0",
+      "expectedDecimal": "16",
+      "unit": "kgnewparts",
+      "PASS": true
+    },
+    {
+      "checkId": "lamp-replacement",
+      "executedExpression": "80*2",
+      "actualDecimal": "160",
+      "expectedDecimal": "160",
+      "unit": "kgnewmaterial",
+      "PASS": true
+    },
+    {
+      "checkId": "lamp-saved",
+      "executedExpression": "160-16",
+      "actualDecimal": "144",
+      "expectedDecimal": "144",
+      "unit": "kgnewmaterial",
+      "PASS": true
+    },
+    {
+      "checkId": "remaining20-recycle-not-same80",
+      "executedExpression": "20*1.4",
+      "actualDecimal": "28.0",
+      "expectedDecimal": "28",
+      "unit": "kgrecovered-if-separate20recycled",
+      "PASS": true
+    },
+    {
+      "checkId": "single-use",
+      "executedExpression": "1000*10/1000",
+      "actualDecimal": "10",
+      "expectedDecimal": "10",
+      "unit": "kg",
+      "PASS": true
+    },
+    {
+      "checkId": "Nordcups",
+      "executedExpression": "1000/20",
+      "actualDecimal": "50",
+      "expectedDecimal": "50",
+      "unit": "cups",
+      "PASS": true
+    },
+    {
+      "checkId": "Nordmass",
+      "executedExpression": "50*100/1000",
+      "actualDecimal": "5",
+      "expectedDecimal": "5",
+      "unit": "kg",
+      "PASS": true
+    },
+    {
+      "checkId": "Southcups",
+      "executedExpression": "1000/2",
+      "actualDecimal": "500",
+      "expectedDecimal": "500",
+      "unit": "cups",
+      "PASS": true
+    },
+    {
+      "checkId": "Southmass",
+      "executedExpression": "500*100/1000",
+      "actualDecimal": "50",
+      "expectedDecimal": "50",
+      "unit": "kg",
+      "PASS": true
+    },
+    {
+      "checkId": "North-relative",
+      "executedExpression": "5/10",
+      "actualDecimal": "0.5",
+      "expectedDecimal": "0.5",
+      "unit": "materialratio",
+      "PASS": true
+    },
+    {
+      "checkId": "South-relative",
+      "executedExpression": "50/10",
+      "actualDecimal": "5",
+      "expectedDecimal": "5",
+      "unit": "materialratio",
+      "PASS": true
+    },
+    {
+      "checkId": "heating-public",
+      "executedExpression": "100*2000",
+      "actualDecimal": "200000",
+      "expectedDecimal": "200000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "heating-private",
+      "executedExpression": "6000-2000",
+      "actualDecimal": "4000",
+      "expectedDecimal": "4000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "heating-poor-gap",
+      "executedExpression": "4000-1000",
+      "actualDecimal": "3000",
+      "expectedDecimal": "3000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "heating-rich-after",
+      "executedExpression": "10000-4000",
+      "actualDecimal": "6000",
+      "expectedDecimal": "6000",
+      "unit": "EURremaining",
+      "PASS": true
+    },
+    {
+      "checkId": "plant-profit-untreated",
+      "executedExpression": "50000-30000",
+      "actualDecimal": "20000",
+      "expectedDecimal": "20000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "plant-profit-treated",
+      "executedExpression": "50000-30000-4000",
+      "actualDecimal": "16000",
+      "expectedDecimal": "16000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "plant-narrow-real-untreated",
+      "executedExpression": "30000+6000",
+      "actualDecimal": "36000",
+      "expectedDecimal": "36000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "plant-narrow-real-treated",
+      "executedExpression": "30000+4000",
+      "actualDecimal": "34000",
+      "expectedDecimal": "34000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "plant-narrow-benefit",
+      "executedExpression": "36000-34000",
+      "actualDecimal": "2000",
+      "expectedDecimal": "2000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "fish-catch",
+      "executedExpression": "10*30",
+      "actualDecimal": "300",
+      "expectedDecimal": "300",
+      "unit": "fish",
+      "PASS": true
+    },
+    {
+      "checkId": "fish-stock",
+      "executedExpression": "1000+200-300",
+      "actualDecimal": "900",
+      "expectedDecimal": "900",
+      "unit": "fish",
+      "PASS": true
+    },
+    {
+      "checkId": "fish-only-current-year-balance",
+      "executedExpression": "1000+200-200",
+      "actualDecimal": "1000",
+      "expectedDecimal": "1000",
+      "unit": "fish",
+      "PASS": true
+    },
+    {
+      "checkId": "equal-A-avoid",
+      "executedExpression": "100-70",
+      "actualDecimal": "30",
+      "expectedDecimal": "30",
+      "unit": "t",
+      "PASS": true
+    },
+    {
+      "checkId": "equal-cost-A",
+      "executedExpression": "30*10",
+      "actualDecimal": "300",
+      "expectedDecimal": "300",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "equal-cost-B",
+      "executedExpression": "30*30",
+      "actualDecimal": "900",
+      "expectedDecimal": "900",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "equal-cost-total",
+      "executedExpression": "300+900",
+      "actualDecimal": "1200",
+      "expectedDecimal": "1200",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "trade-A-emits",
+      "executedExpression": "100-60",
+      "actualDecimal": "40",
+      "expectedDecimal": "40",
+      "unit": "t",
+      "PASS": true
+    },
+    {
+      "checkId": "trade-real-cost",
+      "executedExpression": "60*10",
+      "actualDecimal": "600",
+      "expectedDecimal": "600",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "permits-sold",
+      "executedExpression": "70-40",
+      "actualDecimal": "30",
+      "expectedDecimal": "30",
+      "unit": "permits",
+      "PASS": true
+    },
+    {
+      "checkId": "permits-transfer",
+      "executedExpression": "30*20",
+      "actualDecimal": "600",
+      "expectedDecimal": "600",
+      "unit": "EURtransfer",
+      "PASS": true
+    },
+    {
+      "checkId": "trade-total-emits",
+      "executedExpression": "40+100",
+      "actualDecimal": "140",
+      "expectedDecimal": "140",
+      "unit": "t",
+      "PASS": true
+    },
+    {
+      "checkId": "trade-cost-saving",
+      "executedExpression": "1200-600",
+      "actualDecimal": "600",
+      "expectedDecimal": "600",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "B-initial",
+      "executedExpression": "4*50",
+      "actualDecimal": "200",
+      "expectedDecimal": "200",
+      "unit": "units",
+      "PASS": true
+    },
+    {
+      "checkId": "B-cap-difference",
+      "executedExpression": "200-160",
+      "actualDecimal": "40",
+      "expectedDecimal": "40",
+      "unit": "units",
+      "PASS": true
+    },
+    {
+      "checkId": "pollution-charge",
+      "executedExpression": "10*400",
+      "actualDecimal": "4000",
+      "expectedDecimal": "4000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "pollution-profit-filter",
+      "executedExpression": "20000-3000",
+      "actualDecimal": "17000",
+      "expectedDecimal": "17000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "pollution-profit-unfiltered-charge",
+      "executedExpression": "20000-4000",
+      "actualDecimal": "16000",
+      "expectedDecimal": "16000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "pollution-private-filter-advantage",
+      "executedExpression": "17000-16000",
+      "actualDecimal": "1000",
+      "expectedDecimal": "1000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "knowledge-private",
+      "executedExpression": "12000-20000",
+      "actualDecimal": "-8000",
+      "expectedDecimal": "-8000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "knowledge-private-aid",
+      "executedExpression": "12000-20000+9000",
+      "actualDecimal": "1000",
+      "expectedDecimal": "1000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "knowledge-narrow-real-net",
+      "executedExpression": "12000+15000-20000",
+      "actualDecimal": "7000",
+      "expectedDecimal": "7000",
+      "unit": "EUR",
+      "PASS": true
+    },
+    {
+      "checkId": "intensity-relative",
+      "executedExpression": "(8/10-1)*100",
+      "actualDecimal": "-20.0",
+      "expectedDecimal": "-20",
+      "unit": "percent",
+      "PASS": true
+    },
+    {
+      "checkId": "emissions-first",
+      "executedExpression": "100*10",
+      "actualDecimal": "1000",
+      "expectedDecimal": "1000",
+      "unit": "kg",
+      "PASS": true
+    },
+    {
+      "checkId": "emissions-second",
+      "executedExpression": "150*8",
+      "actualDecimal": "1200",
+      "expectedDecimal": "1200",
+      "unit": "kg",
+      "PASS": true
+    },
+    {
+      "checkId": "emissions-relative",
+      "executedExpression": "(1200/1000-1)*100",
+      "actualDecimal": "20.0",
+      "expectedDecimal": "20",
+      "unit": "percent",
+      "PASS": true
+    },
+    {
+      "checkId": "satisfaction-before",
+      "executedExpression": "(80*5+20*9)/100",
+      "actualDecimal": "5.8",
+      "expectedDecimal": "5.8",
+      "unit": "scalepoints",
+      "PASS": true
+    },
+    {
+      "checkId": "satisfaction-after",
+      "executedExpression": "(80*7+20*5)/100",
+      "actualDecimal": "6.6",
+      "expectedDecimal": "6.6",
+      "unit": "scalepoints",
+      "PASS": true
+    },
+    {
+      "checkId": "satisfaction-change",
+      "executedExpression": "6.6-5.8",
+      "actualDecimal": "0.8",
+      "expectedDecimal": "0.8",
+      "unit": "scalepoints",
+      "PASS": true
+    },
+    {
+      "checkId": "housing-people-P-before",
+      "executedExpression": "80*0.20",
+      "actualDecimal": "16.00",
+      "expectedDecimal": "16",
+      "unit": "affectedpeople",
+      "PASS": true
+    },
+    {
+      "checkId": "housing-people-P-after",
+      "executedExpression": "80*0.10",
+      "actualDecimal": "8.00",
+      "expectedDecimal": "8",
+      "unit": "affectedpeople",
+      "PASS": true
+    },
+    {
+      "checkId": "housing-people-Q-before",
+      "executedExpression": "20*0",
+      "actualDecimal": "0",
+      "expectedDecimal": "0",
+      "unit": "affectedpeople",
+      "PASS": true
+    },
+    {
+      "checkId": "housing-people-Q-after",
+      "executedExpression": "20*0.40",
+      "actualDecimal": "8.00",
+      "expectedDecimal": "8",
+      "unit": "affectedpeople",
+      "PASS": true
+    },
+    {
+      "checkId": "housing-people-before",
+      "executedExpression": "16+0",
+      "actualDecimal": "16",
+      "expectedDecimal": "16",
+      "unit": "affectedpeople",
+      "PASS": true
+    },
+    {
+      "checkId": "housing-people-after",
+      "executedExpression": "8+8",
+      "actualDecimal": "16",
+      "expectedDecimal": "16",
+      "unit": "affectedpeople",
+      "PASS": true
+    },
+    {
+      "checkId": "housing-P-pointchange",
+      "executedExpression": "10-20",
+      "actualDecimal": "-10",
+      "expectedDecimal": "-10",
+      "unit": "percentagepoints",
+      "PASS": true
+    },
+    {
+      "checkId": "housing-Q-pointchange",
+      "executedExpression": "40-0",
+      "actualDecimal": "40",
+      "expectedDecimal": "40",
+      "unit": "percentagepoints",
+      "PASS": true
+    },
+    {
+      "checkId": "rubric-1-max",
+      "executedExpression": "sum six4-point steps",
+      "actualDecimal": "24",
+      "expectedDecimal": "24",
+      "unit": "points",
+      "PASS": true
+    },
+    {
+      "checkId": "rubric-2-max",
+      "executedExpression": "sum six4-point steps",
+      "actualDecimal": "24",
+      "expectedDecimal": "24",
+      "unit": "points",
+      "PASS": true
+    },
+    {
+      "checkId": "rubric-3-max",
+      "executedExpression": "sum six4-point steps",
+      "actualDecimal": "24",
+      "expectedDecimal": "24",
+      "unit": "points",
+      "PASS": true
+    },
+    {
+      "checkId": "rubric-4-max",
+      "executedExpression": "sum six4-point steps",
+      "actualDecimal": "24",
+      "expectedDecimal": "24",
+      "unit": "points",
+      "PASS": true
+    },
+    {
+      "checkId": "rubric-5-max",
+      "executedExpression": "sum six4-point steps",
+      "actualDecimal": "24",
+      "expectedDecimal": "24",
+      "unit": "points",
+      "PASS": true
+    },
+    {
+      "checkId": "rubric-6-max",
+      "executedExpression": "sum six4-point steps",
+      "actualDecimal": "24",
+      "expectedDecimal": "24",
+      "unit": "points",
+      "PASS": true
+    },
+    {
+      "checkId": "rubric-7-max",
+      "executedExpression": "sum six4-point steps",
+      "actualDecimal": "24",
+      "expectedDecimal": "24",
+      "unit": "points",
+      "PASS": true
+    }
+  ],
+  "manualGradeSumsExecuted": 31
+}

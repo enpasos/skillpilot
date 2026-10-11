@@ -11,6 +11,9 @@ import {
   type ExportOptions,
 } from './exportGoalBookReviewBundle'
 import { goalBookFrontMatterPageCount } from './goalBookRenderer'
+import Ajv2020 from 'ajv/dist/2020.js'
+import addFormats from 'ajv-formats'
+import { parseGoalBookEvidenceReviewRecord } from './goalBookEvidenceReviewLoader'
 import { expectedRecords } from './fixtures/positiveGoalEvidenceCandidates'
 import {
   buildGoalDescriptionReviewCampaign,
@@ -395,6 +398,75 @@ try {
     () => buildGoalBookReviewBundle(malformedModel, options),
     /closed goal-evidence schema/u,
   )
+
+  // A real current Economics V2 record previously crashed the exporter at
+  // profile.facets.map. Check complete bilingual material, solution/rubric and
+  // diagnosis text survives rather than accepting an empty V1-shaped fallback.
+  const economicsConfig = JSON.parse(await readFile(new URL(
+    './config/goal-books/de-gym-economics-current-canonical.json', import.meta.url,
+  ), 'utf8')) as { evidenceReviewPaths: string[] }
+  const evidenceText = await readFile(new URL(
+    `../../${economicsConfig.evidenceReviewPaths[0]}`, import.meta.url,
+  ), 'utf8')
+  const positive = parseGoalBookEvidenceReviewRecord(JSON.parse(
+    evidenceText.split(/\r?\n/u).find((line) => line.trim() !== '')!,
+  ), 'current Economics review-markdown regression')
+  assert.equal(positive.schemaVersion, 2)
+  if (positive.schemaVersion !== 2) throw new Error('Expected current V2 input')
+  const originalPositive = JSON.stringify(positive)
+  const economicsPositiveMarkdown = renderGoalBookReviewMarkdown({
+    ...first.input,
+    pages: [{ page: { ...page, goalId: positive.goalId }, evidenceProfile: positive }],
+  })
+  assert.ok(economicsPositiveMarkdown.includes('positive-understanding-evidence-v2'))
+  assert.ok(economicsPositiveMarkdown.includes('needs_human_review'))
+  assert.ok(economicsPositiveMarkdown.includes('ai_candidate'))
+  assert.ok(economicsPositiveMarkdown.includes('maximum claim scope: `G1`'))
+  for (const expectation of positive.profile.expectations) {
+    for (const text of [expectation.essentialUnderstandingDe, expectation.essentialUnderstandingEn,
+      expectation.observablePerformanceDe, expectation.observablePerformanceEn]) {
+      assert.ok(economicsPositiveMarkdown.includes(text), 'A complete bilingual expectation must remain visible')
+    }
+  }
+  for (const item of positive.profile.applicationCaseBriefs) {
+    for (const text of [item.taskDemandDe, item.taskDemandEn, item.expectedPerformanceDe,
+      item.expectedPerformanceEn, item.understandingFocusDe, item.understandingFocusEn]) {
+      assert.ok(economicsPositiveMarkdown.includes(text), 'A complete bilingual application-case field must remain visible')
+    }
+  }
+  assert.equal(JSON.stringify(positive), originalPositive, 'Rendering must not convert or upgrade the original V2 record')
+
+  // Both native description input versions accept the closed V2 contract;
+  // accepting it must not permit V1 fields, missing coverage or AI approval.
+  // Native campaign/resolution checks separately enforce actual page binding.
+  const ajv = new Ajv2020({ allErrors: true, strict: true })
+  addFormats(ajv)
+  for (const path of [
+    'contracts/goal-book/v1/goal-book-model.schema.json',
+    'contracts/goal-book/v1/goal-book-model-1.1.schema.json',
+    'contracts/goal-evidence/v1/goal-evidence-profile.schema.json',
+    'contracts/goal-evidence/v2/goal-evidence-profile.schema.json',
+    'contracts/goal-description-review/v2/goal-description-review-input.schema.json',
+    'contracts/goal-description-review/v3/goal-description-review-input.schema.json',
+  ]) {
+    ajv.addSchema(JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8')))
+  }
+  for (const version of [2, 3]) {
+    const validate = ajv.compile({
+      $ref: `https://skillpilot.com/schemas/goal-description-review/v${version}/goal-description-review-input.schema.json#/$defs/reviewContext`,
+    })
+    assert.equal(validate({ page, evidenceProfile: positive }), true, ajv.errorsText(validate.errors))
+    for (const invalid of [
+      { ...positive, schemaVersion: 1 },
+      { ...positive, schemaVersion: 3 },
+      { ...positive, status: 'approved' },
+      { ...positive, profile: { ...positive.profile, facets: [] } },
+      { ...positive, profile: { ...positive.profile, coverageExpectations: undefined } },
+    ]) {
+      assert.equal(validate({ page, evidenceProfile: invalid }), false,
+        `Description input V${version} must reject a malformed or upgraded V2 profile`)
+    }
+  }
 
   const staleManifest = JSON.parse(await readFile(
     pdfManifestPath,

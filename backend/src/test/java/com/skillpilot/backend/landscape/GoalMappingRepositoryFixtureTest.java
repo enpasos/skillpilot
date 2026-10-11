@@ -2513,10 +2513,38 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_ECONOMICS_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_ECONOMICS_ID);
-        assertThat(file.getMappings()).hasSize(225);
+        // The reviewed market-failure split and the Q2.5 labour-policy union
+        // preserve 225 legacy IDs through 223 exact and five bounded partial links.
+        assertThat(file.getMappings()).hasSize(228);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId)
+                .doesNotContainNull()
+                .doesNotContain("");
+        assertThat(file.getMappings().stream().map(GoalMappingEntry::getLegacyGoalId).distinct())
+                .hasSize(225);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId)
+                .doesNotHaveDuplicates();
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
-                .containsOnly("exact");
+                .containsOnly("exact", "partial");
+        assertThat(file.getMappings().stream().filter(mapping -> "exact".equals(mapping.getMatchType())))
+                .hasSize(223);
+        assertThat(file.getMappings().stream().filter(mapping -> "partial".equals(mapping.getMatchType())))
+                .extracting(GoalMappingEntry::getLegacyGoalId,
+                        GoalMappingEntry::getCanonicalGoalId,
+                        GoalMappingEntry::getMatchType)
+                .containsExactlyInAnyOrder(
+                        Tuple.tuple("bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+                                "1826fe19-4d06-5183-9b41-9121ae1cc219", "partial"),
+                        Tuple.tuple("bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+                                "a2fa1186-df35-5954-a9a9-e311a55e218f", "partial"),
+                        Tuple.tuple("bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+                                "df17fd21-e9b7-598f-970e-8f541d059694", "partial"),
+                        Tuple.tuple("3ba5e23b-5477-4294-9cfc-b39748293128",
+                                "7c72848d-8bc9-58e2-a690-fd17ac650a88", "partial"),
+                        Tuple.tuple("3ba5e23b-5477-4294-9cfc-b39748293128",
+                                "121fea28-9943-575d-9c96-1fb2e3356f32", "partial"));
     }
 
     @Test

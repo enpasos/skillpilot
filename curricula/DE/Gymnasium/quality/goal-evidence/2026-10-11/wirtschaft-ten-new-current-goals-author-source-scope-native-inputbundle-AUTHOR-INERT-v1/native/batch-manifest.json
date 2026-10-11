@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-ten-new-current-goals-author-source-scope-native-inputbundle-AUTHOR-INERT-v1/ten-current-new-goals.native-batch.config.json",
+  "configDigest": "sha256:994daf9435332d39dc9e8e62ecbf6e9437fa5d4abca7d0408e5cdbfd47845c8e",
+  "goalIds": [
+    "a2fa1186-df35-5954-a9a9-e311a55e218f",
+    "df17fd21-e9b7-598f-970e-8f541d059694",
+    "ec1e8644-bd6d-53ef-a154-9a6efb69e1c7",
+    "8820a8d9-605a-565b-bc13-1961a4df60ed",
+    "646c5663-bf14-5b4a-893e-be01df701d54",
+    "2dea7d3c-cbac-5246-b0b1-6463c8e6dad6",
+    "5aaf5abf-5e70-57c6-b030-1d08a35d17b8",
+    "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+    "8e065dac-4345-5b88-aee1-dbca803a2631",
+    "1839e595-3e30-53ec-904f-b38e2ed4e4e0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 346,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:401e8142aaa5265a2551ec1fdafb98c7e10d73de6f99299c08e39bd2bd833b88"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:df322d32bed02dc9819880ca7c1916528aa936afa1a15c39a4ff0d45518b5ce9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c951d8c9da25deaee1e87c67506d1e867407079886eb338b3f375496a6c1e511",
+    "reviewInputFingerprint": "sha256:d573cf383f98d569902a7861b2f5ec50062540781c7d56bf0e6467635b4a6c7a",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1-a",
+        "campaignDigest": "sha256:c7d6f25791279e559806b307e47a4a43ad3e5d3769b24f840a5b10b926cb9449",
+        "roundId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1-first-pass-a",
+        "independenceGroupId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1-independent-a",
+        "batchId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:596bdf5a112ec716a8f639f0e5a417e45e7138c66b142071ac82b0ed86ab35f8"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1-b",
+        "campaignDigest": "sha256:ffd2763eca99078acd013d07ac43cb45052538fa01f87db7dd94bec089bcad88",
+        "roundId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1-first-pass-b",
+        "independenceGroupId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1-independent-b",
+        "batchId": "wirtschaft-current346-ten-new-goals-2026-10-11-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0dc53bef2fe87451f4aab9ca4b2a035c954bd67d6ec6301ed14722621d2de9d2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

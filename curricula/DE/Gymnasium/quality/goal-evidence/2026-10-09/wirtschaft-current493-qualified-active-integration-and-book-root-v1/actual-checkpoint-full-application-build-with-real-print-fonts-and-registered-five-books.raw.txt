@@ -1,0 +1,48 @@
+
+> skillpilot@0.0.0 build:application
+> npm run build:goal-books && npm run check:goal-book-publication && tsc -b && vite build
+
+
+> skillpilot@0.0.0 build:goal-books
+> tsx scripts/buildGoalBookPublications.ts
+
+Goal-book print fonts verified: Arial -> Liberation Sans; Courier New -> Liberation Mono (Regular, Bold, Italic, Bold Italic)
+Building goal book: de-gym-mathematik-bundesweit; 807 goal pages
+Building goal book: de-gym-physik-bundesweit; 478 goal pages
+Building goal book: de-gym-chemie-bundesweit; 359 goal pages
+Building goal book: de-gym-biologie-bundesweit; 394 goal pages
+Building goal book: de-gym-wirtschaftswissenschaften-bundesweit; 336 goal pages
+Goal-book publication verified: de-gym-mathematik-bundesweit
+Goal-book publication verified: de-gym-physik-bundesweit
+Goal-book publication verified: de-gym-chemie-bundesweit
+Goal-book publication verified: de-gym-biologie-bundesweit
+Goal-book publication verified: de-gym-wirtschaftswissenschaften-bundesweit
+Goal-book publication ready: 5 books; 5 rendered; /home/enpasos/projects/skillpilot/app/public/lernzielbuch
+
+> skillpilot@0.0.0 check:goal-book-publication
+> tsx scripts/checkGoalBookPublication.ts
+
+Published goal book verified: de-gym-mathematik-bundesweit; 807 pages; sha256:db7c2569bc5586469c07d7346cb24a0dcf8bf4a1cb3fbcfacef6c70bb6d799c9
+Published goal book verified: de-gym-physik-bundesweit; 478 pages; sha256:dbb8c41e51b5742bea360ddea7724d038767fcbbeb1bf6025c61242b16740df4
+Published goal book verified: de-gym-chemie-bundesweit; 359 pages; sha256:c939527cc26899ed09f163ec146a2a235b531e3358fff8599bee977eebe9a3b2
+Published goal book verified: de-gym-biologie-bundesweit; 394 pages; sha256:6e7ba5736ebad1983a5728ee9970599d77433c26896158ae5de8d48eb86d349f
+Published goal book verified: de-gym-wirtschaftswissenschaften-bundesweit; 336 pages; sha256:de7c59be94edee9a7d930a6354513a4ea7a78468300d6ba16ca3866e3bfd2427
+You are using Node.js 18.19.1. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js version.
+vite v7.3.1 building client environment for production...
+transforming...
+✓ 15 modules transformed.
+✗ Build failed in 867ms
+error during build:
+[vite-plugin-pwa:build] [plugin vite-plugin-pwa:build] src/index.css (undefined:NaN): There was an error during the build:
+  [postcss] crypto.hash is not a function
+Additionally, handling the error in the 'buildEnd' hook caused the following error:
+  [postcss] crypto.hash is not a function
+file: /home/enpasos/projects/skillpilot/app/src/index.css:undefined:NaN
+    at getRollupError (file:///home/enpasos/projects/skillpilot/app/node_modules/rollup/dist/es/shared/parseAst.js:406:41)
+    at file:///home/enpasos/projects/skillpilot/app/node_modules/rollup/dist/es/shared/node-entry.js:23522:39
+    at async catchUnfinishedHookActions (file:///home/enpasos/projects/skillpilot/app/node_modules/rollup/dist/es/shared/node-entry.js:22980:16)
+    at async rollupInternal (file:///home/enpasos/projects/skillpilot/app/node_modules/rollup/dist/es/shared/node-entry.js:23505:5)
+    at async buildEnvironment (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:33541:12)
+    at async Object.build (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:33900:19)
+    at async Object.buildApp (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:33897:153)
+    at async CAC.<anonymous> (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/cli.js:629:3)

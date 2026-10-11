@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cc21f2fd4cf0a83a69d46bc57fe35c161d0b84f8c440dad9786374dd024bdd9f",
+  "reviewInputFingerprint": "sha256:efece4315be1d9a5aa6ce5ea5a76531e9049f72113ca710a08eafdd54e30e758",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-four-existing-D56-owner-03-20261011-a",
+      "roundId": "wirtschaft-current346-four-existing-D56-owner-03-20261011-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-four-existing-D56-owner-03-20261011-independent-a",
+      "runIds": [
+        "wirtschaft-current336-final56-v22-b01-a.own-codex-gpt6-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-four-existing-D56-owner-03-20261011-b",
+      "roundId": "wirtschaft-current346-four-existing-D56-owner-03-20261011-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-four-existing-D56-owner-03-20261011-independent-b",
+      "runIds": [
+        "wirtschaft-current336-final56-v22-b01-first-pass-b.batch-001.codex-gpt6-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-6::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "e3cd6940-26f0-55a9-a348-4a90c245266c",
+      "firstRecordId": "wirtschaft-current336-final56-v22-b01-a.own-codex-gpt6-run.record-008",
+      "secondRecordId": "wirtschaft-current336-final56-v22-b01-first-pass-b.batch-001.codex-gpt6-b.record-008",
+      "firstRunId": "wirtschaft-current336-final56-v22-b01-a.own-codex-gpt6-run",
+      "secondRunId": "wirtschaft-current336-final56-v22-b01-first-pass-b.batch-001.codex-gpt6-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "wirtschaft-current346-D45-historical-owner-20261011-b12-technical-continuation",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI GPT-6 Codex coordinator /root; machine curriculum QS only",
+  "synthesizedAt": "2026-10-10T09:38:00.812Z",
+  "batch": {
+    "batchId": "wirtschaft-current346-D45-historical-owner-20261011-b12",
+    "batchManifestDigest": "sha256:c18cb0e5d688a6aae2f28925f6d1f34be96bc16544a25752ad5141eedb7dfaca",
+    "configDigest": "sha256:ef05177726b0813055834e0226d3fdf8b5c2bf464bec0650dad246f553706980",
+    "bundleFingerprint": "sha256:97c661a6d9ff5453a64baebe3b77106db6a35d7be41ec1d05757fcbaf0042bf5",
+    "bookDigest": "sha256:413bceef66dc88ff90893234d04e195f14da2a7facc65f3d6d0a458edd0c9495",
+    "reviewInputFingerprint": "sha256:01ca40764d556bb931b2bc9af14fa6cbc7139a95eddd47631e2595bb01583f77",
+    "dualSummaryDigest": "sha256:5973a9bb04a3c374ee073a3ea0527c7440beaf8b9e9a498738c630a994661a4b",
+    "canonicalLandscapeDigest": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-D45-historical-owner-20261011-b12-a",
+      "campaignDigest": "sha256:de3fa43aa9917d5f31d8353b11b7962f701843007e43a686f783e96c2d66ffd2",
+      "roundId": "wirtschaft-current346-D45-historical-owner-20261011-b12-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-D45-historical-owner-20261011-b12-independent-a",
+      "reviewInputFingerprint": "sha256:01ca40764d556bb931b2bc9af14fa6cbc7139a95eddd47631e2595bb01583f77",
+      "batchId": "wirtschaft-current346-D45-historical-owner-20261011-b12-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:89e6c92dd455ba8270babfe94e0f9bcc450ca1082331eb264fb808a923a3a589",
+      "runId": "wirtschaft-current336-consumer-current-v21-first-pass-a.batch-001.openai-gpt6-current-entry-a-v1",
+      "runManifestDigest": "sha256:ba58fe84a29e4944e336a42fb41e2759c11a9d5674b1f7e45793f34a46fceff4",
+      "resultsDigest": "sha256:1e80ba066a2bd845d3fa8e559d722530dc87d478ba9ead7dbb0419c11e8726d8"
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-D45-historical-owner-20261011-b12-b",
+      "campaignDigest": "sha256:880f50e81fece6705d449e9276b8e50ed2cd2d036a9b1596e337ce47b0c80c8f",
+      "roundId": "wirtschaft-current346-D45-historical-owner-20261011-b12-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-D45-historical-owner-20261011-b12-independent-b",
+      "reviewInputFingerprint": "sha256:01ca40764d556bb931b2bc9af14fa6cbc7139a95eddd47631e2595bb01583f77",
+      "batchId": "wirtschaft-current346-D45-historical-owner-20261011-b12-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d43cac570a82f2de94535f2c3ef802c34a9b651cd8c1058b712f5dfee2ad8114",
+      "runId": "wirtschaft-current336-consumer-current-v21-first-pass-b.batch-001.actual-independent-20261010",
+      "runManifestDigest": "sha256:183af1cf00aad82071377042dce458815c58e51a4e48d24c6c343acd8936f60d",
+      "resultsDigest": "sha256:3eb50bb1a698a5df3adc6e6dc57b490f9826a3d21eccae38367cbae797d30114"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "wirtschaft-current346-D45-historical-owner-20261011-b12.5b5ed3cb",
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:684e03afa688756a0ee6b3ce40bb04204aa16539607937c1e4c25477d833722d",
+      "pageFingerprint": "sha256:d6e9fdedcf7fe1453d355272ab258f2c75e78dd61786ec66e96816ad0248a662",
+      "goalReviewContextFingerprint": "sha256:0656037d0d9cfe22c72d285113aeb111f5735df5849e0ad8c54d8860273af160",
+      "finalText": {
+        "titleDe": "Verbraucherverhalten verstehen",
+        "titleEn": "Understand consumer behaviour",
+        "descriptionDe": "Die lernende Person kann Entscheidungsmuster von Konsumenten im Zusammenspiel von Bedürfnissen, Budget und verfügbarer Information diskutieren.",
+        "descriptionEn": "The learner can discuss patterns in consumers' decisions through the interaction of needs, budgets and available information."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "wirtschaft-current336-consumer-current-v21-first-pass-a.batch-001.openai-gpt6-current-entry-a-v1.consumer",
+          "recordDigest": "sha256:35aa28725a238877d802ebc0c9d8a2c90ff362b6c41e09b3b38382df9e2103f3"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-consumer-current-v21-first-pass-b.5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+          "recordDigest": "sha256:50eca7bb269553afe4d643587688224a7c8f7aa66bd8ffbc4e2ba1982bf12fcd"
+        }
+      },
+      "rationaleDe": "Zwei aktuelle tatsächlich unabhängige ganze DE/EN/P-/Primärquellen-/Seiten-/Bildprüfungen stimmen überein. Die bestehende fachfreie Orientierung setzt und prüft kein wirtschaftliches Wissen. Bedürfnisse, gegebenes Budget und verfügbare Information erklären begrenzte Haushaltsnachfragen. Gegebene Menüs, ordinale Präferenzen und kontrollierte Preis-/Aufmerksamkeitsänderungen erlauben Erklären und Variieren ohne autonome Optimierung oder sichere Biasdiagnose. Sowohl Budget-/Präferenzunterschiede als auch offene Informationsgrenzen bleiben erforderlich; ausreichende andere strukturell neue Fälle bleiben zulässig. Keine neue Recall-, Vier-Aufgaben-, Nachfolgermastery- oder menschliche Freigabequote. Die primär belegte begrenzte Modellvariation und alle wahrheitsgemäßen P-v2/Human-Statusfelder bleiben erhalten.",
+      "rationaleEn": "Two actual current independent whole DE/EN/P, primary source, page and image reviews agree. The existing prerequisite-free orientation assumes and tests no economics knowledge. Needs, supplied budgets and available information support bounded household demand explanations. Supplied menus, ordinal preferences and controlled price/attention changes require explanation and variation without autonomous optimisation or certain bias diagnosis. Budget/preference differences and information limits remain mandatory; other sufficient structurally fresh examples remain valid. No new recall, four-task, successor mastery or human-approval quota is introduced. Preserve the actual limited source-derived model scope and truthful P-v2/human-status fields."
+    }
+  ],
+  "manifestFingerprint": "sha256:4fd521365a478352ba21f0b93f319c8af2228f7c7ae4d1a054335b950488a5d7"
+}

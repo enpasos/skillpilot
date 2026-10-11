@@ -1688,8 +1688,12 @@ public class LearnerControllerIntegrationTest {
                 { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-SN", "19", "19" },
                 { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-ST", "19", "19" },
                 { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-TH", "18", "18" },
-                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BB", "80", "80" },
-                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BE", "80", "80" },
+                // Reviewed source/stage boundaries retain two lower-stage Berlin
+                // project goals and limit new targets to source-supported Sek I.
+                // Native G8/G9 target/support ID sets are archived in the
+                // 2026-10-10 qualified sixteen-country projection dossier.
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BB", "79", "79" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BE", "59", "59" },
                 { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BY", "136", "136" },
                 { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-HB", "41", "41" },
                 { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-HH", "38", "38" },

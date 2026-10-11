@@ -1,0 +1,82 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-current336-final56-v22-b04-first-pass-b.batch-001.codex-gpt6-b",
+  "campaignId": "wirtschaft-current346-D64-preserved-pair-binding-04-b",
+  "roundId": "wirtschaft-current346-D64-preserved-pair-binding-04-first-pass-b",
+  "batchId": "wirtschaft-current346-D64-preserved-pair-binding-04-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:1fbad986fd0328fc9f6b0619cce4af271eaba9d05faaafa7b569de2ac596fb92",
+  "bundleFingerprint": "sha256:abb825876f655bbab38cb15868c0017ab1c4f7986075a95624675d2140a29060",
+  "bookDigest": "sha256:0bb207050173ce68c8e5739e17971581a2b943d9e180ae00dbae6dbe66ac3687",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+  "generationParametersFingerprint": "sha256:786efc4a9ee0477f19158223c06020015cd597cbbc305e0f5aef89f7b6ecbd71",
+  "independenceGroupId": "wirtschaft-current346-D64-preserved-pair-binding-04-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:7c1a9d3675bda2f3c8074dd8a821aabf1dc0a1b507203e5939ff84c5eaf54680"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:b6850ae9be388e0d4a91ec0033626f1ec00af24c5a52118a15bbca29f6c7db97"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:494218b70ab548778f7172b98b4748ded4102ad49b0018b513a034d0c3f3cd36"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:bb7f445c6dbf57861e6a20d8606bcd57239a3333c700665d3f1d29296d71ffe3"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:e9f0a841065b7529281afc79aab708c795a178c49fea2807392bf48cb708ff57"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:361ef980753bbded9c420100a734509bc20dd81975160ff2846c70ecbb4947e8"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:cb43be69d54b3d10694a597e453f7ff729ab48fad12f84b977119b94aed92e31"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:c6cf84bff392ef12ec06234f4d6053ec629c726fd8d35085705040a2af8a050f"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:1fbad986fd0328fc9f6b0619cce4af271eaba9d05faaafa7b569de2ac596fb92"
+    }
+  ],
+  "startedAt": "2026-10-10T12:29:48.091157Z",
+  "completedAt": "2026-10-10T12:32:04.270841Z",
+  "status": "completed",
+  "outputDigest": "sha256:85c2cea671cda760051d7b8f45e805c3b05691dd4efe2eae717ed49c91cdad15",
+  "toolchainVersion": "node20.20.2-tsx4.21.0-codex"
+}

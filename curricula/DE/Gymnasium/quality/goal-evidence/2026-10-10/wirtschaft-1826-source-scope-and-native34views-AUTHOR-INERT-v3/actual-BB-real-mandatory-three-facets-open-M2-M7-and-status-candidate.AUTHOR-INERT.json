@@ -1,0 +1,216 @@
+{
+  "openBlockers": {
+    "status": "open_relevant_M2_and_M7_source_blockers",
+    "sourceCount": 99,
+    "routingCount": 99,
+    "routingCountIsNotWholeNormativeCoverage": true,
+    "mandatoryActualOriginalPage23": [
+      {
+        "facet": "Markt anhand Kriterien charakterisieren, Marktformen und daraus Anbieterhandeln ableiten",
+        "existingPartial": "273809d9… Anbieterzahl/zusätzliche Info allein ist kein vollständiger Originalvertrag",
+        "open": "Echter breiter Marktformen-/Anbieterhandlungsanteil nicht extrahiert/abgedeckt"
+      },
+      {
+        "facet": "Vollkommenes und unvollkommenes Polypol ins Preis-Mengen-Diagramm übertragen",
+        "existingPartial": "50e07… verlangt nur vollkommene Märkte",
+        "open": "Unvollkommenes Polypol ist eigenständiger offener Source-/Zielanteil"
+      },
+      {
+        "facet": "Gewinnsteigerungsmöglichkeiten durch Preisdifferenzierung diskutieren",
+        "existingPartial": null,
+        "open": "Keine tatsächliche ganze kanonische Preisdifferenzierungsleistung gefunden; neue Originalfacet zunächst fachlich zu qualifizieren"
+      }
+    ],
+    "optionalActualOriginalPage23": {
+      "facet": "Marktsteuerung: Eingriffe analysieren, im Diagramm darstellen, bewerten",
+      "role": "Wahlalternative zu Konzentration/Wettbewerb, kein pauschaler zusätzlicher Pflichtclaim",
+      "open": "Analyse-/Diagrammleistung nicht vom bloßen allgemeinen Abwägen vollständig getragen"
+    },
+    "noNewGoalAuthorshipInThisPacket": true,
+    "noWholeHistoricalBBApproval": true
+  },
+  "wholeBeforePipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche Brandenburg-Wirtschaft-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "PDF liegt lokal vor."
+          },
+          {
+            "id": "source-selection-reviewed",
+            "label": "Wirtschaftlich relevante Lehrplanpassagen wurden fachlich abgegrenzt",
+            "passed": true,
+            "details": "Sek I WAT wurde auf wirtschafts- und berufsbezogene Passagen begrenzt."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten Brandenburg-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "100 Source-Ziele."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "Unvollständige Source-Ziele: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "100 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "100/100 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Inhaltlich abgedeckt: 100/100; offene Canonical-Gaps: 0."
+          }
+        ]
+      }
+    ]
+  },
+  "wholeAfterPipelineStatus": {
+    "currentStep": "MAPPING-2",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "incomplete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche Brandenburg-Wirtschaft-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "PDF liegt lokal vor."
+          },
+          {
+            "id": "source-selection-reviewed",
+            "label": "Wirtschaftlich relevante Lehrplanpassagen wurden fachlich abgegrenzt",
+            "passed": false,
+            "details": "INERT-Autornachfolger: echte offene LK-Pflicht S.23 zu Marktformen/Anbieterhandeln, unvollkommenem Polypol und Preisdifferenzierung. 99 vorhandene Source-IDs bzw. 99 Routingentscheidungen bilden diese nicht vollständig ab. Ganze unabhängige Source-/Mappingfreigabe fehlt; M2/M7-relevanter Blocker."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten Brandenburg-Passagen wurden Source-Ziele erzeugt",
+            "passed": false,
+            "details": "INERT-Autornachfolger: echte offene LK-Pflicht S.23 zu Marktformen/Anbieterhandeln, unvollkommenem Polypol und Preisdifferenzierung. 99 vorhandene Source-IDs bzw. 99 Routingentscheidungen bilden diese nicht vollständig ab. Ganze unabhängige Source-/Mappingfreigabe fehlt; M2/M7-relevanter Blocker."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "99 vorhandene Source-IDs mit Locator; keine Vollständigkeit der tatsächlich verpflichtenden Originalleistungen bewiesen."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": false,
+            "details": "INERT-Autornachfolger: echte offene LK-Pflicht S.23 zu Marktformen/Anbieterhandeln, unvollkommenem Polypol und Preisdifferenzierung. 99 vorhandene Source-IDs bzw. 99 Routingentscheidungen bilden diese nicht vollständig ab. Ganze unabhängige Source-/Mappingfreigabe fehlt; M2/M7-relevanter Blocker."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": false,
+            "details": "INERT-Autornachfolger: echte offene LK-Pflicht S.23 zu Marktformen/Anbieterhandeln, unvollkommenem Polypol und Preisdifferenzierung. 99 vorhandene Source-IDs bzw. 99 Routingentscheidungen bilden diese nicht vollständig ab. Ganze unabhängige Source-/Mappingfreigabe fehlt; M2/M7-relevanter Blocker."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": false,
+            "details": "INERT-Autornachfolger: echte offene LK-Pflicht S.23 zu Marktformen/Anbieterhandeln, unvollkommenem Polypol und Preisdifferenzierung. 99 vorhandene Source-IDs bzw. 99 Routingentscheidungen bilden diese nicht vollständig ab. Ganze unabhängige Source-/Mappingfreigabe fehlt; M2/M7-relevanter Blocker."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": false,
+            "details": "INERT-Autornachfolger: echte offene LK-Pflicht S.23 zu Marktformen/Anbieterhandeln, unvollkommenem Polypol und Preisdifferenzierung. 99 vorhandene Source-IDs bzw. 99 Routingentscheidungen bilden diese nicht vollständig ab. Ganze unabhängige Source-/Mappingfreigabe fehlt; M2/M7-relevanter Blocker."
+          }
+        ]
+      }
+    ]
+  },
+  "beforeTechnicalSummary": {
+    "sourceGoals": 100,
+    "reviewedSourceGoals": 100,
+    "seedMappedSourceGoals": 99,
+    "mappedSourceGoals": 100,
+    "needsCanonicalGoal": 0,
+    "exactMappings": 33,
+    "partialMappings": 67,
+    "inheritedMappings": 0
+  },
+  "afterTechnicalSummary": {
+    "sourceGoals": 99,
+    "reviewedSourceGoals": 99,
+    "seedMappedSourceGoals": 99,
+    "mappedSourceGoals": 99,
+    "needsCanonicalGoal": 0,
+    "exactMappings": 31,
+    "partialMappings": 68,
+    "inheritedMappings": 0
+  }
+}

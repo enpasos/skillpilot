@@ -1,0 +1,195 @@
+"""Independent bounded E40 review fixtures; no author/live mutation or learner claim."""
+import json
+import hashlib
+from decimal import Decimal, ROUND_HALF_UP
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+REPO = next(p for p in HERE.parents if (p / 'AGENTS.md').exists())
+AUTHOR = REPO / 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-E-forty-nine-coherent-terminal-material-author-v1'
+IDS = ['fa7dc626-ab21-58a9-ab1e-eb23309a7ed2', '64276b0c-cc52-5482-bbf8-2412a3f6cde3', '75f67cb9-70bf-5035-adff-05b22889916b', 'b2003473-c85f-57e9-83be-9bbc0a922b32']
+
+def save(name, obj):
+    (HERE / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n')
+
+def sha(obj):
+    return 'sha256:' + hashlib.sha256(json.dumps(obj, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+
+whole = json.loads((AUTHOR / 'whole-nine-coherent-E40-materials.DRAFT-terminal-goals.candidate.json').read_text())
+materials = [g for g in whole if g['id'] in IDS] if isinstance(whole, list) else [g for g in whole['goals'] if g['id'] in IDS]
+assert len(materials) == 4
+byid = {g['id']: g for g in materials}
+checks = []
+
+def check(label, value, expected, interpretation):
+    value, expected = Decimal(value), Decimal(expected)
+    assert value == expected, (label, value, expected)
+    checks.append({'label': label, 'actual': str(value), 'expectedIndependentlySpecified': str(expected), 'pass': True, 'interpretation': interpretation})
+
+check('E unit efficiency', (Decimal(10)-8)/10*100, '20', 'Per item, not total energy.')
+check('E original total', Decimal(100)*10, '1000', 'kWh for original output.')
+check('E changed total', Decimal(125)*8, '1000', 'No total saving under increased output.')
+check('S total', Decimal(95)*10, '950', '50kWh lower given fixed unit intensity.')
+check('E total saving', Decimal(100)*10-Decimal(125)*8, '0', 'No invented environmental net benefit.')
+check('F/P capital difference', Decimal(12000)-10000, '2000', 'P requires more initial capital.')
+check('F/P annual relative benefit', Decimal(500)-Decimal(-300), '800', 'F adds500; P saves300 relative to old process.')
+check('Optional undiscounted offset', Decimal(2000)/800, '2.5', 'Optional arithmetic, not added exam prerequisite or real investment recommendation.')
+check('Finance source sum', Decimal(30000)+60000, '90000', 'Equity and credit cover stated need.')
+check('Equity share exact percent', (Decimal(30000)/90000*100).quantize(Decimal('.1'), ROUND_HALF_UP), '33.3', 'Different from legal liability extent.')
+check('Credit share exact percent', (Decimal(60000)/90000*100).quantize(Decimal('.1'), ROUND_HALF_UP), '66.7', 'Debt financing, no shareholder voting by itself.')
+check('Plan cash after debt service', Decimal(18000)-12000, '6000', 'Cash result, not GuV profit.')
+check('Stress cash after debt service', Decimal(9000)-12000, '-3000', 'Funding shortfall; not negative GuV profit assertion.')
+check('Original 2024 profit margin', Decimal(12)/300*100, '4', 'Percent of revenue; no cash balance inference.')
+check('Changed 2024 profit margin', Decimal(18)/300*100, '6', 'Actually supplied correction changes only this input.')
+check('Original balance equality', Decimal(30)+60, '90', 'Assets equal funding sum; assets not extra funding slice.')
+check('Changed balance equality', Decimal(45)+45, '90', 'Total remains90 thousandEUR.')
+check('Changed equity percentage', Decimal(45)/90*100, '50', 'Capital-structure denominator90.')
+check('Changed debt percentage', Decimal(45)/90*100, '50', 'Not a time series and no proven ability to pay.')
+check('Pilot downtime decrease', Decimal(80)-56, '24', 'Hours in supplied pilot only.')
+check('Pilot downtime reduction', (Decimal(80)-56)/80*100, '30', 'Not aggregate productivity, demand or employment proof.')
+check('Manufacturing relationships per firm', (Decimal(7801230)/198362).quantize(Decimal('.001'), ROUND_HALF_UP), '39.328', 'Employment relationships, not unique persons or median firm.')
+check('Trade relationships per firm', (Decimal(6017332)/538248).quantize(Decimal('.001'), ROUND_HALF_UP), '11.179', 'Industryincludes vehicle maintenance/repair.')
+check('Trade larger firm count', Decimal(538248)-198362, '339886', 'No inference about training places or individual chances.')
+check('Manufacturing larger relationship count', Decimal(7801230)-6017332, '1783898', 'Separate metric/scale from number of firms.')
+for g in materials:
+    e = g['examData']['scoring']
+    steps = e['steps']
+    total = sum(s['points'] for s in steps)
+    check('Whole rubric sum '+g['id'], total, e['maxPoints'], 'All four steps read DE/EN; passing remains15/24, no threshold relaxation.')
+    assert len(steps) == 4 and e['maxPoints'] == 24 and e['passingPoints'] == 15
+
+# The following are new reviewer-written whole answer fixtures, not learner submissions.
+# Every component is marked against the actual 2+2+2 step rubric, with explanation.
+cases = []
+
+def case(ident, material, answers, marks, detail, missing=None, artefacts=None):
+    assert len(answers) == len(marks) == len(detail) == 4
+    steps = []
+    for i, (answer, points, reasons) in enumerate(zip(answers, marks, detail), 1):
+        assert len(points) == len(reasons) == 3
+        assert all(0 <= p <= 2 for p in points)
+        steps.append({'taskNumber':i, 'completeAnswerDe':answer, 'threeActualRubricComponentMarks':[
+            {'component':j+1,'maxPoints':2,'awardedPoints':v,'reason':r}
+            for j,(v,r) in enumerate(zip(points,reasons))], 'awardedStepPoints':sum(points)})
+    total = sum(s['awardedStepPoints'] for s in steps)
+    obj = {'id':ident, 'examGoalId':material, 'wholeMaterialObjectSHA256':sha(byid[material]), 'syntheticReviewerFixtureNotObservedLearner':True,
+           'notMasteryOrHumanEvidence':True, 'allFourTasksActuallyAnswered':True, 'bilingualRubricEquivalenceRead':True,
+           'steps':steps, 'totalPoints':total, 'currentFrozenPassingPoints':15, 'passesFrozenAggregateRubric':total>=15,
+           'missingEssentialActualPerformance':missing, 'actualReviewerFixtureArtefacts':artefacts or []}
+    cases.append(obj)
+
+case('environment-deterministic-ranking-and-rebound-confusion', IDS[0], [
+    'Der Betrieb hat immer recht, weil Arbeitsplätze wichtig sind. Die Messwerte sind bloße Meinungen, Umsatzverlust dagegen steht sicher fest. Der Abgasstandard wird abgeschafft; dann hat niemand Kosten und der Konflikt ist vollständig gelöst.',
+    'Alle drei Varianten sind Effizienz. E spart insgesamt20%, weil8 kleiner als10 ist; die125 Stück ändern nichts. Gewinnsteigerung beweist vollständige Nachhaltigkeit. Schlechtere Arbeitsbedingungen spielen dafür keine Rolle.',
+    'A ist wegen40000 BIP je Kopf in jeder Hinsicht besser. HDI misst nur Produktion, daher müssen.92 falsch sein. Jeder Haushalt in A bekommt40000 und ist wohlhabender. Emissionen messen die Zahl der Menschen. Weitere Daten sind unnötig.',
+    'Die Modellregel gilt automatisch als heutiges deutsches Gesetz. F ist ohne weitere Angaben in jedem Fall rentabler, weil10000 kleiner als12000 ist. P verursacht jährlich300 zusätzliche Kosten. Betriebsdauer, Finanzierung und Unsicherheit beeinflussen die Entscheidung nicht.'
+], [[0,0,0]]*4, [
+    ['Kein differenzierter Akteursvergleich.','Messbefund/Prognose/Wert umgekehrt.','Abschaffung ohne begründete Konfliktabwägung.'],
+    ['Hebel verwechselt.','Stück- und Gesamtbezug verwechselt.','Sozialen Konflikt ausgeschlossen.'],
+    ['HDI/Emissionen falsch erklärt.','BIP zur Totalrangliste gemacht.','Durchschnitt fälschlich jedem Haushalt zugeordnet.'],
+    ['Modell als reales Gesetz erfunden.','Vorzeichen der Folgekosten falsch.','Unbedingtes Urteil ohne Prüfbedingungen.']])
+
+case('environment-recital-without-case-reasoning', IDS[0], [
+    'Umweltpolitik betrifft Staat, Wirtschaft und Gesellschaft. Alle wollen etwas anderes. Man sollte alle Seiten anhören; welcher Befund hier wirklich gemessen wurde und wer die Umrüstung bezahlt, kann ich nicht sagen.',
+    'Effizienz nutzt Ressourcen besser, Suffizienz fragt nach weniger Nutzung, Konsistenz nach verträglichen Kreisläufen. Ich ordne die drei konkreten Maßnahmen nicht zu und prüfe die Energiesummen nicht. Ob Arbeitsbedingungen schlechter werden, entscheide ich nach dem Gewinn.',
+    'BIP ist inländische Produktion; HDI bündelt Gesundheit, Bildung und Lebensstandard; CO2 ist ein Umweltindikator. Ich leite aus den A/B-Werten kein Urteil ab und frage keine Verteilungs- oder sonstigen Zusatzdaten ab.',
+    'Staatliche Regeln setzen Bedingungen, etwa eine verbindliche Umweltgrenze. F und P müssten verglichen werden. Ich rechne und begründe keine Entscheidung anhand der gegebenen Anfangs-/Folgekosten; weitere Prüfangaben fehlen.'
+], [[1,0,0],[1,0,0],[1,0,0],[1,0,0]], [
+    ['Allgemeine Akteure, keine konkreten Interessen.','Keine tatsächliche Befundtrennung.','Keine konkrete Kompromissfrage.'],
+    ['Ansätze benannt, keine Materialzuordnung.','Keine1000/1000-Prüfung.','Gewinn statt drei Dimensionen.'],
+    ['Begriffe korrekt, A/B-Interpretation fehlt.','Kein differenziertes Urteil.','Zusatzinformation/Verteilungsgrenze fehlt.'],
+    ['Grundidee eines Rahmens, öffentlicher Zweck kaum entwickelt.','Keine vorzeichenrichtige Gegenüberstellung.','Kein bedingtes Urteil.']])
+
+case('finance-complete-concepts-but-no-spreadsheet', IDS[1], [
+    'Die30000 Beteiligung bilden ein Drittel der90000, der60000 Kredit zwei Drittel. Die Beteiligung gewährt die vereinbarten Stimmen und bedingte Ausschüttung, keine feste Rückzahlung. Die Bank erhält Zins und Rückzahlung, keine Stimmen. Die12000 Schuldendienst vermindern Zahlungsmittel. GuV-Gewinn misst periodischen Erfolg, der gegebene Überschuss vor Schuldendienst dagegen verfügbare Zahlungsmittel. Persönliche Haftung folgt nicht aus der Kapitalhöhe.',
+    'Die Gesellschafter leisten vereinbarte Einlagen und tragen das Risiko ihrer Beteiligung; Mitwirkungs- und Ausschüttungsrechte folgen den Fallbedingungen. Die Bank stellt den Kredit bereit und hat die Zins-/Rückzahlungsforderung, deren Ausfall möglich ist. Für Gesellschaftsschulden ist grundsätzlich das Gesellschaftsvermögen maßgebend; die zusätzlich wirksam übernommene Bürgschaft schafft eine eigene Verpflichtung für genau diesen Kredit und kann privates Vermögen treffen. Ich behaupte keine automatische sofortige Vollstreckung oder Haftung für alle Schulden.',
+    'Im Plan bleiben6000; bei9000 vor Schuldendienst fehlen3000. Eine vereinbarte Liquiditätsreserve oder eine passende, mit der Bank vereinbarte Rückzahlungsanpassung könnte die Lücke adressieren; zusätzliche Beteiligung kann Stimmenanteile verändern. Jede Option verlangt Prüfung von Kosten, Zeit und Verlässlichkeit. Ein ansonsten gleicher Kredit ohne Bürgschaft ändert die12000 Unternehmenszahlung nicht, entfernt aber die konkrete zusätzliche private Verpflichtung. Eigenkapital und Kredit sind nicht pauschal überlegen.',
+    'Ich habe ausdrücklich keine Tabellenkalkulationsdatei, keine Diagramme und keine tatsächlich ausgeführten Eingabeänderungen erstellt. Rein sprachlich kann ich sagen: Jahre und TausendEUR müssen genannt werden; Gewinn darf nicht durch Umsatzskala verschwinden. Ursprünglich steigt Umsatz und fällt letzter Gewinn; nach Änderung12→18 wäre der Verlauf anders. Kapitalanteile sind30/90 und60/90, nach45/45 jeweils50%;90 Vermögen ist keine dritte Finanzierungsscheibe. Stichtagsstruktur ist keine Zeitreihe und beweist keine sichere Zahlungsfähigkeit. Diese Erläuterung ersetzt die geforderten Grafiken nicht.'
+], [[2,2,2],[2,2,2],[2,2,2],[0,0,2]], [
+    ['Beträge/Arten vollständig getrennt.','Vertragliche Rechte und Zahlungsverpflichtungen richtig.','Gewinn/Cash/Haftung ausdrücklich getrennt.'],
+    ['Je Pflichten und Ansprüche beschrieben.','Bankforderungsausfall und Beteiligungsverlust getrennt.','Gesellschaftsverbindlichkeiten vs eigene Bürgschaft, fallbezogene Grenze.'],
+    ['6000Plan/-3000Stress richtig.','Zwei materialbezogene vereinbarungsabhängige Optionen.','Bürgschaftsvariation beeinflusst privates Zusatzrisiko, nicht Unternehmensschuldendienst.'],
+    ['Keine Datei oder Diagramme:0.','Keine tatsächlich ausgeführten Änderungen:0.','Alle interpretiven Grenzen vollständig,2 zulässig innerhalb des expliziten2/6-Caps.']
+], 'Actual linked spreadsheet charts and both executed input changes are absent; whole task description makes them mandatory.')
+
+case('finance-cash-equity-guarantee-confusion', IDS[1], [
+    'Das Unternehmen hat90000 Gewinn. Die Bank bekommt zwei Drittel der Stimmrechte, weil sie zwei Drittel der Mittel gibt; die Gesellschafter müssen die30000 jedes Jahr zurückzahlen. Die12000 Schuldendienst sind identisch mit dem GuV-Verlust.',
+    'Die Bank haftet persönlich für die Werkstattschulden, während der Anteilseigner niemals Geld verlieren kann. Einlagen sind nur unverbindliche Zusagen. Eine Bürgschaft versichert die Bank gegen jedes Risiko und umfasst automatisch sämtliche Schulden aller Gesellschafter.',
+    'Die9000 sind Gewinn und reichen sicher für12000, weil die60000 Kredit zusätzlich jedes Jahr kommen. Fremdkapital ist daher immer überlegen. Ohne Bürgschaft entfällt auch die Unternehmenspflicht zur Kreditrückzahlung; Alternativen und Vertragsbedingungen sind unnötig.',
+    'Ich habe keine Datei erstellt. Ich würde ein Kuchendiagramm mit90 Vermögen,30 Eigenkapital und60 Fremdkapital erstellen. Der Kuchen hat drei unabhängige Finanzierungsscheiben. Beide Datenänderungen würde ich ignorieren, weil die GmbH sichere Zahlungsfähigkeit garantiert und Umsatz sowie Gewinn identisch sind.'
+], [[0,0,0]]*4, [
+    ['Mittelbereitstellung als Gewinn ausgegeben.','Kreditrechte und Einlagerückzahlung vertauscht.','Schuldendienst als GuV-Verlust fehlgedeutet.'],
+    ['Pflichten falsch.','Beteiligungsverlust/Ausfall falsch.','Bürgschaftsumfang und Schuldner erfunden.'],
+    ['Cashvergleich falsch.','Keine begründeten Optionen.','Unternehmensschuld fälschlich aufgehoben.'],
+    ['Kein tatsächliches Produkt, Kapitalstruktur falsch.','Keine Änderungen.','Bestands-/Strom-/Haftungsgrenzen falsch.']])
+
+case('production-digital-determinism-and-fitness-stereotypes', IDS[2], [
+    'V und L sind dieselbe Fertigung; Arbeitsschritte müssen nicht unterschieden werden. Ein digitales Board vergrößert die Lackieranlage automatisch. Richtige Programme garantieren richtige Beschläge, daher müssen Stammdaten nicht geprüft werden.',
+    '80 auf56 sind56% Rückgang. Damit sind gesamtwirtschaftlich30% mehr Jobs, Absatz und Umweltqualität nachgewiesen. Nachfrage, Schulungszeit und andere Stationen ändern daran nichts. Alle Gewinne aus Sensoren gehen sicher an alle Beschäftigten.',
+    'Die BAuA-Befragung beweist, dass KI in jedem Betrieb ursächlich mehr Freiheit ohne zusätzliche Belastung schafft. Jede Tätigkeit kann vollständig von zuhause erledigt werden. Ich muss daher keine Kundenprüfung, Kommunikation oder Präsenzbedingungen erkunden.',
+    'Kreative Menschen müssen Unternehmer werden, zurückhaltende Menschen dürfen es nicht. Beschäftigte tragen nie fachliche Verantwortung. Unternehmer brauchen keine Finanzierung oder Kundengewinnung. Meine einzelne Vorliebe beweist endgültige Eignung; einen Entwicklungs- oder Erkundungsschritt benötige ich nicht.'
+], [[0,0,0]]*4, [
+    ['Ablaufunterschiede fehlen.','Physischer Engpass/IT-Fehlerfreiheit falsch.','Keine problembezogene Maßnahme.'],
+    ['30%-Pilotbefund falsch berechnet und überdehnt.','Wirkungswege ersetzt durch Gewissheit.','Bedingungen/Zielkonflikte ausgeschlossen.'],
+    ['Risiken und Tätigkeitsunterschiede fehlen.','Kausalität statt Befragungszusammenhang.','Kein eigener offener Erkundungsschritt.'],
+    ['Zusätzliche Anforderungen negiert.','Stereotyp statt begründeter Tätigkeitsbezug.','Endgültige Eignungsbehauptung ohne Entwicklung.']])
+
+case('production-term-lists-without-transfer', IDS[2], [
+    'V hat mehrere Werkstattstationen, L eine Linie. IT ist eine Informationshilfe. Ich beschreibe weder Auftragsübergaben noch Variantenwechsel, und leite keine konkrete Antwort auf Lackierengpass oder Beschlagfehler ab.',
+    'Die24 weniger Ausfallstunden entsprechen30% im Probelauf. Ich nehme keine Wirkung auf Kunden, Beschäftigte oder Wirtschaft her, und nenne keine Nachfrage-, Schulungs- oder Anschlussstationsbedingung.',
+    'Digitale Arbeit kann Chancen und Risiken haben. Der amtliche Text beschreibt Zusammenhänge, nicht Ursache. Ich vergleiche keine zwei Tätigkeiten und plane keinen konkreten persönlichen Erkundungs- oder Lernschritt.',
+    'Beschäftigte und Gründer brauchen fachliche Sorgfalt. Gründer müssen Kundengewinnung und Finanzierung organisieren. Ich gebe keine zwei freiwilligen eigenen Bezugspunkte, keinen entwickelbaren Bereich und keinen überprüfbaren nächsten Schritt an.'
+], [[1,1,0],[2,0,0],[0,1,0],[2,0,0]], [
+    ['Layout richtig benannt, Arbeitsteilung/Schritte unvollständig.','Generischer IT-Nutzen, keine Grenze je Betrieb.','Ansätze fehlen.'],
+    ['Rechnung/Pilotgrenze korrekt.','Keine weiteren Wirkungswege.','Bedingungen fehlen.'],
+    ['Keine zwei tätigkeitsbezogenen Abwägungen.','Befundtrennung nur allgemein, Bedingungen fehlen.','Eigener Schritt fehlt.'],
+    ['Gemeinsame und zwei zusätzliche Anforderungen gegeben.','Eigene Reflexion fehlt.','Entwicklung/offener konkreter Schritt fehlt.']])
+
+PRESENTATION = 'Die gesamte Präsentation richtet sich an Ausbildungssuchende, beantwortet deren Fragen aber unzureichend. Block1 reduziert Tätigkeiten stereotyp auf Kreativität; er sollte konkrete Aufgaben und erlernbare Anforderungen vergleichen. Block2 braucht2024, Destatis und die Bedeutung von Unternehmenszahl; die Zahlen beweisen keine Ausbildungsplatzzahl. Block3 verwendet unerklärte Kürzel statt anschaulicher beruflicher Aufgaben. Block4 fordert Bewerbung ohne Qualifikation, Bedingungen oder Beleg; ein freiwilliger Informationsschritt wäre passend. Zwei Überarbeitungen: Block2 erhält die korrekt bezeichnete Quelltabelle und Aggregatgrenze; Block3 erklärt statt Kürzeln eine Tätigkeit wie Auftragsplanung samt Lernanforderung. Die gegebene fiktive Rückmeldung ist ein Hinweis aus genau dieser Perspektive, keine garantierte Bewerbung oder Wirkung auf jede Zielgruppe.'
+PLAN = 'Meine Frage ist, wie sich Firmenzahl und Beschäftigungsverhältnisse von verarbeitendem Gewerbe und Handel in Deutschland2024 unterscheiden und welche weitere Berufserkundungsfrage daraus folgt. Ablauf: Quelle/Abgrenzung prüfen, zwei Quotienten berechnen, getrennte Spreadsheet-Diagramme erstellen, Bericht und adressatenbezogene Bewertung abgeben. Die bereitgestellten Daten sind amtliche2024-Aggregate; Unterrichtsrollen/Ausfall sind fiktiv, Quotienten eigene Berechnung. Ich lege ausdrücklich keine ausgeführte Projektdokumentation oder Datei vor und habe den Plan nicht umgesetzt.'
+DATA_PROSE = 'Handel hat538248 und damit mehr Firmen als verarbeitendes Gewerbe198362. Das Gewerbe hat7801230 und damit mehr Beschäftigungsverhältnisse als Handel6017332. Je Firma sind es39.328 und11.179. Es sind Jahresdurchschnittswerte von Beziehungen, nicht einzigartige Personen oder typische Firmengrößen; Mehrfachbeschäftigung zählt mehrfach. Deutschland/WZ2008/2024 und die Registerabgrenzung gelten. Ich würde getrennte beschriftete Diagramme einsetzen, habe aber kein Spreadsheet und keine Grafik erstellt. Meine offene Erkundungsfrage betrifft lokale Tätigkeiten, Qualifikationen und Angebote; das Verhältnis garantiert keine persönliche Stelle oder Gründungschance.'
+case('project-all-prose-with-no-executed-products', IDS[3], [PLAN,
+    'Daten, Grafik und Redaktion bekämen Rollen; Prüfung muss vor Rechnung, diese vor Grafik und Analyse vor Bericht liegen. Nach dem Grafik-Ausfall würde ich Daten übernehmen lassen und den Plan ändern. Ein gemeinsames versioniertes Board wäre passend. Ich habe keine Rollenarbeit durchgeführt, keine Rückmeldung verarbeitet und kein altes/neues Board oder ausgeführtes Arbeitspaket vorgelegt. Ein behaupteter Toolname ist kein Nachweis tatsächlicher Koordination.', DATA_PROSE, PRESENTATION
+], [[2,0,0],[2,0,0],[0,0,2],[2,2,2]], [
+    ['Konkrete Frage und realistischer Plan.','Keine ausgeführte Produktarbeit.','Keine Auswertung tatsächlicher Arbeit.'],
+    ['Rollen/Abhängigkeiten als Plan benannt.','Keine dokumentierte Durchführung.','Nur hypothetische Toolwahl, keine konkrete Evaluation.'],
+    ['Kein Spreadsheet.','Mittelwerte richtig, wegen explizitem maximal2-Cap nicht zusätzlich zum letzten Kriterium gewertet.','Alle Grenzen/Erkundung richtig,2; GesamtS3 bleibt2.'],
+    ['Alle vier Blöcke konkret analysiert.','Zwei fachlich passende Änderungen.','Feedback-/Stereotypgrenzen klar.']
+], 'All actual project, role and spreadsheet execution absent. Existing step caps correctly keep this answer below15.')
+
+role_fixture = [
+    {'kind':'initial-board','revision':1,'rows':[
+        {'task':'Quelle/Abgrenzung prüfen','role':'Daten','status':'erledigt','dependsOn':[]},
+        {'task':'Quotienten berechnen','role':'Daten','status':'erledigt','dependsOn':['Quelle/Abgrenzung prüfen']},
+        {'task':'Spreadsheet-Diagramme','role':'Grafik','status':'offen','dependsOn':['Quotienten berechnen']},
+        {'task':'Bericht','role':'Redaktion','status':'inArbeit','dependsOn':['Quotienten berechnen']} ]},
+    {'kind':'explicit-classroom-role-simulation-feedback','role':'Grafik','text':'InSchritt2 nicht verfügbar; Vorschlag Datenrolle übernimmt nächstenGrafikslot, keineFreigabe vonunfertigenDiagrammen.'},
+    {'kind':'documented-reassignment','role':'Daten','response':'Übernehme künftigGrafikslot; bereits gerechneteQuotienten bleiben geprüft, Grafiken derzeitweiter offen.'},
+    {'kind':'revised-board','revision':2,'rows':[
+        {'task':'Quelle/Abgrenzung prüfen','role':'Daten','status':'erledigt'},
+        {'task':'Quotienten berechnen','role':'Daten','status':'erledigt'},
+        {'task':'Spreadsheet-Diagramme','role':'Daten','status':'offen'},
+        {'task':'Bericht','role':'Redaktion','status':'erledigtAlsTextMitDiagrammlücke'}]},
+    {'kind':'actual-text-calculation-work-package','manufacturingQuotient':'7801230/198362 =39.3282483540…','tradeQuotient':'6017332/538248 =11.1794786047…'},
+    {'kind':'actual-text-decision-report','text':'Mehr Handelsfirmen, aber mehr Beschäftigungsverhältnisse im verarbeitendenGewerbe; Berufserkundung musslokaleTätigkeit/Qualifikation prüfen. Durchschnitt istkeinMedian, BeziehungenkeineeinmaliggezähltenPersonen. Bericht stütztkeinVersprechen einerStelle. Diagrammeausdrücklichnichtgeliefert.'}
+]
+case('project-real-role-records-and-report-without-spreadsheet', IDS[3], [
+    'Die Frage und der erste Ablauf entsprechen der Branchenstruktur-Erkundung. Im beigefügten transparenten Rollenfixture wurden Quelle, Rechnung und Textbericht tatsächlich als Unterrichtsarbeit erarbeitet. Der Bericht vergleicht die amtlichen2024-Werte und stellt eine begrenzte weitere Erkundungsfrage. Diagramme fehlen ausdrücklich; es gibt keine Spreadsheetdatei. Die Gesamtprojektleistung ist daher unvollständig. Ich trenne amtliche Aggregate, eigene Quotienten und fiktive Rollen und bewerte die Lücke statt eine durchgeführte Außenrecherche zu behaupten.',
+    'Die ursprüngliche Version weist Daten/Grafik/Redaktion sowie Prüf- und Rechnungsabhängigkeiten aus. Der ausdrücklich simulierte Ausfall wird durch die dokumentierte Grafik-Rückmeldung, die Daten-Antwort und Revision2 verarbeitet. Daten übernimmt den künftigen Grafikslot; dessen Status bleibtoffen, niemand erfindet Freigabe. Tatsächlich erledigt sind die Rechen- und Berichtspakete. Das gemeinsame versionierte Textboard eignet sich hier zur Übersicht ohne private Chats. Die Evaluation benennt sichtbare Zuständigkeit als Gewinn und fehlende Grafikumsetzung als Grenze; ein Board allein baut keine Diagramme.',
+    DATA_PROSE, PRESENTATION
+], [[2,0,0],[2,2,2],[0,0,2],[2,2,2]], [
+    ['Frage/Plan erfüllt.','Für diesen adversarialen Grenzfall konservativ0 wegen unvollständigem gesamten Projekt, obwohl Textprodukt vorhanden.','Konservativ0 wegen unvollständigem Gesamtprojekt; damit sogar nur2/6 fürS1.'],
+    ['Beide tatsächlich vorliegenden Boards mit Abhängigkeiten.','Ausdrücklich simulierte Rollen-Rückmeldung/Umplanung und ausgeführte Rechen-/Berichtspakete; keine erfundene Außen-Teamleistung.','Begründete versionierte Medienwahl plus konkrete beobachtbare Grenze.'],
+    ['Explizit kein Spreadsheet oder Diagramm.','Richtige Quotienten dürfen den2/6-Cap nicht erhöhen.','Erkundungs-/Aggregat-/Personengrenze2, innerhalb des geltenden Caps.'],
+    ['Vier Blöcke entlang Zielgruppe/Belegen/Sprache analysiert.','Zwei konkrete zutreffende Verbesserungen.','Nur gegebene Rückmeldung, keine allgemeine Wirkung oder stereotype Eignung.']
+], 'Required actual spreadsheet chart product absent. Even conservative S1=2 leaves16/24>=15.', role_fixture)
+
+for c in cases:
+    expected = {'finance-complete-concepts-but-no-spreadsheet':20, 'project-all-prose-with-no-executed-products':12, 'project-real-role-records-and-report-without-spreadsheet':16}.get(c['id'])
+    if expected is not None: assert c['totalPoints']==expected
+    if c['id'] not in ('finance-complete-concepts-but-no-spreadsheet','project-real-role-records-and-report-without-spreadsheet'): assert not c['passesFrozenAggregateRubric']
+save('actual-independent-twenty-nine-Decimal-and-whole-rubric-sum-checks.json', {'schemaVersion':1,'notAuthorCheckReuse':True,'notObservedLearner':True,'checks':checks,'allPASS':True})
+save('actual-eight-complete-independent-counteranswers-and-individual-rubric-marks.json', {'schemaVersion':1,'allAuthoredByIndependentReviewer':True,'notAuthorEighteenSyntheticCases':True,'allCounteranswersCompleteFourTasks':True,'notObservedLearnerOrMasteryEvidence':True,'cases':cases,'substantiveFalsePositiveFindings':[
+    {'examGoalId':IDS[1],'caseId':'finance-complete-concepts-but-no-spreadsheet','actualTotal':20,'passingPoints':15,'missing':'Actual charts/spreadsheet and input-change execution'},
+    {'examGoalId':IDS[3],'caseId':'project-real-role-records-and-report-without-spreadsheet','actualConservativeTotal':16,'passingPoints':15,'missing':'Actual spreadsheet charts; S1 conservatively capped to2 too'}]})
+print(json.dumps({'independentNumericAndRubricChecks':len(checks),'wholeCounteranswers':len(cases),'actualScores':{c['id']:c['totalPoints'] for c in cases}},ensure_ascii=False,indent=2))

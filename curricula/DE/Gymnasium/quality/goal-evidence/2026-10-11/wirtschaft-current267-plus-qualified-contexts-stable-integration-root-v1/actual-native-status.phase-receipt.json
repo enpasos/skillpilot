@@ -1,0 +1,93 @@
+{
+  "recordedAt": "2026-10-11T00:31:08.042700+00:00",
+  "phase": "status",
+  "results": [
+    {
+      "label": "central-current-generation",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:27:48.855734+00:00",
+      "completedAt": "2026-10-11T00:29:29.371904+00:00",
+      "elapsedSeconds": 100.516,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-central-current-generation.raw.txt",
+        "bytes": 108,
+        "sha256": "sha256:389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "central-current-freshness",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/generateCurriculumQualityStatus.ts",
+        "--check"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:29:29.374124+00:00",
+      "completedAt": "2026-10-11T00:31:08.041729+00:00",
+      "elapsedSeconds": 98.668,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-central-current-freshness.raw.txt",
+        "bytes": 41,
+        "sha256": "sha256:7d756bba94d8c9c0003a062d6d09601debd400e52d37e0de99a4c4d127640113"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "protected-maturity-floors",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:29:29.374569+00:00",
+      "completedAt": "2026-10-11T00:29:29.728216+00:00",
+      "elapsedSeconds": 0.354,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-protected-maturity-floors.raw.txt",
+        "bytes": 159,
+        "sha256": "sha256:959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "current-five-gate-report",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/reportDeepUnderstandingRollout.ts",
+        "--format=json"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:29:29.374833+00:00",
+      "completedAt": "2026-10-11T00:30:41.650913+00:00",
+      "elapsedSeconds": 72.276,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-current-five-gate-report.raw.txt",
+        "bytes": 238054,
+        "sha256": "sha256:93e1060882c6115febf0891b67d077fa37801d485815d6b3bc8552c499949918"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    }
+  ],
+  "status": "PASS",
+  "m7CompletionClaim": false,
+  "humanApprovalClaim": false
+}

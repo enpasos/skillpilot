@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "status": "inert_author_candidate_unreviewed",
+  "author": "/root",
+  "goalId": "479fb87a-3a5a-5892-8b3e-dfb1d07e9612",
+  "currentCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "sha256": "ced16a782bd880239011f33731c57cf59d54d02b923c55c31c918492610ebfaa"
+  },
+  "currentWholeGoalSha256": "f9f12812ed0baa3989b1589cfddfbfbfb210363000c6fd40b6cb47bb12db7eed",
+  "decisions": {
+    "descriptionDe": "KEEP exact normative competency, one case-based classification explained by obligations.",
+    "english": "REVISE genuine translation of current German title and description, no scope expansion.",
+    "demandLevel": "Propose AB1 to AB2: applied classification and explanation using supplied rules, independent review required.",
+    "phase": "KEEP Q3.",
+    "prerequisite": "KEEP bd413 legal methods: current description is general legal methods with special attention to purchases; no wholesale graph cleanup.",
+    "semanticAtomicity": "Propose atomic: identify contract type from promised main performance and explain mutual duties as the reason for distinction; not a bundle of breach remedies or criminal law.",
+    "memory": {
+      "proposedDecision": "memory_required",
+      "deckIds": [
+        "de_gymnasium_economics_business_law"
+      ],
+      "memoryGoalIds": [
+        "mem_de_gym_economics_business_law"
+      ],
+      "cardId": "economics-law-contract-types",
+      "decision": "KEEP compact existing principle: contract type determines main obligations, rights and potential claims; no automatic no_memory_needed and no card edit.",
+      "visibility": "Existing visibility must be revalidated against the actual combined frame."
+    },
+    "visualization": "Missing image: one new PNG candidate, native tool generation; actual independent native/360/680/perspective review still required.",
+    "sourceAndCourse": "Actual BY WR13.1.1 raised-level passage expressly requires Werkvertrag, Werklieferungsvertrag and Dienstvertrag. This author candidate does not assert approval of all foreign source edges or a regional GK/LK equivalence."
+  },
+  "actuallyReadPrimarySources": [
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/13/wirtschaft-und-recht/erhoeht",
+      "section": "WR13.1.1, competence and expressly listed contract types",
+      "actualSuccessfulAccess": "web open 2026-10-09; current heading and paragraphs actually read"
+    },
+    {
+      "url": "https://www.gesetze-im-internet.de/bgb/__433.html",
+      "section": "433(1)-(2)",
+      "actualSuccessfulAccess": "urllib readonly HTTP200, 2026-10-09, after repeated actual web timeout failures",
+      "rawCacheSha256": "d1a35bd9254737d255614eb23a4e39330f257c3976224a12b42b8f6e5e900004",
+      "historicalWebFailures": "Repeated web timeouts retained in tool outputs; not represented as successful source reads."
+    },
+    {
+      "url": "https://www.gesetze-im-internet.de/bgb/__611.html",
+      "section": "611(1)-(2)",
+      "actualSuccessfulAccess": "web open 2026-10-09"
+    },
+    {
+      "url": "https://www.gesetze-im-internet.de/bgb/__631.html",
+      "section": "631(1)-(2)",
+      "actualSuccessfulAccess": "web open 2026-10-09"
+    },
+    {
+      "url": "https://www.gesetze-im-internet.de/bgb/__650.html",
+      "section": "650(1) and checked digital exceptions in (2)-(4)",
+      "actualSuccessfulAccess": "web open 2026-10-09; author cases intentionally use only physical non-digital goods"
+    }
+  ],
+  "actualPreparationCommand": {
+    "command": [
+      "node",
+      "scripts/prepare_goal_visualization.mjs",
+      "479fb87a-3a5a-5892-8b3e-dfb1d07e9612",
+      "--landscape=curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "--subject=wirtschaftswissenschaften",
+      "--provider=OpenAI Codex image_gen",
+      "--review-status=draft"
+    ],
+    "actualExitCode": 0
+  },
+  "independentApproval": false,
+  "humanApproval": false,
+  "strictCompletionDelta": 0
+}

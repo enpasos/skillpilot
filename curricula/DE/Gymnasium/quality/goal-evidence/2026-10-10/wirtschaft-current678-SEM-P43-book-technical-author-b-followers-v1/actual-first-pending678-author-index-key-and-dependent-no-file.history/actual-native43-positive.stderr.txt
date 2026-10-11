@@ -1,0 +1,22 @@
+node:fs:448
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-SEM-P43-book-technical-author-b-followers-v1/actual-v17-SEM678-P336685-book678-technical-only-freeze.json'
+    at readFileSync (node:fs:448:20)
+    at rd (/tmp/skillpilot-current678-technical-author-B-l9zrm5cl/capsule/app/scripts/native_current678_originalP43_profile_checks_author.ts:9:33)
+    at assert (/tmp/skillpilot-current678-technical-author-B-l9zrm5cl/capsule/app/scripts/native_current678_originalP43_profile_checks_author.ts:10:9)
+    at Object.<anonymous> (/tmp/skillpilot-current678-technical-author-B-l9zrm5cl/capsule/app/scripts/native_current678_originalP43_profile_checks_author.ts:28:120)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at cjsLoader (node:internal/modules/esm/translators:298:15)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-SEM-P43-book-technical-author-b-followers-v1/actual-v17-SEM678-P336685-book678-technical-only-freeze.json'
+}
+
+Node.js v20.20.2

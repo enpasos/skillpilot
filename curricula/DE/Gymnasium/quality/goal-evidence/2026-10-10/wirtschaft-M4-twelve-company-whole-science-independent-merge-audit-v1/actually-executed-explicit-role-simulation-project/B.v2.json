@@ -1,0 +1,109 @@
+{
+  "version": "B.v2",
+  "executionType": "explicit single-reviewer role simulation; no real interpersonal team claimed",
+  "roles": {
+    "A": "Ali — requirements",
+    "B": "Bea — costs",
+    "C": "Cem — room",
+    "D": "Dana — materials",
+    "E": "Dana — synthesis with sign-off by all simulated roles"
+  },
+  "network": {
+    "durations": {
+      "A": 1,
+      "B": 2,
+      "C": 3,
+      "D": 4,
+      "E": 1
+    },
+    "predecessors": {
+      "A": [],
+      "B": [
+        "A"
+      ],
+      "C": [
+        "A"
+      ],
+      "D": [
+        "B"
+      ],
+      "E": [
+        "C",
+        "D"
+      ]
+    },
+    "earliestStart": {
+      "A": 0,
+      "B": 1,
+      "C": 1,
+      "D": 3,
+      "E": 7
+    },
+    "earliestFinish": {
+      "A": 1,
+      "B": 3,
+      "C": 4,
+      "D": 7,
+      "E": 8
+    },
+    "latestStart": {
+      "E": 7,
+      "D": 3,
+      "C": 4,
+      "B": 1,
+      "A": 0
+    },
+    "latestFinish": {
+      "E": 8,
+      "D": 7,
+      "C": 7,
+      "B": 3,
+      "A": 1
+    },
+    "totalFloat": {
+      "A": 0,
+      "B": 0,
+      "C": 3,
+      "D": 0,
+      "E": 0
+    },
+    "completion": 8,
+    "criticalPaths": [
+      [
+        "A",
+        "B",
+        "D",
+        "E"
+      ]
+    ]
+  },
+  "costs": {
+    "budget": 60,
+    "printing": 35,
+    "display": 15,
+    "transport": 10,
+    "sum": 60,
+    "reserve": 0
+  },
+  "actualSubjectArtefact": "Informationsstand: Budget 60; Druck 35; Anzeige 15; Transport 10; Summe 60; Reserve 0. Kein Budgetüberzug, aber Materialdauer D 4 und Ende 8 statt Termin 6.",
+  "digitalMediumReason": "Readable text/CSV and shared versioned JSON hold the small numerical result, assigned checks, graph and actual changes without specialised software.",
+  "simulationActionsActuallyExecuted": [
+    [
+      "Bea",
+      "Actually changed printing 20 to 35; recomputed cost and reserve."
+    ],
+    [
+      "Dana",
+      "Actually changed D duration 2 to 4 and recomputed the shared graph."
+    ],
+    [
+      "Cem",
+      "Checked room readiness does not remove the now-longer material branch."
+    ],
+    [
+      "Ali",
+      "Evaluated zero reserve and real two-day deadline miss in the updated subject text."
+    ]
+  ],
+  "parentSnapshotSHA": "ac80167c94e1f927deab02242faf54f402731e6c8a84d8f79c260b9371c28498"
+}

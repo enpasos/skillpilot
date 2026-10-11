@@ -1,0 +1,11 @@
+# Qualified Economics M6 and CI follow-up
+
+The [final local checkpoint](16-final-qualified-current-M6-native-checkpoint-GITHUB-PENDING.ROOT.receipt.json) binds the actual native commands, current central report and independent proofs. Economics is M6 for 346 current curricularAtomic goals, with 2136/2136 source goals covered and zero unsupported assignments. GitHub CI at the following final commit remains pending at this receipt's creation.
+
+The numbered integration receipts preserve whole before/after inputs. Scientific source qualification is distinct from metadata, test-contract and generated-report followers. Receipt 14 integrates the independently reviewed selected partial source bindings and 970 explicit scope boundaries. The final native 32 projections contain 79 Brandenburg and 59 Berlin Sek-I target goals; all other 30 target sets remain unchanged against the preceding native projection proof. Added `prerequisiteOnly` membership does not assert that every such goal is a didactic prerequisite.
+
+The native central check, protected maturity floors, memory checks, affected backend contracts and all five book publication checks pass locally. The current independent memory proof finds 422 required target/scope pairs and no missing visible or targeted deck owners. Historical unsuccessful attempts and their real logs remain retained; they are superseded by the explicitly bound successful phases.
+
+The large native 35-projection metadata parity output is retained locally as its original JSON and published as a lossless gzip. [Receipt 13](13-byte-exact-compressed-transport-of-large-native35-parity.ROOT.receipt.json) binds the complete raw and decompressed bytes. This is a transport decision, not a scientific approval inferred from hashes.
+
+Economics M7 remains open: D216/P346/A346/M346/V0, strict 0/346. This package adds zero new scientific strict completions and restores zero strict bindings; net strict growth is zero. Mathematics 807/807 and Physics 478/478 remain M7. Human review, release approval and trials remain separate; all 346 positive profiles still truthfully carry `ai_candidate`, E1 and `needs_human_review`. No image generation, runtime change, deployment or publication is claimed.

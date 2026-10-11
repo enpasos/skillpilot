@@ -1,0 +1,79 @@
+{
+  "wholeCandidateGoalCount": 562,
+  "canonicalRuntimeSchemaErrors": 0,
+  "nativeGraphErrors": 0,
+  "nativeGraphFindings": [],
+  "actualNativeCQR001": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 562,
+      "localReferenceIssues": 0
+    }
+  },
+  "before555WholeObjectsExact": true,
+  "new7AllDeclaredTaskScoringFieldsChecked": true,
+  "actualNativeCourseMatches": [
+    {
+      "id": "4ec1bd32-2b9d-5954-9c59-c8798a820c3c",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "77d9e1e2-fc09-5977-945e-09975b24832c",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "8a23b7f3-2345-573d-8c36-110242b46e79",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "e641caa2-fbcc-5918-bed2-79d1fa6021d5",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "16c64d9d-fca8-56e4-bdfa-3ecb05e07936",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "756a1816-8355-5f68-be7e-6a23cee03730",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "07444d51-229d-5e7c-bdca-5b33a07a53bc",
+      "GK": true,
+      "LK": true
+    }
+  ],
+  "sourceOrScopeApproval": false,
+  "actualNativeRequiresNegative": {
+    "id": "CQR-001",
+    "status": "fail",
+    "summary": "2 graph integrity issue(s).",
+    "metrics": {
+      "goals": 562,
+      "localReferenceIssues": 2
+    },
+    "details": [
+      "Normsubsumtion: Besitzrecht und Vorsatz [07444d51-229d-5e7c-bdca-5b33a07a53bc] requires itself",
+      "Direct requires cycle: 07444d51-229d-5e7c-bdca-5b33a07a53bc -> 07444d51-229d-5e7c-bdca-5b33a07a53bc"
+    ]
+  },
+  "negativeInvalidScoringThresholdTypeErrors": [
+    {
+      "instancePath": "/goals/561/examData/scoring/passingPoints",
+      "schemaPath": "#/properties/examData/properties/scoring/properties/passingPoints/type",
+      "keyword": "type",
+      "params": {
+        "type": "number"
+      },
+      "message": "must be number"
+    }
+  ]
+}

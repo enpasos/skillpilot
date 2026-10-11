@@ -1,0 +1,26 @@
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+'yes' !== true
+
+    at assert (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-P336-V336-and-V13-SEM485-independent-root-binding-v1/inspect_qualified_current_bindings.ts:102:10)
+    at Object.<anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-P336-V336-and-V13-SEM485-independent-root-binding-v1/inspect_qualified_current_bindings.ts:107:42)
+    at Module._compile (node:internal/modules/cjs/loader:1356:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1197:32)
+    at Module._load (node:internal/modules/cjs/loader:1013:12)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:202:29)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)
+    at async loadESM (node:internal/process/esm_loader:34:7) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'yes',
+  expected: true,
+  operator: 'strictEqual'
+}
+
+Node.js v18.19.1

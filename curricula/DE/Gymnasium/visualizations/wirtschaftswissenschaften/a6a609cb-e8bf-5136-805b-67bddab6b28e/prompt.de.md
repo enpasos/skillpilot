@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Schutzfunktion rechtlicher Regelungen und Vertragsfreiheit abwägen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `a6a609cb-e8bf-5136-805b-67bddab6b28e`
+- Titel: Schutzfunktion rechtlicher Regelungen und Vertragsfreiheit abwägen
+- Beschreibung: Die lernende Person kann an konkreten Beispielen das Spannungsverhältnis zwischen Schutzfunktion rechtlicher Regelungen und Vertragsfreiheit in der Sozialen Marktwirtschaft analysieren und beurteilen.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `a6a609cb-e8bf-5136-805b-67bddab6b28e.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/a6a609cb-e8bf-5136-805b-67bddab6b28e.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original raster PNG economics learning-goal illustration, wide approximately16:9 and1600x900 or near native size. Friendly abstract clear comic, warm ivory, dark clean outlines, rounded shapes, restrained teal/coral/gold, welcoming ordinary people. Three or four spacious main visual groups. Main competence and important details recognizable at360 and680pixels; text ONLY few expressly specified large German labels. No extra headings, tiny labels, microscopic legends, watermarks, signatures, project names, slogans, brands, official emblems, medical crosses/crescents/diamonds, copied logos, photorealism, sterile technical redesign or SVG. Personal notebooks/worksheets and screens must face their actual active users; prefer floating conceptual symbols or openly shared boards. Fictional conditional teaching contexts, no observed learner work, actual latest statistics or current unsupported law. Competence: Schutzfunktion rechtlicher Regelungen und Vertragsfreiheit abwägen. Die lernende Person kann an konkreten Beispielen das Spannungsverhältnis zwischen Schutzfunktion rechtlicher Regelungen und Vertragsfreiheit in der Sozialen Marktwirtschaft analysieren und beurteilen. Scene: A friendly contract discussion brings two independent parties’ considered choices into relation with a clearly separate protection shield/rule and affected-interest viewpoints. A large open balancing question stays central. Only “Vertragsfreiheit”, “Schutz”, “Abwägung”. No either side automatically superior, assumed law always fair, current legal ruling, forced signature or numeric balance of unvalued objects.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

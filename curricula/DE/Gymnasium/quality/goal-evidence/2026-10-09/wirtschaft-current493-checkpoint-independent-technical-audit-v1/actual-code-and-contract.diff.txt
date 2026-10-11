@@ -1,0 +1,340 @@
+diff --git a/app/scripts/exportGoalBookReviewBundle.ts b/app/scripts/exportGoalBookReviewBundle.ts
+index a2b7fb8dd..65553e918 100644
+--- a/app/scripts/exportGoalBookReviewBundle.ts
++++ b/app/scripts/exportGoalBookReviewBundle.ts
+@@ -3,7 +3,11 @@ import { mkdir, mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/promise
+ import { dirname, join, relative, resolve, sep } from 'node:path'
+ import { fileURLToPath } from 'node:url'
+ import Ajv2020 from 'ajv/dist/2020.js'
+-import type { GoalEvidenceReviewRecord } from './goalEvidenceProfileModel'
++import {
++  parseGoalBookEvidenceReviewRecord,
++  type GoalBookEvidenceReviewRecord,
++} from './goalBookEvidenceReviewLoader'
++import type { PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
+ import {
+   parseAndValidateGoalBookModel,
+   stableGoalBookJson,
+@@ -80,7 +84,7 @@ export type GoalBookReviewInput = {
+   modelDigest: string
+   pages: Array<{
+     page: GoalBookPage
+-    evidenceProfile: GoalEvidenceReviewRecord | null
++    evidenceProfile: GoalBookEvidenceReviewRecord | null
+   }>
+ }
+ 
+@@ -131,10 +135,13 @@ const parseEvidenceReviewJsonl = (content: string, label: string) => content
+   .split(/\r?\n/u)
+   .map((line, index) => ({ line: line.trim(), lineNumber: index + 1 }))
+   .filter(({ line }) => line !== '')
+-  .map(({ line, lineNumber }) => parseJson<GoalEvidenceReviewRecord>(line, `${label}:${lineNumber}`))
++  .map(({ line, lineNumber }) => parseGoalBookEvidenceReviewRecord(
++    parseJson<unknown>(line, `${label}:${lineNumber}`),
++    `${label}:${lineNumber}`,
++  ))
+ 
+ const loadEvidenceRecords = async (model: GoalBookModel) => {
+-  const recordsByGoalId = new Map<string, GoalEvidenceReviewRecord>()
++  const recordsByGoalId = new Map<string, GoalBookEvidenceReviewRecord>()
+   for (const source of model.source.evidenceReviewSources) {
+     const sourcePath = repositoryPath(source.path, 'evidence-review source')
+     const text = await readFile(sourcePath, 'utf8')
+@@ -171,7 +178,7 @@ const selectPages = (model: GoalBookModel, requestedGoalIds: string[]) => {
+ 
+ const assertEvidenceRecordMatchesPage = (
+   page: GoalBookPage,
+-  record: GoalEvidenceReviewRecord | undefined,
++  record: GoalBookEvidenceReviewRecord | undefined,
+ ) => {
+   if (page.evidenceReview === null) {
+     if (record) throw new Error(`Goal ${page.goalId} has an unbound evidence-review record`)
+@@ -200,10 +207,69 @@ const markdownList = (
+     `- ${reference.title} — \`${reference.goalId}\`${reference.pageNumber ? ` (page ${reference.pageNumber})` : ' (outside this book)'}`
+   )).join('\n')
+ 
++const renderPositiveEvidenceProfileMarkdown = (record: PositiveGoalEvidenceReviewRecord) => {
++  const profile = record.profile
++  return [
++    '### Evidence-profile candidate',
++    '',
++    `Status: \`${record.status}\`; profile fingerprint: \`${record.profileFingerprint}\``,
++    '',
++    `Contract: \`${record.profileRuleVersion}\`; archetype: \`${profile.archetype}\``,
++    `Authority: \`${record.reviewAuthority}\`; evidence level: \`${record.evidenceLevel}\`; maximum claim scope: \`${record.maximumClaimScope}\``,
++    '',
++    '**Understanding and performance expectations**',
++    '',
++    ...profile.expectations.flatMap((expectation) => [
++      `#### Expectation \`${expectation.id}\``,
++      '',
++      `Understanding (DE): ${expectation.essentialUnderstandingDe}`,
++      '',
++      `Understanding (EN): ${expectation.essentialUnderstandingEn}`,
++      '',
++      `Observable performance (DE): ${expectation.observablePerformanceDe}`,
++      '',
++      `Observable performance (EN): ${expectation.observablePerformanceEn}`,
++      '',
++    ]),
++    '**Coverage expectations**',
++    '',
++    `- required expectations: ${profile.coverageExpectations.requiredExpectationIds.map((id) => `\`${id}\``).join(', ') || 'None'}`,
++    `- alternative expectation groups: ${profile.coverageExpectations.alternativeExpectationGroups.map((ids) => ids.map((id) => `\`${id}\``).join(' or ')).join('; ') || 'None'}`,
++    `- minimum independent demonstrations: ${profile.coverageExpectations.minimumIndependentDemonstrations}`,
++    `- fresh variation required: ${profile.coverageExpectations.freshVariationRequired}`,
++    `- independent transfer required: ${profile.coverageExpectations.independentTransferRequired}`,
++    '',
++    '**Variation axes**',
++    '',
++    ...profile.variationAxes.map((axis) => `- \`${axis.id}\`: ${axis.textDe} / ${axis.textEn}`),
++    '',
++    '**Application cases: material, task, expected performance and understanding focus**',
++    '',
++    ...profile.applicationCaseBriefs.flatMap((item) => [
++      `#### Application case \`${item.id}\``,
++      '',
++      `Task demand (DE): ${item.taskDemandDe}`,
++      '',
++      `Task demand (EN): ${item.taskDemandEn}`,
++      '',
++      `Expected performance (DE): ${item.expectedPerformanceDe}`,
++      '',
++      `Expected performance (EN): ${item.expectedPerformanceEn}`,
++      '',
++      `Understanding focus (DE): ${item.understandingFocusDe}`,
++      '',
++      `Understanding focus (EN): ${item.understandingFocusEn}`,
++      '',
++    ]),
++  ].join('\n')
++}
++
+ export const renderGoalBookReviewMarkdown = (input: GoalBookReviewInput) => {
+   const sections = input.pages.map(({ page, evidenceProfile }) => {
+-    const profile = evidenceProfile?.profile
+-    const profileSection = profile
++    const profile = evidenceProfile?.schemaVersion === 1 ? evidenceProfile.profile : undefined
++    const profileSection = evidenceProfile?.schemaVersion === 2
++      ? renderPositiveEvidenceProfileMarkdown(evidenceProfile)
++      : profile
+       ? [
+           '### Evidence-profile candidate',
+           '',
+diff --git a/app/scripts/generateCurriculumQualityStatus.ts b/app/scripts/generateCurriculumQualityStatus.ts
+index 504f1820c..6308d5473 100644
+--- a/app/scripts/generateCurriculumQualityStatus.ts
++++ b/app/scripts/generateCurriculumQualityStatus.ts
+@@ -961,6 +961,13 @@ const CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS = [
+   '5113c64b-405d-5f4b-bae9-70fe530b5e69',
+   'f8922e23-f00e-53f7-be2f-1016e2b0ddf2',
+   '5982abda-0b0e-51a5-930f-1f58bd757f30',
++  '5317d078-413b-58bb-9262-d57387d51655',
++  'cb53b170-d531-5267-9571-ec57004b0fb3',
++  'f761852b-a0df-5ea6-a033-67bf3fb94ec1',
++  'bc977eaf-b2f0-5cb2-af48-2dff948830af',
++  'a5689d99-1ff6-57d1-b83e-b64c2dad480d',
++  'd2b41a54-0d32-5cee-948f-77954b0c6e79',
++  '86b0ed9d-3809-5402-92ad-89c2f9cbbe76',
+ ]
+ const CANONICAL_GYM_POLITICS_ECONOMICS_LANDSCAPE_ID = '51b60137-46e8-5498-973e-ea38bb32f327'
+ const CANONICAL_GYM_POLITICS_ECONOMICS_MOTIVATION_GOAL_ID = 'b76a024a-55a6-5c77-85cd-b37ef10e5197'
+diff --git a/app/scripts/testGoalBookReviewBundle.ts b/app/scripts/testGoalBookReviewBundle.ts
+index 8359d27cb..e8518b9b8 100644
+--- a/app/scripts/testGoalBookReviewBundle.ts
++++ b/app/scripts/testGoalBookReviewBundle.ts
+@@ -1,8 +1,10 @@
+ import assert from 'node:assert/strict'
+ import { createHash } from 'node:crypto'
+-import { mkdtemp, rm, writeFile } from 'node:fs/promises'
++import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
+ import { join } from 'node:path'
+ import { tmpdir } from 'node:os'
++import Ajv2020 from 'ajv/dist/2020.js'
++import addFormats from 'ajv-formats'
+ import { stableGoalBookJson, type GoalBookModel } from './goalBookModel'
+ import {
+   buildGoalBookReviewBundle,
+@@ -10,6 +12,7 @@ import {
+   type ExportOptions,
+ } from './exportGoalBookReviewBundle'
+ import { goalBookFrontMatterPageCount } from './goalBookRenderer'
++import { parseGoalBookEvidenceReviewRecord } from './goalBookEvidenceReviewLoader'
+ 
+ const hex = (character: string) => `sha256:${character.repeat(64)}`
+ const sha256 = (value: string | Buffer) => (
+@@ -244,6 +247,75 @@ try {
+   assert.ok(first.manifest.artifacts.some(({ role }) => role === 'book_model'))
+   assert.match(renderGoalBookReviewMarkdown(first.input), /Full learning-goal ID: `goal-a`/u)
+ 
++  // A real current Economics V2 record previously crashed the exporter at
++  // profile.facets.map. Check complete bilingual material, solution/rubric and
++  // diagnosis text survives rather than accepting an empty V1-shaped fallback.
++  const economicsConfig = JSON.parse(await readFile(new URL(
++    './config/goal-books/de-gym-economics-current-canonical.json', import.meta.url,
++  ), 'utf8')) as { evidenceReviewPaths: string[] }
++  const evidenceText = await readFile(new URL(
++    `../../${economicsConfig.evidenceReviewPaths[0]}`, import.meta.url,
++  ), 'utf8')
++  const positive = parseGoalBookEvidenceReviewRecord(JSON.parse(
++    evidenceText.split(/\r?\n/u).find((line) => line.trim() !== '')!,
++  ), 'current Economics review-markdown regression')
++  assert.equal(positive.schemaVersion, 2)
++  if (positive.schemaVersion !== 2) throw new Error('Expected current V2 input')
++  const originalPositive = JSON.stringify(positive)
++  const positiveMarkdown = renderGoalBookReviewMarkdown({
++    ...first.input,
++    pages: [{ page: { ...page, goalId: positive.goalId }, evidenceProfile: positive }],
++  })
++  assert.ok(positiveMarkdown.includes('positive-understanding-evidence-v2'))
++  assert.ok(positiveMarkdown.includes('needs_human_review'))
++  assert.ok(positiveMarkdown.includes('ai_candidate'))
++  assert.ok(positiveMarkdown.includes('maximum claim scope: `G1`'))
++  for (const expectation of positive.profile.expectations) {
++    for (const text of [expectation.essentialUnderstandingDe, expectation.essentialUnderstandingEn,
++      expectation.observablePerformanceDe, expectation.observablePerformanceEn]) {
++      assert.ok(positiveMarkdown.includes(text), 'A complete bilingual expectation must remain visible')
++    }
++  }
++  for (const item of positive.profile.applicationCaseBriefs) {
++    for (const text of [item.taskDemandDe, item.taskDemandEn, item.expectedPerformanceDe,
++      item.expectedPerformanceEn, item.understandingFocusDe, item.understandingFocusEn]) {
++      assert.ok(positiveMarkdown.includes(text), 'A complete bilingual application-case field must remain visible')
++    }
++  }
++  assert.equal(JSON.stringify(positive), originalPositive, 'Rendering must not convert or upgrade the original V2 record')
++
++  // Both native description input versions accept the closed V2 contract;
++  // accepting it must not permit V1 fields, missing coverage or AI approval.
++  // Native campaign/resolution checks separately enforce actual page binding.
++  const ajv = new Ajv2020({ allErrors: true, strict: true })
++  addFormats(ajv)
++  for (const path of [
++    'contracts/goal-book/v1/goal-book-model.schema.json',
++    'contracts/goal-book/v1/goal-book-model-1.1.schema.json',
++    'contracts/goal-evidence/v1/goal-evidence-profile.schema.json',
++    'contracts/goal-evidence/v2/goal-evidence-profile.schema.json',
++    'contracts/goal-description-review/v2/goal-description-review-input.schema.json',
++    'contracts/goal-description-review/v3/goal-description-review-input.schema.json',
++  ]) {
++    ajv.addSchema(JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8')))
++  }
++  for (const version of [2, 3]) {
++    const validate = ajv.compile({
++      $ref: `https://skillpilot.com/schemas/goal-description-review/v${version}/goal-description-review-input.schema.json#/$defs/reviewContext`,
++    })
++    assert.equal(validate({ page, evidenceProfile: positive }), true, ajv.errorsText(validate.errors))
++    for (const invalid of [
++      { ...positive, schemaVersion: 1 },
++      { ...positive, schemaVersion: 3 },
++      { ...positive, status: 'approved' },
++      { ...positive, profile: { ...positive.profile, facets: [] } },
++      { ...positive, profile: { ...positive.profile, coverageExpectations: undefined } },
++    ]) {
++      assert.equal(validate({ page, evidenceProfile: invalid }), false,
++        `Description input V${version} must reject a malformed or upgraded V2 profile`)
++    }
++  }
++
+   const staleManifest = JSON.parse(await (await import('node:fs/promises')).readFile(
+     pdfManifestPath,
+     'utf8',
+diff --git a/app/scripts/validateGoalDescriptionDualRoundResolution.ts b/app/scripts/validateGoalDescriptionDualRoundResolution.ts
+index 2f7a7f0ad..94245a445 100644
+--- a/app/scripts/validateGoalDescriptionDualRoundResolution.ts
++++ b/app/scripts/validateGoalDescriptionDualRoundResolution.ts
+@@ -56,6 +56,10 @@ const EVIDENCE_PROFILE_SCHEMA_PATH = resolve(
+   REPOSITORY_ROOT,
+   'contracts/goal-evidence/v1/goal-evidence-profile.schema.json',
+ )
++const POSITIVE_EVIDENCE_PROFILE_SCHEMA_PATH = resolve(
++  REPOSITORY_ROOT,
++  'contracts/goal-evidence/v2/goal-evidence-profile.schema.json',
++)
+ 
+ type Digest = `sha256:${string}`
+ 
+@@ -636,16 +640,19 @@ const createValidators = async () => {
+     legacyGoalBookSchema,
+     currentGoalBookSchema,
+     evidenceProfileSchema,
++    positiveEvidenceProfileSchema,
+   ] = await Promise.all([
+     RESOLUTION_SCHEMA_PATH,
+     INPUT_V3_SCHEMA_PATH,
+     LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH,
+     CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH,
+     EVIDENCE_PROFILE_SCHEMA_PATH,
++    POSITIVE_EVIDENCE_PROFILE_SCHEMA_PATH,
+   ].map((path) => readFile(path, 'utf8').then((value) => JSON.parse(value))))
+   ajv.addSchema(legacyGoalBookSchema)
+   ajv.addSchema(currentGoalBookSchema)
+   ajv.addSchema(evidenceProfileSchema)
++  ajv.addSchema(positiveEvidenceProfileSchema)
+   return {
+     ajv,
+     validateResolution: ajv.compile(resolutionSchema),
+diff --git a/app/scripts/validateGoalDescriptionReviewCampaign.ts b/app/scripts/validateGoalDescriptionReviewCampaign.ts
+index d323619bc..ed4e72025 100644
+--- a/app/scripts/validateGoalDescriptionReviewCampaign.ts
++++ b/app/scripts/validateGoalDescriptionReviewCampaign.ts
+@@ -20,6 +20,7 @@ const RUN_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-ai-run-manifes
+ const LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
+ const CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model-1.1.schema.json'
+ const EVIDENCE_PROFILE_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-profile.schema.json'
++const POSITIVE_EVIDENCE_PROFILE_SCHEMA_PATH = 'contracts/goal-evidence/v2/goal-evidence-profile.schema.json'
+ const INPUT_V2_SCHEMA_PATH = 'contracts/goal-description-review/v2/goal-description-review-input.schema.json'
+ const INPUT_V3_SCHEMA_PATH = 'contracts/goal-description-review/v3/goal-description-review-input.schema.json'
+ const CAMPAIGN_SCHEMA_PATH = 'contracts/goal-description-review/v2/goal-description-review-campaign.schema.json'
+@@ -523,6 +524,7 @@ const createValidators = async () => {
+     legacyGoalBookSchema,
+     currentGoalBookSchema,
+     evidenceProfileSchema,
++    positiveEvidenceProfileSchema,
+     inputV2Schema,
+     inputV3Schema,
+     campaignSchema,
+@@ -533,6 +535,7 @@ const createValidators = async () => {
+     LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH,
+     CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH,
+     EVIDENCE_PROFILE_SCHEMA_PATH,
++    POSITIVE_EVIDENCE_PROFILE_SCHEMA_PATH,
+     INPUT_V2_SCHEMA_PATH,
+     INPUT_V3_SCHEMA_PATH,
+     CAMPAIGN_SCHEMA_PATH,
+@@ -541,6 +544,7 @@ const createValidators = async () => {
+   ajv.addSchema(legacyGoalBookSchema)
+   ajv.addSchema(currentGoalBookSchema)
+   ajv.addSchema(evidenceProfileSchema)
++  ajv.addSchema(positiveEvidenceProfileSchema)
+   return {
+     ajv,
+     validateBundle: ajv.compile(bundleSchema),
+diff --git a/contracts/goal-description-review/v2/goal-description-review-input.schema.json b/contracts/goal-description-review/v2/goal-description-review-input.schema.json
+index 664642aaf..286026586 100644
+--- a/contracts/goal-description-review/v2/goal-description-review-input.schema.json
++++ b/contracts/goal-description-review/v2/goal-description-review-input.schema.json
+@@ -73,6 +73,9 @@
+             {
+               "$ref": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-profile.schema.json"
+             },
++            {
++              "$ref": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json"
++            },
+             { "type": "null" }
+           ]
+         }
+diff --git a/contracts/goal-description-review/v3/goal-description-review-input.schema.json b/contracts/goal-description-review/v3/goal-description-review-input.schema.json
+index 8abbda0e4..16fe00d32 100644
+--- a/contracts/goal-description-review/v3/goal-description-review-input.schema.json
++++ b/contracts/goal-description-review/v3/goal-description-review-input.schema.json
+@@ -73,6 +73,9 @@
+             {
+               "$ref": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-profile.schema.json"
+             },
++            {
++              "$ref": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json"
++            },
+             { "type": "null" }
+           ]
+         }

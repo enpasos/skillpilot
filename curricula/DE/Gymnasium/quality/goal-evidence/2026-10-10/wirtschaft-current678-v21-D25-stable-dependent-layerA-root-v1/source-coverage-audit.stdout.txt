@@ -1,0 +1,56 @@
+TAP version 13
+# Subtest: active Memory evidence resolves a successor outside the authoring directory and cannot weaken required visibility
+ok 1 - active Memory evidence resolves a successor outside the authoring directory and cannot weaken required visibility
+  ---
+  duration_ms: 4.480034
+  ...
+# Subtest: curriculum discovery excludes QA snapshots while keeping live source and mapping inputs
+ok 2 - curriculum discovery excludes QA snapshots while keeping live source and mapping inputs
+  ---
+  duration_ms: 9.918116
+  ...
+# Subtest: active Memory support follows the final origin scope after prerequisite closure
+ok 3 - active Memory support follows the final origin scope after prerequisite closure
+  ---
+  duration_ms: 6315.579055
+  ...
+# Subtest: applicabilityFromRequires uses all-of intersection semantics
+ok 4 - applicabilityFromRequires uses all-of intersection semantics
+  ---
+  duration_ms: 0.171701
+  ...
+# Subtest: source coverage visibility follows composition target roles, not requires-closure applicability
+ok 5 - source coverage visibility follows composition target roles, not requires-closure applicability
+  ---
+  duration_ms: 1.242895
+  ...
+# Subtest: APV-202 is based only on source evidence
+ok 6 - APV-202 is based only on source evidence
+  ---
+  duration_ms: 0.140012
+  ...
+# Subtest: ordinary direct and recursive ordinary source coverage pass
+ok 7 - ordinary direct and recursive ordinary source coverage pass
+  ---
+  duration_ms: 0.300823
+  ...
+# Subtest: missing, cyclic, and cluster requiredBy routes fail closed
+ok 8 - missing, cyclic, and cluster requiredBy routes fail closed
+  ---
+  duration_ms: 0.196518
+  ...
+# Subtest: assessment, practice, examData, and chains through them fail closed
+ok 9 - assessment, practice, examData, and chains through them fail closed
+  ---
+  duration_ms: 0.233727
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6527.619605
+Curriculum source coverage audit check passed.

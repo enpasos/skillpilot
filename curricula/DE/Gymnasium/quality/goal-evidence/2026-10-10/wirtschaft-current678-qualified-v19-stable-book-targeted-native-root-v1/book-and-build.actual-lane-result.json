@@ -1,0 +1,52 @@
+{
+  "lane": "book-and-build",
+  "requiredStages": 2,
+  "actuallyRunStages": 2,
+  "allStagesPassed": true,
+  "commands": [
+    {
+      "label": "goal-book-full-pipeline-including-cached-publications",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "test:goal-book-pipeline"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "actualExitCode": 0,
+      "seconds": 367.173,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v19-stable-book-targeted-native-root-v1/goal-book-full-pipeline-including-cached-publications.stdout.txt",
+        "sha256": "e97ac91637a52b7b0ca9de92680c698b1e56b86544f3c2c833b0395e81417f9b",
+        "bytes": 3580
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v19-stable-book-targeted-native-root-v1/goal-book-full-pipeline-including-cached-publications.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "application-build-local-only",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "build:application"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "actualExitCode": 0,
+      "seconds": 99.464,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v19-stable-book-targeted-native-root-v1/application-build-local-only.stdout.txt",
+        "sha256": "873f2e817bab6821e14180c82b36da0ce6b251fe1823fcee52274cc9c32d48c3",
+        "bytes": 17834
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v19-stable-book-targeted-native-root-v1/application-build-local-only.stderr.txt",
+        "sha256": "b9f99a1c0f6ff2c022ba306b9d9d1d783a5c37fc4ce62b7547d4bc1abd81cb02",
+        "bytes": 524
+      }
+    }
+  ]
+}

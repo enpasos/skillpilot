@@ -1,0 +1,146 @@
+{
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "reviewer": "/root/economics_special2_blind_round_a",
+  "createdAt": "2026-10-10T11:21:28.562Z",
+  "actualToolsExecCommandResults": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "atomicity-current",
+        "script": "semanticAtomicityReview.ts",
+        "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-last-source-composite-native-scope-and-followers-technical-independent-a-INERT-v21/portable/atomicity336.INERT.config.json",
+        "expected": 0,
+        "mode": "check",
+        "result": {
+          "chunk_id": "77e591",
+          "wall_time_seconds": 0.079938373,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "memory-current",
+        "script": "memoryCardReview.ts",
+        "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-last-source-composite-native-scope-and-followers-technical-independent-a-INERT-v21/portable/memory336.INERT.config.json",
+        "expected": 0,
+        "mode": "check",
+        "result": {
+          "chunk_id": "21cac4",
+          "wall_time_seconds": 0.10432056,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "atomicity-negative",
+        "script": "semanticAtomicityReview.ts",
+        "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-last-source-composite-native-scope-and-followers-technical-independent-a-INERT-v21/negative/atomicity336.old-records-on-new-CAN.INERT.config.json",
+        "expected": 1,
+        "mode": "check",
+        "result": {
+          "chunk_id": "c523b8",
+          "wall_time_seconds": 0.074052678,
+          "exit_code": 1,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "memory-negative",
+        "script": "memoryCardReview.ts",
+        "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-last-source-composite-native-scope-and-followers-technical-independent-a-INERT-v21/negative/memory336.old-records-on-new-CAN.INERT.config.json",
+        "expected": 1,
+        "mode": "check",
+        "result": {
+          "chunk_id": "28d551",
+          "wall_time_seconds": 0.105591012,
+          "exit_code": 1,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    }
+  ],
+  "firstNoCheckModeExecutionPreserved": {
+    "results": [
+      {
+        "status": "fulfilled",
+        "value": {
+          "name": "atomicity-current",
+          "script": "semanticAtomicityReview.ts",
+          "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-last-source-composite-native-scope-and-followers-technical-independent-a-INERT-v21/portable/atomicity336.INERT.config.json",
+          "expected": 0,
+          "result": {
+            "chunk_id": "c0cd96",
+            "wall_time_seconds": 0.077439156,
+            "exit_code": 0,
+            "original_token_count": 0,
+            "output": ""
+          }
+        }
+      },
+      {
+        "status": "fulfilled",
+        "value": {
+          "name": "memory-current",
+          "script": "memoryCardReview.ts",
+          "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-last-source-composite-native-scope-and-followers-technical-independent-a-INERT-v21/portable/memory336.INERT.config.json",
+          "expected": 0,
+          "result": {
+            "chunk_id": "0fba12",
+            "wall_time_seconds": 0.09977726,
+            "exit_code": 0,
+            "original_token_count": 0,
+            "output": ""
+          }
+        }
+      },
+      {
+        "status": "fulfilled",
+        "value": {
+          "name": "atomicity-negative",
+          "script": "semanticAtomicityReview.ts",
+          "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-last-source-composite-native-scope-and-followers-technical-independent-a-INERT-v21/negative/atomicity336.old-records-on-new-CAN.INERT.config.json",
+          "expected": 1,
+          "result": {
+            "chunk_id": "c4ab1e",
+            "wall_time_seconds": 0.074867368,
+            "exit_code": 0,
+            "original_token_count": 0,
+            "output": ""
+          }
+        }
+      },
+      {
+        "status": "fulfilled",
+        "value": {
+          "name": "memory-negative",
+          "script": "memoryCardReview.ts",
+          "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-last-source-composite-native-scope-and-followers-technical-independent-a-INERT-v21/negative/memory336.old-records-on-new-CAN.INERT.config.json",
+          "expected": 1,
+          "result": {
+            "chunk_id": "593126",
+            "wall_time_seconds": 0.096669933,
+            "exit_code": 0,
+            "original_token_count": 0,
+            "output": ""
+          }
+        }
+      }
+    ],
+    "meaning": "Default audit mode printed stale records but does not set failing exit status. Correct explicit --mode=check controls above required; original logs preserved."
+  },
+  "activeWrites": 0
+}

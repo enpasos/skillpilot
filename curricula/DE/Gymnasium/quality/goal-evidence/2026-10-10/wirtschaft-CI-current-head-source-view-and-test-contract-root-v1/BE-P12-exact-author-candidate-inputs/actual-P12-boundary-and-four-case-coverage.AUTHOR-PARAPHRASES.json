@@ -1,0 +1,136 @@
+{
+  "status": "AUTHOR-CANDIDATE_pending_independent_review",
+  "primaryRead": {
+    "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_WAT_2015_11_10.pdf",
+    "pages": [
+      28,
+      41
+    ],
+    "originalCopyrightTextCopied": false
+  },
+  "sourceGoalId": "be-wat-seki-p12-projektmethoden-g01-ea879d83",
+  "economicBoundary": "Ein ausgewähltes kooperatives Wirtschafts- oder Dienstleistungsprojekt planen, tatsächlich durchführen und fachlich auswerten; dazu grundlegende Projektmanagementmethoden anwenden und den Arbeitsprozess mit bedarfsgerechten fachsprachlichen, grafischen oder multimedialen Darstellungen dokumentieren.",
+  "wholeP12NotClaimed": [
+    "technical innovation assessment",
+    "technical system classification",
+    "ergonomics",
+    "all manufacturing techniques",
+    "all optional P12 example projects"
+  ],
+  "wholePContractsRetained": true,
+  "fourCases": [
+    {
+      "goalId": "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "profileAuthority": "ai_candidate",
+      "status": "needs_human_review",
+      "E": "E1",
+      "G": "G1",
+      "caseIds": [
+        "actual-team-network-cost-chart-and-delay",
+        "actual-team-network-budget-change-and-alternative"
+      ]
+    },
+    {
+      "goalId": "596c02e3-6263-5084-8593-c5f51808326b",
+      "profileAuthority": "ai_candidate",
+      "status": "needs_human_review",
+      "E": "E1",
+      "G": "G1",
+      "caseIds": [
+        "fictional-canteen-reuse-study",
+        "consumer-rights-explainer-trial"
+      ]
+    }
+  ],
+  "genuineCounterexamples": [
+    "A team only draws an attractive board without executing subject work:0d8 network/roles and596 completed work/evaluation are absent.",
+    "A learner completes an individual cost calculation without coordinated plan/documentation:596 can be partly shown,0d8 team project method is missing.",
+    "A team follows an efficient schedule but never evaluates the economic result:0d8 does not replace596 evaluation.",
+    "An innovative technical object is fabricated without the authored economic-project-method performance:the full technical P12 parent remains outside this bounded source claim."
+  ],
+  "historicalPipelineWholeObjectExact": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche Berlin-Wirtschaft-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "PDF liegt lokal vor."
+          },
+          {
+            "id": "source-selection-reviewed",
+            "label": "Wirtschaftlich relevante Lehrplanpassagen wurden fachlich abgegrenzt",
+            "passed": true,
+            "details": "Sek I WAT wurde auf wirtschafts- und berufsbezogene Passagen begrenzt."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten Berlin-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "48 Source-Ziele."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "Unvollständige Source-Ziele: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "48 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "48/48 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Inhaltlich abgedeckt: 48/48; offene Canonical-Gaps: 0."
+          }
+        ]
+      }
+    ]
+  },
+  "independentApproval": false,
+  "humanApproval": false,
+  "M7Claim": false
+}

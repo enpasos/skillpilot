@@ -1,0 +1,73 @@
+{
+  "reviewedAt": "2026-10-10T15:07:31.338744+00:00",
+  "role": "INDEPENDENT_TARGETED_CLOSURE_OF_ONE_ORIGINAL_P_WORDING_FINDING",
+  "reviewer": "/root/economics_final56_current_round_a",
+  "goalId": "8820a8d9-605a-565b-bc13-1961a4df60ed",
+  "caseId": "differentiated-services-piecewise-provided-data",
+  "decision": "KEEP",
+  "findingClosed": true,
+  "ownReasonDe": "Beide neuen Sprachsätze vergleichen explizit die gleich großen Preisintervalle 8→10 und 10→12. Die Daten verlieren dabei 2 beziehungsweise 23 Aufträge. Der erste Abschnitt reagiert damit deutlich weniger auf eine gleich große Preiserhöhung. Die Aussage hängt nicht mehr davon ab, ob links/rechts als Mengen- oder Preisrichtung gelesen wird. Einzel- und Gesamtmengen, Achsen, Stückverbindungen, Benchmark und Grenzen einer universellen Knickform bleiben sachlich richtig.",
+  "ownReasonEn": "Both replacement sentences explicitly compare equal-sized price intervals 8→10 and 10→12, which lose 2 and 23 orders respectively. The first segment is less quantity-sensitive to an equal price increase. The claim no longer depends on interpreting left/right as quantity or price direction. Individual/aggregate quantities, axes, piecewise connections, benchmark and limits on universal kink claims remain correct.",
+  "ownRecomputedValues": {
+    "priceIncrease1": 2,
+    "quantityLoss1": 2,
+    "priceIncrease2": 2,
+    "quantityLoss2": 23
+  },
+  "freshNegativeProbe": {
+    "prices": [
+      7,
+      9,
+      11
+    ],
+    "individualQuantities": [
+      60,
+      59,
+      30
+    ],
+    "expected": "The intervals 7→9 and 9→11 lose 1 and 29 orders; interval wording stays precise even when a diagram changes horizontal/vertical orientation. A left/right shortcut would again depend on the chosen axes."
+  },
+  "wholeUpdatedTwoCasesInBothLanguagesActuallyRead": true,
+  "otherSixCasesOnlyMechanicallyPreserved": true,
+  "actualLogicalStringChanges": 2,
+  "actualDuplicatedFileStringChanges": 4,
+  "exactDiffsByFile": {
+    "eight-whole-DEEN-casebriefs-and-complete-model-answers.AUTHOR-INERT.json": [
+      {
+        "path": "/imperfect-polypol-diagram/1/taskDemandDe",
+        "before": "Fiktive12Dienste bieten unterschiedliche Abholzeiten. Für einen Dienst ergibt eine Befragung p=8/10/12/14 EUR und q=50/48/25/10Aufträge pro Woche. Für gemeinsame Preisänderungen aller Dienste werden gesondert p=8/10/12/14 und Q=480/420/300/180 angegeben. Im Unterrichtsmodell sind zwischen den Messpunkten gerade Verbindungsstücke erlaubt; außerhalb gibt es keine Daten. Bei10 ist die individuelle Nachfrage links deutlich weniger preissensitiv als rechts. Stelle beide Beziehungen getrennt dar und erkläre, was die geänderte Neigung im Material zeigt. Unterscheide individuelle Menge48 von Gesamtmenge420. Ein alternatives Modell mit gleichartigen Leistungen und kostenfreiem Wechsel gibt dem einzelnen kleinen Dienst eine horizontale Preisnehmerlinie bei10. Ist eine geknickte oder eine gerade Einzelkurve für jedes unvollkommene Polypol zwingend? Kein strategisches Rivalenreaktionsgesetz ist angegeben.",
+        "after": "Fiktive12Dienste bieten unterschiedliche Abholzeiten. Für einen Dienst ergibt eine Befragung p=8/10/12/14 EUR und q=50/48/25/10Aufträge pro Woche. Für gemeinsame Preisänderungen aller Dienste werden gesondert p=8/10/12/14 und Q=480/420/300/180 angegeben. Im Unterrichtsmodell sind zwischen den Messpunkten gerade Verbindungsstücke erlaubt; außerhalb gibt es keine Daten. Im Preisintervall8→10 ist die individuelle Nachfrage deutlich weniger preissensitiv als im Preisintervall10→12. Stelle beide Beziehungen getrennt dar und erkläre, was die geänderte Neigung im Material zeigt. Unterscheide individuelle Menge48 von Gesamtmenge420. Ein alternatives Modell mit gleichartigen Leistungen und kostenfreiem Wechsel gibt dem einzelnen kleinen Dienst eine horizontale Preisnehmerlinie bei10. Ist eine geknickte oder eine gerade Einzelkurve für jedes unvollkommene Polypol zwingend? Kein strategisches Rivalenreaktionsgesetz ist angegeben."
+      },
+      {
+        "path": "/imperfect-polypol-diagram/1/taskDemandEn",
+        "before": "Twelve fictional services offer different collection times. One firm’s survey gives p=8/10/12/14 euros and q=50/48/25/10 weekly orders. Separate common price changes across all services give Q=480/420/300/180 at those prices. Straight segments may connect measured points; nothing is supplied outside them. At10 the individual relationship is less price-sensitive on the left than on the right. Represent the two relationships separately and explain the change in slope in this material. Distinguish individual48 from aggregate420. A homogeneous, costless-switching benchmark gives a small firm a horizontal price-taking line at10. Must every imperfect many-supplier market have a kinked or straight individual curve? No strategic rival-response rule is supplied.",
+        "after": "Twelve fictional services offer different collection times. One firm’s survey gives p=8/10/12/14 euros and q=50/48/25/10 weekly orders. Separate common price changes across all services give Q=480/420/300/180 at those prices. Straight segments may connect measured points; nothing is supplied outside them. The individual relationship is less price-sensitive over the price interval8→10 than over the price interval10→12. Represent the two relationships separately and explain the change in slope in this material. Distinguish individual48 from aggregate420. A homogeneous, costless-switching benchmark gives a small firm a horizontal price-taking line at10. Must every imperfect many-supplier market have a kinked or straight individual curve? No strategic rival-response rule is supplied."
+      }
+    ],
+    "positive-v2-four-goal-authoring-spec.AUTHOR-INERT.json": [
+      {
+        "path": "/goals/1/profile/applicationCaseBriefs/1/taskDemandDe",
+        "before": "Fiktive12Dienste bieten unterschiedliche Abholzeiten. Für einen Dienst ergibt eine Befragung p=8/10/12/14 EUR und q=50/48/25/10Aufträge pro Woche. Für gemeinsame Preisänderungen aller Dienste werden gesondert p=8/10/12/14 und Q=480/420/300/180 angegeben. Im Unterrichtsmodell sind zwischen den Messpunkten gerade Verbindungsstücke erlaubt; außerhalb gibt es keine Daten. Bei10 ist die individuelle Nachfrage links deutlich weniger preissensitiv als rechts. Stelle beide Beziehungen getrennt dar und erkläre, was die geänderte Neigung im Material zeigt. Unterscheide individuelle Menge48 von Gesamtmenge420. Ein alternatives Modell mit gleichartigen Leistungen und kostenfreiem Wechsel gibt dem einzelnen kleinen Dienst eine horizontale Preisnehmerlinie bei10. Ist eine geknickte oder eine gerade Einzelkurve für jedes unvollkommene Polypol zwingend? Kein strategisches Rivalenreaktionsgesetz ist angegeben.",
+        "after": "Fiktive12Dienste bieten unterschiedliche Abholzeiten. Für einen Dienst ergibt eine Befragung p=8/10/12/14 EUR und q=50/48/25/10Aufträge pro Woche. Für gemeinsame Preisänderungen aller Dienste werden gesondert p=8/10/12/14 und Q=480/420/300/180 angegeben. Im Unterrichtsmodell sind zwischen den Messpunkten gerade Verbindungsstücke erlaubt; außerhalb gibt es keine Daten. Im Preisintervall8→10 ist die individuelle Nachfrage deutlich weniger preissensitiv als im Preisintervall10→12. Stelle beide Beziehungen getrennt dar und erkläre, was die geänderte Neigung im Material zeigt. Unterscheide individuelle Menge48 von Gesamtmenge420. Ein alternatives Modell mit gleichartigen Leistungen und kostenfreiem Wechsel gibt dem einzelnen kleinen Dienst eine horizontale Preisnehmerlinie bei10. Ist eine geknickte oder eine gerade Einzelkurve für jedes unvollkommene Polypol zwingend? Kein strategisches Rivalenreaktionsgesetz ist angegeben."
+      },
+      {
+        "path": "/goals/1/profile/applicationCaseBriefs/1/taskDemandEn",
+        "before": "Twelve fictional services offer different collection times. One firm’s survey gives p=8/10/12/14 euros and q=50/48/25/10 weekly orders. Separate common price changes across all services give Q=480/420/300/180 at those prices. Straight segments may connect measured points; nothing is supplied outside them. At10 the individual relationship is less price-sensitive on the left than on the right. Represent the two relationships separately and explain the change in slope in this material. Distinguish individual48 from aggregate420. A homogeneous, costless-switching benchmark gives a small firm a horizontal price-taking line at10. Must every imperfect many-supplier market have a kinked or straight individual curve? No strategic rival-response rule is supplied.",
+        "after": "Twelve fictional services offer different collection times. One firm’s survey gives p=8/10/12/14 euros and q=50/48/25/10 weekly orders. Separate common price changes across all services give Q=480/420/300/180 at those prices. Straight segments may connect measured points; nothing is supplied outside them. The individual relationship is less price-sensitive over the price interval8→10 than over the price interval10→12. Represent the two relationships separately and explain the change in slope in this material. Distinguish individual48 from aggregate420. A homogeneous, costless-switching benchmark gives a small firm a horizontal price-taking line at10. Must every imperfect many-supplier market have a kinked or straight individual curve? No strategic rival-response rule is supplied."
+      }
+    ]
+  },
+  "updatedWholeCaseBookAndUnboundPExactlyEqual": true,
+  "PArchetypeQuotasEvidenceStatusAndModelAnswersUnchanged": true,
+  "originalReviewHistoryUnchanged": true,
+  "previousFourAtomicNoMemoryDecisionsUnaffected": true,
+  "nativeFingerprintsComputed": 0,
+  "sourceOrM6M7FinalApproval": false,
+  "activeWrites": 0,
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "status": "needs_human_review",
+  "actualLearnerPerformance": false,
+  "DblindClaim": false
+}

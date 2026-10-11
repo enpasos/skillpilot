@@ -1,0 +1,85 @@
+{
+  "state": "AUTHOR_DRAFT_PENDING_FOREIGN_WHOLE_SCIENCE_AND_SCOPE",
+  "beforeNative": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-seven-local-consumer-market-and-law-material-author-v1/seven-whole-E-current499-140-accesses-one-explicit-practice-scope-boundary-author-v1/actual-base499-seven-E140-before-native.json",
+    "sha256": "e64e23a413d021fc7e9295c161c286a82a665299f93fbfd9153472ec5421f1bc",
+    "bytes": 4144810
+  },
+  "afterNative": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-seven-local-consumer-market-and-law-material-author-v1/seven-whole-E-current499-140-accesses-one-explicit-practice-scope-boundary-author-v1/one-CrossStage-root-preserved-and-native-GK-authority-successor-v2/actual-seven-DRAFT-E140-one-root-author-view-positive.whole-native.json",
+    "sha256": "ca1069274acf850896209f65d0bf2811814e0e5e059c87efc5de92ebdb156529",
+    "bytes": 4300737
+  },
+  "positive": {
+    "compiler": {
+      "goals": 506,
+      "errors": 0,
+      "warnings": 0,
+      "diagnostics": 1457
+    },
+    "sourceRuleWholeExact": true,
+    "sourceJurisdictions": 16,
+    "sourceAtomicSourceBindings": 2134,
+    "unsupported": 0,
+    "reverse": 0,
+    "projectionScopes": 64,
+    "ordinaryOccurrences": 6974,
+    "allOrdinaryScopeTargetAndSupportAndMemorySetsExact": true,
+    "invalidStageStructure": 0,
+    "materialWholeCoverageBindingIssues": 0,
+    "mandatoryClosureIssues": 0,
+    "missingLocalRouteOccurrences": 3020,
+    "uniqueMissingLocalGoals": 197,
+    "beforeMissing": 3530,
+    "beforeUnique": 208,
+    "M4StillFail": true,
+    "scopeExpectedMaterialMissing": 32,
+    "CQR203ActualSevenDraftWarning": {
+      "id": "CQR-203",
+      "status": "warn",
+      "summary": "7 terminal autonomy examData item(s) lack release or coverage metadata.",
+      "metrics": {
+        "terminalAutonomyGoals": 103,
+        "releasedCoverageCompleteExamData": 96,
+        "releaseCoverageIncompleteExamData": 7
+      },
+      "details": [
+        "Incomplete exam release/coverage: E: Konsum, Zahlung und Verbraucherschutz [889c256b-5373-54cf-b785-239451144159] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: E: Nachfrage, Präferenzen und begrenzte Aufmerksamkeit [3cf4574c-517e-5674-bd66-af4e0505ecfd] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: E: Marktmodell und Preisfunktionen [9f234592-2e3f-58c0-aa1a-e5971818c447] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: E: Konzentration und passende Wettbewerbsinstrumente [65b744fc-64b4-554c-94ed-1797566afd80] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: E: Wachstum und differenzierte Lebensqualität [c1a4973e-e9a8-5f2a-ace9-2ad9bc03757a] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: E: Rechtsfunktionen an konkreten Regelungen [f98b9732-3abc-5217-ab19-68595bf0b65c] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: E: Kaufvertrag, Minderjährige und konkrete Rechte [f8b541a0-3149-5c9a-ac1b-7313e5e62728] (reviewStatus is not released)"
+      ]
+    }
+  },
+  "genuineNegatives": [
+    {
+      "inputDelta": "Remove ONLY currentBE-GK889c consumer material access, no ordinary/support/source modification",
+      "rawNative": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-seven-local-consumer-market-and-law-material-author-v1/seven-whole-E-current499-140-accesses-one-explicit-practice-scope-boundary-author-v1/one-CrossStage-root-preserved-and-native-GK-authority-successor-v2/actual-only-BE-GK-consumer-material-entry-drop.real-negative.whole-native.json",
+        "sha256": "9ef98d5cea9fbb269c5fabf94fc2a392f1e600b139958fc8283dc6c2bdbb8a0b",
+        "bytes": 4300409
+      },
+      "missingRouteOccurrences": 3024,
+      "missingUniqueGoals": 198
+    },
+    {
+      "inputDelta": "Add ONLY currentBB-GK9f234 market assessment despite missing3bcb prerequisite competence; no ordinary/source change",
+      "rawNative": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-seven-local-consumer-market-and-law-material-author-v1/seven-whole-E-current499-140-accesses-one-explicit-practice-scope-boundary-author-v1/one-CrossStage-root-preserved-and-native-GK-authority-successor-v2/actual-unqualified-BB-GK-market-access-missing-price-functions.real-negative.whole-native.json",
+        "sha256": "5880516fd631a4208510aab3e7b988fe9b5fa7ed4334268b0f09e2394ec968c0",
+        "bytes": 4301615
+      },
+      "actualCoverageScopeFailures": 2,
+      "actualMandatoryClosureScopeFailures": 2,
+      "actualUnchangedOrdinary6974": true
+    }
+  ],
+  "supersededV1Hypotheses": "Original60structureerrors retained. NationalGK9f2implicit-child concern is not an actual closure failure; native current authority excludes it, so no extra scope role was added. Raw names reflecting the prior expectation do not alter their honest measured0closure values.",
+  "wholeScienceAndMachineRelease": "No native reachability/count proves scientific coverage. All7actual bodies remainDRAFT; required independent whole science plus kind/release/scope QS still pending.",
+  "noQualityFilterOrSourceScopeLowering": true,
+  "activeWrites": 0,
+  "strictGain": 0
+}

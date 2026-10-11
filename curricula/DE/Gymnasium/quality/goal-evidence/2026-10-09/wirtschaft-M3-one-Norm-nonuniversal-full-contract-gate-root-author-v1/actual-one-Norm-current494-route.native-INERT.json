@@ -1,0 +1,142 @@
+{
+  "scopeId": "canonical-economics-crossstage",
+  "label": "Sekundarstufe I/II",
+  "selectedAtomicGoals": 336,
+  "maturity": "M2",
+  "rules": [
+    {
+      "id": "CQR-101",
+      "status": "pass",
+      "summary": "Effective route coverage is complete for the configured scope.",
+      "metrics": {
+        "selectedAtomicGoals": 336,
+        "missingMotivationPath": 0,
+        "missingTerminalPath": 0
+      }
+    },
+    {
+      "id": "CQR-102",
+      "status": "pass",
+      "summary": "Direct atomic route coverage is complete for the configured scope.",
+      "metrics": {
+        "selectedAtomicGoals": 336,
+        "missingDirectMotivationPath": 0,
+        "missingDirectTerminalPath": 0
+      }
+    },
+    {
+      "id": "CQR-103",
+      "status": "pass",
+      "summary": "No scoped cluster-level requires remain.",
+      "metrics": {
+        "scopedClusterRequires": 0
+      }
+    },
+    {
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 34,
+        "evaluatedProjectionScopes": 64,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 0,
+        "requiredTerminalAutonomyGoals": 73,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 20,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 4,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 2,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 32,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 425,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 287,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 85,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 4,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 6,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 6,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 26,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 54,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 3118,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 2,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 6978,
+        "visibleProfileSelectedAtomicGoalOccurrences": 6978,
+        "visibleProjectedRouteTargetGoalOccurrences": 6978,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 28,
+        "projectionScopesMissingDirectMotivationRoutes": 28,
+        "projectionScopesMissingEffectiveTerminalRoutes": 64,
+        "projectionScopesMissingDirectTerminalRoutes": 64,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 32,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 32,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 4276,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 4276,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 3,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 3,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 235,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 235
+      },
+      "details": [
+        "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json [DE-NI]",
+        "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json [DE-HB]",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json [DE-BB]: 34d04ee1-7b85-5e3a-a007-16007d2c3a30, f80d7cbb-e03c-5613-a4b6-8a1bad485385, 08fd2e38-3685-5b63-8b10-df73dd001ba7, 73c49b24-e928-54f4-b4d3-93347d532e5b, b791c88c-4b8c-53ed-907c-b50c946c3b2d, 571c124e-09af-55be-8037-2784a35f02ff, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-lk.view.json [DE-BB]: 73c49b24-e928-54f4-b4d3-93347d532e5b",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json [DE-BW]: 34d04ee1-7b85-5e3a-a007-16007d2c3a30, f80d7cbb-e03c-5613-a4b6-8a1bad485385, 08fd2e38-3685-5b63-8b10-df73dd001ba7, 25a83b44-d5fe-506c-af8a-3d5920084ed4, 73c49b24-e928-54f4-b4d3-93347d532e5b, b791c88c-4b8c-53ed-907c-b50c946c3b2d, 248c0ac2-f6cf-5c61-bf62-2fecc83f05aa, 30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33, 571c124e-09af-55be-8037-2784a35f02ff, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-lk.view.json [DE-BW]: 73c49b24-e928-54f4-b4d3-93347d532e5b",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-gk.view.json [DE-BY]: 34d04ee1-7b85-5e3a-a007-16007d2c3a30, f80d7cbb-e03c-5613-a4b6-8a1bad485385, 08fd2e38-3685-5b63-8b10-df73dd001ba7, 25a83b44-d5fe-506c-af8a-3d5920084ed4, 88228c0a-2a1e-5c59-8426-c291e49f3f35, 73c49b24-e928-54f4-b4d3-93347d532e5b, b71539be-44ed-521e-8b20-ed8a03abe864, 94052fb2-a222-504f-ad83-8b4153ebe4a7, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5721a967-0a6f-5d57-bfdc-737b11354067, 5838c453-ab65-5338-bca4-16e588f98fba, fa2d07bc-684d-5ee4-8878-20416fdb72d7",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-lk.view.json [DE-BY]: 73c49b24-e928-54f4-b4d3-93347d532e5b",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json [DE-HB]: f80d7cbb-e03c-5613-a4b6-8a1bad485385, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5838c453-ab65-5338-bca4-16e588f98fba",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-gk.view.json [DE-HE]: 34d04ee1-7b85-5e3a-a007-16007d2c3a30, f80d7cbb-e03c-5613-a4b6-8a1bad485385, 08fd2e38-3685-5b63-8b10-df73dd001ba7, 2baf4e62-b8a0-55f6-a04a-20a75923cbf5, 25a83b44-d5fe-506c-af8a-3d5920084ed4, 88228c0a-2a1e-5c59-8426-c291e49f3f35, 73c49b24-e928-54f4-b4d3-93347d532e5b, b71539be-44ed-521e-8b20-ed8a03abe864, 94052fb2-a222-504f-ad83-8b4153ebe4a7, 475408f7-2f08-5d96-bf1a-684f3ddf744a, b791c88c-4b8c-53ed-907c-b50c946c3b2d, 248c0ac2-f6cf-5c61-bf62-2fecc83f05aa, 30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33, 571c124e-09af-55be-8037-2784a35f02ff, 344aed45-70d3-5267-bed4-048a6b50090b, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5721a967-0a6f-5d57-bfdc-737b11354067, 5838c453-ab65-5338-bca4-16e588f98fba, fa2d07bc-684d-5ee4-8878-20416fdb72d7",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-lk.view.json [DE-HE]: 73c49b24-e928-54f4-b4d3-93347d532e5b",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-gk.view.json [DE-HH]: ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5838c453-ab65-5338-bca4-16e588f98fba",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-gk.view.json [DE-MV]: f80d7cbb-e03c-5613-a4b6-8a1bad485385, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5838c453-ab65-5338-bca4-16e588f98fba",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-gk.view.json [DE-NI]: 571c124e-09af-55be-8037-2784a35f02ff, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-gk.view.json [DE-NW]: f80d7cbb-e03c-5613-a4b6-8a1bad485385, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5721a967-0a6f-5d57-bfdc-737b11354067, 5838c453-ab65-5338-bca4-16e588f98fba",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-gk.view.json [DE-RP]: f80d7cbb-e03c-5613-a4b6-8a1bad485385, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5721a967-0a6f-5d57-bfdc-737b11354067, 5838c453-ab65-5338-bca4-16e588f98fba",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-gk.view.json [DE-SH]: f80d7cbb-e03c-5613-a4b6-8a1bad485385, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5838c453-ab65-5338-bca4-16e588f98fba",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-gk.view.json [DE-SL]: f80d7cbb-e03c-5613-a4b6-8a1bad485385, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5838c453-ab65-5338-bca4-16e588f98fba",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-gk.view.json [DE-SN]: f80d7cbb-e03c-5613-a4b6-8a1bad485385, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5838c453-ab65-5338-bca4-16e588f98fba",
+        "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-gk.view.json [DE-ST]: f80d7cbb-e03c-5613-a4b6-8a1bad485385, ebab1f99-acb5-5eff-bf53-8d63c4cbf477, 6d28abb4-503d-53b1-99f6-3e6e2c55aef0, 5838c453-ab65-5338-bca4-16e588f98fba"
+      ]
+    },
+    {
+      "id": "CQR-201",
+      "status": "pass",
+      "summary": "All configured terminal autonomy goals have examData.",
+      "metrics": {
+        "terminalAutonomyGoals": 91,
+        "terminalAutonomyGoalsWithExamData": 91,
+        "terminalAutonomyGoalsWithoutExamData": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "pass",
+      "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+      "metrics": {
+        "terminalAutonomyGoals": 91,
+        "concreteExamData": 91,
+        "weakExamData": 0
+      }
+    },
+    {
+      "id": "CQR-203",
+      "status": "pass",
+      "summary": "All terminal autonomy examData has release and coverage metadata.",
+      "metrics": {
+        "terminalAutonomyGoals": 91,
+        "releasedCoverageCompleteExamData": 91,
+        "releaseCoverageIncompleteExamData": 0
+      }
+    }
+  ]
+}

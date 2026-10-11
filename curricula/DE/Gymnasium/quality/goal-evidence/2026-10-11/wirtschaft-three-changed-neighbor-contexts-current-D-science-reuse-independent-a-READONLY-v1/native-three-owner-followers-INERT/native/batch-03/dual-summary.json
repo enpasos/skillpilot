@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2581e6c9d3768f5dc1541e74fe50a69ad42d728f615d973f0150e89a58b5c242",
+  "reviewInputFingerprint": "sha256:55ba3acda1b7ed1bf3eaccd71f069994e7f443f70b22e818d211d04968a90300",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-D3-neighbor-context-preserved-pair-03-a",
+      "roundId": "wirtschaft-current346-D3-neighbor-context-preserved-pair-03-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-D3-neighbor-context-preserved-pair-03-independent-a",
+      "runIds": [
+        "wirtschaft-current336-D124-v19-b10-independently-executed-a-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 / Codex (precise deployment version not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-D3-neighbor-context-preserved-pair-03-b",
+      "roundId": "wirtschaft-current346-D3-neighbor-context-preserved-pair-03-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-D3-neighbor-context-preserved-pair-03-independent-b",
+      "runIds": [
+        "wirtschaft-current336-D124-b10-independent-b-actual-run-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 (Codex agent)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "firstRecordId": "current336-D124-b10-a-15-4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "secondRecordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "firstRunId": "wirtschaft-current336-D124-v19-b10-independently-executed-a-v1",
+      "secondRunId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

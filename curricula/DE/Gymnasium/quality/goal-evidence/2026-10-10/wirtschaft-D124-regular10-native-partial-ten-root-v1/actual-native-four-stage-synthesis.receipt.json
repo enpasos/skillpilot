@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/one-real-native-prerequisite-order-only-author-successor-v2/one-real-cover-title-word-boundary-only-author-successor-v3/configs/current336-D124-batch-10.only-cover-title-v3.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.543
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/one-real-native-prerequisite-order-only-author-successor-v2/one-real-cover-title-word-boundary-only-author-successor-v3/configs/current336-D124-batch-10.only-cover-title-v3.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/one-real-native-prerequisite-order-only-author-successor-v2/one-real-cover-title-word-boundary-only-author-successor-v3/native/current336-D124-batch-10/synthesis-authoring.root-qualified-partial.v1.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.597
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/one-real-native-prerequisite-order-only-author-successor-v2/one-real-cover-title-word-boundary-only-author-successor-v3/configs/current336-D124-batch-10.only-cover-title-v3.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/one-real-native-prerequisite-order-only-author-successor-v2/one-real-cover-title-word-boundary-only-author-successor-v3/native/current336-D124-batch-10/synthesis-decisions.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.961
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/one-real-native-prerequisite-order-only-author-successor-v2/one-real-cover-title-word-boundary-only-author-successor-v3/configs/current336-D124-batch-10.only-cover-title-v3.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.942
+    }
+  ],
+  "allFourPassed": true,
+  "activeRegistryWrites": 0,
+  "claimedStrictIncrease": 0
+}

@@ -1,0 +1,1961 @@
+# AI review input: Wirtschaftswissenschaften: aktuelle Beschreibungsinputs – Paket 7
+
+- Book ID: `de-gym-economics-current336-actual173-b07`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:e2ee7f19e29ec8bc71cd5e7bd34c9f9d9df3fdae91bb31c0953d15f4b2c7f609`
+- Selected goals: 20
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Unternehmenskultur und Mitarbeiterzufriedenheit analysieren
+
+- Full learning-goal ID: `410e7ab4-a4ef-5090-8d4c-11a28372082d`
+- Goal fingerprint: `sha256:f9492dea8ccf5175e854c4f454a96ff9dd88994268ebdbf0629020f612ae75f1`
+- Page fingerprint: `sha256:d4c9107f2f66f5d95f2197d621b6fcc4d08507bb726c5631104bc23caeea5b20`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Unternehmerisch denken und entscheiden
+
+### Canonical description
+
+Die lernende Person kann Zusammenhänge zwischen Unternehmenskultur, Motivation, Mitarbeiterzufriedenheit und Unternehmenserfolg analysieren.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/410e7ab4-a4ef-5090-8d4c-11a28372082d.png
+
+- original digest: `sha256:23f9fc52e4875e1485731f368d039c3db424ef076dee878c2b68bc5667da377b`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Unternehmerische Zielsetzungen stakeholderbezogen analysieren — `b215bd82-2b6b-5b00-8a0b-85c7ff249bc2` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Arbeitsorganisation, Mitbestimmung und Entlohnung beurteilen — `571c124e-09af-55be-8037-2784a35f02ff` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:54cbef7d99f1d2bf60df6285341691c3c69a4d432396c930e246fce26411b89c`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Unternehmenskultur beeinflusst Zusammenarbeit, Motivation und Zufriedenheit über konkrete Regeln und Erfahrungen. Diese können den Unternehmenserfolg unterstützen oder belasten; eine zeitliche Korrelation beweist keine alleinige Ursache.
+
+Understanding (EN): Organisational culture affects collaboration, motivation and satisfaction through rules and experience. These can support or constrain business success; a temporal correlation does not prove a sole cause.
+
+Observable performance (DE): Die Person verbindet an Unternehmensmaterial Kulturpraktiken, Motivation, Zufriedenheit und Erfolg, benennt Vermittlungswege und prüft konkurrierende Erklärungen statt pauschaler Zufriedenheitsgarantien.
+
+Observable performance (EN): The learner connects cultural practices, motivation, satisfaction and performance in business material, identifies mechanisms and examines alternative explanations rather than promising satisfaction.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `workplace`: Fehler-/Feedbackkultur versus Zusammenarbeit und Leistungsanreize. / Error/feedback culture versus collaboration and incentives.
+- `evidence`: Gleichzeitige Änderungen und selektive Befragung versus begründete Wirkungskette. / Simultaneous changes and selective surveys versus reasoned mechanisms.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `workshop-learning-culture`
+
+Task demand (DE): Eine fiktive Werkstatt führt Fehlerbesprechungen ohne öffentliche Beschämung und bezahlte Lernzeit ein. Zufriedenheit steigt in einer freiwilligen Befragung von60 auf75%; zugleich sinken Reklamationen und neue Maschinen werden eingeführt. Analysiere alle vier Zielbezüge und die Beleggrenzen.
+
+Task demand (EN): A fictional workshop introduces non-shaming error discussions and paid learning time. Satisfaction in a voluntary survey rises from60 to75%; complaints fall while new machines also arrive. Analyse all four goal dimensions and evidence limits.
+
+Expected performance (DE): Die Person erläutert mögliche Lern-, Vertrauens- und Motivationswege bis zu Qualität/Erfolg.15 Prozentpunkte sind korrekt; freiwillige Teilnahme und neue Maschinen verhindern die eindeutige kausale Zuschreibung. Zufriedenheit, Motivation und Ergebnis werden nicht gleichgesetzt.
+
+Expected performance (EN): The learner explains possible learning, trust and motivation mechanisms affecting quality/performance.15 percentage points is correct; voluntary participation and new machinery prevent a unique causal attribution. Satisfaction, motivation and outcomes are not equated.
+
+Understanding focus (DE): Wirkungswege und Grenzen einer gemeinsamen Veränderung.
+
+Understanding focus (EN): Mechanisms and limits of simultaneous change.
+
+#### Application case `sales-team-incentive-conflict`
+
+Task demand (DE): Ein anderes fiktives Team erhält individuelle Umsatzprämien; Hilfe zwischen Kolleginnen nimmt ab, Umsatz steigt kurzfristig, Personalwechsel und Kundenbeschwerden steigen später. Untersuche die Kultur-/Motivations-/Zufriedenheitsbeziehungen und bewerte, welche Erfolgsaussagen das Material trägt.
+
+Task demand (EN): Another fictional team receives individual sales bonuses; mutual help declines, sales rise briefly and staff turnover and customer complaints later increase. Examine culture, motivation and satisfaction, and determine which performance claims the material supports.
+
+Expected performance (DE): Die Person erklärt konkurrierende individuelle und gemeinsame Anreize, mögliche Arbeitsbelastung und langfristige Kunden-/Personalkosten. Höherer Umsatz allein ist weder höherer Gewinn noch dauerhaft bessere Unternehmenskultur; plausible Mechanismen bleiben vom Kausalbeweis getrennt.
+
+Expected performance (EN): The learner explains conflicting individual/shared incentives, possible strain and longer-term customer/staff costs. Higher sales alone mean neither higher profit nor better culture; plausible mechanisms remain distinct from causal proof.
+
+Understanding focus (DE): Kurzfristige Kennzahl und langfristige Kulturbeziehungen.
+
+Understanding focus (EN): Short-term indicators and longer-term cultural relationships.
+
+## Page 2: Marktgleichgewicht, Elastizitäten und Gesamtwohlfahrt analysieren
+
+- Full learning-goal ID: `50e07b86-428c-5f9c-8c7e-0d0669343af5`
+- Goal fingerprint: `sha256:290235c05b554647572676a2b81b2cf3307d1ff96fc683698db5f7eee5bd29e9`
+- Page fingerprint: `sha256:ed8e7e917ecb461f88562939805b8b6ff6547ecbb94474d3cf9f7c1366d391e9`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Q1 Demokratie im Mehrebenensystem > Marktwirtschaftliche Ideen
+
+### Canonical description
+
+Die lernende Person kann Preisbildung auf vollkommenen Märkten mithilfe von Preis-Mengen-Diagrammen, Preisfunktionen, Elastizitäten und Gesamtwohlfahrt analysieren.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/50e07b86-428c-5f9c-8c7e-0d0669343af5/50e07b86-428c-5f9c-8c7e-0d0669343af5.png
+
+- original digest: `sha256:8e9e16d1b0a71b585cdbc22576dacc5196a616f7f9cd3e3580dc225cd0381677`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Marktmodell anwenden und kritisch einordnen — `8ad94aeb-81ad-58ce-8792-c691f97efd53` (outside this book)
+- Preisfunktionen und dezentrale Koordination erklären — `3bcb976d-3e45-5c62-81ac-5ed909df202b` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Markt, Konsumkultur und Unternehmenskonzepte analysieren — `248c0ac2-f6cf-5c61-bf62-2fecc83f05aa` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:1a3995c3f2a0b243e319488d63f4b41db5b12e13a65f467dd56ed374ea5facdf`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `modeling`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Im vollkommenen Marktmodell verbindet das Gleichgewicht angebotene und nachgefragte Menge; relative Mengenreaktionen auf Preisänderungen messen Elastizität. Konsumenten- und Produzentenrente bilden unter den Modellannahmen die Gesamtwohlfahrt. Preisfunktionen betreffen Information über Knappheit, Anreize und Koordination; sie sind nicht mit algebraischen Funktionsgleichungen identisch. Diagramm und Rechnungen müssen denselben Markt beschreiben, und eine Nachfrageverschiebung ist keine bloße Bewegung auf derselben Kurve.
+
+Understanding (EN): In the perfectly competitive market model, equilibrium connects quantity supplied and demanded; relative quantity responses to price changes measure elasticity. Consumer and producer surplus form total economic surplus under the assumptions. The functions of prices concern information about scarcity, incentives, and coordination; they are not identical to algebraic equations. Diagrams and calculations must describe the same market, and a demand shift is not merely movement along the same curve.
+
+Observable performance (DE): Die Person analysiert einen neuen Marktfall kohärent über Diagramm und Berechnung, erläutert die Informations-, Anreiz- und Koordinationsfunktion von Preisen, bestimmt Gleichgewicht und relevante Elastizität mit benannter Berechnungskonvention und erklärt Gesamtwohlfahrt sowie Wirkungen einer gegebenen Änderung innerhalb der Modellannahmen.
+
+Observable performance (EN): The learner coherently analyses a new market through diagrams and calculations, explains the informational, incentive, and coordination functions of prices, determines equilibrium and relevant elasticity with an explicit calculation convention, and explains total economic surplus and the effects of a supplied change within the assumptions.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `model-change`: Nachfrageverschiebung oder Anstieg der Angebotskosten bei vollständig vorgegebenen Funktionen. / Demand shifts or higher supply costs under fully specified functions.
+- `representation`: Kohärente Preis-Mengen-Diagramme, Gleichgewichtsrechnung, explizite Punktelastizität und Rentenflächen. / Coherent price–quantity diagrams, equilibrium calculations, explicit point elasticity, and surplus areas.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `linear-equilibrium-and-shift`
+
+Task demand (DE): Ein Modell hat inverse Nachfrage p_D=100-q und Angebot p_S=20+q, keine externen Effekte und q≥0. Analysiere Gleichgewicht, Punktelastizität der Nachfrage und Gesamtwohlfahrt. Anschließend steigt die Nachfrage auf p_D=120-q; zeige die Veränderung im Diagramm.
+
+Task demand (EN): A model has inverse demand p_D=100-q and supply p_S=20+q, no external effects, and q≥0. Analyse equilibrium, point price elasticity of demand, and total economic surplus. Demand then rises to p_D=120-q; show the change in the diagram.
+
+Expected performance (DE): Die Person bestimmt zunächst q=40,p=60, Nachfrage-Punktelastizität -1,5 (Betrag 1,5) und Gesamtwohlfahrt 1600 aus zwei Rentenflächen à 800; danach q=50,p=70 und Gesamtwohlfahrt 2500. Sie zeichnet konsistente Preis-Mengen-Achsen und erklärt eine Nachfrageverschiebung statt bloßer Bewegung auf der alten Nachfrage sowie Information über veränderte Knappheit, Anreize zur Angebotsausweitung und Koordination am neuen Preis.
+
+Expected performance (EN): The learner initially obtains q=40,p=60, demand point elasticity -1.5 (magnitude 1.5), and total surplus 1600 from two surplus areas of 800 each, then q=50,p=70 and total surplus 2500. They draw consistent price–quantity axes and explain a demand shift rather than movement along the old demand curve. They explain information about changed scarcity, incentives to expand supply, and coordination at the new price.
+
+Understanding focus (DE): Gleichgewicht, Elastizität, ökonomische Preisfunktionen und Rentenflächen gehören zu derselben Modellanalyse.
+
+Understanding focus (EN): Equilibrium, elasticity, economic functions of prices, and surplus areas form one coherent model analysis.
+
+#### Application case `elasticity-and-cost-shift`
+
+Task demand (DE): Vergleiche zwei Märkte mit Nachfrage p_A=120-2q und p_B=80-q sowie gemeinsamem Angebot p_S=20+q. Analysiere Gleichgewichte, Nachfrage-Punktelastizitäten und Gesamtwohlfahrt; danach erhöht ein gegebener Kostenanstieg das Angebot auf p_S=30+q. Zeige und erkläre die Wirkungen.
+
+Task demand (EN): Compare two markets with demand p_A=120-2q and p_B=80-q and common supply p_S=20+q. Analyse equilibria, demand point elasticities, and total surplus; a stipulated cost increase then shifts supply to p_S=30+q. Show and explain the effects.
+
+Expected performance (DE): Die Person bestimmt A:q=100/3,p=160/3, Nachfrageelastizität -0,8 und Gesamtwohlfahrt 5000/3; B:q=30,p=50, Elastizität -5/3 und Gesamtwohlfahrt 900. Nach dem Kostenschub gilt A:q=30,p=60,Gesamtwohlfahrt 1350 und B:q=25,p=55,Gesamtwohlfahrt 625. Sie erklärt anhand konsistenter Diagramme höheren Preis, geringere Menge und veränderte Renten unter den ausdrücklich gegebenen Modellbedingungen und erläutert, wie der höhere Preis knapperes Angebot signalisiert, zusätzliche Anbieter anreizt und Nachfrage begrenzt.
+
+Expected performance (EN): The learner obtains A:q=100/3,p=160/3, demand elasticity -0.8, and total surplus 5000/3; B:q=30,p=50, elasticity -5/3, and total surplus 900. After the cost increase, A:q=30,p=60,total surplus 1350, and B:q=25,p=55,total surplus 625. Using consistent diagrams, they explain higher prices, lower quantities, and changed surplus under the explicitly supplied model conditions, explaining how the higher price signals more costly supply, encourages additional suppliers, and limits demand.
+
+Understanding focus (DE): Vergleichbare Modellannahmen tragen die Aussagen über Reaktion und Wohlfahrt.
+
+Understanding focus (EN): Comparable model assumptions support conclusions about responses and surplus.
+
+## Page 3: Gesamtwirtschaftliche Zusammenhänge im Kreislaufmodell darstellen
+
+- Full learning-goal ID: `641dee8e-9658-5db1-89eb-2353f8322a8a`
+- Goal fingerprint: `sha256:98102c4faa66fb413d6c2b1f31e1e9bc6201c23115232c580cfccd06b6beb3aa`
+- Page fingerprint: `sha256:b93def53b070e7abea4119c767e6bcbd90312f4dd8c4d1b8ae56a8451f1d3db8`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann gesamtwirtschaftliche Zusammenhänge mithilfe des Kreislaufmodells darstellen und Ursache-Wirkungs-Zusammenhänge fachsprachlich formulieren.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/641dee8e-9658-5db1-89eb-2353f8322a8a/641dee8e-9658-5db1-89eb-2353f8322a8a.png
+
+- original digest: `sha256:ca31f5142540328e87cf936cbde46b6acbddcbfb4c3c9e0ba9c08dc346d2ec91`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Preisfunktionen und dezentrale Koordination erklären — `3bcb976d-3e45-5c62-81ac-5ed909df202b` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Lernkarten - Makroökonomie, Geld und Wirtschaftspolitik — `mem_de_gym_economics_macro_money_policy` (outside this book)
+- Wirtschafts-, Sozial- und Umweltstatistiken auswerten — `26ebbe6e-6512-520d-80a4-2e7e80f29f72` (outside this book)
+- Internationale wirtschaftliche Verflechtung Deutschlands beurteilen — `7cbcca15-e93b-57ce-8f14-ffd1a557e288` (outside this book)
+- Wirtschaftspolitische Maßnahmen zu Wachstum und Beschäftigung modellgestützt erklären — `764e9eca-3392-5eb1-8df6-603356a47fd9` (outside this book)
+- Leistungsbilanz und außenwirtschaftliches Gleichgewicht interpretieren — `8a453b6b-4f28-54bc-8614-4ec8d5384a85` (outside this book)
+- Nationaleinkommen aus Kreislaufdaten berechnen — `c6f05990-4c2d-56ce-9412-3a4a4bcfc488` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:47a1fa39e146324e1af9792bb596a82c5b10e7314a7781bff39a18ed175bac60`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `modeling`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Im Kreislaufmodell werden reale Leistungen und entgegengerichtete Zahlungsströme zwischen Sektoren unterschieden. Eine zusätzliche Zahlung verändert unter angegebenen Verhaltensannahmen Einkommen und Nachfrage; eine Buchungsidentität allein beweist weder eine bestimmte Ursache noch einen festen Multiplikator.
+
+Understanding (EN): The circular-flow model distinguishes real services from oppositely directed payments between sectors. An extra payment changes income and demand under stated behavioural assumptions; an accounting identity alone proves neither a causal mechanism nor a fixed multiplier.
+
+Observable performance (DE): Die Person ordnet Haushalte, Unternehmen, Staat und gegebenenfalls Kapitalmarkt beziehungsweise Ausland korrekt an, stellt Geld- und Güterströme richtungsrichtig dar und erklärt eine bedingte Ursache-Wirkungskette mit klarer Unterscheidung von Identität und Annahme. Die konkret neuen Fälle führen die im separaten Quellenrestverzeichnis benannte Teilanforderung tatsächlich aus: Sektorenersparnis und reale Vermögensbildung im selben konsistenten Kreislauf; getrennte bedingte Folgewirkung. Offener Kreislauf, Vermögensänderungskonto und Außenfinanzierung ohne Geld-/Güterverwechslung.
+
+Observable performance (EN): The learner correctly places households, firms, government and, where relevant, capital markets or foreign sectors, draws money and real flows in the proper directions and explains a conditional causal chain while distinguishing identities from assumptions. The actual new cases perform the bounded facet identified in the separate source-gap list: Sector saving and real capital formation in one consistent circular flow, with a separate conditional response. Open circular flow, capital account and foreign finance without confusing money and goods.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-source-bound-variation`: Sektorenersparnis und reale Vermögensbildung im selben konsistenten Kreislauf; getrennte bedingte Folgewirkung. / Offener Kreislauf, Vermögensänderungskonto und Außenfinanzierung ohne Geld-/Güterverwechslung. / Sector saving and real capital formation in one consistent circular flow, with a separate conditional response. / Open circular flow, capital account and foreign finance without confusing money and goods.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `closed-sector-saving-asset-change-account`
+
+Task demand (DE): Fiktives geschlossenes Jahresmodell, keine Abschreibungen: Haushalte erzielen1000 Einkommen, zahlen200 Steuern und konsumieren700; Staat erhält200 und kauft180 Leistungen; Unternehmen sparen30 aus gesondert angegebenem unverteiltem Einkommen und investieren insgesamt150. Das Vermögensänderungskonto sammelt die Sektorenersparnisse und verbindet sie mit realer Investition; kein eigenständiger produzierender Akteur. Stelle die jeweils realen und finanziellen Gegenströme sowie dieses Konto dar. Für einen getrennten Folgeperiodenimpuls kauft der Staat20 zusätzliche Dienstleistungen; das Material unterstellt12 zusätzliche Löhne und9 zusätzlichen Konsum. Erkläre diese begrenzte Wirkungskette.
+
+Task demand (EN): Fictional closed annual model with no depreciation: households earn1000, pay200 in taxes and consume700; government receives200 and buys180 of services; firms retain30 of separately specified income and invest150 in total. A capital/asset-change account collects sector saving and connects it to real investment; it is not an independent producer. Represent the real and financial counterpart flows and this account. In a separate following-period impulse, government buys20 extra services; the material stipulates12 extra wages and9 extra consumption. Explain this bounded causal chain.
+
+Expected performance (DE): Haushaltsersparnis100, Staatsersparnis20 und Unternehmensersparnis30 ergeben150 und stehen150 realer Investition gegenüber. Die Person zeichnet Konsum-/Arbeits-/Staatsleistungsströme mit Gegenentgelt, erläutert finanzielle Zuführung/Verwendung im Vermögensänderungskonto und trennt Kontendarstellung, Vermittler und tatsächlichen Maschinenkauf. Für die getrennte Folgeperiode erklärt sie20→12→9 aus den vorgegebenen Verhaltensannahmen, ohne Ausgangsidentität als Ursache oder150 als automatisch durch Haushaltsersparnis100 ausgelöste Investition zu behandeln.
+
+Expected performance (EN): Household saving100, government saving20 and corporate saving30 total150, matching real investment150. The learner draws consumption, labour and public-service flows with payments, explains financing sources/uses in the capital account and distinguishes an accounting representation, intermediary and actual machine purchase. For the separate following period, they explain20→12→9 from stipulated behaviour, without making the initial identity causal or treating investment150 as automatically caused by household saving100.
+
+Understanding focus (DE): Sektorenersparnis und reale Vermögensbildung im selben konsistenten Kreislauf; getrennte bedingte Folgewirkung.
+
+Understanding focus (EN): Sector saving and real capital formation in one consistent circular flow, with a separate conditional response.
+
+#### Application case `open-saving-investment-and-foreign-finance`
+
+Task demand (DE): Anderes fiktives Jahresmodell: gesamtwirtschaftliches Einkommen1000, Konsum600, Staatskauf200, Investition250, Exporte100 und Importe150. Keine Abschreibungen, Vermögenstransfers oder Restposten. Gegeben: nationale Ersparnis=Einkommen−Konsum−Staatskauf. Im Vermögensänderungskonto ergänzen50 Nettomittel aus dem Ausland die nationale Ersparnis. Zeichne Geld-/Güterrichtungen und erkläre Zusammenhang und Grenze. Getrennter Folgeperiodenfall: Für zwei Wochen fehlen importierte Steuerungskomponenten; laut dem gegebenen Produktionsplan werden dadurch zwanzig inländische Geräte zunächst nicht fertig. Lager, Ersatzlieferungen und spätere Nachfrageanpassungen sind nicht bekannt. Erkläre diese begrenzte Liefer-/Produktionsabhängigkeit, ohne den ursprünglichen Jahressaldo als Schadensbetrag zu behandeln.
+
+Task demand (EN): Another fictional annual model: national income1000, consumption600, public purchases200, investment250, exports100 and imports150. No depreciation, capital transfers or residuals. Given: national saving=income−consumption−public purchases. In the capital account, net foreign finance50 supplements national saving. Draw money/real-flow directions and explain the relationship and its limits. In a separate following-period case, imported control components are unavailable for two weeks; the supplied production plan consequently delays completion of twenty domestic devices. Stocks, substitute deliveries and later demand responses are unknown. Explain this bounded supply/output dependency without treating the original annual balance as the loss total.
+
+Expected performance (DE): Nationale Ersparnis200 plus ausländische Nettomittel50 finanzieren Investition250;1000=600+200+250+100−150. Güterexport zum Ausland/Zahlung ins Inland, Importgüter ins Inland/Zahlung ins Ausland. Finanzierungszufluss ist kein zusätzlicher Güterexport und kein Beweis über bestehendes Nettovermögen. Die Person erklärt die zweiwöchige Input-/Produktionsabhängigkeit und die zunächst zwanzig verzögerten Geräte bedingt und trennt die Stromidentität von Anpassungsannahmen oder garantierter Schadenssumme.
+
+Expected performance (EN): National saving200 plus foreign net finance50 funds investment250;1000=600+200+250+100−150. Exports go abroad with payment inward; imports move inward with payment outward. Finance is not another goods export or proof of existing net wealth. The learner conditionally explains the two-week input/output dependence and twenty initially delayed devices and separates flow identities from adjustment assumptions or guaranteed loss totals.
+
+Understanding focus (DE): Offener Kreislauf, Vermögensänderungskonto und Außenfinanzierung ohne Geld-/Güterverwechslung.
+
+Understanding focus (EN): Open circular flow, capital account and foreign finance without confusing money and goods.
+
+## Page 4: Wirtschaftspolitische Beteiligungsmöglichkeiten einordnen
+
+- Full learning-goal ID: `7179f558-b05f-5ebd-8799-28ffaaf2da05`
+- Goal fingerprint: `sha256:346f63f7aabcdd175b1e61435dfa62a4262fd17d98a04173d83dc9db65ef67e4`
+- Page fingerprint: `sha256:583f7893f3d087f5590d5f1b5b018b6d33043149f19dc30ac74e8058c52a0803`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Q1 Demokratie im Mehrebenensystem > Marktwirtschaftliche Ideen
+
+### Canonical description
+
+Die lernende Person kann Möglichkeiten wirtschaftspolitischer Partizipation und Interessenartikulation in Entscheidungsprozessen einordnen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/7179f558-b05f-5ebd-8799-28ffaaf2da05/7179f558-b05f-5ebd-8799-28ffaaf2da05.png
+
+- original digest: `sha256:0c3f0401549c22d6afd2f27ea946dadbe2df9b2af45abd7336def309df2eb003`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Wirtschaftspolitische Medienbeiträge beurteilen — `bd9ec397-86ee-58ec-8327-7e1f28550026` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Partizipation, Kulturmedien und historischen Austausch analysieren — `30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:4cdddfd1ee0666c9a1f8e62f1a27dde71168da67a4ef0f435f7768f56ba8eb0c`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Wirtschaftspolitische Partizipation kann analog oder digital Anliegen sichtbar machen und in formale Entscheidungen einbringen. Einflussweg, adressierte Zuständigkeit, Zugang und Ressourcen bestimmen Möglichkeiten und Grenzen; eine Onlinepetition ist nicht allein durch Unterstützung ein bindender politischer Beschluss.
+
+Understanding (EN): Participation in economic policymaking can make concerns visible and bring them into formal decision-making through offline or digital routes. Influence mechanisms, the addressed authority, access, and resources determine possibilities and limits; support alone does not turn an online petition into a binding decision.
+
+Observable performance (DE): Die Person ordnet für neue wirtschaftspolitische Konflikte analoge und digitale Beteiligungswege nach Akteur, Zuständigkeit und Einflussmechanismus ein und beurteilt Reichweite und Grenzen anhand konkreter Zugangsbedingungen.
+
+Observable performance (EN): For new economic-policy disputes, the learner classifies offline and digital participation routes by actor, authority, and influence mechanism and assesses their reach and limits using specific access conditions.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `participation-format`: Verbandsengagement, Gewerkschaft, Anhörung oder digitale Petition und Stellungnahme. / Association involvement, trade unions, hearings, digital petitions, and submissions.
+- `institutional-access`: Konkreter Adressat, Frist, Ressourcen und verbindlicher Entscheidungsweg. / Specific addressees, deadlines, resources, and binding decision-making routes.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `transport-petition-and-association`
+
+Task demand (DE): Im Planspiel wird eine kommunale Tarifänderung diskutiert. Eine Onlinepetition und ein Fahrgastverband richten begründete Anliegen an das zuständige Gremium. Ordne beide Wege nach vorgegebenem Entscheidungsverfahren ein.
+
+Task demand (EN): In a simulation, a municipal fare change is debated. An online petition and a passenger association address justified demands to the responsible body. Classify both routes under the supplied decision procedure.
+
+Expected performance (DE): Die Person erklärt Reichweiten- und Bündelungsmöglichkeiten, prüft Adressat und formalen Entscheidungsweg und erkennt die Beteiligung als Interessenartikulation statt automatisches Vetorecht; unterschiedliche Zugänge werden berücksichtigt.
+
+Expected performance (EN): The learner explains possibilities for reach and aggregation, checks the addressee and formal decision route, and recognises participation as expression of interests rather than an automatic veto, considering differing access.
+
+Understanding focus (DE): Analoge und digitale Wege folgen einer konkreten politischen Zuständigkeit.
+
+Understanding focus (EN): Offline and digital routes relate to specific political responsibilities.
+
+#### Application case `union-and-open-consultation`
+
+Task demand (DE): Ein fiktiver Regelungsvorschlag zu Arbeitsbedingungen erlaubt Verbandsstellungnahmen und offene digitale Beiträge. Angaben nennen Frist, Ressourcen und Entscheidungsorgan. Ordne Beteiligungs- und Einflusschancen ein.
+
+Task demand (EN): A fictional proposal on working conditions allows association submissions and open digital contributions. The facts state the deadline, resources, and decision-making body. Classify participation and influence opportunities.
+
+Expected performance (DE): Die Person verbindet organisierte Interessen, offenen Zugang und institutionelle Entscheidung, bewertet Ressourcenunterschiede und erklärt, warum Teilnahme nicht allein Durchsetzung garantiert und gleiche Öffnung nicht automatisch gleichen Einfluss bedeutet.
+
+Expected performance (EN): The learner connects organised interests, open access, and institutional decisions, assesses resource differences, and explains why participation alone does not guarantee success and equal openness does not automatically mean equal influence.
+
+Understanding focus (DE): Zugang, Artikulation und tatsächlicher Einfluss sind unterschiedliche Größen.
+
+Understanding focus (EN): Access, expression, and actual influence are distinct.
+
+## Page 5: Wechselkursschwankungen für Haushalte und Unternehmen analysieren
+
+- Full learning-goal ID: `99541aa7-c590-5f5d-8e89-fe2e39da7a9c`
+- Goal fingerprint: `sha256:c72665957090bd33f1f741e9f1498f722c8f61d678af2372bf6d37eac0b6223b`
+- Page fingerprint: `sha256:fd8d37cf3d0aa4356dd4a0bd999704840b6917b1d37fb8f704cdd5cf7665ed79`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann Auswirkungen von Wechselkursschwankungen auf private Haushalte und Unternehmen analysieren.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/99541aa7-c590-5f5d-8e89-fe2e39da7a9c/99541aa7-c590-5f5d-8e89-fe2e39da7a9c.png
+
+- original digest: `sha256:bb4a558a82aa7d41b1b8134d3ba722dd05940c3a68c66e97318d86b9c4ad283e`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Wechselkursregime vergleichen — `13b20cee-8977-5b3f-938b-2064e96f2a5b` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Q3: Wechselkurseffekte für Haushalt, Import und Export analysieren — `0c57d371-7b42-583d-8341-8f4d7d4e8541` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:e2995f441865a07d631fe1ed81d2bc9e9b55b3c21716187a3485f6d650335407`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `modeling`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Ein Wechselkurs muss mit seiner Quotierung angegeben werden. Eine Euroaufwertung senkt bei unveränderten Fremdwährungspreisen die Eurokosten von Auslandskäufen, während Exporterlöse und Wettbewerbswirkungen von Rechnungswährung, Absatzreaktion, Importanteilen und Absicherung abhängen; niemand gewinnt automatisch überall.
+
+Understanding (EN): An exchange rate must specify its quotation. Euro appreciation reduces euro costs of foreign purchases at unchanged foreign-currency prices,while export revenue and competitive effects depend on invoicing currency,demand,import inputs and hedging; nobody automatically benefits in every activity.
+
+Observable performance (DE): Die Person rechnet richtungsrichtig zwischen ausdrücklich angegebenen Währungen um und erklärt die unterschiedlichen Folgen einer Wechselkursänderung für Haushalt, Importeur und Exporteur unter geänderten Bedingungen.
+
+Observable performance (EN): The learner converts correctly between explicitly quoted currencies and explains differing exchange-rate effects on households,importers and exporters under changed conditions.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `quotation`: Dollar je Euro gegenüber Euro je Dollar. / Dollars per euro versus euros per dollar.
+- `business-exposure`: Fremdwährungserlös gegenüber importiertem Vorprodukt oder festem Eurovertrag. / Foreign-currency revenue versus imported inputs or a fixed euro contract.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `holiday-and-dollar-invoices`
+
+Task demand (DE): Für einen fiktiven Zeitraum steigt der Kurs von 1 Euro=1,00 US-Dollar auf 1 Euro=1,25 US-Dollar. Ein Haushalt zahlt für eine Reise 1.000 Dollar; ein Exporteur bekommt für eine Lieferung einen festen Erlös von 10.000 Dollar. Alle Preise sind unverändert, Gebühren und Absicherung entfallen. Analysiere beide Folgen und nenne Grenzen.
+
+Task demand (EN): Over a fictional period,the rate rises from EUR1=USD1.00 to EUR1=USD1.25. A household pays USD1,000 for a trip; an exporter receives a fixed USD10,000 for a shipment. Prices are unchanged and there are no fees or hedging. Analyse both effects and state limits.
+
+Expected performance (DE): Die Person erkennt Euroaufwertung und berechnet Reisekosten 1.000 auf 800 Euro sowie Exporterlös 10.000 auf 8.000 Euro. Sie trennt Kostenersparnis vom Erlösnachteil und erläutert, dass eine andere Rechnungswährung, geänderte Fremdwährungspreise, Nachfrage oder Absicherung die Aussage verändern würde.
+
+Expected performance (EN): The learner identifies euro appreciation and calculates travel costs falling from EUR1,000 to EUR800 and export receipts from EUR10,000 to EUR8,000. They distinguish cost savings from lower receipts and explain how different invoicing currency,foreign prices,demand or hedging would change the result.
+
+Understanding focus (DE): Umrechnung und unterschiedliche Wirkungen auf Haushalt und Exporteur.
+
+Understanding focus (EN): Conversion and different effects on a household and exporter.
+
+#### Application case `import-input-with-euro-sales`
+
+Task demand (DE): Die zweite fiktive Quotierung steigt von 0,80 Euro je Dollar auf 1,00 Euro je Dollar. Ein Unternehmen verkauft ein Produkt für feste 300 Euro und bezieht ein Vorprodukt für feste 100 Dollar; sonstige Stückkosten betragen 100 Euro. Ein Haushalt kauft ein Buch für 20 Dollar. Analysiere Kosten, verbleibenden Stücküberschuss und Haushaltseffekt; keine Marktpreisreaktion ist vorgegeben.
+
+Task demand (EN): The second fictional quotation rises from EUR0.80 per dollar to EUR1.00 per dollar. A firm sells an item for a fixed EUR300 and imports an input for a fixed USD100; other unit costs are EUR100. A household buys a USD20 book. Analyse costs,the remaining unit surplus and household effects; no market-price response is specified.
+
+Expected performance (DE): Die Person erkennt Euroabwertung: Vorproduktkosten 80 auf 100 Euro, modellierter Stücküberschuss 120 auf 100 Euro und Buchkosten 16 auf 20 Euro. Sie begründet die gegenteilige Quotierungsrichtung und vermeidet die pauschale Behauptung, jeder Exporteur profitiere; Preisweitergabe, Nachfrage und Absicherung bleiben zusätzliche Bedingungen.
+
+Expected performance (EN): The learner identifies euro depreciation: input costs rise from EUR80 to EUR100,the model unit surplus falls from EUR120 to EUR100 and book costs rise from EUR16 to EUR20. They explain the reversed quotation direction and avoid asserting that every exporter benefits; price pass-through,demand and hedging remain additional conditions.
+
+Understanding focus (DE): Importkostenkanal und richtige Quotierungsrichtung bei festen Euroerlösen.
+
+Understanding focus (EN): The import-cost channel and correct quotation interpretation under fixed euro sales.
+
+## Page 6: Aktuelle wirtschaftliche und rechtliche Entwicklungen bewerten
+
+- Full learning-goal ID: `7d399b4d-d057-5284-8e2c-6778e023307d`
+- Goal fingerprint: `sha256:65ea5836a36b63898bb3faadbb3fc1e81ee16c605d2d30fdf0f68ccb331fca1f`
+- Page fingerprint: `sha256:e161f960b620b98740b5b3d58ba6cc6c69b4f870fe5cdd7aa7d330a65c93e6ca`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann aktuelle wirtschaftliche und rechtliche Entwicklungen auf Grundlage ihrer Fachkenntnisse analysieren und bewerten, auch unter Berücksichtigung der Digitalisierung.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/7d399b4d-d057-5284-8e2c-6778e023307d/7d399b4d-d057-5284-8e2c-6778e023307d.png
+
+- original digest: `sha256:43acd23162d82517eb68cbe9b4185516f9792419789dbad736f4995d1199f601`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- Zukunftsszenarien und Gestaltungsoptionen beurteilen — `7727b988-e62c-5ebf-8e2f-0c719b13881c` (page 7)
+
+### Prerequisites outside this book
+
+- Digitalisierung von Märkten bewerten — `52e6731e-71e9-53b1-8bb9-b03da445decf` (outside this book)
+- Rechtliche Regelungen und Rechtsstaatlichkeit beurteilen — `682facbf-3c9d-5485-88a3-20f2394ed77f` (outside this book)
+- Wirtschaftspolitische Medienbeiträge beurteilen — `bd9ec397-86ee-58ec-8327-7e1f28550026` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Digitale Entwicklungen, Zukunft und Beteiligung selbstständig bearbeiten — `9341cdc0-f45a-5e2b-ae90-55950bab91d9` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:ab892a204b0e25499f9c6e7f1617ae69e590b6e85ae46c1d8cf99ce0bbf443fb`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Aktuelle wirtschaftliche und rechtliche Entwicklungen werden an datierten bereitgestellten Materialien, Wirkungsmechanismen und überprüfbaren Kriterien beurteilt. Digitalisierung verändert Informations-, Kosten- und Rechtsbedingungen, garantiert aber weder Nutzen noch Schaden; geltender Rechtsstand und normatives Urteil bleiben getrennt.
+
+Understanding (EN): Current economic and legal developments are evaluated through dated supplied materials,causal mechanisms and explicit criteria. Digitalisation changes information,cost and legal conditions but guarantees neither benefit nor harm; applicable law and normative judgement remain distinct.
+
+Observable performance (DE): Die Person analysiert einen datierten Digitalisierungsfall wirtschaftlich und rechtlich, begründet ein ergebnisoffenes Urteil unter genannten Kriterien und benennt Daten-/Normgrenzen; ein zweiter Fall verlangt veränderte Mechanismen statt denselben Technikoptimismus oder dieselbe Ablehnung.
+
+Observable performance (EN): The learner analyses a dated digitalisation case economically and legally,justifies an open judgement against stated criteria and identifies data/legal limits; a second case requires changed mechanisms rather than repeating technological optimism or rejection.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `development`: Automatisierte Leistung gegenüber digitaler Informationsplattform. / An automated service versus a digital information platform.
+- `norm-and-data`: Datierter Normauszug, Verteilungsfolgen und fehlender Wirkungsnachweis. / Dated legal material,distribution effects and missing causal proof.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `automated-service-dated-fiction`
+
+Task demand (DE): Ein zum 8.Oktober2026 datiertes fiktives Unterrichtsdossier beschreibt einen digitalen Auskunftsdienst: Wartezeit fällt im Probelauf von zehn auf sechs Minuten, 8 von 100 Antworten bleiben falsch; die vertragliche Qualitätspflicht und ein menschlicher Beschwerdeweg sind im Material ausdrücklich festgelegt. Analysiere Kosten-/Qualitätswirkungen und bewerte, ob Ausweitung gerechtfertigt ist. Die Zahlen sind keine realen KI-Leistungsdaten.
+
+Task demand (EN): A fictional classroom dossier dated8October2026 describes a digital information service: waiting time falls from ten to six minutes in a trial,8 of100 answers remain incorrect; a contractual quality obligation and a human complaint channel are expressly supplied. Analyse cost/quality effects and assess whether expansion is justified. The figures are not real AI performance data.
+
+Expected performance (DE): Die Person berechnet die Zeitänderung von vier Minuten beziehungsweise40Prozent und bewertet Fehlerfolgen, Zugang, Kosten und Verantwortlichkeit. Sie verbindet vorgegebenen Rechtsmaßstab mit wirtschaftlicher Analyse und fordert Vergleichs-/Folgedaten, statt aus einem Probelauf rechtliche Zulässigkeit, allgemeine KI-Überlegenheit oder alle realen Rechtsanforderungen abzuleiten.
+
+Expected performance (EN): The learner calculates a four-minute or40% time reduction and evaluates error consequences,access,costs and accountability. They connect the supplied legal criterion to economic analysis and request comparative/follow-up evidence rather than inferring legality,universal AI superiority or complete real-world legal compliance from one trial.
+
+Understanding focus (DE): Datierte wirtschafts-/rechtliche Abwägung eines konkreten digitalen Dienstes.
+
+Understanding focus (EN): A dated economic/legal assessment of a specific digital service.
+
+#### Application case `platform-price-transparency-tradeoff`
+
+Task demand (DE): Ein zweites fiktives datiertes Dossier beschreibt einen Preisvergleichsdienst: Verbraucher finden niedrigere Preise leichter, Anbieter bezahlen für die obersten sichtbaren Positionen; bezahlte Plätze sind nach der im Material bereitgestellten Regel eindeutig zu kennzeichnen. Die Kennzeichnung fehlt im Entwurf. Analysiere ökonomische Anreize, Informationsqualität und die konkrete rechtliche Vorgabe und bewerte zwei Gestaltungsalternativen.
+
+Task demand (EN): A second fictional dated dossier describes a price-comparison platform: consumers find lower prices more easily,but suppliers pay for the highest visible positions; the supplied rule requires paid placements to be clearly labelled. The draft lacks that label. Analyse economic incentives,information quality and the specific legal requirement and evaluate two design alternatives.
+
+Expected performance (DE): Die Person erklärt Suchkostensenkung und mögliche Verzerrung bezahlter Rankings, unterscheidet regelkonforme Kennzeichnung von einem unabhängigen Sortierverfahren und wägt Kosten, Verständlichkeit und Anbieterverhalten ab. Das Urteil ist kriterienspezifisch und behauptet keine allgemeine aktuelle Rechtsfreigabe des Dienstes.
+
+Expected performance (EN): The learner explains lower search costs and potential paid-ranking bias,distinguishes compliant labelling from independent sorting and weighs costs,clarity and supplier behaviour. The judgement is criterion-specific and claims no general current legal approval for the platform.
+
+Understanding focus (DE): Institutionelle Informations-/Anreizwirkung digitaler Gestaltung fachlich beurteilen.
+
+Understanding focus (EN): Assess institutional information/incentive effects of digital design.
+
+## Page 7: Zukunftsszenarien und Gestaltungsoptionen beurteilen
+
+- Full learning-goal ID: `7727b988-e62c-5ebf-8e2f-0c719b13881c`
+- Goal fingerprint: `sha256:856f58e04721d79e392f875648510d34c8938f6832a30a68a5ff16ccc9c96191`
+- Page fingerprint: `sha256:b996ad5a855bffecccaa93387cd87a2015732e36528a00989d0d5555dd5fea29`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann Zukunftsszenarien und Gestaltungsoptionen entwickeln und vor dem Hintergrund ihrer Voraussetzungen und Rahmenbedingungen beurteilen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/7727b988-e62c-5ebf-8e2f-0c719b13881c/7727b988-e62c-5ebf-8e2f-0c719b13881c.png
+
+- original digest: `sha256:9db09fe1339640dd3a80a9383c2a2342e19fa49282069e716240fc120f014279`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- Aktuelle wirtschaftliche und rechtliche Entwicklungen bewerten — `7d399b4d-d057-5284-8e2c-6778e023307d` (page 6)
+
+### Direct reverse prerequisites
+
+- Ökonomische Zukunft verantwortungsbewusst mitgestalten — `fd913fec-e64a-5a1a-88f6-724d788ed951` (page 8)
+
+### Prerequisites outside this book
+
+- None
+
+### Direct reverse prerequisites outside this book
+
+- Digitale Entwicklungen, Zukunft und Beteiligung selbstständig bearbeiten — `9341cdc0-f45a-5e2b-ae90-55950bab91d9` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:2822e7ea0ac9181f84a26a60dfe786c5e3414c0f9322ee4fb3fc9b03a5ba9a0a`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Szenarien sind bedingte, intern nachvollziehbare Zukunftsbilder und keine Prognosen mit garantierter Wahrscheinlichkeit. Gestaltungsoptionen werden anhand von Annahmen, Ressourcen, Zielkonflikten und Reaktionsmöglichkeiten beurteilt; ein robuster Schritt kann unter mehreren Zukunftsbedingungen nützen.
+
+Understanding (EN): Scenarios are conditional,internally coherent future pictures rather than forecasts with guaranteed probabilities. Options are assessed against assumptions,resources,trade-offs and responses;a robust step may help across several future conditions.
+
+Observable performance (DE): Die Person entwickelt mindestens zwei begründete Zukunftsszenarien aus veränderten Rahmenbedingungen und bewertet konkrete Gestaltungsoptionen mit offengelegten Voraussetzungen, Risiken und einem möglichen Anpassungssignal.
+
+Observable performance (EN): The learner develops at least two reasoned scenarios from changed conditions and assesses concrete options with explicit assumptions,risks and an adaptation signal.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `uncertain-driver`: Nachfrage und Energiepreise gegenüber Qualifikations-/Technologieentwicklung. / Demand and energy prices versus skills/technology changes.
+- `option-robustness`: Reversible Maßnahme und Schwellenbedingung statt sicherer Prognose. / A reversible option and threshold condition rather than a certain forecast.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `repair-business-future-scenarios`
+
+Task demand (DE): Ein fiktiver Reparaturbetrieb plant für drei Jahre. Offene Treiber sind Nachfrage nach Reparaturen und Energiekosten; sicher sind weder Wachstum noch Kostensenkung. Entwickle ein Szenario mit hoher Nachfrage/niedrigen Energiekosten und eines mit schwacher Nachfrage/hohen Energiekosten. Beurteile eine sofortige große Werkstatt, eine schrittweise Erweiterung und Weiterbildung unter einem gegebenen knappen Budget.
+
+Task demand (EN): A fictional repair business plans for three years. Uncertain drivers are repair demand and energy costs; neither growth nor cost reduction is assured. Develop high-demand/low-energy-cost and weak-demand/high-energy-cost scenarios. Assess an immediate large workshop,a gradual expansion and training under a supplied limited budget.
+
+Expected performance (DE): Die Person verknüpft Annahmen mit Kapazität, Kosten und Liquidität, legt Zielkonflikte offen und beurteilt Optionen bedingt. Schrittweises Vorgehen kann Anpassungsfähigkeit bieten; das wird mit Kosten und möglichen Engpässen abgewogen. Ein Indikator wie tatsächlich stabile Aufträge löst eine erneute Entscheidung aus, keine Gewissheit über die Zukunft.
+
+Expected performance (EN): The learner links assumptions to capacity,costs and liquidity,states trade-offs and assesses options conditionally. Gradual action may provide flexibility,but its costs and capacity bottlenecks are weighed. A signal such as sustained actual orders prompts a new decision rather than creating certainty about the future.
+
+Understanding focus (DE): Bedingte Szenarien und überprüfbare Optionen im Unternehmensrahmen.
+
+Understanding focus (EN): Conditional scenarios and assessable business options.
+
+#### Application case `local-skills-transition-scenarios`
+
+Task demand (DE): Eine fiktive Region diskutiert Digitalisierung in zehn Jahren. Der Qualifizierungszugang könnte breit oder ungleich sein; neue Tätigkeiten könnten schnell oder langsam entstehen. Entwickle zwei konsistente Zukunftsbilder und beurteile mobile Weiterbildung, Infrastruktur und Übergangsunterstützung nach Teilhabe, Kosten und Umsetzungskapazität. Vorhersagewahrscheinlichkeiten sind nicht vorgegeben.
+
+Task demand (EN): A fictional region discusses digitalisation ten years ahead. Access to training may be broad or unequal; new activities may emerge rapidly or slowly. Develop two consistent future pictures and assess mobile training,infrastructure and transition support using participation,cost and implementation capacity. No forecast probabilities are supplied.
+
+Expected performance (DE): Die Person erklärt für jedes Szenario zusammenhängende Beschäftigungs-/Verteilungsfolgen und die nötigen Bedingungen der Optionen. Sie kennzeichnet Unsicherheit, wählt begründete Kriterien und prüft robuste sowie szenariospezifische Schritte; sie setzt Technologieeinsatz nicht mit sicherem Beschäftigungsverlust oder sicherem Wohlstandszuwachs gleich.
+
+Expected performance (EN): The learner explains coherent employment/distribution effects and conditions for the options in each scenario. They identify uncertainty,select justified criteria and examine robust and scenario-specific steps; technology use is equated with neither certain job loss nor certain prosperity gains.
+
+Understanding focus (DE): Szenariotechnik mit Verteilung, Ressourcen und Unsicherheit.
+
+Understanding focus (EN): Scenario reasoning with distribution,resources and uncertainty.
+
+## Page 8: Ökonomische Zukunft verantwortungsbewusst mitgestalten
+
+- Full learning-goal ID: `fd913fec-e64a-5a1a-88f6-724d788ed951`
+- Goal fingerprint: `sha256:6c688eb221110ad121e580575b45b87a04741e17b3b65a5ec85b42f4bec07a74`
+- Page fingerprint: `sha256:44a7020076895b00dfbc6d80143fd0664013ba271fa2cb8d03c5acf0f1d3e273`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann als mündige Staatsbürgerin oder mündiger Staatsbürger an der Gestaltung der ökonomischen Zukunft verantwortungsbewusst mitwirken.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/fd913fec-e64a-5a1a-88f6-724d788ed951/fd913fec-e64a-5a1a-88f6-724d788ed951.png
+
+- original digest: `sha256:9f92fec8442d44cedb954ac4467020e50c00dee47aa46a6d43a53923adc88c5b`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- Zukunftsszenarien und Gestaltungsoptionen beurteilen — `7727b988-e62c-5ebf-8e2f-0c719b13881c` (page 7)
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- None
+
+### Direct reverse prerequisites outside this book
+
+- Digitale Entwicklungen, Zukunft und Beteiligung selbstständig bearbeiten — `9341cdc0-f45a-5e2b-ae90-55950bab91d9` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:ba5f8e3b0b3db6b40170c2d9a385a210ab0fce54556a97a4562dc048dc63aa7d`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `procedure`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Verantwortliche ökonomische Mitgestaltung verbindet informierte Interessen-/Folgenabwägung mit einer sachlichen, transparenten und rechtlich angemessenen Beteiligungshandlung. Eine politische Meinungsübereinstimmung, öffentlicher Post oder reale externe Kontaktaufnahme ist kein Kompetenzkriterium; die begründete Mitwirkung kann in einer Unterrichtssimulation erkennbar werden.
+
+Understanding (EN): Responsible economic participation connects informed consideration of interests and consequences to factual,transparent and legally appropriate participation. Political agreement,a public post or real external contact is not a competence criterion;reasoned contribution can be demonstrated in a classroom simulation.
+
+Observable performance (DE): Die Person erarbeitet auf bereitgestellter Evidenz einen konkreten Mitgestaltungsvorschlag, berücksichtigt betroffene Interessen und Grenzen, führt eine sachliche Beteiligungshandlung im geschützten Unterrichtsrahmen aus und reflektiert Gegenargumente sowie Verantwortung.
+
+Observable performance (EN): Using supplied evidence,the learner prepares a specific participation proposal,considers affected interests and limits,carries out a factual participation action in a protected classroom setting and reflects on counterarguments and responsibility.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `participation-setting`: Lokale Ressourcenentscheidung gegenüber schulischem Beschaffungsprozess. / A local resource decision versus school purchasing.
+- `responsibility`: Überprüfbare Begründung und fairer Umgang mit Gegenpositionen statt Gesinnungsnachweis. / Verifiable reasoning and fair treatment of opposing positions rather than a required viewpoint.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `simulated-budget-hearing`
+
+Task demand (DE): In einer ausdrücklich fiktiven Anhörung stehen 30.000 Euro für bessere Busanbindung oder einen Reparaturtreff zur Verfügung. Die gegebenen Materialien nennen unterschiedliche Nutzergruppen, laufende Kosten und offene Wirkungsdaten. Verfasse und präsentiere im Unterricht einen begründeten Beteiligungsbeitrag mit einer konkreten Option, einem Gegeneinwand und einer transparenten Prüfbedingung. Es findet keine Kontaktaufnahme mit einer Kommune statt.
+
+Task demand (EN): In an explicitly fictional hearing,EUR30,000 is available for better bus links or a repair meeting space. Supplied materials describe different users,recurring costs and uncertain effects. Write and present a reasoned classroom participation contribution including a concrete option,a counterargument and a transparent condition for evaluation. No municipality is contacted.
+
+Expected performance (DE): Die Person benennt betroffene Interessen, erklärt ihre Kriterien und begründet die Mittelverwendung mit den bereitgestellten Daten. Sie führt den Beitrag tatsächlich in der Simulation aus, berücksichtigt ein Gegenargument fair und unterscheidet Vorschlag, demokratische Entscheidung und unsicheren Erfolg. Keine bestimmte politische Wahl ist Voraussetzung.
+
+Expected performance (EN): The learner identifies affected interests,explains criteria and justifies the allocation from supplied data. They actually perform the simulated contribution,treat a counterargument fairly and distinguish proposal,democratic decision and uncertain success. No particular political choice is required.
+
+Understanding focus (DE): Informierte, ausgeführte Beteiligung mit Interessenausgleich und Evidenzgrenze.
+
+Understanding focus (EN): Informed,performed participation with interest balancing and evidence limits.
+
+#### Application case `school-purchasing-deliberation`
+
+Task demand (DE): Ein zweiter fiktiver Klassenrat vergleicht zwei Schulmaterialangebote: A kostet 400 Euro und hat dokumentierte Reparierbarkeit; B kostet 320 Euro, zur Haltbarkeit fehlen Daten. Im Unterricht stehen sachliche Beiträge und ein Prüfauftrag an ein simuliertes Beschaffungsteam zur Wahl. Erarbeite und führe einen begründeten Beitrag durch; behandle abweichende Kriterien respektvoll und überarbeite den Vorschlag bei einer neuen Haltbarkeitsinformation.
+
+Task demand (EN): A second fictional class council compares two school-material offers:A costsEUR400 and has documented repairability;B costsEUR320 and lacks durability data. The classroom exercise permits factual contributions and an investigation request to a simulated purchasing team. Prepare and perform a reasoned contribution,treat differing criteria respectfully and revise the proposal after new durability information.
+
+Expected performance (DE): Die Person verbindet Budget, Nutzung und Nachhaltigkeitsbedingungen, kennzeichnet fehlende Daten und führt einen nachvollziehbaren Beitrag oder Prüfauftrag in der Simulation aus. Sie reagiert begründet auf neue Evidenz und respektiert andere Prioritäten; sie behauptet weder reale öffentliche Beteiligung noch garantierte ökologische Überlegenheit von A.
+
+Expected performance (EN): The learner connects budget,use and sustainability conditions,identifies missing data and performs a transparent contribution or investigation request in the simulation. They respond rationally to new evidence and respect other priorities,claiming neither real public participation nor guaranteed environmental superiority of A.
+
+Understanding focus (DE): Verantwortliche Mitgestaltung durch begründetes Handeln und Evidenzreaktion.
+
+Understanding focus (EN): Responsible participation through reasoned action and response to evidence.
+
+## Page 9: Institutionenökonomische Perspektive auf die Soziale Marktwirtschaft anwenden
+
+- Full learning-goal ID: `c7b03538-25a2-510b-8fd4-a81bcc3de406`
+- Goal fingerprint: `sha256:0d87f441deb9b299b107071356e9a56373e47eff661d1f9910d575b8ab3537c1`
+- Page fingerprint: `sha256:afdd7694443d6a573d9c2d42d056fbe5c1bda98b649a6cb42872fa587a1f4e75`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann Regelungen der Sozialen Marktwirtschaft aus institutionenökonomischer Sicht analysieren und bekannte wirtschaftliche Zusammenhänge sowie rechtliche Normen damit vertieft einordnen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/c7b03538-25a2-510b-8fd4-a81bcc3de406/c7b03538-25a2-510b-8fd4-a81bcc3de406.png
+
+- original digest: `sha256:fe16a7e2281e65ef0e0c7a2ae5b3ad7d0938855a20ad45c04d103420eba597cc`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Soziale Marktwirtschaft einordnen — `1da809f7-ef85-5a2d-babf-b7639e605653` (outside this book)
+- Rechtliche Rahmenbedingungen nach Rechtsfunktionen analysieren — `bb7f2a2a-95c3-5375-8323-51a808e945e6` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Spieltheoretische Grundmodelle auf Entscheidungssituationen anwenden — `becf0989-ee9f-5c8e-8173-5b8246e7944a` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:a22a73009c3c91f1c9602cc2756e649270c6b411caa5c27a1bbef4bc010dda52`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Institutionen sind formelle oder informelle Regeln, die Erwartungen, Anreize, Informations- und Transaktionskosten beeinflussen. Institutionenökonomische Analyse erklärt eine Regel über das gelöste Koordinations-/Informationsproblem und ihre Nebenwirkungen, statt bloß die beteiligte Organisation zu benennen oder vollständige Rationalität vorauszusetzen.
+
+Understanding (EN): Institutions are formal or informal rules affecting expectations,incentives,information and transaction costs. Institutional analysis explains a rule through the coordination/information problem addressed and its side effects,instead of naming the organisation or assuming complete rationality.
+
+Observable performance (DE): Die Person analysiert eine wirtschaftliche Regel und eine bekannte Rechtsnorm anhand von Informationsasymmetrie, Anreizen und Transaktionskosten, erklärt deren Funktion in der Sozialen Marktwirtschaft und begrenzt die Wirkung mit fallbezogenen Bedingungen.
+
+Observable performance (EN): The learner analyses an economic rule and a familiar legal provision through information asymmetry,incentives and transaction costs,explains their social-market-economy function and limits effects using case conditions.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `information-problem`: Qualität vor Vertragsabschluss gegenüber Verhalten nach Vertragsschluss. / Quality before agreement versus behaviour after agreement.
+- `institution-form`: Formelle Gewährleistungsregel gegenüber nachvollziehbarer informeller Regel. / A formal defect-remedy rule versus a transparent informal rule.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `used-product-information-rule`
+
+Task demand (DE): In einem fiktiven Gebrauchtwarenmarkt kennen Verkäufer die Produktqualität besser als Käufer; vor dem Kauf ist eine Prüfung teuer. Analysiere eine bereitgestellte standardisierte Zustandsangabe und die datierte Nacherfüllungsregel aus §439 BGB als Institutionen. Erläutere Informations-/Anreizwirkungen und eine Grenze, ohne vollständigen Betrugsschutz zu behaupten.
+
+Task demand (EN): In a fictional used-goods market,sellers know quality better than buyers and pre-purchase inspection is costly. Analyse a supplied standardised condition disclosure and the dated defect-remedy rule in BGB section439 as institutions. Explain information/incentive effects and a limitation without claiming complete fraud prevention.
+
+Expected performance (DE): Die Person erklärt Qualitätsunsicherheit und Prüf-/Durchsetzungskosten, verbindet Zustandsangabe mit besserer Vergleichbarkeit und Nacherfüllungsregel mit Verantwortungs-/Qualitätsanreizen. Falschangaben, Nachweisprobleme und Durchsetzung bleiben mögliche Grenzen. Das Geschäft wird nicht allein wegen eines Formulars vollkommen informiert oder risikofrei.
+
+Expected performance (EN): The learner explains quality uncertainty and inspection/enforcement costs,connects disclosure to comparability and remedy rules to responsibility/quality incentives. False statements,proof problems and enforcement remain limits. A form alone does not make the transaction fully informed or risk-free.
+
+Understanding focus (DE): Bekannte wirtschaftliche und rechtliche Zusammenhänge über institutionelle Mechanismen vertiefen.
+
+Understanding focus (EN): Deepen familiar economic and legal relationships through institutional mechanisms.
+
+#### Application case `team-agent-rule-and-monitoring`
+
+Task demand (DE): Ein fiktiver Betrieb überträgt Materialbestellung an eine Fachkraft, deren Sorgfalt nach Vertragsschluss schwer beobachtbar ist. Vergleiche reine Stückzahlvergütung mit einer dokumentierten Qualitäts-/Vieraugenregel und einer informellen verlässlichen Rückmeldevereinbarung. Analysiere Anreize, Informationskosten und mögliche Nebenwirkungen.
+
+Task demand (EN): A fictional firm delegates material ordering to a worker whose care is hard to observe after contracting. Compare pure quantity-based pay with a documented quality/two-person rule and an informal reliable-feedback agreement. Analyse incentives,information costs and possible side effects.
+
+Expected performance (DE): Die Person erklärt das Prinzipal-Agent-/Moral-Hazard-Problem nach Vertragsschluss, zeigt wie Qualitätsprüfung und Rückmeldung Verhalten beeinflussen können und berücksichtigt Kontrollkosten, Verzögerungen und verengte Messkriterien. Die Institution ist die Regel, nicht bloß die Personalabteilung; Vertrauen wird als bedingter Mechanismus statt als garantierte Lösung behandelt.
+
+Expected performance (EN): The learner explains the post-contract principal-agent/moral-hazard problem,shows how quality checks and feedback may change behaviour and considers monitoring costs,delays and narrow metrics. The institution is the rule,not simply the HR department;trust is a conditional mechanism rather than a guaranteed solution.
+
+Understanding focus (DE): Verhaltensanreize und Transaktionskosten formeller/informeller Regeln.
+
+Understanding focus (EN): Behavioural incentives and transaction costs of formal/informal rules.
+
+## Page 10: Handlungsstrategien spieltheoretisch entwickeln
+
+- Full learning-goal ID: `7d4d7a90-a1d0-5818-8d55-a0c3e995957b`
+- Goal fingerprint: `sha256:7cf70a19333042fd521642a8572b5ffe7465ad95bea8b7fd2101461e8005aa8c`
+- Page fingerprint: `sha256:f755c43e9ddc6ef037b97eb2ae45008823dfc7d2cda891fb51da9bc503d2bde9`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann vor dem Hintergrund spieltheoretischer Überlegungen Strategien für eigenes und kollektives Handeln entwickeln.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/7d4d7a90-a1d0-5818-8d55-a0c3e995957b/7d4d7a90-a1d0-5818-8d55-a0c3e995957b.png
+
+- original digest: `sha256:3d09d7e04b18205ff5cf993844229f84e0540859b93b377a7e47a54374a2952d`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Spieltheoretische Grundmodelle auf Entscheidungssituationen anwenden — `becf0989-ee9f-5c8e-8173-5b8246e7944a` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Digitale Entwicklungen, Zukunft und Beteiligung selbstständig bearbeiten — `9341cdc0-f45a-5e2b-ae90-55950bab91d9` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:db1e7829b6bba5132f0a92c9d593f5743d252d3f15206b18eab42b7cdd914e2b`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `modeling`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Eine spieltheoretisch begründete Handlungsstrategie hängt von Antworten anderer, Informationslage, Wiederholung und glaubwürdigen Regeln ab. Individuell günstige Schritte und kollektiv vorteilhafte Ergebnisse sind nicht identisch; bloße Kooperationsappelle oder Täuschungsempfehlungen ersetzen keine transparente Anreizanalyse.
+
+Understanding (EN): A game-theoretic strategy depends on others’responses,information,repetition and credible rules. Individually attractive actions and collectively beneficial outcomes differ;appeals to cooperate or advice to deceive do not replace transparent incentive analysis.
+
+Observable performance (DE): Die Person entwickelt aus konkreten gegebenen Auszahlungen einen begründeten individuellen und kollektiven Handlungsplan, prüft Antwortanreize und Umsetzungsbedingungen und passt die Strategie an einen frischen anders strukturierten Fall an.
+
+Observable performance (EN): From concrete supplied payoffs,the learner develops justified individual and collective plans,checks response incentives and implementation conditions and adapts the strategy to a fresh differently structured situation.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `interaction`: Einmalige Dilemmaentscheidung gegenüber wiederholter Zusammenarbeit. / A one-off dilemma versus repeated interaction.
+- `institution-option`: Glaubwürdige Regel, Koordination und Kosten statt pauschaler Kooperation. / A credible rule,coordination and costs instead of blanket cooperation.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `repeated-shared-task-plan`
+
+Task demand (DE): Für zwei fiktive Arbeitsgruppen gilt pro Runde CC=(3,3),CD=(0,5),DC=(5,0),DD=(1,1). Sie treffen sich wiederholt, Beiträge können zuverlässig beobachtet werden. Entwickle eine nachvollziehbare Strategie für eigenes Handeln und eine gemeinsame Regel für das Team; prüfe, wie ein glaubwürdiger Reaktionsplan, Unsicherheit über Wiederholung und Kontrollkosten die Begründung ändern.
+
+Task demand (EN): For two fictional work groups,the per-round payoffs are CC=(3,3),CD=(0,5),DC=(5,0),DD=(1,1). They interact repeatedly and contributions are reliably observable. Develop a transparent individual strategy and shared team rule;examine how credible responses,uncertain repetition and monitoring costs affect the reasoning.
+
+Expected performance (DE): Die Person erkennt den einmaligen Defektionsanreiz und begründet, wie zukünftige Kooperationsvorteile und tatsächlich glaubwürdige Reaktionen ihn möglicherweise verändern. Sie benennt Wiederholungs-/Beobachtungsbedingungen und Kontrollkosten, entwickelt eine verhältnismäßige gemeinsame Vereinbarung und behauptet weder garantierte Kooperation noch eine ohne Diskont-/Horizontdaten berechnete Schwelle.
+
+Expected performance (EN): The learner identifies the one-off defection incentive and explains how future cooperation gains and genuinely credible responses may change it. They specify repetition/observation conditions and monitoring costs,develop a proportionate agreement and claim neither guaranteed cooperation nor a calculated threshold without discount/horizon data.
+
+Understanding focus (DE): Individueller und kollektiver Handlungsplan aus bedingten Wiederholungsanreizen.
+
+Understanding focus (EN): Individual and collective plans based on conditional repeated-game incentives.
+
+#### Application case `coordination-with-conflicting-preferences`
+
+Task demand (DE): Zwei fiktive Projektteams wollen ein gemeinsames Format wählen: AA=(4,3),AB=(0,0),BA=(0,0),BB=(3,4). Entwickle eine eigene Antwortstrategie und ein gemeinsames Verfahren, das die unterschiedlichen Formatpräferenzen und den Nutzen von Abstimmung berücksichtigt; prüfe wechselnde Zuständigkeit und transparente Absprachen.
+
+Task demand (EN): Two fictional project teams choose a shared format:AA=(4,3),AB=(0,0),BA=(0,0),BB=(3,4). Develop an individual response and a common procedure respecting different format preferences and coordination benefits;examine rotating responsibility and transparent agreements.
+
+Expected performance (DE): Die Person bestimmt beste Antworten als Abstimmung auf die andere Wahl und erkennt zwei reine Gleichgewichte. Sie entwickelt ein tatsächlich auf Präferenzkonflikt zugeschnittenes Verfahren, begründet individuelle Mitwirkung und kollektiven Koordinationsgewinn und prüft Glaubwürdigkeit sowie Gleichbehandlung; die Dilemma-Defektionsstrategie wird nicht unverändert übertragen.
+
+Expected performance (EN): The learner determines best responses as matching the other choice and recognises two pure equilibria. They design a procedure suited to the preference conflict,justify individual participation and collective coordination and examine credibility and equal treatment;the dilemma defection strategy is not transferred unchanged.
+
+Understanding focus (DE): Neue Strategie für einen Koordinations-/Verteilungskonflikt statt identischem Dilemma.
+
+Understanding focus (EN): A fresh strategy for a coordination/distribution conflict instead of the same dilemma.
+
+## Page 11: Gemeinwohlökonomie und Soziale Marktwirtschaft vergleichen
+
+- Full learning-goal ID: `f7c051f4-ebb0-5d74-81b1-c1cdb562414f`
+- Goal fingerprint: `sha256:41fb4ac6e65356c3c4568394d899cf064a86be91adc964190fa13956d39b137d`
+- Page fingerprint: `sha256:8b5e08399df948157c76c5656c69596824a0fd0c365b8083dcfa874c4fb6d645`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann eine bereitgestellte Gemeinwohlökonomie-Konzeption mit der Sozialen Marktwirtschaft anhand von Zielsetzung, Eigentum und Koordination vergleichen und Aussagen jeweils an die beschriebenen Regeln binden.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/f7c051f4-ebb0-5d74-81b1-c1cdb562414f/f7c051f4-ebb0-5d74-81b1-c1cdb562414f.png
+
+- original digest: `sha256:117149f2759bf13d7fa4a8c434a9f71839c5b2ef19a4e32ec62b94e886684ce3`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Soziale Marktwirtschaft einordnen — `1da809f7-ef85-5a2d-babf-b7639e605653` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Profil: Wirtschaftsordnungsmodelle und kooperative Versuchsdaten kritisch vergleichen — `c659edea-7786-59b3-90f3-9c9983388c83` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:67d3cb992fb7169afcae9f5ff47e1f64d261768db70b28167bda95437c3a1412`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Gemeinwohlökonomie bezeichnet eine zu prüfende Konzeption; deren Befürworter betonen soziale/ökologische Kriterien. Das bedeutet nicht automatisch Zentralplanung oder Abschaffung privaten Eigentums. Der Vergleich muss die tatsächlich bereitgestellte Variante von bestehenden Regeln Sozialer Marktwirtschaft und von freiwilligen Unternehmensberichten unterscheiden.
+
+Understanding (EN): Economy for the Common Good is a proposal to examine; its proponents emphasise social/environmental criteria. This does not automatically mean central planning or abolition of private ownership. A comparison must distinguish the supplied version from existing social-market rules and voluntary company reports.
+
+Observable performance (DE): Die Person erstellt einen begründeten Vergleich nach drei Kriterien, kennzeichnet Befürworteraussage und hypothetische Modellregel und unterscheidet Unternehmensinstrument und gesamtwirtschaftlichen Ordnungsrahmen.
+
+Observable performance (EN): The learner makes a reasoned comparison across three criteria, labels proponents’ claims and hypothetical model rules and distinguishes a company-level tool from an economy-wide framework.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `rule-scope`: Modellvorschlag für den Ordnungsrahmen gegenüber freiwilligem Unternehmensbericht. / An economy-wide framework proposal versus a voluntary company report.
+- `comparison-criteria`: Ziele, Eigentum und marktliche Koordination. / Objectives, property and market coordination.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `supplied-common-good-variant`
+
+Task demand (DE): Vergleiche zwei bereitgestellte didaktische Modellbeschreibungen. Soziale Marktwirtschaft: private Unternehmen, Preis-/Wettbewerbskoordination, staatlicher Ordnungsrahmen und sozialer Ausgleich. Hypothetische GWÖ-Variante: private Unternehmen und Marktpreise bleiben; transparente soziale/ökologische Bilanzkriterien sollen zusätzlich staatliche Beschaffungsanreize beeinflussen. Diese Variante ist ein Unterrichtsvorschlag, keine Aussage über geltende allgemeine Gesetzespflicht. Vergleiche Ziele, Eigentum und Koordination.
+
+Task demand (EN): Compare two supplied teaching-model descriptions. Social market economy: private firms, price/competition coordination, a state framework and social support. Hypothetical common-good variant: private firms and market prices remain; transparent social/environmental reporting criteria are proposed to influence procurement incentives. This is a classroom proposal, not a claim of a general current legal duty. Compare objectives, property and coordination.
+
+Expected performance (DE): Beide Beschreibungen erhalten Privateigentum und Marktkoordination; die Variante ergänzt konkret beschriebene Anreize und Gewichtung sozialer/ökologischer Zielkriterien. GWÖ wird nicht wegen ihres Namens zur Zentralplanung gemacht; auch die Soziale Marktwirtschaft hat soziale Ziele. Wirkung hängt von Kriterien, Umsetzung und Anreizen ab.
+
+Expected performance (EN): Both descriptions retain private ownership and market coordination; the variant adds specified incentives and emphasis on social/environmental criteria. The label does not turn it into central planning, and the social market economy also has social objectives. Effects depend on criteria, implementation and incentives.
+
+Understanding focus (DE): Drei Ordnungsdimensionen anhand tatsächlicher Regeln statt Etiketten vergleichen.
+
+Understanding focus (EN): Compare three dimensions using actual described rules rather than labels.
+
+#### Application case `voluntary-report-not-new-national-order`
+
+Task demand (DE): Ein zweites fiktives Unternehmen veröffentlicht freiwillig eine Gemeinwohlbilanz zusätzlich zur Finanzrechnung. Eigentum, Wettbewerb, gesetzliche Steuern und Sozialregeln bleiben unverändert. Eine Schlagzeile behauptet, dadurch sei das Land bereits vollständig in eine neue Wirtschaftsordnung überführt. Prüfe anhand derselben Vergleichskriterien, welche Aussage das Material wirklich trägt.
+
+Task demand (EN): A second fictional company voluntarily publishes a common-good report alongside financial accounts. Ownership, competition, statutory taxes and social rules remain unchanged. A headline claims this has transformed the whole country into a new economic order. Use the same comparison criteria to assess what the material supports.
+
+Expected performance (DE): Das Material belegt ein zusätzliches betriebliches Bewertungs-/Transparenzinstrument und eine Zielgewichtung. Es belegt keine Änderung des nationalen Eigentums- oder Koordinationssystems und keine allgemeine GWÖ-Rechtsordnung. Instrument und Ordnungsrahmen werden getrennt, ohne das Instrument pauschal wirkungslos zu nennen.
+
+Expected performance (EN): The material establishes an additional company evaluation/transparency tool and emphasis on objectives. It establishes neither national property/coordination changes nor a general common-good legal order. The tool is distinguished from the framework without declaring it universally ineffective.
+
+Understanding focus (DE): Unternehmensebene und Wirtschaftsordnung im frischen Grenzfall trennen.
+
+Understanding focus (EN): Separate a company-level tool from an economic order in a fresh boundary case.
+
+## Page 12: Handelsmuster mit der Faktorproportionentheorie erklären
+
+- Full learning-goal ID: `575c08d4-204f-5f78-8f2f-1994db6f19ee`
+- Goal fingerprint: `sha256:ae2e72b510964bf47b4c152b1d887a1d2c0e011b750acfe50679d5ccc1654fba`
+- Page fingerprint: `sha256:d04f5f5cf7f693aa7447003f0de2519391838f530311e9795cd9688240e69707`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann anhand vorgegebener relativer Faktorausstattungen und Güterintensitäten ein Handelsmuster mit der Faktorproportionentheorie erklären und die Aussage an deren Modellannahmen binden.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/575c08d4-204f-5f78-8f2f-1994db6f19ee/575c08d4-204f-5f78-8f2f-1994db6f19ee.png
+
+- original digest: `sha256:7f567c2d220cada958c145dcbec027b3f4d9b6d324347568de80edde44e26fe5`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Profil: Handelsmuster und statische Rohstoffreichweiten modellgebunden prüfen — `a01084fe-43a3-5327-8887-c8b07777f89f` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:09096f72676f6c458dedba240c6347daada6f72a0d35157a84936442d99eb964`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `modeling`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Relative Ausstattung bedeutet das Verhältnis von Kapital zu Arbeit, nicht die absolute Kapitalmenge. Unter den angegebenen Heckscher-Ohlin-Bedingungen exportiert das relativ kapitalreiche Land das relativ kapitalintensive Gut. Unterschiedliche Technologien oder verletzte Annahmen erlauben nicht dieselbe sichere Schlussfolgerung.
+
+Understanding (EN): Relative endowment means the ratio of capital to labour, not the absolute amount of capital. Under the stated Heckscher-Ohlin conditions, the relatively capital-abundant country exports the relatively capital-intensive good. Different technologies or violated assumptions do not justify the same definite conclusion.
+
+Observable performance (DE): Die Person berechnet oder vergleicht Kapital-Arbeits-Verhältnisse, verbindet relative Ausstattung und Güterintensität zur bedingten Modellvorhersage und prüft einen veränderten Annahmenfall.
+
+Observable performance (EN): The learner calculates or compares capital–labour ratios, connects relative endowment and goods’ intensities to a conditional model prediction and checks a changed-assumption case.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `relative-vs-absolute`: Kapital-Arbeits-Verhältnis trotz anderer absoluter Größen. / Capital–labour ratios despite different absolute amounts.
+- `model-assumptions`: Gleiche Technologien und Intensitätsordnung gegenüber verletzt gewordener Annahme. / Common technologies and factor-intensity ordering versus a violated assumption.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `two-country-endowment`
+
+Task demand (DE): Ein vollständig vorgegebenes Zwei-Länder-Modell hat A:100Kapitaleinheiten/50Arbeitseinheiten und B:60/120. X ist bei gemeinsamen Faktorpreisen relativ kapitalintensiv, Y relativ arbeitsintensiv; die Intensitätsordnung kehrt sich nicht um. Gemeinsame Technologie, Wettbewerb, gleiche homothetische Präferenzen, Handel beider Güter, Faktorenmobilität innerhalb eines Landes und Immobilität zwischen Ländern sind Annahmen. Erläutere nach der bereitgestellten Faktorproportionentheorie das bedingte Exportmuster.
+
+Task demand (EN): A fully supplied two-country model has A:100capital units/50labour units and B:60/120. X is relatively capital-intensive and Y labour-intensive at common factor prices, with no factor-intensity reversal. Common technology, competition, identical homothetic preferences, trade in both goods, domestic factor mobility and international factor immobility are assumptions. Use the supplied factor-proportions theory to explain the conditional export pattern.
+
+Expected performance (DE): A hatK/L=2,B=0,5;A ist relativ kapitalreich und exportiert unter dem Modell X,B entsprechendY. Es geht um relative Ausstattung, nicht die Größenordnung allein. Diese Vorhersage beweist kein reales unveränderliches Exportmuster aller Länder.
+
+Expected performance (EN): A hasK/L=2 and B=0.5; A is relatively capital-abundant and exportsX in the model, while B exportsY. Relative endowment rather than scale alone matters. The prediction establishes no permanent real-world trade pattern for every country.
+
+Understanding focus (DE): Relative Faktoren und Güterintensitäten zur ausdrücklich bedingten Erklärung verbinden.
+
+Understanding focus (EN): Connect relative factors and goods’ intensities in an explicitly conditional explanation.
+
+#### Application case `less-capital-more-capital-abundant`
+
+Task demand (DE): Ein neuer Modellfall hat A:100Kapital/200Arbeit und B:60Kapital/30Arbeit. Zunächst gelten dieselben Annahmen und Güterintensitäten. Prüfe die Behauptung, A müsse wegen mehr absolutem Kapital das kapitalintensive Gut exportieren. Danach setzt das Material unterschiedliche Technologien voraus, deren Faktorbedarf nicht angegeben ist; begrenze nun die Aussage.
+
+Task demand (EN): A fresh case has A:100capital/200labour and B:60capital/30labour, initially with the same assumptions and intensities. Assess the claim that A must export the capital-intensive good because it has more capital in absolute terms. Then the material introduces different technologies with unspecified factor requirements; limit the conclusion.
+
+Expected performance (DE): A hat0,5,B2: B ist trotz weniger absolutem Kapital relativ kapitalreich, daher unter Ausgangsannahmen ExportX. Mit unbekannten unterschiedlichen Technologien trägt diese einfache Ableitung nicht mehr allein; weitere Kosten-/Intensitätsdaten sind nötig.
+
+Expected performance (EN): A has0.5 and B2: B is relatively capital-abundant despite less absolute capital, so exportsX under the initial assumptions. With unspecified different technologies, that simple inference no longer suffices; additional cost/intensity information is needed.
+
+Understanding focus (DE): Echter relativer Gegenfall und neue Modellgrenze statt nur neuer Zahlen.
+
+Understanding focus (EN): A genuine relative counterexample and new model limit rather than changed numbers alone.
+
+## Page 13: Portfoliorendite und Diversifikationsgrenzen erklären
+
+- Full learning-goal ID: `7a2435f2-0ce7-5179-81a5-2ef5c313e3dd`
+- Goal fingerprint: `sha256:f6a86a1f7b48f75d82903c5000ab58ff449f4e4002db2e2f694ae01947e62a47`
+- Page fingerprint: `sha256:0f58ce8e1c0e83fc10747cc68a5045fe6cdd81dbb60bd21162afde24e7767f14`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann für vorgegebene Portfolios gewichtete Renditen berechnen und anhand unterschiedlicher gemeinsamer Kursverläufe Möglichkeiten und Grenzen der Diversifikation erklären.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/7a2435f2-0ce7-5179-81a5-2ef5c313e3dd/7a2435f2-0ce7-5179-81a5-2ef5c313e3dd.png
+
+- original digest: `sha256:e3757917ff0b2e7a870a02f74e09b892de691b310f9912ea3ea5a1f9fbdd506c`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Anlageentscheidungen und Geldwertstabilität reflektieren — `047ce369-b605-5cc6-8363-c5d288f5e938` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Profil: Gewichtete Portfoliorenditen und Diversifikationsgrenzen auswerten — `efbdb94b-e694-53d7-91a7-610e2a1ed1c2` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:75b3521be092d2bb0b3b6eec26135ad4c7150c1b18628a62c628500a8e62206d`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `modeling`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Portfoliorendite ist die mit den Anfangsanteilen gewichtete Rendite der Anlagen. Diversifikation kann einzelne Risiken abmildern, abhängig von gemeinsamen Bewegungen; bei gleichgerichteten Verlusten schützt bloße Anzahl nicht. Die gegebenen Szenarien sind keine Prognose oder Anlageempfehlung.
+
+Understanding (EN): Portfolio return is the return of each investment weighted by its initial share. Diversification may reduce individual risks depending on joint movements; merely adding investments does not protect against losses moving together. Supplied scenarios are neither forecasts nor investment recommendations.
+
+Observable performance (DE): Die Person rechnet mit vorgegebenen Gewichten, vergleicht Gesamt- und Einzelverläufe und begründet eine Diversifikationswirkung oder deren Grenze bei geänderter gemeinsamer Bewegung.
+
+Observable performance (EN): The learner calculates using supplied weights, compares portfolio and individual outcomes and explains a diversification effect or limitation when joint movements change.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `co-movement`: Gegensätzliche gegenüber gleichgerichteten Verlusten. / Offsetting movements versus losses in the same direction.
+- `risk-claim`: Modellergebnis unter Szenarien gegenüber allgemeiner Gewinn-/Sicherheitsgarantie. / Scenario results versus a general profit/safety guarantee.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `offsetting-scenarios`
+
+Task demand (DE): Ein fiktives Portfolio enthält zu Periodenbeginn je50% A undB. In Szenario1: A+20%,B−10%; in Szenario2: A−10%,B+20%. Rechne die Portfoliorendite ohne Gebühren/Rebalancing und erläutere die Wirkung relativ zu Einzelanlagen. Die zwei Szenarien sind keine vollständige Wahrscheinlichkeitsverteilung.
+
+Task demand (EN): A fictional portfolio initially holds50% each of A andB. Scenario1:A+20%,B−10%; scenario2:A−10%,B+20%. Calculate portfolio returns without fees/rebalancing and explain the effect relative to individual investments. The two scenarios are not a complete probability distribution.
+
+Expected performance (DE): Jeweils0,5×20%+0,5×(−10%)=+5%. Gegensätzliche Bewegungen glätten diese vorgegebenen Ergebnisse, beweisen aber weder risikofreie Anlage noch +5% in allen möglichen Zuständen.
+
+Expected performance (EN): In each scenario,0.5×20%+0.5×(−10%)=+5%. Offsetting movements smooth these supplied results but prove neither a risk-free investment nor+5% in every possible state.
+
+Understanding focus (DE): Gewichtete Rechnung und Grenze der Szenariobehauptung.
+
+Understanding focus (EN): Weighted calculation and limits of scenario claims.
+
+#### Application case `shared-loss-scenarios`
+
+Task demand (DE): Ein anderes Portfolio hat dieselben Anfangsgewichte: Szenario1 A+20%,B+10%; Szenario2 A−10%,B−20%. Berechne und prüfe die Behauptung, zwei Anlagen verhinderten jeden Verlust. Erläutere, welche gemeinsame Bewegung die Schlussfolgerung verändert.
+
+Task demand (EN): Another portfolio has the same initial weights:scenario1 A+20%,B+10%;scenario2 A−10%,B−20%. Calculate and assess the claim that two investments prevent any loss. Explain which joint movement changes the conclusion.
+
+Expected performance (DE): Portfolio+15% beziehungsweise−15%. Beide Anlagen fallen gemeinsam im zweiten Zustand, daher keine Verlustgarantie durch Anzahl. Diversifikation betrifft Risikozusammenhang; unbekannte Wahrscheinlichkeiten erlauben keine vollständige Erwartungs-/Risikoprognose.
+
+Expected performance (EN): The portfolio yields+15% or−15%. Both assets fall together in the second state, so their number guarantees no protection. Diversification concerns the risk relationship; unknown probabilities permit no complete expected-return/risk forecast.
+
+Understanding focus (DE): Geänderte gemeinsame Anreiz-/Risikostruktur statt bloßer Zahlentausch.
+
+Understanding focus (EN): A changed joint-risk structure rather than numbers alone.
+
+## Page 14: Spieltheoretische Modellvorhersagen mit Versuchsdaten vergleichen
+
+- Full learning-goal ID: `5a72a72a-609a-5e60-8a25-4f5048b8b09c`
+- Goal fingerprint: `sha256:37f11a9fe833573643849aabe1f2d9bb9f7e3b9dab925f088bc4d432fdc7d68d`
+- Page fingerprint: `sha256:d8cc59394cc4cd8fb6b94b047264dbd2ec43ddca51820acfc436332d503c90b5`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann für ein vorgegebenes spieltheoretisches Modell bedingte Handlungsvorhersagen ableiten, diese mit bereitgestellten Versuchsdaten vergleichen und Abweichungen unter Beachtung der Modell- und Versuchsbedingungen einordnen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/5a72a72a-609a-5e60-8a25-4f5048b8b09c/5a72a72a-609a-5e60-8a25-4f5048b8b09c.png
+
+- original digest: `sha256:1fe09ccd4d21de7284b5136b5d7bf05e2cb4914d875aa693d3f8670a27f2007e`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Spieltheoretische Grundmodelle auf Entscheidungssituationen anwenden — `becf0989-ee9f-5c8e-8173-5b8246e7944a` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Profil: Wirtschaftsordnungsmodelle und kooperative Versuchsdaten kritisch vergleichen — `c659edea-7786-59b3-90f3-9c9983388c83` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:c2245c0dd923d11b1d0b5ca3bad15870b66acdb6e3dc0c36bd7aae99f52edd61`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `experiment`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Eine Spielmodellvorhersage gilt unter bestimmten Auszahlungs-, Informations-, Wiederholungs- und Verhaltensannahmen. Abweichende beobachtete Entscheidungen können mehrere Erklärungen haben. Versuchsdaten beweisen nicht automatisch einen bestimmten psychologischen Mechanismus, und Wiederholung verändert das strategische Modell.
+
+Understanding (EN): A game-model prediction holds under assumptions about payoffs, information, repetition and behaviour. Different observed choices may have several explanations. Experimental data do not automatically prove a specific psychological mechanism, and repetition changes the strategic model.
+
+Observable performance (DE): Die Person leitet beste Antworten und Gleichgewicht aus den gegebenen Auszahlungen ab, vergleicht die bedingte Vorhersage mit Daten und erklärt Annahmen- oder Designänderungen als Grenzen der Interpretation.
+
+Observable performance (EN): The learner derives best responses and equilibrium from supplied payoffs, compares the conditional prediction with data and explains assumption/design changes as limits on interpretation.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `repetition`: Einmalige anonymisierte Entscheidung gegenüber wiederholter Interaktion. / An anonymous one-shot decision versus repeated interaction.
+- `inference`: Abweichung beschreiben gegenüber Motive oder Kausalmechanismus beweisen. / Describing differences versus proving motives or a causal mechanism.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `one-shot-dilemma-data`
+
+Task demand (DE): Ein fiktives einmaliges Spiel hat CC=(3,3),CD=(0,5),DC=(5,0),DD=(1,1),jeweils Spieler1/2; die bereitgestellte Standardannahme maximiert eigenen Punktnutzen. Von20 individuellen Entscheidungen wählen8 C. Bestimme die Modellvorhersage, berechne den beobachteten C-Anteil und prüfe die Behauptung, die Daten bewiesen eindeutig Altruismus.
+
+Task demand (EN): A fictional one-shot game has CC=(3,3),CD=(0,5),DC=(5,0),DD=(1,1),ordered player1/2; the supplied standard assumption maximises one’s own point payoff. Of20 individual decisions,8choose C. Determine the model prediction, calculate the observed C share and assess whether this definitively proves altruism.
+
+Expected performance (DE): D ist strikt dominant,DD Nash unter der gegebenen Annahme;8/20=40% C widersprechen der reinen Alle-D-Vorhersage. Andere Präferenzen, Verständnis, Erwartungen oder Versuchsbedingungen können relevant sein; aus der Häufigkeit allein folgt kein eindeutiger Motivnachweis.
+
+Expected performance (EN): D is strictly dominant and DD Nash under the assumption;8/20=40%C differ from an all-D prediction. Different preferences, understanding, expectations or experimental conditions may matter; the frequency alone does not identify a unique motive.
+
+Understanding focus (DE): Bedingte Modelllösung und empirische Abweichung ohne psychologischen Automatismus.
+
+Understanding focus (EN): A conditional model solution and empirical difference without a psychological automatic inference.
+
+#### Application case `repeated-interaction-comparison`
+
+Task demand (DE): Ein zweiter fiktiver Versuch nutzt dieselben Runden-Auszahlungen, aber feste Partner, beobachtbare frühere Entscheidungen und unsichere weitere Runden. Der C-Anteil beträgt60%,im einmaligen Vergleich40%; Zufallszuweisung und sonstige Gleichheit sind nicht belegt. Vergleiche Vorhersage und Befund und begrenze einen behaupteten Wiederholungseffekt.
+
+Task demand (EN): A second fictional experiment uses the same stage payoffs but fixed partners, observable previous choices and an uncertain continuation. The C share is60%,versus40% in a one-shot comparison; random assignment and other equivalence are unproven. Compare prediction and evidence and limit a claimed repetition effect.
+
+Expected performance (DE): Die Differenz beträgt20Prozentpunkte, nicht20% relativen Zuwachs. Zukunftsreaktionen können Kooperation bedingt beeinflussen, doch das einmalige Spielmodell lässt sich nicht unverändert übertragen. Ohne Kontroll-/Zuweisungsevidenz beweisen die60% weder alleinige Kausalität noch sichere Kooperation.
+
+Expected performance (EN): The difference is20percentage points, not a20% relative increase. Future responses may influence cooperation conditionally, but the one-shot model cannot be transferred unchanged. Without control/assignment evidence,60% proves neither sole causation nor guaranteed cooperation.
+
+Understanding focus (DE): Frische Wiederholungsstruktur und beschränkte Kausalevidenz.
+
+Understanding focus (EN): A fresh repeated-game structure and limited causal evidence.
+
+## Page 15: Statische Rohstoffreichweiten berechnen und einordnen
+
+- Full learning-goal ID: `055ef95c-0b64-5675-8f14-2524c3438009`
+- Goal fingerprint: `sha256:aaf45672742c036524ab9d8d985e30c0359f4d44af396d19dc3c9e4d5ae20ac7`
+- Page fingerprint: `sha256:9af404346ad735830fc9811b96875a4e168e611c29caf9eab2aba9b79b22072a`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann anhand vorgegebener Reserven und jährlicher Förderung eine statische Rohstoffreichweite berechnen und erläutern, weshalb sie keine feste Vorhersage der Erschöpfung ist.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/055ef95c-0b64-5675-8f14-2524c3438009/055ef95c-0b64-5675-8f14-2524c3438009.png
+
+- original digest: `sha256:56bc12eb510a35c374daceb4114df4cdb4692c4556071bbeb2b406d6b9490631`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Profil: Handelsmuster und statische Rohstoffreichweiten modellgebunden prüfen — `a01084fe-43a3-5327-8887-c8b07777f89f` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:362c9819792f9c6cfe78cb8e9e65ce0ac1b11cc0304a96b6ef479192177531c6`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `modeling`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Statische Reichweite teilt definierte Reserven durch jährliche Förderung und hält beide Größen rechnerisch konstant. Reserven hängen auch von Wirtschaftlichkeit, Technik und Klassifikation ab; zukünftige Förderung kann sich ändern. Eine größere geologische Ressourcenkategorie ist nicht ohne Definition sofort abbaubare Reserve. Der Quotient ist kein Erschöpfungsdatum.
+
+Understanding (EN): Static lifetime divides defined reserves by annual production while treating both as constant. Reserves also depend on economics, technology and classification, and future production may change. A broader geological resource category is not automatically immediately recoverable reserves. The quotient is not an exhaustion date.
+
+Observable performance (DE): Die Person verwendet richtige Bestands-/Flusseinheiten, berechnet den Quotienten und erklärt an veränderten Reserven-/Förderdaten die bedingte Aussage sowie erforderliche Kategoriengrenzen.
+
+Observable performance (EN): The learner uses correct stock/flow units, calculates the ratio and explains its conditional meaning and category boundaries when reserves/production change.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `stocks-and-flows`: Definierte Reserven in Tonnen gegenüber Förderung in Tonnen pro Jahr. / Defined reserves in tonnes versus production in tonnes per year.
+- `dynamic-classification`: Reklassifizierung und geänderte Förderung gegenüber fixem Erschöpfungsdatum. / Reclassification and changed production versus a fixed exhaustion date.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `static-thirty-years`
+
+Task demand (DE): Eine fiktive datierte Tabelle definiert wirtschaftlich gewinnbare Reserven mit120Mio.t und aktuelle jährliche Förderung4Mio.t/Jahr. Die bereitgestellte Formel lautet Reserven/jährliche Förderung. Berechne die statische Reichweite und prüfe die Behauptung, der Rohstoff sei sicher genau30Jahre später erschöpft. Erläutere mindestens zwei veränderliche Bedingungen.
+
+Task demand (EN): A fictional dated table defines economically recoverable reserves as120million tonnes and current annual production as4million tonnes/year. The supplied formula is reserves/annual production. Calculate static lifetime and assess the claim that the material will certainly be exhausted exactly30years later. Explain at least two variable conditions.
+
+Expected performance (DE): 120/4=30Jahre bei rechnerisch konstanten Größen. Nachfrage/Förderung, wirtschaftliche Abbaubarkeit, Technik oder neue Funde/Klassifikation können den Quotienten ändern. Die Rechnung belegt kein festes physisches Erschöpfungsdatum oder aktuellen echten Rohstoffbestand.
+
+Expected performance (EN): 120/4=30years with constant quantities in the calculation. Demand/production, economic recoverability, technology or discoveries/classification can change the ratio. The calculation proves neither a fixed physical exhaustion date nor a real current resource stock.
+
+Understanding focus (DE): Bestands-/Flussquotient und dynamische Modellgrenze.
+
+Understanding focus (EN): A stock/flow ratio and a dynamic model limitation.
+
+#### Application case `reclassification-and-production-change`
+
+Task demand (DE): Eine neue fiktive Tabelle zeigt: Nach Förderung verbleiben112Mio.t bisherige Reserven; veränderte Technik macht weitere48Mio.t zur Reserve. Jahresförderung steigt auf8Mio.t/Jahr. Eine getrennt definierte zusätzliche Ressourcenkategorie von88Mio.t ist nicht als wirtschaftlich gewinnbare Reserve erfasst. Berechne die neue statische Reichweite und prüfe, ob eine kürzere Reichweite allein einen gesunkenen gesamten geologischen Bestand beweist.
+
+Task demand (EN): A fresh fictional table shows112million tonnes remaining from previous reserves after production; changed technology adds48million tonnes to reserves. Annual production rises to8million tonnes/year. A separately defined additional resource category of88million tonnes is not economically recoverable reserves. Calculate the new static lifetime and assess whether a shorter lifetime alone proves a lower total geological stock.
+
+Expected performance (DE): Definierte Reserve112+48=160Mio.t;160/8=20Jahre. Reserve ist hier gestiegen, Förderrate stärker; die kürzere statische Reichweite beweist daher keine allgemeine Verknappung des geologischen Gesamtbestands. Die88Mio.t dürfen ohne geänderte Klassifikation nicht im Reservenzähler mitgerechnet werden.
+
+Expected performance (EN): Defined reserves are112+48=160million tonnes;160/8=20years. Reserves have risen while production has risen more, so the shorter ratio does not prove a general fall in total geological stock. The88million tonnes cannot be added to the reserve numerator without changed classification.
+
+Understanding focus (DE): Reklassifizierung und Flussänderung verändern die Deutung trotz kürzerem Quotienten.
+
+Understanding focus (EN): Reclassification and flow changes alter the interpretation despite a shorter ratio.
+
+## Page 16: Gesetzliche Sozialversicherung finanzierungs- und gerechtigkeitsbezogen bewerten
+
+- Full learning-goal ID: `e20f9304-5048-5e52-89ce-b80e978d1097`
+- Goal fingerprint: `sha256:a370939a883ff5316592db33bce9cc28c95933d7cb3f2247bcb5bbe865c16db8`
+- Page fingerprint: `sha256:741dc8c7cdbe2415a270c746d085161bdc1681323aaf369232c18898dc71d32f`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann ausgewählte Zweige der gesetzlichen Sozialversicherung hinsichtlich aktueller und zukünftiger Herausforderungen bewerten und dabei Finanzierbarkeit sowie soziale Gerechtigkeit berücksichtigen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/e20f9304-5048-5e52-89ce-b80e978d1097/e20f9304-5048-5e52-89ce-b80e978d1097.png
+
+- original digest: `sha256:9c0898d2a04a56d040fc73e2ea7aa02c9b6f29fc5a11275555fd4232d4f91bbe`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Soziale Marktwirtschaft einordnen — `1da809f7-ef85-5a2d-babf-b7639e605653` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Politische Anhörung: Finanzierung, Tarifpolitik und Schutz — `d50afb76-261e-585b-a9ef-4d2ed7af6e80` (outside this book)
+- Alternative Konzepte sozialer Sicherung diskutieren — `73ffee8c-8ad4-595d-8d55-d7da5b44d8bf` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:ee2f40099626d18f4948d9d0e4998785f9ad58d426eb3c0e46d60e8e28c59848`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Gesetzliche Sozialversicherung verbindet Einnahmen aus einer Beitragsbasis und gegebenenfallsSteuern mit Leistungen und Verteilungszielen. Gegenwärtige Finanzierung und künftige demografische-/Ausgabenbedingungen können sich unterscheiden. Bedingte Modellrechnungen sind keine bereits eingetretenen Ergebnisse; Finanzierbarkeit und Gerechtigkeit benötigen beide explizite Kriterien.
+
+Understanding (EN): Statutory social insurance connects revenue from a contribution base and, where applicable, taxes with benefits and distribution objectives. Present financing differs from future demographic/spending conditions. Conditional model calculations are not realised outcomes; affordability and fairness both need explicit criteria.
+
+Observable performance (DE): Die Person bewertet zwei ausgewählteVersicherungszweige an datiertem Material einschließlich aktuellerundkünftiger Finanzierungsbedingungen, begründet Gerechtigkeitskriterien und benennt Unsicherheit und Zielkonflikt.
+
+Observable performance (EN): The learner evaluates two selected insurance branches using dated material, including present/future financing, and justifies fairness criteria while identifying uncertainty and trade-offs.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `branch-and-income`: Beitragsbasis, Gesundheitsausgaben und rentenbezogeneDemografie. / Contribution base, healthcare spending and pension demographics.
+- `projection-distribution`: Bedingte Zukunftsrechnung und unterschiedlicheGeneration-/Einkommensbelastung. / Conditional projection and differing generational/income burdens.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `gkv-2026-conditional-gap`
+
+Task demand (DE): DatiertesPrimärmaterial derFinanzKommissionGesundheit30.März2026: ohne zusätzlicheMaßnahmen modellierteGKV-Finanzierungslücke rund15Mrd2027/40Mrd2030; VorschlägebetreffenEinnahmenundAusgaben. KeineBehauptung aktuellgemessener2030Daten oder beschlossenenRechts. Vergleiche als ergebnisoffeneOptionen zusätzlicheEinnahmen versus wirksameVermeidung unnötigerAusgaben; bewerte gegenwärtigeProblemlage, Zukunft, Finanzierbarkeit undZugangsgerechtigkeit.
+
+Task demand (EN): Dated primary material from the Health Finance Commission,30March2026: without added measures, modelled GKV gaps of about15billion in2027/40billion in2030; proposals concern revenue and spending. These are neither measured2030outcomes nor enacted law. Compare additional revenue with effective avoidance of unnecessary spending as open options, evaluating the present problem, future, affordability and fair access.
+
+Expected performance (DE): Die Person trennt bedingte Lücke/Empfehlung von geltendemRechtund Istwert, erklärt Beitragseinkommensbasis undAusgabenwirkung und wägt Belastung vonVersicherten/Arbeitgebern beziehungsweiseVersorgungszugang ab. Sie verlangt Wirkungs-/Verteilungsbelege; pauschaleLeistungskürzung gilt nicht automatisch als unnötigeAusgabe oder gerecht.
+
+Expected performance (EN): The learner distinguishes conditional gaps/recommendations from law and observed values, explains the contribution-income base and spending effects, and weighs insured/employer burdens against access. They request effect/distribution evidence; blanket benefit cuts are not automatically unnecessary spending or fair.
+
+Understanding focus (DE): GKV: aktuelle datierteAnalyse undbedingte zukünftigeFinanzierung.
+
+Understanding focus (EN): GKV: dated present analysis and conditional future finance.
+
+#### Application case `pension-model-generations`
+
+Task demand (DE): AndererZweig: Regierungsdarstellung19.November2025 zumRentenversicherungsbericht2025 nennt demografische-/Beschäftigungsannahmen für2025–2039 und erklärt ausdrücklich Modellrechnung, keinePrognose. Die damaligeRechnung sieht Beitragssatz18,6%bis2027und21,2%in2039vor. Keine Aussage über einen heute neu beschlossenenSatz. Beurteile FinanzierungundGenerationengerechtigkeit bei geänderterBeschäftigung/Lebenserwartung; diskutiere mindestenszwei bedingteReaktionsmöglichkeiten.
+
+Task demand (EN): Another branch: the government's19November2025account of the2025pension report states demographic/employment assumptions for2025–2039 and expressly calls them model calculations, not forecasts. That calculation envisages contribution rates18.6%through2027and21.2%in2039, without asserting a newly enacted current rate. Evaluate finance and generational fairness with changed employment/longevity and discuss at least two conditional responses.
+
+Expected performance (DE): Die Person erklärt Beitragsbasis undLeistungs-/Bezugsdauerrelation, grenzt Modellwerte vom garantiertenVerlauf ab und wägt Beiträge, steuerlicheMittel, Beschäftigungsbasis oder Leistungs-/Zeitgestaltung mit Bedingungen ab. Sie berücksichtigt heutigeErwerbstätige undältereBeziehende sowie geringeEinkommen, ohne eine einzigeReform als zwangsläufiggerecht oder gesetzlichbeschlossen auszugeben.
+
+Expected performance (EN): The learner explains the contribution base and benefit/duration relationship, distinguishes model values from a guaranteed path and weighs contributions, tax funds, employment or benefit/timing options conditionally. They consider current workers, older recipients and low incomes without presenting one reform as necessarily fair or enacted.
+
+Understanding focus (DE): Rente: Modellannahmen undunterschiedlicheGeneration-/Einkommensperspektiven.
+
+Understanding focus (EN): Pensions: model assumptions and differing generational/income perspectives.
+
+## Page 17: Nutzen und Grenzen volkswirtschaftlicher Modelle an Maßnahmen erklären
+
+- Full learning-goal ID: `b2419b68-8e21-5cee-8afc-34e3b07d2a87`
+- Goal fingerprint: `sha256:d488e9360da4d50553b1dbefbc11e93434e3753809ade12c958fd04069210a1f`
+- Page fingerprint: `sha256:6483bc9edba756661370979d12074f3e97c1ac71564e68ed270c7c62af3bbb89`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann an konkreten wirtschaftspolitischen Maßnahmen Nutzen und Grenzen volkswirtschaftlicher Modelle aufzeigen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/b2419b68-8e21-5cee-8afc-34e3b07d2a87/b2419b68-8e21-5cee-8afc-34e3b07d2a87.png
+
+- original digest: `sha256:cd191e0b9525b5d7c25f79d2ea289c9703fa52dbf6ba567c955eab70f2bf323f`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Wirtschaftspolitische Maßnahmen zu Wachstum und Beschäftigung modellgestützt erklären — `764e9eca-3392-5eb1-8df6-603356a47fd9` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- GK: Zwei Maßnahmen mit einfachen Modellen prüfen — `8f603e75-a3da-5ec5-94ba-d3c51c7f1906` (outside this book)
+- Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission — `b851482c-5d7e-4228-aea8-3d277f897297` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:35ad1d313606e2234f5caf78035b364f59d69c50c25886bb656e1ad6617ae81a`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `modeling`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Volkswirtschaftliche Modelle isolieren bestimmte Zusammenhänge durch Annahmen. Ein korrektes Modellergebnis ist keine bedingungslose Prognose; Eignung hängt von Fragestellung, Annahmen, Daten und ausgelassenen Mechanismen ab.
+
+Understanding (EN): Economic models isolate relationships through assumptions. A correct model result is not an unconditional forecast; suitability depends on the question, assumptions, data and omitted mechanisms.
+
+Observable performance (DE): Die Person wendet ein angegebenes volkswirtschaftliches Modell an, erklärt seinen Nutzen für eine konkrete Frage und beurteilt seine Grenzen anhand geänderter Bedingungen und benötigter Daten.
+
+Observable performance (EN): The learner applies a supplied economic model, explains its usefulness for a specific question, and assesses its limits under changed conditions and relevant data needs.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `demand-versus-capacity`: Nachfrageimpuls im Modell gegenüber einer angebotsseitigen Kapazitätsänderung. / A model demand impulse versus a supply capacity change.
+- `omitted-mechanism`: Importe, Steuern, Kapazitätsgrenzen oder Qualifikationspassung als ausgelassene Bedingungen. / Imports, taxes, capacity limits or skill matching as omitted conditions.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `specified-multiplier`
+
+Task demand (DE): Vorgegebenes vereinfachtes Modell: geschlossene Volkswirtschaft, konstante Preise, freie Kapazitäten, keine Steuern; Konsumquote c=0,75 und Multiplikator1/(1−c). Zusätzliche Staatsnachfrage10 ergibt welchen modellierten Einkommensimpuls? Ein Land importiert tatsächlich und hat ausgelastete Baukapazitäten. Beurteile Nutzen und Grenzen der Rechnung für dessen Planung.
+
+Task demand (EN): Supplied simplified model: closed economy, fixed prices, spare capacity and no taxes; consumption propensity c=0.75 and multiplier1/(1−c). What income impulse does additional government demand10 imply? The actual country imports and has fully used construction capacity. Assess the calculation's usefulness and limits for planning there.
+
+Expected performance (DE): Multiplikator4, modellierter Impuls40. Die Rechnung macht die angenommene Nachfragerückkopplung sichtbar, prognostiziert aber nicht automatisch40 im realen Land. Importabfluss, Steuern und Kapazitäts-/Preisreaktionen verändern den Mechanismus; konkrete Größen und Kapazitätsdaten werden benötigt.
+
+Expected performance (EN): The multiplier is4 and modelled impulse40. The calculation clarifies the assumed feedback in demand but does not automatically predict40 for the country. Imports, taxes, capacity and price responses alter the mechanism; relevant magnitudes and capacity data are needed.
+
+Understanding focus (DE): Korrekte Modellanwendung und ausdrückliche Trennung von Modellwert und empirischer Prognose.
+
+Understanding focus (EN): Correct application with an explicit distinction between a model result and an empirical forecast.
+
+#### Application case `training-capacity-model`
+
+Task demand (DE): Ein angegebenes Angebotsmodell nimmt an:20 zusätzliche passend qualifizierte Personen erhöhen die mögliche Produktion um200 Einheiten, wenn Anlagen verfügbar sind. Tatsächlich dauert die Ausbildung12 Monate, Abbruchquoten und künftige Nachfrage sind unbekannt. Erkläre den Nutzen des Modells und beurteile die Aussage, schon im nächsten Monat würden sicher200 zusätzliche Einheiten verkauft.
+
+Task demand (EN): A supplied supply model assumes20 additional appropriately skilled people increase potential output by200 units if equipment is available. Training actually takes12 months; dropout rates and future demand are unknown. Explain the model's use and assess the claim that200 more units will certainly be sold next month.
+
+Expected performance (DE): Das Modell verknüpft passende Qualifikation mit möglicher Kapazität unter Anlagenbedingung. Es belegt weder unmittelbare Verfügbarkeit noch Absatz. Ausbildungsdauer, Abschluss-/Passungsquote, Anlagen und Nachfrage fehlen; ein Kapazitätsszenario ist möglich, eine sichere kurzfristige Absatzprognose nicht.
+
+Expected performance (EN): The model links matching skills to potential capacity conditional on equipment. It establishes neither immediate availability nor sales. Training time, completion and matching rates, equipment and demand are missing; it supports a capacity scenario rather than guaranteed near-term sales.
+
+Understanding focus (DE): Strukturtransfer auf ein Angebotsmodell mit Zeit-, Kapazitäts- und Nachfragegrenzen.
+
+Understanding focus (EN): Structural transfer to a supply model with timing, capacity and demand limitations.
+
+## Page 18: Preis- und Zinsniveauwirkungen makroökonomisch analysieren
+
+- Full learning-goal ID: `f70be9a9-3ec5-52e8-84b0-213f2061856c`
+- Goal fingerprint: `sha256:29e44bf888150e4d61bb6ec5f025199bf13ea3f03aa5ca705a5e4db90d0f89ca`
+- Page fingerprint: `sha256:ecf0234db994c75c6bb74ce5381476cf9ba7efd346817d09575aded09db6232d`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann Auswirkungen von Preis- und Zinsniveauentwicklungen auf private Haushalte, Unternehmen und Staat darstellen und dabei volkswirtschaftliche Modelle nutzen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/f70be9a9-3ec5-52e8-84b0-213f2061856c/f70be9a9-3ec5-52e8-84b0-213f2061856c.png
+
+- original digest: `sha256:73ddb2d0beb938582b1742a31846d0d8e59efd9bc7e4264b7bbee4a5c0a79ca5`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- EZB-Entscheidungen mandatsbezogen nachvollziehen — `0242e34e-e2fe-5a0f-8aed-57905c6ebb26` (page 19)
+
+### Prerequisites outside this book
+
+- Wirtschaftspolitische Maßnahmen zu Wachstum und Beschäftigung modellgestützt erklären — `764e9eca-3392-5eb1-8df6-603356a47fd9` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Q3: Preis-, Zins- und Geldfragen vernetzt beurteilen — `4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:2a94c02035e4c0bcae833549c53462cf183d95551fdf1137a99a741124bc6307`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Preis- und Zinsänderungen wirken je nach nominalen Verträgen, Preisweitergabe, Verschuldung und Zeithorizont verschieden auf Haushalte, Unternehmen und Staat. Nominale Einkommenssteigerung ist nicht automatisch realer Kaufkraftzuwachs; Leitzinsänderungen ändern nicht sofort jeden bestehenden Vertragszins.
+
+Understanding (EN): Price and interest changes affect households, firms and government differently depending on nominal contracts, price pass-through, debt and time horizons. Higher nominal income does not automatically increase purchasing power; policy rate changes do not instantly alter every existing contractual rate.
+
+Observable performance (DE): Die Person erklärt fallbezogen Wirkungen gegebener Preis- und Zinsänderungen auf Haushalte, Unternehmen und Staat und unterscheidet nominal/real sowie variable, bestehende feste und neu zu finanzierende Verträge.
+
+Observable performance (EN): The learner explains case-specific effects of supplied price and interest changes on households, firms and government, distinguishing nominal from real effects and variable, existing fixed and newly financed contracts.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `prices-versus-interest`: Preisniveau-/Einkommensrelation gegenüber veränderten Kredit- und Einlagenzinsen. / Price-income relationships versus changed loan and deposit rates.
+- `contract-and-pass-through`: Feste bestehende Verträge gegenüber variablen/neuen Verträgen und möglicher Preisweitergabe. / Existing fixed contracts versus variable or new contracts and possible price pass-through.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `nominal-income-price-index`
+
+Task demand (DE): Fiktiv: ein Preisindex steigt von100 auf110, das Haushaltseinkommen von100 auf105. Verwende105/110−1 für die reale Veränderung. Ein Unternehmen hat steigende Materialkosten, Preisweitergabe unbekannt. Der Staat hat teils nominal feste, teils indexierte Zahlungen und bestehende Festzinsanleihen. Erkläre Wirkungen für alle drei und Grenzen einer pauschalen Gewinner-/Verliereraussage.
+
+Task demand (EN): Fictional case: a price index rises from100 to110 and household income from100 to105. Use105/110−1 for the real change. A firm faces rising input costs with unknown price pass-through. Government has some fixed nominal and some indexed payments plus existing fixed-rate bonds. Explain effects for all three and limits of blanket winner/loser claims.
+
+Expected performance (DE): Reale Haushaltskaufkraft rund−4,55%, trotz+5% nominal; konkrete Verbrauchsstruktur kann abweichen. Unternehmensmarge hängt von Preisweitergabe und Kosten ab. Feste nominale Zahlungen/Schulden ändern sich nicht automatisch proportional, indexierte können reagieren; Staatseinnahmen und reale Schuldlast benötigen Bedingungen. Eine einheitliche Wirkung ist nicht belegt.
+
+Expected performance (EN): Household purchasing power falls about4.55% despite nominal growth of5%; its actual consumption basket may differ. Firm margins depend on pass-through and costs. Fixed nominal payments and debt do not automatically adjust proportionately, while indexed payments may respond; revenue and real debt burdens require conditions. Uniform effects are not established.
+
+Understanding focus (DE): Exakte nominal-reale Unterscheidung und differenzierte Wirkung über drei Akteursgruppen.
+
+Understanding focus (EN): Accurate nominal-real distinction and differentiated effects across three groups.
+
+#### Application case `higher-passed-through-rates`
+
+Task demand (DE): Fiktiv: höhere Leitzinsen werden bei neuen Krediten, variablen Krediten und neuen Einlagen teilweise weitergegeben. HaushaltA hat einen bestehenden Festzinskredit, HaushaltB einen variablen. Eine Firma plant kreditfinanzierte Investitionen. Der Staat muss einen Teil seiner Festzinsanleihen erst in2 Jahren refinanzieren. Erkläre mögliche Wirkungen und beurteile die Aussage, alle Zinszahlungen stiegen heute im gleichen Verhältnis.
+
+Task demand (EN): Fictional case: higher policy rates are partly passed through to new loans, variable-rate loans and new deposits. HouseholdA has an existing fixed-rate loan, householdB a variable one. A firm plans debt-financed investment. Government will refinance some fixed-rate bonds only in2 years. Explain possible effects and assess the claim that all interest payments rise today by the same proportion.
+
+Expected performance (DE): A hat zunächst den vereinbarten festen Zins, B kann höhere laufende Belastung erhalten; neue Einlagen können mehr abwerfen. Neue Investitionen können durch Finanzierung/Abzinsung weniger attraktiv werden, abhängig von Ertrag und Weitergabe. Staatskosten steigen gegebenenfalls bei Refinanzierung, nicht automatisch bei jeder bestehenden Anleihe sofort. Timing, Vertragsform und Zinsweitergabe widerlegen die pauschale Aussage.
+
+Expected performance (EN): A initially retains its contracted fixed rate; B may face higher current payments and new deposits may yield more. New investment may become less attractive through funding or discounting, depending on returns and pass-through. Government costs may rise on refinancing rather than instantly on every existing bond. Timing, contract terms and pass-through refute the blanket claim.
+
+Understanding focus (DE): Transfer auf Zinsbindung, Refinanzierungszeitpunkt und ungleiche Übertragung.
+
+Understanding focus (EN): Transfer to contractual rate fixation, refinancing timing and unequal transmission.
+
+## Page 19: EZB-Entscheidungen mandatsbezogen nachvollziehen
+
+- Full learning-goal ID: `0242e34e-e2fe-5a0f-8aed-57905c6ebb26`
+- Goal fingerprint: `sha256:fd20f136ef0bf9976bbff54ff18a859b64bdb69c038d82c484900779f4e373f9`
+- Page fingerprint: `sha256:f07b86a31f865a42c3b0ce0309e09d72e4ab9ded68397e4a9be9e5d58feec6fd`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann geldpolitische Entscheidungen der Europäischen Zentralbank auf Grundlage monetärer und realwirtschaftlicher Größen nachvollziehen und mit Blick auf das Mandat einordnen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/0242e34e-e2fe-5a0f-8aed-57905c6ebb26/0242e34e-e2fe-5a0f-8aed-57905c6ebb26.png
+
+- original digest: `sha256:93e1497cbd7117bf32cd705dd8419b0aae7045f71bab6c62f123127af4ee513f`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- Preis- und Zinsniveauwirkungen makroökonomisch analysieren — `f70be9a9-3ec5-52e8-84b0-213f2061856c` (page 18)
+
+### Direct reverse prerequisites
+
+- Aktuelle Fragen zu Geld und Geldpolitik erörtern — `c87e528a-cca8-5060-87cd-60adb4e54bd6` (page 20)
+
+### Prerequisites outside this book
+
+- None
+
+### Direct reverse prerequisites outside this book
+
+- Q3: Preis-, Zins- und Geldfragen vernetzt beurteilen — `4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef` (outside this book)
+- Komplexe gesamtwirtschaftliche Problemstellungen vernetzt bearbeiten — `94fe52f5-c5f6-592b-87eb-9a983dc2d78f` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:7588a6813966c777aa7770b8a5ab0ea78172a7711d3ef3a677ec51cb4ac790c3`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `data`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): EZB-Entscheidungen sind anhand ihres Preisstabilitätsmandats, damaliger monetärer und realwirtschaftlicher Informationen und unsicherer Transmission zu beurteilen. Datierte Projektionen sind keine später gemessenen Ergebnisse; eine Zinssenkung bedeutet weder Aufgabe des mittelfristigen2%-Ziels noch einen vorab festgelegten Zinspfad.
+
+Understanding (EN): ECB decisions require assessment against its price stability mandate, contemporaneous monetary and real information and uncertain transmission. Dated projections are not subsequently measured outcomes; a rate cut establishes neither abandonment of the medium-term2% target nor a predetermined rate path.
+
+Observable performance (DE): Die Person beurteilt zwei tatsächliche datierte EZB-Entscheidungen anhand vorgelegter damaliger Indikatoren und des Mandats, unterscheidet Projektion und Befund und formuliert ein bedingtes Urteil statt einer sicheren Konjunkturwirkung.
+
+Observable performance (EN): The learner evaluates two actual dated ECB decisions using supplied contemporaneous indicators and its mandate, distinguishes projections from observations, and offers conditional judgment rather than claiming a certain economic effect.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `dated-information-set`: Entscheidung vom6.Juni2024 gegenüber der vom5.Juni2025 mit unterschiedlichen damaligen Informationen. / The6June2024 decision versus5June2025 with different contemporary information.
+- `mandate-and-transmission`: Mittelfristiges Inflationsziel, Restriktionsgrad und unsichere realwirtschaftliche Transmission. / Medium-term inflation objective, degree of restriction and uncertain real transmission.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `actual-ecb-june-2025`
+
+Task demand (DE): Historisches Primärmaterial EZB5.Juni2025: Senkung der drei Leitzinsen um25 Basispunkte; Einlagenzins2,00% ab11.Juni. Damalige Projektionen: Inflation2,0%2025/1,6%2026/2,0%2027, reales Wachstum0,9%/1,1%/1,3%. Die EZB betont mittelfristig2%, Inflationsausblick, zugrunde liegende Inflation, Transmission und Datenabhängigkeit. Beurteile die Entscheidung unter diesem damaligen Stand und prüfe, ob Projektionen sichere Ergebnisse oder eine Zusage weiterer Senkungen sind.
+
+Task demand (EN): Historical ECB primary material,5June2025: all three key rates cut by25basis points; deposit rate2.00% from11June. Contemporary projections: inflation2.0% in2025/1.6% in2026/2.0% in2027; real growth0.9%/1.1%/1.3%. The ECB stresses its medium-term2% objective, inflation outlook, underlying inflation, transmission and data dependence. Assess the decision using that contemporary information and whether projections establish outcomes or promise further cuts.
+
+Expected performance (DE): Eine begründete Beurteilung verknüpft den damaligen Inflationsausblick und Restriktions-/Transmissionsstand mit dem mittelfristigen Mandat; schwaches projiziertes Wachstum ist Kontext, kein eigenständiges neues Mandat. Die Projektionen sind unsicher, nicht gemessene spätere Werte. Wirkung auf Nachfrage/Preise hängt von Übertragung und weiteren Bedingungen ab; kein festgelegter weiterer Zinspfad folgt.
+
+Expected performance (EN): A reasoned assessment connects the contemporary inflation outlook and restriction/transmission to the medium-term mandate; weak projected growth supplies context rather than a new standalone mandate. Projections are uncertain, not measured future values. Effects on demand and prices depend on transmission and other conditions; no predetermined further rate path follows.
+
+Understanding focus (DE): Reale datierte Entscheidung unter Mandat und unsicherem Informationsstand, ohne Aktualitäts- oder Wirkungsfiktion.
+
+Understanding focus (EN): An actual dated decision assessed under the mandate and uncertain information, without fictional currentness or effects.
+
+#### Application case `actual-ecb-june-2024`
+
+Task demand (DE): Historisches Primärmaterial EZB6.Juni2024:25-Basispunkte-Senkung, Einlagenzins3,75% ab12.Juni. GegenüberSeptember2023 war die Inflation um mehr als2,5 Prozentpunkte gefallen; der Lohndruck blieb hoch. Damalige Inflationsprojektionen:2,5%2024/2,2%2025/1,9%2026. Die EZB bezeichnet die Geldpolitik weiterhin als restriktiv und datenabhängig, mit mittelfristigem2%-Ziel. Beurteile die Senkung trotz einer2024-Projektion über2% und begrenze die Aussage, sie bedeute Zielaufgabe oder garantiertes Wachstum.
+
+Task demand (EN): Historical ECB primary material,6June2024: a25basis point cut, deposit rate3.75% from12June. Inflation had fallen more than2.5percentage points sinceSeptember2023 while wage pressure remained strong. Contemporary inflation projections:2.5% for2024/2.2% for2025/1.9% for2026. The ECB describes policy as still restrictive and data-dependent, with a medium-term2% objective. Assess the cut despite the2024 projection exceeding2%, and qualify claims of abandoning the target or guaranteed growth.
+
+Expected performance (DE): Das Mandat ist mittelfristig; eine über2% liegende kurzfristige Projektion schließt eine begründete Verringerung des Restriktionsgrades bei verändertem Ausblick nicht automatisch aus. Hohen Lohndruck und verbleibende Risiken abwägen. Die Senkung beweist weder Zielaufgabe noch sichere Wachstumswirkung; Projektionen, Transmission und weitere Daten bleiben Bedingungen. Ein anderes begründetes Urteil ist bei transparenter Gewichtung möglich.
+
+Expected performance (EN): The objective is medium-term; a short-term projection above2% does not automatically preclude a justified reduction of restriction as the outlook changes. Assess strong wage pressure and remaining risks. The cut establishes neither abandonment of the target nor certain growth; projections, transmission and further data remain conditions. A different reasoned judgment is possible with transparent weighting.
+
+Understanding focus (DE): Echter zweiter Informationsstand: mittelfristiger Zielbezug statt mechanischer2%-Schwellenregel.
+
+Understanding focus (EN): A genuine second information set: the medium-term objective rather than a mechanical2% threshold rule.
+
+## Page 20: Aktuelle Fragen zu Geld und Geldpolitik erörtern
+
+- Full learning-goal ID: `c87e528a-cca8-5060-87cd-60adb4e54bd6`
+- Goal fingerprint: `sha256:fd4d98b90b1ceb444c617ef54d5d89197b23c38d5e803676e9cca5c86f50b5e9`
+- Page fingerprint: `sha256:ae101f2a82e2c02f83aaa5213b8e2a747085e65bcdc9c13281f31286d6212c01`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann aktuelle Fragen zu Geld und Geldpolitik fachlich fundiert erörtern.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/c87e528a-cca8-5060-87cd-60adb4e54bd6.png
+
+- original digest: `sha256:833e6bf741da0fb0e5a62a2ab34af459cca8efb808b507b1c39ae036834d2c76`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- EZB-Entscheidungen mandatsbezogen nachvollziehen — `0242e34e-e2fe-5a0f-8aed-57905c6ebb26` (page 19)
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- None
+
+### Direct reverse prerequisites outside this book
+
+- Q3: Preis-, Zins- und Geldfragen vernetzt beurteilen — `4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:c0acf3a748bf8c3e26ed91d98d6df507a22d0ff1ad92d4dbcdb9f2fd980a51ea`
+
+Contract: `positive-understanding-evidence-v2`; archetype: `concept`
+Authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+
+**Understanding and performance expectations**
+
+#### Expectation `content-specific-understanding`
+
+Understanding (DE): Aktuelle Geld-/Geldpolitikfragen verbinden Geldformen, Institutionen, Transmission und unsichere wirtschaftliche Folgen. Datierte Projekt-/Entscheidungsstände und begründete Argumente sind von Prognosen und sicheren Wirkungen zu trennen.
+
+Understanding (EN): Current money/monetary-policy issues connect money forms, institutions, transmission and uncertain effects. Dated project/decision status and reasoned arguments differ from forecasts and certainty.
+
+Observable performance (DE): Die Person erörtert aktuelle Fragen mit wirtschaftlichen Mechanismen und mehreren Perspektiven, prüft Status/Datum und begründet Grenzen ohne aktuelle Daten oder Wirkungen zu erfinden.
+
+Observable performance (EN): The learner discusses current issues through mechanisms and several perspectives, checks status/date and explains limits without inventing current data or effects.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `question`: DigitalerEuro-Projektstand versus geldpolitischer Beschluss. / Digital-euro project status versus a monetary decision.
+- `reasoning`: Zahlungsmittel/Bankrollen versus Inflation/Transmission. / Payment instruments/bank roles versus inflation/transmission.
+
+**Application cases: material, task, expected performance and understanding focus**
+
+#### Application case `digital-euro-status-discussion`
+
+Task demand (DE): Nutze den tatsächlichen EZB-Projektstand, gelesen08.10.2026: weitere technische Vorbereitung, mögliche2029-Ausgabe abhängig von Gesetzgebung und späterem Beschluss. Erörtere öffentliches digitales Geld gegenüber Bankeinlagen/Bargeld hinsichtlich Zahlungsfunktion, Zugänglichkeit, Finanzierung und institutionellen Grenzen.
+
+Task demand (EN): Use the actual ECB project status read8October2026: further preparation and possible2029 issuance conditional on legislation/later decision. Discuss public digital money versus bank deposits/cash through payment function, access, funding and institutional limits.
+
+Expected performance (DE): Die Person erklärt Unterschiede der Geldformen und bedingte Chancen/Risiken, verknüpft wirtschaftliche Funktionen mit Gestaltungsentscheidungen und unterscheidet Vorhaben von eingeführtem Zahlungsmittel. Sie behauptet weder sichere Ausgabe2029 noch automatischen Ersatz von Bargeld/Bankgeld.
+
+Expected performance (EN): The learner explains money-form differences and conditional opportunities/risks, links functions to design and distinguishes project from an issued means of payment. They claim neither certain2029 issuance nor automatic replacement of cash/bank money.
+
+Understanding focus (DE): Aktuelle Frage mit ehrlich begrenztem Projektstatus.
+
+Understanding focus (EN): A current question with honest project-status limits.
+
+#### Application case `dated-ecb-rate-discussion`
+
+Task demand (DE): Nutze den tatsächlichen EZB-Beschluss10.09.2026 mit25Basispunkten Erhöhung und mittelfristiger Preisstabilitätsbegründung. Erörtere Wirkungskanäle und Einwände zu energiegetriebenen Preisrisiken, Wachstum und Finanzierung verschiedener Akteure; Projektionen sind ausdrücklich bedingte damalige Angaben.
+
+Task demand (EN): Use the actual ECB decision10September2026 with a25-basis-point rise and medium-term price-stability rationale. Discuss channels and objections involving energy price risks, growth and funding for differing actors; projections are explicitly conditional information at that time.
+
+Expected performance (DE): Die Person begründet Zins-/Nachfrage-/Erwartungskanäle sowie Grenzen gegenüber realen Angebotsengpässen und Verzögerungen. Sie diskutiert unterschiedliche Akteursfolgen und Mandat, ohne jeden Preisrückgang dem Beschluss zuzuschreiben oder einen sicheren weiteren Zinspfad zu behaupten.
+
+Expected performance (EN): The learner explains interest/demand/expectation channels and limits with supply bottlenecks/time lags. They discuss differing actor effects and mandate without attributing every price fall to the decision or claiming a certain future rate path.
+
+Understanding focus (DE): Andere aktuelle Frage mit begründeter Transmission und Kritik.
+
+Understanding focus (EN): Another current question involving reasoned transmission and critique.
+

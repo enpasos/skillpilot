@@ -1,0 +1,58 @@
+import json,pathlib,hashlib,shutil,sys,re,copy
+R=pathlib.Path('/home/enpasos/projects/skillpilot'); C=pathlib.Path('/tmp/skillpilot-economics-combined548-independent-xri79b2w'); O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-accesses-independent-merge-audit-v1'
+H=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/actual-nine-existing-qualified-whole-materials-only-current555-accesses.root-author-handoff.json'; D=json.loads(H.read_text())
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def write(name,obj): (O/name).write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
+def info(p):return {'path':str(p.relative_to(R)),'sha256':sha(p),'bytes':p.stat().st_size}
+def cp(src,rel):
+ dst=C/rel;assert dst.resolve().is_relative_to(C),str(dst);assert not dst.is_symlink();assert not dst.exists() or not dst.samefile(src);dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dst);assert dst.read_bytes()==src.read_bytes()
+if sys.argv[1]=='prepare':
+ O.mkdir(exist_ok=False)
+ assert sha(H)=='5593d7662be0c0dcb1c33fd7b057152a7cca88086fb6fc7bd1f1a34d76801f3b'
+ inputs={}; defpaths=[]
+ def collect(v):
+  if isinstance(v,dict):
+   if set(['path','sha256']).issubset(v):
+    p=R/v['path'];assert sha(p)==v['sha256'],str(p); inputs[str(p.relative_to(R))]=info(p)
+   for z in v.values():collect(z)
+  elif isinstance(v,list):
+   for z in v:collect(z)
+ collect(D)
+ can=json.loads((R/D['wholeCanonicalNoEdits']['path']).read_text());gm={g['id']:g for g in can['goals']};pairs=[]
+ for b in D['wholeThreeValidScientificReuseBindings']:
+  assert gm[b['goalId']]==b['wholeCurrentMaterial']; q=json.loads((R/b['wholeApprovedMaterialInput']['path']).read_text()); gs=q if isinstance(q,list) else q.get('goals',q.get('materials')); orig=next(g for g in gs if g['id']==b['goalId']);delta=[]
+  def walk(a,b,p=''):
+   if isinstance(a,dict) and isinstance(b,dict):
+    for k in set(a)|set(b):walk(a.get(k),b.get(k),p+'.'+k)
+   elif a!=b:delta.append({'field':p,'approved':a,'current':b})
+  walk(orig,gm[b['goalId']]);assert all(x['field'] in ['.examData.reviewStatus','.examData.reviewNotes','.extendedData.applicabilityFromRequires'] for x in delta),delta
+  pairs.append({'goalId':b['goalId'],'actualWholeDEENTasksSolutionsRubricsRead':True,'wholeBodyContractExact':not any(x['field'].startswith('.examData.') and x['field'] not in ['.examData.reviewStatus','.examData.reviewNotes'] for x in delta),'allowedAlreadyQualifiedMetadataDeltas':delta,'foreignScience':b['wholeExistingScience'],'originalWholeMaterial':b['wholeApprovedMaterialInput'],'currentWholeMaterial':gm[b['goalId']]})
+ vd=[]
+ for row in D['views']:
+  b=json.loads((R/row['before']['path']).read_text());a=json.loads((R/row['candidate']['path']).read_text());assert (R/row['activePath']).read_bytes()==(R/row['before']['path']).read_bytes()
+  assert len(a['rootNodes'])==len(b['rootNodes'])==1
+  beforechildren=b['rootNodes'][0]['children'];afterchildren=a['rootNodes'][0]['children'];assert afterchildren[:len(beforechildren)]==beforechildren; assert afterchildren[len(beforechildren):]==row['wholeAddedReferences']
+  bb=copy.deepcopy(b);aa=copy.deepcopy(a);bb['viewId']=aa['viewId'];bb['rootNodes'][0]['children']=aa['rootNodes'][0]['children'];assert bb==aa
+  assert all(x['kind']=='goalEntry' and x['projectionRole']=='target' and x['goalId'] in gm and gm[x['goalId']].get('examData') for x in row['wholeAddedReferences'])
+  vd.append({'activePath':row['activePath'],'decision':'KEEP_append_only_practice_targets','wholeBefore':row['before'],'wholeAfter':row['candidate'],'exactChildrenPrefix':True,'otherWholeFieldsExceptViewIdExact':True,'newReferences':row['wholeAddedReferences'],'wholeCasesAuthorDecisionsActuallyRead':row['authorDecisions']})
+ write('actual-whole-three-existing-scientific-reuse-bindings-and-six-view-deltas.independent.json',{'wholeBindings':pairs,'viewDeltas':vd,'newRefs':sum(len(r['newReferences']) for r in vd),'newBodyScienceReviews':0,'sourceTargetWidening':False})
+ # Stage current standard Economics inputs using safe private physical copies. All copied bytes are exact, no argument adaptation.
+ paths=['app/scripts/config/goal-books/de-gym-economics-current-canonical.json','curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json']
+ base=R/'curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current555-twentythree-qualified477-20261010-v13'
+ paths += [str(p.relative_to(R)) for p in base.rglob('*') if p.is_file()]
+ paths += [str(p.relative_to(R)) for p in (R/'curricula/DE/Gymnasium/composition-views/wirtschaft').glob('*.json')]
+ for rel in paths:cp(R/rel,rel);inputs[rel]=info(R/rel)
+ prod=(R/'app/scripts/generateCurriculumQualityStatus.ts').read_text();obs=(C/'app/scripts/generateCurriculumQualityStatus.ts').read_text();line=next(l for l in obs.splitlines(True) if 'ownProjectedScopeRows.push(' in l);tail='\nexport const ownProjectedScopeRows:any[]=[];\nexport {routeProfiles,evaluateRouteProfile,collectWholeMaterialPrerequisiteClosure,readJurisdictionCoverageByLandscapeId,evaluateJurisdictionCoverage};\n'; assert obs.replace(line,'').replace(tail,'')==prod
+ for rel in ['app/scripts/generateCurriculumQualityStatus.ts','app/scripts/applicabilityCompiler.ts','contracts/curriculum-package/v1/composition-view.schema.json','curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json','curricula/DE/Gymnasium/provenance/source-landscape-registry.json','curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json','curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json','curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json','curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json']:
+  inputs[rel]=info(R/rel)
+  if rel!='app/scripts/generateCurriculumQualityStatus.ts':assert (R/rel).read_bytes()==(C/rel).read_bytes(),rel
+ write('actual-before-whole-input-guards-and-private-capsule-binding.json',{'inputs':list(inputs.values()),'capsule':str(C),'instrumentedObserverOnlyTwoAdditions':{'push':line,'tail':tail},'productionCheckerExactAfterRemovingInstrumentalAdditions':True,'helperPath':str(C/'native-combined-scope.ts'),'helperSHA':sha(C/'native-combined-scope.ts'),'current555PhysicalCopies':paths})
+ print(json.dumps({'folder':str(O.relative_to(R)),'inputs':len(inputs),'newRefs':9,'wholeMaterialReuse3':True}))
+elif sys.argv[1]=='after':
+ for row in D['views']:cp(R/row['candidate']['path'],row['activePath'])
+ print('Six private candidate views staged; no active writes.')
+elif sys.argv[1]=='negative':
+ row=next(x for x in D['views'] if x['activePath'].endswith('de-be-gym-economics-gk.view.json'));p=C/row['activePath'];assert p.resolve().is_relative_to(C);v=json.loads(p.read_text());kid='f98b9732-3abc-5217-ab19-68595bf0b65c';a=v['rootNodes'][0]['children'];assert sum(x.get('goalId')==kid for x in a)==1;v['rootNodes'][0]['children']=[x for x in a if x.get('goalId')!=kid];p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n'); print('Private BE-GK explicit f98 target ref removed; ordinary/support refs unchanged.')
+elif sys.argv[1]=='restore':
+ for row in D['views']:cp(R/row['before']['path'],row['activePath'])
+ print('Private capsule restored exactly to current555 before views.')

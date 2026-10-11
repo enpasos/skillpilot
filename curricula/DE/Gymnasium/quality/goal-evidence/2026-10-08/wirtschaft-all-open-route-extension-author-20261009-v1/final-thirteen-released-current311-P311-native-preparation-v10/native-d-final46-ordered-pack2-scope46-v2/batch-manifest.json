@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/final-thirteen-released-current311-P311-native-preparation-v10/native-d-final46-ordered-pack2.scope46-v2.batch.config.json",
+  "configDigest": "sha256:85207c320478e0a6b9ba0b567b9d23951b113b9d7bae0e71a6e9d70efe7867d5",
+  "goalIds": [
+    "772b6d9f-03be-5894-8d61-0269506f398c",
+    "bd413a7c-775a-5318-813c-0b75578f9a11",
+    "479fb87a-3a5a-5892-8b3e-dfb1d07e9612",
+    "aa9db8f6-c81e-5247-8f84-5f2b968ab2c4",
+    "95f2b860-d21d-5627-8dcd-cd53efd94b7b",
+    "8964ef4b-5056-5449-8a6c-7c5d97f698be",
+    "53829f76-2d9c-5cdd-8521-c249f57f738d",
+    "e90586d8-8e0a-5355-87d0-4ecd90dbe021",
+    "f90e4741-368b-5524-8053-417d06197c80",
+    "8e8a672e-67c6-52dd-8f87-3c1f2e874a3d",
+    "9219c58c-d178-5612-8231-feac373c87df",
+    "3bcb976d-3e45-5c62-81ac-5ed909df202b",
+    "bd9ec397-86ee-58ec-8327-7e1f28550026",
+    "99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
+    "7d399b4d-d057-5284-8e2c-6778e023307d",
+    "7727b988-e62c-5ebf-8e2f-0c719b13881c",
+    "7f1d5e9f-65ef-5d1d-83e5-5e2534772720",
+    "6f75cdff-7d32-533b-8fe9-3d003b7af241",
+    "c7b03538-25a2-510b-8fd4-a81bcc3de406",
+    "becf0989-ee9f-5c8e-8173-5b8246e7944a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 311,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/final-thirteen-released-current311-P311-native-preparation-v10/book-config.current311-all-P311.inert.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:811b90f99e715f6bfd55727f0a6e44767d75109a2937a10670ee643ada8fcde9"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:cc3c8a3e0f1d0abb33a963f441ac6320e1bd9455516cfef92194b80f12413ed9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:4109c63eb1f206b1a45398a49fcddd64026fb81b253dd32dbe1f3f7deb5e081f",
+    "reviewInputFingerprint": "sha256:ab78a9697e58f2e7d425cdfac1b0ffe3b6c6d4d5ec097d93603a2d9bef54dfe3",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2-a",
+        "campaignDigest": "sha256:308ac36d38fc4ecd18fb43aba1e89b752ff4b3c24625c634c9a07d70690d05b2",
+        "roundId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2-first-pass-a",
+        "independenceGroupId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2-independent-a",
+        "batchId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:652490c14fd4b85b599e95ec18dae32f344e8ff50aeddc33ed636802cc90f42f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2-b",
+        "campaignDigest": "sha256:e534e5b1a503ac0531e66c359dadad915534e3b95431bab5951da8ad37d589b0",
+        "roundId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2-first-pass-b",
+        "independenceGroupId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2-independent-b",
+        "batchId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack2-scope46-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:90d83b47c93323f2db6ef4f259b3c560c05762b48f738a6f12e62d8a5d846d32"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "role": "actual-current-BE-primary-source-document-boundary-and-existing-inert-source35-BB2-resumption",
+  "reviewer": "/root/economics_merge_audit",
+  "reviewAuthority": "independent_machine_source_scope_review; not human release",
+  "reviewedAt": "2026-10-08T20:31:08.441898+00:00",
+  "actualHead": "8c4e995143e1968f2b4ca7f35bbb4e7af7784732",
+  "officialSourcesActuallyRead": [
+    {
+      "url": "https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/oberstufe/",
+      "scope": "current official Economics Teil-C download link and A/B2022 transition paragraph"
+    },
+    {
+      "url": "https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/rahmenlehrplan-wirtschaftswissenschaft-go-teil-c.pdf?ts=1705017673",
+      "actualPdfPages": 33,
+      "scope": "whole imprint PDF2, A/B transition PDF3, contents PDF5, whole introductory phase PDF7/8 printedV/VI; subject competence and contents blocks, PDF14/16/21–26 read as returned parsed text",
+      "whole33PageReadingClaimed": false,
+      "wholePDFBytesAvailableLocally": false
+    },
+    {
+      "url": "https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2018_Wirtschaftswissenschaft.pdf",
+      "actualPdfPages": 28,
+      "scope": "whole Brandenburg-only imprint/validity PDF2 and whole foundations competency block PDF6 printed6"
+    }
+  ],
+  "actualRetrievalLimit": "Official parsed PDF text was actually returned by web.open. Local urllib download returned403; separate screenshot fetch returned429. No local whole-PDF SHA or visual screenshot reading is claimed; no primary document content invented.",
+  "currentSnapshotBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_GOST_2022.source-extraction.json",
+      "sha256": "sha256:f0caaab8e8754b1472e23f7766882e819495e412e090842a851f12db87fa4787"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_WIRTSCHAFT_SEKII_GOST_2022.source-extraction.json",
+      "sha256": "sha256:d3b6348504396437474f8fc481b8182a9b4a64cba1b6ca6f0b60a3357b0bf573"
+    }
+  ],
+  "actualCurrentWhole100SourceTextsEqualBBandBE": true,
+  "actualCurrent24TopicCodesEqualBBandBE": true,
+  "materialFindings": [
+    {
+      "id": "BE-PRIMARY-BOUNDARY-001",
+      "severity": "material",
+      "decision": "NO_BB_TO_BE_EXACT_TRANSFER",
+      "currentSourceDocument": {
+        "key": "BE-WIRTSCHAFT-SEKII-2022",
+        "title": "Rahmenlehrplan gymnasiale Oberstufe Wirtschaftswissenschaft Berlin-Brandenburg 2022",
+        "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2018_Wirtschaftswissenschaft.pdf",
+        "official": true,
+        "url": "https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2018_Wirtschaftswissenschaft.pdf"
+      },
+      "actualBerlinDocument": "current Berlin government download is a separate33-page plan; Brandenburg2022 document is28pages and explicitly Brandenburg-valid",
+      "consequence": "Existing BE100 whole-source identity/validity and24-block structure require a versioned Berlin-specific source successor and affected mappings, provenance, locators and scope reviews. Count plausibility/structural16-state coverage is not this substantive source approval."
+    },
+    {
+      "id": "BE-PRIMARY-FOUNDATIONS-002",
+      "severity": "material",
+      "sourceGoalIds": [
+        "be-wirtschaft-sekii-e-gk-grundlagen-g01-b2198f53",
+        "be-wirtschaft-sekii-e-gk-grundlagen-g02-b709847d"
+      ],
+      "actualWholeCurrentRows": [
+        {
+          "id": "be-wirtschaft-sekii-e-gk-grundlagen-g01-b2198f53",
+          "passageId": "be-wirtschaft-sekii:e-gk-grundlagen",
+          "topicCode": "E-GK-GRUNDLAGEN",
+          "bulletIndex": 1,
+          "aspectIndex": 1,
+          "title": "BE E-GK-GRUNDLAGEN (1): Wirtschaftswissenschaften als Wissenschaftssystem einordnen.",
+          "description": "Source-Ziel aus Einführungsphase GK: wirtschaftswissenschaftliche Grundlagen: Wirtschaftswissenschaften als Wissenschaftssystem einordnen.",
+          "sourceText": "Wirtschaftswissenschaften als Wissenschaftssystem einordnen.",
+          "sourceSpan": "E-GK-GRUNDLAGEN (1)",
+          "parentBulletText": "Wirtschaftswissenschaften als Wissenschaftssystem einordnen.",
+          "sourceRef": "Rahmenlehrplan gymnasiale Oberstufe Wirtschaftswissenschaft Berlin-Brandenburg 2022, Einführungsphase GK: wirtschaftswissenschaftliche Grundlagen, S. 11.",
+          "courseLevel": "GK",
+          "granularity": "officialCompetency",
+          "tags": [
+            "jurisdiction:DE-BE",
+            "subject:Wirtschaft",
+            "stage:SekII",
+            "topic:E-GK-GRUNDLAGEN"
+          ],
+          "rawSourceText": "Wirtschaftswissenschaften als Wissenschaftssystem einordnen.",
+          "rawSourceSpan": "E-GK-GRUNDLAGEN (1)",
+          "rawParentBulletText": "Wirtschaftswissenschaften als Wissenschaftssystem einordnen."
+        },
+        {
+          "id": "be-wirtschaft-sekii-e-gk-grundlagen-g02-b709847d",
+          "passageId": "be-wirtschaft-sekii:e-gk-grundlagen",
+          "topicCode": "E-GK-GRUNDLAGEN",
+          "bulletIndex": 2,
+          "aspectIndex": 1,
+          "title": "BE E-GK-GRUNDLAGEN (2): Volkswirtschaftslehre und Betriebswirtschaftslehre unterscheiden.",
+          "description": "Source-Ziel aus Einführungsphase GK: wirtschaftswissenschaftliche Grundlagen: Volkswirtschaftslehre und Betriebswirtschaftslehre unterscheiden.",
+          "sourceText": "Volkswirtschaftslehre und Betriebswirtschaftslehre unterscheiden.",
+          "sourceSpan": "E-GK-GRUNDLAGEN (2)",
+          "parentBulletText": "Volkswirtschaftslehre und Betriebswirtschaftslehre unterscheiden.",
+          "sourceRef": "Rahmenlehrplan gymnasiale Oberstufe Wirtschaftswissenschaft Berlin-Brandenburg 2022, Einführungsphase GK: wirtschaftswissenschaftliche Grundlagen, S. 11.",
+          "courseLevel": "GK",
+          "granularity": "officialCompetency",
+          "tags": [
+            "jurisdiction:DE-BE",
+            "subject:Wirtschaft",
+            "stage:SekII",
+            "topic:E-GK-GRUNDLAGEN"
+          ],
+          "rawSourceText": "Volkswirtschaftslehre und Betriebswirtschaftslehre unterscheiden.",
+          "rawSourceSpan": "E-GK-GRUNDLAGEN (2)",
+          "rawParentBulletText": "Volkswirtschaftslehre und Betriebswirtschaftslehre unterscheiden."
+        }
+      ],
+      "decision": "KEEP_BB2_CANDIDATES_BB_ONLY",
+      "reason": "Berlin printedVI has introduction to VWL, relevant sciences and model construction. It does not contain the Brandenburg first competency bullet whose two aspects exactly bind the two new BB goals. Related disciplinary content does not prove identical full competency/country mandate."
+    }
+  ],
+  "existingSubstantiveConfirmedCandidateFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-BB-two-foundations-bounded-author-20261008-v2/whole-two-BB-foundation-goals.candidate.json",
+      "sha256": "sha256:158aa0dfe6cd6ff31c9548d93cc1232eaf1e02d7069af8d53c6f34613a9c7ea4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-BB-two-foundations-bounded-author-20261008-v2/positive.candidates.author-v1.json",
+      "sha256": "sha256:acaab055f227f929349d6214ae616be5edca3a28003b94c3c3851ff4173262a1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-BB-two-foundations-bounded-author-20261008-v2/two-memory-cards.candidate.json",
+      "sha256": "sha256:3102bc81c418a139de67440382cd37d48e0b401444b39ec5c459d6366f45714a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-BB-two-foundations-bounded-author-20261008-v2/semantic-atomicity-memory-demand-prerequisite.proposals.author.json",
+      "sha256": "sha256:5dd02d44e7aaaaf636a9372872cfa1d6e7ba91e62c23585e0f3cf3bdd27549a0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-BB-two-foundations-bounded-author-20261008-v2/shared-intro-three-source-locators-successor-v4/bb-two-primary-and-three-shared-intro-locators.candidate.v4.json",
+      "sha256": "sha256:f9a030279517d3dc1842ac6c7ad724228c98d868d4bbdfb9818adbd021cc89bd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-BB-two-foundations-bounded-author-20261008-v2/shared-intro-three-source-locators-successor-v4/bb-two-bounded-mapping-over-accepted-Source35.candidate.v4.json",
+      "sha256": "sha256:39bfa2850dbf7fad2684b72fd211153d06516aa25da62974dba53a269b1b044f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-ten-source35-independent-root-integration-adjudication-v1/actual-independent-root-source35-bounded-adjudication.receipt.json",
+      "sha256": "sha256:bbca3bae12d00e15718f2bbd5c5c5a610b19311964debc2fd35780e32d5a993b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-ten-two-source35-applicability-bounded-author-20261008-v1/whole-ten-goals.with-bounded-f90-7a-applicability.candidate.json",
+      "sha256": "sha256:d892d35177d268ecf4cb9c37e827172c7799c2e1aa7d7a724645fe0ce56e7926"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-BB-two-foundations-independent-a-content-source-AM-review-v1/actual-independent-whole-two-BB-goals-P4-source-tax-AM-and-V3V4-closure.receipt.json",
+      "sha256": "sha256:8dd9ad44e1236735ab34a7323b9ff2cd3fe9f79483a648370bcc5621e32cc930"
+    }
+  ],
+  "boundedExistingCandidateState": {
+    "Source35": "Root independent35whole-tuple adjudication remains valid:21REMOVE/4foreignPARTIAL/10BY-PARTIAL; other mapping tuples not rereviewed;6successors stay inert. Native structural Source003 removes4wrong BB/BE bindings and exposes4genuine inventory holes; no source-wide approval. New BE primary finding additionally withdraws any presumed current BB-document Berlin identity.",
+    "Generic10": "Onlyf90 and7a applicability deltas remove wrongBB/BE orBW branches, whole10body/P/AM prior content accepted separately; no finalD10/V10/native closure claimed.",
+    "BB2": "Both authored whole competencies f478f85e-87b1-505e-979a-8de1b3141019 and72f45efc-459e-5407-b946-1bb1968135d2, their P4/Tax/AM2/cards and exactBBprimary/page6 locators are independently A accepted in8dd9… receipt. BB v4 only; BE extension unsupported. Needs independently finalD2, actualV2, motivation/terminal materials/routes, source/applicability/card visibility/native checks before activation/counting."
+  },
+  "BEFullSourceCorrectionWorkStillOpen": true,
+  "historicalArtifactsUnchanged": true,
+  "source35Activated": false,
+  "newBBGoalsActivated": false,
+  "strictClosed": 261,
+  "strictDenominator": 311,
+  "strictNet": 0,
+  "newSubstantiveClosures": 0,
+  "restoredActiveBindings": 0,
+  "liveWrites": 0,
+  "humanApprovalClaimed": false
+}

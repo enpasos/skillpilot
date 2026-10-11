@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-08T20:45:35.855024+00:00",
+  "role": "actual_post_active_HE173_two_field_integration_native_source_course_and_16_projection_check",
+  "actualCommand": [
+    "app/node_modules/.bin/tsx",
+    "app/scripts/economics-he173-current-root-independent-probe.mts",
+    "active-root-post-integration-v1"
+  ],
+  "actualCwd": "/tmp/skillpilot-he173-immutable-source-binding-v1-agvhskvr",
+  "actualTerminalExitCode": 0,
+  "actualNodeVersion": "20.20.2",
+  "currentRootMappingCanonicalAndSourceWholeByteGuards": 806,
+  "allGuardsRetainedBeforeAndAfter": true,
+  "nativeOutput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-he173-one-mapping-current311-independent-root-counterreview-v1/actual-native-active-root-post-integration-v1.json",
+    "sha256": "sha256:a13dbb50019442d40844d16d2be777bcc78c6e32ed0612cc721fedfaae57817c"
+  },
+  "actualRuleResults": [
+    {
+      "id": "CQR-005",
+      "status": "pass",
+      "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+      "metrics": {
+        "sourceExtractionSources": 30,
+        "peerBaselineChecks": 27,
+        "failedPeerBaselineChecks": 0,
+        "granularityChecks": 0,
+        "failedGranularityChecks": 0
+      }
+    },
+    {
+      "id": "CQR-004",
+      "status": "pass",
+      "summary": "Course-level mapping is clean for 352 upper-secondary source-to-canonical mapping edge(s), including 1 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+      "metrics": {
+        "configuredMappingFiles": 32,
+        "sourceGoals": 1359,
+        "sourceGoalsWithCourseLevel": 1359,
+        "gkLkSourceGoals": 762,
+        "lkSourceGoals": 442,
+        "unspecifiedSourceGoals": 117,
+        "checkedMappingEdges": 352,
+        "defaultedUnspecifiedMappingEdges": 107,
+        "reviewedCourseLevelExceptions": 1,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 0
+      }
+    },
+    {
+      "id": "CQR-003",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 16,
+        "fullCoverageJurisdictions": 16,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 0,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceAtomicGoals": 2109,
+        "sourceMappedToViewAtomicGoals": 2109,
+        "sourceOriginalGoals": 2109,
+        "sourceFullyCoveredOriginalGoals": 2109,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "surrogateBackedAtomicGoals": 94,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 16,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 0,
+        "minSourceBackedAtomicGoals": 63,
+        "maxVisibleAtomicGoals": 269,
+        "maxSourceBackedAtomicGoals": 269,
+        "totalAtomicGoals": 282
+      }
+    },
+    {
+      "id": "CQR-000",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "completeSourceJurisdictions": 16,
+        "emptySourceJurisdictions": 0,
+        "missingReadableSourceInventoryJurisdictions": 0,
+        "originalSourceUrlIssues": 0,
+        "sourceExtractedGoals": 2109,
+        "sourceOriginalGoals": 2109,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 2109,
+        "sourceUnregisteredAtomicGoals": 0
+      }
+    }
+  ],
+  "publicNativeImplementationChanged": false,
+  "privateVisibilityExportOnlyExistingProbe": true,
+  "scopeLimit": "Existing source structure/counts/course assignments only. Wrong normative BE100 is an explicitly open independent substantive source finding. No complete subject source fidelity, LayerA terminal coverage, D/P/V closure, M7 or human approval inferred.",
+  "currentStrict": {
+    "full": 261,
+    "total": 311,
+    "net": 0
+  },
+  "humanApproval": false
+}

@@ -1,0 +1,27 @@
+{
+  "capsuleOptional": "/tmp/skillpilot-economics-safe21-current499-7q4d4489",
+  "argvOptional": [
+    "/tmp/skillpilot-economics-safe21-current499-7q4d4489/app/node_modules/.bin/tsx",
+    "/tmp/skillpilot-economics-safe21-current499-7q4d4489/native-safe21-current499.ts"
+  ],
+  "helperSource": "import {readFileSync,writeFileSync} from 'node:fs';\nimport {validateCanonicalLandscape} from './app/src/utils/authoring/canonicalAuthoring.ts';\nimport {buildApplicabilityCompilation} from './app/scripts/applicabilityCompiler.ts';\nimport {routeProfiles,evaluateRouteProfile,ownProjectedScopeRows,collectWholeMaterialPrerequisiteClosure,readJurisdictionCoverageByLandscapeId,evaluateJurisdictionCoverage} from './app/scripts/generateCurriculumQualityStatus.ts';\nconst land=JSON.parse(readFileSync('./curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json','utf8'));\nconst all=buildApplicabilityCompilation(),report=all.reports.find(r=>r.landscapeId===land.landscapeId)!;\nconst profile=routeProfiles.find(p=>p.landscapeId===land.landscapeId)!;\nconst route=evaluateRouteProfile(land,profile,{...all,reports:[report]});\nconst source=evaluateJurisdictionCoverage(readJurisdictionCoverageByLandscapeId(all).get(land.landscapeId));\nconst ids=land.goals.filter(g=>g.examData).map(g=>g.id);\nconst materials=ids.map(id=>{const g=land.goals.find(g=>g.id===id),c=collectWholeMaterialPrerequisiteClosure(land,id);return {id,directRequires:g.requires,wholeMaterialPrerequisites:[...c.atomicGoalIds],unresolvedReferences:[...c.unresolvedReferences],actualCompiled:report.goals.find(x=>x.goalId===id),actuallyVisibleScopeKeys:ownProjectedScopeRows.filter(r=>r.actualTerminalIds.includes(id)).map(r=>r.viewPath+'|'+r.jurisdiction+'|'+JSON.stringify(r.scopeFilters))};});\nconst graph=validateCanonicalLandscape(land);if(graph.some(g=>g.severity==='error'))throw new Error(JSON.stringify(graph));\nwriteFileSync(process.argv[2],JSON.stringify({goalCount:land.goals.length,graph,compilerSummary:report.summary,compilerGoals:report.goals,nativeRules:route.rules,sourceRule:source,materials,allScopeRows:ownProjectedScopeRows},null,2)+'\\n');\nconsole.log(JSON.stringify({goalCount:land.goals.length,graphErrors:graph.filter(g=>g.severity==='error').length,compilerSummary:report.summary,sourceRule:source,rules:route.rules.map(r=>({id:r.id,status:r.status,metrics:r.metrics}))},null,2));\n",
+  "originalCurrent496PositiveAndRealNegativeRawPreserved": true,
+  "oldNoRequiresNegativeWasGenuineLocalAndGlobalRouteFailureNotCoveredBindingMetric": "Original empty-requires excluded trade through native applicability: local3636→3668/globalmissing1→2, coverageBinding metric0. This was not a coverage checker failure or green authorclaim. New nonempty wrongrequires negative tests actual assessedbc1 binding directly.",
+  "currentUninstrumentedChecker": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+    "bytes": 273652
+  },
+  "currentUnchangedCompiler": {
+    "path": "app/scripts/applicabilityCompiler.ts",
+    "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+    "bytes": 56784
+  },
+  "instrumentationOnly": "capture scope rows/exports; helper enumerates all102 actualexamData for truthful diagnostics, no checker logic change",
+  "inputIndex": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-current496-qualified-existing-material-access-and-two-practice-metadata-author-v1/safe21-fieldwise-current-qualified499-and34-main3-views-author-successor-v3/actual-current499-safe21-five-existing-wholeKEEP-fieldwise-access.author-input-index.json",
+    "sha256": "0c5df7ea7451117434913a44c0a5f3af9082233375107e7d090eb3619e672bc8",
+    "bytes": 59966
+  },
+  "activeWrites": 0
+}

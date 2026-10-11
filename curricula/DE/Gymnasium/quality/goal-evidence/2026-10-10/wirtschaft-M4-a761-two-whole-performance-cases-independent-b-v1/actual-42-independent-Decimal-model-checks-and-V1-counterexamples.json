@@ -1,0 +1,302 @@
+{
+  "method": "Python Decimal exact arithmetic, completed assertions on42 independent calculations",
+  "checks": [
+    {
+      "id": "A-baseline",
+      "expression": "100*500",
+      "actualDecimal": "50000",
+      "expected": "50000",
+      "boundary": "Whole cooperative sales; not income per farm"
+    },
+    {
+      "id": "A-contract-price-funds",
+      "expression": "40*600",
+      "actualDecimal": "24000",
+      "expected": "24000",
+      "boundary": "Actually paid600 explicitly fixed inV2"
+    },
+    {
+      "id": "A-restricted-premium",
+      "expression": "40*30",
+      "actualDecimal": "1200",
+      "expected": "1200",
+      "boundary": "Restricted community funds, not freely individual income"
+    },
+    {
+      "id": "A-other-sales",
+      "expression": "60*500",
+      "actualDecimal": "30000",
+      "expected": "30000",
+      "boundary": "Remaining60t, no guaranteed further contract sales"
+    },
+    {
+      "id": "A-total-funds",
+      "expression": "24000+1200+30000",
+      "actualDecimal": "55200",
+      "expected": "55200",
+      "boundary": "All funds including restricted premium"
+    },
+    {
+      "id": "A-after-certification",
+      "expression": "55200-2000",
+      "actualDecimal": "53200",
+      "expected": "53200",
+      "boundary": "Stated common cost deducted once"
+    },
+    {
+      "id": "A-individual-upper-available",
+      "expression": "53200-1200",
+      "actualDecimal": "52000",
+      "expected": "52000",
+      "boundary": "Upper available funds after stated costs/restricted premium; no equality or household profit assertion"
+    },
+    {
+      "id": "A-total-increment",
+      "expression": "53200-50000",
+      "actualDecimal": "3200",
+      "expected": "3200",
+      "boundary": "Contains1200 restricted premium"
+    },
+    {
+      "id": "A-individual-fund-increment",
+      "expression": "52000-50000",
+      "actualDecimal": "2000",
+      "expected": "2000",
+      "boundary": "No individual distribution promised"
+    },
+    {
+      "id": "A-old-importer-tariff",
+      "expression": "50000*.06",
+      "actualDecimal": "3000.00",
+      "expected": "3000",
+      "boundary": "Importer liability; no promised producer pass-through"
+    },
+    {
+      "id": "A-new-importer-tariff",
+      "expression": "50000*0",
+      "actualDecimal": "0",
+      "expected": "0",
+      "boundary": "Unchanged assessment value"
+    },
+    {
+      "id": "A-importer-saving",
+      "expression": "3000-0",
+      "actualDecimal": "3000",
+      "expected": "3000",
+      "boundary": "Not extra farm receipts without pass-through"
+    },
+    {
+      "id": "A-individual-interest",
+      "expression": "420*.12",
+      "actualDecimal": "50.40",
+      "expected": "50.40",
+      "boundary": "Individual principal explicitly420 inV2, not inferred from programme mean"
+    },
+    {
+      "id": "A-good-after-interest",
+      "expression": "80-50.4",
+      "actualDecimal": "29.6",
+      "expected": "29.6",
+      "boundary": "Before financing principal repayment"
+    },
+    {
+      "id": "A-weak-after-interest",
+      "expression": "20-50.4",
+      "actualDecimal": "-30.4",
+      "expected": "-30.4",
+      "boundary": "Negative before additional principal repayment"
+    },
+    {
+      "id": "A-total-yearend-claim",
+      "expression": "420+50.4",
+      "actualDecimal": "470.4",
+      "expected": "470.4",
+      "boundary": "Contract principal plus interest; additional liquidity source not given"
+    },
+    {
+      "id": "A-unsustainable-water-excess",
+      "expression": "2400-2000",
+      "actualDecimal": "400",
+      "expected": "400",
+      "boundary": "Water limit exceeded"
+    },
+    {
+      "id": "A-alternative-water-margin",
+      "expression": "2000-1800",
+      "actualDecimal": "200",
+      "expected": "200",
+      "boundary": "Under stated limit, not proof of every ecological effect"
+    },
+    {
+      "id": "A-recurring-margin",
+      "expression": "1600-1500",
+      "actualDecimal": "100",
+      "expected": "100",
+      "boundary": "Before unprovided repair risks; access still must be tested"
+    },
+    {
+      "id": "B-baseline",
+      "expression": "60*450",
+      "actualDecimal": "27000",
+      "expected": "27000",
+      "boundary": "All40 farms, no equality assumed"
+    },
+    {
+      "id": "B-contract-price-funds",
+      "expression": "30*550",
+      "actualDecimal": "16500",
+      "expected": "16500",
+      "boundary": "Actually stated contract price"
+    },
+    {
+      "id": "B-restricted-premium",
+      "expression": "30*20",
+      "actualDecimal": "600",
+      "expected": "600",
+      "boundary": "Restricted community use"
+    },
+    {
+      "id": "B-other-sales",
+      "expression": "30*450",
+      "actualDecimal": "13500",
+      "expected": "13500",
+      "boundary": "Remaining30t"
+    },
+    {
+      "id": "B-total-funds",
+      "expression": "16500+600+13500",
+      "actualDecimal": "30600",
+      "expected": "30600",
+      "boundary": "Includes community premium"
+    },
+    {
+      "id": "B-after-shared-costs",
+      "expression": "30600-1200",
+      "actualDecimal": "29400",
+      "expected": "29400",
+      "boundary": "One stated deduction"
+    },
+    {
+      "id": "B-individual-upper-available",
+      "expression": "29400-600",
+      "actualDecimal": "28800",
+      "expected": "28800",
+      "boundary": "No individual household earnings or equal distribution promised"
+    },
+    {
+      "id": "B-total-increment",
+      "expression": "29400-27000",
+      "actualDecimal": "2400",
+      "expected": "2400",
+      "boundary": "Contains600 restricted premium"
+    },
+    {
+      "id": "B-individual-fund-increment",
+      "expression": "28800-27000",
+      "actualDecimal": "1800",
+      "expected": "1800",
+      "boundary": "Aggregate available funds only"
+    },
+    {
+      "id": "B-old-importer-tariff",
+      "expression": "27000*.10",
+      "actualDecimal": "2700.00",
+      "expected": "2700",
+      "boundary": "Importer, not producer"
+    },
+    {
+      "id": "B-new-importer-tariff",
+      "expression": "27000*.02",
+      "actualDecimal": "540.00",
+      "expected": "540",
+      "boundary": "Same assessment value/quantities"
+    },
+    {
+      "id": "B-importer-saving",
+      "expression": "2700-540",
+      "actualDecimal": "2160",
+      "expected": "2160",
+      "boundary": "Cannot fund unpromised producer documentation by subtraction"
+    },
+    {
+      "id": "B-tempting-invalid-economic-net",
+      "expression": "2600-2160",
+      "actualDecimal": "440",
+      "expected": "440",
+      "boundary": "Arithmetic valid; asserting producer netloss440 is invalid because actors and transfers differ"
+    },
+    {
+      "id": "B-unsustainable-water-excess",
+      "expression": "2200-1800",
+      "actualDecimal": "400",
+      "expected": "400",
+      "boundary": "Stated water limit exceeded"
+    },
+    {
+      "id": "B-alternative-water-margin",
+      "expression": "1800-1550",
+      "actualDecimal": "250",
+      "expected": "250",
+      "boundary": "Under limit, not automatic inclusion"
+    },
+    {
+      "id": "B-first-year-funds",
+      "expression": "1500+300",
+      "actualDecimal": "1800",
+      "expected": "1800",
+      "boundary": "Yearone commitment only"
+    },
+    {
+      "id": "B-first-year-balance",
+      "expression": "1500+300-1800",
+      "actualDecimal": "0",
+      "expected": "0",
+      "boundary": "Yearone covered"
+    },
+    {
+      "id": "B-subsequent-deficit",
+      "expression": "1800-1500",
+      "actualDecimal": "300",
+      "expected": "300",
+      "boundary": "Annual unfunded deficit, loan not recurring revenue"
+    },
+    {
+      "id": "V1-valid-higher-contract-total",
+      "expression": "40*610+40*30+60*500",
+      "actualDecimal": "55600",
+      "expected": "55600",
+      "boundary": "610 is permitted by V1 minimum600; V2 fixes actual600"
+    },
+    {
+      "id": "V1-valid-higher-contract-individual-funds",
+      "expression": "55600-2000-1200",
+      "actualDecimal": "52400",
+      "expected": "52400",
+      "boundary": "Exceeds V1 purported upper bound52000"
+    },
+    {
+      "id": "V1-programme-compatible-two-loan-mean",
+      "expression": "(400+440)/2",
+      "actualDecimal": "420",
+      "expected": "420",
+      "boundary": "Programme mean does not fix individual amount"
+    },
+    {
+      "id": "V1-person400-interest",
+      "expression": "400*.12",
+      "actualDecimal": "48.00",
+      "expected": "48",
+      "boundary": "Compatible with same average, differs from50.4"
+    },
+    {
+      "id": "V1-person440-interest",
+      "expression": "440*.12",
+      "actualDecimal": "52.80",
+      "expected": "52.8",
+      "boundary": "Compatible with same average, differs from50.4"
+    }
+  ],
+  "allExpectedNumbersActuallyChecked": true,
+  "checksCount": 42,
+  "actualLearnerOrCausalEvidence": false
+}

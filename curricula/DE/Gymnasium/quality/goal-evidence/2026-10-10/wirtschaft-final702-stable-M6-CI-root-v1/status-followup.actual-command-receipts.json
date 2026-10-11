@@ -1,0 +1,55 @@
+{
+  "phase": "status-followup",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "report:gymnasium-duration-readiness",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "report:gymnasium-duration-readiness",
+        "--",
+        "--write"
+      ],
+      "startedAt": "2026-10-10T18:45:24.841587+00:00",
+      "elapsedSeconds": 1.535,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status-followup.01.report-gymnasium-duration-readiness.raw.txt",
+      "rawOutputSha256": "84cfafb0b2f10aede14cd92eba737cd219da1134162ba43206226b0c469cdb97"
+    },
+    {
+      "name": "check:m6-duration-policy-readiness",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:m6-duration-policy-readiness"
+      ],
+      "startedAt": "2026-10-10T18:45:26.377550+00:00",
+      "elapsedSeconds": 1.342,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status-followup.02.check-m6-duration-policy-readiness.raw.txt",
+      "rawOutputSha256": "9838899d5c051a7f65f82ba78e8612a6dac89e92fa202fc88388d8c7bc513c59"
+    },
+    {
+      "name": "check:gymnasium-duration-offerings",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:gymnasium-duration-offerings"
+      ],
+      "startedAt": "2026-10-10T18:45:27.719946+00:00",
+      "elapsedSeconds": 0.401,
+      "exitCode": 1,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status-followup.03.check-gymnasium-duration-offerings.raw.txt",
+      "rawOutputSha256": "7701bd0685afc42d714d7ef6714c039eb59dd118d04e3716e6c0817f05c7781b"
+    }
+  ],
+  "phaseComplete": false
+}

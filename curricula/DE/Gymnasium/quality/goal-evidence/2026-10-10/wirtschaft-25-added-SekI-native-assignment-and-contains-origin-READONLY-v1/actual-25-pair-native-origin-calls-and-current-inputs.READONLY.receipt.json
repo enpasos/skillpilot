@@ -1,0 +1,96 @@
+{
+  "status": "READONLY_NATIVE_ORIGIN_ONLY_NO_NEW_SOURCE_STAGE_QUALIFICATION",
+  "HEAD": "05024fa45bdf95f2ea5da54d961bfee727600f23",
+  "nativeCommands": {
+    "javac": [
+      "/tmp/skillpilot-economics-M6-ci-corretto-25.0.2.10.1/bin/javac",
+      "-cp",
+      "<exact existing private native-runtime-classpath.txt>",
+      "-d",
+      "/tmp/economics-backend-two-test-contracts-xrlzx9vj",
+      "/tmp/economics-backend-two-test-contracts-xrlzx9vj/ReadOnlyEconomicsSekIOrigins.java"
+    ],
+    "java": [
+      "/tmp/skillpilot-economics-M6-ci-corretto-25.0.2.10.1/bin/java",
+      "-cp",
+      "/tmp/economics-backend-two-test-contracts-xrlzx9vj:<exact existing private native-runtime-classpath.txt>",
+      "ReadOnlyEconomicsSekIOrigins",
+      "/home/enpasos/projects/skillpilot/curricula",
+      "/tmp/economics-SekI-added25-source-stage-CANDIDATE/actual25-added-Country-ID-full-contracts-and-whole-direct-source-facets.READONLY.json"
+    ],
+    "javacExitCode": 0,
+    "nativeExitCode": 0
+  },
+  "nativeCalls": [
+    "LearnerService.getGoalProjection(root,personal,false)",
+    "LearnerService.parsePersonalCurriculumConfig(personal)",
+    "LearnerService.deriveCompositionScope(economicsId,config)",
+    "CompositionViewService.findLearnerScopeView(economicsId,requestedScope)",
+    "LearnerService.collectCompositionViewGoalReferences(actualMatchedView.rootNodes,references)",
+    "LearnerService.resolveCompositionProjectionAssignments(references,actualProjection.structuralGoals)",
+    "LearnerService.matchesFilter(actualRuntimeGoal,economicsLandscape,DE-country/GK/G8-or-G9,false,empty caches)"
+  ],
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "db2c839c959c51a3e9f00a5a9c59398f568305b7439ad19674408ab7f54c42b7",
+      "bytes": 5625906,
+      "generatedExecutionOnly": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-seki-economics.view.json",
+      "sha256": "b3987fd6276ab76cb1e5f47689644e8a32ea505dec50f6b0efaea57e15e209db",
+      "bytes": 4095,
+      "generatedExecutionOnly": false
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "bytes": 529427,
+      "generatedExecutionOnly": false
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "sha256": "1159e6a414dde455bed6fb9ee85b7baff435c200252dcfc7ec3df0caae1d29ac",
+      "bytes": 101466,
+      "generatedExecutionOnly": false
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "sha256": "9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+      "bytes": 43524,
+      "generatedExecutionOnly": false
+    },
+    {
+      "path": "backend/build/classes/java/main/com/skillpilot/backend/service/LearnerService.class",
+      "sha256": "72d53b92f84c466a0a60214c80afdf0e6badbad201637038a31d621296b77272",
+      "bytes": 385343,
+      "generatedExecutionOnly": true
+    },
+    {
+      "path": "backend/build/classes/java/main/com/skillpilot/backend/landscape/LandscapeService.class",
+      "sha256": "471bd2c0537f5437a99ed2a19924ab35d16933c108b6f05788619389d8faa11a",
+      "bytes": 86592,
+      "generatedExecutionOnly": true
+    },
+    {
+      "path": "backend/build/classes/java/main/com/skillpilot/backend/service/CompositionViewService.class",
+      "sha256": "ff85daafdcf3279bd4f465185729e9419f6e44090dfcff3c5287527da68cc799",
+      "bytes": 44329,
+      "generatedExecutionOnly": true
+    }
+  ],
+  "privateClasspathFileSha256": "933701d170e3fe3e99421a78b65b81bd938034e8b68eb573aad6b3aa91af83b7",
+  "nativeOutputSha256": "debf52088dde9dfa312d6aa5d6ecba899cf72d0a49c1cda00b6508c6c82e5b32",
+  "countryIdPairs": 25,
+  "nativeDurationAssignments": 50,
+  "targetAssignments": 50,
+  "prerequisiteOnlyAssignments": 0,
+  "directGoalEntryAssignments": 2,
+  "inheritedContainsAssignments": 48,
+  "perGoalSourceStageFilterUsed": false,
+  "stageMeaning": "Explicit SekI marker chooses authored de-de-gym-seki-economics view. Source mappings contribute jurisdiction without a per-edge stage test; target membership then comes from authored view references and canonical contains descendants. GK and G8/G9 filters passed. No requires-closure creates target assignments.",
+  "dae939SixCountryOrigin": "All six pairs have inherited TARGET assignment at contains distance1 from canonicalSubtree9d4ca8c5. Existing lawful memory prerequisite chains, if qualified, are a different reason to preserve support availability, not the current target origin.",
+  "reviewLimit": "Technical origin is not an independent normative lower-source or authored whole-goal stage approval. Counts remain conditional pending A/C/Root stage decisions.",
+  "activeWrites": 0
+}

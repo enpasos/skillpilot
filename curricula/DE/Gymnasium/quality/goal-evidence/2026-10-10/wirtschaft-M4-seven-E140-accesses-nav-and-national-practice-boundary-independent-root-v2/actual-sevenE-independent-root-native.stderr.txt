@@ -1,0 +1,18 @@
+/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/util.ts:211
+  if (mode === true) throw new Error(msg)
+                           ^
+
+
+Error: strict mode: unknown keyword: "x-skillpilot-listSemantics"
+    at checkStrictMode (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/util.ts:211:28)
+    at checkUnknownRules (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/util.ts:27:22)
+    at alwaysValidSchema (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/util.ts:17:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/vocabularies/applicator/properties.ts:23:65)
+    at Array.filter (<anonymous>)
+    at Object.code (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/vocabularies/applicator/properties.ts:23:33)
+    at keywordCode (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:532:9)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:265:9)
+    at CodeGen.code (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/codegen/index.ts:545:33)
+    at CodeGen.block (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/codegen/index.ts:700:20)
+
+Node.js v20.20.2

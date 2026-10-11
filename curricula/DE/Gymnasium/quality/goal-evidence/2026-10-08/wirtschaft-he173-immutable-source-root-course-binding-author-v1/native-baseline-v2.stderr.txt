@@ -1,0 +1,13 @@
+/tmp/skillpilot-he173-immutable-source-binding-v1-agvhskvr/app/scripts/economics-he173-immutable-binding-probe.mts:2
+const id='605bdaf6-32d5-56fd-8d92-5a80c2fd2901';const phase=process.argv[2];const can=JSON.parse(readFileSync('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json','utf8'));const pipelines=readMappingPipelineByLandscapeId();const pipeline=pipelines.get(id);const app=buildApplicabilityCompilation();const coverage=readJurisdictionCoverageByLandscapeId(app).get(id);const out={phase,nativeSourceRootCollector:true,sourceCount:evaluateSourceGoalCountPlausibility(pipeline),sourceCourse:evaluateCourseLevelMappingConsistency(can),coverageRule:evaluateJurisdictionCoverage(coverage),sourceSnapshot:evaluateSourceSnapshotIngestion(coverage,pipeline),pipeline,coverage,economicsCompilerFindings:app.findings.filter((f:any)=>f.landscapeId===id),canonicalWholeGoalCount:can.goals.length};writeFileSync("/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-he173-immutable-source-root-course-binding-author-v1"+('/actual-native-'+phase+'.json'),JSON.stringify(out,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({phase,rules:[out.sourceCount,out.sourceCourse,out.coverageRule,out.sourceSnapshot],sourceCount:pipeline?.sources.length,canonicalWholeGoalCount:can.goals.length}));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+
+
+TypeError: Cannot read properties of undefined (reading 'filter')
+    at <anonymous> (/tmp/skillpilot-he173-immutable-source-binding-v1-agvhskvr/app/scripts/economics-he173-immutable-binding-probe.mts:2:726)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+
+Node.js v18.19.1

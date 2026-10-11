@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:0bb207050173ce68c8e5739e17971581a2b943d9e180ae00dbae6dbe66ac3687",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-economics-current346-D64-binding-04",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:b450c7a20ce75bbb3b01de282ff4c85dc6ef8427a9eb5b222df40e7e54f2e0a2",
+      "pageFingerprint": "sha256:ecce6e6fed74e5ce34b9b473b420d95f9f4db56b70b2d9abc3a074bda40b0143",
+      "evidenceReview": {
+        "reviewId": "canonical-economics-q3-global-currency-integration-twenty-three-positive-author-20261008-v1",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:a3d98d9de0dbd8b9cf1bf3b3d924fcfc903e59b0e74ea100e7cf19202f4b9866",
+        "profileFingerprint": "sha256:fa3e0d05e4a1cb68f82150b94b3227359eb812d4b4613b75963ccd4a3f0fe6ca",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:7c1a9d3675bda2f3c8074dd8a821aabf1dc0a1b507203e5939ff84c5eaf54680",
+      "bytes": 288043
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:b6850ae9be388e0d4a91ec0033626f1ec00af24c5a52118a15bbca29f6c7db97",
+      "bytes": 167950
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:494218b70ab548778f7172b98b4748ded4102ad49b0018b513a034d0c3f3cd36",
+      "bytes": 3520
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:bb7f445c6dbf57861e6a20d8606bcd57239a3333c700665d3f1d29296d71ffe3",
+      "bytes": 20102
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:e9f0a841065b7529281afc79aab708c795a178c49fea2807392bf48cb708ff57",
+      "bytes": 3522
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:361ef980753bbded9c420100a734509bc20dd81975160ff2846c70ecbb4947e8",
+      "bytes": 12309
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:cb43be69d54b3d10694a597e453f7ff729ab48fad12f84b977119b94aed92e31",
+      "bytes": 9973
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:c6cf84bff392ef12ec06234f4d6053ec629c726fd8d35085705040a2af8a050f",
+      "bytes": 6921
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+      "bytes": 3552
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:abb825876f655bbab38cb15868c0017ab1c4f7986075a95624675d2140a29060"
+}

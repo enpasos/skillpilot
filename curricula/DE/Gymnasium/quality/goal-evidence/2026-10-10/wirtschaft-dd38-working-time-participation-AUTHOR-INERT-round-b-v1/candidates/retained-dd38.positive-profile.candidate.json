@@ -1,0 +1,75 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "wirtschaft-dd38-working-time-positive-author-round-b-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4a3fa995f760e337b43c971ed24082fe1f59e514f9457407aa9304ee77b860f9",
+  "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+  "goalId": "dd38e0c5-d77b-5893-815c-548ea2a84429",
+  "goalFingerprint": "sha256:196e83b8e614ea34611c99adfe96f65b9120a5ea74fa4a23e870d2a65232d4f0",
+  "reviewInputFingerprint": "sha256:6d1f5b85612c79727f6f38fe351416523995350e3cb52a69e13c206c30333381",
+  "profileFingerprint": "sha256:be50f63005bc4e52c70b9c67ed7cdda43d3126121793a81b790290df41994729",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-10T12:52:34.447034Z",
+  "reviewer": "OpenAI GPT-6 model family / Codex; exact model revision and sampling parameters not exposed",
+  "reason": "Unveröffentlichter INERT-Autorenkandidat für die erhaltene Arbeitszeitkompetenz. Beteiligungsfacetten werden anhand ganzer bestehender Mitbestimmungs- und Entlohnungsverträge wiederverwendet; keine neue doppelte Ziel-ID. Originalziel, alter ganzer P-Vertrag, Bild und ganze Practice-Verträge bleiben als History erhalten. Quellen-, Länder-, M/Karten-, Practice-, D- und V-Folgen sind offen.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "working-hours-headcount-income-and-conditions",
+        "essentialUnderstandingDe": "Veränderte Dauer und veränderte Lage der Arbeitszeit sind unterschiedliche Eingriffe. Gesamtstunden, Vollzeitäquivalente und Beschäftigtenzahl messen verschiedene Größen. Arbeitszeitverkürzung kann bei passender Nachfrage Köpfe erhalten und Einkommen verteilen; bessere zeitliche Abdeckung kann Koordination ermöglichen, schafft aber weder automatisch zusätzliche Stunden noch garantierte Arbeitsplätze.",
+        "essentialUnderstandingEn": "Changes in the duration and timing of work are different interventions. Total hours, full-time equivalents and headcount measure different quantities. Shorter hours may preserve headcount and distribute income changes under suitable demand conditions; better timing can support coordination but creates neither additional hours automatically nor guaranteed jobs.",
+        "observablePerformanceDe": "Die Person analysiert die bereitgestellten Arbeitszeitmodelle, rechnet Stunden und Vollzeitäquivalente mit der angegebenen Referenz um, trennt sie von Personen und Einkommen und erklärt Beschäftigungsfolgen anhand von Nachfrage, Produktivität und tatsächlichen Abdeckungsbedingungen.",
+        "observablePerformanceEn": "The learner analyses the supplied working-time models, converts hours and full-time equivalents using the stated reference, distinguishes them from people and income, and explains employment effects through demand, productivity and actual coverage conditions."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "working-hours-headcount-income-and-conditions"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "duration-versus-timing",
+        "textDe": "Verkürzte Wochenstunden bei Auftragsrückgang gegenüber veränderter zeitlicher Lage bei unverändertem Stundenvolumen.",
+        "textEn": "Shorter weekly hours after falling orders versus changed timing with the same volume of hours."
+      },
+      {
+        "id": "hours-people-and-demand",
+        "textDe": "Gleiche Gesamtstunden mit verschiedener Kopfzahl sowie veränderte Nachfrage mit ausdrücklich zusätzlicher Personalkapazität.",
+        "textEn": "Equal total hours with different headcounts and changed demand with expressly added staff capacity."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "temporary-orders-shorter-hours-versus-dismissals",
+        "taskDemandDe": "Eigener fiktiver Betrieb: 50 Personen arbeiten je 40 Wochenstunden zu 25 Euro pro Stunde. Produktivität bleibt gleich; vorübergehend werden nur 1600 statt 2000 Stunden benötigt. Variante K verteilt je 32 Stunden auf alle 50 Personen bei proportionaler Bezahlung. Variante E beschäftigt 40 Personen weiterhin je 40 Stunden und entlässt zehn; deren andere Einkommen sind unbekannt. Beide Varianten sind im Modell zulässig. Berechne Stunden, Köpfe, Vollzeitäquivalente auf 40-Stunden-Basis und individuelle Betriebslöhne. Analysiere Beschäftigungs- und Verteilungswirkungen und erläutere, welche Nachfrage- und Umsetzungsbedingungen die Interpretation begrenzen.",
+        "taskDemandEn": "An original fictional firm has 50 people working 40 hours a week at EUR25 per hour. Productivity stays constant; demand temporarily requires only 1600 rather than 2000 hours. Option K gives all 50 people 32 hours with proportional pay. Option E retains 40 people at 40 hours and dismisses ten; their other income is unknown. Both are permitted in the model. Calculate hours, headcounts, full-time equivalents using a 40-hour reference, and individual firm wages. Analyse employment and distributional effects and explain the demand and implementation conditions limiting the interpretation.",
+        "expectedPerformanceDe": "Die Person berechnet vorher 2000 Stunden und 50 VZÄ, danach in beiden Varianten 1600 Stunden und 40 VZÄ. K erhält 50 Köpfe, E nur 40. Der Wochenlohn fällt in K von 1000 auf 800 Euro, also um 20 Prozent; in E bleiben für die Beschäftigten 1000 Euro, die zehn Entlassenen erhalten keinen Betriebslohn. Gleiche Stunden beweisen daher weder gleiche Beschäftigtenzahl noch gleiche Lastenverteilung. K erhält im gegebenen Zeitraum Köpfe, kostet individuelles Einkommen und benötigt verlässliche Aufträge, passende Organisation und zulässige Vereinbarungen; die Rechnung garantiert keine dauerhafte Beschäftigung.",
+        "expectedPerformanceEn": "The learner calculates 2000 hours and 50 FTE initially and 1600 hours and 40 FTE under both options. K retains 50 people and E only 40. Weekly pay in K falls from EUR1000 to EUR800, or 20%; E pays retained workers EUR1000 and dismissed workers no firm wages. Equal hours therefore establish neither equal headcount nor equal burdens. K preserves people during the stated period but reduces individual income and needs reliable orders, suitable organisation and permitted agreements; the calculation guarantees no lasting employment.",
+        "understandingFocusDe": "Stundenvolumen, Vollzeitäquivalente, Köpfe und Einkommen bei verkürzter Arbeitszeit auseinanderhalten.",
+        "understandingFocusEn": "Distinguish hours, full-time equivalents, people and income under shorter working time."
+      },
+      {
+        "id": "service-coverage-with-unchanged-hours-and-new-demand",
+        "taskDemandDe": "Anderer eigener fiktiver Dienst: zwölf Personen arbeiten je 30 Wochenstunden, unverändert zu 20 Euro je Stunde. Für die Referenz gilt 40 Stunden je VZÄ. Ein zulässiges Gleitzeitmodell verändert nur die Lage; im kritischen Fenster 8–12 Uhr werden mindestens sechs Personen gebraucht. Der alte Plan stellt fünf bereit, der neue sieben; alle anderen Fenster und erforderlichen Qualifikationen sind im Material ausdrücklich gesichert. Prüfe Stunden, Köpfe, Einkommen und Abdeckung. Eine spätere Nachfragevariante erfordert zusätzlich 40 Wochenstunden und bietet eine tatsächlich verfügbare neue Person mit 40 Stunden. Unterscheide diese Einstellung von der bloßen Gleitzeitänderung und erläutere, welche dauerhaften Beschäftigungsschlüsse offenbleiben.",
+        "taskDemandEn": "A different original fictional service has twelve people working 30 hours a week at an unchanged EUR20 per hour. The FTE reference is 40 hours. A permitted flexitime scheme changes timing only; at least six people are needed from 08:00 to 12:00. The old plan provides five and the new plan seven; all other windows and required qualifications are expressly secured in the material. Check hours, headcount, income and coverage. A later demand variant needs an extra 40 weekly hours and offers an actually available new person working 40 hours. Distinguish this hiring from the timing change alone and explain which lasting employment conclusions remain open.",
+        "expectedPerformanceDe": "Die Person berechnet unverändert 360 Wochenstunden, neun VZÄ, zwölf Köpfe und je 600 Euro Wochenlohn. Fünf unterschreitet die verlangten sechs, sieben bietet im genannten Fenster eine Reserve von einer Person; Gesamtstunden und Köpfe steigen dadurch nicht. Die ausdrückliche Einstellung erhöht auf 400 Stunden, zehn VZÄ und 13 Köpfe; erst diese zusätzliche Kapazität deckt den beschriebenen Mehrbedarf. Passendere Lage kann Service und Vereinbarkeit stützen, doch ohne Angaben zu längerfristiger Nachfrage, Kosten und Umsetzbarkeit entsteht keine Arbeitsplatzgarantie oder bewiesene kausale Bindungswirkung.",
+        "expectedPerformanceEn": "The learner calculates unchanged totals of 360 weekly hours, nine FTE, twelve people and EUR600 weekly pay each. Five falls below the required six and seven provides one spare person in the specified window; total hours and headcount do not thereby rise. Express hiring increases capacity to 400 hours, ten FTE and thirteen people; only that added capacity meets the stated extra demand. Better timing may support service and reconciliation, but without longer-term demand, cost and implementation evidence it establishes neither a job guarantee nor a proven causal retention effect.",
+        "understandingFocusDe": "Zeitliche Passung von zusätzlichem Arbeitsvolumen und tatsächlicher Einstellung trennen.",
+        "understandingFocusEn": "Separate timing fit from added hours and actual hiring."
+      }
+    ]
+  }
+}

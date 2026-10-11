@@ -1,0 +1,114 @@
+{
+  "startedAt": "2026-10-10T15:49:49.411382+00:00",
+  "completedAt": "2026-10-10T15:49:54.644726+00:00",
+  "role": "INDEPENDENT_READONLY_CI_COMMAND_COVERAGE_AND_ROOT_TEST_DIFF_REVIEW",
+  "reviewer": "/root/economics_final56_current_round_a",
+  "decisionRootTestAndSchemaDiff": "KEEP",
+  "diffPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-bounded-CI-and-final-P-Book-portability-independent-a-READONLY-v1/actual-reviewed-four-file-root-diff.READONLY.txt",
+  "reason": "Economics pending D/V findings remain explicit M7 failures; the new test requires current scope/P/A/M for each current ordinary goal, exact set identities and six required validation checks. It asserts M6 while CQR303 is open. Math807 and Physics478 are additionally required to satisfy strict M7 across every actual current ID. Production completion and maturity functions are byte-exact to HEAD. V2 schemas add a closed profile branch, preserving AI/human status constraints, with full bilingual and malformed/AI-upgrade negative fixtures reached by the existing pipeline.",
+  "unchangedProductionGateFunctions": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "function": "evaluateDeepUnderstandingQa",
+      "exactToHEAD": true,
+      "functionBytesSha256": "sha256:fb50b5cafea5cb47fcaab1eec916949ab8992743a0ef4459f7a5e5275b219d0e"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "function": "deriveCurriculumMaturity",
+      "exactToHEAD": true,
+      "functionBytesSha256": "sha256:02df6668c5a14e6bbad065ff915d4c5204bc0cdaa5382267f824c5692180b6dd"
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "function": "hasStrictDeepUnderstandingCompletion",
+      "exactToHEAD": true,
+      "functionBytesSha256": "sha256:d568b7bd66d0232c24706182a3f5729ace2adc44966d196da2cad0898564316e"
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "function": "generateDeepUnderstandingRollout",
+      "exactToHEAD": true,
+      "functionBytesSha256": "sha256:023aa8d849a4795df16ac52eea0a83a59af020c5878ff4938a9611546ecf2048"
+    }
+  ],
+  "actualProtectedDenominatorsRead": [
+    {
+      "subject": "mathematik",
+      "currentAuthoritativeOrdinaryGoalCountRead": 807,
+      "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "testRequiresStrictM7ForAllCurrentIds": true
+    },
+    {
+      "subject": "physik",
+      "currentAuthoritativeOrdinaryGoalCountRead": 478,
+      "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "testRequiresStrictM7ForAllCurrentIds": true
+    }
+  ],
+  "changedGeneratorSemantics": "Economics now uses compiled jurisdiction, explicit whole CrossStage views, actual course/duration filters, visible whole assessed-competency prerequisite paths, and full inherited/transitive hard prerequisite closure. Both new issue sets enter CQR104's pass conjunction. This strengthens scope/material checks; it does not alter M5/M6/M7 transition rules.",
+  "newCQR104NegativeFixtureCoverageLimit": "The scheduled status regeneration exercises every actual Economics scope, but testHardLearningRouteValidation does not directly call the new private whole-material closure/coverage branches. No fresh negative execution of those private branches is claimed here.",
+  "existingCoverage": [
+    "LayerA validates schemas/UUIDs/wording/graph/exam markdown/hard routes/view filters/source registry/composition/roles/course mappings/source extraction availability and evidence inventory.",
+    "quality:source-coverage-audit:check already runs sourceCoverageAndApplicabilityRegression.test.ts before checking generated source coverage.",
+    "After activation, LayerA derives A/M config and all44 P config paths dynamically from currentREG, then runs the changed testDeepUnderstandingRollout.",
+    "Status regeneration includes CQR000..005,101..104,201..203,301,302,303,401,501 and curriculum-status:check invokes all10 protected maturity floors.",
+    "Books force-build all5 then publication-check; the npm pretest hook includes native evidence loader/five-publication tests and original-source tests; goal-book-pipeline reaches the changed V2 Markdown and V2/V3 schema-negative tests in testGoalBookReviewBundle plus Physics, model, renderer, publication and runtime tests.",
+    "Lint and build:application cover TypeScript/application integration after the fifth book; build:application also rechecks book publications.",
+    "Docs and git diff --check are covered; actual read-only git ls-files confirms no generated app/public/lernzielbuch publications are tracked."
+  ],
+  "concreteRelevantWorkflowGapsInitiallyFoundAndNowAddedByRoot": [
+    {
+      "id": "CI-GAP-1",
+      "commands": [
+        "npm --prefix app run quality:memory-card-review:check:all"
+      ],
+      "workflow": ".github/workflows/ci.yml:518",
+      "runnerCoverage": "Checks Economics memoryReviewConfigPath only; prequality:curriculum-status invokes report:all, which is not the same explicit native check:all command.",
+      "reason": "Close the existing workflow's native validation coverage for all current registered memory configs after the shared status generator changes; retain protected curricula.",
+      "when": "After stable activation only",
+      "status": "CLOSED_IN_ACTUAL_ROOT_RUNNER_COMMAND_PLAN_NOT_EXECUTED"
+    },
+    {
+      "id": "CI-GAP-2",
+      "commands": [
+        "python3 -B scripts/test_validate_schemas_symlinks.py -v"
+      ],
+      "workflow": ".github/workflows/ci.yml:604",
+      "runnerCoverage": "validate_schemas.py checks actual links; its malformed-link regression suite was omitted.",
+      "reason": "Final P/Book inputs are portable in the actual read-only run, but preserve the workflow's portable-alias negative regression coverage.",
+      "when": "After stable activation only",
+      "status": "CLOSED_IN_ACTUAL_ROOT_RUNNER_COMMAND_PLAN_NOT_EXECUTED"
+    },
+    {
+      "id": "CI-GAP-3",
+      "commands": [
+        "node --test scripts/check_curriculum_spelling.test.mjs",
+        "node scripts/check_curriculum_spelling.mjs"
+      ],
+      "workflow": ".github/workflows/ci.yml:457",
+      "runnerCoverage": "validate_competency_wording.py is present; the spelling checker and its regression test are omitted.",
+      "reason": "Current bilingual goal descriptions changed, so the existing wording check does not substitute for the workflow's orthography check.",
+      "when": "After stable activation only",
+      "status": "CLOSED_IN_ACTUAL_ROOT_RUNNER_COMMAND_PLAN_NOT_EXECUTED"
+    }
+  ],
+  "remainingGapsWithinBoundedIntegrationScope": [],
+  "memoryRoutingIndependentKeepReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-bounded-CI-and-final-P-Book-portability-independent-a-READONLY-v1/actual-independent-memory-Discovery-identity-current34-prefix-andSekIappend.KEEP.READONLY.json",
+  "pipelineBookScript": "npm run test:goal-evidence-profile && npm run test:goal-evidence-profile-v2 && npm run test:positive-goal-evidence-review && npm run test:positive-goal-evidence-candidates && npm run test:goal-evidence-contracts && npm run test:goal-description-review-contracts && npm run test:goal-description-dual-round-resolution && npm run test:goal-description-rollout-synthesis && npm run test:goal-description-rollout-batch && npm run test:physics-goal-book-inputs && npm run test:goal-book-chapter-projection && npm run test:goal-book-model && npm run test:goal-book-renderer && npm run test:goal-book-review-bundle && npm run test:goal-book-publication && npm run test:goal-book-runtime && npm run test:workbench-links",
+  "pipelinePretestHook": "npm run test:goal-book-build && npm run build:goal-books && npm run test:goal-book-original-sources",
+  "portabilityReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-bounded-CI-and-final-P-Book-portability-independent-a-READONLY-v1/actual-readonly-587-P-Book-resource-input-link-alias-portability.READONLY.json",
+  "allFinalPBookInputLinksPortable": true,
+  "boundedNotWholeWorkflowAcceptance": true,
+  "unrelatedRemotePluginBackendDemoAndUIJobsNotRunOrClaimed": true,
+  "preActivationSnapshot": {
+    "currentREGPConfigs": 43,
+    "readyPConfigs": 44,
+    "readyOrdinaryGoals": 343
+  },
+  "activeWrites": 0,
+  "nativeFPsComputed": 0,
+  "buildsOrCIRunsStarted": 0,
+  "newSourceGoalCardDScienceReviews": 0,
+  "disclosure": "Previously authored NAIRU Goal/P and 7c prerequisite/scope candidates; this task reviews Root CI/test/schema changes and path portability only, without a new independent review of those own content candidates."
+}

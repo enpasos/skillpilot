@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:84557552125a19565306b4b61bf8353e3740fc930ffed89eb9b5c1fd87dec2a6",
+  "reviewInputFingerprint": "sha256:82c6b183f752bc68e9f1bb2d394941fcff501cb5c6da5ade48866ec585223979",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-methods20-current311-ordered-20261008-v2-a",
+      "roundId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-a",
+      "independenceGroupId": "wirtschaft-methods20-current311-ordered-20261008-v2-independent-a",
+      "runIds": [
+        "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-methods20-current311-ordered-20261008-v2-b",
+      "roundId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-b",
+      "independenceGroupId": "wirtschaft-methods20-current311-ordered-20261008-v2-independent-b",
+      "runIds": [
+        "wirtschaft-methods20-current311-independent-B-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "682facbf-3c9d-5485-88a3-20f2394ed77f",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-01",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:682facbf-3c9d-5485-88a3-20f2394ed77f",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "099086bb-5100-5ce0-8334-0aab8850a48e",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-02",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:099086bb-5100-5ce0-8334-0aab8850a48e",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "596c02e3-6263-5084-8593-c5f51808326b",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-03",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:596c02e3-6263-5084-8593-c5f51808326b",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-04",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3bcb976d-3e45-5c62-81ac-5ed909df202b",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-05",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:3bcb976d-3e45-5c62-81ac-5ed909df202b",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "641dee8e-9658-5db1-89eb-2353f8322a8a",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-06",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:641dee8e-9658-5db1-89eb-2353f8322a8a",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "26ebbe6e-6512-520d-80a4-2e7e80f29f72",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-07",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:26ebbe6e-6512-520d-80a4-2e7e80f29f72",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bd9ec397-86ee-58ec-8327-7e1f28550026",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-08",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:bd9ec397-86ee-58ec-8327-7e1f28550026",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-09",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d399b4d-d057-5284-8e2c-6778e023307d",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-10",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:7d399b4d-d057-5284-8e2c-6778e023307d",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7727b988-e62c-5ebf-8e2f-0c719b13881c",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-11",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:7727b988-e62c-5ebf-8e2f-0c719b13881c",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fd913fec-e64a-5a1a-88f6-724d788ed951",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-12",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:fd913fec-e64a-5a1a-88f6-724d788ed951",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7cbcca15-e93b-57ce-8f14-ffd1a557e288",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-13",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:7cbcca15-e93b-57ce-8f14-ffd1a557e288",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7f1d5e9f-65ef-5d1d-83e5-5e2534772720",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-14",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:7f1d5e9f-65ef-5d1d-83e5-5e2534772720",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6f75cdff-7d32-533b-8fe9-3d003b7af241",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-15",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:6f75cdff-7d32-533b-8fe9-3d003b7af241",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c7b03538-25a2-510b-8fd4-a81bcc3de406",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-16",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:c7b03538-25a2-510b-8fd4-a81bcc3de406",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "becf0989-ee9f-5c8e-8173-5b8246e7944a",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-17",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:becf0989-ee9f-5c8e-8173-5b8246e7944a",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d4d7a90-a1d0-5818-8d55-a0c3e995957b",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-18",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:7d4d7a90-a1d0-5818-8d55-a0c3e995957b",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8dee6c0a-0f76-5717-87b6-04ec89229371",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-19",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:8dee6c0a-0f76-5717-87b6-04ec89229371",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "980a3f45-b0ad-500d-8d5b-975948362b68",
+      "firstRecordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-20",
+      "secondRecordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:980a3f45-b0ad-500d-8d5b-975948362b68",
+      "firstRunId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "secondRunId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

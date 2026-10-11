@@ -1,0 +1,49 @@
+{
+  "status": "technical_compilation_only",
+  "nativeFiles": [
+    {
+      "file": "app/scripts/applicabilityCompiler.ts",
+      "originalSha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "capsuleSha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytesExact": true
+    },
+    {
+      "file": "app/scripts/memoryCardReviewConfigDiscovery.ts",
+      "originalSha256": "d3d2128c26961e21746e8bd6f0b004cd3ab9882435900f0534743d709a4ee8c3",
+      "capsuleSha256": "d3d2128c26961e21746e8bd6f0b004cd3ab9882435900f0534743d709a4ee8c3",
+      "bytesExact": true
+    },
+    {
+      "file": "app/src/landscapeTypes.ts",
+      "originalSha256": "448f9107929ccf9ebac985faed0a12bcb109fb4e6cded8752da7d26c223aa838",
+      "capsuleSha256": "448f9107929ccf9ebac985faed0a12bcb109fb4e6cded8752da7d26c223aa838",
+      "bytesExact": true
+    },
+    {
+      "file": "app/src/utils/jurisdictionMetadata.ts",
+      "originalSha256": "c3348b1c0fb6fe73f6fe031cfe5069f5649262fa42cff3f4142f69504d66f2a6",
+      "capsuleSha256": "c3348b1c0fb6fe73f6fe031cfe5069f5649262fa42cff3f4142f69504d66f2a6",
+      "bytesExact": true
+    }
+  ],
+  "calls": [
+    "buildApplicabilityCompilation(): actual current baseline; select Economics report only",
+    "buildApplicabilityCompilation(): unchanged native copied location against isolated complete input capsule; select Economics report only",
+    "normalizeCanonicalLandscape(candidate)",
+    "buildCanonicalGraphIndex(candidate)",
+    "normalizeCompositionView(each whole candidate view)",
+    "compileCompositionView(view,candidateCanonical)",
+    "collectCompositionProjectionRoleGoalIds(view.rootNodes,candidateIndex.goalById)"
+  ],
+  "exactCommand": "TASK_NATIVE_NODE=$(cat /tmp/skillpilot-checkpoint-native-node-path.txt)\n\"$TASK_NATIVE_NODE\" app/node_modules/tsx/dist/cli.mjs curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-1826-source-scope-and-native34views-AUTHOR-INERT-v3/run-actual-native-compilers.READONLY.ts",
+  "scope": "35views =34 GK/LK +1 separate SekI; no native source/memory/whole maturity gate is granted",
+  "summary": {
+    "goals": 681,
+    "errors": 0,
+    "warnings": 4,
+    "diagnostics": 1475
+  },
+  "all35NoCompileErrors": true,
+  "all35NoDuplicateVisibleIDs": true,
+  "actualFacetRoleNeedsEmpty": true
+}

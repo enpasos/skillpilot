@@ -1,0 +1,70 @@
+import pathlib,json,hashlib,copy
+R=pathlib.Path('/home/enpasos/projects/skillpilot');Q=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+O=Q/'wirtschaft-current577-twentytwo-qualified-and-nine-existing-access-fieldwise-root-candidate-v1';O.mkdir(exist_ok=False)
+def read(p):return json.loads(p.read_text())
+def seal(p):
+ b=p.read_bytes();return {'path':str(p.relative_to(R)),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+def checked(x):
+ p=R/x['path'];assert seal(p)['sha256']==x['sha256'];return p
+def put(n,j):
+ p=O/n;p.parent.mkdir(parents=True,exist_ok=True);assert not p.exists();p.write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n');return seal(p)
+it=Q/'wirtschaft-M4-nine-foreign-qualified-international-current555-status-nav-scope-author-b-v1/actual-final-nine-status-three-existingNav162-view-fields.portable-author-index.json'
+mt=Q/'wirtschaft-M4-thirteen-foreign-qualified-macro-current555-status-nav-scope-author-b-v1/actual-final-thirteen-status-twoNav299-view-fields.portable-author-index.json'
+et=Q/'wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/actual-nine-existing-qualified-whole-materials-only-current555-accesses.root-author-handoff.json'
+assert seal(it)['sha256']=='090a6d2b7db4e45b2dee156cc26cbdd44ce03a735d0e3910ce367c3de4d0603a'
+assert seal(mt)['sha256']=='cc7d34f05139f71aa5b8334a960c96131c756ee8591ff36bfa3476ab78fc794a'
+assert seal(et)['sha256']=='5593d7662be0c0dcb1c33fd7b057152a7cca88086fb6fc7bd1f1a34d76801f3b'
+i,m,e=read(it),read(mt),read(et)
+base=checked(i['canonicalBefore']);assert seal(base)['sha256']==m['baselineImmutableCAN555']['sha256']==e['canonicalFrozenNoEdits']['sha256']=='21d75911886b1a47620f311455b8577b09e07a87bb58b3cf33eac7f2a535a286'
+before=read(base);can=copy.deepcopy(before);assert len(can['goals'])==555;orig={g['id']:g for g in before['goals']};cur={g['id']:g for g in can['goals']}
+ic=read(checked(i['canonicalCandidate']));mc=read(checked(m['wholeCandidateCAN568']));ig={g['id']:g for g in ic['goals']};mg={g['id']:g for g in mc['goals']}
+ids=i['newMaterialIds']+m['newBodyIDs'];assert len(set(ids))==len(ids)==22
+navChanges={}
+for package,changes,afterkey,idkey in [('international9',i['exactThreeOldNavFieldChanges'],'wholeFinalAfter','navGoalId'),('macro13',m['existing2NavFields'],'wholeAfter','goalId')]:
+ for row in changes:
+  id=row[idkey];assert orig[id]==row['wholeBefore'];a=row[afterkey];fields={k for k in set(orig[id])|set(a) if orig[id].get(k)!=a.get(k)};assert fields<={'contains','description','descriptionEn'}
+  assert a['contains'][:len(orig[id]['contains'])]==orig[id]['contains']
+  appended=a['contains'][len(orig[id]['contains']):];assert set(appended)<=set(ids)
+  assert not set(appended)&set(cur[id]['contains']);cur[id]['contains'].extend(appended)
+  navChanges.setdefault(id,{'wholeBefore':orig[id],'packages':[]})['packages'].append({'package':package,'wholeAuthorAfter':a,'actualAddedChildIDs':appended})
+  if len(navChanges[id]['packages'])==1:
+   for k in fields-{'contains'}:cur[id][k]=a[k]
+  else:
+   assert id=='0fb8833c-4017-5052-819a-ecb5f6ebb36f'
+   cur[id]['description']=ig[id]['description']+' Zusätzlich behandeln eigenständige Q3-Abschlüsse das EZB-Mandat sowie Zins- und Preisniveauwirkungen.'
+   cur[id]['descriptionEn']=ig[id]['descriptionEn']+' Additional independent Q3 assessments address the ECB mandate and interest-rate and price-level effects.'
+for id in ids:
+ g=ig[id] if id in ig and id not in orig else mg[id];assert id not in orig;assert g['examData']['reviewStatus']=='released';assert len(g['requires'])==1 and g['requires']==g['examData']['coveredGoalIds'];can['goals'].append(copy.deepcopy(g));cur[id]=can['goals'][-1]
+assert len(can['goals'])==577 and len(navChanges)==4
+for id,g in orig.items():
+ if id not in navChanges:assert g==cur[id]
+ else:
+  navChanges[id]['wholeAfter']=copy.deepcopy(cur[id]);assert {k for k in set(g)|set(cur[id]) if g.get(k)!=cur[id].get(k)}<={'contains','description','descriptionEn'}
+  assert cur[id]['contains'][:len(g['contains'])]==g['contains']
+cp=put('whole-current577-twentytwo-qualified-four-purpose-Nav-and-nine-existing-accesses.INERT.json',can)
+newBodies=put('whole-twentytwo-foreign-scientific-KEEP-released-only-existing-9-13-body-union.INERT.json',{'materials':[cur[id] for id in ids],'machineMaterialReviewStatusIsNotHumanRelease':True})
+ev={v['activePath']:v for v in e['views']};mv={v['activePath']:v for v in m['views']};views=[];refs=0
+for v in i['views']:
+ rel=v['activePath'];b=read(checked(v['before']));a=read(checked(v['candidate']));n=copy.deepcopy(b)
+ assert len(b['rootNodes'])==len(a['rootNodes'])==1
+ assert a['rootNodes'][0]['children'][:len(b['rootNodes'][0]['children'])]==b['rootNodes'][0]['children']
+ additions=copy.deepcopy(a['rootNodes'][0]['children'][len(b['rootNodes'][0]['children']):]);international=len(additions);assert international==len(v['actualAddedPracticeTargetIds'])
+ mm=mv[rel];assert read(checked(mm['wholeBefore']))==b;ma=read(checked(mm['wholeAfter']));assert ma['rootNodes'][0]['children'][:len(b['rootNodes'][0]['children'])]==b['rootNodes'][0]['children'];macro=copy.deepcopy(ma['rootNodes'][0]['children'][len(b['rootNodes'][0]['children']):]);assert len(macro)==mm['actualNewReferenceCount'];additions+=macro
+ oldRefs=[]
+ if rel in ev:
+  ee=ev[rel];assert read(checked(ee['before']))==b;ea=read(checked(ee['candidate']));assert ea['rootNodes'][0]['children'][:len(b['rootNodes'][0]['children'])]==b['rootNodes'][0]['children'];oldRefs=copy.deepcopy(ea['rootNodes'][0]['children'][len(b['rootNodes'][0]['children']):]);assert len(oldRefs)==len(ee['addedIds']);additions+=oldRefs
+ assert all(x['kind']=='goalEntry' and x['projectionRole']=='target' for x in additions)
+ assert len({x['goalId'] for x in additions})==len(additions)
+ n['rootNodes'][0]['children']+=additions
+ if additions:n['viewId']='de-gym-economics-current577-qualified470-'+pathlib.Path(rel).stem
+ assert len(n['viewId'])<=300
+ assert (R/rel).read_bytes()==checked(v['before']).read_bytes()
+ bp=O/'whole-before35-views'/pathlib.Path(rel).name;bp.parent.mkdir(exist_ok=True);bp.write_bytes(checked(v['before']).read_bytes())
+ ap=put('whole-after35-views/'+pathlib.Path(rel).name,n)
+ views.append({'activePath':rel,'before':seal(bp),'candidate':ap,'wholeAddedPracticeTargetRefs':additions,'addedIds':[x['goalId'] for x in additions],'packageReferenceCounts':{'international9':international,'macro13':len(macro),'existing9Access':len(oldRefs)}});refs+=len(additions)
+assert len(views)==35 and refs==470
+ms=Q/'wirtschaft-M4-thirteen-macro-current555299-accesses-scope-independent-root-v1/declared-short-viewId-only-independent-followup-v2/actual-final-thirteen-macro299-current555-independent-SCOPE-KEEP.handoff.receipt.json';assert seal(ms)['sha256']=='e36da499ec0d7e66cbad08b28b421f255ec828fb0f1307925a2f3eaa4155fe96'
+es=Q/'wirtschaft-M4-nine-existing-qualified-accesses-independent-merge-audit-v1/immutable-current555-machine-input-snapshots-portability-successor-v2/actual-final-nine-access-KEEP-immutable-machine-input-portability-only-successor.receipt.json';assert seal(es)['sha256']=='b964032c290ca2bdca235ca3be43510316966ac626d29f13469ac093f9142968'
+hp=put('actual-twentytwo-foreign-qualified-and-nine-existing470-access-fieldwise-current577.root-candidate-handoff.json',{'role':'ROOT_AUTHOR_FUSION_ONLY_INERT_PENDING_FOREIGN_COMBINED_SCOPE','activeCanonicalPath':i['activeCanonicalPath'],'canonicalBefore':seal(base),'canonicalCandidate':cp,'wholeNew22Bodies':newBodies,'currentGoals':577,'newQualifiedPracticeGoalIds':ids,'newPracticeGoals':22,'whole555OldObjectsExactExceptFourPurposeNavFields':True,'actualFourWholeNavDeltas':list(navChanges.values()),'allExistingMaterialTasksSolutionsRubricsExact':True,'views':views,'totalAppendedPracticeTargetRefs':470,'packageReferenceCounts':{'international9':162,'macro13':299,'existing9Access':9},'foreignWholeScienceReceipts':[i['foreignScientificReceipt'],read(mt.parent/'actual-final-thirteen-foreign-KEEP-current555-twoNav299-accesses.author-handoff.json')['wholeForeignScientificKEEP']],'existing3WholeScientificReuseBindings':e['wholeThreeValidScientificReuseBindings'],'foreignScopeReceiptsSoFar':[seal(ms),seal(es)],'internationalOwnForeignScopeAActualFourFramesPassFinalSealPending':True,'authorInputIndices':[seal(it),seal(mt),seal(et)],'noNewPrerequisiteOnlyRefsOrOrdinarySourceExpansion':True,'newScientificStrictCurricularClosures':0,'restoredStrictCurricularBindings':0,'strictNetIncrease':0,'currentStrict187of336Unchanged':True,'SEM43ConfigsAndBookCurrentInputFollowupsPending':True,'ownOrForeignCombinedScopeKEEP':False,'sourceWholeRuleAndProtectedFloorsPendingActualBundle':True,'activeWrites':0,'humanReleaseTrialsSeparateOpen':True,'noNewImages':True,'noM4M6Claim':True,'next':'Bind finalInternational foreignA Scope seal, freeze SEM/P/book candidate, foreign merged wholeScope audit, then qualified grouped integration and central/protected floors.'})
+(O/'actual-executed-fieldwise-root-fusion-author-script.raw.txt').write_bytes(pathlib.Path(__file__).read_bytes())
+pathlib.Path('/tmp/economics-current577-twentytwo-qualified470-root-candidate-path.txt').write_text(str(O)+'\n');print(json.dumps(hp))

@@ -1,0 +1,121 @@
+[
+  {
+    "name": "summarize",
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "summarize",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json",
+      "--write"
+    ],
+    "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+    "startedAt": "2026-10-09T06:48:00.897507+00:00",
+    "completedAt": "2026-10-09T06:48:01.727154+00:00",
+    "actualExitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/actual-native-commands/summarize.actual.log",
+    "outputSha256": "89df91e887840bad22c2d736934ed116c05a69c1f9d1180b11c5bf4a5e13950f"
+  },
+  {
+    "name": "synthesis",
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json",
+      "--authoring",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19-ordered-final-v2/synthesis-authoring.json",
+      "--write"
+    ],
+    "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+    "startedAt": "2026-10-09T06:48:01.727428+00:00",
+    "completedAt": "2026-10-09T06:48:02.567587+00:00",
+    "actualExitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/actual-native-commands/synthesis.actual.log",
+    "outputSha256": "b3da0a4306049f523553e8978652a74343d205a8309364f7b5590554791fa186"
+  },
+  {
+    "name": "resolutions",
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json",
+      "--synthesis-manifest",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19-ordered-final-v2/synthesis-decisions.json",
+      "--write"
+    ],
+    "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+    "startedAt": "2026-10-09T06:48:02.568185+00:00",
+    "completedAt": "2026-10-09T06:48:04.295126+00:00",
+    "actualExitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/actual-native-commands/resolutions.actual.log",
+    "outputSha256": "e4556b472198201e1fff8609bdb15e84ded276492e60239f3eb0f73e5b325dd5"
+  },
+  {
+    "name": "index",
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "finalize",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json",
+      "--write"
+    ],
+    "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+    "startedAt": "2026-10-09T06:48:04.295661+00:00",
+    "completedAt": "2026-10-09T06:48:05.962576+00:00",
+    "actualExitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/actual-native-commands/index.actual.log",
+    "outputSha256": "150fcf9cbc370f1be6eafc823868e4c388e18a50268369742cff268ee09b4f16"
+  },
+  {
+    "name": "index-check",
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "finalize",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json"
+    ],
+    "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+    "startedAt": "2026-10-09T06:48:05.962977+00:00",
+    "completedAt": "2026-10-09T06:48:07.593609+00:00",
+    "actualExitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/actual-native-commands/index-check.actual.log",
+    "outputSha256": "e712e3a9239dc68937747ccd73ccb2aac77249ef0d302f9ba50fe9ef4e701afd"
+  },
+  {
+    "name": "synthesis-check",
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json",
+      "--authoring",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19-ordered-final-v2/synthesis-authoring.json"
+    ],
+    "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+    "startedAt": "2026-10-09T06:48:07.593917+00:00",
+    "completedAt": "2026-10-09T06:48:08.371005+00:00",
+    "actualExitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/actual-native-commands/synthesis-check.actual.log",
+    "outputSha256": "de4adc287c3a2e9829242f401dbbb39c3e91f2aa08cb77dc8495be93320ba142"
+  },
+  {
+    "name": "prepared-check",
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "check",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json"
+    ],
+    "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+    "startedAt": "2026-10-09T06:48:08.371299+00:00",
+    "completedAt": "2026-10-09T06:48:09.076892+00:00",
+    "actualExitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/actual-native-commands/prepared-check.actual.log",
+    "outputSha256": "97cbe92c702dcc625a15aeeeaafc93f2f8d12735a53dbba15511fe4ac2f6c9da"
+  }
+]

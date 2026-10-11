@@ -1,0 +1,153 @@
+{
+  "formatVersion": 1,
+  "evidenceKind": "independent-readonly-CI-final-head-closure",
+  "observedAtUtc": "2026-10-10T23:05:11.324961+00:00",
+  "repository": "enpasos/skillpilot",
+  "qualifiedHead": "43461b906438572f4f3b64d056112f4189dca4f4",
+  "pr": {
+    "number": 72,
+    "url": "https://github.com/enpasos/skillpilot/pull/72",
+    "headSha": "43461b906438572f4f3b64d056112f4189dca4f4",
+    "baseSha": "8f84cbf3df941a5e7aacd9c592ce923f0645c667",
+    "testedMergeRefSha": "07b53676a90e99ab6dc0f4c6fa843036660a235f",
+    "draft": true,
+    "mergeable": true
+  },
+  "actualResult": "PASS",
+  "workflowResults": [
+    {
+      "runId": 38090397312,
+      "name": "Gemini integration local checks",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/38090397312"
+    },
+    {
+      "runId": 38090397318,
+      "name": "OAuth client authentication",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/38090397318"
+    },
+    {
+      "runId": 38090397313,
+      "name": "CI",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/38090397313"
+    }
+  ],
+  "actualSuccessfulWorkflowCount": 3,
+  "actualSuccessfulJobCount": 13,
+  "actualJobCounts": [
+    8,
+    3,
+    2
+  ],
+  "terminalFailuresObserved": [],
+  "completedBookJob": {
+    "id": 114325470264,
+    "conclusion": "success",
+    "command": "npm run build:goal-books -- --force",
+    "actualBooksBuilt": [
+      {
+        "bookId": "de-gym-mathematik-bundesweit",
+        "pages": 807
+      },
+      {
+        "bookId": "de-gym-physik-bundesweit",
+        "pages": 478
+      },
+      {
+        "bookId": "de-gym-chemie-bundesweit",
+        "pages": 378
+      },
+      {
+        "bookId": "de-gym-biologie-bundesweit",
+        "pages": 394
+      },
+      {
+        "bookId": "de-gym-wirtschaftswissenschaften-bundesweit",
+        "pages": 346
+      }
+    ],
+    "actualRenderedCount": 5,
+    "allFivePublicationsVerified": true,
+    "publicationCommand": "npm run check:goal-book-publication",
+    "requiredStepResults": [
+      {
+        "name": "Build and validate all registered goal-book publications from source",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11
+      },
+      {
+        "name": "Verify generated publication bindings",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 12
+      }
+    ]
+  },
+  "latestPrBodyObservation": {
+    "stillStatesGithubPending": true,
+    "bodyIncludedInPublicSnapshot": true,
+    "bodyNotMutatedByReviewer": true
+  },
+  "localEndguard": {
+    "headBefore": "43461b906438572f4f3b64d056112f4189dca4f4",
+    "headAfter": "43461b906438572f4f3b64d056112f4189dca4f4",
+    "stagedPaths": [],
+    "unmergedRecords": [],
+    "trackedWorkingChangesOutsideTestedHead": [
+      "app/public/assets/goal-visualizations/wirtschaftswissenschaften/1826fe19-4d06-5183-9b41-9121ae1cc219/1826fe19-4d06-5183-9b41-9121ae1cc219.png",
+      "app/public/assets/goal-visualizations/wirtschaftswissenschaften/543bf91f-f6c6-5b1b-ba9e-43de321d8c7f/543bf91f-f6c6-5b1b-ba9e-43de321d8c7f.png",
+      "app/public/assets/goal-visualizations/wirtschaftswissenschaften/648224f4-cc8f-5f41-9cae-6d783cd1ae77/648224f4-cc8f-5f41-9cae-6d783cd1ae77.png",
+      "app/public/assets/goal-visualizations/wirtschaftswissenschaften/7c72848d-8bc9-58e2-a690-fd17ac650a88/7c72848d-8bc9-58e2-a690-fd17ac650a88.png",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/1826fe19-4d06-5183-9b41-9121ae1cc219/1826fe19-4d06-5183-9b41-9121ae1cc219.png",
+      "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/1826fe19-4d06-5183-9b41-9121ae1cc219/prompt.de.md",
+      "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/543bf91f-f6c6-5b1b-ba9e-43de321d8c7f/543bf91f-f6c6-5b1b-ba9e-43de321d8c7f.png",
+      "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/543bf91f-f6c6-5b1b-ba9e-43de321d8c7f/prompt.de.md",
+      "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/648224f4-cc8f-5f41-9cae-6d783cd1ae77/648224f4-cc8f-5f41-9cae-6d783cd1ae77.png",
+      "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/648224f4-cc8f-5f41-9cae-6d783cd1ae77/prompt.de.md",
+      "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/7c72848d-8bc9-58e2-a690-fd17ac650a88/7c72848d-8bc9-58e2-a690-fd17ac650a88.png",
+      "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/7c72848d-8bc9-58e2-a690-fd17ac650a88/prompt.de.md"
+    ],
+    "trackedWorkingChangeCount": 15,
+    "workingTreeCleanClaim": false,
+    "localFutureM7ChangesNotPartOfTested434Commit": true
+  },
+  "limits": [
+    "This receipt qualifies the three actual GitHub workflows on pushed head 43461b906, executed on its normal PR merge ref.",
+    "It does not qualify subsequent local working changes, Economics M7 D/V closure, human approval or external publication.",
+    "Only completed book-job public command/result excerpts are retained; no learner state, whole official PDF text, private credential or new build is included."
+  ],
+  "readOnlyLocalCommands": [
+    "git rev-parse HEAD (before and after)",
+    "git diff --name-only",
+    "git diff --cached --name-only",
+    "git ls-files -u"
+  ],
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-head434-three-GitHub-workflows-thirteen-jobs-and-five-forced-books-independent-READONLY-v1/actual-final-head434-GitHub-three-workflows-thirteen-jobs.READONLY.json",
+      "sha256": "be0290c0a7e03de5d80f435d33c4cba0e894709ebde6ce402a2c193c3631bb8c",
+      "bytes": 65063
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-head434-three-GitHub-workflows-thirteen-jobs-and-five-forced-books-independent-READONLY-v1/actual-completed-bookjob-five-force-build-and-publication.READONLY.log.txt",
+      "sha256": "36b5da1b6e31688ac17a470953709d62903700b05b8d4af006d01ece4b33c231",
+      "bytes": 2948
+    }
+  ],
+  "mutations": {
+    "activeRepositoryFiles": 0,
+    "index": 0,
+    "commits": 0,
+    "pushes": 0,
+    "workflowReruns": 0,
+    "workflowCancellations": 0,
+    "prWrites": 0,
+    "newLocalInertEvidenceOnly": true
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "status": "passed_local_positive_v2_schema_semantics_and_native_fingerprints",
+  "checkedAt": "2026-10-10T14:42:44.736Z",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "runtime": "Codex",
+  "generationParametersFingerprint": "sha256:40b47f89c109535e80101309e6031ae2da64c080440035ec3f862f1644132761",
+  "generationMetadataPath": "generation-metadata.actual.json",
+  "actualToolchain": {
+    "node": "v20.20.2",
+    "tsx": "4.21.0",
+    "ajv": "8.17.1"
+  },
+  "inputArtifacts": [
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "digest": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "digest": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "digest": "sha256:50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    }
+  ],
+  "ownNativeRecordChecks": [
+    {
+      "goalId": "648224f4-cc8f-5f41-9cae-6d783cd1ae77",
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindAuthority": "INERT author semantic/scope proposal; existing model prose unchanged except retained648; independent A open",
+      "goalFingerprint": "sha256:ab5b2d498aa9b4d8314e8f31ed97fe3f577c70777dc2d032b428fddd4e8d56fd",
+      "reviewInputFingerprint": "sha256:2372c9bbed23955266d26f5e735e009d51cf0b879f9e364229013870768ff19e",
+      "profileFingerprint": "sha256:99b77767fe5112398cab42c64a5aba55f3a881d21ca7ea7c8558f35a9504d800",
+      "inputResourceDigests": {},
+      "bilingualCaseBriefCount": 2,
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": []
+    },
+    {
+      "goalId": "5aaf5abf-5e70-57c6-b030-1d08a35d17b8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindAuthority": "INERT author semantic/scope proposal; existing model prose unchanged except retained648; independent A open",
+      "goalFingerprint": "sha256:666b6d8734d12362664d9bd57aa47807576cad4e05d4e6d1f6ddab86519694b3",
+      "reviewInputFingerprint": "sha256:e57a1346117880c862caac6a410922b16ad1b2ad832ba56e41a172e7c4457475",
+      "profileFingerprint": "sha256:95e675f780beebb029210f729ee8aba1dcd4397a74d6a91a7a686e72bab5d0a7",
+      "inputResourceDigests": {},
+      "bilingualCaseBriefCount": 2,
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": []
+    },
+    {
+      "goalId": "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindAuthority": "INERT author semantic/scope proposal; existing model prose unchanged except retained648; independent A open",
+      "goalFingerprint": "sha256:a005af72b447b21de0b692c034f5dfd2e7e4df38b9fdd652a2d0ef86e2990236",
+      "reviewInputFingerprint": "sha256:40756553cd1b09924463b331b36767879edf9bd07f9d3cfe55884bcaa414e25f",
+      "profileFingerprint": "sha256:bf420e6efbda7a60298b6662c594312e8963c9b6f8cab89bdee7db82c4415035",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/79d244e0-049e-59e9-a2fb-b8f8670b315a/79d244e0-049e-59e9-a2fb-b8f8670b315a.png": "sha256:650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b"
+      },
+      "bilingualCaseBriefCount": 2,
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": []
+    }
+  ],
+  "originalWholeContractBindingChecks": [],
+  "outputJsonDigest": "sha256:62d514e1cf3566d9b7a29c4db6ad1c03bc8e6425a0613e598b22fde02520d2ad",
+  "outputJsonlDigest": "sha256:b313ca83f6c20519d53e64d67388b092a55f93f803a1fe42cefb0013d57b40f8",
+  "independentContentReviewClaimed": false,
+  "humanApprovalClaimed": false,
+  "learnerTrialClaimed": false,
+  "activeMutationClaimed": false
+}

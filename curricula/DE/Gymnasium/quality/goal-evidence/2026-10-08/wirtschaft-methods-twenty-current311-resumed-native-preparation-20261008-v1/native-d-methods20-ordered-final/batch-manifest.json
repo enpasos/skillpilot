@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-methods20-current311-ordered-20261008-v2",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-methods-twenty-current311-resumed-native-preparation-20261008-v1/native-d-methods20.ordered.final.batch.config.json",
+  "configDigest": "sha256:60750858e433456de9d0739e58f132c7efde66f44f897450f0791704deb0fdd5",
+  "goalIds": [
+    "682facbf-3c9d-5485-88a3-20f2394ed77f",
+    "099086bb-5100-5ce0-8334-0aab8850a48e",
+    "596c02e3-6263-5084-8593-c5f51808326b",
+    "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+    "3bcb976d-3e45-5c62-81ac-5ed909df202b",
+    "641dee8e-9658-5db1-89eb-2353f8322a8a",
+    "26ebbe6e-6512-520d-80a4-2e7e80f29f72",
+    "bd9ec397-86ee-58ec-8327-7e1f28550026",
+    "99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
+    "7d399b4d-d057-5284-8e2c-6778e023307d",
+    "7727b988-e62c-5ebf-8e2f-0c719b13881c",
+    "fd913fec-e64a-5a1a-88f6-724d788ed951",
+    "7cbcca15-e93b-57ce-8f14-ffd1a557e288",
+    "7f1d5e9f-65ef-5d1d-83e5-5e2534772720",
+    "6f75cdff-7d32-533b-8fe9-3d003b7af241",
+    "c7b03538-25a2-510b-8fd4-a81bcc3de406",
+    "becf0989-ee9f-5c8e-8173-5b8246e7944a",
+    "7d4d7a90-a1d0-5818-8d55-a0c3e995957b",
+    "8dee6c0a-0f76-5717-87b6-04ec89229371",
+    "980a3f45-b0ad-500d-8d5b-975948362b68"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 311,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:3db1ebd3d2da866a95793fe5bd6f54773a59c4fc6562f225783823f3afa16b50"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:cccb14fb4295dd91ecf9f7d11223e7beeeade5156c9e5d6a1e1150525dfed52d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:84557552125a19565306b4b61bf8353e3740fc930ffed89eb9b5c1fd87dec2a6",
+    "reviewInputFingerprint": "sha256:82c6b183f752bc68e9f1bb2d394941fcff501cb5c6da5ade48866ec585223979",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-methods20-current311-ordered-20261008-v2-a",
+        "campaignDigest": "sha256:e675ee9e98a4cae65c0916d3eec0382dd974810a7eff3251897e6bc2d85e0f52",
+        "roundId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-a",
+        "independenceGroupId": "wirtschaft-methods20-current311-ordered-20261008-v2-independent-a",
+        "batchId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b910d78dbdb043ad16ae4cb9c789d92d9bb33be356d31de952720d1c4eef4843"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-methods20-current311-ordered-20261008-v2-b",
+        "campaignDigest": "sha256:eb6ab1e975bff21b0c655a5c230d51d3f442eb567f123067490df22b94316a43",
+        "roundId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-b",
+        "independenceGroupId": "wirtschaft-methods20-current311-ordered-20261008-v2-independent-b",
+        "batchId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9ed1d3d05cdf35e0efc4b92e2dd026016c9a416d2d82ab0cf132dd91b67d23a9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

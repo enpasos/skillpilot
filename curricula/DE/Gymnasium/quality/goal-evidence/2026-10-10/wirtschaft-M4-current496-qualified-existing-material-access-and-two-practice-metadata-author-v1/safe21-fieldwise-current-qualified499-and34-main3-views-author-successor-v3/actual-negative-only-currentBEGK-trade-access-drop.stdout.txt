@@ -1,0 +1,151 @@
+{
+  "goalCount": 499,
+  "graphErrors": 0,
+  "compilerSummary": {
+    "goals": 499,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1457
+  },
+  "sourceRule": {
+    "id": "CQR-003",
+    "status": "pass",
+    "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+    "metrics": {
+      "totalJurisdictions": 16,
+      "coveredJurisdictions": 16,
+      "sourceBackedJurisdictions": 16,
+      "sourceCompleteJurisdictions": 16,
+      "fullCoverageJurisdictions": 16,
+      "uncoveredJurisdictions": 0,
+      "incompleteJurisdictions": 0,
+      "unsupportedAssignmentJurisdictions": 0,
+      "sourceUnmappedJurisdictions": 0,
+      "unsupportedAssignedAtomicGoals": 0,
+      "unmappedSourceAtomicGoals": 0,
+      "sourceAtomicGoals": 2134,
+      "sourceMappedToViewAtomicGoals": 2134,
+      "sourceOriginalGoals": 2134,
+      "sourceFullyCoveredOriginalGoals": 2134,
+      "sourcePartiallyCoveredOriginalGoals": 0,
+      "sourceUncoveredOriginalGoals": 0,
+      "surrogateBackedAtomicGoals": 78,
+      "partialSourceLinkedAtomicGoals": 0,
+      "warningedJurisdictions": 0,
+      "cleanJurisdictions": 16,
+      "partialJurisdictions": 0,
+      "errorJurisdictions": 0,
+      "minSourceBackedAtomicGoals": 71,
+      "maxVisibleAtomicGoals": 300,
+      "maxSourceBackedAtomicGoals": 300,
+      "totalAtomicGoals": 338
+    }
+  },
+  "rules": [
+    {
+      "id": "CQR-101",
+      "status": "pass",
+      "metrics": {
+        "selectedAtomicGoals": 336,
+        "missingMotivationPath": 0,
+        "missingTerminalPath": 0
+      }
+    },
+    {
+      "id": "CQR-102",
+      "status": "pass",
+      "metrics": {
+        "selectedAtomicGoals": 336,
+        "missingDirectMotivationPath": 0,
+        "missingDirectTerminalPath": 0
+      }
+    },
+    {
+      "id": "CQR-103",
+      "status": "pass",
+      "metrics": {
+        "scopedClusterRequires": 0
+      }
+    },
+    {
+      "id": "CQR-104",
+      "status": "fail",
+      "metrics": {
+        "relevantCompositionViews": 34,
+        "evaluatedProjectionScopes": 64,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 3,
+        "requiredTerminalAutonomyGoals": 78,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 28,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 32,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 357,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 285,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 109,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 6974,
+        "visibleProfileSelectedAtomicGoalOccurrences": 6974,
+        "visibleProjectedRouteTargetGoalOccurrences": 6974,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 62,
+        "projectionScopesMissingDirectTerminalRoutes": 62,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 3454,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 3454,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 205,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 205
+      }
+    },
+    {
+      "id": "CQR-201",
+      "status": "pass",
+      "metrics": {
+        "terminalAutonomyGoals": 96,
+        "terminalAutonomyGoalsWithExamData": 96,
+        "terminalAutonomyGoalsWithoutExamData": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "pass",
+      "metrics": {
+        "terminalAutonomyGoals": 96,
+        "concreteExamData": 96,
+        "weakExamData": 0
+      }
+    },
+    {
+      "id": "CQR-203",
+      "status": "pass",
+      "metrics": {
+        "terminalAutonomyGoals": 96,
+        "releasedCoverageCompleteExamData": 96,
+        "releaseCoverageIncompleteExamData": 0
+      }
+    }
+  ]
+}

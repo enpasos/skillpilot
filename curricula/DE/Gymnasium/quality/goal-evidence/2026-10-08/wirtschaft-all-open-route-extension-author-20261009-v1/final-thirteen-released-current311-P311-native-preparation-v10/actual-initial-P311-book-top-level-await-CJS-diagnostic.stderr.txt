@@ -1,0 +1,21 @@
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+
+Error: Transform failed with 2 errors:
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/final-thirteen-released-current311-P311-native-preparation-v10/build-actual-final311-with-all-P311-and-whole-ownerpage-impact.native.ts:12:13: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/final-thirteen-released-current311-P311-native-preparation-v10/build-actual-final311-with-all-P311-and-whole-ownerpage-impact.native.ts:13:0: ERROR: Top-level await is currently not supported with the "cjs" output format
+    at failureErrorWithLog (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:736:50
+    at responseCallbacks.<computed> (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:603:9)
+    at handleIncomingPacket (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:658:12)
+    at Socket.readFromStdout (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:581:7)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+    at Readable.push (node:internal/streams/readable:278:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23) {
+  name: 'TransformError'
+}
+
+Node.js v18.19.1

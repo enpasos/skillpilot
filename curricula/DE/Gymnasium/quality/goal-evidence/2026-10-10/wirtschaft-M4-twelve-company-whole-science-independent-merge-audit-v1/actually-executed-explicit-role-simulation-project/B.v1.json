@@ -1,0 +1,109 @@
+{
+  "version": "B.v1",
+  "executionType": "explicit single-reviewer role simulation; no real interpersonal team claimed",
+  "roles": {
+    "A": "Ali — requirements",
+    "B": "Bea — costs",
+    "C": "Cem — room",
+    "D": "Dana — materials",
+    "E": "Dana — synthesis with sign-off by all simulated roles"
+  },
+  "network": {
+    "durations": {
+      "A": 1,
+      "B": 2,
+      "C": 3,
+      "D": 2,
+      "E": 1
+    },
+    "predecessors": {
+      "A": [],
+      "B": [
+        "A"
+      ],
+      "C": [
+        "A"
+      ],
+      "D": [
+        "B"
+      ],
+      "E": [
+        "C",
+        "D"
+      ]
+    },
+    "earliestStart": {
+      "A": 0,
+      "B": 1,
+      "C": 1,
+      "D": 3,
+      "E": 5
+    },
+    "earliestFinish": {
+      "A": 1,
+      "B": 3,
+      "C": 4,
+      "D": 5,
+      "E": 6
+    },
+    "latestStart": {
+      "E": 5,
+      "D": 3,
+      "C": 2,
+      "B": 1,
+      "A": 0
+    },
+    "latestFinish": {
+      "E": 6,
+      "D": 5,
+      "C": 5,
+      "B": 3,
+      "A": 1
+    },
+    "totalFloat": {
+      "A": 0,
+      "B": 0,
+      "C": 1,
+      "D": 0,
+      "E": 0
+    },
+    "completion": 6,
+    "criticalPaths": [
+      [
+        "A",
+        "B",
+        "D",
+        "E"
+      ]
+    ]
+  },
+  "costs": {
+    "budget": 60,
+    "printing": 20,
+    "display": 15,
+    "transport": 10,
+    "sum": 45,
+    "reserve": 15
+  },
+  "actualSubjectArtefact": "Informationsstand: Budget 60; Druck 20; Anzeige 15; Transport 10; Gesamtkosten 45; frei verbleibende Reserve 15. Ende 6; kritischer Weg A–B–D–E.",
+  "digitalMediumReason": "Readable text/CSV and shared versioned JSON hold the small numerical result, assigned checks, graph and actual changes without specialised software.",
+  "simulationActionsActuallyExecuted": [
+    [
+      "Ali",
+      "Defined the stand outcome as an understandable budget and reserve explanation."
+    ],
+    [
+      "Bea",
+      "Created actual 20/15/10 table and sum/reserve."
+    ],
+    [
+      "Cem",
+      "Checked the parallel room branch and its completion 4."
+    ],
+    [
+      "Dana",
+      "Integrated stand content with the graph and approved deadline 6 against the actual version."
+    ]
+  ],
+  "parentSnapshotSHA": null
+}

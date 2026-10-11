@@ -1,0 +1,48 @@
+from pathlib import Path
+import json,copy,hashlib,shutil,tempfile,os
+ROOT=Path('/home/enpasos/projects/skillpilot');Q=ROOT/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10';CF=Q/'wirtschaft-current633-company-finance-consumer36-current597-fieldwise-status-nav-scope-author-a-v1';CU=Q/'wirtschaft-M4-twelve-foreign-labour-current597-status-nav-scope-author-a-v1';O=Q/'wirtschaft-current645-company-finance-consumer-labour48-current597-fieldwise-status-nav-scope-author-a-v1';O.mkdir(exist_ok=False);OLD=Path('/tmp/economics-combined633-current597-author-a-ltxjeoi7/capsule');CAP=Path(tempfile.mkdtemp(prefix='economics-combined645-current597-author-a-'))/'capsule';shutil.copytree(OLD,CAP,symlinks=True);Path('/tmp/economics-combined645-current597-author-a-path.txt').write_text(str(CAP)+'\n');R='curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json'
+def load(p):return json.loads(p.read_text())
+def h(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def bind(p):return {'path':str(p.relative_to(ROOT)),'sha256':h(p),'bytes':p.stat().st_size}
+def save(n,x):p=O/n;assert not p.exists(),p;p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');return bind(p)
+def guard(p):assert p.resolve().is_relative_to(CAP.resolve()) and not p.is_symlink() and not os.path.samefile(p,ROOT/p.relative_to(CAP))
+fh=CF/'actual-final-current633-company-finance-consumer36-sixNav338-foreign-whole-science-bound.author-handoff.json';ch=CU/'actual-final-labour12-168-accesses-threeNav-current597-foreign-science-reuse.author-handoff.json';assert h(fh)=='5bef526fdd682aa2cda83e3b1eb14e5ee8ee9c958bd62d39527e6c55b48452d4';fr=load(fh);cr=load(ch)
+base=load(ROOT/fr['wholeBeforeCAN']['path']);assert h(ROOT/R)==fr['wholeBeforeCAN']['sha256']==cr['wholeBeforeCAN']['sha256'];assert len(base['goals'])==597
+inputs=load(CF/'actual-combined633-private-physical-current597-input-start.freeze.json')['actualWholeBeforeInputs81'];guards=[]
+for r in inputs:
+ p=ROOT/r['path'];assert h(p)==r['sha256'];cp=CAP/r['path'];guard(cp);cp.write_bytes(p.read_bytes());guards.append(bind(p))
+for name in ['whole-current597-central-registry.readonly.json','whole-current597-semantic-kinds.readonly.json']:shutil.copyfile(CF/name,O/name)
+shutil.copyfile(ROOT/fr['wholeBeforeCAN']['path'],O/'whole-current597-before-combined645.active-exact.json');shutil.copytree(CF/'whole-before35views',O/'whole-before35views')
+fBodies=load(ROOT/fr['whole36StatusOnlyReleasedBodies']['path']);cBodies=load(CU/'whole-twelve-labour-foreign-KEEP-status-only-released.author-candidate.json');bodies=fBodies+cBodies;ids={g['id'] for g in bodies};assert len(ids)==48
+fnav=load(ROOT/fr['sixWholeNavDeltasWithThreeSharedUnions']['path']);cnav=load(ROOT/cr['threePurposefulPrefixNavs']['path']);after=copy.deepcopy(base);after['goals']+=copy.deepcopy(bodies);gm={g['id']:g for g in after['goals']};bm={g['id']:g for g in base['goals']};navs=[]
+for nid in dict.fromkeys([r['goalId'] for r in fnav+cnav]):
+ rows=[r for r in fnav+cnav if r['goalId']==nid];n=gm[nid];assert all(r['wholeBefore']==bm[nid] for r in rows);added=[]
+ for r in rows:
+  old=r['wholeBefore'];new=r['wholeAfter'];assert new['contains'][:len(old['contains'])]==old['contains'];added+=new['contains'][len(old['contains']):]
+  for field in ['description','descriptionEn']:assert new[field].startswith(old[field]);n[field]+=new[field][len(old[field]):]
+  assert {k:v for k,v in new.items() if k not in {'contains','description','descriptionEn'}}=={k:v for k,v in old.items() if k not in {'contains','description','descriptionEn'}}
+ assert len(set(added))==len(added) and set(added)<=ids;n['contains']+=added
+ navs.append({'goalId':nid,'wholeBefore':bm[nid],'wholeAfter':n,'boundSeparateWholeNavRows':rows,'orderedNewMaterialIds':added,'sharedNavExactPrefixAndTwoPurposefulPackageSuffixes':len(rows)==2,'jurisdictionFieldChanged':False})
+assert len(navs)==6 and sum(r['sharedNavExactPrefixAndTwoPurposefulPackageSuffixes'] for r in navs)==3;assert sum(len(r['orderedNewMaterialIds']) for r in navs)==48
+assert {r['goalId']:len(r['orderedNewMaterialIds']) for r in navs}=={'14c05eec-87af-5fd6-832a-4f5d9d280e66':17,'5317d078-413b-58bb-9262-d57387d51655':11,'5113c64b-405d-5f4b-bae9-70fe530b5e69':5,'1f0ed7e7-5f8b-512a-8d94-4bf05a065bbc':5,'a1c0e891-cb5b-56ef-9aa7-ac782e2099c3':3,'0fb8833c-4017-5052-819a-ecb5f6ebb36f':7}
+for g in base['goals']:
+ if g['id'] not in {r['goalId'] for r in navs}:assert gm[g['id']]==g
+assert len(after['goals'])==645
+body=save('whole-fortyeight-company-finance-consumer-labour-foreign-KEEP-status-only-released.author-candidate.json',bodies);can=save('whole-current645-fortyeight-foreign-qualified-materials-sixNav-only.INERT-author-candidate.json',after);nav=save('actual-six-Nav-combined-ordered-child-union-and-three-shared-E-Katalog-Q2-purposeful-prefix-fields.author.json',navs)
+fi=load(ROOT/fr['full338ReferenceAndIndividualCountryCourseClosureIndex']['path']);ci=load(ROOT/cr['fullReferenceIndex']['path']);frows={r['activePath']:r for r in fi['viewRows']};crows={r['activePath']:r for r in ci['viewRows']};aft=O/'whole-after35views';aft.mkdir();views=[]
+for p in sorted((O/'whole-before35views').glob('*.json')):
+ rel='curricula/DE/Gymnasium/composition-views/wirtschaft/'+p.name;b=load(p);n=copy.deepcopy(b);add=[];nids=[]
+ for ix in [frows[rel],crows[rel]]:
+  old=load(ROOT/ix['before']['path']);whole=load(ROOT/ix['candidate']['path']);assert old==b
+  if ix['newReferenceCount']:
+   beforeChildren=old['rootNodes'][0]['children'];assert whole['rootNodes'][0]['children'][:len(beforeChildren)]==beforeChildren;add+=copy.deepcopy(whole['rootNodes'][0]['children'][len(beforeChildren):]);nids+=ix['newMaterialIds']
+  else:assert whole==old
+ if add:n['rootNodes'][0]['children']+=add;n['viewId']='de-gym-economics-'+p.stem+'-company-finance-consumer-labour48-current597-20261010-author-v1'
+ assert len(n['viewId'])<=255 and len(nids)==len(set(nids));path=aft/p.name;path.write_text(json.dumps(n,ensure_ascii=False,indent=2)+'\n');cp=CAP/rel;guard(cp);cp.write_bytes(path.read_bytes());views.append({'activePath':rel,'before':bind(p),'candidate':bind(path),'newMaterialIds':nids,'newReferenceCount':len(nids),'combined633ReferenceCount':frows[rel]['newReferenceCount'],'labourReferenceCount':crows[rel]['newReferenceCount'],'oldOrderedStructureChildrenExactPrefix':True,'ordinarySupportMemoryPOnlyRefsAdded':0})
+assert sum(r['newReferenceCount'] for r in views)==506;assert sum(bool(r['newReferenceCount']) for r in views)==34
+guard(CAP/R);(CAP/R).write_bytes((ROOT/can['path']).read_bytes())
+helper=(OLD/'app/scripts/companyFinanceConsumer36Current597Combined633ScopeAuthorA.mts').read_text().replace('whole-thirtysix-company-finance-consumer-foreign-KEEP-status-only-released.author-candidate.json','whole-fortyeight-company-finance-consumer-labour-foreign-KEEP-status-only-released.author-candidate.json').replace('whole2304CombinedCompanyFinanceConsumerMaterialContextBindings','whole3072CombinedFourPackagesMaterialContextBindings');hp=CAP/'app/scripts/companyFinanceConsumerLabour48Current597Combined645ScopeAuthorA.mts';assert hp.resolve().is_relative_to(CAP.resolve()) and not hp.is_symlink();helper=helper.replace("import{buildApplicabilityCompilation}from'./applicabilityCompiler.ts';","import{buildApplicabilityCompilation}from'./applicabilityCompiler.ts';import{goalMatchesFilters}from'../src/utils/goalFilters.ts';").replace("course=m.wholeGoal.tags.includes(s.courseProfile)","course=goalMatchesFilters(m.wholeGoal,[s.courseProfile,s.durationModel].filter(Boolean))");hp.write_text(helper)
+refrows=fi['perReferenceWholeBindings']+ci['perReferenceWholeBindings'];assert len(refrows)==506
+index=save('actual-fieldwise645-fortyeight-foreign-qualified-sixNav506-references-author-index.json',{'role':'AUTHOR_ONLY_PENDING_FOREIGN_COMBINED_SCOPE_QS','activeCanonicalPath':R,'wholeBeforeCAN':bind(O/'whole-current597-before-combined645.active-exact.json'),'wholeAfterCAN':can,'whole48ForeignQualifiedStatusOnlyBodies':body,'wholeSixNavFieldDeltas':nav,'combined633AuthorHandoff':bind(fh),'labourAuthorHandoff':bind(ch),'combined633ReferenceIndex':fr['full338ReferenceAndIndividualCountryCourseClosureIndex'],'labourReferenceIndex':cr['fullReferenceIndex'],'companyScienceReceipt':fr['companyForeignScienceReceipt'],'financeScienceReceipt':fr['financeForeignScienceReceipt'],'consumerScienceReceipt':fr['consumerForeignScienceReceipt'],'labourScienceReceipt':cr['wholeQualifiedScienceReceipt'],'newMaterialIds':[g['id'] for g in bodies],'viewRows':views,'perReferenceWholeBindings':refrows,'actual506ExplicitNewMaterialReferences':506,'actualCountryReferencesComputedFromIndex':sum(not r['viewPath'].split('/')[-1].startswith('de-de-') for r in refrows),'actualNationalReferencesComputedFromIndex':sum(r['viewPath'].split('/')[-1].startswith('de-de-') for r in refrows),'actualCombinedChangedViews':34,'actualWholeVisibleBindings848':848,'twoFinancePracticeContextsOverExistingF90POnlyAuthorisedByRoot':True,'all48Finance18Consumer14Labour16ClosureContextsHeld':True,'fourAdditionalLabourPracticeContextsOverExistingE20POnly':True,'old597SourceAndTargetUniverseExact':True,'originalP336Cases685Exact':True,'activeWrites':0,'humanApproval':False,'ownScopeKEEP':False})
+save('actual-combined645-private-physical-current597-input-start.freeze.json',{'role':'AUTHOR_PRIVATE_WHOLE_CURRENT597','privateCapsule':str(CAP),'actualWholeBeforeInputs81':guards,'privateResolveAndSamefileBeforeEveryWrite':True,'privateConfigSourceSEMViewsPhysical':True,'activeWrites':0})
+print(json.dumps({'privateCAP':str(CAP),'candidate':can,'index':index,'refs506':506,'sharedNavs':3}))

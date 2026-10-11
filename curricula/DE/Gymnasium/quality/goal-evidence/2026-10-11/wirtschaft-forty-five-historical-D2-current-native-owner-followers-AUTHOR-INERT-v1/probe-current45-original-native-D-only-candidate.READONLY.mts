@@ -1,0 +1,31 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {join,dirname} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createRequire} from 'node:module';
+import {createHash} from 'node:crypto';
+const R=process.cwd(),O=join(R,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-forty-five-historical-D2-current-native-owner-followers-AUTHOR-INERT-v1');
+const load=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+const sha=(b:Buffer|string)=>'sha256:'+createHash('sha256').update(b).digest('hex');
+const req=createRequire(join(R,'app/package.json')),esbuild=req('esbuild'),Module=req('node:module');
+const sourcePath=join(R,'app/scripts/reportDeepUnderstandingRollout.ts'),sourceBytes=readFileSync(sourcePath);
+const exportedPrivateNames=['loadAuthoritativeScope','loadDescriptionReadyGoals'];
+const suffix='\nexport {loadAuthoritativeScope,loadDescriptionReadyGoals};\n';
+const transformed=esbuild.transformSync(sourceBytes.toString('utf8')+suffix,{format:'cjs',platform:'node',target:'node20',loader:'ts',define:{'import.meta.url':JSON.stringify(pathToFileURL(sourcePath).href)}}).code;
+const mod=new Module(sourcePath);mod.filename=sourcePath;mod.paths=Module._nodeModulePaths(dirname(sourcePath));mod._compile(transformed,sourcePath);const native=mod.exports;
+const plan=load(join(O,'actual-current45-native-groups-and-exact-original-science-plan.INERT.json')),wanted=new Set<string>(plan.requestedGoalIds);
+const results:any[]=[];
+for(const file of ['actual-whole-current-registry-before45.EXACT.json','candidate-current45-only-owner-registry.INERT.config.json']){
+ const configPath=join(O,file),reg=native.loadDeepUnderstandingRolloutConfig(configPath),s=reg.subjects.find((x:any)=>x.subject==='wirtschaftswissenschaften'),scope=native.loadAuthoritativeScope(s),issues:string[]=[];
+ const chains=native.buildResolutionSupersessionChains(s.resolutionSupersessions,s.resolutionIndexPaths,scope.atomicGoalIds);
+ if(chains.issues.length||scope.issues.length)throw new Error('Native scope or chain boundary failed');
+ const ready: Set<string>=await native.loadDescriptionReadyGoals(s,scope,issues);
+ results.push({configPath:configPath.slice(R.length+1),configSha256:sha(readFileSync(configPath)),denominator:scope.denominator,currentGoalIds:[...scope.atomicGoalIds].sort(),descriptionReadyGoalIds:[...ready].sort(),descriptionReadyCount:ready.size,scopeIssues:scope.issues,descriptionIssues:issues,chainCount:chains.chains.length,chainIssues:chains.issues});
+}
+const before=new Set<string>(results[0].descriptionReadyGoalIds),after=new Set<string>(results[1].descriptionReadyGoalIds),gained=[...after].filter(x=>!before.has(x)).sort(),lost=[...before].filter(x=>!after.has(x)).sort();
+const ownReady=[...wanted].filter(x=>after.has(x)).sort(),indirect=gained.filter(x=>!wanted.has(x));
+const failed=lost.length>0||ownReady.length!==45||results[1].descriptionIssues.some((s:string)=>s.includes('wirtschaft-forty-five-historical-D2-current-native-owner-followers'));
+if(sha(readFileSync(sourcePath))!==sha(sourceBytes))throw new Error('Native code bytes changed during readonly in-memory probe');
+const output={status:failed?'FAIL-bounded-owner-native-validation':'AUTHOR-INERT-original-native-D-only-candidate-measured-independent-qualification-pending',actualUTC:new Date().toISOString(),nativeCodePath:'app/scripts/reportDeepUnderstandingRollout.ts',nativeCodeSha256:sha(sourceBytes),inMemoryExportOnly:exportedPrivateNames,originalNativeSourceBytesUnchanged:true,mainInvoked:false,globalFiveGateGeneratorInvoked:false,evidenceAtomicityMemoryVisualizationChecksInvoked:false,before:results[0],candidate:results[1],gainedDescriptionReadyGoalIds:gained,lostDescriptionReadyGoalIds:lost,netDescriptionReadyCount:after.size-before.size,selected45ReadyGoalIds:ownReady,indirectGainedGoalIds:indirect,newScientificReviews:0,newModelCalls:0,activeWrites:0,integratedDescriptionClosures:0,strictClosures:0,humanApproval:false};
+writeFileSync(join(O,'actual-original-native-D-only-current45-candidate-ID-set-measurement.READONLY.json'),JSON.stringify(output,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({beforeD:before.size,candidateD:after.size,gained:gained.length,selectedReady:ownReady.length,indirect,lost,nativeCurrentIssues:results[1].descriptionIssues.length,activeWrites:0}));
+if(failed)process.exitCode=1;

@@ -1,0 +1,581 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected ... Lines skipped
+
+  {
+    '$schema': 'https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json',
+...
+    title: 'Wirtschaftswissenschaften GK – bestehender Umfang DE-BB',
+    viewFormatVersion: '1.0',
++   viewId: 'de-gym-economics-macro13-current555-bb-gk.view'
+-   viewId: 'de-gym-economics-de-bb-gym-economics-gk-current555-twentythree-qualified477-v1'
+  }
+    at assert (/tmp/skillpilot-economics-current-merged-native-root-_x0aqs8o/app/scripts/rootIndependentThirteenMacroCurrent555299RefsScopeV1.ts:15:187)
+    at Object.<anonymous> (/tmp/skillpilot-economics-current-merged-native-root-_x0aqs8o/app/scripts/rootIndependentThirteenMacroCurrent555299RefsScopeV1.ts:29:100)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at cjsLoader (node:internal/modules/esm/translators:298:15)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    viewId: 'de-gym-economics-macro13-current555-bb-gk.view',
+    landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901',
+    scope: {
+      schoolForm: 'Gymnasium',
+      stage: 'CrossStage',
+      courseProfile: 'GK',
+      jurisdiction: 'DE-BB'
+    },
+    rootNodes: [
+      {
+        kind: 'structure',
+        id: 'economics-root-bb-gk',
+        label: 'Wirtschaftswissenschaften',
+        children: [
+          {
+            kind: 'goalEntry',
+            goalId: '6bf2d1cc-e745-50dd-a617-71c06a6c6945',
+            displayLabel: 'Warum Wirtschaftswissenschaften?',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'structure',
+            id: 'de-de-gym-economics-gk-memory-bb-gk',
+            label: 'Lernkarten - Wirtschaftswissenschaften',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-e-phase-bb-gk',
+            label: 'Einführungsphase und Sekundarstufe I',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-q1-bb-gk',
+            label: 'Q1 Demokratie und wirtschaftliche Ordnung',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-q2-bb-gk',
+            label: 'Kursabschnitt Q2',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-q3-bb-gk',
+            label: 'Q3 Globalisierung, Außenwirtschaft und Geldpolitik',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-q4-bb-gk',
+            label: 'Q4 Entwicklung, Globalisierung und Wirtschaftsethik',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'explicit-prerequisite-access-bb-gk',
+            label: 'Voraussetzungen außerhalb des Lernzielumfangs',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'de-bb-gk-explicit-supported-practice-v2',
+            label: 'Weitere passende Übungsaufgaben',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'de-bb-gym-economics-gk.view-qualified-whole-practice-country-access-v1',
+            label: 'Weitere passende Übungsaufgaben',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'd59d94db-6648-5028-ab98-d97d93d146af',
+            children: [Array],
+            label: 'Lokale vollständige Fallübungen'
+          },
+          {
+            kind: 'structure',
+            id: 'a00bd461-2713-53a9-9e2c-02942d4c1fab',
+            label: 'Staatshaushalt: Finanzierung und Gerechtigkeit im Materialfall',
+            children: [Array]
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '7f05f8ef-53b9-5739-8166-ebe5673ddb30',
+            displayLabel: 'E: Arbeitsteilung, Unternehmensorganisation und Produktionsgestaltung',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '837a03eb-3978-5c05-a3f5-740dfd899647',
+            displayLabel: 'E: Marketingmaßnahmen, Wettbewerbsbedingungen und eigene Konzepte',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '96182c38-9047-509a-bf0e-6aeb3776bba0',
+            displayLabel: 'E: Eigene Geschäftsmodelle, Verantwortung und Zielbeziehungen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '944de531-8bc8-51ad-9caf-ce9bc6f5d016',
+            displayLabel: 'E: Eigen-/Fremdkapital, Liquidität und bedingte Haftung',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'structure',
+            id: 'seven-local-e-access-de-bb-gym-economics-gk',
+            label: 'Weitere Übungen: Alltag, Markt und Recht',
+            children: [Array]
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '1ba25692-14e2-59d3-99c6-ca1d90da1fb6',
+            displayLabel: 'Q4: Handel, Verteilung und Entwicklungs-Governance',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'a9bb3071-ec32-55a5-95ca-3935a2316335',
+            displayLabel: 'Q3: Unternehmensstrategien und globale Prozessgrenzen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'af9a83c4-ff3e-59e2-bafa-5f9f237ec893',
+            displayLabel: 'Q4: Handelswirkungen und entwicklungsbezogene Governance',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'efaf8f79-f6c6-5bbb-b9ba-fa395caaeb9d',
+            displayLabel: 'E: Kreisläufe, Reparatur und Mehrweg',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'bdcf88f6-6bcb-576e-a28a-0997d03b81a0',
+            displayLabel: 'E: Interessen und Zielkonflikte der Umweltpolitik',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'd1f7a9e4-7333-510b-bf2a-b34117af21d0',
+            displayLabel: 'E: Umweltbelastung und knappe gemeinsame Ressourcen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '526ac62e-b3a9-59a4-b0a4-4b2758008ad6',
+            displayLabel: 'E: Abgabe, Zertifikate, Auflage und Verbot',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'dd8d80a9-18be-5f1e-8055-bdd21147dba7',
+            displayLabel: 'E: Umweltpolitik über mehrere Ebenen koordinieren',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '67204661-44f9-54d4-b901-6271c9d5ff86',
+            displayLabel: 'E: Negative und positive externe Effekte',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'dae7f108-cb3a-50c6-82ca-f8712f8b46f4',
+            displayLabel: 'Wettbewerbsregeln, Staatsrollen und Handlungsspielräume',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '1f640fe1-9d2c-59a5-b116-c1168e3af216',
+            displayLabel: 'E: Marktkoordination und Modellgrenzen in zwei Fällen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '3140c87a-1470-5c78-bd65-0d892277b33b',
+            displayLabel: 'E: Digitale Vermittlung, Reichweite und Abhängigkeit prüfen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '42200541-f3e2-5fc6-8dac-dbc3ea3101bf',
+            displayLabel: 'E: Onlinekauf nach Bedarf, Gesamtkosten und Information abwägen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '44555f3b-b9c9-5f86-a118-0bb04d37ef8e',
+            displayLabel: 'E: Drei Marktversagensmechanismen in zwei Fallgruppen unterscheiden',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'a4b0c7a0-8ace-5d93-92ec-ccf40bccb7dd',
+            displayLabel: 'E: Konzentration, Kosten und Ausweichoptionen abwägen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '44255aa0-9b3d-57c9-89c2-fad57e1cde54',
+            displayLabel: 'E: Geldfunktionen und Kaufkraft aus drei Perspektiven',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '3bcb976d-3e45-5c62-81ac-5ed909df202b',
+            displayLabel: 'Preisfunktionen und dezentrale Koordination erklären',
+            projectionRole: 'prerequisiteOnly'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'dd6368c7-309f-5b5a-8b2e-eba67136c5f7',
+            displayLabel: 'Katalog: Marktdiagramm, Elastizität und Renten in zwei Modellfällen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '9f234592-2e3f-58c0-aa1a-e5971818c447',
+            displayLabel: 'E: Marktmodell und Preisfunktionen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '02b7aef3-49f2-5eb8-b5a3-77930415f673',
+            displayLabel: 'Handelskonflikte, Instrumente und ökologische Systemgrenzen – zwei Fälle',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'f93f2aed-6a14-5b72-8ca5-27cf7e837a83',
+            displayLabel: 'Q2: NAIRU, Tarifwege und unsichere Modellschwellen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '072278ce-e91a-5b55-a5ad-fbfb484a8986',
+            displayLabel: 'Q2: Kaufkraftkonflikt und planbare Schichten',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '712e57db-3756-5d23-a3b3-b37d9422c220',
+            displayLabel: 'E: Vierdimensionenprofil und veränderte Berufsanforderungen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '54c71d60-f188-5d2c-9820-3d120022f67d',
+            displayLabel: 'E: Informationsquellen, Fristen und revisierbare Zukunftsentwürfe',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '0d8dd65c-8bf4-537d-b18f-75f2d690d48b',
+            displayLabel: 'E: KI-Assistenz und hybride Arbeit begründet beurteilen',
+            projectionRole: 'target'
+          }
+        ]
+      }
+    ],
+    '$schema': 'https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json',
+    viewFormatVersion: '1.0',
+    language: 'de',
+    title: 'Wirtschaftswissenschaften GK – bestehender Umfang DE-BB'
+  },
+  expected: {
+    viewId: 'de-gym-economics-de-bb-gym-economics-gk-current555-twentythree-qualified477-v1',
+    landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901',
+    scope: {
+      schoolForm: 'Gymnasium',
+      stage: 'CrossStage',
+      courseProfile: 'GK',
+      jurisdiction: 'DE-BB'
+    },
+    rootNodes: [
+      {
+        kind: 'structure',
+        id: 'economics-root-bb-gk',
+        label: 'Wirtschaftswissenschaften',
+        children: [
+          {
+            kind: 'goalEntry',
+            goalId: '6bf2d1cc-e745-50dd-a617-71c06a6c6945',
+            displayLabel: 'Warum Wirtschaftswissenschaften?',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'structure',
+            id: 'de-de-gym-economics-gk-memory-bb-gk',
+            label: 'Lernkarten - Wirtschaftswissenschaften',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-e-phase-bb-gk',
+            label: 'Einführungsphase und Sekundarstufe I',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-q1-bb-gk',
+            label: 'Q1 Demokratie und wirtschaftliche Ordnung',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-q2-bb-gk',
+            label: 'Kursabschnitt Q2',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-q3-bb-gk',
+            label: 'Q3 Globalisierung, Außenwirtschaft und Geldpolitik',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'economics-q4-bb-gk',
+            label: 'Q4 Entwicklung, Globalisierung und Wirtschaftsethik',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'explicit-prerequisite-access-bb-gk',
+            label: 'Voraussetzungen außerhalb des Lernzielumfangs',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'de-bb-gk-explicit-supported-practice-v2',
+            label: 'Weitere passende Übungsaufgaben',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'de-bb-gym-economics-gk.view-qualified-whole-practice-country-access-v1',
+            label: 'Weitere passende Übungsaufgaben',
+            children: [Array]
+          },
+          {
+            kind: 'structure',
+            id: 'd59d94db-6648-5028-ab98-d97d93d146af',
+            children: [Array],
+            label: 'Lokale vollständige Fallübungen'
+          },
+          {
+            kind: 'structure',
+            id: 'a00bd461-2713-53a9-9e2c-02942d4c1fab',
+            label: 'Staatshaushalt: Finanzierung und Gerechtigkeit im Materialfall',
+            children: [Array]
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '7f05f8ef-53b9-5739-8166-ebe5673ddb30',
+            displayLabel: 'E: Arbeitsteilung, Unternehmensorganisation und Produktionsgestaltung',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '837a03eb-3978-5c05-a3f5-740dfd899647',
+            displayLabel: 'E: Marketingmaßnahmen, Wettbewerbsbedingungen und eigene Konzepte',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '96182c38-9047-509a-bf0e-6aeb3776bba0',
+            displayLabel: 'E: Eigene Geschäftsmodelle, Verantwortung und Zielbeziehungen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '944de531-8bc8-51ad-9caf-ce9bc6f5d016',
+            displayLabel: 'E: Eigen-/Fremdkapital, Liquidität und bedingte Haftung',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'structure',
+            id: 'seven-local-e-access-de-bb-gym-economics-gk',
+            label: 'Weitere Übungen: Alltag, Markt und Recht',
+            children: [Array]
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '1ba25692-14e2-59d3-99c6-ca1d90da1fb6',
+            displayLabel: 'Q4: Handel, Verteilung und Entwicklungs-Governance',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'a9bb3071-ec32-55a5-95ca-3935a2316335',
+            displayLabel: 'Q3: Unternehmensstrategien und globale Prozessgrenzen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'af9a83c4-ff3e-59e2-bafa-5f9f237ec893',
+            displayLabel: 'Q4: Handelswirkungen und entwicklungsbezogene Governance',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'efaf8f79-f6c6-5bbb-b9ba-fa395caaeb9d',
+            displayLabel: 'E: Kreisläufe, Reparatur und Mehrweg',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'bdcf88f6-6bcb-576e-a28a-0997d03b81a0',
+            displayLabel: 'E: Interessen und Zielkonflikte der Umweltpolitik',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'd1f7a9e4-7333-510b-bf2a-b34117af21d0',
+            displayLabel: 'E: Umweltbelastung und knappe gemeinsame Ressourcen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '526ac62e-b3a9-59a4-b0a4-4b2758008ad6',
+            displayLabel: 'E: Abgabe, Zertifikate, Auflage und Verbot',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'dd8d80a9-18be-5f1e-8055-bdd21147dba7',
+            displayLabel: 'E: Umweltpolitik über mehrere Ebenen koordinieren',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '67204661-44f9-54d4-b901-6271c9d5ff86',
+            displayLabel: 'E: Negative und positive externe Effekte',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'dae7f108-cb3a-50c6-82ca-f8712f8b46f4',
+            displayLabel: 'Wettbewerbsregeln, Staatsrollen und Handlungsspielräume',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '1f640fe1-9d2c-59a5-b116-c1168e3af216',
+            displayLabel: 'E: Marktkoordination und Modellgrenzen in zwei Fällen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '3140c87a-1470-5c78-bd65-0d892277b33b',
+            displayLabel: 'E: Digitale Vermittlung, Reichweite und Abhängigkeit prüfen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '42200541-f3e2-5fc6-8dac-dbc3ea3101bf',
+            displayLabel: 'E: Onlinekauf nach Bedarf, Gesamtkosten und Information abwägen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '44555f3b-b9c9-5f86-a118-0bb04d37ef8e',
+            displayLabel: 'E: Drei Marktversagensmechanismen in zwei Fallgruppen unterscheiden',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'a4b0c7a0-8ace-5d93-92ec-ccf40bccb7dd',
+            displayLabel: 'E: Konzentration, Kosten und Ausweichoptionen abwägen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '44255aa0-9b3d-57c9-89c2-fad57e1cde54',
+            displayLabel: 'E: Geldfunktionen und Kaufkraft aus drei Perspektiven',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '3bcb976d-3e45-5c62-81ac-5ed909df202b',
+            displayLabel: 'Preisfunktionen und dezentrale Koordination erklären',
+            projectionRole: 'prerequisiteOnly'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'dd6368c7-309f-5b5a-8b2e-eba67136c5f7',
+            displayLabel: 'Katalog: Marktdiagramm, Elastizität und Renten in zwei Modellfällen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '9f234592-2e3f-58c0-aa1a-e5971818c447',
+            displayLabel: 'E: Marktmodell und Preisfunktionen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '02b7aef3-49f2-5eb8-b5a3-77930415f673',
+            displayLabel: 'Handelskonflikte, Instrumente und ökologische Systemgrenzen – zwei Fälle',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: 'f93f2aed-6a14-5b72-8ca5-27cf7e837a83',
+            displayLabel: 'Q2: NAIRU, Tarifwege und unsichere Modellschwellen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '072278ce-e91a-5b55-a5ad-fbfb484a8986',
+            displayLabel: 'Q2: Kaufkraftkonflikt und planbare Schichten',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '712e57db-3756-5d23-a3b3-b37d9422c220',
+            displayLabel: 'E: Vierdimensionenprofil und veränderte Berufsanforderungen',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '54c71d60-f188-5d2c-9820-3d120022f67d',
+            displayLabel: 'E: Informationsquellen, Fristen und revisierbare Zukunftsentwürfe',
+            projectionRole: 'target'
+          },
+          {
+            kind: 'goalEntry',
+            goalId: '0d8dd65c-8bf4-537d-b18f-75f2d690d48b',
+            displayLabel: 'E: KI-Assistenz und hybride Arbeit begründet beurteilen',
+            projectionRole: 'target'
+          }
+        ]
+      }
+    ],
+    '$schema': 'https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json',
+    viewFormatVersion: '1.0',
+    language: 'de',
+    title: 'Wirtschaftswissenschaften GK – bestehender Umfang DE-BB'
+  },
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

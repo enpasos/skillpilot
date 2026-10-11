@@ -1,0 +1,229 @@
+{
+  "schema": {
+    "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "sha256": "331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+    "wholeBytes": 8707
+  },
+  "records": 2,
+  "cases": 8,
+  "newCases": 4,
+  "schemaErrors": [],
+  "actualOwnCalculationChecks": [
+    {
+      "check": "Fictional travel weeks total",
+      "actual": 10,
+      "expected": 10,
+      "passed": true
+    },
+    {
+      "check": "Travel cost 10 busdays",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "check": "Travel cost 16 busdays",
+      "actual": 42,
+      "expected": 42,
+      "passed": true
+    },
+    {
+      "check": "Largest integer busdays within40Euro",
+      "actual": 15,
+      "expected": 15,
+      "passed": true
+    },
+    {
+      "check": "Club ordinary2/4/6 visits",
+      "actual": [
+        13,
+        17,
+        21
+      ],
+      "expected": [
+        13,
+        17,
+        21
+      ],
+      "passed": true
+    },
+    {
+      "check": "Club ordinary max20Euro",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "check": "Club ordinary5visits",
+      "actual": 19,
+      "expected": 19,
+      "passed": true
+    },
+    {
+      "check": "Club promotion2/4/6 visits",
+      "actual": [
+        9,
+        13,
+        17
+      ],
+      "expected": [
+        9,
+        13,
+        17
+      ],
+      "passed": true
+    },
+    {
+      "check": "Club promotion max20Euro",
+      "actual": 7,
+      "expected": 7,
+      "passed": true
+    },
+    {
+      "check": "Club promotion7visits",
+      "actual": 19,
+      "expected": 19,
+      "passed": true
+    },
+    {
+      "check": "Club old minus promotion discrepancy for0/1/2/6 visits",
+      "actual": [
+        0,
+        2,
+        4,
+        4
+      ],
+      "expected": [
+        0,
+        2,
+        4,
+        4
+      ],
+      "passed": true
+    },
+    {
+      "check": "Fruit initial whole costs",
+      "actual": {
+        "A": 10,
+        "B": 10,
+        "C": 6,
+        "D": 8,
+        "E": 4
+      },
+      "expected": {
+        "A": 10,
+        "B": 10,
+        "C": 6,
+        "D": 8,
+        "E": 4
+      },
+      "passed": true
+    },
+    {
+      "check": "Fruit higher-price whole costs",
+      "actual": {
+        "A": 13,
+        "B": 11,
+        "C": 7,
+        "D": 8,
+        "E": 6
+      },
+      "expected": {
+        "A": 13,
+        "B": 11,
+        "C": 7,
+        "D": 8,
+        "E": 6
+      },
+      "passed": true
+    },
+    {
+      "check": "Fruit full-information preferred affordable bundle",
+      "actual": "A",
+      "expected": "A",
+      "passed": true
+    },
+    {
+      "check": "Fruit higher-price preferred affordable bundle",
+      "actual": "D",
+      "expected": "D",
+      "passed": true
+    },
+    {
+      "check": "Fruit considered-only B/C/D/E preferred bundle",
+      "actual": "B",
+      "expected": "B",
+      "passed": true
+    },
+    {
+      "check": "Fruit different lawful preference preferred bundle",
+      "actual": "B",
+      "expected": "B",
+      "passed": true
+    },
+    {
+      "check": "Film initial whole costs",
+      "actual": {
+        "A": 12,
+        "B": 12,
+        "C": 9,
+        "D": 9,
+        "E": 3
+      },
+      "expected": {
+        "A": 12,
+        "B": 12,
+        "C": 9,
+        "D": 9,
+        "E": 3
+      },
+      "passed": true
+    },
+    {
+      "check": "Film higher-price whole costs",
+      "actual": {
+        "A": 14,
+        "B": 12,
+        "C": 12,
+        "D": 10,
+        "E": 4
+      },
+      "expected": {
+        "A": 14,
+        "B": 12,
+        "C": 12,
+        "D": 10,
+        "E": 4
+      },
+      "passed": true
+    },
+    {
+      "check": "Film full-information preferred affordable bundle",
+      "actual": "A",
+      "expected": "A",
+      "passed": true
+    },
+    {
+      "check": "Film higher-price preferred affordable bundle",
+      "actual": "D",
+      "expected": "D",
+      "passed": true
+    },
+    {
+      "check": "Film considered-only B/C preferred bundle",
+      "actual": "B",
+      "expected": "B",
+      "passed": true
+    },
+    {
+      "check": "Film different lawful preference preferred bundle",
+      "actual": "B",
+      "expected": "B",
+      "passed": true
+    }
+  ],
+  "ownCalculationChecksCount": 23,
+  "independentForeignReview": false,
+  "humanOrLegalApproval": false,
+  "strictGain": 0
+}

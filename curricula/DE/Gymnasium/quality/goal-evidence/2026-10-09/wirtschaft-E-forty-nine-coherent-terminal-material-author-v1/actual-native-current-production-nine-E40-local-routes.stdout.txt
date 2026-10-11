@@ -1,0 +1,146 @@
+{
+  "graph": "pass",
+  "type": "pass",
+  "rules": [
+    {
+      "id": "CQR-101",
+      "status": "fail",
+      "metrics": {
+        "selectedAtomicGoals": 311,
+        "missingMotivationPath": 0,
+        "missingTerminalPath": 127
+      }
+    },
+    {
+      "id": "CQR-102",
+      "status": "warn",
+      "metrics": {
+        "selectedAtomicGoals": 311,
+        "missingDirectMotivationPath": 0,
+        "missingDirectTerminalPath": 127
+      }
+    },
+    {
+      "id": "CQR-103",
+      "status": "pass",
+      "metrics": {
+        "scopedClusterRequires": 0
+      }
+    },
+    {
+      "id": "CQR-104",
+      "status": "pass",
+      "metrics": {
+        "relevantCompositionViews": 2,
+        "evaluatedProjectionScopes": 2,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 37,
+        "requiredTerminalAutonomyGoals": 37,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 560,
+        "visibleProfileSelectedAtomicGoalOccurrences": 560,
+        "visibleProjectedRouteTargetGoalOccurrences": 560,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      }
+    },
+    {
+      "id": "CQR-201",
+      "status": "pass",
+      "metrics": {
+        "terminalAutonomyGoals": 37,
+        "terminalAutonomyGoalsWithExamData": 37,
+        "terminalAutonomyGoalsWithoutExamData": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "fail",
+      "metrics": {
+        "terminalAutonomyGoals": 37,
+        "concreteExamData": 28,
+        "weakExamData": 9
+      }
+    },
+    {
+      "id": "CQR-203",
+      "status": "warn",
+      "metrics": {
+        "terminalAutonomyGoals": 37,
+        "releasedCoverageCompleteExamData": 28,
+        "releaseCoverageIncompleteExamData": 9
+      }
+    }
+  ],
+  "local": [
+    {
+      "course": "GK",
+      "ordinary": 201,
+      "newTargeted": 9,
+      "missingTerminal": 62,
+      "previousMissing": 91,
+      "scope": [
+        {
+          "contract": "atomic-direct",
+          "missing": 7
+        },
+        {
+          "contract": "effective-direct-and-inherited",
+          "missing": 11
+        }
+      ],
+      "memory": 37
+    },
+    {
+      "course": "LK",
+      "ordinary": 280,
+      "newTargeted": 9,
+      "missingTerminal": 100,
+      "previousMissing": 133,
+      "scope": [
+        {
+          "contract": "atomic-direct",
+          "missing": 2
+        },
+        {
+          "contract": "effective-direct-and-inherited",
+          "missing": 6
+        }
+      ],
+      "memory": 50
+    }
+  ],
+  "actualReceiptSHA256": "68c4ffea056a6069304f4d764211043dafdaae58fef2d61234dc92e76ce1fa4b"
+}

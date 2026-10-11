@@ -1,0 +1,29 @@
+from pathlib import Path
+import json,hashlib,subprocess,time,os,concurrent.futures,shutil
+R=Path('/home/enpasos/projects/skillpilot');O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/after-qualified-fifteen-graph-deltas-and-local-font-repair-run-v3';O.mkdir(exist_ok=False)
+node=Path('/tmp/skillpilot-checkpoint-native-node-path.txt').read_text().strip();env=os.environ.copy();env['PATH']=str(Path(node).parent)+os.pathsep+env['PATH'];env['FONTCONFIG_FILE']='/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf';env['GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH']='/home/enpasos/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome'
+CAN=R/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json';REG=R/'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json';cfg=json.loads(REG.read_text());econ=next(s for s in cfg['subjects'] if s['subject']=='wirtschaftswissenschaften')
+def bind(p):return {'path':str(p.relative_to(R)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+active=[CAN,REG,R/'app/scripts/config/goal-books/de-gym-economics-current-canonical.json',R/econ['semanticKindLedgerPath']];guards=[bind(p) for p in active]
+guardFile=O/'actual-current678-stable-closing-inputs-before-bundle.json';guardFile.write_text(json.dumps({'role':'actual stable Economics M6 native closing bundle; central M6 already confirmed, CQR303 description lane remains open','activeWholeInputs':guards,'currentCurricularAtomic':336,'noForceBookRender':True,'noRuntimeAssetsPreparation':True,'noNewImages':True,'humanReleaseTrialSeparate':True},indent=2)+'\n')
+beforeBook=R/'app/public/lernzielbuch/.build-cache.json';(O/'whole-before-book-build-cache.readonly.json').write_bytes(beforeBook.read_bytes())
+def npm(label,args):return (label,['npm','run','-s',*args],R/'app')
+layer=[npm('graph',['validate:graph']),npm('view-filters',['validate:view-filters']),npm('source-landscape-registry',['check:source-landscape-registry']),npm('composition-views',['validate:composition-views']),npm('composition-projection-roles',['test:composition-projection-roles']),npm('course-level-mapping-consistency',['test:course-level-mapping-consistency']),npm('source-coverage-regression-and-audit',['quality:source-coverage-audit:check']),npm('economics-semantic-atomicity',['quality:semantic-atomicity:check','--','--config='+econ['semanticAtomicityConfigPath']]),npm('economics-memory-cards-and34-views',['quality:memory-card-review:check','--','--config='+econ['memoryReviewConfigPath']]),('runtime-landscape-schemas-and-portable-curriculum-links',['python3','-B','scripts/validate_schemas.py'],R),('goal-IDs-UUID',['python3','-B','scripts/validate_goal_ids_uuid.py'],R),('competency-wording',['python3','-B','scripts/validate_competency_wording.py'],R),npm('goal-visualization-assets',['check:goal-visualization-assets']),npm('ai-transparency-inventory',['check:ai-transparency-inventory']),npm('deep-understanding-rollout-contract-regression',['test:deep-understanding-rollout'])]
+book=[npm('goal-book-full-pipeline-including-cached-publications',['test:goal-book-pipeline']),npm('application-build-local-only',['build:application'])]
+def lane(name,commands):
+ rows=[]
+ for label,argv,cwd in commands:
+  stdout=O/(label+'.stdout.txt');stderr=O/(label+'.stderr.txt');assert not stdout.exists() and not stderr.exists();start=time.monotonic()
+  with stdout.open('w') as out,stderr.open('w') as err:r=subprocess.run(argv,cwd=cwd,stdout=out,stderr=err,env=env)
+  row={'label':label,'argv':argv,'cwd':str(cwd),'actualExitCode':r.returncode,'seconds':round(time.monotonic()-start,3),'stdout':bind(stdout),'stderr':bind(stderr)}
+  (O/(label+'.actual-command-exit.json')).write_text(json.dumps(row,indent=2)+'\n');rows.append(row)
+  print(json.dumps({'lane':name,'stage':label,'actualExitCode':r.returncode,'seconds':row['seconds']}),flush=True)
+  if r.returncode:break
+ (O/(name+'.actual-lane-result.json')).write_text(json.dumps({'lane':name,'requiredStages':len(commands),'actuallyRunStages':len(rows),'allStagesPassed':len(rows)==len(commands) and all(x['actualExitCode']==0 for x in rows),'commands':rows},indent=2)+'\n')
+ return {'lane':name,'requiredStages':len(commands),'commands':rows,'pass':len(rows)==len(commands) and all(x['actualExitCode']==0 for x in rows)}
+with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+ tasks=[pool.submit(lane,'layerA',layer),pool.submit(lane,'book-and-build',book)];results=[f.result() for f in tasks]
+assert all(bind(R/b['path'])==b for b in guards)
+shutil.copyfile(__file__,O/'actual-executed-stable-native-bundle-helper.py')
+receipt={'role':'actual stable current678 machine M6 closing bundle after independently qualified fifteen graph deltas and authentic local font/browser repair; no human release/trial approval and no completion of open M7 D lane','inputGuards':guards,'allActiveInputGuardsRemainExact':True,'actualParallelIndependentLanes':results,'allRequiredBundleStagesPassed':all(x['pass'] for x in results),'newScientificStrictClosures':0,'restoredStrictBindings':0,'strictNet':0,'runtimePluginPrivacyDeploymentChanges':False,'humanReleaseTrialApproval':False,'imagesGenerated':0,'commitCreated':False}
+(O/'actual-current678-M6-stable-layerA-book-build.machine-bundle.receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps({'bundle':str(O.relative_to(R)),'allRequiredBundleStagesPassed':receipt['allRequiredBundleStagesPassed']}),flush=True)

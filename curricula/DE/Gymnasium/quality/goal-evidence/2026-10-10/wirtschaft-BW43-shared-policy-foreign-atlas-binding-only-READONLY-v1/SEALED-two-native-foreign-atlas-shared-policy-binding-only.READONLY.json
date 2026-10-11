@@ -1,0 +1,56 @@
+{
+  "role": "SEALED_READONLY_mechanical_shared_policy_binding_only_no_science_claim",
+  "artifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BW43-shared-policy-foreign-atlas-binding-only-READONLY-v1/actual-two-foreign-native-source-atlases-shared-policy-binding-only.READONLY.json",
+      "sha256": "c0cc3fd30b92bc46c0749656adff46426eb8cadcb02f3f87ed88caf94a30eb01",
+      "bytes": 84377
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BW43-shared-policy-foreign-atlas-binding-only-READONLY-v1/original-native-inMemory-atlas-only-delta-READONLY.mts",
+      "sha256": "00d3c16c9df10d27acd1067c6d74d508aa492bff3f85264bef40ac35ffe4a539",
+      "bytes": 4183
+    }
+  ],
+  "nativeCodeGuard": {
+    "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+    "sha256": "0b6761c9847c1a39b49ebba597149b39e78fec791fa64f1179a9e8056fe1f0f5",
+    "bytes": 25775
+  },
+  "actualQualifiedCurrentSharedPolicy": {
+    "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+    "sha256": "1bfb4a8fb052c9b0427719fb3d87206b1312e5e296e06fcf7f12e9b830c70c00",
+    "bytes": 105790
+  },
+  "wholeForeignReceiptRestAnd76OtherAtlasOutputsExact": true,
+  "exactChanges": [
+    {
+      "bookId": "de-gym-chemie-bundesweit",
+      "differences": [
+        {
+          "path": "/inputBindings/100/sha256",
+          "before": "sha256:2b6185cd2c2f257a2410a36617f1d24b6e2e5a19bb40dcdab82d32786b0878d9",
+          "after": "sha256:1bfb4a8fb052c9b0427719fb3d87206b1312e5e296e06fcf7f12e9b830c70c00",
+          "bindingPath": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json"
+        }
+      ]
+    },
+    {
+      "bookId": "de-gym-biologie-bundesweit",
+      "differences": [
+        {
+          "path": "/inputBindings/57/sha256",
+          "before": "sha256:2b6185cd2c2f257a2410a36617f1d24b6e2e5a19bb40dcdab82d32786b0878d9",
+          "after": "sha256:1bfb4a8fb052c9b0427719fb3d87206b1312e5e296e06fcf7f12e9b830c70c00",
+          "bindingPath": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json"
+        }
+      ]
+    }
+  ],
+  "requiredNextAction": "Root runs ordinary native atlas/publication generation against the independently qualified current shared source-duration policy. This read-only delta does not replace or waive publication checks, foreign subject review or build freshness.",
+  "activeWrites": 0,
+  "foreignSourceOrCanonicalWrites": 0,
+  "manualHashPatch": false,
+  "fullBuilds": 0,
+  "freshExternalPrimaryReviewClaim": false
+}

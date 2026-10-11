@@ -1,0 +1,662 @@
+{
+  "role": "independent own calculations against actual case inputs; no use of AUTHOR calculation results",
+  "rationalChecks": [
+    {
+      "label": "0_E_distribution",
+      "actual": "3",
+      "expected": "3",
+      "pass": true
+    },
+    {
+      "label": "0_K_interest",
+      "actual": "3",
+      "expected": "3",
+      "pass": true
+    },
+    {
+      "label": "0_uncovered_after_E_guarantee",
+      "actual": "10",
+      "expected": "10",
+      "pass": true
+    },
+    {
+      "label": "0_L_interest",
+      "actual": "4",
+      "expected": "4",
+      "pass": true
+    },
+    {
+      "label": "0_uncovered_after_P12",
+      "actual": "6",
+      "expected": "6",
+      "pass": true
+    },
+    {
+      "label": "0_uncovered_after_P5",
+      "actual": "13",
+      "expected": "13",
+      "pass": true
+    },
+    {
+      "label": "1_service_closing_EK_ratio",
+      "actual": "2/5",
+      "expected": "2/5",
+      "pass": true
+    },
+    {
+      "label": "1_service_ROE",
+      "actual": "12/25",
+      "expected": "12/25",
+      "pass": true
+    },
+    {
+      "label": "1_service_margin",
+      "actual": "1/10",
+      "expected": "1/10",
+      "pass": true
+    },
+    {
+      "label": "1_producer_closing_EK",
+      "actual": "3/10",
+      "expected": "3/10",
+      "pass": true
+    },
+    {
+      "label": "1_producer_ROE",
+      "actual": "4/25",
+      "expected": "4/25",
+      "pass": true
+    },
+    {
+      "label": "1_producer_margin",
+      "actual": "1/10",
+      "expected": "1/10",
+      "pass": true
+    },
+    {
+      "label": "1_trade_EK",
+      "actual": "1/4",
+      "expected": "1/4",
+      "pass": true
+    },
+    {
+      "label": "1_trade_ROE",
+      "actual": "3/10",
+      "expected": "3/10",
+      "pass": true
+    },
+    {
+      "label": "1_trade_margin",
+      "actual": "1/50",
+      "expected": "1/50",
+      "pass": true
+    },
+    {
+      "label": "1_consultancy_EK",
+      "actual": "1/2",
+      "expected": "1/2",
+      "pass": true
+    },
+    {
+      "label": "1_consultancy_ROE",
+      "actual": "1/2",
+      "expected": "1/2",
+      "pass": true
+    },
+    {
+      "label": "1_consultancy_margin",
+      "actual": "1/10",
+      "expected": "1/10",
+      "pass": true
+    },
+    {
+      "label": "1_trade_profit15_ROE",
+      "actual": "3/20",
+      "expected": "3/20",
+      "pass": true
+    },
+    {
+      "label": "1_trade_profit15_margin",
+      "actual": "1/100",
+      "expected": "1/100",
+      "pass": true
+    },
+    {
+      "label": "2_static_A",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "label": "2_static_B",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "label": "2_NPV_A",
+      "actual": "-200/121",
+      "expected": "-200/121",
+      "pass": true
+    },
+    {
+      "label": "2_NPV_B",
+      "actual": "-800/121",
+      "expected": "-800/121",
+      "pass": true
+    },
+    {
+      "label": "2_A70_NPV",
+      "actual": "-2400/121",
+      "expected": "-2400/121",
+      "pass": true
+    },
+    {
+      "label": "2_A70_NPV_delta",
+      "actual": "-200/11",
+      "expected": "-200/11",
+      "pass": true
+    },
+    {
+      "label": "2_static_C",
+      "actual": "15",
+      "expected": "15",
+      "pass": true
+    },
+    {
+      "label": "2_static_D",
+      "actual": "35/2",
+      "expected": "35/2",
+      "pass": true
+    },
+    {
+      "label": "2_NPV_C",
+      "actual": "1550/121",
+      "expected": "1550/121",
+      "pass": true
+    },
+    {
+      "label": "2_NPV_D",
+      "actual": "1950/121",
+      "expected": "1950/121",
+      "pass": true
+    },
+    {
+      "label": "2_D_without_residual_static",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "label": "2_D_without_residual_NPV",
+      "actual": "-50/11",
+      "expected": "-50/11",
+      "pass": true
+    },
+    {
+      "label": "3_A_assets",
+      "actual": "10000",
+      "expected": "10000",
+      "pass": true
+    },
+    {
+      "label": "3_A_equity",
+      "actual": "5500",
+      "expected": "5500",
+      "pass": true
+    },
+    {
+      "label": "3_A_variant_assets",
+      "actual": "9500",
+      "expected": "9500",
+      "pass": true
+    },
+    {
+      "label": "3_A_variant_equity",
+      "actual": "5000",
+      "expected": "5000",
+      "pass": true
+    },
+    {
+      "label": "3_B_assets",
+      "actual": "7000",
+      "expected": "7000",
+      "pass": true
+    },
+    {
+      "label": "3_B_debt",
+      "actual": "4500",
+      "expected": "4500",
+      "pass": true
+    },
+    {
+      "label": "3_B_equity",
+      "actual": "2500",
+      "expected": "2500",
+      "pass": true
+    },
+    {
+      "label": "3_B_collection_receivable",
+      "actual": "1500",
+      "expected": "1500",
+      "pass": true
+    },
+    {
+      "label": "3_B_collection_cash",
+      "actual": "1500",
+      "expected": "1500",
+      "pass": true
+    },
+    {
+      "label": "3_B_after_assets",
+      "actual": "7000",
+      "expected": "7000",
+      "pass": true
+    },
+    {
+      "label": "4_A_expenses",
+      "actual": "8500",
+      "expected": "8500",
+      "pass": true
+    },
+    {
+      "label": "4_A_profit",
+      "actual": "1500",
+      "expected": "1500",
+      "pass": true
+    },
+    {
+      "label": "4_A_received_current",
+      "actual": "8500",
+      "expected": "8500",
+      "pass": true
+    },
+    {
+      "label": "4_A_cash_in",
+      "actual": "8800",
+      "expected": "8800",
+      "pass": true
+    },
+    {
+      "label": "4_A_paid_expenses",
+      "actual": "8000",
+      "expected": "8000",
+      "pass": true
+    },
+    {
+      "label": "4_A_cash_change",
+      "actual": "800",
+      "expected": "800",
+      "pass": true
+    },
+    {
+      "label": "4_B_expenses",
+      "actual": "6500",
+      "expected": "6500",
+      "pass": true
+    },
+    {
+      "label": "4_B_loss",
+      "actual": "-500",
+      "expected": "-500",
+      "pass": true
+    },
+    {
+      "label": "4_B_received_total",
+      "actual": "7000",
+      "expected": "7000",
+      "pass": true
+    },
+    {
+      "label": "4_B_cash_change",
+      "actual": "500",
+      "expected": "500",
+      "pass": true
+    },
+    {
+      "label": "4_B_variant_profit",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "label": "4_B_variant_cash",
+      "actual": "1000",
+      "expected": "1000",
+      "pass": true
+    },
+    {
+      "label": "6_model_stock_binding_reduction",
+      "actual": "22",
+      "expected": "22",
+      "pass": true
+    },
+    {
+      "label": "7_A_cash",
+      "actual": "50",
+      "expected": "50",
+      "pass": true
+    },
+    {
+      "label": "7_A_remaining_after_asset",
+      "actual": "10",
+      "expected": "10",
+      "pass": true
+    },
+    {
+      "label": "7_A_gap_to_bills",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "label": "7_A_short_credit_timing_gap",
+      "actual": "12",
+      "expected": "12",
+      "pass": true
+    },
+    {
+      "label": "7_A_long_credit_pay_first_month",
+      "actual": "19",
+      "expected": "19",
+      "pass": true
+    },
+    {
+      "label": "7_B_book_loss",
+      "actual": "-10",
+      "expected": "-10",
+      "pass": true
+    },
+    {
+      "label": "7_B_missing_replacement",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "label": "8_net_roles_not_guarantee",
+      "actual": "-6",
+      "expected": "-6",
+      "pass": true
+    },
+    {
+      "label": "9_A_time_for12jobs",
+      "actual": "240",
+      "expected": "240",
+      "pass": true
+    },
+    {
+      "label": "9_A_time_for24jobs",
+      "actual": "480",
+      "expected": "480",
+      "pass": true
+    },
+    {
+      "label": "9_A_excess_time",
+      "actual": "240",
+      "expected": "240",
+      "pass": true
+    },
+    {
+      "label": "9_A_own_example_revenue",
+      "actual": "96",
+      "expected": "96",
+      "pass": true
+    },
+    {
+      "label": "9_A_own_example_variable",
+      "actual": "36",
+      "expected": "36",
+      "pass": true
+    },
+    {
+      "label": "9_A_own_example_surplus",
+      "actual": "40",
+      "expected": "40",
+      "pass": true
+    },
+    {
+      "label": "9_B_cleaning_time",
+      "actual": "120",
+      "expected": "120",
+      "pass": true
+    },
+    {
+      "label": "9_B_late_available",
+      "actual": "11",
+      "expected": "11",
+      "pass": true
+    },
+    {
+      "label": "9_B_shortage",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "label": "10_manufacturing_average",
+      "actual": "3900615/99181",
+      "expected": "3900615/99181",
+      "pass": true
+    },
+    {
+      "label": "10_trade_average",
+      "actual": "1504333/134562",
+      "expected": "1504333/134562",
+      "pass": true
+    },
+    {
+      "label": "10_trade_mutated_average",
+      "actual": "1529333/134562",
+      "expected": "1529333/134562",
+      "pass": true
+    },
+    {
+      "label": "10_trade_mutation_delta",
+      "actual": "12500/67281",
+      "expected": "12500/67281",
+      "pass": true
+    },
+    {
+      "label": "10_craft_C_rounded_share",
+      "actual": "43/105",
+      "expected": "43/105",
+      "pass": true
+    },
+    {
+      "label": "10_craft_F_rounded_share",
+      "actual": "253/388",
+      "expected": "253/388",
+      "pass": true
+    },
+    {
+      "label": "10_craft_F_mutated_share",
+      "actual": "125/194",
+      "expected": "125/194",
+      "pass": true
+    },
+    {
+      "label": "10_craft_F_pp_change",
+      "actual": "-75/97",
+      "expected": "-75/97",
+      "pass": true
+    },
+    {
+      "label": "12_2023_margin",
+      "actual": "3/25",
+      "expected": "3/25",
+      "pass": true
+    },
+    {
+      "label": "12_2024_margin",
+      "actual": "1/10",
+      "expected": "1/10",
+      "pass": true
+    },
+    {
+      "label": "12_2025_margin",
+      "actual": "3/50",
+      "expected": "3/50",
+      "pass": true
+    },
+    {
+      "label": "12_2025_mutated_margin",
+      "actual": "3/25",
+      "expected": "3/25",
+      "pass": true
+    },
+    {
+      "label": "12_asset_equals_financing",
+      "actual": "300",
+      "expected": "300",
+      "pass": true
+    },
+    {
+      "label": "12_equity_share",
+      "actual": "3/10",
+      "expected": "3/10",
+      "pass": true
+    },
+    {
+      "label": "12_debt_share",
+      "actual": "7/10",
+      "expected": "7/10",
+      "pass": true
+    },
+    {
+      "label": "12_mutated_sum",
+      "actual": "300",
+      "expected": "300",
+      "pass": true
+    },
+    {
+      "label": "12_mutated_EK_share",
+      "actual": "11/30",
+      "expected": "11/30",
+      "pass": true
+    },
+    {
+      "label": "12_mutated_debt_share",
+      "actual": "19/30",
+      "expected": "19/30",
+      "pass": true
+    },
+    {
+      "label": "12_pp_change_EK",
+      "actual": "20/3",
+      "expected": "20/3",
+      "pass": true
+    },
+    {
+      "label": "13_A_sales_pct",
+      "actual": "50",
+      "expected": "50",
+      "pass": true
+    },
+    {
+      "label": "13_delivery2024",
+      "actual": "90",
+      "expected": "90",
+      "pass": true
+    },
+    {
+      "label": "13_delivery2025",
+      "actual": "92",
+      "expected": "92",
+      "pass": true
+    },
+    {
+      "label": "13_delivery_pp",
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    {
+      "label": "13_delivery_count",
+      "actual": "10",
+      "expected": "10",
+      "pass": true
+    }
+  ],
+  "actualRationalCount": 96,
+  "roundedChecks": [
+    {
+      "label": "NPV_A",
+      "actual": "-1.65",
+      "expected": "-1.65",
+      "pass": true
+    },
+    {
+      "label": "NPV_B",
+      "actual": "-6.61",
+      "expected": "-6.61",
+      "pass": true
+    },
+    {
+      "label": "NPV_A70",
+      "actual": "-19.83",
+      "expected": "-19.83",
+      "pass": true
+    },
+    {
+      "label": "NPV_C",
+      "actual": "12.81",
+      "expected": "12.81",
+      "pass": true
+    },
+    {
+      "label": "NPV_D",
+      "actual": "16.12",
+      "expected": "16.12",
+      "pass": true
+    },
+    {
+      "label": "NPV_D0",
+      "actual": "-4.55",
+      "expected": "-4.55",
+      "pass": true
+    },
+    {
+      "label": "manufact_mean",
+      "actual": "39.33",
+      "expected": "39.33",
+      "pass": true
+    },
+    {
+      "label": "trade_mean",
+      "actual": "11.18",
+      "expected": "11.18",
+      "pass": true
+    },
+    {
+      "label": "craft_C_pct",
+      "actual": "40.95",
+      "expected": "40.95",
+      "pass": true
+    },
+    {
+      "label": "craft_F_pct",
+      "actual": "65.21",
+      "expected": "65.21",
+      "pass": true
+    },
+    {
+      "label": "craft_F_after_pct",
+      "actual": "64.43",
+      "expected": "64.43",
+      "pass": true
+    }
+  ],
+  "actualRoundedCount": 11,
+  "marketClassifications": {
+    "A_bus_eight_sites_one_controller": "monopoly",
+    "A_three_independent_construction_sellers": "oligopoly",
+    "A_sixty_independent_vegetable_sellers": "polypoly",
+    "A_four_after_entry": "still oligopoly; no perfect-competition inference",
+    "B_one_water_supplier": "monopoly",
+    "B_four_appliance_sellers": "oligopoly",
+    "B_thirtyfive_online_sellers": "polypoly",
+    "B_one_platform_without_alternative_market_data": "no proved monopoly"
+  },
+  "errors": 0
+}

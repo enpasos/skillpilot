@@ -1,0 +1,89 @@
+{
+  "decision": "KEEP",
+  "HEAD": "05024fa45bdf95f2ea5da54d961bfee727600f23",
+  "testClassPath": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+  "onlyMethodChanged": "parsesRepositoryBackedCanonicalEconomicsMappingFixture",
+  "wholeImportsConstantsAndEveryOtherMethodByteExactToHEAD": true,
+  "wholePrefixSHA256": "929aaa5d58ac2c5b245f334eb92903aef7247b4d480add804389b4a0b66b5723",
+  "wholeSuffixSHA256": "a9457085ceb671a3e0e530cbcb6354b5db8a13bc77b6bc7ffc071067847346e2",
+  "priorMethodSHA256": "09b5652c42267e2c01569d94cc440c5134de2337bf50c5ef89020efd3a9543b3",
+  "currentMethodSHA256": "09205e081197782d4044139758e673b9d23b3b87954eb0643479ba0e98b8aa84",
+  "actualWholeMappingCounts": {
+    "edges": 228,
+    "exact": 223,
+    "partial": 5,
+    "distinctLegacyIds": 225
+  },
+  "actualFivePartialTuples": [
+    [
+      "3ba5e23b-5477-4294-9cfc-b39748293128",
+      "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+      "partial"
+    ],
+    [
+      "3ba5e23b-5477-4294-9cfc-b39748293128",
+      "121fea28-9943-575d-9c96-1fb2e3356f32",
+      "partial"
+    ],
+    [
+      "bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+      "1826fe19-4d06-5183-9b41-9121ae1cc219",
+      "partial"
+    ],
+    [
+      "bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+      "a2fa1186-df35-5954-a9a9-e311a55e218f",
+      "partial"
+    ],
+    [
+      "bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+      "df17fd21-e9b7-598f-970e-8f541d059694",
+      "partial"
+    ]
+  ],
+  "testFiveTuplesMatchActualCurrentMappingExactly": true,
+  "allTargetsAreCurrent": true,
+  "semantics": "The Economics fixture now pins the reviewed two-source/five-partial union exactly. containsOnly(exact,partial) is conjoined with 228total,223exact,225distinct legacy IDs, nonempty IDs, unique source-target pairs and exactly all five approved partial tuples. It does not permit an arbitrary additional partial mapping. All other subject fixture assertions, including all-exact expectations, remain byte exact. Runtime source and gate thresholds were not modified by this test change.",
+  "negativeFixtureEvaluation": "Static logical replication of the actual assertion conjunction; no native JUnit execution or CI pass claimed.",
+  "negativeCases": [
+    {
+      "case": "unreviewed sixth partial relation",
+      "expected": "reject",
+      "actualLogicalConjunction": "reject"
+    },
+    {
+      "case": "replace one approved tuple while preserving all counters",
+      "expected": "reject",
+      "actualLogicalConjunction": "reject"
+    },
+    {
+      "case": "drop the tariff companion relation",
+      "expected": "reject",
+      "actualLogicalConjunction": "reject"
+    },
+    {
+      "case": "duplicate relation",
+      "expected": "reject",
+      "actualLogicalConjunction": "reject"
+    },
+    {
+      "case": "empty legacy source ID",
+      "expected": "reject",
+      "actualLogicalConjunction": "reject"
+    },
+    {
+      "case": "unexpected mapping type",
+      "expected": "reject",
+      "actualLogicalConjunction": "reject"
+    }
+  ],
+  "reuseQualifiedHEUnionProof": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-HE-Q25-two-named-snapshot-facets-source-union-independent-a-READONLY-v1/SEALED-one-HE-named-snapshot-union-two-partial-edges-independent-a-KEEP.READONLY.json",
+    "sha256": "32ed868cc8da7b45d290970721400cf7316ea62584545cc4e81391404db54d09"
+  },
+  "scienceLimit": "Existing qualified whole market-failure split and bounded HE snapshot NAIRU/Tarif source union reused; no fresh all225 historical source review. Prior7c/P authorship remains disclosed and does not become independent7c science.",
+  "activeWrites": 0,
+  "ownWrites": "Only this new readonly evidence directory",
+  "humanApproval": false,
+  "M7Claim": false
+}

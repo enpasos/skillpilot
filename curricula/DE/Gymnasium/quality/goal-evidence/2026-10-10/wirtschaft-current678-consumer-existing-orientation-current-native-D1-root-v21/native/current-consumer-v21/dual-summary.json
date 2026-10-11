@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e3c79a923d1002d90d30358b7fdf5128988703928455db1a47c6a753499a05e9",
+  "reviewInputFingerprint": "sha256:8867fac3097e98ffa6a9f3d34286fb08c7d21e2ea1490b3ec8a6ed8183dc362f",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current336-consumer-current-v21-a",
+      "roundId": "wirtschaft-current336-consumer-current-v21-first-pass-a",
+      "independenceGroupId": "wirtschaft-current336-consumer-current-v21-independent-a",
+      "runIds": [
+        "wirtschaft-current336-consumer-current-v21-first-pass-a.batch-001.openai-gpt6-current-entry-a-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current336-consumer-current-v21-b",
+      "roundId": "wirtschaft-current336-consumer-current-v21-first-pass-b",
+      "independenceGroupId": "wirtschaft-current336-consumer-current-v21-independent-b",
+      "runIds": [
+        "wirtschaft-current336-consumer-current-v21-first-pass-b.batch-001.actual-independent-20261010"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-6::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "firstRecordId": "wirtschaft-current336-consumer-current-v21-first-pass-a.batch-001.openai-gpt6-current-entry-a-v1.consumer",
+      "secondRecordId": "wirtschaft-current336-consumer-current-v21-first-pass-b.5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "firstRunId": "wirtschaft-current336-consumer-current-v21-first-pass-a.batch-001.openai-gpt6-current-entry-a-v1",
+      "secondRunId": "wirtschaft-current336-consumer-current-v21-first-pass-b.batch-001.actual-independent-20261010",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

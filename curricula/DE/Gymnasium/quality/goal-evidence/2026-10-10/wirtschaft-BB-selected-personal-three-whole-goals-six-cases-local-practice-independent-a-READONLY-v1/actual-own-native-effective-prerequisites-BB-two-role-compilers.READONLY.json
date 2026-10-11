@@ -1,0 +1,312 @@
+{
+  "role": "BOUNDED_OWN_NATIVE_EFFECTIVE_PREREQUISITE_AND_TWO_VIEW_CHECK_NOT_CENTRAL_CI",
+  "completedAt": "2026-10-10T16:51:52.137Z",
+  "nativeMethods": {
+    "sourcePath": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sourceSHA256": "sha256:656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+    "functions": [
+      {
+        "name": "isAtomicGoal",
+        "exactASTSourceSHA256": "sha256:5ab4946692e60923890fa51cb205f0d727cf2dd0a89f9d133efea5ebbc3e16c8"
+      },
+      {
+        "name": "parseReference",
+        "exactASTSourceSHA256": "sha256:cc7ba2844aa72ef01bb75d9ab82709263c7b4ef87b2ad9d39df2ec9f8f37da34"
+      },
+      {
+        "name": "buildParentByChild",
+        "exactASTSourceSHA256": "sha256:be95f68f343a46d04a842bbdb3de7aac63ebac240209c808eeb9a95a9c9ce0f4"
+      },
+      {
+        "name": "buildDirectRequiresEdges",
+        "exactASTSourceSHA256": "sha256:8f106696548ef10624625d0fee1b8e70156a7fa6c1f03ee82147b609aedda171"
+      },
+      {
+        "name": "buildEffectiveRequiresEdges",
+        "exactASTSourceSHA256": "sha256:ea525551966af8483fd46809ebe0b227b1d2c7b0ba3dd121403d234f5a2b7826"
+      },
+      {
+        "name": "collectWholeMaterialPrerequisiteClosure",
+        "exactASTSourceSHA256": "sha256:7e02ffc32ab3bfea9df317051b99f944fa87e9a4d2b5ba1b766bd8829701a5b2"
+      }
+    ],
+    "typeErasureOnly": true,
+    "checkerModified": false
+  },
+  "wholeCoreNodes": 693,
+  "ownEffectiveRequires": [
+    {
+      "goalId": "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+      "direct": [
+        "6bf2d1cc-e745-50dd-a617-71c06a6c6945"
+      ],
+      "effective": [
+        "6bf2d1cc-e745-50dd-a617-71c06a6c6945"
+      ]
+    },
+    {
+      "goalId": "8e065dac-4345-5b88-aee1-dbca803a2631",
+      "direct": [
+        "6bf2d1cc-e745-50dd-a617-71c06a6c6945"
+      ],
+      "effective": [
+        "6bf2d1cc-e745-50dd-a617-71c06a6c6945"
+      ]
+    },
+    {
+      "goalId": "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+      "direct": [
+        "6bf2d1cc-e745-50dd-a617-71c06a6c6945"
+      ],
+      "effective": [
+        "6bf2d1cc-e745-50dd-a617-71c06a6c6945"
+      ]
+    },
+    {
+      "goalId": "b1440271-2fcd-582c-8a53-c084ada87acc",
+      "direct": [
+        "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+        "8e065dac-4345-5b88-aee1-dbca803a2631",
+        "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+        "776457c2-8bb3-53b9-838b-a028319175fb",
+        "fab48742-756b-564d-87ef-cd6f3c75f348"
+      ],
+      "effective": [
+        "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+        "8e065dac-4345-5b88-aee1-dbca803a2631",
+        "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+        "776457c2-8bb3-53b9-838b-a028319175fb",
+        "fab48742-756b-564d-87ef-cd6f3c75f348"
+      ]
+    }
+  ],
+  "wholeMaterialAtomicPrerequisiteClosure": [
+    "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+    "6bf2d1cc-e745-50dd-a617-71c06a6c6945",
+    "776457c2-8bb3-53b9-838b-a028319175fb",
+    "8e065dac-4345-5b88-aee1-dbca803a2631",
+    "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+    "dae93971-726c-56e5-8044-19dbd40febf7",
+    "fab48742-756b-564d-87ef-cd6f3c75f348"
+  ],
+  "unresolvedReferences": [],
+  "views": [
+    {
+      "course": "gk",
+      "compileErrors": [],
+      "newThree": [
+        {
+          "goalId": "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+          "role": "absent"
+        },
+        {
+          "goalId": "8e065dac-4345-5b88-aee1-dbca803a2631",
+          "role": "absent"
+        },
+        {
+          "goalId": "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+          "role": "absent"
+        }
+      ],
+      "wholePracticeRole": "absent",
+      "coveredGoalRoles": [
+        {
+          "goalId": "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+          "target": false
+        },
+        {
+          "goalId": "8e065dac-4345-5b88-aee1-dbca803a2631",
+          "target": false
+        },
+        {
+          "goalId": "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+          "target": false
+        },
+        {
+          "goalId": "776457c2-8bb3-53b9-838b-a028319175fb",
+          "target": true
+        },
+        {
+          "goalId": "fab48742-756b-564d-87ef-cd6f3c75f348",
+          "target": false
+        }
+      ],
+      "fullPrerequisiteRoles": [
+        {
+          "goalId": "fab48742-756b-564d-87ef-cd6f3c75f348",
+          "target": false,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "6bf2d1cc-e745-50dd-a617-71c06a6c6945",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "776457c2-8bb3-53b9-838b-a028319175fb",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "dae93971-726c-56e5-8044-19dbd40febf7",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+          "target": false,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "8e065dac-4345-5b88-aee1-dbca803a2631",
+          "target": false,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+          "target": false,
+          "prerequisiteOnly": false
+        }
+      ],
+      "unsupported912Target": false,
+      "unsupportedOld81dTarget": false
+    },
+    {
+      "course": "lk",
+      "compileErrors": [],
+      "newThree": [
+        {
+          "goalId": "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+          "role": "target"
+        },
+        {
+          "goalId": "8e065dac-4345-5b88-aee1-dbca803a2631",
+          "role": "target"
+        },
+        {
+          "goalId": "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+          "role": "target"
+        }
+      ],
+      "wholePracticeRole": "target",
+      "coveredGoalRoles": [
+        {
+          "goalId": "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+          "target": true
+        },
+        {
+          "goalId": "8e065dac-4345-5b88-aee1-dbca803a2631",
+          "target": true
+        },
+        {
+          "goalId": "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+          "target": true
+        },
+        {
+          "goalId": "776457c2-8bb3-53b9-838b-a028319175fb",
+          "target": true
+        },
+        {
+          "goalId": "fab48742-756b-564d-87ef-cd6f3c75f348",
+          "target": true
+        }
+      ],
+      "fullPrerequisiteRoles": [
+        {
+          "goalId": "fab48742-756b-564d-87ef-cd6f3c75f348",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "6bf2d1cc-e745-50dd-a617-71c06a6c6945",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "776457c2-8bb3-53b9-838b-a028319175fb",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "dae93971-726c-56e5-8044-19dbd40febf7",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "1839e595-3e30-53ec-904f-b38e2ed4e4e0",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "8e065dac-4345-5b88-aee1-dbca803a2631",
+          "target": true,
+          "prerequisiteOnly": false
+        },
+        {
+          "goalId": "b6f352e1-bcbd-57d7-a502-b15e54d1400c",
+          "target": true,
+          "prerequisiteOnly": false
+        }
+      ],
+      "unsupported912Target": false,
+      "unsupportedOld81dTarget": false
+    }
+  ],
+  "endguards": [
+    {
+      "before": {
+        "path": "app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "sha256:656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+        "bytes": 273652
+      },
+      "after": {
+        "path": "app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "sha256:656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+        "bytes": 273652
+      },
+      "exact": true
+    },
+    {
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/candidate-core/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:24529981d257f241e5fc3e857ff172ada1c565bb9f54cee9c87ac1c8067b82b6",
+        "bytes": 5460721
+      },
+      "after": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/candidate-core/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:24529981d257f241e5fc3e857ff172ada1c565bb9f54cee9c87ac1c8067b82b6",
+        "bytes": 5460721
+      },
+      "exact": true
+    },
+    {
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/candidate-views/de-bb-gym-economics-gk.view.json",
+        "sha256": "sha256:db5554804b216a72678daa87a2a216c8de050956fd2105d0fb72c2c24e8aded5",
+        "bytes": 71801
+      },
+      "after": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/candidate-views/de-bb-gym-economics-gk.view.json",
+        "sha256": "sha256:db5554804b216a72678daa87a2a216c8de050956fd2105d0fb72c2c24e8aded5",
+        "bytes": 71801
+      },
+      "exact": true
+    },
+    {
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/candidate-views/de-bb-gym-economics-lk.view.json",
+        "sha256": "sha256:d7206edff1e0eb79bf8c8e5319fc9c4e6e726a5a1f7b48f8f11d9683156ea240",
+        "bytes": 101877
+      },
+      "after": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/candidate-views/de-bb-gym-economics-lk.view.json",
+        "sha256": "sha256:d7206edff1e0eb79bf8c8e5319fc9c4e6e726a5a1f7b48f8f11d9683156ea240",
+        "bytes": 101877
+      },
+      "exact": true
+    }
+  ],
+  "activeWrites": 0,
+  "newImagesReadOrProduced": false,
+  "wholeCentralM6M7PassClaimed": false
+}

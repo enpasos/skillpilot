@@ -1,0 +1,48 @@
+{
+  "authorOnly": true,
+  "schemaPath": "docs/landscape-runtime.schema.json",
+  "schemaSHA": "d25cf1c930d1a21838264b34d713f32788715089c6b8ff2b7430bdbc6079e59a",
+  "nativeCanonicalSourcePath": "app/src/utils/authoring/canonicalAuthoring.ts",
+  "nativeCanonicalSourceSHA": "3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43",
+  "actualGoalCount": 541,
+  "newDraftCount": 9,
+  "closedSchemaPassed": true,
+  "closedSchemaErrors": [],
+  "nativeContainsTypeErrors": [],
+  "requiresReferenceCycleDiagnostic": {
+    "missing": [],
+    "cycles": []
+  },
+  "old532WholeGoalsExact": true,
+  "oldHeaderExact": true,
+  "negativeClosedEnum": {
+    "detected": true,
+    "errors": [
+      {
+        "instancePath": "/goals/540/examData/reviewStatus",
+        "schemaPath": "#/properties/examData/properties/reviewStatus/enum",
+        "keyword": "enum",
+        "params": {
+          "allowedValues": [
+            "draft",
+            "needs_review",
+            "released"
+          ]
+        },
+        "message": "must be equal to one of the allowed values"
+      }
+    ]
+  },
+  "negativeActualRequiresSelfCycle": {
+    "detected": true,
+    "diagnostic": {
+      "missing": [],
+      "cycles": [
+        "dbf02f3d-e1ee-5438-b270-6f6c6b744ee3"
+      ]
+    }
+  },
+  "ordinaryPSourceScopeNavChanges": 0,
+  "scopeApproval": false,
+  "wholeScienceApproval": false
+}

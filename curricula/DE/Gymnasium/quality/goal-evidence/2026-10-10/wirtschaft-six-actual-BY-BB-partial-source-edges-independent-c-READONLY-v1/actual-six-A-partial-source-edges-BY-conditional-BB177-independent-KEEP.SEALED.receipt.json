@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-10T18:02:50.188624+00:00",
+  "status": "independent_KEEP_bounded_six_real_partial_source_edges_and_BB177_metadata",
+  "reviewer": "OpenAI GPT-6 / Codex; independent agent C, not mapping author A",
+  "authority": "ai",
+  "humanApproval": false,
+  "observedLearnerPerformance": false,
+  "actualOwnPrimaryReads": [
+    {
+      "officialUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/andere",
+      "actualRead": "WR11.1 competence plus explicit imperfect-competition/public-goods content; HG/SG/NTG/MuG/SWG scope",
+      "decision": "KEEP two bounded partial mechanisms, preserve wider intervention judgment union"
+    },
+    {
+      "officialUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg",
+      "actualRead": "WR11.1 and WR11.5 competence/content actually opened online; institution analysis includes adverse selection before transaction, while moral hazard and institution/game theory remain wider",
+      "decision": "KEEP three partial mechanism edges; INFO only WWG WR11.5, not all-track duty"
+    },
+    {
+      "officialUrl": "https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2018_Wirtschaftswissenschaft.pdf",
+      "localActualPDF": {
+        "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2018_Wirtschaftswissenschaft.pdf",
+        "sha256": "59cf3d94a05d8133cb3edf966fa37b06e75ba06368e0a966fa20834b2f08d19b",
+        "bytes": 223635
+      },
+      "actualPrintedAndPDFPages": [
+        19,
+        26
+      ],
+      "actualRead": "Own pypdf whole actual pages19/26 plus official live PDF; compulsory GK environment-economy relations and selected LK Nachhaltiges Wirtschaften share performance. External effects is own bounded mechanism, not claimed original wording.",
+      "decision": "KEEP one partial union; GK primary/source row19, LK selected actual26, no compulsory universal LK expansion"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-four-market-facet-six-direct-partial-edges-AUTHOR-INERT-a-v1/SEALED-four-market-groups-six-direct-partial-source-edges.AUTHOR-INERT.json",
+      "sha256": "b04a58234322db09d40ad136e1fe69594290d3774c79187b58fe67e1b5e729ce",
+      "bytes": 4197
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-six-partial-edges-BB177-counter-ADDENDUM-AUTHOR-INERT-a-v2/SEALED-BB177-partial146-truthful-counter-only-author-addendum.INERT.json",
+      "sha256": "d57925b8477eca0a3432c3326507e20da85a5ff1561eabca8c35138f2b7a97dc",
+      "bytes": 1571
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "6e96150a39108e6287234eb37bc7dc65426c9acee6013769f8533d777720bb1a",
+      "bytes": 5461486
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_WIRTSCHAFT_UND_RECHT_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "53462162007b5029a189bfba4675bf46f2ff73f4d8c8fec2ad083ab429404c20",
+      "bytes": 348738
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_WIRTSCHAFT_SEKII_GOST_2022.source-extraction.json",
+      "sha256": "d9c4af0812378191b884544a36c37a1d843d991995b421fe992c4828fa62b0d9",
+      "bytes": 179466
+    }
+  ],
+  "qualifiedPairs": [
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_wirtschaft_und_recht_source_extraction_to_canonical_wirtschaft.review.json",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-four-market-facet-six-direct-partial-edges-AUTHOR-INERT-a-v1/BY.whole-mapping-six-edge-successor.AUTHOR-INERT.json",
+        "sha256": "5bd3cb951c9c23f67ec6eb3ff360c6fbca270978c383944f7f628eb4623a32fa",
+        "bytes": 142454
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-six-partial-edges-BB177-counter-ADDENDUM-AUTHOR-INERT-a-v2/BB.whole-mapping-one-new-partial-edge-current177-metadata-correct.AUTHOR-INERT.json",
+        "sha256": "8baefecaf2d020e4756eb475380e7ba44d2cebecbda40036976935a063d293fb",
+        "bytes": 126867
+      }
+    }
+  ],
+  "individualDecisions": [
+    {
+      "jurisdiction": "BY",
+      "sourceGoalId": "a58ee47a-a4cf-5d4a-8a5e-19bd95e75080",
+      "canonicalGoalId": "a2fa1186-df35-5954-a9a9-e311a55e218f",
+      "matchType": "partial",
+      "reason": "AUSSCHLIESSLICH WWG, WR11.5: Die offizielle Inhaltsliste der institutionenökonomischen Analyse nennt Informationsasymmetrien und adverse Selektion. INFO prüft den engeren Mechanismus ungleicher Informationen VOR dem Geschäft über Auswahl/Teilnahme. PARTIAL: moralisches Risiko nach dem Geschäft, Prinzipal-Agent-Analyse, Institutionen und Spieltheorie sind dadurch nicht vollständig abgedeckt. Keine Pflichtbehauptung für HG/SG/NTG/MuG/SWG; vorhandenes ganzes Institutionenziel bleibt erhalten.",
+      "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg",
+      "originalWholeUnionRetainedExact": [
+        "c7b03538-25a2-510b-8fd4-a81bcc3de406"
+      ],
+      "independentQualification": true,
+      "decision": "KEEP_bounded_actual_partial_source_union",
+      "sourceWholeContractRead": true,
+      "canonicalWholeContractRead": true,
+      "allOriginalUnionTargetsPreserved": true,
+      "wholeSourceReviewClaim": false
+    },
+    {
+      "jurisdiction": "BY",
+      "sourceGoalId": "4617eefd-63f3-5721-95a6-57caf928123c",
+      "canonicalGoalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+      "matchType": "partial",
+      "reason": "HG/SG/NTG/MuG/SWG, WR11.1: Die tatsächliche offizielle Kompetenz beurteilt staatliche Eingriffe anhand der Grenzen der Marktlenkung; ihre verbindliche Inhaltsliste nennt unvollkommenen Wettbewerb und öffentliche Güter. 1826 operationalisiert ausschließlich Marktmacht/Marktzugang und Preis-Mengen-Anreize; PUB operationalisiert ausschließlich Nichtrivalität/Nichtausschließbarkeit und freiwillige Finanzierung. Beide ergänzten Kanten sind PARTIAL und ersetzen weder das bestehende ganze Ordnungsziel noch die weiteren externen/sozialen Grenzen und das Eingriffsurteil.",
+      "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/andere",
+      "originalWholeUnionRetainedExact": [
+        "6600f5f0-0b30-5458-b144-b2468d897087"
+      ],
+      "independentQualification": true,
+      "decision": "KEEP_bounded_actual_partial_source_union",
+      "sourceWholeContractRead": true,
+      "canonicalWholeContractRead": true,
+      "allOriginalUnionTargetsPreserved": true,
+      "wholeSourceReviewClaim": false
+    },
+    {
+      "jurisdiction": "BY",
+      "sourceGoalId": "4617eefd-63f3-5721-95a6-57caf928123c",
+      "canonicalGoalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+      "matchType": "partial",
+      "reason": "HG/SG/NTG/MuG/SWG, WR11.1: Die tatsächliche offizielle Kompetenz beurteilt staatliche Eingriffe anhand der Grenzen der Marktlenkung; ihre verbindliche Inhaltsliste nennt unvollkommenen Wettbewerb und öffentliche Güter. 1826 operationalisiert ausschließlich Marktmacht/Marktzugang und Preis-Mengen-Anreize; PUB operationalisiert ausschließlich Nichtrivalität/Nichtausschließbarkeit und freiwillige Finanzierung. Beide ergänzten Kanten sind PARTIAL und ersetzen weder das bestehende ganze Ordnungsziel noch die weiteren externen/sozialen Grenzen und das Eingriffsurteil.",
+      "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/andere",
+      "originalWholeUnionRetainedExact": [
+        "6600f5f0-0b30-5458-b144-b2468d897087"
+      ],
+      "independentQualification": true,
+      "decision": "KEEP_bounded_actual_partial_source_union",
+      "sourceWholeContractRead": true,
+      "canonicalWholeContractRead": true,
+      "allOriginalUnionTargetsPreserved": true,
+      "wholeSourceReviewClaim": false
+    },
+    {
+      "jurisdiction": "BY",
+      "sourceGoalId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+      "canonicalGoalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+      "matchType": "partial",
+      "reason": "WWG, WR11.1: Die tatsächliche offizielle Kompetenz und die verbindlichen Inhalte tragen Marktmacht sowie öffentliche Güter als zwei voneinander getrennte Marktgrenzen. Die zusätzlichen 1826/PUB-Kanten sind PARTIAL: Erklärung eines Mechanismus ist ein begrenzter fachlicher Anteil des umfassenderen staatlichen Eingriffsurteils. Das bestehende ganze Ordnungsziel und alle übrigen alten Kanten bleiben erhalten.",
+      "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg",
+      "originalWholeUnionRetainedExact": [
+        "6600f5f0-0b30-5458-b144-b2468d897087"
+      ],
+      "independentQualification": true,
+      "decision": "KEEP_bounded_actual_partial_source_union",
+      "sourceWholeContractRead": true,
+      "canonicalWholeContractRead": true,
+      "allOriginalUnionTargetsPreserved": true,
+      "wholeSourceReviewClaim": false
+    },
+    {
+      "jurisdiction": "BY",
+      "sourceGoalId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+      "canonicalGoalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+      "matchType": "partial",
+      "reason": "WWG, WR11.1: Die tatsächliche offizielle Kompetenz und die verbindlichen Inhalte tragen Marktmacht sowie öffentliche Güter als zwei voneinander getrennte Marktgrenzen. Die zusätzlichen 1826/PUB-Kanten sind PARTIAL: Erklärung eines Mechanismus ist ein begrenzter fachlicher Anteil des umfassenderen staatlichen Eingriffsurteils. Das bestehende ganze Ordnungsziel und alle übrigen alten Kanten bleiben erhalten.",
+      "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg",
+      "originalWholeUnionRetainedExact": [
+        "6600f5f0-0b30-5458-b144-b2468d897087"
+      ],
+      "independentQualification": true,
+      "decision": "KEEP_bounded_actual_partial_source_union",
+      "sourceWholeContractRead": true,
+      "canonicalWholeContractRead": true,
+      "allOriginalUnionTargetsPreserved": true,
+      "wholeSourceReviewClaim": false
+    },
+    {
+      "jurisdiction": "BB",
+      "sourceGoalId": "bb-wirtschaft-sekii-q-gk-nachhaltigkeit-g01-12e43434",
+      "canonicalGoalId": "bad728f2-e375-5f98-8f65-511a9e2e6751",
+      "matchType": "partial",
+      "reason": "BB GK Pflicht, tatsächlicher Originalabschnitt S.19: Zusammenhänge zwischen Produktion, Konsum, Umweltbelastung und politischen Rahmenbedingungen werden analysiert; Inhalt Umweltökonomie. EXT erklärt externe Kosten/Nutzen und internalisierende Maßnahmen als passenden begrenzten ökonomischen Mechanismus. PARTIAL: Das Original nennt den Begriff externe Effekte nicht ausdrücklich und fordert umfassendere Zusammenhangsanalyse; die bestehende Union 80c/f5d bleibt unverändert. Für LK trägt der tatsächlich gewählte Bereich Nachhaltiges Wirtschaften S.26 denselben Zusammenhang; die LK Wahlbedingung bleibt erhalten. Keine Behauptung eines externen-Effekte-Wortlauts S.28 und keine pauschale GK→LK-Pflicht.",
+      "primaryUrl": "https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2018_Wirtschaftswissenschaft.pdf",
+      "originalWholeUnionRetainedExact": [
+        "80c92945-155b-56ea-8aa2-46ee72852303",
+        "f5d76508-c5bb-5782-8b39-2ba21d7fe539"
+      ],
+      "independentQualification": true,
+      "decision": "KEEP_bounded_actual_partial_source_union",
+      "sourceWholeContractRead": true,
+      "canonicalWholeContractRead": true,
+      "allOriginalUnionTargetsPreserved": true,
+      "wholeSourceReviewClaim": false
+    }
+  ],
+  "checks": [
+    {
+      "check": "seal artifact curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-four-market-facet-six-direct-partial-edges-AUTHOR-INERT-a-v1/BB.whole-mapping-six-edge-successor.AUTHOR-INERT.json",
+      "passed": true
+    },
+    {
+      "check": "seal artifact curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-four-market-facet-six-direct-partial-edges-AUTHOR-INERT-a-v1/BB.whole-mapping.BEFORE.EXACT.json",
+      "passed": true
+    },
+    {
+      "check": "seal artifact curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-four-market-facet-six-direct-partial-edges-AUTHOR-INERT-a-v1/BY.whole-mapping-six-edge-successor.AUTHOR-INERT.json",
+      "passed": true
+    },
+    {
+      "check": "seal artifact curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-four-market-facet-six-direct-partial-edges-AUTHOR-INERT-a-v1/BY.whole-mapping.BEFORE.EXACT.json",
+      "passed": true
+    },
+    {
+      "check": "seal artifact curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-four-market-facet-six-direct-partial-edges-AUTHOR-INERT-a-v1/actual-six-partial-source-edges-individual-reasons-and-bounded-country-exceptions.AUTHOR-INERT.receipt.json",
+      "passed": true
+    },
+    {
+      "check": "seal artifact curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-four-market-facet-six-direct-partial-edges-AUTHOR-INERT-a-v1/four-whole-current-goals-and-four-unchanged-whole-source-rows.READONLY.json",
+      "passed": true
+    },
+    {
+      "check": "BBv2 candidate seal",
+      "passed": true
+    },
+    {
+      "check": "four whole current canonical contracts exact",
+      "passed": true
+    },
+    {
+      "check": "four source contracts exact unchanged",
+      "passed": true
+    },
+    {
+      "check": "BY before exact active bytes",
+      "passed": true
+    },
+    {
+      "check": "BY all old edges prefix exact",
+      "passed": true
+    },
+    {
+      "check": "BY all new edges exactly actual claimed six",
+      "passed": true
+    },
+    {
+      "check": "BY all unrelated decisions whole exact",
+      "passed": true
+    },
+    {
+      "check": "BY original whole union retained",
+      "passed": true
+    },
+    {
+      "check": "BY actual decision counters truthful",
+      "passed": true
+    },
+    {
+      "check": "partial bounded reason a58ee47a-a4cf-5d4a-8a5e-19bd95e75080",
+      "passed": true
+    },
+    {
+      "check": "partial bounded reason 4617eefd-63f3-5721-95a6-57caf928123c",
+      "passed": true
+    },
+    {
+      "check": "partial bounded reason 4617eefd-63f3-5721-95a6-57caf928123c",
+      "passed": true
+    },
+    {
+      "check": "partial bounded reason 2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+      "passed": true
+    },
+    {
+      "check": "partial bounded reason 2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+      "passed": true
+    },
+    {
+      "check": "BY historical author decision preservation",
+      "passed": true
+    },
+    {
+      "check": "BB before exact active bytes",
+      "passed": true
+    },
+    {
+      "check": "BB all old edges prefix exact",
+      "passed": true
+    },
+    {
+      "check": "BB all new edges exactly actual claimed six",
+      "passed": true
+    },
+    {
+      "check": "BB all unrelated decisions whole exact",
+      "passed": true
+    },
+    {
+      "check": "BB original whole union retained",
+      "passed": true
+    },
+    {
+      "check": "BB actual decision counters truthful",
+      "passed": true
+    },
+    {
+      "check": "partial bounded reason bb-wirtschaft-sekii-q-gk-nachhaltigkeit-g01-12e43434",
+      "passed": true
+    },
+    {
+      "check": "BB historical author decision preservation",
+      "passed": true
+    },
+    {
+      "check": "BB177 mappings/decisions exact A v1",
+      "passed": true
+    },
+    {
+      "check": "BB whole176/145 historical closure exact",
+      "passed": true
+    },
+    {
+      "check": "BB177 truthful counters",
+      "passed": true
+    }
+  ],
+  "actualSixEdges": 6,
+  "originalWholeMappingEdgesRetainedExact": 365,
+  "actualFourUnchangedWholeSourceRowsReviewed": 4,
+  "noWhole284SourceHistoryScienceClaim": true,
+  "boundMetadataClaim": "BB177-v2 correct additive unqualified-author status is honest; separate activation metadata may cite this independent receipt. Historical176/145 whole closure retained exact. BY actual184 decision count167/17 and194 edge count170/24 verified.",
+  "requiresBeforeActiveIntegration": [
+    "independent Source/View combined native CQR003 unsupported0 plus full original2135 reverse coverage",
+    "Root/independent review of any later metadata-only successor",
+    "native stable Layer-A/M2–M6 and actual CI"
+  ],
+  "newStrictM7ScientificGoalCompletions": 0,
+  "restoredStrictGateBindingsClaimed": 0,
+  "netStrictM7Gain": 0,
+  "M6M7OrCIClaim": false,
+  "DOrVApprovalClaim": false,
+  "activeWrites": 0
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "Actual native partial 048 resolution, consumer explicitly deferred; original authoring-location failure retained",
+  "authoring": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/native/current336-D124-batch-13/synthesis-authoring.root-only048.v1.json",
+  "checks": [
+    {
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-13.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/native/current336-D124-batch-13/synthesis-authoring.root-only048.v1.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.567
+    },
+    {
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-13.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/native/current336-D124-batch-13/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.657
+    },
+    {
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-13.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.644
+    }
+  ],
+  "allThreePassed": true,
+  "activeRegistryWrites": 0,
+  "claimedStrictIncrease": 0
+}

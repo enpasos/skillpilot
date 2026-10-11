@@ -1,0 +1,11 @@
+## Regional labour forum (fictional model, dated 9 October 2026)
+A region loses 180 jobs after a mechanical-production closure. Ninety care/IT vacancies arise: 60 require qualifications none of the 180 workers possesses; 30 match qualifications, but 20 affected workers cannot accept the shifts without childcare. Forty have written offers elsewhere. Applications overlap, so these figures cannot simply be added.
+M1 Working-age population falls from 2,000 to 1,800; participation rises from 65% to 75%. One full-time equivalent is 40 weekly hours; people, labour force and hours differ.
+M2 A supplied NAIRU model is Δπ=−0.4(u−u*) percentage points, u*=5%, u=7%. A competitive model predicts lower labour demand after higher real wages at unchanged productivity; an efficiency-wage model allows improved retention/performance to alter costs. No model's quantitative dominance is established.
+M3 Workers seek purchasing power and predictable rosters; employers cite sales risk and flexibility. A hypothetical compromise offers 3% pay growth, predictable rosters and temporary job assurances; prices grow 4%, productivity 1%. A two-day strike interrupts supplies to two other firms. No actual settlement or employment guarantee is asserted.
+M4 Each of 120 participants and 120 comparable nonparticipants initially has 50 employed, then 80/68 after a year. Allocation was not random; motivation, demand and registration may differ. Administrative removal is not a job. Supplied statistical rule: paid work from one weekly hour counts in international employment statistics; administrative unemployment has different availability/hour tests. Data are fictional, not an official series.
+1. Calculate the NAIRU implication, compare the wage models and identify missing decisive evidence.
+2. Analyse parties/power, real wages and unit costs; explain two conditional direct/indirect effects of the strike or compromise.
+3. Calculate both labour forces; explain why these do not establish qualified workers or hours.
+4. Diagnose structural, skill and demand problems; calculate the programme's difference in changes and examine causal/statistical inferences.
+5. Prioritise training, childcare/shift organisation and any demand support, linking each to a evidenced bottleneck, lead time, side effect and measurable success.

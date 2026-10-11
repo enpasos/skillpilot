@@ -1,0 +1,248 @@
+import json, pathlib, hashlib, datetime, copy
+from fractions import Fraction as F
+R=pathlib.Path('/home/enpasos/projects/skillpilot')
+Q=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+T=Q/'wirtschaft-M4-seven-consumer-contract-law-one-contract-local-author-v1'
+O=Q/'wirtschaft-M4-seven-law-whole-science-independent-root-v1'
+O.mkdir(exist_ok=False)
+def load(p):return json.loads(p.read_text())
+def seal(p):
+ b=p.read_bytes();return {'path':str(p.relative_to(R)), 'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+def put(n,j):
+ p=O/n;p.write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n');return seal(p)
+body=T/'whole-seven-one-contract-two-case-DEEN24-15.DRAFT-author-candidates.json'
+assert seal(body)['sha256']=='3b0254e67b38b5a7f3deafefc5a002c987f6e8aeb7ec7c9d550596da1bdc5f03'
+materials=load(body)['materials']
+binding=T/'whole-eight-current555-contracts-P16-existing-five-and-new-seven.author-binding.index.json'
+assert seal(binding)['sha256']=='37fbd7afc76045418c0510c6b1b13026591f004f3cbd5ff4096c289759264dad'
+rows=load(binding)['rows'];assert len(rows)==len(materials)==7
+frozen=T/'whole-current555-author-before.frozen.json'
+assert seal(frozen)['sha256']=='21d75911886b1a47620f311455b8577b09e07a87bb58b3cf33eac7f2a535a286'
+can=load(frozen);goals=can['goals'];byid={g['id']:g for g in goals}
+assert len(goals)==555
+for g,row in zip(materials,rows):
+ assert g['id']==row['materialId']
+ assert row['wholeGoal']==byid[row['goalId']]
+ assert g['requires']==g['examData']['coveredGoalIds']==[row['goalId']]
+ assert len(row['wholeOriginalP']['profile']['applicationCaseBriefs'])==2
+ assert row['wholeOriginalP']['status']=='needs_human_review'
+ assert row['wholeOriginalP']['reviewAuthority']=='ai_candidate'
+ assert g['examData']['reviewStatus']=='draft'
+ assert len(g['examData']['scoring']['steps'])==4
+ assert g['examData']['scoring']['maxPoints']==24 and g['examData']['scoring']['passingPoints']==15
+ assert sum(s['points'] for s in g['examData']['scoring']['steps'])==24
+
+# These are independently written answers, not author works or copied solutions.
+# Each pair explicitly records the two genuinely correct components awarded manually.
+full=[
+ [
+  ['Der bei Übergabe belegte Heizfehler verfehlt die gewöhnliche Kochfunktion nach434.','L verlangt437Nr1/439-Reparatur oder Ersatz von VerkäuferV.'],
+  ['Onlineverkauf ohne Ausnahme eröffnet312g/355-Widerruf.','10.Oktober liegt neun Tage nach1.Oktober, ordnungsgemäße Belehrung ist gegeben.'],
+  ['Der materialbedingte Ausfall erfüllt die24Monatszusage.','Verpflichteter aus443 ist GarantiegeberH; Sorgfalt beim Adressaten ersetzt keine Verkäuferrechte.'],
+  ['AnV: Bestellung und ursprünglichen Heizfehler mit Kaufbeleg benennen und Nacherfüllung wählen.','Bei lediglich ungeliebter Farbe fehlt der Materialmangel und damit dieser Anspruch.'],
+  ['Eine eindeutige rechtzeitige Widerrufserklärung anV benötigt keinen Mangel.','Deshalb kann L auch beim funktionierenden aber ungeliebten Kocher fristgerecht widerrufen.'],
+  ['AnH: Beleg,24Monatszusage, Heizfehler und Reparaturwunsch getrennt anmelden.','Die funktionierende Farbvariante löst gerade keinen garantierten Funktionsausfall aus.'],
+  ['Bei der ursprünglichen defekten Leuchte trägt437/439 den Anspruch gegenS.','Keine freiwillige S-Garantie beseitigt diese gesetzliche Mängelhaftung.'],
+  ['Die gewöhnliche Geschäftstransaktion erfüllt hier keinen gesetzlichen Widerrufstatbestand.','Die kurze siebentägige Zeitspanne allein eröffnet kein Rückgaberecht.'],
+  ['Materialfehler bei Übergabe fällt unterGs zugesagte zwölfmonatige Reparatur.','Ansprechpartner istG; Anspruch kommt zu den gesetzlichen Rechten gegenS hinzu.'],
+  ['AnS: Leuchte, Kaufdatum, ursprünglich vorhandenen Einschaltfehler und Beleg angeben.','Konkrete Nacherfüllung verlangen; fehlender Formgeschmack ist kein Produktmangel.'],
+  ['AnG: Übergabedatum,Garantiebeleg und Materialfehler mit Reparaturwunsch mitteilen.','Formunzufriedenheit erfüllt keine reine Materialfehlergarantie.'],
+  ['Bei intakter Ladenware fehlt hier sowohl gesetzlicher Widerruf als auch Umtauschzusage.','Daraus folgt gerade keine sofortige Erstattung für jede Unzufriedenheit.']
+ ],
+ [
+  ['A fragt nach Nacherfüllung vonV:433→434→437Nr1→439.','Verkaufspflicht,Mangeltatbestand und konkrete Abhilfe gehören zum Schuldrecht.'],
+  ['Die gemeinsame Zusage verspricht eine zum Schreiben tragfähige Tischplatte.','Der schon bei Übergabe gebrochene tragende Bolzen verletzt diese und die gewöhnliche Verwendbarkeit.'],
+  ['Ohne die ausgeschlossenen Hindernisse kommt Reparatur oder Ersatz in Betracht.','Auslegung und Subsumtion verbinden dokumentierte Zusage,Tatsache und Rechtsfolge statt nur Paragraphenzahlen.'],
+  ['Der Kauf begründet Liefer- und Zahlungspflichten; die Lieferung bleibt mangelhaft.','Die davon getrennte unbedingte Einigung und Übergabe des Eigentümers kann dennoch929 erfüllen.'],
+  ['Späteres gewaltsames Aufklappen entfernt den ursprünglich vorhandenen Mangel.','Eine bloße spätere Kundenschädigung begründet diesen ursprünglichen Mängelanspruch nicht.'],
+  ['A fordert vonV wegen nachgewiesenem Bolzenbruch bei Übergabe437/439-Nacherfüllung.','Weder automatischer Rücktritt noch automatisch unwirksame Eigentumsübertragung folgt aus diesem Mangel.'],
+  ['106–108 regeln im AllgemeinenTeil Zustimmung;433 regelt die Kaufpflicht im Schuldrecht.','Die gesonderte Eigentumsverfügung ist nach929 im Sachenrecht zu prüfen.'],
+  ['Die35Euro-Schuld ist ein rechtlicher Nachteil unabhängig von günstigen Preisen.','Die separat vereinbarte lastenfreie und unbedingte Eigentumsannahme bringtB dagegen hier keinen rechtlichen Nachteil.'],
+  ['Ohne Einwilligung ist die Kaufwirksamkeit nach108 bis zur Genehmigung offen.','Die getrennte rechtlich vorteilhafte Eigentumseinigung und Übergabe durchS kann bereits wirksam sein.'],
+  ['Ausdrückliche nachträgliche Genehmigung macht den Kauf in der Variante wirksam.','Im Ausgangsfall ist genau diese Entscheidung der Vertreter weiterhin ungeklärt.'],
+  ['Die Eigentumslage wird eigenständig nach929 beurteilt und bleibt in der Genehmigungsvariante dieselbe.','BeiA sind Anspruch aus Kauf und wirksamer Titel ebenfalls auseinanderzuhalten.'],
+  ['Rechtlicher Vorteil meint das Fehlen rechtlicher Pflichten und Lasten statt Preisersparnis.','Zusätzliche Lasten oder Bedingungen der Verfügung müssten gesondert geprüft werden und sind hier ausgeschlossen.']
+ ],
+ [
+  ['Nach belegtem Diebstahl und ausgeschlossenen935-Ausnahmen behältE das Eigentum anV17.','Ps guter Glaube ermöglicht entgegen935 gerade keinen Erwerb.'],
+  ['P besitztV17 ohne Recht gegenüberE;985/986 tragen die Herausgabe.','Ein Kaufvertrag zwischenE undP ist für den dinglichen Anspruch nicht nötig.'],
+  ['Seriennummer ordnet die konkrete Geige zu und Eigentumsbeleg ordnetE das Eigentum zu.','Diebstahlsbericht belegt das Erwerbshindernis statt eine unbelegte Eigentumsbehauptung.'],
+  ['AnP: V17 mit Seriennummer als EigentumE konkret unter985 zur Rückgabe verlangen.','Die140Euro Zahlung vonP anT ist kein begründeter GeldanspruchE gegenP.'],
+  ['Die gültige unmittelbare Leihe gewährtP im Gegenfall bis20.Oktober ein Besitzrecht.','986 erlaubt deshalb am10.Oktober Zurückbehalten trotz fortbestehendem E-Eigentum.'],
+  ['Eigentums- und Diebstahlsbeleg beifügen und geordnete Übergabe anbieten.','Keine erfundenen Strafgebühren oder Verschleierung bestehender Einwendungen ergänzen.'],
+  ['Der fahrlässige rechtswidrige Ballwurf verletztDs Eigentum.','823Abs1 benötigt in dieser Konstellation keinen N/D-Vertrag.'],
+  ['Die Rechnung belegt180Euro notwendige durch den Wurf verursachte Reparatur.','Die Zahlung deckt den kausalen Schaden statt eine zivilrechtlich erfundene Strafe.'],
+  ['Eigentum und Ballwurf werden dem Eigentumsverletzungsmerkmal und der Kausalität zugeordnet.','Die Rechnung belegt den Umfang; zusätzliche Schäden sind nicht gegeben.'],
+  ['AnN: Ihr belegter fahrlässiger Wurf am6.Oktober16Uhr beschädigte meine Scheibe.','Nach823Abs1 verlange ich die durch beigefügte Rechnung belegten180Euro Reparaturkosten.'],
+  ['Vollständige Entlastung beseitigt im Gegenfall Vorsatz und Fahrlässigkeit.','Gleicher Schaden allein trägt dann gerade nicht denselben823Abs1-Anspruch.'],
+  ['N kann um Zahlung oder sachlich begründete Einwendungen gebeten werden.','Eine eigene Strafe oder dingliche Herausgabe der zerstörten Scheibe ersetzt keinen Schadensersatzanspruch.']
+ ],
+ [
+  ['935 verhindertPs gutgläubigen Erwerb;985/986 begründenOs Rückgabeanspruch.','Es gibt keine gesetzlich erzwungene Teilung ihres Eigentums.'],
+  ['O benötigt Lieferfähigkeit ab nächster Woche.','P verliert nach350Euro Aufwand die bisher tägliche Nutzung; diese Belastung schafft kein Eigentum.'],
+  ['Prompte gesicherte Rückgabe schütztOs Verfügbarkeit früher.','Zwei freiwillige Übergangstage helfenP, bedürfen aber Zustimmung und sicherem LieferbeginnO.'],
+  ['Ich bevorzuge mit ausdrücklicher Zustimmung gesicherte Übergabe nach zwei Tagen.','Bei fehlender Zustimmung oder gefährdetem Lieferbeginn ist prompte Übergabe vorzuziehen.'],
+  ['Unschuld allein begründet hier keinen halben Eigentumsanteil.','AnsprüchePs gegenT erfordern eine getrennte Prüfung der nicht gegebenen Vertragsdaten.'],
+  ['Die15Euro-Ersatzleihe kann den Übergang praktisch ermöglichen.','Keine Zusage machtO automatisch zur Kostenschuldnerin; freiwillige Kostenabrede bleibt möglich.'],
+  ['K hat grundsätzlich439-Wahlrecht.','Die tatsächlich festgestellte Unverhältnismäßigkeit erlaubt Verweigerung dieser Ersatzart und lässt geeignete Reparatur bestehen.'],
+  ['Die Differenz der Verkäuferkosten beträgt700−40=660Euro.','FürK zählt rechtzeitige Funktion; Kostenverhältnis allein ersetzt die gesetzlichen Faktoren nicht.'],
+  ['Verbindliche Abholung und Fünf-Tage-Reparaturplan schützen die Nutzung.','Alternativ ist abgestimmte Übergabe zur selben Reparatur möglich; notwendige Kosten bleiben Verkäuferkosten.'],
+  ['Schnelle geeignete Reparatur ist unter diesen Tatsachen ein begründeter zweiseitiger Ausgleich.','Andere tragfähige freiwillige Absprachen sind bei gesicherter Funktion ebenfalls vertretbar.'],
+  ['Sechs Wochen verhindern jetzt die Präsentation in drei Wochen und verursachen erheblichen Nachteil.','Daher muss die Unverhältnismäßigkeitsprüfung neu erfolgen statt die alte Gleichwertigkeit zu unterstellen.'],
+  ['Kosten beseitigen nicht sämtliche Käuferrechte und der Wunsch garantiert nicht jede Ersatzlieferung.','Normfaktoren verlangen konkrete Abwägung von K-Funktion und Verkäuferbelastung.']
+ ],
+ [
+  ['Funktionierende Schaltung ist ein631-Reparaturerfolg.','W schuldet ihn am vorhandenen Fahrrad und Kundschaft80Euro Vergütung.'],
+  ['Training sind611-Dienste über sorgfältige60Minuten.','Kundschaft schuldet45Euro; konkreter Lernerfolg ist nicht versprochen.'],
+  ['Die konkrete Zusage unterscheidet Erfolg von Tätigkeit auch bei derselben Fachperson.','Eine Zahlungspflicht kommt in beiden vor und legt die Vertragsart allein nicht fest.'],
+  ['Der fertige Werkzeugkasten ist433-Kauf mit mangelfreier Übergabe und Eigentumsverschaffung.','Kundschaft schuldet20Euro und Abnahme der gekauften Sache.'],
+  ['Neuer beweglicher Tisch aus eigenem Material wird hergestellt und geliefert:650Abs1-Kaufgrundregel.','Hersteller schuldet entsprechende Warenleistung und Eigentum,Kundschaft120Euro und Abnahme.'],
+  ['Die neue zu liefernde Sache unterscheidet sich von Reparatur vorhandenen Kundeneigentums.','Für nicht vertretbare Sachen bleiben die ausdrücklich ergänzenden Werkregeln bestehen.'],
+  ['Ein funktionierender reparierter Taschenverschluss ist631-Erfolg.','Reparaturseite schuldet Funktion,Kundin35Euro.'],
+  ['Sorgfältige90Minuten Zeichenbegleitung ist611-Tätigkeit.','Kundschaft schuldet30Euro ohne garantierten Zeichenfortschritt.'],
+  ['Die Hauptversprechen Erfolg und Tätigkeit erklären diese Einordnung.','Weder gemeinsame Zahlung noch Bildungszweck hebt den Unterschied auf.'],
+  ['Zeichenblock ist433-Kauf: mangelfrei übergeben und Eigentum verschaffen.','Kundschaft zahlt12Euro und nimmt die Ware ab.'],
+  ['Neues bewegliches Banner wird nach650Abs1 grundsätzlich kaufrechtlich hergestellt und geliefert.','55Euro und Abnahme stehen gegenüber; Maßanfertigung löscht ausdrückliche Ergänzungen nicht.'],
+  ['Jede Zahlung als Dienst ist falsch, weil auch Erfolg und Waren bezahlt werden.','Individuelle Herstellung ausschließlich als Werk widerspricht650Abs1; zusätzliche Normfragen bedürften neuer Tatsachen.']
+ ],
+ [
+  ['Die fällige mögliche433-Leistung fehlt nach erfolgloser angemessener Frist.','323 gibt bei den ausgeschlossenen Hindernissen Rücktritt ohne allgemeines Verschuldenserfordernis.'],
+  ['K muss gegenüberP nach349 ausdrücklich den Rücktritt erklären.','Er fordert danach die400Euro Vorauszahlung nach346 zurück; Fristablauf erklärt nicht selbst Rücktritt.'],
+  ['Die zusätzliche Frist gibtP eine tatsächliche Leistungsgelegenheit.','Ihr erfolgloser Ablauf erlaubtK unter Normbedingungen Lösung statt unendlichem Warten.'],
+  ['280/281 verlangen Ersatzvoraussetzungen getrennt vom Rücktritt;280Abs1S2 vermutet Vertretenmüssen.','P trägt den Entlastungsnachweis; ohne positive Käufer-Schuldbeweise entfällt der Anspruch nicht, tatsächlicher kausaler Schaden bleibt gesondert zu prüfen.'],
+  ['Bei belegter notwendiger Ersatzbeschaffung beträgt der zusätzliche Schaden460−400=60Euro.','400Euro Rückgewähr plus60Euro Mehrkosten sind460Euro und nicht860Euro Doppelersatz.'],
+  ['Belegter Ersatz schütztKs Erfüllungsinteresse.','Die Möglichkeit begründeter Entlastung und die Kausalitätsprüfung verhindern unbegrenzte P-Haftung.'],
+  ['437Nr1/439 gibt zunächst Nacherfüllung für den ursprünglichen Lampenmangel.','437Nr2 eröffnet unter weiteren Bedingungen Rücktritt als anderen Rechtsbehelf.'],
+  ['Die definitive Verweigerung ordnungsgemäßer Nacherfüllung trifft475dAbs1Nr4.','Dadurch entfällt die Fristsetzung, nicht jede sonstige Rücktrittsvoraussetzung.'],
+  ['C erklärt den Rücktritt gegenüberS.','Rückgabe gegen120Euro folgt aus Rückabwicklung; die bloße erste Mängelmeldung tut das nicht.'],
+  ['Laufende geeignete Reparatur in angemessener Zeit ist weder Verweigerung noch hier gegebene andere Ausnahme.','Die ursprüngliche Fristentbehrlichkeit darf im Gegenfall nicht unverändert übernommen werden.'],
+  ['475dAbs2 verändert die Fristvoraussetzung für Schadensersatz.','Die Verantwortung wird mit280Abs1S2 beurteilt; zusätzliche Schäden und Kausalität sind damit nicht automatisch belegt.'],
+  ['Käuferlösung wird nach verweigerter Abhilfe geschützt und echte Verkäuferabhilfe erhält Gelegenheit.','Sympathie ersetzt weder Tatsachenprüfung noch gesetzliche Entlastungsregel und Schadensgrenzen.']
+ ],
+ [
+  ['E ist Eigentümerin undB Besitzer des konkret bezeichneten M8.','Besitz allein beweist keine eigene B-Eigentumslage.'],
+  ['B und mittelbarer Besitzer haben nach den Angaben kein Besitzrecht gegenE.','Damit greift hier keine986-Einwendung und985 trägt Herausgabe.'],
+  ['E kann M8 aus Eigentum gegenüber dem Besitzer herausverlangen.','Der dingliche Anspruch verleiht nicht automatisch Geldersatz oder Strafrecht.'],
+  ['Die noch gültige Leihe am10.Oktober gibtB inA1 Besitzrecht bis20.Oktober.','986 begrenzt die sofortige Herausgabe obwohlE Eigentümerin bleibt.'],
+  ['InA2 ist gerade der Leihfortbestand ungeklärt.','Bei gültiger Leihe greift die Einwendung,ohne sie die Herausgabe; Dokumente müssen den offenen Punkt klären.'],
+  ['A1 ändert allein das Besitzrecht und nicht Eigentum oder Geräteidentität.','A2 benötigt die gültige Leihabrede und deren Fortbestand statt erfundener Entscheidung.'],
+  ['Ds Glas ist fürC fremd und durch den Wurf vollständig zerstört.','Rechtswidrigkeit und fehlende Rechtfertigung sind ausdrücklich belegt.'],
+  ['C will mit dem bewussten Steinwurf gerade die Zerstörung.','Dieser Vorsatz erfüllt15/303Abs1 statt aus bloßem Schadenseintritt gefolgert zu werden.'],
+  ['303Abs1 nennt abstrakt Freiheitsstrafe bis zwei Jahre oder Geldstrafe.','Keine konkrete Strafe oder zivilrechtliche Zahlung wird daraus im Fall festgesetzt.'],
+  ['B1 enthält allein Fahrlässigkeit ohne besondere Fahrlässigkeitsstrafnorm.','15 ermöglicht daher bei gleichem Schaden nicht dieselbe vorsätzliche303-Strafbarkeit.'],
+  ['InB2 sind Fremdheit und Zerstörung gegeben,der Vorsatz bleibt offen.','Das Ergebnis bleibt an dessen Klärung gebunden; bloßer Schaden ersetzt keinen Vorsatz.'],
+  ['Abstrakte gesetzliche Folge,konkrete Strafzumessung und Zivilansprüche sind verschiedene Fragen.','Fehlender Vorsatz schließt nicht automatisch jede andere Haftung aus.']
+ ]
+]
+assert len(full)==7 and all(len(x)==12 and all(len(z)==2 for z in x) for x in full)
+# Manual fair works retain real contributions to every essential core; only selected
+# second explanations are omitted, never a whole required field.
+works=[]
+for i,g in enumerate(materials):
+ for kind in ['full','fair-partial']:
+  marks=[]
+  for k,pair in enumerate(full[i]):
+   points=2 if kind=='full' or k%2 else 1
+   marks.append({'criterion':f's{k//3+1}.c{k%3+1}','answerDe':' '.join(pair if points==2 else pair[:1]),'points':points,'max':2,'manualReason':'Beide konkrete Teilbegründungen gezeigt.' if points==2 else 'Erste konkrete Teilbegründung gezeigt; zweite weggelassen, 1 von 2 BE.'})
+  raw=sum(m['points'] for m in marks);assert raw==(24 if kind=='full' else 18)
+  works.append({'materialId':g['id'],'kind':kind,'ownWholeCaseAandB':True,'criterionMarks':marks,'raw':raw,'wholeCoreAbsent':None,'total':raw,'pass':raw>=15})
+# Own adversarial whole answers: the nominated core is genuinely absent throughout,
+# while some other substantive work is correct. The answer is bounded to kept clauses.
+absences=[
+ ('guarantee',{2,5,8,10},{},'Alle Garantiebedingungen und der korrekte Garantiegeber fehlen in beiden Fällen.'),
+ ('separation',{3,8,10},{5:[full[1][5][0]],6:[full[1][6][0]],7:[full[1][7][0]],11:[full[1][11][0]]},'Kein Eigentumsverfügungsgeschäft wird beurteilt; Kaufwirksamkeit allein ersetzt diese Ebene nicht.'),
+ ('demand',{3,5,9,11},{},'Es gibt nur erklärende Anspruchsprüfung,keinen konkreten schriftlichen Durchsetzungstext anP oderN.'),
+ ('options',{2,3,5,8,9},{},'Es fehlen Vergleich zulässiger praktischer Optionen und bedingte Empfehlung in beiden Fällen.'),
+ ('service',{1,7},{2:[full[4][2][1]],8:[full[4][8][1]],11:[]},'Tätigkeitsverträge werden durchgehend nicht zugeordnet oder begründet; andere Vertragstypen bleiben richtig.'),
+ ('fault',{3,10},{5:[full[5][5][0]],11:[full[5][11][0]]},'Vertretenmüssen,gesetzliche Entlastung und Verantwortungsgrenzen werden vollständig ausgelassen; Rechenarbeit allein ersetzt sie nicht.'),
+ ('intent',{7,9,10,11},{},'Weder Vorsatz noch Fahrlässigkeitsgrenze oder offene Intentionsbedingung wird in der gesamten Arbeit erklärt.')
+]
+for i,(core,removed,replaced,reason) in enumerate(absences):
+ marks=[]
+ for k,pair in enumerate(full[i]):
+  actual=[] if k in removed else replaced.get(k,pair)
+  marks.append({'criterion':f's{k//3+1}.c{k%3+1}','answerDe':' '.join(actual) if actual else '[Keine fachliche Antwort zu diesem Kriterium.]','points':len(actual),'max':2,'manualReason':'Bewertung der tatsächlich verbliebenen Begründungen; keine Punkte für Weggelassenes.'})
+ raw=sum(m['points'] for m in marks);total=min(raw,14)
+ works.append({'materialId':materials[i]['id'],'kind':'whole-core-absence','ownWholeCaseAandB':True,'criterionMarks':marks,'raw':raw,'wholeCoreAbsent':core,'wholeManualCoreFinding':reason,'capApplied':raw>14,'total':total,'pass':False})
+assert len(works)==21 and sum(len(x['criterionMarks']) for x in works)==252
+assert all(w['total']>=15 for w in works if w['kind']!='whole-core-absence')
+worksSeal=put('actual-twentyone-own-whole-law-works252-manual-criterion-decisions.independent-root.json',{'reviewer':'/root','author':'/root/economics_merge_audit','actualOwnWorks':21,'actualOwnCriterionDecisions':252,'authorWorksUsedAsOwn':0,'notObservedLearnerWork':True,'materials':seal(body),'works':works})
+checks=[]
+def check(label,actual,expected):
+ assert actual==expected,(label,actual,expected)
+ checks.append({'label':label,'actual':str(actual),'expected':str(expected),'pass':True})
+check('online-withdrawal9days',F(10-1),F(9));check('9days-within14',F(9)<F(14),True)
+check('shop-seven-days-not-a-statutory-trigger',F(9-2),F(7))
+check('proportionality-cost-difference-not-a-legal-cutoff',F(700)-F(40),F(660))
+check('repair5days-before-presentation21days',F(5)<F(21),True)
+check('repair6weeks-after-presentation3weeks',F(6*7)>F(3*7),True)
+check('additional-proven-replacement-loss',F(460)-F(400),F(60))
+check('restitution-plus-additional-loss',F(400)+F(60),F(460))
+check('not-double-loss',F(400)+F(460),F(860))
+for i,g in enumerate(materials):
+ check(f'material{i}:six-per-step',sum(F(s['points']) for s in g['examData']['scoring']['steps']),F(24))
+ check(f'material{i}:passing-threshold',F(g['examData']['scoring']['passingPoints']),F(15))
+ check(f'material{i}:fair-partial',sum(F(m['points']) for m in works[2*i+1]['criterionMarks']),F(18))
+checkSeal=put('actual-own-exact-rational-recalculations-and-seven-rubric-threshold-checks.independent-root.json',{'checks':checks,'errors':0,'authorCalculationResultsCopied':False,'noStatutoryNumericProportionalityCutoff':True})
+sourceNotes={
+'bgb-433':'Beiderseitige Kaufpflichten umfassen mangelfreie Übergabe/Eigentum und Preis/Abnahme.',
+'bgb-434':'Anforderungen werden bei Gefahrübergang kumulativ geprüft; späterer Käuferfehler ist im gegebenen Fall kein ursprünglicher Mangel.',
+'bgb-437':'Mängelrechte führen zu unterschiedlichen Normketten und bleiben an deren Voraussetzungen gebunden.',
+'bgb-439':'Käuferwahl,notwendige Verkäuferkosten und konkret zu prüfende Unverhältnismäßigkeit sind getrennt.',
+'bgb-312g':'Der passende Fernabsatzfall eröffnet grundsätzlich Widerruf; ausgeschlossene Ausnahmen sind relevant.',
+'bgb-355':'Widerruf verlangt eindeutige Erklärung gegenüber Unternehmer und grundsätzlich14Tage; keine Begründung nötig.',
+'bgb-356':'Im gewöhnlichen Verbrauchsgüterkauf beginnt die Frist mit Erhalt,unter Voraussetzung korrekter Belehrung.',
+'bgb-443':'Garantie ist eine zusätzliche Verpflichtung des konkret zusagenden Garantiegebers,keine Abschaffung gesetzlicher Rechte.',
+'bgb-133':'Der wirkliche Erklärungswille geht über isolierte Buchstabeninterpretation hinaus.',
+'bgb-157':'Vertragsauslegung berücksichtigt Treu und Glauben und Verkehrssitte.',
+'bgb-106':'16Jahre liegt innerhalb beschränkter Geschäftsfähigkeit.',
+'bgb-107':'Ein lediglich rechtlich vorteilhaftes Geschäft benötigt für die Erklärung keine Vertreter-Einwilligung.',
+'bgb-108':'Nicht lediglich vorteilhafter Vertrag ohne erforderliche Einwilligung hängt von Genehmigung ab.',
+'bgb-929':'Eigentumsübergang wird durch getrennte Einigung und Übergabe des Berechtigten geprüft.',
+'bgb-323':'Rücktritt nach fälliger möglicher Nichtleistung verlangt grundsätzlich erfolglose angemessene Frist und hat konkrete Grenzen.',
+'bgb-280':'Satz2 enthält Nichtvertretenmüssen als Entlastung; fehlender positiver Käufer-Schuldbeweis ist kein eigenständiger Ausschluss.',
+'bgb-281':'Ersatz statt Leistung verknüpft280-Voraussetzungen mit erfolgloser angemessener Frist und gesetzlichen Ausnahmen.',
+'bgb-349':'Rücktritt wird dem anderen Teil gegenüber erklärt und geschieht nicht durch Fristablauf selbst.',
+'bgb-346':'Nach wirksamem Rücktritt werden empfangene Leistungen zurückgewährt; Fall schließt weitere Nutzungsfragen aus.',
+'bgb-475d':'Verweigerte ordnungsgemäße Nacherfüllung ist eine konkrete Ausnahme von Fristsetzung; Absatz2 hebt andere Ersatzbedingungen nicht auf.',
+'bgb-631':'Werkvertrag betrifft den zugesagten Erfolg gegen Vergütung,auch an bereits vorhandenen Sachen.',
+'bgb-611':'Dienstvertrag verpflichtet zu zugesagten Diensten gegen Vergütung; Tätigkeit ist hier ohne Ergebnisgarantie vereinbart.',
+'bgb-650':'Herstellung/Lieferung beweglicher Sachen folgt Kaufrecht; ausdrückliche Ergänzungen für nicht vertretbare Sachen bleiben.',
+'bgb-932':'Guter Glaube ist relevante Voraussetzung eines möglichen Erwerbs vom Nichtberechtigten,aber nicht grenzenlos.',
+'bgb-935':'Belegter Diebstahl verhindert Erwerb nach932ff; tatsächlich genannte gesetzliche Ausnahmen sind in Fällen ausgeschlossen.',
+'bgb-985':'Eigentümer kann vom Besitzer die konkrete Sache herausverlangen.',
+'bgb-986':'Ein fortbestehendes Besitzrecht gegenüber Eigentümer begrenzt dessen Herausgabeanspruch.',
+'bgb-823':'Widerrechtliche schuldhafte Eigentumsverletzung führt zu kausalem Ersatz; fehlendes Verschulden entfernt gerade diese Grundlage.',
+'stgb-15':'Fahrlässigkeit ist ohne ausdrückliche Strafnorm nicht mit Vorsatzstrafbarkeit gleichzusetzen.',
+'stgb-303':'Fremde Sache rechtswidrig beschädigen/zerstören hat abstrakten Strafrahmen; Fall setzt nicht konkrete Strafzumessung fest.'}
+fallback=load(pathlib.Path('/tmp/economics-root-seven-law-current-norm-fallback-v1/actual-fetch-decoding-followup.json'))
+fb={x['norm']:x for x in fallback}
+sourceRows=[]
+for norm,note in sourceNotes.items():
+ code,num=norm.split('-');u=f'https://www.gesetze-im-internet.de/{code}/__{num}.html'
+ x={'sourceId':norm,'url':u,'actualRead':True,'readAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'boundedOwnParaphraseDe':note,'verbatimWordsStored':0,'fullOriginalCopiedToRepository':False,'access':'actual primary web open' if norm not in fb else 'actual urllib primary HTML after web timeout; ISO8859-1 decoding recovered without refetch'}
+ if norm in fb:x.update({k:fb[norm][k] for k in ['sha256','bytes','encoding']})
+ sourceRows.append(x)
+assert len(sourceRows)==30
+sourceRows.append({'sourceId':'official-OLG-Brandenburg-20110112-280-proof-allocation','url':'https://gerichtsentscheidungen.brandenburg.de/gerichtsentscheidung/13252','actualRead':True,'boundedOwnParaphraseDe':'Die amtlich publizierte Entscheidung ordnet im ausdrücklich gelesenen Absatzc die Darlegung und gegebenenfalls den Nachweis fehlenden Vertretenmüssens dem Schuldner zu. Keine Übertragung des gesamten Gebrauchtwagenfalls auf diese Unterrichtsfälle; allein allgemeine280Abs1S2-Beweislastauslegung ist relevant.','verbatimWordsStored':0,'fullOriginalCopiedToRepository':False,'decisionDate':'2011-01-12','otherBGHPdfFetch':'403; not counted as an actual complete reading'})
+sourcesSeal=put('actual-thirty-own-primary-norm-readings-plus-one-bounded-official-proof-allocation-reading.independent-root.json',{'actuallyReadPrimaryNorms':30,'additionalActuallyReadPrimaryCourtPassage':1,'originalLawBodiesWholeRead':7,'fullPrimarySourceCopiesCommitted':0,'sourceRows':sourceRows,'technicalAccessHistory':{'beautifulSoupUnavailable':True,'firstUtf8DecodeRejectedActualISO88591':True,'successfulDownloadsRetainedAndDecodedUsingActualMetaCharset':6},'bounds':'Own short paraphrases only; no full-source or complete judicial-case-review claim.'})
+findings=[]
+for i,(g,row) in enumerate(zip(materials,rows)):
+ f={'materialId':g['id'],'wholeGoalId':row['goalId'],'wholeDEENRead':True,'wholeOriginalPRead':True,'originalCaseCount':2,'wholeTwoNewCasesTaskSolutionRubricRead':True,'mathAndStatutoryConditionsChecked':True,'scienceDecision':'REVISE' if i==5 else 'KEEP','scopeDecision':'pending_separate_foreign_scope','machineReleaseApproval':False,'humanReviewApproval':False}
+ if i==5:f.update({'finding':'Satz zum offenen Vertretenmüssen kann fehlenden positiven Käufer-Schuldbeweis zum Anspruchshindernis machen; gesetzliche Verantwortungsvermutung/Entlastung in280Abs1S2 ist nicht berücksichtigt.','requiredNarrowAuthorRemedy':'Nur BilingualNormhilfe unds2-Lösung/Raster zur Vermutung/Schuldnerentlastung und tatsächlich offenem kausalem Schaden präzisieren. Sechs andere wholeBodies,gewöhnlicheGoal/P unverändert.','authority':'Official280Abs1S2 plus separately actually read official OLG proof-allocation passage.'})
+ else:f['boundedContentFinding']=[
+ 'Mangel,fristgebundenerOnline-Widerruf und zusätzliche Herstellergarantie bleiben einschließlich Adressaten/Varianten getrennt.',
+ 'BGB-Systematik,Auslegung,Faktenzuordnung und getrennte Minderjährigen-Verpflichtung/Verfügung werden mit tatsächlicher lastenfreier Übergabe geprüft.',
+ 'Eigentumsherausgabe und823Abs1-Ersatz enthalten jeweils echte Gegenbedingungen,Belege und konkret verlangte schriftliche Durchsetzung.',
+ 'Beide Interessen und zulässige Optionen werden innerhalb gesetzlichen Eigentums-/439-Grenzen verglichen; Kostenvergleich wird ausdrücklich nicht alleinige Rechtsregel.',
+ 'Werk,Dienst,Kauf undWerklieferung sind aus beiderseitigem Versprechen zugeordnet,keine Berufs-/Zahlungsschablone;650-Ergänzungen erhalten.',
+ '',
+ 'Alle einschlägigen Merkmale werden echten Fakten zugeordnet; Besitzrecht,Intentionsänderung und offene Bedingungen begrenzen gesetzliche Folge statt erfundener Haftung/Strafe.'
+ ][i]
+ findings.append(f)
+decisionSeal=put('actual-original-seven-whole-DEEN-law-contracts-six-KEEP-one-real-proof-allocation-REVISE.independent-root.json',{'findings':findings,'wholeOriginalKEEP':6,'wholeOriginalREVISE':1,'strictNetIncrease':0,'noSourceOrPStatusPromotion':True})
+ffcc=load(T/'actual-current555-eight-goal-scope-rest-and-KEEP-first-intake.json')['unchangedFFCCReuse']
+ffccp=R/ffcc['foreignReceiptPath'];assert seal(ffccp)['sha256']==ffcc['foreignReceiptSHA']
+receipt=put('actual-original-seven-law-whole-science-six-KEEP-one-REVISE.handoff.receipt.json',{'reviewer':'/root','independentFromBodyAuthor':'/root/economics_merge_audit','decision':'SIX_WHOLE_SCIENTIFIC_KEEP_ONE_TARGETED_REVISE','wholeDRAFT7':seal(body),'wholeCurrentImmutable555':seal(frozen),'wholeGoalPBindings':seal(binding),'ownWholeWorks':worksSeal,'ownRecalculations':checkSeal,'ownPrimaryReadings':sourcesSeal,'wholeDecisions':decisionSeal,'unchangedEighthExistingScienceReuse':seal(ffccp),'unchangedEighthNotReReviewed':True,'newScientificCandidatesKEEP':6,'strictCurrent187of336Unchanged':True,'newStrictClosures':0,'restoredStrictBindings':0,'scopeMachineReleaseHumanApproval':False,'ordinaryGoalProfilesSourceStatusEdits':0,'activeWrites':0,'historicalAuthorDraftPreserved':True,'next':'Only author756 proof-allocation successor then targeted independent full-change reading; separate Scope/Nav author and foreign validation.'})
+print(json.dumps(receipt,ensure_ascii=False))
+pathlib.Path('/tmp/economics-seven-law-whole-science-root-path.txt').write_text(str(O)+'\n')

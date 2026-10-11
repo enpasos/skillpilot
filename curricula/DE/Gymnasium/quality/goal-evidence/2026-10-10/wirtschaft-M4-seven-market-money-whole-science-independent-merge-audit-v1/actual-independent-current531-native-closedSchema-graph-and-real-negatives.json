@@ -1,0 +1,33 @@
+{
+  "role": "INDEPENDENT_BOUNDED_SCHEMA_AND_GRAPH_ONLY",
+  "goalCount": 531,
+  "old524WholeGoalObjectsExact": true,
+  "addedPracticeCandidates": 7,
+  "closedSchemaErrors": 0,
+  "graphErrors": 0,
+  "graph": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 531,
+      "localReferenceIssues": 0
+    }
+  },
+  "realSchemaNegativeDetected": true,
+  "realRequiresCycleNegativeDetected": true,
+  "negativeGraph": {
+    "id": "CQR-001",
+    "status": "fail",
+    "summary": "1 graph integrity issue(s).",
+    "metrics": {
+      "goals": 531,
+      "localReferenceIssues": 1
+    },
+    "details": [
+      "Direct requires cycle: 50e07b86-428c-5f9c-8c7e-0d0669343af5 -> dd6368c7-309f-5b5a-8b2e-eba67136c5f7 -> 50e07b86-428c-5f9c-8c7e-0d0669343af5"
+    ]
+  },
+  "scopeOrCountryOrKindsOrMaturityOrHumanApproval": false,
+  "viewsSourceCodeRuntimeUntouched": true
+}

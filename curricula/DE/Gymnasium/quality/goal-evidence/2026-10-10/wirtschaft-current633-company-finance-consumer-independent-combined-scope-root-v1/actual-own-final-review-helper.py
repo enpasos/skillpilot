@@ -1,0 +1,54 @@
+from pathlib import Path
+import json,gzip,hashlib,copy,shutil
+R=Path('/home/enpasos/projects/skillpilot');C=Path(Path('/tmp/economics-independent633-root-cap-path.txt').read_text().strip());O=Path(Path('/tmp/economics-independent633-root-out-path.txt').read_text().strip());Q=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+def rd(p):return json.loads(p.read_text())
+def bind(p):return {'path':str(p.relative_to(R)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+def save(n,x):
+ p=O/n;assert not p.exists();p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');return bind(p)
+def raw(label):return json.loads(gzip.decompress((O/(label+'.raw.json.gz')).read_bytes()))
+names=['actual-before597-independent-root','actual-after633-independent-root','actual-negative-reference633-independent-root','actual-negative-support633-independent-root','actual-negative-illegal633-independent-root','actual-negative-company633-independent-root'];allraw=[raw(n) for n in names];before,after,ref,support,illegal,company=allraw
+met=lambda j:next(r['metrics'] for r in j['route']['rules'] if r['id']=='CQR-104');m0,m1,mref,ms,mi,mc=map(met,allraw)
+assert (m0['visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute'],m1['visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute'])==(512,294)
+assert (m0['uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute'],m1['uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute'])==(81,45)
+assert (mc['visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute'],mc['uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute'])==(296,46)
+assert mref['visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute']==294 and mref['projectionScopesWithoutExpectedTerminalAutonomyGoals']==0
+assert (ms['wholeMaterialPrerequisiteOccurrencesMissingFromProjection'],ms['wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath'])==(2,2)
+assert (mi['wholeMaterialPrerequisiteOccurrencesMissingFromProjection'],mi['wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath'])==(4,2)
+for k in ['projectionScopesMissingMotivationAnchors','projectionScopesWithoutExpectedTerminalAutonomyGoals','projectionScopesWithUnexpectedTerminalAutonomyGoals','projectionScopesWithInvalidStageStructure','projectionScopesWithIncompleteWholeMaterialCoverageBindings','projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure','visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks','visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector']:assert m1[k]==0,k
+assert after['compiler']['summary']=={'goals':633,'errors':0,'warnings':0,'diagnostics':1457}
+roleRows=[]
+for x,y in zip(before['all64NativeScopeRows'],after['all64NativeScopeRows']):
+ assert x['viewPath']==y['viewPath'] and x['jurisdiction']==y['jurisdiction'];pres={}
+ for k in ['ordinaryTargets','ordinarySupport','memoryTargets','memorySupport','orientationTargets','orientationSupport','prerequisiteOnlyAtomicIds']:assert x[k]==y[k];pres[k]=x[k]
+ added=sorted(set(y['allTargetAtomicIds'])-set(x['allTargetAtomicIds']));assert set(x['allTargetAtomicIds'])<=set(y['allTargetAtomicIds']);assert set(x['allSupportAtomicIds'])<=set(y['allSupportAtomicIds']);roleRows.append({'scopeKey':y['viewPath']+'|'+y['jurisdiction'],'preservedWholeRoles':pres,'addedPracticeTargetIds':added})
+assert len(roleRows)==64 and sum(len(r['preservedWholeRoles']['ordinaryTargets']) for r in roleRows)==6974
+bc={r['goalId']:r for r in before['compiler']['goals']};ac={r['goalId']:r for r in after['compiler']['goals']};navIDs={r['goalId'] for r in rd(O/'actual-whole633-foreign-science-status-only-sixNav-and35view-fieldwise-root.json')['actualSixWholeNavDecisions']};assert len(navIDs)==6
+assert set(id for id in bc if bc[id]!=ac[id])==navIDs
+for a,b in zip(before['source']['jurisdictions'],after['source']['jurisdictions']):
+ aa={k:v for k,v in a.items() if k not in ['visibleGoals','visibleClusterGoals']};bb={k:v for k,v in b.items() if k not in ['visibleGoals','visibleClusterGoals']};assert aa==bb
+assert {k:v for k,v in before['source'].items() if k not in ['jurisdictions','rawAtomicGoals']}=={k:v for k,v in after['source'].items() if k not in ['jurisdictions','rawAtomicGoals']}
+assert after['source']['sourceAtomicGoals']==2134 and after['source']['totalJurisdictions']==16 and after['source']['unsupportedAssignedAtomicGoals']==after['source']['unmappedSourceAtomicGoals']==0
+materials={r['id']:r for r in after['wholeReviewedMaterialRows']};contexts=after['individualWholeMaterialContextBindings'];assert len(materials)==36 and len(contexts)==2304
+visible=[r for r in contexts if r['actualVisibleTarget']];assert len(visible)==560
+for r in contexts:assert r['actualVisibleTarget']==r['actualEntireClosureEligible']
+exceptions=[r for r in visible if r['coveredExistingPrerequisiteOnlyIds']];assert len(exceptions)==2 and all(r['materialId']=='beeba149-789d-55ff-a295-e02c68629998' and r['coveredExistingPrerequisiteOnlyIds']==['f90e4741-368b-5524-8053-417d06197c80'] and r['jurisdiction']=='DE-BB' and r['courseProfile']=='GK' for r in exceptions)
+held=[]
+for r in contexts:
+ mid=materials[r['materialId']]['wholeGoal']['examData']['coveredGoalIds'][0];coveredCountry=r['jurisdiction'] in ac[mid]['compiledApplicability']['jurisdiction']
+ if coveredCountry and r['courseFits'] and r['missingWholePrerequisiteIds']:
+  assert not r['actualVisibleTarget'];held.append({**r,'coveredCurrentGoalSourceCountryFits':True,'heldDespiteCoveredGoalSourceNotWholeClosure':True})
+assert len(held)==32
+obs=save('actual-own633-whole2304-contexts560-accesses32-held-twoPOnly-and64-role-decisions.root.json',{'role':'ROOT independent bounded whole-context decisions, body science reused','actualWholeMaterialRows':after['wholeReviewedMaterialRows'],'actual2304WholeContexts':contexts,'actual560VisibleApprovedContexts':560,'actual32SourceCourseButMissingWholePrerequisitesHeld':held,'actualTwoExistingF90POnlyApprovedExceptions':exceptions,'actual64OldWholeRoleSetsExact':roleRows,'all591OldCompiledNonNavGoalObjectsExact':True,'source16_2134_0_0AndAllOriginalSourceCoverageRowsExactExceptAdditiveRawPracticeAndStructuralCountFields':True,'actualBeforeAfterMetrics':[m0,m1],'fourActualNegativeMetrics':{'supportPracticeReferenceDrop':mref,'existingSupportDrop':ms,'illegalHEGKWholeJournalAccess':mi,'ordinaryCompanyPracticeReferenceDrop':mc},'referenceDropObservation':'Removing BB innovation over existing prerequisiteOnly lowers actual new visible binding560→558; ordinary routes remain294/45 and expectedMissing stays0. Removing BB ordinary company8fad makes296/46. No false missing-endpoint result is claimed.','actualNetRouteOccurrenceGain':218,'actualNetDistinctRouteGoalGain':36,'newWholeBodyScienceClosures':0,'strictNet':0})
+freeze=rd(O/'actual-physical-private597-baseline-current-whole-input-endguards.root.json');assert len(freeze['activeGuards'])==1410
+for b in freeze['activeGuards']:assert bind(R/b['path'])==b
+hpath=Q/'wirtschaft-current633-company-finance-consumer36-current597-fieldwise-status-nav-scope-author-a-v1/actual-final-current633-company-finance-consumer36-sixNav338-foreign-whole-science-bound.author-handoff.json';h=rd(hpath)
+assert (C/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json').read_bytes()==(R/h['wholeAfterCAN']['path']).read_bytes()
+for v in h['all35WholeBeforeAfterViewRows']:assert (C/v['activePath']).read_bytes()==(R/v['candidate']['path']).read_bytes() and (R/v['activePath']).read_bytes()==(R/v['before']['path']).read_bytes()
+commands=[]
+for n,s in zip(names,[65723,23231,4850,72577,77717,26004]):
+ err=O/(n+'.stderr.txt');assert err.read_bytes()==b'';commands.append({'label':n,'actualSession':s,'actualExitCode':0,'raw':bind(O/(n+'.raw.json.gz')),'summary':bind(O/(n+'.summary.json')),'stdout':bind(O/(n+'.stdout.txt')),'stderr':bind(err),'privateCAP':str(C),'checkerUnchangedProductionPrefixAndSoleExportTail':freeze['productionChecker']})
+cmd=save('actual-six-fresh-native-commands-and-honest-preseal-setup-history.root.json',{'actualSixCommands':commands,'earlyPresealSetupFailures':'Consumer whole draft is a materials wrapper, then corrected unwrap; author newIDs index order is not tree phase order, then correctly checked exact distinct membership while preserving whole old tree ordered prefix. Separate held-count helper initially summed list truth-values, fixed actual Boolean count. No failed output was represented as a pass. One unbounded tmp rg interrupted; no curricular artifact or quality rule changed.','all1410OriginalInputGuardsStillExact':True,'restoredWhole633PrivateCandidate35Views':True,'closedSchema68':bind(O/'actual-whole633-foreign-science-status-only-sixNav-and35view-fieldwise-root.json')})
+shutil.copyfile(__file__,O/'actual-own-final-review-helper.py');shutil.copyfile('/tmp/economics-independent633-negative-root-v2.py',O/'actual-private-additional-company-negative-helper-v2.py')
+manifest=save('actual-final-independent633-portable-whole-evidence.manifest.json',{'files':[bind(p) for p in sorted(O.rglob('*')) if p.is_file()],'activeWrites':0})
+final=save('actual-final-current633-company-finance-consumer36-combined-scope-nav-independent-KEEP.handoff.receipt.json',{'decision':'KEEP_BOUNDED_COMBINED633_SCOPE_NAV_STATUS_ONLY_INTERACTION','reviewer':'/root','independentFromScopeAuthor':'/root/economics_m2_source_independent_a','wholeFinalAuthorHandoff':bind(hpath),'wholeBefore597':h['wholeBeforeCAN'],'wholeInert633':h['wholeAfterCAN'],'whole36OriginalForeignScientificSeals':[h['companyForeignScienceReceipt'],h['financeForeignScienceReceipt'],h['consumerForeignScienceReceipt']],'ownWholeFieldwiseReview':bind(O/'actual-whole633-foreign-science-status-only-sixNav-and35view-fieldwise-root.json'),'ownActualNativeScopeAndCounterexamples':obs,'ownSixActualFreshNativeCommands':cmd,'exactPositiveRaw':bind(O/'actual-after633-independent-root.raw.json.gz'),'wholePortableManifest':manifest,'actualAppendedNewPracticeRefs':338,'actualVisibleBindings':560,'actualNewPracticeBodies':36,'wholeOld591NonNavGoalsAnd336CurricularContractsP685Memory10Cards66SourceInputsUnchanged':True,'actualBeforeAfterMissingRouteOccurrences':[512,294],'actualBeforeAfterMissingGoalIds':[81,45],'actualNetRouteOccurrenceGain':218,'actualNetDistinctRouteGoalGain':36,'all34CrossStageAnd64CountryCourseScopesQualified':True,'wholeSchema68ClosedActualPass':True,'newOrdinaryOrFoundationPOnlyReferences':0,'all1410CurrentBaselineGuardsPass':True,'newWholeBodyScienceClosures':0,'strictNet':0,'wholeM4':False,'remaining':{'routeOccurrences':294,'goalIDs':45},'semanticKindAndPositivePointerTechnicalFollower':'pending integration; requires native source fingerprints for changedNav6/newPractice36, original unaffected records exact','humanReviewReleaseTrials':'separate pending','activeWrites':0})
+print(json.dumps({'handoff':final,'visible':560,'held':32,'nativeNet':218,'strictNet':0}))

@@ -1,0 +1,26 @@
+{
+  "role": "INDEPENDENT_ACTUAL_PRODUCTION_RUNTIME_SCHEMA_AND_GENUINE_MISSING_REQUIRED_TASK_NEGATIVE",
+  "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-twelve-international-whole-science-independent-merge-audit-v1/whole-current609-final-international-V3-DRAFT-only-independent-schema-input.inert.json",
+  "inputSHA256": "7f242b6c588914e602b3207bcc1d5e6dfcda80da7869c3445396beada6142904",
+  "actualUnchangedRuntimeSchemaPath": "docs/landscape-runtime.schema.json",
+  "runtimeSchemaSHA256": "d25cf1c930d1a21838264b34d713f32788715089c6b8ff2b7430bdbc6079e59a",
+  "actualGoalCount": 609,
+  "actualNewDraftMaterialCount": 12,
+  "schemaValid": true,
+  "actualMissingRequiredTaskRejected": true,
+  "negativeErrors": [
+    {
+      "instancePath": "/goals/597/examData",
+      "schemaPath": "#/properties/examData/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "taskContent"
+      },
+      "message": "must have required property 'taskContent'"
+    }
+  ],
+  "actualAnnotationsInterpretedWithoutChangingSchema": true,
+  "metadataClosedSchemaClaim": false,
+  "wholeSourceCompilerScopeOrRoutePASSClaim": false,
+  "activeWrites": 0
+}

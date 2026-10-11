@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "wirtschaft-current346-two-source-context-owner-20261011-b02-technical-continuation",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI GPT-6 Codex coordinator /root; machine curriculum QS only",
+  "synthesizedAt": "2026-10-10T10:17:19.690Z",
+  "batch": {
+    "batchId": "wirtschaft-current346-two-source-context-owner-20261011-b02",
+    "batchManifestDigest": "sha256:7486153d89c811ebd64b6a2d1ce71a2d93ef7e97ea0b420cc85370205d274ce1",
+    "configDigest": "sha256:d6fcaf5bc7ecd24c7333928d098f0e3b475390ddd896312aa10eedc1f12f7ed2",
+    "bundleFingerprint": "sha256:2a47c15df1537d303660d958ad06aecd83b49ca313929bd29956e5faf6eb6ec5",
+    "bookDigest": "sha256:4605319a1301d0575ce3138377e5f41e581cf47bfd76e10e1a7895fcb2b67a07",
+    "reviewInputFingerprint": "sha256:831428d732df0a42309fe096a4583825aff5502798b2badb51a3d755f275796f",
+    "dualSummaryDigest": "sha256:b5f9c23f60a16091b34133321baa40f77ea0ce577d9c784e70496141871e2171",
+    "canonicalLandscapeDigest": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-two-source-context-owner-20261011-b02-a",
+      "campaignDigest": "sha256:c94b48a2448d3cb50f4fc7982be2c38be50f2800db64b9351b0b425b77350787",
+      "roundId": "wirtschaft-current346-two-source-context-owner-20261011-b02-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-two-source-context-owner-20261011-b02-independent-a",
+      "reviewInputFingerprint": "sha256:831428d732df0a42309fe096a4583825aff5502798b2badb51a3d755f275796f",
+      "batchId": "wirtschaft-current346-two-source-context-owner-20261011-b02-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:59e4f8314652e88467cd3da64b797a086d8cd7c699f7f273d0c4923eceadfba7",
+      "runId": "wirtschaft-current336-D124-v19-b12-independently-executed-a-v1",
+      "runManifestDigest": "sha256:de0f4d3aa61290403c5c8ef485bee30ae7e007916ddadad177b1d16984082f9d",
+      "resultsDigest": "sha256:5d11150bc568b14c5193e13c2df3f31e10c7fdb417fa43e46dcf7b7a53ff6fe0"
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-two-source-context-owner-20261011-b02-b",
+      "campaignDigest": "sha256:ae0f0adcc173f7fc8b9bb505eabefaa560175a791036897a35996733194f93d0",
+      "roundId": "wirtschaft-current346-two-source-context-owner-20261011-b02-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-two-source-context-owner-20261011-b02-independent-b",
+      "reviewInputFingerprint": "sha256:831428d732df0a42309fe096a4583825aff5502798b2badb51a3d755f275796f",
+      "batchId": "wirtschaft-current346-two-source-context-owner-20261011-b02-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:57705c4c36e5293e5e1b08c9bda1b87b2389dc345bb870654cabddf9d42f22b6",
+      "runId": "wirtschaft-current336-D124-b12-independent-b-actual-run-v1",
+      "runManifestDigest": "sha256:8debf41c3209bbb3f3155dfe77f8627ceb6fecae3863ef33dec61ccdb47e07a4",
+      "resultsDigest": "sha256:ba21909edb089b2d115d12592f3df9323ed62e014250b235ab405ce704a706a9"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "wirtschaft-current346-two-source-context-owner-20261011-b02.596c02e3",
+      "goalId": "596c02e3-6263-5084-8593-c5f51808326b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c1bd2bafee646abb126fd28bb1e73016e039aaed2fde09069e1620fa62649d73",
+      "pageFingerprint": "sha256:97a44ebacaf8ca154b1349450292600d7ab468e0003fbefb04a3d5a603065755",
+      "goalReviewContextFingerprint": "sha256:5e217568fade7752f58a0c0fd71a1cacd714baa04b83277173eda5a5268757d6",
+      "finalText": {
+        "titleDe": "Wirtschaft-und-Recht-Projekt durchführen",
+        "titleEn": "Carry out an economics-and-law project",
+        "descriptionDe": "Die lernende Person kann ein Projekt zu einer ausgewählten Themenstellung aus Wirtschaft und Recht planen, durchführen und fachlich auswerten.",
+        "descriptionEn": "The learner can plan, carry out and evaluate a project on a selected topic in economics and law using subject knowledge."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b12-a-04-596c02e3-6263-5084-8593-c5f51808326b",
+          "recordDigest": "sha256:1e8e4ca658731c66602f0980e5cd2849f0e0ba071e352f80cd9bf468b0f5214f"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b12-independent-b-actual-run-v1-596c02e3-6263-5084-8593-c5f51808326b",
+          "recordDigest": "sha256:e22745fbc3a33f42444ebe6f23e5b7b40610ab181a863b5be280c0c8ef09727d"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Projektkompetenz verbindet begründete Planung, wirkliche Durchführung und fachliche Auswertung; ein Plan oder unverändert übernommene Anfangskriterien ersetzen die Durchführung nicht. Projektleistung verbindet begründetes Planen mit tatsächlicher Durchführung und Auswertung; eine schöne Planung allein weist den Zyklus nicht nach. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Project competence connects reasoned planning, actual execution and subject evaluation; a plan or unchanged initial criteria cannot replace execution. Transfer from reusable-container costs using the first two days to an actually applied cure card and revised question grid. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    }
+  ],
+  "manifestFingerprint": "sha256:0a438bc5678cb2da95b1c6a1eb4589187072b32d82654731166052aa95ffa772"
+}

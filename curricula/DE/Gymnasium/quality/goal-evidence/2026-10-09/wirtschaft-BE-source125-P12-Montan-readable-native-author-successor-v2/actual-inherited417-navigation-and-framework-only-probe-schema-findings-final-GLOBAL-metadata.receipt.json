@@ -1,0 +1,39 @@
+{
+  "original417": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-BE-four-reviewed-native-imports-root-20261009-v1/whole-sourceV6-current417-with-twenty-one-reviewed-PNG-links.fieldwise.inert.candidate.json",
+    "sha256": "sha256:9c208b65f4d65495d0b43aae022b1d6f4b0786836c06c56268f8b043f8989057"
+  },
+  "addOnly418": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-BE-source125-P12-Montan-readable-native-author-successor-v2/whole-frozen417-plus-one-Montan-418-universe.add-only-inert.candidate.json",
+    "sha256": "sha256:92fabb527fa846ffd9eb8bffbbf21d950e319ea9633574045bc6fcc90e153472"
+  },
+  "actualInheritedSchemaErrors": [
+    {
+      "path": [
+        "goals",
+        416
+      ],
+      "message": "'dimensionTags' is a required property"
+    }
+  ],
+  "affectedGoalId": "9658d512-618c-56ab-aecf-14aaec1005f4",
+  "frameworkOnlyIntermediateProbeSchemaError": {
+    "path": [
+      "goals",
+      416,
+      "dimensionTags"
+    ],
+    "message": "'phase' is a required property"
+  },
+  "candidateCorrection": {
+    "field": "dimensionTags",
+    "value": {
+      "framework": "canonical-gymnasium-economics",
+      "phase": "GLOBAL"
+    }
+  },
+  "reasonDe": "Der neue vollständige Schemacheck fand fehlende verpflichtende DimensionTags am bestehenden inerten Navigationsknoten; neutraler Frameworkbezug und bestehende GLOBAL-Ordnungskonvention des tatsächlichen kanonischen Gesamtrahmens ergänzt, keine Kurs-/Tax-/Quellen-/Zielleistung abgeleitet. Original417 und add-only418 bleiben unverändert.",
+  "independentReview": false,
+  "wholeSource125Approval": false,
+  "strictGain": 0
+}

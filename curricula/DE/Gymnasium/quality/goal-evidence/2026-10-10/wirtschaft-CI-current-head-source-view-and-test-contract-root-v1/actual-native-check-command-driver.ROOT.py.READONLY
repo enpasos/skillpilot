@@ -1,0 +1,137 @@
+from pathlib import Path
+import datetime, hashlib, json, os, subprocess, sys, time
+
+root = Path('/home/enpasos/projects/skillpilot')
+out = root / 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1'
+out.mkdir(exist_ok=True)
+phase = sys.argv[1]
+node = Path('/tmp/skillpilot-checkpoint-native-node-path.txt').read_text().strip()
+jdk = Path('/tmp/skillpilot-economics-M6-ci-java-path.txt').read_text().strip()
+env = os.environ.copy()
+env['JAVA_HOME'] = jdk
+env['PATH'] = jdk + '/bin:' + str(Path(node).parent) + ':/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin:' + env['PATH']
+env['LD_LIBRARY_PATH'] = '/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu' + (':' + env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
+env['FONTCONFIG_FILE'] = '/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf'
+env['GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH'] = '/home/enpasos/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome'
+commands = []
+
+def npm(name, *args):
+    commands.append((name, root, ['npm', '--prefix', 'app', 'run', name, *args]))
+
+if phase == 'qualified-inputs-and-runtime-prerequisite':
+    commands.append(('curriculum-schema-and-portability', root, ['python3', '-B', 'scripts/validate_schemas.py']))
+    npm('prepare:runtime-assets')
+    npm('report:gymnasium-duration-readiness', '--', '--write')
+    npm('check:gymnasium-duration-readiness')
+    npm('check:m6-duration-policy-readiness')
+    npm('check:gymnasium-duration-offerings')
+elif phase == 'three-CI-failures-targeted-backend':
+    commands.append(('unchanged-strict-merger-and-current-two-test-contracts', root / 'backend', [
+        './gradlew', 'test', '--no-daemon',
+        '--tests', 'com.skillpilot.backend.composition.CourseProfileCompositionViewMergerTest',
+        '--tests', 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals',
+        '--tests', 'com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.parsesRepositoryBackedCanonicalEconomicsMappingFixture',
+    ]))
+elif phase == 'stable-source-view-book-M6-followup':
+    npm('validate:composition-views')
+    npm('test:composition-projection-roles')
+    npm('test:course-level-mapping-consistency')
+    npm('test:learner-facing-composition-labels')
+    npm('test:source-extraction-inventory')
+    npm('check:goal-source-rationale-coverage')
+    npm('quality:source-coverage-audit')
+    npm('quality:source-coverage-audit:check')
+    npm('build:goal-book-original-sources')
+    npm('check:goal-book-original-sources')
+    npm('check:goal-book-publication')
+    registry = json.loads((root / 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').read_text())
+    economics = next(s for s in registry['subjects'] if s['subject'] == 'wirtschaftswissenschaften')
+    npm('quality:memory-card-review:check', '--', '--config=' + economics['memoryReviewConfigPath'])
+    npm('quality:curriculum-status')
+    npm('quality:curriculum-status:check')
+    npm('check:curriculum-maturity-floors')
+elif phase == 'memory48-and-current-M6-source-scope':
+    registry = json.loads((root / 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').read_text())
+    economics = next(s for s in registry['subjects'] if s['subject'] == 'wirtschaftswissenschaften')
+    npm('quality:memory-card-review:report', '--', '--config=' + economics['memoryReviewConfigPath'])
+    npm('quality:memory-card-review:check', '--', '--config=' + economics['memoryReviewConfigPath'])
+    npm('quality:curriculum-status')
+    npm('quality:curriculum-status:check')
+    npm('check:curriculum-maturity-floors')
+elif phase == 'stable-cached-book-publication-followup':
+    npm('build:goal-books')
+    npm('check:goal-book-original-sources')
+    npm('check:goal-book-publication')
+elif phase == 'final-qualified-country-assignments-source-and-M6':
+    npm('validate:composition-views')
+    npm('test:source-extraction-inventory')
+    npm('check:goal-source-rationale-coverage')
+    npm('quality:source-coverage-audit')
+    npm('quality:source-coverage-audit:check')
+    npm('report:gymnasium-duration-readiness', '--', '--write')
+    npm('check:gymnasium-duration-readiness')
+    npm('check:m6-duration-policy-readiness')
+    npm('check:gymnasium-duration-offerings')
+    registry = json.loads((root / 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').read_text())
+    economics = next(s for s in registry['subjects'] if s['subject'] == 'wirtschaftswissenschaften')
+    npm('quality:memory-card-review:report', '--', '--config=' + economics['memoryReviewConfigPath'])
+    npm('quality:memory-card-review:check', '--', '--config=' + economics['memoryReviewConfigPath'])
+    npm('quality:curriculum-status')
+    npm('quality:curriculum-status:check')
+    npm('check:curriculum-maturity-floors')
+elif phase == 'final-real-BE-payment-source-scope-HTTP-contract':
+    npm('prepare:runtime-assets')
+    commands.append(('actual-final-current-source-scope-http-contract', root / 'backend', [
+        './gradlew', 'test', '--no-daemon',
+        '--tests', 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals',
+    ]))
+elif phase == 'final-qualified-economics-source-book-followup':
+    npm('build:goal-books')
+    npm('check:goal-book-original-sources')
+    npm('check:goal-book-publication')
+elif phase == 'final-current-duration-offerings-memory-and-M6-after-qualified-sources':
+    npm('generate:gymnasium-duration-offerings')
+    npm('check:gymnasium-duration-offerings')
+    registry = json.loads((root / 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').read_text())
+    economics = next(s for s in registry['subjects'] if s['subject'] == 'wirtschaftswissenschaften')
+    npm('quality:memory-card-review:report', '--', '--config=' + economics['memoryReviewConfigPath'])
+    npm('quality:memory-card-review:check', '--', '--config=' + economics['memoryReviewConfigPath'])
+    npm('quality:curriculum-status')
+    npm('quality:curriculum-status:check')
+    npm('check:curriculum-maturity-floors')
+elif phase == 'final-M6-duration-offerings-after-current-central-report':
+    npm('generate:gymnasium-duration-offerings')
+    npm('check:gymnasium-duration-offerings')
+    npm('report:gymnasium-duration-readiness', '--', '--write')
+    npm('check:gymnasium-duration-readiness')
+elif phase == 'final-document-bindings':
+    npm('docs:generated-status-registry')
+    npm('check:generated-status-registry')
+    npm('check:docs-links')
+    npm('check:docs-indexes')
+else:
+    raise ValueError(phase)
+
+receipt = out / (phase + '.actual-command-receipts.json')
+assert not receipt.exists(), receipt
+rows = []
+for i, (name, cwd, command) in enumerate(commands, 1):
+    log = out / (phase + f'.{i:02d}.' + name.replace(':', '-') + '.raw.txt')
+    assert not log.exists(), log
+    started = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    tick = time.monotonic()
+    print('RUN', phase, i, len(commands), name, flush=True)
+    with log.open('w') as f:
+        result = subprocess.run(command, cwd=cwd, env=env, stdout=f, stderr=subprocess.STDOUT)
+    rows.append({'name': name, 'command': command, 'cwd': str(cwd.relative_to(root)) or '.',
+        'startedAt': started, 'elapsedSeconds': round(time.monotonic() - tick, 3),
+        'exitCode': result.returncode, 'rawOutputPath': str(log.relative_to(root)),
+        'rawOutputSha256': hashlib.sha256(log.read_bytes()).hexdigest()})
+    receipt.write_text(json.dumps({'phase': phase, 'results': rows,
+        'phaseComplete': len(rows) == len(commands) and result.returncode == 0,
+        'remoteGitHubCIClaim': False}, ensure_ascii=False, indent=2) + '\n')
+    print('RESULT', name, result.returncode, rows[-1]['elapsedSeconds'], flush=True)
+    if result.returncode:
+        print(log.read_text()[-7000:], flush=True)
+        sys.exit(result.returncode)
+print('PASS', phase, len(rows), flush=True)

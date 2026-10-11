@@ -1,0 +1,152 @@
+[
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-economics-e2-fourteen-positive-author-20261008-v3",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:8a45a2a42230b2b59921ce1d61863f68f0df7bda05ffe61ec91b24f749df83be",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "e2ac2cc2-894a-5e61-8acb-f5d88811739d",
+    "goalFingerprint": "sha256:831ae781f4bea7df7e0842073ccd37d0915e6d6255f709ed3a6efb883c92c57e",
+    "reviewInputFingerprint": "sha256:7f6792914d496d2a5c92eb8c3134632bcf6070246ee0b32a31626f2cb8805537",
+    "profileFingerprint": "sha256:b6b2fe2621177d7815eafaba710160757c2f80cbeb6bd9706a21957703dcea16",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-08T06:57:36Z",
+    "reviewer": "codex-economics-e2-fourteen-author-budget-consistency-candidate-20261008-v3",
+    "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Eine Zahlungsart ist passend, wenn ihre konkret angegebenen Kosten, Sicherheitsmerkmale, Akzeptanz und zeitliche Verfügbarkeit zum Zahlungszweck passen. Technik oder Bequemlichkeit allein beweist keine allgemeine Überlegenheit; Sicherheitsversprechen und mögliche Rückholwege müssen aus dem Material hervorgehen. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: A payment method is appropriate when its stated costs, security features, acceptance, and timing fit the purpose. Technology or convenience alone does not establish universal superiority; security claims and possible recovery procedures must follow from the materials. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Eine Zahlungsart ist passend, wenn ihre konkret angegebenen Kosten, Sicherheitsmerkmale, Akzeptanz und zeitliche Verfügbarkeit zum Zahlungszweck passen. Technik oder Bequemlichkeit allein beweist keine allgemeine Überlegenheit; Sicherheitsversprechen und mögliche Rückholwege müssen aus dem Material hervorgehen.",
+          "essentialUnderstandingEn": "A payment method is appropriate when its stated costs, security features, acceptance, and timing fit the purpose. Technology or convenience alone does not establish universal superiority; security claims and possible recovery procedures must follow from the materials.",
+          "observablePerformanceDe": "Die Person vergleicht angebotene Zahlungsarten mit den konkreten Fallbedingungen, prüft Sicherheit, Kosten, Verfügbarkeit und Zweck und begründet eine Auswahl mit einem relevanten verbleibenden Nachteil.",
+          "observablePerformanceEn": "The learner compares available methods against the specific case, examines security, costs, availability, and purpose, and justifies a choice while identifying a relevant remaining drawback."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "payment-purpose",
+          "textDe": "Kleiner unmittelbarer Kauf, planbare Rechnung oder erster Fernkauf.",
+          "textEn": "Small immediate purchase, planned invoice, or first remote purchase."
+        },
+        {
+          "id": "availability-security-cost",
+          "textDe": "Gegebene Akzeptanz, Verbindung, Entgelte, Datenbedarf und Schutzbedingungen.",
+          "textEn": "Stated acceptance, connectivity, fees, data needs, and protection conditions."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "offline-market",
+          "taskDemandDe": "Ein Marktstand akzeptiert Bargeld oder Kartenzahlung; die Datenverbindung fällt öfter aus. Die Fallkarte nennt kein Entgelt und ein begrenztes Bargeldbudget. Wähle eine Zahlungsart für den geplanten kleinen Kauf.",
+          "taskDemandEn": "A stall accepts cash or card; its data connection sometimes fails. The case specifies no fee and a limited cash budget. Choose a method for a planned small purchase.",
+          "expectedPerformanceDe": "Die Person bezieht Akzeptanz, Ausfallsicherheit und Budget ein, erklärt ihre Wahl mit Fallangaben und berücksichtigt bei Bargeld Verlust-/Wechselgeldfragen beziehungsweise bei Karte die Verbindung.",
+          "expectedPerformanceEn": "The learner considers acceptance, reliability, and budget, explains the choice from the facts, and considers cash-loss or change issues or the card connection.",
+          "understandingFocusDe": "Zweckmäßigkeit unter tatsächlichen Verfügbarkeitsbedingungen.",
+          "understandingFocusEn": "Suitability under actual availability conditions."
+        },
+        {
+          "id": "online-method-table",
+          "taskDemandDe": "Ein fiktiver Onlineshop bietet Vorkasse, Rechnung und einen Zahlungsdienst an. Eine Tabelle nennt Gebühren, Datenbedarf, Zahlungszeitpunkt und ausdrücklich begrenzte Schutzbedingungen. Vergleiche für einen Erstkauf.",
+          "taskDemandEn": "A fictional shop offers advance payment, invoice, and a payment service. A table specifies fees, data needs, timing, and explicitly limited protection conditions. Compare them for a first purchase.",
+          "expectedPerformanceDe": "Die Person nutzt alle vier Kriterien, trennt Schutzbedingungen von einer Garantie, berücksichtigt Händlervertrauen und Datenpreisgabe und gibt eine fallbezogene statt allgemeingültige Empfehlung.",
+          "expectedPerformanceEn": "The learner uses all four criteria, distinguishes protection conditions from a guarantee, considers trust in the seller and data disclosure, and gives a case-specific rather than universal choice.",
+          "understandingFocusDe": "Mehrkriterielle Auswahl ohne unbelegte Sicherheitsbehauptung.",
+          "understandingFocusEn": "Selection using several criteria without unsupported security claims."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-e-law-contract-twenty-positive-author-v3-20261008",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "1f5c3e82-dc4a-54cc-838e-66e4d434a7b5",
+    "goalFingerprint": "sha256:b3446f4a0852a2a28038f30b5850cf5a3c8b0de4520faa3b1e5393c6aac6a308",
+    "reviewInputFingerprint": "sha256:16167401f9c880369aeccf6f133c674fcbf3d253c9bfa8a763f44690c33d1b6c",
+    "profileFingerprint": "sha256:f69153d44a469528154739583303f2717baaf4e153a3ba4bf0bbd69bf43bd89e",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-08T11:49:40.351870+00:00",
+    "reviewer": "codex-economics-e-law-contract-twenty-author-v2",
+    "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Beschränkte Geschäftsfähigkeit bedeutet nicht völlige Handlungsunfähigkeit oder freie Wirksamkeit jedes Kaufs. Zustimmung, lediglich rechtlicher Vorteil und vollständig bewirkte Leistung mit dafür überlassenen Mitteln sind auseinanderzuhalten; künftige Zahlungspflichten sind gesondert relevant. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Limited legal capacity means neither total inability to act nor automatic validity of every purchase. Consent, purely legal benefit and fully performed payment from authorised funds differ; future payment obligations matter separately. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Beschränkte Geschäftsfähigkeit bedeutet nicht völlige Handlungsunfähigkeit oder freie Wirksamkeit jedes Kaufs. Zustimmung, lediglich rechtlicher Vorteil und vollständig bewirkte Leistung mit dafür überlassenen Mitteln sind auseinanderzuhalten; künftige Zahlungspflichten sind gesondert relevant.",
+          "essentialUnderstandingEn": "Limited legal capacity means neither total inability to act nor automatic validity of every purchase. Consent, purely legal benefit and fully performed payment from authorised funds differ; future payment obligations matter separately.",
+          "observablePerformanceDe": "Die Person erkennt in neuen alltäglichen Kaufsituationen eigene rechtliche Möglichkeiten und setzt sie durch passende Prüfung, Zustimmung oder Rückabwicklung unter bereitgestellten Minderjährigenregeln um.",
+          "observablePerformanceEn": "In new everyday purchases, the learner identifies legal options and exercises them through appropriate checks, consent or unwinding under supplied minority rules."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "performance",
+          "textDe": "Vollständig bezahlter Einzelkauf versus Teilzahlung.",
+          "textEn": "Fully paid purchase versus partial payment."
+        },
+        {
+          "id": "approval",
+          "textDe": "Überlassene Mittel, Einwilligung oder verweigerte Genehmigung.",
+          "textEn": "Authorised funds, prior consent or refused approval."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "fully-paid-authorised-money",
+          "taskDemandDe": "Eine fiktive14-Jährige kauft ein Heft für8 Euro und zahlt vollständig aus von den Eltern zu freier Verfügung überlassenem Geld. Mit§§106/107/110BGB erkenne die Möglichkeit und erkläre die wirksame Handlung.",
+          "taskDemandEn": "A fictional14-year-old buys a notebook for EUR8 and pays fully from money her parents gave for free use. Using BGB106/107/110, identify her option and explain validity.",
+          "expectedPerformanceDe": "Die Person prüft Alter, rechtliche Zahlungspflicht und bereits vollständige Leistung mit zulässig überlassenen Mitteln und begründet§110. Sie erklärt ihre Möglichkeit, ohne für sämtliche Minderjährigenkäufe eine beliebige Preisgrenze zu erfinden.",
+          "expectedPerformanceEn": "The learner checks age, payment duties and full performance from authorised funds, explains BGB110 and the option without inventing a universal price ceiling for minors.",
+          "understandingFocusDe": "Vollständige Leistung und Zweck der Mittel.",
+          "understandingFocusEn": "Full performance and permitted purpose of funds."
+        },
+        {
+          "id": "instalment-with-no-approval",
+          "taskDemandDe": "Eine andere fiktive16-Jährige bestellt Kopfhörer in sechs Raten ohne Zustimmung; erst die erste Rate ist bezahlt. Die Eltern verweigern Genehmigung. Mit§§107/108/110BGB formuliere eine sachliche Reaktion gegenüber dem Verkäufer.",
+          "taskDemandEn": "Another fictional16-year-old orders headphones in six instalments without consent and pays only the first; her parents refuse approval. Use BGB107/108/110 to formulate a factual response to the seller.",
+          "expectedPerformanceDe": "Die Person erklärt fehlende Zustimmung, zunächst schwebende Wirksamkeit und verweigerte Genehmigung;§110 greift nicht allein wegen der ersten Rate. Sie kommuniziert die Vertretersituation und verlangt Klärung/Rückabwicklung statt nur Zahlung zu ignorieren.",
+          "expectedPerformanceEn": "The learner explains missing consent, pending validity and refused approval; BGB110 is not satisfied by the first instalment alone. They communicate the representative’s position and seek clarification/unwinding rather than ignoring payments.",
+          "understandingFocusDe": "Eigene Handlungsmöglichkeiten bei noch offenen Verpflichtungen.",
+          "understandingFocusEn": "Options when future obligations remain."
+        }
+      ]
+    }
+  }
+]

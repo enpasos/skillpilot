@@ -11,8 +11,8 @@
     "seedMappedSourceGoals": 184,
     "mappedSourceGoals": 184,
     "needsCanonicalGoal": 0,
-    "exactMappings": 172,
-    "partialMappings": 12,
+    "exactMappings": 167,
+    "partialMappings": 17,
     "inheritedMappings": 0
   },
   "mappings": [
@@ -1063,7 +1063,7 @@
     {
       "legacyGoalId": "7ae3e76e-2bf0-5af7-8f46-087859fb3f7f",
       "canonicalGoalId": "9a5b2913-75d4-59d5-8a10-d255a8af80f4",
-      "matchType": "exact",
+      "matchType": "partial",
       "reviewDecisionId": "7ae3e76e-2bf0-5af7-8f46-087859fb3f7f"
     },
     {
@@ -1111,7 +1111,7 @@
     {
       "legacyGoalId": "e5ecb6b2-714c-508c-b0fb-6f07e7d56394",
       "canonicalGoalId": "8a453b6b-4f28-54bc-8614-4ec8d5384a85",
-      "matchType": "exact",
+      "matchType": "partial",
       "reviewDecisionId": "e5ecb6b2-714c-508c-b0fb-6f07e7d56394"
     },
     {
@@ -1149,6 +1149,36 @@
       "canonicalGoalId": "40f72858-337d-5f96-973d-e8041c112b12",
       "matchType": "partial",
       "reviewDecisionId": "411d5128-1036-5a9f-874d-bb4b1d3ee3aa"
+    },
+    {
+      "legacyGoalId": "a58ee47a-a4cf-5d4a-8a5e-19bd95e75080",
+      "canonicalGoalId": "a2fa1186-df35-5954-a9a9-e311a55e218f",
+      "matchType": "partial",
+      "reviewDecisionId": "a58ee47a-a4cf-5d4a-8a5e-19bd95e75080"
+    },
+    {
+      "legacyGoalId": "4617eefd-63f3-5721-95a6-57caf928123c",
+      "canonicalGoalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+      "matchType": "partial",
+      "reviewDecisionId": "4617eefd-63f3-5721-95a6-57caf928123c"
+    },
+    {
+      "legacyGoalId": "4617eefd-63f3-5721-95a6-57caf928123c",
+      "canonicalGoalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+      "matchType": "partial",
+      "reviewDecisionId": "4617eefd-63f3-5721-95a6-57caf928123c"
+    },
+    {
+      "legacyGoalId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+      "canonicalGoalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+      "matchType": "partial",
+      "reviewDecisionId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36"
+    },
+    {
+      "legacyGoalId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+      "canonicalGoalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+      "matchType": "partial",
+      "reviewDecisionId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36"
     }
   ],
   "decisions": [
@@ -2250,12 +2280,13 @@
       "sourceSpan": "J11.32",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "c7b03538-25a2-510b-8fd4-a81bcc3de406"
+        "c7b03538-25a2-510b-8fd4-a81bcc3de406",
+        "a2fa1186-df35-5954-a9a9-e311a55e218f"
       ],
-      "matchType": "exact",
-      "rationale": "Bayerisches Wirtschaft-und-Recht-Source-Ziel als kanonische BY-Ergaenzung aufgenommen und passgenau gemappt.",
-      "reviewedAt": "2026-05-13",
-      "reviewer": "Codex"
+      "matchType": "partial",
+      "rationale": "AUSSCHLIESSLICH WWG, WR11.5: Die offizielle Inhaltsliste der institutionenökonomischen Analyse nennt Informationsasymmetrien und adverse Selektion. INFO prüft den engeren Mechanismus ungleicher Informationen VOR dem Geschäft über Auswahl/Teilnahme. PARTIAL: moralisches Risiko nach dem Geschäft, Prinzipal-Agent-Analyse, Institutionen und Spieltheorie sind dadurch nicht vollständig abgedeckt. Keine Pflichtbehauptung für HG/SG/NTG/MuG/SWG; vorhandenes ganzes Institutionenziel bleibt erhalten.",
+      "reviewedAt": "2026-10-10",
+      "reviewer": "OpenAI GPT-6 / Codex, round-a author; candidate needs independent review"
     },
     {
       "sourceGoalId": "85a758dd-b2e2-5a33-af42-6c6712ce01c1",
@@ -2979,12 +3010,14 @@
       "sourceSpan": "J11.2",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "6600f5f0-0b30-5458-b144-b2468d897087"
+        "6600f5f0-0b30-5458-b144-b2468d897087",
+        "1826fe19-4d06-5183-9b41-9121ae1cc219",
+        "df17fd21-e9b7-598f-970e-8f541d059694"
       ],
-      "matchType": "exact",
-      "rationale": "Das BY-Source-Ziel ist inhaltlich durch ein vorhandenes kanonisches Wirtschaftsziel abgedeckt; eine neue Doppelung wird bewusst vermieden.",
-      "reviewedAt": "2026-05-13",
-      "reviewer": "Codex"
+      "matchType": "partial",
+      "rationale": "HG/SG/NTG/MuG/SWG, WR11.1: Die tatsächliche offizielle Kompetenz beurteilt staatliche Eingriffe anhand der Grenzen der Marktlenkung; ihre verbindliche Inhaltsliste nennt unvollkommenen Wettbewerb und öffentliche Güter. 1826 operationalisiert ausschließlich Marktmacht/Marktzugang und Preis-Mengen-Anreize; PUB operationalisiert ausschließlich Nichtrivalität/Nichtausschließbarkeit und freiwillige Finanzierung. Beide ergänzten Kanten sind PARTIAL und ersetzen weder das bestehende ganze Ordnungsziel noch die weiteren externen/sozialen Grenzen und das Eingriffsurteil.",
+      "reviewedAt": "2026-10-10",
+      "reviewer": "OpenAI GPT-6 / Codex, round-a author; candidate needs independent review"
     },
     {
       "sourceGoalId": "1ade6870-6d16-5c7d-aab9-5ae159d95ae2",
@@ -3005,12 +3038,14 @@
       "sourceSpan": "J11.18",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "6600f5f0-0b30-5458-b144-b2468d897087"
+        "6600f5f0-0b30-5458-b144-b2468d897087",
+        "1826fe19-4d06-5183-9b41-9121ae1cc219",
+        "df17fd21-e9b7-598f-970e-8f541d059694"
       ],
-      "matchType": "exact",
-      "rationale": "Das BY-Source-Ziel ist inhaltlich durch ein vorhandenes kanonisches Wirtschaftsziel abgedeckt; eine neue Doppelung wird bewusst vermieden.",
-      "reviewedAt": "2026-05-13",
-      "reviewer": "Codex"
+      "matchType": "partial",
+      "rationale": "WWG, WR11.1: Die tatsächliche offizielle Kompetenz und die verbindlichen Inhalte tragen Marktmacht sowie öffentliche Güter als zwei voneinander getrennte Marktgrenzen. Die zusätzlichen 1826/PUB-Kanten sind PARTIAL: Erklärung eines Mechanismus ist ein begrenzter fachlicher Anteil des umfassenderen staatlichen Eingriffsurteils. Das bestehende ganze Ordnungsziel und alle übrigen alten Kanten bleiben erhalten.",
+      "reviewedAt": "2026-10-10",
+      "reviewer": "OpenAI GPT-6 / Codex, round-a author; candidate needs independent review"
     },
     {
       "sourceGoalId": "8e8ff742-e861-5e06-a7cd-723795199f7d",
@@ -3398,8 +3433,8 @@
       "canonicalGoalIds": [
         "9a5b2913-75d4-59d5-8a10-d255a8af80f4"
       ],
-      "matchType": "exact",
-      "rationale": "Das BY-Source-Ziel ist inhaltlich durch ein vorhandenes kanonisches Wirtschaftsziel abgedeckt; eine neue Doppelung wird bewusst vermieden.",
+      "matchType": "partial",
+      "rationale": "Enger Quellen-Match-Nachfolger nach tatsächlicher vollständiger Prüfung der grundlegenden BY-WR13-1.1-Quelle und des ganzen kanonischen Ziels: Die Quelle belegt Ansprüche/Rechte zur verspäteten Leistung beim Kauf. Das kanonische Ziel umfasst außerdem Unmöglichkeit, die dieser grundlegende Quellenabsatz nicht verlangt. Daher partial für den belegten Verzögerungsanteil; kein Vollbeleg der weiteren Zielsemantik und keine automatische regionale GK/LK-Targetfreigabe. Quellwortlaut, stabile IDs und andere Zuordnungen bleiben erhalten; aktuelle unabhängige Quellenprüfung ist separat dokumentiert.",
       "reviewedAt": "2026-05-13",
       "reviewer": "Codex"
     },
@@ -3502,8 +3537,8 @@
       "canonicalGoalIds": [
         "8a453b6b-4f28-54bc-8614-4ec8d5384a85"
       ],
-      "matchType": "exact",
-      "rationale": "Das BY-Source-Ziel ist inhaltlich durch ein vorhandenes kanonisches Wirtschaftsziel abgedeckt; eine neue Doppelung wird bewusst vermieden.",
+      "matchType": "partial",
+      "rationale": "Enger Quellen-Match-Nachfolger nach tatsächlicher vollständiger Prüfung der grundlegenden BY-WR13-2.2-Quelle und des ganzen kanonischen Ziels: Die Quelle belegt Interpretation der Leistungsbilanz und mögliche Probleme außenwirtschaftlicher Ungleichgewichte. Das kanonische Ziel umfasst zusätzlich die Kapital-/Finanzbilanz, die dieser grundlegende Quellenabsatz nicht nennt. Daher partial für den belegten Leistungsbilanzanteil; kein Vollbeleg der zusätzlichen Finanzbilanzanforderung und keine automatische regionale GK/LK-Targetfreigabe. Quellwortlaut, stabile IDs und andere Zuordnungen bleiben erhalten; aktuelle unabhängige Quellenprüfung ist separat dokumentiert.",
       "reviewedAt": "2026-05-13",
       "reviewer": "Codex"
     },
@@ -3549,5 +3584,116 @@
       "reviewedAt": "2026-05-13",
       "reviewer": "Codex"
     }
-  ]
+  ],
+  "boundedAdditionalMarketSourceFacetAuthoring": {
+    "status": "INERT_AI_author_candidate_needs_independent_review",
+    "historicalAffectedDecisionsExact": [
+      {
+        "sourceGoalId": "a58ee47a-a4cf-5d4a-8a5e-19bd95e75080",
+        "topicCode": "J11",
+        "sourceSpan": "J11.32",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "c7b03538-25a2-510b-8fd4-a81bcc3de406"
+        ],
+        "matchType": "exact",
+        "rationale": "Bayerisches Wirtschaft-und-Recht-Source-Ziel als kanonische BY-Ergaenzung aufgenommen und passgenau gemappt.",
+        "reviewedAt": "2026-05-13",
+        "reviewer": "Codex"
+      },
+      {
+        "sourceGoalId": "4617eefd-63f3-5721-95a6-57caf928123c",
+        "topicCode": "J11",
+        "sourceSpan": "J11.2",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "6600f5f0-0b30-5458-b144-b2468d897087"
+        ],
+        "matchType": "exact",
+        "rationale": "Das BY-Source-Ziel ist inhaltlich durch ein vorhandenes kanonisches Wirtschaftsziel abgedeckt; eine neue Doppelung wird bewusst vermieden.",
+        "reviewedAt": "2026-05-13",
+        "reviewer": "Codex"
+      },
+      {
+        "sourceGoalId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+        "topicCode": "J11",
+        "sourceSpan": "J11.18",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "6600f5f0-0b30-5458-b144-b2468d897087"
+        ],
+        "matchType": "exact",
+        "rationale": "Das BY-Source-Ziel ist inhaltlich durch ein vorhandenes kanonisches Wirtschaftsziel abgedeckt; eine neue Doppelung wird bewusst vermieden.",
+        "reviewedAt": "2026-05-13",
+        "reviewer": "Codex"
+      }
+    ],
+    "newEdges": [
+      {
+        "jurisdiction": "BY",
+        "sourceGoalId": "a58ee47a-a4cf-5d4a-8a5e-19bd95e75080",
+        "canonicalGoalId": "a2fa1186-df35-5954-a9a9-e311a55e218f",
+        "matchType": "partial",
+        "reason": "AUSSCHLIESSLICH WWG, WR11.5: Die offizielle Inhaltsliste der institutionenökonomischen Analyse nennt Informationsasymmetrien und adverse Selektion. INFO prüft den engeren Mechanismus ungleicher Informationen VOR dem Geschäft über Auswahl/Teilnahme. PARTIAL: moralisches Risiko nach dem Geschäft, Prinzipal-Agent-Analyse, Institutionen und Spieltheorie sind dadurch nicht vollständig abgedeckt. Keine Pflichtbehauptung für HG/SG/NTG/MuG/SWG; vorhandenes ganzes Institutionenziel bleibt erhalten.",
+        "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg",
+        "originalWholeUnionRetainedExact": [
+          "c7b03538-25a2-510b-8fd4-a81bcc3de406"
+        ],
+        "independentQualification": false
+      },
+      {
+        "jurisdiction": "BY",
+        "sourceGoalId": "4617eefd-63f3-5721-95a6-57caf928123c",
+        "canonicalGoalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+        "matchType": "partial",
+        "reason": "HG/SG/NTG/MuG/SWG, WR11.1: Die tatsächliche offizielle Kompetenz beurteilt staatliche Eingriffe anhand der Grenzen der Marktlenkung; ihre verbindliche Inhaltsliste nennt unvollkommenen Wettbewerb und öffentliche Güter. 1826 operationalisiert ausschließlich Marktmacht/Marktzugang und Preis-Mengen-Anreize; PUB operationalisiert ausschließlich Nichtrivalität/Nichtausschließbarkeit und freiwillige Finanzierung. Beide ergänzten Kanten sind PARTIAL und ersetzen weder das bestehende ganze Ordnungsziel noch die weiteren externen/sozialen Grenzen und das Eingriffsurteil.",
+        "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/andere",
+        "originalWholeUnionRetainedExact": [
+          "6600f5f0-0b30-5458-b144-b2468d897087"
+        ],
+        "independentQualification": false
+      },
+      {
+        "jurisdiction": "BY",
+        "sourceGoalId": "4617eefd-63f3-5721-95a6-57caf928123c",
+        "canonicalGoalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+        "matchType": "partial",
+        "reason": "HG/SG/NTG/MuG/SWG, WR11.1: Die tatsächliche offizielle Kompetenz beurteilt staatliche Eingriffe anhand der Grenzen der Marktlenkung; ihre verbindliche Inhaltsliste nennt unvollkommenen Wettbewerb und öffentliche Güter. 1826 operationalisiert ausschließlich Marktmacht/Marktzugang und Preis-Mengen-Anreize; PUB operationalisiert ausschließlich Nichtrivalität/Nichtausschließbarkeit und freiwillige Finanzierung. Beide ergänzten Kanten sind PARTIAL und ersetzen weder das bestehende ganze Ordnungsziel noch die weiteren externen/sozialen Grenzen und das Eingriffsurteil.",
+        "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/andere",
+        "originalWholeUnionRetainedExact": [
+          "6600f5f0-0b30-5458-b144-b2468d897087"
+        ],
+        "independentQualification": false
+      },
+      {
+        "jurisdiction": "BY",
+        "sourceGoalId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+        "canonicalGoalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+        "matchType": "partial",
+        "reason": "WWG, WR11.1: Die tatsächliche offizielle Kompetenz und die verbindlichen Inhalte tragen Marktmacht sowie öffentliche Güter als zwei voneinander getrennte Marktgrenzen. Die zusätzlichen 1826/PUB-Kanten sind PARTIAL: Erklärung eines Mechanismus ist ein begrenzter fachlicher Anteil des umfassenderen staatlichen Eingriffsurteils. Das bestehende ganze Ordnungsziel und alle übrigen alten Kanten bleiben erhalten.",
+        "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg",
+        "originalWholeUnionRetainedExact": [
+          "6600f5f0-0b30-5458-b144-b2468d897087"
+        ],
+        "independentQualification": false
+      },
+      {
+        "jurisdiction": "BY",
+        "sourceGoalId": "2fc4eeaa-fc98-54de-ab50-62d75ea43e36",
+        "canonicalGoalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+        "matchType": "partial",
+        "reason": "WWG, WR11.1: Die tatsächliche offizielle Kompetenz und die verbindlichen Inhalte tragen Marktmacht sowie öffentliche Güter als zwei voneinander getrennte Marktgrenzen. Die zusätzlichen 1826/PUB-Kanten sind PARTIAL: Erklärung eines Mechanismus ist ein begrenzter fachlicher Anteil des umfassenderen staatlichen Eingriffsurteils. Das bestehende ganze Ordnungsziel und alle übrigen alten Kanten bleiben erhalten.",
+        "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg",
+        "originalWholeUnionRetainedExact": [
+          "6600f5f0-0b30-5458-b144-b2468d897087"
+        ],
+        "independentQualification": false
+      }
+    ],
+    "wholeSourceRowsUnchanged": true,
+    "wholeOriginalUnionAndMappingEdgesRetained": true,
+    "newWholeSourceHistoryReview": false,
+    "humanApproval": false,
+    "M6M7DVMilestoneClaim": false
+  }
 }

@@ -1,0 +1,91 @@
+from pathlib import Path
+import hashlib, json
+
+R=Path('/home/enpasos/projects/skillpilot')
+Q=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+I=Q/'wirtschaft-current597-legal-social-qualified577-fieldwise-combined-author-a-v1'
+O=Q/'wirtschaft-current597-legal-social311-technical-root-followers-v1'
+S=Q/'wirtschaft-current597-legal-social-independent-combined-scope-review-v1'
+A=Q/'wirtschaft-current597-legal-social311-active-root-v1'
+def rd(p):return json.loads(p.read_text())
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def b(p):return {'path':str(p.relative_to(R)),'sha256':sha(p),'bytes':p.stat().st_size}
+def ck(x):
+    p=R/x['path'];assert sha(p)==x['sha256'] and p.stat().st_size==x['bytes'],x;return p
+def wr(p,x):
+    assert not p.exists(),p;p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');return b(p)
+hp=I/'actual-final-current577-to597-legal-social311-fieldwise-combined.AUTHOR-handoff.json';h=rd(hp);ip=ck(h['wholeAuthorIndex']);ix=rd(ip)
+sp=S/'actual-final-current597-legal-social311-combined-scope-nav-independent-KEEP.handoff.receipt.json';seal=rd(sp)
+assert seal['decision']=='KEEP BOUNDED COMBINED597 SCOPE NAV INTERACTION' and seal['activeWrites']==0
+assert ck(seal['wholeFinalAuthorHandoff'])==hp
+np=ck(seal['exactBoundedPositiveRawReport']);native=rd(np)
+commands=rd(ck(seal['ownActualFourFreshNativeCommands']));frames=commands['actualFourFreshNativeCommands']
+assert len(frames)==4 and all(f['actualExit']==0 for f in frames)
+assert ck(next(f for f in frames if f['name']=='actual-after597-native-independent')['wholeRawReport'])==np
+for frame in frames:
+    ck(frame['wholeRawReport']);ck(frame['wholeStdout']);assert ck(frame['wholeStderr']).stat().st_size==0
+for key in ['ownWhole1344IndividualMaterialScopeDecisions','ownWhole64SourceRoleAndNegativeDecisions','ownConditionalToRootV15And43PTechnicalGuards','ownActiveEndguards','ownPortableManifest']:
+    ck(seal[key])
+assert seal['actualRouteOccurrencesBeforeAfter']==[752,512] and seal['actualDistinctLocalGoalIDsBeforeAfter']==[102,81]
+assert seal['newOrdinaryTargetsOrPrerequisiteOnlyFoundationRefs']==0 and seal['strictNetGain']==0
+f=rd(O/'actual-v15-SEM597-P336685-book597-technical-only-freeze.json')
+pr=O/'actual-native43-configs-P336-SEM597-all-original-profiles-inputs-statuses.v15-root-PASS.json';p=rd(pr)
+assert p['records']==336 and p['cases']==685 and p['SEM597WholeFPsCurrent']
+assert len(p['configs'])==43 and all(c['errors']==[] for c in p['configs'])
+assert native['goalCount']==597 and native['compilerSummary']['errors']==native['compilerSummary']['warnings']==0
+rules={r['id']:r for r in native['nativeRules']};m=rules['CQR-104']['metrics']
+for k in ['projectionScopesMissingMotivationAnchors','projectionScopesMissingTerminalAutonomyGoals','projectionScopesWithUnexpectedTerminalAutonomyGoals','projectionScopesWithoutExpectedTerminalAutonomyGoals','terminalGoalsMissingCompiledApplicability','projectionScopesWithInvalidStageStructure','visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector','wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath','wholeMaterialPrerequisiteOccurrencesMissingFromProjection','visibleSelectedGoalOccurrencesMissingDirectMotivationRoute']:
+    assert m[k]==0,(k,m[k])
+assert m['visibleProjectedRouteTargetGoalOccurrences']==6974
+assert (m['visibleSelectedGoalOccurrencesMissingDirectTerminalRoute'],m['uniqueVisibleSelectedGoalsMissingDirectTerminalRoute'])==(512,81)
+sm=native['sourceRule']['metrics'];assert native['sourceRule']['status']=='pass'
+assert sm['sourceOriginalGoals']==sm['sourceFullyCoveredOriginalGoals']==sm['sourceAtomicGoals']==2134
+assert sm['totalJurisdictions']==sm['coveredJurisdictions']==sm['sourceCompleteJurisdictions']==16
+assert all(sm[k]==0 for k in ['sourceUncoveredOriginalGoals','unmappedSourceAtomicGoals','unsupportedAssignedAtomicGoals'])
+can=R/ix['activeCanonicalPath'];assert can.read_bytes()==ck(ix['canonicalBefore']).read_bytes()
+before={g['id']:g for g in rd(ck(ix['canonicalBefore']))['goals']};after={g['id']:g for g in rd(ck(ix['canonicalCandidate']))['goals']}
+changedids={x['goalId']for x in ix['exactFiveChangedOldWholeGoalObjects']}
+assert len(before)==577 and len(after)==597 and len(changedids)==5
+assert all(after[i]==g for i,g in before.items()if i not in changedids)
+assert set(after)-set(before)==set(ix['newMaterialIds']) and len(ix['newMaterialIds'])==20
+for x in ix['exactFiveChangedOldWholeGoalObjects']:
+    assert before[x['goalId']]==x['wholeBefore'] and after[x['goalId']]==x['wholeAfter']
+fa='fa2d07bc-684d-5ee4-8878-20416fdb72d7'
+assert {k for k in before[fa]if before[fa][k]!=after[fa][k]}=={'tags'}
+assert before[fa]['tags']==['GK','Practice','Assessment'] and after[fa]['tags']==['GK','LK','Practice','Assessment']
+assert before[fa]['examData']==after[fa]['examData']
+assert ix['actualTargetReferenceDeltas']=={'country':275,'national':36,'total':311,'alreadyIdenticalExistingReferencesSkipped':0}
+assert sum(len(v['wholeActualAddedReferences'])for v in ix['views'])==311
+changed=[v for v in ix['views']if v['before']['sha256']!=v['candidate']['sha256']];assert len(changed)==34 and len(ix['views'])==35
+for v in ix['views']:
+    assert sha(R/v['activePath'])==v['before']['sha256'];ck(v['candidate'])
+qualified=[]
+for package in ix['qualifiedPackages']:
+    for key in ['wholeScientificKEEP','scopeKEEP','authorHandoff','authorIndex']:qualified.append(package[key]);ck(package[key])
+qualified.append(b(sp))
+for key in ['oldRegistry','oldBookConfig','oldKindLedger','newSEM','newWholeP336','candidateRegistry','candidateBookConfig']:ck(f[key])
+oldreg,newreg=rd(ck(f['oldRegistry'])),rd(ck(f['candidateRegistry']))
+assert [s for s in oldreg['subjects']if s['subject']!='wirtschaftswissenschaften']==[s for s in newreg['subjects']if s['subject']!='wirtschaftswissenschaften']
+paths={R/'app/scripts/generateCurriculumQualityStatus.ts',R/'curricula/DE/Gymnasium/provenance/source-landscape-registry.json',R/'curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json',R/'curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json'}
+for s in oldreg['subjects']:
+    if s['subject']!='wirtschaftswissenschaften':paths.update(R/s[k]for k in ['landscapePath','semanticKindLedgerPath'])
+for cfg in f['all43ConfigChanges']:
+    paths.update([ck(cfg['old']),ck(cfg['reviewWholeBytesUnchanged'])])
+for base in ['curricula/DE/Gymnasium/input','curricula/DE/Gymnasium/mapping','curricula/DE/Gymnasium/memory-decks','curricula/DE/Gymnasium/quality/memory-card-review']:
+    paths.update(p for p in(R/base).rglob('*')if p.is_file()and p.suffix in ['.json','.jsonl'])
+protected=[b(p)for p in sorted(paths)]
+assert sha(R/'app/scripts/generateCurriculumQualityStatus.ts')=='656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336'
+mutations=[(can,ck(ix['canonicalCandidate'])),(ck(f['oldRegistry']),ck(f['candidateRegistry'])),(ck(f['oldBookConfig']),ck(f['candidateBookConfig']))]+[(R/v['activePath'],ck(v['candidate']))for v in changed]
+assert len(mutations)==37
+A.mkdir(exist_ok=False);backup=A/'whole-active-before';backup.mkdir();rows=[]
+for i,(ap,cp)in enumerate(mutations):
+    bp=backup/f'{i:02d}-{ap.name}';bp.write_bytes(ap.read_bytes());rows.append({'activePath':str(ap.relative_to(R)),'wholeBefore':b(bp),'qualifiedCandidate':b(cp)})
+wr(A/'actual-current597-legal-social311-pre-mutation-guards.json',{'mutations':rows,'qualifiedScienceScopeAndFinalCombination':qualified,'protectedReadOnlyInputs':protected,'actualForeignCombinedScope':b(sp),'actualForeignPositiveNative':b(np),'actualNative43PositiveConfigs':b(pr),'wholeCurrent336685ProfilesAndAll577OldKindsExact':True,'humanApproval':False})
+for ap,cp in mutations:ap.write_bytes(cp.read_bytes())
+assert all(sha(R/z['path'])==z['sha256']for z in protected)
+assert all(ap.read_bytes()==cp.read_bytes()for ap,cp in mutations)
+receipt={'status':'ACTUAL_TWENTY_FOREIGN_QUALIFIED_LEGAL_SOCIAL_MATERIALS311_ACCESS_FIELDWISE_ACTIVE_PENDING_FRESH_CENTRAL','canonicalNodes':597,'currentCurricularAtomic':336,'newWholeMaterialScientificClosures':20,'newPracticeAssessmentGoals':20,'unchangedWholeExistingMaterialScientificReuse':1,'newCurricularAtomicStrictClosures':0,'restoredCurricularAtomicStrictBindings':0,'strictNetGainBeforeFreshCentral':0,'fiveOldWholeGoalFieldSuccessors':ix['exactFiveChangedOldWholeGoalObjects'],'viewsAdditivelyChanged':34,'newPracticeTargetRefs':311,'referenceCounts':ix['actualTargetReferenceDeltas'],'source16Original2134AndAll208PartialInputsExact':True,'all336OrdinaryCanonicalObjectsAndCurrentP685WholeExact':True,'all577OldSemanticKindsExact':True,'SEM597OldFingerprintFollowers':5,'SEMNewQualifiedPracticeRows':20,'all64Ordinary6974TargetsMemoryOrientationAndOtherSupportExact':True,'selectorExcluded':0,'wholePrerequisiteClosureMissing':0,'currentLocalMissingOccurrencesBefore':752,'currentLocalMissingOccurrencesAfter':512,'netRestoredRouteBindings':240,'currentLocalMissingUniqueBefore':102,'currentLocalMissingUniqueAfter':81,'netFullyRestoredLocalGoalIds':21,'missingExpectedMaterialScopeCount':0,'noAdditiveForecastCountClaimed':True,'other4SubjectsCANSEMandRegistryEntriesExact':True,'allReadOnlySourceMemoryAndVisualizationEvidenceExact':True,'sourceInventoryCentralAndProtectedFloorsPending':True,'M6Reached':False,'humanReleaseTrialsSeparateOpen':True,'imagesGenerated':0,'commitCreated':False,'historicalArtifactsModified':False,'activeInputs':[b(ap)for ap,cp in mutations],'qualifiedScienceAndScopeReceipts':qualified,'actualCombinedScopeSeal':b(sp),'actualCombined311Native':b(np),'protectedReadOnlyInputCount':len(protected)}
+rp=A/'actual-current597-twenty-foreign-qualified-legal-social311-accesses-active.receipt.json';wr(rp,receipt)
+(A/'actual-executed-root-integrator.raw.txt').write_bytes(Path(__file__).read_bytes())
+Path('/tmp/economics-current597-legal-social311-active-root-path.txt').write_text(str(A)+'\n')
+print(json.dumps({'receipt':b(rp),'activeFiles':37,'activeCAN':b(can),'netRestoredRoutes':240,'strictGain':0,'remainingLocalGoalIds':81}))

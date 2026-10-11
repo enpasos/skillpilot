@@ -1,0 +1,373 @@
+{
+  "role": "Read-only actual existing machine gate intake for ordered work; no machine re-evaluation and no new curriculum review",
+  "nativeStatusSnapshot": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "15c33a47066d1fdbb1e9ec2314801782309c75aa660fb45f88c4821e024d6167",
+    "generatedAt": "2026-10-09T18:33:23.900Z",
+    "econMaturity": "M1"
+  },
+  "nativeEvaluatorRulesAreAuthoritative": "Labels group ordered work; maturity remains native deriveCurriculumMaturity output, not this planning record. No omitted CQR requirement.",
+  "orderedWork": [
+    {
+      "step": "M2",
+      "actualRulesBeforeCandidateIntegration": [
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 2134,
+            "sourceOriginalGoals": 2134,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 2134,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "fail",
+          "summary": "0/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 0,
+            "fullCoverageJurisdictions": 0,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 16,
+            "unsupportedAssignmentJurisdictions": 16,
+            "sourceUnmappedJurisdictions": 6,
+            "unsupportedAssignedAtomicGoals": 2470,
+            "unmappedSourceAtomicGoals": 70,
+            "sourceAtomicGoals": 2134,
+            "sourceMappedToViewAtomicGoals": 2064,
+            "sourceOriginalGoals": 2134,
+            "sourceFullyCoveredOriginalGoals": 2064,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 70,
+            "surrogateBackedAtomicGoals": 78,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 0,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 16,
+            "minSourceBackedAtomicGoals": 60,
+            "maxVisibleAtomicGoals": 274,
+            "maxSourceBackedAtomicGoals": 263,
+            "totalAtomicGoals": 338
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 317 upper-secondary source-to-canonical mapping edge(s), including 1 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 32,
+            "sourceGoals": 1384,
+            "sourceGoalsWithCourseLevel": 1384,
+            "gkLkSourceGoals": 806,
+            "lkSourceGoals": 421,
+            "unspecifiedSourceGoals": 117,
+            "checkedMappingEdges": 317,
+            "defaultedUnspecifiedMappingEdges": 105,
+            "reviewedCourseLevelExceptions": 1,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 30,
+            "peerBaselineChecks": 27,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        }
+      ]
+    },
+    {
+      "step": "M3 route",
+      "actualRulesBeforeCandidateIntegration": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 336,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 336,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-104",
+          "status": "fail",
+          "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 17,
+            "evaluatedProjectionScopes": 17,
+            "requiredMotivationAnchors": 1,
+            "minimumRequiredTerminalAutonomyGoals": 90,
+            "requiredTerminalAutonomyGoals": 90,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 16,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 0,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+            "projectionLocalRouteChecksEnabled": 0,
+            "visibleSelectedAtomicGoalOccurrences": 4781,
+            "visibleProfileSelectedAtomicGoalOccurrences": 4781,
+            "visibleProjectedRouteTargetGoalOccurrences": 4781,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 0,
+            "projectionScopesMissingDirectMotivationRoutes": 0,
+            "projectionScopesMissingEffectiveTerminalRoutes": 0,
+            "projectionScopesMissingDirectTerminalRoutes": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+          }
+        }
+      ]
+    },
+    {
+      "step": "M4 assessments",
+      "actualRulesBeforeCandidateIntegration": [
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 90,
+            "terminalAutonomyGoalsWithExamData": 90,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 90,
+            "concreteExamData": 90,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 90,
+            "releasedCoverageCompleteExamData": 90,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    },
+    {
+      "step": "M5",
+      "actualRulesBeforeCandidateIntegration": [
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 336,
+            "atomic": 336,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "18 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 18
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "warn",
+          "summary": "4 active and 0 obsolete accepted applicability warning(s) need review; 1458 partial-only diagnostic finding(s) are non-blocking.",
+          "metrics": {
+            "activeWarnings": 4,
+            "rawActiveWarnings": 4,
+            "diagnosticPartialOnlyWarnings": 1458,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          }
+        }
+      ]
+    },
+    {
+      "step": "M6",
+      "actualRulesBeforeCandidateIntegration": [
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 65/336 ordinary atomic goals intentionally use memorization support, 66/66 primary cards are kept with origin traces, all 10 memory goals are traced, and 130 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 336,
+            "noMemoryNeeded": 271,
+            "memoryRequired": 65,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 66,
+            "keptCards": 66,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 2,
+            "visibilityCheckedMemoryRequiredGoals": 130,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 10,
+            "tracedMemoryGoals": 10,
+            "untracedMemoryGoals": 0,
+            "deckIds": 10,
+            "deckFiles": 10,
+            "cardRows": 66
+          }
+        }
+      ]
+    }
+  ],
+  "wholeCurrentInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "c45874840ce8e35ca2db9d747c3876c8e54779ed97ab33a24d7ae11ba0810e13"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "9ea29a23a119b329bf81f25ebee446742a69a9b58d8814edd5b39096ac35fa37"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "3f90d9b6201bc9055f9874e45a9315fc7264e9f011d11f33fbbc80f8baa3c052"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "sha256": "1916bc462b04291ad2b175447e855aa227333d52d2f08c65aa2eeb03c1fb4dbb"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "44992052fe9610afdf6ab25979659fa26978c313efb9068b7878d711e831e062"
+    }
+  ],
+  "protectedNativeSnapshot": [
+    {
+      "title": "Mathematik (Gymnasium, DE)",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "title": "Physik (Gymnasium, DE)",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 478,
+          "remaining": 0,
+          "strictComplete": 478,
+          "currentDescriptionResolutions": 478,
+          "currentPositiveEvidenceProfiles": 478,
+          "currentSemanticAtomicityDecisions": 478,
+          "currentMemoryReviewDecisions": 478,
+          "currentVisualizationQaRecords": 478,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    }
+  ],
+  "noImageAuthoringBeforeM6": true,
+  "existingPassedGatesArePreservedUnlessActuallyAffected": true,
+  "notCommitReady": true
+}

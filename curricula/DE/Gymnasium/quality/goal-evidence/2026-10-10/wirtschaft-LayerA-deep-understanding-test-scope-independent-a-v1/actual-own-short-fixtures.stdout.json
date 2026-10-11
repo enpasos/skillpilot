@@ -1,0 +1,70 @@
+{
+  "kind": "independent-short-production-fixtures",
+  "fullCentralTestRun": false,
+  "scope": {
+    "subject": "wirtschaftswissenschaften",
+    "label": "Fixture Economics",
+    "landscapeId": "independent-econ-fixture",
+    "landscapePath": "fixture.json",
+    "currentGoalIds": [
+      "one",
+      "two"
+    ],
+    "denominator": 2,
+    "strictComplete": 1,
+    "remaining": 1,
+    "percentage": "50.0%",
+    "strictCompleteGoalIds": [
+      "one"
+    ],
+    "deferredVisualizationGoalIds": [],
+    "gates": {
+      "currentDescriptionResolutions": 1,
+      "currentPositiveEvidenceProfiles": 2,
+      "currentSemanticAtomicityDecisions": 2,
+      "currentMemoryReviewDecisions": 2,
+      "currentVisualizationQaRecords": 2
+    },
+    "requiredChecks": [
+      {
+        "id": "semantic-kind-scope",
+        "status": "pass"
+      },
+      {
+        "id": "description-review-validation",
+        "status": "fail"
+      },
+      {
+        "id": "positive-evidence-validation",
+        "status": "pass"
+      },
+      {
+        "id": "semantic-atomicity-check",
+        "status": "pass"
+      },
+      {
+        "id": "memory-card-check",
+        "status": "pass"
+      },
+      {
+        "id": "visualization-freshness-and-approval-check",
+        "status": "pass"
+      }
+    ],
+    "strictCompletionReady": false,
+    "issues": [
+      "The second current description has an unresolved scientific finding."
+    ]
+  },
+  "genuine": {
+    "strictReady": false,
+    "CQR303": "fail",
+    "maturity": "M6"
+  },
+  "observedRejectedCases": [
+    "forgedReadyWithOpenFinding",
+    "duplicateCompletionIDs",
+    "falseFullDCount",
+    "missingVAtM6"
+  ]
+}

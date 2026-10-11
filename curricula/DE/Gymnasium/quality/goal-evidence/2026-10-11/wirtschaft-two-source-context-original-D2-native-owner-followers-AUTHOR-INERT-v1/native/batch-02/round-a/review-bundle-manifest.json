@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:4605319a1301d0575ce3138377e5f41e581cf47bfd76e10e1a7895fcb2b67a07",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-economics-current346-two-source-owner-b02",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "596c02e3-6263-5084-8593-c5f51808326b",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:c1bd2bafee646abb126fd28bb1e73016e039aaed2fde09069e1620fa62649d73",
+      "pageFingerprint": "sha256:97a44ebacaf8ca154b1349450292600d7ab468e0003fbefb04a3d5a603065755",
+      "evidenceReview": {
+        "reviewId": "wirtschaft-existing596-two-genuine-work-step-revisions-positive-author-v3",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:898a4715b58f6d85aa22b3a55ad01665e5b9068241cefc6d36c76628b1622317",
+        "profileFingerprint": "sha256:5d06848fbf722ebbe1e0f0a3d1e9e7b1abf70e96c4d877204195671ad8b2631e",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:9d4ea1b7ff72e6aa1d8ba5cfb90730f9fbad15545985235aeecbca91bfcb6f0b",
+      "bytes": 286799
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:800251298f8db27cd194ec3333c76dac72ce510e3b25fd5704a44ea79d4b3012",
+      "bytes": 132048
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:29cbf71f4940b4bb4b29f39a76fa47efe4eeb85f161c0c46a609155f5ab32e7c",
+      "bytes": 2705
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:7945a26a98e48649198b83f396a40ca259c6df59b7565cf2faab3f726f0cbd59",
+      "bytes": 18524
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:41cc859842e97435384a665d6547dd3144f56f873ed8bd61dab3d9194e960303",
+      "bytes": 2706
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:5235b1b487fab721d6a9d06be9068b16345cea5588e2bde80fa84380995bf896",
+      "bytes": 16728
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:3daf328d578ec167b11f1171b96e20f95c5819d57eba67ef803a55788c0d23a9",
+      "bytes": 14391
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:2b77ee94766889f448e5ff576171b8ce7984416bf4f633ed28009738f1868a10",
+      "bytes": 12043
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+      "bytes": 3552
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:2a47c15df1537d303660d958ad06aecd83b49ca313929bd29956e5faf6eb6ec5"
+}

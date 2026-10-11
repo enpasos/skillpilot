@@ -1,0 +1,35 @@
+
+> skillpilot@0.0.0 prepare:runtime-assets
+> npm run generate:gymnasium-duration-offerings && npm run deploy:assets && npm run prepare:gemini-skill
+
+
+> skillpilot@0.0.0 generate:gymnasium-duration-offerings
+> tsx scripts/generateGymnasiumDurationOfferings.ts --write
+
+
+> skillpilot@0.0.0 deploy:assets
+> ./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_goal_visualizations.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts && python3 ../scripts/deploy_story.py
+
+Deployed 112 curriculum deck copy operations to /home/enpasos/projects/skillpilot/app/public/data, /home/enpasos/projects/skillpilot/backend/src/main/resources/static/data
+Starting image deployment...
+Source: /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/HE/abi/Mathe/Klausurbeispiel2026_1
+Target: /home/enpasos/projects/skillpilot/app/public/assets/abi/2026_1
+Image deployment completed successfully.
+/home/enpasos/projects/skillpilot/scripts/deploy_goal_visualizations.ts:50
+      throw new Error(`Refusing goal visualization output file alias: ${targetPath}`)
+            ^
+
+
+Error: Refusing goal visualization output file alias: /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/002543f9-2d14-5c57-99b4-fb4bf7e53734/002543f9-2d14-5c57-99b4-fb4bf7e53734.png
+    at copyGoalVisualizationAsset (/home/enpasos/projects/skillpilot/scripts/deploy_goal_visualizations.ts:50:13)
+    at deployGoalVisualizations (/home/enpasos/projects/skillpilot/scripts/deploy_goal_visualizations.ts:69:7)
+    at path (/home/enpasos/projects/skillpilot/scripts/deploy_goal_visualizations.ts:79:3)
+    at Object.<anonymous> (/home/enpasos/projects/skillpilot/scripts/deploy_goal_visualizations.ts:80:1)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at cjsLoader (node:internal/modules/esm/translators:298:15)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)
+
+Node.js v20.20.2

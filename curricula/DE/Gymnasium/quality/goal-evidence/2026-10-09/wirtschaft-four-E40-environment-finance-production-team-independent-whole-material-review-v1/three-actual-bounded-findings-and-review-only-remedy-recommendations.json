@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "findings": [
+    {
+      "findingId": "E40-642-company-and-shareholder-liability-actor",
+      "examGoalId": "64276b0c-cc52-5482-bbf8-2412a3f6cde3",
+      "severity": "REVISE",
+      "boundFields": [
+        "examData.taskContent",
+        "examData.taskContentEn"
+      ],
+      "actualMaterialDe": "Die Gesellschafterhaftung ist grundsätzlich auf Gesellschaftsvermögen begrenzt",
+      "actualMaterialEn": "Shareholder liability is normally limited to company assets",
+      "actualPrimaryURL": "https://www.gesetze-im-internet.de/gmbhg/__13.html",
+      "actualSourceCopy": "fresh-primary/gmbhg13.actual-fresh-whole.raw.txt",
+      "reason": "Section13 concerns liabilities of the company and the company assets available to its creditors. Ordinary shareholders are generally not personally liable for those company obligations. Their separate valid guarantee may create their own liability. Both task languages currently assign company-asset liability to the wrong actor.",
+      "minimalReviewRecommendation": "Bounded bilingual material correction distinguishing company liabilities/company assets, ordinary absence of personal shareholder liability and the independently stipulated guarantee. Preserve valid comparative provider/cash analysis."
+    },
+    {
+      "findingId": "E40-642-absent-actual-spreadsheet-still-passes",
+      "examGoalId": "64276b0c-cc52-5482-bbf8-2412a3f6cde3",
+      "severity": "REVISE",
+      "boundFields": [
+        "description",
+        "descriptionEn",
+        "examData.scoring",
+        "examData.solutionContent",
+        "examData.solutionContentEn"
+      ],
+      "counteranswerFile": "actual-eight-complete-independent-counteranswers-and-individual-rubric-marks.json",
+      "counteranswerId": "finance-complete-concepts-but-no-spreadsheet",
+      "actualStepScores": [
+        6,
+        6,
+        6,
+        2
+      ],
+      "actualTotal": 20,
+      "actualPassingThreshold": 15,
+      "reason": "All financing reasoning plus prose interpretive limits reaches20 with no actual file, charts or input-change execution. The current step-only cap cannot enforce the explicit essential actual spreadsheet performance.",
+      "minimalReviewRecommendation": "Add an explicit whole-assessment prerequisite/cap below15 when required actual spreadsheet/data products or specified input-change performance is absent. Keep normal point allocation and15/24 threshold for otherwise genuine work; no perfect-score/new task quota."
+    },
+    {
+      "findingId": "E40-b200-absent-actual-spreadsheet-still-passes",
+      "examGoalId": "b2003473-c85f-57e9-83be-9bbc0a922b32",
+      "severity": "REVISE",
+      "boundFields": [
+        "description",
+        "descriptionEn",
+        "examData.scoring",
+        "examData.solutionContent",
+        "examData.solutionContentEn"
+      ],
+      "counteranswerFile": "actual-eight-complete-independent-counteranswers-and-individual-rubric-marks.json",
+      "counteranswerId": "project-real-role-records-and-report-without-spreadsheet",
+      "actualConservativeStepScores": [
+        2,
+        6,
+        2,
+        6
+      ],
+      "actualConservativeTotal": 16,
+      "actualPassingThreshold": 15,
+      "reason": "The complete reviewer fixture supplies real textual role revisions, feedback, calculation/report work and full presentation critique, but explicitly no spreadsheet/charts. Even conservatively capping incomplete projectS1 at2 leaves16≥15. The all-prose case is correctly blocked12; that does not remove this more specific hole.",
+      "minimalReviewRecommendation": "Explicit whole-assessment cap below15 for missing actual prescribed project/data/spreadsheet products or verifiable team/role execution. Genuine transparent role simulation remains allowed; no claimed external team, school or business test."
+    }
+  ],
+  "notAuthorRemedyOrSelfApproval": true
+}

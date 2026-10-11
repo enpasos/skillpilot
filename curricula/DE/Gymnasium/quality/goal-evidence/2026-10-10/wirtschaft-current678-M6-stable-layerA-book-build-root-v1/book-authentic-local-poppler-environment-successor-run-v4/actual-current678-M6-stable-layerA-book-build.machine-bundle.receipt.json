@@ -1,0 +1,87 @@
+{
+  "role": "actual stable current678 machine M6 closing bundle after independently qualified fifteen graph deltas and authentic local font/browser repair; no human release/trial approval and no completion of open M7 D lane",
+  "inputGuards": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "6bfa382a2b174a1645d883f746ef42c0693813ec2d447561fca3290ca98a0b09",
+      "bytes": 5247711
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "65ffa1ff8a78c2470a59c0154f86ba2155bf4dfb5c6baf2adf7be5168d19896b",
+      "bytes": 214527
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "720f554fdcbafd5d3a71a21773908bdf3f654ee211fb04c29e755b1a59d4883b",
+      "bytes": 1128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/wirtschaftswissenschaften.semantic-kinds.json",
+      "sha256": "08f0d327eb6933738e79bedf32c05ae18c9301057d709451693778fc4eff7f5f",
+      "bytes": 218757
+    }
+  ],
+  "allActiveInputGuardsRemainExact": true,
+  "actualParallelIndependentLanes": [
+    {
+      "lane": "book-and-build",
+      "requiredStages": 2,
+      "commands": [
+        {
+          "label": "goal-book-full-pipeline-including-cached-publications",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "test:goal-book-pipeline"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 542.612,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/book-authentic-local-poppler-environment-successor-run-v4/goal-book-full-pipeline-including-cached-publications.stdout.txt",
+            "sha256": "534b4c649d3490130adc114161f246b1412ae8d403c9585805b6df8565ec883e",
+            "bytes": 3554
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/book-authentic-local-poppler-environment-successor-run-v4/goal-book-full-pipeline-including-cached-publications.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "application-build-local-only",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "build:application"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 96.151,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/book-authentic-local-poppler-environment-successor-run-v4/application-build-local-only.stdout.txt",
+            "sha256": "630fa7d5cd42daa2485b55970ec929ee428600f477bab1c4d1bc79c5648278d4",
+            "bytes": 17834
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/book-authentic-local-poppler-environment-successor-run-v4/application-build-local-only.stderr.txt",
+            "sha256": "b9f99a1c0f6ff2c022ba306b9d9d1d783a5c37fc4ce62b7547d4bc1abd81cb02",
+            "bytes": 524
+          }
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "allRequiredBookAndBuildStagesPassed": true,
+  "newScientificStrictClosures": 0,
+  "restoredStrictBindings": 0,
+  "strictNet": 0,
+  "runtimePluginPrivacyDeploymentChanges": false,
+  "humanReleaseTrialApproval": false,
+  "imagesGenerated": 0,
+  "commitCreated": false
+}

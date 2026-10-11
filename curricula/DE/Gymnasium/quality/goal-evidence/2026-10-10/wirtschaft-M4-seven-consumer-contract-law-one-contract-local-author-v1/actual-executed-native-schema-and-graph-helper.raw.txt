@@ -1,0 +1,17 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import Ajv2020 from '/home/enpasos/projects/skillpilot/app/node_modules/ajv/dist/2020.js';
+import addFormats from '/home/enpasos/projects/skillpilot/app/node_modules/ajv-formats/dist/index.js';
+import {validateCanonicalLandscape} from '/home/enpasos/projects/skillpilot/app/src/utils/authoring/canonicalAuthoring.ts';
+import {goalMatchesFilters} from '/home/enpasos/projects/skillpilot/app/src/utils/goalFilters.ts';
+import {convertLearningGoal} from '/home/enpasos/projects/skillpilot/app/src/goalTypes.ts';
+import {evaluateGraphIntegrity} from '/tmp/skillpilot-economics-combined548-independent-xri79b2w/app/scripts/law7GraphObserver.ts';
+const [root,beforePath,afterPath,bodyPath,outPath]=process.argv.slice(2),before=JSON.parse(readFileSync(beforePath,'utf8')),after=JSON.parse(readFileSync(afterPath,'utf8')),body=JSON.parse(readFileSync(bodyPath,'utf8'));
+const a=new Ajv2020({allErrors:true,strict:true,strictRequired:false});addFormats(a);a.addKeyword({keyword:'x-skillpilot-listSemantics',schemaType:'string',valid:true});a.addKeyword({keyword:'x-skillpilot-caseInsensitiveUniqueItems',schemaType:'boolean',type:'array',validate:(e:boolean,v:any[])=>!e||new Set(v.map(x=>typeof x==='string'?x.toLowerCase():JSON.stringify(x))).size===v.length});
+const validate=a.compile(JSON.parse(readFileSync(root+'/docs/landscape-runtime.schema.json','utf8')));if(!validate(after))throw Error(JSON.stringify(validate.errors));
+const graph=validateCanonicalLandscape(after);if(graph.some(x=>x.severity==='error'))throw Error(JSON.stringify(graph));
+const old=before.goals.every((g:any,n:number)=>JSON.stringify(g)===JSON.stringify(after.goals[n]));if(!old)throw Error('old goals changed');
+const nativeGraph=evaluateGraphIntegrity(after,new Set(after.goals.map((g:any)=>g.id)));if(nativeGraph.status!=='pass')throw Error(JSON.stringify(nativeGraph));
+const course=body.materials.map((g:any)=>({id:g.id,GK:goalMatchesFilters(convertLearningGoal(g,{landscapeId:after.landscapeId}),['GK']),LK:goalMatchesFilters(convertLearningGoal(g,{landscapeId:after.landscapeId}),['LK'])}));
+const negative=JSON.parse(JSON.stringify(after));negative.goals[negative.goals.length-1].requires=[negative.goals[negative.goals.length-1].id];const missing=validateCanonicalLandscape(negative);const actualRequiresNegative=evaluateGraphIntegrity(negative,new Set(negative.goals.map((g:any)=>g.id)));if(actualRequiresNegative.status!=='fail')throw Error('native requires cycle not detected');
+const closed=JSON.parse(JSON.stringify(after));closed.goals[closed.goals.length-1].examData.scoring.passingPoints="invalid-nonnumeric";if(validate(closed))throw Error('invalid scoring threshold type not detected');const closedErrors=JSON.parse(JSON.stringify(validate.errors));
+writeFileSync(outPath,JSON.stringify({wholeCandidateGoalCount:after.goals.length,canonicalRuntimeSchemaErrors:0,nativeGraphErrors:0,nativeGraphFindings:graph,actualNativeCQR001:nativeGraph,before555WholeObjectsExact:old,new7AllDeclaredTaskScoringFieldsChecked:true,actualNativeCourseMatches:course,sourceOrScopeApproval:false,actualNativeRequiresNegative:actualRequiresNegative,negativeInvalidScoringThresholdTypeErrors:closedErrors},null,2)+'\n');console.log(JSON.stringify({goals:after.goals.length,schemaErrors:0,graphErrors:0,oldExact:old,new7:course.length,negatives:2}));

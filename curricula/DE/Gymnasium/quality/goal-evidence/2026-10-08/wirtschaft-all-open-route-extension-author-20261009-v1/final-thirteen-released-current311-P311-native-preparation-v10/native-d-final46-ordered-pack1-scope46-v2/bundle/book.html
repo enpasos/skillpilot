@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften: aktueller Beschreibungsstand und betroffene Kontexte – Paket 1</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften: aktueller Beschreibungsstand und betroffene Kontexte – Paket 1</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>10 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:economics-current-canonical-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-b4dde3c304021f05e1d6d857" aria-label="Wirtschaftswissenschaften"><a href="#goal-047ce369-b605-5cc6-8363-c5d288f5e938"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-047ce369-b605-5cc6-8363-c5d288f5e938"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-17a1fa238ffd69bc4b8c475a" aria-label="E2 Wachstum &amp; Lebensqualität"><a href="#goal-047ce369-b605-5cc6-8363-c5d288f5e938"><span class="toc-entry-label">E2&#160;<wbr>Wachstum&#160;<wbr>&amp;&#160;<wbr>Lebensqualität</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:968172f6-cd1c-5733-ba76-aa59817735eb" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-77289101b2350d37198522ff" aria-label="Q1 Demokratie im Mehrebenensystem"><a href="#goal-1da809f7-ef85-5a2d-babf-b7639e605653"><span class="toc-entry-label">Q1&#160;<wbr>Demokratie&#160;<wbr>im&#160;<wbr>Mehrebenensystem</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:f72eef5b-97dc-52b2-8879-838a7c6600be" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-ce2dc842b6b9b665cd89b7b8" aria-label="Marktwirtschaftliche Ideen"><a href="#goal-1da809f7-ef85-5a2d-babf-b7639e605653"><span class="toc-entry-label">Marktwirtschaftliche&#160;<wbr>Ideen</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-51d12ebcbe6adcd82e288d4c" aria-label="Q2 Wirtschaft und Wirtschaftspolitik"><a href="#goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc"><span class="toc-entry-label">Q2&#160;<wbr>Wirtschaft&#160;<wbr>und&#160;<wbr>Wirtschaftspolitik</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:27c157f8-a357-5cec-b054-efd3c65a1fe7" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-cfddfb82b43ba9d85b7a70f2" aria-label="Konjunkturanalyse und -politik"><a href="#goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc"><span class="toc-entry-label">Konjunkturanalyse&#160;<wbr>und&#160;<wbr>-politik</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-082d9f7769f8723ddedca2e2" aria-label="Q4 Wirtschaftsethik &amp; Entwicklung"><a href="#goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2"><span class="toc-entry-label">Q4&#160;<wbr>Wirtschaftsethik&#160;<wbr>&amp;&#160;<wbr>Entwicklung</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:42b3f1db-023f-50ac-8a15-76619b8c0866" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-19077f1b40d728b8b1afdc25" aria-label="Chancen und Grenzen der Globalisierung"><a href="#goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2"><span class="toc-entry-label">Chancen&#160;<wbr>und&#160;<wbr>Grenzen&#160;<wbr>der&#160;<wbr>Globalisierung</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-0697ca062197115c2538b690" aria-label="Rechtlich verantwortliches Handeln"><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span class="toc-entry-label">Rechtlich&#160;<wbr>verantwortliches&#160;<wbr>Handeln</span></a></h4>
+          <span class="toc-entry-meta"><span>13 Lernziele</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-047ce369-b605-5cc6-8363-c5d288f5e938" data-goal-id="047ce369-b605-5cc6-8363-c5d288f5e938" data-page-number="1" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-047ce369-b605-5cc6-8363-c5d288f5e938-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-047ce369-b605-5cc6-8363-c5d288f5e938-title"><a class="goal-self-link" href="#goal-047ce369-b605-5cc6-8363-c5d288f5e938">Anlageentscheidungen und Geldwertstabilität reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>047ce369-b605-5cc6-8363-c5d288f5e938</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9bb11bfe4061283da9ce7577eaf181af3d74a3e29fd6597bbceca54811875434" data-rendered-digest="sha256:1c4761bc02de6982b2624c04a7fae48ec355b50515c10acf8a7ff8c7537455ce" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/047ce369-b605-5cc6-8363-c5d288f5e938/047ce369-b605-5cc6-8363-c5d288f5e938.png" alt="Eine Person betrachtet die drei Kriterien Risiko, Verfügbarkeit und Kaufkraft. Eine Gedankenblase verbindet Geld mit einem künftigen Einkauf und einem Fragezeichen; ein textfreies Blatt zeigt die Kriterien als Symbole.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-047ce369-b605-5cc6-8363-c5d288f5e938-description-heading">
+        <p class="section-heading" id="goal-047ce369-b605-5cc6-8363-c5d288f5e938-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Anlageentscheidungen anhand ausgewählter Kriterien reflektieren und dabei Geldwertstabilität sowie zentrale Funktionen des Geldes einbeziehen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-047ce369-b605-5cc6-8363-c5d288f5e938-requires-heading">
+          <p class="section-heading" id="goal-047ce369-b605-5cc6-8363-c5d288f5e938-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-047ce369-b605-5cc6-8363-c5d288f5e938-reverse-heading">
+          <p class="section-heading" id="goal-047ce369-b605-5cc6-8363-c5d288f5e938-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-047ce369-b605-5cc6-8363-c5d288f5e938-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-047ce369-b605-5cc6-8363-c5d288f5e938-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-40676995-14fc-55a9-89ae-440b2ee3ab33" rel="noreferrer noopener"><span>Geldwertstabilität und Geldfunktionen einordnen</span> <code>40676995-14fc-55a9-89ae-440b2ee3ab33</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e2ac2cc2-894a-5e61-8acb-f5d88811739d" rel="noreferrer noopener"><span>Zahlungsarten situationsbezogen auswählen</span> <code>e2ac2cc2-894a-5e61-8acb-f5d88811739d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-047ce369-b605-5cc6-8363-c5d288f5e938-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-047ce369-b605-5cc6-8363-c5d288f5e938-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-34d04ee1-7b85-5e3a-a007-16007d2c3a30" rel="noreferrer noopener"><span>E: Anlagekriterien und Kaufkraft in einem Modellfall abwägen</span> <code>34d04ee1-7b85-5e3a-a007-16007d2c3a30</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6f75cdff-7d32-533b-8fe9-3d003b7af241" rel="noreferrer noopener"><span>Akteure des Geld- und Kapitalmarkts analysieren</span> <code>6f75cdff-7d32-533b-8fe9-3d003b7af241</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-7a2435f2-0ce7-5179-81a5-2ef5c313e3dd" rel="noreferrer noopener"><span>Portfoliorendite und Diversifikationsgrenzen erklären</span> <code>7a2435f2-0ce7-5179-81a5-2ef5c313e3dd</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b7a89864d99e2735e8e0aa1b5ac59213d892fc6da3b5c26462d1ec565603c529</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=047ce369-b605-5cc6-8363-c5d288f5e938&amp;goalFingerprint=sha256%3Ab7a89864d99e2735e8e0aa1b5ac59213d892fc6da3b5c26462d1ec565603c529&amp;pageFingerprint=sha256%3A9c1308741d67a4c4eaa793fbbb244aaa44719a1e817fc60438b5a6a01e91f02b&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-52e6731e-71e9-53b1-8bb9-b03da445decf" data-goal-id="52e6731e-71e9-53b1-8bb9-b03da445decf" data-page-number="2" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-title"><a class="goal-self-link" href="#goal-52e6731e-71e9-53b1-8bb9-b03da445decf">Digitalisierung von Märkten bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>52e6731e-71e9-53b1-8bb9-b03da445decf</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:16cd6f75d8a343fe5af0cb172a6aa6cc54bd3166f0caada5962f9b37c757eca6" data-rendered-digest="sha256:d5bf0bab138bb66d5e372dd4d9cf3d48a25f8d87aa13fe0acf4e28e1f9879548" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/52e6731e-71e9-53b1-8bb9-b03da445decf/52e6731e-71e9-53b1-8bb9-b03da445decf.png" alt="Zwei Anbieter und zwei Nachfragende sind über einen digitalen Marktplatz verbunden. Suche und Zugang stehen Fragen zu Plattformabhängigkeit, Gebühren und Sicherheit gegenüber.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-description-heading">
+        <p class="section-heading" id="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Auswirkungen der Digitalisierung auf Märkte analysieren und Folgen für Anbieter und Nachfrager beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-requires-heading">
+          <p class="section-heading" id="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-reverse-heading">
+          <p class="section-heading" id="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d3c11bfa-103c-5b58-8183-561e0b076251"><span>Konsumentscheidungen auf virtuellen Marktplätzen reflektieren</span><code>d3c11bfa-103c-5b58-8183-561e0b076251</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8ad94aeb-81ad-58ce-8792-c691f97efd53" rel="noreferrer noopener"><span>Marktmodell anwenden und kritisch einordnen</span> <code>8ad94aeb-81ad-58ce-8792-c691f97efd53</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-52e6731e-71e9-53b1-8bb9-b03da445decf-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-7d399b4d-d057-5284-8e2c-6778e023307d" rel="noreferrer noopener"><span>Aktuelle wirtschaftliche und rechtliche Entwicklungen bewerten</span> <code>7d399b4d-d057-5284-8e2c-6778e023307d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c537105f7d04f72b7af60e8cc1b7c1cbdfa12383dff2c755b8a0b7f49bc89825</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=52e6731e-71e9-53b1-8bb9-b03da445decf&amp;goalFingerprint=sha256%3Ac537105f7d04f72b7af60e8cc1b7c1cbdfa12383dff2c755b8a0b7f49bc89825&amp;pageFingerprint=sha256%3Af56fa40952cede67d31e730e13ef91216ac4e97051009030a5cedeb1e8419146&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1da809f7-ef85-5a2d-babf-b7639e605653" data-goal-id="1da809f7-ef85-5a2d-babf-b7639e605653" data-page-number="3" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:f72eef5b-97dc-52b2-8879-838a7c6600be" aria-labelledby="goal-1da809f7-ef85-5a2d-babf-b7639e605653-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1da809f7-ef85-5a2d-babf-b7639e605653-title"><a class="goal-self-link" href="#goal-1da809f7-ef85-5a2d-babf-b7639e605653">Soziale Marktwirtschaft einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1da809f7-ef85-5a2d-babf-b7639e605653</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-ce2dc842b6b9b665cd89b7b8">Marktwirtschaftliche Ideen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:83c81294882279e136865939213b0a3ec9063ad2ff9e3c6d3d6ae9e1b9ad2bcd" data-rendered-digest="sha256:24f9f3d3ee34c83d12fa62d3f6bf13bc897212d9ea62fd357867899316394ab2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/1da809f7-ef85-5a2d-babf-b7639e605653/1da809f7-ef85-5a2d-babf-b7639e605653.png" alt="Mehrere Fahrradgeschäfte und Kundinnen und Kunden bilden ein Marktgeschehen. Darunter stehen offene Geschäftstüren für Wettbewerb, ein Regelblatt mit Waage und eine Person in einem symbolischen Auffangnetz für soziale Absicherung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1da809f7-ef85-5a2d-babf-b7639e605653-description-heading">
+        <p class="section-heading" id="goal-1da809f7-ef85-5a2d-babf-b7639e605653-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann marktwirtschaftliche Leitbilder mit der sozialen Marktwirtschaft abgleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1da809f7-ef85-5a2d-babf-b7639e605653-requires-heading">
+          <p class="section-heading" id="goal-1da809f7-ef85-5a2d-babf-b7639e605653-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1da809f7-ef85-5a2d-babf-b7639e605653-reverse-heading">
+          <p class="section-heading" id="goal-1da809f7-ef85-5a2d-babf-b7639e605653-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-099086bb-5100-5ce0-8334-0aab8850a48e"><span>Eigentumsordnung in der Sozialen Marktwirtschaft analysieren</span><code>099086bb-5100-5ce0-8334-0aab8850a48e</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1da809f7-ef85-5a2d-babf-b7639e605653-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1da809f7-ef85-5a2d-babf-b7639e605653-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1da809f7-ef85-5a2d-babf-b7639e605653-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1da809f7-ef85-5a2d-babf-b7639e605653-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-0bd34348-8218-590a-af02-2ad02b8f8779" rel="noreferrer noopener"><span>Mindestlohn zwischen Marktmodell und Sozialer Marktwirtschaft</span> <code>0bd34348-8218-590a-af02-2ad02b8f8779</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-916f7816-f7c9-541a-810f-000241b323ff" rel="noreferrer noopener"><span>Vorschlag A (GK) - Steuerreform zwischen Grundrechten und Parteiendemokratie</span> <code>916f7816-f7c9-541a-810f-000241b323ff</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_market_order_policy" rel="noreferrer noopener"><span>Lernkarten - Marktordnung, Wettbewerb und Sozialstaat</span> <code>mem_de_gym_economics_market_order_policy</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-a6a609cb-e8bf-5136-805b-67bddab6b28e" rel="noreferrer noopener"><span>Schutzfunktion rechtlicher Regelungen und Vertragsfreiheit abwägen</span> <code>a6a609cb-e8bf-5136-805b-67bddab6b28e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bd9ec397-86ee-58ec-8327-7e1f28550026" rel="noreferrer noopener"><span>Wirtschaftspolitische Medienbeiträge beurteilen</span> <code>bd9ec397-86ee-58ec-8327-7e1f28550026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c7b03538-25a2-510b-8fd4-a81bcc3de406" rel="noreferrer noopener"><span>Institutionenökonomische Perspektive auf die Soziale Marktwirtschaft anwenden</span> <code>c7b03538-25a2-510b-8fd4-a81bcc3de406</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f7c051f4-ebb0-5d74-81b1-c1cdb562414f" rel="noreferrer noopener"><span>Gemeinwohlökonomie und Soziale Marktwirtschaft vergleichen</span> <code>f7c051f4-ebb0-5d74-81b1-c1cdb562414f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e20f9304-5048-5e52-89ce-b80e978d1097" rel="noreferrer noopener"><span>Gesetzliche Sozialversicherung finanzierungs- und gerechtigkeitsbezogen bewerten</span> <code>e20f9304-5048-5e52-89ce-b80e978d1097</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:90a642983c69efa3637a371cd24cd15dddfda3f4bd04606eb826c29b4e27ea2a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=1da809f7-ef85-5a2d-babf-b7639e605653&amp;goalFingerprint=sha256%3A90a642983c69efa3637a371cd24cd15dddfda3f4bd04606eb826c29b4e27ea2a&amp;pageFingerprint=sha256%3Abbd679b15ded7e34a2961043ec6b4781db2b22b3f6f429d5e9959640fee8abc5&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc" data-goal-id="6f1f4654-35ab-5ba6-a329-b19b994e84cc" data-page-number="4" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:27c157f8-a357-5cec-b054-efd3c65a1fe7" aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-title"><a class="goal-self-link" href="#goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc">Stabilitätsgesetz anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6f1f4654-35ab-5ba6-a329-b19b994e84cc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-cfddfb82b43ba9d85b7a70f2">Konjunkturanalyse und -politik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b11e00cac87d70a61be97455d3ff094a6818a04b00ca02d95337db7655fe7318" data-rendered-digest="sha256:65eb4c692a40b5e7ade32569ea535c48c3c91ac55b4d2cf2d008cb242fb6e9e4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/6f1f4654-35ab-5ba6-a329-b19b994e84cc/6f1f4654-35ab-5ba6-a329-b19b994e84cc.png" alt="Vier gleich große Felder zeigen Preise mit Warenkorb, Beschäftigung mit verschiedenen Berufen, Wachstum mit Fabrik und Außenwirtschaft mit Handelssymbolen. Fragezeichen und Verbindungspfeile rahmen mögliche Zielbeziehungen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-description-heading">
+        <p class="section-heading" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Ziele des Stabilitäts- und Wachstumsgesetzes auf Fälle anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-requires-heading">
+          <p class="section-heading" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-reverse-heading">
+          <p class="section-heading" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a" rel="noreferrer noopener"><span>Konjunkturprognosen einschätzen</span> <code>0e5b12a1-68bd-5838-8e70-02b3e7f2518a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f80d7cbb-e03c-5613-a4b6-8a1bad485385" rel="noreferrer noopener"><span>Q2: Konjunkturbefund, Prognosen und Fiskalpolitik beurteilen</span> <code>f80d7cbb-e03c-5613-a4b6-8a1bad485385</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-753e5ac0-0375-56b9-a733-75701097b151" rel="noreferrer noopener"><span>Fiskalregeln und Schuldenbremse</span> <code>753e5ac0-0375-56b9-a733-75701097b151</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:44e88ead5b20cfff963a4206b850b5a293c1399d0e0a86774a5d14e1dd249cb0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=6f1f4654-35ab-5ba6-a329-b19b994e84cc&amp;goalFingerprint=sha256%3A44e88ead5b20cfff963a4206b850b5a293c1399d0e0a86774a5d14e1dd249cb0&amp;pageFingerprint=sha256%3Acc703bb944687bd99dfc676b1305f2fef2972086a97618ca33727c18f55064e8&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2" data-goal-id="2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2" data-page-number="5" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:42b3f1db-023f-50ac-8a15-76619b8c0866" aria-labelledby="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-title"><a class="goal-self-link" href="#goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2">Rolle von NGOs</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-19077f1b40d728b8b1afdc25">Chancen und Grenzen der Globalisierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:263153c1ea32e7c5dbe9511d489864d7f2ca92e7f9e175cfa784fe124a1efbca" data-rendered-digest="sha256:6066acfbd5c2870b016945837439d2282d7c44888d8820a8ffe455ad638a9b5d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2/2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2.png" alt="Menschen aus einer lokalen Gemeinschaft, einer NGO und einer öffentlichen Institution beraten gemeinsam. Symbole für Stimmen, Zusammenarbeit und Rechenschaft stehen über der Gruppe; eine offene Finanzierungsfrage begleitet den Projektentwurf.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-description-heading">
+        <p class="section-heading" id="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Rolle von NGOs und Zivilgesellschaft in der Entwicklungszusammenarbeit analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-requires-heading">
+          <p class="section-heading" id="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-reverse-heading">
+          <p class="section-heading" id="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e21158e7-3bc3-51f2-887f-9eb5a8dd6243" rel="noreferrer noopener"><span>Fair-Trade und Handelsregime</span> <code>e21158e7-3bc3-51f2-887f-9eb5a8dd6243</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-2baf4e62-b8a0-55f6-a04a-20a75923cbf5" rel="noreferrer noopener"><span>Q4: Handelsabhängigkeit und NGO-Beteiligung analysieren</span> <code>2baf4e62-b8a0-55f6-a04a-20a75923cbf5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c9847c36-7a66-5cbd-9aee-60f71a8440de" rel="noreferrer noopener"><span>Geoökonomie und Machtprojektion</span> <code>c9847c36-7a66-5cbd-9aee-60f71a8440de</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6b78cade3bcbea6c62c92c6189ef8e116ff90d6ae6eaa6b6ef8a0562ade99c60</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2&amp;goalFingerprint=sha256%3A6b78cade3bcbea6c62c92c6189ef8e116ff90d6ae6eaa6b6ef8a0562ade99c60&amp;pageFingerprint=sha256%3A8c5c65a277f46bb9d2560072ce416f87479d9c6bc6f2cf188e9f2be745fa6020&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ac76810e-3f06-570a-b770-8b57acb55d1c" data-goal-id="ac76810e-3f06-570a-b770-8b57acb55d1c" data-page-number="6" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:42b3f1db-023f-50ac-8a15-76619b8c0866" aria-labelledby="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-title"><a class="goal-self-link" href="#goal-ac76810e-3f06-570a-b770-8b57acb55d1c">Handelsbeziehungen Entwicklungslaender</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ac76810e-3f06-570a-b770-8b57acb55d1c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-19077f1b40d728b8b1afdc25">Chancen und Grenzen der Globalisierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:745bad3a2b3e3c4c1de9004b83842d8b8f7749fd761b5eb6ce1d47b57a3ffa01" data-rendered-digest="sha256:13c6cc63dd5329869909141dd6311a61e512c213d75a517cecf8cd345a67f702" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/ac76810e-3f06-570a-b770-8b57acb55d1c/ac76810e-3f06-570a-b770-8b57acb55d1c.png" alt="Eine Region liefert Rohprodukte und erhält verarbeitete Güter zurück. Menschen prüfen Partner, Konzentration und mögliche alternative Handelswege.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-description-heading">
+        <p class="section-heading" id="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann spezifische Handelsbeziehungen und Abhängigkeiten darstellen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-requires-heading">
+          <p class="section-heading" id="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-reverse-heading">
+          <p class="section-heading" id="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e21158e7-3bc3-51f2-887f-9eb5a8dd6243" rel="noreferrer noopener"><span>Fair-Trade und Handelsregime</span> <code>e21158e7-3bc3-51f2-887f-9eb5a8dd6243</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ac76810e-3f06-570a-b770-8b57acb55d1c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-2baf4e62-b8a0-55f6-a04a-20a75923cbf5" rel="noreferrer noopener"><span>Q4: Handelsabhängigkeit und NGO-Beteiligung analysieren</span> <code>2baf4e62-b8a0-55f6-a04a-20a75923cbf5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:157a793a16942164675e79540563068962072a213134f6e2ca7fd26b8defb1de</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=ac76810e-3f06-570a-b770-8b57acb55d1c&amp;goalFingerprint=sha256%3A157a793a16942164675e79540563068962072a213134f6e2ca7fd26b8defb1de&amp;pageFingerprint=sha256%3A2d4a4666b4f41f2eafcc6d7dc5d0eb9a74faffa13bd78a00f1b2e8f16ed575e9&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d" data-goal-id="2aee114f-d0d2-516f-8f95-1b72f707401d" data-page-number="7" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-title"><a class="goal-self-link" href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d">Funktionen rechtlicher Regelungen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2aee114f-d0d2-516f-8f95-1b72f707401d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:caf8e91355d55abfb5514dad994b80527d80a7242a2413ddca34b82ffdd06174" data-rendered-digest="sha256:77e21953b2bab9729146bec8bc3115b4528672287cc131e8c2a0eb00888c0ba1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/2aee114f-d0d2-516f-8f95-1b72f707401d/2aee114f-d0d2-516f-8f95-1b72f707401d.png" alt="Eine Gruppe betrachtet zu einem Konflikt im Park eine gemeinsame Regeltafel; Schutz, Ordnung und Ausgleich erscheinen als große Symbole neben einer möglichen geordneten Nutzung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-description-heading">
+        <p class="section-heading" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Notwendigkeit rechtlicher Regelungen vor dem Hintergrund zentraler Funktionen des Rechts beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-requires-heading">
+          <p class="section-heading" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-reverse-heading">
+          <p class="section-heading" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e"><span>Rechtssicher im Internet handeln</span><code>3a6568d2-9f94-5574-8996-9ebac0bc0b3e</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5"><span>Verträge und rechtliche Folgen des eigenen Handelns analysieren</span><code>78eeb8fe-fd5c-5d21-81be-75c3990fc4b5</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_business_law" rel="noreferrer noopener"><span>Lernkarten - Wirtschaftsrecht und Falltechnik</span> <code>mem_de_gym_economics_business_law</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c73bc13e-6871-50c3-82d3-90283f1f54ce" rel="noreferrer noopener"><span>Unerlaubte Handlung und Strafrecht fallbezogen anwenden</span> <code>c73bc13e-6871-50c3-82d3-90283f1f54ce</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bb7f2a2a-95c3-5375-8323-51a808e945e6" rel="noreferrer noopener"><span>Rechtliche Rahmenbedingungen nach Rechtsfunktionen analysieren</span> <code>bb7f2a2a-95c3-5375-8323-51a808e945e6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4bde884b0e094cd9a126a7f5db458cf4da78e3e1fd34c6d40983cca16e2ff849</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=2aee114f-d0d2-516f-8f95-1b72f707401d&amp;goalFingerprint=sha256%3A4bde884b0e094cd9a126a7f5db458cf4da78e3e1fd34c6d40983cca16e2ff849&amp;pageFingerprint=sha256%3A2435b447d2ca6f89a0028277770e487a56168d5f9bd1366ca4d82b484ecbc166&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f" data-goal-id="7159ae22-e6ac-54e6-8b62-9b697310cc5f" data-page-number="8" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-title"><a class="goal-self-link" href="#goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f">Rechtliche Konsequenzen widerrechtlichen Handelns abschätzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7159ae22-e6ac-54e6-8b62-9b697310cc5f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:72d9e4c1b0c94308c0f22775fb672d78df21314eee288c98327e2131b5b5a96e" data-rendered-digest="sha256:ec0c6671ce52265ce0add43e663bb2416cb47aea753ee17d50642b55e5fd0d03" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/7159ae22-e6ac-54e6-8b62-9b697310cc5f/7159ae22-e6ac-54e6-8b62-9b697310cc5f.png" alt="Eine Person denkt über eine Handlung am Fahrrad, mögliche materielle und soziale Folgen und eine gesonderte rechtliche Prüfung nach.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-description-heading">
+        <p class="section-heading" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann rechtliche Konsequenzen widerrechtlichen Handelns in lebensnahen Fällen abschätzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-requires-heading">
+          <p class="section-heading" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-reverse-heading">
+          <p class="section-heading" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c73bc13e-6871-50c3-82d3-90283f1f54ce" rel="noreferrer noopener"><span>Unerlaubte Handlung und Strafrecht fallbezogen anwenden</span> <code>c73bc13e-6871-50c3-82d3-90283f1f54ce</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c9b896dd-5b53-53cf-b5c0-dcc7a260ac87" rel="noreferrer noopener"><span>BY: Zivil- und strafrechtliche Folgen eines Schadensfalls prüfen</span> <code>c9b896dd-5b53-53cf-b5c0-dcc7a260ac87</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f50f5cb4e802f324e46ee7a976315d7b6837819fb9cc0482eb0000a4e127b5f7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=7159ae22-e6ac-54e6-8b62-9b697310cc5f&amp;goalFingerprint=sha256%3Af50f5cb4e802f324e46ee7a976315d7b6837819fb9cc0482eb0000a4e127b5f7&amp;pageFingerprint=sha256%3Aec2747ff3d8604ceb688837dd962a1e6a146576d9e501773f6b87c196298a57f&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e" data-goal-id="3a6568d2-9f94-5574-8996-9ebac0bc0b3e" data-page-number="9" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-title"><a class="goal-self-link" href="#goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e">Rechtssicher im Internet handeln</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3a6568d2-9f94-5574-8996-9ebac0bc0b3e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:14111420f7b968e3f88295f8e200f87adfcadeabd2421207692b4abba75c36f4" data-rendered-digest="sha256:02ef0abdd56ded4d8f7f9a0c2dfff02f59ff6799066055009d20459cd88fdade" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/3a6568d2-9f94-5574-8996-9ebac0bc0b3e/3a6568d2-9f94-5574-8996-9ebac0bc0b3e.png" alt="Eine junge Person hält vor einer Onlineentscheidung inne und prüft Einwilligung, Urheberrechte und mehrere Handlungswege.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-description-heading">
+        <p class="section-heading" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann im Internet rechtssicher handeln, indem sie wesentliche für Jugendliche relevante Rechtsnormen beachtet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-requires-heading">
+          <p class="section-heading" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span>Funktionen rechtlicher Regelungen beurteilen</span><code>2aee114f-d0d2-516f-8f95-1b72f707401d</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-reverse-heading">
+          <p class="section-heading" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f6a445cb-50d9-5d22-80af-e669509758b0"><span>Geistiges Eigentum und Persönlichkeitsrechte beachten</span><code>f6a445cb-50d9-5d22-80af-e669509758b0</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3e94081a982a17493a0a095762ffddb94a51dc6fd919cbe8b0e9206c41a3c164</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=3a6568d2-9f94-5574-8996-9ebac0bc0b3e&amp;goalFingerprint=sha256%3A3e94081a982a17493a0a095762ffddb94a51dc6fd919cbe8b0e9206c41a3c164&amp;pageFingerprint=sha256%3A6922e578e9e4e8f65e9afe0d81fef300d699ae410741e36a4e21c84564950c96&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0" data-goal-id="f6a445cb-50d9-5d22-80af-e669509758b0" data-page-number="10" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-title"><a class="goal-self-link" href="#goal-f6a445cb-50d9-5d22-80af-e669509758b0">Geistiges Eigentum und Persönlichkeitsrechte beachten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f6a445cb-50d9-5d22-80af-e669509758b0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a05608ede829073e93063481a0f8cc9a9d5399c79a6242dfbdd30f65a266d968" data-rendered-digest="sha256:34fb51d96e741cbd042b649a528d74a1cec1db6a2e8a3e98d794dd05a964b12e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/f6a445cb-50d9-5d22-80af-e669509758b0/f6a445cb-50d9-5d22-80af-e669509758b0.png" alt="Eine Person überlegt zur Nutzung einer Zeichnung und eines Porträts; Urheberrecht und Persönlichkeit sind getrennte Gedankenfelder.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-description-heading">
+        <p class="section-heading" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Schutz von geistigem Eigentum und Persönlichkeitsrechten im privaten und schulischen Alltag reflektieren und wesentliche Bestimmungen des Urheberrechts beachten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-requires-heading">
+          <p class="section-heading" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e"><span>Rechtssicher im Internet handeln</span><code>3a6568d2-9f94-5574-8996-9ebac0bc0b3e</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-reverse-heading">
+          <p class="section-heading" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-65006010-cef6-568a-8e45-31f2890afc6d" rel="noreferrer noopener"><span>BY: Eine Onlineveröffentlichung rechtlich prüfen</span> <code>65006010-cef6-568a-8e45-31f2890afc6d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0231678bc06788129323ce40ee89119712844196daaeb5ec1c3f99c1bc5f0591</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=f6a445cb-50d9-5d22-80af-e669509758b0&amp;goalFingerprint=sha256%3A0231678bc06788129323ce40ee89119712844196daaeb5ec1c3f99c1bc5f0591&amp;pageFingerprint=sha256%3Abb6eaf3f8af8ec5a76717a23baad260c0f562dbc1fa2ce3ec9100ee6324c1a43&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5" data-goal-id="78eeb8fe-fd5c-5d21-81be-75c3990fc4b5" data-page-number="11" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-title"><a class="goal-self-link" href="#goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5">Verträge und rechtliche Folgen des eigenen Handelns analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>78eeb8fe-fd5c-5d21-81be-75c3990fc4b5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:008ec657707a31677d482b10f25fa71a49d629ab02e8678b790283376e1e455b" data-rendered-digest="sha256:1a5a914a6f694c5c7def76616252a764518fe0b1ea7d4836c89e848448391fa7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/78eeb8fe-fd5c-5d21-81be-75c3990fc4b5/78eeb8fe-fd5c-5d21-81be-75c3990fc4b5.png" alt="Zwei Personen stimmen in Sprechblasen über dasselbe Fahrrad für300Euro überein; eine weitere Gedankenblase fragt nach vertraglichen Pflichten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-description-heading">
+        <p class="section-heading" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Zustandekommen und rechtliche Folgen von Verträgen erklären und die rechtlichen Konsequenzen eigenen Handelns analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-requires-heading">
+          <p class="section-heading" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span>Funktionen rechtlicher Regelungen beurteilen</span><code>2aee114f-d0d2-516f-8f95-1b72f707401d</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-reverse-heading">
+          <p class="section-heading" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5"><span>Rechte beschränkt Geschäftsfähiger bei Kaufhandlungen wahrnehmen</span><code>1f5c3e82-dc4a-54cc-838e-66e4d434a7b5</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-dae93971-726c-56e5-8044-19dbd40febf7"><span>Rechtsnormen auf konkrete Sachverhalte anwenden</span><code>dae93971-726c-56e5-8044-19dbd40febf7</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:13def435ce2a1217a10f02f3ad8770d992e23644024349c296f2c24fd334d1a6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=78eeb8fe-fd5c-5d21-81be-75c3990fc4b5&amp;goalFingerprint=sha256%3A13def435ce2a1217a10f02f3ad8770d992e23644024349c296f2c24fd334d1a6&amp;pageFingerprint=sha256%3A54073c48895f986a8b015cc2fa45c13f206a06f151b11bd90f022992988d7ceb&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5" data-goal-id="1f5c3e82-dc4a-54cc-838e-66e4d434a7b5" data-page-number="12" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-title"><a class="goal-self-link" href="#goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5">Rechte beschränkt Geschäftsfähiger bei Kaufhandlungen wahrnehmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1f5c3e82-dc4a-54cc-838e-66e4d434a7b5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:51b07d1ae7b1b2e46f9ca020567d7df004fa5ac3a9dc8b2f938b72c43e4a07cb" data-rendered-digest="sha256:fdfc50782d0152b09c52224a0371b7c9d79f12a2b67b320a39bbc88492d12e29" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/1f5c3e82-dc4a-54cc-838e-66e4d434a7b5/1f5c3e82-dc4a-54cc-838e-66e4d434a7b5.png" alt="Eine junge Person überlegt beim Kopfhörerkauf zu Alter, Zustimmung einer vertretenden Person und verfügbaren Mitteln; alle Bedingungen bleiben als Fragen offen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-description-heading">
+        <p class="section-heading" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei Kaufhandlungen des täglichen Lebens rechtliche Handlungsmöglichkeiten als beschränkt geschäftsfähige Person erkennen und wahrnehmen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-requires-heading">
+          <p class="section-heading" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5"><span>Verträge und rechtliche Folgen des eigenen Handelns analysieren</span><code>78eeb8fe-fd5c-5d21-81be-75c3990fc4b5</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-reverse-heading">
+          <p class="section-heading" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c4faf50c-8778-5540-8276-87840cc81e05"><span>Verbraucherrechte in Kaufsituationen kommunizieren</span><code>c4faf50c-8778-5540-8276-87840cc81e05</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_business_law" rel="noreferrer noopener"><span>Lernkarten - Wirtschaftsrecht und Falltechnik</span> <code>mem_de_gym_economics_business_law</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b3446f4a0852a2a28038f30b5850cf5a3c8b0de4520faa3b1e5393c6aac6a308</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=1f5c3e82-dc4a-54cc-838e-66e4d434a7b5&amp;goalFingerprint=sha256%3Ab3446f4a0852a2a28038f30b5850cf5a3c8b0de4520faa3b1e5393c6aac6a308&amp;pageFingerprint=sha256%3Ab002e21bbae954f132b9a044479ecf14f0ff9d446972688894208aa78e43aeb6&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c4faf50c-8778-5540-8276-87840cc81e05" data-goal-id="c4faf50c-8778-5540-8276-87840cc81e05" data-page-number="13" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-title"><a class="goal-self-link" href="#goal-c4faf50c-8778-5540-8276-87840cc81e05">Verbraucherrechte in Kaufsituationen kommunizieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c4faf50c-8778-5540-8276-87840cc81e05</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f2f3f2b4662fb75d363fcd9e7e37f30927e405ff88ef9c7c663b1cbfc2146603" data-rendered-digest="sha256:40c385bc60158e707996462c602c39e73d1b2d28041e519f0db93027cce4fd56" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c4faf50c-8778-5540-8276-87840cc81e05/c4faf50c-8778-5540-8276-87840cc81e05.png" alt="Eine Käuferin bespricht einen beschädigten Toaster mit einem Verkäufer; Reparatur oder Ersatz sind als Nacherfüllung dargestellt, ein weiterer Rechtsfolgenzweig bleibt bedingt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-description-heading">
+        <p class="section-heading" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in konkreten Problemsituationen beim Kauf passende Verbraucherrechte erkennen und gegenüber Verkäuferinnen und Verkäufern situationsgerecht kommunizieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-requires-heading">
+          <p class="section-heading" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5"><span>Rechte beschränkt Geschäftsfähiger bei Kaufhandlungen wahrnehmen</span><code>1f5c3e82-dc4a-54cc-838e-66e4d434a7b5</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-reverse-heading">
+          <p class="section-heading" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d3c11bfa-103c-5b58-8183-561e0b076251"><span>Konsumentscheidungen auf virtuellen Marktplätzen reflektieren</span><code>d3c11bfa-103c-5b58-8183-561e0b076251</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bd413a7c-775a-5318-813c-0b75578f9a11" rel="noreferrer noopener"><span>Juristische Arbeitstechniken im Kaufrecht anwenden</span> <code>bd413a7c-775a-5318-813c-0b75578f9a11</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1457913d49c950d444cf5f57fef3285a68ab859ab5fcb7b43ba23fc0e71c5c53</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=c4faf50c-8778-5540-8276-87840cc81e05&amp;goalFingerprint=sha256%3A1457913d49c950d444cf5f57fef3285a68ab859ab5fcb7b43ba23fc0e71c5c53&amp;pageFingerprint=sha256%3Ae71a00a71d5ffe20876c259609e5fd0e1c4725aa9d78df243b7a43018a84bca3&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d3c11bfa-103c-5b58-8183-561e0b076251" data-goal-id="d3c11bfa-103c-5b58-8183-561e0b076251" data-page-number="14" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-d3c11bfa-103c-5b58-8183-561e0b076251-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d3c11bfa-103c-5b58-8183-561e0b076251-title"><a class="goal-self-link" href="#goal-d3c11bfa-103c-5b58-8183-561e0b076251">Konsumentscheidungen auf virtuellen Marktplätzen reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d3c11bfa-103c-5b58-8183-561e0b076251</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4309e728104d70b8d27be429e5403f9d5a165b38e5a37db197844ea0e1537f85" data-rendered-digest="sha256:92d0dc815040a5e834821ca9a7fef114f25ef52db4a512854bbcf2ad49592802" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/d3c11bfa-103c-5b58-8183-561e0b076251/d3c11bfa-103c-5b58-8183-561e0b076251.png" alt="Eine Person betrachtet ein Rucksackangebot am Laptop in einer Ansicht über ihre Schulter. Gedankenbilder stellen Bequemlichkeit und Auswahl sowie Fragen zu Gesamtkosten und Zuverlässigkeit dar; ein Fachgeschäft erscheint als weitere Option.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d3c11bfa-103c-5b58-8183-561e0b076251-description-heading">
+        <p class="section-heading" id="goal-d3c11bfa-103c-5b58-8183-561e0b076251-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eigene Konsumentscheidungen auf virtuellen Marktplätzen reflektieren und Nutzen sowie Probleme des Online-Shoppings abwägen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d3c11bfa-103c-5b58-8183-561e0b076251-requires-heading">
+          <p class="section-heading" id="goal-d3c11bfa-103c-5b58-8183-561e0b076251-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-52e6731e-71e9-53b1-8bb9-b03da445decf"><span>Digitalisierung von Märkten bewerten</span><code>52e6731e-71e9-53b1-8bb9-b03da445decf</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-c4faf50c-8778-5540-8276-87840cc81e05"><span>Verbraucherrechte in Kaufsituationen kommunizieren</span><code>c4faf50c-8778-5540-8276-87840cc81e05</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d3c11bfa-103c-5b58-8183-561e0b076251-reverse-heading">
+          <p class="section-heading" id="goal-d3c11bfa-103c-5b58-8183-561e0b076251-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d3c11bfa-103c-5b58-8183-561e0b076251-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d3c11bfa-103c-5b58-8183-561e0b076251-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7286765dc689bb4ffc8aba84b3567ac9a0d5b284d24d394dadb8698915668307</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=d3c11bfa-103c-5b58-8183-561e0b076251&amp;goalFingerprint=sha256%3A7286765dc689bb4ffc8aba84b3567ac9a0d5b284d24d394dadb8698915668307&amp;pageFingerprint=sha256%3Af07d45e5210de062cac8e3ad01d13693ba25caba94478b6dbaa88dd50a179a8d&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-dae93971-726c-56e5-8044-19dbd40febf7" data-goal-id="dae93971-726c-56e5-8044-19dbd40febf7" data-page-number="15" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-title"><a class="goal-self-link" href="#goal-dae93971-726c-56e5-8044-19dbd40febf7">Rechtsnormen auf konkrete Sachverhalte anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>dae93971-726c-56e5-8044-19dbd40febf7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:60b569222021b6f451d6f534d1d6862f32555f3e6b4ba33fbabc14638963ab2e" data-rendered-digest="sha256:908af182d8bb075f3f27e9a76a31e12043f594c112f9a995b9d2ba348418e7b3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/dae93971-726c-56e5-8044-19dbd40febf7/dae93971-726c-56e5-8044-19dbd40febf7.png" alt="Eine Person verbindet eine Norm mit der Prüfung eines Fahrrad-/Autofalls und einer offenen möglichen Rechtsfolge; einzelne Merkmale werden geprüft.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-description-heading">
+        <p class="section-heading" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Rechtsnormen auf konkrete Sachverhalte anwenden, indem sie Tatbestandsmerkmale und Rechtsfolgen strukturiert herausarbeitet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-requires-heading">
+          <p class="section-heading" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5"><span>Verträge und rechtliche Folgen des eigenen Handelns analysieren</span><code>78eeb8fe-fd5c-5d21-81be-75c3990fc4b5</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-reverse-heading">
+          <p class="section-heading" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-71319337-18ad-5774-8347-4e1a078fc29a"><span>Beschäftigung Minderjähriger anhand von Schutzregeln prüfen</span><code>71319337-18ad-5774-8347-4e1a078fc29a</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7"><span>Jugendstrafrechtliche Tatbestände prüfen</span><code>b44892ea-32dc-5a91-8bba-2f422af7c6e7</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-51203e8f-a1f4-5072-8d32-d5b718691592"><span>Zivilprozess und Strafverfahren unterscheiden</span><code>51203e8f-a1f4-5072-8d32-d5b718691592</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-772b6d9f-03be-5894-8d61-0269506f398c" rel="noreferrer noopener"><span>Gerichtszweige anhand von Zuständigkeitsregeln unterscheiden</span> <code>772b6d9f-03be-5894-8d61-0269506f398c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bd413a7c-775a-5318-813c-0b75578f9a11" rel="noreferrer noopener"><span>Juristische Arbeitstechniken im Kaufrecht anwenden</span> <code>bd413a7c-775a-5318-813c-0b75578f9a11</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e7f290bee10c9459ccf8dec2750801fbd9f84895d1cf182541e552420eb04fbd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=dae93971-726c-56e5-8044-19dbd40febf7&amp;goalFingerprint=sha256%3Ae7f290bee10c9459ccf8dec2750801fbd9f84895d1cf182541e552420eb04fbd&amp;pageFingerprint=sha256%3A52b077d7a0654d631e53618b2c3c711197e288a090c63893a6d896b1b4f73a2c&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-71319337-18ad-5774-8347-4e1a078fc29a" data-goal-id="71319337-18ad-5774-8347-4e1a078fc29a" data-page-number="16" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-71319337-18ad-5774-8347-4e1a078fc29a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-71319337-18ad-5774-8347-4e1a078fc29a-title"><a class="goal-self-link" href="#goal-71319337-18ad-5774-8347-4e1a078fc29a">Beschäftigung Minderjähriger anhand von Schutzregeln prüfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>71319337-18ad-5774-8347-4e1a078fc29a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7c3a35aa439ed80713a6e3fdeba4552b1d4621c082bbb6abe20e7049d1cdd535" data-rendered-digest="sha256:4aa3dbca11b5b39d582e6c21e95677d9a80f34df9a0c26d0b8eae2da7ddeddd1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/71319337-18ad-5774-8347-4e1a078fc29a/71319337-18ad-5774-8347-4e1a078fc29a.png" alt="Eine jugendliche Person und eine erwachsene Begleitung besprechen vier große Prüfsymbole für Alter, Schule, Arbeitszeit und Schutzbedingungen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-71319337-18ad-5774-8347-4e1a078fc29a-description-heading">
+        <p class="section-heading" id="goal-71319337-18ad-5774-8347-4e1a078fc29a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in vorgegebenen Beschäftigungsfällen Minderjähriger anhand bereitgestellter aktueller Normen Alter, Schulpflicht, Arbeitszeit und Schutzbedingungen prüfen und die Zulässigkeit im Umfang dieser Kriterien begründet einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-71319337-18ad-5774-8347-4e1a078fc29a-requires-heading">
+          <p class="section-heading" id="goal-71319337-18ad-5774-8347-4e1a078fc29a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-dae93971-726c-56e5-8044-19dbd40febf7"><span>Rechtsnormen auf konkrete Sachverhalte anwenden</span><code>dae93971-726c-56e5-8044-19dbd40febf7</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-71319337-18ad-5774-8347-4e1a078fc29a-reverse-heading">
+          <p class="section-heading" id="goal-71319337-18ad-5774-8347-4e1a078fc29a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-71319337-18ad-5774-8347-4e1a078fc29a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-71319337-18ad-5774-8347-4e1a078fc29a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-1b058d01-6bb5-51cd-902e-16a09e00270a" rel="noreferrer noopener"><span>BY: Minderjährigenbeschäftigung anhand bereitgestellter Normen prüfen</span> <code>1b058d01-6bb5-51cd-902e-16a09e00270a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3db29b53ec24e7e644e3011656ed21621fc320003f7f7e6549775d4e6142efed</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=71319337-18ad-5774-8347-4e1a078fc29a&amp;goalFingerprint=sha256%3A3db29b53ec24e7e644e3011656ed21621fc320003f7f7e6549775d4e6142efed&amp;pageFingerprint=sha256%3A4ae67a68592d39e4fd301ab4074115f948b93b1444011e94884d39e93df8b335&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7" data-goal-id="b44892ea-32dc-5a91-8bba-2f422af7c6e7" data-page-number="17" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-title"><a class="goal-self-link" href="#goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7">Jugendstrafrechtliche Tatbestände prüfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b44892ea-32dc-5a91-8bba-2f422af7c6e7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:21f109039ff059137d6486e35ca3134b97f1562041a89ea1a75a69a75381b7bc" data-rendered-digest="sha256:fe91cbc7c9ebc668199a4a0bcfdd8174fcfe258675de6fa993c432eeb788798b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b44892ea-32dc-5a91-8bba-2f422af7c6e7/b44892ea-32dc-5a91-8bba-2f422af7c6e7.png" alt="Eine junge Person prüft gemeinsam mit einer Mentorin Merkmale und Belege eines hypothetischen Schadensfalls; die Prüfung bleibt durch ein großes Fragezeichen offen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-description-heading">
+        <p class="section-heading" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Fälle der Jugendkriminalität mithilfe juristischer Arbeitstechniken auf Tatbestandsmerkmale prüfen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-requires-heading">
+          <p class="section-heading" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-dae93971-726c-56e5-8044-19dbd40febf7"><span>Rechtsnormen auf konkrete Sachverhalte anwenden</span><code>dae93971-726c-56e5-8044-19dbd40febf7</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-reverse-heading">
+          <p class="section-heading" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-61da4203-44c1-5e60-8880-5e8a64943675" rel="noreferrer noopener"><span>Öffentlich-rechtliche Regelungen beurteilen</span> <code>61da4203-44c1-5e60-8880-5e8a64943675</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-d9a3db94-2629-53d0-80c6-801adc0f6641" rel="noreferrer noopener"><span>Rechtsfolgen von Jugendstraftaten beurteilen</span> <code>d9a3db94-2629-53d0-80c6-801adc0f6641</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-be602e0c-2082-5c1a-808b-ca492ba40f2d" rel="noreferrer noopener"><span>Strafbarkeit anhand des Deliktsaufbaus begründen</span> <code>be602e0c-2082-5c1a-808b-ca492ba40f2d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d23cbd38c2f706d5812fc20c45cd51d3bf797a65b102bb2df964be2df993ce8b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=b44892ea-32dc-5a91-8bba-2f422af7c6e7&amp;goalFingerprint=sha256%3Ad23cbd38c2f706d5812fc20c45cd51d3bf797a65b102bb2df964be2df993ce8b&amp;pageFingerprint=sha256%3A8b7396ae28abe90644b072fde3ffbb81b99a828102f2a171ac76de7b5da14d1e&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-51203e8f-a1f4-5072-8d32-d5b718691592" data-goal-id="51203e8f-a1f4-5072-8d32-d5b718691592" data-page-number="18" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-51203e8f-a1f4-5072-8d32-d5b718691592-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-51203e8f-a1f4-5072-8d32-d5b718691592-title"><a class="goal-self-link" href="#goal-51203e8f-a1f4-5072-8d32-d5b718691592">Zivilprozess und Strafverfahren unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>51203e8f-a1f4-5072-8d32-d5b718691592</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6b1655cb311bce750c443be9bc24f3d486fd2cbab598795cff60c21a355ce332" data-rendered-digest="sha256:d22d6bfbb2cd85c85408fc5f746ff745e87ef5060bc4b25eb7be84dc381654b7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/51203e8f-a1f4-5072-8d32-d5b718691592/51203e8f-a1f4-5072-8d32-d5b718691592.png" alt="Ein privater Fahrradstreit und ein Strafverfahren mit getrennten Verfahrensrollen stehen nebeneinander. Ein Fragezeichen kennzeichnet den offenen Ausgang des Strafvorwurfs.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-51203e8f-a1f4-5072-8d32-d5b718691592-description-heading">
+        <p class="section-heading" id="goal-51203e8f-a1f4-5072-8d32-d5b718691592-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zivilprozess und Strafverfahren anhand vorgegebener Fälle nach Zweck, beteiligten Rollen und grundlegenden Verfahrensschritten unterscheiden und mögliche Ergebnisse von bloßen Vorwürfen abgrenzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-51203e8f-a1f4-5072-8d32-d5b718691592-requires-heading">
+          <p class="section-heading" id="goal-51203e8f-a1f4-5072-8d32-d5b718691592-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-dae93971-726c-56e5-8044-19dbd40febf7"><span>Rechtsnormen auf konkrete Sachverhalte anwenden</span><code>dae93971-726c-56e5-8044-19dbd40febf7</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-51203e8f-a1f4-5072-8d32-d5b718691592-reverse-heading">
+          <p class="section-heading" id="goal-51203e8f-a1f4-5072-8d32-d5b718691592-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-51203e8f-a1f4-5072-8d32-d5b718691592-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-51203e8f-a1f4-5072-8d32-d5b718691592-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8f83b95f01fbd14f10ffee555e8f9dd9371c04cf4407eed6d2b581c14685242b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=51203e8f-a1f4-5072-8d32-d5b718691592&amp;goalFingerprint=sha256%3A8f83b95f01fbd14f10ffee555e8f9dd9371c04cf4407eed6d2b581c14685242b&amp;pageFingerprint=sha256%3A1a39ed93a6252aef6d20537b40cc9c2413c324a906b1b319b48600857e0b9f3e&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-682facbf-3c9d-5485-88a3-20f2394ed77f" data-goal-id="682facbf-3c9d-5485-88a3-20f2394ed77f" data-page-number="19" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-title"><a class="goal-self-link" href="#goal-682facbf-3c9d-5485-88a3-20f2394ed77f">Rechtliche Regelungen und Rechtsstaatlichkeit beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>682facbf-3c9d-5485-88a3-20f2394ed77f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:858178173d59a65393ccc699178b974c5e0e1a2b57073dbe304b5e0a46a97a5b" data-rendered-digest="sha256:520c567575786dc0dfeb60be6463031ecc71912e3671ae152a1a096a4fd4d13d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/682facbf-3c9d-5485-88a3-20f2394ed77f/682facbf-3c9d-5485-88a3-20f2394ed77f.png" alt="Eine Gruppe vergleicht öffentliche und private Rechtsbeispiele auf einer Tafel mit den Perspektiven Regeln, Rechtsstaat und Interessen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-description-heading">
+        <p class="section-heading" id="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aktuelle rechtliche Regelungen und Entscheidungen aus öffentlichem und privatem Recht im Hinblick auf Rechtsfunktionen, rechtsstaatliche Prinzipien und gerechten Interessenausgleich beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-requires-heading">
+          <p class="section-heading" id="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-reverse-heading">
+          <p class="section-heading" id="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-099086bb-5100-5ce0-8334-0aab8850a48e"><span>Eigentumsordnung in der Sozialen Marktwirtschaft analysieren</span><code>099086bb-5100-5ce0-8334-0aab8850a48e</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bb7f2a2a-95c3-5375-8323-51a808e945e6" rel="noreferrer noopener"><span>Rechtliche Rahmenbedingungen nach Rechtsfunktionen analysieren</span> <code>bb7f2a2a-95c3-5375-8323-51a808e945e6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-682facbf-3c9d-5485-88a3-20f2394ed77f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-a6a609cb-e8bf-5136-805b-67bddab6b28e" rel="noreferrer noopener"><span>Schutzfunktion rechtlicher Regelungen und Vertragsfreiheit abwägen</span> <code>a6a609cb-e8bf-5136-805b-67bddab6b28e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-7d399b4d-d057-5284-8e2c-6778e023307d" rel="noreferrer noopener"><span>Aktuelle wirtschaftliche und rechtliche Entwicklungen bewerten</span> <code>7d399b4d-d057-5284-8e2c-6778e023307d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0301a117afe5e0e3fe26ee49b8ab73b4d73685de5b5841504c383a15fc38a74f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=682facbf-3c9d-5485-88a3-20f2394ed77f&amp;goalFingerprint=sha256%3A0301a117afe5e0e3fe26ee49b8ab73b4d73685de5b5841504c383a15fc38a74f&amp;pageFingerprint=sha256%3A6eb898e63de5eb0b2159976bcbed29226562bd37a961b41729b7bb2218e3e0c0&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-099086bb-5100-5ce0-8334-0aab8850a48e" data-goal-id="099086bb-5100-5ce0-8334-0aab8850a48e" data-page-number="20" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-099086bb-5100-5ce0-8334-0aab8850a48e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-099086bb-5100-5ce0-8334-0aab8850a48e-title"><a class="goal-self-link" href="#goal-099086bb-5100-5ce0-8334-0aab8850a48e">Eigentumsordnung in der Sozialen Marktwirtschaft analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>099086bb-5100-5ce0-8334-0aab8850a48e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8543eee496bab33634f68fc3d0b2e23d1545deb5c89baaf50df68c1225030517" data-rendered-digest="sha256:3de2d4acc6154faaa66b07a71bdcfa5795afb4b5a3d777a906201e6513d11f5c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/099086bb-5100-5ce0-8334-0aab8850a48e/099086bb-5100-5ce0-8334-0aab8850a48e.png" alt="Zwei Nachbarn betrachten Haus, persönliche Güter und eine Grundstücksgrenze; Symbole zeigen Eigentum, Grenzen und Werte.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-099086bb-5100-5ce0-8334-0aab8850a48e-description-heading">
+        <p class="section-heading" id="goal-099086bb-5100-5ce0-8334-0aab8850a48e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Inhalt, Grenzen und Wertgrundlagen des Eigentums als institutionelles Element der Sozialen Marktwirtschaft an konkreten Beispielen analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-099086bb-5100-5ce0-8334-0aab8850a48e-requires-heading">
+          <p class="section-heading" id="goal-099086bb-5100-5ce0-8334-0aab8850a48e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1da809f7-ef85-5a2d-babf-b7639e605653"><span>Soziale Marktwirtschaft einordnen</span><code>1da809f7-ef85-5a2d-babf-b7639e605653</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-682facbf-3c9d-5485-88a3-20f2394ed77f"><span>Rechtliche Regelungen und Rechtsstaatlichkeit beurteilen</span><code>682facbf-3c9d-5485-88a3-20f2394ed77f</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-099086bb-5100-5ce0-8334-0aab8850a48e-reverse-heading">
+          <p class="section-heading" id="goal-099086bb-5100-5ce0-8334-0aab8850a48e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-099086bb-5100-5ce0-8334-0aab8850a48e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-099086bb-5100-5ce0-8334-0aab8850a48e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-25a83b44-d5fe-506c-af8a-3d5920084ed4" rel="noreferrer noopener"><span>Q1: Eigentumsrechte und sozialen Interessenausgleich beurteilen</span> <code>25a83b44-d5fe-506c-af8a-3d5920084ed4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0768a497414e754f85886aa57a1d3dae34cdab3d98940bd78aeecc67dc073b90</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current311-affected46-pack1&amp;edition=curricular-atomic-v1&amp;goalId=099086bb-5100-5ce0-8334-0aab8850a48e&amp;goalFingerprint=sha256%3A0768a497414e754f85886aa57a1d3dae34cdab3d98940bd78aeecc67dc073b90&amp;pageFingerprint=sha256%3Ae3e89f2fe7e581f6751be5750ef04cbed0c9f8e02fb67de1ac8d875546b3b170&amp;bookDigest=sha256%3A7bd3b5066a3f0cbe08479863db93713e7d2ada3e060eba5dc811412094f6dfe2&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

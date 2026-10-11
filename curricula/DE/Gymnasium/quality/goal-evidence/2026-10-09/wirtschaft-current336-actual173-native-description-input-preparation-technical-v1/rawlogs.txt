@@ -1,0 +1,63 @@
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+
+Error: Transform failed with 10 errors:
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/prepare_actual_native_batches.ts:17:13: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/prepare_actual_native_batches.ts:19:20: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/prepare_actual_native_batches.ts:24:13: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/prepare_actual_native_batches.ts:42:44: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/prepare_actual_native_batches.ts:43:0: ERROR: Top-level await is currently not supported with the "cjs" output format
+...
+    at failureErrorWithLog (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:736:50
+    at responseCallbacks.<computed> (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:603:9)
+    at handleIncomingPacket (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:658:12)
+    at Socket.readFromStdout (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:581:7)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+    at Readable.push (node:internal/streams/readable:278:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23) {
+  name: 'TransformError'
+}
+
+Node.js v18.19.1
+PASS actual native whole336 rebuild equals Root freeze; bindings=348
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b01 goals=20
+/home/enpasos/projects/skillpilot/app/scripts/goalBookRenderer.ts:3181
+    throw new Error(
+          ^
+
+
+Error: Goal-book PDF validation requires working pdfinfo and pdftohtml commands: spawn pdfinfo ENOENT
+    at inspectGoalBookPdfArtifact (/home/enpasos/projects/skillpilot/app/scripts/goalBookRenderer.ts:3181:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at writeGoalBookPdf (/home/enpasos/projects/skillpilot/app/scripts/goalBookRenderer.ts:3383:5)
+    at prepareGoalDescriptionRolloutBatch (/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutBatch.ts:695:25)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/prepare_actual_native_batches.mts:53:15)
+
+Node.js v18.19.1
+PASS actual native whole336 rebuild equals Root freeze; bindings=348
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b01 goals=20
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b01 model=sha256:3103155f0a76c807914d9989c8842eb1066b49afbb0bdde7feceb07dd861ed56
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b02 goals=20
+PASS rebuilt336 actual native canonical contexts
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b02 model=sha256:5c532243fb38645ad696b067acbd884a770d3b0c81c2a850c2308f82327fec82
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b03 goals=20
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b03 model=sha256:95ab20bbb0f372b7d3e743fc1c75af970ce4eb51bd3bcf17e259607aa5ba3ac8
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b04 goals=20
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b04 model=sha256:14a69aad63f4ef421418665d3900823d987d261c152b751c1b7645707f559888
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b05 goals=20
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b05 model=sha256:884d253fd16d90038c2bf75b911564c67fd916b3b0917c73b5011cc75ef68e60
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b06 goals=20
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b06 model=sha256:3c5e40fde4bb4e9ee2106b1961c4a22fbc2aab2638012c003fba17201d76b5d2
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b07 goals=20
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b07 model=sha256:e2ee7f19e29ec8bc71cd5e7bd34c9f9d9df3fdae91bb31c0953d15f4b2c7f609
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b08 goals=20
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b08 model=sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511
+PREPARE wirtschaft-current336-actual173-native-description-20261009-b09 goals=13
+PASS native prepare/check wirtschaft-current336-actual173-native-description-20261009-b09 model=sha256:2253047c8e97d917861b83f25534ca993e85cd04e6a6958d4a36c3710a420624
+PASS all nine native batches/18 blind first-pass campaigns; 173 exact native-ordered IDs; no records/ledgers
+{"PASS": true, "output": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/private-preparation-evidence/actual-independent336-delta-and163-lineage-technical-proof.json", "counts": {"currentPages": 336, "targetedInputGoals": 173, "historicalUnchangedBindings": 163, "withoutHistoricalStrictD": 36, "newVersus311Owner": 25, "nativeCanonicalContextChanged": 70, "actualPProfileBodyChanged": 16, "actualOwnerContentContextChanged": 94}, "paginationOnlyExcluded": 46, "historicalWholeHashes": 357, "legitimateActiveWholeSuccessors": 2, "global_curriculum_symlink_errors": []}
+{"PASS": true, "actual173": 173, "nineConfigs": 9, "18Campaigns": 18, "pdfPhysicalPages": [22, 22, 22, 22, 22, 22, 22, 22, 15], "currentPositiveProfileCasesIn173Inputs": 359, "actualNativeArtifacts": 252, "AAndBReviewerHandoffsWritten": true}

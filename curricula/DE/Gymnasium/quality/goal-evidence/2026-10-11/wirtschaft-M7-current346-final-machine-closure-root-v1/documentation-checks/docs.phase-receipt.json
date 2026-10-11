@@ -1,0 +1,92 @@
+{
+  "phase": "docs",
+  "status": "FAIL",
+  "results": [
+    {
+      "label": "documentation-links",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T01:03:32.718997+00:00",
+      "completedAt": "2026-10-11T01:03:33.179605+00:00",
+      "elapsedSeconds": 0.461,
+      "exitCode": 1,
+      "status": "FAIL",
+      "rawLog": {
+        "path": "/tmp/skillpilot-economics-M7-final-root-checks-20261011/documentation-links.raw.txt",
+        "sha256": "sha256:6653c0414a7d54ec0d6a6a326027d59eaf00e621355d5ec916bdedb3a4f6383c",
+        "bytes": 9496
+      },
+      "scientificReviewOrHumanApprovalClaim": false
+    },
+    {
+      "label": "documentation-indexes",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T01:03:32.718940+00:00",
+      "completedAt": "2026-10-11T01:03:33.079104+00:00",
+      "elapsedSeconds": 0.36,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "/tmp/skillpilot-economics-M7-final-root-checks-20261011/documentation-indexes.raw.txt",
+        "sha256": "sha256:2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0",
+        "bytes": 131
+      },
+      "scientificReviewOrHumanApprovalClaim": false
+    },
+    {
+      "label": "generated-status-registry",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T01:03:33.079646+00:00",
+      "completedAt": "2026-10-11T01:03:33.665275+00:00",
+      "elapsedSeconds": 0.586,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "/tmp/skillpilot-economics-M7-final-root-checks-20261011/generated-status-registry.raw.txt",
+        "sha256": "sha256:b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626",
+        "bytes": 153
+      },
+      "scientificReviewOrHumanApprovalClaim": false
+    },
+    {
+      "label": "git-diff-whitespace",
+      "actualArgv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T01:03:33.180237+00:00",
+      "completedAt": "2026-10-11T01:03:33.508035+00:00",
+      "elapsedSeconds": 0.328,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "/tmp/skillpilot-economics-M7-final-root-checks-20261011/git-diff-whitespace.raw.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "scientificReviewOrHumanApprovalClaim": false
+    }
+  ]
+}

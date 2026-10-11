@@ -1,0 +1,5 @@
+# Inert single-mechanism positive-evidence authoring criteria
+
+Each of the three proposed ordinary atoms has one causal content competence. Its profile must require actual causal explanation from the supplied assumptions, two independently assessed fresh variations, and honest E1/G1 ai_candidate/needs_human_review status. Numerical data are fully supplied teaching assumptions; no extra mathematical quota, policy-evaluation skill or observed learner success is claimed. Information profiles concern pre-contract selection; public-good profiles concern properties and voluntary funding; monopoly profiles concern price/output incentives under actual power, entry restrictions and given constraints. Correct alternative explanations and honest material limits are permitted.
+
+A technical fingerprint/schema result is not subject approval, A/M/D/V completion or authorisation to integrate. Source facets, authored country/course roles, memory/card origins, complete practice coverage/readiness and child visualisations remain separately open.

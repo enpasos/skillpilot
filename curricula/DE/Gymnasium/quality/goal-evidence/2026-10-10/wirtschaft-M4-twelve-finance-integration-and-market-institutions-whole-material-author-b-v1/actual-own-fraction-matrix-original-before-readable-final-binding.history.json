@@ -1,0 +1,624 @@
+{
+  "role": "AUTHOR calculations only, no independent science approval",
+  "fractionCalculationCount": 61,
+  "matrixContractCount": 6,
+  "totalActualChecks": 67,
+  "actualFailures": 0,
+  "fractionChecks": [
+    {
+      "id": "43A.assets",
+      "actual": "96",
+      "expected": "96",
+      "PASS": true
+    },
+    {
+      "id": "43A.equity",
+      "actual": "4",
+      "expected": "4",
+      "PASS": true
+    },
+    {
+      "id": "43A.cashgap",
+      "actual": "10",
+      "expected": "10",
+      "PASS": true
+    },
+    {
+      "id": "43A.loanEquity",
+      "actual": "4",
+      "expected": "4",
+      "PASS": true
+    },
+    {
+      "id": "43A.ownerEquity",
+      "actual": "8",
+      "expected": "8",
+      "PASS": true
+    },
+    {
+      "id": "43A.bothCashBeforePayout",
+      "actual": "20",
+      "expected": "20",
+      "PASS": true
+    },
+    {
+      "id": "43B.assets",
+      "actual": "86",
+      "expected": "86",
+      "PASS": true
+    },
+    {
+      "id": "43B.equity",
+      "actual": "-2",
+      "expected": "-2",
+      "PASS": true
+    },
+    {
+      "id": "43B.cashgap",
+      "actual": "5",
+      "expected": "5",
+      "PASS": true
+    },
+    {
+      "id": "43B.loanEquity",
+      "actual": "-2",
+      "expected": "-2",
+      "PASS": true
+    },
+    {
+      "id": "43B.ownerEquity",
+      "actual": "2",
+      "expected": "2",
+      "PASS": true
+    },
+    {
+      "id": "43B.ownerRemainingGap",
+      "actual": "1",
+      "expected": "1",
+      "PASS": true
+    },
+    {
+      "id": "d224A.H",
+      "actual": "-1",
+      "expected": "-1",
+      "PASS": true
+    },
+    {
+      "id": "d224A.J",
+      "actual": "3",
+      "expected": "3",
+      "PASS": true
+    },
+    {
+      "id": "d224A.cash",
+      "actual": "7",
+      "expected": "7",
+      "PASS": true
+    },
+    {
+      "id": "d224A.modelShortfallJ",
+      "actual": "3",
+      "expected": "3",
+      "PASS": true
+    },
+    {
+      "id": "d224B.external",
+      "actual": "12",
+      "expected": "12",
+      "PASS": true
+    },
+    {
+      "id": "d224B.falseSum",
+      "actual": "24",
+      "expected": "24",
+      "PASS": true
+    },
+    {
+      "id": "d224B.trueLoss",
+      "actual": "-3",
+      "expected": "-3",
+      "PASS": true
+    },
+    {
+      "id": "5aeA.buffer",
+      "actual": "20",
+      "expected": "20",
+      "PASS": true
+    },
+    {
+      "id": "5aeA.loan",
+      "actual": "120",
+      "expected": "120",
+      "PASS": true
+    },
+    {
+      "id": "5aeA.excess",
+      "actual": "30",
+      "expected": "30",
+      "PASS": true
+    },
+    {
+      "id": "5aeB.equity",
+      "actual": "62",
+      "expected": "62",
+      "PASS": true
+    },
+    {
+      "id": "5aeB.totalBefore",
+      "actual": "70",
+      "expected": "70",
+      "PASS": true
+    },
+    {
+      "id": "5aeB.gapBefore",
+      "actual": "-8",
+      "expected": "-8",
+      "PASS": true
+    },
+    {
+      "id": "5aeB.gapAfter",
+      "actual": "12",
+      "expected": "12",
+      "PASS": true
+    },
+    {
+      "id": "5aeB.releaseHeadroomDelta",
+      "actual": "20",
+      "expected": "20",
+      "PASS": true
+    },
+    {
+      "id": "5aeB.cashNoDelta",
+      "actual": "6",
+      "expected": "6",
+      "PASS": true
+    },
+    {
+      "id": "f0A.forward",
+      "actual": "240",
+      "expected": "240",
+      "PASS": true
+    },
+    {
+      "id": "f0A.spotLow",
+      "actual": "160",
+      "expected": "160",
+      "PASS": true
+    },
+    {
+      "id": "f0A.spotHigh",
+      "actual": "320",
+      "expected": "320",
+      "PASS": true
+    },
+    {
+      "id": "f0A.traderLow",
+      "actual": "80",
+      "expected": "80",
+      "PASS": true
+    },
+    {
+      "id": "f0A.traderHigh",
+      "actual": "-80",
+      "expected": "-80",
+      "PASS": true
+    },
+    {
+      "id": "f0B.option45",
+      "actual": "-5",
+      "expected": "-5",
+      "PASS": true
+    },
+    {
+      "id": "f0B.forward45",
+      "actual": "-15",
+      "expected": "-15",
+      "PASS": true
+    },
+    {
+      "id": "f0B.cost45",
+      "actual": "50",
+      "expected": "50",
+      "PASS": true
+    },
+    {
+      "id": "f0B.option75",
+      "actual": "10",
+      "expected": "10",
+      "PASS": true
+    },
+    {
+      "id": "f0B.forward75",
+      "actual": "15",
+      "expected": "15",
+      "PASS": true
+    },
+    {
+      "id": "f0B.cost75",
+      "actual": "65",
+      "expected": "65",
+      "PASS": true
+    },
+    {
+      "id": "2a8A.EU",
+      "actual": "36/5",
+      "expected": "36/5",
+      "PASS": true
+    },
+    {
+      "id": "2a8A.region",
+      "actual": "24/5",
+      "expected": "24/5",
+      "PASS": true
+    },
+    {
+      "id": "2a8A.actualChange",
+      "actual": "4",
+      "expected": "4",
+      "PASS": true
+    },
+    {
+      "id": "2a8A.controlChange",
+      "actual": "2",
+      "expected": "2",
+      "PASS": true
+    },
+    {
+      "id": "2a8A.conditionalDiff",
+      "actual": "2",
+      "expected": "2",
+      "PASS": true
+    },
+    {
+      "id": "2a8B.fund",
+      "actual": "10",
+      "expected": "10",
+      "PASS": true
+    },
+    {
+      "id": "2a8B.region",
+      "actual": "10",
+      "expected": "10",
+      "PASS": true
+    },
+    {
+      "id": "2a8B.spent",
+      "actual": "18",
+      "expected": "18",
+      "PASS": true
+    },
+    {
+      "id": "1bddA.fund",
+      "actual": "20",
+      "expected": "20",
+      "PASS": true
+    },
+    {
+      "id": "1bddA.requests",
+      "actual": "27",
+      "expected": "27",
+      "PASS": true
+    },
+    {
+      "id": "1bddA.excess",
+      "actual": "7",
+      "expected": "7",
+      "PASS": true
+    },
+    {
+      "id": "1bddA.proportionalA",
+      "actual": "80/9",
+      "expected": "80/9",
+      "PASS": true
+    },
+    {
+      "id": "1bddA.proportionalB",
+      "actual": "100/9",
+      "expected": "100/9",
+      "PASS": true
+    },
+    {
+      "id": "1bddA.proportionalSum",
+      "actual": "20",
+      "expected": "20",
+      "PASS": true
+    },
+    {
+      "id": "1c92A.priceChange",
+      "actual": "2",
+      "expected": "2",
+      "PASS": true
+    },
+    {
+      "id": "1c92A.costChange",
+      "actual": "2",
+      "expected": "2",
+      "PASS": true
+    },
+    {
+      "id": "1c92A.marginBefore",
+      "actual": "3",
+      "expected": "3",
+      "PASS": true
+    },
+    {
+      "id": "1c92A.marginAfter",
+      "actual": "3",
+      "expected": "3",
+      "PASS": true
+    },
+    {
+      "id": "f90A.absolute",
+      "actual": "36",
+      "expected": "36",
+      "PASS": true
+    },
+    {
+      "id": "f90A.relative",
+      "actual": "3/10",
+      "expected": "3/10",
+      "PASS": true
+    },
+    {
+      "id": "f90B.first",
+      "actual": "150",
+      "expected": "150",
+      "PASS": true
+    },
+    {
+      "id": "f90B.second",
+      "actual": "30",
+      "expected": "30",
+      "PASS": true
+    }
+  ],
+  "wholeMatrixContracts": [
+    {
+      "id": "becf.A.dilemma",
+      "actualMatrix": {
+        "CC": [
+          4,
+          4
+        ],
+        "CD": [
+          0,
+          6
+        ],
+        "DC": [
+          6,
+          0
+        ],
+        "DD": [
+          1,
+          1
+        ]
+      },
+      "actualPureNE": [
+        "DD"
+      ],
+      "actualStrictDominance": [
+        [
+          "D"
+        ],
+        [
+          "D"
+        ]
+      ],
+      "expectedPureNE": [
+        "DD"
+      ],
+      "expectedStrictDominance": [
+        [
+          "D"
+        ],
+        [
+          "D"
+        ]
+      ],
+      "PASS": true
+    },
+    {
+      "id": "becf.A.rule",
+      "actualMatrix": {
+        "CC": [
+          4,
+          4
+        ],
+        "CD": [
+          0,
+          3
+        ],
+        "DC": [
+          3,
+          0
+        ],
+        "DD": [
+          -2,
+          -2
+        ]
+      },
+      "actualPureNE": [
+        "CC"
+      ],
+      "actualStrictDominance": [
+        [
+          "C"
+        ],
+        [
+          "C"
+        ]
+      ],
+      "expectedPureNE": [
+        "CC"
+      ],
+      "expectedStrictDominance": [
+        [
+          "C"
+        ],
+        [
+          "C"
+        ]
+      ],
+      "PASS": true
+    },
+    {
+      "id": "becf.B.coordination",
+      "actualMatrix": {
+        "AA": [
+          5,
+          5
+        ],
+        "AB": [
+          0,
+          0
+        ],
+        "BA": [
+          0,
+          0
+        ],
+        "BB": [
+          3,
+          3
+        ]
+      },
+      "actualPureNE": [
+        "AA",
+        "BB"
+      ],
+      "actualStrictDominance": [
+        [],
+        []
+      ],
+      "expectedPureNE": [
+        "AA",
+        "BB"
+      ],
+      "expectedStrictDominance": [
+        [],
+        []
+      ],
+      "PASS": true
+    },
+    {
+      "id": "becf.B.hawkDove",
+      "actualMatrix": {
+        "HH": [
+          -3,
+          -3
+        ],
+        "HY": [
+          5,
+          1
+        ],
+        "YH": [
+          1,
+          5
+        ],
+        "YY": [
+          2,
+          2
+        ]
+      },
+      "actualPureNE": [
+        "HY",
+        "YH"
+      ],
+      "actualStrictDominance": [
+        [],
+        []
+      ],
+      "expectedPureNE": [
+        "HY",
+        "YH"
+      ],
+      "expectedStrictDominance": [
+        [],
+        []
+      ],
+      "PASS": true
+    },
+    {
+      "id": "7d4.A.dilemma",
+      "actualMatrix": {
+        "CC": [
+          3,
+          3
+        ],
+        "CD": [
+          0,
+          5
+        ],
+        "DC": [
+          5,
+          0
+        ],
+        "DD": [
+          1,
+          1
+        ]
+      },
+      "actualPureNE": [
+        "DD"
+      ],
+      "actualStrictDominance": [
+        [
+          "D"
+        ],
+        [
+          "D"
+        ]
+      ],
+      "expectedPureNE": [
+        "DD"
+      ],
+      "expectedStrictDominance": [
+        [
+          "D"
+        ],
+        [
+          "D"
+        ]
+      ],
+      "PASS": true
+    },
+    {
+      "id": "7d4.B.coordination",
+      "actualMatrix": {
+        "AA": [
+          4,
+          3
+        ],
+        "AB": [
+          0,
+          0
+        ],
+        "BA": [
+          0,
+          0
+        ],
+        "BB": [
+          3,
+          4
+        ]
+      },
+      "actualPureNE": [
+        "AA",
+        "BB"
+      ],
+      "actualStrictDominance": [
+        [],
+        []
+      ],
+      "expectedPureNE": [
+        "AA",
+        "BB"
+      ],
+      "expectedStrictDominance": [
+        [],
+        []
+      ],
+      "PASS": true
+    }
+  ],
+  "actualCandidateSHA256": "6f93e1f1f49c38b3d0bd67e83426670bb75ccf6ee1f44bb5f69b8865b7304bba"
+}

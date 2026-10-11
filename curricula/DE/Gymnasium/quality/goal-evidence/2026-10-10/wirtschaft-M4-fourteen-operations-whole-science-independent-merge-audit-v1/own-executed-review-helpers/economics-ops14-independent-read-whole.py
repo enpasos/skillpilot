@@ -1,0 +1,6 @@
+from pathlib import Path
+import json,gzip,sys
+D=Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-fourteen-finance-business-and-representation-KEEP-first-current597-author-b-v1');b=json.loads((D/'whole-fourteen-finance-business-representation-human-source-labels-and-learner-solutions.DRAFT-author-v2.json').read_text());x=json.loads(gzip.decompress((D/'actual-current597-fourteen-whole-contracts-original-P28-ten-existing-materials-and64-scope-KEEP-first.AUTHOR-intake.json.gz').read_bytes()));gm={r['goalId']:r for r in x['whole14CurrentDEENContractsAndOriginalP28']}
+for n in map(int,sys.argv[1:]):
+ m=b[n];r=gm[m['requires'][0]];print('INDEX',n);print('CURRENT-WHOLEGOAL',json.dumps(r['wholeCurrentDEENGoal'],ensure_ascii=False));print('WHOLE-ORIGINAL-P-PROFILE',json.dumps(r['wholeOriginalPositiveRecord']['profile'],ensure_ascii=False));print('MATERIAL-OUTER-AND-EXAM-META',json.dumps({k:v for k,v in m.items() if k!='examData'},ensure_ascii=False),json.dumps({k:v for k,v in m['examData'].items() if k not in ['taskContent','taskContentEn','solutionContent','solutionContentEn']},ensure_ascii=False))
+ for k in ['taskContent','taskContentEn','solutionContent','solutionContentEn']:print(k, m['examData'][k])

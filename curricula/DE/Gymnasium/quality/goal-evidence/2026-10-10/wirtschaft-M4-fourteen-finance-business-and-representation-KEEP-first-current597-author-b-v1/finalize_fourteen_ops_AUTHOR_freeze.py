@@ -1,0 +1,55 @@
+"""Final portable inert author handoff; no self science/scope completion."""
+import json,gzip,hashlib,subprocess
+from pathlib import Path
+from jsonschema import Draft202012Validator
+ROOT=Path('/home/enpasos/projects/skillpilot');O=Path(__file__).resolve().parent
+def h(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def b(p):return dict(path=str(p.relative_to(ROOT)),sha256=h(p),bytes=p.stat().st_size)
+def save(n,x):
+ p=O/n;assert not p.exists();p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');return p
+intake=O/'actual-current597-fourteen-whole-contracts-original-P28-ten-existing-materials-and64-scope-KEEP-first.AUTHOR-intake.json.gz'
+I=json.loads(gzip.decompress(intake.read_bytes()));base=ROOT/I['immutableWholeCurrent597']['path'];assert h(base)==I['immutableWholeCurrent597']['sha256']
+before=json.loads(base.read_text());by={g['id']:g for g in before['goals']};active=ROOT/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json';cur=json.loads(active.read_text());now={g['id']:g for g in cur['goals']};assert h(active)==h(base) and len(cur['goals'])==597
+M=json.loads((O/'whole-fourteen-finance-business-representation-human-source-labels-and-learner-solutions.DRAFT-author-v2.json').read_text());assert len(M)==14
+schema=ROOT/'contracts/curriculum-package/v1/compiled-landscape.schema.json';s=json.loads(schema.read_text());v=Draft202012Validator({'$schema':s['$schema'],'$defs':s['$defs'],'$ref':'#/$defs/goal'})
+errors=[dict(id=m['id'],path=list(e.path),error=e.message) for m in M for e in v.iter_errors(dict(m,semanticKind='practiceAssessment'))];assert not errors
+selected={r['goalId']:r for r in I['whole14CurrentDEENContractsAndOriginalP28']};assert len(selected)==14
+for m in M:
+ e=m['examData'];gid=m['requires'][0];g=selected[gid]['wholeCurrentDEENGoal'];assert now[gid]==g and by[gid]==g
+ assert m['requires']==e['coveredGoalIds']==[gid] and e['reviewStatus']=='draft';assert m['tags']==g['tags']+['Practice','Assessment'];assert m['phase']==g['dimensionTags']['phase']
+ assert e['scoring']['maxPoints']==24 and e['scoring']['passingPoints']==15 and len(e['scoring']['steps'])==6 and all(r['points']==4 for r in e['scoring']['steps'])
+ for k in ['taskContent','taskContentEn','solutionContent','solutionContentEn']:assert isinstance(e[k],str) and len(e[k])>150
+ assert len(m['contains'])==0 and m['extendedData']['applicabilityFromRequires'] is True and m['id'] not in by
+assert len({m['id'] for m in M})==14
+records={};conf=[]
+for r in I['whole43OriginalConfigAndProfileBindings']:
+ for key in ['config','reviewWholeBytes']:
+  z=r[key];p=ROOT/z['path'];assert h(p)==z['sha256'],str(p)
+ p=ROOT/r['reviewWholeBytes']['path'];lines=[json.loads(x) for x in p.read_text().splitlines() if x.strip()]
+ for q in lines:
+  assert q['goalId'] not in records;records[q['goalId']]=q
+ conf.append(r)
+assert len(records)==336 and sum(len(x['profile']['applicationCaseBriefs']) for x in records.values())==685
+for gid,r in selected.items():assert records[gid]==r['wholeOriginalPositiveRecord']
+sem=ROOT/I['wholeSemanticLedger']['path'];reg=ROOT/I['wholeRegistry']['path'];assert h(sem)==I['wholeSemanticLedger']['sha256'];assert h(reg)==I['wholeRegistry']['sha256']
+S=json.loads(sem.read_text());ordinary=[r['goalId'] for r in S['decisions'] if r['semanticKind']=='curricularAtomic'];assert len(ordinary)==336
+assert all(now[x]==by[x] for x in ordinary)
+retained=[r['wholeCurrentMaterial'] for r in I['wholeTenExistingMaterials']];assert len(retained)==10 and all(now[g['id']]==g for g in retained)
+closure=json.loads((O/'actual-fourteen-unplaced-current597-final-ops-closures-gzip-input.native-AUTHOR-v2.json').read_text());assert closure['actualBodyCount']==14 and closure['actualUnresolvedReferenceCount']==0
+assert closure['actualFinalBodySHA256']==h(O/'whole-fourteen-finance-business-representation-human-source-labels-and-learner-solutions.DRAFT-author-v2.json')
+wholeMissing=[dict(goalId=r['goalId'],viewPath=x['viewPath'],jurisdiction=x['jurisdiction'],scopeFilters=x['scopeFilters']) for r in I['whole14CurrentDEENContractsAndOriginalP28'] for x in r['actualMissingScopeContexts']]
+checks=save('actual-final-fourteen-whole-DRAFT-current597-P336685-and-scope-boundaries.AUTHOR-endguards.json',dict(role='AUTHOR technical/content binding guard, not independent whole science or scope',actualActiveCurrentCANAtFreeze=b(active),immutableInput=b(base),actualWholeBodyCount=14,actualCaseVariants=28,actualSubjectTasks=84,conditionalPracticeSchemaErrors=errors,actualCurrentOriginalPProfiles=336,actualOriginalPerformanceCases=685,actualSelectedProfiles=14,actualSelectedOriginalPerformanceCases=28,all336OrdinaryWholeObjectsExact=True,all43WholeConfigProfileInputsExact=conf,allTenRetainedMaterialsWholeExact=True,all14SingleCoveredRequiredIdsAndOriginalCourseTagsExact=True,all14DRAFT=True,nativeUnplacedWholeUnresolvedReferences=0,missingScopeContextsRemainUnqualified=wholeMissing,selectedActualMissingContextCount=len(wholeMissing),historicalGoalReviewsRestarted=0,activeWrites=0,newOrdinaryGoals=0,newImages=0,strictNewClosures=0,restoredBindingClosures=0,noSEMKindOrSourceOrApplicabilityCompilerOrViewsNavReleaseQualification=True,separateHumanReleaseGatesPreserved=True))
+# Exact physical files: no symlink inputs, all small JSON parseable, gzip contains the original whole intake.
+files=sorted(p for p in O.rglob('*') if p.is_file());assert not any(p.is_symlink() for p in files)
+formats=[]
+for p in files:
+ if p.suffix=='.json':json.loads(p.read_text());formats.append(str(p.relative_to(O)))
+ if p.suffix=='.gz':json.loads(gzip.decompress(p.read_bytes()));formats.append(str(p.relative_to(O)))
+ paths=[str(p.relative_to(ROOT)) for p in files]
+ignored=subprocess.run(['git','check-ignore','--no-index','--stdin'],cwd=ROOT,input='\n'.join(paths)+'\n',capture_output=True,text=True);assert ignored.returncode in [0,1];assert not ignored.stdout.strip(),ignored.stdout
+fmt=save('actual-portable-own-artifact-JSON-gzip-XLSX-ignore-and-symlink-guards.json',dict(role='AUTHOR actual portable format guards',actualParsedJSONOrGzipCount=len(formats),actualParsedPaths=formats,actualSymlinkInputs=0,actualGitIgnorePaths=[],actualGitIgnoreExit=ignored.returncode,allRawThirdPartyFullTextsPrivate=True,actualWorkbookFiles=['own-four-spreadsheet-cases.before-actual-input-change.xlsx','own-four-spreadsheet-cases.after-actual-input-change.xlsx']))
+hist=save('actual-author-technical-failure-boundaries-not-positive-evidence.json',dict(role='AUTHOR actual unsuccessful read/setup attempts, no scientific PASS inferred',failures=[dict(step='First finalizer context label',error='KeyError: scopeLabel',effect='No freeze artifact written; actual viewPath/jurisdiction/scopeFilters used in corrected finalizer, original helper preserved in history.'),dict(step='First parser import',error='ModuleNotFoundError: bs4',effect='No fetch or output; own HTMLParser used afterward.'),dict(step='First original-P inspection',error="KeyError: performanceCases",effect='No artifact or judgment; actual key applicationCaseBriefs used afterward.'),dict(step='First retained material inspection in earlier continuation',error='KeyError: taskContentEn',effect='No artifact or judgment; actual language presence explicitly recorded in final retained-input successor.'),dict(step='First private native argv',error='ERR_MODULE_NOT_FOUND due app/app path',effect='No native function; actual failed command preserved in history and correct two commands succeeded.')],unavailableSpreadsheetHost='No libreoffice/soffice executable in current PATH; no host rendering or host recalculation claimed.',actualSavedXLSXAndRationalFormulaVerification=True))
+manifest=save('actual-final-fourteen-ops-current597-portable-author-freeze.manifest.json',dict(role='AUTHOR immutable portable inputs; no foreign KEEP',files=[b(p) for p in sorted(p for p in O.rglob('*') if p.is_file())],externallyImmutableAfterHandoff=True))
+body=O/'whole-fourteen-finance-business-representation-human-source-labels-and-learner-solutions.DRAFT-author-v2.json'
+handoff=save('actual-final-fourteen-ops-current597-whole-DEEN-P28-spreadsheet-DRAFT.author-handoff.json',dict(role='AUTHOR only; independent whole science and scope pending',wholeBodies=b(body),wholeCurrentOriginal597=b(base),whole14ContractsP28TenOldMaterialsAnd64ActualScopesGzip=b(intake),manifest=b(manifest),endguards=b(checks),wholeValidRetainedInputBindings=b(O/'actual-ten-retained-whole-inputs-exact-language-presence-qualified-KEEP-first-successor-v2.json'),actualOwnPrimarySelectedReads=b(O/'actual-seven-own-current-primary-selected-reads-and-bounded-DEEN-aid.AUTHOR.json'),actualOwnWholeCounterworks=b(O/'actual-own-fourteen-fair-core-counter-and-second-omission-works252-manual-step-marks.AUTHOR.json'),actualOwnRationalChecks=b(O/'actual-own-exact-finance-data-rational-and-three-classification-checks.AUTHOR.json'),actualSavedXLSXAndTwentyFormulaChecks=b(O/'actual-four-saved-spreadsheet-cases-five-input-changes-six-linked-charts.AUTHOR.json'),actualNativeUnplacedClosure=b(O/'actual-fourteen-unplaced-current597-final-ops-closures-gzip-input.native-AUTHOR-v2.json'),actualCounts=dict(wholeBodies=14,caseVariants=28,subjectTasks=84,originalProfiles=14,originalPerformanceCases=28,ownWholeWorks=42,ownManualStepMarks=252,ownRationalChecks=84,ownSavedFormulaChecks=20,ownClassificationChecks=3,actualWorkbookSheets=4,actualWorkbookCharts=6,actualWorkbookFormulas=10,actualWorkbookInputChanges=5,selectedMissingScopes=60),integrationInstructions='Only independently qualified new bodies later. Root owns separate kind/status, phase-local navigation, source/config bindings and country/course views. Never bulk-write the original597 snapshot. Keep all ordinary IDs/tags/requires, originalP and ten old whole materials unchanged.',futureScopeScienceBoundaries='No wholeCompiler/CQR104/Source/Scope/Nav/Release/SEM qualification is asserted by the unplaced closure check. applicabilityFromRequires is applicability metadata, not source evidence.',historicalArtifactsPreserved=True,activeWrites=0,newImages=0,strictNewClosures=0,restoredBindingClosures=0,humanReviewApprovalOrTrialClaim=False,separateHumanReleaseGatesPreserved=True))
+print(json.dumps(dict(handoff=b(handoff),body=b(body),actualBodies=14,strictNetIncrease=0)))

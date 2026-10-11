@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3c7e2c30fc5820a768a5b3ad74d587948b9cb1e970e3dbd8e7bb2f6c801dfe4d",
+  "reviewInputFingerprint": "sha256:45e5021de8152e0297755047cb2874514f049a2017a8f9aebb34100c7f616135",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-D64-preserved-pair-binding-10-a",
+      "roundId": "wirtschaft-current346-D64-preserved-pair-binding-10-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-D64-preserved-pair-binding-10-independent-a",
+      "runIds": [
+        "wirtschaft-current336-D124-v19-b09-independently-executed-a-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 / Codex (precise deployment version not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-D64-preserved-pair-binding-10-b",
+      "roundId": "wirtschaft-current346-D64-preserved-pair-binding-10-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-D64-preserved-pair-binding-10-independent-b",
+      "runIds": [
+        "wirtschaft-current336-D124-b09-independent-b-actual-run-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 (Codex agent)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "c7b03538-25a2-510b-8fd4-a81bcc3de406",
+      "firstRecordId": "current336-D124-b09-a-04-c7b03538-25a2-510b-8fd4-a81bcc3de406",
+      "secondRecordId": "wirtschaft-current336-D124-b09-independent-b-actual-run-v1-c7b03538-25a2-510b-8fd4-a81bcc3de406",
+      "firstRunId": "wirtschaft-current336-D124-v19-b09-independently-executed-a-v1",
+      "secondRunId": "wirtschaft-current336-D124-b09-independent-b-actual-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b5762a90-f132-535b-88ee-29dc7586ee59",
+      "firstRecordId": "current336-D124-b09-a-08-b5762a90-f132-535b-88ee-29dc7586ee59",
+      "secondRecordId": "wirtschaft-current336-D124-b09-independent-b-actual-run-v1-b5762a90-f132-535b-88ee-29dc7586ee59",
+      "firstRunId": "wirtschaft-current336-D124-v19-b09-independently-executed-a-v1",
+      "secondRunId": "wirtschaft-current336-D124-b09-independent-b-actual-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+      "firstRecordId": "current336-D124-b09-a-09-6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+      "secondRecordId": "wirtschaft-current336-D124-b09-independent-b-actual-run-v1-6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+      "firstRunId": "wirtschaft-current336-D124-v19-b09-independently-executed-a-v1",
+      "secondRunId": "wirtschaft-current336-D124-b09-independent-b-actual-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

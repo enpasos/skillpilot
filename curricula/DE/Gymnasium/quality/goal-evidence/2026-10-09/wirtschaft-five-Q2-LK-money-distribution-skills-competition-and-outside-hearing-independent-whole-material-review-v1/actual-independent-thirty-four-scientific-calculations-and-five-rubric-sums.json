@@ -1,0 +1,473 @@
+{
+  "schemaVersion": "independent-scientific-calculation-v1",
+  "count": 39,
+  "checks": [
+    {
+      "material": "money",
+      "scientificCheck": "adaptive update 2+.4*(5-2)",
+      "independentResult": "16/5",
+      "authorExpectedOrExplicitBoundary": "16/5",
+      "PASS": true
+    },
+    {
+      "material": "money",
+      "scientificCheck": "state-weighted expectation p=.7",
+      "independentResult": "29/10",
+      "authorExpectedOrExplicitBoundary": "29/10",
+      "PASS": true
+    },
+    {
+      "material": "money",
+      "scientificCheck": "solution-only p=.4 hypothetical; arithmetic valid but task input missing",
+      "independentResult": "19/5",
+      "authorExpectedOrExplicitBoundary": "19/5",
+      "PASS": true
+    },
+    {
+      "material": "money",
+      "scientificCheck": "QE-bank double entry for central bank/bank/private",
+      "independentResult": [
+        0,
+        0,
+        0
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        0,
+        0,
+        0
+      ],
+      "PASS": true
+    },
+    {
+      "material": "money",
+      "scientificCheck": "QE-private double entry for central bank/bank/private",
+      "independentResult": [
+        0,
+        0,
+        0
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        0,
+        0,
+        0
+      ],
+      "PASS": true
+    },
+    {
+      "material": "money",
+      "scientificCheck": "QT-bank double entry for central bank/bank/private",
+      "independentResult": [
+        0,
+        0,
+        0
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        0,
+        0,
+        0
+      ],
+      "PASS": true
+    },
+    {
+      "material": "money",
+      "scientificCheck": "QT-private double entry for central bank/bank/private",
+      "independentResult": [
+        0,
+        0,
+        0
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        0,
+        0,
+        0
+      ],
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "Gini independently from pairwise differences rather than supplied area formula",
+      "independentResult": "13/40",
+      "authorExpectedOrExplicitBoundary": "13/40",
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "after transfer pairwise Gini",
+      "independentResult": "1/5",
+      "authorExpectedOrExplicitBoundary": "1/5",
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "re-sorted Lorenz cumulative shares",
+      "independentResult": [
+        "3/20",
+        "7/20",
+        "3/5",
+        "1"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "3/20",
+        "7/20",
+        "3/5",
+        "1"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "pension gap and percentage cut",
+      "independentResult": [
+        30,
+        "1/4"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        30,
+        "1/4"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "old benefits plus new saving, funding sources",
+      "independentResult": [
+        140,
+        140
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        140,
+        140
+      ],
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "before/after L,H disposable means",
+      "independentResult": [
+        "100",
+        "300",
+        "120",
+        "280"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "100",
+        "300",
+        "120",
+        "280"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "different individual L incomes before",
+      "independentResult": [
+        80,
+        120
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        80,
+        120
+      ],
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "extra take-up cost and H-finance",
+      "independentResult": [
+        2000,
+        2000
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        2000,
+        2000
+      ],
+      "PASS": true
+    },
+    {
+      "material": "distribution",
+      "scientificCheck": "relative threshold,gap,and cash supplement",
+      "independentResult": [
+        "1320",
+        "270",
+        1150
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "1320",
+        "270",
+        1150
+      ],
+      "PASS": true
+    },
+    {
+      "material": "skills",
+      "scientificCheck": "hours before/A/B",
+      "independentResult": [
+        8000,
+        6400,
+        7680
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        8000,
+        6400,
+        7680
+      ],
+      "PASS": true
+    },
+    {
+      "material": "skills",
+      "scientificCheck": "FTE before/A/B plus remaining fall from baseline",
+      "independentResult": [
+        "200",
+        "160",
+        "192",
+        "8"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "200",
+        "160",
+        "192",
+        "8"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "skills",
+      "scientificCheck": "fixed hourly-pay percentage loss",
+      "independentResult": "-1/5",
+      "authorExpectedOrExplicitBoundary": "-1/5",
+      "PASS": true
+    },
+    {
+      "material": "skills",
+      "scientificCheck": "training course difference/later difference-in-changes",
+      "independentResult": [
+        -15,
+        10
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        -15,
+        10
+      ],
+      "PASS": true
+    },
+    {
+      "material": "skills",
+      "scientificCheck": "accepted-clinic-job descriptive unit cost",
+      "independentResult": "5000",
+      "authorExpectedOrExplicitBoundary": "5000",
+      "PASS": true
+    },
+    {
+      "material": "skills",
+      "scientificCheck": "demographic supply; headcount not FTE",
+      "independentResult": [
+        "6000",
+        "6300",
+        "300"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "6000",
+        "6300",
+        "300"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "skills",
+      "scientificCheck": "register partitions and actual job entries",
+      "independentResult": [
+        40,
+        20
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        40,
+        20
+      ],
+      "PASS": true
+    },
+    {
+      "material": "competition",
+      "scientificCheck": "total emissions and intensity change",
+      "independentResult": [
+        1200,
+        1280,
+        "-1/3"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        1200,
+        1280,
+        "-1/3"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "competition",
+      "scientificCheck": "absolute emission increase",
+      "independentResult": "1/15",
+      "authorExpectedOrExplicitBoundary": "1/15",
+      "PASS": true
+    },
+    {
+      "material": "competition",
+      "scientificCheck": "explicit fictional aid maximum",
+      "independentResult": "30",
+      "authorExpectedOrExplicitBoundary": "30",
+      "PASS": true
+    },
+    {
+      "material": "competition",
+      "scientificCheck": "sequential regulatory effects",
+      "independentResult": [
+        1120,
+        "4536/5",
+        "5054/5"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        1120,
+        "4536/5",
+        "5054/5"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "competition",
+      "scientificCheck": "actual versus half-effect target test",
+      "independentResult": [
+        true,
+        false
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        true,
+        false
+      ],
+      "PASS": true
+    },
+    {
+      "material": "outside",
+      "scientificCheck": "firm pay and prebonus profit after stipulated rise",
+      "independentResult": [
+        "105",
+        "35",
+        "0"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "105",
+        "35",
+        "0"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "outside",
+      "scientificCheck": "bonuses before/after for two firms",
+      "independentResult": [
+        "4",
+        "1/2",
+        "7/2",
+        "0"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "4",
+        "1/2",
+        "7/2",
+        "0"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "outside",
+      "scientificCheck": "total pay/postbonus profits before",
+      "independentResult": [
+        "104",
+        "201/2",
+        "36",
+        "9/2"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "104",
+        "201/2",
+        "36",
+        "9/2"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "outside",
+      "scientificCheck": "total pay/postbonus profits after",
+      "independentResult": [
+        "217/2",
+        "105",
+        "63/2",
+        "0"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        "217/2",
+        "105",
+        "63/2",
+        "0"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "outside",
+      "scientificCheck": "annual rail interest plus maintenance",
+      "independentResult": "7/5",
+      "authorExpectedOrExplicitBoundary": "7/5",
+      "PASS": true
+    },
+    {
+      "material": "outside",
+      "scientificCheck": "protection gross, take-up count/outlay",
+      "independentResult": [
+        100000,
+        100000,
+        "320",
+        "80000"
+      ],
+      "authorExpectedOrExplicitBoundary": [
+        100000,
+        100000,
+        "320",
+        "80000"
+      ],
+      "PASS": true
+    },
+    {
+      "material": "q2-LK-money-and-currency-union",
+      "scientificCheck": "sum actual point budgets",
+      "independentResult": 40,
+      "authorExpectedOrExplicitBoundary": 40,
+      "PASS": true
+    },
+    {
+      "material": "q2-LK-distribution-social-security",
+      "scientificCheck": "sum actual point budgets",
+      "independentResult": 50,
+      "authorExpectedOrExplicitBoundary": 50,
+      "PASS": true
+    },
+    {
+      "material": "q2-LK-skills-and-hours",
+      "scientificCheck": "sum actual point budgets",
+      "independentResult": 44,
+      "authorExpectedOrExplicitBoundary": 44,
+      "PASS": true
+    },
+    {
+      "material": "q2-LK-competition-sustainable-mobility",
+      "scientificCheck": "sum actual point budgets",
+      "independentResult": 56,
+      "authorExpectedOrExplicitBoundary": 56,
+      "PASS": true
+    },
+    {
+      "material": "q2-outside-national-policy-hearing",
+      "scientificCheck": "sum actual point budgets",
+      "independentResult": 48,
+      "authorExpectedOrExplicitBoundary": 48,
+      "PASS": true
+    }
+  ],
+  "allPASS": true,
+  "limits": "No monetary model is an empirical causal guarantee. Third money result mathematically correct but not supplied by task. Fictional grants do not claim general EU law. Numeric correctness does not close scope/portability findings."
+}

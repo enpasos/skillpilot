@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften: technische Fortführung gültiger Beschreibungsprüfungen 13</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften: technische Fortführung gültiger Beschreibungsprüfungen 13</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>6 atomare Lernziele</dt><dd>10 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:economics-current-canonical-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-b4dde3c304021f05e1d6d857" aria-label="Wirtschaftswissenschaften"><a href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h2>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:968172f6-cd1c-5733-ba76-aa59817735eb" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-77289101b2350d37198522ff" aria-label="Q1 Demokratie im Mehrebenensystem"><a href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322"><span class="toc-entry-label">Q1&#160;<wbr>Demokratie&#160;<wbr>im&#160;<wbr>Mehrebenensystem</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:3dd3102b-ce1f-5d7d-a766-496deddedaec" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-71905fa80f2c0feeb8268c02" aria-label="Demokratie jenseits des Nationalstaats"><a href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322"><span class="toc-entry-label">Demokratie&#160;<wbr>jenseits&#160;<wbr>des&#160;<wbr>Nationalstaats</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:067ee96c-97ae-5576-9f61-27a022914f87" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-743e8339abd367676ba562cc" aria-label="Q3 Globalisierung und Außenwirtschaft"><a href="#goal-09e58ea8-1920-5600-bd2b-cc1f199d051f"><span class="toc-entry-label">Q3&#160;<wbr>Globalisierung&#160;<wbr>und&#160;<wbr>Außenwirtschaft</span></a></h4>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:72920fcb-4afb-5ba4-88c1-b1c8af2f9ca5" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-f8073aa88d09cd8443e3f385" aria-label="Globalisierung beschreiben"><a href="#goal-09e58ea8-1920-5600-bd2b-cc1f199d051f"><span class="toc-entry-label">Globalisierung&#160;<wbr>beschreiben</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:47e3e4b9-d5df-51cc-ba14-8ed9ecf70d70" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-5c426461d4f51a2e14e325ea" aria-label="Wechselkurse und Währungspolitik"><a href="#goal-b456e539-24bb-5ec5-a996-14c9c77b64d0"><span class="toc-entry-label">Wechselkurse&#160;<wbr>und&#160;<wbr>Währungspolitik</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:40f72858-337d-5f96-973d-e8041c112b12" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-31d9de1272d5a87a053ae6a2" aria-label="Außenwirtschaftspolitik"><a href="#goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4"><span class="toc-entry-label">Außenwirtschaftspolitik</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-082d9f7769f8723ddedca2e2" aria-label="Q4 Wirtschaftsethik &amp; Entwicklung"><a href="#goal-c9847c36-7a66-5cbd-9aee-60f71a8440de"><span class="toc-entry-label">Q4&#160;<wbr>Wirtschaftsethik&#160;<wbr>&amp;&#160;<wbr>Entwicklung</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:42b3f1db-023f-50ac-8a15-76619b8c0866" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-19077f1b40d728b8b1afdc25" aria-label="Chancen und Grenzen der Globalisierung"><a href="#goal-c9847c36-7a66-5cbd-9aee-60f71a8440de"><span class="toc-entry-label">Chancen&#160;<wbr>und&#160;<wbr>Grenzen&#160;<wbr>der&#160;<wbr>Globalisierung</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322" data-goal-id="8c4d53d1-2617-5e5d-9234-f12d19e38322" data-page-number="1" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:3dd3102b-ce1f-5d7d-a766-496deddedaec" aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-title"><a class="goal-self-link" href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322">EU-Institutionen und Entscheidungsprozesse</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8c4d53d1-2617-5e5d-9234-f12d19e38322</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-71905fa80f2c0feeb8268c02">Demokratie jenseits des Nationalstaats</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:de77e083ec44529b88ed03a0f27ec6986d33f7b507d01a84b8bdef51747eac72" data-rendered-digest="sha256:6b5d17c18b6e244379a10c384b29cd7e734b320fdfdef5b01a433a6f3e93d393" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/8c4d53d1-2617-5e5d-9234-f12d19e38322/8c4d53d1-2617-5e5d-9234-f12d19e38322.png" alt="Eine Kommissionsvertreterin präsentiert einen Vorschlag. Pfeile führen zu Parlament und Rat und von beiden zu einem gemeinsamen Dokument; im Rat sitzen Vertreter mit unterschiedlich farbigen Länderabzeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-description-heading">
+        <p class="section-heading" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Entscheidungsverfahren und Institutionen der EU analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-requires-heading">
+          <p class="section-heading" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-reverse-heading">
+          <p class="section-heading" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-344aed45-70d3-5267-bed4-048a6b50090b" rel="noreferrer noopener"><span>GK: EU-Entscheidungen, Beteiligung und wirtschaftliche Begründungen</span> <code>344aed45-70d3-5267-bed4-048a6b50090b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-64fac140-ab4a-5994-97fe-cb3fef3f78bd" rel="noreferrer noopener"><span>Q1: EU-Gesetzgebung im historischen und verfahrensbezogenen Vergleich</span> <code>64fac140-ab4a-5994-97fe-cb3fef3f78bd</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9a88ee21-93d4-4042-b65c-21e287715433" rel="noreferrer noopener"><span>Q1: EU-Reparaturpolitik, Interessenvertretung und Steuergerechtigkeit</span> <code>9a88ee21-93d4-4042-b65c-21e287715433</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 6</span>
+      <span>Buch-Digest <code>sha256:01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4e17c0f855c3569980c95917501944230cba8e2605704d9a3703d8d02bd81071</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current346-D64-binding-13&amp;edition=curricular-atomic-v1&amp;goalId=8c4d53d1-2617-5e5d-9234-f12d19e38322&amp;goalFingerprint=sha256%3A4e17c0f855c3569980c95917501944230cba8e2605704d9a3703d8d02bd81071&amp;pageFingerprint=sha256%3Aeab84ef739ff36dc73785283cb9809071fd7e969ebeec3593d81c5eb572500f0&amp;bookDigest=sha256%3A01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f" data-goal-id="09e58ea8-1920-5600-bd2b-cc1f199d051f" data-page-number="2" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:067ee96c-97ae-5576-9f61-27a022914f87 goal:72920fcb-4afb-5ba4-88c1-b1c8af2f9ca5" aria-labelledby="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-title"><a class="goal-self-link" href="#goal-09e58ea8-1920-5600-bd2b-cc1f199d051f">Globale Geschäftsprozesse</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>09e58ea8-1920-5600-bd2b-cc1f199d051f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-743e8339abd367676ba562cc">Q3 Globalisierung und Außenwirtschaft</a></li><li><a href="#chapter-f8073aa88d09cd8443e3f385">Globalisierung beschreiben</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b4873b9feb9c73d13a63da4cfebbd57bde6afe5bb46209245accd1b57c608792" data-rendered-digest="sha256:24e3317e2a4de24879e4468c8b8be5b06ccc3e0b1bc65355d9e39949e18b0b5a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/09e58ea8-1920-5600-bd2b-cc1f199d051f/09e58ea8-1920-5600-bd2b-cc1f199d051f.png" alt="Zwei Bildfelder unterscheiden einen Vertrag mit einem externen Lieferanten und die Verlagerung einer Produktion über eine Landesgrenze. Dazwischen weist ein Warnzeichen an einer Lieferroute auf mögliche Risiken hin.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-description-heading">
+        <p class="section-heading" id="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Offshoring, Outsourcing und Lieferkettenrisiken analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-requires-heading">
+          <p class="section-heading" id="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-reverse-heading">
+          <p class="section-heading" id="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-fcf756f1-7252-54cb-9257-de8259090021"><span>Globale Lieferketten und Resilienz</span><code>fcf756f1-7252-54cb-9257-de8259090021</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-1582ec45-1655-5f7c-a2bd-a3fc00e583fa" rel="noreferrer noopener"><span>Transnationale Unternehmen analysieren</span> <code>1582ec45-1655-5f7c-a2bd-a3fc00e583fa</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-09e58ea8-1920-5600-bd2b-cc1f199d051f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-216260cb-0dac-5668-afc4-b36ea31ee3b1" rel="noreferrer noopener"><span>Q3: Globale Unternehmen, Lieferprozesse und Verantwortung</span> <code>216260cb-0dac-5668-afc4-b36ea31ee3b1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-a9bb3071-ec32-55a5-95ca-3935a2316335" rel="noreferrer noopener"><span>Q3: Unternehmensstrategien und globale Prozessgrenzen</span> <code>a9bb3071-ec32-55a5-95ca-3935a2316335</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5" rel="noreferrer noopener"><span>Ethische Aspekte der Globalisierung</span> <code>5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 6</span>
+      <span>Buch-Digest <code>sha256:01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42</code></span>
+      <span>Ziel-Fingerprint <code>sha256:37d5e25798ecf05105cc9b2fa8ddba2fc47556a7fbc2e576f1c4d52983d946eb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current346-D64-binding-13&amp;edition=curricular-atomic-v1&amp;goalId=09e58ea8-1920-5600-bd2b-cc1f199d051f&amp;goalFingerprint=sha256%3A37d5e25798ecf05105cc9b2fa8ddba2fc47556a7fbc2e576f1c4d52983d946eb&amp;pageFingerprint=sha256%3A99af72294a5817dfed218a058dd447faa1e26ff9523dc1a0356ba80ff735a173&amp;bookDigest=sha256%3A01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-fcf756f1-7252-54cb-9257-de8259090021" data-goal-id="fcf756f1-7252-54cb-9257-de8259090021" data-page-number="3" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:067ee96c-97ae-5576-9f61-27a022914f87 goal:72920fcb-4afb-5ba4-88c1-b1c8af2f9ca5" aria-labelledby="goal-fcf756f1-7252-54cb-9257-de8259090021-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-fcf756f1-7252-54cb-9257-de8259090021-title"><a class="goal-self-link" href="#goal-fcf756f1-7252-54cb-9257-de8259090021">Globale Lieferketten und Resilienz</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>fcf756f1-7252-54cb-9257-de8259090021</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-743e8339abd367676ba562cc">Q3 Globalisierung und Außenwirtschaft</a></li><li><a href="#chapter-f8073aa88d09cd8443e3f385">Globalisierung beschreiben</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:79a45fa757969416c7e555cc768248a63ade7fc785b43cd041d2bf2c755707f7" data-rendered-digest="sha256:9cfe85637dc7465b640c0f796d3a29660324b9d02516cca179eafc24fff616bf" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/fcf756f1-7252-54cb-9257-de8259090021/fcf756f1-7252-54cb-9257-de8259090021.png" alt="Eine gestörte internationale Lieferroute ist einer alternativen Route sowie lokaler Produktion und Vorratshaltung gegenübergestellt. Drei Alternativen tragen gleiche offene Zeit- und Kostenfragen; eine Waage verbindet Aufwand und Resilienz.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-fcf756f1-7252-54cb-9257-de8259090021-description-heading">
+        <p class="section-heading" id="goal-fcf756f1-7252-54cb-9257-de8259090021-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verletzlichkeiten globaler Lieferketten und Resilienzstrategien bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-fcf756f1-7252-54cb-9257-de8259090021-requires-heading">
+          <p class="section-heading" id="goal-fcf756f1-7252-54cb-9257-de8259090021-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-09e58ea8-1920-5600-bd2b-cc1f199d051f"><span>Globale Geschäftsprozesse</span><code>09e58ea8-1920-5600-bd2b-cc1f199d051f</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-fcf756f1-7252-54cb-9257-de8259090021-reverse-heading">
+          <p class="section-heading" id="goal-fcf756f1-7252-54cb-9257-de8259090021-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-fcf756f1-7252-54cb-9257-de8259090021-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fcf756f1-7252-54cb-9257-de8259090021-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-7c96779b-9d7c-55d6-9f72-158aa7c9616a" rel="noreferrer noopener"><span>Q3: Lieferketten: Brücke und unabhängiger Ersatz</span> <code>7c96779b-9d7c-55d6-9f72-158aa7c9616a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-fe55b4b3-9eca-46ce-a3a6-f7a0a84daf12" rel="noreferrer noopener"><span>Q3: Lieferkettenresilienz, Währungstrilemma und Kaufrechtsfall</span> <code>fe55b4b3-9eca-46ce-a3a6-f7a0a84daf12</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 6</span>
+      <span>Buch-Digest <code>sha256:01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42</code></span>
+      <span>Ziel-Fingerprint <code>sha256:48c453f052389fecf31b4aabeeec8ee87c9b684561c13d1a82e128f31f51f769</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current346-D64-binding-13&amp;edition=curricular-atomic-v1&amp;goalId=fcf756f1-7252-54cb-9257-de8259090021&amp;goalFingerprint=sha256%3A48c453f052389fecf31b4aabeeec8ee87c9b684561c13d1a82e128f31f51f769&amp;pageFingerprint=sha256%3Ac3e9eb2b80f66caf85d2e651d60d79d7ec3c2ce69e919512b44cf42dcc7ecf0c&amp;bookDigest=sha256%3A01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0" data-goal-id="b456e539-24bb-5ec5-a996-14c9c77b64d0" data-page-number="4" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:067ee96c-97ae-5576-9f61-27a022914f87 goal:47e3e4b9-d5df-51cc-ba14-8ed9ecf70d70" aria-labelledby="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-title"><a class="goal-self-link" href="#goal-b456e539-24bb-5ec5-a996-14c9c77b64d0">Wechselkursregime vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b456e539-24bb-5ec5-a996-14c9c77b64d0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-743e8339abd367676ba562cc">Q3 Globalisierung und Außenwirtschaft</a></li><li><a href="#chapter-5c426461d4f51a2e14e325ea">Wechselkurse und Währungspolitik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:415abe34a06556da8d20472d12e3fd00b30b6e66aa84538406fa27e27c01287c" data-rendered-digest="sha256:61ecf76b14e01a58c08b5409b508763309c89e2669d1acd5e3f66ef79c47168a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b456e539-24bb-5ec5-a996-14c9c77b64d0/b456e539-24bb-5ec5-a996-14c9c77b64d0.png" alt="Drei Bootsmetaphern vergleichen feste, flexible und gesteuerte Wechselkurssysteme: Hafenbindung, Wellenbewegung und gezielter Eingriff. Vor- und Nachteilssymbole sowie offene Fragen begleiten eine diskutierende Gruppe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-description-heading">
+        <p class="section-heading" id="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Vor- und Nachteile fester, flexibler und gemanagter Wechselkurssysteme bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-requires-heading">
+          <p class="section-heading" id="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-reverse-heading">
+          <p class="section-heading" id="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-13b20cee-8977-5b3f-938b-2064e96f2a5b" rel="noreferrer noopener"><span>Wechselkursregime vergleichen</span> <code>13b20cee-8977-5b3f-938b-2064e96f2a5b</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b456e539-24bb-5ec5-a996-14c9c77b64d0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-0ea0ceb5-6107-5c4f-8adf-fc7fb98b48ad" rel="noreferrer noopener"><span>Q3: Drei Wechselkursregime unter Finanzierungsschocks</span> <code>0ea0ceb5-6107-5c4f-8adf-fc7fb98b48ad</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-7d632b0b-60b8-5c33-8094-ef1569b313dc" rel="noreferrer noopener"><span>Makroökonomisches Trilemma</span> <code>7d632b0b-60b8-5c33-8094-ef1569b313dc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 6</span>
+      <span>Buch-Digest <code>sha256:01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d022a94573b9303b6b232dba733ad80a213d9d59686e786faddb8b87a102623d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current346-D64-binding-13&amp;edition=curricular-atomic-v1&amp;goalId=b456e539-24bb-5ec5-a996-14c9c77b64d0&amp;goalFingerprint=sha256%3Ad022a94573b9303b6b232dba733ad80a213d9d59686e786faddb8b87a102623d&amp;pageFingerprint=sha256%3A2b7fa9c9e3901e22780c9f4dda4bb68ee114be27e18903884ce6d0069e226939&amp;bookDigest=sha256%3A01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4" data-goal-id="bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4" data-page-number="5" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:067ee96c-97ae-5576-9f61-27a022914f87 goal:40f72858-337d-5f96-973d-e8041c112b12" aria-labelledby="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-title"><a class="goal-self-link" href="#goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4">Handelsabkommen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-743e8339abd367676ba562cc">Q3 Globalisierung und Außenwirtschaft</a></li><li><a href="#chapter-31d9de1272d5a87a053ae6a2">Außenwirtschaftspolitik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ed38c7b66832812f9a01c90896db97945656eebe88bba1bb21e52dbc7bc0fc2d" data-rendered-digest="sha256:2015115de9c947cecc6f0da32d13478366b2dcf953b3493b47efcac843554d16" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4.png" alt="Zwei Handelsakteure stehen an einem gemeinsamen Zugangstor mit Regeln. Eine Lupe zeigt offene Fragen zu Konsum, Geld und Beschäftigung sowie eine nachdenkliche Person.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-description-heading">
+        <p class="section-heading" id="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zentrale Handelsabkommen und deren Wirkungen bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-requires-heading">
+          <p class="section-heading" id="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-reverse-heading">
+          <p class="section-heading" id="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-87ee2b5a-8d10-51e4-a288-539e5ac251ea" rel="noreferrer noopener"><span>Handelspolitische Trade-offs</span> <code>87ee2b5a-8d10-51e4-a288-539e5ac251ea</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-294f5721-33b8-553d-b62a-32f9a0d28f5c" rel="noreferrer noopener"><span>Q3: CETA und EU-Japan-EPA anhand von Regeln und Betroffenen beurteilen</span> <code>294f5721-33b8-553d-b62a-32f9a0d28f5c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6c58eddd-1315-524d-b87b-9102cce6a3b0" rel="noreferrer noopener"><span>Vorschlag C (GK) - Wechselkursschock und Handelspolitik</span> <code>6c58eddd-1315-524d-b87b-9102cce6a3b0</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 6</span>
+      <span>Buch-Digest <code>sha256:01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6059bb4f41eb50dc6f06e77315df952639dbd07a68929a7a599f632bda035430</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current346-D64-binding-13&amp;edition=curricular-atomic-v1&amp;goalId=bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4&amp;goalFingerprint=sha256%3A6059bb4f41eb50dc6f06e77315df952639dbd07a68929a7a599f632bda035430&amp;pageFingerprint=sha256%3Afcb07aa3a4a15505ef8996842e94713098d589dc0043c61da169dcead290cce9&amp;bookDigest=sha256%3A01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de" data-goal-id="c9847c36-7a66-5cbd-9aee-60f71a8440de" data-page-number="6" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:42b3f1db-023f-50ac-8a15-76619b8c0866" aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-title"><a class="goal-self-link" href="#goal-c9847c36-7a66-5cbd-9aee-60f71a8440de">Geoökonomie und Machtprojektion</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c9847c36-7a66-5cbd-9aee-60f71a8440de</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-19077f1b40d728b8b1afdc25">Chancen und Grenzen der Globalisierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:83ebb97677ea2fa30c56f5a433d4a048a8499d43f99721161e9eb6501ac258db" data-rendered-digest="sha256:b5ea2e0c57390c2355daa2b3bd7eda97f0e57c18ea4914509f57f88ee967d86e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c9847c36-7a66-5cbd-9aee-60f71a8440de/c9847c36-7a66-5cbd-9aee-60f71a8440de.png" alt="Drei Personen wägen wirtschaftliche Chancen gegen Sicherheit und Resilienz ab. Zwei große Bildfelder unterscheiden beschränkten Marktzugang von einer Investitionsprüfung mit den möglichen Ergebnissen Zulassen, Auflagen und Ablehnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-description-heading">
+        <p class="section-heading" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann geoökonomische Strategien (z. B. Maßnahmen an Märkten, Investitionsscreening) analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-requires-heading">
+          <p class="section-heading" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-reverse-heading">
+          <p class="section-heading" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-69e66ab4-481e-5a8c-9ddc-ef4ad5c5062a" rel="noreferrer noopener"><span>Globale Kooperation und Geoökonomie am Dossier analysieren</span> <code>69e66ab4-481e-5a8c-9ddc-ef4ad5c5062a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 6</span>
+      <span>Buch-Digest <code>sha256:01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42</code></span>
+      <span>Ziel-Fingerprint <code>sha256:44e819e1c6cbc33d13ab1e5a7491fdc29a03abba75292da4723189dbfb464629</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current346-D64-binding-13&amp;edition=curricular-atomic-v1&amp;goalId=c9847c36-7a66-5cbd-9aee-60f71a8440de&amp;goalFingerprint=sha256%3A44e819e1c6cbc33d13ab1e5a7491fdc29a03abba75292da4723189dbfb464629&amp;pageFingerprint=sha256%3A098a3bbb78f83f56e06f7f1b2a5dd76fdd603bd91cd0d1b6644d375285e80611&amp;bookDigest=sha256%3A01d6d5b1f9d34c9777836491e522d30dde5437b84910e8f5c30000613780fb42&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,14 @@
+Actual argument vector:
+['app/node_modules/.bin/tsx', 'app/scripts/materializePositiveGoalEvidenceCandidates.ts', '--config', 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-BB2-two-honest-native-positive-and-existing-visual-intake-author-v1/two-BB2-positive-v2.honest-ai-candidate.native-review-config.json', '--candidates', 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-BB2-two-honest-native-positive-and-existing-visual-intake-author-v1/two-BB2-whole-original-fragments.exact-profile-retained.native-author-candidates.json', '--write']
+/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceReview.ts:313
+    throw new Error(`Invalid positive goal-evidence review config: ${ajv.errorsText(validateConfig.errors)}`)
+          ^
+
+
+Error: Invalid positive goal-evidence review config: data/reviewId must match pattern "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    at reviewPositiveGoalEvidenceConfig (/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceReview.ts:313:11)
+    at main (/home/enpasos/projects/skillpilot/app/scripts/materializePositiveGoalEvidenceCandidates.ts:300:20)
+
+Node.js v18.19.1
+
+exitCode=1

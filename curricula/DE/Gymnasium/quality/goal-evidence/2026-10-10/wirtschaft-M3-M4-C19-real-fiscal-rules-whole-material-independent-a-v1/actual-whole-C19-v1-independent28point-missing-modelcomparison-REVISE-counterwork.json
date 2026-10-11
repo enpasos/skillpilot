@@ -1,0 +1,933 @@
+{
+  "status": "REVISE_ONE_REAL_WHOLE_COUNTEREXAMPLE_NOT_WHOLE_KEEP",
+  "reviewer": "economics_m2_source_independent_a",
+  "author": "economics_merge_audit",
+  "reviewedAt": "2026-10-09T23:21:07.094146+00:00",
+  "wholeInputEndguards": [
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-C19-current-national-EU-fiscal-whole-LK-material-author-v1/whole-C19-same-ID-current-DEEN-fiscal-LK-four-contracts.DRAFT-author-successor.json",
+      "sha256": "092e09f054f269d02825dd40ed87a3a57363de1d81b8772c7bf6cc16612e15f5",
+      "bytes": 22689
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-C19-current-national-EU-fiscal-whole-LK-material-author-v1/whole-four-current-curricular-goals-and-eight-valid-bilingual-P-cases.exact-inputs.json",
+      "sha256": "7242fd3a9166e6a64f5b6abef8ac739be4a7abd63a9dbb7d4776709c7e6a7f85",
+      "bytes": 43365
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "ae2bec77e9483af50bd25f782dd287df533b7ddeac859ffe2dc3e3dfc98b4de6",
+      "bytes": 2281828
+    },
+    {
+      "path": "/tmp/skillpilot-economics-C19-current-fiscal-rule-primary-cache-20261009/EU1263.actual.bytes",
+      "sha256": "24118a9c87fc98eef57c4701423afdde3ed21017343159e751346d68ea6f94de",
+      "bytes": 462378
+    },
+    {
+      "path": "/tmp/skillpilot-economics-C19-current-fiscal-rule-primary-cache-20261009/EU1263.whole-norm-cache-only.txt",
+      "sha256": "0d9d6a3b33f0a37083b31267f4721641dbf612cb1a944de7d7399b7fd45fef5a",
+      "bytes": 93731
+    },
+    {
+      "path": "/tmp/skillpilot-economics-C19-current-fiscal-rule-primary-cache-20261009/actual-download-cache.provenance.json",
+      "sha256": "46ba7ae1b2e4847d891c5216750ae58e58f1f6d7bf5b2cd684538680806d9ce3",
+      "bytes": 991
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M3-M4-C19-real-fiscal-rules-whole-material-independent-a-v1/actual-current-GG-and-EU-primary-preparation-and-legal-model-boundaries.NO-KEEP.json",
+      "sha256": "d7f9edb9847cc76f8be5aecd7906a9ac2e4e9316526d728ec5eeeab3ff4a82cf",
+      "bytes": 2438
+    }
+  ],
+  "wholeCandidate": {
+    "id": "c19ee0d7-0ab2-5c6f-8828-bc098a495b09",
+    "title": "Bundeshaushalt: Sozialziele, Finanzierung und nationale/EU-Fiskalregeln",
+    "titleEn": "Federal budget: social aims, funding and national/EU fiscal rules",
+    "description": "Die lernende Person kann anhand eines gegebenen Haushalts- und Regeldossiers soziale Verteilungs- und Anreizziele, Finanzierung und Schuldenbestand sowie unterschiedliche nationale und EU-Fiskalgrenzen analysieren und einen bedingten Haushaltsvorschlag begründen.",
+    "descriptionEn": "Using a supplied budget and rule dossier, the learner can analyse social distribution and incentive aims, funding and the debt stock, distinguish national and EU fiscal constraints, and justify a conditional budget proposal.",
+    "weight": 1,
+    "tags": [
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "577f0e2d-643a-5a0c-833b-301622a6cb00",
+      "d17ff931-085d-56be-932d-3839b5b88ba8",
+      "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+      "753e5ac0-0375-56b9-a733-75701097b151"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-economics",
+      "demandLevel": "AB2",
+      "phase": "Q2"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-HE"
+      ]
+    },
+    "examData": {
+      "reviewStatus": "draft",
+      "coveredGoalIds": [
+        "577f0e2d-643a-5a0c-833b-301622a6cb00",
+        "d17ff931-085d-56be-932d-3839b5b88ba8",
+        "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+        "753e5ac0-0375-56b9-a733-75701097b151"
+      ],
+      "coveredStrands": [
+        "WW_WIRTSCHAFT",
+        "WW_POLITIK"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "**LK – Fallmaterial, Stand der bereitgestellten Regeln: 10. Oktober 2026.** Alle Haushaltszahlen und Staat R sind fiktiv. Die aktuelle Regelhilfe unten ist selbst formuliert; amtliche URLs sind verlinkt. Originalvolltexte sind keine beigelegten Pflichtdateien. Der Fall dient dem begrenzten Modellvergleich, nicht einer rechtlichen Prüfung eines wirklichen Haushalts.\n\n**M1: Fiktiver Bundeshaushalt, alle Beträge in Milliarden Euro.** Das nominale BIP beträgt 5.000. Ausgaben: Soziales 205, Investitionen 70, Zinsen 30, Sonstiges 195; insgesamt 500. Laufende, nicht aus Krediten stammende Einnahmen sind 440: Steuern 390, rechtmäßig erhobene nutzungsbezogene Gebühren 20, sonstige Einnahmen 30. Anfangsschulden: 2.000. Der Jahresfehlbetrag wird durch neue Kredite gedeckt; Tilgungen, finanzielle Transaktionen und andere Bestandsänderungen entfallen. Beiträge zur Sozialversicherung sind zweckgebundene Einnahmen eines getrennten Versicherungssystems, keine bereits verfügbare zusätzliche Einnahme dieses Bundeshaushalts. Geldbeträge allein beweisen keinen Investitionsertrag und keine soziale Wirkung.\n\n**M2: Drei konkret mögliche Sozial-/Finanzierungsänderungen.** Ein Zuschuss sinkt bei 100 zusätzlichem Erwerbseinkommen bisher um 80. Alternative A reduziert den Entzug auf 50 und kostet den Bund im Modell 4 zusätzlich. Steuer- und Erwerbskosten des Beispielhaushalts entfallen. Alternative B kostet ebenfalls 4 und schafft für Haushalte mit Startnachteilen bezahlbare Kinderbetreuung; der Personalengpass begrenzt die verfügbaren Plätze, Erwerbsreaktionen sind unbekannt. Alternative C erhebt 4 zusätzliche Gebühren für Nutzung öffentlicher Infrastruktur; Haushalte mit niedrigem Einkommen müssten ihren Zugang stärker einschränken. Alternativ stehen eine allgemeine Steuererhöhung um 4 oder eine Kürzung anderer Ausgaben um 4 zur Diskussion. Für das Urteil sind Bedarfsprinzip, Beitrags-/Leistungsprinzip und gleiche Zugangschancen als unterschiedliche Kriterien gegeben; kein Kriterium ist allein durch seinen Namen zwingend richtig.\n\n**M3: Nationale Regelhilfe zu Art. 109 Abs. 3 und Art. 115 Abs. 2 GG.** Für den Bund gilt eine strukturelle Kreditgrenze von 0,35 % des nominalen BIP mit symmetrischer Konjunkturberücksichtigung. Der Betrag, um den die gesetzlich genannten Sicherheitsausgaben 1 % des BIP übersteigen, wird von der zu berücksichtigenden Kreditaufnahme abgezogen. Zum Katalog gehören Verteidigung, Zivil-/Bevölkerungsschutz, Nachrichtendienste, Schutz informationstechnischer Systeme und Hilfe für völkerrechtswidrig angegriffene Staaten. Der Fall enthält zusammen 90 solcher richtig zugeordneter Ausgaben, bereits innerhalb der 500 und ohne Doppelzählung. Die genehmigte Konjunkturkomponente erlaubt im Abschwung zusätzlich 5. Weitere Bereinigungen, Notlagenbeschluss und Sondervermögen sind für diesen Modellfall ausgeschlossen. Eine Ausgabe ist nicht schon deshalb ausgenommen, weil sie als Investition bezeichnet wird. Die heutige Grenze für die Ländergesamtheit beträgt ebenfalls 0,35 %; sie ist keine zusätzliche Kreditermächtigung für den Bund und keine identische Grenze für jedes einzelne Land.\n\nAmtliche Fundstellen: [Art. 109 GG](https://www.gesetze-im-internet.de/gg/art_109.html), [Art. 115 GG](https://www.gesetze-im-internet.de/gg/art_115.html).\n\n**M4: Separater fiktiver EU-Mitgliedstaat R.** R hat eine jährliche Defizitquote von 3,4 % und eine Schuldenquote von 68 % des BIP. Sein vom Rat festgesetzter mehrjähriger Nettoausgabenpfad erlaubt für das Folgejahr Index 103, ausgehend von 100. Der Vorschlag der Regierung erreicht 105. Nettoausgaben sind eine bereinigte Ausgabengröße, nicht der gesamte Haushalt und nicht die Defizitquote. Nach der seit 2024 geltenden EU-Regelarchitektur werden solche Pfade vom Rat auf Empfehlung der Kommission festgesetzt und von der Kommission überwacht; 3 % Defizit und 60 % Schulden bleiben Referenzwerte. R hat wegen außergewöhnlicher, nicht kontrollierbarer Umstände mit erheblichen Haushaltsfolgen eine nationale Ausnahmeklausel nach Art. 26 der Verordnung (EU) 2024/1263 beantragt. Im Dossier liegen noch weder eine Kommissionsempfehlung noch eine erlaubende Ratsempfehlung vor. Nur als ausdrücklich bedingte Variante wird angenommen, der Rat würde später eine einjährige Abweichung um höchstens 2 Indexeinheiten erlauben, ohne die mittelfristige Tragfähigkeit zu gefährden. Das ist keine Aussage über eine tatsächliche heutige deutsche EU-Ausnahme. Eine beantragte Ausnahme ist noch keine Erlaubnis; eine erlaubte begrenzte Pfadabweichung beseitigt nicht jeden sonstigen nationalen oder europäischen Prüfmaßstab. Einzelne Referenzwertüberschreitungen beweisen für sich keine sofortige Sanktion.\n\nAmtliche Fundstellen: [Verordnung (EU) 2024/1263, Art. 2, 17, 21, 22 und 26](https://eur-lex.europa.eu/eli/reg/2024/1263/oj/eng), [Erläuterung des Rates zur aktuellen Regelarchitektur](https://www.consilium.europa.eu/en/policies/economic-governance-framework/).\n\n**Aufgaben – insgesamt 30 Punkte, bestanden ab 18.**\n1. Bestimmen Sie die vier Ausgabenanteile, Defizit und Endschulden in M1. Trennen Sie Fluss und Bestand und vergleichen Sie die gegebenen Steuern, Gebühren, Beiträge und Kredite hinsichtlich Verwendung und Lasten. (7 Punkte)\n2. Analysieren Sie A und B nach mindestens zwei der gegebenen Gerechtigkeitskriterien, dem konkreten Erwerbsanreiz bzw. Zugang und den Finanzierungs-/Kapazitätsgrenzen. Berücksichtigen Sie C als Gegenoption, ohne jede Effizienz-/Gerechtigkeitsbeziehung als zwingenden Gegensatz darzustellen. (8 Punkte)\n3. Prüfen Sie die Kreditaufnahme in M1 anhand der nationalen Kategorien und diskutieren Sie die gesonderte EU-Pfadprüfung für R einschließlich des tatsächlichen und bedingten Ausnahmestands. Erläutern Sie mindestens einen Unterschied der Größen oder Verfahren. (8 Punkte)\n4. Begründen Sie einen konkreten Vorschlag A oder B samt Finanzierung und Gegenargument. Prüfen Sie zunächst eine bloße Zusatzkreditfinanzierung von 4 unter unveränderten M3-Bedingungen, dann eine alternative Finanzierung. Trennen Sie gesetzliche Zulässigkeit von wirtschaftlicher Tragfähigkeit und begrenzen Sie behauptete Wirkungen anhand des Materials. (7 Punkte)\n\n**Bewertungsgrenze:** Eine vollständig fehlende oder durchgehend falsche fallbezogene nationale ODER EU-Regelprüfung kann durch reine Haushaltsarithmetik und allgemeine Werturteile nicht kompensiert werden; die Gesamtnote ist dann auf höchstens 17 Punkte begrenzt. Dasselbe gilt, wenn in der gesamten Arbeit entweder jede materialbezogene soziale Verteilungs-/Anreizabwägung oder jede Unterscheidung von Finanzierung, Defizit und Schuldenbestand vollständig fehlt oder durchgehend falsch ist. Tatsächlich richtige Teilprüfungen, Gleichungen und begründete unvollständige Urteile zählen; es besteht keine Vollpunkt-, perfekte-Prosa- oder Pflicht zur Wahl einer bestimmten Alternative. Ein isolierter Fehler oder eine fehlende Einzelheit löst diese Grenze nicht aus.",
+      "solutionContent": "**1 – 7 Punkte.** Ausgabenanteile 41 %, 14 %, 6 % und 39 % (2). Defizit 500−440=60 und Endbestand 2.000+60=2.060 bei ausgeschlossenen sonstigen Bestandsänderungen; Fluss/Bestand unterscheiden (2). Steuern finanzieren ohne individuelle Gegenleistung, Gebühren knüpfen an Nutzung an und können Zugang belasten, Beiträge sind zweckgebunden im getrennten Versicherungsbudget, Kredit verlagert Finanzierung samt Schuldendienst; wenigstens zwei konkrete Vergleiche (3).\n\n**2 – 8 Punkte.** Zusätzlich verfügbares Einkommen bisher 100−80=20, mit A 100−50=50; Anreizänderung ohne Beschäftigungsgarantie (2). Zwei Kriterien tatsächlich am selben Fall vergleichen, etwa Bedürftigkeit/Chancenzugang gegenüber Beitrags-/Leistungsprinzip und dessen Gegenargument (2). B kann Zugang und Erwerbsspielraum gleichzeitig verbessern; Personal/Qualität und unbekannte Reaktionen begrenzen Wirkung, A/B brauchen je 4 Finanzierung (2). C belastet gerade niedrige Einkommen/Zugang; Effizienz und Gerechtigkeit können je Gestaltung kollidieren oder sich ergänzen (2).\n\n**3 – 8 Punkte.** Nationale Grundgrenze 0,0035×5.000=17,5; Sicherheitsschwelle 0,01×5.000=50, abziehbarer Überhang 90−50=40. Bereinigt 60−40−5=15≤17,5, also erfüllt der Modellhaushalt diese bereitgestellte Bundesregel; keine zweite Addition der 90 und keine Investitionsausnahme (3). R überschreitet Referenzwerte, und 105−103=2 liegt ohne Erlaubnis oberhalb des Pfads. Ein Antrag genügt nicht; eine spätere konkrete einjährige Ratserlaubnis kann die gegebenen 2 abdecken, ohne grenzenlose Freiheit oder automatische Sanktion aus den Quoten zu beweisen (3). Nationale strukturelle Bundes-Kreditgröße und symmetrische Konjunkturkomponente von EU-Mitgliedstaats-Defizit/Schuldenquoten und mehrjähriger Nettoausgaben-/Überwachungsgröße sowie jeweiligen Verfahren unterscheiden; nationales Rechenbestehen beweist kein EU-Bestehen oder umgekehrt (2).\n\n**4 – 7 Punkte.** Unter Zusatzkredit 4 steigt Defizit auf 64, Endschulden auf 2.064; bereinigt 64−40−5=19>17,5, Überhang 1,5. Unter unveränderten gegebenen Bedingungen ist reine Zusatzkreditfinanzierung nicht ausreichend zulässig (2). Vollständige Steuerfinanzierung 4 erhöht Einnahmen auf 444, Ausgaben auf 504: Defizit bleibt 60, Endschulden 2.060, bereinigt 15; alternativ konkrete Ausgabenumverteilung mit Zielkonflikt. Beiträge des getrennten Systems sind kein freier Bundesposten; Gebühr kann Zugang gefährden (2). Begründete Wahl A/B mit Kriterium, Finanzierung, Betroffenheit und einem konkreten Gegenargument; rechtliche Erlaubnis garantiert weder Nachhaltigkeit noch sichere Beschäftigung/Produktivität, Personal-, Zins- oder Wirkungsgrenze nennen (3). Mehrere nachvollziehbare Urteile sind möglich; keine politische Mustermeinung ist Pflicht.\n\n**Gesamt:** 30 Punkte, Bestehen ab 18. Die in der Aufgabe veröffentlichte Grenze von 17 schützt nur vollständig fehlende/durchgehend falsche zentrale Leistungen. Teilpunkte für richtige unvollkommene Prüfungen sind ausdrücklich möglich; die Form einer korrekten Gleichung oder Tabelle genügt als Nachweis, wenn sie den Zusammenhang zeigt.",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 7,
+            "description": "DE: Anteile2; Defizit/Endbestand/Fluss vs Bestand2; mindestens zwei konkrete Finanzierungs-/Lastvergleiche3. EN: shares2; deficit/closing stock/flow-stock2; at least two specific funding/burden comparisons3."
+          },
+          {
+            "id": "s2",
+            "points": 8,
+            "description": "DE: Nettoanreiz2; zwei Kriterien2; Betreuung/Kapazität/Finanzierung2; Gebührenzugang und bedingte Effizienz/Gerechtigkeit2. EN: net incentive2; two criteria2; childcare/capacity/funding2; fee access and conditional efficiency/justice2."
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "DE: Nationale Kategorien/Rechnung3; EU-Pfad/aktueller vs bedingter Ausnahmestand3; konkrete Größen-/Verfahrensunterschiede2. EN: national categories/calculation3; EU path/actual vs conditional exception3; specific differences in measures/procedures2."
+          },
+          {
+            "id": "s4",
+            "points": 7,
+            "description": "DE: Zusatzkreditprüfung2; Alternative/Lasten2; bedingtes kriterielles Urteil/Gegenargument/Wirkungsgrenze3. EN: extra borrowing assessment2; alternative/burdens2; conditional criteria-based judgment/counterargument/effect limit3."
+          }
+        ]
+      },
+      "taskContentEn": "**Advanced course (LK) – supplied rules dated 10 October 2026.** All budget figures and state R are fictional. The rule aid below is our own explanation, with official URLs linked. Full original texts are not required attachments. This is a bounded model comparison, not a legal assessment of an actual budget.\n\n**M1: Fictional federal budget; all amounts in EUR billions.** Nominal GDP is 5,000. Expenditure: social spending 205, investment 70, interest 30, other spending 195; total 500. Current non-borrowed revenue is 440: taxes 390, lawfully charged usage fees 20, other revenue 30. Opening debt is 2,000. New borrowing covers the annual deficit; exclude repayments, financial transactions and other stock changes. Social-insurance contributions are earmarked revenue of a separate insurance system, not already available additional revenue for this federal budget. Monetary amounts alone establish neither investment returns nor social effects.\n\n**M2: Three specific social/funding changes.** A benefit currently falls by 80 when earnings increase by 100. Alternative A reduces withdrawal to 50 and adds 4 to federal expenditure in the model. Ignore the example household's taxes and work costs. Alternative B also costs 4 and provides affordable childcare to households facing initial disadvantages; staff shortages limit places and employment responses are unknown. Alternative C raises 4 through additional public-infrastructure usage fees; low-income households would have to restrict access more. Alternatives include a general tax increase of 4 or cutting other expenditure by 4. Needs, contributions/achievement and equal access opportunities are supplied as different criteria; no criterion is necessarily correct simply because of its name.\n\n**M3: National rule aid on Articles 109(3) and 115(2) of the Basic Law.** The federal structural borrowing limit is 0.35% of nominal GDP, with symmetric cyclical adjustment. The amount by which the specified security expenditure exceeds 1% of GDP is deducted from borrowing subject to the limit. Categories include defence, civil/population protection, intelligence services, protecting information systems and aid for states unlawfully attacked. This case has 90 of correctly categorised expenditure, already within the 500 with no double counting. The authorised cyclical component permits an additional 5 in recession. Exclude other adjustments, an emergency resolution and special funds from this model. Labelling spending investment does not itself exempt it. The current limit for the states collectively is also 0.35%; it is neither an additional federal borrowing authorisation nor the same limit for each individual state.\n\nOfficial references: [Article 109](https://www.gesetze-im-internet.de/gg/art_109.html), [Article 115](https://www.gesetze-im-internet.de/gg/art_115.html).\n\n**M4: Separate fictional EU member state R.** R's annual deficit ratio is 3.4% and debt ratio 68% of GDP. Its multiannual net expenditure path set by the Council permits index 103 next year, from 100. The government's proposal reaches 105. Net expenditure is an adjusted expenditure measure, neither total spending nor the deficit ratio. Under the EU framework applicable since 2024, the Council sets these paths on a Commission recommendation and the Commission monitors them; 3% deficit and 60% debt remain reference values. R has requested a national escape clause under Article 26 of Regulation (EU) 2024/1263 because exceptional circumstances outside its control substantially affect its public finances. The dossier contains neither a Commission recommendation nor an authorising Council recommendation yet. As an explicitly conditional variation only, assume the Council later permits a one-year deviation of up to 2 index units without endangering medium-term sustainability. This says nothing about an actual current German EU escape clause. A request is not permission; an authorised limited path deviation does not remove every other national or European test. Reference-value breaches alone do not establish immediate sanctions.\n\nOfficial references: [Regulation (EU) 2024/1263, Articles 2, 17, 21, 22 and 26](https://eur-lex.europa.eu/eli/reg/2024/1263/oj/eng), [Council explanation of the current framework](https://www.consilium.europa.eu/en/policies/economic-governance-framework/).\n\n**Tasks – 30 points; pass at 18.**\n1. Calculate the four spending shares, deficit and closing debt in M1. Distinguish flows from stocks and compare the supplied taxes, fees, contributions and borrowing in use and burden. (7 points)\n2. Analyse A and B using at least two supplied justice criteria, the specific work incentive or access effect, and funding/capacity limits. Include C as an alternative without making every efficiency/justice relationship a necessary conflict. (8 points)\n3. Assess M1 borrowing through the national categories and discuss R's separate EU path assessment, including the actual and conditional escape-clause status. Explain at least one difference in measures or procedures. (8 points)\n4. Justify a specific proposal A or B, its funding and a counterargument. First assess funding the additional 4 solely through borrowing under unchanged M3 conditions, then an alternative funding method. Separate legal permission from economic sustainability and qualify claimed effects using the materials. (7 points)\n\n**Grading boundary:** An entirely absent or consistently wrong case-specific national OR EU rule assessment cannot be offset by budget arithmetic and general value judgments; cap the total at 17. The same applies if the entire submission completely omits or consistently misrepresents either all material-specific social distribution/incentive assessment or all distinctions among funding, deficit and debt stock. Genuinely correct partial assessments, equations and justified incomplete judgments count; full marks, perfect prose or a particular policy choice are not required. An isolated mistake or missing detail does not trigger this boundary.",
+      "solutionContentEn": "**1 – 7 points.** Spending shares: 41%, 14%, 6%, 39% (2). Deficit 500−440=60 and closing stock 2,000+60=2,060 with other stock changes excluded; distinguish flow/stock (2). Taxes fund without an individual exchange, fees depend on use and can burden access, contributions are earmarked in the separate insurance budget, and borrowing shifts finance with debt service; at least two specific comparisons (3).\n\n**2 – 8 points.** Additional disposable income is initially 100−80=20, with A 100−50=50; explain the incentive change without guaranteed employment (2). Apply two criteria to the same case, such as needs/access opportunities versus contributions/achievement and a counterargument (2). B can jointly improve access and work opportunities; staff/quality and unknown responses limit effects, and A/B each need 4 of funding (2). C especially burdens low incomes/access; efficiency and justice may conflict or reinforce each other depending on design (2).\n\n**3 – 8 points.** National basic limit 0.0035×5,000=17.5; security threshold 0.01×5,000=50, deductible excess 90−50=40. Adjusted borrowing 60−40−5=15≤17.5, so this model satisfies the supplied federal rule; neither add the 90 twice nor assume an investment exception (3). R breaches reference values, and 105−103=2 exceeds the path without permission. A request is insufficient; a later specific one-year Council authorisation can cover the supplied 2 without proving unlimited freedom or automatic sanctions from the ratios (3). Distinguish national structural federal borrowing and symmetric cyclical adjustment from EU member-state deficit/debt ratios and multiannual net expenditure/monitoring, including procedures; national arithmetic compliance proves neither EU compliance nor the reverse (2).\n\n**4 – 7 points.** Borrowing the additional 4 raises the deficit to 64 and closing debt to 2,064; adjusted borrowing 64−40−5=19>17.5, excess 1.5. Under the unchanged supplied conditions, funding solely through additional borrowing is not sufficiently authorised (2). Fully tax-funding 4 raises revenue to 444 and spending to 504: deficit stays 60, closing debt 2,060, adjusted borrowing 15; alternatively make a specific expenditure reallocation with its trade-off. Separate-system contributions are not free federal revenue; fees can harm access (2). Justify A/B through a criterion, funding, affected groups and a specific counterargument; legal permission guarantees neither sustainability nor employment/productivity, and identify a staffing, interest or effect limit (3). Different defensible judgments are possible; no prescribed political opinion is required.\n\n**Total:** 30 points, pass at 18. The published cap of 17 protects only completely absent/consistently wrong essential performances. Partial credit for correct imperfect assessments is expressly allowed; an equation or table suffices where it demonstrates the relationship."
+    },
+    "phase": "Q2",
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "a334a745-1d67-4e1d-86a5-dadc04f144d2",
+        "sourceLandscapeTitle": "Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "8521efe3-386a-4b97-9cdc-e033cb999b3b"
+      },
+      "applicabilityFromRequires": true
+    },
+    "type": "atomic"
+  },
+  "wholeCurrentFourGoalsAndEightPcases": {
+    "wholeGoals": [
+      {
+        "id": "577f0e2d-643a-5a0c-833b-301622a6cb00",
+        "title": "Gerechtigkeitskonzepte vergleichen",
+        "titleEn": "Compare concepts of justice",
+        "description": "Die lernende Person kann Modelle zu Sozialpolitik und Staatsfinanzen diskutieren.",
+        "descriptionEn": "The learner can discuss models of social policy and public finance.",
+        "weight": 1.05,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "6bf2d1cc-e745-50dd-a617-71c06a6c6945"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-economics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "WW_WIRTSCHAFT",
+            "WW_POLITIK"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "a334a745-1d67-4e1d-86a5-dadc04f144d2",
+            "sourceLandscapeTitle": "Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "be4aa992-a528-4d56-b643-d308e2deeee8"
+          }
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "577f0e2d-643a-5a0c-833b-301622a6cb00",
+            "title": "Visualisierung: Gerechtigkeitskonzepte vergleichen",
+            "url": "/assets/goal-visualizations/wirtschaftswissenschaften/577f0e2d-643a-5a0c-833b-301622a6cb00/577f0e2d-643a-5a0c-833b-301622a6cb00.png",
+            "provider": "OpenAI Codex image_gen",
+            "description": "Visualisierung zum Lernziel: Gerechtigkeitskonzepte vergleichen.",
+            "altText": "Drei Gedankenfelder zeigen Bedarf, Gleichbehandlung und Chancen. Vier Personen diskutieren um einen öffentlichen Haushaltsbeutel mit verschiedenen Ausgabensymbolen.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "approved_ai"
+          }
+        ]
+      },
+      {
+        "id": "d17ff931-085d-56be-932d-3839b5b88ba8",
+        "title": "Ziele des Sozialstaats abwägen",
+        "titleEn": "Weigh the objectives of the welfare state",
+        "description": "Die lernende Person kann Zielkonflikte zwischen Effizienz und Gerechtigkeit in der Sozialpolitik analysieren.",
+        "descriptionEn": "The learner can analyse trade-offs between efficiency and justice in social policy.",
+        "weight": 1.05,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "577f0e2d-643a-5a0c-833b-301622a6cb00"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-economics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "WW_WIRTSCHAFT",
+            "WW_POLITIK"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "a334a745-1d67-4e1d-86a5-dadc04f144d2",
+            "sourceLandscapeTitle": "Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "a87208a4-7456-440a-ae56-3ec1036e360e"
+          }
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d17ff931-085d-56be-932d-3839b5b88ba8",
+            "title": "Visualisierung: Ziele des Sozialstaats abwägen",
+            "url": "/assets/goal-visualizations/wirtschaftswissenschaften/d17ff931-085d-56be-932d-3839b5b88ba8/d17ff931-085d-56be-932d-3839b5b88ba8.png",
+            "provider": "OpenAI Codex image_gen",
+            "description": "Visualisierung zum Lernziel: Ziele des Sozialstaats abwägen.",
+            "altText": "Eine Waage stellt soziale Absicherung und Effizienzmotiven wie Tätigkeit und Produktion gegenüber. Zwei passende Puzzleteile über der Waage veranschaulichen mögliche Ergänzungen; mehrere Personen diskutieren die Abwägung.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "approved_ai"
+          }
+        ]
+      },
+      {
+        "id": "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+        "title": "Staatsfinanzierung und Verschuldung",
+        "titleEn": "Public finance and debt",
+        "description": "Die lernende Person kann Finanzierungsformen und Verschuldungsgrenzen diskutieren.",
+        "descriptionEn": "The learner can discuss forms of public financing and borrowing limits.",
+        "weight": 1.05,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "d17ff931-085d-56be-932d-3839b5b88ba8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-economics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "WW_WIRTSCHAFT",
+            "WW_POLITIK"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "a334a745-1d67-4e1d-86a5-dadc04f144d2",
+            "sourceLandscapeTitle": "Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "1a40416f-b262-4910-abcc-d147247c7adc"
+          }
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+            "title": "Visualisierung: Staatsfinanzierung und Verschuldung",
+            "url": "/assets/goal-visualizations/wirtschaftswissenschaften/c5272ab8-baa0-570b-9f31-426d1f4460f2/c5272ab8-baa0-570b-9f31-426d1f4460f2.png",
+            "provider": "OpenAI Codex image_gen",
+            "description": "Visualisierung zum Lernziel: Staatsfinanzierung und Verschuldung.",
+            "altText": "Steuern und Kredite führen als getrennte Finanzierungswege zum Staatshaushalt. Darunter stehen Bildung, Gesundheit und Verkehr; daneben erinnern Kalender und Münzen an spätere Zahlungsverpflichtungen und eine Frage an Verschuldungsgrenzen.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "approved_ai"
+          }
+        ]
+      },
+      {
+        "id": "753e5ac0-0375-56b9-a733-75701097b151",
+        "title": "Fiskalregeln und Schuldenbremse",
+        "titleEn": "Fiscal rules and the debt brake",
+        "description": "Die lernende Person kann nationale/EU-Fiskalregeln diskutieren.",
+        "descriptionEn": "The learner can discuss national and EU fiscal rules.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "6f1f4654-35ab-5ba6-a329-b19b994e84cc"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-economics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "WW_WIRTSCHAFT",
+            "WW_POLITIK"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BW",
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "a334a745-1d67-4e1d-86a5-dadc04f144d2",
+            "sourceLandscapeTitle": "Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "9ac675de-b8b3-4b3b-93c9-ff34ea0d98fe"
+          }
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "753e5ac0-0375-56b9-a733-75701097b151",
+            "title": "Visualisierung: Fiskalregeln und Schuldenbremse",
+            "url": "/assets/goal-visualizations/wirtschaftswissenschaften/753e5ac0-0375-56b9-a733-75701097b151/753e5ac0-0375-56b9-a733-75701097b151.png",
+            "provider": "OpenAI Codex image_gen",
+            "description": "Visualisierung zum Lernziel: Fiskalregeln und Schuldenbremse.",
+            "altText": "Öffentliche Institutionen, Haushaltsbeutel und ein EU-Regelbuch stehen neben Konjunktur- und Infrastrukturmotiven. Personen diskutieren Regeln, Prüfung und mögliche Spielräume, ohne Zahlenwerte anzugeben.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "approved_ai"
+          }
+        ]
+      }
+    ],
+    "wholeOriginalPositiveRecords": [
+      {
+        "record": {
+          "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+          "schemaVersion": 2,
+          "reviewId": "canonical-economics-q2-conjuncture-competition-nineteen-positive-author-20261008-v1",
+          "goalFingerprintRuleVersion": "goal-evidence-v1",
+          "profileRuleVersion": "positive-understanding-evidence-v2",
+          "reviewCriteriaFingerprint": "sha256:3e13047bd0c3fd282a4cc295751f9f7af62d3304e01e007f22d31aa4fe9cb2ed",
+          "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+          "goalId": "753e5ac0-0375-56b9-a733-75701097b151",
+          "goalFingerprint": "sha256:5b5d19301b25584881b52cfb1bf493818bd9c7cf671ada27bbe41e8c999d1971",
+          "reviewInputFingerprint": "sha256:5f1c6aea7b4c82c8b23df691107842489b95a50c65a5399f331b35a80755039d",
+          "profileFingerprint": "sha256:4e0b658e94ba02086dc6aaac4d232cea24648df36563acb0f799a03402b908fc",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedAt": "2026-10-08T07:35:21Z",
+          "reviewer": "codex-economics-q2-nineteen-author-candidate-20261008-v1",
+          "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Nationale Schuldenbegrenzung und EU-Fiskalregeln haben unterschiedliche Größen, Geltungsbereiche und Verfahren. Strukturelle Kreditaufnahme, konjunkturelle Komponente, Schuldenstand und aktueller EU-Ausgabenpfad sind nicht gleichzusetzen. Aktuelle Ausnahmen, Beschlüsse und Fristen müssen aus dem datierten Regelmaterial folgen. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: National debt limits and EU fiscal rules use different measures, scopes and procedures. Structural borrowing, cyclical components, debt stocks and the current EU expenditure path are not interchangeable. Current exceptions, decisions and deadlines must follow from dated rule materials. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1",
+          "reviewRunIds": [],
+          "dissent": [],
+          "profile": {
+            "archetype": "concept",
+            "expectations": [
+              {
+                "id": "content-specific-understanding",
+                "essentialUnderstandingDe": "Nationale Schuldenbegrenzung und EU-Fiskalregeln haben unterschiedliche Größen, Geltungsbereiche und Verfahren. Strukturelle Kreditaufnahme, konjunkturelle Komponente, Schuldenstand und aktueller EU-Ausgabenpfad sind nicht gleichzusetzen. Aktuelle Ausnahmen, Beschlüsse und Fristen müssen aus dem datierten Regelmaterial folgen.",
+                "essentialUnderstandingEn": "National debt limits and EU fiscal rules use different measures, scopes and procedures. Structural borrowing, cyclical components, debt stocks and the current EU expenditure path are not interchangeable. Current exceptions, decisions and deadlines must follow from dated rule materials.",
+                "observablePerformanceDe": "Die Person diskutiert einen vorgelegten nationalen und einen EU-Regelfall anhand aktueller Norm- und Verfahrensangaben, unterscheidet Messgrößen und zulässige Ausnahmeschritte und begründet den Konflikt zwischen Stabilisierung, Investitionen und Haushaltsdisziplin ohne historische Regeln ungeprüft zu verallgemeinern.",
+                "observablePerformanceEn": "The learner discusses a supplied national and EU rule case using current legal and procedural information, distinguishes measures and permitted exception procedures, and explains tensions among stabilisation, investment and fiscal discipline without uncritically generalising historical rules."
+              }
+            ],
+            "coverageExpectations": {
+              "requiredExpectationIds": [
+                "content-specific-understanding"
+              ],
+              "alternativeExpectationGroups": [],
+              "minimumIndependentDemonstrations": 2,
+              "freshVariationRequired": true,
+              "independentTransferRequired": true
+            },
+            "variationAxes": [
+              {
+                "id": "jurisdiction",
+                "textDe": "Aktuelle nationale Kategorien oder EU-Ausgabenpfad und Überwachung.",
+                "textEn": "Current national categories or an EU expenditure path and monitoring."
+              },
+              {
+                "id": "exception-status",
+                "textDe": "Konjunkturelle Anpassung, spezifischer Abzug oder tatsächlich aktivierte begrenzte Ausnahme.",
+                "textEn": "Cyclical adjustment, a specific deduction or an actually activated limited exception."
+              }
+            ],
+            "applicationCaseBriefs": [
+              {
+                "id": "current-national-categories",
+                "taskDemandDe": "Ein aktuelles datiertes Material zu Art109/115GG enthält allgemeine strukturelle Grenze, konjunkturelle Anpassung und die heute geltenden besonderen Abzüge beziehungsweise Ausnahmen. Ein fiktiver Bundeshaushalt enthält einen Nachfrageabschwung sowie verschieden kategorisierte Ausgaben. Diskutiere Prüfweg und finanzpolitischen Konflikt.",
+                "taskDemandEn": "Current dated materials on Articles109/115 of the Basic Law supply the general structural limit, cyclical adjustment and currently applicable special deductions or exceptions. A fictional federal budget faces a demand recession and contains differently classified expenditure. Discuss the assessment process and fiscal-policy conflict.",
+                "expectedPerformanceDe": "Die Person prüft zuerst Haushaltsumfang und jeweilige Kredit-/Ausgabenkategorie, trennt strukturelle Grenze und konjunkturelle Anpassung und leitet besondere Abzüge oder Notschritte nur aus dem aktuellen Norm- und Beschlussmaterial ab. Sie wägt Stabilisierung und Tragfähigkeit ab und verwendet weder pauschal ein altes absolutes Neuverschuldungsverbot noch bloß das Etikett Investition als Ausnahmeregel.",
+                "expectedPerformanceEn": "The learner first identifies budget scope and borrowing or expenditure categories, separates structural limits from cyclical adjustment, and derives special deductions or emergency steps only from current legal and decision materials. They weigh stabilisation against sustainability and use neither an old blanket borrowing ban nor the label investment alone as an exception.",
+                "understandingFocusDe": "Aktuelle Kategorien und Verfahren tragen die nationale Regelprüfung.",
+                "understandingFocusEn": "Current categories and procedures support national rule assessment."
+              },
+              {
+                "id": "eu-path-and-reference-values",
+                "taskDemandDe": "Für einen fiktiven Mitgliedstaat werden Defizitquote, Schuldenquote und aktuell vereinbarter EU-Nettoausgabenpfad angegeben. Ein datiertes Dossier enthält Überwachungsverfahren sowie gegebenenfalls tatsächlich aktivierte zeitlich begrenzte Ausnahmeklauseln. Diskutiere Regelbindung und die Behauptung, die Quote allein beweise sofortige Sanktion oder völlige Handlungsfreiheit.",
+                "taskDemandEn": "A fictional member state is described by deficit and debt ratios and its currently agreed EU net expenditure path. A dated dossier supplies monitoring procedures and any actually activated time-limited escape clauses. Discuss compliance and the claim that a ratio alone proves immediate sanctions or complete freedom of action.",
+                "expectedPerformanceDe": "Die Person unterscheidet jährliches Defizit und Schuldenbestand vom mehrjährigen Ausgabenpfad, prüft den konkreten Verfahrensstand und die Reichweite einer gegebenen Ausnahme und begründet die Grenzen beider pauschalen Aussagen. EU- und nationale Regeln werden nicht als identische Grenze oder automatische Sanktionsformel behandelt.",
+                "expectedPerformanceEn": "The learner distinguishes annual deficits and debt stocks from a multiannual expenditure path, examines the specific procedural status and scope of any supplied exception, and explains the limits of both blanket claims. EU and national rules are not treated as identical limits or an automatic sanctions formula.",
+                "understandingFocusDe": "Mehrjähriger EU-Rahmen und aktueller Verfahrensstand statt Einzelquotenautomatismus.",
+                "understandingFocusEn": "Use the multiannual EU framework and current procedure rather than a single-ratio automatism."
+              }
+            ]
+          }
+        },
+        "reviewPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current494-reviewed-M3-core-20261009-v1/positive/11.whole-original-cases-reviewed-requires-input-binding.review.jsonl"
+      },
+      {
+        "record": {
+          "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+          "schemaVersion": 2,
+          "reviewId": "canonical-economics-q2-monetary-social-seventeen-positive-author-20261008-v1",
+          "goalFingerprintRuleVersion": "goal-evidence-v1",
+          "profileRuleVersion": "positive-understanding-evidence-v2",
+          "reviewCriteriaFingerprint": "sha256:f9e0bdece3688b92285f74533315ec4fc321ba1eb45c14c99993ed7c9446eb3c",
+          "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+          "goalId": "577f0e2d-643a-5a0c-833b-301622a6cb00",
+          "goalFingerprint": "sha256:ab82366dac01190477ac3d69efcc6e9cf630a476e2a78b7b7e0f1c66da2fc397",
+          "reviewInputFingerprint": "sha256:91408c7a92d7cfae9223b86293ccbe17bb30dc22a540978965f9646aab617f7c",
+          "profileFingerprint": "sha256:8053a929d03b6fdd1fd1c8573a0b0a9ac86adf4a436bbbdb5454de717193d4ca",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedAt": "2026-10-08T08:05:27Z",
+          "reviewer": "codex-economics-q2-monetary-social-seventeen-author-20261008-v1",
+          "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Modelle sozialer Gerechtigkeit unterscheiden etwa Bedürftigkeit, Leistung, gleiche Chancen oder gleiche Ergebnisse. Ein sozial- oder finanzpolitischer Vorschlag kann dieselben Folgen nach verschiedenen Kriterien unterschiedlich bewerten. Diskutieren verlangt offengelegte Kriterien, Finanzierung und Perspektiven statt bloßer Etiketten oder behaupteter alternativloser Gerechtigkeit. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Models of social justice distinguish needs, contributions, equal opportunities or equal outcomes. Social or fiscal proposals can evaluate identical consequences differently under different criteria. Discussion requires explicit criteria, funding and perspectives rather than labels or claims of uniquely inevitable justice. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1",
+          "reviewRunIds": [],
+          "dissent": [],
+          "profile": {
+            "archetype": "concept",
+            "expectations": [
+              {
+                "id": "content-specific-understanding",
+                "essentialUnderstandingDe": "Modelle sozialer Gerechtigkeit unterscheiden etwa Bedürftigkeit, Leistung, gleiche Chancen oder gleiche Ergebnisse. Ein sozial- oder finanzpolitischer Vorschlag kann dieselben Folgen nach verschiedenen Kriterien unterschiedlich bewerten. Diskutieren verlangt offengelegte Kriterien, Finanzierung und Perspektiven statt bloßer Etiketten oder behaupteter alternativloser Gerechtigkeit.",
+                "essentialUnderstandingEn": "Models of social justice distinguish needs, contributions, equal opportunities or equal outcomes. Social or fiscal proposals can evaluate identical consequences differently under different criteria. Discussion requires explicit criteria, funding and perspectives rather than labels or claims of uniquely inevitable justice.",
+                "observablePerformanceDe": "Die Person diskutiert neue Sozial- und Staatsfinanzierungsfälle anhand mehrerer bereitgestellter Modelle, erklärt deren unterschiedliche Begründungen, prüft Finanzierung und Folgen und vertritt ein nachvollziehbares bedingtes Urteil mit Gegenargument.",
+                "observablePerformanceEn": "The learner discusses new social and public-finance cases using several supplied models, explains their different justifications, considers funding and consequences, and presents a defensible conditional judgment and counterargument."
+              }
+            ],
+            "coverageExpectations": {
+              "requiredExpectationIds": [
+                "content-specific-understanding"
+              ],
+              "alternativeExpectationGroups": [],
+              "minimumIndependentDemonstrations": 2,
+              "freshVariationRequired": true,
+              "independentTransferRequired": true
+            },
+            "variationAxes": [
+              {
+                "id": "justice-reference",
+                "textDe": "Bedarf, Beitrag/Leistung, gleiche Chancen oder gleiche Ergebnisse.",
+                "textEn": "Needs, contributions, equal opportunities or equal outcomes."
+              },
+              {
+                "id": "public-budget",
+                "textDe": "Begrenzte heutige Mittel und vorgegebene spätere Finanzierung.",
+                "textEn": "Limited present resources and supplied future finance."
+              }
+            ],
+            "applicationCaseBriefs": [
+              {
+                "id": "needs-contribution-finance",
+                "taskDemandDe": "Eine fiktive Reform verteilt aus einem begrenzten steuerfinanzierten Budget gleiche Grundbeträge oder bedarfsabhängige Zuschüsse; ein weiteres Modell orientiert Leistungen an vorherigen Beiträgen. Kriterien und Einnahmegrenzen sind gegeben. Diskutiere die Modelle.",
+                "taskDemandEn": "A fictional reform distributes equal basic amounts or need-based supplements from a limited tax-funded budget; another model bases benefits on previous contributions. Criteria and revenue limits are supplied. Discuss the models.",
+                "expectedPerformanceDe": "Die Person vergleicht Gleichheit, Bedarfs- und Beitrags-/Leistungsprinzip am selben Fall, erklärt jeweils Begünstigte und Begründung und prüft Budgetfolgen. Sie entwickelt ein kriteriengebundenes Urteil samt möglichem Gegenargument, statt ein Prinzip schon durch seinen Namen als immer gerecht zu behandeln.",
+                "expectedPerformanceEn": "The learner compares equality, need and contribution-based principles in the same case, identifies beneficiaries and justification, and examines budget effects. They develop a criteria-based judgment with a counterargument rather than treating a named principle as always just.",
+                "understandingFocusDe": "Unterschiedliche Modelle am gleichen Finanzierungsfall wirklich diskutieren.",
+                "understandingFocusEn": "Discuss distinct models in the same funding case."
+              },
+              {
+                "id": "opportunities-and-outcomes",
+                "taskDemandDe": "Ein unabhängiger fiktiver Bildungs-/Sozialbudgetfall vergleicht gleiche Pro-Kopf-Zuschüsse mit höherer Förderung bei belegten Startnachteilen; aktuelle und spätere Finanzierung sind angegeben. Diskutiere Chancen-/Ergebnisgleichheit und leistungsbezogene Einwände.",
+                "taskDemandEn": "An independent fictional education/social-budget case compares equal per-person grants with more support for evidenced starting disadvantages; present and later finance are supplied. Discuss equal opportunities/outcomes and contribution-related objections.",
+                "expectedPerformanceDe": "Die Person trennt gleiches Angebot, kompensierte Zugangschancen und tatsächlich gleiche spätere Ergebnisse, prüft Ziel, Kosten und mögliche Anreize. Sie bezieht andere Modellperspektiven ein und begründet, warum Ausgleich fehlender Chancen weder sicheren Lernerfolg noch jedes vorgeschlagene Ergebnisversprechen beweist.",
+                "expectedPerformanceEn": "The learner separates equal provision, compensated access opportunities and actually equal later outcomes, examines aims, costs and incentives, and includes competing model perspectives. They explain why compensating missing opportunities guarantees neither learning success nor every promised outcome.",
+                "understandingFocusDe": "Normative Modelle auf neue Startbedingungen und Zeithorizonte übertragen.",
+                "understandingFocusEn": "Transfer normative models to new starting conditions and horizons."
+              }
+            ]
+          }
+        },
+        "reviewPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current494-reviewed-M3-core-20261009-v1/positive/13.whole-original-cases-reviewed-requires-input-binding.review.jsonl"
+      },
+      {
+        "record": {
+          "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+          "schemaVersion": 2,
+          "reviewId": "canonical-economics-q2-monetary-social-seventeen-positive-author-20261008-v1",
+          "goalFingerprintRuleVersion": "goal-evidence-v1",
+          "profileRuleVersion": "positive-understanding-evidence-v2",
+          "reviewCriteriaFingerprint": "sha256:f9e0bdece3688b92285f74533315ec4fc321ba1eb45c14c99993ed7c9446eb3c",
+          "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+          "goalId": "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+          "goalFingerprint": "sha256:9015e943438d02c476902d222c223dfee94f375c7260ddd12cec937e961e5653",
+          "reviewInputFingerprint": "sha256:b2031ca90cee329b155100f6c1cb4661f33d3f949cf54304a65e4c2f07c9124b",
+          "profileFingerprint": "sha256:cc57289b63c23e1ab09612a7c069bbc7e4437cece74a097882b9e042f94f07d7",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedAt": "2026-10-08T08:05:27Z",
+          "reviewer": "codex-economics-q2-monetary-social-seventeen-author-20261008-v1",
+          "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Steuern, Beiträge, Gebühren und Kreditaufnahme finanzieren auf unterschiedliche Weise öffentliche Aufgaben. Einnahmenfluss, Defizit und Schuldenbestand sind verschieden; ein Kredit trägt künftige Zins-/Tilgungsbedingungen und ist keine dauerhafte freie Einnahme. Rechtliche Schuldengrenzen und ökonomische Tragfähigkeit müssen getrennt anhand aktueller Materialien diskutiert werden. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Taxes, contributions, fees and borrowing finance public tasks in different ways. Revenue flows, deficits and debt stocks differ; borrowing brings future interest and repayment conditions rather than permanent free revenue. Legal borrowing limits and economic sustainability require separate discussion using current materials. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1",
+          "reviewRunIds": [],
+          "dissent": [],
+          "profile": {
+            "archetype": "concept",
+            "expectations": [
+              {
+                "id": "content-specific-understanding",
+                "essentialUnderstandingDe": "Steuern, Beiträge, Gebühren und Kreditaufnahme finanzieren auf unterschiedliche Weise öffentliche Aufgaben. Einnahmenfluss, Defizit und Schuldenbestand sind verschieden; ein Kredit trägt künftige Zins-/Tilgungsbedingungen und ist keine dauerhafte freie Einnahme. Rechtliche Schuldengrenzen und ökonomische Tragfähigkeit müssen getrennt anhand aktueller Materialien diskutiert werden.",
+                "essentialUnderstandingEn": "Taxes, contributions, fees and borrowing finance public tasks in different ways. Revenue flows, deficits and debt stocks differ; borrowing brings future interest and repayment conditions rather than permanent free revenue. Legal borrowing limits and economic sustainability require separate discussion using current materials.",
+                "observablePerformanceDe": "Die Person diskutiert neue Staatsfinanzierungsfälle mit mehreren Einnahmeformen, erklärt Defizit-/Bestands- und Lastwirkungen und prüft bereitgestellte gegenwärtige nationale oder europäische Verschuldungsgrenzen samt ökonomischen Bedingungen.",
+                "observablePerformanceEn": "The learner discusses new public-finance cases using several revenue forms, explains deficit, stock and burden effects, and examines supplied current national or European borrowing limits and economic conditions."
+              }
+            ],
+            "coverageExpectations": {
+              "requiredExpectationIds": [
+                "content-specific-understanding"
+              ],
+              "alternativeExpectationGroups": [],
+              "minimumIndependentDemonstrations": 2,
+              "freshVariationRequired": true,
+              "independentTransferRequired": true
+            },
+            "variationAxes": [
+              {
+                "id": "finance-form",
+                "textDe": "Steuer, Beitrag, Gebühr oder Kredit.",
+                "textEn": "Taxes, contributions, fees or borrowing."
+              },
+              {
+                "id": "constraint",
+                "textDe": "Aktuelle nationale Regel, EU-Pfad, gegebene Ausnahme und ökonomischer Schuldendienst.",
+                "textEn": "Current national rules, an EU path, supplied exceptions and economic debt service."
+              }
+            ],
+            "applicationCaseBriefs": [
+              {
+                "id": "budget-flow-and-borrowing",
+                "taskDemandDe": "Ein fiktiver Jahreshaushalt enthält Einnahmen100 und Ausgaben110, bestehende Schulden200 sowie eine zusätzliche Investitionsalternative. Sonstige Bestandsänderungen entfallen. Steuern, nutzungsbezogene Gebühren und Kredite werden als Finanzierung angeboten; aktuelle Rechtsauszüge sind gegeben. Diskutiere.",
+                "taskDemandEn": "A fictional annual budget has revenues100, expenditure110, existing debt200 and an additional investment alternative. Exclude other stock changes. Taxes, usage fees and borrowing are offered for finance, with current legal extracts supplied. Discuss.",
+                "expectedPerformanceDe": "Die Person bestimmt zunächst Defizit10 und unter ausdrücklich ausgeschlossenen sonstigen Bestandsänderungen Schulden210, trennt Fluss und Bestand und vergleicht Last-/Zugangsfolgen der Finanzierungsformen. Sie prüft tatsächliche Rechtskategorien und Ausnahmen im Material sowie Zinsen und Investitionsnutzen, ohne die Investitionsbezeichnung als automatische Kreditfreigabe zu behandeln.",
+                "expectedPerformanceEn": "The learner calculates deficit10 and debt210 when other stock changes are explicitly excluded, separates flows from stocks, and compares funding burdens and access effects. They examine actual legal categories/exceptions and interest and investment benefits without treating the investment label as automatic borrowing permission.",
+                "understandingFocusDe": "Finanzierungsalternativen, Bestandsrechnung und aktuelle Grenzen gemeinsam diskutieren.",
+                "understandingFocusEn": "Discuss funding alternatives, stock accounting and current limits together."
+              },
+              {
+                "id": "recession-revenue-and-eu-path",
+                "taskDemandDe": "Ein neuer fiktiver Staat verliert im Abschwung Steuereinnahmen und hat zugleich Pflichtausgaben. Gegeben sind Beitragserhöhung, Steuern, zeitlich begrenzter Kredit und ein aktueller EU-Ausgabenpfad samt Ausnahmestatus. Diskutiere Handlungsraum und Verteilung.",
+                "taskDemandEn": "A new fictional state loses tax revenues in recession while facing mandatory expenditure. Materials provide higher contributions, taxes, temporary borrowing and a current EU expenditure path with exception status. Discuss room for action and distribution.",
+                "expectedPerformanceDe": "Die Person erklärt konjunkturelle Einnahmereaktion, unterscheidet Beiträge und allgemeine Steuern nach gegebener Finanzierungsbasis und vergleicht kurzfristige Lasten mit späterem Schuldendienst. Sie prüft tatsächlichen Pfad und aktivierte Bedingungen im Material und verbindet rechtliche Zulässigkeit nicht mit automatisch nachhaltiger Verschuldung.",
+                "expectedPerformanceEn": "The learner explains cyclical revenue effects, distinguishes contributions from general taxation through the supplied financing bases, and compares immediate burdens with later debt service. They examine the actual path and activated conditions and do not equate legal permission with automatically sustainable debt.",
+                "understandingFocusDe": "Konjunkturelle Finanzierung unter anderen institutionellen Grenzen übertragen.",
+                "understandingFocusEn": "Transfer to cyclical finance under different institutional limits."
+              }
+            ]
+          }
+        },
+        "reviewPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current494-reviewed-M3-core-20261009-v1/positive/13.whole-original-cases-reviewed-requires-input-binding.review.jsonl"
+      },
+      {
+        "record": {
+          "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+          "schemaVersion": 2,
+          "reviewId": "canonical-economics-q2-monetary-social-seventeen-positive-author-20261008-v1",
+          "goalFingerprintRuleVersion": "goal-evidence-v1",
+          "profileRuleVersion": "positive-understanding-evidence-v2",
+          "reviewCriteriaFingerprint": "sha256:f9e0bdece3688b92285f74533315ec4fc321ba1eb45c14c99993ed7c9446eb3c",
+          "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+          "goalId": "d17ff931-085d-56be-932d-3839b5b88ba8",
+          "goalFingerprint": "sha256:f8515510b8a2751a08c41fdb1b5e35e63d04c86722fb4b04104986bb65482856",
+          "reviewInputFingerprint": "sha256:8ee3b26584097a1aef65fc0cc82e9eb4b0b11df0ef4a2cf0cc4bcfac404f5458",
+          "profileFingerprint": "sha256:731582cde5dbb7ad85426d2c82192caf971e8c59a3ab705aa22b9b8c0bfe0b8a",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedAt": "2026-10-08T08:05:27Z",
+          "reviewer": "codex-economics-q2-monetary-social-seventeen-author-20261008-v1",
+          "reason": "DE: Eigener inaktiver Profilentwurf aus dem ganzen aktuellen Ziel und der echten EN-Übersetzung. Inhaltliche Kernunterscheidung: Sozialpolitik verändert Schutz, Verteilung und Verhalten. Effizienz und Gerechtigkeit können kollidieren oder sich ergänzen; ihr Verhältnis folgt Instrumentgestaltung und Bedingungen, nicht einem universellen Gegensatz. Finanzierung, Zugangsbarrieren und Übergänge zwischen Unterstützung und Erwerb sind Teil der Analyse. Die konkreten Fälle sind didaktische Erwartungen, keine beobachtete Lernendenleistung, unabhängige Prüfung oder menschliche Freigabe. EN: Own inert profile draft based on the whole current goal and its actual English translation. Core distinction: Social policy changes protection, distribution and behaviour. Efficiency and justice may conflict or reinforce each other depending on design and conditions, not through a universal opposition. Funding, access barriers and transitions between support and employment belong in the analysis. The specific cases are didactic expectations, not observed learner performance, independent review, or human approval.",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1",
+          "reviewRunIds": [],
+          "dissent": [],
+          "profile": {
+            "archetype": "concept",
+            "expectations": [
+              {
+                "id": "content-specific-understanding",
+                "essentialUnderstandingDe": "Sozialpolitik verändert Schutz, Verteilung und Verhalten. Effizienz und Gerechtigkeit können kollidieren oder sich ergänzen; ihr Verhältnis folgt Instrumentgestaltung und Bedingungen, nicht einem universellen Gegensatz. Finanzierung, Zugangsbarrieren und Übergänge zwischen Unterstützung und Erwerb sind Teil der Analyse.",
+                "essentialUnderstandingEn": "Social policy changes protection, distribution and behaviour. Efficiency and justice may conflict or reinforce each other depending on design and conditions, not through a universal opposition. Funding, access barriers and transitions between support and employment belong in the analysis.",
+                "observablePerformanceDe": "Die Person analysiert in neuen sozialpolitischen Fällen Verteilungs- und Effizienzfolgen, erklärt einen konkreten Zielkonflikt oder eine mögliche Ergänzung, prüft Gestaltung und Finanzierung und begründet eine fallbezogene Abwägung.",
+                "observablePerformanceEn": "In new social-policy cases, the learner analyses distributional and efficiency effects, explains a specific conflict or possible complementarity, examines design and funding, and justifies a case-based assessment."
+              }
+            ],
+            "coverageExpectations": {
+              "requiredExpectationIds": [
+                "content-specific-understanding"
+              ],
+              "alternativeExpectationGroups": [],
+              "minimumIndependentDemonstrations": 2,
+              "freshVariationRequired": true,
+              "independentTransferRequired": true
+            },
+            "variationAxes": [
+              {
+                "id": "instrument-design",
+                "textDe": "Transferentzug oder Abbau einer Zugangshürde.",
+                "textEn": "Benefit withdrawal or removal of an access barrier."
+              },
+              {
+                "id": "trade-off-condition",
+                "textDe": "Grenzanreiz, Budgetkosten, Kapazität und Qualitätsgrenze.",
+                "textEn": "Marginal incentives, budget costs, capacity and quality constraints."
+              }
+            ],
+            "applicationCaseBriefs": [
+              {
+                "id": "benefit-withdrawal-and-work",
+                "taskDemandDe": "Ein fiktives Transfersystem zieht einen Zuschuss bei zusätzlichen100 Erwerbseinkommen um80 zurück; Steuern und Arbeitskosten entfallen. Eine Reform verringert Entzug auf50, verursacht aber mehr Budgetkosten. Analysiere Gerechtigkeit und Effizienz.",
+                "taskDemandEn": "A fictional transfer scheme withdraws80 of benefit when earnings rise100; ignore taxes and work costs. Reform reduces withdrawal to50 but raises budget costs. Analyse justice and efficiency.",
+                "expectedPerformanceDe": "Die Person bestimmt verfügbaren Mehrbetrag20 gegenüber50, erklärt veränderte Grenzanreize und mögliche Erwerbsreaktion als bedingt. Sie prüft Absicherung und Finanzierung sowie unterschiedliche Betroffenheit und deutet einen stärkeren Anreiz nicht automatisch als garantiert höhere Beschäftigung oder einzig gerechte Regel.",
+                "expectedPerformanceEn": "The learner calculates additional disposable resources20 versus50, explains marginal incentives and possible conditional work responses, and examines protection, funding and different affected groups. Stronger incentives do not automatically guarantee higher employment or uniquely establish a just rule.",
+                "understandingFocusDe": "Konkreter Entzugsmechanismus erklärt den Zielkonflikt.",
+                "understandingFocusEn": "A specific withdrawal mechanism explains the trade-off."
+              },
+              {
+                "id": "childcare-complementarity",
+                "taskDemandDe": "Ein zweiter fiktiver Fall bietet erschwingliche Kinderbetreuung für einkommensarme Haushalte; Nachfrage, Personalengpass und Finanzierung sind gegeben. Analysiere, ob Effizienz und Gerechtigkeit hier zwingend gegensätzlich sein müssen.",
+                "taskDemandEn": "A second fictional case offers affordable childcare for low-income households, with demand, staff bottlenecks and funding specified. Analyse whether efficiency and justice must necessarily conflict here.",
+                "expectedPerformanceDe": "Die Person erklärt möglichen verbesserten Zugang und Erwerbsspielraum zugleich, prüft Kapazität, Qualität und Steuerkosten und begrenzt den erwarteten Erfolg durch den Personalengpass. Sie erkennt mögliche Ergänzung, ohne jedem sozial gerechten Zugang automatisch messbaren Produktivitätsgewinn zuzuschreiben.",
+                "expectedPerformanceEn": "The learner explains possible improvements in access and employment opportunities together, considers capacity, quality and tax costs, and qualifies expected success through staff shortages. They recognise possible complementarity without attributing measured productivity gains to every just access improvement.",
+                "understandingFocusDe": "Mögliche Ergänzung unter echten Ressourcenbedingungen analysieren.",
+                "understandingFocusEn": "Analyse possible complementarity under actual resource conditions."
+              }
+            ]
+          }
+        },
+        "reviewPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current494-reviewed-M3-core-20261009-v1/positive/13.whole-original-cases-reviewed-requires-input-binding.review.jsonl"
+      }
+    ],
+    "noProfileContentOrStatusChange": true
+  },
+  "actualIndependentWholeCounterworkDE": [
+    "1. Die Ausgabenanteile betragen 205/500=41 %, 70/500=14 %, 30/500=6 % und 195/500=39 %. Der Jahresfehlbetrag ist 500−440=60; ohne Tilgung oder weitere Bestandsänderungen steigt der Schuldenbestand von 2.000 auf 2.060. Der Fehlbetrag ist ein Jahresfluss, Schulden sind ein Stichtagsbestand. Die Steuern 390 finanzieren allgemeine Aufgaben ohne individuellen Gegenleistungsanspruch. Gebühren 20 knüpfen an Nutzung an und können den Zugang einkommensarmer Haushalte erschweren. Beiträge gehören zum getrennten zweckgebundenen Versicherungsbudget und können nicht einfach dem Bund zugeschlagen werden. Neue Kredite 60 finanzieren heute, verursachen aber spätere Zins-/Tilgungslasten.",
+    "2. Bisher verbleiben von zusätzlichen 100 Erwerbseinkommen 100−80=20, unter A 100−50=50. Der marginale Anreiz steigt, eine Beschäftigungszunahme ist wegen unbekannter Reaktionen nicht bewiesen. A erhöht den Finanzierungsbedarf um 4. B kann bezahlbare Betreuung und damit Erwerbsspielraum zugleich verbessern, doch Personal, Platzkapazität und Qualität begrenzen diese Wirkung; auch B braucht 4 Finanzierung. C erhebt 4 über Gebühren, belastet hier besonders niedrige Einkommen und deren Zugang. Effizienz und gerechterer Zugang können sich bei B ergänzen; knappe Ressourcen oder Steuerlasten können zugleich einen Zielkonflikt erzeugen.",
+    "3. Die Bundesgrundgrenze beträgt 0,0035×5.000=17,5. Sicherheitsschwelle: 0,01×5.000=50; der abzugsfähige Überhang ist 90−50=40. Die 90 stehen bereits im Haushalt und werden nicht nochmals als Ausgabe addiert. Mit der gegebenen Abschwungskomponente 5 beträgt die maßgebliche Kreditaufnahme 60−40−5=15; 15≤17,5. Eine allgemeine Investitionsausnahme ist nicht gegeben. R liegt mit 3,4 % und 68 % über den Referenzwerten. Seine 105 überschreiten den Rats-Nettoausgabenpfad 103 um 2. Der Antrag allein erlaubt diese Abweichung nicht. Erst eine entsprechende Kommissionsempfehlung und erlaubende Ratsempfehlung können nach dem Dossier eine befristete Ausnahme tragen. Falls der Rat die bedingt angenommenen zwei Einheiten für ein Jahr erlaubt, deckt dies die Abweichung ab, aber nicht jede andere europäische oder nationale Grenze. Quoten allein beweisen keine sofortige Sanktion. Die strukturelle Bundes-Kreditaufnahme ist weder die EU-Defizitquote noch der Schuldenbestand oder die bereinigte mehrjährige Nettoausgabengröße; nationale Regelkonformität beweist keine EU-Regelkonformität.",
+    "4. Ich wähle A und finanziere die 4 mit einer allgemeinen Steuererhöhung. Nach dem Bedarfsprinzip ist besserer Erwerbsspielraum für unterstützungsbedürftige Haushalte sinnvoll. Reiner Zusatzkredit ergibt Ausgaben 504, Einnahmen 440, Defizit 64 und Endschulden 2.064; bereinigt 64−40−5=19>17,5, also 1,5 zu hoch unter den unveränderten Bedingungen. Mit Steuern 4 steigen die Einnahmen auf 444; 504−444=60, Endschulden 2.060 und bereinigt 15. Beiträge des Versicherungsbudgets sind nicht frei verfügbar, Gebühren gefährden hier den Zugang. Gegen A sprechen zusätzliche Steuerlasten und unbekannte Erwerbsreaktionen; falls der tatsächliche Anreizgewinn ausbleibt, müsste ich den Vorschlag überprüfen. Die Rechtsgrenze allein beweist weder Tragfähigkeit noch gesicherte Beschäftigung; Zinsen und Wirkung bleiben zu beachten."
+  ],
+  "individualActualRubricMarks": [
+    {
+      "step": "s1",
+      "points": 7,
+      "parts": [
+        2,
+        2,
+        3
+      ],
+      "reason": "Alle Anteile, Fluss/Bestand und mindestens zwei konkrete Finanzierungsvergleiche sind richtig."
+    },
+    {
+      "step": "s2",
+      "points": 6,
+      "parts": [
+        2,
+        0,
+        2,
+        2
+      ],
+      "reason": "Nettoanreiz, Betreuung/Kapazität/Finanzierung und Gebühren/Effizienz sind fallbezogen richtig. Kein Vergleich verschiedener Gerechtigkeitsmodelle: 0/2 Kriterienpunkte."
+    },
+    {
+      "step": "s3",
+      "points": 8,
+      "parts": [
+        3,
+        3,
+        2
+      ],
+      "reason": "Nationale Rechnung, aktueller versus bedingter EU-Verfahrensstand und Größen-/Verfahrensvergleich richtig."
+    },
+    {
+      "step": "s4",
+      "points": 7,
+      "parts": [
+        2,
+        2,
+        3
+      ],
+      "reason": "Zusatzkredit, Steueralternative und bedingtes Urteil mit Bedarf als einzigem Kriterium und ökonomischem Gegenargument sind richtig. Die s4-Rubrik verlangt keinen zweiten Gerechtigkeitsmaßstab."
+    }
+  ],
+  "rawTotal": 28,
+  "passingPoints": 18,
+  "publishedV1CapApplies": false,
+  "actualFinding": {
+    "id": "C19-577-MODEL-COMPARISON-01",
+    "decision": "REVISE",
+    "goalId": "577f0e2d-643a-5a0c-833b-301622a6cb00",
+    "reason": "Die gesamte Arbeit vergleicht keine verschiedenen Gerechtigkeitsmodelle am Fall; sie benutzt nur Bedarf als einzelnes Kriterium. Die fehlende Modellvergleichsleistung aus dem ganzen aktuellen P2 wird durch allgemeine Anreiz-/Zugangsabwägung nicht ersetzt. Dennoch 28/30 und keine V1-Grenze.",
+    "requiredBoundedSuccessor": "Ganz fehlenden/durchgehend falschen fallbezogenen Vergleich verschiedener Modelle als zentrale Fehlleistung behandeln; richtige unvollständige Vergleiche weiterhin anerkennen, keine Vollpunkt- oder Alle-Kriterienpflicht."
+  },
+  "actualIndependentDecimalCalculations": [
+    {
+      "label": "social-share",
+      "actual": "41.00",
+      "expected": "41",
+      "result": "PASS"
+    },
+    {
+      "label": "investment-share",
+      "actual": "14.00",
+      "expected": "14",
+      "result": "PASS"
+    },
+    {
+      "label": "interest-share",
+      "actual": "6.00",
+      "expected": "6",
+      "result": "PASS"
+    },
+    {
+      "label": "other-share",
+      "actual": "39.00",
+      "expected": "39",
+      "result": "PASS"
+    },
+    {
+      "label": "sum-exp",
+      "actual": "500",
+      "expected": "500",
+      "result": "PASS"
+    },
+    {
+      "label": "sum-revenue",
+      "actual": "440",
+      "expected": "440",
+      "result": "PASS"
+    },
+    {
+      "label": "deficit",
+      "actual": "60",
+      "expected": "60",
+      "result": "PASS"
+    },
+    {
+      "label": "closing-debt",
+      "actual": "2060",
+      "expected": "2060",
+      "result": "PASS"
+    },
+    {
+      "label": "basic-limit",
+      "actual": "17.5000",
+      "expected": "17.5",
+      "result": "PASS"
+    },
+    {
+      "label": "security-threshold",
+      "actual": "50.00",
+      "expected": "50",
+      "result": "PASS"
+    },
+    {
+      "label": "security-deduction",
+      "actual": "40",
+      "expected": "40",
+      "result": "PASS"
+    },
+    {
+      "label": "adjusted-borrowing",
+      "actual": "15",
+      "expected": "15",
+      "result": "PASS"
+    },
+    {
+      "label": "headroom",
+      "actual": "2.5",
+      "expected": "2.5",
+      "result": "PASS"
+    },
+    {
+      "label": "extra-deficit",
+      "actual": "64",
+      "expected": "64",
+      "result": "PASS"
+    },
+    {
+      "label": "extra-stock",
+      "actual": "2064",
+      "expected": "2064",
+      "result": "PASS"
+    },
+    {
+      "label": "extra-adjusted",
+      "actual": "19",
+      "expected": "19",
+      "result": "PASS"
+    },
+    {
+      "label": "extra-excess",
+      "actual": "1.5",
+      "expected": "1.5",
+      "result": "PASS"
+    },
+    {
+      "label": "tax-revenue",
+      "actual": "444",
+      "expected": "444",
+      "result": "PASS"
+    },
+    {
+      "label": "tax-funded-deficit",
+      "actual": "60",
+      "expected": "60",
+      "result": "PASS"
+    },
+    {
+      "label": "initial-net-incentive",
+      "actual": "20",
+      "expected": "20",
+      "result": "PASS"
+    },
+    {
+      "label": "reform-net-incentive",
+      "actual": "50",
+      "expected": "50",
+      "result": "PASS"
+    },
+    {
+      "label": "eu-path-deviation",
+      "actual": "2",
+      "expected": "2",
+      "result": "PASS"
+    },
+    {
+      "label": "step-total",
+      "actual": "30",
+      "expected": "30",
+      "result": "PASS"
+    }
+  ],
+  "wholePrimaryReadingBoundaries": {
+    "freshIndividualGG109115": "Die ganzen amtlichen Einzelnormen wurden in der unabhängigen Vorbereitung tatsächlich gelesen.",
+    "EU1263": "Aktueller Webzugriff robotblocked; eigener SHA-verifizierter amtlicher Originalcache und ganze Art.2/17/21/22/26 tatsächlich gelesen. Kein behaupteter neuer kompletter Verordnungsreview.",
+    "actualModels": "40 Sicherheitsabzug, 5 Konjunkturkomponente, 15 bereinigt; angeforderte und erlaubte Ratsausnahme institutionell getrennt. Keine Aussage über heutigen deutschen Aktivierungsstand.",
+    "officialURLs": [
+      "https://www.gesetze-im-internet.de/gg/art_109.html",
+      "https://www.gesetze-im-internet.de/gg/art_115.html",
+      "https://eur-lex.europa.eu/eli/reg/2024/1263/oj/eng",
+      "https://www.consilium.europa.eu/en/policies/economic-governance-framework/"
+    ]
+  },
+  "positiveKeepPartsOnly": [
+    "Bilinguale ganzen Dossiers, vier Aufgaben und Lösungen gelesen; nationale und EU-Kategorien/reale Verfahren getrennt.",
+    "Vier aktuelle wholeGoal-Verträge und acht P-Fälle unverändert; 753 echte LK-Voraussetzung/assessed Kompetenz.",
+    "Tatsächlich max30/pass18 und Schritte7/8/8/7; keine Bewertungsänderung durch den Reviewer."
+  ],
+  "noFullMaterialKeep": true,
+  "activeWrites": 0,
+  "newCurricularAtomicSourceCardImageClosures": 0,
+  "strictFiveGateNetGain": 0,
+  "humanReleaseOrM3M4M6Claimed": false
+}

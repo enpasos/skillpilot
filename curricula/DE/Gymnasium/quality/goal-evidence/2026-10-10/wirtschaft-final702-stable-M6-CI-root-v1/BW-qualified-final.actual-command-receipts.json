@@ -1,0 +1,145 @@
+{
+  "phase": "BW-qualified-final",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "report:gymnasium-duration-readiness",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "report:gymnasium-duration-readiness",
+        "--",
+        "--write"
+      ],
+      "startedAt": "2026-10-10T19:07:00.861210+00:00",
+      "elapsedSeconds": 1.36,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.01.report-gymnasium-duration-readiness.raw.txt",
+      "rawOutputSha256": "0141375719ec3a500efbfb3f2522aadd313d00384ef5a7039d52f50adf13ebd6"
+    },
+    {
+      "name": "check:m6-duration-policy-readiness",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:m6-duration-policy-readiness"
+      ],
+      "startedAt": "2026-10-10T19:07:02.222009+00:00",
+      "elapsedSeconds": 1.287,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.02.check-m6-duration-policy-readiness.raw.txt",
+      "rawOutputSha256": "e231041970cd6de468bd7d322ea65a0fba916658ffbc2134b88d7666bda2962a"
+    },
+    {
+      "name": "generate:gymnasium-duration-offerings",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "generate:gymnasium-duration-offerings"
+      ],
+      "startedAt": "2026-10-10T19:07:03.509746+00:00",
+      "elapsedSeconds": 0.411,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.03.generate-gymnasium-duration-offerings.raw.txt",
+      "rawOutputSha256": "a99b7e526b5a5f479d7839587c2c3e0229ad8a38d7cb422a4b7d09285f319b0d"
+    },
+    {
+      "name": "check:gymnasium-duration-offerings",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:gymnasium-duration-offerings"
+      ],
+      "startedAt": "2026-10-10T19:07:03.920956+00:00",
+      "elapsedSeconds": 0.391,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.04.check-gymnasium-duration-offerings.raw.txt",
+      "rawOutputSha256": "becb399e54dcb98dc5a9ebcbf775c8d80abe37826e517a8fe2a856f6ba06aabe"
+    },
+    {
+      "name": "quality:source-coverage-audit",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit"
+      ],
+      "startedAt": "2026-10-10T19:07:04.311988+00:00",
+      "elapsedSeconds": 7.459,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.05.quality-source-coverage-audit.raw.txt",
+      "rawOutputSha256": "de62e59a2aa6c45f7f0fc8a1c796bb256f47014a403400993fcddaf2c123bd72"
+    },
+    {
+      "name": "quality:source-coverage-audit:check",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit:check"
+      ],
+      "startedAt": "2026-10-10T19:07:11.771859+00:00",
+      "elapsedSeconds": 14.242,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.06.quality-source-coverage-audit-check.raw.txt",
+      "rawOutputSha256": "5fb78d592ec28d622905036096f539b2e6d81aa90349b9be76dcbb2daadc78b1"
+    },
+    {
+      "name": "quality:curriculum-status",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "startedAt": "2026-10-10T19:07:26.014480+00:00",
+      "elapsedSeconds": 97.426,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.07.quality-curriculum-status.raw.txt",
+      "rawOutputSha256": "45a71b7c6acaa0d762e8428331d3fe8d9830dd0464eac0151cc81fdaa7343033"
+    },
+    {
+      "name": "check:curriculum-maturity-floors",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "startedAt": "2026-10-10T19:09:03.441227+00:00",
+      "elapsedSeconds": 0.334,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.08.check-curriculum-maturity-floors.raw.txt",
+      "rawOutputSha256": "959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d"
+    },
+    {
+      "name": "check:goal-book-publication",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "startedAt": "2026-10-10T19:09:03.775425+00:00",
+      "elapsedSeconds": 20.575,
+      "exitCode": 1,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.09.check-goal-book-publication.raw.txt",
+      "rawOutputSha256": "6571eb4ff80276c36632efbfb4a00535ad41f99b86847ac6e4800cf79861015b"
+    }
+  ],
+  "phaseComplete": false
+}

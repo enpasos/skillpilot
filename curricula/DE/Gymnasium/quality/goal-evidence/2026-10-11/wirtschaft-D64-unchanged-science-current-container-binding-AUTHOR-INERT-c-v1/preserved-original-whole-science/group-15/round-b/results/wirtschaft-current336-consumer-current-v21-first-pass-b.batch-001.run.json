@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-current336-consumer-current-v21-first-pass-b.batch-001.actual-independent-20261010",
+  "campaignId": "wirtschaft-current336-consumer-current-v21-b",
+  "roundId": "wirtschaft-current336-consumer-current-v21-first-pass-b",
+  "batchId": "wirtschaft-current336-consumer-current-v21-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:816a7231c244cb292b2ad4a08599bd7d2c8396e1a61a466cb251d21c3da755e4",
+  "bundleFingerprint": "sha256:e3c79a923d1002d90d30358b7fdf5128988703928455db1a47c6a753499a05e9",
+  "bookDigest": "sha256:7b113820b50f1f7845e00ad3fd2dacfbb0248f7d6d6b4ef92cd8d0b0b8bd3548",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:37b5c7bc64cea09b9adfd1f50e8bfbb642b2cc2e33fdf35e0f95bcb8106d472b",
+  "generationParametersFingerprint": "sha256:255490c99eb38898aae496eef286206541163a28b952558ee10523e962470ece",
+  "independenceGroupId": "wirtschaft-current336-consumer-current-v21-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:816a7231c244cb292b2ad4a08599bd7d2c8396e1a61a466cb251d21c3da755e4"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:5f1b7a551556e75ce7c9eca9c46a54d2f1b0e3b027b2057c14e23c2c5bdc79aa"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:c40684f12d02142ea88f8234abda66c6cc8fccf2dba336e7223debb21c586da1"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:37b5c7bc64cea09b9adfd1f50e8bfbb642b2cc2e33fdf35e0f95bcb8106d472b"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-10T09:34:24.600553+00:00",
+  "completedAt": "2026-10-10T09:37:59.812893+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:9aa2bacf86df4c812860bc578fee0059906d8ccee993903f0caf8ce9b302833b",
+  "toolchainVersion": "codex-native-node-tsx-goal-description-review-v1"
+}

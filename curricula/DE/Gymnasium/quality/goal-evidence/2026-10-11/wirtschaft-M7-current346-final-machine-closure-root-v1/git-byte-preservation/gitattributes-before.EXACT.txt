@@ -1,0 +1,39 @@
+* text=auto eol=lf
+.gitattributes text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+gradlew text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+.corretto-version text eol=lf
+.java-version text eol=lf
+.nvmrc text eol=lf
+
+# PDFs are binary artifacts, including originals without early NUL bytes.
+*.pdf binary
+
+# Captured official HTML is primary evidence; retain its actual response bytes.
+# Provider whitespace is part of that evidence, not authored formatting.
+*.actual-official.html -text -whitespace
+*.actual.html -text -whitespace
+
+# Captured primary-source excerpts and raw terminal output retain exact bytes.
+# Their whitespace belongs to the source/tool, not authored documentation.
+curricula/**/quality/**/primary/*.txt -text -whitespace
+curricula/**/quality/**/primary/*.snapshot -text -whitespace
+curricula/**/quality/**/read-primary/*.txt -text -whitespace
+curricula/**/quality/**/terminal/*.actual.txt -text -whitespace
+
+# Hash-bound review materials retain the CSV writer's actual line endings.
+curricula/**/quality/**/materials/*.csv -text -whitespace
+
+# Verbatim review instructions and captured generation records are evidence.
+curricula/**/quality/**/inputs/AGENTS*.md -whitespace
+curricula/**/quality/**/generation-*.actual.json -whitespace
+
+# Frozen native review pages retain renderer bytes, including empty-line spacing.
+curricula/**/quality/**/book.html -text -whitespace
+
+# Preserve exact line endings in these hash-bound captured source bytes.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-bilingual-positive-author-v1/actual-primary-norm-inputs/by-police-nuernberg-20250325.actual.bytes -text
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-bilingual-positive-author-v1/actual-primary-norm-inputs/by-police-zirndorf-20260615.actual.bytes -text

@@ -1,0 +1,178 @@
+{
+  "createdAt": "2026-10-09T17:30:15.151739+00:00",
+  "inputSchema": {
+    "path": "contracts/goal-description-review/v3/goal-description-review-input.schema.json",
+    "sha256": "sha256:45333995445f1727c966aea0a3b210379c927329167bd58585264c175ec927c4",
+    "bytes": 7394
+  },
+  "recordSchema": {
+    "path": "contracts/goal-description-review/v1/goal-description-review-record.schema.json",
+    "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "bytes": 5872
+  },
+  "nativeSourcesWholeDigests": [
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "sha256": "sha256:3a99d98a69c60c8e24cfcf40d5f6fe27748715651933176d5f7e6c667b7e1bf9",
+      "bytes": 36070
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "sha256": "sha256:4b83f4c6c924527a989e6321a9427a6525a4565f312caf4e4c82699ea7b01136",
+      "bytes": 47407
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb",
+      "bytes": 113603
+    },
+    {
+      "path": "app/scripts/exportGoalBookReviewBundle.ts",
+      "sha256": "sha256:a970c07dbe89c5496b9dfdd3a7839918c823357b2907fe83778c68999e79388b",
+      "bytes": 26706
+    },
+    {
+      "path": "scripts/validate_schemas.py",
+      "sha256": "sha256:e92ed9b240ec601c6e326d57cd79659414ccadfea88cabe0f63f20bf98246664",
+      "bytes": 26333
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "sha256:b721ab562c3a954e09a9ad9cd35a2edd0316b9867d6ce476001d7e03805b4d5c",
+      "bytes": 130632
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/goal-description-understanding-evidence-review-v2.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/final-thirteen-released-current311-P311-native-preparation-v10/actual-current46-whole11-and-targeted35-context-review.criteria.md",
+      "sha256": "sha256:ad2470e90b4fffa07d3aaa42bc52a8f7ed942572a13de37456653f2c5538a072",
+      "bytes": 4156
+    }
+  ],
+  "currentRequiredInputFields": [
+    "$schema",
+    "schemaVersion",
+    "bundleFingerprint",
+    "bookDigest",
+    "goalCount",
+    "goals",
+    "reviewInputFingerprint"
+  ],
+  "currentRequiredGoalFields": [
+    "goalId",
+    "goalFingerprint",
+    "pageFingerprint",
+    "currentTitleDe",
+    "currentTitleEn",
+    "currentDescriptionDe",
+    "currentDescriptionEn",
+    "canonicalContext",
+    "reviewContext"
+  ],
+  "currentRequiredCanonicalContextFields": [
+    "shortKey",
+    "phase",
+    "core",
+    "weight",
+    "tags",
+    "competencyRefs",
+    "sourceRef",
+    "dimensionTags",
+    "applicability",
+    "type",
+    "nodeKind",
+    "semanticAtomic",
+    "semanticKind",
+    "applicabilitySemantics",
+    "requires",
+    "contains",
+    "examples"
+  ],
+  "currentRequiredReviewContextFields": [
+    "page",
+    "evidenceProfile"
+  ],
+  "wholeEvidenceProfileAcceptedSchemas": {
+    "oneOf": [
+      {
+        "$ref": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-profile.schema.json"
+      },
+      {
+        "$ref": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json"
+      },
+      {
+        "type": "null"
+      }
+    ]
+  },
+  "currentRequiredNativeRecordFields": [
+    "$schema",
+    "schemaVersion",
+    "recordId",
+    "runId",
+    "campaignId",
+    "roundId",
+    "bundleFingerprint",
+    "bookDigest",
+    "goalId",
+    "goalFingerprint",
+    "pageFingerprint",
+    "currentTitleDe",
+    "currentTitleEn",
+    "currentDescriptionDe",
+    "currentDescriptionEn",
+    "decision",
+    "understandingEvidence",
+    "rationale",
+    "evidenceProfileContract",
+    "evidenceProfileRecommendation",
+    "recordStatus",
+    "reviewAuthority"
+  ],
+  "currentRecordEvidenceContract": {
+    "const": "positive-understanding-evidence-v2"
+  },
+  "currentRecordUnderstandingEvidenceFields": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "essentialUnderstandingDe",
+      "essentialUnderstandingEn",
+      "observablePerformanceDe",
+      "observablePerformanceEn",
+      "transferExpectationDe",
+      "transferExpectationEn"
+    ],
+    "properties": {
+      "essentialUnderstandingDe": {
+        "description": "Positive, goal-specific statement in German of the subject-specific ideas, relationships, distinctions, structures, models, meanings, or conditions the learner understands.",
+        "$ref": "#/$defs/longText"
+      },
+      "essentialUnderstandingEn": {
+        "description": "Positive, goal-specific statement in English of the subject-specific ideas, relationships, distinctions, structures, models, meanings, or conditions the learner understands.",
+        "$ref": "#/$defs/longText"
+      },
+      "observablePerformanceDe": {
+        "description": "Concrete statement in German of what the learner can explain, justify, construct, compare, or solve as evidence of that understanding.",
+        "$ref": "#/$defs/longText"
+      },
+      "observablePerformanceEn": {
+        "description": "Concrete statement in English of what the learner can explain, justify, construct, compare, or solve as evidence of that understanding.",
+        "$ref": "#/$defs/longText"
+      },
+      "transferExpectationDe": {
+        "description": "Positive statement in German of how the learner applies the understanding to a changed example, representation, or context.",
+        "$ref": "#/$defs/longText"
+      },
+      "transferExpectationEn": {
+        "description": "Positive statement in English of how the learner applies the understanding to a changed example, representation, or context.",
+        "$ref": "#/$defs/longText"
+      }
+    }
+  },
+  "aiCandidateStatusAndAuthorityRetained": true,
+  "nativeValidatorOrWholeBookRunMadeByThisHandoff": false
+}
