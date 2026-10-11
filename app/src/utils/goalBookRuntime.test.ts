@@ -255,6 +255,36 @@ assert.equal(
   'https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-external',
 )
 
+const singleViewSource = {
+  compositionViewPath: fixture().navigation.canonicalProjectionSource.path,
+  compositionViewDigest: sha,
+}
+const singleViewModel = parseGoalBookRuntimeModel({ ...fixture(), source: singleViewSource })
+assert.equal(singleViewModel.pages.length, 2, 'a bound single canonical view remains readable')
+assert.deepEqual(singleViewModel.source.compositionViewSources, [],
+  'canonical navigation does not invent published atlas or personalization views')
+for (const source of [
+  { ...singleViewSource, compositionViewPath: 'other.view.json' },
+  { ...singleViewSource, compositionViewDigest: `sha256:${'b'.repeat(64)}` },
+  { ...singleViewSource, compositionViewPath: undefined },
+  { ...singleViewSource, compositionViewDigest: undefined },
+  { ...singleViewSource, compositionViewManifestPath: 'atlas.manifest.json' },
+  { ...singleViewSource, compositionViewManifestDigest: sha },
+  { ...singleViewSource, atlasCourseProfilePolicy: 'published' },
+  { ...singleViewSource, navigationViewDigest: sha },
+  { ...singleViewSource, durationModelPolicyPath: 'duration-policy.json' },
+  { ...singleViewSource, compositionViewSources: [] },
+  { ...singleViewSource, compositionViewSources: null },
+]) {
+  assert.throws(() => parseGoalBookRuntimeModel({ ...fixture(), source }), /sicher gelesen/u,
+    'missing, conflicting or malformed source bindings still fail closed')
+}
+assert.throws(() => parseGoalBookRuntimeModel({
+  ...fixture(),
+  book: { ...fixture().book, viewId: 'other-view' },
+  source: singleViewSource,
+}), /sicher gelesen/u, 'a single view must also match the book view identity')
+
 const crossLandscapeFixture = fixture()
 ;(crossLandscapeFixture.source as Record<string, unknown>).externalLandscapes = [{
   path: 'curricula/DE/Gymnasium/canonical/external-mathematics.json',

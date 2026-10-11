@@ -257,16 +257,11 @@ const economicsModel = JSON.parse(modelFixture.replaceAll(
   .replaceAll('"geometrie"', '"economics-ui-models"'))
 economicsModel.book.id = ECONOMICS_BOOK_ID
 economicsModel.book.title = 'Lernzielbuch Wirtschaftswissenschaften – Gymnasium Deutschland (Review-Ausgabe)'
+economicsModel.book.viewId = 'de-gym-economics-current-canonical'
 economicsModel.book.scope = { schoolForm: 'Gymnasium', stage: 'CrossStage' }
 economicsModel.source = {
   compositionViewPath: 'app/scripts/config/goal-books/navigation/de-gym-economics-current-canonical.view.json',
-  compositionViewSources: [{
-    path: 'app/scripts/config/goal-books/navigation/de-gym-economics-current-canonical.view.json',
-    viewId: 'de-gym-economics-current-canonical',
-    scope: { schoolForm: 'Gymnasium', stage: 'CrossStage' },
-    digest: `sha256:${'7'.repeat(64)}`,
-    projectionFingerprint: `sha256:${'8'.repeat(64)}`,
-  }],
+  compositionViewDigest: economicsModel.navigation.canonicalProjectionSource.digest,
 }
 economicsModel.navigation.canonicalProjectionSource = {
   ...economicsModel.navigation.canonicalProjectionSource,

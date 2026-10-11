@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { GOAL_BOOK_PUBLICATION_REGISTRY } from '../src/utils/goalBookPublicationRegistry'
+import { parseVerifiedGoalBookRuntimeModel } from '../src/utils/goalBookRuntime'
 import { buildGoalBookPublications, goalBookBuildArtifactNames, verifyGoalBookPrintFonts } from './buildGoalBookPublications'
 import { loadGoalBookBuildInputs } from './goalBookModel'
 import {
@@ -91,6 +92,13 @@ try {
     .map(({ goalId }) => goalId).sort()
   assert.deepEqual(economicsBook.pages.map(({ goalId }) => goalId).sort(), expectedEconomicsIds,
     'the registered Economics book covers exactly the current curricular atoms, excluding orientation, memory and assessments')
+  const economicsBytes = new TextEncoder().encode(JSON.stringify(economicsBook))
+  const economicsRuntimeBook = await parseVerifiedGoalBookRuntimeModel(
+    economicsBytes.buffer,
+    hashGoalBookBuildBytes(economicsBytes),
+  )
+  assert.deepEqual(economicsRuntimeBook.pages.map(({ goalId }) => goalId).sort(), expectedEconomicsIds,
+    'the browser accepts every current Economics page through the verified single-view publication contract')
   assert.equal(economicsBook.book.publicationMode, 'review',
     'the catalog entry does not imply human release or completed Economics M7')
   assert.match(economicsBook.book.title, /Review-Ausgabe/u,

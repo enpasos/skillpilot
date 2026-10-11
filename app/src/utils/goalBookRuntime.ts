@@ -680,11 +680,33 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
     rawBook.landscapeId,
   )
   ensure(externalLandscapes !== null)
-  const compositionViewSources = parseCompositionViewSources(rawSource.compositionViewSources)
-  ensure(compositionViewSources !== null)
   const externalLandscapeIds = new Set(externalLandscapes.map(({ landscapeId }) => landscapeId))
   const navigation = parseGoalBookNavigation(root.navigation, rawBook.landscapeId)
   ensure(navigation !== null)
+  let compositionViewSources: GoalBookRuntimeCompositionViewSource[]
+  if (rawSource.compositionViewSources === undefined) {
+    // A single-view book binds its canonical navigation directly, without an
+    // atlas manifest or separately published personalization views.
+    ensure([
+      'compositionViewManifestPath',
+      'compositionViewManifestDigest',
+      'atlasCourseProfilePolicy',
+      'navigationOwnership',
+      'navigationViewPath',
+      'navigationViewDigest',
+      'navigationProjectionFingerprint',
+      'durationModelPolicyPath',
+      'durationModelPolicyDigest',
+    ].every((key) => rawSource[key] === undefined))
+    ensure(rawSource.compositionViewPath === navigation.canonicalProjectionSource.path)
+    ensure(rawSource.compositionViewDigest === navigation.canonicalProjectionSource.digest)
+    ensure(rawBook.viewId === navigation.canonicalProjectionSource.viewId)
+    compositionViewSources = []
+  } else {
+    const parsedSources = parseCompositionViewSources(rawSource.compositionViewSources)
+    ensure(parsedSources !== null)
+    compositionViewSources = parsedSources
+  }
 
   ensure(Array.isArray(root.pages))
   ensure(root.pages.length === rawBook.pageCount)
