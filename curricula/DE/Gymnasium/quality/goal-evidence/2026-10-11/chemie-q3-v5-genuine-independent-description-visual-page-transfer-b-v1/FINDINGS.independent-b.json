@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Independent B, no authorship, blind to peer A and author verdicts",
+  "checkedAtUTC": "2026-10-11T08:11:01.690706+00:00",
+  "findings": [
+    {
+      "findingId": "Q3-B-P-01-MISSING-A-FEED",
+      "status": "OPEN_requires_real_correction",
+      "severity": "blocking_for_affected_transfer",
+      "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+      "caseId": "q3-01-b",
+      "observed": "The fresh open-vessel model removes B and claims apparently constant A and B while forward rate is 9 and reverse rate 3. Net reaction consumes 6 A and produces 6 B per common time unit. B removal alone cannot hold A constant. The answer and mandatory transfer rubric introduce inflow not present in the task.",
+      "locations": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/cases6.current398.whole-science-current-PNG-context.json",
+          "jsonPointers": [
+            "/cases/1/freshTransfer/task/de",
+            "/cases/1/freshTransfer/task/en",
+            "/cases/1/freshTransfer/modelResponse/de",
+            "/cases/1/freshTransfer/modelResponse/en",
+            "/cases/1/scoring/criteria/4/criterion/de",
+            "/cases/1/scoring/criteria/4/criterion/en"
+          ]
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/positive/P3.whole-current-profiles.neutral.json",
+          "jsonPointers": [
+            "/profiles/0/profile/variationAxes/1/textDe",
+            "/profiles/0/profile/variationAxes/1/textEn",
+            "/profiles/0/profile/applicationCaseBriefs/1/taskDemandDe",
+            "/profiles/0/profile/applicationCaseBriefs/1/taskDemandEn",
+            "/profiles/0/profile/applicationCaseBriefs/1/expectedPerformanceDe",
+            "/profiles/0/profile/applicationCaseBriefs/1/expectedPerformanceEn"
+          ]
+        }
+      ],
+      "requiredCorrection": "Either explicitly provide A inflow 6 and B outflow 6 in the same units at constant volume, and explain the balanced stationary state with unequal reaction rates, or require the learner to identify the missing balance. Synchronize the whole case, answer, mandatory rubric, profile axis and application brief in DE/EN.",
+      "exampleCoherentTaskDe": "In einem offenen A⇌B-Modellgefäß werden je Sekunde 6 A-Teilchen zugeführt und 6 B-Teilchen entfernt. Bei konstantem Volumen bleiben A und B konstant; die Hinrate beträgt 9 und die Rückrate 3 Übergänge pro Sekunde. Liegt chemisches Gleichgewicht vor? Begründe mithilfe von Stoffbilanz und Reaktionsraten.",
+      "closed": false
+    },
+    {
+      "findingId": "Q3-B-P-02-ROUTINE-VARIATION-BOUNDARY",
+      "status": "OPEN_classification_needs_clarification",
+      "severity": "claim_boundary",
+      "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+      "caseId": "q3-01-a",
+      "observed": "Changing 60:40 and 12 transitions to 20:80 and 7 equal transitions uses the same equilibrium rule. The constant-colour limitation is already demanded in the base case. Independent administration does not by itself make this a new conceptual transfer.",
+      "locations": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/positive/P3.whole-current-profiles.neutral.json",
+          "jsonPointers": [
+            "/profiles/0/profile/variationAxes/1",
+            "/profiles/0/profile/applicationCaseBriefs/0"
+          ]
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/cases6.current398.whole-science-current-PNG-context.json",
+          "jsonPointers": [
+            "/cases/0/freshTransfer",
+            "/cases/0/scoring/criteria/4"
+          ]
+        }
+      ],
+      "requiredCorrection": "Label the numeric variation as routine practice/recheck. A scientifically corrected q3-01-b open-system balance supplies the distinct conceptual boundary; do not use an arbitrary extra-case quota or infer executed learner understanding.",
+      "closed": false
+    },
+    {
+      "findingId": "Q3-B-D-01-RELATIVE-STANDARD-POTENTIAL",
+      "status": "OPEN_D_REVISE_proposal_only",
+      "severity": "description_precision",
+      "goalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "observed": "The whole profile and current image make standard potential relative to SHE and its difference explicit. The short DE/EN goal only says interpret standard potentials. NI printed/physical25 explicitly requires defining standard potentials.",
+      "requiredCorrection": "The normal D REVISE record makes the relative SHE definition and standard open-circuit difference explicit, without importing construction of SHE, Nernst or electrode double-layer investigation.",
+      "closed": false
+    },
+    {
+      "findingId": "Q3-B-CONTEXT-ORIENTATION-EN",
+      "status": "HOLD_external_context_bilingual_mismatch",
+      "goalId": "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+      "observed": "The bound shared orientation DE excludes scientific detail assessment; its EN counterpart asks learners to explain relevance and durable competence growth. This external inherited prerequisite mismatch must not turn the three scientific goals into an orientation exam.",
+      "closed": false
+    },
+    {
+      "findingId": "Q3-B-ACTIVE-ASSET-ADOPTION",
+      "status": "HOLD_active_adoption",
+      "observed": "The workspace normal P checker reports the three PNG URLs missing under app/public and the three resulting review-input fingerprints stale. The unchanged normal checker in the reused temporary capsule with byte-exact frozen inputs passes: 3 needs_human_review, 0 blocking.",
+      "candidateTupleValid": true,
+      "activeAssetsPublished": false,
+      "closed": false
+    }
+  ],
+  "sourceUnionClearance": false,
+  "humanApproval": false,
+  "executedLearnerPerformance": false
+}

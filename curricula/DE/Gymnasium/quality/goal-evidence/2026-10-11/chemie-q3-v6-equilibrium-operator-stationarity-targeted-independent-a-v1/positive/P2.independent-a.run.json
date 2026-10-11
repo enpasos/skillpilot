@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q3-v6-targeted-independent-a-positive-run-20261011",
+  "bundleFingerprint": "sha256:4974ea3c63f9164e7edf88333fb341f9fa25c0ef160ce5145d429185cdbe3f8c",
+  "bookDigest": "sha256:c01c86b556b883b9f54a14bbd11a95af4f311b43692e22b4966e9c2c5c571fa6",
+  "provider": "OpenAI / Codex",
+  "model": "GPT-6-based Codex session; exact model build not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemie-q3-targeted-positive-understanding-evidence-v2",
+  "promptFingerprint": "sha256:a654eeed1bd0df24e17de990dec5a5f4ee1bf75d442b316fec83f83078ccdf52",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:bce3a424485527a51a43cc27f6d711575307483f5034470c0361b213ed0a5c97",
+  "independenceGroupId": "chemie-q3-v6-targeted-genuine-independent-a-20261011",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "8be14f15-2258-58e6-ae4e-38953f5d0570"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c01c86b556b883b9f54a14bbd11a95af4f311b43692e22b4966e9c2c5c571fa6"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:c1607b52b84654635a3a8f1845030ced119139fd7c97545d8929be990be23394"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:a654eeed1bd0df24e17de990dec5a5f4ee1bf75d442b316fec83f83078ccdf52"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-10-11T08:27:40.649938+00:00",
+  "completedAt": "2026-10-11T08:33:44.968904+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:6a4a6a75fbaaab73096b38783a63abcb19a1648d75c98ea28af6268463560193",
+  "toolchainVersion": "skillpilot-positive-understanding-evidence-v2-current"
+}

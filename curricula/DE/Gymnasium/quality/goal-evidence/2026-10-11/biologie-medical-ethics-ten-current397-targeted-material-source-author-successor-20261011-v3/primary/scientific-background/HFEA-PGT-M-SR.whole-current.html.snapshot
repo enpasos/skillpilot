@@ -1,0 +1,1479 @@
+
+<!doctype html>
+<html lang="en-GB" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Pre-implantation genetic testing for monogenic disorders (PGT-M) and Pre-implantation genetic testing for chromosomal structural rearrangements (PGT-SR) | HFEA</title>
+
+    
+        <meta name="description" content="Pre-implantation genetic testing can be used by people who have a serious inherited disease in their family to avoid passing it onto their children.">
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/theme/assets/css/main.css" rel="stylesheet">
+
+    <script src="/theme/assets/js/jquery-3.7.1.min.js"></script>
+    <script src="/theme/assets/js/jquery.validate-1.20.0.min.js"></script>
+    <script src="/theme/assets/js/jquery.validate.unobtrusive-4.0.0.min.js"></script>
+    
+    
+
+
+    
+
+    <script>(function (H) { H.className = H.className.replace(/\bno-js\b/, 'js') }(document.documentElement))</script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W3VXC84');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <script>
+        // Clinic's licence suspension banner for clinic 153
+        // GW 08/08/2024 - Remove the banners but keep the inspection parts
+        window.addEventListener('load', () => {
+
+            const individualPage =
+                /choose\-a\-fertility\-clinic\/search\/results\/(153)(?!\d)/gim;
+
+            // Banner for the search results page
+            const resultsPage = /choose\-a\-fertility\-clinic\/search\/results/gim;
+            if (window.location.href.toLowerCase().match(resultsPage)) {
+                let clinicNames = document.querySelectorAll('.clinic-list h3.clinic-name');
+                clinicNames.forEach(clinicName => {
+                    if (clinicName.innerHTML.match(individualPage)) {
+
+                        // Makes all inspection rating blobs white
+                        clinicName.closest('li.clinic').querySelectorAll('.inspection-rating span.rating').forEach(blob => {
+                            blob.classList.remove('rating-full');
+                        })
+                        // END Makes all inspection rating blobs white
+                        // Removes the inspection rating under the blobs
+                        clinicName.closest('li.clinic').querySelector('.inspection-rating .rating-dot + p').remove();
+                        // END Removes the inspection rating under the blobs
+                    }
+                });
+            }
+            // END Banner for the search results page
+            // CaFC compare page
+            if (
+                window.location.href
+                    .toLowerCase()
+                    .includes('/choose-a-fertility-clinic/search/compare')
+            ) {
+                const linksToClinics = document.querySelectorAll('.compare div div h3 a');
+                linksToClinics.forEach(linkToClinic => {
+                    if (linkToClinic.getAttribute('href') ===
+                        '/choose-a-fertility-clinic/search/results/153/') {
+
+                        // Makes all inspection rating blobs white
+                        linkToClinic.closest('.row .col-md-12').querySelector('.compare-ratings [data-title="Homerton Fertility Centre"]').querySelectorAll('.rating').forEach(blob => {
+                            blob.classList.remove('rating-full');
+                        })
+                        // END Makes all inspection rating blobs white
+
+                        // Removes the inspection rating under the blobs
+                        linkToClinic.closest('.row .col-md-12').querySelector('.compare-ratings [data-title="Homerton Fertility Centre"]').querySelector('.rating-dot + p').innerHTML = '&nbsp;';
+                        // END Removes the inspection rating under the blobs
+
+                        // Removes the overall inspection rating
+                        linkToClinic.closest('.row .col-md-12').querySelector('.compare-ratings [data-title="Homerton Fertility Centre"]').querySelector('.rating-number.circle').innerHTML = '&nbsp;';
+                        // END Removes the overall inspection rating
+                    }
+                });
+            }
+            // END CaFC compare page
+        });
+        // END Clinic's licence suspension banner for clinic 153
+    </script>
+    
+
+
+
+
+
+    <script type="application/ld&#x2B;json">
+        {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "GovernmentOrganization",
+      "@id": "https://www.hfea.gov.uk/#organization",
+      "name": "Human Fertilisation and Embryology Authority",
+      "alternateName": "HFEA",
+      "description": "We are the UK's independent regulator of fertility treatment and research using human embryos. We aim to ensure that everyone who steps into a fertility clinic, receives high quality care. We do this by licensing, monitoring and inspecting fertility clinics. This website provides free, clear and impartial information on UK fertility clinics, IVF and other types of fertility treatment, and donation.",
+      "url": "https://www.hfea.gov.uk/",
+      "logo": "https://www.hfea.gov.uk/theme/assets/images/logos/stickyLogo.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB",
+        "postalCode": "E20 1JQ",
+        "streetAddress": "2nd floor, 2 Redman Place"
+      },
+      "foundingDate": "1990",
+      "parentOrganization": {
+        "@type": "GovernmentOrganization",
+        "name": "Department of Health and Social Care"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.hfea.gov.uk/treatments/embryo-testing-and-treatments-for-disease/pre-implantation-genetic-testing-for-monogenic-disorders-pgt-m-and-pre-implantation-genetic-testing-for-chromosomal-structural-rearrangements-pgt-sr/#webpage",
+      "url": "https://www.hfea.gov.uk/treatments/embryo-testing-and-treatments-for-disease/pre-implantation-genetic-testing-for-monogenic-disorders-pgt-m-and-pre-implantation-genetic-testing-for-chromosomal-structural-rearrangements-pgt-sr/",
+      "name": "Pre-implantation genetic testing for monogenic disorders (PGT-M) and Pre-implantation genetic testing for chromosomal structural rearrangements (PGT-SR)",
+      "publisher": {
+        "@id": "https://www.hfea.gov.uk/#organization"
+      },
+      "datePublished": "2016-04-05",
+      "dateModified": "2026-07-30",
+      "lastReviewed": "2026-07-30"
+    }
+  ]
+}
+    </script>
+
+
+
+
+
+    
+
+    <meta name="description" content="We are the UK's independent regulator of fertility treatment and research using human embryos.">
+    <meta property="og:url" content="https://www.hfea.gov.uk/treatments/embryo-testing-and-treatments-for-disease/pre-implantation-genetic-testing-for-monogenic-disorders-pgt-m-and-pre-implantation-genetic-testing-for-chromosomal-structural-rearrangements-pgt-sr">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HFEA: UK fertility regulator">
+    <meta property="og:description" content="We are the UK's independent regulator of fertility treatment and research using human embryos.">
+    <meta property="og:image" content="https://www.hfea.gov.uk/theme/assets/images/open-graph-meta-tags/hfea-homepage.jpg">
+    <meta property="og:image:alt" content="Image for Human Fertilisation & Embryology Authority (HFEA)">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:site_name" content="Human Fertilisation & Embryology Authority (HFEA)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@HFEA">
+    <meta property="twitter:domain" content="hfea.gov.uk">
+    <meta property="twitter:url" content="https://www.hfea.gov.uk/treatments/embryo-testing-and-treatments-for-disease/pre-implantation-genetic-testing-for-monogenic-disorders-pgt-m-and-pre-implantation-genetic-testing-for-chromosomal-structural-rearrangements-pgt-sr">
+    <meta name="twitter:title" content="HFEA: UK fertility regulator">
+    <meta name="twitter:description" content="We are the UK's independent regulator of fertility treatment and research using human embryos.">
+    <meta name="twitter:image" content="https://www.hfea.gov.uk/theme/assets/images/open-graph-meta-tags/hfea-homepage.jpg">
+    <meta name="twitter:image:alt" content="Image for Human Fertilisation & Embryology Authority (HFEA)">
+    <meta name="twitter:site" content="@HFEA">
+
+
+    <style>
+        .treatments-container {
+            display: flex;
+            gap: 1em;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+
+            .treatments-container p {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+        .treatment-add-on {
+            /* background-color: #00B050; */
+            height: 70px;
+            width: 70px;
+            min-width: 70px;
+            margin: 0 auto;
+            border: 2px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+            .treatment-add-on.individual-page {
+                width: 100px;
+                height: 100px;
+            }
+
+            .treatment-add-on:after {
+                color: #fff;
+                -webkit-text-stroke-color: #000;
+                -webkit-text-stroke-width: 2px;
+                font-size: 4.5em;
+                font-weight: 700;
+                /* background-color: pink; */
+                /* Maybe not */
+            }
+
+            .treatment-add-on.small {
+                max-width: 50px;
+                /*max-height: 50px;*/
+                margin: 0;
+            }
+
+                .treatment-add-on.small:after {
+                    font-size: 450%;
+                }
+
+        .green {
+            background-color: #00B050;
+        }
+
+        .yellow {
+            background-color: #FFC000;
+            padding-bottom: 0.4em;
+        }
+
+        .grey {
+            background-color: #BFBFBF;
+        }
+
+        .black {
+            background-color: #000;
+        }
+
+        .red {
+            background-color: #FF0000;
+        }
+
+        .treatment-add-on :after {
+            vertical-align: baseline !important;
+            line-height: 100%;
+        }
+
+        div.toggle .treatment-add-on.green:after {
+            content: '+';
+        }
+
+        .yellow:after {
+            content: '\00B1';
+        }
+
+        .grey:after {
+            content: '?';
+        }
+
+        .black:after {
+            content: '0';
+            font-family: Consolas;
+        }
+
+        .red:after {
+            content: '!';
+        }
+
+        .sr-only {
+            display: none;
+        }
+
+        .individual-treatment-add-on thead tr {
+            background-color: #008385;
+            color: #fff;
+        }
+
+        .individual-treatment-add-on thead th {
+            font-weight: 400;
+            padding: 4px 8px;
+            text-align: center;
+        }
+
+        .individual-treatment-add-on td:first-child {
+            width: 25%;
+        }
+
+        .individual-treatment-add-on tbody td {
+            padding: 4px 8px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+            .individual-treatment-add-on tbody td:nth-child(2) {
+                text-align: left;
+            }
+
+            .individual-treatment-add-on tbody td .treatment-add-on.small {
+                margin: 8px auto 0;
+            }
+    </style>
+<script type="text/javascript">!function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", // The SDK URL Source
+crossOrigin: "anonymous", 
+cfg: { // Application Insights Configuration
+    connectionString: 'InstrumentationKey=26d2deea-a0ce-4ccf-a7ad-538159b73b31;IngestionEndpoint=https://northeurope-4.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=8ac31f29-feec-4cb2-9e42-ee989e9c8c80'
+}});</script></head>
+<body class="body-no-js html no-sidebars front contentpage
+       ">
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3VXC84"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+    <div class="page">
+        
+
+<div class="cookie">
+    <div class="container">
+<form action="/treatments/embryo-testing-and-treatments-for-disease/pre-implantation-genetic-testing-for-monogenic-disorders-pgt-m-and-pre-implantation-genetic-testing-for-chromosomal-structural-rearrangements-pgt-sr" enctype="multipart/form-data" id="form33a5946a7f6143b3b91eadab8f12aecd" method="post">            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="headrer">HFEA.gov.uk uses cookies to deliver content and make improvements to the website.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-8">
+                    <input type="hidden" name="acceptSessionCookie" id="acceptSessionCookie" />
+                    <input type="hidden" name="acceptAnalytics" id="acceptAnalytics" />
+                    <input type="hidden" name="acceptYouTube" id="acceptYouTube" />
+                    <input type="hidden" name="acceptGoogleMaps" id="acceptGoogleMaps" />
+
+                    <button id="cookieSubmit" type="submit" class=" btn hfea-btn bg_teal">Accept cookies</button>
+
+
+                </div>
+                <div class="col-md-2">
+                    <a Class="btn hfea-btn configureButton" href="/umbraco/surface/cookieacceptancesurface/AcceptPolicyGet">Configure cookies</a>
+                </div>
+            </div>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8ESuf3gv9yhOtDRiWlcH89oR_d35w2GfMVpylAocPLfCJV1twHIiPe7y1ihIft0qCg6n9TkoGF8-c2fcJxngasBYZzrSkR0vzAh23Iu2cLhPt6rWP6THU6GHjbTFfLlUUMvVnoLyL1LsZ5StbrLVeUc" /><input name="ufprt" type="hidden" value="CfDJ8ESuf3gv9yhOtDRiWlcH89pbMzj2SEa4rH280UcFCn6t475q2s2d9TlA-phWUh1FOAjetG36NKBmbF4S__OB9lbip6wUm0IX3_zx10dq3ejptW-MrbBh72hes3ac-9A4CLgBCMUzF3Jt3Z5-VWlEC3ZtdSYoxDO6rwU30e4H9c8A" /></form>    </div>
+
+
+    <style type="text/css">
+        .configureButton {
+            background-color: #ddd;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cookieSubmit").on('click', function () {
+                $("#acceptSessionCookie").val(true);
+                $("#acceptAnalytics").val(true);
+                $("#acceptYouTube").val(true);
+                $("#acceptGoogleMaps").val(true);
+
+            });
+
+        });
+
+    </script>
+
+
+</div>
+
+        
+
+<a class="sr-only sr-only-focusable" href="#main">Skip to main content</a>
+<header class="site-header">
+    <div class="container">
+        <div class="col-lg-4 col-lhs">
+            <a class="logo" href="/">
+                <img class="defaultLogo" src="/theme/assets/images/logos/Logo.png" alt="Human Fertilisation &amp; Embryology Authority | Home">
+                <img class="stickyLogo" src="/theme/assets/images/logos/stickyLogo.jpg" style="display: none;" aria-hidden="true" alt="Human Fertilisation &amp; Embryology Authority | Home">
+            </a>
+            <a href="/" class="mobile-menu">
+                <span class="sr-only">Menu toggle</span>
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </a>
+        </div>
+        <div class="col-lg-8 col-rhs">
+            <div class="">
+                <div class="col masthead-links">
+                    <a href="/">Home</a>
+                    <a href="/about-us/hfea-dashboard/?utm_source=HFEA+website&utm_medium=Top+navigation+bar&utm_campaign=Pre-implantation%20genetic%20testing%20for%20monogenic%20disorders%20%28PGT-M%29%20and%20Pre-implantation%20genetic%20testing%20for%20chromosomal%20structural%20rearrangements%20%28PGT-SR%29">HFEA dashboard</a>
+                    <a href="/contact-us">Contact us</a>
+                </div>
+                <div class="col rhs">
+                        
+
+<form action="/treatments/embryo-testing-and-treatments-for-disease/pre-implantation-genetic-testing-for-monogenic-disorders-pgt-m-and-pre-implantation-genetic-testing-for-chromosomal-structural-rearrangements-pgt-sr" class="search" enctype="multipart/form-data" id="search-form-simple-search" method="post">    <div class="large-search">
+        <label class="sr-only" for="SearchKeywords">Search for a treatment</label>
+        <div class="inputs">
+            <input autocomplete="off" class="ui-autocomplete-input" id="SearchKeywords" name="SearchParams.SearchKeywords" Title="Enter your search terms" type="text" value="" />
+            <button class="search-button" name="SearchKeywordsBtn" type="submit">Search</button>
+        </div>
+    </div>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8ESuf3gv9yhOtDRiWlcH89oR_d35w2GfMVpylAocPLfCJV1twHIiPe7y1ihIft0qCg6n9TkoGF8-c2fcJxngasBYZzrSkR0vzAh23Iu2cLhPt6rWP6THU6GHjbTFfLlUUMvVnoLyL1LsZ5StbrLVeUc" /><input name="ufprt" type="hidden" value="CfDJ8ESuf3gv9yhOtDRiWlcH89oeNz9sr5AGGAmAMP83dERtR8_V82nhE27EA_YhT9ZJakPxHcfd5qWZBB89mfbs5Ebcr-wCikQnrZm4MRuFNYER1Xt_F3SIViv39unBGTK7CXNKsGVU1qmwcdCA_l17-LKKOnSgsjI3NG6a1lJJnr4S" /></form>
+
+
+                 
+                </div>
+            </div>
+            <nav class="primary-nav clearfix">
+                <ul class="list-unstyled list-inline">
+                        <li class="auto_height primary-li">
+                            <a href="/i-am/" aria-label="Fertility information tailored for you">
+                                I am...                                
+                            </a>
+                                <div class="subnav">
+                                    <div class="container">
+                                        <ul class="list-unstyled row">
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/i-am/heterosexual-couples/">
+In a heterosexual couple                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/i-am/fertility-treatment-for-lgbt-people/">
+LGBT&#x2B;                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/i-am/single-women/">
+A single woman                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/i-am/women-over-38/">
+A woman over 38                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/i-am/i-have-a-genetic-disease-in-my-family/">
+Researching a genetic disease in my family                                                    </a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="auto_height primary-li">
+                            <a href="/treatments/" aria-label="Treatments">
+                                Treatments                                
+                            </a>
+                                <div class="subnav">
+                                    <div class="container">
+                                        <ul class="list-unstyled row">
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/treatments/explore-all-treatments/">
+Explore fertility treatments                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/treatments/fertility-preservation/">
+Fertility preservation                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/treatments/embryo-testing-and-treatments-for-disease/">
+Embryo testing and treatments for disease                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/treatments/covid-19-and-fertility-treatment/">
+COVID-19 and fertility treatment                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/treatments/treatment-add-ons/">
+Treatment add-ons                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/treatments/hiv/">
+Sperm, egg and embryo donation from people living with HIV with an undetectable viral load                                                    </a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="auto_height primary-li">
+                            <a href="/donation/" aria-label="Donation">
+                                Donation                                
+                            </a>
+                                <div class="subnav">
+                                    <div class="container">
+                                        <ul class="list-unstyled row">
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/donation/donors/">
+Donors                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/donation/finding-out-about-your-donor/">
+Finding out about your donor                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/donation/talking-to-your-family-about-your-donation/">
+Talking to your family about your donation                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/donation/donors/donating-to-research/">Donating to research</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="auto_height primary-li">
+                            <a href="/choose-a-fertility-clinic/" aria-label="Choose a fertility clinic">
+                                Choose a clinic                                
+                            </a>
+                                <div class="subnav">
+                                    <div class="container">
+                                        <ul class="list-unstyled row">
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/choose-a-fertility-clinic/search/">
+Fertility clinic search                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/choose-a-fertility-clinic/rate-your-clinic/">
+Rate your clinic                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/choose-a-fertility-clinic/latest-decisions-on-clinics/">
+Latest decisions on clinics                                                    </a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="auto_height primary-li">
+                            <a href="/about-us/" aria-label="About us">
+                                About us                                
+                            </a>
+                                <div class="subnav">
+                                    <div class="container">
+                                        <ul class="list-unstyled row">
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/how-we-regulate/">
+How we regulate                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/our-authority-committees-and-panels/">
+Our Authority, committees and panels                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/our-people/">
+Our people                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/working-with-others/">
+Our partners                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/publications/">
+Publications                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/news-and-press-releases/">
+News and press releases                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/our-campaign-to-reduce-multiple-births/">
+Our campaign to reduce multiple births                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/data-research/">
+Data research                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/our-blog/">
+Our blog                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/a-z-fertility-glossary/">
+A-Z fertility glossary                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/modernising-the-regulation-of-fertility-treatment-and-research-involving-human-embryos/">
+Modernising Fertility Law                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/hfea-dashboard/">
+HFEA dashboard                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/media-centre/">
+Media centre                                                    </a>
+                                                </li>
+                                                <li class="col-lg-4 column col">
+                                                    <a href="/about-us/working-with-others/patient-engagement-forum/">Patient Engagement Forum</a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                        </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+        
+
+        <a name="main" id="main" tabindex="-1"></a>
+        <div id="main-content" class="mb-70">
+            <!-- Temporary banner for the Patient Engagement Forum 2026 -->
+                        <a class="temp-banner" href="https://www.hfea.gov.uk/about-us/working-with-others/patient-engagement-forum/?utm_source=Web+banner&utm_medium=banner&utm_campaign=PEF_Recruitment+_2026&utm_content=PEF_Recruitment_2026-2026-09-25" target="_blank" tabindex="0" style="
+                          position: relative;
+                          z-index: 9999;
+                          text-decoration: none;">
+                          <div style="
+                                background-color: #d9efe5;                            font-family: FuturaBT, Arial, Helvetica, sans-serif;
+                            color: #000;
+                            text-align: center;
+                            font-size: 3rem;
+                            font-weight: 700;
+                            padding: 1em;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-wrap: wrap;
+                              "><img style="height: 140px;" src="https://www.hfea.gov.uk/media/ijdfj2ra/join-the-patient-engagement-forum.png " alt="Join the Patient Engagement Forum."><span style="max-width: 550px; display: inline-block;">Share your experiences by joining our <span style="text-decoration: underline;">Patient Engagement Forum</span>.</span></div>
+                        </a>
+        <!-- END Temporary banner for the Patient Engagement Forum 2026 -->
+            
+<div class="background-page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Pre-implantation genetic testing for monogenic disorders (PGT-M) and Pre-implantation genetic testing for chromosomal structural rearrangements (PGT-SR)</h1>
+                <div class="lead">
+                    <p>Pre-implantation genetic testing can be used by people who have a serious inherited disease in their family to avoid passing it onto their children. This page explains how the treatment works and which conditions you can check for.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 
+
+    <div class="umb-grid container">
+        <div class="grid-section">
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="What is PGT-M?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>What is PGT-M?</h2>
+    
+
+
+
+
+    <p>PG<span>T-M</span>, <span>previously </span>known as preimplantation genetic <span>diagnosis </span>(PG<span>D</span>), is a treatment which involves checking the genes or chromosomes of your embryos for a specific genetic condition.</p>
+<p>Because the embryos need to be tested in a lab, you will need to have IVF, even if you and your partner have no fertility problems.</p>
+<p>Embryos which have been tested and are free of the condition will be placed back into your womb to hopefully continue to develop. Historically, the embryo was usually transferred two to six days after being created (ie, a fresh embryo transfer) but now, the embryo is more often frozen and transferred at a later date.</p>
+<p><a href="/treatments/explore-all-treatments/in-vitro-fertilisation-ivf/" class="hfea-v2 teal-white">Find out more about IVF</a></p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+
+
+
+
+
+
+
+<aside class="rhs-list">
+    <h3></h3>
+    <div><ul>
+<li>Over 2,000 genetic conditions have been approved for PG<span>T-M</span> testing.</li>
+<li>You need to have PG<span>T-M</span> as part of IVF.</li>
+<li>We need to approve any new genetic conditions to be tested using PG<span>T-M</span>.</li>
+</ul></div>
+</aside>                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="What is PGT-SR?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>What is PGT-SR?</h2>
+    
+
+
+
+
+    <p>PGT-SR is a treatment that involves looking at the chromosome structure of your embryos, and finding where segments may have been deleted, duplicated or inverted. It can be used for people with a known chromosome structural rearrangement, to improve the chance of a healthy pregnancy.</p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="Who can have PGT-M or PGT-SR?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>Who can have PGT-M or PGT-SR?</h2>
+    
+
+
+
+
+    <p>Your doctor may discuss PGT-M or PGT-SR with you if:</p>
+<ul>
+<li>you have ended previous pregnancies because of a serious genetic condition</li>
+<li>you already have a child with a serious genetic condition and want to avoid this happening again</li>
+<li>you have a family history of a serious genetic condition</li>
+<li>you have a family history of chromosome problems or</li>
+<li>you have a history of recurrent miscarriage due to chromosomal abnormalities</li>
+</ul>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="Which genetic conditions can be tested for with PGT-M?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>Which genetic conditions can be tested for with PGT-M?</h2>
+    
+
+
+
+
+    <p>It is possible to use PGT-M to test for almost any genetic condition where a specific gene is known to cause that condition. However conditions can only be tested for when the condition has been considered by the Authority to comply with legal criteria related to the risk of transmission and the seriousness of symptoms, in somebody affected by the genetic abnormality to be tested for.</p>
+<p><a data-id="1390" href="/treatments/embryo-testing-and-treatments-for-disease/approved-pgt-m-and-ptt-conditions/" title="Approved PGD and PTT conditions" class="hfea-v2 teal-white">List of conditions you can test for</a></p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="Which genetic conditions can be tested for with PGT-SR?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>Which genetic conditions can be tested for with PGT-SR?</h2>
+    
+
+
+
+
+    <p>It is possible to use PGT-SR to test for inherited chromosomal rearrangements and abnormalities where a specific chromosomal abnormality is known to cause a serious condition. However testing for a serious genetic condition is only permitted when the chromosomal rearrangement or abnormality has been considered by the Authority to comply with legal criteria related to the risk of transmission and the seriousness of symptoms, in somebody affected by the genetic abnormality to be tested for.</p>
+<p>If a particular inherited chromosomal rearrangement or abnormality is known to cause an increased risk of miscarriage then specific approval from the Authority may not be required.</p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="What if I have a genetic condition that hasn't been approved for testing?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>What if I have a genetic condition that hasn&#39;t been approved for testing?</h2>
+    
+
+
+
+
+    <p>If there’s a genetic condition you’d like to be able to test for that hasn’t already been approved, your clinic will need to apply to us to add it to the PG<span>T-M</span> list.</p>
+<p>There are strict criteria for deciding which conditions should be permitted so bear in mind it could be a lengthy process and you may not be successful.</p>
+<p>Read our <a rel="noopener" href="/cop" target="_blank" class="hfea-v2 teal-white">guidance on embryo testing for clinics</a></p>
+<p>Learn more about the <a href="/treatments/embryo-testing-and-treatments-for-disease/approved-pgt-m-and-ptt-conditions/" title="Approved PGT-M and PTT conditions" class="hfea-v2 teal-white">HFEA’s PGT-M application process</a></p>
+<p>Find a <a href="/choose-a-clinic/clinic-search/" class="hfea-v2 teal-white">PGT-M clinic near you</a></p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="How safe is PGT-M and PGT-SR?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>How safe is PGT-M and PGT-SR?</h2>
+    
+
+
+
+
+    <p>PGT-M and PGT-SR treatment is thought to be very safe – there is no evidence that babies born following such treatments suffer from any more health or developmental problems than babies born using IVF alone. There are risks from having IVF though.</p>
+<p>Find out more about the <a href="/treatments/explore-all-treatments/in-vitro-fertilisation-ivf/" class="hfea-v2 teal-white">risks of IVF</a></p>
+<p>Although an embryo can usually develop normally even when it has had some cells removed, there is a possibility that some embryos may be damaged by testing, which means they would need to be discarded and wouldn’t be able to be used in IVF treatment. In addition, PGT-M and PGT-SR are not 100% accurate so there’s a small chance the tests may not work or may give the wrong information.</p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="What’s the chance of having a baby?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>What’s the chance of having a baby?</h2>
+    
+
+
+
+
+    <p>As with most fertility treatments, success depends on many factors, including the woman’s age and whether there are any existing fertility problems.</p>
+<p>While numbers of treatments being carried out are still low, PGT-M and PGT-SR embryo testing has become more popular.</p>
+<p>For the latest statistics on PGT-M and PGT-SR visit our <a href="/about-us/publications/research-and-data/" class="hfea-v2 teal-white">Research and data</a> page.</p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="Why might PGT-M and PGT-SR be unsuccessful?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>Why might PGT-M and PGT-SR be unsuccessful?</h2>
+    
+
+
+
+
+    <p>Unfortunately, sometimes there are no embryos suitable for transfer to the womb. This could be because:</p>
+<ul>
+<li>not enough eggs are produced or fertilised in the first place</li>
+<li>there is a small risk that removing the cells for analysis damages an embryo</li>
+<li>all the embryos are affected by the genetic abnormality</li>
+</ul>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" data-collapse-row="1" data-row-title="How can I get PGT-M or PGT-SR treatment?">
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col central-col green-border-bottom">
+                    <div >
+                                <div class="toggle-section">
+                                    <a href="#" class="open">
+                                        <span class="symbol"></span>
+                                        <span class="text">
+                                            <span class="sr-only">Click to show and hide content</span>
+                                        </span>
+                                    </a>
+                                </div>
+                        <div class="toggle">
+
+
+
+
+
+        <h2>How can I get PGT-M or PGT-SR treatment?</h2>
+    
+
+
+
+
+    <p>Your first step should be to talk to your GP, who will refer you to a Regional Clinical Genetics Service for further advice about all your options.</p>
+<p>In some cases, you can get PGT-M or PGT-SR treatment on the NHS but it depends on your situation and where you live – your GP should be able to advise you.</p>
+<p>If it’s been agreed that PGT-M or PGT-SR is the right treatment for you, you’ll be referred to a specialist at a fertility clinic that has a licence from us to carry out embryo testing treatments. This is a specialist service so your nearest clinic may be far away. Please note that PGT-M and PGT-SR are together referred to as PGD on our Choose a clinic page.</p>
+<p><a href="/choose-a-clinic/" class="hfea-v2 teal-white">Choose a clinic</a></p>
+<p>You can also find a list of Regional Clinical Genetics Services in your area by visiting the <a rel="noopener" href="https://www.geneticalliance.org.uk/information/service-and-testing/nhs-genetic-services-in-the-uk/" target="_blank" class="hfea-v2 teal-white">Genetic Alliance UK</a> website.</p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col  ">
+                    <div >
+                        <div class="toggle">
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row main-body-section" >
+                <div class="col-lg-6 col  ">
+                    <div >
+                        <div class="toggle">
+
+
+
+
+
+
+<article class="bg spotlight-landing-page bg_light_green keyline ">
+
+        <h2 class="header">Where next?</h2>
+
+    <p><a data-id="1222" href="/treatments/embryo-testing-and-treatments-for-disease/" title="Embryo testing and treatments for disease" class="hfea-v2 darkblue-white">Embryo testing and treatments for disease</a></p>
+<p><a data-id="1211" href="#" title="Pre-implantation tissue typing" class="hfea-v2 darkblue-white">Pre-implantation tissue typing (PTT)</a></p>
+<p><a data-id="1390" href="/treatments/embryo-testing-and-treatments-for-disease/approved-pgt-m-and-ptt-conditions/" title="Approved PGD and PTT conditions" class="hfea-v2 darkblue-white">Approved PGT-M conditions</a></p>
+
+</article>                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col  ">
+                    <div >
+                        <div class="toggle">
+
+
+
+
+
+
+<article class="bg spotlight-landing-page bg_bright_blue keyline ">
+
+        <h2 class="header">From our partners:</h2>
+
+    <p><a rel="noopener" href="https://geneticalliance.org.uk/support-and-information/about-genetics/" target="blank" class="hfea-v2 black-white">Information for people with genetic conditions</a> (Genetic Alliance UK)</p>
+<p><a rel="noopener" href="https://geneticalliance.org.uk/preimplantation-genetic-testing/" target="blank" class="hfea-v2 black-white">Information about PGT-M</a> (Genetic Alliance UK)</p>
+<p><a rel="noopener" href="https://www.nhs.uk/conditions/pregnancy-and-baby/screening-tests-in-pregnancy/" target="blank" class="hfea-v2 black-white">Screening tests in pregnancy</a> (NHS Choices)</p>
+
+</article>                        </div>
+                    </div>
+                </div>
+
+        </div>
+        </div>
+    </div>
+
+
+
+ 
+
+    <div class="umb-grid container">
+        <div class="grid-section">
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container page-publication-and-last-review-dates">
+        <table>
+            <caption class="sr-only">Page publication and last review dates</caption>
+            <tbody>
+                    <tr>
+                        <th scope="row">Publication date:</th>
+                        <td><time datetime="2016-04-05">5<sup>th</sup>  April 2016</time></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last reviewed:</th>
+                        <td><time datetime="2026-07-30">30<sup>th</sup>  July 2026</time></td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="container social-sharing-container">
+    
+    <ul class="list-unstyled list-inline social-sharing mb-70">
+        <li>
+            <a href="mailto:?subject=Shared%20content%20from%20the%20HFEA:%20Pre-implantation%20genetic%20testing%20for%20monogenic%20disorders%20(PGT-M)%20and%20Pre-implantation%20genetic%20testing%20for%20chromosomal%20structural%20rearrangements%20(PGT-SR)&amp;body=Here%20is%20some%20useful%20information%20from%20the%20Human%20Fertilisation%20and%20Embryology%20Authority,%20they%20are%20the%20UK's%20independent%20regulator%20overseeing%20fertility%20treatment%20and%20research.%20%0D%0A%0D%0A%20Pre-implantation%20genetic%20testing%20for%20monogenic%20disorders%20(PGT-M)%20and%20Pre-implantation%20genetic%20testing%20for%20chromosomal%20structural%20rearrangements%20(PGT-SR)%20%0D%0A%0D%0A%20https://www.hfea.gov.uk/treatments/embryo-testing-and-treatments-for-disease/pre-implantation-genetic-testing-for-monogenic-disorders-pgt-m-and-pre-implantation-genetic-testing-for-chromosomal-structural-rearrangements-pgt-sr/treatments/embryo-testing-and-treatments-for-disease/pre-implantation-genetic-testing-for-monogenic-disorders-pgt-m-and-pre-implantation-genetic-testing-for-chromosomal-structural-rearrangements-pgt-sr/%20%0D%0A%0D%0AKind%20Regards">
+                <span class="hfea-icon-mail"></span>
+                Send to a friend
+            </a>
+        </li>
+        <li>
+            <a href="javascript:window.print()" class="print-button">
+                <span class="icon print"></span>
+                Print this page
+            </a>
+        </li>        
+    </ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+
+<footer class="p-20 teal-bg footer">
+
+    <div class="container">
+        <div class="row social-links">
+            <div class="col-md-4">
+                <a href=https://twitter.com/hfea target="_blank">
+                    <span class="hfea-icon-twitter"></span>X (Twitter)<span class="sr-only">Opens in a new window</span>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/contact-us/">
+                    <span class="hfea-icon-mail"></span>Get in touch
+                </a>
+            </div>
+                <div class="col-md-4">
+                    <a href=https://www.facebook.com/HFEAofficial target="_blank">
+                        <span class="hfea-icon-facebook2"></span>Facebook<span class="sr-only">Opens in a new window</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href=https://www.instagram.com/hfeaofficial target="_blank">
+                        <span class="hfea-icon-instagram"></span>Instagram<span class="sr-only">Opens in a new window</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href=https://www.linkedin.com/company/hfea target="_blank">
+                        <span class="hfea-icon-linkedin"></span>LinkedIn<span class="sr-only">Opens in a new window</span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href=https://www.youtube.com/@hfea?sub_confirmation=1 target="_blank">
+                        <span class="hfea-icon-youtube"></span>YouTube<span class="sr-only">Opens in a new window</span>
+                    </a>
+                </div>
+        </div>
+            <div class="row footer-links">
+                
+    <div class="umb-grid">
+                <div class="grid-section">
+        <div >
+                <div class="container">
+            <div class="row clearfix">
+                    <div class="col-lg-12 column col">
+                        <div >
+
+
+
+
+<div class="col-md-3 footer-link-section">
+                <h2>Get information</h2>
+    
+    <div class="footer-links-listing"><p><a href="/choose-a-clinic/clinic-search/">Find a Clinic</a></p>
+<p><a href="/treatments/explore-all-treatments/">Treatment options</a></p>
+<p><a href="/donation/">Donors and donation</a></p>
+<p><a href="/treatments/fertility-preservation/">Fertility preservation</a></p>
+<p><a href="/about-us/a-z-fertility-glossary/" title="A-Z fertility glossary">A-Z fertility glossary</a></p>
+<p><a href="/contact-us/frequently-asked-questions/" title="Visit the 'Frequently asked questions' page">Frequently asked questions (FAQs)</a></p></div>
+</div>
+
+
+
+
+<div class="col-md-3 footer-link-section">
+                <h2>About the HFEA</h2>
+    
+    <div class="footer-links-listing"><p><a href="/about-us/media-centre/" title="Media centre">Media centre</a></p>
+<p><a href="/about-us/news-and-press-releases/">News and press releases</a></p>
+<p><a href="/privacy-policy-cookies-and-accessibility/">Privacy, cookies and accessibility</a></p>
+<p><a href="/privacy-policy-cookies-and-accessibility/accessibility-statement/">Accessibility statement</a></p>
+<p><a href="/about-us/freedom-of-information/">Freedom of information</a></p>
+<p><a href="/contact-us/making-a-complaint-about-a-fertility-clinic/" title="More information about making a complaint">Complaints</a></p>
+<p><a href="/work-for-us/">Work for us</a></p></div>
+</div>
+
+
+
+
+<div class="col-md-3 footer-link-section">
+                <h2>For clinics</h2>
+    
+    <div class="footer-links-listing"><p><a href="https://portal.hfea.gov.uk/knowledge-base/">Clinic Portal</a></p>
+<p><a href="/about-us/applying-for-a-clinic-licence/">Applying for a clinic licence</a></p>
+<p><a href="/about-us/applying-for-a-research-licence/">Applying for a research licence</a></p>
+<!--<p><a href="/treatments/embryo-testing-and-treatments-for-disease/approved-pgd-and-ptt-conditions/">PGT-M conditions</a></p>-->
+<p><a href="/pgt-m-conditions/"><abbr title="Pre-implantation genetic testing for monogenic or single-gene disorders">PGT-M</abbr> conditions</a></p></div>
+</div>
+
+
+
+
+<div class="col-md-3 footer-link-section">
+                <h2>Research and data</h2>
+    
+    <div class="footer-links-listing"><p><a href="/about-us/data-research/" title="Data research">Data research</a></p>
+<p><a href="/about-us/publications/research-and-data/">Research publications</a></p>
+<p><a href="/about-us/hfea-dashboard/" title="HFEA dashboard">HFEA dashboard</a></p></div>
+</div>
+                        </div>
+                    </div>
+            </div>
+                </div>
+        </div>
+                </div>
+    </div>
+
+
+
+            </div>
+    </div>
+</footer>
+
+    </div>
+  
+        
+<img style="display: none;" id="our-pixel" src="https://hfeagb.sharepoint.com/:i:/r/Shared%20Documents/HFEA%20internal%20tracking/hfea-pixel.png" alt="Human Fertilisation & Embryology Authority (HFEA)">
+
+<script>
+  function createCookie(name, value, days) {
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      var expires = "; expires=" + date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/;domain=hfea.gov.uk";
+  }
+  
+  window.addEventListener('load', () => {
+    const ourPixel = document.querySelector('#our-pixel');
+    if (ourPixel.width == 10 || document.cookie.includes('HFEA_staff=true')) {
+      console.log('HFEA staff');
+      createCookie("HFEA_staff", "true", 1000);
+      clarity("set", "traffic", "HFEA_staff");
+    }
+  });
+</script>
+
+
+    
+
+    <script src="/theme/assets/js/jquery-ui.js"></script>
+    <script src="/theme/assets/js/jquery.ui.autocomplete.html.js"></script>
+    <!--<script src="/theme/assets/js/media.match.js"></script>-->
+    <script src="/theme/assets/js/bootstrap.min.js"></script>
+    <script src="/theme/assets/js/plugins.js"></script>
+    <script src="/theme/assets/js/bootstrap-toggle.min.js"></script>
+    <script src="/theme/assets/js/hfea.js"></script>
+    <script src="/theme/assets/js/prototype-only.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBokXSpkR-FLZnSQSpRKUdoXKl9GILRp5Y"></script>
+
+    <!-- Temporary OTR-related changes -->
+    <script>
+        // Adds items to 'I am...' in the main navigation
+        let linksUnderIAM = document.querySelector(
+            'nav.primary-nav ul li.primary-li a[href="/i-am/"] + div div ul'
+        );
+        linksUnderIAM.appendChild(document.createElement('li'));
+        linksUnderIAM
+            .querySelector('li:last-child')
+            .classList.add('col-lg-4', 'column', 'col');
+        linksUnderIAM.querySelector(
+            'li:last-child'
+        ).innerHTML = `<a href="/donation/donors/">A donor</a>`;
+        linksUnderIAM.appendChild(document.createElement('li'));
+        linksUnderIAM
+            .querySelector('li:last-child')
+            .classList.add('col-lg-4', 'column', 'col');
+        linksUnderIAM.querySelector(
+            'li:last-child'
+        ).innerHTML = `<a href="/donation/donor-conceived-people-and-their-parents/">Looking for information about my donor</a>`;
+
+        // Adds items to 'Treatments' in the main navigation
+        let linksUnderTreatments = document.querySelector(
+            'nav.primary-nav ul li.primary-li a[href="/treatments/"] + div div ul'
+        );
+        linksUnderTreatments.appendChild(document.createElement('li'));
+        linksUnderTreatments
+            .querySelector('li:last-child')
+            .classList.add('col-lg-4', 'column', 'col');
+        linksUnderTreatments.querySelector(
+            'li:last-child'
+        ).innerHTML = `<a href="/treatments/explore-all-treatments/using-donated-eggs-sperm-or-embryos-in-treatment/">Using a donor in treatment</a>`;
+    </script>
+    <!-- END Temporary OTR-related changes -->
+    <!-- Temporary fix for CaFC: PGD (PGT-M) and PGS -->
+	<script>
+		// PGD: 1834
+		// PGS: 1835
+		// Replace 'PGD' with 'PGT-M' for all clinics returned on the CaFC search results page
+		if (window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search/results')) {
+			let clinicTreatments = document.querySelectorAll('li.clinic .clinic-specialty.row div:nth-of-type(2) ul li');
+			const oldTermPGD = 'PGD';
+			const newTermPGD = 'PGT-M';
+			clinicTreatments.forEach(treatment => {
+				if (treatment.innerText == oldTermPGD) {
+					treatment.innerHTML = treatment.innerHTML.replace(oldTermPGD, newTermPGD);
+				}
+			})
+            // Replace 'PGD' with 'PGT-M' in 'You searched for clinics: treating...' at the top of the page
+			if (document.querySelector('#results .search-terms-label')) {
+				let youSearchedForClinics = document.querySelector('#results .search-terms-label');
+				youSearchedForClinics.innerText = youSearchedForClinics.innerText.replace(oldTermPGD, newTermPGD);
+			}
+            // Replace 'PGD' with 'PGT-M' in the page title
+			document.title = document.title.replace(oldTermPGD, newTermPGD);
+		}
+		// In 'Screening services' on CaFC in 'Fine tune your search'
+		if (window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search')) {
+			let checkboxGroups = document.querySelectorAll('.checkbox-group');
+            checkboxGroups.forEach(treatment => {
+                // Replace 'PGD' with 'PGT-M'
+				if (treatment.innerText.startsWith(' PGD')) {
+					treatment.innerHTML = treatment.innerHTML.replace(/\ PGD/i, '\ PGT\-M');
+                }
+                // Remove 'PGS'
+                if (treatment.innerText.startsWith(' PGS')) {
+                    treatment.remove();
+                }
+			})
+        }
+        // Fertility clinics starting with the letter 'A'
+        if (window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search/all-clinics/?alpha=a')) {
+            // Find among all centres
+            let allCentres = document.querySelectorAll('div.row.clinic-row');
+            // If found
+            allCentres.forEach(centre => {
+                if (centre.querySelector('div div div h2.h3').innerText.toLowerCase().includes('apricity')) {
+                    centre.remove();
+                }
+            })
+        }
+        // END Fertility clinics starting with the letter 'A'
+        // Individual clinic profile pages
+        if (window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search/results/9350') ||
+            window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search/results/30') ||
+            window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search/results/109') ||
+            window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search/results/33') ||
+            window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search/results/9282')) {
+                // Find on the page
+                let allSmallHeadings = document.querySelectorAll('div.clinic-details div .detail ul li h3.small-header');
+                // If found
+                allSmallHeadings.forEach(smallHeading => {
+                    if (smallHeading.innerText.toLowerCase().includes('apricity')) {
+                        smallHeading.closest('ul.list-unstyled').remove();
+                    }
+                })
+        }
+        // END Individual clinic profile pages
+
+        // Other CaFC pages, e.g. 'location' and 'distance'
+        if (window.location.href.toLowerCase().includes('choose-a-fertility-clinic/search/results/?')) {
+            let satelliteHeadings = document.querySelectorAll('.clinic div div .clinic-name a');
+            satelliteHeadings.forEach(satelliteHeading => {
+                if (satelliteHeading.innerText.toLowerCase().includes('apricity')) {
+                    satelliteHeading.closest('li.clinic').remove();
+                }
+            })
+        }
+        // END Other CaFC pages, e.g. 'location' and 'distance'
+	</script>
+	<!-- END Temporary fix for CaFC: PGD (PGT-M) and PGS -->
+</body>
+</html>

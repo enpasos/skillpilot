@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:c01c86b556b883b9f54a14bbd11a95af4f311b43692e22b4966e9c2c5c571fa6",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "chemie-q3-three-png-current398-review-universe-author-v5",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 2,
+  "goals": [
+    {
+      "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+      "pageNumber": 236,
+      "goalFingerprint": "sha256:8fc642c61215edf0f944fa1ba80e7a6cbfb794b98a675e593a2e718a0fdb7740",
+      "pageFingerprint": "sha256:7e6afd2847788b50aab7f5bdbe67ce423716f3bf81b17eb1b659202f8c3c4236",
+      "evidenceReview": {
+        "reviewId": "chemie-q3-equilibrium-operator-stationarity-targeted-author-v6",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:7f5afb325296950c9371ba7ead45a8c48cc236f13ba89d6d1ce00d96bc29ecf6",
+        "profileFingerprint": "sha256:a3387ac9d7d8e019844bb243ad6feabbe77490e0b8573d3c74462a12d61a9e7c",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    },
+    {
+      "goalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "pageNumber": 258,
+      "goalFingerprint": "sha256:b05745c7f8d0e4795f55736820b47ef5d49976ac876795d0b83e1c973e2b3cad",
+      "pageFingerprint": "sha256:4d84392ce658fba1272a4deace4e970c9f9c9e80c356ea47e5945a0a0c5c3ed8",
+      "evidenceReview": {
+        "reviewId": "chemie-q3-equilibrium-operator-stationarity-targeted-author-v6",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:f1b6565f95d0a9d69ce8025cb64b2283f3bc6bc3b5a1deeb44267edaf2129c46",
+        "profileFingerprint": "sha256:ff15596b0e9c00f0ece25da26924b776ed004e229a5492b5ff5b1b9a2635c714",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:a654eeed1bd0df24e17de990dec5a5f4ee1bf75d442b316fec83f83078ccdf52",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:72f17cd40bae426dd697727f3d10218708276b37c6e29d58e1041bfd326da580",
+      "bytes": 1622844
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:03b2ea40025e1e64edc63abf54e5069b0dbecb21764e4d97e154426a1a8b2038",
+      "bytes": 59775
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:a654eeed1bd0df24e17de990dec5a5f4ee1bf75d442b316fec83f83078ccdf52",
+      "bytes": 712
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+      "bytes": 2948
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:d3118995a4da617761acc93e1da0da016fee52a6544747f9c82f6d44f9b6c646"
+}

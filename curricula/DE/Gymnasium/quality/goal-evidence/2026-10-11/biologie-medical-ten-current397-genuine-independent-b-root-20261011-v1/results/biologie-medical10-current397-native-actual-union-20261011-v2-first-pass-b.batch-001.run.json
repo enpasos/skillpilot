@@ -1,0 +1,92 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "medical10-current397-original-root-b.D11",
+  "campaignId": "biologie-medical10-current397-native-actual-union-20261011-v2-b",
+  "roundId": "biologie-medical10-current397-native-actual-union-20261011-v2-first-pass-b",
+  "batchId": "biologie-medical10-current397-native-actual-union-20261011-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:83e8978b1aaa404ea529ff676078a1a8184a5dccbd4ff281ebe2fda7ff77da77",
+  "bundleFingerprint": "sha256:db6e5815cb97f83be8a15368579c34a12e7d008fcc0e0eec5a2446213ab28ce9",
+  "bookDigest": "sha256:4042edd5ddf0c080267eb54e60b195154fcbf90974d4d405d994e4d58dc24286",
+  "provider": "OpenAI",
+  "model": "Codex GPT-6 root independent B",
+  "role": "disconfirming_reviewer",
+  "promptFamilyId": "biology-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:ca5e09519fa51cd91218b41dc5d6b2972380a6303f41ee549747df42d7fc10d5",
+  "independenceGroupId": "biologie-medical10-current397-native-actual-union-20261011-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "50108500-7958-5954-b493-e89273649f8f",
+    "96001dbf-ef37-584a-98f0-d5351d9cdeaf",
+    "10a8dac7-65c8-5f85-a944-3e2a7d2c6028",
+    "9ea70581-3cef-5a6b-b22b-33cc6df4d7af",
+    "7f76ff0b-218b-568d-91df-20bbe2b156e2",
+    "440854be-7f06-5678-91cb-ba8dcab56959",
+    "e36bebef-d7e3-57d0-bf01-236799d41cb7",
+    "96547bdb-554d-5266-a28c-fc16e708216d",
+    "9dc56d7d-3321-55b6-8988-cfc74abdc341",
+    "5a44f356-ab0a-5d15-b976-889e22c8d32e",
+    "2ef8b0c2-8ba3-54b7-99ff-8c743a4efa63"
+  ],
+  "startedAt": "2026-10-11T15:12:44.041981+00:00",
+  "completedAt": "2026-10-11T15:12:44.041981+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:6be972d9922aa37f75c1c55feca65a2478be65c39a6d71cc0292e83e37006a18",
+  "toolchainVersion": "medical-root-genuine-original-B-v1",
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:a58bde952608f0940900009c1b7c9e335ce2cc52a7947fb2690f553c4d30da70"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:b39f7af92f8cf01b65f38e6ae0dfcd2c2e50e78957a38c87df6bfa1d72591158"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:d7e5525c297587baf4439a72cd6191596b8d3b01778eb5e47806b3c4a7c2081d"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:3b69ac5c4d935453d8b54401179b9bad446ebde2cd634d0bdbf3b4bc771ad0d5"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:5c4d8da5430b8792bac57ab7b32b15d32a2c096f1dcfad8b1e120523b3cf9421"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:736a8d6cf974857944650f2b9715987cdfbee685aa29649ce95b47f10d54476f"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:02d73e5046a632b4a13b675ce01f99870bf93c97d93131a78609d6bd416ba64f"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:40440e6ad2d821d692b8978843610d94bde368f6c8087369c28637aa5f62d329"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:83e8978b1aaa404ea529ff676078a1a8184a5dccbd4ff281ebe2fda7ff77da77"
+    }
+  ]
+}

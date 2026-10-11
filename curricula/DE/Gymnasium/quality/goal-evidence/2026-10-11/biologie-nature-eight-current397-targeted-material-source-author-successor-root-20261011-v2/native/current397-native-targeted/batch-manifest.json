@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2/native/current397-native-targeted.author.batch.config.json",
+  "configDigest": "sha256:17fb4369c10aa0139ab21729fe3e8280a5bc9900de2f1c1c64df2545119605e0",
+  "goalIds": [
+    "c1aea082-30c0-558f-8d0a-fb810c1dc51b",
+    "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+    "eb48ba5b-eaa9-52bc-a579-841fc2566182",
+    "9fb0a26b-abb0-505f-b92a-320b2e6290e9",
+    "b6b1a9ab-3930-5165-8b4e-92b3d87ea014",
+    "7247dc5e-9d58-5aa0-8082-5097847539a4",
+    "7b09d025-8465-505e-b196-61e1811309db",
+    "cd1fa548-9b27-54df-89be-6a6ee3629eb9",
+    "06e91b97-e7cc-5698-a854-8a946a4bb7d0",
+    "ccb1fe9a-d8e0-54bf-a447-c0b427b654da",
+    "640306a2-7d58-5192-9676-58f492978790"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 397,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2/native/whole397.author.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2/candidate/whole484-current397.author.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:e976edc904b5d12ec5c7d07f63faa96e8b14905de204a1c85dea109d9c3ecc0c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c06a9b04e8c21fc2bc01da9513391ad09d8e46a1af49045a9a75df9db9ab362c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ef041c1325333dd2315c9042f7a1423a8a3332273ec86886e5ca7def2eb48b3e",
+    "reviewInputFingerprint": "sha256:f20d3055b9720b0015cd737acab249ca2f097ba3f2894ebe10f00960dfff432c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted-a",
+        "campaignDigest": "sha256:62625d5aaf01b8390b896c6e47ede4089fca060fa6beea3c72182bd9ce6ab136",
+        "roundId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted-first-pass-a",
+        "independenceGroupId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted-independent-a",
+        "batchId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:de4e12e69fa5ee23d2fcf068fb609e1c25ab97add6d98f2c70aa9195d2efb116"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted-b",
+        "campaignDigest": "sha256:e140566c1e59a9ebcf400928e8aaf9bf5bac02ec915f6cede226ddaecdf6537a",
+        "roundId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted-first-pass-b",
+        "independenceGroupId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted-independent-b",
+        "batchId": "biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2-native-targeted-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1a25628c080e595534451cb6da7bafa54b3764367c959ec0989cb261f9aa2379"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

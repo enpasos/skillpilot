@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-medical10-current397-native-actual-union-20261011-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-medical-ethics-ten-current397-targeted-material-source-author-successor-20261011-v3/native/current397-medical-native-union.author.batch.config.json",
+  "configDigest": "sha256:b7cb0c499b005a9592e593867579837f4d3d36568afffd8f653c87a863959b45",
+  "goalIds": [
+    "50108500-7958-5954-b493-e89273649f8f",
+    "96001dbf-ef37-584a-98f0-d5351d9cdeaf",
+    "10a8dac7-65c8-5f85-a944-3e2a7d2c6028",
+    "9ea70581-3cef-5a6b-b22b-33cc6df4d7af",
+    "7f76ff0b-218b-568d-91df-20bbe2b156e2",
+    "440854be-7f06-5678-91cb-ba8dcab56959",
+    "e36bebef-d7e3-57d0-bf01-236799d41cb7",
+    "96547bdb-554d-5266-a28c-fc16e708216d",
+    "9dc56d7d-3321-55b6-8988-cfc74abdc341",
+    "5a44f356-ab0a-5d15-b976-889e22c8d32e",
+    "2ef8b0c2-8ba3-54b7-99ff-8c743a4efa63"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 397,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-medical-ethics-ten-current397-targeted-material-source-author-successor-20261011-v3/native/whole397-medical10.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-medical-ethics-ten-current397-targeted-material-source-author-successor-20261011-v3/candidate/whole484-current397-medical10.author.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:3790df0912a4ca192f51fd77f3b43a655778a2feae45e5fc69c714aecd3dbbb8"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9518f2e6ea00e0315799d883de67319f49fedad0259ac48b602228c0ef2dccf4",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:65aea2aba7ad8a757cc52e9409896d6a3b9c87d6ca7e3e5a532cfa7db79e4884",
+    "reviewInputFingerprint": "sha256:4dd52f79a35630a832b0556e17d48900687a9ee0015c5d58eddf362138368b43",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-medical10-current397-native-actual-union-20261011-v3-a",
+        "campaignDigest": "sha256:592596786d931159aebf011b56d3f6909bf9f6618bdae751234be618afb1b93a",
+        "roundId": "biologie-medical10-current397-native-actual-union-20261011-v3-first-pass-a",
+        "independenceGroupId": "biologie-medical10-current397-native-actual-union-20261011-v3-independent-a",
+        "batchId": "biologie-medical10-current397-native-actual-union-20261011-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:770e93ffa679cb07ae627178811aa44cb2d949f83727c481bee03bd69f954406"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-medical10-current397-native-actual-union-20261011-v3-b",
+        "campaignDigest": "sha256:76ee230fde89fca3104b49b56032dd376c1393bdb5069c6da4ed35438708c42b",
+        "roundId": "biologie-medical10-current397-native-actual-union-20261011-v3-first-pass-b",
+        "independenceGroupId": "biologie-medical10-current397-native-actual-union-20261011-v3-independent-b",
+        "batchId": "biologie-medical10-current397-native-actual-union-20261011-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:375588fbad1a81c80154f315f431b0c04a1ede90d01c96d030afb7d84eb6ead5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

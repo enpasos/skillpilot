@@ -1,0 +1,25 @@
+# Lernzielvisualisierung: Folgen menschlichen Handelns für Nachhaltigkeit abwägen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `c1aea082-30c0-558f-8d0a-fb810c1dc51b`
+- Titel: Folgen menschlichen Handelns für Nachhaltigkeit abwägen
+- Beschreibung: Die lernende Person kann Folgen menschlichen Handelns für lokale und globale nachhaltige Entwicklung abwägen und Handlungsoptionen anhand vorgegebener Argumente erörtern.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen
+- Status: ai_candidate
+- Quellbild: `c1aea082-30c0-558f-8d0a-fb810c1dc51b.png`
+- Public Asset: `/assets/goal-visualizations/biologie/c1aea082-30c0-558f-8d0a-fb810c1dc51b/c1aea082-30c0-558f-8d0a-fb810c1dc51b.png`
+
+## Prompt
+
+```text
+Create one PNG educational illustration for the existing SkillPilot German Gymnasium biology learning-goal landscape. Wide landscape approximately 16:9, about 1600 by 900 pixels or the nearest native generator size. Friendly abstract clean comic style, rounded confident dark blue outlines, soft pale cream and light blue background, warm green/coral accents; natural hand-drawn didactic illustration, not photorealistic and not a sterile technical diagram. One unmistakable main concept, generous space, clear foreground and a small number of large supporting motifs. Must remain recognizable at 360 px image width as well as at 680 px; no tiny text, no decorative long captions, no logos/watermarks. Any stated labels must be very large and correctly spelled German. This is a schematized teaching image, not a photograph of an actual experiment. Keep biological relationships correct and never imply that an image proves the depicted claim. Return the actual raster illustration.
+Show weighing practical sustainability choices using evidence and consequences: two friendly pupils stand with a simple oversized balance, one pan shows a durable reusable lunch box and local green park, the other pan shows a disposable package and a small globe. Around the balance put only three large clear icons: leaf for ecosystems, people for fair access, coin for costs. The balance is level: it represents comparing criteria rather than prescribing a single universally right option. A small arrow linking their school/local choice to the globe makes local and global effects visible. No recycling symbol used as guarantee, no graphs/numbers, no long captions, no guilt or alarm. Pale background, clean generous comic composition.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

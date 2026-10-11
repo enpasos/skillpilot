@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-11T08:11:01.690706+00:00",
+  "profiles": [
+    {
+      "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+      "goalFingerprint": "sha256:c981f8c06f043ae85f9c72d29cc31b9123d2ef0695d86f1577aa3ce9d1bd4fb3",
+      "reviewInputFingerprint": "sha256:aa1509ac10e8bb27080441e31ca2b68147525b7093729471893884077f04dbb2",
+      "profileFingerprint": "sha256:fa8d7541cb0e3ba1ad6fd0e20616c8648eeb939d6012d5da01bc1b5eef92895f",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "technicalNormalCheck": "PASS_exact_frozen_candidate_tuple",
+      "scientificVerdict": "REVISE_open_balance_and_routine_boundary"
+    },
+    {
+      "goalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "goalFingerprint": "sha256:12d00039098cf0e21f3da1a23a27bc2e0e84f1e3cda0e70a03aac75e892cb396",
+      "reviewInputFingerprint": "sha256:8705dfceef2858fd71b5b3a03d021ea40a40dd837d0c4bbe434c449ba123fe65",
+      "profileFingerprint": "sha256:ff15596b0e9c00f0ece25da26924b776ed004e229a5492b5ff5b1b9a2635c714",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "technicalNormalCheck": "PASS_exact_frozen_candidate_tuple",
+      "scientificVerdict": "KEEP_candidate_with_source_HOLD"
+    },
+    {
+      "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+      "goalFingerprint": "sha256:c547b07e7835df4dc5c9f412f9fb62137eacbf8b8bce0b2e7a7c222fcb9d6433",
+      "reviewInputFingerprint": "sha256:44d44212a2ac4e09e646c7a7cb7307f949baadc0010ed2bc832bf8b1051840ad",
+      "profileFingerprint": "sha256:78076154b53367b79a9f495375b547b0b992c100d5ca941ab6d855f923b746ed",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "technicalNormalCheck": "PASS_exact_frozen_candidate_tuple",
+      "scientificVerdict": "KEEP_candidate_with_source_HOLD"
+    }
+  ],
+  "wholeCases": [
+    {
+      "caseId": "q3-01-a",
+      "verdict": "KEEP_base_case_routine_transfer_relabel",
+      "reason": "Coexistence, equal nonzero rates, unequal amounts and substance/particle representations are correct. Numeric variation alone is routine."
+    },
+    {
+      "caseId": "q3-01-b",
+      "verdict": "REVISE_freshTransfer_balance",
+      "reason": "Closed two-start comparison is correct. Open model requires A feed matching net consumption, or explicit diagnosis of the missing balance."
+    },
+    {
+      "caseId": "q3-10-a",
+      "verdict": "KEEP",
+      "reason": "Standard unit activity vs blanket concentration, signed standard potential difference, reversed direction and Cu/Ag difference are correct; formal coefficient rescaling preserves E°."
+    },
+    {
+      "caseId": "q3-10-b",
+      "verdict": "KEEP",
+      "reason": "Common reference shift cancels, back conversion from R to SHE is correct; a reference-frame change demonstrates conceptual understanding beyond numeric variation."
+    },
+    {
+      "caseId": "q3-12-a",
+      "verdict": "KEEP",
+      "reason": "Verified connector compatibility and converter losses are explicit. Energy, activation/air supply and longer storage jointly change eligibility; defensible retained or changed judgment is possible."
+    },
+    {
+      "caseId": "q3-12-b",
+      "verdict": "KEEP_numeric_variation_explicitly_routine",
+      "reason": "2 to 2.4 Wh at 1 W is routine recalculation. The profile correctly relies on q3-12-a for independent conceptual transfer rather than counting this arithmetic."
+    }
+  ],
+  "operatorCaseBodyComparison": "The second bound full operator case collection has identical non-resource case content; only the embedded wholeCurrentGoal resource-link metadata differs from the current PNG collection. Scientific case bodies were read in full from the current PNG collection and the complete cross-file difference was checked.",
+  "noLearnerPerformanceExecuted": true,
+  "noHumanApproval": true
+}

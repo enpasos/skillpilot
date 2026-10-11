@@ -1,0 +1,55 @@
+{
+  "atUTC": "2026-10-11T08:40:01.767597+00:00",
+  "result": "PASS",
+  "oldWholeSixCasesActualBoundPath": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/cases6.current398.whole-science-current-PNG-context.json",
+  "wholeFiveOtherScientificCaseBodiesExact": true,
+  "wholeC884BothCasesExactIncludingGoalWrapper": true,
+  "whole8beProfileScientificBodyExact": true,
+  "wholeC884ProfileScientificBodyExact": true,
+  "onlyExistingCaseScientificDeltaId": "q3-01-b",
+  "sixActualChangedFields": [
+    {
+      "path": "/freshTransfer/modelResponse/de",
+      "before": "Nein: ein stationärer offener Zustand mit Zu-/Abfluss kann konstante Werte zeigen. Ungleiche Reaktionsraten erfüllen hier nicht das geschlossene chemische Gleichgewicht.",
+      "after": "Für A gilt dN_A/dt = −9 + 3 + 6 = 0, für B dN_B/dt = +9 − 3 − 6 = 0, jeweils in Teilchen pro Sekunde. Bei festem Volumen können daher beide Konzentrationen konstant bleiben. Das ist ein durch Stoffaustausch aufrechterhaltener stationärer Zustand, kein chemisches Gleichgewicht der A⇌B-Reaktion: die Hin- und Rückraten sind ungleich und der Netto-Reaktionsumsatz beträgt 6 A→B pro Sekunde. Ohne A-Einspeisung wäre im angegebenen Moment dN_A/dt = −6 und dN_B/dt = 0; B-Entnahme allein erhält also nicht beide Mengen. Die Zahlen 9 und 3 sind Zustandsangaben für diesen Moment; beim Absinken von A müssen spätere Reaktionsraten nicht konstant bleiben. Die äußere Quelle und selektive Senke sind ausdrücklich idealisierte materielle Reservoirs, keine Behauptung über ein reales geschlossenes Gefäß.",
+      "caseId": "q3-01-b"
+    },
+    {
+      "path": "/freshTransfer/modelResponse/en",
+      "before": "No: a steady open state with flows can show constant values. Unequal reaction rates do not satisfy closed chemical equilibrium here.",
+      "after": "For A, dN_A/dt = −9 + 3 + 6 = 0; for B, dN_B/dt = +9 − 3 − 6 = 0, in particles per second. At fixed volume, both concentrations can therefore remain constant. This is a stationary state maintained by material exchange, not chemical equilibrium of the A⇌B reaction: forward and reverse rates differ, with a net reaction throughput of 6 A→B per second. Without the A feed, at the specified instant dN_A/dt = −6 and dN_B/dt = 0; removing B alone therefore does not maintain both amounts. The rates 9 and 3 specify this instant; subsequent reaction rates need not remain constant as A decreases. The external source and selective sink are explicitly idealized material reservoirs, not a claim about an actual closed vessel.",
+      "caseId": "q3-01-b"
+    },
+    {
+      "path": "/freshTransfer/task/de",
+      "before": "Bei einem offenen Gefäß wird B laufend entfernt; A und B bleiben scheinbar konstant, Hinrate 9 und Rückrate 3. Gleicher Befund?",
+      "after": "Frischer Transfer: Ein ideal durchmischtes offenes A ⇌ B-Modellgefäß hat konstantes Volumen und konstante Temperatur. Jeder Übergang wandelt genau ein A in ein B oder umgekehrt um (1:1); es gibt keine Nebenreaktionen. Im betrachteten Zustand beträgt die Hinrate 9 und die Rückrate 3 Teilchen pro Sekunde. Eine äußere Quelle speist tatsächlich 6 A-Teilchen pro Sekunde ein; eine selektive Senke entfernt tatsächlich 6 B-Teilchen pro Sekunde. Es gibt keinen anderen Zu- oder Abfluss; der idealisierte Teilchenaustausch ändert das Volumen nicht. Prüfe die Bilanzen beider Stoffarten und die behauptete konstante Zusammensetzung. Liegt derselbe chemische Gleichgewichtsbefund wie im geschlossenen Modell vor? Was wäre ohne A-Einspeisung bei unveränderter B-Entnahme?",
+      "caseId": "q3-01-b"
+    },
+    {
+      "path": "/freshTransfer/task/en",
+      "before": "In an open vessel B is continually removed; A and B appear constant, with forward rate 9 and reverse rate 3. Is this the same finding?",
+      "after": "Fresh transfer: An ideally mixed open A ⇌ B model vessel has fixed volume and fixed temperature. Each transition converts exactly one A into one B or the reverse (1:1); there are no side reactions. In the state considered, the forward rate is 9 and the reverse rate is 3 particles per second. An external source actually feeds 6 A particles per second; a selective sink actually removes 6 B particles per second. There are no other inflows or outflows; the idealized particle exchange does not change volume. Check both species balances and the claimed constant composition. Is this the same chemical-equilibrium finding as in the closed model? What would happen without the A feed while B removal stays unchanged?",
+      "caseId": "q3-01-b"
+    },
+    {
+      "path": "/scoring/criteria/4/criterion/de",
+      "before": "Nein: ein stationärer offener Zustand mit Zu-/Abfluss kann konstante Werte zeigen. Ungleiche Reaktionsraten erfüllen hier nicht das geschlossene chemische Gleichgewicht.",
+      "after": "1 Punkt für beide korrekt begründeten Stoffbilanzen mit A-Zufuhr6/s und B-Abfluss6/s und für den Gegenfall ohne A-Zufuhr (A zunächst−6/s; B0/s). 1 Punkt für die begründete Unterscheidung: stationärer offener Zustand bei festem Volumen, aber kein Reaktionsgleichgewicht wegen Hin9≠Rück3 und Netto6A→B/s. Nur „offen“ oder „konstant“ ohne Bilanz und Ratenvergleich genügt nicht. Keine dauernd konstanten Raten nach Wegfall der Einspeisung behaupten.",
+      "caseId": "q3-01-b"
+    },
+    {
+      "path": "/scoring/criteria/4/criterion/en",
+      "before": "No: a steady open state with flows can show constant values. Unequal reaction rates do not satisfy closed chemical equilibrium here.",
+      "after": "1 point for correctly reasoned balances of both species with A feed6/s and B removal6/s, including the case without A feed (A initially−6/s; B0/s). 1 point for the reasoned distinction: stationary open state at fixed volume, but no reaction equilibrium because forward9≠reverse3 and net6A→B/s. Saying only “open” or “constant” without balances and rate comparison is insufficient. Do not claim permanently fixed rates after feed removal.",
+      "caseId": "q3-01-b"
+    }
+  ],
+  "additionalChemicalEvidenceCaseHasTwelvePointScoring": true,
+  "authenticMethodProcedureObservationsSupplied": false,
+  "performedExperiment": false,
+  "q3_01_aRoutineOnly": true,
+  "syntheticMaximumScoreCannotCloseExperimentalOperator": true,
+  "sourceUnionApproval": false,
+  "humanApproval": false
+}

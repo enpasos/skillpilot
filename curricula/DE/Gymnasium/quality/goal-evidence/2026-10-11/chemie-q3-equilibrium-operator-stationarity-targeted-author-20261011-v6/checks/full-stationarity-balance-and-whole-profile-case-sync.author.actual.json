@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "modelStoichiometry": "1A↔1B",
+  "assumptions": [
+    "Ideal mixing",
+    "Fixed volume and temperature",
+    "Forward9/s reverse3/s at specified state",
+    "Actual A feed6/s and selective B removal6/s",
+    "No other flows or reactions"
+  ],
+  "reactionNetAtoBPerSecond": 6,
+  "speciesBalancesPerSecond": {
+    "A": 0,
+    "B": 0
+  },
+  "withoutAFeedInitialSpeciesBalancesPerSecond": {
+    "A": -6,
+    "B": 0
+  },
+  "forwardReverseEqual": false,
+  "chemicalEquilibrium": false,
+  "stationaryWithSpecifiedFlows": true,
+  "claimOfPermanentlyFixedRatesWithoutAFeed": false,
+  "taskAnswerScoringAndProfileDEENExactSynchronization": true,
+  "existing10PointRubricTotalPreserved": true,
+  "actualExperimentOrLearnerPerformance": false
+}

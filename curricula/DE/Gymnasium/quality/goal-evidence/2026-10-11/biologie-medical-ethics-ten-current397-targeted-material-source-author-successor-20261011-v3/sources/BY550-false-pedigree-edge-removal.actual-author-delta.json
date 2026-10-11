@@ -1,0 +1,82 @@
+{
+  "role": "AUTHOR raw targeted source delta, not independent review",
+  "oldWholeMapping": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current366-targeted-author-successor-20261011-v5/sources/mappings/03-whole-current366-plus-Bio8.author.review.json",
+    "bytes": 185129,
+    "sha256": "sha256:da1c2ffada030b63cb6cb24ee169cf84ae2327f5bb954c607a396b47e3ab03e9"
+  },
+  "unchangedWholeExtraction": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current366-targeted-author-successor-20261011-v5/sources/extractions/03-whole-current366-plus-Bio8.author.json",
+    "bytes": 768895,
+    "sha256": "sha256:d922913af400157d5f5ccfc7b1949550f755ac692b01f1813ce0d9d3ee32bc38"
+  },
+  "removedFalseEdge": {
+    "legacyGoalId": "550a30ba-48e0-5822-8733-38683473e37e",
+    "canonicalGoalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+    "matchType": "exact",
+    "reviewDecisionId": "550a30ba-48e0-5822-8733-38683473e37e"
+  },
+  "oldWholeDecision": {
+    "sourceGoalId": "550a30ba-48e0-5822-8733-38683473e37e",
+    "topicCode": "B12-EA.3",
+    "sourceSpan": "B12-EA.3.1",
+    "decision": "mapped",
+    "canonicalGoalIds": [
+      "440854be-7f06-5678-91cb-ba8dcab56959"
+    ],
+    "matchType": "exact",
+    "rationale": "Das vorhandene Seed-Mapping wurde gegen Source-Extraction-ID und kanonisches Ziel materialisiert; das Source-Ziel ist durch ein bestehendes kanonisches Biologieziel in gleicher Granularitaet abgedeckt.",
+    "reviewedAt": "2026-05-12",
+    "reviewer": "codex"
+  },
+  "newWholeDecision": {
+    "sourceGoalId": "550a30ba-48e0-5822-8733-38683473e37e",
+    "topicCode": "B12-EA.3",
+    "sourceSpan": "B12-EA.3.1",
+    "decision": "needsCanonicalGoal",
+    "canonicalGoalIds": [],
+    "matchType": "partial",
+    "rationale": "AUTHOR targeted source correction: actual B12-EA.3.1/GA.3.1 constructs a phylogenetic cladogram from molecular features. This cannot evidence a human-family inheritance pedigree. The erroneous550→440 edge is removed; correct f368→440 family-inheritance evidence is retained. The literal cladogram obligation remains and needs an independently reviewed appropriate canonical mapping; no source-union clearance.",
+    "reviewedAt": "2026-10-11",
+    "reviewer": "Codex Medical10 continuation AUTHOR, targeted independent source review pending"
+  },
+  "correctF368FamilyPedigreeEdgesRetainedExactly": [
+    {
+      "legacyGoalId": "f368e24c-c167-5f00-82ba-2bbab5597740",
+      "canonicalGoalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "matchType": "exact",
+      "reviewDecisionId": "f368e24c-c167-5f00-82ba-2bbab5597740"
+    }
+  ],
+  "wholePrimariesActuallyRead": [
+    {
+      "authority": "12-EA",
+      "originalWholePrimary": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-biotechnologie-evolution-eight-whole-material-and-raster-author-candidate-v1/primary/12-EA/bundle/book.html",
+        "bytes": 120738,
+        "sha256": "sha256:155103835d15483abf15a91bbc7e1a79103d93cb22303b7f2d393859c52751bd"
+      },
+      "actualContextSpans": {
+        "Kladogramm": "ügen B12 3.1 Evolutionsforschung ca. 9 Std. Kompetenzerwartungen Die Schülerinnen und Schüler ... erstellen für ausgewählte Gruppen von Lebewesen einen Stammbaum (auch Kladogramm), indem sie molekulare Merkmale vergleichen. Bildungsstandards: S 2 | S 5 | K 5 | K 11 vergleichen unterschiedliche historische und aktuelle Ansätze zur Systematisierung von Lebewesen und beurteilen deren Aussagekraft. Bildungsstandards: S 2 | E 12 | E 16 | E 17 | K 1 | K 3 | K 4 | K 11 ",
+        "Familienstammbäume": "ialien (1) B12 2.6 Genetik menschlicher Erkrankungen und DNA-Analytik ca. 15 Std. Kompetenzerwartungen Die Schülerinnen und Schüler ... analysieren Erbgänge mithilfe von Familienstammbäumen und treffen so Vorhersagen über Wahrscheinlichkeiten des Auftretens unterschiedlicher genetisch bedingter Krankheiten. Bildungsstandards: S 4 | E 4 | E 5 | E 7 | K 2 | K 5 | K 6 | K 10 grenzen Methoden der genetischen Familienberatung gegeneinander ab, um ihre Vor- und Nachteile "
+      }
+    },
+    {
+      "authority": "12-GA",
+      "originalWholePrimary": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-biotechnologie-evolution-eight-whole-material-and-raster-author-candidate-v1/primary/12-GA/bundle/book.html",
+        "bytes": 109565,
+        "sha256": "sha256:a780bb1c99174269c2835a15bc4c82cfb46319b1fe0808d758495f19ac31d73e"
+      },
+      "actualContextSpans": {
+        "Kladogramm": "ügen B12 3.1 Evolutionsforschung ca. 7 Std. Kompetenzerwartungen Die Schülerinnen und Schüler ... erstellen für ausgewählte Gruppen von Lebewesen einen Stammbaum (auch Kladogramm), indem sie molekulare Merkmale vergleichen. Bildungsstandards: S 2 | S 5 | K 5 | K 11 | K 12 vergleichen unterschiedliche historische und aktuelle Ansätze zur Systematisierung von Lebewesen und beurteilen deren Aussagekraft. Bildungsstandards: S 2 | E 12 | E 16 | E 17 | K 1 | K 3 | K 4 ",
+        "Familienstammbäume": "ialien (1) B12 2.6 Genetik menschlicher Erkrankungen und DNA-Analytik ca. 11 Std. Kompetenzerwartungen Die Schülerinnen und Schüler ... analysieren Erbgänge mithilfe von Familienstammbäumen und treffen so Vorhersagen über Wahrscheinlichkeiten des Auftretens unterschiedlicher genetisch bedingter Krankheiten. Bildungsstandards: S 4 | E 4 | E 5 | E 7 | K 2 | K 5 | K 6 | K 10 grenzen Methoden der genetischen Familienberatung gegeneinander ab, um ihre Vor- und Nachteile "
+      }
+    }
+  ],
+  "allOtherMappingsAndDecisionsExact": true,
+  "openActualCladogramObligationNeedsCanonicalMapping": true,
+  "newCanonicalPhylogenyPartnerNotStarted": true,
+  "sourceUnionApproval": false,
+  "independentApproval": false
+}

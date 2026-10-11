@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "bundleFingerprint": "sha256:4501966d693e45da498bde36029bf10f838850a0e0154f25f34b7fbc51ccdc92",
+  "bookDigest": "sha256:c01c86b556b883b9f54a14bbd11a95af4f311b43692e22b4966e9c2c5c571fa6",
+  "provider": "OpenAI / Codex",
+  "model": "GPT-6 inherited agent; exact serving identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2-targeted-successor",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:54907152eaa63a3924f48afe0990f0b3e8a3c5bb85594e3e2b68f20c3de16f58",
+  "independenceGroupId": "chemie-q3-v6-genuine-targeted-independent-b-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "8be14f15-2258-58e6-ae4e-38953f5d0570",
+    "c8844ac6-c414-5a0e-9fcd-7d0a82177d09"
+  ],
+  "startedAt": "2026-10-11T08:26:36.055689+00:00",
+  "completedAt": "2026-10-11T08:36:21.270437+00:00",
+  "status": "completed",
+  "toolchainVersion": "codex-q3-v6-targeted-independent-b-20261011-v1",
+  "runId": "chemie-q3-v6-targeted-independent-b-p3-20261011-v1",
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:c1607b52b84654635a3a8f1845030ced119139fd7c97545d8929be990be23394"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:29e205be3eb590238aee5c25545f4df523b1bf248bbde3c0dd3d07b594bcd188"
+    }
+  ],
+  "outputDigest": "sha256:96824564908971a897d027af7f214bfb7842c26ef9bebf2c9563b6a398086705"
+}

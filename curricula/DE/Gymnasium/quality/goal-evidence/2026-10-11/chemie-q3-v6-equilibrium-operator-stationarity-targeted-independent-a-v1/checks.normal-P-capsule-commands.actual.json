@@ -1,0 +1,169 @@
+{
+  "role": "Actual normal checks in temporary independent exact-input root; no public/active image adoption",
+  "commands": [
+    {
+      "label": "unchanged normal materialization against exact frozen original assets in isolated root",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.inactive.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.candidates.json",
+        "--write"
+      ],
+      "executionRoot": "/tmp/skillpilot-q3-v6-independent-a-normal-P-4h9b8ddv",
+      "startedAtUTC": "2026-10-11T08:33:43.872501+00:00",
+      "completedAtUTC": "2026-10-11T08:33:44.460819+00:00",
+      "exitCode": 0,
+      "stdout": "Wrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.current-records.jsonl: 2 current AI candidate profile(s).\n",
+      "stderr": ""
+    },
+    {
+      "label": "unchanged normal byte verification before separately documented run-reference metadata",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.inactive.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.candidates.json"
+      ],
+      "executionRoot": "/tmp/skillpilot-q3-v6-independent-a-normal-P-4h9b8ddv",
+      "startedAtUTC": "2026-10-11T08:33:44.460846+00:00",
+      "completedAtUTC": "2026-10-11T08:33:44.947897+00:00",
+      "exitCode": 0,
+      "stdout": "Verified curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.current-records.jsonl: 2 current AI candidate profile(s).\n",
+      "stderr": ""
+    },
+    {
+      "label": "unchanged normal config+run+record schema/fingerprint validation after own run-reference metadata",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.inactive.config.json"
+      ],
+      "executionRoot": "/tmp/skillpilot-q3-v6-independent-a-normal-P-4h9b8ddv",
+      "startedAtUTC": "2026-10-11T08:33:44.971060+00:00",
+      "completedAtUTC": "2026-10-11T08:33:45.411765+00:00",
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: chemie-q3-v6-targeted-independent-a-20261011\nScope: Targeted genuine independent A successor: whole81373 experimental/stationarity and whole8be relative-SHE DE/EN\nConfigured goals: 2\nApproved: 0\nNeeds human review: 2\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    }
+  ],
+  "unchangedCopiedCodeContractsAndInputs": [
+    {
+      "path": "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+      "bytes": 11856,
+      "sha256": "sha256:ae02d37a78fbdd02fbecff6d61c47e86f775c47aeacc6a85367a10c1d2c9cec7"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceReview.ts",
+      "bytes": 18781,
+      "sha256": "sha256:179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "bytes": 8448,
+      "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "bytes": 8335,
+      "sha256": "sha256:50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    },
+    {
+      "path": "app/src/landscapeTypes.ts",
+      "bytes": 4731,
+      "sha256": "sha256:448f9107929ccf9ebac985faed0a12bcb109fb4e6cded8752da7d26c223aa838"
+    },
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "bytes": 8707,
+      "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    },
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-review-config.schema.json",
+      "bytes": 3328,
+      "sha256": "sha256:7233823673664115846059a5aab3eaa600c504f5975a9b24f8b7cf860e8b946d"
+    },
+    {
+      "path": "contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+      "bytes": 3886,
+      "sha256": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.inactive.config.json",
+      "bytes": 1553,
+      "sha256": "sha256:75868f1c7e73699f901dd052ad0150fb85119f9216539852bf28e4ef870a3dea"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.candidates.json",
+      "bytes": 46793,
+      "sha256": "sha256:38839f3203ecf5390380f643ffbe465e1f43e98205f8628ee06b1a3bc036fe1d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-equilibrium-operator-stationarity-targeted-author-20261011-v6/inputs/current517.only-two-descriptions.inactive.json",
+      "bytes": 1727080,
+      "sha256": "sha256:8d6890724276b201ea3f2cb915d2fe53a58877f46cc7734a93830a147af96fa6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-equilibrium-operator-stationarity-targeted-author-20261011-v6/inputs/current398.kinds.only-two-descriptions.inactive.json",
+      "bytes": 166468,
+      "sha256": "sha256:c0eab8646e7e6cc2d36cf8f887315f8113d68e6a76f9740231964662e2d7a1e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/inputs/criteria.exact.md",
+      "bytes": 2948,
+      "sha256": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/assets/chemie/81373fb7-2a4a-5b2c-acd0-b4e775acaa65/81373fb7-2a4a-5b2c-acd0-b4e775acaa65.png",
+      "bytes": 1558485,
+      "sha256": "sha256:c5547661514f22df99df9b19d955996e5a994cd145356637e85419b3322730f8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/assets/chemie/8be14f15-2258-58e6-ae4e-38953f5d0570/8be14f15-2258-58e6-ae4e-38953f5d0570.png",
+      "bytes": 1476474,
+      "sha256": "sha256:42238208258aa8a372c48547e2005880439c64de769a099a0e02b212abaf562f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.current-records.jsonl",
+      "bytes": 46019,
+      "sha256": "sha256:6a4a6a75fbaaab73096b38783a63abcb19a1648d75c98ea28af6268463560193"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.run.json",
+      "bytes": 1994,
+      "sha256": "sha256:66b50ffe669f698b9e816e2edcd3f843ee40f3d65519419b60abf9490c0b2258"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.inactive.config.json",
+      "bytes": 1726,
+      "sha256": "sha256:cb744f7a0537fa6b44f33562f4aed7682e51c43426aadaba0a930ccfef70df45"
+    }
+  ],
+  "normalUnlinkedRecordDigest": "sha256:9d9c98b6c31f3e54b8be2b95c8545fbfb15067daaf2a10b2479453f98af6efcc",
+  "onlyPostMaterializationMetadataChanges": "reviewRunIds=[] to [own actual runId] on each record; normal profile content and computed fingerprints unchanged; own config adds own manifest path",
+  "currentActualPublicAssetsMissing": [
+    "/assets/goal-visualizations/chemie/81373fb7-2a4a-5b2c-acd0-b4e775acaa65/81373fb7-2a4a-5b2c-acd0-b4e775acaa65.png",
+    "/assets/goal-visualizations/chemie/8be14f15-2258-58e6-ae4e-38953f5d0570/8be14f15-2258-58e6-ae4e-38953f5d0570.png"
+  ],
+  "executionBoundary": "Normal unchanged tools run in isolated exact-input root; no public/active adoption. No direct workspace attempt made.",
+  "records": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.current-records.jsonl",
+    "bytes": 46019,
+    "sha256": "sha256:6a4a6a75fbaaab73096b38783a63abcb19a1648d75c98ea28af6268463560193"
+  },
+  "run": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v6-equilibrium-operator-stationarity-targeted-independent-a-v1/positive/P2.independent-a.run.json",
+    "bytes": 1994,
+    "sha256": "sha256:66b50ffe669f698b9e816e2edcd3f843ee40f3d65519419b60abf9490c0b2258"
+  },
+  "candidateState": "ai_candidate/needs_human_review E1/G1",
+  "activeWrites": false
+}

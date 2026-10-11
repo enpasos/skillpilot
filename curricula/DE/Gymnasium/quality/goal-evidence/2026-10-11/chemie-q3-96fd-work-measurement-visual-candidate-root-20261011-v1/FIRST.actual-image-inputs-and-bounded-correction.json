@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "atUTC": "2026-10-11T10:02:03.241122+00:00",
+  "role": "root actual original-raster inspection and inactive correction candidate preparation",
+  "goalId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+  "actuallyViewedOriginalRaster": true,
+  "originalSourceAsset": "curricula/DE/Gymnasium/visualizations/chemie/96fd8608-8d98-53f0-9b86-1311c3220fd3/96fd8608-8d98-53f0-9b86-1311c3220fd3.jpg",
+  "originalAssetSha256": "sha256:148e25816e7de5c224275c6d2d01b9fd22a412328b391bdffe91d23265baa31a",
+  "sourceAuthorLandscape": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-remaining-current402-bounded-source-P-author-20261011-v1/inputs/current523.author-successor.de.json",
+  "sourceAuthorLandscapeSha256": "sha256:aaf385258947480d8f69a1d039e1a1e3a0444c0d6ecdcf69e1500655f677344c",
+  "normalActiveLandscapeSha256Before": "sha256:7d5596ae347356bd14ffdf0055bc127b3bcf86e0828668b4e2f7bafba1122295",
+  "findings": [
+    "Right circuit has an ammeter directly across cell and no load, yet claims useful electrical work from loaded voltage/current.",
+    "Left caption conflates reaction enthalpy with available electrical work without a valid thermodynamic bound."
+  ],
+  "scope": "Correct the existing didactic illustration; keep recognisable Zn/Cu halfcells, salt bridge, colours and topology of the valid halfcell explanation. No approved current assets or active canonical writes.",
+  "helpers": [
+    {
+      "normalRepositoryScript": "scripts/prepare_goal_visualization.mjs",
+      "sha256": "sha256:5785aab47d0305bd7bc038c480ff7ef29df5411f84903b3f2637f3742181109e",
+      "executedScriptByteExact": true
+    },
+    {
+      "normalRepositoryScript": "scripts/import_goal_visualization.mjs",
+      "sha256": "sha256:8de19e502028c48bf02e656eaef9337490e0f44b2ec8b5430d4e12ebd70697ac",
+      "executedScriptByteExact": true
+    },
+    {
+      "normalRepositoryScript": "scripts/goal_visualization_common.mjs",
+      "sha256": "sha256:ed91152f2bc3be33d449e3a405cc55ffc76fea7ba14bed1c85ea01845f7bc23a",
+      "executedScriptByteExact": true
+    }
+  ],
+  "executionCapsuleIsEphemeral": true,
+  "toolChosen": "OpenAI / Codex built-in image_gen",
+  "intendedFormat": "PNG, friendly clear landscape around 16:9 and around1600x900 native allowed",
+  "status": "unapproved_generation_candidate",
+  "humanApproval": false,
+  "scienceApproval": false
+}

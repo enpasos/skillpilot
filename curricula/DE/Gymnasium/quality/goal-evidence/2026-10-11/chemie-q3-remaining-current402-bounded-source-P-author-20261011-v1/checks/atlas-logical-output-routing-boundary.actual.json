@@ -1,0 +1,8 @@
+{
+  "normalHelper": "buildGoalBookSourceAtlasInputs",
+  "attempt": "Route generated atlas logical paths directly inside author package",
+  "actualResult": "AssertionError: Generated atlas inputs must remain book-local",
+  "normalHelperChanged": false,
+  "resolution": "Keep normal required book-local logical output namespace, construct outputs in memory, archive each regular output solely below this author package, and rebind the candidate manifest to those actual archived relative files. Never invoke the atlas write CLI on the shared repository with this config.",
+  "activeFilesWritten": false
+}

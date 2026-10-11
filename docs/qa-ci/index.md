@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Biologie 379/397: aktiver Zwischenstand, gezielte CI-Reparatur und inaktiv gesicherte offene Arbeiten vom 11. Oktober](biologie379-inactive-working-checkpoint-2026-10-11.md)
 - [Zieltext](chemie-biologie-m7-goaltext-2026-09-30.md)
 - [Pausierter Commit-Zwischenstand vom 1. Oktober](chemie-biologie-m7-pause-checkpoint-2026-10-01.md)
 - [Chemie B009: drei aktuelle Abschlüsse](chemie-b009-three-current-integration-2026-10-01.md)

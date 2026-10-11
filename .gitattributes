@@ -19,10 +19,11 @@ gradlew text eol=lf
 
 # Captured primary-source excerpts and raw terminal output retain exact bytes.
 # Their whitespace belongs to the source/tool, not authored documentation.
-curricula/**/quality/**/primary/*.txt -text -whitespace
-curricula/**/quality/**/primary/*.html -text -whitespace
-curricula/**/quality/**/primary/*.snapshot -text -whitespace
+curricula/**/quality/**/primary/**/*.txt -text -whitespace
+curricula/**/quality/**/primary/**/*.html -text -whitespace
+curricula/**/quality/**/primary/**/*.snapshot -text -whitespace
 curricula/**/quality/**/read-primary/*.txt -text -whitespace
+curricula/**/quality/**/primary-reading-only/**/*.txt -text -whitespace
 curricula/**/quality/**/source-readonly/*.txt -text -whitespace
 curricula/**/quality/**/*.actual.txt -text -whitespace
 
@@ -42,6 +43,7 @@ curricula/**/quality/**/*.normal-renderer.html -text -whitespace
 # Native validation reports are captured tool outputs; preserve their sealed bytes.
 curricula/**/quality/**/*.normal.report.md -text -whitespace
 curricula/**/quality/**/*.normal.actual.report.md -text -whitespace
+curricula/**/quality/**/*.normal-report.md -text -whitespace
 
 # Captured check logs and JUnit reports retain their exact tool-output bytes.
 curricula/**/quality/**/checks/**/*.log -text -whitespace

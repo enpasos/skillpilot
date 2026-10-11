@@ -1,0 +1,41 @@
+{
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2/native/current397-native-targeted/round-a/review-bundle-manifest.json",
+        "--input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2/native/current397-native-targeted/round-a/description-review-input.json",
+        "--campaign",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2/native/current397-native-targeted/round-a/description-review-campaign.json",
+        "--batches-dir",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-targeted-material-source-author-successor-root-20261011-v2/native/current397-native-targeted/round-a/batches",
+        "--results-dir",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-root-v2-genuine-independent-a-20261011-v1/D11-round-a/results"
+      ],
+      "exitCode": 0,
+      "stdout": "Goal-description review campaign results valid: 11\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-nature-eight-current397-root-v2-genuine-independent-a-20261011-v1/positive/P7.current-v2.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: root8-current397-v2-genuine-independent-a-20261011\nScope: Seven whole current profiles KEEP; b6 explicitly excluded for actual original material REVISE finding\nConfigured goals: 7\nApproved: 0\nNeeds human review: 7\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    }
+  ],
+  "startedAtBindsActualOwnFIRST": true,
+  "scientificFieldsChanged": false,
+  "activeWrites": 0
+}

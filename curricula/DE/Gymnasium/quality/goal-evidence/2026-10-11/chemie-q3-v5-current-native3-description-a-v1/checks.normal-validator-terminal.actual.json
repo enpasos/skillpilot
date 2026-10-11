@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-11T08:05:02.463457+00:00",
+  "checks": [
+    {
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:goal-description-review-campaign",
+        "--",
+        "--bundle",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/review-bundle-manifest.json",
+        "--input",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/description-review-input.json",
+        "--campaign",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/description-review-campaign.json",
+        "--batches-dir",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/batches",
+        "--results-dir",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/results"
+      ],
+      "exitCode": 0,
+      "stdout": "\n> skillpilot@0.0.0 validate:goal-description-review-campaign\n> tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/review-bundle-manifest.json --input ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/description-review-input.json --campaign ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/description-review-campaign.json --batches-dir ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/batches --results-dir ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/results\n\nGoal-description review campaign results valid: 3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:goal-description-review",
+        "--",
+        "--bundle",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/review-bundle-manifest.json",
+        "--input",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/description-review-input.json",
+        "--campaign",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/description-review-campaign.json",
+        "--run",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/results/chemie-q3-three-png-native-author-v5-first-pass-a.batch-001.run.json",
+        "--batch-input",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/batches/chemie-q3-three-png-native-author-v5-first-pass-a.batch-001.input.jsonl",
+        "--records",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/results/chemie-q3-three-png-native-author-v5-first-pass-a.batch-001.records.jsonl"
+      ],
+      "exitCode": 0,
+      "stdout": "\n> skillpilot@0.0.0 validate:goal-description-review\n> tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/review-bundle-manifest.json --input ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/description-review-input.json --campaign ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/description-review-campaign.json --run ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/results/chemie-q3-three-png-native-author-v5-first-pass-a.batch-001.run.json --batch-input ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/batches/chemie-q3-three-png-native-author-v5-first-pass-a.batch-001.input.jsonl --records ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-v5-current-native3-description-a-v1/round-a/results/chemie-q3-three-png-native-author-v5-first-pass-a.batch-001.records.jsonl\n\nGoal-description review batch valid: 3\n",
+      "stderr": ""
+    }
+  ]
+}

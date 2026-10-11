@@ -1,5 +1,16 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Neuester Biologie-Zwischenstand vom 11. Oktober: 379/397
+
+Der [aktive Biologie-Zwischenstand mit gesicherten offenen Arbeiten](biologie379-inactive-working-checkpoint-2026-10-11.md)
+erhält **379/397 streng abgeschlossene aktuelle Ziele (95,5 %), M6, 18 offen**.
+Chemie bleibt pausiert bei **212/402**. Mathematik-M7, Physik-M7 und
+Wirtschaft-M7 bleiben geschützt. Die gezielte CI-Reparatur und die Sicherung
+inaktiver Kandidaten bringen keinen neuen fachlichen Abschluss. Für den
+gesamten neuen GitHub-Head wird CI bis zum tatsächlichen Abschluss verfolgt.
+Die folgenden früheren Zahlen- und Auftragsstände bleiben Historie;
+menschliche Release-Gates bleiben getrennt.
+
 ## Aktuelle Chemie-/Biologie-Fortsetzung vom 11. Oktober
 
 Der [Integrationsstand mit 366/395 Biologie und 206/398 Chemie](chemie-biologie-m7-biologie366-health-integration-2026-10-11.md)

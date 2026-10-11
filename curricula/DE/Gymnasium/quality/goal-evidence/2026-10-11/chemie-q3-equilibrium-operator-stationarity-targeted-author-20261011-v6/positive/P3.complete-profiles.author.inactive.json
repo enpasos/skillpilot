@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "role": "Complete current author profiles: exact retained scientific bodies8be/c884, current normal binding metadata for both changed descriptions; no independent approval",
+  "profiles": [
+    {
+      "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+      "goalFingerprint": "sha256:8fc642c61215edf0f944fa1ba80e7a6cbfb794b98a675e593a2e718a0fdb7740",
+      "reviewInputFingerprint": "sha256:7f5afb325296950c9371ba7ead45a8c48cc236f13ba89d6d1ce00d96bc29ecf6",
+      "profileFingerprint": "sha256:a3387ac9d7d8e019844bb243ad6feabbe77490e0b8573d3c74462a12d61a9e7c",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "duty-c1",
+            "essentialUnderstandingDe": "Beide Stoffarten mit Nachweis, nicht nur konstantem Gesamtsignal belegen. / Simultane Artenpräsenz belegen.",
+            "observablePerformanceDe": "q3-01-a: Beide Stoffarten mit Nachweis, nicht nur konstantem Gesamtsignal belegen. q3-01-b: Simultane Artenpräsenz belegen.",
+            "essentialUnderstandingEn": "Establish both species using the assay, not merely a constant total signal. / Establish simultaneous presence of both species.",
+            "observablePerformanceEn": "q3-01-a: Establish both species using the assay, not merely a constant total signal. q3-01-b: Establish simultaneous presence of both species."
+          },
+          {
+            "id": "duty-c2",
+            "essentialUnderstandingDe": "Konstante Stoffebene korrekt darstellen. / Gemeinsamen Stoffzustand mit verschiedenen Startzuständen vergleichen.",
+            "observablePerformanceDe": "q3-01-a: Konstante Stoffebene korrekt darstellen. q3-01-b: Gemeinsamen Stoffzustand mit verschiedenen Startzuständen vergleichen.",
+            "essentialUnderstandingEn": "Represent the constant substance level correctly. / Compare the common substance state with different starts.",
+            "observablePerformanceEn": "q3-01-a: Represent the constant substance level correctly. q3-01-b: Compare the common substance state with different starts."
+          },
+          {
+            "id": "duty-c3",
+            "essentialUnderstandingDe": "12 Hin- und 12 Rückübergänge als dynamisch erklären. / Gleiche nicht nuller Teilchenraten begründen.",
+            "observablePerformanceDe": "q3-01-a: 12 Hin- und 12 Rückübergänge als dynamisch erklären. q3-01-b: Gleiche nicht nuller Teilchenraten begründen.",
+            "essentialUnderstandingEn": "Explain the 12 forward and 12 reverse transitions as dynamic. / Explain equal nonzero particle rates.",
+            "observablePerformanceEn": "q3-01-a: Explain the 12 forward and 12 reverse transitions as dynamic. q3-01-b: Explain equal nonzero particle rates."
+          },
+          {
+            "id": "duty-c4",
+            "essentialUnderstandingDe": "Netto null von Stillstand und gleichen Mengen trennen. / Makroskopische Konstanz und mikroskopischen Umsatz unterscheiden.",
+            "observablePerformanceDe": "q3-01-a: Netto null von Stillstand und gleichen Mengen trennen. q3-01-b: Makroskopische Konstanz und mikroskopischen Umsatz unterscheiden.",
+            "essentialUnderstandingEn": "Distinguish zero net change from stopped reactions and equal amounts. / Distinguish macroscopic constancy and microscopic turnover.",
+            "observablePerformanceEn": "q3-01-a: Distinguish zero net change from stopped reactions and equal amounts. q3-01-b: Distinguish macroscopic constancy and microscopic turnover."
+          },
+          {
+            "id": "duty-chemical-experimental-evidence",
+            "essentialUnderstandingDe": "Experimentelles Zeigen verlangt einen artspezifischen chemischen Nachweis von Edukten und Produkten in derselben zeitlich zugeordneten Probe; ein Papier-/Teilchenmodell oder bloße konstante Farbe ersetzt ihn nicht. Synthetische Daten prüfen Nachweislogik, authentische dokumentierte chemische Befunde können einen experimentellen Nachweisschluss tragen. Eine eigene Durchführung wird nur aus tatsächlicher Durchführung belegt.",
+            "essentialUnderstandingEn": "Experimental demonstration requires species-specific chemical evidence of reactants and products in the same time-linked sample; a paper/particle model or constant colour alone does not replace it. Synthetic data test identification logic; authentic documented chemical findings can support an experimental identification conclusion. Own execution is evidenced only by actual execution.",
+            "observablePerformanceDe": "Den ganzen Fall q3-01-c anhand e1–e5 und seines frischen Negativfalls begründet auswerten; Kontrollen, gemeinsamen Probenbezug und Grenzen nennen. Für den realen chemischen Nachweisschluss ein identifizierbares authentisches Dossier prüfen oder erstellen. Die Auswertung der synthetischen Vorlage zählt nicht als ausgeführter Versuch; fehlende reale Nachweise ausdrücklich offen lassen.",
+            "observablePerformanceEn": "Give a reasoned evaluation of complete case q3-01-c using e1–e5 and its fresh negative case; state controls, common-sample link and limits. For an actual chemical identification conclusion, evaluate or create an identifiable authentic evidence dossier. Interpreting the synthetic template does not count as an experiment performed; explicitly leave missing actual evidence open."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "duty-c1",
+            "duty-c2",
+            "duty-c3",
+            "duty-c4",
+            "duty-chemical-experimental-evidence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "full-case-material",
+            "textDe": "Geschlossenes Modell mit markierten Teilchen / Zwei Startzusammensetzungen",
+            "textEn": "Closed model with labelled particles / Two starting compositions"
+          },
+          {
+            "id": "independent-transfer",
+            "textDe": "Routinevariation q3-01-a (kein konzeptueller Transfer): Frische Modellprobe: 20 A, 80 B; 7 Übergänge je Richtung. Ist das Gleichgewicht? Was beweist allein eine konstante Farbe? / Konzeptueller Transfer q3-01-b: Frischer Transfer: Ein ideal durchmischtes offenes A ⇌ B-Modellgefäß hat konstantes Volumen und konstante Temperatur. Jeder Übergang wandelt genau ein A in ein B oder umgekehrt um (1:1); es gibt keine Nebenreaktionen. Im betrachteten Zustand beträgt die Hinrate 9 und die Rückrate 3 Teilchen pro Sekunde. Eine äußere Quelle speist tatsächlich 6 A-Teilchen pro Sekunde ein; eine selektive Senke entfernt tatsächlich 6 B-Teilchen pro Sekunde. Es gibt keinen anderen Zu- oder Abfluss; der idealisierte Teilchenaustausch ändert das Volumen nicht. Prüfe die Bilanzen beider Stoffarten und die behauptete konstante Zusammensetzung. Liegt derselbe chemische Gleichgewichtsbefund wie im geschlossenen Modell vor? Was wäre ohne A-Einspeisung bei unveränderter B-Entnahme?",
+            "textEn": "Routine variation q3-01-a (not conceptual transfer): Fresh model sample: 20 A, 80 B; 7 transitions in each direction. Is it equilibrium? What does constant colour alone prove? / Conceptual transfer q3-01-b: Fresh transfer: An ideally mixed open A ⇌ B model vessel has fixed volume and fixed temperature. Each transition converts exactly one A into one B or the reverse (1:1); there are no side reactions. In the state considered, the forward rate is 9 and the reverse rate is 3 particles per second. An external source actually feeds 6 A particles per second; a selective sink actually removes 6 B particles per second. There are no other inflows or outflows; the idealized particle exchange does not change volume. Check both species balances and the claimed constant composition. Is this the same chemical-equilibrium finding as in the closed model? What would happen without the A feed while B removal stays unchanged?"
+          },
+          {
+            "id": "chemical-experimental-evidence",
+            "textDe": "Frisch: Der Eduktnachweis ist nur in ProbeS positiv, der Produktnachweis nur in ProbeT aus einem anderen Startgefäß. Außerdem kann der Produktnachweis sein Produkt erst während der Testreaktion bilden. Ist die ursprüngliche simultane Präsenz inS experimentell gezeigt? Welche Proben- und Kontrolländerung wäre nötig?",
+            "textEn": "Fresh: The reactant test is positive only in sampleS; the product test only in sampleT from another starting vessel. The product test can also generate its target during testing. Has original coexistence inS been demonstrated experimentally? What sampling and control changes are needed?"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "q3-01-a",
+            "taskDemandDe": "Modell A ⇌ B, geschlossen, konstante Temperatur. Nach 5 und 10 min: jeweils 60 A- und 40 B-Teilchen. Im dazwischenliegenden Zeitfenster werden 12 Übergänge A→B und 12 B→A registriert. Ein validierter artspezifischer Nachweis zeigt A und B in derselben Probe. Alle Zahlen sind synthetisch. Charakterisiere das Gleichgewicht mit einem Stoff- und einem Teilchenmodell. Begründe gleichzeitiges Vorliegen und unterscheide Nettoänderung, Hin- und Rückreaktion. Widerlege „60:40 bedeutet kein Gleichgewicht“. Separat verabreichte Routinevariation/Recheck (kein neuer konzeptueller Transfer): Frische Modellprobe: 20 A, 80 B; 7 Übergänge je Richtung. Ist das Gleichgewicht? Was beweist allein eine konstante Farbe?",
+            "expectedPerformanceDe": "Auf Stoffebene bleiben Zusammensetzung und makroskopische Konzentrationen konstant; der Nachweis belegt beide Stoffarten. Auf Teilchenebene laufen beide Richtungen weiter, mit gleicher, nicht nuller Rate. Die Nettoänderung ist null. Gleichgewicht fordert keine gleichen Mengen; 60:40 ist möglich. Das Modell ist kein experimenteller Nachweis realer Reaktionsraten. Transferantwort: Ja im angegebenen geschlossenen Modell: gleiche nicht nuller Raten. Konstante Farbe allein belegt weder beide Arten noch die laufenden Teilchenübergänge. Rubrik /10: c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Pflicht: alle bezeichneten Aspekte begründet zeigen; nur tatsächliche Leistung bewerten. Die ganzen Kriterien stehen im zugehörigen vollständigen Fall.",
+            "understandingFocusDe": "Alle Pflichtkriterien ausdrücklich begründen, Darstellung und frische Variation tatsächlich zeigen. Modellmaterial bleibt synthetisch; keine nicht ausgeführte Untersuchung und keine Lernendenleistung behaupten. Die frischen Zahlen20:80 und7 je Richtung prüfen dieselbe Regel; der Farbvorbehalt ist bereits Teil des Grundfalls. Diese Variation zählt als Routine-Recheck, nicht als konzeptueller Transfer. Der vollständige offene Bilanzfall q3-01-b liefert die neue Begriffsgrenze.",
+            "taskDemandEn": "Model A ⇌ B, closed, constant temperature. At 5 and 10 min there are 60 A and 40 B particles. Between readings, 12 A→B and 12 B→A transitions are recorded. A validated species-specific assay identifies A and B in the same sample. All numbers are synthetic. Characterize equilibrium with substance and particle models. Explain coexistence and distinguish net change, forward and reverse reaction. Refute “60:40 means no equilibrium”. Separately administered routine variation/recheck (not new conceptual transfer): Fresh model sample: 20 A, 80 B; 7 transitions in each direction. Is it equilibrium? What does constant colour alone prove?",
+            "expectedPerformanceEn": "At substance level composition and macroscopic concentrations remain constant; the assay identifies both species. At particle level both directions continue at equal nonzero rates. Net change is zero. Equilibrium does not require equal amounts; 60:40 is possible. The model is not an experimental measurement of actual reaction rates. Transfer response: Yes in the stated closed model: equal nonzero rates. Constant colour alone establishes neither both species nor continuing particle transitions. Rubrik /10: c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Mandatory: justify all named aspects; score only demonstrated work. The full criteria remain in the bound complete case.",
+            "understandingFocusEn": "Explicitly justify all mandatory criteria and demonstrate the representation and fresh variation. Model material remains synthetic; do not claim an unperformed investigation or actual learner work. The fresh counts20:80 and7 in each direction test the same rule; the colour limitation is already part of the base case. This variation counts as a routine recheck, not conceptual transfer. The complete open-system balance case q3-01-b supplies the new conceptual boundary."
+          },
+          {
+            "id": "q3-01-b",
+            "taskDemandDe": "Zwei geschlossene A⇌B-Modellgefäße bei gleicher Temperatur enthalten je 100 Teilchen. X beginnt mit 100 A, Y mit 100 B. Beide erreichen 25 A/75 B. Im Endzustand zeigt die Verfolgung einzelner Teilchen je 9 Hin- und Rückübergänge pro Sekunde, und zwei getrennte Nachweise sind positiv. Nutze beide Modellebenen und beide Nachweise, um den gemeinsamen Endzustand zu charakterisieren. Erkläre, warum eine konstante Zusammensetzung nicht das Ende der Reaktionen bedeutet. Separat frischer Transfer: Frischer Transfer: Ein ideal durchmischtes offenes A ⇌ B-Modellgefäß hat konstantes Volumen und konstante Temperatur. Jeder Übergang wandelt genau ein A in ein B oder umgekehrt um (1:1); es gibt keine Nebenreaktionen. Im betrachteten Zustand beträgt die Hinrate 9 und die Rückrate 3 Teilchen pro Sekunde. Eine äußere Quelle speist tatsächlich 6 A-Teilchen pro Sekunde ein; eine selektive Senke entfernt tatsächlich 6 B-Teilchen pro Sekunde. Es gibt keinen anderen Zu- oder Abfluss; der idealisierte Teilchenaustausch ändert das Volumen nicht. Prüfe die Bilanzen beider Stoffarten und die behauptete konstante Zusammensetzung. Liegt derselbe chemische Gleichgewichtsbefund wie im geschlossenen Modell vor? Was wäre ohne A-Einspeisung bei unveränderter B-Entnahme?",
+            "expectedPerformanceDe": "Beide Nachweise belegen Edukt und Produkt gleichzeitig. Die Gefäße erreichen dieselbe makroskopische Zusammensetzung trotz verschiedener Startzustände. Weiterlaufende Teilchenübergänge mit gleichen Raten erhalten diese Zusammensetzung; einzelne Teilchen wechseln ihre Art. Der Vergleich stützt das dynamische Modell unter den angegebenen Bedingungen, beweist aber nicht jede reale Reaktion. Transferantwort: Für A gilt dN_A/dt = −9 + 3 + 6 = 0, für B dN_B/dt = +9 − 3 − 6 = 0, jeweils in Teilchen pro Sekunde. Bei festem Volumen können daher beide Konzentrationen konstant bleiben. Das ist ein durch Stoffaustausch aufrechterhaltener stationärer Zustand, kein chemisches Gleichgewicht der A⇌B-Reaktion: die Hin- und Rückraten sind ungleich und der Netto-Reaktionsumsatz beträgt 6 A→B pro Sekunde. Ohne A-Einspeisung wäre im angegebenen Moment dN_A/dt = −6 und dN_B/dt = 0; B-Entnahme allein erhält also nicht beide Mengen. Die Zahlen 9 und 3 sind Zustandsangaben für diesen Moment; beim Absinken von A müssen spätere Reaktionsraten nicht konstant bleiben. Die äußere Quelle und selektive Senke sind ausdrücklich idealisierte materielle Reservoirs, keine Behauptung über ein reales geschlossenes Gefäß. Rubrik /10: c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Pflicht: alle bezeichneten Aspekte begründet zeigen; nur tatsächliche Leistung bewerten. Die ganzen Kriterien stehen im zugehörigen vollständigen Fall.",
+            "understandingFocusDe": "Alle Pflichtkriterien ausdrücklich begründen, Darstellung und frische Variation tatsächlich zeigen. Modellmaterial bleibt synthetisch; keine nicht ausgeführte Untersuchung und keine Lernendenleistung behaupten.",
+            "taskDemandEn": "Two closed A⇌B model vessels at the same temperature contain 100 particles each. X starts with 100 A, Y with 100 B. Both reach 25 A/75 B. At the endpoint particle tracking records 9 forward and 9 reverse transitions per second, and two separate assays are positive. Use both model levels and both assays to characterize the shared endpoint. Explain why constant composition does not mean reactions have ended. Separately administered fresh transfer: Fresh transfer: An ideally mixed open A ⇌ B model vessel has fixed volume and fixed temperature. Each transition converts exactly one A into one B or the reverse (1:1); there are no side reactions. In the state considered, the forward rate is 9 and the reverse rate is 3 particles per second. An external source actually feeds 6 A particles per second; a selective sink actually removes 6 B particles per second. There are no other inflows or outflows; the idealized particle exchange does not change volume. Check both species balances and the claimed constant composition. Is this the same chemical-equilibrium finding as in the closed model? What would happen without the A feed while B removal stays unchanged?",
+            "expectedPerformanceEn": "Both assays establish reactant and product simultaneously. The vessels reach the same macroscopic composition despite different starts. Continuing particle transitions at equal rates maintain that composition; individual particles change species. The comparison supports the dynamic model under the stated conditions, not every actual reaction. Transfer response: For A, dN_A/dt = −9 + 3 + 6 = 0; for B, dN_B/dt = +9 − 3 − 6 = 0, in particles per second. At fixed volume, both concentrations can therefore remain constant. This is a stationary state maintained by material exchange, not chemical equilibrium of the A⇌B reaction: forward and reverse rates differ, with a net reaction throughput of 6 A→B per second. Without the A feed, at the specified instant dN_A/dt = −6 and dN_B/dt = 0; removing B alone therefore does not maintain both amounts. The rates 9 and 3 specify this instant; subsequent reaction rates need not remain constant as A decreases. The external source and selective sink are explicitly idealized material reservoirs, not a claim about an actual closed vessel. Rubrik /10: c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Mandatory: justify all named aspects; score only demonstrated work. The full criteria remain in the bound complete case.",
+            "understandingFocusEn": "Explicitly justify all mandatory criteria and demonstrate the representation and fresh variation. Model material remains synthetic; do not claim an unperformed investigation or actual learner work."
+          },
+          {
+            "id": "q3-01-c-experimental-evidence",
+            "taskDemandDe": "Ganzer Fall q3-01-c: Ethansäure + Ethanol ⇌ Ethansäureethylester + Wasser, geschlossene Mischung bei fester Temperatur. Vier artspezifische positive Befunde derselben zeitgleich entnommenen, validiert erhaltenen Probe, positive Standards, negative Blanks und bestandene Matrixkontrollen. Alle Beobachtungen sind ausdrücklich synthetische Autorenmaterialien. Ordne Edukte/Produkte zu, begründe simultane Präsenz anhand der Kontrollen und erkläre Selektivität, Entnahmebezug und Zusammensetzungserhaltung. Gib das prüfbare reale Nachweisdossier mit System/Methode/Rohdaten/Kontrollen an. Trenne Auswertung der Vorlage, authentischen chemischen Nachweisschluss und eigene Durchführung; behaupte keine tatsächlich ausgeführte Untersuchung. Ein später gleiches qualitatives Ergebnis misst weder konstante Konzentrationen noch gleiche nichtnullige Reaktionsraten. Separater frischer Transfer: Edukt nur inS, Produkt nur inT aus anderem Startgefäß; Test kann Produkt selbst bilden. Prüfe den simultanen Nachweis und nötige Proben-/Kontrolländerungen. Vollständiges Material, Aufgaben und Rubrik stehen im ganzen zusätzlichen Fall.",
+            "taskDemandEn": "Complete case q3-01-c: ethanoic acid + ethanol ⇌ ethyl ethanoate + water, sealed mixture at fixed temperature. Four positive species-specific findings from one simultaneously collected sample with validated preservation, positive standards, negative blanks and passed matrix controls. All observations are explicitly synthetic author materials. Assign reactants/products, reason about simultaneous presence using controls and explain selectivity, sampling links and composition preservation. Specify the verifiable actual dossier with system/method/raw data/controls. Distinguish interpretation of the template, an authentic chemical identification conclusion and own execution; claim no experiment actually performed. The same later qualitative findings measure neither constant concentrations nor equal nonzero reaction rates. Separate fresh transfer: reactant only inS and product only inT from another starting vessel; the test can itself generate product. Assess coexistence and required sampling/control changes. Complete material, tasks and rubric are in the additional whole case.",
+            "expectedPerformanceDe": "Ethansäure und Ethanol sind Edukte, Ester und Wasser Produkte. Unter den gegebenen Selektivitäts- und Probenbehandlungsannahmen belegen vier positive artspezifische Befunde mit positiven Standards, negativen Blanks und bestandenen Matrixkontrollen alle vier Arten in S gleichzeitig. Zwei Positivbefunde aus unterschiedlichen Startgefäßen oder erst durch den Nachweis erzeugte Produkte würden dies nicht leisten. Für einen realen experimentellen Nachweis müssten echtes System, gemeinsamer Probenbezug, Methode, Rohbeobachtungen, Kontrollen und Zusammensetzungserhaltung überprüfbar dokumentiert sein. Diese synthetische Vorlage prüft Zuordnung, Kontrolllogik, experimentelle Begründung und die Planung dieser Nachweise; sie ist selbst kein ausgeführter chemischer Versuch und kein authentischer Datensatz. Eine eigene Durchführung lässt sich erst aus tatsächlicher Durchführung und Dokumentation schließen, nicht aus der Musterantwort; die Interpretation gelieferter authentischer experimenteller Befunde kann den chemischen Nachweisschluss tragen, ohne eigene Durchführung vorzutäuschen. Wiederholt positive qualitative Befunde beweisen nur Artenpräsenz zu den jeweiligen Zeitpunkten; für konstante Konzentrationen braucht es quantitative Zeitdaten, für das dynamische Gleichgewicht ein entsprechendes begründetes Modell oder zusätzliche Ratenbelege. Transferantwort: Nein. Räumlich getrennte Befunde und ein im Test erzeugtes Produkt belegen keine ursprüngliche Koexistenz. Beide Arten müssen in einer gemeinsamen zeitgleichen, validiert erhaltenen Probe mit identitätsgesicherten Standards, Blanks und Artefakt-/Matrixkontrollen identifiziert werden. Rubrik /12: e1–e5 je2P, fresh-transfer2P. Die vollständigen Kriterien und Grenzen stehen im ganzen Fall q3-01-c.",
+            "expectedPerformanceEn": "Ethanoic acid and ethanol are reactants; ester and water are products. Under the stated selectivity and handling assumptions, four positive species-specific findings with positive standards, negative blanks and passed matrix controls establish all four species in S together. Positive results from different initial vessels, or products created by the assay itself, would not establish this. A real experimental demonstration needs a verifiable actual system, common-sample link, method, raw observations, controls and composition preservation. This synthetic template tests assignments, control logic, experimental reasoning and planning of those checks; it is not itself a chemical experiment performed or an authentic dataset. Own execution requires evidence of actual execution and documentation, not this model answer; interpreting supplied authentic experimental findings can support the chemical identification conclusion without pretending to have carried out the procedure. Repeated qualitative positive findings establish species presence at the respective times only; constant concentrations require quantitative time data, and dynamic equilibrium requires an appropriately reasoned model or additional rate evidence. Transfer answer: No. Results from separate vessels and a product generated by the assay do not establish original coexistence. Both species must be identified in one common simultaneous sample with validated preservation, identity-confirmed standards, blanks and artefact/matrix controls. Rubric /12: e1–e5 2P each, fresh-transfer2P. Complete criteria and limits are in whole case q3-01-c.",
+            "understandingFocusDe": "Begründete chemische Nachweislogik auswerten; synthetische Beobachtungen nicht zu echter Durchführung oder Quellenoperatorabschluss erklären. Modellanteil und chemischer Nachweis bleiben unterschiedliche Leistungsanteile.",
+            "understandingFocusEn": "Evaluate reasoned chemical-identification logic; do not turn synthetic observations into actual execution or completion of the source operator. The model component and chemical identification remain distinct performances."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "goalFingerprint": "sha256:b05745c7f8d0e4795f55736820b47ef5d49976ac876795d0b83e1c973e2b3cad",
+      "reviewInputFingerprint": "sha256:f1b6565f95d0a9d69ce8025cb64b2283f3bc6bc3b5a1deeb44267edaf2129c46",
+      "profileFingerprint": "sha256:ff15596b0e9c00f0ece25da26924b776ed004e229a5492b5ff5b1b9a2635c714",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "duty-reference-definition",
+            "essentialUnderstandingDe": "Relative Referenzdefinition mit SHE = 0 V, Reduktionskonvention, angegebenen Standardzuständen/Temperatur erklären; 0 V nicht als fehlende Grenzfläche oder absolute Ein-Elektrodenmessung deuten. Ein Begriff oder Tabellenwert allein reicht nicht. / Relative Referenzdefinition mit SHE = 0 V, Reduktionskonvention, angegebenen Standardzuständen/Temperatur erklären; 0 V nicht als fehlende Grenzfläche oder absolute Ein-Elektrodenmessung deuten. Ein Begriff oder Tabellenwert allein reicht nicht.",
+            "observablePerformanceDe": "q3-10-a: Relative Referenzdefinition mit SHE = 0 V, Reduktionskonvention, angegebenen Standardzuständen/Temperatur erklären; 0 V nicht als fehlende Grenzfläche oder absolute Ein-Elektrodenmessung deuten. Ein Begriff oder Tabellenwert allein reicht nicht. q3-10-b: Relative Referenzdefinition mit SHE = 0 V, Reduktionskonvention, angegebenen Standardzuständen/Temperatur erklären; 0 V nicht als fehlende Grenzfläche oder absolute Ein-Elektrodenmessung deuten. Ein Begriff oder Tabellenwert allein reicht nicht.",
+            "essentialUnderstandingEn": "Explain the relative SHE = 0 V reference, reduction convention and stated standard states/temperature; do not equate 0 V with no interface or an absolute one-electrode measurement. A term or table entry alone is insufficient. / Explain the relative SHE = 0 V reference, reduction convention and stated standard states/temperature; do not equate 0 V with no interface or an absolute one-electrode measurement. A term or table entry alone is insufficient.",
+            "observablePerformanceEn": "q3-10-a: Explain the relative SHE = 0 V reference, reduction convention and stated standard states/temperature; do not equate 0 V with no interface or an absolute one-electrode measurement. A term or table entry alone is insufficient. q3-10-b: Explain the relative SHE = 0 V reference, reduction convention and stated standard states/temperature; do not equate 0 V with no interface or an absolute one-electrode measurement. A term or table entry alone is insufficient."
+          },
+          {
+            "id": "duty-c1",
+            "essentialUnderstandingDe": "Reduktionspotenziale und freiwillige Richtung richtig interpretieren. / Negative Vorschlagsrichtung korrekt beurteilen.",
+            "observablePerformanceDe": "q3-10-a: Reduktionspotenziale und freiwillige Richtung richtig interpretieren. q3-10-b: Negative Vorschlagsrichtung korrekt beurteilen.",
+            "essentialUnderstandingEn": "Interpret reduction potentials and spontaneous direction correctly. / Evaluate negative proposed direction correctly.",
+            "observablePerformanceEn": "q3-10-a: Interpret reduction potentials and spontaneous direction correctly. q3-10-b: Evaluate negative proposed direction correctly."
+          },
+          {
+            "id": "duty-c2",
+            "essentialUnderstandingDe": "Halb-/Gesamtgleichungen und Zellspannung korrekt. / Freiwillige Reaktion und1,93V berechnen.",
+            "observablePerformanceDe": "q3-10-a: Halb-/Gesamtgleichungen und Zellspannung korrekt. q3-10-b: Freiwillige Reaktion und1,93V berechnen.",
+            "essentialUnderstandingEn": "Give correct half/total equations and cell voltage. / Calculate spontaneous reaction and1.93V.",
+            "observablePerformanceEn": "q3-10-a: Give correct half/total equations and cell voltage. q3-10-b: Calculate spontaneous reaction and1.93V."
+          },
+          {
+            "id": "duty-c3",
+            "essentialUnderstandingDe": "Elektroden und äußeren Elektronenfluss erklären. / Elektroden/Elektronen und Ionentransport getrennt erklären.",
+            "observablePerformanceDe": "q3-10-a: Elektroden und äußeren Elektronenfluss erklären. q3-10-b: Elektroden/Elektronen und Ionentransport getrennt erklären.",
+            "essentialUnderstandingEn": "Explain electrodes and external electron flow. / Explain electrodes/electrons and ion transport separately.",
+            "observablePerformanceEn": "q3-10-a: Explain electrodes and external electron flow. q3-10-b: Explain electrodes/electrons and ion transport separately."
+          },
+          {
+            "id": "duty-c4",
+            "essentialUnderstandingDe": "Ionenrichtung und Standard-/Realgrenze unterscheiden. / Gemessene Spannung an Bedingungen binden.",
+            "observablePerformanceDe": "q3-10-a: Ionenrichtung und Standard-/Realgrenze unterscheiden. q3-10-b: Gemessene Spannung an Bedingungen binden.",
+            "essentialUnderstandingEn": "Distinguish ion directions and standard/actual limit. / Bind measured voltage to conditions.",
+            "observablePerformanceEn": "q3-10-a: Distinguish ion directions and standard/actual limit. q3-10-b: Bind measured voltage to conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "duty-reference-definition",
+            "duty-c1",
+            "duty-c2",
+            "duty-c3",
+            "duty-c4"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "full-case-material",
+            "textDe": "Daniell-Zelle unter Standardbedingungen / Metallaustausch und negative Vorschlagsrichtung",
+            "textEn": "Daniell cell under standard conditions / Metal displacement and negative proposed direction"
+          },
+          {
+            "id": "independent-transfer",
+            "textDe": "Frisch: Cu²⁺/Cu+0,34V und Ag⁺/Ag+0,80V. Reaktion und E°? Ein Protokoll nennt Ag gegenüber einer anders gewählten Referenz R mit E°(R vs. SHE) = +0,20 V. Welcher Wert steht für Ag vs. R im Protokoll? Berechne die Cu/Ag-Zellspannung zusätzlich mit beiden auf R bezogenen Elektrodenwerten und begründe ihre Referenzunabhängigkeit. / Frisch: gleiche Potenzialdifferenz, Reaktion wird formal verdreifacht. Wie ändern sich E° und Elektronenanzahl? Eine zweite Aufgabe liefert nur E°(M vs. R) = +0,60 V bei einer anderen Referenz R mit E°(R vs. SHE) = +0,20 V unter denselben Standardbedingungen. Rekonstruiere E°(M vs. SHE) und prüfe die Aussage „M hat das absolute Potenzial 0,60 V“. Wie ändert sich dabei eine Zellspannung zwischen M und einer zweiten Elektrode, wenn beide dieselbe Referenz R verwenden?",
+            "textEn": "Fresh: Cu²⁺/Cu+0.34V and Ag⁺/Ag+0.80V. Reaction and E°? A report instead uses reference R with E°(R vs. SHE) = +0.20 V. What value does it report for Ag vs. R? Also calculate the Cu/Ag cell voltage from both electrode values relative to R and explain why the cell voltage is reference independent. / Fresh: same potential difference, reaction is formally tripled. How do E° and electron count change? A second task supplies only E°(M vs. R) = +0.60 V for a different reference R with E°(R vs. SHE) = +0.20 V under the same standard conditions. Recover E°(M vs. SHE) and assess the claim that M has an absolute potential of 0.60 V. How does this affect the cell voltage between M and another electrode if both use the same reference R?"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "q3-10-a",
+            "taskDemandDe": "Standard-Reduktionspotenziale bei298K: Zn²⁺/Zn−0,76V,Cu²⁺/Cu+0,34V. Reine Metalle, Aktivitäten gelöster Ionen1; getrennte Halbzellen mit inertem Salzsteg. Die Werte beziehen sich auf die Standard-Wasserstoffelektrode (SHE), deren Standardpotenzial per Vereinbarung 0 V ist. Für dieses Modell gelten 298 K, reine feste Stoffe und gelöste Ionen mit Aktivität 1; bei gasförmigen Standardzuständen gilt 1 bar. Aktivität 1 ist nicht allgemein gleichbedeutend mit einer Konzentration von 1 mol/L. Definiere das Standard-Reduktionspotenzial als relative Potenzialdifferenz gegenüber der SHE unter festgelegten Standardzuständen und bei angegebener Temperatur. Erkläre, warum die vereinbarte 0 V weder eine isoliert gemessene absolute Elektrodenspannung noch das Fehlen einer elektrochemischen Grenzfläche bedeutet. Interpretiere Spannungsreihe, sage freiwilligen Verlauf voraus, bilanziere Gesamtreaktion und berechne E°. Benenne Anode/Kathode, Elektronenfluss und Salzsteg-Ionenbewegung. Begrenze Aussagen für andere Konzentrationen. Separat frischer Transfer: Frisch: Cu²⁺/Cu+0,34V und Ag⁺/Ag+0,80V. Reaktion und E°? Ein Protokoll nennt Ag gegenüber einer anders gewählten Referenz R mit E°(R vs. SHE) = +0,20 V. Welcher Wert steht für Ag vs. R im Protokoll? Berechne die Cu/Ag-Zellspannung zusätzlich mit beiden auf R bezogenen Elektrodenwerten und begründe ihre Referenzunabhängigkeit.",
+            "expectedPerformanceDe": "E° ist das Reduktionspotenzial relativ zur SHE, also die vorzeichenbehaftete Standard-Zellspannung in der Referenzkonvention E°(untersuchte Elektrode) − E°(SHE). Das Standardpotenzial der SHE ist vereinbart 0 V; Tabellenwerte sind relative Vergleichswerte und keine direkt mit nur einer Elektrode gemessenen absoluten Spannungen. Die Temperatur wird angegeben; Aktivitäten und gegebenenfalls Gasdruck beziehen sich auf die festgelegten Standardzustände. Der Bezug auf 0 V lässt die elektrochemische Grenzfläche bestehen. Zn oxidiert:Zn→Zn²⁺+2e⁻ an der negativen Anode;Cu²⁺+2e⁻→Cu an positiver Kathode. Gesamt Zn+Cu²⁺→Zn²⁺+Cu;E°=0,34−(−0,76)=1,10V. Elektronen fließen außen Zn→Cu; Anionen des Salzstegs zur Zn-Halbzelle, Kationen zur Cu-Halbzelle. Ionen transportieren Ladung in Lösung, keine Elektronenleitung dort. Reale Konzentrationen/Belastung können Spannung verändern. Transferantwort: Cu+2Ag⁺→Cu²⁺+2Ag;E°=0,46V. Potenziale werden nicht mit dem Faktor2 multipliziert. Ag vs. R: 0,80 − 0,20 = +0,60 V; Cu vs. R: 0,34 − 0,20 = +0,14 V. Die Zellspannung bleibt 0,60 − 0,14 = 0,46 V, weil dieselbe Referenzverschiebung beim Bilden der Differenz wegfällt. Rubrik /12: reference-definition 2P; c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Pflicht: alle bezeichneten Aspekte begründet zeigen; nur tatsächliche Leistung bewerten. Die ganzen Kriterien stehen im zugehörigen vollständigen Fall.",
+            "understandingFocusDe": "Alle Pflichtkriterien ausdrücklich begründen, Darstellung und frische Variation tatsächlich zeigen. Modellmaterial bleibt synthetisch; keine nicht ausgeführte Untersuchung und keine Lernendenleistung behaupten.",
+            "taskDemandEn": "Standard reduction potentials at298K: Zn²⁺/Zn−0.76V,Cu²⁺/Cu+0.34V. Pure metals, dissolved-ion activities1; separated half-cells with inert salt bridge. The values use the standard hydrogen electrode (SHE) as reference; its standard potential is assigned 0 V. This model specifies 298 K, pure solids and dissolved ions of activity 1; gaseous standard states use 1 bar. Unit activity does not generally mean a concentration of 1 mol/L. Define a standard reduction potential as a relative potential difference against SHE for specified standard states and at a stated temperature. Explain why the assigned 0 V is neither an isolated absolute electrode-voltage measurement nor the absence of an electrochemical interface. Interpret the series, predict spontaneous direction, balance total reaction and calculate E°. State anode/cathode, electron flow and salt-bridge ion movement. Bound claims for other concentrations. Separately administered fresh transfer: Fresh: Cu²⁺/Cu+0.34V and Ag⁺/Ag+0.80V. Reaction and E°? A report instead uses reference R with E°(R vs. SHE) = +0.20 V. What value does it report for Ag vs. R? Also calculate the Cu/Ag cell voltage from both electrode values relative to R and explain why the cell voltage is reference independent.",
+            "expectedPerformanceEn": "E° is the reduction potential relative to SHE: the signed standard-cell emf in the reference convention E°(electrode of interest) − E°(SHE). Assigning SHE a standard potential of 0 V makes table entries relative comparison values, not absolute voltages directly measured with one isolated electrode. Temperature is stated; activities and any gas pressure refer to the specified standard states. The 0 V reference does not eliminate the electrochemical interface. Zn oxidizes:Zn→Zn²⁺+2e⁻ at negative anode;Cu²⁺+2e⁻→Cu at positive cathode. Overall Zn+Cu²⁺→Zn²⁺+Cu;E°=0.34−(−0.76)=1.10V. Electrons flow externally Zn→Cu; salt-bridge anions toward Zn and cations toward Cu half-cell. Ions carry charge in solution, not electrons. Actual concentrations/load can change voltage. Transfer response: Cu+2Ag⁺→Cu²⁺+2Ag;E°=0.46V. Potentials are not multiplied by coefficient2. Ag vs. R: 0.80 − 0.20 = +0.60 V; Cu vs. R: 0.34 − 0.20 = +0.14 V. The cell voltage remains 0.60 − 0.14 = 0.46 V because the same reference shift cancels in the difference. Rubrik /12: reference-definition 2P; c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Mandatory: justify all named aspects; score only demonstrated work. The full criteria remain in the bound complete case.",
+            "understandingFocusEn": "Explicitly justify all mandatory criteria and demonstrate the representation and fresh variation. Model material remains synthetic; do not claim an unperformed investigation or actual learner work."
+          },
+          {
+            "id": "q3-10-b",
+            "taskDemandDe": "Standardwerte Mg²⁺/Mg−2,37V,Fe²⁺/Fe−0,44V. Vorgeschlagene Reaktion Fe+Mg²⁺→Fe²⁺+Mg; galvanische Halbzellen werden bei Standardbedingungen gekoppelt. Die Werte beziehen sich auf die Standard-Wasserstoffelektrode (SHE), deren Standardpotenzial per Vereinbarung 0 V ist. Für dieses Modell gelten 298 K, reine feste Stoffe und gelöste Ionen mit Aktivität 1; bei gasförmigen Standardzuständen gilt 1 bar. Aktivität 1 ist nicht allgemein gleichbedeutend mit einer Konzentration von 1 mol/L. Definiere das Standard-Reduktionspotenzial als relative Potenzialdifferenz gegenüber der SHE unter festgelegten Standardzuständen und bei angegebener Temperatur. Erkläre, warum die vereinbarte 0 V weder eine isoliert gemessene absolute Elektrodenspannung noch das Fehlen einer elektrochemischen Grenzfläche bedeutet. Prüfe Vorschlag, bestimme freiwillige Richtung und E°. Deute Anode, Kathode und beide Ladungstransportwege. Erkläre, warum eine gemessene1,80V den Standardwert nicht automatisch widerlegt. Separat frischer Transfer: Frisch: gleiche Potenzialdifferenz, Reaktion wird formal verdreifacht. Wie ändern sich E° und Elektronenanzahl? Eine zweite Aufgabe liefert nur E°(M vs. R) = +0,60 V bei einer anderen Referenz R mit E°(R vs. SHE) = +0,20 V unter denselben Standardbedingungen. Rekonstruiere E°(M vs. SHE) und prüfe die Aussage „M hat das absolute Potenzial 0,60 V“. Wie ändert sich dabei eine Zellspannung zwischen M und einer zweiten Elektrode, wenn beide dieselbe Referenz R verwenden?",
+            "expectedPerformanceDe": "E° ist das Reduktionspotenzial relativ zur SHE, also die vorzeichenbehaftete Standard-Zellspannung in der Referenzkonvention E°(untersuchte Elektrode) − E°(SHE). Das Standardpotenzial der SHE ist vereinbart 0 V; Tabellenwerte sind relative Vergleichswerte und keine direkt mit nur einer Elektrode gemessenen absoluten Spannungen. Die Temperatur wird angegeben; Aktivitäten und gegebenenfalls Gasdruck beziehen sich auf die festgelegten Standardzustände. Der Bezug auf 0 V lässt die elektrochemische Grenzfläche bestehen. Vorschlags-E°=−2,37−(−0,44)=−1,93V, daher nicht freiwillig in dieser Richtung. Freiwillig Mg+Fe²⁺→Mg²⁺+Fe mit+1,93V. Mg negative Anode, Fe positive Kathode; Elektronen außen Mg→Fe, Gegenionen ermöglichen Ladungsausgleich innen.1,80V kann anderen Aktivitäten, Innenwiderstand oder Last entsprechen; Messbedingungen müssen geprüft werden. Transferantwort: E° bleibt1,93V; bilanzierte Elektronenzahl steigt2→6. Intensives Potenzial wird nicht skaliert. M vs. SHE ist +0,60 + 0,20 = +0,80 V. 0,60 V ist ein relativer Wert gegen R und kein absolutes Potenzial. Eine Differenz zweier Elektrodenpotenziale bleibt bei gemeinsamer Referenzverschiebung gleich; der Referenzwert fällt heraus. Rubrik /12: reference-definition 2P; c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Pflicht: alle bezeichneten Aspekte begründet zeigen; nur tatsächliche Leistung bewerten. Die ganzen Kriterien stehen im zugehörigen vollständigen Fall.",
+            "understandingFocusDe": "Alle Pflichtkriterien ausdrücklich begründen, Darstellung und frische Variation tatsächlich zeigen. Modellmaterial bleibt synthetisch; keine nicht ausgeführte Untersuchung und keine Lernendenleistung behaupten.",
+            "taskDemandEn": "Standard values Mg²⁺/Mg−2.37V,Fe²⁺/Fe−0.44V. Proposed reaction Fe+Mg²⁺→Fe²⁺+Mg; galvanic half-cells are connected at standard conditions. The values use the standard hydrogen electrode (SHE) as reference; its standard potential is assigned 0 V. This model specifies 298 K, pure solids and dissolved ions of activity 1; gaseous standard states use 1 bar. Unit activity does not generally mean a concentration of 1 mol/L. Define a standard reduction potential as a relative potential difference against SHE for specified standard states and at a stated temperature. Explain why the assigned 0 V is neither an isolated absolute electrode-voltage measurement nor the absence of an electrochemical interface. Check the proposal, determine spontaneous direction and E°. Interpret anode, cathode and both charge-transport paths. Explain why measured1.80V does not automatically refute the standard value. Separately administered fresh transfer: Fresh: same potential difference, reaction is formally tripled. How do E° and electron count change? A second task supplies only E°(M vs. R) = +0.60 V for a different reference R with E°(R vs. SHE) = +0.20 V under the same standard conditions. Recover E°(M vs. SHE) and assess the claim that M has an absolute potential of 0.60 V. How does this affect the cell voltage between M and another electrode if both use the same reference R?",
+            "expectedPerformanceEn": "E° is the reduction potential relative to SHE: the signed standard-cell emf in the reference convention E°(electrode of interest) − E°(SHE). Assigning SHE a standard potential of 0 V makes table entries relative comparison values, not absolute voltages directly measured with one isolated electrode. Temperature is stated; activities and any gas pressure refer to the specified standard states. The 0 V reference does not eliminate the electrochemical interface. Proposed E°=−2.37−(−0.44)=−1.93V, so this direction is not spontaneous. Spontaneous Mg+Fe²⁺→Mg²⁺+Fe gives+1.93V. Mg is negative anode, Fe positive cathode; electrons flow externally Mg→Fe and counterions balance charge internally.1.80V can reflect different activities, internal resistance or load; check measurement conditions. Transfer response: E° stays1.93V; balanced electron count increases2→6. Intensive potential is not scaled. M vs. SHE is +0.60 + 0.20 = +0.80 V. The 0.60 V value is relative to R, not an absolute potential. The difference between two electrode potentials stays unchanged under a common reference shift because the reference value cancels. Rubrik /12: reference-definition 2P; c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Mandatory: justify all named aspects; score only demonstrated work. The full criteria remain in the bound complete case.",
+            "understandingFocusEn": "Explicitly justify all mandatory criteria and demonstrate the representation and fresh variation. Model material remains synthetic; do not claim an unperformed investigation or actual learner work."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+      "goalFingerprint": "sha256:c547b07e7835df4dc5c9f412f9fb62137eacbf8b8bce0b2e7a7c222fcb9d6433",
+      "reviewInputFingerprint": "sha256:44d44212a2ac4e09e646c7a7cb7307f949baadc0010ed2bc832bf8b1051840ad",
+      "profileFingerprint": "sha256:78076154b53367b79a9f495375b547b0b992c100d5ca941ab6d855f923b746ed",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "duty-c1",
+            "essentialUnderstandingDe": "Donator/Akzeptor-Prinzip für beide Typen erklären. / Beide Zellreaktionen dem Redoxprinzip zuordnen.",
+            "observablePerformanceDe": "q3-12-a: Donator/Akzeptor-Prinzip für beide Typen erklären. q3-12-b: Beide Zellreaktionen dem Redoxprinzip zuordnen.",
+            "essentialUnderstandingEn": "Explain donor/acceptor principle for both types. / Relate both cell reactions to redox principle.",
+            "observablePerformanceEn": "q3-12-a: Explain donor/acceptor principle for both types. q3-12-b: Relate both cell reactions to redox principle."
+          },
+          {
+            "id": "duty-c2",
+            "essentialUnderstandingDe": "Elektroden-/Elektrolyt-/Außenkreisfunktionen übertragen. / Getrennte Reaktionsorte und Ladungstransport erklären.",
+            "observablePerformanceDe": "q3-12-a: Elektroden-/Elektrolyt-/Außenkreisfunktionen übertragen. q3-12-b: Getrennte Reaktionsorte und Ladungstransport erklären.",
+            "essentialUnderstandingEn": "Transfer electrode/electrolyte/external circuit functions. / Explain separated reaction sites and charge transport.",
+            "observablePerformanceEn": "q3-12-a: Transfer electrode/electrolyte/external circuit functions. q3-12-b: Explain separated reaction sites and charge transport."
+          },
+          {
+            "id": "duty-c3",
+            "essentialUnderstandingDe": "4 Wh berechnen und die materialgestützte Wahl sowohl an die verifizierte 1,5-V-Ausgangsspannung als auch an nutzbare Energie und Luftzugang binden; Wh allein beweist keine Geräteeignung. / Bedarf/Reserve numerisch fachlich vergleichen.",
+            "observablePerformanceDe": "q3-12-a: 4 Wh berechnen und die materialgestützte Wahl sowohl an die verifizierte 1,5-V-Ausgangsspannung als auch an nutzbare Energie und Luftzugang binden; Wh allein beweist keine Geräteeignung. q3-12-b: Bedarf/Reserve numerisch fachlich vergleichen.",
+            "essentialUnderstandingEn": "Calculate 4 Wh and bind the material-based choice to verified 1.5-V output, usable energy and airflow; Wh alone does not establish device compatibility. / Compare demand/reserve scientifically and numerically.",
+            "observablePerformanceEn": "q3-12-a: Calculate 4 Wh and bind the material-based choice to verified 1.5-V output, usable energy and airflow; Wh alone does not establish device compatibility. q3-12-b: Compare demand/reserve scientifically and numerically."
+          },
+          {
+            "id": "duty-c4",
+            "essentialUnderstandingDe": "Fachliche und gesellschaftliche Vor-/Nachteile mit Grenzen abwägen. / Gesellschaftliche Rohstoff-/Kostenabwägung bedingt formulieren.",
+            "observablePerformanceDe": "q3-12-a: Fachliche und gesellschaftliche Vor-/Nachteile mit Grenzen abwägen. q3-12-b: Gesellschaftliche Rohstoff-/Kostenabwägung bedingt formulieren.",
+            "essentialUnderstandingEn": "Weigh scientific and social advantages/disadvantages with limits. / Give conditional social resource/cost judgment.",
+            "observablePerformanceEn": "q3-12-a: Weigh scientific and social advantages/disadvantages with limits. q3-12-b: Give conditional social resource/cost judgment."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "duty-c1",
+            "duty-c2",
+            "duty-c3",
+            "duty-c4"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "full-case-material",
+            "textDe": "Primärzelle für ein Gerät wählen / Zwei Primärtypen für kurze hohe Last",
+            "textEn": "Choose a primary cell for a device / Two primary types for brief high load"
+          },
+          {
+            "id": "independent-transfer",
+            "textDe": "q3-12-a: Frisch: Gerät braucht0,10W für20h und wird monatelang gelagert. Ändert sich das Urteil? Das geänderte Nutzungs- und Lagerungsprofil verlangt ein neues bedingtes Urteil mit Luftzugang, Aktivierungszustand, verifiziertem Geräteanschluss und nutzbarer Energie.",
+            "textEn": "q3-12-a: Fresh: device needs0.10W for20h and is stored for months. Does the judgment change? The changed use and storage profile requires a new conditional judgment using airflow, activation state, verified device connection and usable energy."
+          },
+          {
+            "id": "numerical-practice",
+            "textDe": "q3-12-b: Frisch: Bedarf2,4Wh bei gleicher Last. Welcher Typ erfüllt ihn nach den gegebenen Daten? Diese 2→2,4-Wh-Variation übt Energiebedarf und Reserve; sie ist kein eigenständiger konzeptioneller Transfer.",
+            "textEn": "q3-12-b: Fresh: demand2.4Wh at same load. Which type meets it according to supplied data? This 2→2.4-Wh variation practices energy demand and reserve; it is not independent conceptual transfer."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "q3-12-a",
+            "taskDemandDe": "Fiktives Gerät braucht 1,5 V, 0,20 W für 20 h. Verglichen werden zwei ausdrücklich fiktive, nicht wiederaufladbare Versorgungspakete, deren geregelter Geräteanschluss jeweils nachweislich 1,5 V liefert. Beim Zink-Luft-Paket ist dafür ein geeigneter Spannungswandler vorhanden; die Einzelzellspannung wird nicht als 1,5 V behauptet. Die angegebenen nutzbaren Energien gelten am Geräteanschluss und enthalten bereits die Wandlerverluste. Alkali-Mangan-Paket: 3 Wh, 1 €, robust. Zink-Luft-Paket: 4 Wh, 1,50 €, benötigt Luftzufuhr, verliert nach Aktivierung schneller Kapazität bei Lagerung. Schematisch Alkali: Zn + 2 MnO₂ + H₂O → ZnO + 2 MnOOH; Zink-Luft: 2 Zn + O₂ → 2 ZnO. Beide haben getrennte Elektroden und einen ionischen Elektrolyten. Übertrage das galvanische Prinzip auf beide Typen und beurteile die Wahl fachlich und gesellschaftlich für kontinuierliche Nutzung versus Notvorrat. Begründe anhand Material. Separat frischer Transfer: Frisch: Gerät braucht0,10W für20h und wird monatelang gelagert. Ändert sich das Urteil?",
+            "expectedPerformanceDe": "Zn gibt Elektronen ab; MnO₂ bzw. O₂ wird an der Kathode reduziert. Der Außenleiter liefert Strom, der Elektrolyt leitet Ionen. Der Bedarf beträgt 4 Wh. Bei der ausdrücklich verifizierten 1,5-V-Ausgangsspannung und den einschließlich Wandlerverlusten angegebenen nutzbaren Energien kann das fiktive Zink-Luft-Paket diesen Bedarf decken; das Alkali-Paket mit 3 Wh allein nicht. Geeigneter Luftzugang bleibt erforderlich. Ohne die Spannungs- und Anschlussangaben ließe sich aus Wh allein keine Geräteeignung folgern. Für lange Lagerung ist robustes Alkali plausibler, wobei mehr nutzbare Kapazität nötig ist. Preis, Materialverbrauch, Entsorgung und Versorgungssicherheit sind Kriterien; aus den Daten folgt kein allgemeiner Umweltgewinner. Primärzellen werden nicht als aufladbar behandelt. Transferantwort: Der Bedarf beträgt 2 Wh. Bei unverändert verifiziertem 1,5-V-Ausgang erfüllt das Alkali-Paket mit 3 Wh die Energieanforderung und passt besser zur Lagerung. Für Zink-Luft bleiben Luftzufuhr und Aktivierungszustand Bedingungen. Das Urteil hängt vom Nutzungsprofil ab; eine Einzelzellspannung wird daraus nicht abgeleitet. Rubrik /10: c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Pflicht: alle bezeichneten Aspekte begründet zeigen; nur tatsächliche Leistung bewerten. Die ganzen Kriterien stehen im zugehörigen vollständigen Fall.",
+            "understandingFocusDe": "Alle Pflichtkriterien ausdrücklich begründen, Darstellung und frische Variation tatsächlich zeigen. Modellmaterial bleibt synthetisch; keine nicht ausgeführte Untersuchung und keine Lernendenleistung behaupten.",
+            "taskDemandEn": "A fictional device needs 1.5 V and 0.20 W for 20 h. Compare two explicitly fictional nonrechargeable power packages whose regulated device connectors are each verified to deliver 1.5 V. The zinc-air package has a suitable voltage converter; its individual cell voltage is not claimed to be 1.5 V. The stated usable energies apply at the device connector and already include converter losses. Alkaline-manganese package: 3 Wh, €1, robust. Zinc-air package: 4 Wh, €1.50, needs airflow and loses capacity faster in storage after activation. Schematic alkaline: Zn + 2 MnO₂ + H₂O → ZnO + 2 MnOOH; zinc-air: 2 Zn + O₂ → 2 ZnO. Both have separated electrodes and an ionic electrolyte. Transfer the galvanic principle to both types and evaluate the choice scientifically and socially for continuous use versus emergency storage. Justify using the material. Separately administered fresh transfer: Fresh: device needs0.10W for20h and is stored for months. Does the judgment change?",
+            "expectedPerformanceEn": "Zn donates electrons; MnO₂ or O₂ is reduced at the cathode. The external conductor supplies current and the electrolyte conducts ions. Demand is 4 Wh. Given the explicitly verified 1.5-V output and stated usable energies including converter losses, the fictional zinc-air package can supply this demand; the 3-Wh alkaline package alone cannot. Suitable airflow remains necessary. Without the voltage and connector data, Wh alone would not establish device compatibility. For long storage robust alkaline is more plausible but needs greater usable capacity. Price, material use, disposal and supply reliability are criteria; the data do not establish a universal environmental winner. Primary cells are not treated as rechargeable. Transfer response: Demand is 2 Wh. With the verified 1.5-V output unchanged, the 3-Wh alkaline package meets the energy requirement and better suits storage. Airflow and activation state remain conditions for zinc-air. Judgment depends on the use profile; no individual cell voltage is inferred. Rubrik /10: c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Mandatory: justify all named aspects; score only demonstrated work. The full criteria remain in the bound complete case.",
+            "understandingFocusEn": "Explicitly justify all mandatory criteria and demonstrate the representation and fresh variation. Model material remains synthetic; do not claim an unperformed investigation or actual learner work."
+          },
+          {
+            "id": "q3-12-b",
+            "taskDemandDe": "Fiktive1,5V-Zellen: TypA Alkali-Mangan, nutzbar2Wh bei Last1W, Preis1€; TypB Zink-Silberoxid, nutzbar2,5Wh bei Last1W, Preis3€, hoher Wert des Silberrecyclings. Bedarf1W für2h. Reaktionsmodelle Zn+2MnO₂+H₂O→ZnO+2MnOOH und Zn+Ag₂O→ZnO+2Ag. Keine reale Produktberatung. Erkläre beide Primärzellen mit galvanischem Prinzip und beurteile Unterschiede bei Energiebedarf, Kosten, Rohstoffen und Entsorgung. Begründe ein bedingtes Urteil. Separat durchgeführte numerische Variation (kein eigenständiger konzeptioneller Transfer): Frisch: Bedarf2,4Wh bei gleicher Last. Welcher Typ erfüllt ihn nach den gegebenen Daten?",
+            "expectedPerformanceDe": "Zn wird oxidiert; Mn(IV) bzw.Ag(I) reduziert. Getrennte Redoxorte erzeugen nutzbaren Elektronenfluss außen, Ionenfluss innen. Bedarf2Wh erfülltA exakt,B mit0,5Wh Reserve. Für Kostenpriorität genügtA im Modell;B kann Reserve bieten, benötigt aber mehr Kosten und wertvollen Rohstoff. Recyclingzugang und reale Last-/Temperaturdaten entscheiden mit. Primärreaktionen begründen keine sichere Wiederaufladung. Antwort zur numerischen Variation: NurB2,5Wh, mit0,1Wh Reserve; damit ist noch kein allgemeines Umwelturteil bewiesen. Rubrik /10: c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Pflicht: alle bezeichneten Aspekte begründet zeigen; nur tatsächliche Leistung bewerten. Die ganzen Kriterien stehen im zugehörigen vollständigen Fall.",
+            "understandingFocusDe": "Alle Pflichtkriterien ausdrücklich begründen, Darstellung und frische Variation tatsächlich zeigen. Modellmaterial bleibt synthetisch; keine nicht ausgeführte Untersuchung und keine Lernendenleistung behaupten. Der unveränderte Rubrikschlüssel fresh-transfer bezeichnet hier nur die numerische Variation; konzeptioneller unabhängiger Transfer für das Gesamtprofil wird durch q3-12-a verlangt.",
+            "taskDemandEn": "Fictional1.5V cells: typeA alkaline-manganese, usable2Wh at1W load,price€1; typeB zinc-silver oxide,usable2.5Wh at1W load,price€3,valuable silver recycling. Demand1W for2h. Reaction models Zn+2MnO₂+H₂O→ZnO+2MnOOH and Zn+Ag₂O→ZnO+2Ag. No actual product advice. Explain both primary cells using galvanic principle and evaluate differences in energy demand,cost,resources and disposal. Give a conditional judgment. Separately administered numerical variation (not independent conceptual transfer): Fresh: demand2.4Wh at same load. Which type meets it according to supplied data?",
+            "expectedPerformanceEn": "Zn oxidizes; Mn(IV) or Ag(I) reduces. Separated redox sites produce useful external electron flow and internal ion flow. Demand2Wh is met exactly byA, with0.5Wh reserve byB. For cost priorityA suffices in the model;B offers reserve but greater cost and valuable resource use. Recycling access and actual load/temperature data also matter. Primary reactions do not imply safe rechargeability. Numerical variation response: OnlyB2.5Wh, with0.1Wh reserve; this still does not establish a general environmental judgment. Rubrik /10: c1 2P; c2 2P; c3 2P; c4 2P; fresh-transfer 2P. Mandatory: justify all named aspects; score only demonstrated work. The full criteria remain in the bound complete case.",
+            "understandingFocusEn": "Explicitly justify all mandatory criteria and demonstrate the representation and fresh variation. Model material remains synthetic; do not claim an unperformed investigation or actual learner work. The unchanged fresh-transfer rubric key denotes numerical variation here; independent conceptual transfer for the whole profile is required through q3-12-a."
+          }
+        ]
+      }
+    }
+  ]
+}

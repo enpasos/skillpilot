@@ -1,0 +1,26 @@
+# Lernzielvisualisierung: Genetische Beratung
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `9dc56d7d-3321-55b6-8988-cfc74abdc341`
+- Titel: Genetische Beratung
+- Beschreibung: Die lernende Person kann Prinzipien genetischer Beratung und Entscheidungsfindung erläutern.
+
+## Generator
+
+- Provider: OpenAI / Codex built-in image_gen
+- Status: pilot
+- Quellbild: `9dc56d7d-3321-55b6-8988-cfc74abdc341.png`
+- Public Asset: `/assets/goal-visualizations/biologie/9dc56d7d-3321-55b6-8988-cfc74abdc341/9dc56d7d-3321-55b6-8988-cfc74abdc341.png`
+
+## Prompt
+
+```text
+# Actual generation request(s)
+
+Use case: scientific-educational. Asset type: one compact didactic learning-goal illustration for secondary-school biology. Friendly clear softly shaded comic diagram, precise simple shapes, warm off-white background, teal/lavender/coral palette, thick readable outlines, 16:9 landscape about1600x900. Keep the important objects large so the core relationship remains understandable at360px phone width and680px desktop width. Sparse composition, generous margins, no long captions, no tiny text, no technical IDs, no logos, no watermark, no decorative DNA helix, no copied third-party graphics. Biology remains a schematic teaching model, not a medical instruction or promise of treatment. Primary request: principles of genetic counselling and open decision-making. Two equally sized friendly seated adults talk at a table, one counsellor and one person considering a test. The counsellor shows a simple test-information sheet with a question mark; the person has two equally clear possible paths ahead: a closed sample tube symbol and a paused path symbol. Above them use large simple icons for information, privacy lock and a thoughtful personal-choice bubble. Only two German labels "Informieren" and "Selbst entscheiden". Do not favour a test path with green check or make the counsellor point toward a compulsory choice, no personal DNA data or percentages, no clinician diagnostic claim.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
