@@ -150,9 +150,40 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
 
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-  // Two independently reviewed basic metabolism companions add bounded direct
-  // source routes; all earlier current atoms remain in the atlas.
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 394, publishedCurricularAtomicGoals: 394, sourceViews: 24, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  // HB037 adds one independently reviewed reflection goal with a bounded
+  // Bremen route; every earlier current atom remains in the atlas.
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 395, publishedCurricularAtomicGoals: 395, sourceViews: 24, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  const reflectionGoalId = '55036b74-af78-5217-9e43-c5bdc975c958'
+  const hbReflectionSourceId = 'hb-biology-seki-bp2006-2022-3-1-koerperleistungen-gesundheit-037-a47d64cd'
+  const hbAddictionSourceId = 'hb-biology-seki-bp2006-2022-3-2-sinne-wahrnehmung-051-a74ab90c'
+  assert.deepEqual(biology.receipt.scopes.filter(s => s.goalIds.includes(reflectionGoalId)).map(s => s.key), ['DE-HB/SekI/'])
+  const reflectionWitnesses = biology.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.goalId === reflectionGoalId))
+  assert.deepEqual(reflectionWitnesses.map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.coverage]), [
+    [hbReflectionSourceId, reflectionGoalId, 'direct'],
+  ], 'HB037 must cover reflection on nature objects, without importing broader health or method competencies')
+  // General health/drug operators do not establish these two specific
+  // competencies; the genuine current-context reviews retain that boundary.
+  for (const goalId of ['0e1065b9-9d1d-5299-b900-32c74d352e56', 'a6f57e17-9f0c-5327-91bc-c6f31ff375a2']) {
+    assert.deepEqual(biology.receipt.scopes.filter(s => s.goalIds.includes(goalId)).map(s => s.key), [
+      'DE-BY/SekI/', 'DE-HB/SekI/', 'DE-MV/SekI/', 'DE-SN/SekI/', 'DE-ST/SekI/', 'DE-TH/SekI/',
+    ], `${goalId}: no unsupported HE or HH source scope`)
+  }
+  // Removing a false direct or inherited witness must not remove the goal's
+  // other, independently supported routes or reintroduce the false witness.
+  for (const [scopeKey, sourceGoalId, goalId] of [
+    ['DE-HB/SekI/', hbReflectionSourceId, '26aa47b7-e5cc-5131-8980-0ec3271758b6'],
+    ['DE-HB/SekI/', hbReflectionSourceId, '6ae33a8e-874c-53ee-858f-c64f1848cfbc'],
+    ['DE-HB/SekI/', hbAddictionSourceId, '3d822550-c14a-52ee-9908-6bcb873afdd6'],
+    ['DE-HB/SekI/', hbAddictionSourceId, '5a5eeff5-ae97-5b5b-bc80-df03eba8e095'],
+    ['DE-HB/SekI/', hbAddictionSourceId, '5dd66bfd-616f-5a2a-be7c-49aaf12581a0'],
+  ]) {
+    const scope = biology.receipt.scopes.find(s => s.key === scopeKey)!
+    assert.ok(scope.goalIds.includes(goalId), `${goalId}: valid source routes remain available`)
+    assert.ok(scope.witnesses.every(w => w.goalId !== goalId || w.sourceGoalId !== sourceGoalId), `${goalId}: no false HB source witness`)
+  }
+  const flowerOnlySource = biology.receipt.scopes.find(s => s.key === 'DE-SL/SekI/')!
+  assert.ok(flowerOnlySource.goalIds.includes('4e12ba43-a58c-5611-8c43-3cc0c8465e33'), 'Other reviewed routes still cover animal development')
+  assert.ok(flowerOnlySource.witnesses.every(w => w.goalId !== '4e12ba43-a58c-5611-8c43-3cc0c8465e33' || w.sourceGoalId !== 'sl-biology-seki-nw56-2012-pfl5-003-b5650cc6'), 'A flower operator must not cover animal development')
   // Current independent source reviews correct the selected neurobiology
   // scopes and add explicit component routes without closing broad source HOLDs.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
@@ -315,9 +346,9 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     const configPath = `app/scripts/config/goal-books/de-gym-${subject}-national-atlas.inputs.json`
     const config = readGoalBookSourceAtlasInputConfig(configPath, root)
     const snapshotPaths = new Set(config.sourceDocumentSnapshots?.map(snapshot => snapshot.path))
-    // Biology retains the whole-source primary files, all still-used cache
-    // aliases from unchanged component extractions, and five HTML sources.
-    assert.equal(snapshotPaths.size, subject === 'biology' ? 26 : 30)
+    // Biology's reviewed whole-source inputs now bind six primary PDFs as
+    // mandatory committed files; the still-used download aliases remain declared.
+    assert.equal(snapshotPaths.size, subject === 'biology' ? 20 : 30)
     if (subject === 'biology') {
       const snapshots = new Map(config.sourceDocumentSnapshots?.map(snapshot => [snapshot.path, snapshot]))
       const primaryDirectory = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-82ac-nine-lower-jurisdictions-and-SN-ST-digital-prerequisite-source-author-v1/primary'

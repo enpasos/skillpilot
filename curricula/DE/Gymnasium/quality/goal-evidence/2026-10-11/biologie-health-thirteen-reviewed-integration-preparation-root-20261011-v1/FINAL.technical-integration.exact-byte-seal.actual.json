@@ -1,0 +1,1249 @@
+{
+  "createdAtUTC": "2026-10-11T01:20:59.638793+00:00",
+  "role": "Final technical integration seal; adopts existing genuine independent fachliche reviews, not another fachliche or human review",
+  "activeStrictCounts": {
+    "biologie": {
+      "closed": 366,
+      "currentCurricularAtomic": 395,
+      "newFachlicheClosures": 13,
+      "restoredClosureBindings": 0,
+      "netGain": 13,
+      "lostPriorClosures": 0
+    },
+    "chemie": {
+      "closed": 206,
+      "currentCurricularAtomic": 398
+    },
+    "mathematik": {
+      "closed": 807,
+      "currentCurricularAtomic": 807
+    },
+    "physik": {
+      "closed": 478,
+      "currentCurricularAtomic": 478
+    }
+  },
+  "requiredActualPassedLocalGates": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active-current395-central.terminal.actual.json",
+      "sha256": "sha256:214e2181d7ac3c1bafc76e61b8913b14dd672ed90325ad88ea5c0010e97f4624",
+      "actualExitCode": 0,
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--mode=check",
+        "--format=json"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions-current20-invoked.terminal.actual.json",
+      "sha256": "sha256:4e02a3d0237bdfd04384d819cfdebae5eb0d66d8c25d96da658d3678c9b90422",
+      "actualExitCode": 0,
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "--eval",
+        "import { testGoalBookSourceAtlasInputs } from './app/scripts/testGoalBookSourceAtlasInputs.ts'; testGoalBookSourceAtlasInputs();"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-book-model-regressions.terminal.actual.json",
+      "sha256": "sha256:4f79741dea737d0177b8aaf9913d73bf443f05c0d5d4158df256548a2cf08fc2",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-model"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-book-publication-regressions.terminal.actual.json",
+      "sha256": "sha256:72a9e82a3f160e276429e7fc555e804a21aef662e228e7fb4276512f8e083569",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-publication"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:74e9834d5658d61b24bd2961860f08329c3f3823251ba231a24848d96db88303",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-validate-schemas.terminal.actual.json",
+      "sha256": "sha256:2bbc87e0d97d9fbc17741ebebc6a9245a0c6d32341d74be5dc0a51c35186ab44",
+      "actualExitCode": 0,
+      "command": [
+        "python3",
+        "-B",
+        "scripts/validate_schemas.py"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-composition-views.terminal.actual.json",
+      "sha256": "sha256:15e0bd9ad9ed272f42cbaf3a73eaa6df7abd0f51acac8dd4199817947c310c9f",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-application-build.terminal.actual.json",
+      "sha256": "sha256:4640c3af40337d9f64cede48ce7b7eff3040b630fc991d6d7c00089b398a8e89",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:application"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-graph-normal.terminal.actual.json",
+      "sha256": "sha256:d335203da074debfcb24607809a3ff4f5876cf2395f459d471eab70eb4d1c563",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-repository-source-availability.terminal.actual.json",
+      "sha256": "sha256:0395e83eb877b930ab29033c64df32fc503a9e8063f312af80a61d626cddbde1",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:repository-source-availability"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-ai-transparency-inventory.terminal.actual.json",
+      "sha256": "sha256:6be6d9811153c6098505c989b594d956fcbfb8a242072b0384ef316c3eccb03b",
+      "actualExitCode": 0,
+      "command": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-visualization-assets.terminal.actual.json",
+      "sha256": "sha256:8de4cf67edb710705e8b01b32bd2b016df7d2f57a0679a8afe966e8955f051a8",
+      "actualExitCode": 0,
+      "command": [
+        "node",
+        "scripts/check_goal_visualization_assets.mjs"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-docs-links.terminal.actual.json",
+      "sha256": "sha256:599bf76cf6b1c17d35ccec551ea43b887f6ad41fccde3f5cf7b6fd3316854f5a",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-docs-indexes.terminal.actual.json",
+      "sha256": "sha256:820426683aed617d4ca842c486087cf3bad77f0c93ad5c7beee1a766542e43fe",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-generated-status-registry.terminal.actual.json",
+      "sha256": "sha256:1a155a1b2da3643c3d8ad27f2f974b082ca9087d35c047e35a5e28d0492a2f22",
+      "actualExitCode": 0,
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ]
+    }
+  ],
+  "historicalFailuresRetained": true,
+  "gitHubCIForNewCommit": "pending",
+  "humanApproval": false,
+  "humanTrial": false,
+  "fileCount": 209,
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/README.md",
+      "sha256": "sha256:0dfcb7acabda364b26309aca1c936f47f4af7a28b4b948c9b88185c4f43971ad",
+      "bytes": 1957
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/0e1065b9-9d1d-5299-b900-32c74d352e56.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:e619f2c761950105d97c13f1ec349e4626d9c68b0d8fe64efc612c36e5128da5",
+      "bytes": 1219
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/0e1065b9-9d1d-5299-b900-32c74d352e56.normal-import.actual.log",
+      "sha256": "sha256:e619f2c761950105d97c13f1ec349e4626d9c68b0d8fe64efc612c36e5128da5",
+      "bytes": 1219
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/17dc9671-3280-566c-b9ec-27437864e0ab.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:d5007411b7e4350c535da6caf1bb1f645462cf082f047d47e666bcfef795a6ef",
+      "bytes": 1227
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/17dc9671-3280-566c-b9ec-27437864e0ab.normal-import.actual.log",
+      "sha256": "sha256:d5007411b7e4350c535da6caf1bb1f645462cf082f047d47e666bcfef795a6ef",
+      "bytes": 1227
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/3c0f5267-4837-5c99-aa6d-bfb41ff70980.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:ee647895d2ca4f81404823997c10af1077db780c8202cfaeca92d8255e164a4d",
+      "bytes": 1215
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/3c0f5267-4837-5c99-aa6d-bfb41ff70980.normal-import.actual.log",
+      "sha256": "sha256:ee647895d2ca4f81404823997c10af1077db780c8202cfaeca92d8255e164a4d",
+      "bytes": 1215
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/55036b74-af78-5217-9e43-c5bdc975c958.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:17b5acaad90bc839489ede841f02fb31c4c735d70aafffc232a7648ec45958b5",
+      "bytes": 1233
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/55036b74-af78-5217-9e43-c5bdc975c958.normal-import.actual.log",
+      "sha256": "sha256:17b5acaad90bc839489ede841f02fb31c4c735d70aafffc232a7648ec45958b5",
+      "bytes": 1233
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/63856e48-8ed9-5942-8a1d-1d53ad29416d.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:9ecfd629fc1bea07ffee8b81aaa88f7d5d8b01659b988861538156ccee129b1e",
+      "bytes": 1216
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/63856e48-8ed9-5942-8a1d-1d53ad29416d.normal-import.actual.log",
+      "sha256": "sha256:9ecfd629fc1bea07ffee8b81aaa88f7d5d8b01659b988861538156ccee129b1e",
+      "bytes": 1216
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/6add2bde-b647-577d-a899-6fd62497656a.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:31b668059ee6cf44078bf373c9b5e4b376e007d357337ff8e048820cf4bed310",
+      "bytes": 1227
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/6add2bde-b647-577d-a899-6fd62497656a.normal-import.actual.log",
+      "sha256": "sha256:31b668059ee6cf44078bf373c9b5e4b376e007d357337ff8e048820cf4bed310",
+      "bytes": 1227
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/6de6ad3b-1099-5f51-848d-96de4119ed01.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:8b3247affcdc558a49f7ea91bfcf11f8bb67c7bea98b1fe39ae5ba1241a93654",
+      "bytes": 1217
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/6de6ad3b-1099-5f51-848d-96de4119ed01.normal-import.actual.log",
+      "sha256": "sha256:8b3247affcdc558a49f7ea91bfcf11f8bb67c7bea98b1fe39ae5ba1241a93654",
+      "bytes": 1217
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/773a297d-49bf-5c8a-a62a-1bd2558e323c.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:950ccde9383ef6765a0680cd42c9cdac10bae3558524a55df19f278c91d94341",
+      "bytes": 1213
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/773a297d-49bf-5c8a-a62a-1bd2558e323c.normal-import.actual.log",
+      "sha256": "sha256:950ccde9383ef6765a0680cd42c9cdac10bae3558524a55df19f278c91d94341",
+      "bytes": 1213
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/848334f3-c719-55d9-b5f4-42836e0d876a.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:7ff5c68cf2ebe50f93d2a33a83d537e6cb7f83c06b8727d226397b0729b3493f",
+      "bytes": 1198
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/848334f3-c719-55d9-b5f4-42836e0d876a.normal-import.actual.log",
+      "sha256": "sha256:7ff5c68cf2ebe50f93d2a33a83d537e6cb7f83c06b8727d226397b0729b3493f",
+      "bytes": 1198
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/91f62a7b-3b6a-5918-94ca-3f345f1f6584.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:7f87ecd2b9d5d8c98d4542fe298d4f8fca894df374a83b4046a90989b38e38c8",
+      "bytes": 1203
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/91f62a7b-3b6a-5918-94ca-3f345f1f6584.normal-import.actual.log",
+      "sha256": "sha256:7f87ecd2b9d5d8c98d4542fe298d4f8fca894df374a83b4046a90989b38e38c8",
+      "bytes": 1203
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/a6f2bcaf-df2d-5144-aa8f-49396b12d31b.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:c10544b48cfb27bdf1914b4ce2dc2a61aa29324de80a1f8106be0421f8c881ae",
+      "bytes": 1201
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/a6f2bcaf-df2d-5144-aa8f-49396b12d31b.normal-import.actual.log",
+      "sha256": "sha256:c10544b48cfb27bdf1914b4ce2dc2a61aa29324de80a1f8106be0421f8c881ae",
+      "bytes": 1201
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/a6f57e17-9f0c-5327-91bc-c6f31ff375a2.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:f91c2f43f37854dee9bf7ed850fd073ef93a6e338866bd342b02415fb505875d",
+      "bytes": 1215
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/a6f57e17-9f0c-5327-91bc-c6f31ff375a2.normal-import.actual.log",
+      "sha256": "sha256:f91c2f43f37854dee9bf7ed850fd073ef93a6e338866bd342b02415fb505875d",
+      "bytes": 1215
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/before/app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+      "sha256": "sha256:df86c0320f7d8ba2145ed70c48ee1580018cc64a0957caf3f8168f9ec3c8c586",
+      "bytes": 15632
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/before/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:e803f423ef74b1c7618d72da2170e1e2686a3529a50785caa382053813fc3bfe",
+      "bytes": 1312928
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/before/curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:c904359016b38ffba26735bafff49a263d862395d5ded4e0c4ae1f4dfae80e39",
+      "bytes": 228630
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/before/curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "sha256": "sha256:e614517680f6e5eb5ed03f334fbbd9d153f6d1dddd9f0aa23f0c6387b3aec177",
+      "bytes": 154383
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/before/curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json",
+      "sha256": "sha256:27504e7592b6102d7d8cee698acafa32c4d584f15727733a810cc39bcc190126",
+      "bytes": 1084944
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/before.actual.json",
+      "sha256": "sha256:4708b2b483204253c2d04dc97c1ff66e33ba1257f21877b2ff44e21d1e919d3d",
+      "bytes": 2612
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/d6727804-a8d4-5438-9b98-4aea8e7f4f80.normal-import.actual.exact-raw.txt",
+      "sha256": "sha256:7fd49facce0a3741a29bba26841d92e0241e643198003cc87b38b813482d6c67",
+      "bytes": 1215
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/d6727804-a8d4-5438-9b98-4aea8e7f4f80.normal-import.actual.log",
+      "sha256": "sha256:7fd49facce0a3741a29bba26841d92e0241e643198003cc87b38b813482d6c67",
+      "bytes": 1215
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/active-integration/normal-import-and-activation.actual.json",
+      "sha256": "sha256:d6b19fc9455636391c316ecd84c4b0a4571e8359992f34ea6b692c15a470fb73",
+      "bytes": 53994
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/atomicity-memory/A395-original394-exact-plus-genuine-HB1.namespace-adoption.jsonl",
+      "sha256": "sha256:6cdb79ece71b6a49c796a14ac2c99d11ba2c7a1c6f73b912afe2d583ef06188d",
+      "bytes": 218404
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/atomicity-memory/M395-original394-exact-plus-genuine-HB1.namespace-adoption.jsonl",
+      "sha256": "sha256:9f9514f4b46e54e812181914021aa828ebb794c0d4591c2a8a2cb0f19957b033",
+      "bytes": 266142
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/atomicity-memory/genuine-HB1-namespace-adoption.actual.json",
+      "sha256": "sha256:7aa7934461bb91e20de1f42335ef9acb5f6a5d8b908858f0a2e91d97b473b371",
+      "bytes": 4994
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/A395.future-active.config.json",
+      "sha256": "sha256:8a1cc30348fedb74d1246955167cf4cbb8378a673f1f4fad1fa6b6ca44d2edd7",
+      "bytes": 712
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/A395.inactive.config.json",
+      "sha256": "sha256:dcd75fbd82e614d333f4a51aae42fa2f709187b1434305ae64a72d1986389451",
+      "bytes": 906
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/M395.future-active.config.json",
+      "sha256": "sha256:5eba8e8b0a7577f40ca6a0cf80a763ed8dd4b268f6a48bff3a506a27e855f7c5",
+      "bytes": 2238
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/M395.inactive.config.json",
+      "sha256": "sha256:9250e84be75ff6ca113fc102874702a3e02fda5e5c559cf3dd55e906749fc1fc",
+      "bytes": 2432
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/bio-only-D11-HH2-pending.future-active.json",
+      "sha256": "sha256:aa85f94c4ff218d1bbcec4e8248cbe376d5222399bac88a2f85b4812bab246d4",
+      "bytes": 46357
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/bio-only-D13-fully-reviewed.future-active.json",
+      "sha256": "sha256:95f4adfcfec38959975b89fb72d9224035cdb47e1c93ee1781a6cb4d1f4465df",
+      "bytes": 46549
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/kinds395.exact.inactive.json",
+      "sha256": "sha256:bc429b048ab07c10b35de823c865e9e3b36a73bf17ab8b751c27827ea8ab2696",
+      "bytes": 154801
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/kinds395.source-path-adoption-v2.actual.json",
+      "sha256": "sha256:9cf9117937e0239c8753cb600dc9c5c6929cf7c23a39acd99fe538ae3eb15875",
+      "bytes": 662
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/kinds395.source-path-only.future-active-v2.json",
+      "sha256": "sha256:b48b062ac632e1da263682ffa969ed90b9abc69c46516da4070a0450f499e1d0",
+      "bytes": 154703
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/registry-D11-HH2-pending.future-active.json",
+      "sha256": "sha256:8d25ff3c83c71caa2b2cacc7bcfdf5368f8129b279f8c2a68876665bc9b1b81c",
+      "bytes": 229703
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/registry-D13-fully-reviewed.future-active.json",
+      "sha256": "sha256:dfcad570252854311e45ba511c931821118b40663605f4bc3fbf07fa819b4db9",
+      "bytes": 229895
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/candidate/whole480.exact.inactive.json",
+      "sha256": "sha256:5525294026c6303308216e8ae48661770168babe485d56edd31d732c94be0ffc",
+      "bytes": 1331230
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/A395.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/A395.stdout.actual.txt",
+      "sha256": "sha256:2a7e5b0df03c4a7bf8be31b08f5d3bb08ae3232481e4144ea591847890646f39",
+      "bytes": 315
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/A395.terminal.actual.json",
+      "sha256": "sha256:8f15bb2432ddd07a3553b5ee9c62f7fe41e88ca839dbebb587b1a4e345ab6fc9",
+      "bytes": 480
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/M395.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/M395.stdout.actual.txt",
+      "sha256": "sha256:284ee2ccf60c3cfb2d25ee204a2e5e5f2248bcb719011616d65a6993b5183436",
+      "bytes": 3699
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/M395.terminal.actual.json",
+      "sha256": "sha256:27d62558e3fcbcb89af87628c2943e7f93af385b89b015d9757020bce4986c04",
+      "bytes": 473
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/V-normal-freshness.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/V-normal-freshness.stdout.actual.txt",
+      "sha256": "sha256:d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84",
+      "bytes": 66
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/V-normal-freshness.terminal.actual.json",
+      "sha256": "sha256:a4533f30bfc71e579d63d9d0613f318e3e0b4457a2a6c40b85ac46d4eed19825",
+      "bytes": 545
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/V-normal-generation.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/V-normal-generation.stdout.actual.txt",
+      "sha256": "sha256:cb82914cea3a6ff3de5c367cf4663df8a7d279d6bdc0d0cff03744340ecd121f",
+      "bytes": 90
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/V-normal-generation.terminal.actual.json",
+      "sha256": "sha256:ed2992a8791680e7f08879a9d1df760c4caca6dea3a932b90b3cd35e69c7e9c2",
+      "bytes": 530
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active-current395-central.actual.stderr.exact-raw.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active-current395-central.actual.stderr.log",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active-current395-central.report.json",
+      "sha256": "sha256:55ec8f8132148e2fc084adfd205303443c970e7bb0140bd043ab61ad63d9198b",
+      "bytes": 224184
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active-current395-central.terminal.actual.json",
+      "sha256": "sha256:214e2181d7ac3c1bafc76e61b8913b14dd672ed90325ad88ea5c0010e97f4624",
+      "bytes": 276
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active-current395-protected353.strict-ID-proof.actual.json",
+      "sha256": "sha256:908b0d1e93b599b8fb3036985da041b4de743fa83a7c5f266ab7d50048533df6",
+      "bytes": 2174
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-V-freshness.actual.exact-raw.txt",
+      "sha256": "sha256:d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84",
+      "bytes": 66
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-V-freshness.actual.log",
+      "sha256": "sha256:d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84",
+      "bytes": 66
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-V-freshness.terminal.actual.json",
+      "sha256": "sha256:01c004d4e0f4bde82ff4f945611ceff1019dd412f71a1ec7967bc9b50e822d64",
+      "bytes": 281
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-ai-layer-a-applied.actual.json",
+      "sha256": "sha256:17a1634cd6b0c6236e18ef497691e1e1eb44c2d5eb4ce8503da81eac74a737d7",
+      "bytes": 1032
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-ai-layer-a-proposed.actual.patch",
+      "sha256": "sha256:bbb2cf9aa3490dfb6c3f8e7312efa4ea93b16b9168f17308d8e77d6fe7742cb3",
+      "bytes": 68872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-ai-layer-a-proposed.actual.stderr.exact-raw.txt",
+      "sha256": "sha256:96b8e9eee8c62837053e1a569f55206c6cfddf9c3b3d63ea190b0d3a3f475d72",
+      "bytes": 112
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-ai-layer-a-proposed.actual.stderr.log",
+      "sha256": "sha256:96b8e9eee8c62837053e1a569f55206c6cfddf9c3b3d63ea190b0d3a3f475d72",
+      "bytes": 112
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-ai-transparency-inventory.actual.exact-raw.txt",
+      "sha256": "sha256:2757fde3eef0dbe42e6c01f59a985d99652c1db73e7ec04e1d9bc8a441caa823",
+      "bytes": 175
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-ai-transparency-inventory.actual.log",
+      "sha256": "sha256:2757fde3eef0dbe42e6c01f59a985d99652c1db73e7ec04e1d9bc8a441caa823",
+      "bytes": 175
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-ai-transparency-inventory.terminal.actual.json",
+      "sha256": "sha256:6be6d9811153c6098505c989b594d956fcbfb8a242072b0384ef316c3eccb03b",
+      "bytes": 212
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-application-build.stderr.actual.txt",
+      "sha256": "sha256:b9f99a1c0f6ff2c022ba306b9d9d1d783a5c37fc4ce62b7547d4bc1abd81cb02",
+      "bytes": 524
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-application-build.stdout.actual.txt",
+      "sha256": "sha256:34dcf58342bb73ec7240fc4003a81d1b3a37c626def6b690d9224cfefc6bb3d1",
+      "bytes": 18135
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-application-build.terminal.actual.json",
+      "sha256": "sha256:4640c3af40337d9f64cede48ce7b7eff3040b630fc991d6d7c00089b398a8e89",
+      "bytes": 395
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-backend-publication-copy.actual.json",
+      "sha256": "sha256:7dff34a185a91706b2f955b0f6b96786722f1eb107e9f30431185c8ef9917d3d",
+      "bytes": 944
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-cache-and-output-provenance-clarification.actual.json",
+      "sha256": "sha256:64cdf277d72b9cf74d030d9cd725af8b6323f1a59737050ad49024556ce7736b",
+      "bytes": 1563
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-checkpoint-independent-portability-and-freezes.actual.json",
+      "sha256": "sha256:671673e38d18e4db1a661b58f13b2f4b479317ed631d02df915d1e87932c1859",
+      "bytes": 17839946
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-composition-views.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-composition-views.stdout.actual.txt",
+      "sha256": "sha256:132027b2343a6e6d349886e85d7755d58d4275301280bd54cc468e4c9def4daf",
+      "bytes": 208
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-composition-views.terminal.actual.json",
+      "sha256": "sha256:15e0bd9ad9ed272f42cbaf3a73eaa6df7abd0f51acac8dd4199817947c310c9f",
+      "bytes": 404
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-curriculum-status-generation.actual.exact-raw.txt",
+      "sha256": "sha256:31aefb2de0367363d57dc8923812c260d2c535e716aa038140669b5523b01c71",
+      "bytes": 218614
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-curriculum-status-generation.actual.log",
+      "sha256": "sha256:31aefb2de0367363d57dc8923812c260d2c535e716aa038140669b5523b01c71",
+      "bytes": 218614
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-curriculum-status-generation.terminal.actual.json",
+      "sha256": "sha256:6f97942da0f556541c5b67d75032b992ae95a37220437481012dcb6cd9b4c004",
+      "bytes": 231
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-docs-indexes.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-docs-indexes.stdout.actual.txt",
+      "sha256": "sha256:2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0",
+      "bytes": 131
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-docs-indexes.terminal.actual.json",
+      "sha256": "sha256:820426683aed617d4ca842c486087cf3bad77f0c93ad5c7beee1a766542e43fe",
+      "bytes": 396
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-docs-links.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-docs-links.stdout.actual.txt",
+      "sha256": "sha256:dda8da6906793e50124d5a7490396aeb65b6002789ac0a358efb9afec9488802",
+      "bytes": 121
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-docs-links.terminal.actual.json",
+      "sha256": "sha256:599bf76cf6b1c17d35ccec551ea43b887f6ad41fccde3f5cf7b6fd3316854f5a",
+      "bytes": 394
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-exact-rawlog-archives.actual.json",
+      "sha256": "sha256:5bb2f84c8021f05fa2b2d4aeff3cfc8e1825941a9dc045c1519ed7514221070f",
+      "bytes": 18030
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-generated-notices.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-generated-notices.stdout.actual.txt",
+      "sha256": "sha256:26c59b1f654b49747e87e01b207816aeef623ac48c71177f6d7a1b9ed459d2d7",
+      "bytes": 149
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-generated-notices.terminal.actual.json",
+      "sha256": "sha256:6e88c454f6758a85440a7541bce98d6a76fe5922a2589ed086bcaa70437e0597",
+      "bytes": 405
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-generated-status-registry.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-generated-status-registry.stdout.actual.txt",
+      "sha256": "sha256:b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626",
+      "bytes": 153
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-generated-status-registry.terminal.actual.json",
+      "sha256": "sha256:1a155a1b2da3643c3d8ad27f2f974b082ca9087d35c047e35a5e28d0492a2f22",
+      "bytes": 409
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-book-model-regressions.actual.exact-raw.txt",
+      "sha256": "sha256:1c74830740364984deba81b53e0b826a70305dddf92300b3536b762bcca8d6a0",
+      "bytes": 979
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-book-model-regressions.actual.log",
+      "sha256": "sha256:1c74830740364984deba81b53e0b826a70305dddf92300b3536b762bcca8d6a0",
+      "bytes": 979
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-book-model-regressions.terminal.actual.json",
+      "sha256": "sha256:4f79741dea737d0177b8aaf9913d73bf443f05c0d5d4158df256548a2cf08fc2",
+      "bytes": 226
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-book-publication-regressions.actual.exact-raw.txt",
+      "sha256": "sha256:c77faf37a6175086093cc82168b5dca3fa3ef6f8ef7cd6579e9adac9bf9165b8",
+      "bytes": 157
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-book-publication-regressions.actual.log",
+      "sha256": "sha256:c77faf37a6175086093cc82168b5dca3fa3ef6f8ef7cd6579e9adac9bf9165b8",
+      "bytes": 157
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-book-publication-regressions.terminal.actual.json",
+      "sha256": "sha256:72a9e82a3f160e276429e7fc555e804a21aef662e228e7fb4276512f8e083569",
+      "bytes": 232
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-books-build.actual.exact-raw.txt",
+      "sha256": "sha256:f5492b538e31c3d712ce0002d0a5e03c2b1432a6b654f2f43381b5b624ccff82",
+      "bytes": 1007
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-books-build.actual.log",
+      "sha256": "sha256:f5492b538e31c3d712ce0002d0a5e03c2b1432a6b654f2f43381b5b624ccff82",
+      "bytes": 1007
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-goal-books-build.terminal.actual.json",
+      "sha256": "sha256:39b09f2320bef913433481e2b866eabed7e1a2838a0c0b02ad58a0d418b3aa2f",
+      "bytes": 222
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-graph-normal.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-graph-normal.stdout.actual.txt",
+      "sha256": "sha256:9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7",
+      "bytes": 107
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-graph-normal.terminal.actual.json",
+      "sha256": "sha256:d335203da074debfcb24607809a3ff4f5876cf2395f459d471eab70eb4d1c563",
+      "bytes": 392
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-graph.stderr.actual.txt",
+      "sha256": "sha256:5efb3698de77c93d41336532ee0556c69f7f930f618a1bb59537b77348236373",
+      "bytes": 124
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-graph.stdout.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-graph.terminal.actual.json",
+      "sha256": "sha256:d7709208f80cd23ac499fcf010f412b7fb8f95fcfa50c350c041a4eeec339952",
+      "bytes": 379
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-independent-bytes-and-boundaries.actual.json",
+      "sha256": "sha256:3ab38b09cb5f07e23b64bef0c458d6d9f961656c18dba37758700ea3a813c0bf",
+      "bytes": 1705600
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-independent-normal-model-and-source-atlas.actual.json",
+      "sha256": "sha256:8924902a2fa4ee7cf12f6fb7e4a5710411bab2a384b749d256ea23f38af8c808",
+      "bytes": 361879
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-independent-six-committable-primary-bindings.actual.json",
+      "sha256": "sha256:ba6d13693b183e8118172559834d66bc8c3e8164385ab313d7011261a3725a57",
+      "bytes": 12910
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-independent-summary-and-dependent-gates.actual.json",
+      "sha256": "sha256:6aab494a3209ed29a60032674ffcd5bc870dc235d6b2c7e8a2764017a976cd06",
+      "bytes": 7474
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-protected-maturity-floors.actual.exact-raw.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-protected-maturity-floors.actual.log",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:74e9834d5658d61b24bd2961860f08329c3f3823251ba231a24848d96db88303",
+      "bytes": 238
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-repository-source-availability.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-repository-source-availability.stdout.actual.txt",
+      "sha256": "sha256:9145a48d5379796eeaaad839a16dc67775d0a89539cf9ec5ee818c5336e31e8d",
+      "bytes": 222
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-repository-source-availability.terminal.actual.json",
+      "sha256": "sha256:0395e83eb877b930ab29033c64df32fc503a9e8063f312af80a61d626cddbde1",
+      "bytes": 413
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-generation.actual.exact-raw.txt",
+      "sha256": "sha256:193a79fc670562e3b1d10fa0698c566ade17f0430b74b363ab2e5d887cf8bdf3",
+      "bytes": 176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-generation.actual.log",
+      "sha256": "sha256:193a79fc670562e3b1d10fa0698c566ade17f0430b74b363ab2e5d887cf8bdf3",
+      "bytes": 176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-generation.terminal.actual.json",
+      "sha256": "sha256:07e82d2cff7709097d460857db8ee58d56f40512fd949fa26541c26491d0b1e6",
+      "bytes": 330
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions-current20-invoked.actual.exact-raw.txt",
+      "sha256": "sha256:dcdf3d0ec05b843dbca234b9b93921089a5fc01af222ae6fc3483e66034337b8",
+      "bytes": 164
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions-current20-invoked.actual.log",
+      "sha256": "sha256:dcdf3d0ec05b843dbca234b9b93921089a5fc01af222ae6fc3483e66034337b8",
+      "bytes": 164
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions-current20-invoked.terminal.actual.json",
+      "sha256": "sha256:4e02a3d0237bdfd04384d819cfdebae5eb0d66d8c25d96da658d3678c9b90422",
+      "bytes": 332
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions-invoked.actual.exact-raw.txt",
+      "sha256": "sha256:f14dfcb7748a4f3e6cb3369cf9276155ad2537f885f96804882de56ba064da77",
+      "bytes": 674
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions-invoked.actual.log",
+      "sha256": "sha256:f14dfcb7748a4f3e6cb3369cf9276155ad2537f885f96804882de56ba064da77",
+      "bytes": 674
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions-invoked.terminal.actual.json",
+      "sha256": "sha256:9a40877ca70c170c567cc37d7d17d50c2736ee0bde2e073264d396e0ed76ea46",
+      "bytes": 401
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions.actual.exact-raw.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions.actual.log",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-atlas-regressions.terminal.actual.json",
+      "sha256": "sha256:80dbb59e13291c08825ac6da7dde25f1ea98bbd8396fcf0026346c7cdf23b87f",
+      "bytes": 234
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-coverage-generation.actual.exact-raw.txt",
+      "sha256": "sha256:de62e59a2aa6c45f7f0fc8a1c796bb256f47014a403400993fcddaf2c123bd72",
+      "bytes": 296
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-coverage-generation.actual.log",
+      "sha256": "sha256:de62e59a2aa6c45f7f0fc8a1c796bb256f47014a403400993fcddaf2c123bd72",
+      "bytes": 296
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-source-coverage-generation.terminal.actual.json",
+      "sha256": "sha256:768dfb8c3f5dbe0fe6e5e279223b367a2dcba8770233b885bce6639b14623394",
+      "bytes": 235
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-staged-rawlogs-and-exact-archives.actual.json",
+      "sha256": "sha256:fa7497980cb3996e4ede51563a19719a0d0e9bfcb7b3c33e13142065ade9d579",
+      "bytes": 21922
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-terminology.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-terminology.stdout.actual.txt",
+      "sha256": "sha256:b6c76fc880fb5275c138c38e8207274a29122c5a1df5cbfe9cb969d406ea867a",
+      "bytes": 160
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-terminology.terminal.actual.json",
+      "sha256": "sha256:4a9229fbef2cd212e5f35f9530a6b732fff02ae0051fb7dfb05e144b9dbd885e",
+      "bytes": 395
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-validate-schemas.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-validate-schemas.stdout.actual.txt",
+      "sha256": "sha256:874f3fc2f211f163945d011ea20475411f93245fe0014d8877b22d861f959804",
+      "bytes": 180
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-validate-schemas.terminal.actual.json",
+      "sha256": "sha256:2bbc87e0d97d9fbc17741ebebc6a9245a0c6d32341d74be5dc0a51c35186ab44",
+      "bytes": 381
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-visualization-assets.actual.exact-raw.txt",
+      "sha256": "sha256:bc62dab622f998f3a4efdda1a8e10b53f3fada5044ea6665daa4ca67fb84ea50",
+      "bytes": 75
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-visualization-assets.actual.log",
+      "sha256": "sha256:bc62dab622f998f3a4efdda1a8e10b53f3fada5044ea6665daa4ca67fb84ea50",
+      "bytes": 75
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/active395-visualization-assets.terminal.actual.json",
+      "sha256": "sha256:8de4cf67edb710705e8b01b32bd2b016df7d2f57a0679a8afe966e8955f051a8",
+      "bytes": 212
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central-correct-source-path.report.json",
+      "sha256": "sha256:a40d0490827460b87a345b9c7b5fa24704b29dd57fdbaf81a3ef71d4649b8987",
+      "bytes": 37945
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central-correct-source-path.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central-correct-source-path.terminal.actual.json",
+      "sha256": "sha256:8e5c4fb3795d6abd665dd13133ab9f9dd745b2b30f9ad31e36544dda6799d8d8",
+      "bytes": 645
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central-path-adoption.report.json",
+      "sha256": "sha256:8b76ddf9f5e4bc766951fb46afc706f6bf092fa149e5af23a62fa888a6d7a8ef",
+      "bytes": 20568
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central-path-adoption.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central-path-adoption.terminal.actual.json",
+      "sha256": "sha256:ee81887c91b1e6e834badd47459b00441712fd7b62126f786980dee434a7ace7",
+      "bytes": 645
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central.report.json",
+      "sha256": "sha256:8b76ddf9f5e4bc766951fb46afc706f6bf092fa149e5af23a62fa888a6d7a8ef",
+      "bytes": 20568
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central.stdout.actual.txt",
+      "sha256": "sha256:8b76ddf9f5e4bc766951fb46afc706f6bf092fa149e5af23a62fa888a6d7a8ef",
+      "bytes": 20568
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D11-HH2-pending-central.terminal.actual.json",
+      "sha256": "sha256:b65f920432648478509e0789ab00e8ce70eb30056e65d72afa4461238f02e524",
+      "bytes": 742
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D13-fully-reviewed-central.report.json",
+      "sha256": "sha256:47bf1b32b67241b93e498510b12ac7cee3450e88663db626b88e9735af363900",
+      "bytes": 38041
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D13-fully-reviewed-central.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/bio-current395-D13-fully-reviewed-central.terminal.actual.json",
+      "sha256": "sha256:22f1f802917de3b001130229a337bc8c82df902030ca06df9aea23cd7b03b126",
+      "bytes": 648
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/capsule.technical-actual.json",
+      "sha256": "sha256:6aa494b708995bddefe62b2b6452a8e93cc7ba91c28e31bb709d01b608c3f779",
+      "bytes": 361
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/failed-path-adoption-diagnostics/kinds395.future-active.json",
+      "sha256": "sha256:e00fc997570570c292eae0e4d3a30d7c32aaa7434ebdc7a7ed8fa4d3641b8bdf",
+      "bytes": 154896
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/failed-path-adoption-diagnostics/kinds395.path-adoption.actual.json",
+      "sha256": "sha256:cccb49b1b4450702027496f084c0e1323f0c8481e668dc68e2f51347332eeea5",
+      "bytes": 588
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/checks/inactive-current395-D11-protected353.strict-ID-proof.json",
+      "sha256": "sha256:f0da598f1a2e2379d2b607186d22c3f9f86664dd8a8383c76a207f8c4892d067",
+      "bytes": 2098
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/0e1065b9-9d1d-5299-b900-32c74d352e56.actual-generation-prompt.txt",
+      "sha256": "sha256:76e52fdb5da58c2aab2f3a9f8312fb873d68f6a10aa80e5253f5ea9a5e8290ff",
+      "bytes": 1118
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/17dc9671-3280-566c-b9ec-27437864e0ab.actual-generation-prompt.txt",
+      "sha256": "sha256:f0c55e24e22133b19177fe52f4d1c3f7449b681fce60c52f0357337cf4ec12d2",
+      "bytes": 1034
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/3c0f5267-4837-5c99-aa6d-bfb41ff70980.actual-generation-prompt.txt",
+      "sha256": "sha256:e3c34936527b1d68081618e36509fe2b679d3160abee65174ace05648da269fb",
+      "bytes": 897
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/63856e48-8ed9-5942-8a1d-1d53ad29416d.actual-generation-prompt.txt",
+      "sha256": "sha256:fc443e9d29e081a983202b4405faffbaca6625e2744332b00737e7c1386d35ab",
+      "bytes": 973
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/6add2bde-b647-577d-a899-6fd62497656a.actual-generation-prompt.txt",
+      "sha256": "sha256:ef7477bbbe78dba7738158e47473e8cdf7c74babd8ba49c7551acf2ed1c05af3",
+      "bytes": 2128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/6de6ad3b-1099-5f51-848d-96de4119ed01.actual-generation-prompt.txt",
+      "sha256": "sha256:4d085a51717a963df571385e477e89822d5e1d691751cbc690d7aab7182dd0d3",
+      "bytes": 871
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/773a297d-49bf-5c8a-a62a-1bd2558e323c.actual-generation-prompt.txt",
+      "sha256": "sha256:9d99c238787ef4b8a97b6dda0d2959804454f7f7cbca744d4573b9480786952b",
+      "bytes": 1055
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/848334f3-c719-55d9-b5f4-42836e0d876a.actual-generation-prompt.txt",
+      "sha256": "sha256:c6c1cee8c6e8c1ea8d4c941d4dcf790c72220da5fc04c927cd63879e1ac48058",
+      "bytes": 1032
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/91f62a7b-3b6a-5918-94ca-3f345f1f6584.actual-generation-prompt.txt",
+      "sha256": "sha256:ed8f24057f92b2a9e1732fbf29f2fe8b3e6e7fbc4cd5f50886620349906318cd",
+      "bytes": 863
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/a6f2bcaf-df2d-5144-aa8f-49396b12d31b.actual-generation-prompt.txt",
+      "sha256": "sha256:85859ce6b8f807c66de89fbf4fa3cb4ff5d606314cafd0faef5330621221af6f",
+      "bytes": 1652
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/a6f57e17-9f0c-5327-91bc-c6f31ff375a2.actual-generation-prompt.txt",
+      "sha256": "sha256:d9727eff0cf6a679e80082b71886e450e284534e0d82b4d84829339ef7787bf0",
+      "bytes": 972
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/import-inputs/d6727804-a8d4-5438-9b98-4aea8e7f4f80.actual-generation-prompt.txt",
+      "sha256": "sha256:d470b879e459b35f7da2eaa77220637c1ecd62180d6abcecd86e1de1ec5ca7fc",
+      "bytes": 894
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/actual-genuine-pair-adoption.json",
+      "sha256": "sha256:48e051d2ae20d7c936574f83e78fde4e60ad0925c136d6619127d58e9eb1663d",
+      "bytes": 979
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/dual-summary.json",
+      "sha256": "sha256:d666da79de7c17a6c93e221b8b686b2b988ea72b1844393e637c1f2cf034a460",
+      "bytes": 3314
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/resolution-index.json",
+      "sha256": "sha256:c2a0b2e74267b5ea48c7834d41ccaec13f00d8320969ddb8db3bf6249aeffe49",
+      "bytes": 2080
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/resolutions/0e1065b9-9d1d-5299-b900-32c74d352e56.resolution.json",
+      "sha256": "sha256:46bcb96feca0252c735f065802bb9e745b0dd2b006f70aa100bc46a08e8690f4",
+      "bytes": 9063
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/resolutions/a6f57e17-9f0c-5327-91bc-c6f31ff375a2.resolution.json",
+      "sha256": "sha256:786f6898478a5534e767d3f813eebcf7f4cab20285bb692b4c50068c2ea4debb",
+      "bytes": 9196
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-a/batches/biologie-health-HH-two-current-context-20261011-v1-first-pass-a.batch-001.input.jsonl",
+      "sha256": "sha256:29e15c21f09ab63f17e2d5cf09f2f14e29e59d763ac02303c721274130f39d5c",
+      "bytes": 24281
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-a/description-review-campaign.json",
+      "sha256": "sha256:03a0eb8d58e6609b83224480b5ebde00785dcf4467074a02888a2036fa3f50b4",
+      "bytes": 1694
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-a/description-review-input.json",
+      "sha256": "sha256:d8f19eec8c8fbb62c846e519dbe69363f27d6000a85f33b90c6b3f0347a7ba0f",
+      "bytes": 30970
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-a/results/biologie-health-HH-two-current-context-20261011-v1-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:1aa56cbca10a5368b67ebc727ab041e8562f2d945fe4801e9ddce0718b74c440",
+      "bytes": 11652
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-a/results/biologie-health-HH-two-current-context-20261011-v1-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:b96cb740720ee97014c02a20737d52c0b6683704dbe7de3e85a370561286ef50",
+      "bytes": 3579
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-a/review-bundle-manifest.json",
+      "sha256": "sha256:0f298e21b75f80036a482b081774e2b1385c5f8287e570a33349cd100f091c8b",
+      "bytes": 4891
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-b/batches/biologie-health-HH-two-current-context-20261011-v1-first-pass-b.batch-001.input.jsonl",
+      "sha256": "sha256:d88c63726d135da860de64c554d8f06e0bb08c55dbcdcaa17580134908d7c45a",
+      "bytes": 24281
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-b/description-review-campaign.json",
+      "sha256": "sha256:bd67039b1762bade2f960c974a30e3eee36199736d96c44b7ef58cdb1905e1fc",
+      "bytes": 1694
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-b/description-review-input.json",
+      "sha256": "sha256:d8f19eec8c8fbb62c846e519dbe69363f27d6000a85f33b90c6b3f0347a7ba0f",
+      "bytes": 30970
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-b/results/biologie-health-HH-two-current-context-20261011-v1-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:a7d22dc66b35e80e8642a40a6bc4a69bfdb40f9fb27a7c480d81d5c95288920b",
+      "bytes": 11272
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-b/results/biologie-health-HH-two-current-context-20261011-v1-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:1447347bc46a23a8701c8fddc1b7fdecd975070032b9c0a1d4a51c4090e60277",
+      "bytes": 3580
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/native-current-HH2-reviewed/round-b/review-bundle-manifest.json",
+      "sha256": "sha256:0f298e21b75f80036a482b081774e2b1385c5f8287e570a33349cd100f091c8b",
+      "bytes": 4891
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/positive/P1.future-active.config.json",
+      "sha256": "sha256:2324fbcdd3a231f5371a6e3266ed13a36c2ce139912ac480f3ee02eb48e28531",
+      "bytes": 1393
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/positive/P10.future-active.config.json",
+      "sha256": "sha256:8e1b1200843af88591e387c99d088fa93bbbfc80a2906cafbf806ef7023e4d0a",
+      "bytes": 1824
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/positive/P2.future-active.config.json",
+      "sha256": "sha256:b30e05ae20a85a7607e7631b2877f1fd438d395d73999220a164c5ad68e3708c",
+      "bytes": 1427
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/preservation-proofs/actual-source-witness-preservation.actual.json",
+      "sha256": "sha256:4bded9c52ef40e6221f0d13d82c0c03761b8e5f53f9afc99ca896113d69f3394",
+      "bytes": 4776586
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/preservation-proofs/bio13-v-keep-boundary.actual.json",
+      "sha256": "sha256:b9750147922e60b8eb3dce45f17bd28f0f4172e90d2fc8d0893b2b19bc9c7f1b",
+      "bytes": 170077
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/preservation-proofs/bounded-fair-protected353-audit-summary.actual.json",
+      "sha256": "sha256:2258eb7911db6df65e8cc1f0180d674acf21c9c41ba893b4d58748deeab96642",
+      "bytes": 15712
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/preservation-proofs/equivalent-normal-full-P-context-proof.actual.json",
+      "sha256": "sha256:136a92aa95fa715b40e6c4c05ac4ea170bd8df8e9a9d631d2bc61e09db698f21",
+      "bytes": 644145
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/preservation-proofs/latest-protected-D-contexts.actual.json",
+      "sha256": "sha256:f552eefb7030b7dda8337243436553cc82d1ab658ffb11dbdc34efdb3377d696",
+      "bytes": 934323
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/preservation-proofs/source-delta-classification-and-peer-bindings.actual.json",
+      "sha256": "sha256:1cd6077a26206bd6b93656a567d79a904de928af466d788eb5195926c1c18de6",
+      "bytes": 2471191
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/preservation-proofs/technical-proof-retention-bindings.json",
+      "sha256": "sha256:341551304fbc38913bfd26f72ca4835d9122be5332f89edac33d680ac9432aaf",
+      "bytes": 3043
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/visualization/V13.actual-peer-adoption-bindings.json",
+      "sha256": "sha256:e16b5fe4cc09b45594cfb32d34c26147d6bd964c36cd19d171309fc2708e7925",
+      "bytes": 37468
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-health-thirteen-reviewed-integration-preparation-root-20261011-v1/visualization/V395.future-active.qa.json",
+      "sha256": "sha256:760e34a681d62ac1e0df478692b57387f95b11c188ad17661c0f7a605fb4bafc",
+      "bytes": 1110219
+    }
+  ]
+}

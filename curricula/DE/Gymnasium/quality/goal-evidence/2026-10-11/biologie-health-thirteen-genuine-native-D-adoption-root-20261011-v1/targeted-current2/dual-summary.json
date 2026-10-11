@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2a08484be6cb32f2dc2061ce70df29d483e9e3128ccadca2feae74c2dacd4d90",
+  "reviewInputFingerprint": "sha256:aec0f55ca6ddf79cb7da96b96eca3aebdefa3095cfbee52d6055b92c5ad7e7b0",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-health-two-targeted-portable-native-20261010-v2-a",
+      "roundId": "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-a",
+      "independenceGroupId": "biologie-health-two-targeted-portable-native-20261010-v2-independent-a",
+      "runIds": [
+        "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-a.batch-001"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 Codex; precise runtime revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-health-two-targeted-portable-native-20261010-v2-b",
+      "roundId": "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-b",
+      "independenceGroupId": "biologie-health-two-targeted-portable-native-20261010-v2-independent-b",
+      "runIds": [
+        "biologie-health-two-targeted-portable-current-genuine-b-20261010-v2"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "6add2bde-b647-577d-a899-6fd62497656a",
+      "firstRecordId": "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-a.batch-001:6add2bde-b647-577d-a899-6fd62497656a",
+      "secondRecordId": "biologie-health-two-targeted-portable-current-genuine-b-20261010-v2.6add2bde-b647-577d-a899-6fd62497656a",
+      "firstRunId": "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-two-targeted-portable-current-genuine-b-20261010-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+      "firstRecordId": "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-a.batch-001:a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+      "secondRecordId": "biologie-health-two-targeted-portable-current-genuine-b-20261010-v2.a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+      "firstRunId": "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-two-targeted-portable-current-genuine-b-20261010-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

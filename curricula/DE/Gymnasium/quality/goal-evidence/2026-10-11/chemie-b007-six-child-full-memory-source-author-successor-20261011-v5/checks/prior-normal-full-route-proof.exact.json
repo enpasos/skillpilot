@@ -1,0 +1,277 @@
+{
+  "createdAtUTC": "2026-10-10T23:56:27.067851+00:00",
+  "scope": "Read-only normal implementation-route proof; only scratch copies and normal scratch reports were created. No new candidate decisions/cards or active data were written.",
+  "operativeRegistryPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+  "operativeConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-D27-P2-reviewed-inactive-integration-j-technical-20261010-v1/future-active-configs/memory398.future-active.config.json",
+  "normalConfigFields": [
+    "schemaVersion",
+    "reviewId",
+    "ruleVersion",
+    "landscapeId",
+    "landscapePath",
+    "reviewPath",
+    "cardReviewPath",
+    "reportPath",
+    "visibilityScopes",
+    "scope",
+    "visibilityScopeCoverageRequired"
+  ],
+  "noStandaloneDeckOverrideField": true,
+  "deckOverrideRoute": {
+    "memoryGoalId": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+    "field": "extendedData.vocabularySource",
+    "currentValue": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+    "scratchValue": "tmp/m7-resumption-20261011/b007-formula-primary-readonly/route-proof/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+    "resolvedBy": "app/scripts/memoryCardReview.ts:481",
+    "englishFieldNotAdded": true,
+    "primarySourceFilenameCondition": "Normal regex excludes [._-]en token; use .de.json for the primary scratch source."
+  },
+  "normalCodePointers": {
+    "configShape": "app/scripts/memoryCardReview.ts:10",
+    "cardLedgerShape": "app/scripts/memoryCardReview.ts:46",
+    "cardFingerprint": "app/scripts/memoryCardReview.ts:194",
+    "fullScope": "app/scripts/memoryCardReview.ts:249",
+    "compositionVisibility": "app/scripts/memoryCardReview.ts:256",
+    "visibilityRequiredCoverage": "app/scripts/memoryCardReview.ts:331",
+    "deckSources": "app/scripts/memoryCardReview.ts:474",
+    "deckSourcePathResolution": "app/scripts/memoryCardReview.ts:481",
+    "primaryDeckDetection": "app/scripts/memoryCardReview.ts:488",
+    "cardSourceExtraction": "app/scripts/memoryCardReview.ts:496",
+    "fullCardOriginChecks": "app/scripts/memoryCardReview.ts:618",
+    "normalRunner": "app/scripts/memoryCardReview.ts:885",
+    "activeRegistryConfigGuards": "app/scripts/memoryCardReviewConfigDiscovery.ts:139",
+    "runtimeCompiledDeckSchema": "contracts/curriculum-package/v1/card-deck.schema.json"
+  },
+  "normalRouteProof": [
+    {
+      "name": "baseline517",
+      "ordinaryGoals": 398,
+      "goalReviewLines": 398,
+      "currentGoalDecisions": 398,
+      "memoryRequired": 55,
+      "primaryCards": 73,
+      "keptWithOriginTrace": 73,
+      "memoryGoals": 7,
+      "visibilityScopes": 7,
+      "visibilityChecks": 250,
+      "missingVisibleMemory": 0,
+      "blockingIssues": 0,
+      "exitCode": 0,
+      "reportPath": "tmp/m7-resumption-20261011/b007-formula-primary-readonly/route-proof/baseline517.normal-full-scope.report.md"
+    },
+    {
+      "name": "candidate523",
+      "ordinaryGoals": 402,
+      "goalReviewLines": 398,
+      "currentGoalDecisions": 396,
+      "memoryRequired": 55,
+      "primaryCards": 73,
+      "keptWithOriginTrace": 73,
+      "memoryGoals": 7,
+      "visibilityScopes": 7,
+      "visibilityChecks": 250,
+      "missingVisibleMemory": 0,
+      "missingGoalRecords": 6,
+      "obsoleteGoalRecords": 2,
+      "staleGoalRecords": 0,
+      "missingCardRecords": 0,
+      "staleCardRecords": 0,
+      "obsoleteCardRecords": 0,
+      "exitCode": 1,
+      "expectedFailure": "New six ordinary goals have no new M verdicts yet; the two former atoms are now containers. No exception or partial scope hides this.",
+      "reportPath": "tmp/m7-resumption-20261011/b007-formula-primary-readonly/route-proof/candidate523.normal-full-scope.report.md"
+    }
+  ],
+  "commandsUsed": [
+    "npm --prefix app run quality:memory-card-review:check -- --config=tmp/m7-resumption-20261011/b007-formula-primary-readonly/route-proof/memorybaseline517.normal-route-proof.config.json --write-report",
+    "npm --prefix app run quality:memory-card-review:check -- --config=tmp/m7-resumption-20261011/b007-formula-primary-readonly/route-proof/memorycandidate523.normal-route-proof.config.json --write-report"
+  ],
+  "retainedBasicsDeck": {
+    "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+    "publicPath": "app/public/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+    "bytes": 5293,
+    "sha256": "80800812c4d08553392ed77b7ddf347b0d9febb3f2840b7fd2a84e937f3aefe3",
+    "sourceAndPublicEqual": true,
+    "topLevelFields": [
+      "deckId",
+      "title",
+      "cards"
+    ],
+    "cardFields": [
+      "id",
+      "front",
+      "back",
+      "category",
+      "tags"
+    ],
+    "frontAndBackType": "plain strings in German, not bilingual objects",
+    "cardIds": [
+      "chem_basics_001",
+      "chem_basics_002",
+      "chem_basics_003",
+      "chem_basics_004",
+      "chem_basics_005",
+      "chem_basics_006",
+      "chem_basics_007",
+      "chem_basics_008",
+      "chem_basics_009",
+      "chem_basics_010",
+      "chem_basics_011",
+      "chem_basics_012",
+      "chem_basics_013"
+    ],
+    "all13ExistingCardLedgerRecordsKept": true,
+    "copiedDeckByteExact": true
+  },
+  "futureUnpublishedPlanAfterGateAndRequiredReviews": {
+    "scope": "full root442c31c5-c561-5c7a-90bb-2335d779175c; retain visibilityScopeCoverageRequired true and all seven original visibilityScopes; no leafGoalIds shortcut",
+    "M402Recipe": {
+      "originalReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P25-protected12-source24-inactive-integration-technical-20261010-v1/memory/current398-with-actual-2fdd-Memory-successor.review.jsonl",
+      "removeFormerOrdinaryGoalIds": [
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff"
+      ],
+      "retainOther396LinesExact": true,
+      "appendSixReviewedOrdinaryGoalRecords": true,
+      "expectedNoMemoryNeeded": 345,
+      "expectedMemoryRequired": 57,
+      "expectedTotal": 402,
+      "note": "Six decisions remain future independent reviewed input; this route proof writes none."
+    },
+    "cards75Recipe": {
+      "originalCardReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/memory/current55-exact-plus18.cards.jsonl",
+      "retainAll73ExistingLinesExact": true,
+      "appendTwoNewReviewedKeptRecords": true,
+      "expectedTotal": 75,
+      "requiredFields": [
+        "schemaVersion",
+        "reviewId",
+        "ruleVersion",
+        "landscapeId",
+        "deckId",
+        "cardId",
+        "fingerprint",
+        "status",
+        "necessary",
+        "originGoalIds",
+        "reviewedAt",
+        "reviewer",
+        "reason"
+      ],
+      "fingerprintMustBind": "final normalized DE front/back, category and tags; pressure addition creates a new final volume-card fingerprint"
+    },
+    "sourceDeck15Recipe": {
+      "copy13ExistingCardsExactWithOrderAndFields": true,
+      "preserveDeckIdAndTitle": true,
+      "appendOnlyTwoGermanRows": true,
+      "newRows": [
+        {
+          "authorLocalKey": "mass_fraction_definition",
+          "id": "fec5886f-2463-5ca7-af58-0c3e17b5498b",
+          "originGoalId": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+          "deckId": "de_gymnasium_chemistry_basics_seki",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4aeced1e-15cd-58df-83f7-68e2531c2d32"
+          ]
+        },
+        {
+          "authorLocalKey": "volume_fraction_definition",
+          "id": "6ff2e974-3691-5239-9531-2aa966c8c620",
+          "originGoalId": "49d42c38-419c-5048-b7e9-860645dd122d",
+          "deckId": "de_gymnasium_chemistry_basics_seki",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:49d42c38-419c-5048-b7e9-860645dd122d"
+          ]
+        }
+      ],
+      "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+      "frontBack": "material DE strings; only agreed pressure clause added to new volume-card body",
+      "sourceReferenceFields": "Record official links in source evidence/manifest/review material; do not add unsupported fields to runtime card schema."
+    },
+    "english": "English remains separate bilingual review material. Do not wrap source front/back in {de,en}; do not create or advertise a new English basics runtime deck through vocabularySourceEn.",
+    "pressureExactDE": "bei gleicher Temperatur und gleichem Druck vor dem Mischen bestimmten",
+    "pressureExactEN": "before mixing at the same temperature and pressure",
+    "verifiedSourceFactsPath": "tmp/m7-resumption-20261011/b007-formula-primary-readonly/primary-definition-verification.json",
+    "verifiedPrimaryIupacURL": "https://iupac.org/wp-content/uploads/2019/05/IUPAC-GB3-2012-2ndPrinting-PDFsearchable.pdf",
+    "verifiedPrimaryNistURL": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+    "expectedNormalFullResultsAfterReviewedSuccessor": {
+      "ordinaryGoals": 402,
+      "primaryCards": 75,
+      "keptCards": 75,
+      "basicsCards": 15,
+      "memoryGoals": 7,
+      "deckFiles": 8,
+      "cardRowsIncludingExistingArrheniusEN": 93,
+      "visibilityScopes": 7,
+      "visibilityChecks": 256,
+      "missingVisibleMemory": 0,
+      "notes": "Predicted from unchanged source routes and proposed decisions; not yet a successful check of a402/75 successor."
+    },
+    "newOriginVisibilityPresence": [
+      {
+        "label": "Chemie Gymnasium GK (DE)",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+        "newMassOriginVisible": true,
+        "newVolumeOriginVisible": true,
+        "existingBasicsMemoryVisible": true,
+        "wouldRequireNewMemoryChecks": 2
+      },
+      {
+        "label": "Chemie Gymnasium LK (DE)",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+        "newMassOriginVisible": true,
+        "newVolumeOriginVisible": true,
+        "existingBasicsMemoryVisible": true,
+        "wouldRequireNewMemoryChecks": 2
+      },
+      {
+        "label": "Chemie Gymnasium Sek I (DE)",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+        "newMassOriginVisible": true,
+        "newVolumeOriginVisible": true,
+        "existingBasicsMemoryVisible": true,
+        "wouldRequireNewMemoryChecks": 2
+      },
+      {
+        "label": "DE-BB GK actual learner-facing CrossStage",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+        "newMassOriginVisible": false,
+        "newVolumeOriginVisible": false,
+        "existingBasicsMemoryVisible": true,
+        "wouldRequireNewMemoryChecks": 0
+      },
+      {
+        "label": "DE-BB LK actual learner-facing CrossStage",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+        "newMassOriginVisible": false,
+        "newVolumeOriginVisible": false,
+        "existingBasicsMemoryVisible": true,
+        "wouldRequireNewMemoryChecks": 0
+      },
+      {
+        "label": "DE-BE GK actual learner-facing CrossStage",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+        "newMassOriginVisible": false,
+        "newVolumeOriginVisible": false,
+        "existingBasicsMemoryVisible": true,
+        "wouldRequireNewMemoryChecks": 0
+      },
+      {
+        "label": "DE-BE LK actual learner-facing CrossStage",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+        "newMassOriginVisible": false,
+        "newVolumeOriginVisible": false,
+        "existingBasicsMemoryVisible": true,
+        "wouldRequireNewMemoryChecks": 0
+      }
+    ]
+  },
+  "trackedState": "git status --short was empty after normal route proof; original canonical and author candidate inputs retain recorded digests",
+  "humanApproval": false,
+  "humanTrial": false,
+  "legalApproval": false
+}

@@ -1,0 +1,32 @@
+# Lernzielvisualisierung: Ekelreaktionen beim Umgang mit Naturobjekten reflektieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `55036b74-af78-5217-9e43-c5bdc975c958`
+- Titel: Ekelreaktionen beim Umgang mit Naturobjekten reflektieren
+- Beschreibung: Die lernende Person kann Ekelreaktionen beim Umgang mit Naturobjekten anhand eines beschriebenen Beispiels reflektieren und dabei den auslösenden Eindruck, seinen Einfluss auf Beobachtung oder Handeln sowie eine begründete Umgangsmöglichkeit aufeinander beziehen.
+
+## Generator
+
+- Provider: OpenAI image_gen (Codex built-in)
+- Status: pilot
+- Quellbild: `55036b74-af78-5217-9e43-c5bdc975c958.png`
+- Public Asset: `/assets/goal-visualizations/biologie/55036b74-af78-5217-9e43-c5bdc975c958/55036b74-af78-5217-9e43-c5bdc975c958.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational
+Asset type: Biologie-Lernzielillustration für Gymnasium Sekundarstufe I, Deutschland.
+Primary request: Eine freundliche, fachlich korrekte Comicillustration zeigt ein frei erfundenes Beispiel: Eine Jugendliche bemerkt beim Betrachten eines Regenwurms ein unangenehmes Gefühl, denkt über dessen Wirkung auf ihre Beobachtung nach und entscheidet sich, das Tier mit Abstand zu beobachten. Keine Aufforderung an Betrachtende, sich selbst einem Ekelreiz auszusetzen oder private Gefühle zu berichten.
+Format: PNG, quer ungefähr 16:9, etwa 1600 × 900 Pixel oder nahe native Generatorgröße.
+Style/medium: klare warme handgezeichnete Comicillustration, leicht abstrahiert, weiche Farben, markante dunkle Konturen, freundliche zurückhaltende Gesichter, viel ruhiger heller Hintergrund. Passend zu vorhandenen schulischen Biologiezeichnungen; keine Fotorealistik oder sterile technische Infografik.
+Composition/framing: Zwei große, durch ausreichend Weißraum getrennte Bildteile. Links dieselbe Jugendliche in einem Garten nahe einer feuchten Laubstelle, mit leicht zurückgenommenem Oberkörper und einem kleinen nachdenklichen Gesichtsausdruck; ein normaler kleiner Regenwurm liegt am Boden neben einem Blatt. Sie fasst das Tier nicht an. Rechts dieselbe Jugendliche bleibt in angenehmem Abstand, schaut aufmerksam zum gleichen Regenwurm an derselben Laubstelle und denkt über ihre Beobachtung nach. Der Regenwurm bleibt am Boden und wird nicht verletzt, herumgereicht oder verniedlicht. Beide Bildteile zeigen Gefühl und gewählte Handlung, nicht medizinische Diagnose oder einen Zwang, Ekel zu überwinden.
+Text (verbatim): Links eine einzige große gut lesbare Sprech-/Gedankenblase: „Das ist mir unangenehm.“ Rechts eine einzige große gut lesbare Gedankenblase: „Ich beobachte mit Abstand.“ Keine weiteren Wörter, Zahlen oder Beschriftungen.
+Scientific constraints: Regenwurm als plausibles langes, weiches, segmentiertes Tier ohne Beine und ohne Comicgesicht. Ekel ist eine subjektive Reaktion der dargestellten Person, kein wissenschaftliches Merkmal des Regenwurms und keine Aussage über Giftigkeit, Krankheit oder Gefährlichkeit. Abstand ist eine mögliche begründete Umgangsweise im dargestellten Beispiel, keine allgemeine Pflicht und kein Nachweis eines Lernfortschritts. Die zweite Szene darf weiterhin etwas Zurückhaltung zeigen; kein triumphant überwundener Ekel. Keine Desinfektion, Schutzanzüge oder unzutreffende Gefahrenzeichen. Keine Hände am Tier, kein Essen, kein Schleimmonster, keine offenen Verletzungen.
+Legibility: Hauptfigur, Regenwurm und gewählter Abstand müssen auch bei 360 Pixel Bildbreite klar erkennbar sein. Die zwei kurzen Texte in sehr großer dunkler handschriftähnlicher Schrift auf hellen großen Blasen, ohne Kleinschrift oder überfüllte Panels. Keine Hefte oder Messskalen notwendig. Keine Logos, Wasserzeichen oder technischen IDs. Keine Bildrahmen, die zentrale Details beschneiden.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

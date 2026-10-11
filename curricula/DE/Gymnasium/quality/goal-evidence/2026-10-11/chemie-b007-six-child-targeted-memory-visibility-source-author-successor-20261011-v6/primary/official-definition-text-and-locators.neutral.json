@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "role": "Official primary locators and raw text only; no card or necessity assessment",
+  "sources": {
+    "iupacGreenBook3": {
+      "url": "https://iupac.org/wp-content/uploads/2019/05/IUPAC-GB3-2012-2ndPrinting-PDFsearchable.pdf",
+      "status": 200,
+      "bytes": 1543264,
+      "sha256": "dc9cf52d6cf333d58ba48546baba0e8f99d6650895daa886caf1543eea8352ed",
+      "retrievedAtUTC": "2026-10-11T00:53:57.551557+00:00",
+      "bodySaved": false,
+      "priorAccessSha256": "dc9cf52d6cf333d58ba48546baba0e8f99d6650895daa886caf1543eea8352ed"
+    },
+    "nistSiGuide8": {
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "status": 200,
+      "bytes": 116833,
+      "sha256": "1c6b3fcc6f5fb211255ebe8e7eea8c160e37a73c86f4aff6bdfbb78b1d70951d",
+      "retrievedAtUTC": "2026-10-11T00:53:58.592821+00:00",
+      "bodySaved": false,
+      "priorAccessSha256": "6856fcce2f378d682f5de7294e53c14c2c5e2e3ae469252f16ca701980599af9"
+    }
+  },
+  "rawRows": [
+    {
+      "sourceKey": "iupacGreenBook3",
+      "printedPage": 47,
+      "pdfPageNumber1Based": 61,
+      "exactTableLabel": "mass fraction",
+      "tableFormulaTranscription": "w_B = m_B / Σ_i m_i",
+      "tableSIUnit": "1"
+    },
+    {
+      "sourceKey": "iupacGreenBook3",
+      "printedPage": 48,
+      "pdfPageNumber1Based": 62,
+      "exactTableLabel": "volume fraction",
+      "tableFormulaTranscription": "φ_B = V_B / Σ_i V_i",
+      "tableSIUnit": "1",
+      "note9ExactExcerpt": "the volumes of appropriate components prior to mixing"
+    },
+    {
+      "sourceKey": "nistSiGuide8",
+      "section": "8.6.6 Volume fraction of B",
+      "exactExcerpt": "at the same temperature and pressure",
+      "definitionFormulaRawMathJax": "\\varphi_{\\rm B} = x_{\\rm B} V_{\\rm m,B}^* /\\sum x_{\\rm A} V_{\\rm m,A}^*"
+    }
+  ],
+  "sourceRights": "Official source rights separate; bounded evidentiary excerpts, no full official bodies in candidate",
+  "humanApproval": false
+}

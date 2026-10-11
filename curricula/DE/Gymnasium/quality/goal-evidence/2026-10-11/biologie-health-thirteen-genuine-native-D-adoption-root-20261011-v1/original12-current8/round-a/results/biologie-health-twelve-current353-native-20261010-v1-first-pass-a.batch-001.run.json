@@ -1,0 +1,65 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+  "campaignId": "biologie-health-twelve-current353-native-20261010-v1-a",
+  "roundId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a",
+  "batchId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:8480f48af372b14c4023c9a5e90222e7e3bdda11ca9c4b3e22dd4b943e80dbd4",
+  "bundleFingerprint": "sha256:aeb82cc2ad664ae910d3df0d724d7ff1d48000a15bf995945cdd51952a312d58",
+  "bookDigest": "sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6 Codex; precise runtime revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:331da999c58f31454fd103901e5917a5a491763c814d36d569dcf3ca9c77fe2a",
+  "independenceGroupId": "biologie-health-twelve-current353-native-20261010-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "63856e48-8ed9-5942-8a1d-1d53ad29416d",
+    "6add2bde-b647-577d-a899-6fd62497656a",
+    "6de6ad3b-1099-5f51-848d-96de4119ed01",
+    "91f62a7b-3b6a-5918-94ca-3f345f1f6584",
+    "3c0f5267-4837-5c99-aa6d-bfb41ff70980",
+    "a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+    "848334f3-c719-55d9-b5f4-42836e0d876a",
+    "17dc9671-3280-566c-b9ec-27437864e0ab",
+    "a6f57e17-9f0c-5327-91bc-c6f31ff375a2",
+    "773a297d-49bf-5c8a-a62a-1bd2558e323c",
+    "0e1065b9-9d1d-5299-b900-32c74d352e56",
+    "d6727804-a8d4-5438-9b98-4aea8e7f4f80"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8480f48af372b14c4023c9a5e90222e7e3bdda11ca9c4b3e22dd4b943e80dbd4"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:73cb9b22a2d4da280e6bd322ba5e11683552ae914296b9debc690d8531c23d32"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:2ebc0e46e5a190c33db865e140d716dc4366739d2f276b57ec1dcd495b3ded81"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ff632591f2063be4e1f0af46f3b92e4ca2930468002b98924f7aaf1b1a2b1b15"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    }
+  ],
+  "startedAt": "2026-10-10T14:17:58.884137+00:00",
+  "completedAt": "2026-10-10T17:05:38.387455+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:5dddece81dccd32e200cc10165e76b5b6abce3305008ac1e9266314c25b5140d",
+  "toolchainVersion": "goal-description-understanding-evidence-v2"
+}

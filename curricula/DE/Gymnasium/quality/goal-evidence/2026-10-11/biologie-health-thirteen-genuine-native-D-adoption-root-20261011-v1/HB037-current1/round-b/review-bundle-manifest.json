@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:2fe963961ccb80dd64a25930818b86ed82868b641cb3dd82db437cfb62bae689",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "biologie-hb037-one-current-image-native-final-20261011-v2",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "55036b74-af78-5217-9e43-c5bdc975c958",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:bccf74ae6020a1fe2945a6336d905e98f3dd5e45d5481ad9aca334e986feca1b",
+      "pageFingerprint": "sha256:9f49b339affac8e861f036b0db28ca898e9d06bac8305df6b136198c1b69198e",
+      "evidenceReview": {
+        "reviewId": "biologie-hb037-current-image-native-technical-author-20261011-v2",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:f271d2d3b0e080440378e0d1670a95aded3b4cbcc8197b96eea3403421f0fcbb",
+        "profileFingerprint": "sha256:8617963546e774ddc43f267f548a947eb16a11d85ea325097ec246329ba73cc8",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:aa3a9690337a61f9c055d79bb851c1fc30d72ab3b6b63ee8a921c8d559e83de4",
+      "bytes": 224904
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:cd72fa0333f1de3631d620658dc83beb354df53d24ef9305e430d305a853fbdf",
+      "bytes": 2547193
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:63d55e2fb7ee17c8d56131ca69df9e231a50308488dee4c940de9b906c2c5884",
+      "bytes": 2779
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:0449fd3658a5548a641d4c7be950ba8cd772cb4767990f20d12c3e4a6abb5e55",
+      "bytes": 17595
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:3f7208f2716f23acdc12b08d9f8965b2bc77b70ce3d343e5a390c4e4beade25a",
+      "bytes": 2780
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:f1b691918b7f0833537555abb41d548ecbebbcc5a4ebd7ef3c9498bf08b451ac",
+      "bytes": 17603
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:0847f245d629fda203262b7a167bc21e64b2c8edece33464cb9aee22a36b3a29",
+      "bytes": 15451
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:46c171b82c2685f7b68766f053a9678cb89fdd7b51362a43e784d2b38d8ae2fb",
+      "bytes": 13392
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:926d046eea030d1b1cd80cca0849383697f092fb3401f7c6b73ae785bf98b06c"
+}

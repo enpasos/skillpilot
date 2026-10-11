@@ -1,0 +1,27 @@
+# Lernzielvisualisierung: Stoffbezogene Schutzmaßnahmen begründen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `4b6d1824-20e4-597e-b639-fae401f740f0`
+- Titel: Stoffbezogene Schutzmaßnahmen begründen
+- Beschreibung: Die lernende Person kann für eine vorgegebene chemische Tätigkeit aus Stoffgefahren und Arbeitsplatzbedingungen passende Schutzmaßnahmen begründen.
+
+## Generator
+
+- Provider: OpenAI / Codex built-in image_gen
+- Status: pilot
+- Quellbild: `4b6d1824-20e4-597e-b639-fae401f740f0.png`
+- Public Asset: `/assets/goal-visualizations/chemie/4b6d1824-20e4-597e-b639-fae401f740f0/4b6d1824-20e4-597e-b639-fae401f740f0.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational.
+Create ONE brand-new PNG learning-goal orientation illustration, landscape about 16:9 and about 1600 x 900 pixels (near native generator size is fine). This is an approachable German school chemistry cartoon, not an assessment or a worked task. Use friendly, clear, abstract comic drawing: thick softly rounded navy outlines, large coherent objects, pale blue and cream background, gentle peach/lilac/teal accents, subtle soft shading, very large rounded dark lettering. Keep the existing friendly school-chemistry image language; no photorealism, no sterile technical dashboard. Objects and the few important words must remain clear when the entire image is displayed at 360 pixels wide and at 680 pixels wide. Keep generous spacing; no small footnotes, dense legends, decorative pseudo-writing, crowded apparatus, technical IDs, logos or watermarks. Only the exact short German text specified below may appear. Draw the actual science correctly; do not let correct text cover a wrong drawing. If people read or write, orient their notes/instruments for the person using them, with a coherent viewpoint.
+Primary idea: choose a protective measure that fits a concrete workplace hazard, not a generic shopping list of lab equipment.
+Composition: two large equally spaced comic mini-scenes under the exact heading "Gefahr → Schutz". LEFT: a simple stylized splash/droplet symbol outside any person's eyes, followed by a clear arrow to a friendly learner's face wearing properly enclosed protective goggles. Large words "Spritzer" and "Schutzbrille" label the hazard and the protection. RIGHT: a flask with a light abstract vapor wisp entirely inside a correctly drawn laboratory fume hood, behind its lowered front sash, with gentle airflow pointing inward into the hood, away from the room. Large words "Dämpfe" and "Abzug". No person inhales fumes or handles a hazardous flask outside the hood. The pictures depict hazard-matched prevention, not a live procedure. No flames, no respirator substitution, no gloves-as-universal-protection claim, no invented chemical hazard diamonds. Give each pair a single unambiguous left-to-right relationship. Spell every umlaut correctly.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

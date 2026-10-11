@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "reviewerRunId": "chemie-b007-six-plus-eight-genuine-independent-b-20261011-v1",
+  "wholeDEDeckPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-full-memory-source-author-successor-20261011-v5/memory/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+  "wholeDEDeckSha256": "sha256:ef205542d0e3ca9b644005f975eb9d9277942540eabcc089c8b192114f0de583",
+  "wholeDEDeckCardsInspected": 15,
+  "old73CardReviews": "retained; this review does not replace historical whole-card decisions",
+  "records": [
+    {
+      "cardId": "fec5886f-2463-5ca7-af58-0c3e17b5498b",
+      "decision": "kept",
+      "scientificDecision": "definition accurate",
+      "necessityDecision": "memory_required for its single originating fraction goal",
+      "originGoalIds": [
+        "4aeced1e-15cd-58df-83f7-68e2531c2d32"
+      ],
+      "rationale": "Ein präziser einzelner Definitionsabruf, identischer Begriff und Nenner in DE/EN; Gesamtmasse enthält auch die betrachtete Komponente.",
+      "actualBody": {
+        "cardLocalKey": "mass_fraction_definition",
+        "cardId": "fec5886f-2463-5ca7-af58-0c3e17b5498b",
+        "originGoalId": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+        "front": {
+          "de": "Wie ist der Massenanteil wᵢ eines Bestandteils i definiert?",
+          "en": "How is a constituent’s mass fraction wᵢ defined?"
+        },
+        "back": {
+          "de": "wᵢ = mᵢ / Σmⱼ. Der Nenner ist die Gesamtmasse aller Bestandteile des Gemisches, einschließlich i. Der Anteil ist dimensionslos; Prozentangabe = 100 · wᵢ %.",
+          "en": "wᵢ = mᵢ / Σmⱼ. The denominator is the total mass of all mixture constituents, including i. The fraction is dimensionless; percentage = 100 · wᵢ %."
+        },
+        "deckId": "de_gymnasium_chemistry_basics_seki",
+        "memoryGoalIds": [
+          "1e372b97-6f1c-596c-8a8b-fc03193d784a"
+        ],
+        "sourceReference": "https://goldbook.iupac.org/terms/view/M03722",
+        "verifiedPrimaryDefinitionFacts": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-full-memory-source-author-successor-20261011-v5/primary/primary-definition-verification.actual.json",
+        "recordStatus": "ai_candidate",
+        "validationStatus": "needs_human_review",
+        "independentCardReviewStatus": "pending",
+        "actualVisibilityReviewStatus": "pending",
+        "humanApproval": false
+      },
+      "deploymentBindingDecision": "HOLD until visible support is authored in the actual affected scope"
+    },
+    {
+      "cardId": "6ff2e974-3691-5239-9531-2aa966c8c620",
+      "decision": "kept",
+      "scientificDecision": "definition accurate",
+      "necessityDecision": "memory_required for its single originating fraction goal",
+      "originGoalIds": [
+        "49d42c38-419c-5048-b7e9-860645dd122d"
+      ],
+      "rationale": "Ein präziser einzelner Definitionsabruf, identischer Begriff und Nenner in DE/EN; Komponentenvolumina vor dem Mischen, gleiche Temperatur und gleicher Druck, kein Endvolumen-Nenner.",
+      "actualBody": {
+        "cardLocalKey": "volume_fraction_definition",
+        "cardId": "6ff2e974-3691-5239-9531-2aa966c8c620",
+        "originGoalId": "49d42c38-419c-5048-b7e9-860645dd122d",
+        "front": {
+          "de": "Wie ist der Volumenanteil φᵢ eines Bestandteils i definiert? Welche Volumina stehen im Nenner?",
+          "en": "How is a constituent’s volume fraction φᵢ defined? Which volumes form its denominator?"
+        },
+        "back": {
+          "de": "φᵢ = Vᵢ / ΣVⱼ mit den bei gleicher Temperatur und gleichem Druck vor dem Mischen bestimmten Bestandteilsvolumina. Der Nenner ist deren Summe, auch wenn das gemessene Endvolumen abweicht. Der Anteil ist dimensionslos; Prozentangabe = 100 · φᵢ %.",
+          "en": "φᵢ = Vᵢ / ΣVⱼ using constituent volumes determined before mixing at the same temperature and pressure. Their sum is the denominator even if measured final volume differs. The fraction is dimensionless; percentage = 100 · φᵢ %."
+        },
+        "deckId": "de_gymnasium_chemistry_basics_seki",
+        "memoryGoalIds": [
+          "1e372b97-6f1c-596c-8a8b-fc03193d784a"
+        ],
+        "sourceReference": "https://goldbook.iupac.org/terms/view/V06643",
+        "verifiedPrimaryDefinitionFacts": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-full-memory-source-author-successor-20261011-v5/primary/primary-definition-verification.actual.json",
+        "recordStatus": "ai_candidate",
+        "validationStatus": "needs_human_review",
+        "independentCardReviewStatus": "pending",
+        "actualVisibilityReviewStatus": "pending",
+        "humanApproval": false
+      },
+      "deploymentBindingDecision": "HOLD until visible support is authored in the actual affected scope"
+    }
+  ],
+  "primaryDefinitions": [
+    {
+      "url": "https://goldbook.iupac.org/terms/view/M03722",
+      "accessMethod": "actual web tool primary search-rendered definition; direct HTTP request blocked with 403",
+      "judgment": "total mass of every constituent, including the selected one"
+    },
+    {
+      "url": "https://goldbook.iupac.org/terms/view/V06643",
+      "accessMethod": "actual web tool primary search-rendered definition; direct HTTP request blocked with 403",
+      "judgment": "sum of constituent volumes before mixing; final mixture volume is not the denominator"
+    }
+  ],
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false
+}

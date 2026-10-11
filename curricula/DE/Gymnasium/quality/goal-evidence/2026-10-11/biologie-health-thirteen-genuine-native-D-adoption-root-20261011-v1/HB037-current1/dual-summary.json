@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:926d046eea030d1b1cd80cca0849383697f092fb3401f7c6b73ae785bf98b06c",
+  "reviewInputFingerprint": "sha256:482814c654b18d8203f40a5d9665e72feccda828a01eb415eae6e90fc946aa3f",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-hb037-clean-whole-genuine-independent-a-20261011-v3-D",
+      "roundId": "hb037-clean-a-round",
+      "independenceGroupId": "hb037-clean-raw-a",
+      "runIds": [
+        "biologie-hb037-clean-whole-genuine-independent-a-20261011-v3-D-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-hb037-clean-raw-independent-b-20261011-v2",
+      "roundId": "biologie-hb037-clean-raw-b-round",
+      "independenceGroupId": "hb037-clean-raw-genuine-independent-b-20261011-v2",
+      "runIds": [
+        "hb037-clean-independent-b-description-run-20261011-v2"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "55036b74-af78-5217-9e43-c5bdc975c958",
+      "firstRecordId": "biologie-hb037-clean-whole-genuine-independent-a-20261011-v3-D-record",
+      "secondRecordId": "hb037-clean-independent-b-description-run-20261011-v2.55036b74-af78-5217-9e43-c5bdc975c958",
+      "firstRunId": "biologie-hb037-clean-whole-genuine-independent-a-20261011-v3-D-run",
+      "secondRunId": "hb037-clean-independent-b-description-run-20261011-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

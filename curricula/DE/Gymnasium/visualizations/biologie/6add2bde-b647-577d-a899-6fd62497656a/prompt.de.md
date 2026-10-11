@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Sexuelle Selbstbestimmung und Medienbilder beurteilen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `6add2bde-b647-577d-a899-6fd62497656a`
+- Titel: Sexuelle Selbstbestimmung und Medienbilder beurteilen
+- Beschreibung: Die lernende Person kann Verhaltensweisen mit Blick auf sexuelle Selbstbestimmung, persönliche Würde und freie Entfaltung beurteilen und mediale Rollen-, Körper- und Sexualitätsbilder kritisch hinterfragen.
+
+## Generator
+
+- Provider: OpenAI builtin imagegen
+- Status: candidate
+- Quellbild: `6add2bde-b647-577d-a899-6fd62497656a.png`
+- Public Asset: `/assets/goal-visualizations/biologie/6add2bde-b647-577d-a899-6fd62497656a/6add2bde-b647-577d-a899-6fd62497656a.png`
+
+## Prompt
+
+```text
+Use case: precise-object-edit. Asset type: friendly abstract educational comic PNG for a school learning goal on self-determination, dignity and critically questioning media images. Image 1 is the exact edit target. Preserve the existing warm cream / teal / coral comic illustration, landscape ratio near 16:9 and native size around 1672x941. Keep the two fully clothed young adults, central open-hand boundary gesture, kind attentive friend with respectful distance, heart/shield symbol, sofa, ordinary diverse appearances and the main tablet/composition. Keep the friendly clear dark outlines, rounded shapes and few large motifs. Targeted correction: remove the entire small wastebasket and all crossed-out or discarded human body/face pictures on the left. No human portrait or body anywhere is crossed out, discarded, ranked or ridiculed. Replace that small lower-left cluster with ONE clear large symbolic media-pressure process: an abstract editing-controls panel with three big sliders and a crop-frame icon (without a human inside), leading into a coral pressure arrow toward the main young adult; a small matching open-palm boundary icon stops the ARROW, not a person. Put the single large clear German word "Druck" on this process panel. The remaining upper-left advertisement portraits may remain respectfully portrayed, but avoid bare torsos: show ordinary fully clothed people, with editing-frame/crop handles around the surrounding media panel rather than marks on their bodies. The main tablet still shows a respectful fully clothed portrait beside broad editing sliders, not an ideal-versus-bad body comparison. Keep privacy/respect as in the original. Ensure criticism visibly targets editing/pressure, never real bodies. No new bins, no X marks anywhere, no bodies on the floor, no intimate actions, no stigmatizing anatomy, no unrelated restyling, no photorealism, no sterile technical style, no small mandatory text, no notebook. At 360px phone width and 680px PC width the boundary gesture and respectful friend must remain the main readable motif and the pressure/process correction must be recognizable.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

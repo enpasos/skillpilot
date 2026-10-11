@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "reviewerRunId": "chemie-b007-six-plus-eight-genuine-independent-b-20261011-v1",
+  "independentFIRST": true,
+  "decisions": {
+    "descriptionKeeps": 14,
+    "wholeProfileKeeps": 14,
+    "atomicityKeeps": 6,
+    "memoryRequired": 2,
+    "noMemoryNeeded": 4,
+    "newCardsScientificallyKept": 2,
+    "imagesScientificallyKept": 6
+  },
+  "holds": [
+    {
+      "id": "B-MEMORY-SCOPE",
+      "status": "HOLD",
+      "goals": [
+        "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+        "49d42c38-419c-5048-b7e9-860645dd122d"
+      ],
+      "supportGoalId": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+      "carriers": [
+        "de-gym-chemie-bundesweit-source-de-he-seki",
+        "b007-v4-inactive-source-atlas"
+      ],
+      "reason": "Both independently memory-required origins are visible but their support goal is absent from the actual compiled rooted tree. Updating the deck body alone cannot make its support visible.",
+      "existingRuntimePaths": [
+        "app/src/utils/compositionViewRuntime.ts:860",
+        "app/src/utils/learnerTreeProjection.ts:332",
+        "app/src/hooks/useAppCore.ts:718",
+        "app/scripts/generateCurriculumQualityStatus.ts:3055",
+        "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java"
+      ],
+      "normalCheckerObservation": "collectMemoryVisibilityReport checks actual authored target references and requires a referenced visible memory node. No automatic memory supplement was found in the runtime/backend composition paths."
+    },
+    {
+      "id": "B-SOURCE-TH-LK-COLUMN",
+      "status": "HOLD",
+      "detailRef": "FIRST/source-and-placement-scientific-observations.json"
+    },
+    {
+      "id": "B-SOURCE-TH-ION-LISTS",
+      "status": "HOLD",
+      "detailRef": "FIRST/source-and-placement-scientific-observations.json"
+    },
+    {
+      "id": "B-SOURCE-NW-LOCATOR",
+      "status": "HOLD source locator",
+      "detailRef": "FIRST/source-and-placement-scientific-observations.json"
+    }
+  ],
+  "secondaryObservations": [
+    {
+      "id": "B-NEUTRAL-INVENTORY",
+      "status": "auxiliary input mismatch recorded",
+      "detailRef": "FIRST/fourteen-whole-normal-page-observations.json"
+    },
+    {
+      "id": "B-TRANSFER-NUMBER-ONLY",
+      "status": "boundary recorded; full additive→contraction pair supports profile",
+      "reason": "Do not count the30/70/97 variation by itself as independent conceptual transfer."
+    }
+  ],
+  "outcome": "HOLD for current complete Memory/source/projection package; no overall clearance from accurate bounded D/P/A/image/card bodies",
+  "humanApproval": false,
+  "humanTrial": false,
+  "approved": 0,
+  "strictGain": 0
+}
