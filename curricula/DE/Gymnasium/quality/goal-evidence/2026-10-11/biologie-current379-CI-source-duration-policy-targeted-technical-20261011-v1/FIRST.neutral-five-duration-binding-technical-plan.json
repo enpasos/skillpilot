@@ -1,0 +1,264 @@
+{
+  "status": "candidate-awaiting-independent-technical-review",
+  "changePurpose": "Bind five already reviewed duration decisions to exact current Bio8 component paths and regenerate the normal readiness report",
+  "activePolicyPath": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+  "reportPath": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+  "beforePolicySha256": "1bfb4a8fb052c9b0427719fb3d87206b1312e5e296e06fcf7f12e9b830c70c00",
+  "newDecisionCount": 5,
+  "scientificCompletions": 0,
+  "humanApproval": false,
+  "rows": [
+    {
+      "jurisdiction": "DE-BY",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/source-components/DE_BY_BIOLOGIE_BIO8_CURRENT397_REVIEWED_20261011_V6.source-extraction.json",
+      "componentSha256": "d922913af400157d5f5ccfc7b1949550f755ac692b01f1813ce0d9d3ee32bc38",
+      "parentSourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "parentSha256": "6775fd09b34fef380f9b6b4cca181a6b6cfdb1c83c2278a803bf2c0e317b702d",
+      "retainedSourceGoalIDs": 222,
+      "sourceTextTitleDescriptionTagsRawTextRetained": true,
+      "nonSubstantiveLocatorDifferencesOnly": true,
+      "sourceDocumentFieldDifferences": [],
+      "sourceDocuments": [
+        {
+          "role": "component",
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+          "key": "LEHRPLANPLUS_BIOLOGIE_GYMNASIUM",
+          "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologie",
+          "sha256": "6c99c5a678acbbe4465af44eaa762109459f1a2acf67580533646f7d1af27480",
+          "bytes": 216893
+        },
+        {
+          "role": "parent",
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+          "key": "LEHRPLANPLUS_BIOLOGIE_GYMNASIUM",
+          "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologie",
+          "sha256": "6c99c5a678acbbe4465af44eaa762109459f1a2acf67580533646f7d1af27480",
+          "bytes": 216893
+        }
+      ],
+      "existingReviewedDecision": {
+        "subject": "Biologie",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI+SekII",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "status": "reviewed",
+        "decision": "single-duration-source",
+        "durationModels": [
+          "G9"
+        ],
+        "learnerFacingProjection": "duration-neutral-composition-view",
+        "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+      },
+      "componentStage": "SekI+SekII",
+      "parentStage": "SekI+SekII",
+      "technicalContinuationOnly": true,
+      "newScientificCompletions": 0,
+      "humanApproval": false
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/source-components/DE_MV_BIOLOGIE_BIO8_CURRENT397_REVIEWED_20261011_V6.source-extraction.json",
+      "componentSha256": "3bcbade6fe9215245cdc4456a270a4fc473f3aba05b1d4ff9ee3c7f43e8158db",
+      "parentSourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_BIOLOGIE_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "parentSha256": "26e28dbfbf17694ea9caf5ea88da2072c16a09f5f55aa9ad50fe16144100f367",
+      "retainedSourceGoalIDs": 12,
+      "sourceTextTitleDescriptionTagsRawTextRetained": true,
+      "nonSubstantiveLocatorDifferencesOnly": true,
+      "sourceDocumentFieldDifferences": [
+        "path"
+      ],
+      "sourceDocuments": [
+        {
+          "role": "component",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-sexuality-addiction-twelve-whole-material-raster-source-author-candidate-v1/primary/DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022/bundle/book.pdf",
+          "key": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+          "url": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_BIO_Gym_Ges_7-10.pdf",
+          "sha256": "aa350433c07b6705d38a0673a3e9007574263aaf46617adbcdf45616aa2e37cd",
+          "bytes": 1861414
+        },
+        {
+          "role": "parent",
+          "path": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+          "key": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+          "url": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_BIO_Gym_Ges_7-10.pdf",
+          "sha256": "aa350433c07b6705d38a0673a3e9007574263aaf46617adbcdf45616aa2e37cd",
+          "bytes": 1861414
+        }
+      ],
+      "existingReviewedDecision": {
+        "subject": "Biologie",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_BIOLOGIE_SEKI_RAHMENPLAN_2022.source-extraction.json",
+        "status": "reviewed",
+        "decision": "single-duration-source",
+        "durationModels": [
+          "G8"
+        ],
+        "learnerFacingProjection": "duration-neutral-composition-view",
+        "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+      },
+      "componentStage": "Sekundarstufe I",
+      "parentStage": "Sekundarstufe I",
+      "technicalContinuationOnly": true,
+      "newScientificCompletions": 0,
+      "humanApproval": false
+    },
+    {
+      "jurisdiction": "DE-RP",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/source-components/DE_RP_BIOLOGIE_BIO8_CURRENT397_REVIEWED_20261011_V6.source-extraction.json",
+      "componentSha256": "71ff4e9c799db9811cba2fbedb118039a16d3c64f11b8845768e579ea80be24c",
+      "parentSourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_BIOLOGIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+      "parentSha256": "4b57178f2248d4c717dd10e4c82aae0a9f3ebaa9b267a0eb169bc63280c29f27",
+      "retainedSourceGoalIDs": 48,
+      "sourceTextTitleDescriptionTagsRawTextRetained": true,
+      "nonSubstantiveLocatorDifferencesOnly": true,
+      "sourceDocumentFieldDifferences": [
+        "path"
+      ],
+      "sourceDocuments": [
+        {
+          "role": "component",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-sexuality-addiction-twelve-whole-material-raster-source-author-candidate-v1/primary/RP-BIO-SEKI-2014/bundle/book.pdf",
+          "key": "RP-BIO-SEKI-2014",
+          "url": "https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Bitem%5D=56515&type=432522",
+          "sha256": "307f5d841072a1a34d846554c7397c9b8355a9c05d49c8c223ccd9c64d877350",
+          "bytes": 17378996
+        },
+        {
+          "role": "parent",
+          "path": "curricula/DE/Gymnasium/input/RP/Chemie_Sekundarstufe_I_Biologie_Physik_Chemie_2014.pdf",
+          "key": "RP-BIO-SEKI-2014",
+          "url": "https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Bitem%5D=56515&type=432522",
+          "sha256": "307f5d841072a1a34d846554c7397c9b8355a9c05d49c8c223ccd9c64d877350",
+          "bytes": 17378996
+        }
+      ],
+      "existingReviewedDecision": {
+        "subject": "Biologie",
+        "jurisdiction": "DE-RP",
+        "stage": "SekI",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_BIOLOGIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+        "status": "reviewed",
+        "decision": "duration-neutral-projection",
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "learnerFacingProjection": "duration-neutral-composition-view",
+        "rationale": "The local BCP 2014 source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+      },
+      "componentStage": "SekI",
+      "parentStage": "SekI",
+      "technicalContinuationOnly": true,
+      "newScientificCompletions": 0,
+      "humanApproval": false
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/source-components/DE_SN_BIOLOGIE_BIO8_CURRENT397_REVIEWED_20261011_V6.source-extraction.json",
+      "componentSha256": "3a76858d49c5279d7d07a8c150a44ae40b9ec9b6eb9536f452ee3db246d966ce",
+      "parentSourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "parentSha256": "593dacb69dbbc7125891cff661e73fc30413e653c147986923e4f888dbc8189a",
+      "retainedSourceGoalIDs": 10,
+      "sourceTextTitleDescriptionTagsRawTextRetained": true,
+      "nonSubstantiveLocatorDifferencesOnly": true,
+      "sourceDocumentFieldDifferences": [
+        "path"
+      ],
+      "sourceDocuments": [
+        {
+          "role": "component",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-82ac-nine-lower-jurisdictions-and-SN-ST-digital-prerequisite-source-author-v1/primary/SN-whole-current.original.pdf",
+          "key": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+          "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/522/OF2Vfum2JVmFeuc2FOuf",
+          "sha256": "bde9c7af4c25fe1c6346abcb544626514a9e5c1d6c2528b2764df15430156252",
+          "bytes": 1091433
+        },
+        {
+          "role": "parent",
+          "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+          "key": "DE-SN-BIOLOGIE-GYMNASIUM-LEHRPLAN-2025",
+          "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/522/OF2Vfum2JVmFeuc2FOuf",
+          "sha256": "bde9c7af4c25fe1c6346abcb544626514a9e5c1d6c2528b2764df15430156252",
+          "bytes": 1091433
+        }
+      ],
+      "existingReviewedDecision": {
+        "subject": "Biologie",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+        "status": "reviewed",
+        "decision": "single-duration-source",
+        "durationModels": [
+          "G8"
+        ],
+        "learnerFacingProjection": "duration-neutral-composition-view",
+        "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+      },
+      "componentStage": "Sekundarstufe I",
+      "parentStage": "Sekundarstufe I",
+      "technicalContinuationOnly": true,
+      "newScientificCompletions": 0,
+      "humanApproval": false
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/source-components/DE_TH_BIOLOGIE_BIO8_CURRENT397_REVIEWED_20261011_V6.source-extraction.json",
+      "componentSha256": "f374223d085a939994803fb43d5d71ca86005631b3472e3c2314167123223635",
+      "parentSourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "parentSha256": "fdea9c62543d325fe20fc1cda2136b7359ee2fa1098e0745963986c3dd133f86",
+      "retainedSourceGoalIDs": 8,
+      "sourceTextTitleDescriptionTagsRawTextRetained": true,
+      "nonSubstantiveLocatorDifferencesOnly": true,
+      "sourceDocumentFieldDifferences": [
+        "path"
+      ],
+      "sourceDocuments": [
+        {
+          "role": "component",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-sexuality-addiction-twelve-whole-material-raster-source-author-candidate-v1/primary/DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024/bundle/book.pdf",
+          "key": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+          "url": "https://www.schulportal-thueringen.de/tip/resources/medien/63705?dateiname=Biologie_Lehrplan_AHR_2024-11-13.pdf",
+          "sha256": "d77b5661a184aa01d5ce4475f9a040fbb793f2bf34b9a2fb54d7d3edf5875138",
+          "bytes": 1429080
+        },
+        {
+          "role": "parent",
+          "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+          "key": "DE-TH-BIOLOGIE-GYMNASIUM-LEHRPLAN-2024",
+          "url": "https://www.schulportal-thueringen.de/tip/resources/medien/63705?dateiname=Biologie_Lehrplan_AHR_2024-11-13.pdf",
+          "sha256": "d77b5661a184aa01d5ce4475f9a040fbb793f2bf34b9a2fb54d7d3edf5875138",
+          "bytes": 1429080
+        }
+      ],
+      "existingReviewedDecision": {
+        "subject": "Biologie",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+        "status": "reviewed",
+        "decision": "single-duration-source",
+        "durationModels": [
+          "G8"
+        ],
+        "learnerFacingProjection": "duration-neutral-composition-view",
+        "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+      },
+      "componentStage": "Sekundarstufe I",
+      "parentStage": "Sekundarstufe I",
+      "technicalContinuationOnly": true,
+      "newScientificCompletions": 0,
+      "humanApproval": false
+    }
+  ],
+  "normalChecks": [
+    "check:gymnasium-duration-readiness",
+    "check:math-duration-policy-readiness",
+    "check:m6-duration-policy-readiness",
+    "check:gymnasium-duration-offerings"
+  ],
+  "noHelperChange": true,
+  "noFloorChange": true
+}
