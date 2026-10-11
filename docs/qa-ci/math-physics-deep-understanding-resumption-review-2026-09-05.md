@@ -1,5 +1,17 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Biologie: maschineller M7-Abschluss vom 12. Oktober
+
+Der [aktuelle Abschluss mit 397/397 Biologie](biologie-m7-machine-closeout-2026-10-12.md)
+bestätigt **100 %, M7 und CQR-303 PASS**, alle fünf Gates und sechs erforderlichen
+Checks vollständig aktuell, relevante M7-Blocker 0. Gegenüber 379/397 sind es
+**18 neue fachliche Abschlüsse**; fünf bestehende Kontextbindungen wurden
+zusätzlich erneuert. Mathematik 807/807, Physik 478/478 und Wirtschaft 346/346
+bleiben geschützt auf M7. Chemie bleibt ausdrücklich pausiert bei 212/402 M6.
+Der neue Integrationscommit wird separat auf GitHub bis zum terminalen CI-Ergebnis
+verfolgt. Menschliche Review-, Release- und Erprobungsgates bleiben getrennt.
+Die folgenden datierten Zwischenstände bleiben historische Nachweise.
+
 ## Neuester Biologie-Zwischenstand vom 11. Oktober: 379/397
 
 Der [aktive Biologie-Zwischenstand mit gesicherten offenen Arbeiten](biologie379-inactive-working-checkpoint-2026-10-11.md)

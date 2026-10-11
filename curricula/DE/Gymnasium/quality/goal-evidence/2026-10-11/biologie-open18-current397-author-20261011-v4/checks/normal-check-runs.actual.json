@@ -1,0 +1,60 @@
+{
+  "role": "Actual normal checker invocation receipts; no scientific review run fabricated",
+  "runs": [
+    {
+      "label": "positive-normal-check",
+      "startedAtUTC": "2026-10-11T21:14:09.227108+00:00",
+      "commandArgv": [
+        "CURRENT app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/positive/P18.author-pending.normal.config.json",
+        "--mode=check"
+      ],
+      "cwdRole": "private execution capsule",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/checks/positive-normal-check.actual.txt"
+    },
+    {
+      "label": "source-atlas-normal-check",
+      "startedAtUTC": "2026-10-11T21:14:09.777535+00:00",
+      "commandArgv": [
+        "CURRENT app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/sources/whole397.normal.inputs.json",
+        "--check"
+      ],
+      "cwdRole": "private execution capsule",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/checks/source-atlas-normal-check.actual.txt"
+    },
+    {
+      "label": "root11-normal-check",
+      "startedAtUTC": "2026-10-11T21:14:10.573978+00:00",
+      "commandArgv": [
+        "CURRENT app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11.normal.batch.config.json"
+      ],
+      "cwdRole": "private execution capsule",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/checks/root11-normal-check.actual.txt"
+    },
+    {
+      "label": "medical12-normal-check",
+      "startedAtUTC": "2026-10-11T21:14:11.421534+00:00",
+      "commandArgv": [
+        "CURRENT app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12.normal.batch.config.json"
+      ],
+      "cwdRole": "private execution capsule",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/checks/medical12-normal-check.actual.txt"
+    }
+  ]
+}

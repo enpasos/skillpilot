@@ -1,0 +1,54 @@
+{
+  "status": "two-root-authorized-current-regular-inputs-detached-byte-exact",
+  "files": [
+    {
+      "before": {
+        "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+        "bytes": 117960,
+        "sha256": "sha256:ea8e4f90356b8b35a584ef9c63ab0ae9156d9821e1a8de234636096a265b712b",
+        "inode": 34936548,
+        "dev": 2096,
+        "nlink": 4
+      },
+      "after": {
+        "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+        "bytes": 117960,
+        "sha256": "sha256:ea8e4f90356b8b35a584ef9c63ab0ae9156d9821e1a8de234636096a265b712b",
+        "inode": 35009515,
+        "dev": 2096,
+        "nlink": 1
+      },
+      "exactBytesAndSHA": true,
+      "atomicOperation": "tempfile in same directory, write/fsync/chmod, os.replace",
+      "otherLinkedPathMutations": 0
+    },
+    {
+      "before": {
+        "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "bytes": 16332,
+        "sha256": "sha256:a9a1a4ea35d6ab9ec1e8231cf72743c0a0ac80bad3afa2ed738fede64051f010",
+        "inode": 34958644,
+        "dev": 2096,
+        "nlink": 2
+      },
+      "after": {
+        "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "bytes": 16332,
+        "sha256": "sha256:a9a1a4ea35d6ab9ec1e8231cf72743c0a0ac80bad3afa2ed738fede64051f010",
+        "inode": 35009516,
+        "dev": 2096,
+        "nlink": 1
+      },
+      "exactBytesAndSHA": true,
+      "atomicOperation": "tempfile in same directory, write/fsync/chmod, os.replace",
+      "otherLinkedPathMutations": 0
+    }
+  ],
+  "sourcePolicyDataChange": false,
+  "gitWrites": 0,
+  "priorOwnApplyMethodDisclosure": {
+    "durationPolicy": "Path.write_bytes in-place; linked-peer-path scan is pending",
+    "chemistryAtlasInputs": "not written by this agent; normal source-atlas builder only read config"
+  },
+  "additionalLinkedFilesDetachedOrRestored": 0
+}

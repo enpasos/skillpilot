@@ -1,0 +1,93 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-open18-current397-independent-b-20261011-v1.medical12.D",
+  "campaignId": "biologie-open18-current397-author-20261011-v4-medical12-b",
+  "roundId": "biologie-open18-current397-author-20261011-v4-medical12-first-pass-b",
+  "batchId": "biologie-open18-current397-author-20261011-v4-medical12-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:421b50ebc61c2660f3575bc5559d24cdfdd409146c9eab4255e282f22e1b158d",
+  "bundleFingerprint": "sha256:8559d7a585c178ca90985890969234d30c42e76ea2e07753f16f65a562bcb738",
+  "bookDigest": "sha256:9f967a7657830fa7817a2a44e7f868e4347f87b3afc51ed08f878f762549d9ea",
+  "provider": "OpenAI",
+  "model": "Codex GPT-6 genuine independent B",
+  "role": "disconfirming_reviewer",
+  "promptFamilyId": "biology-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:644bacc49744cd7b87d6f77be5f1cee69e5b0870fae15aeeb9d4833753a2df55",
+  "independenceGroupId": "biologie-open18-current397-author-20261011-v4-medical12-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "50108500-7958-5954-b493-e89273649f8f",
+    "96001dbf-ef37-584a-98f0-d5351d9cdeaf",
+    "10a8dac7-65c8-5f85-a944-3e2a7d2c6028",
+    "9ea70581-3cef-5a6b-b22b-33cc6df4d7af",
+    "7f76ff0b-218b-568d-91df-20bbe2b156e2",
+    "440854be-7f06-5678-91cb-ba8dcab56959",
+    "e36bebef-d7e3-57d0-bf01-236799d41cb7",
+    "96547bdb-554d-5266-a28c-fc16e708216d",
+    "9dc56d7d-3321-55b6-8988-cfc74abdc341",
+    "5a44f356-ab0a-5d15-b976-889e22c8d32e",
+    "2ef8b0c2-8ba3-54b7-99ff-8c743a4efa63",
+    "35b016d8-ed2c-570c-ab64-ac39f8f962b2"
+  ],
+  "startedAt": "2026-10-11T21:18:44.331258+00:00",
+  "completedAt": "2026-10-11T21:31:11.224505+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:28ba7afd616ebf87c5785cbe9d972b3db62babb5e701c7f3c172d422081098d6",
+  "toolchainVersion": "skillpilot-normal-review-contracts:independent-B-own-output-v1",
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c044bd9b288c178ea606ced4c9d5834b541258970be7f2e090765b42e1cfd024"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:50b6efbb971c172edd6be51aebc80cf93aaa89d4c4c8a5e94ca15fa50fa2c2c1"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:a3965c06a4c7334a6021f87a59770ac2f9ff311281048f9e93de57a875671faf"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:d854c0a645b3bab1b3fbe80542dac750b5b51ab082986b02b56880915632ed75"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:986b6760e439c68d69a754b4092b533e48a9c19f4379b8d0caf56e38351eb013"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:13c3a10f232de2be6f3d14e115a967108a87e119338c3d97376719d241ae3188"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:ad109bf5b22d1c34fe5b6fddc91eb2600b39b759df855e45c2da7beda143b1f2"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:c591cbf4b59a402c6734394dc4f6a9cb02cb097793ce870f351a4906499f87ce"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:421b50ebc61c2660f3575bc5559d24cdfdd409146c9eab4255e282f22e1b158d"
+    }
+  ]
+}

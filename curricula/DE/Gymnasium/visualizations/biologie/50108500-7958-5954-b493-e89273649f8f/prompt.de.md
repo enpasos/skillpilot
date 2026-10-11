@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Gentechnisch veränderte Organismen bewerten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `50108500-7958-5954-b493-e89273649f8f`
+- Titel: Gentechnisch veränderte Organismen bewerten
+- Beschreibung: Die lernende Person kann Beispiele wie insulinproduzierende Bakterien analysieren und bewerten.
+
+## Generator
+
+- Provider: OpenAI / Codex built-in image_gen
+- Status: pilot
+- Quellbild: `50108500-7958-5954-b493-e89273649f8f.png`
+- Public Asset: `/assets/goal-visualizations/biologie/50108500-7958-5954-b493-e89273649f8f/50108500-7958-5954-b493-e89273649f8f.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Asset type: one compact didactic learning-goal illustration for secondary-school biology. Friendly clear softly shaded comic diagram, precise simple shapes, warm off-white background, teal/lavender/coral palette, thick readable outlines, 16:9 landscape about1600x900. Keep the important objects large so the core relationship remains understandable at360px phone width and680px desktop width. Sparse composition, generous margins, no long captions, no tiny text, no technical IDs, no logos, no watermark, no decorative DNA helix, no copied third-party graphics. Biology remains a schematic teaching model, not a medical instruction or promise of treatment. Primary request: analyze and evaluate genetically modified organisms using bacteria producing a useful protein. One large friendly bacterium with a small circular plasmid bearing a single highlighted inserted segment. A broad arrow leads to a closed bioreactor containing the same bacteria; a second arrow leads through a clear filter/purification symbol to an unlabeled medicine bottle. Separate small balanced benefit/risk icons with a check-magnifier at the bottom to signal case-based evaluation. Only large labels "Bakterium", "Protein", "Prüfen". Clearly distinguish bacteria as producers from the purified protein product: no whole bacteria injected into a person, no universal safety checkmark, no DNA helix.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

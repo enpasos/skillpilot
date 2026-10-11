@@ -1,0 +1,92 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-open18-current397-independent-b-20261011-v1.nature11.D",
+  "campaignId": "biologie-open18-current397-author-20261011-v4-root11-b",
+  "roundId": "biologie-open18-current397-author-20261011-v4-root11-first-pass-b",
+  "batchId": "biologie-open18-current397-author-20261011-v4-root11-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:742f738b57634e547f34d4c55cc238fd9b7c67f56200a4fbc57dac76216b6823",
+  "bundleFingerprint": "sha256:4f3cc8bef3ef67326118a42b8e686d1ff1d9465bb506eb9063cb2ce1a27b93fd",
+  "bookDigest": "sha256:e7ebdaa69586311adab89ca1a82777ba0d74aea211e522de5c1971b818d079c9",
+  "provider": "OpenAI",
+  "model": "Codex GPT-6 genuine independent B",
+  "role": "disconfirming_reviewer",
+  "promptFamilyId": "biology-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:644bacc49744cd7b87d6f77be5f1cee69e5b0870fae15aeeb9d4833753a2df55",
+  "independenceGroupId": "biologie-open18-current397-author-20261011-v4-root11-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c1aea082-30c0-558f-8d0a-fb810c1dc51b",
+    "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+    "eb48ba5b-eaa9-52bc-a579-841fc2566182",
+    "9fb0a26b-abb0-505f-b92a-320b2e6290e9",
+    "b6b1a9ab-3930-5165-8b4e-92b3d87ea014",
+    "7247dc5e-9d58-5aa0-8082-5097847539a4",
+    "7b09d025-8465-505e-b196-61e1811309db",
+    "cd1fa548-9b27-54df-89be-6a6ee3629eb9",
+    "06e91b97-e7cc-5698-a854-8a946a4bb7d0",
+    "ccb1fe9a-d8e0-54bf-a447-c0b427b654da",
+    "640306a2-7d58-5192-9676-58f492978790"
+  ],
+  "startedAt": "2026-10-11T21:18:44.331258+00:00",
+  "completedAt": "2026-10-11T21:31:11.224505+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:f79c477436abc194bf4e4744735971e1b90f57d9e8d4273018310f994fdcdd88",
+  "toolchainVersion": "skillpilot-normal-review-contracts:independent-B-own-output-v1",
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:68d58d6c2f95aba3625f0fc98e2329d8d2e051c145c550b17ae8b0d0af727d5d"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:88716f76f54a9176b3fc6a8213d7b6b853ec00348899c28e75d03f368aaadfd7"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:e45b0e1c1d24697335c3436d180e97f63f1108378f41a8c89d4b9dfb4facd278"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:e87bc29dbc27cc845c9c2b27fc1514312500af13f49ed0c2f5cd0c0bd559c340"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:ae1fd48889e1805fb0fa8fd79a53fd23b93344a8e43c8b0acbd0245646ff32b1"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:3637d28abd90c25ea1d2028aa11d1878705c213c6c56bd259ecacb2325570acc"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:a680968f034d52bc232234554eb0a72b7cecb3561ed664c4cbeea78f1ad1d8fe"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:e5a90adc3c5331726a3ff621568c2ec92af53ca41cb3bb5e7c28843120b08355"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:742f738b57634e547f34d4c55cc238fd9b7c67f56200a4fbc57dac76216b6823"
+    }
+  ]
+}

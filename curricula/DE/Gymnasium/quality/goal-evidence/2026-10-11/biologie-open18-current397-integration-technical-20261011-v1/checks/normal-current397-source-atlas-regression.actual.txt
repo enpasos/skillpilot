@@ -1,0 +1,24 @@
+node:assert:90
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: 357a7003-b636-570e-a0bd-6bb63518d2f6: one active carrier for the exact source and jurisdiction
+
+2 !== 1
+
+    at currentBiologyMapping (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookSourceAtlasInputs.ts:228:12)
+    at testGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookSourceAtlasInputs.ts:311:69)
+    at [eval]:2:72
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:118:14
+    at [eval]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:11) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 1,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

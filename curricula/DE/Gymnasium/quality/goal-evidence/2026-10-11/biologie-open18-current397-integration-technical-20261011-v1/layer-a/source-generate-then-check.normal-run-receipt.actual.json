@@ -1,0 +1,45 @@
+{
+  "role": "Actual sequential normal source coverage generator then evidence regression/check execution",
+  "jobs": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit"
+      ],
+      "startedAtUTC": "2026-10-11T21:53:19.849233+00:00",
+      "completedAtUTC": "2026-10-11T21:53:37.130317+00:00",
+      "exitCode": 0,
+      "wallSeconds": 17.281,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-integration-technical-20261011-v1/layer-a/quality-source-coverage-audit.normal.log.txt",
+      "logBytes": 296
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit:check"
+      ],
+      "startedAtUTC": "2026-10-11T21:53:37.130557+00:00",
+      "completedAtUTC": "2026-10-11T21:54:13.405559+00:00",
+      "exitCode": 0,
+      "wallSeconds": 36.275,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-integration-technical-20261011-v1/layer-a/quality-source-coverage-audit-check.normal.log.txt",
+      "logBytes": 2291
+    }
+  ],
+  "generationThenCheckStrictlySequential": true,
+  "actualNormalAuditTargetSubjects": [
+    "mathematik",
+    "physik"
+  ],
+  "wholeBiologyScientificSourceUnionApprovalClaimed": false,
+  "allExit0": true,
+  "ownIndependentScientificVotes": 0,
+  "sourceOrRegistryOrCanonicalChanges": 0,
+  "gitWrites": 0
+}

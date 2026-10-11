@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-book/v1/goal-book-render-manifest.schema.json",
+  "title": "SkillPilot goal book render manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "rendererVersion",
+    "bookId",
+    "bookEdition",
+    "publicationMode",
+    "atlasBaseUrl",
+    "feedbackBaseUrl",
+    "modelDigest",
+    "format",
+    "pageCount",
+    "chapters",
+    "pages",
+    "visualizationMode",
+    "printDerivativePolicy",
+    "assets",
+    "artifactSha256"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "rendererVersion": { "const": "goal-book-renderer-v1" },
+    "bookId": { "$ref": "#/$defs/nonBlank" },
+    "bookEdition": { "const": "curricular-atomic-v1" },
+    "publicationMode": { "enum": ["review", "public"] },
+    "atlasBaseUrl": {
+      "oneOf": [
+        { "type": "string", "pattern": "^https://" },
+        { "type": "null" }
+      ]
+    },
+    "feedbackBaseUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "modelDigest": { "$ref": "#/$defs/sha256" },
+    "format": { "enum": ["html", "pdf"] },
+    "pageCount": { "type": "integer", "minimum": 1 },
+    "chapters": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/chapter" }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/page" }
+    },
+    "visualizationMode": { "const": "root-relative-local-assets" },
+    "printDerivativePolicy": { "$ref": "#/$defs/printDerivativePolicy" },
+    "artifactSizeLimitBytes": { "enum": [52428800, 94371840] },
+    "assets": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/asset" }
+    },
+    "artifactSha256": { "$ref": "#/$defs/sha256" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "printDerivativePolicy": {
+            "type": "object",
+            "properties": {
+              "version": { "const": "chromium-canvas-bounded-atlas-v1" }
+            },
+            "required": ["version"]
+          }
+        },
+        "required": ["printDerivativePolicy"]
+      },
+      "then": {
+        "required": ["artifactSizeLimitBytes"],
+        "properties": {
+          "artifactSizeLimitBytes": { "const": 94371840 },
+          "assets": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                { "$ref": "#/$defs/asset" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "renderedBytes": { "type": "integer", "maximum": 100000 },
+                    "renderedWidth": { "type": "integer", "maximum": 1200 },
+                    "renderedHeight": { "type": "integer", "maximum": 800 }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "goalId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "anchor": {
+      "type": "string",
+      "pattern": "^goal-[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pageNumber",
+        "goalId",
+        "anchor",
+        "chapterIds",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "properties": {
+        "pageNumber": { "type": "integer", "minimum": 1 },
+        "goalId": { "$ref": "#/$defs/goalId" },
+        "anchor": { "$ref": "#/$defs/anchor" },
+        "chapterIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonBlank" }
+        },
+        "goalFingerprint": { "$ref": "#/$defs/sha256" },
+        "pageFingerprint": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chapterId",
+        "label",
+        "parentChapterId",
+        "goalIds",
+        "pageNumbers"
+      ],
+      "properties": {
+        "chapterId": { "$ref": "#/$defs/nonBlank" },
+        "label": { "$ref": "#/$defs/nonBlank" },
+        "parentChapterId": {
+          "oneOf": [
+            { "$ref": "#/$defs/nonBlank" },
+            { "type": "null" }
+          ]
+        },
+        "goalIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/goalId" }
+        },
+        "pageNumbers": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "printDerivativePolicy": {
+      "oneOf": [
+        { "$ref": "#/$defs/standardPrintDerivativePolicy" },
+        { "$ref": "#/$defs/boundedAtlasPrintDerivativePolicy" }
+      ]
+    },
+    "standardPrintDerivativePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "maxWidthPixels",
+        "maxHeightPixels",
+        "jpegQuality",
+        "webpQuality",
+        "maxBytes"
+      ],
+      "properties": {
+        "version": { "const": "chromium-canvas-v1" },
+        "maxWidthPixels": { "const": 1600 },
+        "maxHeightPixels": { "const": 1200 },
+        "jpegQuality": { "const": 0.82 },
+        "webpQuality": { "const": 0.9 },
+        "maxBytes": { "const": 1500000 }
+      }
+    },
+    "boundedAtlasPrintDerivativePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "maxWidthPixels",
+        "maxHeightPixels",
+        "jpegQuality",
+        "webpQuality",
+        "maxBytes"
+      ],
+      "properties": {
+        "version": { "const": "chromium-canvas-bounded-atlas-v1" },
+        "maxWidthPixels": { "const": 1200 },
+        "maxHeightPixels": { "const": 800 },
+        "jpegQuality": { "const": 0.76 },
+        "webpQuality": { "const": 0.82 },
+        "maxBytes": { "const": 100000 }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publicPath",
+        "contentType",
+        "sourceSha256",
+        "renderedSha256",
+        "sourceBytes",
+        "renderedBytes",
+        "sourceWidth",
+        "sourceHeight",
+        "renderedWidth",
+        "renderedHeight"
+      ],
+      "properties": {
+        "publicPath": {
+          "type": "string",
+          "pattern": "^/assets/goal-visualizations/"
+        },
+        "contentType": { "enum": ["image/jpeg", "image/png", "image/webp"] },
+        "sourceSha256": { "$ref": "#/$defs/sha256" },
+        "renderedSha256": { "$ref": "#/$defs/sha256" },
+        "sourceBytes": { "type": "integer", "minimum": 1 },
+        "renderedBytes": { "type": "integer", "minimum": 1, "maximum": 1500000 },
+        "sourceWidth": { "type": "integer", "minimum": 1 },
+        "sourceHeight": { "type": "integer", "minimum": 1 },
+        "renderedWidth": { "type": "integer", "minimum": 1, "maximum": 1600 },
+        "renderedHeight": { "type": "integer", "minimum": 1, "maximum": 1200 }
+      }
+    }
+  }
+}

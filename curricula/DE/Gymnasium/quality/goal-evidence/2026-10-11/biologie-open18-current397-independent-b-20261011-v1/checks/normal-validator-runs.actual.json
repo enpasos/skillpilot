@@ -1,0 +1,36 @@
+{
+  "role": "Actual unchanged normal validator execution; technical first-attempt format failure retained in separate logs; final records validate",
+  "runs": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-b-20261011-v1/AM/A18.normal.config.json --mode=check",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-b-20261011-v1/checks/A18.normal-validator.txt",
+      "output": "# Semantic Atomicity Review: biologie-open18-current397-independent-b-20261011-v1\nScope: 18 targeted open current397 Biology goals; original own valid A/M retained\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 18\nCurrent reviewed atomic: 18\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "wallTimeSeconds": 0.206028976
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-b-20261011-v1/AM/M18.normal.config.json --mode=check",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-b-20261011-v1/checks/M18.normal-validator.txt",
+      "output": "# Memory Card Review: biologie-open18-current397-independent-b-20261011-v1\nScope: 18 targeted open current397 Biology goals; original own valid A/M retained\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 18\nCurrent no-memory decisions: 18\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n",
+      "wallTimeSeconds": 0.219848496
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-b-20261011-v1/results/nature11",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-b-20261011-v1/checks/D11.normal-results-validator.txt",
+      "output": "Goal-description review campaign results valid: 11\n",
+      "wallTimeSeconds": 0.577600856
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-b-20261011-v1/results/medical12",
+      "exitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-b-20261011-v1/checks/D12.normal-results-validator.txt",
+      "output": "Goal-description review campaign results valid: 12\n",
+      "wallTimeSeconds": 0.596421818
+    }
+  ],
+  "allFinalExitCodesZero": true,
+  "humanApproval": 0,
+  "humanTrials": 0
+}

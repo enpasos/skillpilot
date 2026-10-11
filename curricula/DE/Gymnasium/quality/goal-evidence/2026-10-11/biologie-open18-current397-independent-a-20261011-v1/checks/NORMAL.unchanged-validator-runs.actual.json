@@ -1,0 +1,90 @@
+[
+  {
+    "name": "nature11",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11/round-a/review-bundle-manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11/round-a/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11/round-a/description-review-campaign.json",
+      "--batches-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/root11/round-a/batches",
+      "--results-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/A/results/nature11"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot/app",
+    "startedAtUTC": "2026-10-11T21:32:49.620254+00:00",
+    "completedAtUTC": "2026-10-11T21:32:50.269298+00:00",
+    "exitCode": 0,
+    "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/checks/nature11.normal-validator.log",
+    "logSha256": "sha256:de73df3dbc4d2ef7c6c5d941a82a005747ae0c8bc4f978d1c7015790f31a4129",
+    "output": "Goal-description review campaign results valid: 11\n"
+  },
+  {
+    "name": "medical12",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12/round-a/review-bundle-manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12/round-a/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12/round-a/description-review-campaign.json",
+      "--batches-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-author-20261011-v4/native/medical12/round-a/batches",
+      "--results-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/A/results/medical12"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot/app",
+    "startedAtUTC": "2026-10-11T21:32:49.621973+00:00",
+    "completedAtUTC": "2026-10-11T21:32:50.313130+00:00",
+    "exitCode": 0,
+    "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/checks/medical12.normal-validator.log",
+    "logSha256": "sha256:114c4f9dfa9253179aebf5710fdff0d098d6993df85d21abe9ec20c91d35eea0",
+    "output": "Goal-description review campaign results valid: 12\n"
+  },
+  {
+    "name": "A18",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/semanticAtomicityReview.ts",
+      "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/atomicity-memory/A18.normal.config.json",
+      "--mode=check"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot/app",
+    "startedAtUTC": "2026-10-11T21:32:49.622354+00:00",
+    "completedAtUTC": "2026-10-11T21:32:49.867424+00:00",
+    "exitCode": 0,
+    "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/checks/A18.normal-validator.log",
+    "logSha256": "sha256:1a918eb8981583f2cdbd06775cfcb5c9489a31a8c7f9e50022093875e853be5b",
+    "output": "# Semantic Atomicity Review: biologie-open18-current397-independent-a-20261011-v1\nScope: Independent targeted Biology current397 open18; preserve unchanged valid scientific decisions\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 18\nCurrent reviewed atomic: 18\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+  },
+  {
+    "name": "M18",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/memoryCardReview.ts",
+      "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/atomicity-memory/M18.normal.config.json",
+      "--mode=check"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot/app",
+    "startedAtUTC": "2026-10-11T21:32:49.623485+00:00",
+    "completedAtUTC": "2026-10-11T21:32:49.893851+00:00",
+    "exitCode": 1,
+    "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/checks/M18.normal-validator.log",
+    "logSha256": "sha256:aad3587a60c9f20360c2d809933a53c21b286a4a96318a7a60439ba0b5212657",
+    "output": "# Memory Card Review: biologie-open18-current397-independent-a-20261011-v1\nScope: Independent targeted Biology current397 open18; preserve unchanged valid scientific decisions\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 18\nCurrent no-memory decisions: 18\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 18\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n\nObsolete card review records\n- undefined/undefined: Ein kohärenter Vergleich von Wirkmechanismen und Qualitätsfolgen der Konservierung; Eigenschaften sind Kriterien desselben erklärenden Vergleichs. Materialgestützte Erklärung, Argumentrekonstruktion und Transfer sind die verlangte Leistung; ein eigenes Faktenkartendeck ist zur Abbildung dieses Zielkerns nicht erforderlich. Bestehende unabhängige Karten/Memoryziele bleiben unangetastet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Eine kausale Erklärung lokaler Eingriffe bis zu größerer Biosphärenwirkung; verschiedene Beispiele variieren denselben Wirkpfadauftrag. Materialgestützte Erklärung, Argumentrekonstruktion und Transfer sind die verlangte Leistung; ein eigenes Faktenkartendeck ist zur Abbildung dieses Zielkerns nicht erforderlich. Bestehende unabhängige Karten/Memoryziele bleiben unangetastet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Eine fallbezogene verantwortliche Sexualitäts-/Schutzdiskussion; Grenzen, Hilfe und Zuständigkeit bilden zusammen dieselbe begründete Handlungskompetenz. Materialgestützte Erklärung, Argumentrekonstruktion und Transfer sind die verlangte Leistung; ein eigenes Faktenkartendeck ist zur Abbildung dieses Zielkerns nicht erforderlich. Bestehende unabhängige Karten/Memoryziele bleiben unangetastet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Eine materialgebundene umwelttoxikologische Bewertung verbindet hormonellen Mechanismus, Stoffverbleib und Expositionsgrenzen; der enge Z-Materialfehler betrifft P, nicht die wissenschaftliche Atomizität des Ziels. Materialgestützte Erklärung, Argumentrekonstruktion und Transfer sind die verlangte Leistung; ein eigenes Faktenkartendeck ist zur Abbildung dieses Zielkerns nicht erforderlich. Bestehende unabhängige Karten/Memoryziele bleiben unangetastet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Eine begründete Nachhaltigkeitsabwägung verknüpft Folgen, Optionen und Kriterien derselben Entscheidung; keine künstliche Aufspaltung in einzelne Wertlisten. Materialgestützte Erklärung, Argumentrekonstruktion und Transfer sind die verlangte Leistung; ein eigenes Faktenkartendeck ist zur Abbildung dieses Zielkerns nicht erforderlich. Bestehende unabhängige Karten/Memoryziele bleiben unangetastet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Eine begründete Verantwortungssituation verbindet Tierbedürfnisse und Rücksicht auf Mitmenschen; Tierpflege und organisatorische Grenzen sind Kriterien desselben Falls. Materialgestützte Erklärung, Argumentrekonstruktion und Transfer sind die verlangte Leistung; ein eigenes Faktenkartendeck ist zur Abbildung dieses Zielkerns nicht erforderlich. Bestehende unabhängige Karten/Memoryziele bleiben unangetastet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Gefährdungsursache und begründete Schutzmaßnahme bilden einen gemeinsamen amphibienbezogenen Ursache-Wirkungsauftrag. Materialgestützte Erklärung, Argumentrekonstruktion und Transfer sind die verlangte Leistung; ein eigenes Faktenkartendeck ist zur Abbildung dieses Zielkerns nicht erforderlich. Bestehende unabhängige Karten/Memoryziele bleiben unangetastet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Eine Rekonstruktion des gesellschaftlichen Evolutionsdiskurses unterscheidet empirische, weltanschauliche und normative Aussagearten desselben Arguments. Materialgestützte Erklärung, Argumentrekonstruktion und Transfer sind die verlangte Leistung; ein eigenes Faktenkartendeck ist zur Abbildung dieses Zielkerns nicht erforderlich. Bestehende unabhängige Karten/Memoryziele bleiben unangetastet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Proben-, Methoden- und Befunddaten sind gegeben; aktuelle kompetente Leistung besteht in deren Zuordnung und Begrenzung, kein Protokollabruf. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Fiktive Regeln und Rollen stehen im Material. Keine echte Gesetzesliste oder Paragraphenmemorierung wird benötigt oder durch diese Kandidaten freigegeben. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Produktions- und Expositionsdaten stehen im Material; geprüft wird begründete Analyse, kein Abruf eines GVO-Katalogs. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Regulations- und Ausbreitungsschritte werden kausal am Modell erklärt. Kein separater Onkogen-/Tumorarten-Abrufkatalog erforderlich. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Verfahrensdaten werden in Chancen/Risiken umgesetzt. Kein Pflichtabruf von Produktnamen, Virusvektorkatalog oder Behandlungszulassungen. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Verfahrensstufen und Testbefunde sind gegeben; die Leistung ist methodisch/ethisch begründetes Erklären, kein Auswendiglernen von Embryologie- oder Gesetzeslisten. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Beratungssituationen verlangen begründete Anwendung von Freiwilligkeit/Vertraulichkeit, keinen memorierten Leitlinien- oder Paragraphenkatalog. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Neue Information und Belastung werden fallbezogen abgewogen. Kein zwingender separater SRS-Abruf von Test-/Risikozahlen. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Gegebene Potenz-/Modelldaten werden verglichen. Keine separate Stammzellnamen- oder Zulassungsmemorierung; Verständnis der Potenzbegriffe wird angewendet. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n- undefined/undefined: Testzweck und Befundreichweite stehen im Material; Kompetenz ist begründete Interpretation/ethische Bewertung statt Marker- oder Institutionennamenabruf. Aktueller Kern ist materialgebundene Erklärung, Begründung oder Transfer. Keine erforderlichen Karten/Decks; tatsächliche separate Memoryziele bleiben erhalten.\n\nBlocking issues\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Duplicate card review record for undefined::undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n- Obsolete card review record for undefined/undefined\n"
+  }
+]

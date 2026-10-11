@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-11T17:49:43.705Z
+Generated: 2026-10-11T21:57:00.274Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -21,14 +21,14 @@ Rules version: curriculum-quality-v5
 | M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 7 |
-| M7 | 3 |
+| M6 | 6 |
+| M7 | 4 |
 
 ## Curricula
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M6 | 484 | 427 | 17/23 | 16/16 | 1 | 1 | 0 |
+| Biologie (Gymnasium, DE) | M7 | 484 | 427 | 17/23 | 16/16 | 1 | 0 | 0 |
 | Chemie (Gymnasium, DE) | M6 | 523 | 442 | 32/32 | 16/16 | 1 | 1 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |

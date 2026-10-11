@@ -202,10 +202,33 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // genetic-method scopes without closing broad source HOLDs. HE Q1.2 vector
   // methods are an elevated-course operator, so their old GK route is removed.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 92], ['DE-BY/SekII/LK', 122], ['DE-HE/SekII/GK', 80], ['DE-HE/SekII/LK', 160],
+    ['DE-BY/SekII/GK', 93], ['DE-BY/SekII/LK', 123], ['DE-HE/SekII/GK', 80], ['DE-HE/SekII/LK', 160],
     ['DE-SH/SekII/GK', 1], ['DE-SH/SekII/LK', 1],
     ['DE-ST/SekII/GK', 6], ['DE-ST/SekII/LK', 6],
   ])
+  // Technical carrier successors keep the official source identity. Select the
+  // active carrier from its config and extraction instead of a dated filename.
+  const biologyInputConfig = readGoalBookSourceAtlasInputConfig('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
+  type BiologySourceMapping = {
+    sourceLandscapeId: string
+    sourceExtractionPath: string
+    mappings: { legacyGoalId: string; canonicalGoalId: string; matchType: string }[]
+    decisions: { sourceGoalId: string; canonicalGoalIds: string[]; matchType: string }[]
+  }
+  const currentBiologyMapping = (sourceLandscapeId: string, jurisdiction: string, stage: string) => {
+    const candidates = biologyInputConfig.mappingPaths.map(path => ({
+      path,
+      mapping: JSON.parse(readFileSync(resolve(root, path), 'utf8')) as BiologySourceMapping,
+    })).filter(({ mapping }) => mapping.sourceLandscapeId === sourceLandscapeId)
+      .filter(({ mapping }) => {
+        const extraction = JSON.parse(readFileSync(resolve(root, mapping.sourceExtractionPath), 'utf8'))
+        assert.equal(extraction.sourceLandscapeId, sourceLandscapeId, 'Active carrier must retain the exact official source identity')
+        return extraction.jurisdiction === jurisdiction && extraction.subject === 'Biologie' && extraction.stage === stage
+      })
+    assert.equal(candidates.length, 1, `${sourceLandscapeId}: one active carrier for the exact source, jurisdiction and stage`)
+    return candidates[0]
+  }
+  const heBiologyMappingPath = currentBiologyMapping('3e56aa75-c76c-4de5-883b-0aac98297846', 'DE-HE', 'SekII').path
   const heVectorGoalId = '528a3cd3-4a4d-550d-939a-8dc8656446e4'
   const heVectorSourceGoalId = '46f4ea54-367f-4f40-b3f2-0d7fd4dff90e'
   const heGk = biology.receipt.scopes.find(s => s.key === 'DE-HE/SekII/GK')!
@@ -215,7 +238,7 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   assert.ok(heLk.goalIds.includes(heVectorGoalId), 'The independently reviewed HE LK route must remain available')
   assert.deepEqual(heLk.witnesses.filter(w => w.goalId === heVectorGoalId && w.sourceGoalId === heVectorSourceGoalId).map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.mappingPath]), [[
     heVectorSourceGoalId, heVectorGoalId,
-    'curricula/DE/Gymnasium/mapping/DE-HE/source-components/biologie-bio8-current397-dual-reviewed-20261011-v6.review.json',
+    heBiologyMappingPath,
   ]], 'Retain the exact bounded HE source contribution without whole-course approval')
   for (const formerAtomId of ['523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0', 'd11b3b18-deec-5d1a-bff6-512cddf595a2']) {
     assert.ok(biology.receipt.scopes.every(s => !s.goalIds.includes(formerAtomId)), 'A current cluster must never be published as a curricular atomic target')
@@ -285,10 +308,9 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
   const pcrGoalId = 'a3f483ce-126e-595c-999c-aa4d95106221'
   const byPcrSourceGoalId = '2170fbb3-d82f-56d1-bf7e-03f1cf9a3146'
-  const byBiologyMappingPath = 'curricula/DE/Gymnasium/mapping/DE-BY/source-components/biologie-bio8-current397-dual-reviewed-20261011-v6.review.json'
-  const byBiologyMapping = JSON.parse(readFileSync(resolve(root, byBiologyMappingPath), 'utf8')) as {
-    mappings: { legacyGoalId: string; canonicalGoalId: string; matchType: string }[]
-  }
+  const { path: byBiologyMappingPath, mapping: byBiologyMapping } = currentBiologyMapping(
+    '357a7003-b636-570e-a0bd-6bb63518d2f6', 'DE-BY', 'SekI+SekII',
+  )
   assert.deepEqual(byBiologyMapping.mappings.filter(row => row.canonicalGoalId === pcrGoalId)
     .map(row => [row.legacyGoalId, row.canonicalGoalId, row.matchType]), [
     [byPcrSourceGoalId, pcrGoalId, 'partial'],
@@ -300,6 +322,34 @@ export const testGoalBookSourceAtlasInputs = (): void => {
       [byPcrSourceGoalId, pcrGoalId, 'direct', 'source-metadata', byBiologyMappingPath],
     ], 'Retain the direct PCR-principle witness without inherited or complete-comparison coverage')
   }
+  // Phylogenetic tree construction and human-family pedigrees use distinct
+  // original operators. Preserve the genuine partial reroute and the separate
+  // family operator without converting either into whole-source coverage.
+  const phylogeneticSourceGoalId = '550a30ba-48e0-5822-8733-38683473e37e'
+  const phylogeneticConstructionGoalId = '35b016d8-ed2c-570c-ab64-ac39f8f962b2'
+  const familySourceGoalId = 'f368e24c-c167-5f00-82ba-2bbab5597740'
+  const familyPedigreeGoalId = '440854be-7f06-5678-91cb-ba8dcab56959'
+  for (const [sourceGoalId, goalId, matchType] of [
+    [phylogeneticSourceGoalId, phylogeneticConstructionGoalId, 'partial'],
+    [familySourceGoalId, familyPedigreeGoalId, 'exact'],
+  ] as const) {
+    assert.deepEqual(byBiologyMapping.mappings.filter(row => row.legacyGoalId === sourceGoalId)
+      .map(row => [row.canonicalGoalId, row.matchType]), [[goalId, matchType]],
+    'The actual original source operator must retain its reviewed individual target and coverage limit')
+    assert.deepEqual(byBiologyMapping.decisions.filter(row => row.sourceGoalId === sourceGoalId)
+      .map(row => [row.canonicalGoalIds, row.matchType]), [[[goalId], matchType]],
+    'Source decision and materialized mapping must agree without broadening the operator')
+    for (const key of ['DE-BY/SekII/GK', 'DE-BY/SekII/LK']) {
+      const scope = biology.receipt.scopes.find(s => s.key === key)!
+      assert.deepEqual(scope.witnesses.filter(w => w.sourceGoalId === sourceGoalId)
+        .map(w => [w.goalId, w.mappedTargetGoalId, w.coverage, w.profileBasis, w.mappingPath]), [
+        [goalId, goalId, 'direct', 'source-metadata', byBiologyMappingPath],
+      ], 'The source must provide exactly its direct reviewed contribution in both BY profiles')
+    }
+  }
+  assert.ok(biology.receipt.scopes.every(scope => scope.witnesses.every(w =>
+    w.sourceGoalId !== phylogeneticSourceGoalId || w.goalId !== familyPedigreeGoalId)),
+  'The phylogenetic tree operator must never supply human-family pedigree coverage')
   // The reviewed gel-method binding adds this existing atom to both BY profiles.
   const gelGoalId = '8eb86a82-122d-5cae-8f80-bb2850b29c2f'
   for (const key of ['DE-BY/SekII/GK', 'DE-BY/SekII/LK']) {

@@ -1,0 +1,86 @@
+{
+  "role": "Actual unmodified normal Layer-A execution; at most two concurrent read-only checks",
+  "jobs": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "startedAtUTC": "2026-10-11T21:49:46.619350+00:00",
+      "completedAtUTC": "2026-10-11T21:54:40.094649+00:00",
+      "exitCode": 0,
+      "wallSeconds": 293.475,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-integration-technical-20261011-v1/layer-a/validate-composition-views.normal.log.txt",
+      "logBytes": 776254
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:composition-projection-roles"
+      ],
+      "startedAtUTC": "2026-10-11T21:49:46.619824+00:00",
+      "completedAtUTC": "2026-10-11T21:50:10.829907+00:00",
+      "exitCode": 0,
+      "wallSeconds": 24.21,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-integration-technical-20261011-v1/layer-a/test-composition-projection-roles.normal.log.txt",
+      "logBytes": 504
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:course-level-mapping-consistency"
+      ],
+      "startedAtUTC": "2026-10-11T21:50:10.830082+00:00",
+      "completedAtUTC": "2026-10-11T21:50:11.455256+00:00",
+      "exitCode": 0,
+      "wallSeconds": 0.625,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-integration-technical-20261011-v1/layer-a/test-course-level-mapping-consistency.normal.log.txt",
+      "logBytes": 194
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:check:all"
+      ],
+      "startedAtUTC": "2026-10-11T21:50:11.455447+00:00",
+      "completedAtUTC": "2026-10-11T21:50:18.279391+00:00",
+      "exitCode": 0,
+      "wallSeconds": 6.824,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-integration-technical-20261011-v1/layer-a/quality-memory-card-review-check-all.normal.log.txt",
+      "logBytes": 231648
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-assets"
+      ],
+      "startedAtUTC": "2026-10-11T21:50:18.279567+00:00",
+      "completedAtUTC": "2026-10-11T21:51:06.584737+00:00",
+      "exitCode": 0,
+      "wallSeconds": 48.305,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-integration-technical-20261011-v1/layer-a/check-goal-visualization-assets.normal.log.txt",
+      "logBytes": 182
+    }
+  ],
+  "allExit0": true,
+  "gateScriptChanges": 0,
+  "ownIndependentScientificVotes": 0,
+  "humanApproval": 0,
+  "humanTrials": 0,
+  "gitWrites": 0
+}

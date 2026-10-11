@@ -1,0 +1,19 @@
+{
+  "name": "M18 explicit empty required-card scope",
+  "command": [
+    "node",
+    "--import",
+    "tsx",
+    "scripts/memoryCardReview.ts",
+    "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/atomicity-memory/M18.normal.config.json",
+    "--mode=check"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/app",
+  "startedAtUTC": "2026-10-11T21:33:05.801832+00:00",
+  "completedAtUTC": "2026-10-11T21:33:06.039389+00:00",
+  "exitCode": 0,
+  "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-independent-a-20261011-v1/checks/M18.explicit-empty-card-ledger.normal-validator.log",
+  "logSha256": "sha256:346051e5a21bc7ef0b3d632a61bf1c7c0867a1e88b2dc2f2cdb357ca7ff93a39",
+  "priorExit1Reason": "Default cardReviewPath reused the goal ledger as card ledger. Explicit empty scoped card ledger corrects only own config; no scientific change.",
+  "output": "# Memory Card Review: biologie-open18-current397-independent-a-20261011-v1\nScope: Independent targeted Biology current397 open18; preserve unchanged valid scientific decisions\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 18\nCurrent no-memory decisions: 18\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n"
+}

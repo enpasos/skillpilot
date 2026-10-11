@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-10-11T17:49:43.705Z",
+  "generatedAt": "2026-10-11T21:57:00.274Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -26,12 +26,12 @@
       "M3": 0,
       "M4": 0,
       "M5": 0,
-      "M6": 7,
-      "M7": 3
+      "M6": 6,
+      "M7": 4
     },
     "ruleStatus": {
-      "pass": 233,
-      "warn": 20,
+      "pass": 234,
+      "warn": 19,
       "fail": 4,
       "not_configured": 65
     }
@@ -171,7 +171,7 @@
       "subject": "Biologie",
       "frameworkId": "canonical-gymnasium-biology",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
-      "maturity": "M6",
+      "maturity": "M7",
       "humanTrialBlockingFindings": 1,
       "goals": 484,
       "atomicGoals": 427,
@@ -3948,17 +3948,17 @@
         },
         {
           "id": "CQR-303",
-          "status": "warn",
-          "summary": "Deep curriculum QA is incomplete: 379/397 current curricularAtomic goals strictly complete.",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 397 current curricularAtomic goals.",
           "metrics": {
             "expectedGoals": 397,
-            "remaining": 18,
-            "strictComplete": 379,
-            "currentDescriptionResolutions": 379,
-            "currentPositiveEvidenceProfiles": 379,
+            "remaining": 0,
+            "strictComplete": 397,
+            "currentDescriptionResolutions": 397,
+            "currentPositiveEvidenceProfiles": 397,
             "currentSemanticAtomicityDecisions": 397,
             "currentMemoryReviewDecisions": 397,
-            "currentVisualizationQaRecords": 379,
+            "currentVisualizationQaRecords": 397,
             "deferredVisualizations": 0,
             "requiredChecksPassed": 6,
             "requiredChecksTotal": 6,

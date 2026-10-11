@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-input.schema.json",
+  "title": "SkillPilot bilingual learning-goal description review input v1",
+  "description": "Normalized bilingual text input bound to one existing GoalBook review bundle. The fingerprint covers the complete ordered goal array.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "bundleFingerprint",
+    "bookDigest",
+    "goalCount",
+    "goals",
+    "reviewInputFingerprint"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-input.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "bundleFingerprint": { "$ref": "#/$defs/digest" },
+    "bookDigest": { "$ref": "#/$defs/digest" },
+    "goalCount": { "type": "integer", "minimum": 1, "maximum": 5000 },
+    "goals": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": { "$ref": "#/$defs/goal" }
+    },
+    "reviewInputFingerprint": { "$ref": "#/$defs/digest" }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "goalFingerprint",
+        "pageFingerprint",
+        "currentTitleDe",
+        "currentTitleEn",
+        "currentDescriptionDe",
+        "currentDescriptionEn"
+      ],
+      "properties": {
+        "goalId": { "$ref": "#/$defs/stableId" },
+        "goalFingerprint": { "$ref": "#/$defs/digest" },
+        "pageFingerprint": { "$ref": "#/$defs/digest" },
+        "currentTitleDe": { "$ref": "#/$defs/nonBlank" },
+        "currentTitleEn": { "$ref": "#/$defs/nonBlank" },
+        "currentDescriptionDe": { "$ref": "#/$defs/longText" },
+        "currentDescriptionEn": { "$ref": "#/$defs/longText" }
+      }
+    }
+  }
+}

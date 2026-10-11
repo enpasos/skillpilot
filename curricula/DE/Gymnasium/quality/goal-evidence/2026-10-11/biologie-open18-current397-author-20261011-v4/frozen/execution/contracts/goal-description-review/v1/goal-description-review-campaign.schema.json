@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-campaign.schema.json",
+  "title": "SkillPilot learning-goal description review campaign v1",
+  "description": "Fingerprint-bound campaign plan for deterministic, independent review batches over one learning-goal book bundle.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "campaignId",
+    "roundId",
+    "bundleFingerprint",
+    "bookDigest",
+    "reviewInputFingerprint",
+    "promptFingerprint",
+    "criteriaFingerprint",
+    "reviewerRole",
+    "reviewPass",
+    "independenceGroupId",
+    "blindToOtherReviews",
+    "batchSize",
+    "goalCount",
+    "batches",
+    "reviewPolicy"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-campaign.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "campaignId": { "$ref": "#/$defs/stableId" },
+    "roundId": { "$ref": "#/$defs/stableId" },
+    "bundleFingerprint": { "$ref": "#/$defs/digest" },
+    "bookDigest": { "$ref": "#/$defs/digest" },
+    "reviewInputFingerprint": { "$ref": "#/$defs/digest" },
+    "promptFingerprint": { "$ref": "#/$defs/digest" },
+    "criteriaFingerprint": { "$ref": "#/$defs/digest" },
+    "reviewerRole": {
+      "enum": [
+        "internal_ai_reviewer",
+        "external_ai_reviewer",
+        "human_reviewer",
+        "synthesizer"
+      ]
+    },
+    "reviewPass": { "enum": ["first_pass", "follow_up", "synthesis"] },
+    "independenceGroupId": { "$ref": "#/$defs/stableId" },
+    "blindToOtherReviews": { "type": "boolean" },
+    "batchSize": { "type": "integer", "minimum": 1, "maximum": 20 },
+    "goalCount": { "type": "integer", "minimum": 1, "maximum": 5000 },
+    "batches": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": { "$ref": "#/$defs/batch" }
+    },
+    "reviewPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["humanApprovalRequired", "aiRecordsAreCandidatesOnly"],
+      "properties": {
+        "humanApprovalRequired": { "const": true },
+        "aiRecordsAreCandidatesOnly": { "const": true }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "reviewerRole": { "const": "external_ai_reviewer" },
+          "reviewPass": { "const": "first_pass" }
+        },
+        "required": ["reviewerRole", "reviewPass"]
+      },
+      "then": {
+        "properties": { "blindToOtherReviews": { "const": true } }
+      }
+    }
+  ],
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "batch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["batchId", "ordinal", "batchInputFingerprint", "goalIds"],
+      "properties": {
+        "batchId": { "$ref": "#/$defs/stableId" },
+        "ordinal": { "type": "integer", "minimum": 1, "maximum": 5000 },
+        "batchInputFingerprint": { "$ref": "#/$defs/digest" },
+        "goalIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/stableId" }
+        }
+      }
+    }
+  }
+}
