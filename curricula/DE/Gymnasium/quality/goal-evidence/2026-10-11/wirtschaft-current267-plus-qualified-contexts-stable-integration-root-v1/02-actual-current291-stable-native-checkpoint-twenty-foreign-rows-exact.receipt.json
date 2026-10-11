@@ -1,0 +1,284 @@
+{
+  "recordedAt": "2026-10-11T00:35:29.736480+00:00",
+  "status": "PASS-current291-stable-integration-checks-M6-M7-still-open",
+  "centralGeneratedAt": "2026-10-11T00:29:29.224Z",
+  "centralSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-central-current291.EXACT.json",
+    "sha256": "sha256:91f429e5f2a09aedc9103c39d442f44084fb2bdf5fe00133650e9cf8e6ae85a8",
+    "bytes": 2787238
+  },
+  "actualNativeReport": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-current-five-gate-report.raw.txt",
+    "sha256": "sha256:93e1060882c6115febf0891b67d077fa37801d485815d6b3bc8552c499949918",
+    "bytes": 238054
+  },
+  "actualRegistry": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "sha256:66dc158fbade6384af9c36d8c2b943525d53fb6f1856a7be04c8007509e85bf6",
+    "bytes": 322180
+  },
+  "economics": {
+    "maturity": "M6",
+    "metrics": {
+      "expectedGoals": 346,
+      "remaining": 55,
+      "strictComplete": 291,
+      "currentDescriptionResolutions": 291,
+      "currentPositiveEvidenceProfiles": 346,
+      "currentSemanticAtomicityDecisions": 346,
+      "currentMemoryReviewDecisions": 346,
+      "currentVisualizationQaRecords": 346,
+      "deferredVisualizations": 0,
+      "requiredChecksPassed": 5,
+      "requiredChecksTotal": 6,
+      "blockingIssues": 60
+    },
+    "cqr303": "FAIL"
+  },
+  "actualNativeChecks": [
+    {
+      "label": "economics-book-model",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/buildGoalBookModel.ts",
+        "app/scripts/config/goal-books/de-gym-economics-current-canonical.json"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:20:34.310476+00:00",
+      "completedAt": "2026-10-11T00:20:35.539993+00:00",
+      "elapsedSeconds": 1.23,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-economics-book-model.raw.txt",
+        "bytes": 235,
+        "sha256": "sha256:f0d669e1d8fcde1eb5f5b49ad16229aa346e140484253b1f91c955260eced456"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "stable-five-book-publications",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:20:35.540581+00:00",
+      "completedAt": "2026-10-11T00:22:18.018953+00:00",
+      "elapsedSeconds": 102.478,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-stable-five-book-publications.raw.txt",
+        "bytes": 1007,
+        "sha256": "sha256:247b21125deb03d145a8ab1025d83043119a165560f9e983d8fcd1d816911fd9"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "five-book-original-source-freshness",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-original-sources"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:22:18.023017+00:00",
+      "completedAt": "2026-10-11T00:22:22.624348+00:00",
+      "elapsedSeconds": 4.601,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-five-book-original-source-freshness.raw.txt",
+        "bytes": 466,
+        "sha256": "sha256:ee2d41c6b58f3b2ba320fe6f08e0b32b122e7f99fd96b4c5878789ab721a9ba3"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "five-book-publication-check",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:22:18.023166+00:00",
+      "completedAt": "2026-10-11T00:22:46.541658+00:00",
+      "elapsedSeconds": 28.519,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-five-book-publication-check.raw.txt",
+        "bytes": 811,
+        "sha256": "sha256:54fa3a591d886ca93cb05f9b07c585c299424663bf1af57bd695e86792f7339f"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "central-current-generation",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:27:48.855734+00:00",
+      "completedAt": "2026-10-11T00:29:29.371904+00:00",
+      "elapsedSeconds": 100.516,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-central-current-generation.raw.txt",
+        "bytes": 108,
+        "sha256": "sha256:389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "central-current-freshness",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/generateCurriculumQualityStatus.ts",
+        "--check"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:29:29.374124+00:00",
+      "completedAt": "2026-10-11T00:31:08.041729+00:00",
+      "elapsedSeconds": 98.668,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-central-current-freshness.raw.txt",
+        "bytes": 41,
+        "sha256": "sha256:7d756bba94d8c9c0003a062d6d09601debd400e52d37e0de99a4c4d127640113"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "protected-maturity-floors",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:29:29.374569+00:00",
+      "completedAt": "2026-10-11T00:29:29.728216+00:00",
+      "elapsedSeconds": 0.354,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-protected-maturity-floors.raw.txt",
+        "bytes": 159,
+        "sha256": "sha256:959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "current-five-gate-report",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/reportDeepUnderstandingRollout.ts",
+        "--format=json"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-11T00:29:29.374833+00:00",
+      "completedAt": "2026-10-11T00:30:41.650913+00:00",
+      "elapsedSeconds": 72.276,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-current267-plus-qualified-contexts-stable-integration-root-v1/actual-native-current-five-gate-report.raw.txt",
+        "bytes": 238054,
+        "sha256": "sha256:93e1060882c6115febf0891b67d077fa37801d485815d6b3bc8552c499949918"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    }
+  ],
+  "protected": {
+    "mathematik": {
+      "strictComplete": 807,
+      "denominator": 807,
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ]
+    },
+    "physik": {
+      "strictComplete": 478,
+      "denominator": 478,
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ]
+    }
+  },
+  "twentyOtherCurriculumRowsWholeExactAgainst": "43461b906438572f4f3b64d056112f4189dca4f4",
+  "netSinceCurrent225": 66,
+  "newScientificStrictClosuresSince225": 16,
+  "restoredStrictBindingsSince225": 50,
+  "actualNewCurrentDualDescriptionPairs": 22,
+  "ofThoseStrictNow": 16,
+  "ofThoseStillChainBlocked": 6,
+  "m7CompletionClaim": false,
+  "humanApprovalClaim": false,
+  "githubCiQualifiedCommitOnly": "43461b906438572f4f3b64d056112f4189dca4f4",
+  "localM7ChangesGithubCiQualified": false
+}

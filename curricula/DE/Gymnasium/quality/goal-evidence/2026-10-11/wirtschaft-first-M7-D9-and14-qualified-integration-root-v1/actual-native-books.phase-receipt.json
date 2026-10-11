@@ -1,0 +1,96 @@
+{
+  "recordedAt": "2026-10-10T23:22:28.643444+00:00",
+  "phase": "books",
+  "results": [
+    {
+      "label": "economics-book-model",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/buildGoalBookModel.ts",
+        "app/scripts/config/goal-books/de-gym-economics-current-canonical.json"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-10T23:20:17.537088+00:00",
+      "completedAt": "2026-10-10T23:20:18.816249+00:00",
+      "elapsedSeconds": 1.279,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-first-M7-D9-and14-qualified-integration-root-v1/actual-native-economics-book-model.raw.txt",
+        "bytes": 235,
+        "sha256": "sha256:6706cb5b4a2fe555ce7f3ee9ec02acf480603d1b76b3e6cbc1d510910c190154"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "stable-five-book-publications",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-10T23:20:18.816871+00:00",
+      "completedAt": "2026-10-10T23:22:01.393640+00:00",
+      "elapsedSeconds": 102.577,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-first-M7-D9-and14-qualified-integration-root-v1/actual-native-stable-five-book-publications.raw.txt",
+        "bytes": 1007,
+        "sha256": "sha256:247b21125deb03d145a8ab1025d83043119a165560f9e983d8fcd1d816911fd9"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "five-book-original-source-freshness",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-original-sources"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-10T23:22:01.397904+00:00",
+      "completedAt": "2026-10-10T23:22:05.857522+00:00",
+      "elapsedSeconds": 4.46,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-first-M7-D9-and14-qualified-integration-root-v1/actual-native-five-book-original-source-freshness.raw.txt",
+        "bytes": 466,
+        "sha256": "sha256:ee2d41c6b58f3b2ba320fe6f08e0b32b122e7f99fd96b4c5878789ab721a9ba3"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    },
+    {
+      "label": "five-book-publication-check",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "actualCwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-10T23:22:01.398240+00:00",
+      "completedAt": "2026-10-10T23:22:28.642591+00:00",
+      "elapsedSeconds": 27.244,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-first-M7-D9-and14-qualified-integration-root-v1/actual-native-five-book-publication-check.raw.txt",
+        "bytes": 811,
+        "sha256": "sha256:ca6df3ca6eb44c31ae6e1c0ffdb79698999a913945cf5c55f1a8617c09000f53"
+      },
+      "scope": "Original native check; no new scientific review or human approval"
+    }
+  ],
+  "status": "PASS",
+  "m7CompletionClaim": false,
+  "humanApprovalClaim": false
+}

@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Arbeitsmarktmodelle diskutieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `7c72848d-8bc9-58e2-a690-fd17ac650a88`
+- Titel: Arbeitsmarktmodelle diskutieren
+- Beschreibung: Die lernende Person kann Konzepte wie NAIRU und Tarifpolitik-Einflüsse erläutern.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `7c72848d-8bc9-58e2-a690-fd17ac650a88.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/7c72848d-8bc9-58e2-a690-fd17ac650a88/7c72848d-8bc9-58e2-a690-fd17ac650a88.png`
+
+## Prompt
+
+```text
+Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory, clear dark outlines, rounded shapes, restrained teal/coral/gold accents, welcoming ordinary people. Match the existing friendly learning illustrations. Main motif and important details clear at360px and680px; generous margins and few visual groups. No photorealism, sterile blueprint, SVG, official logos, tiny text, dense legends, pseudo-writing or decorative glyphs. Any physically used notebook/screen faces its reader correctly; floating concepts are not backwards physical sheets. Motivate competence without claiming learner achievement or empirical policy success. Learning goal: Arbeitsmarktmodelle diskutieren. Die lernende Person kann Konzepte wie NAIRU und Tarifpolitik-Einflüsse erläutern. Scene: Two labor-market models: skills/vacancy matching puzzle and wages/prices/expectations cloud beside collective bargaining table. Estimated uncertain range. Only “Modelle”, “Tarifpolitik”, “Unsicherheit”. No NAIRU directly measured or optimum, no permanent universal wages/unemployment law.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

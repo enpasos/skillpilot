@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "wirtschaft-current346-D45-historical-owner-20261011-b04-technical-continuation",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "/root, actual current dual-round machine synthesis; human release separate",
+  "synthesizedAt": "2026-10-10T12:29:43.556Z",
+  "batch": {
+    "batchId": "wirtschaft-current346-D45-historical-owner-20261011-b04",
+    "batchManifestDigest": "sha256:efed78a0a45ec0cef95afe7c1a1af491cc90998c15dd913127eb05c707ada5e8",
+    "configDigest": "sha256:96ece6e4e7150b7f4e73edbc8d7ffe3e1dcd983e327f95baae9e4aa561f8b770",
+    "bundleFingerprint": "sha256:9964967cfe4111fb595440b033766f3380cf6803c5d1fd42956be20717cf1a7c",
+    "bookDigest": "sha256:958a9d5eeada160ad4bb15816a9a6808eb985578b8a3b637d77cb49f381ab4cb",
+    "reviewInputFingerprint": "sha256:695ed343c38b27350673340725acb49b87528b05d68b64ed65f849c22713d518",
+    "dualSummaryDigest": "sha256:fa8a782918d3c3f9fb47d44b332048d32bffdd5a092f6c66528f6e338bbc6948",
+    "canonicalLandscapeDigest": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-D45-historical-owner-20261011-b04-a",
+      "campaignDigest": "sha256:d275e4d8f134e3b4de9ef2566de2728efdd0adfc1c1470751fa860e2f18e9edf",
+      "roundId": "wirtschaft-current346-D45-historical-owner-20261011-b04-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-D45-historical-owner-20261011-b04-independent-a",
+      "reviewInputFingerprint": "sha256:695ed343c38b27350673340725acb49b87528b05d68b64ed65f849c22713d518",
+      "batchId": "wirtschaft-current346-D45-historical-owner-20261011-b04-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d6313f170e9377fbf51935fcd1f4fefeffab050c98646e3dbab66c2b29071d9c",
+      "runId": "wirtschaft-current336-final56-v22-b03-a.own-codex-gpt6-run",
+      "runManifestDigest": "sha256:f31e9753ffc9f7ec409173084be14f6269a3a1d5edf3a1420337e1406e76ec73",
+      "resultsDigest": "sha256:74541ad7b858a21cfbbb0e769a71dfd5923758cd577121bb1e246ccee2a26759"
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-D45-historical-owner-20261011-b04-b",
+      "campaignDigest": "sha256:1b5ecbd259414f2757abe204b203b95f2da3d5bcc1d3046871f6d53fb400ab13",
+      "roundId": "wirtschaft-current346-D45-historical-owner-20261011-b04-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-D45-historical-owner-20261011-b04-independent-b",
+      "reviewInputFingerprint": "sha256:695ed343c38b27350673340725acb49b87528b05d68b64ed65f849c22713d518",
+      "batchId": "wirtschaft-current346-D45-historical-owner-20261011-b04-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:26e20496327adf749de0bcac2571e75a7002319267db23113d813576470deed5",
+      "runId": "wirtschaft-current336-final56-v22-b03-first-pass-b.batch-001.codex-gpt6-b",
+      "runManifestDigest": "sha256:5b6ba6b014832e061c170609f3e0dca421de6382c64387b90bcac7cc098a7688",
+      "resultsDigest": "sha256:f46e741da5354e515980151d732cb4376cd70b4dde0037444677ab5929a6ae51"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "wirtschaft-current346-D45-historical-owner-20261011-b04.b727bdda",
+      "goalId": "b727bdda-ea96-5acd-b23f-ed94777ba7a0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a2b1291760e3e64ea78052324057729424017d4d3381c017dd20e13594e34716",
+      "pageFingerprint": "sha256:d2af2b0faddaf03126d54104d400949d05495ca8a7e35b26fbb7afb6f8ce64cf",
+      "goalReviewContextFingerprint": "sha256:a3c648efe3829027bcc91a5fac544e60d4de07196f87b790503d30c8d0be5cfe",
+      "finalText": {
+        "titleDe": "Demografie und Arbeitsmarkt",
+        "titleEn": "Demography and the labour market",
+        "descriptionDe": "Die lernende Person kann demografische Effekte auf Arbeitsmarkt und Tarifpolitik analysieren.",
+        "descriptionEn": "The learner can analyse demographic effects on the labour market and collective bargaining policy."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "wirtschaft-current336-final56-v22-b03-a.own-codex-gpt6-run.record-004",
+          "recordDigest": "sha256:96fab76b4a86c29269242fdfa112eb2523f928f4299c1736f71751e1157762a4"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-final56-v22-b03-first-pass-b.batch-001.codex-gpt6-b.record-004",
+          "recordDigest": "sha256:a0c2528b68cd7e8d383ec9c06e052db92582081f2c8c926a095c2c62806a924d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden bestätigen den ganzen Beschreibungsvertrag. Die demografische Wirkungskette führt über Arbeitsangebot, Teilnahme, Stunden und Qualifikationen zu Arbeitsmarkt und Tarifpolitik, ohne automatische Kopfzahl- oder Lohnfolgen.",
+      "rationaleEn": "Both current independent rounds confirm the whole description contract. The demographic causal chain proceeds through labour supply, participation, hours and skills to employment and bargaining, without automatic headcount or wage effects."
+    },
+    {
+      "decisionId": "wirtschaft-current346-D45-historical-owner-20261011-b04.c5272ab8",
+      "goalId": "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9015e943438d02c476902d222c223dfee94f375c7260ddd12cec937e961e5653",
+      "pageFingerprint": "sha256:66524e0336ca0e56a304df696a939832c831700f3dbe805aaf9652bd51711e94",
+      "goalReviewContextFingerprint": "sha256:d3ac6bfb057555e59332faaa157c7290d3c55cf84d04d6bfdd2e9307ca4df30a",
+      "finalText": {
+        "titleDe": "Staatsfinanzierung und Verschuldung",
+        "titleEn": "Public finance and debt",
+        "descriptionDe": "Die lernende Person kann Finanzierungsformen und Verschuldungsgrenzen diskutieren.",
+        "descriptionEn": "The learner can discuss forms of public financing and borrowing limits."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "wirtschaft-current336-final56-v22-b03-a.own-codex-gpt6-run.record-008",
+          "recordDigest": "sha256:f624e0f87e96693257a4f8ad1b2541017d128e007cfeeaac626e249b1cae9d4a"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-final56-v22-b03-first-pass-b.batch-001.codex-gpt6-b.record-008",
+          "recordDigest": "sha256:27c2b2534d5a2c13d2d4de88957ea84c08812e5e66fb04810cface82ed42f630"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden bestätigen den ganzen Beschreibungsvertrag. Finanzierungsalternativen und Verschuldungsgrenzen sind Kriterien einer öffentlichen Finanzierungsentscheidung; Strom, Bestand, Zulässigkeit und Tragfähigkeit bleiben getrennt.",
+      "rationaleEn": "Both current independent rounds confirm the whole description contract. Financing alternatives and debt limits are criteria of one public financing decision; flows, stocks, legality and sustainability remain distinct."
+    },
+    {
+      "decisionId": "wirtschaft-current346-D45-historical-owner-20261011-b04.1582ec45",
+      "goalId": "1582ec45-1655-5f7c-a2bd-a3fc00e583fa",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b0aa7f57ac01b882432c1838b4c5c84d809a643e7c3fe583471836a1f4327be8",
+      "pageFingerprint": "sha256:52278fbad658bd1752c5e7861c41aaabf24287256734c21170aa8d6aaad04f46",
+      "goalReviewContextFingerprint": "sha256:57800c2a670b2a16705c59b7e51528cf7b806073bb405e51b1d8737927850c6e",
+      "finalText": {
+        "titleDe": "Transnationale Unternehmen analysieren",
+        "titleEn": "Analyse transnational corporations",
+        "descriptionDe": "Die lernende Person kann Rolle und Strategien transnationaler Unternehmen in der Globalisierung erläutern.",
+        "descriptionEn": "The learner can explain the role and strategies of transnational corporations in globalisation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "wirtschaft-current336-final56-v22-b03-a.own-codex-gpt6-run.record-009",
+          "recordDigest": "sha256:d3e52db4c089d9052cc6381273056457e68669556f3b8257ebd80026d399cdc9"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-final56-v22-b03-first-pass-b.batch-001.codex-gpt6-b.record-009",
+          "recordDigest": "sha256:cbe5dde186e8540f84f6bf581958d31139dcadd036ee7cd7199bccf79e91ab16"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden bestätigen den ganzen Beschreibungsvertrag. Rolle und Strategie erklären dieselbe grenzüberschreitende Unternehmensorganisation; Wertschöpfungsketten stützen den Anschluss, ohne operative Geschäftsprozesssteuerung vorwegzunehmen.",
+      "rationaleEn": "Both current independent rounds confirm the whole description contract. Role and strategy explain the same cross-border corporate organisation; value chains provide the prerequisite without importing operational business-process management."
+    }
+  ],
+  "manifestFingerprint": "sha256:8be7f0bf2e60d6f9985fdfcbec20938ca66f374d8e76778dd7793b9e5a547d01"
+}

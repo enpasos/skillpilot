@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-10-10T22:01:14.366Z",
+  "generatedAt": "2026-10-11T00:59:17.746Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -26,13 +26,13 @@
       "M3": 0,
       "M4": 0,
       "M5": 0,
-      "M6": 8,
-      "M7": 2
+      "M6": 7,
+      "M7": 3
     },
     "ruleStatus": {
-      "pass": 232,
+      "pass": 233,
       "warn": 20,
-      "fail": 5,
+      "fail": 4,
       "not_configured": 65
     }
   },
@@ -57026,7 +57026,7 @@
       "subject": "Wirtschaftswissenschaften",
       "frameworkId": "canonical-gymnasium-economics",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
-      "maturity": "M6",
+      "maturity": "M7",
       "humanTrialBlockingFindings": 0,
       "goals": 702,
       "atomicGoals": 650,
@@ -61378,44 +61378,22 @@
         },
         {
           "id": "CQR-303",
-          "status": "fail",
-          "summary": "Deep curriculum QA is incomplete: 0/346 current curricularAtomic goals strictly complete.",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 346 current curricularAtomic goals.",
           "metrics": {
             "expectedGoals": 346,
-            "remaining": 346,
-            "strictComplete": 0,
-            "currentDescriptionResolutions": 216,
+            "remaining": 0,
+            "strictComplete": 346,
+            "currentDescriptionResolutions": 346,
             "currentPositiveEvidenceProfiles": 346,
             "currentSemanticAtomicityDecisions": 346,
             "currentMemoryReviewDecisions": 346,
-            "currentVisualizationQaRecords": 0,
+            "currentVisualizationQaRecords": 346,
             "deferredVisualizations": 0,
-            "requiredChecksPassed": 4,
+            "requiredChecksPassed": 6,
             "requiredChecksTotal": 6,
-            "blockingIssues": 174
-          },
-          "details": [
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 04809186-3f65-579d-b300-af9ed3e100c1",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 04c17efe-4451-52bd-8116-1042d1501c41",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 053f1522-31a7-583f-85f5-366ed724d3c5",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 09e58ea8-1920-5600-bd2b-cc1f199d051f",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 13b6317a-d42a-5a13-8358-c85d883cb4c7",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 15d18bd1-0ae1-58c8-89fd-623bebe12041",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 1c92b15e-88c0-5e1d-9d72-30508164f038",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 1d989a89-4b1b-53d3-86ab-dd4986fc5839",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 21dc877b-e281-5269-8244-05be788f7771",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 25278ecf-2e77-556e-9fe6-8f0b954cc680",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 273809d9-bc31-5c1b-8a58-149dd61d2ba0",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 2ccb9f7e-1512-5970-85a1-71ec42734eb9",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 36ebee6c-ec32-53e2-a5da-f50185e61a55",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 3897fc05-a8fc-5045-8d7f-9efeabcd098d",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 40676995-14fc-55a9-89ae-440b2ee3ab33",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 424bae9f-8f2e-5093-a17d-ee5eadb6edde",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 4fef149e-84c0-59af-b056-0a0bf97dbecd",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 5262a0ba-0ede-5f47-a6a2-4778d24fc95a",
-            "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 52e6731e-71e9-53b1-8bb9-b03da445decf"
-          ]
+            "blockingIssues": 0
+          }
         },
         {
           "id": "CQR-401",

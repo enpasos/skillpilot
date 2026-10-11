@@ -44,6 +44,9 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Wirtschaftswissenschaften M7: datierte Arbeitsstände
 
+- [Maschineller M7-Abschluss: 346/346 und CQR-303 PASS vom 11. Oktober](wirtschaft-m7-machine-closeout-2026-10-11.md)
+- [Aktuelle qualifizierte Kontextintegration bei 291/346 vom 11. Oktober](wirtschaft-m7-current291-qualified-contexts-2026-10-11.md)
+- [M6 mit grüner GitHub-CI und aktuelle M7-Fortsetzung bei 225/346 vom 11. Oktober](wirtschaft-m7-current225-m6-ci-green-2026-10-11.md)
 - [Aktueller M6-Zwischenstand und CI vom 10. Oktober](wirtschaft-m6-ci-checkpoint-2026-10-10.md)
 - [Fortsetzung und aktuelle Paketnachweise vom 8. Oktober](wirtschaft-m7-resumed-2026-10-08.md)
 - [Integrations- und regulärer Lernzielbuchcheckpoint vom 8. Oktober](wirtschaft-m7-commit-checkpoint-2026-10-08.md)

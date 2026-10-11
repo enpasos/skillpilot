@@ -1,0 +1,495 @@
+{
+  "status": "SIX_REQUESTED_EXISTING_LAYER_A_CHECKS_ACTUAL_PASS",
+  "actualUTC": "2026-10-11T00:57:35.848508+00:00",
+  "checks": [
+    {
+      "label": "01.graph",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "nodeVersion": "v20.20.2",
+      "startedAtUTC": "2026-10-11T00:50:33.330688+00:00",
+      "completedAtUTC": "2026-10-11T00:50:37.256196+00:00",
+      "elapsedSeconds": 3.931,
+      "exitCode": 0,
+      "receiptPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/01.graph.actual-command.READONLY.json",
+      "receiptSha256": "sha256:c2895f697fa6eb9093d85478b9d5df6f812a53b35c432748bb0b8fa7fb631d2f",
+      "rawLogPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/01.graph.raw.txt",
+      "rawLogSha256": "sha256:9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7",
+      "rawLogBytes": 107
+    },
+    {
+      "label": "02.assets",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-assets"
+      ],
+      "nodeVersion": "v20.20.2",
+      "startedAtUTC": "2026-10-11T00:50:33.330803+00:00",
+      "completedAtUTC": "2026-10-11T00:50:55.074927+00:00",
+      "elapsedSeconds": 21.749,
+      "exitCode": 0,
+      "receiptPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/02.assets.actual-command.READONLY.json",
+      "receiptSha256": "sha256:7bd3a4df1d900417303275c90b59ece6ab41dd4aba37affe74be4679a3b6b072",
+      "rawLogPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/02.assets.raw.txt",
+      "rawLogSha256": "sha256:173c48a321c45904c9be0f5aa835786362f15ecb3c7cc701f446e89b500d0816",
+      "rawLogBytes": 182
+    },
+    {
+      "label": "03.composition-views",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "nodeVersion": "v20.20.2",
+      "startedAtUTC": "2026-10-11T00:50:37.265508+00:00",
+      "completedAtUTC": "2026-10-11T00:52:49.252515+00:00",
+      "elapsedSeconds": 131.991,
+      "exitCode": 0,
+      "receiptPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/03.composition-views.actual-command.READONLY.json",
+      "receiptSha256": "sha256:bfafc5421ef0fce06e1866282d4dd077547f167bafa9c236a034f2f5444c3e3c",
+      "rawLogPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/03.composition-views.raw.txt",
+      "rawLogSha256": "sha256:c82c4905bff160408dc58e0a2af4f9f8d9715e1bcafdcfa39ca535dc1c2a40e7",
+      "rawLogBytes": 776254
+    },
+    {
+      "label": "04.view-filters",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:view-filters"
+      ],
+      "nodeVersion": "v20.20.2",
+      "startedAtUTC": "2026-10-11T00:50:55.084378+00:00",
+      "completedAtUTC": "2026-10-11T00:51:02.906480+00:00",
+      "elapsedSeconds": 7.826,
+      "exitCode": 0,
+      "receiptPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/04.view-filters.actual-command.READONLY.json",
+      "receiptSha256": "sha256:9d77152c5300851ef2c8ae6aeee18447103bb3525b46c8fda036be0cc6c68d03",
+      "rawLogPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/04.view-filters.raw.txt",
+      "rawLogSha256": "sha256:668fb53fd4d0c5a9cc9b2a3c120d3c53ad282e67b6a8f4a54e5ff172ce105280",
+      "rawLogBytes": 1288
+    },
+    {
+      "label": "05.source-landscape-registry",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:source-landscape-registry"
+      ],
+      "nodeVersion": "v20.20.2",
+      "startedAtUTC": "2026-10-11T00:51:02.913972+00:00",
+      "completedAtUTC": "2026-10-11T00:51:03.321719+00:00",
+      "elapsedSeconds": 0.412,
+      "exitCode": 0,
+      "receiptPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/05.source-landscape-registry.actual-command.READONLY.json",
+      "receiptSha256": "sha256:cd067a23f515d70a668ef8dded6eb2bf3c4be28d3179ea8602eead2e8e91cd6c",
+      "rawLogPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/05.source-landscape-registry.raw.txt",
+      "rawLogSha256": "sha256:9f4a9ce2fc283b40c2c04ac14af9fb64db7893d7695fc82afe1488c7ebb17653",
+      "rawLogBytes": 162
+    },
+    {
+      "label": "06.deep-understanding-rollout",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:deep-understanding-rollout"
+      ],
+      "nodeVersion": "v20.20.2",
+      "startedAtUTC": "2026-10-11T00:55:41.240375+00:00",
+      "completedAtUTC": "2026-10-11T00:56:50.952490+00:00",
+      "elapsedSeconds": 69.717,
+      "exitCode": 0,
+      "receiptPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/06.deep-understanding-rollout.actual-command.READONLY.json",
+      "receiptSha256": "sha256:bff275b8282c647400ee4c34c800a0625b1f0dc839dd91d47693ff01151559d9",
+      "rawLogPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011/06.deep-understanding-rollout.raw.txt",
+      "rawLogSha256": "sha256:c08eba04b05f69bcc492551f3f4fc9b2be1ca5c56494f91be47a510f07ddc533",
+      "rawLogBytes": 319
+    }
+  ],
+  "nodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "maxParallelChecks": 2,
+  "finalInputGuards": [
+    {
+      "checkLabel": "01.graph",
+      "before": {
+        "path": "app/scripts/validateGraph.ts",
+        "sha256": "sha256:1b5f17e272492f58b686f165749351ba824c640c70fa76ac8fde406966724768",
+        "bytes": 53987
+      },
+      "current": {
+        "path": "app/scripts/validateGraph.ts",
+        "sha256": "sha256:1b5f17e272492f58b686f165749351ba824c640c70fa76ac8fde406966724768",
+        "bytes": 53987
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "01.graph",
+      "before": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "current": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "01.graph",
+      "before": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "01.graph",
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:66dc158fbade6384af9c36d8c2b943525d53fb6f1856a7be04c8007509e85bf6",
+        "bytes": 322180
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:c2438b9f65490d383ad1dce933b3323482b853934dc926ba2f606e2120a47191",
+        "bytes": 335139
+      },
+      "exact": false,
+      "expectedQualifiedRegistryOnlyEpochAdvance": "67/161→82/180; first five script/package/CAN bytes exact; sixth binds actual final registry"
+    },
+    {
+      "checkLabel": "02.assets",
+      "before": {
+        "path": "scripts/check_goal_visualization_assets.mjs",
+        "sha256": "sha256:ea319d8cea0e901aa5505aabfb9ff9115fcb3680844837875b16a24ca61d943e",
+        "bytes": 10923
+      },
+      "current": {
+        "path": "scripts/check_goal_visualization_assets.mjs",
+        "sha256": "sha256:ea319d8cea0e901aa5505aabfb9ff9115fcb3680844837875b16a24ca61d943e",
+        "bytes": 10923
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "02.assets",
+      "before": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "current": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "02.assets",
+      "before": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "02.assets",
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:66dc158fbade6384af9c36d8c2b943525d53fb6f1856a7be04c8007509e85bf6",
+        "bytes": 322180
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:c2438b9f65490d383ad1dce933b3323482b853934dc926ba2f606e2120a47191",
+        "bytes": 335139
+      },
+      "exact": false,
+      "expectedQualifiedRegistryOnlyEpochAdvance": "67/161→82/180; first five script/package/CAN bytes exact; sixth binds actual final registry"
+    },
+    {
+      "checkLabel": "03.composition-views",
+      "before": {
+        "path": "app/scripts/validateCompositionViews.ts",
+        "sha256": "sha256:901530527fcbdd28658631c15e328a291dbc087d286e6dbf580471b4e9f69cf9",
+        "bytes": 42474
+      },
+      "current": {
+        "path": "app/scripts/validateCompositionViews.ts",
+        "sha256": "sha256:901530527fcbdd28658631c15e328a291dbc087d286e6dbf580471b4e9f69cf9",
+        "bytes": 42474
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "03.composition-views",
+      "before": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "current": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "03.composition-views",
+      "before": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "03.composition-views",
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:66dc158fbade6384af9c36d8c2b943525d53fb6f1856a7be04c8007509e85bf6",
+        "bytes": 322180
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:c2438b9f65490d383ad1dce933b3323482b853934dc926ba2f606e2120a47191",
+        "bytes": 335139
+      },
+      "exact": false,
+      "expectedQualifiedRegistryOnlyEpochAdvance": "67/161→82/180; first five script/package/CAN bytes exact; sixth binds actual final registry"
+    },
+    {
+      "checkLabel": "04.view-filters",
+      "before": {
+        "path": "app/scripts/validateViewFilters.ts",
+        "sha256": "sha256:01dffa3fde0fb4718dab7376f578e8a2b737d4ceebea628daba2cd395ac43211",
+        "bytes": 8786
+      },
+      "current": {
+        "path": "app/scripts/validateViewFilters.ts",
+        "sha256": "sha256:01dffa3fde0fb4718dab7376f578e8a2b737d4ceebea628daba2cd395ac43211",
+        "bytes": 8786
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "04.view-filters",
+      "before": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "current": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "04.view-filters",
+      "before": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "04.view-filters",
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:66dc158fbade6384af9c36d8c2b943525d53fb6f1856a7be04c8007509e85bf6",
+        "bytes": 322180
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:c2438b9f65490d383ad1dce933b3323482b853934dc926ba2f606e2120a47191",
+        "bytes": 335139
+      },
+      "exact": false,
+      "expectedQualifiedRegistryOnlyEpochAdvance": "67/161→82/180; first five script/package/CAN bytes exact; sixth binds actual final registry"
+    },
+    {
+      "checkLabel": "05.source-landscape-registry",
+      "before": {
+        "path": "app/scripts/checkSourceLandscapeRegistry.ts",
+        "sha256": "sha256:b78b14a65d31202431fffd96a01ef515a436f946a45da56676876659d0b6c4c0",
+        "bytes": 5649
+      },
+      "current": {
+        "path": "app/scripts/checkSourceLandscapeRegistry.ts",
+        "sha256": "sha256:b78b14a65d31202431fffd96a01ef515a436f946a45da56676876659d0b6c4c0",
+        "bytes": 5649
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "05.source-landscape-registry",
+      "before": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "current": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "05.source-landscape-registry",
+      "before": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "05.source-landscape-registry",
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:66dc158fbade6384af9c36d8c2b943525d53fb6f1856a7be04c8007509e85bf6",
+        "bytes": 322180
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:c2438b9f65490d383ad1dce933b3323482b853934dc926ba2f606e2120a47191",
+        "bytes": 335139
+      },
+      "exact": false,
+      "expectedQualifiedRegistryOnlyEpochAdvance": "67/161→82/180; first five script/package/CAN bytes exact; sixth binds actual final registry"
+    },
+    {
+      "checkLabel": "06.deep-understanding-rollout",
+      "before": {
+        "path": "app/scripts/testDeepUnderstandingRollout.ts",
+        "sha256": "sha256:632669de32d795d67f226d58893c601264f6d635d3e49b0f16a511f5b1b6b5d8",
+        "bytes": 20943
+      },
+      "current": {
+        "path": "app/scripts/testDeepUnderstandingRollout.ts",
+        "sha256": "sha256:632669de32d795d67f226d58893c601264f6d635d3e49b0f16a511f5b1b6b5d8",
+        "bytes": 20943
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "06.deep-understanding-rollout",
+      "before": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "current": {
+        "path": "app/package.json",
+        "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+        "bytes": 29838
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "06.deep-understanding-rollout",
+      "before": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "sha256:350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "bytes": 5635984
+      },
+      "exact": true
+    },
+    {
+      "checkLabel": "06.deep-understanding-rollout",
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:c2438b9f65490d383ad1dce933b3323482b853934dc926ba2f606e2120a47191",
+        "bytes": 335139
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "sha256:c2438b9f65490d383ad1dce933b3323482b853934dc926ba2f606e2120a47191",
+        "bytes": 335139
+      },
+      "exact": true
+    }
+  ],
+  "firstFiveRegistryEpoch": "67/161 66dc158f; finished before qualified activation; exact script/package/CAN preserved at final guard",
+  "sixthRegistryEpoch": "82/180 c2438b9f; actual before/after exact",
+  "protectedLiveDenominatorsFromActualSelfTest": {
+    "mathematics": 807,
+    "physics": 478,
+    "economics": 346
+  },
+  "actualSelfTestClaims": "strict five-gate intersection, fail-closed ownership, protected M7 and live denominators passed",
+  "observedResults": {
+    "graphLandscapes": 593,
+    "compositionViews": 348,
+    "compositionErrors": 0,
+    "compositionWarnings": 2310,
+    "sourceRegistryEntries": 302,
+    "visualizationLinks": 2435,
+    "visualizationLandscapes": 21
+  },
+  "newTestsCodeOrGenerators": 0,
+  "activeCurriculumRegistryCodeWritesByRunner": 0,
+  "standardCheckTemporaryReports": "validate:view-filters writes ordinary repo/tmp/applicability execution reports; deep test uses and removes its standard repo/tmp temporary assertion config. No own Curricula evidence writes.",
+  "wholeCentralReportOrFloorRegenerationByRunner": 0,
+  "fiveGatePublicationOrM7CompletionClaim": false,
+  "curriculaReceiptsWrittenDuringSchemaFreeze": 0,
+  "outputsOnlyOwnTmpPath": "/tmp/skillpilot-economics-M7-final-layer-A-20261011"
+}

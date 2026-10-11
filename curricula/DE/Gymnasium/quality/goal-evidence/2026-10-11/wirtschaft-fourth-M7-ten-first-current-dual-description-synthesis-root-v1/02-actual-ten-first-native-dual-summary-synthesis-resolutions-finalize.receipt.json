@@ -1,0 +1,97 @@
+{
+  "status": "FAIL",
+  "actualChecks": [
+    {
+      "label": "summarize",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-ten-new-current-goals-author-source-scope-native-inputbundle-AUTHOR-INERT-v1/ten-current-new-goals.native-batch.config.json",
+        "--write"
+      ],
+      "startedAt": "2026-10-11T00:17:23.712255+00:00",
+      "completedAt": "2026-10-11T00:17:24.277022+00:00",
+      "elapsedSeconds": 0.565,
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-fourth-M7-ten-first-current-dual-description-synthesis-root-v1/summarize.actual-native.raw.txt",
+        "sha256": "sha256:00782dd73546beba834358fd9930c2efd14cfa2bf88f75fb45d3c7c634f39731",
+        "bytes": 120
+      },
+      "activeWrites": 0
+    },
+    {
+      "label": "synthesis",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-ten-new-current-goals-author-source-scope-native-inputbundle-AUTHOR-INERT-v1/ten-current-new-goals.native-batch.config.json",
+        "--authoring",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-ten-new-current-goals-author-source-scope-native-inputbundle-AUTHOR-INERT-v1/native/synthesis-authoring.ROOT.ten-current-pairs.json",
+        "--write"
+      ],
+      "startedAt": "2026-10-11T00:17:24.277451+00:00",
+      "completedAt": "2026-10-11T00:17:24.863735+00:00",
+      "elapsedSeconds": 0.586,
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-fourth-M7-ten-first-current-dual-description-synthesis-root-v1/synthesis.actual-native.raw.txt",
+        "sha256": "sha256:8cfc88e756e84893958baed56cef5eacdb800f0adf4b9bc68472bc05dafd0c2c",
+        "bytes": 193
+      },
+      "activeWrites": 0
+    },
+    {
+      "label": "resolutions",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-ten-new-current-goals-author-source-scope-native-inputbundle-AUTHOR-INERT-v1/ten-current-new-goals.native-batch.config.json",
+        "--synthesis-manifest",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-ten-new-current-goals-author-source-scope-native-inputbundle-AUTHOR-INERT-v1/native/synthesis-decisions.json",
+        "--write"
+      ],
+      "startedAt": "2026-10-11T00:17:24.864173+00:00",
+      "completedAt": "2026-10-11T00:17:25.770815+00:00",
+      "elapsedSeconds": 0.907,
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-fourth-M7-ten-first-current-dual-description-synthesis-root-v1/resolutions.actual-native.raw.txt",
+        "sha256": "sha256:7b282be8c762f0157d43786185caea80490beec3be34b6875ab49afcb5549572",
+        "bytes": 210
+      },
+      "activeWrites": 0
+    },
+    {
+      "label": "finalize",
+      "actualArgv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-ten-new-current-goals-author-source-scope-native-inputbundle-AUTHOR-INERT-v1/ten-current-new-goals.native-batch.config.json"
+      ],
+      "startedAt": "2026-10-11T00:17:25.771200+00:00",
+      "completedAt": "2026-10-11T00:17:26.707082+00:00",
+      "elapsedSeconds": 0.936,
+      "exitCode": 1,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-fourth-M7-ten-first-current-dual-description-synthesis-root-v1/finalize.actual-native.raw.txt",
+        "sha256": "sha256:06984b02647b6a27a2257367a8c1a80dfee97f215effa9f2ace2ab9086ca9bbf",
+        "bytes": 201
+      },
+      "activeWrites": 0
+    }
+  ],
+  "candidatePairs": 10,
+  "activeWrites": 0,
+  "humanApproval": false
+}

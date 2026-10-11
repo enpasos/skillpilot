@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:6766d627be35de4e3f4e7469a246298ffb87c1db87b38f17dc2758874e7bb8d3",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-economics-current346-D64-binding-11",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:bd8e4429b8563e12f3352fac296162fb680fb1747123c9da4293927ee1103504",
+      "pageFingerprint": "sha256:446d77b3f93b1adb798030302f589dc46b8db944ffe18905c5e3f2f379c1112c",
+      "evidenceReview": {
+        "reviewId": "canonical-economics-q4-development-ethics-twenty-seven-positive-author-20261008-v2",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:0d5ce3762bce7a0323d78841dfa0cdf1532b6652e6d2d15351a92dba796e108e",
+        "profileFingerprint": "sha256:7e38320571b06616e6be5dabd9d225d820e0a04cf13543224284afbddc29e646",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:75e0923c68dd351e61647da785a870c9c23f11e76174bd52ce238fc1aefa2417",
+      "bytes": 287739
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:3f2fa84054b9e05c8900b9fa252534d1c9539b6a0ac3fa3e85537f3b4f4fb258",
+      "bytes": 153743
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:a5a028372cb35ba80e9c765c41f25081dbff4cadb61f3a396371fc0b51a8ee65",
+      "bytes": 3522
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:dd863b76f88a64aaa7829dc91e973d3cec6692e09b0b0955454d83126664101f",
+      "bytes": 19838
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:2e9281e0d9b7d7c1e832e9069812e22c2fc05edd51d0651ece3e3f161a38675f",
+      "bytes": 3524
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:942e5e3b7ba64e442ab5f73fa19b757fe4aa05e05e554e60df4f9fe4b2bc5fc5",
+      "bytes": 11843
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:40c5426f39a0eb4b18aaa4bf1d8118fa8360844c7e38ad47ab7780a04e1069e1",
+      "bytes": 9570
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:40242ebe86b9188a33a50ee69456ea656a8d9ee57a9b0e74a1af649c49848a8f",
+      "bytes": 6703
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+      "bytes": 3552
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:d1d14430529c814e58a0c393248cca642ecb1a89a83b6f05c65f317c0d89e1cf"
+}

@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-10T22:01:14.366Z
+Generated: 2026-10-11T00:59:17.746Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -21,8 +21,8 @@ Rules version: curriculum-quality-v5
 | M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 8 |
-| M7 | 2 |
+| M6 | 7 |
+| M7 | 3 |
 
 ## Curricula
 
@@ -48,7 +48,7 @@ Rules version: curriculum-quality-v5
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M6 | 702 | 650 | 30/30 | 16/16 | 1 | 0 | 1 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M7 | 702 | 650 | 30/30 | 16/16 | 1 | 0 | 0 |
 
 ## Mapping Pipeline
 

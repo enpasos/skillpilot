@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:28b08080a8e378915a3fa9cbb27457ca95f7a9d540975d690dfc989dfdef227a",
+  "reviewInputFingerprint": "sha256:62f112c24cea10d29f598158fedc9b4abfb5e65805b570c38fb0a8aea22d9ed3",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-a",
+      "roundId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-independent-a",
+      "runIds": [
+        "economics-current-deferrals-a1-one-monopoly-independent-c-20261011-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex-GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-b",
+      "roundId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-independent-b",
+      "runIds": [
+        "wirtschaft-current346-monopoly-1826-independent-native-b-a-20261011-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+      "firstRecordId": "economics-current-deferrals-a1-one-monopoly-independent-c-20261011-v1-1826fe19-4d06-5183-9b41-9121ae1cc219",
+      "secondRecordId": "wirtschaft-current346-monopoly-1826-independent-native-b-a-20261011-v1-1826",
+      "firstRunId": "economics-current-deferrals-a1-one-monopoly-independent-c-20261011-v1",
+      "secondRunId": "wirtschaft-current346-monopoly-1826-independent-native-b-a-20261011-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

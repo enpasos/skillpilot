@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "economics-current-deferrals-a11-eleven-other-deferrals-independent-c-20261011-v1",
+  "campaignId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-a",
+  "roundId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-first-pass-a",
+  "batchId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:b28cf2446cdc5379448254f761656eeb55a679ca6a374b48ba1e1bc5b9cc9b53",
+  "bundleFingerprint": "sha256:247999fa739a1068221a49b802259fe22c3ceb36c5b60def91c5619797657baf",
+  "bookDigest": "sha256:efa32b19068c67c1639cc2d29dac669b2580e8b83ecf878449b5a42942b89aa1",
+  "provider": "OpenAI",
+  "model": "Codex-GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "current-description-v1-targeted-original-deferral-clarification",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:22db07a402917cfde28c63716813fc9a063b69ec725d65797598ad57a1c0bbed",
+  "generationParametersFingerprint": "sha256:f965ebb7f2c31b395f8e3fd83322c75b0f0c7076fc59e7f4d2be299ab6135bb9",
+  "independenceGroupId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "625b61ec-8561-5179-b59e-d3742b19c0e2",
+    "79edbe3a-7557-5b3b-a0f2-c31f45b6dad7",
+    "a17899b9-f872-5236-a329-ec1a33d427a3",
+    "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+    "dd38e0c5-d77b-5893-815c-548ea2a84429",
+    "3e26fb9e-634c-5454-b11f-1d925201182c",
+    "648224f4-cc8f-5f41-9cae-6d783cd1ae77",
+    "543bf91f-f6c6-5b1b-ba9e-43de321d8c7f",
+    "13705b9f-9623-500b-80ba-4574b753a29c",
+    "87e1971d-d153-59eb-81d9-e361caf83a26",
+    "479fb87a-3a5a-5892-8b3e-dfb1d07e9612"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:378e064d46e2c088438fdf639802c6a0a50a84f856cf828e60ab765173818793"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ea3dd2a70ab36ef28a6be0cd18c4a31b42197cbd94e57b681a7ba78d1f02cff5"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:9b21d6b9c7cd409f105e0d7da08186853558cd0e04721e014dc56d544b98665d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:22db07a402917cfde28c63716813fc9a063b69ec725d65797598ad57a1c0bbed"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b28cf2446cdc5379448254f761656eeb55a679ca6a374b48ba1e1bc5b9cc9b53"
+    }
+  ],
+  "startedAt": "2026-10-10T23:34:25.055258+00:00",
+  "completedAt": "2026-10-10T23:43:13.419907+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:9c8497279e4b97544ee64335e68c74f0c278eae5ed7d5e6ed677ac00c74098b4",
+  "toolchainVersion": "codex-agent-current-schema-v1-native-description-validation"
+}

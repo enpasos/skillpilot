@@ -1,22 +1,22 @@
-# Lernzielvisualisierung: Arbeitsmarktmodelle diskutieren
+# Lernzielvisualisierung: NAIRU als unsichere Modellschwelle deuten
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `7c72848d-8bc9-58e2-a690-fd17ac650a88`
-- Titel: Arbeitsmarktmodelle diskutieren
-- Beschreibung: Die lernende Person kann Konzepte wie NAIRU und Tarifpolitik-Einflüsse erläutern.
+- Titel: NAIRU als unsichere Modellschwelle deuten
+- Beschreibung: Die lernende Person kann die NAIRU in einem bereitgestellten Arbeitsmarkt-Inflationsmodell als geschätzte Schwelle für nicht beschleunigende Inflation erläutern, die Modellimplikation berechnen und deren Aussage bei veränderten Schätzannahmen begrenzen.
 
 ## Generator
 
 - Provider: OpenAI Codex image_gen
-- Status: approved_ai
+- Status: pilot
 - Quellbild: `7c72848d-8bc9-58e2-a690-fd17ac650a88.png`
 - Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/7c72848d-8bc9-58e2-a690-fd17ac650a88/7c72848d-8bc9-58e2-a690-fd17ac650a88.png`
 
 ## Prompt
 
 ```text
-Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory, clear dark outlines, rounded shapes, restrained teal/coral/gold accents, welcoming ordinary people. Match the existing friendly learning illustrations. Main motif and important details clear at360px and680px; generous margins and few visual groups. No photorealism, sterile blueprint, SVG, official logos, tiny text, dense legends, pseudo-writing or decorative glyphs. Any physically used notebook/screen faces its reader correctly; floating concepts are not backwards physical sheets. Motivate competence without claiming learner achievement or empirical policy success. Learning goal: Arbeitsmarktmodelle diskutieren. Die lernende Person kann Konzepte wie NAIRU und Tarifpolitik-Einflüsse erläutern. Scene: Two labor-market models: skills/vacancy matching puzzle and wages/prices/expectations cloud beside collective bargaining table. Estimated uncertain range. Only “Modelle”, “Tarifpolitik”, “Unsicherheit”. No NAIRU directly measured or optimum, no permanent universal wages/unemployment law.
+Make ONLY two precise subject-matter corrections to this existing friendly economics PNG. Keep the whole comic composition, people, board, title 'NAIRU: Schätzung', axes Δπ and u, zero0, descending lines, colors, question and u* unchanged. First replace the misleading text 'konstant ≠ null' with EXACTLY 'Rate konstant' in the same large gold callout, retaining the arrow to the estimated zero-change crossing. A constant inflation rate CAN be zero; the old categorical not-equal statement is misleading. Zero CHANGE at the threshold means the inflation RATE is constant, with no claim about its level. Second WIDEN the translucent vertical gold uncertainty strip to fully contain ALL THREE descending lines' actual intersections with the horizontal zero-change axis: its LEFT dashed boundary must lie just LEFT of the leftmost teal dot (the lower dashed line crossing); its RIGHT boundary just RIGHT of the rightmost teal dot. It currently misses the leftmost crossing. Keep the crossing dots in their exact current positions on the zero-change axis and retain the central black crossing/u*. The band depicts uncertain estimates of the threshold. Do not alter slopes, graph signs or other objects; no new mathematical text, tiny notes, numbers, logos, watermarks or signatures. Preserve PNG near16:9 native resolution and legibility at360/680px.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:fafb38e4bed075a3809cb0cd21b2551b9f2dd7364d68bb5546fe8c04f5367d70",
+  "reviewInputFingerprint": "sha256:0e2db58e5c282ff56831d09ca658c696fa19bdd2ee5d145ff54e1c6f524b094c",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b06-a",
+      "roundId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b06-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b06-independent-a",
+      "runIds": [
+        "wirtschaft-q2-labour-twelve-independent-round-a-actual-20261008"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b06-b",
+      "roundId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b06-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b06-independent-b",
+      "runIds": [
+        "wirtschaft-q2-labour-twelve-independent-description-round-b-codex-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "b84f3f68-4d35-5277-9c9d-a6506d147414",
+      "firstRecordId": "wirtschaft-q2-labour-twelve-round-a-current-b84f3f68-4d35-5277-9c9d-a6506d147414",
+      "secondRecordId": "wirtschaft-q2-labour-twelve-independent-description-round-b-codex-20261008-v1.007",
+      "firstRunId": "wirtschaft-q2-labour-twelve-independent-round-a-actual-20261008",
+      "secondRunId": "wirtschaft-q2-labour-twelve-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a5009946-62bb-5e6a-8c92-732d02e8fd70",
+      "firstRecordId": "wirtschaft-q2-labour-twelve-round-a-current-a5009946-62bb-5e6a-8c92-732d02e8fd70",
+      "secondRecordId": "wirtschaft-q2-labour-twelve-independent-description-round-b-codex-20261008-v1.012",
+      "firstRunId": "wirtschaft-q2-labour-twelve-independent-round-a-actual-20261008",
+      "secondRunId": "wirtschaft-q2-labour-twelve-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

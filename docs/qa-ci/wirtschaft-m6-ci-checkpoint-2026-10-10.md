@@ -1,5 +1,17 @@
 # Wirtschaftswissenschaften: M6-Zwischenstand und CI, 10. Oktober 2026
 
+**Abgeschlossener CI-Nachfolger:** Der gepushte M6-Commit
+[`43461b9064`](https://github.com/enpasos/skillpilot/commit/43461b906438572f4f3b64d056112f4189dca4f4)
+hat inzwischen **alle 13 Jobs in drei GitHub-Workflows bestanden**:
+[Haupt-CI](https://github.com/enpasos/skillpilot/actions/runs/38090397313),
+[Gemini](https://github.com/enpasos/skillpilot/actions/runs/38090397312) und
+[OAuth](https://github.com/enpasos/skillpilot/actions/runs/38090397318).
+[PR #72](https://github.com/enpasos/skillpilot/pull/72) ist zur Prüfung bereit.
+Die [getrennte lokale M7-Fortsetzung bei 225/346](wirtschaft-m7-current225-m6-ci-green-2026-10-11.md)
+ist der neueste fachliche Fortsetzungsstand; diese zusätzlichen lokalen Änderungen
+sind durch die CI des M6-Commits nicht geprüft. Die folgenden Absätze bewahren
+den damals aktuellen M6-Abschluss und die tatsächlichen früheren CI-Fehler.
+
 **Aktueller lokaler Abschluss:** Der frisch erzeugte [zentrale Bericht](status/curriculum-quality-status.md) vom 10. Oktober, 22:01 UTC, bestätigt **M6 für 346 aktuelle curricularAtomic-Ziele**, **2136/2136 abgedeckte Quellenziele** und **0 unbelegte Zuordnungen**. Die zentrale Aktualitätsprüfung und alle geschützten Reifegrad-Untergrenzen bestehen. Mathematik **807/807, M7** und Physik **478/478, M7** bleiben erhalten. Die zwischenzeitliche M1-Regression ist gezielt behoben; ihr tatsächlicher fehlgeschlagener Lauf bleibt im Integrationspaket erhalten. Der lokale M6-Stand ist für den nächsten Commit geprüft. **GitHub-CI am neuen Abschlusscommit steht noch aus.**
 
 **Aktueller CI-Folger:** Der vollständige [GitHub-Lauf am Commit `fbde16db`](https://github.com/enpasos/skillpilot/actions/runs/38082173357) ist abgeschlossen und fehlgeschlagen. Sechs der acht Hauptjobs bestehen, einschließlich des vollständigen Lernzielbuch-Builds und der Frontend-Prüfungen; die separaten Gemini-Prüfungen bestehen ebenfalls. Curriculum-QS findet ausschließlich zwei veraltete erzeugte Chemie-Rolloutberichte. Backend findet drei Fehler: widersprüchliche Metadaten gemeinsamer GK-/LK-Blätter, eine veraltete Wirtschafts-Mapping-Testannahme und veraltete Sek-I-Zielzahlen. Die tatsächlichen [Fehler und nativen Projektionsmessungen](https://github.com/enpasos/skillpilot/tree/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-fbde-CI-failure-extracts-and-two-backend-contracts-READONLY-v1) bleiben erhalten. Ein grüner Job am früheren Commit ersetzt keinen erfolgreichen Gesamtlauf am Abschlusscommit.

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:90eb02bdf7aafa598aa6a93af459f8912aafb93947404c9636b714a010f508b1",
+  "reviewInputFingerprint": "sha256:32f4a989cc572b7d5a12f48033b1096f08b45ac0ce455999ea4004673a23acba",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b04-a",
+      "roundId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b04-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b04-independent-a",
+      "runIds": [
+        "wirtschaft-q2-monetary-social-seventeen-round-a-codex-actual-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b04-b",
+      "roundId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b04-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b04-independent-b",
+      "runIds": [
+        "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "f9132615-8166-5e42-ad04-d8b2b75d719d",
+      "firstRecordId": "wirtschaft-q2-monetary-social-seventeen-round-a-current-f9132615-8166-5e42-ad04-d8b2b75d719d",
+      "secondRecordId": "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2.001",
+      "firstRunId": "wirtschaft-q2-monetary-social-seventeen-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+      "firstRecordId": "wirtschaft-q2-monetary-social-seventeen-round-a-current-676684da-5ba2-5c2a-ba7e-a8413915c29c",
+      "secondRecordId": "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2.002",
+      "firstRunId": "wirtschaft-q2-monetary-social-seventeen-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+      "firstRecordId": "wirtschaft-q2-monetary-social-seventeen-round-a-current-79d244e0-049e-59e9-a2fb-b8f8670b315a",
+      "secondRecordId": "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2.003",
+      "firstRunId": "wirtschaft-q2-monetary-social-seventeen-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0",
+      "firstRecordId": "wirtschaft-q2-monetary-social-seventeen-round-a-current-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0",
+      "secondRecordId": "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2.017",
+      "firstRunId": "wirtschaft-q2-monetary-social-seventeen-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q2-monetary-social-seventeen-independent-description-round-b-codex-20261008-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

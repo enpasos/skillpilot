@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-twelve-deferrals-native-one-and-eleven-reviewer-split-AUTHOR-INERT-v1/eleven-other-deferrals.native-batch.config.json",
+  "configDigest": "sha256:a528adf92ab47ba62b047a5f217c2e4abc94fb813405b36ee1d60d391d626c44",
+  "goalIds": [
+    "625b61ec-8561-5179-b59e-d3742b19c0e2",
+    "79edbe3a-7557-5b3b-a0f2-c31f45b6dad7",
+    "a17899b9-f872-5236-a329-ec1a33d427a3",
+    "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+    "dd38e0c5-d77b-5893-815c-548ea2a84429",
+    "3e26fb9e-634c-5454-b11f-1d925201182c",
+    "648224f4-cc8f-5f41-9cae-6d783cd1ae77",
+    "543bf91f-f6c6-5b1b-ba9e-43de321d8c7f",
+    "13705b9f-9623-500b-80ba-4574b753a29c",
+    "87e1971d-d153-59eb-81d9-e361caf83a26",
+    "479fb87a-3a5a-5892-8b3e-dfb1d07e9612"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 346,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:e0256cdb9105ec1c5e3ff7a5e05092d6322bf1deb64c5241fd277a6b36da76cb"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:efa32b19068c67c1639cc2d29dac669b2580e8b83ecf878449b5a42942b89aa1",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:247999fa739a1068221a49b802259fe22c3ceb36c5b60def91c5619797657baf",
+    "reviewInputFingerprint": "sha256:9427757e55043efc54a16a9b46b0eb727bfd5f1f29bc71756f9122698766d29b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-a",
+        "campaignDigest": "sha256:19ab03e4c447d47ecbb4b4a1c92a84488cd06575c4e9da4a8e04c42a1a168c74",
+        "roundId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-first-pass-a",
+        "independenceGroupId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-independent-a",
+        "batchId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b28cf2446cdc5379448254f761656eeb55a679ca6a374b48ba1e1bc5b9cc9b53"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-b",
+        "campaignDigest": "sha256:fd5847d3b4a5ec5c60beaf22a0a75a8ce686290851a9d4052b3de6f0bc40162a",
+        "roundId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-first-pass-b",
+        "independenceGroupId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-independent-b",
+        "batchId": "wirtschaft-current346-deferral-eleven-other-deferrals-2026-10-11-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9c757fffd39c8db3ac9f88cc9c53c76b67bb4b90da21115c2caf3140c22766ba"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

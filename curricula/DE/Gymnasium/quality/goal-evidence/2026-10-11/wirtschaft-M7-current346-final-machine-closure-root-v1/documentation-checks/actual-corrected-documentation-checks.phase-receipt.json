@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "label": "documentation-links-corrected",
+      "actualArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "startedAt": "2026-10-11T01:04:36.060564+00:00",
+      "completedAt": "2026-10-11T01:04:36.453987+00:00",
+      "elapsedSeconds": 0.393,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "/tmp/skillpilot-economics-M7-doc-link-correction-20261011/documentation-links-corrected.raw.txt",
+        "sha256": "sha256:743c11b9bdf9fd5ebf10da05e5e07e0783fc3db9db8cdfeecce0a669c4a85f09"
+      },
+      "scientificReviewClaim": false
+    },
+    {
+      "label": "final-git-diff-whitespace",
+      "actualArgv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "startedAt": "2026-10-11T01:04:36.454377+00:00",
+      "completedAt": "2026-10-11T01:04:36.778300+00:00",
+      "elapsedSeconds": 0.324,
+      "exitCode": 0,
+      "status": "PASS",
+      "rawLog": {
+        "path": "/tmp/skillpilot-economics-M7-doc-link-correction-20261011/final-git-diff-whitespace.raw.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scientificReviewClaim": false
+    }
+  ],
+  "initialFailureHistoryPreserved": true
+}

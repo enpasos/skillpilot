@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5306ae2fda865487f1956a879719e0007f471cd825cb17db75cb059f46adb62e",
+  "reviewInputFingerprint": "sha256:032bc9395c4e4fbbc068feed5c51d7e0de9fc31bdf2ae2a59e38f54750fd17ce",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-D9-direct-only-preserved-pair-binding-01-a",
+      "roundId": "wirtschaft-current346-D9-direct-only-preserved-pair-binding-01-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-D9-direct-only-preserved-pair-binding-01-independent-a",
+      "runIds": [
+        "wirtschaft-current336-final56-v22-b02-a.own-codex-gpt6-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-D9-direct-only-preserved-pair-binding-01-b",
+      "roundId": "wirtschaft-current346-D9-direct-only-preserved-pair-binding-01-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-D9-direct-only-preserved-pair-binding-01-independent-b",
+      "runIds": [
+        "wirtschaft-current336-final56-v22-b02-first-pass-b.batch-001.codex-gpt6-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-6::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "550a050a-36bb-5b9e-ae0a-1afc7f9a0df0",
+      "firstRecordId": "wirtschaft-current336-final56-v22-b02-a.own-codex-gpt6-run.record-008",
+      "secondRecordId": "wirtschaft-current336-final56-v22-b02-first-pass-b.batch-001.codex-gpt6-b.record-008",
+      "firstRunId": "wirtschaft-current336-final56-v22-b02-a.own-codex-gpt6-run",
+      "secondRunId": "wirtschaft-current336-final56-v22-b02-first-pass-b.batch-001.codex-gpt6-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0e5b12a1-68bd-5838-8e70-02b3e7f2518a",
+      "firstRecordId": "wirtschaft-current336-final56-v22-b02-a.own-codex-gpt6-run.record-009",
+      "secondRecordId": "wirtschaft-current336-final56-v22-b02-first-pass-b.batch-001.codex-gpt6-b.record-009",
+      "firstRunId": "wirtschaft-current336-final56-v22-b02-a.own-codex-gpt6-run",
+      "secondRunId": "wirtschaft-current336-final56-v22-b02-first-pass-b.batch-001.codex-gpt6-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6f1f4654-35ab-5ba6-a329-b19b994e84cc",
+      "firstRecordId": "wirtschaft-current336-final56-v22-b02-a.own-codex-gpt6-run.record-010",
+      "secondRecordId": "wirtschaft-current336-final56-v22-b02-first-pass-b.batch-001.codex-gpt6-b.record-010",
+      "firstRunId": "wirtschaft-current336-final56-v22-b02-a.own-codex-gpt6-run",
+      "secondRunId": "wirtschaft-current336-final56-v22-b02-first-pass-b.batch-001.codex-gpt6-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

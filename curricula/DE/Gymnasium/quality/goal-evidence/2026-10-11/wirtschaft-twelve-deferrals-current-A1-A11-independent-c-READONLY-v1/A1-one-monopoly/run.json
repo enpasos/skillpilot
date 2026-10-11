@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "economics-current-deferrals-a1-one-monopoly-independent-c-20261011-v1",
+  "campaignId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-a",
+  "roundId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-first-pass-a",
+  "batchId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:04b9220e18156dc08c5d129a9f7ebd4063250989d5b847f64abc33a1f306b40c",
+  "bundleFingerprint": "sha256:28b08080a8e378915a3fa9cbb27457ca95f7a9d540975d690dfc989dfdef227a",
+  "bookDigest": "sha256:24340fac19f930d1fab59ef391130e5bd02978a307b95db4c811140802cbbfdc",
+  "provider": "OpenAI",
+  "model": "Codex-GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "current-description-v1-targeted-original-deferral-clarification",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:22db07a402917cfde28c63716813fc9a063b69ec725d65797598ad57a1c0bbed",
+  "generationParametersFingerprint": "sha256:f965ebb7f2c31b395f8e3fd83322c75b0f0c7076fc59e7f4d2be299ab6135bb9",
+  "independenceGroupId": "wirtschaft-current346-deferral-one-monopoly-2026-10-11-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1826fe19-4d06-5183-9b41-9121ae1cc219"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:f075025ee818d4018dc4a43c1e2e91da449df151453245cab5d90db1dfce02b5"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:0c05e65bd2a779bc281779f8924eef5909fb5dc25dd3fc972b3c95be2377ecac"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:158dda4436ee06ff5038d6221d280cd23dfad4366c1de4fce7027a960d80f402"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:22db07a402917cfde28c63716813fc9a063b69ec725d65797598ad57a1c0bbed"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:04b9220e18156dc08c5d129a9f7ebd4063250989d5b847f64abc33a1f306b40c"
+    }
+  ],
+  "startedAt": "2026-10-10T23:34:25.055258+00:00",
+  "completedAt": "2026-10-10T23:43:13.417383+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:10cad95f1cb3543e29c4e14e51516ed81ed1e330861c5d00ddcf56a5fcb2595d",
+  "toolchainVersion": "codex-agent-current-schema-v1-native-description-validation"
+}

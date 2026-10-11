@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:24340fac19f930d1fab59ef391130e5bd02978a307b95db4c811140802cbbfdc",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-economics-current346-deferral-one-monopoly-2026-10-11-v1",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:e0f9baaa78247a6a3b27721958ca3221cc34f69b95c87c73d7e4822a9eb8b656",
+      "pageFingerprint": "sha256:d0be33637d78236374dd80d410a5ab519da2f598561af5ce10cc67b38f755cb5",
+      "evidenceReview": {
+        "reviewId": "canonical-economics-e2-twenty-positive-author-20261008-v2",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:221330386ebe4a61e020d8ca2b249d6175394a682800137ef834264eebe0a349",
+        "profileFingerprint": "sha256:8add9015520acf3a4e491b1e4c699f88f10f04565034ca649a0310fc300cb8f6",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:22db07a402917cfde28c63716813fc9a063b69ec725d65797598ad57a1c0bbed",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:f075025ee818d4018dc4a43c1e2e91da449df151453245cab5d90db1dfce02b5",
+      "bytes": 288209
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:40c3f850f9fe1e7a1f63443b553ad16f9d6540a01b73819e89eb965cc6dbffb3",
+      "bytes": 147121
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:07116863b8f584a8be1ee29ff79ea4034e087d26e3095175a41d879e97e4e228",
+      "bytes": 3124
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:271b0214cb91d943143f34d95a4bf0bffa9c992c1f2b359b113426f8ea85b56b",
+      "bytes": 20122
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:7d5729624044499f8d6e2eeb5eaef765b28fd4b4fd38e9bca65881df196472f1",
+      "bytes": 3125
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:0c05e65bd2a779bc281779f8924eef5909fb5dc25dd3fc972b3c95be2377ecac",
+      "bytes": 15167
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:158dda4436ee06ff5038d6221d280cd23dfad4366c1de4fce7027a960d80f402",
+      "bytes": 12791
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:ee82fdd387125cf06b38b2c281087c89db01e0cbe297a61d2fd15577e648022b",
+      "bytes": 10141
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:22db07a402917cfde28c63716813fc9a063b69ec725d65797598ad57a1c0bbed",
+      "bytes": 4424
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:28b08080a8e378915a3fa9cbb27457ca95f7a9d540975d690dfc989dfdef227a"
+}

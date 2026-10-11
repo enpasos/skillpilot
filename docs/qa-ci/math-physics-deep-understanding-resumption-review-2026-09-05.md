@@ -11,6 +11,53 @@ Momentaufnahmen. Menschliche Release-Gates bleiben getrennt.
 
 ## Aktuelle Zielverfolgung: ausschließlich Wirtschaftswissenschaften
 
+Der [maschinelle M7-Abschluss vom 11. Oktober](wirtschaft-m7-machine-closeout-2026-10-11.md)
+bestätigt **346/346 streng abgeschlossene aktuelle Ziele, 100 %, M7 und
+CQR-303 PASS**. D/P/A/M/V sind vollständig aktuell, alle sechs erforderlichen
+Checks bestehen, relevante M7-Blocker 0. Das letzte Paket bringt **+55**:
+sechs neue fachliche Abschlüsse, 48 wiederhergestellte Bindungen und eine erste
+zentrale Registrierung eines gültigen Altpaars. Seit dem 225-Stand sind es
+**+121 = 22 neue Abschlüsse + 98 Bindungsreparaturen + eine Erstregistrierung**.
+Mathematik 807/807 und Physik 478/478 bleiben geschützt auf M7; die 20 übrigen
+zentralen Curriculumzeilen bleiben gleich. Lokale Abschlussprüfungen und der
+Anwendungbuild bestehen. Der neue M7-Commit erhält einen eigenen tatsächlichen
+GitHub-CI-Lauf; die 13 grünen Jobs des M6-Commits `43461b9064` sind separate
+historische Belege. Menschliche Release- und Erprobungsgates bleiben getrennt.
+
+### Historischer 291-Stand, vor der abschließenden Kontextintegration
+
+Der [neueste Fortsetzungsstand vom 11. Oktober](wirtschaft-m7-current291-qualified-contexts-2026-10-11.md)
+bestätigt **M6 und 291/346 streng abgeschlossene Ziele (84,1 %), 55 offen;
+D291/P346/A346/M346/V346**. Seit dem 225-Stand beträgt der strenge Nettozuwachs
+**+66**, davon 16 neue fachliche Abschlüsse und 50 wiederhergestellte Bindungen.
+Die zentrale Aktualitätsprüfung, geschützten Untergrenzen und alle fünf
+Lernzielbücher bestehen. **CQR-303 bleibt FAIL**, fünf von sechs Checks,
+60 Blocker. Mathematik 807/807 und Physik 478/478 bleiben M7; die 20 übrigen
+zentralen Curriculumzeilen sind vollständig gleich zum CI-Commit `43461b9064`.
+Dessen 13 GitHub-Jobs bestehen; die lokalen M7-Folger sind dadurch nicht geprüft.
+Ungeprüfte Kandidaten und gemeinsame offene Nachweisketten bleiben ungezählt;
+menschliche Release-Gates bleiben getrennt.
+
+### Historischer 225-Stand, vor der qualifizierten Kontextintegration
+
+Der [Fortsetzungsstand vom 11. Oktober](wirtschaft-m7-current225-m6-ci-green-2026-10-11.md)
+bestätigt **M6 und 225/346 streng abgeschlossene Ziele (65,0 %), 121 offen;
+D225/P346/A346/M346/V346**. Der aktuelle zentrale Bericht vom 10. Oktober,
+23:24:28 UTC, seine Aktualitätsprüfung und die geschützten Untergrenzen bestehen.
+**CQR-303 bleibt FAIL** mit fünf von sechs Checks und 164 konkreten Blockern.
+Netto gegenüber dem CI-Ausgangsstand 0/346: **+225**, davon 224 wiederhergestellte
+strenge Abschlüsse und ein erstmals zentral registrierter, bereits fachlich
+validierter Dualreview; keine neuen fachlichen Beschreibungsreviews in diesem Paket.
+Alle fünf regulären Lernzielbuchpublikationen bestehen; Wirtschaft hat 346 Zielseiten.
+Der gepushte M6-Commit `43461b9064` hat **13/13 erfolgreiche GitHub-Jobs in drei
+Workflows**; [PR #72](https://github.com/enpasos/skillpilot/pull/72) ist zur Prüfung
+bereit. Die lokalen M7-Folger liegen getrennt und sind durch diesen CI-Lauf nicht
+geprüft. Mathematik 807/807 und Physik 478/478 bleiben auf M7 geschützt.
+Ungeprüfte Beschreibungs- und Kontextfolger bleiben ungezählt; menschliche
+Release-Gates bleiben separat.
+
+### Historischer M6-/CI-Zwischenstand, vor dem aktuellen M7-Paket
+
 Der [M6-/CI-Zwischenstand vom 10. Oktober](wirtschaft-m6-ci-checkpoint-2026-10-10.md)
 ist der aktuelle Fortsetzungsstand: **346 curricularAtomic-Ziele,
 D216/P346/A346/M346/V0, streng 0/346**. Der frisch erzeugte zentrale Bericht

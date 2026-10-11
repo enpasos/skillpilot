@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:fb904a64ea69725f263190d9a7faf48a3b14d5b42a0c59cd8325a795d78cb01a",
+  "reviewInputFingerprint": "sha256:16bdb5a01fcee02187027c2ead1df9d013a239e52dc1e14be37f90a61022a989",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b03-a",
+      "roundId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b03-first-pass-a",
+      "independenceGroupId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b03-independent-a",
+      "runIds": [
+        "wirtschaft-final19-current281-independent-a-20261009-actual"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b03-b",
+      "roundId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b03-first-pass-b",
+      "independenceGroupId": "wirtschaft-current346-C14-qualified-context-owner-20261011-b03-independent-b",
+      "runIds": [
+        "wirtschaft-final19-current281-independent-B-whole-pages-20261009-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-6 Codex::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "410e7ab4-a4ef-5090-8d4c-11a28372082d",
+      "firstRecordId": "wirtschaft-final19-current281-independent-a-20261009-actual.410e7ab4-a4ef-5090-8d4c-11a28372082d",
+      "secondRecordId": "wirtschaft-final19-current281-independent-B-whole-pages-20261009-v1.011",
+      "firstRunId": "wirtschaft-final19-current281-independent-a-20261009-actual",
+      "secondRunId": "wirtschaft-final19-current281-independent-B-whole-pages-20261009-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

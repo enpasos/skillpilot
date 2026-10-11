@@ -1,0 +1,13 @@
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
+const R='/home/enpasos/projects/skillpilot';
+const F=join(R,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-four-current-D56-native-owner-context-scoping-AUTHOR-INERT-c-v1/current-root-P15-QA346-qualified-native-followers-v2');
+const model=await import(pathToFileURL(join(R,'app/scripts/goalBookModel.ts')).href);
+const configPath='app/scripts/config/goal-books/de-gym-economics-current-canonical.json';const inputs=await model.loadGoalBookBuildInputs(configPath);
+const measurement=JSON.parse(readFileSync(join(F,'actual-targeted-native-four-owner-225-nonloss-and-indirect-ID-release.READONLY.json'),'utf8'));
+const ids=new Set(measurement.indirectGainedGoalIds);
+const out=join(F,'actual-current20-only-original-native-full-page-contexts.READONLY.json');if(existsSync(out))throw new Error('Existing immutable artifact');
+writeFileSync(out,JSON.stringify({status:'READONLY-in-memory-current-model-selected20-not-native-new-review',actualUTC:new Date().toISOString(),originalNativeLoader:'app/scripts/goalBookModel.ts#loadGoalBookBuildInputs',activeWrites:0,globalBuildOrRender:false,configPath,configDigest:'sha256:'+createHash('sha256').update(readFileSync(join(R,configPath))).digest('hex'),currentActualModelDigest:inputs.model.digest,sourceInputs:inputs.model.source,selectedCurrentGoalIds:[...ids],wholeSelectedActualCurrentPages:inputs.model.pages.filter((p:any)=>ids.has(p.goalId)),fullModelPageCount:inputs.model.pages.length,nativeIndicesAndOldReviewsUnmodified:true},null,2)+'\n');
+console.log(JSON.stringify({selected20:ids.size,currentActualPages:inputs.model.pages.filter((p:any)=>ids.has(p.goalId)).length,fullModelPageCount:inputs.model.pages.length,currentModelDigest:inputs.model.digest,activeWrites:0}));
