@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex image generation",
+    "--review-status",
+    "pilot"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Grenzen der Umwandlung von Wärme in Arbeit erklären\nSkillPilot ID: dc5173e8-6e63-58d3-a79b-bd74ef3cb98b\nPrompt: tmp/goal-visualizations/dc5173e8-6e63-58d3-a79b-bd74ef3cb98b/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/dc5173e8-6e63-58d3-a79b-bd74ef3cb98b/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- dc5173e8-6e63-58d3-a79b-bd74ef3cb98b \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "normalProductionCodeUnmodified": true
+}

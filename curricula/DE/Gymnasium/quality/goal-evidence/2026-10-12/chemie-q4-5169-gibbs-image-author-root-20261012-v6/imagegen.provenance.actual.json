@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual author image generation and visual inspection; independent scientific approval pending",
+  "goalId": "5169bb6b-f065-5798-8164-9b4521e44ae8",
+  "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+  "model": "Not exposed by the built-in tool",
+  "generationMode": "redesign",
+  "toolOutputFile": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-909dc7d0-8c50-4263-bf6b-87f6ba928000.png",
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-gibbs-image-author-root-20261012-v6/5169bb6b-f065-5798-8164-9b4521e44ae8.png",
+  "assetSha256": "2553e3f73405255dd071adf176e3c81e366b78ef403dbd35def8a992b7a203a0",
+  "bytes": 1682606,
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-gibbs-image-author-root-20261012-v6/actual-imagegen-tool-prompt.txt",
+  "promptSha256": "afa85db636f7c5a5d48d7d8122cc07585e79d98170dd51a5d466891badbdf9ce",
+  "reviewedAtUtc": "2026-10-12T21:01:51.075782+00:00",
+  "originalLegacyImage": {
+    "path": "curricula/DE/Gymnasium/visualizations/chemie/5169bb6b-f065-5798-8164-9b4521e44ae8/5169bb6b-f065-5798-8164-9b4521e44ae8.jpg",
+    "sha256": "140f30b87abdd15fa5e0315bbe60505c561828bf0b7ca702bb84af67b22d16c7",
+    "defects": [
+      "Unqualified energy-release caption conflates spontaneity with exothermicity",
+      "Four blue particles become six blue particles and two red species without a stated reaction",
+      "Activation/rate-looking cartoon does not distinguish thermodynamic favorability from kinetics"
+    ]
+  },
+  "primaryReferences": [
+    "https://goldbook.iupac.org/terms/view/G02629",
+    "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy"
+  ],
+  "authorActualInspection": {
+    "decision": "HOLD",
+    "nativeGeneratedImageInspected": true,
+    "particleCounts": {
+      "left": 5,
+      "right": 6
+    },
+    "allIdenticalBlueParticles": true,
+    "formulaAndSignsCorrect": true,
+    "endothermicSpontaneityExplicit": true,
+    "spontaneityNotSpeedExplicit": true,
+    "finding": "Particle count5 versus6 invalid; original retained as rejected attempt"
+  },
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false,
+  "formatDecision": "Friendly hand-drawn landscape PNG at nearby native16:9; simpler large-label composition responds to evidenced conceptual errors"
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex image generation",
+    "--review-status",
+    "pilot"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Entropieänderungen aus Energie- und Teilchenverteilung abschätzen\nSkillPilot ID: 0a5a49f2-8e8a-5edb-b6ca-3f8636957a17\nPrompt: tmp/goal-visualizations/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- 0a5a49f2-8e8a-5edb-b6ca-3f8636957a17 \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "normalProductionCodeUnmodified": true
+}

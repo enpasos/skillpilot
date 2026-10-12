@@ -1,0 +1,475 @@
+{
+  "wholeGoal": {
+    "id": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+    "title": "Enthalpien berechnen",
+    "titleEn": "Calculate enthalpies",
+    "description": "Die lernende Person kann Reaktionsenthalpien mit dem Satz von Hess und einfachen Kalorimetrieansätzen bestimmen.",
+    "descriptionEn": "The learner can determine reaction enthalpies using Hess's law and simple calorimetry approaches.",
+    "weight": 1.15,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "801790f9-be3a-51fe-9b0f-3452c1bba887"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_ENERGIE"
+      ],
+      "phase": "Q4"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+        "title": "Visualisierung: Enthalpien berechnen",
+        "url": "/assets/goal-visualizations/chemie/4a08f31f-204c-5339-9d9f-5d2af28d5d5c/4a08f31f-204c-5339-9d9f-5d2af28d5d5c.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Enthalpien berechnen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Enthalpien berechnen\". Die lernende Person kann Reaktionsenthalpien mit dem Satz von Hess und einfachen Kalorimetrieansätzen bestimmen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "wholeProfile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "expectation-hess-carbon-monoxide",
+        "essentialUnderstandingDe": "Hess-Zyklus, Standardbildungsenthalpie und Stoffmengenbasis verbinden.",
+        "essentialUnderstandingEn": "Connect a Hess cycle, standard formation enthalpy and amount basis.",
+        "observablePerformanceExactWholeCaseRef": "hess-carbon-monoxide"
+      },
+      {
+        "id": "expectation-salt-calorimetry-execution",
+        "essentialUnderstandingDe": "Kalorimetrie tatsächlich planen/durchführen/auswerten und Unsicherheit begründen.",
+        "essentialUnderstandingEn": "Actually plan/execute/evaluate calorimetry and justify uncertainty.",
+        "observablePerformanceExactWholeCaseRef": "salt-calorimetry-execution"
+      },
+      {
+        "id": "expectation-st-named-calorimetry-execution",
+        "essentialUnderstandingDe": "Genau die verlangten ST-Schülerversuche ausführen und Stoff-/Energiebilanz getrennt deuten.",
+        "essentialUnderstandingEn": "Execute the specifically required ST experiments and distinguish matter/energy balances.",
+        "observablePerformanceExactWholeCaseRef": "st-named-calorimetry-execution"
+      },
+      {
+        "id": "expectation-neutralisation-calorimetry",
+        "essentialUnderstandingDe": "Neutralisationsenthalpie aus realer kontrollierter Messung und klarer Bezugsreaktion ableiten.",
+        "essentialUnderstandingEn": "Infer neutralisation enthalpy from an actual controlled assay and a clear reference reaction.",
+        "observablePerformanceExactWholeCaseRef": "neutralisation-calorimetry"
+      },
+      {
+        "id": "expectation-formation-and-bond-enthalpies",
+        "essentialUnderstandingDe": "Standarddaten, Bindungsmodell und Phasenbezug sachgerecht unterscheiden.",
+        "essentialUnderstandingEn": "Distinguish standard data, bond model and phase reference.",
+        "observablePerformanceExactWholeCaseRef": "formation-and-bond-enthalpies"
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "expectation-hess-carbon-monoxide",
+        "expectation-salt-calorimetry-execution",
+        "expectation-st-named-calorimetry-execution",
+        "expectation-neutralisation-calorimetry",
+        "expectation-formation-and-bond-enthalpies"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "chemically-relevant-conditions",
+        "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+        "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+      }
+    ]
+  },
+  "completeCaseUniqueContent": [
+    {
+      "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+      "case": {
+        "id": "hess-carbon-monoxide",
+        "taskDemandDe": "Gerundete thermochemische Aufgabenwerte bei gleichen Standardbedingungen: C(Graphit,s)+O2(g)->CO2(g), ΔH°=-393,5 kJ/mol; CO(g)+1/2 O2(g)->CO2(g), ΔH°=-283,0 kJ/mol. Ziel: Bildung von 1 mol CO(g) aus den Elementen. Kein Versuch zur CO-Herstellung. Konstruiere die Zielgleichung durch Umkehrung/Addition, berechne ΔfH°(CO), zeichne einen maßstabsgerechten Enthalpiezyklus und begründe den Satz von Hess als Folge der Energieerhaltung. Gib für 0,50 mol CO die nichtmolare Änderung an.",
+        "taskDemandEn": "Rounded thermochemical task values at identical standard conditions: C(graphite,s)+O2(g)->CO2(g), ΔH°=-393.5 kJ/mol; CO(g)+1/2 O2(g)->CO2(g), ΔH°=-283.0 kJ/mol. Target: form 1 mol CO(g) from the elements. No CO-production experiment. Construct the target by reversing/adding equations, calculate ΔfH°(CO), draw a scaled enthalpy cycle and explain Hess's law from energy conservation. Give the nonmolar change for 0.50 mol CO.",
+        "expectedPerformanceDe": "Die zweite Reaktion wird umgekehrt: CO2->CO+1/2 O2, +283,0 kJ/mol. Addition ergibt C+1/2 O2->CO, ΔfH°=-110,5 kJ/mol CO. Für 0,50 mol: -55,25 kJ. Der Zyklus verwendet identische Anfangs-/Endzustände mit Phasenangaben; eine konsistente Skala zeigt -110,5 und -283,0 als Teilstrecken von -393,5. Enthalpie ist eine Zustandsgröße; Wegunabhängigkeit setzt gleiche Bezugszustände voraus. Aktivierungsbarriere und spontane Herstellbarkeit werden daraus nicht bestimmt.",
+        "expectedPerformanceEn": "Reverse the second reaction: CO2->CO+1/2 O2, +283.0 kJ/mol. Addition gives C+1/2 O2->CO with ΔfH°=-110.5 kJ/mol CO. For 0.50 mol the change is -55.25 kJ. The cycle uses identical initial/final states with phases; a consistent scale shows -110.5 and -283.0 as parts of -393.5. Enthalpy is a state quantity; path independence requires identical reference states. This does not determine activation barriers or practical spontaneous production.",
+        "understandingFocusDe": "Hess-Zyklus, Standardbildungsenthalpie und Stoffmengenbasis verbinden.",
+        "understandingFocusEn": "Connect a Hess cycle, standard formation enthalpy and amount basis."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Reaktionsumkehr und Stoffbilanz korrekt ausführen.",
+            "aspectEn": "Correctly reverse the reaction and balance species."
+          },
+          {
+            "points": 1,
+            "aspectDe": "-110,5 kJ/mol und -55,25 kJ berechnen.",
+            "aspectEn": "Calculate -110.5 kJ/mol and -55.25 kJ."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Phasen und maßstabsgerechten Zyklus darstellen.",
+            "aspectEn": "Show phases and a scaled cycle."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Zustandsgröße von Aktivierungsenergie/Herstellbarkeit unterscheiden.",
+            "aspectEn": "Distinguish a state quantity from activation energy/feasibility."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    },
+    {
+      "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+      "case": {
+        "id": "salt-calorimetry-execution",
+        "taskDemandDe": "Betreuter, von der Lehrkraft freigegebener Styroporkalorimeter-Versuch, methodisch nach Uni Göttingen „Lösungswärme von Salzen“ (2159) angepasst: je 40,00 g Wasser, 0,00500 mol wasserfreies CaCl2 (0,555 g) bzw. CaCl2·6H2O (1,095 g), getrennte saubere Ansätze. Bereitgestelltes/kalibriertes C_cal, Waage, Digitaltemperatursensor, Rührer; Schutzbrille, Staubkontakt vermeiden, Entsorgung nach Lehrkraft. Gefäße nicht gasdicht verschließen. Plane eine exotherme und eine endotherme Messung mit gleicher Wassermasse/Temperatur, Wasser-Leerprobe und Wiederholung. Führe beide aus; logge Masse sowie T alle 15 s vor/nach Zugabe, zeichne T(t), begründe den Auswertezeitpunkt und berechne ΔH_m≈-[(m_Lösung c_p)+C_cal]ΔT/n. Dokumentiere deine echten Befunde. Zusätzlich werte das gebundene synthetische Übungsprotokoll aus; es ersetzt keine Durchführung.",
+        "taskDemandEn": "Teacher-authorised supervised polystyrene-calorimeter experiment adapted from Göttingen's “Lösungswärme von Salzen” (2159): 40.00 g water per run, 0.00500 mol anhydrous CaCl2 (0.555 g) or CaCl2·6H2O (1.095 g), separate clean runs. Supplied/calibrated C_cal, balance, digital thermometer and stirrer; goggles, avoid dust exposure and follow teacher disposal. Do not seal vessels gas-tight. Plan one exothermic and one endothermic measurement using equal water mass/temperature, a water blank and repeat runs. Execute both; record mass and T every 15 s before/after addition, plot T(t), justify the evaluation point and calculate ΔH_m≈-[(m_solution c_p)+C_cal]ΔT/n. Submit actual observations. Also analyse the bound synthetic practice log; it does not replace execution.",
+        "expectedPerformanceDe": "Vollpunkte erfordern eigene Planung, reale Rohdaten beider ausgeführten Messungen, Leerprobe/Wiederholung und Fehlerbetrachtung. Im synthetischen Modell: m=40,555 bzw. 41,095 g, c_p=4,18 J g^-1 K^-1, C_cal=25,0 J K^-1, ΔT bei 60 s=+1,70 bzw. -0,50 K: ΔH_m≈-66,14 bzw. +19,68 kJ/mol. Exothermes Lösen erwärmt die Umgebung, endothermes entzieht ihr Wärme; Gitterauftrennung und Hydratation wirken gegeneinander. Wärmeverlust, Sensorverzug, Salzform/Reinheit und angenähertes c_p begrenzen den Messwert. Unerwartete Befunde werden untersucht statt durch Modellwerte ersetzt. Die offene Messung approximiert ΔH nur bei konstantem Druck und berücksichtigtem Energieaustausch.",
+        "expectedPerformanceEn": "Full credit requires an independent plan, actual raw data from both executed measurements, blank/repeats and uncertainty analysis. Synthetic model: m=40.555 or 41.095 g, c_p=4.18 J g^-1 K^-1, C_cal=25.0 J K^-1, ΔT at 60 s=+1.70 or -0.50 K: ΔH_m≈-66.14 or +19.68 kJ/mol. Exothermic dissolution warms surroundings, endothermic dissolution absorbs heat; lattice separation and hydration oppose each other. Heat loss, sensor lag, salt form/purity and approximate c_p bound the result. Investigate deviations rather than replace them with model values. The open assay approximates ΔH only at constant pressure with energy transfers accounted for.",
+        "understandingFocusDe": "Kalorimetrie tatsächlich planen/durchführen/auswerten und Unsicherheit begründen.",
+        "understandingFocusEn": "Actually plan/execute/evaluate calorimetry and justify uncertainty."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "learner_execution_required",
+      "syntheticFixture": false,
+      "sourceRouteRequirements": [
+        "BW/NI/BB/BE/SN/ST: actual execution where officially required"
+      ],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "syntheticPracticeLog": {
+        "explicitlySynthetic": true,
+        "timeSeconds": [
+          -30,
+          0,
+          15,
+          30,
+          60,
+          90,
+          120
+        ],
+        "CaCl2TemperatureC": [
+          20,
+          20,
+          21.55,
+          21.8,
+          21.7,
+          21.6,
+          21.5
+        ],
+        "CaCl2HexahydrateTemperatureC": [
+          20,
+          20,
+          19.65,
+          19.4,
+          19.5,
+          19.55,
+          19.6
+        ],
+        "waterBlankTemperatureC": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evaluationAtSeconds": 60,
+        "cp_J_per_g_K": 4.18,
+        "calorimeterHeatCapacity_J_per_K": 25,
+        "amountEach_mol": 0.005
+      },
+      "rubric": {
+        "maximumPoints": 5,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Eigenen Plan, Leerprobe und Wiederholung vorlegen.",
+            "aspectEn": "Supply an independent plan, blank and repeats."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Beide echten Messungen mit Massen und T(t)-Rohdaten dokumentieren.",
+            "aspectEn": "Document both actual measurements with mass and raw T(t) data."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Kalorimeterwärmekapazität, Vorzeichen und molare Basis korrekt verwenden.",
+            "aspectEn": "Use calorimeter heat capacity, signs and molar basis correctly."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Exotherm/endotherm und Gitter-/Hydratationsbeiträge erklären.",
+            "aspectEn": "Explain exo/endo and lattice/hydration contributions."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Mindestens zwei konkrete Fehlerquellen und keine ersetzte Durchführung benennen.",
+            "aspectEn": "Identify at least two concrete errors without substituting for execution."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    },
+    {
+      "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+      "case": {
+        "id": "st-named-calorimetry-execution",
+        "taskDemandDe": "Verbindliche ST-Verfahren als betreuter, lehrkraftfreigegebener Auftrag: Magnesium und Ammoniumhydrogencarbonat jeweils mit verdünnter Salzsäure. Autoren-Mikromaßstab: getrennt je 20,0 mL HCl 0,20 mol/L im offenen Kalorimeter, einmal 0,0243 g Mg, einmal 0,0791 g NH4HCO3. Säure ist überschüssig; bereitetes C_cal/Temperatursensor. Schutzbrille; keine Zündquelle, kein direkter Gasnachweis, nie gasdicht schließen (H2 bzw. CO2); Lehrkraft regelt Rückstände. Plane, führe beide Reaktionen aus und protokolliere eigene Temperatur-Zeit-Kurven, Massen und Kontroll-/Wiederholungswerte. Formuliere die Stoffgleichungen mit Phasen, berechne die jeweiligen molaren Enthalpien und erkläre, warum Gasbildung allein weder Vorzeichen noch Spontanität bestimmt. Synthetische Vergleichsdaten stehen im vollständigen Fall und sind keine eigenen Beobachtungen.",
+        "taskDemandEn": "ST-required methods as a supervised teacher-authorised task: magnesium and ammonium hydrogen carbonate each with dilute hydrochloric acid. Author microscale: separate runs of 20.0 mL HCl 0.20 mol/L in open calorimeters, one with 0.0243 g Mg and one with 0.0791 g NH4HCO3. Acid is in excess; supplied C_cal/temperature sensor. Goggles; no ignition source/direct gas test, never seal gas-tight (H2 or CO2); follow teacher disposal. Plan and execute both reactions, recording actual temperature/time traces, masses, controls and repeats. Give equations with phases, calculate molar enthalpies and explain why gas formation alone establishes neither sign nor spontaneity. Synthetic comparison data are supplied in the whole case and are not your observations.",
+        "expectedPerformanceDe": "Mg(s)+2 HCl(aq)->MgCl2(aq)+H2(g); NH4HCO3(s)+HCl(aq)->NH4Cl(aq)+CO2(g)+H2O(l). Bei jeweils 0,00100 mol im synthetischen Modell, m≈20,0243 bzw. 20,0791 g, c_p=4,18 und C_cal=25,0 J/K, ΔT=+4,20 bzw. -0,350 K: etwa -456,55 bzw. +38,13 kJ/mol. Eine Gleichung wird pro Mol des begrenzenden Feststoffs bilanziert. Eigene Ausführung/T(t)/Kontrolle ist verpflichtend; kleine ΔT macht den endothermen Wert besonders unsicher. Gas entführt Stoff/Energie; bei offenen Kalorimetern muss der Einfluss diskutiert werden. Gasbildung allein ist kein Enthalpie- oder Spontanitätsbeweis.",
+        "expectedPerformanceEn": "Mg(s)+2 HCl(aq)->MgCl2(aq)+H2(g); NH4HCO3(s)+HCl(aq)->NH4Cl(aq)+CO2(g)+H2O(l). Synthetic model with 0.00100 mol each, m≈20.0243 or 20.0791 g, c_p=4.18 and C_cal=25.0 J/K, ΔT=+4.20 or -0.350 K gives about -456.55 or +38.13 kJ/mol. Use one mole of limiting solid as the reaction basis. Actual execution/T(t)/controls are required; small ΔT makes the endothermic result especially uncertain. Escaping gas transports matter/energy, whose effect in open calorimetry must be discussed. Gas formation alone proves neither enthalpy sign nor spontaneity.",
+        "understandingFocusDe": "Genau die verlangten ST-Schülerversuche ausführen und Stoff-/Energiebilanz getrennt deuten.",
+        "understandingFocusEn": "Execute the specifically required ST experiments and distinguish matter/energy balances."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "learner_execution_required",
+      "syntheticFixture": false,
+      "sourceRouteRequirements": [
+        "ST gAN/eAN: magnesium AND NH4HCO3 with dilute HCl"
+      ],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "syntheticPracticeLog": {
+        "explicitlySynthetic": true,
+        "timeSeconds": [
+          -30,
+          0,
+          15,
+          30,
+          60,
+          90
+        ],
+        "MgTemperatureC": [
+          20,
+          20,
+          22.5,
+          24.1,
+          24.2,
+          24.0
+        ],
+        "NH4HCO3TemperatureC": [
+          20,
+          20,
+          19.8,
+          19.6,
+          19.65,
+          19.7
+        ],
+        "acidBlankTemperatureC": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evaluationAtSeconds": 60,
+        "amountEach_mol": 0.001,
+        "calorimeterHeatCapacity_J_per_K": 25,
+        "cp_J_per_g_K": 4.18
+      },
+      "rubric": {
+        "maximumPoints": 5,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Beide konkret verlangten realen Reaktionen ausführen.",
+            "aspectEn": "Execute both specifically required actual reactions."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Stoffgleichungen, begrenzenden Stoff und molare Basis angeben.",
+            "aspectEn": "Give equations, limiting species and molar basis."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Eigene T(t)-Kurven mit Kontrollen auswerten.",
+            "aspectEn": "Evaluate actual T(t) curves with controls."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Vorzeichen, Calorimeterbeitrag und Beispielrechnung korrekt verwenden.",
+            "aspectEn": "Correctly use signs, calorimeter contribution and model arithmetic."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Gastransport und geringe Temperaturdifferenz als Grenzen erläutern.",
+            "aspectEn": "Explain gas transport and small temperature difference as limits."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    },
+    {
+      "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+      "case": {
+        "id": "neutralisation-calorimetry",
+        "taskDemandDe": "Betreuter Neutralisations-Kalorimetrieauftrag, als eigene kontrollierte Anpassung an Göttingen „Thermometrische Titration“ (1333): je 20,00 mL bereitgestellte 0,200 mol/L HCl und NaOH, gleiche Anfangstemperatur; offenes isolierendes Gefäß, Thermometer, Rühren, Schutzbrille. C_cal ist bereitgestellt oder durch separate Wassermischung kalibriert. Blindversuch Säure+Wasser bei gleichem Volumen. Synthetischer Rechenvergleich: m_Lösung=40,0 g, c_p=4,18 J/(g K), C_cal=20,0 J/K, ΔT=+1,20 K; Aufgaben-Vergleichswert -57,0 kJ/mol H2O. Plane und führe die freigegebene Messung samt Blindversuch aus, lege echte Rohdaten vor und berechne pro Mol gebildeten Wassers. Vergleiche den synthetischen Rechenwert mit dem Aufgaben-Vergleichswert und begründe mindestens zwei Abweichungsursachen. Die Quellenmethode ist thermometrische Titration; dieses feste Mischungsverfahren ist eine ausdrücklich benannte Autorenanpassung.",
+        "taskDemandEn": "Supervised neutralisation calorimetry, an author-controlled adaptation of Göttingen's “Thermometrische Titration” (1333): 20.00 mL each supplied 0.200 mol/L HCl/NaOH, equal initial temperature, open insulated vessel, thermometer, stirring and goggles. C_cal is supplied or separately calibrated by water mixing. Blank: acid+water at equal volume. Synthetic calculation: m_solution=40.0 g, c_p=4.18 J/(g K), C_cal=20.0 J/K, ΔT=+1.20 K; task comparison value -57.0 kJ/mol H2O. Plan/execute the authorised assay with blank, submit actual raw data and calculate per mole of water formed. Compare the synthetic calculation with the task benchmark and justify at least two causes of deviation. The source method is thermometric titration; this fixed-volume mixing method is an explicitly declared author adaptation.",
+        "expectedPerformanceDe": "H3O+(aq)+OH-(aq)->2 H2O(l), netto 0,00400 mol Neutralisationsumsatz/Wasserbildung relativ zu H+(aq)+OH-(aq)->H2O(l). Q_Lösung+Kal=224,64 J, ΔH_m≈-56,16 kJ/mol, etwa 1,47% geringerer Betrag als -57,0. Wärmeverlust, Sensor-/Mischverzug, Verdünnungswärme und angenähertes c_p begrenzen den Vergleich. Blindversuch/Datenpunkte sind tatsächlich abzugeben; vorgegebene Werte reichen nur für Modellrechnung. Reagenzien, Konzentration und Zeitpunkt müssen dokumentiert werden; keine Behauptung eines eigenen gemessenen Standardwerts.",
+        "expectedPerformanceEn": "H3O+(aq)+OH-(aq)->2 H2O(l); net 0.00400 mol neutralisation/water formation relative to H+(aq)+OH-(aq)->H2O(l). Q_solution+cal=224.64 J, ΔH_m≈-56.16 kJ/mol, about 1.47% smaller in magnitude than -57.0. Heat loss, sensor/mixing lag, dilution heat and approximate c_p bound the comparison. Actual blank/raw observations are required; supplied values support only model calculation. Record reagents, concentration and timing; do not claim a personally measured standard value.",
+        "understandingFocusDe": "Neutralisationsenthalpie aus realer kontrollierter Messung und klarer Bezugsreaktion ableiten.",
+        "understandingFocusEn": "Infer neutralisation enthalpy from an actual controlled assay and a clear reference reaction."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "learner_execution_required",
+      "syntheticFixture": false,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Eigene Durchführung/Rohdaten und Blindversuch vorlegen.",
+            "aspectEn": "Submit actual execution/raw data and blank."
+          },
+          {
+            "points": 1,
+            "aspectDe": "0,00400 mol Umsatz und Vorzeichen begründen.",
+            "aspectEn": "Justify 0.00400 mol extent and sign."
+          },
+          {
+            "points": 1,
+            "aspectDe": "224,64 J/-56,16 kJ/mol sowie begrenzten Vergleich berechnen.",
+            "aspectEn": "Calculate 224.64 J/-56.16 kJ/mol and a bounded comparison."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Fehler/Verdünnung und Quellenanpassung offen benennen.",
+            "aspectEn": "Identify errors/dilution and the declared source adaptation."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    },
+    {
+      "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+      "case": {
+        "id": "formation-and-bond-enthalpies",
+        "taskDemandDe": "Gerundete Aufgabenwerte: ΔfH°[CH4(g)]=-74,8; CO2(g)=-393,5; H2O(g)=-241,8; O2(g)=0 kJ/mol. Mittlere Gasphasen-Bindungsenthalpien: C-H 413, O=O 498, C=O in CO2 799, O-H 463 kJ/mol Bindungen. Ziel CH4(g)+2 O2(g)->CO2(g)+2 H2O(g), jeweils 1 mol CH4. Berechne aus Bildungsenthalpien und unabhängig aus gebrochenen/gebildeten Bindungen. Vergleiche, erkläre den Nullwert des Elements im Standardzustand und warum flüssiges Produktwasser eine andere Reaktionsenthalpie ergäbe.",
+        "taskDemandEn": "Rounded task values: ΔfH°[CH4(g)]=-74.8; CO2(g)=-393.5; H2O(g)=-241.8; O2(g)=0 kJ/mol. Mean gas-phase bond enthalpies: C-H 413, O=O 498, C=O in CO2 799, O-H 463 kJ/mol bonds. Target CH4(g)+2 O2(g)->CO2(g)+2 H2O(g), per 1 mol CH4. Calculate using formation enthalpies and independently broken/formed bonds. Compare, explain the zero value for an element in its reference state and why liquid product water gives another reaction enthalpy.",
+        "expectedPerformanceDe": "Bildungswerte: [-393,5+2(-241,8)]-[-74,8+2·0]=-802,3 kJ/mol CH4. Bindungsansatz: Bruch 4·413+2·498=2648; Bildung 2·799+4·463=3450; Differenz -802 kJ/mol. Die nahe Übereinstimmung der gerundeten Aufgabenwerte ist keine allgemeine Exaktheitsgarantie: mittlere Bindungswerte und Gasphase sind Näherungen. ΔfH°(O2)=0 ist eine Referenzdefinition und bedeutet nicht Energieinhalt null. Flüssiges H2O gibt zusätzlich Kondensationsenthalpie ab, also einen größeren Betrag der freigesetzten Wärme.",
+        "expectedPerformanceEn": "Formation values: [-393.5+2(-241.8)]-[-74.8+2·0]=-802.3 kJ/mol CH4. Bond estimate: break 4·413+2·498=2648; form 2·799+4·463=3450; difference -802 kJ/mol. Close agreement of rounded task data is not a general guarantee: mean bond values/gas-phase assumptions are approximations. ΔfH°(O2)=0 is a reference definition, not zero energy content. Liquid H2O additionally releases condensation enthalpy, increasing the released-heat magnitude.",
+        "understandingFocusDe": "Standarddaten, Bindungsmodell und Phasenbezug sachgerecht unterscheiden.",
+        "understandingFocusEn": "Distinguish standard data, bond model and phase reference."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Stöchiometrische Faktoren korrekt verwenden.",
+            "aspectEn": "Use stoichiometric factors correctly."
+          },
+          {
+            "points": 1,
+            "aspectDe": "-802,3 und näherungsweise -802 kJ/mol berechnen.",
+            "aspectEn": "Calculate -802.3 and approximate -802 kJ/mol."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Bruch kostet, Bindungsbildung gibt Energie frei erklären.",
+            "aspectEn": "Explain energy cost of breaking versus release on formation."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Referenznull, mittlere Werte und Wasserphase unterscheiden.",
+            "aspectEn": "Distinguish reference zero, mean values and water phase."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    }
+  ]
+}

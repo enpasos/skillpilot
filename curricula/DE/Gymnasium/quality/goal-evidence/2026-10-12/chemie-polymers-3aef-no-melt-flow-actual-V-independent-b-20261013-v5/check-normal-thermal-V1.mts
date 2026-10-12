@@ -1,0 +1,15 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {aiApprovalStatus,isAiApprovedForCurrentAsset} from '/home/enpasos/projects/skillpilot/app/src/utils/goalVisualizationQaStatus.ts';
+import {normalizeGoalVisualizationAiReview} from '/home/enpasos/projects/skillpilot/app/scripts/goalVisualizationQaModel.ts';
+const root='/home/enpasos/projects/skillpilot',own=process.argv[2];
+const r=JSON.parse(readFileSync(`${own}/V1.3aef-thermal-successor.independent-b.json`,'utf8'));
+const sha=createHash('sha256').update(readFileSync(`${root}/${r.assetPath}`)).digest('hex');
+if(sha!==r.assetSha256||sha!==r.aiApprovedAssetSha256)throw new Error('Changed actual asset');
+const normalized=normalizeGoalVisualizationAiReview(r,sha);
+if(aiApprovalStatus(r)!=='approved'||!isAiApprovedForCurrentAsset(r)||normalized.aiApproved!=='yes'||normalized.aiApprovedAssetSha256!==sha)throw new Error('Normal positive state mismatch');
+const oldSha=r.historicalHoldPreservedForOldExactAsset.sha256.replace('sha256:',''),stale=normalizeGoalVisualizationAiReview(r,oldSha);
+if(stale.aiApproved!=='no'||stale.aiApprovedAssetSha256!==''||aiApprovalStatus({...r,assetSha256:oldSha})!=='stale')throw new Error('New approval improperly transferred to old asset');
+const receipt={schemaVersion:1,command:'node --import tsx <own>/check-normal-thermal-V1.mts <own>',actualAssetSha256:sha,normalAiApprovalStatus:aiApprovalStatus(r),normalIsAiApprovedForCurrentAsset:isAiApprovedForCurrentAsset(r),normalizedExactAssetReview:normalized,oldAssetApprovalTransferRejected:true,productionImports:['app/src/utils/goalVisualizationQaStatus.ts','app/scripts/goalVisualizationQaModel.ts'],passed:true,humanApprovalClaim:false,nativeOrPApproval:false};
+writeFileSync(`${own}/NORMAL.thermal-V1.actual-check.receipt.json`,JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({passed:true,actualAssetSha256:sha,status:'approved',oldAssetApprovalTransferRejected:true,humanApproval:false}));

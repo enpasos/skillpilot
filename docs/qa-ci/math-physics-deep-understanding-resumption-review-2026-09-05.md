@@ -1,5 +1,142 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Aktueller geprüfter Chemie-Zwischenstand vom 13. Oktober 2026
+
+Der zentrale Bericht bestätigt **231/402 aktuelle curricularAtomic-Ziele (57,5 %)**:
+**11 neue fachliche Abschlüsse**, **0 reine Bindungswiederherstellungen** und
+**171 weiterhin offene Ziele**. Alle bisherigen 220 Abschlüsse sind erhalten.
+Die sechs Pflichtprüfungen bestehen, der Bericht hat keine Blocker.
+Mathematik **807/807**, Physik **478/478** und Biologie **397/397** bleiben streng
+vollständig auf M7; ihre Registry-Einträge wurden unverändert erhalten.
+Chemie bleibt bis zum vollständigen strengen Abschluss auf **M6**.
+
+Das Q4-Paket übernimmt neun echte unabhängige A/B-Erstprüfungen und zwei
+gezielt korrigierte Bilder mit eigenen unabhängigen A/B-Nachprüfungen.
+Normale technische Vergleiche bestätigen die aktuellen vollständigen
+Seiten-, Text-, Profil- und Kontextbindungen. Originale Kampagnen, Ergebnisse,
+Bundle-Identitäten und blockierte Bildversionen bleiben erhalten. Ein zusätzlich
+vorbereitetes gruppiertes D2 wird nicht aktiviert und zählt keine Abschlüsse.
+Die Übernahme ist keine erneute fachliche Prüfung durch Hash-Anpassungen.
+
+Beim abschließenden Quellenabgleich wurde die deklarierte Geltung des quantitativen
+Gibbs-Ziels gezielt mit der bereits geprüften NRW-LK-Zuordnung synchronisiert.
+Zwei echte unabhängige neue D1-Kontextprüfungen binden die aktuelle 16-Länder-
+Angabe; der Original-D9-Nachweis bleibt erhalten und wird nur für dieses eine
+Ziel ausdrücklich ersetzt. Alle 402 Seiten und 231 P-Nachweise bleiben exakt.
+Diese Kontextaktualisierung schafft keinen zusätzlichen fachlichen Abschluss.
+
+Vier beidseitig akzeptierte begrenzte Quellenkorrekturen sind integriert.
+Das quantitative Gibbs-Ziel wird zusätzlich in den HE-/NW-LK-Sichten sichtbar;
+es wurden keine bestehenden strikten Ziel-Mitgliedschaften entfernt.
+Die geprüften Quellentscheidungen und ihre flache kompatible Mapping-Darstellung
+sind synchronisiert; die normalen Compiler- und Veröffentlichungsprüfungen
+erhalten dadurch dieselbe begrenzte Geltung. Bei künftigen Quellenänderungen
+wird dieser Abgleich vor einem aufwendigen PDF-Build geprüft.
+Die fünfte vorgeschlagene NRW-Zuordnung zur experimentellen Herleitung bleibt
+zurückgestellt: Rechen- und Identitätsprüfungen belegen keine experimentelle
+Herleitung. Ganze zusammengesetzte Quellpflichten werden dadurch nicht freigegeben.
+
+Nachweise:
+
+- [Strenger zentraler Delta-Bericht](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/active-checks/strict-eleven-gain-and-protected-floors.actual.json)
+- [Zentraler vollständiger Bericht](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-dcbad4e4-current231-final16-source-context-native-root-20261013-v2/checks/central-current231-final16.actual.json)
+- [Exakte technische Übernahmeplanung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/ROOT.future-active-adoption.plan.json)
+- [Tatsächliche Integration](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/APPLIED.genuine-Q4-eleven.actual.json)
+
+Der versiegelte Arbeitsstand für das nächste Polymerpaket bleibt inaktiv:
+18 Kandidaten werden am korrigierten Material unabhängig geprüft; zwei
+Atomaritäts-/Quellengrenzfälle bleiben zurückgestellt. Die vorbereitete
+407-Ziel-Struktur wird ebenfalls nicht aktiviert oder als Abschluss gezählt.
+
+Nächster Schritt: das reservierte 20er-Paket zu Polymeren und Werkstoffen
+gezielt nach den unabhängigen Befunden korrigieren, anschließend am endgültigen
+Material und nativen Buch unabhängig prüfen. Kandidaten und offene Atomaritäts-,
+Quellen-, Bewertungs- oder Bildbefunde zählen nicht als abgeschlossen.
+Aufwendige Abschlussprüfungen und GitHub-CI werden am stabilen Integrationsstand
+gebündelt. Menschliche Freigabe und Erprobung bleiben separate offene Nachweise.
+
+
+## Aktueller Ausführungsplan für Chemie M7 vom 12. Oktober
+
+Der [eingecheckte Zwischenstand](chemie220-q3-and-leaf-checkpoint-2026-10-12.md)
+bestätigt **220/402 streng abgeschlossene Ziele, M6, 182 offen**. GitHub-CI
+für `5cd49400726af19d1be72c3add687ea53293934c` ist vollständig bestanden.
+Die folgenden älteren Abschnitte bleiben datierte Nachweisstände.
+
+Der aktuelle Fünf-Gate-Bericht zählt D 221, P 220, A 237, M 402 und V 385.
+Der größte Arbeitsumfang liegt bei Beschreibungs- und Verständnisnachweisen.
+Die 17 fehlenden aktuellen V-Freigaben begründen zunächst eine Bildprüfung,
+keine automatische Neuerzeugung. Das bestehende In-flight-Ledger umfasst
+59 der offenen Ziel-IDs; **123 offene Ziele haben dort noch kein Paket**.
+
+| Fachlicher Bereich | Aktuell offene Ziele |
+| --- | ---: |
+| Naturstoffe und Synthesechemie | 65 |
+| Chemisches Gleichgewicht | 44 |
+| Energie und Nachhaltigkeit | 31 |
+| Übrige Bereiche einschließlich Analytik, Farbstoffen und Praktikum | 42 |
+
+Vorgehen für den vollständigen Abschluss:
+
+1. **Das vorbereitete Q4-Elferpaket zuerst zu einem endgültigen Kandidaten
+   zusammenführen.** Zwei Zieltextkorrekturen, fünf Quellenzeilen und drei
+   vorhandene Bildkorrekturen werden auf die aktuelle Basis übernommen.
+   Erst danach entstehen die nativen Prüfansichten und unabhängigen A/B-
+   Reviews. Die elf Ziele fehlen aktuell in D/P/A; vorhandene M-Entscheidungen
+   und exakt passende V-Nachweise bleiben erhalten. Eine vorgezogene
+   Fünferintegration entfällt, weil vier dieser Ziele von geänderten
+   Voraussetzungen abhängen. Die 16 zusätzlichen Partner der Quellenzeilen
+   gehören zur gezielten Prüfung möglicher Seiten- und Kontextänderungen.
+2. **Parallel den Naturstoff-Folgekandidaten technisch konsolidieren.** Alte
+   vollständige Kandidatenkopien dürfen die drei abgeschlossenen Q3-Ziele
+   nicht zurücksetzen. Nur die erforderlichen Änderungen an Zielen,
+   MM-Quellengrenze und vier BB/BE-Sichten werden übertragen; die aktuelle
+   SH-Mizellenkorrektur bleibt erhalten. Struktur und Quellen werden vor den
+   nächsten nativen Bindungen festgelegt. Alte unabhängige Urteile bleiben
+   nur bei exakt passenden aktuellen Bindungen gültig. Der fehlende zweite
+   Folgereview und tatsächliche Kontextänderungen werden gezielt geprüft.
+   Änderungen der Buchreihenfolge werden einmal gegen die normalen
+   Fingerprints abgegrenzt; eine Hash-Anpassung ersetzt keine Prüfung.
+3. **Die übrigen offenen Ziele vollständig verplanen.** Die noch nicht
+   zugeordneten 123 Ziele werden nach fachlichen Abhängigkeiten in Pakete
+   von ungefähr 15–20 Zielen eingeordnet; das bestehende Batch-Schema erlaubt
+   höchstens 20 Ziele. Schwerpunkte sind Naturstoffe,
+   Gleichgewicht und Energie; Analytik, Farbstoffe, Praktikum und einzelne
+   Quellen- oder Operatorbefunde bleiben Teil desselben M7-Auftrags.
+4. **Eine fortlaufende Arbeitsfolge mit getrennten Zuständigkeiten nutzen.**
+   Ein Autor bereitet den nächsten Kandidaten vor, während zwei unabhängige
+   Reviewer den vorherigen endgültigen Kandidaten prüfen. Beide prüfen
+   jeweils das ganze Paket anhand derselben nativen Unterlagen. Eine
+   fixierte gemeinsame Basis und gezielte
+   Zusatzdateien vermeiden wiederholte vollständige Kopien. Die Integration
+   bleibt zentral; historische Originalartefakte werden nicht verändert.
+5. **Prüfungen nach Änderungsumfang bündeln.** Während der Bearbeitung laufen
+   nur betroffene D/P/A/M/V-, Quellen-, Seiten-, Kontext- und Bildprüfungen.
+   Nach einer Integration bestätigt der normale zentrale Bericht den
+   aktuellen Nenner und die geschützten Reifegrade. Vollständige Builds,
+   Schema-, Layer-A- und GitHub-CI-Prüfungen werden an stabilen
+   Integrationsständen gebündelt und abschließend durchgeführt.
+
+Nach jedem integrierten Paket werden strenger Stand, Nettozuwachs, neue
+fachliche Abschlüsse und wiederhergestellte Bindungen getrennt ausgewiesen.
+Kandidaten und ungeklärte Befunde zählen nicht als Abschluss. Fertig bleibt
+ausschließlich **100 % des jeweils aktuellen Chemie-Nenners, CQR-303 PASS
+und M7 mit bestandenen erforderlichen maschinellen Prüfungen**. Mathematik,
+Physik und Biologie bleiben geschützt; menschliche Freigabe, Release und
+Erprobung bleiben eigene Gates.
+
+Die [vollständige Arbeitszuordnung vom 12. Oktober](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-current402-all182-open-claims-root-20261012-v2/checks/registration-and-exhaustive-partition.actual.json)
+ist inzwischen im bestehenden In-flight-Ledger eingetragen und mit dessen
+normalem Validator bestätigt: **16 Pakete, 182 aktuelle offene IDs, keine
+Doppelbelegung**. Die neun bisherigen Pakete bleiben unverändert. Die sieben
+neuen Pakete behandeln Polymere/Werkstoffe (20), Aromaten/Farbstoffe (20),
+Carbonylverbindungen/Pharmazie (15), Labor/Kommunikation (15),
+Protolyse/Puffer/Analytik (17), Gleichgewicht/Redox/Kinetik (16) und
+Energie/Waschmittel (20). Zuerst wird das Polymerpaket vorbereitet.
+Diese Arbeitszuordnung ist keine fachliche Freigabe und erhöht den strengen
+Stand **220/402** nicht. Die Q4-Erstprüfungen und die gezielte Gibbs-
+Bildkorrektur laufen parallel; unveränderte Nachweise werden erhalten.
+
 ## Aktueller Auftrag vom 12. Oktober: ausschließlich Chemie M7
 
 Der [aktualisierte Goaltext](chemie-biologie-m7-goaltext-2026-09-30.md) hebt die

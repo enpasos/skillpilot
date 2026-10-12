@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:dfb2f285cbc6acc9ecda4703664f42236bcdad0b63c9231a1fd18803a603420f",
+  "reviewInputFingerprint": "sha256:ea413d3dcfa7009877d304a147a8dd8f24fc1876abe0b69471c1fb3827d73f2b",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-a",
+      "roundId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-first-pass-a",
+      "independenceGroupId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-independent-a",
+      "runIds": [
+        "chemie-dcbad4e4-final16-context-independent-a-20261013-v3-actual-firstpass"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6-based Codex inherited agent; exact runtime model identifier and revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-b",
+      "roundId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-first-pass-b",
+      "independenceGroupId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-independent-b",
+      "runIds": [
+        "chemie-dcbad4e4-final16-native-independent-b-20261013-v3"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex inherited runtime; exact revision not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5",
+      "firstRecordId": "chemie-dcbad4e4-final16-context-independent-a-20261013-v3-dcbad4e4",
+      "secondRecordId": "chemie-dcbad4e4-final16-native-independent-b-20261013-v3.dcbad4e4.keep",
+      "firstRunId": "chemie-dcbad4e4-final16-context-independent-a-20261013-v3-actual-firstpass",
+      "secondRunId": "chemie-dcbad4e4-final16-native-independent-b-20261013-v3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

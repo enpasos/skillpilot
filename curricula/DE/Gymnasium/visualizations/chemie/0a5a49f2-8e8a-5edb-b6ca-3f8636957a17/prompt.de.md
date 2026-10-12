@@ -8,27 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `0a5a49f2-8e8a-5edb-b6ca-3f8636957a17.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17.jpg`
+- Quellbild: `0a5a49f2-8e8a-5edb-b6ca-3f8636957a17.png`
+- Public Asset: `/assets/goal-visualizations/chemie/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Entropieänderungen aus Energie- und Teilchenverteilung abschätzen
-Beschreibung: Die lernende Person kann Entropie als Maß für die Verteilung von Energie und Teilchen nutzen und Entropieänderungen bei ausgewählten chemischen Reaktionen qualitativ abschätzen.
+Use case: scientific-educational. Edit target: the attached SkillPilot entropy image. Correct its factual and legibility faults, creating an opaque PNG roughly 1600x900, 16:9, friendly abstract comic classroom illustration matching its thick dark outlines and soft blue, purple and green colors. The old image wrongly calls liquid water becoming steam a chemical reaction and has meaningless energy-versus-energy plots. Replace those erroneous didactic elements with ONE large clear actual chemical example: two nitrogen dioxide gas molecules combine into one dinitrogen tetroxide gas molecule. Large exact title: "Entropieänderung abschätzen". Large exact balanced equation: "2 NO₂(g) → N₂O₄(g)". Main left and right panels take most of the frame, with two large NO2 molecules left and one large N2O4 molecule right. Each NO2 has one blue N atom with two orange O atoms, each atom labelled N or O. N2O4 has exactly two blue N atoms bonded to each other and four orange O atoms, two bonded to each N. Keep total atoms identical, with no extra particles. Large labels: left "2 Gasteilchen", right "1 Gasteilchen". A simple broad connecting arrow. Below, very large exact text across at most two lines: "Weniger frei bewegliche Gasteilchen" and "Qualitativ: ΔS° < 0". Small but still phone-readable exact scope label "Beispiel bei 25 °C". No claim all entropy changes follow gas counts; this is a selected qualitative chemical example. Do not use water evaporation, order/disorder slogans, fake axes, crowding, paragraphs, tiny mandatory text, photorealism or technical CAD. Important equation, molecule pairing and entropy sign must remain clear at 360px displayed width. Preserve the welcoming pastel visual landscape.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,363 @@
+{
+  "goal": {
+    "id": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+    "title": "Thermisches Verhalten von Kunststoffen erklären",
+    "titleEn": "Explain thermal behavior of plastics",
+    "description": "Die lernende Person kann das thermische Verhalten von Kunststoffen, Glasübergang und Schmelzpunkt aus räumlichem Bau der Makromoleküle und zwischenmolekularen Wechselwirkungen deuten.",
+    "descriptionEn": "The learner can interpret the thermal behavior of plastics, glass transition, and melting point from macromolecular spatial structure and intermolecular interactions.",
+    "weight": 1.1,
+    "tags": [
+      "LK",
+      "GK"
+    ],
+    "contains": [],
+    "requires": [
+      "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_AUFBAU"
+      ],
+      "phase": "Q2"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "9994dd5a-cbf8-47a4-9c84-617163dfc57f"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+        "title": "Visualisierung: Thermisches Verhalten von Kunststoffen erklären",
+        "url": "/assets/goal-visualizations/chemie/3aef6d91-04ff-5ec7-b92e-ccf330d9816a/3aef6d91-04ff-5ec7-b92e-ccf330d9816a.png",
+        "provider": "OpenAI imagegen built-in; exact model not exposed",
+        "description": "Visualisierung zum Lernziel: Thermisches Verhalten von Kunststoffen erklären.",
+        "altText": "Amorphes Polymer mit Tg ohne kristallinen Tm; teilkristallines Polymer mit Tg der amorphen Bereiche und Kristallschmelzen bei Tm; dauerhaft kovalent vernetztes Material ohne freien Schmelzfluss und mit Zersetzung bei hoher Temperatur. Vernetzung wird nicht mit universellem Fehlen kristalliner Schmelzübergänge gleichgesetzt.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "draft"
+      }
+    ]
+  },
+  "wholeProfile": {
+    "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Tg betrifft kooperative Segmentbeweglichkeit amorpher Anteile; Tm das Schmelzen kristalliner Bereiche.",
+          "essentialUnderstandingEn": "Tg concerns cooperative segment mobility in amorphous fractions; Tm concerns melting crystalline regions.",
+          "observablePerformanceDe": "Ordnet Übergänge aus Daten und erklärt den Unterschied ohne Gleichsetzung von Tg und Tm.",
+          "observablePerformanceEn": "Identifies transitions from data and explains the difference without equating Tg and Tm."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Packung, intermolekulare Kräfte und kovalente Vernetzung beeinflussen thermische und mechanische Reaktionen.",
+          "essentialUnderstandingEn": "Packing, intermolecular forces and covalent crosslinks affect thermal and mechanical responses.",
+          "observablePerformanceDe": "Erklärt Unterschiede eines amorphen, teilkristallinen und vernetzten Materials.",
+          "observablePerformanceEn": "Explains differences between amorphous, semicrystalline and crosslinked materials."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Nutzungstemperaturen müssen zu Materialzustand, Belastung und Zersetzungsgrenzen passen.",
+          "essentialUnderstandingEn": "Service temperatures must match material state, loading and decomposition limits.",
+          "observablePerformanceDe": "Überträgt die Zustandsanalyse auf einen neuen Temperaturzyklus mit begründeter Einsatzgrenze.",
+          "observablePerformanceEn": "Transfers state analysis to a new temperature cycle with a justified service limit."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Amorph oder teilkristallin",
+          "textEn": "Amorphous or semicrystalline"
+        },
+        {
+          "id": "v2",
+          "textDe": "Übergang oder Zersetzung",
+          "textEn": "Transition or decomposition"
+        },
+        {
+          "id": "v3",
+          "textDe": "Temperaturzyklus",
+          "textEn": "Temperature cycle"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "3aef6d91-case-1",
+          "taskDemandDe": "Erkläre Beobachtungen und unterscheide Tg/Tm/Zersetzung. Wähle für wiederholtes thermisches Umformen und beurteile C bei 100°C. Ist B oberhalb Tg automatisch flüssig?",
+          "taskDemandEn": "Explain observations and distinguish Tg, Tm and decomposition. Select for repeated thermal reshaping and assess C at 100°C. Is B automatically liquid above Tg?",
+          "expectedPerformanceDe": "A über Tg segmentbeweglicher, kein Tm weil amorph; Umformen möglich, aber tatsächliche Viskosität/Belastung prüfen. B bleibt durch Kristallite bis Tm formfest, oberhalb Tg daher nicht automatisch flüssig. C über Tg kann gummiartig weicher sein, Netz verhindert Schmelzfluss; oberhalb 250°C Zersetzung. A/B thermoplastisch wiederverarbeitbar unter passendem Prozessfenster, C nicht einschmelzbar.",
+          "expectedPerformanceEn": "A has greater segment mobility above Tg, with no Tm because it is amorphous; reshaping may be possible but requires viscosity/load data. B retains crystalline reinforcement until Tm and is not automatically liquid above Tg. C may soften rubber-like above Tg but its network prevents melt flow; above 250°C it decomposes. A/B may be reprocessed within appropriate windows; C cannot be remelted.",
+          "understandingFocusDe": "Fallbezogene Aspekte: Tg Segmentbeweglichkeit, Tm Kristallschmelzen, Zersetzung chemischer Abbau klar unterscheiden. / A amorph ohne Tm; B-Kristallite halten oberhalb Tg bis 130°C; C-Netz verhindert Fluss trotz Tg 40°C. / A/B nur im passenden Prozessfenster umformbar; C bei 100°C eventuell weicher, nicht einschmelzbar, Belastung prüfen. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+          "understandingFocusEn": "Case-specific aspects: Clearly distinguish Tg segment mobility, Tm crystal melting and chemical decomposition. / A amorphous without Tm; B crystals support above Tg to 130°C; C network prevents flow despite Tg 40°C. / A/B formable only in suitable process window; C at 100°C may soften, cannot remelt, test loading. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+        },
+        {
+          "id": "3aef6d91-case-2",
+          "taskDemandDe": "Erkläre den Einfluss der Abkühlung. Wähle für den Zyklus und prognostiziere Verhalten bei 180°C im idealen Modell. Warum reicht gleicher Tg weder für gleiche Formstabilität noch für einen sicheren Prozess bei 210°C?",
+          "taskDemandEn": "Explain cooling effects. Select for the cycle and predict behaviour at 180°C in the ideal model. Why does equal Tg prove neither equal shape stability nor a safe process at 210°C?",
+          "expectedPerformanceDe": "Langsames Abkühlen erlaubt Kristallbildung; Q-Kristallite tragen bei 90°C, P ist oberhalb Tg stärker weich. Q vorläufig günstiger unter Last; Kriechen/Zyklen prüfen. Bei 180°C sind Q-Kristallite geschmolzen; beide brauchen Viskositätsdaten. Gleicher Tg beschreibt amorphe Segmente, nicht Kristallanteil; Zersetzung bei 210°C und Prozessdauer sind unbekannt.",
+          "expectedPerformanceEn": "Slow cooling permits crystallisation; Q crystallites support load at 90°C while P softens more above Tg. Q is provisionally preferable, subject to creep/cycle tests. At 180°C Q crystallites have melted; both require viscosity data. Equal Tg describes amorphous segments, not crystal fraction; decomposition at 210°C and process duration are unknown.",
+          "understandingFocusDe": "Fallbezogene Aspekte: Gleiche Tg 60°C beweist nicht gleiche Kristallinität; Q-Kristalle schmelzen bei 170°C. / Langsame Abkühlung erlaubt Q-Kristallbildung; Stützung 90°C trotz beweglicher amorpher Segmente. / Q für 20→90→20 vorläufig; bei 180°C Kristalle weg, Kriechen/Viskosität und 210°C-Zersetzung ungetestet. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+          "understandingFocusEn": "Case-specific aspects: Same Tg 60°C does not establish equal crystallinity; Q crystals melt at 170°C. / Slow cooling permits Q crystallisation; support at 90°C despite mobile amorphous segments. / Q provisionally for 20→90→20; at 180°C crystals gone, creep/viscosity and 210°C decomposition untested. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+        }
+      ]
+    }
+  },
+  "wholeCases": [
+    {
+      "caseId": "3aef6d91-case-1",
+      "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+      "title": "A: Zwei Thermoplaste und ein Netzwerk",
+      "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+      "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+      "dataDe": "A amorph: Tg 80°C, kein kristalliner Schmelzpeak. B teilkristallin: Tg−20°C, Tm 130°C. C vernetzt: Tg 40°C, Zersetzung 250°C, kein Schmelzfluss. B bei 25°C formfest; A bei 100°C deutlich weicher.",
+      "dataEn": "A amorphous: Tg 80°C, no crystalline melting peak. B semicrystalline: Tg−20°C, Tm 130°C. C crosslinked: Tg 40°C, decomposition 250°C, no melt flow. B retains shape at 25°C; A is much softer at 100°C.",
+      "taskDe": "Erkläre Beobachtungen und unterscheide Tg/Tm/Zersetzung. Wähle für wiederholtes thermisches Umformen und beurteile C bei 100°C. Ist B oberhalb Tg automatisch flüssig?",
+      "taskEn": "Explain observations and distinguish Tg, Tm and decomposition. Select for repeated thermal reshaping and assess C at 100°C. Is B automatically liquid above Tg?",
+      "modelAnswerDe": "A über Tg segmentbeweglicher, kein Tm weil amorph; Umformen möglich, aber tatsächliche Viskosität/Belastung prüfen. B bleibt durch Kristallite bis Tm formfest, oberhalb Tg daher nicht automatisch flüssig. C über Tg kann gummiartig weicher sein, Netz verhindert Schmelzfluss; oberhalb 250°C Zersetzung. A/B thermoplastisch wiederverarbeitbar unter passendem Prozessfenster, C nicht einschmelzbar.",
+      "modelAnswerEn": "A has greater segment mobility above Tg, with no Tm because it is amorphous; reshaping may be possible but requires viscosity/load data. B retains crystalline reinforcement until Tm and is not automatically liquid above Tg. C may soften rubber-like above Tg but its network prevents melt flow; above 250°C it decomposes. A/B may be reprocessed within appropriate windows; C cannot be remelted.",
+      "expectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "visualizationRequired": false,
+      "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: Tg Segmentbeweglichkeit, Tm Kristallschmelzen, Zersetzung chemischer Abbau klar unterscheiden.",
+          "criterionEn": "Demonstrates for this case: Clearly distinguish Tg segment mobility, Tm crystal melting and chemical decomposition.",
+          "fullCreditDe": "Tg Segmentbeweglichkeit, Tm Kristallschmelzen, Zersetzung chemischer Abbau klar unterscheiden.",
+          "fullCreditEn": "Clearly distinguish Tg segment mobility, Tm crystal melting and chemical decomposition.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: A amorph ohne Tm; B-Kristallite halten oberhalb Tg bis 130°C; C-Netz verhindert Fluss trotz Tg 40°C.",
+          "criterionEn": "Demonstrates for this case: A amorphous without Tm; B crystals support above Tg to 130°C; C network prevents flow despite Tg 40°C.",
+          "fullCreditDe": "A amorph ohne Tm; B-Kristallite halten oberhalb Tg bis 130°C; C-Netz verhindert Fluss trotz Tg 40°C.",
+          "fullCreditEn": "A amorphous without Tm; B crystals support above Tg to 130°C; C network prevents flow despite Tg 40°C.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: A/B nur im passenden Prozessfenster umformbar; C bei 100°C eventuell weicher, nicht einschmelzbar, Belastung prüfen.",
+          "criterionEn": "Demonstrates for this case: A/B formable only in suitable process window; C at 100°C may soften, cannot remelt, test loading.",
+          "fullCreditDe": "A/B nur im passenden Prozessfenster umformbar; C bei 100°C eventuell weicher, nicht einschmelzbar, Belastung prüfen.",
+          "fullCreditEn": "A/B formable only in suitable process window; C at 100°C may soften, cannot remelt, test loading.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        }
+      ],
+      "maximumPoints": 6,
+      "gradingBoundary": "Each rubric scores only the concrete case demand printed here. An expectation ID links a relevant aspect; it does not claim that the whole profile expectation is fully demonstrated in this one case. Six points alone never establish mastery or independent scientific acceptance.",
+      "expectationCoverage": [
+        {
+          "expectationId": "e1",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        },
+        {
+          "expectationId": "e2",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        },
+        {
+          "expectationId": "e3",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        }
+      ]
+    },
+    {
+      "caseId": "3aef6d91-case-2",
+      "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+      "title": "B: Gleiche Chemie, verschiedene Packung",
+      "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+      "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+      "dataDe": "P und Q sind unvernetzte Polyester gleicher Molmasse. P rasch abgekühlt: amorpher Anteil groß, Tg 60°C. Q langsam abgekühlt: Tg 60°C plus Tm 170°C, höhere Steifigkeit bei 90°C. Bauteilzyklus 20→90→20°C unter Last; Überhitzung 210°C unbekannt.",
+      "dataEn": "P and Q are uncrosslinked polyesters of equal molar mass. P rapidly cooled: predominantly amorphous, Tg 60°C. Q slowly cooled: Tg 60°C plus Tm 170°C and greater stiffness at 90°C. Component cycle 20→90→20°C under load; behaviour at 210°C unknown.",
+      "taskDe": "Erkläre den Einfluss der Abkühlung. Wähle für den Zyklus und prognostiziere Verhalten bei 180°C im idealen Modell. Warum reicht gleicher Tg weder für gleiche Formstabilität noch für einen sicheren Prozess bei 210°C?",
+      "taskEn": "Explain cooling effects. Select for the cycle and predict behaviour at 180°C in the ideal model. Why does equal Tg prove neither equal shape stability nor a safe process at 210°C?",
+      "modelAnswerDe": "Langsames Abkühlen erlaubt Kristallbildung; Q-Kristallite tragen bei 90°C, P ist oberhalb Tg stärker weich. Q vorläufig günstiger unter Last; Kriechen/Zyklen prüfen. Bei 180°C sind Q-Kristallite geschmolzen; beide brauchen Viskositätsdaten. Gleicher Tg beschreibt amorphe Segmente, nicht Kristallanteil; Zersetzung bei 210°C und Prozessdauer sind unbekannt.",
+      "modelAnswerEn": "Slow cooling permits crystallisation; Q crystallites support load at 90°C while P softens more above Tg. Q is provisionally preferable, subject to creep/cycle tests. At 180°C Q crystallites have melted; both require viscosity data. Equal Tg describes amorphous segments, not crystal fraction; decomposition at 210°C and process duration are unknown.",
+      "expectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "visualizationRequired": false,
+      "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: Gleiche Tg 60°C beweist nicht gleiche Kristallinität; Q-Kristalle schmelzen bei 170°C.",
+          "criterionEn": "Demonstrates for this case: Same Tg 60°C does not establish equal crystallinity; Q crystals melt at 170°C.",
+          "fullCreditDe": "Gleiche Tg 60°C beweist nicht gleiche Kristallinität; Q-Kristalle schmelzen bei 170°C.",
+          "fullCreditEn": "Same Tg 60°C does not establish equal crystallinity; Q crystals melt at 170°C.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: Langsame Abkühlung erlaubt Q-Kristallbildung; Stützung 90°C trotz beweglicher amorpher Segmente.",
+          "criterionEn": "Demonstrates for this case: Slow cooling permits Q crystallisation; support at 90°C despite mobile amorphous segments.",
+          "fullCreditDe": "Langsame Abkühlung erlaubt Q-Kristallbildung; Stützung 90°C trotz beweglicher amorpher Segmente.",
+          "fullCreditEn": "Slow cooling permits Q crystallisation; support at 90°C despite mobile amorphous segments.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: Q für 20→90→20 vorläufig; bei 180°C Kristalle weg, Kriechen/Viskosität und 210°C-Zersetzung ungetestet.",
+          "criterionEn": "Demonstrates for this case: Q provisionally for 20→90→20; at 180°C crystals gone, creep/viscosity and 210°C decomposition untested.",
+          "fullCreditDe": "Q für 20→90→20 vorläufig; bei 180°C Kristalle weg, Kriechen/Viskosität und 210°C-Zersetzung ungetestet.",
+          "fullCreditEn": "Q provisionally for 20→90→20; at 180°C crystals gone, creep/viscosity and 210°C decomposition untested.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        }
+      ],
+      "maximumPoints": 6,
+      "gradingBoundary": "Each rubric scores only the concrete case demand printed here. An expectation ID links a relevant aspect; it does not claim that the whole profile expectation is fully demonstrated in this one case. Six points alone never establish mastery or independent scientific acceptance.",
+      "expectationCoverage": [
+        {
+          "expectationId": "e1",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        },
+        {
+          "expectationId": "e2",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        },
+        {
+          "expectationId": "e3",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        }
+      ]
+    }
+  ],
+  "resourceBinding": {
+    "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+    "priorFrozenAuthorSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-three-visual-Pscope-atomicity-author-successor-20261013-v3/FINAL.author-successor.freeze.json",
+      "sha256": "sha256:7288c69418bb637cfaec75f320d155cba79f1f4b7201d9355066aad6d4264f90"
+    },
+    "priorGeneratorOriginal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-three-visual-Pscope-atomicity-author-successor-20261013-v3/original-generator-pngs/3aef6d91-04ff-5ec7-b92e-ccf330d9816a.generator-original.png",
+      "sha256": "sha256:8428788b9e9c25c6d4c505d0582b5af941290a00c5dc05ca671c9ce966bc8edf"
+    },
+    "generatorOriginalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-3aef-no-melt-flow-author-successor-20261013-v4/original-generator-png/3aef6d91-04ff-5ec7-b92e-ccf330d9816a.generator-original.png",
+    "generatorOriginalSha256": "sha256:d208d77814964a81861e232dcdae8afae2e093ec7d2c28230b60108f3b13d796",
+    "actualCandidateAssetPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-3aef-no-melt-flow-author-successor-20261013-v4/visual-candidate/app/public/assets/goal-visualizations/chemie/3aef6d91-04ff-5ec7-b92e-ccf330d9816a/3aef6d91-04ff-5ec7-b92e-ccf330d9816a.png",
+    "priorResourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+        "title": "Visualisierung: Thermisches Verhalten von Kunststoffen erklären",
+        "url": "/assets/goal-visualizations/chemie/3aef6d91-04ff-5ec7-b92e-ccf330d9816a/3aef6d91-04ff-5ec7-b92e-ccf330d9816a.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Thermisches Verhalten von Kunststoffen erklären.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Thermisches Verhalten von Kunststoffen erklären\". Die lernende Person kann das thermische Verhalten von Kunststoffen, Glasübergang und Schmelzpunkt aus räumlichem Bau der Makromoleküle und zwischenmolekularen Wechselwirkungen deuten.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ],
+    "candidateResourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+        "title": "Visualisierung: Thermisches Verhalten von Kunststoffen erklären",
+        "url": "/assets/goal-visualizations/chemie/3aef6d91-04ff-5ec7-b92e-ccf330d9816a/3aef6d91-04ff-5ec7-b92e-ccf330d9816a.png",
+        "provider": "OpenAI imagegen built-in; exact model not exposed",
+        "description": "Visualisierung zum Lernziel: Thermisches Verhalten von Kunststoffen erklären.",
+        "altText": "Amorphes Polymer mit Tg ohne kristallinen Tm; teilkristallines Polymer mit Tg der amorphen Bereiche und Kristallschmelzen bei Tm; dauerhaft kovalent vernetztes Material ohne freien Schmelzfluss und mit Zersetzung bei hoher Temperatur. Vernetzung wird nicht mit universellem Fehlen kristalliner Schmelzübergänge gleichgesetzt.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "draft"
+      }
+    ],
+    "promptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-3aef-no-melt-flow-author-successor-20261013-v4/prompt/3aef.actual-imagegen-edit-request.de.txt",
+    "normalImportCopiesExact": true,
+    "independentVotes": 0,
+    "activeWrites": false
+  },
+  "assetDimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "priorExactAsset": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-three-visual-Pscope-atomicity-author-successor-20261013-v3/visual-candidate/app/public/assets/goal-visualizations/chemie/3aef6d91-04ff-5ec7-b92e-ccf330d9816a/3aef6d91-04ff-5ec7-b92e-ccf330d9816a.png",
+    "sha256": "sha256:8428788b9e9c25c6d4c505d0582b5af941290a00c5dc05ca671c9ce966bc8edf"
+  }
+}

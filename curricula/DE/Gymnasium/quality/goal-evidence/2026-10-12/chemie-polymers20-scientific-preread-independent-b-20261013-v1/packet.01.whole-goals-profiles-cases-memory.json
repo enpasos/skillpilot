@@ -1,0 +1,1455 @@
+[
+  {
+    "goal": {
+      "id": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+      "title": "Kunststoffe einteilen",
+      "titleEn": "Classify plastics",
+      "description": "Die lernende Person kann Thermoplaste, Duroplaste und Elastomere anhand ihrer Struktur, Eigenschaften und Eignung für ausgewählte Einsatzgebiete unterscheiden.",
+      "descriptionEn": "The learner can distinguish thermoplastics, thermosets, and elastomers based on structure, properties, and suitability for selected applications.",
+      "weight": 1.05,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "e5aefd51-2de4-590c-903f-286d043a8c30",
+        "3fb7dea4-f832-5e23-b518-68b13a655b92",
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "80a3b3e7-c22f-4c0f-879a-a60f4df57934"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+          "title": "Visualisierung: Kunststoffe einteilen",
+          "url": "/assets/goal-visualizations/chemie/3e9eb5d0-3407-5a1e-9492-ad87f98d303d/3e9eb5d0-3407-5a1e-9492-ad87f98d303d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Kunststoffe einteilen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Kunststoffe einteilen\". Die lernende Person kann Thermoplaste, Duroplaste und Elastomere anhand ihrer Struktur, Eigenschaften und Eignung für ausgewählte Einsatzgebiete unterscheiden.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "wholeProfile": {
+      "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Die Kunststoffklasse folgt dem kovalenten Vernetzungsgrad; unvernetzte Ketten können linear oder verzweigt sein.",
+            "essentialUnderstandingEn": "The plastic class follows covalent crosslink density; uncrosslinked chains may be linear or branched.",
+            "observablePerformanceDe": "Ordnet drei gegebene Strukturen mit thermischen und mechanischen Daten begründet zu.",
+            "observablePerformanceEn": "Classifies three supplied structures using thermal and mechanical evidence."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Erwärmen ermöglicht bei geeigneten Thermoplasten Kettenbewegung; kovalente Netzwerke schmelzen nicht zu frei fließenden Ketten.",
+            "essentialUnderstandingEn": "Heating enables chain motion in suitable thermoplastics; covalent networks do not melt into freely flowing chains.",
+            "observablePerformanceDe": "Erklärt Schmelzverarbeitung, Rückstellung und Formstabilität aus den jeweiligen Kettenmodellen.",
+            "observablePerformanceEn": "Explains melt processing, elastic recovery and shape stability from the respective chain models."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Die Klasse grenzt Anwendungen ein, ersetzt aber keine anwendungsbezogenen Belastungsdaten.",
+            "essentialUnderstandingEn": "Class constrains applications but does not replace application-specific load data.",
+            "observablePerformanceDe": "Wählt ein Material für eine neue Anwendung und nennt eine noch zu prüfende Einsatzgrenze.",
+            "observablePerformanceEn": "Selects a material for a new application and identifies a remaining service limit to test."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Vernetzung und Verzweigung",
+            "textEn": "Crosslinking and branching"
+          },
+          {
+            "id": "v2",
+            "textDe": "Temperatur und Belastung",
+            "textEn": "Temperature and loading"
+          },
+          {
+            "id": "v3",
+            "textDe": "Anforderung des Bauteils",
+            "textEn": "Component requirements"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "3e9eb5d0-case-1",
+            "taskDemandDe": "Ordne A–C zu. Erkläre je ein Verhalten auf Teilchenebene. Wähle für einen spritzgegossenen Verschluss, eine rückstellende Dichtung und einen starren warmen Griff; nenne je eine offene Prüffrage.",
+            "taskDemandEn": "Classify A–C. Explain one behaviour of each at particle level. Select for an injection-moulded cap, a recovering seal and a rigid warm handle; identify one untested requirement for each.",
+            "expectedPerformanceDe": "A Thermoplast: Verzweigung ist keine Vernetzung, Ketten können gegeneinander gleiten. B Elastomer: wenige Netzpunkte verhindern dauerhaftes Abgleiten und ermöglichen Rückstellung. C Duroplast: dichtes Netz verhindert Schmelzfluss; Zersetzung ist kein Schmelzen. A Verschluss, B Dichtung, C Griff sind begründete Vorauswahlen. Medienbeständigkeit/Dichtungsalterung/Grifftemperatur müssen separat geprüft werden.",
+            "expectedPerformanceEn": "A thermoplastic: branching is not crosslinking; chains can slide. B elastomer: sparse network points prevent permanent sliding and permit recovery. C thermoset: dense network prevents melt flow; decomposition is not melting. A cap, B seal and C handle are reasoned preliminary selections. Chemical resistance, seal ageing and handle temperature require separate tests.",
+            "understandingFocusDe": "Die Kunststoffklasse folgt dem kovalenten Vernetzungsgrad; unvernetzte Ketten können linear oder verzweigt sein. / Erwärmen ermöglicht bei geeigneten Thermoplasten Kettenbewegung; kovalente Netzwerke schmelzen nicht zu frei fließenden Ketten. / Die Klasse grenzt Anwendungen ein, ersetzt aber keine anwendungsbezogenen Belastungsdaten.",
+            "understandingFocusEn": "The plastic class follows covalent crosslink density; uncrosslinked chains may be linear or branched. / Heating enables chain motion in suitable thermoplastics; covalent networks do not melt into freely flowing chains. / Class constrains applications but does not replace application-specific load data."
+          },
+          {
+            "id": "3e9eb5d0-case-2",
+            "taskDemandDe": "Erkläre die Änderung, ordne X und Y soweit die Daten reichen zu und beurteile beide Verwendungen. Kann die geringe bleibende Dehnung allein ein engmaschiges Duroplastnetz beweisen?",
+            "taskDemandEn": "Explain the change, classify X and Y as far as evidence permits and assess both uses. Does low permanent strain alone prove a dense thermoset network?",
+            "expectedPerformanceDe": "X ist thermoplastisch und für Einschmelzen grundsätzlich geeignet. Y zeigt vernetzungsbedingt weniger Kettengleiten; elastomere Eignung verlangt zusätzlich reversible Dehnung und passende Temperatur.5% Restdehnung beweist keine bestimmte Netzmaschenweite und keinen Duroplast. Für die Manschette Rückstellung über mehrere Zyklen testen; für das Gehäuse thermische Stabilität des X beim Wiederaufschmelzen prüfen.",
+            "expectedPerformanceEn": "X is thermoplastic and potentially suitable for remelting. Y has less chain sliding due to crosslinking; elastomer suitability additionally requires reversible extension at the intended temperature.5% permanent strain proves neither a particular network density nor a thermoset. Test repeated recovery for the sleeve and thermal stability of X during remelting for the housing.",
+            "understandingFocusDe": "Die Kunststoffklasse folgt dem kovalenten Vernetzungsgrad; unvernetzte Ketten können linear oder verzweigt sein. / Erwärmen ermöglicht bei geeigneten Thermoplasten Kettenbewegung; kovalente Netzwerke schmelzen nicht zu frei fließenden Ketten. / Die Klasse grenzt Anwendungen ein, ersetzt aber keine anwendungsbezogenen Belastungsdaten.",
+            "understandingFocusEn": "The plastic class follows covalent crosslink density; uncrosslinked chains may be linear or branched. / Heating enables chain motion in suitable thermoplastics; covalent networks do not melt into freely flowing chains. / Class constrains applications but does not replace application-specific load data."
+          }
+        ]
+      }
+    },
+    "wholeCases": [
+      {
+        "caseId": "3e9eb5d0-case-1",
+        "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+        "title": "A: Verschluss, Dichtung, Griff",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "A: unvernetzte verzweigte Ketten, bei 150°C fließfähig. B: weitmaschiges kovalentes Netz, nach 20% Dehnung Rückkehr auf Ausgangslänge. C: engmaschiges Netz, bei 150°C formstabil, bei 300°C Zersetzung ohne Fließen. Alle Daten für dieselbe Prüfdauer; kein Brennversuch.",
+        "dataEn": "A: uncrosslinked branched chains, flows at 150°C. B: loosely crosslinked covalent network, returns to original length after 20% extension. C: densely crosslinked network, stable at 150°C, decomposes without flowing at 300°C. Same test duration; no burning test.",
+        "taskDe": "Ordne A–C zu. Erkläre je ein Verhalten auf Teilchenebene. Wähle für einen spritzgegossenen Verschluss, eine rückstellende Dichtung und einen starren warmen Griff; nenne je eine offene Prüffrage.",
+        "taskEn": "Classify A–C. Explain one behaviour of each at particle level. Select for an injection-moulded cap, a recovering seal and a rigid warm handle; identify one untested requirement for each.",
+        "modelAnswerDe": "A Thermoplast: Verzweigung ist keine Vernetzung, Ketten können gegeneinander gleiten. B Elastomer: wenige Netzpunkte verhindern dauerhaftes Abgleiten und ermöglichen Rückstellung. C Duroplast: dichtes Netz verhindert Schmelzfluss; Zersetzung ist kein Schmelzen. A Verschluss, B Dichtung, C Griff sind begründete Vorauswahlen. Medienbeständigkeit/Dichtungsalterung/Grifftemperatur müssen separat geprüft werden.",
+        "modelAnswerEn": "A thermoplastic: branching is not crosslinking; chains can slide. B elastomer: sparse network points prevent permanent sliding and permit recovery. C thermoset: dense network prevents melt flow; decomposition is not melting. A cap, B seal and C handle are reasoned preliminary selections. Chemical resistance, seal ageing and handle temperature require separate tests.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Ordnet drei gegebene Strukturen mit thermischen und mechanischen Daten begründet zu.",
+            "criterionEn": "Classifies three supplied structures using thermal and mechanical evidence.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Erklärt Schmelzverarbeitung, Rückstellung und Formstabilität aus den jeweiligen Kettenmodellen.",
+            "criterionEn": "Explains melt processing, elastic recovery and shape stability from the respective chain models.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Wählt ein Material für eine neue Anwendung und nennt eine noch zu prüfende Einsatzgrenze.",
+            "criterionEn": "Selects a material for a new application and identifies a remaining service limit to test.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      },
+      {
+        "caseId": "3e9eb5d0-case-2",
+        "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+        "title": "B: Derselbe Grundbaustein, neue Vernetzung",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "X und Y haben dieselben Grundbausteine. X: keine kovalenten Verbindungen zwischen Ketten, wiederholt warm umformbar. Y: nach Vernetzung 5% bleibende Dehnung unter festgelegter Last, ohne Vernetzung 40%. Eine flexible Manschette soll wiederholt verformt werden; ein Gehäuse soll später eingeschmolzen werden.",
+        "dataEn": "X and Y share building blocks. X: no covalent interchain links, repeatedly heat-formable. Y: after crosslinking 5% permanent strain under a specified load, versus 40% before crosslinking. A flexible sleeve must deform repeatedly; a housing should later be remelted.",
+        "taskDe": "Erkläre die Änderung, ordne X und Y soweit die Daten reichen zu und beurteile beide Verwendungen. Kann die geringe bleibende Dehnung allein ein engmaschiges Duroplastnetz beweisen?",
+        "taskEn": "Explain the change, classify X and Y as far as evidence permits and assess both uses. Does low permanent strain alone prove a dense thermoset network?",
+        "modelAnswerDe": "X ist thermoplastisch und für Einschmelzen grundsätzlich geeignet. Y zeigt vernetzungsbedingt weniger Kettengleiten; elastomere Eignung verlangt zusätzlich reversible Dehnung und passende Temperatur.5% Restdehnung beweist keine bestimmte Netzmaschenweite und keinen Duroplast. Für die Manschette Rückstellung über mehrere Zyklen testen; für das Gehäuse thermische Stabilität des X beim Wiederaufschmelzen prüfen.",
+        "modelAnswerEn": "X is thermoplastic and potentially suitable for remelting. Y has less chain sliding due to crosslinking; elastomer suitability additionally requires reversible extension at the intended temperature.5% permanent strain proves neither a particular network density nor a thermoset. Test repeated recovery for the sleeve and thermal stability of X during remelting for the housing.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Ordnet drei gegebene Strukturen mit thermischen und mechanischen Daten begründet zu.",
+            "criterionEn": "Classifies three supplied structures using thermal and mechanical evidence.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Erklärt Schmelzverarbeitung, Rückstellung und Formstabilität aus den jeweiligen Kettenmodellen.",
+            "criterionEn": "Explains melt processing, elastic recovery and shape stability from the respective chain models.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Wählt ein Material für eine neue Anwendung und nennt eine noch zu prüfende Einsatzgrenze.",
+            "criterionEn": "Selects a material for a new application and identifies a remaining service limit to test.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      }
+    ],
+    "authorMemoryClaim": {
+      "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+      "titleDe": "Kunststoffe einteilen",
+      "atomicityCandidate": {
+        "semanticAtomic": true,
+        "reasonDe": "Eine zusammenhängende Struktur–Eigenschaft–Verwendungsentscheidung; die drei Klassen sind kontrastierende Fälle derselben Kompetenz.",
+        "scope": "author scientific rationale only, not independent A vote"
+      },
+      "memoryCandidate": {
+        "memoryUseful": false,
+        "additionalMemoryGoalIds": [],
+        "additionalDeckIds": [],
+        "reasonDe": "Klassennamen allein sind kein Verständnisnachweis. Struktur- und Prüfdaten werden gegeben; kein zusätzliches reines Erinnerungsziel notwendig.",
+        "scope": "author necessity reasoning; retain current M binding if normal fingerprint remains current"
+      },
+      "imageUseLimitsDe": "Die bestehende Übersicht zeigt lineare Thermoplastketten als Beispiel; verzweigte unvernetzte Ketten bleiben ausdrücklich eingeschlossen."
+    }
+  },
+  {
+    "goal": {
+      "id": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+      "shortKey": "canonical_chemistry_upper_nanomaterials_surfaces_lotus_effect",
+      "title": "Nanomaterialien und nanostrukturierte Oberflächen erklären",
+      "titleEn": "Explain nanomaterials and nanostructured surfaces",
+      "description": "Die lernende Person kann Eigenschaften von Nanopartikeln und nanostrukturierten Oberflächen aus Nanodimension, Oberflächenwirkung und Struktur-Eigenschafts-Beziehungen erklären sowie Anwendungen, Chancen und Risiken bewerten.",
+      "descriptionEn": "The learner can explain properties of nanoparticles and nanostructured surfaces using nanoscale dimensions, surface effects, and structure-property relationships, and assess applications, opportunities, and risks.",
+      "phase": "Q2",
+      "area": "Stoffe und Materialien",
+      "level": 3,
+      "core": false,
+      "weight": 1,
+      "tags": [
+        "LK",
+        "SekII",
+        "canonical"
+      ],
+      "requires": [
+        "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "topicCode": "CANONICAL.CHEMISTRY.Q2.NANOMATERIALS_SURFACES_LOTUS_EFFECT",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "Q2",
+        "area": "Stoffe und Materialien",
+        "topicCode": "CANONICAL.CHEMISTRY.Q2.NANOMATERIALS_SURFACES_LOTUS_EFFECT"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeTitle": "Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+          "sourceGoalId": "bw-chem-sekii-3-4-8-b02-a01-b281a66d",
+          "sourceGoalTitle": "BW 3.4.8 (2): die Eigenschaften von Nanopartikeln und nanostrukturierten Oberflächen erklären (Nanodimension, ...",
+          "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.4.8 (2), S. 40.",
+          "sourceSpan": "3.4.8 (2)"
+        }
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+          "title": "Visualisierung: Nanomaterialien und nanostrukturierte Oberflächen erklären",
+          "url": "/assets/goal-visualizations/chemie/dfbccd62-1203-5d1b-927d-65a4ca41bbad/dfbccd62-1203-5d1b-927d-65a4ca41bbad.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Nanomaterialien und nanostrukturierte Oberflächen erklären.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Nanomaterialien und nanostrukturierte Oberflächen erklären\". Die lernende Person kann Eigenschaften von Nanopartikeln und nanostrukturierten Oberflächen aus Nanodimension, Oberflächenwirkung und Struktur-Eigenschafts-Beziehungen erklären sowie Anwendungen, Chancen und Risiken bewerten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "wholeProfile": {
+      "goalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Bei gleicher Form steigt das Verhältnis Oberfläche/Volumen mit abnehmender Teilchengröße.",
+            "essentialUnderstandingEn": "For a fixed shape, surface-to-volume ratio increases as particle size decreases.",
+            "observablePerformanceDe": "Berechnet Größenverhältnisse mit konsistenten Einheiten und erklärt einen Oberflächeneffekt.",
+            "observablePerformanceEn": "Calculates size ratios with consistent units and explains a surface effect."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Benetzung hängt von Oberflächenchemie und Struktur ab; Rauheit allein garantiert keinen Lotos-Effekt.",
+            "essentialUnderstandingEn": "Wetting depends on surface chemistry and structure; roughness alone does not guarantee a lotus effect.",
+            "observablePerformanceDe": "Trennt Größen-, Chemie- und Struktureffekte durch geeignete Vergleichsproben.",
+            "observablePerformanceEn": "Separates size, chemistry and structure effects using appropriate controls."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Nanoskalige Eigenschaften ermöglichen Anwendungen, während Risiko auch Freisetzung und Exposition benötigt.",
+            "essentialUnderstandingEn": "Nanoscale properties enable applications while risk also depends on release and exposure.",
+            "observablePerformanceDe": "Bewertet eine neue Anwendung anhand von Nutzen, Exposition und fehlenden Daten.",
+            "observablePerformanceEn": "Assesses a new application using benefit, exposure and missing evidence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Teilchengröße bei gleicher Form",
+            "textEn": "Particle size at constant shape"
+          },
+          {
+            "id": "v2",
+            "textDe": "Chemie bei geänderter Rauheit",
+            "textEn": "Chemistry with altered roughness"
+          },
+          {
+            "id": "v3",
+            "textDe": "Gebundenes oder freigesetztes Material",
+            "textEn": "Bound or released material"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "dfbccd62-case-1",
+            "taskDemandDe": "Berechne A/V und Verhältnis. Erkläre die Benetzungsdaten mit kontrollierten Vergleichen. Beurteile selbstreinigende Regenbekleidung: Welche Aussage ist belegt und welcher Test fehlt?",
+            "taskDemandEn": "Calculate A/V and the ratio. Explain wetting data using controlled comparisons. Assess self-cleaning rainwear: what is supported and which test is missing?",
+            "expectedPerformanceDe": "20 nm: 3·10^8 m⁻¹; 2 µm: 3·10^6 m⁻¹; Verhältnis 100. Mehr Oberfläche je Volumen kann Oberflächenreaktionen verstärken, beweist aber keine konkrete Toxizität. Gleiche methylhaltige Chemie zeigt Strukturwirkung; hydrophile Kontrolle widerlegt Rauheit als alleinige Ursache.155° stützt starke Wasserabweisung; Lotos-Selbstreinigung verlangt Abrollen, Schmutzabtrag und Abriebfestigkeit.",
+            "expectedPerformanceEn": "20 nm: 3·10^8 m⁻¹; 2 µm: 3·10^6 m⁻¹; ratio 100. More surface per volume may enhance surface reactions but proves no specific toxicity. Constant methyl-bearing chemistry demonstrates structure effects; the hydrophilic control disproves roughness as a sufficient cause.155° supports strong water repellency; lotus self-cleaning additionally needs roll-off, dirt-removal and abrasion tests.",
+            "understandingFocusDe": "Bei gleicher Form steigt das Verhältnis Oberfläche/Volumen mit abnehmender Teilchengröße. / Benetzung hängt von Oberflächenchemie und Struktur ab; Rauheit allein garantiert keinen Lotos-Effekt. / Nanoskalige Eigenschaften ermöglichen Anwendungen, während Risiko auch Freisetzung und Exposition benötigt.",
+            "understandingFocusEn": "For a fixed shape, surface-to-volume ratio increases as particle size decreases. / Wetting depends on surface chemistry and structure; roughness alone does not guarantee a lotus effect. / Nanoscale properties enable applications while risk also depends on release and exposure."
+          },
+          {
+            "id": "dfbccd62-case-2",
+            "taskDemandDe": "Vergleiche Oberfläche und Umsatz. Wähle eine Variante für einen geschlossenen Filter und begründe Nutzen-Risiko-Abwägung. Entwirf eine Kontrolle, die Größenwirkung von Fixierungswirkung trennt.",
+            "taskDemandEn": "Compare surface and conversion. Select for a closed filter and justify benefit-risk trade-offs. Design a control separating particle-size effects from immobilisation effects.",
+            "expectedPerformanceDe": "Nanokugeln haben bei gleicher Materialmenge zehnfaches A/V. Die Daten sind mit höherer Oberflächenwirkung vereinbar, belegen den Mechanismus nicht allein. Fixierte Nanopartikel bieten 70% Umsatz bei stark geringerer Freisetzung als lose; vorläufig bevorzugt, kein Sicherheitsbeweis. Ergänze lose 300 nm-Probe bei gleicher Beladung, Messunsicherheit und Wiederholungen; untersuche Freisetzung nach Alterung und reale Exposition.",
+            "expectedPerformanceEn": "Nanoparticles have tenfold A/V at equal material quantity. Data are consistent with stronger surface effects but do not alone prove the mechanism. Immobilised nanoparticles provide 70% conversion with far less release than loose ones; provisionally preferred, without establishing safety. Add a loose 300 nm control at equal loading, measurement uncertainty and replicates; assess ageing-related release and actual exposure.",
+            "understandingFocusDe": "Bei gleicher Form steigt das Verhältnis Oberfläche/Volumen mit abnehmender Teilchengröße. / Benetzung hängt von Oberflächenchemie und Struktur ab; Rauheit allein garantiert keinen Lotos-Effekt. / Nanoskalige Eigenschaften ermöglichen Anwendungen, während Risiko auch Freisetzung und Exposition benötigt.",
+            "understandingFocusEn": "For a fixed shape, surface-to-volume ratio increases as particle size decreases. / Wetting depends on surface chemistry and structure; roughness alone does not guarantee a lotus effect. / Nanoscale properties enable applications while risk also depends on release and exposure."
+          }
+        ]
+      }
+    },
+    "wholeCases": [
+      {
+        "caseId": "dfbccd62-case-1",
+        "goalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+        "title": "A: Würfel und Beschichtung",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "Gleiches Material, Würfelkanten 20 nm bzw 2 µm; A/V=6/a. Beschichtungen: glatt+methylhaltig Kontaktwinkel 105°, nanostrukturiert+methylhaltig 155°, nanostrukturiert+hydrophil 30°. Abrollwinkel nicht gemessen.",
+        "dataEn": "Same material, cube edges 20 nm and 2 µm; A/V=6/a. Coatings: smooth+methyl-bearing contact angle 105°, nanostructured+methyl-bearing 155°, nanostructured+hydrophilic 30°. Roll-off angles unmeasured.",
+        "taskDe": "Berechne A/V und Verhältnis. Erkläre die Benetzungsdaten mit kontrollierten Vergleichen. Beurteile selbstreinigende Regenbekleidung: Welche Aussage ist belegt und welcher Test fehlt?",
+        "taskEn": "Calculate A/V and the ratio. Explain wetting data using controlled comparisons. Assess self-cleaning rainwear: what is supported and which test is missing?",
+        "modelAnswerDe": "20 nm: 3·10^8 m⁻¹; 2 µm: 3·10^6 m⁻¹; Verhältnis 100. Mehr Oberfläche je Volumen kann Oberflächenreaktionen verstärken, beweist aber keine konkrete Toxizität. Gleiche methylhaltige Chemie zeigt Strukturwirkung; hydrophile Kontrolle widerlegt Rauheit als alleinige Ursache.155° stützt starke Wasserabweisung; Lotos-Selbstreinigung verlangt Abrollen, Schmutzabtrag und Abriebfestigkeit.",
+        "modelAnswerEn": "20 nm: 3·10^8 m⁻¹; 2 µm: 3·10^6 m⁻¹; ratio 100. More surface per volume may enhance surface reactions but proves no specific toxicity. Constant methyl-bearing chemistry demonstrates structure effects; the hydrophilic control disproves roughness as a sufficient cause.155° supports strong water repellency; lotus self-cleaning additionally needs roll-off, dirt-removal and abrasion tests.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Berechnet Größenverhältnisse mit konsistenten Einheiten und erklärt einen Oberflächeneffekt.",
+            "criterionEn": "Calculates size ratios with consistent units and explains a surface effect.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Trennt Größen-, Chemie- und Struktureffekte durch geeignete Vergleichsproben.",
+            "criterionEn": "Separates size, chemistry and structure effects using appropriate controls.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Bewertet eine neue Anwendung anhand von Nutzen, Exposition und fehlenden Daten.",
+            "criterionEn": "Assesses a new application using benefit, exposure and missing evidence.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      },
+      {
+        "caseId": "dfbccd62-case-2",
+        "goalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+        "title": "B: Katalysator im Filter",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "Kugeln gleicher Dichte, Durchmesser 30 nm bzw 300 nm; A/V=6/d. Nanopartikel lose: Reaktionsumsatz 80%, Freisetzung 12 mg je Prüflauf. Auf Träger fixiert: 70%, 0.2 mg. Grobpartikel fixiert: 40%, 0.1 mg. Identischer Einsatz und Laufzeit, drei Wiederholungen ohne Unsicherheitsangabe.",
+        "dataEn": "Spheres of equal density, diameters 30 nm and 300 nm; A/V=6/d. Loose nanoparticles: conversion 80%, release 12 mg per run. Immobilised nanoparticles: 70%, 0.2 mg. Immobilised larger particles: 40%, 0.1 mg. Identical input and duration, three replicates without uncertainty reported.",
+        "taskDe": "Vergleiche Oberfläche und Umsatz. Wähle eine Variante für einen geschlossenen Filter und begründe Nutzen-Risiko-Abwägung. Entwirf eine Kontrolle, die Größenwirkung von Fixierungswirkung trennt.",
+        "taskEn": "Compare surface and conversion. Select for a closed filter and justify benefit-risk trade-offs. Design a control separating particle-size effects from immobilisation effects.",
+        "modelAnswerDe": "Nanokugeln haben bei gleicher Materialmenge zehnfaches A/V. Die Daten sind mit höherer Oberflächenwirkung vereinbar, belegen den Mechanismus nicht allein. Fixierte Nanopartikel bieten 70% Umsatz bei stark geringerer Freisetzung als lose; vorläufig bevorzugt, kein Sicherheitsbeweis. Ergänze lose 300 nm-Probe bei gleicher Beladung, Messunsicherheit und Wiederholungen; untersuche Freisetzung nach Alterung und reale Exposition.",
+        "modelAnswerEn": "Nanoparticles have tenfold A/V at equal material quantity. Data are consistent with stronger surface effects but do not alone prove the mechanism. Immobilised nanoparticles provide 70% conversion with far less release than loose ones; provisionally preferred, without establishing safety. Add a loose 300 nm control at equal loading, measurement uncertainty and replicates; assess ageing-related release and actual exposure.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Berechnet Größenverhältnisse mit konsistenten Einheiten und erklärt einen Oberflächeneffekt.",
+            "criterionEn": "Calculates size ratios with consistent units and explains a surface effect.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Trennt Größen-, Chemie- und Struktureffekte durch geeignete Vergleichsproben.",
+            "criterionEn": "Separates size, chemistry and structure effects using appropriate controls.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Bewertet eine neue Anwendung anhand von Nutzen, Exposition und fehlenden Daten.",
+            "criterionEn": "Assesses a new application using benefit, exposure and missing evidence.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      }
+    ],
+    "authorMemoryClaim": {
+      "goalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+      "titleDe": "Nanomaterialien und nanostrukturierte Oberflächen erklären",
+      "atomicityCandidate": {
+        "semanticAtomic": true,
+        "reasonDe": "Eine Nanodimension–Oberfläche–Anwendungsbewertung mit zwei Materialsystemen, keine getrennte Toxikologieprüfung.",
+        "scope": "author scientific rationale only, not independent A vote"
+      },
+      "memoryCandidate": {
+        "memoryUseful": false,
+        "additionalMemoryGoalIds": [],
+        "additionalDeckIds": [],
+        "reasonDe": "Formelbeziehung und Daten stehen in der Aufgabe; begründete Modellierung statt isolierter Nanobegriffsabfrage.",
+        "scope": "author necessity reasoning; retain current M binding if normal fingerprint remains current"
+      },
+      "imageUseLimitsDe": "Bestehendes Bild als Überblick KEEP; Kontaktwinkel allein und allgemeine Risiko-Icons sind kein Selbstreinigungs- oder Sicherheitsbeweis."
+    }
+  },
+  {
+    "goal": {
+      "id": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+      "title": "Radikalische Polymerisation beschreiben",
+      "titleEn": "Describe radical polymerization",
+      "description": "Die lernende Person kann den Mechanismus der radikalischen Polymerisation formulieren und auf die Synthese verschiedener Polymere anwenden.",
+      "descriptionEn": "The learner can formulate the mechanism of radical polymerization and apply it to the synthesis of different polymers.",
+      "weight": 1.05,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "3e9eb5d0-3407-5a1e-9492-ad87f98d303d"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "db0ff738-dde5-458f-8ed2-91e8fc99df2a"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+          "title": "Visualisierung: Radikalische Polymerisation beschreiben",
+          "url": "/assets/goal-visualizations/chemie/6eb14e47-187c-5ba1-8b08-a0ee95ad88a9/6eb14e47-187c-5ba1-8b08-a0ee95ad88a9.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Radikalische Polymerisation beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Radikalische Polymerisation beschreiben\". Die lernende Person kann den Mechanismus der radikalischen Polymerisation formulieren und auf die Synthese verschiedener Polymere anwenden.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    "wholeProfile": {
+      "goalId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Radikale starten eine Kettenreaktion; Wachstum erhält ein aktives Kettenende, Abbruch entfernt es.",
+            "essentialUnderstandingEn": "Radicals initiate a chain reaction; growth retains an active chain end while termination removes it.",
+            "observablePerformanceDe": "Formuliert Initiatorzerfall, Start, Wachstum und Kombination mit korrekt gesetzten Radikalpunkten.",
+            "observablePerformanceEn": "Writes initiator cleavage, initiation, propagation and combination with correctly located radical dots."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Die Vinylgruppe wird zum gesättigten Kettenrückgrat; Substituenten und Atomzahl bleiben erhalten.",
+            "essentialUnderstandingEn": "The vinyl group becomes a saturated backbone; substituents and atom counts are retained.",
+            "observablePerformanceDe": "Leitet verschiedene Repetiereinheiten aus vollständigen Monomerformeln ab.",
+            "observablePerformanceEn": "Derives different repeat units from complete monomer formulae."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Reaktionssteuerung wirkt auf aktive Zentren und Nebenreaktionen; der Mechanismus ist keine Durchführungsvorschrift.",
+            "essentialUnderstandingEn": "Reaction control affects active centres and side reactions; a mechanism is not an experimental procedure.",
+            "observablePerformanceDe": "Überträgt den Mechanismus auf ein anderes Vinylmonomer und begründet ein gegebenes Inhibitorverhalten.",
+            "observablePerformanceEn": "Transfers the mechanism to another vinyl monomer and explains supplied inhibitor behaviour."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Vinylsubstituent",
+            "textEn": "Vinyl substituent"
+          },
+          {
+            "id": "v2",
+            "textDe": "Start oder Abbruchschritt",
+            "textEn": "Initiation or termination step"
+          },
+          {
+            "id": "v3",
+            "textDe": "Inhibitorbedingungen",
+            "textEn": "Inhibitor conditions"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "6eb14e47-case-1",
+            "taskDemandDe": "Formuliere Start und einen Wachstumsschritt für Ethen sowie Kombination zweier Kettenradikale. Leite beide Repetiereinheiten ab und übertrage den Start auf Styrol. Unterscheide Radikalpunkt und Ladung.",
+            "taskDemandEn": "Write initiation and one propagation step for ethene, plus combination of two chain radicals. Derive both repeat units and transfer initiation to styrene. Distinguish a radical dot from charge.",
+            "expectedPerformanceDe": "RO•+CH₂=CH₂→RO–CH₂–CH₂•; RO–(CH₂–CH₂)ₙ•+CH₂=CH₂→RO–(CH₂–CH₂)ₙ₊₁• ist Kurznotation mit Punkt am End-C. P•+•Q→P–Q entfernt beide Radikale. Repetiereinheiten –CH₂–CH₂– und –CH₂–CH(C₆H₅)–. Styrolstart RO–CH₂–C•H(C₆H₅); Radikal besitzt ungepaartes Elektron, nicht automatisch eine Ladung. Atome/Substituenten bleiben erhalten.",
+            "expectedPerformanceEn": "RO•+CH₂=CH₂→RO–CH₂–CH₂•; RO–(CH₂–CH₂)ₙ•+CH₂=CH₂→RO–(CH₂–CH₂)ₙ₊₁• is shorthand with the dot on the terminal carbon. P•+•Q→P–Q removes both radicals. Repeat units –CH₂–CH₂– and –CH₂–CH(C₆H₅)–. Styrene initiation gives RO–CH₂–C•H(C₆H₅); a radical has an unpaired electron, not necessarily a charge. Atoms and substituents are retained.",
+            "understandingFocusDe": "Radikale starten eine Kettenreaktion; Wachstum erhält ein aktives Kettenende, Abbruch entfernt es. / Die Vinylgruppe wird zum gesättigten Kettenrückgrat; Substituenten und Atomzahl bleiben erhalten. / Reaktionssteuerung wirkt auf aktive Zentren und Nebenreaktionen; der Mechanismus ist keine Durchführungsvorschrift.",
+            "understandingFocusEn": "Radicals initiate a chain reaction; growth retains an active chain end while termination removes it. / The vinyl group becomes a saturated backbone; substituents and atom counts are retained. / Reaction control affects active centres and side reactions; a mechanism is not an experimental procedure."
+          },
+          {
+            "id": "6eb14e47-case-2",
+            "taskDemandDe": "Formuliere Start und Wachstum mit Cl-Erhaltung. Erkläre die Umsatzänderung und formuliere einen möglichen Kombinationsabbruch. Warum beweisen Umsatzdaten allein weder mittlere Kettenlänge noch chemische Sicherheit?",
+            "taskDemandEn": "Write initiation and growth retaining Cl. Explain the conversion change and formulate possible combination termination. Why does conversion alone establish neither average chain length nor chemical safety?",
+            "expectedPerformanceDe": "Start RO•+CH₂=CHCl→RO–CH₂–C•HCl; Wachstum ergänzt –CH₂–CHCl– und lässt am End-C ein Radikal. Zwei Endradikale kombinieren durch neue C–C-Bindung. Q entfernt aktive Zentren, daher geringerer Umsatz. Die Repetiereinheit enthält ein Cl je zwei Backbone-C. Umsatz ist verbrauchter Monomeranteil; Kettenzahl/Verteilung und Restmonomerexposition brauchen zusätzliche Daten.",
+            "expectedPerformanceEn": "Initiation RO•+CH₂=CHCl→RO–CH₂–C•HCl; growth adds –CH₂–CHCl– while retaining a terminal carbon radical. Two chain-end radicals combine through a new C–C bond. Q removes active centres, lowering conversion. The repeat unit contains one Cl per two backbone carbons. Conversion measures consumed monomer fraction; chain-number distribution and residual-monomer exposure need further evidence.",
+            "understandingFocusDe": "Radikale starten eine Kettenreaktion; Wachstum erhält ein aktives Kettenende, Abbruch entfernt es. / Die Vinylgruppe wird zum gesättigten Kettenrückgrat; Substituenten und Atomzahl bleiben erhalten. / Reaktionssteuerung wirkt auf aktive Zentren und Nebenreaktionen; der Mechanismus ist keine Durchführungsvorschrift.",
+            "understandingFocusEn": "Radicals initiate a chain reaction; growth retains an active chain end while termination removes it. / The vinyl group becomes a saturated backbone; substituents and atom counts are retained. / Reaction control affects active centres and side reactions; a mechanism is not an experimental procedure."
+          }
+        ]
+      }
+    },
+    "wholeCases": [
+      {
+        "caseId": "6eb14e47-case-1",
+        "goalId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+        "title": "A: Ethen und Styrol",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "Initiator RO–OR bildet durch homolytische Spaltung 2 RO•. Monomere CH₂=CH₂ und CH₂=CH–C₆H₅. Nur Kombination als Abbruch betrachten; Endgruppen nicht in der Repetiereinheit.",
+        "dataEn": "Initiator RO–OR undergoes homolysis to 2 RO•. Monomers CH₂=CH₂ and CH₂=CH–C₆H₅. Consider only combination termination; exclude end groups from the repeat unit.",
+        "taskDe": "Formuliere Start und einen Wachstumsschritt für Ethen sowie Kombination zweier Kettenradikale. Leite beide Repetiereinheiten ab und übertrage den Start auf Styrol. Unterscheide Radikalpunkt und Ladung.",
+        "taskEn": "Write initiation and one propagation step for ethene, plus combination of two chain radicals. Derive both repeat units and transfer initiation to styrene. Distinguish a radical dot from charge.",
+        "modelAnswerDe": "RO•+CH₂=CH₂→RO–CH₂–CH₂•; RO–(CH₂–CH₂)ₙ•+CH₂=CH₂→RO–(CH₂–CH₂)ₙ₊₁• ist Kurznotation mit Punkt am End-C. P•+•Q→P–Q entfernt beide Radikale. Repetiereinheiten –CH₂–CH₂– und –CH₂–CH(C₆H₅)–. Styrolstart RO–CH₂–C•H(C₆H₅); Radikal besitzt ungepaartes Elektron, nicht automatisch eine Ladung. Atome/Substituenten bleiben erhalten.",
+        "modelAnswerEn": "RO•+CH₂=CH₂→RO–CH₂–CH₂•; RO–(CH₂–CH₂)ₙ•+CH₂=CH₂→RO–(CH₂–CH₂)ₙ₊₁• is shorthand with the dot on the terminal carbon. P•+•Q→P–Q removes both radicals. Repeat units –CH₂–CH₂– and –CH₂–CH(C₆H₅)–. Styrene initiation gives RO–CH₂–C•H(C₆H₅); a radical has an unpaired electron, not necessarily a charge. Atoms and substituents are retained.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Formuliert Initiatorzerfall, Start, Wachstum und Kombination mit korrekt gesetzten Radikalpunkten.",
+            "criterionEn": "Writes initiator cleavage, initiation, propagation and combination with correctly located radical dots.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Leitet verschiedene Repetiereinheiten aus vollständigen Monomerformeln ab.",
+            "criterionEn": "Derives different repeat units from complete monomer formulae.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Überträgt den Mechanismus auf ein anderes Vinylmonomer und begründet ein gegebenes Inhibitorverhalten.",
+            "criterionEn": "Transfers the mechanism to another vinyl monomer and explains supplied inhibitor behaviour.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      },
+      {
+        "caseId": "6eb14e47-case-2",
+        "goalId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+        "title": "B: Vinylchlorid mit Radikalfänger",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "Monomer CH₂=CHCl. Ohne Fänger: nach gleicher Zeit 60% Monomerumsatz; mit Fänger Q: 5%. Gegeben: P•+Q→nichtwachsendes Produkt. Gleiche Startkonzentration und Temperatur, keine Ausführung.",
+        "dataEn": "Monomer CH₂=CHCl. Without scavenger: 60% monomer conversion after a fixed time; with Q: 5%. Given P•+Q→non-growing product. Equal initial concentration and temperature; no experimental execution.",
+        "taskDe": "Formuliere Start und Wachstum mit Cl-Erhaltung. Erkläre die Umsatzänderung und formuliere einen möglichen Kombinationsabbruch. Warum beweisen Umsatzdaten allein weder mittlere Kettenlänge noch chemische Sicherheit?",
+        "taskEn": "Write initiation and growth retaining Cl. Explain the conversion change and formulate possible combination termination. Why does conversion alone establish neither average chain length nor chemical safety?",
+        "modelAnswerDe": "Start RO•+CH₂=CHCl→RO–CH₂–C•HCl; Wachstum ergänzt –CH₂–CHCl– und lässt am End-C ein Radikal. Zwei Endradikale kombinieren durch neue C–C-Bindung. Q entfernt aktive Zentren, daher geringerer Umsatz. Die Repetiereinheit enthält ein Cl je zwei Backbone-C. Umsatz ist verbrauchter Monomeranteil; Kettenzahl/Verteilung und Restmonomerexposition brauchen zusätzliche Daten.",
+        "modelAnswerEn": "Initiation RO•+CH₂=CHCl→RO–CH₂–C•HCl; growth adds –CH₂–CHCl– while retaining a terminal carbon radical. Two chain-end radicals combine through a new C–C bond. Q removes active centres, lowering conversion. The repeat unit contains one Cl per two backbone carbons. Conversion measures consumed monomer fraction; chain-number distribution and residual-monomer exposure need further evidence.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Formuliert Initiatorzerfall, Start, Wachstum und Kombination mit korrekt gesetzten Radikalpunkten.",
+            "criterionEn": "Writes initiator cleavage, initiation, propagation and combination with correctly located radical dots.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Leitet verschiedene Repetiereinheiten aus vollständigen Monomerformeln ab.",
+            "criterionEn": "Derives different repeat units from complete monomer formulae.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Überträgt den Mechanismus auf ein anderes Vinylmonomer und begründet ein gegebenes Inhibitorverhalten.",
+            "criterionEn": "Transfers the mechanism to another vinyl monomer and explains supplied inhibitor behaviour.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      }
+    ],
+    "authorMemoryClaim": {
+      "goalId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+      "titleDe": "Radikalische Polymerisation beschreiben",
+      "atomicityCandidate": {
+        "semanticAtomic": true,
+        "reasonDe": "Ein zusammenhängender Kettenmechanismus mit monomerabhängiger Anwendung.",
+        "scope": "author scientific rationale only, not independent A vote"
+      },
+      "memoryCandidate": {
+        "memoryUseful": false,
+        "additionalMemoryGoalIds": [],
+        "additionalDeckIds": [],
+        "reasonDe": "Monomere/Initiator und Radikalfängerfunktion werden gegeben; Mechanismus wird konstruiert, kein neues Begriffsdeck notwendig.",
+        "scope": "author necessity reasoning; retain current M binding if normal fingerprint remains current"
+      },
+      "imageUseLimitsDe": "Bestehendes Bild KEEP als Radikalpunkt-/Kettenschema; Aufgaben verlangen explizite End-C-Formeln. Keine BB/BE- oder BW-Durchführungsfähigkeit aus Papierfall behauptet."
+    }
+  },
+  {
+    "goal": {
+      "id": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+      "title": "Polyadditionen analysieren (LK)",
+      "titleEn": "Analyze polyadditions (LK)",
+      "description": "Die lernende Person kann die Bildung von Polyurethanen erläutern und Besonderheiten der Reaktionsführung erklären.",
+      "descriptionEn": "The learner can explain the formation of polyurethanes and particularities of the reaction control.",
+      "weight": 1.05,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "3e9eb5d0-3407-5a1e-9492-ad87f98d303d"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "c6d28506-6412-4ce8-9b4f-f1b451a73a18"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+          "title": "Visualisierung: Polyadditionen analysieren (LK)",
+          "url": "/assets/goal-visualizations/chemie/f947cd04-952a-5a9d-9445-3ffc70e02c3c/f947cd04-952a-5a9d-9445-3ffc70e02c3c.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Polyadditionen analysieren (LK).",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Polyadditionen analysieren (LK)\". Die lernende Person kann die Bildung von Polyurethanen erläutern und Besonderheiten der Reaktionsführung erklären.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    "wholeProfile": {
+      "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Isocyanat und Alkohol bilden Urethangruppen ohne Abspaltung eines kleinen Moleküls in der trockenen Hauptreaktion.",
+            "essentialUnderstandingEn": "Isocyanate and alcohol form urethane groups without a small-molecule byproduct in the dry main reaction.",
+            "observablePerformanceDe": "Leitet Bindungsmotiv und Repetiereinheit mit korrekten O-, N- und Carbonylbindungen ab.",
+            "observablePerformanceEn": "Derives linkage and repeat unit with correct O, N and carbonyl bonds."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Funktionalität und Äquivalentverhältnis steuern Kettenbildung, Endgruppen und Vernetzung.",
+            "essentialUnderstandingEn": "Functionality and equivalent ratio control chains, end groups and crosslinking.",
+            "observablePerformanceDe": "Zählt OH/NCO-Äquivalente und unterscheidet lineare Ketten von verzweigten Netzwerken.",
+            "observablePerformanceEn": "Counts OH/NCO equivalents and distinguishes linear chains from branched networks."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Wasser kann mit Isocyanat CO₂ erzeugen; Schäumen ist von trockener Polyaddition zu unterscheiden.",
+            "essentialUnderstandingEn": "Water can react with isocyanate to generate CO₂; foaming differs from dry polyaddition.",
+            "observablePerformanceDe": "Interpretiert einen neuen Feuchtefall und begründet datenbasierte Reaktionskontrolle ohne Laboranleitung.",
+            "observablePerformanceEn": "Interprets a new moisture scenario and justifies data-based process control without laboratory instructions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Diol oder Triol",
+            "textEn": "Diol or triol"
+          },
+          {
+            "id": "v2",
+            "textDe": "Äquivalentverhältnis",
+            "textEn": "Equivalent ratio"
+          },
+          {
+            "id": "v3",
+            "textDe": "Trocken oder feucht",
+            "textEn": "Dry or moist"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "f947cd04-case-1",
+            "taskDemandDe": "Formuliere R–N=C=O+HO–R′. Zähle Gruppen und erkläre Ketten- bzw Vernetzungstendenz. Übertrage auf einen formstabilen Klebstoff und nenne eine Grenze des idealen Modells.",
+            "taskDemandEn": "Write R–N=C=O+HO–R′. Count groups and explain chain versus crosslinking tendencies. Apply to a shape-stable adhesive and state one limit of the ideal model.",
+            "expectedPerformanceDe": "Produkt R–NH–C(=O)–O–R′, kein H₂O. L je 200 mol OH/NCO, beide bifunktionell: lineare Ketten möglich. N 210 mol OH und 210 mol NCO; Triol ermöglicht Verzweigungen und bei ausreichender Umsetzung ein Netz. Wiederholung –O–R′–O–C(=O)–NH–R–NH–C(=O)–. N ist plausible formstabile Wahl; Vernetzungsgrad, Haftung, Temperatur und vollständiger Umsatz sind nicht allein durch Äquivalenz bewiesen.",
+            "expectedPerformanceEn": "Product R–NH–C(=O)–O–R′, no H₂O. L has 200 mol each OH/NCO and both monomers are bifunctional: linear chains are possible. N has 210 mol each OH/NCO; triol permits branches and a network at sufficient conversion. Repeat –O–R′–O–C(=O)–NH–R–NH–C(=O)–. N is a plausible shape-stable choice; equivalence alone proves neither crosslink density, adhesion, service temperature nor complete conversion.",
+            "understandingFocusDe": "Isocyanat und Alkohol bilden Urethangruppen ohne Abspaltung eines kleinen Moleküls in der trockenen Hauptreaktion. / Funktionalität und Äquivalentverhältnis steuern Kettenbildung, Endgruppen und Vernetzung. / Wasser kann mit Isocyanat CO₂ erzeugen; Schäumen ist von trockener Polyaddition zu unterscheiden.",
+            "understandingFocusEn": "Isocyanate and alcohol form urethane groups without a small-molecule byproduct in the dry main reaction. / Functionality and equivalent ratio control chains, end groups and crosslinking. / Water can react with isocyanate to generate CO₂; foaming differs from dry polyaddition."
+          },
+          {
+            "id": "f947cd04-case-2",
+            "taskDemandDe": "Erkläre Hauptreaktion und Nebenreaktion. Berechne theoretisches CO₂ und den möglichen NCO-Verbrauch des Zweischrittpfads. Beurteile Gleichsetzung von Blasen mit erfolgreicher trockener Polyaddition und begründe eine Vergleichskontrolle.",
+            "taskDemandEn": "Explain main and side reactions. Calculate theoretical CO₂ and possible NCO consumption of the two-step route. Assess whether bubbles prove successful dry polyaddition and justify a comparison control.",
+            "expectedPerformanceDe": "Trocken entsteht Urethan ohne Gasabspaltung.2 mmol Wasser können 2 mmol CO₂ und nach anschließender Harnstoffbildung 4 mmol NCO-Verbrauch bewirken; für OH bleiben maximal 96 mmol NCO dieses Pfads. Blasen stützen Wassernebenreaktion, nicht Qualität des PU-Netzes. Trocken/feucht bei identischen übrigen Bedingungen sowie Restgruppen-/Umsatzmessung trennen die Effekte; tatsächliche Gasmenge kann durch Löslichkeit/Verlust abweichen.",
+            "expectedPerformanceEn": "Dry reaction forms urethane without gas elimination.2 mmol water may produce 2 mmol CO₂ and consume 4 mmol NCO after subsequent urea formation, leaving at most 96 mmol NCO for OH in this route. Bubbles support the water side reaction, not PU-network quality. Matched dry/moist controls and residual-group/conversion measurements separate effects; actual gas collection may differ through dissolution or loss.",
+            "understandingFocusDe": "Isocyanat und Alkohol bilden Urethangruppen ohne Abspaltung eines kleinen Moleküls in der trockenen Hauptreaktion. / Funktionalität und Äquivalentverhältnis steuern Kettenbildung, Endgruppen und Vernetzung. / Wasser kann mit Isocyanat CO₂ erzeugen; Schäumen ist von trockener Polyaddition zu unterscheiden.",
+            "understandingFocusEn": "Isocyanate and alcohol form urethane groups without a small-molecule byproduct in the dry main reaction. / Functionality and equivalent ratio control chains, end groups and crosslinking. / Water can react with isocyanate to generate CO₂; foaming differs from dry polyaddition."
+          }
+        ]
+      }
+    },
+    "wholeCases": [
+      {
+        "caseId": "f947cd04-case-1",
+        "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+        "title": "A: Lineares PU und Netzwerk",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "Diol HO–R′–OH und Diisocyanat O=C=N–R–N=C=O. Charge L: 100 mol Diol+100 mol Diisocyanat. Charge N: 90 mol Diol+10 mol Triol+105 mol Diisocyanat. Ideal vollständige Gruppenreaktion, trocken, keine Cyclisierung.",
+        "dataEn": "Diol HO–R′–OH and diisocyanate O=C=N–R–N=C=O. Batch L: 100 mol diol+100 mol diisocyanate. Batch N: 90 mol diol+10 mol triol+105 mol diisocyanate. Ideal complete group reaction, dry, no cyclisation.",
+        "taskDe": "Formuliere R–N=C=O+HO–R′. Zähle Gruppen und erkläre Ketten- bzw Vernetzungstendenz. Übertrage auf einen formstabilen Klebstoff und nenne eine Grenze des idealen Modells.",
+        "taskEn": "Write R–N=C=O+HO–R′. Count groups and explain chain versus crosslinking tendencies. Apply to a shape-stable adhesive and state one limit of the ideal model.",
+        "modelAnswerDe": "Produkt R–NH–C(=O)–O–R′, kein H₂O. L je 200 mol OH/NCO, beide bifunktionell: lineare Ketten möglich. N 210 mol OH und 210 mol NCO; Triol ermöglicht Verzweigungen und bei ausreichender Umsetzung ein Netz. Wiederholung –O–R′–O–C(=O)–NH–R–NH–C(=O)–. N ist plausible formstabile Wahl; Vernetzungsgrad, Haftung, Temperatur und vollständiger Umsatz sind nicht allein durch Äquivalenz bewiesen.",
+        "modelAnswerEn": "Product R–NH–C(=O)–O–R′, no H₂O. L has 200 mol each OH/NCO and both monomers are bifunctional: linear chains are possible. N has 210 mol each OH/NCO; triol permits branches and a network at sufficient conversion. Repeat –O–R′–O–C(=O)–NH–R–NH–C(=O)–. N is a plausible shape-stable choice; equivalence alone proves neither crosslink density, adhesion, service temperature nor complete conversion.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Leitet Bindungsmotiv und Repetiereinheit mit korrekten O-, N- und Carbonylbindungen ab.",
+            "criterionEn": "Derives linkage and repeat unit with correct O, N and carbonyl bonds.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Zählt OH/NCO-Äquivalente und unterscheidet lineare Ketten von verzweigten Netzwerken.",
+            "criterionEn": "Counts OH/NCO equivalents and distinguishes linear chains from branched networks.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Interpretiert einen neuen Feuchtefall und begründet datenbasierte Reaktionskontrolle ohne Laboranleitung.",
+            "criterionEn": "Interprets a new moisture scenario and justifies data-based process control without laboratory instructions.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      },
+      {
+        "caseId": "f947cd04-case-2",
+        "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+        "title": "B: Ungewollte Gasblasen",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "NCO-Vorrat 100 mmol, OH-Vorrat 100 mmol. Feuchteprobe enthält 2 mmol H₂O. Gegeben R–NCO+H₂O→R–NH₂+CO₂; anschließend R–NH₂+R′–NCO→R–NH–CO–NH–R′. Trockenprobe ohne Blasen, Feuchteprobe mit Blasen.",
+        "dataEn": "NCO inventory 100 mmol, OH inventory 100 mmol. Moist sample contains 2 mmol H₂O. Given R–NCO+H₂O→R–NH₂+CO₂; then R–NH₂+R′–NCO→R–NH–CO–NH–R′. Dry sample has no bubbles; moist sample has bubbles.",
+        "taskDe": "Erkläre Hauptreaktion und Nebenreaktion. Berechne theoretisches CO₂ und den möglichen NCO-Verbrauch des Zweischrittpfads. Beurteile Gleichsetzung von Blasen mit erfolgreicher trockener Polyaddition und begründe eine Vergleichskontrolle.",
+        "taskEn": "Explain main and side reactions. Calculate theoretical CO₂ and possible NCO consumption of the two-step route. Assess whether bubbles prove successful dry polyaddition and justify a comparison control.",
+        "modelAnswerDe": "Trocken entsteht Urethan ohne Gasabspaltung.2 mmol Wasser können 2 mmol CO₂ und nach anschließender Harnstoffbildung 4 mmol NCO-Verbrauch bewirken; für OH bleiben maximal 96 mmol NCO dieses Pfads. Blasen stützen Wassernebenreaktion, nicht Qualität des PU-Netzes. Trocken/feucht bei identischen übrigen Bedingungen sowie Restgruppen-/Umsatzmessung trennen die Effekte; tatsächliche Gasmenge kann durch Löslichkeit/Verlust abweichen.",
+        "modelAnswerEn": "Dry reaction forms urethane without gas elimination.2 mmol water may produce 2 mmol CO₂ and consume 4 mmol NCO after subsequent urea formation, leaving at most 96 mmol NCO for OH in this route. Bubbles support the water side reaction, not PU-network quality. Matched dry/moist controls and residual-group/conversion measurements separate effects; actual gas collection may differ through dissolution or loss.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Leitet Bindungsmotiv und Repetiereinheit mit korrekten O-, N- und Carbonylbindungen ab.",
+            "criterionEn": "Derives linkage and repeat unit with correct O, N and carbonyl bonds.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Zählt OH/NCO-Äquivalente und unterscheidet lineare Ketten von verzweigten Netzwerken.",
+            "criterionEn": "Counts OH/NCO equivalents and distinguishes linear chains from branched networks.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Interpretiert einen neuen Feuchtefall und begründet datenbasierte Reaktionskontrolle ohne Laboranleitung.",
+            "criterionEn": "Interprets a new moisture scenario and justifies data-based process control without laboratory instructions.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      }
+    ],
+    "authorMemoryClaim": {
+      "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+      "titleDe": "Polyadditionen analysieren (LK)",
+      "atomicityCandidate": {
+        "semanticAtomic": true,
+        "reasonDe": "Eine Polyadditions-/Reaktionssteuerungskompetenz; Nebenreaktion als Transfer statt neuer Synthesezielumfang.",
+        "scope": "author scientific rationale only, not independent A vote"
+      },
+      "memoryCandidate": {
+        "memoryUseful": false,
+        "additionalMemoryGoalIds": [],
+        "additionalDeckIds": [],
+        "reasonDe": "Äquivalentdaten und Wasserreaktionen werden bereitgestellt; Anwendung ersetzt isoliertes Auswendiglernen.",
+        "scope": "author necessity reasoning; retain current M binding if normal fingerprint remains current"
+      },
+      "imageUseLimitsDe": "Bestehende korrekte Urethan-Repetiereinheit KEEP; Papierdaten erteilen keine Befugnis zum Umgang mit Isocyanaten."
+    }
+  },
+  {
+    "goal": {
+      "id": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+      "shortKey": "canonical_chemistry_q2_silver_nanoparticles",
+      "title": "Nanostrukturierte Silberwerkstoffe einordnen",
+      "titleEn": "Classify nanostructured silver materials",
+      "description": "Die lernende Person kann Nanostrukturen und Nanomaterialien am Beispiel von Silber-Nanopartikeln in antimikrobiellen Polyolefin-Verpackungen beschreiben und Nutzen-Risiko-Bezüge herstellen.",
+      "descriptionEn": "The learner can describe nanostructures and nanomaterials using silver nanoparticles in antimicrobial polyolefin packaging as an example and establish benefit-risk relationships.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q2",
+        "area": "Kunststoffchemie",
+        "topicCode": "CANONICAL.CHEMISTRY.Q2.SILVER_NANOPARTICLES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-RP",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "he-chem-sekii-q2-2-b06-a01-f1814d99"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+        "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+          "title": "Visualisierung: Nanostrukturierte Silberwerkstoffe einordnen",
+          "url": "/assets/goal-visualizations/chemie/afa7dae7-9378-5687-aa8d-69a04afaa0d8/afa7dae7-9378-5687-aa8d-69a04afaa0d8.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Nanostrukturierte Silberwerkstoffe einordnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Nanostrukturierte Silberwerkstoffe einordnen\". Die lernende Person kann Nanostrukturen und Nanomaterialien am Beispiel von Silber-Nanopartikeln in antimikrobiellen Polyolefin-Verpackungen beschreiben und Nutzen-Risiko-Bezüge herstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "wholeProfile": {
+      "goalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Eine Polyolefinmatrix und disperse Ag-Nanopartikel sind unterschiedliche Materialbestandteile; Partikel, Aggregate und gelöste Ionen sind zu unterscheiden.",
+            "essentialUnderstandingEn": "A polyolefin matrix and dispersed Ag nanoparticles are distinct components; particles, aggregates and dissolved ions must be distinguished.",
+            "observablePerformanceDe": "Beschreibt Matrix, Nanodimension und mögliche Freisetzungsformen aus gegebenen Befunden.",
+            "observablePerformanceEn": "Describes matrix, nanoscale size and possible release forms from supplied evidence."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Antimikrobielle Wirkung braucht einen Vergleich mit gleicher Polymermatrix und passenden Prüfbedingungen.",
+            "essentialUnderstandingEn": "Antimicrobial effects require a comparison with the same polymer matrix under matched conditions.",
+            "observablePerformanceDe": "Berechnet eine relative Keimzahländerung und benennt Kontrollen und Aussagegrenzen.",
+            "observablePerformanceEn": "Calculates a relative bacterial-count change and identifies controls and inference limits."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Ein Nutzenbefund beweist keine allgemeine Lebensmittel- oder Umweltsicherheit.",
+            "essentialUnderstandingEn": "Evidence of benefit does not establish general food or environmental safety.",
+            "observablePerformanceDe": "Bewertet einen veränderten Nutzungskontext anhand von Migration, Exposition und noch fehlender Evidenz.",
+            "observablePerformanceEn": "Assesses a changed use context using migration, exposure and remaining evidence gaps."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Ag-Beladung und Aggregation",
+            "textEn": "Ag loading and aggregation"
+          },
+          {
+            "id": "v2",
+            "textDe": "Kontaktmedium und Alterung",
+            "textEn": "Contact medium and ageing"
+          },
+          {
+            "id": "v3",
+            "textDe": "Wirksamkeit versus Exposition",
+            "textEn": "Effectiveness versus exposure"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "afa7dae7-case-1",
+            "taskDemandDe": "Beschreibe Material und berechne Keimzahlreduktion. Trenne Ag-Ionen von Ag-Partikeln und fehlendem Nachweis. Gib eine vorläufige Nutzen-Risiko-Aussage für diese Bedingungen sowie zwei Prüfanforderungen für andere Lebensmittel.",
+            "taskDemandEn": "Describe the material and calculate bacterial-count reduction. Distinguish Ag ions, Ag particles and non-detection. Give a provisional benefit-risk statement for these conditions and two requirements for other foods.",
+            "expectedPerformanceDe": "Polyolefin ist PE-Matrix, Ag disperse Nanophase; 20 nm bedeutet keine Ag-Monomereinheit im Polymer. Reduktion 98%, Faktor 50. Gelöstes Ag ist nachgewiesen; Partikel unter 0.1 µg/kg sind nicht als absolut null bewiesen. Oberflächeneffekt belegt weder längere Haltbarkeit aller Lebensmittel noch Sicherheit. Für andere Medien Migration/Quellung, Zeit/Temperatur und toxikologisch relevante Gesamtexposition prüfen.",
+            "expectedPerformanceEn": "The polyolefin is the PE matrix and Ag a dispersed nanophase; 20 nm does not mean Ag is a polymer monomer. Reduction 98%, factor 50. Dissolved Ag is detected; particles below 0.1 µg/kg are not proven absolutely absent. A surface effect proves neither longer shelf life for all foods nor safety. Test migration/swelling, time/temperature and toxicologically relevant total exposure in other media.",
+            "understandingFocusDe": "Eine Polyolefinmatrix und disperse Ag-Nanopartikel sind unterschiedliche Materialbestandteile; Partikel, Aggregate und gelöste Ionen sind zu unterscheiden. / Antimikrobielle Wirkung braucht einen Vergleich mit gleicher Polymermatrix und passenden Prüfbedingungen. / Ein Nutzenbefund beweist keine allgemeine Lebensmittel- oder Umweltsicherheit.",
+            "understandingFocusEn": "A polyolefin matrix and dispersed Ag nanoparticles are distinct components; particles, aggregates and dissolved ions must be distinguished. / Antimicrobial effects require a comparison with the same polymer matrix under matched conditions. / Evidence of benefit does not establish general food or environmental safety."
+          },
+          {
+            "id": "afa7dae7-case-2",
+            "taskDemandDe": "Erkläre Nano-/Aggregatbegriffe, vergleiche Nutzen und Freisetzung und beurteile die Aussage „mehr Wirkung bedeutet besseres Produkt“. Formuliere einen gezielten nächsten Test.",
+            "taskDemandEn": "Explain particle/aggregate terminology, compare benefit and release, and assess “more effect means a better product”. Propose a targeted next test.",
+            "expectedPerformanceDe": "15 nm Primärpartikel können 120 nm Aggregate bilden; die Messgrößen sind nicht austauschbar.5 Prozentpunkte mehr Reduktion stehen vierfach gelöstem Ag und nachweisbaren Partikeln gegenüber. Ohne gealterte reine PP-Kontrolle bleibt ein Matrixalterungseffekt offen. Kein pauschales besser/sicher-Urteil; matched aged controls, Partikel/Ionen-Spezierung, Wiederholungen und relevante Expositionsdaten verlangen.",
+            "expectedPerformanceEn": "15 nm primary particles can form 120 nm aggregates; these sizes are not interchangeable.5 percentage points more reduction accompany fourfold dissolved Ag and detected particles. Without an aged pure-PP control, matrix-ageing effects remain unresolved. No unconditional better/safe verdict; require matched aged controls, particle/ion speciation, replicates and relevant exposure data.",
+            "understandingFocusDe": "Eine Polyolefinmatrix und disperse Ag-Nanopartikel sind unterschiedliche Materialbestandteile; Partikel, Aggregate und gelöste Ionen sind zu unterscheiden. / Antimikrobielle Wirkung braucht einen Vergleich mit gleicher Polymermatrix und passenden Prüfbedingungen. / Ein Nutzenbefund beweist keine allgemeine Lebensmittel- oder Umweltsicherheit.",
+            "understandingFocusEn": "A polyolefin matrix and dispersed Ag nanoparticles are distinct components; particles, aggregates and dissolved ions must be distinguished. / Antimicrobial effects require a comparison with the same polymer matrix under matched conditions. / Evidence of benefit does not establish general food or environmental safety."
+          }
+        ]
+      }
+    },
+    "wholeCases": [
+      {
+        "caseId": "afa7dae7-case-1",
+        "goalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "title": "A: PE-Folie unter definierten Bedingungen",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "PE-Kontrolle und PE+Ag(20 nm primäre Partikel), gleiche Foliendicke. Nach 24 h im vereinbarten Oberflächentest: Kontrolle 1.0·10⁶CFU, Ag-Folie 2.0·10⁴CFU. Im Simulant: gelöstes Ag 3 µg/kg; Partikel unter Nachweisgrenze 0.1 µg/kg. Keine reale Produktzulassung behauptet.",
+        "dataEn": "PE control and PE+Ag(20 nm primary particles), equal film thickness. After 24 h in a specified surface test: control 1.0·10⁶CFU, Ag film 2.0·10⁴CFU. In simulant: dissolved Ag 3 µg/kg; particles below detection limit 0.1 µg/kg. No actual product authorisation is asserted.",
+        "taskDe": "Beschreibe Material und berechne Keimzahlreduktion. Trenne Ag-Ionen von Ag-Partikeln und fehlendem Nachweis. Gib eine vorläufige Nutzen-Risiko-Aussage für diese Bedingungen sowie zwei Prüfanforderungen für andere Lebensmittel.",
+        "taskEn": "Describe the material and calculate bacterial-count reduction. Distinguish Ag ions, Ag particles and non-detection. Give a provisional benefit-risk statement for these conditions and two requirements for other foods.",
+        "modelAnswerDe": "Polyolefin ist PE-Matrix, Ag disperse Nanophase; 20 nm bedeutet keine Ag-Monomereinheit im Polymer. Reduktion 98%, Faktor 50. Gelöstes Ag ist nachgewiesen; Partikel unter 0.1 µg/kg sind nicht als absolut null bewiesen. Oberflächeneffekt belegt weder längere Haltbarkeit aller Lebensmittel noch Sicherheit. Für andere Medien Migration/Quellung, Zeit/Temperatur und toxikologisch relevante Gesamtexposition prüfen.",
+        "modelAnswerEn": "The polyolefin is the PE matrix and Ag a dispersed nanophase; 20 nm does not mean Ag is a polymer monomer. Reduction 98%, factor 50. Dissolved Ag is detected; particles below 0.1 µg/kg are not proven absolutely absent. A surface effect proves neither longer shelf life for all foods nor safety. Test migration/swelling, time/temperature and toxicologically relevant total exposure in other media.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Beschreibt Matrix, Nanodimension und mögliche Freisetzungsformen aus gegebenen Befunden.",
+            "criterionEn": "Describes matrix, nanoscale size and possible release forms from supplied evidence.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Berechnet eine relative Keimzahländerung und benennt Kontrollen und Aussagegrenzen.",
+            "criterionEn": "Calculates a relative bacterial-count change and identifies controls and inference limits.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Bewertet einen veränderten Nutzungskontext anhand von Migration, Exposition und noch fehlender Evidenz.",
+            "criterionEn": "Assesses a changed use context using migration, exposure and remaining evidence gaps.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      },
+      {
+        "caseId": "afa7dae7-case-2",
+        "goalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "title": "B: Alterung und scheinbar bessere Wirkung",
+        "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+        "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+        "dataDe": "Neue Ag-PP-Folie: Keimreduktion 90%, gelöstes Ag 2 µg/kg, Partikel<0.1 µg/kg. Nach 100 Abriebzyklen: 95%, gelöstes Ag 8 µg/kg, Partikel 0.4 µg/kg. Alterungs-Kontrolle ohne Ag fehlt; gemessene Aggregatgröße 120 nm bei primären Partikeln 15 nm.",
+        "dataEn": "New Ag-PP film: bacterial reduction 90%, dissolved Ag 2 µg/kg, particles<0.1 µg/kg. After 100 abrasion cycles: 95%, dissolved Ag 8 µg/kg, particles 0.4 µg/kg. An aged Ag-free control is missing; measured aggregate size 120 nm with 15 nm primary particles.",
+        "taskDe": "Erkläre Nano-/Aggregatbegriffe, vergleiche Nutzen und Freisetzung und beurteile die Aussage „mehr Wirkung bedeutet besseres Produkt“. Formuliere einen gezielten nächsten Test.",
+        "taskEn": "Explain particle/aggregate terminology, compare benefit and release, and assess “more effect means a better product”. Propose a targeted next test.",
+        "modelAnswerDe": "15 nm Primärpartikel können 120 nm Aggregate bilden; die Messgrößen sind nicht austauschbar.5 Prozentpunkte mehr Reduktion stehen vierfach gelöstem Ag und nachweisbaren Partikeln gegenüber. Ohne gealterte reine PP-Kontrolle bleibt ein Matrixalterungseffekt offen. Kein pauschales besser/sicher-Urteil; matched aged controls, Partikel/Ionen-Spezierung, Wiederholungen und relevante Expositionsdaten verlangen.",
+        "modelAnswerEn": "15 nm primary particles can form 120 nm aggregates; these sizes are not interchangeable.5 percentage points more reduction accompany fourfold dissolved Ag and detected particles. Without an aged pure-PP control, matrix-ageing effects remain unresolved. No unconditional better/safe verdict; require matched aged controls, particle/ion speciation, replicates and relevant exposure data.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Beschreibt Matrix, Nanodimension und mögliche Freisetzungsformen aus gegebenen Befunden.",
+            "criterionEn": "Describes matrix, nanoscale size and possible release forms from supplied evidence.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Berechnet eine relative Keimzahländerung und benennt Kontrollen und Aussagegrenzen.",
+            "criterionEn": "Calculates a relative bacterial-count change and identifies controls and inference limits.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Bewertet einen veränderten Nutzungskontext anhand von Migration, Exposition und noch fehlender Evidenz.",
+            "criterionEn": "Assesses a changed use context using migration, exposure and remaining evidence gaps.",
+            "fullCreditDe": "Die entsprechende Teilforderung wird mit den konkreten Daten und der im Modellanswer erläuterten fachlichen Begründung vollständig erfüllt.",
+            "fullCreditEn": "The corresponding demand is fully met using the concrete data and the scientific reasoning explained in the model answer.",
+            "partialCreditDe": "Ein fachlich richtiger Teil ist gezeigt, aber entscheidende Begründung, Stoff-/Einheitenbilanz oder Bedingungsgrenze fehlt.",
+            "partialCreditEn": "A scientifically correct part is shown, but a decisive explanation, material/unit balance or condition limit is missing.",
+            "zeroCreditDe": "Die Teilforderung fehlt oder enthält einen Widerspruch zum gegebenen Struktur-/Datenmodell.",
+            "zeroCreditEn": "The demand is absent or contradicts the supplied structural/data model."
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Per-case rubric supports feedback only; no numeric pass threshold or automatic mastery decision. The whole profile requires both independent cases/all essential expectations and changed transfer."
+      }
+    ],
+    "authorMemoryClaim": {
+      "goalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+      "titleDe": "Nanostrukturierte Silberwerkstoffe einordnen",
+      "atomicityCandidate": {
+        "semanticAtomic": true,
+        "reasonDe": "Ein zusammenhängender Material–Wirksamkeit–Expositionsvergleich, keine vollständige regulatorische Risikobewertung.",
+        "scope": "author scientific rationale only, not independent A vote"
+      },
+      "memoryCandidate": {
+        "memoryUseful": false,
+        "additionalMemoryGoalIds": [],
+        "additionalDeckIds": [],
+        "reasonDe": "Gegebene Messgrößen werden interpretiert; keine bloße Liste von Nano-Vorteilen oder neues Faktenkartenziel.",
+        "scope": "author necessity reasoning; retain current M binding if normal fingerprint remains current"
+      },
+      "imageUseLimitsDe": "Bild KEEP mit pädagogischer Begrenzung: Nutzen-Icons sind mögliche Zielsetzungen, kein Beleg für Sicherheit oder Haltbarkeit; EFSA 2021-Scope nicht auf jeden Film verallgemeinern."
+    }
+  }
+]

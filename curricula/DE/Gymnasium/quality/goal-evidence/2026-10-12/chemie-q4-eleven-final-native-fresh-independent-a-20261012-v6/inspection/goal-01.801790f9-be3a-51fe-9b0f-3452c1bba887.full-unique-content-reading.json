@@ -1,0 +1,209 @@
+{
+  "wholeGoal": {
+    "id": "801790f9-be3a-51fe-9b0f-3452c1bba887",
+    "title": "1. Hauptsatz anwenden",
+    "titleEn": "Apply 1st Law of Thermodynamics",
+    "description": "Die lernende Person kann offene, geschlossene und isolierte Systeme unterscheiden und Energieerhaltung qualitativ erklären.",
+    "descriptionEn": "The learner can distinguish open, closed, and isolated systems and qualitatively explain conservation of energy.",
+    "weight": 1.15,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_ENERGIE"
+      ],
+      "phase": "Q4"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "99349536-95f6-43bf-be7d-2049eeec9725"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "801790f9-be3a-51fe-9b0f-3452c1bba887",
+        "title": "Visualisierung: 1. Hauptsatz anwenden",
+        "url": "/assets/goal-visualizations/chemie/801790f9-be3a-51fe-9b0f-3452c1bba887/801790f9-be3a-51fe-9b0f-3452c1bba887.png",
+        "provider": "OpenAI GPT Image (built-in imagegen)",
+        "description": "Visualisierung zum Lernziel: 1. Hauptsatz anwenden.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"1. Hauptsatz anwenden\". Die lernende Person kann offene, geschlossene und isolierte Systeme unterscheiden und Energieerhaltung qualitativ erklären.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "wholeProfile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "expectation-system-and-energy-boundaries",
+        "essentialUnderstandingDe": "Systemgrenze, Energieerhaltung und Vorzeichen zusammen erklären.",
+        "essentialUnderstandingEn": "Explain system boundaries, energy conservation and signs together.",
+        "observablePerformanceExactWholeCaseRef": "system-and-energy-boundaries"
+      },
+      {
+        "id": "expectation-isobaric-isochoric-work",
+        "essentialUnderstandingDe": "Isochore und isobare Bilanz sowie Wärme/Volumenarbeit unterscheiden.",
+        "essentialUnderstandingEn": "Distinguish constant-volume/pressure balances and heat/pV work.",
+        "observablePerformanceExactWholeCaseRef": "isobaric-isochoric-work"
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "expectation-system-and-energy-boundaries",
+        "expectation-isobaric-isochoric-work"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "chemically-relevant-conditions",
+        "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+        "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+      }
+    ]
+  },
+  "completeCaseUniqueContent": [
+    {
+      "goalId": "801790f9-be3a-51fe-9b0f-3452c1bba887",
+      "case": {
+        "id": "system-and-energy-boundaries",
+        "taskDemandDe": "Synthetische Systemkarten: A = offenes kochendes Wasser mit austretendem Dampf; B = dichtes Reaktionsgefäß mit beweglichem Kolben; C = ideales vollständig abgeschirmtes Gefäß. Für B: zugeführte Wärme Q=+1200 J, an der Umgebung geleistete Arbeit W_on=-350 J. Vorzeichen: Übertragung ins System positiv. Ordne offen/geschlossen/isoliert zu, berechne für B die Änderung der inneren Energie und erkläre Energieverbrauch. Begründe, warum bei A zusätzlich der Energieinhalt transportierter Materie und bei C eine mögliche Temperaturänderung trotz konstantem Gesamt-U zu beachten sind.",
+        "taskDemandEn": "Synthetic system cards: A = open boiling water with escaping steam; B = sealed reaction vessel with a movable piston; C = an ideal fully insulated vessel. For B: heat supplied Q=+1200 J; work done on surroundings W_on=-350 J. Transfers into the system are positive. Classify open/closed/isolated, calculate B's internal-energy change and interpret energy consumption. Explain why A additionally needs energy transported by matter and why C may change temperature while total U stays constant.",
+        "expectedPerformanceDe": "A ist offen, B geschlossen (kein Stoffaustausch, Energieaustausch möglich), C ideal isoliert. Für das geschlossene B gilt ΔU=Q+W_on=850 J. Wärme/Arbeit sind Übertragungsgrößen, U eine Zustandsgröße. Bei A trägt entweichender Dampf Energie über die Systemgrenze; Q+W allein ist keine vollständige Bilanz des offenen Kontrollvolumens. Bei C gilt ΔU=0 für das Gesamtsystem, obwohl chemische Energie in thermische Energie übergehen und die Temperatur steigen kann. Energie wird umgewandelt/übertragen, nicht vernichtet; nur Energieänderungen werden bestimmt.",
+        "expectedPerformanceEn": "A is open, B closed (no matter transfer; energy transfer possible), C ideally isolated. For closed B, ΔU=Q+W_on=850 J. Heat/work are transfer quantities; U is a state quantity. Escaping steam in A carries energy across the boundary, so Q+W alone is not the complete open-control-volume balance. Total ΔU=0 in C, although chemical energy can become thermal energy and temperature can rise. Energy is transformed/transferred, not destroyed; measurements determine changes.",
+        "understandingFocusDe": "Systemgrenze, Energieerhaltung und Vorzeichen zusammen erklären.",
+        "understandingFocusEn": "Explain system boundaries, energy conservation and signs together."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Alle drei Systemarten korrekt zuordnen.",
+            "aspectEn": "Correctly classify all three systems."
+          },
+          {
+            "points": 1,
+            "aspectDe": "850 J mit Q+W_on und der angegebenen Konvention begründen.",
+            "aspectEn": "Justify 850 J using Q+W_on and the given convention."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Materietransport bei offenem System berücksichtigen.",
+            "aspectEn": "Account for matter transport in an open system."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Konstantes Gesamt-U von konstantem Temperaturwert unterscheiden.",
+            "aspectEn": "Distinguish constant total U from constant temperature."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    },
+    {
+      "goalId": "801790f9-be3a-51fe-9b0f-3452c1bba887",
+      "case": {
+        "id": "isobaric-isochoric-work",
+        "taskDemandDe": "Synthetischer geschlossener Gasprozess: Q=+500 J, konstanter äußerer Druck p_ext=100 kPa, Volumenzunahme ΔV=2,00 L, ausschließlich Volumenarbeit. Gegenfall: starres Gefäß mit ebenfalls Q=+500 J. Für die jeweilige Bilanz gelten W_on=-p_ext ΔV und H=U+pV. Berechne W_on und ΔU, erläutere unter den genannten isobaren Bedingungen ΔH=Q_p und vergleiche mit isochorer Prozessführung. Zeichne eine beschriftete Energiebilanz; erkläre, warum gleiche zugeführte Wärme hier nicht gleiche ΔU bedeutet.",
+        "taskDemandEn": "Synthetic closed-gas process: Q=+500 J, constant external pressure p_ext=100 kPa, volume increase ΔV=2.00 L, only pressure-volume work. Contrast: a rigid vessel also receives Q=+500 J. Use W_on=-p_ext ΔV and H=U+pV. Calculate W_on and ΔU, explain ΔH=Q_p under the stated constant-pressure conditions and compare a constant-volume process. Draw a labelled energy balance and explain why equal supplied heat does not give equal ΔU here.",
+        "expectedPerformanceDe": "100000 Pa×0,00200 m³=200 J. Expansion: W_on=-200 J; ΔU=+300 J. Bei gleichem konstantem System-/Außendruck und nur pV-Arbeit gilt ΔH=ΔU+pΔV=500 J=Q_p. Im starren Gefäß ist ΔV=0, W_on=0 und ΔU=500 J=Q_v. Der Unterschied folgt aus Arbeitsübertragung, nicht aus Energieverlust. Die Skizze zeigt 500 J hinein, 200 J Arbeit hinaus und 300 J U-Zunahme. Die beiden Prozesse müssen nicht denselben Endzustand haben; U/H-Zuordnung gilt unter den jeweils angegebenen Bedingungen.",
+        "expectedPerformanceEn": "100000 Pa×0.00200 m³=200 J. Expansion gives W_on=-200 J and ΔU=+300 J. With equal constant system/external pressure and only pV work, ΔH=ΔU+pΔV=500 J=Q_p. The rigid vessel has ΔV=0, W_on=0 and ΔU=500 J=Q_v. Work transfer, not destroyed energy, explains the difference. The sketch shows 500 J in, 200 J work out and a 300 J U increase. The processes need not have identical final states; the U/H relations depend on the stated conditions.",
+        "understandingFocusDe": "Isochore und isobare Bilanz sowie Wärme/Volumenarbeit unterscheiden.",
+        "understandingFocusEn": "Distinguish constant-volume/pressure balances and heat/pV work."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Druck und Volumen in SI-Einheiten umrechnen.",
+            "aspectEn": "Convert pressure and volume to SI units."
+          },
+          {
+            "points": 1,
+            "aspectDe": "W_on=-200 J und ΔU=300 J berechnen.",
+            "aspectEn": "Calculate W_on=-200 J and ΔU=300 J."
+          },
+          {
+            "points": 1,
+            "aspectDe": "ΔH=Q_p und ΔU=Q_v bedingungsgebunden erklären.",
+            "aspectEn": "Explain conditional ΔH=Q_p and ΔU=Q_v."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Beschriftete Bilanz und unterschiedliche Endzustände berücksichtigen.",
+            "aspectEn": "Use a labelled balance and recognise different final states."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    }
+  ]
+}

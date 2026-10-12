@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "role": "Independent technical current-tuple retention audit; no scientific votes",
+  "startedAtUTC": "2026-10-12T22:12:15.871Z",
+  "completedAtUTC": "2026-10-12T22:12:19.650Z",
+  "objective": "Reach Chemistry strictM7 while preserving current220; avoid redundant new scientific review when exact original single-goal page/context/P payloads survive.",
+  "normalExecutionCapsule": "tmp/chemie-q4-current220-prep/execution/app",
+  "normalAPIs": [
+    "loadGoalBookBuildInputs",
+    "validatePreparedGoalDescriptionRolloutBatch",
+    "buildGoalDescriptionRolloutSubsetModel",
+    "buildGoalDescriptionReviewInput",
+    "loadGoalDescriptionReviewCampaignResultDirectories",
+    "validateGoalDescriptionReviewCampaignResults"
+  ],
+  "finalBaseConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/configs/whole402.inactive.config.json",
+  "finalFull402Digest": "sha256:8f59eb05321617a3b84f0a1df74ab9199ea766f84f6325d049074412712e55c7",
+  "finalFull402Pages": 402,
+  "comparisons": [
+    {
+      "goalIds": [
+        "5169bb6b-f065-5798-8164-9b4521e44ae8"
+      ],
+      "originalSingleConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/configs/native-D1.batch.config.json",
+      "normalCurrentSubsetDigest": "sha256:a4bca67db4bcd0a4d179be4b3c7d8dc390b64a44bab5f41b733299a560c2be5e",
+      "originalSubsetDigest": "sha256:db02c02790ccae724f13df0cf4f0190a4d10e49124475c367c7049f539492cbd",
+      "wholeSubsetDigestExact": false,
+      "wholeModelIdentityDifferenceIsNotAChangedPageVote": "Final base provenance paths/digests and navigation derivedProjection.baseModelDigest remain in whole subset digest. They are recorded separately; no original bundle, campaign, run or original records were rebound.",
+      "sourceMetadataChangedKeys": [
+        "landscapePath",
+        "semanticKindLedgerPath",
+        "goalVisualizationQaPath",
+        "landscapeDigest",
+        "semanticKindLedgerDigest",
+        "goalVisualizationQaDigest",
+        "evidenceReviewSources"
+      ],
+      "checks": {
+        "singleBookIdAndTitleExact": true,
+        "pageNumbersExact": true,
+        "fullPagePayloadsExact": true,
+        "pageFingerprintsExact": true,
+        "goalFingerprintsExact": true,
+        "canonicalTextAndContextExact": true,
+        "wholeCurrentNativePContextsExact": true,
+        "fullPerGoalDescriptionInputPayloadExact": true,
+        "retainedOriginalAggregateDescriptionInputExact": true,
+        "retainedOriginalInputFingerprintExact": true
+      },
+      "currentTuples": [
+        {
+          "goalId": "5169bb6b-f065-5798-8164-9b4521e44ae8",
+          "goalFingerprint": "sha256:23c7f956b3efa787d3f561ae31eca086f4ec3501c578508fad3913f71ff77bf3",
+          "pageFingerprint": "sha256:9af36d2ead069c531390b20b4ca97b9b4268b16662dd1c36f3ca447f62ad1234",
+          "currentPReviewInputFingerprint": "sha256:f2d28337d3853dba1cca0ae7d9feadf2bf143286cd86f3c6e29e0f5ca4f4b037",
+          "currentPProfileFingerprint": "sha256:2a9419ccc6faa2dd3364cef2c1ce985d2641fec04b6c02b67a56c28e12c6a2e5",
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Entropie und freie Enthalpie (LK)",
+            "url": "/assets/goal-visualizations/chemie/5169bb6b-f065-5798-8164-9b4521e44ae8/5169bb6b-f065-5798-8164-9b4521e44ae8.png",
+            "altText": "Sechs gleiche blaue Gasteilchen verteilen sich auf ein größeres Volumen. Daneben zeigt die Gibbs-Gleichung bei konstantem T und p die Spontanitätsbedingungen. Spontanität ist keine Aussage über Geschwindigkeit und ist auch bei endothermen Vorgängen möglich.",
+            "originalDigest": "sha256:a6bed1a6b17b9c053a9fc27ea20520820fe6d29df8383b0cf78090701a9700b4",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          }
+        }
+      ],
+      "rounds": [
+        {
+          "round": "a",
+          "campaignId": "chemie-q4-5169-current220-final-image-native-20261012-v8-a",
+          "independenceGroupId": "chemie-q4-5169-current220-final-image-native-20261012-v8-independent-a",
+          "normalErrors": [],
+          "records": 1,
+          "bindingsOnlyNoOpinionReevaluation": [
+            {
+              "runId": "chemie-q4-5169-independent-a-20261012-v9-native-D1",
+              "recordsSHA256": "sha256:ff0889ec694ac70e79fd4e9ea279a8c4a718a34b06d9b7b3d32a5c9212e96a13",
+              "runOutputDigest": "sha256:ff0889ec694ac70e79fd4e9ea279a8c4a718a34b06d9b7b3d32a5c9212e96a13",
+              "originalRunAndBundleBookIdentityRetained": true
+            }
+          ]
+        },
+        {
+          "round": "b",
+          "campaignId": "chemie-q4-5169-current220-final-image-native-20261012-v8-b",
+          "independenceGroupId": "chemie-q4-5169-current220-final-image-native-20261012-v8-independent-b",
+          "normalErrors": [],
+          "records": 1,
+          "bindingsOnlyNoOpinionReevaluation": [
+            {
+              "runId": "chemie-q4-5169-corrected-native-first-pass-b-20261012-v9",
+              "recordsSHA256": "sha256:b2dea64b6f19ba98b9ae3281fbec70800635e3b371fb503666571d39bca39ee8",
+              "runOutputDigest": "sha256:b2dea64b6f19ba98b9ae3281fbec70800635e3b371fb503666571d39bca39ee8",
+              "originalRunAndBundleBookIdentityRetained": true
+            }
+          ]
+        }
+      ],
+      "originalPairedD1RetentionSupported": true
+    },
+    {
+      "goalIds": [
+        "bef4c8eb-1d80-50fb-88cd-3a9904e38b4e"
+      ],
+      "originalSingleConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/configs/native-D1.batch.config.json",
+      "normalCurrentSubsetDigest": "sha256:61c7d3fd48a0faed04edfe325493627d3cb3d2c2167f1e0ed024f5098396eff6",
+      "originalSubsetDigest": "sha256:af263da80f9b22969b9215bab692c9d18594ba5d49fda57e55310b8fae825c43",
+      "wholeSubsetDigestExact": false,
+      "wholeModelIdentityDifferenceIsNotAChangedPageVote": "Final base provenance paths/digests and navigation derivedProjection.baseModelDigest remain in whole subset digest. They are recorded separately; no original bundle, campaign, run or original records were rebound.",
+      "sourceMetadataChangedKeys": [
+        "landscapePath",
+        "semanticKindLedgerPath",
+        "goalVisualizationQaPath",
+        "semanticKindLedgerDigest",
+        "goalVisualizationQaDigest",
+        "evidenceReviewSources"
+      ],
+      "checks": {
+        "singleBookIdAndTitleExact": true,
+        "pageNumbersExact": true,
+        "fullPagePayloadsExact": true,
+        "pageFingerprintsExact": true,
+        "goalFingerprintsExact": true,
+        "canonicalTextAndContextExact": true,
+        "wholeCurrentNativePContextsExact": true,
+        "fullPerGoalDescriptionInputPayloadExact": true,
+        "retainedOriginalAggregateDescriptionInputExact": true,
+        "retainedOriginalInputFingerprintExact": true
+      },
+      "currentTuples": [
+        {
+          "goalId": "bef4c8eb-1d80-50fb-88cd-3a9904e38b4e",
+          "goalFingerprint": "sha256:d2194f105adf562fe585387a561ef9cf15469cfcff45a17c5fcd9d8719df28bd",
+          "pageFingerprint": "sha256:900d5df7715f317fd76dd22fcd66ddecb3ef6187980bc2e2744e45d101d25068",
+          "currentPReviewInputFingerprint": "sha256:87558290c1b16ffd0152002c6d81fdd59cea3f422f0389a32ce487ce093a01dc",
+          "currentPProfileFingerprint": "sha256:02717942505842d577ca3a4e9d25ff40a28e022181e47716cd2c61dbb32cbeb3",
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Energetische Kopplung endergoner und exergoner Reaktionen erklären",
+            "url": "/assets/goal-visualizations/chemie/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e.png",
+            "altText": "Ein exergoner und ein endergoner Reaktionsanteil greifen als Puzzleteile ineinander: Ein gemeinsamer Reaktionsweg hat eine negative gesamte Gibbs-Energieänderung. Bei konstantem T und p ohne weitere Nutzarbeit entspricht die Abnahme der gesamten Gibbs-Energie der Temperatur mal erzeugter Entropie.",
+            "originalDigest": "sha256:b2805b9bcf699f4301c97296811b1c687f2f8e06689045eec88ea5112ecb6863",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          }
+        }
+      ],
+      "rounds": [
+        {
+          "round": "a",
+          "campaignId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-a",
+          "independenceGroupId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-independent-a",
+          "normalErrors": [],
+          "records": 1,
+          "bindingsOnlyNoOpinionReevaluation": [
+            {
+              "runId": "chemie-q4-bef4-independent-a-20261012-v9-native-D1",
+              "recordsSHA256": "sha256:79f9dfbdd99b86d313a0c08e45c4cae402e957453b7ef4e8a5acfeb4500c2175",
+              "runOutputDigest": "sha256:79f9dfbdd99b86d313a0c08e45c4cae402e957453b7ef4e8a5acfeb4500c2175",
+              "originalRunAndBundleBookIdentityRetained": true
+            }
+          ]
+        },
+        {
+          "round": "b",
+          "campaignId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-b",
+          "independenceGroupId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-independent-b",
+          "normalErrors": [],
+          "records": 1,
+          "bindingsOnlyNoOpinionReevaluation": [
+            {
+              "runId": "chemie-q4-bef4-corrected-native-first-pass-b-20261012-v9",
+              "recordsSHA256": "sha256:ad2f01352d0317b1c68899fa3b87bb565ca8d2a26033757e2d59a7f055ccf1e4",
+              "runOutputDigest": "sha256:ad2f01352d0317b1c68899fa3b87bb565ca8d2a26033757e2d59a7f055ccf1e4",
+              "originalRunAndBundleBookIdentityRetained": true
+            }
+          ]
+        }
+      ],
+      "originalPairedD1RetentionSupported": true
+    }
+  ],
+  "allDeclaredInputAndOriginalRecordRunBytesUnchanged": true,
+  "inputCAS": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-views/chemie-m7-full-canonical.view.json",
+      "sha256": "sha256:5ac1afb7147381c2f7a5da05d28d62a929f8150642e8f42332148e4a820d42c0",
+      "bytes": 489,
+      "actualAfterSHA256": "sha256:5ac1afb7147381c2f7a5da05d28d62a929f8150642e8f42332148e4a820d42c0",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/candidate/QA.new5169.pending-independent.inactive.json",
+      "sha256": "sha256:451d9c30bdd12c99251ab6e5445997d406ab58ce26865dd06d434511cbf94551",
+      "bytes": 993987,
+      "actualAfterSHA256": "sha256:451d9c30bdd12c99251ab6e5445997d406ab58ce26865dd06d434511cbf94551",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/candidate/canonical523.current-plus-Q4-and-corrected5169.inactive.json",
+      "sha256": "sha256:63b04c85ebdf7e83ca2ab7dfa6e32bf3d7a537f120286ecc33afc56345aa9dcb",
+      "bytes": 1747702,
+      "actualAfterSHA256": "sha256:63b04c85ebdf7e83ca2ab7dfa6e32bf3d7a537f120286ecc33afc56345aa9dcb",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/candidate/semantic523.same-decisions-new-path.inactive.json",
+      "sha256": "sha256:274efa4b19fc548de97075fde46501f47702a2c40c7518f1888441eafc6b3fbf",
+      "bytes": 168468,
+      "actualAfterSHA256": "sha256:274efa4b19fc548de97075fde46501f47702a2c40c7518f1888441eafc6b3fbf",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/configs/native-D1.batch.config.json",
+      "sha256": "sha256:61eee6f010a2ece938942a6419e631fb550378049a6435c98e62a56eb46644e7",
+      "bytes": 1216,
+      "actualAfterSHA256": "sha256:61eee6f010a2ece938942a6419e631fb550378049a6435c98e62a56eb46644e7",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/configs/whole402.inactive.config.json",
+      "sha256": "sha256:e0192f994de9f6db16cc4bae0b073c2b84c8ac8043a71c7da4d8bcfaf9f499d3",
+      "bytes": 1597,
+      "actualAfterSHA256": "sha256:e0192f994de9f6db16cc4bae0b073c2b84c8ac8043a71c7da4d8bcfaf9f499d3",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-a/batches/chemie-q4-5169-current220-final-image-native-20261012-v8-first-pass-a.batch-001.input.jsonl",
+      "sha256": "sha256:d5d473e52c8988cb86dae2a0aed9278f397c025bccd4e7d4b65eaefebf8a13a9",
+      "bytes": 17972,
+      "actualAfterSHA256": "sha256:d5d473e52c8988cb86dae2a0aed9278f397c025bccd4e7d4b65eaefebf8a13a9",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-a/description-review-campaign.json",
+      "sha256": "sha256:8a0346a5964f7d6e44ae642496a1b4dace8ab846650c416910afef17645f5d7d",
+      "bytes": 1670,
+      "actualAfterSHA256": "sha256:8a0346a5964f7d6e44ae642496a1b4dace8ab846650c416910afef17645f5d7d",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-a/description-review-input.json",
+      "sha256": "sha256:febfa02072e2d8df0cbf42e5f2bd18fb18642505946161c8d64ee5666a1083c0",
+      "bytes": 20682,
+      "actualAfterSHA256": "sha256:febfa02072e2d8df0cbf42e5f2bd18fb18642505946161c8d64ee5666a1083c0",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-a/results/chemie-q4-5169-current220-final-image-native-20261012-v8-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:ff0889ec694ac70e79fd4e9ea279a8c4a718a34b06d9b7b3d32a5c9212e96a13",
+      "bytes": 5106,
+      "actualAfterSHA256": "sha256:ff0889ec694ac70e79fd4e9ea279a8c4a718a34b06d9b7b3d32a5c9212e96a13",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-a/results/chemie-q4-5169-current220-final-image-native-20261012-v8-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:b56cc320457704db709b58e895f1249d5108ccf4d9e1be18b83304c7a7712e7b",
+      "bytes": 2592,
+      "actualAfterSHA256": "sha256:b56cc320457704db709b58e895f1249d5108ccf4d9e1be18b83304c7a7712e7b",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-b/batches/chemie-q4-5169-current220-final-image-native-20261012-v8-first-pass-b.batch-001.input.jsonl",
+      "sha256": "sha256:334ed81fc9d70bc276554332461e74e88e58eb613198433d7198834e726f6e01",
+      "bytes": 17972,
+      "actualAfterSHA256": "sha256:334ed81fc9d70bc276554332461e74e88e58eb613198433d7198834e726f6e01",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-b/description-review-campaign.json",
+      "sha256": "sha256:9ac3bfba67ff7d073fb08c2f695efff00581fdfe497414245fe99cea82af96ef",
+      "bytes": 1670,
+      "actualAfterSHA256": "sha256:9ac3bfba67ff7d073fb08c2f695efff00581fdfe497414245fe99cea82af96ef",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-b/description-review-input.json",
+      "sha256": "sha256:febfa02072e2d8df0cbf42e5f2bd18fb18642505946161c8d64ee5666a1083c0",
+      "bytes": 20682,
+      "actualAfterSHA256": "sha256:febfa02072e2d8df0cbf42e5f2bd18fb18642505946161c8d64ee5666a1083c0",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-b/results/chemie-q4-5169-current220-final-image-native-20261012-v8-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:b2dea64b6f19ba98b9ae3281fbec70800635e3b371fb503666571d39bca39ee8",
+      "bytes": 3888,
+      "actualAfterSHA256": "sha256:b2dea64b6f19ba98b9ae3281fbec70800635e3b371fb503666571d39bca39ee8",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/native-D1/round-b/results/chemie-q4-5169-current220-final-image-native-20261012-v8-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:e62a058d1344b86bffb833d9534e6bf287561e4336c7c851aa60c71d394ad0a6",
+      "bytes": 2749,
+      "actualAfterSHA256": "sha256:e62a058d1344b86bffb833d9534e6bf287561e4336c7c851aa60c71d394ad0a6",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-current220-final-image-native-root-20261012-v8/positive/P11.same-author-profiles-one-new-image.normal.jsonl",
+      "sha256": "sha256:99f88423a742008d77c20bb3872c9f15c43a7360ad8d42a3774f7f3fe2385a4d",
+      "bytes": 146578,
+      "actualAfterSHA256": "sha256:99f88423a742008d77c20bb3872c9f15c43a7360ad8d42a3774f7f3fe2385a4d",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/candidate/QA.two-new-images.pending-independent.inactive.json",
+      "sha256": "sha256:f97b39fcab5f5334be9cfff7160e2ba4f7e43c8bd86354bd2ba01204adc9fdbc",
+      "bytes": 993866,
+      "actualAfterSHA256": "sha256:f97b39fcab5f5334be9cfff7160e2ba4f7e43c8bd86354bd2ba01204adc9fdbc",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/candidate/canonical523.current-Q4-with-two-final-images.inactive.json",
+      "sha256": "sha256:a6943a47c3cfe9b024730b2d072fc61250e03d404597ad56706d27cb5c12842c",
+      "bytes": 1747693,
+      "actualAfterSHA256": "sha256:a6943a47c3cfe9b024730b2d072fc61250e03d404597ad56706d27cb5c12842c",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/candidate/semantic523.same-decisions-new-path.inactive.json",
+      "sha256": "sha256:29becb7593cf13c0221162872dba418e9e4764688834393b7c6f1c675910973b",
+      "bytes": 168467,
+      "actualAfterSHA256": "sha256:29becb7593cf13c0221162872dba418e9e4764688834393b7c6f1c675910973b",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/configs/native-D1.batch.config.json",
+      "sha256": "sha256:0d4857287cac7bba883d70d86425d458c3b91960cad48761ca4de0331a4758e6",
+      "bytes": 1198,
+      "actualAfterSHA256": "sha256:0d4857287cac7bba883d70d86425d458c3b91960cad48761ca4de0331a4758e6",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/configs/whole402.inactive.config.json",
+      "sha256": "sha256:e531ace497d7fa1a3197b1fd2750406ec3b13143d7ce2e688b081a34b6e04f2b",
+      "bytes": 1601,
+      "actualAfterSHA256": "sha256:e531ace497d7fa1a3197b1fd2750406ec3b13143d7ce2e688b081a34b6e04f2b",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-a/batches/chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-a.batch-001.input.jsonl",
+      "sha256": "sha256:df133f2458332e756bee4dc1688448fd38050d5eb6e8002454206719971d248d",
+      "bytes": 15599,
+      "actualAfterSHA256": "sha256:df133f2458332e756bee4dc1688448fd38050d5eb6e8002454206719971d248d",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-a/description-review-campaign.json",
+      "sha256": "sha256:623e31fc09c988c3a55a1752ecb2775a616f1a70c6f40bc020075e399272a27f",
+      "bytes": 1670,
+      "actualAfterSHA256": "sha256:623e31fc09c988c3a55a1752ecb2775a616f1a70c6f40bc020075e399272a27f",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-a/description-review-input.json",
+      "sha256": "sha256:803ba13d9ba3ea62c385b4c9ff67291814cb3e3f0ba12562aa36a59345f6608d",
+      "bytes": 18135,
+      "actualAfterSHA256": "sha256:803ba13d9ba3ea62c385b4c9ff67291814cb3e3f0ba12562aa36a59345f6608d",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-a/results/chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:79f9dfbdd99b86d313a0c08e45c4cae402e957453b7ef4e8a5acfeb4500c2175",
+      "bytes": 5525,
+      "actualAfterSHA256": "sha256:79f9dfbdd99b86d313a0c08e45c4cae402e957453b7ef4e8a5acfeb4500c2175",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-a/results/chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:e1dbae1a9fd951b61cb85b6605b5a42c516caf918a0d502758a6c2bc1db0eec6",
+      "bytes": 2592,
+      "actualAfterSHA256": "sha256:e1dbae1a9fd951b61cb85b6605b5a42c516caf918a0d502758a6c2bc1db0eec6",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-b/batches/chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-b.batch-001.input.jsonl",
+      "sha256": "sha256:58ef7d38b5b1058d6ca62567313ea202a38557b2a9c949bcb09e524535a41a0c",
+      "bytes": 15599,
+      "actualAfterSHA256": "sha256:58ef7d38b5b1058d6ca62567313ea202a38557b2a9c949bcb09e524535a41a0c",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-b/description-review-campaign.json",
+      "sha256": "sha256:a3706d1ec1be6a8748fbd6620b9a93274710828251e12956fba24414bee13cd9",
+      "bytes": 1670,
+      "actualAfterSHA256": "sha256:a3706d1ec1be6a8748fbd6620b9a93274710828251e12956fba24414bee13cd9",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-b/description-review-input.json",
+      "sha256": "sha256:803ba13d9ba3ea62c385b4c9ff67291814cb3e3f0ba12562aa36a59345f6608d",
+      "bytes": 18135,
+      "actualAfterSHA256": "sha256:803ba13d9ba3ea62c385b4c9ff67291814cb3e3f0ba12562aa36a59345f6608d",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-b/results/chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:ad2f01352d0317b1c68899fa3b87bb565ca8d2a26033757e2d59a7f055ccf1e4",
+      "bytes": 4183,
+      "actualAfterSHA256": "sha256:ad2f01352d0317b1c68899fa3b87bb565ca8d2a26033757e2d59a7f055ccf1e4",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/native-D1/round-b/results/chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:3c47444eecc05caa2e1e2a061332af12c4b1262accf6270cf81c8b008bc4069a",
+      "bytes": 2749,
+      "actualAfterSHA256": "sha256:3c47444eecc05caa2e1e2a061332af12c4b1262accf6270cf81c8b008bc4069a",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-current220-final-image-native-root-20261012-v8/positive/P11.current-two-images.normal.review.jsonl",
+      "sha256": "sha256:0d7a9de6204832b2548a864cf95f4fdafbf1717a0168b9028f99bfdefaae9148",
+      "bytes": 146578,
+      "actualAfterSHA256": "sha256:0d7a9de6204832b2548a864cf95f4fdafbf1717a0168b9028f99bfdefaae9148",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-current220-preserving-root-preparation-20261012-v5/positive/current220.records.raw-lines-exact.jsonl",
+      "sha256": "sha256:7d8833b13a41ee8a9aea4a0c3372a19a3357132ff7b20330764b55e2b4ca0ae5",
+      "bytes": 1887747,
+      "actualAfterSHA256": "sha256:7d8833b13a41ee8a9aea4a0c3372a19a3357132ff7b20330764b55e2b4ca0ae5",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/candidate/QA.actual-sealed-asset-votes-future-active-paths.inactive.json",
+      "sha256": "sha256:074b1f035afc7ff95155f51871264adb5f54b14ee4598f653d207c9870fe2933",
+      "bytes": 994669,
+      "actualAfterSHA256": "sha256:074b1f035afc7ff95155f51871264adb5f54b14ee4598f653d207c9870fe2933",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/candidate/canonical523.exact-final.inactive.json",
+      "sha256": "sha256:a6943a47c3cfe9b024730b2d072fc61250e03d404597ad56706d27cb5c12842c",
+      "bytes": 1747693,
+      "actualAfterSHA256": "sha256:a6943a47c3cfe9b024730b2d072fc61250e03d404597ad56706d27cb5c12842c",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/candidate/semantic523.exact-decisions-final-path.inactive.json",
+      "sha256": "sha256:311aa374f417ceb6585cd8764c62624c0e46dcfde3f11cc9476ec579cf009133",
+      "bytes": 168448,
+      "actualAfterSHA256": "sha256:311aa374f417ceb6585cd8764c62624c0e46dcfde3f11cc9476ec579cf009133",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/configs/whole402.inactive.config.json",
+      "sha256": "sha256:c1d916ff4923cd7326355ec5d47db880fdc80ee10cc1ba0c4a5b4dd7a897f15b",
+      "bytes": 1584,
+      "actualAfterSHA256": "sha256:c1d916ff4923cd7326355ec5d47db880fdc80ee10cc1ba0c4a5b4dd7a897f15b",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/positive/P11.final-author-records.exact.jsonl",
+      "sha256": "sha256:0d7a9de6204832b2548a864cf95f4fdafbf1717a0168b9028f99bfdefaae9148",
+      "bytes": 146578,
+      "actualAfterSHA256": "sha256:0d7a9de6204832b2548a864cf95f4fdafbf1717a0168b9028f99bfdefaae9148",
+      "unchanged": true
+    }
+  ],
+  "groupedD2PreparedModelUsed": false,
+  "newScientificVotes": 0,
+  "activeWrites": false,
+  "gitWrites": false,
+  "remainingBindingRisks": [
+    "Retain immutable original single bundles/campaigns/run identities and records; whole subset/book digests differ through final base provenance. This receipt does not claim a newly rendered final bundle or replace its book digest.",
+    "Ordinary synthesis/resolution/finalization and active registry/CAS remain root-owned. Future goal/P/image bytes, legacy publication QA fields, source learner-context or grouping changes require a fresh compatibility check.",
+    "The original fifth NW experimental-data derivation source addition stays inactive; this technical result does not approve it."
+  ],
+  "supportedRetention": true
+}

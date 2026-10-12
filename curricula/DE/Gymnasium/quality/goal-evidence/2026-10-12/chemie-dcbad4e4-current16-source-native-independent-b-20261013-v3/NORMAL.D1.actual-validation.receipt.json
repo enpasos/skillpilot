@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual unmodified production normal campaign-results CLI validation",
+  "command": "node --import ./app/node_modules/tsx/dist/loader.mjs app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle <root native-D1>/bundle/manifest.json --input <root native-D1>/round-b/description-review-input.json --campaign <root native-D1>/round-b/description-review-campaign.json --batches-dir <root native-D1>/round-b/batches --results-dir <own>/results",
+  "productionEntry": {
+    "path": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "sha256": "sha256:36f2ac8ab823cd70f4402deb5f4c96d2399f719f90dfa4a95916467b52962df8"
+  },
+  "result": "pass",
+  "records": 1,
+  "exitCode": 0,
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-dcbad4e4-current16-source-native-independent-b-20261013-v3/NORMAL.D1.campaign-results.actual.stdout.txt",
+    "sha256": "sha256:230d1bab4031bbc060a1bf85390bc07b7fd41ca69a865f76a22ea32c91dfe8e3"
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-dcbad4e4-current16-source-native-independent-b-20261013-v3/NORMAL.D1.campaign-results.actual.stderr.txt",
+    "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "sourceNativeInputBindingsUnchanged": true,
+  "activeWrites": false,
+  "humanApproval": false
+}

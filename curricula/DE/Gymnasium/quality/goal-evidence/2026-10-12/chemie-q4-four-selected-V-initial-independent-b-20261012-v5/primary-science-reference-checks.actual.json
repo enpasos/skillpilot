@@ -1,0 +1,46 @@
+{
+  "checkedAtUtc": "2026-10-12T20:22:16.007564+00:00",
+  "copyrightHandling": "Primary pages consulted; no full third-party HTML/PDF downloaded into this evidence package. Short factual values and URLs only.",
+  "references": [
+    {
+      "title": "NIST Chemistry WebBook Nitrogen dioxide gas thermochemistry",
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C10102440&Mask=1",
+      "factUsed": "Standard molar gas entropy240.04 J/(mol K),1bar."
+    },
+    {
+      "title": "NIST Chemistry WebBook Dinitrogen tetroxide gas thermochemistry",
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C10544726&Mask=1",
+      "factUsed": "Standard molar gas entropy304.38 J/(mol K),1bar."
+    },
+    {
+      "title": "OpenStax Chemistry2e Factors Affecting Reaction Rates",
+      "url": "https://openstax.org/books/chemistry-2e/pages/12-2-factors-affecting-reaction-rates",
+      "factUsed": "Temperature and concentration are separate reaction-rate factors."
+    },
+    {
+      "title": "OpenStax Chemistry2e Collision Theory",
+      "url": "https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory",
+      "factUsed": "Energy, collision frequency and orientation affect effective collisions."
+    },
+    {
+      "title": "OpenStax UniversityPhysics2 Heat Engines",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/4-2-heat-engines",
+      "factUsed": "Cyclic heat engine extracts useful work between hot and cold reservoirs, with rejected heat."
+    },
+    {
+      "title": "OpenStax Chemistry AtomsFirst2e Enthalpy",
+      "url": "https://openstax.org/books/chemistry-atoms-first-2e/pages/9-3-enthalpy",
+      "factUsed": "DeltaU=q+w with work on system positive and by system negative."
+    }
+  ],
+  "independentArithmetic": {
+    "reaction": "2NO2(g)->N2O4(g)",
+    "standardStateTemperatureK": 298.15,
+    "expression": "304.38-2*240.04",
+    "deltaS0_J_per_molReaction_K": -175.7,
+    "inference": "The depicted selected forward reaction has negative standard reaction entropy; no universal gas-count law inferred."
+  },
+  "failedInitialWebUrls": [
+    "NIST URLs with both Units=SI and Mask=1 initially inaccessible through web tool; same species Mask=1 pages were subsequently successfully opened and read."
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "canonicalWholeGoal": {
+    "id": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+    "shortKey": "canonical_chemistry_upper_second_law_heat_work_energy_loss",
+    "title": "Grenzen der Umwandlung von Wärme in Arbeit erklären",
+    "titleEn": "Explain limits of converting heat into work",
+    "description": "Die lernende Person kann die Grenzen der Umwandlung von Wärme in Arbeit bei zyklisch arbeitenden Wärmekraftmaschinen erklären und Alltagsbegriffe wie Energieverbrauch und Energieverlust fachlich deuten.",
+    "descriptionEn": "The learner can explain the limits of converting heat into work in cyclic heat engines and scientifically interpret everyday terms such as energy consumption and energy loss.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK1_ERKENNTNISGEWINNUNG",
+        "PK2_MODELLIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_REAKTION",
+        "BC_ENERGIE"
+      ],
+      "phase": "Q4",
+      "area": "Thermodynamik",
+      "topicCode": "CANONICAL.CHEMISTRY.UPPER.THERMODYNAMICS.HEAT_WORK_LIMIT"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+        "sourceGoalId": "bd3c4043-e38c-5fc9-813d-442e84123d99"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+        "title": "Visualisierung: Grenzen der Umwandlung von Wärme in Arbeit erklären",
+        "url": "/assets/goal-visualizations/chemie/dc5173e8-6e63-58d3-a79b-bd74ef3cb98b/dc5173e8-6e63-58d3-a79b-bd74ef3cb98b.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation",
+        "description": "Visualisierung zum Lernziel: Grenzen der Umwandlung von Wärme in Arbeit erklären.",
+        "altText": "Eine zyklische Wärmekraftmaschine nimmt Wärme aus einem wärmeren Reservoir auf, gibt Arbeit und Abwärme an ein kälteres Reservoir ab; die Energie bleibt erhalten.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "fullPProfileExceptAlreadyIdenticalWholeCaseBriefs": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "expectation-cyclic-engine-balance",
+        "essentialUnderstandingDe": "Zyklische Wärme-Arbeit-Grenze von Energieerhaltung unterscheiden.",
+        "essentialUnderstandingEn": "Distinguish cyclic heat/work limits from energy conservation.",
+        "observablePerformanceDe": "Zyklus: ΔU_Maschine=0, Q_out=1000-300=700 J; Energie bleibt erhalten. Reservoirsumme -1000/500+700/300=+0,333 J/K, mit dem 2. Hauptsatz vereinbar. Nutzarbeit ist 300 J, die anderen 700 J werden abgegeben, nicht vernichtet. Die behauptete Ein-Reservoir-Maschine wäre energetisch bilanziert, aber ihre einzige Umweltänderung hätte ΔS=-2 J/K; sie verletzt die Kelvin-Planck-Aussage. Die Einschränkung gilt für zyklische Wärmekraftmaschinen und vollständige Gesamtbilanz, nicht pauschal für jede einmalige Wärme-Arbeit-Umwandlung.",
+        "observablePerformanceEn": "Cycle: ΔU_engine=0 and Q_out=1000-300=700 J; energy is conserved. Reservoir sum -1000/500+700/300=+0.333 J/K is consistent with the second law. Useful work is 300 J; 700 J is transferred out, not destroyed. The claimed single-reservoir engine balances energy but its only environmental change has ΔS=-2 J/K, violating Kelvin-Planck. The restriction concerns cyclic heat engines and the full balance, not every one-time heat-to-work conversion."
+      },
+      {
+        "id": "expectation-finite-expansion-vs-cycle",
+        "essentialUnderstandingDe": "Eine einmalige reversible Expansion gegen den vollständigen Zyklus abgrenzen.",
+        "essentialUnderstandingEn": "Distinguish a single reversible expansion from a complete cycle.",
+        "observablePerformanceDe": "W_out≈1728,85 J und Q_in gleicher Betrag; ΔS_Gas=nR ln2≈5,763 J/K, ΔS_Reservoir=-5,763 J/K, Gesamt=0 im reversiblen Modell. Das Gasvolumen und seine Entropie haben sich verändert: kein Zyklus. Reversible Rückkompression bei derselben T benötigt entsprechende Arbeit und gibt Wärme ab; die vollständige Bilanz gewinnt keine Nettoarbeit aus einem einzigen Reservoir. Ein Kühlschrank braucht Arbeit zum Wärmetransport vom kalten zum warmen Reservoir. Energie bleibt erhalten, Bedingungen und Systemzustand bestimmen die Umwandlungsgrenze.",
+        "observablePerformanceEn": "W_out≈1728.85 J and Q_in has the same magnitude; ΔS_gas=nR ln2≈5.763 J/K, ΔS_reservoir=-5.763 J/K, total zero in the reversible model. Gas volume/entropy changed, so this is not a cycle. Reversible recompression at the same T needs corresponding work and rejects heat; the full cycle obtains no net work from one reservoir. A refrigerator needs work to move heat from cold to hot. Energy is conserved; conditions and system state define conversion limits."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "expectation-cyclic-engine-balance",
+        "expectation-finite-expansion-vs-cycle"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "chemically-relevant-conditions",
+        "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+        "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+      }
+    ]
+  },
+  "PInputBindings": {
+    "goalFingerprint": "sha256:59faaef06c5474fde92ecfe28351d2d0b9c61c28d197c765c55a18bd4fdf7120",
+    "reviewInputFingerprint": "sha256:60f36b6c741b15c3fb03d1a417e21def8742f1a801df18a50c86fd2f40f894de",
+    "profileFingerprint": "sha256:1c3162b8f3b90c1f3214d79b1dc2f22de2b2e5fb35dc3724e805fd9dd9503ca1",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1"
+  },
+  "caseBriefsIdenticalToWholeCasesByExactObjectEquality": true,
+  "wholeCases": [
+    {
+      "goalId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+      "case": {
+        "id": "cyclic-engine-balance",
+        "taskDemandDe": "Synthetische zyklische Wärmekraftmaschine: heißes Reservoir 500 K, kaltes Reservoir 300 K. Je Zyklus Q_in=1000 J, W_out=300 J. Die Maschine kehrt in denselben Zustand zurück. Zweite Behauptung: 1000 J aus nur einem Reservoir vollständig in Arbeit, keinerlei weitere Änderung. Bilanziere Abwärme, erkläre Energieverbrauch/-verlust und prüfe beide Aussagen mit 1. und 2. Hauptsatz. Berechne ergänzend die Reservoir-Entropieänderung; erläutere die Rolle des vollständigen Zyklus.",
+        "taskDemandEn": "Synthetic cyclic heat engine: hot reservoir 500 K, cold reservoir 300 K. Per cycle Q_in=1000 J and W_out=300 J; the machine returns to its initial state. Another claim: convert 1000 J from one reservoir entirely to work with no other change. Balance rejected heat, interpret energy consumption/loss and assess both claims with the first/second laws. Additionally calculate reservoir entropy change and explain why a complete cycle matters.",
+        "expectedPerformanceDe": "Zyklus: ΔU_Maschine=0, Q_out=1000-300=700 J; Energie bleibt erhalten. Reservoirsumme -1000/500+700/300=+0,333 J/K, mit dem 2. Hauptsatz vereinbar. Nutzarbeit ist 300 J, die anderen 700 J werden abgegeben, nicht vernichtet. Die behauptete Ein-Reservoir-Maschine wäre energetisch bilanziert, aber ihre einzige Umweltänderung hätte ΔS=-2 J/K; sie verletzt die Kelvin-Planck-Aussage. Die Einschränkung gilt für zyklische Wärmekraftmaschinen und vollständige Gesamtbilanz, nicht pauschal für jede einmalige Wärme-Arbeit-Umwandlung.",
+        "expectedPerformanceEn": "Cycle: ΔU_engine=0 and Q_out=1000-300=700 J; energy is conserved. Reservoir sum -1000/500+700/300=+0.333 J/K is consistent with the second law. Useful work is 300 J; 700 J is transferred out, not destroyed. The claimed single-reservoir engine balances energy but its only environmental change has ΔS=-2 J/K, violating Kelvin-Planck. The restriction concerns cyclic heat engines and the full balance, not every one-time heat-to-work conversion.",
+        "understandingFocusDe": "Zyklische Wärme-Arbeit-Grenze von Energieerhaltung unterscheiden.",
+        "understandingFocusEn": "Distinguish cyclic heat/work limits from energy conservation."
+      },
+      "materialAndData": {
+        "de": "Synthetische zyklische Wärmekraftmaschine: heißes Reservoir 500 K, kaltes Reservoir 300 K. Je Zyklus Q_in=1000 J, W_out=300 J. Die Maschine kehrt in denselben Zustand zurück. Zweite Behauptung: 1000 J aus nur einem Reservoir vollständig in Arbeit, keinerlei weitere Änderung.",
+        "en": "Synthetic cyclic heat engine: hot reservoir 500 K, cold reservoir 300 K. Per cycle Q_in=1000 J and W_out=300 J; the machine returns to its initial state. Another claim: convert 1000 J from one reservoir entirely to work with no other change."
+      },
+      "modelAnswer": {
+        "de": "Zyklus: ΔU_Maschine=0, Q_out=1000-300=700 J; Energie bleibt erhalten. Reservoirsumme -1000/500+700/300=+0,333 J/K, mit dem 2. Hauptsatz vereinbar. Nutzarbeit ist 300 J, die anderen 700 J werden abgegeben, nicht vernichtet. Die behauptete Ein-Reservoir-Maschine wäre energetisch bilanziert, aber ihre einzige Umweltänderung hätte ΔS=-2 J/K; sie verletzt die Kelvin-Planck-Aussage. Die Einschränkung gilt für zyklische Wärmekraftmaschinen und vollständige Gesamtbilanz, nicht pauschal für jede einmalige Wärme-Arbeit-Umwandlung.",
+        "en": "Cycle: ΔU_engine=0 and Q_out=1000-300=700 J; energy is conserved. Reservoir sum -1000/500+700/300=+0.333 J/K is consistent with the second law. Useful work is 300 J; 700 J is transferred out, not destroyed. The claimed single-reservoir engine balances energy but its only environmental change has ΔS=-2 J/K, violating Kelvin-Planck. The restriction concerns cyclic heat engines and the full balance, not every one-time heat-to-work conversion."
+      },
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "700 J Abwärme mit Zyklusbilanz ermitteln.",
+            "aspectEn": "Find 700 J rejected heat from the cycle balance."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Reservoir-Entropiebilanzen korrekt berechnen.",
+            "aspectEn": "Calculate reservoir entropy balances correctly."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Kelvin-Planck-Grenze ausdrücklich zyklisch formulieren.",
+            "aspectEn": "State the Kelvin-Planck limit explicitly for a cycle."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Energieverlust als verminderte Nutzbarkeit statt Vernichtung deuten.",
+            "aspectEn": "Interpret loss as reduced usefulness rather than destruction."
+          }
+        ],
+        "fullCreditEvidenceDe": "Zyklus: ΔU_Maschine=0, Q_out=1000-300=700 J; Energie bleibt erhalten. Reservoirsumme -1000/500+700/300=+0,333 J/K, mit dem 2. Hauptsatz vereinbar. Nutzarbeit ist 300 J, die anderen 700 J werden abgegeben, nicht vernichtet. Die behauptete Ein-Reservoir-Maschine wäre energetisch bilanziert, aber ihre einzige Umweltänderung hätte ΔS=-2 J/K; sie verletzt die Kelvin-Planck-Aussage. Die Einschränkung gilt für zyklische Wärmekraftmaschinen und vollständige Gesamtbilanz, nicht pauschal für jede einmalige Wärme-Arbeit-Umwandlung.",
+        "fullCreditEvidenceEn": "Cycle: ΔU_engine=0 and Q_out=1000-300=700 J; energy is conserved. Reservoir sum -1000/500+700/300=+0.333 J/K is consistent with the second law. Useful work is 300 J; 700 J is transferred out, not destroyed. The claimed single-reservoir engine balances energy but its only environmental change has ΔS=-2 J/K, violating Kelvin-Planck. The restriction concerns cyclic heat engines and the full balance, not every one-time heat-to-work conversion."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+      "case": {
+        "id": "finite-expansion-vs-cycle",
+        "taskDemandDe": "Ideales Gas expandiert einmalig isotherm und reversibel bei 300 K von V auf 2V, n=1,00 mol, R=8,314 J/(mol K). Zugeführte Wärme wird bei ΔU=0 vollständig als Arbeit abgegeben; der Gaszustand ändert sich. Vergleich: Ein Zyklus muss anschließend denselben Anfangszustand wiederherstellen. Prüfe die vermeintliche Widerlegung des 2. Hauptsatzes, berechne W_out=nRT ln2 und die Entropieänderungen, und erkläre warum das Zurücksetzen nicht kostenlos ist. Ordne das Alltagsbild eines Kühlschranks/Wärmemotors fachlich ein.",
+        "taskDemandEn": "An ideal gas undergoes one reversible isothermal expansion at 300 K from V to 2V; n=1.00 mol, R=8.314 J/(mol K). With ΔU=0, supplied heat is all released as work, but gas state changes. Contrast: a cycle must subsequently restore its initial state. Assess the alleged violation of the second law, calculate W_out=nRT ln2 and entropy changes and explain why resetting is not free. Give a scientific interpretation of a refrigerator/heat-engine everyday model.",
+        "expectedPerformanceDe": "W_out≈1728,85 J und Q_in gleicher Betrag; ΔS_Gas=nR ln2≈5,763 J/K, ΔS_Reservoir=-5,763 J/K, Gesamt=0 im reversiblen Modell. Das Gasvolumen und seine Entropie haben sich verändert: kein Zyklus. Reversible Rückkompression bei derselben T benötigt entsprechende Arbeit und gibt Wärme ab; die vollständige Bilanz gewinnt keine Nettoarbeit aus einem einzigen Reservoir. Ein Kühlschrank braucht Arbeit zum Wärmetransport vom kalten zum warmen Reservoir. Energie bleibt erhalten, Bedingungen und Systemzustand bestimmen die Umwandlungsgrenze.",
+        "expectedPerformanceEn": "W_out≈1728.85 J and Q_in has the same magnitude; ΔS_gas=nR ln2≈5.763 J/K, ΔS_reservoir=-5.763 J/K, total zero in the reversible model. Gas volume/entropy changed, so this is not a cycle. Reversible recompression at the same T needs corresponding work and rejects heat; the full cycle obtains no net work from one reservoir. A refrigerator needs work to move heat from cold to hot. Energy is conserved; conditions and system state define conversion limits.",
+        "understandingFocusDe": "Eine einmalige reversible Expansion gegen den vollständigen Zyklus abgrenzen.",
+        "understandingFocusEn": "Distinguish a single reversible expansion from a complete cycle."
+      },
+      "materialAndData": {
+        "de": "Ideales Gas expandiert einmalig isotherm und reversibel bei 300 K von V auf 2V, n=1,00 mol, R=8,314 J/(mol K). Zugeführte Wärme wird bei ΔU=0 vollständig als Arbeit abgegeben; der Gaszustand ändert sich. Vergleich: Ein Zyklus muss anschließend denselben Anfangszustand wiederherstellen.",
+        "en": "An ideal gas undergoes one reversible isothermal expansion at 300 K from V to 2V; n=1.00 mol, R=8.314 J/(mol K). With ΔU=0, supplied heat is all released as work, but gas state changes. Contrast: a cycle must subsequently restore its initial state."
+      },
+      "modelAnswer": {
+        "de": "W_out≈1728,85 J und Q_in gleicher Betrag; ΔS_Gas=nR ln2≈5,763 J/K, ΔS_Reservoir=-5,763 J/K, Gesamt=0 im reversiblen Modell. Das Gasvolumen und seine Entropie haben sich verändert: kein Zyklus. Reversible Rückkompression bei derselben T benötigt entsprechende Arbeit und gibt Wärme ab; die vollständige Bilanz gewinnt keine Nettoarbeit aus einem einzigen Reservoir. Ein Kühlschrank braucht Arbeit zum Wärmetransport vom kalten zum warmen Reservoir. Energie bleibt erhalten, Bedingungen und Systemzustand bestimmen die Umwandlungsgrenze.",
+        "en": "W_out≈1728.85 J and Q_in has the same magnitude; ΔS_gas=nR ln2≈5.763 J/K, ΔS_reservoir=-5.763 J/K, total zero in the reversible model. Gas volume/entropy changed, so this is not a cycle. Reversible recompression at the same T needs corresponding work and rejects heat; the full cycle obtains no net work from one reservoir. A refrigerator needs work to move heat from cold to hot. Energy is conserved; conditions and system state define conversion limits."
+      },
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Änderung des Gaszustands und fehlenden Zyklus erkennen.",
+            "aspectEn": "Identify changed gas state and absence of a cycle."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Arbeit/Entropie mit Kelvin und ln2 korrekt bestimmen.",
+            "aspectEn": "Calculate work/entropy correctly using kelvin and ln2."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Rücksetzung samt Bilanz erklären.",
+            "aspectEn": "Explain resetting and its balance."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Wärmetransport im Kühlschrank an Arbeit binden.",
+            "aspectEn": "Connect refrigerator heat transport to work."
+          }
+        ],
+        "fullCreditEvidenceDe": "W_out≈1728,85 J und Q_in gleicher Betrag; ΔS_Gas=nR ln2≈5,763 J/K, ΔS_Reservoir=-5,763 J/K, Gesamt=0 im reversiblen Modell. Das Gasvolumen und seine Entropie haben sich verändert: kein Zyklus. Reversible Rückkompression bei derselben T benötigt entsprechende Arbeit und gibt Wärme ab; die vollständige Bilanz gewinnt keine Nettoarbeit aus einem einzigen Reservoir. Ein Kühlschrank braucht Arbeit zum Wärmetransport vom kalten zum warmen Reservoir. Energie bleibt erhalten, Bedingungen und Systemzustand bestimmen die Umwandlungsgrenze.",
+        "fullCreditEvidenceEn": "W_out≈1728.85 J and Q_in has the same magnitude; ΔS_gas=nR ln2≈5.763 J/K, ΔS_reservoir=-5.763 J/K, total zero in the reversible model. Gas volume/entropy changed, so this is not a cycle. Reversible recompression at the same T needs corresponding work and rejects heat; the full cycle obtains no net work from one reservoir. A refrigerator needs work to move heat from cold to hot. Energy is conserved; conditions and system state define conversion limits."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false
+    }
+  ]
+}

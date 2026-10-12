@@ -13,9 +13,9 @@ This file is generated from:
 - Watch targets: `4`
 - Watched state set: `16`
 - Declared path references across all targets: `6`
-- Expanded path references across all targets: `153`
-- Unique watched files: `153`
-- Existing watched files: `153/153`
+- Expanded path references across all targets: `156`
+- Unique watched files: `156`
+- Existing watched files: `156/156`
 - Missing watched files: `0`
 - Canonical Chemistry hash mode: `canonical-evidence-json-v1` (excludes `goal-visualization` presentation metadata)
 
@@ -34,14 +34,14 @@ This file is generated from:
 | --- | --- | --- | --- | ---: | ---: | ---: |
 | `chemistry_canonical_and_tracker_watch` | `canonical_runtime_contract` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HE`, `DE-HH`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | P6 cutover-ready canonical Chemistry graph<br>P6 all-state rollout tracker | `2` | `2` | `0` |
 | `chemistry_source_evidence_watch` | `all_state_source_evidence` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HE`, `DE-HH`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | source-extraction inventories for all Chemistry state lanes<br>retained Hessen source-json Chemistry snapshots | `2` | `35` | `0` |
-| `chemistry_mapping_watch` | `all_state_mapping_contract` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HE`, `DE-HH`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | reviewed source-extraction to canonical Chemistry mappings<br>runtime legacy-to-canonical Chemistry mappings | `1` | `79` | `0` |
+| `chemistry_mapping_watch` | `all_state_mapping_contract` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HE`, `DE-HH`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | reviewed source-extraction to canonical Chemistry mappings<br>runtime legacy-to-canonical Chemistry mappings | `1` | `82` | `0` |
 | `chemistry_composition_view_watch` | `all_state_composition_view_contract` | `DE-BB`, `DE-BE`, `DE-BW`, `DE-BY`, `DE-HB`, `DE-HE`, `DE-HH`, `DE-MV`, `DE-NI`, `DE-NW`, `DE-RP`, `DE-SH`, `DE-SL`, `DE-SN`, `DE-ST`, `DE-TH` | country-level Chemistry composition views<br>state-level GK/LK Chemistry composition views | `1` | `37` | `0` |
 
 ## Unique file register
 
 | File | Exists | SHA256-12 | Last modified (UTC) |
 | --- | --- | --- | --- |
-| `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `4a683859de1b` | `2026-10-12T16:53:13Z` |
+| `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `e64007d66e66` | `2026-10-12T23:24:25Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json` | `yes` | `304d030ac8c6` | `2026-10-06T22:07:09Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json` | `yes` | `c2a9753bd619` | `2026-10-06T22:07:09Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json` | `yes` | `7aa0cc2fd01c` | `2026-10-06T22:07:09Z` |
@@ -145,11 +145,13 @@ This file is generated from:
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.json` | `yes` | `d4e097e033d8` | `2026-10-04T23:36:05Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.json` | `yes` | `8e6b28b0b772` | `2026-10-04T22:23:16Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-q1-fourteen-current-20261005-v4.review.json` | `yes` | `58cda7c0d8dd` | `2026-10-05T19:42:50Z` |
+| `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json` | `yes` | `279d43dacea3` | `2026-10-12T22:49:13Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json` | `yes` | `6ff643f59696` | `2026-10-06T04:04:29Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `57f713b35ca0` | `2026-05-11T11:10:06Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json` | `yes` | `1742bfb8230b` | `2026-03-13T16:57:34Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `1935005ce2f0` | `2026-05-11T20:22:42Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_to_canonical_chemistry.json` | `yes` | `f71285ae2ebe` | `2026-05-11T22:17:34Z` |
+| `curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json` | `yes` | `0bc51b18967c` | `2026-10-12T22:49:13Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `446b05ed7282` | `2026-05-11T20:22:42Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_to_canonical_chemistry.json` | `yes` | `fc5ec4beb50d` | `2026-05-11T22:17:34Z` |
 | `curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `9db9a53ac8ef` | `2026-05-11T20:22:42Z` |
@@ -164,6 +166,7 @@ This file is generated from:
 | `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json` | `yes` | `ef9e4098995a` | `2026-10-11T10:23:09Z` |
 | `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `336afa38ae69` | `2026-05-11T13:44:52Z` |
 | `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_to_canonical_chemistry.json` | `yes` | `b10962d68890` | `2026-05-11T22:28:19Z` |
+| `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json` | `yes` | `5b017f1e4f79` | `2026-10-12T22:49:13Z` |
 | `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `98c0d136feaf` | `2026-05-11T13:44:52Z` |
 | `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_to_canonical_chemistry.json` | `yes` | `35a79568f58d` | `2026-05-11T22:28:19Z` |
 | `curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `ae4f292ec708` | `2026-05-11T20:22:42Z` |
@@ -207,7 +210,7 @@ This file is generated from:
 
 | File | Exists | SHA256-12 | Last modified (UTC) |
 | --- | --- | --- | --- |
-| `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `4a683859de1b` | `2026-10-12T16:53:13Z` |
+| `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `e64007d66e66` | `2026-10-12T23:24:25Z` |
 | `curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json` | `yes` | `372302fbc4b2` | `2026-10-12T17:21:45Z` |
 
 ## `chemistry_source_evidence_watch`
@@ -306,11 +309,13 @@ This file is generated from:
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.json` | `yes` | `d4e097e033d8` | `2026-10-04T23:36:05Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.json` | `yes` | `8e6b28b0b772` | `2026-10-04T22:23:16Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-q1-fourteen-current-20261005-v4.review.json` | `yes` | `58cda7c0d8dd` | `2026-10-05T19:42:50Z` |
+| `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json` | `yes` | `279d43dacea3` | `2026-10-12T22:49:13Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json` | `yes` | `6ff643f59696` | `2026-10-06T04:04:29Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `57f713b35ca0` | `2026-05-11T11:10:06Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json` | `yes` | `1742bfb8230b` | `2026-03-13T16:57:34Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `1935005ce2f0` | `2026-05-11T20:22:42Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_to_canonical_chemistry.json` | `yes` | `f71285ae2ebe` | `2026-05-11T22:17:34Z` |
+| `curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json` | `yes` | `0bc51b18967c` | `2026-10-12T22:49:13Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `446b05ed7282` | `2026-05-11T20:22:42Z` |
 | `curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_to_canonical_chemistry.json` | `yes` | `fc5ec4beb50d` | `2026-05-11T22:17:34Z` |
 | `curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `9db9a53ac8ef` | `2026-05-11T20:22:42Z` |
@@ -325,6 +330,7 @@ This file is generated from:
 | `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json` | `yes` | `ef9e4098995a` | `2026-10-11T10:23:09Z` |
 | `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `336afa38ae69` | `2026-05-11T13:44:52Z` |
 | `curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_to_canonical_chemistry.json` | `yes` | `b10962d68890` | `2026-05-11T22:28:19Z` |
+| `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json` | `yes` | `5b017f1e4f79` | `2026-10-12T22:49:13Z` |
 | `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `98c0d136feaf` | `2026-05-11T13:44:52Z` |
 | `curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_to_canonical_chemistry.json` | `yes` | `35a79568f58d` | `2026-05-11T22:28:19Z` |
 | `curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` | `yes` | `ae4f292ec708` | `2026-05-11T20:22:42Z` |

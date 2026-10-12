@@ -1,0 +1,673 @@
+[
+  {
+    "goal": {
+      "id": "2652caef-b557-58b9-9b28-70db62625ce5",
+      "title": "Eigenschaftsprofile von Polymeren",
+      "description": "Die lernende Person kann erklären, wie unterschiedliche Monomere und Verknüpfungen zu Makromolekülen vielfältige Eigenschaftsprofile und spezielle technische Verwendungen ermöglichen.",
+      "titleEn": "Property profiles of polymers",
+      "descriptionEn": "The learner can explain how different monomers and linkages form macromolecules with diverse property profiles and specific technical uses.",
+      "requires": [
+        "3e9eb5d0-3407-5a1e-9492-ad87f98d303d"
+      ]
+    },
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Monomerfunktionalität und Verknüpfungen legen Rückgrat, Seitengruppen und mögliche Netzpunkte fest.",
+          "essentialUnderstandingEn": "Monomer functionality and linkages determine backbone, side groups and possible network points.",
+          "observablePerformanceDe": "Leitet Repetiermotive und Vernetzungsmöglichkeiten aus vorgegebenen Monomeren ab.",
+          "observablePerformanceEn": "Derives repeat motifs and crosslinking possibilities from supplied monomers."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Polarität, Wasserstoffbrücken, Packung und Vernetzung erklären unterschiedliche Eigenschaftsprofile unter festgelegten Bedingungen.",
+          "essentialUnderstandingEn": "Polarity, hydrogen bonding, packing and crosslinking explain property profiles under specified conditions.",
+          "observablePerformanceDe": "Verknüpft Strukturmerkmale mit zwei beobachteten Materialeigenschaften ohne universelle Rangfolge.",
+          "observablePerformanceEn": "Connects structural features to two observed properties without asserting a universal ranking."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Eine technische Wahl braucht mehrere Eigenschaften und Angaben zu Einsatzbedingungen.",
+          "essentialUnderstandingEn": "A technical choice requires multiple properties and service conditions.",
+          "observablePerformanceDe": "Begründet eine Materialwahl und überträgt sie bei geänderter Feuchte oder Geometrie.",
+          "observablePerformanceEn": "Justifies a material selection and transfers it under changed moisture or geometry."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Monomer und Bindungsmotiv",
+          "textEn": "Monomer and linkage"
+        },
+        {
+          "id": "v2",
+          "textDe": "Packung oder Vernetzung",
+          "textEn": "Packing or crosslinking"
+        },
+        {
+          "id": "v3",
+          "textDe": "Trocken oder feucht",
+          "textEn": "Dry or wet"
+        }
+      ]
+    },
+    "cases": [
+      {
+        "caseId": "2652caef-case-1",
+        "goalId": "2652caef-b557-58b9-9b28-70db62625ce5",
+        "title": "A: Folie und Faser",
+        "dataDe": "PE: –CH₂–CH₂–, unpolar, Probe P wenig verzweigt, Probe Q stark verzweigt; P: Kristallinität 60%, E-Modul 900 MPa; Q: 35%, 250 MPa. PA: –CO–R–CO–NH–R′–NH–, trockene Faser Zugfestigkeit 70 MPa; nach Wasseraufnahme 45 MPa. Daten für gleiche Prüfmethoden.",
+        "dataEn": "PE: –CH₂–CH₂–, nonpolar, sample P sparsely branched, Q heavily branched; P crystallinity 60%, modulus 900 MPa; Q 35%, 250 MPa. PA: –CO–R–CO–NH–R′–NH–, dry fibre tensile strength 70 MPa; after water absorption 45 MPa. Matched test methods.",
+        "taskDe": "Erkläre P/Q und das PA-Bindungsmotiv. Wähle eine flexible Folie und eine trockene belastbare Faser. Übertrage die Faserwahl auf feuchte Umgebung und nenne eine verbleibende Prüffrage.",
+        "taskEn": "Explain P/Q and the PA linkage. Select a flexible film and a strong dry fibre. Transfer the fibre choice to humid conditions and identify a remaining test.",
+        "modelAnswerDe": "Q-Verzweigungen erschweren regelmäßige Packung, geringere Kristallinität und Steifigkeit passen zusammen: Q für flexible Folie. PA-Amidgruppen ermöglichen H-Brücken zwischen Ketten; trockene PA-Faser als Vorauswahl. Wasser kann interagieren/plastifizieren; 45 MPa begrenzt feuchte Verwendung. Nicht jede PA ist immer stärker als PE: Orientierung, Molmasse und Prüfbedingungen kontrollieren.",
+        "modelAnswerEn": "Q branching impedes regular packing; lower crystallinity and stiffness agree: Q for flexible film. PA amide groups allow interchain hydrogen bonds; dry PA fibre is a preliminary selection. Water can interact and plasticise; 45 MPa limits wet use. Not every PA is stronger than PE: control orientation, molar mass and test conditions.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Leitet Repetiermotive und Vernetzungsmöglichkeiten aus vorgegebenen Monomeren ab.",
+            "criterionEn": "Derives repeat motifs and crosslinking possibilities from supplied monomers."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Verknüpft Strukturmerkmale mit zwei beobachteten Materialeigenschaften ohne universelle Rangfolge.",
+            "criterionEn": "Connects structural features to two observed properties without asserting a universal ranking."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Begründet eine Materialwahl und überträgt sie bei geänderter Feuchte oder Geometrie.",
+            "criterionEn": "Justifies a material selection and transfers it under changed moisture or geometry."
+          }
+        ]
+      },
+      {
+        "caseId": "2652caef-case-2",
+        "goalId": "2652caef-b557-58b9-9b28-70db62625ce5",
+        "title": "B: Reversibel verformbare Kabelhülle",
+        "dataDe": "Gleiches unpolares Kettenmaterial: U unvernetzt, nach Lastentfernung 30% Restdehnung; N weitmaschig vernetzt, 3%. Beide bei gleicher Temperatur oberhalb ihres Glasübergangs, unter Zersetzung. Eine Hülle soll elastisch zurückstellen, eine andere als Regranulat wiederverarbeitet werden.",
+        "dataEn": "Same nonpolar chain material: U uncrosslinked, 30% residual strain after unloading; N loosely crosslinked, 3%. Both tested above glass transition and below decomposition. One sheath must recover elastically; another should be reprocessed as regranulate.",
+        "taskDe": "Erkläre den Netzwerkeffekt und entscheide beide Verwendungen. Welche Veränderung wäre zu erwarten, wenn die Prüftemperatur unter Tg sinkt? Welche Daten fehlen für reale Kabel?",
+        "taskEn": "Explain the network effect and select for both uses. What changes if testing falls below Tg? What evidence is missing for actual cables?",
+        "modelAnswerDe": "N-Netzpunkte verhindern Kettengleiten und ermöglichen Rückstellung, daher elastische Hülle; U schmelzverarbeitbar, daher Regranulat. Unter Tg sind Segmentbewegungen eingeschränkt, das elastische Verhalten kann verloren gehen. Elektrische Isolation, Alterung und Brandverhalten fehlen. Gleiche Grundbausteine liefern durch Verknüpfung verschiedene Profile; keine allgemeine Überlegenheit.",
+        "modelAnswerEn": "N network points inhibit chain sliding and permit recovery, favouring an elastic sheath; U is melt-processable, favouring regranulate. Below Tg segment motion is restricted and elastic behaviour may be lost. Electrical insulation, ageing and fire behaviour remain untested. Identical building blocks yield different profiles through linkages; neither is universally superior.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Leitet Repetiermotive und Vernetzungsmöglichkeiten aus vorgegebenen Monomeren ab.",
+            "criterionEn": "Derives repeat motifs and crosslinking possibilities from supplied monomers."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Verknüpft Strukturmerkmale mit zwei beobachteten Materialeigenschaften ohne universelle Rangfolge.",
+            "criterionEn": "Connects structural features to two observed properties without asserting a universal ranking."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Begründet eine Materialwahl und überträgt sie bei geänderter Feuchte oder Geometrie.",
+            "criterionEn": "Justifies a material selection and transfers it under changed moisture or geometry."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "goal": {
+      "id": "9b942490-ad8f-52ba-8c5a-f8a9792b7db5",
+      "title": "Polykondensation verstehen",
+      "description": "Die lernende Person kann Polykondensationen über das Nukleophil-Elektrophil-Konzept erklären, den Aufbau entsprechender Polymere ableiten und Reaktionsgleichungen für Polyester oder Polyamide formulieren.",
+      "titleEn": "Understand polycondensation",
+      "descriptionEn": "The learner can explain polycondensation using the nucleophile-electrophile concept, derive corresponding polymer structures, and formulate equations for polyesters or polyamides.",
+      "requires": [
+        "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9"
+      ]
+    },
+    "profile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Nukleophile O- oder N-Zentren können mit elektrophilen Acylzentren reagieren; wiederholte Verknüpfung bifunktioneller Monomere bildet Polyester oder Polyamide.",
+          "essentialUnderstandingEn": "Nucleophilic O or N centres can react with electrophilic acyl centres; repeated linking of bifunctional monomers forms polyesters or polyamides.",
+          "observablePerformanceDe": "Kennzeichnet Zentren, Ester-/Amidbindung und funktionserhaltende Repetiereinheit.",
+          "observablePerformanceEn": "Identifies centres, ester/amide linkages and a functionally consistent repeat unit."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Die Gesamtgleichung muss Abgangsmolekül, Endgruppen und stöchiometrische Anzahl der Verknüpfungen berücksichtigen.",
+          "essentialUnderstandingEn": "The overall equation must account for byproduct, end groups and number of links.",
+          "observablePerformanceDe": "Bilanziert einen endgruppenfestgelegten kurzen Kettenabschnitt und unterscheidet Wasser- von HCl-Abspaltung.",
+          "observablePerformanceEn": "Balances a short chain with specified end groups and distinguishes water from HCl elimination."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Funktionalität und Monomerwahl bestimmen Kettenstruktur; das Schema ersetzt keinen Nachweis experimenteller Synthesefähigkeit.",
+          "essentialUnderstandingEn": "Functionality and monomer choice determine chain structure; a scheme does not demonstrate experimental synthesis competence.",
+          "observablePerformanceDe": "Überträgt Polyesterbildung auf ein Polyamid und nennt eine Grenze der idealisierten Reaktion.",
+          "observablePerformanceEn": "Transfers polyester formation to a polyamide and states a limit of the idealised reaction."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "O- oder N-Nukleophil",
+          "textEn": "O or N nucleophile"
+        },
+        {
+          "id": "v2",
+          "textDe": "Säure oder Säurechlorid",
+          "textEn": "Acid or acid chloride"
+        },
+        {
+          "id": "v3",
+          "textDe": "Endgruppen und Kettenlänge",
+          "textEn": "End groups and chain length"
+        }
+      ]
+    },
+    "cases": [
+      {
+        "caseId": "9b942490-case-1",
+        "goalId": "9b942490-ad8f-52ba-8c5a-f8a9792b7db5",
+        "title": "A: Zwei Diol- und zwei Disäuremoleküle",
+        "dataDe": "2 HO–R–OH+2 HOOC–Q–COOH bilden eine einzige lineare Kette ohne Ring, mit einem OH- und einem COOH-Ende. Jede Esterverknüpfung setzt 1 H₂O frei. Modell einer säurekatalysierten Polykondensation; keine Durchführung.",
+        "dataEn": "2 HO–R–OH+2 HOOC–Q–COOH form one linear chain without a ring, with one OH and one COOH end. Each ester link releases 1 H₂O. Model of acid-catalysed polycondensation; no execution.",
+        "taskDe": "Formuliere eine vollständige endgruppenrichtige Produktkette und Wasserzahl. Kennzeichne nukleophilen Alkohol-O und elektrophiles Acyl-C. Leite das allgemeine Repetiermotiv ab und erkläre, warum bifunktionelle Monomere benötigt werden.",
+        "taskEn": "Write a complete product chain with correct end groups and water count. Identify nucleophilic alcohol O and electrophilic acyl C. Derive the repeat motif and explain why bifunctional monomers are needed.",
+        "modelAnswerDe": "HO–R–O–CO–Q–CO–O–R–O–CO–Q–COOH+3 H₂O: vier Monomere, drei Verknüpfungen. Repetiermotiv –O–R–O–CO–Q–CO–. O greift Acyl-C im katalysierten Reaktionsmodell an; nicht gleichsetzen mit vollständigem Mechanismus. Zwei Funktionen ermöglichen wiederholte Verlängerung; ein monofunktioneller Alkohol begrenzt Kettenwachstum. Endgruppen machen n H₂O für eine endliche Kette hier falsch.",
+        "modelAnswerEn": "HO–R–O–CO–Q–CO–O–R–O–CO–Q–COOH+3 H₂O: four monomers, three links. Repeat –O–R–O–CO–Q–CO–. O attacks acyl C in the catalysed reaction model; this is not a complete mechanism. Two functions permit repeated extension; a monofunctional alcohol limits growth. End groups make n H₂O incorrect for this finite-chain example.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Kennzeichnet Zentren, Ester-/Amidbindung und funktionserhaltende Repetiereinheit.",
+            "criterionEn": "Identifies centres, ester/amide linkages and a functionally consistent repeat unit."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Bilanziert einen endgruppenfestgelegten kurzen Kettenabschnitt und unterscheidet Wasser- von HCl-Abspaltung.",
+            "criterionEn": "Balances a short chain with specified end groups and distinguishes water from HCl elimination."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Überträgt Polyesterbildung auf ein Polyamid und nennt eine Grenze der idealisierten Reaktion.",
+            "criterionEn": "Transfers polyester formation to a polyamide and states a limit of the idealised reaction."
+          }
+        ]
+      },
+      {
+        "caseId": "9b942490-case-2",
+        "goalId": "9b942490-ad8f-52ba-8c5a-f8a9792b7db5",
+        "title": "B: Polyamid und anderes Abgangsmolekül",
+        "dataDe": "2 H₂N–R–NH₂+2 Cl CO–Q–COCl bilden eine lineare Kette mit NH₂- und COCl-Ende, ohne Ringschluss. Pro Amidbindung entsteht HCl. Vergleiche anschließend mit HOOC–Q–COOH als Ausgangsstoff.",
+        "dataEn": "2 H₂N–R–NH₂+2 Cl CO–Q–COCl form a linear chain with NH₂ and COCl ends, without cyclisation. Each amide link generates HCl. Then compare with HOOC–Q–COOH as starting material.",
+        "taskDe": "Formuliere Produkt und Stoffbilanz. Erkläre Nukleophil/Elektrophil und Repetiereinheit. Was ändert sich bei der Disäure im Gesamtmodell und was kann die Gleichung über reale Durchführung nicht aussagen?",
+        "taskEn": "Write product and material balance. Explain nucleophile/electrophile and repeat unit. What changes with the diacid in the overall model and what does the equation not establish about actual execution?",
+        "modelAnswerDe": "H₂N–R–NH–CO–Q–CO–NH–R–NH–CO–Q–COCl+3 HCl; N ist Nukleophil, Acyl-C Elektrophil, Wiederholung –NH–R–NH–CO–Q–CO–. Mit Disäure und gleichem linearem Endgruppenmodell entsteht COOH-Ende und 3 H₂O statt HCl; reale Säure/Aminkondensation braucht passende Aktivierung/Bedingungen. Formeln belegen weder Versuchsdurchführung noch Ausbeute und Sicherheitskompetenz.",
+        "modelAnswerEn": "H₂N–R–NH–CO–Q–CO–NH–R–NH–CO–Q–COCl+3 HCl; N is nucleophile, acyl C electrophile, repeat –NH–R–NH–CO–Q–CO–. Using the diacid with the same linear model gives a COOH end and 3 H₂O instead of HCl; actual acid/amine condensation needs suitable activation/conditions. Formulae demonstrate neither execution, yield nor experimental safety competence.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Kennzeichnet Zentren, Ester-/Amidbindung und funktionserhaltende Repetiereinheit.",
+            "criterionEn": "Identifies centres, ester/amide linkages and a functionally consistent repeat unit."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Bilanziert einen endgruppenfestgelegten kurzen Kettenabschnitt und unterscheidet Wasser- von HCl-Abspaltung.",
+            "criterionEn": "Balances a short chain with specified end groups and distinguishes water from HCl elimination."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Überträgt Polyesterbildung auf ein Polyamid und nennt eine Grenze der idealisierten Reaktion.",
+            "criterionEn": "Transfers polyester formation to a polyamide and states a limit of the idealised reaction."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "goal": {
+      "id": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+      "title": "Thermisches Verhalten von Kunststoffen erklären",
+      "description": "Die lernende Person kann das thermische Verhalten von Kunststoffen, Glasübergang und Schmelzpunkt aus räumlichem Bau der Makromoleküle und zwischenmolekularen Wechselwirkungen deuten.",
+      "titleEn": "Explain thermal behavior of plastics",
+      "descriptionEn": "The learner can interpret the thermal behavior of plastics, glass transition, and melting point from macromolecular spatial structure and intermolecular interactions.",
+      "requires": [
+        "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9"
+      ]
+    },
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Tg betrifft kooperative Segmentbeweglichkeit amorpher Anteile; Tm das Schmelzen kristalliner Bereiche.",
+          "essentialUnderstandingEn": "Tg concerns cooperative segment mobility in amorphous fractions; Tm concerns melting crystalline regions.",
+          "observablePerformanceDe": "Ordnet Übergänge aus Daten und erklärt den Unterschied ohne Gleichsetzung von Tg und Tm.",
+          "observablePerformanceEn": "Identifies transitions from data and explains the difference without equating Tg and Tm."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Packung, intermolekulare Kräfte und kovalente Vernetzung beeinflussen thermische und mechanische Reaktionen.",
+          "essentialUnderstandingEn": "Packing, intermolecular forces and covalent crosslinks affect thermal and mechanical responses.",
+          "observablePerformanceDe": "Erklärt Unterschiede eines amorphen, teilkristallinen und vernetzten Materials.",
+          "observablePerformanceEn": "Explains differences between amorphous, semicrystalline and crosslinked materials."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Nutzungstemperaturen müssen zu Materialzustand, Belastung und Zersetzungsgrenzen passen.",
+          "essentialUnderstandingEn": "Service temperatures must match material state, loading and decomposition limits.",
+          "observablePerformanceDe": "Überträgt die Zustandsanalyse auf einen neuen Temperaturzyklus mit begründeter Einsatzgrenze.",
+          "observablePerformanceEn": "Transfers state analysis to a new temperature cycle with a justified service limit."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Amorph oder teilkristallin",
+          "textEn": "Amorphous or semicrystalline"
+        },
+        {
+          "id": "v2",
+          "textDe": "Übergang oder Zersetzung",
+          "textEn": "Transition or decomposition"
+        },
+        {
+          "id": "v3",
+          "textDe": "Temperaturzyklus",
+          "textEn": "Temperature cycle"
+        }
+      ]
+    },
+    "cases": [
+      {
+        "caseId": "3aef6d91-case-1",
+        "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+        "title": "A: Zwei Thermoplaste und ein Netzwerk",
+        "dataDe": "A amorph: Tg 80°C, kein kristalliner Schmelzpeak. B teilkristallin: Tg−20°C, Tm 130°C. C vernetzt: Tg 40°C, Zersetzung 250°C, kein Schmelzfluss. B bei 25°C formfest; A bei 100°C deutlich weicher.",
+        "dataEn": "A amorphous: Tg 80°C, no crystalline melting peak. B semicrystalline: Tg−20°C, Tm 130°C. C crosslinked: Tg 40°C, decomposition 250°C, no melt flow. B retains shape at 25°C; A is much softer at 100°C.",
+        "taskDe": "Erkläre Beobachtungen und unterscheide Tg/Tm/Zersetzung. Wähle für wiederholtes thermisches Umformen und beurteile C bei 100°C. Ist B oberhalb Tg automatisch flüssig?",
+        "taskEn": "Explain observations and distinguish Tg, Tm and decomposition. Select for repeated thermal reshaping and assess C at 100°C. Is B automatically liquid above Tg?",
+        "modelAnswerDe": "A über Tg segmentbeweglicher, kein Tm weil amorph; Umformen möglich, aber tatsächliche Viskosität/Belastung prüfen. B bleibt durch Kristallite bis Tm formfest, oberhalb Tg daher nicht automatisch flüssig. C über Tg kann gummiartig weicher sein, Netz verhindert Schmelzfluss; oberhalb 250°C Zersetzung. A/B thermoplastisch wiederverarbeitbar unter passendem Prozessfenster, C nicht einschmelzbar.",
+        "modelAnswerEn": "A has greater segment mobility above Tg, with no Tm because it is amorphous; reshaping may be possible but requires viscosity/load data. B retains crystalline reinforcement until Tm and is not automatically liquid above Tg. C may soften rubber-like above Tg but its network prevents melt flow; above 250°C it decomposes. A/B may be reprocessed within appropriate windows; C cannot be remelted.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Ordnet Übergänge aus Daten und erklärt den Unterschied ohne Gleichsetzung von Tg und Tm.",
+            "criterionEn": "Identifies transitions from data and explains the difference without equating Tg and Tm."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Erklärt Unterschiede eines amorphen, teilkristallinen und vernetzten Materials.",
+            "criterionEn": "Explains differences between amorphous, semicrystalline and crosslinked materials."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Überträgt die Zustandsanalyse auf einen neuen Temperaturzyklus mit begründeter Einsatzgrenze.",
+            "criterionEn": "Transfers state analysis to a new temperature cycle with a justified service limit."
+          }
+        ]
+      },
+      {
+        "caseId": "3aef6d91-case-2",
+        "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+        "title": "B: Gleiche Chemie, verschiedene Packung",
+        "dataDe": "P und Q sind unvernetzte Polyester gleicher Molmasse. P rasch abgekühlt: amorpher Anteil groß, Tg 60°C. Q langsam abgekühlt: Tg 60°C plus Tm 170°C, höhere Steifigkeit bei 90°C. Bauteilzyklus 20→90→20°C unter Last; Überhitzung 210°C unbekannt.",
+        "dataEn": "P and Q are uncrosslinked polyesters of equal molar mass. P rapidly cooled: predominantly amorphous, Tg 60°C. Q slowly cooled: Tg 60°C plus Tm 170°C and greater stiffness at 90°C. Component cycle 20→90→20°C under load; behaviour at 210°C unknown.",
+        "taskDe": "Erkläre den Einfluss der Abkühlung. Wähle für den Zyklus und prognostiziere Verhalten bei 180°C im idealen Modell. Warum reicht gleicher Tg weder für gleiche Formstabilität noch für einen sicheren Prozess bei 210°C?",
+        "taskEn": "Explain cooling effects. Select for the cycle and predict behaviour at 180°C in the ideal model. Why does equal Tg prove neither equal shape stability nor a safe process at 210°C?",
+        "modelAnswerDe": "Langsames Abkühlen erlaubt Kristallbildung; Q-Kristallite tragen bei 90°C, P ist oberhalb Tg stärker weich. Q vorläufig günstiger unter Last; Kriechen/Zyklen prüfen. Bei 180°C sind Q-Kristallite geschmolzen; beide brauchen Viskositätsdaten. Gleicher Tg beschreibt amorphe Segmente, nicht Kristallanteil; Zersetzung bei 210°C und Prozessdauer sind unbekannt.",
+        "modelAnswerEn": "Slow cooling permits crystallisation; Q crystallites support load at 90°C while P softens more above Tg. Q is provisionally preferable, subject to creep/cycle tests. At 180°C Q crystallites have melted; both require viscosity data. Equal Tg describes amorphous segments, not crystal fraction; decomposition at 210°C and process duration are unknown.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Ordnet Übergänge aus Daten und erklärt den Unterschied ohne Gleichsetzung von Tg und Tm.",
+            "criterionEn": "Identifies transitions from data and explains the difference without equating Tg and Tm."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Erklärt Unterschiede eines amorphen, teilkristallinen und vernetzten Materials.",
+            "criterionEn": "Explains differences between amorphous, semicrystalline and crosslinked materials."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Überträgt die Zustandsanalyse auf einen neuen Temperaturzyklus mit begründeter Einsatzgrenze.",
+            "criterionEn": "Transfers state analysis to a new temperature cycle with a justified service limit."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "goal": {
+      "id": "e56040b5-1da8-5080-b358-086d04922339",
+      "title": "Silikone herstellen und strukturbezogen vergleichen",
+      "description": "Die lernende Person kann Herstellung und Bau von Silikonmolekülen beschreiben, ihre Eigenschaften mit Kunststoffen vergleichen und ihre Bedeutung für Nanotechnologie erläutern.",
+      "titleEn": "Produce and compare silicones by structure",
+      "descriptionEn": "The learner can describe production and structure of silicone molecules, compare their properties with plastics, and explain their relevance for nanotechnology.",
+      "requires": [
+        "2652caef-b557-58b9-9b28-70db62625ce5"
+      ]
+    },
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Silikonmoleküle besitzen ein Siloxanrückgrat mit organischen Seitengruppen; Silikon ist nicht elementares Silicium.",
+          "essentialUnderstandingEn": "Silicone molecules have a siloxane backbone with organic side groups; silicone is not elemental silicon.",
+          "observablePerformanceDe": "Zeichnet ein valenzrichtiges PDMS-Kettenfragment und unterscheidet es von PE.",
+          "observablePerformanceEn": "Draws a valence-correct PDMS fragment and distinguishes it from PE."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Silanolkondensation bildet Si–O–Si und Wasser; lineare Ketten und kovalente Netzwerke besitzen unterschiedliche Eigenschaften.",
+          "essentialUnderstandingEn": "Silanol condensation forms Si–O–Si and water; linear chains and covalent networks have different properties.",
+          "observablePerformanceDe": "Bilanziert eine endliche Kondensation und erklärt Öl/Elastomer anhand der Vernetzung.",
+          "observablePerformanceEn": "Balances finite condensation and explains oil/elastomer behaviour through crosslinking."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Silikonchemie kann nanoskalige Beschichtungen und Benetzung beeinflussen, macht aber nicht jedes Silikon zum Nanopartikel.",
+          "essentialUnderstandingEn": "Silicone chemistry can affect nanoscale coatings and wetting but does not make every silicone a nanoparticle.",
+          "observablePerformanceDe": "Vergleicht mit einem organischen Kunststoff und beurteilt eine neue Beschichtung anhand von Chemie und Struktur.",
+          "observablePerformanceEn": "Compares with an organic plastic and evaluates a new coating using chemistry and structure."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Linear oder vernetzt",
+          "textEn": "Linear or crosslinked"
+        },
+        {
+          "id": "v2",
+          "textDe": "Rückgrat und Seitengruppen",
+          "textEn": "Backbone and side groups"
+        },
+        {
+          "id": "v3",
+          "textDe": "Dicke und Oberflächenstruktur",
+          "textEn": "Thickness and surface structure"
+        }
+      ]
+    },
+    "cases": [
+      {
+        "caseId": "e56040b5-case-1",
+        "goalId": "e56040b5-1da8-5080-b358-086d04922339",
+        "title": "A: Silanol-Trimer und Dichtung",
+        "dataDe": "Monomer-Modell HO–Si(CH₃)₂–OH. Drei Moleküle bilden eine lineare Kette ohne Ring. PE hat –CH₂–CH₂–; lineares PDMS ist als Öl gegeben, vernetztes PDMS stellt nach Dehnung zurück. Kein Laborversuch; einfache Kondensation ist ein Herstellungsmodell.",
+        "dataEn": "Model monomer HO–Si(CH₃)₂–OH. Three molecules form a linear chain without a ring. PE has –CH₂–CH₂–; linear PDMS is supplied as an oil, crosslinked PDMS recovers after extension. No laboratory experiment; simple condensation is a production model.",
+        "taskDe": "Formuliere vollständiges Trimer samt Wasser und prüfe Si/O-Valenzen. Vergleiche Rückgrat/Verhalten mit PE; wähle eine Dichtung. Erkläre, warum Silikonöl kein Nachweis eines Nanomaterials ist.",
+        "taskEn": "Write the complete trimer with water and check Si/O valence. Compare backbone/behaviour with PE; select a seal. Explain why silicone oil does not demonstrate a nanomaterial.",
+        "modelAnswerDe": "3 HO–Si(CH₃)₂–OH→HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH+2 H₂O. Jedes Si vier Einfachbindungen, Brücken-O zwei. PDMS Si–O-Rückgrat mit Methylgruppen, PE C–C-Rückgrat. Vernetztes PDMS für Rückstellung; lineares Öl kein formstabiler Dichtungswerkstoff. Eigenschaften nicht allein aus „Silikon“ ableiten; nanoskalige Abmessung/Struktur muss separat gezeigt sein.",
+        "modelAnswerEn": "3 HO–Si(CH₃)₂–OH→HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH+2 H₂O. Each Si has four single bonds; bridge O two. PDMS has a Si–O backbone and methyl groups, PE a C–C backbone. Crosslinked PDMS is preferable for recovery; linear oil is not a shape-stable seal. Properties cannot follow from “silicone” alone; nanoscale dimension/structure needs separate evidence.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Zeichnet ein valenzrichtiges PDMS-Kettenfragment und unterscheidet es von PE.",
+            "criterionEn": "Draws a valence-correct PDMS fragment and distinguishes it from PE."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Bilanziert eine endliche Kondensation und erklärt Öl/Elastomer anhand der Vernetzung.",
+            "criterionEn": "Balances finite condensation and explains oil/elastomer behaviour through crosslinking."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Vergleicht mit einem organischen Kunststoff und beurteilt eine neue Beschichtung anhand von Chemie und Struktur.",
+            "criterionEn": "Compares with an organic plastic and evaluates a new coating using chemistry and structure."
+          }
+        ]
+      },
+      {
+        "caseId": "e56040b5-case-2",
+        "goalId": "e56040b5-1da8-5080-b358-086d04922339",
+        "title": "B: Beschichtung und falscher Nanobegriff",
+        "dataDe": "Methylhaltige Siloxanbeschichtung 40 nm dick. Glatt: Wasserwinkel 105°, Abrollwinkel 35°. Nanostrukturiert bei gleicher Chemie: 155°, 5°. Hydrophile 40 nm-Kontrolle: 25°. Zwei gleiche Polymere unterhalb/oberhalb Vernetzung: fließend/rückstellend.",
+        "dataEn": "Methyl-bearing siloxane coating 40 nm thick. Smooth: water angle 105°, roll-off 35°. Nanostructured with the same chemistry: 155°, 5°. Hydrophilic 40 nm control: 25°. Same polymer before/after crosslinking: flowing/recovering.",
+        "taskDe": "Erkläre Herkunft der Si–O-Verknüpfung und beide Polymerzustände. Bewerte Benetzungsdaten für eine selbstreinigende Oberfläche. Prüfe „40 nm dick heißt 40 nm-Silikonpartikel“ und vergleiche die Chemie mit einer PE-Oberfläche.",
+        "taskEn": "Explain the origin of Si–O links and both polymer states. Assess wetting data for self-cleaning. Evaluate “40 nm thickness means 40 nm silicone particles” and compare chemistry with a PE surface.",
+        "modelAnswerDe": "Silanolkondensation kann Si–O–Si+Wasser bilden; zusätzliche Netzpunkte begrenzen Gleiten und ermöglichen Rückstellung. Gleiche Chemie kontrolliert Strukturwirkung; niedriger Abrollwinkel unterstützt mobile Tropfen, tatsächlicher Schmutzabtrag/Abrieb fehlt.40 nm ist Schichtdicke, kein Partikeldurchmesser. Methylgruppen können Wasserabweisung tragen; PE ebenfalls unpolar, aber C–C statt Si–O-Rückgrat. Hydrophile Kontrolle zeigt Dicke allein nicht hinreichend.",
+        "modelAnswerEn": "Silanol condensation can form Si–O–Si plus water; added network points limit sliding and allow recovery. Constant chemistry controls the structural effect; low roll-off angle supports mobile droplets, while dirt-removal/abrasion evidence is missing.40 nm is thickness, not particle diameter. Methyl groups can support water repellency; PE is also nonpolar but has a C–C rather than Si–O backbone. The hydrophilic control shows thickness alone is insufficient.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Zeichnet ein valenzrichtiges PDMS-Kettenfragment und unterscheidet es von PE.",
+            "criterionEn": "Draws a valence-correct PDMS fragment and distinguishes it from PE."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Bilanziert eine endliche Kondensation und erklärt Öl/Elastomer anhand der Vernetzung.",
+            "criterionEn": "Balances finite condensation and explains oil/elastomer behaviour through crosslinking."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Vergleicht mit einem organischen Kunststoff und beurteilt eine neue Beschichtung anhand von Chemie und Struktur.",
+            "criterionEn": "Compares with an organic plastic and evaluates a new coating using chemistry and structure."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "goal": {
+      "id": "73cbd4d8-5da1-5e54-85ce-c88e7b1613fe",
+      "title": "Leitfähige Kunststoffe über konjugierte Systeme erklären",
+      "description": "Die lernende Person kann die elektrische Leitfähigkeit ausgewählter Kunststoffe über ausgedehnte konjugierte Elektronensysteme in Polymermolekülen begründen.",
+      "titleEn": "Explain conductive plastics using conjugated systems",
+      "descriptionEn": "The learner can justify electrical conductivity in selected plastics using extended conjugated electron systems in polymer molecules.",
+      "requires": [
+        "2652caef-b557-58b9-9b28-70db62625ce5",
+        "4bdbdf32-3021-5a0a-b412-b611166b2d21"
+      ]
+    },
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Ausgedehnte Konjugation ermöglicht delokalisierte π-Systeme; ein isoliertes Doppelbindungsmotiv genügt nicht.",
+          "essentialUnderstandingEn": "Extended conjugation permits delocalised π systems; an isolated double bond is insufficient.",
+          "observablePerformanceDe": "Unterscheidet gesättigte, isoliert ungesättigte und konjugierte Ketten.",
+          "observablePerformanceEn": "Distinguishes saturated, isolated-unsaturated and conjugated chains."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Hohe Leitfähigkeit erfordert geeignete Ladungsträger und Transportwege; Dotierung kann Ladungsträger erzeugen.",
+          "essentialUnderstandingEn": "High conductivity requires suitable charge carriers and transport paths; doping can generate carriers.",
+          "observablePerformanceDe": "Erklärt gegebene Dotierungsdaten ohne allein aus Konjugation Metallleitfähigkeit abzuleiten.",
+          "observablePerformanceEn": "Explains supplied doping data without inferring metallic conductivity from conjugation alone."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Kettenordnung, Defekte und Kontakte beeinflussen makroskopischen Transport.",
+          "essentialUnderstandingEn": "Chain order, defects and contacts affect macroscopic transport.",
+          "observablePerformanceDe": "Überträgt das Modell auf einen veränderten Kettenabschnitt und nennt eine Messgrenze.",
+          "observablePerformanceEn": "Transfers the model to a modified chain segment and identifies a measurement limit."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Konjugationslänge",
+          "textEn": "Conjugation length"
+        },
+        {
+          "id": "v2",
+          "textDe": "Dotierungszustand",
+          "textEn": "Doping state"
+        },
+        {
+          "id": "v3",
+          "textDe": "Kettenordnung und Defekte",
+          "textEn": "Chain order and defects"
+        }
+      ]
+    },
+    "cases": [
+      {
+        "caseId": "73cbd4d8-case-1",
+        "goalId": "73cbd4d8-5da1-5e54-85ce-c88e7b1613fe",
+        "title": "A: Polyethen und Polyacetylen",
+        "dataDe": "PE –CH₂–CH₂–: σ=10⁻¹⁴S/m. Neutrales Polyacetylen –CH=CH–:σ=10⁻³S/m. Oxidativ dotiertes Polyacetylen:σ=10⁴S/m. Geometrie, Temperatur und Messkontakt identisch; Zahlen idealisiert.",
+        "dataEn": "PE –CH₂–CH₂–:σ=10⁻¹⁴S/m. Neutral polyacetylene –CH=CH–:σ=10⁻³S/m. Oxidatively doped polyacetylene:σ=10⁴S/m. Matched geometry, temperature and contacts; idealised values.",
+        "taskDe": "Zeige Konjugation und erkläre Unterschiede. Berechne Dotierungsfaktor und beschreibe Ladungsausgleich durch Gegenionen. Prüfe „jede Doppelbindung macht Kunststoff zum Metall“.",
+        "taskEn": "Identify conjugation and explain differences. Calculate the doping factor and describe charge compensation by counterions. Assess “any double bond makes a plastic metallic”.",
+        "modelAnswerDe": "Polyacetylen besitzt alternierende Doppel-/Einfachbindungen und gekoppeltes π-System; PE nicht. Oxidation entzieht Elektronen, erzeugt positive elektronische Ladungsträger mit Gegenionenausgleich. Faktor 10⁷ relativ zur neutralen Probe. Konjugation allein reicht nicht für hohe Leitfähigkeit; Trägerdichte, Beweglichkeit und Transport zwischen Ketten zählen. Einzelne Doppelbindungen sind kein ausgedehntes Transportnetz.",
+        "modelAnswerEn": "Polyacetylene has alternating double/single bonds and a coupled π system; PE does not. Oxidation removes electrons, producing positive electronic carriers with counterion compensation. Factor 10⁷ over the neutral sample. Conjugation alone does not yield high conductivity; carrier density, mobility and interchain transport matter. Isolated double bonds do not form an extended transport network.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Unterscheidet gesättigte, isoliert ungesättigte und konjugierte Ketten.",
+            "criterionEn": "Distinguishes saturated, isolated-unsaturated and conjugated chains."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Erklärt gegebene Dotierungsdaten ohne allein aus Konjugation Metallleitfähigkeit abzuleiten.",
+            "criterionEn": "Explains supplied doping data without inferring metallic conductivity from conjugation alone."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Überträgt das Modell auf einen veränderten Kettenabschnitt und nennt eine Messgrenze.",
+            "criterionEn": "Transfers the model to a modified chain segment and identifies a measurement limit."
+          }
+        ]
+      },
+      {
+        "caseId": "73cbd4d8-case-2",
+        "goalId": "73cbd4d8-5da1-5e54-85ce-c88e7b1613fe",
+        "title": "B: Kettenunterbrechung",
+        "dataDe": "A: durchgehend –CH=CH–, dotiert,σ=800 S/m. B: jedes zehnte Ketten-C sp³-Unterbrechung, gleiche Dotierungsmenge,σ=8 S/m. C: Struktur wie A, schlechte Kontakte, gemesseneσ=80 S/m. Alle Materialwerte nur für das definierte Setup.",
+        "dataEn": "A: continuous –CH=CH–, doped,σ=800 S/m. B: every tenth backbone carbon is an sp³ interruption, equal dopant loading,σ=8 S/m. C: same structure as A, poor contacts, measuredσ=80 S/m. Values apply only to the stated setup.",
+        "taskDe": "Erkläre B und C getrennt. Entwirf eine Messkontrolle, die intrinsische Kettenwirkung von Kontaktwirkung trennt. Warum garantiert gleiche Dotierungsmenge nicht dieselbe Leitfähigkeit?",
+        "taskEn": "Explain B and C separately. Propose a control separating intrinsic chain effects from contact effects. Why does equal dopant loading not guarantee equal conductivity?",
+        "modelAnswerDe": "sp³-Zentren unterbrechen die π-Kopplung, kürzere Delokalisationsbereiche erschweren Transport; Faktor 100 Unterschied passt dazu, beweist ihn nicht allein. C zeigt Kontaktbeitrag zur Messung. Gleiche Geometrie und Vierpunktmessung mit kontrollierter Morphologie/Temperatur helfen Kontaktartefakte zu trennen. Dotiermenge ist nicht automatisch mobile Trägerdichte; Defekte, Ordnung und Aktivierung unterscheiden sich.",
+        "modelAnswerEn": "sp³ centres interrupt π coupling; shorter delocalisation regions impede transport. A factor 100 difference is consistent with this but not conclusive alone. C demonstrates contact contributions. Matched geometry and four-point measurements with controlled morphology/temperature help separate contact artefacts. Dopant amount is not automatically mobile-carrier density; defects, order and activation differ.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "criterionDe": "Unterscheidet gesättigte, isoliert ungesättigte und konjugierte Ketten.",
+            "criterionEn": "Distinguishes saturated, isolated-unsaturated and conjugated chains."
+          },
+          {
+            "expectationId": "e2",
+            "criterionDe": "Erklärt gegebene Dotierungsdaten ohne allein aus Konjugation Metallleitfähigkeit abzuleiten.",
+            "criterionEn": "Explains supplied doping data without inferring metallic conductivity from conjugation alone."
+          },
+          {
+            "expectationId": "e3",
+            "criterionDe": "Überträgt das Modell auf einen veränderten Kettenabschnitt und nennt eine Messgrenze.",
+            "criterionEn": "Transfers the model to a modified chain segment and identifies a measurement limit."
+          }
+        ]
+      }
+    ]
+  }
+]

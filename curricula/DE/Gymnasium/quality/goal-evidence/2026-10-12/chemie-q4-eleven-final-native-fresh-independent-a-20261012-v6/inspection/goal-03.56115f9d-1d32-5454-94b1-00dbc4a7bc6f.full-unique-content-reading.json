@@ -1,0 +1,266 @@
+{
+  "wholeGoal": {
+    "id": "56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+    "title": "RGT-Regel anwenden",
+    "titleEn": "Apply the RGT rule",
+    "description": "Die lernende Person kann den Einfluss der Temperatur auf Reaktionsgeschwindigkeiten mithilfe der Stoßtheorie begründen.",
+    "descriptionEn": "The learner can justify the influence of temperature on reaction rates using collision theory.",
+    "weight": 1.15,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "3ce81f96-4fbb-5022-88b7-337a000315ed",
+      "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_ENERGIE"
+      ],
+      "phase": "Q4"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "956e9346-9119-44c5-aab1-12fee2831f43"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+        "title": "Visualisierung: RGT-Regel anwenden",
+        "url": "/assets/goal-visualizations/chemie/56115f9d-1d32-5454-94b1-00dbc4a7bc6f/56115f9d-1d32-5454-94b1-00dbc4a7bc6f.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation",
+        "description": "Visualisierung zum Lernziel: RGT-Regel anwenden.",
+        "altText": "Bei gleicher Anzahl von jeweils fünf A- und fünf B-Teilchen veranschaulichen 20 °C und 30 °C mehr wirksame Zusammenstöße bei höherer Temperatur; die Aktivierungsenergie bleibt gleich und die RGT-Regel ist eine begrenzte Faustregel.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "wholeProfile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "expectation-empirical-ten-kelvin-rate",
+        "essentialUnderstandingDe": "Empirische RGT-Anwendung mit Stoßtheorie und Unsicherheit verbinden.",
+        "essentialUnderstandingEn": "Connect empirical RGT application, collision theory and uncertainty.",
+        "observablePerformanceExactWholeCaseRef": "empirical-ten-kelvin-rate"
+      },
+      {
+        "id": "expectation-changed-mechanism-rate-limit",
+        "essentialUnderstandingDe": "Beim geänderten Mechanismus die Grenze der RGT-Näherung selbstständig prüfen.",
+        "essentialUnderstandingEn": "Independently assess RGT limits when the mechanism changes.",
+        "observablePerformanceExactWholeCaseRef": "changed-mechanism-rate-limit"
+      },
+      {
+        "id": "expectation-temperature-rate-execution",
+        "essentialUnderstandingDe": "Temperaturabhängige Reaktionsrate tatsächlich kontrolliert messen und begrenzt mit RGT erklären.",
+        "essentialUnderstandingEn": "Actually measure controlled temperature-dependent rates and explain them through bounded RGT.",
+        "observablePerformanceExactWholeCaseRef": "temperature-rate-execution"
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "expectation-empirical-ten-kelvin-rate",
+        "expectation-changed-mechanism-rate-limit",
+        "expectation-temperature-rate-execution"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "chemically-relevant-conditions",
+        "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+        "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+      }
+    ]
+  },
+  "completeCaseUniqueContent": [
+    {
+      "goalId": "56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+      "case": {
+        "id": "empirical-ten-kelvin-rate",
+        "taskDemandDe": "Synthetische Anfangsraten bei identischen Konzentrationen, Oberfläche und gleichem Verfahren: 293 K: 0,0100 mol/(L min); 303 K: 0,0250; 313 K: 0,0625. Unsicherheit ±5% je Rate. Temperaturänderung 10 K entspricht 10 °C Differenz, nicht 10 °C absolut. Berechne die Faktoren pro 10 K und über 20 K, wende die empirische RGT-Regel im Datenbereich an und erkläre mit Stoßtheorie/energetisch wirksamen Stößen, warum die Geschwindigkeit zunimmt. Prüfe die Aussage jede Reaktion verdoppelt sich exakt pro 10 K.",
+        "taskDemandEn": "Synthetic initial rates with identical concentrations/surface/method: 293 K: 0.0100 mol/(L min); 303 K: 0.0250; 313 K: 0.0625. Uncertainty ±5% per rate. A 10 K increase equals a 10 °C difference, not an absolute 10 °C temperature. Calculate factors per 10 K and across 20 K, apply the empirical RGT rule within the data range and explain the increase through collision theory/energetically effective collisions. Assess the claim that every reaction exactly doubles per 10 K.",
+        "expectedPerformanceDe": "Je 10 K Faktor 2,50; über 20 K Faktor 6,25. Im Bereich ist eine 2- bis 4-fache Erhöhung pro 10 K als häufige Faustregel plausibel. Höhere T verändert die Energieverteilung; mehr geeignet orientierte Stöße können die Aktivierungsbarriere überwinden, nicht jede Kollision ist wirksam. Eine exakte universelle Verdopplung folgt weder aus Stoßtheorie noch aus diesen Messunsicherheiten. Konzentration/Oberfläche/Reaktionsmechanismus und begrenzter Temperaturbereich müssen kontrolliert werden.",
+        "expectedPerformanceEn": "Each 10 K gives factor 2.50; 20 K gives 6.25. A commonly observed 2–4-fold rise per 10 K is a plausible rule of thumb here. Higher T changes energy distribution; more suitably oriented collisions can overcome the activation barrier, but not every collision is effective. Neither collision theory nor uncertain data gives a universal exact doubling. Control concentration/surface/mechanism and restrict temperature range.",
+        "understandingFocusDe": "Empirische RGT-Anwendung mit Stoßtheorie und Unsicherheit verbinden.",
+        "understandingFocusEn": "Connect empirical RGT application, collision theory and uncertainty."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Faktoren 2,50/6,25 korrekt berechnen.",
+            "aspectEn": "Correctly calculate factors 2.50/6.25."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Wirksame Stöße/Barriere statt alle Teilchen gleich schnell erklären.",
+            "aspectEn": "Explain effective collisions/barrier rather than equal particle speeds."
+          },
+          {
+            "points": 1,
+            "aspectDe": "RGT als begrenzte Faustregel formulieren.",
+            "aspectEn": "State RGT as a bounded rule of thumb."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Kontrollbedingungen und Unsicherheit berücksichtigen.",
+            "aspectEn": "Account for controls and uncertainty."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    },
+    {
+      "goalId": "56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+      "case": {
+        "id": "changed-mechanism-rate-limit",
+        "taskDemandDe": "Neuer synthetischer temperaturabhängiger Prozess: 303 K Rate 0,020; 313 K 0,052; 323 K 0,012 mol/(L min). Konzentrationen und Messmethode gleich; unabhängiger Zusatzbefund: oberhalb 318 K fällt ein Katalysator teilweise aus. Für einen rein hypothetischen unveränderten Prozess wäre der erste Faktor 2,60 fortzusetzen. Berechne die hypothetische Vorhersage und vergleiche den konkreten neuen Befund. Erkläre den Gegensatz zur RGT-Näherung ohne Energieerhaltung oder Stoßtheorie zu verwerfen; schlage einen kontrollierten Test der Ausfallursache vor.",
+        "taskDemandEn": "New synthetic temperature-dependent process: 303 K rate 0.020; 313 K 0.052; 323 K 0.012 mol/(L min). Equal concentrations/method; an independent observation shows partial catalyst precipitation above 318 K. Hypothetically, with an unchanged process, the first factor 2.60 would continue. Calculate the hypothetical prediction and compare the new observation. Explain disagreement with RGT without rejecting energy conservation/collision theory and propose a controlled test of the precipitation explanation.",
+        "expectedPerformanceDe": "Hypothetisch: 0,052×2,60=0,1352 mol/(L min), gemessenes Aufgabenmodell 0,012. Der Rückgang ist mit veränderter wirksamer Katalysatormenge/Reaktionsroute vereinbar; ein konstanter Faktor ist dafür nicht gültig. Gleiche Konzentrationen allein sichern keinen unveränderten Mechanismus. Test: Temperaturreihe unterhalb/oberhalb 318 K, Ausfall quantitativ dokumentieren und Referenz ohne ausfallenden Katalysator bzw. konstante aktive Menge kontrollieren. Die Beobachtung stützt eine Hypothese, beweist deren alleinige Ursache nicht; RGT ist kein Naturgesetz.",
+        "expectedPerformanceEn": "Hypothetical prediction: 0.052×2.60=0.1352 mol/(L min), versus task observation 0.012. Reduced active catalyst/changed pathway can explain the decrease; a constant factor no longer applies. Equal concentrations alone do not ensure an unchanged mechanism. Test a temperature series across 318 K, quantify precipitation and compare a nonprecipitating reference or constant active catalyst amount. The observation supports a hypothesis, not a unique cause; RGT is not a universal law.",
+        "understandingFocusDe": "Beim geänderten Mechanismus die Grenze der RGT-Näherung selbstständig prüfen.",
+        "understandingFocusEn": "Independently assess RGT limits when the mechanism changes."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "0,1352 mit 0,012 quantitativ vergleichen.",
+            "aspectEn": "Quantitatively compare 0.1352 with 0.012."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Aktive Menge/Mechanismusänderung erklären.",
+            "aspectEn": "Explain active amount/mechanism change."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Konkreten kontrollierten Test vorschlagen.",
+            "aspectEn": "Propose a specific controlled test."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Hypothese und bewiesene Ursache auseinanderhalten.",
+            "aspectEn": "Distinguish hypothesis from proven cause."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    },
+    {
+      "goalId": "56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+      "case": {
+        "id": "temperature-rate-execution",
+        "taskDemandDe": "Lehrkraftfreigegebene Autorenanpassung des RSC/Nuffield-Verfahrens Magnesium mit Salzsäure: identische gereinigte Mg-Bandstücke von etwa 0,0200 g, je 50,0 mL HCl 0,20 mol/L, Wasserbäder 293/303/313 K. Gasvolumen über Wasser oder freigängiger Gasspritze, Zeitmessung, Temperatursonde. Schutzbrille, keine Zündquelle (H2), keine abgeschlossene starre Druckapparatur. Säureüberschuss und gleiche Oberfläche gewährleisten; tatsächliche T laufend erfassen. Synthetische Vergleichsdaten bei gleichem Gas-Messzustand: t=[0,5,10,15] s; V_293=[0,1,2,3], V_303=[0,2,4,6], V_313=[0,4,8,12] mL. Formuliere eine Temperaturhypothese, plane Kontrollen/Wiederholungen und führe alle drei Messungen aus. Zeichne eigene V(t)-Kurven und bestimme vergleichbare Anfangssteigungen; rechne unterschiedliche Gas-Messzustände ggf. mit pV=nRT auf eine Basis um. Vergleiche 10-K-Faktoren mit RGT und Stoßtheorie. Prüfe separat die synthetische Tabelle; diese ersetzt keine Messung.",
+        "taskDemandEn": "Teacher-authorised author adaptation of the RSC/Nuffield magnesium/hydrochloric-acid method: identical cleaned Mg strips about 0.0200 g, 50.0 mL HCl 0.20 mol/L per run, water baths 293/303/313 K. Collect gas over water or in a freely moving syringe; stopwatch and thermometer. Goggles, no ignition source (H2), no closed rigid pressure vessel. Ensure excess acid and equal surface; continuously record actual T. Synthetic comparison at equal gas measurement conditions: t=[0,5,10,15] s; V_293=[0,1,2,3], V_303=[0,2,4,6], V_313=[0,4,8,12] mL. State a temperature hypothesis, plan controls/repeats and execute all three measurements. Plot original V(t) curves and compare initial slopes; if gas measurement states differ, use pV=nRT for a common basis. Compare 10 K factors with RGT/collision theory. Separately analyse the synthetic table; it does not replace measurements.",
+        "expectedPerformanceDe": "Vollpunkte verlangen eigene Planung/Ausführung, Temperatur- und Gasvolumenrohwerte, Kontrollen sowie begründete Anfangsraten. Synthetische Steigungen sind 0,20/0,40/0,80 mL/s, Faktoren je 10 K 2,00 und über 20 K 4,00. Bei identischem Gaszustand sind Volumenraten proportional zu Stoffmengenraten. Unterschiedliche Gas-T/p, Oxidschicht, schrumpfende Oberfläche, Leckage und exotherme Eigenerwärmung verfälschen den Vergleich. Eine wiederholte Modellverdopplung beweist keine universelle Regel; höhere T erhöht den Anteil energetisch geeigneter Stöße unter gleichen übrigen Bedingungen.",
+        "expectedPerformanceEn": "Full credit requires an original plan/execution, actual temperature and gas-volume readings, controls and justified initial rates. Synthetic slopes are 0.20/0.40/0.80 mL/s, factors 2.00 per 10 K and 4.00 over 20 K. At equal gas states, volume rates are proportional to amount rates. Unequal gas T/p, oxide layer, shrinking surface, leaks and reaction self-heating can distort comparisons. Repeated model doubling does not prove a universal rule; higher T increases the sufficiently energetic collision fraction under otherwise equal conditions.",
+        "understandingFocusDe": "Temperaturabhängige Reaktionsrate tatsächlich kontrolliert messen und begrenzt mit RGT erklären.",
+        "understandingFocusEn": "Actually measure controlled temperature-dependent rates and explain them through bounded RGT."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "learner_execution_required",
+      "syntheticFixture": false,
+      "sourceRouteRequirements": [
+        "NI kinetics: temperature component of plan-and-execute experiments; other factors/technical research remain partner obligations"
+      ],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Eigene Hypothese/Plan/Ausführung bei drei Temperaturen vorlegen.",
+            "aspectEn": "Provide an original hypothesis/plan/execution at three temperatures."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Rohwerte, Kontrollen und Anfangssteigungen dokumentieren.",
+            "aspectEn": "Document raw readings, controls and initial slopes."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Gas-Messzustand und Eigenerwärmung berücksichtigen.",
+            "aspectEn": "Account for gas state and reaction self-heating."
+          },
+          {
+            "points": 1,
+            "aspectDe": "RGT empirisch und mit Stoßtheorie begründen.",
+            "aspectEn": "Explain empirical RGT through collision theory."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    }
+  ]
+}

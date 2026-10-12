@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:42fba9796662abb0c3e13efc86940d48226a6b6a8a4a851175a8a49587e2e013",
+  "reviewInputFingerprint": "sha256:fb8ec36ac576aa447d737246b92b2e4a69a47ee4a63c362134563ad7f0d26220",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-a",
+      "roundId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-a",
+      "independenceGroupId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-independent-a",
+      "runIds": [
+        "chemie-q4-bef4-independent-a-20261012-v9-native-D1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex inherited; exact serving identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-b",
+      "roundId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-b",
+      "independenceGroupId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-independent-b",
+      "runIds": [
+        "chemie-q4-bef4-corrected-native-first-pass-b-20261012-v9"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 / Codex inherited session; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "bef4c8eb-1d80-50fb-88cd-3a9904e38b4e",
+      "firstRecordId": "chemie-q4-bef4-independent-a-20261012-v9-native-D1-01",
+      "secondRecordId": "chemie-q4-bef4-successor-b-v9-01",
+      "firstRunId": "chemie-q4-bef4-independent-a-20261012-v9-native-D1",
+      "secondRunId": "chemie-q4-bef4-corrected-native-first-pass-b-20261012-v9",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "kind": "schema-only normal API limitation and declared-list alignment receipt",
+  "checkedAtUTC": "2026-10-12T23:06:20.940682+00:00",
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-dcbad4e4-one-applicability-alignment-technical-independent-a-20261013-v1/candidate/canonical523.one-jurisdiction-list.inactive.json",
+      "sha256": "sha256:9a68501347031f266572dea551e71c3507b66fb5ed94142a1a99f6a282708960"
+    },
+    {
+      "path": "tmp/chemie-q4-current220-prep/applicability-one-warning.actual.json",
+      "sha256": "sha256:957d122c2599c864be108a41ba5a16660b123775db3484fef4aea271c85f1786"
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "sha256:50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd"
+    },
+    {
+      "path": "app/scripts/compileApplicability.ts",
+      "sha256": "sha256:6789a1c8ca3558e3f1083ea83e8528d4c54b930efe827c97d57faef2b412d114"
+    }
+  ],
+  "inputsUnchangedBeforeAfter": true,
+  "goalId": "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5",
+  "normalAPI": {
+    "signature": "buildApplicabilityCompilation(): ApplicabilityCompilationResult",
+    "modulePath": "app/scripts/applicabilityCompiler.ts",
+    "repoRootResolution": "module physical path: resolve(scriptDir, ../..)",
+    "candidatePathOverrideParameter": false,
+    "landscapeFilterParameter": false,
+    "exportedCurrentVsCompiledComparisonFunction": false,
+    "exports": [
+      "hasOnlyPartialMappingSourceEvidence(",
+      "getAllJsonFiles(dir: string, files: string[] = []): string[] {",
+      "intersectApplicabilityJurisdictions(",
+      "buildApplicabilityCompilation(): ApplicabilityCompilationResult {",
+      "writeApplicabilityReports(result: ApplicabilityCompilationResult) {",
+      "getApplicabilityReportDir(): string {"
+    ],
+    "normalCLI": "app/node_modules/.bin/tsx app/scripts/compileApplicability.ts",
+    "normalCLIBehaviour": "Calls zero-argument buildApplicabilityCompilation and writes tmp/applicability reports; no candidate flag.",
+    "APV203Implementation": "Private build-function comparison: JSON.stringify(normalized current applicability) !== JSON.stringify(compiled applicability)."
+  },
+  "alignment": {
+    "existingNormalReportFinding": {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5",
+      "title": "Gibbs-Helmholtz-Gleichung quantitativ anwenden (LK)",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field."
+    },
+    "existingNormalReportSummary": {
+      "goals": 523,
+      "errors": 0,
+      "warnings": 1,
+      "diagnostics": 2220
+    },
+    "currentDeclaredJurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "existingNormalCompiledJurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "candidateDeclaredJurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "currentCount": 15,
+    "compiledCount": 16,
+    "candidateCount": 16,
+    "addedJurisdiction": "DE-NW",
+    "candidateEqualsExactExistingNormalCompiledObject": true,
+    "uniqueAndSorted": true
+  },
+  "freshCandidateCompilerRunPerformed": false,
+  "candidateZeroErrorsOrWarningsClaim": false,
+  "waiver": false,
+  "remainingGate": "Root ordinary normal applicability compilation/status after the exact one-field adoption; this receipt does not pretend a fresh candidate compiler run occurred.",
+  "scope": {
+    "newCapsuleOrClone": false,
+    "sharedCapsuleWrites": false,
+    "rootWarningReportWrites": false,
+    "activeOrGitOrSharedCodeWrites": false,
+    "scienceReview": false,
+    "outputsOnly": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-dcbad4e4-one-applicability-alignment-technical-independent-a-20261013-v1/helper-applicability"
+  }
+}

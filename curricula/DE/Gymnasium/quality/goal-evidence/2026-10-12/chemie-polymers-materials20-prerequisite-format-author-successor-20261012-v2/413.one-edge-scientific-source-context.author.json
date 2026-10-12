@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "goalId": "413c5ee5-7826-549f-ad76-63743c59b188",
+  "authorScientificDecision": "replace one direct requires edge; no activation or independent vote",
+  "removedPrerequisite": {
+    "id": "0278a515-8990-5a1c-8a1b-a03382a144a3",
+    "title": "Biokunststoffe erläutern"
+  },
+  "proposedPrerequisite": {
+    "id": "9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+    "title": "Kontaktkorrosion erklären",
+    "description": "Die lernende Person kann Kontaktkorrosion als elektrochemisches Lokalelement zwischen unterschiedlichen Metallen erklären und Anode, Kathode sowie Elektronenfluss fachlich deuten.",
+    "requires": [
+      "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+      "8be14f15-2258-58e6-ae4e-38953f5d0570"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    }
+  },
+  "oldDirectRequires": [
+    "0278a515-8990-5a1c-8a1b-a03382a144a3"
+  ],
+  "proposedDirectRequires": [
+    "9f0d6d4c-f918-5a44-a9a2-7732c4e338f3"
+  ],
+  "containsAncestors": [
+    {
+      "id": "84440802-ae93-5978-b4ba-0ba3028dcc3f",
+      "title": "Q2.4 Organische Werkstoffe",
+      "requires": []
+    },
+    {
+      "id": "ae683d59-06a5-59be-87b5-b8648fd138c8",
+      "title": "Naturstoffe und Synthesechemie",
+      "requires": []
+    },
+    {
+      "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+      "title": "Chemie",
+      "requires": []
+    }
+  ],
+  "inheritedRequiresAtTarget": [],
+  "proposedEffectivePrerequisiteClosure": [
+    {
+      "id": "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+      "title": "Warum Chemie? - Relevanz und Orientierung",
+      "directRequires": [],
+      "inheritedRequires": []
+    },
+    {
+      "id": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+      "title": "Redoxbegriffe sicher anwenden",
+      "directRequires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "inheritedRequires": []
+    },
+    {
+      "id": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+      "title": "Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+      "directRequires": [
+        "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "inheritedRequires": []
+    },
+    {
+      "id": "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+      "title": "Einfache Redoxreihen aufstellen",
+      "directRequires": [
+        "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162"
+      ],
+      "inheritedRequires": []
+    },
+    {
+      "id": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "title": "Spannungsreihen nutzen",
+      "directRequires": [
+        "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "inheritedRequires": []
+    },
+    {
+      "id": "9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+      "title": "Kontaktkorrosion erklären",
+      "directRequires": [
+        "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+        "8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "inheritedRequires": []
+    }
+  ],
+  "sourceEvidence": "The literal current413 source receipt has only two broadNI Naturstoffe clauses: identifying functional groups and judging everyday significance. Neither states PLA is a corrosion prerequisite. The current goal asks metal/alloy protection, and both full cases concern electrochemical cells/barriers/passivation, not PLA synthesis, properties or degradation.",
+  "scienceReasonDe": "PLA-Synthese und PLA-Eigenschaften sind keine notwendige Grundlage für Korrosionsschutz an Metallen/Legierungen. Kontaktkorrosion liefert das benötigte Lokalelement-,Anoden-/Kathoden- und Elektronenflussmodell; seine bestehenden Voraussetzungen liefern Sauerstoff-/Säurekorrosion und Spannungsreihen. Dies ersetzt die fachfremde PLA-Sperre durch eine vorhandene fachliche Grundlage, ohne Schutzbewertung selbst als Voraussetzung zu verlangen.",
+  "alternativesConsidered": [
+    {
+      "id": "642d5ea5-b62f-50c8-b0bd-cf132619725f",
+      "reason": "Overlaps protection/sacrificial-anode competence and has no currentNI atlas scope; less suitable as the sole common foundation."
+    },
+    {
+      "id": "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+      "reason": "Simple metal ordering alone does not cover paired local-cell electron flow and lacks currentNI atlas scope."
+    },
+    {
+      "id": "94a62b39-d4a2-5882-99d1-6886ead07726",
+      "reason": "Already evaluates active/passive protection; avoid requiring nearly the same assessment competence."
+    }
+  ],
+  "foundationActualNIScopes": [
+    {
+      "jurisdiction": "DE-NI",
+      "stage": "SekII",
+      "durationModel": null,
+      "courseProfile": "GK",
+      "evidenceIds": [
+        "e8745"
+      ]
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "stage": "SekII",
+      "durationModel": null,
+      "courseProfile": "LK",
+      "evidenceIds": [
+        "e8745"
+      ]
+    }
+  ],
+  "phaseDecision": "TargetQ2 and foundationQ3 phase labels are source/view compatibility metadata; semantic dependency follows chemical foundation. No phase or composition change proposed.",
+  "changedFields": [
+    "requires"
+  ],
+  "allOther19SelectedGoalsUnchanged": true,
+  "containsChanges": 0,
+  "cycleFound": false
+}

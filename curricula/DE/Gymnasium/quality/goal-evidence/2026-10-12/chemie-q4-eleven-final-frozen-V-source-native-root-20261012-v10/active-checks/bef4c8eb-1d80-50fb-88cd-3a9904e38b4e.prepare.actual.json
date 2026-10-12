@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "bef4c8eb-1d80-50fb-88cd-3a9904e38b4e",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex image generation",
+    "--review-status",
+    "pilot"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Energetische Kopplung endergoner und exergoner Reaktionen erklären\nSkillPilot ID: bef4c8eb-1d80-50fb-88cd-3a9904e38b4e\nPrompt: tmp/goal-visualizations/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- bef4c8eb-1d80-50fb-88cd-3a9904e38b4e \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "normalProductionCodeUnmodified": true
+}

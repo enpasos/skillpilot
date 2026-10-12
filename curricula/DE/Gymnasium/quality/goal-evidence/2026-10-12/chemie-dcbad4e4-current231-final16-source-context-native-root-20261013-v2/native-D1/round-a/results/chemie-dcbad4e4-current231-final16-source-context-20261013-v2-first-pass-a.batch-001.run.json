@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-dcbad4e4-final16-context-independent-a-20261013-v3-actual-firstpass",
+  "campaignId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-a",
+  "roundId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-first-pass-a",
+  "batchId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:e98068cca3073a35a7d4bc64ed633c6e14317b2823683d4b554f54ec15a27e46",
+  "bundleFingerprint": "sha256:dfb2f285cbc6acc9ecda4703664f42236bcdad0b63c9231a1fd18803a603420f",
+  "bookDigest": "sha256:8a08774a994648bd82a95e8f5f77d991210f1a0406749b5f8b2e11bc98c5d9f6",
+  "provider": "OpenAI",
+  "model": "GPT-6-based Codex inherited agent; exact runtime model identifier and revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:e4116aac7040de474c96f52d3b710c13492e7df3dd05b68b8648346bd3a0a10b",
+  "independenceGroupId": "chemie-dcbad4e4-current231-final16-source-context-20261013-v2-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:66ac51c219b353e9ff09a5281bb7cb94de3043464755ac6b037b2cfce1b4b004"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:557cfd298c0b5516aa95d459fa4c6cb6ee24a089273080e6799a26179805d4fb"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:1813dac2773abe056ef230ac251ee97d1d67ca3e8d8fd819e4a2e80bbc8e30ff"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e98068cca3073a35a7d4bc64ed633c6e14317b2823683d4b554f54ec15a27e46"
+    }
+  ],
+  "startedAt": "2026-10-12T23:13:47.908638+00:00",
+  "completedAt": "2026-10-12T23:20:57.435639+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:4f4712fa54889f61388c83809cea57ebd53f0617ce666254bae8006aea50bfeb",
+  "toolchainVersion": "codex-manual-firstpass-normal-cli-v1"
+}

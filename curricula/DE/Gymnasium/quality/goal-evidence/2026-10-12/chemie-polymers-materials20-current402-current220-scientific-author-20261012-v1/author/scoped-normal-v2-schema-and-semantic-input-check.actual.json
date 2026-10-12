@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-12T21:44:45.347Z",
+  "completedAt": "2026-10-12T21:44:45.644Z",
+  "checks": [
+    "normal v2 Ajv schema",
+    "normal exported goal/profile/input fingerprint functions",
+    "normal exported positive record semantic validator with actual candidate resource bytes",
+    "exact ordered registered20 claim",
+    "current20 base tuple parity",
+    "40 brief/full-case joins",
+    "20 raw exact current M rows with normal fingerprint construction"
+  ],
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:0b0aac89c0fa35121fa163d1a02fc402af4e489ca43176e6942bae3f835b7bcc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-current402-all182-open-claims-root-20261012-v2/claims/polymers-materials-20.current402.claim.config.json",
+      "sha256": "sha256:6ec973dfd31c8b9f106f0466100f2dbaf8843ef9e430d8788a69b36f22aa9ef5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md",
+      "sha256": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    },
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "sha256:5363548496e74c1839e94b47f8fdd8ea79d5e62512a4592b963f44952162cd09"
+    }
+  ],
+  "counts": {
+    "profiles": 20,
+    "cases": 40,
+    "expectations": 60,
+    "retainedCurrentM": 20,
+    "independentScientificReviews": 0,
+    "nativeDVotes": 0,
+    "humanApprovals": 0
+  },
+  "canonicalBefore": "sha256:0b0aac89c0fa35121fa163d1a02fc402af4e489ca43176e6942bae3f835b7bcc",
+  "canonicalAfter": "sha256:0b0aac89c0fa35121fa163d1a02fc402af4e489ca43176e6942bae3f835b7bcc",
+  "errors": [],
+  "passed": true,
+  "limitations": [
+    "No normal full native book build, no campaign run, no independent science/V review or active adoption.",
+    "Future e560 resource is checked using owned actual byte path; ordinary live P CLI would correctly fail until root prepares a private native candidate with this asset.",
+    "A/M author rationale is not an independent native vote."
+  ]
+}

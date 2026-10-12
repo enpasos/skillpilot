@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual author generation; independent scientific and native approval pending",
+  "goalId": "bef4c8eb-1d80-50fb-88cd-3a9904e38b4e",
+  "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+  "model": "Not exposed by built-in tool",
+  "toolOutputFile": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-82a612b4-f44b-454b-a5ea-c263e34bb45c.png",
+  "actualReferenceImages": [
+    {
+      "role": "legacy flawed layout and style reference",
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e.jpg",
+      "sha256": "sha256:a24aea5de523b82e6e3eefcca5c88d4b7d8ec1302506715fa69edc407a043839"
+    }
+  ],
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-coupling-image-author-root-20261012-v6/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e.png",
+  "assetSha256": "sha256:582ff8f78cba612f42b342b961824b5ec95b375960b41d2d8ffc4cb0d0be6cfe",
+  "pixelDimensions": [
+    1672,
+    941
+  ],
+  "bytes": 1507858,
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-bef4-coupling-image-author-root-20261012-v6/actual-imagegen-tool-prompt.txt",
+  "promptSha256": "sha256:3f52bdebe84eee44683d0a2eb2248ed29207e21d18e662d11655571f936d2c58",
+  "actualAuthorInspection": {
+    "fullGeneratedImageViewed": true,
+    "360DerivativeViewed": true,
+    "decision": "HOLD essential condition labels too small at360",
+    "formulaSignsAndTFactorCorrect": true,
+    "conditions": "closed coupled process, T and p constant, one thermal reservoir, no further useful work",
+    "legacyDefect": "Old caption adds energy and entropy without temperature factor; entropy is also conflated with heat/disorder. Original retained unchanged."
+  },
+  "primaryReferences": [
+    {
+      "url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+      "support": "Gibbs additivity, coupled reactions, and DeltaG=-TDeltaS_univ under bounded assumptions",
+      "actuallyOpened": true
+    },
+    {
+      "url": "https://goldbook.iupac.org/terms/view/G02629",
+      "support": "Gibbs energy quantity definition"
+    }
+  ],
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false,
+  "formatDecision": "Friendly simplified abstract interlocking comic pieces, near-native16:9PNG, large labeled Gibbs/entropy balance; no invented molecular conservation claims"
+}

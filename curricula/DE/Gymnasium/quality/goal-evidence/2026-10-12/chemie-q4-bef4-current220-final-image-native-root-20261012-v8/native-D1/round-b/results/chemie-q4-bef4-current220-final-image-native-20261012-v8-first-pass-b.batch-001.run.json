@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q4-bef4-corrected-native-first-pass-b-20261012-v9",
+  "bundleFingerprint": "sha256:42fba9796662abb0c3e13efc86940d48226a6b6a8a4a851175a8a49587e2e013",
+  "bookDigest": "sha256:af263da80f9b22969b9215bab692c9d18594ba5d49fda57e55310b8fae825c43",
+  "provider": "OpenAI",
+  "model": "GPT-6 / Codex inherited session; exact serving revision not exposed",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-review-v3",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:d3911096d67b0620f22fd55f05f8aa2e47f9e853846188dcb639dd49cff1b83d",
+  "independenceGroupId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "bef4c8eb-1d80-50fb-88cd-3a9904e38b4e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:d782564879a5c8a0134c585da724c4064c94d7fee843cf640e0edfdaff7e8101"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:7c3de79cdd5aea903de33da8631ef62153f804be53d89f286647efac358aa11d"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:695097171b0348b03f091266469f0512b48411e000384081647677570db9aa26"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:58ef7d38b5b1058d6ca62567313ea202a38557b2a9c949bcb09e524535a41a0c"
+    }
+  ],
+  "startedAt": "2026-10-12T21:45:57.717937+00:00",
+  "completedAt": "2026-10-12T21:49:27.508571+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:ad2f01352d0317b1c68899fa3b87bb565ca8d2a26033757e2d59a7f055ccf1e4",
+  "toolchainVersion": "skillpilot-normal-contracts-main-5cd49400726af19d1be72c3add687ea53293934c",
+  "campaignId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-b",
+  "roundId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-b",
+  "batchId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:58ef7d38b5b1058d6ca62567313ea202a38557b2a9c949bcb09e524535a41a0c"
+}

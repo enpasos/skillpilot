@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "startedAtUTC": "2026-10-12T22:56:51.749Z",
+  "completedAtUTC": "2026-10-12T22:56:52.123Z",
+  "currentCanonicalBefore": "sha256:a6943a47c3cfe9b024730b2d072fc61250e03d404597ad56706d27cb5c12842c",
+  "currentCanonicalAfter": "sha256:a6943a47c3cfe9b024730b2d072fc61250e03d404597ad56706d27cb5c12842c",
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:a6943a47c3cfe9b024730b2d072fc61250e03d404597ad56706d27cb5c12842c"
+    },
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md",
+      "sha256": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "sha256:1d9efb3bcddbe97c9f39e44856e65a9c943ca17aa121a0a747509b6e9436de3e"
+    }
+  ],
+  "counts": {
+    "profiles": 20,
+    "reviewable": 18,
+    "held": 2,
+    "cases": 40,
+    "rubricCriteria": 120,
+    "actualCandidatePNGs": 6,
+    "rawCurrentMRetained": 20,
+    "nativeReviews": 0,
+    "humanApprovals": 0
+  },
+  "checks": [
+    "Normal v2 Ajv schema",
+    "Normal exported goal/profile/input fingerprint and positive-record semantic validation",
+    "Exact current selected20 body/requires tuples",
+    "Actual PNG bytes and unchanged existing image bytes",
+    "40 full-case/task/model-answer to P-brief joins",
+    "120 rubric expectation links and concrete six-point sums",
+    "20 byte-exact current M raw lines"
+  ],
+  "passed": true,
+  "errors": [],
+  "limitations": [
+    "No native book/model build or campaign/peer scientific review.",
+    "Corrected six PNGs are inactive draft assets; no V approval.",
+    "Current graph retained;413 and9d explicitly held.",
+    "Author case-specific partial expectation aspects do not imply automatic full-expectation/mastery acceptance."
+  ]
+}

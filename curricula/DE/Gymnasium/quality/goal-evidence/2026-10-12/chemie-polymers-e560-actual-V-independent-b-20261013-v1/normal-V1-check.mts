@@ -1,0 +1,15 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { aiApprovalStatus, isAiApprovedForCurrentAsset } from '/home/enpasos/projects/skillpilot/app/src/utils/goalVisualizationQaStatus.ts';
+import { normalizeGoalVisualizationAiReview } from '/home/enpasos/projects/skillpilot/app/scripts/goalVisualizationQaModel.ts';
+const own=process.argv[2];
+const r=JSON.parse(readFileSync(`${own}/V1.e560.actual-independent-b.json`,'utf8'));
+const sha=createHash('sha256').update(readFileSync(r.assetPath)).digest('hex');
+if(sha!==r.assetSha256)throw new Error('Actual asset mismatch');
+const normalized=normalizeGoalVisualizationAiReview(r,sha);
+const status=aiApprovalStatus(r);
+const approved=isAiApprovedForCurrentAsset(r);
+if(status!=='rejected'||approved||normalized.aiApproved!=='no'||normalized.aiApprovedAssetSha256!==sha)throw new Error('Normal V state does not reflect genuine hold');
+const receipt={schemaVersion:1,command:'app/node_modules/.bin/tsx <own>/normal-V1-check.mts <own>',productionImports:['app/src/utils/goalVisualizationQaStatus.ts','app/scripts/goalVisualizationQaModel.ts'],actualAssetSha256:sha,normalAiApprovalStatus:status,normalIsAiApprovedForCurrentAsset:approved,normalizedMatchingReview:normalized,expectedResult:'hash-bound rejected machine image judgment, no approval',humanApprovalClaim:false,passed:true};
+writeFileSync(`${own}/normal-V1-check.actual.json`,JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({actualAssetSha256:sha,status,approved,passed:true}));

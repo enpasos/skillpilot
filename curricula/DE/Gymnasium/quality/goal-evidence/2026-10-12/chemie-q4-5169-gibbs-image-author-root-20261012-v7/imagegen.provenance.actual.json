@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual author image generation and visual inspection; independent scientific approval pending",
+  "goalId": "5169bb6b-f065-5798-8164-9b4521e44ae8",
+  "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+  "model": "Not exposed by the built-in tool",
+  "generationMode": "targeted edit",
+  "toolOutputFile": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-ed92dc2c-8051-442c-98f3-39eba54eb5d2.png",
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-gibbs-image-author-root-20261012-v7/5169bb6b-f065-5798-8164-9b4521e44ae8.png",
+  "assetSha256": "a6bed1a6b17b9c053a9fc27ea20520820fe6d29df8383b0cf78090701a9700b4",
+  "bytes": 1710334,
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-5169-gibbs-image-author-root-20261012-v7/actual-imagegen-tool-prompt.txt",
+  "promptSha256": "06ab8498e071b2c2d3379317e4adc8e3ed0dce0df0fb0496a2fdd3c23ad8337c",
+  "reviewedAtUtc": "2026-10-12T21:01:51.094547+00:00",
+  "originalLegacyImage": {
+    "path": "curricula/DE/Gymnasium/visualizations/chemie/5169bb6b-f065-5798-8164-9b4521e44ae8/5169bb6b-f065-5798-8164-9b4521e44ae8.jpg",
+    "sha256": "140f30b87abdd15fa5e0315bbe60505c561828bf0b7ca702bb84af67b22d16c7",
+    "defects": [
+      "Unqualified energy-release caption conflates spontaneity with exothermicity",
+      "Four blue particles become six blue particles and two red species without a stated reaction",
+      "Activation/rate-looking cartoon does not distinguish thermodynamic favorability from kinetics"
+    ]
+  },
+  "primaryReferences": [
+    "https://goldbook.iupac.org/terms/view/G02629",
+    "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy"
+  ],
+  "authorActualInspection": {
+    "decision": "candidate_corrected_pending_independent_review",
+    "nativeGeneratedImageInspected": true,
+    "particleCounts": {
+      "left": 6,
+      "right": 6
+    },
+    "allIdenticalBlueParticles": true,
+    "formulaAndSignsCorrect": true,
+    "endothermicSpontaneityExplicit": true,
+    "spontaneityNotSpeedExplicit": true,
+    "finding": "Six fully separate blue spheres in each container; required vocabulary and signs exact. Own independent phone/native checks still pending."
+  },
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false,
+  "formatDecision": "Friendly hand-drawn landscape PNG at nearby native16:9; simpler large-label composition responds to evidenced conceptual errors"
+}

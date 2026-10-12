@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q4-bef4-current-positive-b-20261012-v9-run",
+  "bundleFingerprint": "sha256:42fba9796662abb0c3e13efc86940d48226a6b6a8a4a851175a8a49587e2e013",
+  "bookDigest": "sha256:af263da80f9b22969b9215bab692c9d18594ba5d49fda57e55310b8fae825c43",
+  "provider": "OpenAI",
+  "model": "GPT-6 / Codex inherited session; exact serving revision not exposed",
+  "role": "assessment_adversarial_reviewer",
+  "promptFamilyId": "chemistry-positive-understanding-evidence-v2-targeted-current-coupling-image",
+  "promptFingerprint": "sha256:aa0436a41e5723c10365e8ed70980e5016e1ce908d6e24146c9694f764a99322",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:d3911096d67b0620f22fd55f05f8aa2e47f9e853846188dcb639dd49cff1b83d",
+  "independenceGroupId": "chemie-q4-bef4-current220-final-image-native-20261012-v8-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "bef4c8eb-1d80-50fb-88cd-3a9904e38b4e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:d782564879a5c8a0134c585da724c4064c94d7fee843cf640e0edfdaff7e8101"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:9974274b4e353cbbd22c40d7f2773fb0a9646f73d5ec2aa06240dea47adac8db"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:695097171b0348b03f091266469f0512b48411e000384081647677570db9aa26"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:aa0436a41e5723c10365e8ed70980e5016e1ce908d6e24146c9694f764a99322"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-12T21:45:57.717937+00:00",
+  "completedAt": "2026-10-12T21:49:27.508571+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:f501a41bf425db91e2111d3885509ef91c626ad88a5c5c8ad5fdf2c9f18962bc",
+  "toolchainVersion": "skillpilot-normal-contracts-main-5cd49400726af19d1be72c3add687ea53293934c"
+}

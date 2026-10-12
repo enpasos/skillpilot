@@ -1,0 +1,215 @@
+{
+  "wholeGoal": {
+    "id": "d4720a9a-65e2-5661-aaaa-c393d144419a",
+    "title": "Boltzmann/Statistik",
+    "titleEn": "Boltzmann/Statistics",
+    "description": "Die lernende Person kann einfache statistische Verteilungen zur Energetik einordnen.",
+    "descriptionEn": "The learner can classify simple statistical distributions regarding energetics.",
+    "weight": 1.1,
+    "tags": [
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "56115f9d-1d32-5454-94b1-00dbc4a7bc6f"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_REAKTION",
+        "BC_ENERGIE"
+      ],
+      "phase": "Q4"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "9a6a03f9-8d08-4d0d-b86f-829832561768"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "d4720a9a-65e2-5661-aaaa-c393d144419a",
+        "title": "Visualisierung: Boltzmann/Statistik",
+        "url": "/assets/goal-visualizations/chemie/d4720a9a-65e2-5661-aaaa-c393d144419a/d4720a9a-65e2-5661-aaaa-c393d144419a.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Boltzmann/Statistik.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Boltzmann/Statistik\". Die lernende Person kann einfache statistische Verteilungen zur Energetik einordnen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "wholeProfile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "expectation-actual-boltzmann-curves",
+        "essentialUnderstandingDe": "Echte Verteilungsfigur über Fläche, Energiegrenze und konstante Teilchenzahl auswerten.",
+        "essentialUnderstandingEn": "Interpret an actual distribution plot using area, threshold and constant particle count.",
+        "observablePerformanceExactWholeCaseRef": "actual-boltzmann-curves"
+      },
+      {
+        "id": "expectation-catalyst-threshold-transfer",
+        "essentialUnderstandingDe": "Verteilung unverändert halten und niedrigere Aktivierungsgrenze als anderen Weg deuten.",
+        "essentialUnderstandingEn": "Keep the distribution unchanged and interpret a lower threshold as an alternative pathway.",
+        "observablePerformanceExactWholeCaseRef": "catalyst-threshold-transfer"
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "expectation-actual-boltzmann-curves",
+        "expectation-catalyst-threshold-transfer"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "chemically-relevant-conditions",
+        "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+        "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+      }
+    ]
+  },
+  "completeCaseUniqueContent": [
+    {
+      "goalId": "d4720a9a-65e2-5661-aaaa-c393d144419a",
+      "case": {
+        "id": "actual-boltzmann-curves",
+        "taskDemandDe": "Gebundener Autorenplot und CSV: Maxwell-Boltzmann-Energieverteilung idealer Teilchen bei 300/450 K, gleiche Teilchenzahl, ∫f(E)dE=1; E in kJ/mol und f in (kJ/mol)^-1. Modell f(E)=2/sqrt(pi)·sqrt(E)/(RT)^(3/2)·exp(-E/(RT)), R=0,008314 kJ/(mol K). Aktivierungsgrenze E_a=15 kJ/mol. Die Verteilung ist eine berechnete Aufgabenfigur, keine Messung. Lies die tatsächlich beigefügten Kurven ab, vergleiche Maximum, Breite und Fläche oberhalb E_a. Berechne die Lage des Maximums mit E_peak=RT/2 und begründe den Temperatur-/Geschwindigkeitsbezug sowie die Grenzen einer Energiebereitschaftsprognose.",
+        "taskDemandEn": "Bound author plot/CSV: ideal-particle Maxwell-Boltzmann energy distributions at 300/450 K, equal particle numbers and ∫f(E)dE=1; E in kJ/mol, f in (kJ/mol)^-1. Model f(E)=2/sqrt(pi)·sqrt(E)/(RT)^(3/2)·exp(-E/(RT)); R=0.008314 kJ/(mol K). Threshold E_a=15 kJ/mol. This computed task figure is not a measurement. Read the actual attached curves and compare peak, width and area above E_a. Calculate the peak energy with E_peak=RT/2 and explain temperature/rate relations plus limits of energy-readiness predictions.",
+        "expectedPerformanceDe": "E_peak≈1,2471 bzw. 1,8707 kJ/mol; die wärmere Kurve ist breiter, ihr Maximum niedriger/weiter rechts, beide Gesamtflächen sind 1. Der normierte Flächenanteil über 15 kJ/mol ist bei 450 K größer, ohne dass alle Teilchen oberhalb liegen. Mehr energiereiche geeignete Kollisionen können höhere Reaktionsrate erklären. Fläche/Teilchenzahl darf nicht mit Kurvenhöhe verwechselt werden. Orientierung, Stoßhäufigkeit, Mechanismus und Reaktionspartner bleiben zusätzliche Bedingungen. Die CSV/Integrationsrechnung bindet die tatsächlichen Modellwerte. Konkrete Flächen: P300(E≥15)=0.00729; P450(E≥15)=0.04563.",
+        "expectedPerformanceEn": "Peak energies are about 1.2471 and 1.8707 kJ/mol. The hotter curve is broader, with a lower/right-shifted peak; both total areas are 1. The fraction above 15 kJ/mol is greater at 450 K without putting every particle above it. More sufficiently energetic suitable collisions may explain a greater rate. Do not confuse area/particle fraction with curve height. Orientation, collision frequency, mechanism and partners remain additional conditions. The CSV/integration binds the actual model values. Concrete areas: P300(E≥15)=0.00729; P450(E≥15)=0.04563.",
+        "understandingFocusDe": "Echte Verteilungsfigur über Fläche, Energiegrenze und konstante Teilchenzahl auswerten.",
+        "understandingFocusEn": "Interpret an actual distribution plot using area, threshold and constant particle count."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "boundMaterialFiles": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/materials/Boltzmann.temperature.de.png",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/materials/Boltzmann.temperature.en.png",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/materials/Boltzmann.normalized-energy-data.synthetic.csv",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/checks/scientific-arithmetic-and-actual-plot-calculations.json"
+      ],
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Achsen/Einheiten und normierte gleiche Fläche lesen.",
+            "aspectEn": "Read axes/units and equal normalised area."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Beide Peaklagen korrekt berechnen.",
+            "aspectEn": "Calculate both peak energies correctly."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Anteil oberhalb E_a statt bloße Peakhöhe vergleichen.",
+            "aspectEn": "Compare area above E_a rather than peak height."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Kinetische Zusatzbedingungen benennen.",
+            "aspectEn": "Identify additional kinetic conditions."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    },
+    {
+      "goalId": "d4720a9a-65e2-5661-aaaa-c393d144419a",
+      "case": {
+        "id": "catalyst-threshold-transfer",
+        "taskDemandDe": "Zweiter gebundener Plot nutzt dieselbe 300-K-Verteilung und zwei Grenzen: E_a=15 bzw. 10 kJ/mol. Die berechneten normierten Flächen werden im CSV/Integrationsbeleg angegeben. Ein Katalysator bietet im Modell einen alternativen Weg mit niedrigerem E_a; die Temperatur und Teilchenzahl bleiben gleich. Vergleiche die beiden tatsächlich markierten Integrationsflächen und widerlege ein Katalysator macht alle Teilchen heißer. Erläutere, welche Verteilungsgröße unverändert bleibt und warum der Flächenfaktor allein keine vollständige Rate oder Gleichgewichtslage liefert.",
+        "taskDemandEn": "Second bound plot uses the same 300 K distribution with thresholds E_a=15 or 10 kJ/mol. Computed normalised areas are given in the CSV/integration receipt. A catalyst offers an alternative lower-E_a path in this model; temperature and particle count remain unchanged. Compare the actual marked integration areas and reject the claim that a catalyst heats every particle. Explain what remains unchanged and why the area ratio alone gives neither a complete rate nor equilibrium position.",
+        "expectedPerformanceDe": "Bei gleicher T bleibt f(E) samt Peak/Normierung unverändert. Die niedrigere Grenze 10 kJ/mol schließt mehr Teilchenenergiezustände ein als 15 kJ/mol; das ist eine Schwellen-/Wegänderung, keine Erwärmung. Die konkreten Flächen aus dem Integrationsbeleg werden verglichen. Eine vollständige Rate hängt zusätzlich von Orientierung/Präfaktoren, Konzentrationen und Mechanismus ab. Ein Katalysator ändert weder Reaktions-Gibbs-Energie noch Gleichgewichtskonstante; er ersetzt keinen thermodynamischen Antrieb. Konkrete Flächen bei300 K: P(E≥15)=0.00729; P(E≥10)=0.04563; Verhältnis≈6.261.",
+        "expectedPerformanceEn": "At equal T, f(E), its peak and normalisation remain unchanged. The lower 10 kJ/mol threshold includes more energy states than 15 kJ/mol: pathway/threshold change, not heating. Compare the actual integrated areas in the receipt. Full rate also depends on orientation/prefactors, concentration and mechanism. Catalysis changes neither reaction Gibbs energy nor equilibrium constant and supplies no thermodynamic driving force. Concrete areas at300 K: P(E≥15)=0.00729; P(E≥10)=0.04563; ratio≈6.261.",
+        "understandingFocusDe": "Verteilung unverändert halten und niedrigere Aktivierungsgrenze als anderen Weg deuten.",
+        "understandingFocusEn": "Keep the distribution unchanged and interpret a lower threshold as an alternative pathway."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "boundMaterialFiles": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/materials/Boltzmann.catalyst.de.png",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/materials/Boltzmann.catalyst.en.png",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/materials/Boltzmann.normalized-energy-data.synthetic.csv",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/checks/scientific-arithmetic-and-actual-plot-calculations.json"
+      ],
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Unveränderte 300-K-Kurve erkennen.",
+            "aspectEn": "Recognise the unchanged 300 K curve."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Beide reale Modellflächen aus dem Beleg vergleichen.",
+            "aspectEn": "Compare both actual model areas from the receipt."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Katalyse von Erwärmung unterscheiden.",
+            "aspectEn": "Distinguish catalysis from heating."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Rate/Gleichgewicht nicht allein aus Fläche folgern.",
+            "aspectEn": "Avoid inferring full rate/equilibrium solely from area."
+          }
+        ]
+      },
+      "exactDuplicateFieldProof": {
+        "modelAnswerBothLanguagesAndRubricFullCreditExactExpectedPerformance": true,
+        "materialAndDataBothLanguagesExactTaskSubstrings": true
+      }
+    }
+  ]
+}

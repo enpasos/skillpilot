@@ -1,0 +1,375 @@
+{
+  "canonicalWholeGoal": {
+    "id": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+    "shortKey": "canonical_chemistry_upper_entropy_change_energy_particle_distribution",
+    "title": "Entropieänderungen aus Energie- und Teilchenverteilung abschätzen",
+    "titleEn": "Estimate entropy changes from energy and particle distribution",
+    "description": "Die lernende Person kann Entropie als Maß für die Verteilung von Energie und Teilchen nutzen und Entropieänderungen bei ausgewählten chemischen Reaktionen qualitativ abschätzen.",
+    "descriptionEn": "The learner can use entropy as a measure of energy and particle distribution and qualitatively estimate entropy changes for selected chemical reactions.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK1_ERKENNTNISGEWINNUNG",
+        "PK2_MODELLIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_REAKTION",
+        "BC_ENERGIE"
+      ],
+      "phase": "Q4",
+      "area": "Thermodynamik",
+      "topicCode": "CANONICAL.CHEMISTRY.UPPER.THERMODYNAMICS.ENTROPY_ESTIMATE"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+        "sourceGoalId": "cabdc3b0-c455-5744-b0b3-ed63b66a2217"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+        "title": "Visualisierung: Entropieänderungen aus Energie- und Teilchenverteilung abschätzen",
+        "url": "/assets/goal-visualizations/chemie/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation",
+        "description": "Visualisierung zum Lernziel: Entropieänderungen aus Energie- und Teilchenverteilung abschätzen.",
+        "altText": "Zwei NO₂-Gasteilchen verbinden sich zu einem N₂O₄-Gasteilchen; für dieses Beispiel bei 25 °C wird die Standardentropieänderung qualitativ negativ eingeschätzt.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "fullPProfileExceptAlreadyIdenticalWholeCaseBriefs": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "expectation-particle-distribution-and-phase",
+        "essentialUnderstandingDe": "Realisierungsmöglichkeiten und chemisch/physikalisch korrekte Entropieabschätzung verbinden.",
+        "essentialUnderstandingEn": "Connect realisations with chemically/physically correct entropy estimates.",
+        "observablePerformanceDe": "Das 2+2-Makrobild besitzt mehr Mikrozustände als 4+0. Verdampfung erhöht typischerweise Energie-/Raumverteilungsmöglichkeiten; B ist ein physikalischer Vorgang, kein Stoffumsatz zu einer neuen chemischen Substanz. Bei C entsteht Gas aus Feststoffen; ΔS_System ist typischerweise positiv. Entropie ist eine Zustandsgröße für zugängliche Realisierungen/Energieverteilung, keine bloße Bild-Unordnung. Hydratation/Bindungen/Temperatur können die einfache Teilchenzahlheuristik begrenzen. Spontanität verlangt System plus Umgebung, also den zweiten Hauptsatz für die Gesamtbilanz.",
+        "observablePerformanceEn": "The 2+2 macrostate has more microstates than 4+0. Vaporisation typically increases energy/spatial distribution possibilities; B is a physical process, not formation of a new chemical substance. C generates gas from solids, typically giving positive ΔS_system. Entropy describes accessible realisations/energy distribution, not merely visual disorder. Hydration/bonding/temperature limit simple particle-count heuristics. Spontaneity requires system plus surroundings, applying the second law to the total balance."
+      },
+      {
+        "id": "expectation-standard-reaction-entropy",
+        "essentialUnderstandingDe": "Qualitative Entropieabschätzung mit stöchiometrischer Standardrechnung und Gesamtbilanz prüfen.",
+        "essentialUnderstandingEn": "Check qualitative entropy estimates with stoichiometric standard calculations and total balance.",
+        "observablePerformanceDe": "ΔrS°m=(39,8+213,8)-92,9=+160,7 J/(mol K); bei 0,20 mol +32,14 J/K. Die positive Richtung passt zur Gasbildung. Bei 298 K: ΔS_Umg≈-178300/298=-598,32 J/(mol K), Gesamt≈-437,62 J/(mol K); unter den angegebenen Zustandsannahmen läuft die Vorwärtsreaktion nicht freiwillig. Standardentropien der Elemente sind nicht generell null. Die Umgebung ist entscheidend; extrapolierte H/S-Werte und anderer CO2-Druck brauchen zusätzliche Bedingungen.",
+        "observablePerformanceEn": "ΔrS°m=(39.8+213.8)-92.9=+160.7 J/(mol K); for 0.20 mol, +32.14 J/K. This agrees with gas formation. At 298 K, ΔS_sur≈-178300/298=-598.32 J/(mol K), total≈-437.62 J/(mol K); the forward process is not spontaneous under the stated state assumptions. Elements' standard entropies are not generally zero. Surroundings matter; extrapolated H/S values and a different CO2 pressure require additional conditions."
+      },
+      {
+        "id": "expectation-endothermic-dissolution-distribution",
+        "essentialUnderstandingDe": "Verteilung, Gitter/Hydratation und Entropiebilanz im endothermen Gegenfall verknüpfen.",
+        "essentialUnderstandingEn": "Relate distributions, lattice/hydration and entropy balance in an endothermic contrast.",
+        "observablePerformanceDe": "ΔH=+20 kJ/mol; Wärme wird aus der Umgebung aufgenommen. ΔS_Umg=-20000/300=-66,67 J/(mol K), Gesamt=+13,33 J/(mol K), mit freiwilligem Ablauf vereinbar. Die vorgegebene positive Systemänderung kann durch zusätzliche Verteilungsmöglichkeiten beim Lösen erklärt werden; Hydratation ordnet lokal Wasser und kann entgegenwirken. Der Zahlenwert ist Stoff-/Bedingungsabhängig, kein allgemeines Gesetz über jedes Salz. Endotherm beschreibt Wärmeaufnahme, nicht Unmöglichkeit freiwilliger Reaktion.",
+        "observablePerformanceEn": "ΔH=+20 kJ/mol; heat comes from surroundings. ΔS_sur=-20000/300=-66.67 J/(mol K), total=+13.33 J/(mol K), consistent with spontaneity. Additional distributions on dissolution can explain the given positive system term; hydration locally orders water and may oppose it. Values depend on species/conditions, not a rule for every salt. Endothermic describes heat uptake, not impossibility of spontaneity."
+      },
+      {
+        "id": "expectation-endothermic-spontaneous-execution",
+        "essentialUnderstandingDe": "Einen tatsächlich ausgeführten endothermen Vorgang anhand der vollständigen Entropiebilanz erklären.",
+        "essentialUnderstandingEn": "Explain an actually executed endothermic change through the full entropy balance.",
+        "observablePerformanceDe": "Reale Durchführung, eigene T(t)-Daten, Leerprobe/Wiederholung und korrekt interpretierte Abkühlung sind erforderlich. Der Lösungsvorgang zeigt unter den tatsächlichen Bedingungen eine endotherme spontan ablaufende Veränderung; bloßes Rühren liefert keine direkte ΔS-Messung. Modell: ΔS_Umg=-19680/293,15≈-67,13 J/(mol K), ΔS_gesamt≈+12,87 J/(mol K), ΔG=19680-293,15·80=-3772 J/mol. Ein positiver Systementropiebeitrag kann den negativen Umgebungsbeitrag überwiegen. Sättigung, Hydratation und Zusammensetzung begrenzen die Übertragung; sämtliche Modellzahlen bleiben synthetisch.",
+        "observablePerformanceEn": "Actual execution, original T(t) data, blank/repeats and correctly interpreted cooling are required. Under the actual conditions dissolution provides an endothermic spontaneously occurring change; stirring does not directly measure ΔS. Model: ΔS_sur=-19680/293.15≈-67.13 J/(mol K), ΔS_total≈+12.87 J/(mol K), ΔG=19680-293.15·80=-3772 J/mol. Positive system entropy can outweigh negative surroundings entropy. Saturation, hydration and composition limit transfer; all model numbers remain synthetic."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "expectation-particle-distribution-and-phase",
+        "expectation-standard-reaction-entropy",
+        "expectation-endothermic-dissolution-distribution",
+        "expectation-endothermic-spontaneous-execution"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "chemically-relevant-conditions",
+        "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+        "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+      }
+    ]
+  },
+  "PInputBindings": {
+    "goalFingerprint": "sha256:408da7628185a050f67d35e15b3eb4b19fe97f939c8210e89bdd7f066be52b7c",
+    "reviewInputFingerprint": "sha256:09432bf024510441325baca771715c8288eafce7ec943cb0b015b47b10b7c43d",
+    "profileFingerprint": "sha256:5b28444ea421aa38f416bf073a83cc102c1e4eaedd9dfe085341111c11dfb8ca",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1"
+  },
+  "caseBriefsIdenticalToWholeCasesByExactObjectEquality": true,
+  "wholeCases": [
+    {
+      "goalId": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+      "case": {
+        "id": "particle-distribution-and-phase",
+        "taskDemandDe": "Autorenmodelle: A = vier unterscheidbare Teilchen in zwei gleichen Boxen, Verteilung 2+2 hat 6 Realisierungsmöglichkeiten, 4+0 hat 1. B = H2O(l)->H2O(g) bei geeigneten Bedingungen. C = CaCO3(s)->CaO(s)+CO2(g). Keine der Skizzen liefert absolute Entropien oder Reaktionsgeschwindigkeiten. Vergleiche Verteilungsmöglichkeiten, schätze ΔS_System für B/C ab und unterscheide physikalischen Phasenübergang von chemischer Reaktion. Erkläre, warum bloße sichtbare Unordnung oder Gaszahl allein keine sichere Gesamt-Spontanitätsaussage ist.",
+        "taskDemandEn": "Author models: A = four distinguishable particles in equal boxes; a 2+2 distribution has 6 realisations, 4+0 has 1. B = H2O(l)->H2O(g) under suitable conditions. C = CaCO3(s)->CaO(s)+CO2(g). The sketches give neither absolute entropies nor reaction rates. Compare distribution possibilities, estimate ΔS_system for B/C and distinguish a physical phase transition from a chemical reaction. Explain why visual disorder or gas count alone cannot establish overall spontaneity.",
+        "expectedPerformanceDe": "Das 2+2-Makrobild besitzt mehr Mikrozustände als 4+0. Verdampfung erhöht typischerweise Energie-/Raumverteilungsmöglichkeiten; B ist ein physikalischer Vorgang, kein Stoffumsatz zu einer neuen chemischen Substanz. Bei C entsteht Gas aus Feststoffen; ΔS_System ist typischerweise positiv. Entropie ist eine Zustandsgröße für zugängliche Realisierungen/Energieverteilung, keine bloße Bild-Unordnung. Hydratation/Bindungen/Temperatur können die einfache Teilchenzahlheuristik begrenzen. Spontanität verlangt System plus Umgebung, also den zweiten Hauptsatz für die Gesamtbilanz.",
+        "expectedPerformanceEn": "The 2+2 macrostate has more microstates than 4+0. Vaporisation typically increases energy/spatial distribution possibilities; B is a physical process, not formation of a new chemical substance. C generates gas from solids, typically giving positive ΔS_system. Entropy describes accessible realisations/energy distribution, not merely visual disorder. Hydration/bonding/temperature limit simple particle-count heuristics. Spontaneity requires system plus surroundings, applying the second law to the total balance.",
+        "understandingFocusDe": "Realisierungsmöglichkeiten und chemisch/physikalisch korrekte Entropieabschätzung verbinden.",
+        "understandingFocusEn": "Connect realisations with chemically/physically correct entropy estimates."
+      },
+      "materialAndData": {
+        "de": "Autorenmodelle: A = vier unterscheidbare Teilchen in zwei gleichen Boxen, Verteilung 2+2 hat 6 Realisierungsmöglichkeiten, 4+0 hat 1. B = H2O(l)->H2O(g) bei geeigneten Bedingungen. C = CaCO3(s)->CaO(s)+CO2(g). Keine der Skizzen liefert absolute Entropien oder Reaktionsgeschwindigkeiten.",
+        "en": "Author models: A = four distinguishable particles in equal boxes; a 2+2 distribution has 6 realisations, 4+0 has 1. B = H2O(l)->H2O(g) under suitable conditions. C = CaCO3(s)->CaO(s)+CO2(g). The sketches give neither absolute entropies nor reaction rates."
+      },
+      "modelAnswer": {
+        "de": "Das 2+2-Makrobild besitzt mehr Mikrozustände als 4+0. Verdampfung erhöht typischerweise Energie-/Raumverteilungsmöglichkeiten; B ist ein physikalischer Vorgang, kein Stoffumsatz zu einer neuen chemischen Substanz. Bei C entsteht Gas aus Feststoffen; ΔS_System ist typischerweise positiv. Entropie ist eine Zustandsgröße für zugängliche Realisierungen/Energieverteilung, keine bloße Bild-Unordnung. Hydratation/Bindungen/Temperatur können die einfache Teilchenzahlheuristik begrenzen. Spontanität verlangt System plus Umgebung, also den zweiten Hauptsatz für die Gesamtbilanz.",
+        "en": "The 2+2 macrostate has more microstates than 4+0. Vaporisation typically increases energy/spatial distribution possibilities; B is a physical process, not formation of a new chemical substance. C generates gas from solids, typically giving positive ΔS_system. Entropy describes accessible realisations/energy distribution, not merely visual disorder. Hydration/bonding/temperature limit simple particle-count heuristics. Spontaneity requires system plus surroundings, applying the second law to the total balance."
+      },
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Makro- und Mikrozustand anhand 6 versus 1 unterscheiden.",
+            "aspectEn": "Distinguish macro/microstates using 6 versus 1."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Vorzeichen für B/C begründet abschätzen.",
+            "aspectEn": "Justify sign estimates for B/C."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Verdampfung als physikalisch einordnen.",
+            "aspectEn": "Classify vaporisation as physical."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Gesamtbilanz statt Bild-Unordnung für Spontanität verlangen.",
+            "aspectEn": "Require a total balance rather than visual disorder for spontaneity."
+          }
+        ],
+        "fullCreditEvidenceDe": "Das 2+2-Makrobild besitzt mehr Mikrozustände als 4+0. Verdampfung erhöht typischerweise Energie-/Raumverteilungsmöglichkeiten; B ist ein physikalischer Vorgang, kein Stoffumsatz zu einer neuen chemischen Substanz. Bei C entsteht Gas aus Feststoffen; ΔS_System ist typischerweise positiv. Entropie ist eine Zustandsgröße für zugängliche Realisierungen/Energieverteilung, keine bloße Bild-Unordnung. Hydratation/Bindungen/Temperatur können die einfache Teilchenzahlheuristik begrenzen. Spontanität verlangt System plus Umgebung, also den zweiten Hauptsatz für die Gesamtbilanz.",
+        "fullCreditEvidenceEn": "The 2+2 macrostate has more microstates than 4+0. Vaporisation typically increases energy/spatial distribution possibilities; B is a physical process, not formation of a new chemical substance. C generates gas from solids, typically giving positive ΔS_system. Entropy describes accessible realisations/energy distribution, not merely visual disorder. Hydration/bonding/temperature limit simple particle-count heuristics. Spontaneity requires system plus surroundings, applying the second law to the total balance."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+      "case": {
+        "id": "standard-reaction-entropy",
+        "taskDemandDe": "Gerundete Standarddaten als Aufgabenwerte bei 298 K: S°m[CaCO3(s)]=92,9; CaO(s)=39,8; CO2(g)=213,8 J/(mol K). Reaktion CaCO3(s)->CaO(s)+CO2(g); ΔrH°m=+178,3 kJ/mol. Routen mit Berechnungsoperator verlangen die Rechnung, nicht nur eine Gaszahl-Heuristik. Berechne ΔrS°m aus der vollständigen Stoffgleichung und vergleiche mit der qualitativen Abschätzung. Bestimme für 0,20 mol die nichtmolare Systemänderung. Prüfe mit ΔS_Umg≈-ΔH/T, ob positive Systementropie bei 298 K bereits Gesamt-Spontanität beweist.",
+        "taskDemandEn": "Rounded standard task data at 298 K: S°m[CaCO3(s)]=92.9; CaO(s)=39.8; CO2(g)=213.8 J/(mol K). Reaction CaCO3(s)->CaO(s)+CO2(g); ΔrH°m=+178.3 kJ/mol. Routes requiring calculation need arithmetic, not just gas counting. Calculate ΔrS°m from the complete equation and compare the qualitative estimate. Find the nonmolar system change for 0.20 mol. Use ΔS_sur≈-ΔH/T to assess whether positive system entropy at 298 K proves overall spontaneity.",
+        "expectedPerformanceDe": "ΔrS°m=(39,8+213,8)-92,9=+160,7 J/(mol K); bei 0,20 mol +32,14 J/K. Die positive Richtung passt zur Gasbildung. Bei 298 K: ΔS_Umg≈-178300/298=-598,32 J/(mol K), Gesamt≈-437,62 J/(mol K); unter den angegebenen Zustandsannahmen läuft die Vorwärtsreaktion nicht freiwillig. Standardentropien der Elemente sind nicht generell null. Die Umgebung ist entscheidend; extrapolierte H/S-Werte und anderer CO2-Druck brauchen zusätzliche Bedingungen.",
+        "expectedPerformanceEn": "ΔrS°m=(39.8+213.8)-92.9=+160.7 J/(mol K); for 0.20 mol, +32.14 J/K. This agrees with gas formation. At 298 K, ΔS_sur≈-178300/298=-598.32 J/(mol K), total≈-437.62 J/(mol K); the forward process is not spontaneous under the stated state assumptions. Elements' standard entropies are not generally zero. Surroundings matter; extrapolated H/S values and a different CO2 pressure require additional conditions.",
+        "understandingFocusDe": "Qualitative Entropieabschätzung mit stöchiometrischer Standardrechnung und Gesamtbilanz prüfen.",
+        "understandingFocusEn": "Check qualitative entropy estimates with stoichiometric standard calculations and total balance."
+      },
+      "materialAndData": {
+        "de": "Gerundete Standarddaten als Aufgabenwerte bei 298 K: S°m[CaCO3(s)]=92,9; CaO(s)=39,8; CO2(g)=213,8 J/(mol K). Reaktion CaCO3(s)->CaO(s)+CO2(g); ΔrH°m=+178,3 kJ/mol. Routen mit Berechnungsoperator verlangen die Rechnung, nicht nur eine Gaszahl-Heuristik.",
+        "en": "Rounded standard task data at 298 K: S°m[CaCO3(s)]=92.9; CaO(s)=39.8; CO2(g)=213.8 J/(mol K). Reaction CaCO3(s)->CaO(s)+CO2(g); ΔrH°m=+178.3 kJ/mol. Routes requiring calculation need arithmetic, not just gas counting."
+      },
+      "modelAnswer": {
+        "de": "ΔrS°m=(39,8+213,8)-92,9=+160,7 J/(mol K); bei 0,20 mol +32,14 J/K. Die positive Richtung passt zur Gasbildung. Bei 298 K: ΔS_Umg≈-178300/298=-598,32 J/(mol K), Gesamt≈-437,62 J/(mol K); unter den angegebenen Zustandsannahmen läuft die Vorwärtsreaktion nicht freiwillig. Standardentropien der Elemente sind nicht generell null. Die Umgebung ist entscheidend; extrapolierte H/S-Werte und anderer CO2-Druck brauchen zusätzliche Bedingungen.",
+        "en": "ΔrS°m=(39.8+213.8)-92.9=+160.7 J/(mol K); for 0.20 mol, +32.14 J/K. This agrees with gas formation. At 298 K, ΔS_sur≈-178300/298=-598.32 J/(mol K), total≈-437.62 J/(mol K); the forward process is not spontaneous under the stated state assumptions. Elements' standard entropies are not generally zero. Surroundings matter; extrapolated H/S values and a different CO2 pressure require additional conditions."
+      },
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Produkte minus Edukte mit Phasen/Stöchiometrie rechnen.",
+            "aspectEn": "Calculate products minus reactants with phases/stoichiometry."
+          },
+          {
+            "points": 1,
+            "aspectDe": "160,7 J/(mol K) und 32,14 J/K unterscheiden.",
+            "aspectEn": "Distinguish 160.7 J/(mol K) and 32.14 J/K."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Umgebungs- und Gesamtbeitrag bei 298 K berechnen.",
+            "aspectEn": "Calculate surroundings and total terms at 298 K."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Positive Systemänderung nicht als Spontanitätsbeweis nutzen.",
+            "aspectEn": "Avoid treating positive system change as proof of spontaneity."
+          }
+        ],
+        "fullCreditEvidenceDe": "ΔrS°m=(39,8+213,8)-92,9=+160,7 J/(mol K); bei 0,20 mol +32,14 J/K. Die positive Richtung passt zur Gasbildung. Bei 298 K: ΔS_Umg≈-178300/298=-598,32 J/(mol K), Gesamt≈-437,62 J/(mol K); unter den angegebenen Zustandsannahmen läuft die Vorwärtsreaktion nicht freiwillig. Standardentropien der Elemente sind nicht generell null. Die Umgebung ist entscheidend; extrapolierte H/S-Werte und anderer CO2-Druck brauchen zusätzliche Bedingungen.",
+        "fullCreditEvidenceEn": "ΔrS°m=(39.8+213.8)-92.9=+160.7 J/(mol K); for 0.20 mol, +32.14 J/K. This agrees with gas formation. At 298 K, ΔS_sur≈-178300/298=-598.32 J/(mol K), total≈-437.62 J/(mol K); the forward process is not spontaneous under the stated state assumptions. Elements' standard entropies are not generally zero. Surroundings matter; extrapolated H/S values and a different CO2 pressure require additional conditions."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+      "case": {
+        "id": "endothermic-dissolution-distribution",
+        "taskDemandDe": "Synthetischer endothermer Salz-Löseprozess bei 300 K: Gitterauftrennung +750 kJ/mol, Hydratation -730 kJ/mol, ΔS_System=+80 J/(mol K); bei konstantem Druck ausschließlich Wärmeaustausch. Es werden gelöste Ionen/Wasserteilchen betrachtet, keine chemische Identitätsänderung der Ionen. Erkläre, weshalb ein abkühlender Lösevorgang trotzdem freiwillig sein kann, berechne die System-/Umgebungsbilanz und erläutere die Grenzen der Aussage gelöste Ionen bedeuten immer mehr Entropie.",
+        "taskDemandEn": "Synthetic endothermic salt dissolution at 300 K: lattice separation +750 kJ/mol, hydration -730 kJ/mol, ΔS_system=+80 J/(mol K); constant pressure with heat transfer only. Consider dissolved ions/water molecules; ionic chemical identities do not change. Explain why a cooling dissolution can still be spontaneous, calculate system/surroundings balance and bound the claim that dissolved ions always imply higher entropy.",
+        "expectedPerformanceDe": "ΔH=+20 kJ/mol; Wärme wird aus der Umgebung aufgenommen. ΔS_Umg=-20000/300=-66,67 J/(mol K), Gesamt=+13,33 J/(mol K), mit freiwilligem Ablauf vereinbar. Die vorgegebene positive Systemänderung kann durch zusätzliche Verteilungsmöglichkeiten beim Lösen erklärt werden; Hydratation ordnet lokal Wasser und kann entgegenwirken. Der Zahlenwert ist Stoff-/Bedingungsabhängig, kein allgemeines Gesetz über jedes Salz. Endotherm beschreibt Wärmeaufnahme, nicht Unmöglichkeit freiwilliger Reaktion.",
+        "expectedPerformanceEn": "ΔH=+20 kJ/mol; heat comes from surroundings. ΔS_sur=-20000/300=-66.67 J/(mol K), total=+13.33 J/(mol K), consistent with spontaneity. Additional distributions on dissolution can explain the given positive system term; hydration locally orders water and may oppose it. Values depend on species/conditions, not a rule for every salt. Endothermic describes heat uptake, not impossibility of spontaneity.",
+        "understandingFocusDe": "Verteilung, Gitter/Hydratation und Entropiebilanz im endothermen Gegenfall verknüpfen.",
+        "understandingFocusEn": "Relate distributions, lattice/hydration and entropy balance in an endothermic contrast."
+      },
+      "materialAndData": {
+        "de": "Synthetischer endothermer Salz-Löseprozess bei 300 K: Gitterauftrennung +750 kJ/mol, Hydratation -730 kJ/mol, ΔS_System=+80 J/(mol K); bei konstantem Druck ausschließlich Wärmeaustausch. Es werden gelöste Ionen/Wasserteilchen betrachtet, keine chemische Identitätsänderung der Ionen.",
+        "en": "Synthetic endothermic salt dissolution at 300 K: lattice separation +750 kJ/mol, hydration -730 kJ/mol, ΔS_system=+80 J/(mol K); constant pressure with heat transfer only. Consider dissolved ions/water molecules; ionic chemical identities do not change."
+      },
+      "modelAnswer": {
+        "de": "ΔH=+20 kJ/mol; Wärme wird aus der Umgebung aufgenommen. ΔS_Umg=-20000/300=-66,67 J/(mol K), Gesamt=+13,33 J/(mol K), mit freiwilligem Ablauf vereinbar. Die vorgegebene positive Systemänderung kann durch zusätzliche Verteilungsmöglichkeiten beim Lösen erklärt werden; Hydratation ordnet lokal Wasser und kann entgegenwirken. Der Zahlenwert ist Stoff-/Bedingungsabhängig, kein allgemeines Gesetz über jedes Salz. Endotherm beschreibt Wärmeaufnahme, nicht Unmöglichkeit freiwilliger Reaktion.",
+        "en": "ΔH=+20 kJ/mol; heat comes from surroundings. ΔS_sur=-20000/300=-66.67 J/(mol K), total=+13.33 J/(mol K), consistent with spontaneity. Additional distributions on dissolution can explain the given positive system term; hydration locally orders water and may oppose it. Values depend on species/conditions, not a rule for every salt. Endothermic describes heat uptake, not impossibility of spontaneity."
+      },
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Gitter-/Hydratationsenthalpien zu +20 kJ/mol bilanzieren.",
+            "aspectEn": "Balance lattice/hydration terms to +20 kJ/mol."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Umgebungsbeitrag und positiven Gesamtwert bestimmen.",
+            "aspectEn": "Determine surroundings term and positive total."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Hydratation und zusätzliche Verteilung gegeneinander abwägen.",
+            "aspectEn": "Weigh hydration against increased distribution."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Stoff-/Bedingungsgrenzen benennen.",
+            "aspectEn": "Identify species/condition limits."
+          }
+        ],
+        "fullCreditEvidenceDe": "ΔH=+20 kJ/mol; Wärme wird aus der Umgebung aufgenommen. ΔS_Umg=-20000/300=-66,67 J/(mol K), Gesamt=+13,33 J/(mol K), mit freiwilligem Ablauf vereinbar. Die vorgegebene positive Systemänderung kann durch zusätzliche Verteilungsmöglichkeiten beim Lösen erklärt werden; Hydratation ordnet lokal Wasser und kann entgegenwirken. Der Zahlenwert ist Stoff-/Bedingungsabhängig, kein allgemeines Gesetz über jedes Salz. Endotherm beschreibt Wärmeaufnahme, nicht Unmöglichkeit freiwilliger Reaktion.",
+        "fullCreditEvidenceEn": "ΔH=+20 kJ/mol; heat comes from surroundings. ΔS_sur=-20000/300=-66.67 J/(mol K), total=+13.33 J/(mol K), consistent with spontaneity. Additional distributions on dissolution can explain the given positive system term; hydration locally orders water and may oppose it. Values depend on species/conditions, not a rule for every salt. Endothermic describes heat uptake, not impossibility of spontaneity."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "synthetic_analysis",
+      "syntheticFixture": true,
+      "sourceRouteRequirements": [],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+      "case": {
+        "id": "endothermic-spontaneous-execution",
+        "taskDemandDe": "Lehrkraftfreigegebener Versuch nach dem benannten Göttinger Salzlösungs-Kalorimeterverfahren: 1,095 g CaCl2·6H2O in 40,00 g Wasser, offenes isoliertes Gefäß, Temperatursonde, Waage, Rührer, Schutzbrille. Leerprobe Wasser, gleiche Anfangstemperatur, Wiederholung. Das Salz wird vollständig unterhalb der Sättigungsgrenze gelöst. Separates synthetisches Thermodynamikmodell bei 293,15 K: ΔH=+19,68 kJ/mol, ΔS_System=+80,0 J/(mol K); diese ΔS ist kein Messwert des Versuchs. Plane und führe den Versuch aus. Dokumentiere eigene Temperatur-Zeit-Rohdaten, Stoffzustände und den ohne dauernde äußere Wärmezufuhr ablaufenden Lösungsvorgang. Erkläre, warum endotherm einen spontanen Ablauf nicht ausschließt. Prüfe das separate Modell mit System-/Umgebungsentropie und ΔG; unterscheide qualitative Beobachtung von direkter Entropiemessung.",
+        "taskDemandEn": "Teacher-authorised experiment using the named Göttingen salt-dissolution calorimeter method: dissolve 1.095 g CaCl2·6H2O in 40.00 g water using an open insulated vessel, thermometer, balance, stirrer and goggles. Water blank, equal initial temperature and repeats. Completely dissolve below saturation. A separate synthetic thermodynamic model at 293.15 K gives ΔH=+19.68 kJ/mol and ΔS_system=+80.0 J/(mol K); this ΔS is not measured by the experiment. Plan and execute the experiment. Submit actual temperature/time data, states and dissolution occurring without continuous external heating. Explain why endothermic does not exclude spontaneous change. Evaluate the separate model through system/surroundings entropy and ΔG, distinguishing qualitative observation from direct entropy measurement.",
+        "expectedPerformanceDe": "Reale Durchführung, eigene T(t)-Daten, Leerprobe/Wiederholung und korrekt interpretierte Abkühlung sind erforderlich. Der Lösungsvorgang zeigt unter den tatsächlichen Bedingungen eine endotherme spontan ablaufende Veränderung; bloßes Rühren liefert keine direkte ΔS-Messung. Modell: ΔS_Umg=-19680/293,15≈-67,13 J/(mol K), ΔS_gesamt≈+12,87 J/(mol K), ΔG=19680-293,15·80=-3772 J/mol. Ein positiver Systementropiebeitrag kann den negativen Umgebungsbeitrag überwiegen. Sättigung, Hydratation und Zusammensetzung begrenzen die Übertragung; sämtliche Modellzahlen bleiben synthetisch.",
+        "expectedPerformanceEn": "Actual execution, original T(t) data, blank/repeats and correctly interpreted cooling are required. Under the actual conditions dissolution provides an endothermic spontaneously occurring change; stirring does not directly measure ΔS. Model: ΔS_sur=-19680/293.15≈-67.13 J/(mol K), ΔS_total≈+12.87 J/(mol K), ΔG=19680-293.15·80=-3772 J/mol. Positive system entropy can outweigh negative surroundings entropy. Saturation, hydration and composition limit transfer; all model numbers remain synthetic.",
+        "understandingFocusDe": "Einen tatsächlich ausgeführten endothermen Vorgang anhand der vollständigen Entropiebilanz erklären.",
+        "understandingFocusEn": "Explain an actually executed endothermic change through the full entropy balance."
+      },
+      "materialAndData": {
+        "de": "Lehrkraftfreigegebener Versuch nach dem benannten Göttinger Salzlösungs-Kalorimeterverfahren: 1,095 g CaCl2·6H2O in 40,00 g Wasser, offenes isoliertes Gefäß, Temperatursonde, Waage, Rührer, Schutzbrille. Leerprobe Wasser, gleiche Anfangstemperatur, Wiederholung. Das Salz wird vollständig unterhalb der Sättigungsgrenze gelöst. Separates synthetisches Thermodynamikmodell bei 293,15 K: ΔH=+19,68 kJ/mol, ΔS_System=+80,0 J/(mol K); diese ΔS ist kein Messwert des Versuchs.",
+        "en": "Teacher-authorised experiment using the named Göttingen salt-dissolution calorimeter method: dissolve 1.095 g CaCl2·6H2O in 40.00 g water using an open insulated vessel, thermometer, balance, stirrer and goggles. Water blank, equal initial temperature and repeats. Completely dissolve below saturation. A separate synthetic thermodynamic model at 293.15 K gives ΔH=+19.68 kJ/mol and ΔS_system=+80.0 J/(mol K); this ΔS is not measured by the experiment."
+      },
+      "modelAnswer": {
+        "de": "Reale Durchführung, eigene T(t)-Daten, Leerprobe/Wiederholung und korrekt interpretierte Abkühlung sind erforderlich. Der Lösungsvorgang zeigt unter den tatsächlichen Bedingungen eine endotherme spontan ablaufende Veränderung; bloßes Rühren liefert keine direkte ΔS-Messung. Modell: ΔS_Umg=-19680/293,15≈-67,13 J/(mol K), ΔS_gesamt≈+12,87 J/(mol K), ΔG=19680-293,15·80=-3772 J/mol. Ein positiver Systementropiebeitrag kann den negativen Umgebungsbeitrag überwiegen. Sättigung, Hydratation und Zusammensetzung begrenzen die Übertragung; sämtliche Modellzahlen bleiben synthetisch.",
+        "en": "Actual execution, original T(t) data, blank/repeats and correctly interpreted cooling are required. Under the actual conditions dissolution provides an endothermic spontaneously occurring change; stirring does not directly measure ΔS. Model: ΔS_sur=-19680/293.15≈-67.13 J/(mol K), ΔS_total≈+12.87 J/(mol K), ΔG=19680-293.15·80=-3772 J/mol. Positive system entropy can outweigh negative surroundings entropy. Saturation, hydration and composition limit transfer; all model numbers remain synthetic."
+      },
+      "rubric": {
+        "maximumPoints": 4,
+        "criteria": [
+          {
+            "points": 1,
+            "aspectDe": "Eigene Ausführung und Rohdaten mit Kontrollen vorlegen.",
+            "aspectEn": "Provide actual execution and controlled raw data."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Endotherm von nicht spontan unterscheiden.",
+            "aspectEn": "Distinguish endothermic from nonspontaneous."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Beide Entropiebeiträge und -3772 J/mol korrekt berechnen.",
+            "aspectEn": "Calculate both entropy contributions and -3772 J/mol correctly."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Modellwerte und direkte Entropiemessung auseinanderhalten.",
+            "aspectEn": "Distinguish model numbers from a direct entropy measurement."
+          }
+        ],
+        "fullCreditEvidenceDe": "Reale Durchführung, eigene T(t)-Daten, Leerprobe/Wiederholung und korrekt interpretierte Abkühlung sind erforderlich. Der Lösungsvorgang zeigt unter den tatsächlichen Bedingungen eine endotherme spontan ablaufende Veränderung; bloßes Rühren liefert keine direkte ΔS-Messung. Modell: ΔS_Umg=-19680/293,15≈-67,13 J/(mol K), ΔS_gesamt≈+12,87 J/(mol K), ΔG=19680-293,15·80=-3772 J/mol. Ein positiver Systementropiebeitrag kann den negativen Umgebungsbeitrag überwiegen. Sättigung, Hydratation und Zusammensetzung begrenzen die Übertragung; sämtliche Modellzahlen bleiben synthetisch.",
+        "fullCreditEvidenceEn": "Actual execution, original T(t) data, blank/repeats and correctly interpreted cooling are required. Under the actual conditions dissolution provides an endothermic spontaneously occurring change; stirring does not directly measure ΔS. Model: ΔS_sur=-19680/293.15≈-67.13 J/(mol K), ΔS_total≈+12.87 J/(mol K), ΔG=19680-293.15·80=-3772 J/mol. Positive system entropy can outweigh negative surroundings entropy. Saturation, hydration and composition limit transfer; all model numbers remain synthetic."
+      },
+      "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+      "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+      "evidenceMode": "learner_execution_required",
+      "syntheticFixture": false,
+      "sourceRouteRequirements": [
+        "BB/BE LK entropy-driving-force experiment: a supplied example is optional, actual experiment is required"
+      ],
+      "observedLearnerWork": null,
+      "actualLabExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "sharedWholeCasePartnerGoalIds": [
+        "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+        "5169bb6b-f065-5798-8164-9b4521e44ae8"
+      ]
+    }
+  ]
+}

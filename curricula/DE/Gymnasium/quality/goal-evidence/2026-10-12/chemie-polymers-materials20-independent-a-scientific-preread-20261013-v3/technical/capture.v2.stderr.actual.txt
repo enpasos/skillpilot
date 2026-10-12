@@ -1,0 +1,46 @@
+12:27:12 AM [vite] Internal server error: Failed to resolve import "virtual:pwa-register" from "app/src/main.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/enpasos/projects/skillpilot/app/src/main.tsx:4:27
+  3  |  import { createRoot } from "react-dom/client";
+  4  |  import { BrowserRouter } from "react-router-dom";
+  5  |  import { registerSW } from "virtual:pwa-register";
+     |                              ^
+  6  |  import "katex/dist/katex.min.css";
+  7  |  import "./index.css";
+      at TransformPluginContext._formatLog (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:28999:43)
+      at TransformPluginContext.error (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:28996:14)
+      at normalizeUrl (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:27119:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:27177:32
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:27145:4)
+      at async EnvironmentPluginContainer.transform (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:28797:14)
+      at async loadAndTransform (file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:22670:26)
+12:27:12 AM [vite] (client) Pre-transform error: Failed to resolve import "virtual:pwa-register" from "app/src/main.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/enpasos/projects/skillpilot/app/src/main.tsx:4:27
+  3  |  import { createRoot } from "react-dom/client";
+  4  |  import { BrowserRouter } from "react-router-dom";
+  5  |  import { registerSW } from "virtual:pwa-register";
+     |                              ^
+  6  |  import "katex/dist/katex.min.css";
+  7  |  import "./index.css";
+(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error: The following dependencies are imported but could not be resolved:
+
+  virtual:pwa-register (imported by /home/enpasos/projects/skillpilot/app/src/main.tsx)
+
+Are they installed?
+    at file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:31903:33
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/enpasos/projects/skillpilot/app/node_modules/vite/dist/node/chunks/config.js:34111:15
+[BABEL] Note: The code generator has deoptimised the styling of /home/enpasos/projects/skillpilot/tmp/chemie-polymers20-independent-a/vite-cache/deps/react-dom_client.js?v=84241d56 as it exceeds the max of 500KB.
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.waitForFunction: Timeout 30000ms exceeded.
+    at /home/enpasos/projects/skillpilot/tmp/chemie-polymers20-independent-a/capture-goalcard.mjs:43:14 {
+  name: 'TimeoutError'
+}
+
+Node.js v20.20.2

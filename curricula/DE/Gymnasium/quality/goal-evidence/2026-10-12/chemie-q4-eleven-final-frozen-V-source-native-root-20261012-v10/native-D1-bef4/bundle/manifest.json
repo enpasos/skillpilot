@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:af263da80f9b22969b9215bab692c9d18594ba5d49fda57e55310b8fae825c43",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "chemie-q4-bef4-final-native-v8",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "bef4c8eb-1d80-50fb-88cd-3a9904e38b4e",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:d2194f105adf562fe585387a561ef9cf15469cfcff45a17c5fcd9d8719df28bd",
+      "pageFingerprint": "sha256:900d5df7715f317fd76dd22fcd66ddecb3ef6187980bc2e2744e45d101d25068",
+      "evidenceReview": {
+        "reviewId": "chemie-q4-thermodynamics-eleven-author-20261012-v2",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:87558290c1b16ffd0152002c6d81fdd59cea3f422f0389a32ce487ce093a01dc",
+        "profileFingerprint": "sha256:02717942505842d577ca3a4e9d25ff40a28e022181e47716cd2c61dbb32cbeb3",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:8ec3d68e43fa65d6c083eddaf95360c71750b28fcab2dbfd7f66104e229085c9",
+      "bytes": 213381
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:d782564879a5c8a0134c585da724c4064c94d7fee843cf640e0edfdaff7e8101",
+      "bytes": 1038830
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:ae6dfbdaae2ff58c6e63e65f804b28a199439d8dda0ca25f77052302a1f71db7",
+      "bytes": 3431
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:7c3de79cdd5aea903de33da8631ef62153f804be53d89f286647efac358aa11d",
+      "bytes": 19527
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:66702f97b19dcf48424798b84ed81868f83ea5d3e037ebfaf71286736c5f909e",
+      "bytes": 3432
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:ec825b5bb766a4378b324868539008ce4d9f61aa15fcbbf400648886619b934c",
+      "bytes": 15726
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:237a01b665e4339c44b48f5931cd6a99e4ad71809588ed808ba3ef5fbf324111",
+      "bytes": 13484
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:695097171b0348b03f091266469f0512b48411e000384081647677570db9aa26",
+      "bytes": 11519
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+      "bytes": 2948
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:42fba9796662abb0c3e13efc86940d48226a6b6a8a4a851175a8a49587e2e013"
+}

@@ -1,0 +1,19 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/execution/app/public/assets/goal-visualizations/chemie/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17.jpg'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/execution/app/scripts/goalBookModel.ts:2594:36)
+    at async Promise.all (index 139)
+    at async loadGoalVisualizationAssetDigests (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/execution/app/scripts/goalBookModel.ts:2567:3)
+    at async loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/execution/app/scripts/goalBookModel.ts:2756:41)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/execution/app/compare-current.mts:6:16) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/execution/app/public/assets/goal-visualizations/chemie/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17/0a5a49f2-8e8a-5edb-b6ca-3f8636957a17.jpg'
+}
+
+Node.js v20.20.2

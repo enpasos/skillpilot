@@ -1,0 +1,12 @@
+import{readFileSync,writeFileSync}from'node:fs';import{resolve}from'node:path';import{loadGoalBookBuildInputs,writeGoalBookModel}from'./scripts/goalBookModel.ts';
+const R=resolve(import.meta.dirname,'..'),b='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-current220-preserving-root-preparation-20261012-v5';
+const rd=(p:string)=>JSON.parse(readFileSync(resolve(R,p),'utf8'));const wr=(p:string,d:any)=>writeFileSync(resolve(R,p),JSON.stringify(d,null,2)+'\n');
+const cfg=rd(b+'/configs/whole402.inactive.config.json');Object.assign(cfg,{landscapePath:'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json',semanticKindLedgerPath:'curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json',goalVisualizationQaPath:'curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json',evidenceReviewPaths:[b+'/positive/current220.records.raw-lines-exact.jsonl'],outputPath:b+'/native/current220.baseline.normal-model.json'});
+wr(b+'/configs/current220.baseline.normal.config.json',cfg);
+const baseline=await loadGoalBookBuildInputs(b+'/configs/current220.baseline.normal.config.json',R);await writeGoalBookModel(baseline.model,baseline.outputPath);
+const candidate=rd(b+'/native/whole402.current-inputs.normal-model.json');const old=new Map(baseline.model.pages.map(p=>[p.goalId,p]));const now=new Map(candidate.pages.map((p:any)=>[p.goalId,p]));
+const central=rd('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-active-adoption-root-20261012-v10/active-checks/central-after-three.actual.json').subjects.find((s:any)=>s.subject==='chemie');
+const strictChanged=central.strictCompleteGoalIds.filter((id:string)=>(old.get(id) as any).pageFingerprint!==(now.get(id) as any).pageFingerprint);
+const allChanged=candidate.pages.filter((p:any)=>(old.get(p.goalId) as any).pageFingerprint!==p.pageFingerprint).map((p:any)=>p.goalId);
+wr(b+'/checks/current220-and-all402-normal-page-comparison.actual.json',{schemaVersion:1,role:'actual normal model comparison, no new science votes',baselineDigest:baseline.model.digest,candidateDigest:candidate.digest,strict220PageFingerprintChanged:strictChanged,current220PageFingerprintsExact:strictChanged.length===0,all402PageFingerprintChanged:allChanged,newScientificVotes:0,activeWrites:false});
+console.log(JSON.stringify({current220Changed:strictChanged.length,all402Changed:allChanged.length,changedIds:allChanged}));
