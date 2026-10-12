@@ -1,0 +1,26 @@
+Exact terminal result-message excerpts from the executed read-only commands; command metadata and exit codes are in ACTUAL.readonly-targeted-checks.json.
+
+node scripts/check_ai_transparency_inventory.mjs
+AI transparency inventory check passed: 2487 visualizations, 2436 with C2PA container markers, 64 other bound runtime images, 746 localized card records, 8 bound audio files.
+
+node scripts/openai_plugin_submission.mjs check
+CHECK openai_plugin_submission PASS skillpilot-coach-v1 1.1.2 cases=14 portal=5+3 state=PREPARED_NOT_SUBMITTED
+
+npm --prefix app run check:generated-status-registry
+docs/qa-ci/status/README.md is up to date.
+
+npm --prefix app run check:goal-visualization-rollout-status:chemie
+curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md and curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json are up to date.
+
+python -B scripts/canonical_chemistry_evidence_watch.py check-delta
+chemistry-evidence-watch: changed=0 added=0 removed=0
+
+npm --prefix app run check:gymnasium-duration-readiness
+ok docs/qa-ci/status/gymnasium-duration-model-readiness.md
+M6 subjects: 10; source scopes touching Sek I: 160; all source scopes: 301
+
+app/node_modules/.bin/tsx app/scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json --check
+AssertionError [ERR_ASSERTION]: Stale generated atlas input: app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json
+
+app/node_modules/.bin/tsx app/scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json --check
+AssertionError [ERR_ASSERTION]: Stale generated atlas input: app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json

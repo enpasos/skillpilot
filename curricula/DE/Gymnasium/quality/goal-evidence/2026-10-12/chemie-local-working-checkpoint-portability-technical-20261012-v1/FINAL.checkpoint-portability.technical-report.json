@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "artifactRole": "Read-only all-current-working-state checkpoint committability and portability diagnosis; no scientific acceptance or Git operation",
+  "snapshotUTC": "2026-10-12T16:53:56.569451+00:00",
+  "completedAtUTC": "2026-10-12T17:06:34.927447+00:00",
+  "scope": "Entire nonignored Git working-state inventory; ignored evidence closure restricted to current E12 quality packages",
+  "inventory": {
+    "nonignoredUntrackedFiles": 4787,
+    "nonignoredUntrackedBytes": 1372392027,
+    "trackedModifiedFileCountAtInventory": 19,
+    "inventoryErrors": [],
+    "untrackedSymlinks": 0,
+    "filesAtLeast100MB": [],
+    "nodeModulesAndCaches": [],
+    "privateCredentialPathCandidates": [],
+    "nonignoredTextFilesCredentialPatternScanned": 3572,
+    "credentialContentPatternHits": []
+  },
+  "normalPortabilityCheck": {
+    "normalFunction": "scripts/validate_schemas.py:curriculum_symlink_errors",
+    "errors": [],
+    "errorCount": 0,
+    "readOnly": true
+  },
+  "ignoredEvidence": {
+    "fileCount": 46,
+    "bytes": 29118819,
+    "finalFirstPartyForceAddRequestPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-local-working-checkpoint-portability-technical-20261012-v1/ROOT.force-add-first-party-only.request.json",
+    "finalFirstPartyForceAddFileCount": 41,
+    "finalFirstPartyForceAddBytes": 26770545,
+    "firstPartyNativeHTMLPDFCount": 26,
+    "firstPartyVerificationLogCount": 15,
+    "downloadedThirdPartyCachesExcluded": [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current402-author-20261012-v1/sources/BY-C11-NTG.current.official.html",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-live-context-author-20261012-v7/sources/TH-Chemie2024-primary.pdf",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-live-context-author-20261012-v7/sources/ince2002-primary.pdf",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-live-context-author-20261012-v7/sources/schnoor2020-primary.pdf",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-real-method-source-author-20261012-v8/sources/UCI-investigating-iron-thiocyanate.primary.pdf"
+    ],
+    "thirdPartyRedistributionClearanceClaimed": false,
+    "excludedCacheBoundaryPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-local-working-checkpoint-portability-technical-20261012-v1/excluded-primary-cache-boundary.actual.json",
+    "initialHashOnlyCandidatesAreNotAuthorization": "force-add-seal-bound-exact.actual.txt and the initial hash-only candidate field are superseded for action by ROOT.force-add-first-party-only.request.json; the downloaded BY HTML is explicitly excluded.",
+    "firstPartyIgnoredCredentialContentPatternHits": []
+  },
+  "formatFindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-current407-remediation24-fresh-independent-a-20261012-v3/actual-direct24-source-literals.jsonl",
+      "classification": "Historical raw technical output with a misleading .jsonl suffix",
+      "sha256": "sha256:d1b2516d10578ca189e896822f1f6cf41b2e1834863faa3b17ea07eaf76ce3e3",
+      "wholeJSONValid": false,
+      "JSONLValid": false,
+      "originalPreserved": true,
+      "additiveDisclosure": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-local-working-checkpoint-portability-technical-20261012-v1/historical-format/raw-source-literals-format-disclosure.actual.json",
+      "invalidJSONSuccessorNotCreated": true,
+      "scientificEvidenceOrVerdictsChanged": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-active-adoption-root-20261012-v10/active-checks/central-after-three.actual.json",
+      "classification": "Confirmed live output, ROOT session 56462",
+      "excludedFromTerminalFormatConclusion": true,
+      "requiredNextStep": "ROOT waits for terminal output and final normal schema/check results before checkpoint claim."
+    }
+  ],
+  "checkpointGuidance": [
+    "Commit all authorized nonignored current files, including inactive and superseded candidate packages, as a checkpoint of the actual working state.",
+    "Use only the final first-party-only exact force-add list for ignored native evidence; do not blindly force-add official HTML/external PDFs, caches, public build outputs or temporary execution capsules.",
+    "Keep downloaded primary source byte hashes and URLs as explicitly optional historical local-cache provenance; this report creates no source redistribution clearance and no substitute scientific acceptance.",
+    "Preserve original frozen bytes and seals; the raw-output format disclosure is additive.",
+    "ROOT refreshes final file counts after its concurrent integrations and completes terminal normal checks. This audit did not run the full global schema suite or stage Git files.",
+    "An inactive Chemie candidate remains inactive. Commit/push of its files creates no new completion, release, deployment, practical trial or human approval."
+  ],
+  "newScientificVotes": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "completionPromotion": false,
+  "activeSourceMutationByAuditor": false,
+  "gitStageCommitPushByAuditor": false
+}

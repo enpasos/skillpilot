@@ -1,0 +1,50 @@
+{
+  "scope": "Technical read-only observations during root integration; these are not final CI or post-220 completion claims",
+  "activeOrGitWrites": false,
+  "checks": [
+    {
+      "command": "node scripts/check_ai_transparency_inventory.mjs",
+      "exitCode": 0,
+      "output": "AI transparency inventory check passed: 2487 visualizations, 2436 with C2PA container markers, 64 other bound runtime images, 746 localized card records, 8 bound audio files.",
+      "scopeAtExecution": "Bio new image active; Chemistry T3 not yet reflected in inventory observation"
+    },
+    {
+      "command": "node scripts/openai_plugin_submission.mjs check",
+      "exitCode": 0,
+      "output": "CHECK openai_plugin_submission PASS skillpilot-coach-v1 1.1.2 cases=14 portal=5+3 state=PREPARED_NOT_SUBMITTED"
+    },
+    {
+      "command": "npm --prefix app run check:generated-status-registry",
+      "exitCode": 0,
+      "output": "docs/qa-ci/status/README.md is up to date."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-rollout-status:chemie",
+      "exitCode": 0,
+      "output": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md and curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json are up to date."
+    },
+    {
+      "command": "python -B scripts/canonical_chemistry_evidence_watch.py check-delta",
+      "exitCode": 0,
+      "output": "chemistry-evidence-watch: changed=0 added=0 removed=0",
+      "scopeAtExecution": "Before the Chemistry T3 semantic/source baseline update"
+    },
+    {
+      "command": "npm --prefix app run check:gymnasium-duration-readiness",
+      "exitCode": 0,
+      "output": "ok docs/qa-ci/status/gymnasium-duration-model-readiness.md\nM6 subjects: 10; source scopes touching Sek I: 160; all source scopes: 301"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json --check",
+      "exitCode": 1,
+      "output": "AssertionError [ERR_ASSERTION]: Stale generated atlas input: app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+      "normalGuardUnchanged": true
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json --check",
+      "exitCode": 1,
+      "output": "AssertionError [ERR_ASSERTION]: Stale generated atlas input: app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json",
+      "normalGuardUnchanged": true
+    }
+  ]
+}
