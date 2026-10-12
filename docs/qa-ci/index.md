@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: stabiler Zwischenstand mit 220/402 vom 12. Oktober](chemie220-q3-and-leaf-checkpoint-2026-10-12.md)
 - [Chemie: fünf neue fachliche Abschlüsse, 217/402 vom 12. Oktober](chemie217-five-scientific-closures-2026-10-12.md)
 - [Biologie: maschineller M7-Abschluss, 397/397 und CQR-303 PASS vom 12. Oktober](biologie-m7-machine-closeout-2026-10-12.md)
 - [Biologie 379/397: aktiver Zwischenstand, gezielte CI-Reparatur und inaktiv gesicherte offene Arbeiten vom 11. Oktober](biologie379-inactive-working-checkpoint-2026-10-11.md)
