@@ -1,0 +1,54 @@
+{
+  "caseId": "iodometry-03-iodate-acceptor",
+  "goalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+  "status": "author_candidate",
+  "dataOrigin": "SYNTHETIC assessment fixture; neither real measurements nor learner performance",
+  "taskDe": "Übertrage das Redoxtitrationsprinzip auf eine Iodometrie: Bestimme die Iodatkonzentration in einer wässrigen, sonst nicht oxidierenden/reduzierenden Probe. Führe das konkret benannte beaufsichtigte Verfahren aus, erläutere den Unterschied zum Permanganat-Endpunkt und begründe beide Reaktionsstufen. Werte die getrennten synthetischen Messstände und den Blindwert aus. Beurteile anschließend einen Ansatz, der nach der Iodfreisetzung längere Zeit offen stehen bleibt: Reichen drei ähnliche Titrationen als Gültigkeitsbeleg?",
+  "taskEn": "Transfer the redox-titration principle to iodometry: determine iodate concentration in an aqueous sample containing no other oxidant/reductant. Execute the named supervised procedure, explain the distinction from the permanganate endpoint and justify both reaction stages. Analyse the separate synthetic readings and blank. Then assess a flask left open for a prolonged period after iodine release: do three similar titrations establish validity?",
+  "methodDe": "Nur im freigegebenen beaufsichtigten Labor mit Schutzbrille, geeigneten Handschuhen, Pipettierhilfe und von der Lehrkraft festgelegten Schutz-/Entsorgungsmaßnahmen einschließlich geeigneter Lüftung. Verwendet werden bereitgestellte Iodatprobe (erwarteter Bereich 0,001–0,003 mol/L), iodatarme 0,10-mol/L-KI-Lösung, 1-mol/L-Schwefelsäure, frisch standardisierte 0,01000-mol/L-Thiosulfatlösung und frisch bereitgestellte Stärkelösung. Mit Vollpipette 10,00 mL Probe in einen 100-mL-Erlenmeyerkolben geben, 20 mL KI-Lösung und 20 mL Wasser zusetzen und durchmischen; zuletzt 2 mL bereitgestellte verdünnte Säure zugeben. KI und Säure liegen für den genannten Bereich im Überschuss. Die Iodfreisetzung vollständig abwarten; die Lehrkraft prüft das geeignete Reaktionszeitfenster anhand des freigegebenen Verfahrens, ohne langen offenen Stand. Sofort nach vollständiger Freisetzung unter Schwenken mit Thiosulfat titrieren. Bei blassgelber Farbe etwa 1 mL Stärkelösung zusetzen; tropfenweise bis zum ersten vollständigen Verschwinden der Blaufärbung nach Durchmischen titrieren. Farblosen Titranten am unteren Meniskus auf Augenhöhe ablesen; Anfang/Ende, Indikatorzeitpunkt, Farbe und Freisetzungs-/Standzeit protokollieren. Für jeden Lauf frisches Aliquot erst unmittelbar vor der Titration ansetzen. Blindansatz ohne Iodat mit allen übrigen Reagenzien gleicherweise behandeln. Die Lehrkraft sammelt iodhaltigen Laborabfall nach lokaler Vorgabe; keine direkte Säurezugabe auf festes KI, keine häusliche Durchführung. Praktische Rubrik: sichere Vorbereitung, präzises Aliquot, Reihenfolge/KI-Überschuss, kontrollierte Freisetzung und sofortige Titration, späte Stärkezugabe, korrekter Endpunkt und vollständiges Rohprotokoll werden tatsächlich beobachtet.",
+  "methodEn": "Use only an approved supervised laboratory with goggles, suitable gloves, a pipette aid and teacher-defined protection/disposal measures including appropriate ventilation. Use supplied iodate sample (expected 0.001–0.003 mol/L), low-iodate 0.10 mol/L KI, 1 mol/L sulfuric acid, freshly standardized 0.01000 mol/L thiosulfate and freshly supplied starch. Pipette a 10.00-mL aliquot into a 100-mL conical flask, add 20 mL KI and 20 mL water and mix; finally add 2 mL supplied dilute acid. KI and acid are in excess within the stated range. Allow iodine liberation to finish; the teacher verifies the suitable reaction window for the approved method without prolonged open standing. Immediately after complete liberation, swirl and titrate with thiosulfate. At pale yellow add about 1 mL starch, then add dropwise until the first complete disappearance of blue after mixing. Read the lower meniscus of the colourless titrant at eye level; record initial/final readings, starch timing, colours and liberation/standing times. Prepare each fresh aliquot immediately before its own titration. Treat a no-iodate blank with all other reagents identically. The teacher collects iodine-containing laboratory waste according to local rules; never add acid directly to solid KI or perform this at home. Observe practical setup, precise aliquot, order/KI excess, controlled liberation and immediate titration, late starch addition, endpoint and complete raw records.",
+  "syntheticData": {
+    "sampleAliquot_mL": 10.0,
+    "thiosulfate_mol_per_L": 0.01,
+    "buretteUnit": "mL",
+    "validTrials": [
+      {
+        "start": 0.1,
+        "end": 12.2
+      },
+      {
+        "start": 12.35,
+        "end": 24.47
+      },
+      {
+        "start": 0.2,
+        "end": 12.34
+      }
+    ],
+    "blankConsumption_mL": 0.12,
+    "freshTransfer": "A prolonged open standing time loses some iodine before titration; this is a conceptual variation, not a second measured experiment."
+  },
+  "workedDe": "Iodfreisetzung: IO3− + 5I− + 6H+ -> 3I2 + 3H2O; links/rechts Ladung 0. Titration: I2 + 2S2O3(2−) -> 2I− + S4O6(2−); links/rechts Ladung −4. Im KI-Überschuss befindet sich gelöstes Iod überwiegend als I3− im Gleichgewicht I2 + I− ⇌ I3−; die Schreibweise als I2-Äquivalente erhält die gleiche Stoffmengenbilanz. Gesamtbilanz: IO3− + 6H+ + 6S2O3(2−) -> I− + 3S4O6(2−) + 3H2O; Ladung beiderseits −7. Ein mol IO3− entspricht sechs mol Thiosulfat, nicht dem 5:1-Verhältnis der Permanganometrie. Iodat ist der ursprüngliche Akzeptor, Iodid der Donator der Freisetzung; in der Titrationsstufe nimmt Iod Elektronen vom Thiosulfat auf. Verbräuche 12,10/12,12/12,14 mL, Mittel 12,12 mL; blindkorrigiert 12,00 mL. n(S2O3(2−))=0,01000*0,01200=0,0001200 mol; n(IO3−)=0,00002000 mol; c(IO3−)=0,00002000/0,01000=0,002000 mol/L. Anders als bei Permanganat verschwindet eine Indikatorfarbe; Stärke wird erst bei geringem Restiod zugesetzt. KI/Säureüberschuss macht deren Mengen nicht zur unbekannten Probengröße. Verlorenes Iod vermindert den Thiosulfatverbrauch und den scheinbaren Iodatgehalt; ein Blindwert ohne Iodat behebt keinen probenspezifischen Verlust. Drei übereinstimmende fehlerhaft behandelte Ansätze können präzise und trotzdem falsch sein. Zeitführung/geschütztes Arbeiten kontrollieren und gültige frische Ansätze titrieren; kein quantitativer Verlustkorrekturfaktor ohne weitere Information.",
+  "workedEn": "Iodine liberation: IO3− + 5I− + 6H+ -> 3I2 + 3H2O; charge zero on both sides. Titration: I2 + 2S2O3(2−) -> 2I− + S4O6(2−); charge −4 on both sides. With excess KI, dissolved iodine is largely I3− through I2 + I− ⇌ I3−; writing I2-equivalents preserves the amount balance. Overall: IO3− + 6H+ + 6S2O3(2−) -> I− + 3S4O6(2−) + 3H2O; charge −7 on both sides. One mol iodate corresponds to six mol thiosulfate, not the permanganometry 5:1 ratio. Iodate is the initial acceptor and iodide the liberation donor; iodine then accepts electrons from thiosulfate in the titration. Consumptions 12.10/12.12/12.14 mL average 12.12 mL; blank-corrected 12.00 mL. n(thiosulfate)=0.01000*0.01200=0.0001200 mol; n(iodate)=0.00002000 mol; c(iodate)=0.00002000/0.01000=0.002000 mol/L. Unlike permanganate, an indicator colour disappears; add starch only when little iodine remains. Excess KI/acid quantities do not define the unknown sample amount. Iodine loss reduces consumption and apparent iodate content; a no-iodate blank cannot correct sample-specific loss. Three consistently mishandled trials can be precise but wrong. Control timing/protected handling and titrate valid fresh samples; no numerical loss correction without further information.",
+  "practicalEvidenceDe": "Die praktische Teilbewertung ist nur aus einer tatsächlich beobachteten Durchführung oder einer ausreichend vollständigen, authentisch zuordenbaren Aufzeichnung möglich. Beobachtet werden sichere Vorbereitung, korrektes Konditionieren/Pipettieren/Ablesen, kontrollierte Endpunktannäherung, vollständiges Rohprotokoll und begründeter Umgang mit Blindwert und fehlerhaften Läufen. Ein schöner Plan oder eine korrekte Rechnung erfüllt den Durchführungsoperator nicht. In diesem Autorenpaket ist kein solcher Leistungsnachweis enthalten: Daten und Lösungen sind ausdrücklich synthetische Aufgabenfixtures. Das P-Profil beschreibt ein geeignetes künftiges Assessment; M7 beansprucht weder eine bereits erbrachte Laborleistung noch menschliche Erprobung.",
+  "practicalEvidenceEn": "Assess practical execution only from actually observed performance or a sufficiently complete, authentically attributable recording. Observe safe setup, correct conditioning/pipetting/reading, controlled approach to the endpoint, complete raw records and justified treatment of the blank and faulty trials. A good plan or correct calculation does not establish execution. This author packet contains no such performance evidence: data and worked solutions are explicitly synthetic assessment fixtures. The P profile designs an appropriate future assessment; M7 claims neither completed laboratory performance nor a human trial.",
+  "rubric": [
+    {
+      "criterion": "Actual safe practical execution including release, late starch and endpoint",
+      "points": 4
+    },
+    {
+      "criterion": "Both reactions, 1:6 stoichiometry, donor/acceptor and I2/I3 equivalence",
+      "points": 3
+    },
+    {
+      "criterion": "Raw differences, blank and concentration with units",
+      "points": 3
+    },
+    {
+      "criterion": "Independent iodine-loss reasoning, precision/validity distinction and remedy",
+      "points": 3
+    }
+  ],
+  "maximumPoints": 13
+}

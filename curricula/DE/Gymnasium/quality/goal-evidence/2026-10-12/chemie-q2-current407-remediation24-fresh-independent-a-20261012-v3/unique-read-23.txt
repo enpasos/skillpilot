@@ -1,0 +1,52 @@
+GOAL 23 b4ca3af2-77f1-59e8-955d-c4959e284242 Außenfaktoren auf Enzymreaktionen erklären / Explain external factors in enzyme reactions
+Die lernende Person kann den Einfluss von Temperatur, pH-Wert, Konzentrationen und weiteren Außenfaktoren auf die Geschwindigkeit von Enzymreaktionen beschreiben.
+The learner can describe how temperature, pH, concentrations, and other external factors affect the rate of enzyme reactions.
+REQUIRES f7f35d71-927a-511c-a49e-65a66794a9bc
+CANONICAL REST {"shortKey": "canonical_chemistry_by_enzyme_external_factors", "weight": 1, "tags": ["GK", "LK", "canonical", "SekII"], "contains": [], "dimensionTags": {"framework": "canonical-gymnasium-chemistry", "demandLevel": "AB2", "processCompetencies": [], "guidingIdeas": ["BC_REAKTION", "BC_ENERGIE"], "phase": "Q2", "area": "Naturstoffe", "topicCode": "CANONICAL.CHEMISTRY.Q2.ENZYME_EXTERNAL_FACTORS"}, "applicability": {"jurisdiction": ["DE-BB", "DE-BE", "DE-BY", "DE-HB", "DE-HE", "DE-NI"]}, "extendedData": {"provenance": {"sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808", "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)", "sourceGoalId": "0117dde2-77bc-5f62-8832-28862dbba36b"}}, "type": "atomic", "examples": []}
+IMAGE [{"type": "goal-visualization", "resourceType": "image", "role": "primary", "skillpilotId": "b4ca3af2-77f1-59e8-955d-c4959e284242", "title": "Visualisierung: Außenfaktoren auf Enzymreaktionen erklären", "url": "/assets/goal-visualizations/chemie/b4ca3af2-77f1-59e8-955d-c4959e284242/b4ca3af2-77f1-59e8-955d-c4959e284242.png", "provider": "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)", "description": "Visualisierung zum Lernziel: Außenfaktoren auf Enzymreaktionen erklären.", "altText": "Zwei beispielhafte Aktivitätskurven zeigen ein saures pH-Optimum für Pepsin und ein annähernd neutrales für Amylase. Die Beschriftung erklärt, dass das Optimum vom Enzym abhängt.", "lang": "de", "license": "CC-BY-4.0", "reviewStatus": "pilot"}]
+PROFILE.archetype = concept
+PROFILE.expectations[0].id = structure-and-evidence
+PROFILE.expectations[0].essentialUnderstandingDe = Reaktionsrate hängt sowohl von Kollisionen als auch von Enzymzustand und Sättigung ab.
+PROFILE.expectations[0].essentialUnderstandingEn = Rate depends on encounters, enzyme state and saturation.
+PROFILE.expectations[0].observablePerformanceDe = Mehr wirksame Begegnungen erhöhen zunächst Rate; Denaturierung kann bei Hitze absenken. Rückkühlen/Gleichmessung trennt reversible Kinetik und bleibenden Strukturverlust.
+PROFILE.expectations[0].observablePerformanceEn = More effective encounters initially increase rate; heat denaturation may lower it. Recooling/equal measurement separates reversible kinetics and persistent damage.
+PROFILE.expectations[1].id = fresh-transfer
+PROFILE.expectations[1].essentialUnderstandingDe = Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.
+PROFILE.expectations[1].essentialUnderstandingEn = The same subject relationship is transferred to a changed case with explicit conditions and inference limits.
+PROFILE.expectations[1].observablePerformanceDe = Sättigung begrenzt verfügbare aktive Zentren; pH beeinflusst Protonierung/Struktur. Plateau beweist keinen Substratverbrauch, weil Anfangsraten verglichen werden.
+PROFILE.expectations[1].observablePerformanceEn = Saturation limits available active sites; pH affects protonation and structure. A plateau does not prove substrate exhaustion because initial rates are compared.
+PROFILE.coverageExpectations.requiredExpectationIds[0] = structure-and-evidence
+PROFILE.coverageExpectations.requiredExpectationIds[1] = fresh-transfer
+PROFILE.coverageExpectations.minimumIndependentDemonstrations = 2
+PROFILE.coverageExpectations.freshVariationRequired = True
+PROFILE.coverageExpectations.independentTransferRequired = True
+PROFILE.variationAxes[0].id = material-and-conditions
+PROFILE.variationAxes[0].textDe = Material, Stoffstruktur, Messbedingung oder Bewertungsdossier wechseln wie in den zwei ausdrücklich ausgearbeiteten Fällen; quantitative Angaben sind synthetische Aufgabenwerte.
+PROFILE.variationAxes[0].textEn = Material, molecular structure, measurement conditions or evaluation dossier vary as explicitly specified in the two worked cases; numerical values are synthetic task data.
+PROFILE.applicationCaseBriefs[0].id = case-a
+PROFILE.applicationCaseBriefs[0].taskDemandDe = Ein Datensatz zeigt steigende Enzymrate bis zu mäßiger Temperatur und danach starkes Absinken. Erkläre beide Bereiche und plane eine Rückkühlkontrolle.
+PROFILE.applicationCaseBriefs[0].taskDemandEn = A dataset shows enzyme rate increasing to moderate temperature and then sharply dropping. Explain both and plan recooling control.
+PROFILE.applicationCaseBriefs[0].understandingFocusEn = Rate depends on encounters, enzyme state and saturation.
+PROFILE.applicationCaseBriefs[1].id = case-b-transfer
+PROFILE.applicationCaseBriefs[1].taskDemandDe = Bei unveränderter Enzymmenge steigt die Anfangsrate mit Substratkonzentration bis zu einem Plateau; ein pH-Wechsel senkt sie. Begründe beide Einflüsse.
+PROFILE.applicationCaseBriefs[1].taskDemandEn = At fixed enzyme amount, initial rate rises with substrate to a plateau; a pH shift lowers it. Explain both influences.
+PROFILE.applicationCaseBriefs[1].understandingFocusEn = Rate depends on encounters, enzyme state and saturation.
+WHOLE CASES[0].goalId = b4ca3af2-77f1-59e8-955d-c4959e284242
+WHOLE CASES[0].case.id = case-a
+WHOLE CASES[0].case.understandingFocusEn = Rate depends on encounters, enzyme state and saturation.
+WHOLE CASES[0].rubric.allRequiredAspects = True
+WHOLE CASES[0].rubric.scoringDe = Erwartete chemische Beziehungen, begründeter Fallbezug und benannte Aussagegrenze werden jeweils bewertet. Richtiges Ergebnis ohne fachliche Begründung genügt nicht.
+WHOLE CASES[0].rubric.scoringEn = Assess expected chemical relationships, justified use in the case and inference limits individually. A correct answer without chemical reasoning is insufficient.
+WHOLE CASES[0].rubric.misconceptionChecksDe[0] = Denaturierung kann bei Hitze absenken. Rückkühlen/Gleichmessung trennt reversible Kinetik und bleibenden Strukturverlust.
+WHOLE CASES[0].rubric.misconceptionChecksDe[1] = pH beeinflusst Protonierung/Struktur. Plateau beweist keinen Substratverbrauch, weil Anfangsraten verglichen werden.
+WHOLE CASES[0].rubric.executionBoundaryDe = Dies sind fachliche Aufgabenmodelle ohne Behauptung einer ausgeführten Laborarbeit.
+WHOLE CASES[0].rubric.executionBoundaryEn = These are subject task models with no claim of laboratory execution.
+WHOLE CASES[0].exactCurrentCaseBrief.id = case-a
+WHOLE CASES[0].exactCurrentCaseBrief.understandingFocusEn = Rate depends on encounters, enzyme state and saturation.
+WHOLE CASES[1].goalId = b4ca3af2-77f1-59e8-955d-c4959e284242
+WHOLE CASES[1].case.id = case-b-transfer
+WHOLE CASES[1].case.understandingFocusEn = Rate depends on encounters, enzyme state and saturation.
+WHOLE CASES[1].rubric.allRequiredAspects = True
+WHOLE CASES[1].rubric.executionBoundaryEn = These are subject task models with no claim of laboratory execution.
+WHOLE CASES[1].exactCurrentCaseBrief.id = case-b-transfer
+WHOLE CASES[1].exactCurrentCaseBrief.understandingFocusEn = Rate depends on encounters, enzyme state and saturation.

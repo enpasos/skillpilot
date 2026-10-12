@@ -8,27 +8,21 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image_gen
 - Status: pilot
-- Quellbild: `c8844ac6-c414-5a0e-9fcd-7d0a82177d09.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/c8844ac6-c414-5a0e-9fcd-7d0a82177d09/c8844ac6-c414-5a0e-9fcd-7d0a82177d09.jpg`
+- Quellbild: `c8844ac6-c414-5a0e-9fcd-7d0a82177d09.png`
+- Public Asset: `/assets/goal-visualizations/chemie/c8844ac6-c414-5a0e-9fcd-7d0a82177d09/c8844ac6-c414-5a0e-9fcd-7d0a82177d09.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+# Targeted correction of primary-cell candidate 1
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Edit the supplied candidate PNG precisely. Preserve its friendly comic style, blue/orange palette, landscape dimensions, large main battery, battery-form icons and three evaluation icons. Correct the actual conducting paths inside the left cutaway: currently a gold rod descends from the POSITIVE top button into the central NEGATIVE zinc gel. REMOVE that upper gold rod completely. A positive collector MUST NOT enter or touch the negative zinc gel.
 
-Titel: Primärzellen und Batterietypen fachlich beurteilen
-Beschreibung: Die lernende Person kann das Bau- und Funktionsprinzip galvanischer Zellen auf Primärzellen in Alltag und Technik übertragen und Vor- sowie Nachteile unterschiedlicher Batterietypen fachlich und gesellschaftlich beurteilen.
+Show ONE continuous brass NEGATIVE collector rising from the insulated negative bottom contact into the central zinc gel and stopping well below the top lid. Its upper end is a rounded free end embedded in zinc gel, not connected to the positive cap. Give the central zinc compartment an obvious electrically insulating closed top seal between it and the positive top lid. The positive top button connects via the steel cover and outer steel can ONLY to the brown outer MnO2/carbon ring. Preserve a continuous separator between the grey zinc gel and the brown MnO2 ring. The insulated negative bottom disc must have no metallic contact with the positive outer can. The resulting image must not depict an internal short circuit or two opposing collector rods attached to both terminals in the same zinc gel.
+
+Improve essential phone legibility by simplifying the large labels: change the top headline to only "Primärzellen". The left cutaway is a specific "Alkali-Mangan" example; add this short label above it. The left electrode box should say only "MnO₂ +", the right electrode box only "Zn −", and the separator box only "Trennung". Keep the leaders visibly ending in the correct outer MnO2 ring, inner grey zinc gel and continuous separator respectively. Remove small explanatory paragraphs from those boxes. Preserve the three short evaluation labels "Leistung", "Kosten", "Entsorgung" and the short "Einweg" label. The reference picture's brand-free battery forms and colours remain. Keep important objects and labels legible at360px and680px whole-image widths. No new tiny text, no table, no photorealism, no sterile CAD. Output PNG; this is still an unapproved candidate, not a cleared asset.
 ```
 
 ## Review-Notiz

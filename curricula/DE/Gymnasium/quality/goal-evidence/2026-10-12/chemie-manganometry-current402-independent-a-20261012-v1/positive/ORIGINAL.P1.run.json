@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-manganometry-current402-independent-a-p-original-20261012-v1",
+  "bundleFingerprint": "sha256:1bdc1e521ee6a53474671c05c9205da42de39c65b7f023904af625a2b1cd6a16",
+  "bookDigest": "sha256:c11e6efb1d241aead36ced588c26841cebde8af352b7686e0df4e64f9365fdd5",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2-chemistry-independent",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:c20360e47d7eb488ce95f206e7418ae9809def0cee543d338f34c13a2968079e",
+  "independenceGroupId": "chemie-manganometry-current402-independent-a-original",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c11e6efb1d241aead36ced588c26841cebde8af352b7686e0df4e64f9365fdd5"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:79f04c7fb193976641bb22fd6e1d7629e6217b1392f43e269cf90ba9f804cea8"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:19b303c9c308615d5c94ec47ccda41a3fbf5688ba642735466bad580e38be67e"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ad17e51932dad98ea4fb93de84cf307ca2c5362289d977fab40c30069d3445c9"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8eb07c76ed1db5ee5fc7665865f253b2a742c5c515f7221153f1adf97879d230"
+    }
+  ],
+  "startedAt": "2026-10-12T04:57:59.978045Z",
+  "completedAt": "2026-10-12T04:59:17.428828Z",
+  "status": "completed",
+  "outputDigest": "sha256:dda93918a151b74665ad32dfb78bf6a618f55dc8425011a2f63fad0a6b84149f",
+  "toolchainVersion": "skillpilot-description-review-v2"
+}

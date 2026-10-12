@@ -1,0 +1,66 @@
+GOAL 5 dfaef897-dcd4-55d4-a1fe-3dd90b818853 Zuckerkonfigurationen und Anomere darstellen / Represent sugar configurations and anomers
+Die lernende Person kann Glucose und Fructose in Fischer- und Haworth-Projektion darstellen, den Ringschluss durch den intramolekularen nucleophilen Angriff einer Hydroxygruppe auf die Carbonylgruppe erklären und D-/L-Konfiguration sowie Anomerie anhand der betreffenden Stereozentren unterscheiden.
+The learner can represent glucose and fructose in Fischer and Haworth projections, explain ring closure through intramolecular nucleophilic attack of a hydroxy group on the carbonyl group, and distinguish D/L configuration and anomerism using the relevant stereocentres.
+REQUIRES 684ffe86-3a9f-5514-866a-47d16372f2d4
+CANONICAL REST {"weight": 1, "tags": ["GK", "LK"], "contains": [], "dimensionTags": {"framework": "hessen-kc-2024-chemistry", "demandLevel": "AB2", "processCompetencies": [], "guidingIdeas": ["BC_AUFBAU"], "phase": "Q2", "area": "Naturstoffe", "topicCode": "Q2.1.SPLIT.dfaef897"}, "applicability": {"jurisdiction": ["DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"]}, "extendedData": {"provenance": {"sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13", "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)", "sourceGoalId": "e624ba00-9202-4dbf-ab86-0c7dd93089e6"}, "splitOriginGoalId": "8761cfd2-aa1a-56f1-9272-9cf66ef4b271"}, "type": "atomic", "examples": []}
+IMAGE [{"type": "goal-visualization", "resourceType": "image", "role": "primary", "skillpilotId": "dfaef897-dcd4-55d4-a1fe-3dd90b818853", "title": "Visualisierung: Zuckerkonfigurationen und Anomere darstellen", "url": "/assets/goal-visualizations/chemie/dfaef897-dcd4-55d4-a1fe-3dd90b818853/dfaef897-dcd4-55d4-a1fe-3dd90b818853.png", "provider": "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)", "description": "Visualisierung zum Lernziel: Zuckerkonfigurationen und Anomere darstellen.", "altText": "Fischer- und Haworthprojektion von D-Glucose stehen nebeneinander. Die OH-Anordnung an C2 bis C5 bleibt erhalten; die alpha-Haworthform trägt die anomere OH-Gruppe an C1 nach unten.", "lang": "de", "license": "CC-BY-4.0", "reviewStatus": "pilot"}]
+PROFILE.archetype = concept
+PROFILE.expectations[0].id = unlabelled-d-l-and-glucose-closure
+PROFILE.expectations[0].essentialUnderstandingDe = D/L wird aus unbenannter Struktur bestimmt; Ringschluss erhält alte Stereozentren und schafft das anomere Zentrum.
+PROFILE.expectations[0].essentialUnderstandingEn = D/L is determined from unnamed structures; closure preserves existing stereocentres and creates the anomeric centre.
+PROFILE.expectations[0].observablePerformanceDe = A ist D-Glucose, B L-Glucose; das höchstnummerierte Stereozentrum C5 entscheidet (OH rechts/links). Alle vier Zentren sind gespiegelt: Enantiomere. Bei A greift ein freies Elektronenpaar von O5 das Carbonyl-C1 an, das C=O-π-Elektronenpaar geht zu O1; nach Protonenübertragung entsteht ein Halbacetal, keine Wasserabspaltung. Ringfolge O5–C1–C2–C3–C4–C5: O+5C. In der üblichen Haworthlage (O oben rechts, C1 rechts) sind C2-OH unten, C3-OH oben, C4-OH unten, C5-CH2OH oben; C1-OH α unten und β oben. Das neue C1 ist anomer, C5 bleibt unverändert; α/β ist keine D/L-Umkehr.
+PROFILE.expectations[0].observablePerformanceEn = A is D-glucose and B L-glucose; the highest-numbered stereocentre C5 determines D/L (OH right/left). All four centres are mirrored: enantiomers. In A, an O5 lone pair attacks carbonyl C1 and the C=O π pair moves to O1; proton transfer gives a hemiacetal without water loss. The ring is O5–C1–C2–C3–C4–C5: O+5C. In the usual Haworth orientation (O upper right, C1 right), C2-OH is down, C3-OH up, C4-OH down and C5-CH2OH up; C1-OH is α down or β up. New C1 is anomeric while C5 remains unchanged; α/β does not reverse D/L.
+PROFILE.expectations[1].id = fructose-furanose-pyranose-transfer
+PROFILE.expectations[1].essentialUnderstandingDe = Eine Ketose verschiebt das anomere Zentrum zu C2; beide Ringschlüsse prüfen Konfigurationserhalt und richtige Ringgröße.
+PROFILE.expectations[1].essentialUnderstandingEn = A ketose moves the anomeric centre to C2; both closures test configuration preservation and correct ring size.
+PROFILE.expectations[1].observablePerformanceDe = F ist D-Fructose, F* L-Fructose, weil C5-OH rechts/links; keine Drehvorzeichenangabe folgt. Fructose ist Ketose (C2=O), Glucose Aldose (C1=O). O5 oder O6 greift C2 an; das π-Paar geht zu O2, Protonenübertragung ergibt ein Halbketal (unter dem curricularen Oberbegriff Halbacetalbildung), ohne Kondensation. Furanosering: O5–C2–C3–C4–C5, Pyranosering: O6–C2–C3–C4–C5–C6. C2 ist neu anomer. Übliche Haworthlage mit Ring-O oben/rechts und C2 rechts: D-Furanose C3-OH oben, C4-OH unten, C5-CH2OH(C6) oben; C2-OH α unten, β oben und C1-CH2OH jeweils entgegengesetzt. D-Pyranose C3-OH oben, C4-OH unten, C5-OH unten; C6 ist Ring-CH2. Auch dort C2-OH α unten, β oben, C1-CH2OH entgegengesetzt. D/L bleibt an der aus der Kette erhaltenen C5-Konfiguration definiert. Die vier zyklischen Formen sind zwei Ringgrößen mit jeweils einem Anomerenpaar, nicht vier gegenseitige Enantiomere. F/F* sind spiegelbildlich; eine α/β-Änderung allein ändert D nicht.
+PROFILE.expectations[1].observablePerformanceEn = F is D-fructose and F* L-fructose because C5-OH is right/left; this does not give rotation sign. Fructose is a ketose (C2=O), glucose an aldose (C1=O). O5 or O6 attacks C2; the π pair moves to O2 and proton transfer produces a hemiketal (within the curriculum's broader hemiacetal wording), without condensation. Furanose: O5–C2–C3–C4–C5; pyranose: O6–C2–C3–C4–C5–C6. New C2 is anomeric. In the usual Haworth orientation with ring O above/right and C2 on the right, D-furanose has C3-OH up, C4-OH down and C5-CH2OH(C6) up; C2-OH is α down or β up, with C1-CH2OH opposite. D-pyranose has C3-OH up, C4-OH down and C5-OH down; C6 is ring CH2. C2-OH is again α down or β up, with C1-CH2OH opposite. D/L uses retained C5 configuration. These are two ring sizes with an anomer pair each, not four mutual enantiomers. F/F* are mirrors; changing α/β alone does not change D.
+PROFILE.coverageExpectations.requiredExpectationIds[0] = unlabelled-d-l-and-glucose-closure
+PROFILE.coverageExpectations.requiredExpectationIds[1] = fructose-furanose-pyranose-transfer
+PROFILE.coverageExpectations.minimumIndependentDemonstrations = 2
+PROFILE.coverageExpectations.freshVariationRequired = True
+PROFILE.coverageExpectations.independentTransferRequired = True
+PROFILE.variationAxes[0].id = actual-operator-transfer
+PROFILE.variationAxes[0].textDe = Die vollständig ausgearbeiteten Fälle wechseln die konkret genannten Struktur-, Phasen-, Proben-, Mess- oder Modellbedingungen. Methodenspezifische Quellenpflichten sind keine beliebigen Alternativen. Durchführungsaufgaben erfordern reale Eigenarbeit; synthetische Muster erfüllen sie nicht.
+PROFILE.variationAxes[0].textEn = Complete worked cases vary the specified structure, phase, sample, measurement or model conditions. Source-specific method duties are not interchangeable alternatives. Execution requires actual own work; synthetic fixtures do not satisfy it.
+PROFILE.applicationCaseBriefs[0].id = unlabelled-d-l-and-glucose-closure
+PROFILE.applicationCaseBriefs[0].taskDemandDe = Zwei unbenannte Aldohexosen A/B besitzen CHO oben und CH2OH unten. OH an C2–C5: A rechts-links-rechts-rechts; B links-rechts-links-links. Zeichne beide Fischer-Projektionen, ordne D/L selbst zu und begründe die Beziehung. Leite für A den C5→C1-Ringschluss einschließlich Elektronenpaarpfeilen ab und zeichne beide Glucopyranose-Anomere mit nummerierten C-Atomen.
+PROFILE.applicationCaseBriefs[0].taskDemandEn = Two unnamed aldohexoses A/B have CHO at the top and CH2OH below. OH at C2–C5: A right-left-right-right; B left-right-left-left. Draw both Fischer projections, independently assign D/L and justify their relationship. For A, derive C5→C1 ring closure including electron-pair arrows and draw both glucopyranose anomers with carbon numbering.
+PROFILE.applicationCaseBriefs[1].id = fructose-furanose-pyranose-transfer
+PROFILE.applicationCaseBriefs[1].taskDemandDe = Ketose F besitzt CH2OH an C1 und C6, C=O an C2 und OH-Folge C3–C5 links-rechts-rechts; ihr Spiegel F* rechts-links-links. Zeichne Fischerbilder, ordne D/L unabhängig zu und vergleiche die Carbonylposition mit Glucose. Konstruiere für F α- und β-Fructofuranose durch O5→C2 und α- und β-Fructopyranose durch O6→C2, jeweils nummeriert. Erkläre Elektronenpaarbewegung und anomeres Zentrum. Begründe, warum die D/L-Entscheidung bei der Pyranose nicht an einem vermeintlichen C6-CH2OH außerhalb des Rings getroffen werden kann.
+PROFILE.applicationCaseBriefs[1].taskDemandEn = Ketose F has CH2OH at C1 and C6, C=O at C2, and C3–C5 OH left-right-right; its mirror F* has right-left-left. Draw Fischer projections, independently assign D/L and compare carbonyl position with glucose. Construct F α/β-fructofuranose via O5→C2 and α/β-fructopyranose via O6→C2, with numbering. Explain electron-pair movement and the anomeric centre. Explain why pyranose D/L cannot be assigned from a supposed external C6-CH2OH.
+WHOLE CASES[0].goalId = dfaef897-dcd4-55d4-a1fe-3dd90b818853
+WHOLE CASES[0].case.id = unlabelled-d-l-and-glucose-closure
+WHOLE CASES[0].rubric.maximumPoints = 8
+WHOLE CASES[0].rubric.criteria[0].points = 2
+WHOLE CASES[0].rubric.criteria[0].aspectDe = Beide Fischerbilder und unabhängige D/L-Zuordnung an C5.
+WHOLE CASES[0].rubric.criteria[0].aspectEn = Both Fischer drawings and independent D/L assignment at C5.
+WHOLE CASES[0].rubric.criteria[1].points = 2
+WHOLE CASES[0].rubric.criteria[1].aspectDe = Nucleophiler Angriff und Carbonylöffnung ohne Wasserverlust.
+WHOLE CASES[0].rubric.criteria[1].aspectEn = Nucleophilic attack and carbonyl opening without water loss.
+WHOLE CASES[0].rubric.criteria[2].points = 2
+WHOLE CASES[0].rubric.criteria[2].aspectDe = Nummerierter Sechsring mit erhaltenen C2–C5-Konfigurationen.
+WHOLE CASES[0].rubric.criteria[2].aspectEn = Numbered six-membered ring preserving C2–C5 configurations.
+WHOLE CASES[0].rubric.criteria[3].points = 2
+WHOLE CASES[0].rubric.criteria[3].aspectDe = C1-α/β richtig und Enantiomerie gegen Anomerie abgegrenzt.
+WHOLE CASES[0].rubric.criteria[3].aspectEn = Correct C1 α/β; distinguishes enantiomerism from anomerism.
+WHOLE CASES[0].exactCurrentCaseBrief.id = unlabelled-d-l-and-glucose-closure
+WHOLE CASES[1].goalId = dfaef897-dcd4-55d4-a1fe-3dd90b818853
+WHOLE CASES[1].case.id = fructose-furanose-pyranose-transfer
+WHOLE CASES[1].rubric.maximumPoints = 9
+WHOLE CASES[1].rubric.criteria[0].points = 2
+WHOLE CASES[1].rubric.criteria[0].aspectDe = Ketose-Fischerbild, Aldose/Ketose-Vergleich und unabhängiges D/L an C5.
+WHOLE CASES[1].rubric.criteria[0].aspectEn = Ketose Fischer structure, aldose/ketose comparison and independent C5 D/L.
+WHOLE CASES[1].rubric.criteria[1].points = 2
+WHOLE CASES[1].rubric.criteria[1].aspectDe = O5/O6-Angriffe und neue Halbketalbindung an C2 erklärt.
+WHOLE CASES[1].rubric.criteria[1].aspectEn = Explains O5/O6 attacks and new C2 hemiketal bond.
+WHOLE CASES[1].rubric.criteria[2].points = 2
+WHOLE CASES[1].rubric.criteria[2].aspectDe = Beide Furanose-Anomere mit richtigen Substituenten.
+WHOLE CASES[1].rubric.criteria[2].aspectEn = Both furanose anomers with correct substituents.
+WHOLE CASES[1].rubric.criteria[3].points = 2
+WHOLE CASES[1].rubric.criteria[3].aspectDe = Beide Pyranose-Anomere; C6 im Ring und C5 als Referenz.
+WHOLE CASES[1].rubric.criteria[3].aspectEn = Both pyranose anomers; C6 in ring and C5 reference.
+WHOLE CASES[1].rubric.criteria[4].points = 1
+WHOLE CASES[1].rubric.criteria[4].aspectDe = Keine D/L-Umkehr durch α/β und keine Verteilung erfunden.
+WHOLE CASES[1].rubric.criteria[4].aspectEn = No α/β-induced D/L reversal and no invented distribution.
+WHOLE CASES[1].exactCurrentCaseBrief.id = fructose-furanose-pyranose-transfer

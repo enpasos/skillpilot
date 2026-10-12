@@ -1,0 +1,18 @@
+{
+  "check": "P-positive-v2",
+  "argv": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "quality:positive-goal-evidence:check",
+    "--",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-current217-three-fresh-independent-b-20261012-v9/P/review.config.json"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot",
+  "startedAt": "2026-10-12T12:15:33.758499+00:00",
+  "completedAt": "2026-10-12T12:15:34.505585+00:00",
+  "exitCode": 1,
+  "stdout": "\n> skillpilot@0.0.0 quality:positive-goal-evidence:check\n> tsx scripts/positiveGoalEvidenceReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-current217-three-fresh-independent-b-20261012-v9/P/review.config.json\n\n# Positive Goal Evidence Review: chemie-q3-current217-three-fresh-independent-b-20261012-v9\nScope: Three fresh current217-preserving independent B candidates\nConfigured goals: 3\nApproved: 0\nNeeds human review: 3\nRejected: 0\nBlocking issues: 6\n- 81373fb7-2a4a-5b2c-acd0-b4e775acaa65: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/chemie/81373fb7-2a4a-5b2c-acd0-b4e775acaa65/81373fb7-2a4a-5b2c-acd0-b4e775acaa65.png\n- 81373fb7-2a4a-5b2c-acd0-b4e775acaa65: stale reviewInputFingerprint; expected sha256:dcbb113f93cf0548e5ff907e51656b287ac663b7ed3512789a48325118c65cba\n- 8be14f15-2258-58e6-ae4e-38953f5d0570: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/chemie/8be14f15-2258-58e6-ae4e-38953f5d0570/8be14f15-2258-58e6-ae4e-38953f5d0570.png\n- 8be14f15-2258-58e6-ae4e-38953f5d0570: stale reviewInputFingerprint; expected sha256:68254bd26d2c289128721b1cb527c27311d45e2d5cef2e9f157727675f2ad4d4\n- c8844ac6-c414-5a0e-9fcd-7d0a82177d09: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/chemie/c8844ac6-c414-5a0e-9fcd-7d0a82177d09/c8844ac6-c414-5a0e-9fcd-7d0a82177d09.png\n- c8844ac6-c414-5a0e-9fcd-7d0a82177d09: stale reviewInputFingerprint; expected sha256:15cae5dae0a434d9ed04e5f03d1b9434bcc401d95bc8d9022ffba7293c446e42\n",
+  "stderr": ""
+}

@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: Apache-2.0
+import datetime,hashlib,json,pathlib
+R=pathlib.Path.cwd();D=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12';B=D/'chemie-q2-e81-and-978-current407-operative-material-scope-author-successor-20261012-v4';OLD=D/'chemie-q2-naturstoffe-current407-targeted-remediation-root-preparation-20261012-v3/later-stage-source6';E='e81a4aed-9695-533e-8eb7-7a0c714346ea'
+def read(p):return json.loads(p.read_text())
+def sha(p):return 'sha256:'+hashlib.sha256(p.read_bytes()).hexdigest()
+def ref(p):return {'path':str(p.relative_to(R)),'sha256':sha(p),'bytes':p.stat().st_size}
+def write(p,x):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+freeze=B/'FINAL.author-successor.freeze.json';assert not freeze.exists()
+oldseal=read(OLD/'FINAL.technical-preparation.freeze.json')
+for x in oldseal['ownFiles']:assert ref(R/x['path'])==x
+initial=read(B/'inputs/INITIAL.original-CAS-and-author-boundaries.json')
+for k in ['baselineNeutral','baselineSeal','canonicalInput','semanticKindInput','originalPInput','originalWhole88CaseInput']:assert ref(R/initial[k]['path'])==initial[k]
+P=[json.loads(s) for s in (B/'positive/P1.e81-only.actual-bound.informed-author.review.jsonl').read_text().splitlines() if s.strip()];assert len(P)==1 and P[0]['goalId']==E
+cases=read(B/'cases/whole4.e81-only.current-operative.DEEN.material-protocol-solutions-rubrics.json');assert len(cases['cases'])==4 and all(x['goalId']==E for x in cases['cases']);assert '0–2000' not in json.dumps(cases,ensure_ascii=False)
+assert read(B/'checks/normal-P1-e81-only.actual.json')['exitCode']==0
+assert read(B/'checks/normal-e81-schema-semantics-and-operative-case-bindings.actual.json')['normalSchemaErrors']==0
+proof=read(B/'checks/e81-whole-operative-body-conservation-and-978-exact-retention.json');proof['countedAtomicGoals']=proof.pop('canonicalCount');write(B/'checks/e81-whole-operative-body-conservation-and-978-exact-retention.json',proof)
+write(B/'neutral/selected-e81-current-whole-goal-profile-and-operative-case-binds.json',{'goal':next(x for x in read(R/initial['canonicalInput']['path'])['goals'] if x['id']==E),'currentPRecord':P[0],'operativeCaseMaterial':ref(B/'cases/whole4.e81-only.current-operative.DEEN.material-protocol-solutions-rubrics.json'),'caseIds':[x['case']['id'] for x in cases['cases']],'canonicalGoalUnchanged':True,'sourceAndImageInputsUnchanged':True,'authorRole':'informed author, not independent reviewer','newScientificVotes':0})
+entry=B/'FINAL.e81-only.neutral-author-successor.json'
+write(entry,{'artifactRole':'New inactive e81-only operative material and route-scope informed-author successor','authorRole':'informed author, not independent reviewer','createdAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'selectedGoalIds':[E],'selectedWholeGoalPAndCases':ref(B/'neutral/selected-e81-current-whole-goal-profile-and-operative-case-binds.json'),'selectedPInput':ref(B/'positive/P1.e81-only.actual-bound.informed-author.review.jsonl'),'normalPConfig':ref(B/'positive/P1.e81-only.normal-inactive.config.json'),'operativeWholeFourCases':ref(B/'cases/whole4.e81-only.current-operative.DEEN.material-protocol-solutions-rubrics.json'),'boundedProfileFieldDeltas':ref(B/'checks/selected-e81-bounded-current-profile-field-deltas.json'),'wholeBodyConservationAndAccepted978Retention':ref(B/'checks/e81-whole-operative-body-conservation-and-978-exact-retention.json'),'fourRangeFieldDeltas':ref(B/'checks/exact-material-range-deltas-and-case-conservation.json'),'actualLiteralSourceContributionsUnchanged':ref(B/'sources/e81-only.actual-literal-route-boundaries.unchanged-mappings.json'),'normalSchemaAndBindingCheck':ref(B/'checks/normal-e81-schema-semantics-and-operative-case-bindings.actual.json'),'normalPCLI':ref(B/'checks/normal-P1-e81-only.actual.json'),'historicalNonOperativeMaterialLinks':ref(B/'historical/original-material-links.non-operative.json'),'baselineNeutralEntry':ref(OLD/'FINAL.current24.neutral-review-input.json'),'baseline266FileSeal':ref(OLD/'FINAL.technical-preparation.freeze.json'),'unchanged978SelectedForIntegration':False,'optional978DraftIsOperative':False,'rootNextTupleScope':['e81a4aed-9695-533e-8eb7-7a0c714346ea','793189f8-78bd-5204-848b-fd2bbc12e458'],'root793ImageOwnedSeparately':True,'canonicalGoalsChanged':0,'mappingsOrRegistryChanged':False,'newImages':0,'fullBookBuilds':0,'newScientificVotes':0,'strictGain':0,'status':'needs_human_review','reviewAuthority':'ai_candidate','evidenceLevel':'E1','maximumClaimScope':'G1','remainingHold':'Exact current e81 material/P/source-context acceptance remains pending two independent reviewers. Root prepares current e81+793 native tuple; accepted978 remains unchanged. Whole source unions remain unapproved.','peerVerdictFilesRead':False,'humanOrExecutionClaims':False,'activeOrGitChanges':False})
+(B/'README.e81-only-selected-boundaries.md').write_text('''# Selected e81-only inactive author successor
+
+Entry: FINAL.e81-only.neutral-author-successor.json. Only the e81 P1 record and four whole operative cases are selected. The accepted978 P/five cases stay byte-exact in the sealed baseline. The optional978 clarification is an unbound, unselected draft under drafts/978-optional-unselected and creates no new review requirement.
+
+The conductivity material list and moderator setup now consistently specify0–5000µS/cm for the standard; all1970–2010µS/cm is in range. The salt range remains at least100mS/cm. All supplied data, original solutions, moderator steps and original assessment criteria are conserved; the explicit range criterion is added. Historical0–2000 source wrappers remain separately linked as historical provenance and are absent from operative material.
+
+The three common guided-investigation expectations remain required. One existing-schema alternative group selects a complete ordinary route or a complete BW3.3.3(2) route according to the actual source operator. The chosen BW route requires both detailed bromine expectations and both entire preserved cases/rubrics. The advanced BW variant creates no universal Sek-I requirement or prerequisite. No source obligation is removed or freely exchanged.
+
+Unmodified normal schema/semantics/materialization and scopedP CLI pass with zero blocking issues. Initial criteria-locator mismatch is preserved in a failure receipt and corrected to the actual existing4ed61 criteria; criteria bytes are unchanged. No full book/provider builds, new images, mapping/schema/runtime/registry/active/Git changes, independent decisions, human performance claims or strict gains.
+
+Root owns the separate793 image and the next two actual changed native tuples e81+793. Exact independent acceptance remains pending. The original266-file stage and all historical source/review artifacts remain intact.
+
+Own teaching content: CC-BY-4.0. Preparation code and technical documentation: Apache-2.0. Third-party source rights unchanged.
+''')
+files=[ref(p) for p in sorted(B.rglob('*')) if p.is_file() and p!=freeze]
+write(freeze,{'artifactRole':'Immutable additive informed-author e81-only successor seal','selectedNeutralEntry':ref(entry),'ownFiles':files,'baseline266FileSeal':ref(OLD/'FINAL.technical-preparation.freeze.json'),'selectedGoals':[E],'optional978DraftSelected':False,'newScientificVotes':0,'strictGain':0,'activeOrGitChanges':False})
+for x in read(freeze)['ownFiles']:assert ref(R/x['path'])==x
+print(json.dumps({'entry':ref(entry),'seal':ref(freeze),'ownedFiles':len(files),'selectedPRecords':1,'wholeOperativeCases':4,'normalBlockingIssues':0,'newScientificVotes':0},ensure_ascii=False))

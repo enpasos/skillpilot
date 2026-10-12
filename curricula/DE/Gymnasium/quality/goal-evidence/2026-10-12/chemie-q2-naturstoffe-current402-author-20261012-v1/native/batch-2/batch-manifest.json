@@ -1,0 +1,68 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "q2-naturstoffe-current402-author-b2-20261012-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current402-author-20261012-v1/native/batch-2.config.json",
+  "configDigest": "sha256:0c9542583dc5adbd66c79896e04099230f64861d0709118356d8f0b27d00f95a",
+  "goalIds": [
+    "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+    "b4ca3af2-77f1-59e8-955d-c4959e284242",
+    "014e6d85-eecf-5228-9031-52a39981cd0d",
+    "96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+    "793189f8-78bd-5204-848b-fd2bbc12e458",
+    "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+    "360fccb9-896d-5e67-bf5d-5732621604c9",
+    "8fe39739-2938-5e2c-8db2-08572b44569a",
+    "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+    "9abd8069-17ad-5d30-9102-f8eff6055045",
+    "3681e688-7880-5bb4-9ab9-ef78289345c8",
+    "0b5342b9-512d-573f-90d5-7522aee35efa",
+    "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+    "47582f06-d724-5da9-acc6-16c91ab94f67",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 402,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current402-author-20261012-v1/native/full402.neutral.author.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current402-author-20261012-v1/candidate/canonical523.two-bounded-text-deltas.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:de08e1631b68fe4daf238cd47faa53ebead136fc9085f1c79b7efca06939826b"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:09a6075a6766c02f6784f1dfe87aab9054655e61640aba2e2a22819a7fa430ed",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:61ed6405c69fc63cafabbab7b3866ddb527ed053b45aece7a055f57838943117",
+    "reviewInputFingerprint": "sha256:bbe2e4e3845f0b1934ac0124928ebe2bc22078c6bc83df51e014b3ed7e3a8500",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "q2-naturstoffe-current402-author-b2-20261012-v1-a",
+        "campaignDigest": "sha256:7f4df8f431c06053aecc49bc2b8a675756b7f2eb50572c100a574b9f3265c418",
+        "roundId": "q2-naturstoffe-current402-author-b2-20261012-v1-first-pass-a",
+        "independenceGroupId": "q2-naturstoffe-current402-author-b2-20261012-v1-independent-a",
+        "batchId": "q2-naturstoffe-current402-author-b2-20261012-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e8a893c5bd7f9ee2a930c724f01ab1bf16f792a5ebf8d206905f674a88529433"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "q2-naturstoffe-current402-author-b2-20261012-v1-b",
+        "campaignDigest": "sha256:f70ffba0552a35fdeb0b3f60cc6e8cf62a5ebc36e6573d111498e3b44343745d",
+        "roundId": "q2-naturstoffe-current402-author-b2-20261012-v1-first-pass-b",
+        "independenceGroupId": "q2-naturstoffe-current402-author-b2-20261012-v1-independent-b",
+        "batchId": "q2-naturstoffe-current402-author-b2-20261012-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1fa11350eb4fcbb1320d74a3f81856e36e94c071edd33425df8eb6c937bcfd6a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

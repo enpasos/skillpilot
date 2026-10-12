@@ -1,0 +1,36 @@
+# Lernzielvisualisierung: Aminosäuren stereochemisch darstellen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `d8eeed29-d1b7-5a48-94b5-343629f8e867`
+- Titel: Aminosäuren stereochemisch darstellen
+- Beschreibung: Die lernende Person kann an geeigneten Aminosäuren Chiralität und Enantiomerie erklären und D-/L-Konfigurationen in der Fischer-Projektion darstellen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)
+- Status: pilot
+- Quellbild: `d8eeed29-d1b7-5a48-94b5-343629f8e867.png`
+- Public Asset: `/assets/goal-visualizations/chemie/d8eeed29-d1b7-5a48-94b5-343629f8e867/d8eeed29-d1b7-5a48-94b5-343629f8e867.png`
+
+## Prompt
+
+```text
+Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+
+Rahmen:
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
+- Erzeuge eine klare, gut lesbare Infografik im Querformat.
+- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
+- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
+- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+
+Titel: Aminosäuren stereochemisch darstellen
+Beschreibung: Die lernende Person kann an geeigneten Aminosäuren Chiralität und Enantiomerie erklären und D-/L-Konfigurationen in der Fischer-Projektion darstellen.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

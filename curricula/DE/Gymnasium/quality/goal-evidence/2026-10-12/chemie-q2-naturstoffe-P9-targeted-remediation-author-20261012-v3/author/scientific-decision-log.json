@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "role": "informed_author_remediation_not_independent_acceptance",
+  "candidateAtomicCount": 407,
+  "goalIds": [
+    "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+    "360fccb9-896d-5e67-bf5d-5732621604c9",
+    "793189f8-78bd-5204-848b-fd2bbc12e458",
+    "9abd8069-17ad-5d30-9102-f8eff6055045",
+    "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+    "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+    "1d2e7b80-653d-57b8-a284-8ede5a353b73",
+    "7371c82e-6668-5ddc-ba78-347113fcddf8",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5"
+  ],
+  "actualDeltas": [
+    {
+      "goalId": "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+      "action": "add_whole_case",
+      "caseId": "enzyme-function-metabolism-detergent",
+      "expectationId": "enzyme-effects"
+    },
+    {
+      "goalId": "360fccb9-896d-5e67-bf5d-5732621604c9",
+      "action": "add_whole_case",
+      "caseId": "selected-nutrients-all-functions",
+      "expectationId": "all-selected-body-functions"
+    },
+    {
+      "goalId": "793189f8-78bd-5204-848b-fd2bbc12e458",
+      "action": "add_whole_case",
+      "caseId": "whole-biomolecule-carbohydrate-comparison",
+      "expectationId": "carbohydrate-structure-function-comparison"
+    },
+    {
+      "goalId": "9abd8069-17ad-5d30-9102-f8eff6055045",
+      "action": "add_whole_case",
+      "caseId": "food-preparation-solvent-choice",
+      "expectationId": "food-solvent-choice"
+    },
+    {
+      "goalId": "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+      "action": "replace_only_incomplete_whole_case",
+      "caseId": "case-1",
+      "expectationId": "aspect-1"
+    },
+    {
+      "goalId": "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+      "action": "replace_only_incomplete_whole_case",
+      "caseId": "case-2",
+      "expectationId": "aspect-2"
+    },
+    {
+      "goalId": "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+      "action": "add_whole_case",
+      "caseId": "protein-native-ph-transfer",
+      "expectationId": "protein-electrophoresis"
+    },
+    {
+      "goalId": "1d2e7b80-653d-57b8-a284-8ede5a353b73",
+      "action": "add_whole_route_specific_two_run_case_and_bound_existing_expectations",
+      "caseId": "benedict-execution-fresh-transfer",
+      "preservedCases": [
+        "case-1",
+        "case-2"
+      ]
+    },
+    {
+      "goalId": "7371c82e-6668-5ddc-ba78-347113fcddf8",
+      "action": "replace_only_incomplete_whole_case",
+      "caseId": "case-1",
+      "expectationId": "aspect-1"
+    },
+    {
+      "goalId": "7371c82e-6668-5ddc-ba78-347113fcddf8",
+      "action": "replace_only_incomplete_whole_case",
+      "caseId": "case-2",
+      "expectationId": "aspect-2"
+    },
+    {
+      "goalId": "64a5bb87-358d-5a22-958a-f66ba5521cd5",
+      "action": "replace_only_incomplete_whole_case",
+      "caseId": "case-1",
+      "expectationId": "aspect-1"
+    },
+    {
+      "goalId": "64a5bb87-358d-5a22-958a-f66ba5521cd5",
+      "action": "replace_only_incomplete_whole_case",
+      "caseId": "case-2",
+      "expectationId": "aspect-2"
+    }
+  ],
+  "missingAspectsAddressedByCase": {
+    "058dca74-1b57-5eb3-9c94-1c7b6cc795ad": "Controlled synthetic activity losses for lactase metabolism AND detergent protease; folding/activity/solubility distinction.",
+    "360fccb9-896d-5e67-bf5d-5732621604c9": "Full structure/function comparison of each selected fat, protein, carbohydrate, vitamin and mineral; explicit fat/protein body functions.",
+    "793189f8-78bd-5204-848b-fd2bbc12e458": "Nucleic acid comparison includes starch/cellulose units, glycosidic bonds, storage/structural function and changed unknown structures.",
+    "9abd8069-17ad-5d30-9102-f8eff6055045": "Concrete food-preparation solvent decisions using water/oil/salt/beta-carotene/lecithin data; bounded resorption/residence-time transfer.",
+    "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f": "Both real-research tasks require learner-selected chemical criteria, explicit classification rules and own food categories, with transfer/data gaps.",
+    "d1244f5d-9a12-5b74-97fe-ae974f40af26": "Native protein band data at pH8/pH12, BSA/lysozyme/unknown, charge/direction and mobility/identity limits; only EA additionally plans.",
+    "1d2e7b80-653d-57b8-a284-8ede5a353b73": "Own full teacher-authorised Benedict procedure with two real-execution runs and glucose/sucrose -> maltose/fructose transfer; source-specific alternative, no partner borrowing.",
+    "7371c82e-6668-5ddc-ba78-347113fcddf8": "Two fully supplied synthetic dossiers with real task values and qualitative use/supply-chain facts embedded in each task, model answer and rubric.",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5": "Actual research preserved; ecological, economic AND ethical dimensions all mandatory, plus source provenance/intent and counter-source."
+  },
+  "truthBoundaries": {
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "independentAcceptance": false,
+    "actualLearnerExecutions": 0,
+    "actualLaboratoryData": 0,
+    "humanApprovals": 0,
+    "humanTrials": 0,
+    "strictClosures": 0,
+    "activeWrites": false
+  },
+  "remainingSeparateHolds": [
+    "Independent P acceptance of these exact nine successors remains pending.",
+    "Source/operator work for 978a6f25, d8eeed29, dfaef897 and 2f3cdec5 remains root-owned and is not resolved by this package.",
+    "ee359c2e image correction/review remains separate.",
+    "Full native HTML/PDF combination is intentionally left to root; this package contains no new native book acceptance."
+  ],
+  "additionalMaterialCompletion": "9abd retained case-a/case-b-transfer briefs stay exact and now have concrete structure cards/background text in own whole-case rows."
+}

@@ -1,0 +1,16 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/biologie-0beb-underside-normal-preparation-20261012-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-basiskonzepte-0beb-stomata-underside-one-image-technical-preparation-20261012-v1/positive/.P1.current-image.pending.normal.jsonl.924752.399c00ea-10bb-4897-b197-6e90367f2267.tmp'
+    at async open (node:internal/fs/promises:637:25)
+    at async Object.writeFile (node:internal/fs/promises:1219:14)
+    at async replaceFileAtomically (/home/enpasos/projects/skillpilot/tmp/biologie-0beb-underside-normal-preparation-20261012-v1/app/scripts/materializePositiveGoalEvidenceCandidates.ts:115:5)
+    at async main (/home/enpasos/projects/skillpilot/tmp/biologie-0beb-underside-normal-preparation-20261012-v1/app/scripts/materializePositiveGoalEvidenceCandidates.ts:293:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/biologie-0beb-underside-normal-preparation-20261012-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-basiskonzepte-0beb-stomata-underside-one-image-technical-preparation-20261012-v1/positive/.P1.current-image.pending.normal.jsonl.924752.399c00ea-10bb-4897-b197-6e90367f2267.tmp'
+}
+
+Node.js v20.20.2

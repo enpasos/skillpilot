@@ -1,0 +1,42 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "chunk_id": "68fa3f",
+      "wall_time_seconds": 0.693944371,
+      "exit_code": 0,
+      "original_token_count": 291,
+      "output": "\n> skillpilot@0.0.0 validate:goal-description-review-campaign\n> tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-independent-a-20261012-v1/chemistry-round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-independent-a-20261012-v1/chemistry-round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-independent-a-20261012-v1/chemistry-round-a/description-review-campaign.json --batches-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-independent-a-20261012-v1/chemistry-round-a/batches --results-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-independent-a-20261012-v1/chemistry-round-a/results\n\nGoal-description review campaign results valid: 1\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "chunk_id": "799ea6",
+      "wall_time_seconds": 0.346259179,
+      "exit_code": 0,
+      "original_token_count": 166,
+      "output": "\n> skillpilot@0.0.0 quality:semantic-atomicity:check\n> tsx scripts/semanticAtomicityReview.ts --mode=check --config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-independent-a-20261012-v1/atomicity/ORIGINAL.A1.config.json\n\n# Semantic Atomicity Review: chemie-manganometry-current402-independent-a-original\nScope: Fresh one manganometry integrated competence decision\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 1\nCurrent reviewed atomic: 1\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "chunk_id": "bcab24",
+      "wall_time_seconds": 0.371484897,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "chunk_id": "3bb4bc",
+      "wall_time_seconds": 0.407731008,
+      "exit_code": 1,
+      "original_token_count": 187,
+      "output": "# Positive Goal Evidence Review: chemie-manganometry-current402-independent-a-original\nScope: Fresh independent A complete three-method assessment review; external source020 hold remains separately open\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 2\n- Run manifest curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-independent-a-20261012-v1/positive/ORIGINAL.P1.run.json (chemie-manganometry-current402-independent-a-p-original-20261012-v1): book_model artifact does not match bookDigest\n- 2fdd759f-8349-5f7e-b29a-6ac7fb0299f9: reviewRunId chemie-manganometry-current402-independent-a-p-original-20261012-v1 does not resolve to exactly one valid configured run manifest\n"
+    }
+  }
+]

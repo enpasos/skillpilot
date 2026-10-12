@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Proteine und Ammoniumionen nachweisen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `9deeac6f-d380-52c5-8fc9-e532ab1f4d3f`
+- Titel: Proteine und Ammoniumionen nachweisen
+- Beschreibung: Die lernende Person kann Proteine mit der Biuret-Reaktion nachweisen und Ammoniumionen als Abbauprodukt von Proteinen über Ammoniakbildung fachlich deuten.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)
+- Status: pilot
+- Quellbild: `9deeac6f-d380-52c5-8fc9-e532ab1f4d3f.png`
+- Public Asset: `/assets/goal-visualizations/chemie/9deeac6f-d380-52c5-8fc9-e532ab1f4d3f/9deeac6f-d380-52c5-8fc9-e532ab1f4d3f.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Opaque PNG for upper-secondary chemistry, landscape near16:9, about1600x900. Friendly abstract comic with warm cream background, colored outlines and large clear main motifs legible at360px width. No photorealism, technical IDs, dense paragraphs or tiny labels. Correct chemistry is mandatory. Two calm spacious panels of different chemical assays. Left dominant panel labelled 'Biuret': one test tube with purple solution and a magnified schematic square coordination core. Core is ONE visible central blue circle clearly labelled 'Cu²⁺'. Around it exactly FOUR small nitrogen donor nodes labelled 'N', at upper/lower/left/right, connected to centre by FOUR dashed coordination lines. Each N is adjacent to a simplified short peptide-backbone segment (only short abstract bead strings), without impossible additional atom bonds or covalent chain replacing Cu. Label 'Koordination'. Right smaller panel labelled 'Ammonium': a tube with pale solution, two nearby large symbols 'NH₄⁺' and 'OH⁻', an upward arrow to 'NH₃', and moist indicator paper above tube turning BLUE at its exposed tip. No flames or smell test, no claim dry paper detects gas. Conceptual assay orientation, not a lab execution recipe.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

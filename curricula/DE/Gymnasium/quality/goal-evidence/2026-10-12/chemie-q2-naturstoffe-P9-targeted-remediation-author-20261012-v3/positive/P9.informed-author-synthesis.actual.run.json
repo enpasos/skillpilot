@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q2-naturstoffe-p9-informed-author-v3",
+  "bundleFingerprint": "sha256:58764bbafbaec77354aa90b9801d7094180249cada27bac60379a3d4f4e4879a",
+  "bookDigest": "sha256:a5b048cfc0ad30b1afd89ea62de7bae4db3935c551bcf0edd7fa5ff6885ea7fc",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6 (session identity)",
+  "role": "synthesizer",
+  "promptFamilyId": "chemistry-targeted-whole-P-remediation-author-v3",
+  "promptFingerprint": "sha256:0c6e9d599654899a4a6d60bb13d8be3363d86c606ea42a3ad76f6ceb78b3f088",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:4e28c42db7a0ac00bfaa1515364e2292f4c56fbd4797e5e9cd08f43b04dcc1df",
+  "independenceGroupId": "informed-author-read-original-a-and-b-not-independent",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+    "360fccb9-896d-5e67-bf5d-5732621604c9",
+    "793189f8-78bd-5204-848b-fd2bbc12e458",
+    "9abd8069-17ad-5d30-9102-f8eff6055045",
+    "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+    "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+    "1d2e7b80-653d-57b8-a284-8ede5a353b73",
+    "7371c82e-6668-5ddc-ba78-347113fcddf8",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:a5b048cfc0ad30b1afd89ea62de7bae4db3935c551bcf0edd7fa5ff6885ea7fc"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:84914c25860c2a00b50a0fc6bb8c11d14626ab911b9a64b28566fc806383335a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:0c6e9d599654899a4a6d60bb13d8be3363d86c606ea42a3ad76f6ceb78b3f088"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-12T09:47:55.395330Z",
+  "completedAt": "2026-10-12T09:53:53.479537Z",
+  "status": "completed",
+  "outputDigest": "sha256:1d9daa64bdabd055a1190dae9e7ccac5ea09fcbc18fb4bf75197b77d47a7138e",
+  "toolchainVersion": "normal-P-v2-20261012"
+}

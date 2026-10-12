@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3",
+  "reviewerRole": "independent-A-image-only",
+  "reviewerAgent": "/root/chemistry_ee359_corrected_visual_a_v3",
+  "createdAtUTC": "2026-10-12T09:41:09.356719+00:00",
+  "goalId": "ee359c2e-e339-5b56-bceb-cc7517b36bf2",
+  "goalTitleDE": "Ammonium als Proteinabbauprodukt nachweisen",
+  "goalTitleEN": "Detect ammonium as a protein degradation product",
+  "goalDescriptionDE": "Die lernende Person kann einen kontrollierten Ammonium-Nachweis über Ammoniakfreisetzung durchführen und mit der Säure-Base-Reaktion erklären sowie Befunde im Kontext von Proteinabbau begrenzt deuten.",
+  "goalDescriptionEN": "The learner can carry out a controlled ammonium assay through ammonia release, explain its acid-base reaction and interpret results within bounded protein-degradation contexts.",
+  "decision": "rejected_regenerate",
+  "imageOnlyGatePass": false,
+  "correctedContactGeometryPass": true,
+  "scientificContentPass": true,
+  "desktop680Pass": true,
+  "phone360Pass": false,
+  "candidateSha256": "sha256:100f46b5e8262b29ca6421fa201f80e84649747d3b9bf2ec0442becf3559224c",
+  "candidateDimensions": [
+    1672,
+    941
+  ],
+  "independence": {
+    "peerVerdictsRead": false,
+    "oldEEAorBJudgmentsRead": false,
+    "rootPixelObservationRead": false,
+    "authorMetadataTreatedAsScientificProof": false,
+    "actualFullAndBrowserPixelsViewedViaViewImage": true,
+    "productionProvenanceReadOnlyAfterOwnPixelInspection": true
+  },
+  "findings": [
+    {
+      "criterion": "free-contact-tip-blue",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "The free LEFT end of the positive-test strip is blue. It is above the open left beaker, aligned with the NH3 gas-path arrow. The RIGHT end near and under the silver forceps is pink. At 360px the blue tip and pink clamp-side remain visibly distinct.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "no-liquid-immersion",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "Both test strips stay above their beaker rims. The positive blue tip does not enter the basic liquid. The instruction explicitly says not to dip into the solution; its phone legibility is reviewed separately.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "water-negative-control",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "The right water-control strip is uniformly pink and the captions indicate no NH3 and no blue colour change. No visible blue contact area occurs in the negative control.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "balanced-acid-base-equation",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "NH4+ + OH− → NH3 + H2O is correctly balanced: each side has N=1, O=1, H=5 and total charge zero. Subscripts and charges are correct and readable at all inspected widths.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "ammonia-versus-ammonium",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "The sample is labelled Ammoniumprobe and the released gas/molecular model NH3 (Ammoniak). The molecular model has one N and three H. The image does not depict NH4+ as the volatile gas.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "moist-paper-instruction-content",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "The caption says feuchtes Indikatorpapier, with the no-immersion parenthesis. The explanatory text identifies moist paper as the detector. This required condition is scientifically present in the full image and 680px display.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "bounded-protein-degradation-inference",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "The red Important box explicitly limits a positive ammonium test to the presence of NH4+ and says it does not prove protein degradation. The image therefore avoids a false causal inference from the assay alone. This statement is legible at full resolution and 680px; phone legibility is a separate blocker.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "symbolic-gas-path",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "Blue rising arrows are drawn as schematic direction symbols, not a blue liquid or a labelled blue cloud. NH3 is colourless; arrow colour is a diagram convention. No instruction to sniff the gas is shown.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "desktop-680-legibility",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "The 680×383 actual Chromium image is not cropped. Equation, positive/control setup, moisture/no-immersion instruction, explanatory boxes and source-limitation text can be read at its displayed size.",
+      "displayWidths": [
+        680
+      ]
+    },
+    {
+      "criterion": "phone-360-essential-text-legibility",
+      "result": "fail",
+      "blocking": true,
+      "actualPixelObservation": "At the actual 360×203 unzoomed Chromium display, the apparatus and free-tip colour are clear and the equation remains legible, but important accompanying text is excessively small. The no-immersion parenthesis and the multi-line protein-degradation limitation require close inspection/zoom; their characters are visually about 5–7px high (estimate, not an OCR measurement). The moisture condition is also only a tiny caption. This falls short of the required important-text readability at phone card width.",
+      "displayWidths": [
+        360
+      ]
+    },
+    {
+      "criterion": "scope-style-age-artifacts",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "The friendly science comic remains appropriate to the exact Q2 ammonium assay goal. The visual focuses on the acid-base release and controlled gas detection, with bounded interpretation. No technical IDs, watermark, third-party worksheet, or unrelated new topic is visible.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    },
+    {
+      "criterion": "alt-text",
+      "result": "pass",
+      "blocking": false,
+      "actualPixelObservation": "The sealed candidate alt text correctly conveys the reaction, ammonia reaching moist indicator above the vessel, and the negative water control. It does not mention the interpretation limit or blue free-tip geometry, so future accessibility metadata could be more complete; this image-only review does not alter canonical metadata.",
+      "displayWidths": [
+        "full-resolution",
+        360,
+        680
+      ]
+    }
+  ],
+  "blockingFindingIds": [
+    "phone-360-essential-text-legibility"
+  ],
+  "requiredNextAction": "Keep the corrected blue free-tip/pink clamp geometry and controlled assay content; create a targeted legibility revision that makes the moisture/no-immersion condition and the bounded protein-degradation interpretation readable at actual 360px width, then obtain fresh independent pixel reviews for its new hash.",
+  "boundaries": {
+    "strictM7Granted": false,
+    "strictIntegratedGain": 0,
+    "newDPNativeBindingsPrepared": false,
+    "humanApproval": false,
+    "humanTrial": false,
+    "activeIntegration": false,
+    "canonicalConfigGitOrAuthorWrites": false,
+    "reviewScope": "Actual corrected image plus actual Chromium displays and sealed child DE/EN goal only. D/P/native rebinding and strict M7 are outside this review."
+  },
+  "sourceReferences": [
+    {
+      "title": "RSC Education: Microscale reactions of positive ions with sodium hydroxide",
+      "url": "https://edu.rsc.org/experiments/microscale-reactions-of-positive-ions-with-sodium-hydroxide/757.article",
+      "accessEvidence": "Official RSC search result retrieved in this independent turn; direct open returned HTTP 405. The result states that damp red litmus held over ammonium chloride plus hydroxide turns blue and that the gas is ammonia.",
+      "use": "Supports moist-paper gas test; its ammonium-chloride example also shows that a positive assay can occur without protein degradation. The latter is an explicit logical inference, not a source quote."
+    },
+    {
+      "title": "AQA practical handbook, A-level chemistry",
+      "url": "https://filestore.aqa.org.uk/resources/chemistry/AQA-7404-7405-PHBK.PDF",
+      "accessEvidence": "Official AQA search result retrieved in this independent turn.",
+      "use": "Supports ammonium chloride plus hydroxide yielding the blue damp-litmus observation; no quotation reproduced."
+    },
+    {
+      "title": "CDC/NIOSH Pocket Guide: Ammonia",
+      "url": "https://www.cdc.gov/niosh/npg/npgd0028.html",
+      "accessEvidence": "Official source opened in this independent turn; formula NH3 and colourless gas description at lines 38–40 and 65–67.",
+      "use": "Supports reading the blue arrows as schematic path symbols rather than the real gas colour."
+    }
+  ],
+  "inputFiles": [
+    {
+      "originalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-root-correction-20261012-v3/ee359c2e-e339-5b56-bceb-cc7517b36bf2.png",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/corrected-image.original.png",
+      "bytes": 1819667,
+      "sha256": "sha256:100f46b5e8262b29ca6421fa201f80e84649747d3b9bf2ec0442becf3559224c"
+    },
+    {
+      "originalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-root-correction-20261012-v3/actual-displays/ee359.actual-360px.png",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/actual-360px.original.png",
+      "bytes": 100505,
+      "sha256": "sha256:d15de35f570e81395ab0375667e19a8bf704d249bde72defb06c9f5ef2418193"
+    },
+    {
+      "originalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-root-correction-20261012-v3/actual-displays/ee359.actual-680px.png",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/actual-680px.original.png",
+      "bytes": 316284,
+      "sha256": "sha256:b7f68949299264160a5e70401345356953016159f5760009c3c5ffcd1b42dcd6"
+    },
+    {
+      "originalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-root-correction-20261012-v3/actual-displays/browser-display-provenance.actual.json",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/browser-display-provenance.original.json",
+      "bytes": 1356,
+      "sha256": "sha256:b49c13c833712efa5fd78efcaa5e8202ffe108b608ef0bc2e443cc77f2e86850"
+    },
+    {
+      "originalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-root-correction-20261012-v3/actual-imagegen-tool-prompt.txt",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/actual-imagegen-tool-prompt.original.txt",
+      "bytes": 1440,
+      "sha256": "sha256:e445dc0c239b769404846089ec8312c44e610a96daff9938a20fc6b4b37fc0ad"
+    },
+    {
+      "originalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-root-correction-20261012-v3/FIRST.actual-imagegen-correction-provenance.json",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/generation-provenance.original.json",
+      "bytes": 1593,
+      "sha256": "sha256:6f5cf336a7f82dd36868626ebb5e15db92a65f5207a4dd8f2d2c47294dc76fd9"
+    },
+    {
+      "originalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current402-author-20261012-v2/FINAL.targeted29.neutral-review-input.json",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/neutral-review-input.original.json",
+      "bytes": 11517,
+      "sha256": "sha256:3c21fcd4eaa8afeaa524084e68cfd7737d88cf347cb3b9b50cda8f839a678823"
+    },
+    {
+      "originalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current402-author-20261012-v2/candidate/canonical532.complete-inactive.json",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/canonical532.complete-inactive.original.json",
+      "bytes": 1778958,
+      "sha256": "sha256:ef5c61046cd903376119bc2ac1b740ec9c86a63c4d9ad5bd0cbf97c2d2c5ef57"
+    },
+    {
+      "originalPath": "AGENTS.md",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/AGENTS.original.md",
+      "bytes": 130632,
+      "sha256": "sha256:b721ab562c3a954e09a9ad9cd35a2edd0316b9867d6ce476001d7e03805b4d5c"
+    },
+    {
+      "originalPath": "docs/concept/skill-graph/atomic-goal-visualizations.md",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-ammonium-ee359-contact-side-independent-a-20261012-v3/inputs/atomic-goal-visualizations.original.md",
+      "bytes": 30177,
+      "sha256": "sha256:3acc382f20acf3fcbfe668ecafcf98f4be23aee00a372b169b2d1c392c7a4e7e"
+    }
+  ]
+}

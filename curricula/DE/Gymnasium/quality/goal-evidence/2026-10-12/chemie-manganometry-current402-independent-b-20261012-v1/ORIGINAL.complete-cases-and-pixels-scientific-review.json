@@ -1,0 +1,106 @@
+{
+  "goalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+  "reviewedAt": "2026-10-12T05:07:46.656786+00:00",
+  "D": "keep",
+  "P": "PASS scientific E1/G1 candidate",
+  "A": "atomic",
+  "M": "no_memory_needed",
+  "V": "PASS scientific AI candidate",
+  "caseCalculations": [
+    {
+      "case": "FeII donor",
+      "rawVolumes_mL": [
+        18.58,
+        18.62,
+        18.6
+      ],
+      "mean_mL": 18.6,
+      "blank_mL": 0.04,
+      "corrected_mL": 18.56,
+      "nMnO4_mol": 0.0003712,
+      "nFeII_mol": 0.001856,
+      "originalSample_L": 0.02,
+      "cFeII_mol_L": 0.0928,
+      "freshDilutionStock_mol_L": 0.0928,
+      "invalidBrownRun": "MnO2-compatible observation, not unique cause; five-electron ratio not blindly retained; verify method and repeat."
+    },
+    {
+      "case": "Unknown permanganate acceptor",
+      "rawVolumes_mL": [
+        10.02,
+        10.0,
+        9.98
+      ],
+      "mean_mL": 10.0,
+      "blank_mL": 0,
+      "blankConvention": "Below 0.02 mL reading resolution; do not import case-1 blank",
+      "nFeII_mol": 0.001,
+      "nMnO4_mol": 0.0002,
+      "cMnO4_mol_L": 0.02,
+      "freshContaminatedStandard": {
+        "trueFeII_mol_L": 0.04,
+        "FeIII_mol_L": 0.01,
+        "trueVolume_mL": 8.0,
+        "misassignedConcentration_mol_L": 0.025,
+        "relativeOverestimate": 0.25
+      }
+    },
+    {
+      "case": "BW iodometry iodate acceptor",
+      "rawVolumes_mL": [
+        12.1,
+        12.12,
+        12.14
+      ],
+      "mean_mL": 12.12,
+      "blank_mL": 0.12,
+      "corrected_mL": 12.0,
+      "nThiosulfate_mol": 0.00012,
+      "nIodate_mol": 2e-05,
+      "originalSample_L": 0.01,
+      "cIodate_mol_L": 0.002,
+      "ratioIO3ToThiosulfate": "1:6",
+      "iodineLoss": "Less titrant and concentration underestimate; reagent blank cannot repair sample-specific iodine loss."
+    }
+  ],
+  "balancedEquations": [
+    {
+      "equation": "MnO4- + 5 Fe2+ + 8 H+ -> Mn2+ + 5 Fe3+ + 4 H2O",
+      "bothCharges": 17
+    },
+    {
+      "equation": "IO3- + 5 I- + 6 H+ -> 3 I2 + 3 H2O",
+      "bothCharges": 0
+    },
+    {
+      "equation": "I2 + 2 S2O3^2- -> 2 I- + S4O6^2-",
+      "bothCharges": -4
+    },
+    {
+      "equation": "IO3- + 6 H+ + 6 S2O3^2- -> I- + 3 S4O6^2- + 3 H2O",
+      "bothCharges": -7
+    }
+  ],
+  "rubricReview": "All three full bilingual cases independently reviewed; each 13-point rubric allocates 4 actual-procedure, 3 chemistry/role/ratio, 3 valid raw-data quantification and 3 fresh-transfer/validity points. Synthetic calculations do not satisfy practical execution; later learner performance must actually be observed under the named approved method.",
+  "pixels": {
+    "paths": [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-P-A-author-root-20261012-v1/assets/2fdd759f-8349-5f7e-b29a-6ac7fb0299f9/2fdd759f-8349-5f7e-b29a-6ac7fb0299f9.png",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-P-A-author-root-20261012-v1/assets/2fdd759f-8349-5f7e-b29a-6ac7fb0299f9/actual-display-360.png",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-P-A-author-root-20261012-v1/assets/2fdd759f-8349-5f7e-b29a-6ac7fb0299f9/actual-display-680.png"
+    ],
+    "imageDigest": "sha256:8a8d13e39b74c010cab2827ecbe073fcc36d5efadf607e18882232e7976c618b",
+    "observed": "Actual purple permanganate burette, colorless initial Fe(II) solution, faint pink final flask matching Endpunkt: schwach rosa, correct acidic half-equations and combined 1:5 equation. Original and 680 labels/equations readable; at 360 main apparatus/color/endpoint motif clear. Generic notebook c=n/V is valid; full case explicitly uses original aliquot volume."
+  },
+  "nativePages": {
+    "paths": [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-P-A-author-root-20261012-v1/native/goal-page-001.final-image.html.actual.png",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-P-A-author-root-20261012-v1/native/goal-page-001.final-image.pdf.actual.png"
+    ],
+    "observed": "Both actual normal HTML and PDF pages fully inspected. Full public ID, German description, actual same PNG, three correctly titled external prerequisites and final-exam successor are legible and complete, with no clipping."
+  },
+  "source": "HOLD current wrong NI 020 and unsupported whole occupational 012 claim; see exact per-clause source review.",
+  "overallUnqualifiedPass": false,
+  "strictM7Gain": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

@@ -1,0 +1,11 @@
+{
+  "phase": "author final conservation inspection",
+  "error": "KeyError: primary",
+  "cause": "The local inspection assumed a nested visualization.primary shape. The actual normal goal-book model uses flat visualization.originalDigest/qaStatus/approvedForPublication fields.",
+  "actualNativeQaStatus": "review_candidate",
+  "actualNativeApprovedForPublication": false,
+  "actualCandidateMachineAiApproved": true,
+  "remedy": "Assert the actual flat normal schema and preserve the distinction between machine M7 image approval and legacy book publication approval. No legacy human/ChatGPT field or normal validator was changed.",
+  "activeOrGitWrites": false,
+  "newDOrPVotes": 0
+}

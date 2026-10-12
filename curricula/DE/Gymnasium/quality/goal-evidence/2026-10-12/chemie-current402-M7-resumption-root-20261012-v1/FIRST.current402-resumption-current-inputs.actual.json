@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "recordType": "technical-resumption-baseline-not-scientific-review",
+  "createdAtUTC": "2026-10-12T01:58:18.666269+00:00",
+  "baseHead": "bfd6720dc7a054a9a46ac6f712aad6d9c9f317d2",
+  "task": "Chemie only: current curricularAtomic strict D/P/A/M/V 100 percent and machine M7; other achieved M7 floors protected.",
+  "chemistryPauseLiftedByUser": true,
+  "objectiveSha256": "sha256:933e539140634298dc661a81cab4d680b4031b70c096a4ab1df64071bb9fcaea",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "bytes": 353535,
+      "sha256": "sha256:5aa368fc0c14f5d7ce5c3dfe65ad8313948129412713e554b87eabc6e077aab2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "bytes": 1037,
+      "sha256": "sha256:6392b7f82acf832daef0cd7fe60e9841ac091ebc2856bdfd81791098096a67b0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "bytes": 1745583,
+      "sha256": "sha256:348ad147e26d2bc9faaf1900303c7067e7109219ede210789a8f6199b81ff1bf"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "bytes": 2786985,
+      "sha256": "sha256:8f11edf7d02e2f5381928ec632c8a5e8d181862acfc076319463e9dabf3e3a04"
+    },
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "bytes": 4364,
+      "sha256": "sha256:2d45ea95d5e40751d57a3470b99ac2fbd6f24887b1ee3c8c7d53983d028783ea"
+    }
+  ],
+  "currentStatusBaseline": [
+    {
+      "frameworkId": "canonical-gymnasium-biology",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 397 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 397,
+          "remaining": 0,
+          "strictComplete": 397,
+          "currentDescriptionResolutions": 397,
+          "currentPositiveEvidenceProfiles": 397,
+          "currentSemanticAtomicityDecisions": 397,
+          "currentMemoryReviewDecisions": 397,
+          "currentVisualizationQaRecords": 397,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "frameworkId": "canonical-gymnasium-chemistry",
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 212/402 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 402,
+          "remaining": 190,
+          "strictComplete": 212,
+          "currentDescriptionResolutions": 214,
+          "currentPositiveEvidenceProfiles": 212,
+          "currentSemanticAtomicityDecisions": 229,
+          "currentMemoryReviewDecisions": 402,
+          "currentVisualizationQaRecords": 383,
+          "deferredVisualizations": 17,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        "details": [
+          "17 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+        ]
+      }
+    },
+    {
+      "frameworkId": "canonical-gymnasium-math",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "frameworkId": "canonical-gymnasium-physics",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 478,
+          "remaining": 0,
+          "strictComplete": 478,
+          "currentDescriptionResolutions": 478,
+          "currentPositiveEvidenceProfiles": 478,
+          "currentSemanticAtomicityDecisions": 478,
+          "currentMemoryReviewDecisions": 478,
+          "currentVisualizationQaRecords": 478,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "frameworkId": "canonical-gymnasium-economics",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 346 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 346,
+          "remaining": 0,
+          "strictComplete": 346,
+          "currentDescriptionResolutions": 346,
+          "currentPositiveEvidenceProfiles": 346,
+          "currentSemanticAtomicityDecisions": 346,
+          "currentMemoryReviewDecisions": 346,
+          "currentVisualizationQaRecords": 346,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    }
+  ],
+  "newScientificClosures": 0,
+  "restoredBindings": 0,
+  "netStrictGain": 0,
+  "newIndependentScientificVote": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "productionDeployment": false
+}

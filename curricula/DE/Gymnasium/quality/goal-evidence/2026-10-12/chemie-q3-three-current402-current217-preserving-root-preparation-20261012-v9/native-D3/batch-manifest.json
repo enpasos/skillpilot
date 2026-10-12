@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-q3-three-current217-preserving-root-20261012-v9",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-current217-preserving-root-preparation-20261012-v9/configs/native-D3.current217.batch.config.json",
+  "configDigest": "sha256:aa6b3e9a6e4ee3e9f4c88b8c4abf5b2807c4cd0a300eabed390ad065990c7cd3",
+  "goalIds": [
+    "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "8be14f15-2258-58e6-ae4e-38953f5d0570",
+    "c8844ac6-c414-5a0e-9fcd-7d0a82177d09"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 402,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-current217-preserving-root-preparation-20261012-v9/configs/whole402.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-current217-preserving-root-preparation-20261012-v9/candidate/canonical523.current217-plus-exact-q3-three.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:56aa3e5eaa73948185084baba9956150b91897ffa1ae490497aa3821b22e6685"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c805e837eadc9ae7d6622be43e1c4245ed630917a33381f4e1260e34b7362ae3",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:4cd9d45382a71ef72fbf7b7ac048401a0acc8f303b7ca31c795fe5d848c130d2",
+    "reviewInputFingerprint": "sha256:005eb8f41ed0429eed7422688b40198e80b50dc70141b85f98426ca69ae2a4e4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-q3-three-current217-preserving-root-20261012-v9-a",
+        "campaignDigest": "sha256:062b10802d2df3d2de886d73d71cea1aab8598711ab62882cc52642d2f2c3154",
+        "roundId": "chemie-q3-three-current217-preserving-root-20261012-v9-first-pass-a",
+        "independenceGroupId": "chemie-q3-three-current217-preserving-root-20261012-v9-independent-a",
+        "batchId": "chemie-q3-three-current217-preserving-root-20261012-v9-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:17cc6716e5f86a082ba7b4ef03fdb70957690cc25d71cf5c7739961e1f933213"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-q3-three-current217-preserving-root-20261012-v9-b",
+        "campaignDigest": "sha256:a64891bdd0d96107a0f90657ecb5a88bd4da8547d0aa284f53c897aad33052f8",
+        "roundId": "chemie-q3-three-current217-preserving-root-20261012-v9-first-pass-b",
+        "independenceGroupId": "chemie-q3-three-current217-preserving-root-20261012-v9-independent-b",
+        "batchId": "chemie-q3-three-current217-preserving-root-20261012-v9-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9c95eeddbeadc1cd37381025f60127cb917f93b6550da238e04cfe17bf00f6fa"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

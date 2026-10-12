@@ -1,0 +1,68 @@
+GOAL 11 ee359c2e-e339-5b56-bceb-cc7517b36bf2 Ammonium als Proteinabbauprodukt nachweisen / Detect ammonium as a protein degradation product
+Die lernende Person kann einen kontrollierten Ammonium-Nachweis über Ammoniakfreisetzung durchführen und mit der Säure-Base-Reaktion erklären sowie Befunde im Kontext von Proteinabbau begrenzt deuten.
+The learner can carry out a controlled ammonium assay through ammonia release, explain its acid-base reaction and interpret results within bounded protein-degradation contexts.
+REQUIRES e9d34f34-2a43-5cc7-bcca-1d08e057531d
+CANONICAL REST {"weight": 1, "tags": ["GK", "LK", "canonical"], "dimensionTags": {"framework": "canonical-gymnasium-chemistry", "demandLevel": "AB2", "processCompetencies": ["PK1_EXPERIMENTIEREN", "PK2_MODELLIEREN", "PK4_KOMMUNIZIEREN"], "guidingIdeas": ["BC_AUFBAU"], "phase": "Q2", "area": "Naturstoffe", "topicCode": "Q2.1.SPLIT.ee359c2e"}, "applicability": {"jurisdiction": ["DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-NI", "DE-SH", "DE-SN", "DE-TH"]}, "extendedData": {"provenance": {"sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13", "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)", "sourceGoalId": "he-chem-sekii-q2-1-b05-a01-18ab2c5d"}, "splitOriginGoalId": "9deeac6f-d380-52c5-8fc9-e532ab1f4d3f"}, "contains": [], "type": "atomic", "examples": []}
+IMAGE [{"type": "goal-visualization", "resourceType": "image", "role": "primary", "skillpilotId": "ee359c2e-e339-5b56-bceb-cc7517b36bf2", "title": "Visualisierung: Ammonium als Proteinabbauprodukt nachweisen", "url": "/assets/goal-visualizations/chemie/ee359c2e-e339-5b56-bceb-cc7517b36bf2/ee359c2e-e339-5b56-bceb-cc7517b36bf2.png", "provider": "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)", "description": "Visualisierung zum Lernziel: Ammonium als Proteinabbauprodukt nachweisen.", "altText": "Ammoniumprobe mit Lauge und Wasserkontrolle: Das feuchte Papier über der Probe wird am freien Ende blau, die Kontrolle bleibt rosa. Große Hinweise nennen die Haltung über der Öffnung ohne Eintauchen und begrenzen den Befund: Ammonium nachgewiesen, Proteinabbau damit nicht bewiesen.", "lang": "de", "license": "CC-BY-4.0", "reviewStatus": "pilot"}]
+PROFILE.archetype = concept
+PROFILE.expectations[0].id = aspect-1
+PROFILE.expectations[0].essentialUnderstandingDe = Säure-Base-Nachweis von Herkunftsbehauptung trennen.
+PROFILE.expectations[0].essentialUnderstandingEn = Separate acidbase detection from source attribution.
+PROFILE.expectations[0].observablePerformanceDe = NH4++OH−→NH3+H2O; feuchtes Papier wird durch NH3 basisch/blau. Positiv-/Wasserkontrolle und ohne Laugenkontakt ausgeführt. NH4-Nachweis allein beweistkeinen Proteinabbau.
+PROFILE.expectations[0].observablePerformanceEn = NH4++OH−→NH3+H2O; NH3 makes moist paper alkaline/blue. Executed positive/water controls without alkali contact. Ammonium alone does not prove protein degradation.
+PROFILE.expectations[1].id = aspect-2
+PROFILE.expectations[1].essentialUnderstandingDe = Kontrolliertes Experiment begrenzt Kausalaussagen.
+PROFILE.expectations[1].essentialUnderstandingEn = Controlled experiments bound causal claims.
+PROFILE.expectations[1].observablePerformanceDe = Ausführung/Log wie Fall A. Zunahmegegen Startwert undproteinfreie Kontrolle stützt Proteinabbau im Modell; alternativer Stickstoffeintrag/Kontamination muss ausgeschlossenwerden. Positiv istkeine Proteinspezifität.
+PROFILE.expectations[1].observablePerformanceEn = Execute/log as in case A. Increase over initial sample and protein free control supports degradation in the model; other nitrogen input/contamination must be excluded. Positive is not protein specific.
+PROFILE.coverageExpectations.requiredExpectationIds[0] = aspect-1
+PROFILE.coverageExpectations.requiredExpectationIds[1] = aspect-2
+PROFILE.coverageExpectations.minimumIndependentDemonstrations = 2
+PROFILE.coverageExpectations.freshVariationRequired = True
+PROFILE.coverageExpectations.independentTransferRequired = True
+PROFILE.variationAxes[0].id = material-operator-context
+PROFILE.variationAxes[0].textDe = Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.
+PROFILE.variationAxes[0].textEn = Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work.
+PROFILE.applicationCaseBriefs[0].id = case-1
+PROFILE.applicationCaseBriefs[0].taskDemandDe = Führe im betreuten Abzug einen Mikronachweis aus: je0, 5mL0, 1mol/LNH4Cl und Wasser in getrennten Gefäßen; je0, 5mL1mol/LNaOH zugeben. Feuchtesrotes Indikatorpapier überdie Öffnung halten, ohne Flüssigkeitskontakt; nicht riechen. Zeitpunkt, Kontrollen und Beobachtung protokollieren; Reaktion ausgleichen.
+PROFILE.applicationCaseBriefs[0].taskDemandEn = Execute a supervised fume hood micro assay: 0.5mL0.1mol/LNH4Cl and water in separate vessels; add0.5mL1mol/L NaOH. Hold moist red indicator paper above opening without liquid contact; do not smell. Log timing, controls, observations and balance equation.
+PROFILE.applicationCaseBriefs[0].understandingFocusDe = Säure-Base-Nachweis von Herkunftsbehauptung trennen.
+PROFILE.applicationCaseBriefs[0].understandingFocusEn = Separate acidbase detection from source attribution.
+PROFILE.applicationCaseBriefs[1].id = case-2
+PROFILE.applicationCaseBriefs[1].taskDemandDe = Zwei dokumentierte Inkubationsansätze mit/ohne Protein zeigen nach24h einen positiven bzwnegativen Ammoniumbefund. Wiederhole betreut den Nachweis mit Startprobe, Reagenz-/Wasserkontrolle und erkläre, welcher Vergleich Proteinabbau stützt.
+PROFILE.applicationCaseBriefs[1].taskDemandEn = Two documented incubations with/without protein show positive/negative ammonium after24h. Repeat supervised assay withinitial sample and water/reagent controls, explaining which comparison support degradation.
+PROFILE.applicationCaseBriefs[1].understandingFocusDe = Kontrolliertes Experiment begrenzt Kausalaussagen.
+PROFILE.applicationCaseBriefs[1].understandingFocusEn = Controlled experiments bound causal claims.
+WHOLE CASES[0].goalId = ee359c2e-e339-5b56-bceb-cc7517b36bf2
+WHOLE CASES[0].case.id = case-1
+WHOLE CASES[0].case.understandingFocusDe = Säure-Base-Nachweis von Herkunftsbehauptung trennen.
+WHOLE CASES[0].case.understandingFocusEn = Separate acidbase detection from source attribution.
+WHOLE CASES[0].rubric.maximumPoints = 4
+WHOLE CASES[0].rubric.criteria[0].points = 1
+WHOLE CASES[0].rubric.criteria[0].aspect = Geforderter Operator/Verfahren erkennbar ausgeführt beziehungsweise vollständige Struktur/Quellenerhebung vorgelegt.
+WHOLE CASES[0].rubric.criteria[1].points = 1
+WHOLE CASES[0].rubric.criteria[1].aspect = Kontrollen, Strukturmerkmale oder belastbare Bezugsgrößen korrekt.
+WHOLE CASES[0].rubric.criteria[2].points = 1
+WHOLE CASES[0].rubric.criteria[2].aspect = Fachliche Erklärung/Rechnung mit nachvollziehbarer Begründung.
+WHOLE CASES[0].rubric.criteria[3].points = 1
+WHOLE CASES[0].rubric.criteria[3].aspect = Transfer und konkrete Schlussgrenze ohne Überbehauptung.
+WHOLE CASES[0].rubric.misconceptionChecks[0] = feuchtes Papier wird durch NH3 basisch/blau. Positiv-/Wasserkontrolle und ohne Laugenkontakt ausgeführt. NH4-Nachweis allein beweistkeinen Proteinabbau.
+WHOLE CASES[0].exactCurrentCaseBrief.id = case-1
+WHOLE CASES[0].exactCurrentCaseBrief.understandingFocusDe = Säure-Base-Nachweis von Herkunftsbehauptung trennen.
+WHOLE CASES[0].exactCurrentCaseBrief.understandingFocusEn = Separate acidbase detection from source attribution.
+WHOLE CASES[1].goalId = ee359c2e-e339-5b56-bceb-cc7517b36bf2
+WHOLE CASES[1].case.id = case-2
+WHOLE CASES[1].case.understandingFocusDe = Kontrolliertes Experiment begrenzt Kausalaussagen.
+WHOLE CASES[1].case.understandingFocusEn = Controlled experiments bound causal claims.
+WHOLE CASES[1].rubric.maximumPoints = 4
+WHOLE CASES[1].rubric.criteria[0].points = 1
+WHOLE CASES[1].rubric.criteria[1].points = 1
+WHOLE CASES[1].rubric.criteria[1].aspect = Kontrollen, Strukturmerkmale oder belastbare Bezugsgrößen korrekt.
+WHOLE CASES[1].rubric.criteria[2].points = 1
+WHOLE CASES[1].rubric.criteria[2].aspect = Fachliche Erklärung/Rechnung mit nachvollziehbarer Begründung.
+WHOLE CASES[1].rubric.criteria[3].points = 1
+WHOLE CASES[1].rubric.criteria[3].aspect = Transfer und konkrete Schlussgrenze ohne Überbehauptung.
+WHOLE CASES[1].rubric.misconceptionChecks[0] = alternativer Stickstoffeintrag/Kontamination muss ausgeschlossenwerden. Positiv istkeine Proteinspezifität.
+WHOLE CASES[1].exactCurrentCaseBrief.id = case-2
+WHOLE CASES[1].exactCurrentCaseBrief.understandingFocusDe = Kontrolliertes Experiment begrenzt Kausalaussagen.
+WHOLE CASES[1].exactCurrentCaseBrief.understandingFocusEn = Controlled experiments bound causal claims.

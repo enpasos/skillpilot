@@ -1,0 +1,339 @@
+{
+  "goal": {
+    "id": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+    "shortKey": "canonical_chemistry_b008_lower_guided_hypothesis_investigation",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "contains": [],
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekI"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK1_EXPERIMENTIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_REAKTION"
+      ],
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "topicCode": "CANONICAL.CHEMISTRY.B008.LOWER_GUIDED_HYPOTHESIS_INVESTIGATION"
+    },
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "title": "Visualisierung: Angeleitete chemische Untersuchungen sicher durchführen",
+        "url": "/assets/goal-visualizations/chemie/e81a4aed-9695-533e-8eb7-7a0c714346ea/e81a4aed-9695-533e-8eb7-7a0c714346ea.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Beispiel einer chemischen Untersuchung: Eine Frage zum Einfluss der Wassertemperatur auf eine Brausetablette führt zur Hypothese, einem Vergleichsversuch und dessen Auswertung. Die beiden gezeichneten Zeiten sind illustrative Einzelbefunde; sie sind keine allgemeingültige Reaktionszeit oder vollständige Untersuchungsvorschrift.",
+        "altText": "Vier Comicfelder zeigen Frage, Hypothese, Vergleichsversuch mit Schutzbrille und eine Tabelle mit Temperatur und Zeit.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ],
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary",
+      "provenance": {
+        "splitFromCanonicalGoalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+        "authorCandidatePackage": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-native-source-preparation-author-v11",
+        "routineCandidateKey": "lower-guided-hypothesis-investigation",
+        "sourceBindingStatus": "prospective_partial_components_only_no_national_clearance"
+      }
+    },
+    "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+    "titleEn": "Carry out guided chemical investigations safely",
+    "description": "Die lernende Person kann eine angeleitete chemische Untersuchung zu einem Alltags- oder Technikphänomen sicher durchführen, vorgegebene Einflussgrößen und Arbeitsschritte beachten, Beobachtungen oder Messwerte nachvollziehbar protokollieren und erläutern, wie der Versuch die Ausgangshypothese prüft.",
+    "descriptionEn": "The learner can safely carry out a guided chemical investigation of an everyday or technical phenomenon, follow the specified variables and procedural steps, record observations or measurements transparently, and explain how the experiment tests the initial hypothesis.",
+    "requires": [
+      "13d4f336-ab16-54a7-9479-c920b458f385"
+    ]
+  },
+  "profile": {
+    "archetype": "experiment",
+    "expectations": [
+      {
+        "id": "guided-safe-action",
+        "essentialUnderstandingDe": "Ein vorgegebenes Untersuchungsverfahren liefert nur bei tatsächlich sicher ausgeführten, vergleichbaren Schritten einen prüfbaren Befund.",
+        "essentialUnderstandingEn": "A prescribed procedure yields a testable finding only through actually safe, comparable execution.",
+        "observablePerformanceDe": "Führt nach konkreter Lehrkraftfreigabe die vorgegebenen Leitfähigkeits- oder Auflösungsschritte aus, kontrolliert Variablen und hält tatsächliche Handlung, Abweichung und Stopp fest.",
+        "observablePerformanceEn": "After specific teacher release executes the prescribed conductivity or dissolution steps, controls variables and records actual action, deviation and stop."
+      },
+      {
+        "id": "own-observation-record",
+        "essentialUnderstandingDe": "Eigene Beobachtungen und Messwerte sind von Referenzdaten, Geräteauflösung und vollständig bekannter Unsicherheit zu unterscheiden.",
+        "essentialUnderstandingEn": "Own observations and readings differ from reference data, instrument resolution and fully known uncertainty.",
+        "observablePerformanceDe": "Protokolliert eigene Zeit-/Temperatur- oder Leitfähigkeitswerte mit Einheiten, Blank/Rinsung bzw. definiertem Endpunkt und Wiederholung; Musterwerte werden als Muster bezeichnet. Standardprüfung mit0–5000µS/cm im ganzen1970–2010-Bereich bei25°C, tatsächlichen Bereich/Modus/Gerätespezifikation protokollieren; Auflösung nicht als Genauigkeit.",
+        "observablePerformanceEn": "Records own time/temperature or conductivity readings with units, blank/rinsing or defined endpoint and repeat; labels reference values as references. Log the standard check on0–5000µS/cm over1970–2010 at25°C with actual range/mode/instrument specification; resolution is not accuracy."
+      },
+      {
+        "id": "hypothesis-and-confound",
+        "essentialUnderstandingDe": "Mobile Ionen erklären Leitfähigkeit; Auflösungsdauer hängt unter anderem von Temperatur, Körnung und Rühren ab.",
+        "essentialUnderstandingEn": "Mobile ions explain conductivity; dissolution time depends on temperature, grain size and stirring among other factors.",
+        "observablePerformanceDe": "Bezieht eigene Ergebnisse auf die Hypothese, erklärt die passenden chemischen Zusammenhänge und entwirft zur frischen Störvariable einen sicheren Kontrollvergleich.",
+        "observablePerformanceEn": "Relates own results to the hypothesis, explains the appropriate chemical relations and designs a safe control comparison for the fresh confound."
+      },
+      {
+        "id": "bw-halogen-addition-own-guided-execution",
+        "essentialUnderstandingDe": "Praktischer Halogen-Operator und Mechanismus bleiben eigenständig erhalten und ersetzen nicht den physikalischen Transfer.",
+        "essentialUnderstandingEn": "The practical halogen operator and mechanism remain independently preserved and do not replace physical transfer.",
+        "observablePerformanceDe": "Eigenes Protokoll enthält Stoffe, Konzentrationen/Mengen, Zeiten, Kontroll- und Leerbefunde. Im trockenen nichtnucleophilen, freigegebenen Modellmedium liefert R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; das π-Paar polarisiert Br2, Br–Br wird heterolytisch gespalten, ein verbrücktes Bromoniumion entsteht und Br− greift von der Gegenseite an (anti-Addition). Synthetischer Musterbefund: Ungesättigte Probe entfärbt nach 10 s, gesättigte Kontrolle/Leerprobe bleiben unter gleichen Dunkelbedingungen nach 30 s gefärbt. Das stützt reaktive C=C im Modell; in Gemischen stören andere Brom-verbrauchende Stoffe und schlechte Durchmischung. Wasser als Medium kann Bromhydrinbildung ermöglichen, deshalb darf die Modellgleichung für trockenes Medium nicht ungeprüft auf Bromwasser übertragen werden. Baeyer-Reagenz oxidiert Doppelbindungen unter Permanganatreduktion und ist nicht dieser elektrophile Halogennachweis. Ohne standardisierte quantitative Bestimmung ist keine Iodzahl, Fettsäurezusammensetzung oder Ernährungsqualität belegt.",
+        "observablePerformanceEn": "The own record includes substances, concentrations/amounts, times, controls and blank observations. In the approved dry non-nucleophilic model medium, R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; the π pair polarizes Br2, Br–Br cleaves heterolytically, a bridged bromonium ion forms and Br− attacks from the opposite side (anti addition). Synthetic fixture: unsaturated sample decolourizes after 10 s while saturated control/blank remain coloured after 30 s under matched dark conditions. This supports reactive C=C in the model; other bromine-consuming components and poor mixing interfere in mixtures. Water can permit bromohydrin formation, so the dry-medium equation cannot simply be transferred to bromine water. Baeyer reagent oxidizes double bonds while reducing permanganate and is not this electrophilic halogen test. No iodine value, fatty-acid composition or nutritional quality follows without a standardized quantitative determination."
+      },
+      {
+        "id": "bw-halogen-addition-cis-trans-guided-transfer",
+        "essentialUnderstandingDe": "Die sichere Ausführung folgt einer neuen vorgegebenen Hypothese und trennt Nachweisbefund von physikalischer Eigenschaft.",
+        "essentialUnderstandingEn": "Safe execution follows a new prescribed hypothesis and separates a detection result from a physical property.",
+        "observablePerformanceDe": "Die neue Variable ist cis/trans, nicht Anzahl der C=C, Stoffmenge, Brommenge, Temperatur oder Schüttelzeit. Eigenes Protokoll prüft diese Gleichhaltung. Synthetischer Musterbefund: beide einfach ungesättigten Ester entfärben nach 10 s; Kontrolle und Leerprobe bleiben 30 s gefärbt. Das stützt die Hypothese über C=C-Reaktivität unter diesen Bedingungen. Es bestimmt keine genaue Kennzahl und beweist weder identische Geschwindigkeit noch gleiche Konsistenz. cis/trans verändert Packung und damit Schmelzen, obwohl der qualitative Halogennachweis ähnlich ausfallen kann. Die angeleitete Durchführung wird anhand eigener Handlung und Originaldaten bewertet; das Mechanismusurteil bleibt ein begrenzter Beitrag des vorhandenen 3fb7-Partners.",
+        "observablePerformanceEn": "The new variable is cis/trans, not C=C count, substance amount, bromine amount, temperature or mixing time. The own record checks these controls. Synthetic fixture: both monounsaturated esters decolourize after 10 s, while control/blank remain coloured for 30 s. This supports the C=C-reactivity hypothesis under these conditions. It gives no exact index and proves neither identical rate nor equal consistency. cis/trans changes packing and melting even when the qualitative halogen test behaves similarly. Guided execution is assessed from own action and original data; mechanistic assessment stays a bounded contribution from the existing 3fb7 partner."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "guided-safe-action",
+        "own-observation-record",
+        "hypothesis-and-confound",
+        "bw-halogen-addition-own-guided-execution",
+        "bw-halogen-addition-cis-trans-guided-transfer"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "probe-carryover",
+        "textDe": "Ungespülte Sonde wird nur als Fehlerhypothese beurteilt, nicht absichtlich unsicher benutzt.",
+        "textEn": "An unrinsed probe is assessed as an error hypothesis, not deliberately used unsafely."
+      },
+      {
+        "id": "particle-size",
+        "textDe": "Unterschiedliche Körnung wird vom Temperatureffekt getrennt; vorgegebene Sicherheit bleibt verbindlich.",
+        "textEn": "Different grain size is separated from temperature effects; prescribed safety remains mandatory."
+      },
+      {
+        "id": "adequate-standard-check-range",
+        "textDe": "Der Prüfbereich muss den gesamten Etikettbereich 1970–2010 µS/cm abdecken; 2010 ist kein Überlauf auf0–5000. Geräteanleitung und tatsächliche Genauigkeits-/Prüfspezifikation sowie Bereich, Modus, Auflösung, Rohanzeige, Standardcharge/Gültigkeit und tatsächlich gemessene25-°C-Referenztemperatur werden dokumentiert. Auflösung garantiert weder Genauigkeit noch bestandene Prüfung. Bei Überlauf, nicht einhaltbarer Prüfbedingung oder nicht bestätigter Standardprüfung stoppen und Lehrkraft klären lassen; keine fiktiven Erfolgswerte eintragen.",
+        "textEn": "The check range must cover the whole label interval1970–2010 µS/cm;2010 is not over-range on0–5000. Record the instrument instructions and actual accuracy/check specification, range, mode, resolution, raw indication, standard batch/validity and actually measured25-°C reference temperature. Resolution guarantees neither accuracy nor a successful check. Stop and consult the teacher for over-range, unavailable check conditions or an unconfirmed check; enter no fictional successful readings."
+      },
+      {
+        "id": "actual-operator-transfer",
+        "textDe": "Die vollständig ausgearbeiteten Fälle wechseln die konkret genannten Struktur-, Phasen-, Proben-, Mess- oder Modellbedingungen. Methodenspezifische Quellenpflichten sind keine beliebigen Alternativen. Durchführungsaufgaben erfordern reale Eigenarbeit; synthetische Muster erfüllen sie nicht.",
+        "textEn": "Complete worked cases vary the specified structure, phase, sample, measurement or model conditions. Source-specific method duties are not interchangeable alternatives. Execution requires actual own work; synthetic fixtures do not satisfy it."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "lower-guided-hypothesis-investigation-conductivity",
+        "taskDemandDe": "Führe die angeleiteten Schritte wirklich unter Betreuung aus und protokolliere deine eigenen Werte, einschließlich Blindprobe. Erkläre erst danach, ob deine Beobachtung die bereitgestellte Hypothese stützt.\nFrische Variation: Spüle die Sonde absichtlich nicht: Führe dies nicht aus, sondern erkläre anhand deines echten Protokolls die mögliche Fehlerwirkung und welche sichere Kontrollmessung folgen sollte.\nDer Prüfbereich muss den gesamten Etikettbereich 1970–2010 µS/cm abdecken; 2010 ist kein Überlauf auf0–5000. Geräteanleitung und tatsächliche Genauigkeits-/Prüfspezifikation sowie Bereich, Modus, Auflösung, Rohanzeige, Standardcharge/Gültigkeit und tatsächlich gemessene25-°C-Referenztemperatur werden dokumentiert. Auflösung garantiert weder Genauigkeit noch bestandene Prüfung. Bei Überlauf, nicht einhaltbarer Prüfbedingung oder nicht bestätigter Standardprüfung stoppen und Lehrkraft klären lassen; keine fiktiven Erfolgswerte eintragen.",
+        "taskDemandEn": "Actually carry out the guided steps under supervision and record your own values, including the blank. Then explain whether your observation supports the supplied hypothesis.\nFresh variation: Consider an unrinsed probe without deliberately performing this error: explain the possible effect from your actual log and a suitable safe control measurement.\nThe check range must cover the whole label interval1970–2010 µS/cm;2010 is not over-range on0–5000. Record the instrument instructions and actual accuracy/check specification, range, mode, resolution, raw indication, standard batch/validity and actually measured25-°C reference temperature. Resolution guarantees neither accuracy nor a successful check. Stop and consult the teacher for over-range, unavailable check conditions or an unconfirmed check; enter no fictional successful readings.",
+        "expectedPerformanceDe": "Ein vollständiger Nachweis besteht aus beobachteter sicherer Durchführung und echtem Protokoll, nicht aus dieser Musterantwort. Erwartbarer Trend: NaCl-Lösung leitet deutlich stärker als die Blindprobe; Saccharose-Lösung bleibt nahe deren Wert. Erklärung: gelöste bewegliche Ionen gegenüber ungeladenen Zuckermolekülen. Abweichende Werte werden dokumentiert und mögliche Verschleppung untersucht, nicht passend erfunden.\nFrischer Transfer: Zunächst das eigene tatsächliche Reihenfolge-/Spül-/Blankprotokoll prüfen. Restliche Salzlösung an einer ungespülten Sonde kann zusätzliche Ionen in Wasser oder Saccharoselösung übertragen und deren Wert erhöhen. Das ist eine Fehlerhypothese, keine festgestellte eigene Beobachtung und kein Auftrag, den Fehler absichtlich auszuführen. Nach Lehrkraftfreigabe gemäß Originalprotokoll spülen, frische Blankprobe vor/nach den Proben messen und bei gleicher Temperatur die betroffene Probe wiederholen. Eigene neue Rohwerte und Abweichungen dokumentieren; Rückgang des Blankwerts nach Spülung unterstützt Verschleppung. Bei unverändert hohem Blank sind weitere Ursachen zu prüfen. Referenzdaten ersetzen diese tatsächlichen Schritte nicht.",
+        "expectedPerformanceEn": "Complete evidence requires observed safe execution and an actual log, not this reference answer. Expected trend: NaCl solution conducts much more than the blank; sucrose solution stays near it. Explanation: mobile dissolved ions versus uncharged sugar molecules. Deviant values are documented and possible carryover investigated, not invented to fit.\nFresh transfer: First examine the actual own order/rinsing/blank record. Salt solution remaining on an unrinsed probe can transfer additional ions to water or sucrose solution and raise its reading. This is an error hypothesis, not an established own observation or an instruction to execute the error deliberately. After teacher release rinse according to the original protocol, measure a fresh blank before/after samples and repeat the affected sample at equal temperature. Record own new raw readings and deviations; a reduced blank after rinsing supports carry-over. A persistently high blank requires other causes to be checked. Reference data do not replace these actual steps.",
+        "understandingFocusDe": "Kontamination wird aus eigener Dokumentation geprüft und durch sichere Blank-/Spülkontrolle unterschieden.",
+        "understandingFocusEn": "Contamination is examined from own documentation and distinguished through safe blank/rinsing controls."
+      },
+      {
+        "id": "lower-guided-hypothesis-investigation-dissolution",
+        "taskDemandDe": "Führe beide Bedingungen und eine Wiederholung nach Anleitung aus; protokolliere echte Starttemperaturen und Auflösezeiten. Begründe den Vergleich und berichte eine Abweichung ehrlich.\nFrische Variation: Begründe mit deinem Log, wie ein gröberer Zucker bei nur einer Temperatur den Vergleich verfälschen könnte.",
+        "taskDemandEn": "Carry out both conditions and one repeat as instructed; record actual starting temperatures and dissolution times. Justify the comparison and honestly report a deviation.\nFresh variation: Use your log to explain how coarser sugar at only one temperature could distort the comparison.",
+        "expectedPerformanceDe": "Gleiche Masse, Kornform, Volumen und Rührweise ermöglichen einen Temperaturvergleich. Eigene Zeiten und Temperaturen werden eingetragen; kürzere Zeiten bei 40 °C stützen die konkrete Auflösegeschwindigkeits-Hypothese. Gleiche Zeiten können auf kleine Temperaturdifferenz oder ungenauen Endpunkt hinweisen. Der Versuch misst nicht die maximal lösbare Zuckermasse.\nFrischer Transfer: Wurde nur in einem Temperaturansatz gröberer Zucker benutzt, sind Temperatur und zugängliche Oberfläche gemeinsam verändert. Aus der beobachteten Dauer allein kann der Temperatureffekt nicht getrennt werden. Die betroffenen Einträge im eigenen Korn-/Temperatur-/Zeitprotokoll benennen; alte Werte bewahren. Einen neuen freigegebenen Vergleich mit gleicher Sorte, Körnung, Masse, Wassermenge, Rührweise und Endpunkt durchführen; nur Temperatur ändert sich. Wiederholungen und eigene tatsächliche Zeiten erlauben eine neue Bewertung. Schnellere Auflösung belegt weiterhin keine höhere maximale Löslichkeit. Ohne eigenes Protokoll bleiben Durchführung und Ergebnis offen.",
+        "expectedPerformanceEn": "Equal mass, grain shape, volume and stirring allow a temperature comparison. Own times and temperatures are entered; shorter times at 40 °C support the specific dissolution-rate hypothesis. Equal times may indicate a small temperature difference or an imprecise endpoint. The experiment does not measure maximum dissolvable sugar mass.\nFresh transfer: If coarser sugar was used in only one temperature condition, both temperature and accessible surface area changed. The observed time alone cannot isolate the temperature effect. Identify the affected entries in the own grain/temperature/time record and retain the old values. Execute a newly released comparison with equal type, grain size, mass, water volume, stirring and endpoint; change temperature alone. Repeats and actual own times permit reassessment. Faster dissolution still does not demonstrate greater maximum solubility. Without an own record execution and result remain open.",
+        "understandingFocusDe": "Eigener angeleiteter Vergleich trennt Körnung und Temperatur statt Referenzwerte als Durchführung zu verwenden.",
+        "understandingFocusEn": "An own guided comparison separates grain size and temperature rather than treating reference readings as execution."
+      },
+      {
+        "id": "bw-halogen-addition-own-guided-execution",
+        "taskDemandDe": "Führe nach der vollständig freigegebenen lokalen Arbeitsanweisung selbst betreut den Bromnachweis an einem definierten ungesättigten Fettsäurerest-Modell und einer gesättigten Kontrolle durch. Verwende gleiche Stoff-/Lösungsmittelmengen, Leerprobe, gleiche Bromzugabe, gleiche Schüttel- und Beobachtungszeit ohne UV-Bestrahlung. Protokolliere dein Original und erkläre die entfärbende elektrophile Addition mit Elektronenpaarpfeilen über ein Bromoniumion und den Angriff von Bromid. Vergleiche ausdrücklich mit Baeyer-Oxidation und erkläre die Grenze der Aussage über ein natürliches Fettgemisch.",
+        "taskDemandEn": "Personally perform the supervised bromine test on a defined unsaturated fatty-acid-residue model and saturated control under a fully authorized local method. Use matched substance/solvent amounts, a blank, equal bromine addition, mixing and observation times without UV. Preserve your original record and explain decolourizing electrophilic addition with electron-pair arrows through a bromonium ion and bromide attack. Explicitly compare with Baeyer oxidation and explain inference limits for a natural fat mixture.",
+        "expectedPerformanceDe": "Eigenes Protokoll enthält Stoffe, Konzentrationen/Mengen, Zeiten, Kontroll- und Leerbefunde. Im trockenen nichtnucleophilen, freigegebenen Modellmedium liefert R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; das π-Paar polarisiert Br2, Br–Br wird heterolytisch gespalten, ein verbrücktes Bromoniumion entsteht und Br− greift von der Gegenseite an (anti-Addition). Synthetischer Musterbefund: Ungesättigte Probe entfärbt nach 10 s, gesättigte Kontrolle/Leerprobe bleiben unter gleichen Dunkelbedingungen nach 30 s gefärbt. Das stützt reaktive C=C im Modell; in Gemischen stören andere Brom-verbrauchende Stoffe und schlechte Durchmischung. Wasser als Medium kann Bromhydrinbildung ermöglichen, deshalb darf die Modellgleichung für trockenes Medium nicht ungeprüft auf Bromwasser übertragen werden. Baeyer-Reagenz oxidiert Doppelbindungen unter Permanganatreduktion und ist nicht dieser elektrophile Halogennachweis. Ohne standardisierte quantitative Bestimmung ist keine Iodzahl, Fettsäurezusammensetzung oder Ernährungsqualität belegt.",
+        "expectedPerformanceEn": "The own record includes substances, concentrations/amounts, times, controls and blank observations. In the approved dry non-nucleophilic model medium, R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; the π pair polarizes Br2, Br–Br cleaves heterolytically, a bridged bromonium ion forms and Br− attacks from the opposite side (anti addition). Synthetic fixture: unsaturated sample decolourizes after 10 s while saturated control/blank remain coloured after 30 s under matched dark conditions. This supports reactive C=C in the model; other bromine-consuming components and poor mixing interfere in mixtures. Water can permit bromohydrin formation, so the dry-medium equation cannot simply be transferred to bromine water. Baeyer reagent oxidizes double bonds while reducing permanganate and is not this electrophilic halogen test. No iodine value, fatty-acid composition or nutritional quality follows without a standardized quantitative determination.",
+        "understandingFocusDe": "Praktischer Halogen-Operator und Mechanismus bleiben eigenständig erhalten und ersetzen nicht den physikalischen Transfer.",
+        "understandingFocusEn": "The practical halogen operator and mechanism remain independently preserved and do not replace physical transfer."
+      },
+      {
+        "id": "bw-halogen-addition-cis-trans-guided-transfer",
+        "taskDemandDe": "Prüfe in einer neuen angeleiteten Untersuchung die Hypothese: Gleiche Anzahl an C=C pro Molekül kann trotz unterschiedlicher räumlicher Konfiguration zum gleichen begrenzten Bromverbrauch führen. Führe den freigegebenen Mikrotest selbst mit gleich konzentrierten Methyloleat- und Methylelaidat-Lösungen, der Methylstearatkontrolle und Heptanleerprobe aus. Halte die vorgegebenen Mengen/Zeiten ein, sichere Originalbeobachtungen und begründe, was der Versuch über Ungesättigtheit und was er über die Konsistenz der zugehörigen Fettmodelle aussagt.",
+        "taskDemandEn": "In a new guided investigation, test: Equal C=C counts per molecule can produce the same limited bromine consumption despite different spatial configuration. Personally perform the approved microscale test with equal-concentration methyl oleate and methyl elaidate, a methyl stearate control and heptane blank. Follow prescribed quantities/times, preserve original observations and explain what the test establishes about unsaturation and what it establishes about consistency of the corresponding fat models.",
+        "expectedPerformanceDe": "Die neue Variable ist cis/trans, nicht Anzahl der C=C, Stoffmenge, Brommenge, Temperatur oder Schüttelzeit. Eigenes Protokoll prüft diese Gleichhaltung. Synthetischer Musterbefund: beide einfach ungesättigten Ester entfärben nach 10 s; Kontrolle und Leerprobe bleiben 30 s gefärbt. Das stützt die Hypothese über C=C-Reaktivität unter diesen Bedingungen. Es bestimmt keine genaue Kennzahl und beweist weder identische Geschwindigkeit noch gleiche Konsistenz. cis/trans verändert Packung und damit Schmelzen, obwohl der qualitative Halogennachweis ähnlich ausfallen kann. Die angeleitete Durchführung wird anhand eigener Handlung und Originaldaten bewertet; das Mechanismusurteil bleibt ein begrenzter Beitrag des vorhandenen 3fb7-Partners.",
+        "expectedPerformanceEn": "The new variable is cis/trans, not C=C count, substance amount, bromine amount, temperature or mixing time. The own record checks these controls. Synthetic fixture: both monounsaturated esters decolourize after 10 s, while control/blank remain coloured for 30 s. This supports the C=C-reactivity hypothesis under these conditions. It gives no exact index and proves neither identical rate nor equal consistency. cis/trans changes packing and melting even when the qualitative halogen test behaves similarly. Guided execution is assessed from own action and original data; mechanistic assessment stays a bounded contribution from the existing 3fb7 partner.",
+        "understandingFocusDe": "Die sichere Ausführung folgt einer neuen vorgegebenen Hypothese und trennt Nachweisbefund von physikalischer Eigenschaft.",
+        "understandingFocusEn": "Safe execution follows a new prescribed hypothesis and separates a detection result from a physical property."
+      }
+    ]
+  },
+  "wholeCaseAndRubrics": [
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "case": {
+        "id": "lower-guided-hypothesis-investigation-conductivity",
+        "taskDemandDe": "Führe die angeleiteten Schritte wirklich unter Betreuung aus und protokolliere deine eigenen Werte, einschließlich Blindprobe. Erkläre erst danach, ob deine Beobachtung die bereitgestellte Hypothese stützt.\nFrische Variation: Spüle die Sonde absichtlich nicht: Führe dies nicht aus, sondern erkläre anhand deines echten Protokolls die mögliche Fehlerwirkung und welche sichere Kontrollmessung folgen sollte.\nDer Prüfbereich muss den gesamten Etikettbereich 1970–2010 µS/cm abdecken; 2010 ist kein Überlauf auf0–5000. Geräteanleitung und tatsächliche Genauigkeits-/Prüfspezifikation sowie Bereich, Modus, Auflösung, Rohanzeige, Standardcharge/Gültigkeit und tatsächlich gemessene25-°C-Referenztemperatur werden dokumentiert. Auflösung garantiert weder Genauigkeit noch bestandene Prüfung. Bei Überlauf, nicht einhaltbarer Prüfbedingung oder nicht bestätigter Standardprüfung stoppen und Lehrkraft klären lassen; keine fiktiven Erfolgswerte eintragen.",
+        "taskDemandEn": "Actually carry out the guided steps under supervision and record your own values, including the blank. Then explain whether your observation supports the supplied hypothesis.\nFresh variation: Consider an unrinsed probe without deliberately performing this error: explain the possible effect from your actual log and a suitable safe control measurement.\nThe check range must cover the whole label interval1970–2010 µS/cm;2010 is not over-range on0–5000. Record the instrument instructions and actual accuracy/check specification, range, mode, resolution, raw indication, standard batch/validity and actually measured25-°C reference temperature. Resolution guarantees neither accuracy nor a successful check. Stop and consult the teacher for over-range, unavailable check conditions or an unconfirmed check; enter no fictional successful readings.",
+        "expectedPerformanceDe": "Ein vollständiger Nachweis besteht aus beobachteter sicherer Durchführung und echtem Protokoll, nicht aus dieser Musterantwort. Erwartbarer Trend: NaCl-Lösung leitet deutlich stärker als die Blindprobe; Saccharose-Lösung bleibt nahe deren Wert. Erklärung: gelöste bewegliche Ionen gegenüber ungeladenen Zuckermolekülen. Abweichende Werte werden dokumentiert und mögliche Verschleppung untersucht, nicht passend erfunden.\nFrischer Transfer: Zunächst das eigene tatsächliche Reihenfolge-/Spül-/Blankprotokoll prüfen. Restliche Salzlösung an einer ungespülten Sonde kann zusätzliche Ionen in Wasser oder Saccharoselösung übertragen und deren Wert erhöhen. Das ist eine Fehlerhypothese, keine festgestellte eigene Beobachtung und kein Auftrag, den Fehler absichtlich auszuführen. Nach Lehrkraftfreigabe gemäß Originalprotokoll spülen, frische Blankprobe vor/nach den Proben messen und bei gleicher Temperatur die betroffene Probe wiederholen. Eigene neue Rohwerte und Abweichungen dokumentieren; Rückgang des Blankwerts nach Spülung unterstützt Verschleppung. Bei unverändert hohem Blank sind weitere Ursachen zu prüfen. Referenzdaten ersetzen diese tatsächlichen Schritte nicht.",
+        "expectedPerformanceEn": "Complete evidence requires observed safe execution and an actual log, not this reference answer. Expected trend: NaCl solution conducts much more than the blank; sucrose solution stays near it. Explanation: mobile dissolved ions versus uncharged sugar molecules. Deviant values are documented and possible carryover investigated, not invented to fit.\nFresh transfer: First examine the actual own order/rinsing/blank record. Salt solution remaining on an unrinsed probe can transfer additional ions to water or sucrose solution and raise its reading. This is an error hypothesis, not an established own observation or an instruction to execute the error deliberately. After teacher release rinse according to the original protocol, measure a fresh blank before/after samples and repeat the affected sample at equal temperature. Record own new raw readings and deviations; a reduced blank after rinsing supports carry-over. A persistently high blank requires other causes to be checked. Reference data do not replace these actual steps.",
+        "understandingFocusDe": "Kontamination wird aus eigener Dokumentation geprüft und durch sichere Blank-/Spülkontrolle unterschieden.",
+        "understandingFocusEn": "Contamination is examined from own documentation and distinguished through safe blank/rinsing controls."
+      },
+      "exactCurrentCaseBrief": {
+        "id": "lower-guided-hypothesis-investigation-conductivity",
+        "taskDemandDe": "Führe die angeleiteten Schritte wirklich unter Betreuung aus und protokolliere deine eigenen Werte, einschließlich Blindprobe. Erkläre erst danach, ob deine Beobachtung die bereitgestellte Hypothese stützt.\nFrische Variation: Spüle die Sonde absichtlich nicht: Führe dies nicht aus, sondern erkläre anhand deines echten Protokolls die mögliche Fehlerwirkung und welche sichere Kontrollmessung folgen sollte.\nDer Prüfbereich muss den gesamten Etikettbereich 1970–2010 µS/cm abdecken; 2010 ist kein Überlauf auf0–5000. Geräteanleitung und tatsächliche Genauigkeits-/Prüfspezifikation sowie Bereich, Modus, Auflösung, Rohanzeige, Standardcharge/Gültigkeit und tatsächlich gemessene25-°C-Referenztemperatur werden dokumentiert. Auflösung garantiert weder Genauigkeit noch bestandene Prüfung. Bei Überlauf, nicht einhaltbarer Prüfbedingung oder nicht bestätigter Standardprüfung stoppen und Lehrkraft klären lassen; keine fiktiven Erfolgswerte eintragen.",
+        "taskDemandEn": "Actually carry out the guided steps under supervision and record your own values, including the blank. Then explain whether your observation supports the supplied hypothesis.\nFresh variation: Consider an unrinsed probe without deliberately performing this error: explain the possible effect from your actual log and a suitable safe control measurement.\nThe check range must cover the whole label interval1970–2010 µS/cm;2010 is not over-range on0–5000. Record the instrument instructions and actual accuracy/check specification, range, mode, resolution, raw indication, standard batch/validity and actually measured25-°C reference temperature. Resolution guarantees neither accuracy nor a successful check. Stop and consult the teacher for over-range, unavailable check conditions or an unconfirmed check; enter no fictional successful readings.",
+        "expectedPerformanceDe": "Ein vollständiger Nachweis besteht aus beobachteter sicherer Durchführung und echtem Protokoll, nicht aus dieser Musterantwort. Erwartbarer Trend: NaCl-Lösung leitet deutlich stärker als die Blindprobe; Saccharose-Lösung bleibt nahe deren Wert. Erklärung: gelöste bewegliche Ionen gegenüber ungeladenen Zuckermolekülen. Abweichende Werte werden dokumentiert und mögliche Verschleppung untersucht, nicht passend erfunden.\nFrischer Transfer: Zunächst das eigene tatsächliche Reihenfolge-/Spül-/Blankprotokoll prüfen. Restliche Salzlösung an einer ungespülten Sonde kann zusätzliche Ionen in Wasser oder Saccharoselösung übertragen und deren Wert erhöhen. Das ist eine Fehlerhypothese, keine festgestellte eigene Beobachtung und kein Auftrag, den Fehler absichtlich auszuführen. Nach Lehrkraftfreigabe gemäß Originalprotokoll spülen, frische Blankprobe vor/nach den Proben messen und bei gleicher Temperatur die betroffene Probe wiederholen. Eigene neue Rohwerte und Abweichungen dokumentieren; Rückgang des Blankwerts nach Spülung unterstützt Verschleppung. Bei unverändert hohem Blank sind weitere Ursachen zu prüfen. Referenzdaten ersetzen diese tatsächlichen Schritte nicht.",
+        "expectedPerformanceEn": "Complete evidence requires observed safe execution and an actual log, not this reference answer. Expected trend: NaCl solution conducts much more than the blank; sucrose solution stays near it. Explanation: mobile dissolved ions versus uncharged sugar molecules. Deviant values are documented and possible carryover investigated, not invented to fit.\nFresh transfer: First examine the actual own order/rinsing/blank record. Salt solution remaining on an unrinsed probe can transfer additional ions to water or sucrose solution and raise its reading. This is an error hypothesis, not an established own observation or an instruction to execute the error deliberately. After teacher release rinse according to the original protocol, measure a fresh blank before/after samples and repeat the affected sample at equal temperature. Record own new raw readings and deviations; a reduced blank after rinsing supports carry-over. A persistently high blank requires other causes to be checked. Reference data do not replace these actual steps.",
+        "understandingFocusDe": "Kontamination wird aus eigener Dokumentation geprüft und durch sichere Blank-/Spülkontrolle unterschieden.",
+        "understandingFocusEn": "Contamination is examined from own documentation and distinguished through safe blank/rinsing controls."
+      },
+      "technicalTextFieldDifferences": []
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "case": {
+        "id": "lower-guided-hypothesis-investigation-dissolution",
+        "taskDemandDe": "Führe beide Bedingungen und eine Wiederholung nach Anleitung aus; protokolliere echte Starttemperaturen und Auflösezeiten. Begründe den Vergleich und berichte eine Abweichung ehrlich.\nFrische Variation: Begründe mit deinem Log, wie ein gröberer Zucker bei nur einer Temperatur den Vergleich verfälschen könnte.",
+        "taskDemandEn": "Carry out both conditions and one repeat as instructed; record actual starting temperatures and dissolution times. Justify the comparison and honestly report a deviation.\nFresh variation: Use your log to explain how coarser sugar at only one temperature could distort the comparison.",
+        "expectedPerformanceDe": "Gleiche Masse, Kornform, Volumen und Rührweise ermöglichen einen Temperaturvergleich. Eigene Zeiten und Temperaturen werden eingetragen; kürzere Zeiten bei 40 °C stützen die konkrete Auflösegeschwindigkeits-Hypothese. Gleiche Zeiten können auf kleine Temperaturdifferenz oder ungenauen Endpunkt hinweisen. Der Versuch misst nicht die maximal lösbare Zuckermasse.\nFrischer Transfer: Wurde nur in einem Temperaturansatz gröberer Zucker benutzt, sind Temperatur und zugängliche Oberfläche gemeinsam verändert. Aus der beobachteten Dauer allein kann der Temperatureffekt nicht getrennt werden. Die betroffenen Einträge im eigenen Korn-/Temperatur-/Zeitprotokoll benennen; alte Werte bewahren. Einen neuen freigegebenen Vergleich mit gleicher Sorte, Körnung, Masse, Wassermenge, Rührweise und Endpunkt durchführen; nur Temperatur ändert sich. Wiederholungen und eigene tatsächliche Zeiten erlauben eine neue Bewertung. Schnellere Auflösung belegt weiterhin keine höhere maximale Löslichkeit. Ohne eigenes Protokoll bleiben Durchführung und Ergebnis offen.",
+        "expectedPerformanceEn": "Equal mass, grain shape, volume and stirring allow a temperature comparison. Own times and temperatures are entered; shorter times at 40 °C support the specific dissolution-rate hypothesis. Equal times may indicate a small temperature difference or an imprecise endpoint. The experiment does not measure maximum dissolvable sugar mass.\nFresh transfer: If coarser sugar was used in only one temperature condition, both temperature and accessible surface area changed. The observed time alone cannot isolate the temperature effect. Identify the affected entries in the own grain/temperature/time record and retain the old values. Execute a newly released comparison with equal type, grain size, mass, water volume, stirring and endpoint; change temperature alone. Repeats and actual own times permit reassessment. Faster dissolution still does not demonstrate greater maximum solubility. Without an own record execution and result remain open.",
+        "understandingFocusDe": "Eigener angeleiteter Vergleich trennt Körnung und Temperatur statt Referenzwerte als Durchführung zu verwenden.",
+        "understandingFocusEn": "An own guided comparison separates grain size and temperature rather than treating reference readings as execution."
+      },
+      "exactCurrentCaseBrief": {
+        "id": "lower-guided-hypothesis-investigation-dissolution",
+        "taskDemandDe": "Führe beide Bedingungen und eine Wiederholung nach Anleitung aus; protokolliere echte Starttemperaturen und Auflösezeiten. Begründe den Vergleich und berichte eine Abweichung ehrlich.\nFrische Variation: Begründe mit deinem Log, wie ein gröberer Zucker bei nur einer Temperatur den Vergleich verfälschen könnte.",
+        "taskDemandEn": "Carry out both conditions and one repeat as instructed; record actual starting temperatures and dissolution times. Justify the comparison and honestly report a deviation.\nFresh variation: Use your log to explain how coarser sugar at only one temperature could distort the comparison.",
+        "expectedPerformanceDe": "Gleiche Masse, Kornform, Volumen und Rührweise ermöglichen einen Temperaturvergleich. Eigene Zeiten und Temperaturen werden eingetragen; kürzere Zeiten bei 40 °C stützen die konkrete Auflösegeschwindigkeits-Hypothese. Gleiche Zeiten können auf kleine Temperaturdifferenz oder ungenauen Endpunkt hinweisen. Der Versuch misst nicht die maximal lösbare Zuckermasse.\nFrischer Transfer: Wurde nur in einem Temperaturansatz gröberer Zucker benutzt, sind Temperatur und zugängliche Oberfläche gemeinsam verändert. Aus der beobachteten Dauer allein kann der Temperatureffekt nicht getrennt werden. Die betroffenen Einträge im eigenen Korn-/Temperatur-/Zeitprotokoll benennen; alte Werte bewahren. Einen neuen freigegebenen Vergleich mit gleicher Sorte, Körnung, Masse, Wassermenge, Rührweise und Endpunkt durchführen; nur Temperatur ändert sich. Wiederholungen und eigene tatsächliche Zeiten erlauben eine neue Bewertung. Schnellere Auflösung belegt weiterhin keine höhere maximale Löslichkeit. Ohne eigenes Protokoll bleiben Durchführung und Ergebnis offen.",
+        "expectedPerformanceEn": "Equal mass, grain shape, volume and stirring allow a temperature comparison. Own times and temperatures are entered; shorter times at 40 °C support the specific dissolution-rate hypothesis. Equal times may indicate a small temperature difference or an imprecise endpoint. The experiment does not measure maximum dissolvable sugar mass.\nFresh transfer: If coarser sugar was used in only one temperature condition, both temperature and accessible surface area changed. The observed time alone cannot isolate the temperature effect. Identify the affected entries in the own grain/temperature/time record and retain the old values. Execute a newly released comparison with equal type, grain size, mass, water volume, stirring and endpoint; change temperature alone. Repeats and actual own times permit reassessment. Faster dissolution still does not demonstrate greater maximum solubility. Without an own record execution and result remain open.",
+        "understandingFocusDe": "Eigener angeleiteter Vergleich trennt Körnung und Temperatur statt Referenzwerte als Durchführung zu verwenden.",
+        "understandingFocusEn": "An own guided comparison separates grain size and temperature rather than treating reference readings as execution."
+      },
+      "technicalTextFieldDifferences": []
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "case": {
+        "id": "bw-halogen-addition-own-guided-execution",
+        "taskDemandDe": "Führe nach der vollständig freigegebenen lokalen Arbeitsanweisung selbst betreut den Bromnachweis an einem definierten ungesättigten Fettsäurerest-Modell und einer gesättigten Kontrolle durch. Verwende gleiche Stoff-/Lösungsmittelmengen, Leerprobe, gleiche Bromzugabe, gleiche Schüttel- und Beobachtungszeit ohne UV-Bestrahlung. Protokolliere dein Original und erkläre die entfärbende elektrophile Addition mit Elektronenpaarpfeilen über ein Bromoniumion und den Angriff von Bromid. Vergleiche ausdrücklich mit Baeyer-Oxidation und erkläre die Grenze der Aussage über ein natürliches Fettgemisch.",
+        "taskDemandEn": "Personally perform the supervised bromine test on a defined unsaturated fatty-acid-residue model and saturated control under a fully authorized local method. Use matched substance/solvent amounts, a blank, equal bromine addition, mixing and observation times without UV. Preserve your original record and explain decolourizing electrophilic addition with electron-pair arrows through a bromonium ion and bromide attack. Explicitly compare with Baeyer oxidation and explain inference limits for a natural fat mixture.",
+        "expectedPerformanceDe": "Eigenes Protokoll enthält Stoffe, Konzentrationen/Mengen, Zeiten, Kontroll- und Leerbefunde. Im trockenen nichtnucleophilen, freigegebenen Modellmedium liefert R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; das π-Paar polarisiert Br2, Br–Br wird heterolytisch gespalten, ein verbrücktes Bromoniumion entsteht und Br− greift von der Gegenseite an (anti-Addition). Synthetischer Musterbefund: Ungesättigte Probe entfärbt nach 10 s, gesättigte Kontrolle/Leerprobe bleiben unter gleichen Dunkelbedingungen nach 30 s gefärbt. Das stützt reaktive C=C im Modell; in Gemischen stören andere Brom-verbrauchende Stoffe und schlechte Durchmischung. Wasser als Medium kann Bromhydrinbildung ermöglichen, deshalb darf die Modellgleichung für trockenes Medium nicht ungeprüft auf Bromwasser übertragen werden. Baeyer-Reagenz oxidiert Doppelbindungen unter Permanganatreduktion und ist nicht dieser elektrophile Halogennachweis. Ohne standardisierte quantitative Bestimmung ist keine Iodzahl, Fettsäurezusammensetzung oder Ernährungsqualität belegt.",
+        "expectedPerformanceEn": "The own record includes substances, concentrations/amounts, times, controls and blank observations. In the approved dry non-nucleophilic model medium, R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; the π pair polarizes Br2, Br–Br cleaves heterolytically, a bridged bromonium ion forms and Br− attacks from the opposite side (anti addition). Synthetic fixture: unsaturated sample decolourizes after 10 s while saturated control/blank remain coloured after 30 s under matched dark conditions. This supports reactive C=C in the model; other bromine-consuming components and poor mixing interfere in mixtures. Water can permit bromohydrin formation, so the dry-medium equation cannot simply be transferred to bromine water. Baeyer reagent oxidizes double bonds while reducing permanganate and is not this electrophilic halogen test. No iodine value, fatty-acid composition or nutritional quality follows without a standardized quantitative determination.",
+        "understandingFocusDe": "Praktischer Halogen-Operator und Mechanismus bleiben eigenständig erhalten und ersetzen nicht den physikalischen Transfer.",
+        "understandingFocusEn": "The practical halogen operator and mechanism remain independently preserved and do not replace physical transfer."
+      },
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Eigene kontrollierte reale Durchführung nach vollständigem Methodenbogen.",
+            "aspectEn": "Own controlled actual execution under complete local method."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Mengen, Schritte und Sicherheitsregeln beachtet; Beobachtungen von Deutung getrennt.",
+            "aspectEn": "Follows quantities, steps and safety; distinguishes observation from explanation."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Originalprotokoll enthält Kontrollen/Leerprobe und Zeitbedingungen.",
+            "aspectEn": "Original record contains controls/blank and timing."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Hypothesenprüfung aus passenden Befunden erläutert; Bromaddition gegen Baeyer und Gemischgrenzen abgegrenzt.",
+            "aspectEn": "Explains hypothesis test using suitable observations; distinguishes bromine addition from Baeyer and mixture limitations."
+          }
+        ],
+        "fullCreditEvidenceDe": "Eigenes Protokoll enthält Stoffe, Konzentrationen/Mengen, Zeiten, Kontroll- und Leerbefunde. Im trockenen nichtnucleophilen, freigegebenen Modellmedium liefert R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; das π-Paar polarisiert Br2, Br–Br wird heterolytisch gespalten, ein verbrücktes Bromoniumion entsteht und Br− greift von der Gegenseite an (anti-Addition). Synthetischer Musterbefund: Ungesättigte Probe entfärbt nach 10 s, gesättigte Kontrolle/Leerprobe bleiben unter gleichen Dunkelbedingungen nach 30 s gefärbt. Das stützt reaktive C=C im Modell; in Gemischen stören andere Brom-verbrauchende Stoffe und schlechte Durchmischung. Wasser als Medium kann Bromhydrinbildung ermöglichen, deshalb darf die Modellgleichung für trockenes Medium nicht ungeprüft auf Bromwasser übertragen werden. Baeyer-Reagenz oxidiert Doppelbindungen unter Permanganatreduktion und ist nicht dieser elektrophile Halogennachweis. Ohne standardisierte quantitative Bestimmung ist keine Iodzahl, Fettsäurezusammensetzung oder Ernährungsqualität belegt.",
+        "fullCreditEvidenceEn": "The own record includes substances, concentrations/amounts, times, controls and blank observations. In the approved dry non-nucleophilic model medium, R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; the π pair polarizes Br2, Br–Br cleaves heterolytically, a bridged bromonium ion forms and Br− attacks from the opposite side (anti addition). Synthetic fixture: unsaturated sample decolourizes after 10 s while saturated control/blank remain coloured after 30 s under matched dark conditions. This supports reactive C=C in the model; other bromine-consuming components and poor mixing interfere in mixtures. Water can permit bromohydrin formation, so the dry-medium equation cannot simply be transferred to bromine water. Baeyer reagent oxidizes double bonds while reducing permanganate and is not this electrophilic halogen test. No iodine value, fatty-acid composition or nutritional quality follows without a standardized quantitative determination.",
+        "misconceptionChecks": []
+      },
+      "exactCurrentCaseBrief": {
+        "id": "bw-halogen-addition-own-guided-execution",
+        "taskDemandDe": "Führe nach der vollständig freigegebenen lokalen Arbeitsanweisung selbst betreut den Bromnachweis an einem definierten ungesättigten Fettsäurerest-Modell und einer gesättigten Kontrolle durch. Verwende gleiche Stoff-/Lösungsmittelmengen, Leerprobe, gleiche Bromzugabe, gleiche Schüttel- und Beobachtungszeit ohne UV-Bestrahlung. Protokolliere dein Original und erkläre die entfärbende elektrophile Addition mit Elektronenpaarpfeilen über ein Bromoniumion und den Angriff von Bromid. Vergleiche ausdrücklich mit Baeyer-Oxidation und erkläre die Grenze der Aussage über ein natürliches Fettgemisch.",
+        "taskDemandEn": "Personally perform the supervised bromine test on a defined unsaturated fatty-acid-residue model and saturated control under a fully authorized local method. Use matched substance/solvent amounts, a blank, equal bromine addition, mixing and observation times without UV. Preserve your original record and explain decolourizing electrophilic addition with electron-pair arrows through a bromonium ion and bromide attack. Explicitly compare with Baeyer oxidation and explain inference limits for a natural fat mixture.",
+        "expectedPerformanceDe": "Eigenes Protokoll enthält Stoffe, Konzentrationen/Mengen, Zeiten, Kontroll- und Leerbefunde. Im trockenen nichtnucleophilen, freigegebenen Modellmedium liefert R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; das π-Paar polarisiert Br2, Br–Br wird heterolytisch gespalten, ein verbrücktes Bromoniumion entsteht und Br− greift von der Gegenseite an (anti-Addition). Synthetischer Musterbefund: Ungesättigte Probe entfärbt nach 10 s, gesättigte Kontrolle/Leerprobe bleiben unter gleichen Dunkelbedingungen nach 30 s gefärbt. Das stützt reaktive C=C im Modell; in Gemischen stören andere Brom-verbrauchende Stoffe und schlechte Durchmischung. Wasser als Medium kann Bromhydrinbildung ermöglichen, deshalb darf die Modellgleichung für trockenes Medium nicht ungeprüft auf Bromwasser übertragen werden. Baeyer-Reagenz oxidiert Doppelbindungen unter Permanganatreduktion und ist nicht dieser elektrophile Halogennachweis. Ohne standardisierte quantitative Bestimmung ist keine Iodzahl, Fettsäurezusammensetzung oder Ernährungsqualität belegt.",
+        "expectedPerformanceEn": "The own record includes substances, concentrations/amounts, times, controls and blank observations. In the approved dry non-nucleophilic model medium, R–CH=CH–R′ + Br2 → R–CHBr–CHBr–R′; the π pair polarizes Br2, Br–Br cleaves heterolytically, a bridged bromonium ion forms and Br− attacks from the opposite side (anti addition). Synthetic fixture: unsaturated sample decolourizes after 10 s while saturated control/blank remain coloured after 30 s under matched dark conditions. This supports reactive C=C in the model; other bromine-consuming components and poor mixing interfere in mixtures. Water can permit bromohydrin formation, so the dry-medium equation cannot simply be transferred to bromine water. Baeyer reagent oxidizes double bonds while reducing permanganate and is not this electrophilic halogen test. No iodine value, fatty-acid composition or nutritional quality follows without a standardized quantitative determination.",
+        "understandingFocusDe": "Praktischer Halogen-Operator und Mechanismus bleiben eigenständig erhalten und ersetzen nicht den physikalischen Transfer.",
+        "understandingFocusEn": "The practical halogen operator and mechanism remain independently preserved and do not replace physical transfer."
+      },
+      "technicalTextFieldDifferences": []
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "case": {
+        "id": "bw-halogen-addition-cis-trans-guided-transfer",
+        "taskDemandDe": "Prüfe in einer neuen angeleiteten Untersuchung die Hypothese: Gleiche Anzahl an C=C pro Molekül kann trotz unterschiedlicher räumlicher Konfiguration zum gleichen begrenzten Bromverbrauch führen. Führe den freigegebenen Mikrotest selbst mit gleich konzentrierten Methyloleat- und Methylelaidat-Lösungen, der Methylstearatkontrolle und Heptanleerprobe aus. Halte die vorgegebenen Mengen/Zeiten ein, sichere Originalbeobachtungen und begründe, was der Versuch über Ungesättigtheit und was er über die Konsistenz der zugehörigen Fettmodelle aussagt.",
+        "taskDemandEn": "In a new guided investigation, test: Equal C=C counts per molecule can produce the same limited bromine consumption despite different spatial configuration. Personally perform the approved microscale test with equal-concentration methyl oleate and methyl elaidate, a methyl stearate control and heptane blank. Follow prescribed quantities/times, preserve original observations and explain what the test establishes about unsaturation and what it establishes about consistency of the corresponding fat models.",
+        "expectedPerformanceDe": "Die neue Variable ist cis/trans, nicht Anzahl der C=C, Stoffmenge, Brommenge, Temperatur oder Schüttelzeit. Eigenes Protokoll prüft diese Gleichhaltung. Synthetischer Musterbefund: beide einfach ungesättigten Ester entfärben nach 10 s; Kontrolle und Leerprobe bleiben 30 s gefärbt. Das stützt die Hypothese über C=C-Reaktivität unter diesen Bedingungen. Es bestimmt keine genaue Kennzahl und beweist weder identische Geschwindigkeit noch gleiche Konsistenz. cis/trans verändert Packung und damit Schmelzen, obwohl der qualitative Halogennachweis ähnlich ausfallen kann. Die angeleitete Durchführung wird anhand eigener Handlung und Originaldaten bewertet; das Mechanismusurteil bleibt ein begrenzter Beitrag des vorhandenen 3fb7-Partners.",
+        "expectedPerformanceEn": "The new variable is cis/trans, not C=C count, substance amount, bromine amount, temperature or mixing time. The own record checks these controls. Synthetic fixture: both monounsaturated esters decolourize after 10 s, while control/blank remain coloured for 30 s. This supports the C=C-reactivity hypothesis under these conditions. It gives no exact index and proves neither identical rate nor equal consistency. cis/trans changes packing and melting even when the qualitative halogen test behaves similarly. Guided execution is assessed from own action and original data; mechanistic assessment stays a bounded contribution from the existing 3fb7 partner.",
+        "understandingFocusDe": "Die sichere Ausführung folgt einer neuen vorgegebenen Hypothese und trennt Nachweisbefund von physikalischer Eigenschaft.",
+        "understandingFocusEn": "Safe execution follows a new prescribed hypothesis and separates a detection result from a physical property."
+      },
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Neue Untersuchung selbst sicher ausgeführt und Originalbelege vorgelegt.",
+            "aspectEn": "Personally performs new investigation safely with original evidence."
+          },
+          {
+            "points": 1,
+            "aspectDe": "cis/trans als einzige Variable erkannt; Homogenität kontrolliert.",
+            "aspectEn": "Recognizes cis/trans as sole variable and checks homogeneity."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Kontroll-, Leer- und Vergleichsbeobachtungen vollständig protokolliert.",
+            "aspectEn": "Fully records controls, blank and comparison observations."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Hypothese begrenzt beurteilt; kein Schluss auf gleiche Konsistenz/absolute Kennzahl.",
+            "aspectEn": "Assesses hypothesis with limits; no inference of equal consistency/exact index."
+          }
+        ],
+        "fullCreditEvidenceDe": "Die neue Variable ist cis/trans, nicht Anzahl der C=C, Stoffmenge, Brommenge, Temperatur oder Schüttelzeit. Eigenes Protokoll prüft diese Gleichhaltung. Synthetischer Musterbefund: beide einfach ungesättigten Ester entfärben nach 10 s; Kontrolle und Leerprobe bleiben 30 s gefärbt. Das stützt die Hypothese über C=C-Reaktivität unter diesen Bedingungen. Es bestimmt keine genaue Kennzahl und beweist weder identische Geschwindigkeit noch gleiche Konsistenz. cis/trans verändert Packung und damit Schmelzen, obwohl der qualitative Halogennachweis ähnlich ausfallen kann. Die angeleitete Durchführung wird anhand eigener Handlung und Originaldaten bewertet; das Mechanismusurteil bleibt ein begrenzter Beitrag des vorhandenen 3fb7-Partners.",
+        "fullCreditEvidenceEn": "The new variable is cis/trans, not C=C count, substance amount, bromine amount, temperature or mixing time. The own record checks these controls. Synthetic fixture: both monounsaturated esters decolourize after 10 s, while control/blank remain coloured for 30 s. This supports the C=C-reactivity hypothesis under these conditions. It gives no exact index and proves neither identical rate nor equal consistency. cis/trans changes packing and melting even when the qualitative halogen test behaves similarly. Guided execution is assessed from own action and original data; mechanistic assessment stays a bounded contribution from the existing 3fb7 partner.",
+        "misconceptionChecks": []
+      },
+      "exactCurrentCaseBrief": {
+        "id": "bw-halogen-addition-cis-trans-guided-transfer",
+        "taskDemandDe": "Prüfe in einer neuen angeleiteten Untersuchung die Hypothese: Gleiche Anzahl an C=C pro Molekül kann trotz unterschiedlicher räumlicher Konfiguration zum gleichen begrenzten Bromverbrauch führen. Führe den freigegebenen Mikrotest selbst mit gleich konzentrierten Methyloleat- und Methylelaidat-Lösungen, der Methylstearatkontrolle und Heptanleerprobe aus. Halte die vorgegebenen Mengen/Zeiten ein, sichere Originalbeobachtungen und begründe, was der Versuch über Ungesättigtheit und was er über die Konsistenz der zugehörigen Fettmodelle aussagt.",
+        "taskDemandEn": "In a new guided investigation, test: Equal C=C counts per molecule can produce the same limited bromine consumption despite different spatial configuration. Personally perform the approved microscale test with equal-concentration methyl oleate and methyl elaidate, a methyl stearate control and heptane blank. Follow prescribed quantities/times, preserve original observations and explain what the test establishes about unsaturation and what it establishes about consistency of the corresponding fat models.",
+        "expectedPerformanceDe": "Die neue Variable ist cis/trans, nicht Anzahl der C=C, Stoffmenge, Brommenge, Temperatur oder Schüttelzeit. Eigenes Protokoll prüft diese Gleichhaltung. Synthetischer Musterbefund: beide einfach ungesättigten Ester entfärben nach 10 s; Kontrolle und Leerprobe bleiben 30 s gefärbt. Das stützt die Hypothese über C=C-Reaktivität unter diesen Bedingungen. Es bestimmt keine genaue Kennzahl und beweist weder identische Geschwindigkeit noch gleiche Konsistenz. cis/trans verändert Packung und damit Schmelzen, obwohl der qualitative Halogennachweis ähnlich ausfallen kann. Die angeleitete Durchführung wird anhand eigener Handlung und Originaldaten bewertet; das Mechanismusurteil bleibt ein begrenzter Beitrag des vorhandenen 3fb7-Partners.",
+        "expectedPerformanceEn": "The new variable is cis/trans, not C=C count, substance amount, bromine amount, temperature or mixing time. The own record checks these controls. Synthetic fixture: both monounsaturated esters decolourize after 10 s, while control/blank remain coloured for 30 s. This supports the C=C-reactivity hypothesis under these conditions. It gives no exact index and proves neither identical rate nor equal consistency. cis/trans changes packing and melting even when the qualitative halogen test behaves similarly. Guided execution is assessed from own action and original data; mechanistic assessment stays a bounded contribution from the existing 3fb7 partner.",
+        "understandingFocusDe": "Die sichere Ausführung folgt einer neuen vorgegebenen Hypothese und trennt Nachweisbefund von physikalischer Eigenschaft.",
+        "understandingFocusEn": "Safe execution follows a new prescribed hypothesis and separates a detection result from a physical property."
+      },
+      "technicalTextFieldDifferences": []
+    }
+  ]
+}

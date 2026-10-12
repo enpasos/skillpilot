@@ -1,0 +1,57 @@
+GOAL 7 2f3cdec5-f845-5b0f-841e-8b1d47de0281 Fette über Struktur und Eigenschaften erklären / Explain fats through structure and properties
+Die lernende Person kann Triacylglyceride über Estergruppen identifizieren und ausgewählte physikalische Eigenschaften durch Fettsäurereste, Sättigung und räumlichen Bau erklären.
+The learner can identify triacylglycerols using ester groups and explain selected physical properties through fatty acid residues, saturation and spatial structure.
+REQUIRES 70b34ae7-4481-590c-9a02-516464750832,a9c22adc-b543-5b0c-a2d8-3189facdff08
+CANONICAL REST {"weight": 1, "tags": ["GK", "LK"], "contains": [], "dimensionTags": {"framework": "hessen-kc-2024-chemistry", "demandLevel": "AB2", "processCompetencies": [], "guidingIdeas": ["BC_AUFBAU", "BC_REAKTION"], "phase": "Q2", "area": "Naturstoffe", "topicCode": "Q2.1.SPLIT.2f3cdec5"}, "applicability": {"jurisdiction": ["DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"]}, "extendedData": {"provenance": {"sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13", "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)", "sourceGoalId": "d7ce7699-8bf3-4efc-93bf-013912db5cf0"}, "splitOriginGoalId": "bebea164-dfd7-51d9-a54a-7029c78b7f5f"}, "type": "atomic", "examples": []}
+IMAGE [{"type": "goal-visualization", "resourceType": "image", "role": "primary", "skillpilotId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281", "title": "Visualisierung: Fette über Struktur und Eigenschaften erklären", "url": "/assets/goal-visualizations/chemie/2f3cdec5-f845-5b0f-841e-8b1d47de0281/2f3cdec5-f845-5b0f-841e-8b1d47de0281.png", "provider": "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)", "description": "Visualisierung zum Lernziel: Fette über Struktur und Eigenschaften erklären.", "altText": "Vereinfachte Fettmoleküle mit drei geraden oder geknickten Fettsäureresten zeigen unterschiedliche Packung. Pflanzenöl, Sonnenblume und ein festes Fett stehen als symbolische Stoffbeispiele darunter.", "lang": "de", "license": "CC-BY-4.0", "reviewStatus": "pilot"}]
+PROFILE.archetype = concept
+PROFILE.expectations[0].id = fat-structure-and-melting
+PROFILE.expectations[0].essentialUnderstandingDe = Physikalische Eigenschaft aus Molekülstruktur erklären, mit kontrollierter Vergleichsbasis.
+PROFILE.expectations[0].essentialUnderstandingEn = Explain a physical property from molecular structure with a controlled comparison basis.
+PROFILE.expectations[0].observablePerformanceDe = Glyceringerüst trägt an drei O-Atomen jeweils –C(=O)–R; drei Estergruppen verbinden genau drei Reste. Ein einzelnes Triacylglycerid ist kein Polyester mit wiederholten Ketteneinheiten. Gerade gesättigte Reste packen regelmäßiger, cis-Doppelbindungen erzeugen Knicke und stören geordnete Packung; entsprechend schmilzt B im Modell niedriger. Vergleich gilt bei ähnlicher Kettenlänge und vergleichbarer Zusammensetzung; natürliche Fette sind Gemische, deren Schmelzbereiche auch Verteilung der Reste und Kristallform beeinflussen.
+PROFILE.expectations[0].observablePerformanceEn = The glycerol backbone has –C(=O)–R attached through each of three O atoms; three ester groups connect exactly three residues. One triacylglycerol is not a polyester chain with repeated units. Straight saturated residues pack more regularly, while cis double bonds create bends and disrupt ordered packing; B therefore melts lower in this model. The comparison holds for similar chain length and comparable composition; natural fats are mixtures whose melting ranges also depend on residue distribution and crystal form.
+PROFILE.expectations[1].id = cis-trans-and-solvent-property-transfer
+PROFILE.expectations[1].essentialUnderstandingDe = Geänderte räumliche Konfiguration bei gleicher Ungesättigtheit und geändertes Lösungsmittel liefern echte physikalische Transfers.
+PROFILE.expectations[1].essentialUnderstandingEn = Changed spatial configuration at equal unsaturation and changed solvent provide genuine physical transfers.
+PROFILE.expectations[1].observablePerformanceDe = Bei 20 °C ist C flüssig, D fest. trans-Reste sind räumlich gestreckter und können regelmäßiger packen als die geknickten cis-Reste; gleich viele Doppelbindungen reichen zur Konsistenzprognose nicht. Die langen unpolaren Kohlenwasserstoffreste dominieren den Löslichkeitsvergleich: wenige Estergruppen liefern keine ausreichende Hydratation für gute Wasserlöslichkeit; mit einem unpolaren Medium sind günstige Dispersionskontakte möglich. Fette sind hydrophob und lipophil. Das ist ein kontrolliertes Modell, keine allgemeine Rangfolge für jedes Gemisch oder jede Temperatur und keine Ernährungsbewertung.
+PROFILE.expectations[1].observablePerformanceEn = At 20 °C, C is liquid and D solid. trans residues are more extended and can pack more regularly than bent cis residues; counting double bonds is insufficient to predict consistency. Long nonpolar hydrocarbon residues dominate solubility: a few ester groups do not provide enough hydration for good water solubility, whereas a nonpolar medium allows favourable dispersion contacts. Fats are hydrophobic and lipophilic. This is a controlled model, not a universal ranking for all mixtures or temperatures and not a nutritional assessment.
+PROFILE.coverageExpectations.requiredExpectationIds[0] = fat-structure-and-melting
+PROFILE.coverageExpectations.requiredExpectationIds[1] = cis-trans-and-solvent-property-transfer
+PROFILE.coverageExpectations.minimumIndependentDemonstrations = 2
+PROFILE.coverageExpectations.freshVariationRequired = True
+PROFILE.coverageExpectations.independentTransferRequired = True
+PROFILE.variationAxes[0].id = actual-operator-transfer
+PROFILE.variationAxes[0].textDe = Die vollständig ausgearbeiteten Fälle wechseln die konkret genannten Struktur-, Phasen-, Proben-, Mess- oder Modellbedingungen. Methodenspezifische Quellenpflichten sind keine beliebigen Alternativen. Durchführungsaufgaben erfordern reale Eigenarbeit; synthetische Muster erfüllen sie nicht.
+PROFILE.variationAxes[0].textEn = Complete worked cases vary the specified structure, phase, sample, measurement or model conditions. Source-specific method duties are not interchangeable alternatives. Execution requires actual own work; synthetic fixtures do not satisfy it.
+PROFILE.applicationCaseBriefs[0].id = fat-structure-and-melting
+PROFILE.applicationCaseBriefs[0].taskDemandDe = Konstruiere ein Triacylglycerid aus Glycerin und drei Fettsäureresten, markiere die drei Estergruppen und erkläre, weshalb es kein Polymer ist. Vergleiche Modellfett A mit drei gesättigten C18-Resten und B mit drei cis-einfach ungesättigten C18-Resten. Erkläre die synthetischen Schmelzbereiche A 68–72 °C und B 3–7 °C aus räumlichem Bau und Packung; nenne die Reichweite des Vergleichs.
+PROFILE.applicationCaseBriefs[0].taskDemandEn = Construct a triacylglycerol from glycerol and three fatty acid residues, mark its three ester groups and explain why it is not a polymer. Compare model fat A with three saturated C18 residues and B with three cis-monounsaturated C18 residues. Explain synthetic melting ranges A 68–72 °C and B 3–7 °C using spatial structure and packing; state the scope of the comparison.
+PROFILE.applicationCaseBriefs[1].id = cis-trans-and-solvent-property-transfer
+PROFILE.applicationCaseBriefs[1].taskDemandDe = Neue Modellfette C und D haben je drei C18-Reste mit genau einer C=C pro Rest; C besitzt nur cis-, D nur trans-Doppelbindungen. Die synthetischen Schmelzbereiche sind C 3–7 °C, D 38–42 °C. Je 0,10 g in 2,0 mL Lösungsmittel bei 20 °C: mit Wasser bleiben beide als separate Phase, in einem freigegebenen unpolaren Lösemittel lösen sie sich. Erkläre beide Eigenschaftsänderungen strukturbezogen. Beurteile die Behauptung: Gleiche Zahl von Doppelbindungen bedeutet gleiche Konsistenz; Estergruppen machen jedes Fett wasserlöslich.
+PROFILE.applicationCaseBriefs[1].taskDemandEn = New model fats C and D each have three C18 residues with one C=C per residue; C contains only cis and D only trans double bonds. Synthetic melting ranges are C 3–7 °C and D 38–42 °C. At 20 °C, 0.10 g in 2.0 mL solvent remains a separate phase in water but dissolves in an approved nonpolar solvent. Explain both property changes structurally. Assess: Equal double-bond counts imply equal consistency; ester groups make every fat water-soluble.
+WHOLE CASES[0].goalId = 2f3cdec5-f845-5b0f-841e-8b1d47de0281
+WHOLE CASES[0].case.id = fat-structure-and-melting
+WHOLE CASES[0].rubric.maximumPoints = 5
+WHOLE CASES[0].rubric.criteria[0].points = 2
+WHOLE CASES[0].rubric.criteria[0].aspectDe = Drei Estergruppen im vollständigen Triacylglycerid korrekt.
+WHOLE CASES[0].rubric.criteria[0].aspectEn = Correct three ester groups in complete triacylglycerol.
+WHOLE CASES[0].rubric.criteria[1].points = 2
+WHOLE CASES[0].rubric.criteria[1].aspectDe = cis-Knick/Packung erklärt die Schmelzdifferenz.
+WHOLE CASES[0].rubric.criteria[1].aspectEn = cis bend/packing explains melting difference.
+WHOLE CASES[0].rubric.criteria[2].points = 1
+WHOLE CASES[0].rubric.criteria[2].aspectDe = Kontrollierte Kettenlänge und Gemisch-/Kristallgrenze genannt.
+WHOLE CASES[0].rubric.criteria[2].aspectEn = States matched chain length and mixture/crystal limitation.
+WHOLE CASES[0].exactCurrentCaseBrief.id = fat-structure-and-melting
+WHOLE CASES[1].goalId = 2f3cdec5-f845-5b0f-841e-8b1d47de0281
+WHOLE CASES[1].case.id = cis-trans-and-solvent-property-transfer
+WHOLE CASES[1].rubric.maximumPoints = 5
+WHOLE CASES[1].rubric.criteria[0].points = 2
+WHOLE CASES[1].rubric.criteria[0].aspectDe = Aus neuer cis/trans-Struktur Packung und Zustand bei 20 °C begründet.
+WHOLE CASES[1].rubric.criteria[0].aspectEn = Uses new cis/trans structure to justify packing and state at 20 °C.
+WHOLE CASES[1].rubric.criteria[1].points = 2
+WHOLE CASES[1].rubric.criteria[1].aspectDe = Wasser/unpolares Medium über Kräfte und dominante Reste erklärt.
+WHOLE CASES[1].rubric.criteria[1].aspectEn = Explains water/nonpolar contrast through interactions and dominant residues.
+WHOLE CASES[1].rubric.criteria[2].points = 1
+WHOLE CASES[1].rubric.criteria[2].aspectDe = Beide Fehlbehauptungen verworfen und Modellgrenze genannt.
+WHOLE CASES[1].rubric.criteria[2].aspectEn = Rejects both false claims and states model limitation.
+WHOLE CASES[1].exactCurrentCaseBrief.id = cis-trans-and-solvent-property-transfer

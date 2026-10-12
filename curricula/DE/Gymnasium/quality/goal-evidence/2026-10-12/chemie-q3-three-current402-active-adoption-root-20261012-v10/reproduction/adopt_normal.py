@@ -1,0 +1,7 @@
+from pathlib import Path
+import subprocess,json
+root=Path('/home/enpasos/projects/skillpilot');out=Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-active-adoption-root-20261012-v10');cfg=out/'configs/native-D3.batch.config.json';native=out/'native-D3'
+commands=[['app/node_modules/.bin/tsx','app/scripts/materializeGoalDescriptionRolloutBatch.ts','summarize','--config',str(cfg),'--write'],['app/node_modules/.bin/tsx','app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts','--config',str(cfg),'--authoring',str(native/'synthesis-authoring.json'),'--write'],['app/node_modules/.bin/tsx','app/scripts/materializeGoalDescriptionRolloutResolutions.ts','--config',str(cfg),'--synthesis-manifest',str(native/'synthesis-decisions.json'),'--write'],['app/node_modules/.bin/tsx','app/scripts/materializeGoalDescriptionRolloutBatch.ts','finalize','--config',str(cfg),'--write']]
+for n,argv in enumerate(commands,1):
+ p=subprocess.run(argv,cwd=root,text=True,capture_output=True);(root/out/'checks'/f'normal-native-adoption-{n}.actual-output.txt').write_text(p.stdout+p.stderr);(root/out/'checks'/f'normal-native-adoption-{n}.receipt.json').write_text(json.dumps({'argv':argv,'exitCode':p.returncode,'unmodifiedProductionCode':True,'activeWrites':False},indent=2)+'\n');print(json.dumps({'step':n,'exit':p.returncode,'lastOutput':(p.stdout+p.stderr)[-700:]}))
+ if p.returncode:raise SystemExit(p.returncode)

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9791b420bb01cd0d0f96dc518f4c4bee3807dec1df93672a2ec8ac3bcd5f2c9f",
+  "reviewInputFingerprint": "sha256:e973f07c824f918ea06860979928dca6dbf8323a0f6e75903339f6782f6293f0",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-0beb-underside-current397-native-first-20261012-v1-a",
+      "roundId": "biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-a",
+      "independenceGroupId": "biologie-0beb-underside-current397-native-first-20261012-v1-independent-a",
+      "runIds": [
+        "biologie-0beb-underside-genuine-fresh-a-current-native-20261012-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6 session; exact backend version not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-0beb-underside-current397-native-first-20261012-v1-b",
+      "roundId": "biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-b",
+      "independenceGroupId": "biologie-0beb-underside-current397-native-first-20261012-v1-independent-b",
+      "runIds": [
+        "biologie-0beb-underside-fresh-current-first-pass-b-20261012-v1"
+      ],
+      "providers": [
+        "OpenAI / Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex::Codex GPT-6 (inherited session; exact version not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "0beb4ca2-2437-557a-9db2-ccda1cbcfa0a",
+      "firstRecordId": "biologie-0beb-underside-genuine-fresh-a-current-native-20261012-v1.record-001",
+      "secondRecordId": "biologie-0beb-underside-fresh-current-first-pass-b-20261012-v1.0beb",
+      "firstRunId": "biologie-0beb-underside-genuine-fresh-a-current-native-20261012-v1",
+      "secondRunId": "biologie-0beb-underside-fresh-current-first-pass-b-20261012-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

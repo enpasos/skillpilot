@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {
+      "check": "materialize",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-P9-targeted-remediation-author-20261012-v3/positive/P9.normal-materializer.inactive.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-P9-targeted-remediation-author-20261012-v3/positive/P9.author.candidate-set.json",
+        "--write"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "verify",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-P9-targeted-remediation-author-20261012-v3/positive/P9.normal-materializer.inactive.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-P9-targeted-remediation-author-20261012-v3/positive/P9.author.candidate-set.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-P9-targeted-remediation-author-20261012-v3/positive/P9.normal-materializer.inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "author-run-bound-check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-P9-targeted-remediation-author-20261012-v3/positive/P9.author-run-bound.inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "normalMaterializerUsed": true,
+  "allNineCurrent": true,
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "independentAcceptance": false,
+  "technicalAcceptanceOnly": true,
+  "activeWrites": false,
+  "authorRunNormalBindingValid": true,
+  "newIndependentAcceptedRuns": 0
+}

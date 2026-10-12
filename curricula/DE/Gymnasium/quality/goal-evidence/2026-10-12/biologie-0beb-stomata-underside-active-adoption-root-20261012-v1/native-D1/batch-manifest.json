@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-0beb-underside-current397-native-first-20261012-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+  "configDigest": "sha256:835fcca843e85a7868f867770e6ada7368e5e26a5d1af97bd757d3fb8ef6a950",
+  "goalIds": [
+    "0beb4ca2-2437-557a-9db2-ccda1cbcfa0a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 397,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-basiskonzepte-0beb-stomata-underside-one-image-technical-preparation-20261012-v1/configs/full397.actual-national-atlas.current-image.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-basiskonzepte-0beb-stomata-underside-one-image-technical-preparation-20261012-v1/candidate/whole484-current397.image-alt-only.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:f3573ac7ee863311642396336cb0bfba6e3d26885e32af32553f714085324f39"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ad395377351a879eca3a2d5d7312624f144928264430297f6a5eb0e832c2a31c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9791b420bb01cd0d0f96dc518f4c4bee3807dec1df93672a2ec8ac3bcd5f2c9f",
+    "reviewInputFingerprint": "sha256:e973f07c824f918ea06860979928dca6dbf8323a0f6e75903339f6782f6293f0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-0beb-underside-current397-native-first-20261012-v1-a",
+        "campaignDigest": "sha256:250f0149b3ea528af006c4555e5b9c5d2231ea974f708d21b2b2b210d60367df",
+        "roundId": "biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-a",
+        "independenceGroupId": "biologie-0beb-underside-current397-native-first-20261012-v1-independent-a",
+        "batchId": "biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ad2c201ab842e9da6af203dfc3c333a7e210ee11d61a558e67511a27c1c40ef7"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-0beb-underside-current397-native-first-20261012-v1-b",
+        "campaignDigest": "sha256:7f5798b488bde41615295ad0e6a9ed28ac6e5c53e63d2271349480b742ed4dde",
+        "roundId": "biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-b",
+        "independenceGroupId": "biologie-0beb-underside-current397-native-first-20261012-v1-independent-b",
+        "batchId": "biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4575fdd4b593bead0fecc2803c502b7bc5ddd75e25ac935e89995e8826aa3ff2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

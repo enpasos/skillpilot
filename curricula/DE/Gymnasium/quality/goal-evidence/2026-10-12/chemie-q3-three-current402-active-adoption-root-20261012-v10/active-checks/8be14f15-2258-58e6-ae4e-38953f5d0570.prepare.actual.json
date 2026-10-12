@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "8be14f15-2258-58e6-ae4e-38953f5d0570",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex image generation",
+    "--review-status",
+    "pilot"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Spannungsreihen nutzen\nSkillPilot ID: 8be14f15-2258-58e6-ae4e-38953f5d0570\nPrompt: tmp/goal-visualizations/8be14f15-2258-58e6-ae4e-38953f5d0570/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/8be14f15-2258-58e6-ae4e-38953f5d0570/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- 8be14f15-2258-58e6-ae4e-38953f5d0570 \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "unmodifiedNormalTool": true
+}

@@ -1,0 +1,30 @@
+# Lernzielvisualisierung: Gleichgewichtsdynamik nachweisen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `81373fb7-2a4a-5b2c-acd0-b4e775acaa65`
+- Titel: Gleichgewichtsdynamik nachweisen
+- Beschreibung: Die lernende Person kann chemische Gleichgewichte mithilfe von Modellen auf Stoff- und Teilchenebene charakterisieren, das gleichzeitige Vorliegen von Edukten und Produkten zeigen und statische Stoffebene von dynamischer Teilchenebene abgrenzen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image_gen
+- Status: pilot
+- Quellbild: `81373fb7-2a4a-5b2c-acd0-b4e775acaa65.png`
+- Public Asset: `/assets/goal-visualizations/chemie/81373fb7-2a4a-5b2c-acd0-b4e775acaa65/81373fb7-2a4a-5b2c-acd0-b4e775acaa65.png`
+
+## Prompt
+
+```text
+# Corrective image request: equilibrium dynamics
+
+Use case: scientific-educational. Correct the referenced learning-goal illustration, preserving its friendly blue/orange abstract comic style. Create a crisp PNG in a landscape composition around 16:9, about 1600x900 or a close native size. The actual central idea and large short labels must remain intelligible when the whole image is displayed at 360px width, and at 680px desktop width.
+
+Preserve the comparison between observable substance level and imagined particle level. Simplify the overcrowded drawing into two large friendly panels. Left: two beakers at two times with the same colour and fill level, showing macroscopic constancy. Right: a spacious particle-model circle, with BOTH independent A and B particles and joined AB particles present. Use exactly the same shapes and colours for every A and every B. All reactions conserve both particle identities: one arrow shows a separate A plus a separate B becoming one joined AB pair; a second arrow shows one joined AB pair becoming one separate A plus one separate B. Both directions continue, and their rates are equal. Do not equate concentrations with rates. Do not show AB losing B, an A being created from nothing, a one-way equilibrium, or a lower reverse reaction that actually joins A+B.
+
+Use only these short, large German labels: "Stoffebene", "Teilchenebene", "konstant", "gleich schnell", and the equation "A + B ⇌ AB". A and B labels may identify their particles. Avoid full title repetition, paragraphs, tiny text, dense tables, decorative equations, photorealism and sterile technical CAD. Keep all central objects inside generous margins. This is an orientation image, not a worked assessment task. The original remains immutable; output is an unapproved candidate.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

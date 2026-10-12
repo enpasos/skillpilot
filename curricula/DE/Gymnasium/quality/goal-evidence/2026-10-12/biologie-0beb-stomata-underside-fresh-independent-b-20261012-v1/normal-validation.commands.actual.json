@@ -1,0 +1,40 @@
+[
+  {
+    "name": "description-normal-cli",
+    "command": [
+      "node",
+      "app/node_modules/tsx/dist/cli.mjs",
+      "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "--bundle",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-basiskonzepte-0beb-stomata-underside-one-image-technical-preparation-20261012-v1/native/D1/round-b/review-bundle-manifest.json",
+      "--input",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-basiskonzepte-0beb-stomata-underside-one-image-technical-preparation-20261012-v1/native/D1/round-b/description-review-input.json",
+      "--campaign",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-basiskonzepte-0beb-stomata-underside-one-image-technical-preparation-20261012-v1/native/D1/round-b/description-review-campaign.json",
+      "--run",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/description/run-manifest.json",
+      "--batch-input",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-basiskonzepte-0beb-stomata-underside-one-image-technical-preparation-20261012-v1/native/D1/round-b/batches/biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-b.batch-001.input.jsonl",
+      "--records",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/description/description-records.jsonl"
+    ],
+    "startedAtUTC": "2026-10-12T16:02:20.308858+00:00",
+    "completedAtUTC": "2026-10-12T16:02:20.969058+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/description-normal-cli.stdout.txt",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/description-normal-cli.stderr.txt"
+  },
+  {
+    "name": "normal-current-direct-production",
+    "command": [
+      "node",
+      "app/node_modules/tsx/dist/cli.mjs",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/reproduction/verify_current_b.ts"
+    ],
+    "startedAtUTC": "2026-10-12T16:02:20.969120+00:00",
+    "completedAtUTC": "2026-10-12T16:02:21.859951+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/normal-current-direct-production.stdout.txt",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/normal-current-direct-production.stderr.txt"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "/home/enpasos/projects/skillpilot/tmp/chemie-q2-current-P3-normal-capsule/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+    "--config",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-targeted-remediation-root-preparation-20261012-v3/configs/P3.current-tuple.inactive.config.json",
+    "--candidates",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-targeted-remediation-root-preparation-20261012-v3/positive/P3.unchanged-whole-profiles-current-tuple.candidate-set.json",
+    "--write"
+  ],
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "/home/enpasos/projects/skillpilot/tmp/chemie-q2-current-P3-normal-capsule/app/scripts/positiveGoalEvidenceReview.ts:313\n    throw new Error(`Invalid positive goal-evidence review config: ${ajv.errorsText(validateConfig.errors)}`)\n          ^\n\n\nError: Invalid positive goal-evidence review config: data/reviewId must match pattern \"^[a-z0-9]+(?:-[a-z0-9]+)*$\"\n    at reviewPositiveGoalEvidenceConfig (/home/enpasos/projects/skillpilot/tmp/chemie-q2-current-P3-normal-capsule/app/scripts/positiveGoalEvidenceReview.ts:313:11)\n    at main (/home/enpasos/projects/skillpilot/tmp/chemie-q2-current-P3-normal-capsule/app/scripts/materializePositiveGoalEvidenceCandidates.ts:300:20)\n\nNode.js v20.20.2\n",
+  "unmodifiedNormalCode": true,
+  "activeIntegration": false
+}

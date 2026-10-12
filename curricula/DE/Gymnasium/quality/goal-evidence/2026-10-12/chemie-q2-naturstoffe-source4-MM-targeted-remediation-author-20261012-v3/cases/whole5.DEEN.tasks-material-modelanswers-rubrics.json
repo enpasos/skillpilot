@@ -1,0 +1,701 @@
+{
+  "schemaVersion": 1,
+  "license": "CC-BY-4.0",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "cases": [
+    {
+      "goalId": "d8eeed29-d1b7-5a48-94b5-343629f8e867",
+      "case": {
+        "id": "systematic-name-to-fischer",
+        "taskDemandDe": "Konstruiere allein aus dem Namen (2S)-2-Aminopropansäure eine vollständige Fischer-Projektion mit COOH oben und dem Kohlenwasserstoffrest unten. Leite zuerst Konnektivität und CIP-Reihenfolge ab, bestimme dann D/L. Zeichne das Enantiomer. Erkläre, warum der Name 2-Aminopropansäure ohne Stereodeskriptor keine eindeutige Fischer-Konfiguration festlegt.",
+        "taskDemandEn": "Construct a complete Fischer projection solely from (2S)-2-aminopropanoic acid, with COOH at the top and the hydrocarbon residue below. First derive connectivity and CIP priorities, then determine D/L. Draw its enantiomer. Explain why 2-aminopropanoic acid without a stereodescriptor does not specify a unique Fischer configuration.",
+        "expectedPerformanceDe": "Drei C-Atome; Carboxyl-C ist C1, Aminogruppe an C2: HOOC–CH(NH2)–CH3. C2 trägt vier verschiedene Gruppen. CIP: NH2 > COOH > CH3 > H. Bei COOH oben und CH3 unten stehen für (2S) NH2 links und H rechts: L-Konfiguration. Spiegelbild: NH2 rechts, H links, (2R), D. Die horizontalen Bindungen zeigen nach vorn; bei vorn liegendem H wird der abgelesene Drehsinn invertiert. Ohne Stereodeskriptor ist nur die Konnektivität gegeben; beide Enantiomere sind möglich, nicht automatisch ein Racemat.",
+        "expectedPerformanceEn": "There are three carbon atoms; carboxyl carbon is C1 and amino group is at C2: HOOC–CH(NH2)–CH3. C2 has four different substituents. CIP: NH2 > COOH > CH3 > H. With COOH top and CH3 bottom, (2S) places NH2 left and H right: L. Its mirror image places NH2 right and H left: (2R), D. Horizontal bonds point towards the viewer, so the read rotation is inverted when H points forward. A name without a stereodescriptor only fixes connectivity; either enantiomer is possible and a racemate is not implied.",
+        "understandingFocusDe": "Systematischer Name und absolute Konfiguration bestimmen die Konstruktion; D/L folgt erst aus der geprüften Fischer-Konvention.",
+        "understandingFocusEn": "The systematic name and absolute configuration determine construction; D/L follows from the checked Fischer convention."
+      },
+      "materialAndData": {
+        "de": "Nur Namen als Eingang: (2S)-2-Aminopropansäure und 2-Aminopropansäure. Fischer-Konvention: vertikal nach hinten, horizontal nach vorn. Keine triviale Benennung, vorgezeichnete Projektion oder D/L-Angabe.",
+        "en": "Inputs are only the names (2S)-2-aminopropanoic acid and 2-aminopropanoic acid. Fischer convention: vertical bonds point back, horizontal bonds forward. No trivial name, drawn projection or D/L designation.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "representation",
+      "authoredRouteScope": "BY C13-EA.4.5; canonical amino-acid configuration",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Konnektivität aus Propan-/2-Amino- korrekt konstruiert.",
+            "aspectEn": "Correctly constructs connectivity from propanoic/2-amino."
+          },
+          {
+            "points": 2,
+            "aspectDe": "CIP-Reihenfolge und Umkehr bei horizontalem H führen begründet zu NH2 links.",
+            "aspectEn": "CIP priorities and inversion for horizontal H justify NH2 on the left."
+          },
+          {
+            "points": 1,
+            "aspectDe": "L und spiegelbildliches (2R)/D richtig.",
+            "aspectEn": "Correct L and mirror (2R)/D."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Fehlende Stereoinformation erkannt; kein unbegründetes Racemat.",
+            "aspectEn": "Recognizes missing stereochemical information; no unsupported racemate."
+          }
+        ],
+        "fullCreditEvidenceDe": "Drei C-Atome; Carboxyl-C ist C1, Aminogruppe an C2: HOOC–CH(NH2)–CH3. C2 trägt vier verschiedene Gruppen. CIP: NH2 > COOH > CH3 > H. Bei COOH oben und CH3 unten stehen für (2S) NH2 links und H rechts: L-Konfiguration. Spiegelbild: NH2 rechts, H links, (2R), D. Die horizontalen Bindungen zeigen nach vorn; bei vorn liegendem H wird der abgelesene Drehsinn invertiert. Ohne Stereodeskriptor ist nur die Konnektivität gegeben; beide Enantiomere sind möglich, nicht automatisch ein Racemat.",
+        "fullCreditEvidenceEn": "There are three carbon atoms; carboxyl carbon is C1 and amino group is at C2: HOOC–CH(NH2)–CH3. C2 has four different substituents. CIP: NH2 > COOH > CH3 > H. With COOH top and CH3 bottom, (2S) places NH2 left and H right: L. Its mirror image places NH2 right and H left: (2R), D. Horizontal bonds point towards the viewer, so the read rotation is inverted when H points forward. A name without a stereodescriptor only fixes connectivity; either enantiomer is possible and a racemate is not implied.",
+        "misconceptionChecks": [
+          "S bestimmt nicht immer L; D/L ist nicht das Vorzeichen optischer Drehung."
+        ]
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "d8eeed29-d1b7-5a48-94b5-343629f8e867",
+      "case": {
+        "id": "sulfur-priority-transfer",
+        "taskDemandDe": "Leite aus (2R)-2-Amino-3-sulfanylpropansäure Konnektivität und Fischer-Projektion ab (COOH oben, Seitenkette unten). Bestimme D/L und vergleiche die CIP-Reihenfolge mit dem ersten Fall. Zeichne das Enantiomer und begründe, weshalb die Regel R=D hier versagt.",
+        "taskDemandEn": "Derive connectivity and a Fischer projection from (2R)-2-amino-3-sulfanylpropanoic acid (COOH top, side chain below). Determine D/L and compare CIP priorities with the first case. Draw the enantiomer and explain why R=D fails here.",
+        "expectedPerformanceDe": "HOOC–CH(NH2)–CH2–SH. CIP am C2: NH2 zuerst; CH2SH hat an seinem C die Nachbarn S,H,H und rangiert vor dem Carboxyl-C mit O,O,O; H zuletzt. Somit NH2 > CH2SH > COOH > H. Für (2R) bei dieser Fischer-Anordnung steht NH2 links, H rechts: L, obwohl R. Das Enantiomer hat NH2 rechts: D und (2S). Seitenketten ändern CIP, nicht die D/L-Projektionskonvention. Es geht um Konfiguration, nicht Drehvorzeichen oder bloße Bewegung des Bildes.",
+        "expectedPerformanceEn": "HOOC–CH(NH2)–CH2–SH. At C2, NH2 is first; the CH2SH carbon has S,H,H neighbours and outranks the carboxyl carbon with O,O,O; H is last. Thus NH2 > CH2SH > COOH > H. For (2R) in this Fischer arrangement, NH2 lies left and H right: L despite R. The mirror has NH2 right: D and (2S). Side chains change CIP priorities, not the D/L projection convention. This concerns configuration, not rotation sign or simply moving the drawing.",
+        "understandingFocusDe": "Neue Seitenkette erzwingt eine echte Neukonstruktion und trennt absolute von relativer Konfigurationsbenennung.",
+        "understandingFocusEn": "A new side chain forces genuine reconstruction and distinguishes absolute from relative configurational naming."
+      },
+      "materialAndData": {
+        "de": "Name als einzige Stoffidentifikation; Ordnungszahlen N=7, O=8, S=16, C=6, H=1. Mehrfachbindungen werden beim CIP-Vergleich durch Duplikatpartner berücksichtigt.",
+        "en": "The name is the only substance identification; atomic numbers N=7, O=8, S=16, C=6, H=1. Multiple bonds use duplicate partners in CIP comparison.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "representation",
+      "authoredRouteScope": "BY C13-EA.4.5 fresh configuration transfer",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Seitenkette CH2SH aus dem Namen aufgebaut.",
+            "aspectEn": "Builds CH2SH from the name."
+          },
+          {
+            "points": 2,
+            "aspectDe": "S-Vergleich erklärt geänderte CIP-Reihenfolge.",
+            "aspectEn": "Sulfur comparison explains changed CIP priorities."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Fischer-Lage und L/(2R) richtig.",
+            "aspectEn": "Correct Fischer arrangement and L/(2R)."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Enantiomer D/(2S) und Grenze der R=D-Regel richtig.",
+            "aspectEn": "Correct mirror D/(2S) and limitation of R=D."
+          }
+        ],
+        "fullCreditEvidenceDe": "HOOC–CH(NH2)–CH2–SH. CIP am C2: NH2 zuerst; CH2SH hat an seinem C die Nachbarn S,H,H und rangiert vor dem Carboxyl-C mit O,O,O; H zuletzt. Somit NH2 > CH2SH > COOH > H. Für (2R) bei dieser Fischer-Anordnung steht NH2 links, H rechts: L, obwohl R. Das Enantiomer hat NH2 rechts: D und (2S). Seitenketten ändern CIP, nicht die D/L-Projektionskonvention. Es geht um Konfiguration, nicht Drehvorzeichen oder bloße Bewegung des Bildes.",
+        "fullCreditEvidenceEn": "HOOC–CH(NH2)–CH2–SH. At C2, NH2 is first; the CH2SH carbon has S,H,H neighbours and outranks the carboxyl carbon with O,O,O; H is last. Thus NH2 > CH2SH > COOH > H. For (2R) in this Fischer arrangement, NH2 lies left and H right: L despite R. The mirror has NH2 right: D and (2S). Side chains change CIP priorities, not the D/L projection convention. This concerns configuration, not rotation sign or simply moving the drawing.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "dfaef897-dcd4-55d4-a1fe-3dd90b818853",
+      "case": {
+        "id": "unlabelled-d-l-and-glucose-closure",
+        "taskDemandDe": "Zwei unbenannte Aldohexosen A/B besitzen CHO oben und CH2OH unten. OH an C2–C5: A rechts-links-rechts-rechts; B links-rechts-links-links. Zeichne beide Fischer-Projektionen, ordne D/L selbst zu und begründe die Beziehung. Leite für A den C5→C1-Ringschluss einschließlich Elektronenpaarpfeilen ab und zeichne beide Glucopyranose-Anomere mit nummerierten C-Atomen.",
+        "taskDemandEn": "Two unnamed aldohexoses A/B have CHO at the top and CH2OH below. OH at C2–C5: A right-left-right-right; B left-right-left-left. Draw both Fischer projections, independently assign D/L and justify their relationship. For A, derive C5→C1 ring closure including electron-pair arrows and draw both glucopyranose anomers with carbon numbering.",
+        "expectedPerformanceDe": "A ist D-Glucose, B L-Glucose; das höchstnummerierte Stereozentrum C5 entscheidet (OH rechts/links). Alle vier Zentren sind gespiegelt: Enantiomere. Bei A greift ein freies Elektronenpaar von O5 das Carbonyl-C1 an, das C=O-π-Elektronenpaar geht zu O1; nach Protonenübertragung entsteht ein Halbacetal, keine Wasserabspaltung. Ringfolge O5–C1–C2–C3–C4–C5: O+5C. In der üblichen Haworthlage (O oben rechts, C1 rechts) sind C2-OH unten, C3-OH oben, C4-OH unten, C5-CH2OH oben; C1-OH α unten und β oben. Das neue C1 ist anomer, C5 bleibt unverändert; α/β ist keine D/L-Umkehr.",
+        "expectedPerformanceEn": "A is D-glucose and B L-glucose; the highest-numbered stereocentre C5 determines D/L (OH right/left). All four centres are mirrored: enantiomers. In A, an O5 lone pair attacks carbonyl C1 and the C=O π pair moves to O1; proton transfer gives a hemiacetal without water loss. The ring is O5–C1–C2–C3–C4–C5: O+5C. In the usual Haworth orientation (O upper right, C1 right), C2-OH is down, C3-OH up, C4-OH down and C5-CH2OH up; C1-OH is α down or β up. New C1 is anomeric while C5 remains unchanged; α/β does not reverse D/L.",
+        "understandingFocusDe": "D/L wird aus unbenannter Struktur bestimmt; Ringschluss erhält alte Stereozentren und schafft das anomere Zentrum.",
+        "understandingFocusEn": "D/L is determined from unnamed structures; closure preserves existing stereocentres and creates the anomeric centre."
+      },
+      "materialAndData": {
+        "de": "OH-Folgen sind synthetisch ausgewählte Struktureingaben; Haworthlage und Nummerierung sind festgelegt. Strukturzeichnung, Bindungen und Elektronenpaarpfeile müssen selbst entstehen.",
+        "en": "OH patterns are selected structural inputs; Haworth orientation and numbering are fixed. The learner constructs the structures, bonds and electron-pair arrows.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "representation",
+      "authoredRouteScope": "HE Q2.1 basic; BW 3.4.4(1–4); SN/TH glucose projection",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 8,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Beide Fischerbilder und unabhängige D/L-Zuordnung an C5.",
+            "aspectEn": "Both Fischer drawings and independent D/L assignment at C5."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Nucleophiler Angriff und Carbonylöffnung ohne Wasserverlust.",
+            "aspectEn": "Nucleophilic attack and carbonyl opening without water loss."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Nummerierter Sechsring mit erhaltenen C2–C5-Konfigurationen.",
+            "aspectEn": "Numbered six-membered ring preserving C2–C5 configurations."
+          },
+          {
+            "points": 2,
+            "aspectDe": "C1-α/β richtig und Enantiomerie gegen Anomerie abgegrenzt.",
+            "aspectEn": "Correct C1 α/β; distinguishes enantiomerism from anomerism."
+          }
+        ],
+        "fullCreditEvidenceDe": "A ist D-Glucose, B L-Glucose; das höchstnummerierte Stereozentrum C5 entscheidet (OH rechts/links). Alle vier Zentren sind gespiegelt: Enantiomere. Bei A greift ein freies Elektronenpaar von O5 das Carbonyl-C1 an, das C=O-π-Elektronenpaar geht zu O1; nach Protonenübertragung entsteht ein Halbacetal, keine Wasserabspaltung. Ringfolge O5–C1–C2–C3–C4–C5: O+5C. In der üblichen Haworthlage (O oben rechts, C1 rechts) sind C2-OH unten, C3-OH oben, C4-OH unten, C5-CH2OH oben; C1-OH α unten und β oben. Das neue C1 ist anomer, C5 bleibt unverändert; α/β ist keine D/L-Umkehr.",
+        "fullCreditEvidenceEn": "A is D-glucose and B L-glucose; the highest-numbered stereocentre C5 determines D/L (OH right/left). All four centres are mirrored: enantiomers. In A, an O5 lone pair attacks carbonyl C1 and the C=O π pair moves to O1; proton transfer gives a hemiacetal without water loss. The ring is O5–C1–C2–C3–C4–C5: O+5C. In the usual Haworth orientation (O upper right, C1 right), C2-OH is down, C3-OH up, C4-OH down and C5-CH2OH up; C1-OH is α down or β up. New C1 is anomeric while C5 remains unchanged; α/β does not reverse D/L.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "dfaef897-dcd4-55d4-a1fe-3dd90b818853",
+      "case": {
+        "id": "fructose-furanose-pyranose-transfer",
+        "taskDemandDe": "Ketose F besitzt CH2OH an C1 und C6, C=O an C2 und OH-Folge C3–C5 links-rechts-rechts; ihr Spiegel F* rechts-links-links. Zeichne Fischerbilder, ordne D/L unabhängig zu und vergleiche die Carbonylposition mit Glucose. Konstruiere für F α- und β-Fructofuranose durch O5→C2 und α- und β-Fructopyranose durch O6→C2, jeweils nummeriert. Erkläre Elektronenpaarbewegung und anomeres Zentrum. Begründe, warum die D/L-Entscheidung bei der Pyranose nicht an einem vermeintlichen C6-CH2OH außerhalb des Rings getroffen werden kann.",
+        "taskDemandEn": "Ketose F has CH2OH at C1 and C6, C=O at C2, and C3–C5 OH left-right-right; its mirror F* has right-left-left. Draw Fischer projections, independently assign D/L and compare carbonyl position with glucose. Construct F α/β-fructofuranose via O5→C2 and α/β-fructopyranose via O6→C2, with numbering. Explain electron-pair movement and the anomeric centre. Explain why pyranose D/L cannot be assigned from a supposed external C6-CH2OH.",
+        "expectedPerformanceDe": "F ist D-Fructose, F* L-Fructose, weil C5-OH rechts/links; keine Drehvorzeichenangabe folgt. Fructose ist Ketose (C2=O), Glucose Aldose (C1=O). O5 oder O6 greift C2 an; das π-Paar geht zu O2, Protonenübertragung ergibt ein Halbketal (unter dem curricularen Oberbegriff Halbacetalbildung), ohne Kondensation. Furanosering: O5–C2–C3–C4–C5, Pyranosering: O6–C2–C3–C4–C5–C6. C2 ist neu anomer. Übliche Haworthlage mit Ring-O oben/rechts und C2 rechts: D-Furanose C3-OH oben, C4-OH unten, C5-CH2OH(C6) oben; C2-OH α unten, β oben und C1-CH2OH jeweils entgegengesetzt. D-Pyranose C3-OH oben, C4-OH unten, C5-OH unten; C6 ist Ring-CH2. Auch dort C2-OH α unten, β oben, C1-CH2OH entgegengesetzt. D/L bleibt an der aus der Kette erhaltenen C5-Konfiguration definiert. Die vier zyklischen Formen sind zwei Ringgrößen mit jeweils einem Anomerenpaar, nicht vier gegenseitige Enantiomere. F/F* sind spiegelbildlich; eine α/β-Änderung allein ändert D nicht.",
+        "expectedPerformanceEn": "F is D-fructose and F* L-fructose because C5-OH is right/left; this does not give rotation sign. Fructose is a ketose (C2=O), glucose an aldose (C1=O). O5 or O6 attacks C2; the π pair moves to O2 and proton transfer produces a hemiketal (within the curriculum's broader hemiacetal wording), without condensation. Furanose: O5–C2–C3–C4–C5; pyranose: O6–C2–C3–C4–C5–C6. New C2 is anomeric. In the usual Haworth orientation with ring O above/right and C2 on the right, D-furanose has C3-OH up, C4-OH down and C5-CH2OH(C6) up; C2-OH is α down or β up, with C1-CH2OH opposite. D-pyranose has C3-OH up, C4-OH down and C5-OH down; C6 is ring CH2. C2-OH is again α down or β up, with C1-CH2OH opposite. D/L uses retained C5 configuration. These are two ring sizes with an anomer pair each, not four mutual enantiomers. F/F* are mirrors; changing α/β alone does not change D.",
+        "understandingFocusDe": "Eine Ketose verschiebt das anomere Zentrum zu C2; beide Ringschlüsse prüfen Konfigurationserhalt und richtige Ringgröße.",
+        "understandingFocusEn": "A ketose moves the anomeric centre to C2; both closures test configuration preservation and correct ring size."
+      },
+      "materialAndData": {
+        "de": "Eingabe ohne D/L-Etikett. Kein Zahlenwert beschreibt eine gemessene Gleichgewichtsverteilung; alle vier Formen sind Darstellungsaufgaben, nicht als gleiche Häufigkeit behauptet. Zeichnungsorientierung ist verbindlich wie in der Modellantwort.",
+        "en": "Input lacks D/L labels. No value gives a measured equilibrium distribution; all four forms are drawing tasks, not claims of equal abundance. Drawing orientation follows the model answer.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "representation",
+      "authoredRouteScope": "BW 3.4.4(3–4); HE glucose/fructose projections + bounded closure clause; SN12-LK; TH fructose furanose and pyranose",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 9,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Ketose-Fischerbild, Aldose/Ketose-Vergleich und unabhängiges D/L an C5.",
+            "aspectEn": "Ketose Fischer structure, aldose/ketose comparison and independent C5 D/L."
+          },
+          {
+            "points": 2,
+            "aspectDe": "O5/O6-Angriffe und neue Halbketalbindung an C2 erklärt.",
+            "aspectEn": "Explains O5/O6 attacks and new C2 hemiketal bond."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Beide Furanose-Anomere mit richtigen Substituenten.",
+            "aspectEn": "Both furanose anomers with correct substituents."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Beide Pyranose-Anomere; C6 im Ring und C5 als Referenz.",
+            "aspectEn": "Both pyranose anomers; C6 in ring and C5 reference."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Keine D/L-Umkehr durch α/β und keine Verteilung erfunden.",
+            "aspectEn": "No α/β-induced D/L reversal and no invented distribution."
+          }
+        ],
+        "fullCreditEvidenceDe": "F ist D-Fructose, F* L-Fructose, weil C5-OH rechts/links; keine Drehvorzeichenangabe folgt. Fructose ist Ketose (C2=O), Glucose Aldose (C1=O). O5 oder O6 greift C2 an; das π-Paar geht zu O2, Protonenübertragung ergibt ein Halbketal (unter dem curricularen Oberbegriff Halbacetalbildung), ohne Kondensation. Furanosering: O5–C2–C3–C4–C5, Pyranosering: O6–C2–C3–C4–C5–C6. C2 ist neu anomer. Übliche Haworthlage mit Ring-O oben/rechts und C2 rechts: D-Furanose C3-OH oben, C4-OH unten, C5-CH2OH(C6) oben; C2-OH α unten, β oben und C1-CH2OH jeweils entgegengesetzt. D-Pyranose C3-OH oben, C4-OH unten, C5-OH unten; C6 ist Ring-CH2. Auch dort C2-OH α unten, β oben, C1-CH2OH entgegengesetzt. D/L bleibt an der aus der Kette erhaltenen C5-Konfiguration definiert. Die vier zyklischen Formen sind zwei Ringgrößen mit jeweils einem Anomerenpaar, nicht vier gegenseitige Enantiomere. F/F* sind spiegelbildlich; eine α/β-Änderung allein ändert D nicht.",
+        "fullCreditEvidenceEn": "F is D-fructose and F* L-fructose because C5-OH is right/left; this does not give rotation sign. Fructose is a ketose (C2=O), glucose an aldose (C1=O). O5 or O6 attacks C2; the π pair moves to O2 and proton transfer produces a hemiketal (within the curriculum's broader hemiacetal wording), without condensation. Furanose: O5–C2–C3–C4–C5; pyranose: O6–C2–C3–C4–C5–C6. New C2 is anomeric. In the usual Haworth orientation with ring O above/right and C2 on the right, D-furanose has C3-OH up, C4-OH down and C5-CH2OH(C6) up; C2-OH is α down or β up, with C1-CH2OH opposite. D-pyranose has C3-OH up, C4-OH down and C5-OH down; C6 is ring CH2. C2-OH is again α down or β up, with C1-CH2OH opposite. D/L uses retained C5 configuration. These are two ring sizes with an anomer pair each, not four mutual enantiomers. F/F* are mirrors; changing α/β alone does not change D.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "case": {
+        "id": "fat-structure-and-melting",
+        "taskDemandDe": "Konstruiere ein Triacylglycerid aus Glycerin und drei Fettsäureresten, markiere die drei Estergruppen und erkläre, weshalb es kein Polymer ist. Vergleiche Modellfett A mit drei gesättigten C18-Resten und B mit drei cis-einfach ungesättigten C18-Resten. Erkläre die synthetischen Schmelzbereiche A 68–72 °C und B 3–7 °C aus räumlichem Bau und Packung; nenne die Reichweite des Vergleichs.",
+        "taskDemandEn": "Construct a triacylglycerol from glycerol and three fatty acid residues, mark its three ester groups and explain why it is not a polymer. Compare model fat A with three saturated C18 residues and B with three cis-monounsaturated C18 residues. Explain synthetic melting ranges A 68–72 °C and B 3–7 °C using spatial structure and packing; state the scope of the comparison.",
+        "expectedPerformanceDe": "Glyceringerüst trägt an drei O-Atomen jeweils –C(=O)–R; drei Estergruppen verbinden genau drei Reste. Ein einzelnes Triacylglycerid ist kein Polyester mit wiederholten Ketteneinheiten. Gerade gesättigte Reste packen regelmäßiger, cis-Doppelbindungen erzeugen Knicke und stören geordnete Packung; entsprechend schmilzt B im Modell niedriger. Vergleich gilt bei ähnlicher Kettenlänge und vergleichbarer Zusammensetzung; natürliche Fette sind Gemische, deren Schmelzbereiche auch Verteilung der Reste und Kristallform beeinflussen.",
+        "expectedPerformanceEn": "The glycerol backbone has –C(=O)–R attached through each of three O atoms; three ester groups connect exactly three residues. One triacylglycerol is not a polyester chain with repeated units. Straight saturated residues pack more regularly, while cis double bonds create bends and disrupt ordered packing; B therefore melts lower in this model. The comparison holds for similar chain length and comparable composition; natural fats are mixtures whose melting ranges also depend on residue distribution and crystal form.",
+        "understandingFocusDe": "Physikalische Eigenschaft aus Molekülstruktur erklären, mit kontrollierter Vergleichsbasis.",
+        "understandingFocusEn": "Explain a physical property from molecular structure with a controlled comparison basis."
+      },
+      "materialAndData": {
+        "de": "Eigene Modellfette A/B und synthetische Schmelzintervalle; keine Messung an konkretem Speiseöl. Glycerin HO–CH2–CH(OH)–CH2–OH; Rest-R enthält die Kohlenwasserstoffkette.",
+        "en": "Own model fats A/B and synthetic melting intervals; no measurements of a real food oil. Glycerol HO–CH2–CH(OH)–CH2–OH; R contains the hydrocarbon chain.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "representation",
+      "authoredRouteScope": "current whole physical goal; HE/BW structure-property clauses",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 5,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Drei Estergruppen im vollständigen Triacylglycerid korrekt.",
+            "aspectEn": "Correct three ester groups in complete triacylglycerol."
+          },
+          {
+            "points": 2,
+            "aspectDe": "cis-Knick/Packung erklärt die Schmelzdifferenz.",
+            "aspectEn": "cis bend/packing explains melting difference."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Kontrollierte Kettenlänge und Gemisch-/Kristallgrenze genannt.",
+            "aspectEn": "States matched chain length and mixture/crystal limitation."
+          }
+        ],
+        "fullCreditEvidenceDe": "Glyceringerüst trägt an drei O-Atomen jeweils –C(=O)–R; drei Estergruppen verbinden genau drei Reste. Ein einzelnes Triacylglycerid ist kein Polyester mit wiederholten Ketteneinheiten. Gerade gesättigte Reste packen regelmäßiger, cis-Doppelbindungen erzeugen Knicke und stören geordnete Packung; entsprechend schmilzt B im Modell niedriger. Vergleich gilt bei ähnlicher Kettenlänge und vergleichbarer Zusammensetzung; natürliche Fette sind Gemische, deren Schmelzbereiche auch Verteilung der Reste und Kristallform beeinflussen.",
+        "fullCreditEvidenceEn": "The glycerol backbone has –C(=O)–R attached through each of three O atoms; three ester groups connect exactly three residues. One triacylglycerol is not a polyester chain with repeated units. Straight saturated residues pack more regularly, while cis double bonds create bends and disrupt ordered packing; B therefore melts lower in this model. The comparison holds for similar chain length and comparable composition; natural fats are mixtures whose melting ranges also depend on residue distribution and crystal form.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "case": {
+        "id": "cis-trans-and-solvent-property-transfer",
+        "taskDemandDe": "Neue Modellfette C und D haben je drei C18-Reste mit genau einer C=C pro Rest; C besitzt nur cis-, D nur trans-Doppelbindungen. Die synthetischen Schmelzbereiche sind C 3–7 °C, D 38–42 °C. Je 0,10 g in 2,0 mL Lösungsmittel bei 20 °C: mit Wasser bleiben beide als separate Phase, in einem freigegebenen unpolaren Lösemittel lösen sie sich. Erkläre beide Eigenschaftsänderungen strukturbezogen. Beurteile die Behauptung: Gleiche Zahl von Doppelbindungen bedeutet gleiche Konsistenz; Estergruppen machen jedes Fett wasserlöslich.",
+        "taskDemandEn": "New model fats C and D each have three C18 residues with one C=C per residue; C contains only cis and D only trans double bonds. Synthetic melting ranges are C 3–7 °C and D 38–42 °C. At 20 °C, 0.10 g in 2.0 mL solvent remains a separate phase in water but dissolves in an approved nonpolar solvent. Explain both property changes structurally. Assess: Equal double-bond counts imply equal consistency; ester groups make every fat water-soluble.",
+        "expectedPerformanceDe": "Bei 20 °C ist C flüssig, D fest. trans-Reste sind räumlich gestreckter und können regelmäßiger packen als die geknickten cis-Reste; gleich viele Doppelbindungen reichen zur Konsistenzprognose nicht. Die langen unpolaren Kohlenwasserstoffreste dominieren den Löslichkeitsvergleich: wenige Estergruppen liefern keine ausreichende Hydratation für gute Wasserlöslichkeit; mit einem unpolaren Medium sind günstige Dispersionskontakte möglich. Fette sind hydrophob und lipophil. Das ist ein kontrolliertes Modell, keine allgemeine Rangfolge für jedes Gemisch oder jede Temperatur und keine Ernährungsbewertung.",
+        "expectedPerformanceEn": "At 20 °C, C is liquid and D solid. trans residues are more extended and can pack more regularly than bent cis residues; counting double bonds is insufficient to predict consistency. Long nonpolar hydrocarbon residues dominate solubility: a few ester groups do not provide enough hydration for good water solubility, whereas a nonpolar medium allows favourable dispersion contacts. Fats are hydrophobic and lipophilic. This is a controlled model, not a universal ranking for all mixtures or temperatures and not a nutritional assessment.",
+        "understandingFocusDe": "Geänderte räumliche Konfiguration bei gleicher Ungesättigtheit und geändertes Lösungsmittel liefern echte physikalische Transfers.",
+        "understandingFocusEn": "Changed spatial configuration at equal unsaturation and changed solvent provide genuine physical transfers."
+      },
+      "materialAndData": {
+        "de": "Eigene synthetische Modellbeobachtungen; C/D unterscheiden sich nur cis/trans, Lösemittelvergleich hält Stoffmenge und Temperatur fest. Keine Baeyer-Daten und kein Schluss von Reagenzverbrauch auf Schmelzpunkt.",
+        "en": "Own synthetic model observations; C/D differ only in cis/trans and solvent comparison holds amount and temperature fixed. No Baeyer data and no inference from reagent consumption to melting point.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "representation",
+      "authoredRouteScope": "current whole physical goal; BW 3.4.4(12) hydrophobic/lipophilic/consistency contribution",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 5,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Aus neuer cis/trans-Struktur Packung und Zustand bei 20 °C begründet.",
+            "aspectEn": "Uses new cis/trans structure to justify packing and state at 20 °C."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Wasser/unpolares Medium über Kräfte und dominante Reste erklärt.",
+            "aspectEn": "Explains water/nonpolar contrast through interactions and dominant residues."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Beide Fehlbehauptungen verworfen und Modellgrenze genannt.",
+            "aspectEn": "Rejects both false claims and states model limitation."
+          }
+        ],
+        "fullCreditEvidenceDe": "Bei 20 °C ist C flüssig, D fest. trans-Reste sind räumlich gestreckter und können regelmäßiger packen als die geknickten cis-Reste; gleich viele Doppelbindungen reichen zur Konsistenzprognose nicht. Die langen unpolaren Kohlenwasserstoffreste dominieren den Löslichkeitsvergleich: wenige Estergruppen liefern keine ausreichende Hydratation für gute Wasserlöslichkeit; mit einem unpolaren Medium sind günstige Dispersionskontakte möglich. Fette sind hydrophob und lipophil. Das ist ein kontrolliertes Modell, keine allgemeine Rangfolge für jedes Gemisch oder jede Temperatur und keine Ernährungsbewertung.",
+        "fullCreditEvidenceEn": "At 20 °C, C is liquid and D solid. trans residues are more extended and can pack more regularly than bent cis residues; counting double bonds is insufficient to predict consistency. Long nonpolar hydrocarbon residues dominate solubility: a few ester groups do not provide enough hydration for good water solubility, whereas a nonpolar medium allows favourable dispersion contacts. Fats are hydrophobic and lipophilic. This is a controlled model, not a universal ranking for all mixtures or temperatures and not a nutritional assessment.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "978a6f25-0601-5457-9211-aab206c95603",
+      "case": {
+        "id": "seki-paper-own-execution",
+        "taskDemandDe": "Trenne einen schwarzen wasserlöslichen Filzstiftfarbstoff unter Aufsicht selbst durch Papierchromatografie. Plane zwei gleich große Papierstreifen für Wasser und Wasser/Ethanol 4:1. Markiere jeweils eine Startlinie 1,5 cm oberhalb des unteren Randes und kleine Probenflecken; die Flüssigkeit steht 0,5 cm hoch. Entwickle bis knapp unter den oberen Rand, markiere sofort die Front und dokumentiere dein Originalchromatogramm. Wähle das brauchbarere Laufmittel anhand getrennter Farbflecken und übertrage das Verfahren auf eine zweite Stiftprobe. Erkläre die Trennung ohne Aminosäure- oder pH-Vorkenntnisse.",
+        "taskDemandEn": "Personally separate a black water-soluble felt-tip ink by supervised paper chromatography. Plan equal paper strips for water and water/ethanol 4:1. Mark a start line 1.5 cm above the bottom and small sample spots; liquid depth is 0.5 cm. Develop almost to the top, mark the front immediately and record your original chromatogram. Choose the better mobile phase from separated colour spots and transfer the method to a second ink sample. Explain separation without amino-acid or pH prerequisites.",
+        "expectedPerformanceDe": "Eigenes Protokoll zeigt Stoffe/Ansätze, Start oberhalb Flüssigkeit, kleine Flecke, zwei Frontmarken, Skizze oder Foto sowie gemessene Abstände. Synthetische Musterwerte: Wasserfront 6,0 cm, breite Flecke 2,0/2,3 cm; Mischung: Front 6,0 cm, schmale Flecke 1,2/3,0/4,8 cm (Rf 0,20/0,50/0,80). Im Muster ist die Mischung geeigneter. Farbstoffe werden vom Laufmittel unterschiedlich gut mitgenommen und durch Kontakte mit dem Papier unterschiedlich zurückgehalten; für Sek I genügt dieses Stoff-/Teilchenmodell. Bei Papier ist die wasserhaltige Cellulosematrix beteiligt; es wird keine reine Silica-Adsorption behauptet. Zweite Probe unter gleicher Bedingung vergleichen. Farbfleckgleichheit ist ein Hinweis, kein eindeutiger Identitätsbeweis. Fremde Musterwerte erfüllen den Durchführungsoperator nicht.",
+        "expectedPerformanceEn": "The learner record includes materials/runs, origin above liquid, small spots, two front marks, drawing or photo and measured distances. Synthetic fixture: water front 6.0 cm, broad spots 2.0/2.3 cm; mixture front 6.0 cm, narrow spots 1.2/3.0/4.8 cm (Rf 0.20/0.50/0.80). The mixture works better in this fixture. Dyes are carried differently by the mobile phase and retained differently by contacts with paper; this material/particle model suffices for Sek I. Paper includes a water-containing cellulose matrix; pure silica adsorption is not claimed. Compare the second sample under the same conditions. Equal spots are a clue, not unique identity proof. Someone else's fixture does not satisfy execution.",
+        "understandingFocusDe": "Mobile und stationäre Phase sowie unterschiedliche Mitnahme/Rückhaltung werden am selbst ausgeführten, altersgerechten Trennfall geprüft.",
+        "understandingFocusEn": "Mobile and stationary phases and different transport/retention are assessed through a personally executed age-appropriate separation."
+      },
+      "materialAndData": {
+        "de": "Geräte: Chromatografiepapier 2×10 cm, Bleistift, Lineal, zwei Bechergläser mit Deckeln, Halter, Pipette; wasserlösliche schwarze Stifte X/Y. Laufmittel jeweils 5 mL, von Lehrkraft bereitgestellt. Lehrkraft gibt die konkrete Stoffwahl, Lüftung und Entsorgung frei. Protokollfelder: Material, Datum, Laufmittel, Start/Front, Fleckabstände/Farben, beobachtete Trennung, begründete Auswahl. Musterwerte sind separat als synthetisch markiert.",
+        "en": "Equipment: 2×10 cm chromatography paper, pencil, ruler, two covered beakers, holder and pipette; water-soluble black pens X/Y. Each mobile phase is 5 mL supplied by the teacher. The teacher approves materials, ventilation and disposal. Record fields: material, date, mobile phase, origin/front, spot distances/colours, observed separation and justified choice. Fixture values are separately labelled synthetic.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "perform_and_explain",
+      "authoredRouteScope": "SN7 paper option; SL8 description; BB/BE paper context; no HE LK premise",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Eigene reale Durchführung samt Originalchromatogramm und Frontmarkierung.",
+            "aspectEn": "Personal actual execution with original chromatogram and front mark."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Kontrollierte gleiche Papier-/Probenbasis und Start über Flüssigkeit.",
+            "aspectEn": "Matched paper/sample basis and origin above liquid."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Laufmittelwahl aus Trennqualität und Mitnahme/Rückhaltung erklärt.",
+            "aspectEn": "Explains mobile-phase choice through resolution and transport/retention."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Zweite Stiftprobe ausgewertet und Identifikationsgrenze eingehalten.",
+            "aspectEn": "Evaluates second ink sample and respects identity limit."
+          }
+        ],
+        "fullCreditEvidenceDe": "Eigenes Protokoll zeigt Stoffe/Ansätze, Start oberhalb Flüssigkeit, kleine Flecke, zwei Frontmarken, Skizze oder Foto sowie gemessene Abstände. Synthetische Musterwerte: Wasserfront 6,0 cm, breite Flecke 2,0/2,3 cm; Mischung: Front 6,0 cm, schmale Flecke 1,2/3,0/4,8 cm (Rf 0,20/0,50/0,80). Im Muster ist die Mischung geeigneter. Farbstoffe werden vom Laufmittel unterschiedlich gut mitgenommen und durch Kontakte mit dem Papier unterschiedlich zurückgehalten; für Sek I genügt dieses Stoff-/Teilchenmodell. Bei Papier ist die wasserhaltige Cellulosematrix beteiligt; es wird keine reine Silica-Adsorption behauptet. Zweite Probe unter gleicher Bedingung vergleichen. Farbfleckgleichheit ist ein Hinweis, kein eindeutiger Identitätsbeweis. Fremde Musterwerte erfüllen den Durchführungsoperator nicht.",
+        "fullCreditEvidenceEn": "The learner record includes materials/runs, origin above liquid, small spots, two front marks, drawing or photo and measured distances. Synthetic fixture: water front 6.0 cm, broad spots 2.0/2.3 cm; mixture front 6.0 cm, narrow spots 1.2/3.0/4.8 cm (Rf 0.20/0.50/0.80). The mixture works better in this fixture. Dyes are carried differently by the mobile phase and retained differently by contacts with paper; this material/particle model suffices for Sek I. Paper includes a water-containing cellulose matrix; pure silica adsorption is not claimed. Compare the second sample under the same conditions. Equal spots are a clue, not unique identity proof. Someone else's fixture does not satisfy execution.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "978a6f25-0601-5457-9211-aab206c95603",
+      "case": {
+        "id": "amino-acid-tlc-own-execution",
+        "taskDemandDe": "Führe die freigegebene Aminosäure-DC selbst betreut durch: 5×10 cm Silicaplatte, Startlinie 1 cm; kleine getrocknete Flecke von 0,1% Glycin, 0,1% Valin und unbekanntem Gemisch. Verwende die bereitgestellte Mischung Butan-1-ol/Ethansäure/Wasser 4:1:1, Füllhöhe 0,5 cm, gesättigte Kammer. Markiere die Front sofort nach Entnahme, trockne und führe die freigegebene Ninhydrindetektion im Abzug nach der lokalen Anweisung durch. Dokumentiere dein Original, berechne Rf und begründe Referenzzuordnung. Prüfe eine Probe mit zusätzlich erhöhter Fleckmenge und erkläre den Einfluss auf Trennqualität.",
+        "taskDemandEn": "Personally perform the approved supervised amino-acid TLC: 5×10 cm silica plate, origin at 1 cm; small dried spots of 0.1% glycine, 0.1% valine and an unknown mixture. Use supplied butan-1-ol/ethanoic acid/water 4:1:1 at 0.5 cm depth in a saturated chamber. Mark the front immediately on removal, dry, then carry out approved ninhydrin detection in a hood under the local instructions. Record your original, compute Rf and justify reference assignments. Test increased spot loading and explain its effect on resolution.",
+        "expectedPerformanceDe": "Eigene Platte/Protokoll und beaufsichtigte Handlung belegen Durchführung einschließlich Detektion. Synthetischer Auswertungsfall: Front 6,0 cm; Glycin 1,5 cm, Valin 3,6 cm; Gemisch beide Lagen, Rf 0,25/0,60. Gleichzeitige Standards und kleine Flecke begrenzen Überladung; große Flecke verbreitern oder verschmieren die Banden. Die mobile Phase konkurriert mit Kontakten zur Silicaoberfläche, sodass relative Laufwege stoff- und bedingungsabhängig sind. Aminosäure- und Ninhydrinchemie gehört zu dieser Oberstufenroute, nicht zur Papierroute. Ninhydrinfarbe und gleiche Rf stützen Zuordnung, beweisen keine universelle Identität. Lokale Ninhydrinlösung/Erwärmung werden erst nach Stoff- und Gerätefreigabe angewandt; ohne Originalarbeit ist keine ausgeführte Kompetenz belegt.",
+        "expectedPerformanceEn": "The original plate/record and supervised action demonstrate execution including detection. Synthetic interpretation fixture: front 6.0 cm, glycine 1.5 cm, valine 3.6 cm and mixture at both positions, Rf 0.25/0.60. Concurrent standards and small spots limit overloading; large spots broaden or streak. The mobile phase competes with silica-surface contacts, so relative distances depend on substances and conditions. Amino-acid/ninhydrin chemistry belongs to this upper-secondary route, not the paper route. Ninhydrin colour and matching Rf support assignment but do not prove universal identity. Local ninhydrin solution/heating is used only after material/equipment authorization; without original work no executed competence is evidenced.",
+        "understandingFocusDe": "Die echte Oberstufenroute enthält den Ninhydrinoperator und eine praktisch kontrollierte Variation.",
+        "understandingFocusEn": "The actual upper-secondary route includes ninhydrin detection and a practically controlled variation."
+      },
+      "materialAndData": {
+        "de": "Platte, Kapillaren, beschriftete Standards/Gemisch, Laufmittel 4:1:1, Deckelkammer, Frontlineal, freigegebene Ninhydrin-Arbeitsanweisung mit konkreter Konzentration, Erwärmungsgerät und Entsorgung werden durch die Lehrkraft bereitgestellt. Protokoll enthält Originalplatte, Spotmenge, Bedingungen, Front-/Fleckwege und Detektionsschritt. Lokale Stoff-/Gerätefreigabe ist verpflichtende praktische Vorbedingung, kein behaupteter bereits erfolgter Versuch.",
+        "en": "The teacher supplies the plate, capillaries, labelled standards/mixture, 4:1:1 mobile phase, covered chamber, ruler and approved ninhydrin method with specified concentration, heating equipment and disposal. The record includes original plate, loading, conditions, front/spot distances and detection. Local material/equipment approval is a required execution prerequisite, not a claim that a trial has occurred.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "perform_and_explain",
+      "authoredRouteScope": "HE Q2.1 LK; TH student experiment; SH amino-acid context; not NI GC/BW indicator",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Eigene DC und Ninhydrindetektion dokumentiert.",
+            "aspectEn": "Documents personal TLC and ninhydrin detection."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Standards, Start, Front und Bedingungen korrekt.",
+            "aspectEn": "Correct standards, origin, front and conditions."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Rf 0,25/0,60 korrekt mit begrenzter Zuordnung.",
+            "aspectEn": "Correct Rf 0.25/0.60 with bounded assignment."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Überladungsvariation beobachtet und aus Bandverbreiterung erklärt.",
+            "aspectEn": "Observes overloading variation and explains band broadening."
+          }
+        ],
+        "fullCreditEvidenceDe": "Eigene Platte/Protokoll und beaufsichtigte Handlung belegen Durchführung einschließlich Detektion. Synthetischer Auswertungsfall: Front 6,0 cm; Glycin 1,5 cm, Valin 3,6 cm; Gemisch beide Lagen, Rf 0,25/0,60. Gleichzeitige Standards und kleine Flecke begrenzen Überladung; große Flecke verbreitern oder verschmieren die Banden. Die mobile Phase konkurriert mit Kontakten zur Silicaoberfläche, sodass relative Laufwege stoff- und bedingungsabhängig sind. Aminosäure- und Ninhydrinchemie gehört zu dieser Oberstufenroute, nicht zur Papierroute. Ninhydrinfarbe und gleiche Rf stützen Zuordnung, beweisen keine universelle Identität. Lokale Ninhydrinlösung/Erwärmung werden erst nach Stoff- und Gerätefreigabe angewandt; ohne Originalarbeit ist keine ausgeführte Kompetenz belegt.",
+        "fullCreditEvidenceEn": "The original plate/record and supervised action demonstrate execution including detection. Synthetic interpretation fixture: front 6.0 cm, glycine 1.5 cm, valine 3.6 cm and mixture at both positions, Rf 0.25/0.60. Concurrent standards and small spots limit overloading; large spots broaden or streak. The mobile phase competes with silica-surface contacts, so relative distances depend on substances and conditions. Amino-acid/ninhydrin chemistry belongs to this upper-secondary route, not the paper route. Ninhydrin colour and matching Rf support assignment but do not prove universal identity. Local ninhydrin solution/heating is used only after material/equipment authorization; without original work no executed competence is evidenced.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "978a6f25-0601-5457-9211-aab206c95603",
+      "case": {
+        "id": "universal-indicator-tlc-own-execution",
+        "taskDemandDe": "Führe betreut eine Cellulose-DC des bereitgestellten Universalindikators und der Referenzen Methylorange, Methylrot und Bromthymolblau durch. Entwickle mit bereitgestellter 0,1 mol/L NaOH/Methanol-Mischung 10:1 (v/v); setze kleine Flecke oberhalb des Flüssigkeitsspiegels und markiere die Front sofort. Dokumentiere dein Original, bestimme Rf und begründe die Bestandteilszuordnung. Wiederhole mit einem von der Lehrkraft freigegebenen anderen Methanolanteil und beurteile, ob die erste Rf-Tabelle dafür weiter gilt.",
+        "taskDemandEn": "Personally perform supervised cellulose TLC of the supplied universal indicator and methyl orange, methyl red and bromothymol blue references. Develop with supplied 0.1 mol/L NaOH/methanol 10:1 (v/v); keep small spots above liquid and mark the front immediately. Document your original, determine Rf and justify component assignments. Repeat using another teacher-approved methanol proportion and assess whether the first Rf table remains applicable.",
+        "expectedPerformanceDe": "Originalchromatogramm, Bedingungen, Front und Referenzspuren sind erforderlich. Synthetischer Fall: Front 5,0 cm; Referenzen 1,0/2,5/4,0 cm, Universalindikator gleichliegende Flecke: Rf 0,20/0,50/0,80. Cellulose-/wasserhaltige stationäre Matrix und mobile Mischung erklären die unterschiedliche Retention; alkalische Bedingungen halten den Vergleich der Farbstoffformen kontrolliert. Wechsel des Methanolanteils ändert die relativen Wechselwirkungen und gegebenenfalls Rf: alte Tabelle darf nicht ungeprüft übernommen werden. Alle Referenzen müssen im neuen Lauf erneut mitlaufen. Universalindikatoren haben unterschiedliche Rezepturen; Farbgleichheit allein beweist weder dieselbe Stoffidentität noch vollständige Bestandteilsliste. Der ausgeführte Indikatorversuch ist nicht durch eine Aminosäure-DC ersetzt.",
+        "expectedPerformanceEn": "The original chromatogram, conditions, front and reference lanes are required. Synthetic fixture: front 5.0 cm, references 1.0/2.5/4.0 cm and indicator spots at matching positions: Rf 0.20/0.50/0.80. The cellulose/water-containing stationary matrix and mobile mixture explain different retention; alkaline conditions control comparison of dye forms. Changing the methanol proportion changes relative interactions and possibly Rf, so the old table cannot be reused untested. References must run again. Universal indicators vary in formulation; matching colour alone proves neither identity nor a complete component list. An amino-acid TLC does not replace this executed indicator experiment.",
+        "understandingFocusDe": "Der wortwörtliche BW-Operator wird am Universalindikator durchgeführt; Rf und Phasen werden nicht aus einem fremden Verfahren übernommen.",
+        "understandingFocusEn": "The literal BW operator is performed on universal indicator; Rf and phases are not borrowed from a different method."
+      },
+      "materialAndData": {
+        "de": "Celluloseplatte, Indikator/Referenzlösungen, zwei Deckelkammern, Kapillaren, Pinzette, Bleistift und Lineal. Die Lehrkraft bereitet Laufmittel vor und entscheidet über Methanol, Abzug, Schutzausrüstung und Abfall. Methodenreferenz: Landesfortbildung BW, Universalindikator-DC; eigene Probenkodierung, Variation und synthetische Messwerte. Es findet keine Säure-/Ammoniakdampf-Farbentwicklung statt.",
+        "en": "Cellulose plate, indicator/reference solutions, two covered chambers, capillaries, tweezers, pencil and ruler. The teacher prepares mobile phases and decides methanol, hood, protection and waste handling. Method reference: Baden-Württemberg teacher training, universal-indicator TLC; own sample coding, variation and synthetic values. No acid/ammonia vapour colour development is used.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "perform_and_explain",
+      "authoredRouteScope": "BW 3.4.3(15); BB/BE indicator-mixture contribution",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Eigene Universalindikator-DC mit Originalspuren dokumentiert.",
+            "aspectEn": "Documents personal indicator TLC with original lanes."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Phasen, kontrollierte Referenzbedingungen und Front korrekt.",
+            "aspectEn": "Correct phases, controlled reference conditions and front."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Rf und begrenzte Bestandteilszuordnung korrekt.",
+            "aspectEn": "Correct Rf and bounded component assignment."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Neue Laufmittelvariation ausgeführt; erneute Referenzen und Tabelle begründet.",
+            "aspectEn": "Executes mobile-phase variation and justifies renewed references/table."
+          }
+        ],
+        "fullCreditEvidenceDe": "Originalchromatogramm, Bedingungen, Front und Referenzspuren sind erforderlich. Synthetischer Fall: Front 5,0 cm; Referenzen 1,0/2,5/4,0 cm, Universalindikator gleichliegende Flecke: Rf 0,20/0,50/0,80. Cellulose-/wasserhaltige stationäre Matrix und mobile Mischung erklären die unterschiedliche Retention; alkalische Bedingungen halten den Vergleich der Farbstoffformen kontrolliert. Wechsel des Methanolanteils ändert die relativen Wechselwirkungen und gegebenenfalls Rf: alte Tabelle darf nicht ungeprüft übernommen werden. Alle Referenzen müssen im neuen Lauf erneut mitlaufen. Universalindikatoren haben unterschiedliche Rezepturen; Farbgleichheit allein beweist weder dieselbe Stoffidentität noch vollständige Bestandteilsliste. Der ausgeführte Indikatorversuch ist nicht durch eine Aminosäure-DC ersetzt.",
+        "fullCreditEvidenceEn": "The original chromatogram, conditions, front and reference lanes are required. Synthetic fixture: front 5.0 cm, references 1.0/2.5/4.0 cm and indicator spots at matching positions: Rf 0.20/0.50/0.80. The cellulose/water-containing stationary matrix and mobile mixture explain different retention; alkaline conditions control comparison of dye forms. Changing the methanol proportion changes relative interactions and possibly Rf, so the old table cannot be reused untested. References must run again. Universal indicators vary in formulation; matching colour alone proves neither identity nor a complete component list. An amino-acid TLC does not replace this executed indicator experiment.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "978a6f25-0601-5457-9211-aab206c95603",
+      "case": {
+        "id": "gc-mixture-principle-and-analytical-value",
+        "taskDemandDe": "Werte die synthetischen Gaschromatogramme eines flüchtigen Modellgemischs aus. Standards A/B/C haben im selben Temperatur-, Säulen- und Trägergasprogramm Retentionszeiten 1,20/2,40/4,80 min; Probe P Peaks bei 1,21/2,39 min, Probe Q nur 2,41 min. Erkläre den Aufbau (Injektor, Trägergas, stationäre Flüssigkeitsphase, Detektor) und die Trennung aus Flüchtigkeit und intermolekularen Wechselwirkungen. Begründe die Stoffzuordnung und beurteile den Nutzen für Qualitätskontrolle gegenüber einem bloßen Siedepunktvergleich.",
+        "taskDemandEn": "Evaluate synthetic gas chromatograms of a volatile model mixture. Under the same temperature, column and carrier-gas programme, standards A/B/C have retention times 1.20/2.40/4.80 min; sample P peaks at 1.21/2.39 min and Q at 2.41 min. Explain injector, carrier gas, stationary liquid phase and detector, and separation through volatility and intermolecular interactions. Justify assignments and assess quality-control value compared with merely comparing boiling points.",
+        "expectedPerformanceDe": "Verdampfte Probe wird vom Trägergas transportiert; wiederholte Verteilung/Kontakte zur stationären Phase verzögern Komponenten unterschiedlich. Flüchtigkeit und stoff-/phasenabhängige Wechselwirkungen wirken zusammen; Retention lässt sich nicht immer nur nach Siedepunkt ordnen. P stützt A+B, Q B unter denselben Bedingungen; Toleranzen und Coelution begrenzen Identifikation. Rf ist ein Wegquotient bei planaren Flüssigkeitsverfahren, Retentionszeit die Zeit bis zum Detektorpeak, kein Rf. GC kann Gemische auflösen, Prozessverunreinigungen/Reaktionsprodukte feststellen und anhand geeigneter Standards zu Qualitätskontrolle beitragen. Peakflächen werden erst mit Detektorantwort-/Kalibrierprüfung zu Mengen; keine Prozente aus unkalibrierten Flächen. Das ist der NI-Auswertungs-/Erkläroperator, kein behaupteter GC-Bediennachweis.",
+        "expectedPerformanceEn": "Vaporized sample is transported by carrier gas; repeated partitioning/contacts with the stationary phase delay components differently. Volatility and substance/phase-dependent interactions act together; retention cannot always be ordered by boiling point alone. P supports A+B and Q B under matched conditions; tolerances and coelution limit identification. Rf is a distance ratio in planar liquid methods, while retention time is time to the detector peak, not Rf. GC resolves mixtures and can reveal process impurities/reaction products for quality control with suitable standards. Peak areas become quantities only after detector-response/calibration checks; uncalibrated areas do not give percentages. This is the NI evaluation/explanation operator, not a claimed GC operation record.",
+        "understandingFocusDe": "Gaschromatografie verwendet dieselbe Phasen-/Referenzlogik mit einer anderen Bezugsgröße und explizitem analytischem Nutzen.",
+        "understandingFocusEn": "GC uses the same phase/reference reasoning with a different reference quantity and explicit analytical value."
+      },
+      "materialAndData": {
+        "de": "Synthetische Peakliste statt gemessener Datei; Zeit in min, nicht Stoffmenge. Toleranz ±0,03 min nur für diesen Aufgabenfall. A/B/C sind anonymisierte flüchtige Referenzen; keine universellen Stoff-Retentionszeiten. Säule, Temperatur und Fluss sind zwischen Referenz und Probe gleich. Gemisch-Auswertung verlangt hier laut NI-Klausel keine persönliche Gerätebedienung; diese folgt im eigenen Zusatzfall, wenn der gewählte Quellenoperator Anwendung verlangt.",
+        "en": "Synthetic peak list, not a measured file; time in min, not amount. ±0.03 min tolerance applies only to this fixture. A/B/C are anonymous volatile references with no universal substance retention times. Column, temperature and flow match between reference and sample. NI mixture evaluation does not itself demand personal instrument operation; the separate additional execution case is required where the selected source operator requires application.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "explain_evaluate_assess",
+      "authoredRouteScope": "NI EP technical procedures; NI Q organic eA GC principle/identification/value",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Instrument/Phasen und Trennung aus Wechselwirkung/Flüchtigkeit erklärt.",
+            "aspectEn": "Explains instrument/phases and separation through interactions/volatility."
+          },
+          {
+            "points": 2,
+            "aspectDe": "P/Q begründet zugeordnet, Coelution/Referenzgrenze genannt.",
+            "aspectEn": "Justifies P/Q assignments and states coelution/reference limitations."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Retentionszeit von Rf und Fläche von Mengenanteil getrennt.",
+            "aspectEn": "Distinguishes retention time from Rf and area from quantity."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Konkreten Qualitätskontrollnutzen und Grenze beurteilt.",
+            "aspectEn": "Assesses concrete quality-control benefit and limitation."
+          }
+        ],
+        "fullCreditEvidenceDe": "Verdampfte Probe wird vom Trägergas transportiert; wiederholte Verteilung/Kontakte zur stationären Phase verzögern Komponenten unterschiedlich. Flüchtigkeit und stoff-/phasenabhängige Wechselwirkungen wirken zusammen; Retention lässt sich nicht immer nur nach Siedepunkt ordnen. P stützt A+B, Q B unter denselben Bedingungen; Toleranzen und Coelution begrenzen Identifikation. Rf ist ein Wegquotient bei planaren Flüssigkeitsverfahren, Retentionszeit die Zeit bis zum Detektorpeak, kein Rf. GC kann Gemische auflösen, Prozessverunreinigungen/Reaktionsprodukte feststellen und anhand geeigneter Standards zu Qualitätskontrolle beitragen. Peakflächen werden erst mit Detektorantwort-/Kalibrierprüfung zu Mengen; keine Prozente aus unkalibrierten Flächen. Das ist der NI-Auswertungs-/Erkläroperator, kein behaupteter GC-Bediennachweis.",
+        "fullCreditEvidenceEn": "Vaporized sample is transported by carrier gas; repeated partitioning/contacts with the stationary phase delay components differently. Volatility and substance/phase-dependent interactions act together; retention cannot always be ordered by boiling point alone. P supports A+B and Q B under matched conditions; tolerances and coelution limit identification. Rf is a distance ratio in planar liquid methods, while retention time is time to the detector peak, not Rf. GC resolves mixtures and can reveal process impurities/reaction products for quality control with suitable standards. Peak areas become quantities only after detector-response/calibration checks; uncalibrated areas do not give percentages. This is the NI evaluation/explanation operator, not a claimed GC operation record.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "978a6f25-0601-5457-9211-aab206c95603",
+      "case": {
+        "id": "gc-own-application-and-reaction-product-transfer",
+        "taskDemandDe": "Wende das schulisch freigegebene GC-Verfahren unter fachkundiger Aufsicht selbst an: sichere die vom Gerät vorgegebenen Startprüfungen und das freigegebene Methodenprogramm, miss Leerprobe und Standards, gib danach das bereitgestellte flüchtige Modell-Reaktionsgemisch auf und dokumentiere deine eigene Messdatei samt Bedingungen. Beurteile mit Referenzen vor/nach der Modellreaktion, ob ein zusätzliches Produkt nachweisbar ist. Führe eine Co-Injektion mit dem möglichen Produktstandard durch und erkläre, weshalb sie die Zuordnung verbessert, aber bei Coelution keinen absoluten Strukturbeweis liefert.",
+        "taskDemandEn": "Personally apply the school-approved GC method under expert supervision: complete prescribed start checks and the authorized programme, measure blank and standards, then introduce the supplied volatile model reaction mixture and preserve your own file with conditions. Use references before/after the model reaction to assess an additional detectable product. Perform a co-injection with the possible product standard and explain why this improves assignment but is not absolute structural proof under coelution.",
+        "expectedPerformanceDe": "Originaldatei mit eigener Arbeit, Leerprobe und Standards sowie dokumentierte Säule, stationäre Phase, Trägergas, Fluss-/Temperaturprogramm, Detektor und Probe sind erforderlich. Synthetisches Beispiel: Eduktstandard 2,40 min, Produktstandard 4,80 min; vorher Peak 2,39, nachher 2,40 und 4,81 min; Leerprobe ohne passende Peaks. Co-Injektion vergrößert nur den 4,81-Peak ohne neue aufgelöste Bande und stützt Produktzuordnung. Die begründete Aussage ist ein neuer zu diesem Standard passender Bestandteil, nicht vollständiger Umsatz oder sichere Strukturidentität. Bei geändertem Programm werden Standards neu gemessen, alte Retentionszeiten nicht blind verwendet. Flüchtigkeit/Phasenwechselwirkungen erklären den neuen Retentionsweg. Der Ausdruck einer fremden Messreihe erfüllt persönliche Anwendung nicht.",
+        "expectedPerformanceEn": "Own original work/file, blank, standards and recorded column, stationary phase, carrier gas, flow/temperature programme, detector and sample are required. Synthetic example: reactant reference 2.40 min, product reference 4.80 min; before peak 2.39, after 2.40 and 4.81 min; blank has no matching peaks. Co-injection enlarges only the 4.81 peak with no newly resolved peak, supporting product assignment. The bounded claim is a new component matching that standard, not complete conversion or certain structural identity. A changed programme requires renewed standards instead of blindly reusing retention times. Volatility/phase interactions explain the new retention path. Someone else's printed dataset does not satisfy personal application.",
+        "understandingFocusDe": "Reaktionsprodukt als echter neuer GC-Kontext mit eigener Bedienung, Leerprobe und Co-Injektion; Datenlesen ersetzt Anwendung nicht.",
+        "understandingFocusEn": "Reaction products provide a genuinely new GC context with personal operation, blank and co-injection; reading data does not replace application."
+      },
+      "materialAndData": {
+        "de": "Verpflichtender lokaler Methodenbogen vor Durchführung: Instrument-/Säulenidentität; freigegebene Proben/Standards/Konzentrationen; Injektionsvolumen/-art; Trägergas/Fluss; Ofen-/Injektor-/Detektorprogramm; Warte-/Abbruchbedingungen; Entsorgung. Kein Wert darf am unbekannten Gerät erfunden werden. Die Lehrkraft muss den vollständig ausgefüllten Gerätemethodenbogen bereitstellen; ohne ihn ist nur der synthetische Auswertungsfall freigegeben und der Anwendungsoperator bleibt offen. Ein reales Gerät/Originaldatei wird durch dieses Autorenpaket nicht behauptet.",
+        "en": "A local method sheet is mandatory before execution: instrument/column identity; authorized samples/standards/concentrations; injection volume/type; carrier gas/flow; oven/injector/detector programme; waiting/stopping conditions and waste. No settings may be invented for an unknown instrument. The teacher supplies the complete equipment-specific sheet; without it only synthetic interpretation is available and the application operator stays open. This author package claims no actual instrument or original measurement file.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "perform_and_evaluate",
+      "authoredRouteScope": "method-specific upper-secondary application option, not silently substituted by NI printout operator",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Eigene Geräteanwendung und Originaldatei mit lokalem Methodenbogen.",
+            "aspectEn": "Personal instrument application and original file with local method sheet."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Leerprobe, Vorher/Nachher und Produktstandard sachgerecht.",
+            "aspectEn": "Appropriate blank, before/after and product reference."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Co-Injektion selbst durchgeführt und begrenzt gedeutet.",
+            "aspectEn": "Personally performs and interprets co-injection with limits."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Programm-/Referenzabhängigkeit und kein unbelegter Umsatz erkannt.",
+            "aspectEn": "Recognizes programme/reference dependence and no unsupported conversion."
+          }
+        ],
+        "fullCreditEvidenceDe": "Originaldatei mit eigener Arbeit, Leerprobe und Standards sowie dokumentierte Säule, stationäre Phase, Trägergas, Fluss-/Temperaturprogramm, Detektor und Probe sind erforderlich. Synthetisches Beispiel: Eduktstandard 2,40 min, Produktstandard 4,80 min; vorher Peak 2,39, nachher 2,40 und 4,81 min; Leerprobe ohne passende Peaks. Co-Injektion vergrößert nur den 4,81-Peak ohne neue aufgelöste Bande und stützt Produktzuordnung. Die begründete Aussage ist ein neuer zu diesem Standard passender Bestandteil, nicht vollständiger Umsatz oder sichere Strukturidentität. Bei geändertem Programm werden Standards neu gemessen, alte Retentionszeiten nicht blind verwendet. Flüchtigkeit/Phasenwechselwirkungen erklären den neuen Retentionsweg. Der Ausdruck einer fremden Messreihe erfüllt persönliche Anwendung nicht.",
+        "fullCreditEvidenceEn": "Own original work/file, blank, standards and recorded column, stationary phase, carrier gas, flow/temperature programme, detector and sample are required. Synthetic example: reactant reference 2.40 min, product reference 4.80 min; before peak 2.39, after 2.40 and 4.81 min; blank has no matching peaks. Co-injection enlarges only the 4.81 peak with no newly resolved peak, supporting product assignment. The bounded claim is a new component matching that standard, not complete conversion or certain structural identity. A changed programme requires renewed standards instead of blindly reusing retention times. Volatility/phase interactions explain the new retention path. Someone else's printed dataset does not satisfy personal application.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+      "case": {
+        "id": "mm-saturation-data",
+        "taskDemandDe": "Eigene quantitative Vertiefung: Für v0=Vmax[S]/(Km+[S]) gelten Vmax=100 µmol L−1 min−1 und Km=2,0 mmol L−1 bei gleicher aktiver Enzymmenge, pH und Temperatur. Berechne und erkläre Anfangsraten bei [S]=0,5; 2,0; 8,0 mmol L−1. Erkläre Sättigung und weshalb Km weder Produktmenge noch allgemein ein Bindungsgleichgewicht ist.",
+        "taskDemandEn": "Own quantitative enrichment: For v0=Vmax[S]/(Km+[S]), Vmax=100 µmol L−1 min−1 and Km=2.0 mmol L−1 at fixed active enzyme amount, pH and temperature. Compute and explain initial rates at [S]=0.5, 2.0 and 8.0 mmol L−1. Explain saturation and why Km is neither product amount nor generally a binding equilibrium constant.",
+        "expectedPerformanceDe": "v0=20; 50; 80 µmol L−1 min−1. Der Konzentrationsquotient ist dimensionslos; Km hat dieselbe Einheit wie [S]. Bei [S]=Km ergibt sich die halbe Grenzrate; hohe [S] nähert v0 der Grenzrate an, erreicht sie bei endlichem [S] im Modell nicht exakt. Sättigung ist die begrenzte katalytische Kapazität des einfachen Modells, nicht unbegrenztes Wachstum der Rate. Anfangsrate beschreibt Konzentrationsänderung pro Zeit, keine gesamte Produktmenge. Km ist hier der Modellparameter für halbe Grenzrate; ohne weitere mechanistische Bedingungen folgt keine Gleichsetzung mit Affinität oder Dissoziationskonstante.",
+        "expectedPerformanceEn": "v0=20, 50 and 80 µmol L−1 min−1. The concentration ratio is dimensionless; Km has the same unit as [S]. At [S]=Km the rate is half the limiting rate; high [S] approaches the limit but does not reach it exactly at finite [S] in this model. Saturation represents bounded catalytic capacity of the simple model, not unlimited rate growth. Initial rate is concentration change per time, not total product amount. Km is the model parameter for half-limiting rate; affinity or dissociation-constant identity requires further mechanistic conditions.",
+        "understandingFocusDe": "Modellparameter werden mit Einheiten, Sättigung und begrenzter Deutung verknüpft.",
+        "understandingFocusEn": "Model parameters are linked to units, saturation and bounded interpretation."
+      },
+      "materialAndData": {
+        "de": "Eigene synthetische Modelldaten. Ein Substrat, Anfangsbereich, konstante aktive Enzymmenge, Temperatur, pH und sonstige Bedingungen; keine behauptete Lehrplanpflicht und kein realer Enzymversuch.",
+        "en": "Own synthetic model data. One substrate, initial interval and fixed active enzyme amount, temperature, pH and other conditions; no claimed official curricular obligation or actual enzyme experiment.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "interpret_model",
+      "authoredRouteScope": "own counted CC-BY-4.0 enrichment",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 5,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Drei Raten mit Einheiten richtig.",
+            "aspectEn": "Three rates with correct units."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Halbgrenzrate und asymptotische Sättigung erklärt.",
+            "aspectEn": "Explains half-limiting rate and asymptotic saturation."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Km/Rate/Produktmenge und Affinitätsgrenze getrennt.",
+            "aspectEn": "Distinguishes Km/rate/product amount and affinity limitation."
+          }
+        ],
+        "fullCreditEvidenceDe": "v0=20; 50; 80 µmol L−1 min−1. Der Konzentrationsquotient ist dimensionslos; Km hat dieselbe Einheit wie [S]. Bei [S]=Km ergibt sich die halbe Grenzrate; hohe [S] nähert v0 der Grenzrate an, erreicht sie bei endlichem [S] im Modell nicht exakt. Sättigung ist die begrenzte katalytische Kapazität des einfachen Modells, nicht unbegrenztes Wachstum der Rate. Anfangsrate beschreibt Konzentrationsänderung pro Zeit, keine gesamte Produktmenge. Km ist hier der Modellparameter für halbe Grenzrate; ohne weitere mechanistische Bedingungen folgt keine Gleichsetzung mit Affinität oder Dissoziationskonstante.",
+        "fullCreditEvidenceEn": "v0=20, 50 and 80 µmol L−1 min−1. The concentration ratio is dimensionless; Km has the same unit as [S]. At [S]=Km the rate is half the limiting rate; high [S] approaches the limit but does not reach it exactly at finite [S] in this model. Saturation represents bounded catalytic capacity of the simple model, not unlimited rate growth. Initial rate is concentration change per time, not total product amount. Km is the model parameter for half-limiting rate; affinity or dissociation-constant identity requires further mechanistic conditions.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+      "case": {
+        "id": "mm-enzyme-amount-transfer",
+        "taskDemandDe": "Bei gleichbleibender Temperatur und gleichem pH wird allein die aktive Enzymmenge verdoppelt. Eine neue synthetische Reihe bei [S]=0,5; 2,0; 8,0 mmol L−1 hat Anfangsraten 40; 100; 160 µmol L−1 min−1. Leite das veränderte Vmax und das unveränderte Km aus dem einfachen Modell ab. Beurteile, ob eine später fallende Rate im selben Ansatz wegen Substratverbrauch ebenso mit diesen Anfangsdaten erklärt werden kann, und nenne eine weitere Modellgrenze.",
+        "taskDemandEn": "At fixed temperature and pH, only active enzyme amount is doubled. A new synthetic series at [S]=0.5, 2.0 and 8.0 mmol L−1 has initial rates 40, 100 and 160 µmol L−1 min−1. Derive changed Vmax and unchanged Km in the simple model. Assess whether a later declining rate in the same assay due to substrate depletion can be interpreted as these initial data, and state another model limitation.",
+        "expectedPerformanceDe": "Vmax verdoppelt sich auf 200 µmol L−1 min−1, Km bleibt 2,0 mmol L−1; bei [S]=2,0 ergibt v0=100=Vmax/2. Im einfachen Modell skalieren alle Anfangsraten mit aktiver Enzymmenge, sofern übrige Bedingungen gleich sind. Eine spätere Zeitkurve hat veränderliche [S] und gegebenenfalls Produkt/Enzymaktivität; sie ist nicht die gemessene Anfangsratenreihe bei konstant vorgegebenen Startkonzentrationen. Starke Inaktivierung, kooperative Kinetik oder ein nicht festgehaltener zweiter Substratpartner können diesen einfachen Ein-Substrat-Ansatz verlassen. Kein Schluss, jede Rate müsse stets exakt doppelt sein.",
+        "expectedPerformanceEn": "Vmax doubles to 200 µmol L−1 min−1 while Km stays 2.0 mmol L−1; at [S]=2.0, v0=100=Vmax/2. In the simple model all initial rates scale with active enzyme amount if other conditions stay fixed. A later time course changes [S] and potentially product/enzyme activity, so it is not the initial-rate series with fixed starting concentrations. Strong inactivation, cooperative kinetics or an unfixed second substrate can leave this simple one-substrate setting. It does not imply that every observed rate always doubles exactly.",
+        "understandingFocusDe": "Neue aktive Enzymmenge und ein verändertes Messzeitfenster prüfen Modelltransfer und Schlussgrenze.",
+        "understandingFocusEn": "Changed active enzyme amount and time window assess model transfer and inference limits."
+      },
+      "materialAndData": {
+        "de": "Neue synthetische Reihe; Enzymmenge ist die einzige veränderte Anfangsbedingung. Zeitkurvenbeispiel ist ausdrücklich eine andere Messsituation, keine vierte Anfangsratenmessung.",
+        "en": "New synthetic series; enzyme amount is the only changed initial condition. The time-course example is explicitly a different measurement situation, not a fourth initial-rate observation.",
+        "provenance": "Own synthetic teaching fixture; no learner observation or measured laboratory data."
+      },
+      "assessmentMethodDe": "Kompetenzaufgabe mit vollständiger Modellantwort und Einzelrubrik. Bei Durchführungsoperatoren sind eigene Handlung, Originalprotokoll und Kontrollen erforderlich. Die synthetische Musterdatei dient nur der Aufgabenprüfung.",
+      "assessmentMethodEn": "Competence task with full model answer and specific rubric. Execution operators require the learner's own action, original record and controls. The synthetic fixture only supports task-design review.",
+      "operator": "interpret_model",
+      "authoredRouteScope": "own counted enrichment; no temperature-clause closure",
+      "supplementalParentSourceCase": false,
+      "rubric": {
+        "maximumPoints": 5,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Vmax=200, Km=2,0 aus Reihe und Halbgrenzrate begründet.",
+            "aspectEn": "Justifies Vmax=200 and Km=2.0 from series and half limit."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Verdopplung nur bei gleichen weiteren Bedingungen.",
+            "aspectEn": "Doubling is conditional on fixed other conditions."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Anfangsreihe von Zeitkurve unterschieden und echte Modellgrenze erklärt.",
+            "aspectEn": "Distinguishes initial-rate series from time course and explains a real model limit."
+          }
+        ],
+        "fullCreditEvidenceDe": "Vmax verdoppelt sich auf 200 µmol L−1 min−1, Km bleibt 2,0 mmol L−1; bei [S]=2,0 ergibt v0=100=Vmax/2. Im einfachen Modell skalieren alle Anfangsraten mit aktiver Enzymmenge, sofern übrige Bedingungen gleich sind. Eine spätere Zeitkurve hat veränderliche [S] und gegebenenfalls Produkt/Enzymaktivität; sie ist nicht die gemessene Anfangsratenreihe bei konstant vorgegebenen Startkonzentrationen. Starke Inaktivierung, kooperative Kinetik oder ein nicht festgehaltener zweiter Substratpartner können diesen einfachen Ein-Substrat-Ansatz verlassen. Kein Schluss, jede Rate müsse stets exakt doppelt sein.",
+        "fullCreditEvidenceEn": "Vmax doubles to 200 µmol L−1 min−1 while Km stays 2.0 mmol L−1; at [S]=2.0, v0=100=Vmax/2. In the simple model all initial rates scale with active enzyme amount if other conditions stay fixed. A later time course changes [S] and potentially product/enzyme activity, so it is not the initial-rate series with fixed starting concentrations. Strong inactivation, cooperative kinetics or an unfixed second substrate can leave this simple one-substrate setting. It does not imply that every observed rate always doubles exactly.",
+        "misconceptionChecks": []
+      },
+      "observedLearnerWork": null,
+      "completedLearnerExecution": false,
+      "humanApproval": false,
+      "humanTrial": false
+    }
+  ],
+  "completedLearnerExecutions": 0,
+  "humanApprovals": 0,
+  "humanTrials": 0,
+  "routeSelectionBoundary": "Source occurrences select the required method route; existing schema has no scope-sensitive profile execution. A scientific contribution from one route never clears another. Combined projection/placement review must decide the exact per-source gate; all required source clauses stay in the audit."
+}

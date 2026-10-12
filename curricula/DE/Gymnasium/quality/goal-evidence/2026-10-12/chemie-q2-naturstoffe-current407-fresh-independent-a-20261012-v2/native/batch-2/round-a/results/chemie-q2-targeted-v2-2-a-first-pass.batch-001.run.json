@@ -1,0 +1,95 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2-native2-genuine-a-run",
+  "campaignId": "chemie-q2-targeted-v2-2-a",
+  "roundId": "chemie-q2-targeted-v2-2-a-first-pass",
+  "batchId": "chemie-q2-targeted-v2-2-a-first-pass.batch-001",
+  "batchInputFingerprint": "sha256:2c396927d801d07936f3b142b5ec75493f12aa2ff9f78dab84983e2a6f229859",
+  "bundleFingerprint": "sha256:29c2d8c826c902a239ab67219621b01202752e2d4997c4f67e36492ab2b10339",
+  "bookDigest": "sha256:f28dc9d3bff7dccba7ab6802bd367e79c1714b7e1c2f70d6437891a69ca55de5",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6; exact served model version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:c96254cf935d70e57c0738baebe93f3d39fd79fb17cff75e9c3fdfee447e61ad",
+  "independenceGroupId": "chemie-q2-targeted-v2-2-a-independent",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "b47d542d-c2d7-5554-95dc-10b47ab622ab",
+    "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+    "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+    "b4ca3af2-77f1-59e8-955d-c4959e284242",
+    "96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+    "793189f8-78bd-5204-848b-fd2bbc12e458",
+    "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+    "360fccb9-896d-5e67-bf5d-5732621604c9",
+    "8fe39739-2938-5e2c-8db2-08572b44569a",
+    "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+    "9abd8069-17ad-5d30-9102-f8eff6055045",
+    "3681e688-7880-5bb4-9ab9-ef78289345c8",
+    "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:91698fff86e9c51c1a6a8fb8cd74e674154487c9edd8955a154993e0b97bc2aa"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:e4e09ff3e5beb5531d35d70e48b6ee5d29eb7c2f982b235172a8b65a980542a0"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:b2e31bd76092dd5257b3f886c5968f8ac3da4acb3d65a4ca0ae9cbdf6fa5e0e9"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:6d202b05e5ef32e0b8aaaad82d6e60fb694babf87de12cc6f6ca1de4955ecd22"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:67ba5ea9cc57ee92c74b730a94febaac7ae5add8adc63365447ee64716898ee4"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ce85efa5031db286833fdf96c9814645ff6a83f5c0fe26ff0552db52df97f016"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:e1d0b5b2c3620d6530ab1d57c5f0cb36defb57dc2ee27508aa426ff2e2395d81"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:41c110f1dce3df33496e8b6ba5fd60d96b7ee8d4af948477811b66761c9a9cf0"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2c396927d801d07936f3b142b5ec75493f12aa2ff9f78dab84983e2a6f229859"
+    }
+  ],
+  "startedAt": "2026-10-12T06:59:54.884447+00:00",
+  "completedAt": "2026-10-12T06:59:54.895530+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:0dd92ec9b55def8366bc238347d8a3ef0e7f9a5c57e058260ad3c9db3b9d2560",
+  "toolchainVersion": "codex-genuine-current-review-v2"
+}

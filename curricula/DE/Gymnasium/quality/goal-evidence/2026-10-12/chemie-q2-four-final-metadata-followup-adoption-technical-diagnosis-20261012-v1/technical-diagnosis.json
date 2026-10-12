@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-12T05:27:19.172151+00:00",
+  "role": "Read-only normal API diagnosis; no scientific review and no existing files changed",
+  "verifiedSeals": [
+    {
+      "label": "root",
+      "sealPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-final-resource-metadata-current402-root-preparation-20261012-v2/FINAL.final-metadata-neutral-package.freeze.json",
+      "sealSHA256": "sha256:2c220de9ad32b204bad835d10519b5cd0425407f92df910ef0e6616e1d18fe0b",
+      "allFilesVerified": 39,
+      "allFilesUnchanged": true
+    },
+    {
+      "label": "A",
+      "sealPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-final-metadata-current402-targeted-independent-a-20261012-v2/FOLLOWUP.package.freeze.json",
+      "sealSHA256": "sha256:93c9d86b1bb0958044fd7fe9f3e4509b77001a4b65c24758a67b79a8f5cf5b4d",
+      "allFilesVerified": 31,
+      "allFilesUnchanged": true
+    },
+    {
+      "label": "B",
+      "sealPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-final-metadata-current402-targeted-independent-b-20261012-v2/ORIGINAL.freeze.json",
+      "sealSHA256": "sha256:057de279c5d3155fad5da834408679f4839ddfcf6ec80bd64ed27b670444f4dd",
+      "allFilesVerified": 28,
+      "allFilesUnchanged": true
+    }
+  ],
+  "campaignDigestComparison": [
+    {
+      "round": "A",
+      "preparedCampaignPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-final-resource-metadata-current402-root-preparation-20261012-v2/native-D4/round-a/description-review-campaign.json",
+      "reviewerCampaignPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-final-metadata-current402-targeted-independent-a-20261012-v2/round-a/description-review-campaign.json",
+      "changes": {
+        "reviewPass": {
+          "prepared": "first_pass",
+          "reviewer": "follow_up"
+        }
+      },
+      "preparedRawSHA256": "sha256:ee30a5d48eee3a0caea0f3b832bfed7e1d8141b79d1910376afa78e1f2af76aa",
+      "reviewerRawSHA256": "sha256:6b7f8a3fbdf3e3d33497834edf02d30add4f878f6e5b5f1321086754642c7cb1",
+      "preparedStableCampaignFingerprint": "sha256:f7e6889a99856ffe1eb5706c0eced385b598638e68ac070a22238c5b99ab6cd1",
+      "reviewerStableCampaignFingerprint": "sha256:6377901f758deeba68f43695264ec3836de75794692fcc89fa380904e081af17",
+      "inputBytesExact": true,
+      "bundleBytesExact": true
+    },
+    {
+      "round": "B",
+      "preparedCampaignPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-final-resource-metadata-current402-root-preparation-20261012-v2/native-D4/round-b/description-review-campaign.json",
+      "reviewerCampaignPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-final-metadata-current402-targeted-independent-b-20261012-v2/native-D4-round-b/description-review-campaign.json",
+      "changes": {
+        "reviewPass": {
+          "prepared": "first_pass",
+          "reviewer": "follow_up"
+        }
+      },
+      "preparedRawSHA256": "sha256:08c61df79d0da0034f893ebd8285588695488b62d635fe4a50c74fd092936f03",
+      "reviewerRawSHA256": "sha256:5aff2048cdf79d0c093e9cbdc18b76f45dbe627127af860a24d724c8afd2ba34",
+      "preparedStableCampaignFingerprint": "sha256:c3f1b74e36b04fafa29d38dc4955e76ad4eb1e4bd955d58282884c604c6c4ae1",
+      "reviewerStableCampaignFingerprint": "sha256:0dfd8bf0654bc3bc4e34eb01d3148f06b4841bc40782147cb51225d0fc22f4af",
+      "inputBytesExact": true,
+      "bundleBytesExact": true
+    }
+  ],
+  "normalAPIs": {
+    "prepareGoalDescriptionRolloutBatch": "app/scripts/materializeGoalDescriptionRolloutBatch.ts:651",
+    "loadPreparedRoundGate": "app/scripts/materializeGoalDescriptionRolloutBatch.ts:814 requires first_pass",
+    "validateGoalDescriptionReviewDualRoundGate": "app/scripts/validateGoalDescriptionReviewDualRound.ts:179 requires first_pass for both sources",
+    "materializeGoalDescriptionRolloutResolutions": "Calls materializeGoalDescriptionRolloutBatchDualSummary, which uses both strict gates.",
+    "validateGoalDescriptionDualRoundResolution": "Calls validateGoalDescriptionReviewDualRound, so direct normal resolution API also rejects genuine follow_up campaigns.",
+    "scopeNarrowingCompatibility": "Only strict Math GK-to-LK scope narrowing under canonical-course-markers-v1; not resource metadata changes. Also validates original first_pass dual resolution."
+  },
+  "normalActualResults": {
+    "rootPreparedCheckExit": 0,
+    "actualFollowUpDualCheckExit": 1,
+    "exactBlockingErrors": [
+      "First dual-review campaign must be a first_pass",
+      "Second dual-review campaign must be a first_pass"
+    ],
+    "individualFollowUpCampaignResultsValid": true
+  },
+  "conclusion": "No unmodified normal strict dual/manifest/resolution adoption route accepts these existing follow_up campaigns. Rebinding campaign digests does not solve the semantic reviewPass guard. Preserve all seals and follow-up bytes, retain them as supplemental evidence, and commission genuine blind first current-tuple reviews for only the final four current goals using exact normal prepared first_pass campaigns/batches. Do not relabel or copy old follow-up outputs as new first_pass reviews, drop errors, forge runs, or use the legacy/compatibility lane.",
+  "minimumNormalRouteAfterFreshReviews": [
+    "Prepare an additive normal standalone batch from the unchanged current root-v2 base and final four IDs, using prepareGoalDescriptionRolloutBatch/new outputDirectory. Before reviews, compare native input, bundle, page/P identities with root-v2; reviewers use the exact actual prepared input if any byte/fingerprint differs.",
+    "Two fresh independent reviewers each conduct actual blind first current-tuple reviews of only these four, with their own genuine unique runs/records; previous v2 followups stay intact and supplementary.",
+    "Use normal validateGoalDescriptionReviewCampaignResults for each round, then materializeGoalDescriptionRolloutBatchDualSummary.",
+    "Write explicit new synthesis-authoring decisions in the additive batch from the actual fresh source records; materializeGoalDescriptionRolloutSynthesisManifest.",
+    "Call materializeGoalDescriptionRolloutResolutions, then materializeGoalDescriptionRolloutBatchResolutionIndex; all normal validators must pass."
+  ],
+  "existingPackageWrites": false,
+  "activeWrites": false,
+  "GitWrites": false,
+  "newScientificVotes": 0,
+  "strictM7Gain": 0
+}

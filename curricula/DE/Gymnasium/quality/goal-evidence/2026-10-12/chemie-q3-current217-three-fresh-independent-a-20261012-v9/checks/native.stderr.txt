@@ -1,0 +1,17 @@
+node:internal/fs/promises:1176
+  return await PromisePrototypeThen(
+         ^
+
+Error: ENOENT: no such file or directory, realpath '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-live-context-author-20261012-v7/native-public/assets/goal-visualizations/chemie/f0939f88-a6af-5334-ac4d-5d54732af25a/f0939f88-a6af-5334-ac4d-5d54732af25a.png'
+    at async realpath (node:internal/fs/promises:1176:10)
+    at async resolvePublicVisualizationSource (/home/enpasos/projects/skillpilot/app/scripts/goalBookRenderer.ts:610:22)
+    at async prepareLocalRenderAssets (/home/enpasos/projects/skillpilot/app/scripts/goalBookRenderer.ts:802:26)
+    at async writeGoalBookHtml (/home/enpasos/projects/skillpilot/app/scripts/goalBookRenderer.ts:2122:14)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-current217-three-fresh-independent-a-20261012-v9/generate-current-source-native.mts:16:149) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'realpath',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-live-context-author-20261012-v7/native-public/assets/goal-visualizations/chemie/f0939f88-a6af-5334-ac4d-5d54732af25a/f0939f88-a6af-5334-ac4d-5d54732af25a.png'
+}
+
+Node.js v20.20.2

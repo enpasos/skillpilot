@@ -1,0 +1,67 @@
+{
+  "caseId": "manganometry-02-acceptor-standardization",
+  "goalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+  "status": "author_candidate",
+  "dataOrigin": "SYNTHETIC assessment fixture, not measured or learner-generated data",
+  "taskDe": "Du sollst die unbekannte Konzentration einer frischen Permanganatlösung bestimmen. Als zertifizierter, frisch bereitgestellter Standard steht ausschließlich Fe(II) mit 0,05000 mol/L zur Verfügung. Verwende drei 20,00-mL-Aliquote des Standards und dasselbe beaufsichtigte Verfahren. Leite die Berechnung für den diesmal unbekannten Elektronenakzeptor selbst ab. Danach verwechselt eine Person den Standard mit einer teilweise oxidierten Eisenlösung: Entscheide ohne bloßes Zahleneinsetzen, ob noch eine valide Standardisierung vorliegt und in welche Richtung der scheinbare Permanganatgehalt abweicht.",
+  "taskEn": "Determine the unknown concentration of a fresh permanganate solution using only a certified, freshly supplied 0.05000 mol/L Fe(II) standard. Use three 20.00-mL standard aliquots and the same supervised method. Derive the calculation for the electron acceptor, which is now unknown. Then someone substitutes a partially oxidized iron solution for the standard: decide conceptually whether the standardization remains valid and predict the direction of the apparent permanganate concentration.",
+  "methodDe": "Unter Aufsicht im freigegebenen Schullabor werden frische, von der Lehrkraft bereitgestellte Fe(II)-Lösungen, wässrige Permanganatlösung und 1 mol/L Schwefelsäure verwendet. Schutzbrille, geeignete Schutzhandschuhe, Pipettierhilfe und bereitgestellter Abfallbehälter gehören zum freigegebenen Laborverfahren; keine Mundpipettierung. Die Lehrkraft legt anhand der örtlichen Gefährdungsbeurteilung Material, Mengen, Entsorgung und Versuchsfreigabe fest. Eine 50-mL-Bürette wird mit dem Titranten konditioniert; die gefüllte Spitze ist blasenfrei. Genau 20,00 mL Probe werden mit einer Vollpipette in einen Erlenmeyerkolben überführt und mit 10 mL bereitgestellter 1-mol/L-Schwefelsäure angesäuert. Die dunkle Bürettenlösung wird anhand des oberen Meniskus auf Augenhöhe konsistent abgelesen. Nach einem getrennten Orientierungslauf folgen frische Aliquote; unter Schwenken zunächst zügig, in Endpunktnähe tropfenweise zugeben. Der festgelegte Endpunkt ist ein sehr schwacher Rosaton, der nach Durchmischen 60 s bestehen bleibt; das ist ein praktischer Endpunkt, keine Identität mit einem mathematisch exakten Äquivalenzpunkt. Anfangs- und Endstände, Probenvolumen, Konzentrationen, Farbe, Haltezeit und Abweichungen werden protokolliert. Ein Säure/Wasser-Blindwert wird unter demselben Endpunktkriterium geprüft. Lösungen gehen in den bereitgestellten manganhaltigen Laborabfall, nicht in den Ausguss. Eine braune Trübung, ein grob überschrittener Endpunkt oder falsches Material wird dokumentiert; die betroffene Probe wird nicht als gültiges Ergebnis ausgewertet.",
+  "methodEn": "A supervised, approved school laboratory uses fresh teacher-supplied Fe(II) solutions, aqueous permanganate and 1 mol/L sulfuric acid. Goggles, suitable protective gloves, a pipette aid and the designated waste container belong to the approved laboratory procedure; never mouth-pipette. The teacher specifies materials, amounts, disposal and permission to run the procedure after the local risk assessment. Condition a 50-mL burette with titrant and ensure its filled tip contains no bubbles. Transfer exactly 20.00 mL of sample with a volumetric pipette to a conical flask and add 10 mL of the supplied 1 mol/L sulfuric acid. Consistently read the upper meniscus of the dark burette solution at eye level. After a separate rough trial, use fresh aliquots; swirl and add rapidly initially, then dropwise near the endpoint. The specified endpoint is a very faint pink colour remaining for 60 s after mixing: a practical endpoint, not mathematical identity with the equivalence point. Record initial/final readings, aliquot, concentrations, colour, holding time and deviations. Check an acid/water blank using the same endpoint criterion. Place solutions in designated manganese-containing laboratory waste, not the drain. Document brown turbidity, gross overshooting or wrong materials and do not treat the affected aliquot as a valid result.",
+  "syntheticData": {
+    "aliquot_mL": 20.0,
+    "certified_FeII_mol_per_L": 0.05,
+    "buretteUnit": "mL",
+    "validTrials": [
+      {
+        "start": 0.3,
+        "end": 10.32
+      },
+      {
+        "start": 10.45,
+        "end": 20.45
+      },
+      {
+        "start": 0.25,
+        "end": 10.23
+      }
+    ],
+    "blankBelowDetection": true,
+    "blankPolicy": "For this fixture the blank is indistinguishable from zero within the stated 0.02-mL reading resolution; do not copy the 0.04-mL blank from case A.",
+    "freshTransfer": "Counterexample: substituted solution has actually 0.04000 mol/L Fe(II) and 0.01000 mol/L Fe(III), but is still labelled 0.05000 mol/L Fe(II); unchanged true permanganate concentration 0.02000 mol/L."
+  },
+  "workedDe": "Die gleichen Halb- und Gesamtgleichungen gelten, doch diesmal ist n(Fe2+) bekannt. Verbräuche 10,02/10,00/9,98 mL, Mittel 10,00 mL. n(Fe2+)=0,05000*0,02000=0,001000 mol; n(MnO4−)=n(Fe2+)/5=0,0002000 mol; c(MnO4−)=0,0002000/0,01000=0,02000 mol/L. Der Akzeptor ist weder wegen seines unbekannten Gehalts ein Donator noch aufgrund seiner Position in der Bürette definiert. Ein ungeprüfter Blindwert aus dem anderen Fall wäre ein Fehler. Im frischen Gegenbeispiel enthält das Aliquot nur 0,0008000 mol Fe(II): wahrer Verbrauch 8,00 mL. Mit dem falschen Etikett würde 0,0002000/0,00800=0,02500 mol/L, also ein zu hoher scheinbarer Permanganatgehalt errechnet. Das vorhandene Fe(III) liefert keine zusätzliche Fe(II)-Elektronenmenge. Eine valide Standardisierung erfordert einen verlässlich bekannten Fe(II)-Gehalt; Gesamteisen oder ein Etikett genügt nicht. Der Standard muss ersetzt/verifiziert werden; keine willkürliche Korrektur ohne unabhängige Information. Sichere praktische Durchführung und die begründete Auswertung werden getrennt beobachtet, bilden aber gemeinsam diese Titrationskompetenz.",
+  "workedEn": "The same half-reactions and overall reaction apply, but the Fe(II) amount is now known. Consumptions are 10.02/10.00/9.98 mL, mean 10.00 mL. n(Fe2+)=0.05000*0.02000=0.001000 mol; n(MnO4−)=n(Fe2+)/5=0.0002000 mol; c(MnO4−)=0.0002000/0.01000=0.02000 mol/L. An acceptor does not become a donor because its concentration is unknown, and burette position does not define either role. Importing the other case's blank without checking is wrong. The fresh counterexample aliquot contains only 0.0008000 mol Fe(II), giving a true 8.00-mL consumption. The wrong label would imply 0.0002000/0.00800=0.02500 mol/L, an overestimate of permanganate concentration. Fe(III) supplies no additional Fe(II) electron amount. Valid standardization needs independently known Fe(II) content; total iron or a label alone is insufficient. Replace/verify the standard rather than apply an arbitrary correction without independent information. Observe safe execution and reasoned analysis separately, while assessing their coordinated titration competence.",
+  "practicalEvidenceDe": "Die praktische Teilbewertung ist nur aus einer tatsächlich beobachteten Durchführung oder einer ausreichend vollständigen, authentisch zuordenbaren Aufzeichnung möglich. Beobachtet werden sichere Vorbereitung, korrektes Konditionieren/Pipettieren/Ablesen, kontrollierte Endpunktannäherung, vollständiges Rohprotokoll und begründeter Umgang mit Blindwert und fehlerhaften Läufen. Ein schöner Plan oder eine korrekte Rechnung erfüllt den Durchführungsoperator nicht. In diesem Autorenpaket ist kein solcher Leistungsnachweis enthalten: Daten und Lösungen sind ausdrücklich synthetische Aufgabenfixtures. Das P-Profil beschreibt ein geeignetes künftiges Assessment; M7 beansprucht weder eine bereits erbrachte Laborleistung noch menschliche Erprobung.",
+  "practicalEvidenceEn": "Assess practical execution only from actually observed performance or a sufficiently complete, authentically attributable recording. Observe safe setup, correct conditioning/pipetting/reading, controlled approach to the endpoint, complete raw records and justified treatment of the blank and faulty trials. A good plan or correct calculation does not establish execution. This author packet contains no such performance evidence: data and worked solutions are explicitly synthetic assessment fixtures. The P profile designs an appropriate future assessment; M7 claims neither completed laboratory performance nor a human trial.",
+  "misconceptionsDe": [
+    "Bekannter Fe-Gehalt sei automatisch bekannter Fe(II)-Gehalt.",
+    "Der Faktor fünf müsse unabhängig von der unbekannten Größe immer multipliziert werden.",
+    "Elektronendonator sei stets der Stoff im Kolben.",
+    "Ein Fehler im Standard könne durch drei übereinstimmende Wiederholungen ausgeschlossen werden."
+  ],
+  "misconceptionsEn": [
+    "Known iron content automatically means known Fe(II) content.",
+    "Always multiply by five regardless of the unknown quantity.",
+    "The material in the flask always defines the electron donor.",
+    "Three concordant repeats exclude a systematic error in the standard."
+  ],
+  "rubric": [
+    {
+      "criterion": "Practical execution observed; see evidence boundary",
+      "points": 4
+    },
+    {
+      "criterion": "Correct redox roles, inverse stoichiometric amount derivation",
+      "points": 3
+    },
+    {
+      "criterion": "Valid raw-volume analysis, standardization and units",
+      "points": 3
+    },
+    {
+      "criterion": "Independent oxidized-standard counterexample and validity/limits",
+      "points": 3
+    }
+  ],
+  "maximumPoints": 13
+}

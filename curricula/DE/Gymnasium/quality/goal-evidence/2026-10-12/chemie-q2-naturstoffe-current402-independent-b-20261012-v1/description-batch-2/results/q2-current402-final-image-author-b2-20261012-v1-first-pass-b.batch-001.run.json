@@ -1,0 +1,72 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q2-naturstoffe-current402-independent-b-20261012-v1-d-batch-2",
+  "campaignId": "q2-current402-final-image-author-b2-20261012-v1-b",
+  "roundId": "q2-current402-final-image-author-b2-20261012-v1-first-pass-b",
+  "batchId": "q2-current402-final-image-author-b2-20261012-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:17fb97cabf373a3d6de9dcd30d2e0211010ae134e2c2620b53cb44f9bf950f4d",
+  "bundleFingerprint": "sha256:2aacf58cb475242053f2ccba8b67f2a0f1e1863ffdbac357803cab26ab162fad",
+  "bookDigest": "sha256:dee39b40bfd4869d5577c8a7c64c86ad20cedfcce6d871bf92aa7d7ec19d44de",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex inherited session model",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemistry-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:1c63eb40eb7a0ae60178d76d4c25b81b5e7ce4524001a422808f270dccaaa41f",
+  "independenceGroupId": "q2-current402-final-image-author-b2-20261012-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+    "b4ca3af2-77f1-59e8-955d-c4959e284242",
+    "014e6d85-eecf-5228-9031-52a39981cd0d",
+    "96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+    "793189f8-78bd-5204-848b-fd2bbc12e458",
+    "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+    "360fccb9-896d-5e67-bf5d-5732621604c9",
+    "8fe39739-2938-5e2c-8db2-08572b44569a",
+    "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+    "9abd8069-17ad-5d30-9102-f8eff6055045",
+    "3681e688-7880-5bb4-9ab9-ef78289345c8",
+    "0b5342b9-512d-573f-90d5-7522aee35efa",
+    "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+    "47582f06-d724-5da9-acc6-16c91ab94f67",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:8c6a99d48d3880c1e9865b8bc40bda06779f1632f3635f0182b14af5d6e98968"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:28a86532018a41c9ba31c47cf664dd634b34fab079b63932dfebcba44543ba7c"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:5359a19853668c729b997c4b165a30250d928a15d38a753f7036b772fa9335b8"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:d8ddee2bf1c85773401d3b36938a9966ef8752ad275f26402180ed3bef718d9d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:17fb97cabf373a3d6de9dcd30d2e0211010ae134e2c2620b53cb44f9bf950f4d"
+    }
+  ],
+  "startedAt": "2026-10-12T03:29:04.674859+00:00",
+  "completedAt": "2026-10-12T03:59:49.013625+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:765d68a45d69e1f2baed6de87621b0105f5e3800b87f6f985a6ed08405e6150a",
+  "toolchainVersion": "skillpilot-actual-normal-campaign-contract-v2"
+}

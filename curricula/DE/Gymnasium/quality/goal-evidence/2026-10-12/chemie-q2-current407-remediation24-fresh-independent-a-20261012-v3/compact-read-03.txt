@@ -1,0 +1,100 @@
+GOAL 3 d8eeed29-d1b7-5a48-94b5-343629f8e867 Aminosäuren stereochemisch darstellen / Represent amino acid stereochemistry
+Die lernende Person kann an geeigneten Aminosäuren Chiralität und Enantiomerie erklären, aus hinreichend bestimmten systematischen Benennungen Fischer-Projektionsformeln ableiten und darin D-/L-Konfigurationen anhand der Projektionskonvention unterscheiden.
+The learner can explain chirality and enantiomerism in suitable amino acids, derive Fischer projections from sufficiently specified systematic names, and distinguish D/L configurations using the projection convention.
+REQUIRES 85342c52-9722-54b0-8fbb-513d9d648363,a9c22adc-b543-5b0c-a2d8-3189facdff08
+CANONICAL REST {"weight": 1, "tags": ["GK", "LK"], "contains": [], "dimensionTags": {"framework": "hessen-kc-2024-chemistry", "demandLevel": "AB2", "processCompetencies": [], "guidingIdeas": ["BC_AUFBAU"], "phase": "Q2", "area": "Naturstoffe", "topicCode": "Q2.1.SPLIT.d8eeed29"}, "applicability": {"jurisdiction": ["DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"]}, "extendedData": {"provenance": {"sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13", "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)", "sourceGoalId": "f47e4008-d1da-40ef-854b-b6f4a3fb742a"}, "splitOriginGoalId": "62149f36-87c0-5a2d-8a78-e7d4203f58c2"}, "type": "atomic", "examples": []}
+IMAGE [{"type": "goal-visualization", "resourceType": "image", "role": "primary", "skillpilotId": "d8eeed29-d1b7-5a48-94b5-343629f8e867", "title": "Visualisierung: Aminosäuren stereochemisch darstellen", "url": "/assets/goal-visualizations/chemie/d8eeed29-d1b7-5a48-94b5-343629f8e867/d8eeed29-d1b7-5a48-94b5-343629f8e867.png", "provider": "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)", "description": "Visualisierung zum Lernziel: Aminosäuren stereochemisch darstellen.", "altText": "Zwei Fischerprojektionen von L- und D-Alanin haben COOH oben und CH3 unten. Aminogruppe und Wasserstoff stehen spiegelbildlich links beziehungsweise rechts; ein Spiegel trennt die Projektionen.", "lang": "de", "license": "CC-BY-4.0", "reviewStatus": "pilot"}]
+PROFILE.archetype = concept
+PROFILE.expectations[0].id = systematic-name-to-fischer
+PROFILE.expectations[0].essentialUnderstandingDe = Systematischer Name und absolute Konfiguration bestimmen die Konstruktion; D/L folgt erst aus der geprüften Fischer-Konvention.
+PROFILE.expectations[0].essentialUnderstandingEn = The systematic name and absolute configuration determine construction; D/L follows from the checked Fischer convention.
+PROFILE.expectations[0].observablePerformanceDe = Drei C-Atome; Carboxyl-C ist C1, Aminogruppe an C2: HOOC–CH(NH2)–CH3. C2 trägt vier verschiedene Gruppen. CIP: NH2 > COOH > CH3 > H. Bei COOH oben und CH3 unten stehen für (2S) NH2 links und H rechts: L-Konfiguration. Spiegelbild: NH2 rechts, H links, (2R), D. Die horizontalen Bindungen zeigen nach vorn; bei vorn liegendem H wird der abgelesene Drehsinn invertiert. Ohne Stereodeskriptor ist nur die Konnektivität gegeben; beide Enantiomere sind möglich, nicht automatisch ein Racemat.
+PROFILE.expectations[0].observablePerformanceEn = There are three carbon atoms; carboxyl carbon is C1 and amino group is at C2: HOOC–CH(NH2)–CH3. C2 has four different substituents. CIP: NH2 > COOH > CH3 > H. With COOH top and CH3 bottom, (2S) places NH2 left and H right: L. Its mirror image places NH2 right and H left: (2R), D. Horizontal bonds point towards the viewer, so the read rotation is inverted when H points forward. A name without a stereodescriptor only fixes connectivity; either enantiomer is possible and a racemate is not implied.
+PROFILE.expectations[1].id = sulfur-priority-transfer
+PROFILE.expectations[1].essentialUnderstandingDe = Neue Seitenkette erzwingt eine echte Neukonstruktion und trennt absolute von relativer Konfigurationsbenennung.
+PROFILE.expectations[1].essentialUnderstandingEn = A new side chain forces genuine reconstruction and distinguishes absolute from relative configurational naming.
+PROFILE.expectations[1].observablePerformanceDe = HOOC–CH(NH2)–CH2–SH. CIP am C2: NH2 zuerst; CH2SH hat an seinem C die Nachbarn S,H,H und rangiert vor dem Carboxyl-C mit O,O,O; H zuletzt. Somit NH2 > CH2SH > COOH > H. Für (2R) bei dieser Fischer-Anordnung steht NH2 links, H rechts: L, obwohl R. Das Enantiomer hat NH2 rechts: D und (2S). Seitenketten ändern CIP, nicht die D/L-Projektionskonvention. Es geht um Konfiguration, nicht Drehvorzeichen oder bloße Bewegung des Bildes.
+PROFILE.expectations[1].observablePerformanceEn = HOOC–CH(NH2)–CH2–SH. At C2, NH2 is first; the CH2SH carbon has S,H,H neighbours and outranks the carboxyl carbon with O,O,O; H is last. Thus NH2 > CH2SH > COOH > H. For (2R) in this Fischer arrangement, NH2 lies left and H right: L despite R. The mirror has NH2 right: D and (2S). Side chains change CIP priorities, not the D/L projection convention. This concerns configuration, not rotation sign or simply moving the drawing.
+PROFILE.coverageExpectations.requiredExpectationIds[0] = systematic-name-to-fischer
+PROFILE.coverageExpectations.requiredExpectationIds[1] = sulfur-priority-transfer
+PROFILE.coverageExpectations.minimumIndependentDemonstrations = 2
+PROFILE.coverageExpectations.freshVariationRequired = True
+PROFILE.coverageExpectations.independentTransferRequired = True
+PROFILE.variationAxes[0].id = actual-operator-transfer
+PROFILE.variationAxes[0].textDe = Die vollständig ausgearbeiteten Fälle wechseln die konkret genannten Struktur-, Phasen-, Proben-, Mess- oder Modellbedingungen. Methodenspezifische Quellenpflichten sind keine beliebigen Alternativen. Durchführungsaufgaben erfordern reale Eigenarbeit; synthetische Muster erfüllen sie nicht.
+PROFILE.variationAxes[0].textEn = Complete worked cases vary the specified structure, phase, sample, measurement or model conditions. Source-specific method duties are not interchangeable alternatives. Execution requires actual own work; synthetic fixtures do not satisfy it.
+PROFILE.applicationCaseBriefs[0].id = systematic-name-to-fischer
+PROFILE.applicationCaseBriefs[0].taskDemandDe = Konstruiere allein aus dem Namen (2S)-2-Aminopropansäure eine vollständige Fischer-Projektion mit COOH oben und dem Kohlenwasserstoffrest unten. Leite zuerst Konnektivität und CIP-Reihenfolge ab, bestimme dann D/L. Zeichne das Enantiomer. Erkläre, warum der Name 2-Aminopropansäure ohne Stereodeskriptor keine eindeutige Fischer-Konfiguration festlegt.
+PROFILE.applicationCaseBriefs[0].taskDemandEn = Construct a complete Fischer projection solely from (2S)-2-aminopropanoic acid, with COOH at the top and the hydrocarbon residue below. First derive connectivity and CIP priorities, then determine D/L. Draw its enantiomer. Explain why 2-aminopropanoic acid without a stereodescriptor does not specify a unique Fischer configuration.
+PROFILE.applicationCaseBriefs[0].expectedPerformanceDe = SAME AS PROFILE.expectations[0].observablePerformanceDe
+PROFILE.applicationCaseBriefs[0].expectedPerformanceEn = SAME AS PROFILE.expectations[0].observablePerformanceEn
+PROFILE.applicationCaseBriefs[0].understandingFocusDe = SAME AS PROFILE.expectations[0].essentialUnderstandingDe
+PROFILE.applicationCaseBriefs[0].understandingFocusEn = SAME AS PROFILE.expectations[0].essentialUnderstandingEn
+PROFILE.applicationCaseBriefs[1].id = sulfur-priority-transfer
+PROFILE.applicationCaseBriefs[1].taskDemandDe = Leite aus (2R)-2-Amino-3-sulfanylpropansäure Konnektivität und Fischer-Projektion ab (COOH oben, Seitenkette unten). Bestimme D/L und vergleiche die CIP-Reihenfolge mit dem ersten Fall. Zeichne das Enantiomer und begründe, weshalb die Regel R=D hier versagt.
+PROFILE.applicationCaseBriefs[1].taskDemandEn = Derive connectivity and a Fischer projection from (2R)-2-amino-3-sulfanylpropanoic acid (COOH top, side chain below). Determine D/L and compare CIP priorities with the first case. Draw the enantiomer and explain why R=D fails here.
+PROFILE.applicationCaseBriefs[1].expectedPerformanceDe = SAME AS PROFILE.expectations[1].observablePerformanceDe
+PROFILE.applicationCaseBriefs[1].expectedPerformanceEn = SAME AS PROFILE.expectations[1].observablePerformanceEn
+PROFILE.applicationCaseBriefs[1].understandingFocusDe = SAME AS PROFILE.expectations[1].essentialUnderstandingDe
+PROFILE.applicationCaseBriefs[1].understandingFocusEn = SAME AS PROFILE.expectations[1].essentialUnderstandingEn
+WHOLE CASES[0].goalId = d8eeed29-d1b7-5a48-94b5-343629f8e867
+WHOLE CASES[0].case.id = systematic-name-to-fischer
+WHOLE CASES[0].case.taskDemandDe = SAME AS PROFILE.applicationCaseBriefs[0].taskDemandDe
+WHOLE CASES[0].case.taskDemandEn = SAME AS PROFILE.applicationCaseBriefs[0].taskDemandEn
+WHOLE CASES[0].case.expectedPerformanceDe = SAME AS PROFILE.expectations[0].observablePerformanceDe
+WHOLE CASES[0].case.expectedPerformanceEn = SAME AS PROFILE.expectations[0].observablePerformanceEn
+WHOLE CASES[0].case.understandingFocusDe = SAME AS PROFILE.expectations[0].essentialUnderstandingDe
+WHOLE CASES[0].case.understandingFocusEn = SAME AS PROFILE.expectations[0].essentialUnderstandingEn
+WHOLE CASES[0].rubric.maximumPoints = 6
+WHOLE CASES[0].rubric.criteria[0].points = 2
+WHOLE CASES[0].rubric.criteria[0].aspectDe = Konnektivität aus Propan-/2-Amino- korrekt konstruiert.
+WHOLE CASES[0].rubric.criteria[0].aspectEn = Correctly constructs connectivity from propanoic/2-amino.
+WHOLE CASES[0].rubric.criteria[1].points = 2
+WHOLE CASES[0].rubric.criteria[1].aspectDe = CIP-Reihenfolge und Umkehr bei horizontalem H führen begründet zu NH2 links.
+WHOLE CASES[0].rubric.criteria[1].aspectEn = CIP priorities and inversion for horizontal H justify NH2 on the left.
+WHOLE CASES[0].rubric.criteria[2].points = 1
+WHOLE CASES[0].rubric.criteria[2].aspectDe = L und spiegelbildliches (2R)/D richtig.
+WHOLE CASES[0].rubric.criteria[2].aspectEn = Correct L and mirror (2R)/D.
+WHOLE CASES[0].rubric.criteria[3].points = 1
+WHOLE CASES[0].rubric.criteria[3].aspectDe = Fehlende Stereoinformation erkannt; kein unbegründetes Racemat.
+WHOLE CASES[0].rubric.criteria[3].aspectEn = Recognizes missing stereochemical information; no unsupported racemate.
+WHOLE CASES[0].rubric.fullCreditEvidenceDe = SAME AS PROFILE.expectations[0].observablePerformanceDe
+WHOLE CASES[0].rubric.fullCreditEvidenceEn = SAME AS PROFILE.expectations[0].observablePerformanceEn
+WHOLE CASES[0].rubric.misconceptionChecks[0] = S bestimmt nicht immer L; D/L ist nicht das Vorzeichen optischer Drehung.
+WHOLE CASES[0].exactCurrentCaseBrief.id = systematic-name-to-fischer
+WHOLE CASES[0].exactCurrentCaseBrief.taskDemandDe = SAME AS PROFILE.applicationCaseBriefs[0].taskDemandDe
+WHOLE CASES[0].exactCurrentCaseBrief.taskDemandEn = SAME AS PROFILE.applicationCaseBriefs[0].taskDemandEn
+WHOLE CASES[0].exactCurrentCaseBrief.expectedPerformanceDe = SAME AS PROFILE.expectations[0].observablePerformanceDe
+WHOLE CASES[0].exactCurrentCaseBrief.expectedPerformanceEn = SAME AS PROFILE.expectations[0].observablePerformanceEn
+WHOLE CASES[0].exactCurrentCaseBrief.understandingFocusDe = SAME AS PROFILE.expectations[0].essentialUnderstandingDe
+WHOLE CASES[0].exactCurrentCaseBrief.understandingFocusEn = SAME AS PROFILE.expectations[0].essentialUnderstandingEn
+WHOLE CASES[1].goalId = d8eeed29-d1b7-5a48-94b5-343629f8e867
+WHOLE CASES[1].case.id = sulfur-priority-transfer
+WHOLE CASES[1].case.taskDemandDe = SAME AS PROFILE.applicationCaseBriefs[1].taskDemandDe
+WHOLE CASES[1].case.taskDemandEn = SAME AS PROFILE.applicationCaseBriefs[1].taskDemandEn
+WHOLE CASES[1].case.expectedPerformanceDe = SAME AS PROFILE.expectations[1].observablePerformanceDe
+WHOLE CASES[1].case.expectedPerformanceEn = SAME AS PROFILE.expectations[1].observablePerformanceEn
+WHOLE CASES[1].case.understandingFocusDe = SAME AS PROFILE.expectations[1].essentialUnderstandingDe
+WHOLE CASES[1].case.understandingFocusEn = SAME AS PROFILE.expectations[1].essentialUnderstandingEn
+WHOLE CASES[1].rubric.maximumPoints = 6
+WHOLE CASES[1].rubric.criteria[0].points = 2
+WHOLE CASES[1].rubric.criteria[0].aspectDe = Seitenkette CH2SH aus dem Namen aufgebaut.
+WHOLE CASES[1].rubric.criteria[0].aspectEn = Builds CH2SH from the name.
+WHOLE CASES[1].rubric.criteria[1].points = 2
+WHOLE CASES[1].rubric.criteria[1].aspectDe = S-Vergleich erklärt geänderte CIP-Reihenfolge.
+WHOLE CASES[1].rubric.criteria[1].aspectEn = Sulfur comparison explains changed CIP priorities.
+WHOLE CASES[1].rubric.criteria[2].points = 1
+WHOLE CASES[1].rubric.criteria[2].aspectDe = Fischer-Lage und L/(2R) richtig.
+WHOLE CASES[1].rubric.criteria[2].aspectEn = Correct Fischer arrangement and L/(2R).
+WHOLE CASES[1].rubric.criteria[3].points = 1
+WHOLE CASES[1].rubric.criteria[3].aspectDe = Enantiomer D/(2S) und Grenze der R=D-Regel richtig.
+WHOLE CASES[1].rubric.criteria[3].aspectEn = Correct mirror D/(2S) and limitation of R=D.
+WHOLE CASES[1].rubric.fullCreditEvidenceDe = SAME AS PROFILE.expectations[1].observablePerformanceDe
+WHOLE CASES[1].rubric.fullCreditEvidenceEn = SAME AS PROFILE.expectations[1].observablePerformanceEn
+WHOLE CASES[1].exactCurrentCaseBrief.id = sulfur-priority-transfer
+WHOLE CASES[1].exactCurrentCaseBrief.taskDemandDe = SAME AS PROFILE.applicationCaseBriefs[1].taskDemandDe
+WHOLE CASES[1].exactCurrentCaseBrief.taskDemandEn = SAME AS PROFILE.applicationCaseBriefs[1].taskDemandEn
+WHOLE CASES[1].exactCurrentCaseBrief.expectedPerformanceDe = SAME AS PROFILE.expectations[1].observablePerformanceDe
+WHOLE CASES[1].exactCurrentCaseBrief.expectedPerformanceEn = SAME AS PROFILE.expectations[1].observablePerformanceEn
+WHOLE CASES[1].exactCurrentCaseBrief.understandingFocusDe = SAME AS PROFILE.expectations[1].essentialUnderstandingDe
+WHOLE CASES[1].exactCurrentCaseBrief.understandingFocusEn = SAME AS PROFILE.expectations[1].essentialUnderstandingEn

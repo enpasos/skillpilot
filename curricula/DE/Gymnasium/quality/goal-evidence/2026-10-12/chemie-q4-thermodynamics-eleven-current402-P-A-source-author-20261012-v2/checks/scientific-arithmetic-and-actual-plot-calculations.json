@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "syntheticFixture": true,
+  "actualCalculations": {
+    "firstLaw_U_J": 850,
+    "expansionWorkOn_J": -200.0,
+    "expansion_U_J": 300,
+    "hessCO_kJmol": -110.5,
+    "halfMolCO_kJ": -55.25,
+    "saltCaCl2_kJmol": -66.136766,
+    "saltHex_kJmol": 19.677709999999998,
+    "Mg_kJmol": -456.54661079999994,
+    "NH4HCO3_kJmol": 38.1257233,
+    "neutralisation_Q_J": 224.64,
+    "neutralisation_kJmol": -56.15999999999999,
+    "neutralisation_percentDifference": 1.473684210526322,
+    "methaneFormationH_kJmol": -802.3000000000001,
+    "bondBroken_kJmol": 2648,
+    "bondFormed_kJmol": 3450,
+    "cycle_Qout_J": 700,
+    "cycle_Sres_JK": 0.3333333333333335,
+    "singleReservoir_Sres_JK": -2.0,
+    "isothermalWork_J": 1728.8476977526154,
+    "isothermalS_JK": 5.762825659175385,
+    "CaCO3S_JmolK": 160.70000000000002,
+    "CaCO3_0p2mol_S_JK": 32.14000000000001,
+    "CaCO3Ssur": -598.3221476510067,
+    "CaCO3Stotal": -437.62214765100674,
+    "saltModel_Ssur_JmolK": -67.13286713286713,
+    "saltModel_Stotal_JmolK": 12.867132867132867,
+    "saltModel_G_Jmol": -3772.0,
+    "dissolution_G_Jmol": -4000,
+    "freezing_G260_Jmol": -280,
+    "freezing_G290_Jmol": 380,
+    "freezing_Stotal260": 1.0769230769230766,
+    "freezing_Stotal290": -1.3103448275862064,
+    "statistical_S_JK": 2.4737909194302452e-23,
+    "RTln100_kJmol": 11.40964070803889,
+    "G_Q100_kJmol": 7.1096407080388895,
+    "K_298": 5.672160846996535,
+    "Tstar_K": 1109.5208462974488,
+    "CaCO3G_298": 130.41140000000001,
+    "CaCO3G_1200": -14.539999999999992,
+    "methaneFormationG_kJmol": -817.8,
+    "methaneQuarterMol_G_kJ": -204.45,
+    "redoxG_Jmol": -212267.00000000003,
+    "redoxFromH_S_Jmol": -212267,
+    "redoxIdealWork_J": 2122.6700000000005,
+    "redoxLoadWork_J": 1640.2450000000001,
+    "redoxLostWork_J": 482.42500000000024,
+    "RGT_10K_ratio": 2.5,
+    "RGT_20K_ratio": 6.25,
+    "RGT_changedPrediction": 0.1352,
+    "coupledG_kJmol": -15,
+    "coupledS_JmolK": 50.0,
+    "hexokinaseG_kJmol": -17,
+    "hexokinaseS_JmolK": 54.83870967741935,
+    "peak300_kJmol": 1.2471,
+    "peak450_kJmol": 1.8706500000000001,
+    "etaNet_percent": 104.73815461346634,
+    "etaGross_percent": 94.3820224719101,
+    "waterCondensation_kJmol": 44.0
+  },
+  "fuels": {
+    "H2": {
+      "netMJkg": 121.0,
+      "grossMJkg": 143.0,
+      "massGramPerNetMJ": 8.264462809917354,
+      "costEURPerNetMJ": 0.04132231404958677,
+      "directCO2gPerNetMJ": 0.0
+    },
+    "CH4": {
+      "netMJkg": 50.125,
+      "grossMJkg": 55.625,
+      "massGramPerNetMJ": 19.950124688279303,
+      "costEURPerNetMJ": 0.0199501246882793,
+      "directCO2gPerNetMJ": 54.862842892768086
+    },
+    "C": {
+      "netMJkg": 32.833333333333336,
+      "grossMJkg": 32.833333333333336,
+      "massGramPerNetMJ": 30.456852791878173,
+      "costEURPerNetMJ": 0.009137055837563452,
+      "directCO2gPerNetMJ": 111.6751269035533
+    }
+  },
+  "boltzmann": {
+    "areaMethod": "analytical improper integral; CSV sampling at 0.005 kJ/mol to80",
+    "areas": {
+      "T300_Ea15": {
+        "analyticalArea": 0.007288179385600535,
+        "analyticMethod": "erfc(sqrt(Ea/RT))+2/sqrt(pi)*sqrt(Ea/RT)*exp(-Ea/RT)",
+        "numericTrapezoidTo80": 0.007288181462387685
+      },
+      "T450_Ea15": {
+        "analyticalArea": 0.04562879498678473,
+        "analyticMethod": "erfc(sqrt(Ea/RT))+2/sqrt(pi)*sqrt(Ea/RT)*exp(-Ea/RT)",
+        "numericTrapezoidTo80": 0.04562879756855979
+      },
+      "T300_Ea10": {
+        "analyticalArea": 0.04562879498678473,
+        "analyticMethod": "erfc(sqrt(Ea/RT))+2/sqrt(pi)*sqrt(Ea/RT)*exp(-Ea/RT)",
+        "numericTrapezoidTo80": 0.04562880700437168
+      }
+    },
+    "areaRatio10to15_300": 6.260657507543633,
+    "wholeAreaAnalytical": 1,
+    "wholeAreaTrapezoidFinite": {
+      "300": 0.9999789509698882,
+      "450": 0.9999885386605446
+    },
+    "finiteRangeNotRenormalized": true
+  },
+  "reportedRoundingConsistent": true,
+  "actualLabMeasurement": false
+}

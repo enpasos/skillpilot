@@ -1,0 +1,154 @@
+{
+  "atUTC": "2026-10-12T11:57:58.300581+00:00",
+  "localAndRemoteMainSHA": "f38fbc282e305d3f066fc18a29c85c4aa7d0bbfa",
+  "scienceCheckpointSHA": "c4ed0c942a43cababa6a54434e95cfa70cda37ac",
+  "regularPushWorkflowsExactCurrentHEAD": [
+    {
+      "id": 38238787150,
+      "name": "Deploy Docs",
+      "event": "push",
+      "headSHA": "f38fbc282e305d3f066fc18a29c85c4aa7d0bbfa",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/38238787150",
+      "completedAtUTC": "2026-10-12T10:50:40Z"
+    },
+    {
+      "id": 38238786943,
+      "name": "Docs Checks",
+      "event": "push",
+      "headSHA": "f38fbc282e305d3f066fc18a29c85c4aa7d0bbfa",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/38238786943",
+      "completedAtUTC": "2026-10-12T11:01:05Z"
+    },
+    {
+      "id": 38238786918,
+      "name": "CI",
+      "event": "push",
+      "headSHA": "f38fbc282e305d3f066fc18a29c85c4aa7d0bbfa",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918",
+      "completedAtUTC": "2026-10-12T11:53:15Z"
+    }
+  ],
+  "coreCIJobs": [
+    {
+      "id": 114776326675,
+      "name": "action-regression-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918/job/114776326675",
+      "completed_at": "2026-10-12T10:59:03Z"
+    },
+    {
+      "id": 114776327048,
+      "name": "Learning-goal book build",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918/job/114776327048",
+      "completed_at": "2026-10-12T11:10:54Z"
+    },
+    {
+      "id": 114776327117,
+      "name": "OpenAI MCP V1 public edge CI",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918/job/114776327117",
+      "completed_at": "2026-10-12T10:58:57Z"
+    },
+    {
+      "id": 114776327125,
+      "name": "Claude Connector V1 CI",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918/job/114776327125",
+      "completed_at": "2026-10-12T10:58:42Z"
+    },
+    {
+      "id": 114776327155,
+      "name": "OpenAI MCP Apps CI",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918/job/114776327155",
+      "completed_at": "2026-10-12T10:59:36Z"
+    },
+    {
+      "id": 114783285226,
+      "name": "Application frontend CI",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918/job/114783285226",
+      "completed_at": "2026-10-12T11:37:53Z"
+    },
+    {
+      "id": 114783285348,
+      "name": "Curriculum CI",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918/job/114783285348",
+      "completed_at": "2026-10-12T11:53:14Z"
+    },
+    {
+      "id": 114783285403,
+      "name": "backend-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/38238786918/job/114783285403",
+      "completed_at": "2026-10-12T11:42:13Z"
+    }
+  ],
+  "sourceTriggeredOnlyWorkflowsOnScienceCommit": [
+    {
+      "id": 38236824955,
+      "name": "Gemini integration local checks",
+      "headSHA": "c4ed0c942a43cababa6a54434e95cfa70cda37ac",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/38236824955"
+    },
+    {
+      "id": 38236824894,
+      "name": "Canonical Chemistry Evidence Watch",
+      "headSHA": "c4ed0c942a43cababa6a54434e95cfa70cda37ac",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/38236824894"
+    }
+  ],
+  "chemistryWatchInputsByteExactAcrossDocumentationFollowup": true,
+  "currentChemistryMaturity": "M6",
+  "CQR303": {
+    "id": "CQR-303",
+    "status": "warn",
+    "summary": "Deep curriculum QA is incomplete: 217/402 current curricularAtomic goals strictly complete.",
+    "metrics": {
+      "expectedGoals": 402,
+      "remaining": 185,
+      "strictComplete": 217,
+      "currentDescriptionResolutions": 218,
+      "currentPositiveEvidenceProfiles": 217,
+      "currentSemanticAtomicityDecisions": 234,
+      "currentMemoryReviewDecisions": 402,
+      "currentVisualizationQaRecords": 385,
+      "deferredVisualizations": 15,
+      "requiredChecksPassed": 6,
+      "requiredChecksTotal": 6,
+      "blockingIssues": 0
+    },
+    "details": [
+      "15 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+    ]
+  },
+  "allCommitUnionPathCount": 839,
+  "trackedWorktreeChanges": [],
+  "stagedIndexChanges": [],
+  "allPrivateOrMutableAuthorWorkRemainsUnstaged": true,
+  "humanApproval": false,
+  "humanTrial": false,
+  "manualDeployPortalPublishOrGitHubCommentPerformed": false,
+  "automaticDocsWorkflowWasTriggeredByTheAuthorizedNormalPush": true,
+  "terminalReceiptIsAdditiveUntrackedEvidenceToAvoidChangingTheVerifiedHEAD": true
+}

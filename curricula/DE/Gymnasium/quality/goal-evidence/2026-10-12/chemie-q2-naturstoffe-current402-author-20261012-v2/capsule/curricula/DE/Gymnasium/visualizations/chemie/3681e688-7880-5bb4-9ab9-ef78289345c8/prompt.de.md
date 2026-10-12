@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Verdauungssäfte chemisch erklären
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `3681e688-7880-5bb4-9ab9-ef78289345c8`
+- Titel: Verdauungssäfte chemisch erklären
+- Beschreibung: Die lernende Person kann die Bedeutung verschiedener Verdauungssäfte aus chemischer Sicht erklären und Bezüge zu pH-Wert, Löslichkeit und Stoffumwandlung herstellen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)
+- Status: pilot
+- Quellbild: `3681e688-7880-5bb4-9ab9-ef78289345c8.png`
+- Public Asset: `/assets/goal-visualizations/chemie/3681e688-7880-5bb4-9ab9-ef78289345c8/3681e688-7880-5bb4-9ab9-ef78289345c8.png`
+
+## Prompt
+
+```text
+Use case: precise-object-edit. In the referenced comic image, preserve ALL left and middle panels, pepsin/protein motifs, colours, labels and layout. Correct ONLY the emulsifiers in the RIGHT panel. For every yellow oil droplet, show blue round hydrophilic heads on the OUTSIDE in the surrounding water, and green hydrophobic tails pointing INWARD into the yellow oil. Existing green tails currently point outward; remove these outward tails and redraw each green tail extending from its blue head toward the centre of its oil droplet. Free amphiphilic molecules above the oil may remain free. Keep the large label 'Emulgieren'. Opaque PNG, same image dimensions. Do not add any extra labels, captions, stoichiometry or arrows across the other panels.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

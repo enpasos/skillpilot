@@ -1,0 +1,95 @@
+[
+  {
+    "label": "summarize",
+    "attempt": 1,
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "summarize",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+      "--write"
+    ],
+    "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+    "exitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/summarize.actual.txt"
+  },
+  {
+    "label": "synthesis-manifest",
+    "attempt": 1,
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+      "--authoring",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/ACTUAL.dual-keep-synthesis-authoring.json",
+      "--write"
+    ],
+    "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+    "exitCode": 1,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/synthesis-manifest.actual.txt"
+  },
+  {
+    "label": "summarize",
+    "attempt": 2,
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "summarize",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+      "--write"
+    ],
+    "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+    "exitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/summarize.attempt-2.actual.txt"
+  },
+  {
+    "label": "synthesis-manifest",
+    "attempt": 2,
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+      "--authoring",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/ACTUAL.dual-keep-synthesis-authoring.json",
+      "--write"
+    ],
+    "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+    "exitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/synthesis-manifest.attempt-2.actual.txt"
+  },
+  {
+    "label": "resolutions",
+    "attempt": 1,
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+      "--synthesis-manifest",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/synthesis-decisions.json",
+      "--write"
+    ],
+    "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+    "exitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/resolutions.actual.txt"
+  },
+  {
+    "label": "finalize",
+    "attempt": 1,
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "finalize",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+      "--write"
+    ],
+    "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+    "exitCode": 0,
+    "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/finalize.actual.txt"
+  }
+]

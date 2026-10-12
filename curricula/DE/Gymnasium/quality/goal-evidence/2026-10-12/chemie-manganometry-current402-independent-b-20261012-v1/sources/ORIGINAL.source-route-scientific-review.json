@@ -1,0 +1,238 @@
+{
+  "goalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+  "reviewAuthority": "ai_candidate",
+  "overallSourceVerdict": "HOLD",
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "expected": "sha256:58cda40fdc3086c5ac9cee7591b81f38a76438281dba88dd816c496ebd1c59a7",
+      "actual": "sha256:58cda40fdc3086c5ac9cee7591b81f38a76438281dba88dd816c496ebd1c59a7",
+      "matches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-source-adoption-technical-successor-20261010-v1/sources/whole-BW126-original-operative-document-contract.exact.json",
+      "expected": "sha256:47f79be2953e3a90e7b1f6811e16ec4be23d59f466403ff00b044bacd3e5398f",
+      "actual": "sha256:47f79be2953e3a90e7b1f6811e16ec4be23d59f466403ff00b044bacd3e5398f",
+      "matches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "expected": "sha256:013601c226cbe6e6022fd7d2c38011de084be96f4fbbf4ba5cf8531926cfd8ec",
+      "actual": "sha256:013601c226cbe6e6022fd7d2c38011de084be96f4fbbf4ba5cf8531926cfd8ec",
+      "matches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "expected": "sha256:d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056",
+      "actual": "sha256:d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056",
+      "matches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json",
+      "expected": "sha256:6ff643f59696332b588ec23d846c9d397b405af21e203aa938080b6289644494",
+      "actual": "sha256:6ff643f59696332b588ec23d846c9d397b405af21e203aa938080b6289644494",
+      "matches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+      "expected": "sha256:b59c73ba9bcda71630a80246a3727a1a8a2abd4a4f0b0aa9af115c74a8cdc005",
+      "actual": "sha256:b59c73ba9bcda71630a80246a3727a1a8a2abd4a4f0b0aa9af115c74a8cdc005",
+      "matches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "expected": "sha256:4a1bda407b3078e3bfb3744566f92d7da7d304eb97841bba11c93c3ccd5c96da",
+      "actual": "sha256:4a1bda407b3078e3bfb3744566f92d7da7d304eb97841bba11c93c3ccd5c96da",
+      "matches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_CHEMIE_SEKII_KC2022.source-extraction.json",
+      "expected": "sha256:2ad06989bd935933d8df3b984baff34cb9697c22fdf1db25e5461bbe3fa744bd",
+      "actual": "sha256:2ad06989bd935933d8df3b984baff34cb9697c22fdf1db25e5461bbe3fa744bd",
+      "matches": true
+    }
+  ],
+  "removedEdges": [
+    {
+      "canonicalGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "legacyGoalId": "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-019-dfffd221",
+      "matchType": "partial",
+      "reviewDecisionId": "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-019-dfffd221"
+    }
+  ],
+  "addedEdges": [],
+  "correctRemoval": {
+    "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-019-dfffd221",
+    "judgment": "PASS removal only this target",
+    "reason": "Potential dependence via the Nernst equation is not a redox-titration concentration/experimental competence."
+  },
+  "currentNormalEvidence": [
+    {
+      "id": "e8609",
+      "documentId": "d24",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.4.7 (4), S. 38.",
+      "kind": "direct",
+      "scopeMatch": "exact",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "bw-chem-sekii-3-4-7-b04-a01-f01f7432",
+      "unspecifiedDimensions": [],
+      "sourceScope": {
+        "jurisdiction": "DE-BW",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    },
+    {
+      "id": "e8610",
+      "documentId": "d1",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Chemie, C11.1.2",
+      "kind": "direct",
+      "scopeMatch": "source-context",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "f351c9a3-888f-5114-992d-5de84e3de59c",
+      "unspecifiedDimensions": [
+        "durationModel",
+        "courseProfile"
+      ],
+      "sourceScope": {
+        "jurisdiction": "DE-BY",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": []
+      }
+    },
+    {
+      "id": "e8611",
+      "documentId": "d1",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Chemie, C12-EA.3.5",
+      "kind": "direct",
+      "scopeMatch": "source-context",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "cc523009-d57b-533e-a7c6-e0c7a9299414",
+      "unspecifiedDimensions": [
+        "durationModel"
+      ],
+      "sourceScope": {
+        "jurisdiction": "DE-BY",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    },
+    {
+      "id": "e8612",
+      "documentId": "d30",
+      "sourceRef": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024, Q3.3 Redoxgleichgewichte",
+      "kind": "direct",
+      "scopeMatch": "exact",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "he-chem-sekii-q3-3-b11-a01-b9f47868",
+      "unspecifiedDimensions": [],
+      "sourceScope": {
+        "jurisdiction": "DE-HE",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    },
+    {
+      "id": "e8613",
+      "documentId": "d27",
+      "sourceRef": "Niedersachsen Kerncurriculum Chemie gymnasiale Oberstufe 2022, Elektronenübertragungsreaktionen, S. 24.",
+      "kind": "direct",
+      "scopeMatch": "exact",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-1-kompetenz-010-4d13a3b1",
+      "unspecifiedDimensions": [],
+      "sourceScope": {
+        "jurisdiction": "DE-NI",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    },
+    {
+      "id": "e8614",
+      "documentId": "d27",
+      "sourceRef": "Niedersachsen Kerncurriculum Chemie gymnasiale Oberstufe 2022, Elektronenübertragungsreaktionen, S. 25.",
+      "kind": "direct",
+      "scopeMatch": "exact",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-020-501ae6e3",
+      "unspecifiedDimensions": [],
+      "sourceScope": {
+        "jurisdiction": "DE-NI",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    }
+  ],
+  "neutralInputGap": "The old six-clause neutral list ends at removed NI 019. Actual current generated evidence e8614 is now NI 020, and the inactive current NI mapping also retains 011 and 012. These literal clauses were independently read from the actual source extraction, not inferred from evidence IDs.",
+  "perClause": [
+    {
+      "sourceGoalId": "bw-chem-sekii-3-4-7-b04-a01-f01f7432",
+      "verdict": "PASS bounded LK clause",
+      "reason": "Concrete iodate/iodine/thiosulfate method, observed-method rubric, raw readings, 1:6 balance and endpoint justify actual iodometry and its redox-titration principle. Synthetic artefacts are no actual learner experiment."
+    },
+    {
+      "sourceGoalId": "f351c9a3-888f-5114-992d-5de84e3de59c",
+      "verdict": "PASS bounded redox-titration contribution",
+      "reason": "A safety-conscious titration method supports the redox-titration contribution to the broader C11 analytical-method clause. Does not approve TLC, acid-base analysis, the whole process clause or unspecified course/duration dimensions."
+    },
+    {
+      "sourceGoalId": "cc523009-d57b-533e-a7c6-e0c7a9299414",
+      "verdict": "PASS EA/LK redox-titration clause",
+      "reason": "Fe(II) donor assay and permanganate acceptor standardization genuinely vary unknown chemical roles and determine concentrations using explicit execution and evaluation methods."
+    },
+    {
+      "sourceGoalId": "he-chem-sekii-q3-3-b11-a01-b9f47868",
+      "verdict": "PASS LK clause",
+      "reason": "Acidic permanganate/Fe(II) example explains the redox-titration principle, endpoint and 1:5 stoichiometry."
+    },
+    {
+      "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-1-kompetenz-010-4d13a3b1",
+      "verdict": "PASS eA concentration clause",
+      "reason": "Raw titration data, measured original aliquot, unit conversion, justified stoichiometry and changed unknown correctly determine concentration."
+    },
+    {
+      "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-1-kompetenz-011-1c943674",
+      "verdict": "PASS eA procedure clause",
+      "reason": "Explicit teacher-approved experimental methods and observable practical rubric support conducting redox titration as later assessment design; no already-performed human trial is claimed."
+    },
+    {
+      "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-1-kompetenz-012-899923a9",
+      "verdict": "HOLD whole occupational-significance claim",
+      "reason": "The goal and three rubrics do not ask the learner to recognize significance of volumetric analysis in professional work. A concentration assay alone does not evidence this operator/context. Titration technique is only a bounded thematic contribution."
+    },
+    {
+      "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-020-501ae6e3",
+      "verdict": "HOLD wrong current route",
+      "reason": "Literal clause calculates half-cell potentials at different concentrations (excluding pH/temperature). Neither goal nor profile/cases require a half-cell potential or Nernst calculation. This wrong route remains in both the inactive current map and the rebuilt normal source index; removing 019 alone does not resolve it."
+    }
+  ],
+  "scopeBoundary": "No whole source corpus, source382 denominator, all GK routes, or human performance is approved."
+}

@@ -1,0 +1,18 @@
+{
+  "check": "A-semantic-atomicity",
+  "argv": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "quality:semantic-atomicity:check",
+    "--",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-current217-three-fresh-independent-b-20261012-v9/A/review.config.json"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot",
+  "startedAt": "2026-10-12T12:15:33.758790+00:00",
+  "completedAt": "2026-10-12T12:15:34.283342+00:00",
+  "exitCode": 0,
+  "stdout": "\n> skillpilot@0.0.0 quality:semantic-atomicity:check\n> tsx scripts/semanticAtomicityReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-current217-three-fresh-independent-b-20261012-v9/A/review.config.json\n\n# Semantic Atomicity Review: chemie-q3-current217-three-fresh-independent-b-20261012-v9-A\nScope: Independent whole science atomicity for three goals\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 3\nCurrent reviewed atomic: 3\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+  "stderr": ""
+}

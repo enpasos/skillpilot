@@ -1,0 +1,80 @@
+{
+  "beforeMapping": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-targeted-remediation-root-preparation-20261012-v3/later-stage-source6/sources/HE.whole-clauses-AA-TLC-owner-and-MM-context.inactive.review.json",
+    "bytes": 178771,
+    "sha256": "sha256:d3ac5b78412f2d36e2de5faca0e47a48a5f419f1d80f85d80beefe807f6fea40"
+  },
+  "afterMapping": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-MM-HE-context-normative-edge-removal-author-20261012-v4/sources/HE.whole-clauses-retained-partners-MM-context-excluded.inactive.review.json",
+    "bytes": 178902,
+    "sha256": "sha256:a7985bb0e5b14259114d6212fef7cce40638e3599f85d07fc2d20409d2e23cb2"
+  },
+  "removedMappingOrdinal": 236,
+  "removedRow": {
+    "legacyGoalId": "he-chem-sekii-q3-5-b05-a01-66f2d502",
+    "canonicalGoalId": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+    "matchType": "partial",
+    "reviewDecisionId": "he-chem-sekii-q3-5-b05-a01-66f2d502"
+  },
+  "retainedB4And3ceMappings": [
+    {
+      "legacyGoalId": "he-chem-sekii-q3-5-b05-a01-66f2d502",
+      "canonicalGoalId": "3ce81f96-4fbb-5022-88b7-337a000315ed",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q3-5-b05-a01-66f2d502"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q3-5-b05-a01-66f2d502",
+      "canonicalGoalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q3-5-b05-a01-66f2d502"
+    }
+  ],
+  "retainedPartnerRowsExact": true,
+  "allOtherMappingRowsExact": true,
+  "allOtherDecisionRowsExact": true,
+  "decisionDelta": {
+    "before": {
+      "sourceGoalId": "he-chem-sekii-q3-5-b05-a01-66f2d502",
+      "topicCode": "Q3.5",
+      "sourceSpan": "Enzyme: Einfluss der Temperatur",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+        "3ce81f96-4fbb-5022-88b7-337a000315ed",
+        "b4ca3af2-77f1-59e8-955d-c4959e284242"
+      ],
+      "rationale": "Inactive bounded source correction, exact independent acceptance pending: source AA-TLC operator uses978 with original execution/standards/ninhydrin/Rf; source enzyme temperature usesb4ca3af2 as retained exact scientific partner. Legacy MM edge is context-only partial and does not create a Michaelis–Menten norm. Retained parent/partner edges do not prove complete source scope.",
+      "reviewedAt": "2026-10-12",
+      "reviewer": "Codex author; pending independent source adoption"
+    },
+    "after": {
+      "sourceGoalId": "he-chem-sekii-q3-5-b05-a01-66f2d502",
+      "topicCode": "Q3.5",
+      "sourceSpan": "Enzyme: Einfluss der Temperatur",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "3ce81f96-4fbb-5022-88b7-337a000315ed",
+        "b4ca3af2-77f1-59e8-955d-c4959e284242"
+      ],
+      "rationale": "Inactive provenance-only author successor, independent source acceptance pending: the exact official clause names enzyme temperature effects. Its operative targets retainb4ca3af2 for enzyme external factors and the existing3ce81f96 general-rate partner, with their original partial edges unchanged. The oldc245 Michaelis–Menten edge is excluded from normative mapping and decision targets because it is historical scientific context for own enrichment, not this temperature operator. Retained partner contributions do not establish a whole-source union.",
+      "reviewedAt": "2026-10-12",
+      "reviewer": "Codex informed author; provenance-only successor, exact independent source acceptance pending"
+    }
+  },
+  "sourceExtractionByteExact": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+    "bytes": 380949,
+    "sha256": "sha256:b59c73ba9bcda71630a80246a3727a1a8a2abd4a4f0b0aa9af115c74a8cdc005"
+  },
+  "all202LiteralSourceGoalsUnchanged": true,
+  "canonicalMMGoalChanged": false,
+  "MMProfileChanged": false,
+  "F7PrerequisiteChanged": false,
+  "mappingRowsBefore": 273,
+  "mappingRowsAfter": 272,
+  "decisionRowsBefore": 202,
+  "decisionRowsAfter": 202,
+  "sourceAtlasCountsNotForced": true,
+  "scientificVotes": 0
+}

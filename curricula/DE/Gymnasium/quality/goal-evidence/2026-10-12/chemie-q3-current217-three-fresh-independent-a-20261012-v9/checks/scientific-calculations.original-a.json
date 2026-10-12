@@ -1,0 +1,67 @@
+{
+  "role": "Independent A arithmetic and conservation checks, evaluated against full case tasks/model answers",
+  "chemical": {
+    "correctedStandards": [
+      0.22499999999999998,
+      0.45,
+      0.675,
+      0.9
+    ],
+    "calibrationSlope": 4500.0,
+    "originalCorrectedReadings": [
+      0.36,
+      0.361,
+      0.359
+    ],
+    "nominalProductMolL": 7.999999999999999e-05,
+    "conservativeProductUpperMolL": 8.666666666666667e-05,
+    "lowerResidualFeMolL": 0.0008933333333333333,
+    "lowerResidualSCNMolL": 0.00030533333333333335,
+    "sameSampleSignalRange": 0.0020000000000000018,
+    "independentRepeatDifference": 0.0030000000000000027,
+    "calibrantCorrectedEndDrift": 0.0010000000000000009,
+    "blankEndDrift": 0.0010000000000000009,
+    "boundDerivation": "For one species with transferable epsilon*l and 0<alpha<=1, measured calibrant slope s=epsilon*l*alpha<=epsilon*l; hence x=Aeq/(epsilon*l)<=Aeq/s. A linear calibration alone does not prove alpha=1. Signal and pipetting/slope bounds are synthetic provided assumptions, not observed confidence limits. Matrix/speciation failure removes this inference.",
+    "freshDilutionGeometricPrediction": 0.036,
+    "actualFixtureFreshDilution": 0.0045,
+    "actualOwnChemicalExperiment": false,
+    "actualLearnerPerformance": false
+  },
+  "openModelTransfer": {
+    "AwithFeed": 0,
+    "BwithRemoval": 0,
+    "AwithoutFeedInitially": -6,
+    "BwithoutFeedInitially": 0,
+    "netReactionPerSecond": 6,
+    "ratesAfterFeedRemovalNotAssumedConstant": true
+  },
+  "potentials": {
+    "DaniellV": 1.1,
+    "proposedFeMgV": -1.9300000000000002,
+    "spontaneousMgFeV": 1.9300000000000002,
+    "CuAgV": 0.46,
+    "AgVsR": 0.6000000000000001,
+    "CuVsR": 0.14,
+    "CuAgUsingRV": 0.4600000000000001,
+    "MVsSHE": 0.8,
+    "tripledReactionElectronCount": 6,
+    "tripledReactionVoltageStillV": 1.93,
+    "standardOCVOrSHEActuallyMeasured": false
+  },
+  "batteries": {
+    "firstDemandWh": 4.0,
+    "firstAlkalineShortfallWh": 1,
+    "storageTransferDemandWh": 2.0,
+    "storageAlkalineReserveWh": 1,
+    "secondDemandWh": 2,
+    "secondBReserveWh": 0.5,
+    "numericalPracticeBReserveWh": 0.10000000000000009,
+    "voltageAndConverterConditionsExplicitlyRead": true,
+    "reactionsAtomAndElectronBalancesChecked": [
+      "Zn+2MnO2+H2O -> ZnO+2MnOOH; Zn 0->II, two Mn IV->III",
+      "2Zn+O2 ->2ZnO; two Zn 0->II, O 0->-II",
+      "Zn+Ag2O -> ZnO+2Ag; Zn 0->II, two Ag I->0"
+    ],
+    "actualProductAdvice": false
+  }
+}

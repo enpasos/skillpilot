@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-12T04:06:08.150122+00:00",
+  "githubHead": "bfd6720dc7a054a9a46ac6f712aad6d9c9f317d2",
+  "regularPushCI": {
+    "runId": 38193578719,
+    "jobs": "8/8 terminal success",
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/38193578719"
+  },
+  "optionalScheduledPackageCI": {
+    "runId": 38201140091,
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/38201140091",
+    "status": "in_progress at read",
+    "failedJobs": [
+      {
+        "name": "Full subject export release gate",
+        "cause": "Standalone export selected older canonical-biology-full.config.json with missing/stale/obsolete Biology records; authoritative central Biology M7 uses current config and passed."
+      },
+      {
+        "name": "FWU-OWL and roundtrip CI",
+        "cause": "Mathematics semantic MEM/FWU reconstruction failed; log reports semantic-reconstruction-report.md."
+      }
+    ],
+    "unresolved": true,
+    "chemistryOnlyScope": true,
+    "noChangesToBiologyMathExportRuntime": true
+  },
+  "claim": "Regular push jobs are green; aggregate current head cannot be described as all-checks-pass while optional scheduled failures remain."
+}

@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-12T07:08:05.439976+00:00",
+  "checks": [
+    {
+      "lane": "D1",
+      "command": "npm --prefix app run validate:goal-description-review-campaign with exact own native batch1 round-a first_pass",
+      "exitCode": 0,
+      "actualLog": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2/technical/D1.fresh.normal-check.actual.log"
+    },
+    {
+      "lane": "D2",
+      "command": "npm --prefix app run validate:goal-description-review-campaign with exact own native batch2 round-a first_pass",
+      "exitCode": 0,
+      "actualLog": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2/technical/D2.fresh.normal-check.actual.log"
+    },
+    {
+      "lane": "A29",
+      "command": "npm --prefix app run quality:semantic-atomicity:check with ownA29config",
+      "exitCode": 0,
+      "actualLog": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2/technical/A29.fresh.normal-check.actual.log"
+    },
+    {
+      "lane": "P36",
+      "command": "normal positiveGoalEvidenceReview.ts exact copied source run from tmp capsule; own config binds frozen14b9criteria",
+      "exitCode": 0,
+      "actualLog": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2/technical/P36.fresh.outside-curricula.final.actual.log"
+    },
+    {
+      "lane": "M407",
+      "command": "normal memoryCardReview.ts exact copied source run from tmp capsule;407goals75cards9views",
+      "exitCode": 0,
+      "actualLog": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2/technical/M407.fresh.outside-curricula.final.actual.log"
+    }
+  ],
+  "scientificPReadyClaimFromSchema": false,
+  "PStatuses": {
+    "needs_human_review": 36,
+    "approved": 0
+  },
+  "firstPCriteriaMismatchRetained": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2/technical/P36.fresh.initial-criteria-mismatch.actual.log",
+  "initialPreparationMistake": "Own technical configuration selected an unbound criteria path; only own config corrected to frozen bound14b9criteria. No candidate fingerprints rewritten.",
+  "executionCapsuleOutsideCurricula": true,
+  "gatesGrantHumanApproval": false,
+  "scientificHoldsRemain": 12
+}

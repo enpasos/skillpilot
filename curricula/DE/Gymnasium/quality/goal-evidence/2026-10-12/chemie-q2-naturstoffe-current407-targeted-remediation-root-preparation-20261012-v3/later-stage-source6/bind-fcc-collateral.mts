@@ -1,0 +1,10 @@
+// SPDX-License-Identifier: Apache-2.0
+import {readFile,writeFile} from 'node:fs/promises';import {resolve,join} from 'node:path';
+import {buildGoalBookModel,writeGoalBookModel} from '../../../../../../../../app/scripts/goalBookModel';
+import {validatePositiveGoalEvidenceRecordSemantics} from '../../../../../../../../app/scripts/positiveGoalEvidenceProfileModel';
+const bp='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-naturstoffe-current407-targeted-remediation-root-preparation-20261012-v3/later-stage-source6',b=resolve(bp),read=async(p:string)=>JSON.parse(await readFile(p,'utf8'));
+const cfg=await read(join(b,'native/full407.current.actual.config.json')),path=bp+'/positive/P1.current-fcc-collateral.exact.jsonl';if(!cfg.evidenceReviewPaths.includes(path))cfg.evidenceReviewPaths.push(path);
+const land=await read(resolve(cfg.landscapePath)),qa=await read(resolve(cfg.goalVisualizationQaPath)),assets:any={};for(const x of qa.records)if(x.imageUrl&&x.assetSha256)assets[x.imageUrl]=x.assetSha256;
+const row=JSON.parse((await readFile(resolve(path),'utf8')).trim()),goal=land.goals.find((x:any)=>x.id===row.goalId),errors=validatePositiveGoalEvidenceRecordSemantics(row,goal,assets,'curricularAtomic');if(errors.length)throw Error(errors.join('\n'));
+const texts=await Promise.all(cfg.evidenceReviewPaths.map((x:string)=>readFile(resolve(x),'utf8'))),model=buildGoalBookModel({landscape:land,compositionView:await read(resolve(cfg.compositionViewPath)),semanticKindLedger:await read(resolve(cfg.semanticKindLedgerPath)),goalVisualizationQa:qa,goalVisualizationAssetDigests:assets,evidenceReviewSources:cfg.evidenceReviewPaths.map((path:string,i:number)=>({path,text:texts[i]})),config:cfg});
+await writeFile(join(b,'native/full407.current.actual.config.json'),JSON.stringify(cfg,null,2)+'\n');await writeGoalBookModel(model,resolve(cfg.outputPath));console.log(JSON.stringify({currentFccWholePExact:true,normalSemanticErrors:errors,fullPages:model.pages.length,newScientificVotes:0}));

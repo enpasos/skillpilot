@@ -1,0 +1,205 @@
+{
+  "goal": {
+    "id": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+    "title": "Michaelis–Menten-Modell als Vertiefung deuten",
+    "titleEn": "Interpret the Michaelis–Menten model as an enrichment",
+    "description": "Die lernende Person kann im einfachen Michaelis–Menten-Modell Anfangsraten bei veränderter Substratkonzentration deuten, Sättigung und Km als Substratkonzentration bei halber Grenzrate erklären und die Gültigkeit der eigenen quantitativen Vertiefung auf konstante Untersuchungsbedingungen begrenzen.",
+    "descriptionEn": "The learner can interpret initial rates at changing substrate concentrations in the simple Michaelis–Menten model, explain saturation and Km as the substrate concentration at half the limiting rate, and limit this own quantitative enrichment to constant investigation conditions.",
+    "weight": 1.1,
+    "tags": [
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "f7f35d71-927a-511c-a49e-65a66794a9bc"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_REAKTION"
+      ],
+      "phase": "Q2",
+      "area": "Naturstoffe",
+      "topicCode": "CANONICAL.CHEMISTRY.Q2.ENZYME_KINETICS_ENRICHMENT"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE",
+        "DE-NI"
+      ]
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+        "title": "Visualisierung: Enzymkinetik vertiefen",
+        "url": "/assets/goal-visualizations/chemie/c245d5fd-ce46-5b45-ab2e-e610547b5f7c/c245d5fd-ce46-5b45-ab2e-e610547b5f7c.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Enzymkinetik vertiefen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Enzymkinetik vertiefen\". Die lernende Person kann einfache Michaelis-Menten-Zusammenhänge deuten.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ],
+    "core": false,
+    "sourceRef": "SkillPilot: eigene quantitative Vertiefung des Enzymmodells; wissenschaftliche Referenz IUBMB/IUPAC, keine normative Michaelis–Menten-Lehrplanklausel."
+  },
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "mm-saturation-data",
+        "essentialUnderstandingDe": "Modellparameter werden mit Einheiten, Sättigung und begrenzter Deutung verknüpft.",
+        "essentialUnderstandingEn": "Model parameters are linked to units, saturation and bounded interpretation.",
+        "observablePerformanceDe": "v0=20; 50; 80 µmol L−1 min−1. Der Konzentrationsquotient ist dimensionslos; Km hat dieselbe Einheit wie [S]. Bei [S]=Km ergibt sich die halbe Grenzrate; hohe [S] nähert v0 der Grenzrate an, erreicht sie bei endlichem [S] im Modell nicht exakt. Sättigung ist die begrenzte katalytische Kapazität des einfachen Modells, nicht unbegrenztes Wachstum der Rate. Anfangsrate beschreibt Konzentrationsänderung pro Zeit, keine gesamte Produktmenge. Km ist hier der Modellparameter für halbe Grenzrate; ohne weitere mechanistische Bedingungen folgt keine Gleichsetzung mit Affinität oder Dissoziationskonstante.",
+        "observablePerformanceEn": "v0=20, 50 and 80 µmol L−1 min−1. The concentration ratio is dimensionless; Km has the same unit as [S]. At [S]=Km the rate is half the limiting rate; high [S] approaches the limit but does not reach it exactly at finite [S] in this model. Saturation represents bounded catalytic capacity of the simple model, not unlimited rate growth. Initial rate is concentration change per time, not total product amount. Km is the model parameter for half-limiting rate; affinity or dissociation-constant identity requires further mechanistic conditions."
+      },
+      {
+        "id": "mm-enzyme-amount-transfer",
+        "essentialUnderstandingDe": "Neue aktive Enzymmenge und ein verändertes Messzeitfenster prüfen Modelltransfer und Schlussgrenze.",
+        "essentialUnderstandingEn": "Changed active enzyme amount and time window assess model transfer and inference limits.",
+        "observablePerformanceDe": "Vmax verdoppelt sich auf 200 µmol L−1 min−1, Km bleibt 2,0 mmol L−1; bei [S]=2,0 ergibt v0=100=Vmax/2. Im einfachen Modell skalieren alle Anfangsraten mit aktiver Enzymmenge, sofern übrige Bedingungen gleich sind. Eine spätere Zeitkurve hat veränderliche [S] und gegebenenfalls Produkt/Enzymaktivität; sie ist nicht die gemessene Anfangsratenreihe bei konstant vorgegebenen Startkonzentrationen. Starke Inaktivierung, kooperative Kinetik oder ein nicht festgehaltener zweiter Substratpartner können diesen einfachen Ein-Substrat-Ansatz verlassen. Kein Schluss, jede Rate müsse stets exakt doppelt sein.",
+        "observablePerformanceEn": "Vmax doubles to 200 µmol L−1 min−1 while Km stays 2.0 mmol L−1; at [S]=2.0, v0=100=Vmax/2. In the simple model all initial rates scale with active enzyme amount if other conditions stay fixed. A later time course changes [S] and potentially product/enzyme activity, so it is not the initial-rate series with fixed starting concentrations. Strong inactivation, cooperative kinetics or an unfixed second substrate can leave this simple one-substrate setting. It does not imply that every observed rate always doubles exactly."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "mm-saturation-data",
+        "mm-enzyme-amount-transfer"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "actual-operator-transfer",
+        "textDe": "Die vollständig ausgearbeiteten Fälle wechseln die konkret genannten Struktur-, Phasen-, Proben-, Mess- oder Modellbedingungen. Methodenspezifische Quellenpflichten sind keine beliebigen Alternativen. Durchführungsaufgaben erfordern reale Eigenarbeit; synthetische Muster erfüllen sie nicht.",
+        "textEn": "Complete worked cases vary the specified structure, phase, sample, measurement or model conditions. Source-specific method duties are not interchangeable alternatives. Execution requires actual own work; synthetic fixtures do not satisfy it."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "mm-saturation-data",
+        "taskDemandDe": "Eigene quantitative Vertiefung: Für v0=Vmax[S]/(Km+[S]) gelten Vmax=100 µmol L−1 min−1 und Km=2,0 mmol L−1 bei gleicher aktiver Enzymmenge, pH und Temperatur. Berechne und erkläre Anfangsraten bei [S]=0,5; 2,0; 8,0 mmol L−1. Erkläre Sättigung und weshalb Km weder Produktmenge noch allgemein ein Bindungsgleichgewicht ist.",
+        "taskDemandEn": "Own quantitative enrichment: For v0=Vmax[S]/(Km+[S]), Vmax=100 µmol L−1 min−1 and Km=2.0 mmol L−1 at fixed active enzyme amount, pH and temperature. Compute and explain initial rates at [S]=0.5, 2.0 and 8.0 mmol L−1. Explain saturation and why Km is neither product amount nor generally a binding equilibrium constant.",
+        "expectedPerformanceDe": "v0=20; 50; 80 µmol L−1 min−1. Der Konzentrationsquotient ist dimensionslos; Km hat dieselbe Einheit wie [S]. Bei [S]=Km ergibt sich die halbe Grenzrate; hohe [S] nähert v0 der Grenzrate an, erreicht sie bei endlichem [S] im Modell nicht exakt. Sättigung ist die begrenzte katalytische Kapazität des einfachen Modells, nicht unbegrenztes Wachstum der Rate. Anfangsrate beschreibt Konzentrationsänderung pro Zeit, keine gesamte Produktmenge. Km ist hier der Modellparameter für halbe Grenzrate; ohne weitere mechanistische Bedingungen folgt keine Gleichsetzung mit Affinität oder Dissoziationskonstante.",
+        "expectedPerformanceEn": "v0=20, 50 and 80 µmol L−1 min−1. The concentration ratio is dimensionless; Km has the same unit as [S]. At [S]=Km the rate is half the limiting rate; high [S] approaches the limit but does not reach it exactly at finite [S] in this model. Saturation represents bounded catalytic capacity of the simple model, not unlimited rate growth. Initial rate is concentration change per time, not total product amount. Km is the model parameter for half-limiting rate; affinity or dissociation-constant identity requires further mechanistic conditions.",
+        "understandingFocusDe": "Modellparameter werden mit Einheiten, Sättigung und begrenzter Deutung verknüpft.",
+        "understandingFocusEn": "Model parameters are linked to units, saturation and bounded interpretation."
+      },
+      {
+        "id": "mm-enzyme-amount-transfer",
+        "taskDemandDe": "Bei gleichbleibender Temperatur und gleichem pH wird allein die aktive Enzymmenge verdoppelt. Eine neue synthetische Reihe bei [S]=0,5; 2,0; 8,0 mmol L−1 hat Anfangsraten 40; 100; 160 µmol L−1 min−1. Leite das veränderte Vmax und das unveränderte Km aus dem einfachen Modell ab. Beurteile, ob eine später fallende Rate im selben Ansatz wegen Substratverbrauch ebenso mit diesen Anfangsdaten erklärt werden kann, und nenne eine weitere Modellgrenze.",
+        "taskDemandEn": "At fixed temperature and pH, only active enzyme amount is doubled. A new synthetic series at [S]=0.5, 2.0 and 8.0 mmol L−1 has initial rates 40, 100 and 160 µmol L−1 min−1. Derive changed Vmax and unchanged Km in the simple model. Assess whether a later declining rate in the same assay due to substrate depletion can be interpreted as these initial data, and state another model limitation.",
+        "expectedPerformanceDe": "Vmax verdoppelt sich auf 200 µmol L−1 min−1, Km bleibt 2,0 mmol L−1; bei [S]=2,0 ergibt v0=100=Vmax/2. Im einfachen Modell skalieren alle Anfangsraten mit aktiver Enzymmenge, sofern übrige Bedingungen gleich sind. Eine spätere Zeitkurve hat veränderliche [S] und gegebenenfalls Produkt/Enzymaktivität; sie ist nicht die gemessene Anfangsratenreihe bei konstant vorgegebenen Startkonzentrationen. Starke Inaktivierung, kooperative Kinetik oder ein nicht festgehaltener zweiter Substratpartner können diesen einfachen Ein-Substrat-Ansatz verlassen. Kein Schluss, jede Rate müsse stets exakt doppelt sein.",
+        "expectedPerformanceEn": "Vmax doubles to 200 µmol L−1 min−1 while Km stays 2.0 mmol L−1; at [S]=2.0, v0=100=Vmax/2. In the simple model all initial rates scale with active enzyme amount if other conditions stay fixed. A later time course changes [S] and potentially product/enzyme activity, so it is not the initial-rate series with fixed starting concentrations. Strong inactivation, cooperative kinetics or an unfixed second substrate can leave this simple one-substrate setting. It does not imply that every observed rate always doubles exactly.",
+        "understandingFocusDe": "Neue aktive Enzymmenge und ein verändertes Messzeitfenster prüfen Modelltransfer und Schlussgrenze.",
+        "understandingFocusEn": "Changed active enzyme amount and time window assess model transfer and inference limits."
+      }
+    ]
+  },
+  "wholeCaseAndRubrics": [
+    {
+      "goalId": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+      "case": {
+        "id": "mm-saturation-data",
+        "taskDemandDe": "Eigene quantitative Vertiefung: Für v0=Vmax[S]/(Km+[S]) gelten Vmax=100 µmol L−1 min−1 und Km=2,0 mmol L−1 bei gleicher aktiver Enzymmenge, pH und Temperatur. Berechne und erkläre Anfangsraten bei [S]=0,5; 2,0; 8,0 mmol L−1. Erkläre Sättigung und weshalb Km weder Produktmenge noch allgemein ein Bindungsgleichgewicht ist.",
+        "taskDemandEn": "Own quantitative enrichment: For v0=Vmax[S]/(Km+[S]), Vmax=100 µmol L−1 min−1 and Km=2.0 mmol L−1 at fixed active enzyme amount, pH and temperature. Compute and explain initial rates at [S]=0.5, 2.0 and 8.0 mmol L−1. Explain saturation and why Km is neither product amount nor generally a binding equilibrium constant.",
+        "expectedPerformanceDe": "v0=20; 50; 80 µmol L−1 min−1. Der Konzentrationsquotient ist dimensionslos; Km hat dieselbe Einheit wie [S]. Bei [S]=Km ergibt sich die halbe Grenzrate; hohe [S] nähert v0 der Grenzrate an, erreicht sie bei endlichem [S] im Modell nicht exakt. Sättigung ist die begrenzte katalytische Kapazität des einfachen Modells, nicht unbegrenztes Wachstum der Rate. Anfangsrate beschreibt Konzentrationsänderung pro Zeit, keine gesamte Produktmenge. Km ist hier der Modellparameter für halbe Grenzrate; ohne weitere mechanistische Bedingungen folgt keine Gleichsetzung mit Affinität oder Dissoziationskonstante.",
+        "expectedPerformanceEn": "v0=20, 50 and 80 µmol L−1 min−1. The concentration ratio is dimensionless; Km has the same unit as [S]. At [S]=Km the rate is half the limiting rate; high [S] approaches the limit but does not reach it exactly at finite [S] in this model. Saturation represents bounded catalytic capacity of the simple model, not unlimited rate growth. Initial rate is concentration change per time, not total product amount. Km is the model parameter for half-limiting rate; affinity or dissociation-constant identity requires further mechanistic conditions.",
+        "understandingFocusDe": "Modellparameter werden mit Einheiten, Sättigung und begrenzter Deutung verknüpft.",
+        "understandingFocusEn": "Model parameters are linked to units, saturation and bounded interpretation."
+      },
+      "rubric": {
+        "maximumPoints": 5,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Drei Raten mit Einheiten richtig.",
+            "aspectEn": "Three rates with correct units."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Halbgrenzrate und asymptotische Sättigung erklärt.",
+            "aspectEn": "Explains half-limiting rate and asymptotic saturation."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Km/Rate/Produktmenge und Affinitätsgrenze getrennt.",
+            "aspectEn": "Distinguishes Km/rate/product amount and affinity limitation."
+          }
+        ],
+        "fullCreditEvidenceDe": "v0=20; 50; 80 µmol L−1 min−1. Der Konzentrationsquotient ist dimensionslos; Km hat dieselbe Einheit wie [S]. Bei [S]=Km ergibt sich die halbe Grenzrate; hohe [S] nähert v0 der Grenzrate an, erreicht sie bei endlichem [S] im Modell nicht exakt. Sättigung ist die begrenzte katalytische Kapazität des einfachen Modells, nicht unbegrenztes Wachstum der Rate. Anfangsrate beschreibt Konzentrationsänderung pro Zeit, keine gesamte Produktmenge. Km ist hier der Modellparameter für halbe Grenzrate; ohne weitere mechanistische Bedingungen folgt keine Gleichsetzung mit Affinität oder Dissoziationskonstante.",
+        "fullCreditEvidenceEn": "v0=20, 50 and 80 µmol L−1 min−1. The concentration ratio is dimensionless; Km has the same unit as [S]. At [S]=Km the rate is half the limiting rate; high [S] approaches the limit but does not reach it exactly at finite [S] in this model. Saturation represents bounded catalytic capacity of the simple model, not unlimited rate growth. Initial rate is concentration change per time, not total product amount. Km is the model parameter for half-limiting rate; affinity or dissociation-constant identity requires further mechanistic conditions.",
+        "misconceptionChecks": []
+      },
+      "exactCurrentCaseBrief": {
+        "id": "mm-saturation-data",
+        "taskDemandDe": "Eigene quantitative Vertiefung: Für v0=Vmax[S]/(Km+[S]) gelten Vmax=100 µmol L−1 min−1 und Km=2,0 mmol L−1 bei gleicher aktiver Enzymmenge, pH und Temperatur. Berechne und erkläre Anfangsraten bei [S]=0,5; 2,0; 8,0 mmol L−1. Erkläre Sättigung und weshalb Km weder Produktmenge noch allgemein ein Bindungsgleichgewicht ist.",
+        "taskDemandEn": "Own quantitative enrichment: For v0=Vmax[S]/(Km+[S]), Vmax=100 µmol L−1 min−1 and Km=2.0 mmol L−1 at fixed active enzyme amount, pH and temperature. Compute and explain initial rates at [S]=0.5, 2.0 and 8.0 mmol L−1. Explain saturation and why Km is neither product amount nor generally a binding equilibrium constant.",
+        "expectedPerformanceDe": "v0=20; 50; 80 µmol L−1 min−1. Der Konzentrationsquotient ist dimensionslos; Km hat dieselbe Einheit wie [S]. Bei [S]=Km ergibt sich die halbe Grenzrate; hohe [S] nähert v0 der Grenzrate an, erreicht sie bei endlichem [S] im Modell nicht exakt. Sättigung ist die begrenzte katalytische Kapazität des einfachen Modells, nicht unbegrenztes Wachstum der Rate. Anfangsrate beschreibt Konzentrationsänderung pro Zeit, keine gesamte Produktmenge. Km ist hier der Modellparameter für halbe Grenzrate; ohne weitere mechanistische Bedingungen folgt keine Gleichsetzung mit Affinität oder Dissoziationskonstante.",
+        "expectedPerformanceEn": "v0=20, 50 and 80 µmol L−1 min−1. The concentration ratio is dimensionless; Km has the same unit as [S]. At [S]=Km the rate is half the limiting rate; high [S] approaches the limit but does not reach it exactly at finite [S] in this model. Saturation represents bounded catalytic capacity of the simple model, not unlimited rate growth. Initial rate is concentration change per time, not total product amount. Km is the model parameter for half-limiting rate; affinity or dissociation-constant identity requires further mechanistic conditions.",
+        "understandingFocusDe": "Modellparameter werden mit Einheiten, Sättigung und begrenzter Deutung verknüpft.",
+        "understandingFocusEn": "Model parameters are linked to units, saturation and bounded interpretation."
+      },
+      "technicalTextFieldDifferences": []
+    },
+    {
+      "goalId": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+      "case": {
+        "id": "mm-enzyme-amount-transfer",
+        "taskDemandDe": "Bei gleichbleibender Temperatur und gleichem pH wird allein die aktive Enzymmenge verdoppelt. Eine neue synthetische Reihe bei [S]=0,5; 2,0; 8,0 mmol L−1 hat Anfangsraten 40; 100; 160 µmol L−1 min−1. Leite das veränderte Vmax und das unveränderte Km aus dem einfachen Modell ab. Beurteile, ob eine später fallende Rate im selben Ansatz wegen Substratverbrauch ebenso mit diesen Anfangsdaten erklärt werden kann, und nenne eine weitere Modellgrenze.",
+        "taskDemandEn": "At fixed temperature and pH, only active enzyme amount is doubled. A new synthetic series at [S]=0.5, 2.0 and 8.0 mmol L−1 has initial rates 40, 100 and 160 µmol L−1 min−1. Derive changed Vmax and unchanged Km in the simple model. Assess whether a later declining rate in the same assay due to substrate depletion can be interpreted as these initial data, and state another model limitation.",
+        "expectedPerformanceDe": "Vmax verdoppelt sich auf 200 µmol L−1 min−1, Km bleibt 2,0 mmol L−1; bei [S]=2,0 ergibt v0=100=Vmax/2. Im einfachen Modell skalieren alle Anfangsraten mit aktiver Enzymmenge, sofern übrige Bedingungen gleich sind. Eine spätere Zeitkurve hat veränderliche [S] und gegebenenfalls Produkt/Enzymaktivität; sie ist nicht die gemessene Anfangsratenreihe bei konstant vorgegebenen Startkonzentrationen. Starke Inaktivierung, kooperative Kinetik oder ein nicht festgehaltener zweiter Substratpartner können diesen einfachen Ein-Substrat-Ansatz verlassen. Kein Schluss, jede Rate müsse stets exakt doppelt sein.",
+        "expectedPerformanceEn": "Vmax doubles to 200 µmol L−1 min−1 while Km stays 2.0 mmol L−1; at [S]=2.0, v0=100=Vmax/2. In the simple model all initial rates scale with active enzyme amount if other conditions stay fixed. A later time course changes [S] and potentially product/enzyme activity, so it is not the initial-rate series with fixed starting concentrations. Strong inactivation, cooperative kinetics or an unfixed second substrate can leave this simple one-substrate setting. It does not imply that every observed rate always doubles exactly.",
+        "understandingFocusDe": "Neue aktive Enzymmenge und ein verändertes Messzeitfenster prüfen Modelltransfer und Schlussgrenze.",
+        "understandingFocusEn": "Changed active enzyme amount and time window assess model transfer and inference limits."
+      },
+      "rubric": {
+        "maximumPoints": 5,
+        "criteria": [
+          {
+            "points": 2,
+            "aspectDe": "Vmax=200, Km=2,0 aus Reihe und Halbgrenzrate begründet.",
+            "aspectEn": "Justifies Vmax=200 and Km=2.0 from series and half limit."
+          },
+          {
+            "points": 1,
+            "aspectDe": "Verdopplung nur bei gleichen weiteren Bedingungen.",
+            "aspectEn": "Doubling is conditional on fixed other conditions."
+          },
+          {
+            "points": 2,
+            "aspectDe": "Anfangsreihe von Zeitkurve unterschieden und echte Modellgrenze erklärt.",
+            "aspectEn": "Distinguishes initial-rate series from time course and explains a real model limit."
+          }
+        ],
+        "fullCreditEvidenceDe": "Vmax verdoppelt sich auf 200 µmol L−1 min−1, Km bleibt 2,0 mmol L−1; bei [S]=2,0 ergibt v0=100=Vmax/2. Im einfachen Modell skalieren alle Anfangsraten mit aktiver Enzymmenge, sofern übrige Bedingungen gleich sind. Eine spätere Zeitkurve hat veränderliche [S] und gegebenenfalls Produkt/Enzymaktivität; sie ist nicht die gemessene Anfangsratenreihe bei konstant vorgegebenen Startkonzentrationen. Starke Inaktivierung, kooperative Kinetik oder ein nicht festgehaltener zweiter Substratpartner können diesen einfachen Ein-Substrat-Ansatz verlassen. Kein Schluss, jede Rate müsse stets exakt doppelt sein.",
+        "fullCreditEvidenceEn": "Vmax doubles to 200 µmol L−1 min−1 while Km stays 2.0 mmol L−1; at [S]=2.0, v0=100=Vmax/2. In the simple model all initial rates scale with active enzyme amount if other conditions stay fixed. A later time course changes [S] and potentially product/enzyme activity, so it is not the initial-rate series with fixed starting concentrations. Strong inactivation, cooperative kinetics or an unfixed second substrate can leave this simple one-substrate setting. It does not imply that every observed rate always doubles exactly.",
+        "misconceptionChecks": []
+      },
+      "exactCurrentCaseBrief": {
+        "id": "mm-enzyme-amount-transfer",
+        "taskDemandDe": "Bei gleichbleibender Temperatur und gleichem pH wird allein die aktive Enzymmenge verdoppelt. Eine neue synthetische Reihe bei [S]=0,5; 2,0; 8,0 mmol L−1 hat Anfangsraten 40; 100; 160 µmol L−1 min−1. Leite das veränderte Vmax und das unveränderte Km aus dem einfachen Modell ab. Beurteile, ob eine später fallende Rate im selben Ansatz wegen Substratverbrauch ebenso mit diesen Anfangsdaten erklärt werden kann, und nenne eine weitere Modellgrenze.",
+        "taskDemandEn": "At fixed temperature and pH, only active enzyme amount is doubled. A new synthetic series at [S]=0.5, 2.0 and 8.0 mmol L−1 has initial rates 40, 100 and 160 µmol L−1 min−1. Derive changed Vmax and unchanged Km in the simple model. Assess whether a later declining rate in the same assay due to substrate depletion can be interpreted as these initial data, and state another model limitation.",
+        "expectedPerformanceDe": "Vmax verdoppelt sich auf 200 µmol L−1 min−1, Km bleibt 2,0 mmol L−1; bei [S]=2,0 ergibt v0=100=Vmax/2. Im einfachen Modell skalieren alle Anfangsraten mit aktiver Enzymmenge, sofern übrige Bedingungen gleich sind. Eine spätere Zeitkurve hat veränderliche [S] und gegebenenfalls Produkt/Enzymaktivität; sie ist nicht die gemessene Anfangsratenreihe bei konstant vorgegebenen Startkonzentrationen. Starke Inaktivierung, kooperative Kinetik oder ein nicht festgehaltener zweiter Substratpartner können diesen einfachen Ein-Substrat-Ansatz verlassen. Kein Schluss, jede Rate müsse stets exakt doppelt sein.",
+        "expectedPerformanceEn": "Vmax doubles to 200 µmol L−1 min−1 while Km stays 2.0 mmol L−1; at [S]=2.0, v0=100=Vmax/2. In the simple model all initial rates scale with active enzyme amount if other conditions stay fixed. A later time course changes [S] and potentially product/enzyme activity, so it is not the initial-rate series with fixed starting concentrations. Strong inactivation, cooperative kinetics or an unfixed second substrate can leave this simple one-substrate setting. It does not imply that every observed rate always doubles exactly.",
+        "understandingFocusDe": "Neue aktive Enzymmenge und ein verändertes Messzeitfenster prüfen Modelltransfer und Schlussgrenze.",
+        "understandingFocusEn": "Changed active enzyme amount and time window assess model transfer and inference limits."
+      },
+      "technicalTextFieldDifferences": []
+    }
+  ]
+}

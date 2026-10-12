@@ -1,0 +1,234 @@
+{
+  "actualImportedResults": [
+    {
+      "role": "first",
+      "sealPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-a-20261012-v1/FINAL.independent-current-DPV.freeze.json",
+      "sealSha256": "sha256:1e3580f39ce947b952e3fcd38697dbe186e7bac93cd4ca8fd56ee2dcd32279de",
+      "recordsSourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-a-20261012-v1/native-D1/biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-a.batch-001.records.jsonl",
+      "recordsSourceSha256": "sha256:3c47fae36e9c53fd7d53437780c9e08488b5ddfa0455dc0fc4745d307d705847",
+      "recordsImportedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/round-a/results/biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-a.batch-001.records.jsonl",
+      "runSourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-a-20261012-v1/native-D1/biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-a.batch-001.run.json",
+      "runSourceSha256": "sha256:cc513ea9b21b02aa8311fff0259d78660d3e5d925deadc0edbd5efe69d85ce9c",
+      "runImportedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/round-a/results/biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-a.batch-001.run.json",
+      "campaignInputSha256": "sha256:4e587366f0b3e2fb93461ccc1f5a40809c6692a21f01d6ba60e63895230fb2d2",
+      "runId": "biologie-0beb-underside-genuine-fresh-a-current-native-20261012-v1",
+      "actualDecision": "keep",
+      "recordAndRunBytesRewritten": false
+    },
+    {
+      "role": "second",
+      "sealPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/FINAL.own-independent-B.freeze.json",
+      "sealSha256": "sha256:ea4099dca4a8cd287905713083ad1cefeda58966e64304ede160fc57dc843b41",
+      "recordsSourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/description/description-records.jsonl",
+      "recordsSourceSha256": "sha256:84bdb0bfb042be42b11b902eda5d0a8caed9a695673b3bcaf0fcf3462977ffc6",
+      "recordsImportedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/round-b/results/biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-b.batch-001.records.jsonl",
+      "runSourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-fresh-independent-b-20261012-v1/description/run-manifest.json",
+      "runSourceSha256": "sha256:1b4f8e1e2bac6b30b83ab4d3d59b6ce99e85fa2089be02211c49102a2f711c46",
+      "runImportedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/round-b/results/biologie-0beb-underside-current397-native-first-20261012-v1-first-pass-b.batch-001.run.json",
+      "campaignInputSha256": "sha256:4e587366f0b3e2fb93461ccc1f5a40809c6692a21f01d6ba60e63895230fb2d2",
+      "runId": "biologie-0beb-underside-fresh-current-first-pass-b-20261012-v1",
+      "actualDecision": "keep",
+      "recordAndRunBytesRewritten": false
+    }
+  ],
+  "normalCommands": [
+    {
+      "label": "summarize",
+      "attempt": 1,
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+        "--write"
+      ],
+      "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+      "exitCode": 0,
+      "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/summarize.actual.txt"
+    },
+    {
+      "label": "synthesis-manifest",
+      "attempt": 1,
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/ACTUAL.dual-keep-synthesis-authoring.json",
+        "--write"
+      ],
+      "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+      "exitCode": 1,
+      "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/synthesis-manifest.actual.txt"
+    },
+    {
+      "label": "summarize",
+      "attempt": 2,
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+        "--write"
+      ],
+      "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+      "exitCode": 0,
+      "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/summarize.attempt-2.actual.txt"
+    },
+    {
+      "label": "synthesis-manifest",
+      "attempt": 2,
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/ACTUAL.dual-keep-synthesis-authoring.json",
+        "--write"
+      ],
+      "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+      "exitCode": 0,
+      "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/synthesis-manifest.attempt-2.actual.txt"
+    },
+    {
+      "label": "resolutions",
+      "attempt": 1,
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/synthesis-decisions.json",
+        "--write"
+      ],
+      "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+      "exitCode": 0,
+      "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/resolutions.actual.txt"
+    },
+    {
+      "label": "finalize",
+      "attempt": 1,
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/configs/D1.relocated.batch.config.json",
+        "--write"
+      ],
+      "workingDirectory": "tmp/biologie-0beb-underside-normal-preparation-20261012-v1",
+      "exitCode": 0,
+      "outputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/prepared-plan/checks/finalize.actual.txt"
+    }
+  ],
+  "exactNormalCodeCopies": [
+    {
+      "path": "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+      "sha256": "sha256:02b70b61d59542869626caedfa875c4b291c6c9c741d570a982ac82c3b0e99cc"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionRolloutSynthesisDecisionManifest.ts",
+      "sha256": "sha256:8c5d600dc4453068bc50cc23fd4b6e635a227e7c4fa39294440af9feb5e23079"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "sha256": "sha256:4b83f4c6c924527a989e6321a9427a6525a4565f312caf4e4c82699ea7b01136"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewDualRound.ts",
+      "sha256": "sha256:e3558c12a93cc680fb6898b36bb6a2de0ff44ed5bdca98f9f512955602b6b670"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "sha256": "sha256:36f2ac8ab823cd70f4402deb5f4c96d2399f719f90dfa4a95916467b52962df8"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "sha256": "sha256:3a99d98a69c60c8e24cfcf40d5f6fe27748715651933176d5f7e6c667b7e1bf9"
+    },
+    {
+      "path": "app/scripts/validateGoalEvidenceFindings.ts",
+      "sha256": "sha256:7f462a6e9ef47ce1525c8f6b37069d0592d58a66f01b39f005c7f89ed83b8281"
+    },
+    {
+      "path": "app/scripts/exportGoalBookReviewBundle.ts",
+      "sha256": "sha256:b3243f6eb2a9345d68a57fd6a2f01b9469b8c4afa87e24ff79467a78a395130d"
+    },
+    {
+      "path": "app/scripts/goalBookRenderer.ts",
+      "sha256": "sha256:0ec6fc34f250e90c719db3941d01f46de143f434bc25e22d963f7cc37d792b49"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb"
+    },
+    {
+      "path": "app/scripts/goalBookEvidenceReviewLoader.ts",
+      "sha256": "sha256:7f17153e995d3d08454aa2df24241efe6226e8fb2aafbd8535a5e51987bebe66"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "sha256:50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    },
+    {
+      "path": "app/src/landscapeTypes.ts",
+      "sha256": "sha256:448f9107929ccf9ebac985faed0a12bcb109fb4e6cded8752da7d26c223aa838"
+    },
+    {
+      "path": "app/src/utils/goalVisualizationQaStatus.ts",
+      "sha256": "sha256:35ddf582c806a08a4ea46b0b6fbdfbbeb52b62db1268dbabce3ce66e081557ef"
+    },
+    {
+      "path": "app/src/utils/goalBookChapterProjection.ts",
+      "sha256": "sha256:ee5cef873b9002938d6a4fabb276826a8fac284d28e70c956d065e25a5cb2fdd"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "sha256:d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    },
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "sha256:3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43"
+    },
+    {
+      "path": "app/scripts/goalDescriptionRolloutResolutionSynthesis.ts",
+      "sha256": "sha256:1aea58a9bb8281c6de2de7b1e4e43a480e2e5eb98bbbebedfb9628a24e832ede"
+    },
+    {
+      "path": "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "sha256": "sha256:eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf"
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "sha256": "sha256:b27d00c76f7e0f9dd99169fa26997ad6c9b333a20d30b928512c762cf10bb29d"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceReview.ts",
+      "sha256": "sha256:179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6"
+    },
+    {
+      "path": "app/scripts/createGoalDescriptionReviewCampaign.ts",
+      "sha256": "sha256:6cbd05f5f9a7e804f1d507a7a467e8be46e647490f78196ec39de3665571728c"
+    },
+    {
+      "path": "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "sha256": "sha256:85f7cd520d172e4619bfbc3224a64358b30fbb5a524c9a8bef500fe6cc2f5404"
+    }
+  ],
+  "resolutionIndexPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/biologie-0beb-stomata-underside-active-adoption-root-20261012-v1/native-D1/resolution-index.json",
+  "resolutionIndexSha256": "sha256:2558c34653c6ce43d2150c92a322c8e5f923026119d8bbd22c7768e4c38fa47b",
+  "normalResolvedGoalCount": 1,
+  "newScientificVotesByThisIntegrator": 0,
+  "peerRecordRunBytesPreserved": true,
+  "technical96SealUnchanged": true,
+  "activeOrGitWrites": false
+}

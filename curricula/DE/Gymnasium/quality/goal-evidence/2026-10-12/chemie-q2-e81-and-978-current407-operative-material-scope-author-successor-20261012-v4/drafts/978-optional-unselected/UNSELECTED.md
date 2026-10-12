@@ -1,0 +1,1 @@
+Optional informed-author 978 clarification drafted before root narrowed integration. Unbound, unselected, no review required for the accepted original978. Nothing in this directory is an operative integration input. Original978 P and cases remain unchanged in the sealed baseline.

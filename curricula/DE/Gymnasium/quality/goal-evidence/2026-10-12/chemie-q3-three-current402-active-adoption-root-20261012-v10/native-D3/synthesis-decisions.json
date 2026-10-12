@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-q3-three-current402-actual-paired-first-pass-synthesis-20261012-v10",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical integrator, exact sealed independently authored first-pass A/B results",
+  "synthesizedAt": "2026-10-12T12:14:55.892Z",
+  "batch": {
+    "batchId": "chemie-q3-three-current217-preserving-root-20261012-v9",
+    "batchManifestDigest": "sha256:829813ccb305014644f210d839b100ee5481f794c3f737d6929d16348aac1d6c",
+    "configDigest": "sha256:f16f44cf5edb04054b033878eb76e6be49f6994879c4e9a23dcdb9421c00a4ec",
+    "bundleFingerprint": "sha256:4cd9d45382a71ef72fbf7b7ac048401a0acc8f303b7ca31c795fe5d848c130d2",
+    "bookDigest": "sha256:c805e837eadc9ae7d6622be43e1c4245ed630917a33381f4e1260e34b7362ae3",
+    "reviewInputFingerprint": "sha256:005eb8f41ed0429eed7422688b40198e80b50dc70141b85f98426ca69ae2a4e4",
+    "dualSummaryDigest": "sha256:7df87d770878c86d447c8259254280971badb64e0d24217ea33321e26bcc9e5e",
+    "canonicalLandscapeDigest": "sha256:0b0aac89c0fa35121fa163d1a02fc402af4e489ca43176e6942bae3f835b7bcc"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q3-three-current217-preserving-root-20261012-v9-a",
+      "campaignDigest": "sha256:062b10802d2df3d2de886d73d71cea1aab8598711ab62882cc52642d2f2c3154",
+      "roundId": "chemie-q3-three-current217-preserving-root-20261012-v9-first-pass-a",
+      "independenceGroupId": "chemie-q3-three-current217-preserving-root-20261012-v9-independent-a",
+      "reviewInputFingerprint": "sha256:005eb8f41ed0429eed7422688b40198e80b50dc70141b85f98426ca69ae2a4e4",
+      "batchId": "chemie-q3-three-current217-preserving-root-20261012-v9-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:17cc6716e5f86a082ba7b4ef03fdb70957690cc25d71cf5c7739961e1f933213",
+      "runId": "chemie-q3-current217-three-independent-a-original-20261012-v9",
+      "runManifestDigest": "sha256:373cf8b8016a6914c9d8ade2aea777cff1b5eca4166d7852201682e1462a7f0e",
+      "resultsDigest": "sha256:0d162a5d5ec5fd4cc6a4fb4768329304649900ec46a853a0d3e159c20a2cee61"
+    },
+    "second": {
+      "campaignId": "chemie-q3-three-current217-preserving-root-20261012-v9-b",
+      "campaignDigest": "sha256:a64891bdd0d96107a0f90657ecb5a88bd4da8547d0aa284f53c897aad33052f8",
+      "roundId": "chemie-q3-three-current217-preserving-root-20261012-v9-first-pass-b",
+      "independenceGroupId": "chemie-q3-three-current217-preserving-root-20261012-v9-independent-b",
+      "reviewInputFingerprint": "sha256:005eb8f41ed0429eed7422688b40198e80b50dc70141b85f98426ca69ae2a4e4",
+      "batchId": "chemie-q3-three-current217-preserving-root-20261012-v9-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9c95eeddbeadc1cd37381025f60127cb917f93b6550da238e04cfe17bf00f6fa",
+      "runId": "chemie-q3-current217-three-fresh-independent-b-20261012-v9-D",
+      "runManifestDigest": "sha256:5823f466be733fbf58f89d08cd13f6a758f41dc9f5e93fbb9585fcb6bb247f5c",
+      "resultsDigest": "sha256:b443bcf63f950a28cb558187747f4ad30c11089a1f212bd58c68a3bae4e32f06"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-q3-three-current402-actual-paired-first-pass-synthesis-20261012-v10-decision-001",
+      "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8fc642c61215edf0f944fa1ba80e7a6cbfb794b98a675e593a2e718a0fdb7740",
+      "pageFingerprint": "sha256:619fb358a16e9fdbf6085fa8688176a36ddabd14041877d1711136aa1e62bc3a",
+      "goalReviewContextFingerprint": "sha256:399753d7fb936d2097ffac4927eb337f8a1816b2c08b88a39b376b395b13f060",
+      "finalText": {
+        "titleDe": "Gleichgewichtsdynamik nachweisen",
+        "titleEn": "Demonstrate equilibrium dynamics",
+        "descriptionDe": "Die lernende Person kann chemische Gleichgewichte mithilfe von Modellen auf Stoff- und Teilchenebene charakterisieren, das gleichzeitige Vorliegen von Edukten und Produkten experimentell zeigen und statische Stoffebene von dynamischer Teilchenebene abgrenzen.",
+        "descriptionEn": "The learner can characterize chemical equilibria using models at substance and particle level, experimentally show the simultaneous presence of reactants and products, and distinguish the static substance level from the dynamic particle level."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-q3-current217-three-independent-a-original-20261012-v9.goal-1",
+          "recordDigest": "sha256:c28cafe24eee1fab9fccd3f3755aa222161052afd66660c0f1096da596c6ff39"
+        },
+        "second": {
+          "recordId": "chemie-q3-current217-three-fresh-independent-b-20261012-v9-D-1",
+          "recordDigest": "sha256:97dd3d6d0357ca1378dd73c6ef30d72f6ffc4bcbbfb0eefa35a6ed6331000043"
+        }
+      },
+      "rationaleDe": "Die versiegelten unabhängigen Erstprüfungen A und B entscheiden KEEP am exakt aktuellen Drei-Ziele-Kontext. Sie haben die ganzen aktuellen Lernziele, die neun ganzen Fälle, echte native Seiten und Bilder sowie begrenzte Quellbeiträge geprüft. Die tatsächlichen originalen Erstprüfungsbytes und nativen Fingerprints werden unverändert übernommen; die ausgewählte Nachweisformulierung stammt aus Runde A. Die Originalautorenprofile mit ihren verschiedenen Review-IDs bleiben für die Buchseitenbindung exakt erhalten. Die begrenzte SH-Mizellen-Quellenkorrektur an drei bestehenden strikten Zielen ist ausschließlich Quellenrouting, kein neuer D/P-Fachvote. Übrige Literalklauseln, experimentelle Ausführung und breit zusammengesetzte Quellenpflichten bleiben offen. Die technische Übernahme schafft keine neuen wissenschaftlichen Stimmen oder menschliche Freigabe; E1/G1 bleibt KI-Kandidat.",
+      "rationaleEn": "The sealed independent first passes A and B return KEEP on the exact current three-goal context after inspecting whole current goals, all nine cases, actual native pages and images, and bounded source contributions. Original first-pass bytes and native fingerprints are adopted unchanged; round A supplies the selected evidence wording. Original author profiles with their distinct review IDs remain exact for native page binding. The bounded SH micelle source correction on three existing strict targets is source routing only, without new D/P scientific votes. Other literal clauses, experimental execution and broader source-union duties remain open. Technical adoption creates no new scientific vote or human approval; E1/G1 remains AI-candidate evidence."
+    },
+    {
+      "decisionId": "chemie-q3-three-current402-actual-paired-first-pass-synthesis-20261012-v10-decision-002",
+      "goalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b05745c7f8d0e4795f55736820b47ef5d49976ac876795d0b83e1c973e2b3cad",
+      "pageFingerprint": "sha256:da4b6b38614e033e30e3e315c492b87af671b508500c7935591107120b5ea6e1",
+      "goalReviewContextFingerprint": "sha256:97adb59d5ab9528fa5dd05a6cc22b0f73f2dc92f5af07f0413b03ee9beadcf7a",
+      "finalText": {
+        "titleDe": "Spannungsreihen nutzen",
+        "titleEn": "Use electrochemical series",
+        "descriptionDe": "Die lernende Person kann Standard-Reduktionspotenziale als relative Potenziale gegenüber der Standard-Wasserstoffelektrode erklären, elektrochemische Spannungsreihen zur Vorhersage der Redoxrichtung nutzen und Standard-Leerlaufspannungen galvanischer Zellen als Potenzialdifferenzen berechnen.",
+        "descriptionEn": "The learner can explain standard reduction potentials as potentials relative to the standard hydrogen electrode, use electrochemical series to predict redox direction, and calculate standard open-circuit voltages of galvanic cells as potential differences."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-q3-current217-three-independent-a-original-20261012-v9.goal-2",
+          "recordDigest": "sha256:e86786509f52b5ae73f66578440280e401d1719318ad88ef6b9849fe13da41e8"
+        },
+        "second": {
+          "recordId": "chemie-q3-current217-three-fresh-independent-b-20261012-v9-D-2",
+          "recordDigest": "sha256:79bcf1a14d375d7f14bb25bf8dbaaa05679d009a2e5cceb5ba050a961d5456fc"
+        }
+      },
+      "rationaleDe": "Die versiegelten unabhängigen Erstprüfungen A und B entscheiden KEEP am exakt aktuellen Drei-Ziele-Kontext. Sie haben die ganzen aktuellen Lernziele, die neun ganzen Fälle, echte native Seiten und Bilder sowie begrenzte Quellbeiträge geprüft. Die tatsächlichen originalen Erstprüfungsbytes und nativen Fingerprints werden unverändert übernommen; die ausgewählte Nachweisformulierung stammt aus Runde A. Die Originalautorenprofile mit ihren verschiedenen Review-IDs bleiben für die Buchseitenbindung exakt erhalten. Die begrenzte SH-Mizellen-Quellenkorrektur an drei bestehenden strikten Zielen ist ausschließlich Quellenrouting, kein neuer D/P-Fachvote. Übrige Literalklauseln, experimentelle Ausführung und breit zusammengesetzte Quellenpflichten bleiben offen. Die technische Übernahme schafft keine neuen wissenschaftlichen Stimmen oder menschliche Freigabe; E1/G1 bleibt KI-Kandidat.",
+      "rationaleEn": "The sealed independent first passes A and B return KEEP on the exact current three-goal context after inspecting whole current goals, all nine cases, actual native pages and images, and bounded source contributions. Original first-pass bytes and native fingerprints are adopted unchanged; round A supplies the selected evidence wording. Original author profiles with their distinct review IDs remain exact for native page binding. The bounded SH micelle source correction on three existing strict targets is source routing only, without new D/P scientific votes. Other literal clauses, experimental execution and broader source-union duties remain open. Technical adoption creates no new scientific vote or human approval; E1/G1 remains AI-candidate evidence."
+    },
+    {
+      "decisionId": "chemie-q3-three-current402-actual-paired-first-pass-synthesis-20261012-v10-decision-003",
+      "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c547b07e7835df4dc5c9f412f9fb62137eacbf8b8bce0b2e7a7c222fcb9d6433",
+      "pageFingerprint": "sha256:f02e2df83118d4641d0da96f83ad9c002d594df3fe1f0e4463cedf85551d99cc",
+      "goalReviewContextFingerprint": "sha256:4f06176416caab1ce1ded62aef2e68726c4c1034af8c997468bc538e712d0e0b",
+      "finalText": {
+        "titleDe": "Primärzellen und Batterietypen fachlich beurteilen",
+        "titleEn": "Evaluate primary cells and battery types scientifically",
+        "descriptionDe": "Die lernende Person kann das Bau- und Funktionsprinzip galvanischer Zellen auf Primärzellen in Alltag und Technik übertragen und Vor- sowie Nachteile unterschiedlicher Batterietypen fachlich und gesellschaftlich beurteilen.",
+        "descriptionEn": "The learner can transfer the construction and functional principles of galvanic cells to primary cells used in everyday life and technology and evaluate advantages and disadvantages of different battery types scientifically and socially."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-q3-current217-three-independent-a-original-20261012-v9.goal-3",
+          "recordDigest": "sha256:f0db8eaed4894e82148c3f5569dd1aab9cdfa1b0166abcce88846bbff20df5c2"
+        },
+        "second": {
+          "recordId": "chemie-q3-current217-three-fresh-independent-b-20261012-v9-D-3",
+          "recordDigest": "sha256:10f48bd2ada6c4e5bba39881a05a22074982d147b4961f4c5079abb3f0467fbd"
+        }
+      },
+      "rationaleDe": "Die versiegelten unabhängigen Erstprüfungen A und B entscheiden KEEP am exakt aktuellen Drei-Ziele-Kontext. Sie haben die ganzen aktuellen Lernziele, die neun ganzen Fälle, echte native Seiten und Bilder sowie begrenzte Quellbeiträge geprüft. Die tatsächlichen originalen Erstprüfungsbytes und nativen Fingerprints werden unverändert übernommen; die ausgewählte Nachweisformulierung stammt aus Runde A. Die Originalautorenprofile mit ihren verschiedenen Review-IDs bleiben für die Buchseitenbindung exakt erhalten. Die begrenzte SH-Mizellen-Quellenkorrektur an drei bestehenden strikten Zielen ist ausschließlich Quellenrouting, kein neuer D/P-Fachvote. Übrige Literalklauseln, experimentelle Ausführung und breit zusammengesetzte Quellenpflichten bleiben offen. Die technische Übernahme schafft keine neuen wissenschaftlichen Stimmen oder menschliche Freigabe; E1/G1 bleibt KI-Kandidat.",
+      "rationaleEn": "The sealed independent first passes A and B return KEEP on the exact current three-goal context after inspecting whole current goals, all nine cases, actual native pages and images, and bounded source contributions. Original first-pass bytes and native fingerprints are adopted unchanged; round A supplies the selected evidence wording. Original author profiles with their distinct review IDs remain exact for native page binding. The bounded SH micelle source correction on three existing strict targets is source routing only, without new D/P scientific votes. Other literal clauses, experimental execution and broader source-union duties remain open. Technical adoption creates no new scientific vote or human approval; E1/G1 remains AI-candidate evidence."
+    }
+  ],
+  "manifestFingerprint": "sha256:bda17c1938740733f0eb4f7a8f3ec948f45faacfa6dca0623edbc2d217c393e1"
+}

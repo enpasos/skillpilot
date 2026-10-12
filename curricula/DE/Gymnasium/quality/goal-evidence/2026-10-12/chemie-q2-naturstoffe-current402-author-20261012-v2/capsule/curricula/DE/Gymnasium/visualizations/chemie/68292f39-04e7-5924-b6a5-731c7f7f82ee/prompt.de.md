@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Zucker strukturbezogen vergleichen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `68292f39-04e7-5924-b6a5-731c7f7f82ee`
+- Titel: Zucker strukturbezogen vergleichen
+- Beschreibung: Die lernende Person kann ausgewählte Zucker anhand ihres molekularen Baus vergleichen und daraus ihr chemisches Reaktionsverhalten begründen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)
+- Status: pilot
+- Quellbild: `68292f39-04e7-5924-b6a5-731c7f7f82ee.png`
+- Public Asset: `/assets/goal-visualizations/chemie/68292f39-04e7-5924-b6a5-731c7f7f82ee/68292f39-04e7-5924-b6a5-731c7f7f82ee.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Generate a corrected simplified comic conceptual diagram of reducing sugar comparison as opaque PNG, near16:9, around1600x900, friendly cream background, large shapes clear at360px. Left labelled 'Glucose': ONE large solid BLUE HEXAGON used purely as a sugar-building-block icon, with ONE RED DOT at the right corner marked 'C1', connected to one large 'OH' label. A two-way arrow goes from that hexagon to a simple vertical rounded blue bar marked 'CHO' at top representing open-chain form, not a detailed skeletal molecular formula. Below a test tube contains red-orange sediment. Bottom label 'freies Zentrum'. Right labelled 'Saccharose': one solid BLUE HEXAGON and one solid ORANGE PENTAGON are connected through ONE simple black bridge; the RED DOT on the facing corner of the blue hexagon is marked 'C1', the RED DOT on the facing corner of the orange pentagon is marked 'C2', with both red dots directly participating in the bridge. No free OH at either red dot. Below one uniformly blue test tube. Bottom label 'beide gebunden'. Above or below centre the short label 'Bausteinmodell'. CRITICAL: do not add ANY ring-oxygen O symbol, tiny carbon bonds, extra dangling lines or substitute a seven-membered glucose ring. These polygons are explicit abstract building-block icons, not Haworth structures. The red dots denote anomeric centres. No detailed atoms/stereochemistry beyond C1, C2, OH, CHO. Clear broad counts and correct reducing contrast before hydrolysis.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

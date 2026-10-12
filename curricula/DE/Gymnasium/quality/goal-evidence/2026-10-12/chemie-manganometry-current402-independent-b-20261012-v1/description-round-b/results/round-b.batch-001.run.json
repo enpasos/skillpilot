@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-manganometry-current402-independent-b-20261012-v1-D1",
+  "campaignId": "chemie-manganometry-final-image-chemistry-current402-round-b",
+  "roundId": "round-b",
+  "batchId": "round-b.batch-001",
+  "batchInputFingerprint": "sha256:f37f155ca4c830d27c36622f273f7e908868343b54099eb74d4c16db0a023996",
+  "bundleFingerprint": "sha256:1bdc1e521ee6a53474671c05c9205da42de39c65b7f023904af625a2b1cd6a16",
+  "bookDigest": "sha256:c11e6efb1d241aead36ced588c26841cebde8af352b7686e0df4e64f9365fdd5",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex inherited session model",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemistry-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:c4b672a6ebe71abb5bb858981cb778bef18b37050909709e22c2a7817113684a",
+  "independenceGroupId": "chemie-manganometry-current402-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:cd347127488daa514e2eaaa195936f7f0cc46f9e58c0ad9da7333eb9f7103a49"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:79f04c7fb193976641bb22fd6e1d7629e6217b1392f43e269cf90ba9f804cea8"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:19b303c9c308615d5c94ec47ccda41a3fbf5688ba642735466bad580e38be67e"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ad17e51932dad98ea4fb93de84cf307ca2c5362289d977fab40c30069d3445c9"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f37f155ca4c830d27c36622f273f7e908868343b54099eb74d4c16db0a023996"
+    }
+  ],
+  "startedAt": "2026-10-12T04:52:46.773609+00:00",
+  "completedAt": "2026-10-12T05:07:46.656786+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:bedc4b1900a9be810e0072751f1b7a57d3311ea738dfaef0dea49d3f5d2c187e",
+  "toolchainVersion": "skillpilot-current-normal-chemistry-D1-independent-review"
+}

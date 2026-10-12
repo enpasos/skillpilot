@@ -1,0 +1,440 @@
+ Chemie
+ Ingenieur      Research Article                                                                                                                      1467
+ Technik
+
+
+
+
+      Heat on – Calibration of IR Spectroscopy at
+      Process Conditions for Continuous Esterification
+      Johann-Kilian Schnoor*, Lennard D. Schulte, and Marcel A. Liauw*
+      DOI: 10.1002/cite.202000050
+           This is an open access article under the terms of the Creative Commons Attribution-NonCommercial License, which permits use, distribution and
+           reproduction in any medium, provided the original work is properly cited and is not used for commercial purposes.
+
+
+
+                 Supporting Information
+                 available online
+
+      This work tries to close the gap between continuous synthesis, measurement, calibration, and analysis on R&D scale. By
+      introducing new calibration methods, the full potential of inline ATR-FTIR spectroscopy in continuous reactor setups is
+      unraveled. A fast, fully automated calibration of the reaction mixtures is carried out at process conditions. The use of dif-
+      ferent compositions underlines the robustness of this calibration method, which was used for the determination of kinetic
+      parameters. The conversion-based calibration significantly increased the precision of the analysis. In difference, the new
+      method only requires the preparation of two calibration mixtures. By that, this method can also be applied to large-scale
+      processes and allows the use of a single measurement setup from R&D to industrial scale.
+      Keywords: Acetic acid esters, Carbon2Chem, Continuous flow, Inline calibration, In situ spectroscopy
+      Received: March 31, 2020; revised: June 30, 2020; accepted: July 07, 2020
+
+
+1    Introduction                                                                 responding esters. Esterification is a common reaction that
+                                                                                  is well known in chemistry and part within daily processes
+During the past years, with the improvement of manufac-                           in nature, where it is (auto-)catalyzed by enzymes in most
+turing engineering, commercially available microstructured                        cases. Esters are typically known from natural oils by fatty
+reactors have found their way into chemical lab-scale reac-                       acid esters from glycerol. However, esters are used as chem-
+tions [1]. This allowed many research groups to focus their                       ical building blocks for fine chemicals, pharmaceuticals, and
+work on the implementation of continuous syntheses also                           fabric; polyesters are probably the most common of such
+called ‘‘continuous flow techniques’’ or ‘‘flow chemistry’’. An                   materials in daily life. As part of the joint project
+overview of the current state of the art and progress in this                     Carbon2Chem within the subproject ‘‘SynAlk’’ lower
+research field is given by a rising amount of reports [2–10].                     alcohols (German: Alkohol) are aimed to be synthesized
+   With the aim of offering a complete continuous reaction                        (German: Synthese) from components of steel mill flue
+setup, research groups mainly focus on the study of the unit                      gases. As part of a multistage process esters are produced
+operations, which follow the reactions to implement continu-                      and hydrogenated to produce C2+ alcohols. [15]
+ous work-up steps into the whole chemical process [11]. Even                         The biggest problem with esterification reactions, in gen-
+though the approaches offer a lot of beneficial insights into                     eral, is the reversibility of the reactions in most cases. That
+continuous reaction mode, they may only be applied in rare                        means that once the product stream leaves the reactor the
+cases. The focus of this work is not on the development of a                      composition of the mixture can still change. To have a pre-
+reaction setup but rather on the implementation of a suitable                     cise insight into the composition of the reaction mixture in
+method for the analysis of different reactions as a tool for                      the reactor, measurement must take place at this point. In
+already designed systems and other continuous reactor set-                        addition, with increasing conversion some concentrations
+ups. Different groups have also contributed to this field                         can become very small. Thus, very sensitive measurement
+describing different analytic methods in process analytic tech-                   technology must be used.
+nology (PAT) and their application in different fields [12–14].
+However, our focus lies on the calibration of small very simi-                  –
+lar molecules, at process conditions as well as a calibration of                  Johann-Kilian Schnoor, Lennard D. Schulte,
+                                                                                  Prof. Dr. rer. nat. Marcel A. Liauw
+the reaction mixture along the conversion of the reaction
+                                                                                  schnoor@itmc.rwth-aachen.de, liauw@itmc.rwth-aachen.de
+rather than the calibration of the different components.                          RWTH Aachen University, Institut für Technische und Makro-
+   The reaction investigated here is the catalyzed esterifica-                    molekulare Chemie (ITMC), Worringerweg 1, 52074 Aachen,
+tion of acetic acid with different alcohols towards their cor-                    Germany.
+
+
+
+Chem. Ing. Tech. 2020, 92, No. 10, 1467–1473   ª 2020 The Authors. Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim              www.cit-journal.com
+                                                                                                                                    Chemie
+1468                                                                                                     Research Article           Ingenieur
+                                                                                                                                    Technik
+
+
+
+   However, infrared (IR) spectroscopy as an analysis meth-               20 K. The reactor is placed in an oil bath (Julabo Thermal
+od is not the first choice. The accuracy of the measurement               HS) in a thermostat (Julabo F32), which was covered with a
+by an attenuated total reflection (ATR) probe is more lim-                lid to decrease heat loss. The flow rate was changed so the
+ited than using a transmission method regarding the detec-                residence time (t) was increasing in 3.96 min steps with an
+tion limit. Nevertheless, the ATR probe still has many                    additional measurement at 2.54 min. These intervals were
+advantages like simpler measurement points and just                       determined during previous experiments and enabled the
+requires a small probe volume for the measurement. To                     most reliable results so far. To ensure precise residence
+increase the accuracy and the detection limit, two different              times the three pumps were calibrated using a 20-point
+calibration methods are investigated and implemented to                   measurement and a second order polynomial function was
+allow the accurate analysis of the below giving mixture and               used as a correction function (see Fig. S2). The pumps draw
+kinetics of the reaction. The collected data are suitable for             the reagents from slightly pressurized reservoirs and mix
+the scale-up of the developed process to increase efficiency              them with two Y-mixers just before entering the reactor.
+and throughput.                                                           The used catalyst was Al(OTf)3 in a concentration of
+   Therefore, the location of equilibrium has a major influ-              2 mmol L–1 since it is as a highly effective catalyst with
+ence on the course of the reaction, the conversion, and the               >99 % selectivity for the ester and without causing corro-
+product yield. Esterification is mostly carried out as a cata-            sion.
+lyzed reaction. Due to an occasional high acid concentra-                    With the meander reactor a kinetic study was planned and
+tion, an autocatalytic effect can be observed depending on                carried out to investigate the applicability of the catalyst for
+the strength of the corresponding carboxylic acid. However,               different alcohols shown in Tab. 2, the influence on the reac-
+mostly heterogeneous solid acidic catalysts are used for                  tion rates due to the increasing chain length of the alcohol and
+industrial applications, which have the advantage of easy                 to understand how the different esters might be influencing
+recyclability and separation from the reaction mixture.                   the reaction composition. For a precise analysis an in situ
+[3, 16]                                                                   inline ATR probe Fourier Transformation (FT) mid-infrared
+   To produce ethyl acetate on an industrial scale, mainly                spectrometer was integrated into the setup. In addition to the
+sulfuric acid is used as catalyst, which is later separated by            IR spectrometer further an online nuclear magnetic resonance
+thermal separation. This catalyst, however, requires equip-               (NMR) spectrometer was added in order to compare the reac-
+ment of a high level of corrosion resistance. The catalyst                tion to the offline NMR measurements previously done and to
+that was identified as most suitable to this reaction and the             test the possibility to calibrate the IR spectrometer using NMR
+conditions due to reactivity, stability, and suitability as a             techniques [12]. The samples were drawn using an autosam-
+co-catalyst for reactions to produce higher alcohols was alu-             pler from which the samples were transferred to the NMR
+minum trifluoromethanesulfonate Al(OTf)3. It is most                      tubes with DMSO-d6 for the autonomous NMR analysis
+commonly known from transesterification reactions and                     which were cooled at –20 C until measurement.
+esterification with carboxylic acid anhydrides and as co-
+catalysts in numerous other reactions. [17–20]
+                                                                          2.2 Continuous Analytic Setup
+
+2    Experimental                                                         For the kinetic investigations, the following setup was
+                                                                          chosen to provide the use of different analytic methods
+2.1 Continuous Reactor Setup                                              without modifying the reaction setup. Fig. 1 shows how the
+                                                                          analytics were integrated. The build setup allowed the use
+The reactor used is a 1/8"-meander bend stainless-steel                   of both online analytic methods at the same time while en-
+reactor with a volume of 24.7 mL. It is well suited for differ-           abling the exclusion of all the analytic equipment. Fig. 1
+ent reaction mixtures as well as phases (liquid, liquid-liquid,           shows the reactor setup with all the analytical equipment,
+gas-liquid), provides a good residence time distribution                  which includes Brukers Matrix MF IR spectrometer as well
+(RTD) (see Fig. S1 in Supporting Information SI), a medi-                 as Magriteks Spinsolve NMR spectrometer in addition to
+um pressure loss, and can easily be heated in an oil bath.                the components needed for the automation and control of
+The mean residence time was determined in an RTD mea-                     the system.
+surement setup, which allows pulse experiments where                        For the spectroscopic real-time analysis, a liquid nitrogen
+UV/vis spectroscopy is used to measure the RTD of methy-                  cooled mIR spectrometer Matrix MF from Bruker Optics
+lene blue in the reactor. For the investigation of different              GmbH, Ettlingen, Germany was used. The spectrometer
+esterification reactions two reagent compositions are used                uses an ATR probe and FT to generate the absorption spec-
+by an alcohol:acetic acid:cyclohexane molar ratio of 14:3:1               trum. The ATR probe consists of a diamond that is in con-
+(composition 1) as well as 6:2:1 (composition 2). Cyclo-                  tact with the medium and a silver halide (AgCl/AgBr) opti-
+hexane is used as a solvent, which enables an in situ extrac-             cal fiber to transmit the signal. The probe was integrated
+tion of the reaction mixture. The temperature range was                   using a T-piece with compression seal fitting, allowing max-
+chosen between 70 C and 130 C with increasing steps of                  imal process conditions of 870 C and 690 bar. However, the
+
+
+
+www.cit-journal.com   ª 2020 The Authors. Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim   Chem. Ing. Tech. 2020, 92, No. 10, 1467–1473
+ Chemie
+ Ingenieur      Research Article                                                                                                          1469
+ Technik
+
+
+
+
+Figure 1. Reactor setup with integrated analytical and monitoring equipment.
+
+
+probe is less sturdy and can only be used to a maximum tem-                   2.3.1 Fabrication of Calibration Mixtures
+perature of 140 C for permanent measurements. The T-piece
+is installed directly behind the reactor to avoid the influence               With the setup two different methods for the fabrication of
+of changes in the composition of the mixture and tempera-                     the wanted mixtures for the calibration were used. Method
+ture on the spectra due to loss of heat. Due to the ATR mea-                  one used three different pumps with pure components,
+surement technique, the penetration depth of the IR light is                  which were mixed with two Y-mixers before entering the
+very small. To ensure a good signal, a relatively high concen-                heating loop. This allowed the calibration of ternary mix-
+tration of the measured components is needed, which limits                    tures only and, therefore, lacks the influence of all the com-
+the measurement technique to condensed matter.                                ponents in the reaction mixture on each other. Method two
+                                                                              used only two pumps. The used approach was a calibration
+                                                                              that focused only along the concentrations that corre-
+2.3 Spectral Analysis                                                         sponded to the conversion of acetic acid from 0 % to 100 %.
+                                                                              This means that for each starting concentration of a reac-
+For the analysis of the measured spectra, the software                        tion, a calibration was carried out. As a result, two mixtures
+Peaxact 4.7 is used, which allows a quantitative determina-                   have to be prepared: one mixture representing the concen-
+tion of the mixture composition based on spectral informa-                    trations at 0 % conversion and one representing them at
+tion. The most common being peak integration, where the                       100 % conversion. These mixtures could then be easily
+area along a range of wave numbers is calculated. The                         mixed in any desired ratio allowing any number of steps
+downside is the shift in the spectra due to chemical interac-                 between 0 % and 100 %. As a result, the calibration method
+tion, which significantly influences the peak area.                           that uses the conversion of acetic acid leads to more precise
+   The continuous reactor setup enables the calibration in                    results and due to a smaller overall uncertainty, it allows
+the same setup, which allows for a calibration at reaction                    lower levels of detection, as low as a molar fraction of
+temperature, pressure and avoids moving the optical fiber.                    0.5 %.
+This makes the removal of the measurement probe from
+the setup obsolete, which increases the accuracy of the cali-                 2.3.2 Indirect Hard Modeling
+bration since all calibration measurements are made under
+the same conditions. The high measurement frequency                           For the analysis of the spectra the new method indirect hard
+(1.8 Hz) allows monitoring of the calibration, enabling the                   modeling (IHM) is used. IHM mimics the IR spectrum with
+identification when the calibration mixture has reached the                   multiple mathematical functions, allowing adaptation of the
+probe or when problems might occur. At flow rates of up to                    functions to model molecule interaction and other changes
+30 mL s–1 residence times below one second were realized in                   in the spectra caused by a change in the setup. Fig. 2 shows
+the heating loop, which reduced the conversion to a mini-                     both the spectra that have been modeled using IHM and
+mum. Since the calibration was performed without catalyst                     the residual spectrum generated according to the mixture
+certain mixtures were chosen that tend not to react in the                    composition. Herein, it is important that the different com-
+heating loop. The standard calibration requires the mea-                      ponents have distinctive peaks that allow clear identifica-
+surement of manufactured calibration samples by removing                      tion. For the final spectral analysis, the functions can be giv-
+the probe from the setup. This can lead to spectral shifts                    en increasing degrees of freedom to be shifted and adapted
+due to temperature difference and movement of the fiber.                      to mimic the interaction of the different molecules, which
+
+
+Chem. Ing. Tech. 2020, 92, No. 10, 1467–1473   ª 2020 The Authors. Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim   www.cit-journal.com
+                                                                                                                                    Chemie
+1470                                                                                                     Research Article           Ingenieur
+                                                                                                                                    Technik
+
+
+
+
+Figure 2. Pure component spectra modeled by IHM (left) and the residual spectrum of the mixture (right).
+
+
+
+
+Figure 3. Comparison of multicomponent calibration (left, 54 samples) and conversion-based calibration (right, 11 samples).
+
+
+results in the changing of the spectrum. Since the compo-                 nents. However, as Fig. 3 suggests, this calibration method
+nents were very similar and some were only present in low                 requires the measurement of many different compositions
+concentrations, clear identification was challenging.                     of the reagents and the products. In the continuous setup,
+                                                                          this leads to a very time- and material-consuming calibra-
+2.3.3 Partial Least Square Regression                                     tion. For the esterification reaction, the reagents and prod-
+                                                                          ucts were already known, and no unexpected reactions had
+To overcome the shortcomings of IHM a different method                    occurred during the batch experiments, suggesting that this
+is used, which is based on partial least square regression                would be the same for the continuous experiments. How-
+(PLS-R). This is not necessarily based on physical correla-               ever, combining PLS-R and the conversion-based calibra-
+tion and does allow the use of other parameters, as long as               tion was a full success, which yielded the final results. Fig. 4
+sufficient numbers of calibration measurements are avail-                 shows these results of the conversion based calibration,
+able. With this continuous calibration setup, it was easily               depicting the molar fraction of each component along the
+possible to carry out many calibration measurements in a                  conversion of acetic acid.
+row. To accomplish this, the software uses spectra from a
+known composition to determine the component concen-                      2.3.4 Model Parameters
+tration by comparing the different spectra and identifying
+unique parameters [21]. The standard approach is the cali-                The parameters derived from the different calibration and
+bration of multicomponent mixtures with changing concen-                  kinetic measurements, and the models implemented in
+trations of their individual components. This creates a mod-              Peaxact 4.7 are shown in Tab. 1. They can be divided into
+el that can be used for further compositions of the                       conversion-based and multicomponent mixture-based cali-
+calibrated components. This is interesting for the investiga-             bration as well as the different alcohols used for the esterifi-
+tion of reaction mechanisms because it allows the identifica-             cation and the corresponding products. While for the con-
+tion of the component mixtures in the calibrated range,                   version-based calibration for each composition a different
+which can help identify unexpected behavior and compo-                    model was made, only two compositions were used to
+
+
+www.cit-journal.com   ª 2020 The Authors. Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim   Chem. Ing. Tech. 2020, 92, No. 10, 1467–1473
+ Chemie
+ Ingenieur       Research Article                                                                                                           1471
+ Technik
+
+
+
+Table 1. List with rank, root-mean-square errors (RMSEs) of all               Table 2. List with the different compositions and alcohols
+components based on different calibration methods.                            which were tested in the course of the experiments.
+
+Component         Rank          RMSEC          RMSECV     RMSEP               Alcohol     Composition       Temperatures     Residence times
+                                [%]            [%]        [%]                             xR-OH:xAcOH:xCy   [K]              [s]
+
+Multicomponent calibration: Ethanol                                           MeOH        14:3:1            343, 363, 383,   933.4, 692.9, 480.2,
+                                                                                                            403              218.8, 147.6
+Ethanol           14            3.6            3.8        2.1
+                                                                              MeOH         6:2:1            343, 363, 383,   933.4, 692.9, 480.2,
+Ethyl acetate     14            1.7            1.9        1.0                                               403              218.8, 147.6
+Acetic acid       10            1.3            1.4        0.9                 EtOH        14:3:1            343, 363, 383,   933.4, 692.9, 480.2,
+Water             13            3.3            3.5        2.6                                               403              218.8, 147.6
+
+Cyclohexane       18            3.3            3.7        2.8                 EtOH         6:2:1            343, 363, 383,   933.4, 692.9, 480.2,
+                                                                                                            403              218.8, 147.6
+Multicomponent calibration: Methanol
+                                                                              1-BuOH      14:3:1            343, 363, 383,   933.4, 692.9, 480.2,
+Methanol          13            1.5            1.7        1.5                                               403              218.8, 147.6
+Methyl acetate    15            0.8            0.8        0.9                 1-BuOH       6:2:1            343, 363, 383,   933.4, 692.9, 480.2,
+                                                                                                            403              218.8, 147.6
+Acetic acid       18            0.5            0.5        0.5
+
+Water             13            1.4            1.7        2.1
+
+Cyclohexane       18            1.2            1.4        1.4                 2.4 Experiments
+Conversion-based calibration
+                                                                        All experiments in Tab. 2 were carried out for the different
+Ethanol 6:2:1     3             1.5            1.8        –
+                                                                        process parameters in combination with the alcohols and
+ Butanol 14:3:1 3            2.1        2.3         –                   compositions of the reaction mixtures. Doing four measure-
+ Butanol 6:2:1  3            2.4        2.6         –
+                                                                        ments per point increases the reproducibility and supports
+                                                                        to identify outliers. The residence times were chosen in
+                                                                        equidistant intervals with an additional point between the
+                                                                        shortest residence time and zero to increase the modelabil-
+develop one model for the multicomponent calibration.                   ity. The starting temperature was chosen at 70 C since then
+Fig. S3 compares the different calibration methods for the              sufficient conversion could be observed and 130 C is the
+reaction with ethanol at composition 2. The conversion-                 limiting temperature because of the measurement probe.
+based model shows that the ethyl acetate and water concen-                 To avoid time-intensive measurements from the previous
+tration are close together, which is in good accordance to              experiments the time until steady state was determined pri-
+the theory behind the reaction.                                         or to the kinetic studies. Tab. 2 shows the residence times
+                                                                                    used for the measurements. The RTD measure-
+                                                                                    ments showed that for the setup four residence
+                                                                                    times are necessary to ensure steady-state condi-
+                                                                                    tions at the end of the reactor. This allows quick
+                                                                                    measurements and many measurements in lim-
+                                                                                    ited time. The results from the online analytics,
+                                                                                    especially the IR measurements, showed that a
+                                                                                    further decrease might even be possible.
+                                                                                       To validate the online measurement and to en-
+                                                                                    sure that no unexpected side products occurred
+                                                                                    offline NMR measurements were conducted.
+                                                                                    While the offline measurements cannot show the
+                                                                                    same results as the online measurement because
+                                                                                    of the long delay between sampling and measure-
+                                                                                    ment they still give a good indication. Fig. 5
+                                                                                    shows exemplarily the results for one measure-
+                                                                                    ment. While online and offline measurement are
+                                                                                    different, they are still in a similar region. The
+                                                                                    offline measurement also confirmed that no side
+Figure 4. Molar fraction of reagents and conversion of the reaction for acetic      product occurred. This allowed modeling the
+acid conversion-based calibration measurement.                                      reaction as a reversible second order reaction.
+
+
+Chem. Ing. Tech. 2020, 92, No. 10, 1467–1473   ª 2020 The Authors. Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim    www.cit-journal.com
+                                                                                                                                    Chemie
+1472                                                                                                     Research Article           Ingenieur
+                                                                                                                                    Technik
+
+
+
+                                                                                       ferent starting compositions influence the out-
+                                                                                       come of the kinetic measurements, the activa-
+                                                                                       tion energy, which should stay constant, just
+                                                                                       changes slightly. Thereby an accurate analysis of
+                                                                                       the reagents seems possible with a high degree
+                                                                                       of reproducibility.
+                                                                                          The fact that a change in composition has a
+                                                                                       significant influence on the behavior of the reac-
+                                                                                       tion is well represented by the results. Further,
+                                                                                       the fact that the activation energy is nearly the
+                                                                                       same for the different compositions underlines
+                                                                                       that the thermodynamics are not significantly
+                                                                                       influenced or changed. For a non-temperature
+                                                                                       dependent equilibrium constant only the Arrhe-
+                                                                                       nius factor changes from one composition to
+                                                                                       another, which represents the change in concen-
+                                                                                       tration. With increasing chain length of the alco-
+                                                                                       hol, especially from ethanol to butanol, the tem-
+Figure 5. Acetic acid conversion of esterification with MeOH starting with com-
+position 1 for different temperatures showing inline IR analysis as well as offline    perature dependency and the overall conversion
+NMR measurements for 130 C with the fit to the online measurement.                    of the acid decreases. This effect is also observed
+                                                                                       in polymerization reactions where the reactivity
+3 Results and Discussion                                                  of the polymer decreases with increasing chain length. In a
+                                                                          reaction where different alcohols would be initially mixed,
+The implementation of the new analytic technologies                       the esterification reaction would predominantly convert
+involving IR spectroscopy allowed the thorough analysis of                methanol before ethanol and butanol. In an integrated reac-
+the kinetic behavior of different alcohols in the esterification          tion setup, the long-chained alcohols like butanol would be
+with acetic acid. The real-time analysis resulted in the most             slowest consumed by the reaction. This would allow a mix-
+reliable and precise results so far in the pursuit of the                 ture of different alcohols to be used in the esterification and
+kinetic parameters. When comparing the two investigated                   a separation of the reaction mixture for previous reactions
+compositions it becomes evident that composition 1 leads                  is not necessary. The reduction of recycling effort will sig-
+to a higher conversion of acetic acid according to the princi-            nificantly increase the economy of the process. High con-
+ple of Le Chatelier. However, the higher acetic acid ratio in             centrations of short-chain alcohols as well as acetic acid can
+composition 2 results in a higher product concentration at                boost the ester production and acetic acid conversion.
+the end of the reactor compared to composition 1. Tab. 3
+indicates that this is also seen in the results of the kinetic
+data. Fig. S4–S6 show that when fitting the experimental                  4 Conclusion
+data, the higher conversion leads to a lower activation ener-
+gy for composition 1, implicating that the reaction is less               The results from the kinetic experiments show a solid
+temperature dependent than for composition 2. While the                   behavior of the setup and the implemented analytic meth-
+Arrhenius factor is higher for composition 2, it results in               ods. Even though the different starting compositions influ-
+an overall higher product generation from the reagents due                ence the outcome of the kinetic measurements; the activa-
+to the higher acetic acid concentration. Even though the dif-             tion energy, which should stay constant, just changes
+                                                                                       slightly. This cloud be a result of the used fitting
+Table 3. Results from kinetic experiments in a continuous meander capillary re-        method. By that an accurate analysis of the
+actor with 2  10–3 mol L–1 Al(OTf)3 as catalyst.                                      reagents seems possible with a high degree of
+                                                                                       reproducibility. Carrying out the calibration
+ Alcohol       Composition xR-     K              k0              EA
+                                                     3 2   –2 –1     4     –1          measurements at reaction conditions even
+               OH:xAcOH:xCy        [–]            [10 L mol s ]   [10 J mol ]
+                                                                                       allowed the determination of some of the cali-
+ MeOH          14:3:1                1.264        4.37            3.45                 bration parameters such as the temperature of
+ MeOH           6:2:1              23.63          3.90            3.51                 the calibration measurements.
+                                                                                          In retrospect there is always room for
+ EtOH          14:3:1                6.63         1.83            3.26                 improvement. A coupling of the process control
+ EtOH           6:2:1                6.63         3.72            3.59                 software and the measurement software would
+                                                                                       allow easier connection between the relevant IR
+ 1-BuOH        14:3:1                0.8          65.0            4.62
+                                                                                       measurements and the flow rates to identify the
+ 1-BuOH         6:2:1                0.8          99.7            4.66                 used concentrations. Currently this is done
+
+
+
+www.cit-journal.com   ª 2020 The Authors. Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim   Chem. Ing. Tech. 2020, 92, No. 10, 1467–1473
+ Chemie
+ Ingenieur      Research Article                                                                                                                    1473
+ Technik
+
+
+
+manually. Keeping in mind that using a liquid nitrogen                        k0            [L2mol–2s–1] Arrhenius constant
+cooled spectrometer, a shift in the spectra can be observed                   xi            [–]          molar fraction of i
+after refilling. A piezo-cooled spectrometer has a more lim-                  Xi            [–]          conversion of i
+ited measurement range but supplies constant spectra dur-                     t             [min]        residence time
+ing long steady-state measurements. With more calibration
+measurements the downside of the limited range can proba-                          Abbreviations
+bly be compensated. However, the current setup is the best
+compromise between accuracy, measurement speed and                            AcOH     acetic acid
+cooling technique. The components have to be homoge-                          Al(OTf)3 aluminum trifluoromethanesulfonate
+neous to allow proper measurements with the ATR probe in                      ATR      attenuated total reflection
+the investigated process and calibration window.                              1-BuOH 1-butanol
+   While the observed mixture is a very basic reaction, the                   C2+      alcohols with two and more carbon atoms
+used method can be extended to a larger scope of reactions.                   Cy       Cyclohexane
+The measurements have shown that using PLS-R allows a                         EtOH     Ethanol
+precise determination of the composition even though the                      FT       Fourier transformation
+pure component spectra are very similar. Using online low-                    IHM      indirect hard modeling
+field NMR was not successful as an additional calibration                     MeOH     Methanol
+method for the IR spectrometer. The limited precision of                      mIR      mid infrared
+the low-field NMR led to ambiguous measurements which                         PLS-R    partial least square regression
+could not be analyzed correctly. However, in an optimized                     RMSE     root-mean-square error
+setup, which allows longer measurements for the NMR                           RMSEC root-mean-square error calibration
+spectrometer, a significant improvement can be achieved                       RMSECV root-mean-square error cross validation
+allowing the analysis of increasing complex mixtures and                      RMSEP root-mean-square error predicition
+components.                                                                   R-OH     alcohol with undefined chain length
+                                                                              RTD      residence time distribution
+Supporting Information
+                                                                                   References
+Supporting Information for this article can be found under
+DOI: https://doi.org/10.1002/cite.202000050.                                   [1] C. Csajagi, G. Szatzker, E. R. Töke, L. Uerge, F. Darvas, L. Poppe,
+                                                                                   Tetrahedron: Asymmetry 2008, 19, 237–246.
+                                                                               [2] M. Atobe, H. Tateno, Y. Matsumura, Chem. Rev. 2017, 118 (9),
+  The authors gratefully appreciate the support received                           4541–4572.
+  from the Federal Ministry of Education and Research of                       [3] J. Yue, Catal. Today 2017, 308, 3–19.
+                                                                               [4] C. J. Mallia, I. R. Baxendale, Org. Process Res. Dev. 2016, 20, 327–360.
+  the Federal Republic of Germany (Bundesministerium
+                                                                               [5] R. Porta, M. Benaglia, A. Puglisi, Org. Process Res. Dev. 2016, 20,
+  für Bildung und Forschung, BMBF, 03EK3041D, Ver-                                2–25.
+  bundvorhaben Carbon2Chem-L4: SynAlk – Teilprojekt                            [6] M. Brzozowski, M. O’Brien, S. V. Ley, A. Polyzos, Acc. Chem. Res.
+  ‘‘Herstellung von C2+-Alkoholen auf Basis von H2, CO                             2015, 48, 349–362.
+  und CO2 aus Kuppelgasen’’). The authors thank the                            [7] S. G. Newman, K. F. Jensen, Green Chem. 2013, 15, 1456–1472.
+  analytical department for the numerous measurements                          [8] C. Wiles, P. Watts, Green Chem. 2012, 14, 38–54.
+                                                                               [9] J. Wegner, S. Ceylan, A. Kirschning, Chem. Commun. 2011, 47,
+  and especially Martin Rößler, Teresa Kayser, Dr. Meike
+                                                                                   4583–4592.
+  Emondts, Niklas Westhues and Dr. Marc Schmitz for the                       [10] D. Webb, T. F. Jamison, Chem. Sci. 2010, 1, 675–680.
+  input in the development of the process. The discussions                    [11] D. X. Hu, M. O’Brien, S. V. Ley, Org. Lett. 2012, 14, 4246–4249.
+  with the colleagues from the Institut für Technische und                   [12] S. Kern et al., Anal. Bioanal. Chem. 2019, 411, 3037–3046.
+  Makromolekulare Chemie (ITMC) as well as the contin-                        [13] F. Lauterbach, V. Abetz, Macromol. Rapid Commun. 2020, 41 (9),
+  uous support and help with troubleshooting from                                  2000029. DOI: https://doi.org/10.1002/marc.202000029
+  S-PACT. Open access funding enabled and organized by                        [14] W. Lee, M. T. Zell, T. Ouchi, M. J. Milton, Magn. Reson. Chem.
+                                                                                   2020, in press. DOI: https://doi.org/10.1002/mrc.5035
+  Projekt DEAL. [Correction added on August 05, 2020,
+                                                                              [15] M. Oles, W. Lüke, R. Kleinschmidt, K. Büker, H.-J. Weddige,
+  after first online publication: Projekt Deal funding state-                      P. Schmöle, R. Achatz, Chem. Ing. Tech. 2018, 90, 169–178.
+  ment has been added.]                                                       [16] A. Tanimu, S. Jaenicke, K. Alhooshani, Chem. Eng. J. 2017, 327,
+                                                                                   792–821.
+                                                                              [17] N. Westhues, J. Klankermayer, ChemCatChem 2019, 11, 3371–3375.
+                                                                              [18] N. Westhues, M. Belleflamme, J. Klankermayer, ChemCatChem
+  Symbols used                                                                     2019, 11, 5269–5274.
+                                                                              [19] S. Werkmeister, S. Fleischer, S. Zhou, K. Junge, M. Beller,
+EA           [J mol–1]        activation energy                                    ChemSusChem 2012, 5, 777–782.
+i            [–]              component i                                     [20] R. Dumeunier, I. E. Markó, Tetrahedron Lett. 2004, 45, 825–829.
+K            [–]              constant for reaction equilibrium               [21] C. B. Minnich, PhD Thesis, RWTH Aachen University 2009.
+
+
+
+Chem. Ing. Tech. 2020, 92, No. 10, 1467–1473   ª 2020 The Authors. Published by WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim           www.cit-journal.com
+

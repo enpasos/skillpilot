@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-e81-793-current407-two-real-remedies-root-preparation-20261012-v4/configs/native-D2.two-real-remedies.batch.config.json",
+  "configDigest": "sha256:f381eaa7d94ba2e186835d79e298e86a9121f64013ac71b5c18fdfc0b2d4d6c1",
+  "goalIds": [
+    "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+    "793189f8-78bd-5204-848b-fd2bbc12e458"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 407,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-e81-793-current407-two-real-remedies-root-preparation-20261012-v4/configs/full407.two-remedies.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-e81-793-current407-two-real-remedies-root-preparation-20261012-v4/candidate/canonical532.whole-goals-exact.current407.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:fc9e1ffb920097476cc421a145874da83af3a8a99f4ff67e16bb9cb3ac963c38"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:fcb7d00643f0943cd13b2024ced15837a71cf20415dbeb9a1425fad12cc42afe",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:f1014b7b2008004ed436d02473116d4ecc81df35c3264b85551cd3a4b666b3d7",
+    "reviewInputFingerprint": "sha256:d709c8c50f4c14e42021a057f1bf2cbe10a3fda5fc6c3394ebd5ce7def50eb6d",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4-a",
+        "campaignDigest": "sha256:4ab73606b545c2dd02eecfe7a85b9cf7e9e95e47c7b8fb04978e79cda4173423",
+        "roundId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4-first-pass-a",
+        "independenceGroupId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4-independent-a",
+        "batchId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:304b06ab75943f349cee267557003191bdfb0b6fe29a905f386a9308f7df6619"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4-b",
+        "campaignDigest": "sha256:b956e343a6def85bf9f226b4388793cc9032d39690e8b7bb4236d9db51727dcf",
+        "roundId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4-first-pass-b",
+        "independenceGroupId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4-independent-b",
+        "batchId": "chemie-q2-e81-793-current407-two-real-remedies-root-20261012-v4-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9e3ae2075a6bb0910e97f0528e5eef9611db35aaba55970c2321412cbffcbffb"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

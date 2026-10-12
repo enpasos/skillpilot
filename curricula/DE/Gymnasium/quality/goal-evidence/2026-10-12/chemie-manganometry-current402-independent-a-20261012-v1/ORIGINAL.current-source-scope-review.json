@@ -1,0 +1,207 @@
+{
+  "verdict": "hold",
+  "goalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+  "reason": "Die 019-Nernst-Zuordnung wurde tatsächlich nur für dieses Ziel entfernt. Die neue normale Quellenliste und die inaktive NI-Zuordnung binden jedoch weiterhin e8614 / ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-020-501ae6e3 an 2fdd759f-8349-5f7e-b29a-6ac7fb0299f9. Diese konkrete Klausel verlangt Potenziale von Halbzellen bei geänderten Konzentrationen zu berechnen; das ist keine Redoxtitration. Sie fehlt zudem in der neutralen Klauselinventarliste. Auch die gelesene vollständige gemeinsame Passage macht daraus keinen eigenen Titrationsoperator. Entfernen Sie nur diesen weiteren falschen Zielbezug, erhalten Sie die übrigen passenden Potentialziele und regenerieren Sie die normale Quellenliste/Bindungen. Der NI-Titrations-/Konzentrationskontext und alle402 Ziele bleiben erhalten.",
+  "actualNormalEvidence": [
+    {
+      "id": "e8609",
+      "documentId": "d24",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.4.7 (4), S. 38.",
+      "kind": "direct",
+      "scopeMatch": "exact",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "bw-chem-sekii-3-4-7-b04-a01-f01f7432",
+      "unspecifiedDimensions": [],
+      "sourceScope": {
+        "jurisdiction": "DE-BW",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    },
+    {
+      "id": "e8610",
+      "documentId": "d1",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Chemie, C11.1.2",
+      "kind": "direct",
+      "scopeMatch": "source-context",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "f351c9a3-888f-5114-992d-5de84e3de59c",
+      "unspecifiedDimensions": [
+        "durationModel",
+        "courseProfile"
+      ],
+      "sourceScope": {
+        "jurisdiction": "DE-BY",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": []
+      }
+    },
+    {
+      "id": "e8611",
+      "documentId": "d1",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Chemie, C12-EA.3.5",
+      "kind": "direct",
+      "scopeMatch": "source-context",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "cc523009-d57b-533e-a7c6-e0c7a9299414",
+      "unspecifiedDimensions": [
+        "durationModel"
+      ],
+      "sourceScope": {
+        "jurisdiction": "DE-BY",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    },
+    {
+      "id": "e8612",
+      "documentId": "d30",
+      "sourceRef": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024, Q3.3 Redoxgleichgewichte",
+      "kind": "direct",
+      "scopeMatch": "exact",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "he-chem-sekii-q3-3-b11-a01-b9f47868",
+      "unspecifiedDimensions": [],
+      "sourceScope": {
+        "jurisdiction": "DE-HE",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    },
+    {
+      "id": "e8613",
+      "documentId": "d27",
+      "sourceRef": "Niedersachsen Kerncurriculum Chemie gymnasiale Oberstufe 2022, Elektronenübertragungsreaktionen, S. 24.",
+      "kind": "direct",
+      "scopeMatch": "exact",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-1-kompetenz-010-4d13a3b1",
+      "unspecifiedDimensions": [],
+      "sourceScope": {
+        "jurisdiction": "DE-NI",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    },
+    {
+      "id": "e8614",
+      "documentId": "d27",
+      "sourceRef": "Niedersachsen Kerncurriculum Chemie gymnasiale Oberstufe 2022, Elektronenübertragungsreaktionen, S. 25.",
+      "kind": "direct",
+      "scopeMatch": "exact",
+      "mappedTargetGoalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "sourceGoalId": "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-020-501ae6e3",
+      "unspecifiedDimensions": [],
+      "sourceScope": {
+        "jurisdiction": "DE-NI",
+        "stage": [
+          "SekII"
+        ],
+        "durationModel": [],
+        "courseProfile": [
+          "LK"
+        ]
+      }
+    }
+  ],
+  "removedOnlyPair": [
+    [
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-019-dfffd221",
+      "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9"
+    ]
+  ],
+  "addedPairs": [],
+  "stillWrongPair": [
+    "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-020-501ae6e3",
+    "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9"
+  ],
+  "extraLiteralNotInNeutralInventory": {
+    "id": "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-020-501ae6e3",
+    "passageId": "ni-chemistry-sekii-kc2022-q-redox-2",
+    "topicCode": "Q-REDOX-2",
+    "topicTitle": "Elektronenübertragungsreaktionen",
+    "category": "Kompetenz",
+    "title": "berechnen die Potenziale von Halbzellen verschiedener Stoffmengenkonzentrationen ohne Berücksichtigung des pH-Werts und der Temperatur (eA).",
+    "description": "Die lernende Person kann berechnen die Potenziale von Halbzellen verschiedener Stoffmengenkonzentrationen ohne Berücksichtigung des pH-Werts und der Temperatur (eA)..",
+    "sourceDocumentKey": "NI-KC-CHEMIE-SEKII-2022",
+    "sourceRef": "Niedersachsen Kerncurriculum Chemie gymnasiale Oberstufe 2022, Elektronenübertragungsreaktionen, S. 25.",
+    "sourceText": "berechnen die Potenziale von Halbzellen verschiedener Stoffmengenkonzentrationen ohne Berücksichtigung des pH-Werts und der Temperatur (eA).",
+    "sourceSpan": {
+      "passageId": "ni-chemistry-sekii-kc2022-q-redox-2",
+      "label": "Kompetenz: berechnen die Potenziale von Halbzellen verschiedener Stoffmengenkonzentrationen ohne Berücksichtigung des pH-Werts und der Temperatur (eA)."
+    },
+    "courseLevel": "LK",
+    "tags": [
+      "subject:Chemie",
+      "jurisdiction:DE-NI",
+      "stage:SekII",
+      "topic:Q-REDOX-2",
+      "courseLevel:LK"
+    ],
+    "metadata": {
+      "extractionMethod": "pdftotext-raw-official-pdf-competence-table-bullet-extraction"
+    }
+  },
+  "extraWholeContextActuallyRead": {
+    "id": "ni-chemistry-sekii-kc2022-q-redox-2",
+    "sourceDocumentKey": "NI-KC-CHEMIE-SEKII-2022",
+    "topicCode": "Q-REDOX-2",
+    "title": "Q-REDOX-2 Elektronenübertragungsreaktionen",
+    "page": 25,
+    "rawText": "Elektronenübertragungsreaktionen (Seite 2/4)\nFachkompetenz\nSachkompetenz Erkenntnisgewinnungskompetenz Kommunikationskompetenz Bewertungskompetenz\nDie Lernenden … Die Lernenden … Die Lernenden … Die Lernenden …\n• beschreiben den Bau galvanischer\nZellen.\n• beschreiben die elektrochemische\nDoppelschicht als Redoxgleichgewicht\nin einer Halbzelle.\n• beschreiben die Metallbindung\n(Elektronengasmodell).\n• beschreiben den Austritt von Ionen aus\ndem Metallgitter unter Verbleib von\nElektronen im Elektronengas.\n• erklären die Potenzialdifferenz/\nSpannung mit der Lage der\nelektrochemischen Gleichgewichte.\n• erläutern die Funktionsweise\ngalvanischer Zellen.\n• planen Experimente zum Bau\nfunktionsfähiger galvanischer Zellen\nund führen diese durch.\n• messen die Spannung unter-\nschiedlicher galvanischer Zellen.\n• nutzen Modelle zur Darstellung von\ngalvanischen Zellen.\n• stellen galvanische Zellen in Form\nvon Skizzen dar.\n• erstellen Zelldiagramme.\n• beurteilen den Einsatz von\ngalvanischen Zellen in Alltag und\nTechnik.\n• beschreiben den Aufbau der Standard-\nWasserstoffelektrode.\n• definieren das Standard-Elektroden-\npotenzial.\n• berechnen die Spannung galvanischer\nZellen (Zellspannung) unter\nStandardbedingungen.\n• nutzen Tabellen von Standard-\nElektrodenpotenzialen zur\nVorhersage des Ablaufs von\nRedoxreaktionen.\n• wählen aussagekräftige Informa-\ntionen aus.\n• argumentieren sachlogisch unter\nVerwendung von Tabellenwerten.\n• beschreiben die Abhängigkeit der\nPotenziale von der Stoffmengen-\nkonzentration anhand der Nernst-\nGleichung (eA).\n• berechnen die Potenziale von\nHalbzellen verschiedener Stoff-\nmengenkonzentrationen ohne\nBerücksichtigung des pH-Werts und\nder Temperatur (eA).\n26",
+    "sourceGoalIds": [
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-001-41836360",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-002-7cc705f2",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-003-de754e1d",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-004-a7fa07a6",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-005-754a5bb3",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-006-5426504d",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-007-52843844",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-008-061cf072",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-009-f0686a00",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-010-9f3a8e13",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-011-441f5d89",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-012-5f88dca8",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-013-67c08fcb",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-014-16906f1b",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-015-6ef03538",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-016-566a8ddd",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-017-8fb2cd89",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-018-c91a5696",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-019-dfffd221",
+      "ni-chemistry-sekii-kc2022-q-redox-2-kompetenz-020-501ae6e3"
+    ]
+  },
+  "literalSourceInputPath": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_CHEMIE_SEKII_KC2022.source-extraction.json",
+  "literalSourceInputDigest": "sha256:2ad06989bd935933d8df3b984baff34cb9697c22fdf1db25e5461bbe3fa744bd",
+  "scopeBoundaries": {
+    "BW": "Iodometrie durchführen und Titrationsprinzip erklären: durch Fall3 konkret adressiert.",
+    "BY": "C11 fachgemäße sichere Analyse/Redox-Titration; C12 EA Donator- oder Akzeptorkonzentration: Fälle1/2 mit beobachtbarer Ausführung.",
+    "HE": "Prinzip der Manganometrie; keine Behauptung, diese Einzelklausel verlange sämtliche praktische Details oder Iodometrie.",
+    "NI": "010 Probenkonzentration samt gelesenem Titrationskontext; 020 Halbzellenpotentiale bleibt ein unzulässiger zusätzlicher Bezug."
+  },
+  "sourceProjection382IsApproval": false
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q2-four-joint-current402-targeted-independent-b-20261012-v1-D4",
+  "campaignId": "chemie-q2-four-joint-current402-integration-root-20261012-v1-b",
+  "roundId": "chemie-q2-four-joint-current402-integration-root-20261012-v1-first-pass-b",
+  "batchId": "chemie-q2-four-joint-current402-integration-root-20261012-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f7ab89894830f3921593a66b36db2b3dd877a0fb17829babf0d8a25a28d862f6",
+  "bundleFingerprint": "sha256:57d6c4f57e8eebd621351a3105d476fd127bf7354d3edf5f0af419fb43c6c8a0",
+  "bookDigest": "sha256:f77f5dbec43f77d87852375e48455f4cd5dc142f47305eb318ef0d261b6c6544",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex inherited session model",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemistry-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:1c63eb40eb7a0ae60178d76d4c25b81b5e7ce4524001a422808f270dccaaa41f",
+  "independenceGroupId": "chemie-q2-four-joint-current402-integration-root-20261012-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "014e6d85-eecf-5228-9031-52a39981cd0d",
+    "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+    "197bc2c5-835e-59e7-9263-5684e89799cc",
+    "7b477c2b-0919-5d70-810b-188a88c55ffc"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:59ef3a9570e118d9b90bb5160c3df442029efdb4a73f8e064b5c2127ace32d46"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:c5962414c0994685d488bf177e85fa8251320610ef2d9b777d39c44127dc26f4"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:963ceefd26482dd0333d40782c5a5e37a6e7573f6a01945cf6efac6ea0b433cf"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:7c25af715be4d3c616ea92b3ad47a4b90fd26f1e14165362ba95e6cc98404b03"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f7ab89894830f3921593a66b36db2b3dd877a0fb17829babf0d8a25a28d862f6"
+    }
+  ],
+  "startedAt": "2026-10-12T04:44:02.907442+00:00",
+  "completedAt": "2026-10-12T04:45:58.347402+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:e2c9337a0bd1ee768bfa0a35f9d67190addd8c09672a6fde44060988b06e8cee",
+  "toolchainVersion": "skillpilot-current-normal-D4-targeted-context-review"
+}

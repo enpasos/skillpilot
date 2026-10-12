@@ -1,0 +1,39 @@
+[
+  {
+    "findingId": "B-P01-executable-chemical-assessment",
+    "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "gate": "P",
+    "severity": "blocking",
+    "status": "open",
+    "observation": "The experiment contract assumes a validated species-specific method but gives no named operational method, reagent/equipment/material quantities, sample handling or concrete execution rubric. Published article critique establishes why evidence is incomplete, rather than furnishing an assessable feasible demonstration of coexisting reactants and products.",
+    "evidence": [
+      "inspection/0.additionalWholeSyntheticSeventhCase.json: material and experimentalEvidenceContract",
+      "inspection/0.additionalWholeAuthenticDossierCase.json: task, scoring and sourceDutyBoundary",
+      "inspection/0.wholePositiveRecord.json: duty-chemical-experimental-evidence"
+    ],
+    "requiredRepair": "Add one feasible, proportionately safe chemical investigation or supplied assessable experimental material with an identified species-specific method, common sample/time relation, controls, sample preservation, expected qualitative/quantitative observations and a rubric covering actual execution where the source operator requires it. It may remain E1/G1 synthetic proposed assessment material with no claim that it has been run. Do not require human approval, HumanTrial or actual learner results for machine M7."
+  },
+  {
+    "findingId": "B-P02-q301b-criterion-crosswalk",
+    "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "gate": "P",
+    "severity": "medium",
+    "status": "open",
+    "observation": "The full q3-01-b rubric has c1 common-endpoint comparison and c2 simultaneous species presence; the P expectation text assigns q3-01-b simultaneous presence to duty-c1 and common-endpoint comparison to duty-c2. Both aspects exist, but the criterion correspondence is reversed.",
+    "requiredRepair": "Correct only the q3-01-b c1/c2 expectation crosswalk, retaining tasks, points and scientific content."
+  },
+  {
+    "findingId": "B-S01-primary-cell-micelle-source-contradiction",
+    "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+    "gate": "source_binding",
+    "severity": "blocking",
+    "status": "open",
+    "observation": "The current source page advertises direct source evidence e8659, mappedTargetGoalId c8844ac6, from sourceGoal de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-029-c8e1a110. Its actual sourceText is Mizellen als Struktureinheiten von Emulsionen, under surfactants/detergents/cosmetics in the actual official PDF p70. This has no primary-cell construction or battery-evaluation clause; labeling the mapping partial cannot create relevant evidence.",
+    "evidence": [
+      "inspection/2.source-unique.json:e8659",
+      "inspection/2.actual-source-goals.json:SH micelle source goal",
+      "inspection/SH-p68-73.actual-pdftotext.txt:official PDF p70"
+    ],
+    "requiredRepair": "Remove or correct this affected source-to-primary-cell contribution and rebind the affected source context/native page/review inputs with targeted independent review. Preserve unrelated valid source rows and prior artifacts. The own-primary-cell content/P/image judgments stay positive within their real source-supported scope; do not report the contradicted binding as closed."
+  }
+]

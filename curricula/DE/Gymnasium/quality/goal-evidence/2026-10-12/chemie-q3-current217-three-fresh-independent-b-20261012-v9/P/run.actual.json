@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q3-current217-three-fresh-independent-b-20261012-v9-P",
+  "bundleFingerprint": "sha256:4cd9d45382a71ef72fbf7b7ac048401a0acc8f303b7ca31c795fe5d848c130d2",
+  "bookDigest": "sha256:c805e837eadc9ae7d6622be43e1c4245ed630917a33381f4e1260e34b7362ae3",
+  "provider": "OpenAI / Codex",
+  "model": "GPT-6 (session-reported)",
+  "role": "disconfirming_reviewer",
+  "promptFamilyId": "chemie-q3-nine-cases-actual-science-independent-v9",
+  "promptFingerprint": "sha256:1787fdbceaef2ffad0910094367b7b7badf3f68b9092bbd21d9bb9afefcf3d57",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:67d45860576cb490ad779040d4620aedcb17628a39a88add86b92c93ec3f73f3",
+  "independenceGroupId": "chemie-q3-three-current217-preserving-root-20261012-v9-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "8be14f15-2258-58e6-ae4e-38953f5d0570",
+    "c8844ac6-c414-5a0e-9fcd-7d0a82177d09"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:9bc3d9eb56adc15b7e8c9193e9059ebf34daf545660bb619e299325b73096462"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:7336462729c56daf0bff5d312ad7d18f6c37465b94aa7e3b908ac5610abf8407"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:1787fdbceaef2ffad0910094367b7b7badf3f68b9092bbd21d9bb9afefcf3d57"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-10-12T12:05:35.802071+00:00",
+  "completedAt": "2026-10-12T12:14:54.892451+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:c1475ced51d4c1389a8e440d896d9c4922bf46f9e344beed30dbe93c44d4fa5b",
+  "toolchainVersion": "codex-independent-review-v9"
+}

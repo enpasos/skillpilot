@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex image_gen",
+    "--review-status",
+    "pilot"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Primärzellen und Batterietypen fachlich beurteilen\nSkillPilot ID: c8844ac6-c414-5a0e-9fcd-7d0a82177d09\nPrompt: tmp/goal-visualizations/c8844ac6-c414-5a0e-9fcd-7d0a82177d09/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/c8844ac6-c414-5a0e-9fcd-7d0a82177d09/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- c8844ac6-c414-5a0e-9fcd-7d0a82177d09 \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "unmodifiedNormalTool": true
+}

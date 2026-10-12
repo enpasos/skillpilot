@@ -1,0 +1,33 @@
+# Chemie Q3 – 13 aktuelle Autorenkandidaten
+
+Inaktives, additives Autorenpaket für genau 13 offene Ziele. Der zentrale aktuelle Stand bleibt **212/402**, Nettozuwachs **0**. Dieses Paket erteilt weder unabhängige QS noch menschliche Freigabe, Erprobung oder Veröffentlichungsfreigabe.
+
+Der ganze aktuelle Canonical mit 523 Knoten und 402 curricularAtomic-Zielen bleibt erhalten. Die drei fachlichen Nachfolger des versiegelten Elternpakets werden gezielt übernommen; die fünf inzwischen aktiven B007-Anwendbarkeitskorrekturen bleiben unverändert. Die drei parallelen Q3-Ziele 81373fb7, 8be14f15 und c8844ac6 sind ausgeschlossen.
+
+## Konkrete Arbeit
+
+Das tatsächlich gesehene Altbild 96fd8608 hatte keinen Verbraucher im Arbeitsmesskreis und verband elektrische Arbeit unzulässig pauschal mit Reaktionsenthalpie. Die neue PNG zeigt einen Verbraucher, Amperemeter in Reihe und Voltmeter parallel, getrennt gepolte Zellanschlüsse sowie gleichzeitig unter Last konstante Werte mit W=U·I·t=33 J. Zwei fehlerhafte Generatorversuche mit unzulässigem Zellsymbol bleiben als verworfene Historie erhalten. Der dritte Entwurf ist ein Autorenkandidat. Er wurde mit dem eingebauten OpenAI image_gen erzeugt, hat die nahe native Größe 1672×941 und bleibt CC-BY-4.0; Erzeugung und Autoreninspektion sind keine V-Freigabe. Alle anderen 12 ursprünglichen Bildbytes und Anbieter bleiben erhalten.
+
+Alle 13 v2-P-Kandidaten wurden mit dem normalen Materialisierer aktuell gebunden. Die vollständigen 28 zweisprachigen Material-, Aufgaben-, Modell-, Bewertungs- und Transferfälle sind exakt aus dem Elternpaket erhalten: dessen 21 bewahrte, 5 geänderte und 2 neue fachliche Fallkörper werden hier nicht erneut umgeschrieben. Fallanzahlen schaffen keine Wiederholungsquote. Zahlenvarianten werden nicht als konzeptueller Transfer umgedeutet; synthetisches Autorenmaterial belegt keine tatsächliche Lernendenleistung.
+
+Für die drei geänderten Semantiken liegen begründete Autorenentscheidungen zur Memory-Notwendigkeit vor: kein neuer isolierter Abrufbedarf, keine neuen Karten. Der normale M3-Check ist aktuell und bestanden. Die Autorenatomarität ist für 882630 und 96fd ein positiver Kandidat. **c0463225 bleibt needs_developer_review**: vollständige Prozessanalyse mit Ausbeute/Kinetik/Kosten und MWG-/quadratische Konzentrationsberechnung können unabhängig beurteilt werden. Dieser konkrete Befund muss fachlich entschieden werden; das Paket schließt ihn nicht durch einen Hashwechsel.
+
+## Aktuelle Prüfoberflächen
+
+`inputs/FINAL.neutral-whole402-P13-whole28-source-bounded.join.json` enthält aktuelle ganze Ziele, normale D-Kontexte, P-Eingaben und P-Records, ganze Fälle, Prerequisites, Eltern, Reverse-Bezüge, aktuelle Quellenpayloads und Bildbindungen. Das ganze neutrale 402-Seiten-Modell bleibt separat erhalten. Für die tatsächliche Native-Prüfung wurden 13 normale Lernzielseiten als HTML und PDF erzeugt; das PDF enthält zusätzlich zwei normale Vorderseiten. Alle 13 HTML- und PDF-Zielseiten sowie die 26 Bildansichten bei 360 und 680 Pixeln wurden tatsächlich als Autorenansichten angesehen. Alle 13 Bilder sind quer; hier liegt keine 4:3-Ausnahme vor. Der normale Renderer wurde unverändert genutzt und hat keine Überläufe gemeldet. Ein schmales Bild vermittelt Orientierung; sekundäre Kleinschrift ist keine zusätzliche Leseaufgabe.
+
+Der Quellenatlas wurde mit dem aktuellen Canonical und den unverändert erhaltenen gezielten Quellenvorschlägen erneut durch die normalen Funktionen erzeugt: 381 projizierbare Ziele, 48 Ansichten, 497 ungelöste Scope-Entscheidungen und 21 Auslassungen. **402 ist weiterhin der M7-Nenner.** Die normale Kompaktierung verändert gegenüber der Ausgangsprojektion 20 Quellenpayloads, darunter 12 bereits strenge Quellenkontexte, und drei Ansichtsmitgliedschaften. Gegenüber dem vorgeschlagenen Elternatlas sind die semantischen Quellenpayloads unverändert. 656 direkte vollständige Normzeilen bleiben exakt erhalten; ganze Partnerkörper verweisen auf den aktuellen Canonical.
+
+Quellenkompaktierung beweist keine vollständige Normunion. HE-Faraday ohne Berechnungen wird nicht zur obligatorischen Rechenpflicht; BW-Untersuchung, BY-Planung versus Durchführung, HB-Druck und quantitative Faktoren, breitere Wasserstoff-Photochemie und optionale RP-Arrhenius-Inhalte bleiben mit ihren echten Beiträgen und Grenzen sichtbar. Maschinelle QS verlangt geeignetes Curriculum, Material, fachliche Kriterien und Operatorentreue. Sie verlangt keine vorgelagerte menschliche Laborfreigabe oder Human Trial. Ein schriftlicher Modellfall belegt dennoch keine tatsächliche Ausführung und ersetzt keinen Durchführungsoperator.
+
+## Unabhängige Fortsetzung
+
+Startpunkt ist `FINAL.neutral-input-manifest.json` mit `independent-QA-plan.neutral.json`. Zwei getrennte Prüfer müssen die aktuellen neutralen Eingaben, alle 13 Native-Seiten und die betroffenen Quellen-/Bildkontexte lesen und konkrete Befunde auflösen. Autorenmeinungen und alte unabhängige Urteile sind keine neue unabhängige Prüfung. Insbesondere die c046-Granularität und die Verträglichkeit des bewahrten 882630-Bildes mit dem getrennten Quellenkritikpartner bleiben echte Prüffragen.
+
+Die Schutzprüfung des bereits abgeschlossenen aktuellen zentralen Berichts wird hier als externe Evidenz referenziert: Mathematik 807/807, Physik 478/478, Biologie 397/397 und Wirtschaft 346/346. Keine aktiven Canonicals, Registry, Ledger, Assets, veröffentlichten Artefakte oder Pakete anderer Autoren wurden durch dieses Paket verändert.
+
+## Reproduktion
+
+Die normalen Prepare-/Import-Helfer laufen als exakte Kopien in einer schlanken temporären Kapsel außerhalb `curricula`; ihre Ausgaben werden ausschließlich hier unter `visualization/staged/` abgelegt. `reproduction/prepare-capsule.author.py` kopiert nur benötigte normale Toolmodule, Vertragsdateien und konfigurierte Eingaben, verwendet vorhandene Abhängigkeiten und unveränderte Assets ohne Datenkorpus- oder Dependency-Kopie. `reproduction/source-current-and-neutral.author.mts` ruft die normalen Quellen-/Model-/Kontextfunktionen unverändert auf und schreibt nur Paketdateien. Die logischen Atlas-Ausgaben werden als reguläre Dateien unter `sources/normal-current-output/` abgelegt. **Die normale Atlas-Write-CLI mit dieser inaktiven Config nicht im gemeinsamen Repository ausführen**: ihre logischen Ausgaberouten sind keine Integrationsfreigabe.
+
+`author-package.freeze.json` versiegelt alle Paketdateien außer sich selbst. Die historischen Elternbytes bleiben unverändert. JSON/JSONL, normale Kandidatenprüfung und Curriculum-Symlink-Portabilität sind gezielt geprüft; ein kompletter Build oder erneute QS anderer Fächer gehört nicht zu diesem Autorenlauf.

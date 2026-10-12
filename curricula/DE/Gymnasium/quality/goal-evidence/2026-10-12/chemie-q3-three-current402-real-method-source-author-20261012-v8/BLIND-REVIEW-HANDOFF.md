@@ -1,0 +1,11 @@
+# Targeted blind review handoff
+
+Read the sealed neutral join and complete actual inputs. Give original independent decisions in your own additive package; preserve all earlier author and review files. Prepared campaigns contain no votes. Author findings are hypotheses for review and are not approvals.
+
+1. Assess all three complete current goals using the whole402 and source382 native pages, exact good PNGs and full P3 profiles/cases. Verify q3-01-b c1/c2 against the original full task/solution; avoid reversing common endpoint and species presence.
+2. For81373, inspect the actual UCI primary method, named adapted quantities/control/sample handling, all synthetic readings, conservative calibration/mass-balance arguments, higher complexes and matrix transfer assumptions, same-state inference, rejection criteria and fresh transfer. Decide whether the operational assignment and observable practical scoring now cover the experimental operator as assessment design. Do not demand or invent a human run. Eight practical points are unperformed in fixture mode, while twelve interpretation points remain available.
+3. Review all raw sourceGoalIDs and full clauses, including inherited targets and hidden aliases. The normalized evidence ID alone is insufficient. Accept only explicit narrow components supported by the whole goal/case. Preserve426 literal HOLD rows unless you genuinely resolve their owners/obligations from actual evidence. No full union coverage is asserted.
+4. Inspect the SH page70 actual clause, all three removed wrong partners and exact current Micellenbildung owner6966. Preserve the other164 decisions. Targeted source context checks are also required for currently strict f0939f88, fd7977bf and6966df95 before any active integration. Whole source payloads and current212/402 status are included in the impact checks.
+5. Retain the TH page49 elevated/LK saturation obligation and existing GK removal. Retain all original eight cases, the two unchanged good P3 records, three good PNGs, five B007 fixes and523 prerequisites. Review completion is machine M7; Human Approval/Human Trial remain false.
+
+Seal original decisions first. Normal APIs/campaigns are unchanged. Root owns any later integration, current context rebinding and final targeted comparison. This author candidate has strict gain0 and independent votes0.

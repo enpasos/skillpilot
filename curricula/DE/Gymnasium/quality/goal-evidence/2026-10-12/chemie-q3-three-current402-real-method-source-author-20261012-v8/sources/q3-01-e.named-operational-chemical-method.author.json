@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "methodId": "q3-01-e-visible-FeNCS-school-adaptation",
+  "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+  "title": "Sichtbare Spektrophotometrie einer gemeinsamen Eisen(III)-Thiocyanat-Probe mit Stoffbilanz",
+  "primaryMethodSource": {
+    "institution": "University of California Irvine",
+    "title": "Investigating Iron Thiocyanate",
+    "revised": "2015-04-28",
+    "url": "https://cpb-us-e2.wpmucdn.com/faculty.sites.uci.edu/dist/a/326/files/2015/04/Chemical-Equilibrium.pdf",
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-real-method-source-author-20261012-v8/sources/UCI-investigating-iron-thiocyanate.primary.pdf",
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "actualPrimaryPagesReadAndViewed": [
+      2,
+      3,
+      4,
+      5,
+      7
+    ]
+  },
+  "sourceAndAdaptationBoundary": "The named measurement and residual-reactant balances are the official UCI teaching method. The identical dilute-acid matrix, matched blanks, multi-point calibration, presence-only bound and below-listed assessment controls are explicit SkillPilot AUTHOR adaptations, not reported UCI results. No equilibrium constant is requested. The source’s near-complete standard conversion is an approximation; calibration linearity alone cannot certify it.",
+  "proposedAssessmentOnly": true,
+  "allNumericalReadingsAreSynthetic": true,
+  "ownExperimentPerformed": false,
+  "actualLearnerPerformance": false,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "chemicalModel": {
+    "reaction": "Fe³⁺(aq) + SCN⁻(aq) ⇌ [Fe(NCS)(H₂O)₅]²⁺(aq); coordinated solvent omitted in the shortened 1:1 equation",
+    "observedProduct": "The identified red-orange iron-thiocyanate complex absorption band, compared with the supplied reference spectrum; not redness alone.",
+    "reactants": "Unbound reactant pools are inferred from known initial totals and the measured/upper-bounded product, within the stated dilute 1:1 model. They are not falsely described as two directly measured free-ion spectra.",
+    "knownLimit": "Higher Fe(NCS)n complexes, Fe hydrolysis, chloride/other ligands, concentration-dependent absorptivity and changed ionic strength can invalidate the 1:1 balances or calibration transfer. Prescribed dilute SCN, excess Fe, dilute acid and no added chloride reduce these effects; spectral-shape/linearity controls are necessary, but do not prove every hidden species absent. If these assumptions are materially contradicted, withhold the free-reactant conclusion and investigate speciation instead."
+  },
+  "schoolConditions": {
+    "setting": "Supervised school laboratory; instructor supplies verified ready-made stocks and carries out their chemical risk assessment. Alternatively use the entire synthetic fixture for interpretation; it earns no execution points.",
+    "safety": "Goggles, protective coat and pipetting aid; no mouth pipetting, heating or concentrated acids. Teacher-prepared dilute acid and iron solutions only; KSCN is harmful. Collect all iron/thiocyanate solutions as designated laboratory waste. Stop on spills, incorrect stock or failed controls.",
+    "temperatureC": 25,
+    "temperatureToleranceC": 0.5,
+    "sealedForObservation": true,
+    "noSpeciesAdditionDuringOriginalStateMeasurement": true
+  },
+  "equipment": [
+    "Visible spectrophotometer or school colorimeter with fixed480nm channel; a scanned matching complex reference is supplied when the instrument cannot scan",
+    "Matched1cm capped cuvettes",
+    "10.00mL preparation tubes/volumetric vessels and0.25–5.00mL calibrated pipettes",
+    "Thermometer, timer, labels, pipetting aid, waste vessel"
+  ],
+  "instructorStocks": {
+    "lowFe": "0.00200mol/L Fe(NO₃)₃",
+    "highFe": "0.200mol/L Fe(NO₃)₃",
+    "SCN": "0.00200mol/L KSCN",
+    "matrix": "0.100mol/L HNO₃; all three supplied stock solutions use this same dilute matrix, freshly prepared by the instructor",
+    "chlorideAdded": false,
+    "learnerConcentratedAcidPreparation": false
+  },
+  "preparations": [
+    {
+      "label": "S-original",
+      "lowFeMl": 5.0,
+      "SCNMl": 2.0,
+      "matrixMl": 3.0,
+      "totalMl": 10.0,
+      "initialFeMolL": 0.001,
+      "initialSCNMolL": 0.0004
+    },
+    {
+      "label": "S-independent-repeat",
+      "lowFeMl": 5.0,
+      "SCNMl": 2.0,
+      "matrixMl": 3.0,
+      "totalMl": 10.0
+    },
+    {
+      "label": "B-S-matched-Fe",
+      "lowFeMl": 5.0,
+      "SCNMl": 0,
+      "matrixMl": 5.0,
+      "totalMl": 10.0
+    },
+    {
+      "label": "B-SCN-only",
+      "lowFeMl": 0,
+      "SCNMl": 2.0,
+      "matrixMl": 8.0,
+      "totalMl": 10.0
+    },
+    {
+      "label": "B-high-Fe-calibration",
+      "highFeMl": 9.0,
+      "SCNMl": 0,
+      "matrixMl": 1.0,
+      "totalMl": 10.0
+    },
+    {
+      "label": "C1",
+      "highFeMl": 9.0,
+      "SCNMl": 0.25,
+      "matrixMl": 0.75,
+      "totalMl": 10.0,
+      "initialSCNMolL": 5e-05
+    },
+    {
+      "label": "C2",
+      "highFeMl": 9.0,
+      "SCNMl": 0.5,
+      "matrixMl": 0.5,
+      "totalMl": 10.0,
+      "initialSCNMolL": 0.0001
+    },
+    {
+      "label": "C3",
+      "highFeMl": 9.0,
+      "SCNMl": 0.75,
+      "matrixMl": 0.25,
+      "totalMl": 10.0,
+      "initialSCNMolL": 0.00015000000000000001
+    },
+    {
+      "label": "C4",
+      "highFeMl": 9.0,
+      "SCNMl": 1.0,
+      "matrixMl": 0.0,
+      "totalMl": 10.0,
+      "initialSCNMolL": 0.0002
+    }
+  ],
+  "operationalSteps": [
+    {
+      "step": 1,
+      "learnerAction": "Check stock labels/concentrations, hazard instructions, cuvette path length and instrument channel; label all tubes before pipetting. Record actual temperature."
+    },
+    {
+      "step": 2,
+      "learnerAction": "Prepare the named blanks and C1–C4 with separate clean tips. Mix and cap. Warm up the instrument according to its manual; record blank readings separately for high-Fe standards and low-Fe sample matrix."
+    },
+    {
+      "step": 3,
+      "learnerAction": "Measure C1–C4 at480nm at25±0.5°C. Subtract the high-Fe blank. Check monotonicity/linearity and the supplied reference band shape. Re-read a middle standard and a blank after the sample; stop if drift exceeds0.005absorbance or residuals exceed0.010. Record readings, not just a drawn straight line."
+    },
+    {
+      "step": 4,
+      "learnerAction": "Prepare S and independent repeat from the exact volumes. Mix gently, close and start the timer. Measure S in its capped cuvette without chemical reagents, dilution, heating, extraction or drying. Re-read the same S at60,90,120seconds after mixing and record temperature. Wait longer if values drift by more than0.005; retain the sequence and its times."
+    },
+    {
+      "step": 5,
+      "learnerAction": "Record the original product band and the low-Fe/SCN-only blank comparison before any perturbation. Product evidence, initial totals and inferred residual reactants must refer to this one original composition/time plateau. Compare the independently prepared repeat without pretending it is the same physical sample."
+    },
+    {
+      "step": 6,
+      "learnerAction": "After the original-state readings are complete, use a separate labelled aliquot for the fresh dilution test. Document its new total volume, time and return to a stable signal; never back-transfer its changed composition to the original S."
+    },
+    {
+      "step": 7,
+      "learnerAction": "Use the corrected product signal and calibrated response to bound product concentration and infer residual reactant amounts from the1:1 balance. Explain uncertainties, the model assumptions and why macroscopic stability alone does not measure equal nonzero microscopic rates. Collect waste and close the lab record."
+    }
+  ],
+  "samplingAndEquilibration": "The original S is measured directly in the same capped undiluted cuvette at controlled temperature; the optical measurement adds no reagents. No quench is claimed. If a cuvette/aliquot is diluted, heated, complexed or measured after a temperature change, allow/document the new equilibrium and treat it as a different chemical state. Keeping an aliquot bottle or measuring later is not proof of preservation.",
+  "calibrationValidity": "Correct Fe-background separately because standards and equilibrium solutions contain different Fe totals. Calibrant absorbance/initialSCN slope s equals εlα for a single complex,0<α≤1; complete conversion is not proved by a straight line. With transferable εl and the1:1 model, x=Aeq/(εl)≤Aeq/s. This upper bound is sufficient for positive residual-reactant amounts and avoids falsely declaring absolute product concentration/quantitative K from assumed100% standard conversion. If spectral/speciation or matrix transfer fails, even this bound is unavailable.",
+  "sourceOperatorsAssessed": "Named chemical coexistence demonstration, suitable preparations/controls, original-state observation and justified species conclusion. Ester equilibrium concentration measurement, model-exchange execution, reaction mechanism, Nernst and other sibling operators are not silently fulfilled."
+}

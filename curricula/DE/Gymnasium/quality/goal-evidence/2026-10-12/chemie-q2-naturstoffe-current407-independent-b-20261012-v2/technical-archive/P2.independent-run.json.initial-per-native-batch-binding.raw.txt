@@ -1,0 +1,71 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q2-naturstoffe-current407-independent-b-20261012-v2-P2",
+  "campaignId": "chemie-q2-targeted-v2-2-b",
+  "roundId": "chemie-q2-targeted-v2-2-b-first-pass",
+  "batchId": "chemie-q2-targeted-v2-2-b-first-pass.batch-001",
+  "batchInputFingerprint": "sha256:ad1788f69c7d30ca4d4b24038f9ca408863c6b8e7043fd92d38d33c35a3608d4",
+  "bundleFingerprint": "sha256:29c2d8c826c902a239ab67219621b01202752e2d4997c4f67e36492ab2b10339",
+  "bookDigest": "sha256:91698fff86e9c51c1a6a8fb8cd74e674154487c9edd8955a154993e0b97bc2aa",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex inherited session model",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemistry-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:1c63eb40eb7a0ae60178d76d4c25b81b5e7ce4524001a422808f270dccaaa41f",
+  "independenceGroupId": "chemie-q2-targeted-v2-2-b-independent",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "b47d542d-c2d7-5554-95dc-10b47ab622ab",
+    "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+    "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+    "b4ca3af2-77f1-59e8-955d-c4959e284242",
+    "96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+    "793189f8-78bd-5204-848b-fd2bbc12e458",
+    "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+    "360fccb9-896d-5e67-bf5d-5732621604c9",
+    "8fe39739-2938-5e2c-8db2-08572b44569a",
+    "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+    "9abd8069-17ad-5d30-9102-f8eff6055045",
+    "3681e688-7880-5bb4-9ab9-ef78289345c8",
+    "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:91698fff86e9c51c1a6a8fb8cd74e674154487c9edd8955a154993e0b97bc2aa"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:e4e09ff3e5beb5531d35d70e48b6ee5d29eb7c2f982b235172a8b65a980542a0"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:6d202b05e5ef32e0b8aaaad82d6e60fb694babf87de12cc6f6ca1de4955ecd22"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ce85efa5031db286833fdf96c9814645ff6a83f5c0fe26ff0552db52df97f016"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ad1788f69c7d30ca4d4b24038f9ca408863c6b8e7043fd92d38d33c35a3608d4"
+    }
+  ],
+  "startedAt": "2026-10-12T05:58:16.808699+00:00",
+  "completedAt": "2026-10-12T06:44:13.688317+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:22005552586ea94484c84ba96ec1c154e3e7678d512303748fd403054ce7a993",
+  "toolchainVersion": "skillpilot-normal-positive-understanding-evidence-v2"
+}

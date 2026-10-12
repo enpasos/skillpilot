@@ -1,0 +1,30 @@
+{
+  "checkedAtUTC": "2026-10-12T11:38:43.179417+00:00",
+  "neutralSHA256": "sha256:bc99d0806b41e83b8028f12a0ba69bb859fda188319ee4a5495cd333b518307c",
+  "technicalFreezeSHA256": "sha256:d548566ee07a64b4588cff91a7f05cf8bf3df241d9c5313eeba2399ebaa7e9bd",
+  "verifiedOwnedPreparationFiles": 266,
+  "errors": [],
+  "ownedM407CarryforwardUnreviewedOtherRows": 384,
+  "reviewerScientificHolds": [
+    "e81a4aed-9695-533e-8eb7-7a0c714346ea"
+  ],
+  "D1NormalExit": 0,
+  "D2NormalExit": 0,
+  "A23NormalExit": 0,
+  "P23SchemaAndUnmodifiedNormalSemanticsErrors": [],
+  "M407NormalExit": 0,
+  "M407Counts": {
+    "ordinaryAtomic": 407,
+    "noMemoryNeeded": 350,
+    "memoryRequired": 57,
+    "primaryCards": 75,
+    "visibilityScopes": 9,
+    "missingVisibleMemory": 0
+  },
+  "smallM23HarnessFailuresPreserved": [
+    "validation-M23.actual.json",
+    "validation-M23fixed.actual.json"
+  ],
+  "smallM23HarnessExplanation": "The normal memory CLI requires all deck-carrier/card-origin traces. Reduced scope first omitted carriers, then omitted unrelated memory-required origin records. Final M407 validation uses384 exact unchanged input lines plus23 own necessity decisions; this is technical carryforward, not384 new votes.",
+  "PInitialSchemaFailurePreserved": true
+}
