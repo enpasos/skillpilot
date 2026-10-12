@@ -22,8 +22,8 @@ kein Ersatz für den Nenner von 402 curricularAtomic-Zielen.
 
 Nachweise:
 
-- [Aktueller zentraler Bericht](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-active-adoption-root-20261012-v5/checks/central-current402-after-five.actual.json)
-- [Tatsächlicher normaler Prüflauf](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-active-adoption-root-20261012-v5/checks/central-current402-after-five.run.actual.json)
+- [Aktueller zentraler Bericht](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-active-adoption-root-20261012-v5/checks/central-current402-after-five.actual.json)
+- [Tatsächlicher normaler Prüflauf](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-active-adoption-root-20261012-v5/checks/central-current402-after-five.run.actual.json)
 
 ## Nettozuwachs und fachliche Arbeit
 
@@ -46,9 +46,9 @@ Beschreibungsauflösungen erzeugt. Historische Reviews, Bilder und Pakete bleibe
 unverändert erhalten. Eine Umbenennung alter Folgeprüfungen in Erstprüfungen
 wurde nicht als fachliche Arbeit verwendet.
 
-- [Übernahme der vier Naturstoff-Ziele](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-current402-normal-integration-root-20261012-v3/APPLIED.selected-four-active-adoption.actual.json)
-- [Geprüfte inaktive Manganometrie-Auflösung](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-normal-integration-root-20261012-v4/FINAL.inactive-ready.manifest.json)
-- [Tatsächliche aktive Manganometrie-Übernahme](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-active-adoption-root-20261012-v5/APPLIED.one-current-scientific-adoption.actual.json)
+- [Übernahme der vier Naturstoff-Ziele](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q2-four-current402-normal-integration-root-20261012-v3/APPLIED.selected-four-active-adoption.actual.json)
+- [Normale Manganometrie-Beschreibungsauflösung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-normal-integration-root-20261012-v4/native-D1/resolution-index.json)
+- [Tatsächliche aktive Manganometrie-Übernahme](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-active-adoption-root-20261012-v5/APPLIED.one-current-scientific-adoption.actual.json)
 
 ## Begrenzte Quellenkorrektur bei Manganometrie
 
@@ -84,7 +84,7 @@ Folgekandidaten beheben diese Befunde; bestehende gültige fachliche Arbeit wird
 beibehalten. Die korrigierte Ammoniumgrafik erhält aktuelle Bild-, P- und native
 Seitenbindungen vor einer Integration.
 
-Dieser neue Stand liegt zunächst lokal. Erforderliche abhängige Prüfungen,
-Commit, Push und der terminale GitHub-CI-Nachweis werden am stabilen
-Integrationsstand gebündelt. Frühere grüne GitHub-Läufe prüfen diese neuen
-Änderungen nicht.
+Der stabile Fünf-Ziel-Stand ist mit [Commit c4ed0c942](https://github.com/enpasos/skillpilot/commit/c4ed0c942a43cababa6a54434e95cfa70cda37ac)
+auf `main` gesichert. Der terminale GitHub-CI-Nachweis muss dem jeweils geprüften
+Commit zugeordnet werden. Frühere grüne GitHub-Läufe prüfen spätere Änderungen
+nicht.
