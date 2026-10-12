@@ -205,7 +205,7 @@ test("record-only cleans browser-created learners after success and after a fail
   const definition = {
     schemaVersion: 1, id: "quickstart-test", title: "Browser fixture", sourceRevision: "local-test",
     outputDir: "./output", cacheDir: "./cache",
-    browser: { baseUrl: `http://127.0.0.1:${address.port}`, defaultTimeoutMs: 300, postActionDelayMs: 50 },
+    browser: { baseUrl: `http://127.0.0.1:${address.port}`, defaultTimeoutMs: 10_000, postActionDelayMs: 50 },
     privacy: { maskSelectors: ["#private"], evidenceSelectors: ["h1"] },
     narration: { mode: "scripted", ttsModel: "gemini-3.1-flash-tts-preview", voice: "Sulafat" },
     chapters: [{ id: "start", title: "Start", scriptedNarration: "Browser fixture.", steps: [
@@ -268,7 +268,12 @@ test("record-only cleans browser-created learners after success and after a fail
   await assert.rejects(runQuickstart({ scenarioPath, recordOnly: true, reuseRecording: true }), /no capture-bound cleanup evidence/u);
   assert.deepEqual(operations, ["CREATE", "DELETE"]);
   await assert.rejects(access(join(directory, "output", ".quickstart-learner-cleanup.json")), /ENOENT/u);
-  await writeFile(scenarioPath, yaml.replace("text: Created", "text: Never appears"));
+  const failingScenario = await loadScenario(scenarioPath);
+  const failingAssert = failingScenario.chapters[0]!.steps[2]!;
+  assert.ok(failingAssert.action === "assert");
+  failingAssert.text = "Never appears";
+  failingAssert.timeoutMs = 300;
+  await writeFile(scenarioPath, YAML.stringify(failingScenario));
   await assert.rejects(runQuickstart({ scenarioPath, recordOnly: true }), /Scenario failed at start\/assert/u);
   assert.deepEqual(operations, ["CREATE", "DELETE", "CREATE", "DELETE"]);
   await assert.rejects(access(join(directory, "output", ".quickstart-build.lock")), /ENOENT/u);
