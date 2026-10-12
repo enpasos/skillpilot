@@ -1151,7 +1151,11 @@ export const CurriculaView: React.FC = () => {
                       curriculum.topLevelTopicsEn,
                       curriculum.subjectQuality,
                       localizedLanguage,
-                    )
+                    ).sort((left, right) => (
+                      maturityOrder.findIndex((level) => level === right.quality?.maturity)
+                      - maturityOrder.findIndex((level) => level === left.quality?.maturity)
+                      || left.subject.localeCompare(right.subject, localizedLanguage)
+                    ))
                     if (qualityRows.length === 0) return null
                     const hasMaturityDetails = qualityRows.some((row) => row.quality != null)
                     return (

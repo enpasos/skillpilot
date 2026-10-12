@@ -10,10 +10,10 @@ function assert(condition: unknown, message: string): asserts condition {
 }
 
 const subjectMaturities = [
-  ['Mathematik', 'M6'],
-  ['Physik', 'M6'],
+  ['Mathematik', 'M7'],
+  ['Physik', 'M7'],
   ['Chemie', 'M6'],
-  ['Biologie', 'M0'],
+  ['Biologie', 'M7'],
   ['Informatik', 'M0'],
   ['Deutsch', 'M0'],
   ['Englisch', 'M0'],
@@ -21,7 +21,7 @@ const subjectMaturities = [
   ['Latein', 'M0'],
   ['Geschichte', 'M6'],
   ['Politik und Wirtschaft', 'M0'],
-  ['Wirtschaftswissenschaften', 'M0'],
+  ['Wirtschaftswissenschaften', 'M7'],
 ] as const
 
 const curriculaPayload = {
@@ -42,7 +42,7 @@ const curriculaPayload = {
     subjectQuality: subjectMaturities.map(([subject, maturity]) => ({
       subject,
       landscapeId: `fixture-${subject}`,
-      qualityStatus: subject === 'Physik' ? 'human_trial_in_progress' : maturity === 'M6' ? 'machine_qa' : 'experimental',
+      qualityStatus: subject === 'Physik' ? 'human_trial_in_progress' : maturity !== 'M0' ? 'machine_qa' : 'experimental',
       humanTrial: subject === 'Physik' ? {
         state: 'in_progress', scopeLabel: 'Physik Hessen Sek II', scopeCoverage: 'partial', requiredGoals: 20, practicedGoals: 3,
       } : null,
@@ -298,6 +298,14 @@ try {
     const grid = page.getByTestId('curriculum-quality-grid')
     const rows = page.getByTestId('curriculum-quality-row')
     assert(await rows.count() === subjectMaturities.length, 'every subject has one quality row')
+    const subjectOrder = await rows.evaluateAll((elements) => elements.map((element) => (
+      element.firstElementChild?.firstChild?.textContent?.trim()
+    )))
+    assert(JSON.stringify(subjectOrder) === JSON.stringify([
+      'Biologie', 'Mathematik', 'Physik', 'Wirtschaftswissenschaften',
+      'Chemie', 'Geschichte',
+      'Deutsch', 'Englisch', 'Französisch', 'Informatik', 'Latein', 'Politik und Wirtschaft',
+    ]), 'subjects are ordered by descending maturity, then alphabetically, regardless of human trial status')
     assert(await rows.filter({ hasText: 'Mathematik' }).getByText('Maschinelle QS', { exact: true }).isVisible(), 'the formerly hardcoded green subject follows server evidence')
     assert(await rows.filter({ hasText: 'Physik' }).getByText('Menschliche QS läuft', { exact: true }).isVisible(), 'a confirmed active trial has a distinct label')
     assert(await rows.filter({ hasText: 'Physik' }).getByText('Erprobungsumfang: Physik Hessen Sek II', { exact: true }).isVisible(), 'partial scope stays explicitly qualified')
