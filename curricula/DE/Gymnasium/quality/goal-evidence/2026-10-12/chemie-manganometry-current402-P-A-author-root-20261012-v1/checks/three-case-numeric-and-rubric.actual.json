@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "calculationOnlyNotScientificApproval": true,
+  "dataAreSynthetic": true,
+  "rows": [
+    {
+      "caseId": "manganometry-01-fe-donor",
+      "rawConsumptions_mL": [
+        18.58,
+        18.62,
+        18.6
+      ],
+      "mean_mL": 18.599999999999998,
+      "corrected_mL": 18.56,
+      "calculated_mol_per_L": 0.0928,
+      "rubricPoints": 13
+    },
+    {
+      "caseId": "manganometry-02-acceptor-standardization",
+      "rawConsumptions_mL": [
+        10.02,
+        10.0,
+        9.98
+      ],
+      "mean_mL": 10.0,
+      "corrected_mL": 10.0,
+      "calculated_mol_per_L": 0.02,
+      "rubricPoints": 13
+    },
+    {
+      "caseId": "iodometry-03-iodate-acceptor",
+      "rawConsumptions_mL": [
+        12.1,
+        12.12,
+        12.14
+      ],
+      "mean_mL": 12.12,
+      "corrected_mL": 12.0,
+      "calculated_mol_per_L": 0.002,
+      "rubricPoints": 13
+    }
+  ],
+  "freshCounterexamples": {
+    "dilutedFe_mol_per_L": 0.01856,
+    "stockFeAfterFactor5_mol_per_L": 0.0928,
+    "oxidizedStandardApparentMnO4_mol_per_L": 0.025
+  }
+}

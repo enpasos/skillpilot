@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-11T14:56:28.201Z
+Generated: 2026-10-12T10:12:51.655Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -18,19 +18,19 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 523 |
 | Atomare Ziele im Visualisierungs-Scope | 402 |
-| Ziele mit primaerem Visualisierungslink | 385 |
-| Coverage | 95.8% |
+| Ziele mit primaerem Visualisierungslink | 387 |
+| Coverage | 96.3% |
 | Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 402 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 23 |
-| Offene Provider-Deferred-Ziele | 17 |
+| Offene Provider-Deferred-Ziele | 15 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 41 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 43 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -40,9 +40,9 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | `accepted` | 118 |
 | `ai_candidate` | 2 |
 | `ai-reviewed` | 5 |
-| `candidate` | 4 |
+| `candidate` | 5 |
 | `pending-independent-actual-review` | 6 |
-| `pilot` | 250 |
+| `pilot` | 251 |
 
 ## Ledger Decisions
 
@@ -76,7 +76,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 17 Provider- und 0 Quality-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 15 Provider- und 0 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -96,10 +96,8 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | 018 | `360fccb9-896d-5e67-bf5d-5732621604c9` | Nahrungsmittelinhaltsstoffe strukturbezogen einordnen | `deferred_provider_limitation` |
 | 018 | `f4d5a02d-711b-5a6b-a41d-971359c1f64d` | Optische Aktivität und Polarimetrie auswerten | `deferred_provider_limitation` |
 | 018 | `f0f2c5f8-06f1-5774-a176-d96505727acf` | pE/pH- und Pourbaix-Diagramme | `deferred_provider_limitation` |
-| 018 | `197bc2c5-835e-59e7-9263-5684e89799cc` | Peptidbindungen erklären | `deferred_provider_limitation` |
 | 018 | `e56040b5-1da8-5080-b358-086d04922339` | Silikone herstellen und strukturbezogen vergleichen | `deferred_provider_limitation` |
 | 018 | `0773a104-aaeb-5e96-a615-2a2bec3eb096` | Tensidstrukturen optimieren | `deferred_provider_limitation` |
-| 018 | `127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a` | Zucker in Alltag und Ernährung bewerten | `deferred_provider_limitation` |
 | 018 | `3dbd84de-51cb-5ff7-801b-077a54520fed` | σ-Komplex-Mechanismus | `deferred_provider_limitation` |
 
 ### Open Quality Deferred
@@ -159,7 +157,7 @@ Keine Eintraege.
 | `d2d735de-bede-5310-8aeb-8bb7562c7b75` | Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen | `pilot` | - |
 | `7b39fa19-fec3-575e-9324-a3226b703358` | Leerlaufspannungen galvanischer Zellen experimentell ermitteln | `pilot` | - |
 
-Weitere 11 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 13 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 

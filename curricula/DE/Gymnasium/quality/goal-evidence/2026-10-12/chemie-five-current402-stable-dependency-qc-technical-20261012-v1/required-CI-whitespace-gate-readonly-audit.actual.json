@@ -1,0 +1,15 @@
+{
+  "atUTC": "2026-10-12T10:25:50.401633+00:00",
+  "argv": [
+    "rg",
+    "-n",
+    "diff.*--check|--check.*diff|whitespace",
+    ".github/workflows"
+  ],
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "",
+  "requiredCIWhitespaceGateFound": false,
+  "decision": "preserve sealed new-file blank-at-EOF bytes; no configuration exception or scientific/source-quality waiver",
+  "parentDirection": "No per-file whitespace exceptions; treat two immutable historical formatting findings as nonblocking if regular CI has no such gate."
+}

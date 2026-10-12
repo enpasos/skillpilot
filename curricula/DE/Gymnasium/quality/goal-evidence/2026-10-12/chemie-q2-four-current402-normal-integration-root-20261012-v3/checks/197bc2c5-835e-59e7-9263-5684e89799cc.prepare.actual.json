@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "197bc2c5-835e-59e7-9263-5684e89799cc",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)",
+    "--review-status",
+    "pilot"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Peptidbindungen erklären\nSkillPilot ID: 197bc2c5-835e-59e7-9263-5684e89799cc\nPrompt: tmp/goal-visualizations/197bc2c5-835e-59e7-9263-5684e89799cc/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/197bc2c5-835e-59e7-9263-5684e89799cc/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- 197bc2c5-835e-59e7-9263-5684e89799cc \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "unmodifiedNormalTool": true
+}

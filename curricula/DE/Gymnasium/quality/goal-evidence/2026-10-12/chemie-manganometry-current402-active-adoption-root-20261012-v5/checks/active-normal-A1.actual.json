@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "app/node_modules/.bin/tsx",
+    "app/scripts/checkSemanticAtomicity.ts",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-active-adoption-root-20261012-v5/active-configs/A1.config.json",
+    "--mode=check"
+  ],
+  "startedAtUTC": "2026-10-12T09:49:49.441074+00:00",
+  "finishedAtUTC": "2026-10-12T09:49:49.770659+00:00",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\nError [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/enpasos/projects/skillpilot/app/scripts/checkSemanticAtomicity.ts' imported from /home/enpasos/projects/skillpilot/\n    at finalizeResolution (node:internal/modules/esm/resolve:283:11)\n    at moduleResolve (node:internal/modules/esm/resolve:952:10)\n    at defaultResolve (node:internal/modules/esm/resolve:1188:11)\n    at nextResolve (node:internal/modules/esm/hooks:864:28)\n    at resolveBase (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/esm/index.mjs?1791798589655:2:3744)\n    at resolveDirectory (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/esm/index.mjs?1791798589655:2:4243)\n    at resolveTsPaths (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/esm/index.mjs?1791798589655:2:4984)\n    at resolve (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/esm/index.mjs?1791798589655:2:5361)\n    at nextResolve (node:internal/modules/esm/hooks:864:28)\n    at Hooks.resolve (node:internal/modules/esm/hooks:306:30) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///home/enpasos/projects/skillpilot/app/scripts/checkSemanticAtomicity.ts'\n}\n\nNode.js v20.20.2\n",
+  "unmodifiedNormalCode": true
+}

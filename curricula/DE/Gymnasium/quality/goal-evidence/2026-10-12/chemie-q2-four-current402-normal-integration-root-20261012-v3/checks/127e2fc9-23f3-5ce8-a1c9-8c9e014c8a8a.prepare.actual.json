@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)",
+    "--review-status",
+    "pilot"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Zucker in Alltag und Ernährung bewerten\nSkillPilot ID: 127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a\nPrompt: tmp/goal-visualizations/127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- 127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "unmodifiedNormalTool": true
+}

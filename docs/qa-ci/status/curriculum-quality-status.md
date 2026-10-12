@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-11T21:57:00.274Z
+Generated: 2026-10-12T10:18:56.432Z
 Rules version: curriculum-quality-v5
 
 ## Summary

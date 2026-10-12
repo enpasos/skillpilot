@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3f73a52f2265240ad009d30741bba3d7b9b4c609a53aa132260d97578dd98ef3",
+  "reviewInputFingerprint": "sha256:348e87b14a685c171cb40218cab2ecb89ccb400b38f5fb0cbf9da5e1eb104892",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-manganometry-source-literal-current402-root-20261012-v3-a",
+      "roundId": "chemie-manganometry-source-literal-current402-root-20261012-v3-first-pass-a",
+      "independenceGroupId": "chemie-manganometry-source-literal-current402-root-20261012-v3-independent-a",
+      "runIds": [
+        "chemie-manganometry-literal-v3-first-current-independent-a-original"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 Codex inherited session; exact serving variant not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-manganometry-source-literal-current402-root-20261012-v3-b",
+      "roundId": "chemie-manganometry-source-literal-current402-root-20261012-v3-first-pass-b",
+      "independenceGroupId": "chemie-manganometry-source-literal-current402-root-20261012-v3-independent-b",
+      "runIds": [
+        "chemie-manganometry-literal-current402-normal-first-independent-b-20261012-v3-D-original-first"
+      ],
+      "providers": [
+        "OpenAI Codex session"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex session::GPT-6 session identity; exact serving model revision unavailable::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "firstRecordId": "chemie-manganometry-literal-v3-first-current-independent-a-original:2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "secondRecordId": "chemie-manganometry-literal-current402-normal-first-independent-b-20261012-v3-D-2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+      "firstRunId": "chemie-manganometry-literal-v3-first-current-independent-a-original",
+      "secondRunId": "chemie-manganometry-literal-current402-normal-first-independent-b-20261012-v3-D-original-first",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "goalId": "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+  "rows": [
+    {
+      "caseId": "manganometry-01-fe-donor",
+      "completeCaseSha256": "sha256:e7ced1cecba7d9295bb5328d354980918ca5a1ddb3f18c594169bc8c4d8cdfcc",
+      "taskMethodRawDataWorkedPracticalRubricActuallyReadDEEN": true,
+      "independentRecalculation": {
+        "consumption_mL": [
+          18.580000000000002,
+          18.619999999999997,
+          18.6
+        ],
+        "mean_mL": 18.599999999999998,
+        "corrected_mL": 18.56,
+        "n_MnO4_mol": 0.00037119999999999997,
+        "c_FeII_mol_L": 0.0928,
+        "freshDiluted_mol_L": 0.01856,
+        "freshStock_mol_L": 0.0928
+      },
+      "chemicalEquationsBalanced": true,
+      "quantificationCorrect": true,
+      "meaningfulFreshTransfer": true,
+      "practicalObservableRubricAdequate": true,
+      "practicalEvidenceNotInferredFromSyntheticFixture": true,
+      "supervisedSafetyAndDisposalBoundariesAdequate": true,
+      "humanLabTrialPerformed": false
+    },
+    {
+      "caseId": "manganometry-02-acceptor-standardization",
+      "completeCaseSha256": "sha256:c7635c17a18190002073e5239ae758bbc258def684f9672375aaf7db2e4911af",
+      "taskMethodRawDataWorkedPracticalRubricActuallyReadDEEN": true,
+      "independentRecalculation": {
+        "consumption_mL": [
+          10.02,
+          10.0,
+          9.98
+        ],
+        "mean_mL": 10.0,
+        "n_FeII_mol": 0.001,
+        "c_MnO4_mol_L": 0.02,
+        "oxidizedStandardTrueConsumption_mL": 8.0,
+        "wrongLabelApparent_mol_L": 0.025
+      },
+      "chemicalEquationsBalanced": true,
+      "quantificationCorrect": true,
+      "meaningfulFreshTransfer": true,
+      "practicalObservableRubricAdequate": true,
+      "practicalEvidenceNotInferredFromSyntheticFixture": true,
+      "supervisedSafetyAndDisposalBoundariesAdequate": true,
+      "humanLabTrialPerformed": false
+    },
+    {
+      "caseId": "iodometry-03-iodate-acceptor",
+      "completeCaseSha256": "sha256:58f1f9ef6e379b85ad167272a8f139af1c6662821cc2d2363c2dd78e32902d6b",
+      "taskMethodRawDataWorkedPracticalRubricActuallyReadDEEN": true,
+      "independentRecalculation": {
+        "consumption_mL": [
+          12.1,
+          12.12,
+          12.14
+        ],
+        "mean_mL": 12.12,
+        "corrected_mL": 12.0,
+        "c_IO3_mol_L": 0.002,
+        "iodineLiberationChargeBothSides": 0,
+        "thiosulfateChargeBothSides": -4,
+        "overallChargeBothSides": -7
+      },
+      "chemicalEquationsBalanced": true,
+      "quantificationCorrect": true,
+      "meaningfulFreshTransfer": true,
+      "practicalObservableRubricAdequate": true,
+      "practicalEvidenceNotInferredFromSyntheticFixture": true,
+      "supervisedSafetyAndDisposalBoundariesAdequate": true,
+      "humanLabTrialPerformed": false
+    }
+  ],
+  "wholeCurrentPProfileActuallyRead": true,
+  "operationRedoxQuantificationCovered": true,
+  "PProfileSha256": "sha256:1d51afc5653de30c8672cf8158612c9cceee3cacd192962e93fab4c8ee294780",
+  "candidateState": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "BWAssessmentRequiresIodometryEvidenceNotOnlyTwoFeCalculations": true,
+  "actualLearnerPerformanceClaim": false,
+  "actualOperatorExecutionApproval": false,
+  "humanTrialNewM7Prerequisite": false
+}

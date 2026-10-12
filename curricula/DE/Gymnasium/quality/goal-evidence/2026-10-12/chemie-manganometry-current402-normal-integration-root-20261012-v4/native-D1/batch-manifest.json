@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-manganometry-source-literal-current402-root-20261012-v3",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-normal-integration-root-20261012-v4/configs/native-D1.batch.config.json",
+  "configDigest": "sha256:2599930951b9afecbc263b64adb0ddff885f146cc488f35e3b2caf3617039a12",
+  "goalIds": [
+    "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 402,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-literal-source-scope-author-root-20261012-v3/configs/whole402.inactive.goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-manganometry-current402-P-A-author-root-20261012-v1/candidate/canonical523.one-endpoint-image.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:f52ef74834aba591fb9a002cc50a1fc48c5d07e6125576bd5f589d8c09e6b58d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:67ad6e1e6433e05a2f946f3b7499a9d35c833bff5633423dc80b35cdcf4d6eda",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3f73a52f2265240ad009d30741bba3d7b9b4c609a53aa132260d97578dd98ef3",
+    "reviewInputFingerprint": "sha256:348e87b14a685c171cb40218cab2ecb89ccb400b38f5fb0cbf9da5e1eb104892",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-manganometry-source-literal-current402-root-20261012-v3-a",
+        "campaignDigest": "sha256:c7b551e908f6cbd81ddbb1186d92dfa877ad0746adb902588b1e0337701bac54",
+        "roundId": "chemie-manganometry-source-literal-current402-root-20261012-v3-first-pass-a",
+        "independenceGroupId": "chemie-manganometry-source-literal-current402-root-20261012-v3-independent-a",
+        "batchId": "chemie-manganometry-source-literal-current402-root-20261012-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:bb316104b3d02b3d49faa38562dcdcca2f0d81d8724e012837c8be2fe155236b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-manganometry-source-literal-current402-root-20261012-v3-b",
+        "campaignDigest": "sha256:b67dc7672d468832c6664a680cae4e325d52b5ec466631f78612b22e59c0bc5b",
+        "roundId": "chemie-manganometry-source-literal-current402-root-20261012-v3-first-pass-b",
+        "independenceGroupId": "chemie-manganometry-source-literal-current402-root-20261012-v3-independent-b",
+        "batchId": "chemie-manganometry-source-literal-current402-root-20261012-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:79b409ccdfeb10a306111f2a91f66d8a63286a5e4a438946d67175eff17e76ae"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

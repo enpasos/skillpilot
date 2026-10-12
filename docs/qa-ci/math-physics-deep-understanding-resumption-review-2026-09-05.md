@@ -1,5 +1,22 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Aktueller Auftrag vom 12. Oktober: ausschließlich Chemie M7
+
+Der [aktualisierte Goaltext](chemie-biologie-m7-goaltext-2026-09-30.md) hebt die
+Chemiepause auf und setzt den Abschluss aller aktuellen Chemieziele fort.
+Ausgangspunkt sind **212/402 streng abgeschlossene Ziele, M6, 190 offen**.
+Begonnene Chemiepakete werden gezielt weiterbearbeitet; ungeprüfte Kandidaten
+zählen nicht als abgeschlossen. Biologie 397/397, Mathematik 807/807,
+Physik 478/478 und Wirtschaft 346/346 bleiben geschützt auf M7. Es werden
+keine neuen Biologiepakete bearbeitet. Die nachfolgenden datierten
+Pausen- und Zwischenstände bleiben historische Nachweise.
+
+Der [Chemie-Fortsetzungsstand mit fünf neuen fachlichen Abschlüssen](chemie217-five-scientific-closures-2026-10-12.md)
+bestätigt jetzt **217/402 streng abgeschlossene Ziele (54,0 %), 185 offen**,
+Nettozuwachs **+5** gegenüber dem Wiederaufnahmestand. Der aktuelle zentrale
+Prüflauf besteht ohne Prüffehler; die geschützten M7-Untergrenzen bleiben
+vollständig erhalten. Ungeprüfte Naturstoff-Folgekandidaten bleiben ungezählt.
+
 ## Biologie: maschineller M7-Abschluss vom 12. Oktober
 
 Der [aktuelle Abschluss mit 397/397 Biologie](biologie-m7-machine-closeout-2026-10-12.md)
