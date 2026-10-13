@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "builtin image_gen.imagegen",
+  "modelVersion": "not exposed by tool; not invented",
+  "mode": "raster image editing",
+  "attempts": [
+    {
+      "sequence": 1,
+      "promptPath": "generation/prompt.de.md",
+      "references": [
+        {
+          "role": "edit target",
+          "path": "source/original-mobile-density.jpg",
+          "sha256": "8145d534251a6effb0970bcf0aefbf80d65a9b2e2bc33e477bfeea1a2f85d78f"
+        },
+        {
+          "role": "style reference only",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-three-visual-Pscope-atomicity-author-successor-20261013-v3/visual-candidate/curricula/DE/Gymnasium/visualizations/chemie/dfbccd62-1203-5d1b-927d-65a4ca41bbad/dfbccd62-1203-5d1b-927d-65a4ca41bbad.png"
+        }
+      ],
+      "generatedFile": "/home/enpasos/.codex/generated_images/01a132af-feb7-7433-b295-8580f574fdae/exec-601f0f2f-9c69-47c1-a06d-1c34f5e23ae0.png",
+      "retainedArtifact": "generation/attempt-1-rejected-chain-direction.png",
+      "decision": "rejected_regenerate",
+      "reasonPath": "generation/attempt-1.author-rejection.json"
+    },
+    {
+      "sequence": 2,
+      "promptPath": "generation/prompt.attempt-2.de.md",
+      "references": [
+        {
+          "role": "targeted edit of retained first attempt",
+          "path": "generation/attempt-1-rejected-chain-direction.png"
+        }
+      ],
+      "generatedFile": "/home/enpasos/.codex/generated_images/01a132af-feb7-7433-b295-8580f574fdae/exec-8e13d16b-81bd-44a7-8073-7a333e97ffb3.png",
+      "retainedArtifact": "candidate/f947cd04-952a-5a9d-9445-3ffc70e02c3c.png",
+      "decision": "author_candidate_pending_independent_review"
+    }
+  ],
+  "artifactCopies": "byte-exact generated final PNG; no raster edits, resampling, overlays or SVG were used for production",
+  "inspectionDerivatives": "Pillow resize only for 316/360/680 CSS observation, not production output",
+  "pngCrcsValid": true,
+  "pngChunkTypes": [
+    "IHDR",
+    "caBX",
+    "IDAT",
+    "IEND"
+  ],
+  "c2paContainerPresent": true,
+  "c2paCryptographicValidation": "not performed; container presence is not authorship/quality/human approval",
+  "ownDidacticImageLicense": "CC-BY-4.0",
+  "activeOrPublishedAssetChanged": false,
+  "humanApproval": false
+}

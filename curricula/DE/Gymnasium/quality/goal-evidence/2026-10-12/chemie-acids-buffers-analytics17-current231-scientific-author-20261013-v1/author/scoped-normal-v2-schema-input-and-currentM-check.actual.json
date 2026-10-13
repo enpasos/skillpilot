@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "startedAtUTC": "2026-10-13T00:39:42.648Z",
+  "completedAtUTC": "2026-10-13T00:39:43.027Z",
+  "normalModuleBindings": [
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "sha256:50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    }
+  ],
+  "normalSchemaBinding": {
+    "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+  },
+  "criteriaBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md",
+    "sha256": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+  },
+  "currentCanonicalBefore": "sha256:9a68501347031f266572dea551e71c3507b66fb5ed94142a1a99f6a282708960",
+  "currentCanonicalAfter": "sha256:9a68501347031f266572dea551e71c3507b66fb5ed94142a1a99f6a282708960",
+  "counts": {
+    "profiles": 17,
+    "fullCases": 34,
+    "explicitRubricCriteria": 104,
+    "AauthorPending": 17,
+    "AauthorAtomicVotes": 0,
+    "MrawExact": 17,
+    "Mrequired": 4,
+    "MnoMemoryNeeded": 13,
+    "existingCardTracesRead": 4,
+    "independentReviews": 0
+  },
+  "checks": [
+    "normal v2 schema",
+    "exported goal/profile/resource input fingerprint functions",
+    "exported positive record semantics",
+    "all34 full-case/brief joins",
+    "all104 criteria explicitly asked DE/EN",
+    "whole17 current tuples and declared claim exact",
+    "current17 rawM with normal fingerprints",
+    "actual four source/public memory card traces retained"
+  ],
+  "errors": [],
+  "passed": true,
+  "limitations": [
+    "Author candidates only; source EDTA BB/BE and visual481 holds remain explicit",
+    "No native build/full status/central check, no independent A/B or V approval, no active changes"
+  ]
+}

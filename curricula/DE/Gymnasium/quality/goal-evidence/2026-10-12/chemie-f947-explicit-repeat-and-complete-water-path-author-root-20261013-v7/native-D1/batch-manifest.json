@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-explicit-repeat-and-complete-water-path-author-root-20261013-v7/configs/native-D1.batch.config.json",
+  "configDigest": "sha256:5ae702e3fe96aab3b0029e8d5a086688ec6b90a37fb7cedc6b137d1f21d15f37",
+  "goalIds": [
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 402,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-explicit-repeat-and-complete-water-path-author-root-20261013-v7/configs/whole402.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers18-current231-inactive-normal-preparation-technical-20261013-v1/candidate/canonical523.current402.six-resource-only.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:feb68d796ff1ff68622873ea0561092d84d531ea536733dad8d617f92455b4f8"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6a26e1611fe130ce6441dd9f0712f9abee7d6e51ecca94bf741703396e8fd7a6",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:407fb1b4a1cec60603752e9a8cb9960e00e76b122a48130f6c8b63e92567af8c",
+    "reviewInputFingerprint": "sha256:da4525fa7cd79730c3467d822d6859b3fc7aa60603b934ee6a062d2b5f3e321c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-a",
+        "campaignDigest": "sha256:93a73162f4d5b3ca480a9d22e46025ef49ad267f719bbfe297b02d5d3d20406d",
+        "roundId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-first-pass-a",
+        "independenceGroupId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-independent-a",
+        "batchId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:2cd9b9e467516945ed924483d55eae168e137d49e96b5117a9e012f796a5b4c8"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-b",
+        "campaignDigest": "sha256:3325c91659663fb9bb5cf26fb67509d1163dae257e2ebcd1f99434f0a28a0fef",
+        "roundId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-first-pass-b",
+        "independenceGroupId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-independent-b",
+        "batchId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:2b0233b1ba895b92ae3189059e55d942f5d41788ef1995787650166ec239fc95"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

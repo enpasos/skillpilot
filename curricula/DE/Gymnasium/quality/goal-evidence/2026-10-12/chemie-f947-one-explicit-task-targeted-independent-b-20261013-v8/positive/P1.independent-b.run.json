@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-f947-explicit-task-independent-b-20261013-v8-positive-profile-run",
+  "bundleFingerprint": "sha256:407fb1b4a1cec60603752e9a8cb9960e00e76b122a48130f6c8b63e92567af8c",
+  "bookDigest": "sha256:6a26e1611fe130ce6441dd9f0712f9abee7d6e51ecca94bf741703396e8fd7a6",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex inherited runtime; exact revision not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-independent-positive-understanding-evidence-v2",
+  "promptFingerprint": "sha256:c3eb7e7815614256e034bd1bc48c99b92fd4788905dd88cd2ffea6f761b871b5",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:12ed66fb81720c3e440872e0866ab33e20d7001d0a40a2f3ba4a6ac1daa487ae",
+  "independenceGroupId": "chemie-f947-current231-explicit-repeat-water-path-native-20261013-v7-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6680fdcf39dd7d8ef0919a0200a212c05c4d5905c7216503a3597e94d7a81151"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:cf9d3b099e906e15be97568f92dc96d85b87c65265eaaf5082534864491f388c"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:c3eb7e7815614256e034bd1bc48c99b92fd4788905dd88cd2ffea6f761b871b5"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-13T00:22:50.427218+00:00",
+  "completedAt": "2026-10-13T00:25:38.612169+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:294a92505052425c593dfde5e6cc8b77e302cb700e4eed476670a3a0424d47a8",
+  "toolchainVersion": "skillpilot-positive-evidence-v2-codex-independent"
+}

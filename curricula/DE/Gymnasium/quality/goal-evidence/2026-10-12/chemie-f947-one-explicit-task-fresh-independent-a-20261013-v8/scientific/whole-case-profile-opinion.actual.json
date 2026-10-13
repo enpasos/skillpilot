@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+  "reviewer": "Codex independent scientific A",
+  "reviewAuthority": "ai_candidate",
+  "decision": "hold",
+  "descriptionDecision": "block",
+  "profileRecommendation": "revise",
+  "atomicityDecision": "atomic",
+  "visualizationRecommendation": "hold_phone_legibility",
+  "reviewedAtUTC": "2026-10-13T00:30:04.739659+00:00",
+  "chemicalCases": [
+    {
+      "caseId": "f947cd04-case-1",
+      "verdict": "chemistry_correct_under_stated_idealization",
+      "reason": "The dry addition gives R-NH-C(=O)-O-R-prime with no eliminated water. Joining terminal carbonyl to the next unit oxygen makes the supplied repeat valence-correct. L has 200 mol OH and200 mol NCO; N has180+30=210 mol OH and210 mol NCO. Bifunctional components permit linear chains; triol introduces branching and network formation at sufficient conversion. Adhesive suitability is conditional; stoichiometric equality alone does not prove adhesion or useful service temperature."
+    },
+    {
+      "caseId": "f947cd04-case-2",
+      "verdict": "chemistry_correct_with_explicit_complete_path",
+      "reason": "Summing the given equations yields2 isocyanate groups per water molecule and one CO2. For the explicitly complete route 2 mmol H2O gives2 mmol CO2 and consumes4 mmol NCO, leaving96 mmol as the upper availability for alcohol before competing reactions. Gas bubbles support the moisture path but cannot establish complete dry polyurethane formation or a good network. The model correctly allows dissolution/gas loss."
+    }
+  ],
+  "bilingualParity": "DE and EN have matching supplied quantities, chemical paths, task demands, solutions and rubric conditions. Formatting no-space after a period is not a chemistry defect.",
+  "transferAndLimits": "Diol/triol functionality and dry/moist competition change chemical structure or pathway, not merely numbers. Both are independent written cases and need no image. The complete water route bounds the 96mmol inference. Case2 scoring still demands undisclosed experimental-control details. No case is a physical experiment or actual learner record.",
+  "goalSemantics": "PU formation and the functionality/stoichiometry/moisture consequences are one coherent reaction-control competence. No splitting is justified. Current conservative no_memory_needed remains defensible: supplied reactions/data and chemical explanation/application matter; isolated recall adds no separate competence.",
+  "findings": [
+    {
+      "id": "P1-ASK-CREDIT-E3",
+      "severity": "blocking",
+      "locus": "whole-two-cases.explicit-demands.author.json cases[1].taskDe/taskEn versus rubric[2].fullCreditDe/fullCreditEn; also matching P1 applicationCaseBriefs[1].understandingFocus",
+      "finding": "Case 2 asks for a justified comparison control. Full credit additionally mandates residual-group/conversion measurements and gas-loss limits. A learner can supply every explicit request with a matched dry/moist comparison, explain urethane versus amine/urea, compute 2 mmol CO2, 4 mmol NCO consumed and 96 mmol remaining, and reject bubbles as proof of dry PU success, yet lose full credit because the two additional required elements were not disclosed. The complete-path correction does not remove this assessment mismatch.",
+      "boundedRemedy": "Explicitly ask for a complementary residual-group/conversion measurement and one reason measured gas may differ from the theoretical yield, or make those model-answer details optional. Do not infer full e3 evidence from the undeclared details."
+    },
+    {
+      "id": "P1-LIMIT-AMBIGUITY",
+      "severity": "minor",
+      "locus": "case1 task asks for one ideal-model limit versus rubric[2] combined Umsatz/Haftungs-/Temperaturvorbehalt",
+      "finding": "Case 1 requests one limit, while the full-credit wording can be read as requiring all three conversion/adhesion/temperature reservations. It should state that one scientifically justified limit suffices or name all required reservations in the task.",
+      "boundedRemedy": "Clarify one acceptable limit versus multiple mandatory criteria without changing the chemistry."
+    },
+    {
+      "id": "SOURCE-PU-COMPONENT",
+      "severity": "blocking",
+      "locus": "source/whole-selected34-source-operator-route-partner-scope.actual.json",
+      "finding": "Current direct f947 partner routes include source clauses restricted to radical polymerisation, polykondensation or other sibling content. In particular the actual national atlas offers f947 in SN/TH SekI, MV GK/LK and SL GK/LK, although the bound literal clauses and inspected original PDFs do not specify PU/polyaddition. NI applicability is inherited through the Naturstoffe cluster from functional-group identification. An exact source row or a correct partner union does not make every partner supported. Keep explicit HE/BW/BY/TH polyaddition clauses and relevant sibling clauses; resolve f947 component routing before complete national-source acceptance.",
+      "boundedRemedy": "Review only each unsupported f947 component with exact current routes and effective projections; preserve all other partner targets and any valid explicit polyaddition route. No active pruning is performed."
+    },
+    {
+      "id": "V1-360CSS-LEGIBILITY",
+      "severity": "blocking_for_visual_acceptance",
+      "locus": "visual/actual-asset-360css.png; asset sha256:8145d534251a6effb0970bcf0aefbf80d65a9b2e2bc33e477bfeea1a2f85d78f",
+      "finding": "At actual 360 CSS px the image is 360 by 200.921875 px; four horizontal panels leave the right twelve-line process paragraph and repeat-unit lettering very small. Text remains a required carrier of functionality, stoichiometry and reaction-control meaning; this phone presentation does not support a clean legibility acceptance. At actual680CSS (680 by379.53125 px) the formula and paragraph can be inspected and the urethane motif is chemically correct.",
+      "boundedRemedy": "Preserve the current asset during this review. Any later correction should enlarge the essential structural motif and reduce dense lettering, or supply an explicitly reviewed alternative phone presentation; generic alt text currently names the goal but does not describe the chemical image content."
+    }
+  ],
+  "humanApproval": false,
+  "humanTrial": false,
+  "learnerMastery": false,
+  "physicalExecution": false,
+  "strictGain": 0
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "argv": [
+    "app/node_modules/.bin/tsx",
+    "--eval",
+    "import {readFileSync} from 'node:fs'; import {createHash} from 'node:crypto'; import {stableGoalBookJson} from './app/scripts/goalBookModel'; const root='/home/enpasos/projects/skillpilot/'; const p='app/public/lernzielbuch/de-gym-chemie-bundesweit.book-model.json'; const b=JSON.parse(readFileSync(root+p,'utf8')); const c=JSON.parse(readFileSync(root+b.source.landscapePath,'utf8')); const digest='sha256:'+createHash('sha256').update(stableGoalBookJson(c)).digest('hex'); console.log(JSON.stringify({atlasPath:p,atlasSourceLandscapeLogicalDigest:b.source.landscapeDigest,actualCanonicalLogicalDigest:digest,matches:b.source.landscapeDigest===digest}));"
+  ],
+  "cwd": "tmp/chemie-q4-current220-prep/execution",
+  "exitCode": 0,
+  "completedAtUTC": "2026-10-13T00:31:26.695310+00:00",
+  "modulePath": "app/scripts/goalBookModel.ts",
+  "productionModuleSHA256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb",
+  "executedModuleSHA256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb",
+  "result": {
+    "atlasPath": "app/public/lernzielbuch/de-gym-chemie-bundesweit.book-model.json",
+    "atlasSourceLandscapeLogicalDigest": "sha256:5d9d8e6d28d81ce159db679bdaeddc586e7764d2a59a76a2841e6fc61e163f1f",
+    "actualCanonicalLogicalDigest": "sha256:5d9d8e6d28d81ce159db679bdaeddc586e7764d2a59a76a2841e6fc61e163f1f",
+    "matches": true
+  }
+}

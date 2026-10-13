@@ -1,0 +1,71 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-polymers18-current231-final-native-20261013-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers18-current231-inactive-normal-preparation-technical-20261013-v1/configs/native-D18.final-current231.batch.config.json",
+  "configDigest": "sha256:6ed9d94ea69b2d338a6e4be2a9d4d5d53bc9a4d926924c1a50dd4164132e60b4",
+  "goalIds": [
+    "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+    "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+    "9b942490-ad8f-52ba-8c5a-f8a9792b7db5",
+    "8721d943-8368-5304-bd3c-7d7944099662",
+    "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+    "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+    "2652caef-b557-58b9-9b28-70db62625ce5",
+    "e47b22ec-4443-5aae-bf38-71e3164b6b3e",
+    "c21a611c-1069-5b32-b673-4f37a89b094f",
+    "2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2",
+    "e56040b5-1da8-5080-b358-086d04922339",
+    "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+    "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+    "73cbd4d8-5da1-5e54-85ce-c88e7b1613fe",
+    "14f1fe97-0585-5738-845e-9c49173d8afa",
+    "0278a515-8990-5a1c-8a1b-a03382a144a3",
+    "7f8c990a-c207-5b86-a60f-860af295c0a9"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 402,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers18-current231-inactive-normal-preparation-technical-20261013-v1/configs/whole402.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers18-current231-inactive-normal-preparation-technical-20261013-v1/candidate/canonical523.current402.six-resource-only.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:1e9e20c3185cb9aeecd5a9aea679e486b295c3f30c7bb61518affdc8e4a9c785"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e4a373454f63902a4c9da835debbdbaa62bf049929891b5e169053f01487a57a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7ba51a747767fdd29633e33bb925e1190086d437d719a72f267acc1af992172a",
+    "reviewInputFingerprint": "sha256:432ea1776ffc8c42bd9d9b1c6f0e9bb82e400db4f410ff01915fc95870eb39f3",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-polymers18-current231-final-native-20261013-v1-a",
+        "campaignDigest": "sha256:8bd1c67ba32e25f41f816c376728627fafb3f607966de5ac69f702f469bb6fa0",
+        "roundId": "chemie-polymers18-current231-final-native-20261013-v1-first-pass-a",
+        "independenceGroupId": "chemie-polymers18-current231-final-native-20261013-v1-independent-a",
+        "batchId": "chemie-polymers18-current231-final-native-20261013-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:11208781f15b4121fcd57b1ed81c70b5dd25114d0e97f0d2f1b55b52b8b62a39"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-polymers18-current231-final-native-20261013-v1-b",
+        "campaignDigest": "sha256:fc7ff09050efb4ea22157c0c79db3dafb9d7fc73f250cb5cc72ffe2822919254",
+        "roundId": "chemie-polymers18-current231-final-native-20261013-v1-first-pass-b",
+        "independenceGroupId": "chemie-polymers18-current231-final-native-20261013-v1-independent-b",
+        "batchId": "chemie-polymers18-current231-final-native-20261013-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:c19b15c5197dc2b331dac3824bd3fa21d96c783615c5c9636f27b361ca98dc95"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}
