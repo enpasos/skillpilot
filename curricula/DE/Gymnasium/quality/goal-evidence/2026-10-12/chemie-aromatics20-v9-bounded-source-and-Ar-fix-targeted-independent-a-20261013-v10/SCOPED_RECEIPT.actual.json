@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-a",
+  "frozenAtUTC": "2026-10-13T06:00:04.166066+00:00",
+  "scope": "Own frozen v8 exact fix matrix versus final frozen authorv9; SOURCE/operator/case-only readiness.",
+  "neutralSelector": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics20-bounded-partner-source-field-and-Ar-remediation-author-20261013-v9/NEUTRAL.targeted-v9-fix-verification.input-selector.json",
+    "sha256": "sha256:bbf932bf093286a8e5c536236cb46f86464a6d023b956c8d736c24592db2ed73"
+  },
+  "authorSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics20-bounded-partner-source-field-and-Ar-remediation-author-20261013-v9/SEAL.actual.json",
+    "sha256": "sha256:179a70e0e296996cd504ce19a7cedf59587c986e7773c3e9af2f10167de96a73"
+  },
+  "ownV8Seal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics20-targeted-source-and-case-fix-independent-a-20261013-v8/SEAL.actual.json",
+    "sha256": "sha256:d29a0f3f9af946fed00fa0e456c2223ea2366805d2dbcdb2a371b249be621d2a"
+  },
+  "ownFirst": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics20-v9-bounded-source-and-Ar-fix-targeted-independent-a-20261013-v10/FIRST.own-exact-findings.json",
+    "sha256": "sha256:38cb114b267644894e434685895bbd1f816784e4223dde86e8201825fe5ebde7",
+    "authorConclusionsAndPeerJudgmentsReadBeforeFirst": false
+  },
+  "actualConsumerQualification": {
+    "qualificationReadAfterOwnFirst": {
+      "path": "tmp/chemie-aromatics20-bounded-partner-source-field-and-Ar-remediation-author-20261013-v9/postseal-current-consumer-applicability-qualification.actual.json",
+      "sha256": "sha256:59163a78e1747812875df34f19c2b5c1a61fb658af6e89d4ac1f53b209918203"
+    },
+    "independentlyReadActualCurrentClauses": [
+      {
+        "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+        "sha256": "sha256:7f8636d2f41474841aa693d81dc2f419521a9ed6707b047fb080ed9dc444a3ed",
+        "line": 251,
+        "actualClause": "if (decision.decision !== 'mapped') continue"
+      },
+      {
+        "path": "scripts/run_curriculum_release_model_conformance.sh",
+        "sha256": "sha256:4fecd0818481290994b6efb1334e071d385ec5dcea549e143bc4408ea0d6b14f",
+        "line": 5,
+        "actualProfile": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "sha256": "sha256:73bb53ebf9d5568c409223eb466998fa63cb8e77408e725882f5c2f5018381d6",
+        "line": 601,
+        "actualCall": "bash scripts/run_curriculum_release_model_conformance.sh"
+      }
+    ],
+    "finding": "Actual current TS atlas skips honest non-mapped decisions; actual CI release-model runner pins Mathematics. No new source-target edges/code or publication profile is demanded; future standalone Python guard limits are not proven current Chemistry M7/CI blockers."
+  },
+  "writeScope": "Only new owned v10 root and its tmp verification code/result; no active/Git/old-seal/native/image edits or children.",
+  "retainedBoundaries": {
+    "currentChemistryStrict": 231,
+    "denominator": 402,
+    "mathStrict": 807,
+    "physicsStrict": 478,
+    "biologyStrict": 397,
+    "newDPAMVVotes": 0,
+    "strictGainClaim": 0,
+    "wholeSourceUnionApproved": false,
+    "realLearnerResearchLabOrHumanApprovalClaimed": false,
+    "historicalPrimaryReviewRestart": false,
+    "fullBuildOrNativePDFRun": false,
+    "imageRepeatVotes": false
+  },
+  "readiness": "SOURCE fixes for19 are verified. Root may fold the four exact SN locator/context cells into the final combined candidate; only those staged whole-cell CAS will get a separate final targeted receipt. b7 remains a separate HOLD. Genuine final D/native/M7 checks remain outside this seal."
+}

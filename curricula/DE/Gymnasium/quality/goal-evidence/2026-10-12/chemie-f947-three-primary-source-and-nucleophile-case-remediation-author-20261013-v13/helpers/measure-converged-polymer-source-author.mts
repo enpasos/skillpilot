@@ -1,0 +1,28 @@
+// Apache-2.0. Stock compiler/SourceAtlas in completely private regular-parent execution.
+import {readFileSync,writeFileSync,mkdirSync,lstatSync,unlinkSync} from 'node:fs';
+import {resolve,dirname,relative} from 'node:path';
+import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+const R=process.cwd(),N='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-three-primary-source-and-nucleophile-case-remediation-author-20261013-v13',D=N+'/source/converged-polymer20-source-author';
+const read=(p:string)=>JSON.parse(readFileSync(resolve(R,p),'utf8'));
+const sha=(p:string)=>'sha256:'+createHash('sha256').update(readFileSync(resolve(R,p))).digest('hex');
+const bind=(p:string)=>({path:p,sha256:sha(p)});
+const write=(p:string,x:any)=>{const path=resolve(R,p);if(!path.startsWith(R+'/'))throw Error('Escape');let cur=R;for(const part of relative(R,dirname(path)).split('/')){cur=resolve(cur,part);mkdirSync(cur,{recursive:true});if(lstatSync(cur).isSymbolicLink())throw Error('Symlink parent '+cur);}try{if(lstatSync(path).isSymbolicLink())unlinkSync(path);}catch(e:any){if(e.code!=='ENOENT')throw e;}writeFileSync(path,JSON.stringify(x,null,2)+'\n');};
+const compiler=await import(pathToFileURL(resolve(R,'app/scripts/applicabilityCompiler.ts')).href),book=await import(pathToFileURL(resolve(R,'app/scripts/goalBookModel.ts')).href),normal=await import(pathToFileURL(resolve(R,'app/src/utils/authoring/canonicalAuthoring.ts')).href),source=await import(pathToFileURL(resolve(R,'app/scripts/goalBookSourceAtlasInputs.ts')).href);
+const beforePath=D+'/candidate/canonical523.current402.seven-images-polymer20-boundaries.pre-compiled.author.json',before=read(beforePath),can=structuredClone(before),rawSEM=read('curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json');
+const comp=compiler.buildApplicabilityCompilation(),rep=comp.reports.find((r:any)=>r.landscapeId===can.landscapeId);if(!rep)throw Error('Missing Chemistry compiler report');
+const changes:any[]=[];for(const g of can.goals){const r=rep.goals.find((r:any)=>r.goalId===g.id);if(JSON.stringify(g.applicability??{})!==JSON.stringify(r.compiledApplicability)){changes.push({goalId:g.id,title:g.title,from:g.applicability??{},to:r.compiledApplicability,actualEvidence:r.evidence});g.applicability=r.compiledApplicability;}}
+const finalCan=D+'/candidate/canonical523.current402.polymer20-converged-source.compiled.author.json';write(finalCan,can);write('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json',can);
+const norm=JSON.parse(JSON.stringify(normal.normalizeCanonicalLandscape(can)));const byRaw=new Map(can.goals.map((g:any)=>[g.id,g])),byNorm=new Map(norm.goals.map((g:any)=>[g.id,g]));
+const rawLedger=structuredClone(rawSEM),normLedger=structuredClone(rawSEM);for(const ledger of [rawLedger,normLedger])ledger.sourceLandscapePath=finalCan;
+for(const d of rawLedger.decisions)d.sourceFingerprint=book.fingerprintSemanticKindSourceGoal(byRaw.get(d.goalId));
+for(const d of normLedger.decisions)d.sourceFingerprint=book.fingerprintSemanticKindSourceGoal(byNorm.get(d.goalId));
+const rawLedgerPath=D+'/candidate/semantic523.raw-source-classifications.compiled.author.json',normLedgerPath=D+'/candidate/semantic523.normalized-book-classifications.compiled.author.json';write(rawLedgerPath,rawLedger);write(normLedgerPath,normLedger);
+const cfg=read(D+'/source-atlas.converged-author.config.json');cfg.landscapePath=finalCan;cfg.semanticKindLedgerPath=rawLedgerPath;write(D+'/source-atlas.converged-final-author.config.json',cfg);
+write(D+'/checks/stock-compiler-converged-source-author.actual.json',{schemaVersion:1,normalCompilerModule:bind('app/scripts/applicabilityCompiler.ts'),currentInput:bind(beforePath),finalCandidate:bind(finalCan),changedJurisdictionGoalCount:changes.length,changedGoals:changes,compilerFindings:rep.findings,compilerWholeSummary:rep.summary,semanticClassificationsPreserved:true,rawLedgerBinding:bind(rawLedgerPath),normalizedLedgerBinding:bind(normLedgerPath),scopeVotesApproved:false,activeOrGitWrites:false});
+console.log(JSON.stringify({stage:'normalCompilerComplete',changedGoalCount:changes.length,changedGoalIDs:changes.map(c=>c.goalId),f947:can.goals.find((g:any)=>g.id==='f947cd04-952a-5a9d-9445-3ffc70e02c3c').applicability}));
+const built=source.buildGoalBookSourceAtlasInputs(cfg,R);const baseline=read(N+'/checks/four-original-goals-current-active-source-direct-inherited-witnesses.author.actual.json');
+const interesting=new Set([...read(D+'/CONVERGED.polymer20.source-author.proposal.pending-science.json').boundaryGoalIds,'7a05a1ce-45d3-571e-be51-afcd8dfd33ca','a4bac92b-d685-5cb6-94c8-c9b8b878d125','1df17884-96ae-57d7-9da9-dbebd082596f','e20d205f-03a4-5f96-b456-9b20460605a2']);
+const scopes=built.receipt.scopes.map((s:any)=>({...s,witnesses:s.witnesses.filter((w:any)=>interesting.has(w.goalId)),goalIds:s.goalIds.filter((id:string)=>interesting.has(id))})).filter((s:any)=>s.witnesses.length);
+write(D+'/checks/stock-source-atlas-polymer20-and-shared-protected-witnesses.actual.json',{schemaVersion:1,normalSourceAtlasModule:bind('app/scripts/goalBookSourceAtlasInputs.ts'),configBinding:bind(D+'/source-atlas.converged-final-author.config.json'),counts:built.receipt.counts,inputBindings:built.receipt.inputBindings,selectedGoalScopes:scopes,sourceClaimsApproved:false,unresolvedSourceScopes:built.receipt.unresolvedSourceScopes,knownOptionalHBAndRPHeld:true,activeOrGitWrites:false});
+console.log(JSON.stringify({stage:'normalSourceAtlasComplete',counts:built.receipt.counts,selectedScopeRows:scopes.length,scopeVotesApproved:false}));

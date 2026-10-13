@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-a",
+  "frozenAtUTC": "2026-10-13T03:40:40.875637+00:00",
+  "stage": "early-primary-operator-first-finding",
+  "selectorPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics20-neutral-primary-operator-preflight-root-20261013-v5/SOURCE_REVIEW_INPUTS.neutral.json",
+  "selectorSHA256": "sha256:a1a1e9d5ecadc4d324f5f07939814aa78a821d54676880b5c62e26aa0b0a834c",
+  "authorImpactOrStandaloneVerdictReportsRead": false,
+  "peerJudgmentsRead": false,
+  "candidateProposalFieldsAreInputsNotAuthority": true,
+  "firstIndependentVerdict": "not_ready_for_final_native_materialization",
+  "findings": [
+    {
+      "id": "A-FIRST-1",
+      "finding": "HH peptide source still targets aromatic cluster ac700167 and therefore remains inherited by aromatic goals after removal of three direct components. An unpatched older active HH mapping alias retains direct components as well.",
+      "primary": "HH chemistry Studienstufe 2022 physical/printed26: only increased level, mesomere Grenzformeln der Peptidgruppe; no benzene aromatic mechanism or aromatic resonance evaluation."
+    },
+    {
+      "id": "A-FIRST-2",
+      "finding": "ST lower-secondary chromatography source still targets entire Farbstoffchemie cluster fa21e8e1 after deletion of two direct components; inheritance still reaches all dye goal descendants.",
+      "primary": "ST2022 physical/printed20 years7/8: Farbstoffgemisch chromatografisch trennen and compulsory pupil Chromatografie; no electronic excitation, absorption spectrum analysis, dye synthesis or vat dyeing."
+    },
+    {
+      "id": "A-FIRST-3",
+      "finding": "Adding bounded rawSourceText does not change text consumed as source evidence by the current source rationale generator/release compiler. They read sourceText; compiler does not preserve rawSourceText/rawSourceSpan. HH synthetic verb verwenden remains compiled as if source text.",
+      "code": [
+        "app/scripts/generateGoalSourceRationales.ts:897",
+        "scripts/compile_curriculum_release_model.py:1790",
+        "scripts/compile_curriculum_release_model.py:1815"
+      ]
+    },
+    {
+      "id": "A-FIRST-4",
+      "finding": "RP6.2 removal of e594 direct component leaves ancestor fa21e8e1 mapping, which still exposes both-family mechanism goal via inherited applicability; literal RP clause expressly makes mechanisms unnecessary for additional classes.",
+      "primary": "RP2022 physical/printed47: elective LF Additum, mindestens zwei weitere Farbstoffklassen (mechanistische Betrachtungen nicht notwendig)."
+    }
+  ],
+  "preflightLimits": [
+    "No D/P/A/M/V vote or whole-source-union approval.",
+    "No native PDF/build or current scientific closure.",
+    "No human or actual learner research/lab performance established."
+  ],
+  "countsProtected": {
+    "chemistryDenominator": 402,
+    "chemistryStrictBefore": 231,
+    "mathematics": 807,
+    "physics": 478,
+    "biology": 397
+  }
+}

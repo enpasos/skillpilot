@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "goalId": "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Die Oberfläche reflektiert die nicht absorbierten Anteile der Beleuchtung; Farben sind keine Stoffetiketten unabhängig vom Licht.",
+            "essentialUnderstandingEn": "A surface reflects nonabsorbed illumination components; color is not independent of the light.",
+            "observablePerformanceDe": "Verknüpft Spektralanteile von Einfall, Absorption und Reflexion.",
+            "observablePerformanceEn": "Connects spectral components of incident, absorbed and reflected light."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine eingeschränkte Beleuchtung verändert die reflektierte Farbe.",
+            "essentialUnderstandingEn": "Restricted illumination changes reflected color.",
+            "observablePerformanceDe": "Überträgt auf anders zusammengesetztes einfallendes Licht.",
+            "observablePerformanceEn": "Transfers to different incident spectra."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Weißlicht und monochromatische Beleuchtung",
+            "textEn": "White and monochromatic illumination"
+          },
+          {
+            "id": "v2",
+            "textDe": "Reflexionsdaten und Farbvergleich",
+            "textEn": "Reflectance data and color comparison"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "c8f51eac-case-1",
+            "taskDemandDe": "Ideales undurchsichtiges Gewebe reflektiert 430–480 nm stark, absorbiert 550–650 nm fast vollständig. Weißlicht enthält beide Bereiche; die zweite Lampe liefert nur 590 nm. Emission und Transmission sind ausgeschlossen. Für alle übrigen sichtbaren Wellenlängen im Modellbereich380–780 nm außerhalb430–480 nm ist der Reflexionsanteil vernachlässigbar.\n1. Erkläre die Farbe unter Weißlicht mit absorbierten und reflektierten Wellenlängen, ohne absorbiertes Licht als sichtbare Stofffarbe zu deuten.\n2. Sage die Erscheinung unter 590-nm-Licht voraus und begründe sie mit dem verfügbaren Einfallsspektrum.",
+            "taskDemandEn": "An ideal opaque fabric strongly reflects 430–480 nm and almost completely absorbs 550–650 nm. White light contains both ranges; a second lamp supplies only 590 nm. Emission and transmission are excluded. Reflectance is negligible at every other visible wavelength in the model range380–780 nm outside430–480 nm.\n1. Explain the color under white light using absorbed and reflected wavelengths, without treating absorbed light as the visible fabric color.\n2. Predict its appearance under 590 nm illumination and justify it using the available incident spectrum.",
+            "expectedPerformanceDe": "1. Das Gewebe reflektiert den Blauanteil 430–480 nm und absorbiert längere Anteile; das Auge erhält überwiegend blaues Licht. Die absorbierten gelb-roten Anteile gelangen nicht als Reflexionslicht zum Auge.\n2. Es erscheint sehr dunkel. 590 nm wird fast vollständig absorbiert; die Lampe liefert keine blauen Photonen, die das Gewebe reflektieren könnte.",
+            "expectedPerformanceEn": "1. The fabric reflects the blue 430–480 nm component and absorbs longer wavelengths; the eye receives mainly blue light. Absorbed yellow-red components do not reach the eye as reflection.\n2. It appears very dark. 590 nm is almost completely absorbed, and the lamp supplies no blue photons for the fabric to reflect.",
+            "understandingFocusDe": "Das Gewebe reflektiert den Blauanteil 430–480 nm und absorbiert längere Anteile; das Auge erhält überwiegend blaues Licht. Die absorbierten gelb-roten Anteile gelangen nicht als Reflexionslicht zum Auge. / Es erscheint sehr dunkel. 590 nm wird fast vollständig absorbiert; die Lampe liefert keine blauen Photonen, die das Gewebe reflektieren könnte.",
+            "understandingFocusEn": "The fabric reflects the blue 430–480 nm component and absorbs longer wavelengths; the eye receives mainly blue light. Absorbed yellow-red components do not reach the eye as reflection. / It appears very dark. 590 nm is almost completely absorbed, and the lamp supplies no blue photons for the fabric to reflect."
+          },
+          {
+            "id": "c8f51eac-case-2",
+            "taskDemandDe": "Erfundene Reflexionsanteile bei 450/550/650 nm: Muster A 5/5/80 %, Muster B 5/40/80 %. Weißlicht hat gleiche Intensität in den drei Modellbändern; die zweite Beleuchtung enthält nur 550 nm.\n1. Vergleiche die reflektierten Weißlichtanteile beider Muster und erkläre, warum ihre Farben trotz gleicher Rotreflexion verschieden sein können.\n2. Entscheide, welches Muster unter 550 nm heller wirkt, und begründe die Entscheidung; nenne die Grenze einer exakten Farbbezeichnung aus nur drei Bändern.",
+            "taskDemandEn": "Invented reflectance at 450/550/650 nm: sample A 5/5/80%, sample B 5/40/80%. White light has equal intensity in the three model bands; a second light contains only 550 nm.\n1. Compare both samples’ reflected white-light components and explain why colors may differ despite equal red reflection.\n2. Decide which sample looks brighter at 550 nm and justify it; state the limit of assigning an exact color name from only three bands.",
+            "expectedPerformanceDe": "1. A reflektiert fast nur Rot und wirkt rot. B reflektiert zusätzlich deutlich Grün, daher kann es gelblicher wirken. Gleiche Rotanteile garantieren keine gleiche Farbe, weil auch die übrigen Anteile zählen.\n2. B ist heller: 40 % statt 5 % des angebotenen Grünlichts werden reflektiert. Ein vollständiges Spektrum und die Wahrnehmungsbedingungen fehlen; eine exakte Farbkoordinate oder Farbbezeichnung ist damit nicht festgelegt.",
+            "expectedPerformanceEn": "1. A reflects mainly red and appears red. B additionally reflects much more green and may therefore look more yellowish. Equal red components do not guarantee equal color because the other components matter.\n2. B is brighter because it reflects 40% rather than 5% of the offered green light. The full spectrum and perception conditions are missing, so an exact color coordinate or name is not fixed.",
+            "understandingFocusDe": "A reflektiert fast nur Rot und wirkt rot. B reflektiert zusätzlich deutlich Grün, daher kann es gelblicher wirken. Gleiche Rotanteile garantieren keine gleiche Farbe, weil auch die übrigen Anteile zählen. / B ist heller: 40 % statt 5 % des angebotenen Grünlichts werden reflektiert. Ein vollständiges Spektrum und die Wahrnehmungsbedingungen fehlen; eine exakte Farbkoordinate oder Farbbezeichnung ist damit nicht festgelegt.",
+            "understandingFocusEn": "A reflects mainly red and appears red. B additionally reflects much more green and may therefore look more yellowish. Equal red components do not guarantee equal color because the other components matter. / B is brighter because it reflects 40% rather than 5% of the offered green light. The full spectrum and perception conditions are missing, so an exact color coordinate or name is not fixed."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Donor und Akzeptor beeinflussen ein gekoppeltes π-System; der Effekt hängt von Stellung und Kopplung ab.",
+            "essentialUnderstandingEn": "Donor and acceptor groups affect a coupled pi system; the effect depends on position and coupling.",
+            "observablePerformanceDe": "Identifiziert Gruppen und verknüpft elektronischen Effekt mit Spektren.",
+            "observablePerformanceEn": "Identifies groups and connects electronic effects to spectra."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Protonierung oder unterbrochene Konjugation kann einen Donoreffekt verändern; eine Rotverschiebung ist keine universelle Gruppenregel.",
+            "essentialUnderstandingEn": "Protonation or interrupted conjugation can alter donation; a red shift is not a universal group rule.",
+            "observablePerformanceDe": "Begründet einen veränderten Übergang anhand konkreter Bedingungen.",
+            "observablePerformanceEn": "Explains a changed transition under specific conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Donorprotonierung und Spektraländerung",
+            "textEn": "Donor protonation and spectrum change"
+          },
+          {
+            "id": "v2",
+            "textDe": "Konjugation versus sp³-Unterbrechung",
+            "textEn": "Conjugation versus sp³ interruption"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "64b03eff-case-1",
+            "taskDemandDe": "Papiermodell eines planaren Donor–π–Akzeptor-Farbstoffs: para-(CH₃)₂N–C₆H₄–CH=CH–C₆H₄–NO₂. Gleicher Lösungsmittelzustand; λmax neutral 510 nm, nach Protonierung des Aminostickstoffs 430 nm. Die Nitrogruppe bleibt unverändert.\n1. Kennzeichne Donor und Akzeptor im neutralen Molekül und begründe die Kopplung über das π-System.\n2. Erkläre die Änderung des Aminodonors bei Protonierung und ordne die angegebene Verschiebungsrichtung sowie die Änderung der Übergangsenergie zu.",
+            "taskDemandEn": "Paper model of a planar donor–pi–acceptor dye: para-(CH₃)₂N–C₆H₄–CH=CH–C₆H₄–NO₂. Same solvent conditions; neutral λmax 510 nm and 430 nm after protonation at the amino nitrogen. The nitro group remains unchanged.\n1. Identify donor and acceptor in the neutral molecule and explain coupling through the pi system.\n2. Explain the amino donor change on protonation and identify the stated shift direction and transition-energy change.",
+            "expectedPerformanceDe": "1. –N(CH₃)₂ kann sein freies Elektronenpaar in das gekoppelte π-System einspeisen (+M); –NO₂ zieht über Mesomerie Elektronendichte ab (−M). Die sp²-Brücke ermöglicht Kopplung der beiden Enden.\n2. Nach H⁺-Bindung ist das Paar in einer N–H-Bindung gebunden; der neutrale +M-Donor steht nicht mehr so zur Verfügung. 510→430 nm ist hypsochrom; nach ΔE=hc/λ steigt die Übergangsenergie. Das erklärt diesen angegebenen Fall, keine universelle Regel für alle protonierten Farbstoffe.",
+            "expectedPerformanceEn": "1. –N(CH₃)₂ can donate its lone pair into the coupled pi system (+M); –NO₂ withdraws electron density through resonance (−M). The sp² bridge couples the two ends.\n2. After H⁺ bonding the pair forms the N–H bond, so the neutral +M donor is no longer available in the same way. 510→430 nm is hypsochromic; ΔE=hc/λ increases. This explains the supplied case rather than a universal rule for all protonated dyes.",
+            "understandingFocusDe": "–N(CH₃)₂ kann sein freies Elektronenpaar in das gekoppelte π-System einspeisen (+M); –NO₂ zieht über Mesomerie Elektronendichte ab (−M). Die sp²-Brücke ermöglicht Kopplung der beiden Enden. / Nach H⁺-Bindung ist das Paar in einer N–H-Bindung gebunden; der neutrale +M-Donor steht nicht mehr so zur Verfügung. 510→430 nm ist hypsochrom; nach ΔE=hc/λ steigt die Übergangsenergie.",
+            "understandingFocusEn": "–N(CH₃)₂ can donate its lone pair into the coupled pi system (+M); –NO₂ withdraws electron density through resonance (−M). The sp² bridge couples the two ends. / After H⁺ bonding the pair forms the N–H bond, so the neutral +M donor is no longer available in the same way. 510→430 nm is hypsochromic; ΔE=hc/λ increases."
+          },
+          {
+            "id": "64b03eff-case-2",
+            "taskDemandDe": "Zwei idealisierte Moleküle besitzen dieselben Amino-Donor- und Nitro-Akzeptor-Endgruppen. A hat eine planare –CH=CH–Brücke und λmax 500 nm. B hat –CH₂–CH₂– als Brücke und λmax 330 nm; Konzentration und Lösungsmittel sind gleich.\n1. Erkläre, welche Brücke Donor und Akzeptor mesomer koppelt, und begründe die Unterbrechung bei der anderen.\n2. Verknüpfe die zwei Absorptionsmaxima mit Übergangsenergie und sichtbarer Farbigkeit; beurteile die Aussage „Eine Nitrogruppe macht jedes Molekül farbig“.",
+            "taskDemandEn": "Two idealized molecules have the same amino donor and nitro acceptor end groups. A has a planar –CH=CH– bridge and λmax 500 nm. B has a –CH₂–CH₂– bridge and λmax 330 nm; concentration and solvent are equal.\n1. Explain which bridge couples donor and acceptor by resonance and why the other interrupts it.\n2. Connect both absorption maxima to transition energy and visible color; assess the claim “A nitro group makes every molecule colored”.",
+            "expectedPerformanceDe": "1. A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System.\n2. 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+            "expectedPerformanceEn": "1. A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system.\n2. 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption.",
+            "understandingFocusDe": "A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System. / 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+            "understandingFocusEn": "A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system. / 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e5941581-0aba-5354-b4b9-d0249d4538a8",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Azosynthese umfasst Diazotierung und Kupplung; N-N-Bindungsaufbau, Ladungen und Rearomatisierung werden auf Teilchenebene erklärt.",
+            "essentialUnderstandingEn": "Azo synthesis includes diazotization and coupling; N-N formation, charges and rearomatization are explained at particle level.",
+            "observablePerformanceDe": "Stellt den begrenzten Diazotierungsweg mit Bilanz sowie den Kupplungsmechanismus aus den ausdrücklich gegebenen Zwischenstufen dar.",
+            "observablePerformanceEn": "Represents the bounded diazotization route and balance, then coupling, using the explicitly supplied intermediates."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+            "essentialUnderstandingEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound.",
+            "observablePerformanceDe": "Stellt die Kondensationsschritte und ladungsbilanzierte Oxidation dar.",
+            "observablePerformanceEn": "Represents condensation steps and charge-balanced oxidation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Kupplungspartner und Ladungsbilanz",
+            "textEn": "Coupling partner and charge balance"
+          },
+          {
+            "id": "v2",
+            "textDe": "Azo-Synthese versus Triarylmethan-Kondensation",
+            "textEn": "Azo synthesis versus triarylmethane condensation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "e5941581-case-1",
+            "taskDemandDe": "Nur Papiermechanismen, keine Ausführung. Azo: [Ph–N≡N]⁺ und C₆H₅OH unter Bedingungen mit aktivem Phenol; das Produkt ist para-HO–C₆H₄–N=N–Ph. Triarylmethan: Ph–CHO + 2 Ar–H, Ar–H=N,N-Dimethylanilin, Angriff jeweils para zum –N(CH₃)₂. Säurekatalyse liefert Ph–CH(Ar)₂; anschließende Oxidation liefert [Ph–C(Ar)₂]⁺. Vorgeschaltete Diazotierung im Papiermodell: Ar=Ph; Ar–NH₂ + HNO₂ in wässriger Säure bei0–5 °C. NO⁺ bezeichnet das nitrosierende Elektrophil. Die Zwischenstufen Ar–NH–N=O und Ar–N=N–OH sind als Strukturhilfen gegeben; einzelne Protonenübertragungen dürfen zu Sammelschritten zusammengefasst werden. Ar steht für den unveränderten Arylrest. Keine dirigierenden Effekte oder praktischen Ausführungsschritte werden zusätzlich geprüft.\n1. Ergänze vor der Kupplung die Diazotierung auf Teilchenebene: beschreibe den Elektronenpaarfluss beim Angriff des Aminostickstoffs auf NO⁺, ordne die gegebenen N-N-Zwischenstufen bis zum Diazoniumion und erkläre die Rolle der Säure und der Wasserabspaltung. Formuliere die Gesamtgleichung mit Ar–NH₂, HNO₂ und H⁺ und prüfe Atom- und Gesamtladungsbilanz. Vollständige Einzelpfeile für jede Protonenübertragung sind nicht gefordert.\n2. Stelle für die Azokupplung Elektronenpaarpfeile vom Ring zum terminalen Diazoniumnitrogen, die Verringerung von N≡N zu N=N, den σ-Komplex und die rearomatisierende Protonenabgabe dar; bilanziere die Gesamtladung.\n3. Stelle für Ph–CHO die Carbonylprotonierung, zwei para-Angriffe von Ar–H mit Wasserabspaltung zwischen ihnen und die jeweilige Rearomatisierung dar; schreibe Kondensationsgleichung und Oxidationshalbreaktion.",
+            "taskDemandEn": "Paper mechanisms only, no execution. Azo: Ph–N≡N⁺ and C₆H₅OH under conditions with reactive phenol; the product is para-HO–C₆H₄–N=N–Ph. Triarylmethane: Ph–CHO + 2 Ar–H, with Ar–H=N,N-dimethylaniline and each attack para to –N(CH₃)₂. Acid catalysis gives Ph–CH(Ar)₂; oxidation then gives [Ph–C(Ar)₂]⁺. Preceding diazotization in the paper model: Ar=Ph; Ar–NH₂ + HNO₂ in aqueous acid at0–5 °C. NO⁺ denotes the nitrosating electrophile. Ar–NH–N=O and Ar–N=N–OH are supplied structural guides; individual proton transfers may be grouped. Ar is the unchanged aryl group. No extra directing-effect or practical-execution requirement is assessed.\n1. Complete diazotization before coupling at particle level: describe electron-pair flow when amino nitrogen attacks NO⁺, order the supplied N-N intermediates up to the diazonium ion, and explain acid and water-loss roles. Write the overall equation using Ar–NH₂, HNO₂ and H⁺ and check atom and net-charge balance. Separate arrows for every proton transfer are not required.\n2. Show electron-pair arrows from the ring to terminal diazonium nitrogen, reduction of N≡N to N=N, the sigma complex and rearomatizing proton loss; balance overall charge.\n3. Show carbonyl protonation, two para attacks by Ar–H with water loss between them and each rearomatization; write the condensation equation and oxidation half-equation.",
+            "expectedPerformanceDe": "1. Ein verfügbares N-Elektronenpaar des neutralen Aminanteils greift das N des nitrosierenden NO⁺ an und bildet die N-N-Bindung. Nach Protonenübertragung/Deprotonierung liegt Ar–NH–N=O vor; Protonenumlagerung ergibt Ar–N=N–OH. Säure ermöglicht die Bildung des Nitrosierungsreagenzes und protoniert die OH-Gruppe zu einer Wasserabgangsgruppe. Wasserabspaltung und Bildung der N≡N-Bindung ergeben [Ar–N≡N]⁺. Gesamt: ArNH₂ + HNO₂ + H⁺ → [ArN₂]⁺ + 2 H₂O. Außer dem unveränderten Ar stehen links wie rechts2 N,2 O und4 H; Gesamtladung jeweils+1. Diese verkürzte Teilchenfolge genügt hier; sie ist kein vollständiges Protonenübertragungsnetz und keine Versuchsaufzeichnung.\n2. Ein Ring-π-Paar greift das terminale N von [Ph–N≡N]⁺ an; ein N≡N-π-Paar wird auf das an Ph gebundene N verschoben. Es entsteht ein positiv geladener Ring-σ-Komplex mit Ph–N=N–C-Bindung. Eine Base nimmt H⁺ am angegriffenen C ab; das C–H-Paar stellt die Ring-π-Bindung wieder her. PhN₂⁺ + C₆H₅OH → Ph–N=N–C₆H₄–OH + H⁺: +1 auf beiden Seiten.\n3. O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2).",
+            "expectedPerformanceEn": "1. An available N lone pair of the neutral amine fraction attacks nitrogen of nitrosating NO⁺ and forms the N-N bond. Proton transfer/deprotonation gives Ar–NH–N=O; proton rearrangement gives Ar–N=N–OH. Acid enables formation of the nitrosating reagent and protonates OH into a water leaving group. Water loss and formation of N≡N give [Ar–N≡N]⁺. Overall: ArNH₂ + HNO₂ + H⁺ → [ArN₂]⁺ + 2 H₂O. Apart from unchanged Ar, both sides contain2 N,2 O and4 H; net charge is+1 on both sides. This abbreviated particle sequence is sufficient here; it is neither a complete proton-transfer network nor an experiment record.\n2. A ring pi pair attacks the terminal N of [Ph–N≡N]⁺; one N≡N pi pair moves onto the N bound to Ph. This gives a positively charged ring sigma complex with a Ph–N=N–C bond. A base removes H⁺ at the attacked carbon; its C–H pair restores the ring pi bond. PhN₂⁺ + C₆H₅OH → Ph–N=N–C₆H₄–OH + H⁺ has +1 on both sides.\n3. O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge.",
+            "understandingFocusDe": "Ein Ring-π-Paar greift das terminale N von Ph–N≡N⁺ an; ein N≡N-π-Paar wird auf das an Ph gebundene N verschoben. Es entsteht ein positiv geladener Ring-σ-Komplex mit Ph–N=N–C-Bindung. Eine Base nimmt H⁺ am angegriffenen C ab; das C–H-Paar stellt die Ring-π-Bindung wieder her. PhN₂⁺ + C₆H₅OH → Ph–N=N–C₆H₄–OH + H⁺: +1 auf beiden Seiten. / O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2). / Diazotierung vor der Kupplung; begrenzter N-N-Teilchenweg und Gesamtbilanz.",
+            "understandingFocusEn": "A ring pi pair attacks the terminal N of Ph–N≡N⁺; one N≡N pi pair moves onto the N bound to Ph. This gives a positively charged ring sigma complex with a Ph–N=N–C bond. A base removes H⁺ at the attacked carbon; its C–H pair restores the ring pi bond. PhN₂⁺ + C₆H₅OH → Ph–N=N–C₆H₄–OH + H⁺ has +1 on both sides. / O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge. / Diazotization before coupling; bounded N-N particle route and overall balance."
+          },
+          {
+            "id": "e5941581-case-2",
+            "taskDemandDe": "Papiermodell: p-NO₂–C₆H₄–N₂⁺ koppelt an N,N-Dimethylanilin para zum Aminodonor. Eine zweite Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt. Vorgeschaltete Diazotierung im Papiermodell: Ar=p-NO₂–C₆H₄; Ar–NH₂ + HNO₂ in wässriger Säure bei0–5 °C. NO⁺ bezeichnet das nitrosierende Elektrophil. Die Zwischenstufen Ar–NH–N=O und Ar–N=N–OH sind als Strukturhilfen gegeben; einzelne Protonenübertragungen dürfen zu Sammelschritten zusammengefasst werden. Ar steht für den unveränderten Arylrest. Keine dirigierenden Effekte oder praktischen Ausführungsschritte werden zusätzlich geprüft.\n1. Ergänze vor der Kupplung die Diazotierung auf Teilchenebene: beschreibe den Elektronenpaarfluss beim Angriff des Aminostickstoffs auf NO⁺, ordne die gegebenen N-N-Zwischenstufen bis zum Diazoniumion und erkläre die Rolle der Säure und der Wasserabspaltung. Formuliere die Gesamtgleichung mit Ar–NH₂, HNO₂ und H⁺ und prüfe Atom- und Gesamtladungsbilanz. Vollständige Einzelpfeile für jede Protonenübertragung sind nicht gefordert.\n2. Zeichne den Azokupplungsmechanismus mit Elektronenpaarpfeilen, N=N-Verknüpfung, σ-Komplex-Ladung und Deprotonierung; erkläre, warum vollständige Protonierung des Aminodonors die Kupplung erschwert.\n3. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.",
+            "taskDemandEn": "Paper model: p-NO₂–C₆H₄–N₂⁺ couples to N,N-dimethylaniline para to its amino donor. Another route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made. Preceding diazotization in the paper model: Ar=p-NO₂–C₆H₄; Ar–NH₂ + HNO₂ in aqueous acid at0–5 °C. NO⁺ denotes the nitrosating electrophile. Ar–NH–N=O and Ar–N=N–OH are supplied structural guides; individual proton transfers may be grouped. Ar is the unchanged aryl group. No extra directing-effect or practical-execution requirement is assessed.\n1. Complete diazotization before coupling at particle level: describe electron-pair flow when amino nitrogen attacks NO⁺, order the supplied N-N intermediates up to the diazonium ion, and explain acid and water-loss roles. Write the overall equation using Ar–NH₂, HNO₂ and H⁺ and check atom and net-charge balance. Separate arrows for every proton transfer are not required.\n2. Draw azo coupling with electron-pair arrows, N=N linkage, sigma-complex charge and deprotonation; explain why complete protonation of the amino donor hinders coupling.\n3. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.",
+            "expectedPerformanceDe": "1. Ein verfügbares N-Elektronenpaar des neutralen Aminanteils greift das N des nitrosierenden NO⁺ an und bildet die N-N-Bindung. Nach Protonenübertragung/Deprotonierung liegt Ar–NH–N=O vor; Protonenumlagerung ergibt Ar–N=N–OH. Säure ermöglicht die Bildung des Nitrosierungsreagenzes und protoniert die OH-Gruppe zu einer Wasserabgangsgruppe. Wasserabspaltung und Bildung der N≡N-Bindung ergeben [Ar–N≡N]⁺. Gesamt: ArNH₂ + HNO₂ + H⁺ → [ArN₂]⁺ + 2 H₂O. Außer dem unveränderten Ar stehen links wie rechts2 N,2 O und4 H; Gesamtladung jeweils+1. Diese verkürzte Teilchenfolge genügt hier; sie ist kein vollständiges Protonenübertragungsnetz und keine Versuchsaufzeichnung.\n2. π-Paar des Dimethylanilinrings→terminales Diazonium-N; N≡N-π-Paar→inneres N. Positiver σ-Komplex→H⁺-Abgabe mit C–H-Paar→Ring-π. Produkt p-NO₂–C₆H₄–N=N–C₆H₄–N(CH₃)₂, insgesamt Diazoniumpartner+ArH→Azofarbstoff+H⁺. Protoniertes –N⁺H(CH₃)₂ hat kein verfügbares freies Paar für den +M-Effekt, daher weniger aktivierter Ring.\n3. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.",
+            "expectedPerformanceEn": "1. An available N lone pair of the neutral amine fraction attacks nitrogen of nitrosating NO⁺ and forms the N-N bond. Proton transfer/deprotonation gives Ar–NH–N=O; proton rearrangement gives Ar–N=N–OH. Acid enables formation of the nitrosating reagent and protonates OH into a water leaving group. Water loss and formation of N≡N give [Ar–N≡N]⁺. Overall: ArNH₂ + HNO₂ + H⁺ → [ArN₂]⁺ + 2 H₂O. Apart from unchanged Ar, both sides contain2 N,2 O and4 H; net charge is+1 on both sides. This abbreviated particle sequence is sufficient here; it is neither a complete proton-transfer network nor an experiment record.\n2. Dimethylaniline ring pi pair→terminal diazonium N; N≡N pi pair→inner N. Positive sigma complex→H⁺ loss with C–H pair→ring pi. Product: p-NO₂–C₆H₄–N=N–C₆H₄–N(CH₃)₂; overall diazonium partner+ArH→azo dye+H⁺. Protonated –N⁺H(CH₃)₂ lacks an available lone pair for +M donation, so the ring is less activated.\n3. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.",
+            "understandingFocusDe": "π-Paar des Dimethylanilinrings→terminales Diazonium-N; N≡N-π-Paar→inneres N. Positiver σ-Komplex→H⁺-Abgabe mit C–H-Paar→Ring-π. Produkt p-NO₂–C₆H₄–N=N–C₆H₄–N(CH₃)₂, insgesamt Diazoniumpartner+ArH→Azofarbstoff+H⁺. Protoniertes –N⁺H(CH₃)₂ hat kein verfügbares freies Paar für den +M-Effekt, daher weniger aktivierter Ring. / R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen. / Diazotierung vor der Kupplung; begrenzter N-N-Teilchenweg und Gesamtbilanz.",
+            "understandingFocusEn": "Dimethylaniline ring pi pair→terminal diazonium N; N≡N pi pair→inner N. Positive sigma complex→H⁺ loss with C–H pair→ring pi. Product: p-NO₂–C₆H₄–N=N–C₆H₄–N(CH₃)₂; overall diazonium partner+ArH→azo dye+H⁺. Protonated –N⁺H(CH₃)₂ lacks an available lone pair for +M donation, so the ring is less activated. / Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors. / Diazotization before coupling; bounded N-N particle route and overall balance."
+          }
+        ]
+      }
+    }
+  ],
+  "changedOriginalProfiles": 3,
+  "atomic4bOriginalRestored": true
+}

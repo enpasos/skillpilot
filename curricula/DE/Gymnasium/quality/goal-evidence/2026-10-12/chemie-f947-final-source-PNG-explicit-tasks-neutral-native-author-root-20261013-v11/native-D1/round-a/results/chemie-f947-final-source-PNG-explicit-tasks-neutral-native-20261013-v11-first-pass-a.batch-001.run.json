@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12-D1",
+  "campaignId": "chemie-f947-final-source-PNG-explicit-tasks-neutral-native-20261013-v11-a",
+  "roundId": "chemie-f947-final-source-PNG-explicit-tasks-neutral-native-20261013-v11-first-pass-a",
+  "batchId": "chemie-f947-final-source-PNG-explicit-tasks-neutral-native-20261013-v11-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:2536d5dabbc51cbf860c4b6595426e46ab8f46b64094765a8ce6e2dfa66e5f7b",
+  "bundleFingerprint": "sha256:ccb506e52cfcb0b80083a755dfe5a8627725380c3e2857d1e82e3d91756a7eee",
+  "bookDigest": "sha256:1193af22af3af5ef84f319e5fff8ea651206c173a734e8b174434cb0b759756e",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex independent reviewer session",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:a8767c91c70ebd21971dae4fa750d873f4f960145dd3239f1ef078fb6045ecf6",
+  "independenceGroupId": "chemie-f947-final-source-PNG-explicit-tasks-neutral-native-20261013-v11-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ad15c0854a88355782dfcde5b892e2bbeba53a0fc8555bff02007e079c741527"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:f37a5aa9462e16520d2a8d0a7c22fd0888a4945e39f66bf03a165d2bcad4843f"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:aab89a015b858d143f944c0bda5e3b383df4aba98ce0f972522c289b33811fb4"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:f1a09ff81fd2e9cf26e06d07b1e949ba03589d905e6fd61c22f0ca34dd6b4a07"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2536d5dabbc51cbf860c4b6595426e46ab8f46b64094765a8ce6e2dfa66e5f7b"
+    }
+  ],
+  "startedAt": "2026-10-13T02:04:31.678667+00:00",
+  "completedAt": "2026-10-13T02:14:20.200087+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:3f4f3fa9ea47a9f071aa019451c1639f201e7d2a0fb349ce0b2af06e83ddcf75",
+  "toolchainVersion": "codex-independent-manual-review-v1"
+}

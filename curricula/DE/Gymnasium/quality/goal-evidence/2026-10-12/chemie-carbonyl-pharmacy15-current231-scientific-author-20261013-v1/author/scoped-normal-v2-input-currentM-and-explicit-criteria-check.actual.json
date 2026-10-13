@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-13T01:29:41.916Z",
+  "normalModuleBindings": [
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "sha256:50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "sha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    }
+  ],
+  "currentCanonicalSHA": "sha256:9a68501347031f266572dea551e71c3507b66fb5ed94142a1a99f6a282708960",
+  "counts": {
+    "profiles": 15,
+    "cases": 30,
+    "explicitRubricCriteria": 90,
+    "AauthorPending": 15,
+    "AauthorAtomicVotes": 0,
+    "currentMrawExact": 15,
+    "memoryRequired": 3,
+    "noMemoryNeeded": 12,
+    "actualRetainedCardTraces": 3,
+    "independentReviews": 0
+  },
+  "checks": [
+    "normal materialized v2 positive semantics",
+    "exact whole-goal/configured-claim tuples",
+    "whole30 profile/case DE/EN joins",
+    "all90 criteria present verbatim in printed tasks",
+    "normal current M goal fingerprint rule and exact raw rows",
+    "normal M card fingerprint payload, source/public bytes and required origin/deck joins"
+  ],
+  "errors": [],
+  "passed": true,
+  "limitations": [
+    "M binding check is scoped15; no whole402 gate rerun or new M vote",
+    "A15 unresolved author proposals",
+    "Source/image findings remain separate holds; no actual operations, human evidence or scientific completions"
+  ]
+}

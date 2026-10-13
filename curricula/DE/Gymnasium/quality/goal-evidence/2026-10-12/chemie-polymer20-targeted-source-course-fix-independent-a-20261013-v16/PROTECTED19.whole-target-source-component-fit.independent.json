@@ -1,0 +1,658 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-13T04:56:20.198288+00:00",
+  "wholeCurrentCanonicalBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "sha256:9a68501347031f266572dea551e71c3507b66fb5ed94142a1a99f6a282708960",
+    "bytes": 1747712
+  },
+  "actual402AttachmentMatrixBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymer20-source-course-locator-targeted-author-20261013-v15/neutral/actual402-source-course-witness-matrix.current-and-candidate.json",
+    "sha256": "sha256:20bc18d27ba2dc4caeea8a2fffd2a1a66024e81fbb508a5722382e2a6c2fb0b5",
+    "bytes": 60917937
+  },
+  "protectedGoalCount": 19,
+  "sourceScopeDeltaGoalCount": 5,
+  "rows": [
+    {
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden",
+      "wholeCurrentGoalText": "Die lernende Person kann grundlegende Sicherheitsregeln im Chemielabor situationsbezogen anwenden.",
+      "wholeCurrentGoalObjectSha256": "sha256:19b2665a78703c2d0fcb513e2bf61a2cbcface7623aa0424c4467767664733f3",
+      "changedSourceAttachmentDecision": "keep_manufacturing_safety_component_remove_condition_comparison_ancestor",
+      "reason": "TH171-04 can support a bounded safe-manufacturing context through 266a with the same primary’s binding general experimental/safety rules. TH171-03 merely compares conditions and does not establish safety application or lab execution; its 266a ancestor edge is removed.",
+      "consumedChangedSourceGoalIds": [
+        "th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0",
+        "th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-04-49e9ea0c"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-TH/SekII/GK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-04-49e9ea0c",
+          "mappedTargetGoalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0",
+          "mappedTargetGoalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-04-49e9ea0c",
+          "mappedTargetGoalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+      "title": "Chemische Handlungsoptionen kriteriengeleitet bewerten",
+      "wholeCurrentGoalText": "Die lernende Person kann bei einer chemisch relevanten Alltags- oder Gesellschaftsentscheidung ethische, ökologische, ökonomische, soziale und sicherheitsbezogene Kriterien ableiten, Chancen und Risiken beurteilen, begründete Handlungsoptionen formulieren und mit einer passenden Entscheidungsstrategie abwägen. Sie überprüft Entscheidung, Kriterien und Strategie und reflektiert Möglichkeiten und Grenzen chemischer Sichtweisen.",
+      "wholeCurrentGoalObjectSha256": "sha256:bfe4979052ab12da7edda5097beeab587969170aab55780ddea242fe667c3e7f",
+      "changedSourceAttachmentDecision": "remove_changed_PET_cycle_edge",
+      "reason": "Describing a PET value cycle does not require ethical/social/safety criteria, decision strategy, alternative evaluation and reflection. Remove TH173→1df; retain separately evidenced evaluation source decisions without a fresh whole-union vote.",
+      "consumedChangedSourceGoalIds": [
+        "th-chem-sekii-th-ch-sekii-4-1-8-recycling-173-01-6f6ecf13"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-8-recycling-173-01-6f6ecf13",
+          "mappedTargetGoalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "3899edf4-a809-54b1-8ee7-4e67aa82dc7c",
+      "title": "Nukleophile Substitution als Donator-Akzeptor-Reaktion beschreiben",
+      "wholeCurrentGoalText": "Die lernende Person kann nukleophile Substitution als Reaktion eines Elektronenpaardonators mit einem Elektronenpaarakzeptor beschreiben.",
+      "wholeCurrentGoalObjectSha256": "sha256:2d45de68d08b33d822efa9d30cd07451af5603834669244fa6a8a7ae562d1f54",
+      "changedSourceAttachmentDecision": "keep_narrow_direct_SN_leaf",
+      "reason": "BB/BE012 explicitly requires the nucleophilic substitution mechanism for producing alcohols from haloalkanes. The N/E description is a genuine component; replace c2d3 by this direct leaf and d492 so detection does not inherit.",
+      "consumedChangedSourceGoalIds": [
+        "bb-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+        "be-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-BB/SekII/LK",
+          "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+          "mappedTargetGoalId": "c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-BE/SekII/LK",
+          "sourceGoalId": "be-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+          "mappedTargetGoalId": "c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": true,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "3be2d0b7-c22f-57d4-886a-10fc04a629f5",
+      "title": "Radikalische Substitution nachvollziehen",
+      "wholeCurrentGoalText": "Die lernende Person kann den Mechanismus der Bromierung eines Alkans erläutern und Zwischenstufen mithilfe geeigneter Modelle darstellen.",
+      "wholeCurrentGoalObjectSha256": "sha256:093d18c28a5ca74aadbfbbd33799585a5f9b0f84e6195b7e3fb42bd11ecce66b",
+      "changedSourceAttachmentDecision": "remove_changed_SN_b71_ancestors",
+      "reason": "Radical alkane bromination and its intermediate models are not polymerisation or polykondensation manufacture. Remove the three SN→b71 ancestor edges.",
+      "consumedChangedSourceGoalIds": [
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+      "title": "Eigenschaften über Wechselwirkungen erklären",
+      "wholeCurrentGoalText": "Die lernende Person kann den Einfluss von Van-der-Waals-Kräften und Wasserstoffbrücken auf Schmelz- und Siedetemperaturen sowie Löslichkeiten ausgewählter Stoffe begründen.",
+      "wholeCurrentGoalObjectSha256": "sha256:8135451d9bac133ff9138d34ee0fb6434cb28014c10c7269b722fc628eab3c52",
+      "changedSourceAttachmentDecision": "remove_changed_SN_b71_ancestors",
+      "reason": "The manufacturing clause does not require van-der-Waals/H-bond explanation of melting/boiling points and solubility. Polymer-making context is not a source operator for the whole interaction goal.",
+      "consumedChangedSourceGoalIds": [
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "41396457-d97b-55f3-9804-2af1bb188e79",
+      "title": "Halogenidionen-Nachweise deuten",
+      "wholeCurrentGoalText": "Die lernende Person kann Nachweise für Halogenidionen im Kontext nukleophiler Substitution fachlich deuten.",
+      "wholeCurrentGoalObjectSha256": "sha256:173742610856fafa1db5bcb80d903974ad5edbe92e7a34d711b4e312ece4a217",
+      "changedSourceAttachmentDecision": "remove_changed_BB_BE_c2d3_ancestor",
+      "reason": "Halogenid detection is absent from BB/BE012. A substitution mechanism generates a leaving-group ion but does not specify how to test/decode it. Replace the broad cluster by the two genuine SN leaves; detection requires its own actual source.",
+      "consumedChangedSourceGoalIds": [
+        "bb-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+        "be-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-BB/SekII/LK",
+          "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+          "mappedTargetGoalId": "c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-BE/SekII/LK",
+          "sourceGoalId": "be-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+          "mappedTargetGoalId": "c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": true,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "542d88e9-4cd3-5f90-bd20-b50ab030d72a",
+      "title": "Energieprofile chemischer Reaktionen deuten",
+      "wholeCurrentGoalText": "Die lernende Person kann Energieänderungen chemischer Reaktionen klassifizieren und Energieprofile auch für katalysierte Reaktionen grafisch darstellen und deuten.",
+      "wholeCurrentGoalObjectSha256": "sha256:be954f38959abdbcf0f7677412e65a6c747ab4a5108d7a69e27b8c7880297e8b",
+      "changedSourceAttachmentDecision": "remove_changed_TH_photocatalysis_edge",
+      "reason": "A nanomaterial application example does not demand classification of reaction energy changes and graphic energy profiles for catalysed reactions. Remove TH018-01→542d.",
+      "consumedChangedSourceGoalIds": [
+        "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-01-df6f8965"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-01-df6f8965",
+          "mappedTargetGoalId": "542d88e9-4cd3-5f90-bd20-b50ab030d72a",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+      "title": "Partikelgröße und Oberflächen-Volumen-Verhältnis deuten",
+      "wholeCurrentGoalText": "Die lernende Person kann Größenordnungen von Stoffteilchen, Nanopartikeln und makroskopischen Objekten vergleichen und Änderungen von Stoffeigenschaften durch Partikelgröße sowie Oberflächen-Volumen-Verhältnis erklären.",
+      "wholeCurrentGoalObjectSha256": "sha256:87a84b4ea9bbe4d5429c0a6758751f4f76fef4953aff7ea8492973bbd3c28db4",
+      "changedSourceAttachmentDecision": "keep_017_dimension_properties_remove_application_risk_edges",
+      "reason": "TH017 explicitly supports nanodimension/properties and their explanatory relation. TH018 application examples and TH019 risk evaluation do not independently establish the whole size/order/surface-volume comparison operator; keep their relevant nanoapplication/risk partners instead.",
+      "consumedChangedSourceGoalIds": [
+        "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-017-01-7acbfcfb",
+        "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-01-df6f8965",
+        "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-02-dfc636d5",
+        "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-03-3e1b1c1d",
+        "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-019-01-37f372a1"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-017-01-7acbfcfb",
+          "mappedTargetGoalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-01-df6f8965",
+          "mappedTargetGoalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-02-dfc636d5",
+          "mappedTargetGoalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-03-3e1b1c1d",
+          "mappedTargetGoalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-019-01-37f372a1",
+          "mappedTargetGoalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": true,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "title": "Esterreaktionen und ihre Reversibilität deuten",
+      "wholeCurrentGoalText": "Die lernende Person kann Veresterung und saure Esterhydrolyse als reversible Reaktionen deuten, sie von der unter alkalischen Bedingungen praktisch irreversiblen Bildung von Carboxylatsalzen unterscheiden, Reaktionsprodukte bilanzieren und damit Alltagsbeobachtungen zu Estern erklären.",
+      "wholeCurrentGoalObjectSha256": "sha256:4113661a83f9063ad5ba78b152f9b7b214f0e089ba48fafc24756c34dd5c9e03",
+      "changedSourceAttachmentDecision": "remove_changed_SN_reversible_hydrolysis_edges",
+      "reason": "Polymerisation/polykondensation manufacture does not require reversible acid ester hydrolysis versus practically irreversible alkaline carboxylate formation, its balances and everyday explanations. Retain this core goal’s other authentic sources, not these manufacturing cells.",
+      "consumedChangedSourceGoalIds": [
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb3-080-02-a8a065c0"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekII/LK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb3-080-02-a8a065c0",
+          "mappedTargetGoalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "title": "Esterbildung und Estereigenschaften erklären",
+      "wholeCurrentGoalText": "Die lernende Person kann die Bildung von Estern aus Alkoholen und Carbonsäuren aus experimentellen Beobachtungen ableiten, Kondensationsreaktionen formulieren, Stoffeigenschaften mithilfe zwischenmolekularer Wechselwirkungen begründen und Einsatzbereiche von Estern in Alltagsprodukten und Technik nennen.",
+      "wholeCurrentGoalObjectSha256": "sha256:31ebe52aafabfdd46f568a1931c090f75193a299a5556fc66c562dd519b8f422",
+      "changedSourceAttachmentDecision": "keep_bounded_ester_condensation_formation_component",
+      "reason": "Polykondensation/polyester is a chemically valid bounded ester-formation component of this whole goal. Keep that partial manufacturing aspect; this source alone does not prove experimental inference, all intermolecular/property explanations or all use fields. No complete goal/source-union approval.",
+      "consumedChangedSourceGoalIds": [
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb3-080-02-a8a065c0"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "70b34ae7-4481-590c-9a02-516464750832",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "70b34ae7-4481-590c-9a02-516464750832",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "70b34ae7-4481-590c-9a02-516464750832",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekII/LK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb3-080-02-a8a065c0",
+          "mappedTargetGoalId": "70b34ae7-4481-590c-9a02-516464750832",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+      "title": "Sauerstoffhaltige organische Stoffklassen einteilen",
+      "wholeCurrentGoalText": "Die lernende Person kann Alkohole, Aldehyde, Ketone und Carbonsäuren anhand ihrer funktionellen Gruppen einteilen und alltags- oder techniknahe Vertreter dieser Stoffklassen zuordnen.",
+      "wholeCurrentGoalObjectSha256": "sha256:c609a6820c7d53466f298d469f924efe255d7ae2f86f03dcc6cc696123e2ce86",
+      "changedSourceAttachmentDecision": "remove_changed_SN_direct_and_b71_edges",
+      "reason": "The whole goal classifies alcohols, aldehydes, ketones and carboxylic acids and names practical representatives. Generic polymer manufacture does not state that classification. Remove both direct7990 and b71 ancestor paths.",
+      "consumedChangedSourceGoalIds": [
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633",
+      "title": "Aktivierungsenergie und Katalysatorwirkung erklären",
+      "wholeCurrentGoalText": "Die lernende Person kann Aktivierungsenergie als Startvoraussetzung chemischer Reaktionen beschreiben, von endothermer Energiezufuhr unterscheiden und die Wirkung von Katalysatoren auf die Aktivierungsenergie erklären.",
+      "wholeCurrentGoalObjectSha256": "sha256:46f84ac0da5b8a3108637b929faf9930fba84080a3e95ac783ab2a5d549e9924",
+      "changedSourceAttachmentDecision": "remove_changed_TH_photocatalysis_edge",
+      "reason": "The photocatalysis application does not by itself require the activation-energy/start-condition versus endothermic-energy distinction or a barrier-lowering account. Remove this as source entitlement; it remains a possible teaching context without a new gate vote.",
+      "consumedChangedSourceGoalIds": [
+        "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-01-df6f8965"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-1-beispielen-erlautern-und-die-verwendung-018-01-df6f8965",
+          "mappedTargetGoalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+      "title": "Stoffumsätze einfacher Molekülreaktionen berechnen",
+      "wholeCurrentGoalText": "Die lernende Person kann Reaktionsgleichungen und Größengleichungen nutzen, um Stoffumsätze bei einfachen Molekülreaktionen zu berechnen.",
+      "wholeCurrentGoalObjectSha256": "sha256:67e63d63f64b21d880e3fd448ce84dca91ad54541a0f7477ac4753682125bee9",
+      "changedSourceAttachmentDecision": "keep_BB_BE_stoichiometric_component",
+      "reason": "Full synthesis equations with stoichiometric ratios directly support reaction-equation/quantity relations and mole conversions. Keep the bounded polymer-synthesis stoichiometry context; no learner performance is inferred.",
+      "consumedChangedSourceGoalIds": [
+        "bb-chemistry-sekii-rlp-3-2-2-inhalte-014-62ec38a0",
+        "be-chemistry-sekii-rlp-3-2-2-inhalte-014-62ec38a0"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-BB/SekII/LK",
+          "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-2-inhalte-014-62ec38a0",
+          "mappedTargetGoalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-BE/SekII/LK",
+          "sourceGoalId": "be-chemistry-sekii-rlp-3-2-2-inhalte-014-62ec38a0",
+          "mappedTargetGoalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+      "title": "Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben",
+      "wholeCurrentGoalText": "Die lernende Person kann verschiedene Typen chemischer Reaktionen und physikalischer Vorgänge nutzen, um Stoffkreisläufe in Natur und Technik fachlich zu beschreiben.",
+      "wholeCurrentGoalObjectSha256": "sha256:e0f40d7676109d9e3e8545a543d6aa1dbe98f193d3aaa03c5fc7ff5986726932",
+      "changedSourceAttachmentDecision": "keep_TH_PET_cycle_component",
+      "reason": "PET value-cycle description is a genuine concrete technical-cycle application involving material flows and chemical/physical processes. Its actual LK facet is correct; it does not alone certify every natural/technical cycle.",
+      "consumedChangedSourceGoalIds": [
+        "th-chem-sekii-th-ch-sekii-4-1-8-recycling-173-01-6f6ecf13"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-TH/SekII/LK",
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-8-recycling-173-01-6f6ecf13",
+          "mappedTargetGoalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": true,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "d4928773-3be8-5cf1-907c-ef07c96751e8",
+      "title": "Halogenalkan-Hydroxid-Reaktionsgleichungen formulieren",
+      "wholeCurrentGoalText": "Die lernende Person kann Reaktionsgleichungen zwischen Halogenalkanen und Hydroxidionen fachgerecht formulieren.",
+      "wholeCurrentGoalObjectSha256": "sha256:1a0df5561e7f57afa98e65abe6a39f0c52e1e46f3bc58ba95836e6d4ec06f968",
+      "changedSourceAttachmentDecision": "keep_narrow_direct_SN_leaf",
+      "reason": "The haloalkane-to-alcohol nucleophilic-substitution context supports the hydroxide substitution equation. Make this a direct leaf, alongside3899, instead of including unsupported halide detection via c2d3.",
+      "consumedChangedSourceGoalIds": [
+        "bb-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+        "be-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-BB/SekII/LK",
+          "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+          "mappedTargetGoalId": "c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-BE/SekII/LK",
+          "sourceGoalId": "be-chemistry-sekii-rlp-3-2-2-inhalte-012-9ecc1889",
+          "mappedTargetGoalId": "c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": true,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+      "title": "Alkane, Alkene und Alkine beschreiben",
+      "wholeCurrentGoalText": "Die lernende Person kann Alkane, Alkene und Alkine nomenklatorisch korrekt benennen, Strukturformeln einschließlich Skelettformeln skizzieren, homologe Reihen bilden und einfache Isomerien unterscheiden.",
+      "wholeCurrentGoalObjectSha256": "sha256:e7c89a88047ef0fb700e5cda37ec46e552176a76f80c5fe8dcb789de498549a7",
+      "changedSourceAttachmentDecision": "remove_changed_SN_b71_ancestors",
+      "reason": "General alkane/alkene/alkyne names, skeletal formulas, homologous series and isomerism are not demanded by the delimited polymer manufacture clause. A prerequisite relationship is not source entitlement.",
+      "consumedChangedSourceGoalIds": [
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "e1214210-406e-5075-b83c-086b3972ed66",
+      "title": "Ethanol-Eigenschaften aus der Hydroxygruppe ableiten",
+      "wholeCurrentGoalText": "Die lernende Person kann ausgewählte Eigenschaften von Ethanol aus der Hydroxygruppe und den daraus folgenden Wechselwirkungen ableiten.",
+      "wholeCurrentGoalObjectSha256": "sha256:6dbfd3c20c0c027f29f9e1d0d77cf7b87bf46cd929f405283471e26b5652a893",
+      "changedSourceAttachmentDecision": "remove_changed_SN_b71_ancestors",
+      "reason": "The source does not name ethanol or demand deriving its properties from the hydroxy group. Do not inherit this specific ethanol goal from generic organic prerequisites.",
+      "consumedChangedSourceGoalIds": [
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "e14abd24-a0e5-5ab5-ade3-a8ae4f49e935",
+      "title": "Sauerstoffhaltige organische Verbindungen nach IUPAC benennen",
+      "wholeCurrentGoalText": "Die lernende Person kann typische Moleküle der Alkohole, Aldehyde, Ketone und Carbonsäuren mithilfe grundlegender IUPAC-Regeln benennen.",
+      "wholeCurrentGoalObjectSha256": "sha256:c9e4ee4bfb1544cd7519a28ac8a0bb439c54e2b996c56c5a7805ab1799d006dc",
+      "changedSourceAttachmentDecision": "remove_changed_SN_b71_ancestors",
+      "reason": "The manufacturing source does not demand IUPAC names for alcohols, aldehydes, ketones and carboxylic acids. Remove broad b71 inheritance.",
+      "consumedChangedSourceGoalIds": [
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+        "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekI/",
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        },
+        {
+          "scope": "DE-SN/SekII/GK",
+          "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+          "mappedTargetGoalId": "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
+          "coverage": "inherited"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    },
+    {
+      "goalId": "e9ea1606-5018-5a36-9ac2-8359747a65d4",
+      "title": "Biologische Abbaubarkeit",
+      "wholeCurrentGoalText": "Die lernende Person kann Kriterien der Tensid-Bioabbaubarkeit erläutern.",
+      "wholeCurrentGoalObjectSha256": "sha256:cc6aa14dc15a63040c09838a714fa1ffad77fb51deaa89745a3b5e1a7635bbab",
+      "changedSourceAttachmentDecision": "remove_BB_BE_plastics_to_surfactants_edge",
+      "reason": "Whole current description is explicitly Tensid-Bioabbaubarkeit. Plastic classification by feedstock and degradability is a different material/domain target and cannot authorize this goal.",
+      "consumedChangedSourceGoalIds": [
+        "bb-chemistry-sekii-rlp-3-2-2-inhalte-003-356adf78",
+        "be-chemistry-sekii-rlp-3-2-2-inhalte-003-356adf78"
+      ],
+      "changedAttachedScopeTargetPaths": [
+        {
+          "scope": "DE-BB/SekII/LK",
+          "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-2-inhalte-003-356adf78",
+          "mappedTargetGoalId": "e9ea1606-5018-5a36-9ac2-8359747a65d4",
+          "coverage": "direct"
+        },
+        {
+          "scope": "DE-BE/SekII/LK",
+          "sourceGoalId": "be-chemistry-sekii-rlp-3-2-2-inhalte-003-356adf78",
+          "mappedTargetGoalId": "e9ea1606-5018-5a36-9ac2-8359747a65d4",
+          "coverage": "direct"
+        }
+      ],
+      "courseScopeDeltaAmongFive": false,
+      "otherPAMVScienceNotReopened": true,
+      "fullOtherSourceUnionApproved": false
+    }
+  ],
+  "canonicalPagePAMVEqualityNotSourceClearance": true,
+  "otherSourcesOutsideChangedCellsNotRejudged": true
+}

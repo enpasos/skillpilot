@@ -1,0 +1,17 @@
+# Independent targeted actual V: two corrected Chemistry rasters
+
+This inactive E12 packet reviews only the corrected spectroscopy and intermolecular-force PNGs from the exact neutral v4 author selector. Both receive PASS for these new exact bytes. The prior two HOLD decisions remain valid historical decisions for their old bytes. The unchanged qualitative-test image and its v3 PASS are carried by exact binding and are not reviewed again.
+
+`FIRST.two-corrected-actual-V.frozen.json` records the independent first findings before author final or new peer judgments. `inspection/` binds all eight actual whole-image views: native1672×941 and316/360/680 widths with448px height cap. All non-target regions were included because the generator changed pixels outside the requested correction regions. The source PNGs and C2PA containers are unmodified. No cryptographic C2PA validation or authorship proof is claimed.
+
+The blue2H quartet now clearly represents the theoretical1:3:3:1 motif. The orange3H singlet, green3H triplet, valid ethyl ethanoate formula, IR carbonyl near1740cm⁻¹, color assignments and separate uncalibrated signal cards remain coherent. These are orientation schematics, so no pixel-perfect quantitative spectrum is required. The [UCLA quartet explanation](https://www.chem.ucla.edu/~harding/IGOC/Q/quartet.html) and [University of Kentucky derivation](https://ochem.as.uky.edu/06.CHE230.htm) were independently checked during this same review session.
+
+The upper hydrated water now has a clear bentV, with both hydrogen ends away fromNa⁺ and its oxygen end inward. Every depicted water retains exactly twoH and twoO–H bonds. AllNa⁺ contacts terminate at oxygen; O–H···O hydrogen bonding, HCl dipoles and opposite temporary partial charges remain correct. The [NIST water geometry](https://cccbdb.nist.gov/exp2x.asp?casno=7732185&charge=0) supports bent water; no exact drawn angle is demanded. The image asserts neither a universal force-strength ranking nor a complete hydration shell.
+
+Whole phone and desktop views retain the important structures, headings, proton counts/shifts, contacts and concise labels. Small secondary text at316px does not carry the central meaning. Both images retain the friendly comic style. The near16:9 format uses316×178,360×203 and680×383 with no cropping; no format exception is needed.
+
+`review/V.ordinary-selected-two.inactive.qa.json` contains the two exact-hash modern machine AI votes with current human and historical triage fields retained. `review/V.root-integration.future-live-two.qa.json` contains separate planned integration rows. `review/V.independent.config.json` binds the approved assets and the unchanged third. Active QA, canonical/source/runtime assets and old seals are untouched.
+
+`checks/` records the actual normal V model and central strict V predicate, scoped goal schema/JSON/hash closure, prior seal closures,397 existing images/1191 copies, current231 strict count and the normal global committable curriculum symlink guard. Private validation runs outside `curricula` with regular protected parents. No full build or native D campaign is run.
+
+This packet supplies two changed-image V votes only. Root must perform any actual integration and required current D/P rebinding. Scientific completion and strict M7 gain remain zero here. It grants no human approval, human trial or learner lab/clinical execution evidence.

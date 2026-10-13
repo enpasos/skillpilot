@@ -1,0 +1,24 @@
+# Independent targeted A/M review of two prospective Chemie bodies
+
+Reviewer: Codex AI independent targeted reviewer /root/chemie_aromatics_two_body_memory_atomicity_independent. FIRST timestamp: 2026-10-13T03:56:49.027376Z. AI evidence only.
+
+| Candidate goal | Atomicity | Memory |
+| --- | --- | --- |
+| `d61ce84f-1d0d-555f-be05-aedb589225ce` — Dirigierende Effekte analysieren (LK) | `atomic`, `semanticAtomic: true` | `no_memory_needed`, `memoryUseful: false` |
+| `4b9810b0-5d3d-59d8-a948-c3f6dd6303c7` — Acidität und Basizität mit induktiven und mesomeren Effekten begründen | `non_atomic`, `semanticAtomic: false` | `no_memory_needed`, `memoryUseful: false` |
+
+The first target is one assessable electronic-model competence: justify the preferred second substitution on an aromatic ring from substituent effects and sigma-complex stabilization, including the actual protonation state. Named substrates are variations. Explaining I/M effects and applying them to direction are integrated evidence of the same competence. DE and EN retain this scope; the whole cases explicitly locate the second substitution on the ring. This atomicity classification does not grant source-route or complete D/P acceptance.
+
+The second target adds an independently required research process. In both cases r1/r2 already assess the I/M comparisons from supplied pKa values and conditions. The separate r3 requires actual source opening, passage selection, URL/section/actual-access documentation and an original connection to the chemistry. It awards source-access credit separately, and e3 is mandatory. A learner can demonstrate the I/M reasoning without accessing the sources, or retrieve/document the passages while failing that reasoning. This is a genuine additional competence. The acidity/basicity applications themselves remain one comparative I/M structure-property reasoning competence.
+
+Existing partner suggestion: `ac8b6c0f-98b2-5092-806d-d9498efbfa35`, **Komplexe chemische Quellen selbstständig erschließen** (SekII). Its current body covers independent analogue/digital research, source information selection and interpretation, scientific conclusions and citation. Keep the comparative I/M content on `4b9810b0...` and give actual access/documentation e3/r3 evidence to this existing process partner. Any resulting body, cases/profile and full source-component allocation must be separately reviewed; this report does not approve that allocation or modify it. No new goal IDs are proposed.
+
+Both memory decisions are goal-specific. Directing-effect mastery needs conditional model explanation and transfer rather than a memorized substituent table. The acid/base cases supply numerical values, so exact pKa recall is not required; source URLs/access dates and explanation paragraphs are unsuitable deck content. No new memory goal, card or visibility binding is justified. There are zero existing card origin references to either target in the protected 75-card ledger. The unchanged other 400 M records, 75 card records and nine visibility view files are bound by references and byte hashes in `protected-memory-inputs.CAS.json`; none was copied or written.
+
+`FIRST.raw-input-CAS-and-judgments.json` was written before author or peer judgments. Only the target canonical body, whole cases/profiles as data and current policy/helper/header were used for FIRST. The own record proposals preserve truthful AI reviewer identity and time and contain exact current candidate fingerprints. No historical review identity was reused.
+
+The native scoped A checker passes schema, completeness and fingerprint checks: two current records, one atomic and one non-atomic, no missing/stale/obsolete records. Its exit zero is **not** an atomic approval of `4b9810b0...`. M2 passed the current helper's actual four pure shape/fingerprint functions, evaluated without its full main/build; there are no shape/fingerprint errors. The full mixed M402 native check is deferred to the root after a stable accepted body is available. These M2 fingerprints apply only to the exact prospective bodies in the neutral manifest.
+
+After FIRST, [OpenStax 16.4](https://openstax.org/books/organic-chemistry/pages/16-4-substituent-effects-in-electrophilic-substitutions), [17.2](https://openstax.org/books/organic-chemistry/pages/17-2-properties-of-alcohols-and-phenols) and [24.4](https://openstax.org/books/organic-chemistry/pages/24-4-basicity-of-arylamines) were consulted for scientific sanity. They did not alter these decisions and do not substitute for the independent curriculum/source operator audit or constitute a learner's research performance.
+
+No active canonical, registry, SEM/M ledger, mapping, source extraction, Git or old sealed artifact was written. No final D vote, source-route approval, M7 closure, Human Approval or Human Trial is claimed.

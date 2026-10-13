@@ -1,0 +1,32 @@
+# Lernzielvisualisierung: σ-Komplex-Mechanismus
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `3dbd84de-51cb-5ff7-801b-077a54520fed`
+- Titel: σ-Komplex-Mechanismus
+- Beschreibung: Die lernende Person kann den Mechanismus der elektrophilen Substitution über den σ-Komplex erläutern.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen.imagegen
+- Status: pilot
+- Quellbild: `3dbd84de-51cb-5ff7-801b-077a54520fed.png`
+- Public Asset: `/assets/goal-visualizations/chemie/3dbd84de-51cb-5ff7-801b-077a54520fed/3dbd84de-51cb-5ff7-801b-077a54520fed.png`
+
+## Prompt
+
+```text
+Actual built-in image_gen.imagegen invocation sequence; no model version was returned. The selected raster preserves the tool PNG and C2PA bytes.
+
+Invocation 1 (brand-new generation)
+Use case: scientific-educational. Create one brand-new PNG orientation illustration for upper-secondary chemistry, about1600×900, wide16:9. Friendly clear comic science style: pale cream background, thick dark-blue clean bond outlines, softly rounded pale-blue/peach/mint areas and generous whitespace. Match approachable colored chemistry icons, not photorealism or a dense technical chart. No people, apparatus, logos, watermarks or technical IDs.
+Topic: electrophilic aromatic substitution through a sigma complex. The dominant motif is THREE large six-carbon rings in a spacious left-to-right sequence. Draw each ring as the same exact hexagon with a TOP vertex. The three structures and their relevant charge/substituents must remain easy to recognize at360px width. Two large ordinary straight one-way reaction arrows connect the stages. No other parallel reaction route and no energy diagram.
+LEFT: neutral benzene ring with three alternating double bonds. For exact topology, imagine six ring vertices starting at the top then clockwise: positions1(top),2(upper-right),3(lower-right),4(bottom),5(lower-left),6(upper-left). Put the double bonds on edges1–2,3–4 and5–6. Ordinary line-angle notation leaves all implicit carbon/hydrogen atoms unlettered. Beside the incoming reaction arrow, one big yellow badge says exactly "E⁺". Below this first stage, only the short label "Angriff".
+CENTER is the largest emphasized structure, on a soft peach rounded background. The same ring is an arenium sigma complex: TOP carbon now has TWO separate ordinary single bonds, one to a large "H" pointing up-left, the other to a large "E" pointing up-right. The top carbon therefore has four single sigma bonds total: two to its ring neighbors, one to H and one to E. It has NO double bond and NO positive charge. The ONLY two remaining ring double bonds are on3–4 and5–6. Place one large plus sign at the upper-right ring carbon(position2), which has three bonds including its implicit H; do NOT place a plus sign at the top sp3 carbon. This is one valid localized contributor of the +1 sigma complex, not an aromatic ring: no inner circle, no third double bond, no orbiting electrons. Under it use exactly "σ-Komplex" and in a second shorter line "nicht aromatisch". These words are large, sparse and legible.
+RIGHT: a neutral substituted benzene with the SAME three alternating double bonds as at the left, including the restored1–2 bond. One single bond from the top vertex points to "E". There is NO H drawn on that top vertex and NO charge on the product. Above the reaction arrow from center to right put exactly "−H⁺" to show proton removal (NOT hydride H−); below the right structure put exactly "aromatisch". Implicit hydrogens at the other five ring vertices remain unchanged. The omitted base receives the released proton; this is an orientation schematic, not a full reaction equation.
+Keep all charge symbols superscript-style and unambiguous. No curved arrows unless they can be correctly drawn with a tail on an existing electron-pair bond; do not invent arrows from positive-charge signs. Prefer this sparse three-stage skeleton without tiny mechanistic arrows, extra reagents or long explanations. Ensure the central sp3 carbon, exactly two pi bonds, off-center positive charge, and restoration of the third pi bond are chemically correct.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "license": "CC-BY-4.0",
+  "profiles": [
+    {
+      "goalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Ein Nachweis wird aus Struktur, Reaktionsprinzip und einem begrenzten Kandidatenraum gewählt.",
+            "essentialUnderstandingEn": "A test is selected using structure, reaction principle and a bounded candidate set.",
+            "observablePerformanceDe": "Wählt eine passende Testfolge und begründet ihre Trennleistung für die gegebenen Stoffklassen.",
+            "observablePerformanceEn": "Selects a suitable test sequence and explains its discrimination for the supplied classes."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine Beobachtung ist erst mit Blind-/Positivkontrolle und chemischem Modell ein begründeter Gruppennachweis.",
+            "essentialUnderstandingEn": "An observation supports a group assignment only with blank/positive controls and a chemical model.",
+            "observablePerformanceDe": "Deutet Daten und bilanziert die ausdrücklich verlangten Nachweisreaktionen, ohne unspezifische Befunde zu verallgemeinern.",
+            "observablePerformanceEn": "Interprets data and balances requested test reactions without generalizing nonspecific findings."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Durchführen ist eine reale kontrollierte Handlung mit tatsächlichem Beobachtungsprotokoll.",
+            "essentialUnderstandingEn": "Performing is a real controlled operation with an actual observation record.",
+            "observablePerformanceDe": "Führt eine freigegebene beaufsichtigte qualitative Probe samt Kontrollen aus; Papierdaten erhalten keinen Ausführungskredit.",
+            "observablePerformanceEn": "Performs an authorized supervised qualitative test with controls; paper data cannot earn execution credit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Redox-/Additionsnachweis oder Säure-/Hydrolyseprobe",
+            "textEn": "Redox/addition test versus acid/hydrolysis test"
+          },
+          {
+            "id": "v2",
+            "textDe": "Kandidatenraum und Kontrollen",
+            "textEn": "Candidate set and controls"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "3de28598-case-1",
+            "taskDemandDe": "Daten und Bedingungen:\nDrei reine Proben sind Cyclohexen, Propanal und Propanon in unbekannter Reihenfolge. Didaktische Regeln: 2,4-DNPH zeigt bei Aldehyd/Keton einen Niederschlag; Cyclohexen nicht. Eine freigegebene alkalische Cu(II)-Nachweisprobe liefert bei Propanal rotes Cu₂O, bei Propanon und Cyclohexen nicht. Bromwasser-Entfärbung allein ist unspezifisch, da auch Aldehyde oxidiert werden können. Synthetische Beobachtungen: A DNPH−/Cu₂O−, B DNPH+/Cu₂O+, C DNPH+/Cu₂O−. Wasserblindwert negativ, Propanal-Positivkontrolle positiv. Für den getrennten realen Kanal stellt die Lehrkraft beschriftete verdünnte Propanal-/Propanonproben, eine frische Cu(II)-Schulnachweisreagenzlösung, Wasserblindprobe, Tropfpipetten und Wasserbad mit freigegebener schriftlicher Mikromethode bereit. DNPH/Bromwasser werden hier nur als bereitgestellte Daten ausgewertet, nicht selbst angesetzt.\nAufgaben:\n1. Wähle eine Testfolge, ordne A/B/C zu und begründe, warum Bromwasser allein nicht genügt.\n2. Formuliere die ionisch bilanzierte Cu(II)-Oxidation von Propanal und erläutere beide Kontrollen.\n3. Führe nur die freigegebene Cu(II)-Mikroprobe mit Propanal, Propanon und Wasser unter Aufsicht nach der bereitgestellten Methode aus. Dokumentiere getrennte Zugaben, gleiche Wasserbadbedingungen und deine tatsächlichen Beobachtungen. Papierdaten beweisen keine Durchführung.",
+            "taskDemandEn": "Data and conditions:\nThree pure samples are cyclohexene, propanal and propanone in unknown order. Teaching rules: 2,4-DNPH precipitates with aldehyde/ketone but not cyclohexene. An authorized alkaline Cu(II) test gives red Cu₂O with propanal, not propanone/cyclohexene. Bromine-water decolorization alone is nonspecific since aldehydes can also be oxidized. Synthetic observations: A DNPH−/Cu₂O−, B DNPH+/Cu₂O+, C DNPH+/Cu₂O−. Water blank is negative, propanal control positive. For the separate real channel the teacher supplies labeled dilute propanal/propanone samples, fresh school Cu(II) test reagent, water blank, droppers and water bath with an authorized written micromethod. DNPH/bromine-water results are supplied data only; learners do not prepare those reagents.\nTasks:\n1. Select a test sequence, assign A/B/C and explain why bromine water alone is insufficient.\n2. Write the balanced ionic Cu(II) oxidation of propanal and explain both controls.\n3. Perform only the authorized Cu(II) microtest on propanal, propanone and water under supervision using the supplied method. Record separate additions, identical water-bath conditions and your actual observations. Paper data do not prove execution.",
+            "expectedPerformanceDe": "1. DNPH trennt Carbonylproben B/C von A; Cu(II) trennt B als Propanal von C als Propanon. A ist im gegebenen reinen Dreier-Kandidatenraum Cyclohexen. Aldehydoxidation kann Bromwasser ebenfalls entfärben; ohne begrenzten Kandidatenraum wäre A nicht allein als Alken bewiesen.\n2. CH₃CH₂CHO + 2 Cu²⁺ + 5 OH⁻ → CH₃CH₂COO⁻ + Cu₂O + 3 H₂O. Atome und Gesamtladung −1 sind bilanziert. Blindprobe prüft Reagenz-/Hintergrundbefund; Positivkontrolle prüft Ansprechfähigkeit. Die Gleichung vereinfacht die tatsächliche Cu-Komplexierung.\n3. Nur ein reales Beobachtungsprotokoll kann getrennte saubere Probenhandhabung, identische Reagenz-/Wasserbadbedingungen und tatsächlich beobachteten Kontrollvergleich belegen. Ein unerwarteter Befund wird wahrheitsgemäß protokolliert, nicht auf die Musterfarbe umgeschrieben. Es liegt hier kein solches Protokoll vor.",
+            "expectedPerformanceEn": "1. DNPH separates carbonyl samples B/C from A; Cu(II) identifies B as propanal and C as propanone. A is cyclohexene within the stated pure three-candidate set. Aldehyde oxidation can also decolorize bromine water; without the bounded candidate set A would not be uniquely proved to be an alkene.\n2. CH₃CH₂CHO + 2 Cu²⁺ + 5 OH⁻ → CH₃CH₂COO⁻ + Cu₂O + 3 H₂O balances atoms and net charge −1. Blank checks reagent/background signal; positive control checks responsiveness. The equation simplifies actual copper complexation.\n3. Only a real observation log can establish separate clean sample handling, identical reagent/water-bath conditions and an actually observed control comparison. Unexpected findings are recorded truthfully rather than rewritten to match the expected color. No such log exists here.",
+            "understandingFocusDe": "DNPH trennt Carbonylproben B/C von A; Cu(II) trennt B als Propanal von C als Propanon. A ist im gegebenen reinen Dreier-Kandidatenraum Cyclohexen. Aldehydoxidation kann Bromwasser ebenfalls entfärben; ohne begrenzten Kandidatenraum wäre A nicht allein als Alken bewiesen. / CH₃CH₂CHO + 2 Cu²⁺ + 5 OH⁻ → CH₃CH₂COO⁻ + Cu₂O + 3 H₂O. Atome und Gesamtladung −1 sind bilanziert. Blindprobe prüft Reagenz-/Hintergrundbefund; Positivkontrolle prüft Ansprechfähigkeit. Die Gleichung vereinfacht die tatsächliche Cu-Komplexierung. / Nur ein reales Beobachtungsprotokoll kann getrennte saubere Probenhandhabung, identische Reagenz-/Wasserbadbedingungen und tatsächlich beobachteten Kontrollvergleich belegen. Ein unerwarteter Befund wird wahrheitsgemäß protokolliert, nicht auf die Musterfarbe umgeschrieben. Es liegt hier kein solches Protokoll vor.",
+            "understandingFocusEn": "DNPH separates carbonyl samples B/C from A; Cu(II) identifies B as propanal and C as propanone. A is cyclohexene within the stated pure three-candidate set. Aldehyde oxidation can also decolorize bromine water; without the bounded candidate set A would not be uniquely proved to be an alkene. / CH₃CH₂CHO + 2 Cu²⁺ + 5 OH⁻ → CH₃CH₂COO⁻ + Cu₂O + 3 H₂O balances atoms and net charge −1. Blank checks reagent/background signal; positive control checks responsiveness. The equation simplifies actual copper complexation. / Only a real observation log can establish separate clean sample handling, identical reagent/water-bath conditions and an actually observed control comparison. Unexpected findings are recorded truthfully rather than rewritten to match the expected color. No such log exists here."
+          },
+          {
+            "id": "3de28598-case-2",
+            "taskDemandDe": "Daten und Bedingungen:\nReine Kandidaten: Ethanol, Ethansäure, Ethylethanoat. Synthetische Testregeln/-daten: NaHCO₃ setzt bei Carbonsäure CO₂ frei, beim neutralen Alkohol/Ester nicht. Saure Identifikation durch CO₂-Kalkwasserprobe bestätigt. A erzeugt CO₂. B erzeugt zunächst kein CO₂, nach einer bereitgestellten kontrollierten Hydrolyse liegt Ethansäure plus Ethanol vor; eine identisch behandelte Wasserblindprobe bleibt ohne organische Produkte. C zeigt keine dieser Veränderungen. Hydrolyse: CH₃COOCH₂CH₃ + H₂O ⇌ CH₃COOH + CH₃CH₂OH. Getrennter realer Kanal: verdünnte Ethansäure und Ethanol in beschrifteten offenen Mikrogefäßen, wässriges NaHCO₃, Wasserblank und Tropfpipetten; gleiche kleine Reagenzzugabe nach lokal freigegebener Methode, Schutzbrille/Aufsicht, keine verschlossenen gasbildenden Gefäße. Keine Geruchs-/Geschmacksprobe.\nAufgaben:\n1. Wähle die Nachweise und ordne A/B/C im gegebenen Kandidatenraum zu.\n2. Bilanziere Ethansäure/NaHCO₃ und die Esterhydrolyse; erkläre die Bedeutung der behandelten Blindprobe.\n3. Führe nach Freigabe die Hydrogencarbonatprobe mit den beschrifteten Säure-/Alkoholproben und Wasser aus. Halte Zugabe und offene Gefäße gleich und protokolliere den tatsächlich beobachteten Vergleich unter Aufsicht.",
+            "taskDemandEn": "Data and conditions:\nPure candidates: ethanol, ethanoic acid and ethyl ethanoate. Synthetic rules/data: NaHCO₃ releases CO₂ with a carboxylic acid, not neutral alcohol/ester. A releases CO₂, confirmed using limewater. B initially releases none; supplied controlled hydrolysis produces ethanoic acid plus ethanol, while a treated water blank has no organic products. C shows neither change. Hydrolysis: CH₃COOCH₂CH₃ + H₂O ⇌ CH₃COOH + CH₃CH₂OH. Separate real channel: labeled dilute ethanoic acid and ethanol in open microvessels, aqueous NaHCO₃, water blank and droppers; equal small reagent additions using a locally authorized method, goggles/supervision and no sealed gas-producing vessels. No smelling/tasting.\nTasks:\n1. Select tests and assign A/B/C within the supplied candidate set.\n2. Balance ethanoic acid/NaHCO₃ and ester hydrolysis; explain the treated blank.\n3. After authorization, perform the bicarbonate test on the labeled acid/alcohol samples and water. Keep additions and open vessels comparable and record the actual comparison under supervision.",
+            "expectedPerformanceDe": "1. A ist Ethansäure wegen CO₂-Bildung mit Hydrogencarbonat. B ist Ethylethanoat wegen Bildung von Säure und Alkohol bei Hydrolyse. C ist innerhalb der drei reinen Kandidaten Ethanol; ein negativer Befund allein beweist allgemein keine Hydroxygruppe.\n2. CH₃COOH + NaHCO₃ → CH₃COONa + CO₂ + H₂O; CH₃COOCH₂CH₃ + H₂O ⇌ CH₃COOH + CH₃CH₂OH. Hydrolyse spaltet die Acyl-O-Bindung im Nettoergebnis und braucht geeignete Bedingungen. Die behandelte Blindprobe prüft, ob Reagenzien selbst die organischen Produkte/Befunde liefern.\n3. Ausführungskredit verlangt real beobachtete getrennte Zugaben, offene Gefäße und korrekt zugeordnete Beobachtungen samt Wasserblank. Gasbildung darf nicht durch verschlossene Gefäße unter Druck gesammelt werden. Synthetische A/B/C-Daten sind kein Handlungsnachweis; aktuell wurde nichts ausgeführt.",
+            "expectedPerformanceEn": "1. A is ethanoic acid because bicarbonate releases CO₂. B is ethyl ethanoate because hydrolysis forms acid and alcohol. C is ethanol within the three pure candidates; a negative test alone does not generally prove a hydroxy group.\n2. CH₃COOH + NaHCO₃ → CH₃COONa + CO₂ + H₂O; CH₃COOCH₂CH₃ + H₂O ⇌ CH₃COOH + CH₃CH₂OH. Hydrolysis cleaves the acyl–oxygen linkage in the net result and requires suitable conditions. A treated blank tests whether reagents themselves provide the organic products/signals.\n3. Execution credit requires actually observed separate additions, open vessels and correctly assigned observations with water blank. Gas must not be collected under pressure in sealed vessels. Synthetic A/B/C data are not handling evidence; nothing was performed here.",
+            "understandingFocusDe": "A ist Ethansäure wegen CO₂-Bildung mit Hydrogencarbonat. B ist Ethylethanoat wegen Bildung von Säure und Alkohol bei Hydrolyse. C ist innerhalb der drei reinen Kandidaten Ethanol; ein negativer Befund allein beweist allgemein keine Hydroxygruppe. / CH₃COOH + NaHCO₃ → CH₃COONa + CO₂ + H₂O; CH₃COOCH₂CH₃ + H₂O ⇌ CH₃COOH + CH₃CH₂OH. Hydrolyse spaltet die Acyl-O-Bindung im Nettoergebnis und braucht geeignete Bedingungen. Die behandelte Blindprobe prüft, ob Reagenzien selbst die organischen Produkte/Befunde liefern. / Ausführungskredit verlangt real beobachtete getrennte Zugaben, offene Gefäße und korrekt zugeordnete Beobachtungen samt Wasserblank. Gasbildung darf nicht durch verschlossene Gefäße unter Druck gesammelt werden. Synthetische A/B/C-Daten sind kein Handlungsnachweis; aktuell wurde nichts ausgeführt.",
+            "understandingFocusEn": "A is ethanoic acid because bicarbonate releases CO₂. B is ethyl ethanoate because hydrolysis forms acid and alcohol. C is ethanol within the three pure candidates; a negative test alone does not generally prove a hydroxy group. / CH₃COOH + NaHCO₃ → CH₃COONa + CO₂ + H₂O; CH₃COOCH₂CH₃ + H₂O ⇌ CH₃COOH + CH₃CH₂OH. Hydrolysis cleaves the acyl–oxygen linkage in the net result and requires suitable conditions. A treated blank tests whether reagents themselves provide the organic products/signals. / Execution credit requires actually observed separate additions, open vessels and correctly assigned observations with water blank. Gas must not be collected under pressure in sealed vessels. Synthetic A/B/C data are not handling evidence; nothing was performed here."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Dispersionskräfte wirken zwischen allen Teilchen; permanente Dipole und H-Brücken fügen spezifische Beiträge hinzu.",
+            "essentialUnderstandingEn": "Dispersion acts between all particles; permanent dipoles and hydrogen bonds add specific contributions.",
+            "observablePerformanceDe": "Ordnet Wechselwirkungen an gegebenen Paaren mit chemischer Begründung zu.",
+            "observablePerformanceEn": "Assigns interactions to supplied pairs with chemical reasoning."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Ionen-Dipol-Kräfte wirken zwischen einem Ion und dem polaren Lösungsmittel.",
+            "essentialUnderstandingEn": "Ion–dipole forces act between an ion and a polar solvent.",
+            "observablePerformanceDe": "Orientiert Wasser um Kationen/Anionen und trennt Solvatation von Molekülbindung.",
+            "observablePerformanceEn": "Orients water around cations/anions and distinguishes solvation from intramolecular bonding."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Eigenschaften folgen dem Zusammenspiel von Polarität, Polarisierbarkeit und Struktur.",
+            "essentialUnderstandingEn": "Properties reflect polarity, polarizability and structure together.",
+            "observablePerformanceDe": "Vergleicht Stoffeigenschaften und widerlegt eine unpassende pauschale Rangregel.",
+            "observablePerformanceEn": "Compares properties and rejects an unsuitable blanket ranking."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Neutrale Moleküle oder solvatisierte Ionen",
+            "textEn": "Neutral molecules or solvated ions"
+          },
+          {
+            "id": "v2",
+            "textDe": "Größe und H-Brückenfähigkeit",
+            "textEn": "Size and hydrogen-bond capability"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eb7537dd-case-1",
+            "taskDemandDe": "Daten und Bedingungen:\nGegeben: Ethanol CH₃CH₂OH, Dimethylether CH₃OCH₃, Pentan C₅H₁₂ sowie Na⁺/Cl⁻ in Wasser. Ethanol und Dimethylether haben dieselbe Molmasse; Siedepunkte als Unterrichtsdaten: 78°C bzw. −25°C. Wasser hat Oδ−/Hδ+. Im eigenen reinen Ether fehlt ein O–H-Donator; Ether-O kann H-Brücken von Wasser akzeptieren.\nAufgaben:\n1. Ordne für jedes reine Molekül die genannten Wechselwirkungen zu und begründe die H-Brückenunterscheidung.\n2. Beschreibe die Wasserorientierung an Na⁺ und Cl⁻ sowie Ether/Wasser-Wechselwirkung.\n3. Erkläre den Siedepunktunterschied der Isomere und grenze ihn von einer allgemeinen Stoffrangfolge ab.",
+            "taskDemandEn": "Data and conditions:\nGiven: ethanol CH₃CH₂OH, dimethyl ether CH₃OCH₃, pentane C₅H₁₂, and Na⁺/Cl⁻ in water. Ethanol/dimethyl ether have equal molar mass; teaching boiling points are 78°C/−25°C. Water has Oδ−/Hδ+. Pure ether lacks an O–H donor; its oxygen can accept hydrogen bonds from water.\nTasks:\n1. Assign the listed interactions to each pure molecular substance and explain the hydrogen-bond distinction.\n2. Describe water orientation around Na⁺/Cl⁻ and ether–water interaction.\n3. Explain the isomers’ boiling-point difference and distinguish it from a universal substance ranking.",
+            "expectedPerformanceDe": "1. Alle zeigen Dispersion. Ethanol und Ether sind permanent polar und zeigen Dipol-Dipol-Kräfte; Ethanol besitzt O–H-Donator und O-Akzeptor, daher H-Brücken zwischen seinen Molekülen. Reiner Ether bildet keine entsprechende O–H···O-Kette; Pentan ist unpolar.\n2. Um Na⁺ richtet sich vorzugsweise Oδ− aus, um Cl⁻ Hδ+. Das sind Ionen-Dipol-Wechselwirkungen. Wasser kann über O–H eine H-Brücke zum Ether-O bilden; fehlende Selbst-H-Brücken bedeuten deshalb keine fehlende Wasserwechselwirkung.\n3. Bei vergleichbarer Masse/Größe verlangt das zusätzliche H-Brückennetz des Ethanols mehr Energie zur Trennung der Moleküle. Daraus folgt keine universelle Regel, dass jeder H-Brückenstoff höher siedet als jeder unpolare Stoff; Größe/Polarisierbarkeit und Form bleiben relevant.",
+            "expectedPerformanceEn": "1. All show dispersion. Ethanol and ether are polar and have dipole–dipole forces; ethanol has O–H donor and oxygen acceptor, allowing intermolecular hydrogen bonds. Pure ether cannot form corresponding O–H···O chains; pentane is nonpolar.\n2. Oδ− points preferentially toward Na⁺ and Hδ+ toward Cl⁻: ion–dipole interactions. Water can donate O–H hydrogen bonds to ether oxygen; lack of self hydrogen bonding does not imply lack of interaction with water.\n3. At comparable mass/size ethanol’s additional hydrogen-bond network requires more energy for molecular separation. This does not mean every hydrogen-bonding substance boils above every nonpolar substance; size, polarizability and shape still matter.",
+            "understandingFocusDe": "Alle zeigen Dispersion. Ethanol und Ether sind permanent polar und zeigen Dipol-Dipol-Kräfte; Ethanol besitzt O–H-Donator und O-Akzeptor, daher H-Brücken zwischen seinen Molekülen. Reiner Ether bildet keine entsprechende O–H···O-Kette; Pentan ist unpolar. / Um Na⁺ richtet sich vorzugsweise Oδ− aus, um Cl⁻ Hδ+. Das sind Ionen-Dipol-Wechselwirkungen. Wasser kann über O–H eine H-Brücke zum Ether-O bilden; fehlende Selbst-H-Brücken bedeuten deshalb keine fehlende Wasserwechselwirkung. / Bei vergleichbarer Masse/Größe verlangt das zusätzliche H-Brückennetz des Ethanols mehr Energie zur Trennung der Moleküle. Daraus folgt keine universelle Regel, dass jeder H-Brückenstoff höher siedet als jeder unpolare Stoff; Größe/Polarisierbarkeit und Form bleiben relevant.",
+            "understandingFocusEn": "All show dispersion. Ethanol and ether are polar and have dipole–dipole forces; ethanol has O–H donor and oxygen acceptor, allowing intermolecular hydrogen bonds. Pure ether cannot form corresponding O–H···O chains; pentane is nonpolar. / Oδ− points preferentially toward Na⁺ and Hδ+ toward Cl⁻: ion–dipole interactions. Water can donate O–H hydrogen bonds to ether oxygen; lack of self hydrogen bonding does not imply lack of interaction with water. / At comparable mass/size ethanol’s additional hydrogen-bond network requires more energy for molecular separation. This does not mean every hydrogen-bonding substance boils above every nonpolar substance; size, polarizability and shape still matter."
+          },
+          {
+            "id": "eb7537dd-case-2",
+            "taskDemandDe": "Daten und Bedingungen:\nGegeben Aceton CH₃COCH₃ (58 g/mol, Siedepunkt 56°C) und Hexan C₆H₁₄ (86 g/mol, Siedepunkt 69°C), Methanol CH₃OH sowie Mg²⁺ in Wasser. Carbonyl-Cδ+/Oδ−. Hexan hat größere Elektronenwolke; die Siedepunkte sind gerundete Lehrdaten.\nAufgaben:\n1. Erkläre Wechselwirkungen in Aceton, Hexan und Methanol sowie zwischen Methanol und Aceton.\n2. Beschreibe Mg²⁺-Hydratation und unterscheide sie von H-Brücken zwischen Wassermolekülen.\n3. Bewerte anhand der Daten die Behauptung, permanente Dipole erzwingen immer höhere Siedepunkte.",
+            "taskDemandEn": "Data and conditions:\nGiven acetone CH₃COCH₃ (58 g/mol, boiling point 56°C), hexane C₆H₁₄ (86 g/mol, 69°C), methanol CH₃OH and Mg²⁺ in water. Carbonyl Cδ+/Oδ−. Hexane has a larger electron cloud; boiling points are rounded teaching data.\nTasks:\n1. Explain interactions within acetone, hexane and methanol and between methanol/acetone.\n2. Describe Mg²⁺ hydration and distinguish it from water–water hydrogen bonds.\n3. Use the data to evaluate the claim that permanent dipoles always force higher boiling points.",
+            "expectedPerformanceDe": "1. Aceton: Dispersion plus Dipol-Dipol, kein eigener O–H-Donator. Hexan: Dispersion. Methanol: Dispersion, permanente Dipole und H-Brücken. Methanol-O–H kann an Aceton-O eine H-Brücke bilden. C=O selbst ist eine intramolekulare Bindung.\n2. Wasser-Oδ− weist zum positiven Mg²⁺; die Anziehung ist Ionen-Dipol. Benachbarte Wassermoleküle können zusätzlich O–H···O-Brücken bilden. Der Ion-Wasser-Kontakt ist keine C=O- oder O–H-Molekülbindung.\n3. Hexan siedet trotz fehlendem permanentem Dipol höher als Aceton. Seine größere polarisierbare Elektronenwolke kann stärkere gesamte Dispersion beitragen. Der Vergleich zeigt das Zusammenspiel, nicht das Fehlen von Dipolkräften im Aceton oder einen allgemeinen Größenbeweis aus nur zwei Stoffen.",
+            "expectedPerformanceEn": "1. Acetone: dispersion and dipole–dipole, no O–H donor. Hexane: dispersion. Methanol: dispersion, permanent dipoles and hydrogen bonds. Methanol O–H can donate to acetone oxygen. C=O itself is an intramolecular bond.\n2. Water Oδ− faces positive Mg²⁺, giving ion–dipole attraction. Neighboring water molecules may additionally form O–H···O bonds. Ion–water contact is not a molecular C=O/O–H bond.\n3. Hexane boils above acetone despite lacking a permanent dipole. Its larger polarizable electron cloud can contribute greater total dispersion. The comparison shows combined contributions, not absence of acetone dipole forces or a universal size law inferred from two substances.",
+            "understandingFocusDe": "Aceton: Dispersion plus Dipol-Dipol, kein eigener O–H-Donator. Hexan: Dispersion. Methanol: Dispersion, permanente Dipole und H-Brücken. Methanol-O–H kann an Aceton-O eine H-Brücke bilden. C=O selbst ist eine intramolekulare Bindung. / Wasser-Oδ− weist zum positiven Mg²⁺; die Anziehung ist Ionen-Dipol. Benachbarte Wassermoleküle können zusätzlich O–H···O-Brücken bilden. Der Ion-Wasser-Kontakt ist keine C=O- oder O–H-Molekülbindung. / Hexan siedet trotz fehlendem permanentem Dipol höher als Aceton. Seine größere polarisierbare Elektronenwolke kann stärkere gesamte Dispersion beitragen. Der Vergleich zeigt das Zusammenspiel, nicht das Fehlen von Dipolkräften im Aceton oder einen allgemeinen Größenbeweis aus nur zwei Stoffen.",
+            "understandingFocusEn": "Acetone: dispersion and dipole–dipole, no O–H donor. Hexane: dispersion. Methanol: dispersion, permanent dipoles and hydrogen bonds. Methanol O–H can donate to acetone oxygen. C=O itself is an intramolecular bond. / Water Oδ− faces positive Mg²⁺, giving ion–dipole attraction. Neighboring water molecules may additionally form O–H···O bonds. Ion–water contact is not a molecular C=O/O–H bond. / Hexane boils above acetone despite lacking a permanent dipole. Its larger polarizable electron cloud can contribute greater total dispersion. The comparison shows combined contributions, not absence of acetone dipole forces or a universal size law inferred from two substances."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "466bd2e9-39a5-5221-b620-945934adce00",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "IR lokalisiert charakteristische Bindungsschwingungen, nicht direkt eine komplette Molekülstruktur.",
+            "essentialUnderstandingEn": "IR locates characteristic bond vibrations rather than directly yielding an entire structure.",
+            "observablePerformanceDe": "Ordnet gegebene Banden Gruppen zu und schränkt Kandidaten ein.",
+            "observablePerformanceEn": "Assigns supplied bands to groups and narrows candidates."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "¹H-NMR-Signale unterscheiden Protonenumgebungen; Integration und Kopplung ergänzen Verschiebung.",
+            "essentialUnderstandingEn": "¹H NMR distinguishes proton environments; integration/coupling complement chemical shifts.",
+            "observablePerformanceDe": "Verknüpft Signale mit konkret gezeichneten H-Umgebungen.",
+            "observablePerformanceEn": "Links signals to explicitly drawn proton environments."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Strukturzuordnung verlangt die gemeinsame Verträglichkeit beider Datenarten.",
+            "essentialUnderstandingEn": "Structure assignment requires compatibility with both data types.",
+            "observablePerformanceDe": "Prüft alternative Strukturen und benennt bei unzureichenden Daten eine verbleibende Mehrdeutigkeit.",
+            "observablePerformanceEn": "Tests alternatives and identifies residual ambiguity when data are insufficient."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Ester-Isomere oder Carbonyl-Stoffklassen",
+            "textEn": "Ester isomers versus carbonyl classes"
+          },
+          {
+            "id": "v2",
+            "textDe": "Signalfläche und Konnektivität",
+            "textEn": "Signal area and connectivity"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "466bd2e9-case-1",
+            "taskDemandDe": "Daten und Bedingungen:\nKandidaten mit vollständigen Kondensformeln: Ethylethanoat CH₃COOCH₂CH₃ und Methylpropanoat CH₃CH₂COOCH₃. Gegebene charakteristische IR-Bereiche: Ester-C=O etwa 1740 cm⁻¹; O–H breit 3200–3600 cm⁻¹. Synthetisch: starke Bande 1740, kein O–H. ¹H-NMR: δ1.25 ppm Triplet Fläche3, δ4.10 Quartet Fläche2, δ2.05 Singlet Fläche3. Vereinfachte Regel n+1 für benachbarte gleichartige H; Kopplung über O/Carbonyl wird hier nicht aufgelöst. Methylpropanoat würde OCH₃-Singlet nahe3.7 und CH₂-Quartet nahe2.3 zeigen.\nAufgaben:\n1. Ordne die IR-Befunde zu und entscheide, ob IR allein die beiden Kandidaten trennt.\n2. Ordne alle drei NMR-Signale mit Integration und Nachbar-H-Zahl der passenden Struktur zu.\n3. Begründe die gemeinsame Strukturentscheidung und nenne einen konkreten Widerspruch für Methylpropanoat.",
+            "taskDemandEn": "Data and conditions:\nComplete candidate condensed structures: ethyl ethanoate CH₃COOCH₂CH₃ and methyl propanoate CH₃CH₂COOCH₃. Supplied characteristic IR: ester C=O around1740 cm⁻¹; broad O–H3200–3600. Synthetic data: strong1740 band, no O–H. ¹H NMR: δ1.25 ppm triplet area3, δ4.10 quartet area2, δ2.05 singlet area3. Simplified n+1 rule for neighboring equivalent H; coupling across O/carbonyl is unresolved. Methyl propanoate would show OCH₃ singlet around3.7 and CH₂ quartet around2.3.\nTasks:\n1. Assign IR findings and decide whether IR alone separates the candidates.\n2. Assign all three NMR signals using integration and neighboring H count to the matching structure.\n3. Justify the combined assignment and identify a specific conflict for methyl propanoate.",
+            "expectedPerformanceDe": "1. 1740 cm⁻¹ passt zu Ester-C=O; fehlendes O–H passt zu beiden Estern. Beide enthalten dieselbe funktionelle Gruppe, daher entscheidet diese IR-Auswahl nicht allein die Konnektivität.\n2. Ethylethanoat: terminales CH₃ neben CH₂ →3H-Triplet1.25; OCH₂ neben CH₃ →2H-Quartet4.10; Acyl-CH₃ ohne hier gekoppelte Nachbar-H →3H-Singlet2.05. Integrationen ergeben8H und passen zur Formel.\n3. Ethylethanoat passt zu IR und sämtlichen NMR-Umgebungen. Methylpropanoat hätte ein3H-OCH₃-Singlet bei etwa3.7 statt des2H-OCH₂-Quartets4.10. Nur ein Carbonyl-IR-Peak oder die Summenformel würde die Isomere nicht trennen.",
+            "expectedPerformanceEn": "1. 1740 cm⁻¹ fits ester C=O; absence of O–H fits both esters. Both have the same functional group, so these IR bands alone do not determine connectivity.\n2. Ethyl ethanoate: terminal CH₃ next to CH₂ gives3H triplet1.25; OCH₂ next to CH₃ gives2H quartet4.10; acyl CH₃ without resolved neighboring coupling gives3H singlet2.05. Areas total8H and fit the formula.\n3. Ethyl ethanoate fits IR and all proton environments. Methyl propanoate would give a3H OCH₃ singlet near3.7 rather than a2H OCH₂ quartet4.10. One carbonyl IR peak or molecular formula alone would not distinguish the isomers.",
+            "understandingFocusDe": "1740 cm⁻¹ passt zu Ester-C=O; fehlendes O–H passt zu beiden Estern. Beide enthalten dieselbe funktionelle Gruppe, daher entscheidet diese IR-Auswahl nicht allein die Konnektivität. / Ethylethanoat: terminales CH₃ neben CH₂ →3H-Triplet1.25; OCH₂ neben CH₃ →2H-Quartet4.10; Acyl-CH₃ ohne hier gekoppelte Nachbar-H →3H-Singlet2.05. Integrationen ergeben8H und passen zur Formel. / Ethylethanoat passt zu IR und sämtlichen NMR-Umgebungen. Methylpropanoat hätte ein3H-OCH₃-Singlet bei etwa3.7 statt des2H-OCH₂-Quartets4.10. Nur ein Carbonyl-IR-Peak oder die Summenformel würde die Isomere nicht trennen.",
+            "understandingFocusEn": "1740 cm⁻¹ fits ester C=O; absence of O–H fits both esters. Both have the same functional group, so these IR bands alone do not determine connectivity. / Ethyl ethanoate: terminal CH₃ next to CH₂ gives3H triplet1.25; OCH₂ next to CH₃ gives2H quartet4.10; acyl CH₃ without resolved neighboring coupling gives3H singlet2.05. Areas total8H and fit the formula. / Ethyl ethanoate fits IR and all proton environments. Methyl propanoate would give a3H OCH₃ singlet near3.7 rather than a2H OCH₂ quartet4.10. One carbonyl IR peak or molecular formula alone would not distinguish the isomers."
+          },
+          {
+            "id": "466bd2e9-case-2",
+            "taskDemandDe": "Daten und Bedingungen:\nKandidaten Propanal CH₃CH₂CHO und Propanon CH₃COCH₃. Synthetisches IR: C=O1715 cm⁻¹; zusätzliche schwache Aldehyd-C–H-Banden2720/2820 cm⁻¹. NMR: drei Umgebungen mit Flächen3:2:1; terminales CH₃-Triplet1.0 ppm, CH₂-Multiplett2.4 ppm, Signal9.8 ppm Fläche1. Referenzregel: Aldehyd-H etwa9–10; symmetrisches Propanon zeigt ein6H-Singlet nahe2.1 und kein Aldehyd-H. Exakte Feinstruktur des CH₂-Multipletts wird nicht verlangt.\nAufgaben:\n1. Ordne C=O- und zusätzliche C–H-Banden zu und erkläre die höhere Trennleistung des vollständigen IR-Befunds.\n2. Ordne drei NMR-Umgebungen und ihre Flächen zu; erkläre das erwartete Propanon-Signal.\n3. Treffe die kombinierte Strukturentscheidung und erkläre, was bei allein gegebenem C=O-Peak offenbliebe.",
+            "taskDemandEn": "Data and conditions:\nCandidates propanal CH₃CH₂CHO and propanone CH₃COCH₃. Synthetic IR: C=O1715 cm⁻¹ and additional weak aldehydic C–H bands2720/2820. NMR has three environments, areas3:2:1: terminal CH₃ triplet1.0 ppm, CH₂ multiplet2.4, and9.8 ppm signal area1. Reference rule: aldehydic H around9–10; symmetrical propanone gives one6H singlet near2.1 and no aldehydic H. Exact CH₂ fine structure is not requested.\nTasks:\n1. Assign C=O/additional C–H bands and explain the stronger discrimination of the full IR evidence.\n2. Assign three NMR environments/areas and explain the expected propanone signal.\n3. Make the combined assignment and explain what would remain open with only the C=O peak.",
+            "expectedPerformanceDe": "1. Beide Kandidaten enthalten C=O; die1715-Bande allein reicht nicht. Die zusätzlichen gegebenen2720/2820-Aldehyd-C–H-Banden stützen Propanal. Bandenzuordnung wird mit dem Kandidatenraum/NMR kontrolliert, nicht als universeller Einzelpeak-Beweis verwendet.\n2. Propanal besitzt CH₃3H, CH₂2H und CHO1H; das9.8-Signal gehört zum Aldehyd-H. Beim Propanon sind beide CH₃ durch Symmetrie äquivalent, zusammen6H in einem Singlet. Das widerspricht drei Umgebungen und1H bei9.8.\n3. Propanal passt zu beiden Datensätzen; Propanon passt nicht zu Aldehyd-C–H/9.8-H und Flächenaufteilung. Bei nur1715 cm⁻¹ blieben Aldehyd/Keton-Kandidaten anhand dieser Information offen; zusätzliche NMR-Daten sind entscheidend.",
+            "expectedPerformanceEn": "1. Both candidates have C=O;1715 alone is insufficient. Supplied2720/2820 aldehydic C–H bands support propanal. Assignment is checked against candidates/NMR rather than treated as a universal single-peak proof.\n2. Propanal has CH₃3H, CH₂2H and CHO1H;9.8 belongs to aldehydic H. Propanone’s two CH₃ groups are symmetry-equivalent and yield one6H singlet, conflicting with three environments and1H at9.8.\n3. Propanal fits both data sets; propanone fails aldehydic C–H/9.8-H and area distribution. With only1715 cm⁻¹ these aldehyde/ketone candidates would remain unresolved; NMR provides decisive additional evidence.",
+            "understandingFocusDe": "Beide Kandidaten enthalten C=O; die1715-Bande allein reicht nicht. Die zusätzlichen gegebenen2720/2820-Aldehyd-C–H-Banden stützen Propanal. Bandenzuordnung wird mit dem Kandidatenraum/NMR kontrolliert, nicht als universeller Einzelpeak-Beweis verwendet. / Propanal besitzt CH₃3H, CH₂2H und CHO1H; das9.8-Signal gehört zum Aldehyd-H. Beim Propanon sind beide CH₃ durch Symmetrie äquivalent, zusammen6H in einem Singlet. Das widerspricht drei Umgebungen und1H bei9.8. / Propanal passt zu beiden Datensätzen; Propanon passt nicht zu Aldehyd-C–H/9.8-H und Flächenaufteilung. Bei nur1715 cm⁻¹ blieben Aldehyd/Keton-Kandidaten anhand dieser Information offen; zusätzliche NMR-Daten sind entscheidend.",
+            "understandingFocusEn": "Both candidates have C=O;1715 alone is insufficient. Supplied2720/2820 aldehydic C–H bands support propanal. Assignment is checked against candidates/NMR rather than treated as a universal single-peak proof. / Propanal has CH₃3H, CH₂2H and CHO1H;9.8 belongs to aldehydic H. Propanone’s two CH₃ groups are symmetry-equivalent and yield one6H singlet, conflicting with three environments and1H at9.8. / Propanal fits both data sets; propanone fails aldehydic C–H/9.8-H and area distribution. With only1715 cm⁻¹ these aldehyde/ketone candidates would remain unresolved; NMR provides decisive additional evidence."
+          }
+        ]
+      }
+    }
+  ]
+}

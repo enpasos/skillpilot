@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-f947-final-source-png-two-cases-fresh-independent-b-20261013-v12-p1-run",
+  "bundleFingerprint": "sha256:ccb506e52cfcb0b80083a755dfe5a8627725380c3e2857d1e82e3d91756a7eee",
+  "bookDigest": "sha256:1193af22af3af5ef84f319e5fff8ea651206c173a734e8b174434cb0b759756e",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6 Codex; exact serving identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2",
+  "promptFingerprint": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:1d3518389cefe9758e6dae8c0a565fa08d4a9d4a3e6220ba9e42e61ceea6bed5",
+  "independenceGroupId": "chemie-f947-final-source-PNG-explicit-tasks-neutral-native-20261013-v11-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ad15c0854a88355782dfcde5b892e2bbeba53a0fc8555bff02007e079c741527"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:72a98b348137924be4ea3e90511e6379da5dd5ed53cb64e356ff4aa73eecad3e"
+    }
+  ],
+  "startedAt": "2026-10-13T02:04:44.444426+00:00",
+  "completedAt": "2026-10-13T02:13:09.297903+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:2327ec1bba6312567bb6dbe8f6c9bb2b324429847db5ca7ea6cae9639b8dfaca",
+  "toolchainVersion": "codex-stock-goal-description-review-v2"
+}

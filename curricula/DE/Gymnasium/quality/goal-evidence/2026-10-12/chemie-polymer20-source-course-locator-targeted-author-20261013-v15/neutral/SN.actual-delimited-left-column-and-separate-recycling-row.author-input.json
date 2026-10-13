@@ -1,0 +1,332 @@
+{
+  "artifactKind": "bounded-primary-source-literal-retrieval-author-input",
+  "version": "v15",
+  "authority": "Read-only author input. No independent QA vote, no scientific acceptance, no human approval, no review ledger decision.",
+  "scope": "Five specified consumed source rows plus the independent Sek-I recycling judgment accidentally fused into 083-02; official PDF headings and column semantics.",
+  "sourceDocument": {
+    "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+    "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+    "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/521/lnuYavMOfLLQRd2MlehG",
+    "title": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025"
+  },
+  "verificationMethod": [
+    "Read relevant AGENTS.md source/provenance/temporary-file guidance.",
+    "Verified SHA-256 against requested cached PDF.",
+    "Extracted pdftotext -layout pages 35, 45, 59 and preceding heading pages 34, 44, 58.",
+    "Rendered and visually inspected actual PDF pages 35, 45, 59, including vertical left/right column boundaries.",
+    "Compared specified current sourceText/rawSourceText/parent fields."
+  ],
+  "columnSemantics": {
+    "location": {
+      "physicalPageOneBased": 4,
+      "printedPage": "IV"
+    },
+    "leftColumnHeadingLiteral": "Lernziele und Lerninhalte",
+    "leftColumnBindingLiteral": "Lernziele und Lerninhalte sind verbindlich.",
+    "rightColumnHeadingLiteral": "Bemerkungen",
+    "rightColumnBindingLiteral": "Bemerkungen haben Empfehlungscharakter."
+  },
+  "operators": {
+    "location": {
+      "physicalPageOneBased": 5,
+      "printedPage": "V"
+    },
+    "Kennen": "über Kenntnisse und Erfahrungen zu Sachverhalten und Zusammenhängen, zu Lern- und Arbeitstechniken oder Fachmethoden sowie zu typischen Anwendungsmustern aus einem begrenzten Gebiet im gelernten Kontext verfügen",
+    "Anwenden": "Kenntnisse und Erfahrungen zu Sachverhalten und Zusammenhängen, im Umgang mit Lern- und Arbeitstechniken oder Fachmethoden durch Abstraktion und Transfer in unbekannten Kontexten verwenden",
+    "Beurteilen/Sich positionieren": "begründete Sach- und/oder Werturteile entwickeln und darstellen, Sach- und/oder Wertvorstellungen in Toleranz gegenüber anderen annehmen oder ablehnen, vertreten, kritisch reflektieren und ggf. revidieren",
+    "normalizationNotes": [
+      "Only layout line breaks and end-of-line word hyphenation removed; wording/capitalization retained."
+    ]
+  },
+  "pageConventionNote": "Current sourceSpan PDF-S. 34/44/58 numerically matches the zero-based index of actual physical pages 35/45/59. This report records physical one-based pages and printed pages separately rather than treating the current ambiguous PDF-S. label as a confirmed one-based page.",
+  "courseConventionNote": "Klassenstufe 10 is the literal Sek-I header and has no GK/LK classification in the PDF. Current courseLevel GK_LK is extraction metadata. GK/LK literal headings occur only in the specified upper-secondary sections.",
+  "currentExtractionFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sha256": "1de76385d9d7c76783fa312da71262a9e69a4b36dac71986e838f3150db42e76"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sha256": "7038aebf2dd77f84b0db19e1c8cfd453815fb613ec266f256cbfb3027cf87eed"
+    }
+  ],
+  "currentConsumedRows": {
+    "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31": {
+      "file": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sourceText": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation Polyethylen, Polyester, Polyamid: Monomer, Polymer",
+      "rawSourceText": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation Polyethylen, Polyester, Polyamid: Monomer, Polymer",
+      "parentBulletText": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation Polyethylen, Polyester, Polyamid",
+      "rawParentBulletText": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation Polyethylen, Polyester, Polyamid",
+      "sourceSpan": "Klassenstufe 10, Moderne Werkstoffe – Kunststoffe, PDF-S. 34",
+      "rawSourceSpan": "Klassenstufe 10, Moderne Werkstoffe – Kunststoffe, PDF-S. 34",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Klassenstufe 10, Moderne Werkstoffe – Kunststoffe, PDF-S. 34",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect"
+    },
+    "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542": {
+      "file": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sourceText": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation Polyethylen, Polyester, Polyamid: experimentelles Darstellen eines PolykonSich zu den Möglichkeiten der Vermeidung und des Recyclings von Kunststoffabfällen positiKunststoffabfälle als globale Herausforderung Podiumsdiskussion",
+      "rawSourceText": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation Polyethylen, Polyester, Polyamid: experimentelles Darstellen eines PolykonSich zu den Möglichkeiten der Vermeidung und des Recyclings von Kunststoffabfällen positiKunststoffabfälle als globale Herausforderung Podiumsdiskussion",
+      "parentBulletText": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation Polyethylen, Polyester, Polyamid",
+      "rawParentBulletText": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation Polyethylen, Polyester, Polyamid",
+      "sourceSpan": "Klassenstufe 10, Moderne Werkstoffe – Kunststoffe, PDF-S. 34",
+      "rawSourceSpan": "Klassenstufe 10, Moderne Werkstoffe – Kunststoffe, PDF-S. 34",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Klassenstufe 10, Moderne Werkstoffe – Kunststoffe, PDF-S. 34",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyAspect"
+    },
+    "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673": {
+      "file": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sourceText": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion: Polymerisation und Polykondensation Polyester, Polyamid Polymilchsäure als Beispiel für einen Biokunststoff",
+      "rawSourceText": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion: Polymerisation und Polykondensation Polyester, Polyamid Polymilchsäure als Beispiel für einen Biokunststoff",
+      "parentBulletText": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion",
+      "rawParentBulletText": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion",
+      "sourceSpan": "Jahrgangsstufe 12 Grundkurs, Organische Stoffe, PDF-S. 44",
+      "rawSourceSpan": "Jahrgangsstufe 12 Grundkurs, Organische Stoffe, PDF-S. 44",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Jahrgangsstufe 12 Grundkurs, Organische Stoffe, PDF-S. 44",
+      "courseLevel": "GK",
+      "granularity": "officialCompetencyAspect"
+    },
+    "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb3-080-02-a8a065c0": {
+      "file": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sourceText": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion: Polymerisation und Polykondensation",
+      "rawSourceText": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion: Polymerisation und Polykondensation",
+      "parentBulletText": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion",
+      "rawParentBulletText": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion",
+      "sourceSpan": "Jahrgangsstufe 12 Leistungskurs, Naturstoffe, Kunststoffe und Nanomaterialien, PDF-S. 58",
+      "rawSourceSpan": "Jahrgangsstufe 12 Leistungskurs, Naturstoffe, Kunststoffe und Nanomaterialien, PDF-S. 58",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Jahrgangsstufe 12 Leistungskurs, Naturstoffe, Kunststoffe und Nanomaterialien, PDF-S. 58",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyAspect"
+    },
+    "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb3-081-01-a84c9b8b": {
+      "file": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sourceText": "Kennen des Reaktionsmechanismus zur radikalischen Polymerisation Basiskonzept: Konzept der chemischen Reaktion Initiator, Kettenstart, -wachstum, -abbruch",
+      "rawSourceText": "Kennen des Reaktionsmechanismus zur radikalischen Polymerisation Basiskonzept: Konzept der chemischen Reaktion Initiator, Kettenstart, -wachstum, -abbruch",
+      "parentBulletText": "Kennen des Reaktionsmechanismus zur radikalischen Polymerisation Basiskonzept: Konzept der chemischen Reaktion Initiator, Kettenstart, -wachstum, -abbruch",
+      "rawParentBulletText": "Kennen des Reaktionsmechanismus zur radikalischen Polymerisation Basiskonzept: Konzept der chemischen Reaktion Initiator, Kettenstart, -wachstum, -abbruch",
+      "sourceSpan": "Jahrgangsstufe 12 Leistungskurs, Naturstoffe, Kunststoffe und Nanomaterialien, PDF-S. 58",
+      "rawSourceSpan": "Jahrgangsstufe 12 Leistungskurs, Naturstoffe, Kunststoffe und Nanomaterialien, PDF-S. 58",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Jahrgangsstufe 12 Leistungskurs, Naturstoffe, Kunststoffe und Nanomaterialien, PDF-S. 58",
+      "courseLevel": "LK",
+      "granularity": "officialCompetencyRow"
+    }
+  },
+  "literalRows": [
+    {
+      "currentSourceId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-01-2663fe31",
+      "category": "official left-column learning-goal/content aspect; source retrieval only",
+      "operator": "Kennen",
+      "context": {
+        "physicalPageOneBased": 35,
+        "physicalPageZeroBasedIndex": 34,
+        "printedPage": "23",
+        "courseHeadingLiteral": "Klassenstufe 10",
+        "learningAreaHeadingLiteral": "Lernbereich 4: Moderne Werkstoffe – Kunststoffe",
+        "learningAreaHeadingPhysicalPageOneBased": 34,
+        "learningAreaTimeLiteral": "9 Ustd.",
+        "pageFooterYearLiteral": "2019",
+        "pageImagePath": "tmp/sn-polymer-source-reader-v15/physical-35.png",
+        "pageLayoutTextPath": "tmp/sn-polymer-source-reader-v15/physical-35.layout.txt"
+      },
+      "leftColumnParentLiteral": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation",
+      "leftColumnAspectLiteral": "Monomer, Polymer",
+      "leftColumnAspectTypesetLiteral": "- Monomer, Polymer",
+      "rightColumnParentRemarks": [
+        "Polyethylen, Polyester, Polyamid"
+      ],
+      "rightColumnAspectRemarks": [],
+      "delimitedLeftColumnLiteral": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation\n- Monomer, Polymer",
+      "normalizationNotes": [
+        "Parent line break after durch removed.",
+        "The right-column examples are remarks aligned with the manufacturing parent; they are not part of the parent left-column literal."
+      ],
+      "comparisonWithCurrent": [
+        "sourceText and rawSourceText are equal.",
+        "Current parentBulletText incorporates the right-column examples without delimiting their role.",
+        "Current sourceText incorporates that composite parent and inserts a colon before the left-column aspect."
+      ]
+    },
+    {
+      "currentSourceId": "sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+      "category": "official left-column manufacturing experimental aspect; source retrieval only",
+      "operator": "Kennen (inherited from manufacturing parent)",
+      "context": {
+        "physicalPageOneBased": 35,
+        "physicalPageZeroBasedIndex": 34,
+        "printedPage": "23",
+        "courseHeadingLiteral": "Klassenstufe 10",
+        "learningAreaHeadingLiteral": "Lernbereich 4: Moderne Werkstoffe – Kunststoffe",
+        "learningAreaHeadingPhysicalPageOneBased": 34,
+        "learningAreaTimeLiteral": "9 Ustd.",
+        "pageFooterYearLiteral": "2019",
+        "pageImagePath": "tmp/sn-polymer-source-reader-v15/physical-35.png",
+        "pageLayoutTextPath": "tmp/sn-polymer-source-reader-v15/physical-35.layout.txt"
+      },
+      "leftColumnParentLiteral": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation",
+      "leftColumnAspectLiteral": "experimentelles Darstellen eines Polykondensats",
+      "leftColumnAspectTypesetLiteral": "- experimentelles Darstellen eines Polykon-\n  densats",
+      "rightColumnParentRemarks": [
+        "Polyethylen, Polyester, Polyamid"
+      ],
+      "rightColumnAspectRemarks": [],
+      "delimitedLeftColumnLiteral": "Kennen der Herstellung von Kunststoffen durch Polymerisation und Polykondensation\n- experimentelles Darstellen eines Polykondensats",
+      "normalizationNotes": [
+        "Polykon- followed by densats is one hyphenated word and normalizes to Polykondensats.",
+        "Next independent judgment row begins only after the complete densats line.",
+        "No SE marker is printed for this specific aspect; experimentelles Darstellen is in the binding left column."
+      ],
+      "comparisonWithCurrent": [
+        "sourceText and rawSourceText are equal.",
+        "Current text loses densats and glues the next independent judgment parent directly onto Polykon.",
+        "Current text also loses onieren from positionieren, then fuses the next row right-column remarks.",
+        "The recycling judgment must not remain inside the manufacturing aspect literal."
+      ]
+    },
+    {
+      "currentSourceId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb3-028-02-6f08e673",
+      "category": "official left-column learning-goal/content aspect; source retrieval only",
+      "operator": "Anwenden",
+      "context": {
+        "physicalPageOneBased": 45,
+        "physicalPageZeroBasedIndex": 44,
+        "printedPage": "33",
+        "courseHeadingLiteral": "Jahrgangsstufe 12 – Grundkurs",
+        "learningAreaHeadingLiteral": "Lernbereich 3: Organische Stoffe",
+        "learningAreaHeadingPhysicalPageOneBased": 44,
+        "learningAreaTimeLiteral": "17 Ustd.",
+        "pageFooterYearLiteral": "2022",
+        "pageImagePath": "tmp/sn-polymer-source-reader-v15/physical-45.png",
+        "pageLayoutTextPath": "tmp/sn-polymer-source-reader-v15/physical-45.layout.txt"
+      },
+      "leftColumnParentLiteral": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe",
+      "leftColumnAspectLiteral": "Polymerisation und Polykondensation",
+      "leftColumnAspectTypesetLiteral": "- Polymerisation und Polykondensation",
+      "rightColumnParentRemarks": [
+        "Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion"
+      ],
+      "rightColumnAspectRemarks": [
+        "Polyester, Polyamid",
+        "Polymilchsäure als Beispiel für einen Biokunststoff"
+      ],
+      "delimitedLeftColumnLiteral": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe\n- Polymerisation und Polykondensation",
+      "normalizationNotes": [
+        "Parent line break after Stoffe removed.",
+        "Right-column Basiskonzepte spans three printed lines but belongs to the parent.",
+        "Polymilchsäure remark spans three lines, ending in Biokunststoff; whitespace normalized only.",
+        "Right-column reference to Kl. 10, LB 4 aligns with the preceding Struktur/Eigenschaften aspect, not with this polymerisation aspect."
+      ],
+      "comparisonWithCurrent": [
+        "sourceText and rawSourceText are equal.",
+        "Current text contains the correct parent/aspect words and the correct remarks, but fuses left/right column roles.",
+        "No radical mechanism literal appears in this specific GK plastics row."
+      ]
+    },
+    {
+      "currentSourceId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb3-080-02-a8a065c0",
+      "category": "official left-column learning-goal/content aspect; source retrieval only",
+      "operator": "Anwenden",
+      "context": {
+        "physicalPageOneBased": 59,
+        "physicalPageZeroBasedIndex": 58,
+        "printedPage": "47",
+        "courseHeadingLiteral": "Jahrgangsstufe 12 – Leistungskurs",
+        "learningAreaHeadingLiteral": "Lernbereich 3: Naturstoffe, Kunststoffe und Nanomaterialien",
+        "learningAreaHeadingPhysicalPageOneBased": 58,
+        "learningAreaTimeLiteral": "32 Ustd.",
+        "pageFooterYearLiteral": "2022",
+        "pageImagePath": "tmp/sn-polymer-source-reader-v15/physical-59.png",
+        "pageLayoutTextPath": "tmp/sn-polymer-source-reader-v15/physical-59.layout.txt"
+      },
+      "leftColumnParentLiteral": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe",
+      "leftColumnAspectLiteral": "Polymerisation und Polykondensation",
+      "leftColumnAspectTypesetLiteral": "- Polymerisation und Polykondensation",
+      "rightColumnParentRemarks": [
+        "Basiskonzepte: Konzept vom Aufbau und von den Eigenschaften der Stoffe und ihrer Teilchen, Konzept der chemischen Reaktion"
+      ],
+      "rightColumnAspectRemarks": [],
+      "delimitedLeftColumnLiteral": "Anwenden des Wissens über organische Stoffe und deren Reaktionen auf Kunststoffe\n- Polymerisation und Polykondensation",
+      "normalizationNotes": [
+        "Parent line break after Stoffe removed.",
+        "The Basiskonzepte remark spans three printed lines and belongs to the parent.",
+        "There are no Polyester/Polyamid/Polymilchsäure example remarks aligned with this LK aspect.",
+        "The following radical mechanism competency is a separate left-column row."
+      ],
+      "comparisonWithCurrent": [
+        "sourceText and rawSourceText are equal.",
+        "Current left parent/aspect words are complete, with right parent remarks fused into parentBulletText."
+      ]
+    },
+    {
+      "currentSourceId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb3-081-01-a84c9b8b",
+      "category": "independent official left-column competency row; source retrieval only",
+      "operator": "Kennen",
+      "context": {
+        "physicalPageOneBased": 59,
+        "physicalPageZeroBasedIndex": 58,
+        "printedPage": "47",
+        "courseHeadingLiteral": "Jahrgangsstufe 12 – Leistungskurs",
+        "learningAreaHeadingLiteral": "Lernbereich 3: Naturstoffe, Kunststoffe und Nanomaterialien",
+        "learningAreaHeadingPhysicalPageOneBased": 58,
+        "learningAreaTimeLiteral": "32 Ustd.",
+        "pageFooterYearLiteral": "2022",
+        "pageImagePath": "tmp/sn-polymer-source-reader-v15/physical-59.png",
+        "pageLayoutTextPath": "tmp/sn-polymer-source-reader-v15/physical-59.layout.txt"
+      },
+      "leftColumnParentLiteral": "Kennen des Reaktionsmechanismus zur radikalischen Polymerisation",
+      "leftColumnAspectLiteral": null,
+      "leftColumnParentTypesetLiteral": "Kennen des Reaktionsmechanismus zur\nradikalischen Polymerisation",
+      "rightColumnParentRemarks": [
+        "Basiskonzept: Konzept der chemischen Reaktion",
+        "Initiator, Kettenstart, -wachstum, -abbruch"
+      ],
+      "rightColumnAspectRemarks": [],
+      "delimitedLeftColumnLiteral": "Kennen des Reaktionsmechanismus zur radikalischen Polymerisation",
+      "normalizationNotes": [
+        "Line break after zur normalized to one space.",
+        "Preserve literal abbreviations -wachstum and -abbruch; these are deliberate shared-prefix hyphens, not broken line wraps.",
+        "The mechanism is separately headed by Kennen in LK and is not a sub-bullet of the preceding Anwenden row."
+      ],
+      "comparisonWithCurrent": [
+        "sourceText and rawSourceText are equal.",
+        "Current text preserves the complete mechanism wording and remarks, but fuses both columns into a single parent."
+      ]
+    }
+  ],
+  "separateRecyclingJudgment": {
+    "context": {
+      "physicalPageOneBased": 35,
+      "physicalPageZeroBasedIndex": 34,
+      "printedPage": "23",
+      "courseHeadingLiteral": "Klassenstufe 10",
+      "learningAreaHeadingLiteral": "Lernbereich 4: Moderne Werkstoffe – Kunststoffe",
+      "learningAreaHeadingPhysicalPageOneBased": 34,
+      "learningAreaTimeLiteral": "9 Ustd.",
+      "pageFooterYearLiteral": "2019",
+      "pageImagePath": "tmp/sn-polymer-source-reader-v15/physical-35.png",
+      "pageLayoutTextPath": "tmp/sn-polymer-source-reader-v15/physical-35.layout.txt"
+    },
+    "association": "independent row immediately after manufacturing; incorrectly absorbed into current sn-chem-seki-sn-ch-klassenstufe-10-lb4-083-02-a49c4542",
+    "category": "independent official left-column judgment/positioning competency row; source retrieval only",
+    "operator": "Sich positionieren",
+    "leftColumnParentLiteral": "Sich zu den Möglichkeiten der Vermeidung und des Recyclings von Kunststoffabfällen positionieren",
+    "leftColumnParentTypesetLiteral": "Sich zu den Möglichkeiten der Vermeidung und\ndes Recyclings von Kunststoffabfällen positi-\nonieren",
+    "rightColumnParentRemarks": [
+      "Kunststoffabfälle als globale Herausforderung",
+      "Podiumsdiskussion"
+    ],
+    "rightColumnCrossCurricularReferences": [
+      "Reflexions- und Diskursfähigkeit",
+      "Bildung für nachhaltige Entwicklung"
+    ],
+    "referenceGlyphLiteral": "⇒",
+    "normalizationNotes": [
+      "positi- followed by onieren normalizes to positionieren.",
+      "This is an independent operator-led row, not a sub-aspect of Kennen der Herstellung.",
+      "Podiumsdiskussion is a right-column recommended method, not the left-column operator or an experimental manufacture demand.",
+      "Cross-curricular arrows are layout reference glyphs and are kept distinct from the remarks text."
+    ]
+  },
+  "changedRepositoryPaths": [],
+  "outputDirectory": "tmp/sn-polymer-source-reader-v15"
+}

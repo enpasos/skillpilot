@@ -1,0 +1,19 @@
+# Aromatics and dyes: inactive author20
+
+Original teaching content is CC-BY-4.0; technical helpers and binding metadata are Apache-2.0. Official source clauses retain their original rights. Source inventories and selected primary literals are evidence, not relicensed original teaching content.
+
+20 registered current goals, 40 complete original DE/EN cases, 42 content-specific expectations and 84 case-specific criteria. Every criterion has exact character spans in both printed task languages. Eight supplementary model remarks are explicitly ungraded. Two vat-dyeing criteria require direct real observation and original raw logs; invented data or expected colors cannot earn execution credit. Actual supervised execution and source lookup remain future learner-performance channels, not invented completed actions. No human approval or trial is claimed.
+
+The normal existing materializer verifies P20 at `needs_human_review / ai_candidate / E1 / G1`. The stock atomicity report has 20 current pending author rows and zero atomic votes. Exact retained M20 passes the scoped stock check: all20 `no_memory_needed`, zero matching kept-card origins and no new card/deck obligations. This schema status does not create a prerequisite human gate for machine M7 review.
+
+17 existing images match the QA hash across source, public frontend and backend. They receive no new visual review or approval. Three existing `deferred_provider_limitation` states remain missing: f0f67a7a, e5941581, 3dbd84de. No image was generated, replaced or sight-reviewed in this author pass.
+
+19 precise source findings remain open. They include BB/BE Rf chromatography versus absorption spectra; BB/BE structure versus synthesis mechanisms; HH peptide resonance versus aromatic-system goals; ST7/8 practical chromatography versus advanced dye spectra;11 exact Sek-I indicator-use aliases to the advanced electronic-structure goal; RP’s explicitly unrequired mechanism facet; and BY’s actual research operator omitted from4b981. The primary RP6.2 clause is on physical PDF page47, printed46; the selected source extraction’s S.26 locator is not a reliable primary locator. The complete inventory retains194 source rows,194 decisions and108 partner targets; no entire compound source or partner union is scientifically cleared.
+
+Two separate bounded text proposals concern d61ce84f English omission of aniline/nitrobenzene and4b981’s BY research-operator question. Current bodies, requires, SEM and all active source/runtime/plugin material are retained. BY aaed261c’s reactivity clause maps to partnerac700167, which already states reactivity; it does not justify extending f0f67a7a merely to satisfy an inferred alias.
+
+The initial whole SEM digest drift was detected and preserved in a receipt; root restored the original1d9efb3b… file. Final CAS matches original canonical9a685013… and scoped authoritative decisions. Current base is523 nodes and402 curricularAtomic goals. The supplied central strict baseline is231/402; this author packet adds0 strict completions and0 independent votes. No native review-book build, full central campaign or active integration was run.
+
+Use `AUTHOR.future-inputs.additive.json` and the final freeze. Root owns source/translation decisions, any required image completion, final CAS, native preparation and genuinely independent paired review. Current-source holds must be resolved at their exact facets; new profiles never silently confer source entitlement or laboratory performance.
+
+Scientific context for the health cases is limited to [IARC Benzene Volume120](https://publications.iarc.who.int/576) and [EFSA Food colours](https://www.efsa.europa.eu/en/topics/topic/food-colours). The cases require chemical identity and exposure information; they make no actual authorization, dosage or personal-risk determination.

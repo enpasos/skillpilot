@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-10-13T03:14:51.703392+00:00",
+  "privateRoot": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+  "commands": [
+    {
+      "label": "P2.before.normal-materializer.write",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "probe/P2.private.config.json",
+        "--candidates",
+        "probe/P2.same-retained-profile-payload.json",
+        "--write"
+      ],
+      "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+      "startedAtUTC": "2026-10-13T03:14:48.615795+00:00",
+      "completedAtUTC": "2026-10-13T03:14:49.248138+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/P2.before.normal-materializer.write.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/P2.before.normal-materializer.write.stderr.txt"
+    },
+    {
+      "label": "P2.before.normal-materializer.verify",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "probe/P2.private.config.json",
+        "--candidates",
+        "probe/P2.same-retained-profile-payload.json"
+      ],
+      "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+      "startedAtUTC": "2026-10-13T03:14:49.248212+00:00",
+      "completedAtUTC": "2026-10-13T03:14:49.956858+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/P2.before.normal-materializer.verify.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/P2.before.normal-materializer.verify.stderr.txt"
+    },
+    {
+      "label": "466bd2e9-39a5-5221-b620-945934adce00.normal-prepare",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/scripts/prepare_goal_visualization.mjs",
+        "466bd2e9-39a5-5221-b620-945934adce00",
+        "--landscape=/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "--subject=chemie",
+        "--provider=OpenAI / ChatGPT-Codex image generation",
+        "--review-status=pilot"
+      ],
+      "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+      "startedAtUTC": "2026-10-13T03:14:49.957301+00:00",
+      "completedAtUTC": "2026-10-13T03:14:50.033303+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/466bd2e9-39a5-5221-b620-945934adce00.normal-prepare.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/466bd2e9-39a5-5221-b620-945934adce00.normal-prepare.stderr.txt"
+    },
+    {
+      "label": "466bd2e9-39a5-5221-b620-945934adce00.normal-import",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/scripts/import_goal_visualization.mjs",
+        "466bd2e9-39a5-5221-b620-945934adce00",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/candidate/466bd2e9-39a5-5221-b620-945934adce00.png",
+        "--landscape=/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "--subject=chemie",
+        "--provider=OpenAI / ChatGPT-Codex image generation",
+        "--review-status=pilot",
+        "--license=CC-BY-4.0",
+        "--alt-text=Gültiges Ethylethanoat mit drei farbigen Protonenumgebungen; schematische IR-Carbonylabsorption um 1740 cm⁻¹ und getrennte ¹H-NMR-Signale: 2H-Quartett um 4,1 ppm, 3H-Singulett um 2,1 ppm, 3H-Triplett um 1,3 ppm. Keine gemessene Spektralkurve.",
+        "--prompt=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/generation/466bd2e9-39a5-5221-b620-945934adce00.attempt-5.prompt.md",
+        "--reconstruction-prompt=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/generation/466bd2e9-39a5-5221-b620-945934adce00.image-reconstruction-prompt.de.md"
+      ],
+      "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+      "startedAtUTC": "2026-10-13T03:14:50.034011+00:00",
+      "completedAtUTC": "2026-10-13T03:14:50.120786+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/466bd2e9-39a5-5221-b620-945934adce00.normal-import.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/466bd2e9-39a5-5221-b620-945934adce00.normal-import.stderr.txt"
+    },
+    {
+      "label": "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.normal-prepare",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/scripts/prepare_goal_visualization.mjs",
+        "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+        "--landscape=/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "--subject=chemie",
+        "--provider=OpenAI / ChatGPT-Codex image generation",
+        "--review-status=pilot"
+      ],
+      "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+      "startedAtUTC": "2026-10-13T03:14:50.132731+00:00",
+      "completedAtUTC": "2026-10-13T03:14:50.213338+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.normal-prepare.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.normal-prepare.stderr.txt"
+    },
+    {
+      "label": "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.normal-import",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/scripts/import_goal_visualization.mjs",
+        "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/candidate/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.png",
+        "--landscape=/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "--subject=chemie",
+        "--provider=OpenAI / ChatGPT-Codex image generation",
+        "--review-status=pilot",
+        "--license=CC-BY-4.0",
+        "--alt-text=Vier schematische intermolekulare Wechselwirkungen: entgegengesetzte temporäre Dipole, polare HCl-Moleküle, O-H···O-Wasserstoffbrücke und Na⁺-Hydratation mit zum Ion ausgerichteten Sauerstoffenden. Keine universelle Stärkenrangfolge oder vollständige Hydrathülle.",
+        "--prompt=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/generation/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.attempt-4.prompt.md",
+        "--reconstruction-prompt=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/generation/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.image-reconstruction-prompt.de.md"
+      ],
+      "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+      "startedAtUTC": "2026-10-13T03:14:50.214473+00:00",
+      "completedAtUTC": "2026-10-13T03:14:50.324503+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.normal-import.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e.normal-import.stderr.txt"
+    },
+    {
+      "label": "P2.after.normal-materializer.write",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "probe/P2.private.config.json",
+        "--candidates",
+        "probe/P2.same-retained-profile-payload.json",
+        "--write"
+      ],
+      "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+      "startedAtUTC": "2026-10-13T03:14:50.355757+00:00",
+      "completedAtUTC": "2026-10-13T03:14:51.021121+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/P2.after.normal-materializer.write.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/P2.after.normal-materializer.write.stderr.txt"
+    },
+    {
+      "label": "P2.after.normal-materializer.verify",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "probe/P2.private.config.json",
+        "--candidates",
+        "probe/P2.same-retained-profile-payload.json"
+      ],
+      "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private",
+      "startedAtUTC": "2026-10-13T03:14:51.021176+00:00",
+      "completedAtUTC": "2026-10-13T03:14:51.652489+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/P2.after.normal-materializer.verify.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-carbonyl-two-targeted-V-defect-raster-author-20261013-v4/checks/P2.after.normal-materializer.verify.stderr.txt"
+    }
+  ],
+  "normalPrivateImportsPassed": 2,
+  "normalPrivatePreparationPassed": 2,
+  "normalPrivatePBeforeAfterWritesAndVerificationsPassed": 4,
+  "priorAndNewCandidateLandscapeByteExact": true,
+  "candidateLandscapeSHA": "sha256:a04693d77a579f7f1c37e6f0f74080b5d445eeba98353578ffc60275413ce4d7",
+  "candidateAll523WholeGoalsExactPreviousV2": true,
+  "independent3dePassAssetAndGoalRetained": true,
+  "sourceAppBackendPNGCopiesByteExact": true,
+  "C2PAContainerBytesUnmodified": true,
+  "P2InputOnlyChangedRecords": [
+    {
+      "goalId": "466bd2e9-39a5-5221-b620-945934adce00",
+      "sameGoalFingerprint": "sha256:7bc8dba493281315065572d8a4a611b110b67066fac4be85f556737da684c318",
+      "sameProfileFingerprint": "sha256:88a6181429004b2f803f3e81e29e7b72920dda139c151c524d56e0ec180e08ef",
+      "beforeReviewInputFingerprint": "sha256:40dbdaca18f8845a1d553b16ae042d387f0a84aa629a12b0f21de45ccca51d8b",
+      "afterReviewInputFingerprint": "sha256:cb99d1b8e9278ffd3c6234fe7090b6b282a48a640689cccd18a753fcfd32cd67",
+      "newAIApprovalVotes": 0
+    },
+    {
+      "goalId": "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+      "sameGoalFingerprint": "sha256:c003e62b67392d3ca61edceaafd2c834b8912cb0b4115568fafe484b7b0d5b4d",
+      "sameProfileFingerprint": "sha256:e9b72ce3aee89f7bf11ee555b0abbce9b68b1316d4f2d8a7ec0ddc5cc7fb3394",
+      "beforeReviewInputFingerprint": "sha256:2e3dc117370e55c7a4d90c99ad98e0b8e3643e90d414afd09a4fb010ecdb1c9e",
+      "afterReviewInputFingerprint": "sha256:849d8b4f2ceb6140482d3e5486bb417d4b11dce43176515393096aa7e4298fc1",
+      "newAIApprovalVotes": 0
+    }
+  ],
+  "privateMutableParentChains": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical",
+      "inode": 35094532,
+      "realDirectory": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium",
+      "inode": 35094525,
+      "realDirectory": true
+    },
+    {
+      "path": "curricula/DE",
+      "inode": 35094524,
+      "realDirectory": true
+    },
+    {
+      "path": "curricula",
+      "inode": 35094523,
+      "realDirectory": true
+    },
+    {
+      "path": ".",
+      "inode": 35094507,
+      "realDirectory": true
+    },
+    {
+      "path": "probe",
+      "inode": 35094573,
+      "realDirectory": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/466bd2e9-39a5-5221-b620-945934adce00",
+      "inode": 35094536,
+      "realDirectory": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie",
+      "inode": 35094535,
+      "realDirectory": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations",
+      "inode": 35094534,
+      "realDirectory": true
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/chemie/466bd2e9-39a5-5221-b620-945934adce00",
+      "inode": 35094542,
+      "realDirectory": true
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/chemie",
+      "inode": 35094541,
+      "realDirectory": true
+    },
+    {
+      "path": "app/public/assets/goal-visualizations",
+      "inode": 35094540,
+      "realDirectory": true
+    },
+    {
+      "path": "app/public/assets",
+      "inode": 35094539,
+      "realDirectory": true
+    },
+    {
+      "path": "app/public",
+      "inode": 35094538,
+      "realDirectory": true
+    },
+    {
+      "path": "app",
+      "inode": 35094512,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/chemie/466bd2e9-39a5-5221-b620-945934adce00",
+      "inode": 35094552,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/chemie",
+      "inode": 35094551,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations",
+      "inode": 35094550,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src/main/resources/static/assets",
+      "inode": 35094549,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src/main/resources/static",
+      "inode": 35094548,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src/main/resources",
+      "inode": 35094547,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src/main",
+      "inode": 35094546,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src",
+      "inode": 35094545,
+      "realDirectory": true
+    },
+    {
+      "path": "backend",
+      "inode": 35094544,
+      "realDirectory": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+      "inode": 35094556,
+      "realDirectory": true
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/chemie/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+      "inode": 35094558,
+      "realDirectory": true
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/chemie/eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+      "inode": 35094560,
+      "realDirectory": true
+    }
+  ],
+  "mutableLeavesRegularSingleLink": true,
+  "profilesAndAllCaseDemandsUnchanged": true,
+  "activeWrites": false,
+  "independentVotes": 0,
+  "strictScientificCompletions": 0,
+  "humanApproval": false
+}

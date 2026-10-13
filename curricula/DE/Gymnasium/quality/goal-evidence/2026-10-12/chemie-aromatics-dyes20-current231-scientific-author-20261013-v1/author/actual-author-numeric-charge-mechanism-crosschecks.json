@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "numericCrosschecks": [
+    {
+      "caseId": "f0f67a7a-case-1",
+      "expression": "3*(-120)",
+      "value": -360,
+      "unit": "kJ/mol"
+    },
+    {
+      "caseId": "f0f67a7a-case-1",
+      "expression": "-208-(-360)",
+      "value": 152,
+      "unit": "kJ/mol"
+    },
+    {
+      "caseId": "34da1a4c-case-1",
+      "expression": "10**(6-7)",
+      "value": 0.1
+    },
+    {
+      "caseId": "34da1a4c-case-1",
+      "expression": "10**(8-7)",
+      "value": 10
+    },
+    {
+      "caseId": "87d8cc68-case-1",
+      "expression": "1240/2.48",
+      "value": 500.0,
+      "unit": "nm"
+    },
+    {
+      "caseId": "87d8cc68-case-1",
+      "expression": "1240/4.13",
+      "value": 300.2421307506053,
+      "unit": "nm"
+    },
+    {
+      "caseId": "87d8cc68-case-2",
+      "expression": "1240/2",
+      "value": 620.0,
+      "unit": "nm"
+    },
+    {
+      "caseId": "87d8cc68-case-2",
+      "expression": "1240/3.1",
+      "value": 400.0,
+      "unit": "nm"
+    }
+  ],
+  "chargeChecks": [
+    {
+      "equation": "HNO3+H2SO4 -> NO2+ + HSO4- + H2O",
+      "left": 0,
+      "right": 0
+    },
+    {
+      "equation": "I+2e- -> L2-",
+      "left": -2,
+      "right": -2
+    },
+    {
+      "equation": "D-H -> D+ + H+ + 2e-",
+      "left": 0,
+      "right": 0
+    },
+    {
+      "equation": "B+ + H+ + 2e- -> BH",
+      "left": 0,
+      "right": 0
+    },
+    {
+      "equation": "C6H6+NO2+ + HSO4- -> C6H5NO2+H2SO4",
+      "left": 0,
+      "right": 0
+    }
+  ],
+  "mechanismCrosschecks": [
+    "Pair arrows start at occupied pi bonds/lone pairs; no arrows start from positive charges.",
+    "Nitronium attack shifts N=O pi to O to preserve octet.",
+    "Acylium triple-bond contributor attack shifts a C-O pi pair to O.",
+    "Azo terminal-N attack shifts one N-N pi pair onto inner N.",
+    "Carbonyl route has O protonation, two ring substitutions and water elimination; oxidation is separate.",
+    "Arenium C1 is sp3; + charge contributors at C2/C4/C6; proton rather than hydride loss rearomatizes.",
+    "Indigo strongly basic leuco-dianion model is I+2e-⇌L2-; no actual laboratory result is supplied."
+  ],
+  "authorOnly": true,
+  "independentScientificApprovals": 0
+}

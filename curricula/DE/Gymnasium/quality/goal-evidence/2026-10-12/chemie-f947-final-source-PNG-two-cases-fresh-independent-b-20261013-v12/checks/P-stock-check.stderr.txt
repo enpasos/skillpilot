@@ -1,0 +1,20 @@
+node:net:1886
+      const error = new UVExceptionWithHostPort(rval, 'listen', address, port);
+                    ^
+
+Error: listen EADDRINUSE: address already in use /home/enpasos/projects/skillpilot/tmp/chemie-f947-independent-b-normal-checks-20261013-v12/private-cache/tsx-1000/1416703.pipe
+    at Server.setupListenHandle [as _listen2] (node:net:1886:21)
+    at listenInCluster (node:net:1965:12)
+    at Server.listen (node:net:2084:5)
+    at file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs:53:31537
+    at new Promise (<anonymous>)
+    at createIpcServer (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs:53:31515)
+    at async file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs:55:459 {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '/home/enpasos/projects/skillpilot/tmp/chemie-f947-independent-b-normal-checks-20261013-v12/private-cache/tsx-1000/1416703.pipe',
+  port: -1
+}
+
+Node.js v20.20.2

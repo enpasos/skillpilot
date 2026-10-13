@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "failures": [
+    {
+      "kind": "Missing goal argument in direct model-validation helper",
+      "actualSavedReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics20-bounded-source-and-operator-remediation-author-20261013-v4/checks/actual-author-helper-first-missing-goal-argument.failure.json",
+      "correction": "Passed actual whole goal, private resource digests and authoritative curricularAtomic; stock materializer had already validated them."
+    },
+    {
+      "kind": "EACCES recopying own private read-only historical view",
+      "actualToolError": "EACCES: permission denied, copyfile HE view to own private-parent destination",
+      "correction": "Only own regular nlink1 destination made writable before recopy; original source unchanged."
+    },
+    {
+      "kind": "Mixed ledger reviewId in changed pending2 rows",
+      "actualSavedReceipts": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics20-bounded-source-and-operator-remediation-author-20261013-v4/checks/A20.first-review-id-mismatch.actual-stock-terminal.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics20-bounded-source-and-operator-remediation-author-20261013-v4/checks/M20.first-review-id-mismatch.actual-stock-terminal.json"
+      ],
+      "correction": "Keep normal original ledger reviewId on pending author rows; provenance remains explicit in author/date/package. M unresolved2 remains a true pending hold."
+    },
+    {
+      "kind": "PosixPath plus str in failure-receipt output helper",
+      "actualToolError": "TypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'",
+      "correction": "Parenthesized filename string before path join; preceding source-route/proposal/reference outputs were written successfully."
+    }
+  ],
+  "scientificConclusionFromTechnicalCorrections": false
+}

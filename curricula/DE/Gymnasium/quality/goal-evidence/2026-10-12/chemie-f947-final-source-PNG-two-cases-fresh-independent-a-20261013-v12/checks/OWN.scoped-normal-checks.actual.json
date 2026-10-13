@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-13T02:22:23.011600+00:00",
+  "checks": [
+    {
+      "name": "D1-stock-campaign-results",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-explicit-tasks-neutral-native-author-root-20261013-v11/native-D1/round-a/review-bundle-manifest.json",
+        "--input",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-explicit-tasks-neutral-native-author-root-20261013-v11/native-D1/round-a/description-review-input.json",
+        "--campaign",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-explicit-tasks-neutral-native-author-root-20261013-v11/native-D1/round-a/description-review-campaign.json",
+        "--batches-dir",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-explicit-tasks-neutral-native-author-root-20261013-v11/native-D1/round-a/batches",
+        "--results-dir",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-explicit-tasks-neutral-native-author-root-20261013-v11/native-D1/round-a/results"
+      ],
+      "returnCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/checks/D1-stock-campaign-results.actual.txt",
+      "passed": true
+    },
+    {
+      "name": "P1-normal-private-exact-resource",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/tmp/chemie-f947-final-a-20261013-v12/normal-validation-repository/app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/configs/P1.independent.inactive.config.json",
+        "--mode=check"
+      ],
+      "returnCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/checks/P1-normal-private-exact-resource.actual.txt",
+      "passed": true
+    },
+    {
+      "name": "A1-normal-one-goal",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/configs/A1.independent.inactive.config.json",
+        "--mode=check"
+      ],
+      "returnCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/checks/A1-normal-one-goal.actual.txt",
+      "passed": true
+    },
+    {
+      "name": "global-committable-curriculum-links",
+      "passed": true,
+      "errors": [],
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/checks/global-committable-curriculum-links.actual.txt"
+    },
+    {
+      "name": "complete-owned-json-and-jsonl-parse",
+      "passed": true,
+      "files": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/FIRST.independent-scientific-verdict.seal.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/configs/A1.independent.inactive.config.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/configs/P1.independent.inactive.config.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/findings/ALL9.primary-operator-and-whole-component-findings.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/findings/FIRST.independent-scientific-verdict.frozen.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/M1.original-selected.raw-exact.jsonl",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/P1.final-author-profile.exact.jsonl",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/REVIEW_INPUTS.final-one-goal.neutral.exact.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/current-nine-operators-whole-partner-targets.actual.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/current-nine-source-witnesses.exact.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/final-whole-goal.exact.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/generation-parameters.actual.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/source34-literals-current-components.exact.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/stock-description-batch.exact.jsonl",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/stock-description-review-campaign.exact.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/stock-description-review-input.exact.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/inputs/two-cases.complete-explicit-demands.exact.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/receipts/private-normal-validation-copy.actual.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/receipts/raw-actual-read-and-view-receipts.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/receipts/selected-input-bindings.actual.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/receipts/source34-extraction-and-whole-current-routes.actual.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/records/A1.independent.normal.jsonl",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/records/D1.stock-round-a.records.jsonl",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/records/D1.stock-round-a.run.json",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/records/P1.independent-scientific-candidate.normal.jsonl",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-f947-final-source-PNG-two-cases-fresh-independent-a-20261013-v12/records/P1.independent.run.json"
+      ]
+    }
+  ],
+  "passed": true,
+  "scope": "One exact final F947 native tuple, source HOLD, no full build",
+  "activeCurriculumWrites": false
+}

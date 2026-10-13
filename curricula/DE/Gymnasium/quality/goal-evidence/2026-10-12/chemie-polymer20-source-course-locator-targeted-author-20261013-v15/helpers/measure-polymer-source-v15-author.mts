@@ -1,0 +1,25 @@
+// Apache-2.0. Stock APIs and explicit immutable-seed checks in private execution only.
+import {readFileSync,writeFileSync,mkdirSync,lstatSync} from 'node:fs';
+import {resolve,dirname,relative} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+const R=process.cwd(),E='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12',OLD=E+'/chemie-f947-three-primary-source-and-nucleophile-case-remediation-author-20261013-v13',D=OLD+'/source/converged-polymer20-source-author',N=E+'/chemie-polymer20-source-course-locator-targeted-author-20261013-v15';
+const read=(p:string)=>JSON.parse(readFileSync(resolve(R,p),'utf8')),sha=(p:string)=>'sha256:'+createHash('sha256').update(readFileSync(resolve(R,p))).digest('hex'),write=(p:string,x:any)=>{let cur=R;for(const part of relative(R,dirname(resolve(R,p))).split('/')){cur=resolve(cur,part);mkdirSync(cur,{recursive:true});if(lstatSync(cur).isSymbolicLink())throw Error('Private writer symlink parent '+cur);}writeFileSync(resolve(R,p),JSON.stringify(x,null,2)+'\n');};
+const mod=await import(pathToFileURL(resolve(R,'app/scripts/applicabilityCompiler.ts')).href),src=await import(pathToFileURL(resolve(R,'app/scripts/goalBookSourceAtlasInputs.ts')).href),book=await import(pathToFileURL(resolve(R,'app/scripts/goalBookModel.ts')).href),norm=await import(pathToFileURL(resolve(R,'app/src/utils/authoring/canonicalAuthoring.ts')).href);
+const cfg=read(N+'/configs/source-atlas.targeted-author.config.json'),seed=read(cfg.landscapePath),prior=read(D+'/candidate/canonical523.current402.polymer20-converged-source.compiled.author.json');
+if(book.stableGoalBookJson(seed)!==book.stableGoalBookJson(prior))throw Error('Unrequested canonical drift');
+const compiled=mod.buildApplicabilityCompilation().reports.find((r:any)=>r.landscapeId===seed.landscapeId);if(!compiled)throw Error('No Chemistry report');
+const countryChanges=compiled.goals.filter((r:any)=>JSON.stringify(r.compiledApplicability)!==JSON.stringify(seed.goals.find((g:any)=>g.id===r.goalId).applicability??{}));
+if(countryChanges.length)throw Error('New country delta requires explicit author scope: '+JSON.stringify(countryChanges.map((r:any)=>({id:r.goalId,to:r.compiledApplicability}))));
+const rawLedger=read(D+'/candidate/semantic523.raw-source-classifications.compiled.author.json'),normalLedger=read(D+'/candidate/semantic523.normalized-book-classifications.compiled.author.json');
+for(const ledger of [rawLedger,normalLedger])ledger.sourceLandscapePath=cfg.landscapePath;
+const rawBy=new Map(seed.goals.map((g:any)=>[g.id,g])),normalBy=new Map(JSON.parse(JSON.stringify(norm.normalizeCanonicalLandscape(seed))).goals.map((g:any)=>[g.id,g]));
+for(const d of rawLedger.decisions)if(d.sourceFingerprint!==book.fingerprintSemanticKindSourceGoal(rawBy.get(d.goalId)))throw Error('Raw source-semantic drift '+d.goalId);
+for(const d of normalLedger.decisions)if(d.sourceFingerprint!==book.fingerprintSemanticKindSourceGoal(normalBy.get(d.goalId)))throw Error('Normal book-semantic drift '+d.goalId);
+write(N+'/candidate/semantic523.raw-source.same-decisions.author.json',rawLedger);write(N+'/candidate/semantic523.normalized-book.same-decisions.author.json',normalLedger);
+const ids=new Set([...read(D+'/CONVERGED.polymer20.source-author.proposal.pending-science.json').boundaryGoalIds,'7a05a1ce-45d3-571e-be51-afcd8dfd33ca','a4bac92b-d685-5cb6-94c8-c9b8b878d125','1df17884-96ae-57d7-9da9-dbebd082596f']);
+write(N+'/neutral/actual-compiled-polymer20-and-three-protected-goal-evidence-paths.json',{schemaVersion:1,normalAPI:'buildApplicabilityCompilation',rows:compiled.goals.filter((r:any)=>ids.has(r.goalId)),sameN13CountrySets:true,allActiveCompatibilityAliasesRead:true,newScientificVotes:0});
+console.log(JSON.stringify({stage:'compiler',sameN13All523CountrySets:true,canonicalWhole523Exact:true}));
+const actual=src.buildGoalBookSourceAtlasInputs(cfg,R);const scope=actual.receipt.scopes.map((s:any)=>({...s,witnesses:s.witnesses.filter((w:any)=>ids.has(w.goalId)),goalIds:s.goalIds.filter((id:string)=>ids.has(id))})).filter((s:any)=>s.witnesses.length);
+write(N+'/checks/final-stock-source-atlas-targeted-course-locator.author.actual.json',{schemaVersion:1,normalAPI:'buildGoalBookSourceAtlasInputs',counts:actual.receipt.counts,inputBindings:actual.receipt.inputBindings,selectedGoalScopes:scope,omittedGoals:actual.receipt.omittedGoals,unresolvedSourceScopes:actual.receipt.unresolvedSourceScopes,normalStructuralCheckPassed:true,currentAtomicDenominator402Unchanged:true,scienceVerdictPending:true,newScientificVotes:0,newNativeRenders:0});
+console.log(JSON.stringify({stage:'sourceAtlas',counts:actual.receipt.counts,sourceScienceVerdict:false}));

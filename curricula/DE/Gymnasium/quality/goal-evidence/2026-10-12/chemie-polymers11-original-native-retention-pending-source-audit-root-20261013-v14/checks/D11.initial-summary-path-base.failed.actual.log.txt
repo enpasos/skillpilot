@@ -1,0 +1,16 @@
+node:fs:573
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers18-current231-inactive-normal-preparation-technical-20261013-v1/native-D18/native-original18.dual-summary.json'
+    at Object.openSync (node:fs:573:18)
+    at readFileSync (node:fs:452:35)
+    at digest (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/validate-poly11-retained-index.mts:13:69)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/validate-poly11-retained-index.mts:30:14) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers18-current231-inactive-normal-preparation-technical-20261013-v1/native-D18/native-original18.dual-summary.json'
+}
+
+Node.js v20.20.2

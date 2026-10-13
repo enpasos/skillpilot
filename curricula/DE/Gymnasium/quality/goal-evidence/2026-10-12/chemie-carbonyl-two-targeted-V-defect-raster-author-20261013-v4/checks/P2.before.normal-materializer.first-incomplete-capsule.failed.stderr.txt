@@ -1,0 +1,16 @@
+node:fs:448
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/contracts/goal-evidence/v2/goal-evidence-review-config.schema.json'
+    at readFileSync (node:fs:448:20)
+    at loadJson (/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/app/scripts/positiveGoalEvidenceReview.ts:131:21)
+    at reviewPositiveGoalEvidenceConfig (/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/app/scripts/positiveGoalEvidenceReview.ts:311:38)
+    at main (/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/app/scripts/materializePositiveGoalEvidenceCandidates.ts:300:20) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/chemie-carbonyl-two-v-defects-private/contracts/goal-evidence/v2/goal-evidence-review-config.schema.json'
+}
+
+Node.js v20.20.2

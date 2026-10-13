@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-13T04:00:02.980801Z",
+  "atomicityNativeScopedCheck": {
+    "command": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:semantic-atomicity:check",
+      "--",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics-two-body-A-M-targeted-independent-20261013-v5/A2.targeted.config.json"
+    ],
+    "exitCode": 0,
+    "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-aromatics-two-body-A-M-targeted-independent-20261013-v5/A2.native-scoped-check.log",
+    "interpretation": "Native checker verifies schema, scope coverage and exact semantic fingerprints; exit zero does not approve a non_atomic goal or satisfy gate A."
+  },
+  "fullMemory402NativeCheckRunHere": false,
+  "memoryFullCheckOwner": "Root will combine accepted actual M2 with unchanged other400 records, cards75 and scopes9 and run the native helper once.",
+  "memoryScopedActualFunctionCheck": {
+    "checkedAtUTC": "2026-10-13T04:00:32.471Z",
+    "helperSourcePath": "app/scripts/memoryCardReview.ts",
+    "helperSourceSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672",
+    "actualFunctions": [
+      "normalizeText",
+      "stableJson",
+      "fingerprintGoal",
+      "validateRecordShape"
+    ],
+    "method": "Read the current TypeScript source and evaluate only these four unchanged pure functions after TypeScript transpilation; no helper main, complete model clone, full memory build or active write.",
+    "recordsChecked": 2,
+    "statusCounts": {
+      "no_memory_needed": 2,
+      "memory_required": 0,
+      "needs_developer_review": 0
+    },
+    "shapeAndFingerprintErrors": [],
+    "protectedOtherMRawRows": 400,
+    "protectedCardRows": 75,
+    "protectedVisibilityScopes": 9,
+    "existingCardOriginsForTargets": 0,
+    "requiredCardAndVisibilityDebt": false,
+    "doesNotClaimFullM402NativePass": true
+  }
+}

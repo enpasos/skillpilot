@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "technicalAttempts": [
+    {
+      "attempt": 1,
+      "result": "ReferenceError: authorAfter before initialization in read overlay",
+      "correction": "Initialize read overlay before original compiler module constants"
+    },
+    {
+      "attempt": 2,
+      "result": "Source and P checks passed; country-delta reporter incorrectly used applicability instead of compiledApplicability",
+      "correction": "Use actual GoalApplicabilityReport.compiledApplicability field, assert it exists; rerun required comparative compiler pass"
+    },
+    {
+      "attempt": 3,
+      "result": "PASS:27 actual countrymetadata deltas,13 protected,66 bounded protected partner entries,470 valid alias rows preserved"
+    },
+    {
+      "attempt": 4,
+      "result": "Seal-only assertion assumed case2 data contained literal Ar–H; case2 defines Ar by words instead",
+      "correction": "Check original donor/coupling data prefix and model parts2/3 remain exactly equal to frozen parent, with no Ar_D contamination"
+    },
+    {
+      "attempt": 5,
+      "result": "Five actual bounded raw-source compiler calls fail at1688 incomplete official source document before later empty-decision gate",
+      "correction": "Report observed earlier structural failure separately from code-derived mapped/nonempty guard; no source or consumer logic changes"
+    }
+  ],
+  "scienceVotes": 0,
+  "nativeBuilds": 0
+}
