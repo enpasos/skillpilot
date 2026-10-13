@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "measuredAtUTC": "2026-10-13T18:30:09.146100+00:00",
+  "checks": [
+    {
+      "check": "schemas",
+      "command": "python3 -B scripts/validate_schemas.py",
+      "observedResult": "pass",
+      "verification": "Affirmative completion statement in exact actual output; no inferred shell exit code stored.",
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie231-reviewed-source-profile-checkpoint-root-20261013-v1/schemas.actual-output.txt",
+        "bytes": 180,
+        "sha256": "sha256:0c4b69598c532b23bad56b7997f0fb18f6d52d132b4bb440d65ebe82dac9c5a3"
+      }
+    },
+    {
+      "check": "terminology",
+      "command": "npm --prefix app run check:terminology",
+      "observedResult": "pass",
+      "verification": "Affirmative completion statement in exact actual output; no inferred shell exit code stored.",
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie231-reviewed-source-profile-checkpoint-root-20261013-v1/terminology.actual-output.txt",
+        "bytes": 160,
+        "sha256": "sha256:548af65e4adeeb7ca5a992d38f6329d0136eae532d83aa586be681bc31b37a07"
+      }
+    },
+    {
+      "check": "strict-rollout",
+      "command": "npm --prefix app run quality:deep-understanding-rollout:check",
+      "observedResult": "pass",
+      "verification": "Affirmative completion statement in exact actual output; no inferred shell exit code stored.",
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie231-reviewed-source-profile-checkpoint-root-20261013-v1/strict-rollout.actual-output.txt",
+        "bytes": 1211,
+        "sha256": "sha256:9b6303bf81e7e186d9e7c152698dfad5879ffab3a0c33de35fb47ae90dd09f5f"
+      }
+    },
+    {
+      "check": "docs-links",
+      "command": "npm --prefix app run check:docs-links",
+      "observedResult": "pass",
+      "verification": "Affirmative completion statement in exact actual output; no inferred shell exit code stored.",
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie231-reviewed-source-profile-checkpoint-root-20261013-v1/docs-links.actual-output.txt",
+        "bytes": 121,
+        "sha256": "sha256:ce1bc18704eee550840b128ec0d0676c528cb12bec0a44046d29192fbc3f53de"
+      }
+    },
+    {
+      "check": "docs-indexes",
+      "command": "npm --prefix app run check:docs-indexes",
+      "observedResult": "pass",
+      "verification": "Affirmative completion statement in exact actual output; no inferred shell exit code stored.",
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie231-reviewed-source-profile-checkpoint-root-20261013-v1/docs-indexes.actual-output.txt",
+        "bytes": 131,
+        "sha256": "sha256:2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0"
+      }
+    }
+  ],
+  "scope": "Full schemas/portability, terminology and central strict report run once on the stable evidence packages; documentation checks include the new checkpoint page. Newly added checkpoint receipt files are parsed and bound at sealing.",
+  "activeChemistryStrict": "231/402",
+  "protectedM7Floors": {
+    "mathematik": "807/807",
+    "physik": "478/478",
+    "biologie": "397/397"
+  },
+  "newHeadGitHubCi": "pending commit and push; existing green base is not new-head CI proof",
+  "humanApproval": false
+}

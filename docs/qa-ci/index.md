@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: gesicherte Quellen- und Profilprüfungen bei 231/402 vom 13. Oktober](chemie231-reviewed-source-profile-checkpoint-2026-10-13.md)
 - [Chemie: Bild- und Quellenkorrekturen als stabiler Zwischenstand vom 13. Oktober](chemie231-image-source-successors-checkpoint-2026-10-13.md)
 - [Chemie: begrenzte Korrekturarbeiten als inaktiver stabiler Zwischenstand vom 13. Oktober](chemie231-bounded-remediation-inactive-checkpoint-2026-10-13.md)
 - [Chemie: 231/402 und gesicherte inaktive Polymer-/Quellenarbeiten vom 13. Oktober](chemie231-inactive-polymer17-and-source-holds-checkpoint-2026-10-13.md)

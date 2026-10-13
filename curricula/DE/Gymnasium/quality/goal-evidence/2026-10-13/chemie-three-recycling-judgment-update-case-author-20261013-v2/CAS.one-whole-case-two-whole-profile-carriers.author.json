@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 1,
+  "findingId": "P-F9-CASE2-UNCONDITIONAL-JUDGMENT-CHANGE",
+  "findingBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-independent-a-20261013-v1/FINDING.f9-case2-neutral-reassessment-required.independent-a.actual.json",
+    "bytes": 3178,
+    "sha256": "sha256:1043afff82e53870f3ca428c03ef0a95ac2b42b94fa11dcd7cec1b10c233ce7b"
+  },
+  "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+  "caseId": "f9e6d689-case-2",
+  "operations": [
+    {
+      "operationId": "case-2-task",
+      "baseBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-author-20261013-v1/CASES.six-complete-transfer-cases.DEEN.author.json",
+        "bytes": 65023,
+        "sha256": "sha256:bf52de9182d057229948bd9fc46c599a546b79375d003f0b27ed320ac73c4beb"
+      },
+      "selector": {
+        "array": "cases",
+        "field": "caseId",
+        "value": "f9e6d689-case-2"
+      },
+      "CAS": {
+        "serialization": "UTF-8 JSON sorted keys compact plus one LF",
+        "wholeBeforeCellSHA256": "sha256:63f71bb0a7481d942ced9d1406570092bbafce46c8fcbf0a60adca0d356c6c19",
+        "wholeAfterCellSHA256": "sha256:4688972fd7fcdfbc61de64bc520ea251029c487dd80474db548e822e15cf08f1"
+      },
+      "beforeWholeCell": {
+        "caseId": "f9e6d689-case-2",
+        "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+        "title": "Zwei kontrollierte Wege und ein anderer Akkumulator",
+        "titleEn": "Two controlled routes and a different accumulator",
+        "dataOrigin": "Original idealized SkillPilot teaching-model data; not measured learner/laboratory data, external research results or an actual collection/processing instruction.",
+        "languageParity": "DE and EN give the same materials, quantities, boundaries, tasks and conditional conclusions.",
+        "dataDe": "Papierfall mit anderem Materialkontext: P bleibt eine nicht wiederaufladbare Zink/Mangan-Batterie. R ist jetzt ein Nickel-Metallhydrid-Akkumulator; seine Metallbestandteile unterscheiden sich vom Bleiakkumulator des anderen Falls. Beide enthalten laut Material umweltkritische Bestandteile, die bei kontrollierter Behandlung zurückgehalten werden. Für je 100 gleich zusammengesetzte Altgeräte einer Art umfasst die Vergleichsgrenze Sammlung, Transport und Aufbereitung. Weg A: P-Metallrückgewinnung 70 %, R 80 %; Energieindex 30 je Altgerätegruppe. Weg B: P 40 %, R 50 %; Energieindex 20 je Altgerätegruppe. Beide halten kritische Freisetzungen gleich wirksam zurück und behandeln Reststoffe kontrolliert. Weitere Umweltwirkungen und die Energie zur Bereitstellung ersetzter Primärrohstoffe sind nicht angegeben. Eine neue Information besagt: Für R kann A einen besonders umweltkritischen Metallrest nicht zurückhalten; B hält ihn zurück. Für P bleibt alles unverändert.",
+        "dataEn": "Paper case with changed material context: P remains a non-rechargeable zinc/manganese battery. R is now a nickel-metal-hydride accumulator; its metal contents differ from the other case's lead accumulator. According to the material, both contain environmentally concerning constituents retained under controlled treatment. For each group of 100 discarded devices with the same composition, the boundary includes collection, transport and treatment. A: P metal recovery 70%, R 80%; energy index 30 per group. B: P 40%, R 50%; energy index 20 per group. Both initially control critical releases equally and treat residues under control. Other environmental impacts and energy for supplying displaced primary raw materials are unspecified. New information states that A cannot retain a particularly concerning metallic residue from R, whereas B retains it. P remains unchanged.",
+        "taskDe": "1. Erläutere für P und R den Zielkonflikt zwischen Rückgewinnung und Energieaufwand; erkläre, weshalb kontrollierte Erfassung dennoch wichtig bleibt. 2. Diskutiere zwei vertretbare Gewichtungen und gib ein bedingtes Urteil, ohne aus einer Kennzahl eine Gesamtumweltzahl zu machen. 3. Ändere dein Urteil anhand der neuen R-Information und erkläre, weshalb sie nicht automatisch auch P oder alle Akkumulatortypen betrifft. Welche zusätzliche Angabe wäre für ein abschließendes Gesamturteil wichtig?",
+        "taskEn": "1. Explain the recovery/energy trade-off for P and R and why controlled collection still matters. 2. Discuss two defensible weightings and give a conditional judgment without turning one indicator into an overall environmental score. 3. Revise your judgment using the new R information and explain why it does not automatically apply to P or all accumulator types. What further information would matter for a final overall judgment?",
+        "modelAnswerDe": "Bei beiden Arten kann Erfassung kritische Freisetzungen begrenzen. A gewinnt jeweils mehr Metall zurück, benötigt aber innerhalb der angegebenen Grenze mehr Energie als B. Wer Metallrückführung besonders gewichtet, kann A vorläufig begründet wählen; wer diesen Aufbereitungsenergiebedarf gewichtet, kann B wählen. Keine Gewichtung beweist eine Gesamtumweltrangfolge, weil unter anderem ersetzte Primärrohstoffbereitstellung und weitere Folgen fehlen. Die neue R-Information verändert die stoffliche Umweltfolge: Für R spricht nun die kontrollierte Rückhaltung des kritischen Restes für B, auch bei geringerer Metallrückgewinnung. Für P ist kein entsprechender Befund gegeben; das R-Urteil darf nicht pauschal übertragen werden. Angaben zur Art/Menge und Umweltrelevanz des freigesetzten Restes und zu den sonstigen Folgen würden die Abwägung verbessern. Konstruktions- oder Ladegleichungen sind dafür nicht erforderlich.",
+        "modelAnswerEn": "For both types, collection can limit critical releases. A recovers more metal but uses more energy than B within the stated boundary. Prioritizing metal return can justify a provisional A choice; prioritizing this treatment energy can justify B. Neither weighting proves an overall environmental ranking because displaced primary raw-material supply and other impacts are missing. The new R information changes the material-related environmental consequence: for R, B's control of the critical residue now supports B despite lower metal recovery. No such observation is given for P, so R's judgment must not be generalized. Information about the residue's type/amount and environmental relevance and other impacts would improve the judgment. Construction or charging equations are not required for this reasoning.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "Written data-based author case design only; no experiment, learner response, mastery or independent P acceptance asserted.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Unterscheidet P von Nickel-Metallhydrid-R und erklärt die geänderte kritische Reststofffreisetzung nur für R.",
+            "criterionEn": "Distinguishes P from nickel-metal-hydride R and explains the changed critical-residue release only for R.",
+            "fullCreditDe": "2 Punkte: Unterscheidet P von Nickel-Metallhydrid-R und erklärt die geänderte kritische Reststofffreisetzung nur für R.",
+            "fullCreditEn": "2 points: Distinguishes P from nickel-metal-hydride R and explains the changed critical-residue release only for R.",
+            "partialCreditDe": "1 Punkt: Erkennt den R-Befund, nennt aber keine Grenze der Übertragung auf P.",
+            "partialCreditEn": "1 point: Recognizes the R observation but does not limit transfer to P.",
+            "zeroCreditDe": "0 Punkte: Überträgt den R-Befund ohne Angabe auf P oder alle Akkumulatoren.",
+            "zeroCreditEn": "0 points: Transfers the R observation to P or all accumulators without supporting information."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Erklärt mehr Metallrückführung bei A, mehr Energie bei A und Nutzen kontrollierter Erfassung ohne Nullfolgenbehauptung.",
+            "criterionEn": "Explains greater metal return and energy use for A and benefits of controlled collection without claiming zero impacts.",
+            "fullCreditDe": "2 Punkte: Erklärt mehr Metallrückführung bei A, mehr Energie bei A und Nutzen kontrollierter Erfassung ohne Nullfolgenbehauptung.",
+            "fullCreditEn": "2 points: Explains greater metal return and energy use for A and benefits of controlled collection without claiming zero impacts.",
+            "partialCreditDe": "1 Punkt: Nennt nur Rückgewinnung oder nur Energie, ohne den Zielkonflikt zu verbinden.",
+            "partialCreditEn": "1 point: Names only recovery or energy without connecting the trade-off.",
+            "zeroCreditDe": "0 Punkte: Erklärt A wegen einer höheren Kennzahl automatisch als umweltneutral oder verwechselt die Vergleichsbasis.",
+            "zeroCreditEn": "0 points: Declares A environmentally neutral from a larger indicator or confuses the comparison basis."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Diskutiert zwei Gewichtungen, gibt ein bedingtes Urteil und revidiert R angesichts des Freisetzungsbefunds; nennt relevante fehlende Angaben.",
+            "criterionEn": "Discusses two weightings, gives a conditional judgment and revises R for the release observation; identifies relevant missing information.",
+            "fullCreditDe": "2 Punkte: Diskutiert zwei Gewichtungen, gibt ein bedingtes Urteil und revidiert R angesichts des Freisetzungsbefunds; nennt relevante fehlende Angaben.",
+            "fullCreditEn": "2 points: Discusses two weightings, gives a conditional judgment and revises R for the release observation; identifies relevant missing information.",
+            "partialCreditDe": "1 Punkt: Urteil ist datenbezogen, aber neue Information oder entscheidende Datenlücke bleibt unberücksichtigt.",
+            "partialCreditEn": "1 point: Judgment uses data but omits the new information or decisive missing information.",
+            "zeroCreditDe": "0 Punkte: Bleibt bei einer pauschalen Anlagen-/Batterierangfolge ohne Datenbezug.",
+            "zeroCreditEn": "0 points: Gives a blanket ranking of plants or batteries without data-based reasoning."
+          }
+        ],
+        "maximumPoints": 6,
+        "misconceptions": [
+          {
+            "id": "m1",
+            "signalDe": "Die höchste Metallrückgewinnung ist immer die beste Umweltlösung.",
+            "signalEn": "The highest metal recovery is always the best environmental solution.",
+            "correctionDe": "Energie und kritische Reststofffreisetzung müssen im konkreten Fall mitbetrachtet werden.",
+            "correctionEn": "Energy and critical-residue releases must also be considered in the actual case."
+          }
+        ],
+        "independentTransferDesign": {
+          "changedConditionDe": "Andere Akkumulatorzusammensetzung und neues, nur R betreffendes Freisetzungsmerkmal; nicht nur neue Zahlen.",
+          "changedConditionEn": "Different accumulator composition and a new release property applying only to R; not merely new numbers.",
+          "multiStepDe": "Gemeinsame Vergleichsbasis bestimmen → Zielkonflikt diskutieren → bedingt urteilen → neues stoffliches Risiko fallbezogen integrieren.",
+          "multiStepEn": "Identify common basis → discuss trade-off → conclude conditionally → integrate a new material-related risk for the relevant case."
+        },
+        "gradingBoundary": "Score only the exact demand and supplied conditions. Each named expectation has a full case-specific explanation criterion; points do not prove execution, mastery or independent scientific acceptance.",
+        "wholeGoalCoverageDesignClaim": "Designed to elicit all three essential expectations in this one multi-step case; coverage and scientific quality require independent review.",
+        "noMandatoryLearnerTaskQuota": true
+      },
+      "afterWholeCell": {
+        "caseId": "f9e6d689-case-2",
+        "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+        "title": "Zwei kontrollierte Wege und ein anderer Akkumulator",
+        "titleEn": "Two controlled routes and a different accumulator",
+        "dataOrigin": "Original idealized SkillPilot teaching-model data; not measured learner/laboratory data, external research results or an actual collection/processing instruction.",
+        "languageParity": "DE and EN give the same materials, quantities, boundaries, tasks and conditional conclusions.",
+        "dataDe": "Papierfall mit anderem Materialkontext: P bleibt eine nicht wiederaufladbare Zink/Mangan-Batterie. R ist jetzt ein Nickel-Metallhydrid-Akkumulator; seine Metallbestandteile unterscheiden sich vom Bleiakkumulator des anderen Falls. Beide enthalten laut Material umweltkritische Bestandteile, die bei kontrollierter Behandlung zurückgehalten werden. Für je 100 gleich zusammengesetzte Altgeräte einer Art umfasst die Vergleichsgrenze Sammlung, Transport und Aufbereitung. Weg A: P-Metallrückgewinnung 70 %, R 80 %; Energieindex 30 je Altgerätegruppe. Weg B: P 40 %, R 50 %; Energieindex 20 je Altgerätegruppe. Beide halten kritische Freisetzungen gleich wirksam zurück und behandeln Reststoffe kontrolliert. Weitere Umweltwirkungen und die Energie zur Bereitstellung ersetzter Primärrohstoffe sind nicht angegeben. Eine neue Information besagt: Für R kann A einen besonders umweltkritischen Metallrest nicht zurückhalten; B hält ihn zurück. Für P bleibt alles unverändert.",
+        "dataEn": "Paper case with changed material context: P remains a non-rechargeable zinc/manganese battery. R is now a nickel-metal-hydride accumulator; its metal contents differ from the other case's lead accumulator. According to the material, both contain environmentally concerning constituents retained under controlled treatment. For each group of 100 discarded devices with the same composition, the boundary includes collection, transport and treatment. A: P metal recovery 70%, R 80%; energy index 30 per group. B: P 40%, R 50%; energy index 20 per group. Both initially control critical releases equally and treat residues under control. Other environmental impacts and energy for supplying displaced primary raw materials are unspecified. New information states that A cannot retain a particularly concerning metallic residue from R, whereas B retains it. P remains unchanged.",
+        "taskDe": "1. Erläutere für P und R den Zielkonflikt zwischen Rückgewinnung und Energieaufwand; erkläre, weshalb kontrollierte Erfassung dennoch wichtig bleibt. 2. Diskutiere zwei vertretbare Gewichtungen und gib ein bedingtes Urteil, ohne aus einer Kennzahl eine Gesamtumweltzahl zu machen. 3. Prüfe dein Urteil anhand der neuen R-Information und begründe, ob du es bestätigst oder anpasst. Erkläre, weshalb diese Information nicht automatisch auch P oder alle Akkumulatortypen betrifft. Welche zusätzliche Angabe wäre für ein abschließendes Gesamturteil wichtig?",
+        "taskEn": "1. Explain the recovery/energy trade-off for P and R and why controlled collection still matters. 2. Discuss two defensible weightings and give a conditional judgment without turning one indicator into an overall environmental score. 3. Review your judgment using the new R information and justify whether you confirm or adjust it. Explain why this information does not automatically apply to P or all accumulator types. What further information would matter for a final overall judgment?",
+        "modelAnswerDe": "Bei beiden Arten kann Erfassung kritische Freisetzungen begrenzen. A gewinnt jeweils mehr Metall zurück, benötigt aber innerhalb der angegebenen Grenze mehr Energie als B. Wer Metallrückführung besonders gewichtet, kann A vorläufig begründet wählen; wer diesen Aufbereitungsenergiebedarf gewichtet, kann B wählen. Keine Gewichtung beweist eine Gesamtumweltrangfolge, weil unter anderem ersetzte Primärrohstoffbereitstellung und weitere Folgen fehlen. Die neue R-Information verändert die stoffliche Umweltfolge: Für R spricht nun die kontrollierte Rückhaltung des kritischen Restes für B, auch bei geringerer Metallrückgewinnung. Für P ist kein entsprechender Befund gegeben; das R-Urteil darf nicht pauschal übertragen werden. Angaben zur Art/Menge und Umweltrelevanz des freigesetzten Restes und zu den sonstigen Folgen würden die Abwägung verbessern. Konstruktions- oder Ladegleichungen sind dafür nicht erforderlich.",
+        "modelAnswerEn": "For both types, collection can limit critical releases. A recovers more metal but uses more energy than B within the stated boundary. Prioritizing metal return can justify a provisional A choice; prioritizing this treatment energy can justify B. Neither weighting proves an overall environmental ranking because displaced primary raw-material supply and other impacts are missing. The new R information changes the material-related environmental consequence: for R, B's control of the critical residue now supports B despite lower metal recovery. No such observation is given for P, so R's judgment must not be generalized. Information about the residue's type/amount and environmental relevance and other impacts would improve the judgment. Construction or charging equations are not required for this reasoning.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "Written data-based author case design only; no experiment, learner response, mastery or independent P acceptance asserted.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 2,
+            "criterionDe": "Unterscheidet P von Nickel-Metallhydrid-R und erklärt die geänderte kritische Reststofffreisetzung nur für R.",
+            "criterionEn": "Distinguishes P from nickel-metal-hydride R and explains the changed critical-residue release only for R.",
+            "fullCreditDe": "2 Punkte: Unterscheidet P von Nickel-Metallhydrid-R und erklärt die geänderte kritische Reststofffreisetzung nur für R.",
+            "fullCreditEn": "2 points: Distinguishes P from nickel-metal-hydride R and explains the changed critical-residue release only for R.",
+            "partialCreditDe": "1 Punkt: Erkennt den R-Befund, nennt aber keine Grenze der Übertragung auf P.",
+            "partialCreditEn": "1 point: Recognizes the R observation but does not limit transfer to P.",
+            "zeroCreditDe": "0 Punkte: Überträgt den R-Befund ohne Angabe auf P oder alle Akkumulatoren.",
+            "zeroCreditEn": "0 points: Transfers the R observation to P or all accumulators without supporting information."
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 2,
+            "criterionDe": "Erklärt mehr Metallrückführung bei A, mehr Energie bei A und Nutzen kontrollierter Erfassung ohne Nullfolgenbehauptung.",
+            "criterionEn": "Explains greater metal return and energy use for A and benefits of controlled collection without claiming zero impacts.",
+            "fullCreditDe": "2 Punkte: Erklärt mehr Metallrückführung bei A, mehr Energie bei A und Nutzen kontrollierter Erfassung ohne Nullfolgenbehauptung.",
+            "fullCreditEn": "2 points: Explains greater metal return and energy use for A and benefits of controlled collection without claiming zero impacts.",
+            "partialCreditDe": "1 Punkt: Nennt nur Rückgewinnung oder nur Energie, ohne den Zielkonflikt zu verbinden.",
+            "partialCreditEn": "1 point: Names only recovery or energy without connecting the trade-off.",
+            "zeroCreditDe": "0 Punkte: Erklärt A wegen einer höheren Kennzahl automatisch als umweltneutral oder verwechselt die Vergleichsbasis.",
+            "zeroCreditEn": "0 points: Declares A environmentally neutral from a larger indicator or confuses the comparison basis."
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 2,
+            "criterionDe": "Diskutiert zwei Gewichtungen, gibt ein bedingtes Urteil und revidiert R angesichts des Freisetzungsbefunds; nennt relevante fehlende Angaben.",
+            "criterionEn": "Discusses two weightings, gives a conditional judgment and revises R for the release observation; identifies relevant missing information.",
+            "fullCreditDe": "2 Punkte: Diskutiert zwei Gewichtungen, gibt ein bedingtes Urteil und revidiert R angesichts des Freisetzungsbefunds; nennt relevante fehlende Angaben.",
+            "fullCreditEn": "2 points: Discusses two weightings, gives a conditional judgment and revises R for the release observation; identifies relevant missing information.",
+            "partialCreditDe": "1 Punkt: Urteil ist datenbezogen, aber neue Information oder entscheidende Datenlücke bleibt unberücksichtigt.",
+            "partialCreditEn": "1 point: Judgment uses data but omits the new information or decisive missing information.",
+            "zeroCreditDe": "0 Punkte: Bleibt bei einer pauschalen Anlagen-/Batterierangfolge ohne Datenbezug.",
+            "zeroCreditEn": "0 points: Gives a blanket ranking of plants or batteries without data-based reasoning."
+          }
+        ],
+        "maximumPoints": 6,
+        "misconceptions": [
+          {
+            "id": "m1",
+            "signalDe": "Die höchste Metallrückgewinnung ist immer die beste Umweltlösung.",
+            "signalEn": "The highest metal recovery is always the best environmental solution.",
+            "correctionDe": "Energie und kritische Reststofffreisetzung müssen im konkreten Fall mitbetrachtet werden.",
+            "correctionEn": "Energy and critical-residue releases must also be considered in the actual case."
+          }
+        ],
+        "independentTransferDesign": {
+          "changedConditionDe": "Andere Akkumulatorzusammensetzung und neues, nur R betreffendes Freisetzungsmerkmal; nicht nur neue Zahlen.",
+          "changedConditionEn": "Different accumulator composition and a new release property applying only to R; not merely new numbers.",
+          "multiStepDe": "Gemeinsame Vergleichsbasis bestimmen → Zielkonflikt diskutieren → bedingt urteilen → neues stoffliches Risiko fallbezogen integrieren.",
+          "multiStepEn": "Identify common basis → discuss trade-off → conclude conditionally → integrate a new material-related risk for the relevant case."
+        },
+        "gradingBoundary": "Score only the exact demand and supplied conditions. Each named expectation has a full case-specific explanation criterion; points do not prove execution, mastery or independent scientific acceptance.",
+        "wholeGoalCoverageDesignClaim": "Designed to elicit all three essential expectations in this one multi-step case; coverage and scientific quality require independent review.",
+        "noMandatoryLearnerTaskQuota": true
+      },
+      "changedLeafPaths": [
+        "taskDe",
+        "taskEn"
+      ],
+      "requiredCopyPolicy": "Produce an additive successor; do not overwrite this historical source artifact."
+    },
+    {
+      "operationId": "whole-battery-profile",
+      "baseBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-author-20261013-v1/PROFILES.three-complete-positive-v2-fragments.DEEN.author.json",
+        "bytes": 38395,
+        "sha256": "sha256:a9bd5ef2d8521fe28cf562714398d51141e7f9a49d58f84e9da56d7540de48c3"
+      },
+      "selector": {
+        "array": "profiles",
+        "field": "goalId",
+        "value": "f9e6d689-6e59-59a4-9f21-8c2d44413244"
+      },
+      "CAS": {
+        "serialization": "UTF-8 JSON sorted keys compact plus one LF",
+        "wholeBeforeCellSHA256": "sha256:f1b0b07d5d6d888d9886217d93075ad17ad68b5eef4e2949d346ea40f800201b",
+        "wholeAfterCellSHA256": "sha256:563c6d9fad7d243c1b7a4b41dad7e50b7798b5cbba6446f357c896ae90200cf6"
+      },
+      "beforeWholeCell": {
+        "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Umweltfolgen von Entsorgung hängen von den enthaltenen Stoffen und davon ab, ob sie kontrolliert erfasst oder in die Umwelt freigesetzt werden. Nicht wiederaufladbare Batterien und Akkumulatoren gehören beide zum betrachteten Umfang; das Betriebsprinzip allein bestimmt nicht das Entsorgungsurteil.",
+              "essentialUnderstandingEn": "Environmental consequences of disposal depend on contained substances and whether they are controlled or released into the environment. Both non-rechargeable batteries and accumulators are in scope; the operating principle alone does not determine a disposal judgment.",
+              "observablePerformanceDe": "Verknüpft in einem Fall zu einer Primärbatterie und einem Akkumulator die gegebenen Stoff- und Freisetzungsangaben mit konkreten Umweltfolgen und unterscheidet Daten von nicht belegten Verallgemeinerungen.",
+              "observablePerformanceEn": "Links supplied substance and release information to concrete environmental consequences for a primary battery and an accumulator, distinguishing data from unsupported generalizations."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Kontrollierte Sammlung kann Freisetzung vermeiden; Recycling kann Stoffe zurückgewinnen und neuen Rohstoffbedarf vermindern. Sammlung ist noch keine vollständige Rückgewinnung. Aufbereitung benötigt Ressourcen und Energie und kann Reststoffe hinterlassen.",
+              "essentialUnderstandingEn": "Controlled collection can avoid releases; recycling can recover substances and reduce demand for new raw materials. Collection is not yet complete recovery. Treatment uses resources and energy and may leave residues.",
+              "observablePerformanceDe": "Erklärt anhand der Fallinformationen den Nutzen kontrollierter Erfassung und tatsächlicher Rückgewinnung und benennt zugleich verbleibende Aufbereitungsfolgen; erklärt keine unaufgeforderten industriellen Mechanismen.",
+              "observablePerformanceEn": "Explains benefits of controlled collection and actual recovery using the case information while identifying remaining treatment impacts; does not add unrequested industrial mechanisms."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Eine begründete Umweltbewertung verbindet Stofffolgen, Rückgewinnung und die angegebenen Randbedingungen. Unterschiedliche Batteriezusammensetzungen oder Behandlungswege können andere Abwägungen verlangen; ein einzelnes Merkmal beweist keine universelle Rangfolge.",
+              "essentialUnderstandingEn": "A reasoned environmental assessment connects substance consequences, recovery and supplied conditions. Different battery compositions or treatment routes may require different judgments; one feature does not establish a universal ranking.",
+              "observablePerformanceDe": "Diskutiert begründete Handlungsoptionen für beide Spannungsquellen, verteidigt ein bedingtes Urteil gegen eine Fehlbehauptung und überträgt die Begründung auf eine geänderte Zusammensetzung oder Behandlungssituation.",
+              "observablePerformanceEn": "Discusses reasoned options for both electrochemical sources, defends a conditional judgment against a misconception and transfers the reasoning to a changed composition or treatment situation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Primärbatterie und unterschiedliche Akkumulatorzusammensetzung",
+              "textEn": "Primary battery and different accumulator composition"
+            },
+            {
+              "id": "v2",
+              "textDe": "Freisetzungsfolge, kontrollierte Sammlung und Rückgewinnungsumfang",
+              "textEn": "Release impacts, controlled collection and recovery extent"
+            },
+            {
+              "id": "v3",
+              "textDe": "Energie-/Reststoffgrenzen und neue kritische Stofffolge",
+              "textEn": "Energy/residue boundaries and a new critical substance impact"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "f9e6d689-case-1",
+              "taskDemandDe": "1. Diskutiere die Folgen von U und K für P UND Q und verknüpfe Stoffangaben mit Umweltfolgen. 2. Erkläre, was Erfassung und was tatsächliche Rückgewinnung leisten; benenne je einen Nutzen und eine verbleibende Folge der Aufbereitung. 3. Beurteile K gegenüber U unter diesen Angaben. Widerlege oder begrenze: „Bei Q werden viele Metalle zurückgewonnen, also ist Q-Recycling umweltneutral.“ Übertrage deine Begründung auf K*. Keine praktische Behandlung und keine Elektrodenreaktionen sind verlangt.",
+              "taskDemandEn": "1. Discuss U and K for BOTH P and Q, linking substance information to environmental consequences. 2. Explain what collection and actual recovery achieve; state one benefit and one remaining treatment impact. 3. Assess K against U under these data. Refute or limit: “Much of Q's metal is recovered, so Q recycling is environmentally neutral.” Transfer your reasoning to K*. No practical treatment or electrode reactions are required.",
+              "expectedPerformanceDe": "U ermöglicht bei P Elektrolytfreisetzung und bei Q zusätzlich Freisetzung umweltkritischer Bleiverbindungen; die gleiche Sammelbezeichnung bedeutet keine gleiche Zusammensetzung. K vermindert diese unkontrollierte Freisetzung. Erfassung hält Abfallstoffe kontrolliert zurück; erst Aufbereitung gewinnt Metallrohstoff zurück. 60 % beziehungsweise 90 % Rückgewinnung können neuen Metallbedarf vermindern, bedeuten aber weder vollständige Stoffrückführung noch Nullfolgen. Energiebedarf und kontrolliert zu behandelnde Reststoffe verbleiben. K ist unter den gegebenen Freisetzungs- und Rückgewinnungsbedingungen gegenüber U begründet vorzuziehen. K* kann den metallischen Reststrom für Q weiter vermindern; positiver Energiebedarf und Folgen der Elektrolyt-/Reststoffbehandlung verschwinden dadurch nicht. Weder K noch K* ist damit pauschal umweltneutral; ein Vergleich aller realen Anlagen ist nicht belegt.",
+              "expectedPerformanceEn": "U permits electrolyte releases from P and additionally releases of environmentally concerning lead compounds from Q; one collection label does not imply identical composition. K reduces these uncontrolled releases. Collection retains wastes under control; only treatment recovers metal raw material. Recovery of 60% or 90% can reduce new metal demand but means neither complete material return nor zero impacts. Energy use and residues requiring controlled treatment remain. Under the supplied release/recovery conditions, K is a reasoned preference over U. K* may reduce Q's metallic residue further, but positive energy demand and electrolyte/residue-treatment impacts do not disappear. Neither K nor K* is therefore automatically environmentally neutral; a ranking of all real plants is unsupported.",
+              "understandingFocusDe": "Erklärt für P und Q unterschiedliche enthaltene Stoffe und daraus die in U möglichen Freisetzungsfolgen; K begrenzt diese. / Trennt Erfassung von Rückgewinnung; erklärt Rohstoffnutzen aus 60/90 % und verbleibende Energie-/Reststofffolgen. / Begründet K gegenüber U und überträgt auf K*: vollständige Metallrückgewinnung entfernt nicht Energie-/Elektrolytfolgen.",
+              "understandingFocusEn": "Explains different contents and resulting possible releases under U for P and Q; K limits them. / Distinguishes collection from recovery; explains raw-material benefits from 60/90% and remaining energy/residue impacts. / Justifies K over U and transfers to K*: full metal recovery does not remove energy/electrolyte impacts."
+            },
+            {
+              "id": "f9e6d689-case-2",
+              "taskDemandDe": "1. Erläutere für P und R den Zielkonflikt zwischen Rückgewinnung und Energieaufwand; erkläre, weshalb kontrollierte Erfassung dennoch wichtig bleibt. 2. Diskutiere zwei vertretbare Gewichtungen und gib ein bedingtes Urteil, ohne aus einer Kennzahl eine Gesamtumweltzahl zu machen. 3. Ändere dein Urteil anhand der neuen R-Information und erkläre, weshalb sie nicht automatisch auch P oder alle Akkumulatortypen betrifft. Welche zusätzliche Angabe wäre für ein abschließendes Gesamturteil wichtig?",
+              "taskDemandEn": "1. Explain the recovery/energy trade-off for P and R and why controlled collection still matters. 2. Discuss two defensible weightings and give a conditional judgment without turning one indicator into an overall environmental score. 3. Revise your judgment using the new R information and explain why it does not automatically apply to P or all accumulator types. What further information would matter for a final overall judgment?",
+              "expectedPerformanceDe": "Bei beiden Arten kann Erfassung kritische Freisetzungen begrenzen. A gewinnt jeweils mehr Metall zurück, benötigt aber innerhalb der angegebenen Grenze mehr Energie als B. Wer Metallrückführung besonders gewichtet, kann A vorläufig begründet wählen; wer diesen Aufbereitungsenergiebedarf gewichtet, kann B wählen. Keine Gewichtung beweist eine Gesamtumweltrangfolge, weil unter anderem ersetzte Primärrohstoffbereitstellung und weitere Folgen fehlen. Die neue R-Information verändert die stoffliche Umweltfolge: Für R spricht nun die kontrollierte Rückhaltung des kritischen Restes für B, auch bei geringerer Metallrückgewinnung. Für P ist kein entsprechender Befund gegeben; das R-Urteil darf nicht pauschal übertragen werden. Angaben zur Art/Menge und Umweltrelevanz des freigesetzten Restes und zu den sonstigen Folgen würden die Abwägung verbessern. Konstruktions- oder Ladegleichungen sind dafür nicht erforderlich.",
+              "expectedPerformanceEn": "For both types, collection can limit critical releases. A recovers more metal but uses more energy than B within the stated boundary. Prioritizing metal return can justify a provisional A choice; prioritizing this treatment energy can justify B. Neither weighting proves an overall environmental ranking because displaced primary raw-material supply and other impacts are missing. The new R information changes the material-related environmental consequence: for R, B's control of the critical residue now supports B despite lower metal recovery. No such observation is given for P, so R's judgment must not be generalized. Information about the residue's type/amount and environmental relevance and other impacts would improve the judgment. Construction or charging equations are not required for this reasoning.",
+              "understandingFocusDe": "Unterscheidet P von Nickel-Metallhydrid-R und erklärt die geänderte kritische Reststofffreisetzung nur für R. / Erklärt mehr Metallrückführung bei A, mehr Energie bei A und Nutzen kontrollierter Erfassung ohne Nullfolgenbehauptung. / Diskutiert zwei Gewichtungen, gibt ein bedingtes Urteil und revidiert R angesichts des Freisetzungsbefunds; nennt relevante fehlende Angaben.",
+              "understandingFocusEn": "Distinguishes P from nickel-metal-hydride R and explains the changed critical-residue release only for R. / Explains greater metal return and energy use for A and benefits of controlled collection without claiming zero impacts. / Discusses two weightings, gives a conditional judgment and revises R for the release observation; identifies relevant missing information."
+            }
+          ]
+        }
+      },
+      "afterWholeCell": {
+        "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Umweltfolgen von Entsorgung hängen von den enthaltenen Stoffen und davon ab, ob sie kontrolliert erfasst oder in die Umwelt freigesetzt werden. Nicht wiederaufladbare Batterien und Akkumulatoren gehören beide zum betrachteten Umfang; das Betriebsprinzip allein bestimmt nicht das Entsorgungsurteil.",
+              "essentialUnderstandingEn": "Environmental consequences of disposal depend on contained substances and whether they are controlled or released into the environment. Both non-rechargeable batteries and accumulators are in scope; the operating principle alone does not determine a disposal judgment.",
+              "observablePerformanceDe": "Verknüpft in einem Fall zu einer Primärbatterie und einem Akkumulator die gegebenen Stoff- und Freisetzungsangaben mit konkreten Umweltfolgen und unterscheidet Daten von nicht belegten Verallgemeinerungen.",
+              "observablePerformanceEn": "Links supplied substance and release information to concrete environmental consequences for a primary battery and an accumulator, distinguishing data from unsupported generalizations."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Kontrollierte Sammlung kann Freisetzung vermeiden; Recycling kann Stoffe zurückgewinnen und neuen Rohstoffbedarf vermindern. Sammlung ist noch keine vollständige Rückgewinnung. Aufbereitung benötigt Ressourcen und Energie und kann Reststoffe hinterlassen.",
+              "essentialUnderstandingEn": "Controlled collection can avoid releases; recycling can recover substances and reduce demand for new raw materials. Collection is not yet complete recovery. Treatment uses resources and energy and may leave residues.",
+              "observablePerformanceDe": "Erklärt anhand der Fallinformationen den Nutzen kontrollierter Erfassung und tatsächlicher Rückgewinnung und benennt zugleich verbleibende Aufbereitungsfolgen; erklärt keine unaufgeforderten industriellen Mechanismen.",
+              "observablePerformanceEn": "Explains benefits of controlled collection and actual recovery using the case information while identifying remaining treatment impacts; does not add unrequested industrial mechanisms."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Eine begründete Umweltbewertung verbindet Stofffolgen, Rückgewinnung und die angegebenen Randbedingungen. Unterschiedliche Batteriezusammensetzungen oder Behandlungswege können andere Abwägungen verlangen; ein einzelnes Merkmal beweist keine universelle Rangfolge.",
+              "essentialUnderstandingEn": "A reasoned environmental assessment connects substance consequences, recovery and supplied conditions. Different battery compositions or treatment routes may require different judgments; one feature does not establish a universal ranking.",
+              "observablePerformanceDe": "Diskutiert begründete Handlungsoptionen für beide Spannungsquellen, verteidigt ein bedingtes Urteil gegen eine Fehlbehauptung und überträgt die Begründung auf eine geänderte Zusammensetzung oder Behandlungssituation.",
+              "observablePerformanceEn": "Discusses reasoned options for both electrochemical sources, defends a conditional judgment against a misconception and transfers the reasoning to a changed composition or treatment situation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Primärbatterie und unterschiedliche Akkumulatorzusammensetzung",
+              "textEn": "Primary battery and different accumulator composition"
+            },
+            {
+              "id": "v2",
+              "textDe": "Freisetzungsfolge, kontrollierte Sammlung und Rückgewinnungsumfang",
+              "textEn": "Release impacts, controlled collection and recovery extent"
+            },
+            {
+              "id": "v3",
+              "textDe": "Energie-/Reststoffgrenzen und neue kritische Stofffolge",
+              "textEn": "Energy/residue boundaries and a new critical substance impact"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "f9e6d689-case-1",
+              "taskDemandDe": "1. Diskutiere die Folgen von U und K für P UND Q und verknüpfe Stoffangaben mit Umweltfolgen. 2. Erkläre, was Erfassung und was tatsächliche Rückgewinnung leisten; benenne je einen Nutzen und eine verbleibende Folge der Aufbereitung. 3. Beurteile K gegenüber U unter diesen Angaben. Widerlege oder begrenze: „Bei Q werden viele Metalle zurückgewonnen, also ist Q-Recycling umweltneutral.“ Übertrage deine Begründung auf K*. Keine praktische Behandlung und keine Elektrodenreaktionen sind verlangt.",
+              "taskDemandEn": "1. Discuss U and K for BOTH P and Q, linking substance information to environmental consequences. 2. Explain what collection and actual recovery achieve; state one benefit and one remaining treatment impact. 3. Assess K against U under these data. Refute or limit: “Much of Q's metal is recovered, so Q recycling is environmentally neutral.” Transfer your reasoning to K*. No practical treatment or electrode reactions are required.",
+              "expectedPerformanceDe": "U ermöglicht bei P Elektrolytfreisetzung und bei Q zusätzlich Freisetzung umweltkritischer Bleiverbindungen; die gleiche Sammelbezeichnung bedeutet keine gleiche Zusammensetzung. K vermindert diese unkontrollierte Freisetzung. Erfassung hält Abfallstoffe kontrolliert zurück; erst Aufbereitung gewinnt Metallrohstoff zurück. 60 % beziehungsweise 90 % Rückgewinnung können neuen Metallbedarf vermindern, bedeuten aber weder vollständige Stoffrückführung noch Nullfolgen. Energiebedarf und kontrolliert zu behandelnde Reststoffe verbleiben. K ist unter den gegebenen Freisetzungs- und Rückgewinnungsbedingungen gegenüber U begründet vorzuziehen. K* kann den metallischen Reststrom für Q weiter vermindern; positiver Energiebedarf und Folgen der Elektrolyt-/Reststoffbehandlung verschwinden dadurch nicht. Weder K noch K* ist damit pauschal umweltneutral; ein Vergleich aller realen Anlagen ist nicht belegt.",
+              "expectedPerformanceEn": "U permits electrolyte releases from P and additionally releases of environmentally concerning lead compounds from Q; one collection label does not imply identical composition. K reduces these uncontrolled releases. Collection retains wastes under control; only treatment recovers metal raw material. Recovery of 60% or 90% can reduce new metal demand but means neither complete material return nor zero impacts. Energy use and residues requiring controlled treatment remain. Under the supplied release/recovery conditions, K is a reasoned preference over U. K* may reduce Q's metallic residue further, but positive energy demand and electrolyte/residue-treatment impacts do not disappear. Neither K nor K* is therefore automatically environmentally neutral; a ranking of all real plants is unsupported.",
+              "understandingFocusDe": "Erklärt für P und Q unterschiedliche enthaltene Stoffe und daraus die in U möglichen Freisetzungsfolgen; K begrenzt diese. / Trennt Erfassung von Rückgewinnung; erklärt Rohstoffnutzen aus 60/90 % und verbleibende Energie-/Reststofffolgen. / Begründet K gegenüber U und überträgt auf K*: vollständige Metallrückgewinnung entfernt nicht Energie-/Elektrolytfolgen.",
+              "understandingFocusEn": "Explains different contents and resulting possible releases under U for P and Q; K limits them. / Distinguishes collection from recovery; explains raw-material benefits from 60/90% and remaining energy/residue impacts. / Justifies K over U and transfers to K*: full metal recovery does not remove energy/electrolyte impacts."
+            },
+            {
+              "id": "f9e6d689-case-2",
+              "taskDemandDe": "1. Erläutere für P und R den Zielkonflikt zwischen Rückgewinnung und Energieaufwand; erkläre, weshalb kontrollierte Erfassung dennoch wichtig bleibt. 2. Diskutiere zwei vertretbare Gewichtungen und gib ein bedingtes Urteil, ohne aus einer Kennzahl eine Gesamtumweltzahl zu machen. 3. Prüfe dein Urteil anhand der neuen R-Information und begründe, ob du es bestätigst oder anpasst. Erkläre, weshalb diese Information nicht automatisch auch P oder alle Akkumulatortypen betrifft. Welche zusätzliche Angabe wäre für ein abschließendes Gesamturteil wichtig?",
+              "taskDemandEn": "1. Explain the recovery/energy trade-off for P and R and why controlled collection still matters. 2. Discuss two defensible weightings and give a conditional judgment without turning one indicator into an overall environmental score. 3. Review your judgment using the new R information and justify whether you confirm or adjust it. Explain why this information does not automatically apply to P or all accumulator types. What further information would matter for a final overall judgment?",
+              "expectedPerformanceDe": "Bei beiden Arten kann Erfassung kritische Freisetzungen begrenzen. A gewinnt jeweils mehr Metall zurück, benötigt aber innerhalb der angegebenen Grenze mehr Energie als B. Wer Metallrückführung besonders gewichtet, kann A vorläufig begründet wählen; wer diesen Aufbereitungsenergiebedarf gewichtet, kann B wählen. Keine Gewichtung beweist eine Gesamtumweltrangfolge, weil unter anderem ersetzte Primärrohstoffbereitstellung und weitere Folgen fehlen. Die neue R-Information verändert die stoffliche Umweltfolge: Für R spricht nun die kontrollierte Rückhaltung des kritischen Restes für B, auch bei geringerer Metallrückgewinnung. Für P ist kein entsprechender Befund gegeben; das R-Urteil darf nicht pauschal übertragen werden. Angaben zur Art/Menge und Umweltrelevanz des freigesetzten Restes und zu den sonstigen Folgen würden die Abwägung verbessern. Konstruktions- oder Ladegleichungen sind dafür nicht erforderlich.",
+              "expectedPerformanceEn": "For both types, collection can limit critical releases. A recovers more metal but uses more energy than B within the stated boundary. Prioritizing metal return can justify a provisional A choice; prioritizing this treatment energy can justify B. Neither weighting proves an overall environmental ranking because displaced primary raw-material supply and other impacts are missing. The new R information changes the material-related environmental consequence: for R, B's control of the critical residue now supports B despite lower metal recovery. No such observation is given for P, so R's judgment must not be generalized. Information about the residue's type/amount and environmental relevance and other impacts would improve the judgment. Construction or charging equations are not required for this reasoning.",
+              "understandingFocusDe": "Unterscheidet P von Nickel-Metallhydrid-R und erklärt die geänderte kritische Reststofffreisetzung nur für R. / Erklärt mehr Metallrückführung bei A, mehr Energie bei A und Nutzen kontrollierter Erfassung ohne Nullfolgenbehauptung. / Diskutiert zwei Gewichtungen, gibt ein bedingtes Urteil und revidiert R angesichts des Freisetzungsbefunds; nennt relevante fehlende Angaben.",
+              "understandingFocusEn": "Distinguishes P from nickel-metal-hydride R and explains the changed critical-residue release only for R. / Explains greater metal return and energy use for A and benefits of controlled collection without claiming zero impacts. / Discusses two weightings, gives a conditional judgment and revises R for the release observation; identifies relevant missing information."
+            }
+          ]
+        }
+      },
+      "changedLeafPaths": [
+        "profile.applicationCaseBriefs[1].taskDemandDe",
+        "profile.applicationCaseBriefs[1].taskDemandEn"
+      ],
+      "requiredCopyPolicy": "Produce an additive successor; do not overwrite this historical source artifact."
+    },
+    {
+      "operationId": "unmaterialized-candidate-goal-spec",
+      "baseBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-author-20261013-v1/CANDIDATESET.three-positive-profile-designs.unmaterialized.author.json",
+        "bytes": 38700,
+        "sha256": "sha256:95746122c350e8064d378ca287e4db7a74317b47c114510aafaff08cb7b80223"
+      },
+      "selector": {
+        "array": "goals",
+        "field": "goalId",
+        "value": "f9e6d689-6e59-59a4-9f21-8c2d44413244"
+      },
+      "CAS": {
+        "serialization": "UTF-8 JSON sorted keys compact plus one LF",
+        "wholeBeforeCellSHA256": "sha256:b77b104b3df3cb6cad2238cae973ba550c50b08d208195f784656bc854b1a266",
+        "wholeAfterCellSHA256": "sha256:82e48e08fd10f109f87c9f8e16c5d8c7db832f0573a1799b0ae5172cd4c440fe"
+      },
+      "beforeWholeCell": {
+        "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+        "reason": "New whole-duty bilingual data-based profile and two complete fresh transfer case designs for the unchanged frozen goal. Independent case/profile review and final compiler/SEM/image/page input binding remain pending; no human or mastery evidence.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Umweltfolgen von Entsorgung hängen von den enthaltenen Stoffen und davon ab, ob sie kontrolliert erfasst oder in die Umwelt freigesetzt werden. Nicht wiederaufladbare Batterien und Akkumulatoren gehören beide zum betrachteten Umfang; das Betriebsprinzip allein bestimmt nicht das Entsorgungsurteil.",
+              "essentialUnderstandingEn": "Environmental consequences of disposal depend on contained substances and whether they are controlled or released into the environment. Both non-rechargeable batteries and accumulators are in scope; the operating principle alone does not determine a disposal judgment.",
+              "observablePerformanceDe": "Verknüpft in einem Fall zu einer Primärbatterie und einem Akkumulator die gegebenen Stoff- und Freisetzungsangaben mit konkreten Umweltfolgen und unterscheidet Daten von nicht belegten Verallgemeinerungen.",
+              "observablePerformanceEn": "Links supplied substance and release information to concrete environmental consequences for a primary battery and an accumulator, distinguishing data from unsupported generalizations."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Kontrollierte Sammlung kann Freisetzung vermeiden; Recycling kann Stoffe zurückgewinnen und neuen Rohstoffbedarf vermindern. Sammlung ist noch keine vollständige Rückgewinnung. Aufbereitung benötigt Ressourcen und Energie und kann Reststoffe hinterlassen.",
+              "essentialUnderstandingEn": "Controlled collection can avoid releases; recycling can recover substances and reduce demand for new raw materials. Collection is not yet complete recovery. Treatment uses resources and energy and may leave residues.",
+              "observablePerformanceDe": "Erklärt anhand der Fallinformationen den Nutzen kontrollierter Erfassung und tatsächlicher Rückgewinnung und benennt zugleich verbleibende Aufbereitungsfolgen; erklärt keine unaufgeforderten industriellen Mechanismen.",
+              "observablePerformanceEn": "Explains benefits of controlled collection and actual recovery using the case information while identifying remaining treatment impacts; does not add unrequested industrial mechanisms."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Eine begründete Umweltbewertung verbindet Stofffolgen, Rückgewinnung und die angegebenen Randbedingungen. Unterschiedliche Batteriezusammensetzungen oder Behandlungswege können andere Abwägungen verlangen; ein einzelnes Merkmal beweist keine universelle Rangfolge.",
+              "essentialUnderstandingEn": "A reasoned environmental assessment connects substance consequences, recovery and supplied conditions. Different battery compositions or treatment routes may require different judgments; one feature does not establish a universal ranking.",
+              "observablePerformanceDe": "Diskutiert begründete Handlungsoptionen für beide Spannungsquellen, verteidigt ein bedingtes Urteil gegen eine Fehlbehauptung und überträgt die Begründung auf eine geänderte Zusammensetzung oder Behandlungssituation.",
+              "observablePerformanceEn": "Discusses reasoned options for both electrochemical sources, defends a conditional judgment against a misconception and transfers the reasoning to a changed composition or treatment situation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Primärbatterie und unterschiedliche Akkumulatorzusammensetzung",
+              "textEn": "Primary battery and different accumulator composition"
+            },
+            {
+              "id": "v2",
+              "textDe": "Freisetzungsfolge, kontrollierte Sammlung und Rückgewinnungsumfang",
+              "textEn": "Release impacts, controlled collection and recovery extent"
+            },
+            {
+              "id": "v3",
+              "textDe": "Energie-/Reststoffgrenzen und neue kritische Stofffolge",
+              "textEn": "Energy/residue boundaries and a new critical substance impact"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "f9e6d689-case-1",
+              "taskDemandDe": "1. Diskutiere die Folgen von U und K für P UND Q und verknüpfe Stoffangaben mit Umweltfolgen. 2. Erkläre, was Erfassung und was tatsächliche Rückgewinnung leisten; benenne je einen Nutzen und eine verbleibende Folge der Aufbereitung. 3. Beurteile K gegenüber U unter diesen Angaben. Widerlege oder begrenze: „Bei Q werden viele Metalle zurückgewonnen, also ist Q-Recycling umweltneutral.“ Übertrage deine Begründung auf K*. Keine praktische Behandlung und keine Elektrodenreaktionen sind verlangt.",
+              "taskDemandEn": "1. Discuss U and K for BOTH P and Q, linking substance information to environmental consequences. 2. Explain what collection and actual recovery achieve; state one benefit and one remaining treatment impact. 3. Assess K against U under these data. Refute or limit: “Much of Q's metal is recovered, so Q recycling is environmentally neutral.” Transfer your reasoning to K*. No practical treatment or electrode reactions are required.",
+              "expectedPerformanceDe": "U ermöglicht bei P Elektrolytfreisetzung und bei Q zusätzlich Freisetzung umweltkritischer Bleiverbindungen; die gleiche Sammelbezeichnung bedeutet keine gleiche Zusammensetzung. K vermindert diese unkontrollierte Freisetzung. Erfassung hält Abfallstoffe kontrolliert zurück; erst Aufbereitung gewinnt Metallrohstoff zurück. 60 % beziehungsweise 90 % Rückgewinnung können neuen Metallbedarf vermindern, bedeuten aber weder vollständige Stoffrückführung noch Nullfolgen. Energiebedarf und kontrolliert zu behandelnde Reststoffe verbleiben. K ist unter den gegebenen Freisetzungs- und Rückgewinnungsbedingungen gegenüber U begründet vorzuziehen. K* kann den metallischen Reststrom für Q weiter vermindern; positiver Energiebedarf und Folgen der Elektrolyt-/Reststoffbehandlung verschwinden dadurch nicht. Weder K noch K* ist damit pauschal umweltneutral; ein Vergleich aller realen Anlagen ist nicht belegt.",
+              "expectedPerformanceEn": "U permits electrolyte releases from P and additionally releases of environmentally concerning lead compounds from Q; one collection label does not imply identical composition. K reduces these uncontrolled releases. Collection retains wastes under control; only treatment recovers metal raw material. Recovery of 60% or 90% can reduce new metal demand but means neither complete material return nor zero impacts. Energy use and residues requiring controlled treatment remain. Under the supplied release/recovery conditions, K is a reasoned preference over U. K* may reduce Q's metallic residue further, but positive energy demand and electrolyte/residue-treatment impacts do not disappear. Neither K nor K* is therefore automatically environmentally neutral; a ranking of all real plants is unsupported.",
+              "understandingFocusDe": "Erklärt für P und Q unterschiedliche enthaltene Stoffe und daraus die in U möglichen Freisetzungsfolgen; K begrenzt diese. / Trennt Erfassung von Rückgewinnung; erklärt Rohstoffnutzen aus 60/90 % und verbleibende Energie-/Reststofffolgen. / Begründet K gegenüber U und überträgt auf K*: vollständige Metallrückgewinnung entfernt nicht Energie-/Elektrolytfolgen.",
+              "understandingFocusEn": "Explains different contents and resulting possible releases under U for P and Q; K limits them. / Distinguishes collection from recovery; explains raw-material benefits from 60/90% and remaining energy/residue impacts. / Justifies K over U and transfers to K*: full metal recovery does not remove energy/electrolyte impacts."
+            },
+            {
+              "id": "f9e6d689-case-2",
+              "taskDemandDe": "1. Erläutere für P und R den Zielkonflikt zwischen Rückgewinnung und Energieaufwand; erkläre, weshalb kontrollierte Erfassung dennoch wichtig bleibt. 2. Diskutiere zwei vertretbare Gewichtungen und gib ein bedingtes Urteil, ohne aus einer Kennzahl eine Gesamtumweltzahl zu machen. 3. Ändere dein Urteil anhand der neuen R-Information und erkläre, weshalb sie nicht automatisch auch P oder alle Akkumulatortypen betrifft. Welche zusätzliche Angabe wäre für ein abschließendes Gesamturteil wichtig?",
+              "taskDemandEn": "1. Explain the recovery/energy trade-off for P and R and why controlled collection still matters. 2. Discuss two defensible weightings and give a conditional judgment without turning one indicator into an overall environmental score. 3. Revise your judgment using the new R information and explain why it does not automatically apply to P or all accumulator types. What further information would matter for a final overall judgment?",
+              "expectedPerformanceDe": "Bei beiden Arten kann Erfassung kritische Freisetzungen begrenzen. A gewinnt jeweils mehr Metall zurück, benötigt aber innerhalb der angegebenen Grenze mehr Energie als B. Wer Metallrückführung besonders gewichtet, kann A vorläufig begründet wählen; wer diesen Aufbereitungsenergiebedarf gewichtet, kann B wählen. Keine Gewichtung beweist eine Gesamtumweltrangfolge, weil unter anderem ersetzte Primärrohstoffbereitstellung und weitere Folgen fehlen. Die neue R-Information verändert die stoffliche Umweltfolge: Für R spricht nun die kontrollierte Rückhaltung des kritischen Restes für B, auch bei geringerer Metallrückgewinnung. Für P ist kein entsprechender Befund gegeben; das R-Urteil darf nicht pauschal übertragen werden. Angaben zur Art/Menge und Umweltrelevanz des freigesetzten Restes und zu den sonstigen Folgen würden die Abwägung verbessern. Konstruktions- oder Ladegleichungen sind dafür nicht erforderlich.",
+              "expectedPerformanceEn": "For both types, collection can limit critical releases. A recovers more metal but uses more energy than B within the stated boundary. Prioritizing metal return can justify a provisional A choice; prioritizing this treatment energy can justify B. Neither weighting proves an overall environmental ranking because displaced primary raw-material supply and other impacts are missing. The new R information changes the material-related environmental consequence: for R, B's control of the critical residue now supports B despite lower metal recovery. No such observation is given for P, so R's judgment must not be generalized. Information about the residue's type/amount and environmental relevance and other impacts would improve the judgment. Construction or charging equations are not required for this reasoning.",
+              "understandingFocusDe": "Unterscheidet P von Nickel-Metallhydrid-R und erklärt die geänderte kritische Reststofffreisetzung nur für R. / Erklärt mehr Metallrückführung bei A, mehr Energie bei A und Nutzen kontrollierter Erfassung ohne Nullfolgenbehauptung. / Diskutiert zwei Gewichtungen, gibt ein bedingtes Urteil und revidiert R angesichts des Freisetzungsbefunds; nennt relevante fehlende Angaben.",
+              "understandingFocusEn": "Distinguishes P from nickel-metal-hydride R and explains the changed critical-residue release only for R. / Explains greater metal return and energy use for A and benefits of controlled collection without claiming zero impacts. / Discusses two weightings, gives a conditional judgment and revises R for the release observation; identifies relevant missing information."
+            }
+          ]
+        }
+      },
+      "afterWholeCell": {
+        "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+        "reason": "New whole-duty bilingual data-based profile and two complete fresh transfer case designs for the unchanged frozen goal. Independent case/profile review and final compiler/SEM/image/page input binding remain pending; no human or mastery evidence.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Umweltfolgen von Entsorgung hängen von den enthaltenen Stoffen und davon ab, ob sie kontrolliert erfasst oder in die Umwelt freigesetzt werden. Nicht wiederaufladbare Batterien und Akkumulatoren gehören beide zum betrachteten Umfang; das Betriebsprinzip allein bestimmt nicht das Entsorgungsurteil.",
+              "essentialUnderstandingEn": "Environmental consequences of disposal depend on contained substances and whether they are controlled or released into the environment. Both non-rechargeable batteries and accumulators are in scope; the operating principle alone does not determine a disposal judgment.",
+              "observablePerformanceDe": "Verknüpft in einem Fall zu einer Primärbatterie und einem Akkumulator die gegebenen Stoff- und Freisetzungsangaben mit konkreten Umweltfolgen und unterscheidet Daten von nicht belegten Verallgemeinerungen.",
+              "observablePerformanceEn": "Links supplied substance and release information to concrete environmental consequences for a primary battery and an accumulator, distinguishing data from unsupported generalizations."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Kontrollierte Sammlung kann Freisetzung vermeiden; Recycling kann Stoffe zurückgewinnen und neuen Rohstoffbedarf vermindern. Sammlung ist noch keine vollständige Rückgewinnung. Aufbereitung benötigt Ressourcen und Energie und kann Reststoffe hinterlassen.",
+              "essentialUnderstandingEn": "Controlled collection can avoid releases; recycling can recover substances and reduce demand for new raw materials. Collection is not yet complete recovery. Treatment uses resources and energy and may leave residues.",
+              "observablePerformanceDe": "Erklärt anhand der Fallinformationen den Nutzen kontrollierter Erfassung und tatsächlicher Rückgewinnung und benennt zugleich verbleibende Aufbereitungsfolgen; erklärt keine unaufgeforderten industriellen Mechanismen.",
+              "observablePerformanceEn": "Explains benefits of controlled collection and actual recovery using the case information while identifying remaining treatment impacts; does not add unrequested industrial mechanisms."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Eine begründete Umweltbewertung verbindet Stofffolgen, Rückgewinnung und die angegebenen Randbedingungen. Unterschiedliche Batteriezusammensetzungen oder Behandlungswege können andere Abwägungen verlangen; ein einzelnes Merkmal beweist keine universelle Rangfolge.",
+              "essentialUnderstandingEn": "A reasoned environmental assessment connects substance consequences, recovery and supplied conditions. Different battery compositions or treatment routes may require different judgments; one feature does not establish a universal ranking.",
+              "observablePerformanceDe": "Diskutiert begründete Handlungsoptionen für beide Spannungsquellen, verteidigt ein bedingtes Urteil gegen eine Fehlbehauptung und überträgt die Begründung auf eine geänderte Zusammensetzung oder Behandlungssituation.",
+              "observablePerformanceEn": "Discusses reasoned options for both electrochemical sources, defends a conditional judgment against a misconception and transfers the reasoning to a changed composition or treatment situation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Primärbatterie und unterschiedliche Akkumulatorzusammensetzung",
+              "textEn": "Primary battery and different accumulator composition"
+            },
+            {
+              "id": "v2",
+              "textDe": "Freisetzungsfolge, kontrollierte Sammlung und Rückgewinnungsumfang",
+              "textEn": "Release impacts, controlled collection and recovery extent"
+            },
+            {
+              "id": "v3",
+              "textDe": "Energie-/Reststoffgrenzen und neue kritische Stofffolge",
+              "textEn": "Energy/residue boundaries and a new critical substance impact"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "f9e6d689-case-1",
+              "taskDemandDe": "1. Diskutiere die Folgen von U und K für P UND Q und verknüpfe Stoffangaben mit Umweltfolgen. 2. Erkläre, was Erfassung und was tatsächliche Rückgewinnung leisten; benenne je einen Nutzen und eine verbleibende Folge der Aufbereitung. 3. Beurteile K gegenüber U unter diesen Angaben. Widerlege oder begrenze: „Bei Q werden viele Metalle zurückgewonnen, also ist Q-Recycling umweltneutral.“ Übertrage deine Begründung auf K*. Keine praktische Behandlung und keine Elektrodenreaktionen sind verlangt.",
+              "taskDemandEn": "1. Discuss U and K for BOTH P and Q, linking substance information to environmental consequences. 2. Explain what collection and actual recovery achieve; state one benefit and one remaining treatment impact. 3. Assess K against U under these data. Refute or limit: “Much of Q's metal is recovered, so Q recycling is environmentally neutral.” Transfer your reasoning to K*. No practical treatment or electrode reactions are required.",
+              "expectedPerformanceDe": "U ermöglicht bei P Elektrolytfreisetzung und bei Q zusätzlich Freisetzung umweltkritischer Bleiverbindungen; die gleiche Sammelbezeichnung bedeutet keine gleiche Zusammensetzung. K vermindert diese unkontrollierte Freisetzung. Erfassung hält Abfallstoffe kontrolliert zurück; erst Aufbereitung gewinnt Metallrohstoff zurück. 60 % beziehungsweise 90 % Rückgewinnung können neuen Metallbedarf vermindern, bedeuten aber weder vollständige Stoffrückführung noch Nullfolgen. Energiebedarf und kontrolliert zu behandelnde Reststoffe verbleiben. K ist unter den gegebenen Freisetzungs- und Rückgewinnungsbedingungen gegenüber U begründet vorzuziehen. K* kann den metallischen Reststrom für Q weiter vermindern; positiver Energiebedarf und Folgen der Elektrolyt-/Reststoffbehandlung verschwinden dadurch nicht. Weder K noch K* ist damit pauschal umweltneutral; ein Vergleich aller realen Anlagen ist nicht belegt.",
+              "expectedPerformanceEn": "U permits electrolyte releases from P and additionally releases of environmentally concerning lead compounds from Q; one collection label does not imply identical composition. K reduces these uncontrolled releases. Collection retains wastes under control; only treatment recovers metal raw material. Recovery of 60% or 90% can reduce new metal demand but means neither complete material return nor zero impacts. Energy use and residues requiring controlled treatment remain. Under the supplied release/recovery conditions, K is a reasoned preference over U. K* may reduce Q's metallic residue further, but positive energy demand and electrolyte/residue-treatment impacts do not disappear. Neither K nor K* is therefore automatically environmentally neutral; a ranking of all real plants is unsupported.",
+              "understandingFocusDe": "Erklärt für P und Q unterschiedliche enthaltene Stoffe und daraus die in U möglichen Freisetzungsfolgen; K begrenzt diese. / Trennt Erfassung von Rückgewinnung; erklärt Rohstoffnutzen aus 60/90 % und verbleibende Energie-/Reststofffolgen. / Begründet K gegenüber U und überträgt auf K*: vollständige Metallrückgewinnung entfernt nicht Energie-/Elektrolytfolgen.",
+              "understandingFocusEn": "Explains different contents and resulting possible releases under U for P and Q; K limits them. / Distinguishes collection from recovery; explains raw-material benefits from 60/90% and remaining energy/residue impacts. / Justifies K over U and transfers to K*: full metal recovery does not remove energy/electrolyte impacts."
+            },
+            {
+              "id": "f9e6d689-case-2",
+              "taskDemandDe": "1. Erläutere für P und R den Zielkonflikt zwischen Rückgewinnung und Energieaufwand; erkläre, weshalb kontrollierte Erfassung dennoch wichtig bleibt. 2. Diskutiere zwei vertretbare Gewichtungen und gib ein bedingtes Urteil, ohne aus einer Kennzahl eine Gesamtumweltzahl zu machen. 3. Prüfe dein Urteil anhand der neuen R-Information und begründe, ob du es bestätigst oder anpasst. Erkläre, weshalb diese Information nicht automatisch auch P oder alle Akkumulatortypen betrifft. Welche zusätzliche Angabe wäre für ein abschließendes Gesamturteil wichtig?",
+              "taskDemandEn": "1. Explain the recovery/energy trade-off for P and R and why controlled collection still matters. 2. Discuss two defensible weightings and give a conditional judgment without turning one indicator into an overall environmental score. 3. Review your judgment using the new R information and justify whether you confirm or adjust it. Explain why this information does not automatically apply to P or all accumulator types. What further information would matter for a final overall judgment?",
+              "expectedPerformanceDe": "Bei beiden Arten kann Erfassung kritische Freisetzungen begrenzen. A gewinnt jeweils mehr Metall zurück, benötigt aber innerhalb der angegebenen Grenze mehr Energie als B. Wer Metallrückführung besonders gewichtet, kann A vorläufig begründet wählen; wer diesen Aufbereitungsenergiebedarf gewichtet, kann B wählen. Keine Gewichtung beweist eine Gesamtumweltrangfolge, weil unter anderem ersetzte Primärrohstoffbereitstellung und weitere Folgen fehlen. Die neue R-Information verändert die stoffliche Umweltfolge: Für R spricht nun die kontrollierte Rückhaltung des kritischen Restes für B, auch bei geringerer Metallrückgewinnung. Für P ist kein entsprechender Befund gegeben; das R-Urteil darf nicht pauschal übertragen werden. Angaben zur Art/Menge und Umweltrelevanz des freigesetzten Restes und zu den sonstigen Folgen würden die Abwägung verbessern. Konstruktions- oder Ladegleichungen sind dafür nicht erforderlich.",
+              "expectedPerformanceEn": "For both types, collection can limit critical releases. A recovers more metal but uses more energy than B within the stated boundary. Prioritizing metal return can justify a provisional A choice; prioritizing this treatment energy can justify B. Neither weighting proves an overall environmental ranking because displaced primary raw-material supply and other impacts are missing. The new R information changes the material-related environmental consequence: for R, B's control of the critical residue now supports B despite lower metal recovery. No such observation is given for P, so R's judgment must not be generalized. Information about the residue's type/amount and environmental relevance and other impacts would improve the judgment. Construction or charging equations are not required for this reasoning.",
+              "understandingFocusDe": "Unterscheidet P von Nickel-Metallhydrid-R und erklärt die geänderte kritische Reststofffreisetzung nur für R. / Erklärt mehr Metallrückführung bei A, mehr Energie bei A und Nutzen kontrollierter Erfassung ohne Nullfolgenbehauptung. / Diskutiert zwei Gewichtungen, gibt ein bedingtes Urteil und revidiert R angesichts des Freisetzungsbefunds; nennt relevante fehlende Angaben.",
+              "understandingFocusEn": "Distinguishes P from nickel-metal-hydride R and explains the changed critical-residue release only for R. / Explains greater metal return and energy use for A and benefits of controlled collection without claiming zero impacts. / Discusses two weightings, gives a conditional judgment and revises R for the release observation; identifies relevant missing information."
+            }
+          ]
+        }
+      },
+      "changedLeafPaths": [
+        "profile.applicationCaseBriefs[1].taskDemandDe",
+        "profile.applicationCaseBriefs[1].taskDemandEn"
+      ],
+      "requiredCopyPolicy": "Produce an additive successor; do not overwrite this historical source artifact."
+    }
+  ],
+  "completeCaseDataAnswersRubricsAndMisconceptionsUnchanged": true,
+  "profileEssentialExpectationsCoverageAndAxesUnchanged": true,
+  "threeFrozenGoalBodiesAndSourceDutiesUnchanged": true,
+  "fiveOtherCompleteCasesUnchanged": true,
+  "twoOtherWholeProfilesUnchanged": true,
+  "authorCandidateOnly": true,
+  "currentPApproval": false,
+  "activeWrites": false
+}

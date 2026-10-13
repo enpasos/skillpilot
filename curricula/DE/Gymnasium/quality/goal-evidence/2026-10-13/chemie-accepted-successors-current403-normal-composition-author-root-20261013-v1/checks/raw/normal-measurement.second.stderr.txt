@@ -1,0 +1,18 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Generated atlas inputs must remain book-local: outputs/source-atlas-views/de-gym-chemie-bundesweit-source-de-bb-seki.view.json
+    at put (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/accepted-successors-composition-20261013-v4/app/scripts/goalBookSourceAtlasInputs.ts:309:12)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/accepted-successors-composition-20261013-v4/app/scripts/goalBookSourceAtlasInputs.ts:322:5)
+    at Array.map (<anonymous>)
+    at Object.buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/accepted-successors-composition-20261013-v4/app/scripts/goalBookSourceAtlasInputs.ts:314:82)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/measure_accepted_successors.mts:74:24) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v20.20.2

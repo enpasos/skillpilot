@@ -1,0 +1,5 @@
+# Four current-input positive-profile author successors
+
+Four exact goals from the full403 normal candidate are paired with eight byte-equivalent whole bilingual case objects. The silicone observable expectation now says selected carbon-based polymer; its PE examples remain unchanged. Both synthesis-route profile fragments now require two independent evidence pieces. Those pieces may be shown within one rich full-route task; case variants are alternatives, not an extra task quota. Textile profile and every complete case remain unchanged.
+
+The original whole profiles/cases and their scientific history are retained. Stockschema/profile-body mechanics are checked; they do not approve scientific coverage. The candidate set is unmaterialized: no final P review record, page binding, learner performance or human approval is claimed. Root will run the stock materializer only against the composed canonical/SEM/criteria and exact genuine image bytes after targeted independent content review. Current native D/P/A/M/V bindings and source/scope decisions remain separate. Active strict Chemistry stays231/402M6, net0.

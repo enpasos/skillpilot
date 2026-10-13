@@ -1,0 +1,7 @@
+# V4: zwei gezielte Korrekturen
+
+V3 bleibt mit allen 22 versiegelten Outputs unverändert. Beide ganzen Profile setzen den normalen Mindestwert von zwei unterschiedlichen Beweisstücken. Eine reichhaltige Aufgabe kann beide liefern: begründete Anwendung/Klassifikation und eine eigenständige Kontrast-, Fehlerkorrektur- oder Nichtbeispielbegründung. Eine bloße Wiederholung zählt nicht zweimal. Es entsteht keine Pflicht, beide Fallalternativen oder zusätzliche Aufgaben abzuarbeiten; alle Zielaspekte, echte frische Variation und unabhängiger Transfer bleiben nötig. Die vorhandenen ganzen Tasks und Rubriken enthalten beide Gelegenheiten. Der separate Kohärenznachweis verbindet ihre ganzen Kriterien mit e1/e2/e3; das ist ein Autorentwurf, kein Lernleistungs- oder Gatebeleg.
+
+Im zweiten RP-Fall benennt die deutsche Lösung Z jetzt ausdrücklich als Küpenfarbstoff; das sichtbare Endergebnis erlaubt keine Direktfarbstoff-Zuordnung. Dieselbe Änderung steht im deutschen r3-Kriterium und im positiven Fallbrief. Aufgaben, Daten, englische fachliche Inhalte und alle Aufgaben-Spans bleiben exakt erhalten. Ziele, Quellen-/View-CAS, optionale HOLDs und Bilder bleiben bytegenau in V3 bzw. dessen gebundenen Vorständen.
+
+V4 enthält nur ganze Vorher-/Nachher-Zeilen für zwei Profile und vier bilinguale Fälle, exakte Vorstandsbindungen und begrenzte Prüfungen. Es schreibt keine aktiven Daten und behauptet keine unabhängige Qualitätsfreigabe. Root bindet spätere kompilierte Seiten und finale Evidenz-Fingerprints; der gezielte unabhängige Nachcheck steht aus.

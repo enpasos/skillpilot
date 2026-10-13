@@ -1,0 +1,144 @@
+{
+  "checkedAtUTC": "2026-10-13T17:11:17.708Z",
+  "role": "Limited AUTHOR checks, not full source/scopes compiler or science approval",
+  "stockInputs": [
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "sha256:3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43",
+      "bytes": 12606
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "sha256:d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7",
+      "bytes": 22096
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb",
+      "bytes": 113603
+    },
+    {
+      "path": "contracts/curriculum-package/v1/composition-view.schema.json",
+      "sha256": "sha256:a90e68ba07e141e54789d5dbd3de862a6d98f9fff513e57465efbb02c9fc57a6",
+      "bytes": 4608
+    }
+  ],
+  "inMemoryV1Goals": 525,
+  "inMemoryV3ProposedGoals": 527,
+  "stockNormalizationStable": true,
+  "canonicalDiagnostics": [],
+  "edgeChecks": [
+    {
+      "edge": "contains",
+      "checkedNodes": 527,
+      "references": 526,
+      "cycles": 0,
+      "danglingReferences": 0
+    },
+    {
+      "edge": "requires",
+      "checkedNodes": 527,
+      "references": 1213,
+      "cycles": 0,
+      "danglingReferences": 0
+    }
+  ],
+  "wholeExistingGoalsUnchangedExceptDyeParent": 524,
+  "dyeUniqueAtomicDescendants": 14,
+  "dyeWeight": 14,
+  "reviewViews": [
+    {
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-e594-residual-source-duty-author-20261013-v3/candidate/review-views/de-rp-sekii-lk-rp62-selected-wp-classification-synthesis-author-v3.json",
+        "sha256": "sha256:b5ff95c73de0643672712803b8713c13ac4fb23f31ac0f98c0142d141234a815",
+        "bytes": 1086
+      },
+      "closedSchemaValid": true,
+      "stockPreviewFindings": [],
+      "stockTargetIds": [
+        "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+        "981242bb-a729-5701-b02d-c2f7f489e5af"
+      ],
+      "registered": false,
+      "actualSelectionKnown": false
+    },
+    {
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-e594-residual-source-duty-author-20261013-v3/candidate/review-views/de-sn-sekii-lk-wb1-selected-classification-duty-author-v3.json",
+        "sha256": "sha256:b1ccc337d2d2fa5ae61780fae985c55ded116a9df3849fe51878331d499e778b",
+        "bytes": 898
+      },
+      "closedSchemaValid": true,
+      "stockPreviewFindings": [],
+      "stockTargetIds": [
+        "20ec4f1e-c1ba-5424-9d4c-804035ccb530"
+      ],
+      "registered": false,
+      "actualSelectionKnown": false
+    }
+  ],
+  "conditionalWholeSourceCASGuards": [
+    {
+      "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-6-2-001-f7732a59",
+      "wholeBeforeMatchesV2": true,
+      "partnersRetained": true,
+      "conditionalAddition": {
+        "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-6-2-001-f7732a59",
+        "canonicalGoalId": "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+        "matchType": "partial",
+        "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-6-2-001-f7732a59"
+      },
+      "operative": false
+    },
+    {
+      "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-6-2-003-34dc2823",
+      "wholeBeforeMatchesV2": true,
+      "partnersRetained": true,
+      "conditionalAddition": {
+        "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-6-2-003-34dc2823",
+        "canonicalGoalId": "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+        "matchType": "partial",
+        "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-6-2-003-34dc2823"
+      },
+      "operative": false
+    },
+    {
+      "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-wb1-088-01-1b8987f0",
+      "wholeBeforeMatchesV2": true,
+      "partnersRetained": true,
+      "conditionalAddition": {
+        "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-wb1-088-01-1b8987f0",
+        "canonicalGoalId": "20ec4f1e-c1ba-5424-9d4c-804035ccb530",
+        "matchType": "exact",
+        "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-wb1-088-01-1b8987f0"
+      },
+      "operative": false
+    }
+  ],
+  "positiveBindings": [
+    {
+      "goalId": "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+      "wholeGoalStableJsonSha256": "sha256:0c88b08a335553262a8fd46f1437bdd2157dea5c4a9b1a358a28f5ca73d4bccf",
+      "stockSemanticSourceFingerprint": "sha256:6c7605b2bcba9a7e5f88ea31200f67f41aec3fd2285049f67be702166a434b87",
+      "fullDEENProfiles": 1,
+      "fullDEENAlternativeCases": 2,
+      "allRubricSpansExact": true,
+      "compiledPageFingerprintBound": false,
+      "scientificReviewComplete": false
+    },
+    {
+      "goalId": "20ec4f1e-c1ba-5424-9d4c-804035ccb530",
+      "wholeGoalStableJsonSha256": "sha256:197d318bc20e1483298422cd69d2bc3d0dc082d592b37b960ade437c0130eb54",
+      "stockSemanticSourceFingerprint": "sha256:53fb290d03593adf17b46b5bc6837e9e19da18dd5b3129eaf222f4d40d008182",
+      "fullDEENProfiles": 1,
+      "fullDEENAlternativeCases": 2,
+      "allRubricSpansExact": true,
+      "compiledPageFingerprintBound": false,
+      "scientificReviewComplete": false
+    }
+  ],
+  "completeNormalCompilerOrAPIExecuted": false,
+  "actualSelectedModuleAndScientificReviewPending": true,
+  "noDPAorMVOrHumanStatus": true,
+  "activeWrites": false
+}

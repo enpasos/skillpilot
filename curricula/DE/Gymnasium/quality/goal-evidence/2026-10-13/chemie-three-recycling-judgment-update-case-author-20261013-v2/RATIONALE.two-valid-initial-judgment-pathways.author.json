@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "findingId": "P-F9-CASE2-UNCONDITIONAL-JUDGMENT-CHANGE",
+  "targetedCorrection": {
+    "oldDe": "3. Ändere dein Urteil anhand der neuen R-Information und erkläre, weshalb sie nicht automatisch auch P oder alle Akkumulatortypen betrifft.",
+    "newDe": "3. Prüfe dein Urteil anhand der neuen R-Information und begründe, ob du es bestätigst oder anpasst. Erkläre, weshalb diese Information nicht automatisch auch P oder alle Akkumulatortypen betrifft.",
+    "oldEn": "3. Revise your judgment using the new R information and explain why it does not automatically apply to P or all accumulator types.",
+    "newEn": "3. Review your judgment using the new R information and justify whether you confirm or adjust it. Explain why this information does not automatically apply to P or all accumulator types."
+  },
+  "answerPathways": [
+    {
+      "pathId": "initial-a-adjusted-for-r",
+      "initialReasonDe": "A wird zunächst wegen höherer Metallrückgewinnung unter ausdrücklich gewählter Ressourcengewichtung vorläufig bevorzugt.",
+      "initialReasonEn": "A is initially a provisional preference for higher metal recovery under an explicitly chosen resource weighting.",
+      "newReasonDe": "Die neue R-spezifische kritische Reststofffreisetzung bei A begründet für R eine Anpassung zugunsten B; für P ist dieser Befund nicht gegeben.",
+      "newReasonEn": "A's new R-specific critical-residue release supports adjustment toward B for R; the observation is not supplied for P.",
+      "permittedTaskResponse": "adjust_reasoned_conclusion_for_R"
+    },
+    {
+      "pathId": "initial-b-confirmed-with-new-ground",
+      "initialReasonDe": "B wird zunächst wegen niedrigerem Aufbereitungsenergieindex unter ausdrücklich gewählter Energiegewichtung vorläufig bevorzugt.",
+      "initialReasonEn": "B is initially a provisional preference for lower treatment-energy index under an explicitly chosen energy weighting.",
+      "newReasonDe": "Die zusätzliche R-spezifische Reststoffrückhaltung bei B stützt denselben B-Schluss mit einem neuen stofflichen Umweltgrund. Das Urteil darf bestätigt werden, muss aber die neue Information begründet verarbeiten und die Grenze gegenüber P erhalten.",
+      "newReasonEn": "B's additional R-specific residue control supports the same B conclusion with a new material-related environmental reason. The conclusion may be confirmed but must process the new information with reasons and preserve the limit for P.",
+      "permittedTaskResponse": "confirm_conclusion_and_update_reasoning_for_R"
+    }
+  ],
+  "pathwayStatus": "Author-designed admissible reasoning paths, not observed learner responses, executed P evidence or independent approval.",
+  "sameOptionsOrNumbersAreNotSufficientWithoutReasoning": true,
+  "originalDataRubricExpectedAnswerRequirementsStillApply": true,
+  "humanApproval": false,
+  "privateLearnerData": false,
+  "currentPApproval": false
+}

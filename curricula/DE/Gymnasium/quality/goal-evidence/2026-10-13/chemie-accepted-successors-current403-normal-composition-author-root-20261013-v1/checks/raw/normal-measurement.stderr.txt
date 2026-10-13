@@ -1,0 +1,17 @@
+node:fs:573
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/accepted-successors-composition-20261013-v4/contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json'
+    at Object.openSync (node:fs:573:18)
+    at readFileSync (node:fs:452:35)
+    at assertPinnedSemanticKindFingerprintProfile (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/accepted-successors-composition-20261013-v4/app/scripts/goalBookModel.ts:600:17)
+    at Object.fingerprintSemanticKindSourceGoal (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/accepted-successors-composition-20261013-v4/app/scripts/goalBookModel.ts:628:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/measure_accepted_successors.mts:60:19) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/accepted-successors-composition-20261013-v4/contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json'
+}
+
+Node.js v20.20.2

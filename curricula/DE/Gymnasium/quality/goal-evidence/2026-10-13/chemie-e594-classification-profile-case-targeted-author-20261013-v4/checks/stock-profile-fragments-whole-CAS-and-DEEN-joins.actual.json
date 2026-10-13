@@ -1,0 +1,90 @@
+{
+  "checkedAtUTC": "2026-10-13T17:28:24.432Z",
+  "role": "AUTHOR stock fragment/schema and exact whole-row checks only; not scientific review or acceptance",
+  "stockSchemaBinding": {
+    "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+    "bytes": 8707
+  },
+  "stockProfileModelBinding": {
+    "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+    "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6",
+    "bytes": 8448
+  },
+  "profileChecks": [
+    {
+      "goalId": "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+      "beforeOriginalStockFragmentErrors": [
+        {
+          "instancePath": "/coverageExpectations/minimumIndependentDemonstrations",
+          "schemaPath": "#/properties/minimumIndependentDemonstrations/minimum",
+          "keyword": "minimum",
+          "params": {
+            "comparison": ">=",
+            "limit": 2
+          },
+          "message": "must be >= 2"
+        }
+      ],
+      "afterOriginalStockFragmentValid": true,
+      "minimumIndependentDemonstrations": 2,
+      "stockProfileFingerprintBefore": "sha256:161f7fd6dab316f966668122a243a02efb8bd501b11e56b761fb91623d017504",
+      "stockProfileFingerprintAfter": "sha256:961466d9ffd7e6bf638e1071b58a6f69a8e3a8f7971d066d1d1c5b859721e9e1",
+      "wholeGoalBodiesUnchanged": true,
+      "onlyAuthorizedChanges": true
+    },
+    {
+      "goalId": "20ec4f1e-c1ba-5424-9d4c-804035ccb530",
+      "beforeOriginalStockFragmentErrors": [
+        {
+          "instancePath": "/coverageExpectations/minimumIndependentDemonstrations",
+          "schemaPath": "#/properties/minimumIndependentDemonstrations/minimum",
+          "keyword": "minimum",
+          "params": {
+            "comparison": ">=",
+            "limit": 2
+          },
+          "message": "must be >= 2"
+        }
+      ],
+      "afterOriginalStockFragmentValid": true,
+      "minimumIndependentDemonstrations": 2,
+      "stockProfileFingerprintBefore": "sha256:5c48f307ed6c1bdbde8b3d979eb67e77a9c080c6e6cbde2b58debbda835a3e28",
+      "stockProfileFingerprintAfter": "sha256:65d068157372a11af6574d37adcc2676ea37d58ad97cbf4edbb6735f5940638f",
+      "wholeGoalBodiesUnchanged": true,
+      "onlyAuthorizedChanges": true
+    }
+  ],
+  "caseChecks": [
+    {
+      "caseId": "d72cbb62-classification-transfer-1",
+      "wholeBeforeMatchesV3": true,
+      "onlyAuthorizedChanges": true,
+      "tasksDataScientificENAndAllDemandSpansUnchanged": true
+    },
+    {
+      "caseId": "d72cbb62-classification-transfer-2",
+      "wholeBeforeMatchesV3": true,
+      "onlyAuthorizedChanges": true,
+      "tasksDataScientificENAndAllDemandSpansUnchanged": true
+    },
+    {
+      "caseId": "20ec4f1e-classification-transfer-1",
+      "wholeBeforeMatchesV3": true,
+      "onlyAuthorizedChanges": true,
+      "tasksDataScientificENAndAllDemandSpansUnchanged": true
+    },
+    {
+      "caseId": "20ec4f1e-classification-transfer-2",
+      "wholeBeforeMatchesV3": true,
+      "onlyAuthorizedChanges": true,
+      "tasksDataScientificENAndAllDemandSpansUnchanged": true
+    }
+  ],
+  "twoDistinctCriterionBoundPiecesPerWholeCase": true,
+  "allExpectationUnionsAndWholeDEENJoinsExact": true,
+  "noGoalSourceViewOrImageChanges": true,
+  "compiledPageAndGoalEvidenceFingerprintBindingsPending": true,
+  "scientificRecheckPending": true,
+  "activeWrites": false
+}

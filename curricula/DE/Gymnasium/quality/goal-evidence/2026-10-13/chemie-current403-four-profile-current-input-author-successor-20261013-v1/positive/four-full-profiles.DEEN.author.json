@@ -1,0 +1,265 @@
+{
+  "authorDesignOnly": true,
+  "goalIds": [
+    "e56040b5-1da8-5080-b358-086d04922339",
+    "b208b1a5-c609-53a1-8add-979417a93b7d",
+    "981242bb-a729-5701-b02d-c2f7f489e5af",
+    "53db04a0-ea76-5810-9526-c8639100e497"
+  ],
+  "profiles": [
+    {
+      "goalId": "e56040b5-1da8-5080-b358-086d04922339",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Silikonmoleküle besitzen ein Siloxanrückgrat mit organischen Seitengruppen; Silikon ist nicht elementares Silicium.",
+            "essentialUnderstandingEn": "Silicone molecules have a siloxane backbone with organic side groups; silicone is not elemental silicon.",
+            "observablePerformanceDe": "Zeichnet ein valenzrichtiges PDMS-Kettenfragment und unterscheidet es von PE.",
+            "observablePerformanceEn": "Draws a valence-correct PDMS fragment and distinguishes it from PE."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Silanolkondensation bildet Si–O–Si und Wasser; lineare Ketten und kovalente Netzwerke besitzen unterschiedliche Eigenschaften.",
+            "essentialUnderstandingEn": "Silanol condensation forms Si–O–Si and water; linear chains and covalent networks have different properties.",
+            "observablePerformanceDe": "Bilanziert eine endliche Kondensation und erklärt Öl/Elastomer anhand der Vernetzung.",
+            "observablePerformanceEn": "Balances finite condensation and explains oil/elastomer behaviour through crosslinking."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Silikonchemie kann nanoskalige Beschichtungen und Benetzung beeinflussen, macht aber nicht jedes Silikon zum Nanopartikel.",
+            "essentialUnderstandingEn": "Silicone chemistry can affect nanoscale coatings and wetting but does not make every silicone a nanoparticle.",
+            "observablePerformanceDe": "Vergleicht mit einem ausgewählten kohlenstoffbasierten Polymer und beurteilt eine neue Beschichtung anhand von Chemie und Struktur.",
+            "observablePerformanceEn": "Compares with a selected carbon-based polymer and evaluates a new coating using chemistry and structure."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Linear oder vernetzt",
+            "textEn": "Linear or crosslinked"
+          },
+          {
+            "id": "v2",
+            "textDe": "Rückgrat und Seitengruppen",
+            "textEn": "Backbone and side groups"
+          },
+          {
+            "id": "v3",
+            "textDe": "Dicke und Oberflächenstruktur",
+            "textEn": "Thickness and surface structure"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "e56040b5-case-1",
+            "taskDemandDe": "Formuliere vollständiges Trimer samt Wasser und prüfe Si/O-Valenzen. Vergleiche Rückgrat/Verhalten mit PE; wähle eine Dichtung. Erkläre, warum Silikonöl kein Nachweis eines Nanomaterials ist.",
+            "taskDemandEn": "Write the complete trimer with water and check Si/O valence. Compare backbone/behaviour with PE; select a seal. Explain why silicone oil does not demonstrate a nanomaterial.",
+            "expectedPerformanceDe": "3 HO–Si(CH₃)₂–OH→HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH+2 H₂O. Jedes Si vier Einfachbindungen, Brücken-O zwei. PDMS Si–O-Rückgrat mit Methylgruppen, PE C–C-Rückgrat. Vernetztes PDMS für Rückstellung; lineares Öl kein formstabiler Dichtungswerkstoff. Eigenschaften nicht allein aus „Silikon“ ableiten; nanoskalige Abmessung/Struktur muss separat gezeigt sein.",
+            "expectedPerformanceEn": "3 HO–Si(CH₃)₂–OH→HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH+2 H₂O. Each Si has four single bonds; bridge O two. PDMS has a Si–O backbone and methyl groups, PE a C–C backbone. Crosslinked PDMS is preferable for recovery; linear oil is not a shape-stable seal. Properties cannot follow from “silicone” alone; nanoscale dimension/structure needs separate evidence.",
+            "understandingFocusDe": "Fallbezogene Aspekte: PDMS-Si–O mit Methylgruppen versus PE-C–C; Si vier und Brücken-O zwei Bindungen. / Endgruppenrichtiges Trimer+2 H₂O; lineares Öl gleitet, vernetztes PDMS stellt zurück. / Vernetzte Dichtung vorläufig; Öl/Silikonname beweist kein Nanoobjekt, Größe/Struktur separat nötig. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+            "understandingFocusEn": "Case-specific aspects: PDMS Si–O with methyl groups versus PE C–C; Si has four and bridge O two bonds. / Correct-ended trimer+2 H₂O; linear oil slides, crosslinked PDMS recovers. / Crosslinked seal provisionally; oil/silicone name proves no nano-object, size/structure separately required. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+          },
+          {
+            "id": "e56040b5-case-2",
+            "taskDemandDe": "Erkläre Herkunft der Si–O-Verknüpfung und beide Polymerzustände. Bewerte Benetzungsdaten für eine selbstreinigende Oberfläche. Prüfe „40 nm dick heißt 40 nm-Silikonpartikel“ und vergleiche die Chemie mit einer PE-Oberfläche.",
+            "taskDemandEn": "Explain the origin of Si–O links and both polymer states. Assess wetting data for self-cleaning. Evaluate “40 nm thickness means 40 nm silicone particles” and compare chemistry with a PE surface.",
+            "expectedPerformanceDe": "Silanolkondensation kann Si–O–Si+Wasser bilden; zusätzliche Netzpunkte begrenzen Gleiten und ermöglichen Rückstellung. Gleiche Chemie kontrolliert Strukturwirkung; niedriger Abrollwinkel unterstützt mobile Tropfen, tatsächlicher Schmutzabtrag/Abrieb fehlt.40 nm ist Schichtdicke, kein Partikeldurchmesser. Methylgruppen können Wasserabweisung tragen; PE ebenfalls unpolar, aber C–C statt Si–O-Rückgrat. Hydrophile Kontrolle zeigt Dicke allein nicht hinreichend.",
+            "expectedPerformanceEn": "Silanol condensation can form Si–O–Si plus water; added network points limit sliding and allow recovery. Constant chemistry controls the structural effect; low roll-off angle supports mobile droplets, while dirt-removal/abrasion evidence is missing.40 nm is thickness, not particle diameter. Methyl groups can support water repellency; PE is also nonpolar but has a C–C rather than Si–O backbone. The hydrophilic control shows thickness alone is insufficient.",
+            "understandingFocusDe": "Fallbezogene Aspekte: Silanol→Si–O–Si+Wasser als Modell; Netzpunkte begrenzen Gleiten, nicht aus Dicke abgeleitet. / Gleiche Chemie 105°/35°→155°/5° zeigt Strukturwirkung; Schmutzabtrag/Abrieb trotz Abrollbefund offen. / 40 nm ist Schichtdicke, keine Partikelgröße; PDMS-Methyl/Si–O gegenüber unpolarem PE/C–C unterscheiden. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+            "understandingFocusEn": "Case-specific aspects: Silanol→Si–O–Si+water as model; network points restrict sliding, not inferred from thickness. / Constant chemistry 105°/35°→155°/5° shows structure effect; dirt removal/abrasion remain open despite roll-off finding. / 40 nm is film thickness, not particle size; distinguish PDMS methyl/Si–O from nonpolar PE/C–C. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b208b1a5-c609-53a1-8add-979417a93b7d",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Färbereignung entsteht aus konkreten Farbstoff-Faser-Wechselwirkungen und Bedingungen.",
+            "essentialUnderstandingEn": "Dye suitability arises from specific dye-fiber interactions and conditions.",
+            "observablePerformanceDe": "Ordnet Ladungen, Wasserstoffbrücken, Dispersion oder kovalente Fixierung zu.",
+            "observablePerformanceEn": "Assigns charges, hydrogen bonding, dispersion or covalent fixation."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Löslichkeit, Bindungsstärke und Waschbeständigkeit müssen zusammen beurteilt werden.",
+            "essentialUnderstandingEn": "Solubility, interaction strength and wash resistance must be judged together.",
+            "observablePerformanceDe": "Begründet eine materialbezogene Auswahl mit Grenzen.",
+            "observablePerformanceEn": "Justifies a material-specific choice with limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Proteinfasern versus Cellulose",
+            "textEn": "Protein fibers versus cellulose"
+          },
+          {
+            "id": "v2",
+            "textDe": "Kovalente Fixierung versus Einlagerung",
+            "textEn": "Covalent fixation versus entrapment"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "b208b1a5-case-1",
+            "taskDemandDe": "Modell im sauren Färbebad: Wollprotein trägt –NH₃⁺-Gruppen; Baumwollcellulose überwiegend ungeladene –OH-Gruppen. Farbstoff D besitzt zwei –SO₃⁻-Gruppen und H-Brücken-Akzeptoren. Beide Proben werden gleich gespült; keine kovalente Reaktion.\n1. Beschreibe die elektrostatischen und möglichen Wasserstoffbrücken-Wechselwirkungen von D mit beiden Fasern; unterscheide sie von kovalenter Bindung.\n2. Beurteile die bevorzugte Eignung für Wolle gegenüber Baumwolle unter den angegebenen Bedingungen und nenne eine Grenze der Waschbeständigkeitsvorhersage.",
+            "taskDemandEn": "Model in an acidic dye bath: wool protein carries –NH₃⁺ groups; cotton cellulose has mostly uncharged –OH groups. Dye D has two –SO₃⁻ groups and hydrogen-bond acceptors. Both samples are rinsed equally; no covalent reaction.\n1. Describe electrostatic and possible hydrogen-bond interactions of D with both fibers; distinguish them from covalent bonding.\n2. Assess preferred suitability for wool rather than cotton under these conditions and state one limit of predicting wash resistance.",
+            "expectedPerformanceDe": "1. D⁻-Gruppen werden von Woll–NH₃⁺ elektrostatisch angezogen. Zusätzlich sind H-Brücken zwischen geeigneten Faser-Donoren und D-Akzeptoren möglich. Cellulose bietet –OH für H-Brücken, aber hier keine positiven Fixierstellen. Keine der Wechselwirkungen ist eine neu gebildete kovalente Farbstoff-Faser-Bindung.\n2. Wolle besitzt hier zusätzliche ionische Anziehung und ist daher günstiger für D. Dies ist keine Garantie: konkrete Bindungsstärke, Farbstoffgröße, pH des Waschbads oder Konkurrenz durch Wasser fehlen. Die bloße Anzahl von –OH-Gruppen belegt keine stärkere Fixierung an Baumwolle.",
+            "expectedPerformanceEn": "1. D anionic groups are electrostatically attracted to wool –NH₃⁺. Hydrogen bonds may also form between suitable fiber donors and dye acceptors. Cellulose offers –OH groups for hydrogen bonding but no positive fixation sites here. Neither interaction is a newly formed covalent dye-fiber bond.\n2. Wool provides additional ionic attraction and is favored for D here. This is not a guarantee: actual interaction strength, dye size, wash-bath pH or competition from water are unknown. Merely counting –OH groups does not establish stronger cotton fixation.",
+            "understandingFocusDe": "D⁻-Gruppen werden von Woll–NH₃⁺ elektrostatisch angezogen. Zusätzlich sind H-Brücken zwischen geeigneten Faser-Donoren und D-Akzeptoren möglich. Cellulose bietet –OH für H-Brücken, aber hier keine positiven Fixierstellen. Keine der Wechselwirkungen ist eine neu gebildete kovalente Farbstoff-Faser-Bindung. / Wolle besitzt hier zusätzliche ionische Anziehung und ist daher günstiger für D. Dies ist keine Garantie: konkrete Bindungsstärke, Farbstoffgröße, pH des Waschbads oder Konkurrenz durch Wasser fehlen.",
+            "understandingFocusEn": "D anionic groups are electrostatically attracted to wool –NH₃⁺. Hydrogen bonds may also form between suitable fiber donors and dye acceptors. Cellulose offers –OH groups for hydrogen bonding but no positive fixation sites here. Neither interaction is a newly formed covalent dye-fiber bond. / Wool provides additional ionic attraction and is favored for D here. This is not a guarantee: actual interaction strength, dye size, wash-bath pH or competition from water are unknown."
+          },
+          {
+            "id": "b208b1a5-case-2",
+            "taskDemandDe": "Idealisiert: Cellulose–O⁻ kann am elektrophilen Triazin-C eines Reaktivfarbstoffs mit Cl-Abgang substituieren: Cell–O–Triazin–D. Polyester besitzt unter den angegebenen Bedingungen keine entsprechenden reaktiven Gruppen; ein neutraler wenig wasserlöslicher Dispersionsfarbstoff lagert sich durch Dispersion und hydrophobe Affinität ein.\n1. Ordne beide Fixierungsmodelle den Fasern zu und erkläre den Unterschied zwischen kovalenter Reaktion und intermolekularer Einlagerung.\n2. Beurteile, warum ein stark wasserlöslicher ionischer Farbstoff ohne reaktive Gruppe für diesen Polyester ungünstig ist, und begrenze die Behauptung „kovalent bedeutet immer unveränderliche Farbe“.",
+            "taskDemandEn": "Idealized: cellulose–O⁻ can substitute at electrophilic triazine C of a reactive dye with chloride leaving, giving Cell–O–Triazine–D. Polyester has no corresponding reactive groups under the stated conditions; a neutral poorly water-soluble disperse dye is taken up through dispersion and hydrophobic affinity.\n1. Assign both fixation models to the fibers and explain covalent reaction versus intermolecular uptake.\n2. Assess why a highly water-soluble ionic dye without a reactive group is unfavorable for this polyester and limit the claim “covalent always means unchangeable color”.",
+            "expectedPerformanceDe": "1. Reaktivfarbstoff passt zum angegebenen Cellulose-Nukleophil: neue Cell–O–C-Bindung mit Cl⁻-Abgang. Der Dispersionsfarbstoff wird ohne neue kovalente Bindung im Polyester aufgenommen. Beide Modelle beruhen auf verschiedenen Stoffeigenschaften.\n2. Der ionische Farbstoff bevorzugt Wasser und hat in diesem Modell keine günstige Fixierroute am Polyester. Kovalente Fixierung erschwert Auswaschen, verhindert aber nicht photochemischen Abbau, Faserabbau oder andere chemische Veränderungen.",
+            "expectedPerformanceEn": "1. The reactive dye fits the given cellulose nucleophile: a new Cell–O–C bond forms with Cl⁻ departure. The disperse dye enters polyester without a new covalent bond. The models rely on different material properties.\n2. The ionic dye favors water and has no suitable polyester fixation route in this model. Covalent fixation impedes washing out but does not prevent photochemical degradation, fiber breakdown or other chemical changes.",
+            "understandingFocusDe": "Reaktivfarbstoff passt zum angegebenen Cellulose-Nukleophil: neue Cell–O–C-Bindung mit Cl⁻-Abgang. Der Dispersionsfarbstoff wird ohne neue kovalente Bindung im Polyester aufgenommen. Beide Modelle beruhen auf verschiedenen Stoffeigenschaften. / Der ionische Farbstoff bevorzugt Wasser und hat in diesem Modell keine günstige Fixierroute am Polyester. Kovalente Fixierung erschwert Auswaschen, verhindert aber nicht photochemischen Abbau, Faserabbau oder andere chemische Veränderungen.",
+            "understandingFocusEn": "The reactive dye fits the given cellulose nucleophile: a new Cell–O–C bond forms with Cl⁻ departure. The disperse dye enters polyester without a new covalent bond. The models rely on different material properties. / The ionic dye favors water and has no suitable polyester fixation route in this model. Covalent fixation impedes washing out but does not prevent photochemical degradation, fiber breakdown or other chemical changes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Azosynthese umfasst Diazotierung und Kupplung; N-N-Bindungsaufbau, Ladungen und Rearomatisierung werden auf Teilchenebene erklärt.",
+            "essentialUnderstandingEn": "Azo synthesis includes diazotization and coupling; N-N formation, charges and rearomatization are explained at particle level.",
+            "observablePerformanceDe": "Stellt den begrenzten Diazotierungsweg mit Bilanz sowie den Kupplungsmechanismus aus den ausdrücklich gegebenen Zwischenstufen dar.",
+            "observablePerformanceEn": "Represents the bounded diazotization route and balance, then coupling, using the explicitly supplied intermediates."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Aromatisches primäres Amin und Kupplungspartner",
+            "textEn": "Aromatic primary amine and coupling partner"
+          },
+          {
+            "id": "v2",
+            "textDe": "Elektronenpaarfluss, Ladungsbilanz und verfügbarer Donor",
+            "textEn": "Electron-pair flow, charge balance and available donor"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "981242bb-case-1",
+            "taskDemandDe": "Nur Papiermechanismen, keine Ausführung. Azo: [Ph–N≡N]⁺ und C₆H₅OH unter Bedingungen mit aktivem Phenol; das Produkt ist para-HO–C₆H₄–N=N–Ph. Vorgeschaltete Diazotierung im Papiermodell: Ar_D=Ph; Ar_D–NH₂ + HNO₂ in wässriger Säure bei0–5 °C. NO⁺ bezeichnet das nitrosierende Elektrophil. Die Zwischenstufen Ar_D–NH–N=O und Ar_D–N=N–OH sind als Strukturhilfen gegeben; einzelne Protonenübertragungen dürfen zu Sammelschritten zusammengefasst werden. Ar_D steht für den unveränderten Arylrest. Keine dirigierenden Effekte oder praktischen Ausführungsschritte werden zusätzlich geprüft.\n1. Ergänze vor der Kupplung die Diazotierung auf Teilchenebene: beschreibe den Elektronenpaarfluss beim Angriff des Aminostickstoffs auf NO⁺, ordne die gegebenen N-N-Zwischenstufen bis zum Diazoniumion und erkläre die Rolle der Säure und der Wasserabspaltung. Formuliere die Gesamtgleichung mit Ar_D–NH₂, HNO₂ und H⁺ und prüfe Atom- und Gesamtladungsbilanz. Vollständige Einzelpfeile für jede Protonenübertragung sind nicht gefordert.\n2. Stelle für die Azokupplung Elektronenpaarpfeile vom Ring zum terminalen Diazoniumnitrogen, die Verringerung von N≡N zu N=N, den σ-Komplex und die rearomatisierende Protonenabgabe dar; bilanziere die Gesamtladung.",
+            "taskDemandEn": "Paper mechanisms only, no execution. Azo: Ph–N≡N⁺ and C₆H₅OH under conditions with reactive phenol; the product is para-HO–C₆H₄–N=N–Ph. Preceding diazotization in the paper model: Ar_D=Ph; Ar_D–NH₂ + HNO₂ in aqueous acid at0–5 °C. NO⁺ denotes the nitrosating electrophile. Ar_D–NH–N=O and Ar_D–N=N–OH are supplied structural guides; individual proton transfers may be grouped. Ar_D is the unchanged aryl group. No extra directing-effect or practical-execution requirement is assessed.\n1. Complete diazotization before coupling at particle level: describe electron-pair flow when amino nitrogen attacks NO⁺, order the supplied N-N intermediates up to the diazonium ion, and explain acid and water-loss roles. Write the overall equation using Ar_D–NH₂, HNO₂ and H⁺ and check atom and net-charge balance. Separate arrows for every proton transfer are not required.\n2. Show electron-pair arrows from the ring to terminal diazonium nitrogen, reduction of N≡N to N=N, the sigma complex and rearomatizing proton loss; balance overall charge.",
+            "expectedPerformanceDe": "1. Ein verfügbares N-Elektronenpaar des neutralen Aminanteils greift das N des nitrosierenden NO⁺ an und bildet die N-N-Bindung. Nach Protonenübertragung/Deprotonierung liegt Ar_D–NH–N=O vor; Protonenumlagerung ergibt Ar_D–N=N–OH. Säure ermöglicht die Bildung des Nitrosierungsreagenzes und protoniert die OH-Gruppe zu einer Wasserabgangsgruppe. Wasserabspaltung und Bildung der N≡N-Bindung ergeben [Ar_D–N≡N]⁺. Gesamt: Ar_DNH₂ + HNO₂ + H⁺ → [Ar_DN₂]⁺ + 2 H₂O. Außer dem unveränderten Ar_D stehen links wie rechts2 N,2 O und4 H; Gesamtladung jeweils+1. Diese verkürzte Teilchenfolge genügt hier; sie ist kein vollständiges Protonenübertragungsnetz und keine Versuchsaufzeichnung.\n2. Ein Ring-π-Paar greift das terminale N von Ph–N≡N⁺ an; ein N≡N-π-Paar wird auf das an Ph gebundene N verschoben. Es entsteht ein positiv geladener Ring-σ-Komplex mit Ph–N=N–C-Bindung. Eine Base nimmt H⁺ am angegriffenen C ab; das C–H-Paar stellt die Ring-π-Bindung wieder her. PhN₂⁺ + C₆H₅OH → Ph–N=N–C₆H₄–OH + H⁺: +1 auf beiden Seiten.",
+            "expectedPerformanceEn": "1. An available N lone pair of the neutral amine fraction attacks nitrogen of nitrosating NO⁺ and forms the N-N bond. Proton transfer/deprotonation gives Ar_D–NH–N=O; proton rearrangement gives Ar_D–N=N–OH. Acid enables formation of the nitrosating reagent and protonates OH into a water leaving group. Water loss and formation of N≡N give [Ar_D–N≡N]⁺. Overall: Ar_DNH₂ + HNO₂ + H⁺ → [Ar_DN₂]⁺ + 2 H₂O. Apart from unchanged Ar_D, both sides contain2 N,2 O and4 H; net charge is+1 on both sides. This abbreviated particle sequence is sufficient here; it is neither a complete proton-transfer network nor an experiment record.\n2. A ring pi pair attacks the terminal N of Ph–N≡N⁺; one N≡N pi pair moves onto the N bound to Ph. This gives a positively charged ring sigma complex with a Ph–N=N–C bond. A base removes H⁺ at the attacked carbon; its C–H pair restores the ring pi bond. PhN₂⁺ + C₆H₅OH → Ph–N=N–C₆H₄–OH + H⁺ has +1 on both sides.",
+            "understandingFocusDe": "Azosynthese umfasst Diazotierung und Kupplung; N-N-Bindungsaufbau, Ladungen und Rearomatisierung werden auf Teilchenebene erklärt.",
+            "understandingFocusEn": "Azo synthesis includes diazotization and coupling; N-N formation, charges and rearomatization are explained at particle level."
+          },
+          {
+            "id": "981242bb-case-2",
+            "taskDemandDe": "Papiermodell: p-NO₂–C₆H₄–N₂⁺ koppelt an N,N-Dimethylanilin para zum Aminodonor. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt. Vorgeschaltete Diazotierung im Papiermodell: Ar_D=p-NO₂–C₆H₄; Ar_D–NH₂ + HNO₂ in wässriger Säure bei0–5 °C. NO⁺ bezeichnet das nitrosierende Elektrophil. Die Zwischenstufen Ar_D–NH–N=O und Ar_D–N=N–OH sind als Strukturhilfen gegeben; einzelne Protonenübertragungen dürfen zu Sammelschritten zusammengefasst werden. Ar_D steht für den unveränderten Arylrest. Keine dirigierenden Effekte oder praktischen Ausführungsschritte werden zusätzlich geprüft.\n1. Ergänze vor der Kupplung die Diazotierung auf Teilchenebene: beschreibe den Elektronenpaarfluss beim Angriff des Aminostickstoffs auf NO⁺, ordne die gegebenen N-N-Zwischenstufen bis zum Diazoniumion und erkläre die Rolle der Säure und der Wasserabspaltung. Formuliere die Gesamtgleichung mit Ar_D–NH₂, HNO₂ und H⁺ und prüfe Atom- und Gesamtladungsbilanz. Vollständige Einzelpfeile für jede Protonenübertragung sind nicht gefordert.\n2. Zeichne den Azokupplungsmechanismus mit Elektronenpaarpfeilen, N=N-Verknüpfung, σ-Komplex-Ladung und Deprotonierung; erkläre, warum vollständige Protonierung des Aminodonors die Kupplung erschwert.",
+            "taskDemandEn": "Paper model: p-NO₂–C₆H₄–N₂⁺ couples to N,N-dimethylaniline para to its amino donor. Counterions are spectators; no substances are made. Preceding diazotization in the paper model: Ar_D=p-NO₂–C₆H₄; Ar_D–NH₂ + HNO₂ in aqueous acid at0–5 °C. NO⁺ denotes the nitrosating electrophile. Ar_D–NH–N=O and Ar_D–N=N–OH are supplied structural guides; individual proton transfers may be grouped. Ar_D is the unchanged aryl group. No extra directing-effect or practical-execution requirement is assessed.\n1. Complete diazotization before coupling at particle level: describe electron-pair flow when amino nitrogen attacks NO⁺, order the supplied N-N intermediates up to the diazonium ion, and explain acid and water-loss roles. Write the overall equation using Ar_D–NH₂, HNO₂ and H⁺ and check atom and net-charge balance. Separate arrows for every proton transfer are not required.\n2. Draw azo coupling with electron-pair arrows, N=N linkage, sigma-complex charge and deprotonation; explain why complete protonation of the amino donor hinders coupling.",
+            "expectedPerformanceDe": "1. Ein verfügbares N-Elektronenpaar des neutralen Aminanteils greift das N des nitrosierenden NO⁺ an und bildet die N-N-Bindung. Nach Protonenübertragung/Deprotonierung liegt Ar_D–NH–N=O vor; Protonenumlagerung ergibt Ar_D–N=N–OH. Säure ermöglicht die Bildung des Nitrosierungsreagenzes und protoniert die OH-Gruppe zu einer Wasserabgangsgruppe. Wasserabspaltung und Bildung der N≡N-Bindung ergeben [Ar_D–N≡N]⁺. Gesamt: Ar_DNH₂ + HNO₂ + H⁺ → [Ar_DN₂]⁺ + 2 H₂O. Außer dem unveränderten Ar_D stehen links wie rechts2 N,2 O und4 H; Gesamtladung jeweils+1. Diese verkürzte Teilchenfolge genügt hier; sie ist kein vollständiges Protonenübertragungsnetz und keine Versuchsaufzeichnung.\n2. π-Paar des Dimethylanilinrings→terminales Diazonium-N; N≡N-π-Paar→inneres N. Positiver σ-Komplex→H⁺-Abgabe mit C–H-Paar→Ring-π. Produkt p-NO₂–C₆H₄–N=N–C₆H₄–N(CH₃)₂, insgesamt Diazoniumpartner+ArH→Azofarbstoff+H⁺. Protoniertes –N⁺H(CH₃)₂ hat kein verfügbares freies Paar für den +M-Effekt, daher weniger aktivierter Ring.",
+            "expectedPerformanceEn": "1. An available N lone pair of the neutral amine fraction attacks nitrogen of nitrosating NO⁺ and forms the N-N bond. Proton transfer/deprotonation gives Ar_D–NH–N=O; proton rearrangement gives Ar_D–N=N–OH. Acid enables formation of the nitrosating reagent and protonates OH into a water leaving group. Water loss and formation of N≡N give [Ar_D–N≡N]⁺. Overall: Ar_DNH₂ + HNO₂ + H⁺ → [Ar_DN₂]⁺ + 2 H₂O. Apart from unchanged Ar_D, both sides contain2 N,2 O and4 H; net charge is+1 on both sides. This abbreviated particle sequence is sufficient here; it is neither a complete proton-transfer network nor an experiment record.\n2. Dimethylaniline ring pi pair→terminal diazonium N; N≡N pi pair→inner N. Positive sigma complex→H⁺ loss with C–H pair→ring pi. Product: p-NO₂–C₆H₄–N=N–C₆H₄–N(CH₃)₂; overall diazonium partner+ArH→azo dye+H⁺. Protonated –N⁺H(CH₃)₂ lacks an available lone pair for +M donation, so the ring is less activated.",
+            "understandingFocusDe": "Azosynthese umfasst Diazotierung und Kupplung; N-N-Bindungsaufbau, Ladungen und Rearomatisierung werden auf Teilchenebene erklärt.",
+            "understandingFocusEn": "Azo synthesis includes diazotization and coupling; N-N formation, charges and rearomatization are explained at particle level."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+            "essentialUnderstandingEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound.",
+            "observablePerformanceDe": "Stellt die Kondensationsschritte und ladungsbilanzierte Oxidation dar.",
+            "observablePerformanceEn": "Represents condensation steps and charge-balanced oxidation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Aromatischer Aldehydrest",
+            "textEn": "Aromatic aldehyde residue"
+          },
+          {
+            "id": "v2",
+            "textDe": "Leukoverbindung, Farbstoffkation und Oxidationsbilanz",
+            "textEn": "Leuco compound, dye cation and oxidation balance"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "53db04a0-case-1",
+            "taskDemandDe": "Nur Papiermechanismen, keine Ausführung. Triarylmethan: Ph–CHO + 2 Ar–H, Ar–H=N,N-Dimethylanilin, Angriff jeweils para zum –N(CH₃)₂. Säurekatalyse liefert Ph–CH(Ar)₂; anschließende Oxidation liefert [Ph–C(Ar)₂]⁺.\n1. Stelle für Ph–CHO die Carbonylprotonierung, zwei para-Angriffe von Ar–H mit Wasserabspaltung zwischen ihnen und die jeweilige Rearomatisierung dar; schreibe Kondensationsgleichung und Oxidationshalbreaktion.",
+            "taskDemandEn": "Paper mechanisms only, no execution. Triarylmethane: Ph–CHO + 2 Ar–H, with Ar–H=N,N-dimethylaniline and each attack para to –N(CH₃)₂. Acid catalysis gives Ph–CH(Ar)₂; oxidation then gives [Ph–C(Ar)₂]⁺.\n1. Show carbonyl protonation, two para attacks by Ar–H with water loss between them and each rearomatization; write the condensation equation and oxidation half-equation.",
+            "expectedPerformanceDe": "1. O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2).",
+            "expectedPerformanceEn": "1. O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge.",
+            "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+            "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+          },
+          {
+            "id": "53db04a0-case-2",
+            "taskDemandDe": "Papiermodell: Die Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt.\n1. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.",
+            "taskDemandEn": "Paper model: The route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made.\n1. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.",
+            "expectedPerformanceDe": "1. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.",
+            "expectedPerformanceEn": "1. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.",
+            "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+            "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+          }
+        ]
+      }
+    }
+  ],
+  "scientificRevalidationPending": true
+}
