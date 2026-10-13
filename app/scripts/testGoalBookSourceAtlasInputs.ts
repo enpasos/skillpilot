@@ -444,8 +444,20 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   const formerCompoundGoalId = 'd3cd250f-5221-589d-aa1c-44a4692d1acb'
   assert.ok(chemistry.receipt.scopes.every(s => !s.goalIds.includes(formerCompoundGoalId)), 'The former compound atom is now a cluster, not an atlas atom')
   assert.ok(chemistry.receipt.omittedGoals.every(g => g.goalId !== formerCompoundGoalId))
+  // HE Q4.1's explicit Gibbs-Helmholtz calculation adds the quantitative
+  // Gibbs goal to LK; the separately sourced enthalpy/Hess goal stays available.
+  const quantitativeGibbsGoalId = 'dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5'
+  const gibbsCalculationSourceId = 'he-chem-sekii-q4-1-b07-a01-a1a44a81'
+  assert.deepEqual(chemistry.receipt.scopes.flatMap(s => s.witnesses
+    .filter(w => w.sourceGoalId === gibbsCalculationSourceId)
+    .map(w => [s.key, w.goalId, w.mappedTargetGoalId, w.coverage, w.profileBasis])), [
+    ['DE-HE/SekII/LK', quantitativeGibbsGoalId, quantitativeGibbsGoalId, 'direct', 'source-metadata'],
+  ], 'The Gibbs-Helmholtz operator must directly supply the quantitative Gibbs goal in HE LK only')
+  assert.ok(chemistry.receipt.scopes.find(s => s.key === 'DE-HE/SekII/LK')!.goalIds.includes(quantitativeGibbsGoalId))
+  assert.ok(!chemistry.receipt.scopes.find(s => s.key === 'DE-HE/SekII/GK')!.goalIds.includes(quantitativeGibbsGoalId),
+    'The reviewed LK calculation must not widen the HE GK scope')
   assert.deepEqual(chemistry.receipt.scopes.filter(s => s.jurisdiction === 'DE-BY' || (s.jurisdiction === 'DE-HE' && s.stage === 'SekII')).map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekI/', 98], ['DE-BY/SekII/GK', 117], ['DE-BY/SekII/LK', 148], ['DE-HE/SekII/GK', 112], ['DE-HE/SekII/LK', 141],
+    ['DE-BY/SekI/', 98], ['DE-BY/SekII/GK', 117], ['DE-BY/SekII/LK', 148], ['DE-HE/SekII/GK', 112], ['DE-HE/SekII/LK', 142],
   ], 'Reviewed Chemistry routes must retain their exact BY/HE source scopes')
   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
   // Every grouped witness expands back to the exact original provenance record.

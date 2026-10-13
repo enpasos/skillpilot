@@ -32,6 +32,13 @@ Die geprüften Quellentscheidungen und ihre flache kompatible Mapping-Darstellun
 sind synchronisiert; die normalen Compiler- und Veröffentlichungsprüfungen
 erhalten dadurch dieselbe begrenzte Geltung. Bei künftigen Quellenänderungen
 wird dieser Abgleich vor einem aufwendigen PDF-Build geprüft.
+Der Commit-Abgleich umfasst außerdem `testGoalBookSourceAtlasInputs.ts`:
+Änderungen einer geprüften Sicht werden am konkreten Quellenzeugen und Ziel
+belegt, bevor ihre genaue Testerwartung angepasst wird. Nach einem Wechsel
+der aktiven Bild-URL wird der Chemie-Bildrolloutbericht mit
+`npm --prefix app run quality:goal-visualization-rollout-status:chemie`
+neu erzeugt und mit `check:goal-visualization-rollout-coverage:chemie` geprüft.
+So werden veraltete Sichtzahlen und Bildreferenzen vor dem nächsten CI-Lauf erkannt.
 Die fünfte vorgeschlagene NRW-Zuordnung zur experimentellen Herleitung bleibt
 zurückgestellt: Rechen- und Identitätsprüfungen belegen keine experimentelle
 Herleitung. Ganze zusammengesetzte Quellpflichten werden dadurch nicht freigegeben.
