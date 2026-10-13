@@ -2,9 +2,17 @@
 
 This directory configures the central deterministic five-gate report for
 Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
-Chemistry and Biology; the achieved Mathematics and Physics M7 floors remain protected.
+Chemistry only; the achieved Mathematics, Physics and Biology M7 floors remain protected.
 
-Current Chemistry/Biology continuation:
+Current Chemistry continuation:
+[Chemistry 231/402: final source/native work checkpoint with independent findings, 13 October](../../../../../docs/qa-ci/chemie231-final-source-native-inactive-checkpoint-2026-10-13.md).
+The checkpoint preserves inactive author and independent evidence with exact
+input transports; it grants no additional active completion. The preceding
+source-first checkpoint at `02f7d5ab17c2e1b803a0e2be23517b351d7fcacf`
+passed all current GitHub checks. Each successor needs its own terminal CI result.
+Mathematics 807/807, Physics 478/478 and Biology 397/397 remain protected M7 floors.
+
+Preserved Chemistry/Biology continuation:
 [Biology 366/395 and Chemistry 206/398: 13 reviewed biology completions, 11 October](../../../../../docs/qa-ci/chemie-biologie-m7-biologie366-health-integration-2026-10-11.md).
 The [subsequent inactive evidence checkpoint](../../../../../docs/qa-ci/chemie-biologie-m7-inactive-evidence-github-checkpoint-2026-10-11.md)
 preserves candidate packages and unresolved review findings without adding strict completions.

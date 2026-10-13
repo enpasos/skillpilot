@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-13T08:15:46.427273+00:00",
+  "command": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "quality:semantic-atomicity:check",
+    "--",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-final-eighteen-current402-atomicity-independent-a-20261013-v1/semantic-atomicity.scoped-private.config.json"
+  ],
+  "exitCode": 0,
+  "stockFingerprintHelper": "app/scripts/semanticAtomicityReview.ts direct --write-fingerprints used after scientific judgment seal",
+  "technicalShapeAndCurrentFingerprintCheckPassed": true,
+  "semanticAtomicityCompletionPassed": false,
+  "scientificCounts": {
+    "scoped": 18,
+    "atomic": 17,
+    "nonAtomic": 1,
+    "needsDeveloperReview": 0,
+    "splitRequired": 1,
+    "scopeHolesIdentified": 0
+  },
+  "normalRecordsExactScopeAndJudgmentJoinPassed": true,
+  "firstInputFileHashesReverified": true,
+  "independentScientificJudgmentSealReverified": true,
+  "ownPackageSymlinkCount": 0,
+  "humanApprovalClaimed": false,
+  "sourceFitnessClaimed": false,
+  "compilerOrModelBuildExecuted": false
+}

@@ -1,0 +1,17 @@
+/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/combined-poly18-aro19-execution-20261013-v1/app/scripts/goalBookEvidenceReviewLoader.ts:49
+    throw new Error(`Goal-book model: ${label} violates the closed goal-evidence schema: ${validator.ajv.errorsText(
+          ^
+
+
+Error: Goal-book model: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-case-profile-binding-author-20261013-v1/positive/P37.final-normal.author-candidates.jsonl record 25 violates the closed goal-evidence schema: data/reviewId must match pattern "^[a-z0-9]+(?:-[a-z0-9]+)*$".
+    at parseGoalBookEvidenceReviewRecord (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/combined-poly18-aro19-execution-20261013-v1/app/scripts/goalBookEvidenceReviewLoader.ts:49:11)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/combined-poly18-aro19-execution-20261013-v1/app/scripts/goalBookModel.ts:974:22)
+    at Array.forEach (<anonymous>)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/combined-poly18-aro19-execution-20261013-v1/app/scripts/goalBookModel.ts:972:13)
+    at Array.forEach (<anonymous>)
+    at parseEvidenceReviewSources (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/combined-poly18-aro19-execution-20261013-v1/app/scripts/goalBookModel.ts:957:11)
+    at buildGoalBookModel (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/combined-poly18-aro19-execution-20261013-v1/app/scripts/goalBookModel.ts:1937:27)
+    at Object.loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/tmp/chemie-q4-current220-prep/combined-poly18-aro19-execution-20261013-v1/app/scripts/goalBookModel.ts:2760:17)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-current231-source-native-author-root-20261013-v1/helpers/prepare-three-stock-native-groups.mts:20:14)
+
+Node.js v20.20.2

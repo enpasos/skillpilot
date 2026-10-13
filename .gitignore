@@ -50,6 +50,8 @@ curricula/**/*.html
 # Exact native review-bundle snapshots are versioned evidence, unlike public builds.
 !curricula/**/quality/**/bundle/book.pdf
 !curricula/**/quality/**/bundle/book.html
+# Sealed official responses are evidence and keep their exact bytes via .gitattributes.
+!curricula/**/quality/**/primary-source-captures/*.official-response.html
 # Generated transport archives stay local; version their manifests and review inputs.
 curricula/**/quality/**/*.zip
 # Complete official-source text is a local extraction cache, not review content.
