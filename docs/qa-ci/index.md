@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: begrenzte Korrekturarbeiten als inaktiver stabiler Zwischenstand vom 13. Oktober](chemie231-bounded-remediation-inactive-checkpoint-2026-10-13.md)
 - [Chemie: 231/402 und gesicherte inaktive Polymer-/Quellenarbeiten vom 13. Oktober](chemie231-inactive-polymer17-and-source-holds-checkpoint-2026-10-13.md)
 - [Chemie: finaler Quellen-/Seitenstand, unabhängige Befunde und inaktiver Zwischenstand vom 13. Oktober](chemie231-final-source-native-inactive-checkpoint-2026-10-13.md)
 - [Chemie: stabiler Zwischenstand mit 220/402 vom 12. Oktober](chemie220-q3-and-leaf-checkpoint-2026-10-12.md)

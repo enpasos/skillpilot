@@ -5,6 +5,13 @@ Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
 Chemistry only; the achieved Mathematics, Physics and Biology M7 floors remain protected.
 
 Current Chemistry continuation:
+[Chemistry 231/402: bounded remediation work preserved as an inactive checkpoint, 13 October](../../../../../docs/qa-ci/chemie231-bounded-remediation-inactive-checkpoint-2026-10-13.md).
+It preserves the started dye-route split, three recycling-cell corrections and
+an independent MO-source/RP-locator review without activating candidates.
+The preceding final-native checkpoint at `8e7d37d40dee9a84ed5c7a6786dcace1f5817b42`
+passed its own complete GitHub CI, including Validate Schemas.
+
+Previous Chemistry continuation:
 [Chemistry 231/402: final source/native work checkpoint with independent findings, 13 October](../../../../../docs/qa-ci/chemie231-final-source-native-inactive-checkpoint-2026-10-13.md).
 The checkpoint preserves inactive author and independent evidence with exact
 input transports; it grants no additional active completion. The preceding
