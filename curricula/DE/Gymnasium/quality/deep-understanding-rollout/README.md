@@ -5,6 +5,13 @@ Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
 Chemistry only; the achieved Mathematics, Physics and Biology M7 floors remain protected.
 
 Current Chemistry continuation:
+[Chemistry 231/402: image and source successors preserved as an inactive checkpoint, 13 October](../../../../../docs/qa-ci/chemie231-image-source-successors-checkpoint-2026-10-13.md).
+It preserves actual image candidates, independent bounded reviews and unresolved
+source duties without changing active completion. Its predecessor
+`fed73cdd8f41c5116d8c7c62d127b53cd0e75447` passed its own complete GitHub CI,
+including Validate Schemas. Each successor needs its own terminal CI result.
+
+Previous bounded Chemistry continuation:
 [Chemistry 231/402: bounded remediation work preserved as an inactive checkpoint, 13 October](../../../../../docs/qa-ci/chemie231-bounded-remediation-inactive-checkpoint-2026-10-13.md).
 It preserves the started dye-route split, three recycling-cell corrections and
 an independent MO-source/RP-locator review without activating candidates.

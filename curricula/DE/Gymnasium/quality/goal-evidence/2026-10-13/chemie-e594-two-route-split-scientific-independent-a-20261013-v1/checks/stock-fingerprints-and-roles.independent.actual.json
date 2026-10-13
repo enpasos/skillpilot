@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 1,
+  "measuredAtUTC": "2026-10-13T12:40:50.718Z",
+  "role": "Independent finite stock fingerprints, canonical normalization and role assignments; not complete source or view compilation",
+  "moduleBindings": [
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb",
+      "bytes": 113603
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "sha256:50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26",
+      "bytes": 8335
+    },
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "sha256:3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43",
+      "bytes": 12606
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "sha256:d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7",
+      "bytes": 22096
+    }
+  ],
+  "canonicalNormalizationExact": true,
+  "canonicalAuthoringDiagnostics": [],
+  "inMemorySemanticCounts": {
+    "beforeNodes": 523,
+    "beforeCurricularAtomic": 402,
+    "proposedNodes": 525,
+    "proposedKinds": {
+      "programStructure": 1,
+      "curricularArea": 72,
+      "curricularAtomic": 403,
+      "orientation": 1,
+      "practiceAssessment": 41,
+      "memory": 7
+    }
+  },
+  "fiveMeasuredSemanticSourceFingerprints": [
+    {
+      "goalId": "fa21e8e1-b430-54ad-9647-f763bc4137ba",
+      "semanticKind": "curricularArea",
+      "sourceSemanticKindFingerprint": "sha256:0fcf9e6cd21c1d74ab46d695cf0f4db4dcfd0f55dc6e0954d1f0b5caf207def6",
+      "rule": "unmodified fingerprintSemanticKindSourceGoal",
+      "candidateFingerprintExact": true
+    },
+    {
+      "goalId": "e5941581-0aba-5354-b4b9-d0249d4538a8",
+      "semanticKind": "curricularArea",
+      "sourceSemanticKindFingerprint": "sha256:868654b8f7f486042a05d1de5fe44cad340e250b4ce12123cffd5a9b06c8a1b1",
+      "rule": "unmodified fingerprintSemanticKindSourceGoal",
+      "candidateFingerprintExact": true
+    },
+    {
+      "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+      "semanticKind": "practiceAssessment",
+      "sourceSemanticKindFingerprint": "sha256:e583aef4ba15f86eeedb13419071f80387570a485d1094733f3e0257c406aa0c",
+      "rule": "unmodified fingerprintSemanticKindSourceGoal",
+      "candidateFingerprintExact": true
+    },
+    {
+      "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+      "semanticKind": "curricularAtomic",
+      "sourceSemanticKindFingerprint": "sha256:058065d3fd29960aab4739339700516ca64503387ff73324cecdc429129fac7b",
+      "rule": "unmodified fingerprintSemanticKindSourceGoal",
+      "candidateFingerprintExact": true
+    },
+    {
+      "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+      "semanticKind": "curricularAtomic",
+      "sourceSemanticKindFingerprint": "sha256:cf9a7a49d7ca5211b1e3fd744ba43b1220ea658f0e89a4352594b654e997329f",
+      "rule": "unmodified fingerprintSemanticKindSourceGoal",
+      "candidateFingerprintExact": true
+    }
+  ],
+  "twoMeasuredProfileFingerprints": [
+    {
+      "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+      "profileFingerprint": "sha256:bb5feba7e24ada1cd817bbf0b5e729e1208cd08a47466b4f640f44f04d919ee6",
+      "ruleVersion": "goal-evidence-v1",
+      "rule": "unmodified fingerprintGoalEvidenceProfile"
+    },
+    {
+      "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+      "profileFingerprint": "sha256:2a69391b7d66c381462520924ecb5cf5a54bc07582a88aa5b455f00ff034ab9a",
+      "ruleVersion": "goal-evidence-v1",
+      "rule": "unmodified fingerprintGoalEvidenceProfile"
+    }
+  ],
+  "twentyOneProposedViewRoleAssignments": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/navigation/de-gym-chemistry-national-atlas.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-bb-sekii-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-be-sekii-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-bw-sekii-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-by-sekii-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-hb-sekii-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-rp-seki.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-rp-sekii-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sh-sekii-gk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sh-sekii-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sn-seki.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sn-sekii-lk.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-st-seki.view.json",
+      "changedNodes": 1,
+      "childRoles": [
+        {
+          "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+          "role": "target"
+        },
+        {
+          "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+          "role": "target"
+        }
+      ],
+      "measuredBy": "unmodified collectCompositionProjectionRoleGoalIds",
+      "sourceApplicabilityAndPageCompilationPerformed": false
+    }
+  ],
+  "noBookModelOrCompiledScopeProduced": true,
+  "evidenceDecisionByTheseMeasurements": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false
+}

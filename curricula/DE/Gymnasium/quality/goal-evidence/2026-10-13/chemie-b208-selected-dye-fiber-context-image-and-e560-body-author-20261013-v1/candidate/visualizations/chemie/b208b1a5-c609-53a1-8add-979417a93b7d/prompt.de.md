@@ -1,0 +1,38 @@
+# Lernzielvisualisierung: Textilfarbstoffe über Farbstoff-Faser-Wechselwirkungen beurteilen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `b208b1a5-c609-53a1-8add-979417a93b7d`
+- Titel: Textilfarbstoffe über Farbstoff-Faser-Wechselwirkungen beurteilen
+- Beschreibung: Die lernende Person kann ausgewählte Bindungs- und Wechselwirkungstypen zwischen Farbstoff-Molekülen und Faser-Molekülen beschreiben und die Eignung von Farbstoffen als Textilfarbstoff beurteilen.
+
+## Generator
+
+- Provider: OpenAI imagegen built-in; exact model not exposed
+- Status: draft
+- Quellbild: `b208b1a5-c609-53a1-8add-979417a93b7d.png`
+- Public Asset: `/assets/goal-visualizations/chemie/b208b1a5-c609-53a1-8add-979417a93b7d/b208b1a5-c609-53a1-8add-979417a93b7d.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational, precise educational image correction.
+Edit target: the referenced existing textile-dye infographic. Replace its misleading universal strength/washability ladder with the three selected fibre/dye systems below. Keep an approachable hand-drawn comic illustration language with clear dark contours; make the result friendlier and visually clearer, with warm light backgrounds and blue/green/coral accents, not a sterile technical chart. Output opaque PNG, landscape approximately 16:9, approximately 1600x900 or a close native size.
+
+Goal: describe selected dye–fibre bonding/interactions and evaluate dye suitability for a particular fibre and conditions. Important: there is NO universal ordering "van der Waals = washes out / unsuitable", "ionic/covalent = always suitable". REMOVE ALL ranking arrows, strength ladders, good/bad checkmarks, X marks and universal wash-fastness promises from the original.
+
+Composition: three equally weighted large, uncluttered side-by-side illustrated examples, without hierarchy. Each has a recognisable fibre object (wool yarn, a cotton boll/thread, a polyester spool) and one large conceptual magnified molecular-contact drawing. Molecular drawings are schematic, not complete chemical structures. Dye blobs have one consistent vivid colour so contacts can be compared. Labels are few, large and correctly spelled in German, with ample whitespace and no explanatory paragraphs. At 360 pixels total width the fibre objects, dye positions and different contact types must remain recognisable.
+
+Left: wool in an acidic dye bath and an anionic acid dye. Show protonated amino sites on a wool protein chain as –NH₃⁺ and dye sulfonate as –SO₃⁻. Dashed contact between opposite charges represents electrostatic attraction, NOT a new covalent bond. Charges belong to the indicated groups, no +/− ranking scale. Short labels: "Wolle", "sauer", "ionische Anziehung". Suitable hydrogen bonding can coexist; do not imply only one force exists.
+Middle: a reactive dye reacting with cotton cellulose. Show a cellulose oxygen covalently joined to a carbon on the coloured dye, one continuous bond; abstract Cell–O–C(dye) motif, no floating bond or spurious charge. This is one selected reactive-dye example, not any dye on cotton. Short labels: "Baumwolle", "Reaktivfarbstoff", "kovalent gebunden".
+Right: a neutral, poorly water-soluble disperse dye taken up into polyester. Show several neutral coloured dye molecules BETWEEN/INSIDE polymer chains, with small dashed noncovalent contacts; dispersion and hydrophobic affinity, NOT a new ionic or covalent attachment. Do NOT show the dye simply washing away or sitting only outside the fibre. Short labels: "Polyester", "Dispersionsfarbstoff", "eingelagert".
+Top text: "Ausgewählte Beispiele".
+Bottom text: "Farbstoff + Faser + Bedingungen".
+Optional small simple pH/water/temperature icons reinforce that conditions matter, but add no additional sentence or numerical claims.
+
+Do not copy the original long title, rows of dense text, universal strength/washability grading, or blanket claims. No photorealism, lab execution, people, logos, watermark, technical IDs or unrelated content. No microscopic compulsory text. The three drawings themselves must carry the comparison.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
