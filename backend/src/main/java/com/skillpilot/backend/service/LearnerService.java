@@ -9776,6 +9776,7 @@ public class LearnerService {
                 config == null ? Collections.emptyMap() : config;
 
         LinkedHashMap<String, CompositionGoalReference> referencedGoals = new LinkedHashMap<>();
+        List<Map<String, CompositionGoalReference>> selectedViewReferences = new ArrayList<>();
         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
         LinkedHashSet<String> compositionViewIds = new LinkedHashSet<>();
         LinkedHashSet<String> presentationRootGoalIds = new LinkedHashSet<>();
@@ -9789,7 +9790,11 @@ public class LearnerService {
                         defaultView,
                         landscapeService.getById(readString(defaultView.get("landscapeId"))),
                         presentationRootGoalIds);
-                collectCompositionViewGoalReferences(defaultView.get("rootNodes"), referencedGoals);
+                LinkedHashMap<String, CompositionGoalReference> defaultReferences = new LinkedHashMap<>();
+                collectCompositionViewGoalReferences(defaultView.get("rootNodes"), defaultReferences);
+                selectedViewReferences.add(defaultReferences);
+                defaultReferences.forEach((goalId, reference) ->
+                        referencedGoals.merge(goalId, reference, this::mergeCompositionGoalReferences));
             }
             authoritativeCandidateSeen = true;
         }
@@ -9831,6 +9836,7 @@ public class LearnerService {
                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 }
             } else {
+                selectedViewReferences.add(landscapeReferencedGoals);
                 landscapeReferencedGoals.forEach((goalId, reference) ->
                         referencedGoals.merge(goalId, reference, this::mergeCompositionGoalReferences));
             }
@@ -9846,10 +9852,22 @@ public class LearnerService {
                 hydrateExternalPrerequisiteOnlyStructuralGoals(
                         referencedGoals,
                         structuralGoals);
-        Map<String, CompositionProjectionAssignment> projectionAssignments =
-                resolveCompositionProjectionAssignments(
-                        referencedGoals,
-                        compositionStructuralGoals);
+        Map<String, CompositionProjectionAssignment> projectionAssignments = new LinkedHashMap<>();
+        // Authored specificity applies within each selected subject view. The
+        // Personal Curriculum then includes the union of those resolved targets:
+        // another subject's support-only reference cannot exclude a selected target.
+        for (Map<String, CompositionGoalReference> viewReferences : selectedViewReferences) {
+            resolveCompositionProjectionAssignments(viewReferences, compositionStructuralGoals)
+                    .forEach((goalId, assignment) -> projectionAssignments.merge(
+                            goalId,
+                            assignment,
+                            (current, incoming) -> {
+                                if (current.role() != incoming.role()) {
+                                    return current.role() == ProjectionRole.TARGET ? current : incoming;
+                                }
+                                return preferSpecificCompositionProjectionAssignment(current, incoming);
+                            }));
+        }
         LinkedHashSet<String> targetGoalIds = projectionAssignments.entrySet().stream()
                 .filter(entry -> entry.getValue().role() == ProjectionRole.TARGET)
                 .map(Map.Entry::getKey)
@@ -10456,24 +10474,28 @@ public class LearnerService {
             String goalId,
             CompositionProjectionAssignment candidate,
             Map<String, CompositionProjectionAssignment> assignments) {
-        assignments.merge(goalId, candidate, (current, incoming) -> {
-            if (current.direct() != incoming.direct()) {
-                return incoming.direct() ? incoming : current;
-            }
-            if (!current.direct() && current.distance() != incoming.distance()) {
-                return incoming.distance() < current.distance()
-                        ? incoming
-                        : current;
-            }
-            if (current.role() == ProjectionRole.TARGET
-                    || incoming.role() == ProjectionRole.TARGET) {
-                return new CompositionProjectionAssignment(
-                        ProjectionRole.TARGET,
-                        current.direct(),
-                        Math.min(current.distance(), incoming.distance()));
-            }
-            return current;
-        });
+        assignments.merge(goalId, candidate, this::preferSpecificCompositionProjectionAssignment);
+    }
+
+    private CompositionProjectionAssignment preferSpecificCompositionProjectionAssignment(
+            CompositionProjectionAssignment current,
+            CompositionProjectionAssignment incoming) {
+        if (current.direct() != incoming.direct()) {
+            return incoming.direct() ? incoming : current;
+        }
+        if (!current.direct() && current.distance() != incoming.distance()) {
+            return incoming.distance() < current.distance()
+                    ? incoming
+                    : current;
+        }
+        if (current.role() == ProjectionRole.TARGET
+                || incoming.role() == ProjectionRole.TARGET) {
+            return new CompositionProjectionAssignment(
+                    ProjectionRole.TARGET,
+                    current.direct(),
+                    Math.min(current.distance(), incoming.distance()));
+        }
+        return current;
     }
 
     @SuppressWarnings("unchecked")

@@ -858,6 +858,57 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
+    void independentlySelectedSubjectTargetSurvivesAnotherSubjectsDirectSupportReference() throws Exception {
+        assertSelectedSubjectSupportRole(List.of(canonicalSubtree("supporting-subject-root")), true);
+    }
+
+    @Test
+    void selectedSubjectStillResolvesItsOwnSpecificExclusionsBeforeJoiningTargets() throws Exception {
+        assertSelectedSubjectSupportRole(List.of(
+                canonicalSubtree("supporting-subject-root"),
+                goalEntry(PREREQUISITE_ID, "prerequisiteOnly")), false);
+        assertSelectedSubjectSupportRole(List.of(
+                canonicalSubtree("supporting-subject-root"),
+                canonicalSubtree(PREREQUISITE_ID, "prerequisiteOnly")), false);
+    }
+
+    private void assertSelectedSubjectSupportRole(
+            List<Map<String, Object>> supportingReferences, boolean expectedTarget) throws Exception {
+        String supportingSubjectId = "supporting-subject";
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+        SkillLandscape supportingSubject = new SkillLandscape();
+        supportingSubject.setLandscapeId(supportingSubjectId);
+        supportingSubject.setFrameworkId("canonical-gymnasium-supporting-subject");
+        supportingSubject.setGoals(List.of(
+                clusterGoal("supporting-subject-root", List.of(PREREQUISITE_ID)),
+                atomicGoal(PREREQUISITE_ID, List.of(TRANSITIVE_PREREQUISITE_ID))));
+        when(fixture.landscapeService().getById(supportingSubjectId)).thenReturn(supportingSubject);
+        when(fixture.compositionViewService().isAuthoritativeForLandscape(supportingSubjectId)).thenReturn(true);
+        when(fixture.compositionViewService().findLearnerScopeView(eq(supportingSubjectId), anyMap()))
+                .thenReturn(Map.of("viewId", "supporting-subject-view", "landscapeId", supportingSubjectId,
+                        "rootNodes", supportingReferences));
+        String bothSubjects = new ObjectMapper().writeValueAsString(Map.of(
+                LANDSCAPE_ID, Map.of("selected", true, "filterId", "LK"),
+                supportingSubjectId, Map.of("selected", true, "filterId", "GK")));
+        for (List<SkillLandscape> closure : List.of(
+                List.of(fixture.landscape(), supportingSubject),
+                List.of(supportingSubject, fixture.landscape()))) {
+            when(fixture.landscapeService().getClosure(LANDSCAPE_ID)).thenReturn(closure);
+            ProjectionSets projection = projectionSets(fixture.service(), bothSubjects);
+            assertThat(projection.targetGoalIds()).contains(TARGET_ID);
+            if (expectedTarget) {
+                assertThat(projection.targetGoalIds()).contains(PREREQUISITE_ID);
+                assertThat(projection.prerequisiteOnlyGoalIds()).doesNotContain(PREREQUISITE_ID);
+                assertThat(fixture.service().getFilteredAtomicGoalIds(LANDSCAPE_ID, bothSubjects, null, false))
+                        .contains(TARGET_ID, PREREQUISITE_ID);
+            } else {
+                assertThat(projection.targetGoalIds()).doesNotContain(PREREQUISITE_ID);
+                assertThat(projection.prerequisiteOnlyGoalIds()).contains(PREREQUISITE_ID);
+            }
+        }
+    }
+
+    @Test
     void legacyProjectionKeepsAllAtomicGoalsAsTargets() {
         Fixture fixture = fixture(null);
         when(fixture.compositionViewService().isAuthoritativeForLandscape(LANDSCAPE_ID))
@@ -1300,11 +1351,16 @@ class ProjectionRoleLearnerServiceTest {
 
     @SuppressWarnings("unchecked")
     private ProjectionSets projectionSets(LearnerService service) {
+        return projectionSets(service, PERSONAL_CURRICULUM);
+    }
+
+    @SuppressWarnings("unchecked")
+    private ProjectionSets projectionSets(LearnerService service, String personalCurriculum) {
         Object projection = ReflectionTestUtils.invokeMethod(
                 service,
                 "getGoalProjection",
                 LANDSCAPE_ID,
-                PERSONAL_CURRICULUM);
+                personalCurriculum);
         Set<String> targetGoalIds =
                 ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
         Set<String> prerequisiteOnlyGoalIds =
