@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "kind": "Exact bounded author whole-cell CAS; no acceptance",
+  "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+  "caseId": "53db04a0-case-2",
+  "findingBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-native8-fresh-independent-b-20261013-v1/NATIVE8.actual-inspection-and-scientific-findings.json",
+    "bytes": 6752,
+    "sha256": "sha256:1e7c94fd2b0302411722eb7c7164a95eb27704da75b63d67db0513aa332f6f16"
+  },
+  "scientificFinding": {
+    "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+    "caseId": "53db04a0-case-2",
+    "finding": "Changing Ph to explicitly named R=p-methylphenyl, with unchanged coupling partner, specified site, mechanism and balances, supplies no demanded inference from a changed chemical or representation condition. Independent meaningful transfer remains unproved in this case pair.",
+    "requiredFollowup": "Keep both complete synthesis routes; add and grade a genuinely changed, independently reasoned intermediate/charge or relevant-condition case. Do not shorten the canonical demand.",
+    "descriptionDecision": "keep",
+    "evidenceProfileRecommendation": "revise",
+    "resolved": false
+  },
+  "operations": [
+    {
+      "operationId": "whole-case2",
+      "baseBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current403-four-profile-current-input-author-successor-20261013-v1/positive/eight-whole-cases.exact-unchanged.json",
+        "bytes": 61921,
+        "sha256": "sha256:d0ea41ed863821088cddaf8618b5686cb88cd0bd6c12524e577c747113d5d02f"
+      },
+      "selector": {
+        "array": "cases",
+        "field": "caseId",
+        "value": "53db04a0-case-2"
+      },
+      "CAS": {
+        "serialization": "UTF-8 JSON sorted keys compact plus one LF",
+        "wholeBeforeCellSHA256": "sha256:ccb6bea6cb12cf827d0e2e9dc3b1a92413f95802c28093aec6fcd80e719e0126",
+        "wholeAfterCellSHA256": "sha256:bead30e561e2db7f1d9ed9dc6291f27352b4e0ffc93ca18cd04ff550323c8724"
+      },
+      "beforeWholeCell": {
+        "caseId": "53db04a0-case-2",
+        "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+        "titleDe": "Methylsubstituierter Aldehyd, Leukoverbindung und Oxidation",
+        "titleEn": "Methyl-substituted aldehyde, leuco compound and oxidation",
+        "dataOrigin": "Original invented idealized teaching data unless an explicitly attributed primary reference is named; no measured experiment or learner result",
+        "languageParity": "Complete DE/EN data, task, answer, rubric and demand spans",
+        "dataDe": "Papiermodell: Die Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt.",
+        "dataEn": "Paper model: The route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made.",
+        "taskDe": "1. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.",
+        "taskEn": "1. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.",
+        "modelAnswerDe": "1. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.",
+        "modelAnswerEn": "1. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.",
+        "expectationIds": [
+          "e2"
+        ],
+        "visualizationRequired": false,
+        "practicalExecutionRequired": false,
+        "executionClaim": "No execution occurred. Supplied or synthetic observations cannot earn practical-execution credit.",
+        "rubric": [
+          {
+            "criterionId": "53db04a0-case-2-r1",
+            "expectationIds": [
+              "e2"
+            ],
+            "taskClauseDe": "Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.",
+            "taskClauseEn": "Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.",
+            "criterionDe": "R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.",
+            "criterionEn": "Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.",
+            "maximumPoints": 2,
+            "partialCreditDe": "1 Punkt für einen fachlich richtigen, ausdrücklich verlangten Teil; 2 für den vollständigen Nachweis; 0 für fehlenden oder falschen Nachweis. Ausführungspunkte setzen die benannte reale Beobachtung voraus.",
+            "partialCreditEn": "1 point for a correct explicitly requested part; 2 for complete evidence; 0 for missing or wrong evidence. Execution credit requires the stated real observation.",
+            "creditBasis": "written-explicit-task",
+            "taskSpanDe": {
+              "start": 3,
+              "end": 215
+            },
+            "taskSpanEn": {
+              "start": 3,
+              "end": 192
+            }
+          }
+        ],
+        "maximumPoints": 2,
+        "optionalModelRemarksDe": [],
+        "optionalModelRemarksEn": [],
+        "gradingBoundary": "Only explicitly demanded evidence earns credit. A case maps requested aspects, not automatic full profile completion. Observe practical actions separately; missing actual observation means those points remain unavailable.",
+        "sourceWholeCaseId": "e5941581-case-2"
+      },
+      "afterWholeCell": {
+        "caseId": "53db04a0-case-2",
+        "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+        "titleDe": "Methylsubstituierter Aldehyd, Leukoverbindung und Oxidation",
+        "titleEn": "Methyl-substituted aldehyde, leuco compound and oxidation",
+        "dataOrigin": "Original invented idealized teaching data unless an explicitly attributed primary reference is named; no measured experiment or learner result",
+        "languageParity": "Complete DE/EN data, task, answer, rubric and demand spans",
+        "dataDe": "Papiermodell: Die Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt. Die Papierroute ist bei X = R–CH(OH)–Ar nach dem ersten Ringangriff und seiner Rearomatisierung unterbrochen. Ein fehlerhafter Routenentwurf nennt X die fertige Leukoverbindung und will danach nur die Oxidationsstufe der Leukoverbindung R–CH(Ar)₂ verwenden, um [R–C(Ar)₂]⁺ zu erhalten. Zu prüfen ist nur diese angegebene Route; andere mögliche Oxidationsprodukte von X sind nicht gefragt.",
+        "dataEn": "Paper model: The route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made. The paper route is interrupted at X = R–CH(OH)–Ar after the first arene attack and its rearomatization. An incorrect route draft calls X the completed leuco compound and then proposes only the oxidation step of the leuco compound R–CH(Ar)₂ to obtain [R–C(Ar)₂]⁺. Assess only this stated route; other possible oxidation products of X are not requested.",
+        "taskDe": "1. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.\n2. Prüfe den Routenentwurf für X: Begründe anhand der gebundenen Arylreste und der OH-Gruppe, ob X bereits die Leukoverbindung ist. Erkläre, ob die Oxidationshalbreaktion dieser Leukoverbindung allein die noch fehlende Aryl-C–C-Bindung erzeugen kann. Benenne und begründe die noch nötigen Stufen bis zum vorgesehenen Farbstoffkation und korrigiere ihre Reihenfolge.",
+        "taskEn": "1. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.\n2. Assess the route draft for X: use the attached aryl groups and the OH group to justify whether X is already the leuco compound. Explain whether that leuco compound oxidation half-equation alone can create the still missing aryl C–C bond. Identify and justify the remaining stages up to the intended dye cation and correct their order.",
+        "modelAnswerDe": "1. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.\n2. X trägt am zentralen C nur R und einen Ar-Rest sowie H und OH; die neutrale Leukoverbindung R–CH(Ar)₂ trägt dagegen drei Arylreste und keine OH-Gruppe. X ist daher die Zwischenstufe nach der ersten Addition und noch nicht die fertige Leukoverbindung. Die angegebene Leuko-Oxidationshalbreaktion verändert die zentrale H-Besetzung und die Ladungs-/Elektronenbilanz; sie fügt keinen Ar-Rest hinzu und kann die fehlende Aryl-C–C-Bindung nicht erzeugen. Im vorgegebenen Routenmodell fehlen zunächst OH-Protonierung und H₂O-Abgabe zu R–CH(Ar)⁺, dann der zweite Ar–H-Ringangriff und die Rearomatisierung durch Ring-H⁺-Abgabe zu R–CH(Ar)₂. Erst danach passt die Oxidation zu [R–C(Ar)₂]⁺ mit H⁺ + 2e⁻ (Ladung 0 = +1 +1 −2). Eine unbekannte alternative Oxidation von X wird damit nicht vorhergesagt.",
+        "modelAnswerEn": "1. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.\n2. At its central C, X has only R and one Ar residue together with H and OH; the neutral leuco compound R–CH(Ar)₂ instead has three aryl residues and no OH group. X is therefore the intermediate after the first addition, not the completed leuco compound. The stated leuco oxidation half-equation changes the central H occupancy and the charge/electron balance; it adds no Ar residue and cannot create the missing aryl C–C bond. In the supplied route model, OH protonation and loss of H₂O to give R–CH(Ar)⁺ are still needed, followed by the second Ar–H arene attack and rearomatization by ring-H⁺ loss to R–CH(Ar)₂. Only then does oxidation to [R–C(Ar)₂]⁺ with H⁺ + 2e⁻ apply (charge 0 = +1 +1 −2). This makes no prediction about an unknown alternative oxidation of X.",
+        "expectationIds": [
+          "e2"
+        ],
+        "visualizationRequired": false,
+        "practicalExecutionRequired": false,
+        "executionClaim": "No execution occurred. Supplied or synthetic observations cannot earn practical-execution credit.",
+        "rubric": [
+          {
+            "criterionId": "53db04a0-case-2-r1",
+            "expectationIds": [
+              "e2"
+            ],
+            "taskClauseDe": "Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.",
+            "taskClauseEn": "Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.",
+            "criterionDe": "R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.",
+            "criterionEn": "Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.",
+            "maximumPoints": 2,
+            "partialCreditDe": "1 Punkt für einen fachlich richtigen, ausdrücklich verlangten Teil; 2 für den vollständigen Nachweis; 0 für fehlenden oder falschen Nachweis. Ausführungspunkte setzen die benannte reale Beobachtung voraus.",
+            "partialCreditEn": "1 point for a correct explicitly requested part; 2 for complete evidence; 0 for missing or wrong evidence. Execution credit requires the stated real observation.",
+            "creditBasis": "written-explicit-task",
+            "taskSpanDe": {
+              "start": 3,
+              "end": 215
+            },
+            "taskSpanEn": {
+              "start": 3,
+              "end": 192
+            }
+          },
+          {
+            "criterionId": "53db04a0-case-2-r2",
+            "expectationIds": [
+              "e2"
+            ],
+            "taskClauseDe": "Prüfe den Routenentwurf für X: Begründe anhand der gebundenen Arylreste und der OH-Gruppe, ob X bereits die Leukoverbindung ist. Erkläre, ob die Oxidationshalbreaktion dieser Leukoverbindung allein die noch fehlende Aryl-C–C-Bindung erzeugen kann. Benenne und begründe die noch nötigen Stufen bis zum vorgesehenen Farbstoffkation und korrigiere ihre Reihenfolge.",
+            "taskClauseEn": "Assess the route draft for X: use the attached aryl groups and the OH group to justify whether X is already the leuco compound. Explain whether that leuco compound oxidation half-equation alone can create the still missing aryl C–C bond. Identify and justify the remaining stages up to the intended dye cation and correct their order.",
+            "criterionDe": "X trägt am zentralen C nur R und einen Ar-Rest sowie H und OH; die neutrale Leukoverbindung R–CH(Ar)₂ trägt dagegen drei Arylreste und keine OH-Gruppe. X ist daher die Zwischenstufe nach der ersten Addition und noch nicht die fertige Leukoverbindung. Die angegebene Leuko-Oxidationshalbreaktion verändert die zentrale H-Besetzung und die Ladungs-/Elektronenbilanz; sie fügt keinen Ar-Rest hinzu und kann die fehlende Aryl-C–C-Bindung nicht erzeugen. Im vorgegebenen Routenmodell fehlen zunächst OH-Protonierung und H₂O-Abgabe zu R–CH(Ar)⁺, dann der zweite Ar–H-Ringangriff und die Rearomatisierung durch Ring-H⁺-Abgabe zu R–CH(Ar)₂. Erst danach passt die Oxidation zu [R–C(Ar)₂]⁺ mit H⁺ + 2e⁻ (Ladung 0 = +1 +1 −2). Eine unbekannte alternative Oxidation von X wird damit nicht vorhergesagt.",
+            "criterionEn": "At its central C, X has only R and one Ar residue together with H and OH; the neutral leuco compound R–CH(Ar)₂ instead has three aryl residues and no OH group. X is therefore the intermediate after the first addition, not the completed leuco compound. The stated leuco oxidation half-equation changes the central H occupancy and the charge/electron balance; it adds no Ar residue and cannot create the missing aryl C–C bond. In the supplied route model, OH protonation and loss of H₂O to give R–CH(Ar)⁺ are still needed, followed by the second Ar–H arene attack and rearomatization by ring-H⁺ loss to R–CH(Ar)₂. Only then does oxidation to [R–C(Ar)₂]⁺ with H⁺ + 2e⁻ apply (charge 0 = +1 +1 −2). This makes no prediction about an unknown alternative oxidation of X.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte: begründet mit zwei statt drei Arylresten und verbleibender OH-Gruppe die falsche Leuko-Zuordnung, erklärt die fehlende Bindungsbildung der angegebenen Oxidation und ordnet die noch nötigen Kondensationsschritte vor die Leuko-Oxidation. 1 Punkt: mindestens eine dieser struktur- oder routenbezogenen Folgerungen ist richtig begründet, der übrige Nachweis bleibt unvollständig. 0 Punkte: nur Behauptung, Restnamenwechsel oder keine richtige Begründung. Keine Ausführungspunkte.",
+            "partialCreditEn": "2 points: uses two rather than three aryl residues and the remaining OH group to justify the incorrect leuco assignment, explains that the stated oxidation cannot form the missing bond, and places the remaining condensation stages before leuco oxidation. 1 point: at least one of these structure- or route-based inferences is correctly justified but the remaining evidence is incomplete. 0 points: unsupported assertion, residue-name change or no correct reasoning. No execution credit.",
+            "creditBasis": "written-explicit-task",
+            "taskSpanDe": {
+              "start": 219,
+              "end": 581
+            },
+            "taskSpanEn": {
+              "start": 196,
+              "end": 530
+            }
+          }
+        ],
+        "maximumPoints": 4,
+        "optionalModelRemarksDe": [],
+        "optionalModelRemarksEn": [],
+        "gradingBoundary": "Only explicitly demanded evidence earns credit. A case maps requested aspects, not automatic full profile completion. Observe practical actions separately; missing actual observation means those points remain unavailable.",
+        "sourceWholeCaseId": "e5941581-case-2"
+      }
+    },
+    {
+      "operationId": "whole-53db-profile",
+      "baseBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current403-four-profile-current-input-author-successor-20261013-v1/positive/four-full-profiles.DEEN.author.json",
+        "bytes": 34956,
+        "sha256": "sha256:99f867910226a96ee1d5429d05411bf5f7fb2774a0251b8332276b221f2727b6"
+      },
+      "selector": {
+        "array": "profiles",
+        "field": "goalId",
+        "value": "53db04a0-ea76-5810-9526-c8639100e497"
+      },
+      "CAS": {
+        "serialization": "UTF-8 JSON sorted keys compact plus one LF",
+        "wholeBeforeCellSHA256": "sha256:252ba8b96f092c759e6f4d4ebec86ddd3bcf08caf20f5db87648b91b5f758b0b",
+        "wholeAfterCellSHA256": "sha256:9b68cf682896d7ac3c00960905842f13a11a5675dc1b5151aac0d4041bb1ad67"
+      },
+      "beforeWholeCell": {
+        "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+        "profile": {
+          "archetype": "procedure",
+          "expectations": [
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "essentialUnderstandingEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound.",
+              "observablePerformanceDe": "Stellt die Kondensationsschritte und ladungsbilanzierte Oxidation dar.",
+              "observablePerformanceEn": "Represents condensation steps and charge-balanced oxidation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e2"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Aromatischer Aldehydrest",
+              "textEn": "Aromatic aldehyde residue"
+            },
+            {
+              "id": "v2",
+              "textDe": "Leukoverbindung, Farbstoffkation und Oxidationsbilanz",
+              "textEn": "Leuco compound, dye cation and oxidation balance"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "53db04a0-case-1",
+              "taskDemandDe": "Nur Papiermechanismen, keine Ausführung. Triarylmethan: Ph–CHO + 2 Ar–H, Ar–H=N,N-Dimethylanilin, Angriff jeweils para zum –N(CH₃)₂. Säurekatalyse liefert Ph–CH(Ar)₂; anschließende Oxidation liefert [Ph–C(Ar)₂]⁺.\n1. Stelle für Ph–CHO die Carbonylprotonierung, zwei para-Angriffe von Ar–H mit Wasserabspaltung zwischen ihnen und die jeweilige Rearomatisierung dar; schreibe Kondensationsgleichung und Oxidationshalbreaktion.",
+              "taskDemandEn": "Paper mechanisms only, no execution. Triarylmethane: Ph–CHO + 2 Ar–H, with Ar–H=N,N-dimethylaniline and each attack para to –N(CH₃)₂. Acid catalysis gives Ph–CH(Ar)₂; oxidation then gives [Ph–C(Ar)₂]⁺.\n1. Show carbonyl protonation, two para attacks by Ar–H with water loss between them and each rearomatization; write the condensation equation and oxidation half-equation.",
+              "expectedPerformanceDe": "1. O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2).",
+              "expectedPerformanceEn": "1. O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge.",
+              "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+            },
+            {
+              "id": "53db04a0-case-2",
+              "taskDemandDe": "Papiermodell: Die Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt.\n1. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.",
+              "taskDemandEn": "Paper model: The route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made.\n1. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.",
+              "expectedPerformanceDe": "1. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.",
+              "expectedPerformanceEn": "1. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.",
+              "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+            }
+          ]
+        }
+      },
+      "afterWholeCell": {
+        "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+        "profile": {
+          "archetype": "procedure",
+          "expectations": [
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "essentialUnderstandingEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound.",
+              "observablePerformanceDe": "Stellt die Kondensationsschritte und ladungsbilanzierte Oxidation dar.",
+              "observablePerformanceEn": "Represents condensation steps and charge-balanced oxidation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e2"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Aromatischer Aldehydrest",
+              "textEn": "Aromatic aldehyde residue"
+            },
+            {
+              "id": "v2",
+              "textDe": "Leukoverbindung, Farbstoffkation und Oxidationsbilanz",
+              "textEn": "Leuco compound, dye cation and oxidation balance"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "53db04a0-case-1",
+              "taskDemandDe": "Nur Papiermechanismen, keine Ausführung. Triarylmethan: Ph–CHO + 2 Ar–H, Ar–H=N,N-Dimethylanilin, Angriff jeweils para zum –N(CH₃)₂. Säurekatalyse liefert Ph–CH(Ar)₂; anschließende Oxidation liefert [Ph–C(Ar)₂]⁺.\n1. Stelle für Ph–CHO die Carbonylprotonierung, zwei para-Angriffe von Ar–H mit Wasserabspaltung zwischen ihnen und die jeweilige Rearomatisierung dar; schreibe Kondensationsgleichung und Oxidationshalbreaktion.",
+              "taskDemandEn": "Paper mechanisms only, no execution. Triarylmethane: Ph–CHO + 2 Ar–H, with Ar–H=N,N-dimethylaniline and each attack para to –N(CH₃)₂. Acid catalysis gives Ph–CH(Ar)₂; oxidation then gives [Ph–C(Ar)₂]⁺.\n1. Show carbonyl protonation, two para attacks by Ar–H with water loss between them and each rearomatization; write the condensation equation and oxidation half-equation.",
+              "expectedPerformanceDe": "1. O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2).",
+              "expectedPerformanceEn": "1. O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge.",
+              "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+            },
+            {
+              "id": "53db04a0-case-2",
+              "taskDemandDe": "Papiermodell: Die Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt. Die Papierroute ist bei X = R–CH(OH)–Ar nach dem ersten Ringangriff und seiner Rearomatisierung unterbrochen. Ein fehlerhafter Routenentwurf nennt X die fertige Leukoverbindung und will danach nur die Oxidationsstufe der Leukoverbindung R–CH(Ar)₂ verwenden, um [R–C(Ar)₂]⁺ zu erhalten. Zu prüfen ist nur diese angegebene Route; andere mögliche Oxidationsprodukte von X sind nicht gefragt.\n1. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.\n2. Prüfe den Routenentwurf für X: Begründe anhand der gebundenen Arylreste und der OH-Gruppe, ob X bereits die Leukoverbindung ist. Erkläre, ob die Oxidationshalbreaktion dieser Leukoverbindung allein die noch fehlende Aryl-C–C-Bindung erzeugen kann. Benenne und begründe die noch nötigen Stufen bis zum vorgesehenen Farbstoffkation und korrigiere ihre Reihenfolge.",
+              "taskDemandEn": "Paper model: The route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made. The paper route is interrupted at X = R–CH(OH)–Ar after the first arene attack and its rearomatization. An incorrect route draft calls X the completed leuco compound and then proposes only the oxidation step of the leuco compound R–CH(Ar)₂ to obtain [R–C(Ar)₂]⁺. Assess only this stated route; other possible oxidation products of X are not requested.\n1. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.\n2. Assess the route draft for X: use the attached aryl groups and the OH group to justify whether X is already the leuco compound. Explain whether that leuco compound oxidation half-equation alone can create the still missing aryl C–C bond. Identify and justify the remaining stages up to the intended dye cation and correct their order.",
+              "expectedPerformanceDe": "1. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.\n2. X trägt am zentralen C nur R und einen Ar-Rest sowie H und OH; die neutrale Leukoverbindung R–CH(Ar)₂ trägt dagegen drei Arylreste und keine OH-Gruppe. X ist daher die Zwischenstufe nach der ersten Addition und noch nicht die fertige Leukoverbindung. Die angegebene Leuko-Oxidationshalbreaktion verändert die zentrale H-Besetzung und die Ladungs-/Elektronenbilanz; sie fügt keinen Ar-Rest hinzu und kann die fehlende Aryl-C–C-Bindung nicht erzeugen. Im vorgegebenen Routenmodell fehlen zunächst OH-Protonierung und H₂O-Abgabe zu R–CH(Ar)⁺, dann der zweite Ar–H-Ringangriff und die Rearomatisierung durch Ring-H⁺-Abgabe zu R–CH(Ar)₂. Erst danach passt die Oxidation zu [R–C(Ar)₂]⁺ mit H⁺ + 2e⁻ (Ladung 0 = +1 +1 −2). Eine unbekannte alternative Oxidation von X wird damit nicht vorhergesagt.",
+              "expectedPerformanceEn": "1. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.\n2. At its central C, X has only R and one Ar residue together with H and OH; the neutral leuco compound R–CH(Ar)₂ instead has three aryl residues and no OH group. X is therefore the intermediate after the first addition, not the completed leuco compound. The stated leuco oxidation half-equation changes the central H occupancy and the charge/electron balance; it adds no Ar residue and cannot create the missing aryl C–C bond. In the supplied route model, OH protonation and loss of H₂O to give R–CH(Ar)⁺ are still needed, followed by the second Ar–H arene attack and rearomatization by ring-H⁺ loss to R–CH(Ar)₂. Only then does oxidation to [R–C(Ar)₂]⁺ with H⁺ + 2e⁻ apply (charge 0 = +1 +1 −2). This makes no prediction about an unknown alternative oxidation of X.",
+              "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operationId": "whole-53db-candidate-spec",
+      "baseBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current403-four-P-normal-input-materialization-author-20261013-v1/positive/stock-candidate-set.current-reviewed-content.author.json",
+        "bytes": 37358,
+        "sha256": "sha256:deaaa57ccda287a52b7506c6c8530d45ba4cd9aad6ca3bae1958c0987919c6f4"
+      },
+      "selector": {
+        "array": "goals",
+        "field": "goalId",
+        "value": "53db04a0-ea76-5810-9526-c8639100e497"
+      },
+      "CAS": {
+        "serialization": "UTF-8 JSON sorted keys compact plus one LF",
+        "wholeBeforeCellSHA256": "sha256:1d400cb9eef2142af5e80cda5fff3619e911d69bba5620f697246189aadaccd1",
+        "wholeAfterCellSHA256": "sha256:0579933809de15e397968d510e55652e779683523f4026a5baf573b8086319e4"
+      },
+      "beforeWholeCell": {
+        "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+        "reason": "Complete unchanged bilingual profile and case design received exact independent A/B bounded-positive content decisions. This record is materialized by the unmodified production API against the exact inactive current403 goal, semantic-kind and actual reviewed image bytes. It remains an AI candidate needing human review; native D/A/M/V and active integration are separate. Two different evidence pieces may occur within one rich task; the two case variants are alternatives, not an extra-task quota.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "profile": {
+          "archetype": "procedure",
+          "expectations": [
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "essentialUnderstandingEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound.",
+              "observablePerformanceDe": "Stellt die Kondensationsschritte und ladungsbilanzierte Oxidation dar.",
+              "observablePerformanceEn": "Represents condensation steps and charge-balanced oxidation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e2"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Aromatischer Aldehydrest",
+              "textEn": "Aromatic aldehyde residue"
+            },
+            {
+              "id": "v2",
+              "textDe": "Leukoverbindung, Farbstoffkation und Oxidationsbilanz",
+              "textEn": "Leuco compound, dye cation and oxidation balance"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "53db04a0-case-1",
+              "taskDemandDe": "Nur Papiermechanismen, keine Ausführung. Triarylmethan: Ph–CHO + 2 Ar–H, Ar–H=N,N-Dimethylanilin, Angriff jeweils para zum –N(CH₃)₂. Säurekatalyse liefert Ph–CH(Ar)₂; anschließende Oxidation liefert [Ph–C(Ar)₂]⁺.\n1. Stelle für Ph–CHO die Carbonylprotonierung, zwei para-Angriffe von Ar–H mit Wasserabspaltung zwischen ihnen und die jeweilige Rearomatisierung dar; schreibe Kondensationsgleichung und Oxidationshalbreaktion.",
+              "taskDemandEn": "Paper mechanisms only, no execution. Triarylmethane: Ph–CHO + 2 Ar–H, with Ar–H=N,N-dimethylaniline and each attack para to –N(CH₃)₂. Acid catalysis gives Ph–CH(Ar)₂; oxidation then gives [Ph–C(Ar)₂]⁺.\n1. Show carbonyl protonation, two para attacks by Ar–H with water loss between them and each rearomatization; write the condensation equation and oxidation half-equation.",
+              "expectedPerformanceDe": "1. O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2).",
+              "expectedPerformanceEn": "1. O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge.",
+              "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+            },
+            {
+              "id": "53db04a0-case-2",
+              "taskDemandDe": "Papiermodell: Die Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt.\n1. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.",
+              "taskDemandEn": "Paper model: The route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made.\n1. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.",
+              "expectedPerformanceDe": "1. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.",
+              "expectedPerformanceEn": "1. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.",
+              "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+            }
+          ]
+        }
+      },
+      "afterWholeCell": {
+        "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+        "reason": "Bounded unreviewed author correction for the fresh native53db Case2 transfer finding: the supplied first-addition intermediate and an incorrect proposed route now require justified bond/structure and remaining-stage inference. The full original synthesis goal, both equations, expectation definitions and Case1 remain unchanged. Targeted independent followups are required; this carrier gives no current P/D acceptance. Different evidence pieces may be integrated in one rich task; there is no extra-task quota.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "profile": {
+          "archetype": "procedure",
+          "expectations": [
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "essentialUnderstandingEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound.",
+              "observablePerformanceDe": "Stellt die Kondensationsschritte und ladungsbilanzierte Oxidation dar.",
+              "observablePerformanceEn": "Represents condensation steps and charge-balanced oxidation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e2"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Aromatischer Aldehydrest",
+              "textEn": "Aromatic aldehyde residue"
+            },
+            {
+              "id": "v2",
+              "textDe": "Leukoverbindung, Farbstoffkation und Oxidationsbilanz",
+              "textEn": "Leuco compound, dye cation and oxidation balance"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "53db04a0-case-1",
+              "taskDemandDe": "Nur Papiermechanismen, keine Ausführung. Triarylmethan: Ph–CHO + 2 Ar–H, Ar–H=N,N-Dimethylanilin, Angriff jeweils para zum –N(CH₃)₂. Säurekatalyse liefert Ph–CH(Ar)₂; anschließende Oxidation liefert [Ph–C(Ar)₂]⁺.\n1. Stelle für Ph–CHO die Carbonylprotonierung, zwei para-Angriffe von Ar–H mit Wasserabspaltung zwischen ihnen und die jeweilige Rearomatisierung dar; schreibe Kondensationsgleichung und Oxidationshalbreaktion.",
+              "taskDemandEn": "Paper mechanisms only, no execution. Triarylmethane: Ph–CHO + 2 Ar–H, with Ar–H=N,N-dimethylaniline and each attack para to –N(CH₃)₂. Acid catalysis gives Ph–CH(Ar)₂; oxidation then gives [Ph–C(Ar)₂]⁺.\n1. Show carbonyl protonation, two para attacks by Ar–H with water loss between them and each rearomatization; write the condensation equation and oxidation half-equation.",
+              "expectedPerformanceDe": "1. O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2).",
+              "expectedPerformanceEn": "1. O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge.",
+              "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+            },
+            {
+              "id": "53db04a0-case-2",
+              "taskDemandDe": "Papiermodell: Die Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt. Die Papierroute ist bei X = R–CH(OH)–Ar nach dem ersten Ringangriff und seiner Rearomatisierung unterbrochen. Ein fehlerhafter Routenentwurf nennt X die fertige Leukoverbindung und will danach nur die Oxidationsstufe der Leukoverbindung R–CH(Ar)₂ verwenden, um [R–C(Ar)₂]⁺ zu erhalten. Zu prüfen ist nur diese angegebene Route; andere mögliche Oxidationsprodukte von X sind nicht gefragt.\n1. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.\n2. Prüfe den Routenentwurf für X: Begründe anhand der gebundenen Arylreste und der OH-Gruppe, ob X bereits die Leukoverbindung ist. Erkläre, ob die Oxidationshalbreaktion dieser Leukoverbindung allein die noch fehlende Aryl-C–C-Bindung erzeugen kann. Benenne und begründe die noch nötigen Stufen bis zum vorgesehenen Farbstoffkation und korrigiere ihre Reihenfolge.",
+              "taskDemandEn": "Paper model: The route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made. The paper route is interrupted at X = R–CH(OH)–Ar after the first arene attack and its rearomatization. An incorrect route draft calls X the completed leuco compound and then proposes only the oxidation step of the leuco compound R–CH(Ar)₂ to obtain [R–C(Ar)₂]⁺. Assess only this stated route; other possible oxidation products of X are not requested.\n1. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.\n2. Assess the route draft for X: use the attached aryl groups and the OH group to justify whether X is already the leuco compound. Explain whether that leuco compound oxidation half-equation alone can create the still missing aryl C–C bond. Identify and justify the remaining stages up to the intended dye cation and correct their order.",
+              "expectedPerformanceDe": "1. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.\n2. X trägt am zentralen C nur R und einen Ar-Rest sowie H und OH; die neutrale Leukoverbindung R–CH(Ar)₂ trägt dagegen drei Arylreste und keine OH-Gruppe. X ist daher die Zwischenstufe nach der ersten Addition und noch nicht die fertige Leukoverbindung. Die angegebene Leuko-Oxidationshalbreaktion verändert die zentrale H-Besetzung und die Ladungs-/Elektronenbilanz; sie fügt keinen Ar-Rest hinzu und kann die fehlende Aryl-C–C-Bindung nicht erzeugen. Im vorgegebenen Routenmodell fehlen zunächst OH-Protonierung und H₂O-Abgabe zu R–CH(Ar)⁺, dann der zweite Ar–H-Ringangriff und die Rearomatisierung durch Ring-H⁺-Abgabe zu R–CH(Ar)₂. Erst danach passt die Oxidation zu [R–C(Ar)₂]⁺ mit H⁺ + 2e⁻ (Ladung 0 = +1 +1 −2). Eine unbekannte alternative Oxidation von X wird damit nicht vorhergesagt.",
+              "expectedPerformanceEn": "1. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.\n2. At its central C, X has only R and one Ar residue together with H and OH; the neutral leuco compound R–CH(Ar)₂ instead has three aryl residues and no OH group. X is therefore the intermediate after the first addition, not the completed leuco compound. The stated leuco oxidation half-equation changes the central H occupancy and the charge/electron balance; it adds no Ar residue and cannot create the missing aryl C–C bond. In the supplied route model, OH protonation and loss of H₂O to give R–CH(Ar)⁺ are still needed, followed by the second Ar–H arene attack and rearomatization by ring-H⁺ loss to R–CH(Ar)₂. Only then does oxidation to [R–C(Ar)₂]⁺ with H⁺ + 2e⁻ apply (charge 0 = +1 +1 −2). This makes no prediction about an unknown alternative oxidation of X.",
+              "understandingFocusDe": "Eine Triphenylmethanroute koppelt zweimal einen aktivierten Aromaten an ein Carbonylkohlenstoffzentrum und erzeugt den Farbstoff erst durch Oxidation der Leukoverbindung.",
+              "understandingFocusEn": "A triphenylmethane route attaches two activated arenes to a carbonyl carbon and produces the dye only after oxidizing the leuco compound."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "currentPApproval": false,
+  "currentDApproval": false,
+  "humanApproval": false,
+  "activeWrites": false
+}

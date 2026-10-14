@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "license": "CC-BY-4.0",
+  "goalIds": [
+    "2652caef-b557-58b9-9b28-70db62625ce5",
+    "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+    "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+    "53db04a0-ea76-5810-9526-c8639100e497"
+  ],
+  "sourceBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-corrected-P8-targeted-native4-technical-20261014-v1/positive/two-child-cases.exact-science.json",
+      "bytes": 35715,
+      "sha256": "sha256:dc1783da8a88f107574987772f5f17e45317314c80d692a61bc5e6846211b8d8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-corrected-P8-targeted-native4-technical-20261014-v1/positive/eight-synthesis-case-carrier.exact-science.json",
+      "bytes": 69017,
+      "sha256": "sha256:6feab249a9ebf1c23badea350e3e94f943717e033da989c7541b909089c565c0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-case-profile-binding-author-20261013-v1/positive/whole74.exact-bilingual-cases.author.json",
+      "bytes": 564952,
+      "sha256": "sha256:0f4a2a01684ab687859d3b3e3558528fa9765a62472efdcf767b0dc9013be93c"
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "e560-formation-case-1",
+      "goalId": "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+      "title": "Silanol-Trimer und elastische Dichtung",
+      "titleEn": "Silanol trimer and elastic seal",
+      "dataOrigin": "Own idealized teaching-model data adapted from the exact former whole silicone cases; no measured learner/laboratory result or actual product claim.",
+      "languageParity": "Complete paired DE/EN data, tasks, answers and rubrics.",
+      "dataDe": "Papiermodell: HO–Si(CH₃)₂–OH. Drei Moleküle bilden eine endliche lineare Kette, keinen Ring. Als Vergleich ist PE mit –CH₂–CH₂– gegeben. Ein nicht vernetztes PDMS ist fließendes Öl; kovalent vernetztes PDMS stellt nach Dehnung zurück. Für eine Dichtung ist Rückstellung verlangt. Die Angaben sind Materialbedingungen, keine Aussage, dass jedes Silikon dieselben Eigenschaften hat. Keine Laborherstellung wird verlangt.",
+      "dataEn": "Paper model: HO–Si(CH₃)₂–OH. Three molecules form a finite linear chain, not a ring. PE with –CH₂–CH₂– is supplied for comparison. Uncrosslinked PDMS is flowing oil; covalently crosslinked PDMS recovers after extension. A seal requires recovery. These are material conditions, not a claim that every silicone has the same properties. No laboratory preparation is required.",
+      "taskDe": "1. Beschreibe die Silanol-Kondensation durch eine vollständige Formel des Trimers samt Wasser und prüfe die Si/O-Valenzen. 2. Vergleiche Siloxanrückgrat und organische Seitengruppen mit dem PE-Modell. 3. Erkläre Öl gegenüber Elastomer anhand der Vernetzung und begründe unter den gegebenen Bedingungen eine Dichtungsauswahl. Was ändert sich, wenn dieselbe PDMS-Kette zunächst nicht vernetzt ist?",
+      "taskEn": "1. Describe silanol condensation using a complete trimer formula including water and check Si/O valences. 2. Compare the siloxane backbone and organic side groups with the PE model. 3. Explain oil versus elastomer through crosslinking and justify a seal choice under the supplied conditions. What changes if the same PDMS chain is initially uncrosslinked?",
+      "modelAnswerDe": "3 HO–Si(CH₃)₂–OH → HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH + 2 H₂O. Jedes Si trägt vier Einfachbindungen; Brücken-O zwei, terminaler OH-Sauerstoff Si und H. Das Si–O-Rückgrat mit Methylgruppen unterscheidet sich vom C–C-Rückgrat des PE-Modells. Gleiche Methylgruppen beweisen kein gleiches Rückgrat. Nicht vernetzte Ketten können gegeneinander gleiten; kovalente Netzpunkte begrenzen das Gleiten und ermöglichen im gegebenen Elastomer Rückstellung. Daher ist für die geforderte Formstabilität das gegebene vernetzte PDMS geeignet, das Öl nicht. Vernetzung verändert Verhalten bei derselben Polymerchemie; daraus folgt keine pauschale Überlegenheit aller Silikone gegenüber allen kohlenstoffbasierten Polymeren.",
+      "modelAnswerEn": "3 HO–Si(CH₃)₂–OH → HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH + 2 H₂O. Each Si has four single bonds; bridge O has two, terminal OH oxygen bonds to Si and H. The Si–O backbone with methyl groups differs from the C–C backbone of supplied PE. Identical methyl groups would not establish an identical backbone. Uncrosslinked chains can slide relative to each other; covalent network points restrict sliding and allow recovery in the supplied elastomer. Thus the given crosslinked PDMS suits the required shape stability, whereas the oil does not. Crosslinking changes behaviour at the same polymer chemistry; this does not prove universal superiority of all silicones over all carbon-based polymers.",
+      "expectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 2,
+          "criterionDe": "Formuliert endgruppenrichtiges Trimer und zwei H₂O; erklärt Si-Vierbindigkeit und O-Zweibindigkeit.",
+          "criterionEn": "Gives correctly terminated trimer and two H₂O; explains four bonds at Si and two at O.",
+          "fullCreditDe": "2 Punkte: Formuliert endgruppenrichtiges Trimer und zwei H₂O; erklärt Si-Vierbindigkeit und O-Zweibindigkeit.",
+          "fullCreditEn": "2 points: Gives correctly terminated trimer and two H₂O; explains four bonds at Si and two at O.",
+          "partialCreditDe": "1 Punkt: Die Siloxanverknüpfung stimmt, aber Wasserzahl oder Endgruppenprüfung fehlt.",
+          "partialCreditEn": "1 point: Siloxane linkage is correct but water count or end-group check is missing.",
+          "zeroCreditDe": "0 Punkte: Bilanz/Valenzen widersprechen dem Monomer oder Wasser wird ohne Kondensationserklärung gesetzt.",
+          "zeroCreditEn": "0 points: Balance/valences contradict the monomer or water is added without condensation reasoning."
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 2,
+          "criterionDe": "Vergleicht PDMS-Si–O mit Methylgruppen ausdrücklich mit PE-C–C und trennt Rückgrat von Seitengruppen.",
+          "criterionEn": "Explicitly compares PDMS Si–O with methyl groups against PE C–C and distinguishes backbone from side groups.",
+          "fullCreditDe": "2 Punkte: Vergleicht PDMS-Si–O mit Methylgruppen ausdrücklich mit PE-C–C und trennt Rückgrat von Seitengruppen.",
+          "fullCreditEn": "2 points: Explicitly compares PDMS Si–O with methyl groups against PE C–C and distinguishes backbone from side groups.",
+          "partialCreditDe": "1 Punkt: Nur ein Rückgrat oder die Seitengruppen werden richtig genannt.",
+          "partialCreditEn": "1 point: Only one backbone or side groups are identified correctly.",
+          "zeroCreditDe": "0 Punkte: Silikon wird mit elementarem Silicium oder mit PE-Rückgrat gleichgesetzt.",
+          "zeroCreditEn": "0 points: Silicone is equated with elemental silicon or the PE backbone."
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 2,
+          "criterionDe": "Erklärt gleitende Ölketten gegenüber kovalenten Netzpunkten und begründet Dichtung/Rückstellung auch beim Wechsel zur unvernetzten Variante.",
+          "criterionEn": "Explains sliding oil chains versus covalent network points and justifies seal/recovery including the change to an uncrosslinked variant.",
+          "fullCreditDe": "2 Punkte: Erklärt gleitende Ölketten gegenüber kovalenten Netzpunkten und begründet Dichtung/Rückstellung auch beim Wechsel zur unvernetzten Variante.",
+          "fullCreditEn": "2 points: Explains sliding oil chains versus covalent network points and justifies seal/recovery including the change to an uncrosslinked variant.",
+          "partialCreditDe": "1 Punkt: Dichtungsauswahl stimmt, aber Netzstruktur oder geänderte Variante wird nicht begründet.",
+          "partialCreditEn": "1 point: Seal choice is correct but network structure or changed variant is unexplained.",
+          "zeroCreditDe": "0 Punkte: Öl gilt ohne passende Daten als formstabiles Elastomer oder alle Polymerklassen werden pauschal gleichgesetzt.",
+          "zeroCreditEn": "0 points: Oil is treated as shape-stable elastomer without data or all polymer classes are equated."
+        }
+      ],
+      "maximumPoints": 6,
+      "visualizationRequired": false,
+      "executionClaim": "Author design only; no actual learner result, laboratory work, independent scientific acceptance or mastery.",
+      "noMandatoryLearnerTaskQuota": true,
+      "wholeGoalCoverageDesignClaim": "All three child expectations are elicited in this one multi-step case, including a condition variation; independent review pending."
+    },
+    {
+      "caseId": "e560-formation-case-2",
+      "goalId": "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+      "title": "Tetramer und begrenzter Werkstoffvergleich",
+      "titleEn": "Tetramer and bounded material comparison",
+      "dataOrigin": "Own idealized teaching-model data adapted from the exact former whole silicone cases; no measured learner/laboratory result or actual product claim.",
+      "languageParity": "Complete paired DE/EN data, tasks, answers and rubrics.",
+      "dataDe": "Papiermodell mit demselben Dimethylsilandiol: Vier HO–Si(CH₃)₂–OH bilden eine offene lineare Kette, keinen Ring. Ein solches unvernetztes Silikonmaterial wird im Fall als gleitfähiges Öl gegeben; nach Hinzufügen kovalenter Verknüpfungen zwischen Ketten stellt die Probe nach Dehnung zurück. Der bereitgestellte kohlenstoffbasierte Vergleich hat ein PE-C–C-Rückgrat und zeigt im Fall bleibende Formänderung. Beide Proben werden bei denselben angegebenen Prüfbedingungen verglichen; Wärmebeständigkeit und Langzeitverhalten sind nicht untersucht.",
+      "dataEn": "Paper model with the same dimethylsilanediol: four HO–Si(CH₃)₂–OH form an open linear chain, not a ring. An uncrosslinked silicone material is supplied as sliding oil; after covalent links are added between chains, the specimen recovers after extension. The supplied carbon-based comparison has a PE C–C backbone and shows permanent deformation in this case. Both specimens are compared under the same stated testing conditions; heat resistance and long-term behaviour have not been investigated.",
+      "taskDe": "1. Stelle die vollständige endliche Tetramer-Kondensation samt Wasser auf und erkläre den Unterschied zwischen Rückgratverknüpfung und zusätzlichen Netzpunkten. 2. Vergleiche die Molekülbauprinzipien mit PE und ausdrücklich die beobachteten Eigenschaften unter denselben Prüfbedingungen: rückstellendes vernetztes PDMS gegenüber bleibend verformtem PE. Erkläre, was dieser Fallvergleich zeigt und was die Rückgratbezeichnung allein nicht beweist. 3. Erkläre die geänderte Rückstellung anhand der Netzstruktur. Beurteile: „Das Silikon stellt hier zurück, also ist jedes Silikon für jede Beanspruchung besser als PE.“",
+      "taskEn": "1. Write the complete finite tetramer condensation including water and explain backbone linkage versus additional network points. 2. Compare molecular building principles with PE and explicitly compare observed properties under the same testing conditions: recovering crosslinked PDMS versus permanently deformed PE. Explain what this case comparison shows and what the backbone label alone does not establish. 3. Explain changed recovery through network structure. Assess: “This silicone recovers here, so every silicone is better than PE under every type of loading.”",
+      "modelAnswerDe": "4 HO–Si(CH₃)₂–OH → HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH + 3 H₂O. Drei neue Si–O–Si-Brücken entstehen in der offenen Kette; End-OH bleiben. Si–O mit organischen Methylgruppen ist nicht das C–C-Rückgrat von PE. Im gegebenen direkten Eigenschaftsvergleich stellt das vernetzte PDMS nach Dehnung zurück, während die PE-Probe unter denselben Prüfbedingungen bleibende Formänderung zeigt. Die Daten belegen diesen Unterschied der beiden konkreten Proben; das C–C-Rückgrat allein wird nicht als Ursache jeder PE-Verformung oder als Beweis eines allgemeinen Eigenschaftsurteils ausgegeben. Zusätzliche kovalente Verbindungen zwischen Ketten sind ein anderes Strukturmerkmal als bloß mehr Kettenlänge. Sie begrenzen im Fall das gegenseitige Gleiten und erklären die Rückstellung. Für diese Beanspruchung kann die vernetzte Probe geeigneter sein; der unvernetzte Ölzustand und fehlende Wärme-/Langzeitdaten verhindern eine allgemeine Rangfolge sämtlicher Silikone und kohlenstoffbasierter Polymere.",
+      "modelAnswerEn": "4 HO–Si(CH₃)₂–OH → HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH + 3 H₂O. Three new Si–O–Si bridges form in the open chain; terminal OH groups remain. Si–O with organic methyl groups is not the PE C–C backbone. In the supplied direct property comparison, crosslinked PDMS recovers after extension while the PE specimen shows permanent deformation under the same testing conditions. The data establish this difference between the two particular specimens; the C–C backbone alone is not treated as the cause of every PE deformation or as proof of a general property conclusion. Additional covalent links between chains are distinct from merely greater chain length. They restrict relative sliding in this case and explain recovery. For this loading the crosslinked specimen may be more suitable; uncrosslinked oil and missing heat/long-term data prevent a universal ranking of all silicones and carbon-based polymers.",
+      "expectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 2,
+          "criterionDe": "Gibt vollständiges Tetramer mit drei H₂O und korrekten Endgruppen/Si–O-Brücken an.",
+          "criterionEn": "Gives complete tetramer with three H₂O and correct end groups/Si–O bridges.",
+          "fullCreditDe": "2 Punkte: Gibt vollständiges Tetramer mit drei H₂O und korrekten Endgruppen/Si–O-Brücken an.",
+          "fullCreditEn": "2 points: Gives complete tetramer with three H₂O and correct end groups/Si–O bridges.",
+          "partialCreditDe": "1 Punkt: Die Kettenform stimmt, aber drei Wassermoleküle oder Endgruppen bleiben unbegründet.",
+          "partialCreditEn": "1 point: Chain is correct but three waters or end groups are unexplained.",
+          "zeroCreditDe": "0 Punkte: Ringbildung, falsche Wasserzahl oder falsche Si/O-Valenz wird behauptet.",
+          "zeroCreditEn": "0 points: Ring formation, wrong water count or wrong Si/O valence is asserted."
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 2,
+          "criterionDe": "Vergleicht Siloxan-Si–O/Methyl mit PE-C–C und trennt Kettenbildung von zusätzlichen Netzverknüpfungen. Vergleicht außerdem die beobachtete PDMS-Rückstellung ausdrücklich mit bleibender PE-Verformung unter gleichen Prüfbedingungen und begrenzt den Befund auf diese Proben; das Rückgrat allein erklärt nicht jede PE-Eigenschaft.",
+          "criterionEn": "Compares siloxane Si–O/methyl with PE C–C and separates chain formation from additional network links. Also explicitly compares observed PDMS recovery with permanent PE deformation under equal testing conditions and bounds the observation to these specimens; the backbone alone does not explain every PE property.",
+          "fullCreditDe": "2 Punkte: Vergleicht Siloxan-Si–O/Methyl mit PE-C–C und trennt Kettenbildung von zusätzlichen Netzverknüpfungen. Vergleicht außerdem die beobachtete PDMS-Rückstellung ausdrücklich mit bleibender PE-Verformung unter gleichen Prüfbedingungen und begrenzt den Befund auf diese Proben; das Rückgrat allein erklärt nicht jede PE-Eigenschaft.",
+          "fullCreditEn": "2 points: Compares siloxane Si–O/methyl with PE C–C and separates chain formation from additional network links. Also explicitly compares observed PDMS recovery with permanent PE deformation under equal testing conditions and bounds the observation to these specimens; the backbone alone does not explain every PE property.",
+          "partialCreditDe": "1 Punkt: Rückgrate werden erkannt, aber Netzwerk und Kettenlänge bleiben verwechselt. Oder der Strukturvergleich ist richtig, aber der ausdrücklich geforderte beobachtete Eigenschaftsvergleich zwischen PDMS und PE fehlt.",
+          "partialCreditEn": "1 point: Backbones are recognized but network links and chain length remain confused. Or the structural comparison is correct but the required observed PDMS-versus-PE property comparison is missing.",
+          "zeroCreditDe": "0 Punkte: Vernetzung wird allein aus Silikonnamen oder langer Kette abgeleitet. Oder aus C–C allein wird jede PE-Verformung abgeleitet beziehungsweise der gegebene beobachtete Unterschied wird geleugnet.",
+          "zeroCreditEn": "0 points: Crosslinking is inferred solely from the silicone name or a long chain. Or every PE deformation is inferred from C–C alone, or the supplied observed difference is denied."
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 2,
+          "criterionDe": "Erklärt Rückstellung und begrenzt die Werkstoffwahl auf gegebene Struktur, Beanspruchung und tatsächlich vorhandene Daten.",
+          "criterionEn": "Explains recovery and limits material choice to given structure, loading and available data.",
+          "fullCreditDe": "2 Punkte: Erklärt Rückstellung und begrenzt die Werkstoffwahl auf gegebene Struktur, Beanspruchung und tatsächlich vorhandene Daten.",
+          "fullCreditEn": "2 points: Explains recovery and limits material choice to given structure, loading and available data.",
+          "partialCreditDe": "1 Punkt: Begrenztes Urteil ohne Netzstrukturbegründung oder ohne konkrete Datenlücke.",
+          "partialCreditEn": "1 point: Limited conclusion lacks network reasoning or a specific data gap.",
+          "zeroCreditDe": "0 Punkte: Eine universelle Überlegenheit aller Silikone folgt aus dem einzelnen Fall.",
+          "zeroCreditEn": "0 points: Universal superiority of all silicones is inferred from one case."
+        }
+      ],
+      "maximumPoints": 6,
+      "visualizationRequired": false,
+      "executionClaim": "Author design only; no actual learner result, laboratory work, independent scientific acceptance or mastery.",
+      "noMandatoryLearnerTaskQuota": true,
+      "wholeGoalCoverageDesignClaim": "All three child expectations are elicited in this one multi-step case, including a condition variation; independent review pending."
+    },
+    {
+      "caseId": "e560-nanosurface-case-1",
+      "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+      "title": "40-nm-Schicht: Benetzung und Aussagegrenzen",
+      "titleEn": "40-nm film: wetting and claim limits",
+      "dataOrigin": "Own idealized teaching-model data adapted from the exact former whole silicone cases; no measured learner/laboratory result or actual product claim.",
+      "languageParity": "Complete paired DE/EN data, tasks, answers and rubrics.",
+      "dataDe": "Idealisiertes Materialblatt: Eine methylhaltige Siloxanschicht ist 40 nm dick. Glatte Oberfläche: Wasserkontaktwinkel 105°, Abrollwinkel 35°. Nanostrukturierte Oberfläche bei gleicher Silikonchemie: 155°, 5°. Eine anders chemisch beschaffene hydrophile Kontrolle ist ebenfalls 40 nm dick und hat Kontaktwinkel 25°. Ein kleinerer Abrollwinkel bedeutet im Materialblatt, dass ein Tropfen bereits bei geringerer Neigung bewegt werden kann. Schmutzabtrag und Abriebfestigkeit sind nicht gemessen. 40 nm beschreibt nur die Schichtdicke; eine Partikelmessung liegt nicht vor.",
+      "dataEn": "Idealized material sheet: a methyl-bearing siloxane film is 40 nm thick. Smooth surface: water contact angle 105°, roll-off angle 35°. Nanostructured surface at the same silicone chemistry: 155°, 5°. A chemically different hydrophilic control is also 40 nm thick and has contact angle 25°. A smaller roll-off angle means a drop can move at a smaller tilt in this material sheet. Dirt removal and abrasion resistance were not measured. The 40 nm value describes film thickness only; no particle measurement is supplied.",
+      "taskDe": "1. Erläutere an diesem Beispiel die Bedeutung von Silikonen für eine nanoskalige Oberflächenanwendung: Welche chemischen und strukturellen Hinweise können Wasserabweisung und bewegliche Tropfen erklären? 2. Vergleiche glatt/nanostrukturiert und die hydrophile Kontrolle. Trägt die Schichtdicke allein das Benetzungsurteil? 3. Prüfe „40 nm Dicke beweist 40 nm Silikonpartikel und eine dauerhaft selbstreinigende Oberfläche“. Begründe, welche Aussagen gestützt sind und welche weitere Beobachtung nötig wäre.",
+      "taskEn": "1. Explain silicone relevance for a nanoscale surface application in this example: which chemistry/structure evidence can account for water repellency and mobile drops? 2. Compare smooth/nanostructured surfaces and the hydrophilic control. Does film thickness alone establish wetting behaviour? 3. Evaluate “40 nm thickness proves 40 nm silicone particles and a permanently self-cleaning surface.” Explain supported claims and a needed further observation.",
+      "modelAnswerDe": "Eine nanoskalige Siloxanschicht kann als funktionale Oberfläche genutzt werden. Organische Methylgruppen sind mit Wasserabweisung vereinbar; bei gleicher Silikonchemie zeigen geänderte Oberflächenstruktur und 105°/35° gegenüber 155°/5°, dass Chemie allein nicht das gesamte Verhalten festlegt. Der kleinere Abrollwinkel unterstützt beweglichere Tropfen unter den gegebenen Bedingungen. Die hydrophile 40-nm-Kontrolle zeigt, dass gleiche Dicke nicht gleiche Benetzung bedeutet. 40 nm ist eine Schichtdimension, kein gemessener Partikeldurchmesser. Bewegliche Tropfen machen die Anwendung für wasserabweisende/gegebenenfalls reinigende Oberflächen interessant, beweisen aber weder tatsächlichen Schmutzabtrag noch Dauerhaftigkeit. Dafür sind passende Beobachtungen zum Schmutzabtrag und zum Verhalten nach Abrieb nötig; Nano bedeutet nicht automatisch mehr Funktion oder Sicherheit.",
+      "modelAnswerEn": "A nanoscale siloxane film can provide a functional surface. Organic methyl groups are compatible with water repellency; at the same silicone chemistry, changed structure and 105°/35° versus 155°/5° show that chemistry alone does not determine all behaviour. Smaller roll-off angle supports more mobile drops under the stated conditions. The hydrophilic 40-nm control shows that equal thickness does not mean equal wetting. The 40 nm value is a film dimension, not a measured particle diameter. Mobile drops make such surfaces relevant for water-repellent/potentially cleaning applications but establish neither actual dirt removal nor durability. Appropriate dirt-removal observations and behaviour after abrasion are needed; nano does not automatically mean greater function or safety.",
+      "expectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 2,
+          "criterionDe": "Erklärt Nano-Oberflächenanwendung über Silikonchemie und Struktur; trennt Schichtdicke von fehlendem Partikeldurchmesser.",
+          "criterionEn": "Explains nanoscale surface application using silicone chemistry and structure; separates film thickness from missing particle diameter.",
+          "fullCreditDe": "2 Punkte: Erklärt Nano-Oberflächenanwendung über Silikonchemie und Struktur; trennt Schichtdicke von fehlendem Partikeldurchmesser.",
+          "fullCreditEn": "2 points: Explains nanoscale surface application using silicone chemistry and structure; separates film thickness from missing particle diameter.",
+          "partialCreditDe": "1 Punkt: Nano-Anwendung oder die Dimensionstrennung wird erklärt, der jeweils andere Teil fehlt.",
+          "partialCreditEn": "1 point: Nano application or dimension distinction is explained but the other part is missing.",
+          "zeroCreditDe": "0 Punkte: Silikonnamen oder 40 nm allein beweisen Nano-Partikel und Funktion.",
+          "zeroCreditEn": "0 points: Silicone name or 40 nm alone is treated as proof of nanoparticles and function."
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 2,
+          "criterionDe": "Interpretiert die kontrollierte Strukturvariation und die hydrophile Gleichdickenkontrolle; Chemie und Struktur tragen getrennte Bezüge.",
+          "criterionEn": "Interprets controlled structural variation and hydrophilic equal-thickness control; chemistry and structure contribute distinct links.",
+          "fullCreditDe": "2 Punkte: Interpretiert die kontrollierte Strukturvariation und die hydrophile Gleichdickenkontrolle; Chemie und Struktur tragen getrennte Bezüge.",
+          "fullCreditEn": "2 points: Interprets controlled structural variation and hydrophilic equal-thickness control; chemistry and structure contribute distinct links.",
+          "partialCreditDe": "1 Punkt: Nur die Strukturvariation oder nur die Gleichdickenkontrolle wird begründet.",
+          "partialCreditEn": "1 point: Only structural variation or equal-thickness control is reasoned through.",
+          "zeroCreditDe": "0 Punkte: Gleiche Dicke erzwingt gleiche Benetzung oder veränderte Winkel werden allein aus anderer Chemie erklärt.",
+          "zeroCreditEn": "0 points: Equal thickness is said to force equal wetting or changed angles are attributed solely to different chemistry."
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 2,
+          "criterionDe": "Leitet beweglichere Tropfen aus dem kleineren Abrollwinkel ab und begrenzt Selbstreinigung/Dauerhaftigkeit wegen fehlendem Schmutz-/Abriebnachweis.",
+          "criterionEn": "Uses smaller roll-off angle to infer more mobile drops and limits cleaning/durability claims because dirt/abrasion evidence is missing.",
+          "fullCreditDe": "2 Punkte: Leitet beweglichere Tropfen aus dem kleineren Abrollwinkel ab und begrenzt Selbstreinigung/Dauerhaftigkeit wegen fehlendem Schmutz-/Abriebnachweis.",
+          "fullCreditEn": "2 points: Uses smaller roll-off angle to infer more mobile drops and limits cleaning/durability claims because dirt/abrasion evidence is missing.",
+          "partialCreditDe": "1 Punkt: Abrollbefund oder konkrete Nachweisgrenze wird richtig genannt, aber nicht zusammen begründet.",
+          "partialCreditEn": "1 point: Roll-off observation or a specific evidence limit is identified but not linked.",
+          "zeroCreditDe": "0 Punkte: Kontaktwinkel oder Nano-Etikett beweisen allein dauerhafte Selbstreinigung.",
+          "zeroCreditEn": "0 points: Contact angle or nano label alone is treated as proof of permanent self-cleaning."
+        }
+      ],
+      "maximumPoints": 6,
+      "visualizationRequired": false,
+      "executionClaim": "Author design only; no actual learner result, laboratory work, independent scientific acceptance or mastery.",
+      "noMandatoryLearnerTaskQuota": true,
+      "wholeGoalCoverageDesignClaim": "All three child expectations are elicited in this one multi-step case, including a condition variation; independent review pending."
+    },
+    {
+      "caseId": "e560-nanosurface-case-2",
+      "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+      "title": "80-nm-Schicht nach Strukturänderung",
+      "titleEn": "80-nm film after structural change",
+      "dataOrigin": "Own idealized teaching-model data adapted from the exact former whole silicone cases; no measured learner/laboratory result or actual product claim.",
+      "languageParity": "Complete paired DE/EN data, tasks, answers and rubrics.",
+      "dataDe": "Zweites ideales Materialblatt, andere Bedingung: Eine methylhaltige Siloxanschicht ist 80 nm dick. Zustand A: Kontaktwinkel 155°, Abrollwinkel 5°. Nach einer Oberflächen-Strukturänderung bleibt laut Blatt die Silikonchemie unverändert; Zustand B zeigt 150°, 40°. Eine hydrophile Kontrollschicht gleicher Dicke zeigt 25°. Für eine weitere Probe C wird zusätzlich und unabhängig ein Partikeldurchmesser von 45 nm angegeben; diese Größe wurde nicht aus der Schichtdicke berechnet. Größere Kontaktwinkel stehen hier für schwächere Benetzung, kleinere Abrollwinkel für leichter bewegliche Tropfen. Kein Schmutzabtrag oder Langzeittest wird berichtet.",
+      "dataEn": "Second idealized material sheet with changed conditions: a methyl-bearing siloxane film is 80 nm thick. State A: contact angle 155°, roll-off 5°. After a surface-structure change the sheet says silicone chemistry remains unchanged; state B gives 150°, 40°. A hydrophilic equal-thickness control gives 25°. For another specimen C, particle diameter 45 nm is additionally and independently supplied; it was not calculated from film thickness. Here larger contact angles indicate weaker wetting, smaller roll-off angles easier droplet motion. No dirt-removal or long-term test is reported.",
+      "taskDe": "1. Beschreibe die mögliche Bedeutung der Silikonoberfläche für die Anwendung und unterscheide die beiden Größenangaben 80 nm und 45 nm. 2. Erläutere, was aus A/B bei gleicher Chemie über die Wirkung der Struktur folgt. Beurteile „B hat immer noch einen großen Kontaktwinkel, also rollen Tropfen so leicht ab wie bei A“. 3. Prüfe, ob A oder B damit dauerhaft selbstreinigend ist, und gib ein begrenztes Anwendungsurteil mit einer konkret nötigen weiteren Beobachtung.",
+      "taskEn": "1. Describe possible silicone-surface relevance for the application and distinguish the 80 nm and 45 nm dimensions. 2. Explain what A/B at the same chemistry show about structural effects. Evaluate “B still has a large contact angle, so drops roll off as easily as in A.” 3. Assess whether A or B is thereby permanently self-cleaning and give a bounded application conclusion with a specific further observation needed.",
+      "modelAnswerDe": "Die 80 nm betreffen die Schicht; 45 nm ist eine separat ausgewiesene Partikelgröße ausschließlich für C. Ohne die Zusatzangabe dürfte man keine Partikelgröße aus 80 nm ableiten. Silikonchemie und passende Oberflächenstruktur können zur nanoskaligen Funktionalisierung beitragen. A/B haben gleiche Chemie, aber andere Struktur und stark unterschiedliche Abrollwinkel. Ein hoher Kontaktwinkel in B bedeutet nach den Angaben nicht gleich leichte Tropfenbewegung: 40° verlangt deutlich mehr Neigung als 5°. Die hydrophile Gleichdickenkontrolle verhindert eine Erklärung allein aus der Dicke. A erscheint für bewegliche Tropfen unter den gegebenen Bedingungen günstiger; echter Schmutztransport, Abrieb- oder Langzeitbeständigkeit bleiben unbelegt. Eine Beobachtung des Schmutzabtrags vor/nach Belastung würde die funktionale Anwendung prüfen. Das Urteil ist daten- und zustandsgebunden, keine Behauptung über alle Silikonprodukte.",
+      "modelAnswerEn": "The 80 nm refers to the film; 45 nm is separately stated particle size only for C. Without that extra information, particle size could not be inferred from 80 nm. Silicone chemistry and suitable surface structure can contribute to nanoscale functionalization. A/B have the same chemistry but different structure and very different roll-off angles. High contact angle in B does not mean equally easy droplet movement: 40° requires much greater tilt than 5°. The hydrophilic equal-thickness control prevents a thickness-only explanation. A appears better for mobile drops under the supplied conditions; actual dirt transport, abrasion resistance or long-term stability remain unsupported. Observing dirt removal before/after loading would test the functional application. The conclusion is data/state-bound, not a statement about every silicone product.",
+      "expectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 2,
+          "criterionDe": "Verbindet Silikon-Oberflächenfunktion mit Materialdaten und unterscheidet 80-nm-Schicht von separat gemessenen 45-nm-Partikeln in C.",
+          "criterionEn": "Connects silicone surface function to material data and separates 80-nm film from independently measured 45-nm particles in C.",
+          "fullCreditDe": "2 Punkte: Verbindet Silikon-Oberflächenfunktion mit Materialdaten und unterscheidet 80-nm-Schicht von separat gemessenen 45-nm-Partikeln in C.",
+          "fullCreditEn": "2 points: Connects silicone surface function to material data and separates 80-nm film from independently measured 45-nm particles in C.",
+          "partialCreditDe": "1 Punkt: Eine Größenart wird richtig erkannt, die Unabhängigkeit oder Anwendungsbedeutung bleibt offen.",
+          "partialCreditEn": "1 point: One dimension is identified correctly but independence or application relevance is missing.",
+          "zeroCreditDe": "0 Punkte: 80 und 45 nm werden ohne getrennte Messbezüge als dieselbe Größe behandelt.",
+          "zeroCreditEn": "0 points: 80 and 45 nm are treated as the same dimension without distinct measurement bases."
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 2,
+          "criterionDe": "Erklärt bei gleicher Chemie die Strukturänderung und trennt hohen Kontaktwinkel von leichtem Abrollen anhand 150°/40° gegenüber 155°/5°.",
+          "criterionEn": "Explains structural change at constant chemistry and distinguishes high contact angle from easy rolling using 150°/40° versus 155°/5°.",
+          "fullCreditDe": "2 Punkte: Erklärt bei gleicher Chemie die Strukturänderung und trennt hohen Kontaktwinkel von leichtem Abrollen anhand 150°/40° gegenüber 155°/5°.",
+          "fullCreditEn": "2 points: Explains structural change at constant chemistry and distinguishes high contact angle from easy rolling using 150°/40° versus 155°/5°.",
+          "partialCreditDe": "1 Punkt: Struktur oder Abrolländerung wird erkannt, beide Befunde aber nicht fachlich verknüpft.",
+          "partialCreditEn": "1 point: Structure or roll-off change is recognized but the observations are not connected.",
+          "zeroCreditDe": "0 Punkte: Großer Kontaktwinkel beweist gleiches leichtes Abrollen oder die chemische Kontrollbedingung wird ignoriert.",
+          "zeroCreditEn": "0 points: Large contact angle is said to prove equally easy rolling or the controlled chemistry condition is ignored."
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 2,
+          "criterionDe": "Begründet ein zustandsgebundenes Anwendungsurteil und benennt fehlenden Schmutzabtrag/Belastungsnachweis statt Nano-Selbstreinigung vorauszusetzen.",
+          "criterionEn": "Justifies a state-bound application conclusion and identifies missing dirt-removal/loading evidence rather than assuming nano self-cleaning.",
+          "fullCreditDe": "2 Punkte: Begründet ein zustandsgebundenes Anwendungsurteil und benennt fehlenden Schmutzabtrag/Belastungsnachweis statt Nano-Selbstreinigung vorauszusetzen.",
+          "fullCreditEn": "2 points: Justifies a state-bound application conclusion and identifies missing dirt-removal/loading evidence rather than assuming nano self-cleaning.",
+          "partialCreditDe": "1 Punkt: Urteil wird begrenzt, aber kein konkreter nötiger Funktionsnachweis wird benannt.",
+          "partialCreditEn": "1 point: Conclusion is limited but no specific functional evidence needed is identified.",
+          "zeroCreditDe": "0 Punkte: Beide Oberflächen oder nur die Nanobezeichnung beweisen dauerhaftes Reinigen.",
+          "zeroCreditEn": "0 points: Both surfaces or the nano label alone are said to prove permanent cleaning."
+        }
+      ],
+      "maximumPoints": 6,
+      "visualizationRequired": false,
+      "executionClaim": "Author design only; no actual learner result, laboratory work, independent scientific acceptance or mastery.",
+      "noMandatoryLearnerTaskQuota": true,
+      "wholeGoalCoverageDesignClaim": "All three child expectations are elicited in this one multi-step case, including a condition variation; independent review pending."
+    },
+    {
+      "caseId": "53db04a0-case-1",
+      "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+      "titleDe": "Benzaldehyd, Leukoverbindung und Oxidation",
+      "titleEn": "Benzaldehyde, leuco compound and oxidation",
+      "dataOrigin": "Original invented idealized teaching data unless an explicitly attributed primary reference is named; no measured experiment or learner result",
+      "languageParity": "Complete DE/EN data, task, answer, rubric and demand spans",
+      "dataDe": "Nur Papiermechanismen, keine Ausführung. Triarylmethan: Ph–CHO + 2 Ar–H, Ar–H=N,N-Dimethylanilin, Angriff jeweils para zum –N(CH₃)₂. Säurekatalyse liefert Ph–CH(Ar)₂; anschließende Oxidation liefert [Ph–C(Ar)₂]⁺.",
+      "dataEn": "Paper mechanisms only, no execution. Triarylmethane: Ph–CHO + 2 Ar–H, with Ar–H=N,N-dimethylaniline and each attack para to –N(CH₃)₂. Acid catalysis gives Ph–CH(Ar)₂; oxidation then gives [Ph–C(Ar)₂]⁺.",
+      "taskDe": "1. Stelle für Ph–CHO die Carbonylprotonierung, zwei para-Angriffe von Ar–H mit Wasserabspaltung zwischen ihnen und die jeweilige Rearomatisierung dar; schreibe Kondensationsgleichung und Oxidationshalbreaktion.",
+      "taskEn": "1. Show carbonyl protonation, two para attacks by Ar–H with water loss between them and each rearomatization; write the condensation equation and oxidation half-equation.",
+      "modelAnswerDe": "1. O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2).",
+      "modelAnswerEn": "1. O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge.",
+      "expectationIds": [
+        "e2"
+      ],
+      "visualizationRequired": false,
+      "practicalExecutionRequired": false,
+      "executionClaim": "No execution occurred. Supplied or synthetic observations cannot earn practical-execution credit.",
+      "rubric": [
+        {
+          "criterionId": "53db04a0-case-1-r1",
+          "expectationIds": [
+            "e2"
+          ],
+          "taskClauseDe": "Stelle für Ph–CHO die Carbonylprotonierung, zwei para-Angriffe von Ar–H mit Wasserabspaltung zwischen ihnen und die jeweilige Rearomatisierung dar; schreibe Kondensationsgleichung und Oxidationshalbreaktion.",
+          "taskClauseEn": "Show carbonyl protonation, two para attacks by Ar–H with water loss between them and each rearomatization; write the condensation equation and oxidation half-equation.",
+          "criterionDe": "O-Protonierung ergibt Ph–CH=OH⁺. Ring-π→Carbonyl-C und C=O-π→O erzeugen den ersten Ring-σ-Komplex; Deprotonierung liefert Ph–CH(OH)–Ar. OH-Protonierung und C–O→O lassen H₂O abgehen: Ph–CH(Ar)⁺. Zweiter Ring-π-Angriff und Ring-H⁺-Abgabe liefern Ph–CH(Ar)₂. Gesamt: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻ (Ladung 0=+1+1−2).",
+          "criterionEn": "O protonation gives Ph–CH=OH⁺. Ring pi→carbonyl C and C=O pi→O produce the first ring sigma complex; deprotonation gives Ph–CH(OH)–Ar. OH protonation and C–O→O release H₂O, giving Ph–CH(Ar)⁺. A second ring pi attack and ring H⁺ loss give Ph–CH(Ar)₂. Overall: PhCHO+2 ArH→PhCH(Ar)₂+H₂O. Oxidation: PhCH(Ar)₂→[PhC(Ar)₂]⁺+H⁺+2e⁻, with 0=+1+1−2 charge.",
+          "maximumPoints": 2,
+          "partialCreditDe": "1 Punkt für einen fachlich richtigen, ausdrücklich verlangten Teil; 2 für den vollständigen Nachweis; 0 für fehlenden oder falschen Nachweis. Ausführungspunkte setzen die benannte reale Beobachtung voraus.",
+          "partialCreditEn": "1 point for a correct explicitly requested part; 2 for complete evidence; 0 for missing or wrong evidence. Execution credit requires the stated real observation.",
+          "creditBasis": "written-explicit-task",
+          "taskSpanDe": {
+            "start": 3,
+            "end": 210
+          },
+          "taskSpanEn": {
+            "start": 3,
+            "end": 170
+          }
+        }
+      ],
+      "maximumPoints": 2,
+      "optionalModelRemarksDe": [],
+      "optionalModelRemarksEn": [],
+      "gradingBoundary": "Only explicitly demanded evidence earns credit. A case maps requested aspects, not automatic full profile completion. Observe practical actions separately; missing actual observation means those points remain unavailable.",
+      "sourceWholeCaseId": "e5941581-case-1"
+    },
+    {
+      "caseId": "53db04a0-case-2",
+      "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+      "titleDe": "Methylsubstituierter Aldehyd, Leukoverbindung und Oxidation",
+      "titleEn": "Methyl-substituted aldehyde, leuco compound and oxidation",
+      "dataOrigin": "Original invented idealized teaching data unless an explicitly attributed primary reference is named; no measured experiment or learner result",
+      "languageParity": "Complete DE/EN data, task, answer, rubric and demand spans",
+      "dataDe": "Papiermodell: Die Route verwendet p-CH₃–C₆H₄–CHO + 2 N,N-Dimethylanilin. Bezeichne p-CH₃–C₆H₄ als R und den para-gekoppelten Dimethylaminophenylrest als Ar. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt. Die Papierroute ist bei X = R–CH(OH)–Ar nach dem ersten Ringangriff und seiner Rearomatisierung unterbrochen. Ein fehlerhafter Routenentwurf nennt X die fertige Leukoverbindung und will danach nur die Oxidationsstufe der Leukoverbindung R–CH(Ar)₂ verwenden, um [R–C(Ar)₂]⁺ zu erhalten. Zu prüfen ist nur diese angegebene Route; andere mögliche Oxidationsprodukte von X sind nicht gefragt.",
+      "dataEn": "Paper model: The route uses p-CH₃–C₆H₄–CHO + 2 N,N-dimethylaniline. Write R for p-CH₃–C₆H₄ and Ar for the para-attached dimethylaminophenyl residue. Counterions are spectators; no substances are made. The paper route is interrupted at X = R–CH(OH)–Ar after the first arene attack and its rearomatization. An incorrect route draft calls X the completed leuco compound and then proposes only the oxidation step of the leuco compound R–CH(Ar)₂ to obtain [R–C(Ar)₂]⁺. Assess only this stated route; other possible oxidation products of X are not requested.",
+      "taskDe": "1. Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.\n2. Prüfe den Routenentwurf für X: Begründe anhand der gebundenen Arylreste und der OH-Gruppe, ob X bereits die Leukoverbindung ist. Erkläre, ob die Oxidationshalbreaktion dieser Leukoverbindung allein die noch fehlende Aryl-C–C-Bindung erzeugen kann. Benenne und begründe die noch nötigen Stufen bis zum vorgesehenen Farbstoffkation und korrigiere ihre Reihenfolge.",
+      "taskEn": "1. Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.\n2. Assess the route draft for X: use the attached aryl groups and the OH group to justify whether X is already the leuco compound. Explain whether that leuco compound oxidation half-equation alone can create the still missing aryl C–C bond. Identify and justify the remaining stages up to the intended dye cation and correct their order.",
+      "modelAnswerDe": "1. R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.\n2. X trägt am zentralen C nur R und einen Ar-Rest sowie H und OH; die neutrale Leukoverbindung R–CH(Ar)₂ trägt dagegen drei Arylreste und keine OH-Gruppe. X ist daher die Zwischenstufe nach der ersten Addition und noch nicht die fertige Leukoverbindung. Die angegebene Leuko-Oxidationshalbreaktion verändert die zentrale H-Besetzung und die Ladungs-/Elektronenbilanz; sie fügt keinen Ar-Rest hinzu und kann die fehlende Aryl-C–C-Bindung nicht erzeugen. Im vorgegebenen Routenmodell fehlen zunächst OH-Protonierung und H₂O-Abgabe zu R–CH(Ar)⁺, dann der zweite Ar–H-Ringangriff und die Rearomatisierung durch Ring-H⁺-Abgabe zu R–CH(Ar)₂. Erst danach passt die Oxidation zu [R–C(Ar)₂]⁺ mit H⁺ + 2e⁻ (Ladung 0 = +1 +1 −2). Eine unbekannte alternative Oxidation von X wird damit nicht vorhergesagt.",
+      "modelAnswerEn": "1. Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.\n2. At its central C, X has only R and one Ar residue together with H and OH; the neutral leuco compound R–CH(Ar)₂ instead has three aryl residues and no OH group. X is therefore the intermediate after the first addition, not the completed leuco compound. The stated leuco oxidation half-equation changes the central H occupancy and the charge/electron balance; it adds no Ar residue and cannot create the missing aryl C–C bond. In the supplied route model, OH protonation and loss of H₂O to give R–CH(Ar)⁺ are still needed, followed by the second Ar–H arene attack and rearomatization by ring-H⁺ loss to R–CH(Ar)₂. Only then does oxidation to [R–C(Ar)₂]⁺ with H⁺ + 2e⁻ apply (charge 0 = +1 +1 −2). This makes no prediction about an unknown alternative oxidation of X.",
+      "expectationIds": [
+        "e2"
+      ],
+      "visualizationRequired": false,
+      "practicalExecutionRequired": false,
+      "executionClaim": "No execution occurred. Supplied or synthetic observations cannot earn practical-execution credit.",
+      "rubric": [
+        {
+          "criterionId": "53db04a0-case-2-r1",
+          "expectationIds": [
+            "e2"
+          ],
+          "taskClauseDe": "Übertrage die säurekatalysierte Carbonylroute auf R–CHO: zeige beide Ringangriffe, Protonierungs- und Wasserabspaltungsschritte sowie die Oxidation von R–CH(Ar)₂; unterscheide Leukoverbindung und Farbstoffkation.",
+          "taskClauseEn": "Transfer the acid-catalyzed carbonyl route to R–CHO: show both ring attacks, protonation and water-loss steps and oxidation of R–CH(Ar)₂; distinguish the leuco compound from the dye cation.",
+          "criterionDe": "R–CH=OH⁺ wird vom Ring-π-Paar angegriffen, C=O-π→O; nach Ringdeprotonierung entsteht R–CH(OH)–Ar. OH-Protonierung, H₂O-Abgabe und zweiter Ringangriff ergeben nach erneuter Ringdeprotonierung R–CH(Ar)₂. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ ist ladungsbilanziert. Der sp³-Leukokohlenstoff unterbricht die ausgedehnte Kopplung; das sp²-Kation ermöglicht donorstabilisierte delokalisierte Formen.",
+          "criterionEn": "Ring pi attacks R–CH=OH⁺ while C=O pi moves to O; ring deprotonation gives R–CH(OH)–Ar. OH protonation, water loss and second ring attack give R–CH(Ar)₂ after another ring deprotonation. RCHO+2ArH→RCH(Ar)₂+H₂O. RCH(Ar)₂→[RC(Ar)₂]⁺+H⁺+2e⁻ balances charge. The sp³ leuco carbon interrupts extended coupling; the sp² cation supports donor-stabilized delocalized contributors.",
+          "maximumPoints": 2,
+          "partialCreditDe": "1 Punkt für einen fachlich richtigen, ausdrücklich verlangten Teil; 2 für den vollständigen Nachweis; 0 für fehlenden oder falschen Nachweis. Ausführungspunkte setzen die benannte reale Beobachtung voraus.",
+          "partialCreditEn": "1 point for a correct explicitly requested part; 2 for complete evidence; 0 for missing or wrong evidence. Execution credit requires the stated real observation.",
+          "creditBasis": "written-explicit-task",
+          "taskSpanDe": {
+            "start": 3,
+            "end": 215
+          },
+          "taskSpanEn": {
+            "start": 3,
+            "end": 192
+          }
+        },
+        {
+          "criterionId": "53db04a0-case-2-r2",
+          "expectationIds": [
+            "e2"
+          ],
+          "taskClauseDe": "Prüfe den Routenentwurf für X: Begründe anhand der gebundenen Arylreste und der OH-Gruppe, ob X bereits die Leukoverbindung ist. Erkläre, ob die Oxidationshalbreaktion dieser Leukoverbindung allein die noch fehlende Aryl-C–C-Bindung erzeugen kann. Benenne und begründe die noch nötigen Stufen bis zum vorgesehenen Farbstoffkation und korrigiere ihre Reihenfolge.",
+          "taskClauseEn": "Assess the route draft for X: use the attached aryl groups and the OH group to justify whether X is already the leuco compound. Explain whether that leuco compound oxidation half-equation alone can create the still missing aryl C–C bond. Identify and justify the remaining stages up to the intended dye cation and correct their order.",
+          "criterionDe": "X trägt am zentralen C nur R und einen Ar-Rest sowie H und OH; die neutrale Leukoverbindung R–CH(Ar)₂ trägt dagegen drei Arylreste und keine OH-Gruppe. X ist daher die Zwischenstufe nach der ersten Addition und noch nicht die fertige Leukoverbindung. Die angegebene Leuko-Oxidationshalbreaktion verändert die zentrale H-Besetzung und die Ladungs-/Elektronenbilanz; sie fügt keinen Ar-Rest hinzu und kann die fehlende Aryl-C–C-Bindung nicht erzeugen. Im vorgegebenen Routenmodell fehlen zunächst OH-Protonierung und H₂O-Abgabe zu R–CH(Ar)⁺, dann der zweite Ar–H-Ringangriff und die Rearomatisierung durch Ring-H⁺-Abgabe zu R–CH(Ar)₂. Erst danach passt die Oxidation zu [R–C(Ar)₂]⁺ mit H⁺ + 2e⁻ (Ladung 0 = +1 +1 −2). Eine unbekannte alternative Oxidation von X wird damit nicht vorhergesagt.",
+          "criterionEn": "At its central C, X has only R and one Ar residue together with H and OH; the neutral leuco compound R–CH(Ar)₂ instead has three aryl residues and no OH group. X is therefore the intermediate after the first addition, not the completed leuco compound. The stated leuco oxidation half-equation changes the central H occupancy and the charge/electron balance; it adds no Ar residue and cannot create the missing aryl C–C bond. In the supplied route model, OH protonation and loss of H₂O to give R–CH(Ar)⁺ are still needed, followed by the second Ar–H arene attack and rearomatization by ring-H⁺ loss to R–CH(Ar)₂. Only then does oxidation to [R–C(Ar)₂]⁺ with H⁺ + 2e⁻ apply (charge 0 = +1 +1 −2). This makes no prediction about an unknown alternative oxidation of X.",
+          "maximumPoints": 2,
+          "partialCreditDe": "2 Punkte: begründet mit zwei statt drei Arylresten und verbleibender OH-Gruppe die falsche Leuko-Zuordnung, erklärt die fehlende Bindungsbildung der angegebenen Oxidation und ordnet die noch nötigen Kondensationsschritte vor die Leuko-Oxidation. 1 Punkt: mindestens eine dieser struktur- oder routenbezogenen Folgerungen ist richtig begründet, der übrige Nachweis bleibt unvollständig. 0 Punkte: nur Behauptung, Restnamenwechsel oder keine richtige Begründung. Keine Ausführungspunkte.",
+          "partialCreditEn": "2 points: uses two rather than three aryl residues and the remaining OH group to justify the incorrect leuco assignment, explains that the stated oxidation cannot form the missing bond, and places the remaining condensation stages before leuco oxidation. 1 point: at least one of these structure- or route-based inferences is correctly justified but the remaining evidence is incomplete. 0 points: unsupported assertion, residue-name change or no correct reasoning. No execution credit.",
+          "creditBasis": "written-explicit-task",
+          "taskSpanDe": {
+            "start": 219,
+            "end": 581
+          },
+          "taskSpanEn": {
+            "start": 196,
+            "end": 530
+          }
+        }
+      ],
+      "maximumPoints": 4,
+      "optionalModelRemarksDe": [],
+      "optionalModelRemarksEn": [],
+      "gradingBoundary": "Only explicitly demanded evidence earns credit. A case maps requested aspects, not automatic full profile completion. Observe practical actions separately; missing actual observation means those points remain unavailable.",
+      "sourceWholeCaseId": "e5941581-case-2"
+    },
+    {
+      "caseId": "2652caef-case-1",
+      "goalId": "2652caef-b557-58b9-9b28-70db62625ce5",
+      "title": "A: Folie und Faser",
+      "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+      "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+      "dataDe": "PE: –CH₂–CH₂–, unpolar, Probe P wenig verzweigt, Probe Q stark verzweigt; P: Kristallinität 60%, E-Modul 900 MPa; Q: 35%, 250 MPa. PA: –CO–R–CO–NH–R′–NH–, trockene Faser Zugfestigkeit 70 MPa; nach Wasseraufnahme 45 MPa. Daten für gleiche Prüfmethoden. Monomere für die Strukturaufgabe: Ethen CH₂=CH₂; für PA-6,6 Hexan-1,6-diamin H₂N–(CH₂)₆–NH₂ und Adipinsäure HOOC–(CH₂)₄–COOH. Im Modell sind alle Monomere bifunktionell, ohne zusätzliche Vernetzer.",
+      "dataEn": "PE: –CH₂–CH₂–, nonpolar, sample P sparsely branched, Q heavily branched; P crystallinity 60%, modulus 900 MPa; Q 35%, 250 MPa. PA: –CO–R–CO–NH–R′–NH–, dry fibre tensile strength 70 MPa; after water absorption 45 MPa. Matched test methods. Monomers for the structure task: ethene CH₂=CH₂; for PA-6,6 hexane-1,6-diamine H₂N–(CH₂)₆–NH₂ and adipic acid HOOC–(CH₂)₄–COOH. All monomers in this model are bifunctional, with no additional crosslinker.",
+      "taskDe": "Erkläre P/Q und das PA-Bindungsmotiv. Wähle eine flexible Folie und eine trockene belastbare Faser. Übertrage die Faserwahl auf feuchte Umgebung und nenne eine verbleibende Prüffrage. Leite aus diesen vollständigen Monomerformeln die PE- und PA-6,6-Repetiereinheiten ab. Erkläre, warum diese Funktionalitäten allein kein kovalentes Netzwerk verlangen.",
+      "taskEn": "Explain P/Q and the PA linkage. Select a flexible film and a strong dry fibre. Transfer the fibre choice to humid conditions and identify a remaining test. Derive the PE and PA-6,6 repeat units from these complete monomer formulae. Explain why these functionalities alone do not require a covalent network.",
+      "modelAnswerDe": "Q-Verzweigungen erschweren regelmäßige Packung, geringere Kristallinität und Steifigkeit passen zusammen: Q für flexible Folie. PA-Amidgruppen ermöglichen H-Brücken zwischen Ketten; trockene PA-Faser als Vorauswahl. Wasser kann interagieren/plastifizieren; 45 MPa begrenzt feuchte Verwendung. Nicht jede PA ist immer stärker als PE: Orientierung, Molmasse und Prüfbedingungen kontrollieren. PE: –CH₂–CH₂–. PA-6,6: –NH–(CH₂)₆–NH–CO–(CH₂)₄–CO–. Bifunktionelle Verknüpfung ermöglicht lineare Ketten; Verzweigungen, H-Brücken oder Kristallite sind kein Nachweis kovalenter Netzpunkte.",
+      "modelAnswerEn": "Q branching impedes regular packing; lower crystallinity and stiffness agree: Q for flexible film. PA amide groups allow interchain hydrogen bonds; dry PA fibre is a preliminary selection. Water can interact and plasticise; 45 MPa limits wet use. Not every PA is stronger than PE: control orientation, molar mass and test conditions. PE: –CH₂–CH₂–. PA-6,6: –NH–(CH₂)₆–NH–CO–(CH₂)₄–CO–. Bifunctional linking permits linear chains; branches, hydrogen bonds or crystallites do not establish covalent network points.",
+      "expectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "visualizationRequired": false,
+      "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: PE/PA-6,6-Motive aus Ethen/Diamin/Disäure ableiten; bifunktionell bedeutet nicht zwingend kovalent vernetzt.",
+          "criterionEn": "Demonstrates for this case: Derive PE/PA-6,6 motifs from ethene/diamine/diacid; bifunctional does not require covalent crosslinks.",
+          "fullCreditDe": "PE/PA-6,6-Motive aus Ethen/Diamin/Disäure ableiten; bifunktionell bedeutet nicht zwingend kovalent vernetzt.",
+          "fullCreditEn": "Derive PE/PA-6,6 motifs from ethene/diamine/diacid; bifunctional does not require covalent crosslinks.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: Q-Verzweigung erschwert Packung 35%/250 MPa vs 60%/900 MPa; PA-Amidgruppen ermöglichen H-Brücken, ohne universelle Rangfolge.",
+          "criterionEn": "Demonstrates for this case: Q branching impedes packing 35%/250 MPa vs 60%/900 MPa; PA amides enable hydrogen bonds, without universal ranking.",
+          "fullCreditDe": "Q-Verzweigung erschwert Packung 35%/250 MPa vs 60%/900 MPa; PA-Amidgruppen ermöglichen H-Brücken, ohne universelle Rangfolge.",
+          "fullCreditEn": "Q branching impedes packing 35%/250 MPa vs 60%/900 MPa; PA amides enable hydrogen bonds, without universal ranking.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: Q-Folie/trockene PA-Faser vorläufig; 45 MPa feucht begrenzt Einsatz, Orientierung/Molmasse/Prüfung bleiben offen.",
+          "criterionEn": "Demonstrates for this case: Q film/dry PA fibre provisionally; 45 MPa wet limits service, orientation/molar mass/testing remain open.",
+          "fullCreditDe": "Q-Folie/trockene PA-Faser vorläufig; 45 MPa feucht begrenzt Einsatz, Orientierung/Molmasse/Prüfung bleiben offen.",
+          "fullCreditEn": "Q film/dry PA fibre provisionally; 45 MPa wet limits service, orientation/molar mass/testing remain open.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        }
+      ],
+      "maximumPoints": 6,
+      "gradingBoundary": "Each rubric scores only the concrete case demand printed here. An expectation ID links a relevant aspect; it does not claim that the whole profile expectation is fully demonstrated in this one case. Six points alone never establish mastery or independent scientific acceptance.",
+      "expectationCoverage": [
+        {
+          "expectationId": "e1",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        },
+        {
+          "expectationId": "e2",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        },
+        {
+          "expectationId": "e3",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        }
+      ]
+    },
+    {
+      "caseId": "2652caef-case-2",
+      "goalId": "2652caef-b557-58b9-9b28-70db62625ce5",
+      "title": "B: Reversibel verformbare Kabelhülle",
+      "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+      "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+      "dataDe": "Gleiches unpolares Kettenmaterial: U unvernetzt, nach Lastentfernung 30% Restdehnung; N weitmaschig vernetzt, 3%. Beide bei gleicher Temperatur oberhalb ihres Glasübergangs, unter Zersetzung. Eine Hülle soll elastisch zurückstellen, eine andere als Regranulat wiederverarbeitet werden. Strukturmodell: Styrol CH₂=CH–C₆H₅ bildet U. Bei N sind zusätzlich p-Divinylbenzol-Einheiten eingebaut; Monomer CH₂=CH–C₆H₄–CH=CH₂. Beide Vinylgruppen können im gegebenen Modell an verschiedene Ketten anbinden; eine weitmaschige Netzstruktur ist als Befund vorgegeben, nicht aus der Rezeptur garantiert.",
+      "dataEn": "Same nonpolar chain material: U uncrosslinked, 30% residual strain after unloading; N loosely crosslinked, 3%. Both tested above glass transition and below decomposition. One sheath must recover elastically; another should be reprocessed as regranulate. Structural model: styrene CH₂=CH–C₆H₅ forms U. N additionally incorporates p-divinylbenzene units; monomer CH₂=CH–C₆H₄–CH=CH₂. In the supplied model both vinyl groups can attach to different chains; a sparse network is a supplied finding, not guaranteed by the recipe.",
+      "taskDe": "Erkläre den Netzwerkeffekt und entscheide beide Verwendungen. Welche Veränderung wäre zu erwarten, wenn die Prüftemperatur unter Tg sinkt? Welche Daten fehlen für reale Kabel? Leite das Styrol-Repetiermotiv ab und erkläre an beiden Vinylgruppen des Divinylbenzols eine mögliche kovalente Verbindung zwischen Ketten.",
+      "taskEn": "Explain the network effect and select for both uses. What changes if testing falls below Tg? What evidence is missing for actual cables? Derive the styrene repeat motif and use both divinyl groups of divinylbenzene to explain a possible covalent link between chains.",
+      "modelAnswerDe": "N-Netzpunkte verhindern Kettengleiten und ermöglichen Rückstellung, daher elastische Hülle; U schmelzverarbeitbar, daher Regranulat. Unter Tg sind Segmentbewegungen eingeschränkt, das elastische Verhalten kann verloren gehen. Elektrische Isolation, Alterung und Brandverhalten fehlen. Gleiche Grundbausteine liefern durch Verknüpfung verschiedene Profile; keine allgemeine Überlegenheit. Styrolmotiv: –CH₂–CH(C₆H₅)–. Reagieren beide Vinylgruppen des Divinylbenzols mit verschiedenen Ketten, kann eine kovalente Brücke entstehen; eine nur einfach angebundene Einheit allein ist noch keine solche Brücke. Netzbefund und mechanische Daten gehören zur gegebenen Variante.",
+      "modelAnswerEn": "N network points inhibit chain sliding and permit recovery, favouring an elastic sheath; U is melt-processable, favouring regranulate. Below Tg segment motion is restricted and elastic behaviour may be lost. Electrical insulation, ageing and fire behaviour remain untested. Identical building blocks yield different profiles through linkages; neither is universally superior. Styrene motif: –CH₂–CH(C₆H₅)–. If both divinylbenzene vinyl groups react with different chains, a covalent bridge can form; a unit attached through only one group alone is not such a bridge. Network finding and mechanical data belong to the supplied variant.",
+      "expectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "visualizationRequired": false,
+      "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: Styrol –CH₂–CH(C₆H₅)–; zwei an verschiedene Ketten reagierende Divinylbenzolgruppen können Brücke bilden.",
+          "criterionEn": "Demonstrates for this case: Styrene –CH₂–CH(C₆H₅)–; two divinylbenzene groups reacting with different chains can bridge.",
+          "fullCreditDe": "Styrol –CH₂–CH(C₆H₅)–; zwei an verschiedene Ketten reagierende Divinylbenzolgruppen können Brücke bilden.",
+          "fullCreditEn": "Styrene –CH₂–CH(C₆H₅)–; two divinylbenzene groups reacting with different chains can bridge.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: Netz verhindert dauerhaftes Gleiten: 3% vs 30% Restdehnung; bloße Rezeptur garantiert Netz nicht.",
+          "criterionEn": "Demonstrates for this case: Network prevents permanent sliding: 3% vs 30% residual strain; recipe alone does not guarantee network.",
+          "fullCreditDe": "Netz verhindert dauerhaftes Gleiten: 3% vs 30% Restdehnung; bloße Rezeptur garantiert Netz nicht.",
+          "fullCreditEn": "Network prevents permanent sliding: 3% vs 30% residual strain; recipe alone does not guarantee network.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 2,
+          "criterionDe": "Zeigt fallbezogen: N-Rückstellhülle/U-Regranulat unter gegebenen Bedingungen; unter Tg weniger Segmentbewegung, Kabelisolation/Alterung/Brandverhalten offen.",
+          "criterionEn": "Demonstrates for this case: N recovering sleeve/U regranulate under supplied conditions; below Tg less segment motion, cable insulation/ageing/fire behaviour open.",
+          "fullCreditDe": "N-Rückstellhülle/U-Regranulat unter gegebenen Bedingungen; unter Tg weniger Segmentbewegung, Kabelisolation/Alterung/Brandverhalten offen.",
+          "fullCreditEn": "N recovering sleeve/U regranulate under supplied conditions; below Tg less segment motion, cable insulation/ageing/fire behaviour open.",
+          "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+          "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+          "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+          "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+        }
+      ],
+      "maximumPoints": 6,
+      "gradingBoundary": "Each rubric scores only the concrete case demand printed here. An expectation ID links a relevant aspect; it does not claim that the whole profile expectation is fully demonstrated in this one case. Six points alone never establish mastery or independent scientific acceptance.",
+      "expectationCoverage": [
+        {
+          "expectationId": "e1",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        },
+        {
+          "expectationId": "e2",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        },
+        {
+          "expectationId": "e3",
+          "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+          "fullWholeExpectationClaim": false
+        }
+      ]
+    }
+  ],
+  "reviewerExtractionOnly": true,
+  "executionOrMasteryClaim": false
+}

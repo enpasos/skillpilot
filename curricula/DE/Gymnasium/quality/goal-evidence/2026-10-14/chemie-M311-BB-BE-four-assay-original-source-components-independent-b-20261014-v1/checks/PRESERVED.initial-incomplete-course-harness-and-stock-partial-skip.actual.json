@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-14T03:31:44.225341+00:00",
+  "actualToolChunk": "e59edc",
+  "actualCommandExitCode": 1,
+  "actualResultExcerpt": {
+    "id": "CQR-004",
+    "status": "fail",
+    "configuredMappingFiles": 2,
+    "sourceGoals": 410,
+    "checkedMappingEdges": 0,
+    "mismatches": 0,
+    "unmappedCourseLevelSourceGoals": 406
+  },
+  "cause": "Own initial harness retained all410 source cells but supplied only4 new edges, so stock correctly reported406 old cells unmapped. Stock also explicitly skips PARTIAL edges; assuming it would examine4 new PARTIALs was wrong.",
+  "correction": "Keep both entire205-cell/316-edge lanes for scoped stock consistency and explicitly report that stock does not assess new PARTIAL courseclaims. Independent science and exact four source/target course metadata checks remain separate. No edge relabel or stock engine patch.",
+  "scientificFirstSealChanged": false,
+  "HAccess": false
+}

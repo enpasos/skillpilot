@@ -1,5 +1,38 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Stabiler Chemie-Arbeitscheckpoint – 14. Oktober 2026
+
+Der [vollständige inaktive Zwischenstand](chemie231-inactive-working-state-checkpoint-2026-10-14.md)
+sichert auch die bisher lokalen Änderungen. Aktiv bleibt der veröffentlichte
+**231/402-Stand mit M6**; der unvollständig integrierte 262er-Stand ist exakt
+archiviert. Der letzte inaktive Kandidat misst **296/414 (71,5 %), sechs Checks PASS**.
+Mathematik 807/807, Physik 478/478 und Biologie 397/397 bleiben geschützt auf M7.
+Vor neuer fachlicher Arbeit folgen Commit, Push und erfolgreicher GitHub-Lauf.
+Die nachstehenden älteren Fortschrittsangaben bezeichnen ihre damaligen Arbeitsstände.
+
+
+## Aktueller Chemie-Arbeitsstand vom 14. Oktober 2026
+
+Der zuletzt tatsächlich zentral geprüfte **inaktive lokale Kandidat** erreicht
+**292/412 (70,9 %), 120 offen**, sechs bestandene Pflichtchecks und keine
+Blocker im Fünf-Gate-Bericht. Alle bisherigen Kandidatenabschlüsse bleiben
+erhalten. Gegenüber dem aktiven Ausgangsstand sind das 29 neue fachliche
+Abschlüsse und eine wiederhergestellte Nachweisbindung. Die fünf zusätzlich
+benötigten Quellen-Ergänzungsziele sind im aktuellen Nenner enthalten.
+
+**Aktiv bleiben 262/402.** Der veröffentlichte Ausgangscommit `46c9ef2` hat
+einen abgeschlossenen erfolgreichen GitHub-CI-Lauf; die neuen lokalen Pakete
+sind noch nicht veröffentlicht. Die offenen Quellen-, Kurs- und
+Voraussetzungspfad-Befunde verhindern eine vorzeitige aktive M6/M7-Integration.
+Die geschützten Mathematik-, Physik- und Biologiestände werden nicht bearbeitet.
+
+Maßgeblich sind die [aktuellen Messungen und offenen Integrationsbefunde](chemie262-five-gate-integration-source-holds-2026-10-14.md).
+Zwei weitere begonnene Quellen-Ergänzungen werden mit vollständigen Materialien,
+tatsächlichen Bildern und unabhängigen Beschreibungsreviews abgeschlossen.
+Vorhandene unveränderte Naturstoffnachweise werden anschließend gezielt
+übernommen; historische Zerlegungsbefunde und offene Quellenbedingungen bleiben
+erhalten. Ganze Builds und GitHub-CI folgen am stabilen Integrationsstand.
+
 ## Aktueller geprüfter Chemie-Zwischenstand vom 13. Oktober 2026
 
 Der zentrale Bericht bestätigt **231/402 aktuelle curricularAtomic-Ziele (57,5 %)**:

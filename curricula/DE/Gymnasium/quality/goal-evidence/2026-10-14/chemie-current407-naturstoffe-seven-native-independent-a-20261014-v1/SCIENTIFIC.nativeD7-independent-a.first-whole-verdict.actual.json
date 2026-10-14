@@ -1,0 +1,1873 @@
+{
+  "schemaVersion": 1,
+  "kind": "fresh-current-native-D7-independent-A-first-scientific-verdict",
+  "startedAtUTC": "2026-10-14T01:31:07Z",
+  "scienceCompletedAtUTC": "2026-10-14T01:40:19.617374+00:00",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex; exact revision unavailable)",
+  "exactRevisionAndSamplingKnown": false,
+  "currentPeerD7OutcomesReadBeforeSeal": false,
+  "historicalExposureDisclosure": "This agent previously worked on Chemistry reviews and read historical Oct12 Nature A/B data/science in the M311 task; no current Oct14 NativeD7 B or root outcomes were read. Supplied historical author/profile metadata was visible and treated as data, never an approval oracle. This is a fresh current native-page/context D review, not an independent historical P/A/M/V restart.",
+  "originalCampaign": {
+    "$schema": "https://skillpilot.com/schemas/goal-description-review/v2/goal-description-review-campaign.schema.json",
+    "schemaVersion": 2,
+    "campaignId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-a",
+    "roundId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a",
+    "bundleFingerprint": "sha256:f56edc0609456e036f256a2bc27b27bc8b265af93113ee81a2f65b8f2d5acfbf",
+    "bookDigest": "sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358",
+    "reviewInputFingerprint": "sha256:bd51f77bb886abff756f6affa8ba304e22153dc46b7c766dd5ad5031bc4dee92",
+    "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+    "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "reviewerRole": "internal_ai_reviewer",
+    "reviewPass": "first_pass",
+    "independenceGroupId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-independent-a",
+    "blindToOtherReviews": true,
+    "batchSize": 20,
+    "goalCount": 7,
+    "batches": [
+      {
+        "batchId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.batch-001",
+        "ordinal": 1,
+        "goalIds": [
+          "065d764c-daec-5d35-95da-3e922d2029c7",
+          "3681e688-7880-5bb4-9ab9-ef78289345c8",
+          "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+          "8fe39739-2938-5e2c-8db2-08572b44569a",
+          "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+          "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+          "b4ca3af2-77f1-59e8-955d-c4959e284242"
+        ],
+        "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+        "batchInputFingerprint": "sha256:7149de233162eed22feabee861c59aeb1e467422b0fffd3627702f7fcd95d7f3"
+      }
+    ],
+    "reviewPolicy": {
+      "humanApprovalRequired": true,
+      "aiRecordsAreCandidatesOnly": true
+    }
+  },
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/NEUTRAL.current407-naturstoffe-seven-shared-native-FIRST_PASS.exact-input-selector.json",
+      "bytes": 15803,
+      "sha256": "sha256:e78e2a5c8ccddb0b6abb9b2d6b249f0d5f5c9f1495a188f082a106efb6a68fbf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/SEAL.finite-current407-naturstoffe-seven-common-native-FIRST_PASS.actual.json",
+      "bytes": 21016,
+      "sha256": "sha256:d5d0bf581dc5a58eb155b81e6e861ae1b1a5896ae6a082af41341891b9d18ab7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/candidate/canonical533.current407.naturstoffe7-reviewed-resources.inactive.json",
+      "bytes": 1803236,
+      "sha256": "sha256:1cdc829d129efa589f2ed1791d4635b4e2b9dee61d95b5257b27aa00eecb318e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/candidate/semantic533.current407.naturstoffe7.unchanged.inactive.json",
+      "bytes": 171717,
+      "sha256": "sha256:eb7eee619adcc02d82cac25c85dc0bd0298ea651ea83f915b6f8ca2ad03427db"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/candidate/QA.current407.naturstoffe7.existing-V-science.inactive.json",
+      "bytes": 1025854,
+      "sha256": "sha256:5030e1a44076c5e958fdf5c9eebbf8e6c56e8cad6e37826a291bbcd71dbd2899"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/models/whole407.naturstoffe7.actual.stock-model.json",
+      "bytes": 1630105,
+      "sha256": "sha256:7e0ae221ad20607dacc82d30a5b1099d1c017bc337a9dde0dedb158e12c04d8e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/bundle/book.html",
+      "bytes": 55806,
+      "sha256": "sha256:d52503f0b26b8c61bef0bd8c7a4ea631d120658d55c125f555fc4f441c88b0b3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/bundle/book.pdf",
+      "bytes": 4580655,
+      "sha256": "sha256:6c1f183178059889429d19123b2ce6c26568240971439ebd575d03a463032e0f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-3.png",
+      "bytes": 368797,
+      "sha256": "sha256:62c3fbab6120e2fc1a48de0eafec729059e5d693f53e31aac1ffd5bc600ca9c6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-4.png",
+      "bytes": 415717,
+      "sha256": "sha256:a6b028be95d36c518619ece374d66eb185b98ff8976750e50ca5b889c19acf71"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-5.png",
+      "bytes": 246226,
+      "sha256": "sha256:aa932e5b3e4cabc651b32142b389199346559fae0206e152d78ea7dbaea8f637"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-6.png",
+      "bytes": 334785,
+      "sha256": "sha256:0ddb361b1821a733357ea7ad703604ef68be333cc7df725d269a5b14d00a6f69"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-7.png",
+      "bytes": 321723,
+      "sha256": "sha256:a7f57ee3b8245d4fcd985602e77b33b17bbc5bf2265baf6128ff04c6fdda854d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-8.png",
+      "bytes": 352965,
+      "sha256": "sha256:8a81ab94b789f3c3bb1b8253d7180179dea480e52fa57c2ee3572a2ac49fbf9a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-9.png",
+      "bytes": 291119,
+      "sha256": "sha256:a6cff571ebf3d905f8bd055395fd84a1e760cf47c69b962e613c9cf716344d03"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/batch-manifest.json",
+      "bytes": 3687,
+      "sha256": "sha256:e962f4a46d7ce5d519c01e093bc81a0c9ddf01071e222f2ea1ce7d5995b6c4bf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/bundle/manifest.json",
+      "bytes": 8509,
+      "sha256": "sha256:7b8e9ef078d409279ada9a35141d190a6414e26620fb64a59d82000b45ab517f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/cases/whole-selected-current-v2-nine-material-data-rubrics.exact.json",
+      "bytes": 30353,
+      "sha256": "sha256:fb28634c7fcb4d77f6c581edaab7e54b0613047a77f4b4f89ad878c341a9e487"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/cases/whole-retained-v1-three-goals-six-cases-and-rubrics.exact.json",
+      "bytes": 50417,
+      "sha256": "sha256:b6a4e8179073121e1682e64e7c579dd9f5eb876164b65e45f908b09ab8d67844"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/sources/WHOLE.seven-all-original-source-partners-literals-passages-and-official-contexts.exact.json",
+      "bytes": 588460,
+      "sha256": "sha256:93252fe9d5766726443c2b931cd4535fe2215c93cd68ab0f8b5c50270dbb2578"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/sources/WHOLE.seven-current-source-route-and-document-contexts.exact.json",
+      "bytes": 50996,
+      "sha256": "sha256:6ce28a2aec21aefda048cea2605a52d822900d737e7dbb72c4b0ec50f546dd62"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/sources/WHOLE.seven-primary-passage-texts.original-exact.json",
+      "bytes": 68623,
+      "sha256": "sha256:dcc570a7c9816c8d974610b19ad0c8591e2858872582f0bd54bbf8a134914754"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/sources/method-references-and-author-adaptations.json",
+      "bytes": 2002,
+      "sha256": "sha256:6b6bdc6030569c2757e28da6fd760c0864a0c895c3b358e8ed998f232fa25277"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/round-a/description-review-campaign.json",
+      "bytes": 1994,
+      "sha256": "sha256:5f2782d08a24611c924247ebfd379767e18e641f320e0d1803c40f68b7809ca4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/round-a/description-review-input.json",
+      "bytes": 96307,
+      "sha256": "sha256:65d0463f23cef463cc7f7f9fb00f823a1e1e9887a4765e397dc38e6fac12eee4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/round-a/review-bundle-manifest.json",
+      "bytes": 8509,
+      "sha256": "sha256:7b8e9ef078d409279ada9a35141d190a6414e26620fb64a59d82000b45ab517f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/round-a/prompt.md",
+      "bytes": 5974,
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/round-a/criteria.md",
+      "bytes": 2948,
+      "sha256": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/native-seven/round-a/batches/chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.batch-001.input.jsonl",
+      "bytes": 81761,
+      "sha256": "sha256:7149de233162eed22feabee861c59aeb1e467422b0fffd3627702f7fcd95d7f3"
+    }
+  ],
+  "actuallyViewedPhysicalPDFPages": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "physicalPDFPageCount": 9,
+  "fullBilingualCaseCountRead": 15,
+  "caseCounts": {
+    "065d764c-daec-5d35-95da-3e922d2029c7": 2,
+    "3681e688-7880-5bb4-9ab9-ef78289345c8": 2,
+    "68292f39-04e7-5924-b6a5-731c7f7f82ee": 2,
+    "8fe39739-2938-5e2c-8db2-08572b44569a": 2,
+    "5c8f0bbb-103a-579f-87fc-c997afe4fd18": 3,
+    "8da5c5cf-d346-5df9-b4c9-26938fc80a88": 2,
+    "b4ca3af2-77f1-59e8-955d-c4959e284242": 2
+  },
+  "wholeSourceContextsRead": "All 27 supplied whole passage-text records (BE/BB duplicates explicitly compared), 87 exact source-goal literals/partners and current route/course metadata; supplied HB and several other carriers contain normalized extraction summaries and are not represented as fresh official-PDF full-source audits. HE raw whole context and BW raw whole contexts read; BY whole source operators read.",
+  "wholeCurrentGoalTuples": [
+    {
+      "wholeInputGoal": {
+        "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+        "goalFingerprint": "sha256:bc3ed101b4dea95112c750df956eb8d073dba01e8d636dad06d873a6d387fc20",
+        "pageFingerprint": "sha256:3437a59b1075642a958d92520a8512312ea15179282d19cd037032281a2f4916",
+        "currentTitleDe": "Proteinstruktur und Faltung",
+        "currentTitleEn": "Protein structure and folding",
+        "currentDescriptionDe": "Die lernende Person kann Sekundär-, Tertiär- und Quartärstrukturen von Proteinen über Wechselwirkungen zwischen Peptidgruppen beziehungsweise Seitenketten erklären und daraus Eigenschaften ableiten.",
+        "currentDescriptionEn": "The learner can explain secondary, tertiary, and quaternary protein structures using interactions between peptide groups or side chains and derive properties from them.",
+        "canonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.1,
+          "tags": [
+            "LK",
+            "GK"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-chemistry",
+            "demandLevel": "AB3",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BC_AUFBAU"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "197bc2c5-835e-59e7-9263-5684e89799cc"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 1,
+            "navigationOrder": 0,
+            "treeOrder": 4,
+            "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+            "anchor": "goal-065d764c-daec-5d35-95da-3e922d2029c7",
+            "title": "Proteinstruktur und Faltung",
+            "description": "Die lernende Person kann Sekundär-, Tertiär- und Quartärstrukturen von Proteinen über Wechselwirkungen zwischen Peptidgruppen beziehungsweise Seitenketten erklären und daraus Eigenschaften ableiten.",
+            "breadcrumbs": [
+              "Chemie – kanonische M7-Prüfsicht",
+              "Chemie",
+              "Naturstoffe und Synthesechemie",
+              "Q2.1 Naturstoffe"
+            ],
+            "chapterIds": [
+              "structure:chemie-m7-review-root",
+              "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+              "goal:ae683d59-06a5-59be-87b5-b8648fd138c8",
+              "goal:24b47a95-c239-552a-9be7-324aa54a89dd"
+            ],
+            "requires": [],
+            "reverseRequires": [],
+            "externalPrerequisites": [
+              {
+                "goalId": "197bc2c5-835e-59e7-9263-5684e89799cc",
+                "title": "Peptidbindungen erklären",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-197bc2c5-835e-59e7-9263-5684e89799cc"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+                "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+              },
+              {
+                "goalId": "8872d828-a025-5e45-af74-3d84caedfb73",
+                "title": "Proteinshake und Denaturierung",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-8872d828-a025-5e45-af74-3d84caedfb73"
+              },
+              {
+                "goalId": "9deeac6f-d380-52c5-8fc9-e532ab1f4d3f",
+                "title": "Proteine und Ammoniumionen nachweisen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-9deeac6f-d380-52c5-8fc9-e532ab1f4d3f"
+              },
+              {
+                "goalId": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+                "title": "Enzymkinetik vertiefen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-c245d5fd-ce46-5b45-ab2e-e610547b5f7c"
+              },
+              {
+                "goalId": "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+                "title": "Proteinlöslichkeit und Denaturierung erklären",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-058dca74-1b57-5eb3-9c94-1c7b6cc795ad"
+              },
+              {
+                "goalId": "014e6d85-eecf-5228-9031-52a39981cd0d",
+                "title": "Proteine in der Biotechnologie erklären",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-014e6d85-eecf-5228-9031-52a39981cd0d"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Proteinstruktur und Faltung",
+              "url": "/assets/goal-visualizations/chemie/065d764c-daec-5d35-95da-3e922d2029c7/065d764c-daec-5d35-95da-3e922d2029c7.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Proteinstruktur und Faltung\". Die lernende Person kann Sekundär-, Tertiär- und Quartärstrukturen von Proteinen über Wechselwirkungen zwischen Peptidgruppen beziehungsweise Seitenketten erklären und daraus Eigenschaften ableiten.",
+              "originalDigest": "sha256:db118fbb61b8b2c3be5c2f112e136b6fd71bf05beafe9f637536602c06fb3dcb",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": {
+              "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+              "status": "needs_human_review",
+              "reviewInputFingerprint": "sha256:0c65b4247a772596d9410de7f3bd1ae77db3e27c1522a32999edafada9516659",
+              "profileFingerprint": "sha256:ce812b401a029d54367f066cd64ca52ed15d15b6d1abc5020940e8f5666aaae3",
+              "evidenceLevel": "E1",
+              "maximumClaimScope": "G1"
+            },
+            "goalFingerprint": "sha256:bc3ed101b4dea95112c750df956eb8d073dba01e8d636dad06d873a6d387fc20",
+            "pageFingerprint": "sha256:3437a59b1075642a958d92520a8512312ea15179282d19cd037032281a2f4916"
+          },
+          "evidenceProfile": {
+            "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+            "schemaVersion": 2,
+            "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+            "goalFingerprintRuleVersion": "goal-evidence-v1",
+            "profileRuleVersion": "positive-understanding-evidence-v2",
+            "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+            "goalFingerprint": "sha256:bc3ed101b4dea95112c750df956eb8d073dba01e8d636dad06d873a6d387fc20",
+            "reviewInputFingerprint": "sha256:0c65b4247a772596d9410de7f3bd1ae77db3e27c1522a32999edafada9516659",
+            "profileFingerprint": "sha256:ce812b401a029d54367f066cd64ca52ed15d15b6d1abc5020940e8f5666aaae3",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "reviewedAt": "2026-10-12T06:59:54.903133+00:00",
+            "reviewer": "Fresh independent A; original author profile body retained for binding check",
+            "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+            "evidenceLevel": "E1",
+            "maximumClaimScope": "G1",
+            "reviewRunIds": [],
+            "dissent": [],
+            "profile": {
+              "archetype": "concept",
+              "expectations": [
+                {
+                  "id": "aspect-1",
+                  "essentialUnderstandingDe": "Strukturebenenundkonkrete Kontakte zuordnen.",
+                  "essentialUnderstandingEn": "Assign structure levels and specific contacts.",
+                  "observablePerformanceDe": "Helices: H-Brücken des Peptidrückgrats. Tertiär: Seitenketten-H-Brücken, Ionenpaare, van-der-Waals/hydrophober Effekt, ggf Disulfide. Quartär: vergleichbare Kontakte zwischen Untereinheiten, ggf Interketten-Disulfide; mehrere Ketten allein istkeine Wechselwirkung.",
+                  "observablePerformanceEn": "Helices: backbone H-bonds. Tertiary: sidechain H-bonds, ion pairs, van der Waals/hydrophobic effect, possible disulfides. Quaternary: interactions between subunits, possible interchain disulfides; multiple chains alone is an arrangement, not an interaction."
+                },
+                {
+                  "id": "aspect-2",
+                  "essentialUnderstandingDe": "Kontakte aufeinenneuen Strukturfallübertragen.",
+                  "essentialUnderstandingEn": "Transfer contacts to another structural case.",
+                  "observablePerformanceDe": "Erster Fallkann Quartärverbandverändern, zweiter Tertiärfaltung; beidekönnen Funktionbeeinflussen, müssenaberkeine Primärstrukturhydrolysieren. Umgebungsbedingungen/Kompensationverhindernsichere Allgemeinprognose.",
+                  "observablePerformanceEn": "First may affect quaternary assembly, second tertiary folding; both can change function without primary hydrolysis. Environment/compensation limit predictions."
+                }
+              ],
+              "coverageExpectations": {
+                "requiredExpectationIds": [
+                  "aspect-1",
+                  "aspect-2"
+                ],
+                "alternativeExpectationGroups": [],
+                "minimumIndependentDemonstrations": 2,
+                "freshVariationRequired": true,
+                "independentTransferRequired": true
+              },
+              "variationAxes": [
+                {
+                  "id": "material-operator-context",
+                  "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+                  "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+                }
+              ],
+              "applicationCaseBriefs": [
+                {
+                  "id": "case-1",
+                  "taskDemandDe": "Ein Tetramer besitzt Helices, gefaltete Untereinheiten und Kontaktflächen. Erkläre stabilisierende Wechselwirkungen auf Sekundär-, Tertiär- und Quartärebene; beziehe H-Brücken, Ionenpaare, van-der-Waals-Kontakte, hydrophoben Effekt und mögliche Disulfidbrücken passend ein.",
+                  "taskDemandEn": "A tet ramer has helice s, folded subunits and inteRfaces. Explain stabilising interactions at secondary, tertiary, quaternary level, using H-bonds, ion pairs, van der Waals, hydrophobic effect and possible disulfides appropriately.",
+                  "expectedPerformanceDe": "Helices: H-Brücken des Peptidrückgrats. Tertiär: Seitenketten-H-Brücken, Ionenpaare, van-der-Waals/hydrophober Effekt, ggf Disulfide. Quartär: vergleichbare Kontakte zwischen Untereinheiten, ggf Interketten-Disulfide; mehrere Ketten allein istkeine Wechselwirkung.",
+                  "expectedPerformanceEn": "Helices: backbone H-bonds. Tertiary: sidechain H-bonds, ion pairs, van der Waals/hydrophobic effect, possible disulfides. Quaternary: interactions between subunits, possible interchain disulfides; multiple chains alone is an arrangement, not an interaction.",
+                  "understandingFocusDe": "Strukturebenenundkonkrete Kontakte zuordnen.",
+                  "understandingFocusEn": "Assign structure levels and specific contacts."
+                },
+                {
+                  "id": "case-2",
+                  "taskDemandDe": "Ein Ionenpaar zwischen Untereinheiten wirddurch Seitenkettenaustausch aufgelöst; in einemanderen Modellwird einhydrophober Tertiärkern destabilisiert. Vergleiche mögliche Folgenfür Untereinheitenverbund, Faltung und Funktion; benenne Vorhersagegrenzen.",
+                  "taskDemandEn": "Compare breaking an inter-subunit ion pair with destabilising a hydrophobic tertiary core. Predict bounded effects on assembly, folding and function.",
+                  "expectedPerformanceDe": "Erster Fallkann Quartärverbandverändern, zweiter Tertiärfaltung; beidekönnen Funktionbeeinflussen, müssenaberkeine Primärstrukturhydrolysieren. Umgebungsbedingungen/Kompensationverhindernsichere Allgemeinprognose.",
+                  "expectedPerformanceEn": "First may affect quaternary assembly, second tertiary folding; both can change function without primary hydrolysis. Environment/compensation limit predictions.",
+                  "understandingFocusDe": "Kontakte aufeinenneuen Strukturfallübertragen.",
+                  "understandingFocusEn": "Transfer contacts to another structural case."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "nativePage": {
+        "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+        "nativeSubsetPageNumber": 1,
+        "physicalPdfPageNumber": 3,
+        "actualPdfProjection": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-3.png",
+          "bytes": 368797,
+          "sha256": "sha256:62c3fbab6120e2fc1a48de0eafec729059e5d693f53e31aac1ffd5bc600ca9c6"
+        }
+      },
+      "scienceRationale": "Die vollständige DE/EN-Kompetenz verbindet drei Strukturebenen über dasselbe Struktur-Eigenschafts-Modell. Beide Fälle erfassen passende Kontakte und eine tatsächlich geänderte Kontaktlage. Das native Bild trennt Peptidrückgrat, Einzelkette und Untereinheiten; es ist kein Atomstrukturbeweis. Separates Ziel 058d behandelt vertiefte Löslichkeit/Denaturierung. Quellen-Begleitpflichten wie Klassifikation, Peptidbildung und Experimente werden hierdurch nicht vollständig erledigt.",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "wholeInputGoal": {
+        "goalId": "3681e688-7880-5bb4-9ab9-ef78289345c8",
+        "goalFingerprint": "sha256:56f10e051562ab0853afaa2ad8e23beed467d9a5d34cbbdc9163ff481a81c720",
+        "pageFingerprint": "sha256:abfdc0142b6b03314407eeba79284e63c00df75ff1569180563d5dd0be3aef8c",
+        "currentTitleDe": "Verdauungssäfte chemisch erklären",
+        "currentTitleEn": "Explain digestive juices chemically",
+        "currentDescriptionDe": "Die lernende Person kann die Bedeutung verschiedener Verdauungssäfte aus chemischer Sicht erklären und Bezüge zu pH-Wert, Löslichkeit und Stoffumwandlung herstellen.",
+        "currentDescriptionEn": "The learner can explain the role of different digestive juices from a chemical perspective and relate them to pH, solubility, and substance transformation.",
+        "canonicalContext": {
+          "shortKey": "canonical_chemistry_by_digestive_juices_chemical_roles",
+          "phase": null,
+          "core": null,
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekII"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN",
+              "PK4_KOMMUNIZIEREN"
+            ],
+            "guidingIdeas": [
+              "BC_REAKTION"
+            ],
+            "phase": "Q2",
+            "area": "Lebensmittelchemie",
+            "topicCode": "CANONICAL.CHEMISTRY.Q2.DIGESTIVE_JUICES_CHEMICAL_ROLES"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-NI",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "360fccb9-896d-5e67-bf5d-5732621604c9",
+            "f1ed86f0-534d-57d7-8952-a004a331cc54"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 2,
+            "navigationOrder": 4,
+            "treeOrder": 8,
+            "goalId": "3681e688-7880-5bb4-9ab9-ef78289345c8",
+            "shortKey": "canonical_chemistry_by_digestive_juices_chemical_roles",
+            "anchor": "goal-3681e688-7880-5bb4-9ab9-ef78289345c8",
+            "title": "Verdauungssäfte chemisch erklären",
+            "description": "Die lernende Person kann die Bedeutung verschiedener Verdauungssäfte aus chemischer Sicht erklären und Bezüge zu pH-Wert, Löslichkeit und Stoffumwandlung herstellen.",
+            "breadcrumbs": [
+              "Chemie – kanonische M7-Prüfsicht",
+              "Chemie",
+              "Naturstoffe und Synthesechemie",
+              "Q2.1 Naturstoffe"
+            ],
+            "chapterIds": [
+              "structure:chemie-m7-review-root",
+              "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+              "goal:ae683d59-06a5-59be-87b5-b8648fd138c8",
+              "goal:24b47a95-c239-552a-9be7-324aa54a89dd"
+            ],
+            "requires": [],
+            "reverseRequires": [],
+            "externalPrerequisites": [
+              {
+                "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+                "title": "Lösungen berechnen und pH bestimmen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-f1ed86f0-534d-57d7-8952-a004a331cc54"
+              },
+              {
+                "goalId": "360fccb9-896d-5e67-bf5d-5732621604c9",
+                "title": "Nahrungsmittelinhaltsstoffe strukturbezogen einordnen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-360fccb9-896d-5e67-bf5d-5732621604c9"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+                "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+              },
+              {
+                "goalId": "0b5342b9-512d-573f-90d5-7522aee35efa",
+                "title": "Individuelle Verdauungs- und Resorptionsunterschiede begründen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-0b5342b9-512d-573f-90d5-7522aee35efa"
+              },
+              {
+                "goalId": "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+                "title": "Magensäurebildung und Protonenpumpen-Hemmer erklären",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00"
+              },
+              {
+                "goalId": "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528",
+                "title": "Schmerzmittelwirkstoffe chemisch einordnen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528"
+              },
+              {
+                "goalId": "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+                "title": "Carbonsäureester und Carbonsäureamide durch Kondensation bilden",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-98ae3f8e-4800-5ff3-bd2c-89434c006143"
+              },
+              {
+                "goalId": "5f151e8c-a62e-5e8c-979d-dcf4eb025873",
+                "title": "Verdauungshilfsmittel chemisch beurteilen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Verdauungssäfte chemisch erklären",
+              "url": "/assets/goal-visualizations/chemie/3681e688-7880-5bb4-9ab9-ef78289345c8/3681e688-7880-5bb4-9ab9-ef78289345c8.png",
+              "altText": "Drei Modelle zeigen Pepsin beim Zerlegen einer Proteinkette unter sauren Bedingungen, die Anpassung des pH im Darm und die physikalische Verteilung großer Fetttröpfchen in kleinere. Amphiphile Köpfe liegen außen, ihre unpolaren Teile im Fett.",
+              "originalDigest": "sha256:f0cb569c3e1b980117ced583e58367e1143985fcdc493461c71750013630e0ab",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": {
+              "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+              "status": "needs_human_review",
+              "reviewInputFingerprint": "sha256:4590017efb355ec44f06931805a0b8857d0122fe1650b89fa7665f146f3e599c",
+              "profileFingerprint": "sha256:d5a73aacff411322ca698d74408378444fa8bba10f47a1324369196f15768e07",
+              "evidenceLevel": "E1",
+              "maximumClaimScope": "G1"
+            },
+            "goalFingerprint": "sha256:56f10e051562ab0853afaa2ad8e23beed467d9a5d34cbbdc9163ff481a81c720",
+            "pageFingerprint": "sha256:abfdc0142b6b03314407eeba79284e63c00df75ff1569180563d5dd0be3aef8c"
+          },
+          "evidenceProfile": {
+            "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+            "schemaVersion": 2,
+            "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+            "goalFingerprintRuleVersion": "goal-evidence-v1",
+            "profileRuleVersion": "positive-understanding-evidence-v2",
+            "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "goalId": "3681e688-7880-5bb4-9ab9-ef78289345c8",
+            "goalFingerprint": "sha256:56f10e051562ab0853afaa2ad8e23beed467d9a5d34cbbdc9163ff481a81c720",
+            "reviewInputFingerprint": "sha256:4590017efb355ec44f06931805a0b8857d0122fe1650b89fa7665f146f3e599c",
+            "profileFingerprint": "sha256:d5a73aacff411322ca698d74408378444fa8bba10f47a1324369196f15768e07",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "reviewedAt": "2026-10-12T06:59:54.903144+00:00",
+            "reviewer": "Fresh independent A; original author profile body retained for binding check",
+            "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+            "evidenceLevel": "E1",
+            "maximumClaimScope": "G1",
+            "reviewRunIds": [],
+            "dissent": [],
+            "profile": {
+              "archetype": "concept",
+              "expectations": [
+                {
+                  "id": "structure-and-evidence",
+                  "essentialUnderstandingDe": "Verdauungssäfte schaffen verschiedene chemische Bedingungen; Emulgierung ist keine Hydrolyse.",
+                  "essentialUnderstandingEn": "Digestive fluids create distinct chemical conditions; emulsification is not hydrolysis.",
+                  "observablePerformanceDe": "Säure kann Proteinstruktur verändern und geeignete Bedingungen für Pepsin schaffen; Gallensalze emulgieren Fett und vergrößern die Grenzfläche. Galle spaltet keine Esterbindung selbst.",
+                  "observablePerformanceEn": "Acid can change protein structure and establish pepsin conditions; bile salts emulsify fat and enlarge interfaces. Bile itself does not cleave ester bonds."
+                },
+                {
+                  "id": "fresh-transfer",
+                  "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+                  "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+                  "observablePerformanceDe": "Neutralisierung/Bufferung verändert Protonierungszustände und Enzymbedingungen; ein pH-Optimum ist enzymspezifisch. Verdauungssäfte wirken nicht austauschbar.",
+                  "observablePerformanceEn": "Neutralisation/buffering affects protonation and enzyme conditions; pH optima are enzyme-specific. Digestive fluids are not interchangeable."
+                }
+              ],
+              "coverageExpectations": {
+                "requiredExpectationIds": [
+                  "structure-and-evidence",
+                  "fresh-transfer"
+                ],
+                "alternativeExpectationGroups": [],
+                "minimumIndependentDemonstrations": 2,
+                "freshVariationRequired": true,
+                "independentTransferRequired": true
+              },
+              "variationAxes": [
+                {
+                  "id": "material-and-conditions",
+                  "textDe": "Material, Stoffstruktur, Messbedingung oder Bewertungsdossier wechseln wie in den zwei ausdrücklich ausgearbeiteten Fällen; quantitative Angaben sind synthetische Aufgabenwerte.",
+                  "textEn": "Material, molecular structure, measurement conditions or evaluation dossier vary as explicitly specified in the two worked cases; numerical values are synthetic task data."
+                }
+              ],
+              "applicationCaseBriefs": [
+                {
+                  "id": "case-a",
+                  "taskDemandDe": "Erkläre die unterschiedlichen Beiträge von Magensäure und Gallenflüssigkeit zur Verdauung von Protein bzw. Fett.",
+                  "taskDemandEn": "Explain distinct contributions of stomach acid and bile to protein and fat digestion.",
+                  "expectedPerformanceDe": "Säure kann Proteinstruktur verändern und geeignete Bedingungen für Pepsin schaffen; Gallensalze emulgieren Fett und vergrößern die Grenzfläche. Galle spaltet keine Esterbindung selbst.",
+                  "expectedPerformanceEn": "Acid can change protein structure and establish pepsin conditions; bile salts emulsify fat and enlarge interfaces. Bile itself does not cleave ester bonds.",
+                  "understandingFocusDe": "Verdauungssäfte schaffen verschiedene chemische Bedingungen; Emulgierung ist keine Hydrolyse.",
+                  "understandingFocusEn": "Digestive fluids create distinct chemical conditions; emulsification is not hydrolysis."
+                },
+                {
+                  "id": "case-b-transfer",
+                  "taskDemandDe": "Begründe im Modell, warum ein alkalischer Verdauungssaft nach dem Magen für ein pH-empfindliches Enzym nötig sein kann.",
+                  "taskDemandEn": "Explain why alkaline digestive fluid after the stomach may be needed for a pH-sensitive enzyme.",
+                  "expectedPerformanceDe": "Neutralisierung/Bufferung verändert Protonierungszustände und Enzymbedingungen; ein pH-Optimum ist enzymspezifisch. Verdauungssäfte wirken nicht austauschbar.",
+                  "expectedPerformanceEn": "Neutralisation/buffering affects protonation and enzyme conditions; pH optima are enzyme-specific. Digestive fluids are not interchangeable.",
+                  "understandingFocusDe": "Verdauungssäfte schaffen verschiedene chemische Bedingungen; Emulgierung ist keine Hydrolyse.",
+                  "understandingFocusEn": "Digestive fluids create distinct chemical conditions; emulsification is not hydrolysis."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "nativePage": {
+        "goalId": "3681e688-7880-5bb4-9ab9-ef78289345c8",
+        "nativeSubsetPageNumber": 2,
+        "physicalPdfPageNumber": 4,
+        "actualPdfProjection": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-4.png",
+          "bytes": 415717,
+          "sha256": "sha256:a6b028be95d36c518619ece374d66eb185b98ff8976750e50ca5b889c19acf71"
+        }
+      },
+      "scienceRationale": "Die Beschreibung ist chemisch richtig und DE/EN gleichwertig. Bild und Fälle trennen Emulgierung von Hydrolyse und Säurebedingungen von katalytischer Spaltung; der Transfer wechselt zu einem alkalischen nachgastrischen Milieu. Aktuelle engere Anwendbarkeit ohne BW/HB bleibt erhalten. Die BY-C11-Pflicht wird fachlich getroffen; NI-Clustervererbung allein beweist diese vollständige Einzelpflicht nicht.",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "wholeInputGoal": {
+        "goalId": "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+        "goalFingerprint": "sha256:1e44fd0c3738901060390931258baa809e400be37e85cc73a3d9401ac4320d52",
+        "pageFingerprint": "sha256:17458694805ffbabdb3ca19e9a6afaa5c1787482d85f94f258b82416e307767e",
+        "currentTitleDe": "Zucker strukturbezogen vergleichen",
+        "currentTitleEn": "Compare sugars based on structure",
+        "currentDescriptionDe": "Die lernende Person kann ausgewählte Zucker anhand ihres molekularen Baus vergleichen und daraus ihr chemisches Reaktionsverhalten begründen.",
+        "currentDescriptionEn": "The learner can compare selected sugars based on their molecular structure and use this to justify their chemical reactivity.",
+        "canonicalContext": {
+          "shortKey": "canonical_chemistry_by_sek1_sugar_structure_reactivity",
+          "phase": null,
+          "core": null,
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekI"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN",
+              "PK4_KOMMUNIZIEREN"
+            ],
+            "guidingIdeas": [
+              "BC_AUFBAU",
+              "BC_REAKTION"
+            ],
+            "phase": "GLOBAL",
+            "area": "Naturstoffe",
+            "topicCode": "CANONICAL.CHEMISTRY.SEK1.SUGAR_STRUCTURE_REACTIVITY"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-NI",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 3,
+            "navigationOrder": 1,
+            "treeOrder": 5,
+            "goalId": "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+            "shortKey": "canonical_chemistry_by_sek1_sugar_structure_reactivity",
+            "anchor": "goal-68292f39-04e7-5924-b6a5-731c7f7f82ee",
+            "title": "Zucker strukturbezogen vergleichen",
+            "description": "Die lernende Person kann ausgewählte Zucker anhand ihres molekularen Baus vergleichen und daraus ihr chemisches Reaktionsverhalten begründen.",
+            "breadcrumbs": [
+              "Chemie – kanonische M7-Prüfsicht",
+              "Chemie",
+              "Naturstoffe und Synthesechemie",
+              "Q2.1 Naturstoffe"
+            ],
+            "chapterIds": [
+              "structure:chemie-m7-review-root",
+              "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+              "goal:ae683d59-06a5-59be-87b5-b8648fd138c8",
+              "goal:24b47a95-c239-552a-9be7-324aa54a89dd"
+            ],
+            "requires": [],
+            "reverseRequires": [],
+            "externalPrerequisites": [
+              {
+                "goalId": "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+                "title": "Warum Chemie? - Relevanz und Orientierung",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-a9c22adc-b543-5b0c-a2d8-3189facdff08"
+              },
+              {
+                "goalId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+                "title": "Aldehyd- und Keton-Nachweise durchführen und deuten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-973c12d9-d863-5292-8c68-9c80cdacf9e2"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+                "title": "Zucker in Alltag und Ernährung bewerten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Zucker strukturbezogen vergleichen",
+              "url": "/assets/goal-visualizations/chemie/68292f39-04e7-5924-b6a5-731c7f7f82ee/68292f39-04e7-5924-b6a5-731c7f7f82ee.png",
+              "altText": "Ein ausdrücklich vereinfachtes Bausteinmodell vergleicht Glucose mit freiem anomerem Zentrum C1 und Saccharose mit verknüpften Zentren C1 und C2. Darunter stehen ein positiver roter und ein negativer blauer Kupfer-Nachweis.",
+              "originalDigest": "sha256:962a90624a2b7b2203bce57757cce401d6ef6b0627348723e6a53738a70d393e",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": {
+              "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+              "status": "needs_human_review",
+              "reviewInputFingerprint": "sha256:d005ba7b492af1c8b77606d079eb696c78443dad116b2807bdd6329b94794d8f",
+              "profileFingerprint": "sha256:635972c7efa540e2ec137b7d32d1bfbed3ead2fb2403ec4304b521b817de4605",
+              "evidenceLevel": "E1",
+              "maximumClaimScope": "G1"
+            },
+            "goalFingerprint": "sha256:1e44fd0c3738901060390931258baa809e400be37e85cc73a3d9401ac4320d52",
+            "pageFingerprint": "sha256:17458694805ffbabdb3ca19e9a6afaa5c1787482d85f94f258b82416e307767e"
+          },
+          "evidenceProfile": {
+            "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+            "schemaVersion": 2,
+            "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+            "goalFingerprintRuleVersion": "goal-evidence-v1",
+            "profileRuleVersion": "positive-understanding-evidence-v2",
+            "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "goalId": "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+            "goalFingerprint": "sha256:1e44fd0c3738901060390931258baa809e400be37e85cc73a3d9401ac4320d52",
+            "reviewInputFingerprint": "sha256:d005ba7b492af1c8b77606d079eb696c78443dad116b2807bdd6329b94794d8f",
+            "profileFingerprint": "sha256:635972c7efa540e2ec137b7d32d1bfbed3ead2fb2403ec4304b521b817de4605",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "reviewedAt": "2026-10-12T06:59:54.903154+00:00",
+            "reviewer": "Fresh independent A; original author profile body retained for binding check",
+            "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+            "evidenceLevel": "E1",
+            "maximumClaimScope": "G1",
+            "reviewRunIds": [],
+            "dissent": [],
+            "profile": {
+              "archetype": "concept",
+              "expectations": [
+                {
+                  "id": "structure-and-evidence",
+                  "essentialUnderstandingDe": "Das freie anomere Zentrum bestimmt Reduktionsfähigkeit; Testbedingungen und Umlagerung zählen.",
+                  "essentialUnderstandingEn": "A free anomeric centre governs reducing behaviour; conditions and rearrangements matter.",
+                  "observablePerformanceDe": "Maltose besitzt ein freies anomeres Zentrum; in Saccharose sind beide anomeren Zentren gebunden. Der Unterschied begründet verschiedene Befunde, nicht bloß die Zahl der Zuckerbausteine.",
+                  "observablePerformanceEn": "Maltose has a free anomeric centre; both are bound in sucrose. This explains different results, not merely the count of sugar units."
+                },
+                {
+                  "id": "fresh-transfer",
+                  "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+                  "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+                  "observablePerformanceDe": "Unter alkalischen Bedingungen kann Keto-Enol-Umlagerung zu Aldosen auftreten. Reaktionsbedingungen und zugängliche Carbonylformen werden berücksichtigt.",
+                  "observablePerformanceEn": "Alkaline conditions allow keto-enol rearrangement to aldoses. Conditions and accessible carbonyl forms must be considered."
+                }
+              ],
+              "coverageExpectations": {
+                "requiredExpectationIds": [
+                  "structure-and-evidence",
+                  "fresh-transfer"
+                ],
+                "alternativeExpectationGroups": [],
+                "minimumIndependentDemonstrations": 2,
+                "freshVariationRequired": true,
+                "independentTransferRequired": true
+              },
+              "variationAxes": [
+                {
+                  "id": "material-and-conditions",
+                  "textDe": "Material, Stoffstruktur, Messbedingung oder Bewertungsdossier wechseln wie in den zwei ausdrücklich ausgearbeiteten Fällen; quantitative Angaben sind synthetische Aufgabenwerte.",
+                  "textEn": "Material, molecular structure, measurement conditions or evaluation dossier vary as explicitly specified in the two worked cases; numerical values are synthetic task data."
+                }
+              ],
+              "applicationCaseBriefs": [
+                {
+                  "id": "case-a",
+                  "taskDemandDe": "Vergleiche Maltose und Saccharose anhand vollständig bereitgestellter Strukturformeln im reduzierenden Nachweis.",
+                  "taskDemandEn": "Compare maltose and sucrose in a reducing assay using complete supplied structures.",
+                  "expectedPerformanceDe": "Maltose besitzt ein freies anomeres Zentrum; in Saccharose sind beide anomeren Zentren gebunden. Der Unterschied begründet verschiedene Befunde, nicht bloß die Zahl der Zuckerbausteine.",
+                  "expectedPerformanceEn": "Maltose has a free anomeric centre; both are bound in sucrose. This explains different results, not merely the count of sugar units.",
+                  "understandingFocusDe": "Das freie anomere Zentrum bestimmt Reduktionsfähigkeit; Testbedingungen und Umlagerung zählen.",
+                  "understandingFocusEn": "A free anomeric centre governs reducing behaviour; conditions and rearrangements matter."
+                },
+                {
+                  "id": "case-b-transfer",
+                  "taskDemandDe": "Eine Fructoselösung reagiert bei alkalischem Reduktionstest positiv. Begründe, warum eine Ketose nicht automatisch negativ sein muss.",
+                  "taskDemandEn": "Fructose gives a positive alkaline reducing test. Explain why a ketose need not be negative.",
+                  "expectedPerformanceDe": "Unter alkalischen Bedingungen kann Keto-Enol-Umlagerung zu Aldosen auftreten. Reaktionsbedingungen und zugängliche Carbonylformen werden berücksichtigt.",
+                  "expectedPerformanceEn": "Alkaline conditions allow keto-enol rearrangement to aldoses. Conditions and accessible carbonyl forms must be considered.",
+                  "understandingFocusDe": "Das freie anomere Zentrum bestimmt Reduktionsfähigkeit; Testbedingungen und Umlagerung zählen.",
+                  "understandingFocusEn": "A free anomeric centre governs reducing behaviour; conditions and rearrangements matter."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "nativePage": {
+        "goalId": "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+        "nativeSubsetPageNumber": 3,
+        "physicalPdfPageNumber": 5,
+        "actualPdfProjection": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-5.png",
+          "bytes": 246226,
+          "sha256": "sha256:aa932e5b3e4cabc651b32142b389199346559fae0206e152d78ea7dbaea8f637"
+        }
+      },
+      "scienceRationale": "Die Beschreibung trifft den originalen BY-Operator und ist auch für die jüngere Stufe als vergleichende Kompetenz verständlich. Das explizite Bausteinmodell ist keine vollständige Haworth-Formel; freie versus gebundene anomere Zentren und Glucose-Ringöffnung werden didaktisch korrekt gezeigt. Maltose/Saccharose zu alkalischer Fructose ist ein chemisch relevanter Wechsel. Die im Fall verlangten vollständigen Strukturformeln müssen beim tatsächlichen Aufgabeneinsatz zusätzlich vorliegen; im gelieferten Fallobjekt sind sie nicht separat materialisiert.",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "wholeInputGoal": {
+        "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+        "goalFingerprint": "sha256:196fb7db626d312dace2dec0a177930eefd42c44a7fc18149aad7e9b1013e36f",
+        "pageFingerprint": "sha256:78871b9fe2b81623e1299669d58fa08d858bbfd8bc2022034957f7dcc23ecb2e",
+        "currentTitleDe": "Lebensmittelinhaltsstoffe experimentell nachweisen",
+        "currentTitleEn": "Experimentally detect food components",
+        "currentDescriptionDe": "Die lernende Person kann experimentelle Untersuchungen an Lebensmitteln durchführen, um Makronährstoffe und weitere Bestandteile fachgerecht nachzuweisen.",
+        "currentDescriptionEn": "The learner can perform experimental investigations of foods to detect macronutrients and other components appropriately.",
+        "canonicalContext": {
+          "shortKey": "canonical_chemistry_by_food_component_detection",
+          "phase": null,
+          "core": null,
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekII"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_ERKENNTNISGEWINNUNG",
+              "PK3_AUSWERTEN"
+            ],
+            "guidingIdeas": [
+              "BC_REAKTION"
+            ],
+            "phase": "Q2",
+            "area": "Lebensmittelchemie",
+            "topicCode": "CANONICAL.CHEMISTRY.Q2.FOOD_COMPONENT_DETECTION"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-NI"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+            "360fccb9-896d-5e67-bf5d-5732621604c9"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 4,
+            "navigationOrder": 2,
+            "treeOrder": 6,
+            "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+            "shortKey": "canonical_chemistry_by_food_component_detection",
+            "anchor": "goal-8fe39739-2938-5e2c-8db2-08572b44569a",
+            "title": "Lebensmittelinhaltsstoffe experimentell nachweisen",
+            "description": "Die lernende Person kann experimentelle Untersuchungen an Lebensmitteln durchführen, um Makronährstoffe und weitere Bestandteile fachgerecht nachzuweisen.",
+            "breadcrumbs": [
+              "Chemie – kanonische M7-Prüfsicht",
+              "Chemie",
+              "Naturstoffe und Synthesechemie",
+              "Q2.1 Naturstoffe"
+            ],
+            "chapterIds": [
+              "structure:chemie-m7-review-root",
+              "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+              "goal:ae683d59-06a5-59be-87b5-b8648fd138c8",
+              "goal:24b47a95-c239-552a-9be7-324aa54a89dd"
+            ],
+            "requires": [],
+            "reverseRequires": [
+              {
+                "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+                "title": "Lebensmittelinhaltsstoffe quantitativ bestimmen",
+                "anchor": "goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+                "pageNumber": 6
+              },
+              {
+                "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+                "title": "Aminocarbonsäuren und Peptide nachweisen",
+                "anchor": "goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+                "pageNumber": 5
+              }
+            ],
+            "externalPrerequisites": [
+              {
+                "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+                "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-e81a4aed-9695-533e-8eb7-7a0c714346ea"
+              },
+              {
+                "goalId": "360fccb9-896d-5e67-bf5d-5732621604c9",
+                "title": "Nahrungsmittelinhaltsstoffe strukturbezogen einordnen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-360fccb9-896d-5e67-bf5d-5732621604c9"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+                "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Lebensmittelinhaltsstoffe experimentell nachweisen",
+              "url": "/assets/goal-visualizations/chemie/8fe39739-2938-5e2c-8db2-08572b44569a/8fe39739-2938-5e2c-8db2-08572b44569a.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Lebensmittelinhaltsstoffe experimentell nachweisen\". Die lernende Person kann experimentelle Untersuchungen an Lebensmitteln durchführen, um Makronährstoffe und weitere Bestandteile fachgerecht nachzuweisen.",
+              "originalDigest": "sha256:c7c12cead33be7401108308275240a27957e04dc38ef9dbd13d11a2f233f717e",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": {
+              "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+              "status": "needs_human_review",
+              "reviewInputFingerprint": "sha256:17803c06719169adf647973841d4d64133c74c89b584b5cf13a41e01b02c90b7",
+              "profileFingerprint": "sha256:dbaabd4c5731c2e71c98a3e711c131c7630d9250179f271980cd85b101ff895b",
+              "evidenceLevel": "E1",
+              "maximumClaimScope": "G1"
+            },
+            "goalFingerprint": "sha256:196fb7db626d312dace2dec0a177930eefd42c44a7fc18149aad7e9b1013e36f",
+            "pageFingerprint": "sha256:78871b9fe2b81623e1299669d58fa08d858bbfd8bc2022034957f7dcc23ecb2e"
+          },
+          "evidenceProfile": {
+            "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+            "schemaVersion": 2,
+            "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+            "goalFingerprintRuleVersion": "goal-evidence-v1",
+            "profileRuleVersion": "positive-understanding-evidence-v2",
+            "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+            "goalFingerprint": "sha256:196fb7db626d312dace2dec0a177930eefd42c44a7fc18149aad7e9b1013e36f",
+            "reviewInputFingerprint": "sha256:17803c06719169adf647973841d4d64133c74c89b584b5cf13a41e01b02c90b7",
+            "profileFingerprint": "sha256:dbaabd4c5731c2e71c98a3e711c131c7630d9250179f271980cd85b101ff895b",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "reviewedAt": "2026-10-12T06:59:54.903163+00:00",
+            "reviewer": "Fresh independent A; original author profile body retained for binding check",
+            "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+            "evidenceLevel": "E1",
+            "maximumClaimScope": "G1",
+            "reviewRunIds": [],
+            "dissent": [],
+            "profile": {
+              "archetype": "experiment",
+              "expectations": [
+                {
+                  "id": "aspect-1",
+                  "essentialUnderstandingDe": "Kontrollierter Nachweisgangisteigene Durchführungsleistung.",
+                  "essentialUnderstandingEn": "Controlled assay panel is an execution skill.",
+                  "observablePerformanceDe": "Durchführung und Kontrollentatsächlichdokumentieren; Iod Stärkedunkelblau, GODGlucosegrünblau, Biuretgeeignete Peptideviolett. Negativbefund/Deklarationerlaubenkeinevollständige Zusammensetzung; Methodenspezifität und Nachweisgrenzenbenennen.",
+                  "observablePerformanceEn": "Document actual execution/controls. Iodine starch dark blue, GOD glucose green blue, biuret suitable peptides violet. Negative/label does not give complete composition; state specificity/limits."
+                },
+                {
+                  "id": "aspect-2",
+                  "essentialUnderstandingDe": "Fettzweigundkonkretenweiteren Bestandteilausführen.",
+                  "essentialUnderstandingEn": "Execute fat branch and one specific further constituent.",
+                  "observablePerformanceDe": "Persistenterdurchscheinender Fettfleck gegenübergetrocknetem Wasserstützt Fett im Modell, keineexakte Fettmasseselektiver Beweis. Ascorbat reduziert DCPIPmit Entfärbung; andere Reduktionsmittel/Eigenfarbe/pH könnenstören. Kontrollen/Ausführungundbegrenzte Nachweise für Makro-/Mikronährstoffe dokumentieren.",
+                  "observablePerformanceEn": "Persistent translucent oil spot vs dried water supports fat in the model, no precise mass or specific identity. Ascorbate reduces DCPIP, decolourising; other reductants, matrix colour/ph interfere. Document execution/controls and bounded macro/micronutrient results."
+                }
+              ],
+              "coverageExpectations": {
+                "requiredExpectationIds": [
+                  "aspect-1",
+                  "aspect-2"
+                ],
+                "alternativeExpectationGroups": [],
+                "minimumIndependentDemonstrations": 2,
+                "freshVariationRequired": true,
+                "independentTransferRequired": true
+              },
+              "variationAxes": [
+                {
+                  "id": "material-operator-context",
+                  "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+                  "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+                }
+              ],
+              "applicationCaseBriefs": [
+                {
+                  "id": "case-1",
+                  "taskDemandDe": "Führe betreut einen Lebensmittel-Nachweisgang aus. Je2mLgetrenntewässrige Modellproben, Glucose-/Stärke-/Proteinpositive Kontrollen, Wassernegative Kontrolle. Iod-Stärke: 1Tropfenbereitgestellte Lugollösung. Glucose: QUANTOFIXGlucose2seintauchen, abschütteln, nach30sSkalavergleichen. Protein: Biuret2mLProbe+1mLNaOH1M+10Tropfen CuSO4 0, 1M. Nutzegetrennte Pipetten, notiere Ausführung und Befunde.",
+                  "taskDemandEn": "Execute supervised a food assay panel using separate2ml aqueous models/positive glucose, starch, protein controls and water negative. Starch: one drop lugo l. Glucose: QUANTOFIX dip2s, shake off, compare scale after30s. Protein: biuret2ml sample+1mL1M NaOH+10drops.1M CuSO4. Use separate pipettes, log execution/findings.",
+                  "expectedPerformanceDe": "Durchführung und Kontrollentatsächlichdokumentieren; Iod Stärkedunkelblau, GODGlucosegrünblau, Biuretgeeignete Peptideviolett. Negativbefund/Deklarationerlaubenkeinevollständige Zusammensetzung; Methodenspezifität und Nachweisgrenzenbenennen.",
+                  "expectedPerformanceEn": "Document actual execution/controls. Iodine starch dark blue, GOD glucose green blue, biuret suitable peptides violet. Negative/label does not give complete composition; state specificity/limits.",
+                  "understandingFocusDe": "Kontrollierter Nachweisgangisteigene Durchführungsleistung.",
+                  "understandingFocusEn": "Controlled assay panel is an execution skill."
+                },
+                {
+                  "id": "case-2",
+                  "taskDemandDe": "Ergänze betreut den Lebensmittelgang: jeein Tropfen Modellprobe, Speiseölpositive Kontrolle, Wassernegative Kontrolle aufmarkiertes Filterpapier; nachvollständigem Trocknengegen Lichtvergleichen. Weiterer Bestandteil Vitamin C: je2mLklaregepuffertep H7Modellprobe, Ascorbatstandard0, 1g/L, Wasserblank+0, 10mLbereitgestelltes DCPIP0, 1g/L; Farbe/Zeitprotokollieren. Vergleichemitdemvorherigen Makronährstoffpanel.",
+                  "taskDemandEn": "Extend the supervised food panel: one drop sample, oil positive/water negative on separate paper areas, dry completely and compare translucency. Further constituent vitamin C: 2mL clear pH7buffered model, 0.1g/L ascorbate standard/water blank+.10ml provided0.1g/LDCPIP; log colour/time. Compare with macro-panel.",
+                  "expectedPerformanceDe": "Persistenterdurchscheinender Fettfleck gegenübergetrocknetem Wasserstützt Fett im Modell, keineexakte Fettmasseselektiver Beweis. Ascorbat reduziert DCPIPmit Entfärbung; andere Reduktionsmittel/Eigenfarbe/pH könnenstören. Kontrollen/Ausführungundbegrenzte Nachweise für Makro-/Mikronährstoffe dokumentieren.",
+                  "expectedPerformanceEn": "Persistent translucent oil spot vs dried water supports fat in the model, no precise mass or specific identity. Ascorbate reduces DCPIP, decolourising; other reductants, matrix colour/ph interfere. Document execution/controls and bounded macro/micronutrient results.",
+                  "understandingFocusDe": "Fettzweigundkonkretenweiteren Bestandteilausführen.",
+                  "understandingFocusEn": "Execute fat branch and one specific further constituent."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "nativePage": {
+        "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+        "nativeSubsetPageNumber": 4,
+        "physicalPdfPageNumber": 6,
+        "actualPdfProjection": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-6.png",
+          "bytes": 334785,
+          "sha256": "sha256:0ddb361b1821a733357ea7ad703604ef68be333cc7df725d269a5b14d00a6f69"
+        }
+      },
+      "scienceRationale": "Durchführen bleibt ein echter Handlungsoperator. Die zwei vollständigen Fälle enthalten betreute Abläufe, Positiv-/Negativkontrollen, Makronährstoffe einschließlich Fett und den weiteren Bestandteil Ascorbat. Ein Bild, Probenetikett oder fremdes Protokoll ersetzt keine eigene Durchführung. Der veränderte Fett-/Vitamin-C-Zweig verlangt andere Kontrolle und Inferenz; die Vorlage behauptet keine bereits beobachtete Arbeit.",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "wholeInputGoal": {
+        "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+        "goalFingerprint": "sha256:e083b6eae8abc5d5cbb34b6c9ad3c89024417f321db63204e5d8a3dab1439492",
+        "pageFingerprint": "sha256:1d596c384e3ae341480ef582c936cf2a4ed2c60bbeb3f9fe209d6ca72f4bc079",
+        "currentTitleDe": "Aminocarbonsäuren und Peptide nachweisen",
+        "currentTitleEn": "Detect amino carboxylic acids and peptides",
+        "currentDescriptionDe": "Die lernende Person kann geeignete Nachweisreaktionen für Aminocarbonsäuren und Peptide durchführen und ihre Aussagekraft etwa bei Lebensmitteln auswerten.",
+        "currentDescriptionEn": "The learner can carry out suitable detection reactions for amino carboxylic acids and peptides and evaluate their evidence, for example in foods.",
+        "canonicalContext": {
+          "shortKey": "canonical_chemistry_by_amino_acid_peptide_detection",
+          "phase": null,
+          "core": null,
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekII"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_ERKENNTNISGEWINNUNG",
+              "PK3_AUSWERTEN"
+            ],
+            "guidingIdeas": [
+              "BC_REAKTION"
+            ],
+            "phase": "Q2",
+            "area": "Naturstoffe",
+            "topicCode": "CANONICAL.CHEMISTRY.Q2.AMINO_ACID_PEPTIDE_DETECTION"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-NI"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "197bc2c5-835e-59e7-9263-5684e89799cc",
+            "8fe39739-2938-5e2c-8db2-08572b44569a"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 5,
+            "navigationOrder": 5,
+            "treeOrder": 9,
+            "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "shortKey": "canonical_chemistry_by_amino_acid_peptide_detection",
+            "anchor": "goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "title": "Aminocarbonsäuren und Peptide nachweisen",
+            "description": "Die lernende Person kann geeignete Nachweisreaktionen für Aminocarbonsäuren und Peptide durchführen und ihre Aussagekraft etwa bei Lebensmitteln auswerten.",
+            "breadcrumbs": [
+              "Chemie – kanonische M7-Prüfsicht",
+              "Chemie",
+              "Naturstoffe und Synthesechemie",
+              "Q2.1 Naturstoffe"
+            ],
+            "chapterIds": [
+              "structure:chemie-m7-review-root",
+              "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+              "goal:ae683d59-06a5-59be-87b5-b8648fd138c8",
+              "goal:24b47a95-c239-552a-9be7-324aa54a89dd"
+            ],
+            "requires": [
+              {
+                "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+                "title": "Lebensmittelinhaltsstoffe experimentell nachweisen",
+                "anchor": "goal-8fe39739-2938-5e2c-8db2-08572b44569a",
+                "pageNumber": 4
+              }
+            ],
+            "reverseRequires": [],
+            "externalPrerequisites": [
+              {
+                "goalId": "197bc2c5-835e-59e7-9263-5684e89799cc",
+                "title": "Peptidbindungen erklären",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-197bc2c5-835e-59e7-9263-5684e89799cc"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+                "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+              },
+              {
+                "goalId": "31148286-b8db-57a7-8da2-2e0479240a2c",
+                "title": "Lernkarten - Naturstoffe",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-31148286-b8db-57a7-8da2-2e0479240a2c"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Aminocarbonsäuren und Peptide nachweisen",
+              "url": "/assets/goal-visualizations/chemie/5c8f0bbb-103a-579f-87fc-c997afe4fd18/5c8f0bbb-103a-579f-87fc-c997afe4fd18.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Aminocarbonsäuren und Peptide nachweisen\". Die lernende Person kann geeignete Nachweisreaktionen für Aminocarbonsäuren und Peptide durchführen und ihre Aussagekraft etwa bei Lebensmitteln auswerten.",
+              "originalDigest": "sha256:3f86aca94888d3e305450dabffa3cca5e8ef183d4c306f189a7255a4841032d4",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": {
+              "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+              "status": "needs_human_review",
+              "reviewInputFingerprint": "sha256:bce8a207ef38d65a1fecf13b90a29dcb5023a231e37b42daaffa10ee879a9c2a",
+              "profileFingerprint": "sha256:0515a1dfea6fc4c3428b070c530ca5463d40c0bb91cb4e3a60388332b727d736",
+              "evidenceLevel": "E1",
+              "maximumClaimScope": "G1"
+            },
+            "goalFingerprint": "sha256:e083b6eae8abc5d5cbb34b6c9ad3c89024417f321db63204e5d8a3dab1439492",
+            "pageFingerprint": "sha256:1d596c384e3ae341480ef582c936cf2a4ed2c60bbeb3f9fe209d6ca72f4bc079"
+          },
+          "evidenceProfile": {
+            "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+            "schemaVersion": 2,
+            "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+            "goalFingerprintRuleVersion": "goal-evidence-v1",
+            "profileRuleVersion": "positive-understanding-evidence-v2",
+            "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "goalFingerprint": "sha256:e083b6eae8abc5d5cbb34b6c9ad3c89024417f321db63204e5d8a3dab1439492",
+            "reviewInputFingerprint": "sha256:bce8a207ef38d65a1fecf13b90a29dcb5023a231e37b42daaffa10ee879a9c2a",
+            "profileFingerprint": "sha256:0515a1dfea6fc4c3428b070c530ca5463d40c0bb91cb4e3a60388332b727d736",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "reviewedAt": "2026-10-12T06:59:54.903149+00:00",
+            "reviewer": "Fresh independent A; original author profile body retained for binding check",
+            "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+            "evidenceLevel": "E1",
+            "maximumClaimScope": "G1",
+            "reviewRunIds": [],
+            "dissent": [],
+            "profile": {
+              "archetype": "experiment",
+              "expectations": [
+                {
+                  "id": "structure-and-evidence",
+                  "essentialUnderstandingDe": "Nachweise reagieren auf chemische Merkmale und erfordern Kontrollen sowie reale Durchführungsevidenz.",
+                  "essentialUnderstandingEn": "Assays respond to chemical features and require controls plus evidence of actual execution.",
+                  "observablePerformanceDe": "Ninhydrin zeigt bei vielen freien Aminogruppen eine Färbung; Biuret verlangt mehrere geeignete Peptidbindungen, Glycin bleibt negativ. Reagenzien/Probeninterferenzen werden kontrolliert.",
+                  "observablePerformanceEn": "Ninhydrin responds to many free amino groups; biuret requires multiple suitable peptide bonds and glycine is negative. Reagent/sample interferences are controlled."
+                },
+                {
+                  "id": "fresh-transfer",
+                  "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+                  "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+                  "observablePerformanceDe": "Befunde stützen die jeweilige Stoffklasse, nicht die eindeutige Verbindung. Ein analysiertes fremdes Protokoll belegt keine eigene Versuchsdurchführung; hierfür sind beobachtetes Arbeiten und eigenes Protokoll nötig.",
+                  "observablePerformanceEn": "Results support classes, not unique compounds. Analysing a supplied record does not demonstrate personally executing the experiment; observed practice and personal records are required."
+                },
+                {
+                  "id": "execution",
+                  "essentialUnderstandingDe": "Durchführen undchemische Selektivitätvergleichen.",
+                  "essentialUnderstandingEn": "Execute and compare chemical selectivity.",
+                  "observablePerformanceDe": "Glycinmit Ninhydrinviolett, mit Biuretkein Proteinnachweis; Eiklar Biuretviolett. Richtige Proben/Kontrollen und Dokumentationder Reihenfolge zählen. Ninhydrin reagiertmitgeeigneten Aminogruppen, nichtproteinexklusiv; Prolin kannabweichen.",
+                  "observablePerformanceEn": "Glycine ninhydrin violet, but not positive protein biuret; eggwhite biuret positive. Correct samples/controls and execution order count. Ninhydrin reacts with suitable amino groups, not exclusively proteins; proline can differ."
+                }
+              ],
+              "coverageExpectations": {
+                "requiredExpectationIds": [
+                  "structure-and-evidence",
+                  "fresh-transfer",
+                  "execution"
+                ],
+                "alternativeExpectationGroups": [],
+                "minimumIndependentDemonstrations": 2,
+                "freshVariationRequired": true,
+                "independentTransferRequired": true
+              },
+              "variationAxes": [
+                {
+                  "id": "material-operator-context",
+                  "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+                  "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+                }
+              ],
+              "applicationCaseBriefs": [
+                {
+                  "id": "case-a",
+                  "taskDemandDe": "Plane in einem schulisch freigegebenen Verfahren Ninhydrin- und Biuret-Vergleich an Glycin und einem Protein samt Blindproben; begründe erwartete Befunde.",
+                  "taskDemandEn": "Plan school-authorised ninhydrin and biuret comparison of glycine and a protein with blanks; justify expected results.",
+                  "expectedPerformanceDe": "Ninhydrin zeigt bei vielen freien Aminogruppen eine Färbung; Biuret verlangt mehrere geeignete Peptidbindungen, Glycin bleibt negativ. Reagenzien/Probeninterferenzen werden kontrolliert.",
+                  "expectedPerformanceEn": "Ninhydrin responds to many free amino groups; biuret requires multiple suitable peptide bonds and glycine is negative. Reagent/sample interferences are controlled.",
+                  "understandingFocusDe": "Nachweise reagieren auf chemische Merkmale und erfordern Kontrollen sowie reale Durchführungsevidenz.",
+                  "understandingFocusEn": "Assays respond to chemical features and require controls plus evidence of actual execution."
+                },
+                {
+                  "id": "case-b-transfer",
+                  "taskDemandDe": "Werte ein bereitgestelltes Protokoll aus: Blindprobe ungefärbt, Glycin Ninhydrin positiv/Biuret negativ, Protein Biuret positiv. Welche Aussagen und welche Durchführungsevidenz fehlen?",
+                  "taskDemandEn": "Evaluate a supplied record: blank colourless, glycine ninhydrin positive/biuret negative, protein biuret positive. What conclusions and execution evidence remain absent?",
+                  "expectedPerformanceDe": "Befunde stützen die jeweilige Stoffklasse, nicht die eindeutige Verbindung. Ein analysiertes fremdes Protokoll belegt keine eigene Versuchsdurchführung; hierfür sind beobachtetes Arbeiten und eigenes Protokoll nötig.",
+                  "expectedPerformanceEn": "Results support classes, not unique compounds. Analysing a supplied record does not demonstrate personally executing the experiment; observed practice and personal records are required.",
+                  "understandingFocusDe": "Nachweise reagieren auf chemische Merkmale und erfordern Kontrollen sowie reale Durchführungsevidenz.",
+                  "understandingFocusEn": "Assays respond to chemical features and require controls plus evidence of actual execution."
+                },
+                {
+                  "id": "execution-1",
+                  "taskDemandDe": "Führe betreut zwei Nachweise aus. Ninhydrin: jeein Tropfen1%Glycin und Wasser aufgetrennte Filterpapierfelder; mitbereitgestellterethanolischer Ninhydrinlösung im Abzug nach Freigabe benetzen, trocknen undimwarmluftfreien80°C-Trockenschrank2min erwärmen. Biuret: je2mLverdünntes Eiklar, Glycin, Wasser +1mLNaOH1M +10Tropfen CuSO4 0, 1M, mischen. Protokolliere Ausführung, Kontrollen undtatsächliche Befunde.",
+                  "taskDemandEn": "Execute supervised two assays. Ninhydrin: one drop each1%glycine/water on separate paper fields; wet using provided ethanolic ninhydrin in hood, leave dry then warm2min80°C drying cabinet. Biuret: 2ml diluted eggwhite, glycine, water+1mL1M NaOH+10drops0.1M CuSO4, mix. Log execution, controls and actual findings.",
+                  "expectedPerformanceDe": "Glycinmit Ninhydrinviolett, mit Biuretkein Proteinnachweis; Eiklar Biuretviolett. Richtige Proben/Kontrollen und Dokumentationder Reihenfolge zählen. Ninhydrin reagiertmitgeeigneten Aminogruppen, nichtproteinexklusiv; Prolin kannabweichen.",
+                  "expectedPerformanceEn": "Glycine ninhydrin violet, but not positive protein biuret; eggwhite biuret positive. Correct samples/controls and execution order count. Ninhydrin reacts with suitable amino groups, not exclusively proteins; proline can differ.",
+                  "understandingFocusDe": "Durchführen undchemische Selektivitätvergleichen.",
+                  "understandingFocusEn": "Execute and compare chemical selectivity."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "nativePage": {
+        "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+        "nativeSubsetPageNumber": 5,
+        "physicalPdfPageNumber": 7,
+        "actualPdfProjection": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-7.png",
+          "bytes": 321723,
+          "sha256": "sha256:a7f57ee3b8245d4fcd985602e77b33b17bbc5bf2265baf6128ff04c6fdda854d"
+        }
+      },
+      "scienceRationale": "Die Beschreibungen sind gleichwertig, korrekt und methodenneutral. Planung, fremdes Protokoll und eigener betreuter Vollzug werden in den drei Fällen getrennt. Der Transfer ändert den verfügbaren Evidenztyp und die erlaubten Schlüsse; er ist kein neuer chemischer Stoffversuch. Das native Bild nennt geeignete mehrfache Peptidbindungen und negative einzelne Aminosäuren/DiPeptide. M311-Erwerbsholds in BB/BE werden daraus nicht geschlossen.",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "wholeInputGoal": {
+        "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+        "goalFingerprint": "sha256:88669bed33064c88ed05b4a23f759dc9f7c2784c52142c72fb86a22dc99f5168",
+        "pageFingerprint": "sha256:24dbe2f5ce7c0a4a369ccf7cb0d6f3b876bf32cb394f0efe0916098ba1fccb70",
+        "currentTitleDe": "Lebensmittelinhaltsstoffe quantitativ bestimmen",
+        "currentTitleEn": "Quantify food components",
+        "currentDescriptionDe": "Die lernende Person kann geeignete experimentelle Verfahren auswählen und auswerten, um den Gehalt von Lebensmittelinhaltsstoffen zu bestimmen.",
+        "currentDescriptionEn": "The learner can select and evaluate suitable experimental methods to determine the content of food components.",
+        "canonicalContext": {
+          "shortKey": "canonical_chemistry_by_food_component_quantification",
+          "phase": null,
+          "core": null,
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekII"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB3",
+            "processCompetencies": [
+              "PK1_ERKENNTNISGEWINNUNG",
+              "PK3_AUSWERTEN"
+            ],
+            "guidingIdeas": [
+              "BC_REAKTION"
+            ],
+            "phase": "Q2",
+            "area": "Lebensmittelchemie",
+            "topicCode": "CANONICAL.CHEMISTRY.Q2.FOOD_COMPONENT_QUANTIFICATION"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-NI"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "8fe39739-2938-5e2c-8db2-08572b44569a",
+            "e313c1ee-a617-54ed-adea-c183da1e03d8"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 6,
+            "navigationOrder": 3,
+            "treeOrder": 7,
+            "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+            "shortKey": "canonical_chemistry_by_food_component_quantification",
+            "anchor": "goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+            "title": "Lebensmittelinhaltsstoffe quantitativ bestimmen",
+            "description": "Die lernende Person kann geeignete experimentelle Verfahren auswählen und auswerten, um den Gehalt von Lebensmittelinhaltsstoffen zu bestimmen.",
+            "breadcrumbs": [
+              "Chemie – kanonische M7-Prüfsicht",
+              "Chemie",
+              "Naturstoffe und Synthesechemie",
+              "Q2.1 Naturstoffe"
+            ],
+            "chapterIds": [
+              "structure:chemie-m7-review-root",
+              "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+              "goal:ae683d59-06a5-59be-87b5-b8648fd138c8",
+              "goal:24b47a95-c239-552a-9be7-324aa54a89dd"
+            ],
+            "requires": [
+              {
+                "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+                "title": "Lebensmittelinhaltsstoffe experimentell nachweisen",
+                "anchor": "goal-8fe39739-2938-5e2c-8db2-08572b44569a",
+                "pageNumber": 4
+              }
+            ],
+            "reverseRequires": [],
+            "externalPrerequisites": [
+              {
+                "goalId": "e313c1ee-a617-54ed-adea-c183da1e03d8",
+                "title": "Reinstoffgehalt in Stoffgemischen bestimmen",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-e313c1ee-a617-54ed-adea-c183da1e03d8"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+                "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Lebensmittelinhaltsstoffe quantitativ bestimmen",
+              "url": "/assets/goal-visualizations/chemie/8da5c5cf-d346-5df9-b4c9-26938fc80a88/8da5c5cf-d346-5df9-b4c9-26938fc80a88.png",
+              "altText": "Eine Saftprobe, die gemessene Masse eines ausgewählten Inhaltsstoffs und das Volumen der ursprünglichen Probe führen zur Formel rho=m/V. Die Einheit g/L kennzeichnet die Massenkonzentration.",
+              "originalDigest": "sha256:e1b3bfdcd2900af7a2330477035e86152cfe50ea172ab6ea07b0ff400fede63d",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": {
+              "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+              "status": "needs_human_review",
+              "reviewInputFingerprint": "sha256:73076592688235fab85188aff1cfb074f52232f4a99b77ddf1b8254b301f14d9",
+              "profileFingerprint": "sha256:5081af396c36261a73f6f02c156301de858da77eef1b1f3eeb0d9492ac3fc4ba",
+              "evidenceLevel": "E1",
+              "maximumClaimScope": "G1"
+            },
+            "goalFingerprint": "sha256:88669bed33064c88ed05b4a23f759dc9f7c2784c52142c72fb86a22dc99f5168",
+            "pageFingerprint": "sha256:24dbe2f5ce7c0a4a369ccf7cb0d6f3b876bf32cb394f0efe0916098ba1fccb70"
+          },
+          "evidenceProfile": {
+            "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+            "schemaVersion": 2,
+            "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+            "goalFingerprintRuleVersion": "goal-evidence-v1",
+            "profileRuleVersion": "positive-understanding-evidence-v2",
+            "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+            "goalFingerprint": "sha256:88669bed33064c88ed05b4a23f759dc9f7c2784c52142c72fb86a22dc99f5168",
+            "reviewInputFingerprint": "sha256:73076592688235fab85188aff1cfb074f52232f4a99b77ddf1b8254b301f14d9",
+            "profileFingerprint": "sha256:5081af396c36261a73f6f02c156301de858da77eef1b1f3eeb0d9492ac3fc4ba",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "reviewedAt": "2026-10-12T06:59:54.903161+00:00",
+            "reviewer": "Fresh independent A; original author profile body retained for binding check",
+            "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+            "evidenceLevel": "E1",
+            "maximumClaimScope": "G1",
+            "reviewRunIds": [],
+            "dissent": [],
+            "profile": {
+              "archetype": "data",
+              "expectations": [
+                {
+                  "id": "aspect-1",
+                  "essentialUnderstandingDe": "Methodeauswählen, Kalibrationund Messgrößeverbinden.",
+                  "essentialUnderstandingEn": "Link methods election, calibration and quantity.",
+                  "observablePerformanceDe": "Steigung0, 8L/g; Probe0, 30g/L, Original6g/L; 250mL1, 5g. Leerwert/Positivstandard, Verdünnung, Interferenz/Auslinearität prüfen. GOD/PODbeziehtsichauf Glucose, nicht Saccharose/Gesamtzucker; g/L=Massenkonzentration, nichtmol/L.",
+                  "observablePerformanceEn": "Slope.8L/g; diluted.30g/L, original6g/L, 1.5g in250mL. Check blank/standard, dilution, interferences/linearity. GOD/POD is glucose-specific, not all sugars; g/L is mass not amount concentration."
+                },
+                {
+                  "id": "aspect-2",
+                  "essentialUnderstandingDe": "Neues Analyt/Messprinzipbegrenztauswählen.",
+                  "essentialUnderstandingEn": "Choose another analyte/principle with limits.",
+                  "observablePerformanceDe": "10µmol=1, 7612mg/10mL=17, 612mg/100mL. Realeandere Reduktionsmittel verursachenpositive Abweichung; Endpunkt/Standardisierung/Blindwert/Kontrolle nötig. Keine Spezifität alleinauseiner Titration.",
+                  "observablePerformanceEn": "10µmol=1.7612mg/10mL=17.612mg/100mL. Other real reductants bias upward; endpoint, standardisation, blank/controls necessary. Titration alone does not ensure specificity."
+                }
+              ],
+              "coverageExpectations": {
+                "requiredExpectationIds": [
+                  "aspect-1",
+                  "aspect-2"
+                ],
+                "alternativeExpectationGroups": [],
+                "minimumIndependentDemonstrations": 2,
+                "freshVariationRequired": true,
+                "independentTransferRequired": true
+              },
+              "variationAxes": [
+                {
+                  "id": "material-operator-context",
+                  "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+                  "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+                }
+              ],
+              "applicationCaseBriefs": [
+                {
+                  "id": "case-1",
+                  "taskDemandDe": "Wähle für Glucoseineinem Modellsaft denbereitgestellten GOD/POD-Farbtest stattunspezifischer Gesamtzuckerprobe. Synthetische Photometriedaten unteridentischen Bedingungen505nm/1cm: Standards0; 0, 10; 0, 20; 0, 40g/L mit Absorbanz0; 0, 08; 0, 16; 0, 32; 20fachverdünnte Probe0, 24. Erstelle Kalibration, berechne Original-Massenkonzentration und Massein250mL; begründedie Methode/Kontrollen.",
+                  "taskDemandEn": "Choose provided GOD/POD colour test for glucose in model juice rather than nonspecific total sugars. Synthetic505nm/1cm data: standards0, .10, .20, .40g/L absorbance0, .08, .16, .32; 20fold diluted sample.24. Calibrate, calculate original mass concentration/mass in250mL and justify method/controls.",
+                  "expectedPerformanceDe": "Steigung0, 8L/g; Probe0, 30g/L, Original6g/L; 250mL1, 5g. Leerwert/Positivstandard, Verdünnung, Interferenz/Auslinearität prüfen. GOD/PODbeziehtsichauf Glucose, nicht Saccharose/Gesamtzucker; g/L=Massenkonzentration, nichtmol/L.",
+                  "expectedPerformanceEn": "Slope.8L/g; diluted.30g/L, original6g/L, 1.5g in250mL. Check blank/standard, dilution, interferences/linearity. GOD/POD is glucose-specific, not all sugars; g/L is mass not amount concentration.",
+                  "understandingFocusDe": "Methodeauswählen, Kalibrationund Messgrößeverbinden.",
+                  "understandingFocusEn": "Link methods election, calibration and quantity."
+                },
+                {
+                  "id": "case-2",
+                  "taskDemandDe": "Wähle für Vitamin Cineineralsascorbinsäureexklusivreduzierenddefinierten Modelllösung Iodometrie statt Glucosetest.10, 00mLProbe verbrauchen2, 00mLI2 0, 00500mol/L; Verhältnis1: 1, MAscorbinsäure176, 12g/mol. Berechne mg/100mL undbeurteile die Übertragbarkeitaufrealen Saftmitanderen Reduktionsmitteln.",
+                  "taskDemandEn": "Choose iodometry for vitamin C in a model solution explicitly having ascorbate as the only reductant.10mL consume2mL.005MI2, 1: 1, M176.12g/mol. Calculate mg/100mL and assess real juice with other reductants.",
+                  "expectedPerformanceDe": "10µmol=1, 7612mg/10mL=17, 612mg/100mL. Realeandere Reduktionsmittel verursachenpositive Abweichung; Endpunkt/Standardisierung/Blindwert/Kontrolle nötig. Keine Spezifität alleinauseiner Titration.",
+                  "expectedPerformanceEn": "10µmol=1.7612mg/10mL=17.612mg/100mL. Other real reductants bias upward; endpoint, standardisation, blank/controls necessary. Titration alone does not ensure specificity.",
+                  "understandingFocusDe": "Neues Analyt/Messprinzipbegrenztauswählen.",
+                  "understandingFocusEn": "Choose another analyte/principle with limits."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "nativePage": {
+        "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+        "nativeSubsetPageNumber": 6,
+        "physicalPdfPageNumber": 8,
+        "actualPdfProjection": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-8.png",
+          "bytes": 352965,
+          "sha256": "sha256:8a81ab94b789f3c3bb1b8253d7180179dea480e52fa57c2ee3572a2ac49fbf9a"
+        }
+      },
+      "scienceRationale": "Die Beschreibung verlangt Auswahl und Auswertung; sie behauptet keine eigene Durchführung als zusätzlich geprüfte Handlung. Die zwei vollständigen Fälle wechseln Analyt und Messprinzip, begründen Selektivität und rechnen korrekt. Das native Bild bindet m an ausgewählten Inhaltsstoff und V an ursprüngliche Probe; g/L bezeichnet Massenkonzentration. Die iodometrische Modellannahme wird nicht auf reale Säfte übertragen.",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "wholeInputGoal": {
+        "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
+        "goalFingerprint": "sha256:a2157e7640be7b4bd25b7e2841ff6d1b288974aa9b0c3ead3ce713fc37a4150c",
+        "pageFingerprint": "sha256:1ddd6513cd6b4ef9db09337ff6361e1bd5506b9d247993c794a2ee5cc39ba1df",
+        "currentTitleDe": "Außenfaktoren auf Enzymreaktionen erklären",
+        "currentTitleEn": "Explain external factors in enzyme reactions",
+        "currentDescriptionDe": "Die lernende Person kann den Einfluss von Temperatur, pH-Wert, Konzentrationen und weiteren Außenfaktoren auf die Geschwindigkeit von Enzymreaktionen beschreiben.",
+        "currentDescriptionEn": "The learner can describe how temperature, pH, concentrations, and other external factors affect the rate of enzyme reactions.",
+        "canonicalContext": {
+          "shortKey": "canonical_chemistry_by_enzyme_external_factors",
+          "phase": null,
+          "core": null,
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekII"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BC_REAKTION",
+              "BC_ENERGIE"
+            ],
+            "phase": "Q2",
+            "area": "Naturstoffe",
+            "topicCode": "CANONICAL.CHEMISTRY.Q2.ENZYME_EXTERNAL_FACTORS"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-NI"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "f7f35d71-927a-511c-a49e-65a66794a9bc"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 7,
+            "navigationOrder": 6,
+            "treeOrder": 10,
+            "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
+            "shortKey": "canonical_chemistry_by_enzyme_external_factors",
+            "anchor": "goal-b4ca3af2-77f1-59e8-955d-c4959e284242",
+            "title": "Außenfaktoren auf Enzymreaktionen erklären",
+            "description": "Die lernende Person kann den Einfluss von Temperatur, pH-Wert, Konzentrationen und weiteren Außenfaktoren auf die Geschwindigkeit von Enzymreaktionen beschreiben.",
+            "breadcrumbs": [
+              "Chemie – kanonische M7-Prüfsicht",
+              "Chemie",
+              "Naturstoffe und Synthesechemie",
+              "Q2.1 Naturstoffe"
+            ],
+            "chapterIds": [
+              "structure:chemie-m7-review-root",
+              "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+              "goal:ae683d59-06a5-59be-87b5-b8648fd138c8",
+              "goal:24b47a95-c239-552a-9be7-324aa54a89dd"
+            ],
+            "requires": [],
+            "reverseRequires": [],
+            "externalPrerequisites": [
+              {
+                "goalId": "f7f35d71-927a-511c-a49e-65a66794a9bc",
+                "title": "Enzymreaktionen und Hemmung modellieren",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-f7f35d71-927a-511c-a49e-65a66794a9bc"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+                "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+              },
+              {
+                "goalId": "3351fe47-5b0c-5407-a3bf-05229cfbf0c5",
+                "title": "Untersuchungen an Lebewesen sicher und hypothesengeleitet durchfuehren",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-3351fe47-5b0c-5407-a3bf-05229cfbf0c5"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Außenfaktoren auf Enzymreaktionen erklären",
+              "url": "/assets/goal-visualizations/chemie/b4ca3af2-77f1-59e8-955d-c4959e284242/b4ca3af2-77f1-59e8-955d-c4959e284242.png",
+              "altText": "Zwei beispielhafte Aktivitätskurven zeigen ein saures pH-Optimum für Pepsin und ein annähernd neutrales für Amylase. Die Beschriftung erklärt, dass das Optimum vom Enzym abhängt.",
+              "originalDigest": "sha256:82eb3a0402528dbb09b770454f7de93d035ed5b43a22146d8cc0a027cf314405",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": {
+              "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+              "status": "needs_human_review",
+              "reviewInputFingerprint": "sha256:02873ee9c441a013468ae648c8c2759a0486c503caac06e8575121ddd20a599b",
+              "profileFingerprint": "sha256:a21b53887a6dc0e3147f4791cffc99099074497ba82c060cfc73edb5058c677c",
+              "evidenceLevel": "E1",
+              "maximumClaimScope": "G1"
+            },
+            "goalFingerprint": "sha256:a2157e7640be7b4bd25b7e2841ff6d1b288974aa9b0c3ead3ce713fc37a4150c",
+            "pageFingerprint": "sha256:1ddd6513cd6b4ef9db09337ff6361e1bd5506b9d247993c794a2ee5cc39ba1df"
+          },
+          "evidenceProfile": {
+            "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+            "schemaVersion": 2,
+            "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+            "goalFingerprintRuleVersion": "goal-evidence-v1",
+            "profileRuleVersion": "positive-understanding-evidence-v2",
+            "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
+            "goalFingerprint": "sha256:a2157e7640be7b4bd25b7e2841ff6d1b288974aa9b0c3ead3ce713fc37a4150c",
+            "reviewInputFingerprint": "sha256:02873ee9c441a013468ae648c8c2759a0486c503caac06e8575121ddd20a599b",
+            "profileFingerprint": "sha256:a21b53887a6dc0e3147f4791cffc99099074497ba82c060cfc73edb5058c677c",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "reviewedAt": "2026-10-12T06:59:54.903177+00:00",
+            "reviewer": "Fresh independent A; original author profile body retained for binding check",
+            "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+            "evidenceLevel": "E1",
+            "maximumClaimScope": "G1",
+            "reviewRunIds": [],
+            "dissent": [],
+            "profile": {
+              "archetype": "concept",
+              "expectations": [
+                {
+                  "id": "structure-and-evidence",
+                  "essentialUnderstandingDe": "Reaktionsrate hängt sowohl von Kollisionen als auch von Enzymzustand und Sättigung ab.",
+                  "essentialUnderstandingEn": "Rate depends on encounters, enzyme state and saturation.",
+                  "observablePerformanceDe": "Mehr wirksame Begegnungen erhöhen zunächst Rate; Denaturierung kann bei Hitze absenken. Rückkühlen/Gleichmessung trennt reversible Kinetik und bleibenden Strukturverlust.",
+                  "observablePerformanceEn": "More effective encounters initially increase rate; heat denaturation may lower it. Recooling/equal measurement separates reversible kinetics and persistent damage."
+                },
+                {
+                  "id": "fresh-transfer",
+                  "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+                  "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+                  "observablePerformanceDe": "Sättigung begrenzt verfügbare aktive Zentren; pH beeinflusst Protonierung/Struktur. Plateau beweist keinen Substratverbrauch, weil Anfangsraten verglichen werden.",
+                  "observablePerformanceEn": "Saturation limits available active sites; pH affects protonation and structure. A plateau does not prove substrate exhaustion because initial rates are compared."
+                }
+              ],
+              "coverageExpectations": {
+                "requiredExpectationIds": [
+                  "structure-and-evidence",
+                  "fresh-transfer"
+                ],
+                "alternativeExpectationGroups": [],
+                "minimumIndependentDemonstrations": 2,
+                "freshVariationRequired": true,
+                "independentTransferRequired": true
+              },
+              "variationAxes": [
+                {
+                  "id": "material-and-conditions",
+                  "textDe": "Material, Stoffstruktur, Messbedingung oder Bewertungsdossier wechseln wie in den zwei ausdrücklich ausgearbeiteten Fällen; quantitative Angaben sind synthetische Aufgabenwerte.",
+                  "textEn": "Material, molecular structure, measurement conditions or evaluation dossier vary as explicitly specified in the two worked cases; numerical values are synthetic task data."
+                }
+              ],
+              "applicationCaseBriefs": [
+                {
+                  "id": "case-a",
+                  "taskDemandDe": "Ein Datensatz zeigt steigende Enzymrate bis zu mäßiger Temperatur und danach starkes Absinken. Erkläre beide Bereiche und plane eine Rückkühlkontrolle.",
+                  "taskDemandEn": "A dataset shows enzyme rate increasing to moderate temperature and then sharply dropping. Explain both and plan recooling control.",
+                  "expectedPerformanceDe": "Mehr wirksame Begegnungen erhöhen zunächst Rate; Denaturierung kann bei Hitze absenken. Rückkühlen/Gleichmessung trennt reversible Kinetik und bleibenden Strukturverlust.",
+                  "expectedPerformanceEn": "More effective encounters initially increase rate; heat denaturation may lower it. Recooling/equal measurement separates reversible kinetics and persistent damage.",
+                  "understandingFocusDe": "Reaktionsrate hängt sowohl von Kollisionen als auch von Enzymzustand und Sättigung ab.",
+                  "understandingFocusEn": "Rate depends on encounters, enzyme state and saturation."
+                },
+                {
+                  "id": "case-b-transfer",
+                  "taskDemandDe": "Bei unveränderter Enzymmenge steigt die Anfangsrate mit Substratkonzentration bis zu einem Plateau; ein pH-Wechsel senkt sie. Begründe beide Einflüsse.",
+                  "taskDemandEn": "At fixed enzyme amount, initial rate rises with substrate to a plateau; a pH shift lowers it. Explain both influences.",
+                  "expectedPerformanceDe": "Sättigung begrenzt verfügbare aktive Zentren; pH beeinflusst Protonierung/Struktur. Plateau beweist keinen Substratverbrauch, weil Anfangsraten verglichen werden.",
+                  "expectedPerformanceEn": "Saturation limits available active sites; pH affects protonation and structure. A plateau does not prove substrate exhaustion because initial rates are compared.",
+                  "understandingFocusDe": "Reaktionsrate hängt sowohl von Kollisionen als auch von Enzymzustand und Sättigung ab.",
+                  "understandingFocusEn": "Rate depends on encounters, enzyme state and saturation."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "nativePage": {
+        "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
+        "nativeSubsetPageNumber": 7,
+        "physicalPdfPageNumber": 9,
+        "actualPdfProjection": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/actual-pdf-page-projections/native-page-9.png",
+          "bytes": 291119,
+          "sha256": "sha256:a6cff571ebf3d905f8bd055395fd84a1e760cf47c69b962e613c9cf716344d03"
+        }
+      },
+      "scienceRationale": "DE/EN sind gleichwertig und der Zusammenhang äußerer Bedingungen mit Rate ist klar. Die zwei Fälle ändern Temperaturverlauf zu Substratsättigung plus pH und verlangen jeweils begründete Grenzen. Der native pH-Vergleich ist ausdrücklich enzymspezifisch (Pepsin/Amylase); keine universelle pH-7-Behauptung. Qualitative Verlaufsbedingungen sind Aufgabenangaben; ein numerischer Messdatensatz ist hier nicht geliefert. Hemmungsmodell ist als Voraussetzung verlinkt; quantitative Kinetik bleibt eigener Nachfolger.",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "none"
+    }
+  ],
+  "records": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-native-independent-a-20261014-v1/results/chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.batch-001.records.jsonl",
+    "bytes": 26909,
+    "sha256": "sha256:ffcdea59d4fabea1e0faf21550a5a133b2f92e1d17488ec75246dd754486c9de"
+  },
+  "newDDecisionCounts": {
+    "keep": 7,
+    "revise": 0,
+    "split_review": 0,
+    "block": 0
+  },
+  "boundedResiduals": [
+    {
+      "kind": "materialization_limit",
+      "goalId": "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+      "finding": "Case-a names fully supplied maltose/sucrose structures, but its exact case object does not attach those formulas. The native glucose/sucrose building-block illustration is not a replacement full maltose structure. The current profile contract correctly requires supplied structures; do not claim this packet itself contains a fully equipped printable structure task or observed learner work.",
+      "affectsCurrentDDescriptionDecision": false
+    },
+    {
+      "kind": "data_scope_limit",
+      "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
+      "finding": "The two cases specify qualitative trends/conditions, not a numerical raw dataset. They support qualitative explanation and control design; they do not by themselves substantiate a completed numerical kinetic fit or every conceivable external factor.",
+      "affectsCurrentDDescriptionDecision": false
+    },
+    {
+      "kind": "separate_scope_hold",
+      "finding": "M311 BB/BE GK/LK acquisition HOLD for card origins 004/005 remains exactly as separately sealed. D KEEP of 5c or another page does not close that acquisition or source gate.",
+      "receipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-current407-native7-memory-carry-acquisition-bounded-20261014-v1/SCIENTIFIC.current-M311-global-carry-and-four-BB-BE-acquisition-HOLD.actual.json"
+    },
+    {
+      "kind": "source_union_hold",
+      "finding": "Broad source cells and inherited NI functional-group evidence do not establish complete source duties for all canonical descendants. Existing source/course/choice holds remain; BW/HB are not restored for 3681. No full source-union grant is made."
+    }
+  ],
+  "newLearnerEvidence": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "strictOrRuntimeAdoptionClaim": false,
+  "newPAMVVotes": 0
+}

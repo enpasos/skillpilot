@@ -1,0 +1,41 @@
+{
+  "stockExecutedInPhysicalHost": true,
+  "commands": [
+    {
+      "command": "materializePositiveGoalEvidenceCandidates.ts --config P-child2 --candidates exact-two-child-spec --write",
+      "exitCode": 0,
+      "records": 2
+    },
+    {
+      "command": "materializePositiveGoalEvidenceCandidates.ts --config P-synthesis1 --candidates exact-one-synthesis-spec --write",
+      "exitCode": 0,
+      "records": 1
+    },
+    {
+      "command": "buildGoalBookModel.ts whole407.corrected-P8.inactive.config.json",
+      "exitCode": 0,
+      "wholePages": 407
+    },
+    {
+      "command": "materializeGoalDescriptionRolloutBatch.ts prepare --config native-four.current407.batch.config.json",
+      "exitCode": 0
+    },
+    {
+      "command": "materializeGoalDescriptionRolloutBatch.ts check --config native-four.current407.batch.config.json",
+      "exitCode": 0
+    },
+    {
+      "command": "measure-current-P8-and-semantic-bindings.mts",
+      "exitCode": 0,
+      "P8": 8,
+      "SEM": 533
+    }
+  ],
+  "firstBookFailurePreservedAsCause": "Missing required zero runtimeSupport count; author ledger was not rewritten.",
+  "firstNativePreparationFailure": "Unchanged2652 image was not yet copied into native4 publicRoot; exact current JPG was then copied without editing or new approval.",
+  "firstHostFailure": "Future canonical asset address for b208 PNG was missing; bound sealed native source was used instead, verified against QA SHA.",
+  "newScientificVotes": false,
+  "newStrictCompletions": 0,
+  "humanApproval": false,
+  "activeWrites": false
+}

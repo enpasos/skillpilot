@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "overall": "PASS",
+  "campaignValidatorCommand": [
+    "app/node_modules/.bin/tsx",
+    "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "--bundle",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-corrected-P8-targeted-native4-technical-20261014-v1/native-four/round-b/review-bundle-manifest.json",
+    "--input",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-corrected-P8-targeted-native4-technical-20261014-v1/native-four/round-b/description-review-input.json",
+    "--campaign",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-corrected-P8-targeted-native4-technical-20261014-v1/native-four/round-b/description-review-campaign.json",
+    "--batches-dir",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-corrected-P8-targeted-native4-technical-20261014-v1/native-four/round-b/batches",
+    "--results-dir",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-native4-fresh-independent-b-20261014-v1/results"
+  ],
+  "campaignValidatorExitCode": 0,
+  "campaignValidatorOutput": "Goal-description review campaign results valid: 4",
+  "recordSchema": "PASS:exact4",
+  "standardRunManifestSchema": "PASS",
+  "originalBindingsActuallyVerified": 79,
+  "allOwnJSONJSONLParsed": true,
+  "stockGuardFunction": "scripts/validate_schemas.py:curriculum_symlink_errors",
+  "globalSymlinkErrors": [],
+  "ignoredOwnFiles": [],
+  "activeWrites": false,
+  "HumanReleaseClaim": false,
+  "newStrictCompletions": 0,
+  "initialManifestValidationCorrection": "Initial repeated artifact roles were rejected by the actual stock validator. Manifest now lists unique original bundle roles; all supplemental native/whole-case inputs remain exactly bound in INPUTS.actual-exact-bindings.json. Scientific records and verdict timestamp are unchanged."
+}

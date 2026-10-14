@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-14T01:21:39.104819+00:00",
+  "stockFunction": "compile_mapping_source_lane",
+  "unmodifiedCompilerSha256": "sha256:daf4dbcad32aa553960a4aea2f2e4a95cd36224bb0256aa345c9e506afef22cd",
+  "oneHELaneOnly": true,
+  "stockClosedSchemasPassed": [
+    "source-to-canonical-mappings",
+    "official-source-index",
+    "source-goal-reference-index"
+  ],
+  "all202SourceGoalsAndDecisionsJoin": true,
+  "newSixPartialEdgesStructurallyPresent": true,
+  "diagnostics": {
+    "decisionMatchTypesDerivedFromRawMappings": 272,
+    "unresolvedDecisionMatchTypes": 0,
+    "rawMappingEdges": 272,
+    "decisionEdgesMissingFromRawMappings": 0,
+    "decisionRawMatchTypeConflicts": 0,
+    "legacyPlainMappingRows": 187
+  },
+  "inputBindings": [
+    {
+      "inputRole": "mapping-review",
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HE-ten-closure-holds-six-direct-original-operator-components-author-20261014-v1/candidate/HE.whole202-six-PARTIAL-components.XML-safe-source-binding.author-nonoperative.json",
+      "disposition": "publication-evidence",
+      "bytes": 172210,
+      "sha256": "8d1f05f5e3778d86783dda0f9593828c3c5b1d6e851e82ba9bfde552933c8746"
+    },
+    {
+      "inputRole": "source-extraction",
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HE-ten-closure-holds-six-direct-original-operator-components-author-20261014-v1/candidate/HE.current2026.whole202-source-cells.XML-safe-pagination-only.author.json",
+      "disposition": "authoring-only-projected",
+      "bytes": 389607,
+      "sha256": "5e75d3e8008e852d32a1079ec80c07470ab158716d0a5aa58733d447638e90c3"
+    },
+    {
+      "inputRole": "legacy-mapping",
+      "sourcePath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+      "disposition": "authoring-only",
+      "bytes": 31394,
+      "sha256": "1742bfb8230ba7d6d61bc92ff20a3a0961a6743c9eb02964fdea251738d374e0"
+    }
+  ],
+  "newScientificSourceApproval": false,
+  "shadowCompileIsNotPublicationOrReviewAcceptance": true,
+  "pass": true
+}

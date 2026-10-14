@@ -1,0 +1,18 @@
+{
+  "checkedAtUTC": "2026-10-14T01:58:50.418019+00:00",
+  "command": [
+    "node",
+    "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+    "app/scripts/positiveGoalEvidenceReview.ts",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-complete-Haworth-material-independent-b-20261014-v1/configs/P1.actual-new-independent-material-b.stock-check.config.json",
+    "--mode=check"
+  ],
+  "workingDirectory": "/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261014/682-material-b-minimal-stock-host",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "node:internal/modules/cjs/loader:1207\n  const err = new Error(message);\n              ^\n\nError: Cannot find module './goalEvidenceProfileModel'\nRequire stack:\n- /home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261014/682-material-b-minimal-stock-host/app/scripts/positiveGoalEvidenceProfileModel.ts\n- /home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261014/682-material-b-minimal-stock-host/app/scripts/positiveGoalEvidenceReview.ts\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)\n    at nextResolveSimple (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:4:1004)\n    at /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:2630\n    at /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1542\n    at resolveTsPaths (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:4:760)\n    at /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:4:1102\n    at m._resolveFilename (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-B7jrtLTO.mjs:1:789)\n    at Module._load (node:internal/modules/cjs/loader:1038:27)\n    at Module.require (node:internal/modules/cjs/loader:1289:19)\n    at require (node:internal/modules/helpers:182:18) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261014/682-material-b-minimal-stock-host/app/scripts/positiveGoalEvidenceProfileModel.ts',\n    '/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261014/682-material-b-minimal-stock-host/app/scripts/positiveGoalEvidenceReview.ts'\n  ]\n}\n\nNode.js v20.20.2\n",
+  "stockModulesUnmodified": true,
+  "scope": "One current682 P1 AI candidate with new external complete material and first-sealed independentB; not D/M/source/human approval",
+  "exactBoundPNGAssetFromFrozenN7InstalledOnlyInOwnPrivateHost": true,
+  "ordinaryActiveAssetAliasNotClaimed": true
+}

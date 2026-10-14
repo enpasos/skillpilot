@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "result": "PASS",
+  "recovered": [
+    {
+      "path": "docs/qa-ci/index.md",
+      "snapshot": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-working-state-inactive-github-checkpoint-root-20261014-v1/primary/working-tree/docs/qa-ci/index.md.snapshot",
+        "sha256": "sha256:b6a07ee38ae755f73e2d7a3717f112e4f05c12280b3bc8fd1b06cfe50a9fe826",
+        "bytes": 25383
+      },
+      "recoveredFrom": "Reversal of the known additive checkpoint section/link in current docs; exact original manifest digest and byte count confirmed before write. Snapshot detached before restoration.",
+      "exactOriginalBytesRecovered": true
+    },
+    {
+      "path": "docs/qa-ci/math-physics-deep-understanding-resumption-review-2026-09-05.md",
+      "snapshot": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-working-state-inactive-github-checkpoint-root-20261014-v1/primary/working-tree/docs/qa-ci/math-physics-deep-understanding-resumption-review-2026-09-05.md.snapshot",
+        "sha256": "sha256:11ed7023bb638fc7a7dd341ff71ae2069db4f3c8b880e46564e467e67485be55",
+        "bytes": 157551
+      },
+      "recoveredFrom": "Reversal of the known additive checkpoint section/link in current docs; exact original manifest digest and byte count confirmed before write. Snapshot detached before restoration.",
+      "exactOriginalBytesRecovered": true
+    }
+  ],
+  "originalExpectedDigestsUnchanged": true,
+  "scienceOrApprovalRebound": false,
+  "cause": "Kept working docs shared hardlinks with snapshot; subsequent additive edits propagated. Original bytes cryptographically recovered, then snapshot detached."
+}

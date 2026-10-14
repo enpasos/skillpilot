@@ -1,0 +1,49 @@
+{
+  "compilerBeforeAfter": {
+    "command": "app/node_modules/.bin/tsx app/scripts/six-source-duty-stock-compiler.mts <own-report-path>",
+    "cwd": "tmp/checkpoint-chemie-20261014/six-additional-source-duty-author/stock-module-host",
+    "completedExitCodes": [
+      0,
+      0
+    ],
+    "summaries": {
+      "before": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "after": {
+        "errors": 0,
+        "warnings": 0
+      }
+    }
+  },
+  "sourceCourseViewImpact": {
+    "command": "app/node_modules/.bin/tsx app/scripts/measure-stock-source-course-inventory-and-visible-coverage.mts <own-report-path>",
+    "cwd": "tmp/checkpoint-chemie-20261014/six-additional-source-duty-author/stock-module-host",
+    "completedExitCode": 0,
+    "counts": {
+      "sourceInventory": 5867,
+      "unmappedOriginal": 7,
+      "unsupportedScope": 287,
+      "courseIssues": 7
+    }
+  },
+  "actualJavaBeforeAfter": {
+    "command": "java -cp \"$(cat tmp/biologie-basis2-runtime-view-proof/classpath.actual.txt)\" <own-root>/helpers/SixSourceDutyActualLearnerProjectionAudit.java <own-private-curricula> <own-report-path>",
+    "completedExitCodes": [
+      0,
+      0
+    ],
+    "cases": 30
+  },
+  "finalInvariants": {
+    "command": "python tmp/checkpoint-chemie-20261014/six-additional-source-duty-author/finalize-first-author-packet.py",
+    "assertions": "DAG, oldwholebodies, exact originalsource/mapping/view CAS, truthful scoped new target, CQR original inventory retained"
+  },
+  "privateFixtures": [
+    "tmp/checkpoint-chemie-20261014/six-additional-source-duty-author/stock-module-host",
+    "tmp/checkpoint-chemie-20261014/six-additional-source-duty-author/learner-baseline",
+    "tmp/checkpoint-chemie-20261014/six-additional-source-duty-author/learner-candidate"
+  ],
+  "notFullCentralNativeOrBroadQualityStatus": true
+}

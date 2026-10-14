@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "runs": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/checks/M407.four-author-views.stock.config.json"
+      ],
+      "startedAtUTC": "2026-10-14T02:28:38.425109+00:00",
+      "endedAtUTC": "2026-10-14T02:28:38.909427+00:00",
+      "exitCode": 1,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/checks/M407.four-author-views.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/checks/M407.four-author-views.actual.stderr.txt"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/checks/M407.nine-scopes-four-author-successors.stock.config.json"
+      ],
+      "startedAtUTC": "2026-10-14T02:28:38.909507+00:00",
+      "endedAtUTC": "2026-10-14T02:28:39.255389+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/checks/M407.nine-scopes-four-author-successors.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/checks/M407.nine-scopes-four-author-successors.actual.stderr.txt"
+    }
+  ],
+  "firstFourScopesOnlyFailure": "Full407 coverageRequired check cannot require every national memory origin visible in only4BBBE scopes. Preserved actual failure; no flag waived.",
+  "secondNineScopes": "Normal nine required scopes, replacing only4BBBE addresses with author successors. Structural PASS does not prove wholecard005 acquisition or science carry."
+}

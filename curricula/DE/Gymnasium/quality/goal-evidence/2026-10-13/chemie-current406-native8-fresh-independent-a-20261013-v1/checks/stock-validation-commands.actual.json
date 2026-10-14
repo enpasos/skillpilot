@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "campaignResults": {
+    "script": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "originalRoundAInputs": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-final-resource-P7-native8-technical-author-20261013-v1/native-eight/round-a",
+    "resultsDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-native8-fresh-independent-a-20261013-v1/results",
+    "exitCode": 0,
+    "stdout": "Goal-description review campaign results valid: 8\n",
+    "scientificVerdict": "Seven KEEP and one split_review; structural PASS is not scientific acceptance"
+  },
+  "atomicity": {
+    "script": "app/scripts/semanticAtomicityReview.ts",
+    "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-native8-fresh-independent-a-20261013-v1/atomicity/three-current-final.config.json",
+    "mode": "check",
+    "exitCode": 0,
+    "stdoutArtifact": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-native8-fresh-independent-a-20261013-v1/checks/atomicity-stock-check.actual.txt",
+    "counts": {
+      "atomic": 2,
+      "non_atomic": 1,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0
+    },
+    "gateAcceptance": false
+  },
+  "memory": {
+    "script": "app/scripts/memoryCardReview.ts",
+    "config": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-native8-fresh-independent-a-20261013-v1/memory/three-current-final.config.json",
+    "mode": "check",
+    "exitCode": 0,
+    "stdoutArtifact": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-native8-fresh-independent-a-20261013-v1/checks/memory-stock-check.actual.txt",
+    "counts": {
+      "no_memory_needed": 3,
+      "memory_required": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0,
+      "primaryCardsInScope": 0,
+      "requiredVisibilityChecks": 0
+    }
+  },
+  "fingerprintInitialization": {
+    "mechanism": "The unmodified stock A/M --write-fingerprints paths calculated semantic fingerprints only after explicit scientific decisions were authored. Narrow check runs then verified current records. Initial mistaken ../ prefix resolved outside repository and failed ENOENT; corrected repository-relative config paths succeeded. No reviewed input or verdict was altered to satisfy these checks."
+  }
+}

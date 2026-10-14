@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-14T02:16:07.698312+00:00",
+  "completedAt": "2026-10-14T02:16:08.026620+00:00",
+  "command": [
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "app/scripts/memoryCardReview.ts",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-actual-current412-full-gate-author-20261014-v1/config/M5.author-pending-review.explicit-empty-cards.config.json",
+    "--mode=report"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot",
+  "exitCode": 0,
+  "stdout": "# Memory Card Review: chemie-source6-five-current412-full-gate-author-20261014-v1\nScope: Five author proposals, all needs_developer_review; no A/M gate grant\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 5\nCurrent no-memory decisions: 0\nCurrent memory-required decisions: 0\nCurrent needs developer review: 5\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 7\nDeck files: 8\nCard rows: 93\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n\nDeveloper review queue\n- Filmfixierung durch Silberbromid-Komplexbildung erklären [f4f7f028-10db-53f9-bdae-456e0c6d0896]: AUTHOR recommends no_memory_needed: Ligand- und Komplexformel sind im Fallmaterial angegeben. Die Leistung ist Auflösungserklärung und neue Stoffbilanz; keine neue Pflichtkartei über die bestehenden Grundlagen hinaus. Pending genuine independent review; not an accepted gate decision.\n- Organische Farbmittel nach Kriterien einteilen [d72cbb62-0b65-5b9a-aece-70c23d4e618a]: AUTHOR recommends no_memory_needed: Strukturmerkmale und Klassifikationskarten sind vollständig bereitgestellt. Erklärte Einteilung und Transfer tragen das Ziel; isoliertes Namenslernen begründet keine neue Pflichtkartei. Pending genuine independent review; not an accepted gate decision.\n- Polyaddition am Urethanbildungsmechanismus erklären [03e12e4f-83eb-56a7-85ac-e0d628412dcc]: AUTHOR recommends no_memory_needed: Die Pfeilfolge muss aus Paaren, Polarität und Ladungsbilanz hergeleitet werden. Ein auswendig gelerntes Bild ersetzt das nicht; kein neuer irreduzibler Faktenkern. Pending genuine independent review; not an accepted gate decision.\n- Reaktionsbedingungen der Kunststoffsynthesen vergleichen [0559cec7-330b-57f1-a409-31cf1b4ac9fb]: AUTHOR recommends no_memory_needed: Die Bedingungen stehen in vollständigen Materialkarten; erklärt werden ihre chemischen Gründe und Grenzen. Keine universellen Temperaturzahlen als Abrufpflicht erfinden. Pending genuine independent review; not an accepted gate decision.\n- Siliconöle, Siliconharze und Siliconkautschuke strukturbezogen erklären [ee78e2c9-45c9-5023-8193-7e9c20bce0a6]: AUTHOR recommends no_memory_needed: Öl/Harz/Kautschuk-Zuordnungen werden aus gegebenen Gruppen- und Eigenschaftsdaten erklärt; allgemeine Bindungs-/Polymergrundlagen bleiben Voraussetzungen, keine neue Pflichtkartei. Pending genuine independent review; not an accepted gate decision.\n\nBlocking issues\n- Unresolved memory review for f4f7f028-10db-53f9-bdae-456e0c6d0896\n- Unresolved memory review for d72cbb62-0b65-5b9a-aece-70c23d4e618a\n- Unresolved memory review for 03e12e4f-83eb-56a7-85ac-e0d628412dcc\n- Unresolved memory review for 0559cec7-330b-57f1-a409-31cf1b4ac9fb\n- Unresolved memory review for ee78e2c9-45c9-5023-8193-7e9c20bce0a6\n",
+  "stderr": "",
+  "priorInitialReportPreserved": "checks/STOCK.M5.author-pending-report.actual.json",
+  "technicalCorrection": "Explicit empty cardReviewPath prevents stock fallback from treating the goal-review filename as its own card-review stream. No card or science judgment is invented.",
+  "allFiveMemoryDecisionsStillNeedsDeveloperReview": true,
+  "newIndependentScienceVotes": 0,
+  "gatePassClaim": false
+}

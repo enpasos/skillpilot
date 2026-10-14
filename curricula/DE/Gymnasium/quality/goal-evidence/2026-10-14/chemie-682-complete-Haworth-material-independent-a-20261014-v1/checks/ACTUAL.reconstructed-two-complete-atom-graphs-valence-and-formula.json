@@ -1,0 +1,706 @@
+{
+  "schemaVersion": 1,
+  "input": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/candidate/whole-682-two-cases-and-rubric-with-complete-formulas.author.json",
+    "bytes": 22565,
+    "sha256": "sha256:f99c8da3ca5a90b39c07cb5bd5690aa8bd2a021e0063ead44e00689d68d344cb"
+  },
+  "method": "Independent explicit expansion of the supplied ring/substituent tables into all heavy atoms, OH hydrogens and carbon-bound hydrogens. Ring and ordinary listed substituent bonds are single; repeated table/bridge references denote one shared atom/bond. This mechanical graph check does not by itself prove stereochemistry or pedagogical fitness.",
+  "substances": [
+    {
+      "nameDe": "Maltose, hier als α-Anomer am rechten Glucoserest",
+      "counts": {
+        "C": 12,
+        "H": 22,
+        "O": 11,
+        "heavyAtoms": 23,
+        "heavyBonds": 24,
+        "cycleRank": 2,
+        "hydroxylOxygens": 8
+      },
+      "allHeavyAtomValencesPass": true,
+      "allAtomsConnected": true,
+      "allExplicitHydrogensAccounted": true,
+      "atoms": [
+        {
+          "id": "AC1",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC2",
+            "AO5",
+            "Og"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "AC2",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC1",
+            "AC2.OH",
+            "AC3"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "AC2.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC2"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "AC3",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC2",
+            "AC3.OH",
+            "AC4"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "AC3.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC3"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "AC4",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC3",
+            "AC4.OH",
+            "AC5"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "AC4.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC4"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "AC5",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC4",
+            "AC6",
+            "AO5"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "AC6",
+          "element": "C",
+          "attachedHydrogens": 2,
+          "heavyAtomNeighbours": [
+            "AC5",
+            "AC6.OH"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "AC6.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "AC6"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "AO5",
+          "element": "O",
+          "attachedHydrogens": 0,
+          "heavyAtomNeighbours": [
+            "AC1",
+            "AC5"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "BC1",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC1.OH",
+            "BC2",
+            "BO5"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "BC1.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC1"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "BC2",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC1",
+            "BC2.OH",
+            "BC3"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "BC2.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC2"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "BC3",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC2",
+            "BC3.OH",
+            "BC4"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "BC3.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC3"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "BC4",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC3",
+            "BC5",
+            "Og"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "BC5",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC4",
+            "BC6",
+            "BO5"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "BC6",
+          "element": "C",
+          "attachedHydrogens": 2,
+          "heavyAtomNeighbours": [
+            "BC5",
+            "BC6.OH"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "BC6.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "BC6"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "BO5",
+          "element": "O",
+          "attachedHydrogens": 0,
+          "heavyAtomNeighbours": [
+            "BC1",
+            "BC5"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "Og",
+          "element": "O",
+          "attachedHydrogens": 0,
+          "heavyAtomNeighbours": [
+            "AC1",
+            "BC4"
+          ],
+          "singleBondValenceIncludingH": 2
+        }
+      ],
+      "singleBonds": [
+        [
+          "AC1",
+          "AC2"
+        ],
+        [
+          "AC1",
+          "AO5"
+        ],
+        [
+          "AC1",
+          "Og"
+        ],
+        [
+          "AC2",
+          "AC2.OH"
+        ],
+        [
+          "AC2",
+          "AC3"
+        ],
+        [
+          "AC3",
+          "AC3.OH"
+        ],
+        [
+          "AC3",
+          "AC4"
+        ],
+        [
+          "AC4",
+          "AC4.OH"
+        ],
+        [
+          "AC4",
+          "AC5"
+        ],
+        [
+          "AC5",
+          "AC6"
+        ],
+        [
+          "AC5",
+          "AO5"
+        ],
+        [
+          "AC6",
+          "AC6.OH"
+        ],
+        [
+          "BC1",
+          "BC1.OH"
+        ],
+        [
+          "BC1",
+          "BC2"
+        ],
+        [
+          "BC1",
+          "BO5"
+        ],
+        [
+          "BC2",
+          "BC2.OH"
+        ],
+        [
+          "BC2",
+          "BC3"
+        ],
+        [
+          "BC3",
+          "BC3.OH"
+        ],
+        [
+          "BC3",
+          "BC4"
+        ],
+        [
+          "BC4",
+          "BC5"
+        ],
+        [
+          "BC4",
+          "Og"
+        ],
+        [
+          "BC5",
+          "BC6"
+        ],
+        [
+          "BC5",
+          "BO5"
+        ],
+        [
+          "BC6",
+          "BC6.OH"
+        ]
+      ]
+    },
+    {
+      "nameDe": "Saccharose",
+      "counts": {
+        "C": 12,
+        "H": 22,
+        "O": 11,
+        "heavyAtoms": 23,
+        "heavyBonds": 24,
+        "cycleRank": 2,
+        "hydroxylOxygens": 8
+      },
+      "allHeavyAtomValencesPass": true,
+      "allAtomsConnected": true,
+      "allExplicitHydrogensAccounted": true,
+      "atoms": [
+        {
+          "id": "FC1",
+          "element": "C",
+          "attachedHydrogens": 2,
+          "heavyAtomNeighbours": [
+            "FC1.OH",
+            "FC2"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "FC1.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "FC1"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "FC2",
+          "element": "C",
+          "attachedHydrogens": 0,
+          "heavyAtomNeighbours": [
+            "FC1",
+            "FC3",
+            "FO5",
+            "Og"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "FC3",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "FC2",
+            "FC3.OH",
+            "FC4"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "FC3.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "FC3"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "FC4",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "FC3",
+            "FC4.OH",
+            "FC5"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "FC4.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "FC4"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "FC5",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "FC4",
+            "FC6",
+            "FO5"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "FC6",
+          "element": "C",
+          "attachedHydrogens": 2,
+          "heavyAtomNeighbours": [
+            "FC5",
+            "FC6.OH"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "FC6.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "FC6"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "FO5",
+          "element": "O",
+          "attachedHydrogens": 0,
+          "heavyAtomNeighbours": [
+            "FC2",
+            "FC5"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "GC1",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC2",
+            "GO5",
+            "Og"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "GC2",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC1",
+            "GC2.OH",
+            "GC3"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "GC2.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC2"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "GC3",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC2",
+            "GC3.OH",
+            "GC4"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "GC3.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC3"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "GC4",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC3",
+            "GC4.OH",
+            "GC5"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "GC4.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC4"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "GC5",
+          "element": "C",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC4",
+            "GC6",
+            "GO5"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "GC6",
+          "element": "C",
+          "attachedHydrogens": 2,
+          "heavyAtomNeighbours": [
+            "GC5",
+            "GC6.OH"
+          ],
+          "singleBondValenceIncludingH": 4
+        },
+        {
+          "id": "GC6.OH",
+          "element": "O",
+          "attachedHydrogens": 1,
+          "heavyAtomNeighbours": [
+            "GC6"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "GO5",
+          "element": "O",
+          "attachedHydrogens": 0,
+          "heavyAtomNeighbours": [
+            "GC1",
+            "GC5"
+          ],
+          "singleBondValenceIncludingH": 2
+        },
+        {
+          "id": "Og",
+          "element": "O",
+          "attachedHydrogens": 0,
+          "heavyAtomNeighbours": [
+            "FC2",
+            "GC1"
+          ],
+          "singleBondValenceIncludingH": 2
+        }
+      ],
+      "singleBonds": [
+        [
+          "FC1",
+          "FC1.OH"
+        ],
+        [
+          "FC1",
+          "FC2"
+        ],
+        [
+          "FC2",
+          "FC3"
+        ],
+        [
+          "FC2",
+          "FO5"
+        ],
+        [
+          "FC2",
+          "Og"
+        ],
+        [
+          "FC3",
+          "FC3.OH"
+        ],
+        [
+          "FC3",
+          "FC4"
+        ],
+        [
+          "FC4",
+          "FC4.OH"
+        ],
+        [
+          "FC4",
+          "FC5"
+        ],
+        [
+          "FC5",
+          "FC6"
+        ],
+        [
+          "FC5",
+          "FO5"
+        ],
+        [
+          "FC6",
+          "FC6.OH"
+        ],
+        [
+          "GC1",
+          "GC2"
+        ],
+        [
+          "GC1",
+          "GO5"
+        ],
+        [
+          "GC1",
+          "Og"
+        ],
+        [
+          "GC2",
+          "GC2.OH"
+        ],
+        [
+          "GC2",
+          "GC3"
+        ],
+        [
+          "GC3",
+          "GC3.OH"
+        ],
+        [
+          "GC3",
+          "GC4"
+        ],
+        [
+          "GC4",
+          "GC4.OH"
+        ],
+        [
+          "GC4",
+          "GC5"
+        ],
+        [
+          "GC5",
+          "GC6"
+        ],
+        [
+          "GC5",
+          "GO5"
+        ],
+        [
+          "GC6",
+          "GC6.OH"
+        ]
+      ]
+    }
+  ],
+  "status": "PASS"
+}

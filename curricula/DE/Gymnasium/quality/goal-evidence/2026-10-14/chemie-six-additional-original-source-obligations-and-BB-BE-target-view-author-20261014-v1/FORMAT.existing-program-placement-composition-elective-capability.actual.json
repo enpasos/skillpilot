@@ -1,0 +1,119 @@
+{
+  "measuredAt": "2026-10-13T23:12:43.694395+00:00",
+  "question": "Scientific representation of existing optional source duties, without runtime/UX or arbitrary compulsory choice",
+  "existingFields": {
+    "ProgramUnit": {
+      "file": "app/src/landscapeTypes.ts",
+      "lines": [
+        11,
+        29
+      ],
+      "kinds": [
+        "program",
+        "stage",
+        "year",
+        "phase",
+        "semester",
+        "module",
+        "track",
+        "exam"
+      ],
+      "fields": [
+        "id",
+        "kind",
+        "label",
+        "shortLabel",
+        "order",
+        "parentUnitId"
+      ],
+      "choiceCardinalityOrSelectedModuleSemantics": false
+    },
+    "GoalPlacement": {
+      "file": "app/src/landscapeTypes.ts",
+      "lines": [
+        31,
+        44
+      ],
+      "fields": [
+        "goalId",
+        "unitId",
+        "relation",
+        "context"
+      ],
+      "relations": [
+        "primary",
+        "secondary",
+        "assessed"
+      ],
+      "contextKnownKeys": [
+        "schoolForm",
+        "stage",
+        "jurisdiction",
+        "durationModel",
+        "courseProfile"
+      ],
+      "stringExtensionAllowedByType": true,
+      "runtimeExtensionAuthorization": false
+    },
+    "CompositionView": {
+      "file": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "lines": [
+        12,
+        52
+      ],
+      "nodeKinds": [
+        "structure",
+        "canonicalSubtree",
+        "goalEntry",
+        "landscapeEntry"
+      ],
+      "projectionRoles": [
+        "target",
+        "prerequisiteOnly"
+      ],
+      "defaultRole": "target",
+      "selectionGroupOrChooseNMechanism": false
+    },
+    "actualLearnerAdapter": {
+      "file": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "lines": [
+        41,
+        47,
+        565,
+        611
+      ],
+      "allowedDimensions": [
+        "schoolForm",
+        "jurisdiction",
+        "stage",
+        "durationModel",
+        "courseProfile"
+      ],
+      "unknownDimensionResult": "findLearnerScopeView returns null via isConstrainedLearnerScope; no arbitrary elective scope fallback"
+    },
+    "targetAcquisition": {
+      "file": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "lines": [
+        2255,
+        2369,
+        2381
+      ],
+      "prerequisiteOnlyIsNotElectiveTarget": "excluded from learner target/frontier/progress/completion; retains global prerequisite checks"
+    }
+  },
+  "lawfulCurrentRepresentation": [
+    "Keep the complete optional competencies as whole canonical goals.",
+    "Represent their exact real Wahlbereich using a program module/track or transparent composition structure, and preserve original choice/additum conditions in the original source row and explicit author/reviewer rationale. These carry documentation, not enforceable module selection.",
+    "Use an already-supported reviewed course/state/stage offering only where the whole option condition is genuinely entailed; a courseProfile=GK or LK alone does not entail one optional topic.",
+    "Separate module-specific composition documents can describe a reviewed standalone optional package, but ordinary Level2 learner scope cannot select a new module dimension. No ordinary whole-country mandatory target claim follows."
+  ],
+  "mandatoryCourseScopeStatus": "DATA_HOLD wherever choice/additum condition is unresolved; no invented source authority, arbitrary chosen option or prerequisiteOnly laundering",
+  "appliesToParentConditionalCases": [
+    "HB silicone option",
+    "RP6.2 Additum",
+    "RP13.4 polyaddition optionality",
+    "SN GK photography Wahlbereich"
+  ],
+  "noOtherSixObligationsScientificallyRereviewedHere": true,
+  "currentSixDutyAuthorScopeUnchanged": true
+}

@@ -1,0 +1,1477 @@
+{
+  "schemaVersion": 1,
+  "sourceWholeTupleCarrier": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-thirteen-current402-four-images-author-20261012-v3/inputs/FINAL.neutral-whole402-P13-whole28-source-bounded.join.json",
+    "bytes": 4532961,
+    "sha256": "sha256:3293f32b73f3994e8259e85381257ff38bd2a35fcf16fe77552da33943260dec"
+  },
+  "rows": [
+    {
+      "goalId": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+      "wholeMaterialCases": [
+        {
+          "caseId": "q3-07-a",
+          "goalId": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+          "title": {
+            "de": "Haber-Bosch-Ausdruck mit stöchiometrischen Potenzen",
+            "en": "Haber-Bosch expression with stoichiometric powers"
+          },
+          "wholeCurrentGoal": {
+            "id": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+            "title": "Haber-Bosch-Verfahren berechnen (LK)",
+            "titleEn": "Calculate Haber-Bosch process (LK)",
+            "description": "Die lernende Person kann das Haber-Bosch-Verfahren analysieren, MWG-Gleichungen mit verschiedenen stöchiometrischen Faktoren anwenden und Gleichgewichtskonzentrationen einschließlich physikalisch zulässiger Lösungen quadratischer Modellgleichungen berechnen.",
+            "descriptionEn": "The learner can analyze the Haber-Bosch process, apply mass-action equations with different stoichiometric factors, and calculate equilibrium concentrations, including physically admissible solutions of quadratic model equations.",
+            "weight": 1.1,
+            "tags": [
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-chemistry",
+              "demandLevel": "AB3",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BC_REAKTION",
+                "BC_ENERGIE"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BY",
+                "DE-HE"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "7cf46714-9e74-45d9-9c92-8f2b06048ea8"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+                "title": "Visualisierung: Haber-Bosch-Verfahren berechnen (LK)",
+                "url": "/assets/goal-visualizations/chemie/c0463225-cba1-5e62-a1fb-e9046d7034b5/c0463225-cba1-5e62-a1fb-e9046d7034b5.png",
+                "provider": "OpenAI built-in image_gen",
+                "description": "Visualisierung zum Lernziel: Haber-Bosch-Verfahren berechnen (LK).",
+                "altText": "Haber-Bosch-Modell mit genau einem N2-Molekül, drei H2-Symbolen und zwei NH3-Symbolen passend zur Reaktionsgleichung. Die Koeffizienten bestimmen die Potenzen der MWG-Gleichung; angegebene Gleichgewichtskonzentrationen werden eingesetzt und gelöst.",
+                "lang": "de",
+                "license": "CC-BY-4.0",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Idealisierter Gaszustand N₂+3H₂⇌2NH₃ bei T. Gleichgewicht: cN₂0,20,cH₂0,60,cNH₃0,40mol/L. Exotherme Reaktion, technische Zielkonflikte zwischen Umsatz, Geschwindigkeit, Druckaufwand. Konventionelles Kc aus Konzentrationen in mol/L.",
+            "en": "Idealized gaseous state N₂+3H₂⇌2NH₃ at T. Equilibrium: cN₂0.20,cH₂0.60,cNH₃0.40mol/L. Exothermic reaction; process tradeoffs between conversion, rate and pressure cost. Conventional Kc from concentrations in mol/L."
+          },
+          "task": {
+            "de": "Analysiere das Verfahren mit Gleichung, Kc, Reaktionskoeffizienten und Optimierungskonflikt. Berechne cNH₃, wenn im Gleichgewicht bei gleichem T cN₂0,10 und cH₂0,30mol/L sind. Nenne Kc für die halbierte Reaktionsgleichung. Formuliere die quadratische Gleichung für die unbekannte Konzentration y und begründe die zulässige Wurzel.",
+            "en": "Analyze the process using equation, Kc, coefficients and optimization tradeoff. Calculate cNH₃ when equilibrium at the same T has cN₂0.10 and cH₂0.30mol/L. State Kc for the halved reaction equation. Formulate the quadratic equation for the unknown concentration y and justify the admissible root."
+          },
+          "modelResponse": {
+            "de": "Kc=cNH₃²/(cN₂·cH₂³)=0,16/(0,20·0,216)=3,7037L²/mol². cNH₃=√(3,7037·0,10·0,30³)=0,100mol/L. Halbierte Gleichung0,5N₂+1,5H₂⇌NH₃ hat Kc′=√Kc≈1,9245L/mol. Hoher Druck begünstigt NH₃, niedrige T die exotherme Hinreaktion; zu niedrige T verlangsamt die Einstellung, Katalysator hilft kinetisch. Produkte abtrennen und Edukte zurückführen, Kosten abwägen. Explizit gilt y²−0,0100 (mol/L)²=0. Die beiden mathematischen Lösungen ±0,100 mol/L sind zu prüfen; nur y=+0,100 mol/L ist eine nichtnegative Konzentration.",
+            "en": "Kc=cNH₃²/(cN₂·cH₂³)=0.16/(0.20·0.216)=3.7037L²/mol². cNH₃=√(3.7037·0.10·0.30³)=0.100mol/L. Halved equation0.5N₂+1.5H₂⇌NH₃ has Kc′=√Kc≈1.9245L/mol. High pressure favours NH₃, low T the exothermic forward reaction; overly low T slows equilibration, and catalyst helps kinetically. Separate product and recycle reactants while weighing costs. Explicitly, y²−0.0100 (mol/L)²=0. Check both mathematical solutions ±0.100 mol/L; only y=+0.100 mol/L is a nonnegative concentration."
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Reaktionsgleichung und Potenzen2/1/3 korrekt anwenden.",
+                  "en": "Apply equation and powers2/1/3 correctly."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "Kc mit konventioneller Einheit berechnen.",
+                  "en": "Calculate Kc with conventional unit."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Quadratische Konzentrationsgleichung formulieren, negative Wurzel physikalisch ausschließen und Konstante der halbierten Gleichung bestimmen.",
+                  "en": "Formulate the quadratic concentration equation, reject the negative root physically, and determine the constant for the halved equation."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "Prozessanalyse mit Ausbeute/Kinetik/Kosten verbinden.",
+                  "en": "Connect process analysis with yield/kinetics/cost."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "Die physikalischen Konzentrationen bleiben gleich. Kc′=Kc²≈13,7174L⁴/mol⁴, weil alle Potenzen verdoppelt sind.",
+                  "en": "Physical concentrations stay unchanged. Kc′=Kc²≈13.7174L⁴/mol⁴ because all powers are doubled."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Frisch: verdoppelte Gleichung2N₂+6H₂⇌4NH₃. Ändern sich tatsächliche Gleichgewichtskonzentrationen, und wie lautet Kc′?",
+              "en": "Fresh: doubled equation2N₂+6H₂⇌4NH₃. Do actual equilibrium concentrations change, and what is Kc′?"
+            },
+            "modelResponse": {
+              "de": "Die physikalischen Konzentrationen bleiben gleich. Kc′=Kc²≈13,7174L⁴/mol⁴, weil alle Potenzen verdoppelt sind.",
+              "en": "Physical concentrations stay unchanged. Kc′=Kc²≈13.7174L⁴/mol⁴ because all powers are doubled."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          }
+        },
+        {
+          "caseId": "q3-07-b",
+          "goalId": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+          "title": {
+            "de": "Haber-Bosch-Bilanz und neuer Gleichgewichtsquotient",
+            "en": "Haber-Bosch balance and new reaction quotient"
+          },
+          "wholeCurrentGoal": {
+            "id": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+            "title": "Haber-Bosch-Verfahren berechnen (LK)",
+            "titleEn": "Calculate Haber-Bosch process (LK)",
+            "description": "Die lernende Person kann das Haber-Bosch-Verfahren analysieren, MWG-Gleichungen mit verschiedenen stöchiometrischen Faktoren anwenden und Gleichgewichtskonzentrationen einschließlich physikalisch zulässiger Lösungen quadratischer Modellgleichungen berechnen.",
+            "descriptionEn": "The learner can analyze the Haber-Bosch process, apply mass-action equations with different stoichiometric factors, and calculate equilibrium concentrations, including physically admissible solutions of quadratic model equations.",
+            "weight": 1.1,
+            "tags": [
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-chemistry",
+              "demandLevel": "AB3",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BC_REAKTION",
+                "BC_ENERGIE"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BY",
+                "DE-HE"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "7cf46714-9e74-45d9-9c92-8f2b06048ea8"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+                "title": "Visualisierung: Haber-Bosch-Verfahren berechnen (LK)",
+                "url": "/assets/goal-visualizations/chemie/c0463225-cba1-5e62-a1fb-e9046d7034b5/c0463225-cba1-5e62-a1fb-e9046d7034b5.png",
+                "provider": "OpenAI built-in image_gen",
+                "description": "Visualisierung zum Lernziel: Haber-Bosch-Verfahren berechnen (LK).",
+                "altText": "Haber-Bosch-Modell mit genau einem N2-Molekül, drei H2-Symbolen und zwei NH3-Symbolen passend zur Reaktionsgleichung. Die Koeffizienten bestimmen die Potenzen der MWG-Gleichung; angegebene Gleichgewichtskonzentrationen werden eingesetzt und gelöst.",
+                "lang": "de",
+                "license": "CC-BY-4.0",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Geschlossener Modellreaktor, konstantes Volumen und T. Start cN₂1,00,cH₂3,00,cNH₃0mol/L. Gleichgewichtsumsetzung x=0,50mol/L bezogen auf N₂. Alternativ wird aus dieser Gleichgewichtsprobe die Hälfte des NH₃ entfernt.",
+            "en": "Closed model reactor, constant volume and T. Initially cN₂1.00,cH₂3.00,cNH₃0mol/L. Equilibrium conversion x=0.50mol/L relative to N₂. Alternatively half the NH₃ is removed from this equilibrium sample."
+          },
+          "task": {
+            "de": "Berechne Konzentrationen und Kc. Berechne Q direkt nach Entnahme und begründe die technische Konsequenz. Zeige den MWG-Ausdruck für die Rückgleichung und analysiere einen Temperatur-/Druckkonflikt.",
+            "en": "Calculate concentrations and Kc. Calculate Q immediately after removal and explain the process consequence. Show mass action expression for the reverse equation and analyze a temperature/pressure tradeoff."
+          },
+          "modelResponse": {
+            "de": "Bilanz cN₂=1−x=0,50,cH₂=3−3x=1,50,cNH₃=2x=1,00. Kc=1²/(0,50·1,50³)=16/27≈0,5926L²/mol². Nach Entnahme Q=0,50²/(0,50·1,50³)=4/27<Kc, NH₃ wird netto nachgebildet. Rück-Kc=cN₂cH₂³/cNH₃²=27/16=1,6875mol²/L². Druck hilft wegen4→2Gasmolen; niedrige T erhöht Gleichgewichtsausbeute, erschwert aber Kinetik. Recycling und Entnahme verändern Umsatz, nicht K bei T.",
+            "en": "Balance cN₂=1−x=0.50,cH₂=3−3x=1.50,cNH₃=2x=1.00. Kc=1²/(0.50·1.50³)=16/27≈0.5926L²/mol². After removal Q=0.50²/(0.50·1.50³)=4/27<Kc, so NH₃ is formed net. Reverse Kc=cN₂cH₂³/cNH₃²=27/16=1.6875mol²/L². Pressure helps because4→2gas moles; low T increases equilibrium yield but worsens kinetics. Recycling and removal change conversion, not K at T."
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Alle stöchiometrischen Bilanzfaktoren richtig verwenden.",
+                  "en": "Use all stoichiometric balance factors correctly."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "Kc und Q nach Entnahme rechnen.",
+                  "en": "Calculate Kc and Q after removal."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Rückgleichung mit inverser Konstante formulieren.",
+                  "en": "Write reverse equation with inverse constant."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "Analyse von Druck, Temperatur und Recycling begründen.",
+                  "en": "Explain analysis of pressure, temperature and recycling."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "0,75/2,25/0,50mol/L; Q=0,25/(0,75·2,25³)≈0,02926<Kc. Nein, Netto-Hinreaktion bleibt möglich.",
+                  "en": "0.75/2.25/0.50mol/L; Q=0.25/(0.75·2.25³)≈0.02926<Kc. No; net forward reaction remains possible."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Frisch: x=0,25mol/L aus derselben Startcharge. Berechne alle Konzentrationen und Q; ist dies bereits Gleichgewicht bei Kc16/27?",
+              "en": "Fresh: x=0.25mol/L from the same initial charge. Calculate all concentrations and Q; is this equilibrium at Kc16/27?"
+            },
+            "modelResponse": {
+              "de": "0,75/2,25/0,50mol/L; Q=0,25/(0,75·2,25³)≈0,02926<Kc. Nein, Netto-Hinreaktion bleibt möglich.",
+              "en": "0.75/2.25/0.50mol/L; Q=0.25/(0.75·2.25³)≈0.02926<Kc. No; net forward reaction remains possible."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          }
+        },
+        {
+          "caseId": "q3-07-c-quadratic-transfer",
+          "goalId": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+          "title": {
+            "de": "Ungleiche stöchiometrische Summen mit echter Stoffbilanz",
+            "en": "Unequal stoichiometric sums with a full material balance"
+          },
+          "wholeCurrentGoal": {
+            "id": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+            "title": "Haber-Bosch-Verfahren berechnen (LK)",
+            "titleEn": "Calculate Haber-Bosch process (LK)",
+            "description": "Die lernende Person kann das Haber-Bosch-Verfahren analysieren, MWG-Gleichungen mit verschiedenen stöchiometrischen Faktoren anwenden und Gleichgewichtskonzentrationen einschließlich physikalisch zulässiger Lösungen quadratischer Modellgleichungen berechnen.",
+            "descriptionEn": "The learner can analyze the Haber-Bosch process, apply mass-action equations with different stoichiometric factors, and calculate equilibrium concentrations, including physically admissible solutions of quadratic model equations.",
+            "weight": 1.1,
+            "tags": [
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-chemistry",
+              "demandLevel": "AB3",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BC_REAKTION",
+                "BC_ENERGIE"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BY",
+                "DE-HE"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "7cf46714-9e74-45d9-9c92-8f2b06048ea8"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+                "title": "Visualisierung: Haber-Bosch-Verfahren berechnen (LK)",
+                "url": "/assets/goal-visualizations/chemie/c0463225-cba1-5e62-a1fb-e9046d7034b5/c0463225-cba1-5e62-a1fb-e9046d7034b5.png",
+                "provider": "OpenAI built-in image_gen",
+                "description": "Visualisierung zum Lernziel: Haber-Bosch-Verfahren berechnen (LK).",
+                "altText": "Haber-Bosch-Modell mit genau einem N2-Molekül, drei H2-Symbolen und zwei NH3-Symbolen passend zur Reaktionsgleichung. Die Koeffizienten bestimmen die Potenzen der MWG-Gleichung; angegebene Gleichgewichtskonzentrationen werden eingesetzt und gelöst.",
+                "lang": "de",
+                "license": "CC-BY-4.0",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Frisches idealisiertes homogenes Gasmodell N₂O₄(g)⇌2NO₂(g), konstantes T und Volumen; Anfang c(N₂O₄)=1,00 mol/L, c(NO₂)=0. Kc=0,500 mol/L im konventionellen Konzentrationsausdruck; x ist der N₂O₄-Umsatz in mol/L. Kein tatsächliches Experiment.",
+            "en": "Fresh idealized homogeneous gas model N₂O₄(g)⇌2NO₂(g), constant T and volume; initially c(N₂O₄)=1.00 mol/L and c(NO₂)=0. Kc=0.500 mol/L in the conventional concentration expression; x is N₂O₄ conversion in mol/L. No actual experiment."
+          },
+          "task": {
+            "de": "Übertrage die MWG-Methode aus dem Haber-Bosch-Fall: Formuliere Stoffbilanz, zulässigen Bereich und quadratische Gleichung. Berechne beide mathematischen Wurzeln, wähle die physikalische Lösung, nenne beide Gleichgewichtskonzentrationen und prüfe durch Einsetzen.",
+            "en": "Transfer the mass-action method from the Haber-Bosch case: state material balance, admissible domain, and quadratic equation. Calculate both mathematical roots, choose the physical solution, state both equilibrium concentrations, and check by substitution."
+          },
+          "modelResponse": {
+            "de": "c(N₂O₄)=1−x und c(NO₂)=2x, mit 0≤x<1,00 mol/L. 4x²/(1−x)=0,500 führt, mit x zahlenmäßig in mol/L, zu 8x²+x−1=0. x=(−1±√33)/16 mol/L: +0,296535 und −0,421535 mol/L. Die negative Wurzel ergäbe negatives NO₂ und ist unzulässig. Gleichgewicht: 0,703465 mol/L N₂O₄ und 0,593070 mol/L NO₂. Einsetzprobe: 0,593070²/0,703465≈0,500 mol/L. Summen 1 und 2 sind ungleich; Kc besitzt hier die konventionelle Einheit mol/L.",
+            "en": "c(N₂O₄)=1−x and c(NO₂)=2x, with 0≤x<1.00 mol/L. 4x²/(1−x)=0.500 gives, using the numerical x value in mol/L, 8x²+x−1=0. x=(−1±√33)/16 mol/L: +0.296535 and −0.421535 mol/L. The negative root would give negative NO₂ and is inadmissible. Equilibrium: 0.703465 mol/L N₂O₄ and 0.593070 mol/L NO₂. Substitution: 0.593070²/0.703465≈0.500 mol/L. Stoichiometric sums 1 and 2 differ; Kc has conventional unit mol/L here."
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Separat: Dasselbe Reaktionsmodell beginnt diesmal mit c(NO₂)=0,800 mol/L und keinem N₂O₄, Kc=0,400 mol/L. y bezeichnet gebildetes N₂O₄. Stelle die umgekehrte Stoffbilanz auf, löse die quadratische Gleichung und verwerfe die unzulässige Lösung.",
+              "en": "Separately: the same reaction model starts with c(NO₂)=0.800 mol/L and no N₂O₄, Kc=0.400 mol/L. y denotes formed N₂O₄. Set up the reverse material balance, solve the quadratic, and reject the inadmissible solution."
+            },
+            "modelResponse": {
+              "de": "c(N₂O₄)=y, c(NO₂)=0,800−2y; 0<y≤0,400 mol/L. (0,800−2y)²/y=0,400 ergibt 4y²−3,600y+0,640=0. Wurzeln (3,600±√2,720)/8: 0,243845 und 0,656155 mol/L. Die zweite macht c(NO₂) negativ. Zulässig sind c(N₂O₄)=0,243845 und c(NO₂)=0,312311 mol/L; Einsetzprobe ergibt 0,400 mol/L. Der Reaktionsfortschritt läuft diesmal nach links; der MWG-Ausdruck bleibt für die angegebene Reaktionsgleichung definiert.",
+              "en": "c(N₂O₄)=y and c(NO₂)=0.800−2y; 0<y≤0.400 mol/L. (0.800−2y)²/y=0.400 gives 4y²−3.600y+0.640=0. Roots (3.600±√2.720)/8 are 0.243845 and 0.656155 mol/L. The second gives negative NO₂. Admissible concentrations are 0.243845 mol/L N₂O₄ and 0.312311 mol/L NO₂; substitution gives 0.400 mol/L. Conversion now runs left; the mass-action expression remains defined for the stated equation."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Stöchiometrische Bilanz und zulässigen Konzentrationsbereich herleiten.",
+                  "en": "Derive the stoichiometric balance and admissible concentration domain."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "MWG mit ungleichen Koeffizientensummen in eine quadratische Gleichung überführen.",
+                  "en": "Convert mass action with unequal coefficient sums into a quadratic equation."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Beide Wurzeln berechnen und die unphysikalische begründet verwerfen.",
+                  "en": "Calculate both roots and reject the unphysical one with reasons."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "Beide Konzentrationen mit Einheit und Einsetzprobe bestimmen.",
+                  "en": "Determine both concentrations with units and substitution check."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "c(N₂O₄)=y, c(NO₂)=0,800−2y; 0<y≤0,400 mol/L. (0,800−2y)²/y=0,400 ergibt 4y²−3,600y+0,640=0. Wurzeln (3,600±√2,720)/8: 0,243845 und 0,656155 mol/L. Die zweite macht c(NO₂) negativ. Zulässig sind c(N₂O₄)=0,243845 und c(NO₂)=0,312311 mol/L; Einsetzprobe ergibt 0,400 mol/L. Der Reaktionsfortschritt läuft diesmal nach links; der MWG-Ausdruck bleibt für die angegebene Reaktionsgleichung definiert.",
+                  "en": "c(N₂O₄)=y and c(NO₂)=0.800−2y; 0<y≤0.400 mol/L. (0.800−2y)²/y=0.400 gives 4y²−3.600y+0.640=0. Roots (3.600±√2.720)/8 are 0.243845 and 0.656155 mol/L. The second gives negative NO₂. Admissible concentrations are 0.243845 mol/L N₂O₄ and 0.312311 mol/L NO₂; substitution gives 0.400 mol/L. Conversion now runs left; the mass-action expression remains defined for the stated equation."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+      "wholeMaterialCases": [
+        {
+          "caseId": "q3-11-a",
+          "goalId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+          "title": {
+            "de": "Gemessene Arbeit im belasteten Außenkreis",
+            "en": "Measured work in a loaded external circuit"
+          },
+          "wholeCurrentGoal": {
+            "id": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+            "shortKey": "canonical_chemistry_upper_galvanic_cells_electrical_work",
+            "title": "Elektrische Arbeit galvanischer Zellen ermitteln",
+            "titleEn": "Determine electrical work of galvanic cells",
+            "description": "Die lernende Person kann die von galvanischen Zellen abgegebene elektrische Arbeit aus Spannungs-, Stromstärke- und Zeitmessungen bestimmen und unter den angegebenen Mess- und Modellbedingungen als umgewandelte chemische Energie einordnen.",
+            "descriptionEn": "The learner can determine the electrical work delivered by galvanic cells from voltage, current, and time measurements and interpret it as converted chemical energy under the stated measurement and model conditions.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekII"
+            ],
+            "contains": [],
+            "requires": [
+              "f0939f88-a6af-5334-ac4d-5d54732af25a",
+              "cc803809-fa7f-517c-b356-9f2f7caf21a5"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-chemistry",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "PK1_ERKENNTNISGEWINNUNG",
+                "PK2_MODELLIEREN"
+              ],
+              "guidingIdeas": [
+                "BC_REAKTION",
+                "BC_ENERGIE"
+              ],
+              "phase": "Q3",
+              "area": "Redoxgleichgewichte",
+              "topicCode": "CANONICAL.CHEMISTRY.UPPER.REDOX.GALVANIC_CELLS_ELECTRICAL_WORK"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+                "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+                "sourceGoalId": "079cfac6-7896-55a7-82a6-132c134a7233"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+                "title": "Visualisierung: Elektrische Arbeit galvanischer Zellen ermitteln",
+                "url": "/assets/goal-visualizations/chemie/96fd8608-8d98-53f0-9b86-1311c3220fd3/96fd8608-8d98-53f0-9b86-1311c3220fd3.png",
+                "provider": "OpenAI built-in image_gen",
+                "description": "Visualisierung zum Lernziel: Elektrische Arbeit galvanischer Zellen ermitteln.",
+                "altText": "Daniell-Zelle mit Zink als negativem und Kupfer als positivem Pol. Rechts ist die Zelle über ein Amperemeter in Reihe mit einem Verbraucher verbunden; ein Voltmeter liegt parallel zum Verbraucher. Für gleichzeitig unter Last konstante Werte U=1,1 Volt, I=0,5 Ampere über 60 Sekunden ergibt sich die elektrische Arbeit W=U·I·t=33 Joule. Chemische Energie wird in elektrische Energie umgewandelt.",
+                "lang": "de",
+                "license": "CC-BY-4.0",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Synthetische galvanische Zelle mit zwei Halbzellen und Salzsteg. Außenkreis: in300s konstant U1,20V,I0,100A. Für dieselbe umgesetzte Portion gegeben ΔH=−50J,ΔG=−42J bei konstantem T,p. Die Messungen erfolgen am belasteten Außenkreis mit einem Verbraucher, Amperemeter in Reihe und Voltmeter parallel zum Verbraucher; beide Messgeräte sind idealisiert. Angegebene U/I-Werte gelten gleichzeitig für jedes ganze Intervall.",
+            "en": "Synthetic galvanic cell with two half-cells and salt bridge. External circuit: constant U1.20V,I0.100A for300s. For the same converted portion supplied ΔH=−50J,ΔG=−42J at constant T,p. Measurements are taken in the loaded external circuit with a load, an ammeter in series, and a voltmeter across the load; both instruments are idealized. Supplied U/I values apply simultaneously throughout each whole interval."
+          },
+          "task": {
+            "de": "Bestimme die abgegebene elektrische Arbeit aus den angegebenen gleichzeitigen U-, I- und Zeitdaten. Zeige Einheiten, berechne auch P und Q und ordne W gegenüber den angegebenen ΔH-/ΔG-Bezugswerten ein. Der Zellmechanismus ist bereitgestellter Kontext.",
+            "en": "Determine delivered electrical work from the supplied simultaneous U, I, and time values. Show units, also calculate P and Q, and relate W to the supplied ΔH/ΔG reference values. The cell mechanism is supplied context."
+          },
+          "modelResponse": {
+            "de": "Oxidation liefert Elektronen, die im Leiter zur Reduktionshalbzelle gelangen; Ionenleitung schließt den Stromkreis. Unmittelbarer Stoffkontakt würde Elektronen lokal übertragen, ohne denselben nutzbaren Außenstrom. P=UI=0,120W;Q=It=30,0C;W=UIt=36,0J. Chemische Energie wird umgesetzt; ΔH darf nicht vollständig als elektrische Arbeit gleichgesetzt werden. Reversibles Maximum bei T,p ist−ΔG=42J;36J liegt darunter.",
+            "en": "Oxidation supplies electrons that travel through the conductor to the reduction half-cell; ionic conduction closes the circuit. Direct species contact would transfer electrons locally without the same useful external current. P=UI=0.120W;Q=It=30.0C;W=UIt=36.0J. Chemical energy is converted; ΔH must not be equated entirely with electrical work. Reversible maximum at T,p is−ΔG=42J;36J is below it."
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Belastete gleichzeitige Messbedingungen und jeweils konstante Intervalldaten als Berechnungsannahmen angeben.",
+                  "en": "State loaded simultaneous measurement conditions and constant interval data as calculation assumptions."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "P,Q und W mit Einheiten bestimmen.",
+                  "en": "Determine P,Q and W with units."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Gemessene Arbeit als elektrische Energie deuten.",
+                  "en": "Interpret measured work as electrical energy."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "ΔH,ΔG und tatsächliche Arbeit fachlich unterscheiden.",
+                  "en": "Distinguish ΔH,ΔG and actual work scientifically."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "W verdoppelt auf72J für die längere Umsetzung; daraus folgt keine Gleichheit mit der Enthalpie einer ursprünglichen Portion. Stoffumsatz und thermodynamische Bezugsportion müssen mitwachsen.",
+                  "en": "W doubles to72J for longer conversion; this does not imply equality with the enthalpy of the original portion. Conversion and thermodynamic reference portion must also scale."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Frisch: Zeit verdoppelt, U und I konstant; gilt deshalb W=−ΔH unabhängig vom Zellverlust?",
+              "en": "Fresh: time doubles, U and I constant; does this make W=−ΔH regardless of cell losses?"
+            },
+            "modelResponse": {
+              "de": "W verdoppelt auf72J für die längere Umsetzung; daraus folgt keine Gleichheit mit der Enthalpie einer ursprünglichen Portion. Stoffumsatz und thermodynamische Bezugsportion müssen mitwachsen.",
+              "en": "W doubles to72J for longer conversion; this does not imply equality with the enthalpy of the original portion. Conversion and thermodynamic reference portion must also scale."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          }
+        },
+        {
+          "caseId": "q3-11-b",
+          "goalId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+          "title": {
+            "de": "Zeitverlauf einer belasteten Zelle integrieren",
+            "en": "Integrate a loaded cell time series"
+          },
+          "wholeCurrentGoal": {
+            "id": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+            "shortKey": "canonical_chemistry_upper_galvanic_cells_electrical_work",
+            "title": "Elektrische Arbeit galvanischer Zellen ermitteln",
+            "titleEn": "Determine electrical work of galvanic cells",
+            "description": "Die lernende Person kann die von galvanischen Zellen abgegebene elektrische Arbeit aus Spannungs-, Stromstärke- und Zeitmessungen bestimmen und unter den angegebenen Mess- und Modellbedingungen als umgewandelte chemische Energie einordnen.",
+            "descriptionEn": "The learner can determine the electrical work delivered by galvanic cells from voltage, current, and time measurements and interpret it as converted chemical energy under the stated measurement and model conditions.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekII"
+            ],
+            "contains": [],
+            "requires": [
+              "f0939f88-a6af-5334-ac4d-5d54732af25a",
+              "cc803809-fa7f-517c-b356-9f2f7caf21a5"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-chemistry",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "PK1_ERKENNTNISGEWINNUNG",
+                "PK2_MODELLIEREN"
+              ],
+              "guidingIdeas": [
+                "BC_REAKTION",
+                "BC_ENERGIE"
+              ],
+              "phase": "Q3",
+              "area": "Redoxgleichgewichte",
+              "topicCode": "CANONICAL.CHEMISTRY.UPPER.REDOX.GALVANIC_CELLS_ELECTRICAL_WORK"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+                "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+                "sourceGoalId": "079cfac6-7896-55a7-82a6-132c134a7233"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+                "title": "Visualisierung: Elektrische Arbeit galvanischer Zellen ermitteln",
+                "url": "/assets/goal-visualizations/chemie/96fd8608-8d98-53f0-9b86-1311c3220fd3/96fd8608-8d98-53f0-9b86-1311c3220fd3.png",
+                "provider": "OpenAI built-in image_gen",
+                "description": "Visualisierung zum Lernziel: Elektrische Arbeit galvanischer Zellen ermitteln.",
+                "altText": "Daniell-Zelle mit Zink als negativem und Kupfer als positivem Pol. Rechts ist die Zelle über ein Amperemeter in Reihe mit einem Verbraucher verbunden; ein Voltmeter liegt parallel zum Verbraucher. Für gleichzeitig unter Last konstante Werte U=1,1 Volt, I=0,5 Ampere über 60 Sekunden ergibt sich die elektrische Arbeit W=U·I·t=33 Joule. Chemische Energie wird in elektrische Energie umgewandelt.",
+                "lang": "de",
+                "license": "CC-BY-4.0",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Modell einer galvanischen Zelle. Intervall1:U1,10V,I0,20A,t100s; Intervall2:U0,90V,I0,10A,t200s, je konstant. Zwei Reaktionen laufen räumlich getrennt, Salzsteg vorhanden. Die Messungen erfolgen am belasteten Außenkreis mit einem Verbraucher, Amperemeter in Reihe und Voltmeter parallel zum Verbraucher; beide Messgeräte sind idealisiert. Angegebene U/I-Werte gelten gleichzeitig für jedes ganze Intervall.",
+            "en": "Model galvanic cell. Interval1:U1.10V,I0.20A,t100s; interval2:U0.90V,I0.10A,t200s, each constant. Two reactions occur spatially separated, with salt bridge. Measurements are taken in the loaded external circuit with a load, an ammeter in series, and a voltmeter across the load; both instruments are idealized. Supplied U/I values apply simultaneously throughout each whole interval."
+          },
+          "task": {
+            "de": "Bestimme die abgegebene elektrische Arbeit aus den angegebenen gleichzeitigen U-, I- und Zeitdaten. Zeige Einheiten, summiere beide Intervalle und prüfe den falschen ungewichteten Mittelwert. Begrenze die Aussage zur Reaktionsenthalpie. Der Zellmechanismus ist bereitgestellter Kontext.",
+            "en": "Determine delivered electrical work from the supplied simultaneous U, I, and time values. Show units, sum the two intervals and check the incorrect unweighted mean. Bound the reaction-enthalpy claim. The cell mechanism is supplied context."
+          },
+          "modelResponse": {
+            "de": "Elektronen werden außen zwischen Oxidation und Reduktion übertragen; Ionenleitung erhält Elektroneutralität. Q=0,20·100+0,10·200=40C. W=1,10·0,20·100+0,90·0,10·200=22+18=40J. Ungewichtetes Mittel U1,00,I0,15 mal300 ergibt45J und ist falsch. Bei variablen Messwerten gilt W=∫UI dt. Wärme, Entropie und Verluste verhindern die pauschale Gleichsetzung mit−ΔH.",
+            "en": "Electrons transfer externally between oxidation and reduction; ionic conduction maintains electroneutrality. Q=0.20·100+0.10·200=40C. W=1.10·0.20·100+0.90·0.10·200=22+18=40J. Unweighted means U1.00,I0.15 times300 give45J and are wrong. For variable measurements W=∫UI dt. Heat, entropy and losses prevent blanket equality with−ΔH."
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Belastete gleichzeitige Messbedingungen und jeweils konstante Intervalldaten als Berechnungsannahmen angeben.",
+                  "en": "State loaded simultaneous measurement conditions and constant interval data as calculation assumptions."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "Gesamtladung40C bestimmen.",
+                  "en": "Determine total charge40C."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Arbeit40J intervallweise korrekt bestimmen.",
+                  "en": "Determine work40J correctly interval by interval."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "Falschen Mittelwert und thermodynamische Gleichsetzung erkennen.",
+                  "en": "Identify incorrect mean and thermodynamic equality."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "W=0J im äußeren Kreis trotz Spannung. Spannung allein ist keine abgegebene Energie; mögliche Selbstentladung ist ein anderer Prozess.",
+                  "en": "W=0J in the external circuit despite voltage. Voltage alone is not delivered energy; possible self-discharge is a different process."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Frisch: Außenkreis unterbrochen, Leerlaufspannung messbar, I=0. Welche abgegebene Arbeit während60s?",
+              "en": "Fresh: external circuit broken, open-circuit voltage measurable,I=0. What work is delivered during60s?"
+            },
+            "modelResponse": {
+              "de": "W=0J im äußeren Kreis trotz Spannung. Spannung allein ist keine abgegebene Energie; mögliche Selbstentladung ist ein anderer Prozess.",
+              "en": "W=0J in the external circuit despite voltage. Voltage alone is not delivered energy; possible self-discharge is a different process."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+      "wholeMaterialCases": [
+        {
+          "caseId": "q3-14-a",
+          "goalId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+          "title": {
+            "de": "Eisen unter feuchter Luft und in saurer Modelllösung",
+            "en": "Iron in moist air and acidic model solution"
+          },
+          "wholeCurrentGoal": {
+            "id": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+            "shortKey": "canonical_chemistry_by_oxygen_acid_corrosion",
+            "title": "Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+            "titleEn": "Explain oxygen and acid corrosion at particle level",
+            "description": "Die lernende Person kann Sauerstoff- und Säurekorrosion auf Teilchenebene mit Oxidation, Reduktion, Lokalelementen und dem Donator-Akzeptor-Konzept erläutern.",
+            "descriptionEn": "The learner can explain oxygen and acid corrosion at particle level using oxidation, reduction, local cells, and the donor-acceptor concept.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekII"
+            ],
+            "contains": [],
+            "requires": [
+              "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+              "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-chemistry",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BC_REAKTION"
+              ],
+              "phase": "Q3",
+              "area": "Redoxgleichgewichte",
+              "topicCode": "CANONICAL.CHEMISTRY.Q3.OXYGEN_ACID_CORROSION"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+                "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+                "sourceGoalId": "b799ee45-c69e-5d49-9fff-974e5793adc3"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+                "title": "Visualisierung: Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+                "url": "/assets/goal-visualizations/chemie/0908b3a2-9937-57de-8bfb-35a6de54aa1f/0908b3a2-9937-57de-8bfb-35a6de54aa1f.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Sauerstoff- und Säurekorrosion auf Teilchenebene erklären.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff- und Säurekorrosion auf Teilchenebene erklären\". Die lernende Person kann Sauerstoff- und Säurekorrosion auf Teilchenebene mit Oxidation, Reduktion, Lokalelementen und dem Donator-Akzeptor-Konzept erläutern.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Zwei reine Denkmodelle für Eisen: X neutrale wasserhaltige Schicht mit O₂, Y sauerstofffreie saure Lösung mit H⁺. Metall leitet Elektronen, Flüssigkeit Ionen. Kein Laborauftrag. Fe²⁺ ist anfängliches Oxidationsprodukt; Rostbildung umfasst weitere Schritte.",
+            "en": "Two pure thought models for iron: X neutral aqueous film with O₂,Y oxygen-free acidic solution with H⁺. Metal conducts electrons,liquid ions. No laboratory task. Fe²⁺ is the initial oxidation product; rust formation involves further steps."
+          },
+          "task": {
+            "de": "Erkläre beide Korrosionsarten mit Donator/Akzeptor, lokalen Anoden/Kathoden und bilanzierten Halbgleichungen. Unterscheide Elektronenleitung, Ionentransport und spätere Rostbildung.",
+            "en": "Explain both corrosion types using donor/acceptor,local anodes/cathodes and balanced half-equations. Distinguish electron conduction,ion transport and later rust formation."
+          },
+          "modelResponse": {
+            "de": "Beide:Fe→Fe²⁺+2e⁻, Eisen ist Donator und lokale Anode. X:O₂+2H₂O+4e⁻→4OH⁻ an lokalen Kathoden; O₂ ist Akzeptor. 2Fe²⁺+4OH⁻→2Fe(OH)₂, weitere Oxidation führt zu Rost. Y:2H⁺+2e⁻→H₂, H⁺ Akzeptor. Elektronen laufen im Metall, Ionen in der Flüssigkeit. Sauerstoff ist für die saure Modellkorrosion nicht erforderlich; bloße Auflösung ohne Redoxbilanz erklärt die Vorgänge nicht.",
+            "en": "Both:Fe→Fe²⁺+2e⁻,iron is donor and local anode. X:O₂+2H₂O+4e⁻→4OH⁻ at local cathodes;O₂ is acceptor. 2Fe²⁺+4OH⁻→2Fe(OH)₂,further oxidation forms rust. Y:2H⁺+2e⁻→H₂,H⁺ acceptor. Electrons travel in metal,ions in liquid. Oxygen is not required for acidic model corrosion;mere dissolution without redox balance does not explain the processes."
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Anodische Eisenoxidation und Donator richtig erklären.",
+                  "en": "Explain anodic iron oxidation and donor correctly."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "Neutrale Sauerstoffreduktion korrekt bilanzieren.",
+                  "en": "Balance neutral oxygen reduction correctly."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Saure Protonenreduktion richtig von Sauerstoffreaktion unterscheiden.",
+                  "en": "Distinguish acidic proton reduction from oxygen reaction correctly."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "Lokale Zelle, zwei Transportwege und Folgerostbildung trennen.",
+                  "en": "Distinguish local cell,two transport paths and later rust formation."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "Nein; Y hat H⁺ als anderen Elektronenakzeptor. Akzeptor und Umgebung müssen angegeben werden; aus O₂-Mangel folgt kein universeller Korrosionsstopp.",
+                  "en": "No;Y has H⁺ as another electron acceptor. Acceptor and environment must be specified;absence of O₂ does not imply universal cessation of corrosion."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Frisch: O₂ fehlt in neutralem Modell X. Sind damit die Reaktionen von Y ebenfalls ausgeschlossen?",
+              "en": "Fresh: O₂ is absent in neutral model X. Are Y reactions also excluded?"
+            },
+            "modelResponse": {
+              "de": "Nein; Y hat H⁺ als anderen Elektronenakzeptor. Akzeptor und Umgebung müssen angegeben werden; aus O₂-Mangel folgt kein universeller Korrosionsstopp.",
+              "en": "No;Y has H⁺ as another electron acceptor. Acceptor and environment must be specified;absence of O₂ does not imply universal cessation of corrosion."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          }
+        },
+        {
+          "caseId": "q3-14-b",
+          "goalId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+          "title": {
+            "de": "Lokale Bereiche unter einem Wassertropfen",
+            "en": "Local regions beneath a water droplet"
+          },
+          "wholeCurrentGoal": {
+            "id": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+            "shortKey": "canonical_chemistry_by_oxygen_acid_corrosion",
+            "title": "Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+            "titleEn": "Explain oxygen and acid corrosion at particle level",
+            "description": "Die lernende Person kann Sauerstoff- und Säurekorrosion auf Teilchenebene mit Oxidation, Reduktion, Lokalelementen und dem Donator-Akzeptor-Konzept erläutern.",
+            "descriptionEn": "The learner can explain oxygen and acid corrosion at particle level using oxidation, reduction, local cells, and the donor-acceptor concept.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekII"
+            ],
+            "contains": [],
+            "requires": [
+              "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+              "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-chemistry",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BC_REAKTION"
+              ],
+              "phase": "Q3",
+              "area": "Redoxgleichgewichte",
+              "topicCode": "CANONICAL.CHEMISTRY.Q3.OXYGEN_ACID_CORROSION"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+                "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+                "sourceGoalId": "b799ee45-c69e-5d49-9fff-974e5793adc3"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+                "title": "Visualisierung: Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+                "url": "/assets/goal-visualizations/chemie/0908b3a2-9937-57de-8bfb-35a6de54aa1f/0908b3a2-9937-57de-8bfb-35a6de54aa1f.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Sauerstoff- und Säurekorrosion auf Teilchenebene erklären.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff- und Säurekorrosion auf Teilchenebene erklären\". Die lernende Person kann Sauerstoff- und Säurekorrosion auf Teilchenebene mit Oxidation, Reduktion, Lokalelementen und dem Donator-Akzeptor-Konzept erläutern.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Synthetisches Metallmodell: unter einem neutralen belüfteten Tropfen liegt O₂-armer Innenbereich und O₂-reicher Rand. Eisen ist zusammenhängend leitend; Fe²⁺ entsteht innen, OH⁻ am Rand. Vergleich: saures sauerstofffreies Modell bildet H₂.",
+            "en": "Synthetic metal model: beneath a neutral aerated droplet the centre is O₂-poor and rim O₂-rich. Iron forms a conducting continuum;Fe²⁺ forms centrally,OH⁻ at rim. Comparison: acidic oxygen-free model forms H₂."
+          },
+          "task": {
+            "de": "Leite Lokalelement und Donator-Akzeptor-Vorgänge ab, bilanziere Gleichungen für beide Umgebungen und erkläre die räumliche Trennung.",
+            "en": "Derive local cell and donor-acceptor processes,balance equations for both environments and explain spatial separation."
+          },
+          "modelResponse": {
+            "de": "Innen lokale Anode Fe→Fe²⁺+2e⁻; Rand lokale Kathode O₂+2H₂O+4e⁻→4OH⁻. Metall leitet Elektronen innen→Rand, Flüssigkeit trägt Ionen und ermöglicht Ladungsausgleich. Gesamt zunächst2Fe+O₂+2H₂O→2Fe(OH)₂; später weitere Rostreaktionen. Sauerstofffreies saures Modell:Fe+2H⁺→Fe²⁺+H₂. Beide sind Donator-Akzeptor-Prozesse mit verschiedenem Akzeptor.",
+            "en": "Centre local anode Fe→Fe²⁺+2e⁻;rim local cathode O₂+2H₂O+4e⁻→4OH⁻. Metal conducts electrons centre→rim;liquid carries ions and balances charge. Initial overall2Fe+O₂+2H₂O→2Fe(OH)₂;later additional rust reactions. Oxygen-free acidic model:Fe+2H⁺→Fe²⁺+H₂. Both are donor-acceptor processes with different acceptors."
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Räumliche Anode und Kathode aus Daten zuordnen.",
+                  "en": "Assign spatial anode and cathode from data."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "Sauerstoff-Halbgleichungen/ersten Stoffumsatz bilanzieren.",
+                  "en": "Balance oxygen half-equations/initial conversion."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Säurekorrosion samt Akzeptor und H₂ erklären.",
+                  "en": "Explain acid corrosion including acceptor and H₂."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "Elektronen im Metall von Ionen in Lösung trennen.",
+                  "en": "Distinguish electrons in metal and ions in solution."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "Der Elektronenleitungsweg zwischen diesen Orten fehlt; das betrachtete gekoppelte Lokalelement wird unterbrochen. Andere lokale Reaktionsorte werden dadurch nicht generell ausgeschlossen.",
+                  "en": "The electron-conduction path between those sites is missing;this coupled local cell is interrupted. Other local reaction sites are not universally excluded."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Frisch: elektrischer Metallkontakt zwischen beiden Modellbereichen wird getrennt, sonst gleich. Was fehlt dem Lokalelement?",
+              "en": "Fresh: electrical metal contact between model regions is broken,all else equal. What is missing from the local cell?"
+            },
+            "modelResponse": {
+              "de": "Der Elektronenleitungsweg zwischen diesen Orten fehlt; das betrachtete gekoppelte Lokalelement wird unterbrochen. Andere lokale Reaktionsorte werden dadurch nicht generell ausgeschlossen.",
+              "en": "The electron-conduction path between those sites is missing;this coupled local cell is interrupted. Other local reaction sites are not universally excluded."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+      "wholeMaterialCases": [
+        {
+          "caseId": "q3-17-a",
+          "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+          "title": {
+            "de": "Beschichtung und Opferanode vergleichen",
+            "en": "Compare coating and sacrificial anode"
+          },
+          "wholeCurrentGoal": {
+            "id": "94a62b39-d4a2-5882-99d1-6886ead07726",
+            "shortKey": "canonical_chemistry_by_corrosion_protection_evaluation",
+            "title": "Passiven und aktiven Korrosionsschutz bewerten",
+            "titleEn": "Evaluate passive and active corrosion protection",
+            "description": "Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+            "descriptionEn": "The learner can explain passive and active corrosion protection measures, including coatings, protective layers, galvanic coupling, and sacrificial anodes, and evaluate them ecologically and economically.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekII"
+            ],
+            "contains": [],
+            "requires": [
+              "c95f6059-d7c2-5bcd-b61e-95e3577efdb2"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-chemistry",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "PK5_BEWERTEN"
+              ],
+              "guidingIdeas": [
+                "BC_REAKTION",
+                "BC_ENERGIE"
+              ],
+              "phase": "Q3",
+              "area": "Redoxgleichgewichte",
+              "topicCode": "CANONICAL.CHEMISTRY.Q3.CORROSION_PROTECTION_EVALUATION"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+                "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+                "sourceGoalId": "12fe7899-c91e-593a-9bcc-78872e68a1e3"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+                "title": "Visualisierung: Passiven und aktiven Korrosionsschutz bewerten",
+                "url": "/assets/goal-visualizations/chemie/94a62b39-d4a2-5882-99d1-6886ead07726/94a62b39-d4a2-5882-99d1-6886ead07726.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Passiven und aktiven Korrosionsschutz bewerten.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Passiven und aktiven Korrosionsschutz bewerten\". Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Modell Stahlteil in neutraler feuchter Umgebung. Optionen: Polymerbeschichtung Kosten2, intakt Barriere, beschädigt lokale freie Fe-Fläche; Zn-Opferanode Kosten3, metallisch gekoppelt und ionischer Kontakt, Zn²⁺/Zn−0,76V<Fe²⁺/Fe−0,44V, begrenzter Verbrauchsvorrat. Umweltbelastungen von Beschichtung und Metallfreisetzung sind nicht quantitativ gegeben.",
+            "en": "Model steel part in neutral moist environment. Options:polymer coating cost2,intact barrier,damaged local exposedFe area;Zn sacrificial anode cost3,metallic coupling and ionic contact,Zn²⁺/Zn−0.76V<Fe²⁺/Fe−0.44V,finite consumable supply. Environmental impacts of coating and metal release are not quantified."
+          },
+          "task": {
+            "de": "Erläutere passive und aktive Schutzmechanismen einschließlich Schutzfilm,galvanischer Kopplung und Opferanode. Bewerte ökologisch und ökonomisch unter Beschädigungs-/Wartungsbedingungen.",
+            "en": "Explain passive and active protection including protective film,galvanic coupling and sacrificial anode. Evaluate ecologically and economically under damage/maintenance conditions."
+          },
+          "modelResponse": {
+            "de": "Intakte Beschichtung trennt Fe von Umgebung; dichte Schutzschichten hemmen Transport. Beschädigung kann Barrierewirkung verlieren. Zn oxidiert gekoppelt als Anode, liefert Elektronen an kathodisch geschütztes Fe; Lösung trägt Ionen. Zn wird verbraucht, deshalb Wartung nötig. Beschichtung ist günstiger, Opferanode kann Defekte tolerieren, beide haben Material-/Entsorgungsaufwand. Ohne Umweltzahlen ist kein allgemeiner Gesamtsieger begründet; Lebensdauer und Wartungszugang bestimmen das Urteil.",
+            "en": "Intact coating separatesFe from environment;dense protective layers inhibit transport. Damage can remove barrier protection. CoupledZn oxidizes as anode,supplying electrons to cathodically protectedFe;solution carries ions. Zn is consumed,so maintenance is needed. Coating is cheaper,sacrificial anode may tolerate defects,and both have material/disposal demand. Without environmental numbers no universal winner is justified;service life and maintenance access shape judgment."
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Passive Barriere/Schutzfilm und Defektgrenze erklären.",
+                  "en": "Explain passive barrier/film and defect limit."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "Galvanische Polarität,Elektronen-/Ionenweg richtig.",
+                  "en": "Give correct galvanic polarity,electron/ion paths."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Opferanodenverbrauch und Wartung erläutern.",
+                  "en": "Explain sacrificial-anode consumption and maintenance."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "Ökologie/Ökonomie materialgestützt bedingt abwägen.",
+                  "en": "Weigh ecology/economics conditionally using material."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "Nein; aktive Elektronenquelle fehlt, passive Barriere ist lokal offen. Eine konkrete Wartungs-/Neubewertung ist nötig, kein unbefristeter Schutz.",
+                  "en": "No;active electron source is absent and passive barrier locally open. Specific maintenance/reassessment is needed,no indefinite protection."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Frisch: Zn ist verbraucht; Beschichtung beschädigt. Besteht Schutz automatisch weiter?",
+              "en": "Fresh:Zn is consumed and coating damaged. Does protection automatically continue?"
+            },
+            "modelResponse": {
+              "de": "Nein; aktive Elektronenquelle fehlt, passive Barriere ist lokal offen. Eine konkrete Wartungs-/Neubewertung ist nötig, kein unbefristeter Schutz.",
+              "en": "No;active electron source is absent and passive barrier locally open. Specific maintenance/reassessment is needed,no indefinite protection."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          }
+        },
+        {
+          "caseId": "q3-17-b",
+          "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+          "title": {
+            "de": "Edle Beschichtung kann am Defekt schaden",
+            "en": "Noble coating can harm at a defect"
+          },
+          "wholeCurrentGoal": {
+            "id": "94a62b39-d4a2-5882-99d1-6886ead07726",
+            "shortKey": "canonical_chemistry_by_corrosion_protection_evaluation",
+            "title": "Passiven und aktiven Korrosionsschutz bewerten",
+            "titleEn": "Evaluate passive and active corrosion protection",
+            "description": "Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+            "descriptionEn": "The learner can explain passive and active corrosion protection measures, including coatings, protective layers, galvanic coupling, and sacrificial anodes, and evaluate them ecologically and economically.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekII"
+            ],
+            "contains": [],
+            "requires": [
+              "c95f6059-d7c2-5bcd-b61e-95e3577efdb2"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-chemistry",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "PK5_BEWERTEN"
+              ],
+              "guidingIdeas": [
+                "BC_REAKTION",
+                "BC_ENERGIE"
+              ],
+              "phase": "Q3",
+              "area": "Redoxgleichgewichte",
+              "topicCode": "CANONICAL.CHEMISTRY.Q3.CORROSION_PROTECTION_EVALUATION"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+                "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+                "sourceGoalId": "12fe7899-c91e-593a-9bcc-78872e68a1e3"
+              }
+            },
+            "type": "atomic",
+            "examples": [],
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+                "title": "Visualisierung: Passiven und aktiven Korrosionsschutz bewerten",
+                "url": "/assets/goal-visualizations/chemie/94a62b39-d4a2-5882-99d1-6886ead07726/94a62b39-d4a2-5882-99d1-6886ead07726.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Passiven und aktiven Korrosionsschutz bewerten.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Passiven und aktiven Korrosionsschutz bewerten\". Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "material": {
+            "de": "Fiktiver Stahl:OptionA Cu-Beschichtung Kosten2,OptionB Zn-Beschichtung Kosten3,OptionC dichte haftende Oxid-/Polymerbarriere Kosten2,5. Metallkontakt und leitende Feuchtigkeit am Defekt. E°Zn−0,76,Fe−0,44,Cu+0,34V; Film-/Oberflächeneffekte hier vernachlässigt.",
+            "en": "Fictional steel:optionA Cu coating cost2,optionB Zn coating cost3,optionC dense adhering oxide/polymer barrier cost2.5. Metallic contact and conducting moisture at defect. E°Zn−0.76,Fe−0.44,Cu+0.34V;film/surface effects neglected here."
+          },
+          "task": {
+            "de": "Erkläre intakte passive Wirkung,aktive Schutzwirkung und galvanischen Defektfall für alle Optionen. Beurteile Kosten,Materialverbrauch und Umweltdatenbedarf.",
+            "en": "Explain intact passive effect,active protection and galvanic defect case for all options. Evaluate cost,material consumption and environmental data needs."
+          },
+          "modelResponse": {
+            "de": "Intakt dienen alle Beschichtungen als Barriere. Am Cu-Defekt ist Fe Anode,Cu Kathode; Elektronen Fe→Cu können Fe-Angriff verstärken. Am Zn-Defekt oxidiertZn und schütztFe kathodisch,solange metallischer/ionischer Kontakt und Vorrat bestehen. C wirkt über Filmbarriere,keine automatisch zugesicherte Opferwirkung. Zn-Verbrauch und Erneuerung kosten Material;Cu kostet weniger im Modell,Defektschaden kann Lebenszykluskosten erhöhen. Ökologisches Urteil braucht Herstellung,Freisetzung und Entsorgung.",
+            "en": "When intact all coatings act as barriers. At aCu defectFe is anode,Cu cathode;electronsFe→Cu may intensifyFe attack. At aZn defectZn oxidizes and protectsFe cathodically while metallic/ionic contact and supply persist. C acts through film barrier,without guaranteed sacrificial action. Zn consumption and renewal use material;Cu is cheaper in the model but defect damage may raise life-cycle cost. Ecological judgment needs manufacture,release and disposal."
+          },
+          "scoring": {
+            "maximumPoints": 10,
+            "criteria": [
+              {
+                "id": "c1",
+                "points": 2,
+                "criterion": {
+                  "de": "Barriere/Filmwirkung aller Optionen erklären.",
+                  "en": "Explain barrier/film action of all options."
+                }
+              },
+              {
+                "id": "c2",
+                "points": 2,
+                "criterion": {
+                  "de": "Cu-Defekt als schädliche galvanische Kopplung deuten.",
+                  "en": "InterpretCu defect as harmful galvanic coupling."
+                }
+              },
+              {
+                "id": "c3",
+                "points": 2,
+                "criterion": {
+                  "de": "Zn-Opferwirkung mit richtiger Elektronenrichtung erklären.",
+                  "en": "ExplainZn sacrificial action with correct electron direction."
+                }
+              },
+              {
+                "id": "c4",
+                "points": 2,
+                "criterion": {
+                  "de": "Kosten und Umwelturteil mit Grenzen begründen.",
+                  "en": "Explain cost and environmental judgment with limits."
+                }
+              },
+              {
+                "id": "fresh-transfer",
+                "points": 2,
+                "criterion": {
+                  "de": "Nein; ElektronenwegZn→Fe fehlt. Eine intakte isolierte Schicht kann noch passiv abschirmen,was eine andere Schutzwirkung ist.",
+                  "en": "No;the electron pathZn→Fe is absent. An intact isolated layer may still provide passive shielding,which is a different protection effect."
+                }
+              }
+            ],
+            "rule": {
+              "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+              "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+            }
+          },
+          "freshTransfer": {
+            "task": {
+              "de": "Frisch: Zn-Schicht elektrisch von Fe isoliert. Gibt es weiterhin aktive Opferanodenwirkung?",
+              "en": "Fresh:Zn coating electrically isolated fromFe. Does active sacrificial protection persist?"
+            },
+            "modelResponse": {
+              "de": "Nein; ElektronenwegZn→Fe fehlt. Eine intakte isolierte Schicht kann noch passiv abschirmen,was eine andere Schutzwirkung ist.",
+              "en": "No;the electron pathZn→Fe is absent. An intact isolated layer may still provide passive shielding,which is a different protection effect."
+            },
+            "independentAdministration": true,
+            "releaseModelOnlyAfterSubmission": true
+          },
+          "evidence": {
+            "level": "E1",
+            "maximumClaimScope": "G1",
+            "kind": "synthetic-author-witness",
+            "humanTrial": false,
+            "performedExperiment": false,
+            "actualLearnerPerformance": false
+          }
+        }
+      ]
+    }
+  ],
+  "caseCounts": {
+    "c0463225-cba1-5e62-a1fb-e9046d7034b5": 3,
+    "96fd8608-8d98-53f0-9b86-1311c3220fd3": 2,
+    "0908b3a2-9937-57de-8bfb-35a6de54aa1f": 2,
+    "94a62b39-d4a2-5882-99d1-6886ead07726": 2
+  },
+  "allCasesPreservedExact": true,
+  "newScience": false
+}

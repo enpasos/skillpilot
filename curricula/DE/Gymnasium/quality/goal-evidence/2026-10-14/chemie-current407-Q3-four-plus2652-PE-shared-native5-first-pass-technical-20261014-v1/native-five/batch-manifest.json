@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-technical-20261014-v1/configs/native-five.shared-identical-first-pass.batch.config.json",
+  "configDigest": "sha256:ae16a29629d93ae26e09834d17bdade9ddc6e916796f75b85c90347ca3870ad8",
+  "goalIds": [
+    "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+    "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+    "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+    "94a62b39-d4a2-5882-99d1-6886ead07726",
+    "2652caef-b557-58b9-9b28-70db62625ce5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 407,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-technical-20261014-v1/configs/whole407.five-shared-first-pass.stock-base.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-technical-20261014-v1/candidate/canonical533.current407.exact-reviewed-Q3-plus-new-P2652.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:2f12ded5da458bb2a0ed43ec06d17aabaa8ae1215247924515e75a297a640628"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c1d25682ba350bb8aa3a44e81b8ce1325d9079b99ad5e21fc2ca420dcfcfca04",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:4e062c14e617574d559302f5ac2902dbd693d54dda660eebd9fcc80cf3c5afeb",
+    "reviewInputFingerprint": "sha256:b69748b7fe1ed7fba68143c49838c56e3070048bdd9f51f90d77ff2e360b7995",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1-a",
+        "campaignDigest": "sha256:6e411564157fff42e361de0d829388cd7037f1448a3c8e08329ac169d537bc47",
+        "roundId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1-first-pass-a",
+        "independenceGroupId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1-independent-a",
+        "batchId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:62456b4a68ec6e4863771a5b2b2dba3ae83c18e0aefecd3c8d87426f0094d2cc"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1-b",
+        "campaignDigest": "sha256:e563f17f6d38ec01fb46e2cceb0cd69356b6e56ed285be8ae4f8a81d86f9798c",
+        "roundId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1-first-pass-b",
+        "independenceGroupId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1-independent-b",
+        "batchId": "chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-20261014-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:bee09c703820da0d38ba9d43b537ef4a6c228724f8a30d80fd10d9136b695e8f"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

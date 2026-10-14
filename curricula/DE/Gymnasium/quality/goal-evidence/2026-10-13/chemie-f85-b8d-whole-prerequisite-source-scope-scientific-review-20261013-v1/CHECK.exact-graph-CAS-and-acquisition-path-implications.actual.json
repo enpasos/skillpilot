@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "originalCanonical": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-final-resource-P7-native8-technical-author-20261013-v1/candidate/canonical531.current406.final-resources.inactive.json",
+    "rawSHA256": "sha256:de170ae0679d06b808cb083ec75f981dfcaa0236cd16c63e9e81c102634e35fc"
+  },
+  "candidateCanonical": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-f85-b8d-whole-prerequisite-source-scope-scientific-review-20261013-v1/candidate/canonical531.current406.only-b8d-requires-scientific-proposal.inactive.json",
+    "rawSHA256": "sha256:ba86a96325f8b5e79417f15396374a34c05396d300e6cfd9ac06813613d92f40"
+  },
+  "whole531GoalIdsPreserved": true,
+  "onlyChangedWholeGoalId": [
+    "b8d3b453-d638-5518-aab0-d84ec2e8567c"
+  ],
+  "allOther530GoalBodiesExact": true,
+  "requiresAndContainsDAG": true,
+  "cycles": [],
+  "minimumFreshNativeContextGoalIds": [
+    "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+    "f85b4651-50ea-5b42-b193-3465c05257a7",
+    "4bdbdf32-3021-5a0a-b412-b611166b2d21"
+  ],
+  "whyFresh": [
+    "b8d requires tuple changes",
+    "f85 reverseRequires loses b8d and source/applicability context may change",
+    "4bdb reverseRequires gains b8d; native relationship/context tuple changes"
+  ],
+  "native8InputsUntouched": true,
+  "existingActualProjectionProof": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-f85-BY-source-current406-targeted-native-one-technical-20261013-v1/FINDING.real-learner-and-native-scope-source-authority-HOLD.actual.json",
+    "rawSHA256": "sha256:8343aa412180bb98e64b3062a6be3f09add05de37c0fd49a3e66b80b6b78e92e"
+  },
+  "actualUnmodifiedRuntimeAcquisitionCode": {
+    "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "rawSHA256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+    "getFrontierTargetCandidateGuardLine": 5862,
+    "getFrontierKnownPrerequisiteMasteryGateLines": [
+      5880,
+      5905
+    ],
+    "getAtomicFrontierTargetCandidateGuardLine": 6047,
+    "getAtomicFrontierKnownPrerequisiteOnlyGateLines": [
+      6084,
+      6110
+    ]
+  },
+  "acquisitionConclusion": {
+    "eightViewPrerequisiteOnlyProposalIsNotAdopted": true,
+    "unmasteredF85CannotBeAcquiredByOrdinaryFrontierInSamePrerequisiteOnlyScope": true,
+    "keepingOldB8dEdgeWouldBlockB8dWithoutRealGlobalF85Mastery": true,
+    "noImplicitPrerequisiteMasteryFromDependentMastery": true,
+    "newPrecise4bdbEdgeAllowsActualReviewedDelocalizationPrerequisiteAcquisitionAsTarget": true,
+    "b8dFullDemandAndF85FullDemandUnchanged": true
+  },
+  "sourceScopeConsequences": {
+    "sixStatesPreviouslyExpandedSolelyByB8dRequiresClosure": [
+      "DE-HH",
+      "DE-NI",
+      "DE-RP",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST"
+    ],
+    "removingThisEdgeIsScientificallySupportedNotCountMotivated": true,
+    "requiresOnlyExpansionExpectedToStopButFreshCompilerMeasurementRequired": true,
+    "HELegacyMappingAndProvenanceStillNeedTruthfulWholeF85AuthorityCorrection": true,
+    "fourBYHEAssessmentDirectF85EdgesNotScientificallyAdjudicatedHere": [
+      "00139854-e5a7-5c12-ab50-2268c80bf776",
+      "14577339-9e0c-5b44-8e47-91e1a4947367",
+      "bf6c39f0-1e44-53b2-8ff6-025f2e36e125",
+      "c91350bc-7d2e-523c-bd50-0324bccfcf98"
+    ],
+    "f85EightJurisdictionWholeScientificM7ClaimRemainsHOLD": true,
+    "noUnreviewedOtherStateOrGKGrant": true
+  },
+  "activeWritesPerformed": false,
+  "runtimePatchPerformed": false,
+  "newScientificNativeApprovalOrStrictClaim": false
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-14T01:51:53.441983+00:00",
+  "completedAt": "2026-10-14T01:51:56.848707+00:00",
+  "command": [
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "app/scripts/generateGoalVisualizationQaLedgers.ts",
+    "--check",
+    "--subject=chemie"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host",
+  "exitCode": 0,
+  "stdout": "Goal visualization QA ledgers are up to date (1 subject file(s)).\n",
+  "stderr": "",
+  "exactInitialUnnormalizedQA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/inputs/N7.first-attempt-QA.boolean-approval-serialization.byte-exact.json",
+    "bytes": 1023048,
+    "sha256": "sha256:1694b152265ad0478ce20ec0f7a80b222b9a50cb7e30dfa175cb48824e58fdec"
+  },
+  "newOperativeQACandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/candidate/QA.current407.N7.I274-other412-exact-and-seven-stock-YesNo-bindings.inactive.json",
+    "bytes": 1023055,
+    "sha256": "sha256:36d92417c375d510085e4259778198407ef9f82505846ff6ae3d064e8fe2294f"
+  },
+  "exactSevenApprovalSerializationDeltas": [
+    {
+      "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "onlyField": "aiApproved",
+      "before": true,
+      "after": "yes",
+      "sameActualBoundOriginalVApprovalAndExactAsset": true
+    },
+    {
+      "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
+      "onlyField": "aiApproved",
+      "before": true,
+      "after": "yes",
+      "sameActualBoundOriginalVApprovalAndExactAsset": true
+    },
+    {
+      "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+      "onlyField": "aiApproved",
+      "before": true,
+      "after": "yes",
+      "sameActualBoundOriginalVApprovalAndExactAsset": true
+    },
+    {
+      "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+      "onlyField": "aiApproved",
+      "before": true,
+      "after": "yes",
+      "sameActualBoundOriginalVApprovalAndExactAsset": true
+    },
+    {
+      "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+      "onlyField": "aiApproved",
+      "before": true,
+      "after": "yes",
+      "sameActualBoundOriginalVApprovalAndExactAsset": true
+    },
+    {
+      "goalId": "3681e688-7880-5bb4-9ab9-ef78289345c8",
+      "onlyField": "aiApproved",
+      "before": true,
+      "after": "yes",
+      "sameActualBoundOriginalVApprovalAndExactAsset": true
+    },
+    {
+      "goalId": "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+      "onlyField": "aiApproved",
+      "before": true,
+      "after": "yes",
+      "sameActualBoundOriginalVApprovalAndExactAsset": true
+    }
+  ],
+  "stockContract": "generateGoalVisualizationQaLedgers.normalizeYesNo and goalVisualizationQaModel.normalizeGoalVisualizationAiReview require yes/no strings; raw N7 technical packet used boolean true. Existing actual V-science verdicts and all hashes/dates/reviewers/reasons remain identical.",
+  "allOther412WholeRecordsExact": true,
+  "newPixelOrVVotes": 0,
+  "activeWrites": false
+}

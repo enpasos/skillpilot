@@ -1,0 +1,9 @@
+{
+  "recordedAtUTC": "2026-10-14T02:32:49.399226+00:00",
+  "command": "node app/node_modules/tsx/dist/cli.mjs tmp/checkpoint-chemie-20261014/materialize_p058d_d124_author_candidates.ts",
+  "exitCode": 1,
+  "actualError": "d1244f5d-9a12-5b74-97fe-ae974f40af26: duplicate applicationCaseBriefs id case-1",
+  "cause": "Author serialization assumed input cases contiguous by goal; bound original19 cases are interleaved. No original science/input/active files mutated.",
+  "repair": "Use explicit goalId/caseId grouping in own unsealed author root, preserve all six complete original objects and correct each intended whole case exactly.",
+  "scientificVote": false
+}

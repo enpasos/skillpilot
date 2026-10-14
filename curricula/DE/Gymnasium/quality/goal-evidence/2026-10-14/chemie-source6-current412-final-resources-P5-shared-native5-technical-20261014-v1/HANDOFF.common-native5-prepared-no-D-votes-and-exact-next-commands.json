@@ -1,0 +1,44 @@
+{
+  "selector": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-current412-final-resources-P5-shared-native5-technical-20261014-v1/NEUTRAL.current412-source6-five-final-resource-P5-native-FIRST_PASS.exact-input-selector.json",
+    "bytes": 13542,
+    "sha256": "sha256:b5eadbc67478a336a5afe014ade2354d43f201c822bd50b8601a16007d3e9b2f"
+  },
+  "privateMinimalHost": "tmp/checkpoint-chemie-20261014/source6-current412-native5-minimal-stock-host",
+  "ordinaryStockPreparedInput": true,
+  "currentGoalCanonicalBaselineIsOnActual286BeforeP2OnlyPrivateEvidenceChange": true,
+  "parentReportsNewActual287ConfigMustBeUsedForLaterIntegration": true,
+  "D_A_BNext": "Review exact respective round campaign/input before creating any native records. Empty results and resolutions are intentional. No central run until both scientific first seals and proper terminal synthesis.",
+  "P5Config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-current412-final-resources-P5-shared-native5-technical-20261014-v1/configs/P5.current-images.genuine-independent-a.config.json",
+    "bytes": 1816,
+    "sha256": "sha256:02b496545fb44df4932794f9bd6dcd3d794496658dbd793db1f17a5f45c1def9"
+  },
+  "sourceAuthorityAndOptionalScopeRemainSeparateHolds": true,
+  "normalStockCommands": [
+    [
+      "node",
+      "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "check",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-current412-final-resources-P5-shared-native5-technical-20261014-v1/configs/native-five.shared-first-pass.batch.config.json"
+    ],
+    [
+      "node",
+      "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+      "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "prepare",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-current412-final-resources-P5-shared-native5-technical-20261014-v1/configs/native-five.shared-first-pass.batch.config.json"
+    ],
+    [
+      "node",
+      "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+      "app/scripts/buildGoalBookModel.ts",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-current412-final-resources-P5-shared-native5-technical-20261014-v1/configs/whole412.stock-base.config.json"
+    ]
+  ],
+  "wholeCentralNotRun": true,
+  "parentHNotMutated": true
+}

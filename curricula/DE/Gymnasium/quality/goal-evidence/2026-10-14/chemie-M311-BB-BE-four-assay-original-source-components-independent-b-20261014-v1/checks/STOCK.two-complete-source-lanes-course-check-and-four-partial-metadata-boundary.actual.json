@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-14T03:31:44.941Z",
+  "unchangedStockFunction": "evaluateCourseLevelMappingConsistency",
+  "actualResult": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 200 upper-secondary source-to-canonical mapping edge(s), including 28 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 2,
+      "sourceGoals": 410,
+      "sourceGoalsWithCourseLevel": 410,
+      "gkLkSourceGoals": 372,
+      "lkSourceGoals": 38,
+      "unspecifiedSourceGoals": 368,
+      "checkedMappingEdges": 200,
+      "defaultedUnspecifiedMappingEdges": 158,
+      "reviewedCourseLevelExceptions": 28,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "completeTwoLanesRetained": true,
+  "fourSelectedPartialComponentMetadata": [
+    {
+      "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+      "sourceCourse": "GK_LK",
+      "wholeTargetCourseTags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "matchType": "partial",
+      "manualMetadataCompatibility": true,
+      "stockCQR004ExaminesThisPartialEdge": false
+    },
+    {
+      "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+      "sourceCourse": "GK_LK",
+      "wholeTargetCourseTags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "matchType": "partial",
+      "manualMetadataCompatibility": true,
+      "stockCQR004ExaminesThisPartialEdge": false
+    },
+    {
+      "sourceGoalId": "be-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+      "sourceCourse": "GK_LK",
+      "wholeTargetCourseTags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "matchType": "partial",
+      "manualMetadataCompatibility": true,
+      "stockCQR004ExaminesThisPartialEdge": false
+    },
+    {
+      "sourceGoalId": "be-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+      "sourceCourse": "GK_LK",
+      "wholeTargetCourseTags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "matchType": "partial",
+      "manualMetadataCompatibility": true,
+      "stockCQR004ExaminesThisPartialEdge": false
+    }
+  ],
+  "stockExplicitlySkipsPartialEdges": true,
+  "stockPassDoesNotValidateFourNewPartialCourseClaims": true,
+  "actualCourseScienceIsInFirstIndependentSeal": true,
+  "sourceScienceNotInferredFromTechnicalPass": true,
+  "noViewOrRequiresOrRegistryChanges": true
+}

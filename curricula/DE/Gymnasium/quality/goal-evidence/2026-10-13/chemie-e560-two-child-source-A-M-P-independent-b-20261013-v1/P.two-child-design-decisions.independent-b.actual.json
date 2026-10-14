@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "runId": "chemie-e560-two-child-source-A-M-P-independent-b-20261013-v1",
+  "startedAt": "2026-10-13T21:53:34Z",
+  "completedAt": "2026-10-13T22:03:28Z",
+  "recordStatus": "candidate",
+  "results": [
+    {
+      "goalId": "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+      "goalFingerprint": "sha256:c4467c26af2efc5dccc3c11ecb7372bdb0995598807842fd1bc0be91d2db974f",
+      "reviewInputFingerprint": "sha256:6d431853d9d91c408e5b4dea330b82fa576bc453f81b04cc640284e352fc2e43",
+      "profileFingerprint": "sha256:f1445b444d646882d40a8ee317271d89b4f7a7fe8406943b8488f318323913bb",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "decision": "revise_design",
+      "authority": "independent_ai_candidate_content_design_review",
+      "wholeProfileCarrierSHA256": "sha256:3e38e63b27dd354fe8c193ab118385ecba1028ac12c16105d43d1b43ca2640af",
+      "wholeCaseCarrierSHA256": "sha256:bf3bfd80acdae50992b574fdc37c3c24a1493a6b6f577686dc2072b57db30726",
+      "caseIds": [
+        "e560-formation-case-1",
+        "e560-formation-case-2"
+      ],
+      "chemicalCorrectness": "pass_bounded_paper_models",
+      "meaningfulVariation": "present through changed crosslinking/material-comparison conditions; chain-length change alone is insufficient",
+      "wholeCurrentGoalCoverage": "held_cross_polymer_property_comparison_not_explicitly_required_and_graded",
+      "findingDe": "Der aktuelle Goaltext verlangt den Eigenschaftsvergleich mit einem kohlenstoffbasierten Polymer. Fall 1 liefert nur PE-Rückgrat, keine PE-Eigenschaftsdaten. Fall 2 liefert zwar bleibende PE-Verformung, aber Aufgaben/Rubriken verlangen ausdrücklich nur den Rückgratvergleich und PDMS-Öl/Netzwerk-Rückstellung. Die universelle Überlegenheitsbehauptung lässt sich durch den Öl-Gegenfall zurückweisen, ohne beobachtete PE-Eigenschaften mit dem vernetzten PDMS zu vergleichen. Somit können sämtliche vorhandenen Rubrikpunkte erreicht werden, ohne den vollständigen aktuellen Vergleichsauftrag zu erfüllen.",
+      "findingEn": "The current goal requires property comparison with a carbon-based polymer. Case 1 supplies only a PE backbone and no PE property data. Case 2 supplies permanent PE deformation, but the tasks/rubrics explicitly require backbone comparison and PDMS oil/network recovery. The universal-superiority claim can be rejected with the oil counterexample without comparing observed PE properties with crosslinked PDMS. Full rubric credit can therefore be earned without the complete current comparison demand.",
+      "requiredCorrectionDe": "Im Profil und mindestens im vollständigen Fall 2 ausdrücklich den beobachteten Eigenschaftsvergleich zwischen rückstellendem vernetztem PDMS und bleibend verformtem PE unter denselben Prüfbedingungen verlangen und bewerten. Struktur-/Vernetzungsbezug nutzen, ohne das C–C-Rückgrat allein als Ursache jeder PE-Verformung zu behaupten. Herstellung, Bilanz, Molekülbau, bisherige Aufgaben/Rubriken und bedingte Urteilsgrenzen bewahren. Fall 1 nicht allein als ganzen Eigenschaftsvergleich ausgeben.",
+      "requiredCorrectionEn": "Explicitly require and grade the observed property comparison between recovering crosslinked PDMS and permanently deformed PE under the same test conditions in the profile and at least complete case 2. Use structure/crosslinking reasoning without treating the C–C backbone alone as the cause of every PE deformation. Preserve formation, balance, molecular structure, existing tasks/rubrics and conditional limits. Do not claim case 1 alone covers the full property comparison.",
+      "resolved": false
+    },
+    {
+      "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+      "goalFingerprint": "sha256:48fc2d416ba8556f96420896abc0720d7642a85305f1bd6cc613e12e75efe8cc",
+      "reviewInputFingerprint": "sha256:ba92518e325a0724978bcba68161048f839040d81236405a1d07a9c2cc8f019b",
+      "profileFingerprint": "sha256:87defac088268c47ee7a71e4befc950460b6a897da4f510db899c478f53c678b",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "decision": "accept_design",
+      "authority": "independent_ai_candidate_content_design_review",
+      "wholeProfileCarrierSHA256": "sha256:3e38e63b27dd354fe8c193ab118385ecba1028ac12c16105d43d1b43ca2640af",
+      "wholeCaseCarrierSHA256": "sha256:bf3bfd80acdae50992b574fdc37c3c24a1493a6b6f577686dc2072b57db30726",
+      "caseIds": [
+        "e560-nanosurface-case-1",
+        "e560-nanosurface-case-2"
+      ],
+      "chemicalCorrectness": "pass_bounded_material_data_models",
+      "meaningfulVariation": "pass_changed_structure_at_fixed_chemistry_changes_rolloff_despite_high_contact_angle_and_independent_particle_dimension_is_supplied",
+      "wholeCurrentGoalCoverage": "pass_bounded_whole_case_pair",
+      "reasonDe": "Beide Fälle verlangen Anwendungserklärung, eigenständige Größen-/Kontrollzuordnung und begründete Grenzen der Funktionsbehauptung. Im zweiten Fall ändert sich bei gleicher Silikonchemie das Oberflächenverhalten: 150° Kontaktwinkel bleibt hoch, 40° Abrollwinkel verlangt aber deutlich mehr Neigung als 5°. Dieser Gegensatz macht die neue zustandsbezogene Begründung relevant. Die gesondert vorgegebene 45-nm-Partikelgröße für C wird korrekt von 80-nm-Schichtdicke getrennt; sie wird nicht aus der Dicke erschlossen. Der Schluss bleibt auf bewegliche Tropfen/Hydrophobierung begrenzt; Schmutzabtrag und Dauerhaftigkeit benötigen weitere Beobachtung. Papierdaten erzeugen keinen Labor- oder Lernendenleistungsnachweis.",
+      "reasonEn": "Both cases require an application explanation, independent assignment of dimensions/controls, and justified limits on functional claims. The second changes surface behavior at constant silicone chemistry: the 150° contact angle remains high, but 40° roll-off requires much greater tilt than 5°. That contrast makes new state-specific reasoning meaningful. The separately supplied 45-nm particle size for C is correctly distinguished from the 80-nm film thickness and is not inferred from thickness. Conclusions are limited to mobile drops/hydrophobization; dirt removal and durability need further observations. Paper data establish no laboratory or learner performance."
+    }
+  ],
+  "materializedPAuthorityRecordsCreated": false,
+  "evidenceLevelsRemainE0": true,
+  "maximumClaimScopesRemainG0": true,
+  "humanApproval": false
+}

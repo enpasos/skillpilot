@@ -1,0 +1,14 @@
+{
+  "completedAtUTC": "2026-10-14T03:31:03.968778+00:00",
+  "command": [
+    "node",
+    "app/node_modules/tsx/dist/cli.mjs",
+    "tmp/checkpoint-chemie-20261014/measure_source34_minimal18_stock.ts"
+  ],
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:371\n        throw new Error(`${keyword} value must be ${JSON.stringify(def.schemaType)}`)\n              ^\n\n\nError: x-skillpilot-listSemantics value must be [\"object\"]\n    at new KeywordCxt (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:371:15)\n    at keywordCode (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:530:15)\n    at <anonymous> (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:265:9)\n    at CodeGen.code (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/codegen/index.ts:545:33)\n    at CodeGen.block (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/codegen/index.ts:700:20)\n    at iterateKeywords (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:262:7)\n    at groupKeywords (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:248:7)\n    at <anonymous> (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:233:38)\n    at CodeGen.code (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/codegen/index.ts:545:33)\n    at CodeGen.block (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/codegen/index.ts:700:20)\n\nNode.js v20.20.2\n",
+  "stockFunctionsUnmodified": true,
+  "schemaAnnotationRegisteredWithoutValidationEffect": "x-skillpilot-listSemantics",
+  "activeAndHWrites": false
+}

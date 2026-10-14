@@ -1,0 +1,19 @@
+node:fs:573
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host/curricula/DE/Gymnasium/quality/deep-understanding-rollout/deep-understanding-rollout.schema.json'
+    at Object.openSync (node:fs:573:18)
+    at readFileSync (node:fs:452:35)
+    at loadJson (/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host/app/scripts/reportDeepUnderstandingRollout.ts:402:23)
+    at validateConfig (/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host/app/scripts/reportDeepUnderstandingRollout.ts:1623:18)
+    at loadDeepUnderstandingRolloutConfig (/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host/app/scripts/reportDeepUnderstandingRollout.ts:1638:38)
+    at generateDeepUnderstandingRollout (/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host/app/scripts/reportDeepUnderstandingRollout.ts:1643:18)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-central-existing262-plus-reviewed-eight-inactive-root-20261014-v1/checks/run-current407-chemistry-central-stock.mts:7:20) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host/curricula/DE/Gymnasium/quality/deep-understanding-rollout/deep-understanding-rollout.schema.json'
+}
+
+Node.js v20.20.2

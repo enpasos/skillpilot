@@ -1,0 +1,69 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-final53-current402-protected16-independent-b-20261013-v1",
+  "campaignId": "chemie-poly18-aro19-final-source-protected16-20261013-v1-b",
+  "roundId": "chemie-poly18-aro19-final-source-protected16-20261013-v1-first-pass-b",
+  "batchId": "chemie-poly18-aro19-final-source-protected16-20261013-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:24edf8d85882a4e45360439a88fce7782ab8641939b62ff2962db2306c71c082",
+  "bundleFingerprint": "sha256:c718532d486bf19f94c7907c9ec040c771d2df33858cf44d7d4c596f9f3dac7b",
+  "bookDigest": "sha256:fd1ceb0b25ddb282ba2a96fdb297e33f8671143bf61adfe3fc6d765b3c40e968",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-first-pass",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:a8739553d8ee40cec2e218e160186b14122c3f3fd3e6642bba03ee00006bfcb0",
+  "independenceGroupId": "chemie-poly18-aro19-final-source-protected16-20261013-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f85b4651-50ea-5b42-b193-3465c05257a7",
+    "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+    "17ab1148-7383-5cab-8b91-73aff795f1e4",
+    "0b6a6a15-b355-5be8-abc9-4ef8df11bcb6",
+    "41396457-d97b-55f3-9804-2af1bb188e79",
+    "bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+    "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+    "057a6826-f599-53b1-bdd1-5a83037a1494",
+    "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+    "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+    "6765f741-42a6-55c5-a218-81b883b1f5ae",
+    "6966df95-f125-5ecc-af8e-0442545d9f17",
+    "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+    "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+    "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+    "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:5f5f94171d14c57fcaf0bc93c11b9ba9e97156ae63ddc9515c8474e94beaa7e8"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:f2609708d8e47a4d9c6dad31b4f0cb5d2befc57aab82cf0d61f70162e659bfe7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:24edf8d85882a4e45360439a88fce7782ab8641939b62ff2962db2306c71c082"
+    }
+  ],
+  "startedAt": "2026-10-13T08:10:04.244Z",
+  "completedAt": "2026-10-13T08:52:40.921Z",
+  "status": "completed",
+  "outputDigest": "sha256:f19d482a4baca5d2e0a68b516ccae86de207ffc1621992934ddacd3c0fea36ce",
+  "toolchainVersion": "interactive-independent-b-factual-provenance-companion-v1"
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-14T01:52:39.781239+00:00",
+  "completedAt": "2026-10-14T01:53:16.257190+00:00",
+  "command": [
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "app/scripts/reportDeepUnderstandingRollout.ts",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/config/chemie-current407-N7-existing274.inactive.config.json",
+    "--mode=check",
+    "--format=json"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current407-corrected-P8-native4-physical-host",
+  "exitCode": 0,
+  "necessaryRetryReason": "The initial complete run passed five stock checks and exposed raw boolean approval serialization. All seven actual V approvals were serialized to stock yes/no; exact narrow freshness check now PASS. No science/threshold/status or other412 QA record changed.",
+  "preservedInitialFailedCompleteReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/receipts/ACTUAL.current407-N7-existing274-central.completed-run.json",
+    "bytes": 1897,
+    "sha256": "sha256:7016c6617c26350f40b8ee0bba9956172abf728442e94d3f83bea0f0c8963e3c"
+  },
+  "exactNarrowCorrectionReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/checks/STOCK.seven-existing-V-approval-YesNo-serialization-and-freshness.actual.json",
+    "bytes": 3229,
+    "sha256": "sha256:eb4880653d591b25e95a285ea6f4dd0ad391fb6a4c063a18f95c5d2363b16008"
+  },
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/receipts/CORRECTED.current407-N7-existing274-central.stdout.txt",
+    "bytes": 34500,
+    "sha256": "sha256:4ee4f00b95daf8a3c059c6aa1ce368ddd64f610aec3ab516dce6b13b155ccac3"
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/receipts/CORRECTED.current407-N7-existing274-central.stderr.txt",
+    "bytes": 0,
+    "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "fullStockReport": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/receipts/CORRECTED.current407-N7-existing274-central.stock-report.json",
+    "bytes": 34500,
+    "sha256": "sha256:4ee4f00b95daf8a3c059c6aa1ce368ddd64f610aec3ab516dce6b13b155ccac3"
+  },
+  "stdoutJsonParseError": null,
+  "totalCompleteCentralAttempts": 2,
+  "newScienceVotes": 0,
+  "activeWrites": false
+}

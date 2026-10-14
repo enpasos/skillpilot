@@ -1,0 +1,16 @@
+{
+  "startedAtUTC": "2026-10-14T03:15:06.475685+00:00",
+  "completedAtUTC": "2026-10-14T03:15:07.220972+00:00",
+  "cwd": "/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261014/source6-current412-native5-minimal-stock-host",
+  "command": [
+    "node",
+    "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+    "transport-five-profiles-current-resources.ts"
+  ],
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n-   'goalFingerprint',\n    'reviewInputFingerprint'\n  ]\n    at assert (/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261014/source6-current412-native5-minimal-stock-host/transport-five-profiles-current-resources.ts:8:96)\n    at Object.<anonymous> (/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261014/source6-current412-native5-minimal-stock-host/transport-five-profiles-current-resources.ts:10:472)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at cjsLoader (node:internal/modules/esm/translators:298:15)\n    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ 'reviewInputFingerprint' ],\n  expected: [ 'goalFingerprint', 'reviewInputFingerprint' ],\n  operator: 'deepStrictEqual'\n}\n\nNode.js v20.20.2\n",
+  "unmodifiedStockModules": true,
+  "noNewScientificVote": true,
+  "noActiveOrParentHWrites": true
+}

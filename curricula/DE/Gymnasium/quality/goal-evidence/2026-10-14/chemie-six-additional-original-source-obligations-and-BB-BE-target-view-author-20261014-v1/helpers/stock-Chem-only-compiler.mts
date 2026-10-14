@@ -1,0 +1,1 @@
+import {buildApplicabilityCompilation} from './applicabilityCompiler';import {writeFileSync} from 'node:fs';const r=buildApplicabilityCompilation();writeFileSync(process.argv[2],JSON.stringify(r,null,2)+'\n');console.log(JSON.stringify(r.summary));

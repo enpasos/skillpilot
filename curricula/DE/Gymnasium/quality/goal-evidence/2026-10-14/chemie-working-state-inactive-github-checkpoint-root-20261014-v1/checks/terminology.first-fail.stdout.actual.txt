@@ -1,0 +1,18 @@
+
+> skillpilot@0.0.0 check:terminology
+> tsx scripts/checkTerminology.ts
+
+Terminology check failed: 3 retired term(s) found.
+
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current406-graph-scope-independent-20261013-v1/README.md:5:73: "goal graph" [TRM-005]
+  use instead: skill graph / Skill-Graph
+  why: The formal specification and the product describe the same object.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HE-ten-closure-holds-six-direct-original-operator-components-author-20261014-v1/inputs/HE.retired-runtime-whole187-goals.original.json:8:19: "Lernlandschaft" [TRM-001]
+  use instead: skill landscape / Skill-Landschaft
+  why: The target is skills, not the learning process and not knowledge.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HE-ten-closure-holds-six-direct-original-operator-components-author-20261014-v1/inputs/HE.retired-runtime-whole187-goals.original.json:9:21: "Learning landscape" [TRM-001]
+  use instead: skill landscape / Skill-Landschaft
+  why: The target is skills, not the learning process and not knowledge.
+
+Definitions: docs/concept/glossary.md
+Rules and scope policy: app/scripts/checkTerminology.ts

@@ -1,0 +1,18 @@
+{
+  "startedAtUTC": "2026-10-14T01:01:34.686983+00:00",
+  "completedAtUTC": "2026-10-14T01:01:35.648393+00:00",
+  "command": [
+    "node",
+    "app/node_modules/tsx/dist/cli.mjs",
+    "tmp/checkpoint-chemie-20261014/check_NI2652_source_b_stock_profile.ts"
+  ],
+  "exitCode": 0,
+  "stdout": "{\n  \"stockPositiveProfileSchemaValid\": true,\n  \"stockPositiveProfileSemanticsErrors\": [],\n  \"wholeCaseCount\": 2,\n  \"fullBilingualCaseBriefBindingsExact\": true,\n  \"rubricSums\": [\n    8,\n    6\n  ],\n  \"actualResourceDigests\": {\n    \"/assets/goal-visualizations/chemie/2652caef-b557-58b9-9b28-70db62625ce5/2652caef-b557-58b9-9b28-70db62625ce5.jpg\": \"sha256:b127022fea9f8655ba2cfce3791c8161b28c7f324a0251e1de9545bdab8a47e8\"\n  },\n  \"E0G0NeedsHumanReviewPreserved\": true,\n  \"wholeSourceCellGrant\": false\n}\n",
+  "stderr": "",
+  "stockFunctions": [
+    "contracts/goal-evidence/v2/goal-evidence-profile.schema.json via stock AJV2020/addFormats",
+    "app/scripts/positiveGoalEvidenceProfileModel.ts::validatePositiveGoalEvidenceRecordSemantics"
+  ],
+  "scope": "One unchanged actual E0/G0 profile and its two whole bilingual cases; custom exact case join and point checks supplement stock profile contract. No schema exists here for entire raw case files; no whole native source-mapping checker claimed.",
+  "scientificApprovalInferredFromChecks": false
+}
