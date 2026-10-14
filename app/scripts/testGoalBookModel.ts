@@ -517,10 +517,92 @@ assert.deepEqual(
     goalId: 'math-foundation',
     title: 'External mathematics foundation',
     landscapeId: 'fixture-mathematics',
-    canonicalUrl: 'https://skillpilot.com/goal-atlas?landscape=fixture-landscape&edition=curricular-atomic-v1#goal-math-foundation',
+    canonicalUrl: 'https://skillpilot.com/goal-atlas?landscape=fixture-mathematics&edition=curricular-atomic-v1#goal-math-foundation',
   }],
 )
 parseAndValidateGoalBookModel(crossLandscapeBook)
+
+const retainedExternalSupport = structuredClone(crossLandscapePrerequisite)
+const externalSupportGoals = (retainedExternalSupport.externalLandscapeSources![0].landscape as {
+  goals: unknown[]
+}).goals
+externalSupportGoals.push(
+  goal({ id: 'math-retained-cluster', type: 'cluster', contains: ['math-retained-atom'] }),
+  goal({ id: 'math-retained-atom' }),
+)
+const supportView = retainedExternalSupport.compositionView as {
+  rootNodes: Array<{ children: Array<Record<string, unknown>> }>
+}
+supportView.rootNodes[0].children.push({
+  kind: 'canonicalSubtree',
+  goalId: 'math-retained-cluster',
+  projectionRole: 'prerequisiteOnly',
+}, {
+  kind: 'goalEntry',
+  goalId: 'math-retained-atom',
+  projectionRole: 'prerequisiteOnly',
+})
+const beforeExternalSupportEdgeRemoval = structuredClone(retainedExternalSupport)
+const beforeSupportGoalA = (beforeExternalSupportEdgeRemoval.landscape as {
+  goals: Array<{ id: string; requires: string[] }>
+}).goals.find(({ id }) => id === 'A')!
+beforeSupportGoalA.requires.push('math-retained-cluster', 'math-retained-atom')
+refreshFixtureSemanticKindFingerprint(beforeExternalSupportEdgeRemoval, 'A')
+const beforeSupportRemovalBook = buildGoalBookModel(beforeExternalSupportEdgeRemoval)
+const retainedSupportBook = buildGoalBookModel(retainedExternalSupport)
+assert.deepEqual(
+  retainedSupportBook.pages.map(({ goalId }) => goalId),
+  crossLandscapeBook.pages.map(({ goalId }) => goalId),
+  'Authored external support remains resolvable after its direct requires edge is removed, without adding subject targets.',
+)
+assert.deepEqual(
+  retainedSupportBook.pages.map(({ goalId }) => goalId),
+  beforeSupportRemovalBook.pages.map(({ goalId }) => goalId),
+)
+assert.deepEqual(
+  beforeSupportRemovalBook.pages.find(({ goalId }) => goalId === 'A')!.externalPrerequisites
+    .map(({ goalId }) => goalId).sort(),
+  ['math-foundation', 'math-retained-atom', 'math-retained-cluster'],
+)
+assert.deepEqual(retainedSupportBook.pages, crossLandscapeBook.pages)
+parseAndValidateGoalBookModel(retainedSupportBook)
+
+for (const kind of ['goalEntry', 'canonicalSubtree']) {
+  for (const projectionRole of [undefined, 'target']) {
+    const foreignTarget = structuredClone(retainedExternalSupport)
+    ;(foreignTarget.compositionView as typeof supportView).rootNodes[0].children.push({
+      kind,
+      goalId: 'math-foundation',
+      ...(projectionRole ? { projectionRole } : {}),
+    })
+    expectBuildFailure(foreignTarget, /foreign composition goal math-foundation must explicitly use prerequisiteOnly/u)
+  }
+}
+const unknownExternalSupport = structuredClone(retainedExternalSupport)
+;(unknownExternalSupport.compositionView as typeof supportView).rootNodes[0].children.push({
+  kind: 'goalEntry',
+  goalId: 'missing-external-support',
+  projectionRole: 'prerequisiteOnly',
+})
+expectBuildFailure(unknownExternalSupport, /CPV-002.*missing-external-support/u)
+
+const wrongExternalUrlOwner = structuredClone(crossLandscapeBook)
+const wrongOwnerPage = wrongExternalUrlOwner.pages.find(({ goalId }) => goalId === 'A')!
+wrongOwnerPage.externalPrerequisites[0].canonicalUrl = (
+  'https://skillpilot.com/goal-atlas?landscape=fixture-landscape&edition=curricular-atomic-v1#goal-math-foundation'
+)
+const { pageFingerprint: previousWrongOwnerFingerprint, ...wrongOwnerPageInput } = wrongOwnerPage
+wrongOwnerPage.pageFingerprint = `sha256:${createHash('sha256').update(stableGoalBookJson({
+  modelSchemaVersion: wrongExternalUrlOwner.schemaVersion,
+  edition: wrongExternalUrlOwner.book.edition,
+  page: wrongOwnerPageInput,
+})).digest('hex')}`
+assert.notEqual(wrongOwnerPage.pageFingerprint, previousWrongOwnerFingerprint)
+assert.throws(
+  () => parseAndValidateGoalBookModel(wrongExternalUrlOwner),
+  /invalid external canonical URL for math-foundation/u,
+  'an external prerequisite URL must open its owning subject even with a valid page fingerprint',
+)
 
 const openCrossLandscapeSource = structuredClone(crossLandscapeBook) as unknown as {
   source: { externalLandscapes: Array<Record<string, unknown>> }

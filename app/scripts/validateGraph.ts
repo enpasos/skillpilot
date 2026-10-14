@@ -10,6 +10,7 @@ import {
 } from './lib/hardLearningRouteValidation'
 import { validateOrientationOutlooks } from './lib/orientationOutlookValidation'
 import { findExamMarkdownTableIssues } from './lib/examMarkdownValidation'
+import { buildCrossLandscapeGraph, findCrossLandscapeCycles } from './lib/crossLandscapeGraph'
 
 type Issue = { level: 'error' | 'warn'; message: string }
 
@@ -1238,6 +1239,20 @@ function validateLandscape(landscape: ParsedLandscape) {
 }
 
 parsedLandscapes.forEach(validateLandscape)
+
+// Local rules above intentionally keep their scope. Global cycles must also
+// follow cross-subject/module references and contains-derived inheritance.
+const crossLandscapeGraph = buildCrossLandscapeGraph(parsedLandscapes)
+for (const diagnostic of [
+  ...crossLandscapeGraph.diagnostics,
+  ...findCrossLandscapeCycles(crossLandscapeGraph),
+]) {
+  // Existing compatibility copies may drift in their local module edges.
+  // Keep that debt visible without turning this cross-landscape cycle rule
+  // into an unrelated migration gate. Cycles and unresolved references fail.
+  issues.push({ level: diagnostic.code === 'inconsistent_graph_definition' ? 'warn' : 'error',
+    message: `[GVR-017] ${diagnostic.message}` })
+}
 
 const rootGoalByLandscape = new Map<string, string>()
 const moduleLandscapeIds = new Set<string>()

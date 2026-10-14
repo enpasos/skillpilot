@@ -1,0 +1,66 @@
+{
+  "role": "Actual INFORMED independent AI technical review of exact private v4 production Java sources; not author, blind or human",
+  "decision": "reject_current_v4_for_unqualified_combined_tree_safety",
+  "currentV4Sources": {
+    "mainService": {
+      "path": "/home/enpasos/projects/skillpilot/backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "bytes": 43524,
+      "sha256": "sha256:9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96"
+    },
+    "mainMerger": {
+      "path": "/home/enpasos/projects/skillpilot/backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+      "bytes": 36706,
+      "sha256": "sha256:48dc88994abbcce69e0f0a6e6a91176ea4045d0789d7dec7efae8fcda9770d15"
+    },
+    "v4Service": {
+      "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-subtree-dedup-runtime-candidate-20261014-v4/source/com/skillpilot/backend/service/CompositionViewService.java",
+      "bytes": 43530,
+      "sha256": "sha256:9ae92663a1a0809beb8831305ca4f9e373778d3b4329b415084fe9bbc9d2c5de"
+    },
+    "v4Merger": {
+      "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-subtree-dedup-runtime-candidate-20261014-v4/source/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+      "bytes": 40475,
+      "sha256": "sha256:6099883fa88a2ecca675d4b402fbe8fea74173e99eeba72335eed01be48faaed"
+    }
+  },
+  "review": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v4-informed-independent-technical-review-20261014-v1/technical-review.actual.json",
+    "bytes": 11516,
+    "sha256": "sha256:48f5811b2c6a094ec661619aa8ac39260b446a9cc82e974b5d15081386508321"
+  },
+  "ownJavaResults": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v4-informed-independent-technical-review-20261014-v1/v4-own-cases.actual.json",
+    "bytes": 8949,
+    "sha256": "sha256:c8a24c3ce9759a2a30f6613b87ddb13c0d59f9db138a29e9daf695098b191bda"
+  },
+  "baselineJavaResults": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v4-informed-independent-technical-review-20261014-v1/baseline-own-cases.actual.json",
+    "bytes": 9370,
+    "sha256": "sha256:4d5527fc80530db8701c588e34406e40d5d0d1894da09b482c717075a5531661"
+  },
+  "actualCompilerResults": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v4-informed-independent-technical-review-20261014-v1/own-native-frontend-compiler-results.actual.json",
+    "bytes": 41995,
+    "sha256": "sha256:541d8c5901b884198b665f5bc60e6aede945673faec83c3c570aa28c6cfa8cb8"
+  },
+  "actualExecutions": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v4-informed-independent-technical-review-20261014-v1/own-production-java-executions.actual.json",
+    "bytes": 113479,
+    "sha256": "sha256:4fba2336e5e2228ff269c5ec361e2214bb94ddd9d06877e0dad72fe3586d79ca"
+  },
+  "ownCountercases": 14,
+  "satisfactory": 12,
+  "remainingCompilerInvalidReturnedViews": 2,
+  "compilerErrors": [
+    "CPV-004",
+    "CPV-005",
+    "CPV-006"
+  ],
+  "defectsAlsoPresentInMain": true,
+  "newRegressionClaim": false,
+  "recheckNewV5Required": true,
+  "noSourcePDScIM7HumanOrAdoptionApproval": true,
+  "mainOrCandidateWrites": false,
+  "ownSeal": "own-seal.json",
+  "ownEndcheck": "own-endcheck.actual.json"
+}

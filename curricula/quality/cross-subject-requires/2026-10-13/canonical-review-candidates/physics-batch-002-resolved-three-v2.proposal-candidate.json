@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 1,
+  "status": "author_candidate_pending_independent_review",
+  "bindingMethod": "exact-baseline-and-proposed-inputs-no-substantive-approval",
+  "sourceAuthorArtifact": "tmp/cross-subject-requires/physics-batch-002-resolved-three-v2.author-decisions.json",
+  "sourceAuthorSha256": "sha256:d214c1ffa1a35182de1b14e042179bc5082aa7e1562c1b0cab5aa58d99b7d4ed",
+  "baselineInventorySha256": "sha256:a87238a3e1a5ab4c5979ebb57565287c29fe9a05807669366cd208d59bd68489",
+  "proposedStateSha256": "sha256:e0f0b9238418cccd006ecd620386d566bf1ddc81942fb0f2ea30b020e6c3a05d",
+  "proposedGraphCycles": [],
+  "decisions": [
+    {
+      "decisionId": "canonical-physics-971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "dependentTitle": "Gleichförmige Bewegung und Geschwindigkeit",
+      "dependentDescription": "Die lernende Person kann gleichförmige Bewegungen im Diagramm erkennen, die Geschwindigkeit definieren und den Geschwindigkeitsbetrag experimentell bestimmen.",
+      "prerequisiteGoalIds": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
+      ],
+      "decision": "add",
+      "rationale": "Die gesamte aktuelle Leistung bestimmt experimentell Geschwindigkeit aus Orts-/Zeitdaten und fordert ausdrücklich den Fall verschiedener Anfangsorte. Nach vollständiger Lektüre des P-Kerns position-intercept-does-not-set-velocity ist der bestehende Atom Lineare Funktionen beschreiben deshalb doch eine passende Vorleistung: Steigung und Achsenabschnitt müssen getrennt werden, nicht nur eine Ursprungslinie gelesen. Er bleibt erhalten. Rationale Multiplikation/Division wird ergänzt, damit der Geschwindigkeitsbetrag als Weg-Zeit-Quotient tatsächlich berechnet werden kann. Die Mess-/Richtungswahl und Koordinateninvarianz bleiben neue Physikleistungen; eine komplette Quadratik- oder Analysisbasis wird nicht erzwungen.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "locator": "goals[id=971beafa-6ba5-4c82-ac8b-7ebf66eec3dd]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "locator": "goals[id=971beafa-6ba5-4c82-ac8b-7ebf66eec3dd].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "locator": "goals[id=af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+          "locator": "goals[id=ee48e811-4c9c-5080-9836-8403fc9f0810]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p022.review.jsonl",
+          "recordId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Bekannter gemessener Weg/Zeit-Quotient oder grafisches Steigungsdreieck; kein vorgeschriebener Regressionsalgorithmus."
+        ]
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 75,
+      "supersedesProposal": {
+        "path": "tmp/cross-subject-requires/physics-batch-002.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:deaf78dd0fdeb4c0df85f28cc59cbfd93a6bae81617456ebf4cefc6cde99b3c7",
+        "independentReviewPath": "tmp/cross-subject-requires/physics-batch-002.independent-review.json",
+        "status": "pending"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p022.review.jsonl",
+        "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "profileFingerprint": "sha256:38e23ffb0b8efc3260974f8a379539ce0b1925afb98f2b654fd734dfc5de3e26",
+        "expectationIds": [
+          "selected-blind-review-core",
+          "position-intercept-does-not-set-velocity"
+        ],
+        "caseIds": [
+          "two-carts-offset-starts",
+          "self-planned-cart-reversed-axis"
+        ],
+        "authorSuitabilityDecision": "body-preservation-candidate pending independent exact successor review; no hash-only approval"
+      },
+      "reviewInput": {
+        "semanticSha256": "sha256:2e7c71d01d74d1829494a43eadc02a2a8d9a0435f4cd21bc34e322797872e7ea",
+        "prerequisitesSha256": "sha256:5420e3207b9fe44e93f1aa7c1689bc89e9ce93a4b1e8fd348a42bd6c376e40eb",
+        "scopeSha256": "sha256:8aa690aee7d2af877ae3d242de447dad59dd0d6c3a2cb86f405841d32961ff32"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:2e7c71d01d74d1829494a43eadc02a2a8d9a0435f4cd21bc34e322797872e7ea",
+          "prerequisitesSha256": "sha256:5420e3207b9fe44e93f1aa7c1689bc89e9ce93a4b1e8fd348a42bd6c376e40eb",
+          "scopeSha256": "sha256:8aa690aee7d2af877ae3d242de447dad59dd0d6c3a2cb86f405841d32961ff32"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:2e7c71d01d74d1829494a43eadc02a2a8d9a0435f4cd21bc34e322797872e7ea",
+          "prerequisitesSha256": "sha256:a2cdc8bc0acae00fd1f21edc6f9ce6fd7043b06b02f67acafb1d98413679f0bf",
+          "scopeSha256": "sha256:8aa690aee7d2af877ae3d242de447dad59dd0d6c3a2cb86f405841d32961ff32"
+        },
+        "baselineRequires": [
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+        ],
+        "proposedRequires": [
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "ee48e811-4c9c-5080-9836-8403fc9f0810"
+        ],
+        "changesSha256": "sha256:758dc0b9fdece856cab6f2f6a9f21da7483018b1500d88f0d4caaa4d20c6952b",
+        "prerequisiteInputs": [
+          {
+            "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+            "semanticSha256": "sha256:5f5de8bcd750d0e7485c131cc2ecc119025e540037036775268213d9b6f54fcf",
+            "scopeSha256": "sha256:66f855fb8936de7c9fc228fb57dceeaf4985af9566d3410726fb24b2af805c84"
+          },
+          {
+            "goalId": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+            "semanticSha256": "sha256:01a24ef68e4bdaf4a8996091b2f65125f16064830a2af174f00137a6943fb253",
+            "scopeSha256": "sha256:f789dadc01fb00e44a2d7969044ad38be89dd858bb20522cdbca958c92d86da7"
+          }
+        ]
+      }
+    },
+    {
+      "decisionId": "canonical-physics-d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "dependentTitle": "Modellierung und Idealisierung von Bewegungen",
+      "dependentDescription": "Die lernende Person kann Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen modellieren, die verwendeten Idealisierungen wie Massepunkt und Reibungsfreiheit begründen und die Grenzen der Modellvorhersagen angeben.",
+      "prerequisiteGoalIds": [
+        "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+      ],
+      "decision": "replace",
+      "rationale": "Der aktuelle P-Kern wurde vollständig gelesen: System/Nullpunkte, passende Gesetze, Idealisierungsbegründung und Gültigkeitsprüfung sind neue physikalische Modellkompetenzen. Die Mathematikvorleistung ist das Lesen/Deuten der Variablenterme. Modellwerte ODER Graphen werden verglichen; keine allgemeine Schnittpunktrechnung ist Pflicht. Daher wird der umfassendere Fremdcluster e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb ausdrücklich entfernt und durch f08d06dc-139d-5fd2-892c-8cc919b1e4fc ersetzt. Beide vorhandenen Physikvoraussetzungen bleiben erhalten. Die ursprüngliche action add war falsch und wird hier als tatsächliche replace-Aktion neu vorgelegt, ohne die frühere unabhängige Reviewdatei zu überschreiben.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "locator": "goals[id=d6dc0e02-831d-4894-a61a-852bcc74f147]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "locator": "goals[id=d6dc0e02-831d-4894-a61a-852bcc74f147].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+          "locator": "goals[id=f08d06dc-139d-5fd2-892c-8cc919b1e4fc]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p002.review.jsonl",
+          "recordId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Konsistenz/Gültigkeit kann an gegebenen Modellgraphen statt durch allgemeine LGS-/Schnittpunktverfahren geprüft werden."
+        ]
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 79,
+      "supersedesProposal": {
+        "path": "tmp/cross-subject-requires/physics-batch-002.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:d0b984bb787b546db7214d51f6c27849ec6d9b5e3f0ff1c4a4acd96bd6cf7c77",
+        "independentReviewPath": "tmp/cross-subject-requires/physics-batch-002.independent-review.json",
+        "status": "pending"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p002.review.jsonl",
+        "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+        "profileFingerprint": "sha256:4ee8d93ca2d11b9106e4051214494a52fd0b0538682e2f30bf8e2668a8c0fd4f",
+        "expectationIds": [
+          "system-and-law-selection",
+          "idealization-and-consistency",
+          "validation-and-model-limit"
+        ],
+        "caseIds": [
+          "cart-constant-acceleration",
+          "fall-with-drag-deviation"
+        ],
+        "authorSuitabilityDecision": "body-preservation-candidate pending independent exact successor review; no hash-only approval"
+      },
+      "reviewInput": {
+        "semanticSha256": "sha256:ea726a8965cacece1633b3aa1ed9e7607cbbb6230944f164c0d8909228ba309f",
+        "prerequisitesSha256": "sha256:09291e2b1cd4791a8bcc8c3f98f1936c06ade1fe68cb2bf342ae1a0eae6b9636",
+        "scopeSha256": "sha256:8d71ba22038208d93c80647283806181313800e0d8a480dd9f61682247ba49eb"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:ea726a8965cacece1633b3aa1ed9e7607cbbb6230944f164c0d8909228ba309f",
+          "prerequisitesSha256": "sha256:09291e2b1cd4791a8bcc8c3f98f1936c06ade1fe68cb2bf342ae1a0eae6b9636",
+          "scopeSha256": "sha256:8d71ba22038208d93c80647283806181313800e0d8a480dd9f61682247ba49eb"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:ea726a8965cacece1633b3aa1ed9e7607cbbb6230944f164c0d8909228ba309f",
+          "prerequisitesSha256": "sha256:e917928e6fb70c51887b9933f0643c54707aae7a1245f70a010361e3250e921e",
+          "scopeSha256": "sha256:8d71ba22038208d93c80647283806181313800e0d8a480dd9f61682247ba49eb"
+        },
+        "baselineRequires": [
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb"
+        ],
+        "proposedRequires": [
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+        ],
+        "changesSha256": "sha256:2fbda5ca7b2bca46551b014d5e536fe18731c3c388329f0e3d62e8843fdc3985",
+        "prerequisiteInputs": [
+          {
+            "goalId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+            "semanticSha256": "sha256:fd3834015d3a40931199600133111f6b27a279f4666334a953045169b95ec585",
+            "scopeSha256": "sha256:0baec2ef4d9c3e84f018cba3183bdf09d49df5ed322320033e6d8b344fadf62f"
+          }
+        ]
+      }
+    },
+    {
+      "decisionId": "canonical-physics-5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "dependentTitle": "Grundgleichung der Mechanik anwenden",
+      "dependentDescription": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+      "prerequisiteGoalIds": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "54148506-c23f-41b8-959b-068dd194cf15"
+      ],
+      "decision": "replace",
+      "rationale": "Der aktuelle P-Kern fordert gerichtete Kraftbilanz, Betrag/Richtung der Beschleunigung, umgekehrte Achse sowie das inverse Massenverhältnis bei gleicher Resultierender. Rationale Summen/Differenzen und das Lösen einfacher multiplikativer Gleichungen decken die tatsächlich notwendigen Rechnungen ΣF=m·a und C/x=b. Die vorhandene Quotientengleichheitsprüfung einer Proportionalitätszuordnung ist keine universelle Anwendungsvoraussetzung und wird ausdrücklich entfernt. Gegenüber dem ersten Entwurf wird das allgemeine Termeinsetzatom durch das engere einfache Gleichungsatom ersetzt, das die unbekannte Masse/Beschleunigung ohne allgemeine Algebra findet. Einheiten und Kraft-/Geschwindigkeitsrichtung werden physikalisch hier gedeutet.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "locator": "goals[id=5f289cdc-fda1-4058-b44f-041ba1398e79]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "locator": "goals[id=5f289cdc-fda1-4058-b44f-041ba1398e79].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+          "locator": "goals[id=4eeab7d5-eeb3-579b-845e-1c52ffe9e89f]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "54148506-c23f-41b8-959b-068dd194cf15",
+          "locator": "goals[id=54148506-c23f-41b8-959b-068dd194cf15]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p022.review.jsonl",
+          "recordId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Zug-/Gewichts-/Reibungssumme und ein einfacher unbekannter Faktor; keine räumliche Vektorkomponentenrechnung."
+        ]
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 87,
+      "supersedesProposal": {
+        "path": "tmp/cross-subject-requires/physics-batch-002.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:5aa323ccce5ec743d109e9e043ca5a949ba31423d3a3a30109524ad0caf2ffb3",
+        "independentReviewPath": "tmp/cross-subject-requires/physics-batch-002.independent-review.json",
+        "status": "pending"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p022.review.jsonl",
+        "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+        "profileFingerprint": "sha256:0d772fb8e05643f41c1f442ddbd16d9e82c20c431101857fd9ec249d5c93a39c",
+        "expectationIds": [
+          "selected-blind-review-core",
+          "same-net-force-mass-controls-acceleration"
+        ],
+        "caseIds": [
+          "elevator-moving-up-slowing",
+          "two-carts-same-net-pull"
+        ],
+        "authorSuitabilityDecision": "body-preservation-candidate pending independent exact successor review; no hash-only approval"
+      },
+      "reviewInput": {
+        "semanticSha256": "sha256:25b428d4b145ba687e283b876f40fd9f6d3c87e03a7c9fb88dd56caec9d2bda7",
+        "prerequisitesSha256": "sha256:98448af38e88b01613f0a1ea54c291d5df46d98c8b228586f67586a2a1d9df67",
+        "scopeSha256": "sha256:9aaab0d081d973bddd93dbf413898d75a324671c4d9b4b51545c28f95e41e2df"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:25b428d4b145ba687e283b876f40fd9f6d3c87e03a7c9fb88dd56caec9d2bda7",
+          "prerequisitesSha256": "sha256:98448af38e88b01613f0a1ea54c291d5df46d98c8b228586f67586a2a1d9df67",
+          "scopeSha256": "sha256:9aaab0d081d973bddd93dbf413898d75a324671c4d9b4b51545c28f95e41e2df"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:25b428d4b145ba687e283b876f40fd9f6d3c87e03a7c9fb88dd56caec9d2bda7",
+          "prerequisitesSha256": "sha256:c78ac1a74b62cffb9c6d30c3120c77490a148e909204e731900e0f86ef8c0cba",
+          "scopeSha256": "sha256:9aaab0d081d973bddd93dbf413898d75a324671c4d9b4b51545c28f95e41e2df"
+        },
+        "baselineRequires": [
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+          "5ea765ac-c279-551a-8a94-a07da2381e5b"
+        ],
+        "proposedRequires": [
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "5ea765ac-c279-551a-8a94-a07da2381e5b",
+          "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+          "54148506-c23f-41b8-959b-068dd194cf15"
+        ],
+        "changesSha256": "sha256:e088c88b8a84b9a6793d8ba528d8a1d716183a06cd715128dd1c318125b3b18a",
+        "prerequisiteInputs": [
+          {
+            "goalId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+            "semanticSha256": "sha256:9e52484b5c61e7960a054acf3e1a528c20be47dbeb56898dc22ee250302ce872",
+            "scopeSha256": "sha256:bd08053bff439aeefbd76303971ce40413bd0c0c0c2f3ac0628b5c65eb81ee28"
+          },
+          {
+            "goalId": "54148506-c23f-41b8-959b-068dd194cf15",
+            "semanticSha256": "sha256:af9fef8904ee8df87baba8a35e0d856b2856459ac59ba4cc4aabd063fccc0c56",
+            "scopeSha256": "sha256:ebb2768f6ea73099bc431e96aa05ae608645a4578cb5c0402ebd504e28cb0224"
+          }
+        ]
+      }
+    }
+  ]
+}

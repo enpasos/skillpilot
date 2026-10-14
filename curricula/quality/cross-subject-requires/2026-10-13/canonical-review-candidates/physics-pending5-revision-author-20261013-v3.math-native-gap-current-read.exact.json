@@ -1,0 +1,151 @@
+{
+  "goal": {
+    "id": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+    "title": "Funktionswerte berechnen",
+    "titleEn": "Calculate function values",
+    "description": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte f\u00fcr konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben geh\u00f6rigen Ausgabewerte deuten.",
+    "descriptionEn": "The learner can correctly calculate function values for concrete x-values from given function terms $f(x)$ and interpret them as the outputs corresponding to those inputs.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "09f47964-2cd0-410e-93ee-9632b582fc91"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB1",
+      "processCompetencies": [
+        "K1.1",
+        "K5.1"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "E"
+    },
+    "shortKey": "canonical_math_calculate_function_values",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "title": "Visualisierung: Funktionswerte berechnen",
+        "url": "/assets/goal-visualizations/mathematik/c65ecabf-d00b-4e2d-99ae-b64692325ffb/c65ecabf-d00b-4e2d-99ae-b64692325ffb.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Funktionswerte berechnen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Funktionswerte berechnen\". Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte f\u00fcr konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben geh\u00f6rigen Ausgabewerte deuten.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-033a-functions-4-v1.config.json",
+  "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-033a-functions-4-v1.review.jsonl",
+  "record": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-math-positive-evidence-v1-b033a-functions-4-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+    "goalFingerprint": "sha256:761795d47aa359e14de9ad8c5eb4f778b81ba19d272bd158454da10e88733b23",
+    "reviewInputFingerprint": "sha256:e2ac747ff56e0d9a41ef7558268307bbcba162538a01cdddf6afa205427e3eb4",
+    "profileFingerprint": "sha256:e1b08f1114fdbac4b024e13086c868a7ea30b0a68f912ef3cd89931f3fd88a9c",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-09-06T05:18:16Z",
+    "reviewer": "openai-codex-b033a-current-math-positive-candidate-author",
+    "reason": "DE: Auswertung und Eingabe-Ausgabe-Bedeutung werden gemeinsam gepr\u00fcft; der frische Fall ver\u00e4ndert die Termstruktur und die Rolle eines Minuszeichens, nicht blo\u00df Zahlen. EN: Evaluation and input-output meaning are assessed together; the fresh case changes expression structure and the role of a minus sign rather than merely numbers.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "evaluate-expression",
+          "essentialUnderstandingDe": "Der konkrete Eingabewert ersetzt jedes Vorkommen von x; Klammern, Potenzen und Vorzeichen geh\u00f6ren zum gegebenen Funktionsterm.",
+          "essentialUnderstandingEn": "The concrete input replaces every occurrence of x; brackets, powers and signs belong to the given function expression.",
+          "observablePerformanceDe": "Die lernende Person setzt gegebene zul\u00e4ssige Eingaben selbstst\u00e4ndig ein und berechnet die Werte unter Beachtung der Termstruktur.",
+          "observablePerformanceEn": "The learner independently substitutes supplied admissible inputs and calculates values respecting the structure of the expression."
+        },
+        {
+          "id": "input-output-meaning",
+          "essentialUnderstandingDe": "f(a)=b ordnet der Eingabe a die Ausgabe b zu; unterschiedliche Eingaben k\u00f6nnen denselben Ausgabewert besitzen.",
+          "essentialUnderstandingEn": "f(a)=b assigns output b to input a; different inputs may have the same output.",
+          "observablePerformanceDe": "Die lernende Person deutet ihre berechneten Werte als zugeh\u00f6rige Eingabe-Ausgabe-Paare und unterscheidet dabei Eingabewert, Funktionsname und Ergebnis.",
+          "observablePerformanceEn": "The learner interprets calculated values as corresponding input-output pairs, distinguishing input, function name and result."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "evaluate-expression",
+          "input-output-meaning"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "expression-structure",
+          "textDe": "Von einem linearen Term zu Potenzen wechseln und ein Minuszeichen au\u00dferhalb gegen\u00fcber innerhalb der Potenz unterscheiden.",
+          "textEn": "Change from a linear expression to powers and distinguish a minus sign outside versus inside the power."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "linear-evaluation",
+          "taskDemandDe": "Gegeben ist f(x)=3x\u22122. Berechne ohne Musterl\u00f6sung f(\u22121) und f(4) und erkl\u00e4re jeweils, welche Eingabe zu welcher Ausgabe geh\u00f6rt.",
+          "taskDemandEn": "Given f(x)=3x\u22122, calculate f(\u22121) and f(4) without a worked solution and explain which input corresponds to which output.",
+          "expectedPerformanceDe": "f(\u22121)=3\u00b7(\u22121)\u22122=\u22125 und f(4)=10. \u22121 bzw. 4 sind die Eingaben, \u22125 bzw. 10 die vom Term zugeordneten Ausgaben.",
+          "expectedPerformanceEn": "f(\u22121)=3\u00b7(\u22121)\u22122=\u22125 and f(4)=10. The inputs are \u22121 and 4, and the outputs assigned by the expression are \u22125 and 10.",
+          "understandingFocusDe": "Korrekte Auswertung und Bedeutung der Schreibweise werden an denselben Werten verbunden.",
+          "understandingFocusEn": "Correct evaluation and the meaning of notation are connected through the same values."
+        },
+        {
+          "id": "minus-and-power",
+          "taskDemandDe": "Eine neue Aufgabe gibt p(x)=\u2212x\u00b2 und q(x)=(\u2212x)\u00b2 vor. Berechne p(\u22122), q(\u22122) und q(2). Deute die drei Zuordnungen und erl\u00e4utere den f\u00fcr die unterschiedlichen Ergebnisse entscheidenden Unterschied im Term.",
+          "taskDemandEn": "A fresh task gives p(x)=\u2212x\u00b2 and q(x)=(\u2212x)\u00b2. Calculate p(\u22122), q(\u22122) and q(2). Interpret the three assignments and explain the difference in the expressions that determines the differing results.",
+          "expectedPerformanceDe": "p(\u22122)=\u2212(\u22122)\u00b2=\u22124, q(\u22122)=(\u2212(\u22122))\u00b2=4 und q(2)=(\u22122)\u00b2=4. Bei p wird das Quadrat negiert, bei q wird der gesamte geklammerte Wert quadriert. q ordnet hier zwei verschiedenen Eingaben denselben Wert 4 zu; eine inverse Funktion muss nicht bestimmt werden.",
+          "expectedPerformanceEn": "p(\u22122)=\u2212(\u22122)\u00b2=\u22124, q(\u22122)=(\u2212(\u22122))\u00b2=4 and q(2)=(\u22122)\u00b2=4. In p the square is negated, whereas q squares the entire bracketed value. Here q assigns the same value 4 to two different inputs; finding an inverse function is not required.",
+          "understandingFocusDe": "Die ver\u00e4nderte Termstruktur verlangt eine neue Auswertung; das Ergebnis bleibt als Ausgabe der konkreten Eingabe verst\u00e4ndlich.",
+          "understandingFocusEn": "The altered expression structure requires fresh evaluation while retaining the result's meaning as output for the concrete input."
+        }
+      ]
+    }
+  }
+}

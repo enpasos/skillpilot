@@ -510,6 +510,8 @@ jobs:
         run: npm run validate:composition-views
       - name: Test Composition Projection Roles
         run: npm run test:composition-projection-roles
+      - name: Test Composition Visible Overlap
+        run: npm run test:composition-visible-overlap
       - name: Test Course-Level Mapping Consistency
         run: npm run test:course-level-mapping-consistency
       - name: Test Physics Source Method Routes

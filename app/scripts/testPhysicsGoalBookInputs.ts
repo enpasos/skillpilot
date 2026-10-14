@@ -1240,11 +1240,40 @@ rawLandscape.goals.forEach((goal) => {
   }
 })
 assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must remain subject-internal')
-assert.equal(foreignRequiresEdges.length, 10, 'Physics must retain exactly ten cross-subject prerequisites')
+// Baseline ten relations plus eleven independently reviewed first-adoption
+// relations. Pin both endpoints so a same-sized replacement cannot pass.
+const expectedForeignRequiresEdges = [
+  { ownerId: '09029573-864f-40ca-bf8a-cee7bf6dcb73', goalId: 'c65ecabf-d00b-4e2d-99ae-b64692325ffb' },
+  { ownerId: '267170bd-f880-56a7-9719-ffb9751872c5', goalId: '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f' },
+  { ownerId: '2eecd0e2-a7ca-4568-9b12-3d47706c65fb', goalId: '325771e1-602d-4bca-a199-a8f39a2d3dee' },
+  { ownerId: '2eecd0e2-a7ca-4568-9b12-3d47706c65fb', goalId: 'a6469c01-6ca3-5eb2-a82c-94f3d0560b32' },
+  { ownerId: '3c8e5510-a12d-5770-8a01-e5fe741b259c', goalId: '2331caf2-ccb2-5492-9fc6-48763b848bae' },
+  { ownerId: '4a2bf015-052b-4af0-aed7-324259fa1a8a', goalId: '5a9702f4-7e4d-457d-b98c-f0bafcd1e386' },
+  { ownerId: '4a2bf015-052b-4af0-aed7-324259fa1a8a', goalId: 'c1f50bcc-7848-4e49-b9de-0ec030cc6bca' },
+  { ownerId: '5f289cdc-fda1-4058-b44f-041ba1398e79', goalId: 'c1f50bcc-7848-4e49-b9de-0ec030cc6bca' },
+  { ownerId: '8a84de16-2fde-58ec-827a-f803e2ce8564', goalId: '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f' },
+  { ownerId: '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', goalId: 'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186' },
+  { ownerId: 'ae67bcf1-f3ee-50d6-9a12-25a159dff659', goalId: '80c232f1-8f72-5829-9dbe-5a610ccab3be' },
+  { ownerId: 'c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0', goalId: 'ee48e811-4c9c-5080-9836-8403fc9f0810' },
+  { ownerId: 'ce431132-dfc4-42c2-aff6-bd72035190f8', goalId: '09f47964-2cd0-410e-93ee-9632b582fc91' },
+  { ownerId: 'ce431132-dfc4-42c2-aff6-bd72035190f8', goalId: 'a8c42ee9-2898-4247-819f-c235032ac78a' },
+  { ownerId: 'd6dc0e02-831d-4894-a61a-852bcc74f147', goalId: 'e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb' },
+  { ownerId: 'e359f8bb-6106-44aa-9edf-694528d2d2a9', goalId: '858113c5-e53b-57bb-b01f-ba95c3ddcb6f' },
+  { ownerId: 'e4b38061-1f28-43ad-8371-a3e7c0e81856', goalId: '5a9702f4-7e4d-457d-b98c-f0bafcd1e386' },
+  { ownerId: 'f23fdfa9-38b6-5157-8301-ed302476c456', goalId: '15505229-efec-4d01-8e71-acf15f9c2424' },
+  { ownerId: 'f74c691b-0b76-54e0-8fd6-a22211994e0a', goalId: '11e3cf89-9224-5894-8e4a-ae8ff5af0119' },
+  { ownerId: 'f827b00f-af7f-52de-84aa-2a2bbaa035bd', goalId: '5f548596-9bc3-532e-88a0-81d5029809e9' },
+  { ownerId: 'f92b5b8a-327f-50d2-8313-6a142399ebf0', goalId: '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f' },
+]
+assert.deepEqual(
+  [...foreignRequiresEdges].sort((a, b) => compareCodePoints(`${a.ownerId}:${a.goalId}`, `${b.ownerId}:${b.goalId}`)),
+  expectedForeignRequiresEdges,
+  'Physics cross-subject prerequisites must match the reviewed first-adoption state',
+)
 assert.equal(
   new Set(foreignRequiresEdges.map(({ goalId }) => goalId)).size,
-  8,
-  'Physics cross-subject prerequisites must resolve to exactly eight mathematics goals',
+  17,
+  'Physics cross-subject prerequisites must resolve to exactly seventeen mathematics goals',
 )
 foreignRequiresEdges.forEach(({ goalId }) => {
   assert(mathGoalIds.has(goalId), `Physics cross-subject prerequisite ${goalId} is not canonical mathematics`)
@@ -1465,6 +1494,12 @@ allPhysicsViewPaths.forEach((viewPath) => {
   assert.deepEqual(errors, [], `invalid Physics composition view ${viewPath}`)
 
   const visibleGoalIds = collectVisibleGoalIds(compilation.compiledRootNodes)
+  visibleGoalIds.forEach((goalId) => {
+    assert(
+      semanticGoalById.has(goalId),
+      `${view.viewId} must not promote a Mathematics support reference into a visible Physics target: ${goalId}`,
+    )
+  })
   assert.equal(
     visibleGoalIds.has(ROAD_SAFETY_GOAL_ID),
     view.scope.stage === 'CrossStage'
@@ -1563,12 +1598,12 @@ allPhysicsViewPaths.forEach((viewPath) => {
       physicsAndMathGoalById,
     )
 
-    // Root-level prerequisite-only references are explicit shared support for
-    // the stage branch. Do not admit target goals from the sibling Sek-II
+    // Explicit shared prerequisite-only references may sit beside physics-root
+    // or directly inside it. Do not admit target goals from the sibling Sek-II
     // branch into this strict availability set.
     const rootStructures = collectCompositionStructures(view.rootNodes, 'physics-root')
     assert.equal(rootStructures.length, 1, `${view.viewId} must expose exactly one Physics root structure`)
-    const rootLevelPrerequisiteNodes = rootStructures[0].children.filter((node) => (
+    const rootLevelPrerequisiteNodes = [...view.rootNodes, ...rootStructures[0].children].filter((node) => (
       node.kind !== 'structure'
       && node.kind !== 'landscapeEntry'
       && node.projectionRole === 'prerequisiteOnly'
@@ -1651,11 +1686,14 @@ allPhysicsViewPaths.forEach((viewPath) => {
     validatedStrictBwBySekIViewIds.add(view.viewId)
   }
   const expectedForeignPrerequisiteIds = new Set<string>()
-  visibleGoalIds.forEach((goalId) => {
+  // A support-only Physics prerequisite has its own prerequisites too. Check
+  // the explicitly authored availability universe, without following omitted
+  // legacy Physics nodes or promoting support goals into the visible targets.
+  const authoredAvailableGoalIds = collectAuthoredProjectionGoalIds(view.rootNodes, physicsAndMathGoalById)
+  authoredAvailableGoalIds.forEach((goalId) => {
     const physicsGoal = semanticGoalById.get(goalId)
     if (!physicsGoal) return
-    physicsGoal.requires
-      .map(normalizeGoalRef)
+    ;(effectivePhysicsRequiresByGoalId.get(goalId) ?? [])
       .filter((requiredGoalId) => !semanticGoalById.has(requiredGoalId))
       .forEach((requiredGoalId) => expectedForeignPrerequisiteIds.add(requiredGoalId))
   })
@@ -1675,7 +1713,7 @@ allPhysicsViewPaths.forEach((viewPath) => {
   assert.deepEqual(
     [...authoredForeignPrerequisiteRootById.keys()].sort(compareCodePoints),
     [...expectedForeignPrerequisiteIds].sort(compareCodePoints),
-    `${view.viewId} prerequisite-only support roots must exactly match direct foreign requires of visible Physics targets`,
+    `${view.viewId} prerequisite-only support roots must exactly match effective foreign requires of authored available Physics goals`,
   )
   expectedForeignPrerequisiteIds.forEach((goalId) => {
     const mathGoal = mathGoalById.get(goalId)

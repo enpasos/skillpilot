@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "status": "exact-preservation-and-index-integrity-pass",
+  "preservedAt": "2026-10-13T10:47:56.213649+00:00",
+  "preservedBy": {
+    "agentCanonicalName": "/root/requires_parallel_review",
+    "model": "GPT-6.1 Sol",
+    "reasoningEffort": "Ultra",
+    "role": "independent_scientific_reviewer_performing_exact_preservation_only",
+    "goalRevisionAuthoring": false
+  },
+  "currentRevisionScientificStatus": {
+    "goalCount": 20,
+    "approved": 15,
+    "pending": 5,
+    "nativeM7AdoptionClaimed": false
+  },
+  "erratumArtifacts": [
+    {
+      "originalPath": "tmp/cross-subject-requires/physics-pending20-newton-momentum-minimality.parallel-independent-erratum.json",
+      "storedPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-pending20-newton-momentum-minimality.parallel-independent-erratum.json",
+      "sha256": "sha256:67ae8e5de48b11fc1a51f527b6e6e94eb87938709d6c1bef9df9852c3da3719a",
+      "bytes": 10840,
+      "preservationRole": "additive-momentum-erratum-and-status-only",
+      "preservedBy": "/root/requires_parallel_review"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/physics-pending20-newton-momentum-minimality.parallel-independent-erratum.validation.json",
+      "storedPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-pending20-newton-momentum-minimality.parallel-independent-erratum.validation.json",
+      "sha256": "sha256:e615aeb1fb262eea8f1dcedf057bdf61e93b34944fc03a1191551f8671a7c42b",
+      "bytes": 432,
+      "preservationRole": "additive-momentum-erratum-and-status-only",
+      "preservedBy": "/root/requires_parallel_review"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/physics-pending20-plus-energy-v2.current-status-after-momentum-erratum.json",
+      "storedPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-pending20-plus-energy-v2.current-status-after-momentum-erratum.json",
+      "sha256": "sha256:48b69fc49e4220b676b6203dab5591a0e0beb21b5c4edfc9da0c15c25ad98589",
+      "bytes": 12515,
+      "preservationRole": "additive-momentum-erratum-and-status-only",
+      "preservedBy": "/root/requires_parallel_review"
+    }
+  ],
+  "existingCandidateIndex": {
+    "path": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/artifact-index.json",
+    "beforeSha256": "sha256:fe3a294dd3b459915c76e4974b38aba1aa2aeb20cb14541833e8ac2e56ef1c28",
+    "exactBeforeIndexHistoryPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/index-history/artifact-index.before-momentum-erratum.fe3a294dd3b459915c76e4974b38aba1aa2aeb20cb14541833e8ac2e56ef1c28.exact.json",
+    "afterSha256": "sha256:46209344090e920cfe9ed1eb42afb04538ae8f6b43742b5a8d296f1c28d4ec5f",
+    "beforeEntries": 89,
+    "afterEntries": 92,
+    "unchangedOriginalEntries": true
+  },
+  "packages": [
+    {
+      "package": "tum-bsc-physics-audit-20261013-v1",
+      "preservedOriginalFiles": 14,
+      "preservedOriginalBytes": 3651742,
+      "preservationIndexPath": "curricula/quality/cross-subject-requires/2026-10-13/tum-bsc-physics-audit-20261013-v1/artifact-index.preservation.json",
+      "preservationIndexSha256": "sha256:b17465450bfea31400f495afdd7b951ecab88e96939c5f97f40021a61555ef3d",
+      "preservationIndexBytes": 8360
+    },
+    {
+      "package": "decimal-rounding-v2-20261013",
+      "preservedOriginalFiles": 54,
+      "preservedOriginalBytes": 1762412,
+      "preservationIndexPath": "curricula/quality/cross-subject-requires/2026-10-13/decimal-rounding-v2-20261013/artifact-index.preservation.json",
+      "preservationIndexSha256": "sha256:d43ca237b3b5fddcad83468d23e5352d2ad8303c3aa84e3e50bc7e0771b373a0",
+      "preservationIndexBytes": 26048
+    }
+  ],
+  "verification": "All indexed stored bytes, SHA256 and byte lengths checked. Every newly preserved source/destination pair is byte-identical. Existing package author/review index bindings checked before copying. No tests beyond hashing/index integrity.",
+  "license": "Apache-2.0"
+}

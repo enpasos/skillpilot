@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
+import com.skillpilot.backend.api.PrerequisiteBlocker;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
@@ -81,6 +82,275 @@ class ProjectionRoleLearnerServiceTest {
               }
             }
             """;
+
+    @Test
+    void stalledExternalSupportIsExplainedWithoutChangingLearnerStateOrCoachLevelTwoAuthority() throws Exception {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+        LearningGoal prerequisite = fixture.landscape().getGoals().stream()
+                .filter(goal -> PREREQUISITE_ID.equals(goal.getId())).findFirst().orElseThrow();
+        prerequisite.setTitle("Werte ablesen");
+        prerequisite.setTitleEn("Read values");
+        String initialConfig = fixture.learner().getPersonalCurriculum();
+
+        var state = fixture.service().getCoachLearnerState(LEARNER_ID);
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID)).isEmpty();
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("getFrontier");
+        assertThat(state.goals().scope_completed()).isFalse();
+        assertThat(state.goals().total_count()).isEqualTo(1);
+        assertThat(state.stateMachine().goalOptions()).isEmpty();
+        assertThat(state.stateMachine().prerequisiteBlockers()).containsExactly(new PrerequisiteBlocker(
+                TARGET_ID, TARGET_ID, null, PREREQUISITE_ID, "Werte ablesen", "Read values",
+                "EXTERNAL_PREREQUISITE_UNMASTERED", "OPEN_PERSONAL_CURRICULUM"));
+        assertThat(fixture.learner().getPersonalCurriculum()).isEqualTo(initialConfig);
+        assertThat(fixture.learner().getActiveGoalId()).isNull();
+        assertThat(fixture.savedGoals()).isEmpty();
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.plannedGoalRepository(), never()).saveAll(any());
+        var projected = new CoachStateProjection("https://skillpilot.com").project(state);
+        assertThat(projected.stateMachine().prerequisiteBlockers()).singleElement()
+                .satisfies(blocker -> {
+                    assertThat(blocker.reason()).isEqualTo("EXTERNAL_PREREQUISITE_UNMASTERED");
+                    assertThat(blocker.remediation()).isNull();
+                });
+        assertThat(new ObjectMapper().writeValueAsString(projected))
+                .doesNotContain(LEARNER_ID, "OPEN_PERSONAL_CURRICULUM", "personalCurriculum");
+
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+        assertThat(fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers()).isEmpty();
+    }
+
+    @Test
+    void unknownDirectReferenceFailsClosedInBothCompositionFrontiersWithoutEchoingRawReference() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
+        fixture.landscape().getGoals().stream().filter(goal -> TARGET_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of("unknown-reference-private-looking-text"));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+
+        for (boolean strict : List.of(false, true)) {
+            fixture.learner().setStrictMode(strict);
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID)).isEmpty();
+            assertThat(fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers())
+                    .containsExactly(new PrerequisiteBlocker(TARGET_ID, TARGET_ID, null,
+                            null, null, null, "UNKNOWN_PREREQUISITE", null));
+        }
+    }
+
+    @Test
+    void knownUnprojectedRequirementStaysBlockedEvenWithSavedMasteryAndOffersNoLearnerRepair() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+        for (boolean strict : List.of(false, true)) {
+            fixture.learner().setStrictMode(strict);
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID)).isEmpty();
+            assertThat(fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers())
+                    .singleElement().satisfies(blocker -> {
+                        assertThat(blocker.prerequisiteId()).isEqualTo(PREREQUISITE_ID);
+                        assertThat(blocker.reason()).isEqualTo("PREREQUISITE_NOT_PROJECTED");
+                        assertThat(blocker.remediation()).isNull();
+                    });
+        }
+    }
+
+    @Test
+    void legacyUnknownReferenceRetainsOptimisticModeButBothStrictFrontiersBlock() {
+        Fixture fixture = fixture(null);
+        when(fixture.compositionViewService().isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(false);
+        fixture.landscape().getGoals().stream().filter(goal -> TARGET_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of("legacy-unresolved"));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).contains(TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).contains(TARGET_ID);
+        fixture.learner().setStrictMode(true);
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).doesNotContain(TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).doesNotContain(TARGET_ID);
+    }
+
+    @Test
+    void knownExternalDefinitionCanExplainMissingProjectionButCannotAuthorizeSupport() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
+        when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_ID))
+                .thenReturn(atomicGoal(EXTERNAL_PREREQUISITE_ID, List.of()));
+        fixture.landscape().getGoals().stream().filter(goal -> TARGET_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of(EXTERNAL_PREREQUISITE_ID));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), EXTERNAL_PREREQUISITE_ID, 1.0)));
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers())
+                .singleElement().satisfies(blocker -> {
+                    assertThat(blocker.reason()).isEqualTo("PREREQUISITE_NOT_PROJECTED");
+                    assertThat(blocker.prerequisiteId()).isEqualTo(EXTERNAL_PREREQUISITE_ID);
+                    assertThat(blocker.remediation()).isNull();
+                });
+        assertThat(projectionSets(fixture.service()).structuralGoalIds()).doesNotContain(EXTERNAL_PREREQUISITE_ID);
+        assertThat(projectionSets(fixture.service()).prerequisiteOnlyGoalIds()).isEmpty();
+    }
+
+    @Test
+    void manualOrImportedDependentMasteryDoesNotCreateTransitiveMasteryOrRequirements() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID, "prerequisiteOnly"),
+                goalEntry(TRANSITIVE_PREREQUISITE_ID, "prerequisiteOnly")));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+        assertThat(fixture.service().getMastery(LEARNER_ID).getOrDefault(TRANSITIVE_PREREQUISITE_ID, 0.0)).isZero();
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+        assertThat(fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers()).isEmpty();
+
+        fixture.landscape().getGoals().stream().filter(goal -> TARGET_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID));
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers())
+                .singleElement().satisfies(blocker -> assertThat(blocker.prerequisiteId()).isEqualTo(TRANSITIVE_PREREQUISITE_ID));
+    }
+
+    @Test
+    void blockerFactsAreSortedDeduplicatedAndBounded() {
+        List<String> supportIds = new ArrayList<>();
+        List<Map<String, Object>> references = new ArrayList<>();
+        references.add(goalEntry(TARGET_ID));
+        for (int index = 24; index >= 0; index--) {
+            String id = "external-" + String.format("%02d", index);
+            supportIds.add(id);
+            references.add(goalEntry(id, "prerequisiteOnly"));
+        }
+        Fixture fixture = fixture(view(references.toArray(Map[]::new)));
+        for (String id : supportIds) {
+            LearningGoal support = atomicGoal(id, List.of());
+            support.setTitle("x".repeat(300));
+            when(fixture.landscapeService().getGoalDefinition(id)).thenReturn(support);
+        }
+        supportIds.add(supportIds.getFirst());
+        fixture.landscape().getGoals().stream().filter(goal -> TARGET_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(supportIds);
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+        var blockers = fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers();
+        assertThat(blockers).hasSize(20);
+        assertThat(blockers).extracting(PrerequisiteBlocker::prerequisiteId).isSorted().doesNotHaveDuplicates();
+        assertThat(blockers.getFirst().prerequisiteTitle()).hasSize(240);
+        assertThat(fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers()).isEqualTo(blockers);
+    }
+
+    @Test
+    void blockerReadDoesNotInterruptActiveLearningOrReopenMasteredTargets() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+        fixture.learner().setActiveGoalId(TARGET_ID);
+        var active = fixture.service().getCoachLearnerState(LEARNER_ID);
+        assertThat(active.activeGoal().id()).isEqualTo(TARGET_ID);
+        assertThat(active.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
+        assertThat(active.stateMachine().prerequisiteBlockers()).isEmpty();
+
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), TARGET_ID, 1.0)));
+        var mastered = fixture.service().getCoachLearnerState(LEARNER_ID);
+        assertThat(mastered.activeGoal()).isNull();
+        assertThat(mastered.goals().scope_completed()).isTrue();
+        assertThat(mastered.stateMachine().prerequisiteBlockers()).isEmpty();
+        assertThat(fixture.learner().getActiveGoalId()).isEqualTo(TARGET_ID);
+        assertThat(fixture.service().getMastery(LEARNER_ID).getOrDefault(PREREQUISITE_ID, 0.0)).isZero();
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.plannedGoalRepository(), never()).saveAll(any());
+    }
+
+    @Test
+    void independentTargetPrerequisiteOutsideCurrentFocusBlocksBothModesWithoutBroadeningFocus() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(OUTSIDE_TARGET_ID)));
+        fixture.landscape().getGoals().stream().filter(goal -> TARGET_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of(OUTSIDE_TARGET_ID));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+        String initialConfig = fixture.learner().getPersonalCurriculum();
+        for (boolean strict : List.of(false, true)) {
+            fixture.learner().setStrictMode(strict);
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID)).isEmpty();
+            var state = fixture.service().getCoachLearnerState(LEARNER_ID);
+            assertThat(state.stateMachine().requiredAction()).isEqualTo("getFrontier");
+            assertThat(state.stateMachine().goalOptions()).isEmpty();
+            assertThat(state.stateMachine().prerequisiteBlockers()).containsExactly(new PrerequisiteBlocker(
+                    TARGET_ID, TARGET_ID, null, OUTSIDE_TARGET_ID, OUTSIDE_TARGET_ID, null,
+                    "PREREQUISITE_OUTSIDE_FOCUS", "REVIEW_FOCUS"));
+            assertThat(state.goals().planned()).extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+            assertThat(state.goals().total_count()).isEqualTo(1);
+            assertThat(state.goals().personalized().total_atomic()).isEqualTo(2);
+            assertThat(state.goals().scope_completed()).isFalse();
+            assertThat(fixture.service().getUncompactedRichFrontierForFocus(LEARNER_ID,
+                    List.of(TARGET_ID, OUTSIDE_TARGET_ID))).extracting(FrontierGoal::id).containsExactly(OUTSIDE_TARGET_ID);
+            var coach = new CoachStateProjection("https://skillpilot.com").project(state);
+            assertThat(coach.stateMachine().prerequisiteBlockers()).singleElement().satisfies(blocker -> {
+                assertThat(blocker.reason()).isEqualTo("PREREQUISITE_OUTSIDE_FOCUS");
+                assertThat(blocker.remediation()).isNull();
+            });
+        }
+        assertThat(fixture.learner().getPersonalCurriculum()).isEqualTo(initialConfig);
+        assertThat(fixture.learner().getActiveGoalId()).isNull();
+        assertThat(fixture.savedGoals()).isEmpty();
+        verify(fixture.plannedGoalRepository(), never()).saveAll(any());
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), OUTSIDE_TARGET_ID, 1.0)));
+        for (boolean strict : List.of(false, true)) {
+            fixture.learner().setStrictMode(strict);
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getCoachLearnerState(LEARNER_ID).stateMachine().prerequisiteBlockers()).isEmpty();
+        }
+    }
+
+    @Test
+    void inheritedTargetPrerequisiteOutsideFocusBlocksBothModesInAuthoredView() {
+        Fixture fixture = fixture(view(canonicalSubtree(ROOT_CLUSTER_ID)));
+        fixture.landscape().getGoals().stream().filter(goal -> TARGET_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of());
+        fixture.landscape().getGoals().stream().filter(goal -> NESTED_CLUSTER_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of(OUTSIDE_TARGET_ID));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+
+        for (boolean strict : List.of(false, true)) {
+            fixture.learner().setStrictMode(strict);
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID)).isEmpty();
+            var state = fixture.service().getCoachLearnerState(LEARNER_ID);
+            assertThat(state.stateMachine().prerequisiteBlockers()).containsExactly(new PrerequisiteBlocker(
+                    TARGET_ID, TARGET_ID, null, OUTSIDE_TARGET_ID, OUTSIDE_TARGET_ID, null,
+                    "PREREQUISITE_OUTSIDE_FOCUS", "REVIEW_FOCUS"));
+            assertThat(state.goals().planned()).extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+            assertThat(state.goals().scope_completed()).isFalse();
+        }
+        verify(fixture.plannedGoalRepository(), never()).saveAll(any());
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), OUTSIDE_TARGET_ID, 1.0)));
+        for (boolean strict : List.of(false, true)) {
+            fixture.learner().setStrictMode(strict);
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+        }
+    }
 
     @Test
     void missingRoleDefaultsToTargetAndPrerequisiteOnlyIsNotTargetOrTransitivelyInferred() {

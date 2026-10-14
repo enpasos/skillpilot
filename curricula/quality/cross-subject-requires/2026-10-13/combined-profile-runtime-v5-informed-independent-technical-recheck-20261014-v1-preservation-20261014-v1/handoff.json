@@ -1,0 +1,70 @@
+{
+  "role": "Actual INFORMED independent AI technical v5 recheck; original v4 rejection remains exact",
+  "decision": "bounded_approve_exact_v5_java_runtime_change",
+  "scope": "Bounded Java runtime/course-profile technical change only; current frontend raw-overlap diagnostic remains open",
+  "v5Sources": {
+    "mainService": {
+      "path": "/home/enpasos/projects/skillpilot/backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "bytes": 43524,
+      "sha256": "sha256:9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96"
+    },
+    "mainMerger": {
+      "path": "/home/enpasos/projects/skillpilot/backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+      "bytes": 36706,
+      "sha256": "sha256:48dc88994abbcce69e0f0a6e6a91176ea4045d0789d7dec7efae8fcda9770d15"
+    },
+    "v5Service": {
+      "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-subtree-dedup-runtime-candidate-20261014-v5/source/com/skillpilot/backend/service/CompositionViewService.java",
+      "bytes": 43530,
+      "sha256": "sha256:9ae92663a1a0809beb8831305ca4f9e373778d3b4329b415084fe9bbc9d2c5de"
+    },
+    "v5Merger": {
+      "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-subtree-dedup-runtime-candidate-20261014-v5/source/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+      "bytes": 41439,
+      "sha256": "sha256:10561826de925a82c70ed9dadc1787d16ad3837dd1baab331318a6ef23156e46"
+    }
+  },
+  "review": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v5-informed-independent-technical-recheck-20261014-v1/technical-recheck.actual.json",
+    "bytes": 8699,
+    "sha256": "sha256:dd4d7d803bbe5d3c0126636532d6c1ace1c9239a8ba458e6821645e4d9b33f04"
+  },
+  "ownV5Cases": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v5-informed-independent-technical-recheck-20261014-v1/v5-own-cases.actual.json",
+    "bytes": 10728,
+    "sha256": "sha256:5af8bcd0f81ce911b10c37f99b45382935c0d21736ef2d5f364394e1d7530ac4"
+  },
+  "baselineCases": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v5-informed-independent-technical-recheck-20261014-v1/baseline-own-cases.actual.json",
+    "bytes": 11587,
+    "sha256": "sha256:7c8ad01ce2bb907598e312fdf9a1dd05d6d4f20cb40ca9050ba48c131903700b"
+  },
+  "actualProductionCompilerResults": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v5-informed-independent-technical-recheck-20261014-v1/own-native-frontend-compiler-results.actual.json",
+    "bytes": 38727,
+    "sha256": "sha256:a865df65beba90c5e5ff5c9e311a78304e25b824d2fd57f40c46595e3636f908"
+  },
+  "actualJavaExecutions": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/combined-profile-runtime-v5-informed-independent-technical-recheck-20261014-v1/own-production-java-executions.actual.json",
+    "bytes": 113487,
+    "sha256": "sha256:06b55a287eeabfdc254278ad1e6d32d72c736f8b84ea5510c85365072541359a"
+  },
+  "ownFreshReexecutedProbes": 16,
+  "runtimeContractFailures": 0,
+  "v4CountercasesNowFailClosed": 2,
+  "commonNontargetOverlapRetainedWithoutPromotion": true,
+  "whollyPrerequisiteOnlyOverlapCompilesInvisible": true,
+  "remainingFrontendDiagnostic": {
+    "code": "CPV-004",
+    "caseId": "own-common-exclusion-overlap-only-in-nontarget-shared",
+    "rawOverlapOnly": true,
+    "actualVisibleOccurrencesUnique": true,
+    "sameInMainBaseline": true
+  },
+  "priorV4RejectPreservedExact": true,
+  "authorTestsOrAuditProcessTouched": false,
+  "noSourcePDScIM7HumanOrAdoptionApproval": true,
+  "mainOrCandidateWrites": false,
+  "ownSeal": "own-seal.json",
+  "ownEndcheck": "own-endcheck.actual.json"
+}

@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "status": "independent-replay-and-premise-review-pass",
+  "reviewer": "Codex GPT-6.1 Sol Ultra / independent scientific reviewer /root/requires_parallel_review",
+  "completedAt": "2026-10-13T11:29:01.080174+00:00",
+  "authorProbeScript": {
+    "path": "tmp/cross-subject-requires/test_revision_author_clausius_v4.py",
+    "sha256": "sha256:b0077300e2904eddd3b9ca6379d31282e6b7a21e36607bbe6d1d06b7a448476a"
+  },
+  "authorProbeReport": {
+    "path": "tmp/cross-subject-requires/physics-clausius-revision-author-20261013-v4.mathematical-probes.json",
+    "sha256": "sha256:d96cf021369e483f477e991e608d68b293b06c37e3bafd4f2a6449944031b7c2"
+  },
+  "replayedCheckCount": 16,
+  "replayedChecks": [
+    {
+      "name": "valid-reciprocal-1",
+      "passed": true,
+      "evidence": {
+        "c": 3.5,
+        "a": 2,
+        "b": 5,
+        "x0": 7,
+        "formula": 3.207017561559543,
+        "independentNumericalIntegral": 3.2070175615595784,
+        "claimedScope": "Finite numerical probe, not a general theorem proof."
+      }
+    },
+    {
+      "name": "valid-reciprocal-2",
+      "passed": true,
+      "evidence": {
+        "c": -2,
+        "a": 1,
+        "b": 4,
+        "x0": 3,
+        "formula": -2.772588722239781,
+        "independentNumericalIntegral": -2.7725887222401173,
+        "claimedScope": "Finite numerical probe, not a general theorem proof."
+      }
+    },
+    {
+      "name": "valid-reciprocal-3",
+      "passed": true,
+      "evidence": {
+        "c": 2,
+        "a": 4,
+        "b": 1,
+        "x0": 9,
+        "formula": -2.7725887222397816,
+        "independentNumericalIntegral": -2.7725887222401173,
+        "claimedScope": "Finite numerical probe, not a general theorem proof."
+      }
+    },
+    {
+      "name": "valid-reciprocal-4",
+      "passed": true,
+      "evidence": {
+        "c": 0,
+        "a": 1,
+        "b": 8,
+        "x0": 2,
+        "formula": 0.0,
+        "independentNumericalIntegral": 0.0,
+        "claimedScope": "Finite numerical probe, not a general theorem proof."
+      }
+    },
+    {
+      "name": "positive-reference-choice-invariance",
+      "passed": true,
+      "evidence": {
+        "positiveReferences": [
+          1,
+          13
+        ]
+      }
+    },
+    {
+      "name": "reject-invalid-precondition-6",
+      "passed": true,
+      "evidence": {
+        "a": 0,
+        "b": 2,
+        "x0": 1,
+        "factorConstant": true
+      }
+    },
+    {
+      "name": "reject-invalid-precondition-7",
+      "passed": true,
+      "evidence": {
+        "a": -1,
+        "b": 2,
+        "x0": 1,
+        "factorConstant": true
+      }
+    },
+    {
+      "name": "reject-invalid-precondition-8",
+      "passed": true,
+      "evidence": {
+        "a": 1,
+        "b": -2,
+        "x0": 1,
+        "factorConstant": true
+      }
+    },
+    {
+      "name": "reject-invalid-precondition-9",
+      "passed": true,
+      "evidence": {
+        "a": 1,
+        "b": 2,
+        "x0": 0,
+        "factorConstant": true
+      }
+    },
+    {
+      "name": "reject-invalid-precondition-10",
+      "passed": true,
+      "evidence": {
+        "a": 1,
+        "b": 2,
+        "x0": -3,
+        "factorConstant": true
+      }
+    },
+    {
+      "name": "reject-invalid-precondition-11",
+      "passed": true,
+      "evidence": {
+        "a": 1,
+        "b": 2,
+        "x0": 1,
+        "factorConstant": false
+      }
+    },
+    {
+      "name": "general-f-one-reject-unrelated-log",
+      "passed": true,
+      "evidence": {
+        "integrand": "f(x)=1 on [1,2]",
+        "unrelatedPrimitive": "ln(x/x0)",
+        "unrelatedDerivativeAtThreeHalves": "2/3 != 1",
+        "correctPrimitive": "F(x)=x with F′=1",
+        "correctIntegral": 1,
+        "invalidLogResult": 0.6931471805599453
+      }
+    },
+    {
+      "name": "variable-factor-is-not-reciprocal-constant",
+      "passed": true,
+      "evidence": {
+        "integrand": "c(x)/x with c(x)=x => 1",
+        "correctIntegral": 1,
+        "invalidPulledOutFactorFormula": 0.6931471805599453
+      }
+    },
+    {
+      "name": "gas-chosen-isothermal-integrand-positive-domain",
+      "passed": true,
+      "evidence": {
+        "integrand": "nR/V, fixed nR=3, V from 2 to 4",
+        "deltaS": 2.0794415416798357,
+        "physicalChoice": "Independent reversible isothermal path and deltaQ derivation remain in the task."
+      }
+    },
+    {
+      "name": "solid-variable-temperature-positive-domain",
+      "passed": true,
+      "evidence": {
+        "integrand": "C/T, constant C=12, T from 300 to 450",
+        "deltaS": 4.865581297297973,
+        "incorrectEndpointReplacement": 4
+      }
+    },
+    {
+      "name": "only-four-mathematical-helper-fields-changed",
+      "passed": true,
+      "evidence": {
+        "fields": [
+          "fresh-independent-case.taskDemandDe",
+          "fresh-independent-case.taskDemandEn",
+          "independent-changed-case.taskDemandDe",
+          "independent-changed-case.taskDemandEn"
+        ]
+      }
+    }
+  ],
+  "actualChangedLeaves": [
+    ".applicationCaseBriefs[0].taskDemandDe",
+    ".applicationCaseBriefs[0].taskDemandEn",
+    ".applicationCaseBriefs[1].taskDemandDe",
+    ".applicationCaseBriefs[1].taskDemandEn"
+  ],
+  "physicalTaskPrefixesUnchanged": true,
+  "independentAdditionalChecks": [
+    {
+      "name": "non-reciprocal-general-evaluation",
+      "integrand": "f(x)=x",
+      "validPrimitive": "F(x)=x^2/2, Fprime=x",
+      "interval": [
+        1,
+        2
+      ],
+      "result": 1.5,
+      "passed": true
+    },
+    {
+      "name": "equal-positive-endpoints",
+      "integrand": "7/x",
+      "interval": [
+        3,
+        3
+      ],
+      "fixedPositiveReference": 5,
+      "result": 0.0,
+      "passed": true
+    }
+  ],
+  "independentPremiseReasoning": [
+    "For continuous f and differentiable F with Fprime=f on the whole interval, the endpoint difference evaluates the signed integral. The explicit condition excludes ln(x/x0) for f=1, whose valid primitive is x.",
+    "For fixed real c and fixed x0>0, d[c ln(x/x0)]/dx=c/x on x>0. With positive endpoints the whole straight integration interval stays positive; subtracting the two logarithms cancels the reference and gives c ln(b/a), including reversed bounds and c=0.",
+    "For variable c(x), the derivative also contains cprime(x) ln(x/x0), so the constant-factor reciprocal formula does not apply. The new text explicitly excludes variable factors; the probe guard tests this declared precondition rather than magically detecting all variable expressions.",
+    "Both physical routes have admissible positive variables and fixed coefficients: nR/V over positive volume and C/T over positive absolute temperature with constant C. They preserve own constitutive/first-law derivation and path selection."
+  ],
+  "limits": "Finite Simpson probes check selected values, not a general theorem. The text premises and derivative/reference-cancellation reasoning supply the general mathematical justification. Structural field checks are not native evidence; no learner work or native M7 claimed.",
+  "license": "Apache-2.0"
+}

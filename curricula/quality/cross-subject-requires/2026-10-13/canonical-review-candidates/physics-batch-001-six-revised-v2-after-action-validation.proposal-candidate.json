@@ -1,0 +1,766 @@
+{
+  "schemaVersion": 1,
+  "status": "author_candidate_pending_independent_review",
+  "bindingMethod": "exact-baseline-and-proposed-inputs-no-substantive-approval",
+  "sourceAuthorArtifact": "tmp/cross-subject-requires/physics-batch-001-six-revised-v2.author-decisions.json",
+  "sourceAuthorSha256": "sha256:96178b545d6c6da358fd952a82da814ae58127e948e0dd0ba4cb8b9116240e3b",
+  "baselineInventorySha256": "sha256:a87238a3e1a5ab4c5979ebb57565287c29fe9a05807669366cd208d59bd68489",
+  "proposedStateSha256": "sha256:e7edfb9b602c2e27875904fba27aaa4d3892786026c8a77ed4df333b12ec541e",
+  "proposedGraphCycles": [],
+  "decisions": [
+    {
+      "decisionId": "canonical-physics-a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "dependentTitle": "Schallgeschwindigkeiten in verschiedenen Medien vergleichen und begründen",
+      "dependentDescription": "Die lernende Person kann Schallgeschwindigkeiten in verschiedenen Medien anhand von Daten vergleichen, Unterschiede mit elastischer Kopplung und Trägheit im Teilchenmodell begründen und eine vorschnelle Rangfolge allein nach Aggregatzuständen prüfen.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Die verbindliche kanonische Leistung ist datenbasiertes Vergleichen, Teilchenmodellbegründung und Gegenprüfung einer Aggregatzustandspauschale. BW 3.2.2(13) fordert Gemeinsamkeiten/Unterschiede beschreiben, HE 8.3b Schallgeschwindigkeit im Teilchenbild; keines setzt eine bestimmte Differenz-/Verhältnisrechnung in jedem Scope voraus. Der aktuelle P-Fall macht solche Rechnungen fälschlich obligatorisch, obwohl er sie selbst als Alternativen behandelt. Vorgeschlagen wird eine fachliche P-Korrektur: konkrete Werte, Einheiten, Bedingungen und ein Gegenvergleich bleiben Pflicht; zusätzliche Differenz- oder Verhältnisquantifizierung wird fakultative Vertiefung. Keine AND-Pflicht aus Subtraktion und Division und kein künstliches OR-Mathematikatom.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+          "locator": "goals[id=a24c41ce-68c5-56a7-8235-ef9a7dba7042]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+          "locator": "goals[id=a24c41ce-68c5-56a7-8235-ef9a7dba7042].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p002.review.jsonl",
+          "recordId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Datenbeleg mit konkreten gleichartigen Zahlenwerten und geordneter Gegenüberstellung; ergänzend Differenz oder Verhältnis, wenn die Aufgabe dies sinnvoll macht."
+        ]
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 17,
+      "supersedesCandidateDecision": {
+        "packetPath": "tmp/cross-subject-requires/physics-batch-001.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:67db622c399226d0904c2824b0dc0f849a2980b7dc9b4f742707dd26cd4ceebb",
+        "independentDisposition": "pending"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p002.review.jsonl",
+        "recordId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+        "profileFingerprint": "sha256:405d9cea7c3f4ed51617b0b7fb9bbc48401f6c1beb54751308da2a44d107b662",
+        "profileBodySha256": "sha256:930e38a14f58b996ebb92be2a5eaba8add7d07383cd55421ee819605472423c5",
+        "expectationIds": [
+          "data-grounded-speed-comparison",
+          "coupling-inertia-explanation",
+          "state-of-matter-counterexample"
+        ],
+        "caseIds": [
+          "mixed-media-table",
+          "coupled-particle-models"
+        ]
+      },
+      "profileAmendmentCandidatePath": "tmp/cross-subject-requires/physics-batch-001-six.profile-amendments.candidate.json",
+      "reviewInput": {
+        "semanticSha256": "sha256:4dba9d6dda806a66b368f45862df9c90188ef149b6c1fcdbdd91fe98e3fa0e2d",
+        "prerequisitesSha256": "sha256:7cd8f9edfeaf93d3fcbbcad19937b7936ce7dc59bf296a39805eafd264a3a72a",
+        "scopeSha256": "sha256:e4dd49b430b52a480d0f12b3c8c394797231f5fb08be00c19f9ca2567f98a505"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:4dba9d6dda806a66b368f45862df9c90188ef149b6c1fcdbdd91fe98e3fa0e2d",
+          "prerequisitesSha256": "sha256:7cd8f9edfeaf93d3fcbbcad19937b7936ce7dc59bf296a39805eafd264a3a72a",
+          "scopeSha256": "sha256:e4dd49b430b52a480d0f12b3c8c394797231f5fb08be00c19f9ca2567f98a505"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:4dba9d6dda806a66b368f45862df9c90188ef149b6c1fcdbdd91fe98e3fa0e2d",
+          "prerequisitesSha256": "sha256:7cd8f9edfeaf93d3fcbbcad19937b7936ce7dc59bf296a39805eafd264a3a72a",
+          "scopeSha256": "sha256:e4dd49b430b52a480d0f12b3c8c394797231f5fb08be00c19f9ca2567f98a505"
+        },
+        "baselineRequires": [
+          "3c82510a-1f12-4eaa-81c2-8599437a5b85"
+        ],
+        "proposedRequires": [
+          "3c82510a-1f12-4eaa-81c2-8599437a5b85"
+        ],
+        "changesSha256": "sha256:56671a5f5eae7915749c15220a988e8013257459218c69da3a7745ffe07917e6",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "canonical-physics-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "dependentTitle": "Kern und Hülle des Atoms qualitativ beschreiben",
+      "dependentDescription": "Die lernende Person kann Kern und Elektronenhülle als Bestandteile eines Atommodells beschreiben und die Größenordnungen von Atom- und Kerndurchmesser vergleichen.",
+      "prerequisiteGoalIds": [
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
+      ],
+      "decision": "add",
+      "rationale": "Der Größenordnungs- und Durchmesserfaktorvergleich verlangt die Bedeutung sehr kleiner Größen mit negativen Zehnerpotenzen und einen Quotienten der bereitgestellten Durchmesser. Das genaue aktuelle P-Profil 1,2·10^-10m gegen 1,0·10^-15m sowie die lineare Analogie bestätigen diesen Kern. Potenzen mit rationalen Basen/negativen Exponenten und rationale Multiplikation/Division passen; allgemeine Einheitenumrechnung ist nicht universell nötig, weil beide Daten in Metern vorliegen und die Analogie auch korrekt in Millimetern bleiben kann. Potenzgesetze werden nicht als eigener AND-Rechenweg erzwungen, da die Zahlen auch digital als Quotient ausgewertet werden können.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+          "locator": "goals[id=2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+          "locator": "goals[id=2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "26f668a0-6425-5466-9cf7-6295dd189005",
+          "locator": "goals[id=26f668a0-6425-5466-9cf7-6295dd189005]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+          "locator": "goals[id=ee48e811-4c9c-5080-9836-8403fc9f0810]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p003.review.jsonl",
+          "recordId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Quotient digital oder mittels Exponentendarstellung; konsistente Analogie darf in einer einzigen Einheit angegeben werden."
+        ]
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 23,
+      "supersedesCandidateDecision": {
+        "packetPath": "tmp/cross-subject-requires/physics-batch-001.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:3f5cdf236e551af06f081dd9d3fb5a3aecd4f85e7e3fd9120fb70604707c6e46",
+        "independentDisposition": "rejected"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p003.review.jsonl",
+        "recordId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+        "profileFingerprint": "sha256:88bf9ec3690a8eb07f02e2893dc4000252497bc1947a45b7b248258dd3d05501",
+        "profileBodySha256": "sha256:890af0b7ddae58296d75651ac364afaae1393497cac303a384c306f8190f868a",
+        "expectationIds": [
+          "nucleus-and-shell-are-distinct-model-regions",
+          "diameters-differ-by-orders-of-magnitude",
+          "schematic-size-does-not-provide-scale-evidence",
+          "bounded-analogy-preserves-ratio-and-limit"
+        ],
+        "caseIds": [
+          "supplied-diameter-order-comparison",
+          "critique-two-atom-diagrams",
+          "construct-consistent-scale-analogy"
+        ]
+      },
+      "reviewInput": {
+        "semanticSha256": "sha256:94365db289c33de14cb1e418613b1561d03b82d5fa998febabfc862d64946d32",
+        "prerequisitesSha256": "sha256:4f53f00443aeea1d57b645af9742fe50d56767eb5e478096b2d526e1db73003d",
+        "scopeSha256": "sha256:58feef3048ea1981256d4d2c575c2516dee7790e6faa08d1a0ffe2ed10675d73"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:94365db289c33de14cb1e418613b1561d03b82d5fa998febabfc862d64946d32",
+          "prerequisitesSha256": "sha256:4f53f00443aeea1d57b645af9742fe50d56767eb5e478096b2d526e1db73003d",
+          "scopeSha256": "sha256:58feef3048ea1981256d4d2c575c2516dee7790e6faa08d1a0ffe2ed10675d73"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:94365db289c33de14cb1e418613b1561d03b82d5fa998febabfc862d64946d32",
+          "prerequisitesSha256": "sha256:b2d12923caec649d9dfd69c9dc1bb6f22d8b1632ae700f43101db88bfa58700a",
+          "scopeSha256": "sha256:58feef3048ea1981256d4d2c575c2516dee7790e6faa08d1a0ffe2ed10675d73"
+        },
+        "baselineRequires": [
+          "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+        ],
+        "proposedRequires": [
+          "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+          "26f668a0-6425-5466-9cf7-6295dd189005",
+          "ee48e811-4c9c-5080-9836-8403fc9f0810"
+        ],
+        "changesSha256": "sha256:19600c2c30466c751f5af050af3f514b1008529e5790c004b16e18f16ef06fae",
+        "prerequisiteInputs": [
+          {
+            "goalId": "26f668a0-6425-5466-9cf7-6295dd189005",
+            "semanticSha256": "sha256:2dc35ef8adc978cb3bbb939f8e07e90386b8eb020226fb593e3537b21064d9e0",
+            "scopeSha256": "sha256:cce134a171c18f8fa11ffc9ef7b51a44b1e918e2a67d5820f4129ee90fbc02cd"
+          },
+          {
+            "goalId": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+            "semanticSha256": "sha256:01a24ef68e4bdaf4a8996091b2f65125f16064830a2af174f00137a6943fb253",
+            "scopeSha256": "sha256:f789dadc01fb00e44a2d7969044ad38be89dd858bb20522cdbca958c92d86da7"
+          }
+        ]
+      }
+    },
+    {
+      "decisionId": "canonical-physics-41d35667-0296-5f84-bc12-202ffc440be0",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "dependentTitle": "Kräfte vektoriell zusammensetzen und Resultierende bestimmen",
+      "dependentDescription": "Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäblich als Vektoren darstellen, grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung im Kontext deuten.",
+      "prerequisiteGoalIds": [
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96"
+      ],
+      "decision": "add",
+      "rationale": "Das ganze nominierte Atom beschreibt eine einfache proportionale Zuordnung mit konstantem Verhältnis und gesuchten Werten über Einheitsbezug/Vervielfachung. Es passt genau zum Kraftmaßstab, der verschiedene Größen codiert: 1cm↔10N, 30N↔3cm, 40N↔4cm, gemessene 5cm↔50N. Anders als ein Kartenlängenmaßstab setzt es keine gleichartigen Länge-Länge-Einheiten voraus. Die neue physikalische Leistung bleibt die grafische Vektoraddition und Richtungs-/Bewegungsdeutung; Pythagoras oder Komponentenrechnung werden nicht erzwungen, weil der resultierende Pfeil gemessen wird.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "41d35667-0296-5f84-bc12-202ffc440be0",
+          "locator": "goals[id=41d35667-0296-5f84-bc12-202ffc440be0]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "41d35667-0296-5f84-bc12-202ffc440be0",
+          "locator": "goals[id=41d35667-0296-5f84-bc12-202ffc440be0].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+          "locator": "goals[id=596345cd-679e-5c7b-955f-e8cb1ec81e96]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-001-current-v4.review.jsonl",
+          "recordId": "41d35667-0296-5f84-bc12-202ffc440be0",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Grafische Resultierende mit Längenablesung statt verpflichtender analytischer Komponenten- oder Pythagorasrechnung."
+        ]
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 55,
+      "supersedesCandidateDecision": {
+        "packetPath": "tmp/cross-subject-requires/physics-batch-001.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:94b51707013b07e55d3bdc70b0d5f5580ccbdb9bed3024f6bf00b3f766e5457a",
+        "independentDisposition": "rejected"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-001-current-v4.review.jsonl",
+        "recordId": "41d35667-0296-5f84-bc12-202ffc440be0",
+        "profileFingerprint": "sha256:0cb6e2b4b04ad56ac769ef7f0eceed7c9914435020a2fee1bf23105e70f45d69",
+        "profileBodySha256": "sha256:13c65250d0504e6bd568fa30c7a883bb9bd5e6dae41552b5bc0f26add260b369",
+        "expectationIds": [
+          "force-vector-encoding",
+          "resultant-construction-and-meaning"
+        ],
+        "caseIds": [
+          "scaled-two-rope-resultant",
+          "balanced-forces-countercase"
+        ]
+      },
+      "reviewInput": {
+        "semanticSha256": "sha256:be2b0a69e55e08057119263c10bfaf7a71cce10e654e56aabb4560ecbf5603be",
+        "prerequisitesSha256": "sha256:4f05d07bc0702ca627756a169dc59075d02f9e42c7402833a2279135c5c2fa9b",
+        "scopeSha256": "sha256:a84f03195b9dd3043db48a40e54b702a968e52977a5e1aa5feefdcff01ccdae5"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:be2b0a69e55e08057119263c10bfaf7a71cce10e654e56aabb4560ecbf5603be",
+          "prerequisitesSha256": "sha256:4f05d07bc0702ca627756a169dc59075d02f9e42c7402833a2279135c5c2fa9b",
+          "scopeSha256": "sha256:a84f03195b9dd3043db48a40e54b702a968e52977a5e1aa5feefdcff01ccdae5"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:be2b0a69e55e08057119263c10bfaf7a71cce10e654e56aabb4560ecbf5603be",
+          "prerequisitesSha256": "sha256:00943f573b91fb7113e09706fb2025c5dab9ee38cf310ef13548a0739d20c8c2",
+          "scopeSha256": "sha256:a84f03195b9dd3043db48a40e54b702a968e52977a5e1aa5feefdcff01ccdae5"
+        },
+        "baselineRequires": [
+          "5ea765ac-c279-551a-8a94-a07da2381e5b"
+        ],
+        "proposedRequires": [
+          "5ea765ac-c279-551a-8a94-a07da2381e5b",
+          "596345cd-679e-5c7b-955f-e8cb1ec81e96"
+        ],
+        "changesSha256": "sha256:0659483930f6c2fff2cd4fb7489f7bd135e0616fd7b7610264231159032a21cd",
+        "prerequisiteInputs": [
+          {
+            "goalId": "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+            "semanticSha256": "sha256:c8cf3d89cc86e0a966f82b21f06cd31b4bef097b40fb2355f8fa5dd102968d73",
+            "scopeSha256": "sha256:b1b1686a5b142b468b96d9eeb862ce60ad232da58248f5e8243fb82cab5a6771"
+          }
+        ]
+      }
+    },
+    {
+      "decisionId": "canonical-physics-f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "dependentTitle": "Messunsicherheiten angeben",
+      "dependentDescription": "Die lernende Person kann Messwerte mit geeigneten Unsicherheiten angeben und die Angabe fachgerecht notieren.",
+      "prerequisiteGoalIds": [],
+      "decision": "granularity_gap",
+      "rationale": "Fachgerechte Unsicherheitsangabe verlangt das tatsächliche Runden beliebiger Dezimalmesswerte auf die durch Unsicherheit vorgegebene Stelle. Dieses mathematische Basisatom fehlt im aktuellen Katalog; natürliche Zahlen runden und Dezimaldarstellung werden nicht umgedeutet. Die Unsicherheitsentscheidung bleibt neuer Physikinhalt. Das aktuelle frische Reihenprofil wird gesondert präzisiert: bereits ermittelte repräsentative Werte und Streuungsinformation werden bereitgestellt, damit kein beliebiger Mittelwert-/Median-Algorithmus zusätzlich zum aktuellen Ziel verpflichtend wird. Der neue Dezimal-Rundungsatom ist separat source-backed vorgeschlagen und bleibt ungebunden bis eigener D/P/A/M/V- und Quellen-/Scopeprüfung.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "locator": "goals[id=f6b1d812-ce8b-5852-b417-e6c29b533c7a]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "locator": "goals[id=f6b1d812-ce8b-5852-b417-e6c29b533c7a].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-fast18-stable-carryover-8-current-v1.review.jsonl",
+          "recordId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "unresolved",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Unsicherheit aus Geräteauflösung oder bereitgestellter empirischer Streuungsinformation; keine Statistik-Methoden-AND-Liste."
+        ]
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 63,
+      "supersedesCandidateDecision": {
+        "packetPath": "tmp/cross-subject-requires/physics-batch-001.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:c1162ab0076c8b6b0e4c9841d107ffe9ca321cabe60790da1fce83e9cd503ee1",
+        "independentDisposition": "pending"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-fast18-stable-carryover-8-current-v1.review.jsonl",
+        "recordId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+        "profileFingerprint": "sha256:c5da41d9e4039784bbcf20f6f30452bebb19254d13d3728a5596e49450a2bd3a",
+        "profileBodySha256": "sha256:98f62ec9257c8626f002d0fd570f558abc5fe16f293eaf49eb66a7f43dab0b84",
+        "expectationIds": [
+          "justify-and-record-uncertainty",
+          "uncertainty-bounds-conclusion",
+          "fresh-uncertainty-transfer"
+        ],
+        "caseIds": [
+          "ruler-resolution-single-length",
+          "period-series-spread-and-comparison"
+        ]
+      },
+      "unresolvedNewPrerequisiteProposalPath": "tmp/cross-subject-requires/decimal-rounding.math-goal.candidate.json",
+      "profileAmendmentCandidatePath": "tmp/cross-subject-requires/physics-batch-001-six.profile-amendments.candidate.json",
+      "reviewInput": {
+        "semanticSha256": "sha256:30ee170b8ba1334ad5dc549e725cd352ebb0ed635b261058c5bc36af71d2bcd4",
+        "prerequisitesSha256": "sha256:ddc8cfb1cdb3573ee52f99fbedeaffa96c443d52a892ee9e9765aefbd345d508",
+        "scopeSha256": "sha256:c24056c8a851103cac86b2fc12fc12eeaac42d803c22a813ea48d8833f5f1865"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:30ee170b8ba1334ad5dc549e725cd352ebb0ed635b261058c5bc36af71d2bcd4",
+          "prerequisitesSha256": "sha256:ddc8cfb1cdb3573ee52f99fbedeaffa96c443d52a892ee9e9765aefbd345d508",
+          "scopeSha256": "sha256:c24056c8a851103cac86b2fc12fc12eeaac42d803c22a813ea48d8833f5f1865"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:30ee170b8ba1334ad5dc549e725cd352ebb0ed635b261058c5bc36af71d2bcd4",
+          "prerequisitesSha256": "sha256:ddc8cfb1cdb3573ee52f99fbedeaffa96c443d52a892ee9e9765aefbd345d508",
+          "scopeSha256": "sha256:c24056c8a851103cac86b2fc12fc12eeaac42d803c22a813ea48d8833f5f1865"
+        },
+        "baselineRequires": [
+          "8aff7aac-321b-5172-ac55-877876bfd2cd"
+        ],
+        "proposedRequires": [
+          "8aff7aac-321b-5172-ac55-877876bfd2cd"
+        ],
+        "changesSha256": "sha256:9be75ae4a20973922a657b4e03e6059407d9d1bcce289699c524afbfb10f3bd5",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "canonical-physics-b615830a-e8b0-5754-81e0-99da98343a8d",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+      "dependentTitle": "Signifikante Stellen korrekt verwenden",
+      "dependentDescription": "Die lernende Person kann Rechenergebnisse passend zur angegebenen Genauigkeit beziehungsweise Unsicherheit der Eingangsdaten auf eine sinnvolle Zahl signifikanter Stellen runden, Zwischenwerte mit ausreichender Genauigkeit weiterführen und Scheingenauigkeit vermeiden.",
+      "prerequisiteGoalIds": [],
+      "decision": "granularity_gap",
+      "rationale": "Die elementare Rundung positiver/negativer Dezimalwerte auf eine vorgegebene Stelle fehlt weiterhin als aktuelles Mathematikatom, auch nach vollständiger Beschreibungssuche einschließlich Näherung, Rechnerkritik und Mantissen. Das aktuelle P-Profil verlangt 14,4578Ω→1,4·10¹Ω sowie die Guard-Digit-Rechnung 18,61J→19J. Die Wahl signifikanter Stellen und das Vermeiden vorzeitigen Rundens sind neue Physikleistungen; sie dürfen nicht in den mathematischen Basisatom hineingezogen werden. Der separate fokussierte Dezimal-Rundungsvorschlag ist noch kein genehmigter Link.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+          "locator": "goals[id=b615830a-e8b0-5754-81e0-99da98343a8d]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+          "locator": "goals[id=b615830a-e8b0-5754-81e0-99da98343a8d].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-029-e-thermodynamics-energy-modeling-current-v1.review.jsonl",
+          "recordId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "unresolved",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": []
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 64,
+      "supersedesCandidateDecision": {
+        "packetPath": "tmp/cross-subject-requires/physics-batch-001.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:abdf78b07896e65560469c14f63542f3348199a85ee3642b72b86ffb4c8dd582",
+        "independentDisposition": "pending"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-029-e-thermodynamics-energy-modeling-current-v1.review.jsonl",
+        "recordId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+        "profileFingerprint": "sha256:877f008bc812b8e8b02e4d89ab9455b956db803fcd43429efef3ecf42f87af71",
+        "profileBodySha256": "sha256:7ec651952f01ce2016f0a49090f92f6e10b76f1fedc46ca3b2bfa6f7817d7248",
+        "expectationIds": [
+          "precision-supported-by-input-data",
+          "retain-guard-digits-until-final-result"
+        ],
+        "caseIds": [
+          "resistance-from-two-measurements",
+          "kinetic-energy-through-unrounded-speed"
+        ]
+      },
+      "unresolvedNewPrerequisiteProposalPath": "tmp/cross-subject-requires/decimal-rounding.math-goal.candidate.json",
+      "reviewInput": {
+        "semanticSha256": "sha256:a32a163a21002a06022cf0715d97f17ec2e98ee8a08f8f0c948933cc48a108dd",
+        "prerequisitesSha256": "sha256:84233746b9507216565829fe2ff77b5ba21f2e0564c042faf06f32db763efae3",
+        "scopeSha256": "sha256:153d25686b04dade86102c3104bebf4c137b9bb9b5a86befe702d804e0d31382"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:a32a163a21002a06022cf0715d97f17ec2e98ee8a08f8f0c948933cc48a108dd",
+          "prerequisitesSha256": "sha256:84233746b9507216565829fe2ff77b5ba21f2e0564c042faf06f32db763efae3",
+          "scopeSha256": "sha256:153d25686b04dade86102c3104bebf4c137b9bb9b5a86befe702d804e0d31382"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:a32a163a21002a06022cf0715d97f17ec2e98ee8a08f8f0c948933cc48a108dd",
+          "prerequisitesSha256": "sha256:84233746b9507216565829fe2ff77b5ba21f2e0564c042faf06f32db763efae3",
+          "scopeSha256": "sha256:153d25686b04dade86102c3104bebf4c137b9bb9b5a86befe702d804e0d31382"
+        },
+        "baselineRequires": [
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+        ],
+        "proposedRequires": [
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+        ],
+        "changesSha256": "sha256:719b41113ec35c0119befd32ead03efeef7df275f79da75d379c6f902ed406ad",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "canonical-physics-264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+      "dependentTitle": "Methode: Linearisierung von Messkurven",
+      "dependentDescription": "Die lernende Person kann nichtlineare Messdaten durch geeignete Transformationen linearisieren, Geraden anpassen und Parameter deuten (z. B. $s\\sim t^2$, Einstein-Gerade).",
+      "prerequisiteGoalIds": [
+        "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180"
+      ],
+      "decision": "add",
+      "rationale": "Die gesamte Leistung verlangt das Verstehen der nichtlinearen Modellterme, numerisches Erzeugen transformierter Messgrößen, die Gerade samt Parametern und deren korrekte Dimension. Zusätzlich zu Termlesen und linearen Funktionen werden daher Termwerte berechnen, einfache multiplikative Gleichungen lösen und Einheiten-/Dimensionscheck vorgeschlagen. Die aktuellen Fälle benötigen t²/T² und m=a/2 beziehungsweise m=4π²/g, also genau die Formen x:a=b beziehungsweise a:x=b des vorhandenen einfachen multiplikativen Gleichungsatoms. Damit kann g bestimmt werden, ohne das umfassendere Bruchformelatom, eine allgemeine Regression, Logarithmen oder Wurzelgleichungsroutine für jeden Linearisierungsfall zu verlangen. Die tatsächliche Achsenwahl, Modellprüfung und physikalische Parameterbedeutung sind neuer Lerninhalt.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+          "locator": "goals[id=264dc31c-ec92-5e39-a8b8-16f1d74366d4]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+          "locator": "goals[id=264dc31c-ec92-5e39-a8b8-16f1d74366d4].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+          "locator": "goals[id=f08d06dc-139d-5fd2-892c-8cc919b1e4fc]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "locator": "goals[id=af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+          "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "54148506-c23f-41b8-959b-068dd194cf15",
+          "locator": "goals[id=54148506-c23f-41b8-959b-068dd194cf15]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+          "locator": "goals[id=f4df008d-fcd4-5ba3-821b-2ee8bd8a1180]",
+          "supports": "prerequisite"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-fast18-stable-carryover-8-current-v1.review.jsonl",
+          "recordId": "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+          "locator": "profile",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Grafische oder digitale Geradenanpassung; quadratische und inverse Koeffizientenbezüge, ohne methodenspezifische Logarithmus- oder Bruchformelpflicht."
+        ]
+      },
+      "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+      "status": "candidate_pending_independent_review",
+      "inventoryIndex": 66,
+      "supersedesCandidateDecision": {
+        "packetPath": "tmp/cross-subject-requires/physics-batch-001.proposal-candidate.json",
+        "proposalBindingSha256": "sha256:3a639f7d8ad1b64fc38beee185d7b9fa8d317364c0a6cabb4c7019626472a6f1",
+        "independentDisposition": "pending"
+      },
+      "nativeProfileRead": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-fast18-stable-carryover-8-current-v1.review.jsonl",
+        "recordId": "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+        "profileFingerprint": "sha256:eff8aa62873ac8f858483f72b4415515e909de5feb7e10ad69044c81fb4f5f6a",
+        "profileBodySha256": "sha256:6b9a6ecfaa437c8c0ee76b879628c1d4cfc726eaa765280c571e21ef980ad816",
+        "expectationIds": [
+          "linearization-tests-model-and-parameters",
+          "fit-quality-and-domain-remain-visible",
+          "fresh-linearization-transfer"
+        ],
+        "caseIds": [
+          "accelerated-motion-s-versus-t-squared",
+          "pendulum-t-squared-versus-length"
+        ]
+      },
+      "reviewInput": {
+        "semanticSha256": "sha256:2503cd666c18982807a69f9a279002eb6adae02590b781176bff08ac0b3d0919",
+        "prerequisitesSha256": "sha256:fdeda27bb167e624508f885eca0bfb7760b52fc79aa3b8bb26283aff81927e9f",
+        "scopeSha256": "sha256:bd78a5a48acbdb4b811194272962a253d4d9041bb18acf5da80ef45c94749319"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:2503cd666c18982807a69f9a279002eb6adae02590b781176bff08ac0b3d0919",
+          "prerequisitesSha256": "sha256:fdeda27bb167e624508f885eca0bfb7760b52fc79aa3b8bb26283aff81927e9f",
+          "scopeSha256": "sha256:bd78a5a48acbdb4b811194272962a253d4d9041bb18acf5da80ef45c94749319"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:2503cd666c18982807a69f9a279002eb6adae02590b781176bff08ac0b3d0919",
+          "prerequisitesSha256": "sha256:7b66e3b902600d8bdadf5d9a7444a01da5bb26e70cfceb0dfbcfd900859de2c6",
+          "scopeSha256": "sha256:bd78a5a48acbdb4b811194272962a253d4d9041bb18acf5da80ef45c94749319"
+        },
+        "baselineRequires": [
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "f23fdfa9-38b6-5157-8301-ed302476c456"
+        ],
+        "proposedRequires": [
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "f23fdfa9-38b6-5157-8301-ed302476c456",
+          "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+          "54148506-c23f-41b8-959b-068dd194cf15",
+          "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180"
+        ],
+        "changesSha256": "sha256:3cb3bd8dd6bb1e5144334b68dbbe063efc13ae42cc2b2c2eaa3965a134ec7b27",
+        "prerequisiteInputs": [
+          {
+            "goalId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+            "semanticSha256": "sha256:fd3834015d3a40931199600133111f6b27a279f4666334a953045169b95ec585",
+            "scopeSha256": "sha256:0baec2ef4d9c3e84f018cba3183bdf09d49df5ed322320033e6d8b344fadf62f"
+          },
+          {
+            "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+            "semanticSha256": "sha256:5f5de8bcd750d0e7485c131cc2ecc119025e540037036775268213d9b6f54fcf",
+            "scopeSha256": "sha256:66f855fb8936de7c9fc228fb57dceeaf4985af9566d3410726fb24b2af805c84"
+          },
+          {
+            "goalId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+            "semanticSha256": "sha256:15fc46efee1b0a15a28771ce96b6029ecc77eb191e1782dda88c63852da6c1f4",
+            "scopeSha256": "sha256:e02e669f495540c9260f8e7d750006147c0d3399337b751150286359c8208e2c"
+          },
+          {
+            "goalId": "54148506-c23f-41b8-959b-068dd194cf15",
+            "semanticSha256": "sha256:af9fef8904ee8df87baba8a35e0d856b2856459ac59ba4cc4aabd063fccc0c56",
+            "scopeSha256": "sha256:ebb2768f6ea73099bc431e96aa05ae608645a4578cb5c0402ebd504e28cb0224"
+          },
+          {
+            "goalId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+            "semanticSha256": "sha256:ab0997813577fd7b0ca99493c59b50cf35b1426120b5cd96aa44444c398ae9c8",
+            "scopeSha256": "sha256:5f3466f62c27756c9da0771eede59499314a3572b4eb5d3799bc9a21612885e2"
+          }
+        ]
+      }
+    }
+  ]
+}

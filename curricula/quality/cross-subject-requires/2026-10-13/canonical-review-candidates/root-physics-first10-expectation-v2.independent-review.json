@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "status": "independent-technical-review-pass-for-scoped-expectation-and-explicit-support-test-deltas",
+  "reviewer": "/root/requires_runtime_path",
+  "reviewedAtUtc": "2026-10-13T09:56:12.653626+00:00",
+  "scope": "Root-owned test-only expectation delta and follow-up explicit shared prerequisite-only availability collector. No view/source edit or scientific edge approval.",
+  "inputs": [
+    {
+      "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "sha256": "1503a625aa07a0930dced518af3e97ae8ac3ebe41bd2392d749bd2122fd18fe8"
+    },
+    {
+      "path": "tmp/cross-subject-requires/root-physics-first10-expectation-v1.independent-review.json",
+      "sha256": "4d685b0a84c7a2e6e8d7f6d375c852d1d868b1ca13144e28f932d2293d87397a"
+    },
+    {
+      "path": "tmp/cross-subject-requires/physics-input-first10-explicit-support.log",
+      "sha256": "b5b087f97f408d123e6f433ed7d84da6e29d9cc48d5c556e18e92028a610d529"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "sha256": "21afabfc4ae937b5038cc3e2727185145e100e49bf2ec5770ac3d66fe10848e7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "sha256": "a863386b1c2b3f75eb11f5b3eead8d58ff1fc48553048d3ea857917640046af1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "sha256": "f724b59f429af681d6409d5305597972218211d547aeecf0262ba0f55a770490"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "sha256": "151df33a15152c2141430742182e33c23a07b90817196df252cb5d8c373a8cd8"
+    }
+  ],
+  "preservedPriorReview": {
+    "path": "tmp/cross-subject-requires/root-physics-first10-expectation-v1.independent-review.json",
+    "sha256": "4d685b0a84c7a2e6e8d7f6d375c852d1d868b1ca13144e28f932d2293d87397a",
+    "bytesUnchanged": true,
+    "historicallyDerived21PairLiteralUnchanged": true,
+    "baselineRelations": 10,
+    "approvedBindingAdditions": 11,
+    "distinctMathematicsPrerequisites": 17
+  },
+  "newReviewedCollectorFragment": {
+    "sha256": "254120748b26d63c66f71166ccbd5a58fffe2586629bd08b2c60132db14c83f0",
+    "startLine": 1595
+  },
+  "findings": [
+    {
+      "area": "shared-support-position",
+      "decision": "pass",
+      "rationale": "Actual BW/BY CrossStage views place newly authored Mathematics prerequisite-only goalEntry references at top level beside physics-root, while older shared references sit directly inside physics-root. Including both direct positions matches their authored shared availability and fixes the earlier positional omission."
+    },
+    {
+      "area": "projection-role-and-stage-boundary",
+      "decision": "pass",
+      "rationale": "Only explicitly prerequisiteOnly non-structure/non-landscapeEntry references enter the added shared support set. Target or default-target references are excluded; structure children in sibling Sek-II branches are never traversed by this collector. The strict Sek-I target set remains computed from its independent stage-subtree compilation. Availability union does not add target goals, infer roles from requires, or widen focus/progress."
+    },
+    {
+      "area": "multiple-parent-and-edge-semantics",
+      "decision": "pass-static-review",
+      "rationale": "The unchanged collectAuthoredProjectionGoalIds uses a Set of stable goal IDs and canonicalSubtree expansion follows contains only. Repeated support references or shared contained descendants therefore do not duplicate availability. goalEntry contributes only its explicit ID. Effective Physics prerequisites remain direct plus contains-inherited; the unchanged recursive all-of route assertion checks availability and cycles, with an explicit Mathematics handoff. It does not imply transitive mastery."
+    },
+    {
+      "area": "guard-preservation",
+      "decision": "pass",
+      "rationale": "Known-goal checks, all-of membership assertions, complete Physics prerequisite recursion, Mathematics handoff, prerequisite-cycle detection, route assessment support checks, and stage-sibling target exclusion remain. The new focused failure demonstrates that missing Mathematics availability is still rejected after the positional fix."
+    }
+  ],
+  "actualViewEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "viewId": "de-bw-gym-physics-gk",
+      "explicitSharedReferenceCount": 14,
+      "explicitTopLevelReferenceCount": 6,
+      "motionMathSupportIncluded": true,
+      "shockMath2331DirectSharedReferencePresent": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "viewId": "de-bw-gym-physics-lk",
+      "explicitSharedReferenceCount": 14,
+      "explicitTopLevelReferenceCount": 6,
+      "motionMathSupportIncluded": true,
+      "shockMath2331DirectSharedReferencePresent": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "viewId": "de-by-gym-physics-gk",
+      "explicitSharedReferenceCount": 12,
+      "explicitTopLevelReferenceCount": 5,
+      "motionMathSupportIncluded": true,
+      "shockMath2331DirectSharedReferencePresent": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "viewId": "de-by-gym-physics-lk",
+      "explicitSharedReferenceCount": 12,
+      "explicitTopLevelReferenceCount": 5,
+      "motionMathSupportIncluded": true,
+      "shockMath2331DirectSharedReferencePresent": false
+    }
+  ],
+  "ownChecks": {
+    "staticShapeAndActualViewProbe": "PASS with source-bound collector inspection and read actual authored nodes in BW/BY GK/LK. A bounded illustrative selector check also excludes target/default/structure/landscape references and demonstrates ID deduplication; this is not a replacement for the actual TypeScript suite."
+  },
+  "focusedSuiteEvidenceRead": {
+    "path": "tmp/cross-subject-requires/physics-input-first10-explicit-support.log",
+    "result": "FAILED at later DE-BY GK strict prerequisite availability assertion",
+    "missingGoalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+    "route": [
+      "899481ae-2917-5fb0-805e-29e7c3c051be",
+      "3c8e5510-a12d-5770-8a01-e5fe741b259c",
+      "2331caf2-ccb2-5492-9fc6-48763b848bae"
+    ],
+    "fullSuitePassClaim": false,
+    "reportedToRoot": true
+  },
+  "authorshipClarificationAddendum": {
+    "earlierReceiptPath": "tmp/cross-subject-requires/root-retained-closure-and-fixtures.independent-review.json",
+    "earlierReceiptSha256": "8cc934c1fb31f78dff665526224cb04207d193df313789808c84526fa5e9f616",
+    "earlierReceiptBytesUnchanged": true,
+    "clarification": "The four Mathematics positive navigation/completion fixture setups reviewed in the earlier receipt were authored by /root/requires_canonical_author under Root coordination, rather than directly by /root. /root/requires_runtime_path did not author them and remains independent of that fixture author. This additive clarification changes attribution only and does not rewrite the earlier review receipt."
+  },
+  "materialDefectsInReviewedTestDeltas": [],
+  "limits": [
+    "The reviewed test deltas are technically sound; the full focused suite still fails on a separate missing availability condition. This receipt does not approve relaxing that guard or changing a view.",
+    "Full CI and remediation of the observed DE-BY support gap remain Root-owned. No backend test rerun was launched.",
+    "Historical21-pair verification and authorship clarification are retained through the exact prior v1 receipt; that receipt and the earlier8cc receipt were not rewritten.",
+    "No canonical source, active QA, scientific hash, published artifact, goal status, deployment or credential was changed by this reviewer.",
+    "No independent self-approval of earlier reviewer-authored runtime/tooling changes, scientific new-edge review, human approval or provider-host acceptance is claimed."
+  ],
+  "humanApprovalClaim": false,
+  "scientificApprovalClaim": false,
+  "publishingOrDeploymentClaim": false
+}

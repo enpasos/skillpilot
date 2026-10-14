@@ -5,6 +5,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
+import { PrerequisiteBlockerNotice } from '../components/PrerequisiteBlockerNotice'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
@@ -105,7 +106,7 @@ import {
 } from '../utils/treeProjectionRuntime'
 
 import type { UiGoal } from '../goalTypes'
-import type { Learner, FrontierGoal } from '../learnerTypes'
+import type { Learner, FrontierGoal, PrerequisiteBlocker } from '../learnerTypes'
 import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import type { ResourceLink } from '../landscapeTypes'
 
@@ -167,6 +168,7 @@ type LearnerStatePayload = {
     activeGoal?: { id?: string } | null
     goalOptions?: FrontierGoal[]
     requiredAction?: string | null
+    prerequisiteBlockers?: PrerequisiteBlocker[]
   } | null
   goals?: {
     planned?: Array<{ id?: string }>
@@ -390,6 +392,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [materialSelectionRefresh, setMaterialSelectionRefresh] = useState(0)
   const [materialSelectionSaving, setMaterialSelectionSaving] = useState(false)
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
+  const [prerequisiteBlockers, setPrerequisiteBlockers] = useState<PrerequisiteBlocker[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
   const [learnerStateLoadState, setLearnerStateLoadState] = useState<{
@@ -1536,6 +1539,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     invalidateLatestRequest(learningPlansRequestSequenceRef)
     invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
     setStateRequiredAction(null)
+    setPrerequisiteBlockers([])
     learningPlanTransitionInFlightRef.current = createSynchronousInFlightGuard()
     learningPlanReconcileAttemptedKeyRef.current = null
     pendingPlanGoalFocusRef.current = null
@@ -1593,6 +1597,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setStateActiveGoalId(backendActiveGoalId)
     setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
     setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+    setPrerequisiteBlockers(data.stateMachine?.prerequisiteBlockers ?? [])
     // Store backend-computed stats for consistency with GPT
     if (data.goals) {
       setBackendStats({
@@ -2021,6 +2026,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         setLearnerData((prev) => (prev ? { ...prev, activeGoalId: targetId } : prev))
         setStateActiveGoalId(targetId)
         setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+        setPrerequisiteBlockers(data.stateMachine?.prerequisiteBlockers ?? [])
         if (parentMap) {
           setExpandedGoalIds(buildCollapsedFocusPath(targetId))
         }
@@ -3366,6 +3372,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               </button>
             </div>
           ) : (
+            <>
+            {learnerStateLoadStatus === 'ready' && (
+              <PrerequisiteBlockerNotice
+                blockers={prerequisiteBlockers}
+                language={localizedLanguage}
+                onOpenPersonalCurriculum={() => setIsSetupOpen(true)}
+                onReviewPrerequisite={onSelectGoal}
+              />
+            )}
             <CompetenceTree
               key={learnerTreeScopeKey}
               rootGoals={visibleRootGoals}
@@ -3391,6 +3406,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               visibleChildrenByParentOverride={learnerVisibleChildrenByParent}
               useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
             />
+            </>
           )}
         </div>
         <div className="flex items-center justify-between gap-2 border-t border-border-color p-2">

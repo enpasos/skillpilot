@@ -1,0 +1,1627 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-13T14:13:43.995242+00:00",
+  "status": "full-suite-exit1-sole-embedded-Git-identity-failure-after-concurrent-HEAD-pull",
+  "fullCi": {
+    "command": "./run_ci.sh all",
+    "exitCode": 1,
+    "backendTotals": {
+      "tests": 2326,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 9
+    },
+    "failedCases": [
+      {
+        "class": "com.skillpilot.backend.openai.de.OpenAiDeEmbeddedServerBuildTest",
+        "case": "embedsExactGitCommitInApplicationResourceWithoutRuntimeOverride()",
+        "timestamp": "2026-10-13T13:18:51.272Z"
+      }
+    ],
+    "correctedNewtonHttpCase": "passed",
+    "frontendCurriculumQualityBooksAndBuild": "passed",
+    "qualityGuardIncluded": false,
+    "noOverallPassClaim": true
+  },
+  "cause": {
+    "builtResourceEmbeddedHead": "aea54de69a0ed988be2bd8ed19ce531a28a2beb3",
+    "builtResourceMtimeUTC": "2026-10-13T13:03:53.546634+00:00",
+    "headPulledDuringExecutionAtUTC": "2026-10-13T13:10:04+00:00",
+    "actualHeadAtStrictTest": "fed73cdd8f41c5116d8c7c62d127b53cd0e75447",
+    "strictTestTimestampUTC": "2026-10-13T13:18:51.272Z",
+    "evidence": "Actual Git reflog, generated application resource and original JUnit assertion jointly establish a concurrent HEAD change. Commit creation time precedes the pull and does not date its arrival in the workspace.",
+    "productionOrTestCorrectionRequired": false,
+    "assertionsWeakened": false,
+    "gitOverrideIntroduced": false
+  },
+  "externalWork": {
+    "changedPathCount": 2222,
+    "changedPathsArtifact": {
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/external-pull-changed-paths.txt",
+      "bytes": 437685,
+      "sha256": "sha256:e6f7b565562b42df7c3c1ed85e44ad7e1ee182c33422db70ebe76ce54b4a848c"
+    },
+    "applicationBackendProviderContractChanges": 0,
+    "externalContentPreserved": true,
+    "ourCommitMade": false,
+    "actualUserIndexChanged": false
+  },
+  "junitArchive": {
+    "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/backend-junit-results.exact.tar.gz",
+    "bytes": 3399779,
+    "sha256": "sha256:73132e854f668ace2ac40d880076c990109bc36b5911e3d5be108492c52f8735",
+    "entryCount": 247,
+    "uncompressedOriginalBytes": 47815208,
+    "entries": [
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.actionregression.ActionRegressionAuditLoggerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.actionregression.ActionRegressionAuditLoggerTest.xml",
+        "bytes": 536,
+        "sha256": "sha256:62216cbbad831ffbf9dc35d0579fab937953572325805c6a389ab2c97177ca0f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.actionregression.ActionRegressionControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.actionregression.ActionRegressionControllerTest.xml",
+        "bytes": 5892,
+        "sha256": "sha256:e134e0245278450dde33cddac91db3b95015289c75af2f79108bcb219f45d250"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.actionregression.ActionRegressionPageControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.actionregression.ActionRegressionPageControllerTest.xml",
+        "bytes": 1446,
+        "sha256": "sha256:35fe8bd31355dbec8ee17d13a3ea9008a9104e0796742d9cae19db9c068da230"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.CoachStateProjectionTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.CoachStateProjectionTest.xml",
+        "bytes": 992,
+        "sha256": "sha256:434703cb7be8f0bc18eee3c0c8d2d433d79101fb2de0ffbec9b46f7fd3808702"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.CoachToolFacadeLearningPlanTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.CoachToolFacadeLearningPlanTest.xml",
+        "bytes": 4174,
+        "sha256": "sha256:97045d242dd13d8c4596e8bff37f115bf89bc59d4a585490f40e96eaf4515788"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.CoachToolFacadeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.CoachToolFacadeTest.xml",
+        "bytes": 3515,
+        "sha256": "sha256:2502c2c0b22f618c09afc2137fb2e2022d73d3a4be7b9aa89cd44402ee2f86db"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.LearnerAiControllerActivityTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.LearnerAiControllerActivityTest.xml",
+        "bytes": 958,
+        "sha256": "sha256:110f3407761df98736887c7de7dbbd2c8893225c1cb0da91db73089b57fd2d9c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.LearnerAiControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.LearnerAiControllerTest.xml",
+        "bytes": 3677,
+        "sha256": "sha256:2d003d8c86bae39de3fcb33118a31051942d80890e12dcb0af58349a3ad593c7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.visiblesession.VisibleSessionActivityContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.visiblesession.VisibleSessionActivityContractTest.xml",
+        "bytes": 894,
+        "sha256": "sha256:46a221fe173d6c4fcbe4ee0b75d52300b6112bce91139c4ed3583c1d565c5347"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.visiblesession.VisibleSessionAiControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.visiblesession.VisibleSessionAiControllerTest.xml",
+        "bytes": 1601,
+        "sha256": "sha256:315980f4792d269947bc8c73627413078eca3780280a2975e8299290c4b1f7e6"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.visiblesession.VisibleSessionServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.visiblesession.VisibleSessionServiceTest.xml",
+        "bytes": 4960,
+        "sha256": "sha256:8b76c54f4f636f386c28469afe6d1ef4b35ba31eedc71ccb901f23a5c27c6a90"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ai.visiblesession.VisibleSessionStartControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ai.visiblesession.VisibleSessionStartControllerTest.xml",
+        "bytes": 743,
+        "sha256": "sha256:b933e5e33e51c7117e76437d7fba5b174e922af1d2eeffeb5c701a4754eb9319"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.api.UpdateControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.api.UpdateControllerTest.xml",
+        "bytes": 781,
+        "sha256": "sha256:27929594f5b4254530ea2f428506efd106409e2298a28dd43c7c0aa61c98d5b9"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.mcp.ActionRegressionMcpToolsTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.mcp.ActionRegressionMcpToolsTest.xml",
+        "bytes": 845,
+        "sha256": "sha256:f99d7bd4f140bacdc0c0f6c25aa2d90c672b1afed750c4ff133c1f2dab08efb9"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.mcp.ClaudeCoachMcpConfigurationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.mcp.ClaudeCoachMcpConfigurationTest.xml",
+        "bytes": 992,
+        "sha256": "sha256:8f0d3993ab08be5635d5d5592953699f4bfff8d55ac8c18a23719ec4a8d7e47e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.mcp.ClaudeCoachMcpToolsTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.mcp.ClaudeCoachMcpToolsTest.xml",
+        "bytes": 2136,
+        "sha256": "sha256:de6e08f4ff693b3095802d3204f5252b4d6fd3656a7dcb5363dba701634ebf0a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpConfigurationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpConfigurationTest.xml",
+        "bytes": 782,
+        "sha256": "sha256:78ffaf144267ec78f7b21da1fe74b2d1e4bc38fb9da446020b1d74aa303cdcc2"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpDisabledTransportTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpDisabledTransportTest.xml",
+        "bytes": 130648,
+        "sha256": "sha256:3bf0d1c591d02fe4c21bf7d85563e5006bf29d2459606621b941450507cb80fc"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpRegressionPageControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpRegressionPageControllerTest.xml",
+        "bytes": 4950,
+        "sha256": "sha256:88d824907096526e6c030ddd8bb6060e8113c8c8bf60397c2e1dc0d389818bf6"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpRegressionStatusControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpRegressionStatusControllerTest.xml",
+        "bytes": 6394,
+        "sha256": "sha256:49fe0a12d1ded6462d6701e029fc28fbd62cfee00621bd30b74dce6d6554214e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpTransportTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.mcp.ClaudeMcpTransportTest.xml",
+        "bytes": 136470,
+        "sha256": "sha256:5c1b9c050270d4498b543d3e6f70a96f8083b49f4bcfbcb5e245fb354e05cea8"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.oauth.ClaudeBindingAuthenticationFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.oauth.ClaudeBindingAuthenticationFilterTest.xml",
+        "bytes": 544,
+        "sha256": "sha256:397a265b6ceb5df6e10e89e154a1f05c306f0e72be385f08ca699b29fa888502"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.oauth.ClaudeConnectionAwareAuthorizationConsentServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.oauth.ClaudeConnectionAwareAuthorizationConsentServiceTest.xml",
+        "bytes": 561,
+        "sha256": "sha256:df81449acdf4ff9bd4bea39b3570d59a8e538cb8cc10419e430dcc5de828aac4"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.oauth.ClaudeConnectionAwareAuthorizationServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.oauth.ClaudeConnectionAwareAuthorizationServiceTest.xml",
+        "bytes": 731,
+        "sha256": "sha256:5a72e683e32ac9ecd00aff0260a04089b113b82b15bc870a6e0bb031d4322280"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.oauth.ClaudeOAuthFlowIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.oauth.ClaudeOAuthFlowIntegrationTest.xml",
+        "bytes": 240662,
+        "sha256": "sha256:83d702fbb41e3f8580de65e8f54be16198b2b2a825ee0c99fd0c65fad4eedca5"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.claude.oauth.ClaudeOAuthStrictModeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.claude.oauth.ClaudeOAuthStrictModeTest.xml",
+        "bytes": 886,
+        "sha256": "sha256:cd1706641de1ad1b53b703554cba391de4597009453ace460be388a85446514a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.composition.CourseProfileCompositionViewMergerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.composition.CourseProfileCompositionViewMergerTest.xml",
+        "bytes": 3098,
+        "sha256": "sha256:f090a0a2c72a4e56b23bf291306a30e674c455aca46940284bddd15204f9c09a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.config.AiAuthenticationFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.config.AiAuthenticationFilterTest.xml",
+        "bytes": 1076,
+        "sha256": "sha256:8c1d65ce61348d9beed5026161e419014c87a24c2805bc65d04c56de294b95cf"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.config.CorsConfigTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.config.CorsConfigTest.xml",
+        "bytes": 1330,
+        "sha256": "sha256:24a1b3160002a16bfd3b8bf02d2217a568e7572067160eba94fd77e06537c856"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.config.RequestLoggingFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.config.RequestLoggingFilterTest.xml",
+        "bytes": 3677,
+        "sha256": "sha256:178c4c411bb5de623cee92af5e91bee030282890c84a23e3df61cd7c3e56da98"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.config.WebConfigTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.config.WebConfigTest.xml",
+        "bytes": 8343,
+        "sha256": "sha256:cd88b04f7fc16d2feaa9092ad4cf01165e867d928343f6d640a7164e2e3ed9ec"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1CrossProviderIsolationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1CrossProviderIsolationTest.xml",
+        "bytes": 377670,
+        "sha256": "sha256:2735cbb17c15f4a4a4f87e5c870d9592bf77f4a1c8d2cb91279f756635c8b167"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1DisabledContextTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1DisabledContextTest.xml",
+        "bytes": 306984,
+        "sha256": "sha256:daa4ad7e11a7c721089e97d552fdcfded89a5537e0c508bd156ad24fc3c32e7c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1OpenAiDifferentialContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1OpenAiDifferentialContractTest.xml",
+        "bytes": 324106,
+        "sha256": "sha256:0e88dd18ef116df08dffafe70b01d82910bd33a95780083cf74237108468c7b7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1RuntimeValidationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1RuntimeValidationTest.xml",
+        "bytes": 2299,
+        "sha256": "sha256:610aa6b28caf0553c0d92fa3df78fa007b7d24f99addc7bf3e4e4f85ce2eff88"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1SecurityChainIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.ClaudeV1SecurityChainIntegrationTest.xml",
+        "bytes": 342404,
+        "sha256": "sha256:a7cf8d04f772d9f0d322619f86e86d1e72cd65c3be0e67aed856a8d2f8847839"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1ActiveGoalContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1ActiveGoalContractTest.xml",
+        "bytes": 306348,
+        "sha256": "sha256:5aa264e452bcbce686c45d8f57ac4745c28bbca716d12e87683d9a7740126e1d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CanonicalExamIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CanonicalExamIntegrationTest.xml",
+        "bytes": 388702,
+        "sha256": "sha256:8a5b1211db6b895be0f039031259fdaf208174ea2f09922dc2bfad8ed6d99d56"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityServiceTest.xml",
+        "bytes": 3154,
+        "sha256": "sha256:b07d8d2f8e4ac52e9e92843305a0a79cbef85ba13d87e30a92c0ff3bde5a718d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CoachContextProjectorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CoachContextProjectorTest.xml",
+        "bytes": 6948,
+        "sha256": "sha256:f4f9666e1ff83a8780f3454fc14414877e1143ace4a64bee3795acd15e568ffc"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1ExamContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1ExamContractTest.xml",
+        "bytes": 44132,
+        "sha256": "sha256:c0e89617154e895a4b1e55771ca96f162c0615c6787d5a2a55381bee218b174c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1GoalVisualizationContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1GoalVisualizationContractTest.xml",
+        "bytes": 73485,
+        "sha256": "sha256:93267669d96f66e7f2c270fdab1fb6b461d16534c1acecdfcfb8ae0fe741870d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1LearningPlanContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1LearningPlanContractTest.xml",
+        "bytes": 78810,
+        "sha256": "sha256:5ba66c92ba38c7ebb142937e1dcf8f6d6e98f9e27504309dee9038c8c2970a6d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MasteryBackendIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MasteryBackendIntegrationTest.xml",
+        "bytes": 1210567,
+        "sha256": "sha256:508d023d7408e248a4a3ff4bd59e4cdd743d820b2f8a05101dcd837884caebc9"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MasteryContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MasteryContractTest.xml",
+        "bytes": 77161,
+        "sha256": "sha256:1f7536402387d3a624d6b75c35244d352784eeae2e6e82a30c820c57ecfc0749"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractTest.xml",
+        "bytes": 12493,
+        "sha256": "sha256:efb5c47a60b8aca802ae080932ef02bb6c0e8786dd7659650a2e362508b6c7a0"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MemoryPracticeContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MemoryPracticeContractTest.xml",
+        "bytes": 43940,
+        "sha256": "sha256:18b627f493f7ec1041f4afacf96f07af88940ba18ce926aad9294247e58e0c5a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinatorTest.xml",
+        "bytes": 164295,
+        "sha256": "sha256:805bce2ca55c997eaf1c0e1f5d481811dfa866575e956d906a8414e58e0a241e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1VerifiedRecallContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1VerifiedRecallContractTest.xml",
+        "bytes": 51521,
+        "sha256": "sha256:58bd720c237fb2ea024b58a4a921599aaf6ced82cd4dff25961f69751f1af1fd"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1VerifiedRecallLearningPlanContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1VerifiedRecallLearningPlanContractTest.xml",
+        "bytes": 55347,
+        "sha256": "sha256:ceb1abb75d6b389f6293d6aa5591bc39ade824dcd01d1e70287d2896b9604927"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1CimdMetadataValidatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1CimdMetadataValidatorTest.xml",
+        "bytes": 2384,
+        "sha256": "sha256:0e01690b7950f4d8b155a19bef213cbcc736d38aec02ee6521660d0a66a0972a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ClientPolicyTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ClientPolicyTest.xml",
+        "bytes": 1663,
+        "sha256": "sha256:46db022708679cb41a46fb64923c33104ed0ae0812cc518d271425a860042b49"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ConfidentialOAuthIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ConfidentialOAuthIntegrationTest.xml",
+        "bytes": 541112,
+        "sha256": "sha256:9d0b3a763591793ce3628fe1151096b7eecda31d167ae4a8cface7d5596e6cb9"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ConfidentialPostOAuthIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ConfidentialPostOAuthIntegrationTest.xml",
+        "bytes": 535760,
+        "sha256": "sha256:6d64bc1b0f93eab739861f6538ef0c2605c5bb499485cc96c897cce7b719ae26"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1HostBoundaryFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1HostBoundaryFilterTest.xml",
+        "bytes": 755,
+        "sha256": "sha256:1fdc58f1ca9a0b6ae6a9119a30e2998fb41c2e2a198fb66043066016eee31a23"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1McpOriginFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1McpOriginFilterTest.xml",
+        "bytes": 1395,
+        "sha256": "sha256:cef63ba3f62a8fb2eb208d836cb87ab0f8a8c1fbb95299ba3f05e3d4e5defb06"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1OAuthBoundaryFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1OAuthBoundaryFilterTest.xml",
+        "bytes": 908,
+        "sha256": "sha256:3318fc24d1c9adef82160c1158b4ad23f671e45299260ecc66dd4f6e01b17607"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1OAuthFlowIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1OAuthFlowIntegrationTest.xml",
+        "bytes": 168580,
+        "sha256": "sha256:89d0e7704d3c93eb73140f87d7e30e644f2ede5ae00e08099c8b129e5ba367b1"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1PublicRefreshFamilyIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1PublicRefreshFamilyIntegrationTest.xml",
+        "bytes": 989860,
+        "sha256": "sha256:0b77a1db295e55376874bbc93e77eac5b817c9dc272a5f2e836ae88f48758a16"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1RefreshTokenFamiliesTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1RefreshTokenFamiliesTest.xml",
+        "bytes": 52060,
+        "sha256": "sha256:e2e81f26545090cf25a9d87a3d51e13663c54d7ff8c19fd664bb71a4b0e7ab1d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.publication.ClaudeV1PluginPublicationControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.publication.ClaudeV1PluginPublicationControllerTest.xml",
+        "bytes": 83702,
+        "sha256": "sha256:fbef856a4db5a526bfe0ca42ea56a790a2119b4d53ea8b7cc505b4df9700a83f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionLaunchTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionLaunchTest.xml",
+        "bytes": 20978,
+        "sha256": "sha256:2005dc18f6f3de25175f0e639e6c9f5362bed7dde7b42acaa9aeafd7303933dc"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepositoryJdbcTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepositoryJdbcTest.xml",
+        "bytes": 740,
+        "sha256": "sha256:8a90060ff5f532677dd003cb0b18e03d307caef5fdfef0c5e14c4a811c097d89"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.GeminiV1DisabledContextTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.GeminiV1DisabledContextTest.xml",
+        "bytes": 328969,
+        "sha256": "sha256:045d2348dea5ad6e7c6457370af35685ce7c2f48dc8c3f28e62d773aa6448a0c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.GeminiV1RuntimeValidationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.GeminiV1RuntimeValidationTest.xml",
+        "bytes": 1400,
+        "sha256": "sha256:4e5ec3047fc8ac7ffe44b2b0204caf983fce507b36565f05ac90b22df22269bb"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1ActiveGoalContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1ActiveGoalContractTest.xml",
+        "bytes": 371529,
+        "sha256": "sha256:cbc2ac4e89a8ff270fd05c9bdce8e59878fa178856c3d99ce86850488f8fcd61"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1CapabilityServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1CapabilityServiceTest.xml",
+        "bytes": 3524,
+        "sha256": "sha256:9363275ef4c695f7c0e460f64c9c760048f50722c8566652cf57cb522f9dcf49"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1CoachContextProjectorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1CoachContextProjectorTest.xml",
+        "bytes": 6943,
+        "sha256": "sha256:676a1e437c4c066ce1f4346e483bf298b66d018dbb0884406c7488c0088ce041"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1ExamContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1ExamContractTest.xml",
+        "bytes": 272554,
+        "sha256": "sha256:f3055f619b1daec71ef91067d7e2b355b87009cb5d868bf7b898e7c1be028a16"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1LearningPlanContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1LearningPlanContractTest.xml",
+        "bytes": 78810,
+        "sha256": "sha256:bddf399638d06f9b5b295b8192d3216ee4e846736268d96f00389598f3c526e9"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1MasteryBackendIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1MasteryBackendIntegrationTest.xml",
+        "bytes": 1203671,
+        "sha256": "sha256:11953289f191d7b7fdb04baf2cc048448f2c295c7aadb741d4f2aabfc96ada95"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1MasteryContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1MasteryContractTest.xml",
+        "bytes": 74318,
+        "sha256": "sha256:055bdffb8830c36d73dc3a4fd6a93fa2b6a886f3faef0dde279ecf75f0241e66"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1MemoryPracticeContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1MemoryPracticeContractTest.xml",
+        "bytes": 84486,
+        "sha256": "sha256:b304b98e9f604dfa3bd91854b14bf58dd0f8961e858229d38e6bda5a0a0aa19e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1NativeContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1NativeContractTest.xml",
+        "bytes": 2786,
+        "sha256": "sha256:6b6e6856e3b3d3e5c8eb2fae7bb35054daf679733cf1507d59fdd50014946515"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1NativeImagePresentationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1NativeImagePresentationTest.xml",
+        "bytes": 2487,
+        "sha256": "sha256:17b909cfbe23b6955cb63850a77e175bcb6cdc972076a2249464fd0a9fe98456"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1NativeImageResultTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1NativeImageResultTest.xml",
+        "bytes": 1572,
+        "sha256": "sha256:993dd053faf777676874f5c3bd572c8cf3c879653aee9db41a2d1681939808b5"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinatorTest.xml",
+        "bytes": 202157,
+        "sha256": "sha256:fb574132e52346dc3e693c78975b705d41c1650264d7317963b3622c4922d389"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1VerifiedRecallContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1VerifiedRecallContractTest.xml",
+        "bytes": 51522,
+        "sha256": "sha256:631077779ace1d3be68258da5f2729b1d914839c61b39da30879520bd51bd299"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1VerifiedRecallLearningPlanContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1VerifiedRecallLearningPlanContractTest.xml",
+        "bytes": 55348,
+        "sha256": "sha256:89f96b1ff803b9a13d2f677ae52f5916633c8ee1ec9c94b89cc3cd7786085172"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.security.GeminiV1GatewayFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.security.GeminiV1GatewayFilterTest.xml",
+        "bytes": 904,
+        "sha256": "sha256:254f32c70a8ba01741a59490db0ddb5a58f0c269642bf4f33db7983a1ceaa22e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionLaunchTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionLaunchTest.xml",
+        "bytes": 23646,
+        "sha256": "sha256:8e28f8e421995856af76686e1d47e3c24c576f0d0de69a5d32dcc67e2dae5ab3"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionServiceTest.xml",
+        "bytes": 967,
+        "sha256": "sha256:425aafb669b5c11eca3984e429f0069ea3e0eddbe4885ae33f7e0d946c956102"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1SessionTokenCodecTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1SessionTokenCodecTest.xml",
+        "bytes": 770,
+        "sha256": "sha256:dcd8ac5d44d1e88be49e4252eebc500864761bf49420026fe1aab23feb915ddc"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.content.ContentAvailabilityTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.content.ContentAvailabilityTest.xml",
+        "bytes": 654,
+        "sha256": "sha256:e09d8cddd05b977f3431bb814ab497d00a26b875ca80a894b467cc6f679962fa"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.content.ContentCatalogTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.content.ContentCatalogTest.xml",
+        "bytes": 3621,
+        "sha256": "sha256:f5d1397adb4f5a1686a204f26510a7a291856c42818933243a19bed268c1625b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.content.ContentMaterialResolverTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.content.ContentMaterialResolverTest.xml",
+        "bytes": 2228,
+        "sha256": "sha256:c35a7df6abb57694ac3a8b9abb7e6471e7f9a489c6ebdcfd38ab7385776009fc"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.content.ContentSelectionControllerHttpTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.content.ContentSelectionControllerHttpTest.xml",
+        "bytes": 36267,
+        "sha256": "sha256:085968a421288b4a2d575d73c582ca23caea50c7a246fa2a418c39f2b9837416"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.content.ContentSelectionIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.content.ContentSelectionIntegrationTest.xml",
+        "bytes": 421914,
+        "sha256": "sha256:c8396928e1b8d83eb7f8bda99d3c6133e8b03d787d33e28720b9cf79a11608ab"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.controller.CurriculumResourceControllerModeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.controller.CurriculumResourceControllerModeTest.xml",
+        "bytes": 707,
+        "sha256": "sha256:fcc723c5aacb2e80160950e0e6be13bfd3f6f4294615fa34907936e1bbfb0472"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+        "bytes": 11846672,
+        "sha256": "sha256:d4c63ec35c4977aebd5e4fc1443028ff7349d7f3e8d40aeccf591e0d27e32550"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.controller.PackageCurriculumResourceControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.controller.PackageCurriculumResourceControllerTest.xml",
+        "bytes": 6191,
+        "sha256": "sha256:4f9daeacd639917a4cc27e33012aef325a029e4b65b957121d672cf42d700b02"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.controller.PackageCurriculumSourceEvidenceControllerModeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.controller.PackageCurriculumSourceEvidenceControllerModeTest.xml",
+        "bytes": 743,
+        "sha256": "sha256:415704dbf869337f28b19704b6ff2e0fd6c78e66ea63a55ede4a5f3f4e72f781"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.controller.PackageCurriculumSourceEvidenceControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.controller.PackageCurriculumSourceEvidenceControllerTest.xml",
+        "bytes": 4505,
+        "sha256": "sha256:f644f13e12e9ee424ba6d59678c19675c5b1bd624d0abd9f00fbe93590c6614b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.controller.PluginDownloadRoutingTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.controller.PluginDownloadRoutingTest.xml",
+        "bytes": 12659,
+        "sha256": "sha256:5a0afa1d402a965834dd4f8153787388bc91c316b9f914e571eb111e4cae48c7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.controller.RepositorySourceRationaleControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.controller.RepositorySourceRationaleControllerTest.xml",
+        "bytes": 4781,
+        "sha256": "sha256:4275774fac8c311948acb5e5ef3ac6faf33a17ef10a569ebd1f96cf98dd8ba0b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.controller.SpaControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.controller.SpaControllerTest.xml",
+        "bytes": 7563,
+        "sha256": "sha256:1dc11923c31eab53ce4ee9a04ac63eff69062a861452662f4983fd229d2497fb"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.CompositionViewServicePackageTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.CompositionViewServicePackageTest.xml",
+        "bytes": 1145,
+        "sha256": "sha256:53dc0b2885dc7bb022c69a26544a2d7dc0ef2916b887158c6a6a4b04710e3ea4"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.CurriculumPackageConfigurationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.CurriculumPackageConfigurationTest.xml",
+        "bytes": 3046,
+        "sha256": "sha256:39102e2034914f583d9b5b12a12620cb433d7405c151229df52e408dd5cc2127"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshotProviderTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshotProviderTest.xml",
+        "bytes": 538,
+        "sha256": "sha256:8f90c1c85ef003e49e2f7bde6429c8932dd4156a36b31011cbde4e3c03634dda"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.FileSystemCurriculumPackageRepositoryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.FileSystemCurriculumPackageRepositoryTest.xml",
+        "bytes": 2500,
+        "sha256": "sha256:bd97991da392319a9bec9f4a8dd9fa886f4ee31872d96af1a3ff3dfc8bb7f909"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest.xml",
+        "bytes": 2587,
+        "sha256": "sha256:d6bd0c22cd900c52b5d896b8df87dad209c4d8e86fbb8ca988e2053364acdc30"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest.xml",
+        "bytes": 2691,
+        "sha256": "sha256:7319a796c724568f4e7f723803ecb4ca9142992e2462d4dec76d52a411f68a6e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.PackageCurriculumResourceStateTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.PackageCurriculumResourceStateTest.xml",
+        "bytes": 1437,
+        "sha256": "sha256:f080097fb94a5b93173c744bf6c5825fd231040b2a45666ff482c0a12a51c271"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.PackageCurriculumRuntimeApiConformanceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.PackageCurriculumRuntimeApiConformanceTest.xml",
+        "bytes": 9807,
+        "sha256": "sha256:9b29a4b4983f89219064caf908654feffa719410e9d78b9da2174e3642de20c0"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingCompilerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingCompilerTest.xml",
+        "bytes": 2584,
+        "sha256": "sha256:1503bc378ed453c9c60fd3048ae80445f5aa6d22656fd979a2700766828f02c1"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.PackageLandscapeModelParityTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.PackageLandscapeModelParityTest.xml",
+        "bytes": 722,
+        "sha256": "sha256:8613cbb47bc3ff5c930833fd112966fc4bd0ae276da75c9b027c403b41709008"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.PackageSourceEvidenceStateTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.PackageSourceEvidenceStateTest.xml",
+        "bytes": 1435,
+        "sha256": "sha256:04f98ee59fcfa7b015633b3d62f6f28a854bee2aeaab06461bcc6bd47c94e63c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest.xml",
+        "bytes": 1275,
+        "sha256": "sha256:6d6584e7ed63e68048627ea5ad17cddd74935cb30db52584066118788f9f9740"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.domain.OpenAiDeLearningSessionDirectiveMigrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.domain.OpenAiDeLearningSessionDirectiveMigrationTest.xml",
+        "bytes": 4223,
+        "sha256": "sha256:ff69eb0aea6a71a50270fbf6febc8eae29380375bc2c88de532f923e62fa2f26"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackBoundaryFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackBoundaryFilterTest.xml",
+        "bytes": 2739,
+        "sha256": "sha256:c90248752017feceda57131609e084e4275c7f221d7d2a3a0a1e78724ba1dda7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackBoundaryHardeningIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackBoundaryHardeningIntegrationTest.xml",
+        "bytes": 329492,
+        "sha256": "sha256:e8d1b62f59491401cacd0afd09defc11d768469a3374827454bbb54ca38d1b15"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackExportExpiryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackExportExpiryTest.xml",
+        "bytes": 691,
+        "sha256": "sha256:bc777c1d812082f04f3e77fd3e9be8a145d05058ce4cfb069d087e92bbb0036b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackExportRetentionTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackExportRetentionTest.xml",
+        "bytes": 542,
+        "sha256": "sha256:32905d2f8253e5be19bbe44b7c2ac3251f2aef5e231bf9b72af408e34a55004f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackExportSizeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackExportSizeTest.xml",
+        "bytes": 531,
+        "sha256": "sha256:af837970310f561810a0c358429a63f89b8effcf4fead76026ef92cb775da5b3"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackFeatureActivationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackFeatureActivationTest.xml",
+        "bytes": 1364,
+        "sha256": "sha256:348ddf0b1102d757793927a622dfee2a5b985790110f0a984d18cb2b8c601cc4"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackProductionHandoffIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackProductionHandoffIntegrationTest.xml",
+        "bytes": 424426,
+        "sha256": "sha256:c606804d9a4a469caed9a2ce9687734b7560fb94c1b6e5f1f12b3957320d891c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackPublicControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackPublicControllerTest.xml",
+        "bytes": 10360,
+        "sha256": "sha256:d19a8896abf67c00dc89c78bd8cd31cce117c1c24a645bf66a32883c4eaeaf0f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackPublicVisualizationIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackPublicVisualizationIntegrationTest.xml",
+        "bytes": 236707,
+        "sha256": "sha256:7130d84c70b1961585fadd00e4f445a3932a6086382acd87d5d6ca56f43ffe38"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackPublicationRenderVariantTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackPublicationRenderVariantTest.xml",
+        "bytes": 62264,
+        "sha256": "sha256:3a0db0134e3816fb9735030493e6da152f3d531443cd2994a029825f50bbc650"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackPublishedCatalogTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackPublishedCatalogTest.xml",
+        "bytes": 709,
+        "sha256": "sha256:08090a9c9a27a1b4e64d21a9fbc2444d24e3d71da2f25eba3327c2977d8902d6"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackRetentionCleanupJobTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackRetentionCleanupJobTest.xml",
+        "bytes": 545,
+        "sha256": "sha256:5d778608149a596dcc64843cfe77740e984d6a73797f73eb3f78791e3861bbc4"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackRetentionServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackRetentionServiceTest.xml",
+        "bytes": 32862,
+        "sha256": "sha256:a7ec14b724c1f8ed32ec7bdda2020ed8623be79fc4d13b01003f449d83c650e2"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackSubmissionValidationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.goalfeedback.GoalFeedbackSubmissionValidationTest.xml",
+        "bytes": 721,
+        "sha256": "sha256:04405020a01ce0f114caeb4700e431db53b3cc0c637f9d6def8b275d234e6bad"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.ClosureTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.ClosureTest.xml",
+        "bytes": 1156,
+        "sha256": "sha256:fa2080adc5611e17b44d5244c30e0ea70d3ea53e40c1c3721fa7fd2d53406bb4"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.CurriculumDirectoryScanTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.CurriculumDirectoryScanTest.xml",
+        "bytes": 2706,
+        "sha256": "sha256:b3192e21e8fa96677c0aa8eee8fe7adcd46ca43dd1030e8a5c366b0fca02cb6e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.ExamLatexStorageConventionsTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.ExamLatexStorageConventionsTest.xml",
+        "bytes": 853,
+        "sha256": "sha256:b80cf57232dd5da7b07b9b296f8954c3ec7d2b968c9beb3994c11558c3635f99"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.GoalIdMappingTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.GoalIdMappingTest.xml",
+        "bytes": 27092,
+        "sha256": "sha256:103e6621b5ad50391dbe0e076c97e4cac002fa5465e372f48680ed4ecb46829d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.GoalLoadingTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.GoalLoadingTest.xml",
+        "bytes": 1395,
+        "sha256": "sha256:e7c9baef58b8995324e87e07e6ead03be72be7ef8b81c1052d74c5df52e16dcd"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.xml",
+        "bytes": 16399,
+        "sha256": "sha256:24f16aaf3732348dc5a9044c4352458af99169789aefda8578f82a37e799a7a7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.GoalMappingServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.GoalMappingServiceTest.xml",
+        "bytes": 3725,
+        "sha256": "sha256:828d4ff8e1e145e64e90824d71d8e8486ffa1a0341934168008a3f31c3ae29e2"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.LandscapeDiagnosticTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.LandscapeDiagnosticTest.xml",
+        "bytes": 1433,
+        "sha256": "sha256:bf2dfee5234644c5c5f84c9ff1c81c932d00e651676557a1e78b5915e3f7efc4"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.LandscapeReleaseMetadataTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.LandscapeReleaseMetadataTest.xml",
+        "bytes": 26635,
+        "sha256": "sha256:73065afab9b50a64ad13f6139a440f21a7df1689cb89bbc8f109b7e2379cb81d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.LandscapeServiceSourceRegistryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.LandscapeServiceSourceRegistryTest.xml",
+        "bytes": 9531,
+        "sha256": "sha256:90372f7f052963352ead9ff0a864798c0b747d5cd2d000ab51220073f79f055a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.LandscapeServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.LandscapeServiceTest.xml",
+        "bytes": 1261583,
+        "sha256": "sha256:f7445f6073cef23a21effd5566afb852bfa8896a6259e9a4138c87598fa901ad"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.landscape.PrunedFileTreeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.landscape.PrunedFileTreeTest.xml",
+        "bytes": 930,
+        "sha256": "sha256:ac0a5f000bdb2b2088638d60daf35d39350bad891a66621dfed3ff73f772f81e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.mcp.McpProviderIsolationTransportTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.mcp.McpProviderIsolationTransportTest.xml",
+        "bytes": 135794,
+        "sha256": "sha256:3a41880b8f4bedaf2df8719dfbcf76b1321d98424fb22c0a48c6a99a48f875f1"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.mcp.SkillPilotStatelessMcpServerFactoryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.mcp.SkillPilotStatelessMcpServerFactoryTest.xml",
+        "bytes": 150576,
+        "sha256": "sha256:8b32b9f54c43bef9a687d5131f96f4eed9aa3e75faecda4db100ae598e8d2e9f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.migration.ChampionTrialMigrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.migration.ChampionTrialMigrationTest.xml",
+        "bytes": 4320,
+        "sha256": "sha256:8d3738f0cc056c8074a120758e9043a2c69891e2c575fe9004508aced1328ca2"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.migration.LearnerGoalCompletionMigrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.migration.LearnerGoalCompletionMigrationTest.xml",
+        "bytes": 4544,
+        "sha256": "sha256:aa91919e156c2b3b0d4194b9ebb79c361917a4ba53d41197f9e587226d3f09c1"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.migration.LearnerLearningPlanMigrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.migration.LearnerLearningPlanMigrationTest.xml",
+        "bytes": 78939,
+        "sha256": "sha256:07cd8af0d216515597f6033d1be24bc9090f6156f5850b852aab0b63b6a15b7d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.migration.TeacherSupervisionRemovalMigrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.migration.TeacherSupervisionRemovalMigrationTest.xml",
+        "bytes": 10236,
+        "sha256": "sha256:eec9e10e2457bf0d1e749448044ce3bc4e5696dc8570251760f4c2812f1f34a8"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.AuthenticatedClientPolicyTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.AuthenticatedClientPolicyTest.xml",
+        "bytes": 82523,
+        "sha256": "sha256:8c416309be73e55d923e7ceb9add9a1bad9b791fbf2eadd3ba2e5c32c46f3d70"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.CombinedProviderOAuthIsolationIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.CombinedProviderOAuthIsolationIntegrationTest.xml",
+        "bytes": 474127,
+        "sha256": "sha256:e1f59e75a8381c1b0461a1f7a2c10b637a760c20d8e82bd9f92535e75d4cca8f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.IndependentClientProfilePolicyTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.IndependentClientProfilePolicyTest.xml",
+        "bytes": 182961,
+        "sha256": "sha256:02e99066692b8948908a5d55fc2e70f8a98f6231f17566abf8c9ee2cc04b7272"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.JdbcOAuthClientAssertionReplayStoreTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.JdbcOAuthClientAssertionReplayStoreTest.xml",
+        "bytes": 30484,
+        "sha256": "sha256:a2e56e7bac5b4c0ce330148d18f6ccac519b10ff9573ef5f165e0c779cc0c741"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.OAuthAuthorizationCodeExchangeGuardTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.OAuthAuthorizationCodeExchangeGuardTest.xml",
+        "bytes": 17156,
+        "sha256": "sha256:2ecd7e9f02751a123ac5666b56472ab79c5a15878c1d20110e083fc6605abace"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.OAuthClientSecurityPostgresIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.OAuthClientSecurityPostgresIntegrationTest.xml",
+        "bytes": 2062,
+        "sha256": "sha256:b3f18eff5acb963acf5bc5e0ff5711e6b1d9cb3e98cd53835a9c1bcc8e379ffd"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.OAuthProfileDiagnosticsFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.OAuthProfileDiagnosticsFilterTest.xml",
+        "bytes": 5156,
+        "sha256": "sha256:319dcff20b91502f6ab2aba4b47b9cd9e75c4428a7000df747079c2fc342eb6d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.OAuthTokenRevocationBoundaryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.OAuthTokenRevocationBoundaryTest.xml",
+        "bytes": 1290,
+        "sha256": "sha256:a463706bc7070826b7ea15d20b979f259e4f0df75ea835bcafcef653a81ae6c6"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.ProviderScopedOAuth2AuthorizationServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.ProviderScopedOAuth2AuthorizationServiceTest.xml",
+        "bytes": 711,
+        "sha256": "sha256:b1ff81b519100e672fd80d0745c6ebba72793ce4dfa09e365c765ef9eb7c6ec7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepositoryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepositoryTest.xml",
+        "bytes": 861,
+        "sha256": "sha256:2db73dbf8d5e8f6b402b18130095fd6837772f8f080acb20e875655367a69866"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.OpenAiCoachLocaleTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.OpenAiCoachLocaleTest.xml",
+        "bytes": 762,
+        "sha256": "sha256:56fa58474012509327d66e7abffdb9e754f00918d90b0d163ba7ba682a4f00b6"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.OpenAiRuntimeEnvironmentValidationConfigurationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.OpenAiRuntimeEnvironmentValidationConfigurationTest.xml",
+        "bytes": 1099,
+        "sha256": "sha256:8205efa2f6c3167ad3070b42e8ace328d83eb1ad556e8cd0e4c50f52a939d8ac"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.OpenAiAppsChallengeControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.OpenAiAppsChallengeControllerTest.xml",
+        "bytes": 513,
+        "sha256": "sha256:0c46dcbaabb90eafc2343b166f5c2c747e89d562e9cc0e3381dd6d306cd6e294"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProviderTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProviderTest.xml",
+        "bytes": 545,
+        "sha256": "sha256:5874e12d9a80150d75a35499f16545120678f344dabe75fd35dc6946d60f74fb"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.OpenAiDeEmbeddedServerBuildTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.OpenAiDeEmbeddedServerBuildTest.xml",
+        "bytes": 1260,
+        "sha256": "sha256:ffe2a22e75127c91585066a6d3484a4d390f598dee6c459c05eae740ef12b541"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest.xml",
+        "bytes": 12912,
+        "sha256": "sha256:cb1fcb607c978b2a298c725cce5f6a457f98991e296530b56ee61be3ce6b0a01"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.health.OpenAiDeCoachHealthIndicatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.health.OpenAiDeCoachHealthIndicatorTest.xml",
+        "bytes": 59906,
+        "sha256": "sha256:1d5e71fc0a3bed19dfb0086d3053055fec0d04ae78ceb6bc5a3afcdeea109dd7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.mtls.OpenAiDeMtlsEdgeClassificationFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.mtls.OpenAiDeMtlsEdgeClassificationFilterTest.xml",
+        "bytes": 1955,
+        "sha256": "sha256:29c49350d0baa6204dbbf5a5385c120b5e4e12c133e60c912057e43f8096edb9"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeBindingAuthenticationFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeBindingAuthenticationFilterTest.xml",
+        "bytes": 715,
+        "sha256": "sha256:7a19800ae517583b78fa50cb2741aa7064e0bb68fe3b8806bc2cd89be9942e0f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeCimdMetadataGateTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeCimdMetadataGateTest.xml",
+        "bytes": 1758,
+        "sha256": "sha256:2ca6c5d7347f315b1deb0472c1c455e9e240b94322efeb2d19f0c8ecfbf7d375"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeCimdMetadataValidatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeCimdMetadataValidatorTest.xml",
+        "bytes": 1200,
+        "sha256": "sha256:c6dee3aeff54c2c614f191b67379077211d3036650ba794ece3d872533466b5d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAssertionDecoderFactoryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAssertionDecoderFactoryTest.xml",
+        "bytes": 947,
+        "sha256": "sha256:65c8438bf61fd4ae1a684a2eb1d751aa40c95853d1d8308c1d98cec2683e35a7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAssertionDiagnosticsTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAssertionDiagnosticsTest.xml",
+        "bytes": 11648,
+        "sha256": "sha256:8cd5011a5c33e773805a44e5b5ddc4ad6933c12628e697a1a48ab6451aa19f61"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAuthenticationDiagnosticsTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAuthenticationDiagnosticsTest.xml",
+        "bytes": 14429,
+        "sha256": "sha256:88f3fb7b0ae24962f51ec2f3afddb2c1d2982f55845e216201a239adb3760e2c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeClientProfilesTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeClientProfilesTest.xml",
+        "bytes": 1258,
+        "sha256": "sha256:3d4122236664707465b1139fba8170c373ee81227b1193a6b7f09ee4334531fb"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeCoachIdentityResolverAdapterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeCoachIdentityResolverAdapterTest.xml",
+        "bytes": 1122,
+        "sha256": "sha256:e9fabc8ece220141b1d24aa1b5bc7227ce82cbe725a4746125343ab4140248c0"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeJwtClientAssertionValidatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeJwtClientAssertionValidatorTest.xml",
+        "bytes": 10294,
+        "sha256": "sha256:fc1337890cd09e67953ba85dc9bb513513f31f6bf71ec787e7b335146f685560"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeMtlsEdgeIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeMtlsEdgeIntegrationTest.xml",
+        "bytes": 141521,
+        "sha256": "sha256:4e6a5faeb4642e4922484b324401e58e3b9448ce2d3e302a2936c22152a3457e"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeClientProfilesTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeClientProfilesTest.xml",
+        "bytes": 1422,
+        "sha256": "sha256:c674255ec3b6022e1e538c85222f1ed52f21977aa262647518593c283fa3f776"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeOAuthFlowIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeOAuthFlowIntegrationTest.xml",
+        "bytes": 788133,
+        "sha256": "sha256:762ad3eddf545647bfa74ab9c89162c453474c39d7eef9cb1c95f3f157ed28df"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfigurationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfigurationTest.xml",
+        "bytes": 8000,
+        "sha256": "sha256:61deb027f7bb0e62ae08c96982cf53e5d4c925c99b1475e899900ae03385e245"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthDiscoveryBootstrapIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthDiscoveryBootstrapIntegrationTest.xml",
+        "bytes": 165363,
+        "sha256": "sha256:a0324df64ca7330b1f9b4fb07240d75c017926a2017c9a95c5aaf249017f06e9"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthFlowIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthFlowIntegrationTest.xml",
+        "bytes": 350007,
+        "sha256": "sha256:d81705ff179ef23c5b2972f57c6434153b839d81ed639d4c5d3fe4732115250c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthLegacyClientCutoverTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthLegacyClientCutoverTest.xml",
+        "bytes": 38796,
+        "sha256": "sha256:2c1863f5ca187cac4928310911279c36bee1e3a6871f3d09cf09fae663c3fdba"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOpaqueTokenIntrospectorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDeOpaqueTokenIntrospectorTest.xml",
+        "bytes": 1279,
+        "sha256": "sha256:ac333c3e6648af88577cc7cc51e65d299a2b0b5eeef5014012635d4bbccddd42"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDePinnedJwkSourceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDePinnedJwkSourceTest.xml",
+        "bytes": 1034,
+        "sha256": "sha256:da86952b2dccd0ed29a1c19b2acdf75fa7477efd46c296ae4683771d01958cd6"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDePrivateKeyJwtFlowIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDePrivateKeyJwtFlowIntegrationTest.xml",
+        "bytes": 463049,
+        "sha256": "sha256:37ccb7188e8945112327b2ca4611fd2b3a0025eba840868057380521d980e18d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDePublicOAuthContextIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.oauth.OpenAiDePublicOAuthContextIntegrationTest.xml",
+        "bytes": 231213,
+        "sha256": "sha256:778bb2b9d8a8b730846ec4008158315fafb143b10169fa8832f0f96d8cdafe77"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.observability.OpenAiDeHttpOutcomeTelemetryFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.observability.OpenAiDeHttpOutcomeTelemetryFilterTest.xml",
+        "bytes": 916,
+        "sha256": "sha256:29e516ca17e8a1aa5fe9208d32f114815da1b10b9a809aa8226b1bf4c7fd777a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetryTest.xml",
+        "bytes": 562,
+        "sha256": "sha256:5871ff5cc1360518843870cc9cfdff6fff047a81accd5df2054f6b857167e74f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.de.ratelimit.OpenAiDeRateLimitFilterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.de.ratelimit.OpenAiDeRateLimitFilterTest.xml",
+        "bytes": 1229,
+        "sha256": "sha256:49d733de3210ba630238c77f52f1be61f1e3a8160cdf989f294391d63070b25d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachContextProjectorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachContextProjectorTest.xml",
+        "bytes": 3423,
+        "sha256": "sha256:42cb1457f914ea66c7023ddbba9d8f22838207ed6bf056f4b3b5fcd4f506d509"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest.xml",
+        "bytes": 4554475,
+        "sha256": "sha256:8a603bd655050457f769d71cdbfd4940b805d1ef6c0a22127742128408f419bd"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContractTest.xml",
+        "bytes": 103175,
+        "sha256": "sha256:0628578e0cbe2397eb4ae77626a634368f830168e626e9d4052b683bc638e0ba"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachPersonalizationContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachPersonalizationContractTest.xml",
+        "bytes": 1942,
+        "sha256": "sha256:2e2fbb02c191bda262ec223db82ff9f186c57291e4b828bbfd53de0a969dde1b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachPersonalizationProjectionTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachPersonalizationProjectionTest.xml",
+        "bytes": 3453,
+        "sha256": "sha256:e0d1fcc3d4caff8220b9d39a71adc1084d5e082bf7dcf7d55eb85e355534dff4"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCurriculumOptionFacetsTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeCurriculumOptionFacetsTest.xml",
+        "bytes": 850,
+        "sha256": "sha256:ee8e26b35f4478da1071be0543e5a1493fff5941526fecfc89665bba1e476e65"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpTelemetryTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpTelemetryTest.xml",
+        "bytes": 14114,
+        "sha256": "sha256:1977faf8580d4f2b5b7caf22e29208247ad9e828371e8c80498baeb624991dc6"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDialogReplayHarnessTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDialogReplayHarnessTest.xml",
+        "bytes": 8567,
+        "sha256": "sha256:fd2f52cb6b9745c953efe3ae8e9d419d2526121e8d455fb94654a45f673d8446"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDialogReplayReviewFixturesTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiDialogReplayReviewFixturesTest.xml",
+        "bytes": 19796,
+        "sha256": "sha256:807b5c80102c892fd11901128d87554aae92a3f9a2918eb9e69811a734158622"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.OpenAiSubmissionReviewReplayTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.OpenAiSubmissionReviewReplayTest.xml",
+        "bytes": 23642,
+        "sha256": "sha256:86a749313bdf31ef523ea5a7d23cfe6c2e412a9ec60421a40b8aa2cec73cf14b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.xml",
+        "bytes": 46921,
+        "sha256": "sha256:0943def29ecdadd4102b362b6c11212a433a0fe6a9b1c8a9e623cbb7c50482d8"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ErrorCodeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ErrorCodeTest.xml",
+        "bytes": 695,
+        "sha256": "sha256:85c23e0dc8fdea549401409c9152a419dd56299b5d3cf5e86f0d4aa35a63c7cb"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinatorTest.xml",
+        "bytes": 3485,
+        "sha256": "sha256:4d70f54de21a7cf8281f333f0aa9c436c222e814cb6f1e0d8ee30794787229cc"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidationTest.xml",
+        "bytes": 1060,
+        "sha256": "sha256:a77a8e696cf241d74270691a12c8f4290bfae3d564a0d61cd1fce54cfa8a71a2"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidatorTest.xml",
+        "bytes": 10019,
+        "sha256": "sha256:bf2d97759d6e008fbbdefde6483cc0480f56aade3004a6ccd891c3699e5f272b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeRefreshTokenFamiliesTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeRefreshTokenFamiliesTest.xml",
+        "bytes": 152520,
+        "sha256": "sha256:e319e1e9b6907817735190456c32347ae93df40cf71a36ed92d27557aa2d76af"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.CanonicalGymnasiumPersonalizationMigrationIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.CanonicalGymnasiumPersonalizationMigrationIntegrationTest.xml",
+        "bytes": 498644,
+        "sha256": "sha256:2b96557512be070bd7995291b0fd91d9e193ec1d34114e1a23b04676a03a155f"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.ChampionPracticeFingerprintTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.ChampionPracticeFingerprintTest.xml",
+        "bytes": 852,
+        "sha256": "sha256:f3b4b8422d10022d95711b775dfa2615f5e6ed2de21a1d1018aaa06b82ff89ed"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.ChampionTrialServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.ChampionTrialServiceTest.xml",
+        "bytes": 3114,
+        "sha256": "sha256:392a1ed6d032bc03b77d0f182f3c31775cf20fcbddd5241107579c8ba4ff08ea"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.ChatSessionServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.ChatSessionServiceTest.xml",
+        "bytes": 1175,
+        "sha256": "sha256:8ecee6f2d084b64415af46ec54e9f9c8e8290a2f0858ceeb6e7278a6cba4ed2b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.ClaudeCoachConnectionServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.ClaudeCoachConnectionServiceTest.xml",
+        "bytes": 1728,
+        "sha256": "sha256:7884d4012350834a34fef1828ea2c18d79131e8fa0c5bdfa27fa4b188de2aa0a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+        "bytes": 11969,
+        "sha256": "sha256:06b2e92f474a5524f576d6d36e9692481efc7199ff65fb4d8a21f93ff2516827"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.CurriculaChampionTrialIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.CurriculaChampionTrialIntegrationTest.xml",
+        "bytes": 73139,
+        "sha256": "sha256:352ed4fb8a627d96d0a2db9f86f5ce905677bb1ce680edf9dedd84a78d87791a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.CurriculaServiceQualitySnapshotSourceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.CurriculaServiceQualitySnapshotSourceTest.xml",
+        "bytes": 546,
+        "sha256": "sha256:4ad5deecc1a33d7ce432805cb6a96117bd0eec6eb4eb6c30fdf22f6782d8d8bb"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.CurriculumPersonalizationPlannerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.CurriculumPersonalizationPlannerTest.xml",
+        "bytes": 6779,
+        "sha256": "sha256:da23273013203a406efd7fcb32e3131f52f2355ab4bb05763d0536e3f9074055"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.CurriculumQualitySnapshotProviderModeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.CurriculumQualitySnapshotProviderModeTest.xml",
+        "bytes": 701,
+        "sha256": "sha256:f58905aa77200009deb8bd1ba9e4b0c8e81ac3650e8257da4cb261ccdb5c6f9c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.DeckResourceServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.DeckResourceServiceTest.xml",
+        "bytes": 1107,
+        "sha256": "sha256:ea4c2baa815a73b66d48c97315cfec17ce2a334d1a6d5cd58e3784f8d8b46945"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.HistoricalContentLinkBindingsTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.HistoricalContentLinkBindingsTest.xml",
+        "bytes": 1112,
+        "sha256": "sha256:13f451c31d6c1f5b5b8158a788b53399a7296383a5502b47b9ec30fd3ff1dadf"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerFrontierInvariantTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerFrontierInvariantTest.xml",
+        "bytes": 30415,
+        "sha256": "sha256:96a4a7c6782e63455668e39b6004917ec11693177b5604f667851dfeb40914de"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerGoalCompletionIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerGoalCompletionIntegrationTest.xml",
+        "bytes": 127848,
+        "sha256": "sha256:513d83d53a875a6b70672c7fd9948dda09f864f4746d7a87f5ae58f121b28204"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerGoalCompletionPracticeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerGoalCompletionPracticeTest.xml",
+        "bytes": 1059,
+        "sha256": "sha256:ab4699c32df3b57a0443320277919688bc58e5a5e023cf29e7b2fd938f1c56f6"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerLearningPlanServiceIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerLearningPlanServiceIntegrationTest.xml",
+        "bytes": 628805,
+        "sha256": "sha256:352155b44b2d8e7b63f0045ed1157c3263ff5b9b74dfc021513769c98d8449f0"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerLearningPlanServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerLearningPlanServiceTest.xml",
+        "bytes": 1192,
+        "sha256": "sha256:b9e53b08b5b4ac9bc13dcbe561135ef4721362f7f7cd7005cad7e3ae23bdcc84"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerLifecycleServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerLifecycleServiceTest.xml",
+        "bytes": 1347,
+        "sha256": "sha256:949b6a89faf457aaaea26f0dcb823801dfd04290d3757c62474dc807b5b2e657"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerPersonalizationMutationContractTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerPersonalizationMutationContractTest.xml",
+        "bytes": 9154,
+        "sha256": "sha256:171dcae52c4fc6cf5285dbf37de946a654eedf86f9dbc2565460c452c8bec652"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerPersonalizationProgressionIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerPersonalizationProgressionIntegrationTest.xml",
+        "bytes": 583382,
+        "sha256": "sha256:68cfcfe341339f2b2b61d9d81c1f431e097cce604716aa339a589110f06e690b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerPlanningScopeServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerPlanningScopeServiceTest.xml",
+        "bytes": 664400,
+        "sha256": "sha256:2485bc4224c87fb933f65578b558007a11100eaaa19ffcc4be30396ef02007b1"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerProjectionMemoizationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerProjectionMemoizationTest.xml",
+        "bytes": 27354,
+        "sha256": "sha256:6586c12874a87bdd28ba3b787d75b0819df571f8f5f39c03443c482f5bc9cc0d"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerRetentionCleanupJobTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerRetentionCleanupJobTest.xml",
+        "bytes": 491,
+        "sha256": "sha256:3f82a379f20f49b2b4ebed2e9571690f3c434d789d9825c1a1855d10f4700132"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerRetentionLiquibaseIntegrationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerRetentionLiquibaseIntegrationTest.xml",
+        "bytes": 297423,
+        "sha256": "sha256:2738666c3495a178699bdc474879fa00a693e1b26f9fed57f1b8b4225a735515"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerSelectedLandscapeRuntimeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerSelectedLandscapeRuntimeTest.xml",
+        "bytes": 875,
+        "sha256": "sha256:e8da595d3b11ce2a992a2125a83ee3523ebcae9100c062c9c3f8dd5030b60bd3"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest.xml",
+        "bytes": 64095,
+        "sha256": "sha256:32986948fbbbad70f1527c376b5e7fffd82786e4d85d6bf44afaca1cece3788a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest.xml",
+        "bytes": 57644,
+        "sha256": "sha256:a11b0cf6ffef17e76ff931437630307a51c5d1d5f1656f0f3f671a4ff96728c0"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerServiceMasteryCorrectionTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceMasteryCorrectionTest.xml",
+        "bytes": 1040,
+        "sha256": "sha256:7761af545ad59dba78f09c21e5475e53e7ea807f65da44b88ecfe154675443a7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerServiceReproTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceReproTest.xml",
+        "bytes": 6645,
+        "sha256": "sha256:223a0a2de8a0fd293056a45f548b1b95ae1c813450d2e58cb17d57edfeaf459c"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceTest.xml",
+        "bytes": 11666169,
+        "sha256": "sha256:4574b2f2219670ac96e77829de2546d2df5679e8cc1feb588fe4527009504a72"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearnerStateMachineFrontierFallbackTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearnerStateMachineFrontierFallbackTest.xml",
+        "bytes": 698,
+        "sha256": "sha256:fbb43cbc0d06a97a8338e9001b669d2a358e97e3791c0b79c4d1cbba4fb295c8"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.LearningPlanDailyProgressTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.LearningPlanDailyProgressTest.xml",
+        "bytes": 2494,
+        "sha256": "sha256:dc2a0e1a66ce448edc74f5a93aff48b423d9d1334937e019fc3b5a7522453f68"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.MitOcwFrontierWalkthroughTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.MitOcwFrontierWalkthroughTest.xml",
+        "bytes": 27131,
+        "sha256": "sha256:e58b69af90be19ed9df83fddcbb334e15f1b0f3a8bba075075d8213b6e6f48c8"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.OpenAiDeCoachConnectionServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.OpenAiDeCoachConnectionServiceTest.xml",
+        "bytes": 7185,
+        "sha256": "sha256:a698b4bfbb8b6f19816eb4ddad99b963735de57d69933c0407716802898c7b34"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.PackageCompositionViewConsumerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.PackageCompositionViewConsumerTest.xml",
+        "bytes": 2854,
+        "sha256": "sha256:4ef3fad14d7a9634a159357d39dd7610e1bd4c8f69e484e2980aa52b38e08fd0"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest.xml",
+        "bytes": 36257,
+        "sha256": "sha256:bdc81e010bda950a7d1419e5f20466f53ad5d76d9078bc7ce50cc073d2b0f991"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.RepositoryCurriculumQualitySnapshotProviderTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.RepositoryCurriculumQualitySnapshotProviderTest.xml",
+        "bytes": 1280,
+        "sha256": "sha256:0bda865bd3ae361cc77801b3cb162cbd64341282c1c7f320df4b6937b6e74da3"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusCalculatorTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusCalculatorTest.xml",
+        "bytes": 3200,
+        "sha256": "sha256:3a24b62d48fe91ecbcc0ba5d104cbd3f3b1ca50e00a1143eda990181f08cec7b"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatterTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatterTest.xml",
+        "bytes": 1517,
+        "sha256": "sha256:2d47033c8db986132e7811ecf3740408c82c444bc29aef054ba3ab0a70f6fb5a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.ClaudeCoachUiControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.ClaudeCoachUiControllerTest.xml",
+        "bytes": 1123,
+        "sha256": "sha256:55fd41037cf0dedf07bfc67cfd3210006677e4c051e38dfecce83695bc167cca"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.CompositionViewUiControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.CompositionViewUiControllerTest.xml",
+        "bytes": 2522,
+        "sha256": "sha256:ce3dc8516ebbdc7c248c2e573659312437da3bba4ed86478371a86f418a30ea7"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.CurriculumCatalogUiControllerModeTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.CurriculumCatalogUiControllerModeTest.xml",
+        "bytes": 666,
+        "sha256": "sha256:b1a1057303a60951b5bc7bf35ec01384184cbef330d618b2332772daff9c4e17"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.CurriculumQualityUiAdviceTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.CurriculumQualityUiAdviceTest.xml",
+        "bytes": 7675,
+        "sha256": "sha256:813b60f0347fd5e372fe90000119cfb3879abc3ba189c0de9e2ffbe715f88653"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.LearnerLearningPlanControllerHttpTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.LearnerLearningPlanControllerHttpTest.xml",
+        "bytes": 29539,
+        "sha256": "sha256:7d83b90c2f829a2263b391429dabf483138bd626425019ed3bf71b20f7cce48a"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest.xml",
+        "bytes": 2226,
+        "sha256": "sha256:e780ea2455a5d0f7affa764d857a1142cba690d8f73024eb10c453ef53b06f46"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.LearnerUiControllerPlanningScopeHttpTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.LearnerUiControllerPlanningScopeHttpTest.xml",
+        "bytes": 5389,
+        "sha256": "sha256:07e5232723aa6c75c0840caf7bdf6139ee8d0c15604d5058302219aeb04cb0fa"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.LearnerUiControllerRetentionHttpTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.LearnerUiControllerRetentionHttpTest.xml",
+        "bytes": 14228,
+        "sha256": "sha256:4581174eac29c84f0a9fc1045f62e14970d8d04adc28ac892b6784c3cd1e1164"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.ui.OpenAiDeCoachUiControllerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.ui.OpenAiDeCoachUiControllerTest.xml",
+        "bytes": 834,
+        "sha256": "sha256:848c32e9871b1012a722697035e2ea461eee1ad3dfceeaa71e5bf5d35da91eb2"
+      },
+      {
+        "archiveMember": "TEST-com.skillpilot.backend.util.BundeslandCodeNormalizerTest.xml",
+        "originalPath": "tmp/backend-ci-build-2424356/test-results/test/TEST-com.skillpilot.backend.util.BundeslandCodeNormalizerTest.xml",
+        "bytes": 656,
+        "sha256": "sha256:cf87e8deac257d7b52c0093d16648bac0a179173123d40ddbdfac56bd755a237"
+      }
+    ],
+    "verification": "All archived XML bytes compared with original inputs."
+  },
+  "otherExactArtifacts": [
+    {
+      "originalPath": "tmp/cross-subject-requires/ci-all-first10-corrected-http-fixture-final-replay-20261013.log",
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/full-ci.original.log",
+      "bytes": 2187160,
+      "sha256": "sha256:729daadb4e595b84b09e48cbbe68b70d758d3c9e115199797f597dcee4ea3286"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/ci-candidate-20261013.index-receipt-v4.json",
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/ci-candidate-index.original-receipt-v4.json",
+      "bytes": 493,
+      "sha256": "sha256:2ffc6b04b93bbe594484ab2b34e80867cafb8f1732a7dbf026ab2c0251090619"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/ci-candidate-20261013.environment.json",
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/ci-environment.original.json",
+      "bytes": 1308,
+      "sha256": "sha256:f05fe07758a173357650197e62c22d972558e7aabb46460fc341ea456f6ffccd"
+    },
+    {
+      "originalPath": "tmp/backend-ci-build-2424356/resources/main/application.yml",
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/built-application.original.yml",
+      "bytes": 11662,
+      "sha256": "sha256:a1ce2e2d421d3e68891e0bc31e26a7c7c0cd7cc648652f0a5f68145a8ae0a0a4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/git-reflog-head-change.original.txt",
+      "bytes": 205,
+      "sha256": "sha256:4c0238d55783c1a60020f11bb4db95fb87d8be01c4dfffee89184d824f932844"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/current-head-commit.original.txt",
+      "bytes": 162,
+      "sha256": "sha256:d95dba2984bfaa7298c9932a1acfec186d90000b25d12fef65ee4fc41b36851b"
+    }
+  ],
+  "currentSourcesAfterCI": [
+    {
+      "path": "backend/build.gradle.kts",
+      "bytes": 9765,
+      "sha256": "sha256:bde9b6d132d8bc811c36266e7f13ef07297c1a791bb05a70e3b747598fde9e3d"
+    },
+    {
+      "path": "backend/src/main/resources/application.yml",
+      "bytes": 11628,
+      "sha256": "sha256:672c1a7af65cdf98378cd5f878db4c1e3280a6a2ba1584da13182d9a9acdf331"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/openai/de/OpenAiDeEmbeddedServerBuildTest.java",
+      "bytes": 2917,
+      "sha256": "sha256:d3aed17284549552c1ed409b6f821c5f2d752c412c3cdd9f6fafb20c9834ddf9"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "bytes": 115241,
+      "sha256": "sha256:48df364920c4fafb3432c1f672dfdb6f9e3cd3180efd89cf9fdede73a34bac2c"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "bytes": 101466,
+      "sha256": "sha256:1159e6a414dde455bed6fb9ee85b7baff435c200252dcfc7ec3df0caae1d29ac"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "bytes": 533331,
+      "sha256": "sha256:82480e3a30f0e2d638f2afb2f9a5a6d0462e40ea14a2e6ff8d37471df5bbabf0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "bytes": 3714635,
+      "sha256": "sha256:76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "bytes": 2511701,
+      "sha256": "sha256:4704c85973997b0bc822c360a9802fa55ce897a98936ec2c8782ed7c8f47076e"
+    },
+    {
+      "path": "run_ci.sh",
+      "bytes": 19384,
+      "sha256": "sha256:6070ee722696aa08063a654f505fbd5ff4de02379cfb730e8bc3aaad8309c38e"
+    }
+  ],
+  "sourceBoundary": "Current-source hashes are after-run bindings, not assertions of original compilation. Guard integration follows this full run and has its own evidence.",
+  "pendingGate": "A fresh full all-suite run must finish on a stable checkout after final changes. A targeted real-current-HEAD build check does not turn either historical red run green.",
+  "license": "Apache-2.0"
+}

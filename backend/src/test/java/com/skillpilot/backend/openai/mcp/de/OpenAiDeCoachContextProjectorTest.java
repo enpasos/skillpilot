@@ -21,10 +21,45 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class OpenAiDeCoachContextProjectorTest {
 
     private static final String SERVER_BUILD = "0123456789abcdef0123456789abcdef01234567";
+
+    @ParameterizedTest
+    @CsvSource({"EXTERNAL_PREREQUISITE_UNMASTERED,OPEN_PERSONAL_CURRICULUM", "PREREQUISITE_OUTSIDE_FOCUS,REVIEW_FOCUS"})
+    void stalledPrerequisiteContextContainsLocalizedFactsAndWaitsWithoutOfferingConfigurationOrWrites(String reason, String remediation) throws Exception {
+        var blocker = new com.skillpilot.backend.api.PrerequisiteBlocker(
+                "physics-target", "Diagramme", "Diagrams", "math-support", "Werte ablesen", "Read values",
+                reason, remediation);
+        var state = new UnifiedLearnerStateResponse("private-learner", null, List.of(),
+                new LearnerGoals(List.of(), 0, 1, new GoalStats(0, 1), new GoalStats(0, 1), false),
+                List.of("setScope", "getFrontier"), List.of(), Set.of(), "FRONTIER", null,
+                new StateMachineInfo("FRONTIER", "getFrontier", List.of(), List.of(), null, List.of(), List.of(blocker)));
+        var projector = new OpenAiDeCoachContextProjector(new CoachStateProjection("https://skillpilot.test"), "https://skillpilot.test");
+        for (String language : List.of("de-DE", "en-US")) {
+            var context = projector.project(state, PersonalizationPlan.complete(List.of()), true, language);
+            assertThat(context.requiredAction()).isEqualTo("getFrontier");
+            assertThat(context.options()).isEmpty();
+            assertThat(context.frontier()).isEmpty();
+            assertThat(context.activeGoal()).isNull();
+            assertThat(context.completion().scopeComplete()).isFalse();
+            assertThat(context.completion().curriculumComplete()).isFalse();
+            assertThat(context.goalVisualization()).isNull();
+            assertThat(context.nextAllowedTools()).containsExactly(OpenAiDeV1McpContractAdapter.GET_CONTEXT);
+            assertThat(context.prerequisiteBlockers()).singleElement().satisfies(fact -> {
+                assertThat(fact.goalTitle()).isEqualTo(language.startsWith("en") ? "Diagrams" : "Diagramme");
+                assertThat(fact.prerequisiteTitle()).isEqualTo(language.startsWith("en") ? "Read values" : "Werte ablesen");
+                assertThat(fact.remediation()).isNull();
+            });
+            assertThat(context.instruction()).contains(language.startsWith("en") ? "Wait for" : "Warte auf")
+                    .contains(language.startsWith("en") ? "or automatically reload" : "nicht automatisch erneut");
+            assertThat(new ObjectMapper().writeValueAsString(context))
+                    .doesNotContain("private-learner", "OPEN_PERSONAL_CURRICULUM", "REVIEW_FOCUS", "remediation", "personalCurriculum", "goalTitleEn");
+        }
+    }
 
     @Test
     void exposesTrustedVisualizationForMatchingActiveAtomicGoal() {

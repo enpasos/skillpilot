@@ -957,7 +957,7 @@ public class CompositionViewService {
                 .toList();
         List<Map<String, Object>> mergedRootNodes = canonicalGraphSupplier == null
                 ? CourseProfileCompositionViewMerger.merge(sourceRoots.stream().flatMap(List::stream).toList())
-                : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, canonicalGraphSupplier.get());
+                : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, canonicalGraphSupplier.get(), true);
         List<String> sourceViewIds = normalizedViews.stream()
                 .map(view -> asString(view.get("viewId")))
                 .filter(StringUtils::hasText)

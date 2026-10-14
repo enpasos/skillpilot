@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "reviewer": {
+    "agentCanonicalName": "/root/requires_canonical_review",
+    "model": "GPT-6.1 Sol",
+    "reasoningEffort": "Ultra",
+    "role": "independent_scientific_reviewer",
+    "authorIsDifferentAgent": "/root/noncanonical_subject_scope",
+    "authority": "ai_candidate",
+    "humanApproval": false
+  },
+  "completedAt": "2026-10-13T09:56:10.372058+00:00",
+  "status": "classification_review_complete_requires_recipes_partly_need_revision_no_activation",
+  "authorArtifacts": [
+    {
+      "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/index.author.json",
+      "sha256": "sha256:c9b0e63762aee7fa3c0a68d2a1a40b0948a4cd1795638ded70cb51aa191c2c5a"
+    },
+    {
+      "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/role-ownership.author.json",
+      "sha256": "sha256:a97c298a8e8e00691de2e7e8f06d8805d615edd9ea8c90f905d31aa9c1b78b6d"
+    },
+    {
+      "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/requires-recipes.author.json",
+      "sha256": "sha256:ac82c9ff381d08288454a5effbf531a27a8caa6d21fe9779b724f2d5cc6b4731"
+    },
+    {
+      "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/validation.integrity.json",
+      "sha256": "sha256:89730c538702048d2f8fa229b136340a3c35034a28ffae733be71351b1728b77"
+    },
+    {
+      "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/source-code-bridge.followup.author.json",
+      "sha256": "sha256:afb3b7d61c97c00c3ebc72f0349bde5d4e3de51961598fc8a5c902d53eea411f"
+    }
+  ],
+  "reviewArtifacts": [
+    {
+      "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/role-requires.independent-review-v2.json",
+      "sha256": "sha256:dd7272a0e8c573c74097770dfe25571cf2570dc7c516ae4852ff846321b93560"
+    },
+    {
+      "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/actual-read.independent-receipt-v2.json",
+      "sha256": "sha256:56dedd54df4604b60b40ec4effb61a0f98418e4b2c1c2183144a133bfbf095c8"
+    }
+  ],
+  "technicalIntegrity": {
+    "boundInputsChecked": 65,
+    "allExpectedInputBytesMatch": true,
+    "actualDefinitionsCompared": 238,
+    "allDefinitionsMatch": true,
+    "effectiveDirectPlusContainsContextsRecomputed": 238,
+    "allEffectiveContextsMatch": true,
+    "noRequiresTransitiveClosure": true
+  },
+  "summary": {
+    "goalDecisions": {
+      "approved_classification_only": 141,
+      "needs_revision": 1
+    },
+    "recipeDecisions": {
+      "needs_revision": 28,
+      "accepted_bounded_authoring_recipe": 61
+    },
+    "activatedEdges": 0,
+    "reviewedRuntimeRequiresEdges": 0
+  },
+  "futureAction": "Revise named subject/method/provider scopes and author source-version-bound atomic goals. A separate new exact review is required for any active edge or native QA successor. Current source/QA/runtime/canonical goals were untouched.",
+  "additiveTechnicalCorrection": {
+    "earlierOwnReviewArtifacts": [
+      {
+        "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/role-requires.independent-review.json",
+        "sha256": "sha256:665b40197ac0e2dfc9bd13da8cc110b0d2cf5bd318b37b5f21c7fb5c90535742"
+      },
+      {
+        "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/actual-read.independent-receipt.json",
+        "sha256": "sha256:0b5a6533411379e2d8e4feed6a0490786843c2559289b920bd5897877bc4f1eb"
+      },
+      {
+        "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/index.independent-review.json",
+        "sha256": "sha256:a3fbfc77e264e708fb3533ded00a9b552313b12d05535bc1878fd0734739bd5e"
+      }
+    ],
+    "reason": "The first own technical recomputation did not filter inherited stable-ID self-requires of orientation nodes. Current runtime filters self at each contains inheritance step. This additive version recomputes all 238 contexts using that exact semantics, leaving the original author artifacts and the substantive per-goal/per-recipe decisions unchanged. It additionally records identical DE/EN source-text gaps.",
+    "semanticsSource": {
+      "path": "app/scripts/lib/crossLandscapeGraph.ts",
+      "sha256": "sha256:1420034c0cbdcf334c10b3390aa74764b1bb5bf863a9121a9dcba81ceb7a2bf5",
+      "locator": "computeEffective; stable goal ID self-filter at each inheritance step"
+    },
+    "scientificDispositionsChanged": false
+  }
+}

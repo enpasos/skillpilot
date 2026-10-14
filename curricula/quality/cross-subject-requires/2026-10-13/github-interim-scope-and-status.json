@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-14T05:14:15.737539+00:00",
+  "scope": "canonical Gymnasium Mathematics and Physics, Sek I/II only",
+  "goalStatus": "active and incomplete",
+  "ownerGitHubCheckpointAuthorization": "Erstelle einen Zwischenstand, der CI passed auf github erreicht",
+  "baseCommit": "46c9ef264da98460a77c43f3f4e66e918ea0bf8a",
+  "branch": "review/gym-math-physics-interim-20261014",
+  "publicationBoundary": {
+    "reviewBranchAndDraftPR": true,
+    "merge": false,
+    "deploy": false,
+    "releasePublication": false
+  },
+  "scientificDecisions": {
+    "nominated": 1285,
+    "accepted": 1241,
+    "unresolved": 44,
+    "unresolvedGranularity": 26,
+    "unresolvedReview": 11,
+    "unresolvedScope": 7,
+    "canonicalAdoptionIsSeparate": true
+  },
+  "activeCurriculumAdoption": {
+    "physicsAtomsChanged": 10,
+    "addedMathPrerequisites": 11,
+    "physicsViewsWithSupport": 67,
+    "authoredPrerequisiteOnlyReferences": 396,
+    "newMathGoalAdopted": false,
+    "fiveGoalCandidateAdopted": false,
+    "threeAdditionalAtomicEdgesAdopted": false,
+    "CAFPlacementCandidateAdopted": false,
+    "decimalRoundingCandidateAdopted": false,
+    "quadraticClusterRemovalCandidateAdopted": false
+  },
+  "technicalEvidenceBindings": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+      "bytes": 41439,
+      "sha256": "sha256:10561826de925a82c70ed9dadc1787d16ad3837dd1baab331318a6ef23156e46"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "bytes": 43530,
+      "sha256": "sha256:9ae92663a1a0809beb8831305ca4f9e373778d3b4329b415084fe9bbc9d2c5de"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "bytes": 21813,
+      "sha256": "sha256:d8ba65b47d52112a08d0bc38b786b3d5b6993b94295ade7519dd67a404c2966b"
+    },
+    {
+      "path": "app/scripts/testCompositionVisibleOverlap.ts",
+      "bytes": 6324,
+      "sha256": "sha256:34142e03e69f56b2c8b58b58111f425a721effad817f53836ddff4ff8d368fc8"
+    }
+  ],
+  "technicalTests": {
+    "newBackendCases": 5,
+    "newFrontendSyntheticCases": 15
+  },
+  "wholeRouteAuditAtExactPriorDataState": {
+    "effectiveForeignPrerequisiteOccurrences": 1190,
+    "counterfactualConfigurations": 4934,
+    "nativeBackendQueries": 167,
+    "sameStageUnavailablePairs": 656,
+    "explicitGlobalStageChangeRoutes": 307,
+    "stillIncompletePairs": 349,
+    "laterSelectedRoutesDoNotCloseWholeGrid": true
+  },
+  "remainingAcceptance": [
+    "resolve 44 scientific decisions",
+    "complete current candidate Source/Placement/P/Kind/dual D/human and M7 gates as applicable",
+    "complete whole stage/course prerequisite route coverage",
+    "observe explicit learner consent, persisted scope change and return flow",
+    "verify remaining required package/consumer modes"
+  ],
+  "ciResult": "Recorded by actual GitHub Actions run on the PR; local checks do not claim GitHub acceptance",
+  "technicalLicense": "Apache-2.0",
+  "ownKnowledgeContentLicense": "CC-BY-4.0; attribution SkillPilot",
+  "thirdPartySourcesNotRelicensed": true
+}

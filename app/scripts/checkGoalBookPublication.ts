@@ -285,7 +285,7 @@ export const assertCanonicalRelationUrls = (model: GoalBookModel) => {
       || new Set(parameterKeys).size !== 2
       || !parameterKeys.includes('landscape')
       || !parameterKeys.includes('edition')
-      || url.searchParams.get('landscape') !== model.book.landscapeId
+      || url.searchParams.get('landscape') !== (reference.landscapeId ?? model.book.landscapeId)
       || url.searchParams.get('edition') !== model.book.edition
     ) {
       fail(`external relation ${reference.goalId} has an unsafe canonical URL`)

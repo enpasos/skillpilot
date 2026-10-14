@@ -1,0 +1,21 @@
+// Apache-2.0. Actual active source compilation with a fresh, separately bound build/cache.
+gradle.projectsEvaluated {
+    def outputRoot = new File(System.getenv('QUALITY_GUARD_INTEGRATED_DIR'))
+    def project = gradle.rootProject
+    // Selected classes use filesystem curricula and application.yml, no media/publication payload.
+    // processResources still executes its normal server-build/server-version filtering.
+    project.sourceSets.main.resources.setIncludes(['application.yml'])
+    project.tasks.named('generateClaudePluginPublication').configure { enabled = false }
+    project.tasks.named('test').configure {
+        doFirst {
+            assert project.layout.buildDirectory.get().asFile.canonicalFile == new File(outputRoot, 'build').canonicalFile
+            assert project.sourceSets.main.output.classesDirs.files.every {
+                it.canonicalPath.startsWith(outputRoot.canonicalPath + File.separator)
+            }
+            assert project.sourceSets.test.output.classesDirs.files.every {
+                it.canonicalPath.startsWith(outputRoot.canonicalPath + File.separator)
+            }
+            println("INTEGRATED_QUALITY_GUARD java=${System.getProperty('java.version')} activeMainSources=${project.sourceSets.main.java.srcDirs} activeTestSources=${project.sourceSets.test.java.srcDirs} mainClasses=${project.sourceSets.main.output.classesDirs.asPath} testClasses=${testClassesDirs.asPath} resources=${project.sourceSets.main.output.resourcesDir}")
+        }
+    }
+}

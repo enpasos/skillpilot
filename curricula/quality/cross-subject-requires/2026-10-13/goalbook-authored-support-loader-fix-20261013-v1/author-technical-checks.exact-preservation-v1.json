@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-13T14:55:38.939857+00:00",
+  "status": "actual-model-physics-input-and-TypeScript-checks-pass-independent-code-review-pending",
+  "problem": "An explicitly authored foreign prerequisiteOnly composition reference was not materialized after its direct requires edge was removed; native Physics D preparation failed CPV-002.",
+  "change": "Materialize known explicitly authored external support references from single views and source-manifest views in addition to current direct requires. Reject foreign target and omitted projection roles, retaining unknown-reference rejection and the existing ban on foreign canonical contains.",
+  "dataBoundary": "No canonical Physics/Math text, active requires, authored view role or target set changed by this technical fix. Existing external rendering stubs remain unchanged; full actual canonical graphs and target trees are independently checked separately.",
+  "actualChecks": [
+    {
+      "command": "npm run test:goal-book-model",
+      "exitCode": 0,
+      "coverage": "model tests incl194SekI/490SekII-GK/807nationalMathpages/15calibration;distance/reflection andPythagoras checks88views"
+    },
+    {
+      "command": "npm run test:physics-goal-book-inputs",
+      "exitCode": 0,
+      "coverage": "764semantic-kind decisions/478atoms/64stateviews/16durationdecisions"
+    },
+    {
+      "command": "app/node_modules/.bin/tsc -b --pretty false",
+      "exitCode": 0
+    },
+    {
+      "command": "identical current regression source, original model, sole import rewrite in private copies",
+      "exitCode": 1,
+      "expectedFailure": "CPV-002 math-retained-cluster",
+      "controlReceipt": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/execution-originals/original-code-control.receipt-v1.original.json"
+    }
+  ],
+  "regressionBoundaries": [
+    "Previously required atomic and cluster support remain referenced after edge removal;targetpagesunchanged.",
+    "Both foreign goalEntry and canonicalSubtree target/default roles reject (4cases).",
+    "Unknown prerequisiteOnly references still reject CPV-002.",
+    "Existing foreign canonical contains and owner URL tests retained."
+  ],
+  "originals": [
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/code-originals/goalBookModel.before.exact.ts",
+      "bytes": 113652,
+      "sha256": "sha256:d526731205b307b5c43e4be5ea5ab60b7bdefd3fd71f5e97be255f93b0723577"
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/code-originals/goalBookModel.after.exact.ts",
+      "bytes": 114562,
+      "sha256": "sha256:ed39b39a98bdce23516d6a1348da08b5fd1fe2337f924a1bd7cdff312ecf0184"
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/code-originals/testGoalBookModel.before.exact.ts",
+      "bytes": 67580,
+      "sha256": "sha256:497a1cbf7482fa34f3edf79f6c41c454234798e4a1187d4635b68ff82ed44e83"
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/code-originals/testGoalBookModel.after.exact.ts",
+      "bytes": 70465,
+      "sha256": "sha256:ff655beea90f716504e20418bde58291e2c115a3fb0fcfe72bced1c442ffc095"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/goalbook-retained-support-fix-20261013-model-test-v3.log",
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/execution-originals/model-tests.actual.log",
+      "bytes": 979,
+      "sha256": "sha256:1c74830740364984deba81b53e0b826a70305dddf92300b3536b762bcca8d6a0"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/goalbook-retained-support-fix-20261013-physics-inputs.log",
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/execution-originals/physics-input-tests.actual.log",
+      "bytes": 230,
+      "sha256": "sha256:2826106ab59d771d698d93f273c15497f3141737f2198cdacd4b2c932e1a8e07"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/goalbook-retained-support-fix-20261013-typecheck.log",
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/execution-originals/typecheck.actual.log",
+      "bytes": 0,
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/goalbook-retained-support-original-control-20261013/actual-original-code-control.log",
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/execution-originals/original-control.actual.log",
+      "bytes": 1201,
+      "sha256": "sha256:158951cdc8c24696cd64ab7f977977f866a91b76c2f4b22a998219acfe6583a4"
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/goalbook-retained-support-original-control-20261013/original-code-control.receipt-v1.json",
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/execution-originals/original-code-control.receipt-v1.original.json",
+      "bytes": 1780,
+      "sha256": "sha256:5f311445a43a090e7793786e35de5f2818e1d9e2d740c134862c735a623e50dc"
+    }
+  ],
+  "independentCodeReview": "pending, separate additive receipt will bind these exact bytes",
+  "fullCiIncludesFix": false,
+  "license": "Apache-2.0"
+}

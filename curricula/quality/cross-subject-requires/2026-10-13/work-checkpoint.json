@@ -1,0 +1,2462 @@
+{
+  "schemaVersion": 1,
+  "checkpointAt": "2026-10-14T04:29:10.176391+00:00",
+  "objectiveDocument": "docs/dev/math-physics-cross-subject-requires.md",
+  "completion": "incomplete",
+  "persistentGoalServiceStatus": "active",
+  "persistentGoalServiceCanBeResumedByAvailableAgentTools": false,
+  "manualAuthorizedWorkContinues": true,
+  "inventoryPath": "curricula/quality/cross-subject-requires/math-physics.inventory.json",
+  "inventorySha256": "sha256:05fee31821ab14ab716f161eb48a3a63121539e2ca3e583da72388b582fc0dc3",
+  "families": [
+    {
+      "familyId": "canonical-gymnasium",
+      "inventoryCounts": {
+        "landscapes": 2,
+        "stableGoalIds": 2016,
+        "technicalLeaves": 1617,
+        "curricularAtomic": 1285,
+        "reviewRequired": 1285,
+        "conflictingOccurrences": 0
+      },
+      "workState": "807Mathnegative/478Phyfirstpassreviewed;first10active11edges+guard+BookfixFULLCIPASS2328;native3freshD2strict1deferred;P2repairandMathrouteClosure/sourcePlacementgatespending"
+    }
+  ],
+  "adoptedSlice": {
+    "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/adoption-state.json",
+    "goalCount": 10,
+    "additionalMathematicsEdges": 11,
+    "projectionSupportReferencesAdded": 396,
+    "changedPhysicsViews": 67,
+    "visibleTargetsAndTreesUnchangedAcrossViews": 69,
+    "nativeStrictM7": {
+      "mathematik": "807/807",
+      "physik": "478/478"
+    },
+    "protectedMaturityFloors": 10,
+    "projectCi": "Full required stable-checkout CI PASS2328tests/2319passed/0failure/0error/9skips;first10+guard+bookfix;inertnative3/BYexcluded;2priorreds retainedexact",
+    "focusedFixtureCorrectionPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/http-newton-canonical-acceleration-v2/verification-summary.json",
+    "fullCiReportPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-known-fixture-failure/verification-summary.json",
+    "cleanFullCiReplay": {
+      "status": "ended-exit1-sole-concurrent-HEAD-change",
+      "command": "./run_ci.sh all",
+      "exitCode": 1,
+      "backendTests": 2326,
+      "backendFailures": 1,
+      "backendErrors": 0,
+      "backendSkipped": 9,
+      "correctedNewtonHttpCaseInFullRun": "passed",
+      "failedCase": "OpenAiDeEmbeddedServerBuildTest.embedsExactGitCommitInApplicationResourceWithoutRuntimeOverride",
+      "cause": "Resource generated13:03:53UTC withaea;actualHEADpull13:10:04UTC tofed73;stricttest13:18:51UTC readsfed73",
+      "actualBuildOrTestLogicCorrectionRequired": false,
+      "strictAssertionsUnchanged": true,
+      "evidencePath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-20261013-head-changed-during-build/verification-summary.json",
+      "all247JUnitXmlExactlyPreserved": true,
+      "finalFullCiGate": "passed in separate sealed detached worktree;historical second replay remainsRED",
+      "successClaimed": false
+    },
+    "finalStableFullCi": {
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-stable-first10-and-technical-fixes-20261013-v1/verification-summary.json",
+      "sha256": "sha256:b383efe481223735ee03b31e47d40e5f23826314d0651721d31e476ec1b0b4b3"
+    },
+    "adoptionState": {
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/adoption-state.json",
+      "sha256": "sha256:f9711ac8baf55d30fb137666aeb9f68d72e4b2a5fa47f9730e6164a9013b7eb4"
+    }
+  },
+  "outstandingWork": [
+    "Resolve remaining canonical Physics rejected/pending/granularity/source decisions, with fresh independent exact-binding reviews.",
+    "Complete native evidence and adoption for reviewed candidates; raw approvals alone do not satisfy M7.",
+    "Decimal-rounding candidate remains inert until independent source, prerequisite, placement and complete native evidence gates pass.",
+    "Validate applicable single-subject remediation and package dependency modes for canonical Gymnasium.",
+    "Complete global reference/DAG, projection, runtime, quality floors and final report for the full scope.",
+    "Run final full required checks for the resulting canonical Gymnasium source state, including the independently approved inventory-scope code.",
+    "Reconcile completed761 supplemental whole-Math Requires judgments with the existing46 cases and current scientific index; keep23 incidental profile/scope findings distinct and preserve genuine pending scientific decisions."
+  ],
+  "authorizationBoundary": {
+    "committed": false,
+    "published": false,
+    "deployed": false,
+    "portalWritten": false
+  },
+  "licensing": {
+    "technicalProjectStatusMetadata": "Apache-2.0",
+    "ownKnowledgeAndReviewEvidence": "CC-BY-4.0",
+    "thirdPartySources": "original rights preserved"
+  },
+  "canonicalRevisionSubset": {
+    "decisionCount": 20,
+    "independentlyAccepted": 18,
+    "pending": 2,
+    "pendingPhysicsBatch002Records": [
+      8,
+      10
+    ],
+    "nativeM7Adoption": false,
+    "currentStatusPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-pending20-plus-energy-v2.current-status-after-clausius-v4.json",
+    "historicalApprovalErrataPreserved": true
+  },
+  "previousExactCheckpointPath": "curricula/quality/cross-subject-requires/2026-10-13/checkpoint-history/work-checkpoint.before-full97-scope-runtime-and-decimal-native.01c438909227d02f29b44560017d09ceff7b48e64638017ab859e4781716e52c.exact.json",
+  "decimalRoundingCandidate": {
+    "goalId": "077d5e2f-27f2-5215-9d48-fe002cf1c663",
+    "version": 4,
+    "active": false,
+    "boundedContentPartialSourceCoresAndUncuedDesignIndependentReview": "pass",
+    "scientificReviewSha256": "sha256:b5676bf290ff9c8a1155d0c43eaba07a9122e6985e23fa75430258e00c7ac688",
+    "archivePath": "curricula/quality/cross-subject-requires/2026-10-13/decimal-rounding-v4-20261013",
+    "exactPreservedOriginalFiles": 69,
+    "preservationReceiptPath": "curricula/quality/cross-subject-requires/2026-10-13/decimal-v4-exact-preservation.receipt.json",
+    "pendingLowerOrCrossStageMathematicsPlacements": 23,
+    "simulatedOnlyMathTargetPlacements": 31,
+    "conditionalOnlySupportReferences": 64,
+    "nativeD_P_A_M_kind_V_M7_Placement_Routes_Host": "pending",
+    "physicsEdgeApplied": false,
+    "naturalNumberRoundingSemanticsChanged": false,
+    "newActualInertIllustration": {
+      "firstAttemptRejectedForWrongNumberLineGeometry": {
+        "path": "tmp/cross-subject-requires/decimal-v4-documented-image-candidate-20261014-v1/attempt-01.actual-visual-rejection.json",
+        "bytes": 1787,
+        "sha256": "sha256:2b89cb16354d0f5d3e0c84ee006ca192a37399fc82aa73c84daf63ae3a5860c0"
+      },
+      "actualBuiltInTool": "image_gen.imagegen",
+      "actualModelVersionObserved": false,
+      "acceptedByAuthorAsInertCandidate": {
+        "path": "tmp/cross-subject-requires/decimal-v4-documented-image-candidate-20261014-v1/attempt-02/actual-author-visual-review.json",
+        "bytes": 1401,
+        "sha256": "sha256:1b3c62f70c6dd4891312fc34c03035d3046b2d6b88bb540a136c1afa63459ee4"
+      },
+      "selectedImage": {
+        "path": "tmp/cross-subject-requires/decimal-v4-documented-image-candidate-20261014-v1/attempt-02/generated/077d5e2f-27f2-5215-9d48-fe002cf1c663.png",
+        "bytes": 1622288,
+        "sha256": "sha256:5835dd115b3065156594cf56e94ed177d1ba60df90d02d6e96cc55d67b171b75"
+      },
+      "exactActualEditPrompt": {
+        "path": "tmp/cross-subject-requires/decimal-v4-documented-image-candidate-20261014-v1/attempt-02.edit-prompt.actual.txt",
+        "bytes": 1770,
+        "sha256": "sha256:16ec11f6a4d8db1098131776fc0f6e69393f03a1fbd83639cc505d97e732dd8d"
+      },
+      "standardPrepareImportActualReport": {
+        "path": "tmp/cross-subject-requires/decimal-v4-documented-image-candidate-20261014-v1/attempt-02/import.actual.json",
+        "bytes": 3490,
+        "sha256": "sha256:7914e79d548e54cd15eb329af81cb24fa5aa11a8af7a3382809602d19177d344"
+      },
+      "wholeOther1252GoalsExact": true,
+      "originalV4MeaningAndPAndSealsUnchanged": true,
+      "currentNativePInputMustBeFreshlyComputedAndReviewed": true,
+      "independentKindPAMVAndActualDRounds": "running in separate informed reviewer namespaces, no final acceptance yet",
+      "newContentFinding": "Optional blank-place-value aid conflicts with P observable table-filling duty and table-free learner stems. Whole current content review is ongoing; no shape-PASS transfer.",
+      "preservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/decimal-v4-documented-image-candidate-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 7693,
+        "sha256": "sha256:be5731724d053284161d6fdc810a5a4e2679830a306a32c8dda79162b9a21d3e"
+      },
+      "activeImportOrSourceStageM7HumanAuthority": false
+    }
+  },
+  "persistentGoalUserResumptionVerifiedAt": "2026-10-13T15:41:45Z",
+  "goalExecutionContinues": true,
+  "byFosSemanticAudit": {
+    "authorArchivePath": "curricula/quality/cross-subject-requires/2026-10-13/by-fos-semantic-audit-20261013-v1",
+    "authorManifestSha256": "sha256:0e8c9b53b86cb3b1a184f14276e187f7d36e3ec850814e2df68dbf15273efec4",
+    "authorLedgerSha256": "sha256:4ff56b552fd888d88e184cae669f7fab734e461f8fd105b0e8e56753063dc9e4",
+    "originalFilesExactlyPreserved": 24,
+    "frozenInputsVerifiedUnchanged": 558,
+    "independentReview": "completed;499candidate triage supported,40revision needed; no active adoption approval",
+    "independentFullDescriptionsActuallyRead": 539,
+    "effectiveInheritanceOriginPaths": 1085,
+    "activeSourceOrEdgeChanges": false,
+    "nativeApprovalClaimed": false,
+    "rootSourceRecoveryReceiptPath": "tmp/cross-subject-requires/by-fos-math-integral-source-20261013/source-recovery.root-author.json",
+    "rootSourceRecoveryReceiptSha256": "sha256:f13659c40fda39dcc475a97327107c04020bb05ecbe1d13d7b5d0ea1d29fbdb2",
+    "originalThreeFormulaImagesIndependentlyVisuallyRead": true,
+    "activeLocalFormulaLossStillOpen": true,
+    "supportedCandidateClassifications": 499,
+    "revisionNeeded": 40,
+    "revisionNeededBySubject": {
+      "Mathematics": 21,
+      "Physics": 19
+    },
+    "independentReviewManifestPath": "curricula/quality/cross-subject-requires/2026-10-13/by-fos-semantic-audit-20261013-v1/independent-review-v1/manifest.independent-review-v1.json",
+    "independentReviewManifestSha256": "sha256:de7f25457d57654cc8480eba70e3afe5367d4548835c36e477a249696d8bca1a",
+    "independentMainReviewSha256": "sha256:0f09a94f118e643a59e576002c7507f900f7eca857b0e8e508b388f49e1aad8b",
+    "independentReviewAndRecoveryArchive": "exactly preserved;24author originals+11review originals+1root-recovery original",
+    "revisedAuthorV2": "completed and independently reviewed;40inert correction responses supported:6narrowMathcandidates,34open;all539adoptiongatespending",
+    "preservationSummaryPath": "curricula/quality/cross-subject-requires/2026-10-13/by-fos-semantic-audit-20261013-v1/preservation-summary.independent-review-and-source-recovery-v1.json",
+    "preservationSummarySha256": "sha256:7f74474844ccb7d10a8ccfe8e39f780aea7e4ca4e286f062bce26fcfa6630324",
+    "v2ArchivePath": "curricula/quality/cross-subject-requires/2026-10-13/by-fos-semantic-audit-20261013-v2",
+    "v2AuthorManifestSha256": "sha256:42893847d8cbee3c1254a7c51a002a2d8acc052ad8059e29a087532d15cca717",
+    "v2IndependentReviewManifestSha256": "sha256:3a875a90a7278fc151a7f4cf971f22fc701d7e3601861feae6f1de6d5df2ca7a",
+    "v2PreservationIndexPath": "curricula/quality/cross-subject-requires/2026-10-13/by-fos-semantic-audit-20261013-v2/exact-preservation.author-and-review-v1.json",
+    "v2PreservationIndexSha256": "sha256:1489c53115c677fa77e9e4a2f5494ff5455fe75b0d20ce423208d9d9113b80da",
+    "v2OriginalFilesExactlyPreserved": 28,
+    "v2FrozenInputsVerifiedUnchanged": 608,
+    "v2NativeOrSourceApprovalClaimed": false,
+    "currentScopeStatus": "historical outside clarified Gymnasium goal; do not continue or adopt"
+  },
+  "byRuntimeIdentityIssue": {
+    "status": "AstraUltra-plan-followed-by-sealed-inert-GPT6.1SolUltra-code-candidate-independent-technical-review-running",
+    "planningModel": "gpt-6-astra",
+    "planningReasoningEffort": "ultra",
+    "planPath": "tmp/cross-subject-requires/by-identity-runtime-probe-20261013/findings-and-plan.json",
+    "actualProbeResultsPath": "tmp/cross-subject-requires/by-identity-runtime-probe-20261013/probe.stdout.json",
+    "compiledClassBasis": "tmp/backend-ci-build-2424356/classes/java/main",
+    "sharedMathLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+    "sharedMathSourceFiles": 6,
+    "sharedPhysicsSourceFiles": 3,
+    "jointRepositoryModeOutcome": "BOS definitions retained; FOS Math/Physics own subject roots and sampled IDs unavailable; FOS closure omits both subjects",
+    "fosOnlyControlOutcome": "tested Math/Physics subject roots and sampled IDs available; both subjects in closure",
+    "globalQualityCurrentPayloadsLoadable": 0,
+    "globalQualityJsonFilesAtProbeSnapshot": 315,
+    "syntheticQualityPayloadLoadDemonstrated": true,
+    "actualArchiveLeakClaimed": false,
+    "stableGoalAndMasteryIdsMustBePreserved": true,
+    "sharedOrientationNeedsExplicitSingleOwner": true,
+    "hostOrPackageAcceptanceClaimed": false,
+    "sourceOrProductionCodeMutationPerformed": false,
+    "archivePath": "curricula/quality/cross-subject-requires/2026-10-13/by-identity-runtime-probe-20261013",
+    "preservationIndexPath": "curricula/quality/cross-subject-requires/2026-10-13/by-identity-runtime-probe-20261013/artifact-index.preservation-v1.json",
+    "preservationIndexSha256": "sha256:0c3e7f5c664743eb798041d67e059c59aa8241723405156f9f4ab14bee211d6a",
+    "originalProbePlanFilesExactlyPreserved": 8,
+    "historicalSelftestLogsPreservedWithoutPackageAcceptance": 3,
+    "additionalIndependentTechnicalReplayFiles": 6,
+    "freshCompileAndActualJavaReplay": "probe class byte-identical;5probe outcome JSONs byte-identical",
+    "probeSourceAndFixtureBindingsVerified": 507,
+    "implementationCandidate": "sealed-inert-source/runtime/frontend/offline-migration-candidate;actualisolatedcheckscomplete;noactiveadoption",
+    "implementationCandidateSeal": {
+      "path": "tmp/cross-subject-requires/by-runtime-identity-migration-candidate-20261013-v1/sealed-implementation-author-package.index.json",
+      "sha256": "sha256:bfc964dc73cedb7d0035c60589992e05c19ff5476e29c97cc8a8b12e29d7e7a5"
+    },
+    "implementationExactOriginalPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/by-runtime-identity-migration-candidate-20261013-v1/exact-original-preservation.index-v1.json",
+      "sha256": "sha256:a0f86a137671de666a141f8a64823c874c26ea79c36dc6a6348473b97e2bd87a"
+    },
+    "implementationOriginalCounts": {
+      "authorArtifacts": 127,
+      "freshSourceInputSnapshots": 54,
+      "originalSealedIndex": 1,
+      "totalOriginals": 182
+    },
+    "actualCandidateChecks": {
+      "javaAssertions": 2926,
+      "typescriptCases": 16,
+      "negativeServiceAndUiProbes": 10,
+      "landscapeSchemas": 17,
+      "actualAllPassed": true,
+      "rootFresh54SourcesEqualToSnapshots": true
+    },
+    "implementationUnresolvedGates": [
+      "independent technical review and own counterexamples",
+      "goalBook foreign canonical contains",
+      "DPK-006a embedded fragment and neutral carrier catalog",
+      "native/source/owner/placement/requires/M7",
+      "persistent migration transaction rollback",
+      "actual all-subject browser package modes",
+      "historical Gymnasium GoalTransfer and host"
+    ],
+    "implementationPreservedHistoryLimits": [
+      "frontend initial overwritten attempt reconstructed;nooriginalbyteidentityclaim",
+      "initial scaffold retained separately",
+      "fresh-directory wrapper not independently executed byauthor"
+    ],
+    "independentTechnicalReview": {
+      "status": "CHANGES_REQUIRED",
+      "sealedOriginalReview": {
+        "path": "tmp/cross-subject-requires/by-runtime-identity-independent-code-review-20261013-v1/sealed-review.original.index.json",
+        "sha256": "sha256:ad1a3fca6e156a1d7353cb011d509c14799499cc5faeff246cf9a6f11547b599"
+      },
+      "durableExactPreservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/by-runtime-identity-independent-code-review-20261013-v1/exact-original-preservation.index-v1.json",
+        "sha256": "sha256:262b38f02425691c994983756cf224c4b51fb7e99086e8a053fc75598bc35efc"
+      },
+      "originalFiles": 260,
+      "actualBaselineReplays": "2926Java,16TS,10directcontroller/service,17schemaallPASS",
+      "ownTSProbes": {
+        "passed": 4,
+        "failed": 4,
+        "oneFailureExplicitlyInheritedAltBehavior": true
+      },
+      "ownJavaProbes": {
+        "passed": 11,
+        "failed": 5
+      },
+      "sameResultsReproducedInSecondFreshCopy": true,
+      "concreteFindings": [
+        "ClassSession contradictory/multiple Personal Curriculum roots not rejected",
+        "Trainer sole PC-root context ignored",
+        "offline manifestgeneration missing/foreign/incomplete accepted"
+      ],
+      "activeAdoptionApproved": false
+    },
+    "implementationV2": {
+      "status": "author correction in progress in separate inert directory",
+      "path": "tmp/cross-subject-requires/by-runtime-identity-migration-candidate-20261013-v2",
+      "v1OriginalsOrCounterprobeAssertionsModified": false
+    },
+    "currentScopeStatus": "historical outside clarified Gymnasium goal; do not continue or adopt"
+  },
+  "runtimeQualityDirectoryGuard": {
+    "status": "exact reviewed two-file patch integrated;62actual focused tests passed",
+    "scope": "Exact relative directory name quality at every depth;configured root itself retained;shared discovery/admission/timestamp rule",
+    "reviewPath": "tmp/cross-subject-requires/runtime-quality-directory-guard.independent-code-review-20261013-v1.json",
+    "reviewSha256": "sha256:59bb1b732f86c668e77e5e1aef1b272f79e92e0c063ca34b000e70677183bf45",
+    "independentActualTests": "8passed;originalsame-test-classcontrol3expectedfailures",
+    "fullCiIncludesNewGuard": true,
+    "archivePath": "curricula/quality/cross-subject-requires/2026-10-13/runtime-quality-directory-guard-20261013-v1",
+    "preservationIndexSha256": "sha256:bf25c83fb3341477e2ed6e7f7cfb9919fd5024f27e5c6ad9ac91527358691d8b",
+    "preservedOriginalCount": 60,
+    "additionalIntegratedOriginalCount": 17,
+    "integrationReceiptPath": "curricula/quality/cross-subject-requires/2026-10-13/runtime-quality-directory-guard-20261013-v1/integrated-focused-originals/integrated-focused-validation.receipt-v1.json",
+    "integrationReceiptSha256": "sha256:0437d6e7d76a187e8d41fd9329b45b51f74d231ad8207308f55ab208a3270bce",
+    "actualIntegratedTests": 62,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "realGitStampMatchesStableHead": "fed73cdd8f41c5116d8c7c62d127b53cd0e75447",
+    "otherJavaSourcesUnchanged": 443,
+    "otherAuthorInputsUnchanged": 12,
+    "protectedResourceAndProviderFilesUnchanged": 3277,
+    "fullCiPassed": true
+  },
+  "canonicalNativeThreeCandidate": {
+    "status": "Newest inert local successor: independently reviewed content and actual strict native D3/3; remaining gates and adoption open; prior2/3 round preserved as history",
+    "goalIds": [
+      "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "5f289cdc-fda1-4058-b44f-041ba1398e79"
+    ],
+    "priorIndependentScienceAccepted": true,
+    "freshCurrentNativeD_P_A_M_kind_V_M7_Projection": "corrected nativeD2/3: Uniform and Model strict; Fma deferred; P-model and localPhysics-prerequisite/source-route/native-gates remain open",
+    "nativeDescriptionReview": "Two actual fresh fork-none GPT-6.1SolUltra reviewers plus independent synthesis completed;2strict current resolutions,1deferredUniformMotion",
+    "freshNativeRounds": {
+      "roundA": {
+        "path": "tmp/cross-subject-requires/physics-resolved3-native-d-blind-a-20261013-v1/results.jsonl",
+        "sha256": "sha256:7712ab214a013629dc3ba54fb93ef696301392e3c10907711f73179f7bee8420"
+      },
+      "roundB": {
+        "path": "tmp/cross-subject-requires/physics-resolved3-native-d-blind-b-20261013-v1/results/physics-resolved3-20261013-v4-first-pass-b.batch-001.records.jsonl",
+        "sha256": "sha256:200f8907571b62e1edef175b1bdec1a2e9c216019752f0a0513ca4ccded9464f"
+      },
+      "separateSynthesis": {
+        "path": "tmp/cross-subject-requires/physics-resolved3-native-d-independent-synthesis-20261013-v1/actual-native-synthesis.final-receipt-v1.json",
+        "sha256": "sha256:919e3ca331c707f7c617012594bcc081c58ac17b9f48eaae0c30d74e5cd6e5d6"
+      },
+      "nativeStrictCurrent": 2,
+      "deferred": 1,
+      "parentNonblindHistoricalAuditsPreserved": true,
+      "humanOrDifferentModelFamilyApprovalClaimed": false,
+      "durableOriginalPreservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-resolved3-native-d-rounds-and-synthesis-20261013-v1/exact-preservation.rounds-synthesis-and-context-v2.json",
+        "sha256": "sha256:6a606fcf817a0f27ad7011d2d90683aef81de1fb5be6d00efb539b4b894975df"
+      },
+      "exactNativeOriginalFiles": 51,
+      "exactSelectedAuthorReaderOriginals": 40
+    },
+    "mathematicsRoutes": {
+      "auditedViewPrerequisitePairs": 320,
+      "missingDirectTargetMemberships": 10,
+      "affectedStates": [
+        "BW",
+        "MV",
+        "TH"
+      ],
+      "additionalPrerequisiteClosureGap": "f08 requires5bba; both missing from affectedMV/THMathTargetviews",
+      "sourceBoundPlacementCandidate": "V2 inert candidate independently reviewed; bounded BW/MV source support approved; TH current validity and full native/route gates open",
+      "viewTargetPromotionFromRequiresOrPrerequisiteOnly": false,
+      "placementCandidate": {
+        "status": "inert V2 source/placement review completed; BW whole-541 bounded support and current MV J8 whole-5bba/f08 support approved; TH historical content approved with 2026/27 revision_required; no complete unprepared route or Math native M7 approval",
+        "seal": "tmp/cross-subject-requires/native-three-math-remediation-route-candidate-20261013-v1/author-candidate.sealed-index.json",
+        "independentReviewSeal": "tmp/cross-subject-requires/native-three-math-remediation-route-independent-review-20261013-v1-continuation/review.sealed-index.json",
+        "newV2SourceAuthor": "gym_math_routes_v2_source_author",
+        "v2AuthorSeal": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/native-three-math-remediation-route-candidate-20261013-v2/author-candidate.sealed-index.json",
+          "sha256": "sha256:c4e538d3dbc20b20220b3ff57a52ec13b1c1853c378281bf92b270669c1649b7",
+          "bytes": 55444
+        },
+        "v2IndependentReviewSeal": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/native-three-math-remediation-route-independent-review-20261013-v2/review.sealed-index.json",
+          "sha256": "sha256:cabd2acd5927c0a546012445d3bd4286e1b87dda990dee7f577b8ce3ee904a65",
+          "bytes": 16150
+        },
+        "v2OwnAuthorPreservation": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/native-three-math-remediation-route-candidate-20261013-v2/exact-own-originals-and-cache-boundary.preservation-v1.json",
+          "sha256": "sha256:6c6715012e1cd7006c81cd9ecbf830274c39d48c7c9bad1eeff1edc5d9960e27",
+          "bytes": 68200
+        },
+        "v2OwnReviewPreservation": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/native-three-math-remediation-route-independent-review-20261013-v2/exact-own-originals-and-cache-boundary.preservation-v1.json",
+          "sha256": "sha256:dc73f56f271bc7b7dc1c3ec3e5cdf91fda204e1d3a026ef0840f4e6e155e0c10",
+          "bytes": 22048
+        },
+        "bwCurrentV2Locators": [
+          28,
+          22,
+          18
+        ],
+        "TH2026_27Validity": "revision_required; official retrievals 403; retained 2025 source is not proof of current J7/8 validity",
+        "currentActivePlacementMutation": false
+      },
+      "bwAdditionalTwoGoalPlacement": {
+        "goalIds": [
+          "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+        ],
+        "targetReferencesAddedInert": 5,
+        "changedMathViews": 3,
+        "v1SourceMetadataRevisionRequiredPreserved": {
+          "path": "tmp/cross-subject-requires/bw-two-math-route-placements-independent-review-20261013-v1/independent-review.json",
+          "sha256": "sha256:2713a1dd8bcd1a6d434255962170d151daf069869c47fca7e658ec9a98e46b91",
+          "bytes": 77512
+        },
+        "exactV2MetadataCorrection": {
+          "path": "tmp/cross-subject-requires/bw-two-math-route-placements-author-20261013-v2-historical-locator-correction/correction.sealed-index-v2.json",
+          "sha256": "sha256:e3ec584c2bc8507594133b0b148b02d4b51c7f350b1cb9a5c29dd61c3dba59e8",
+          "bytes": 878
+        },
+        "actualIndependentV2BoundedApproval": {
+          "path": "tmp/cross-subject-requires/bw-two-math-route-placements-independent-review-20261013-v1/additive-v2-historical-locator-correction.independent.actual.json",
+          "sha256": "sha256:d59b77203a0940588532744206839a093c0c6091d28d16cff839175068c9e39f",
+          "bytes": 4900
+        },
+        "independentReviewSeal": {
+          "path": "tmp/cross-subject-requires/bw-two-math-route-placements-independent-review-20261013-v1/independent-review.sealed-index.json",
+          "sha256": "sha256:2cdb23385a9d0db17484fe3d7fd152016e9cff85d82bd0acfc8466d4f490b905",
+          "bytes": 410352
+        },
+        "historicalBP2016OrderingLocator": 6,
+        "currentV2V3OrderingLocator": 7,
+        "wholeBWCandidateClosureOnlyZeroWhenCombinedWithSeparateCAFAndUpstreamV2": true,
+        "noUnpreparedActiveRouteOrM7Approval": true,
+        "durableOwnReviewPreservation": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/bw-two-math-route-placements-independent-review-20261013-v1/exact-own-review-and-retained-source-boundary.preservation-v1.json",
+          "sha256": "sha256:7c81349f08f3653b149c8f020c45577008760782a2786e00b73c3d81b744c023",
+          "bytes": 561339
+        }
+      }
+    },
+    "contentRepairCandidate": {
+      "seal": {
+        "path": "tmp/cross-subject-requires/physics-native-three-content-repair-candidate-20261013-v1/sealed-author-content-repair.index-v1.json",
+        "sha256": "sha256:002fe9dcfd83117b241dcac731df42feee601881cea15725ce1790b2c77e0ff6"
+      },
+      "status": "inert V2 content candidate independently accepted as informed AI content; actual native successors remain pending",
+      "actualLearnerTaskEvidence": false,
+      "nativeApprovalClaimed": false,
+      "currentSeal": "tmp/cross-subject-requires/physics-native-three-content-repair-candidate-20261013-v2/sealed-author-content-repair.index-v2.json",
+      "currentIndependentReview": "tmp/cross-subject-requires/physics-native-three-content-repair-independent-review-20261013-v2/scientific-content-repair.informed-independent-review-v2.json"
+    },
+    "correctedNativeSuccessorPreparation": {
+      "task": "gym_native_three_corrected_packet_author",
+      "outputDirectory": "tmp/cross-subject-requires/physics-native-three-corrected-native-packet-20261013-v1",
+      "state": "completed and sealed; actual new A/B rounds and independent synthesis completed, 2/3 strict; no active adoption",
+      "mathCafOrPlacementCandidatesIncluded": false,
+      "oldNativePacketsUnchanged": true,
+      "informedV2ContentApprovalDoesNotTransferNativeApproval": true
+    },
+    "latestCorrectedNativeDescriptionReview": {
+      "physicsStrictCount": 2,
+      "physicsReviewedCount": 3,
+      "strictGoalIds": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "deferredGoalIds": [
+        "5f289cdc-fda1-4058-b44f-041ba1398e79"
+      ],
+      "synthesisSeal": {
+        "path": "tmp/cross-subject-requires/gym-physics-three-current-native-d-synthesis-20261013-v1/seal.json",
+        "sha256": "sha256:3e29b9342617b8209eb8290e2ff06f18863bf4a1db3c525f84370f46a5313a66",
+        "bytes": 27654
+      },
+      "resolutionIndex": {
+        "path": "tmp/cross-subject-requires/gym-physics-three-current-native-d-synthesis-20261013-v1/native-d/resolution-index.json",
+        "sha256": "sha256:5d91052fa9522216802cd468b7f3f76d863182e035c01c5371533e41193bbc76",
+        "bytes": 2106
+      },
+      "allNativeStepsPassed": true,
+      "sameConfiguredModelDifferentAgentsNoProvenRuntimeDiversity": true,
+      "formalReportOnlyDiversityMetadataDifferenceNotActualDiversityProof": true,
+      "noMinimumIndependentSuccessesFieldChanged": true,
+      "currentActiveAdoption": false,
+      "durableOwnSynthesisPreservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/gym-physics-three-current-native-d-synthesis-20261013-v1/exact-own-synthesis-and-source-cache-boundary.preservation-v1.json",
+        "sha256": "sha256:9ae496ff11c15b2bd35c4b9fb8dc639e302f88fa6b1a0b45c6f29672b794326c",
+        "bytes": 31389
+      }
+    },
+    "scopeProfilePrerequisiteSuccessor": {
+      "task": "gym_physics_three_scope_and_profile_successor_author",
+      "outputDirectory": "tmp/cross-subject-requires/physics-three-scope-profile-prerequisite-successor-author-20261013-v1",
+      "status": "completed independent informed whole-Goal/P/Kind candidate review supports all three foreign sets and exact a94 companion deletion; fresh independent native D A/B underway; no active adoption",
+      "lostTransitiveChainIncludingRationalOperationsExplicitlyAudited": true,
+      "proposedNewMathSetScientificAcceptanceClaimed": false,
+      "sealedPackage": {
+        "path": "tmp/cross-subject-requires/physics-three-scope-profile-prerequisite-successor-author-20261013-v1/package.sealed-index.json",
+        "sha256": "sha256:dfec8fe4a2c8454ac35ec54cdb53c62a3f46d2f16decffaa4cf96e5a25538aa1",
+        "bytes": 370382
+      },
+      "technicalReceipt": {
+        "path": "tmp/cross-subject-requires/physics-three-scope-profile-prerequisite-successor-author-20261013-v1/seal-and-verification.receipt.json",
+        "sha256": "sha256:c7508439f279ae257565cfdf0b3c13348b15a6e776566d28b9f3bde4503ee6dd",
+        "bytes": 2512
+      },
+      "independentTask": "gym_physics_three_successor_independent_science_p_kind_review",
+      "proposedLocalPhysicsRemoval": "only a94 general-impulse-law requirement on Fma; full Goal/P and5ea retained",
+      "MathQRouteDebtExplicitlyOpen": true,
+      "currentIndependentReview": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-three-scope-profile-prerequisite-successor-independent-review-20261013-v1/three-science-p-kind.candidate-review.jsonl",
+        "sha256": "sha256:dac3ee1c5f534b4de69383e06cd30c31867c8e807785e0c4925cda2d1e36f4b4",
+        "bytes": 6977
+      },
+      "durableReviewPreservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-three-scope-profile-prerequisite-successor-independent-review-20261013-v1/exact-own-review-and-source-cache-boundary.preservation-v1.json",
+        "bytes": 12696,
+        "sha256": "sha256:bb33407b3e92dfe012980a60f2b6e663923f4174b61df8a846b0f090b3cd1caf"
+      },
+      "mutableDocDriftIndependentReceipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-three-scope-profile-prerequisite-successor-independent-review-20261013-v1/root-confirmed-mutable-doc-drift-and-scientific-scope.receipt.json",
+        "sha256": "sha256:eda6a9b1bc68121f9e31869e8762e8ea4bf85fb7f184ef425c006039595004d9",
+        "bytes": 2187
+      },
+      "allOtherScientificInputsUnchanged": true,
+      "unconditionalOriginalAuthorGlobalVerifierPassClaimed": false,
+      "newNativeDTasks": [
+        "gym_physics_three_local_successor_native_d_blind_a",
+        "gym_physics_three_local_successor_native_d_blind_b"
+      ]
+    }
+  },
+  "stableFullCiCheckout": {
+    "status": "FULL_REQUIRED_CI_PASSED",
+    "path": "tmp/cross-subject-requires/stable-ci-worktree-20261013",
+    "head": "fed73cdd8f41c5116d8c7c62d127b53cd0e75447",
+    "candidateLogicalTree": "734a96f84e26552e5f053b1ea28723d8f296e4ef",
+    "session": 29479,
+    "logPath": "tmp/cross-subject-requires/ci-stable-worktree-first10-and-technical-fixes-20261013.log",
+    "snapshot": {
+      "path": "tmp/cross-subject-requires/stable-ci-worktree-first10-technical-fixes.snapshot-v1.json",
+      "sha256": "sha256:ca31aecc5117940002ed623bb614278a25aef7a53307cb4acea4e3455740ac95"
+    },
+    "candidateIndexReceipt": {
+      "path": "tmp/cross-subject-requires/ci-candidate-20261013.index-receipt-v6.json",
+      "sha256": "sha256:e959db532610d4878756f113799b1179570395f0f0e281114d5ae3acf9d83ecb"
+    },
+    "userStagingChanged": false,
+    "sourceIncludes": [
+      "First10activecanonicaladoption",
+      "qualityDirectoryGuard",
+      "authoredExternalSupportBookLoader"
+    ],
+    "inertNativeThreeOrBYMigrationIncluded": false,
+    "completedObservedStages": [
+      "frontend lint and build",
+      "curriculum and schema",
+      "curriculum quality gates",
+      "goal books",
+      "backend clean check",
+      "OpenAI draft and Claude published-artifact exact verification"
+    ],
+    "fullSuiteSuccessClaimed": true,
+    "snapshotOriginalStartedFalseFieldRetainedAsHistorical": true,
+    "actualToolExitCode": 0,
+    "backendTests": 2328,
+    "backendPassed": 2319,
+    "backendFailures": 0,
+    "backendErrors": 0,
+    "backendSkipped": 9,
+    "terminalSuites": 247,
+    "report": {
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/full-ci-stable-first10-and-technical-fixes-20261013-v1/verification-summary.json",
+      "sha256": "sha256:b383efe481223735ee03b31e47d40e5f23826314d0651721d31e476ec1b0b4b3"
+    },
+    "originalJUnitXmlRetained": false,
+    "originalXmlBoundary": "normal-success run_ci.sh removes isolated backend build;exactactual consolelogand2328distinct terminalrecords retained",
+    "all1122OwnWorktreeSnapshotBytesVerifiedAfterCI": true,
+    "externalMainHead": "f186348b593030f5282e308a1fdb663cb8f17b60",
+    "externalMainPullQualityAndQaPaths": 148,
+    "externalMainPullOwnSnapshotOverlap": 0
+  },
+  "goalResumptionRecord": {
+    "user": "Ich habe auf weiter geklickt .... sollte jetzt laufen",
+    "toolStatusActuallyVerified": "active",
+    "verifiedAt": "2026-10-13T15:41:45Z",
+    "agentSetActive": false,
+    "servicePreviouslyBlockedDuringAuthorizedWork": true,
+    "causeClaimed": false
+  },
+  "goalBookAuthoredExternalSupportFix": {
+    "status": "integrated-independent-code-review-approved-focused-checks-passed-fullCI-running",
+    "receipt": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/goalbook-authored-support-loader-fix-20261013-v1/independent-approval-and-integration.additive-receipt-v1.json",
+      "sha256": "sha256:7e5a2bb7c34e7c508e9de3d283d6c7d47b2ecdd50ce0fcfd782bfd81392d2568"
+    },
+    "actualAtlasViews": 64,
+    "actualAtlasPhysicsPages": 478,
+    "separateCanonicalCompilerViews": 69,
+    "fullCiPassed": true,
+    "foreignCanonicalContainsPermitted": false,
+    "completeForeignRenderingStubSubtreeClaimed": false
+  },
+  "effectiveGoalObjective": "Erarbeite und implementiere mit GPT-6.1 Sol Ultra die fachlich notwendigen requires-Beziehungen zwischen Mathematik und Physik vollständig für das Gymnasium (kanonische Sekundarstufe I und II). Prüfe alle relevanten Gymnasium-Lernziele in beiden Richtungen anhand aktueller Inhalte, Quellen, Granularität und curricularer Geltung; lasse Entscheidungen unabhängig prüfen und integriere passende atomare Beziehungen unter stabilen IDs. Sichere direkte und contains-geerbte Voraussetzungen, globalen DAG und Referenzauflösung, Gymnasium-Projektionen, getrennte prerequisiteOnly/target/Mastery-Semantik und die Möglichkeit, fehlende Voraussetzungen ausdrücklich auszuwählen und zu lernen. Implementiere passende Regressionen einschließlich beherrschtem Zwischenziel bei offener fachfremder Voraussetzung, erhalte die geschützten M7-Floors und liefere lokal geprüften Stand samt reproduzierbarem Abschlussbericht. Keine Veröffentlichung oder Produktionsdeployment.",
+  "bindingUserScopeClarification": {
+    "statement": "möglicherweise habe ich das Ziel nicht genau genug definiert. Scope ist hier aktuell nur Gymnasium!",
+    "schoolForm": "Gymnasium",
+    "inScopeFamilies": [
+      "canonical-gymnasium"
+    ],
+    "subjects": [
+      "Mathematik",
+      "Physik"
+    ],
+    "stages": [
+      "Sekundarstufe I",
+      "Sekundarstufe II"
+    ],
+    "jurisdictionScope": "existing canonical Gymnasium applicability/composition scopes; no additional geographical narrowing requested",
+    "outsideScopeFamilies": [
+      "tum-bsc-mathematics",
+      "tum-bsc-physics",
+      "tum-msc-tmp",
+      "tum-msc-qst",
+      "mit-ocw-mathematics",
+      "tum-informatics-embedded-mathematics",
+      "tud-informatics-embedded-math-physics",
+      "heidelberg-medicine-embedded-physics",
+      "by-fachoberschule",
+      "by-berufsoberschule",
+      "by-realschule",
+      "by-mittelschule",
+      "by-grundschule",
+      "by-wirtschaftsschule"
+    ],
+    "allHistoricalArtifactsPreserved": true,
+    "broaderFamilyWorkersStopped": true,
+    "newRemediationUiRequested": false,
+    "currentMachineScopeAdjustment": "implemented; author and independent exact technical reviews APPROVE; focused tests and CLI PASS; final full CI pending",
+    "configurationSha256": "sha256:044f14c11d564fb532530b35e1ef870953bf7c1388be1be540ec575351f44671",
+    "currentInventoryCounts": {
+      "selectedLandscapeFiles": 2,
+      "curricularMathematics": 807,
+      "curricularPhysics": 478,
+      "selectedStableGoalIds": 2016,
+      "globalActiveSafetyLandscapeFiles": 548,
+      "globalReferenceSafetyLandscapeFiles": 593
+    },
+    "independentTechnicalScopeReview": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/gymnasium-scope-inventory-independent-review-20261013-v1/exact-entrypoints/verification-summary.json",
+      "sha256": "sha256:62fbc91d31413bd8601e67f77d401ec8a1aeafcc5b08e0d1f550a86bf766c33f",
+      "bytes": 7465,
+      "decision": "APPROVE",
+      "preservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/gymnasium-scope-inventory-independent-review-20261013-v1/exact-own-originals-and-cache-boundary.preservation-v1.json",
+        "sha256": "sha256:bf54bb8125e9f39a7bdcf8706424cef3d4a92c173501dbcdeec26953701bbdc0",
+        "bytes": 18418
+      },
+      "reviewedFourSourceFilesStillExact": true,
+      "newFullCiClaimed": false
+    }
+  },
+  "persistentGoalServiceObjectiveHandling": {
+    "status": "active service retains earlier broader objective wording; available tools edit status only",
+    "effectiveUserObjectiveAuthoritative": true,
+    "scopeOverride": "Erarbeite und implementiere mit GPT-6.1 Sol Ultra die fachlich notwendigen requires-Beziehungen zwischen Mathematik und Physik vollständig für das Gymnasium (kanonische Sekundarstufe I und II). Prüfe alle relevanten Gymnasium-Lernziele in beiden Richtungen anhand aktueller Inhalte, Quellen, Granularität und curricularer Geltung; lasse Entscheidungen unabhängig prüfen und integriere passende atomare Beziehungen unter stabilen IDs. Sichere direkte und contains-geerbte Voraussetzungen, globalen DAG und Referenzauflösung, Gymnasium-Projektionen, getrennte prerequisiteOnly/target/Mastery-Semantik und die Möglichkeit, fehlende Voraussetzungen ausdrücklich auszuwählen und zu lernen. Implementiere passende Regressionen einschließlich beherrschtem Zwischenziel bei offener fachfremder Voraussetzung, erhalte die geschützten M7-Floors und liefere lokal geprüften Stand samt reproduzierbarem Abschlussbericht. Keine Veröffentlichung oder Produktionsdeployment.",
+    "newGoalCreatedOrOldGoalMarkedComplete": false
+  },
+  "historicalOutOfScopeWork": {
+    "previousCheckpointExact": "curricula/quality/cross-subject-requires/2026-10-13/checkpoint-history/work-checkpoint.before-user-Gymnasium-scope.2a3e8c9c0feaad9ba584b18a64de35c38ef4d82ad8306f981aaf6930c4198012.exact.json",
+    "familyIds": [
+      "tum-bsc-mathematics",
+      "tum-bsc-physics",
+      "tum-msc-tmp",
+      "tum-msc-qst",
+      "mit-ocw-mathematics",
+      "tum-informatics-embedded-mathematics",
+      "tud-informatics-embedded-math-physics",
+      "heidelberg-medicine-embedded-physics",
+      "by-fachoberschule",
+      "by-berufsoberschule",
+      "by-realschule",
+      "by-mittelschule",
+      "by-grundschule",
+      "by-wirtschaftsschule"
+    ],
+    "BYV3": "stopped, no live changes or running sessions; untested/unsealed candidate preserved TMP",
+    "otherSchoolFormsUniversitiesAndEmbeddedFamilies": "not current goal requirements; originals preserved; no further work scheduled"
+  },
+  "boundedGymnasiumMathPrerequisiteAudit": {
+    "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+    "status": "exact inert nine-to-integer-addition-only prerequisite candidate independently scientifically approved; native current successor preparation in progress; no active adoption",
+    "additionalActualBWClosureGap": "integer-ordering d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe not projected in three relevant BW views",
+    "domainCoverageIssue": "541 requires a rational-domain task; CAF covers N/Z. Actual complete Fma prerequisite chains already reach ee48 rational multiplication/division. No extra edge or task weakening inferred.",
+    "newUiOrOtherFamilyWork": false,
+    "proposedRequires": [
+      "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+    ],
+    "wholeGoalAndPositiveProfileDemandsUnchanged": true,
+    "scientificIndependentReview": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-cafd-requires-minimality-independent-review-20261013-v1/independent-review.sealed-index.json",
+      "sha256": "sha256:86a8f80fb63380a04ee6dbf2295844a8f9893d68c440abe525e3bfaa76151399",
+      "bytes": 7209
+    },
+    "durableOwnReviewPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-cafd-requires-minimality-independent-review-20261013-v1/exact-own-originals-and-cache-boundary.preservation-v1.json",
+      "sha256": "sha256:6f0efa5fef602fedbac5c0a31b9a7bc8107851549a0a5cef8fc7c32494b88b04",
+      "bytes": 8949
+    },
+    "authorPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-cafd-requires-minimality-author-20261013-v1/exact-own-originals-and-cache-boundary.preservation-v1.json",
+      "sha256": "sha256:6e6f1be61fe6b7c4653a7d966b6135949c96d47f37b538c103fac2d8b376a56d",
+      "bytes": 254095
+    },
+    "orientationCountercase": "Integer-addition mastery permits this candidate CAF frontier even when orientation is open; orientation mastery is not inferred.",
+    "zeroPreparationBWRouteApproved": false,
+    "nativeCurrentGates": "Current candidate CAF P reviewInput and kind source are stale; native book fails closed. P/D/A/M/kind/V and protected M7 checks remain required.",
+    "nativeSuccessorAuthor": {
+      "task": "gym_cafd_native_successor_author",
+      "outputDirectory": "tmp/cross-subject-requires/math-cafd-native-successor-author-20261013-v1",
+      "state": "first inert native preparation completed; actual eight-goal D rounds and synthesis leave CAF and191c deferred"
+    },
+    "actualCurrentNativeEight": {
+      "strict": 6,
+      "reviewed": 8,
+      "deferredGoalIds": [
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ],
+      "synthesisSeal": {
+        "path": "tmp/cross-subject-requires/gym-math-eight-current-native-d-synthesis-20261013-v1/seal.json",
+        "sha256": "sha256:d34c3a39c8f88f3628234c19a68429a1e76d01f2334a62051c096eaa164484c2",
+        "bytes": 18322
+      },
+      "resolutionIndex": {
+        "path": "tmp/cross-subject-requires/gym-math-eight-current-native-d-synthesis-20261013-v1/native-d/resolution-index.json",
+        "sha256": "sha256:e3392506ed545b1946f7e89b2cc3bf785d5bbd4444869c48e81ca469a202e1fe",
+        "bytes": 4807
+      },
+      "allNativeStepsPassed": true,
+      "ownMathReaderV2": {
+        "path": "tmp/cross-subject-requires/math-cafd-native-eight-clean-reader-20261013-v2/reader.sealed-index-v2.json",
+        "sha256": "sha256:4d4051f8793e841aa1a4aebeaa5d0581d8dc2d370c5881944ff4fc93f2d525e7",
+        "bytes": 13383
+      },
+      "oldReaderAndRoundsUnmodified": true,
+      "noCanonicalAdoption": true,
+      "durableOwnSynthesisPreservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/gym-math-eight-current-native-d-synthesis-20261013-v1/exact-own-synthesis-and-source-cache-boundary.preservation-v1.json",
+        "sha256": "sha256:2c83d7f513afac199840fcd46c3857ab5908b362998075f6b14aeeac7f615d75",
+        "bytes": 22018
+      }
+    },
+    "nextMathematicalContentSequencingAuthor": {
+      "task": "gym_math_caf_zero_and_integer_product_successor_author",
+      "outputDirectory": "tmp/cross-subject-requires/math-caf-zero-integer-product-successor-author-20261013-v1",
+      "state": "completed independent informed whole-Goal/P/Kind candidate review supports both whole goals and profiles; no text fix needed; new native D2 remains pending",
+      "seal": {
+        "path": "tmp/cross-subject-requires/math-caf-zero-integer-product-successor-author-20261013-v1/seal.json",
+        "sha256": "sha256:164d81085cd8258013a105619ae1c73905e106c461e64385a268a04420f8da29",
+        "bytes": 216528
+      },
+      "independentTask": "gym_math_two_successor_independent_science_p_kind_review",
+      "currentHistoricalNativeResolutionsInvalidatedCount": 2,
+      "other44HistoricalNativeResolutionsStillValid": true,
+      "technicalRenderedPageFingerprintChanges": 46,
+      "actualNativeFreshness": {
+        "path": "tmp/cross-subject-requires/math-caf-zero-integer-product-successor-author-20261013-v1/author/native-D-freshness.actual.json",
+        "sha256": "sha256:1987324de202198782dbba70e9ef11c309e9958948076b76b34484559651af9c",
+        "bytes": 75224
+      },
+      "combinedChangesRequiredToAvoidCycle": true,
+      "allWhole807ProfilesChecked": true,
+      "independentReview": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/math-caf-zero-integer-product-successor-independent-review-20261013-v1/goal-decisions.full.json",
+        "sha256": "sha256:adbdd6810941ed7872c328e654a81c62001106cd78c88946846be090d5a2fbee",
+        "bytes": 53293
+      },
+      "durableReviewPreservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/math-caf-zero-integer-product-successor-independent-review-20261013-v1/exact-own-review-and-source-cache-boundary.preservation-v1.json",
+        "bytes": 22766,
+        "sha256": "sha256:213e881516d68cf2733901ae9ec503d3e996a9cbf7e6c1481bb3da33170cb388"
+      },
+      "correctedSourceReaderSupplement": {
+        "path": "tmp/cross-subject-requires/math-two-correct-source-reader-supplement-20261013-v2/reader-supplement.sealed-index.json",
+        "sha256": "sha256:8ecf5532a0f2e354fa900ddc61901b70cdab9ab200fe94e7d4590e1e8724b215",
+        "bytes": 1130
+      },
+      "correctedOriginalPageContexts": 4,
+      "original140ReaderFilesAndNativeD2InputsUnchanged": true,
+      "sourceReaderSupplementEntryPoint": "tmp/cross-subject-requires/math-two-correct-source-reader-supplement-20261013-v2/START-HERE.md",
+      "completeIndependentViewCounts": {
+        "math": 88,
+        "physics": 69,
+        "hypotheticalFrontierCases": 157
+      },
+      "originalErroneous147AtlasStdoutPreservedAndCorrectedAdditively": true
+    }
+  },
+  "newScopeInventoryFullCi": "pending for new inventory-scope code;earlierpassedfullCIremains exact before-scope evidence",
+  "completedGymnasiumReviewPreservations": [
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/gymnasium-scope-inventory-independent-review-20261013-v1/exact-own-originals-and-cache-boundary.preservation-v1.json",
+      "bytes": 18418,
+      "sha256": "sha256:bf54bb8125e9f39a7bdcf8706424cef3d4a92c173501dbcdeec26953701bbdc0",
+      "originalOwnFileCount": 60,
+      "retainedCacheCount": 0,
+      "archiveBytes": 9541738
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-cafd-requires-minimality-independent-review-20261013-v1/exact-own-originals-and-cache-boundary.preservation-v1.json",
+      "bytes": 8949,
+      "sha256": "sha256:6f0efa5fef602fedbac5c0a31b9a7bc8107851549a0a5cef8fc7c32494b88b04",
+      "originalOwnFileCount": 16,
+      "retainedCacheCount": 3,
+      "archiveBytes": 506866
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/native-three-math-remediation-route-independent-review-20261013-v1-continuation/exact-own-originals-and-cache-boundary.preservation-v1.json",
+      "bytes": 10462,
+      "sha256": "sha256:b17ca17aa7c06b04e5fbed956f0fbe72cb7d6155dc75348dde31942fa0fc5977",
+      "originalOwnFileCount": 12,
+      "retainedCacheCount": 7,
+      "archiveBytes": 82382
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/native-three-math-remediation-route-independent-review-20261013-v2/exact-own-originals-and-cache-boundary.preservation-v1.json",
+      "bytes": 22048,
+      "sha256": "sha256:dc73f56f271bc7b7dc1c3ec3e5cdf91fda204e1d3a026ef0840f4e6e155e0c10",
+      "originalOwnFileCount": 17,
+      "retainedCacheCount": 26,
+      "archiveBytes": 101803
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/native-three-math-remediation-route-candidate-20261013-v2/exact-own-originals-and-cache-boundary.preservation-v1.json",
+      "bytes": 68200,
+      "sha256": "sha256:6c6715012e1cd7006c81cd9ecbf830274c39d48c7c9bad1eeff1edc5d9960e27",
+      "originalOwnFileCount": 127,
+      "retainedCacheCount": 27,
+      "archiveBytes": 1883487
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-cafd-requires-minimality-author-20261013-v1/exact-own-originals-and-cache-boundary.preservation-v1.json",
+      "bytes": 254095,
+      "sha256": "sha256:6e6f1be61fe6b7c4653a7d966b6135949c96d47f37b538c103fac2d8b376a56d",
+      "originalOwnFileCount": 450,
+      "retainedCacheCount": 3,
+      "archiveBytes": 8009503
+    }
+  ],
+  "effectiveCurrentScientificDecisionIndex": {
+    "summary": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/current-scientific-index-1241-v3-preservation-20261014-v1/summary.json",
+      "bytes": 14126,
+      "sha256": "sha256:9f5138c52b044ec838fc77f0e2fb7e6e93fd328fd2023cf93f09bd0859bf0452"
+    },
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/current-scientific-index-1241-v3-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 2182,
+      "sha256": "sha256:03c758a6e93f76112ab4dab21b9bdcbef38b38e23f6f95c7981c399a12228129"
+    },
+    "fullUniverse": 1285,
+    "mathematics": 807,
+    "physics": 478,
+    "currentTechnicallyAcceptedScientificBindings": 1241,
+    "notAcceptedOrUnresolved": 44,
+    "rawSelectedScientificVerdicts": {
+      "approved": 1241,
+      "pending": 44
+    },
+    "peerUnresolvedClassifications": {
+      "granularity_gap": 26,
+      "review_required": 11,
+      "scope_gap": 7
+    },
+    "historicalDistinctFourthBatchDissentStillPending": [
+      "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "8ad305d2-bde0-4223-9477-517b2943148b",
+      "a12fddce-0215-58d9-bd91-21be8a960d25"
+    ],
+    "originalVerdictsAndAuthorReviewBindingsNotRewritten": true,
+    "wholeMath807BodiesReviewedAcrossPrimary46AndSupplemental761": true,
+    "new3ApprovedRequiresProposalsNotMainAdopted": [
+      {
+        "goalId": "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+        "title": "Ladungserhaltung erläutern",
+        "proposedForeignPrerequisiteIds": [
+          "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+        ]
+      },
+      {
+        "goalId": "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+        "title": "Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben",
+        "proposedForeignPrerequisiteIds": [
+          "bbef7cf2-90fa-59fa-a115-8b651aab9231"
+        ]
+      },
+      {
+        "goalId": "66256e22-44a3-5939-8862-821e29d6711d",
+        "title": "Strom-Spannungs-Kennlinien einfacher Bauteile experimentell untersuchen und deuten",
+        "proposedForeignPrerequisiteIds": [
+          "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+        ]
+      }
+    ],
+    "SourcePKindDHumanAdoptionApprovalNotCreatedByIndex": true
+  },
+  "wholePositiveBodyCoverageAudit": {
+    "preparedReader": {
+      "path": "tmp/cross-subject-requires/gymnasium-whole-positive-body-review-inputs-20261013-v1/reader.sealed-index.json",
+      "sha256": "sha256:a032b00820acfeb99ca7897de739e108360bd0ed7f806d6b5894091f047091cd",
+      "bytes": 6807
+    },
+    "durablePreparationReceipt": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/gymnasium-whole-positive-body-review-inputs-20261013-v1/preparation.receipt.json",
+      "sha256": "sha256:9fc16ef6a87b907ecdedd0af2b4a19af3557b58848f0ac6a05d3b4165f4c2503",
+      "bytes": 1436
+    },
+    "all1285WholeGoalProfileContextsPreparedNotReviewedByGenerator": true,
+    "mathPrimaryWholeBodiesPreviouslyRead": 46,
+    "mathPrimaryWholeBodiesNotPreviouslyRead": 761,
+    "mathBackfillActualCompletedBodies": 761,
+    "mathBackfillRemainingBodies": 0,
+    "backfillCompletedBatches": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "backfillNextBatch": null,
+    "task": "gym_math_whole_positive_body_cross_requires_review",
+    "outputDirectory": "tmp/cross-subject-requires/math-761-whole-positive-body-cross-requires-review-20261013-v1",
+    "actual80BodiesHaveNoUniversalPhysicsPrerequisite": true,
+    "incidentalMathematicalProfileScopeFindingsKeptSeparate": true,
+    "nativePOrM7ApprovalClaimed": false,
+    "backfillNextRecord": null,
+    "actual200BodiesHaveNoUniversalPhysicsPrerequisite": true,
+    "latestActualSeal": {
+      "path": "tmp/cross-subject-requires/math-761-whole-positive-body-cross-requires-review-20261013-v1/own-artifacts.sealed-index.continuation-05-final-761.json",
+      "bytes": 243605,
+      "sha256": "sha256:f419b997ac5355d435cf44e96220e1ea0e6d4889a986279c4d82f4f7348b6009"
+    },
+    "whole174FileSealRecheckedByRoot": true,
+    "continuationHandoff": {
+      "path": "tmp/cross-subject-requires/math-761-whole-positive-body-cross-requires-review-20261013-v1/continuation.whole-scope-761.complete.handoff.json",
+      "bytes": 754,
+      "sha256": "sha256:59b86e607cea77327976ceea4b985a921a99ceaa10724083bd099da28f5e034e"
+    },
+    "ongoingTask": "gym_math_whole_positive_body_cross_requires_review",
+    "backfillCompletedRecordsInCurrentBatch": 1,
+    "actual256BodiesHaveNoUniversalPhysicsPrerequisite": true,
+    "whole240FileSealRecheckedByRoot": true,
+    "actual360BodiesHaveNoUniversalPhysicsPrerequisite": true,
+    "latestCompleteBatchReceipt": {
+      "path": "tmp/cross-subject-requires/math-761-whole-positive-body-cross-requires-review-20261013-v1/batch-015.receipt.json",
+      "bytes": 1333,
+      "sha256": "sha256:3e21f48699d6aaa42818a465483b582a77dbeb15413729c05eef1a9bc4a10315"
+    },
+    "latestWholeBodySealFilesRecheckedByRoot": 1271,
+    "latestSafeWorkPosition": {
+      "path": "tmp/cross-subject-requires/math-761-whole-positive-body-cross-requires-review-20261013-v1/work-position.whole-scope-761.complete.continuation-05.json",
+      "bytes": 900,
+      "sha256": "sha256:9ba11f9530ff4359e19acb8f73d43dfb26a79c333dd390e066f913c117df7507"
+    },
+    "priorContinuationHandoffIsHistorical": true,
+    "actual496BodiesHaveNoUniversalPhysicsPrerequisite": true,
+    "latestWholeSubjectOrNativePOrM7Approval": false,
+    "actual600BodiesHaveNoUniversalPhysicsPrerequisite": true,
+    "actual660BodiesHaveNoUniversalPhysicsPrerequisite": true,
+    "exactThrough640Preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-whole-body-through640-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 266753,
+      "sha256": "sha256:33580eca87ba6a04a1adf7c179268d9657641f6ed0329d0c49a2bd8a6a193834"
+    },
+    "exactAfter640Through660Preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-whole-body-after640-through660-20261014-v2/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 14197,
+      "sha256": "sha256:9d7460e5726d89b196fb9449442c7e3ca4b1f2b81606dc38bd26a1bd2b395995"
+    },
+    "finalAudit": {
+      "path": "tmp/cross-subject-requires/math-761-whole-positive-body-cross-requires-review-20261013-v1/whole-scope-761.final-audit.continuation-05.json",
+      "bytes": 10903,
+      "sha256": "sha256:098932ae199a5ad6b0dd4a4bf02859496e0389d6d02b2b4c6cee811e5dd0c289"
+    },
+    "independentPhysicsAssessmentsNoUniversalPrerequisite": 761,
+    "separateProfileOrScopeIssues": 23,
+    "ownWorkedCaseWitnesses": 1599,
+    "wholeOriginalScopeComplete": true,
+    "other46BodiesNotNewlyReviewedInSupplement": true,
+    "exactAfter660Through761FinalPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-whole-body-after660-through761-final-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 81720,
+      "sha256": "sha256:efb79d7d911e8eeb498618a9aa110ef553032b24902e3ad5b79e1b0aa192b278"
+    },
+    "nativeSourcePOrM7ApprovalFromThisSupplement": false
+  },
+  "latestNativeRoundOwnOriginalPreservations": [
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/corrected-physics-three-native-d-blind-a-20261013-v1/exact-own-review-and-retained-source-boundary.preservation-v1.json",
+      "sha256": "sha256:a0481faa47e36455207e3cb9bea9a673a28e4791f42433e11d03af65c4622b9e",
+      "ownOriginals": 19,
+      "tmpRetainedOriginals": 18,
+      "archiveBytes": 42327
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/corrected-physics-three-native-d-blind-b-20261013-v1/exact-own-review-and-retained-source-boundary.preservation-v1.json",
+      "sha256": "sha256:fb91231dec43751b1462cd01ea9348ccefe6b6393e4697595a5225fea805af00",
+      "ownOriginals": 31,
+      "tmpRetainedOriginals": 5,
+      "archiveBytes": 120687
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-native-eight-d-blind-a-20261013-v1/exact-own-review-and-retained-source-boundary.preservation-v1.json",
+      "sha256": "sha256:148c91a29a3db9703e6480d284957dd56f84b02218dc5edb43208aca1a8917a8",
+      "ownOriginals": 16,
+      "tmpRetainedOriginals": 12,
+      "archiveBytes": 58056
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/math-native-eight-d-blind-b-20261013-v1/exact-own-review-and-retained-source-boundary.preservation-v1.json",
+      "sha256": "sha256:152b68647ba39082f57ba08f6f731f4a95451473132aeb36dd353ac053bf855c",
+      "ownOriginals": 14,
+      "tmpRetainedOriginals": 9,
+      "archiveBytes": 33378
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/bw-two-math-route-placements-independent-review-20261013-v1/exact-own-review-and-retained-source-boundary.preservation-v1.json",
+      "sha256": "sha256:7c81349f08f3653b149c8f020c45577008760782a2786e00b73c3d81b744c023",
+      "ownOriginals": 51,
+      "tmpRetainedOriginals": 1227,
+      "archiveBytes": 2670248
+    }
+  ],
+  "previousGoalTurnClassification": "no progress: terminology explanation only; this continuation took the next available concrete actions",
+  "latestOwnNativeSynthesisOriginalPreservations": [
+    {
+      "name": "gym-physics-three-current-native-d-synthesis-20261013-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/gym-physics-three-current-native-d-synthesis-20261013-v1/exact-own-synthesis-and-source-cache-boundary.preservation-v1.json",
+        "sha256": "sha256:9ae496ff11c15b2bd35c4b9fb8dc639e302f88fa6b1a0b45c6f29672b794326c",
+        "bytes": 31389
+      },
+      "ownFiles": 39,
+      "retainedFiles": 63
+    },
+    {
+      "name": "gym-math-eight-current-native-d-synthesis-20261013-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/gym-math-eight-current-native-d-synthesis-20261013-v1/exact-own-synthesis-and-source-cache-boundary.preservation-v1.json",
+        "sha256": "sha256:2c83d7f513afac199840fcd46c3857ab5908b362998075f6b14aeeac7f615d75",
+        "bytes": 22018
+      },
+      "ownFiles": 35,
+      "retainedFiles": 34
+    }
+  ],
+  "preparedUnresolvedCanonicalPhysicsReader": {
+    "wholeCurrentGoalProfileDossiers": 97,
+    "originalDistinctFourthBatchDissentPreserved": 14,
+    "batchSizes": [
+      20,
+      20,
+      20,
+      20,
+      17
+    ],
+    "boundCurrentAndHistoricalInputFilesRechecked": 627,
+    "informedNotBlind": true,
+    "newDecisionsOrApprovalsCreated": false,
+    "entryPoint": "curricula/quality/cross-subject-requires/2026-10-13/gymnasium-unresolved97-informed-reader-20261013-v1/START-HERE.md",
+    "summary": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/gymnasium-unresolved97-informed-reader-20261013-v1/summary.json",
+      "sha256": "sha256:a72d88a2ced299fbc08b13a380027f943dbbb6561248e4fd551e3a58356d2abb",
+      "bytes": 5170
+    },
+    "seal": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/gymnasium-unresolved97-informed-reader-20261013-v1/reader.sealed-index.json",
+      "sha256": "sha256:f323e85845f60181edd19114ae09ccd00992ba7291539134d474efe80f0c1ba1",
+      "bytes": 2267
+    },
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/gymnasium-unresolved97-informed-reader-20261013-v1/exact-prepared-inputs.preservation-v1.json",
+      "sha256": "sha256:2cad5c4c5fe6ef4579a050674ce69346066d578f0a1f7a4e2dfce490ac884b99",
+      "bytes": 3679
+    },
+    "substantiveCurrentSourceAndScopeReviewStillNeeded": true
+  },
+  "latestFiveGoalScientificReviewOriginalPreservations": [
+    {
+      "name": "math-caf-zero-integer-product-successor-independent-review-20261013-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/math-caf-zero-integer-product-successor-independent-review-20261013-v1/exact-own-review-and-source-cache-boundary.preservation-v1.json",
+        "bytes": 22766,
+        "sha256": "sha256:213e881516d68cf2733901ae9ec503d3e996a9cbf7e6c1481bb3da33170cb388"
+      },
+      "ownFiles": 62,
+      "retainedSourceAndInputFiles": 14,
+      "archiveBytes": 1627454
+    },
+    {
+      "name": "physics-three-scope-profile-prerequisite-successor-independent-review-20261013-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-three-scope-profile-prerequisite-successor-independent-review-20261013-v1/exact-own-review-and-source-cache-boundary.preservation-v1.json",
+        "bytes": 12696,
+        "sha256": "sha256:bb33407b3e92dfe012980a60f2b6e663923f4174b61df8a846b0f090b3cd1caf"
+      },
+      "ownFiles": 39,
+      "retainedSourceAndInputFiles": 0,
+      "archiveBytes": 1394672
+    }
+  ],
+  "latestFreshFiveGoalNativeDescriptionReview": {
+    "scope": "canonical Gymnasium only",
+    "strictDescriptionResolutions": 5,
+    "physics": {
+      "strict": 3,
+      "denominator": 3,
+      "deferred": 0,
+      "manifestFingerprint": "sha256:bc718e984f15f5c0908881da53b751a2aca3c28da0358ae943fb2035b5ba2138",
+      "finalOutcome": {
+        "path": "tmp/cross-subject-requires/gym-physics-three-local-successor-native-d-synthesis-20261013-v1/final-outcome.json",
+        "bytes": 20634,
+        "sha256": "sha256:6682b4469bacf4558ad465bb9f4588786717181f2d33ae5372f162b57ab0cf34"
+      },
+      "resolutionIndex": {
+        "path": "tmp/cross-subject-requires/gym-physics-three-local-successor-native-d-synthesis-20261013-v1/native-d/resolution-index.json",
+        "bytes": 2697,
+        "sha256": "sha256:498c51778ccbd0d65902a257e150d25dcbab1e4832c137d0f435c58e3354e5a1"
+      },
+      "ownSeal": {
+        "path": "tmp/cross-subject-requires/gym-physics-three-local-successor-native-d-synthesis-20261013-v1/own-seal.json",
+        "bytes": 72533,
+        "sha256": "sha256:08a3c0ccb3f809cd450d5f85c71fa76d8832baa3ad8ff7260b2bc4e0c4dc4cb5"
+      }
+    },
+    "mathematics": {
+      "strict": 2,
+      "denominator": 2,
+      "deferred": 0,
+      "manifestFingerprint": "sha256:b840226ce41d82543ab82909670a377ab8b575fc91f334e58ddba304edda0970",
+      "finalOutcome": {
+        "path": "tmp/cross-subject-requires/gym-math-two-zero-product-native-d-synthesis-20261013-v1/final-outcome.json",
+        "bytes": 6973,
+        "sha256": "sha256:8693106e457e22d15f6e44eade444b6666d74678da248768bf21e8b3414a47c9"
+      },
+      "ownSeal": {
+        "path": "tmp/cross-subject-requires/gym-math-two-zero-product-native-d-synthesis-20261013-v1/seal.json",
+        "bytes": 19964,
+        "sha256": "sha256:82259796913237f3d136bab248f9d360527327246b7e269ce20e0af1a26052c4"
+      }
+    },
+    "durableOriginalPreservations": [
+      {
+        "name": "physics-three-local-successor-native-d-blind-a-20261013-v1",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-three-local-successor-native-d-blind-a-20261013-v1/exact-own-native-round-and-source-boundary.preservation-v1.json",
+          "bytes": 17899,
+          "sha256": "sha256:278484081d7a5121d7448cd9201132b371e341fc5a82b7edb5527f8c2f49944d"
+        },
+        "ownFiles": 26,
+        "retainedFiles": 37,
+        "originalSealedFiles": 62
+      },
+      {
+        "name": "physics-three-local-successor-native-d-blind-b-20261013-v1",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-three-local-successor-native-d-blind-b-20261013-v1/exact-own-native-round-and-source-boundary.preservation-v1.json",
+          "bytes": 118814,
+          "sha256": "sha256:79988140189128a66199cde34fbc2d34a9081c9aab703fa9ae9d73412146e12a"
+        },
+        "ownFiles": 41,
+        "retainedFiles": 402,
+        "originalSealedFiles": 442
+      },
+      {
+        "name": "math-two-zero-product-successor-native-d-blind-a-20261013-v1",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/math-two-zero-product-successor-native-d-blind-a-20261013-v1/exact-own-native-artifacts-and-source-boundary.preservation-v1.json",
+          "bytes": 17747,
+          "sha256": "sha256:ea47e9ad3506adffac55e658b30d8d3e4592595cac39ed821a8649606b5827c0"
+        },
+        "ownFiles": 32,
+        "retainedFiles": 29,
+        "originalSealedFiles": 60
+      },
+      {
+        "name": "math-two-zero-product-successor-native-d-blind-b-20261013-v1",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/math-two-zero-product-successor-native-d-blind-b-20261013-v1/exact-own-native-artifacts-and-source-boundary.preservation-v1.json",
+          "bytes": 57036,
+          "sha256": "sha256:a191e97f19099aa43885200e604c04313cdf3ef8a07d451cdcd4ed7a71fc64aa"
+        },
+        "ownFiles": 30,
+        "retainedFiles": 175,
+        "originalSealedFiles": 204
+      },
+      {
+        "name": "gym-physics-three-local-successor-native-d-synthesis-20261013-v1",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/gym-physics-three-local-successor-native-d-synthesis-20261013-v1/exact-own-native-artifacts-and-source-boundary.preservation-v1.json",
+          "bytes": 73106,
+          "sha256": "sha256:97f8528aa24c6d7633dbd293713da7d96bd63efd1329ac07541e5800f0ccbeb4"
+        },
+        "ownFiles": 93,
+        "retainedFiles": 174,
+        "originalSealedFiles": 265
+      },
+      {
+        "name": "gym-math-two-zero-product-native-d-synthesis-20261013-v1",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/gym-math-two-zero-product-native-d-synthesis-20261013-v1/exact-own-native-artifacts-and-source-boundary.preservation-v1.json",
+          "bytes": 29433,
+          "sha256": "sha256:961a0c46bba381da976826591981a94a2a6860d5364a9697ee83c980cd44a577"
+        },
+        "ownFiles": 85,
+        "retainedFiles": 19,
+        "originalSealedFiles": 103
+      }
+    ],
+    "historicalDeferredRoundsRemainIntact": true,
+    "aiSynthesisNotHumanAcceptance": true,
+    "unconditionalOverallInputPass": false,
+    "knownMetadataAndInputReaderLimitations": [
+      "Physics retained old PDF annex; current normative book independently inspected; neutral additive reader V2.",
+      "Three Physics context P bodies match the proposed current body, but retained prior owner metadata is not current P authority; additive V3.",
+      "Physics author readonly verification failed for known historical-to-live objective-document drift only; failure and exact old snapshot retained.",
+      "Math five declared bundle companions absent from sealed neutral copy; full original bundle exact and inspected.",
+      "Math eleven source text references identify ten missing transient TXT paths; whole relevant passages, source goals and original PDFs retained.",
+      "Math P review input bindings cover empty resources/null image context; no image-byte approval.",
+      "A/B prior neutral context and informed synthesis exposure declarations remain unchanged."
+    ],
+    "remainingGates": [
+      "Source/Placement and actual quantitative/source scope issues",
+      "Independent new Physics prerequisiteOnly roles and complete Math target learning routes",
+      "Central protected maturity-floor/status checks after joint adoption",
+      "Final CI including inventory-scope code",
+      "Joint active adoption and complete1285Requires decision audit"
+    ],
+    "activeCanonicalSourceOrViewOrStatusAdoption": false,
+    "nativePKindAMVAndSubjectM7NowActuallyPassedInDetachedCandidate": true
+  },
+  "latestFiveGoalMachineQualityCandidate": {
+    "scope": "canonical Gymnasium only",
+    "wholeFiveOriginalContentReview": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-successor-native-quality-informed-review-20261013-v1/content-review.actual.json",
+      "bytes": 20448,
+      "sha256": "sha256:5255f0dc6ed9d1ded9168ba29ae6c1391869aa6f96a50f0614092aaa6694fda3"
+    },
+    "nativePValidatedAiCandidates": 5,
+    "freshKindClassifications": 5,
+    "nativeAtomicityAndMemoryCorrectedCliActualPass": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-successor-native-quality-informed-review-20261013-v1/additive-native-cli-acceptance-v1/native-cli-correction.actual.json",
+      "bytes": 11620,
+      "sha256": "sha256:bffe8a83c8c5235a41c525bfa97c18a199d4bfc38497b2bd777bd6259ea04cb0"
+    },
+    "originalJpgVKeepCount": 4,
+    "originalCafVRejected": true,
+    "originalOwnPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-successor-native-quality-informed-review-20261013-v1/exact-own-five-quality-and-cli-correction.preservation-v1.json",
+      "bytes": 16612,
+      "sha256": "sha256:99343ce14920107f9afa52e35e6bb6908952600d9ce27b639a5fb4767daa15ef"
+    },
+    "newCafCurrentPAMVOutcome": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/caf-documented-image-correction-attempt-02-informed-quality-review-20261013-v1/review-completion.actual.json",
+      "bytes": 22432,
+      "sha256": "sha256:685e65cfafdb6518709d60266b431712ae2dd0be32d623e1543136f72d2d9c44"
+    },
+    "newActualPInputFingerprint": "sha256:29481e12988d7c83ddc00d3d261ca4e3619c2d4eddbbcb9d4a2fe5eb57445e5b",
+    "newCafAiVisualKeepHash": "sha256:e787f8afc98297599d0924851d7a255aa4081dbc1b0955ac98ca8c4fd835075b",
+    "newCafOwnPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/caf-documented-image-correction-attempt-02-informed-quality-review-20261013-v1/exact-own-review-and-source-boundary.preservation-v1.json",
+      "bytes": 11808,
+      "sha256": "sha256:5fb1927eb05551f76e520cd0c6c0ed5f4a2d837e6d7098493922950fd6696c81"
+    },
+    "bothGenerationAttemptsPreserved": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/caf-documented-image-correction-candidate-20261013-v1/exact-image-attempts-and-isolated-imports.preservation-v1.json",
+      "bytes": 6121,
+      "sha256": "sha256:41da977643ef6e25e6d61199988c5306b71981d68691fe040576e3215f6169d5"
+    },
+    "firstGeneratedPngRejectedHash": "sha256:9344e8a7d63ea65631c57f44adb4cf4da29ee7bb76c1dc6212ca800e22b9e9b6",
+    "oldCafJpgUnchanged": true,
+    "existingNativeD2ActuallyValidAgainstPngLinkGoal": {
+      "path": "tmp/cross-subject-requires/caf-new-image-existing-native-d-freshness-20261013-v1/native-freshness.actual.json",
+      "bytes": 1911,
+      "sha256": "sha256:765e4a316d23bd4f46094218c514c1af1eb30b458306a84e7f3d3c04b3c4acf0"
+    },
+    "secondPngImportGoalByteIdenticalToTestedGoal": {
+      "path": "tmp/cross-subject-requires/caf-documented-image-correction-candidate-20261013-v1/attempt-02/isolated-import-root/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "bytes": 3714373,
+      "sha256": "sha256:61742f50b76efbb63e5fee4212b1d1b0452bb23cff4bcf8c2ce7268038828ec4"
+    },
+    "DDoesNotCertifyNewImageOrPResources": true,
+    "PAuthority": "ai_candidate / needs_human_review; valid machine P acceptance, not human authoritative-profile approval",
+    "newOverallM7OrCIOrActiveAdoptionApproval": false,
+    "preparedOriginalInputPreservations": [
+      {
+        "name": "math-two-complete-native-reader-supplement-20261013-v2",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/math-two-complete-native-reader-supplement-20261013-v2/exact-own-preparation-and-retained-input-boundary.preservation-v1.json",
+          "bytes": 9213,
+          "sha256": "sha256:c3290fde076f96d21624328f3c6f2dd30fff100d364270508993787b71629fc9"
+        },
+        "ownFiles": 3,
+        "retainedFiles": 28
+      },
+      {
+        "name": "five-successor-native-quality-reader-20261013-v1",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/five-successor-native-quality-reader-20261013-v1/exact-own-preparation-and-retained-input-boundary.preservation-v1.json",
+          "bytes": 1966,
+          "sha256": "sha256:05ca13ff12065e7bed2dc9f27aeaeb08bf914c3ba34aa39dc63bb8d7c0178bfd"
+        },
+        "ownFiles": 5,
+        "retainedFiles": 0
+      },
+      {
+        "name": "caf-six-authored-support-views-candidate-20261013-v1",
+        "receipt": {
+          "path": "curricula/quality/cross-subject-requires/2026-10-13/caf-six-authored-support-views-candidate-20261013-v1/exact-own-preparation-and-retained-input-boundary.preservation-v1.json",
+          "bytes": 4015,
+          "sha256": "sha256:98ddc0ba687ddcc7f52b3c1ee8d351a883f4ac732a75edd869bfbb6460238879"
+        },
+        "ownFiles": 13,
+        "retainedFiles": 0
+      }
+    ]
+  },
+  "sixExplicitCafMathSupportRoles": {
+    "authoredReferences": 6,
+    "projectionRole": "prerequisiteOnly",
+    "scopeFiles": [
+      "de-hb-gk",
+      "de-hb-lk",
+      "de-mv-gk",
+      "de-mv-lk",
+      "de-th-gk",
+      "de-th-lk"
+    ],
+    "freshIndependentRoleReview": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/caf-six-authored-support-views-independent-review-20261013-v1/six-informed-role-judgments.actual.json",
+      "bytes": 24186,
+      "sha256": "sha256:ccc5bc827bf3720b342d4d65f8e2b9fdb195633f02fd9c1f402022a3525445eb"
+    },
+    "actualCompleteMathViewsChecked": 88,
+    "registeredAtlasMembershipPreserved": 83,
+    "targetReferencesAdded": 0,
+    "all88WholeProjectedTargetsAndTreesUnchanged": true,
+    "ownIndependentPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/caf-six-authored-support-views-independent-review-20261013-v1/exact-own-review-and-source-boundary.preservation-v1.json",
+      "bytes": 5340,
+      "sha256": "sha256:b75204290daa53795c259782bbf983d6adad3a44c95471a29fecf6ed5941ec33"
+    },
+    "independentSourcePassageCopiesRetainedOnlyInTmp": true,
+    "sourcePlacementOrUnpreparedWholeLearningRouteClosure": false,
+    "activeAdoption": false
+  },
+  "unresolved97AuthorProgress": {
+    "wholeDossiersAuthored": 97,
+    "remainingNotYetAuthored": 0,
+    "unresolvedIndependentReviewAndAdoption": 97,
+    "first20Handoff": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-001-v2/handoff.json",
+      "bytes": 2812,
+      "sha256": "sha256:28cb1ddc372861df6bb9bc7caedee215b29e5b95ee8a42d02796708c2f5246d1"
+    },
+    "first20OwnSeal": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-001-v2/own-seal.json",
+      "bytes": 25632,
+      "sha256": "sha256:2bfbdea18cda96b6134f744aff91d6d56141b69db84f50e7af68f2de8050f81c"
+    },
+    "first20ExactOwnPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-001-v2/exact-own-first20-and-retained-source-boundary.preservation-v1.json",
+      "bytes": 39354,
+      "sha256": "sha256:6cac91d4e4fb202f1b64bacb2267f8e6f1c5b192472a360906baa59fa10c7537"
+    },
+    "authorCounts": {
+      "no_cross_subject_required": 10,
+      "add": 1,
+      "review_required": 2,
+      "granularity_gap": 5,
+      "scope_gap": 2
+    },
+    "activeRequiresChanges": 0,
+    "sourceContentReviewInOwnSeparateNamespace": true,
+    "whole97ScienceAcceptanceNotClaimed": true,
+    "activeAuthorContinuesRemaining77": false,
+    "peerFirst20CurrentTask": "informed independent content review after separate SourceContent audit",
+    "sourceFindings": "SourceGoal/direct-row/whole-passage levels stay separate; no blanket rejection of95 rows. FreeFall own-acquisition/literature and WavePacket quantitative-source gaps remain reviewable; proposed P companion not adopted.",
+    "all97FinalAdoptionStillOpen": true,
+    "second20Handoff": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002-v2/handoff.json",
+      "bytes": 2754,
+      "sha256": "sha256:1b4e09acb853353a55cd85edc6f2cfe4fdf1d3aed818ddf56826f5728ab094b1"
+    },
+    "second20OwnSeal": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002-v2/own-seal.json",
+      "bytes": 34510,
+      "sha256": "sha256:dbcd061b43a8f30a027d00245f33e8af3ae23e059203560f17a4043279b66c27"
+    },
+    "second20ExactOwnPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002-v2/exact-own-results-and-retained-source-boundary.preservation-v1.json",
+      "bytes": 54495,
+      "sha256": "sha256:6c08a4b4a75d5250faa51364d5f0747b8d7835dd0dc0d6f1fad2f07425304c96"
+    },
+    "second20AuthorCounts": {
+      "no_cross_subject_required": 9,
+      "add": 1,
+      "review_required": 4,
+      "granularity_gap": 4,
+      "scope_gap": 2
+    },
+    "activeAuthorContinuesRemaining57": false,
+    "first20IndependentActualReview": {
+      "wholeGoalsActuallyReviewed": 20,
+      "freshOwnSolvedPeerCases": 40,
+      "approved": 11,
+      "pending": 9,
+      "nativeTechnicalErrors": 0,
+      "ownOriginalSeal": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-first20-informed-independent-requires-review-20261013-v1/own-seal.original.json",
+        "bytes": 6193,
+        "sha256": "sha256:ebfbb6a11b03367c1a597a52ca0d7633a19c582cfa6b2c4d4f89cfe1c8f94074"
+      },
+      "actualNativeValidation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-first20-informed-independent-requires-review-20261013-v1/native-independent-requires-validation.actual.json",
+        "bytes": 909,
+        "sha256": "sha256:f6e3ce2d6bfcee349b75892dcf75e2460f2be258bba189cd3490ca9186ee69f2"
+      },
+      "preservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-first20-informed-independent-requires-review-20261013-v1/exact-own-results-and-retained-source-boundary.preservation-v1.json",
+        "bytes": 11742,
+        "sha256": "sha256:a126e6f6abea7d075fff65d584bd020fc1dedf4d3b6a708048243ed98f270fcc"
+      },
+      "informedNotBlindOrHuman": true,
+      "doesNotAutomaticallyRebindOriginalEffectiveIndex": true,
+      "newPSourceKindM7OrAdoptionGranted": false
+    },
+    "peerCurrentTask": "Last17 substantive peer and exact97er handoff, then actual newDecimal nativeD-B after complete neutral current reader; BW6 Source duplicate skipped because separate review completed.",
+    "third20AuthorCounts": {
+      "review_required": 1,
+      "add": 4,
+      "no_cross_subject_required": 8,
+      "scope_gap": 2,
+      "granularity_gap": 5
+    },
+    "third20AuthorHandoff": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-author-third20-preservation-20261014-v1/batch-003-final-v1/handoff.json",
+      "bytes": 2552,
+      "sha256": "sha256:fe24e461ae4220f6889746124c87403c4eeee7e2129306e8fdddfefc682d7c0a"
+    },
+    "third20ExactOwnPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-author-third20-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 53439,
+      "sha256": "sha256:7a4870b7977125eef07087c8a66f89fe1fb1cd8729ac07a66a0c40cef7cf3641"
+    },
+    "latestAuthorContinuation": "All97 complete; separate inert atomic successors for remaining two legacy Math-cluster references now assigned. Fourth20/Last17 independent peer work continues.",
+    "second20IndependentActualReview": {
+      "wholeGoalsActuallyReviewed": 20,
+      "freshOwnSolvedPeerCases": 40,
+      "approved": 9,
+      "pending": 11,
+      "authorSIAddNotAccepted": true,
+      "reason": "Whole nominated unit-conversion MathP requires independent nondecimal mixed-time transfer not mandatory in current SI PhysicsP",
+      "ownOriginalSeal": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-second20-informed-independent-requires-review-20261013-v1/own-seal.original.json",
+        "bytes": 7699,
+        "sha256": "sha256:ce775c1872cac9c3710adcf3079e03889f3da24fe4df9e4865b5f3ae290385e4"
+      },
+      "preservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-second20-informed-independent-requires-review-20261013-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 12472,
+        "sha256": "sha256:365eb99f4dec808ab3089a9c07e4537f5252e733a63b10269c723f1e4198d534"
+      },
+      "informedNotBlindOrHuman": true,
+      "noCurrentIndexAutomaticRebindingOrAdoption": true
+    },
+    "independentFirst40Summary": {
+      "reviewed": 40,
+      "approvedBoundedInInertPeerPackets": 20,
+      "pending": 20,
+      "currentEffective1285IndexNotAutomaticallyChanged": true
+    },
+    "activeAuthorContinuesRemaining37": false,
+    "whole97AuthorCounts": {
+      "no_cross_subject_required": 50,
+      "review_required": 11,
+      "granularity_gap": 23,
+      "scope_gap": 7,
+      "add": 6
+    },
+    "whole97AuthorFreshSolvedWitnesses": 194,
+    "whole97CombinedHandoff": {
+      "path": "tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/combined-097-inert-v1/handoff.json",
+      "bytes": 1639,
+      "sha256": "sha256:17cce28d2372c05a86c825f169041ae615592653aaa527bcbd23cdf0b3cf213b"
+    },
+    "whole97CombinedOwnSeal": {
+      "path": "tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/combined-097-inert-v1/own-seal.json",
+      "bytes": 6820,
+      "sha256": "sha256:f39654c7defb54d1df8cac72ab507dee09206ffb69a7c6a9717d9eb4c0bb4c9a"
+    },
+    "whole97CombinedPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-combined-author-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 8165,
+      "sha256": "sha256:c471f8f82394778f43e9cd0566b2a20cf68ee81292ea231f793bbad5cf5ece91"
+    },
+    "fourth20AuthorPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-author-batch004-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 60428,
+      "sha256": "sha256:2f8c6216d08a94dcdec3c852d64b268d19ef8d86ce0a3846eeffb058b7cd5b60"
+    },
+    "last17AuthorPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-author-batch005-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 102520,
+      "sha256": "sha256:b5940251698182428c8c9ec655fa7e5789661a43a8242122488e74e861dc4914"
+    },
+    "last17SourceLimit": "601 additional G87 topic-specific source objects bound but not exhaustively content-reviewed; no blanket whole-source or current TH authority claim.",
+    "independentFirst60Summary": {
+      "reviewed": 60,
+      "approvedBoundedInInertPeerPackets": 30,
+      "pending": 30,
+      "currentEffective1285IndexNotAutomaticallyChanged": true
+    },
+    "third20IndependentActualReview": {
+      "wholeGoalsActuallyReviewed": 20,
+      "freshOwnSolvedPeerCases": 40,
+      "approved": 10,
+      "pending": 10,
+      "ownOriginalSeal": {
+        "path": "tmp/cross-subject-requires/physics-unresolved97-third20-informed-independent-requires-review-20261013-v1/own-seal.original.json",
+        "bytes": 10212,
+        "sha256": "sha256:0c990f4bc5bab94d33f8a4157dd2451334fa933eb7715f3b5503dcd0ac647d52"
+      },
+      "handoff": {
+        "path": "tmp/cross-subject-requires/physics-unresolved97-third20-informed-independent-requires-review-20261013-v1/handoff.json",
+        "bytes": 3896,
+        "sha256": "sha256:0458108a8388b4953b56035cb8a01386107f013400242b5703194ccc1f0cc074"
+      },
+      "preservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-third20-informed-independent-requires-review-20261013-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 16301,
+        "sha256": "sha256:d754ae142a0e368affcf400561211f996a17fd77d4b6c2828188956e0815d49b"
+      },
+      "f870ForPositions48And49AuthorAddsNotAccepted": true,
+      "explicitDissent": {
+        "indices": [
+          48,
+          49
+        ],
+        "authorNominee": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "sealedAuthorState": "add",
+        "peerDecision": "pending",
+        "peerScientificState": "granularity_gap",
+        "reason": "Existing whole referenced quadratic-cluster content includes exact irrational quadratic solving; current positive-speed duty is performed in own cases. Whole f870 independently chosen neighbor-square estimation below1 is additional, not universal here. Runtime record/mastery and source scope are kept separate."
+      },
+      "informedNotBlindOrHuman": true,
+      "newPSourceKindM7OrAdoptionGranted": false
+    },
+    "independentFirst80Summary": {
+      "reviewed": 80,
+      "approvedBoundedInInertPeerPackets": 42,
+      "pending": 38,
+      "remainingIndependentBodies": 17,
+      "all97AcceptanceOrCurrentEffectiveIndexRebinding": false
+    },
+    "fourth20IndependentActualReview": {
+      "wholeCurrentGoalPActuallyRead": 20,
+      "freshOwnSolvedCases": 40,
+      "approved": 12,
+      "pending": 8,
+      "sourcePassagesActuallyRead": 130,
+      "currentTriplesOwnerErrors": 0,
+      "nativeWholePErrors": 0,
+      "scientificCounts": {
+        "no_cross_subject_required": 12,
+        "granularity_gap": 4,
+        "review_required": 3,
+        "scope_gap": 1
+      },
+      "ownOriginalSeal": {
+        "path": "tmp/cross-subject-requires/physics-unresolved97-fourth20-informed-independent-requires-review-20261014-v1/own-seal.original.json",
+        "bytes": 10043,
+        "sha256": "sha256:eed940031427b018a68d77c1290ea26c6aa155512f9e0ae4112f72908011c686"
+      },
+      "handoff": {
+        "path": "tmp/cross-subject-requires/physics-unresolved97-fourth20-informed-independent-requires-review-20261014-v1/handoff.json",
+        "bytes": 1413,
+        "sha256": "sha256:f33f992795a1848b5b42d17e9cb1483398b4815b45c8971329f493a4ca585c55"
+      },
+      "preservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-fourth20-informed-independent-requires-review-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 16078,
+        "sha256": "sha256:05767c86f29740f17a85189c8abf208b9836e8b157de64c939395debd5338487"
+      },
+      "newPKindSourceM7HumanOrAdoptionApproval": false
+    },
+    "additive94OwnWorkedProbeCorrection": {
+      "original97AuthorSealsUnchanged": true,
+      "oldCombinedProbeEnergyFactor4Wrong": true,
+      "correctCombinedChangeFactors": {
+        "T": 1,
+        "E": 12,
+        "Qmax": 6,
+        "Imax": 6
+      },
+      "actualFreshNumericalChecks": 4,
+      "preservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-author-probe94-correction-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 1991,
+        "sha256": "sha256:fb41b116ba05e59466aad432a310b597f77481ced5b166146ca73233c40e5cb4"
+      },
+      "noRequiresOrPOrScientificIndependentApprovalCreated": true
+    }
+  },
+  "jointFiveNativeIntegrationCandidate": {
+    "scope": "canonical Gymnasium only",
+    "changedMathGoals": 2,
+    "changedPhysicsGoals": 3,
+    "stableGoalIds": 2016,
+    "retainedOtherGoalBodies": 2011,
+    "retainedOtherPRecords": 1280,
+    "mathViews": 88,
+    "physicsViews": 69,
+    "nativeM7FinalExactCandidate": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-joint-native-integration-20261014-v1/M7.physical-final-candidate.stdout.json",
+      "bytes": 126239,
+      "sha256": "sha256:3800b866714b8b835295e4ca64af450fd59926097ff168ac9a027e634d31390d"
+    },
+    "nativeM7ActualExecution": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-joint-native-integration-20261014-v1/M7.physical-final-candidate.execution.json",
+      "bytes": 845,
+      "sha256": "sha256:93715f58a490afefb4b43d85ae40aad5a6eef7575587ac8d00546cacf6c0ba0a"
+    },
+    "mathStrict": 807,
+    "physicsStrict": 478,
+    "allSixRequiredChecksPassForBothSubjects": true,
+    "originalFiveAndAllReviewSealsUnchanged": true,
+    "durableExactOwnPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-joint-native-integration-20261014-v1/exact-private-candidate-and-own-results.preservation-v1.json",
+      "bytes": 167066,
+      "sha256": "sha256:46f7e08fb5e68ae4b547e92bb9b8bd9efff981dc99c3d45968c3339117c286a3"
+    },
+    "activeCanonicalOrViewOrCentralStatusAdoption": false,
+    "fullProtectedFloorAndFinalCICheckAfterAdoption": false,
+    "sourcePlacementAndUnpreparedRoutesClosed": false,
+    "humanApprovalCreated": false,
+    "mathReleaseModelActualCompile": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-joint-native-integration-20261014-v1/math-package-physical-candidate-v2.stdout.txt",
+      "bytes": 2584,
+      "sha256": "sha256:fa8bd4542050cf9fa2fc8a79f953363bbdc3f5945b23694bf1467ff2faa96162"
+    },
+    "mathIndependentModelValidator": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-joint-native-integration-20261014-v1/math-package-independent-validator.stdout.json",
+      "bytes": 3051,
+      "sha256": "sha256:81aee3fe49fe43aab60b3510b7be7f02eb6bb53c1c1264769fde1fc66bd92f55"
+    },
+    "independentPackageAdversarialCases": 49,
+    "mathConformanceModelOnlyNotZIPOrPublishedPackage": true,
+    "noPhysicsStandaloneOrCrossPackageCoInstallationAcceptance": true,
+    "packagePublicationStatus": "not-ready; independent release/human/publication gates remain separate",
+    "global593AndAll159ProjectionAudit": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/five-joint-native-integration-20261014-v1/all159-projections-and-global593-graph.v4.actual.json",
+      "bytes": 2259246,
+      "sha256": "sha256:38abb8eeeaceb60bf7d6bfea1ab705fb916e2e69969a8b045b0099e2adce9c84"
+    },
+    "globalCycles": 0,
+    "newGlobalDiagnostics": 0,
+    "targetMembershipAndCurrentUITargetObjectsUnchanged": true,
+    "actualCurrentEffectiveForeignReferencesUnavailable": 0,
+    "jointCandidateEffectiveForeignReferencesUnavailableBeforeNewPhysicsSupportRoles": 192,
+    "missingMathDirectTargetRoutePairs": 10,
+    "wholeMathTargetLearningRouteIncompletePairs": 70,
+    "transitiveFoundationContextAvailabilityReportedSeparatelyFromDirectRuntimeRequirements": true,
+    "originalHarnessFailuresRetained": "symlink root/source-location contract and changed Kind container ID rejected; corrected physical trusted input paths/stable container identity, no checker weakened"
+  },
+  "fourExplicitPhysicsMathSupportRoles": {
+    "authorCandidateOnly": false,
+    "explicitClaims": 4,
+    "authoredViews": 64,
+    "allPhysicsViewsChecked": 69,
+    "newPrerequisiteOnlyReferences": 192,
+    "wholeCurrentMathProfiles": 4,
+    "wholeProposedPhysicsProfiles": 3,
+    "fullUITargetObjectsAndTreeUnchanged": true,
+    "oldSupportRolesRetained": true,
+    "onlyReportedEffectiveForeignMissingReferencesAddressed": true,
+    "transitiveFoundationsOrTenMathTargetRouteGapsNotClosed": true,
+    "sourceCoverageOrTargetPlacementOrMasteryOrLearnerStateInferred": false,
+    "activeWrites": false,
+    "independentRoleReview": "actual bounded informed192roles accepted; original64rational-arithmetic reasons for541 not accepted",
+    "authorDecisions": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/four-explicit-physics-math-support-roles-candidate-20261014-v1/authored-four-claims-and-192-role-decisions.json",
+      "bytes": 170220,
+      "sha256": "sha256:4c4589ac9a712c63f8f702e193a7d41927bb63f8ca1f431b5382edfc93bdf7dc"
+    },
+    "technicalAll69Proof": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/four-explicit-physics-math-support-roles-candidate-20261014-v1/all69-native-role-and-target-preservation.actual.json",
+      "bytes": 37887,
+      "sha256": "sha256:b2614cc6c71ffd745fbdd1c63f14148cbe9e1adfd540eb483886467e261d3527"
+    },
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/four-explicit-physics-math-support-roles-candidate-20261014-v1/exact-own-results-and-retained-source-boundary.preservation-v1.json",
+      "bytes": 23607,
+      "sha256": "sha256:e015ab0a3e2af2d970556f2025d052b56cc2b7f3b52736e2cd65d384a28cd172"
+    },
+    "independentReviewHandoff": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/four-explicit-physics-math-support-roles-independent-review-20261014-v1/handoff.json",
+      "bytes": 2282,
+      "sha256": "sha256:16bfaf8fb6db01defec1cffbd24c6de9c124a0116c299c9e6db57f3b2a47a7b5"
+    },
+    "independentOwnPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/four-explicit-physics-math-support-roles-independent-review-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 8220,
+      "sha256": "sha256:3473cda07a0f83150d04b1f810207d5c728bd2e5ec24665af3f6a8116522d125"
+    },
+    "additiveAuthorReasonCorrection": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/four-explicit-support-role-rationale-correction-20261014-v2/correction.actual.json",
+      "bytes": 1007,
+      "sha256": "sha256:4d4aefe6294642ba69fe0508b78dec8173b49f8b86926e5b2e98269604c507d8"
+    },
+    "newCorrectedRationaleIndependentAcceptance": "pending actual separate reading",
+    "activeAdoption": false,
+    "corrected541ReasonIndependentReview": {
+      "verdict": "corrected-rationale-accepted-for-candidate-support-role-only",
+      "reasonOnlyDeltas": 64,
+      "newWorkedCases": 6,
+      "whole541AndCandidateFmaActuallyRead": true,
+      "ownSeal": {
+        "path": "tmp/cross-subject-requires/four-explicit-support-role-rationale-correction-informed-independent-review-20261014-v2/own-seal.original.json",
+        "bytes": 4057,
+        "sha256": "sha256:ece62694beca17a215a9fcd292f52e16d6642ec071f8b0bcd0d3588f802c91f9"
+      },
+      "handoff": {
+        "path": "tmp/cross-subject-requires/four-explicit-support-role-rationale-correction-informed-independent-review-20261014-v2/handoff.json",
+        "bytes": 1595,
+        "sha256": "sha256:6da119673f93b1f29d69f1c69312f3d508c4604e79fecedf4a4dabf3bd8bb684"
+      },
+      "preservation": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/four-explicit-support-role-rationale-correction-informed-independent-review-20261014-v2/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 7146,
+        "sha256": "sha256:cad75d517a8ff4f7b9d2c12373409d62b42a972a886045a247f8c16c1a608d80"
+      },
+      "RequiresMinimalitySourceTargetKindPOrHumanAuthorityGranted": false
+    }
+  },
+  "independentFreefallWavepacketSourceContentReview": {
+    "actuallyCompleteBoundedSourceReview": true,
+    "reviewIsInformedNotBlindOrHuman": true,
+    "twoWholeCurrentGoalsAndP": 2,
+    "matchedWholeExtractionSourceGoals": 95,
+    "literalFreefallMappingRows": 96,
+    "wholeSuppliedPassages": 53,
+    "officialCurrentHEBytesVerified": true,
+    "freshSourceGapCounterexampleSolved": true,
+    "noAllSourceOrRequiresOrPKindM7Approval": true,
+    "ownSealVerifiedFiles": 136,
+    "findings": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-freefall-wavepacket-sources-independent-review-20261013-v1/source-content-findings.actual.json",
+      "bytes": 11455,
+      "sha256": "sha256:6fbce9fe9bc9b4c11c8d8350cd83b2642bc413e7e75d5e904a9c77cdde724a64"
+    },
+    "originalOwnSeal": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-freefall-wavepacket-sources-independent-review-20261013-v1/own-seal.original.json",
+      "bytes": 37406,
+      "sha256": "sha256:48479d9e32ec04996547960681355cf5a5bc94e7e424736b043456e088184e09"
+    },
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-freefall-wavepacket-sources-independent-review-20261013-v1/exact-own-results-and-retained-source-boundary.preservation-v1.json",
+      "bytes": 45980,
+      "sha256": "sha256:455229c9707ba2f7d07f54760e2accfbf7bdc3b90e6c3442e148c4c4807b0332"
+    },
+    "currentFreefallPRemainsOriginalProvidedDataORUntilActualSuccessorAdoption": true
+  },
+  "threeLegacyReferencedMathClusterReader": {
+    "preparedNotReviewed": "tmp/cross-subject-requires/three-legacy-referenced-math-clusters-reader-20261014-v2/whole-three-cluster-edges-and-descendant-P.neutral.json",
+    "preciseSemantics": "Three atomic Physics goals reference Math clusters, not three foreign requires declared on Physics clusters. Current targets5a970twice/e4f3once.",
+    "fullCurrentMathAtomContextsPerClaim": [
+      13,
+      13,
+      4
+    ],
+    "noNewVerdictOrAutomaticClusterEdgeDeletion": true
+  },
+  "currentGoalTurnClassification": "progress: completed97peer aggregation, native1190pair/4934scope audit, concrete86-test runtime candidate+independent16case review, CAF10targetauthor andnewDecimalnativeQA/actualD-A",
+  "reviewedSupportAndBWMVSourcePlacementJointCandidate": {
+    "scope": "canonical Gymnasium Mathematik/Physik SekI/II; all existing DE states remain in scope",
+    "candidateOnlyNotActiveAdoption": true,
+    "wholeCanonicalAndProfileBytesUnchangedFromFiveGoalPredecessor": true,
+    "sourceBackedMathTargetReferencesAdded": 12,
+    "mathViewsWithSourceBackedChanges": 5,
+    "explicitNewPhysicsPrerequisiteOnlyReferences": 192,
+    "explicitNewMathPrerequisiteOnlyReferences": 6,
+    "allCompiledMathViews": 88,
+    "allCompiledPhysicsViews": 69,
+    "allCompiledViewsActual": 157,
+    "historicalAll159FileNamesAreLabelsNotCurrentTotal": true,
+    "globalGraphLandscapeFiles": 593,
+    "cycles": 0,
+    "newReferenceDiagnostics": 0,
+    "unavailableEffectiveDirectOrContainsInheritedForeignRequires": 0,
+    "directMathLearningRoutePairs": 320,
+    "missingMathDirectTargetPairs": 4,
+    "incompleteWholeMathTargetRoutePairs": 64,
+    "routeRemainder": {
+      "BW": 4,
+      "HB": 20,
+      "MV": 20,
+      "TH": 20
+    },
+    "roleAvailabilityDoesNotTurnSupportIntoLearnableTargets": true,
+    "THFourDirectMathTargetPairsAnd2026SourceValidityRemainUnresolved": true,
+    "MathM7Strict": [
+      807,
+      478
+    ],
+    "allCurrentNativeM7ChecksPassed": true,
+    "nativeBookModelReports": [
+      {
+        "subject": "math",
+        "pageCount": 807,
+        "digest": "sha256:5a21d3a43d58b1e39ac3673c4ebcc878685f34999bfe994be303301b67e3f97e",
+        "source": "Actual complete native BookModel, current exact candidate inputs; no new scientific acceptance"
+      },
+      {
+        "subject": "physics",
+        "pageCount": 478,
+        "digest": "sha256:9195fd69afd5eec3db63f0b6e532e923a59f33871f59c7f4696198ea897aa2c6",
+        "source": "Actual complete native BookModel, current exact candidate inputs; no new scientific acceptance"
+      }
+    ],
+    "actualNativeM7": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/reviewed-support-and-bw-mv-joint-candidate-20261014-v2/M7.native.stdout.json",
+      "bytes": 126239,
+      "sha256": "sha256:3800b866714b8b835295e4ca64af450fd59926097ff168ac9a027e634d31390d"
+    },
+    "actualWholeScopeAndGraph": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/reviewed-support-and-bw-mv-joint-candidate-20261014-v2/all159-projections-global593-and-complete-role-merge.actual.json",
+      "bytes": 2116600,
+      "sha256": "sha256:9306d63acdb5f63659dd16b647cca7a118b95dee59fa1e5dca6a05cde40ba1b6"
+    },
+    "exactOwnCandidateAndResultsPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/reviewed-support-and-bw-mv-joint-candidate-20261014-v2/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 25692,
+      "sha256": "sha256:52bd7959170770ca01db81067c4afee2e284323631cf63a7731748a7dbf3d333"
+    },
+    "exactTechnicalTools": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/reviewed-support-and-bw-mv-joint-candidate-20261014-v2/technical-tools/exact-technical-tools.receipt.json",
+      "bytes": 1966,
+      "sha256": "sha256:35b6e72450cc9b400e9beb86fcd27f7974c471c586784071c50e5217efe05dff"
+    },
+    "newFinalWholeCIFloorAndPackageIntegrationNotYetApproved": true,
+    "newHumanApprovalOrRuntimeLearnerStateWrites": false
+  },
+  "learnerTermClarification": {
+    "userQuestion": "Was heißt Nachlernweg?",
+    "preferredPlainLabel": "Lernweg zum Nachholen fehlender Voraussetzungen",
+    "meaning": "Fehlende erforderliche Kompetenzen gezielt lernen und anschließend zum ursprünglich gewählten Lernziel zurückkehren. Bereits beherrschte Voraussetzungen müssen nicht erneut gelernt werden.",
+    "newRemediationUiRequested": false,
+    "canonicalGymnasiumOnly": true
+  },
+  "sixRemainingBWFoundationTargetAuthorCandidate": {
+    "scope": "canonical Gymnasium BW existing SekI and CrossStage GK/LK views",
+    "individualWholeMathGoalAndPositiveProfileClaims": 6,
+    "newExplicitTargetReferences": 18,
+    "wholeOwnSolvedWitnesses": 14,
+    "actualMathChecks": 27,
+    "actualOwnAuthorCaseChecks": {
+      "path": "tmp/cross-subject-requires/bw-six-remaining-foundation-targets-author-20261014-v1/author-case-checks.actual.json",
+      "bytes": 198,
+      "sha256": "sha256:385b2a99b5e8e3545868205f8e3b1085a305bb1e4495932de5ef8e9e7f1f1d42"
+    },
+    "threeCompiledViewDeltas": {
+      "path": "tmp/cross-subject-requires/bw-six-remaining-foundation-targets-author-20261014-v1/three-actual-native-view-deltas.author-candidate.json",
+      "bytes": 10116,
+      "sha256": "sha256:3898408009bbd03266e9741af1719f09cf12fcb0c488625c713fc952afcda792"
+    },
+    "all88MathViewsAnd320RouteAudit": {
+      "path": "tmp/cross-subject-requires/bw-six-remaining-foundation-targets-author-20261014-v1/actual-complete320-route-effect-and88-math-views.json",
+      "bytes": 674277,
+      "sha256": "sha256:53e1f39bf816e3121ad3f829cb6f48c1bb76dfcede3dd0c1d457645497836575"
+    },
+    "actualIncompleteWholeTargetRoutePairsInThisCandidate": 60,
+    "actualMissingDirectMathTargetsInThisCandidate": 4,
+    "bwRemainingIncompleteRoutesInThisCandidate": 0,
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/bw-six-remaining-foundation-targets-author-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 3293,
+      "sha256": "sha256:d2f54f307fdd6e7e821bb6a067a3b31c81120d73f618116cbb87ed316ef42774"
+    },
+    "independentSourcePlacementReview": "bounded informed independent scientific support completed for all6 wholeGoal/P and18 exact targetrefs",
+    "canonicalGoalOrRequiresOrPChanges": false,
+    "activeAdoption": false,
+    "freshFullM7OrFinalCiFromThisCandidate": false,
+    "independentWholeGoalPAndSourceCompletion": {
+      "path": "tmp/cross-subject-requires/bw-six-foundation-targets-independent-source-placement-review-20261014-v1/independent-source-placement-completion.receipt.json",
+      "bytes": 3190,
+      "sha256": "sha256:30f823d26920b352abc26dfe853c3cf5e18c9f53479f454605be537b69efec4e"
+    },
+    "independentOriginalSeal": {
+      "path": "tmp/cross-subject-requires/bw-six-foundation-targets-independent-source-placement-review-20261014-v1/own-artifacts.final.sealed-index.json",
+      "bytes": 5704,
+      "sha256": "sha256:e0c7032392ae991df330532f0d75dc7bc94f388b8207f351ef206243317a2da5"
+    },
+    "independentOriginalPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/bw-six-foundation-targets-independent-source-placement-review-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 9990,
+      "sha256": "sha256:f874d4cd15c8c29801f8219f9242832c3e59e4befc8514ba4184259b5e388139"
+    },
+    "subsequentJointNativeCheck": "tmp/cross-subject-requires/reviewed-bw6-complete-foundations-joint-candidate-20261014-v1"
+  },
+  "currentPrimarySourceRetrievalEvidence": {
+    "ownRetrievalAndFailureHistoryPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/current-remediation-primary-source-fetch-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 6977,
+      "sha256": "sha256:69dab2ef1605af222567fe32c45fd46b2a9fcd498d0fd37cfbc1798ac0c0503b"
+    },
+    "wholeThirdPartySourcesAndExtractsRemainTMP": true,
+    "automaticWholeSourceAcceptance": false,
+    "authorIndependentRouteSourceWorkContinues": true,
+    "additionalTHSearchPreservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/current-th-primary-source-search-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 1146,
+      "sha256": "sha256:1be235fd5550980f2f4429357397313a331490cc57d7fd7eac20e6baf4c20e53"
+    },
+    "currentTH2026_27ValidityProven": false
+  },
+  "remainingRouteNeutralReader": {
+    "wholeUniqueGoalAndPositiveProfileBodiesPrepared": 8,
+    "governmentWholeSourceContextsPreparedNotAutomaticallyReviewed": true,
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/remaining-math-learning-routes-neutral-reader-20261014-v2/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 2259,
+      "sha256": "sha256:4e75555ee1a3309d0ba224642ba896a3b540b48a0b3c98222a68c6241c7a9d46"
+    },
+    "originalWrongProfileOwnerAttemptPreserved": true
+  },
+  "latestFinalSupplementAnd97OwnPreservations": [
+    {
+      "name": "math-whole-body-after660-through761-final-preservation-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/math-whole-body-after660-through761-final-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 81720,
+        "sha256": "sha256:efb79d7d911e8eeb498618a9aa110ef553032b24902e3ad5b79e1b0aa192b278"
+      },
+      "archivedFiles": 279,
+      "retainedFiles": 4,
+      "verifiedSealFiles": 1271
+    },
+    {
+      "name": "physics-unresolved97-author-batch004-preservation-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-author-batch004-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 60428,
+        "sha256": "sha256:2f8c6216d08a94dcdec3c852d64b268d19ef8d86ce0a3846eeffb058b7cd5b60"
+      },
+      "archivedFiles": 76,
+      "retainedFiles": 122,
+      "verifiedSealFiles": 196
+    },
+    {
+      "name": "physics-unresolved97-author-batch005-preservation-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-author-batch005-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 102520,
+        "sha256": "sha256:b5940251698182428c8c9ec655fa7e5789661a43a8242122488e74e861dc4914"
+      },
+      "archivedFiles": 81,
+      "retainedFiles": 266,
+      "verifiedSealFiles": 345
+    },
+    {
+      "name": "physics-unresolved97-combined-author-preservation-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-combined-author-preservation-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 8165,
+        "sha256": "sha256:c471f8f82394778f43e9cd0566b2a20cf68ee81292ea231f793bbad5cf5ece91"
+      },
+      "archivedFiles": 23,
+      "retainedFiles": 0,
+      "verifiedSealFiles": 22
+    },
+    {
+      "name": "physics-unresolved97-third20-informed-independent-requires-review-20261013-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-third20-informed-independent-requires-review-20261013-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 16301,
+        "sha256": "sha256:d754ae142a0e368affcf400561211f996a17fd77d4b6c2828188956e0815d49b"
+      },
+      "archivedFiles": 48,
+      "retainedFiles": 4,
+      "verifiedSealFiles": 51
+    },
+    {
+      "name": "bw-six-remaining-foundation-targets-author-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/bw-six-remaining-foundation-targets-author-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 3293,
+        "sha256": "sha256:d2f54f307fdd6e7e821bb6a067a3b31c81120d73f618116cbb87ed316ef42774"
+      },
+      "archivedFiles": 9,
+      "retainedFiles": 0,
+      "verifiedSealFiles": 0
+    },
+    {
+      "name": "remaining-math-learning-routes-neutral-reader-20261014-v2",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/remaining-math-learning-routes-neutral-reader-20261014-v2/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 2259,
+        "sha256": "sha256:4e75555ee1a3309d0ba224642ba896a3b540b48a0b3c98222a68c6241c7a9d46"
+      },
+      "archivedFiles": 4,
+      "retainedFiles": 1,
+      "verifiedSealFiles": 0
+    },
+    {
+      "name": "current-remediation-primary-source-fetch-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/current-remediation-primary-source-fetch-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 6977,
+        "sha256": "sha256:69dab2ef1605af222567fe32c45fd46b2a9fcd498d0fd37cfbc1798ac0c0503b"
+      },
+      "archivedFiles": 5,
+      "retainedFiles": 18,
+      "verifiedSealFiles": 0
+    },
+    {
+      "name": "final-review-and-source-route-own-helpers-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/final-review-and-source-route-own-helpers-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 2331,
+        "sha256": "sha256:d9bbe1be6a675525d2a69b2dec750a993c4eba6b087e32233173d5b4d83063cf"
+      },
+      "archivedFiles": 6,
+      "retainedFiles": 0,
+      "verifiedSealFiles": 0
+    }
+  ],
+  "reviewedBW6CompleteFoundationJointCandidate": {
+    "candidateOnlyNotMainAdoption": true,
+    "scope": "canonical Gymnasium only, full existing DE scope retained",
+    "previousFiveGoalAndAllNativeEvidenceBytesUnchanged": true,
+    "explicitNewSourceBackedTargetsVsMain": 30,
+    "explicitSupportReferencesVsMain": 198,
+    "compiledMathViews": 88,
+    "compiledPhysicsViews": 69,
+    "compiledTotalViews": 157,
+    "globalLandscapeFiles": 593,
+    "cycles": 0,
+    "newDiagnostics": 0,
+    "unavailableEffectiveForeignDirectOrContainsInheritedPrerequisites": 0,
+    "actualRoutePairs": 320,
+    "missingDirectMathTargets": 4,
+    "incompleteWholeTargetRoutes": 60,
+    "routeScopeAndLearnerConsentAcceptanceNotProvenByProjectionAudit": true,
+    "wholeTargetRouteRemainder": {
+      "HB": 20,
+      "MV": 20,
+      "TH": 20
+    },
+    "nativeM7StrictCounts": [
+      807,
+      478
+    ],
+    "nativeM7BlockingIssues": 0,
+    "actualM7Report": {
+      "path": "tmp/cross-subject-requires/reviewed-bw6-complete-foundations-joint-candidate-20261014-v1/M7.native.stdout.json",
+      "bytes": 126239,
+      "sha256": "sha256:3800b866714b8b835295e4ca64af450fd59926097ff168ac9a027e634d31390d"
+    },
+    "actualGraphProjectionRoutesReport": {
+      "path": "tmp/cross-subject-requires/reviewed-bw6-complete-foundations-joint-candidate-20261014-v1/all157-projections-global593-and-reviewed-bw6-merge.actual.json",
+      "bytes": 2108045,
+      "sha256": "sha256:d9a375df62fff95533f5a79c7fd8d7ec520c2ead1a4324d3a84b101c7bc97d1e"
+    },
+    "wholeNativeBookModels": [
+      {
+        "subject": "math",
+        "pageCount": 807,
+        "digest": "sha256:c6435573995a52bfc8d49d12bd1e59abda251620a8b1c884a145429bd26c78cb",
+        "source": "Actual complete native BookModel, current exact candidate inputs; no new scientific acceptance"
+      },
+      {
+        "subject": "physics",
+        "pageCount": 478,
+        "digest": "sha256:9195fd69afd5eec3db63f0b6e532e923a59f33871f59c7f4696198ea897aa2c6",
+        "source": "Actual complete native BookModel, current exact candidate inputs; no new scientific acceptance"
+      }
+    ],
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/reviewed-bw6-complete-foundations-joint-candidate-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 7337,
+      "sha256": "sha256:6c14d234490881c0b14df5b91405a751d10b5208de05c3a0482b376a7dd53650"
+    },
+    "finalFullCiQualityFloorsCurrentScientificIndexAndActiveAdoptionStillOpen": true,
+    "newDecimalRoundingGoalNotMergedHere": true
+  },
+  "twoRemainingLegacyMathClusterRequiresAuthorCandidate": {
+    "exactWholePhysicsTargets": 2,
+    "proposedBroadClusterEdgesRemoved": 2,
+    "newForeignEdges": 0,
+    "states": {
+      "review_required": 2
+    },
+    "wholeContextsReadAndNativelyBound": 36,
+    "ownSolvedModels": 10,
+    "actualMathChecks": 22,
+    "nativePrepareAndNoWriteCheckExitCodes": [
+      0,
+      0
+    ],
+    "sourceObjectsRead": {
+      "SourceGoal": 76,
+      "Passage": 42,
+      "documentMetadata": 13
+    },
+    "ownSeal": {
+      "path": "tmp/cross-subject-requires/physics-two-leaf-math-cluster-successor-author-20261014-v1/own-seal.json",
+      "bytes": 42088,
+      "sha256": "sha256:83dde3a047fa68c35a388a7908f8fcf106c6924c134b966ba00319470b0aba2a"
+    },
+    "handoff": {
+      "path": "tmp/cross-subject-requires/physics-two-leaf-math-cluster-successor-author-20261014-v1/handoff.json",
+      "bytes": 2269,
+      "sha256": "sha256:ec82eb36a616b5fcf0c6e652c6137f1bb8baafe54bcdb8bedee0e2dc2fc291db"
+    },
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-two-leaf-math-cluster-successor-author-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+      "bytes": 43173,
+      "sha256": "sha256:6de226c17fd75d400c1e093a8c84ea63742e0d088a3f99e736685b48f272bbe3"
+    },
+    "downstream48And49Lose902AndF870ContextInHypotheticalRemoval": true,
+    "freshDownstreamReviewAndAtomicGranularityAndSourceScopeRemainOpen": true,
+    "knownEarlyOwnAdapterCountAndIndexFailuresRetained": true,
+    "currentMainAndOriginal97AndMathDSealsUnchanged": true
+  },
+  "cafLearningTargetSourceAuthorContinuation": {
+    "role": "informed author, independent source approval and exact targetrefs still pending",
+    "HBFullSourcePagesActuallyRead": 32,
+    "MV2019FullSourcePagesActuallyRead": 47,
+    "newMVCAFActualPlacement": "Class7; physical21/printed18, arithmetic whole integer operation core; no CAF-J8 inference",
+    "TH2018FullSourcePagesActuallyRead": 46,
+    "TH2025DraftFullSourcePagesActuallyRead": 28,
+    "currentTH2026_27AuthorityStillOpen": true,
+    "actualTH2025DraftWatermarkAndUpperStageOverlapPreservedAsOpenSourceQuestion": true,
+    "separatePrevious5bbaF08J8SourceDecisionsNotAutomaticallyRevised": true,
+    "newTargetPromotionOrMasteryOrNativeSourceAuthority": false
+  },
+  "latestBW6JointAndImageAndPeer80Preservations": [
+    {
+      "name": "bw-six-foundation-targets-independent-source-placement-review-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/bw-six-foundation-targets-independent-source-placement-review-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 9990,
+        "sha256": "sha256:f874d4cd15c8c29801f8219f9242832c3e59e4befc8514ba4184259b5e388139"
+      },
+      "archivedFiles": 18,
+      "retainedFiles": 12,
+      "verifiedSealFiles": 29
+    },
+    {
+      "name": "four-explicit-support-role-rationale-correction-informed-independent-review-20261014-v2",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/four-explicit-support-role-rationale-correction-informed-independent-review-20261014-v2/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 7146,
+        "sha256": "sha256:cad75d517a8ff4f7b9d2c12373409d62b42a972a886045a247f8c16c1a608d80"
+      },
+      "archivedFiles": 20,
+      "retainedFiles": 0,
+      "verifiedSealFiles": 19
+    },
+    {
+      "name": "physics-unresolved97-fourth20-informed-independent-requires-review-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-fourth20-informed-independent-requires-review-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 16078,
+        "sha256": "sha256:05767c86f29740f17a85189c8abf208b9836e8b157de64c939395debd5338487"
+      },
+      "archivedFiles": 46,
+      "retainedFiles": 5,
+      "verifiedSealFiles": 50
+    },
+    {
+      "name": "reviewed-bw6-complete-foundations-joint-candidate-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/reviewed-bw6-complete-foundations-joint-candidate-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 7337,
+        "sha256": "sha256:6c14d234490881c0b14df5b91405a751d10b5208de05c3a0482b376a7dd53650"
+      },
+      "archivedFiles": 21,
+      "retainedFiles": 2,
+      "verifiedSealFiles": 0
+    },
+    {
+      "name": "decimal-v4-documented-image-candidate-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/decimal-v4-documented-image-candidate-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 7693,
+        "sha256": "sha256:be5731724d053284161d6fdc810a5a4e2679830a306a32c8dda79162b9a21d3e"
+      },
+      "archivedFiles": 24,
+      "retainedFiles": 0,
+      "verifiedSealFiles": 0
+    },
+    {
+      "name": "bw6-joint-and-decimal-image-own-tools-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/bw6-joint-and-decimal-image-own-tools-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 2024,
+        "sha256": "sha256:e3e4b53104955d064f0060a957069ddd3a106fa8bc93481b69e1ae7e26f256f5"
+      },
+      "archivedFiles": 5,
+      "retainedFiles": 0,
+      "verifiedSealFiles": 0
+    },
+    {
+      "name": "physics-two-leaf-math-cluster-successor-author-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-two-leaf-math-cluster-successor-author-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 43173,
+        "sha256": "sha256:6de226c17fd75d400c1e093a8c84ea63742e0d088a3f99e736685b48f272bbe3"
+      },
+      "archivedFiles": 92,
+      "retainedFiles": 63,
+      "verifiedSealFiles": 154
+    },
+    {
+      "name": "physics-unresolved97-author-probe94-correction-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/physics-unresolved97-author-probe94-correction-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 1991,
+        "sha256": "sha256:fb41b116ba05e59466aad432a310b597f77481ced5b166146ca73233c40e5cb4"
+      },
+      "archivedFiles": 3,
+      "retainedFiles": 0,
+      "verifiedSealFiles": 2
+    },
+    {
+      "name": "current-th-primary-source-search-20261014-v1",
+      "receipt": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/current-th-primary-source-search-20261014-v1/exact-own-files-and-retained-inputs.preservation-v1.json",
+        "bytes": 1146,
+        "sha256": "sha256:1be235fd5550980f2f4429357397313a331490cc57d7fd7eac20e6baf4c20e53"
+      },
+      "archivedFiles": 1,
+      "retainedFiles": 0,
+      "verifiedSealFiles": 0
+    }
+  ],
+  "previousCurrentScientificDecisionIndexPreserved": {
+    "summary": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/canonical-gymnasium-effective-review-index-20261013-v1/summary.json",
+      "sha256": "sha256:fa75afdf6e5b1c35bd2b29ce767bb5868c4cbe346dcdb1bde4958d5b8c9f3393",
+      "bytes": 2372
+    },
+    "preservation": {
+      "path": "curricula/quality/cross-subject-requires/2026-10-13/canonical-gymnasium-effective-review-index-20261013-v1/exact-preservation.receipt-v1.json",
+      "sha256": "sha256:ba02a1d145eb1ae3c168274d56b85e93a6a25f0b1c098cc12ba683d2022dc54d",
+      "bytes": 2659
+    },
+    "fullUniverse": 1285,
+    "mathematics": 807,
+    "physics": 478,
+    "rawSelectedScientificVerdicts": {
+      "approved": 1195,
+      "pending": 85,
+      "rejected": 5
+    },
+    "currentTechnicallyAcceptedScientificBindings": 1188,
+    "notAcceptedOrUnresolved": 97,
+    "wholeBodyAndNativeAdoptionNotProvenByRawVerdicts": true,
+    "unresolvedFourthBatchDissent": [
+      "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+      "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "51bc5513-6879-548f-b19a-9746b667f1a3",
+      "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
+      "8ad305d2-bde0-4223-9477-517b2943148b",
+      "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "9dba2826-b179-59f0-8d91-5916079e5abe",
+      "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8",
+      "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
+      "ef6d5067-96b0-5388-87dd-5ac4e6a3e313"
+    ],
+    "originalIndependentReviewHashesUnchanged": true
+  },
+  "latestFull97ScientificAndRuntimePreservations": {
+    "firstPackets": {
+      "path": "tmp/cross-subject-requires/final-97-scientific-index-scope-runtime-caf-and-decimal-A.preservation-20261014-v1.actual.json",
+      "bytes": 5933,
+      "sha256": "sha256:d8f39e2733e75bfced6246aaa31926d0e0937fdd28bc5a28be6250b3b456c05f"
+    },
+    "laterPackets": {
+      "path": "tmp/cross-subject-requires/two-cluster-peer-and-runtime-v4-reject-v5-review.preservation-20261014-v1.actual.json",
+      "bytes": 2674,
+      "sha256": "sha256:7a6f1dc81b279d5cfb4a4a0f0e87ba1f7739ff77eda65967e9d166be0f08fd8f"
+    },
+    "allOriginalFailureAndDissentBytesPreserved": true
+  },
+  "wholePhysicsNativeStageCourseLearningRouteAudit": {
+    "actualFrontendScopeDerivationAndProductionBackendMatcherExecuted": true,
+    "scope": "all69 canonicalGymnasiumPhysicsviews effectiveforeignMathprerequisites, current inert5Goal+30targets+198support joint, BEFORE CAF10targets/2clusterremovals/newDecimal/other97proposals",
+    "effectivePairs": 1190,
+    "uniquePhysicsGoals": 18,
+    "uniqueMathPrerequisites": 18,
+    "counterfactualConfigurations": 4934,
+    "nativeScopeRequests": 167,
+    "nativeMatches": 167,
+    "nativeV5CompilerInputDocumentsByteEqualToActualCompiledV4": {
+      "path": "tmp/cross-subject-requires/whole-physics-native-stage-course-route-audit-20261014-v2/v5-identical-matched-documents-and-native-compiler-reuse.actual.json",
+      "bytes": 1233,
+      "sha256": "sha256:0e4d152f79b12f261ef10fad49c08c02ef3264d2d101e41465d11f3f1890949e"
+    },
+    "nativeCompilerInvalidSelectedViews": 0,
+    "sameStageUnavailablePairs": 656,
+    "completeRouteOnlyAfterExplicitGlobalStageWideningPairs": 307,
+    "noCompleteRouteEvenAfterExplicitAvailableScopeAndCourseOptions": 349,
+    "actualDetailedReport": {
+      "path": "tmp/cross-subject-requires/whole-physics-native-stage-course-route-audit-20261014-v2/whole-native-stage-course-route-audit.equal-reference-dedup.actual.json",
+      "bytes": 12877701,
+      "sha256": "sha256:68cb94026e66061bd5b6c930d9430d1ab46c16bbda81b4961b084a99f196e941"
+    },
+    "routeClosureIsLearningContextNotAdditionalTransitiveRuntimeGating": true,
+    "prerequisiteOnlyNotAutoPromotedAndNoMasteryInferred": true,
+    "actualConsentUiPersistenceAndReturnFlowStillUntested": true
+  },
+  "combinedCourseProfileRuntimeCandidate": {
+    "candidateSourceRoot": "tmp/cross-subject-requires/combined-profile-subtree-dedup-runtime-candidate-20261014-v5/source",
+    "actualNativeJUnitTests": 86,
+    "failures": 0,
+    "baselineNewTestsShowed2DuplicateFailures": true,
+    "allOriginalJavaAndExistingTestsByteExact": true,
+    "inputAndExecutionProof": {
+      "path": "tmp/cross-subject-requires/combined-profile-subtree-dedup-runtime-candidate-20261014-v5/actual-v5-test-and-original-source-preservation.json",
+      "bytes": 939,
+      "sha256": "sha256:5255a079168f9464e35e6ff3601d7cb549079943f8bfa74652624e1dd51d531b"
+    },
+    "independentTechnicalPeer": {
+      "path": "tmp/cross-subject-requires/combined-profile-runtime-v5-informed-independent-technical-recheck-20261014-v1/handoff.json",
+      "bytes": 3910,
+      "sha256": "sha256:f58a55fc3d2f91a29c1e0ea77f53cd8713d3e3fa85fc2bab17873673feacf67f"
+    },
+    "peer16ActualJavaAndFrontendCasesSatisfied": true,
+    "v4RejectedInputsAndVerdictPreserved": true,
+    "v5GlobalVisibleOverlapGuardAndLosslessSameRoleMetadataDedup": true,
+    "genericMergeContractUnchanged": true,
+    "noMainCodeAdoptionYet": true,
+    "separatePreexistingCPV004InvisibleExcludedSharedGoalFalsePositive": {
+      "actualCounterexamplePreserved": true,
+      "privateCompilerAuthorFixCurrentlyRunning": true,
+      "independentCompilerReviewStillRequired": true
+    }
+  },
+  "cafLearningTargetSourceAuthorCompletion": {
+    "handoff": {
+      "path": "tmp/cross-subject-requires/caf-three-state-source-target-author-completed-20261014-v1/final-author-handoff.actual.json",
+      "bytes": 7298,
+      "sha256": "sha256:a279c86f1993e42658d8fe6c66eabfd63f201f977af0a426f4e9c592bc9cc2eb"
+    },
+    "seal": {
+      "path": "tmp/cross-subject-requires/caf-three-state-source-target-author-completed-20261014-v1/own-artifacts.final.sealed-index.json",
+      "bytes": 87798,
+      "sha256": "sha256:c78d952541a06c74645c7885697ad6af7f4e2c2944bbb1d5999ebce8e93b55d4"
+    },
+    "explicitTargetReferences": 10,
+    "changedViews": 6,
+    "sourceClaims": 5,
+    "wholeGoalPBodyCount": 3,
+    "boundedChanged3PhysicsLearningRoutePairs": 320,
+    "missingDirectTargets": 0,
+    "incompleteWholeTargetRoutes": 0,
+    "all157ViewsAndGlobal593GraphChecked": true,
+    "all348NativeViewsErrors": 0,
+    "nativeWarnings": 2310,
+    "nativeM7FloorCheckPassed": true,
+    "independentSourcePlacementPeerStillRequired": true,
+    "TH2018Current2026_27Class8AuthorityActuallyProved": "fresh official2026/27table and2018detail; class7new2026body NOTreviewed; TH2025ENTWURFnotauthority",
+    "MathMVCAFClass7Physical21Printed18LocatorCorrectedInProposalOnly": true,
+    "noMainOrNativeSourceApproval": true
+  },
+  "decimalCurrentNativeQaAndActualDescriptionRoundA": {
+    "handoff": {
+      "path": "tmp/cross-subject-requires/decimal-v4-native-qa-and-description-round-a-20261014-v1/handoff.json",
+      "bytes": 9297,
+      "sha256": "sha256:2f2cc8263787864a01a9c4ee6403eb63ae642176af7ccb6066b9347cc5e0d682"
+    },
+    "seal": {
+      "path": "tmp/cross-subject-requires/decimal-v4-native-qa-and-description-round-a-20261014-v1/own-seal.json",
+      "bytes": 497419,
+      "sha256": "sha256:52916cb8dd556e6cad87d870068d238afe9bc89b4d45f15fe43ce3eb467bb7f1"
+    },
+    "PPrecisionOnly2ObservableFieldsTableOptional": true,
+    "sixTaskStemsUnchanged": true,
+    "actualOwnCases": 12,
+    "authorCasesChecked": 6,
+    "imageNumericCasesChecked": 3,
+    "actualSelectedImageSHA256": "sha256:5835dd115b3065156594cf56e94ed177d1ba60df90d02d6e96cc55d67b171b75",
+    "nativeKindAMVCurrentBound": true,
+    "PCurrentAiCandidate": {
+      "issues": 0,
+      "approved": 0,
+      "needs_human_review": 1
+    },
+    "actualDescriptionRoundA": "candidate keep, nativebatch/run/schema/directory0errors",
+    "actualOneGoalBookHtmlPdfGenerated": true,
+    "physicalPdfPages": 3,
+    "roundBIndependentNeutralBundleReviewRunning": true,
+    "sourcePlacementHumanPJointM7AdoptionStillOpen": true,
+    "privateResolverOnlyMain1252PlusNewGoal": true
+  },
+  "twoRemainingLegacyMathClusterRequiresIndependentPeer": {
+    "handoff": {
+      "path": "tmp/cross-subject-requires/physics-two-cluster-independent-requires-peer-20261014-v1/handoff.native-check-addendum.actual.json",
+      "bytes": 1526,
+      "sha256": "sha256:c3fb16ecc3589120171966ee12b0cc58942ca2c30ba26bef7b9b0a10e0a9055d"
+    },
+    "finalSeal": {
+      "path": "tmp/cross-subject-requires/physics-two-cluster-independent-requires-peer-20261014-v1/own-artifacts.final-with-native-check.sealed-index.json",
+      "bytes": 10855,
+      "sha256": "sha256:9ddeab8ac167b5e11c7b301eaf5158215d4027ec342d5507aa6dc53f5a5505e7"
+    },
+    "scientificSupportFor2OverbroadRemovals": true,
+    "exactAuthorNativeStatusRetains2Pending": true,
+    "ownWholePContextsRead": 8,
+    "ownCases": 11,
+    "arithmeticChecks": 29,
+    "smallestSquareInversionBridgeProposal": {
+      "path": "tmp/cross-subject-requires/physics-two-cluster-independent-requires-peer-20261014-v1/smallest-square-inversion-bridge.whole-Goal-P-recommendation.json",
+      "bytes": 8869,
+      "sha256": "sha256:237215f22b06bf2dcc5a7a53ec2dbdbea7ee0dee3ed8aeffc23c1c70836b87f3"
+    },
+    "old902AndF870WholeBodiesNotUniversallyNecessary": true,
+    "original48_49DissentPreserved": true,
+    "current74aOldPathAlreadyAbsentDueNew5fBefore2Removals": true,
+    "current78cfOldPathLostViaE4bRemoval": true,
+    "newBridgeNotMaterializedOrNativeApproved": true
+  },
+  "outstandingWorkCurrent20261014": [
+    "Resolve44Requires scientific cases (26granularity11review7scope), nativeSource/stage fidelity and any23Mathprofile/scope findings; new3approvednominationedges notyetadopted.",
+    "Independently review10CAF/HB/MV/THsource/targetrefs, thenfull1190stage/coursegrid onfinalmergeddata, notonly320changed3pairs.",
+    "Materialize and independentlyreview minimal nonnegative-square-inversionMathbridge neededby74a/78cf, bindwholeGoalPSourceKindAMD/nativeD; preservemandatorynumericPhysicsbodies.",
+    "FinishnewDecimalindependentD-B+synthesis andsource/stage/authoredplacements; keepAIpositivePneeds_human_review truthful.",
+    "FinishprivateCPV004invisible-overlapcompilerfix+independentreview; adoptreviewedJava/compiler changes onlyafteractiveinputbindingsaresealed.",
+    "Implement/testexplicitconsent single-subjectMathlearningroute Level2/focus/returnflow withoutautomaticRolepromotion orMasteryinference.",
+    "VerifyfullMath/Physicsstandalone/coinstalledpackageprerequisites ortruthfullyreportunsupportedmodes, regeneratefinalcurrentquality/goalbook/inventory, preserveM7floors807/478.",
+    "Integrateallappropriateatomicedges/stableIDsandfinishrequiredtests/fullCI/currentSourcefidelity/report; nopublicationdeploymentcommitstaging."
+  ]
+}

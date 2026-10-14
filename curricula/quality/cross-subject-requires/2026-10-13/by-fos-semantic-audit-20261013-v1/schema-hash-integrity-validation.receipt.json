@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "status": "completed_read_only_integrity_and_schema_validation_no_semantic_approval",
+  "createdAt": "2026-10-13T12:56:16.603Z",
+  "ledgerPath": "tmp/cross-subject-requires/by-fos-semantic-audit-20261013-v1/semantic-role-ownership-scope.author-ledger.final.json",
+  "ledgerSha256": "sha256:4ff56b552fd888d88e184cae669f7fab734e461f8fd105b0e8e56753063dc9e4",
+  "schemaPath": "tmp/cross-subject-requires/by-fos-semantic-audit-20261013-v1/author-ledger.schema.json",
+  "schemaSha256": "sha256:178053981cb4a0f80f22238d03e67eac11b20c3ac5e2866d5fc0b473acf6f2c9",
+  "goalDefinitionsChecked": 539,
+  "technicalLeavesChecked": 428,
+  "frozenInputFilesChecked": 25,
+  "fullContainsOriginPathsChecked": 1085,
+  "negativeIntegrityProbes": [
+    {
+      "name": "missing stable goal cannot masquerade as complete read",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: Schema: data/entries must NOT have fewer than 539 items"
+    },
+    {
+      "name": "duplicate stable goal cannot cover omitted content",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: Stable-ID coverage"
+    },
+    {
+      "name": "shared motivator cannot silently select an owner",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: Owner silently chosen"
+    },
+    {
+      "name": "missing integral payload cannot be reconstructed invisibly",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: DE full text"
+    },
+    {
+      "name": "generic scraper base cannot become per-goal source",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: Source evidence invented or dropped"
+    },
+    {
+      "name": "broad arithmetic cannot silently become narrow Math atom",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: Individual role/reason silently substituted"
+    },
+    {
+      "name": "observed direct requires cannot gain a Math dependency",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: Direct requires modified"
+    },
+    {
+      "name": "child author cannot be called independent reviewer",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: Schema: data/authorContributors/1/independenceClaim must be equal to constant"
+    },
+    {
+      "name": "native approval cannot be manufactured by inventory",
+      "expected": "reject",
+      "actual": "reject",
+      "evidence": "Error: Schema: data/entries/3/nativeM7Status must be equal to constant"
+    }
+  ],
+  "positiveChecks": [
+    "Full 539-goal definition/DE+existing EN/occurrence hash binding",
+    "Full current repository graph effective-prerequisite replay captured separately",
+    "All current origin paths have actual declared requires and contains-step witnesses",
+    "All actual stable-ID occurrences retained; no authoritative owner selected",
+    "All individual parent/child AUTHOR judgments preserved with bounded root amendment",
+    "Full raw original source and old author inputs unchanged"
+  ],
+  "semanticApprovalClaimed": false,
+  "nativeM7Claimed": false,
+  "license": "Apache-2.0",
+  "frozenInputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "sha256:b721ab562c3a954e09a9ad9cd35a2edd0316b9867d6ce476001d7e03805b4d5c"
+    },
+    {
+      "path": "LICENSING.md",
+      "sha256": "sha256:4441698e58a2bd2f5a8e983eb7111de69aa3ce25f5382911f5d71a6d422ac87e"
+    },
+    {
+      "path": "app/scripts/lib/crossLandscapeGraph.ts",
+      "sha256": "sha256:1420034c0cbdcf334c10b3390aa74764b1bb5bf863a9121a9dcba81ceb7a2bf5"
+    },
+    {
+      "path": "app/scripts/lib/crossSubjectRequiresInventory.ts",
+      "sha256": "sha256:b9b74baff4ab6bf26c62f524b567b4bebb3995555973a02f31cdff984eee5405"
+    },
+    {
+      "path": "curricula/DE/BY/Berufsoberschule/Mathematik.json",
+      "sha256": "sha256:867d6240a8c98133dd9c5ec45beda068246dce2ee6cffa702136f10c153609b4"
+    },
+    {
+      "path": "curricula/DE/BY/Berufsoberschule/Physik.json",
+      "sha256": "sha256:b22c7f0069991b5c4cdae52148265d94acb697449f859f650b70055fb8e6f042"
+    },
+    {
+      "path": "curricula/DE/BY/DE_BY_Berufsoberschule_Overview.json",
+      "sha256": "sha256:a4a307f7a4c80f1dca3c07ed17a9e8e4a601e6e93669db9e62cf31ff79168585"
+    },
+    {
+      "path": "curricula/DE/BY/DE_BY_Fachoberschule_Overview.json",
+      "sha256": "sha256:52bd0e242b399944dab2d2725dda990c2671696b69e367ff4f6b311e8163c319"
+    },
+    {
+      "path": "curricula/DE/BY/DE_BY_Grundschule_Overview.json",
+      "sha256": "sha256:a1b74458765038a9bd17bd8db8c75ca27e6cc698cfabcd2514b1e366e3da8c58"
+    },
+    {
+      "path": "curricula/DE/BY/DE_BY_Mittelschule_Overview.json",
+      "sha256": "sha256:67ec6a7287388edcdf2fea9054589575a926d449f6f827d31fbe8f943d412228"
+    },
+    {
+      "path": "curricula/DE/BY/DE_BY_Realschule_Overview.json",
+      "sha256": "sha256:e7b2db894feb6c9d5d23d8a1a4418b3d0211ad27fc07e61ae58bfa3a5c2a7a83"
+    },
+    {
+      "path": "curricula/DE/BY/DE_BY_Wirtschaftsschule_Overview.json",
+      "sha256": "sha256:e5456b7f2c515815af1c00238db4104697a79ddfa588b0c1dbd9d21db193147e"
+    },
+    {
+      "path": "curricula/DE/BY/Fachoberschule/Mathematik.json",
+      "sha256": "sha256:79b31950b59bea2eb38f3a0b96a90f51502a08f82fb699f1c88d76b1c705081a"
+    },
+    {
+      "path": "curricula/DE/BY/Fachoberschule/Physik.json",
+      "sha256": "sha256:766bb61296547677d0fdd910c3d4abfdf2799010c09ecd99e134cc49ea629f12"
+    },
+    {
+      "path": "curricula/DE/BY/Grundschule/Mathematik.json",
+      "sha256": "sha256:08d684528351a25c8b1105266b90a4c060bba11714a3d067cd756c877dabb52d"
+    },
+    {
+      "path": "curricula/DE/BY/Mittelschule/Mathematik.json",
+      "sha256": "sha256:9cc26d5575284ab925d4b0ead3bab18e0b5ad1bfa9723b7653488cd9dfc443b3"
+    },
+    {
+      "path": "curricula/DE/BY/Realschule/Mathematik.json",
+      "sha256": "sha256:d20b69abd6f4335b6b096c34450f91ce16e65b4e83898f53d571f2c9d6d4efdd"
+    },
+    {
+      "path": "curricula/DE/BY/Realschule/Physik.json",
+      "sha256": "sha256:af4937b81a1a91652fba5719517d2486834ee92404c000664d58f1315e370a51"
+    },
+    {
+      "path": "curricula/DE/BY/Wirtschaftsschule/Mathematik.json",
+      "sha256": "sha256:31cb11719ac0b1a6027692b03f4273ac67f3e058f2989aea534eb49368566ca3"
+    },
+    {
+      "path": "curricula/curriculum_manifest.json",
+      "sha256": "sha256:2307ddff13a1dfd3a20737170333a602275bcf50f3ab2400ea3029b876b39c80"
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/math-physics.config.json",
+      "sha256": "sha256:01ba28d1686aa57fb6cacc2ab2a5b49df39f8dede6ae1ae3437bf57d391d26fc"
+    },
+    {
+      "path": "curricula/quality/cross-subject-requires/math-physics.inventory.json",
+      "sha256": "sha256:8bfc07514f0eb519c5e5cb0e8afa9af1774ddca4d6b2ddf02587a37b69c77d58"
+    },
+    {
+      "path": "scripts/generate_bavarian_overviews.py",
+      "sha256": "sha256:508e08218dd0d3cfa673f9878e7bfb9d03088ddad2aa19248334c4b419f1f808"
+    },
+    {
+      "path": "scripts/repair_lehrplan_ids.py",
+      "sha256": "sha256:ec7e7991bc93db460d16aa2222757dc7f08f79f2af412b27157f61ecbefc05a5"
+    },
+    {
+      "path": "scripts/scrape_lehrplanplus.py",
+      "sha256": "sha256:b0038ad94096656fe13a61b66842ea8af017b92e87bfe2aaca9c271093902d92"
+    }
+  ]
+}

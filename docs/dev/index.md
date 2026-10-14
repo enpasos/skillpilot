@@ -20,6 +20,8 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 ## Canonical Gymnasium Core
 
 - [Canonical Gymnasium Applicability Design](canonical-gymnasium-applicability-design.md)
+- [Mathematics–Physics Cross-Subject Prerequisites](math-physics-cross-subject-requires.md)
+  Active family inventory, immutable proposed-state review bindings and completion gates.
 - [Bavaria Mathematics Sek I Probe](canonical-gymnasium-by-math-sek1-probe.md)
 - [Bavaria Sek I Year-Level Normalization](canonical-gymnasium-by-sek1-normalization.md)
 

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-13T13:00:27.434040+00:00",
+  "authorAgent": "/root",
+  "status": "inert-primary-source-formula-recovery-awaiting-independent-review",
+  "affectedGoalId": "43e2025f-f393-5a41-aa42-ecb3b6ca35b8",
+  "sourceArrayIndex": 249,
+  "sourceOrdinalOneBased": 250,
+  "localSourcePath": "curricula/DE/BY/Fachoberschule/Mathematik.json",
+  "localSourceSha256": "sha256:79b31950b59bea2eb38f3a0b96a90f51502a08f82fb699f1c88d76b1c705081a",
+  "officialSource": {
+    "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/fos/13/mathematik/t",
+    "retrievedHttpStatus": 200,
+    "section": "M13 Lernbereich 3: Integralrechnung, Integrationsverfahren",
+    "scopeLiteral": "Fachoberschule Mathematik 13 (T)",
+    "validityText": null,
+    "htmlSha256": "sha256:866b704ddeb58b4246cb681f779e79a8265d09f8fbc4eda874e935a9cc6659c4",
+    "htmlBytes": 134300,
+    "retainedFullHtmlOnlyInTmp": true,
+    "future2028_29VersionUsed": false
+  },
+  "findings": {
+    "exactlyThreeFormulaImagesInAffectedCompetency": 3,
+    "rendering": "Original embedded SVGs rendered by existing Playwright/Chromium solely for source inspection; no image generation or edited content.",
+    "rootRead": "All three actual rendered source images visually inspected and compared to the supplied SVG alt descriptions.",
+    "localTextStillMalformed": true,
+    "competenceRepairApproved": false,
+    "semanticAtomicityApproved": false,
+    "crossSubjectRequiresDecided": false,
+    "sourceContentsNotFilledFromMathGuesswork": true
+  },
+  "formulae": [
+    {
+      "position": 1,
+      "mathematicalTranscription": "\\int \\frac{f\\prime(x)}{f(x)}\\,dx",
+      "sourceSvgPath": "tmp/cross-subject-requires/by-fos-math-integral-source-20261013/integral-form-1.source.svg",
+      "sourceSvgSha256": "d5181d62e3b07fa5659c748e49344d79a58434287d6f89419a1d457357ebae1d",
+      "sourceSvgBytes": 5901,
+      "inspectionPngPath": "tmp/cross-subject-requires/by-fos-math-integral-source-20261013/integral-form-1.inspection.png",
+      "inspectionPngSha256": "sha256:048569d97336b5e0d36bddfa1cb86cfdca16c73e47c1bb5b00ea6d52317c362a",
+      "inspectionPngBytes": 44341,
+      "actualRootVisualInspection": true,
+      "sourceAltTextPresent": true
+    },
+    {
+      "position": 2,
+      "mathematicalTranscription": "\\int \\frac{ax+b}{k(x-c)^n}\\,dx\\quad(a,b,c\\in\\mathbb{R},\\ k\\in\\mathbb{R}\\setminus\\{0\\},\\ n\\in\\mathbb{N})",
+      "sourceSvgPath": "tmp/cross-subject-requires/by-fos-math-integral-source-20261013/integral-form-2.source.svg",
+      "sourceSvgSha256": "afc6bea480d7548d3e088b686e55a05aee7d026c1194fad5aa04d8685b56b124",
+      "sourceSvgBytes": 16163,
+      "inspectionPngPath": "tmp/cross-subject-requires/by-fos-math-integral-source-20261013/integral-form-2.inspection.png",
+      "inspectionPngSha256": "sha256:7d3c0d0246f20c743cc0fe52cc6f4e9c44c320dc58c6f90e6fb7718076803b38",
+      "inspectionPngBytes": 118103,
+      "actualRootVisualInspection": true,
+      "sourceAltTextPresent": true
+    },
+    {
+      "position": 3,
+      "mathematicalTranscription": "\\int \\frac{1}{ax^2+bx+c}\\,dx\\quad(a,b,c\\in\\mathbb{R},\\ a\\ne0)",
+      "sourceSvgPath": "tmp/cross-subject-requires/by-fos-math-integral-source-20261013/integral-form-3.source.svg",
+      "sourceSvgSha256": "48afd557a10d93d13e62e5b6d6aabe05a61581122b7e79729f9f699095c8edb2",
+      "sourceSvgBytes": 11395,
+      "inspectionPngPath": "tmp/cross-subject-requires/by-fos-math-integral-source-20261013/integral-form-3.inspection.png",
+      "inspectionPngSha256": "sha256:99bff197ae140b19dff5994498587425c1e97efcc71c1eff1266edcc7187066c",
+      "inspectionPngBytes": 85465,
+      "actualRootVisualInspection": true,
+      "sourceAltTextPresent": true
+    }
+  ],
+  "independentReview": "pending",
+  "authorizationBoundary": {
+    "activeSourceChanged": false,
+    "sourceViewsOrNativeGatesChanged": false,
+    "published": false,
+    "deployed": false
+  },
+  "licensing": {
+    "ownTechnicalRecoveryMetadata": "Apache-2.0",
+    "ownDidacticAnalysis": "CC-BY-4.0",
+    "officialHtmlSvgAltTextAndImages": "Original third-party rights retained; no redistribution approval or blanket content license inferred."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-13T11:19:09.481731+00:00",
+  "status": "focused-regression-and-independent-fixture-review-pass",
+  "tests": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "successfulExecution": {
+    "node": "20.20.2",
+    "java": "Amazon Corretto25.0.2.10.1",
+    "command": "./gradlew test --tests 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest.getLearnerStateHttpExposesAuthoredNewtonAtomsInsteadOfCurricularAreaCluster' --tests 'com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest' --no-daemon --no-watch-fs",
+    "workingDirectory": "backend",
+    "isolatedBuildDirectory": "tmp/backend-newton-fixture-20261013",
+    "exitCode": 0
+  },
+  "historicalFailedAttempt": "First isolated invocation used system Node18 and failed before tests; exact initial log retained. This is not a passed execution.",
+  "sourceHashes": {
+    "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java": "sha256:48df364920c4fafb3432c1f672dfdb6f9e3cd3180efd89cf9fdede73a34bac2c",
+    "backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java": "sha256:11bf0a5f8fb8ca6bb849221a880dc05e1c0432aec18c5849b5b8f05a180991d2"
+  },
+  "scientificAdoptionMeaning": "No source goal, goal profile, learner state or native review was changed by this fixture correction.",
+  "fullCleanProjectCi": "running with known prior-fixture failure; this focused run does not claim its exit code changed",
+  "artifacts": [
+    {
+      "originalPath": "tmp/cross-subject-requires/backend-newton-fixture-and-negative-guards-20261013.log",
+      "storedPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/http-newton-canonical-acceleration-v2/backend-newton-fixture-and-negative-guards-20261013.log",
+      "sha256": "sha256:6048158f65dde43dd240013df3a2f5bad2a7e5783f0c5fa103a39dc458538362",
+      "bytes": 2492
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/backend-newton-fixture-and-negative-guards-20261013-v2.log",
+      "storedPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/http-newton-canonical-acceleration-v2/backend-newton-fixture-and-negative-guards-20261013-v2.log",
+      "sha256": "sha256:c25b6f719f7fa6f7e0e39fb358aeeefb1141de40c7d5a22541ec0fffee0f44da",
+      "bytes": 18232
+    },
+    {
+      "originalPath": "tmp/cross-subject-requires/root-newton-http-canonical-acceleration-fixture.independent-review-v2.json",
+      "storedPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/http-newton-canonical-acceleration-v2/root-newton-http-canonical-acceleration-fixture.independent-review-v2.json",
+      "sha256": "sha256:9a25e0015c1cc81591059ac9cda038f1ca0474b5fc1de2a941622c89cce81f03",
+      "bytes": 19524
+    },
+    {
+      "originalPath": "tmp/backend-newton-fixture-20261013/test-results/test/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+      "storedPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/http-newton-canonical-acceleration-v2/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+      "sha256": "sha256:f557f279d33b2a37db80cf26fe5a75a2ea1c5077b9002ba934037f3729cea41a",
+      "bytes": 369304
+    },
+    {
+      "originalPath": "tmp/backend-newton-fixture-20261013/test-results/test/TEST-com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest.xml",
+      "storedPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/checks/http-newton-canonical-acceleration-v2/TEST-com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest.xml",
+      "sha256": "sha256:3d0b3f6458c160f064d812f4cfcdcb6a1f04191d792963481cda7d534234b82c",
+      "bytes": 36255
+    }
+  ],
+  "license": "Apache-2.0"
+}

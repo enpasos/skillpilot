@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 3,
+  "status": "author_actual_source_context_partial_mapping_and_placement_pending",
+  "jurisdiction": "DE-HB",
+  "retainedV2Context": {
+    "path": "tmp/cross-subject-requires/decimal-rounding-v2-20261013/source-context-v2/DE-HB.context.json",
+    "sha256": "sha256:f74ee4befbc5a5dae628186a9c6229a9449a715140bd17acac63b4f4cf6123b1",
+    "byteLength": 13087
+  },
+  "sourcePdfBinding": {
+    "path": "curricula/DE/Gymnasium/input/HB/06-12-06_mathe_gy.pdf",
+    "sha256": "sha256:76f230175a036f0819f9cab202770dd3a1f6d3631ced221b17d4b80e00cc3672",
+    "byteLength": 1001821
+  },
+  "sourceExtractionBinding": {
+    "path": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+    "sha256": "sha256:bd45f9205770ff77d2c1f003baa8422847bd28d7580c44c852f950f5946d2797",
+    "byteLength": 327956
+  },
+  "sourceRowId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-008-5e88b97ff0",
+  "exactSourceRowSha256": "sha256:88c5a0df8ba5668804b11b672fba07ea8061bcbb658c0124aa4ef8d50c533553",
+  "exactSourcePassageSha256": "sha256:6347199478f7786ed54744fe3d3e86723e3363f8521994a887c6a3714975bea4",
+  "retainedExtractionReportedLocator": {
+    "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 14",
+    "sourceSpan": "S. 14, Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 6",
+    "sourcePage": null
+  },
+  "sourceReference": {
+    "jurisdiction": "DE-HB",
+    "extractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+    "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-008-5e88b97ff0",
+    "passageId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards",
+    "passageTitle": "Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 6",
+    "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, printed S.14 (PDF page14)",
+    "sourceSpan": "Actual bound PDF page14, printed page14; Printed14; decimal-rounding portion only.",
+    "sourcePage": 14,
+    "sourceLine": null,
+    "sourceDocument": {
+      "key": "HB_GYM_SEKI_MATHEMATIK_2006",
+      "title": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006",
+      "path": "curricula/DE/Gymnasium/input/HB/06-12-06_mathe_gy.pdf",
+      "role": "binding-core-with-restriction",
+      "official": true,
+      "url": "https://www.lis.bremen.de/sixcms/media.php/13/06-12-06_mathe_gy.pdf"
+    },
+    "sourceGradeOrPhase": null,
+    "evidenceDecision": "author_candidate_pending_independent_source_mapping",
+    "scopeRationale": "Direct decimal/rational rounding item or rounding within the explicitly named decimal/fraction content unit; no natural-number-only row used.",
+    "signedDomainCaution": "Early source may name positive decimals; signed transfer needs independent didactic/source-role review, not an exact-source claim."
+  },
+  "actualPageReads": [
+    {
+      "physicalPdfPageOneBased": 14,
+      "actualLayoutTextSha256": "sha256:3772283c6ed5fe29f7083b96b5f69a5c3f70a6cdca2317e228f09d23920d650c",
+      "fullRelevantPageReadByAuthor": true
+    }
+  ],
+  "correctedAuthorLocator": {
+    "printedPage": 14,
+    "physicalPdfPageOneBased": 14
+  },
+  "authorPartialCoreInterpretation": "By end ofyear6 standard covers rounding natural and decimal values plus estimation. Decimal rounding is present but not the entire source bullet.",
+  "scopeAndPlacementCaution": "By end ofyear6 standard covers rounding natural and decimal values plus estimation. Decimal rounding is present but not the entire source bullet.",
+  "neededNativeMappingRepairsOrCautions": "Preserve binding-core-with-restriction source role and by-end6 placement; partial coverage only.",
+  "sourceRoleUnchanged": "binding-core-with-restriction",
+  "sourceEdgeQuoteClaimed": false,
+  "all16ExactPlacementApproved": false,
+  "signedPeriodicOrWholeSourceCoverageClaimed": false,
+  "method": "This author read all full relevant actual PDF pages via retained portable pdftotext-layout and inspected full retained extracted rows/passages; hashes bind local source bytes. Context is author preparation, not independent source review or legal approval."
+}

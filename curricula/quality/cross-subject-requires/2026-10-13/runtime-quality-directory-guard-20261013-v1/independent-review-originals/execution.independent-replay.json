@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "license": "Apache-2.0",
+  "executions": [
+    {
+      "variant": "candidate",
+      "command": [
+        "bash",
+        "tmp/cross-subject-requires/runtime-quality-guard-independent-evidence-20261013-ewb9jbjo/run-independent-replay.sh",
+        "candidate"
+      ],
+      "startedAt": "2026-10-13T13:50:55.596072+00:00",
+      "finishedAt": "2026-10-13T13:51:07.669426+00:00",
+      "exitCode": 0
+    },
+    {
+      "variant": "original-control",
+      "command": [
+        "bash",
+        "tmp/cross-subject-requires/runtime-quality-guard-independent-evidence-20261013-ewb9jbjo/run-independent-replay.sh",
+        "original-control"
+      ],
+      "startedAt": "2026-10-13T13:51:07.669599+00:00",
+      "finishedAt": "2026-10-13T13:51:19.835076+00:00",
+      "exitCode": 1
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 3,
+  "status": "author_actual_source_context_partial_mapping_and_placement_pending",
+  "jurisdiction": "DE-NW",
+  "retainedV2Context": {
+    "path": "tmp/cross-subject-requires/decimal-rounding-v2-20261013/source-context-v2/DE-NW.context.json",
+    "sha256": "sha256:fb7f1390daa3f86ac3336d10832dd61a2bc345bfb46e604a0b98fc802dbfefb8",
+    "byteLength": 10414
+  },
+  "sourcePdfBinding": {
+    "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/g9_m_klp_3401_2019_06_23_0.pdf",
+    "sha256": "sha256:e58c85336c2aa4112923ae3b0c9fb3bdf38adadc1947110d62d9266c7e14f477",
+    "byteLength": 300004
+  },
+  "sourceExtractionBinding": {
+    "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+    "sha256": "sha256:79b57f00c92a63176d70a3b3777aa2e017e695c82299657cc22e6eb8af93b916",
+    "byteLength": 291617
+  },
+  "sourceRowId": "de-nw-mathematik-seki-klp-2019-nw-seki-erprobung-arithmetik-algebra-016-7e591fe621",
+  "exactSourceRowSha256": "sha256:2f431467d5d22dd71944ac1782b316d68561ab95479bc107d381a5522be3ff37",
+  "exactSourcePassageSha256": "sha256:6c27159552d9bfd3bb1efc81ade4058b2e223e272507e5b4f63dde1e7bc469a1",
+  "retainedExtractionReportedLocator": {
+    "sourceRef": "Kernlehrplan Mathematik Sekundarstufe I Gymnasium G9, Nordrhein-Westfalen 2019, S. 24",
+    "sourceSpan": "S. 24, Erprobungsstufe Arithmetik/Algebra",
+    "sourcePage": null
+  },
+  "sourceReference": {
+    "jurisdiction": "DE-NW",
+    "extractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+    "sourceGoalId": "de-nw-mathematik-seki-klp-2019-nw-seki-erprobung-arithmetik-algebra-016-7e591fe621",
+    "passageId": "de-nw-mathematik-seki-klp-2019-nw-seki-erprobung-arithmetik-algebra",
+    "passageTitle": "Erprobungsstufe Arithmetik/Algebra",
+    "sourceRef": "Kernlehrplan Mathematik Sekundarstufe I Gymnasium G9, Nordrhein-Westfalen 2019, printed S.24 (PDF page24)",
+    "sourceSpan": "Actual bound PDF page24, printed page24; Printed23–24; decimal-rounding portion only.",
+    "sourcePage": 24,
+    "sourceLine": null,
+    "sourceDocument": {
+      "key": "NW_GYM_SEKI_MATHEMATIK_KLP_2019",
+      "title": "Kernlehrplan Mathematik Sekundarstufe I Gymnasium G9, Nordrhein-Westfalen 2019",
+      "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/g9_m_klp_3401_2019_06_23_0.pdf",
+      "textPath": "tmp/nw_math_seki_klp_2019_layout.txt",
+      "role": "binding-lower-secondary-g9-2019",
+      "official": true,
+      "url": "https://lehrplannavigator.nrw.de/system/files/media/document/file/g9_m_klp_3401_2019_06_23_0.pdf"
+    },
+    "sourceGradeOrPhase": null,
+    "evidenceDecision": "author_candidate_pending_independent_source_mapping",
+    "scopeRationale": "Direct decimal/rational rounding item or rounding within the explicitly named decimal/fraction content unit; no natural-number-only row used.",
+    "signedDomainCaution": "Early source may name positive decimals; signed transfer needs independent didactic/source-role review, not an exact-source claim."
+  },
+  "actualPageReads": [
+    {
+      "physicalPdfPageOneBased": 23,
+      "actualLayoutTextSha256": "sha256:9151c0b72f24d4d3320eb8535405c58affe79de0201eb6e2e47cf778e9696837",
+      "fullRelevantPageReadByAuthor": true
+    },
+    {
+      "physicalPdfPageOneBased": 24,
+      "actualLayoutTextSha256": "sha256:72380ba1310ba51baf383e5fe95ec83dfad28b7862a4f5acb7e01ed90bfaf3f4",
+      "fullRelevantPageReadByAuthor": true
+    }
+  ],
+  "correctedAuthorLocator": {
+    "printedPage": 24,
+    "physicalPdfPageOneBased": 24
+  },
+  "authorPartialCoreInterpretation": "Erprobungsstufe domain explicitly includes positive rational/finite decimal numbers; competence10 combines context rounding with estimating and checking.",
+  "scopeAndPlacementCaution": "Erprobungsstufe domain explicitly includes positive rational/finite decimal numbers; competence10 combines context rounding with estimating and checking.",
+  "neededNativeMappingRepairsOrCautions": "Given-place decimal rounding is partial, not full contextual precision/estimate/probe competence. Keep G9 end-of-Erprobungsstufe band; concrete route review pending.",
+  "sourceRoleUnchanged": "binding-lower-secondary-g9-2019",
+  "sourceEdgeQuoteClaimed": false,
+  "all16ExactPlacementApproved": false,
+  "signedPeriodicOrWholeSourceCoverageClaimed": false,
+  "method": "This author read all full relevant actual PDF pages via retained portable pdftotext-layout and inspected full retained extracted rows/passages; hashes bind local source bytes. Context is author preparation, not independent source review or legal approval."
+}

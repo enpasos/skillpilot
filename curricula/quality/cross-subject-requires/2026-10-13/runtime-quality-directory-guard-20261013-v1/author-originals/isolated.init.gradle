@@ -1,0 +1,25 @@
+// Apache-2.0. Redirect source sets and all project outputs; do not touch active source or resources.
+gradle.projectsEvaluated {
+    def base = new File(System.getenv('QUALITY_GUARD_CANDIDATE_DIR'))
+    def variant = System.getenv('QUALITY_GUARD_TEST_VARIANT') ?: 'candidate'
+    assert variant in ['candidate', 'original-control']
+    def source = new File(base, variant == 'candidate' ? 'isolated-src' : 'original-control-src')
+    def project = gradle.rootProject
+    project.sourceSets.main.java.setSrcDirs([new File(source, 'main/java')])
+    project.sourceSets.main.resources.setSrcDirs([])
+    project.sourceSets.test.java.setSrcDirs([new File(source, 'test/java')])
+    project.sourceSets.test.resources.setSrcDirs([])
+    project.tasks.named('processResources').configure { enabled = false }
+    project.tasks.named('processTestResources').configure { enabled = false }
+    project.tasks.named('generateClaudePluginPublication').configure { enabled = false }
+    project.tasks.named('test').configure {
+        // Only lightweight, local filesystem fixtures are selected. No Spring context or live curricula.
+        maxHeapSize = '768m'
+        doFirst {
+            assert project.layout.buildDirectory.get().asFile.canonicalFile == new File(base, "build-${variant}").canonicalFile
+            assert project.sourceSets.main.output.classesDirs.files.every { it.canonicalPath.startsWith(base.canonicalPath + File.separator) }
+            assert project.sourceSets.test.output.classesDirs.files.every { it.canonicalPath.startsWith(base.canonicalPath + File.separator) }
+            println("ISOLATED_QUALITY_GUARD variant=${variant} java=${System.getProperty('java.version')} source=${source.canonicalPath} mainClasses=${project.sourceSets.main.output.classesDirs.asPath} testClasses=${testClassesDirs.asPath}")
+        }
+    }
+}

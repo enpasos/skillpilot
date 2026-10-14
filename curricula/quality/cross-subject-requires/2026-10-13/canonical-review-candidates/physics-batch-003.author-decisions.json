@@ -1,0 +1,4150 @@
+[
+  {
+    "decisionId": "canonical-physics-741e7056-69e4-59be-a159-0e2583d748d1",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "741e7056-69e4-59be-a159-0e2583d748d1",
+    "dependentTitle": "Entropie E06: Standardfälle sicher rechnen",
+    "dependentDescription": "Die lernende Person kann die Entropieänderung eines Wärmereservoirs mit $\\Delta S = Q/T$ und bei einem reversiblen Phasenübergang mit $\\Delta S = L/T$ berechnen und deuten; $T$ ist die konstante absolute Temperatur, $Q$ beziehungsweise $L$ die vorzeichenbehaftete aufgenommene Wärmemenge in Joule.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die zwei ausdrücklich gegebenen Entropieformeln sind Termeinsetzungen bei konstanter absoluter Temperatur mit vorzeichenbehafteter Wärme. Das allgemeine Einsetzatom genügt; Integrale, Logarithmen oder eine vollständige Gaszustandsrechnung sind hier nicht nötig.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "741e7056-69e4-59be-a159-0e2583d748d1",
+        "locator": "goals[id=741e7056-69e4-59be-a159-0e2583d748d1]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "741e7056-69e4-59be-a159-0e2583d748d1",
+        "locator": "goals[id=741e7056-69e4-59be-a159-0e2583d748d1].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 141
+  },
+  {
+    "decisionId": "canonical-physics-eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+    "dependentTitle": "Entropie E07: Entropieänderung idealer Gase",
+    "dependentDescription": "Die lernende Person kann Entropieänderungen einer festen Menge idealen Gases bei einfachen Zustandsänderungen berechnen und physikalisch deuten, insbesondere isotherm mit $\\Delta S = nR\\ln(V_2/V_1)$, und die Größen $n$, $R$, $V$ und $T$ sowie die Gültigkeitsbedingungen zuordnen.",
+    "prerequisiteGoalIds": [
+      "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die isotherme Entropieänderung verlangt ausdrücklich den natürlichen Logarithmus eines positiven Volumenverhältnisses und das Einsetzen in nR·ln(V₂/V₁). Das allgemeine Logarithmusatom erlaubt jede positive Basis ungleich eins einschließlich e und digitale Werte, sodass kein unnötiger LK-Logarithmusgraphenlink entsteht.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+        "locator": "goals[id=eaef821b-4dbe-52a4-a0e2-574e5ce2040d]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+        "locator": "goals[id=eaef821b-4dbe-52a4-a0e2-574e5ce2040d].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "locator": "goals[id=3c1d6ce7-099e-4267-9ff2-3d1526209a89]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 142
+  },
+  {
+    "decisionId": "canonical-physics-14099861-897c-53f4-8c6c-48d088ee9f01",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+    "dependentTitle": "Entropie E08: Entropiebilanz für System + Umgebung",
+    "dependentDescription": "Die lernende Person kann die Entropieänderungen von System und Umgebung zu $\\Delta S_{\\mathrm{ges}}$ addieren und für Wärmeübertragung zwischen zwei sonst isolierten Reservoiren bei konstanten absoluten Temperaturen $T_h > T_c$ rechnerisch begründen, warum Wärmefluss von heiß nach kalt die Gesamtentropie erhöht.",
+    "prerequisiteGoalIds": [
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die Beschreibung fordert ausdrücklich Addition der vorzeichenbehafteten Entropieanteile und eine rechnerische Begründung mit Q/T für zwei Reservoirtemperaturen. Rationale Summen/Differenzen und Formeleinsetzen sind die gemeinsamen Rechnungsbasen; statistische Entropie oder Integralrechnung ist nicht nötig.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+        "locator": "goals[id=14099861-897c-53f4-8c6c-48d088ee9f01]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+        "locator": "goals[id=14099861-897c-53f4-8c6c-48d088ee9f01].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "locator": "goals[id=4eeab7d5-eeb3-579b-845e-1c52ffe9e89f]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 143
+  },
+  {
+    "decisionId": "canonical-physics-be921c3b-7db9-50b5-a110-92f31673fc62",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "be921c3b-7db9-50b5-a110-92f31673fc62",
+    "dependentTitle": "Entropie E09: Der 2. Hauptsatz als Entscheidungsregel",
+    "dependentDescription": "Die lernende Person kann für ein als isoliert betrachtetes Gesamtsystem aus System und Umgebung $\\Delta S_{\\mathrm{ges}} \\ge 0$ als Kriterium für eine nach dem zweiten Hauptsatz mögliche Prozessrichtung anwenden und den reversiblen Grenzfall $\\Delta S_{\\mathrm{ges}} = 0$ von irreversiblen Prozessen mit $\\Delta S_{\\mathrm{ges}} > 0$ unterscheiden.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Die Entropieungleichung wird als Kriterium auf die Prozessrichtung angewandt. Es wird keine Ungleichung nach einer Unbekannten gelöst und keine eigene Entropiezahl berechnet; die Vergleichszeichen werden im Hauptsatz begrifflich eingeführt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "be921c3b-7db9-50b5-a110-92f31673fc62",
+        "locator": "goals[id=be921c3b-7db9-50b5-a110-92f31673fc62]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "be921c3b-7db9-50b5-a110-92f31673fc62",
+        "locator": "goals[id=be921c3b-7db9-50b5-a110-92f31673fc62].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 144
+  },
+  {
+    "decisionId": "canonical-physics-81a45dec-37be-529b-89ce-2f3101237293",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "81a45dec-37be-529b-89ce-2f3101237293",
+    "dependentTitle": "Entropie E10: Clausius-Ungleichung (Kreisprozess)",
+    "dependentDescription": "Die lernende Person kann die Clausius-Ungleichung $\\oint \\frac{\\delta Q}{T} \\le 0$ für Kreisprozesse mit Wärme positiv zum System und $T$ als absoluter Temperatur des jeweiligen Wärmereservoirs deuten und daraus begründen, warum die vollständige Umwandlung von Wärme aus einem einzigen Reservoir in Arbeit als einzige Wirkung unmöglich ist.",
+    "prerequisiteGoalIds": [
+      "269675a9-13cd-4a3a-ab75-63794f5c9710"
+    ],
+    "decision": "add",
+    "rationale": "Das Kreisprozesssymbol steht für eine umlaufende Summe orientierter Wärme-/Temperaturbeiträge. Produktsummen und orientierte Gesamtwirkungen deuten ist der nötige mathematische Kern der Ungleichungsdeutung. Die Beschreibung verlangt keine Auswertung eines Kurvenintegrals oder formale Stokes-/Vektorfeldrechnung.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "81a45dec-37be-529b-89ce-2f3101237293",
+        "locator": "goals[id=81a45dec-37be-529b-89ce-2f3101237293]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "81a45dec-37be-529b-89ce-2f3101237293",
+        "locator": "goals[id=81a45dec-37be-529b-89ce-2f3101237293].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+        "locator": "goals[id=269675a9-13cd-4a3a-ab75-63794f5c9710]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Diskrete Wärmewechsel mit Reservoiren als orientierte Summe statt formal berechnetem Kurvenintegral."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 145
+  },
+  {
+    "decisionId": "canonical-physics-616ac6cf-901b-509a-8cbb-bd422ddecf05",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+    "dependentTitle": "Entropie E11: Entropieproduktion und Irreversibilität",
+    "dependentDescription": "Die lernende Person kann Reibung, Mischung beziehungsweise Diffusion, Wärmeaustausch bei endlicher Temperaturdifferenz und freie Expansion als Ursachen von Entropieproduktion erklären und begründen, warum sie sich nicht ohne bleibende Änderungen in System und Umgebung vollständig umkehren lassen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Ursachen der Entropieproduktion werden erklärt und Irreversibilität wird qualitativ begründet. Es werden weder Mikrozustände gezählt noch Entropieänderungen berechnet.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+        "locator": "goals[id=616ac6cf-901b-509a-8cbb-bd422ddecf05]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+        "locator": "goals[id=616ac6cf-901b-509a-8cbb-bd422ddecf05].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 146
+  },
+  {
+    "decisionId": "canonical-physics-b61d233a-1902-526b-a9b5-6b3d553f4013",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
+    "dependentTitle": "Entropie E12: Makrozustand und Mikrozustände",
+    "dependentDescription": "Die lernende Person kann Makrozustände (z. B. beschrieben durch $p, V, T$) von Mikrozuständen (Teilchenzuständen) unterscheiden und an einem Teilchenmodell erklären, wie verschiedene Mikrozustände demselben Makrozustand entsprechen können.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Makro- und Mikrozustände werden im Teilchenmodell unterschieden und die Mehrdeutigkeit des Makrozustands erklärt. Eine eigene kombinatorische Anzahl oder Wahrscheinlichkeit ist nicht gefordert.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
+        "locator": "goals[id=b61d233a-1902-526b-a9b5-6b3d553f4013]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
+        "locator": "goals[id=b61d233a-1902-526b-a9b5-6b3d553f4013].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 147
+  },
+  {
+    "decisionId": "canonical-physics-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+    "dependentTitle": "Entropie E13: Boltzmann-Formel und Zählmodelle",
+    "dependentDescription": "Die lernende Person kann mit $S = k_B\\ln\\Omega$ und einfachen Zählmodellen, etwa $\\Omega=\\binom{N}{n}$ für gleich wahrscheinliche Links-rechts-Zuordnungen, die Entropien verschiedener Makrozustände vergleichen und erklären, warum bei großer Teilchenzahl annähernd gleichmäßige Verteilungen gegenüber stark ungleichmäßigen überwiegen.",
+    "prerequisiteGoalIds": [
+      "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die Boltzmann-Formel verlangt den Logarithmus einer positiven Zustandszahl sowie Wertevergleich durch Termeinsetzung. Binomialkoeffizienten sind ausdrücklich nur ein mögliches Zählmodell (etwa); ein verpflichtendes Binomial- oder Wahrscheinlichkeitsatom würde alternative einfache Aufzählmodelle ausschließen. Das Modellzählen wird hier physikalisch eingeführt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+        "locator": "goals[id=b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+        "locator": "goals[id=b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "locator": "goals[id=3c1d6ce7-099e-4267-9ff2-3d1526209a89]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Auflisten kleiner Zustandsmengen oder Binomialmodell je nach konkretem Teilchenmodell."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 148
+  },
+  {
+    "decisionId": "canonical-physics-77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+    "dependentTitle": "Entropie E14: Brücke Makro ↔ Mikro",
+    "dependentDescription": "Die lernende Person kann für eine feste Teilchenzahl $N$ eines klassischen idealen Gases bei unveränderter Temperatur den Zusammenhang $\\Omega_2/\\Omega_1 = (V_2/V_1)^N$ im Teilchenmodell begründen und daraus $\\Delta S = Nk_B\\ln(V_2/V_1) = nR\\ln(V_2/V_1)$ als Verbindung von mikroskopischer und makroskopischer Entropiebeschreibung herleiten.",
+    "prerequisiteGoalIds": [
+      "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "6596405a-9728-41df-9163-53670ec2a937"
+    ],
+    "decision": "add",
+    "rationale": "Die explizite Brückenherleitung benutzt eine ganzzahlige Potenz des Volumenverhältnisses und den Logarithmus als Umkehrung des Potenzierens. Logarithmusdefinition und Potenzgesetze sind die notwendigen Basen; die logaritmischen Umformungen können daraus in der Herleitung begründet werden. Eine natürliche Logarithmusfunktion mit Randverhalten oder Integralstammfunktion wird nicht benötigt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+        "locator": "goals[id=77604656-7ffe-516c-8af3-7cbe7de2f2a4]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+        "locator": "goals[id=77604656-7ffe-516c-8af3-7cbe7de2f2a4].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "locator": "goals[id=3c1d6ce7-099e-4267-9ff2-3d1526209a89]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "6596405a-9728-41df-9163-53670ec2a937",
+        "locator": "goals[id=6596405a-9728-41df-9163-53670ec2a937]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 149
+  },
+  {
+    "decisionId": "canonical-physics-d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+    "dependentTitle": "Entropie E15: Wärmekraftmaschinen und Carnot-Grenze",
+    "dependentDescription": "Die lernende Person kann für eine zyklisch arbeitende Wärmekraftmaschine zwischen zwei Reservoiren mit konstanten absoluten Temperaturen die Carnot-Grenze aus Energie- und Entropiebilanzen begründen und erklären, warum Irreversibilität den erreichbaren Wirkungsgrad bei denselben Reservoirtemperaturen verringert.",
+    "prerequisiteGoalIds": [
+      "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+    ],
+    "decision": "add",
+    "rationale": "Die Carnot-Grenze wird aus Energie- und Entropiebilanzen hergeleitet; dafür werden rationale Variablenausdrücke wie Qh/Th und Qc/Tc äquivalent umgeformt. Das Termumformungsatom ist der gemeinsame algebraische Kern. Prozentdarstellung, Logarithmen oder eine spezielle Kreisprozessfunktion sind nicht universell nötig.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+        "locator": "goals[id=d0cebf18-8b2a-52d6-857d-ef18cd64541c]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+        "locator": "goals[id=d0cebf18-8b2a-52d6-857d-ef18cd64541c].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+        "locator": "goals[id=2c4830e6-a8d5-48d0-9202-3b7d18a419c2]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 150
+  },
+  {
+    "decisionId": "canonical-physics-161502b8-e52d-58d0-8f01-9f777b56d392",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "161502b8-e52d-58d0-8f01-9f777b56d392",
+    "dependentTitle": "Entropieaussagen mit Systemgrenzen und Mikrozuständen prüfen",
+    "dependentDescription": "Die lernende Person kann Aussagen über eine lokale Entropieabnahme anhand klarer Systemgrenzen und zugehöriger Mikrozustände beurteilen und begründen, warum sie dem zweiten Hauptsatz für das isolierte Gesamtsystem nicht widersprechen muss; eine bloß optisch geordnete Anordnung genügt nicht als Entropiemaß.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Systemgrenzen und zugehörige Mikrozustände dienen der qualitativen Prüfung einer lokalen Entropieabnahme. Die Warnung vor optischer Ordnung verlangt keine kombinatorische Berechnung oder Wahrscheinlichkeitszahl.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "161502b8-e52d-58d0-8f01-9f777b56d392",
+        "locator": "goals[id=161502b8-e52d-58d0-8f01-9f777b56d392]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "161502b8-e52d-58d0-8f01-9f777b56d392",
+        "locator": "goals[id=161502b8-e52d-58d0-8f01-9f777b56d392].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 151
+  },
+  {
+    "decisionId": "canonical-physics-91b20476-12cf-50d6-880a-ea509ffe8a9a",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+    "dependentTitle": "Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden",
+    "dependentDescription": "Die lernende Person kann bei einfachen irreversiblen Prozessen eines isolierten Gesamtsystems die Entropieerzeugung mit $\\Delta S_{\\mathrm{ges}}>0$ begründen und die damit ausgezeichnete Richtung makroskopischer Abläufe als thermodynamischen Zeitpfeil erklären.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Entropieerzeugung und Zeitpfeil werden für einfache irreversible Prozesse erklärt. Die Ungleichung wird gedeutet, nicht gelöst, und ΔS wird nicht rechnerisch bestimmt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+        "locator": "goals[id=91b20476-12cf-50d6-880a-ea509ffe8a9a]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+        "locator": "goals[id=91b20476-12cf-50d6-880a-ea509ffe8a9a].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 152
+  },
+  {
+    "decisionId": "canonical-physics-18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+    "dependentTitle": "Zweiten Hauptsatz auf Wärmekraftmaschinen anwenden",
+    "dependentDescription": "Die lernende Person kann mit dem zweiten Hauptsatz erklären, warum eine zyklische Wärmekraftmaschine zwischen einem heißen und einem kalten Reservoir mit jeweils konstanter Temperatur Abwärme abgeben muss, und die Carnot-Grenze als maximal möglichen Wirkungsgrad bei diesen Temperaturen im reversiblen Grenzfall qualitativ deuten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Abwärme und Carnot-Grenze werden ausdrücklich qualitativ begründet und gedeutet. Numerische Wirkungsgrad- oder Temperaturverhältnisrechnung ist ein anderer Zielumfang.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+        "locator": "goals[id=18058384-a1bc-5ba2-8f5d-1fe9498acbf0]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+        "locator": "goals[id=18058384-a1bc-5ba2-8f5d-1fe9498acbf0].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 153
+  },
+  {
+    "decisionId": "canonical-physics-aed9161b-ddc4-559c-be8f-baeeddf224f3",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+    "dependentTitle": "Energiesparmaßnahmen physikalisch bewerten",
+    "dependentDescription": "Die lernende Person kann Energiesparmaßnahmen mit Wirkungsgraden, Energieumwandlungen und Verlustmechanismen physikalisch bewerten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Die Bewertung kann mit gegebenen Wirkungsgraden und qualitativ beschriebenen Verlusten erfolgen. Die Beschreibung verlangt keine eigene Prozent-, Energiebedarfs- oder Kostenrechnung; diese hängen von der konkreten Maßnahme ab.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+        "locator": "goals[id=aed9161b-ddc4-559c-be8f-baeeddf224f3]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+        "locator": "goals[id=aed9161b-ddc4-559c-be8f-baeeddf224f3].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Gegebene Wirkungsgraddaten und Wirkmechanismen können direkt beurteilt werden."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 154
+  },
+  {
+    "decisionId": "canonical-physics-f322c268-dc16-5d50-82dd-209834f20208",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "f322c268-dc16-5d50-82dd-209834f20208",
+    "dependentTitle": "Klimawirkungen von Energieentscheidungen fachlich diskutieren",
+    "dependentDescription": "Die lernende Person kann die Klimawirkungen vorgegebener Energieentscheidungen anhand physikalischer Bewertungsdaten fachlich begründet diskutieren, indem sie Bezugsgröße und Bilanzgrenze offenlegt und erklärt, wie Annahmen und Unsicherheiten den Vergleich beeinflussen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Die geforderte Diskussion legt Bezugsgröße, Bilanzgrenze, Annahmen und Unsicherheiten offen. Bewertungsdaten können bereits in vergleichbaren Bezugsgrößen vorliegen; Einheitenumrechnung, Regression und Prozentrechnung sind deshalb keine universellen Vorleistungen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "f322c268-dc16-5d50-82dd-209834f20208",
+        "locator": "goals[id=f322c268-dc16-5d50-82dd-209834f20208]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "f322c268-dc16-5d50-82dd-209834f20208",
+        "locator": "goals[id=f322c268-dc16-5d50-82dd-209834f20208].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Vorgegebene vergleichbare Daten statt verpflichtender Umrechnung zwischen fremden Bilanzgrenzen."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 155
+  },
+  {
+    "decisionId": "canonical-physics-cd1903a5-d70a-5320-9124-b6b24917ba14",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "cd1903a5-d70a-5320-9124-b6b24917ba14",
+    "dependentTitle": "Zustandsgrößen und ideales Gasgesetz anwenden",
+    "dependentDescription": "Die lernende Person kann für ein ideales Gas Druck p, Volumen V, absolute Temperatur T und Stoffmenge n in SI-Einheiten verwenden, ihren Zusammenhang pV = nRT erklären, eine fehlende Zustandsgröße bestimmen und das Ergebnis anhand der Einheit und der erwarteten Größenordnung auf Plausibilität prüfen.",
+    "prerequisiteGoalIds": [
+      "54148506-c23f-41b8-959b-068dd194cf15",
+      "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180"
+    ],
+    "decision": "add",
+    "rationale": "Eine fehlende Größe im idealen Gasgesetz wird über eine einfache multiplikative Gleichung bestimmt; die Einheit muss ausdrücklich als Plausibilitätscheck geprüft werden. Multiplikative Gleichungen lösen und Einheiten-/Dimensionscheck sind dafür passend. Daten können bereits in SI-Einheiten gegeben sein, deshalb keine zusätzliche allgemeine Umrechnungspflicht.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "cd1903a5-d70a-5320-9124-b6b24917ba14",
+        "locator": "goals[id=cd1903a5-d70a-5320-9124-b6b24917ba14]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "cd1903a5-d70a-5320-9124-b6b24917ba14",
+        "locator": "goals[id=cd1903a5-d70a-5320-9124-b6b24917ba14].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "54148506-c23f-41b8-959b-068dd194cf15",
+        "locator": "goals[id=54148506-c23f-41b8-959b-068dd194cf15]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+        "locator": "goals[id=f4df008d-fcd4-5ba3-821b-2ee8bd8a1180]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 156
+  },
+  {
+    "decisionId": "canonical-physics-fb73c94b-6a23-5351-8fef-db2c2533e361",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
+    "dependentTitle": "Isochore, isobare und isotherme Zustandsänderungen berechnen",
+    "dependentDescription": "Die lernende Person kann isochore (V konstant), isobare (p konstant) und isotherme (T konstant) Zustandsänderungen einer festen Stoffmenge eines idealen Gases anhand der jeweils konstanten Zustandsgröße unterscheiden, den passenden Zusammenhang der übrigen Größen begründen und damit fehlende Größen bestimmen.",
+    "prerequisiteGoalIds": [
+      "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6"
+    ],
+    "decision": "add",
+    "rationale": "Fehlende Zustandsgrößen bei festem V, p oder T werden aus Verhältnisgleichungen derselben festen Stoffmenge bestimmt. Das Verhältnisgleichungsatom deckt die nötige algebraische Routine, ohne verpflichtende Hyperbelgraphen oder Potenzgesetze einzuführen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
+        "locator": "goals[id=fb73c94b-6a23-5351-8fef-db2c2533e361]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
+        "locator": "goals[id=fb73c94b-6a23-5351-8fef-db2c2533e361].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "locator": "goals[id=671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 157
+  },
+  {
+    "decisionId": "canonical-physics-7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+    "dependentTitle": "Adiabatische Zustandsänderungen",
+    "dependentDescription": "Die lernende Person kann adiabatische Zustandsänderungen eines idealen Gases als Prozesse ohne Wärmeaustausch über die Systemgrenze beschreiben, qualitativ erklären, wie Arbeit bei Kompression oder Expansion die innere Energie und Temperatur verändert, sowie idealisierte quasistatische Verläufe im p-V-Diagramm skizzieren und von isothermen Zustandsänderungen abgrenzen.",
+    "prerequisiteGoalIds": [
+      "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+    ],
+    "decision": "add",
+    "rationale": "Adiabatische und isotherme Wege werden im p-V-Diagramm qualitativ skizziert und unterschieden. Achsen, Skalen und Einheiten zu lesen ist die gemeinsame Darstellungsbasis. Die Beschreibung verlangt weder die Poisson-Gleichung auszurechnen noch rationale Exponenten oder Integrale.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+        "locator": "goals[id=7fe3022f-fad0-5f41-af1c-d55ff214ebc6]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+        "locator": "goals[id=7fe3022f-fad0-5f41-af1c-d55ff214ebc6].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "locator": "goals[id=80c232f1-8f72-5829-9dbe-5a610ccab3be]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 158
+  },
+  {
+    "decisionId": "canonical-physics-7982cd8e-2151-59e7-858d-c1361c5d249e",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "7982cd8e-2151-59e7-858d-c1361c5d249e",
+    "dependentTitle": "Prozessarbeit bei Volumenänderungen bestimmen",
+    "dependentDescription": "Die lernende Person kann die Prozessarbeit bei Volumenänderungen in einfachen Fällen, insbesondere bei isobaren Prozessen, mit einer ausgewiesenen Vorzeichenkonvention berechnen, im p-V-Diagramm als vorzeichenbehaftete Fläche unter dem Prozessweg deuten und das Vorzeichen aus der Prozessrichtung begründen.",
+    "prerequisiteGoalIds": [
+      "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Prozessarbeit wird mit Vorzeichen berechnet und als Fläche im p-V-Diagramm gedeutet. Orientierte Produktsummen/Gesamtwirkungen und Einsetzen in einfache Arbeitsbeziehungen sind dafür nötig. Isobare Rechteckflächen sind ausdrücklich eingeschlossen; ein analytisches Integrationsverfahren ist deshalb keine universelle zusätzliche Voraussetzung.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "7982cd8e-2151-59e7-858d-c1361c5d249e",
+        "locator": "goals[id=7982cd8e-2151-59e7-858d-c1361c5d249e]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "7982cd8e-2151-59e7-858d-c1361c5d249e",
+        "locator": "goals[id=7982cd8e-2151-59e7-858d-c1361c5d249e].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+        "locator": "goals[id=269675a9-13cd-4a3a-ab75-63794f5c9710]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Konstanter Druck mit Produkt p·ΔV oder grafische Summen für andere einfache Wege."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 159
+  },
+  {
+    "decisionId": "canonical-physics-93ece389-78c5-5141-9ef1-c68bd558306e",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "93ece389-78c5-5141-9ef1-c68bd558306e",
+    "dependentTitle": "Wärmemengen mit C_V und C_P berechnen",
+    "dependentDescription": "Die lernende Person kann bei isochoren beziehungsweise isobaren Prozessen die übertragene Wärmemenge mit Q = n·C_V·ΔT beziehungsweise Q = n·C_P·ΔT unter der Annahme näherungsweise konstanter molarer Wärmekapazitäten berechnen und erklären, warum die passende Wärmekapazität von der Prozessbedingung abhängt.",
+    "prerequisiteGoalIds": [
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Wärme aus n·C·ΔT verlangt die Temperaturdifferenz und eine Termeinsetzung mit passenden Prozessparametern. Rationale Differenzbildung und Formeleinsetzen sind dafür notwendig; die Wahl zwischen CV und CP ist neuer physikalischer Inhalt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "93ece389-78c5-5141-9ef1-c68bd558306e",
+        "locator": "goals[id=93ece389-78c5-5141-9ef1-c68bd558306e]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "93ece389-78c5-5141-9ef1-c68bd558306e",
+        "locator": "goals[id=93ece389-78c5-5141-9ef1-c68bd558306e].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "locator": "goals[id=4eeab7d5-eeb3-579b-845e-1c52ffe9e89f]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 160
+  },
+  {
+    "decisionId": "canonical-physics-23c5382a-4b0f-5715-84b5-cf87b8323152",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+    "dependentTitle": "Ersten Hauptsatz in Prozessen quantitativ bilanzieren",
+    "dependentDescription": "Die lernende Person kann für einfache Gasprozesse Energiegrößen konsistent bilanzieren (Q, W, ΔU) und den ersten Hauptsatz rechnerisch anwenden.",
+    "prerequisiteGoalIds": [
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f"
+    ],
+    "decision": "add",
+    "rationale": "Die rechnerische Energiebilanz bildet vorzeichenkonsistente Summen und Differenzen zwischen Q, W und ΔU. Rationale Addition/Subtraktion genügt als gemeinsamer mathematischer Kern; eine bestimmte Zustandsgleichung oder Integration wird nicht jedem einfachen Prozess auferlegt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+        "locator": "goals[id=23c5382a-4b0f-5715-84b5-cf87b8323152]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+        "locator": "goals[id=23c5382a-4b0f-5715-84b5-cf87b8323152].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "locator": "goals[id=4eeab7d5-eeb3-579b-845e-1c52ffe9e89f]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 161
+  },
+  {
+    "decisionId": "canonical-physics-73b5af24-7750-520a-bb16-43136ce19a5c",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "73b5af24-7750-520a-bb16-43136ce19a5c",
+    "dependentTitle": "Wirkungsgrad und Carnot-Grenze quantitativ vergleichen",
+    "dependentDescription": "Die lernende Person kann den Wirkungsgrad einer realen zyklischen Wärmekraftmaschine aus Messdaten bestimmen, mit der Carnot-Grenze für dieselben heißen und kalten Reservoirtemperaturen vergleichen und Abweichungen unter Berücksichtigung von Irreversibilitäten und Messunsicherheiten physikalisch beurteilen.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Realer Wirkungsgrad aus Messdaten und Carnot-Grenze aus Reservoirtemperaturen sind ausdrücklich quantitative Formeleinsetzungen. Eine Prozentdarstellung ist optional; allgemeine Prozentgrundaufgaben oder Normalverteilungsstatistik wären überbreit.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "73b5af24-7750-520a-bb16-43136ce19a5c",
+        "locator": "goals[id=73b5af24-7750-520a-bb16-43136ce19a5c]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "73b5af24-7750-520a-bb16-43136ce19a5c",
+        "locator": "goals[id=73b5af24-7750-520a-bb16-43136ce19a5c].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Wirkungsgrade können als dimensionslose Dezimalquotienten angegeben werden."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 162
+  },
+  {
+    "decisionId": "canonical-physics-cf570e66-2ce2-5923-9033-c97d74119553",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "cf570e66-2ce2-5923-9033-c97d74119553",
+    "dependentTitle": "Drehmoment beschreiben",
+    "dependentDescription": "Die lernende Person kann das Drehmoment als Maß für die Drehwirkung einer Kraft definieren, berechnen und an einfachen Hebel- und Alltagsbeispielen anwenden.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Einfaches Drehmoment wird aus Kraft und wirksamem Hebelarm berechnet. Formeleinsetzung ist die universelle mathematische Routine; eine rechtwinklige Hebelanordnung benötigt weder Sinusrechnung noch ein Vektorprodukt, daher diese nicht als AND.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "cf570e66-2ce2-5923-9033-c97d74119553",
+        "locator": "goals[id=cf570e66-2ce2-5923-9033-c97d74119553]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "cf570e66-2ce2-5923-9033-c97d74119553",
+        "locator": "goals[id=cf570e66-2ce2-5923-9033-c97d74119553].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Senkrechter Kraftangriff mit gegebenem Hebelarm ist ein zulässiger einfacher Fall."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 163
+  },
+  {
+    "decisionId": "canonical-physics-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+    "dependentTitle": "Drehimpuls als Erhaltungsgröße",
+    "dependentDescription": "Die lernende Person kann den Drehimpuls definieren, seine Erhaltung bei drehmomentfreien Vorgängen erläutern und einfache Beispiele (z. B. Pirouette) qualitativ deuten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Drehimpuls wird definiert und seine Erhaltung an Beispielen ausdrücklich qualitativ gedeutet. Ein Vektorprodukt oder eine Trägheitsmomentrechnung ist kein universell geforderter Vorwissensnachweis.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+        "locator": "goals[id=37f17e7e-9fcf-5dca-ac10-e94cb8420be5]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+        "locator": "goals[id=37f17e7e-9fcf-5dca-ac10-e94cb8420be5].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Qualitative Pirouette mit Erhaltung von Drehimpuls und veränderlichem Trägheitsmoment."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 164
+  },
+  {
+    "decisionId": "canonical-physics-642aebd7-66cd-5a50-b543-73c4b207525d",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "642aebd7-66cd-5a50-b543-73c4b207525d",
+    "dependentTitle": "Trägheitsmoment und Rotationsenergie",
+    "dependentDescription": "Die lernende Person kann den Begriff des Trägheitsmoments qualitativ erklären, einfache Beispiele vergleichen und den Zusammenhang mit Rotationsenergie herstellen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Trägheitsmomente werden qualitativ erklärt und verglichen und mit Rotationsenergie verbunden. Eine numerische Massensumme, ein Volumenintegral oder ein Quadratwert wird nicht verlangt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "642aebd7-66cd-5a50-b543-73c4b207525d",
+        "locator": "goals[id=642aebd7-66cd-5a50-b543-73c4b207525d]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "642aebd7-66cd-5a50-b543-73c4b207525d",
+        "locator": "goals[id=642aebd7-66cd-5a50-b543-73c4b207525d].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 165
+  },
+  {
+    "decisionId": "canonical-physics-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+    "dependentTitle": "Rotationsenergie bestimmen",
+    "dependentDescription": "Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Rotationsenergie wird aus gegebenem Trägheitsmoment und Winkelgeschwindigkeit bestimmt. Die notwendige Rechnung ist Einsetzen in ½Iω²; ein Trägheitsmomentintegral oder allgemeine Differentialgleichung ist nicht erforderlich.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+        "locator": "goals[id=5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+        "locator": "goals[id=5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 166
+  },
+  {
+    "decisionId": "canonical-physics-c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+    "dependentTitle": "Mittleres Beschleunigungsmoment bestimmen",
+    "dependentDescription": "Die lernende Person kann bei konstantem Trägheitsmoment aus einer vorgegebenen mittleren Winkelbeschleunigung das mittlere resultierende Drehmoment bestimmen und seine beschleunigende oder bremsende Wirkung deuten.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Aus vorgegebenener mittlerer Winkelbeschleunigung und konstantem Trägheitsmoment wird das mittlere Drehmoment berechnet. Das verlangt Formeleinsetzen, aber keine eigene Änderungsraten- oder Differenzialrechnung, weil die Winkelbeschleunigung bereits gegeben ist.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+        "locator": "goals[id=c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+        "locator": "goals[id=c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 167
+  },
+  {
+    "decisionId": "canonical-physics-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+    "dependentTitle": "Präzessionsbewegungen erklären",
+    "dependentDescription": "Die lernende Person kann die Präzession von Kreiseln oder Gyroskopen qualitativ als Änderung der Drehimpulsrichtung durch ein äußeres Drehmoment erklären und von der Drehimpulserhaltung ohne äußeres Drehmoment abgrenzen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Präzession ist ausdrücklich als qualitative Richtungsänderung des Drehimpulses durch Drehmoment zu erklären. Ein Kreuzproduktbetrag, Eigenwert oder quantitative Präzessionsfrequenz ist nicht gefordert.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+        "locator": "goals[id=b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+        "locator": "goals[id=b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 168
+  },
+  {
+    "decisionId": "canonical-physics-21c0a5f2-4152-549a-aa9c-e02ab772f589",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+    "dependentTitle": "Pirouetten mit Drehimpuls deuten",
+    "dependentDescription": "Die lernende Person kann Pirouetten durch Erhaltung des Drehimpulses und Änderungen des Trägheitsmoments qualitativ erklären.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Die Pirouette wird mit erhaltenem Drehimpuls und verändertem Trägheitsmoment qualitativ erklärt. Eine inverse Verhältnisgleichung ist eine mögliche Rechnung, aber kein aktuelles Zielerfordernis.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+        "locator": "goals[id=21c0a5f2-4152-549a-aa9c-e02ab772f589]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+        "locator": "goals[id=21c0a5f2-4152-549a-aa9c-e02ab772f589].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 169
+  },
+  {
+    "decisionId": "canonical-physics-8daaf751-93fe-56d9-8697-ac30237061bd",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "8daaf751-93fe-56d9-8697-ac30237061bd",
+    "dependentTitle": "Fahrraddynamik mit Kreiselwirkung erklären",
+    "dependentDescription": "Die lernende Person kann Stabilität und Lenkverhalten von Fahrrädern mit Drehmomenten und Kreiselwirkung qualitativ deuten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Fahrradstabilität und Lenkverhalten werden mit Drehmomenten/Kreiselwirkung qualitativ gedeutet. Numerische Geometrie, Differentialgleichungen und Vektorprodukte sind keine notwendigen Vorleistungen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "8daaf751-93fe-56d9-8697-ac30237061bd",
+        "locator": "goals[id=8daaf751-93fe-56d9-8697-ac30237061bd]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "8daaf751-93fe-56d9-8697-ac30237061bd",
+        "locator": "goals[id=8daaf751-93fe-56d9-8697-ac30237061bd].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 170
+  },
+  {
+    "decisionId": "canonical-physics-07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+    "dependentTitle": "Kreiselstabilisierung technisch begründen",
+    "dependentDescription": "Die lernende Person kann Kreiselstabilisierung in technischen Anwendungen mithilfe von Drehimpuls- und Drehmomentargumenten begründen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Kreiselstabilisierung wird technisch mit Drehimpuls-/Drehmomentargumenten begründet. Die Beschreibung enthält keine quantitative Auslegung oder Rotationsgleichungslösung.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+        "locator": "goals[id=07f298b2-2f5e-5b16-8150-bc603fa78ecd]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+        "locator": "goals[id=07f298b2-2f5e-5b16-8150-bc603fa78ecd].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 171
+  },
+  {
+    "decisionId": "canonical-physics-a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+    "dependentTitle": "Ladungsphänomene und Reibungselektrizität",
+    "dependentDescription": "Die lernende Person kann Anziehung und Abstoßung elektrisch geladener Körper sowie Ladungstrennung durch Reibung phänomenologisch untersuchen und die beobachteten Wechselwirkungen mit einem qualitativen Kraftbegriff beschreiben.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Elektrische Anziehung/Abstoßung und Reibungselektrizität werden phänomenologisch mit qualitativem Kraftbegriff untersucht. Coulombberechnung und vorzeichenbehaftete Zahlenrechnung sind nicht verlangt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+        "locator": "goals[id=a6e48b88-51ed-5942-bdb8-8d2192652e0d]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+        "locator": "goals[id=a6e48b88-51ed-5942-bdb8-8d2192652e0d].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 172
+  },
+  {
+    "decisionId": "canonical-physics-bbee4c52-4e95-5529-990f-706aa99316a3",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+    "dependentTitle": "Elektrische Stromstärke als Ladungsrate deuten",
+    "dependentDescription": "Die lernende Person kann die mittlere elektrische Stromstärke als durch einen Querschnitt transportierte Ladung pro Zeitintervall mit I = ΔQ/Δt deuten, Berechnungen durchführen und den Einheitenzusammenhang 1 A = 1 C/s erklären.",
+    "prerequisiteGoalIds": [
+      "ae20183e-92b5-5521-b8e0-9a8662cf51f5"
+    ],
+    "decision": "add",
+    "rationale": "I=ΔQ/Δt ist ausdrücklich eine mittlere Ladungsänderung pro endlichem Zeitintervall und wird berechnet. Mittlere Änderungsrate berechnen/deuten ist dafür der passende mathematische Kern; eine momentane Ableitung oder Integralfunktion wäre zusätzlich.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+        "locator": "goals[id=bbee4c52-4e95-5529-990f-706aa99316a3]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+        "locator": "goals[id=bbee4c52-4e95-5529-990f-706aa99316a3].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+        "locator": "goals[id=ae20183e-92b5-5521-b8e0-9a8662cf51f5]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 173
+  },
+  {
+    "decisionId": "canonical-physics-8da5c981-8216-5fcd-a393-19f392ae2006",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "8da5c981-8216-5fcd-a393-19f392ae2006",
+    "dependentTitle": "Coulomb'sches Gesetz",
+    "dependentDescription": "Die lernende Person kann die elektrische Kraft zwischen Punktladungen quantitativ mit dem Coulomb'schen Gesetz berechnen und den Zusammenhang zur Feldstärke begründen.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die Coulombkraft wird mit dem vorgegebenen physikalischen Gesetz quantitativ berechnet. Formeleinsetzen ist notwendig; wissenschaftliche Zahlenschreibweise ist abhängig von Einheiten und Daten, daher kein universeller zusätzlicher Potenzgesetzlink.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "8da5c981-8216-5fcd-a393-19f392ae2006",
+        "locator": "goals[id=8da5c981-8216-5fcd-a393-19f392ae2006]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "8da5c981-8216-5fcd-a393-19f392ae2006",
+        "locator": "goals[id=8da5c981-8216-5fcd-a393-19f392ae2006].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 174
+  },
+  {
+    "decisionId": "canonical-physics-98e42cda-9e5d-5910-b2c0-3e631fd20c78",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
+    "dependentTitle": "Radialsymmetrische elektrische Felder beschreiben",
+    "dependentDescription": "Die lernende Person kann das elektrische Feld einer Punktladung beziehungsweise den Außenraum einer kugelsymmetrischen Ladungsverteilung durch radiale Feldrichtung und Feldliniendichte beschreiben und die Abnahme der Feldstärke mit E ∝ 1/r² qualitativ begründen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Radiale Richtung, Feldliniendichte und die qualitative inverse quadratische Abnahme werden physikalisch erläutert. Ein formaler Potenzfunktionsgraph oder eine numerische Flächenberechnung wird nicht verlangt; die 1/r²-Bedeutung kann am gegebenen Feldlinienmodell erklärt werden.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
+        "locator": "goals[id=98e42cda-9e5d-5910-b2c0-3e631fd20c78]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
+        "locator": "goals[id=98e42cda-9e5d-5910-b2c0-3e631fd20c78].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 175
+  },
+  {
+    "decisionId": "canonical-physics-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+    "dependentTitle": "Superposition elektrischer Felder",
+    "dependentDescription": "Die lernende Person kann elektrische Felder durch grafische Addition von Feldstärkevektoren überlagern und einfache Superpositionssituationen qualitativ auswerten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Die grafische Feldvektoraddition wird im Physikziel selbst gelernt und einfache Situationen werden qualitativ ausgewertet. Numerische Vektortupeladdition würde einen zusätzlichen Rechenweg verpflichtend machen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+        "locator": "goals[id=4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+        "locator": "goals[id=4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Grafische Pfeiladdition ohne Koordinatenrechnung."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 176
+  },
+  {
+    "decisionId": "canonical-physics-1730c01d-8c85-57df-b031-c11e2a0511b1",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+    "dependentTitle": "Arbeit, Spannung und Potenzial im E-Feld",
+    "dependentDescription": "Die lernende Person kann die Spannung zwischen zwei Punkten als Potenzialdifferenz und – bei offengelegter Vorzeichenkonvention – über Arbeit beziehungsweise Änderung der potenziellen Energie pro Ladung deuten und im homogenen elektrischen Feld für einen Abstand parallel zu den Feldlinien den Betragszusammenhang |U| = E·d anwenden.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Der homogene parallelgerichtete Fall wird ausdrücklich mit |U|=E·d angewandt. Formeleinsetzen ist der nötige quantitative Kern; allgemeine Skalarprodukte, Integrale oder trigonometrische Feldprojektionen sind in diesem begrenzten Fall unnötig.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "locator": "goals[id=1730c01d-8c85-57df-b031-c11e2a0511b1]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+        "locator": "goals[id=1730c01d-8c85-57df-b031-c11e2a0511b1].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 177
+  },
+  {
+    "decisionId": "canonical-physics-9f59a088-3939-59e9-821d-167fadfda782",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "9f59a088-3939-59e9-821d-167fadfda782",
+    "dependentTitle": "Kondensator und Feld im Plattenkondensator",
+    "dependentDescription": "Die lernende Person kann das Feld eines idealisierten Plattenkondensators fern von Randeffekten als homogen beschreiben, seine Feldstärke bestimmen und bei vollständiger Füllung mit einem homogenen Dielektrikum die Kapazität mit $C=\\varepsilon_0\\varepsilon_r\\frac{A}{d}$ berechnen sowie ihre Abhängigkeit von Geometrie und Dielektrikum erläutern.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Feldstärke und Kapazität des idealisierten Plattenkondensators werden numerisch bestimmt. Das Einsetzen in die gegebenen Beziehungen ist nötig; eine bestimmte Plattenformel ist nicht universell, weil A bereits gegeben sein kann. Der Geometrie-/Dielektrikumseinfluss wird physikalisch erläutert.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "9f59a088-3939-59e9-821d-167fadfda782",
+        "locator": "goals[id=9f59a088-3939-59e9-821d-167fadfda782]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "9f59a088-3939-59e9-821d-167fadfda782",
+        "locator": "goals[id=9f59a088-3939-59e9-821d-167fadfda782].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Plattenfläche kann als Eingabe gegeben sein; keine Pflicht zur Herleitung eines Rechteck- oder Kreisflächeninhalts."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 178
+  },
+  {
+    "decisionId": "canonical-physics-0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+    "dependentTitle": "Auf- und Entladen eines Kondensators",
+    "dependentDescription": "Die lernende Person kann elektrische Stromstärke als durch einen Leiterquerschnitt transportierte Ladung pro Zeitintervall deuten, Richtung und zeitlichen Verlauf des Stroms beim Auf- und Entladen eines Kondensators qualitativ erklären und vorhersagen, wie bei gleicher Anfangsspannung ein größerer Widerstand den Betrag des Anfangsstroms verringert und wie das Produkt aus Widerstand und Kapazität die charakteristische Lade- beziehungsweise Entladezeit festlegt.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Stromrichtung, Zeitverlauf, Anfangsstrom und RC-Zeitmaß werden ausdrücklich qualitativ erläutert. Exponentialfunktion, Logarithmusgleichung und DGL-Lösung wären quantitative Vertiefungen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+        "locator": "goals[id=0b4f2020-8486-5372-9cb9-6e59f698ac2d]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+        "locator": "goals[id=0b4f2020-8486-5372-9cb9-6e59f698ac2d].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 179
+  },
+  {
+    "decisionId": "canonical-physics-fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+    "dependentTitle": "Energie des elektrischen Feldes",
+    "dependentDescription": "Die lernende Person kann die im elektrischen Feld eines Kondensators gespeicherte Energie mithilfe von Ladung, Spannung und Kapazität berechnen und an Anwendungen erläutern, wie beim Laden Energie in das Feld übertragen und beim Entladen an angeschlossene Systeme abgegeben wird.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Gespeicherte Feldenergie wird mit Ladung, Spannung und Kapazität berechnet. Formeleinsetzung ist notwendig, ein Integral über die Ladung oder eine DGL für den Ladevorgang dagegen nicht.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+        "locator": "goals[id=fd9fd8ad-c4a1-5552-9ea0-1878e0636f20]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+        "locator": "goals[id=fd9fd8ad-c4a1-5552-9ea0-1878e0636f20].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 180
+  },
+  {
+    "decisionId": "canonical-physics-0f803c37-8191-5a07-9b31-9603ded98fe2",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+    "dependentTitle": "Millikan-Versuch und Elementarladung",
+    "dependentDescription": "Die lernende Person kann den Millikan-Versuch im Schwebefall erläutern und damit die Quantelung elektrischer Ladung über die Elementarladung e begründen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Der Schwebefall wird erläutert und Ladungsquantelung begründet. Eine statistische Auswertung mehrerer Tröpfchen oder eine numerische Radiusbestimmung ist nicht ausdrücklich gefordert.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+        "locator": "goals[id=0f803c37-8191-5a07-9b31-9603ded98fe2]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+        "locator": "goals[id=0f803c37-8191-5a07-9b31-9603ded98fe2].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 181
+  },
+  {
+    "decisionId": "canonical-physics-741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+    "dependentTitle": "Geladene Teilchen in homogenen elektrischen Feldern untersuchen",
+    "dependentDescription": "Die lernende Person kann die Bewegung geladener Teilchen in homogenen elektrischen Feldern untersuchen, die Richtung der Feldkraft aus Feldrichtung und Ladungsvorzeichen bestimmen, Änderungen der elektrischen potenziellen und kinetischen Energie miteinander verknüpfen und einfache Bahnformen aus Anfangsbewegung, Ladungsvorzeichen und Feldrichtung qualitativ deuten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Feldkraftrichtung, Energieänderungen und einfache Bahnformen werden qualitativ untersucht und gedeutet. Numerische Parabelgleichungen, trigonometrische Zerlegung und Geschwindigkeitsquadrate werden nicht universell verlangt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+        "locator": "goals[id=741774ef-15fc-4bcf-a370-e2c5cf4257d0]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+        "locator": "goals[id=741774ef-15fc-4bcf-a370-e2c5cf4257d0].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 182
+  },
+  {
+    "decisionId": "canonical-physics-5fda8623-69e0-5503-9c6d-86d054a8cf91",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+    "dependentTitle": "Braunsche Röhre (Oszilloskop)",
+    "dependentDescription": "Die lernende Person kann erklären, wie in der Braunschen Röhre das von einer Ablenkspannung erzeugte elektrische Feld die vertikale Lage des Elektronenstrahls auf dem Leuchtschirm bestimmt und eine Zeitbasis den Strahl horizontal führt, sodass ein Oszilloskop den zeitlichen Spannungsverlauf darstellt; eine magnetische Ablenkung kann sie davon qualitativ unterscheiden.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Elektrische Vertikalablenkung, horizontale Zeitbasis und Spannungsverlauf werden funktional erklärt. Das Ziel verlangt kein quantitatives Ablesen eines Oszillogramms oder Ableiten der Ablenkgleichung.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+        "locator": "goals[id=5fda8623-69e0-5503-9c6d-86d054a8cf91]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+        "locator": "goals[id=5fda8623-69e0-5503-9c6d-86d054a8cf91].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 183
+  },
+  {
+    "decisionId": "canonical-physics-58db62d4-458f-5e2d-9ca0-968e09f4944b",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+    "dependentTitle": "Gaußsches Verfahren anwenden",
+    "dependentDescription": "Die lernende Person kann das Messverfahren von Gauß (Ablenkungsmethode in Hauptlage und Schwingungsmethode) zur Bestimmung der Horizontalintensität des Erdmagnetfeldes beschreiben und anwenden.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "review_required",
+    "rationale": "Das hier benannte Gaußsche Verfahren ist ein physikalisches Magnetfeldmessverfahren mit Ablenkungs- und Schwingungsmethode, kein algebraisches Gauß-LGS-Verfahren. Numerische Anwendung benötigt Termeinsetzung. Die genaue zusätzliche Winkel-/Periodenmathematik ist vor einem Link anhand der gebundenen Messanleitung/positiven Evidenz unabhängig zu prüfen; die Kurzbeschreibung allein bestimmt die verwendete Auswerteformel nicht.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+        "locator": "goals[id=58db62d4-458f-5e2d-9ca0-968e09f4944b]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+        "locator": "goals[id=58db62d4-458f-5e2d-9ca0-968e09f4944b].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Keine Zuordnung zum mathematischen Gaußverfahren aufgrund des gleichlautenden Namens."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 184
+  },
+  {
+    "decisionId": "canonical-physics-d02438ba-0cc9-5993-831e-5e44d35e32c4",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+    "dependentTitle": "Drehmoment auf Magnetnadeln und Dipole",
+    "dependentDescription": "Die lernende Person kann das Drehmoment auf Magnetnadeln und magnetische Dipole im homogenen Feld mit M = mu * B * sin(alpha) berechnen und die Ausrichtung im Feld fachlich begründen.",
+    "prerequisiteGoalIds": [
+      "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Das Dipoldrehmoment verwendet ausdrücklich sin(α) und wird berechnet. Winkelabhängige Sinuswerte am Einheitskreis sowie Formeleinsetzung sind dafür nötig; ein räumliches Vektorprodukt wird nicht gefordert. Der Einheitskreislink ist fachlich konkreter als ein kompletter Trigonometriecluster.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+        "locator": "goals[id=d02438ba-0cc9-5993-831e-5e44d35e32c4]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+        "locator": "goals[id=d02438ba-0cc9-5993-831e-5e44d35e32c4].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+        "locator": "goals[id=97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 185
+  },
+  {
+    "decisionId": "canonical-physics-9854589c-5feb-4942-b90f-311ddf36eb78",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+    "dependentTitle": "Geladene Teilchen in homogenen magnetischen Feldern untersuchen",
+    "dependentDescription": "Die lernende Person kann vorgegebene oder simulierte Bahnen geladener Teilchen in homogenen Magnetfeldern mithilfe der Lorentzkraft vergleichen, aus Feldrichtung und Umlaufsinn das Ladungsvorzeichen erschließen und für Bewegungen senkrecht zur Feldrichtung unter sonst gleichen Bedingungen aus Krümmungsvergleichen qualitative Auswirkungen von Änderungen der Masse, Geschwindigkeit oder Feldstärke ableiten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Vorgegebene oder simulierte Bahnen werden qualitativ nach Krümmung, Ladungssinn und Parameteränderung verglichen. Eine Radiusgleichung, räumliche Vektorkomponenten oder eine eigene Simulation wird nicht verlangt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+        "locator": "goals[id=9854589c-5feb-4942-b90f-311ddf36eb78]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+        "locator": "goals[id=9854589c-5feb-4942-b90f-311ddf36eb78].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 186
+  },
+  {
+    "decisionId": "canonical-physics-0f6b798b-594e-5480-8c5f-95e2486a4d85",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+    "dependentTitle": "Magnetische Felder und Feldlinienbilder",
+    "dependentDescription": "Die lernende Person kann typische magnetische Felder von Permanentmagneten, geraden stromdurchflossenen Leitern und langen Spulen durch Feldlinienbilder darstellen und diese als Modellbilder deuten, in denen die Tangentenrichtung die Feldrichtung und die Liniendichte innerhalb einer Darstellung die relative Feldstärke codiert.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Feldlinien werden als qualitative Modellbilder gedeutet; Tangentenrichtung und relative Liniendichte sind physikalische Codierungen. Tangentengleichung, Differenzialrechnung oder eine metrische Liniendichteberechnung sind keine Vorleistungen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+        "locator": "goals[id=0f6b798b-594e-5480-8c5f-95e2486a4d85]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+        "locator": "goals[id=0f6b798b-594e-5480-8c5f-95e2486a4d85].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 187
+  },
+  {
+    "decisionId": "canonical-physics-106417ed-80db-5490-a1ee-bb4160d3f2b4",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+    "dependentTitle": "Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden",
+    "dependentDescription": "Die lernende Person kann für einen idealisierten langen geraden stromdurchflossenen Leiter in Luft und für das Innere einer idealisierten langen Spule mit homogenem linearem Kern das passende Magnetfeldmodell auswählen, den Betrag mit B = μ₀ · I/(2πr) beziehungsweise B ≈ μ₀ · μᵣ · (N/ℓ) · I bestimmen, die Richtung mit der Rechte-Hand-Regel angeben und die unterschiedlichen Gültigkeitsgrenzen begründen.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Beträge für langen Leiter und lange Spule werden aus vorgegebenen idealisierten Formeln bestimmt. Formeleinsetzen ist der notwendige mathematische Kern; das Rechte-Hand-Modell und die Gültigkeitsgrenzen werden hier fachlich gelernt, ein Kreisumfangbeweis oder Vektorprodukt ist unnötig.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+        "locator": "goals[id=106417ed-80db-5490-a1ee-bb4160d3f2b4]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+        "locator": "goals[id=106417ed-80db-5490-a1ee-bb4160d3f2b4].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 188
+  },
+  {
+    "decisionId": "canonical-physics-c6355a22-24cf-5d8b-88af-ea11711460fb",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+    "dependentTitle": "Kraft auf stromdurchflossene Leiter",
+    "dependentDescription": "Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.",
+    "prerequisiteGoalIds": [
+      "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die allgemeine Leiterkraftformel verlangt sin(α) für den Strom-Feld-Winkel und eine quantitative Auswertung. Sinuswerte am Einheitskreis und Termeinsetzung sind nötig. Das bloße senkrechte Kalibrierbeispiel kann den universellen Sinusanteil der vorangestellten allgemeinen Beschreibung nicht aufheben.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+        "locator": "goals[id=c6355a22-24cf-5d8b-88af-ea11711460fb]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+        "locator": "goals[id=c6355a22-24cf-5d8b-88af-ea11711460fb].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+        "locator": "goals[id=97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 189
+  },
+  {
+    "decisionId": "canonical-physics-8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+    "dependentTitle": "Lorentzkraft auf freie Ladungen",
+    "dependentDescription": "Die lernende Person kann den Betrag der magnetischen Lorentzkraft auf frei bewegte Ladungen mit $F_L=|q|vB\\sin(\\alpha)$ berechnen, ihre Richtung aus $\\vec v\\times\\vec B$ unter Beachtung des Ladungsvorzeichens bestimmen und unter Vernachlässigung anderer Kräfte für die Grenzfälle eines parallelen oder senkrechten Eintritts in ein homogenes Magnetfeld die geradlinige beziehungsweise kreisförmige Bahn qualitativ deuten.",
+    "prerequisiteGoalIds": [
+      "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
+      "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die Beschreibung fordert ausdrücklich sin(α) für den Betrag und die Richtung aus v×B unter Beachtung des Ladungsvorzeichens. Vektorprodukt geometrisch definieren, Sinuswerte und Formeleinsetzung entsprechen den geforderten mathematischen Leistungen. Das LK-Etikett des vorhandenen Mathematikatoms darf keine Mathematik-LK-Zielpromotion erzeugen; benötigte Sichtbarkeit ist gesondert als prerequisiteOnly zu prüfen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+        "locator": "goals[id=8c9394cb-f54a-508d-9750-4c49e31b3fa9]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+        "locator": "goals[id=8c9394cb-f54a-508d-9750-4c49e31b3fa9].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
+        "locator": "goals[id=54541d08-61cc-5a6d-b6d9-d0270a7d1949]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+        "locator": "goals[id=97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d]",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Geometrische Kreuzproduktrichtung genügt; Komponenten-Determinantenberechnung ist nicht gefordert."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 190
+  },
+  {
+    "decisionId": "canonical-physics-52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+    "dependentTitle": "Kernspintomografie (MRT)",
+    "dependentDescription": "Die lernende Person kann qualitativ erklären, wie ein statisches Magnetfeld eine Netto-Kernspinmagnetisierung ausrichtet, eine resonante Hochfrequenzanregung sie auslenkt und Magnetfeldgradienten die bei der Relaxation gemessenen Signale räumlich für ein MRT-Bild codieren.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "MRT wird ausdrücklich qualitativ über Magnetisierung, Resonanz und räumliche Signalcodierung erklärt. Die Magnetfeldgradienten sind ein technischer Begriff; mehrdimensionale Ableitungen, Fouriertransformation oder Rekonstruktionsalgebra sind nicht gefordert.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+        "locator": "goals[id=52bdabb2-d9a1-56e6-bccf-ff58f299c739]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+        "locator": "goals[id=52bdabb2-d9a1-56e6-bccf-ff58f299c739].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 191
+  },
+  {
+    "decisionId": "canonical-physics-d03f1cb6-c224-53db-ad91-76cc7827978d",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "d03f1cb6-c224-53db-ad91-76cc7827978d",
+    "dependentTitle": "Harmonische Schwingung verstehen",
+    "dependentDescription": "Die lernende Person kann eine harmonische Schwingung als sinusförmiges periodisches Modell beschreiben und anhand eines t-s-Diagramms experimentell untersuchen, inwieweit die Bewegung eines Federpendels im linearen Bereich oder eines Fadenpendels bei kleinen Winkelauslenkungen diesem Modell entspricht.",
+    "prerequisiteGoalIds": [
+      "46bdcc16-418f-417a-89cf-033d7ae6c8cc"
+    ],
+    "decision": "add",
+    "rationale": "Das ausdrücklich sinusförmige periodische Modell wird anhand eines t-s-Diagramms geprüft. Sinus-/Kosinusgraphen lesen und periodische Situationen passenden Funktionsbeschreibungen zuordnen ist die nötige mathematische Basis; die Pendelphysik und Modellgrenzen sind neu.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "d03f1cb6-c224-53db-ad91-76cc7827978d",
+        "locator": "goals[id=d03f1cb6-c224-53db-ad91-76cc7827978d]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "d03f1cb6-c224-53db-ad91-76cc7827978d",
+        "locator": "goals[id=d03f1cb6-c224-53db-ad91-76cc7827978d].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
+        "locator": "goals[id=46bdcc16-418f-417a-89cf-033d7ae6c8cc]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 192
+  },
+  {
+    "decisionId": "canonical-physics-fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+    "dependentTitle": "Charakteristische Schwingungsgrößen",
+    "dependentDescription": "Die lernende Person kann Auslenkung, Amplitude, Periodendauer und Frequenz einer harmonischen Schwingung definieren, den Zusammenhang $f = 1/T$ erläutern und eine Gleichung für die Auslenkung in Abhängigkeit von der Zeit mithilfe dieser Größen qualitativ deuten.",
+    "prerequisiteGoalIds": [
+      "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11"
+    ],
+    "decision": "add",
+    "rationale": "Die Auslenkungsgleichung wird als periodischer Sinus-/Kosinusterm qualitativ gedeutet. Das beschreibende Mathematikatom für Graphen und Terme periodischer Funktionen genügt; vollständige Parameterrekonstruktion, Kettenregel oder die Berechnung aller Phasenwerte wären überbreit.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+        "locator": "goals[id=fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+        "locator": "goals[id=fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "locator": "goals[id=5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 193
+  },
+  {
+    "decisionId": "canonical-physics-05af2893-0201-4d7f-985b-272d7b88e26e",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "05af2893-0201-4d7f-985b-272d7b88e26e",
+    "dependentTitle": "Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben",
+    "dependentDescription": "Die lernende Person kann die lineare Rückstellkraft als Voraussetzung harmonischer mechanischer Schwingungen beschreiben und das Hooke'sche Gesetz fachlich deuten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Lineare Rückstellkraft und Hookesches Gesetz werden physikalisch beschrieben und gedeutet. Eine Geradengleichung aus Messpunkten oder ein Quotientennachweis wird nicht verlangt, sondern wäre eine quantitative Ergänzung.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "05af2893-0201-4d7f-985b-272d7b88e26e",
+        "locator": "goals[id=05af2893-0201-4d7f-985b-272d7b88e26e]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "05af2893-0201-4d7f-985b-272d7b88e26e",
+        "locator": "goals[id=05af2893-0201-4d7f-985b-272d7b88e26e].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 194
+  },
+  {
+    "decisionId": "canonical-physics-78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+    "dependentTitle": "Energie und Energieerhaltung in Schwingungen",
+    "dependentDescription": "Die lernende Person kann bei reibungsfrei idealisierten Schwingungen den Energieaustausch zwischen potenzieller und kinetischer Energie qualitativ und in einfachen Fällen quantitativ beschreiben.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die Beschreibung verlangt neben der qualitativen Energieumlagerung ausdrücklich einfache quantitative Fälle. Das Einsetzen in Bewegungs-/Spannenergieausdrücke ist daher nötig. Eine vollständige zeitabhängige Sinusfunktion oder deren Ableitungen sind nicht in jedem einfachen Fall erforderlich.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+        "locator": "goals[id=78cf6eff-b3bc-5444-9ef8-5d39dae8d17d]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+        "locator": "goals[id=78cf6eff-b3bc-5444-9ef8-5d39dae8d17d].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Energiewerte an Umkehrpunkt oder Gleichgewicht statt vollständiger zeitabhängiger Energiefunktion."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 195
+  },
+  {
+    "decisionId": "canonical-physics-e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+    "dependentTitle": "Gedämpfte Schwingungen beschreiben",
+    "dependentDescription": "Die lernende Person kann gedämpfte mechanische Schwingungen qualitativ beschreiben, den Einfluss der Dämpfung auf die Amplitude erläutern und die Dämpfung als Erweiterung der reibungsfreien Idealisierung einordnen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Dämpfung und Amplitudenabnahme werden ausdrücklich qualitativ beschrieben. Exponentielle Hüllkurve, Logarithmusdekrement und DGL-Lösung sind nicht verlangt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+        "locator": "goals[id=e6895bc3-fcbd-59ad-baef-a78c97a13e11]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+        "locator": "goals[id=e6895bc3-fcbd-59ad-baef-a78c97a13e11].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 196
+  },
+  {
+    "decisionId": "canonical-physics-3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+    "dependentTitle": "Erzwungene Schwingungen und Resonanz",
+    "dependentDescription": "Die lernende Person kann erzwungene Schwingungen als Antwort auf eine periodische Anregung beschreiben, Resonanz über das Verhältnis von Anregungs- und Eigenfrequenz erklären und Resonanzkurven für unterschiedliche Dämpfungen qualitativ deuten.",
+    "prerequisiteGoalIds": [
+      "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+    ],
+    "decision": "add",
+    "rationale": "Die Beschreibung verlangt das qualitative Deuten von Resonanzkurven verschiedener Dämpfung. Auffälligkeiten, Vergleiche und Trends in einfachen Diagrammen beschreiben ist der gemeinsame mathematische Kern; eine Lorentzkurvenformel oder numerische Frequenzanpassung wird nicht verlangt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+        "locator": "goals[id=3efa0cda-f55b-5534-8fac-ffe1d312aed1]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+        "locator": "goals[id=3efa0cda-f55b-5534-8fac-ffe1d312aed1].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "locator": "goals[id=0c2ddfcd-1399-41ad-aaed-4f061812602a]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 197
+  },
+  {
+    "decisionId": "canonical-physics-e5c33afc-a233-50ff-a17f-63c085dfb89c",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+    "dependentTitle": "Wirbelströme und Waltenhofen-Pendel",
+    "dependentDescription": "Die lernende Person kann die Entstehung von Wirbelströmen in massiven Leitern mit Induktionsgesetz und Lenz’scher Regel erklären sowie ihre bremsende Wirkung am Waltenhofen-Pendel und ihre Verringerung durch Blechpakete in Transformatorenkernen begründen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Wirbelstromentstehung, Bremswirkung und Verringerung durch Blechpakete werden qualitativ erklärt. Eine numerische Flussableitung, Wärmeleistung oder Maxwellrechnung ist nicht gefordert.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+        "locator": "goals[id=e5c33afc-a233-50ff-a17f-63c085dfb89c]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+        "locator": "goals[id=e5c33afc-a233-50ff-a17f-63c085dfb89c].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 198
+  },
+  {
+    "decisionId": "canonical-physics-a522c8c0-f3a4-5568-acae-3010ed9feb87",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+    "dependentTitle": "Bewegungsinduktion und Ladungstrennung",
+    "dependentDescription": "Die lernende Person kann die Entstehung einer elektrischen Spannung an einem im Magnetfeld bewegten Leiterstück als Folge der Lorentzkraft auf die Leitungselektronen qualitativ erklären.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Ladungstrennung und Bewegungsinduktion werden ausdrücklich qualitativ über Lorentzkraft erklärt. Kreuzproduktrechnung oder U=Bℓv werden nicht numerisch verlangt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+        "locator": "goals[id=a522c8c0-f3a4-5568-acae-3010ed9feb87]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+        "locator": "goals[id=a522c8c0-f3a4-5568-acae-3010ed9feb87].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 199
+  },
+  {
+    "decisionId": "canonical-physics-1a037489-3c95-540b-8cae-0acd360358ee",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "1a037489-3c95-540b-8cae-0acd360358ee",
+    "dependentTitle": "Induktion durch Änderung des magnetischen Flusses",
+    "dependentDescription": "Die lernende Person kann für ein homogenes Magnetfeld den magnetischen Fluss Φ = B · A · cos(α) durch die von einer Leiterschleife aufgespannte Fläche beschreiben, wobei α der Winkel zwischen Feldrichtung und Flächennormale ist, und qualitativ erklären, dass eine zeitliche Änderung dieses Flusses eine Induktionsspannung hervorruft.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Die Flussformel mit cos(α) wird beschrieben und Flussänderung qualitativ als Induktionsursache erklärt. Eine eigene Kosinuswert- oder Projektionsrechnung wird nicht gefordert; die Bedeutung der wirksamen Flächennormale kann im Feldmodell eingeführt werden.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "1a037489-3c95-540b-8cae-0acd360358ee",
+        "locator": "goals[id=1a037489-3c95-540b-8cae-0acd360358ee]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "1a037489-3c95-540b-8cae-0acd360358ee",
+        "locator": "goals[id=1a037489-3c95-540b-8cae-0acd360358ee].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Qualitative Grenzfälle paralleler und senkrechter Flächennormale statt allgemeiner Winkelrechnung."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 200
+  },
+  {
+    "decisionId": "canonical-physics-eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+    "dependentTitle": "Induktionsgesetz und Lenz’sche Regel",
+    "dependentDescription": "Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.",
+    "prerequisiteGoalIds": [
+      "ae20183e-92b5-5521-b8e0-9a8662cf51f5"
+    ],
+    "decision": "add",
+    "rationale": "Die mittlere Induktionsspannung wird ausdrücklich aus ΔΦ/Δt berechnet. Mittlere Änderungsrate berechnen und deuten ist die nötige mathematische Grundlage; eine momentane Ableitung oder trigonometrische Flussfunktion wird nicht jedem endlichen Flussintervall vorgeschrieben.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+        "locator": "goals[id=eb1ea150-ec6c-5000-bce3-f46c820dccf8]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+        "locator": "goals[id=eb1ea150-ec6c-5000-bce3-f46c820dccf8].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+        "locator": "goals[id=ae20183e-92b5-5521-b8e0-9a8662cf51f5]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 201
+  },
+  {
+    "decisionId": "canonical-physics-ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+    "dependentTitle": "Elektromagnetischen Schwingkreis analysieren",
+    "dependentDescription": "Die lernende Person kann einen einfachen LC-Schwingkreis beschreiben, charakteristische Größen wie Periodendauer, Frequenz und Amplituden angeben und die periodische Energieumwandlung qualitativ erklären.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Der LC-Kreis wird beschrieben, charakteristische Größen werden angegeben und Energieumlagerung wird qualitativ erklärt. Die Beschreibung verlangt weder eine Eigenfrequenzberechnung noch eine Sinusgleichung oder deren Ableitung.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+        "locator": "goals[id=ac4ba260-6086-5fcc-bea2-c06f1425a1cc]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+        "locator": "goals[id=ac4ba260-6086-5fcc-bea2-c06f1425a1cc].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 202
+  },
+  {
+    "decisionId": "canonical-physics-a844895e-2cdc-4665-aad2-a49c62f11759",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "a844895e-2cdc-4665-aad2-a49c62f11759",
+    "dependentTitle": "Mechanische und elektromagnetische Schwingungen vergleichen",
+    "dependentDescription": "Die lernende Person kann mechanische und elektromagnetische Schwingungen anhand von Rückstellwirkung, charakteristischen Größen und periodischer Energieumwandlung vergleichen und zentrale Analogien fachlich benennen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Mechanische und elektromagnetische Schwingungen werden anhand von Größen, Rückstellwirkung und Energieumlagerung qualitativ verglichen. Eine mathematische Gleichungslösung oder Funktionsrekonstruktion ist nicht nötig.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a844895e-2cdc-4665-aad2-a49c62f11759",
+        "locator": "goals[id=a844895e-2cdc-4665-aad2-a49c62f11759]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a844895e-2cdc-4665-aad2-a49c62f11759",
+        "locator": "goals[id=a844895e-2cdc-4665-aad2-a49c62f11759].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 203
+  },
+  {
+    "decisionId": "canonical-physics-f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+    "dependentTitle": "Thomson’sche Schwingungsgleichung nutzen",
+    "dependentDescription": "Die lernende Person kann mithilfe der Thomson’schen Gleichung die Eigenfrequenz eines idealisierten LC-Schwingkreises berechnen und Größenabhängigkeiten qualitativ deuten.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Die Eigenfrequenz wird ausdrücklich aus der Thomson-Gleichung berechnet. Formeleinsetzung einschließlich der angegebenen Wurzel ist nötig; eine Wurzelgleichung lösen oder ein Integrationsverfahren ist nicht gefordert.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+        "locator": "goals[id=f36a5946-f2a8-59b8-b3bd-a2f246defa4f]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+        "locator": "goals[id=f36a5946-f2a8-59b8-b3bd-a2f246defa4f].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 204
+  },
+  {
+    "decisionId": "canonical-physics-a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+    "dependentTitle": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen",
+    "dependentDescription": "Die lernende Person kann die Differentialgleichung eines idealisierten elektromagnetischen Schwingkreises mit einem geeigneten Ansatz lösen und die Lösungen im Hinblick auf Periodendauer, Frequenz und Energieumlagerung deuten.",
+    "prerequisiteGoalIds": [
+      "58d2f963-4fb9-550d-a832-f5ac60808900"
+    ],
+    "decision": "review_required",
+    "rationale": "Das Ansatzlösen des idealen LC-Oszillators benötigt die wiederholte Ableitung einer zeitlich skalierten Schwingungsfunktion, wenn der gebundene Ansatz Sinus/Kosinus ist. Das vorhandene spezielle Kettenregelatom passt diesem üblichen reellen Weg. Da die Beschreibung einen geeigneten Ansatz offen lässt, muss die positive Evidenz unabhängig bestätigen, dass kein alternativer komplexer Ansatz als gleichberechtigte Route ausgeschlossen wird; das nur qualitative DGL-Atom zweiter Ordnung allein reicht nicht für das geforderte Lösen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "locator": "goals[id=a7255b83-336c-4d42-ba5c-bc2f6248ea36]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "locator": "goals[id=a7255b83-336c-4d42-ba5c-bc2f6248ea36].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+        "locator": "goals[id=58d2f963-4fb9-550d-a832-f5ac60808900]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Reeller Sinus-/Kosinusansatz oder äquivalenter komplexer Exponentialansatz; nicht beide als AND."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 205
+  },
+  {
+    "decisionId": "canonical-physics-37f28bc4-def2-57cf-a06b-191dfd228205",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+    "dependentTitle": "Selbstinduktion und Induktivität",
+    "dependentDescription": "Die lernende Person kann phänomenologisch erklären, wie eine Spule bei Ein- und Ausschaltvorgängen durch eine der Stromänderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivität als Maß für die Stärke dieses Zusammenhangs deuten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Selbstinduktion wird phänomenologisch bei Schaltvorgängen erklärt und Induktivität als Maß gedeutet. Es wird keine Stromfunktion abgeleitet und keine Induktionsspannung berechnet.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+        "locator": "goals[id=37f28bc4-def2-57cf-a06b-191dfd228205]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+        "locator": "goals[id=37f28bc4-def2-57cf-a06b-191dfd228205].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 206
+  },
+  {
+    "decisionId": "canonical-physics-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+    "dependentTitle": "Technische Anwendungen des Induktionsgesetzes qualitativ erklären",
+    "dependentDescription": "Die lernende Person kann für eine vorgegebene technische Anwendung – etwa Generator, Transformator, Induktionsladegerät oder Induktionskochplatte – qualitativ erklären, wodurch sich der magnetische Fluss ändert, welche Spannung und bei geschlossenem Stromkreis welche Ströme induziert werden und welchem technischen Zweck dies dient.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Eine technische Induktionsanwendung wird qualitativ über Flussänderung, Spannung/Strom und Zweck erklärt. Eine Transformator-Verhältnisrechnung oder sinusförmige Generatorableitung ist nur je nach Beispiel optional.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+        "locator": "goals[id=fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+        "locator": "goals[id=fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 207
+  },
+  {
+    "decisionId": "canonical-physics-ffbbf243-c2eb-4330-b050-837de994c130",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "ffbbf243-c2eb-4330-b050-837de994c130",
+    "dependentTitle": "Elektromagnetische Felder im Maxwell-Überblick beschreiben",
+    "dependentDescription": "Die lernende Person kann die vier Maxwell-Gleichungen qualitativ als Aussagen über elektrische Ladungen als Quellen elektrischer Felder, die Quellenfreiheit des Magnetfelds, Wirbel elektrischer Felder durch zeitlich veränderliche Magnetfelder sowie Wirbel magnetischer Felder durch Ströme und zeitlich veränderliche elektrische Felder einordnen und ihr Zusammenwirken beschreiben, ohne sie formal herzuleiten.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Der Maxwell-Überblick ist ausdrücklich qualitativ und ohne formale Herleitung. Divergenz, Rotation, Integralsätze und partielle Differentialgleichungen sind deshalb keine Mathematikvoraussetzungen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "ffbbf243-c2eb-4330-b050-837de994c130",
+        "locator": "goals[id=ffbbf243-c2eb-4330-b050-837de994c130]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "ffbbf243-c2eb-4330-b050-837de994c130",
+        "locator": "goals[id=ffbbf243-c2eb-4330-b050-837de994c130].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 208
+  },
+  {
+    "decisionId": "canonical-physics-cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+    "dependentTitle": "Harmonische Wellen über ihre Kenngrößen beschreiben",
+    "dependentDescription": "Die lernende Person kann bei einer fortschreitenden harmonischen Welle Frequenz und Wellenlänge als zeitliche beziehungsweise räumliche Periodizität deuten, die Phasengeschwindigkeit von der lokalen Schwingungsbewegung unterscheiden und den Zusammenhang $v = \\lambda \\cdot f$ begründen und nutzen.",
+    "prerequisiteGoalIds": [
+      "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+    ],
+    "decision": "add",
+    "rationale": "Zeitliche/räumliche Periodizität wird physikalisch erklärt und v=λf wird genutzt. Formeleinsetzen ist der gemeinsame quantitative Kern; ein Sinusterm, Grad-/Bogenmaßwechsel und eine Ableitung sind für diese Kenngrößenbeziehung nicht notwendig.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+        "locator": "goals[id=cb0ced6d-b7c1-5b7d-9922-8c394f6030e8]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+        "locator": "goals[id=cb0ced6d-b7c1-5b7d-9922-8c394f6030e8].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+        "supports": "prerequisite"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 209
+  },
+  {
+    "decisionId": "canonical-physics-bf559969-a05c-58b5-82c5-3d719d96555d",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "bf559969-a05c-58b5-82c5-3d719d96555d",
+    "dependentTitle": "Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären",
+    "dependentDescription": "Die lernende Person kann erklären, wie eine harmonische Anregung in einem gekoppelten, näherungsweise linearen Medium eine harmonische mechanische Welle erzeugt und wie sich dabei Störung und Energie ausbreiten, obwohl die Medienelemente nur lokal schwingen.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Harmonische Wellenentstehung, Kopplung sowie Störungs-/Energieausbreitung werden qualitativ erklärt. Ein räumlicher Sinusterm, Wellen-DGL oder Vektortransportrechnung ist nicht verlangt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "bf559969-a05c-58b5-82c5-3d719d96555d",
+        "locator": "goals[id=bf559969-a05c-58b5-82c5-3d719d96555d]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "bf559969-a05c-58b5-82c5-3d719d96555d",
+        "locator": "goals[id=bf559969-a05c-58b5-82c5-3d719d96555d].applicability",
+        "supports": "scope"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": []
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 210
+  }
+]

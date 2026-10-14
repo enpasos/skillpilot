@@ -1,0 +1,65 @@
+{
+  "archetype": "procedure",
+  "expectations": [
+    {
+      "id": "requested-place-and-value",
+      "essentialUnderstandingDe": "Eine Dezimalstelle bezeichnet Zehntel, Hundertstel und weitere jeweils zehnmal kleinere Einheiten. Nullen halten unbesetzte Stellen frei. Die Zielstelle setzt das Raster benachbarter Rundungswerte; der benachbarte rechte Stellenwert zerlegt einen solchen Schritt in zehn gleiche Teile.",
+      "essentialUnderstandingEn": "Decimal places denote tenths, hundredths and further units each ten times smaller. Zeros preserve unoccupied places. The target place sets the grid of neighboring rounded values; the adjacent place on the right divides a step into ten equal parts.",
+      "observablePerformanceDe": "Die lernende Person füllt eine höchstens beschriftete, sonst leere Tabelle für eine neue Zahl selbstständig, deutet Ziel- und Folgestelle und Nullen und erklärt den Zehn-zu-eins-Zusammenhang. Sie kann danach die Näherungsentscheidung ohne markierte Ziffern oder Antwortwerte begründen.",
+      "observablePerformanceEn": "For a fresh number, the learner independently fills an optionally labelled but otherwise blank table, interprets the target and following place and zeros, and explains the ten-to-one relationship. The learner then justifies the approximation without highlighted digits or answer values."
+    },
+    {
+      "id": "round-and-justify-under-given-rule",
+      "essentialUnderstandingDe": "Die übliche Schulrundung wählt den nächstgelegenen Wert des vorgegebenen Stellenrasters. Ein Rest unter einer halben Einheit führt nach unten, ein größerer Rest nach oben; genau die Hälfte folgt der ausdrücklich angegebenen positiven Regel nach oben. Überträge sind Bündelungen von zehn kleineren Einheiten.",
+      "essentialUnderstandingEn": "Conventional school rounding chooses the nearest value on the specified place grid. A remainder below half a unit rounds down and a larger remainder up; exactly half follows the explicitly stated positive ties-up rule. Carrying regroups ten smaller units.",
+      "observablePerformanceDe": "Die lernende Person entscheidet in neuen Fällen selbstständig für den unteren oder oberen Wert, begründet die Grenze über Stellenwerte und führt nötige Überträge aus. Auch spätere große Ziffern bei kleiner erster entfernter Ziffer und ein Nullergebnis werden erklärt; eine eigene Dezimalsubtraktion ist nicht nötig.",
+      "observablePerformanceEn": "In fresh cases, the learner independently chooses the lower or upper value, explains the boundary using place value, and carries when needed. Later large digits following a small first discarded digit and a zero result are explained; independent decimal subtraction is unnecessary."
+    },
+    {
+      "id": "distinguish-rounding-from-truncation",
+      "essentialUnderstandingDe": "Abschneiden entfernt die Ziffern hinter der Zielstelle; Runden kann den beibehaltenen Teil ändern. Für dieselbe nichtnegative Zahl und Zielstelle können beide Verfahren verschiedene Werte liefern. Der gerundete Wert gibt die entfernten Ziffern nicht wieder.",
+      "essentialUnderstandingEn": "Truncation removes the digits after the target place; rounding can change the retained part. For the same nonnegative number and target place, the procedures can produce different values. The rounded value does not preserve the removed digits.",
+      "observablePerformanceDe": "Die lernende Person berechnet in einem neuen Fall Rundungs- und Abschneidewert selbstständig und erklärt ihre Verschiedenheit; ein weiterer Abrundungsfall zeigt, warum gelegentliche Gleichheit die Verfahren nicht gleichsetzt.",
+      "observablePerformanceEn": "In a fresh case, the learner independently obtains the rounded and truncated values and explains their difference; a further downward case shows why occasional equality does not make the procedures identical."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "requested-place-and-value",
+      "round-and-justify-under-given-rule",
+      "distinguish-rounding-from-truncation"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "place-and-zero-layout",
+      "textDe": "Hundertstel, Tausendstel oder Zehntausendstel bei einer Zahl über eins oder bei einer kleinen Zahl mit inneren Nullen; die Stelle bleibt immer vorgegeben.",
+      "textEn": "Hundredths, thousandths, or ten-thousandths for a value above one or a small value with internal zeros; the target place is always given."
+    },
+    {
+      "id": "rounding-boundary-and-carry",
+      "textDe": "Ein Fall ohne Übertrag, ein exakter Halbfall und ein Übertrag über mehrere Neunen in den ganzzahligen Teil.",
+      "textEn": "A case without carrying, an exact tie, and a carry across several nines into the integer part."
+    },
+    {
+      "id": "direct-choice-and-procedure-comparison",
+      "textDe": "Selbstständiges Runden und Vergleich mit Abschneiden; eine höchstens beschriftete leere Tafel unterstützt die Darstellung, gibt aber keine Entscheidungsziffer, Nachbarwerte oder Antwort vor.",
+      "textEn": "Independent rounding and comparison with truncation; an optionally labelled blank table supports representation without supplying a deciding digit, neighboring values or the answer."
+    },
+    {
+      "id": "lower-neighbor-and-zero-output",
+      "textDe": "Ein größerer späterer Restziffernwert darf eine kleine erste entfernte Ziffer nicht überstimmen; ein positiver Eingang kann zu Null gerundet werden.",
+      "textEn": "A larger later digit must not override a small first discarded digit; a positive input can round to zero."
+    },
+    {
+      "id": "original-number-direct-rounding",
+      "textDe": "Direkt aus der ursprünglichen Zahl entscheiden; ein weiterer Fall unterscheidet dies von erst feinerem und dann gröberem Runden. Der Auftrag verrät diese Fallklasse nicht.",
+      "textEn": "Decide directly from the original number; a further case separates this from rounding first to a finer and then a coarser place. The prompt does not reveal this case class."
+    }
+  ],
+  "applicationCaseBriefs": []
+}

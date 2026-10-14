@@ -31,6 +31,7 @@ class LearnerStateMachineFrontierFallbackTest {
                 false,
                 LearningState.FRONTIER,
                 false,
+                List.of(),
                 List.of());
 
         assertThat(stateMachine).isNotNull();
@@ -51,7 +52,8 @@ class LearnerStateMachineFrontierFallbackTest {
                 false,
                 LearningState.FRONTIER,
                 false,
-                List.of(expansion));
+                List.of(expansion),
+                List.of());
 
         assertThat(stateMachine).isNotNull();
         assertThat(stateMachine.requiredAction()).isEqualTo("setScope");

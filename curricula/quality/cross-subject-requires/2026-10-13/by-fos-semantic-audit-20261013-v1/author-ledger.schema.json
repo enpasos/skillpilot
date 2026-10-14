@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:skillpilot:inert:by-fos-semantic-audit-author-ledger-v1",
+  "title": "Inert actual-content-bound BY FOS author ledger",
+  "type": "object",
+  "required": ["schemaVersion", "status", "familyId", "exactInventorySha256", "counts", "entries", "authorContributors", "capabilityRecipes", "activeFilesChanged"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "status": {"const": "inert_author_only_unreviewed"},
+    "familyId": {"const": "by-fachoberschule"},
+    "exactInventorySha256": {"$ref": "#/$defs/hash"},
+    "counts": {"type": "object", "required": ["stableGoalIds", "technicalLeaves", "actualSubjects", "authorSemanticRoles"], "properties": {"stableGoalIds": {"const": 539}, "technicalLeaves": {"const": 428}}},
+    "authorContributors": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "object", "required": ["agent", "role", "independenceClaim"], "properties": {"agent": {"type": "string"}, "role": {"const": "AUTHOR"}, "independenceClaim": {"const": false}}}},
+    "capabilityRecipes": {"type": "object", "required": ["authorApprovedRecipes", "reason"], "properties": {"authorApprovedRecipes": {"type": "array", "maxItems": 0}, "reason": {"type": "string", "minLength": 1}}},
+    "activeFilesChanged": {"type": "array", "maxItems": 0},
+    "entries": {"type": "array", "minItems": 539, "maxItems": 539, "items": {"$ref": "#/$defs/entry"}}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "entry": {
+      "type": "object",
+      "required": ["goalId", "sourcePath", "sourceIndex", "sourceFileSha256", "fullGoalSha256", "fullDescriptionSha256", "originalDescription", "originalDescriptionEn", "actualSubject", "semanticRoleAuthorCandidate", "individualContentReason", "fullReadWitness", "authorAgent", "authorRole", "authorInputPath", "authorInputSha256", "authorInputEntrySha256", "contextRecordSha256", "selectedOccurrenceSha256", "inventoryAuthoritativeOwner", "actualOwnerOccurrences", "currentDirectRequiresObserved", "currentEffectivePrerequisitesObserved", "fullOriginPathRecordSha256", "literalScopeContext", "authoredSourceState", "blockers", "decisionStatus", "nativeM7Status", "activeRegistryWritten", "requiresApprovalMade", "authoritativeOwnerChosen"],
+      "properties": {
+        "goalId": {"type": "string", "minLength": 1},
+        "sourcePath": {"enum": ["curricula/DE/BY/Fachoberschule/Mathematik.json", "curricula/DE/BY/Fachoberschule/Physik.json"]},
+        "sourceIndex": {"type": "integer", "minimum": 0, "maximum": 332},
+        "sourceFileSha256": {"$ref": "#/$defs/hash"},
+        "fullGoalSha256": {"$ref": "#/$defs/hash"},
+        "fullDescriptionSha256": {"$ref": "#/$defs/hash"},
+        "originalDescription": {"type": ["string", "null"]},
+        "originalDescriptionEn": {"type": ["string", "null"]},
+        "actualSubject": {"enum": ["Math", "Physics", "interdisciplinary", "structural", "unresolved"]},
+        "semanticRoleAuthorCandidate": {"enum": ["assessable_narrow_atomic_candidate", "broad_outcome_requires_split", "program", "cluster", "competency_axis", "orientation", "memory", "admin_content_fragment"]},
+        "individualContentReason": {"type": "string", "minLength": 20},
+        "authorAgent": {"type": "string", "minLength": 1},
+        "authorRole": {"const": "AUTHOR"},
+        "fullReadWitness": {"type": "object"},
+        "authorInputPath": {"type": "string"},
+        "authorInputSha256": {"$ref": "#/$defs/hash"},
+        "authorInputEntrySha256": {"$ref": "#/$defs/hash"},
+        "contextRecordSha256": {"$ref": "#/$defs/hash"},
+        "selectedOccurrenceSha256": {"$ref": "#/$defs/hash"},
+        "inventoryAuthoritativeOwner": {"type": ["string", "null"]},
+        "actualOwnerOccurrences": {"type": "array", "minItems": 1},
+        "currentDirectRequiresObserved": {"type": "array", "items": {"type": "string"}},
+        "currentEffectivePrerequisitesObserved": {"type": "array", "items": {"type": "string"}},
+        "fullOriginPathRecordSha256": {"$ref": "#/$defs/hash"},
+        "literalScopeContext": {"type": "array"},
+        "authoredSourceState": {"type": "object"},
+        "blockers": {"type": "array", "minItems": 1},
+        "decisionStatus": {"const": "inert_author_candidate_pending_independent_review"},
+        "nativeM7Status": {"const": "not-assessed-by-this-author-inventory"},
+        "activeRegistryWritten": {"const": false},
+        "requiresApprovalMade": {"const": false},
+        "authoritativeOwnerChosen": {"const": false}
+      }
+    }
+  },
+  "x-license": "Apache-2.0"
+}

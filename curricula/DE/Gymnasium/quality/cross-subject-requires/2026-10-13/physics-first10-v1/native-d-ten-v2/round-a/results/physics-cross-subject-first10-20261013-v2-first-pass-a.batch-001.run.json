@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-cross-subject-first10-20261013-v2-author-d-a-sol-ultra",
+  "campaignId": "physics-cross-subject-first10-20261013-v2-a",
+  "roundId": "physics-cross-subject-first10-20261013-v2-first-pass-a",
+  "batchId": "physics-cross-subject-first10-20261013-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:f466d91464e0f2d183a9bc056ac896b6be6ebcf4cc219b6237fcecd6effa7e9e",
+  "bundleFingerprint": "sha256:40527d7e04626356b004faaa16f0d8dfe41d0cc217acf7cf22f68aa11cf86ac5",
+  "bookDigest": "sha256:f2029a373c21e6a0cae46dd0c879952cf7667ca6b0e72cde325640cd76eef4e7",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "role": "candidate_author",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:6b51b7ae611b512ea3772cfadf9ff5568b540bd2bbeb5c170e3308bd301a4495",
+  "independenceGroupId": "physics-cross-subject-first10-20261013-v2-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a",
+    "3c8e5510-a12d-5770-8a01-e5fe741b259c",
+    "8a84de16-2fde-58ec-827a-f803e2ce8564",
+    "267170bd-f880-56a7-9719-ffb9751872c5",
+    "f827b00f-af7f-52de-84aa-2a2bbaa035bd",
+    "f92b5b8a-327f-50d2-8313-6a142399ebf0",
+    "c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0",
+    "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+    "f23fdfa9-38b6-5157-8301-ed302476c456"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f466d91464e0f2d183a9bc056ac896b6be6ebcf4cc219b6237fcecd6effa7e9e"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:94dbafb70e703a7c1bad9318518324167acce15b2e97f7b3c0fdecdf4c9602c2"
+    }
+  ],
+  "startedAt": "2026-10-13T08:13:24+00:00",
+  "completedAt": "2026-10-13T08:16:13.732767+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:d8bc3a4d291aef3d3dbf73ee62820e95dec9582cbf534c8787f35eb922a7a799",
+  "toolchainVersion": "codex-sol-ultra-physics-native-d-20261013-v1"
+}

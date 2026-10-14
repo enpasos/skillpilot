@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS isolated author candidate checks; independent code review and active integration pending",
+  "activeOriginalInputsUnchanged": 14,
+  "allCurrentProductionJavaInputsUnchanged": 444,
+  "candidateSuites": [
+    {
+      "xml": {
+        "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-candidate/test-results/test/TEST-com.skillpilot.backend.landscape.CurriculumDirectoryScanTest.xml",
+        "sha256": "sha256:3551a609bb0a997c870e37e68e2e8e40be95c84bc5c76fcbd6f0f7574257a43f",
+        "byteLength": 4666
+      },
+      "name": "com.skillpilot.backend.landscape.CurriculumDirectoryScanTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "acceptsQualityNamedRootNeighborDirectoriesAndJsonFilenameWithoutChangingOtherSourceScopes()",
+          "outcome": "passed"
+        },
+        {
+          "name": "preservesLandscapeScopeSortedDuplicateChoiceAndFileSymlinkReloads()",
+          "outcome": "passed"
+        },
+        {
+          "name": "excludesQualityLandscapesAtEveryRelativeDepthWithoutReloadingForReviewChanges()",
+          "outcome": "passed"
+        },
+        {
+          "name": "preservesMappingFilesSortedOrderFingerprintsAndSymlinkReloads()",
+          "outcome": "passed"
+        }
+      ]
+    },
+    {
+      "xml": {
+        "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-candidate/test-results/test/TEST-com.skillpilot.backend.landscape.PrunedFileTreeTest.xml",
+        "sha256": "sha256:22be2523abfab732d4e5bd4c65e47bd8bb3176c4af93eba20f1b4c9770122223",
+        "byteLength": 930
+      },
+      "name": "com.skillpilot.backend.landscape.PrunedFileTreeTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "skipsAnUnreadableExcludedDirectory()",
+          "outcome": "passed"
+        },
+        {
+          "name": "stillReportsAnUnreadableIncludedDirectory()",
+          "outcome": "passed"
+        },
+        {
+          "name": "preservesCheckedFailureForAnUnreadableScanRoot()",
+          "outcome": "passed"
+        },
+        {
+          "name": "prunesChildrenAndRetainsFileLinksWithoutFollowingDirectoryLinks()",
+          "outcome": "passed"
+        }
+      ]
+    }
+  ],
+  "originalCodeRegressionControl": [
+    {
+      "xml": {
+        "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-original-control/test-results/test/TEST-com.skillpilot.backend.landscape.CurriculumDirectoryScanTest.xml",
+        "sha256": "sha256:81e70214fc2d536de81d9032421c31986cb104d947888f181550fc3b33da2d08",
+        "byteLength": 6375
+      },
+      "name": "com.skillpilot.backend.landscape.CurriculumDirectoryScanTest",
+      "tests": 4,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "acceptsQualityNamedRootNeighborDirectoriesAndJsonFilenameWithoutChangingOtherSourceScopes()",
+          "outcome": "failed"
+        },
+        {
+          "name": "preservesLandscapeScopeSortedDuplicateChoiceAndFileSymlinkReloads()",
+          "outcome": "failed"
+        },
+        {
+          "name": "excludesQualityLandscapesAtEveryRelativeDepthWithoutReloadingForReviewChanges()",
+          "outcome": "failed"
+        },
+        {
+          "name": "preservesMappingFilesSortedOrderFingerprintsAndSymlinkReloads()",
+          "outcome": "passed"
+        }
+      ]
+    }
+  ],
+  "candidateClass": {
+    "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-candidate/classes/java/main/com/skillpilot/backend/landscape/LandscapeService.class",
+    "sha256": "sha256:88096ed88c7fd187676ed3a1665817d3e4c44c67fb41706c7e577de2823d4ea4",
+    "byteLength": 86721
+  },
+  "originalClass": {
+    "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-original-control/classes/java/main/com/skillpilot/backend/landscape/LandscapeService.class",
+    "sha256": "sha256:471bd2c0537f5437a99ed2a19924ab35d16933c108b6f05788619389d8faa11a",
+    "byteLength": 86592
+  },
+  "identicalRegressionTestClassesAcrossBothRuns": true,
+  "scope": "Only two inert candidate source files and exact patch; original active files/index/build outputs are not modified. Actual targeted test execution only, no production/host/identity migration or full-suite claim."
+}

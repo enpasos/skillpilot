@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 4,
+  "status": "PASS sealed v4 author validation only; all independent gates pending",
+  "validatedAt": "2026-10-13T12:14:26.710495+00:00",
+  "validator": "Codex GPT-6.1 Sol Ultra / requires_runtime_path / author, not independent reviewer",
+  "sealedManifestBinding": {
+    "path": "tmp/cross-subject-requires/decimal-rounding-v4-20261013/sealed-author-package.index.json",
+    "sha256": "sha256:3b659b6a9c39c410ac9d4388d9d069238ee526746010792fa855ac94f6ac8e08",
+    "byteLength": 50543
+  },
+  "executionCommand": "PATH=/home/enpasos/projects/skillpilot/tmp/ci-tools/node-v20.20.2-linux-x64/bin:$PATH app/node_modules/.bin/tsx tmp/cross-subject-requires/decimal-rounding-v4-20261013/validate-sealed-v4.ts",
+  "actualExitCode": 0,
+  "actualOutput": {
+    "status": "PASS sealed v4 author hash/schema/input/arithmetic/field-separation checks only; all independent gates pending",
+    "ownFilesBound": 57,
+    "retainedV2V3FilesUnchanged": 110,
+    "learnerStemsChecked": 12,
+    "rejectedStrategies": [
+      "always_up",
+      "always_down",
+      "truncate",
+      "double_round_one_finer",
+      "wrong_place_one_coarser"
+    ],
+    "currentInputsUnchanged": 212,
+    "nativeRecordsChecked": 2,
+    "sourceContextsChecked": 16,
+    "currentViewReportsBound": 157,
+    "meaningfulTamperBindingsChecked": [
+      "goal-title",
+      "profile-answer"
+    ],
+    "goalRemainsInert": true
+  },
+  "scientificIndependentApprovalClaimed": false,
+  "nativeM7ApprovalClaimed": false,
+  "activationApproved": false,
+  "activeInputsChanged": false
+}

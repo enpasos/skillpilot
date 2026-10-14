@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "status": "actual-local-CI-bootstrap-tools-no-simulated-validators",
+  "candidateIndexReceipt": "tmp/cross-subject-requires/ci-candidate-20261013.index-receipt.json",
+  "node": "20.20.2",
+  "java": "Amazon Corretto 25.0.2.10.1",
+  "poppler": "24.02",
+  "bubblewrap": "0.9.0",
+  "strace": "6.8",
+  "fontconfigFile": "tmp/cross-subject-requires/print-fonts.conf",
+  "wrapperScope": {
+    "git": "Actual /usr/bin/git; GIT_INDEX_FILE is retained only for the owning SkillPilot repository and removed for temporary standalone test repositories. Real user index is unchanged.",
+    "bwrap": "Actual downloaded bubblewrap with original namespaces/options. A literal strace executable is mapped read-only into its actual test namespace to satisfy fixed internal PATH. No smoke validator code is replaced."
+  },
+  "artifacts": [
+    {
+      "path": "tmp/ci-tools/test-tool-wrappers/git",
+      "sha256": "c560ae6743c631336999f1e26c2d9fe87f8b7add26a4bc10b0bc302b41992cf2"
+    },
+    {
+      "path": "tmp/ci-tools/test-tool-wrappers/bwrap",
+      "sha256": "ec0783309852d92ac3e0d3844c922df4c73f38bb0e948fb08cd800f8d9d58fb1"
+    },
+    {
+      "path": "tmp/cross-subject-requires/print-fonts.conf",
+      "sha256": "58724d5ba56068d4e48b7490b8b149ab6353d48d797673eaddd00ededdf65da4"
+    }
+  ]
+}

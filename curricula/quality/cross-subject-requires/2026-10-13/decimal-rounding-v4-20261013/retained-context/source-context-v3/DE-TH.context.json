@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 3,
+  "status": "author_actual_source_context_partial_mapping_and_placement_pending",
+  "jurisdiction": "DE-TH",
+  "retainedV2Context": {
+    "path": "tmp/cross-subject-requires/decimal-rounding-v2-20261013/source-context-v2/DE-TH.context.json",
+    "sha256": "sha256:563e6c51f0e658e2f6c77325546c7f721efa0ab3e103797231dbc19191249d0d",
+    "byteLength": 12342
+  },
+  "sourcePdfBinding": {
+    "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+    "sha256": "sha256:992041c34dfd618bdb2b7621ee59fb577f036121e5ea2a55e2086c99e0a4817a",
+    "byteLength": 782579
+  },
+  "sourceExtractionBinding": {
+    "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+    "sha256": "sha256:2af008fed868913b1d89fbffc82707a875155959240f876d46a182e42655d689",
+    "byteLength": 527991
+  },
+  "sourceRowId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-5-zahl-und-operation-015-d9e2aae50b",
+  "exactSourceRowSha256": "sha256:b73fad22ae32b2053021bb66500a7745ef9ee3bb4eebf181bf6fa80fd907f571",
+  "exactSourcePassageSha256": "sha256:98de4f4f75710aa6a51e449d52682cc802c24fc3dd4c45d0ebfb3866803d68fc",
+  "retainedExtractionReportedLocator": {
+    "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 13",
+    "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Klassenstufe 6: Gebrochene Zahlen, Zeile 579",
+    "sourcePage": 13
+  },
+  "sourceReference": {
+    "jurisdiction": "DE-TH",
+    "extractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+    "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-5-zahl-und-operation-015-d9e2aae50b",
+    "passageId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-5-zahl-und-operation",
+    "passageTitle": "Klassenstufe 6: Gebrochene Zahlen",
+    "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, printed S.13 (PDF page13)",
+    "sourceSpan": "Actual bound PDF page13, printed page13; Printed13, Klassenstufe6; decimal-rounding portion only.",
+    "sourcePage": 13,
+    "sourceLine": 579,
+    "sourceDocument": {
+      "key": "TH_GYM_MATHEMATIK_LEHRPLAN_2025",
+      "title": "Lehrplan Mathematik Gymnasium, Thueringen 2025",
+      "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+      "textPath": "tmp/th_text/th_math_2025.layout.txt",
+      "role": "binding-for-grade-5-6-and-11-12-from-2025-26",
+      "official": true,
+      "url": "https://www.schulportal-thueringen.de/tip/resources/medien/65648?dateiname=LP_GY_Mathematik_Entwurfsfassung2025.pdf"
+    },
+    "sourceGradeOrPhase": "6",
+    "evidenceDecision": "author_candidate_pending_independent_source_mapping",
+    "scopeRationale": "Direct decimal/rational rounding item or rounding within the explicitly named decimal/fraction content unit; no natural-number-only row used.",
+    "signedDomainCaution": "Early source may name positive decimals; signed transfer needs independent didactic/source-role review, not an exact-source claim."
+  },
+  "actualPageReads": [
+    {
+      "physicalPdfPageOneBased": 13,
+      "actualLayoutTextSha256": "sha256:2a5655d48dbe51d5a7a43d8b9c97c331d384b6d0ad93a94c736edac3a2e2c567",
+      "fullRelevantPageReadByAuthor": true
+    }
+  ],
+  "correctedAuthorLocator": {
+    "printedPage": 13,
+    "physicalPdfPageOneBased": 13
+  },
+  "authorPartialCoreInterpretation": "Actual class6 broken-number unit requires rounding decimals to given places. Broader fraction/periodic operations surround it.",
+  "scopeAndPlacementCaution": "Actual class6 broken-number unit requires rounding decimals to given places. Broader fraction/periodic operations surround it.",
+  "neededNativeMappingRepairsOrCautions": "Preserve binding-for-grade5-6-and11-12-from2025-26 role and class6. FilenameEntwurfsfassung alone is not an exclusion. Partial domain, no broad role promotion.",
+  "sourceRoleUnchanged": "binding-for-grade-5-6-and-11-12-from-2025-26",
+  "sourceEdgeQuoteClaimed": false,
+  "all16ExactPlacementApproved": false,
+  "signedPeriodicOrWholeSourceCoverageClaimed": false,
+  "method": "This author read all full relevant actual PDF pages via retained portable pdftotext-layout and inspected full retained extracted rows/passages; hashes bind local source bytes. Context is author preparation, not independent source review or legal approval.",
+  "retainedExtractionReportedGradeOrPhase": "5/6",
+  "authorActualGradeBoundary": "Exact actual source row/section grade when explicit; BB/BE D does not supply a universal Gymnasium year."
+}

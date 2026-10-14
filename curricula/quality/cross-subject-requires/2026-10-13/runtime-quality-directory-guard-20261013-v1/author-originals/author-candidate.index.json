@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "status": "sealed_isolated_author_candidate_NOT_APPLIED_pending_independent_code_review_and_root_CI_completion",
+  "author": "Codex GPT-6.1 Sol Ultra / requires_runtime_path",
+  "recordedAt": "2026-10-13T13:46:29.833113+00:00",
+  "entryPoints": {
+    "originalInputs": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/original-inputs.sha256.json",
+      "sha256": "sha256:951afce883c31e8d527e6d78e6433c5a70f40e15b3f68a8e2d7665402a4549f1",
+      "byteLength": 2807
+    },
+    "fullProductionSourceBaseline": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/isolated-source-baseline.sha256.json",
+      "sha256": "sha256:2ad4495effc933b572a46fd47a241585aa36f196b4bdba0d5cda73093d6cc4cb",
+      "byteLength": 105112
+    },
+    "candidateInputs": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/candidate-inputs.sha256.json",
+      "sha256": "sha256:f1515770f170b41f4deb34c084dabd6d83e44b06619634abb3762384949c98a3",
+      "byteLength": 1231
+    },
+    "exactPatch": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/quality-directory-guard.patch",
+      "sha256": "sha256:9ef8c4d67cf4e310a4296bc829af3fad9a2907003931b68430ea94cf5fba7e50",
+      "byteLength": 10547
+    },
+    "candidateLandscapeService": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/candidate/backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "sha256": "sha256:445920b6fa2216c11a4e61dd5d8585ffb926b657c6a294afc38a2ab7dc5b0186",
+      "byteLength": 101675
+    },
+    "candidateCurriculumScanTests": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/candidate/backend/src/test/java/com/skillpilot/backend/landscape/CurriculumDirectoryScanTest.java",
+      "sha256": "sha256:b4dbad57c416b7533d372a1026e7dbfcb483fbce7992939dc549a63a2a50836e",
+      "byteLength": 14663
+    },
+    "candidateExecutionLog": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/candidate-tests.log",
+      "sha256": "sha256:120786f866ce39180306bbf7814ad76cb64769b0c97f498ae4b92893de133107",
+      "byteLength": 3818
+    },
+    "originalCodeControlLog": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/original-control-tests.log",
+      "sha256": "sha256:69d81e263d09b8fd7957fdc9c2b4ba947ee082babcb5c89eb4ac306334ad4c3a",
+      "byteLength": 5120
+    },
+    "actualAuthorValidation": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/author-validation.json",
+      "sha256": "sha256:49ff3fcbec1cc9a63c4a80fc97c1feccd02d3394d3e20e8eb82911741e346ce5",
+      "byteLength": 4444
+    },
+    "readOnlyIsolationVerifier": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/verify-isolation.py",
+      "sha256": "sha256:8a4d6fdfb286e8bb49b9094c761bf9d80825e7d307cddc44cd108ed37eff65a1",
+      "byteLength": 4401
+    },
+    "preparationScript": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/prepare-candidate.py",
+      "sha256": "sha256:71c041bcf6f5e095e1af37f3c143d1578be92dfbfe5e44b257bbedea2c749087",
+      "byteLength": 11467
+    },
+    "sourceSetIsolation": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/isolated.init.gradle",
+      "sha256": "sha256:29f41c2a4e0b7f16e97bfb8bfe009815ab3287c40059aa713a37bdd245419b6b",
+      "byteLength": 1839
+    },
+    "exactRunner": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/run-isolated-tests.sh",
+      "sha256": "sha256:8e0ffec5ef7546809e657efc8e09b2d677d76ac7f8cf723e593a1f8d2c1b5ae9",
+      "byteLength": 1113
+    },
+    "integrationInstructions": {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/INTEGRATION.md",
+      "sha256": "sha256:9bc03a417d2553822d22db1da5389bd7eb7d54d3a6f3487192ac18c9ea0f3cbc",
+      "byteLength": 3339
+    }
+  },
+  "originalTargetBindings": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "sha256": "sha256:1159e6a414dde455bed6fb9ee85b7baff435c200252dcfc7ec3df0caae1d29ac",
+      "byteLength": 101466
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/landscape/CurriculumDirectoryScanTest.java",
+      "sha256": "sha256:600c28191715a132eeb977b6c47df1d551ab378225eff02ebc20615df04bd466",
+      "byteLength": 8969
+    }
+  ],
+  "candidateBindings": [
+    {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/candidate/backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "sha256": "sha256:445920b6fa2216c11a4e61dd5d8585ffb926b657c6a294afc38a2ab7dc5b0186",
+      "byteLength": 101675
+    },
+    {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/candidate/backend/src/test/java/com/skillpilot/backend/landscape/CurriculumDirectoryScanTest.java",
+      "sha256": "sha256:b4dbad57c416b7533d372a1026e7dbfcb483fbce7992939dc549a63a2a50836e",
+      "byteLength": 14663
+    },
+    {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/quality-directory-guard.patch",
+      "sha256": "sha256:9ef8c4d67cf4e310a4296bc829af3fad9a2907003931b68430ea94cf5fba7e50",
+      "byteLength": 10547
+    }
+  ],
+  "actualTestResultBindings": [
+    {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-candidate/test-results/test/TEST-com.skillpilot.backend.landscape.CurriculumDirectoryScanTest.xml",
+      "sha256": "sha256:3551a609bb0a997c870e37e68e2e8e40be95c84bc5c76fcbd6f0f7574257a43f",
+      "byteLength": 4666
+    },
+    {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-candidate/test-results/test/TEST-com.skillpilot.backend.landscape.PrunedFileTreeTest.xml",
+      "sha256": "sha256:22be2523abfab732d4e5bd4c65e47bd8bb3176c4af93eba20f1b4c9770122223",
+      "byteLength": 930
+    },
+    {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-original-control/test-results/test/TEST-com.skillpilot.backend.landscape.CurriculumDirectoryScanTest.xml",
+      "sha256": "sha256:81e70214fc2d536de81d9032421c31986cb104d947888f181550fc3b33da2d08",
+      "byteLength": 6375
+    }
+  ],
+  "actualCompiledClassBindings": [
+    {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-candidate/classes/java/main/com/skillpilot/backend/landscape/LandscapeService.class",
+      "sha256": "sha256:88096ed88c7fd187676ed3a1665817d3e4c44c67fb41706c7e577de2823d4ea4",
+      "byteLength": 86721
+    },
+    {
+      "path": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-original-control/classes/java/main/com/skillpilot/backend/landscape/LandscapeService.class",
+      "sha256": "sha256:471bd2c0537f5437a99ed2a19924ab35d16933c108b6f05788619389d8faa11a",
+      "byteLength": 86592
+    }
+  ],
+  "actualTestExecution": {
+    "candidateExitCode": 0,
+    "candidateTests": 8,
+    "candidateFailures": 0,
+    "candidateSkipped": 0,
+    "originalCodeControlExitCode": 1,
+    "identicalNewScanTestClass": true,
+    "originalControlTests": 4,
+    "originalControlFailures": 3,
+    "originalControlPassed": 1,
+    "candidateCommand": "bash tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/run-isolated-tests.sh candidate",
+    "originalControlCommand": "bash tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/run-isolated-tests.sh original-control"
+  },
+  "toolchain": {
+    "java": "Corretto25.0.2.10.1 / java25.0.2",
+    "javaExecutable": {
+      "path": "tmp/ci-tools/amazon-corretto-25.0.2.10.1/bin/java",
+      "sha256": "sha256:492ad1e62bb8106f2bb8a2409ae8a01d82d1dfbe7377d1f0e92a90c2c05bab99",
+      "byteLength": 16280
+    },
+    "node": "20.20.2",
+    "nodeExecutable": {
+      "path": "tmp/ci-tools/node-v20.20.2-linux-x64/bin/node",
+      "sha256": "sha256:6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+      "byteLength": 98932688
+    },
+    "gradle": "9.7.1"
+  },
+  "scope": "Three ordinary LandscapeService sites now share exact lowercase quality DIRECTORY-component exclusion relative to configured root. No input/archive exclusion, identity/source union, new UUID/owner selection, package policy, resource or registry change.",
+  "regressionCoverage": [
+    "global/other/Gymnasium/FOS-nested quality real landscape payloads excluded from catalog and goal index",
+    "excluded later source/metadata modifications leave timestamp/fingerprint/cache object identity unchanged",
+    "allowed update below ignored timestamps still reloads",
+    "configured root and ancestor namedquality, quality-neighbor, Quality andquality.json accepted",
+    "input/archive acceptance unchanged",
+    "existing sorted duplicate selection and file-symlink reload preserved",
+    "directory-link and unreadable-tree semantics preserved"
+  ],
+  "unchangedOriginalInputs": 14,
+  "unchangedProductionJavaSources": 444,
+  "buildIsolation": {
+    "candidateBuild": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-candidate",
+    "controlBuild": "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/build-original-control",
+    "projectCaches": [
+      "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/gradle-project-cache-candidate",
+      "tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/gradle-project-cache-original-control"
+    ],
+    "activeRootCICacheOrBuildTouched": false,
+    "publicationGenerationSkipped": true,
+    "activeResourcesSkipped": true
+  },
+  "patchCheck": {
+    "command": "git apply --check --directory=tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/original tmp/cross-subject-requires/runtime-quality-directory-guard-20261013/quality-directory-guard.patch",
+    "actualExitCode": 0,
+    "activeIndexMutation": false
+  },
+  "activeCodeTestSourceQaRuntimeProviderAssetsSettingsChanged": false,
+  "applied": false,
+  "independentApprovalClaimed": false,
+  "productionHostOrFullSuiteAcceptanceClaimed": false,
+  "publishedOrDeployed": false,
+  "limits": [
+    "Focused fixture tests only; no claim of BY/FOS identity-conflict resolution or unchanged real learner state tested end to end.",
+    "Existing explicit archive/source registry semantics are preserved; guard scopes ordinary discovery and reload scanning.",
+    "The later independent review must review these exact candidate bytes. Root applies only after its in-progress CI20862 has ended."
+  ],
+  "licensing": "Apache-2.0 technical code, tests, hash and workflow evidence"
+}

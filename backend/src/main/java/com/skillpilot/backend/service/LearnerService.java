@@ -87,6 +87,7 @@ import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PlannedGoalsMutationResponse;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
+import com.skillpilot.backend.api.PrerequisiteBlocker;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
 import com.skillpilot.backend.api.VerifiedRecallBatchAnswerCard;
@@ -5821,6 +5822,7 @@ public class LearnerService {
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
         Map<String, Double> effectivePrereqMastery =
                 computeEffectivePrereqMastery(prerequisiteLookupGoals, masteryMap);
+        boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
 
         List<String> projectedFocusIds = resolveEffectiveProjectedFocusIds(
                 learner,
@@ -5828,7 +5830,6 @@ public class LearnerService {
         List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
         Set<String> scope = Collections.emptySet();
         if (!plannedIds.isEmpty()) {
-            boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
             Map<String, List<String>> scopeRequires = strictMode
                     ? computeEffectiveRequires(projection.structuralGoals())
                     : computeEffectiveRequires(allGoals);
@@ -5879,30 +5880,8 @@ public class LearnerService {
             List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
-                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
-                    if (resolvedReqId == null) {
-                        // Preserve the existing optimistic behavior for prerequisites that are
-                        // unknown in the applicable lookup. A matched composition view expands
-                        // that lookup to its structural graph, where prerequisite-only goals are
-                        // known and therefore evaluated.
-                        continue;
-                    }
-                    if (projection.compositionViewApplied()
-                            && !projection.targetGoalIds().contains(resolvedReqId)
-                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
-                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {
-                            prerequisitesMet = false;
-                            break;
-                        }
-                        // A matched composition view distinguishes selectable targets from
-                        // intentional prerequisite-only support goals. Do not reintroduce
-                        // unrelated requirements inherited from legacy clusters through the
-                        // structural compatibility graph. Direct canonical requirements fail
-                        // closed when the authored view omits them.
-                        continue;
-                    }
-                    Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
-                    if (reqMastery < 0.9) {
+                    if (!checkPrerequisite(goal, reqId, projection, prerequisiteLookupGoals,
+                            effectivePrereqMastery, strictMode, null).met()) {
                         prerequisitesMet = false;
                         break;
                     }
@@ -6069,47 +6048,10 @@ public class LearnerService {
                 for (String reqId : requires) {
                     Map<String, LearningGoal> prerequisiteLookupGoals =
                             useStructuralPrerequisiteLookup ? allStructuralGoals : allFilteredGoals;
-                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
-                    if (resolvedReqId == null) {
-                        if (strictMode) {
-                            // In strict mode, unknown prerequisite means blocked
-                            prerequisitesMet = false;
-                            break;
-                        }
-                        // Optimistic mode only ignores truly unknown prerequisites. A known
-                        // prerequisite remains effective even when it is prerequisite-only.
-                        continue;
-                    }
-                    if (projection.compositionViewApplied()
-                            && !projection.targetGoalIds().contains(resolvedReqId)
-                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
-                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {
-                            prerequisitesMet = false;
-                            break;
-                        }
-                        // Only explicitly reached prerequisite-only goals participate in a
-                        // composition projection. Broad inherited requirements from legacy
-                        // cluster structure must not become hidden blockers. Direct canonical
-                        // requirements fail closed when the authored view omits them.
-                        continue;
-                    }
-
-                    if (!strictMode
-                            && !plannedIds.isEmpty()
-                            && !scope.contains(resolvedReqId)) {
-                        if (!projection.compositionViewApplied()
-                                || !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
-                            // Preserve optimistic scope behavior. The only out-of-scope goals
-                            // that a composition view deliberately keeps active are its
-                            // prerequisite-only support goals.
-                            continue;
-                        }
-                    }
-
-                    Double reqMastery = useStructuralPrerequisiteLookup
-                            ? globalEffectivePrereqMastery.getOrDefault(resolvedReqId, 0.0)
-                            : effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
-                    if (reqMastery < 0.9) {
+                    Map<String, Double> prerequisiteMastery = useStructuralPrerequisiteLookup
+                            ? globalEffectivePrereqMastery : effectivePrereqMastery;
+                    if (!checkPrerequisite(goal, reqId, projection, prerequisiteLookupGoals,
+                            prerequisiteMastery, strictMode, plannedIds.isEmpty() ? null : scope).met()) {
                         prerequisitesMet = false;
                         break;
                     }
@@ -7379,8 +7321,12 @@ public class LearnerService {
                     mastery);
         }
 
+        List<PrerequisiteBlocker> prerequisiteBlockers = !personalizationRequired && activeGoal == null
+                && frontierAtomic.isEmpty() && !scopeCompleted && !plannedScopeIds.isEmpty()
+                ? collectPrerequisiteBlockers(learner, goalProjection, plannedIds, mastery)
+                : List.of();
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontierAtomic, activeGoal,
-                activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions);
+                activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions, prerequisiteBlockers);
 
         /*
          * An unresolved entry-scope decision (for example G8 versus G9) is a
@@ -7906,6 +7852,121 @@ public class LearnerService {
         return null;
     }
 
+    private record PrerequisiteCheck(boolean met, PrerequisiteBlocker blocker) { }
+
+    /**
+     * Checks only the effective direct/contains-inherited requirement. Mastery
+     * of a dependent goal never asserts mastery of its prerequisites; nor does
+     * this check invent a transitive requirement for its successors.
+     */
+    private PrerequisiteCheck checkPrerequisite(
+            LearningGoal goal,
+            String requirement,
+            GoalProjection projection,
+            Map<String, LearningGoal> lookup,
+            Map<String, Double> prerequisiteMastery,
+            boolean strictMode,
+            Set<String> optimisticScope) {
+        String prerequisiteId = resolveGoalRef(requirement, lookup);
+        boolean direct = goal.getRequires() != null && goal.getRequires().contains(requirement);
+        boolean authoredView = !projection.compositionViewIds().isEmpty();
+        if (prerequisiteId == null) {
+            // A compatibility fallback may carry compositionViewApplied=true
+            // without a matched authored view. Preserve its optimistic policy.
+            if (!strictMode && !(authoredView && direct)) {
+                return new PrerequisiteCheck(true, null);
+            }
+            // Definitions outside the authored projection may explain the
+            // fault; they cannot silently become authorized support goals.
+            LearningGoal definition = authoredView && direct
+                    ? resolveCompositionStructuralGoal(requirement, lookup) : null;
+            return new PrerequisiteCheck(false, prerequisiteBlocker(goal, definition,
+                    definition == null ? "UNKNOWN_PREREQUISITE" : "PREREQUISITE_NOT_PROJECTED", null));
+        }
+        if (projection.compositionViewApplied()
+                && !projection.targetGoalIds().contains(prerequisiteId)
+                && !projection.prerequisiteOnlyGoalIds().contains(prerequisiteId)) {
+            return direct || isDirectRequirement(goal, prerequisiteId, lookup)
+                    ? new PrerequisiteCheck(false, prerequisiteBlocker(goal, lookup.get(prerequisiteId),
+                            "PREREQUISITE_NOT_PROJECTED", null))
+                    : new PrerequisiteCheck(true, null);
+        }
+        boolean supportOnly = projection.compositionViewApplied()
+                && projection.prerequisiteOnlyGoalIds().contains(prerequisiteId)
+                && !projection.targetGoalIds().contains(prerequisiteId);
+        boolean outsideFocus = optimisticScope != null && !optimisticScope.contains(prerequisiteId);
+        // An explicitly projected prerequisite remains authoritative when
+        // inherited from a cluster, even outside the current learner focus.
+        if (!strictMode && outsideFocus && !supportOnly && !authoredView) {
+            return new PrerequisiteCheck(true, null);
+        }
+        if (prerequisiteMastery.getOrDefault(prerequisiteId, 0.0) >= 0.9) {
+            return new PrerequisiteCheck(true, null);
+        }
+        return new PrerequisiteCheck(false, supportOnly
+                ? prerequisiteBlocker(goal, lookup.get(prerequisiteId),
+                        "EXTERNAL_PREREQUISITE_UNMASTERED", "OPEN_PERSONAL_CURRICULUM")
+                : outsideFocus && projection.targetGoalIds().contains(prerequisiteId)
+                        ? prerequisiteBlocker(goal, lookup.get(prerequisiteId),
+                                "PREREQUISITE_OUTSIDE_FOCUS", "REVIEW_FOCUS")
+                        : null);
+    }
+
+    private PrerequisiteBlocker prerequisiteBlocker(
+            LearningGoal goal, LearningGoal prerequisite, String reason, String remediation) {
+        return new PrerequisiteBlocker(goal.getId(), boundedBlockerTitle(goal.getTitle()),
+                boundedBlockerTitle(goal.getTitleEn()), prerequisite == null ? null : prerequisite.getId(),
+                prerequisite == null ? null : boundedBlockerTitle(prerequisite.getTitle()),
+                prerequisite == null ? null : boundedBlockerTitle(prerequisite.getTitleEn()), reason, remediation);
+    }
+
+    private String boundedBlockerTitle(String title) {
+        return title == null ? null : title.substring(0, Math.min(title.length(), 240));
+    }
+
+    /** Publishes at most twenty deterministic facts about a stalled focus. */
+    private List<PrerequisiteBlocker> collectPrerequisiteBlockers(
+            Learner learner, GoalProjection projection, List<String> focusIds, Map<String, Double> mastery) {
+        if (projection == null || focusIds.isEmpty()) {
+            return List.of();
+        }
+        boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
+        Map<String, LearningGoal> visible = projection.visibleGoals();
+        Map<String, LearningGoal> lookup = strictMode || projection.compositionViewApplied()
+                ? projection.structuralGoals() : visible;
+        Map<String, List<String>> requirements = computeEffectiveRequires(lookup);
+        Map<String, Double> effectiveMastery = computeEffectiveMastery(visible, mastery);
+        Map<String, Double> prerequisiteMastery = computeEffectivePrereqMastery(lookup, mastery);
+        List<String> scopeIds = resolveProjectedTargetScopeIds(focusIds, projection);
+        Set<String> scope = computeScope(scopeIds, projection.structuralGoals(),
+                strictMode ? requirements : computeEffectiveRequires(visible));
+        GlobalAssessmentFocus assessmentFocus = resolveGlobalAssessmentFocus(projection.structuralGoals(), focusIds);
+        LinkedHashSet<PrerequisiteBlocker> blockers = new LinkedHashSet<>();
+        for (LearningGoal goal : visible.values().stream().sorted(Comparator.comparing(LearningGoal::getId)).toList()) {
+            if (!projection.targetGoalIds().contains(goal.getId())
+                    || !isAtomicGoal(goal) || !scope.contains(goal.getId())
+                    || effectiveMastery.getOrDefault(goal.getId(), 0.0) >= 0.9
+                    || isExamGoalUnavailableForHardCheck(goal)
+                    || isNonGlobalExamWithoutDirectPrerequisite(goal, assessmentFocus.allGoalIds().contains(goal.getId()))
+                    || (assessmentFocus.allGoalIds().contains(goal.getId())
+                            && !assessmentFocus.explicitlyFocusedGoalIds().contains(goal.getId()))) {
+                continue;
+            }
+            for (String requirement : requirements.getOrDefault(goal.getId(), List.of()).stream()
+                    .distinct().sorted().toList()) {
+                PrerequisiteBlocker blocker = checkPrerequisite(goal, requirement, projection, lookup,
+                        prerequisiteMastery, strictMode, scope).blocker();
+                if (blocker != null) {
+                    blockers.add(blocker);
+                    if (blockers.size() == 20) {
+                        return List.copyOf(blockers);
+                    }
+                }
+            }
+        }
+        return List.copyOf(blockers);
+    }
+
     private List<FrontierGoal> filterAtomicFrontier(List<FrontierGoal> frontier) {
         return frontier.stream()
                 .filter(goal -> "atomic".equals(goal.type()))
@@ -7914,7 +7975,8 @@ public class LearnerService {
 
     private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontierAtomic,
             FrontierGoal activeGoal, boolean activeGoalMastered,
-            LearningState learningState, boolean personalizationRequired, List<FrontierGoal> scopeExpansionOptions) {
+            LearningState learningState, boolean personalizationRequired, List<FrontierGoal> scopeExpansionOptions,
+            List<PrerequisiteBlocker> prerequisiteBlockers) {
         String state = curriculumId == null
                 ? "SETUP"
                 : personalizationRequired ? "PERSONALIZATION" : learningState.name();
@@ -7947,7 +8009,8 @@ public class LearnerService {
         List<LearningModeOption> modeOptions = activeGoal != null && !activeGoalMastered && isMemoryFrontierGoal(activeGoal)
                 ? buildMemoryModeOptions(activeGoal)
                 : Collections.emptyList();
-        return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal, modeOptions);
+        return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal, modeOptions,
+                prerequisiteBlockers);
     }
 
     private List<LearningModeOption> buildMemoryModeOptions(FrontierGoal activeGoal) {

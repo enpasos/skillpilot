@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "status": "inert_v4_author_profile_only_no_native_receipt",
+  "author": "/root/physics_pending5_revision",
+  "sourceContextPath": "tmp/cross-subject-requires/physics-clausius-revision-author-20261013-v4.context.exact.json",
+  "sourceContextFileSha256": "sha256:9ada31821aa4128fdaa14bdf151d8f6f1e9dd2801f475f85955354cd7138def3",
+  "amendments": [
+    {
+      "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
+      "currentNativeReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p005.review.jsonl",
+      "currentNativeReviewFileSha256": "sha256:c8bdd1195736fe0eef9ff4dba71d97b5525810bd1d71bf7afccf8dff08b4e695",
+      "currentNativeRecordSha256": "sha256:a8fea59bfe6db6d06c8412a4a6fd6ff171b24b59b405be490b2892e88900c715",
+      "currentProfileFingerprint": "sha256:586d1a137843d24b9289f4cedebe0d960aa73ed5e03c5a133172df8d8d583342",
+      "currentProfileBodySha256": "sha256:3bf05b125157b28eeab25efba47e8f2bdc54c39394dd715c0465944f11c254b4",
+      "proposedProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "physical-understanding",
+            "essentialUnderstandingDe": "Entropie ist eine Zustandsgr\u00f6\u00dfe; ihre \u00c4nderung zwischen denselben Gleichgewichtszust\u00e4nden ist wegunabh\u00e4ngig. In dS = \u03b4Q_rev/T ist die W\u00e4rme des reversiblen Berechnungsweges und die jeweilige absolute Temperatur gemeint, nicht beliebige tats\u00e4chlich \u00fcbertragene W\u00e4rme.",
+            "essentialUnderstandingEn": "Entropy is a state variable; its change between the same equilibrium states is path-independent. In dS = \u03b4Q_rev/T, the heat of the reversible calculation path and its local absolute temperature are meant, not arbitrary heat actually transferred.",
+            "observablePerformanceDe": "Aus Endzust\u00e4nden und ausdr\u00fccklich angegebenen Stoff-/Arbeitsgesetzen w\u00e4hlt die lernende Person selbst einen reversiblen Ersatzweg. Sie gewinnt f\u00fcr diesen Weg \u03b4Q_rev, identifiziert die jeweilige absolute Temperatur und Integrationsgr\u00f6\u00dfe, setzt passende Grenzen und begr\u00fcndet die eigene symbolische Entropie\u00e4nderung mit der gegebenen allgemeinen mathematischen Akkumulations-/Auswertungsregel. Sie erkl\u00e4rt, warum \u0394S als Zustands\u00e4nderung auch f\u00fcr den realen irreversiblen Weg gilt, w\u00e4hrend dessen W\u00e4rme anders sein kann. Ersatzweg, \u03b4Q_rev und physikalische \u0394S-Formel sind keine Eingangsl\u00f6sung.",
+            "observablePerformanceEn": "From endpoint states and explicitly supplied material/work laws, the learner independently chooses a reversible substitute path. They obtain \u03b4Q_rev for it, identify local absolute temperature and the integration variable, choose bounds and justify their symbolic entropy change using the generic mathematical accumulation/evaluation rule. They explain why the state change \u0394S also applies to the actual irreversible path while its heat may differ. The substitute path, \u03b4Q_rev and physical \u0394S formula are not input solutions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "physical-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Gleiche Gleichgewichts-Endpunkte bei verschiedenen tats\u00e4chlichen Prozesswegen.",
+            "textEn": "Identical equilibrium endpoints with different actual process paths."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case",
+            "taskDemandDe": "Eine feste Menge idealen Gases expandiert frei in Vakuum im isolierten geschlossenen Gef\u00e4\u00df von V\u2081 nach 2V\u2081. Anfangs- und Endzustand sind Gleichgewicht bei derselben absoluten Temperatur T. Modellfakten: Im Gleichgewicht gilt pV=nRT, die innere Energie U h\u00e4ngt bei fester Gasmenge nur von T ab. Mit Arbeit des Gases positiv gilt dU=\u03b4Q\u2212\u03b4W; f\u00fcr reversible quasistatische reine Volumenarbeit \u03b4W=p dV. Eine freie Vakuumexpansion leistet wegen \u00e4u\u00dferem Druck null keine Volumenarbeit. W\u00e4hle selbst einen reversiblen Weg zwischen genau diesen Endzust\u00e4nden, leite dessen \u03b4Q_rev aus den Modellfakten her und benutze dS=\u03b4Q_rev/T zur Bestimmung von \u0394S. Vergleiche die W\u00e4rme des realen und des Ersatzwegs. Weder Ersatzweg noch \u03b4Q_rev oder Entropieresultat sind vorgegeben. Allgemeine mathematische Hilfen: Bei dY=h(x)dx mit stetigem h ergibt die vorzeichenbehaftete Akkumulation \u0394Y=\u222b_a^b h(x)dx. F\u00fcr einen stetigen Integranden f und eine differenzierbare Funktion F mit F\u2032(x)=f(x) auf dem ganzen Integrationsintervall gilt \u222b_a^b f(x)dx=F(b)\u2212F(a). Speziell f\u00fcr a,b,x\u2080>0 und einen von x unabh\u00e4ngigen reellen Faktor c gilt F_c(x)=c ln(x/x\u2080), F_c\u2032(x)=c/x und damit ausschlie\u00dflich f\u00fcr den Integranden c/x: \u222b_a^b c/x dx=c[ln(b/x\u2080)\u2212ln(a/x\u2080)]=c ln(b/a). Das gesamte Intervall liegt in x>0; x\u2080 ist ein fester positiver Referenzwert. ln 1=0 und bei b>a>0 gilt ln(b/a)>0. Die Logarithmusprimitive darf nicht f\u00fcr einen anderen Integranden benutzt werden. Bei q\u22600 gilt (k q/x)/q=k/x. Diese Regeln nennen weder Entropie noch einen physikalischen Weg. Eigenst\u00e4ndige Ober-/Untersummenbegr\u00fcndung, Primitive-Suche und numerische Termwertrechnung sind keine zus\u00e4tzliche Pflicht; eine vollst\u00e4ndig begr\u00fcndete symbolische Clausius-Anwendung ist zul\u00e4ssig.",
+            "taskDemandEn": "A fixed amount of ideal gas freely expands into vacuum inside an isolated closed vessel from V\u2081 to 2V\u2081. Initial and final states are equilibrium states at the same absolute temperature T. Model facts: equilibrium obeys pV=nRT and internal energy U depends only on T for a fixed amount. With work by the gas positive, dU=\u03b4Q\u2212\u03b4W; reversible quasistatic pure volume work obeys \u03b4W=p dV. Free expansion into vacuum performs no volume work because external pressure is zero. Independently choose a reversible path between these exact endpoints, derive its \u03b4Q_rev from the model facts and use dS=\u03b4Q_rev/T to find \u0394S. Compare actual and substitute heat. Neither path, \u03b4Q_rev nor entropy result is supplied. Generic mathematical support: for dY=h(x)dx with continuous h, signed accumulation gives \u0394Y=\u222b_a^b h(x)dx. For a continuous integrand f and a differentiable F satisfying F\u2032(x)=f(x) throughout the integration interval, \u222b_a^b f(x)dx=F(b)\u2212F(a). Specifically, for a,b,x\u2080>0 and a real factor c independent of x, F_c(x)=c ln(x/x\u2080), F_c\u2032(x)=c/x and therefore, only for integrand c/x, \u222b_a^b c/x dx=c[ln(b/x\u2080)\u2212ln(a/x\u2080)]=c ln(b/a). The whole interval lies in x>0; x\u2080 is a fixed positive reference. ln 1=0 and b>a>0 implies ln(b/a)>0. The logarithmic primitive must not be used for a different integrand. For q\u22600, (k q/x)/q=k/x. These rules mention neither entropy nor a physical path. An upper/lower-sum proof, independent primitive finding and numerical expression-value calculation are not additional requirements; a fully justified symbolic Clausius application is admissible.",
+            "expectedPerformanceDe": "Die lernende Person w\u00e4hlt eine reversible isotherme Expansion, folgert dU=0 aus U(T) und gewinnt \u00fcber ersten Hauptsatz und Volumenarbeit selbst \u03b4Q_rev=p dV=nRT dV/V. Sie bildet dS=nR dV/V, w\u00e4hlt V\u2081 und 2V\u2081 als Grenzen und erh\u00e4lt mit den allgemeinen mathematischen Regeln \u0394S=nR ln 2>0. F\u00fcr den realen isolierten Weg ist Q_real=0; die W\u00e4rme des Ersatzwegs ist positiv. Gleiche Endpunkte verlangen dasselbe \u0394S, nicht dieselbe W\u00e4rme. Alle physikalischen Verkn\u00fcpfungen, der Weg und die Grenzen sind selbst begr\u00fcndet.",
+            "expectedPerformanceEn": "The learner chooses a reversible isothermal expansion, infers dU=0 from U(T) and independently obtains \u03b4Q_rev=p dV=nRT dV/V using the first law and volume work. They form dS=nR dV/V, choose V\u2081 and 2V\u2081 as bounds and obtain \u0394S=nR ln 2>0 using the generic mathematics. The actual isolated path has Q_actual=0; substitute heat is positive. Identical endpoints require the same \u0394S rather than the same heat. Physical connections, path and bounds are independently justified.",
+            "understandingFocusDe": "Entropie ist eine Zustandsgr\u00f6\u00dfe; ihre \u00c4nderung zwischen denselben Gleichgewichtszust\u00e4nden ist wegunabh\u00e4ngig. In dS = \u03b4Q_rev/T ist die W\u00e4rme des reversiblen Berechnungsweges und die jeweilige absolute Temperatur gemeint, nicht beliebige tats\u00e4chlich \u00fcbertragene W\u00e4rme.",
+            "understandingFocusEn": "Entropy is a state variable; its change between the same equilibrium states is path-independent. In dS = \u03b4Q_rev/T, the heat of the reversible calculation path and its local absolute temperature are meant, not arbitrary heat actually transferred."
+          },
+          {
+            "id": "independent-changed-case",
+            "taskDemandDe": "Ein starrer K\u00f6rper ohne Phasen\u00fcbergang wird bei festem Volumen durch Kontakt mit einem deutlich hei\u00dferen Reservoir von T\u2081 auf T\u2082>T\u2081 erw\u00e4rmt. Modellfakten: Im Temperaturbereich ist C>0 konstant und dU=C dT. Es gibt keine mechanische oder sonstige Arbeits\u00fcbertragung; mit Arbeit des K\u00f6rpers positiv gilt dU=\u03b4Q\u2212\u03b4W. Konstruiere selbst einen reversiblen Vergleichsweg zwischen denselben Gleichgewichtsendpunkten, gewinne dessen \u03b4Q_rev und bestimme symbolisch \u0394S aus dS=\u03b4Q_rev/T. Begr\u00fcnde, warum Q_real/T\u2082 im Allgemeinen nicht das Ergebnis liefert. Der Vergleichsweg, die reversible W\u00e4rme und das Entropieresultat werden nicht geliefert. Allgemeine mathematische Hilfen: Bei dY=h(x)dx mit stetigem h ergibt die vorzeichenbehaftete Akkumulation \u0394Y=\u222b_a^b h(x)dx. F\u00fcr einen stetigen Integranden f und eine differenzierbare Funktion F mit F\u2032(x)=f(x) auf dem ganzen Integrationsintervall gilt \u222b_a^b f(x)dx=F(b)\u2212F(a). Speziell f\u00fcr a,b,x\u2080>0 und einen von x unabh\u00e4ngigen reellen Faktor c gilt F_c(x)=c ln(x/x\u2080), F_c\u2032(x)=c/x und damit ausschlie\u00dflich f\u00fcr den Integranden c/x: \u222b_a^b c/x dx=c[ln(b/x\u2080)\u2212ln(a/x\u2080)]=c ln(b/a). Das gesamte Intervall liegt in x>0; x\u2080 ist ein fester positiver Referenzwert. ln 1=0 und bei b>a>0 gilt ln(b/a)>0. Die Logarithmusprimitive darf nicht f\u00fcr einen anderen Integranden benutzt werden. Bei q\u22600 gilt (k q/x)/q=k/x. Diese Regeln nennen weder Entropie noch einen physikalischen Weg. Eigenst\u00e4ndige Ober-/Untersummenbegr\u00fcndung, Primitive-Suche und numerische Termwertrechnung sind keine zus\u00e4tzliche Pflicht; eine vollst\u00e4ndig begr\u00fcndete symbolische Clausius-Anwendung ist zul\u00e4ssig.",
+            "taskDemandEn": "A rigid body without a phase transition is heated at fixed volume by contact with a substantially hotter reservoir from T\u2081 to T\u2082>T\u2081. Model facts: C>0 is constant in this range and dU=C dT. There is no mechanical or other work transfer; with work by the body positive, dU=\u03b4Q\u2212\u03b4W. Independently construct a reversible comparison path between the same equilibrium endpoints, obtain its \u03b4Q_rev and symbolically determine \u0394S from dS=\u03b4Q_rev/T. Explain why Q_actual/T\u2082 generally fails. Comparison path, reversible heat and entropy result are withheld. Generic mathematical support: for dY=h(x)dx with continuous h, signed accumulation gives \u0394Y=\u222b_a^b h(x)dx. For a continuous integrand f and a differentiable F satisfying F\u2032(x)=f(x) throughout the integration interval, \u222b_a^b f(x)dx=F(b)\u2212F(a). Specifically, for a,b,x\u2080>0 and a real factor c independent of x, F_c(x)=c ln(x/x\u2080), F_c\u2032(x)=c/x and therefore, only for integrand c/x, \u222b_a^b c/x dx=c[ln(b/x\u2080)\u2212ln(a/x\u2080)]=c ln(b/a). The whole interval lies in x>0; x\u2080 is a fixed positive reference. ln 1=0 and b>a>0 implies ln(b/a)>0. The logarithmic primitive must not be used for a different integrand. For q\u22600, (k q/x)/q=k/x. These rules mention neither entropy nor a physical path. An upper/lower-sum proof, independent primitive finding and numerical expression-value calculation are not additional requirements; a fully justified symbolic Clausius application is admissible.",
+            "expectedPerformanceDe": "Die lernende Person entwirft W\u00e4rme\u00fcbertragung mit einer Folge von Reservoirs bei jeweils infinitesimal kleiner Temperaturdifferenz. Aus dU=C dT und fehlender Arbeit gewinnt sie \u03b4Q_rev=C dT und integriert mit den selbst gew\u00e4hlten Grenzen T\u2081,T\u2082 zu \u0394S=C ln(T\u2082/T\u2081)>0. Die variable Temperatur geh\u00f6rt in den Quotienten; der Endwert T\u2082 ersetzt sie nicht. Der gleiche Entropieunterschied gilt f\u00fcr den realen Weg, weil S eine Zustandsgr\u00f6\u00dfe ist, obwohl die tats\u00e4chliche \u00dcbertragung irreversibel ist.",
+            "expectedPerformanceEn": "The learner designs heat transfer through reservoirs with successively infinitesimal temperature differences. From dU=C dT and absent work they obtain \u03b4Q_rev=C dT and integrate over independently chosen bounds T\u2081,T\u2082 to \u0394S=C ln(T\u2082/T\u2081)>0. Varying temperature belongs inside the quotient and cannot be replaced by final T\u2082. The same entropy change applies to the actual path because S is a state variable although actual transfer is irreversible.",
+            "understandingFocusDe": "Entropie als Zustandsgr\u00f6\u00dfe erlaubt einen reversiblen Ersatzweg; eine wechselnde Temperatur darf nicht unbesehen durch einen Endwert ersetzt werden.",
+            "understandingFocusEn": "Entropy as a state variable permits a reversible substitute path; a varying temperature must not be replaced indiscriminately by an endpoint value."
+          }
+        ]
+      },
+      "proposedProfileBodySha256": "sha256:0b9938c27a67b961abc301443c53fe10ec3d8275d041c4fbad3b51e0968b2ebd",
+      "status": "inert_v4_author_candidate_pending_different_agent_native_QA",
+      "authority": "ai_candidate",
+      "revisionAuthorAgent": "/root/physics_pending5_revision",
+      "rationale": "Das endg\u00fcltige unabh\u00e4ngige v3-Urteil wird als historischer, exakt gebundener Input gelesen, nicht auf v4 \u00fcbertragen. Die v3-Hilfe lie\u00df die notwendige Bedingung F\u2032=f aus und konnte deshalb f=1 auf [1,2] f\u00e4lschlich mit einer unpassenden Logarithmusprimitive behandeln. V4 korrigiert ausschlie\u00dflich diese vier DE/EN-Aufgabenhilfe-Felder: Die allgemeine Auswertung fordert jetzt F\u2032=f auf dem ganzen Intervall; die spezielle Logarithmusformel gilt nur f\u00fcr c/x bei festem Faktor c und vollst\u00e4ndig positivem Intervall sowie positivem festem x\u2080. Alle Stoffgesetze, die selbst\u00e4ndige physikalische Wahl des reversiblen Ersatzwegs, Herleitung von \u03b4Q_rev, Integrationsgr\u00f6\u00dfe, Grenzen, \u0394S und Realwegvergleich bleiben wortgleich. Der Autorenkandidat ohne fremde Pflicht-Mastery wird nur f\u00fcr dieses genaue neue unterst\u00fctzte Profil vorgeschlagen; er ist weder unabh\u00e4ngig gepr\u00fcft noch nativ M7-freigegeben. Die anderen vier v3-Kandidaten und alle alten Quellen, IDs, requires und Revieweingaben bleiben unver\u00e4ndert.",
+      "fullBilingualBodyRead": true,
+      "changedBody": true,
+      "sourceContextPath": "tmp/cross-subject-requires/physics-clausius-revision-author-20261013-v4.context.exact.json",
+      "sourceContextFileSha256": "sha256:9ada31821aa4128fdaa14bdf151d8f6f1e9dd2801f475f85955354cd7138def3",
+      "bodyAndSourceBoundary": "New exact DE/EN author body. Existing essential understandings and all original expectation/case IDs remain, with mandatory source witnesses added where necessary. No historical content approval is rebound; native M7 has not run. Generic mathematical or constitutive input facts do not supply the learner physical answer.",
+      "qualityImpact": {
+        "D": "Canonical bilingual goal text unchanged; correspondence of the actual revised P must be independently reviewed.",
+        "P": "Complete proposed body changes require real independent native QA and additive successor fingerprints,never old-verdict rebind.",
+        "A": "Every modified task/solution/transfer must be substantively checked before adoption.",
+        "M": "No goal semantic/memory content changed by this inert proposal.",
+        "V": "No visual mutation or fresh asset-review claim; actual retained image suitability still requires applicable independent checks."
+      },
+      "supersedesAuthorCandidateOnly": {
+        "path": "tmp/cross-subject-requires/physics-pending5-revision-author-20261013-v3.profile-amendments.candidate.json",
+        "sha256": "sha256:ec6f00f50388913d11da7ae8c1b53ab543fb1fd722fd47e23f931d0caaf8d6fe",
+        "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
+        "profileBodySha256": "sha256:376808637d1ca871e6b4e965b94aeb652f28507a06f09d0eb544d71d0be8aa2d",
+        "boundary": "Additive fresh exact input; no old peer or native verdict rebound."
+      },
+      "oldProfileFullDeEn": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "physical-understanding",
+            "essentialUnderstandingDe": "Entropie ist eine Zustandsgr\u00f6\u00dfe; ihre \u00c4nderung zwischen denselben Gleichgewichtszust\u00e4nden ist wegunabh\u00e4ngig. In dS = \u03b4Q_rev/T ist die W\u00e4rme des reversiblen Berechnungsweges und die jeweilige absolute Temperatur gemeint, nicht beliebige tats\u00e4chlich \u00fcbertragene W\u00e4rme.",
+            "essentialUnderstandingEn": "Entropy is a state variable; its change between the same equilibrium states is path-independent. In dS = \u03b4Q_rev/T, the heat of the reversible calculation path and its local absolute temperature are meant, not arbitrary heat actually transferred.",
+            "observablePerformanceDe": "Die lernende Person w\u00e4hlt zu beschriebenen Anfangs- und Endzust\u00e4nden eigenst\u00e4ndig einen passenden reversiblen Ersatzweg, erl\u00e4utert die Bedeutung von \u03b4Q_rev und T und begr\u00fcndet, weshalb der berechnete Entropieunterschied auch f\u00fcr einen irreversiblen realen Weg gilt.",
+            "observablePerformanceEn": "Given initial and final states, the learner independently selects a suitable reversible substitute path, explains the meaning of \u03b4Q_rev and T, and justifies why the calculated entropy difference also applies to an irreversible actual path."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "physical-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Gleiche Gleichgewichts-Endpunkte bei verschiedenen tats\u00e4chlichen Prozesswegen.",
+            "textEn": "Identical equilibrium endpoints with different actual process paths."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case",
+            "taskDemandDe": "Eine feste Menge klassischen idealen Gases expandiert frei in einem isolierten geschlossenen Gef\u00e4\u00df von V nach 2V; Anfangs- und Endzustand sind Gleichgewichtszust\u00e4nde bei derselben Temperatur T. Entwirf selbst einen reversiblen Ersatzweg zwischen genau diesen Zust\u00e4nden, benutze dS=\u03b4Q_rev/T zur Bestimmung von \u0394S und vergleiche die W\u00e4rme auf beiden Wegen.",
+            "taskDemandEn": "A fixed amount of classical ideal gas freely expands inside an isolated closed vessel from V to 2V; the initial and final states are equilibrium states at the same temperature T. Independently construct a reversible substitute path between exactly these states, use dS=\u03b4Q_rev/T to determine \u0394S, and compare the heat along both paths.",
+            "expectedPerformanceDe": "Die lernende Person w\u00e4hlt eine reversible isotherme Expansion, begr\u00fcndet Q_real=0 und Q_rev>0 und gewinnt \u0394S=nR ln 2>0 durch Integration oder eine gleichwertig begr\u00fcndete Clausius-Anwendung. Sie erkl\u00e4rt, dass gleiche Endpunkte gleiche \u0394S, aber nicht gleiche Q verlangen.",
+            "expectedPerformanceEn": "The learner selects a reversible isothermal expansion, justifies Q_actual=0 and Q_rev>0, and obtains \u0394S=nR ln 2>0 by integration or an equivalently justified application of Clausius's relation. They explain that identical endpoints require equal \u0394S but not equal Q.",
+            "understandingFocusDe": "Entropie ist eine Zustandsgr\u00f6\u00dfe; ihre \u00c4nderung zwischen denselben Gleichgewichtszust\u00e4nden ist wegunabh\u00e4ngig. In dS = \u03b4Q_rev/T ist die W\u00e4rme des reversiblen Berechnungsweges und die jeweilige absolute Temperatur gemeint, nicht beliebige tats\u00e4chlich \u00fcbertragene W\u00e4rme.",
+            "understandingFocusEn": "Entropy is a state variable; its change between the same equilibrium states is path-independent. In dS = \u03b4Q_rev/T, the heat of the reversible calculation path and its local absolute temperature are meant, not arbitrary heat actually transferred."
+          },
+          {
+            "id": "independent-changed-case",
+            "taskDemandDe": "Ein fester K\u00f6rper mit konstanter W\u00e4rmekapazit\u00e4t C wird von T_1 auf T_2>T_1 erw\u00e4rmt, real durch Kontakt mit einem deutlich hei\u00dferen Reservoir. Konstruiere einen reversiblen Vergleichsweg, erl\u00e4utere die Rolle der ver\u00e4nderlichen Temperatur im Quotienten \u03b4Q_rev/T und bestimme \u0394S. Begr\u00fcnde, warum Q_real/T_2 im Allgemeinen nicht das Ergebnis liefert.",
+            "taskDemandEn": "A solid body with constant heat capacity C is heated from T_1 to T_2>T_1 by actual contact with a substantially hotter reservoir. Construct a reversible comparison path, explain the role of the changing temperature in \u03b4Q_rev/T, and determine \u0394S. Justify why Q_actual/T_2 generally does not give the result.",
+            "expectedPerformanceDe": "Die lernende Person beschreibt infinitesimale W\u00e4rme\u00fcbertragung bei jeweils nahezu gleicher Temperatur, setzt \u03b4Q_rev=C dT an und erh\u00e4lt \u0394S=C ln(T_2/T_1). Sie begr\u00fcndet die Integration \u00fcber T und die Zustandsabh\u00e4ngigkeit von \u0394S trotz irreversibler tats\u00e4chlicher Erw\u00e4rmung.",
+            "expectedPerformanceEn": "The learner describes infinitesimal heat transfer at successively nearly equal temperatures, uses \u03b4Q_rev=C dT and obtains \u0394S=C ln(T_2/T_1). They justify integrating over T and the state dependence of \u0394S despite actual irreversible heating.",
+            "understandingFocusDe": "Entropie als Zustandsgr\u00f6\u00dfe erlaubt einen reversiblen Ersatzweg; eine wechselnde Temperatur darf nicht unbesehen durch einen Endwert ersetzt werden.",
+            "understandingFocusEn": "Entropy as a state variable permits a reversible substitute path; a varying temperature must not be replaced indiscriminately by an endpoint value."
+          }
+        ]
+      },
+      "v1ProfileFullDeEn": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "physical-understanding",
+            "essentialUnderstandingDe": "Entropie ist eine Zustandsgr\u00f6\u00dfe; ihre \u00c4nderung zwischen denselben Gleichgewichtszust\u00e4nden ist wegunabh\u00e4ngig. In dS = \u03b4Q_rev/T ist die W\u00e4rme des reversiblen Berechnungsweges und die jeweilige absolute Temperatur gemeint, nicht beliebige tats\u00e4chlich \u00fcbertragene W\u00e4rme.",
+            "essentialUnderstandingEn": "Entropy is a state variable; its change between the same equilibrium states is path-independent. In dS = \u03b4Q_rev/T, the heat of the reversible calculation path and its local absolute temperature are meant, not arbitrary heat actually transferred.",
+            "observablePerformanceDe": "Die lernende Person w\u00e4hlt zu beschriebenen Anfangs- und Endzust\u00e4nden eigenst\u00e4ndig einen passenden reversiblen Ersatzweg, erl\u00e4utert die Bedeutung von \u03b4Q_rev und T und begr\u00fcndet, weshalb der berechnete Entropieunterschied auch f\u00fcr einen irreversiblen realen Weg gilt.",
+            "observablePerformanceEn": "Given initial and final states, the learner independently selects a suitable reversible substitute path, explains the meaning of \u03b4Q_rev and T, and justifies why the calculated entropy difference also applies to an irreversible actual path."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "physical-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Gleiche Gleichgewichts-Endpunkte bei verschiedenen tats\u00e4chlichen Prozesswegen.",
+            "textEn": "Identical equilibrium endpoints with different actual process paths."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case",
+            "taskDemandDe": "Eine feste Menge klassischen idealen Gases expandiert frei in einem isolierten geschlossenen Gef\u00e4\u00df von V nach 2V; Anfangs- und Endzustand sind Gleichgewichtszust\u00e4nde bei derselben Temperatur T. Entwirf selbst einen reversiblen Ersatzweg zwischen genau diesen Zust\u00e4nden, benutze dS=\u03b4Q_rev/T zur Bestimmung von \u0394S und vergleiche die W\u00e4rme auf beiden Wegen. Als mathematische Hilfsinformation gilt bei x>0:Eine Primitive von1/x ist ln(x/x0),ln1=0 und \u222ba^b f(x)dx=F(b)\u2212F(a). F\u00fcr konstanten positiven Faktorc darf c mitgef\u00fchrt werden. Die Wahl des Ersatzwegs,\u03b4Qrev und die Entropiebilanz sind nicht vorgegeben.",
+            "taskDemandEn": "A fixed amount of classical ideal gas freely expands inside an isolated closed vessel from V to 2V; the initial and final states are equilibrium states at the same temperature T. Independently construct a reversible substitute path between exactly these states, use dS=\u03b4Q_rev/T to determine \u0394S, and compare the heat along both paths. Mathematical support for x>0 gives:an antiderivative of1/x is ln(x/x0),ln1=0,and \u222ba^b f(x)dx=F(b)\u2212F(a). A constant positive factor c can be carried through. The substitute path,\u03b4Qrev and entropy balance are not supplied.",
+            "expectedPerformanceDe": "Die lernende Person w\u00e4hlt eine reversible isotherme Expansion, begr\u00fcndet Q_real=0 und Q_rev>0 und gewinnt \u0394S=nR ln 2>0 durch Integration oder eine gleichwertig begr\u00fcndete Clausius-Anwendung. Sie erkl\u00e4rt, dass gleiche Endpunkte gleiche \u0394S, aber nicht gleiche Q verlangen.",
+            "expectedPerformanceEn": "The learner selects a reversible isothermal expansion, justifies Q_actual=0 and Q_rev>0, and obtains \u0394S=nR ln 2>0 by integration or an equivalently justified application of Clausius's relation. They explain that identical endpoints require equal \u0394S but not equal Q.",
+            "understandingFocusDe": "Entropie ist eine Zustandsgr\u00f6\u00dfe; ihre \u00c4nderung zwischen denselben Gleichgewichtszust\u00e4nden ist wegunabh\u00e4ngig. In dS = \u03b4Q_rev/T ist die W\u00e4rme des reversiblen Berechnungsweges und die jeweilige absolute Temperatur gemeint, nicht beliebige tats\u00e4chlich \u00fcbertragene W\u00e4rme.",
+            "understandingFocusEn": "Entropy is a state variable; its change between the same equilibrium states is path-independent. In dS = \u03b4Q_rev/T, the heat of the reversible calculation path and its local absolute temperature are meant, not arbitrary heat actually transferred."
+          },
+          {
+            "id": "independent-changed-case",
+            "taskDemandDe": "Ein fester K\u00f6rper mit konstanter W\u00e4rmekapazit\u00e4t C wird von T_1 auf T_2>T_1 erw\u00e4rmt, real durch Kontakt mit einem deutlich hei\u00dferen Reservoir. Konstruiere einen reversiblen Vergleichsweg, erl\u00e4utere die Rolle der ver\u00e4nderlichen Temperatur im Quotienten \u03b4Q_rev/T und bestimme \u0394S. Begr\u00fcnde, warum Q_real/T_2 im Allgemeinen nicht das Ergebnis liefert. Dieselbe mathematische Primitive/Auswertungsregel f\u00fcr1/x wird bereitgestellt. Einsetzen von Qreal/T2 ist zu pr\u00fcfen,nicht als zul\u00e4ssiges Rezept gegeben.",
+            "taskDemandEn": "A solid body with constant heat capacity C is heated from T_1 to T_2>T_1 by actual contact with a substantially hotter reservoir. Construct a reversible comparison path, explain the role of the changing temperature in \u03b4Q_rev/T, and determine \u0394S. Justify why Q_actual/T_2 generally does not give the result. The same mathematical primitive/evaluation rule for1/x is supplied. Substitution of Qactual/T2 must be assessed rather than given as a valid recipe.",
+            "expectedPerformanceDe": "Die lernende Person beschreibt infinitesimale W\u00e4rme\u00fcbertragung bei jeweils nahezu gleicher Temperatur, setzt \u03b4Q_rev=C dT an und erh\u00e4lt \u0394S=C ln(T_2/T_1). Sie begr\u00fcndet die Integration \u00fcber T und die Zustandsabh\u00e4ngigkeit von \u0394S trotz irreversibler tats\u00e4chlicher Erw\u00e4rmung.",
+            "expectedPerformanceEn": "The learner describes infinitesimal heat transfer at successively nearly equal temperatures, uses \u03b4Q_rev=C dT and obtains \u0394S=C ln(T_2/T_1). They justify integrating over T and the state dependence of \u0394S despite actual irreversible heating.",
+            "understandingFocusDe": "Entropie als Zustandsgr\u00f6\u00dfe erlaubt einen reversiblen Ersatzweg; eine wechselnde Temperatur darf nicht unbesehen durch einen Endwert ersetzt werden.",
+            "understandingFocusEn": "Entropy as a state variable permits a reversible substitute path; a varying temperature must not be replaced indiscriminately by an endpoint value."
+          }
+        ]
+      },
+      "v3ProfileFullDeEn": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "physical-understanding",
+            "essentialUnderstandingDe": "Entropie ist eine Zustandsgr\u00f6\u00dfe; ihre \u00c4nderung zwischen denselben Gleichgewichtszust\u00e4nden ist wegunabh\u00e4ngig. In dS = \u03b4Q_rev/T ist die W\u00e4rme des reversiblen Berechnungsweges und die jeweilige absolute Temperatur gemeint, nicht beliebige tats\u00e4chlich \u00fcbertragene W\u00e4rme.",
+            "essentialUnderstandingEn": "Entropy is a state variable; its change between the same equilibrium states is path-independent. In dS = \u03b4Q_rev/T, the heat of the reversible calculation path and its local absolute temperature are meant, not arbitrary heat actually transferred.",
+            "observablePerformanceDe": "Aus Endzust\u00e4nden und ausdr\u00fccklich angegebenen Stoff-/Arbeitsgesetzen w\u00e4hlt die lernende Person selbst einen reversiblen Ersatzweg. Sie gewinnt f\u00fcr diesen Weg \u03b4Q_rev, identifiziert die jeweilige absolute Temperatur und Integrationsgr\u00f6\u00dfe, setzt passende Grenzen und begr\u00fcndet die eigene symbolische Entropie\u00e4nderung mit der gegebenen allgemeinen mathematischen Akkumulations-/Auswertungsregel. Sie erkl\u00e4rt, warum \u0394S als Zustands\u00e4nderung auch f\u00fcr den realen irreversiblen Weg gilt, w\u00e4hrend dessen W\u00e4rme anders sein kann. Ersatzweg, \u03b4Q_rev und physikalische \u0394S-Formel sind keine Eingangsl\u00f6sung.",
+            "observablePerformanceEn": "From endpoint states and explicitly supplied material/work laws, the learner independently chooses a reversible substitute path. They obtain \u03b4Q_rev for it, identify local absolute temperature and the integration variable, choose bounds and justify their symbolic entropy change using the generic mathematical accumulation/evaluation rule. They explain why the state change \u0394S also applies to the actual irreversible path while its heat may differ. The substitute path, \u03b4Q_rev and physical \u0394S formula are not input solutions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "physical-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Gleiche Gleichgewichts-Endpunkte bei verschiedenen tats\u00e4chlichen Prozesswegen.",
+            "textEn": "Identical equilibrium endpoints with different actual process paths."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case",
+            "taskDemandDe": "Eine feste Menge idealen Gases expandiert frei in Vakuum im isolierten geschlossenen Gef\u00e4\u00df von V\u2081 nach 2V\u2081. Anfangs- und Endzustand sind Gleichgewicht bei derselben absoluten Temperatur T. Modellfakten: Im Gleichgewicht gilt pV=nRT, die innere Energie U h\u00e4ngt bei fester Gasmenge nur von T ab. Mit Arbeit des Gases positiv gilt dU=\u03b4Q\u2212\u03b4W; f\u00fcr reversible quasistatische reine Volumenarbeit \u03b4W=p dV. Eine freie Vakuumexpansion leistet wegen \u00e4u\u00dferem Druck null keine Volumenarbeit. W\u00e4hle selbst einen reversiblen Weg zwischen genau diesen Endzust\u00e4nden, leite dessen \u03b4Q_rev aus den Modellfakten her und benutze dS=\u03b4Q_rev/T zur Bestimmung von \u0394S. Vergleiche die W\u00e4rme des realen und des Ersatzwegs. Weder Ersatzweg noch \u03b4Q_rev oder Entropieresultat sind vorgegeben. Allgemeine mathematische Hilfen: dY=h(x)dx wird \u00fcber [a,b] zu \u0394Y=\u222b_a^b h(x)dx akkumuliert. F\u00fcr x>0 gilt F(x)=ln(x/x\u2080) als Primitive von 1/x, ln 1=0 und \u222b_a^b f(x)dx=F(b)\u2212F(a); konstante Faktoren bleiben Faktoren. F\u00fcr b>a>0 ist ln(b/a)>0. Bei b\u22600 gilt (a b/x)/b=a/x. Diese Regeln nennen weder Entropie noch einen physikalischen Prozess. Eigenst\u00e4ndige Ober-/Untersummenbegr\u00fcndung, Logarithmus-Stammfunktionssuche und numerische Termwertrechnung sind keine zus\u00e4tzliche Pflicht; eine symbolisch vollst\u00e4ndig begr\u00fcndete Clausius-Anwendung ist zul\u00e4ssig.",
+            "taskDemandEn": "A fixed amount of ideal gas freely expands into vacuum inside an isolated closed vessel from V\u2081 to 2V\u2081. Initial and final states are equilibrium states at the same absolute temperature T. Model facts: equilibrium obeys pV=nRT and internal energy U depends only on T for a fixed amount. With work by the gas positive, dU=\u03b4Q\u2212\u03b4W; reversible quasistatic pure volume work obeys \u03b4W=p dV. Free expansion into vacuum performs no volume work because external pressure is zero. Independently choose a reversible path between these exact endpoints, derive its \u03b4Q_rev from the model facts and use dS=\u03b4Q_rev/T to find \u0394S. Compare actual and substitute heat. Neither path, \u03b4Q_rev nor entropy result is supplied. Generic mathematical support: dY=h(x)dx accumulates over [a,b] into \u0394Y=\u222b_a^b h(x)dx. For x>0, F(x)=ln(x/x\u2080) is a primitive of 1/x, ln 1=0 and \u222b_a^b f(x)dx=F(b)\u2212F(a); constant factors remain factors. For b>a>0, ln(b/a)>0. For b\u22600, (a b/x)/b=a/x. These rules mention neither entropy nor a physical process. An upper/lower-sum proof, independent logarithmic primitive finding and numerical expression-value calculation are not additional requirements; a fully justified symbolic Clausius application is admissible.",
+            "expectedPerformanceDe": "Die lernende Person w\u00e4hlt eine reversible isotherme Expansion, folgert dU=0 aus U(T) und gewinnt \u00fcber ersten Hauptsatz und Volumenarbeit selbst \u03b4Q_rev=p dV=nRT dV/V. Sie bildet dS=nR dV/V, w\u00e4hlt V\u2081 und 2V\u2081 als Grenzen und erh\u00e4lt mit den allgemeinen mathematischen Regeln \u0394S=nR ln 2>0. F\u00fcr den realen isolierten Weg ist Q_real=0; die W\u00e4rme des Ersatzwegs ist positiv. Gleiche Endpunkte verlangen dasselbe \u0394S, nicht dieselbe W\u00e4rme. Alle physikalischen Verkn\u00fcpfungen, der Weg und die Grenzen sind selbst begr\u00fcndet.",
+            "expectedPerformanceEn": "The learner chooses a reversible isothermal expansion, infers dU=0 from U(T) and independently obtains \u03b4Q_rev=p dV=nRT dV/V using the first law and volume work. They form dS=nR dV/V, choose V\u2081 and 2V\u2081 as bounds and obtain \u0394S=nR ln 2>0 using the generic mathematics. The actual isolated path has Q_actual=0; substitute heat is positive. Identical endpoints require the same \u0394S rather than the same heat. Physical connections, path and bounds are independently justified.",
+            "understandingFocusDe": "Entropie ist eine Zustandsgr\u00f6\u00dfe; ihre \u00c4nderung zwischen denselben Gleichgewichtszust\u00e4nden ist wegunabh\u00e4ngig. In dS = \u03b4Q_rev/T ist die W\u00e4rme des reversiblen Berechnungsweges und die jeweilige absolute Temperatur gemeint, nicht beliebige tats\u00e4chlich \u00fcbertragene W\u00e4rme.",
+            "understandingFocusEn": "Entropy is a state variable; its change between the same equilibrium states is path-independent. In dS = \u03b4Q_rev/T, the heat of the reversible calculation path and its local absolute temperature are meant, not arbitrary heat actually transferred."
+          },
+          {
+            "id": "independent-changed-case",
+            "taskDemandDe": "Ein starrer K\u00f6rper ohne Phasen\u00fcbergang wird bei festem Volumen durch Kontakt mit einem deutlich hei\u00dferen Reservoir von T\u2081 auf T\u2082>T\u2081 erw\u00e4rmt. Modellfakten: Im Temperaturbereich ist C>0 konstant und dU=C dT. Es gibt keine mechanische oder sonstige Arbeits\u00fcbertragung; mit Arbeit des K\u00f6rpers positiv gilt dU=\u03b4Q\u2212\u03b4W. Konstruiere selbst einen reversiblen Vergleichsweg zwischen denselben Gleichgewichtsendpunkten, gewinne dessen \u03b4Q_rev und bestimme symbolisch \u0394S aus dS=\u03b4Q_rev/T. Begr\u00fcnde, warum Q_real/T\u2082 im Allgemeinen nicht das Ergebnis liefert. Der Vergleichsweg, die reversible W\u00e4rme und das Entropieresultat werden nicht geliefert. Allgemeine mathematische Hilfen: dY=h(x)dx wird \u00fcber [a,b] zu \u0394Y=\u222b_a^b h(x)dx akkumuliert. F\u00fcr x>0 gilt F(x)=ln(x/x\u2080) als Primitive von 1/x, ln 1=0 und \u222b_a^b f(x)dx=F(b)\u2212F(a); konstante Faktoren bleiben Faktoren. F\u00fcr b>a>0 ist ln(b/a)>0. Bei b\u22600 gilt (a b/x)/b=a/x. Diese Regeln nennen weder Entropie noch einen physikalischen Prozess. Eigenst\u00e4ndige Ober-/Untersummenbegr\u00fcndung, Logarithmus-Stammfunktionssuche und numerische Termwertrechnung sind keine zus\u00e4tzliche Pflicht; eine symbolisch vollst\u00e4ndig begr\u00fcndete Clausius-Anwendung ist zul\u00e4ssig.",
+            "taskDemandEn": "A rigid body without a phase transition is heated at fixed volume by contact with a substantially hotter reservoir from T\u2081 to T\u2082>T\u2081. Model facts: C>0 is constant in this range and dU=C dT. There is no mechanical or other work transfer; with work by the body positive, dU=\u03b4Q\u2212\u03b4W. Independently construct a reversible comparison path between the same equilibrium endpoints, obtain its \u03b4Q_rev and symbolically determine \u0394S from dS=\u03b4Q_rev/T. Explain why Q_actual/T\u2082 generally fails. Comparison path, reversible heat and entropy result are withheld. Generic mathematical support: dY=h(x)dx accumulates over [a,b] into \u0394Y=\u222b_a^b h(x)dx. For x>0, F(x)=ln(x/x\u2080) is a primitive of 1/x, ln 1=0 and \u222b_a^b f(x)dx=F(b)\u2212F(a); constant factors remain factors. For b>a>0, ln(b/a)>0. For b\u22600, (a b/x)/b=a/x. These rules mention neither entropy nor a physical process. An upper/lower-sum proof, independent logarithmic primitive finding and numerical expression-value calculation are not additional requirements; a fully justified symbolic Clausius application is admissible.",
+            "expectedPerformanceDe": "Die lernende Person entwirft W\u00e4rme\u00fcbertragung mit einer Folge von Reservoirs bei jeweils infinitesimal kleiner Temperaturdifferenz. Aus dU=C dT und fehlender Arbeit gewinnt sie \u03b4Q_rev=C dT und integriert mit den selbst gew\u00e4hlten Grenzen T\u2081,T\u2082 zu \u0394S=C ln(T\u2082/T\u2081)>0. Die variable Temperatur geh\u00f6rt in den Quotienten; der Endwert T\u2082 ersetzt sie nicht. Der gleiche Entropieunterschied gilt f\u00fcr den realen Weg, weil S eine Zustandsgr\u00f6\u00dfe ist, obwohl die tats\u00e4chliche \u00dcbertragung irreversibel ist.",
+            "expectedPerformanceEn": "The learner designs heat transfer through reservoirs with successively infinitesimal temperature differences. From dU=C dT and absent work they obtain \u03b4Q_rev=C dT and integrate over independently chosen bounds T\u2081,T\u2082 to \u0394S=C ln(T\u2082/T\u2081)>0. Varying temperature belongs inside the quotient and cannot be replaced by final T\u2082. The same entropy change applies to the actual path because S is a state variable although actual transfer is irreversible.",
+            "understandingFocusDe": "Entropie als Zustandsgr\u00f6\u00dfe erlaubt einen reversiblen Ersatzweg; eine wechselnde Temperatur darf nicht unbesehen durch einen Endwert ersetzt werden.",
+            "understandingFocusEn": "Entropy as a state variable permits a reversible substitute path; a varying temperature must not be replaced indiscriminately by an endpoint value."
+          }
+        ]
+      }
+    }
+  ],
+  "licensing": {
+    "ownContent": "CC-BY-4.0",
+    "attribution": "SkillPilot contributors",
+    "thirdPartyBoundary": "Original source conditions retained."
+  }
+}

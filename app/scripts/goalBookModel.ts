@@ -20,6 +20,7 @@ import {
   compileCompositionView,
   normalizeCompositionView,
   type CompositionView,
+  type CompositionViewNode,
   type CompositionCompileResult,
   type CompiledCompositionPreviewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
@@ -667,6 +668,7 @@ const assertUniqueCanonicalGoalIds = (landscape: unknown) => {
 const resolveExternalLandscapes = (
   rawLandscape: unknown,
   externalSources: GoalBookExternalLandscapeBuildSource[],
+  rawCompositionViews: unknown[],
 ): ResolvedExternalLandscapes => {
   assertUniqueCanonicalGoalIds(rawLandscape)
   const primaryRecord = asRecord(rawLandscape, 'landscape')
@@ -744,6 +746,24 @@ const resolveExternalLandscapes = (
       }
       requiredExternalGoalIds.add(goalId)
     })
+  })
+
+  const collectExternalSupportReferences = (nodes: CompositionViewNode[]): void => {
+    nodes.forEach((node) => {
+      if (node.kind === 'structure') {
+        collectExternalSupportReferences(node.children)
+        return
+      }
+      if (node.kind !== 'canonicalSubtree' && node.kind !== 'goalEntry') return
+      if (!externalLandscapeIdByGoalId.has(node.goalId)) return
+      if (node.projectionRole !== 'prerequisiteOnly') {
+        fail(`foreign composition goal ${node.goalId} must explicitly use prerequisiteOnly.`)
+      }
+      requiredExternalGoalIds.add(node.goalId)
+    })
+  }
+  rawCompositionViews.forEach((view) => {
+    collectExternalSupportReferences(normalizeCompositionView(view).rootNodes)
   })
 
   const externalGoalStubs = [...requiredExternalGoalIds]
@@ -1858,6 +1878,9 @@ export const buildGoalBookModel = ({
   const resolvedExternalLandscapes = resolveExternalLandscapes(
     rawLandscape,
     externalLandscapeSources,
+    compositionViewManifestPath
+      ? (rawCompositionViewSources ?? []).map(({ view }) => view)
+      : [rawCompositionView],
   )
   const {
     landscape,
@@ -2062,7 +2085,7 @@ export const buildGoalBookModel = ({
             prerequisiteId,
             graph.goalById,
             referenceLandscapeId,
-            canonicalGoalUrl(normalizedAtlasBaseUrl, landscapeId, prerequisiteId),
+            canonicalGoalUrl(normalizedAtlasBaseUrl, referenceLandscapeId ?? landscapeId, prerequisiteId),
             mode,
           )
         }),
@@ -2382,7 +2405,7 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
       }
       const expectedUrl = canonicalGoalUrl(
         model.book.atlasBaseUrl ?? undefined,
-        model.book.landscapeId,
+        reference.landscapeId ?? model.book.landscapeId,
         goalId,
       )
       if (reference.canonicalUrl !== expectedUrl) {

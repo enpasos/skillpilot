@@ -57,12 +57,24 @@ export interface FrontierGoal {
   sourceLicenseUrl?: string;
 }
 
+export interface PrerequisiteBlocker {
+  goalId: string;
+  goalTitle?: string;
+  goalTitleEn?: string;
+  prerequisiteId?: string;
+  prerequisiteTitle?: string;
+  prerequisiteTitleEn?: string;
+  reason: 'EXTERNAL_PREREQUISITE_UNMASTERED' | 'PREREQUISITE_OUTSIDE_FOCUS' | 'PREREQUISITE_NOT_PROJECTED' | 'UNKNOWN_PREREQUISITE';
+  remediation?: 'OPEN_PERSONAL_CURRICULUM' | 'REVIEW_FOCUS';
+}
+
 export interface StateMachineInfo {
   state: string;
   requiredAction: string;
   goalOptions: FrontierGoal[];
   curriculumOptions: { landscapeId: string; title: string }[];
   activeGoal?: FrontierGoal;
+  prerequisiteBlockers?: PrerequisiteBlocker[];
   modeOptions?: Array<{
     id: 'practice' | 'verify' | string;
     title: string;

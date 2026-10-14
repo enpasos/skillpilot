@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 3,
+  "status": "author_actual_source_context_partial_mapping_and_placement_pending",
+  "jurisdiction": "DE-SH",
+  "retainedV2Context": {
+    "path": "tmp/cross-subject-requires/decimal-rounding-v2-20261013/source-context-v2/DE-SH.context.json",
+    "sha256": "sha256:9c62eedf8e2c067809d9395db5c1c1ee99f416149a15f2fedf7fc0f9100e1147",
+    "byteLength": 21649
+  },
+  "sourcePdfBinding": {
+    "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+    "sha256": "sha256:17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+    "byteLength": 3422772
+  },
+  "sourceExtractionBinding": {
+    "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+    "sha256": "sha256:a66cf627e3da9c2d2c67f31c96478e4d691815cc3351ed5f9db09abe43be488d",
+    "byteLength": 478744
+  },
+  "sourceRowId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l1-zahl-und-operation-T038-e0ecaea736",
+  "exactSourceRowSha256": "sha256:8695bf25b3dc8b80d0b8603e82c35f4c14f6617c181bf66e1bd1e74c0e40e60c",
+  "exactSourcePassageSha256": "sha256:6c34b0deed5dd350f647ed4d4d0ab9f7fc7e1741424eecf3390feba1176997bb",
+  "retainedExtractionReportedLocator": {
+    "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 28",
+    "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Zahl und Operation, Zeile 1386",
+    "sourcePage": 28
+  },
+  "sourceReference": {
+    "jurisdiction": "DE-SH",
+    "extractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+    "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l1-zahl-und-operation-T038-e0ecaea736",
+    "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l1-zahl-und-operation",
+    "passageTitle": "Leitidee Zahl und Operation",
+    "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, printed S.28 (PDF page28)",
+    "sourceSpan": "Actual bound PDF page28, printed page28; Printed28; decimal-rounding portion only.",
+    "sourcePage": 28,
+    "sourceLine": 1386,
+    "sourceDocument": {
+      "key": "SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+      "title": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024",
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "textPath": "tmp/sh_text/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.layout.txt",
+      "role": "binding-lower-secondary-mathematics",
+      "official": true,
+      "url": "https://fachportal.lernnetz.de/sh/faecher/mathematik/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Mathematik%20Sekundarstufe%20%282024%29%2C%20barrierearm.pdf&cid=16990"
+    },
+    "sourceGradeOrPhase": "5-10",
+    "evidenceDecision": "author_candidate_pending_independent_source_mapping",
+    "scopeRationale": "Direct decimal/rational rounding item or rounding within the explicitly named decimal/fraction content unit; no natural-number-only row used.",
+    "signedDomainCaution": "Early source may name positive decimals; signed transfer needs independent didactic/source-role review, not an exact-source claim."
+  },
+  "actualPageReads": [
+    {
+      "physicalPdfPageOneBased": 28,
+      "actualLayoutTextSha256": "sha256:d1606f992354dc1cc012e289a8ad9bb8f4415e88a469eb9dcffa9f5435eb2018",
+      "fullRelevantPageReadByAuthor": true
+    }
+  ],
+  "correctedAuthorLocator": {
+    "printedPage": 28,
+    "physicalPdfPageOneBased": 28
+  },
+  "authorPartialCoreInterpretation": "Use decimal/rational column with terminating/simple recurring notation, place table and rounding, rather than natural-number column.",
+  "scopeAndPlacementCaution": "Use decimal/rational column with terminating/simple recurring notation, place table and rounding, rather than natural-number column.",
+  "neededNativeMappingRepairsOrCautions": "Only nonnegative terminating core is claimed. Full rational/recurring source scope and5–10 label do not prove exactJ6; placement remains didactic and pending.",
+  "sourceRoleUnchanged": "binding-lower-secondary-mathematics",
+  "sourceEdgeQuoteClaimed": false,
+  "all16ExactPlacementApproved": false,
+  "signedPeriodicOrWholeSourceCoverageClaimed": false,
+  "method": "This author read all full relevant actual PDF pages via retained portable pdftotext-layout and inspected full retained extracted rows/passages; hashes bind local source bytes. Context is author preparation, not independent source review or legal approval."
+}

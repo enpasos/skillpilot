@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 3,
+  "status": "author_actual_source_context_partial_mapping_and_placement_pending",
+  "jurisdiction": "DE-BE",
+  "retainedV2Context": {
+    "path": "tmp/cross-subject-requires/decimal-rounding-v2-20261013/source-context-v2/DE-BE.context.json",
+    "sha256": "sha256:36ac4c3a189c0b19061560f8ed2751b5f2635a89fcb94fb525c369f98c018806",
+    "byteLength": 9705
+  },
+  "sourcePdfBinding": {
+    "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.pdf",
+    "sha256": "sha256:eb191cca63670339a8d0e376ad192729bb3ab0d221107ced05e0df27838eb8b5",
+    "byteLength": 737368
+  },
+  "sourceExtractionBinding": {
+    "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+    "sha256": "sha256:5556312bc3ea280034172148ca0ffea14623e0c320dac5694ae3051c7a0fcf5b",
+    "byteLength": 321936
+  },
+  "sourceRowId": "be-math-seki-rlp-3-l1-detail-764351a664",
+  "exactSourceRowSha256": "sha256:3564a7e4ff011107f47e185a41e5d3338a3cd9759401a0a1f0e79c5a0b698151",
+  "exactSourcePassageSha256": "sha256:1e7a1c1d4981b380c20e4e3013e81d127297fa8dffe07acbc7fc93adb0c6a99c",
+  "retainedExtractionReportedLocator": {
+    "sourceRef": "RLP Berlin/Berlin Mathematik 1-10 (2015), Kapitel 3, L1 Zahlen und Operationen, Niveaustufen D-H",
+    "sourceSpan": "Rationale Zahlen vergleichen, ordnen und runden.",
+    "sourcePage": null
+  },
+  "sourceReference": {
+    "jurisdiction": "DE-BE",
+    "extractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+    "sourceGoalId": "be-math-seki-rlp-3-l1-detail-764351a664",
+    "passageId": "be-math-seki-rlp-1-10-3-1-zahlen-operationen",
+    "passageTitle": "3 Themen und Inhalte - L1: Zahlen und Operationen",
+    "sourceRef": "Rahmenlehrplan Mathematik Jahrgangsstufen 1-10 (Berlin/Brandenburg, Fassung Berlin 2023), printed S.40 (PDF page40)",
+    "sourceSpan": "Actual bound PDF page40, printed page40; Printed40; decimal-rounding portion only.",
+    "sourcePage": 40,
+    "sourceLine": null,
+    "sourceDocument": {
+      "key": "RLP_1_10_MATHEMATIK_2015_2023",
+      "title": "Rahmenlehrplan Mathematik Jahrgangsstufen 1-10 (Berlin/Brandenburg, Fassung Berlin 2023)",
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.pdf",
+      "role": "binding-core",
+      "official": true,
+      "url": "https://bildungsserver.berlin-brandenburg.de/rlp-online/c-faecher/mathematik"
+    },
+    "sourceGradeOrPhase": null,
+    "evidenceDecision": "author_candidate_pending_independent_source_mapping",
+    "scopeRationale": "Direct decimal/rational rounding item or rounding within the explicitly named decimal/fraction content unit; no natural-number-only row used.",
+    "signedDomainCaution": "Early source may name positive decimals; signed transfer needs independent didactic/source-role review, not an exact-source claim."
+  },
+  "actualPageReads": [
+    {
+      "physicalPdfPageOneBased": 40,
+      "actualLayoutTextSha256": "sha256:4f8d5870fc68dbfc1fb20c5110d624edddb596632f7f3afcb15517f7e993f95e",
+      "fullRelevantPageReadByAuthor": true
+    }
+  ],
+  "correctedAuthorLocator": {
+    "printedPage": 40,
+    "physicalPdfPageOneBased": 40
+  },
+  "authorPartialCoreInterpretation": "Same actual document bytes as BB, separately bound BE occurrence. Early D decimal item supports the core; later E broad rational item must not certify signed early mastery.",
+  "scopeAndPlacementCaution": "Early D decimal-rounding row, distinct from later E rational/signed row. Exact Gymnasium grade/year placement remains pending; no universalJ6 from D metadata.",
+  "neededNativeMappingRepairsOrCautions": "Use printed/PDF40 D decimal row as supplementary actual PDF anchor; broad extracted D–H rational summary remains only partial. No native extraction is rewritten.",
+  "sourceRoleUnchanged": "binding-core",
+  "sourceEdgeQuoteClaimed": false,
+  "all16ExactPlacementApproved": false,
+  "signedPeriodicOrWholeSourceCoverageClaimed": false,
+  "method": "This author read all full relevant actual PDF pages via retained portable pdftotext-layout and inspected full retained extracted rows/passages; hashes bind local source bytes. Context is author preparation, not independent source review or legal approval.",
+  "retainedExtractionReportedGradeOrPhase": null,
+  "authorActualGradeBoundary": "Exact actual source row/section grade when explicit; BB/BE D does not supply a universal Gymnasium year."
+}

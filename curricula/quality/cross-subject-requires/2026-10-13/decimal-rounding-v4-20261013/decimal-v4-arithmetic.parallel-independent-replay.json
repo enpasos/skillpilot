@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 4,
+  "status": "PASS exact author arithmetic and explicit counterstrategy checks; no independent scientific or learner approval",
+  "cases": [
+    {
+      "id": "decimal-case-001",
+      "input": "7.386",
+      "decimalPlaces": 2,
+      "nearestTiesUp": "7.39",
+      "independentIntegerGrid": "7.39",
+      "lowerNeighbor": "7.38",
+      "upperNeighbor": "7.39",
+      "exactTailNumerator": 6,
+      "exactTailDenominator": 10,
+      "teacherSolutionMatches": true,
+      "strategyOutputs": {
+        "always_up": "7.39",
+        "always_down": "7.38",
+        "truncate": "7.38",
+        "double_round_one_finer": "7.39",
+        "wrong_place_one_coarser": "7.4"
+      }
+    },
+    {
+      "id": "decimal-case-002",
+      "input": "0.00327",
+      "decimalPlaces": 4,
+      "nearestTiesUp": "0.0033",
+      "independentIntegerGrid": "0.0033",
+      "lowerNeighbor": "0.0032",
+      "upperNeighbor": "0.0033",
+      "exactTailNumerator": 7,
+      "exactTailDenominator": 10,
+      "teacherSolutionMatches": true,
+      "strategyOutputs": {
+        "always_up": "0.0033",
+        "always_down": "0.0032",
+        "truncate": "0.0032",
+        "double_round_one_finer": "0.0033",
+        "wrong_place_one_coarser": "0.003"
+      }
+    },
+    {
+      "id": "decimal-case-003",
+      "input": "29.995",
+      "decimalPlaces": 2,
+      "nearestTiesUp": "30.00",
+      "independentIntegerGrid": "30.00",
+      "lowerNeighbor": "29.99",
+      "upperNeighbor": "30.00",
+      "exactTailNumerator": 5,
+      "exactTailDenominator": 10,
+      "teacherSolutionMatches": true,
+      "strategyOutputs": {
+        "always_up": "30.00",
+        "always_down": "29.99",
+        "truncate": "29.99",
+        "double_round_one_finer": "30.00",
+        "wrong_place_one_coarser": "30.0"
+      }
+    },
+    {
+      "id": "decimal-case-004",
+      "input": "4.7328",
+      "decimalPlaces": 2,
+      "nearestTiesUp": "4.73",
+      "independentIntegerGrid": "4.73",
+      "lowerNeighbor": "4.73",
+      "upperNeighbor": "4.74",
+      "exactTailNumerator": 28,
+      "exactTailDenominator": 100,
+      "teacherSolutionMatches": true,
+      "strategyOutputs": {
+        "always_up": "4.74",
+        "always_down": "4.73",
+        "truncate": "4.73",
+        "double_round_one_finer": "4.73",
+        "wrong_place_one_coarser": "4.7"
+      }
+    },
+    {
+      "id": "decimal-case-005",
+      "input": "0.00031",
+      "decimalPlaces": 3,
+      "nearestTiesUp": "0.000",
+      "independentIntegerGrid": "0.000",
+      "lowerNeighbor": "0.000",
+      "upperNeighbor": "0.001",
+      "exactTailNumerator": 31,
+      "exactTailDenominator": 100,
+      "teacherSolutionMatches": true,
+      "strategyOutputs": {
+        "always_up": "0.001",
+        "always_down": "0.000",
+        "truncate": "0.000",
+        "double_round_one_finer": "0.000",
+        "wrong_place_one_coarser": "0.00"
+      }
+    },
+    {
+      "id": "decimal-case-006",
+      "input": "1.2449",
+      "decimalPlaces": 2,
+      "nearestTiesUp": "1.24",
+      "independentIntegerGrid": "1.24",
+      "lowerNeighbor": "1.24",
+      "upperNeighbor": "1.25",
+      "exactTailNumerator": 49,
+      "exactTailDenominator": 100,
+      "teacherSolutionMatches": true,
+      "strategyOutputs": {
+        "always_up": "1.25",
+        "always_down": "1.24",
+        "truncate": "1.24",
+        "double_round_one_finer": "1.25",
+        "wrong_place_one_coarser": "1.2"
+      }
+    }
+  ],
+  "rejectedStrategiesByCase": {
+    "always_up": [
+      "decimal-case-004",
+      "decimal-case-005",
+      "decimal-case-006"
+    ],
+    "always_down": [
+      "decimal-case-001",
+      "decimal-case-002",
+      "decimal-case-003"
+    ],
+    "truncate": [
+      "decimal-case-001",
+      "decimal-case-002",
+      "decimal-case-003"
+    ],
+    "double_round_one_finer": [
+      "decimal-case-006"
+    ],
+    "wrong_place_one_coarser": [
+      "decimal-case-001",
+      "decimal-case-002",
+      "decimal-case-004",
+      "decimal-case-006"
+    ]
+  },
+  "freshLowerAndZeroUnpromptedDesigns": [
+    "decimal-case-004",
+    "decimal-case-005"
+  ],
+  "methods": [
+    "Python Decimal ROUND_HALF_UP",
+    "independent integer-grid nearest/ties-up quotient/remainder"
+  ],
+  "bindings": {
+    "learner-facts.author-candidate.json": "sha256:49c67a84902e4edab7b0e97618b6d0b8099fcbb7cf990bdcdf2343851316d6ae",
+    "teacher-grading.author-candidate.json": "sha256:ce4bf1d4bd21500c94a2feefc2476aa22430e4c8271c0c88ef3d537641990671"
+  },
+  "limit": "Rejects deliberately instantiated numerical strategies on this example bank; actual learner explanations and exposure remain to be judged, and six examples are not a required task count."
+}

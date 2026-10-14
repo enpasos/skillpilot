@@ -1,0 +1,140 @@
+[
+  {
+    "decisionId": "canonical-physics-36c4590c-6032-5a37-b660-f15951dee076",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "36c4590c-6032-5a37-b660-f15951dee076",
+    "dependentTitle": "Entropie E01: Zustandsgrößen vs. Prozessgrößen",
+    "dependentDescription": "Die lernende Person unterscheidet Zustandsgrößen ($p, V, T, U, S$) von Prozessgrößen ($Q, W$) und erklärt, warum $Q$ und $W$ vom Weg abhängen, $\\Delta U$ und $\\Delta S$ aber nicht.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Die aktuelle kanonische Beschreibung unterscheidet Zustands- und Prozessgrößen und begründet die Wegabhängigkeit. Der vollständige aktuelle P-Kern enthält einen unnötigen Pflichtschritt, aus ΔU und Arbeit unbekannte Q-Werte auszurechnen. Vorgeschlagen wird eine inhaltliche P-Korrektur, die beide Energiebilanzen einschließlich Wärme als bereitgestellte Eingangsfakten gibt. Lernende müssen weiterhin selbstständig Zustands-/Weggrößen, gleiche Endzustände, Kreisprozess und Systemgrenzen erklären; bloße Listenwiedergabe reicht nicht. Die neue qualitative physikalische Kompetenz braucht keine fremde Gleichungslöseroutine.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "36c4590c-6032-5a37-b660-f15951dee076",
+        "locator": "goals[id=36c4590c-6032-5a37-b660-f15951dee076]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "36c4590c-6032-5a37-b660-f15951dee076",
+        "locator": "goals[id=36c4590c-6032-5a37-b660-f15951dee076].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-029-e-thermodynamics-energy-modeling-current-v1.review.jsonl",
+        "recordId": "36c4590c-6032-5a37-b660-f15951dee076",
+        "locator": "profile",
+        "supports": "goalSemantics"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Bereitgestellte konsistente Energieübertragungsbilanzen werden physikalisch interpretiert; eigenständiges Zahlenrechnen ist eine freiwillige Vertiefung."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 136,
+    "supersedesProposal": {
+      "path": "tmp/cross-subject-requires/physics-batch-002.proposal-candidate.json",
+      "proposalBindingSha256": "sha256:d0423c85089f365500b3a11cfaa4ef3bbd652d1039028d018b199d1ae802c490",
+      "independentReviewPath": "tmp/cross-subject-requires/physics-batch-002.independent-review.json",
+      "status": "pending"
+    },
+    "profileAmendmentCandidatePath": "tmp/cross-subject-requires/physics-batch-002-thermo-two-v2.profile-amendments.candidate.json"
+  },
+  {
+    "decisionId": "canonical-physics-6e79ef4a-2666-5f7a-885c-b175954506f8",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+    "dependentTitle": "Entropie E05: Einheiten und Bedeutung von S",
+    "dependentDescription": "Die lernende Person kann die Einheit $\\mathrm{J/K}$ der Entropie anhand von $\\Delta S = Q_{\\mathrm{rev}}/T$ deuten und erklären, warum dieselbe reversibel zugeführte Wärmemenge bei niedrigerer konstanter absoluter Temperatur eine größere Entropiezunahme bewirkt.",
+    "prerequisiteGoalIds": [],
+    "decision": "no_cross_subject_required",
+    "rationale": "Der vollständige P-Kern beschreibt ausdrücklich eine qualitative Verhältnisbetrachtung und Einheitendeutung für Qrev/T. Die bisherigen Fälle erzwingen dagegen eigene Quotientenwerte. Vorgeschlagen wird eine P-Korrektur mit schon bestimmten Entropiewerten als Eingangsfakten: Das eigene Können bleibt deren System-/Einheiten-/Vorzeichendeutung, inverse Temperaturabhängigkeit bei gleichem Q und die Abgrenzung reversibler adiabatischer Arbeit. Es wird keine verpflichtende Zahlenrechnung oder Hyperbelgraphenkompetenz zusätzlich zum aktuellen qualitativen Ziel erzeugt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+        "locator": "goals[id=6e79ef4a-2666-5f7a-885c-b175954506f8]",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+        "locator": "goals[id=6e79ef4a-2666-5f7a-885c-b175954506f8].applicability",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-nuclear-current-20260920-v1.review.jsonl",
+        "recordId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+        "locator": "profile",
+        "supports": "goalSemantics"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Entropiewerte als bereitgestellte Daten interpretieren; optional selbst nachrechnen."
+      ]
+    },
+    "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+    "status": "candidate_pending_independent_review",
+    "inventoryIndex": 140,
+    "supersedesProposal": {
+      "path": "tmp/cross-subject-requires/physics-batch-002.proposal-candidate.json",
+      "proposalBindingSha256": "sha256:09fe35cfd676241c5cd1e17af2615344a4d1dd85ba124c2fb0ecab9ec2bc2e54",
+      "independentReviewPath": "tmp/cross-subject-requires/physics-batch-002.independent-review.json",
+      "status": "pending"
+    },
+    "profileAmendmentCandidatePath": "tmp/cross-subject-requires/physics-batch-002-thermo-two-v2.profile-amendments.candidate.json"
+  }
+]

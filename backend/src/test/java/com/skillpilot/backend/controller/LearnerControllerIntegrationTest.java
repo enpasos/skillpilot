@@ -145,6 +145,8 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_PHYSICS_UNIFORM_MOTION_ID = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd";
     private static final String CANONICAL_PHYSICS_SUPERPOSITION_ID = "68c90ba6-c438-463c-9a53-cf61062d416a";
     private static final String CANONICAL_PHYSICS_FIRST_LAW_ID = "31a2ef52-114b-4d2c-a720-6ef5a390b6dc";
+    private static final String CANONICAL_PHYSICS_ACCELERATED_MOTION_ID = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
+    private static final String CANONICAL_PHYSICS_FORCES_AND_INERTIA_ID = "5ea765ac-c279-551a-8a94-a07da2381e5b";
     private static final String CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID = "2eecd0e2-a7ca-4568-9b12-3d47706c65fb";
     private static final String CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID = "0da13365-02c2-44f1-8a81-d524ca0ac3ae";
     private static final String CANONICAL_CHEMISTRY_E_PHASE_CLUSTER_ID = "323a222e-5db8-53c5-b2dc-6f9c1d0d277c";
@@ -826,7 +828,10 @@ public class LearnerControllerIntegrationTest {
     void getLearnerStateHttpExposesAuthoredNewtonAtomsInsteadOfCurricularAreaCluster() throws Exception {
         String responseBody = getLearnerStateBody(
                 List.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID),
-                List.of(LEGACY_PHYSICS_ACCELERATED_ID),
+                List.of(
+                        LEGACY_PHYSICS_ACCELERATED_ID,
+                        CANONICAL_PHYSICS_ACCELERATED_MOTION_ID,
+                        CANONICAL_PHYSICS_FORCES_AND_INERTIA_ID),
                 CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
         JsonNode root = objectMapper.readTree(responseBody);

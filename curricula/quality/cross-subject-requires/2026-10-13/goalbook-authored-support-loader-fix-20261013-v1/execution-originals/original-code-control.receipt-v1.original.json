@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-13T14:43:02.684696+00:00",
+  "status": "PASS_expected_original_code_CPV002_failure",
+  "originalModel": {
+    "path": "tmp/cross-subject-requires/physics-resolved3-native-adoption-20261013/baseline-inputs/app/scripts/goalBookModel.ts",
+    "bytes": 113652,
+    "sha256": "sha256:d526731205b307b5c43e4be5ea5ab60b7bdefd3fd71f5e97be255f93b0723577"
+  },
+  "candidateModelUnchanged": {
+    "path": "app/scripts/goalBookModel.ts",
+    "bytes": 114562,
+    "sha256": "sha256:ed39b39a98bdce23516d6a1348da08b5fd1fe2337f924a1bd7cdff312ecf0184"
+  },
+  "identicalCandidateTestSource": {
+    "path": "app/scripts/testGoalBookModel.ts",
+    "bytes": 70465,
+    "sha256": "sha256:ff655beea90f716504e20418bde58291e2c115a3fb0fcfe72bced1c442ffc095"
+  },
+  "controlImportOnlyRewrite": {
+    "originalImport": "./goalBookModel",
+    "controlImport": "./.cross-subject-support-original-control-20261013",
+    "controlTestSha256": "sha256:23d93ada2d1ad0ccbed8e4c6c7b3f1ceb0b8da02c6c395bbc161c97bb4cc4cc6",
+    "allAssertionsIdentical": true
+  },
+  "actualExecution": {
+    "argv": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/app/scripts/.cross-subject-support-original-control-test-20261013.ts"
+    ],
+    "workingDirectory": "app",
+    "exitCode": 1,
+    "expectedDiagnostic": "CPV-002 math-retained-cluster",
+    "sourceAndTestsUnchanged": true,
+    "privateControlCopiesDeletedAfterExecution": true
+  },
+  "log": {
+    "path": "tmp/cross-subject-requires/goalbook-retained-support-original-control-20261013/actual-original-code-control.log",
+    "bytes": 1201,
+    "sha256": "sha256:158951cdc8c24696cd64ab7f977977f866a91b76c2f4b22a998219acfe6583a4"
+  },
+  "license": "Apache-2.0"
+}

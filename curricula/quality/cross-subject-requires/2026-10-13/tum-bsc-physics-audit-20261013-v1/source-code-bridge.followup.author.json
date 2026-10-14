@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "followupId": "tum-bsc-physics-module-code-bridge-source-author-20261013-v1",
+  "createdAt": "2026-10-13",
+  "inert": true,
+  "reviewStatus": "author-source-analysis-independent-review-pending",
+  "approval": false,
+  "roleAuditBinding": {
+    "path": "tmp/cross-subject-requires/tum-bsc-physics-audit-20261013-v1/role-ownership.author.json",
+    "sha256": "sha256:a97c298a8e8e00691de2e7e8f06d8805d615edd9ea8c90f905d31aa9c1b78b6d"
+  },
+  "officialSources": [
+    {
+      "url": "https://academics.nat.tum.de/bsc/ph/curriculum",
+      "locator": "Grundlagenphase: current CIT513016–19 mathematics modules and first-year integrated mathematical supplements",
+      "observation": "The current BSc program names linear algebra and Analysis 1–3 under CIT codes, while supplementary mathematical methods are integrated in experimental physics."
+    },
+    {
+      "url": "https://academics.nat.tum.de/msc/qst/bewerbung",
+      "locator": "Fachliche Zulassungsvoraussetzungen / Grundkurs Mathematik, table",
+      "observation": "The university still identifies MA9201–4 as mathematics modules of its physics Bachelor: linear algebra followed by Analysis 1–3."
+    },
+    {
+      "url": "https://www.moodle.tum.de/course/search.php?perpage=all&search=analysis",
+      "locator": "Course entries with module codes in title",
+      "observation": "Current/recent course entries expose both old MA920 and current CIT analysis names. This supports a title/sequence bridge, not formal module identity or transfer of goal mastery."
+    }
+  ],
+  "proposedBridgeCandidates": [
+    {
+      "historicalCode": "MA9201",
+      "currentDegreeCode": "CIT513016",
+      "subjectTopic": "linear algebra",
+      "basis": "Two official TUM pages identify the corresponding mathematical titles in the same physics degree context. This pairing is the author inference to investigate.",
+      "formalRenamingOrEquivalenceEstablished": false,
+      "atomicContentAndMasteryEquivalenceEstablished": false,
+      "activeMappingsAdded": []
+    },
+    {
+      "historicalCode": "MA9202",
+      "currentDegreeCode": "CIT513017",
+      "subjectTopic": "Analysis 1",
+      "basis": "Two official TUM pages identify the corresponding mathematical titles in the same physics degree context. This pairing is the author inference to investigate.",
+      "formalRenamingOrEquivalenceEstablished": false,
+      "atomicContentAndMasteryEquivalenceEstablished": false,
+      "activeMappingsAdded": []
+    },
+    {
+      "historicalCode": "MA9203",
+      "currentDegreeCode": "CIT513018",
+      "subjectTopic": "Analysis 2",
+      "basis": "Two official TUM pages identify the corresponding mathematical titles in the same physics degree context. This pairing is the author inference to investigate.",
+      "formalRenamingOrEquivalenceEstablished": false,
+      "atomicContentAndMasteryEquivalenceEstablished": false,
+      "activeMappingsAdded": []
+    },
+    {
+      "historicalCode": "MA9204",
+      "currentDegreeCode": "CIT513019",
+      "subjectTopic": "Analysis 3",
+      "basis": "Two official TUM pages identify the corresponding mathematical titles in the same physics degree context. This pairing is the author inference to investigate.",
+      "formalRenamingOrEquivalenceEstablished": false,
+      "atomicContentAndMasteryEquivalenceEstablished": false,
+      "activeMappingsAdded": []
+    }
+  ],
+  "moduleBodyRetrieval": {
+    "codes": [
+      "MA9201",
+      "MA9202",
+      "MA9203",
+      "MA9204",
+      "CIT513018",
+      "CIT513019",
+      "PH0005"
+    ],
+    "observation": "Direct web open returned site shells without module content. Search snippets sometimes expose historic content, so direct shell retrieval is not evidence that the actual site lacks that content. No contemporaneous complete-body verification is claimed."
+  },
+  "remainingDecision": "Obtain a university module-version/renaming record or explicitly review the content mapping against exact source versions. Until then preserve historical identifiers, current identifiers and teacher-training alternative separately; do not turn the proposed bridge into automatic ownership, prerequisite or mastery equivalence.",
+  "licensing": {
+    "ownTechnicalMetadata": "Apache-2.0",
+    "ownCurricularMappingProposal": "CC-BY-4.0",
+    "thirdPartySources": "Referenced, paraphrased within source rights; no source relicensing."
+  }
+}

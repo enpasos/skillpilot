@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-cross-subject-first10-20261013-v2-b-gpt61sol-ultra-reviewer",
+  "campaignId": "physics-cross-subject-first10-20261013-v2-b",
+  "roundId": "physics-cross-subject-first10-20261013-v2-first-pass-b",
+  "batchId": "physics-cross-subject-first10-20261013-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:ad42ffec6d92895c1313e959f295543645b059c5f5cfd191071ea131c8fc14f9",
+  "bundleFingerprint": "sha256:40527d7e04626356b004faaa16f0d8dfe41d0cc217acf7cf22f68aa11cf86ac5",
+  "bookDigest": "sha256:f2029a373c21e6a0cae46dd0c879952cf7667ca6b0e72cde325640cd76eef4e7",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "modelVersion": "GPT-6.1 Sol Ultra; independent agent /root/requires_canonical_review",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:3f51a94ab82552d4c934d1cd01d5568dce7d560ad5ab7e098eca6c8f7e4dce33",
+  "independenceGroupId": "physics-cross-subject-first10-20261013-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a",
+    "3c8e5510-a12d-5770-8a01-e5fe741b259c",
+    "8a84de16-2fde-58ec-827a-f803e2ce8564",
+    "267170bd-f880-56a7-9719-ffb9751872c5",
+    "f827b00f-af7f-52de-84aa-2a2bbaa035bd",
+    "f92b5b8a-327f-50d2-8313-6a142399ebf0",
+    "c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0",
+    "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+    "f23fdfa9-38b6-5157-8301-ed302476c456"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:11678af87e8bb14975cda21e268c278eba984fb492ae30120a442e94cc39176a"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:94dbafb70e703a7c1bad9318518324167acce15b2e97f7b3c0fdecdf4c9602c2"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:5636db4d5b76f4a8643d9751480525b7db4322ee8121e3a18ea3440f199a7920"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ad42ffec6d92895c1313e959f295543645b059c5f5cfd191071ea131c8fc14f9"
+    }
+  ],
+  "startedAt": "2026-10-13T08:10:51.851679+00:00",
+  "completedAt": "2026-10-13T08:20:18.976692+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:1b598094ebcd2a98b72d017e89e99c08574b2a35d6adb3c0328ae6a0c2f2f5a9",
+  "toolchainVersion": "codex-independent-scientific-review-native-v1"
+}

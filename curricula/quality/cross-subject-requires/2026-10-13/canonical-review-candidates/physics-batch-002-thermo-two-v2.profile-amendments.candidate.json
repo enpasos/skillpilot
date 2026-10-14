@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "status": "inert_author_candidate",
+  "amendments": [
+    {
+      "goalId": "36c4590c-6032-5a37-b660-f15951dee076",
+      "oldReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-029-e-thermodynamics-energy-modeling-current-v1.review.jsonl",
+      "oldProfileFingerprint": "sha256:c9c09855c825f9030e840dfec41f034bce2e4dde2a7ae2224671eaf77b21e575",
+      "oldProfileBodySha256": "sha256:4c559a2c65e193049f70056de4b4ece41c1f6bc5ce0a624049fdc5d5ca80d1b4",
+      "proposedProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "state-quantities-belong-to-state",
+            "essentialUnderstandingDe": "p, V, T, U und S kennzeichnen den Zustand des abgegrenzten Systems. Deshalb hängen ihre Änderungen zwischen zwei festgelegten Gleichgewichtszuständen nur von Anfangs- und Endzustand ab, nicht vom gewählten Prozessweg.",
+            "essentialUnderstandingEn": "p, V, T, U, and S characterize the state of the bounded system. Their changes between two specified equilibrium states therefore depend only on the initial and final states, not on the chosen process path.",
+            "observablePerformanceDe": "Die lernende Person vergleicht zwei verschieden geführte Prozesse mit denselben Endzuständen und begründet, welche Zustandsänderungen zwingend gleich sind; bei einem Kreisprozess folgert sie selbstständig ΔU = 0 und ΔS = 0 für das System.",
+            "observablePerformanceEn": "The learner compares two differently conducted processes with the same end states and justifies which state changes must be equal; for a cycle, the learner independently infers ΔU = 0 and ΔS = 0 for the system."
+          },
+          {
+            "id": "heat-and-work-belong-to-path",
+            "essentialUnderstandingDe": "Q und W beschreiben Energieübertragungen über die Systemgrenze während eines Prozesses und sind keine im System enthaltenen Zustandsgrößen. Verschiedene Wege können daher unterschiedliche Wärme- und Arbeitsübertragungen haben, obwohl ΔU zwischen denselben Endzuständen gleich bleibt.",
+            "essentialUnderstandingEn": "Q and W describe energy transfers across the system boundary during a process and are not state quantities contained in the system. Different paths can therefore involve different heat and work transfers even though ΔU between the same end states remains equal.",
+            "observablePerformanceDe": "Mit einer ausdrücklich genannten Vorzeichenkonvention deutet die lernende Person bereitgestellte konsistente Wärme- und Arbeitsübertragungen für alternative Wege, erklärt ihre Wegabhängigkeit und vermeidet Aussagen wie „das System enthält Wärme“ oder „der Endzustand besitzt Arbeit“. Eine eigene Berechnung fehlender Bilanzwerte ist keine Voraussetzung dieser Deutung.",
+            "observablePerformanceEn": "With an explicitly stated sign convention, the learner interprets supplied consistent heat and work transfers for alternative paths, explains their path dependence, and avoids claims such as “the system contains heat” or “the final state possesses work.” Calculating missing balance values is not a prerequisite for this interpretation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "state-quantities-belong-to-state",
+            "heat-and-work-belong-to-path"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "path-structure",
+            "textDe": "Zwei offene Prozesswege mit denselben Endzuständen oder ein geschlossener Kreisprozess werden betrachtet.",
+            "textEn": "Two non-cyclic process paths with identical end states or a closed cycle are considered."
+          },
+          {
+            "id": "representation",
+            "textDe": "Energiebilanz, p-V-Weg und verbale Systembeschreibung werden miteinander übersetzt.",
+            "textEn": "Energy balance, p-V path, and verbal system description are translated into one another."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-paths-same-end-states",
+            "taskDemandDe": "Ein Gas gelangt auf zwei Wegen von demselben Zustand A in denselben Zustand B. Beide bereitgestellten Bilanzen erfüllen ΔU = Q − W_Gas: Weg 1 hat ΔU = +400 J, Q = +500 J und W_Gas = +100 J; Weg 2 hat ΔU = +400 J, Q = +700 J und W_Gas = +300 J. Erkläre, welche Größen trotz gleicher Endzustände verschieden sein dürfen und welche Änderungen durch A und B festgelegt sind. Die Zahlen sind Eingangsfakten und müssen nicht neu berechnet werden.",
+            "taskDemandEn": "A gas follows two paths from the same state A to the same state B. Both supplied balances satisfy ΔU = Q − W_gas: path1 has ΔU=+400J, Q=+500J and W_gas=+100J; path2 has ΔU=+400J, Q=+700J and W_gas=+300J. Explain which quantities may differ despite identical end states and which changes are fixed by A and B. The numbers are supplied input facts and need not be recalculated.",
+            "expectedPerformanceDe": "Die lernende Person deutet die bereitgestellten unterschiedlichen Wärme- und Arbeitsübertragungen als Eigenschaften der Prozessführung. Sie begründet, dass ΔU und ΔS durch A und B festgelegt sind, und erklärt die Verträglichkeit unterschiedlicher Übertragungen mit gleicher Zustandsänderung, ohne Q oder W als im Zustand gespeicherte Größen zu behandeln.",
+            "expectedPerformanceEn": "The learner interprets the supplied differing heat and work transfers as properties of the process paths. ΔU and ΔS are fixed by A and B; different transfers can remain compatible with the same state change without treating Q or W as stored state quantities.",
+            "understandingFocusDe": "Geprüft wird die Wegabhängigkeit durch einen kontrollierten Endzustandsvergleich, nicht durch Auswendiglernen einer Liste.",
+            "understandingFocusEn": "This tests path dependence through a controlled comparison of end states rather than memorization of a list."
+          },
+          {
+            "id": "cycle-returning-to-initial-state",
+            "taskDemandDe": "Ein Arbeitsgas durchläuft einen vollständigen Kreisprozess und kehrt exakt zu seinem Anfangszustand zurück. Über den Zyklus nimmt es netto 500 J Wärme auf und verrichtet netto 500 J Arbeit. Ordne p, V, T, U, S, Q und W als Zustands- oder Prozessgrößen ein und begründe die Änderungen beziehungsweise Nettowerte über den Zyklus.",
+            "taskDemandEn": "A working gas completes a full cycle and returns exactly to its initial state. Over the cycle it absorbs a net 500 J of heat and does a net 500 J of work. Classify p, V, T, U, S, Q, and W as state or process quantities and justify their changes or net values over the cycle.",
+            "expectedPerformanceDe": "Die lernende Person folgert aus der Rückkehr zum Anfangszustand Δp = ΔV = ΔT = ΔU = ΔS = 0 für das System. Dennoch sind Q_netto = +500 J und W_Gas,netto = +500 J möglich, weil beide Übertragungen entlang des Weges erfolgen und sich gemäß dem ersten Hauptsatz ausgleichen.",
+            "expectedPerformanceEn": "From the return to the initial state, the learner infers Δp = ΔV = ΔT = ΔU = ΔS = 0 for the system. Nevertheless, Q_net = +500 J and W_by-gas,net = +500 J are possible because both are transfers along the path and balance according to the first law.",
+            "understandingFocusDe": "Der Kreisprozess legt offen, dass Nulländerung einer Zustandsgröße keine verschwindenden Prozessübertragungen verlangt.",
+            "understandingFocusEn": "The cycle exposes that zero change of a state quantity does not require process transfers to vanish."
+          }
+        ]
+      },
+      "proposedProfileBodySha256": "sha256:101c9388c17d20e657749899abc37233b20eeb6fa7d2958e861148b831f2f0e1",
+      "status": "inert_author_candidate_pending_independent_nativeQA",
+      "reason": "Die aktuelle kanonische Beschreibung unterscheidet Zustands- und Prozessgrößen und begründet die Wegabhängigkeit. Der vollständige aktuelle P-Kern enthält einen unnötigen Pflichtschritt, aus ΔU und Arbeit unbekannte Q-Werte auszurechnen. Vorgeschlagen wird eine inhaltliche P-Korrektur, die beide Energiebilanzen einschließlich Wärme als bereitgestellte Eingangsfakten gibt. Lernende müssen weiterhin selbstständig Zustands-/Weggrößen, gleiche Endzustände, Kreisprozess und Systemgrenzen erklären; bloße Listenwiedergabe reicht nicht. Die neue qualitative physikalische Kompetenz braucht keine fremde Gleichungslöseroutine.",
+      "authority": "ai_candidate",
+      "qualityImpact": {
+        "D": "Goal wording/source meaning unchanged; substantive P correspondence to be independently checked.",
+        "P": "Real body amendment, needs new native profile fingerprint and independently reviewed successor.",
+        "A": "Case task/solution correspondence must be independently evaluated, not simply renamed.",
+        "M": "No memory change from this qualitative scope correction.",
+        "V": "Existing image bytes unchanged; prior exact asset authority remains, not a fresh image approval."
+      }
+    },
+    {
+      "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "oldReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-nuclear-current-20260920-v1.review.jsonl",
+      "oldProfileFingerprint": "sha256:53a39dcb5a237180a9a16e5ca8043fc02b4f62a2168696a82b6cf3c93f787cba",
+      "oldProfileBodySha256": "sha256:8a08c487d8edeaab10a7a99499dcbf28c2edee7ee58fa4b20ba6b3ea14b91317",
+      "proposedProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "physical-understanding",
+            "essentialUnderstandingDe": "Entropieänderung gewichtet reversibel übertragene Wärme mit dem Kehrwert der absoluten Temperatur. Bei konstantem T hat Q_rev/T die Einheit J/K; die größere Entropiezunahme bei gleicher Wärmezufuhr und niedrigerem T ist keine Aussage über beliebige Energiezufuhr durch Arbeit.",
+            "essentialUnderstandingEn": "Entropy change weights reversibly transferred heat by the reciprocal of absolute temperature. At constant T, Q_rev/T has the unit J/K; the larger entropy increase for equal heat input at lower T is not a statement about arbitrary energy input as work.",
+            "observablePerformanceDe": "Die lernende Person erklärt selbstständig mit Einheiten und einer qualitativen Verhältnisbetrachtung, weshalb zwei reversible isotherme Wärmezufuhren gleicher Größe unterschiedliche Entropiezunahmen ergeben, und benennt die jeweils betrachteten Systeme.",
+            "observablePerformanceEn": "Using units and a qualitative ratio argument, the learner independently explains why two equal reversible isothermal heat inputs produce different entropy increases and identifies the systems considered."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "physical-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Gleiche reversible Wärme bei verschiedenen konstanten absoluten Temperaturen; Wärmeaufnahme, Wärmeabgabe und reversible adiabatische Arbeit.",
+            "textEn": "Equal reversible heat at different constant absolute temperatures; heat absorption, heat release and reversible adiabatic work."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case",
+            "taskDemandDe": "Zwei getrennte Systeme nehmen jeweils 60 J als Wärme reversibel bei konstant 300 K beziehungsweise 600 K auf. Ihre bereits bestimmten Entropiezunahmen betragen 0,20 J/K beziehungsweise 0,10 J/K. Benenne die betrachteten Systeme, deute die Einheit und begründe aus Q_rev/T qualitativ den Faktor zwei bei gleicher Wärmezufuhr. Erkläre, weshalb Arbeitszufuhr nicht als Q eingesetzt werden darf. Die Werte sind gegeben, nicht neu zu berechnen.",
+            "taskDemandEn": "Two separate systems each reversibly absorb60J of heat at constant300K and600K. Their already determined entropy increases are0.20J/K and0.10J/K. Identify the systems, interpret the unit, and qualitatively explain the factor of two from Q_rev/T at equal heat input. Explain why work input cannot be substituted for Q. Values are supplied, not to be calculated anew.",
+            "expectedPerformanceDe": "Die lernende Person deutet die vorgegebenen Entropiezunahmen für die jeweils wärmeaufnehmenden Systeme, erklärt die größere Zunahme bei niedrigerer absoluter Temperatur und trennt J/K von Joule. Die Begründung bezieht sich auf gleiche reversible Wärme und nicht auf beliebige Energiezufuhr durch Arbeit.",
+            "expectedPerformanceEn": "The learner interprets the supplied entropy increases for the heat-absorbing systems, explains the larger increase at lower absolute temperature, and distinguishes J/K from joules. The reasoning concerns equal reversible heat, not arbitrary energy input through work.",
+            "understandingFocusDe": "Entropieänderung gewichtet reversibel übertragene Wärme mit dem Kehrwert der absoluten Temperatur. Bei konstantem T hat Q_rev/T die Einheit J/K; die größere Entropiezunahme bei gleicher Wärmezufuhr und niedrigerem T ist keine Aussage über beliebige Energiezufuhr durch Arbeit.",
+            "understandingFocusEn": "Entropy change weights reversibly transferred heat by the reciprocal of absolute temperature. At constant T, Q_rev/T has the unit J/K; the larger entropy increase for equal heat input at lower T is not a statement about arbitrary energy input as work."
+          },
+          {
+            "id": "independent-changed-case",
+            "taskDemandDe": "Ein System gibt reversibel 60 J Wärme bei konstant 300 K ab; die bereits bestimmte Entropieänderung beträgt −0,20 J/K. In einem getrennten Fall werden einem thermisch isolierten System reversibel 60 J als Arbeit zugeführt; dafür ist ΔS=0 gegeben. Deute Vorzeichen und Einheiten, begründe beide Aussagen aus der Rolle von Q_rev und erkläre, ob Arbeit als Wärmemenge eingesetzt werden darf. Keine neue Zahlenrechnung ist gefordert.",
+            "taskDemandEn": "A system reversibly releases60J of heat at constant300K; its already determined entropy change is−0.20J/K. Separately,60J of reversible work is supplied to a thermally isolated system; ΔS=0 is given. Interpret signs and units, justify both statements from the role of Q_rev, and explain whether work may be substituted for heat. No new numerical calculation is required.",
+            "expectedPerformanceDe": "Die lernende Person erklärt das negative Vorzeichen des vorgegebenen Werts bei Wärmeabgabe und den Nullwert beim reversiblen adiabatischen Arbeitsprozess. Sie begründet im zweiten Fall δQ_rev=0, ohne Arbeit ersatzweise als Q_rev einzusetzen, und hält die beiden Systeme/Prozesse getrennt.",
+            "expectedPerformanceEn": "The learner explains the negative supplied value for heat release and the zero value for reversible adiabatic work. In the second case δQ_rev=0; work is not substituted for Q_rev, and the systems/processes remain distinct.",
+            "understandingFocusDe": "Vorzeichen der reversiblen Wärmeübertragung und Abgrenzung von reversibler adiabatischer Arbeitszufuhr.",
+            "understandingFocusEn": "Sign of reversible heat transfer and distinction from reversible adiabatic work input."
+          }
+        ]
+      },
+      "proposedProfileBodySha256": "sha256:0062deb977a50b6ccd1190fa3ad4c034369e28fe5a10e94c32fe0faf1f1db039",
+      "status": "inert_author_candidate_pending_independent_nativeQA",
+      "reason": "Der vollständige P-Kern beschreibt ausdrücklich eine qualitative Verhältnisbetrachtung und Einheitendeutung für Qrev/T. Die bisherigen Fälle erzwingen dagegen eigene Quotientenwerte. Vorgeschlagen wird eine P-Korrektur mit schon bestimmten Entropiewerten als Eingangsfakten: Das eigene Können bleibt deren System-/Einheiten-/Vorzeichendeutung, inverse Temperaturabhängigkeit bei gleichem Q und die Abgrenzung reversibler adiabatischer Arbeit. Es wird keine verpflichtende Zahlenrechnung oder Hyperbelgraphenkompetenz zusätzlich zum aktuellen qualitativen Ziel erzeugt.",
+      "authority": "ai_candidate",
+      "qualityImpact": {
+        "D": "Goal wording/source meaning unchanged; substantive P correspondence to be independently checked.",
+        "P": "Real body amendment, needs new native profile fingerprint and independently reviewed successor.",
+        "A": "Case task/solution correspondence must be independently evaluated, not simply renamed.",
+        "M": "No memory change from this qualitative scope correction.",
+        "V": "Existing image bytes unchanged; prior exact asset authority remains, not a fresh image approval."
+      }
+    }
+  ]
+}

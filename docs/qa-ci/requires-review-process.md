@@ -20,6 +20,12 @@ This is useful during migration. The long-term modeling target is still a canoni
 
 ## Scope
 
+For current Mathematics–Physics work spanning landscapes, use the durable
+[cross-subject inventory and review contract](../dev/math-physics-cross-subject-requires.md).
+Its canonical review universe uses authoritative `curricularAtomic` roles;
+technical leaves in other families remain explicitly unclassified until reviewed.
+The single-landscape workflow below remains useful for local compatibility edits.
+
 - Review one landscape JSON per pass.
 - Review only goals with `contains: []`.
 - Use report tooling to expose direct and effective prerequisites with origin.

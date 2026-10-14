@@ -2581,7 +2581,7 @@ public final class OpenAiDeV1McpContractAdapter {
                 context.completion(),
                 context.policies(),
                 null,
-                context.learningPlanToday());
+                context.learningPlanToday(), context.prerequisiteBlockers());
     }
 
     private McpSchema.CallToolResult getExamEvaluation(
@@ -2706,7 +2706,8 @@ public final class OpenAiDeV1McpContractAdapter {
                 context.personalizationHistory(), context.decision(),
                 guidedPlan ? List.of() : context.frontier(), context.resources(), context.goalVisualization(),
                 List.copyOf(nextTools), context.progress(), context.completion(), context.policies(),
-                awaitingPlan ? today.guidance().instruction() : context.instruction(), today);
+                awaitingPlan ? today.guidance().instruction() : context.instruction(), today,
+                context.prerequisiteBlockers());
     }
 
     private void requireWebFirstContextConfigured(UnifiedLearnerStateResponse state) {
@@ -3504,6 +3505,17 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("completion", completionSchema());
         properties.put("policies", stringArraySchema(0));
         properties.put("instruction", stringSchema());
+        properties.put("prerequisiteBlockers", Map.of(
+                "type", "array", "maxItems", 20,
+                "items", objectSchema(Map.of(
+                        "goalId", nonEmptyStringSchema(),
+                        "goalTitle", Map.of("type", "string", "maxLength", 240),
+                        "prerequisiteId", nonEmptyStringSchema(),
+                        "prerequisiteTitle", Map.of("type", "string", "maxLength", 240),
+                        "reason", Map.of("type", "string", "enum", List.of(
+                                "EXTERNAL_PREREQUISITE_UNMASTERED", "PREREQUISITE_OUTSIDE_FOCUS",
+                                "PREREQUISITE_NOT_PROJECTED", "UNKNOWN_PREREQUISITE"))),
+                        List.of("goalId", "reason"))));
         if (dailyPlanToolsEnabled) properties.put("learningPlanToday", dailyPlanSchema());
         return objectSchema(
                 properties,

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_schema_and_native_input_semantics_pass_not_independent_gate_approval",
+  "effectiveSemanticKind": "curricularAtomic",
+  "checks": [
+    {
+      "kind": "positive",
+      "schemaPath": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaSha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+      "schemaValid": true,
+      "schemaErrors": [],
+      "nativeSemanticErrors": []
+    },
+    {
+      "kind": "description",
+      "schemaPath": "contracts/goal-evidence/v1/goal-evidence-profile.schema.json",
+      "schemaSha256": "sha256:49092351b6d8b47f92134208c1f2a9234d4a04c2592fda87d401f61b2646fccb",
+      "schemaValid": true,
+      "schemaErrors": [],
+      "nativeSemanticErrors": []
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "tmp/cross-subject-requires/decimal-rounding-v2-20261013/positive-evidence.author-candidate.jsonl",
+      "sha256": "sha256:5085e4a93c6d24046e7150bed52a5c5b2e9f33a75eea1e7925d8b489761535e8"
+    },
+    {
+      "path": "tmp/cross-subject-requires/decimal-rounding-v2-20261013/description-evidence.author-candidate.jsonl",
+      "sha256": "sha256:66f785386e457424184145db40294047acbda0f03b2f70657abece3bde09044d"
+    }
+  ],
+  "goalAuthorArtifactSha256": "sha256:30f6310262cb14bda7ec60510a543a31514d692c69d30867f99b847a79f1a0dd",
+  "criteriaPath": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+  "criteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+  "criticalLimit": "Goal is not installed, requires/scope and independent semantics are pending; no V resource exists. These provisional author-input hashes must not be mechanically rebound as final approval after an image or graph change. Create additive candidates and actual reviewer checks against the final inputs."
+}

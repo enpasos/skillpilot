@@ -119,9 +119,18 @@ Examples:
 
 These cross-subject edges should be added sparingly and only where they improve learner navigation in a concrete way.
 
-Until a reviewed cross-landscape reference contract exists, authored `requires` edges in base subject landscapes MUST remain intra-landscape.
+Authored cross-subject edges use the existing stable global goal IDs and must
+resolve to an unambiguous current owner. The current Mathematics–Physics work
+uses the [cross-subject review contract](../../dev/math-physics-cross-subject-requires.md):
+individual necessity and scope decisions, independent review, preserved atomic
+IDs, and global direct/effective DAG validation. Qualified references retain
+their existing compatibility meaning; this does not introduce another reference
+format or claim that standalone embedded package fragments support every edge.
 
-Cross-subject prerequisites MAY be introduced only in compiled multi-subject views or via a separate bundle-level reference format.
+A cross-subject prerequisite does not make its subject a learner target or
+create mastery. Composition authors must explicitly distinguish `target` from
+`prerequisiteOnly` where appropriate. Runtime must resolve retained canonical
+prerequisites independently of current target, focus and subject selection.
 
 ### 7. Prefer one DE-level school root in learner-facing configuration
 

@@ -32,7 +32,6 @@ public class LandscapeService {
     private static final int SUPPORTED_SOURCE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_LANDSCAPE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-landscape-registry.json");
-    private static final Path QUALITY_REVIEW_ARTIFACTS_PATH = Path.of("DE", "Gymnasium", "quality");
     private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
@@ -724,7 +723,7 @@ public class LandscapeService {
 
         try {
             List<Path> files = PrunedFileTree.files(dir,
-                            path -> path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))).stream()
+                            path -> isQualityReviewDirectory(dir, path)).stream()
                     .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .sorted()
                     .collect(Collectors.toList());
@@ -859,7 +858,17 @@ public class LandscapeService {
                 && StringUtils.hasText(file.getFileName().toString())
                 && file.getFileName().toString().endsWith(".json")
                 // Review candidates may contain real landscape IDs but are not runtime curricula.
-                && !file.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH));
+                && !isQualityReviewDirectory(dir, file.getParent());
+    }
+
+    private boolean isQualityReviewDirectory(Path dir, Path directory) {
+        // Only relative directory components count; the configured root may itself be named quality.
+        for (Path segment : dir.relativize(directory)) {
+            if ("quality".equals(segment.toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private long loadArchivedSourceLandscapes(Path dir, List<SkillLandscape> loaded) {
@@ -1848,7 +1857,7 @@ public class LandscapeService {
         }
         try {
             return PrunedFileTree.files(dir,
-                            path -> path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))).stream()
+                            path -> isQualityReviewDirectory(dir, path)).stream()
                     .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .mapToLong(p -> {
                         try {

@@ -2163,6 +2163,7 @@ public class LearnerServiceTest {
     @Transactional
     void focusMutationClearsOutOfScopeActiveGoalAndReturnsNewAutopilotState() {
         selectCompletedCanonicalMathCurriculum();
+        givenMasteredMathematicsPrerequisitesOutsideFocus(COMPOSITION_J7_SCOPE_ID);
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setLearningStrategy("SEQUENTIAL");
         learner.setAutoPilot(false);
@@ -2274,6 +2275,7 @@ public class LearnerServiceTest {
     void hessenSekTwoLkFocusNavigationWidensEOneToEPhaseAndPreservesActiveGoal() {
         selectCompletedHessenSekTwoLkCurriculum();
         learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_E_ONE_SCOPE_ID));
+        givenMasteredMathematicsPrerequisitesOutsideFocus(CANONICAL_E_ONE_SCOPE_ID);
 
         String activeGoalId = learnerService.getLearnerState(learnerId).frontier().stream()
                 .filter(goal -> "atomic".equals(goal.type()))
@@ -2611,6 +2613,7 @@ public class LearnerServiceTest {
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
 
+        givenMasteredMathematicsPrerequisitesOutsideFocus(COMPOSITION_J8_SCOPE_ID);
         completeCurrentScope();
 
         var state = learnerService.getLearnerState(learnerId);
@@ -3845,6 +3848,7 @@ public class LearnerServiceTest {
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J10_SCOPE_ID));
 
+        givenMasteredMathematicsPrerequisitesOutsideFocus(COMPOSITION_J10_SCOPE_ID);
         completeCurrentScope(200);
 
         var state = learnerService.getLearnerState(learnerId);
@@ -3973,6 +3977,37 @@ public class LearnerServiceTest {
         goals.put("SEK2", goal("SEK2", List.of(), List.of("SEK2_TASK")));
         goals.put("SEK2_TASK", goal("SEK2_TASK", List.of(), List.of()));
         return goals;
+    }
+
+    private void givenMasteredMathematicsPrerequisitesOutsideFocus(String focusGoalId) {
+        Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+                .getGoals().stream()
+                .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        Set<String> focusAtomicGoalIds = new LinkedHashSet<>();
+        CompositionStructureResolution compositionScope = compositionViewService
+                .resolveStructureReference(focusGoalId);
+        List<String> focusRoots = compositionScope == null
+                ? List.of(focusGoalId)
+                : compositionScope.referencedGoalIds();
+        focusRoots.forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, focusAtomicGoalIds));
+        assertThat(focusAtomicGoalIds).isNotEmpty();
+
+        Map<String, List<String>> authoredRequirements = learnerService.computeEffectiveRequires(canonicalGoals);
+        Set<String> preparedAtomicGoalIds = new LinkedHashSet<>();
+        focusAtomicGoalIds.stream()
+                .flatMap(goalId -> authoredRequirements.getOrDefault(goalId, List.of()).stream())
+                .filter(goalId -> !focusAtomicGoalIds.contains(goalId))
+                .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, preparedAtomicGoalIds));
+        preparedAtomicGoalIds.removeAll(focusAtomicGoalIds);
+        assertThat(preparedAtomicGoalIds).isNotEmpty().doesNotContainAnyElementsOf(focusAtomicGoalIds);
+
+        // These navigation/completion scenarios start with the actual out-of-focus
+        // prerequisite lessons and orientations already completed. Seed that prior
+        // state explicitly; completing a focus goal must never infer this mastery.
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAllAndFlush(preparedAtomicGoalIds.stream()
+                .map(goalId -> new Mastery(learner, goalId, 1.0))
+                .toList());
     }
 
     private void completeCurrentScope() {

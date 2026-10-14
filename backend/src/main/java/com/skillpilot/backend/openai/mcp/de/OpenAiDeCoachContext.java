@@ -25,7 +25,40 @@ public record OpenAiDeCoachContext(
         Completion completion,
         List<String> policies,
         String instruction,
-        OpenAiDeLearningPlanToday learningPlanToday) {
+        OpenAiDeLearningPlanToday learningPlanToday,
+        @JsonInclude(JsonInclude.Include.NON_EMPTY)
+        List<com.skillpilot.backend.api.PrerequisiteBlocker> prerequisiteBlockers) {
+
+    public OpenAiDeCoachContext {
+        prerequisiteBlockers = prerequisiteBlockers == null ? List.of() : List.copyOf(prerequisiteBlockers);
+    }
+
+    public OpenAiDeCoachContext(
+            String learningState,
+            String requiredAction,
+            String interactionMode,
+            Curriculum curriculum,
+            Orientation orientation,
+            OrientationOutlook orientationOutlook,
+            ActiveGoal activeGoal,
+            List<Option> options,
+            CurriculumCatalog curriculumCatalog,
+            PersonalizationHistory personalizationHistory,
+            Decision decision,
+            List<Goal> frontier,
+            List<Resource> resources,
+            GoalVisualization goalVisualization,
+            List<String> nextAllowedTools,
+            Progress progress,
+            Completion completion,
+            List<String> policies,
+            String instruction,
+            OpenAiDeLearningPlanToday learningPlanToday) {
+        this(learningState, requiredAction, interactionMode, curriculum, orientation, orientationOutlook,
+                activeGoal, options, curriculumCatalog, personalizationHistory, decision, frontier, resources,
+                goalVisualization, nextAllowedTools, progress, completion, policies, instruction, learningPlanToday,
+                List.of());
+    }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record Curriculum(

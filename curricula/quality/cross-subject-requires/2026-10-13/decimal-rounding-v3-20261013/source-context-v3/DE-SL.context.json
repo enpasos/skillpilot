@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 3,
+  "status": "author_actual_source_context_partial_mapping_and_placement_pending",
+  "jurisdiction": "DE-SL",
+  "retainedV2Context": {
+    "path": "tmp/cross-subject-requires/decimal-rounding-v2-20261013/source-context-v2/DE-SL.context.json",
+    "sha256": "sha256:5ddd2a4a0ea5cfd3a89d982c64788f983664e977f611df487652daccd0e15021",
+    "byteLength": 17285
+  },
+  "sourcePdfBinding": {
+    "path": "curricula/DE/Gymnasium/input/SL/LP_MA_gym9_5und6_2023.pdf",
+    "sha256": "sha256:fd684fe9e30f4f072e98ed9dee7b28c8f1a7711dc9e104b0b390d33d418d950b",
+    "byteLength": 1556444
+  },
+  "sourceExtractionBinding": {
+    "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+    "sha256": "sha256:1602c8d4043d3ec0489cafab91c6c2581f878173854bbbe817e0ce13f44bc021",
+    "byteLength": 1192899
+  },
+  "sourceRowId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-5-6-t07-bruche-b20-801af5f25e",
+  "exactSourceRowSha256": "sha256:565e0ac7e5da93cb9f80b4309b7a9a05bd4c08bab59001a77141174b5fd315f2",
+  "exactSourcePassageSha256": "sha256:a13aac09ab5e953d1e86a59dfc73038fc7fd1d14254e8bc1c63b3da7c52563c1",
+  "retainedExtractionReportedLocator": {
+    "sourceRef": "Lehrplan Mathematik Klassenstufen 5/6 im neunjährigen Gymnasium, Saarland, Juli 2023",
+    "sourceSpan": "Lehrplan Mathematik Klassenstufen 5/6 im neunjährigen Gymnasium, Saarland, Juli 2023, Brüche, Kompetenzbuendel 20",
+    "sourcePage": null
+  },
+  "sourceReference": {
+    "jurisdiction": "DE-SL",
+    "extractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+    "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-5-6-t07-bruche-b20-801af5f25e",
+    "passageId": "de-sl-mathematik-seki-gym9-2023-2026-SL-SekI-5/6-T07-bruche",
+    "passageTitle": "5/6: Brüche",
+    "sourceRef": "Lehrplan Mathematik Klassenstufen 5/6 im neunjährigen Gymnasium, Saarland, Juli 2023, printed S.41 (PDF page41)",
+    "sourceSpan": "Actual bound PDF page41, printed page41; Printed41; decimal-rounding portion only.",
+    "sourcePage": 41,
+    "sourceLine": null,
+    "sourceDocument": {
+      "key": "SL_GYM9_MATHEMATIK_5_6_2023",
+      "title": "Lehrplan Mathematik Klassenstufen 5/6 im neunjährigen Gymnasium, Saarland, Juli 2023",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_MA_gym9_5und6_2023.pdf",
+      "role": "binding-lower-secondary-grade-5-6",
+      "official": true,
+      "landingUrl": "https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasium",
+      "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_Gymnasium_neunjaehriges_23/Mathe/LP_MA_gym9_5und6_2023.pdf?__blob=publicationFile&v=4"
+    },
+    "sourceGradeOrPhase": null,
+    "evidenceDecision": "author_candidate_pending_independent_source_mapping",
+    "scopeRationale": "Direct decimal/rational rounding item or rounding within the explicitly named decimal/fraction content unit; no natural-number-only row used.",
+    "signedDomainCaution": "Early source may name positive decimals; signed transfer needs independent didactic/source-role review, not an exact-source claim."
+  },
+  "actualPageReads": [
+    {
+      "physicalPdfPageOneBased": 41,
+      "actualLayoutTextSha256": "sha256:e499d750f270de8544e6d7b91f9d34371ee71ed759909a901e76f757b578c66f",
+      "fullRelevantPageReadByAuthor": true
+    }
+  ],
+  "correctedAuthorLocator": {
+    "printedPage": 41,
+    "physicalPdfPageOneBased": 41
+  },
+  "authorPartialCoreInterpretation": "5/6 fraction unit applies rounding rules to decimal fractions; extended place values and representation conversion are neighboring capabilities.",
+  "scopeAndPlacementCaution": "5/6 fraction unit applies rounding rules to decimal fractions; extended place values and representation conversion are neighboring capabilities.",
+  "neededNativeMappingRepairsOrCautions": "A supplied-rule operation is supported partially. Neighboring fraction conversion and natural analogy are not universal AND gates.",
+  "sourceRoleUnchanged": "binding-lower-secondary-grade-5-6",
+  "sourceEdgeQuoteClaimed": false,
+  "all16ExactPlacementApproved": false,
+  "signedPeriodicOrWholeSourceCoverageClaimed": false,
+  "method": "This author read all full relevant actual PDF pages via retained portable pdftotext-layout and inspected full retained extracted rows/passages; hashes bind local source bytes. Context is author preparation, not independent source review or legal approval."
+}
