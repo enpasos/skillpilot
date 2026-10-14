@@ -1,5 +1,16 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Chemie: Folgecheckpoint der Naturstoff-Kontexte – 14. Oktober 2026
+
+Der [neue Arbeitscheckpoint](chemie-naturstoffe-context-checkpoint-2026-10-14.md)
+sichert die seit dem grünen GitHub-Commit `cd297c280` begonnenen Arbeiten.
+Aktiv bleiben **231/402 und M6**. Der isolierte Kandidat erreicht nach den
+neun neuen Naturstoffabschlüssen und der Wiederherstellung aller sieben
+betroffenen Bestandskontexte **305/419 (72,8 %)**, sechs Prüfungen PASS und
+keine Blocker im Fünf-Gate-Bericht. Quellen- und Säure/Basen-Entwürfe bleiben
+mit ihrem tatsächlichen Prüfstatus erhalten. Vor neuer fachlicher Arbeit
+folgen Commit, Push und erfolgreicher GitHub-Lauf für diesen Folgecheckpoint.
+
 ## Stabiler Chemie-Arbeitscheckpoint – 14. Oktober 2026
 
 Der [vollständige inaktive Zwischenstand](chemie231-inactive-working-state-checkpoint-2026-10-14.md)

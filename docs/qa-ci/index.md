@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: Naturstoff-Kontexte und gesicherte Quellen-/Säure-Basen-Arbeiten (14.10.2026)](chemie-naturstoffe-context-checkpoint-2026-10-14.md)
 - [Chemie: stabiler inaktiver Arbeitscheckpoint und Wiederaufnahme (14.10.2026)](chemie231-inactive-working-state-checkpoint-2026-10-14.md)
 - [Chemie: 262/402 im Fünf-Gate-Bericht und offene Quellenintegration vom 14. Oktober](chemie262-five-gate-integration-source-holds-2026-10-14.md)
 - [Chemie: gesicherte Quellen- und Profilprüfungen bei 231/402 vom 13. Oktober](chemie231-reviewed-source-profile-checkpoint-2026-10-13.md)

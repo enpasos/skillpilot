@@ -1,0 +1,11 @@
+# Fresh independent B science review — four HB/BW/ST original duties
+
+The FIRST independent science outcome is `FIRST.independent-science-outcome.json`, bound by `FIRST.science-seal.json`. All original neutral inputs were hash checked and frozen before review. The reviewer is an independent B reader of this author successor and read no A or peer outcome before the first seal. Actual official PDF pages HB34/36/37, BW42 (printed40), ST30/31 were independently extracted, rendered and read. All ten complete DE/EN cases and forty rubric expectations were read.
+
+The result is **PARTIAL_HOLD**. Preserve the exact original-source corrections and bounded nano/carbon source contributions. Revise the HB Wirkstoff concept/isolation and BW future-research bindings. The HB generic substance/separation goals do not contain the Wirkstoff-role operator, and the supplied isolation cases lack a concrete separating property/method behind their claimed selective separation. The BW whole goal union lacks a future research/design/validation operator; e594 is a cluster, not a fifth atomic contribution. Minimum remedies and exact source/case locators are in the outcome.
+
+New93a7ce4d is one coherent research-feedback explanation competence, scientifically KEEP with a reasoned `no_memory_needed` suitability judgment. Its image is absent. This review grants no formal D/P/A/M/V gate, active adoption, strict M7 closure, execution, human review or release acceptance. All supplied cases remain E0/G0 unexecuted author designs. Existing whole-goal approvals are not reopened or inferred from these narrower cases.
+
+The proposed HB-LK view exposes an additional edge to the already absent fcc73 prerequisite. No new missing prerequisite ID does not establish an acquirable whole-course route. The source-duty review cannot close that separate scope issue. Both ST views remain exact; dfbc remains an existing LK contribution only.
+
+`frozen-input-manifest.json`, `read-inventory.before-FIRST.json` and `technical-validation.txt` distinguish preserved input bytes, actual substantive reading and technical checks. Active canonical/source/view files, H, ledgers, registry, runtime, other subjects and Git were not edited. Own review material is CC-BY-4.0; technical checks/manifests are Apache-2.0. Official source rights are retained.
