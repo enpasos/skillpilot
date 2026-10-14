@@ -1,0 +1,76 @@
+{
+  "role": "Independent reviewer calculation from supplied model data; not author checker or observed learner result",
+  "numbers": {
+    "G2-C1": {
+      "Kb_X": 9.999999999999999e-11,
+      "Kb_Y": 9.999999999999999e-06,
+      "cross_K": 100000.0
+    },
+    "G2-C2": {
+      "pKa_B1H": 11,
+      "pKa_B2H": 9,
+      "K1": 10,
+      "K2": 0.1
+    },
+    "G3-C2": {
+      "neutral_h": 3.162277660168379e-07,
+      "neutral_pH": 6.5,
+      "separate_oh": 1e-08
+    },
+    "G4-C1": {
+      "pH_A": 2.0,
+      "pH_B": 11.301029995663981,
+      "diluteA": 3.0,
+      "diluteB": 10.301029995663981
+    },
+    "G4-C2": {
+      "pH_C": 2.6020599913279625,
+      "pH_D": 11.301029995663981,
+      "ultra_h": 1.005012499921876e-07,
+      "ultra_pH": 6.997828536638184
+    },
+    "G5-C1": {
+      "weak_q": 0.001,
+      "fraction": 0.01,
+      "weakacid_pH": 3.0,
+      "weakbase_pH": 11.0
+    },
+    "G5-C2": {
+      "quadratic_q": 6.1803398874989485e-06,
+      "fraction": 0.6180339887498948,
+      "weakacid_pH": 5.208987640249979,
+      "weakbase_pH": 8.79101235975002,
+      "q_to_water_scale": 61.80339887498949
+    },
+    "G6-C1": {
+      "initial_mmol": 2.0,
+      "half_mmol": 1.0,
+      "quarter_pH": 4.322878745280337
+    },
+    "G6-C2": {
+      "initial_mmol": 1.0,
+      "half_HCl_mmol": 0.5,
+      "pKb": 4.800000000000001
+    },
+    "G7-C1": {
+      "initial_pH": 5.101029995663981,
+      "remaining_A": 0.015,
+      "new_HA": 0.015,
+      "after_pH": 4.8
+    },
+    "G7-C2": {
+      "initial_pH": 9.50102999566398,
+      "sampleA_pH": 8.50102999566398,
+      "sampleB_acid_excess": 0.005000000000000001
+    }
+  },
+  "balancedTransfersReviewed": [
+    "HCl+H2O→H3O++Cl−; charge0→0",
+    "NH3+H2O⇌NH4++OH−; charge0→0",
+    "H3O++NH3→H2O+NH4+; charge+1→+1",
+    "HCO3−+H3O+→H2CO3+H2O; charge0→0",
+    "HCO3−+OH−→CO3²−+H2O; charge−2→−2",
+    "2H2O⇌H3O++OH−; charge0→0"
+  ],
+  "limits": "All numerical solutions checked against task assumptions. q/c and water neglect are distinct; helper quadratic is supplied material, not a required derivation. Buffer amount changes precede equilibrium use."
+}

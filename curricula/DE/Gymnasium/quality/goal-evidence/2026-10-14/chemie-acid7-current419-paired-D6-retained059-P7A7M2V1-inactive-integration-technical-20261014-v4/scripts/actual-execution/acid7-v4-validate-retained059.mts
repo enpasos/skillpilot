@@ -1,0 +1,11 @@
+import {readFile,writeFile} from 'node:fs/promises';import{join}from'node:path';
+const root='/home/enpasos/projects/skillpilot';const oldHost=join(root,'tmp/chemie-resume-20261014/NAT9-host');const curHost=join(root,'tmp/chemie-resume-20261014/acid7-integration-v4-host');
+const O='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-current419-paired-D6-retained059-P7A7M2V1-inactive-integration-technical-20261014-v4';
+const {materializeGoalDescriptionRolloutBatchDualSummary}=await import(join(oldHost,'app/scripts/materializeGoalDescriptionRolloutBatch.ts'));
+const {validateGoalDescriptionDualRoundResolution}=await import(join(curHost,'app/scripts/validateGoalDescriptionDualRoundResolution.ts'));
+const dual=await materializeGoalDescriptionRolloutBatchDualSummary(O+'/config/D7.original-whole-container.historical-normal-address.config.json',false);
+const resolution=JSON.parse(await readFile(join(root,O,'historical-seven-original-science-normal/resolutions/059acb11-29b3-5645-ac4c-b4214dc41a2d.resolution.json'),'utf8'));
+const bytes=await readFile(join(root,O,'historical-seven-original-science-normal/synthesis-decisions.json'));
+const landscape=JSON.parse(await readFile(join(curHost,'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'),'utf8'));
+const result=await validateGoalDescriptionDualRoundResolution({resolution,dualSummary:dual.summary,dualSummaryBytes:dual.bytes,currentInput:dual.first.input,landscape,first:dual.first,second:dual.second,synthesisDecisionManifestArtifact:{manifest:JSON.parse(bytes.toString()),manifestBytes:bytes,manifestPath:'synthesis-decisions.json'}});
+await writeFile(join(root,O,'checks/D059.original-full-seven-normal-resolution-against-current-canonical.actual.json'),JSON.stringify({actualExecutionUTC:new Date().toISOString(),role:'Stock validator technical transport of unchanged full native page and original whole seven review containers',result},null,2)+'\n');console.log(JSON.stringify(result));if(result.errors.length||!result.strictDescriptionComplete)process.exitCode=1;

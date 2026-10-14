@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "role": "Author actual sight triage, no independent approval",
+  "assetSha256": "sha256:7373aab3f82f248990c0e6f1dab3ac3ca99b7bf9b0f39e9a504c010c1a8c2bb1",
+  "decision": "REVISE_inactive",
+  "countsActuallyVisible": {
+    "extract": {
+      "green": 6,
+      "gray": 8
+    },
+    "enriched": {
+      "green": 6,
+      "gray": 2
+    },
+    "other": {
+      "green": 1,
+      "gray": 5
+    }
+  },
+  "actualVisibleDefects": [
+    "One extra green in right fraction",
+    "One gray missing from other fraction"
+  ],
+  "targetedAction": "Remove the bottom-right green from the right flask; add one gray near the top-center liquid region of the small middle flask; preserve all other content",
+  "gateVGranted": false
+}

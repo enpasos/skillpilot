@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:12252b1d62a60747a8d7147f6b32d8f6afe56cae2a3063f137fdfc3761de3ce6",
+  "reviewInputFingerprint": "sha256:5051a2bd40a7ad6fe30681222afc1ffca8354464c8796af2d4f78150235a3e2f",
+  "goalCount": 6,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-a",
+      "roundId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-first-pass-a",
+      "independenceGroupId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-independent-a",
+      "runIds": [
+        "chemie-acid6-current419-fresh-a-20261014-v3-actual-run"
+      ],
+      "providers": [
+        "OpenAI / Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex::Codex (exact runtime model identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-b",
+      "roundId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-first-pass-b",
+      "independenceGroupId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-independent-b",
+      "runIds": [
+        "chemie-acid7-current419-targeted-six-20261014-v3-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 inherited Codex session; exact backend version not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 6,
+    "unavailable": 0,
+    "requiresSynthesis": 6
+  },
+  "goals": [
+    {
+      "goalId": "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+      "firstRecordId": "chemie-acid6-fresh-a-v3-2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+      "secondRecordId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b.2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+      "firstRunId": "chemie-acid6-current419-fresh-a-20261014-v3-actual-run",
+      "secondRunId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "firstRecordId": "chemie-acid6-fresh-a-v3-48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "secondRecordId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b.48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "firstRunId": "chemie-acid6-current419-fresh-a-20261014-v3-actual-run",
+      "secondRunId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+      "firstRecordId": "chemie-acid6-fresh-a-v3-07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+      "secondRecordId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b.07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+      "firstRunId": "chemie-acid6-current419-fresh-a-20261014-v3-actual-run",
+      "secondRunId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
+      "firstRecordId": "chemie-acid6-fresh-a-v3-c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
+      "secondRecordId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b.c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
+      "firstRunId": "chemie-acid6-current419-fresh-a-20261014-v3-actual-run",
+      "secondRunId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "33034876-8da5-5619-ad86-e1272e0304b0",
+      "firstRecordId": "chemie-acid6-fresh-a-v3-33034876-8da5-5619-ad86-e1272e0304b0",
+      "secondRecordId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b.33034876-8da5-5619-ad86-e1272e0304b0",
+      "firstRunId": "chemie-acid6-current419-fresh-a-20261014-v3-actual-run",
+      "secondRunId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7",
+      "firstRecordId": "chemie-acid6-fresh-a-v3-d7461c15-6992-5342-b899-6c490ee0cbb7",
+      "secondRecordId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b.d7461c15-6992-5342-b899-6c490ee0cbb7",
+      "firstRunId": "chemie-acid6-current419-fresh-a-20261014-v3-actual-run",
+      "secondRunId": "chemie-acid7-current419-targeted-six-20261014-v3-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

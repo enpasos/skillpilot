@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual stock import of one-local-edit candidate; independent approval pending",
+  "createdAtUTC": "2026-10-14T19:46:39.489311+00:00",
+  "provider": "OpenAI / ChatGPT-Codex image_gen.imagegen",
+  "imageSha256": "sha256:502fc4e43c5939fe0be26c2e91923b007f65a2abdad938c9edf02fa34f7a6f2b",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "normalImportExit": 0,
+  "command": [
+    "node",
+    "scripts/import_goal_visualization.mjs",
+    "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-hb-isolation40-one-gray-count-correction-author-20261014-v2/isolation40.fourth-generated.original.png",
+    "--landscape",
+    "candidate/image-only-staging-landscape.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex image generation",
+    "--review-status",
+    "pilot",
+    "--license",
+    "CC-BY-4.0",
+    "--prompt",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-hb-isolation40-one-gray-count-correction-author-20261014-v2/actual-one-gray-correction-provider-prompt.de.txt",
+    "--reconstruction-prompt",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-hb-isolation40-one-gray-count-correction-author-20261014-v2/image-reconstruction-prompt.de.md",
+    "--alt-text",
+    "Ein Extrakt mit sechs grünen Wirkstoff-Symbolen und acht grauen Begleitstoff-Symbolen wird getrennt. Die angereicherte rechte Fraktion enthält fünf grüne und zwei graue Symbole, die andere ein grünes und sechs graue. Die Symbolarten bleiben unverändert; keine reine oder klinisch geprüfte Substanz ist behauptet.",
+    "--description",
+    "Qualitative Symbolskizze einer Stofftrennung: der Wirkstoff bleibt unverändert, sein Anteil steigt in der rechten weiterhin gemischten Fraktion."
+  ],
+  "authorCountCoordinates": {
+    "extractGreen": [
+      [
+        295,
+        325
+      ],
+      [
+        480,
+        350
+      ],
+      [
+        293,
+        450
+      ],
+      [
+        428,
+        470
+      ],
+      [
+        332,
+        570
+      ],
+      [
+        525,
+        560
+      ]
+    ],
+    "extractGray": [
+      [
+        552,
+        300
+      ],
+      [
+        231,
+        405
+      ],
+      [
+        367,
+        395
+      ],
+      [
+        590,
+        384
+      ],
+      [
+        524,
+        438
+      ],
+      [
+        583,
+        493
+      ],
+      [
+        248,
+        530
+      ],
+      [
+        425,
+        579
+      ]
+    ],
+    "rightGreenCount": 5,
+    "rightGrayCount": 2,
+    "otherGreenCount": 1,
+    "otherGrayCount": 6
+  },
+  "originalsAndBadAuthorCountPreserved": true,
+  "independentApproval": false,
+  "activeWrites": false,
+  "humanApproval": false
+}
