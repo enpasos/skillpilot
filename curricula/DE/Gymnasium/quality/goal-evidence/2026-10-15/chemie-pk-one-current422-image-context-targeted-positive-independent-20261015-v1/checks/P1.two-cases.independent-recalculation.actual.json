@@ -1,0 +1,69 @@
+{
+  "computedAtUTC": "2026-10-15T11:04:30.248996+00:00",
+  "role": "Independent recalculation of the two inherited complete P1 cases; no learner execution or new authored assessment case.",
+  "G2-C1": {
+    "KaHX": 0.0001,
+    "KaHY": 1e-09,
+    "KaRatio": 100000.0,
+    "KbX": 9.999999999999999e-11,
+    "KbY": 9.999999999999999e-06,
+    "pKbX": 10.0,
+    "pKbY": 5.0,
+    "crossK": 100000.0,
+    "acidOrder": "HX > HY",
+    "baseOrder": "Y- > X-",
+    "initialConcentrations_mol_per_litre": [
+      0.001,
+      0.1
+    ],
+    "concentrationConfusionRejected": true
+  },
+  "G2-C2": {
+    "KbB1": 0.001,
+    "KbB2": 1e-05,
+    "KbRatio": 100.0,
+    "KaB1H": 1e-11,
+    "KaB2H": 9.999999999999999e-10,
+    "pKaB1H": 11.0,
+    "pKaB2H": 9.0,
+    "KaHA": 1e-10,
+    "crossK_B1": 10.000000000000002,
+    "crossK_B2": 0.10000000000000002,
+    "baseOrder": "B1 > B2",
+    "conjugateAcidOrder": "B2H+ > B1H+",
+    "preferredSides": [
+      "products",
+      "reactants"
+    ]
+  },
+  "independentModelLimitChecks": [
+    {
+      "K": 100000.0,
+      "equalInitialReactantsNoInitialProducts_assumedForThisCheckOnly": true,
+      "fractionConvertedAtEquilibrium": 0.9968476908167397
+    },
+    {
+      "K": 10,
+      "equalInitialReactantsNoInitialProducts_assumedForThisCheckOnly": true,
+      "fractionConvertedAtEquilibrium": 0.7597469266479577
+    },
+    {
+      "K": 0.1,
+      "equalInitialReactantsNoInitialProducts_assumedForThisCheckOnly": true,
+      "fractionConvertedAtEquilibrium": 0.24025307335204213
+    }
+  ],
+  "equilibriumIdentities": [
+    "Ka(HA)=a(H3O+)*a(A-)/a(HA) with solvent activity absorbed.",
+    "Kb(A-)=a(HA)*a(OH-)/a(A-). Multiplication gives Kw at the same temperature and compatible standard-state approximation.",
+    "K(HA+B -> A-+BH+)=Ka(HA)/Ka(BH+)=10**(pKa(BH+)-pKa(HA))."
+  ],
+  "falseInferencesRejected": [
+    "Larger pKb means a stronger base.",
+    "Lower initial acid concentration makes the molecular acid intrinsically weaker.",
+    "K>1 guarantees complete reaction.",
+    "K alone determines the present net direction for arbitrary initial Q.",
+    "Memorized pK rules or recognition of the image alone demonstrate independent application."
+  ],
+  "languageEquivalence": "Both complete DE/EN cases carry the same model acids/bases, constants, reactions, obligations and solution limits; no additional demand appears in only one language."
+}

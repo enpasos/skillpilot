@@ -1,0 +1,68 @@
+{
+  "commands": [
+    {
+      "name": "stock-round-a-batch",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+        "--bundle",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/review-bundle-manifest.json",
+        "--input",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/description-review-input.json",
+        "--campaign",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/description-review-campaign.json",
+        "--run",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/results/chemie-memory-selection-current422-native13-context-20261015-v2-first-pass-a.batch-001.run.json",
+        "--batch-input",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/batches/chemie-memory-selection-current422-native13-context-20261015-v2-first-pass-a.batch-001.input.jsonl",
+        "--records",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/results/chemie-memory-selection-current422-native13-context-20261015-v2-first-pass-a.batch-001.records.jsonl"
+      ],
+      "startedAt": "2026-10-15T11:28:02.130991+00:00",
+      "completedAt": "2026-10-15T11:28:02.769532+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/checks/stock-round-a-batch.stdout.actual.txt",
+        "sha256": "sha256:c3c2ef826a95da81be9dca22add6b4e67dceaf04479f8d7bbbcf91471590da04",
+        "bytes": 40
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/checks/stock-round-a-batch.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "stock-round-a-campaign",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/review-bundle-manifest.json",
+        "--input",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/description-review-input.json",
+        "--campaign",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/description-review-campaign.json",
+        "--batches-dir",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/batches",
+        "--results-dir",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/round-a/results"
+      ],
+      "startedAt": "2026-10-15T11:28:02.769909+00:00",
+      "completedAt": "2026-10-15T11:28:03.455914+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/checks/stock-round-a-campaign.stdout.actual.txt",
+        "sha256": "sha256:32773bb28e7b9511ed03ec30c0064fdfc45d02a5585d5be343bf7a88ce83aa32",
+        "bytes": 51
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory13-current422-native-fresh-independent-a-20261015-v1/checks/stock-round-a-campaign.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "normalHelpersUnmodified": true,
+  "onlyAssignedRoundA": true
+}

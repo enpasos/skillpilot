@@ -1,0 +1,109 @@
+{
+  "officialBWSource": {
+    "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf",
+    "sha256": "sha256:3ae66c6c2db6371aa24153484f78832f1dfc2097deac8b8dfbffeb32bed28c62",
+    "bytes": 2155781
+  },
+  "actualLocalExtractionCommand": [
+    "pdftotext",
+    "-layout",
+    "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf",
+    "<ignored-host>/tooling/BW.official-source.txt"
+  ],
+  "positiveActualSourceMentions": [
+    {
+      "term": "Massenanteil",
+      "actualMentions": [
+        {
+          "pdfPageIndexZeroBased": 22,
+          "surroundingSourceLines": " (7) Berechnungen durchführen und dabei Größen und Einheiten korrekt nutzen (Atommasse,\n Teilchenzahl, Masse, Dichte, Stoffmenge, molare Masse, molares Volumen, Massenanteil,\n Stoffmengenkonzentration)"
+        }
+      ]
+    },
+    {
+      "term": "Volumenanteil",
+      "actualMentions": [
+        {
+          "pdfPageIndexZeroBased": 15,
+          "surroundingSourceLines": "(10) die Zusammensetzung der Luft nennen und die Veränderungen des Kohlenstoffdioxidanteils\nhinsichtlich ihrer globalen Auswirkungen bewerten (Volumenanteile von Stickstoff, Sauerstoff,\nEdelgasen und Kohlenstoffdioxid)"
+        }
+      ]
+    },
+    {
+      "term": "Henderson-Hasselbalch",
+      "actualMentions": [
+        {
+          "pdfPageIndexZeroBased": 35,
+          "surroundingSourceLines": "(16) die Wirkungsweise von Puffersystemen und deren Bedeutung an Beispielen erklären und\nden pH-Wert von Pufferlösungen berechnen (Henderson-Hasselbalch-Gleichung)\n"
+        }
+      ]
+    },
+    {
+      "term": "Faraday-Gesetz",
+      "actualMentions": [
+        {
+          "pdfPageIndexZeroBased": 40,
+          "surroundingSourceLines": " vergleichen (Elektrodenreaktionen, Anode, Kathode, Zellspannung, Zersetzungsspannung,\n Faraday-Gesetz)\n"
+        }
+      ]
+    },
+    {
+      "term": "Orbitalmodells",
+      "actualMentions": [
+        {
+          "pdfPageIndexZeroBased": 41,
+          "surroundingSourceLines": "\n(1) den energetischen Zustand der Elektronen in der Atomhülle mithilfe des Orbitalmodells\nbeschreiben und dieses Modell auf die chemische Bindung in einfachen Molekülen anwenden"
+        }
+      ]
+    },
+    {
+      "term": "Mesomeriestabilisierung",
+      "actualMentions": [
+        {
+          "pdfPageIndexZeroBased": 37,
+          "surroundingSourceLines": "Benzols aus der besonderen Molekülstruktur erklären (Kekulé, delokalisiertes Elektronenring­\nsystem, Mesomeriestabilisierung, Substitution statt Addition)\n"
+        }
+      ]
+    }
+  ],
+  "interpretation": [
+    "Henderson-Hasselbalch, Faraday and mass fractions have explicit BW source mentions despite missing current BW applicability on their particular card-origin goals. Therefore absence of a canonical BW entry is a binding gap, not proof of curricular exclusion.",
+    "The BW source orbital-model sentence does not by itself establish the full sodium-doublet/quantum-number origin goal. A specific source-to-origin binding has not been authored or approved here.",
+    "No explicit IR/NMR or quantitative Arrhenius equation claim was located in the finite BW source text examined. This bounded author task does not infer broad state-wide course additions from a national memory-node applicability list.",
+    "All four current memory nodes carry GK and LK tags. Each of the 45 cards matches those tags, so the current frontend/backend tag filter admits the entire deck, including the nine cards whose present origin-goal applicability lacks BW. Neither filter is supplied the current composition target goal set.",
+    "Deck ownership is canonical DE/Gymnasium; retained BY provenance is not a licence to rename, clone or silently expose a second curriculum. No card, goal, applicability or curriculum tag was changed.",
+    "The rejected diagnostic uses explicit target for each added memory goal. prerequisiteOnly would hide the node from the production memory visibility collector and is not a remedy."
+  ],
+  "actualRuntimeSourceBindings": [
+    {
+      "path": "app/src/utils/srsTags.ts",
+      "sha256": "sha256:b56555b0a069ac25faa766003e4efe1e4f59128aeb8116036efec6186eec7ad0",
+      "bytes": 680
+    },
+    {
+      "path": "app/src/hooks/useSrsMastery.ts",
+      "sha256": "sha256:dc7311ace49a71751241b93077ce9d392a8d26af2afed04a2beef6692ccbcf23",
+      "bytes": 7762
+    },
+    {
+      "path": "app/src/hooks/useFlashcardSetStatus.ts",
+      "sha256": "sha256:4d956766dea0c1c7e032c4722bc97ab9a98c84f7650191161b5c3f5e32e3b204",
+      "bytes": 5692
+    },
+    {
+      "path": "app/src/components/srs/FlashcardDrill.tsx",
+      "sha256": "sha256:f0f4c7e40e1cca9d50bdc979377a72e2c55f7455be705a94fc3c2542f3e03642",
+      "bytes": 35481
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "bytes": 529427
+    }
+  ],
+  "runtimeObservations": {
+    "frontendRule": "getSrsFilterTags: no select tags on these goals; returns GK,LK. Cards selected by any matching tag.",
+    "backendRule": "LearnerService.filterSrsCards uses the same any matching tag selection.",
+    "runtimeChangeProposed": false
+  }
+}

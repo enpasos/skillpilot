@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: zwei weitere Laborabschlüsse und vorhandene Bildfreigaben im Kandidaten 321/422 (15.10.2026)](chemie321-lab-carbonyl-keep-checkpoint-2026-10-15.md)
 - [Chemie: vier neue Quellen-/Laborabschlüsse im Kandidaten 319/422 (15.10.2026)](chemie-source-lab-current422-checkpoint-2026-10-15.md)
 - [Chemie: drei neue Analytikabschlüsse und stabiler Kandidat 315/419 (15.10.2026)](chemie315-acid10-checkpoint-2026-10-15.md)
 - [Chemie: unabhängige Quellen-/Analytikprüfungen und nativer Arbeitscheckpoint (15.10.2026)](chemie-independent-reviews-checkpoint-2026-10-15.md)

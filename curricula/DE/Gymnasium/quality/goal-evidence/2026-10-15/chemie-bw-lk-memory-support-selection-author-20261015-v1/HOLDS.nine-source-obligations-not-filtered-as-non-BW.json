@@ -1,0 +1,982 @@
+{
+  "originalNine": {
+    "rows": [
+      {
+        "memoryGoalId": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "deckId": "de_gymnasium_chemistry_basics_seki",
+        "card": {
+          "id": "fec5886f-2463-5ca7-af58-0c3e17b5498b",
+          "front": "Wie ist der Massenanteil wᵢ eines Bestandteils i definiert?",
+          "back": "wᵢ = mᵢ / Σmⱼ. Der Nenner ist die Gesamtmasse aller Bestandteile des Gemisches, einschließlich i. Der Anteil ist dimensionslos; Prozentangabe = 100 · wᵢ %.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4aeced1e-15cd-58df-83f7-68e2531c2d32"
+          ]
+        },
+        "wholeOriginGoal": {
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekI"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK2_MODELLIEREN"
+            ],
+            "guidingIdeas": [
+              "BC_AUFBAU",
+              "BC_REAKTION"
+            ],
+            "phase": "GLOBAL",
+            "area": "Grundlagen",
+            "topicCode": "CANONICAL.CHEMISTRY.SEK1.B007.MASS_FRACTION"
+          },
+          "title": "Massenanteile berechnen und deuten",
+          "titleEn": "Calculate and interpret mass fractions",
+          "description": "Die lernende Person kann aus den Massen der Bestandteile den Massenanteil eines Stoffes berechnen und als Anteil an der Gesamtmasse des Gemisches deuten.",
+          "descriptionEn": "The learner can calculate a substance mass fraction from the constituent masses and interpret it as a share of the total mixture mass.",
+          "id": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+          "shortKey": "canonical_chemistry_sek1_b007_mass_fraction",
+          "applicability": {
+            "jurisdiction": [
+              "DE-HE"
+            ]
+          },
+          "type": "atomic",
+          "contains": [],
+          "requires": [],
+          "phase": "GLOBAL",
+          "area": "Grundlagen",
+          "level": 2,
+          "core": true,
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+              "title": "Visualisierung: Massenanteile berechnen und deuten",
+              "url": "/assets/goal-visualizations/chemie/4aeced1e-15cd-58df-83f7-68e2531c2d32/4aeced1e-15cd-58df-83f7-68e2531c2d32.png",
+              "provider": "OpenAI / Codex built-in image_gen",
+              "description": "Ein korrekt proportionierter Massenbalken zeigt 20 Gramm Salz und 80 Gramm Wasser als insgesamt 100 Gramm Gemisch.",
+              "altText": "Ein Balken aus fünf gleich großen Massenabschnitten enthält einen Abschnitt Salz mit 20 Gramm und vier Abschnitte Wasser mit zusammen 80 Gramm. Der gesamte Balken umfasst 100 Gramm; der Salzanteil an dieser Gesamtmasse beträgt 20 Prozent.",
+              "lang": "de",
+              "license": "CC-BY-4.0",
+              "reviewStatus": "pilot"
+            }
+          ],
+          "extendedData": {
+            "applicabilityMappingInheritance": "boundary",
+            "provenance": {
+              "splitFromCanonicalGoalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+              "authorCandidatePackage": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1",
+              "routineLocalKey": "mass_fraction",
+              "sourceBindingStatus": "prospective_only_no_national_clearance"
+            }
+          }
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_basics_seki",
+          "cardId": "fec5886f-2463-5ca7-af58-0c3e17b5498b",
+          "fingerprint": "sha256:31c14c31c3ccafd13956b862dd88f7dc20bafc4e146152e829596bf262e5d73d",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "4aeced1e-15cd-58df-83f7-68e2531c2d32"
+          ],
+          "reviewedAt": "2026-10-11T00:57:14.878045+00:00",
+          "reviewer": "Codex genuine independent machine reviewer A / b007_v5_clean_independent_a",
+          "reason": "Gesamtmasse Σm_j enthält i; w_i ist dimensionslos und 100·w_i % ist die Prozentdarstellung. Eigene aktuelle NIST 8.6.10 und IUPAC Green Book 2.10 bestätigen dies. Der definitorische Abruf ist dem aktuellen Anteilsziel zugeordnet, nicht einem alten Cluster. Notwendigkeit steht in meinem eigenen M-Datensatz. Same-scope Memory visibility remains unresolved; this is an AI candidate scientific decision only."
+        }
+      },
+      {
+        "memoryGoalId": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "deckId": "de_gymnasium_chemistry_basics_seki",
+        "card": {
+          "id": "6ff2e974-3691-5239-9531-2aa966c8c620",
+          "front": "Wie ist der Volumenanteil φᵢ eines Bestandteils i definiert? Welche Volumina stehen im Nenner?",
+          "back": "φᵢ = Vᵢ / ΣVⱼ mit den bei gleicher Temperatur und gleichem Druck vor dem Mischen bestimmten Bestandteilsvolumina. Der Nenner ist deren Summe, auch wenn das gemessene Endvolumen abweicht. Der Anteil ist dimensionslos; Prozentangabe = 100 · φᵢ %.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:49d42c38-419c-5048-b7e9-860645dd122d"
+          ]
+        },
+        "wholeOriginGoal": {
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekI"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK2_MODELLIEREN"
+            ],
+            "guidingIdeas": [
+              "BC_AUFBAU",
+              "BC_REAKTION"
+            ],
+            "phase": "GLOBAL",
+            "area": "Grundlagen",
+            "topicCode": "CANONICAL.CHEMISTRY.SEK1.B007.VOLUME_FRACTION"
+          },
+          "title": "Volumenanteile berechnen und deuten",
+          "titleEn": "Calculate and interpret volume fractions",
+          "description": "Die lernende Person kann aus den Volumina der Bestandteile vor dem Mischen deren Volumenanteile berechnen und die Bezugsgröße korrekt benennen.",
+          "descriptionEn": "The learner can calculate volume fractions from constituent volumes before mixing and name the reference quantity correctly.",
+          "id": "49d42c38-419c-5048-b7e9-860645dd122d",
+          "shortKey": "canonical_chemistry_sek1_b007_volume_fraction",
+          "applicability": {
+            "jurisdiction": [
+              "DE-HE"
+            ]
+          },
+          "type": "atomic",
+          "contains": [],
+          "requires": [],
+          "phase": "GLOBAL",
+          "area": "Grundlagen",
+          "level": 2,
+          "core": true,
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "49d42c38-419c-5048-b7e9-860645dd122d",
+              "title": "Visualisierung: Volumenanteile berechnen und deuten",
+              "url": "/assets/goal-visualizations/chemie/49d42c38-419c-5048-b7e9-860645dd122d/49d42c38-419c-5048-b7e9-860645dd122d.png",
+              "provider": "OpenAI / Codex built-in image_gen",
+              "description": "Fünf gleiche Ausgangsvolumina zeigen vor dem Mischen ein Volumenteil A und vier Volumenteile B.",
+              "altText": "Vor dem Mischen enthalten fünf gleiche getrennte Gefäße jeweils 20 Milliliter. Ein violettes Gefäß bildet 20 Milliliter A; vier blaue Gefäße bilden zusammen 80 Milliliter B. Alle fünf Ausgangsvolumina ergeben 100 Milliliter als Bezugsgröße. Der Ausgangsvolumenanteil von A beträgt 20 Prozent; ein Endvolumen der Mischung wird nicht behauptet.",
+              "lang": "de",
+              "license": "CC-BY-4.0",
+              "reviewStatus": "pilot"
+            }
+          ],
+          "extendedData": {
+            "applicabilityMappingInheritance": "boundary",
+            "provenance": {
+              "splitFromCanonicalGoalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+              "authorCandidatePackage": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1",
+              "routineLocalKey": "volume_fraction",
+              "sourceBindingStatus": "prospective_only_no_national_clearance"
+            }
+          }
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_basics_seki",
+          "cardId": "6ff2e974-3691-5239-9531-2aa966c8c620",
+          "fingerprint": "sha256:7dceeedf19a07e3287479e1f07115ed9496534401a863eeb96df08d98badfe22",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "49d42c38-419c-5048-b7e9-860645dd122d"
+          ],
+          "reviewedAt": "2026-10-11T00:57:14.878045+00:00",
+          "reviewer": "Codex genuine independent machine reviewer A / b007_v5_clean_independent_a",
+          "reason": "Die Definition nennt ausdrücklich gleiche Temperatur und gleichen Druck sowie alle Bestandteilsvolumina vor dem Mischen. ΣV_j ist keine Behauptung additiver Endvolumina. Dimensionslosigkeit und Prozentdarstellung sind korrekt. Eigene aktuelle NIST 8.6.6 und IUPAC Green Book 2.10 einschließlich Hinweis 9 bestätigen diese explizite Konvention. Origin ist das aktuelle Volumenanteilsziel. Same-scope Memory visibility remains unresolved; this is an AI candidate scientific decision only."
+        }
+      },
+      {
+        "memoryGoalId": "1e519951-9850-5a07-ac82-d9f0075e3d05",
+        "deckId": "de_gymnasium_chemistry_bonding_structure",
+        "card": {
+          "id": "chem_bond_008",
+          "front": "Aufbauprinzip, Pauli-Prinzip, Hundsche Regel?",
+          "back": "Aufbauprinzip: energiearme Orbitale zuerst\n\nPauli: max. zwei Elektronen pro Orbital mit entgegengesetztem Spin\n\nHund: entartete Orbitale erst einfach besetzen",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:3bc48951-025c-5144-99b1-924db611a5f9"
+          ]
+        },
+        "wholeOriginGoal": {
+          "id": "3bc48951-025c-5144-99b1-924db611a5f9",
+          "shortKey": "canonical_chemistry_upper_sodium_doublet_quantum_rules",
+          "title": "Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen",
+          "titleEn": "Use quantum numbers and occupation rules for periodic-table ordering",
+          "description": "Die lernende Person kann aus der Natrium-Doppellinie die Erweiterung der Quantenzahlen begruenden, die Anordnung der Atome im vollstaendigen Periodensystem mit Aufbauprinzip, Pauli-Prinzip und Hundscher Regel beschreiben und Elektronenverteilungen in Atomen sowie Atom-Ionen erklaeren.",
+          "descriptionEn": "The learner can justify the extension of quantum numbers from the sodium doublet, describe the arrangement of atoms in the full periodic table using the Aufbau principle, Pauli exclusion principle, and Hund's rule, and explain electron distributions in atoms and atomic ions.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekII"
+          ],
+          "contains": [],
+          "requires": [
+            "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+            "e74f5301-70d3-5869-bd3d-79a5763a1718"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN",
+              "PK4_KOMMUNIZIEREN"
+            ],
+            "guidingIdeas": [
+              "BC_AUFBAU"
+            ],
+            "phase": "GLOBAL",
+            "area": "Atombau und Periodensystem",
+            "topicCode": "CANONICAL.CHEMISTRY.SEKII.QUANTUM_RULES_PERIODIC_TABLE"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HE"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+              "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+              "sourceGoalId": "c59f2002-7a0b-5a0a-9f3d-c6e4cb4dd2f6"
+            }
+          },
+          "type": "atomic",
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "3bc48951-025c-5144-99b1-924db611a5f9",
+              "title": "Visualisierung: Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen",
+              "url": "/assets/goal-visualizations/chemie/3bc48951-025c-5144-99b1-924db611a5f9/3bc48951-025c-5144-99b1-924db611a5f9.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen\". Die lernende Person kann aus der Natrium-Doppellinie die Erweiterung der Quantenzahlen begruenden, die Anordnung der Atome im vollstaendigen Periodensystem mit Aufbauprinzip, Pauli-Prinzip und Hundscher Regel beschreiben und Elektronenverteilungen in Atomen sowie Atom-Ionen erklaeren.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_bonding_structure",
+          "cardId": "chem_bond_008",
+          "fingerprint": "sha256:2e2200aad4b69eae633c156b6c53fb0e4b3e45ebf80258a7c08a1f3b9758318a",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "3bc48951-025c-5144-99b1-924db611a5f9"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-chemistry-memory-review",
+          "reason": "Behalten: kompakter Chemie-Begriff, Formel-, Symbol-, Nachweis- oder Gleichungsbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels."
+        }
+      },
+      {
+        "memoryGoalId": "1e519951-9850-5a07-ac82-d9f0075e3d05",
+        "deckId": "de_gymnasium_chemistry_bonding_structure",
+        "card": {
+          "id": "chem_bond_009",
+          "front": "Hybridisierung: typische Zuordnung?",
+          "back": "$sp$: linear\n\n$sp^2$: trigonal-planar\n\n$sp^3$: tetraedrisch",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:37b4081a-244a-58d8-b448-88ed83344210"
+          ]
+        },
+        "wholeOriginGoal": {
+          "id": "37b4081a-244a-58d8-b448-88ed83344210",
+          "shortKey": "canonical_chemistry_upper_hybridization_organic_bonding",
+          "title": "Hybridisierung zur Vorhersage organischer Bindungsverhältnisse nutzen",
+          "titleEn": "Use hybridization to predict organic bonding relationships",
+          "description": "Die lernende Person kann Hybridisierung als Näherungsverfahren zur Linearkombination von Atomorbitalen am selben Atom beschreiben und Hybridorbitale zur modellhaften Vorhersage der Bindungsverhältnisse in einfachen organischen Molekülen nutzen.",
+          "descriptionEn": "The learner can describe hybridization as an approximation method for linear combination of atomic orbitals at the same atom and use hybrid orbitals to model bonding relationships in simple organic molecules.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "SekII"
+          ],
+          "contains": [],
+          "requires": [
+            "70bcb6bd-b7f8-5e23-b466-f9bc270a9c67",
+            "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+            "9b56d01e-c2d7-51d8-b78e-237592c1ed20"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN",
+              "PK4_KOMMUNIZIEREN"
+            ],
+            "guidingIdeas": [
+              "BC_AUFBAU"
+            ],
+            "phase": "GLOBAL",
+            "area": "Chemische Bindung",
+            "topicCode": "CANONICAL.CHEMISTRY.SEKII.HYBRIDIZATION_ORGANIC_BONDING"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+              "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+              "sourceGoalId": "038df8a6-4f04-53d0-b5dd-9c597b76df41"
+            }
+          },
+          "type": "atomic",
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "37b4081a-244a-58d8-b448-88ed83344210",
+              "title": "Visualisierung: Hybridisierung zur Vorhersage organischer Bindungsverhältnisse nutzen",
+              "url": "/assets/goal-visualizations/chemie/37b4081a-244a-58d8-b448-88ed83344210/37b4081a-244a-58d8-b448-88ed83344210.jpg",
+              "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+              "description": "Visualisierung zum Lernziel: Hybridisierung zur Vorhersage organischer Bindungsverhältnisse nutzen.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Hybridisierung zur Vorhersage organischer Bindungsverhältnisse nutzen\". Die lernende Person kann Hybridisierung als Näherungsverfahren zur Linearkombination von Atomorbitalen am selben Atom beschreiben und Hybridorbitale zur modellhaften Vorhersage der Bindungsverhältnisse in einfachen organischen Molekülen nutzen.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "accepted"
+            }
+          ]
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_bonding_structure",
+          "cardId": "chem_bond_009",
+          "fingerprint": "sha256:3daacfbb39be6b6479f8636054258670e5068a5844d4229138e16f65d5986898",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "37b4081a-244a-58d8-b448-88ed83344210"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-chemistry-memory-review",
+          "reason": "Behalten: kompakter Chemie-Begriff, Formel-, Symbol-, Nachweis- oder Gleichungsbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels."
+        }
+      },
+      {
+        "memoryGoalId": "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "deckId": "de_gymnasium_chemistry_equilibria_q3",
+        "card": {
+          "id": "chem_eq_q3_006",
+          "front": "Henderson-Hasselbalch-Gleichung?",
+          "back": "$pH=pK_S+\\log\\frac{c(A^-)}{c(HA)}$\n\nfür einen Puffer aus schwacher Säure und korrespondierender Base.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a449e874-6fec-502b-9667-6f078adc4d64"
+          ]
+        },
+        "wholeOriginGoal": {
+          "id": "a449e874-6fec-502b-9667-6f078adc4d64",
+          "title": "Puffergleichungen anwenden (LK)",
+          "titleEn": "Apply buffer equations (LK)",
+          "description": "Die lernende Person kann Pufferlösungen mithilfe der Henderson-Hasselbalch-Gleichung quantitativ beschreiben.",
+          "descriptionEn": "The learner can quantitatively describe buffer solutions using the Henderson-Hasselbalch equation.",
+          "weight": 1.1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-chemistry",
+            "demandLevel": "AB3",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BC_REAKTION"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-NI"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+              "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "873f7f36-308a-4f01-94b6-452580dbd8dd"
+            }
+          },
+          "type": "atomic",
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "a449e874-6fec-502b-9667-6f078adc4d64",
+              "title": "Visualisierung: Puffergleichungen anwenden (LK)",
+              "url": "/assets/goal-visualizations/chemie/a449e874-6fec-502b-9667-6f078adc4d64/a449e874-6fec-502b-9667-6f078adc4d64.jpg",
+              "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+              "description": "Visualisierung zum Lernziel: Puffergleichungen anwenden (LK).",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Puffergleichungen anwenden (LK)\". Die lernende Person kann Pufferlösungen mithilfe der Henderson-Hasselbalch-Gleichung quantitativ beschreiben.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "accepted"
+            }
+          ]
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_equilibria_q3",
+          "cardId": "chem_eq_q3_006",
+          "fingerprint": "sha256:4afa3e5b2363b38edb8dab1acb15d970d97c231615ee3825cea1201e07ffef56",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "a449e874-6fec-502b-9667-6f078adc4d64"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-chemistry-memory-review",
+          "reason": "Behalten: kompakter Chemie-Begriff, Formel-, Symbol-, Nachweis- oder Gleichungsbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels."
+        }
+      },
+      {
+        "memoryGoalId": "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "deckId": "de_gymnasium_chemistry_equilibria_q3",
+        "card": {
+          "id": "chem_eq_q3_008",
+          "front": "Faraday-Beziehung für Elektrolyse?",
+          "back": "$Q=I\\cdot t=z\\cdot F\\cdot n$\n\n$F\\approx 96485\\,\\mathrm{C/mol}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+          ]
+        },
+        "wholeOriginGoal": {
+          "id": "b8c8f70f-64cb-50b1-970c-e0c4295da3fb",
+          "shortKey": "canonical_chemistry_q3_faraday_laws",
+          "title": "Faraday-Gesetze quantitativ nutzen",
+          "titleEn": "Use Faraday laws quantitatively",
+          "description": "Die lernende Person kann Elektrolysen mit den Faraday-Gesetzen quantitativ beschreiben und Ladungsmenge, Stromstärke, Zeit, Stoffumsatz sowie abgeschiedene Stoffmenge berechnen.",
+          "descriptionEn": "The learner can describe electrolysis quantitatively using Faraday laws and calculate charge, current, time, conversion, and deposited amount of substance.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN",
+              "PK3_MATHEMATISIEREN"
+            ],
+            "guidingIdeas": [
+              "BC_AUFBAU"
+            ],
+            "phase": "Q3",
+            "area": "Redoxgleichgewichte",
+            "topicCode": "CANONICAL.CHEMISTRY.Q3.FARADAY_LAWS"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-NI"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+              "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "he-chem-sekii-q3-3-b10-a01-f814c697"
+            }
+          },
+          "contains": [],
+          "requires": [
+            "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+            "f1ed86f0-534d-57d7-8952-a004a331cc54"
+          ],
+          "type": "atomic",
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "b8c8f70f-64cb-50b1-970c-e0c4295da3fb",
+              "title": "Visualisierung: Faraday-Gesetze quantitativ nutzen",
+              "url": "/assets/goal-visualizations/chemie/b8c8f70f-64cb-50b1-970c-e0c4295da3fb/b8c8f70f-64cb-50b1-970c-e0c4295da3fb.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Faraday-Gesetze quantitativ nutzen.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Faraday-Gesetze quantitativ nutzen\". Die lernende Person kann Elektrolysen mit den Faraday-Gesetzen quantitativ beschreiben und Ladungsmenge, Stromstärke, Zeit, Stoffumsatz sowie abgeschiedene Stoffmenge berechnen.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_equilibria_q3",
+          "cardId": "chem_eq_q3_008",
+          "fingerprint": "sha256:450073850b0c9ce74ea1aaf642fffe6d16c93de805ad3307919be96e4f699523",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-chemistry-memory-review",
+          "reason": "Behalten: kompakter Chemie-Begriff, Formel-, Symbol-, Nachweis- oder Gleichungsbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels."
+        }
+      },
+      {
+        "memoryGoalId": "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "deckId": "de_gymnasium_chemistry_equilibria_q3",
+        "card": {
+          "id": "chem_eq_q3_010",
+          "front": "Arrhenius-Beziehung?",
+          "back": "$k=A\\,e^{-E_A/(RT)}$\n\nIm $\\ln k$ gegen $1/T$-Diagramm ist die Steigung $-E_A/R$.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e62c6c58-b688-59c3-8ac5-2cfc26ac22d7"
+          ]
+        },
+        "wholeOriginGoal": {
+          "id": "e62c6c58-b688-59c3-8ac5-2cfc26ac22d7",
+          "title": "Arrhenius-Beziehung anwenden",
+          "titleEn": "Apply Arrhenius relationship",
+          "description": "Die lernende Person kann Aktivierungsenergien aus Temperaturabhängigkeiten ermitteln.",
+          "descriptionEn": "The learner can determine activation energies from temperature dependencies.",
+          "weight": 1.1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "56bc6377-1291-58bc-b433-5b9f673888e9"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-chemistry",
+            "demandLevel": "AB3",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BC_REAKTION",
+              "BC_ENERGIE"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HB",
+              "DE-HE"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+              "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "2d86985f-536c-404e-bdf9-05145e01d610"
+            }
+          },
+          "type": "atomic",
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "e62c6c58-b688-59c3-8ac5-2cfc26ac22d7",
+              "title": "Visualisierung: Arrhenius-Beziehung anwenden",
+              "url": "/assets/goal-visualizations/chemie/e62c6c58-b688-59c3-8ac5-2cfc26ac22d7/e62c6c58-b688-59c3-8ac5-2cfc26ac22d7.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Arrhenius-Beziehung anwenden.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Arrhenius-Beziehung anwenden\". Die lernende Person kann Aktivierungsenergien aus Temperaturabhängigkeiten ermitteln.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_equilibria_q3",
+          "cardId": "chem_eq_q3_010",
+          "fingerprint": "sha256:68db1ec77d4ee56616693a46140762045c0cf2aceb2d5443d5d7b8738f99bad0",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "e62c6c58-b688-59c3-8ac5-2cfc26ac22d7"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-chemistry-memory-review",
+          "reason": "Behalten: kompakter Chemie-Begriff, Formel-, Symbol-, Nachweis- oder Gleichungsbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels."
+        }
+      },
+      {
+        "memoryGoalId": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+        "deckId": "de_gymnasium_chemistry_organic_q1",
+        "card": {
+          "id": "chem_org_q1_006",
+          "front": "Halogenidionen-Nachweis mit Silbernitrat?",
+          "back": "Mit $AgNO_3$ entstehen schwerlösliche Silberhalogenide:\n\n$AgCl$ weiß, $AgBr$ cremefarben, $AgI$ gelblich.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:41396457-d97b-55f3-9804-2af1bb188e79"
+          ]
+        },
+        "wholeOriginGoal": {
+          "id": "41396457-d97b-55f3-9804-2af1bb188e79",
+          "shortKey": "canonical_chemistry_q1_halide_ion_detection",
+          "title": "Halogenidionen-Nachweise deuten",
+          "titleEn": "Interpret halide ion tests",
+          "description": "Die lernende Person kann Nachweise für Halogenidionen im Kontext nukleophiler Substitution fachlich deuten.",
+          "descriptionEn": "The learner can interpret tests for halide ions in the context of nucleophilic substitution.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "d4928773-3be8-5cf1-907c-ef07c96751e8"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-chemistry",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BC_REAKTION"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+              "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "dbbbfa75-635a-44f7-9dca-c8f38a56794d",
+              "splitFromCanonicalGoalId": "c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2",
+              "splitReviewId": "canonical-chemistry-q1-alkanols-carbonyls"
+            }
+          },
+          "type": "atomic",
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "41396457-d97b-55f3-9804-2af1bb188e79",
+              "title": "Visualisierung: Halogenidionen-Nachweise deuten",
+              "url": "/assets/goal-visualizations/chemie/41396457-d97b-55f3-9804-2af1bb188e79/41396457-d97b-55f3-9804-2af1bb188e79.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Halogenidionen-Nachweise deuten.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Halogenidionen-Nachweise deuten\". Die lernende Person kann Nachweise für Halogenidionen im Kontext nukleophiler Substitution fachlich deuten.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_organic_q1",
+          "cardId": "chem_org_q1_006",
+          "fingerprint": "sha256:9051d6c4b30be9edf63b9a423f621bc9d6a3e19729a7bddd53421ee9530e2d1e",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "41396457-d97b-55f3-9804-2af1bb188e79"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-chemistry-memory-review",
+          "reason": "Behalten: kompakter Chemie-Begriff, Formel-, Symbol-, Nachweis- oder Gleichungsbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels."
+        }
+      },
+      {
+        "memoryGoalId": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+        "deckId": "de_gymnasium_chemistry_organic_q1",
+        "card": {
+          "id": "chem_org_q1_010",
+          "front": "IR und $^1H$-NMR: Wofür nutzt man sie?",
+          "back": "IR-Spektren zeigen charakteristische Schwingungen funktioneller Gruppen.\n\n$^1H$-NMR unterscheidet Wasserstoff-Umgebungen im Molekül.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:466bd2e9-39a5-5221-b620-945934adce00"
+          ]
+        },
+        "wholeOriginGoal": {
+          "id": "466bd2e9-39a5-5221-b620-945934adce00",
+          "title": "Grundlagen Spektroskopie",
+          "titleEn": "Basics of spectroscopy",
+          "description": "Die lernende Person kann IR- und 1H-NMR-Grundsignale einfachen organischen Strukturen zuordnen.",
+          "descriptionEn": "The learner can assign IR and 1H-NMR basic signals to simple organic structures.",
+          "weight": 1.1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-chemistry",
+            "demandLevel": "AB3",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BC_AUFBAU"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+              "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "e6208125-488c-4720-85e0-861aafc68d66"
+            }
+          },
+          "type": "atomic",
+          "examples": [],
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "466bd2e9-39a5-5221-b620-945934adce00",
+              "title": "Visualisierung: Grundlagen Spektroskopie",
+              "url": "/assets/goal-visualizations/chemie/466bd2e9-39a5-5221-b620-945934adce00/466bd2e9-39a5-5221-b620-945934adce00.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Grundlagen Spektroskopie.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Grundlagen Spektroskopie\". Die lernende Person kann IR- und 1H-NMR-Grundsignale einfachen organischen Strukturen zuordnen.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        },
+        "currentCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-chemistry-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "deckId": "de_gymnasium_chemistry_organic_q1",
+          "cardId": "chem_org_q1_010",
+          "fingerprint": "sha256:0559cc09aef09a8339928c6c2e8101f80b8b16b697a4ff1a7dddb1f6c43655b7",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "466bd2e9-39a5-5221-b620-945934adce00"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-chemistry-memory-review",
+          "reason": "Behalten: kompakter Chemie-Begriff, Formel-, Symbol-, Nachweis- oder Gleichungsbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels."
+        }
+      }
+    ],
+    "count": 9,
+    "warning": "Some topics have direct official BW source support despite missing current canonical bindings; this does not license bulk addition of every other card."
+  },
+  "boundary": "Not selected in this first existing-visible-target support set does not mean not BW. Existing ordinary view/target universe is unchanged, not reduced. Explicit BW duties such as Henderson-Hasselbalch and Faraday, and source aspects of fraction concepts, remain open for proper source-to-target mapping; all other nine rows also retain their original source-review question. No broad national/state/source clearance is granted.",
+  "explicitOpenBWSourceCells": [
+    {
+      "id": "bw-chem-seki-3-2-1-1-b10-a01-1eedff5e",
+      "passageId": "bw-chem-seki:3.2.1.1",
+      "topicCode": "3.2.1.1",
+      "bulletIndex": 10,
+      "aspectIndex": 1,
+      "title": "BW 3.2.1.1 (10): die Zusammensetzung der Luft nennen und die Veränderungen des Kohlenstoffdioxidanteils hinsichtl...",
+      "description": "Source-Ziel aus 3.2.1.1 (10): die Zusammensetzung der Luft nennen und die Veränderungen des Kohlenstoffdioxidanteils hinsichtlich ihrer globalen Auswirkungen bewerten (Volumenanteile von Stickstoff, Sauerstoff, Edelgasen und Kohlenstoffdioxid)",
+      "sourceText": "die Zusammensetzung der Luft nennen und die Veränderungen des Kohlenstoffdioxidanteils hinsichtlich ihrer globalen Auswirkungen bewerten (Volumenanteile von Stickstoff, Sauerstoff, Edelgasen und Kohlenstoffdioxid)",
+      "sourceSpan": "3.2.1.1 (10)",
+      "parentBulletText": "die Zusammensetzung der Luft nennen und die Veränderungen des Kohlenstoffdioxidanteils hinsichtlich ihrer globalen Auswirkungen bewerten (Volumenanteile von Stickstoff, Sauerstoff, Edelgasen und Kohlenstoffdioxid)",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.2.1.1 (10), S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BW",
+        "subject:Chemie",
+        "stage:SekI",
+        "topic:3.2.1.1",
+        "courseLevel:unspecified",
+        "Klassen8-10"
+      ],
+      "rawSourceText": "die Zusammensetzung der Luft nennen und die Veränderungen des Kohlenstoffdioxidanteils hinsichtlich ihrer globalen Auswirkungen bewerten (Volumenanteile von Stickstoff, Sauerstoff, Edelgasen und Kohlenstoffdioxid)",
+      "rawSourceSpan": "3.2.1.1 (10)",
+      "rawParentBulletText": "die Zusammensetzung der Luft nennen und die Veränderungen des Kohlenstoffdioxidanteils hinsichtlich ihrer globalen Auswirkungen bewerten (Volumenanteile von Stickstoff, Sauerstoff, Edelgasen und Kohlenstoffdioxid)"
+    },
+    {
+      "id": "bw-chem-seki-3-2-2-2-b07-a01-3942c6c7",
+      "passageId": "bw-chem-seki:3.2.2.2",
+      "topicCode": "3.2.2.2",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "BW 3.2.2.2 (7): Berechnungen durchführen und dabei Größen und Einheiten korrekt nutzen (Atommasse, Teilchenzahl,...",
+      "description": "Source-Ziel aus 3.2.2.2 (7): Berechnungen durchführen und dabei Größen und Einheiten korrekt nutzen (Atommasse, Teilchenzahl, Masse, Dichte, Stoffmenge, molare Masse, molares Volumen, Massenanteil, Stoffmengenkonzentration)",
+      "sourceText": "Berechnungen durchführen und dabei Größen und Einheiten korrekt nutzen (Atommasse, Teilchenzahl, Masse, Dichte, Stoffmenge, molare Masse, molares Volumen, Massenanteil, Stoffmengenkonzentration)",
+      "sourceSpan": "3.2.2.2 (7)",
+      "parentBulletText": "Berechnungen durchführen und dabei Größen und Einheiten korrekt nutzen (Atommasse, Teilchenzahl, Masse, Dichte, Stoffmenge, molare Masse, molares Volumen, Massenanteil, Stoffmengenkonzentration)",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.2.2.2 (7), S. 21.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BW",
+        "subject:Chemie",
+        "stage:SekI",
+        "topic:3.2.2.2",
+        "courseLevel:unspecified",
+        "Klassen8-10"
+      ],
+      "rawSourceText": "Berechnungen durchführen und dabei Größen und Einheiten korrekt nutzen (Atommasse, Teilchenzahl, Masse, Dichte, Stoffmenge, molare Masse, molares Volumen, Massenanteil, Stoffmengenkonzentration)",
+      "rawSourceSpan": "3.2.2.2 (7)",
+      "rawParentBulletText": "Berechnungen durchführen und dabei Größen und Einheiten korrekt nutzen (Atommasse, Teilchenzahl, Masse, Dichte, Stoffmenge, molare Masse, molares Volumen, Massenanteil, Stoffmengenkonzentration)"
+    },
+    {
+      "id": "bw-chem-sekii-3-4-3-b16-a01-5beea0bf",
+      "passageId": "bw-chem-sekii:3.4.3",
+      "topicCode": "3.4.3",
+      "bulletIndex": 16,
+      "aspectIndex": 1,
+      "title": "BW 3.4.3 (16): die Wirkungsweise von Puffersystemen und deren Bedeutung an Beispielen erklären und den pH-Wert ...",
+      "description": "Source-Ziel aus 3.4.3 (16): die Wirkungsweise von Puffersystemen und deren Bedeutung an Beispielen erklären und den pH-Wert von Pufferlösungen berechnen (Henderson-Hasselbalch-Gleichung)",
+      "sourceText": "die Wirkungsweise von Puffersystemen und deren Bedeutung an Beispielen erklären und den pH-Wert von Pufferlösungen berechnen (Henderson-Hasselbalch-Gleichung)",
+      "sourceSpan": "3.4.3 (16)",
+      "parentBulletText": "die Wirkungsweise von Puffersystemen und deren Bedeutung an Beispielen erklären und den pH-Wert von Pufferlösungen berechnen (Henderson-Hasselbalch-Gleichung)",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.4.3 (16), S. 32.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BW",
+        "subject:Chemie",
+        "stage:SekII",
+        "topic:3.4.3",
+        "courseLevel:LK",
+        "Leistungsfach",
+        "LK"
+      ],
+      "rawSourceText": "die Wirkungsweise von Puffersystemen und deren Bedeutung an Beispielen erklären und den pH-Wert von Pufferlösungen berechnen (Henderson-Hasselbalch-Gleichung)",
+      "rawSourceSpan": "3.4.3 (16)",
+      "rawParentBulletText": "die Wirkungsweise von Puffersystemen und deren Bedeutung an Beispielen erklären und den pH-Wert von Pufferlösungen berechnen (Henderson-Hasselbalch-Gleichung)"
+    },
+    {
+      "id": "bw-chem-sekii-3-4-7-b07-a01-76021996",
+      "passageId": "bw-chem-sekii:3.4.7",
+      "topicCode": "3.4.7",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "BW 3.4.7 (7): die wesentlichen Prozesse in galvanischen Zellen und Elektrolysezellen darstellen und vergleiche...",
+      "description": "Source-Ziel aus 3.4.7 (7): die wesentlichen Prozesse in galvanischen Zellen und Elektrolysezellen darstellen und vergleichen (Elektrodenreaktionen, Anode, Kathode, Zellspannung, Zersetzungsspannung, Faraday-Gesetz)",
+      "sourceText": "die wesentlichen Prozesse in galvanischen Zellen und Elektrolysezellen darstellen und vergleichen (Elektrodenreaktionen, Anode, Kathode, Zellspannung, Zersetzungsspannung, Faraday-Gesetz)",
+      "sourceSpan": "3.4.7 (7)",
+      "parentBulletText": "die wesentlichen Prozesse in galvanischen Zellen und Elektrolysezellen darstellen und vergleichen (Elektrodenreaktionen, Anode, Kathode, Zellspannung, Zersetzungsspannung, Faraday-Gesetz)",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.4.7 (7), S. 38.",
+      "courseLevel": "LK",
+      "granularity": "officialCompetency",
+      "tags": [
+        "jurisdiction:DE-BW",
+        "subject:Chemie",
+        "stage:SekII",
+        "topic:3.4.7",
+        "courseLevel:LK",
+        "Leistungsfach",
+        "LK"
+      ],
+      "rawSourceText": "die wesentlichen Prozesse in galvanischen Zellen und Elektrolysezellen darstellen und vergleichen (Elektrodenreaktionen, Anode, Kathode, Zellspannung, Zersetzungsspannung, Faraday-Gesetz)",
+      "rawSourceSpan": "3.4.7 (7)",
+      "rawParentBulletText": "die wesentlichen Prozesse in galvanischen Zellen und Elektrolysezellen darstellen und vergleichen (Elektrodenreaktionen, Anode, Kathode, Zellspannung, Zersetzungsspannung, Faraday-Gesetz)"
+    }
+  ],
+  "fortySourceRowsStillOpenWherePartial": 4,
+  "independentSourceApprovals": 0
+}

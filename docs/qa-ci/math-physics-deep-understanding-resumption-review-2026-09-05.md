@@ -2,6 +2,20 @@
 
 ## Aktuelle Chemie-Fortsetzung – 15. Oktober 2026
 
+Der [Labor- und Bildfolgecheckpoint](chemie321-lab-carbonyl-keep-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Kandidaten **321/422 (76,1 %)**: zwei neue
+fachliche Abschlüsse, alle bisherigen 319 erhalten, drei frühere gültige
+Bildfreigaben unverändert übernommen, sechs Pflichtprüfungen PASS und
+101 Ziele offen. Sechs echte Kartenkorrekturen und zwei unabhängige
+13er-Kontextreviews sichern nun auch die vollständige Memory-Prüfung mit
+den bisherigen neun Sichten und der ganzen BW-LK-Sicht ab; der Zentralstand
+bleibt exakt 321/422. Ganze Quellen-, Kurs- und Erwerbsbefunde bleiben offen;
+aktiv bleiben **231/402, M6**. Mathematik, Physik und Biologie
+bleiben unverändert M7. Der zugehörige GitHub-Erfolg muss für den tatsächlich
+gepushten Folgecommit separat nachgewiesen werden.
+
+## Vorheriger Quellen-/Laborstand – 15. Oktober 2026
+
 Der [Folgecheckpoint der Quellen- und Laborarbeit](chemie-source-lab-current422-checkpoint-2026-10-15.md)
 erreicht im inaktiven zentralen Kandidaten **319/422 (75,6 %)**: vier neue
 fachliche Abschlüsse, alle bisherigen 315 erhalten, acht betroffene
@@ -9,7 +23,8 @@ Bestandskontexte erneut bestätigt, sechs Pflichtchecks PASS und 103 Ziele
 offen. Ganze Quellen-, Kurs-, Erwerbs- und Memory-Sichtbefunde bleiben offen;
 aktiv bleiben **231/402, M6**. Mathematik, Physik und Biologie bleiben
 unverändert M7. Der Vorgänger `e74e6536` hat alle 14 GitHub-Checks bestanden;
-der Folgecheckpoint benötigt seinen eigenen erfolgreichen Lauf.
+`4eef6c60` hat inzwischen ebenfalls alle 14 Checks und acht Hauptjobs bestanden;
+der neue Folgecheckpoint benötigt seinen eigenen erfolgreichen Lauf.
 Die nachstehenden Zahlen dokumentieren ihre jeweiligen historischen Stände.
 
 ## Vorheriger Chemie-Analytikstand – 15. Oktober 2026

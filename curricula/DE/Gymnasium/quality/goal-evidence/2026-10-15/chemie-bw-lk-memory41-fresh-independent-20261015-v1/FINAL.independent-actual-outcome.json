@@ -1,0 +1,184 @@
+{
+  "reviewer": "Codex independent machine chemistry reviewer / chemie_bw_memory41_fresh_independent_20261015",
+  "runId": "b75b7f4d-810a-4d14-b09c-c725f9236d7a",
+  "completedAt": "2026-10-15T10:44:09.118359+00:00",
+  "role": "Independent machine M/card/selection scientific review of the sealed author candidate",
+  "cardVerdicts": {
+    "reviewedDistinct": 41,
+    "kept": 35,
+    "needs_developer_review": 6
+  },
+  "memoryAdditionVerdicts": {
+    "reviewed": 40,
+    "memory_required": 34,
+    "needs_developer_review": 6
+  },
+  "selectionVerdicts": {
+    "boundedScienceAccepted": 2,
+    "needs_developer_review": 4
+  },
+  "deferredCards": [
+    {
+      "deckId": "de_gymnasium_chemistry_basics_seki",
+      "cardId": "chem_basics_004",
+      "originalReason": "Die Gleichsetzung der Hauptgruppennummer mit der Valenzelektronenzahl ist ohne Helium-Ausnahme falsch: He steht in Hauptgruppe VIII/Gruppe18 und besitzt 1s2, also zwei Außenelektronen. Außerdem muss die verwendete Nummerierung der Hauptgruppen I-VIII klar sein. Ordnungszahl=Protonenzahl ist richtig; die Schalenregel ist im einfachen Grundzustandsmodell brauchbar."
+    },
+    {
+      "deckId": "de_gymnasium_chemistry_basics_seki",
+      "cardId": "chem_basics_008",
+      "originalReason": "Die Antwort verwechselt den Zahlenwert mit der dimensionsbehafteten Avogadro-Konstante: N_A hat mol^-1, während eine Teilchenzahl dimensionslos ist. Für n=1 mol ist N=n*N_A=6.02214076e23; es sind nicht N_A Teilchen als dimensionsbehafteter Ausdruck. Im selben Deck nennt Karte009 die Einheit ausdrücklich. Mol/Teilchenpakete ist als Anschauung brauchbar, benötigt hier aber eine eindeutige korrekte Formulierung."
+    },
+    {
+      "deckId": "de_gymnasium_chemistry_basics_seki",
+      "cardId": "chem_basics_012",
+      "originalReason": "Neutral ist bei wässrigen Lösungen durch gleiche H3O+- und OH--Aktivitäten beziehungsweise verdünnt gleiche Konzentrationen bestimmt. Dann pH_neutral=pK_w(T)/2; nur bei ungefähr25°C ist das ungefähr7. Die unbeschränkte Einprägung pH7=neutral ist im temperaturübergreifenden LK-Deck sachlich unvollständig und kann warmes neutrales Wasser als sauer fehlklassifizieren."
+    },
+    {
+      "deckId": "de_gymnasium_chemistry_energy_q4",
+      "cardId": "chem_energy_q4_001",
+      "originalReason": "Energieerhaltung stimmt, aber die Aussage zur Änderung der inneren Energie nur durch Wärme und Arbeit braucht ein geschlossenes System. Das aktuelle Ursprungziel umfasst ausdrücklich offene, geschlossene und isolierte Systeme. Bei einem offenen Kontrollvolumen kommt Energie auch mit ein-/ausströmender Materie. Ohne diese Begrenzung passt die Antwort nicht eindeutig zum ganzen Zielscope."
+    },
+    {
+      "deckId": "de_gymnasium_chemistry_equilibria_q3",
+      "cardId": "chem_eq_q3_007",
+      "originalReason": "Der Konzentrationsquotient c(Ox)/c(Red) ist nur für ein entsprechend einfaches gelöstes Redoxpaar in der Näherung geeignet. Das Ziel umfasst gerade galvanische Metall-/Konzentrationszellen; reine Metalle haben Aktivität1 und keine einzusetzende Lösungskonzentration. Für MnO4-+8H++5e- -> Mn2++4H2O benötigt der Quotient außerdem [H+]^8. Ohne Halbgleichung, Geltungsbereich und Feststoffregel gibt die Karte keine sichere anwendbare Schulform. Der allgemeine Hinweis auf Quotientenabhängigkeit behebt die fehlenden Faktoren nicht."
+    },
+    {
+      "deckId": "de_gymnasium_chemistry_natural_q2",
+      "cardId": "chem_nat_q2_004",
+      "originalReason": "Die Biuret-Reaktion ist kein uneingeschränkter Nachweis schon einer beliebigen einzelnen Peptidbindung. Für den typischen blauvioletten Cu2+-Komplex werden mindestens zwei passende CO-NH/Peptidbindungen benötigt; ein einfaches Dipeptid mit einer Bindung ist die relevante Gegenprobe. Im aktuellen Ziel sollen Nachweise und Aussagekraft verstanden werden. Die Antwort muss diese Mindestanforderung beziehungsweise den Protein-/längeren-Peptidscope nennen."
+    }
+  ],
+  "normalStock": {
+    "commands": [
+      {
+        "command": [
+          "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+          "/home/enpasos/projects/skillpilot/tmp/chemie-memory41-fresh-independent-20261015/stock-host/app/scripts/memoryCardReview.ts",
+          "--mode=check",
+          "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory41-fresh-independent-20261015-v1/config/old-nine.independent.memory.json"
+        ],
+        "startedAt": "2026-10-15T10:39:59.617757+00:00",
+        "completedAt": "2026-10-15T10:40:00.088921+00:00",
+        "exitCode": 1,
+        "rawOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory41-fresh-independent-20261015-v1/checks/STOCK.old-nine.actual.txt"
+      },
+      {
+        "command": [
+          "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+          "/home/enpasos/projects/skillpilot/tmp/chemie-memory41-fresh-independent-20261015/stock-host/app/scripts/memoryCardReview.ts",
+          "--mode=check",
+          "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory41-fresh-independent-20261015-v1/config/old-nine-plus-whole-BW.independent.memory.json"
+        ],
+        "startedAt": "2026-10-15T10:40:00.089120+00:00",
+        "completedAt": "2026-10-15T10:40:00.501269+00:00",
+        "exitCode": 1,
+        "rawOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory41-fresh-independent-20261015-v1/checks/STOCK.old-nine-plus-whole-BW.actual.txt"
+      }
+    ],
+    "metrics": {
+      "old-nine": {
+        "Ordinary atomic goals in scope": 422,
+        "Current no-memory decisions": 365,
+        "Current memory-required decisions": 51,
+        "Current needs developer review": 6,
+        "Memory goals in scope": 13,
+        "Traced memory goals": 13,
+        "Known deck IDs": 7,
+        "Deck files": 14,
+        "Card rows": 150,
+        "Primary cards in scope": 132,
+        "Kept primary cards": 120,
+        "Cards marked remove": 0,
+        "Cards needing developer review": 12,
+        "Missing review records": 0,
+        "Stale review records": 0,
+        "Obsolete review records": 0,
+        "Missing card review records": 0,
+        "Stale card review records": 0,
+        "Obsolete card review records": 0,
+        "Composition visibility scopes": 9,
+        "Memory-required goals checked in views": 292,
+        "Memory-required goals without visible memory node": 0
+      },
+      "old-nine-plus-whole-BW": {
+        "Ordinary atomic goals in scope": 422,
+        "Current no-memory decisions": 365,
+        "Current memory-required decisions": 51,
+        "Current needs developer review": 6,
+        "Memory goals in scope": 13,
+        "Traced memory goals": 13,
+        "Known deck IDs": 7,
+        "Deck files": 14,
+        "Card rows": 150,
+        "Primary cards in scope": 132,
+        "Kept primary cards": 120,
+        "Cards marked remove": 0,
+        "Cards needing developer review": 12,
+        "Missing review records": 0,
+        "Stale review records": 0,
+        "Obsolete review records": 0,
+        "Missing card review records": 0,
+        "Stale card review records": 0,
+        "Obsolete card review records": 0,
+        "Composition visibility scopes": 10,
+        "Memory-required goals checked in views": 326,
+        "Memory-required goals without visible memory node": 0
+      }
+    },
+    "technicalBindingFreshnessPass": true,
+    "scientificReadinessPass": false,
+    "helperDuplicateExplanation": "The helper traverses each global and new memory node and counts the same six open card pairs twice:12 occurrences,6 DISTINCT.132 primary occurrences are not132 distinct cards.75 distinct normal card records remain.",
+    "blockers": "6 open M additions,6 DISTINCT open cards; duplicate origin-shape errors arise from these same unresolved M decisions. No fingerprints were refreshed as approvals before original scientific judgments."
+  },
+  "technicalSelection": {
+    "newCounts": [
+      12,
+      7,
+      5,
+      8,
+      5,
+      4
+    ],
+    "distinctNewCards": 41,
+    "unchangedOldGlobalSets": 6,
+    "unchangedOldTargetSets": 9,
+    "ordinaryDenominator": 422,
+    "wholeBWOrdinaryTargets": 170,
+    "BWAuthoredTargetsBefore": 191,
+    "BWAuthoredTargetsAfter": 197,
+    "normalCompositionCompilerFindings": 0,
+    "backendExactExistingMethodCases": 18,
+    "backendFrontendAgree": true
+  },
+  "sourceCourse": {
+    "existingDirectEdgeCases": 36,
+    "indirectOrPartialCasesStillOpen": 4,
+    "priorBoundaryCasesStillOpen": 9,
+    "newMappingOrWholeSourceApprovals": 0,
+    "explicitDutiesRetained": [
+      "Henderson-Hasselbalch3.4.3(16)",
+      "Faraday3.4.7(7)",
+      "Massenanteil3.2.2.2(7)",
+      "Volumenanteile3.2.1.1(10)"
+    ]
+  },
+  "oldRecords": {
+    "original75CardLedgerChanged": false,
+    "unaffected34CardLinesReusedExactly": true,
+    "original422MLedgerChanged": false,
+    "unaffected382MLinesReusedExactly": true
+  },
+  "excludedVotes": {
+    "D": 0,
+    "P": 0,
+    "A": 0,
+    "V": 0,
+    "central": 0,
+    "human": 0
+  },
+  "newCandidateNotReviewed": true,
+  "activeIntegration": false,
+  "M7Granted": false,
+  "STOP": true
+}

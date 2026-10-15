@@ -1,0 +1,48 @@
+# Lernzielvisualisierung: Grundlagen Spektroskopie
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `466bd2e9-39a5-5221-b620-945934adce00`
+- Titel: Grundlagen Spektroskopie
+- Beschreibung: Die lernende Person kann IR- und 1H-NMR-Grundsignale einfachen organischen Strukturen zuordnen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image generation
+- Status: candidate
+- Quellbild: `466bd2e9-39a5-5221-b620-945934adce00.png`
+- Public Asset: `/assets/goal-visualizations/chemie/466bd2e9-39a5-5221-b620-945934adce00/466bd2e9-39a5-5221-b620-945934adce00.png`
+
+## Prompt
+
+```text
+# Actual generation stage 1
+
+Korrigiere die angehängte fehlerhafte Lehrgrafik für das Lernziel „Grundlagen Spektroskopie“. Erstelle als neue, freundlich-comichafte, klare PNG-Lehrgrafik im Querformat ungefähr 16:9 (nahe native Größe etwa 1600 × 900). Nutze luftige weiße/hellblaue und mintgrüne Flächen, dicke dunkelblaue Konturen, große gerundete deutsche Schrift und wenige klar zugeordnete Elemente, passend zu freundlichen SkillPilot-Lernzielbildern. Kein Fotorealismus, keine winzige Schrift, keine dekorativen Fantasieatome. Die alte Grafik enthält überbindige C-Atome und eine falsche Methoxy-Zuordnung; diese Inhalte vollständig durch ein einziges fachlich konsistentes Ethanol-Beispiel ersetzen. Der Bildaufbau mit zwei nebeneinanderliegenden Spektroskopiebereichen darf bleiben; nicht die fehlerhaften Strukturen oder Signale übernehmen.
+
+Oben mittig eine sehr große, chemisch exakt geschriebene kondensierte Strukturformel „CH₃–CH₂–OH“, darunter oder daneben das große Wort „Ethanol“. Keine expliziten zusätzlichen H-Bindungen: erster Kohlenstoff CH3 mit nur einer Bindung zum CH2, zweiter CH2 mit zwei Einfachbindungen zu CH3 und O, O mit einer Bindung zum CH2 und einer zum H. CH3 blau, CH2 korallrot, OH goldgelb als wiederkehrende Zuordnungsfarben.
+
+Links eine abgerundete helle Karte mit großer Überschrift „IR“. Darin eine sehr einfache schematische ABSORPTIONS-Kurve, nach oben zeigende Absorptionsbanden (keine Transmissionskurve), mit einer breiten goldfarbenen O–H-Bande im Bereich 3200–3600 cm⁻¹ und höchstens einer sehr kleinen unbeschrifteten exemplarischen C–O-Bande bei etwa 1050 cm⁻¹. Abszisse Wellenzahl von links groß nach rechts klein, wenige große Markierungen „4000“, „3000“, „2000“, „1000“ in gleichmäßigen Abständen. Beschrifte die Achse gut lesbar „cm⁻¹“. Genau ein großer Zuordnungspfeil vom gelben OH der Struktur zur breiten O–H-Bande; daneben nur der große Text „O–H“. Kurve klar als Absorptionsschema, keine Carbonylbande und keine Behauptung einer C=O-Gruppe im Ethanol. Keine kopierten experimentellen Spektren.
+
+Rechts eine zweite helle Karte mit großer Überschrift „¹H-NMR“. Eine einfache schematische Kurve mit GENAU zwei deutlich getrennten Signalgruppen: links ein korallrotes QUARTETT aus genau vier schmalen Linien im Höhenverhältnis etwa 1:3:3:1, zentriert bei δ≈3,6 ppm, als „CH₂“ beschriftet; rechts ein blaues TRIPLETT aus genau drei schmalen Linien im Höhenverhältnis etwa 1:2:1, zentriert bei δ≈1,2 ppm, als „CH₃“ beschriftet. Zwischen den Gruppen deutlicher Freiraum. Eine gemeinsame Abszisse mit gut lesbaren, gleichmäßig angeordneten Zahlen „4“, „3“, „2“, „1“, „0“, von links nach rechts FALLEND, darunter „δ / ppm“. Farben müssen genau mit der oberen Strukturformel übereinstimmen. Keine Integralkurve, kein Methoxy-/Singulettbeispiel, keine weiteren Linien. Diese zwei Signalgruppen sind absichtlich nur die C-gebundenen H-Umgebungen: unmittelbar unter der NMR-Karte in zwei kurzen, großen, gut lesbaren Zeilen exakt „OH-Signal nicht gezeigt“ und „Schematisch“. Damit wird nicht behauptet, Ethanol habe nur zwei H-Umgebungen.
+
+Alle fachlich nötigen Zahlen, Formelgruppen und die Weglassungsnotiz müssen groß und kontrastreich sein, keine lange Erklärbox. Etwa die 360-Pixel-Gesamtbildbreite auf schmalem Handy mitbedenken: Titel, korrekte Hauptstruktur, breite IR-Bande und die zwei klar unterschiedlich gesplitteten NMR-Gruppen sollen auf den ersten Blick erkennbar bleiben. Keine zusätzlichen Überschriften, kein Kleingedrucktes, keine Personen nötig.
+
+
+# Actual generation stage 2
+
+Bearbeite genau diese neue Ethanol-Lehrgrafik. Erhalte das Querformat, alle Farben, die korrekte große Formel CH₃–CH₂–OH, den freundlichen Comicstil, die IR-Karte links und die korrekte vierlinige CH₂-Quartettgruppe links bzw. dreilinige CH₃-Triplettgruppe rechts in der NMR-Karte, die große Weglassungsnotiz „OH-Signal nicht gezeigt“ und „Schematisch“.
+
+NUR eine fachliche Korrektur auf der rechten NMR-Karte: Die gezeichneten Peak-Positionen passen nicht zu den Zahlen der Achse und den angegebenen ppm-Werten. Mache deshalb die gesamte NMR-Skizze ausdrücklich QUALITATIV, ohne numerische Verschiebungen. Entferne vollständig die roten Wörter/Zahlen „δ ≈ 3,6 ppm“ und die blauen „δ ≈ 1,2 ppm“. Lasse die großen Beschriftungen „CH₂ (Quartett)“ und „CH₃ (Triplett)“ stehen. Entferne sämtliche fünf Zahlen 4,3,2,1,0 und ihre Achsenticks auf der NMR-Abszisse. An der Abszisse stehen stattdessen in großer gut lesbarer dunkelblauer Schrift nur „größere δ“ im linken Drittel und „kleinere δ“ im rechten Drittel. Beschrifte die Mitte unterhalb der Achse knapp „chemische Verschiebung“. Keine ppm-Zahlen, keine numerisch kalibrierte Skala, keine neuen Integrale. Die Achse soll lediglich die korrekte qualitative Reihenfolge zeigen: CH₂ neben O stärker entschirmt links, CH₃ rechts.
+
+IR-Karte, Formeln, O-H-Zuordnung und alle anderen Bildteile bleiben unverändert. Keine zusätzliche kleine Erklärung. Große klare Schrift, auch die beiden qualitativen Richtungswörter gut lesbar bei schmaler Darstellung. PNG im gleichen nativen Querformat, keine Transparenz.
+
+
+# Actual generation stage 3
+
+Ändere an dieser Ethanol-Lehrgrafik ausschließlich den mintgrünen Hinweisbalken rechts unten. Ersetze seinen bisherigen zweizeiligen Text vollständig durch eine einzige große, dunkelblaue, kräftige Zeile mit exakt diesem Text: „ohne OH-Signal“. Nutze die volle Breite und Höhe des Balkens für diese Zeile, mit Buchstaben mindestens so groß wie „Ethanol“ relativ zur Balkenhöhe, ungefähr 75 bis 85 Pixel hohe Schrift bei 1672 Pixel Gesamtbildbreite. Der Hinweis muss bei nur 360 Pixel Gesamtbildbreite ohne Zoomen lesbar sein. Kein zweiter Text, kein kleines „Schematisch“, keine weiteren Worte in diesem Balken. Alle anderen Pixelinhalte und chemischen Darstellungen des Bildes, die korrekten vier roten und drei blauen Peaklinien, die nur qualitative NMR-Achse, IR, Farben, Querformat und große Formel bleiben in Inhalt und Anordnung unverändert. PNG, kein transparenter Hintergrund.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

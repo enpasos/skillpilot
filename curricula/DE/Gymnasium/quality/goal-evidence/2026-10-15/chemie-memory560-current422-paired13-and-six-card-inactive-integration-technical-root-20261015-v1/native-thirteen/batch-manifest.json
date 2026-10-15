@@ -1,0 +1,66 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-memory-selection-current422-native13-context-20261015-v2",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-memory560-current422-paired13-and-six-card-inactive-integration-technical-root-20261015-v1/config/native13.original-exact-bundle-transport.config.json",
+  "configDigest": "sha256:5641f0ad98ae025575671321572d6423f6777f25f6c6e3cc655d4223c15c7c9e",
+  "goalIds": [
+    "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+    "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+    "67cd332f-9db7-50e1-87f6-172ef3714300",
+    "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+    "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+    "e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+    "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+    "8be14f15-2258-58e6-ae4e-38953f5d0570",
+    "801790f9-be3a-51fe-9b0f-3452c1bba887",
+    "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+    "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5",
+    "5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 422,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-current422-native13-context-preparation-technical-root-20261015-v1/config/whole422.with-genuine-targeted-P1.normal-stock-base.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:0e02242b319c2c1b62f182cdaa3a92ca2b0df9bd7063861fdb8b925459810303"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:91320f9618e29480743b703a59842e51ed8033beffda07b71fbe8f34e2bfff4b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:14037c2238834d87903cb812d42ddb8f3ea472855c53815844e82a87aba30d93",
+    "reviewInputFingerprint": "sha256:25472a0f72445b08aacdfdee7030a56e1602885c5a6dcc993bffb82921a0a985",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-memory-selection-current422-native13-context-20261015-v2-a",
+        "campaignDigest": "sha256:86ae93f030b22d1d37b842d31bb21ec4b9df72905e620bd3e5e0b2577ef081af",
+        "roundId": "chemie-memory-selection-current422-native13-context-20261015-v2-first-pass-a",
+        "independenceGroupId": "chemie-memory-selection-current422-native13-context-20261015-v2-independent-a",
+        "batchId": "chemie-memory-selection-current422-native13-context-20261015-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b9a64a11a00547cbb3f281150aabc13246f86761a88e57db45738648380a6a30"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-memory-selection-current422-native13-context-20261015-v2-b",
+        "campaignDigest": "sha256:1a2e8c253a6c2b2805059e608f0cc156990a6a7cf6eac4c431e4b0d04c1a832e",
+        "roundId": "chemie-memory-selection-current422-native13-context-20261015-v2-first-pass-b",
+        "independenceGroupId": "chemie-memory-selection-current422-native13-context-20261015-v2-independent-b",
+        "batchId": "chemie-memory-selection-current422-native13-context-20261015-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1673e28c1f94e92d2c3fd8e2e5f67cf9d81d88ac7907fd1573dca6f1726d0eb9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

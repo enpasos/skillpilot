@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-10-15T10:38:09.755762+00:00",
+  "runId": "b75b7f4d-810a-4d14-b09c-c725f9236d7a",
+  "BW": {
+    "title": "Bildungsplan 2016 Gymnasium Chemie, überarbeitete Fassung vom25.März2022",
+    "officialUrl": "https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_CH.V2%20%282022-03-25%29.pdf",
+    "actualHttpStatus": 200,
+    "contentType": "application/pdf",
+    "bytes": 2155781,
+    "sha256": "sha256:3ae66c6c2db6371aa24153484f78832f1dfc2097deac8b8dfbffeb32bed28c62",
+    "fetchedEqualsLocalPrimaryExactly": true,
+    "readPrintedPages": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+    ],
+    "boundary": "V2 source for the declared review scope; this check grants no applicability migration or G9/V3 source-readiness decision. Existing source-grid page references often name section starts; actual peptide14/15 clauses are printed35, Biuret16 printed36, electrochemistry7/10/11 printed39, acid7/8/9 printed33. SourceSpan identifiers are decisive here.",
+    "ownFinding": "Henderson-Hasselbalch3.4.3(16), Faraday3.4.7(7), Massenanteil3.2.2.2(7) and Volumenanteile3.2.1.1(10) are real source obligations. Nonselection is not a source exclusion."
+  },
+  "supplementaryPrimarySources": [
+    {
+      "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9.pdf",
+      "title": "BIPM SI Brochure9, amount of substance/mole",
+      "ownUse": "N=n*N_A; the exact entity count for one mole is6.02214076e23. Card008 must distinguish the constant with unit from its numerical value."
+    },
+    {
+      "url": "https://periodic-table.rsc.org/element/2/helium",
+      "title": "Royal Society of Chemistry helium entry",
+      "ownUse": "He has1s2 while occupying the noble-gas main group. This is a concrete counterexample to card004 without exception."
+    },
+    {
+      "url": "https://goldbook.iupac.org/terms/view/09068",
+      "title": "IUPAC Gold Book2025 Nernst equation",
+      "ownUse": "The activity reaction quotient contains stoichiometric powers. Its simple concentration-ratio note is a special case, not a general metal-/proton-coupled halfcell formula."
+    },
+    {
+      "url": "https://goldbook.iupac.org/terms/view/P04524",
+      "title": "IUPAC Gold Book2025 pH",
+      "ownUse": "Activity definition underlies the concentration approximation used at school. The missing temperature qualification of card012 is separate from tolerated school concentration shorthand."
+    },
+    {
+      "url": "https://www.nist.gov/publications/ionization-constant-water",
+      "title": "Arcis/Harvey2025: Ionization Constant of Water",
+      "ownUse": "The self-ionization equilibrium depends on temperature; neutral pH derives from pK_w/2, not universal7."
+    },
+    {
+      "url": "https://www.physiolchem.vetmed.uni-muenchen.de/pdf/aminosaeuren_ws.pdf",
+      "title": "LMU München: Aminosäuren und Proteine, printed2",
+      "ownUse": "The conventional Biuret response requires at least two suitable peptide/amide groups, relevant to the Dipeptid counterexample."
+    }
+  ],
+  "webFetchLimitations": [
+    "web.open could not fetch the BW PDF; direct HTTPS urllib fetch succeeded and matched the full local PDF byte for byte.",
+    "IUPAC term pages returned403 on direct open; current primary publisher search results supplied the full relevant definitions."
+  ],
+  "ownDerivations": "Explicit molecule, charge, formula, energy and concentration counterchecks are recorded separately in each first card judgment; no answer was accepted from an author decision."
+}

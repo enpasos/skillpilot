@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-lab2-current422-original-b-1d5aacde-048e-4ef5-915b-2b426e5cfd64",
+  "campaignId": "chemie-lab2-corrected-material-current422-native-20261015-v1-b",
+  "roundId": "chemie-lab2-corrected-material-current422-native-20261015-v1-first-pass-b",
+  "batchId": "chemie-lab2-corrected-material-current422-native-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:220cf2ec9420e072a5a24cd17a15344a05bc1740e39e3f1ae949191652ef3100",
+  "bundleFingerprint": "sha256:b268aff757d6d5dc0371c9177495bb342d777412180450d36065bc60758fabb8",
+  "bookDigest": "sha256:3ff92dc8c77a51781c60c299c3417867d92eeaa109c0edb2683216da31f5ffa5",
+  "provider": "OpenAI via live Codex delegated agent",
+  "model": "GPT-6 family as declared by environment; exact deployed model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:14add774f0ccf291e7c50e89e3c1c88d19870ecb3549b21ec221fcc8762887f7",
+  "independenceGroupId": "chemie-lab2-corrected-material-current422-native-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "62bdb5b1-4f67-59d4-bf5c-da80ee03eeb2",
+    "e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:2618b1511d51bf73a6f8348697830430425ae85069e13b68d983d429c557c25d"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6002eb235a8793b46e10f15771144ced29d69ea94fd173b0d566b08b618c2547"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:6442646d87cfeb9ee8e7a2f783b55e5750b610abeb2cb237f745dccdc6a7621d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:220cf2ec9420e072a5a24cd17a15344a05bc1740e39e3f1ae949191652ef3100"
+    }
+  ],
+  "startedAt": "2026-10-15T09:44:58.771480+00:00",
+  "completedAt": "2026-10-15T09:53:24.168006+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:96f1f9c45f5f2d5bbb995f519c6f33b093238b34a33e4a95fd9716d4f86be176",
+  "toolchainVersion": "codex-live-original-native-d2-review-v1"
+}

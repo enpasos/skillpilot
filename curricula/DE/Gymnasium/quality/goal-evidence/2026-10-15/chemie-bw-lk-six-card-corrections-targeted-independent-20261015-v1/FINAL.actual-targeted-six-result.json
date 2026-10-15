@@ -1,0 +1,117 @@
+{
+  "completedAt": "2026-10-15T10:59:32.933949+00:00",
+  "runId": "58798365-4f9a-41a2-b153-bb430032d9c5",
+  "reviewer": "Codex independent machine chemistry reviewer / six-card-corrections-targeted-20261015",
+  "freshOriginalJudgments": {
+    "sixCorrectedCards": "6 kept",
+    "sixMAdditions": "6 memory_required",
+    "fourAffectedSelections": "4 bounded_scientific_selection_accepted"
+  },
+  "unchangedOriginalScientificEvidence": {
+    "35CardDecisions": true,
+    "34MDecisions": true,
+    "2SelectionDecisions": true
+  },
+  "currentCombinedCandidate": {
+    "reviewedSelectionCards": 41,
+    "reviewedMAdditions": 40,
+    "selections": 6,
+    "wholeCardRecords": 75,
+    "ordinaryGoalRecords": 422
+  },
+  "normalWhole422Result": {
+    "oldNinePlusWholeBW": {
+      "exitCode": 0,
+      "status": "PASS",
+      "metrics": {
+        "Ordinary atomic goals in scope": 422,
+        "Current no-memory decisions": 365,
+        "Current memory-required decisions": 57,
+        "Current needs developer review": 0,
+        "Memory goals in scope": 13,
+        "Traced memory goals": 13,
+        "Known deck IDs": 7,
+        "Deck files": 14,
+        "Card rows": 150,
+        "Primary cards in scope": 132,
+        "Kept primary cards": 132,
+        "Cards marked remove": 0,
+        "Cards needing developer review": 0,
+        "Missing review records": 0,
+        "Stale review records": 0,
+        "Obsolete review records": 0,
+        "Missing card review records": 0,
+        "Stale card review records": 0,
+        "Obsolete card review records": 0,
+        "Composition visibility scopes": 10,
+        "Memory-required goals checked in views": 370,
+        "Memory-required goals without visible memory node": 0
+      }
+    },
+    "oldNineAlone": {
+      "exitCode": 1,
+      "status": "FAIL: expected diagnostic coverage gap",
+      "metrics": {
+        "Ordinary atomic goals in scope": 422,
+        "Current no-memory decisions": 365,
+        "Current memory-required decisions": 57,
+        "Current needs developer review": 0,
+        "Memory goals in scope": 13,
+        "Traced memory goals": 13,
+        "Known deck IDs": 7,
+        "Deck files": 14,
+        "Card rows": 150,
+        "Primary cards in scope": 132,
+        "Kept primary cards": 132,
+        "Cards marked remove": 0,
+        "Cards needing developer review": 0,
+        "Missing review records": 0,
+        "Stale review records": 0,
+        "Obsolete review records": 0,
+        "Missing card review records": 0,
+        "Stale card review records": 0,
+        "Obsolete card review records": 0,
+        "Composition visibility scopes": 9,
+        "Memory-required goals checked in views": 330,
+        "Memory-required goals without visible memory node": 0
+      },
+      "exactRemainingReason": "The six BW-only selection nodes are not visible in any of the old nine scopes. All nine per-goal same-scope reachability checks pass; the hard global referenced-memory coverage requires the new BW scope. No waiver, source exclusion or change to old targets was made."
+    }
+  },
+  "technicalInvariants": {
+    "oldNineTargetSetsExact": true,
+    "oldSixGlobalSelectionSetsExact": true,
+    "newSelectionCounts": [
+      12,
+      7,
+      5,
+      8,
+      5,
+      4
+    ],
+    "BWAuthoredTargetsBefore": 191,
+    "BWAuthoredTargetsAfter": 197,
+    "BWOrdinaryTargetsUnchanged": 170,
+    "ordinaryDenominator": 422,
+    "allIDsAndCategoriesAndTagsExact": true,
+    "onlySixFrontBacksChanged": true,
+    "other51WholeDeckCardsExact": true,
+    "canonical560Semantic560AndViewsUnchanged": true,
+    "unchangedBackendEvidence": "Original18 exact existing-method cases remain applicable because every goal/card tag and selected ID set is identical; no backend rerun or code change is claimed."
+  },
+  "sourceHolds": {
+    "existingDirectMappingCases": 36,
+    "indirectPartialCasesRemainOpen": 4,
+    "priorBoundaryCasesRemainOpen": 9,
+    "newSourceCourseApprovals": 0
+  },
+  "noFurtherScientificDeferralForSixCorrectedTexts": true,
+  "originalDeferralsRemainValidForOriginalTexts": true,
+  "DP13Unchanged": true,
+  "otherDPAandVVotes": 0,
+  "centralExecuted": false,
+  "activeIntegration": false,
+  "M7Granted": false,
+  "humanApproval": false,
+  "STOP": true
+}
