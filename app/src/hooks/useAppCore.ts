@@ -630,8 +630,7 @@ export function useAppCore({
           const data = await res.json()
           return [landscapeId, normalizeCompositionView(data)] as const
         }
-        if (skillpilotId && landscapeId === '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
-          && hasExplicitCompositionSupplements(learnerPersonalCurriculum)) {
+        if (skillpilotId && hasExplicitCompositionSupplements(learnerPersonalCurriculum, landscapeId)) {
           const params = new URLSearchParams({ landscapeId })
           const res = await fetch(`/api/ui/learners/${encodeURIComponent(skillpilotId)}/selected-composition-views?${params}`, { credentials: 'include', signal })
           if (!res.ok) throw new Error(`Failed to load selected Mathematics preparation (${res.status})`)

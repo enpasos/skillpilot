@@ -8,6 +8,43 @@ const owner = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const selected = JSON.stringify({ [owner]: { selected: false, supplementSelections: [{ supplementId: 'TEST_ONLY', authorizationSha256: 'a'.repeat(64) }] } })
 assert.equal(hasExplicitCompositionSupplements(selected), true)
 assert.equal(hasExplicitCompositionSupplements(JSON.stringify({ [owner]: { selected: true } })), false)
+// Catalog IDs and opaque saved selections are detected without granting authority.
+const catalogOwner = 'catalog:arbitrary-subject@2027'
+const otherOwner = 'catalog:other-subject'
+const savedSubjects = {
+  [catalogOwner]: { selected: false, supplementSelections: [{ staleOrUnknownSelection: true }] },
+  [otherOwner]: { selected: true, supplementSelections: [] },
+}
+for (const config of [savedSubjects, { personalCurriculum: savedSubjects, metadata: { version: 1 } }]) {
+  const value = JSON.stringify(config)
+  assert.equal(hasExplicitCompositionSupplements(value), true)
+  assert.equal(hasExplicitCompositionSupplements(value, undefined), true)
+  assert.equal(hasExplicitCompositionSupplements(value, catalogOwner), true)
+  for (const absentOwner of ['', ' ', 'unknown-owner', otherOwner, owner, '*', '__proto__']) {
+    assert.equal(hasExplicitCompositionSupplements(value, absentOwner), false, absentOwner)
+  }
+}
+assert.equal(hasExplicitCompositionSupplements(selected, owner), true)
+for (const config of [
+  null, true, 7, 'text', [], [{ supplementSelections: ['opaque'] }], {},
+  { [catalogOwner]: null }, { [catalogOwner]: [] },
+  { [catalogOwner]: { selected: true } },
+  { [catalogOwner]: { supplementSelections: [] } },
+  { [catalogOwner]: { supplementSelections: 'opaque' } },
+  { [catalogOwner]: { supplementSelections: { length: 1 } } },
+  { supplementSelections: ['top-level-metadata'] },
+  { metadata: { nested: { supplementSelections: ['unrelated'] } } },
+  { personalCurriculum: null, ...savedSubjects },
+  { personalCurriculum: [], ...savedSubjects },
+  { personalCurriculum: {}, metadata: savedSubjects },
+]) {
+  assert.equal(hasExplicitCompositionSupplements(JSON.stringify(config)), false, JSON.stringify(config))
+}
+for (const value of [undefined, null, '', '{invalid']) {
+  assert.equal(hasExplicitCompositionSupplements(value), false)
+}
+// Even an invalid saved payload must reach backend validation and explicit recovery.
+assert.equal(hasExplicitCompositionSupplements(JSON.stringify({ [catalogOwner]: { supplementSelections: [null] } }), catalogOwner), true)
 const base = { viewId: 'TEST_ONLY_base', landscapeId: owner, scope: { schoolForm: 'Gymnasium', stage: 'SekI' }, rootNodes: [{ kind: 'structure', id: 'base', label: 'Base', children: [{ kind: 'goalEntry', goalId: 'TEST_ONLY_base_atom' }] }] }
 const supplement = { viewId: 'TEST_ONLY_selected_supplement', landscapeId: owner, scope: base.scope, rootNodes: [{ kind: 'structure', id: 'preparation', label: 'Preparation', children: [{ kind: 'goalEntry', goalId: 'TEST_ONLY_extra' }] }] }
 const combined = combineSelectedCompositionDocuments([base, supplement])!

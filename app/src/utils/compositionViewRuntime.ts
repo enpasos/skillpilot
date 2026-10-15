@@ -1076,13 +1076,28 @@ export const combineSelectedCompositionDocuments = (documents: unknown[]): Compo
     resolvedSelectionViews: views,
   }
 }
-export const hasExplicitCompositionSupplements = (value?: string | null): boolean => {
+// Presence only: the backend validates selections and supplies their authorized views.
+export const hasExplicitCompositionSupplements = (
+  value?: string | null,
+  ownerLandscapeId?: string,
+): boolean => {
   if (!value) return false
   try {
-    const raw = JSON.parse(value) as Record<string, unknown>
-    const config = typeof raw.personalCurriculum === 'object' && raw.personalCurriculum !== null
-      ? raw.personalCurriculum as Record<string, unknown> : raw
-    const math = config['68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'] as Record<string, unknown> | undefined
-    return Array.isArray(math?.supplementSelections) && math.supplementSelections.length > 0
+    const raw: unknown = JSON.parse(value)
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return false
+    const record = raw as Record<string, unknown>
+    const config = Object.hasOwn(record, 'personalCurriculum') ? record.personalCurriculum : record
+    if (!config || typeof config !== 'object' || Array.isArray(config)) return false
+    const subjects = config as Record<string, unknown>
+    const entries = ownerLandscapeId === undefined
+      ? Object.values(subjects)
+      : ownerLandscapeId.length > 0 && Object.hasOwn(subjects, ownerLandscapeId)
+        ? [subjects[ownerLandscapeId]]
+        : []
+    return entries.some((entry) => {
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return false
+      const selections = (entry as Record<string, unknown>).supplementSelections
+      return Array.isArray(selections) && selections.length > 0
+    })
   } catch { return false }
 }
