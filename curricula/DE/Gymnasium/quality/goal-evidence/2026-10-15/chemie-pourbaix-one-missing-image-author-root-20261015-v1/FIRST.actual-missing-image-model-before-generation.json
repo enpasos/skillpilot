@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "role": "Own bounded image author science before generation; not independent approval",
+  "recordedAtUTC": "2026-10-15T14:33:02.670511+00:00",
+  "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+  "finding": "The current goal has no primary learning-goal image; this is an actual V gap, not a generator preference.",
+  "actualReadInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-pourbaix-one-missing-image-author-root-20261015-v1/inputs/current-whole-pourbaix-and-direct-prerequisite.json",
+      "sha256": "sha256:391fce46f53b572ee5efb0dbc0ca953a46b67f4a034db550a0c027b337e4e0ca",
+      "bytes": 4629
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-pourbaix-one-missing-image-author-root-20261015-v1/inputs/two-whole-current-DEEN-author-cases.exact.json",
+      "sha256": "sha256:12501e20aac7e6ca5369f85ce45fe05b68dac9c8458679ae23ffb138db51a9aa",
+      "bytes": 10165
+    }
+  ],
+  "selectedScientificModel": "Qualitative schematic of the explicitly idealized two-valence metal M/M2+/M(OH)2 model in case10b; not a real iron or complete metal/water diagram.",
+  "derivation": "At fixed dissolved M2+ activity, M2+/M has no proton term and is horizontal in pE/pH. The M2+/M(OH)2 dissolution/precipitation boundary contains no electron term and is vertical. For M(OH)2 +2H+ +2e− -> M+2H2O, pE decreases with increasing pH; the hydroxide/metal boundary slopes down to the right. The three boundaries meet in one triple point. Metal is below the reducing boundary, dissolved M2+ above-left, hydroxide solid above-right.",
+  "providedModelNumericalCrosscheck": "With E°=-0.440V, Ksp=1e-15, Kw=1e-14 and aM2+=1e-6, the triple point is pH9.5/Eh=-0.61748V; the solid/metal line is Eh=-0.05546-0.05916pH. This image will be explicitly schematic without numerical tick values; it does not publish approximate drawing positions as calculations.",
+  "imageLimits": [
+    "No actual iron or universal metal speciation claim.",
+    "No claimed water stability window; omitted water lines and other oxidation states are named in ALT/context.",
+    "A solid stability region does not prove passivation, adherence or protection.",
+    "Thermodynamic stability does not determine an actual corrosion/reaction rate.",
+    "No laboratory or learner outcomes."
+  ],
+  "formatDecision": "Native landscape opaquePNG near1600x900, friendly abstract comic style, one large simple graph, large concise labels; KEEP all existing other images.",
+  "readabilityPlan": "Actual narrow360CSS and desktop680CSS, also GoalCard316/636, before V acceptance. No small mandatory legend or dense conditions.",
+  "plannedVisibleText": [
+    "Schematisches Modell",
+    "pE",
+    "pH",
+    "M²⁺",
+    "M(OH)₂",
+    "M",
+    "Stabilität ≠ Tempo"
+  ],
+  "newIndependentApprovals": 0,
+  "strictClosures": 0,
+  "humanApproval": false,
+  "activeWrites": 0
+}

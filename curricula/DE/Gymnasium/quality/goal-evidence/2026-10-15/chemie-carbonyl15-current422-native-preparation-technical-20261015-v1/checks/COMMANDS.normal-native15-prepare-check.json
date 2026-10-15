@@ -1,0 +1,54 @@
+{
+  "commands": [
+    {
+      "name": "native15-stock-prepare",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-current422-native560-host-v1/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-native-preparation-technical-20261015-v1/config/native15.normal-prepare-only.config.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/carbonyl15-current422-native560-host-v1",
+      "startedAtUTC": "2026-10-15T14:21:13.833388+00:00",
+      "elapsedSeconds": 12.895,
+      "exitCode": 0,
+      "output": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-native-preparation-technical-20261015-v1/checks/COMMAND.native15-stock-prepare.attempt-1.actual.txt",
+      "outputSHA256": "sha256:3d8cef2388f6ea03f930c12faee6b3d5869b2137e6e9cbb8b83a959586e97409"
+    },
+    {
+      "name": "native15-stock-check",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-current422-native560-host-v1/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-native-preparation-technical-20261015-v1/config/native15.normal-prepare-only.config.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/carbonyl15-current422-native560-host-v1",
+      "startedAtUTC": "2026-10-15T14:21:26.732050+00:00",
+      "elapsedSeconds": 0.864,
+      "exitCode": 0,
+      "output": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-native-preparation-technical-20261015-v1/checks/COMMAND.native15-stock-check.attempt-1.actual.txt",
+      "outputSHA256": "sha256:f1fbf0bca822f2702d4271c8485565f7d895befc75ce91913723653cfc9ba120"
+    }
+  ],
+  "physicalModulePreflights": [
+    {
+      "phase": "before-prepare",
+      "actualAtUTC": "2026-10-15T14:21:13.833345+00:00",
+      "stockPhysicalModules": 31,
+      "dynamicQAChildAndModelExact": true,
+      "QAExecuted": false
+    },
+    {
+      "phase": "before-check",
+      "actualAtUTC": "2026-10-15T14:21:26.732010+00:00",
+      "stockPhysicalModules": 31,
+      "dynamicQAChildAndModelExact": true,
+      "QAExecuted": false
+    }
+  ],
+  "newScientificVotes": 0,
+  "centralExecuted": false
+}

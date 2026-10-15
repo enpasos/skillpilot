@@ -1,0 +1,11 @@
+{
+  "role": "Actual local transport-script failure before any normal stock command",
+  "exitCode": 1,
+  "error": "FileExistsError: original blank round-a already includes empty results directory; results.mkdir() requires exist_ok=True",
+  "sourceScriptPreserved": "scripts/prepare_original_pair.attempt1.empty-results-dir.py",
+  "failedOperation": "mkdir own native16/round-a/results",
+  "sourceWrites": 0,
+  "scientificChanges": 0,
+  "correctiveAction": "Allow exact existing empty results directory; resume exact transport idempotently",
+  "receiptAtUTC": "2026-10-15T15:25:06.987756+00:00"
+}

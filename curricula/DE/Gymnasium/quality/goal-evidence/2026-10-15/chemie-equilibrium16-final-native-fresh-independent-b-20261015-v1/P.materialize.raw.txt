@@ -1,0 +1,15 @@
+
+> skillpilot@0.0.0 quality:positive-goal-evidence-candidates
+> tsx scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-final-native-fresh-independent-b-20261015-v1/P.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-final-native-fresh-independent-b-20261015-v1/P.candidates.json --write
+
+/home/enpasos/projects/skillpilot/app/scripts/materializePositiveGoalEvidenceCandidates.ts:146
+      throw new Error(`${goal.id}: goal-visualization asset is missing at ${assetPath}`)
+            ^
+
+
+Error: f0f2c5f8-06f1-5774-a176-d96505727acf: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/chemie/f0f2c5f8-06f1-5774-a176-d96505727acf/f0f2c5f8-06f1-5774-a176-d96505727acf.png
+    at resourceDigestsForGoal (/home/enpasos/projects/skillpilot/app/scripts/materializePositiveGoalEvidenceCandidates.ts:146:13)
+    at buildPositiveGoalEvidenceCandidateRecords (/home/enpasos/projects/skillpilot/app/scripts/materializePositiveGoalEvidenceCandidates.ts:211:35)
+    at async main (/home/enpasos/projects/skillpilot/app/scripts/materializePositiveGoalEvidenceCandidates.ts:289:19)
+
+Node.js v20.20.2

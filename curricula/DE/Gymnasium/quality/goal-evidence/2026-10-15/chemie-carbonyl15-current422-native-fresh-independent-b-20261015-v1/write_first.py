@@ -1,0 +1,226 @@
+import json
+from pathlib import Path
+from datetime import datetime, timezone
+
+ROOT = Path(__file__).parent
+INPUT = ROOT.parent / 'chemie-carbonyl15-current422-native-preparation-technical-20261015-v1'
+goals = json.loads((INPUT / 'blind-scientific-inputs/fifteen-whole-current-goals.json').read_text())['goals']
+rows = []
+
+def add(i, decision, reason, aspects, source, cases, atomicity, essential_de, essential_en, performance_de, performance_en, transfer_de, transfer_en, replacement=None):
+    g = goals[i-1]
+    row = dict(ordinal=i, goalId=g['id'], titleDe=g['title'], decision=decision,
+               rationaleDe=reason, aspectCoverageDe=aspects, sourceAssessmentDe=source,
+               taskAssessmentDe=cases, atomicityAssessmentDe=atomicity,
+               evidenceProfileRecommendation='none', understandingEvidence={
+                   'essentialUnderstandingDe':essential_de, 'essentialUnderstandingEn':essential_en,
+                   'observablePerformanceDe':performance_de, 'observablePerformanceEn':performance_en,
+                   'transferExpectationDe':transfer_de, 'transferExpectationEn':transfer_en})
+    if replacement:
+        row['proposedDescriptionDe'], row['proposedDescriptionEn'] = replacement
+    rows.append(row)
+
+add(1, 'KEEP',
+    'Der aktuelle zweisprachige Text benennt eine zusammenhängende analytische Handlung: passende qualitative Reaktionen auswählen, ausführen und im gegebenen Stoffklassenraum deuten. Die Beispielsammlung behauptet keinen universell selektiven Einzeltest. Der Durchführungsoperator bleibt erhalten.',
+    'Auswahl aus Strukturmerkmal und Kandidatenraum; Beobachtung versus Gruppenzuordnung; Blind- und Positivkontrolle; begrenzte Aussage negativer Befunde; sichere tatsächlich beobachtete Ausführung.',
+    'BY C12-GA.3.2 / C12-EA.3.2 trägt die ausgewählten Klassen explizit. BW 3.2.2.1(6) enthält Durchführung ausgewählter Nachweise; NI Organik S.2 enthält Benedict-Durchführung und Kontrollfunktion. Die breiten Zellen enthalten auch Wasser/Gase/Ionen bzw. Naturstoffe; diese Partneraspekte werden diesem Ziel nicht vollständig zugerechnet.',
+    'Fall1 unterscheidet DNPH-Carbonylsignal und Cu(II)-Redoxsignal; A ist nur im Dreier-Kandidatenraum Cyclohexen. CH3CH2CHO + 2Cu2+ + 5OH- -> CH3CH2COO- + Cu2O + 3H2O erhält Atome und Ladung -1. Fall2 überträgt auf Hydrogencarbonat/Hydrolyse und behandelt Ethanol als Ausschlusszuordnung. Beide Ausführungskriterien verlangen echte getrennte Probenhandhabung unter Aufsicht; die Papierdaten erfüllen sie nicht. Das ist eine spätere Leistungsbedingung und kein zusätzliches Hindernis der Materialprüfung.',
+    'Die Tests dienen einer analytischen Entscheidung; mehrere mögliche Stoffklassen erzwingen keine Aufspaltung in isolierte Testnamen.',
+    'Ein qualitativer Gruppennachweis verbindet passende Reaktionsauswahl, kontrollierte Beobachtung und eine auf den Kandidatenraum begrenzte chemische Deutung.',
+    'Qualitative group detection connects suitable reaction selection, controlled observation and a chemical inference bounded by the candidate set.',
+    'Wählt und begründet eine Testfolge, führt freigegebene Proben mit Kontrollen sicher aus und ordnet tatsächliche Befunde den möglichen Gruppen zu; formuliert verlangte Reaktionsbilanzen.',
+    'Selects and justifies a test sequence, safely carries out authorized tests with controls and assigns actual findings to possible groups; writes requested reaction balances.',
+    'Überträgt die Auswahl und Deutung auf einen veränderten Kandidatenraum und ein anderes Reaktionsprinzip, etwa von Carbonyl-/Redoxproben zu Säure-/Hydrolyseproben, und begrenzt negative Befunde erneut.',
+    'Transfers selection and interpretation to a changed candidate set and reaction principle, for example from carbonyl/redox to acid/hydrolysis tests, and reassesses the limits of negative findings.')
+
+add(2, 'KEEP',
+    'Die vier Wechselwirkungstypen sind klar genannt und DE/EN gleichwertig. Erläutern an Beispielen verlangt eine Beziehung zwischen Teilchenmerkmal und Wechselwirkung. Eine zusätzliche allgemeine Stoffeigenschafts-Kompetenz muss nicht in die Beschreibung aufgenommen werden.',
+    'Temporäre und permanente Dipole; zusätzliche H-Brücken mit Donator/Akzeptor; Ionen-Dipol und Wasserorientierung; Bindungen innerhalb eines Moleküls versus Wechselwirkungen zwischen Teilchen.',
+    'HE Q1.1 nennt alle vier Beiträge samt Ionensolvatation. BW 3.2.1.3(8),(9),(12) unterscheidet Wechselwirkungen, Ableitung aus Struktur und Salzlösung. Die Eigenschaftsfolgen aus (11) sowie aus breiteren NI-/SN-Zellen werden auch durch die tatsächlichen Partner 5a30273a, 3d3231f9 und 7a36f2a2 getragen; sie sind keine stillschweigende Vollanforderung dieses Textes.',
+    'Ethanol/Ether bei gleicher Molmasse zeigt H-Brückenfähigkeit; Ether bleibt Akzeptor gegenüber Wasser. Hexan/Aceton verhindert eine universelle Dipol-vor-Dispersion-Siederegel. Na+, Cl- und Mg2+ prüfen wirklich die Orientierungsbeziehung. Gerundete Siedepunkte sind plausibel und als Lehrdaten deklariert.',
+    'Die Typen sind Vergleichsfälle desselben Wechselwirkungskonzepts, keine voneinander unabhängigen Routinen.',
+    'Zwischenmolekulare Anziehung hängt von Ladung, permanenten und induzierten Dipolen sowie H-Brücken-Donator- und Akzeptorstellen ab; Dispersion bleibt auch bei polaren Teilchen vorhanden.',
+    'Interparticle attraction depends on charge, permanent and induced dipoles and hydrogen-bond donor and acceptor sites; dispersion remains present for polar particles too.',
+    'Erklärt an Molekül- und Ionenteilchenpaaren die jeweils möglichen Beiträge und die bevorzugte Orientierung, ohne sie mit einer kovalenten Bindung gleichzusetzen.',
+    'Explains the possible contributions and preferred orientation for molecular and ionic particle pairs without equating them to covalent bonds.',
+    'Ordnet Wechselwirkungen für ein neues Molekül-/Lösungsmittelpaar oder ein anderes hydratisiertes Ion anhand von Struktur und Ladung erneut zu und prüft eine unzulässige pauschale Rangregel.',
+    'Reassigns interactions for a new molecule/solvent pair or hydrated ion from structure and charge and tests an invalid universal ranking rule.')
+
+add(3, 'KEEP',
+    'Der Text verbindet die chemische Säurebildung ausdrücklich mit dem Wirkprinzip des Pumpenhemmers und ist bilingual präzise. Die Erklärung verlangt keine individuelle Therapieentscheidung.',
+    'CO2/H2O-Protonenquelle; ATP-gekoppelter H+/K+-Transport; gesonderter Chloridtransport; hydratisierte Ionen im Lumen; Hemmung neuer Sekretion gegenüber Verbrauch vorhandener Säure.',
+    'BY C11.3.1 ist eine direkte Einzelzielzelle. Die aktuelle offizielle C11-3.1-Seite bestätigt den Operator. Die NCI-Definition wurde gezielt direkt gelesen: Zielprotein und Hemmung des H+/K+-Austauschs sind belegt. Weitergehende regionale Vollabdeckung wird aus den breiten Pharmaziezellen nicht abgeleitet.',
+    'Fall1: 12.0 bzw. 10.2 mmol/L geben pH1.921 bzw.1.991. Fall2: 6.00 bzw.8.00 mmol/L geben2.222 bzw.2.097. Die jeweils geforderte Interpretation unterscheidet Zuflusshemmung, Neutralisation und die Grenzen eines geschlossenen ungepufferten Modells. Die pH-Rechnung unterstützt die Mechanismuserklärung.',
+    'Bildung und Hemmung bilden eine gemeinsame Ursache-Wirkungs-Erklärung.',
+    'Magensäuresekretion verbindet Protonenbereitstellung mit energiegekoppeltem Membrantransport; Protonenpumpen-Hemmer vermindern diesen Transport und neutralisieren vorhandene Säure nicht stöchiometrisch.',
+    'Gastric acid secretion couples proton supply to energy-driven membrane transport; proton pump inhibitors reduce this transport rather than stoichiometrically neutralizing existing acid.',
+    'Beschreibt Protonenquelle, H+/K+-ATPase und getrennten Chloridtransport und leitet daraus die Wirkung eines Pumpenhemmers auf neue Säuresekretion ab.',
+    'Describes proton supply, H+/K+-ATPase and separate chloride transport and derives how pump inhibition affects new acid secretion.',
+    'Erklärt bei verändertem Säurezufluss oder vorhandener Lumensäure, weshalb Pumpenhemmung und Neutralisation unterschiedliche zeitliche Stoffbilanzen ergeben.',
+    'Explains why pump inhibition and neutralization produce different time-dependent material balances when acid influx or existing luminal acid changes.')
+
+add(4, 'KEEP',
+    'Recherche und chemisch begründete Bewertung von Wirkung und Einsatz sind erhalten; Einsatz ist hier verständlich als Anwendungsbezug der Hilfsmittel. Die DE/EN-Fassung bleibt auf chemische Begründungen begrenzt.',
+    'Substratspezifische Enzymhydrolyse; physikalische Entschäumung; mikrobielle Substrate versus lebende Mikroorganismen; Aussagen nach Stamm, Endpunkt und Bedingungen begrenzen; tatsächliche Quellenarbeit.',
+    'BY C11.3.3 fordert recherchieren und Einnahme bewerten. Der aktuelle Originalabschnitt C11-3.1 wurde gelesen. Die bereitgestellten NIDDK-/ODS-/Herstellerparaphrasen haben unterschiedliche Quellenrollen; eine eigene Volllektüre dieser drei externen Dossiers wird hier nicht behauptet.',
+    'Fall1 verlangt passende Rechercheorte und bewertet die unzulässige Ersetzung von Lactase durch beliebige Probiotika. 8 mmol Lactoseumsatz liefert je8 mmol Monosaccharid und2 mmol Rest. Fall2 trennt0.60 mmol vollständige Fettspaltung (0.60 mmol Glycerin/1.80 mmol Fettsäuren) von70% geringerer Schaumhöhe. Weder Messgröße wird klinische Symptomwirksamkeit.',
+    'Die vier Produktgruppen sind Alternativen für eine gemeinsame chemisch begründete Anwendungsbewertung. Kein Split erforderlich.',
+    'Enzyme, Entschäumer, Präbiotika und Probiotika greifen über verschiedene Substrat-, Grenzflächen- oder mikrobielle Vorgänge ein; ein plausibles Prinzip ist keine allgemeine Wirksamkeitsgarantie.',
+    'Enzymes, defoamers, prebiotics and probiotics act through different substrate, interface or microbial processes; a plausible mechanism is not a universal efficacy guarantee.',
+    'Recherchiert benannte Wirkungs- und Anwendungsbelege, ordnet das jeweilige chemische Prinzip zu und bewertet eine konkrete Einsatzbehauptung unter ihren Bedingungen.',
+    'Researches identified mechanism and application evidence, assigns the chemical principle and evaluates a specific use claim under its conditions.',
+    'Bewertet einen geänderten Substrat- oder Modellbefund und erklärt, warum ein Enzymnachweis, Schaumzerfall oder ein Befund eines bestimmten Stamms nicht beliebig auf andere Hilfsmittel übertragbar ist.',
+    'Evaluates changed substrate or model evidence and explains why enzyme conversion, foam collapse or a finding for one strain cannot be transferred arbitrarily to other aids.')
+
+add(5, 'REVISE',
+    'Die aktuelle Beschreibung fordert Recherche zur Anwendung und strukturelle Einordnung, lässt aber die explizite Anwendungsbewertung aus der unmittelbar zugeordneten BY-Einzelzielzelle weg. Recherchieren und Einordnen sind kein gleichwertiger Ersatz für bewerten. Das vorhandene Profil und beide Fälle prüfen die Bewertung bereits; die kurze Beschreibung soll denselben beanspruchten Operator sichtbar machen.',
+    'Wirkstoff- versus Gesamtzusammensetzung; ASS-Säure/Ester, Ibuprofen-Säure, Paracetamol-Phenol/Amid; Konsumdaten nach Zeitraum/Nenner; chemische Strukturinformationen als Grundlage einer begrenzten Anwendungsbewertung.',
+    'BY C11.3.4, Quelle0615679b, hat als tatsächliche Union nur f71a2c0a; kein Partneratom übernimmt dort den fehlenden Bewertungsoperator. Die offizielle Seite C11-3.2 bestätigt dies direkt. Andere HB/RP/SH/SN-Zellen sind breit gekoppelt und rechtfertigen keine universelle Vollabdeckung. RKI-Primärbericht wurde für Datenarten/Zeiträume direkt nachgeprüft.',
+    'Fälle1/2 enthalten explizite strukturbezogene Werbebewertung, Quellenprotokoll und echte historische Konsumdaten neben fiktiven Verkäufen. Massen600/360/500g und Normierung1.2/1.8/1.0 stimmen; X1.5 gegenY2.0 Tabletten/Person/30Tage, Gesamtmassen je150g bzw.320g stimmen. 10.0 zu12.2% sind2.2 Prozentpunkte bzw.22% relativ. BGS98 wird im Fall vereinfacht als1998 bezeichnet; der Bericht nennt1997–1999. Diese Datierungspräzision ist ein Materialhinweis, kein Grund die konkrete Operatorlücke zu übergehen.',
+    'Recherche und Strukturvergleich dienen der einen chemisch begründeten Bewertung von Schmerzmitteln. Die lokale Operatorergänzung verdeckt keinen erforderlichen Split.',
+    'Vollständige Wirkstoffstruktur, Präparatzusammensetzung und belastbare Anwendungsinformationen sind zusammen zu betrachten; Verkaufsdaten, Gebrauchsprävalenz und individuelle Eignung sind verschiedene Aussagen.',
+    'Full active-ingredient structure, formulation composition and supported application information must be considered together; sales, use prevalence and individual suitability are distinct claims.',
+    'Recherchiert Zusammensetzung und Konsum mit Quellen und Bezugsgrößen, ordnet die funktionellen Gruppen ausgewählter Analgetika zu und bewertet eine Anwendungsbehauptung anhand chemischer Informationen.',
+    'Researches composition and consumption with sources and reference quantities, assigns functional groups of selected analgesics and evaluates an application claim using chemical information.',
+    'Bewertet ein anderes Präparat oder eine Kombination bei geändertem Zeitraum oder Nenner und begründet, weshalb gleiche Ringstruktur, Wirkstoffmasse oder Verkaufszahl keine gleiche Anwendungseignung beweist.',
+    'Evaluates another formulation or combination with a changed period or denominator and explains why the same ring structure, active mass or sales count does not prove equal suitability for use.',
+    ('Die lernende Person kann Zusammensetzung und Konsum frei verkäuflicher Schmerzmittel recherchieren, Wirkstoff-Moleküle wie Acetylsalicylsäure, Ibuprofen und Paracetamol anhand chemischer Strukturmerkmale einordnen und deren Anwendung auf Grundlage chemischer Informationen begründet bewerten.',
+     'The learner can research the composition and consumption of over-the-counter analgesics, classify active ingredient molecules such as acetylsalicylic acid, ibuprofen, and paracetamol by chemical structural features, and evaluate their use with reasons based on chemical information.'))
+
+add(6, 'KEEP',
+    'Der aktuelle Text benennt den mechanistischen Transfer zwischen Ester- und Amidbildung und folgt dem direkten Quelloperator. Er behauptet weder eine schnelle kalte Amidbildung noch starke Säure als universellen Amidkatalysator.',
+    'Acyl-C als Angriffsort; tetraedrisches Zwischenprodukt; Protonentransfer und geeigneter Abgang; atomare Bilanz; Ester-O versus Amid-N; Salzbildung, Aktivierung und Entwässerungsbedingungen.',
+    'BY C11.3.5 ist eine direkte Einzelzielzuordnung und wurde mit dem aktuellen Originalabschnitt verglichen. HE Q1.3 und RP3.3 tragen mechanistische Esteraspekte; Peptid-/Polyamidpartner tragen andere Anwendungsbereiche. Die breiteren Zellen werden nicht als vollständiger Mechanismusnachweis für jede Bedingung gelesen.',
+    'Beide Fälle stellen geeignete Bedingungen ausdrücklich bereit. Die tetraedrischen Zustände besitzen vier C-Einfachbindungen und korrektes O-/N-Ladungsmuster. NH4+ bzw. CH3NH3+ ist kein verfügbares Aminnucleophil. Die Netto-Wasserabspaltung wird vom vorgelagerten Ammoniumsalz unterschieden. Die Aufgaben verlangen Erklärung von Elektronenpaarbewegungen statt nur Produktnamen.',
+    'O-/N-Nucleophile sind sinnvoller Transfer desselben Acylsubstitutionskerns. Die Beschreibung muss nicht in zwei isolierte Produktklassen zerlegt werden.',
+    'Ester- und Amidkondensation knüpfen am Acylkohlenstoff eine O- beziehungsweise N-Bindung; Angriff, Protonentransfer und Eliminierung hängen von geeigneten Reaktionsbedingungen ab.',
+    'Ester and amide condensation form an O or N bond at the acyl carbon; attack, proton transfer and elimination depend on suitable reaction conditions.',
+    'Formuliert Produkte und Netto-Bilanzen und erklärt die tetraedrische Zwischenstufe, Protonenübertragungen und den Abgang; unterscheidet Ammoniumsalz von einer Amidbindung.',
+    'Writes products and net balances and explains the tetrahedral intermediate, proton transfers and leaving step; distinguishes an ammonium salt from an amide bond.',
+    'Überträgt den Mechanismus auf einen geänderten Acylrest oder O-/N-Nucleophil und begründet, weshalb passende Aktivierung und Protonierungsbedingungen erneut geprüft werden müssen.',
+    'Transfers the mechanism to a changed acyl group or O/N nucleophile and explains why suitable activation and protonation conditions must be reassessed.')
+
+add(7, 'KEEP',
+    'Die Beschreibung setzt eine klare Grenze auf IR- und1H-NMR-Grundsignale einfacher organischer Strukturen. Zuordnen verlangt die Beziehung zwischen Signal und Struktur, nicht den Aufbau eines Spektrometers oder vollständige organische Strukturanalytik.',
+    'IR-Bindungsschwingung versus NMR-Protonenumgebung; chemische Verschiebung, Integration und einfache Kopplung; gemeinsame Konsistenz mit Kandidaten; verbleibende Mehrdeutigkeit.',
+    'RP1.5 nennt IR und1H-NMR ausdrücklich; die breitere Passage umfasst daneben Gerätefunktion,13C,UV/VIS und weitere Methoden. Tatsächlicher Partner49b13b33 ist allgemeine Datenauswertung, kein Ersatz für all diese speziellen Inhalte. Ich bestätige nur die Quellenstütze des hier beschriebenen Grundsignalscopes, keine vollständige Abdeckung der gesamten RP-Spektroskopiezelle oder aller Projektionen.',
+    'Fall1 ordnet Ethylethanoat über3H-Triplet/2H-Quartett/3H-Singulett zu; Flächen ergeben8H. Fall2 nutzt Aldehyd-C-H plus9.8ppm und3:2:1 gegenüber dem symmetrischen6H-Singulett des Propanons. Die Daten sind synthetisch; der nur gegebene1715cm-1-Peak bleibt ausdrücklich mehrdeutig. Die gerechneten Signalbeziehungen sind fachlich tragfähig.',
+    'Die komplementären Verfahren bearbeiten die eine Signal-Struktur-Zuordnung an einfachen Molekülen. Kein Split allein wegen zweier Messverfahren.',
+    'IR-Grundbanden zeigen charakteristische Bindungsschwingungen und1H-NMR-Grundsignale Protonenumgebungen; eine Struktur muss mit beiden Datensätzen zusammen verträglich sein.',
+    'Basic IR bands indicate characteristic bond vibrations and basic1H NMR signals indicate proton environments; a structure must be compatible with both data sets together.',
+    'Ordnet charakteristische Banden sowie einfache Verschiebungen, Integrationen und Aufspaltungen konkreten Bindungen und H-Umgebungen zu und begründet eine passende einfache Struktur.',
+    'Assigns characteristic bands and simple shifts, integrals and splitting patterns to specific bonds and proton environments and justifies a matching simple structure.',
+    'Unterscheidet neue einfache Isomere oder Carbonylverbindungen mit geänderten Spektrensignalen und benennt eine verbleibende Alternative, wenn entscheidende Daten fehlen.',
+    'Distinguishes new simple isomers or carbonyl compounds with changed spectral signals and identifies a remaining alternative when decisive data are absent.')
+
+add(8, 'REVISE',
+    'Reaktivität ohne genannten Reaktionstyp und Vergleichsbedingungen lässt offen, welche mechanistische Beziehung begründet werden soll. Bei Aldehyden/Ketonen ist die hier tatsächlich gelehrte Beziehung die nucleophile Addition; eine bloße Klassenrangfolge wäre falsch. Eine kurze Präzisierung benennt den vorhandenen Mechanismuskern und seine Vergleichsbedingung.',
+    'Carbonylpolarität und C-Elektrophilie; Angriff des Nucleophils und pi-Elektronenverschiebung; induktive und sterische Beiträge; bedingte statt universelle Reaktivitätsrangfolge.',
+    'Die direkte HE-Q2.1-Zelle ist gemeinsam mit Kohlenhydrate8761cfd2 verknüpft und nennt Halb-/Acetalbildung durch nucleophile Addition. Die ganze Passage wurde gelesen; sie ist kein wörtlicher Vollnachweis einer allgemeinen Aldehyd/Keton-Ratenregel. HE-Q1.2 wurde gezielt im Original-PDF gelesen und belegt nicht eine universelle Klassenrangfolge. Die Präzisierung folgt dem aktuellen engen Mechanismusmaterial, ohne regionale Vollabdeckung zu behaupten.',
+    'Fall1 verlangt echte Elektronenpaarpfeile und tetraedrische Zwischenprodukte; Raten6:1 sind ausdrücklich synthetisch und bedingt. Fall2 bietet CF3COCH3 mit -I undRate5 gegenA4/B1: ein relevanter elektronischer Transfer statt Zahlentausch. Die Musterantworten erhalten vier Bindungen am Carbonyl-C und Gesamtladung; Acylsubstitution wird korrekt abgegrenzt.',
+    'Elektrophilie und sterische Zugänglichkeit sind Gründe derselben Reaktivitätsfrage; keine getrennten Lernziele erforderlich.',
+    'Bei nucleophiler Addition ist Carbonyl-C elektrophil; Substituenten beeinflussen Elektronendichte und sterischen Zugang, sodass Aldehyd/Keton-Trends nur unter vergleichbaren Bedingungen gelten.',
+    'In nucleophilic addition carbonyl carbon is electrophilic; substituents affect electron density and steric access, so aldehyde/ketone trends apply only under comparable conditions.',
+    'Formuliert den nucleophilen Angriff und die tetraedrische Zwischenstufe und begründet einen gegebenen Aldehyd/Keton-Vergleich mit elektronischen und sterischen Beiträgen.',
+    'Writes nucleophilic attack and the tetrahedral intermediate and explains a given aldehyde/ketone comparison using electronic and steric contributions.',
+    'Beurteilt einen elektronenziehend oder sterisch verändert substituierten Carbonylfall unter benannten Bedingungen und prüft, ob die ursprüngliche Rangfolge noch begründet ist.',
+    'Evaluates a carbonyl case with changed electron-withdrawing or steric substitution under stated conditions and tests whether the original ordering remains justified.',
+    ('Die lernende Person kann die Reaktivität von Aldehyden und Ketonen bei nucleophilen Additionen unter vergleichbaren Bedingungen mithilfe elektronischer und sterischer Einflüsse mechanistisch begründen.',
+     'The learner can mechanistically explain the reactivity of aldehydes and ketones in nucleophilic additions under comparable conditions using electronic and steric effects.'))
+
+add(9, 'KEEP',
+    'Wirkung, Nebenwirkungen, unterschiedliche Prinzipien und chemische Bewertung sind im aktuellen Text vollständig und zweisprachig erhalten. Der Text reduziert die Bewertung nicht auf eine berechnete Neutralisationszahl.',
+    'Endliche H+-Kapazität aus Stoffmenge/Stöchiometrie; CO2 versus gasfreie Hydroxidreaktion; berichtete Nebenwirkung versus modellierte Chemie; Neutralisation, Refluxbarriere, Pumpenhemmung.',
+    'BY C11.3.2 trägt diese ganze Kompetenz als direkte Einzelzielzelle und stimmt mit dem aktuellen Originalabschnitt überein. Die bereitgestellten Label-/SmPC-/NHS-Paraphrasen werden nach Produktidentität und berichteter Möglichkeit getrennt. Sie sind keine Messung der erfundenen Portionen; keine eigene vollständige externe Labellektüre behauptet.',
+    'Kapazitäten9.991/10.288mmol undCO2 4.996mmol sind korrekt. Fall2 Rest-H+4 bzw.3mmol in0.1000L gibtpH1.398/1.523. Das echte Rennie-Präparat wird ausdrücklich vomMg(OH)2-Modell getrennt;0CO2 beweist keine Nebenwirkungsfreiheit. Quellenprotokoll und Kriterienurteil sind explizit gestellt.',
+    'Recherche, Reaktionsmodell und Vergleich der Prinzipien tragen dieselbe chemisch begründete Bewertung von Sodbrennenoptionen.',
+    'Antazida verbrauchen vorhandene Säure stöchiometrisch, während Barrieren und Pumpenhemmer anders eingreifen; Kapazität, Geschwindigkeit und mögliche unerwünschte Wirkungen sind verschiedene Kriterien.',
+    'Antacids consume existing acid stoichiometrically, whereas barriers and pump inhibitors act differently; capacity, rate and possible adverse effects are distinct criteria.',
+    'Recherchiert Zusammensetzung und berichtete Wirkungs-/Nebenwirkungsangaben, erläutert die chemischen Prinzipien und bewertet vorgegebene Behandlungsmöglichkeiten anhand passender Daten und Kriterien.',
+    'Researches composition and reported effects/adverse effects, explains the chemical principles and evaluates supplied treatment options using appropriate evidence and criteria.',
+    'Vergleicht bei anderer Wirkstoffzusammensetzung oder fortgesetztem Säurezufluss die chemischen Möglichkeiten neu und erklärt, weshalb ein Gas- oder Kapazitätsvergleich keine klinische Risikorangfolge festlegt.',
+    'Reassesses chemical options for changed composition or continuing acid influx and explains why gas production or capacity alone does not establish a clinical risk ranking.')
+
+add(10, 'KEEP',
+    'Mögliche Edukte vermeidet einen falschen Eindeutigkeitsanspruch. Strukturformel, retrosynthetische Ableitung und Reaktionstyp sind ein klarer bilingualer Kompetenzkern.',
+    'Plausible Acyl-C-O/C-N-Disconnection; vollständige Bausteine; Gerüsterhalt; Vorwärtsbilanz und Nebenprodukt; Aktivierung und Chemoselektivität als Plausibilitätsgrenzen.',
+    'BY C11.3.6 trägt den Operator direkt; der aktuelle Originalabschnitt begrenzt einfache Retrosynthese auf Reaktionsschritte und fordert keinen universellen Synthesemechanismus jedes Wirkstoffs. Beide Materialfälle bleiben bei ester-/amidbezogener Acylierung.',
+    'ASS: C11/H12/O6 auf beiden Seiten, Anhydridweg liefert Ethansäure. Paracetamol: C10/H13/N1/O4 stimmt, N-Acylierung wird vom konkurrierenden Phenolester getrennt. Die Aufgaben prüfen Vorwärtsplausibilität und falsche Bausteine; es werden weder reale Selektivität noch Ausbeute aus der Rückwärtsidee erfunden.',
+    'Disconnection, Edukte und Vorwärtsprüfung sind Teile derselben retrosynthetischen Schlussfolgerung.',
+    'Retrosynthese zerlegt eine Zielstruktur gedanklich an einer plausiblen Bindung; vollständige Edukte und die zugehörige Vorwärtsreaktion müssen das gewünschte Gerüst und Produkt erklären.',
+    'Retrosynthesis conceptually disconnects a target at a plausible bond; complete reactants and the corresponding forward reaction must account for the intended scaffold and product.',
+    'Kennzeichnet eine geeignete Bindungstrennung, leitet vollständige Edukte ab und begründet den Reaktionstyp anhand der atomar bilanzierten Vorwärtsreaktion.',
+    'Marks a suitable disconnection, infers complete reactants and justifies the reaction type from an atom-balanced forward reaction.',
+    'Erschließt ein anderes ester- oder amidhaltiges Wirkstoffmolekül und unterscheidet eine plausible Route von einer falschen Bindungstrennung oder konkurrierenden Acylierung.',
+    'Analyzes another ester- or amide-containing active ingredient and distinguishes a plausible route from an incorrect disconnection or competing acylation.')
+
+add(11, 'KEEP',
+    'Der maßgebliche Operator ist planen und vergleichen. Der aktuelle Text verlangt weder eine schon erfolgte eigene Extraktion noch einen eigenen Synthesevollzug; die Eigenschaften einer schulisch hergestellten Vergleichsprobe sind vorgesehen.',
+    'Selektive Löslichkeit und Stoffidentität; vollständige Trennfolge; gleiche Prüfbedingungen und Schulsynthetisat; Identität, Reinheit und Rückgewinnung voneinander trennen.',
+    'BY C11.3.7 stimmt als direkte Einzelzielzelle mit der aktuellen Primärseite überein. Die benachbarte Inhaltszeile nennt Extraktion/Synthese/Reinheitsprüfung; ein anderer praktischer Generaloperator oder eine breitere SN-Zelle darf den hier ausdrücklichen Planungsoperator nicht unbemerkt in eine eigenständige Syntheseprüfung verwandeln.',
+    'Fall1: mindestens50mL,16mg verbleiben in8mL, maximal484mg bzw.96.8%. Gleiche TLC-/Schmelzbedingungen stützen Identität, keine absolute Reinheit. Fall2: korrekt bilanzierte2OH--Reaktion undRf0.62/0.30 zeigen chemische Umwandlung statt bloßer Extraktion;280/300 ist nur Gesamtmassenverhältnis. Die Fälle erfüllen den verlangten Planungs-/Vergleichsscope ohne erfundenes Laborergebnis.',
+    'Extraktionsplanung mit referenzbezogener Identitätsprüfung ist eine kohärente Untersuchungsfrage.',
+    'Eine Extraktionsplanung nutzt unterschiedliche Löslichkeiten und muss ASS erhalten; der Vergleich mit Schulsynthetisat trennt Hinweise auf Identität und Reinheit von bloßer Rückgewinnungsmasse.',
+    'Extraction planning exploits differential solubility while preserving ASA; comparison with a school-made reference distinguishes identity/purity evidence from recovered mass alone.',
+    'Plant eine begründete Trennfolge und vergleichbare Eigenschaftsprüfungen und vergleicht Extrakt und Schulsynthetisat anhand geeigneter Referenzen und Daten.',
+    'Plans a justified separation sequence and matched property tests and compares extract and school-made material using suitable references and evidence.',
+    'Bewertet eine veränderte Lösungsmittel- oder Aufarbeitungsplanung und erklärt anhand von Hydrolyse- oder Verunreinigungsdaten, ob noch unveränderte ASS verglichen wird.',
+    'Evaluates a changed solvent or workup plan and uses hydrolysis or impurity evidence to decide whether unchanged ASA is still being compared.')
+
+add(12, 'KEEP',
+    'Der Zusatz stark vereinfacht begrenzt das Schmerzmodell ehrlich. Die Beschreibung nennt den COX-bezogenen Wirkungsanteil, behauptet aber nicht, sämtliche Schmerzarten oder sämtliche Analgetika seien dadurch vollständig erklärt.',
+    'Gewebereiz, Arachidonsäure, COX/Prostanoidvorstufen und weitere Enzyme; Sensibilisierung versus neuronale Verarbeitung; Hemmung der Bildung versus Entfernen vorhandener Mediatoren.',
+    'BY C11.3.9 stimmt mit dem aktuellen Originalabschnitt überein. FDA2021 Abschnitt12.1 wurde gezielt direkt gelesen: COX-1/2-Beteiligung, Prostaglandinsynthese und afferente Sensibilisierung sind belegt, der Mechanismus als unvollständig verstanden bezeichnet. Keine aktuelle Einnahmeempfehlung und kein Beleg für jedes Analgetikum.',
+    '100 auf25 Einheiten sind75% weniger Modellprodukt. Externe Prostaglandinzugabe mit39 gegenüber40 lokalisiert den fiktiven Hemmschritt sinnvoll vor Mediatorbildung. Die Antwort unterscheidet Sensorantwort und subjektiven Schmerz; Paracetamol wird nicht als vollständig geklärtes peripheres NSAR ausgegeben.',
+    'Die vereinfachte Schmerzkette liefert den Begründungszusammenhang für denselben COX-Eingriff.',
+    'COX trägt zur Prostanoidbildung bei; Prostaglandine können sensorische Endigungen sensibilisieren. Eine verminderte Synthese ist ein begrenzter Wirkungsanteil und keine direkte quantitative Schmerzskala.',
+    'COX contributes to prostanoid production; prostaglandins can sensitize sensory endings. Reduced synthesis is a bounded mechanism, not a direct quantitative pain scale.',
+    'Beschreibt die vereinfachte Folge von Gewebeereignis, Mediatorbildung, sensorischem Signal und Verarbeitung und erklärt darin die Wirkung einer COX-Hemmung.',
+    'Describes the simplified sequence from tissue event through mediator production and sensory signaling to processing and explains COX inhibition within it.',
+    'Deutet einen veränderten Modellversuch mit externer Mediatorzugabe oder verändertem Hemmzeitpunkt und begrenzt die Folgerung auf den untersuchten Synthese-/Sensibilisierungsschritt.',
+    'Interprets a changed model experiment with external mediator addition or altered inhibition timing and bounds the inference to the tested synthesis/sensitization step.')
+
+add(13, 'KEEP',
+    'Wirkungseintritt und Wirkungsdauer sind zwei zeitliche Merkmale derselben Bewertung von Darreichungsformen. Der Text ist verständlich, bilingual gleichwertig und legt keine universelle Rangfolge bestimmter Formen fest.',
+    'Freisetzung, Resorption und Elimination trennen; gemeinsame Wirkstoffmenge und Zeitbasis; explizites Wirkungskriterium; verzögerte versus verlängerte Freisetzung; Grenzen reiner In-vitro-Daten.',
+    'BY C11.3.10 trägt vergleichen und beurteilen direkt und wurde mit der Primärseite abgeglichen. Die aktuelle Inhaltszeile nennt chemische Prinzipien wie Lösegeschwindigkeit/Oberfläche/Diffusionshemmung. RP-Galenik ist nur ein breiter Partnerkontext und ersetzt keine komplette Pharmakokinetik.',
+    'Fall1-Schwellenzeiten: L0.5–3h=2.5h, I1–4h=3h, R2–4h=2h. Damit wird kein Retard-Allgemeinsatz aus dem Namen erschlichen. Fall2:50%-Zeiten3h/2.667h/0.556h stimmen. Ohne Elimination oder Abfallkriterium ist keine endliche Dauer bestimmbar. Die FDA-Quelle ist im Material als illustratives Beispiel gebunden, keine klinische Quantifizierung.',
+    'Die Zeitmerkmale gehören gemeinsam zum Vergleich einer Darreichungsform; kein Split.',
+    'Darreichungsformen ändern die Freisetzung; Wirkungseintritt und Dauer hängen zusätzlich von Resorption, Elimination, Wirkstoff und einem definierten Wirkungskriterium ab.',
+    'Dosage forms alter release; onset and duration additionally depend on absorption, elimination, ingredient and a defined effect criterion.',
+    'Vergleicht verschiedene Formen unter gemeinsamen Bedingungen anhand von Freisetzungs- oder Konzentrationsdaten und beurteilt Eintritt und Dauer mit einem ausdrücklich definierten Kriterium.',
+    'Compares forms under matched conditions using release or concentration evidence and evaluates onset and duration with an explicitly defined criterion.',
+    'Beurteilt eine geänderte Matrix, pH-abhängige Hülle oder Schwelle und erklärt, wann Freisetzungsdaten allein keinen endlichen Wirkungszeitraum bestimmen.',
+    'Evaluates a changed matrix, pH-dependent coating or threshold and explains when release data alone cannot determine a finite duration of effect.')
+
+add(14, 'DEFER',
+    'Die chemischen Fälle sind plausibel, doch eine verantwortliche curriculare Beschreibung kann hier nicht freigegeben oder lokal umformuliert werden: In den neutralen Quellenzellen gibt es keine direkte Zuordnung für dieses Ziel. Die angebliche hessische Q1-Einbettung ist durch die gezielt gelesene originale Q1.2-Passage nicht belegt; eine Suche im ganzen Text dieses gebundenen KC und im gebundenen BY-Chemie-Import findet keinen Grignard-Begriff. Das beweist keine weltweite Abwesenheit, lässt aber die konkrete beanspruchte Quellen-/Projektionsgrundlage und den praktischen Einsatzoperator ungeklärt. Entwicklerentscheidung mit genauer Primärstelle oder explizitem Erweiterungsstatus erforderlich.',
+    'Chemisch klar: nucleophiler Kohlenstoffrest, neue C-C-Bindung, Mg-Alkoxid, getrennte spätere Protonierung, wasserfreie Bedingungen und protischer Verbrauch. Ungeklärt bleibt die autoritative curriculare Verortung dieses praktischen Umfangs.',
+    '0 direkte ausgewählte SourceCellUnionEdges für8edee6b6. HE KC2024, Original-PDF-Seite39, Q1.2 vollständig gelesen: Alkanol-/Carbonylklassen, Oxidation, Fehling, SN1/SN2, keine Grignard-Anforderung. Literal-Suche im ganzen gebundenen KC und BY-Chemie.json ebenfalls0. Keine fehlende-rawText-Heuristik und kein pauschales Quellenurteil über andere Ziele.',
+    'Fall1: Butan-2-ol,34mmol Reagenz nach Wasserverlust,30mmol Ethanal limitiert. Fall2: tertiärer Alkohol,25–6=19mmol bzw.95% Umsatz; Wasser-/Ethanol-Protonierung korrekt bilanziert. Die echte Dosierung unter Aufsicht mit lokaler Fachmethode ist ausdrücklich vom Papiermodell getrennt. Ein fehlendes reales Schülerergebnis ist hier kein M7-Zusatzhindernis; offen ist die curriculare Quellen-/Scopeentscheidung, nicht ein erfundener fehlender Laborbeleg.',
+    'Addition und spätere Protonierung sind ein gemeinsamer Synthesevorgang. Es wird kein Split allein wegen zweier Reaktionsschritte gefordert.',
+    'Grignard-Reagenzien übertragen im gegebenen Modell einen nucleophilen Kohlenstoffrest auf Carbonyl-C und bilden nach getrennter Protonierung einen Alkohol; protische Stoffe verbrauchen das Reagenz vorher.',
+    'In the supplied model Grignard reagents transfer a nucleophilic carbon group to carbonyl carbon and form an alcohol after separate protonation; protic substances consume reagent beforehand.',
+    'Wählt im beschriebenen Synthesemodell passende Partner, formuliert C-C-Verknüpfung, Alkoxid und Protonierung und erklärt wasserfreie Bedingungen; praktischer Einsatz müsste tatsächlich autorisiert beobachtet werden.',
+    'Selects suitable partners in the described synthesis model, writes C-C bond formation, alkoxide and protonation and explains anhydrous conditions; practical use would require actual authorized observation.',
+    'Überträgt die Addition vom Aldehyd auf ein Keton oder auf veränderte protische Nebenverbräuche und bestimmt Alkoholklasse, Reaktionsfolge und verfügbare Reagenzmenge neu.',
+    'Transfers addition from an aldehyde to a ketone or changed protic side consumption and reassesses alcohol class, reaction sequence and available reagent amount.')
+
+add(15, 'KEEP',
+    'Auswerten und Zusammensetzung vergleichen sind erhalten; qualitative und quantitative Signale dienen gemeinsam einer analytischen Aussage über die Präparate. Die Beschreibung verlangt keine eigene Durchführung eines ganzen Versuchs.',
+    'Referenzgestützte Identifikation; Blindwert und stöchiometrischer Faktor; Aliquot/Verdünnung und analytspezifische Kalibration; Selektivität und begrenzte Reinheits-/Wirkungsfolgerungen.',
+    'BY C11.3.8 ist als Einzelzielzelle direkt und entspricht dem aktuellen Originalabschnitt. SN-Arzneimittel enthält daneben praktische ASS-Gehaltsbestimmung; dessen breitere Partnerunion wird dem Auswertungsziel nicht als alleinige Vollabdeckung zugerechnet.',
+    'Rücktitration:2OH- jeASS, Blinddifferenzen27.75/19.43mL geben249.972/175.025mg. Selektiver Endpunkt ohne Phenolatbeitrag ist ausdrücklich als Modellkonvention gegeben. HPLC: analytspezifische Steigungen/Blindwerte liefern50/25 und25/50mg/L; Faktor100 und0.1000L geben500/250 bzw.250/500mg. Beide750mg, Verhältnisse2:1/1:2. Koelution bleibt als Selektivitätsrisiko offen.',
+    'Qualitative Identität und quantitative Menge sind hier komplementäre Evidenz derselben Zusammensetzungsanalyse. Kein Split.',
+    'Eine Wirkstoffanalyse verbindet referenzgestützte Identität mit selektiver quantitativer Auswertung; Blindwert, Stöchiometrie, Verdünnung und Kalibration bestimmen die zulässige Gehaltsaussage.',
+    'Active-ingredient analysis connects reference-supported identity with selective quantitative evaluation; blank, stoichiometry, dilution and calibration determine the supported content claim.',
+    'Wertet qualitative Referenzsignale und quantitative Versuchsdaten aus, berechnet Wirkstoffgehalte mit den gegebenen Faktoren und vergleicht Zusammensetzungen unter Beachtung der Selektivität.',
+    'Evaluates qualitative reference signals and quantitative experimental evidence, calculates ingredient contents using supplied factors and compares compositions while considering selectivity.',
+    'Überträgt die Auswertung auf ein anderes Analysenprinzip oder ein Mehrstoffpräparat und erklärt, wie zusätzliche titrierbare Säure oder Koelution die bisherige Zuordnung und Gehaltsberechnung begrenzt.',
+    'Transfers evaluation to another analytical principle or a multi-ingredient product and explains how another titratable acid or coelution limits the previous assignment and content calculation.')
+
+first = dict(role='New independent reviewer B; science FIRST before schema reading and native record serialization',
+             createdAtUTC=datetime.now(timezone.utc).isoformat(), judgments=rows,
+             boundary='AI candidate science review only. No agreement with another reviewer, authoritative source-map completeness, active publication, observed learner achievement, Human Approval, Human Trial or strict/M7 count is asserted.')
+(ROOT/'D.FIRST.independent-science.json').write_text(json.dumps(first,ensure_ascii=False,indent=2)+'\n')
+print('Wrote',len(rows),'independent D FIRST judgments')

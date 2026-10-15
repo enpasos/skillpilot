@@ -1,0 +1,54 @@
+{
+  "commands": [
+    {
+      "name": "native16-stock-prepare",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/equilibrium16-current422-native560-final-host-v1/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-current422-native-preparation-technical-20261015-v1/config/native16.normal-prepare-only.config.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/equilibrium16-current422-native560-final-host-v1",
+      "startedAtUTC": "2026-10-15T14:30:20.056242+00:00",
+      "elapsedSeconds": 12.616,
+      "exitCode": 0,
+      "output": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-current422-native-preparation-technical-20261015-v1/checks/COMMAND.native16-stock-prepare.attempt-1.actual.txt",
+      "outputSHA256": "sha256:f9c103553778b4d9e2bcd9ad56c6950291376a161dacea1789f96099465d3dd1"
+    },
+    {
+      "name": "native16-stock-check",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/equilibrium16-current422-native560-final-host-v1/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-current422-native-preparation-technical-20261015-v1/config/native16.normal-prepare-only.config.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/equilibrium16-current422-native560-final-host-v1",
+      "startedAtUTC": "2026-10-15T14:30:32.676179+00:00",
+      "elapsedSeconds": 0.851,
+      "exitCode": 0,
+      "output": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-current422-native-preparation-technical-20261015-v1/checks/COMMAND.native16-stock-check.attempt-1.actual.txt",
+      "outputSHA256": "sha256:2170aa40299038780382d429740d534c9b7838b1485619c5d461447b6a8e4453"
+    }
+  ],
+  "physicalModulePreflights": [
+    {
+      "phase": "before-prepare",
+      "actualAtUTC": "2026-10-15T14:30:20.056201+00:00",
+      "stockPhysicalModules": 31,
+      "dynamicQAChildAndModelExact": true,
+      "QAExecuted": false
+    },
+    {
+      "phase": "before-check",
+      "actualAtUTC": "2026-10-15T14:30:32.676137+00:00",
+      "stockPhysicalModules": 31,
+      "dynamicQAChildAndModelExact": true,
+      "QAExecuted": false
+    }
+  ],
+  "newScientificVotes": 0,
+  "centralExecuted": false
+}

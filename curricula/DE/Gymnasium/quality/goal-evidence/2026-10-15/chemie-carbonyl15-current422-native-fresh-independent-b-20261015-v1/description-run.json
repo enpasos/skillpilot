@@ -1,0 +1,72 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-carbonyl15-current422-native-fresh-independent-b-20261015-v1",
+  "campaignId": "chemie-carbonyl15-current422-native560-20261015-v1-b",
+  "roundId": "chemie-carbonyl15-current422-native560-20261015-v1-first-pass-b",
+  "batchId": "chemie-carbonyl15-current422-native560-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:2e440f87c0d1a5c51b0c270b8fdf56555458d7e281548e4f1f68ecb6de627894",
+  "bundleFingerprint": "sha256:c12a666b2f597be48593845a09be531c411bc46ee6d07f1acbc82e1e22a38065",
+  "bookDigest": "sha256:a7a9cb1ce18c3554c432117e96e38e8e40e1bb95af1cca6930d0c19af552fb20",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex session; exact deployed model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:d635179f9af830aff0b90ff1e1f4ef54cc2852436dab0bf4eb377f6ed14096f1",
+  "independenceGroupId": "chemie-carbonyl15-current422-native560-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3de28598-672f-5753-8a45-8f559c2f9dc2",
+    "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+    "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+    "5f151e8c-a62e-5e8c-979d-dcf4eb025873",
+    "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528",
+    "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+    "466bd2e9-39a5-5221-b620-945934adce00",
+    "6d3a2bad-8c67-5964-a720-375f138adaba",
+    "126c56ef-25ac-57b6-84df-111b79d01b8d",
+    "539476ee-f9cd-5b66-9b2e-ab42c4ea7cf4",
+    "96d3f50b-62f7-5db4-8426-43b4a0c26543",
+    "1654b644-f03d-59db-9f31-d63998cb0439",
+    "a853069e-2ebb-5a19-8edf-b767cdb41ed7",
+    "8edee6b6-9ead-515e-93f5-feada64522b2",
+    "ce6cb788-54ff-5727-b263-aa40b7c7f613"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:eefafc6d39bc2c02a282d095935f4133ee746f509cf6ced457aff3d77c8f8e27"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:59e28c97e042753cd7aff4b61f32e603042740f6020f17a0f88f03c78876832d"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:962bf44c64d2b747f29c876f8f43081334adf356bb27a12395d400fb6acbf706"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:a9858b2719071d6c5c770e0717144bd31f69a1d7d01c8acae00b692c2f62df78"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2e440f87c0d1a5c51b0c270b8fdf56555458d7e281548e4f1f68ecb6de627894"
+    }
+  ],
+  "startedAt": "2026-10-15T14:42:40.313373+00:00",
+  "completedAt": "2026-10-15T14:44:40.561931+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:080655db8432df56b0cfdeb4cdb90d5df9b8edc15a624889ab3adeb01eb7325a",
+  "toolchainVersion": "stock-goal-description-review-v1"
+}

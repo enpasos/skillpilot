@@ -1,0 +1,106 @@
+Traceback (most recent call last):
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/referencing/_core.py", line 428, in get_or_retrieve
+    resource = registry._retrieve(uri)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 112, in _warn_for_remote_retrieve
+    with urlopen(request) as response:  # noqa: S310
+         ^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: 
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/referencing/_core.py", line 682, in lookup
+    retrieved = self._registry.get_or_retrieve(uri)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/referencing/_core.py", line 435, in get_or_retrieve
+    raise exceptions.Unretrievable(ref=uri) from error
+referencing.exceptions.Unretrievable: 'https://skillpilot.com/schemas/goal-book/v1/goal-book-model.schema.json'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 462, in _validate_reference
+    resolved = self._resolver.lookup(ref)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/referencing/_core.py", line 686, in lookup
+    raise exceptions.Unresolvable(ref=ref) from error
+referencing.exceptions.Unresolvable: https://skillpilot.com/schemas/goal-book/v1/goal-book-model.schema.json#/$defs/page
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-final-native-original-pair-technical-20261015-v1/scripts/check_finite_original_pair.py", line 112, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-final-native-original-pair-technical-20261015-v1/scripts/check_finite_original_pair.py", line 81, in main
+    value=load(p);parse_counts['jsonFiles']+=1;validate(value)
+                                               ^^^^^^^^^^^^^^^
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium16-final-native-original-pair-technical-20261015-v1/scripts/check_finite_original_pair.py", line 76, in validate
+    schema=load(path);Draft202012Validator(schema).validate(value)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 449, in validate
+    for error in self.iter_errors(*args, **kwargs):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 383, in iter_errors
+    for error in errors:
+                 ^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/_keywords.py", line 296, in properties
+    yield from validator.descend(
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 431, in descend
+    for error in errors:
+                 ^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/_keywords.py", line 78, in items
+    yield from validator.descend(
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 431, in descend
+    for error in errors:
+                 ^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/_keywords.py", line 275, in ref
+    yield from validator._validate_reference(ref=ref, instance=instance)
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 431, in descend
+    for error in errors:
+                 ^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/_keywords.py", line 296, in properties
+    yield from validator.descend(
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 431, in descend
+    for error in errors:
+                 ^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/_keywords.py", line 275, in ref
+    yield from validator._validate_reference(ref=ref, instance=instance)
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 431, in descend
+    for error in errors:
+                 ^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/_keywords.py", line 296, in properties
+    yield from validator.descend(
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 431, in descend
+    for error in errors:
+                 ^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/_keywords.py", line 355, in oneOf
+    errs = list(validator.descend(instance, subschema, schema_path=index))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 431, in descend
+    for error in errors:
+                 ^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/_keywords.py", line 275, in ref
+    yield from validator._validate_reference(ref=ref, instance=instance)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 464, in _validate_reference
+    raise exceptions._WrappedReferencingError(err) from err
+jsonschema.exceptions._WrappedReferencingError: Unresolvable: https://skillpilot.com/schemas/goal-book/v1/goal-book-model.schema.json#/$defs/page

@@ -44,6 +44,11 @@ curricula/**/quality/**/*.normal-renderer.html -text -whitespace
 # Exact captured native article: retain the renderer's sealed empty-line spacing.
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-nernst-one-corrected-alt-current422-targeted-independent-V-20261015-v1/inputs/current-whole-native-a338-article.exact.html -text -whitespace
 
+# These sealed official source responses contain original CRLF line endings.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-grignard-one-primary-scope-author-20261015-v1/sources/BY12EA-current.official-observed.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-grignard-one-primary-scope-author-20261015-v1/sources/BY13EA-current.official-observed.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-grignard-one-primary-scope-author-20261015-v1/sources/HE-current-index.official-observed.html -text -whitespace
+
 # Native validation reports are captured tool outputs; preserve their sealed bytes.
 curricula/**/quality/**/*.normal.report.md -text -whitespace
 curricula/**/quality/**/*.normal.actual.report.md -text -whitespace

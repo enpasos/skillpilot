@@ -2,6 +2,19 @@
 
 ## Aktuelle Chemie-Fortsetzung – 15. Oktober 2026
 
+Der [Carbonyl-/Gleichgewichts-Folgecheckpoint](chemie-carbonyl-equilibrium-current358-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Kandidaten **358/422 (84,8 %)**: 20 neue
+fachliche Abschlüsse, alle bisherigen 338 erhalten, sechs Pflichtprüfungen
+PASS und 64 Ziele offen. Vier echte Materialbefunde bleiben ungezählt;
+neun Beschreibungsbefunde bleiben zurückgestellt. Vorbereitete Korrekturen
+werden erst nach unabhängiger Prüfung gezählt. Reine Bindungen erzeugen
+keine zusätzlichen erstmaligen Abschlüsse. Aktiv bleiben **231/402, M6**;
+Mathematik, Physik und Biologie bleiben geschützt M7. Der Vorgänger
+`f1902648` hat alle 14 GitHub-Checks und acht Hauptjobs bestanden. Dieser
+Folgecheckpoint benötigt seinen eigenen erfolgreichen GitHub-Lauf.
+
+## Vorheriger Energie-Stand – 15. Oktober 2026
+
 Der [Energie-Folgecheckpoint](chemie-energy18-current422-checkpoint-2026-10-15.md)
 erreicht im inaktiven zentralen Kandidaten **338/422 (80,1 %)**: 17 neue
 fachliche Abschlüsse, alle bisherigen 321 erhalten, sechs Pflichtprüfungen

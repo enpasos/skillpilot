@@ -1,0 +1,51 @@
+{
+  "role": "Actual completed author helper executions; no review campaign, fullbuild or central run",
+  "commands": [
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/scripts/bind_unreviewed_E0G0_profiles.mts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "exitCode": 0,
+      "actualStdout": {
+        "pass": true,
+        "rawAuthorProfiles": 16,
+        "E0": 16,
+        "G0": 16,
+        "schemaErrors": 0,
+        "normalSemanticErrors": 0,
+        "independentApprovals": 0,
+        "newStrict": 0
+      },
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/checks/PROFILE16.closed-schema-and-unmodified-normal-helper.actual.json",
+        "sha256": "sha256:f84ec90735af5c754bd09fa7b19716d4bcb3d98bd762316b0dbb2cccf929c405",
+        "bytes": 6350
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/scripts/check_actual_material_and_inputs.py"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "exitCode": 0,
+      "actualStdout": {
+        "pass": true,
+        "numericResults": 41,
+        "wholeCases": 32,
+        "profilesE0G0": 16,
+        "independentApprovals": 0
+      },
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/checks/ACTUAL.author-material32-numeric-and-byte-checks.json",
+        "sha256": "sha256:f629293d19a4e570f04fc383021ad0a2f21321287431cee7c97b2e35ea8bad11",
+        "bytes": 10778
+      }
+    }
+  ],
+  "actualFullCentralRuns": 0,
+  "nativeBuilds": 0,
+  "independentVotes": 0
+}

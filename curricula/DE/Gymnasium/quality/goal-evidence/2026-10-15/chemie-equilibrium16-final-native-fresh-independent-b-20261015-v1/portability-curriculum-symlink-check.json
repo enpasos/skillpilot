@@ -1,0 +1,8 @@
+{
+  "checker": "scripts/validate_schemas.py:curriculum_symlink_errors",
+  "globalErrorCountObserved": 22,
+  "ownBRootErrorCount": 0,
+  "ownBRootErrors": [],
+  "globalResult": "Global checker reported absolute symlink paths in a concurrently created other reviewer execution host; only path metadata was exposed, no file contents or scientific judgments were read. The root agent was notified; B did not alter that directory.",
+  "capsulePolicy": "B temporary execution capsule is below tmp, not curricula; B committable artifacts contain no symlinks."
+}

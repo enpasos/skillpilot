@@ -1,0 +1,277 @@
+{
+  "role": "Real whole-case scientific corrections separate from manual prose revision",
+  "casesCorrected": 3,
+  "other29WholeManualCasesExact": true,
+  "rows": [
+    {
+      "id": "eqrk16-10-b",
+      "scientificReason": "Correct arithmetic: −0.440 + 0.02958(−15+28) = −0.05546 V; at pH11 the boundary is −0.70622 V. At pH9.5 both boundaries equal −0.61748 V exactly for the supplied rounded constants.",
+      "wholeBeforeCase": {
+        "id": "eqrk16-10-b",
+        "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+        "title": "Geneigte und vertikale Grenze eines Modellmetalls",
+        "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+        "imageRequired": false,
+        "materialsDe": "Ein eigenes idealisiertes Metall M beschreibt nicht die vollständige Eisenchemie. M2+ + 2 e− ⇌ M hat E° = −0,440 V. M(OH)2(s) ⇌ M2+ + 2 OH− hat KL = 10−15; Kw = 10−14 bei 25 °C. Als Grenze für gelöstes Metall gilt aM2+ = 10−6. Nur M, M2+ und M(OH)2 werden berücksichtigt; Eh = 0,05916 pE. Wassergrenzen wie in 10a. Ein Feststoffbereich garantiert keine dichte, haftende Schutzschicht.",
+        "materialsEn": "An own idealised metal M does not represent complete iron chemistry. M2+ + 2 e− ⇌ M has E° = −0.440 V. M(OH)2(s) ⇌ M2+ + 2 OH− has Ksp = 10−15; Kw = 10−14 at 25 °C. Use aM2+ = 10−6 as the dissolved-metal threshold. Include only M, M2+ and M(OH)2; Eh = 0.05916 pE. Water boundaries are as in 10a. A solid region does not guarantee an adherent protective film.",
+        "taskDe": "Leite die vertikale Fällungsgrenze und die M/M(OH)2-Gerade her. Ordne P(pH 8, Eh −0,50 V) und Q(pH 11, Eh −0,50 V) ein. Warum ersetzt das Schema keinen Materialschutztest?",
+        "taskEn": "Derive the vertical precipitation boundary and M/M(OH)2 line. Classify P(pH 8, Eh −0.50 V) and Q(pH 11, Eh −0.50 V). Why does the scheme not replace a material-protection test?",
+        "workedReasoningDe": "Bei aM2+ = 10−6 gilt aOH− = √(10−15/10−6) = 10−4,5, also pOH 4,5 und pH 9,5. Die Metall/Ion-Linie ist Eh = −0,61748 V. Einsetzen von aM2+ = KL/aOH² ergibt die Feststoff/Metall-Gerade Eh = −0,05584 − 0,05916 pH. P liegt unter pH 9,5 und oberhalb −0,61748 V, also im M2+-Bereich. Q liegt oberhalb pH 9,5 und oberhalb −0,70660 V, also im M(OH)2-Bereich. Beide Punkte liegen im Wasserfenster. Der Schnittpunkt bei pH 9,5 prüft die Konsistenz. Haftung, Porosität, Kinetik, weitere Oxidationsstufen und Komplexe fehlen; ein Feststofffeld bedeutet keinen nachgewiesenen Schutz.",
+        "workedReasoningEn": "At aM2+ = 10−6, aOH− = 10−4.5, giving pOH 4.5 and pH 9.5. The metal/ion line is Eh = −0.61748 V. Substituting aM2+ = Ksp/aOH² gives the solid/metal line Eh = −0.05584 − 0.05916 pH. P has pH below 9.5 and Eh above −0.61748 V, placing it in the M2+ region. Q has pH above 9.5 and Eh above −0.70660 V, placing it in the hydroxide region. Both lie inside the water window. Check consistency at the intersection at pH 9.5. Adhesion, porosity, kinetics, other oxidation states and complexes are absent; a solid field is not proven protection.",
+        "freshIndependentTransferDe": "Füge einen starken M2+-Liganden hinzu. Begründe die nötige Neuberechnung der Grenzen statt einer unveränderten Farbflächenannahme.",
+        "freshIndependentTransferEn": "Add a strong M2+ ligand. Explain the need to recalculate boundaries rather than assuming unchanged coloured regions.",
+        "criterionToObservableRubric": [
+          {
+            "criterionId": "e1",
+            "observableDe": "Die vertikale pH-9,5-Grenze aus KL und Kw ableiten.",
+            "observableEn": "Derive the vertical pH-9.5 boundary from Ksp and Kw.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e2",
+            "observableDe": "Geneigte Grenze und beide Punkte konsistent bestimmen.",
+            "observableEn": "Determine the sloping boundary and classify both points consistently.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e3",
+            "observableDe": "Feststoffstabilität von tatsächlicher Passivierung trennen.",
+            "observableEn": "Separate solid stability from actual passivation.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          }
+        ],
+        "scoring": {
+          "maximumPoints": 12,
+          "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+          "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+        }
+      },
+      "wholeCorrectedCase": {
+        "id": "eqrk16-10-b",
+        "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+        "title": "Geneigte und vertikale Grenze eines Modellmetalls",
+        "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+        "imageRequired": false,
+        "materialsDe": "Ein eigenes idealisiertes Metall M beschreibt nicht die vollständige Eisenchemie. M2+ + 2 e− ⇌ M hat E° = −0,440 V. M(OH)2(s) ⇌ M2+ + 2 OH− hat KL = 10−15; Kw = 10−14 bei 25 °C. Als Grenze für gelöstes Metall gilt aM2+ = 10−6. Nur M, M2+ und M(OH)2 werden berücksichtigt; Eh = 0,05916 pE. Wassergrenzen wie in 10a. Ein Feststoffbereich garantiert keine dichte, haftende Schutzschicht.",
+        "materialsEn": "An own idealised metal M does not represent complete iron chemistry. M2+ + 2 e− ⇌ M has E° = −0.440 V. M(OH)2(s) ⇌ M2+ + 2 OH− has Ksp = 10−15; Kw = 10−14 at 25 °C. Use aM2+ = 10−6 as the dissolved-metal threshold. Include only M, M2+ and M(OH)2; Eh = 0.05916 pE. Water boundaries are as in 10a. A solid region does not guarantee an adherent protective film.",
+        "taskDe": "Leite die vertikale Fällungsgrenze und die M/M(OH)2-Gerade her. Ordne P(pH 8, Eh −0,50 V) und Q(pH 11, Eh −0,50 V) ein. Warum ersetzt das Schema keinen Materialschutztest?",
+        "taskEn": "Derive the vertical precipitation boundary and M/M(OH)2 line. Classify P(pH 8, Eh −0.50 V) and Q(pH 11, Eh −0.50 V). Why does the scheme not replace a material-protection test?",
+        "workedReasoningDe": "Bei aM2+ = 10−6 gilt aOH− = √(10−15/10−6) = 10−4,5, also pOH 4,5 und pH 9,5. Die Metall/Ion-Linie ist Eh = −0,61748 V. Einsetzen von aM2+ = KL/aOH² ergibt die Feststoff/Metall-Gerade Eh = −0,05546 − 0,05916 pH. P liegt unter pH 9,5 und oberhalb −0,61748 V, also im M2+-Bereich. Q liegt oberhalb pH 9,5 und oberhalb −0,70622 V, also im M(OH)2-Bereich. Beide Punkte liegen im Wasserfenster. Der Schnittpunkt bei pH 9,5 prüft die Konsistenz. Haftung, Porosität, Kinetik, weitere Oxidationsstufen und Komplexe fehlen; ein Feststofffeld bedeutet keinen nachgewiesenen Schutz.",
+        "workedReasoningEn": "At aM2+ = 10−6, aOH− = 10−4.5, giving pOH 4.5 and pH 9.5. The metal/ion line is Eh = −0.61748 V. Substituting aM2+ = Ksp/aOH² gives the solid/metal line Eh = −0.05546 − 0.05916 pH. P has pH below 9.5 and Eh above −0.61748 V, placing it in the M2+ region. Q has pH above 9.5 and Eh above −0.70622 V, placing it in the hydroxide region. Both lie inside the water window. Check consistency at the intersection at pH 9.5. Adhesion, porosity, kinetics, other oxidation states and complexes are absent; a solid field is not proven protection.",
+        "freshIndependentTransferDe": "Füge einen starken M2+-Liganden hinzu. Begründe die nötige Neuberechnung der Grenzen statt einer unveränderten Farbflächenannahme.",
+        "freshIndependentTransferEn": "Add a strong M2+ ligand. Explain the need to recalculate boundaries rather than assuming unchanged coloured regions.",
+        "criterionToObservableRubric": [
+          {
+            "criterionId": "e1",
+            "observableDe": "Die vertikale pH-9,5-Grenze aus KL und Kw ableiten.",
+            "observableEn": "Derive the vertical pH-9.5 boundary from Ksp and Kw.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e2",
+            "observableDe": "Geneigte Grenze und beide Punkte konsistent bestimmen.",
+            "observableEn": "Determine the sloping boundary and classify both points consistently.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e3",
+            "observableDe": "Feststoffstabilität von tatsächlicher Passivierung trennen.",
+            "observableEn": "Separate solid stability from actual passivation.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          }
+        ],
+        "scoring": {
+          "maximumPoints": 12,
+          "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+          "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+        }
+      }
+    },
+    {
+      "id": "eqrk16-11-a",
+      "scientificReason": "Use unrounded logK=2.200/0.05916=37.1872887086 before exponentiation: K=1.5391775e37, rounded1.54e37, not exponentiating rounded37.19.",
+      "wholeBeforeCase": {
+        "id": "eqrk16-11-a",
+        "goalId": "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+        "title": "Daniell entladen, reversibel rückwärts treiben und echtes Gleichgewicht",
+        "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+        "imageRequired": false,
+        "materialsDe": "Bei 25 °C gilt Zn + Cu2+ ⇌ Zn2+ + Cu mit E° = 1,100 V, n = 2 und F = 96485 C/mol. Anfangs ist Q = 1. E = E° − 0,05916/n · log Q und ΔrG = −nFE. In einem hypothetischen umkehrbaren Modell ohne Nebenreaktion können sich die Aktivitäten ändern. Ein reales Ladegerät benötigt bei endlichem Strom zusätzliche Spannung für Verluste; konkrete Überspannungen fehlen. Keine praktische Zinkabscheidung aus Wasser.",
+        "materialsEn": "At 25 °C, Zn + Cu2+ ⇌ Zn2+ + Cu has E° = 1.100 V, n = 2 and F = 96485 C/mol. Initially Q = 1. Use E = E° − 0.05916/n · log Q and ΔrG = −nFE. Activities may vary in a hypothetical reversible model without side reactions. A real charger needs additional voltage for finite-current losses; overpotentials are unspecified. Do not attempt aqueous zinc plating.",
+        "taskDe": "Ordne E und ΔrG für beide Reaktionsrichtungen zu und leite K aus E = 0 her. Warum besitzt eine stromlos gemessene 1,100-V-Zelle noch kein globales chemisches Gleichgewicht? Beschreibe Polung, Arbeit und reale Grenzen des erzwungenen Rückumsatzes.",
+        "taskEn": "Assign E and ΔrG to both directions and derive K from E = 0. Why is an open-circuit cell measuring 1.100 V not at global chemical equilibrium? Describe polarity, work and real limitations when forcing the reverse process.",
+        "workedReasoningDe": "Vorwärts gilt E = +1,100 V und ΔrG = −212,27 kJ/mol; rückwärts E = −1,100 V und ΔrG = +212,27 kJ/mol. Bei E = 0 ist Q = K; log K = nE°/0,05916 ≈ 37,19 und K ≈ 1,55 · 10^37 für diese Gleichung. Ein offener Außenkreis verhindert Strom, obwohl der chemische Antrieb nicht null ist. Lokale Doppelschichtgleichgewichte bedeuten nicht global Q = K. Rückwärts oxidiert Cu an der positiven Anode und Zn2+ wird an der negativen Kathode reduziert. Die Quelle liefert mindestens reversible Arbeit sowie bei Strom zusätzliche Verluste. Wasserstoffbildung, Dendriten und Passivierung können eine reale Wiederaufladung verhindern; das Modell beweist keinen brauchbaren Akku.",
+        "workedReasoningEn": "Forward E = +1.100 V and ΔrG = −212.27 kJ/mol; reverse E = −1.100 V and ΔrG = +212.27 kJ/mol. At E = 0, Q = K; log K ≈ 37.19 and K ≈ 1.55 × 10^37 for this equation. Opening the external circuit stops current without removing chemical driving force. Local double-layer equilibria do not imply global Q = K. Forced reversal oxidises Cu at the positive anode and reduces Zn2+ at the negative cathode. The source supplies reversible work and finite-current losses. Hydrogen evolution, dendrites and passivation can prevent useful rechargeability; the model proves no practical rechargeable battery.",
+        "freshIndependentTransferDe": "Lasse den äußeren Widerstand gegen unendlich wachsen, während Q gleich bleibt. Prüfe erneut „kein Strom bedeutet ΔrG = 0“ und vergleiche mit Q = K.",
+        "freshIndependentTransferEn": "Let external resistance approach infinity while Q stays unchanged. Reassess “no current means ΔrG = 0” and contrast Q = K.",
+        "criterionToObservableRubric": [
+          {
+            "criterionId": "e1",
+            "observableDe": "E und ΔrG auf dieselbe Reaktionsrichtung und das Arbeitsvorzeichen beziehen.",
+            "observableEn": "Relate E and ΔrG to the same reaction direction and work sign.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e2",
+            "observableDe": "Q = K und K ≈ 1,55 · 10^37 herleiten.",
+            "observableEn": "Derive Q = K and K ≈ 1.55 × 10^37.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e3",
+            "observableDe": "Leerlauf, lokale und globale Gleichgewichte sowie reales Laden unterscheiden.",
+            "observableEn": "Distinguish open circuit, local/global equilibria and real charging.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          }
+        ],
+        "scoring": {
+          "maximumPoints": 12,
+          "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+          "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+        }
+      },
+      "wholeCorrectedCase": {
+        "id": "eqrk16-11-a",
+        "goalId": "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+        "title": "Daniell entladen, reversibel rückwärts treiben und echtes Gleichgewicht",
+        "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+        "imageRequired": false,
+        "materialsDe": "Bei 25 °C gilt Zn + Cu2+ ⇌ Zn2+ + Cu mit E° = 1,100 V, n = 2 und F = 96485 C/mol. Anfangs ist Q = 1. E = E° − 0,05916/n · log Q und ΔrG = −nFE. In einem hypothetischen umkehrbaren Modell ohne Nebenreaktion können sich die Aktivitäten ändern. Ein reales Ladegerät benötigt bei endlichem Strom zusätzliche Spannung für Verluste; konkrete Überspannungen fehlen. Keine praktische Zinkabscheidung aus Wasser.",
+        "materialsEn": "At 25 °C, Zn + Cu2+ ⇌ Zn2+ + Cu has E° = 1.100 V, n = 2 and F = 96485 C/mol. Initially Q = 1. Use E = E° − 0.05916/n · log Q and ΔrG = −nFE. Activities may vary in a hypothetical reversible model without side reactions. A real charger needs additional voltage for finite-current losses; overpotentials are unspecified. Do not attempt aqueous zinc plating.",
+        "taskDe": "Ordne E und ΔrG für beide Reaktionsrichtungen zu und leite K aus E = 0 her. Warum besitzt eine stromlos gemessene 1,100-V-Zelle noch kein globales chemisches Gleichgewicht? Beschreibe Polung, Arbeit und reale Grenzen des erzwungenen Rückumsatzes.",
+        "taskEn": "Assign E and ΔrG to both directions and derive K from E = 0. Why is an open-circuit cell measuring 1.100 V not at global chemical equilibrium? Describe polarity, work and real limitations when forcing the reverse process.",
+        "workedReasoningDe": "Vorwärts gilt E = +1,100 V und ΔrG = −212,27 kJ/mol; rückwärts E = −1,100 V und ΔrG = +212,27 kJ/mol. Bei E = 0 ist Q = K; log K = nE°/0,05916 ≈ 37,19 und K ≈ 1,54 · 10^37 für diese Gleichung. Ein offener Außenkreis verhindert Strom, obwohl der chemische Antrieb nicht null ist. Lokale Doppelschichtgleichgewichte bedeuten nicht global Q = K. Rückwärts oxidiert Cu an der positiven Anode und Zn2+ wird an der negativen Kathode reduziert. Die Quelle liefert mindestens reversible Arbeit sowie bei Strom zusätzliche Verluste. Wasserstoffbildung, Dendriten und Passivierung können eine reale Wiederaufladung verhindern; das Modell beweist keinen brauchbaren Akku.",
+        "workedReasoningEn": "Forward E = +1.100 V and ΔrG = −212.27 kJ/mol; reverse E = −1.100 V and ΔrG = +212.27 kJ/mol. At E = 0, Q = K; log K ≈ 37.19 and K ≈ 1.54 × 10^37 for this equation. Opening the external circuit stops current without removing chemical driving force. Local double-layer equilibria do not imply global Q = K. Forced reversal oxidises Cu at the positive anode and reduces Zn2+ at the negative cathode. The source supplies reversible work and finite-current losses. Hydrogen evolution, dendrites and passivation can prevent useful rechargeability; the model proves no practical rechargeable battery.",
+        "freshIndependentTransferDe": "Lasse den äußeren Widerstand gegen unendlich wachsen, während Q gleich bleibt. Prüfe erneut „kein Strom bedeutet ΔrG = 0“ und vergleiche mit Q = K.",
+        "freshIndependentTransferEn": "Let external resistance approach infinity while Q stays unchanged. Reassess “no current means ΔrG = 0” and contrast Q = K.",
+        "criterionToObservableRubric": [
+          {
+            "criterionId": "e1",
+            "observableDe": "E und ΔrG auf dieselbe Reaktionsrichtung und das Arbeitsvorzeichen beziehen.",
+            "observableEn": "Relate E and ΔrG to the same reaction direction and work sign.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e2",
+            "observableDe": "Q = K und K ≈ 1,54 · 10^37 herleiten.",
+            "observableEn": "Derive Q = K and K ≈ 1.54 × 10^37.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e3",
+            "observableDe": "Leerlauf, lokale und globale Gleichgewichte sowie reales Laden unterscheiden.",
+            "observableEn": "Distinguish open circuit, local/global equilibria and real charging.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          }
+        ],
+        "scoring": {
+          "maximumPoints": 12,
+          "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+          "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+        }
+      }
+    },
+    {
+      "id": "eqrk16-11-b",
+      "scientificReason": "Correct last-place rounding:237130/(2*96485)=1.22884386174V, rounding1.22884V; add0.400/0.275V consistently.",
+      "wholeBeforeCase": {
+        "id": "eqrk16-11-b",
+        "goalId": "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+        "title": "Wasserelektrolyse als erzwungener Redoxweg, kein Gleichgewichts-Katalysatortrick",
+        "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+        "imageRequired": false,
+        "materialsDe": "Bei 25 °C: H2O(l) → H2(g) + ½ O2(g), ΔrG° = +237,13 kJ/mol, n = 2, F = 96485 C/mol. Ideale Gase liegen jeweils bei 1 bar vor; Wasseraktivität ist 1. Bei einem angegebenen Strom seien die Verluste: Anode 0,25 V, Kathode 0,10 V, ohmscher Abfall 0,05 V. Ein Katalysator halbiert nur die Anodenüberspannung; Temperatur und Endzustände bleiben gleich. Datenaufgabe ohne Gasaufbau oder Zündung.",
+        "materialsEn": "At 25 °C: H2O(l) → H2(g) + ½ O2(g), ΔrG° = +237.13 kJ/mol, n = 2 and F = 96485 C/mol. Each ideal gas is at 1 bar and water activity is 1. At a stated current, losses are 0.25 V at the anode, 0.10 V at the cathode and 0.05 V ohmic drop. A catalyst halves only the anode overpotential; temperature and end states are unchanged. Data exercise, no gas assembly or ignition.",
+        "taskDe": "Leite Mindestspannung und Betriebsspannung vor und nach Katalysatoreinsatz her. Formuliere saure Teilreaktionen und erkläre, weshalb K und die thermodynamische Richtung nicht durch Katalyse umgekehrt werden. Beurteile eine unvollständige 0,9-V-Werbung.",
+        "taskEn": "Derive reversible minimum and operating voltages before and after catalysis. Construct acidic half-reactions and explain why catalysis does not reverse K or thermodynamic direction. Assess an incomplete 0.9-V advert.",
+        "workedReasoningDe": "Kathode: 2 H+ + 2 e− → H2; Anode: H2O → ½ O2 + 2 H+ + 2 e−. Urev = ΔrG/(nF) = 1,22885 V. Betrieb vorher: 1,62885 V, nachher: 1,50385 V. Der Katalysator reduziert einen kinetischen Verlust, nicht ΔrG° oder K bei gleichen Endzuständen. Die Standard-Hinreaktion benötigt Arbeit; die Rückreaktion ist thermodynamisch begünstigt. Dauernde Gasabfuhr ist eine offene Randbedingung, keine geschlossene Gleichgewichtseinstellung. Eine 0,9-V-Aussage benötigt andere Bedingungen, weitere Energie, Kopplung oder eine andere Messgrenze. Ohne Systemdaten folgt weder eine Erklärung noch eine pauschale Betrugsdiagnose.",
+        "workedReasoningEn": "Cathode: 2 H+ + 2 e− → H2; anode: H2O → ½ O2 + 2 H+ + 2 e−. Urev = 1.22885 V, giving operating voltages of 1.62885 V before and 1.50385 V after catalysis. Catalysis reduces a kinetic loss, not ΔrG° or K at identical end states. The standard forward reaction requires work; the reverse is thermodynamically favoured. Continuous gas removal is an open boundary, not closed equilibration. A 0.9-V claim requires changed conditions, extra energy, coupling or another measurement boundary; system data are needed before explaining or dismissing it.",
+        "freshIndependentTransferDe": "Erhöhe bei gleichbleibendem Sauerstoff und gleicher Temperatur den Wasserstoffpartialdruck. Begründe mit Q die höhere reversible Elektrolysespannung trotz gleichen Katalysators.",
+        "freshIndependentTransferEn": "Increase hydrogen partial pressure at fixed oxygen and temperature. Use Q to explain increased reversible electrolysis voltage despite an unchanged catalyst.",
+        "criterionToObservableRubric": [
+          {
+            "criterionId": "e1",
+            "observableDe": "Teilreaktionen und 1,22885 V aus ΔrG herleiten.",
+            "observableEn": "Derive half-reactions and 1.22885 V from ΔrG.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e2",
+            "observableDe": "Betriebsverluste berechnen und Katalyse von Gleichgewicht trennen.",
+            "observableEn": "Calculate operating losses and separate catalysis from equilibrium.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e3",
+            "observableDe": "Offene Gasgrenze und unvollständige Werbung beurteilen.",
+            "observableEn": "Evaluate the open gas boundary and incomplete advert.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          }
+        ],
+        "scoring": {
+          "maximumPoints": 12,
+          "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+          "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+        }
+      },
+      "wholeCorrectedCase": {
+        "id": "eqrk16-11-b",
+        "goalId": "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+        "title": "Wasserelektrolyse als erzwungener Redoxweg, kein Gleichgewichts-Katalysatortrick",
+        "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+        "imageRequired": false,
+        "materialsDe": "Bei 25 °C: H2O(l) → H2(g) + ½ O2(g), ΔrG° = +237,13 kJ/mol, n = 2, F = 96485 C/mol. Ideale Gase liegen jeweils bei 1 bar vor; Wasseraktivität ist 1. Bei einem angegebenen Strom seien die Verluste: Anode 0,25 V, Kathode 0,10 V, ohmscher Abfall 0,05 V. Ein Katalysator halbiert nur die Anodenüberspannung; Temperatur und Endzustände bleiben gleich. Datenaufgabe ohne Gasaufbau oder Zündung.",
+        "materialsEn": "At 25 °C: H2O(l) → H2(g) + ½ O2(g), ΔrG° = +237.13 kJ/mol, n = 2 and F = 96485 C/mol. Each ideal gas is at 1 bar and water activity is 1. At a stated current, losses are 0.25 V at the anode, 0.10 V at the cathode and 0.05 V ohmic drop. A catalyst halves only the anode overpotential; temperature and end states are unchanged. Data exercise, no gas assembly or ignition.",
+        "taskDe": "Leite Mindestspannung und Betriebsspannung vor und nach Katalysatoreinsatz her. Formuliere saure Teilreaktionen und erkläre, weshalb K und die thermodynamische Richtung nicht durch Katalyse umgekehrt werden. Beurteile eine unvollständige 0,9-V-Werbung.",
+        "taskEn": "Derive reversible minimum and operating voltages before and after catalysis. Construct acidic half-reactions and explain why catalysis does not reverse K or thermodynamic direction. Assess an incomplete 0.9-V advert.",
+        "workedReasoningDe": "Kathode: 2 H+ + 2 e− → H2; Anode: H2O → ½ O2 + 2 H+ + 2 e−. Urev = ΔrG/(nF) = 1,22884 V. Betrieb vorher: 1,62884 V, nachher: 1,50384 V. Der Katalysator reduziert einen kinetischen Verlust, nicht ΔrG° oder K bei gleichen Endzuständen. Die Standard-Hinreaktion benötigt Arbeit; die Rückreaktion ist thermodynamisch begünstigt. Dauernde Gasabfuhr ist eine offene Randbedingung, keine geschlossene Gleichgewichtseinstellung. Eine 0,9-V-Aussage benötigt andere Bedingungen, weitere Energie, Kopplung oder eine andere Messgrenze. Ohne Systemdaten folgt weder eine Erklärung noch eine pauschale Betrugsdiagnose.",
+        "workedReasoningEn": "Cathode: 2 H+ + 2 e− → H2; anode: H2O → ½ O2 + 2 H+ + 2 e−. Urev = 1.22884 V, giving operating voltages of 1.62884 V before and 1.50384 V after catalysis. Catalysis reduces a kinetic loss, not ΔrG° or K at identical end states. The standard forward reaction requires work; the reverse is thermodynamically favoured. Continuous gas removal is an open boundary, not closed equilibration. A 0.9-V claim requires changed conditions, extra energy, coupling or another measurement boundary; system data are needed before explaining or dismissing it.",
+        "freshIndependentTransferDe": "Erhöhe bei gleichbleibendem Sauerstoff und gleicher Temperatur den Wasserstoffpartialdruck. Begründe mit Q die höhere reversible Elektrolysespannung trotz gleichen Katalysators.",
+        "freshIndependentTransferEn": "Increase hydrogen partial pressure at fixed oxygen and temperature. Use Q to explain increased reversible electrolysis voltage despite an unchanged catalyst.",
+        "criterionToObservableRubric": [
+          {
+            "criterionId": "e1",
+            "observableDe": "Teilreaktionen und 1,22884 V aus ΔrG herleiten.",
+            "observableEn": "Derive half-reactions and 1.22884 V from ΔrG.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e2",
+            "observableDe": "Betriebsverluste berechnen und Katalyse von Gleichgewicht trennen.",
+            "observableEn": "Calculate operating losses and separate catalysis from equilibrium.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          },
+          {
+            "criterionId": "e3",
+            "observableDe": "Offene Gasgrenze und unvollständige Werbung beurteilen.",
+            "observableEn": "Evaluate the open gas boundary and incomplete advert.",
+            "points": 4,
+            "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+          }
+        ],
+        "scoring": {
+          "maximumPoints": 12,
+          "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+          "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+        }
+      }
+    }
+  ]
+}

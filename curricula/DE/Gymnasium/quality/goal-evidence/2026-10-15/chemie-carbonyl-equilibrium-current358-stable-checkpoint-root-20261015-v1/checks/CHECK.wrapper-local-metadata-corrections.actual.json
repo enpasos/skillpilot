@@ -1,0 +1,23 @@
+{
+  "recordedAtUTC": "2026-10-15T15:43:33.049213+00:00",
+  "role": "Local wrapper metadata failures retained; no source, review or QA change",
+  "failures": [
+    {
+      "step": "build attempt1",
+      "exactError": "Scanner treated UNSELECTED.initial-unsealed-absolute-address-preparation.json as a seal because its name contained seal",
+      "originalScript": "checks/checkpoint_tools.attempt1.unsealed-name-filter.py",
+      "stderr": "checks/build.attempt1.stderr.actual.txt",
+      "correction": "Only actual .seal.json or SEAL.* filenames are seal inputs"
+    },
+    {
+      "step": "post-build audit reference update",
+      "exactError": "ValueError: relative artifact path is not in subpath of absolute repository root",
+      "failedInput": "relative own checks/CHECK.existing-seals-and-original-run-bindings.actual.json passed to ref()",
+      "correction": "Resolve own wrapper root before forming repository-relative artifact reference",
+      "sourceChanges": 0
+    }
+  ],
+  "successfulMetadataEnhancement": "Positive-evidence AI run manifests lack campaignId; include all runId/outputDigest/completedAt manifests, now9 exact output bindings",
+  "QAOrNormalFailures": 0,
+  "newQAOrCentralRuns": 0
+}
