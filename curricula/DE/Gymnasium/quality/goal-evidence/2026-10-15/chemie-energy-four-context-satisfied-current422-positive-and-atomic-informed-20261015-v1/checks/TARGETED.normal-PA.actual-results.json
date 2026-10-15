@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual scoped normal validators; machine checks do not grant scientific/Human/source/course/image approval",
+  "results": [
+    {
+      "name": "P4.final.stock-check",
+      "args": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/normal/P4.final-current.image-bound.config.json",
+        "--mode=check"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/energy-eleven-kept-informed-pa-host-v1",
+      "startedAt": "2026-10-15T12:49:07.674416+00:00",
+      "completedAt": "2026-10-15T12:49:08.176526+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/checks/P4.final.stock-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/checks/P4.final.stock-check.stderr.txt"
+    },
+    {
+      "name": "A4.stock-write-fingerprints",
+      "args": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/normal/A4.current-context.semantic-atomicity.config.json",
+        "--write-fingerprints"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/energy-eleven-kept-informed-pa-host-v1",
+      "startedAt": "2026-10-15T12:49:07.675089+00:00",
+      "completedAt": "2026-10-15T12:49:07.985897+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/checks/A4.stock-write-fingerprints.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/checks/A4.stock-write-fingerprints.stderr.txt"
+    },
+    {
+      "name": "A4.final.stock-check",
+      "args": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/normal/A4.current-context.semantic-atomicity.config.json",
+        "--mode=check"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/energy-eleven-kept-informed-pa-host-v1",
+      "startedAt": "2026-10-15T12:49:08.177753+00:00",
+      "completedAt": "2026-10-15T12:49:08.473143+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/checks/A4.final.stock-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/checks/A4.final.stock-check.stderr.txt"
+    }
+  ]
+}

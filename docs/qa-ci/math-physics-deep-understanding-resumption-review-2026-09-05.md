@@ -2,6 +2,18 @@
 
 ## Aktuelle Chemie-Fortsetzung – 15. Oktober 2026
 
+Der [Energie-Folgecheckpoint](chemie-energy18-current422-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Kandidaten **338/422 (80,1 %)**: 17 neue
+fachliche Abschlüsse, alle bisherigen 321 erhalten, sechs Pflichtprüfungen
+PASS und 84 Ziele offen. Wiederhergestellte Bindungen schaffen keine
+zusätzlichen erstmaligen Abschlüsse. Quellen-, Kurs-, Bild- und
+Teilungsbefunde bleiben getrennt offen; aktiv bleiben **231/402, M6**.
+Mathematik, Physik und Biologie bleiben geschützt M7. Der Vorgänger
+`adb8b46d` hat alle 14 GitHub-Checks und acht Hauptjobs bestanden; der neue
+Folgecheckpoint benötigt seinen eigenen erfolgreichen GitHub-Lauf.
+
+## Vorheriger Labor-/Memory-Stand – 15. Oktober 2026
+
 Der [Labor- und Bildfolgecheckpoint](chemie321-lab-carbonyl-keep-checkpoint-2026-10-15.md)
 erreicht im inaktiven zentralen Kandidaten **321/422 (76,1 %)**: zwei neue
 fachliche Abschlüsse, alle bisherigen 319 erhalten, drei frühere gültige

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8db1f95c21975e3d8c57fdbbe4bf53e67e627aa3c349d24b48f1b9cecbddc996",
+  "reviewInputFingerprint": "sha256:c885e43072a2e8e10509d655974d707fed988de5c30bb824a294082abe32d092",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-four-final-contexts-current422-native560-20261015-v1-a",
+      "roundId": "chemie-four-final-contexts-current422-native560-20261015-v1-first-pass-a",
+      "independenceGroupId": "chemie-four-final-contexts-current422-native560-20261015-v1-independent-a",
+      "runIds": [
+        "chemie-energy-four-final-native-fresh-independent-a-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex; exact runtime model identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-four-final-contexts-current422-native560-20261015-v1-b",
+      "roundId": "chemie-four-final-contexts-current422-native560-20261015-v1-first-pass-b",
+      "independenceGroupId": "chemie-four-final-contexts-current422-native560-20261015-v1-independent-b",
+      "runIds": [
+        "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI / Codex agent runtime"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex agent runtime::GPT-6 / Codex agent runtime::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+      "firstRecordId": "chemie-energy-four-final-native-fresh-independent-a-20261015-v1.1",
+      "secondRecordId": "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1.g01",
+      "firstRunId": "chemie-energy-four-final-native-fresh-independent-a-20261015-v1",
+      "secondRunId": "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3",
+      "firstRecordId": "chemie-energy-four-final-native-fresh-independent-a-20261015-v1.2",
+      "secondRecordId": "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1.g02",
+      "firstRunId": "chemie-energy-four-final-native-fresh-independent-a-20261015-v1",
+      "secondRunId": "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "551d81a7-2308-540f-8323-df35c6871d62",
+      "firstRecordId": "chemie-energy-four-final-native-fresh-independent-a-20261015-v1.3",
+      "secondRecordId": "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1.g03",
+      "firstRunId": "chemie-energy-four-final-native-fresh-independent-a-20261015-v1",
+      "secondRunId": "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+      "firstRecordId": "chemie-energy-four-final-native-fresh-independent-a-20261015-v1.4",
+      "secondRecordId": "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1.g04",
+      "firstRunId": "chemie-energy-four-final-native-fresh-independent-a-20261015-v1",
+      "secondRunId": "chemie-energy-four-final-current422-native-fresh-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

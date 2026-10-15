@@ -1,0 +1,564 @@
+{
+  "cases": [
+    {
+      "id": "energy20-01-a",
+      "goalId": "ecce0306-13dc-5563-a097-afe69805a8d6",
+      "title": "PEM-Bus und Bilanzgrenzen",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Ein eigener Modellbus nutzt H2/O2 mit saurer protonenleitender Membran. Beschriftete Anschlüsse A=H2, B=O2; Außenleiter A→Motor→B, keine Elektronenleitung durch die Membran. Daten pro100km:9kgH2, Herstellung55kWh/kg, Strommix0,40kgCO2/kWh. Im Fahrzeug entsteht aus reinemH2 nur Wasser; Wärme wird abgeführt. Kein Bauversuch, keine Gaszündung.",
+      "materialsEn": "An own model bus uses H2/O2 with an acidic proton-conducting membrane. Port A=H2, B=O2; external wire A→motor→B, no electron conduction through the membrane. Per100km:9kgH2, production55kWh/kg, electricity0.40kgCO2/kWh. Pure-H2 vehicle operation forms water; heat is removed. No construction or ignition experiment.",
+      "taskDe": "Leite beide Elektrodenreaktionen und die Gesamtreaktion selbst her. Erkläre Stoff-, Protonen- und Elektronenwege sowie einen blockierten Protonenweg. Beurteile emissionsfreien Betrieb als Aussage über Fahrzeug und Bereitstellung; nenne eine begründete Nutzungschance und eine Infrastrukturgrenze.",
+      "taskEn": "Derive both electrode and overall reactions. Explain material, proton and electron paths and a blocked proton path. Evaluate emission-free operation at vehicle and production boundaries; justify one application and one infrastructure limitation.",
+      "workedReasoningDe": "Anode: H2→2H+ +2e−; Kathode:½O2+2H+ +2e−→H2O; gesamt: H2+½O2→H2O. Ladung und Atome stimmen; Elektronen treiben außen den Motor, H+ schließt innen den Kreis. Blockierte Membran verhindert Dauerstrom. Bereitstellung benötigt495kWh und verursacht hier198kgCO2/100km; Auspuff-Wasser beweist keine klimaneutrale Kette. Schnelles Nachfüllen kann bei langen Linien nützen; Herkunft, Kompression, Netze und Verteilung begrenzen flächendeckenden Einsatz.",
+      "workedReasoningEn": "Anode:H2→2H+ +2e−; cathode:½O2+2H+ +2e−→H2O; overall:H2+½O2→H2O. Atoms/charge balance. Electrons power the motor externally; H+ closes the internal circuit. Blocking the membrane prevents sustained current. Production needs495kWh and causes198kgCO2/100km here; tailpipe water does not establish a climate-neutral chain. Rapid refuelling may help long routes; production, compression and distribution constrain deployment.",
+      "freshIndependentTransferDe": "Erhalte statt reinemH2 ein CO-verunreinigtes Gas und einen sauberen erneuerbaren Strompfad. Erkläre ohne Gleichungsvorlage, welche frühere Schlussfolgerung zur lokalen Chemie gilt und welche zur Katalysatorfunktion/CO2-Bilanz neu geprüft werden muss.",
+      "freshIndependentTransferEn": "Receive CO-contaminated hydrogen and a clean renewable electricity route. Without an equation template, identify which local-chemistry conclusion remains and which catalyst/carbon conclusion needs new evidence.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Bilanzierte Teilgleichungen und getrennte H+/e−-Wege selbst erzeugen.",
+          "observableEn": "Independently construct balanced half-reactions and separate H+/electron paths.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "495kWh und198kgCO2 auf denselben100km-Bezug bringen, nicht Energie und Masse gleichsetzen.",
+          "observableEn": "Use the same100km basis for495kWh and198kgCO2; do not equate energy and mass.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Lokale Wasserbildung von Vorkette und Einsatzentscheidung trennen.",
+          "observableEn": "Separate local water formation, upstream chain and application judgement.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-01-b",
+      "goalId": "ecce0306-13dc-5563-a097-afe69805a8d6",
+      "title": "Alkalische Zelle mit Luft und Kohlendioxid",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Modell-AFC mit wässrigerKOH, H2 an negativer Elektrode, O2 an positiver. OH− wandert im Elektrolyten von der Sauerstoff- zur Wasserstoffseite. Versuchsdossier (vorgegebene Fremddaten): CO2-freie Luft0,78V unter Last; nach langer Zufuhr CO2-haltiger Luft0,54V bei gleicher Last/Temperatur; CO2+2OH−→CO3²−+H2O. Kein kausaler Einzelfaktorbeweis aus zwei Werten.",
+      "materialsEn": "Model AFC with aqueousKOH, H2 at the negative electrode and O2 at the positive electrode. OH− moves internally from oxygen to hydrogen side. Supplied external dossier: CO2-free air0.78V under load; prolonged CO2-containing air0.54V at the same load/temperature; CO2+2OH−→CO3²−+H2O. Two values alone do not prove a unique cause.",
+      "taskDe": "Erzeuge passende alkalische Teilgleichungen, vergleiche die Wasserbildung mit der sauren Zelle und begründe, weshalb die saure Protonenzeichnung hier falsch wäre. Erkläre den plausiblen CO2-Effekt und einen kontrollierten nächsten Vergleich. Bewerte die Luftversorgung ohne allgemeine AFC-Überlegenheit zu behaupten.",
+      "taskEn": "Construct alkaline half-reactions, compare water formation with the acidic cell and explain why its proton diagram would be wrong here. Explain a plausible CO2 effect and one controlled follow-up. Evaluate air supply without asserting universal AFC superiority.",
+      "workedReasoningDe": "Anode: H2+2OH−→2H2O+2e−; Kathode:½O2+H2O+2e−→2OH−. Addition ergibt dieselbe Gesamtreaktion; OH− wird intern regeneriert, Wasser entsteht an der Anode und wird teilweise an der Kathode verbraucht. Carbonatbildung ändert Zusammensetzung/Leitung, ist plausibel aber Alterung/Feuchte bleiben Alternativen. Vergleich mit zeitgleicher CO2-freier Kontrollzelle bei gleichem Strom, Gasfluss und Temperatur; keine sichere Reversibilität oder Effizienz aus Spannung allein.",
+      "workedReasoningEn": "Anode:H2+2OH−→2H2O+2e−; cathode:½O2+H2O+2e−→2OH−. Summation gives the same overall reaction; OH− is internally regenerated, with water formed at the anode and partly consumed at the cathode. Carbonate formation plausibly alters electrolyte composition/conduction, but ageing/humidity are alternatives. Compare a time-matched CO2-free control at identical current, flow and temperature; voltage alone gives neither reversibility nor efficiency.",
+      "freshIndependentTransferDe": "Eine Anionenaustauschmembran ersetzt die KOH-Lösung. Entscheide, welche Ladungsbilanz bleibt und welche Aussage über flüssiges Elektrolytmanagement nicht einfach übertragbar ist.",
+      "freshIndependentTransferEn": "Replace aqueousKOH with an anion-exchange membrane. Decide which charge balance survives and which liquid-electrolyte-management conclusion cannot simply transfer.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "OH−-Teilgleichungen einschließlich unterschiedlichem Ort der Wasserbildung begründen.",
+          "observableEn": "Justify OH− half-reactions and the different water-formation location.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Beobachtete Spannungsänderung von begründeter Carbonat-Hypothese unterscheiden.",
+          "observableEn": "Distinguish observed voltage change from the carbonate hypothesis.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Kontrollvariablen und eine anwendungsbezogene Einschränkung nennen.",
+          "observableEn": "Specify controls and an application-specific limitation.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-02-a",
+      "goalId": "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+      "title": "Quellenrecherche zu einem Fahrradakku",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Eigenes fiktives Dossier: gedrucktes Laborblatt U(Autor InstitutU,2025,20°C,0,2C):36V/10Ah-Nennpack, gemessen9Ah bis Abschaltspannung; Herstellerseite H(2026, Werbung):„360Wh ohne Verluste“; anonyme Webseite Z(ohne Datum):„Lithium liefert freie Energie“. Schema: Graphit|Li+-Elektrolyt/Separator|FePO4/LiFePO4. Quellenrecherche zusätzlich an der gebundenen DOE-Battery-Basics-Primärquelle; leeres Protokoll: Suchfrage[], URL[], Autor[], Datum[], Methode[], wörtliches Zitat[], eigene Paraphrase[].",
+      "materialsEn": "Own fictional dossier: printed lab sheet U(InstituteU,2025,20°C,0.2C):36V/10Ah nominal pack, measured9Ah to cutoff; manufacturer page H(2026,advertising):“360Wh without losses”; anonymous undated Z:“lithium supplies free energy”. Scheme: graphite|Li+-electrolyte/separator|FePO4/LiFePO4. Also research the bound primary DOE Battery Basics source. Blank log: question[],URL[],author[],date[],method[],literal quote[],own paraphrase[].",
+      "taskDe": "Recherchiere selbst die Funktionsaussage und protokolliere eine überprüfbare Fundstelle mit Urheberschaft; trenne Dossierfiktion und reale Quelle. Beschreibe Laden/Entladen, leite die Energienäherung aus den Testbedingungen ab und entscheide über eine250Wh-Tour. Kennzeichne ein Dossierzitat und paraphrasiere es kritisch.",
+      "taskEn": "Independently research the mechanism and log a verifiable authored source; distinguish dossier fiction from the real source. Describe charging/discharging, estimate energy under stated test conditions and decide about a250Wh trip. Mark one dossier quotation and critically paraphrase it.",
+      "workedReasoningDe": "Beim Entladen wandern Li+ innen und Elektronen außen vom lithiierten Graphit zur positiven Elektrode; ein vereinfachtes Modell ist LiC6+FePO4→C6+LiFePO4, Laden erfordert äußere Energie. Nominal360Wh, Testnäherung36×9=324Wh; konstante36V ist eine Näherung, Reserve/Temperatur fehlen.250Wh scheint unter Testbedingungen möglich, keine Garantie. U dokumentiert Bedingungen, H besitzt Produktinteresse, Z hat weder Autor noch Belege. Eine tatsächlich selbst gefundene primäre Fundstelle und getrennte Zitat-/Paraphrasenfelder sind erforderlich; Musterlösung ist kein recherchierender Lernendenbeleg.",
+      "workedReasoningEn": "During discharge Li+ moves internally and electrons externally from lithiated graphite to the positive electrode; a simplified model is LiC6+FePO4→C6+LiFePO4; charging requires external energy. Nominal360Wh; test approximation36×9=324Wh; constant36V is approximate and reserves/cold effects are unknown.250Wh appears possible under test conditions, not guaranteed. U reports conditions, H has commercial interest, Z has no author/evidence. An independently found primary reference and distinct quote/paraphrase fields are required; this key is not a learner research observation.",
+      "freshIndependentTransferDe": "Die einzige neue Messung stammt aus −5°C und höherer Last. Prüfe ihre Übertragbarkeit auf die Tour und suche selbst, welche Temperatur-/Abschaltangabe für die Entscheidung fehlt.",
+      "freshIndependentTransferEn": "The only new measurement was at−5°C and higher load. Check transferability and independently identify/search the missing temperature/cutoff information.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Sekundärzelle als reversibel nutzbare Redoxanordnung mit getrennten Wegen erklären.",
+          "observableEn": "Explain a rechargeable redox arrangement with separate transport paths.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "324Wh als bedingte Näherung und keine Hersteller-Garantie nutzen.",
+          "observableEn": "Use324Wh as a conditional approximation, not a manufacturer guarantee.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Eigenen Such-/Urheber-/Zitatnachweis und begründetes Quellenurteil zeigen.",
+          "observableEn": "Produce an original search/authorship/quotation trace and reasoned source judgement.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-02-b",
+      "goalId": "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+      "title": "Bleiakku für Notstrom statt Fahrrad",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Fiktives analoges Werkstatthandbuch W(2024, signierter Betreiber): Pb/PbO2 in H2SO4; keine Zerlegung zugelassen. Digitaler Datenbogen D(2026, Hersteller):12V,40Ah bei langsamer Entladung, nutzbare Energie bei hoher Last laut Labor420Wh±30Wh. Blog B ohne Autor behauptet „40Ah sind40Wh“. Energiebedarf eines Notgeräts180Wh; Wandlerwirkungsgrad0,85. Eigene aktuelle Quellenrecherche/Urheber-/Zitatfelder wie in Fall2a bleiben leer.",
+      "materialsEn": "Fictional printed workshop manual W(2024,signed operator):Pb/PbO2 in H2SO4; disassembly prohibited. Digital manufacturer sheet D(2026):12V,40Ah at slow discharge; laboratory usable high-load energy420±30Wh. Anonymous B says“40Ah means40Wh”. Emergency device needs180Wh; converter efficiency0.85. Independent current research/authorship/quotation fields remain blank as in2a.",
+      "taskDe": "Vergleiche diese Sekundärzelle chemisch und für den Einsatzzweck mit dem Lithium-System. Bilanziere die angegebene Entladereaktion Pb+PbO2+H2SO4→PbSO4+H2O. Ermittle Versorgungsspielraum und prüfe Blog/Hersteller/Handbuch. Belege eine eigene zusätzliche Recherche; führe keine Akkuarbeit aus.",
+      "taskEn": "Compare this secondary cell chemically and for its use with the lithium system. Balance Pb+PbO2+H2SO4→PbSO4+H2O. Determine the supply margin and critique the blog/manufacturer/manual. Supply one independently researched reference; do not work on the battery.",
+      "workedReasoningDe": "Pb+PbO2+2H2SO4→2PbSO4+2H2O. Zwei unterschiedliche Bleioxidationsstufen nähern sich Pb(II); Laden kehrt die Reaktion bei geeignetem Akku unter Energiezufuhr um. Nominal12×40=480Wh, Prüfwert420±30Wh; nutzbar nach Wandler357±25,5Wh, damit180Wh bedingt gedeckt. Masse/Standort und Blei-/Säuregefahr sprechen für beaufsichtigte stationäre Nutzung, nicht automatisch Fahrradnutzung. Ah ist Ladung, Wh Energie. Quellenzweck/Lastbedingung und eigener Fundort zählen; kein ungesehenes Recyclingversprechen.",
+      "workedReasoningEn": "Pb+PbO2+2H2SO4→2PbSO4+2H2O. Different lead oxidation states converge onPb(II); suitable charging reverses the reaction using external energy. Nominal12×40=480Wh, tested420±30Wh; after conversion357±25.5Wh, conditionally enough for180Wh. Mass/location and lead/acid hazards support supervised stationary use, not automatic bicycle suitability. Ah measures charge,Wh energy. Source purpose/load conditions and an original reference matter; no unsupported recycling claim.",
+      "freshIndependentTransferDe": "Das Notgerät benötigt einen hohen Einschaltstrom, der Energiebedarf bleibt180Wh. Begründe, warum der Energievorrat die Leistungs-/Spannungsstabilität nicht allein entscheidet.",
+      "freshIndependentTransferEn": "The device now has a high startup current while still needing180Wh. Explain why energy capacity alone does not determine power/voltage stability.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Blei-Redoxbilanz und erzwungenes Laden rekonstruieren.",
+          "observableEn": "Reconstruct the lead redox balance and forced charging.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Ladung/Energie/Leistung und Wandlerverluste sauber trennen.",
+          "observableEn": "Distinguish charge,energy,power and conversion losses.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Eigenen Quellenfund und zweckbezogene Bewertung statt Autoritätsliste zeigen.",
+          "observableEn": "Show an original reference and use-specific judgement, not a list of authorities.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-05-a",
+      "goalId": "7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3",
+      "title": "LFP-Fahrzeugpack und Reichweite",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Eigenes Modell: Graphit-Anode, LiFePO4/FePO4-Kathode, Li+-Elektrolyt und poröser Separator. Beim Entladen wandern Li+ zur positiven Elektrode, Elektronen außen über den Motor. Packenergie60kWh, Verbrauch18kWh/100km bei20°C. Schutzschaltung gegen Überladung; keine Zellöffnung oder Kurzschlussversuche.",
+      "materialsEn": "Own model: graphite anode,LiFePO4/FePO4 cathode,Li+-electrolyte and porous separator. Charged positive material: FePO4; during discharge it is lithiated to LiFePO4. Li+ moves toward the positive side during discharge,electrons externally through the motor. Usable pack60kWh,electrical consumption18kWh/100km at20°C. Safety:no cell opening/short circuit;protection against overcharge.",
+      "taskDe": "Erkläre Bauteilfunktionen und Lade-/Entladewege anLiC6+FePO4→C6+LiFePO4. Berechne die bedingte Reichweite und beurteile250km ohne Nachladen. Begründe die Ionenleitung und elektrische Trennung am Separator.",
+      "taskEn": "Explain component functions and charging/discharging fromLiC6+FePO4→C6+LiFePO4. Calculate a conditional range and judge a250km trip without charging. Explain why the separator must allow ions while preventing direct electronic contact.",
+      "workedReasoningDe": "Beim Entladen wird Li aus Graphit freigesetzt und positiv eingelagert; die äußeren Elektronen leisten Arbeit. Laden erzwingt die Umkehr durch Energiezufuhr. Der Separator leitet keine Elektronen.60/18×100≈333km;250km benötigen45kWh, Reserve15kWh. Alterung, Temperatur und Fahrprofil begrenzen die Prognose. Ein Kurzschluss umgeht den Arbeitspfad und kann gefährliche Erwärmung bewirken.",
+      "workedReasoningEn": "Discharge releasesLi from graphite and inserts it into the positive material;external electron flow performs work. Charging drives the reverse transport;Li+ transport is not electrons crossing the separator.60/18×100≈333km under stated conditions;250km needs45kWh,leaving15kWh. Ageing,temperature and driving profile are unknown;short circuit bypasses the work path and can heat the cell. Cell chemistry is more than a range formula.",
+      "freshIndependentTransferDe": "Ersetze den Separator in einer Zeichnung durch einen metallischen Verbinder. Sage Funktions- und Sicherheitsfolgen voraus; führe keinen Kurzschluss aus.",
+      "freshIndependentTransferEn": "Replace the separator drawing with a metallic bridge. Predict functional and safety consequences without performing a short circuit.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Lade-/Entladewege mit Interkalation eigenständig erklären.",
+          "observableEn": "Independently explain ion/electron paths and intercalation during charge/discharge.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "333km und15kWh Reserve als bedingte Modellwerte herleiten.",
+          "observableEn": "Use333km as a conditional model prediction with15kWh reserve.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Separator und Schutzfunktion chemisch begründen.",
+          "observableEn": "Chemically justify separator/protection functions.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-05-b",
+      "goalId": "7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3",
+      "title": "Winterfahrt und gealterterPack",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Modellpack aus5a: Im Winter sind80%der früheren60kWh nutzbar; Verbrauch mit Heizung24kWh/100km. TestA berichtet90%Restkapazität nach Alterung bei20°C; TestB begrenzte Leistung bei−10°C. Der80%-Winterwert enthält den hier berücksichtigten Alterungseffekt bereits. Alle Angaben sind fiktiv.",
+      "materialsEn": "The model pack has80%of its earlier usable60kWh in winter;consumption with heating24kWh/100km. CardA:20°C aged capacity90%of new;cardB:power limited at−10°C. The80%winter figure already includes the ageing effect used here. No real vehicle data;all numbers fictional.",
+      "taskDe": "Bestimme die Reichweite ohne doppelten Alterungsabzug. Erkläre den Einfluss niedriger Temperatur auf Leistung und Nutzenergie bei unveränderter Redoxbilanz. Beurteile230km und fehlende Lade-/Sicherheitsdaten.",
+      "taskEn": "Find range without counting ageing twice. Explain how low temperature can affect power/usable energy without changing redox balance. Evaluate a230km trip and identify missing charging/safety information.",
+      "workedReasoningDe": "48kWh sind nutzbar;48/24×100=200km. Erneute Multiplikation mit90%wäre Doppelzählung.230km benötigen55,2kWh, also7,2kWh mehr. Langsamere Transport-/Elektrodenkinetik erhöht den Spannungsabfall unter Last; die Reaktionsstöchiometrie bleibt. Leistung ist nicht Energie. Ladefreigabe, Temperaturmanagement, Reserve und Stationen müssen zusätzlich geprüft werden.",
+      "workedReasoningEn": "Usable energy48kWh;48/24×100=200km,not180km from another90%factor.230km needs55.2kWh,7.2kWh beyond the given capacity. Slower transport/electrode kinetics can increase loaded voltage drop;the cell equation remains while operating limits change. A power limit is not simply less stored charge. Charging permission,thermal management,reserve and station access are missing;no cell disassembly.",
+      "freshIndependentTransferDe": "Ein besserer Heizer senkt den Verbrauch ohne neue Zellchemie. Unterscheide eine Verbesserung des Fahrzeugverbrauchs von einer Änderung der Batterie.",
+      "freshIndependentTransferEn": "An improved heater reduces consumption without changing cell chemistry. Distinguish improvement of battery performance from vehicle-system efficiency.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "48kWh und200km ohne Doppelzählung berechnen.",
+          "observableEn": "Calculate48kWh/200km consistently without double counting.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Kinetische Betriebsgrenze und Reaktionsbilanz unterscheiden.",
+          "observableEn": "Distinguish kinetic operating limits from reaction stoichiometry.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Eine konkrete Lade-/Reserveentscheidung mit Unsicherheit begründen.",
+          "observableEn": "Justify a charging/reserve decision with uncertainty.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-12-a",
+      "goalId": "a3386a86-f1ee-55b8-bcd5-03bfb1f9d987",
+      "title": "Reversible Spannung mit Luft statt Sauerstoff",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Modell-H2/O2-Zelle bei298,15K: Gesamtreaktion H2(g)+½O2(g)→H2O(l), n=2, E°=1,229V; R=8,314J mol−1K−1, F=96485C mol−1. Gasaktivitäten sind p/1bar, Wasseraktivität1, ideale Gase. FallI: pH2=1bar, pO2=1bar; FallII: pH2=0,10bar, pO2=0,21bar. Keine Strombelastung oder Konzentrationspolarisation im reversiblen Modell.",
+      "materialsEn": "ModelH2/O2 cell at298.15K:H2(g)+½O2(g)→H2O(l),n=2,E°=1.229V;R=8.314J mol−1K−1,F=96485C mol−1. Gas activitiesp/1bar,liquid water activity1,ideal gases. I:pH2=1bar,pO2=1bar;II:pH2=0.10bar,pO2=0.21bar. No load/concentration polarisation in the reversible model.",
+      "taskDe": "Leite Q und die Nernst-Form her, berechne beide Spannungen und begründe Richtung und Betrag der Änderung. Prüfe, ob einfaches Verdoppeln der Reaktionsgleichung die Spannung verdoppeln dürfte. Trenne reversible Spannung und Betriebsleistung.",
+      "taskEn": "DeriveQ and the Nernst expression,calculate both voltages and justify sign/magnitude. Check whether doubling the equation doubles voltage. Distinguish reversible voltage from operating power.",
+      "workedReasoningDe": "Q=1/(aH2·aO2^0,5), E=E°−RT/(2F)lnQ. I:1,229V. II: aH2√aO2≈0,04583, ln≈−3,083; E≈1,1894V. Weniger Reaktantaktivität vermindert die reversible Triebkraft. Bei verdoppelter Gleichung werdenQ quadriert und n=4; die Änderung bleibt gleich, weil lnQ²/(4)=lnQ/(2). Spannung ist intensive Größe, keine additiv vervielfachte Energie; Leistung benötigt Strom und Verluste.",
+      "workedReasoningEn": "Q=1/(aH2·aO2^0.5),E=E°−RT/(2F)lnQ. I:1.229V. II:aH2√aO2≈0.04583,ln≈−3.083;E≈1.1894V. Lower reactant activity reduces reversible driving force. Doubling the equation squaresQ and makesn=4;lnQ²/4=lnQ/2,so voltage is unchanged. Voltage is intensive,not multiplied energy;power needs current and loss data.",
+      "freshIndependentTransferDe": "Ein Schüler verwendet pO2 statt √pO2. Rekonstruiere den Fehler aus Elektronenzahl und stöchiometrischem Koeffizienten statt nur die Zahl zu korrigieren.",
+      "freshIndependentTransferEn": "A learner usespO2 instead of√pO2. Reconstruct the error from electron count and stoichiometric coefficient rather than merely correcting the number.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Dimensionslosen Q mit richtiger O2-Potenz aus der Gleichung bilden.",
+          "observableEn": "Form dimensionlessQ with the correctO2 exponent.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "1,1894V samt Vorzeichen und Modellannahmen herleiten.",
+          "observableEn": "Derive1.1894V with sign and assumptions.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Skalierung von Q/n und Grenze zur Lastspannung erklären.",
+          "observableEn": "ExplainQ/n scaling and limits relative to loaded voltage.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-12-b",
+      "goalId": "a3386a86-f1ee-55b8-bcd5-03bfb1f9d987",
+      "title": "pH und Lastabfall sind verschiedene Fragen",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "H2/O2-Zelle bei298,15K, gleiche ideale Gasaktivitäten1 und Wasseraktivität1. Beide Elektroden befinden sich jeweils im gleichen Elektrolyt-pH. Modell-Halbzellpotenziale gegen dieselbe Referenz: EH2=−0,05916pH; EO2=1,229−0,05916pH. Unter Last misst ein separates Gerät0,75V; reversible Zellspannung aus diesen Daten ohne Last. Beide pH-Werte:0 und14. Keine realeKOH-Handhabung.",
+      "materialsEn": "H2/O2 cell at298.15K,gas activities1 and water activity1. Both electrodes share the same electrolytepH. Model potentials versus one reference:EH2=−0.05916pH;EO2=1.229−0.05916pH. A separate device under load reads0.75V;the formulas give reversible voltage. ComparepH0/14. No actualKOH handling.",
+      "taskDe": "Berechne beide Halbzellpotenziale und die Zellspannung fürpH14; erkläre den Vergleich mitpH0. Darf der0,75V-Lastwert allein über Nernst einem neuenpH zugeschrieben werden? Nenne weitere benötigte Daten und den Unterschied von Aktivität/Überspannung.",
+      "taskEn": "Calculate both half-cell potentials and cell voltage atpH14 and comparepH0. Can0.75V under load be assigned to a newpH using Nernst alone? State additional data and distinguish activity from overpotential.",
+      "workedReasoningDe": "Bei pH14: EH2=−0,82824V, EO2=0,40076V; Differenz1,229V, wie bei pH0. Beide pH-Verschiebungen heben sich bei gleicher Elektrolytumgebung in der Gesamtreaktion auf.0,75V kann durch Aktivierungs-, ohmsche und Stofftransportverluste bedingt sein; aus einem Lastwert folgt kein eindeutigerpH. Gasaktivitäten, Temperatur, Strom, Innenwiderstand und Elektrodenzustand fehlen. Unterschiedliche Elektrolytkompartimente wären ein anderes Modell und dürfen nicht stillschweigend eingesetzt werden.",
+      "workedReasoningEn": "AtpH14:EH2=−0.82824V,EO2=0.40076V;difference1.229V,as atpH0. BothpH shifts cancel for the common-electrolyte overall reaction.0.75V may include activation,ohmic and transport losses;one loaded value does not uniquely identifypH. Gas activities,temperature,current,resistance and electrode condition are missing. Different electrolyte compartments would be a different model,not an unstated substitution.",
+      "freshIndependentTransferDe": "Ein Kompartiment erhält nun eine andere Protonenaktivität. Erkläre, warum die frühere Kürzung nicht mehr ohne Berücksichtigung von Membran-/Junktionsbedingungen zulässig ist.",
+      "freshIndependentTransferEn": "One compartment now has a different proton activity. Explain why the previous cancellation needs membrane/junction conditions before it can be reused.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Gemeinsame Referenz und Differenz beider Halbzellen korrekt nutzen.",
+          "observableEn": "Correctly use one reference and the half-cell difference.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "pH14-Werte und unveränderte1,229V berechnen.",
+          "observableEn": "CalculatepH14 values and unchanged1.229V.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Reversible Aktivitätswirkung von belastungsbedingten Verlusten abgrenzen.",
+          "observableEn": "Distinguish reversible activity effects from load losses.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-13-a",
+      "goalId": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+      "title": "Strom- und Nutzwärmewirkungsgrad",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Eigene Messkarten: WandlerA erhält10MJ Brennstoff und liefert3MJStrom+5MJ grundsätzlich nutzbare Wärme; WandlerB erhält20MJ desselbenLHV-Brennstoffbezugs und liefert12MJStrom+5MJWärme. Tatsächlicher Wärmebedarf pro Durchgang2MJ. Verluste an Umgebung werden nicht zurückgewonnen. Messunsicherheit jeweils±0,1MJ an Strom/Wärme; keine Apparaturausführung.",
+      "materialsEn": "Own cards:A receives10MJ fuel and gives3MJ electricity+5MJ heat of potentially usable grade;B receives20MJ on the sameLHV basis and gives12MJ electricity+5MJ heat. Actual heat demand2MJ/cycle. Ambient losses are not recovered. Electricity/heat uncertainty±0.1MJ;no apparatus execution.",
+      "taskDe": "Berechne elektrische, nominelle Gesamt- und bedarfsbezogene Gesamtwirkungsgrade. Vergleiche auf gemeinsamer Eingangs- oder Servicebasis und erkläre, warum WandlerB nicht85%nutzbare Energie liefert, wenn Wärmebedarf fehlt.",
+      "taskEn": "Calculate electrical,nominal-total and demand-adjusted efficiencies. Compare on a common input/service basis and explain whyB does not deliver85%useful energy when heat demand is absent.",
+      "workedReasoningDe": "A:ηel30%, nominell80%, mit2MJBedarf50%. B:ηel60%, nominell85%, mit2MJBedarf70%. Bei gleichem20MJ-Eingang entsprichtA zwei Durchgängen und anderem Serviceumfang; dieser Vergleich muss ausdrücklich bezeichnet werden. Wirkungsgrade sind dimensionslose Anteile, nichtMJ-Werte; ungenutzte Wärme bleibt Energie, aber keine für diese Nachfrage genutzte Arbeit/Wärme. Unsicherheiten verhindern hier nicht den großen Stromunterschied, aber eine feinere Rangfolge braucht Fehlerrechnung und einheitliche Grenze.",
+      "workedReasoningEn": "A:electrical30%,nominal80%,with2MJ demand50%. B:electrical60%,nominal85%,with2MJ demand70%. Equal20MJ input means twoA cycles and a different service total,which must be declared. Efficiencies are dimensionless fractions,notMJ. Unused heat remains energy but is not useful service for this demand. Uncertainty does not erase the large electrical difference;fine rankings need error analysis/common boundaries.",
+      "freshIndependentTransferDe": "Der Wärmebedarf wächst auf5MJ und die Stromnachfrage sinkt. Bestimme neu, welche Kennzahl für diesen Dienst relevant ist, statt einen festen Sieger ausηel abzuleiten.",
+      "freshIndependentTransferEn": "Heat demand rises to5MJ while electricity demand falls. Reconsider the relevant metric instead of choosing a permanent winner fromηel.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Drei verschiedene Nutzengrenzen ausdrücklich definieren.",
+          "observableEn": "Explicitly define three useful-output boundaries.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "30/80/50% und60/85/70% korrekt berechnen.",
+          "observableEn": "Correctly calculate30/80/50% and60/85/70%.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Energieerhaltung, Nutzung und Vergleichsbasis auseinanderhalten.",
+          "observableEn": "Separate energy conservation,usefulness and comparison basis.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-13-b",
+      "goalId": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+      "title": "Vom Primärbrennstoff bis zum Rad",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Fiktive Daten pro100km: Elektrofahrzeug bezieht20kWh an der Steckdose und liefert16,4kWh Radarbeit; vorgelagerte Stromerzeugungη=40%. Vergleichsmotor verbraucht60kWh Brennstoff-LHV und liefert15kWh Radarbeit. Unterschiedliche Radarbeiten sind ausdrücklich sichtbar. Keine Herstellung/Erneuerbarenbehauptung, keine Wärmegutschrift.",
+      "materialsEn": "Fictional per100km:EV receives20kWh at socket and delivers16.4kWh wheel work;upstream generation efficiency40%. Combustion vehicle consumes60kWh fuelLHV and delivers15kWh wheel work. Different wheel outputs are explicit. No manufacturing/renewables claim,no heat credit.",
+      "taskDe": "Berechne Steckdose-Rad, Primärenergie-Rad und Motorwirkungsgrad. Normiere für einen Vergleich beide auf15kWh Radarbeit. Prüfe die Behauptung „82%ist direkt mit25%vergleichbar, also ist die ganze Kette82%“.",
+      "taskEn": "Calculate socket-to-wheel,primary-to-wheel and combustion efficiencies. Normalise both to15kWh wheel work. Evaluate“82%can directly be compared with25%,so the entire chain is82%”.",
+      "workedReasoningDe": "ηsocket=16,4/20=82%; Primärinput20/0,4=50kWh,ηgesamt32,8%. Verbrennung15/60=25%. Für15kWhRad benötigtEV15/0,82≈18,293kWhSteckdosenstrom und45,732kWhPrimärenergie; Motor60kWh.82%beschreibt eine engere Grenze als25%Brennstoff-Rad. Ein anderer Strombereitstellungsweg verändert Primärenergiedefinition und Bilanz; die Daten zeigen keine vollständige Ökobilanz.",
+      "workedReasoningEn": "Socket efficiency16.4/20=82%;primary input20/0.4=50kWh,total32.8%. Combustion15/60=25%. For15kWh wheels,EV needs15/0.82≈18.293kWh socket and45.732kWh primary;combustion60kWh.82%uses a narrower boundary than fuel-to-wheel25%. Another electricity route changes primary-energy conventions/accounting;this is not a completeLCA.",
+      "freshIndependentTransferDe": "Strom kommt nun direkt aus einerPV-Anlage. Sage, welche bekannte Teilwirkungsgradmessung bleibt und welche Primärenergie-Konvention neu deklariert werden muss.",
+      "freshIndependentTransferEn": "Electricity now comes directly fromPV. Identify the unchanged measured partial efficiency and the primary-energy convention requiring a new declaration.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Strom-/Brennstoff- und Radarbeitsgrenzen korrekt auswählen.",
+          "observableEn": "Select electricity/fuel/wheel-work boundaries correctly.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "82%,32,8%,25% und gemeinsame15kWh-Servicebasis herleiten.",
+          "observableEn": "Derive82%,32.8%,25% and common15kWh service.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Kein Umwelturteil allein aus einem Teilwirkungsgrad ableiten.",
+          "observableEn": "Do not infer an environmental verdict from one partial efficiency.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-14-a",
+      "goalId": "e20d205f-03a4-5f96-b456-9b20460605a2",
+      "title": "Ethanolbilanz mit explizitem biogenemKohlenstoff",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "EigenesLCA-Modell pro1MJ Brennstoffenergie: Bioethanol Anbau20gCO2e, Verarbeitung15, Transport5; biogene Aufnahme−71gCO2, Verbrennung+71gCO2. Vollständige Nachbildung im gleichen Zeitraum angenommen, keine Landnutzungsänderung. Fossiler Vergleich95gCO2e/MJ einschließlich Nutzung. Andere Umweltkategorien sind nicht erfasst.",
+      "materialsEn": "OwnLCA table per1MJ fuel energy:bioethanol cultivation20gCO2e,processing15,transport5;biogenic uptake−71gCO2 and combustion+71gCO2,assuming full regrowth in the same time horizon. Fossil comparator95gCO2e/MJ including use. Base scenario no land-use change. Equal energy/boundary;other impact categories excluded.",
+      "taskDe": "Erstelle und interpretiere die vereinfachte Bilanz. Ändere anschließend nur den Landnutzungsbeitrag auf+80gCO2e/MJ. Begründe, warum weder „Biokraftstoff immer null“noch ein allgemeiner Gegenbeweis folgt.",
+      "taskEn": "Build and interpret the simplified balance and assumption. Then change only land-use contribution to+80gCO2e/MJ. Explain why neither“biofuel is always zero”nor a universal rejection follows.",
+      "workedReasoningDe": "Basis20+15+5−71+71=40gCO2e/MJ, Ersparnis55g bzw57,9%gegen95g. Mit Landnutzungsbeitrag120g/MJ,25g mehr als fossil. Aufnahme und Verbrennung bleiben getrennte Flüsse; keine doppelte Gutschrift. Nachbildung, Zeithorizont und Landannahmen tragen das Ergebnis. Wasser, Biodiversität, Nahrungskonkurrenz und Motorwirkungsgrad fehlen. Gleiche Brennstoffenergie ist noch nicht gleiche Transportleistung.",
+      "workedReasoningEn": "Base20+15+5−71+71=40gCO2e/MJ;saving55g≈57.9%against95g. With land change120g/MJ,25g above fossil. Biogenic uptake/combustion remain separate flows,not deleted while adding extra credits. Regrowth/time horizon/land assumptions drive results;water,biodiversity,food competition and engine efficiency are absent. This is a fuel-energyLCA,not automatically equal transport service.",
+      "freshIndependentTransferDe": "Ein Motor braucht für gleiche Radarbeit20%mehr Bioethanolenergie. Passe die funktionale Einheit an und überprüfe den früheren Vergleich.",
+      "freshIndependentTransferEn": "A new engine needs20%more bioethanol energy for the same wheel work. Adjust the functional unit and identify the earlier incomplete comparison.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Einheit und positive/negative Kohlenstoffflüsse erklären.",
+          "observableEn": "Declare functional unit and positive/negative carbon flows.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "40/120gegen95g und57,9% nachvollziehbar berechnen.",
+          "observableEn": "Transparently balance40/120against95g and57.9%.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Annahmen und fehlende Umweltkategorien im Urteil berücksichtigen.",
+          "observableEn": "Use assumptions and omitted impact categories to limit conclusions.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-14-b",
+      "goalId": "e20d205f-03a4-5f96-b456-9b20460605a2",
+      "title": "Reststoffpfad und problematischeGutschrift",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Fiktiv pro1kWh gespeicherterH2-LHV: Sammlung0,10kgCO2e, Umwandlung0,20, Transport0,05; Nebenwärme0,5kWh. Studie1 zieht0,40kg pauschal ab; Studie2 belegt nur0,2kWh ersetzte Wärme mit0,25kgCO2e/kWh. Gleicher Zeitraum, Reststoff ohne Anbaulast. Keine Gutschrift für hypothetische Wärmenutzung.",
+      "materialsEn": "Fictional residue-to-H2 per1kWh stored hydrogenLHV:collection0.10kgCO2e,conversion0.20,transport0.05;co-produced heat0.5kWh. One study subtracts a flat0.40kg heat credit;another identifies only0.2kWh actually displaced heat at0.25kgCO2e/kWh. Same horizon/data;no cultivation allocation here,no credit for hypothetical heat use.",
+      "taskDe": "Rekonstruiere beide Ergebnisse und eine transparente zulässige Gutschrift. Bilanziere ohne Gutschrift und mit belegtem Ersatz. Was fehlt zum Vergleich von Brennstoffzellenstrom?",
+      "taskEn": "Reconstruct both results and justify a transparent credit. Build balances without credit and with evidenced displacement. What information is missing to compare delivered fuel-cell electricity?",
+      "workedReasoningDe": "Brutto0,35kgCO2e/kWhH2. Pauschaler Abzug ergibt−0,05kg, beweist aber keine negative Umweltlast. Belegter Ersatz0,2×0,25=0,05kg, daher0,30kg. Ungenutzte0,3kWh Wärme erhalten keine Gutschrift. Allokation und Ersatz müssen ohne Doppelzählung zusammenpassen. Für1kWhFC-Strom fehlen Zellwirkungsgrad und Speicher-/Transportverluste; H2-Energie ist eine andere Funktion als Strom.",
+      "workedReasoningEn": "Gross0.35kgCO2e/kWhH2. Flat subtraction gives−0.05kg but does not establish climate benefit. Evinced replacement0.2×0.25=0.05kg,thus0.30kg. Unused0.3kWh heat earns no credit. Allocation/displacement must fit a non-double-counted system. Comparing1kWhFC electricity needsFC efficiency and storage/transport losses;H2 energy and electricity are different services.",
+      "freshIndependentTransferDe": "Die Wärme ersetzt jetzt erneuerbare Wärme mit0,02kgCO2e/kWh. Welche Gutschrift ändert sich, welche Stoffflüsse bleiben?",
+      "freshIndependentTransferEn": "Heat now displaces renewable heat at0.02kgCO2e/kWh. Independently identify the credit to recalculate and the unchanged material flows.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Bruttoinventar und funktionale Einheit erhalten.",
+          "observableEn": "Retain gross inventory and functional unit.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "0,35/−0,05/0,30kg aus verschiedenen Gutschriften unterscheiden.",
+          "observableEn": "Distinguish0.35/−0.05/0.30kg from explicit credits.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Ungenutzte Wärme, Doppelzählung und Umwandlungsgrenzen erkennen.",
+          "observableEn": "Identify unused heat,double counting and conversion boundaries.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-17-a",
+      "goalId": "551d81a7-2308-540f-8323-df35c6871d62",
+      "title": "Waschgang statt Kilogramm Waschpulver",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Eigene Daten für eine gleich saubere5kg-Wäsche: Route A verwendet50g Waschmittel bei30°C und0,4kWh; Route B verwendet30g bei60°C und1,0kWh. Herstellung/Verpackung pro Waschgang: A0,05kgCO2e, B0,04kg; Strom0,30kgCO2e/kWh. Beide erfüllen denselben Fleckentfernungstest. Wasserverbrauch gleich; aquatische Toxizität und Lieferketten-Arbeitsbedingungen unbekannt. Verbraucherkarte nennt unterschiedliche Dosierhinweise für weiches/hartes Wasser.",
+      "materialsEn": "Own data for equally clean5kg laundry:A uses50g detergent at30°C and0.4kWh;B uses30g at60°C and1.0kWh. Manufacturing/packaging per wash:A0.05kgCO2e,B0.04kg;electricity0.30kgCO2e/kWh. Both pass the same stain test. Equal water use;unknown aquatic toxicity and supply-chain labour conditions. Consumer card gives different soft/hard-water doses.",
+      "taskDe": "Bewerte beide Wege ökologisch, ökonomisch und sozial anhand der gleichen Waschleistung. Berechne die erfassten Klimabeiträge und erkläre, warum weder die geringere Pulvermasse noch „biologisch abbaubar“ alle Kriterien entscheidet. Benenne eine faire Verbraucherentscheidung und die noch fehlenden Preis-/Sozialdaten.",
+      "taskEn": "Evaluate both routes ecologically,economically and socially for equal cleaning service. Calculate stated climate contributions and explain why neither lower powder mass nor“biodegradable”settles all criteria. Give a fair consumer choice and identify missing price/social data.",
+      "workedReasoningDe": "A:0,4×0,30+0,05=0,17kgCO2e; B:1,0×0,30+0,04=0,34kg. Weniger Produktmasse bedeutet hier nicht weniger erfasste Klimawirkung. Bei gleicher Leistung spricht dieser Ausschnitt fürA, aber vollständige Nachhaltigkeit benötigt Abbauprodukte, Toxizität, Wasser/Rohstoffe, Preis pro Waschgang und belegte Arbeitsbedingungen. Erneuerbarer Rohstoff kann Landnutzung verursachen; Abbaubarkeit ersetzt keine Wirkungskonzentration. Richtige Dosierung und volle Maschine können Ressourcen schonen, ohne ungegebene Produktsicherheit zu behaupten.",
+      "workedReasoningEn": "A:0.4×0.30+0.05=0.17kgCO2e;B:1.0×0.30+0.04=0.34kg. Lower product mass does not mean lower stated climate impact. Equal service favoursA for this slice,but full sustainability needs degradates,toxicity,water/resources,cost per wash and evidenced labour conditions. Renewable feedstock can require land;biodegradability does not replace exposure evidence. Correct dosing/full loads may save resources without asserting unspecified product safety.",
+      "freshIndependentTransferDe": "Im harten Wasser erreichtA die gleiche Sauberkeit erst nach einem zweiten vollständigen Waschgang. Passe die funktionale Einheit an und prüfe das frühere Urteil erneut.",
+      "freshIndependentTransferEn": "In hard waterA needs a second full cycle for equal cleanliness. Adjust the functional unit and reconsider the judgement.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Gleiche Waschleistung statt gleicher Produktmasse vergleichen.",
+          "observableEn": "Compare equal cleaning service,not equal product mass.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "0,17/0,34kgCO2e aus vollständigen angegebenen Beiträgen berechnen.",
+          "observableEn": "Calculate0.17/0.34kgCO2e from all stated contributions.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Ökologische, ökonomische und soziale Kriterien samt Nichtwissen trennen.",
+          "observableEn": "Separate environmental,economic and social criteria and missing evidence.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-17-b",
+      "goalId": "551d81a7-2308-540f-8323-df35c6871d62",
+      "title": "Nachwachsender Rohstoff mit unklarer Herkunft",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Fiktive Lieferkarten: X enthält Tensid aus petrochemischem Rohstoff, Verarbeitungswasser10L/kg, Preis0,20€ pro standardisiertem Waschgang, belegte schnelle Mineralisierung ohne problematische Zwischenprodukte im angegebenen Test. Y enthält Tensid aus Palmöl,8L/kg, Preis0,18€ pro gleich sauberem Waschgang; Anbaufläche/Landrechte/Abbauprodukte unbekannt. Waschstrom und Produktdosis gleich. Keine reale Marke oder Umweltkennzeichnung.",
+      "materialsEn": "Fictional supply cards:X uses petrochemical surfactant,processing water10L/kg,cost€0.20 per standard wash,and documented rapid mineralisation without concerning intermediates in the stated test. Y uses palm-derived surfactant,8L/kg,cost€0.18 per equally clean wash;land-use/land-rights/degradates unknown. Equal electricity/dose. No actual brand or ecolabel.",
+      "taskDe": "Formuliere eine Nachhaltigkeitsbewertung mit mindestens einem belegten Argument jeder Karte und drei gezielten offenen Nachweisen. Unterscheide Rohstoffherkunft, biologischen Abbau und soziale Herkunft. Entscheide unter einer ausdrücklich genannten Priorität, ohne Y allein wegen „pflanzlich“ vorzuziehen.",
+      "taskEn": "Give a sustainability judgement with one evidenced argument from each card and three targeted missing checks. Distinguish feedstock origin,biodegradation and social provenance. Decide under an explicit priority,not by treating plant-derived as automatically preferable.",
+      "workedReasoningDe": "Y ist im Modell günstiger und benötigt weniger Herstellungswasser jekg; bei gleicher Dosis kann dieser Vergleich genutzt werden. X besitzt den besseren belegten Abbaunachweis, ist aber fossil basiert. FürY fehlen Landumwandlung, Landrechte/Arbeitsbedingungen und aquatische Wirkung der Abbauprodukte; fürX fehlen weitere Vorkettenwirkungen. Unter Priorität des besser belegten Abbauverhaltens kann X vorläufig gewählt werden, unter KostenprioritätY mit offenem Risiko. Beides sind transparente Wertungen, keine vollständige Quellen-/Produktfreigabe. Für beide Produkte fehlen Daten zur aquatischen Wirkung und zur Exposition; der Abbaunachweis allein belegt keine aquatische Verträglichkeit.",
+      "workedReasoningEn": "Y is cheaper here and uses less production water perkg;equal dose makes that comparison relevant. X has better evidenced degradation but fossil origin. Y lacks land-change,land-rights/labour and degradate-toxicity evidence;X lacks other upstream impacts. Prioritising demonstrated aquatic fate may provisionally favourX;prioritising cost may favourY with explicit uncertainty. Both are transparent value choices,not full source/product approval. For both products, aquatic-effect and exposure data are missing; the degradation evidence alone does not establish aquatic safety.",
+      "freshIndependentTransferDe": "FürY wird schnelle Entfernung des Ausgangstensids gemeldet, aber keinCO2-/Zwischenproduktnachweis. Erkläre, welcher offene Nachweis dadurch gerade nicht geschlossen wird.",
+      "freshIndependentTransferEn": "Y now reports rapid parent-surfactant disappearance but noCO2/intermediate evidence. Explain which missing check remains unresolved.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Rohstoff-, Abbau- und Sozialaspekte kausal verschieden behandeln.",
+          "observableEn": "Treat feedstock,degradation and social impacts as distinct causal aspects.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Preis-/Wasservergleich an gleiche Dosis und Leistung binden.",
+          "observableEn": "Bind price/water comparison to equal dose and service.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Eine begründete Priorität und drei konkrete fehlende Nachweise offenlegen.",
+          "observableEn": "Declare a reasoned priority and three specific evidence gaps.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-20-a",
+      "goalId": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+      "title": "Atomökonomie am Syntheseschritt,PMI am Prozess",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Eigene Seifensynthese: C12H24O2+NaOH→C12H23O2Na+H2O; M200,40,222,18g/mol. Batch200gSäure+40gNaOH+600gProzesswasser+100gLösemittel;180g isoliertes Zielprodukt, Rest vollständig Abfall. Keine Rückgewinnung/Gutschrift, Katalysator0. Zwei getrennte Ränder: mit/ohne Prozesswasser. Kein Versuch.",
+      "materialsEn": "Own soap-component model:C12H24O2+NaOH→C12H23O2Na+H2O;molar masses200,40,222,18g/mol. Batch:200gacid+40gNaOH+600gprocess water+100gsolvent;isolated target180g,all other mass leaves as waste. No recovery/credits,zero catalyst mass. No reaction execution. Two separate boundaries:including/excluding process water.",
+      "taskDe": "Berechne Atomökonomie, Ausbeute, E-Faktor, PMI und begründe verschiedene Aussagen. PrüfePMI=E+1 für beide Ränder. Warum ist dies keine Atomökonomie für bloßes Zusammenmischen eines Waschpulvers?",
+      "taskEn": "Calculate atom economy,yield,E-factor andPMI and explain their distinct claims. CheckPMI=E+1for both boundaries. Explain why this is not atom economy for merely blending detergent powder.",
+      "workedReasoningDe": "Atomökonomie222/240=92,5%; theoretisch222gProdukt, Ausbeute180/222=81,08%. MitWasser Input940g, Abfall760g: PMI5,222, E4,222. Ohne600gProzesswasser Input340g, Abfall160g: PMI1,889, E0,889. Stöchiometrisches Reaktionswasser bleibt im zweiten Abfallrand. PMI=E+1 gilt hier wegen Input=Produkt+Abfall; Recycling verlangt andere transparente Ränder. Atomökonomie ist theoretisch reaktionsbezogen, Ausbeute tatsächlich, PMI/E prozessbezogen; Toxizität/Energie fehlen.",
+      "workedReasoningEn": "Atom economy222/(200+40)=92.5%;theoretical222g product,yield180/222=81.08%. Including water input940g,waste760g:PMI5.222,E4.222. Excluding600g process water input340g,waste160g:PMI1.889,E0.889. Stoichiometric reaction water remains in this second waste boundary. PMI=E+1because all inputs equal product+waste;different recovery boundaries must be stated. Atom economy is theoretical/reaction-specific,yield actual,PMI/E process-specific;none automatically measures toxicity/energy.",
+      "freshIndependentTransferDe": "Bei gleicher Reaktion wird das Lösemittelvolumen halbiert. Welche Kennzahl bleibt, welche Massendaten brauchen eine neue Bestimmung?",
+      "freshIndependentTransferEn": "A new process keeps the equation but halves solvent volume. Predict which metric stays and which mass data need updating before calculation.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Reaktion, Ausbeute und Prozessmassenrand unterscheiden.",
+          "observableEn": "Distinguish reaction,yield and process mass boundary.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "92,5%,81,08% und beidePMI/E-Paare einschließlich Reaktionswasser berechnen.",
+          "observableEn": "Calculate92.5%,81.08% andPMI/E for both boundaries including reaction water.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "BedingtesPMI=E+1 und fehlende Reaktionsatomökonomie beim Mischen erklären.",
+          "observableEn": "Justify conditionalPMI=E+1 and no atom economy for mixing.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    },
+    {
+      "id": "energy20-20-b",
+      "goalId": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+      "title": "Formulierungsverlust ist keine Reaktionsatomökonomie",
+      "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+      "imageRequired": false,
+      "materialsDe": "Eigene Formulierung:6kgTensid+2kgBuilder+2kgWasser werden ohne Reaktion gemischt. Input10kg, Abfüllverlust0,2kg, Produkt9,8kg. Keine Verpackung/Rückgewinnung. Mögliche vorgeschaltete Synthese: C13H26O2+NaOH→C12H23O2Na+CH3OH; M214,40,222,32g/mol. Gleichwertige reale Waschleistung beider Synthesewege ist nicht angenommen.",
+      "materialsEn": "Own formulation:6kgsurfactant+2kgbuilder+2kgwater gives10kg mixture without reaction. Filling loses0.2kg,final product9.8kg. No recovery/packaging. Possible upstream component synthesis:C13H26O2+NaOH→C12H23O2Na+CH3OH;molar masses214,40,222,32g/mol. No assumption that actual laundry service makes both routes equivalent.",
+      "taskDe": "BerechnePMI/E der Formulierung. Warum ist „100%Atomökonomie beim Mischen“ methodisch falsch? Berechne die Atomökonomie der Reaktion und vergleiche20a. Beweist ein größerer Wert stets geringere Umweltlast?",
+      "taskEn": "Calculate formulationPMI/E and explain why“100%atom economy in mixing”misapplies the metric. Calculate upstream reaction atom economy and compare20a. Assess whether higher atom economy always proves lower environmental burden.",
+      "workedReasoningDe": "PMI10/9,8=1,020408, E0,2/9,8=0,020408. Ohne Reaktion gibt es keine entsprechende Reaktionsatomökonomie;100%verwechselt Mischen und Synthese. Methylestersaponifikation:222/254=87,40%gegen92,5%bei Neutralisation. Das bewertet nur ideale Stöchiometrie, keine Lösemittel, Ausbeute, Energie oder Gefährlichkeit. Prozesse benötigen gleiche Produkt-/Nutzränder; PMI nahe1 beweist ebenfalls keine Nachhaltigkeit.",
+      "workedReasoningEn": "FormulationPMI=10/9.8=1.020408,E=0.2/9.8=0.020408. A non-reactive mixture has no corresponding reaction atom economy;calling it100%confuses mixing with reaction efficiency. Ester saponification:222/(214+40)=87.40%versus92.5%neutralisation. This ranks ideal stoichiometry only,excluding solvents,yield,energy/hazards. Synthesis/formulation comparisons need equal product/service boundaries;PMI near1 also does not prove sustainability.",
+      "freshIndependentTransferDe": "NurWasser geht verloren und die Produktkonzentration ändert sich. Warum sichern gleiche Masse undPMI=E+1 jetzt keine gleiche Nutzfunktion?",
+      "freshIndependentTransferEn": "Losses now contain only water and the final concentration changes. Explain why equal product mass no longer means equal function,andE+1does not prove equivalence.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Mischen und vorgelagerte Reaktion methodisch trennen.",
+          "observableEn": "Methodologically separate mixing and upstream reaction.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "PMI1,020408, E0,020408 und87,40% herleiten.",
+          "observableEn": "Correctly derivePMI1.020408/E0.020408 and87.40%.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Massenkennzahl gegen Funktion, Toxizität und Energiegrenze abgrenzen.",
+          "observableEn": "Distinguish mass metric from product function,toxicity and energy boundary.",
+          "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-energy20-four-corrections-native-targeted-a-20261015-v1-run",
+  "campaignId": "chemie-energy20-four-corrections-current422-native560-20261015-v1-a",
+  "roundId": "chemie-energy20-four-corrections-current422-native560-20261015-v1-first-pass-a",
+  "batchId": "chemie-energy20-four-corrections-current422-native560-20261015-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:165639c15ffe31dd21796c296185ed59daf92352d5bb7978694d6e1e8c842771",
+  "bundleFingerprint": "sha256:ec0ed78ee7098a1c6fe1de2160510d1471f55ce0abb6c89c1b08343562b0db01",
+  "bookDigest": "sha256:59d61ce81d67126391175287d1a5fef68f4b13d45d186cc1b4eff21a38daeb33",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex native agent; exact serving model revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:a5a1aa431115d5f81c9cd01e85d93dcb5ae8917bee56af9ab96bb07e5154e170",
+  "independenceGroupId": "chemie-energy20-four-corrections-current422-native560-20261015-v1-independent-a",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "ecce0306-13dc-5563-a097-afe69805a8d6",
+    "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+    "e64a79df-7f21-5651-9b5d-e7d17580569e",
+    "a76ab487-4663-5005-8454-cb3196f3773b",
+    "7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3",
+    "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+    "1051c091-a044-5a09-8946-60a4b5e5d185",
+    "ceda84ff-f48a-5e16-84fd-ad681de7e460",
+    "4d7554d4-3f89-5c64-8a67-4b73b55b4442",
+    "0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+    "a78aacf9-92ea-5627-8776-a595111f754c",
+    "a3386a86-f1ee-55b8-bcd5-03bfb1f9d987",
+    "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+    "e20d205f-03a4-5f96-b456-9b20460605a2",
+    "7dc80ee2-64e3-50c1-8aaa-0fef0ed0919d",
+    "1873eb42-1c85-548e-918c-4f4f73ed784f",
+    "551d81a7-2308-540f-8323-df35c6871d62",
+    "c21d430b-424d-5b13-adf6-999f2490d2dc",
+    "0773a104-aaeb-5e96-a615-2a2bec3eb096",
+    "ebfa2c18-0599-5282-bf7a-80c14d86331e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:7b984edd0c90bbd952edbb49cf4a0f2756efa29f423e59c1d64b8ad68c98dd32"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:c0723c7d092db7990c5f2418ea5b2e4c610a29786af3803c712f62fb4f9e8cd7"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:1ab8d9747df32faffddef54b57bdf741abbed3b14d97ece7fe42e63e0588dd6a"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:87adf228e4bc8b9b2fb80707f72162d3bca634366f561d80c884624df3c7897c"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:20b95ace91050869c315f73b4c26d9b371073a7bdc349c0172811c071d535cb2"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:b7a060ca3a2898f9d678f3f1595e2eeb1e9d2ddb491d90a3287b1b0158922f81"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:3d6e07faac3357368ad6831ae330fd52895197b73f0678b2ce5e8de91606a82d"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:4362c7ed319316acedc9239e120f5b55c23e5d67b0a16b77d1c8347642e2e08f"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:165639c15ffe31dd21796c296185ed59daf92352d5bb7978694d6e1e8c842771"
+    }
+  ],
+  "startedAt": "2026-10-15T11:44:31.903735+00:00",
+  "completedAt": "2026-10-15T11:48:02.285459+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:ded95fe0d2ba1df049945237c7d54ad59f425be719dbb8129ba7395bc6bb17df",
+  "toolchainVersion": "skillpilot-native-description-D2-targeted-resumption-v1"
+}

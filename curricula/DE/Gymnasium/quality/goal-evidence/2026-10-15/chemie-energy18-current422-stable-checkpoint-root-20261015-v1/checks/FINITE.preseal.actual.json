@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual finite preseal verification; final own-seal verification is reproduced by the default command",
+  "startedAtUTC": "2026-10-15T13:32:28.626388+00:00",
+  "finishedAtUTC": "2026-10-15T13:32:35.842955+00:00",
+  "command": [
+    "python3",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy18-current422-stable-checkpoint-root-20261015-v1/verify_checkpoint.py",
+    "--preseal"
+  ],
+  "exitCode": 0,
+  "stderr": "",
+  "result": {
+    "packages": 22,
+    "payloadFiles": 1011,
+    "physicalEntries": 1038,
+    "JSON": 595,
+    "JSONLfiles": 45,
+    "JSONLrows": 1414,
+    "PythonAST": 44,
+    "symlinks": 5,
+    "directorySymlinks": 5,
+    "directoryAliasWholeFileBindings": 27,
+    "allFiniteBytesAndEntrySetsExact": true,
+    "strict": 338,
+    "denominator": 422,
+    "percentage": "80.1%",
+    "remaining": 84,
+    "old321Retained": 321,
+    "old321Lost": 0,
+    "strictGainFromBoundEvidence": 17,
+    "requiredChecksPassed": 6,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "protectedActiveFilesExact": 697,
+    "protectedMachineM7Baseline": {
+      "mathM7": "807/807",
+      "physicsM7": "478/478",
+      "biologyM7": "397/397"
+    },
+    "activeChemistry": {
+      "strict": 231,
+      "denominator": 402,
+      "maturity": "M6"
+    },
+    "previousCIHead": "adb8b46dbd40eb2ab5c34759aec94f5d4b6e91f8",
+    "previousCIChecksPassed": 14,
+    "previousCIMainJobsPassed": 8,
+    "actualRepositorySymlinkErrors": [],
+    "stockSymlinkCheckerUnmodified": true,
+    "ownJsonFilesCheckedByUnmodifiedProductionValidateFile": 5,
+    "ownSealVerified": false,
+    "newScientificVotes": 0,
+    "fullBuildExecuted": false,
+    "wholeRepositorySchemaGateReservedForRoot": true,
+    "activeIntegration": false,
+    "humanApproval": false,
+    "humanTrial": false
+  },
+  "finalVerificationCommand": [
+    "python3",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy18-current422-stable-checkpoint-root-20261015-v1/verify_checkpoint.py"
+  ],
+  "newScientificVotes": 0,
+  "newCentralRuns": 0,
+  "fullBuildExecuted": false
+}

@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "role": "independent technical input integrity and normal portability check",
+  "startedAtUTC": "2026-10-15T11:53:01.946896+00:00",
+  "completedAtUTC": "2026-10-15T11:53:08.014676+00:00",
+  "scope": "Byte hashes, complete JSON object equality, canonical/public/backend image byte equality, and unmodified curriculum_symlink_errors only.",
+  "technicalChecksPassed": true,
+  "physicalSelector": {
+    "actual": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-corrections-current422-native-successor-preparation-technical-20261015-v1/INPUTS.final-corrected-native20.physical-selector.json",
+      "sha256": "sha256:3fc56369f7afc7160f06b0eacad4d441b56130ba82f86ae91d3b63c707215fde",
+      "bytes": 16881
+    },
+    "expectedSha256": "sha256:3fc56369f7afc7160f06b0eacad4d441b56130ba82f86ae91d3b63c707215fde",
+    "matchesExpectedSha256": true
+  },
+  "finiteSeal": {
+    "actual": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-corrections-current422-native-successor-preparation-technical-20261015-v1/FILES.finite-native-successor.seal.json",
+      "sha256": "sha256:9eba0174dcefc997bc020029428bc25efda11f6e15083e696d006cae3e8a0c5f",
+      "bytes": 20485
+    },
+    "declaredFileEntries": 56,
+    "checkedFileEntries": 56,
+    "declaredPayloadBytes": 7912240,
+    "actualPayloadBytes": 7912240,
+    "allFileEntriesMatchDeclaredHashAndBytes": true,
+    "mismatches": [],
+    "selectorBindings": [
+      {
+        "binding": "neutralSelector",
+        "actual": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-corrections-current422-native-successor-preparation-technical-20261015-v1/NEUTRAL.final-four-corrections-native20-successor.json",
+          "sha256": "sha256:c7944c1729dde0b94da120311471951359d52d1ae5d72e4dca22aa5f27479909",
+          "bytes": 7438
+        },
+        "matchesDeclaredHashAndBytes": true
+      },
+      {
+        "binding": "physicalSelector",
+        "actual": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-corrections-current422-native-successor-preparation-technical-20261015-v1/INPUTS.final-corrected-native20.physical-selector.json",
+          "sha256": "sha256:3fc56369f7afc7160f06b0eacad4d441b56130ba82f86ae91d3b63c707215fde",
+          "bytes": 16881
+        },
+        "matchesDeclaredHashAndBytes": true
+      }
+    ]
+  },
+  "sourceBindings": [
+    {
+      "binding": "canonical560",
+      "actual": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-corrections-current422-native-successor-preparation-technical-20261015-v1/candidate/canonical560.current422.four-corrections.exact-author.json",
+        "sha256": "sha256:a1521fdcd4a9ae01fe3961a39ad4d576fe9cceed9565ca085cf643f29c61ba26",
+        "bytes": 1888002
+      },
+      "matchesDeclaredHashAndBytes": true
+    },
+    {
+      "binding": "historicalQA438",
+      "actual": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-current422-native-preparation-technical-20261015-v1/candidate/QA438.exact-author-row-transport.json",
+        "sha256": "sha256:7a88cb9626f71bbe24a205ad0c2cf5921507f82d013432f4af082acbebb12b3b",
+        "bytes": 1132103
+      },
+      "matchesDeclaredHashAndBytes": true
+    },
+    {
+      "binding": "V2Context",
+      "actual": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-corrections-current422-native-successor-preparation-technical-20261015-v1/V2.two-description-image-context-freshness.OPEN.json",
+        "sha256": "sha256:88eeab8df4e151cda48a59e6f3665da82a97ecd7e6200390f9ea92d538900412",
+        "bytes": 17724
+      },
+      "matchesDeclaredHashAndBytes": true
+    },
+    {
+      "binding": "V2DeclaredQA438Source",
+      "actual": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-current422-native-preparation-technical-20261015-v1/candidate/QA438.exact-author-row-transport.json",
+        "sha256": "sha256:7a88cb9626f71bbe24a205ad0c2cf5921507f82d013432f4af082acbebb12b3b",
+        "bytes": 1132103
+      },
+      "matchesDeclaredHashAndBytes": true
+    }
+  ],
+  "completeRecordComparisons": {
+    "comparisonMethod": "Full parsed JSON object equality, with no selected-field omissions. Object digests use UTF-8 JSON with sorted keys, ensure_ascii=False and compact separators.",
+    "selectedCanonicalGoalCount": 560,
+    "selectedHistoricalQARowCount": 438,
+    "targetCount": 2,
+    "records": [
+      {
+        "goalId": "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+        "wholeHistoricalQARowEqualsEmbeddedWholePriorQARecord": true,
+        "historicalQARowObjectSha256": "sha256:4e10908534e6564a636fe463373b609c2d720db16a5277a4b5f417231b430f79",
+        "embeddedWholePriorQARecordObjectSha256": "sha256:4e10908534e6564a636fe463373b609c2d720db16a5277a4b5f417231b430f79",
+        "wholeSelectedCanonicalGoalEqualsEmbeddedWholeCurrentGoal": true,
+        "selectedCanonicalGoalObjectSha256": "sha256:6a73497da9df2202f5c3ca4616e7295607f0aac583b7e25955c2a6e03d5316f2",
+        "embeddedWholeCurrentGoalObjectSha256": "sha256:6a73497da9df2202f5c3ca4616e7295607f0aac583b7e25955c2a6e03d5316f2"
+      },
+      {
+        "goalId": "a3386a86-f1ee-55b8-bcd5-03bfb1f9d987",
+        "wholeHistoricalQARowEqualsEmbeddedWholePriorQARecord": true,
+        "historicalQARowObjectSha256": "sha256:708ecab14cf585eaaa04fc165f4eb6fbee6e32b9e91589e79211f94fb8210b96",
+        "embeddedWholePriorQARecordObjectSha256": "sha256:708ecab14cf585eaaa04fc165f4eb6fbee6e32b9e91589e79211f94fb8210b96",
+        "wholeSelectedCanonicalGoalEqualsEmbeddedWholeCurrentGoal": true,
+        "selectedCanonicalGoalObjectSha256": "sha256:573c45f2f34abf928dcdea01a05661223ef984d65ee59959eefbbcb125bf0cb9",
+        "embeddedWholeCurrentGoalObjectSha256": "sha256:573c45f2f34abf928dcdea01a05661223ef984d65ee59959eefbbcb125bf0cb9"
+      }
+    ]
+  },
+  "actualImageByteComparisons": [
+    {
+      "goalId": "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+      "files": [
+        {
+          "role": "canonical",
+          "path": "curricula/DE/Gymnasium/visualizations/chemie/16b24dc5-0e48-5e3b-8307-01289db8d1a9/16b24dc5-0e48-5e3b-8307-01289db8d1a9.jpg",
+          "sha256": "sha256:64bd6cb393996c67b7b62cce49ce3c0aefa4f8c5bc43f7f1aafefc00bd4e9f33",
+          "bytes": 2376452
+        },
+        {
+          "role": "public",
+          "path": "app/public/assets/goal-visualizations/chemie/16b24dc5-0e48-5e3b-8307-01289db8d1a9/16b24dc5-0e48-5e3b-8307-01289db8d1a9.jpg",
+          "sha256": "sha256:64bd6cb393996c67b7b62cce49ce3c0aefa4f8c5bc43f7f1aafefc00bd4e9f33",
+          "bytes": 2376452
+        },
+        {
+          "role": "backend",
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/chemie/16b24dc5-0e48-5e3b-8307-01289db8d1a9/16b24dc5-0e48-5e3b-8307-01289db8d1a9.jpg",
+          "sha256": "sha256:64bd6cb393996c67b7b62cce49ce3c0aefa4f8c5bc43f7f1aafefc00bd4e9f33",
+          "bytes": 2376452
+        }
+      ],
+      "canonicalPublicBackendByteExact": true,
+      "allMatchHistoricalQAAssetSha256": true,
+      "historicalQAAssetSha256": "sha256:64bd6cb393996c67b7b62cce49ce3c0aefa4f8c5bc43f7f1aafefc00bd4e9f33",
+      "allJpegSOIAndEOI": true
+    },
+    {
+      "goalId": "a3386a86-f1ee-55b8-bcd5-03bfb1f9d987",
+      "files": [
+        {
+          "role": "canonical",
+          "path": "curricula/DE/Gymnasium/visualizations/chemie/a3386a86-f1ee-55b8-bcd5-03bfb1f9d987/a3386a86-f1ee-55b8-bcd5-03bfb1f9d987.jpg",
+          "sha256": "sha256:655973a52d9f7700d82e553aaa7f46c467ad870448628aa05cd39344f220dd44",
+          "bytes": 2068362
+        },
+        {
+          "role": "public",
+          "path": "app/public/assets/goal-visualizations/chemie/a3386a86-f1ee-55b8-bcd5-03bfb1f9d987/a3386a86-f1ee-55b8-bcd5-03bfb1f9d987.jpg",
+          "sha256": "sha256:655973a52d9f7700d82e553aaa7f46c467ad870448628aa05cd39344f220dd44",
+          "bytes": 2068362
+        },
+        {
+          "role": "backend",
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/chemie/a3386a86-f1ee-55b8-bcd5-03bfb1f9d987/a3386a86-f1ee-55b8-bcd5-03bfb1f9d987.jpg",
+          "sha256": "sha256:655973a52d9f7700d82e553aaa7f46c467ad870448628aa05cd39344f220dd44",
+          "bytes": 2068362
+        }
+      ],
+      "canonicalPublicBackendByteExact": true,
+      "allMatchHistoricalQAAssetSha256": true,
+      "historicalQAAssetSha256": "sha256:655973a52d9f7700d82e553aaa7f46c467ad870448628aa05cd39344f220dd44",
+      "allJpegSOIAndEOI": true
+    }
+  ],
+  "normalCurriculumSymlinkCheck": {
+    "module": {
+      "path": "scripts/validate_schemas.py",
+      "sha256": "sha256:e92ed9b240ec601c6e326d57cd79659414ccadfea88cabe0f63f20bf98246664",
+      "bytes": 26333
+    },
+    "function": "curriculum_symlink_errors",
+    "sourceStartLine": 16,
+    "functionSourceSha256": "sha256:3d7ebb7f5fa519b644d6b342cc767c1a6701591f180509e984028081ba63b14e",
+    "call": "module.curriculum_symlink_errors(Path(\"/home/enpasos/projects/skillpilot\"))",
+    "functionUnmodified": true,
+    "monkeyPatchingUsed": false,
+    "errors": [],
+    "passed": true
+  },
+  "execution": {
+    "pythonExecutable": "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+    "pythonVersion": "3.12.9",
+    "bytecodeWritingDisabled": true,
+    "verificationCode": "Inline Python command; hashlib.sha256, json.loads, full object equality, direct bytes equality, importlib.util and inspect; no persistent verification script.",
+    "imports": [
+      "pathlib",
+      "datetime",
+      "hashlib",
+      "importlib.util",
+      "inspect",
+      "json",
+      "sys",
+      "scripts/validate_schemas.py"
+    ],
+    "normalModuleDependencies": [
+      "copy",
+      "bisect",
+      "json",
+      "jsonschema",
+      "os",
+      "pathlib",
+      "subprocess",
+      "sys"
+    ]
+  },
+  "boundaries": {
+    "fullSchemaValidationRun": false,
+    "visualOrScientificReviewPerformed": false,
+    "reviewJudgmentsWritten": false,
+    "activeCurriculumOrGitChanged": false,
+    "onlyOutputFile": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-two-clarified-description-image-contexts-current422-fresh-independent-V-20261015-v1/checks/INPUT-integrity-and-normal-portability.actual.json"
+  }
+}
