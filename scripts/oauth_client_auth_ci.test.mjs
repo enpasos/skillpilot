@@ -62,6 +62,34 @@ test('OAuth security is repeatable without production credentials or paid host c
     'Scheduled local CI must not demand unperformed real-host acceptance or deploy a profile')
 })
 
+test('OAuth concurrency separates trigger events while superseding older runs for the same event and ref', () => {
+  const concurrency = workflow.match(/^concurrency:\n((?: {2}[^\n]*\n)+)/mu)?.[1]
+  assert.ok(concurrency, 'Missing workflow concurrency policy')
+  assert.match(concurrency, /^ {2}cancel-in-progress: true$/mu)
+  const group = concurrency.match(/^ {2}group: (.+)$/mu)?.[1]
+  assert.ok(group, 'Missing workflow concurrency group')
+  const groupFor = (eventName, ref, sha) => {
+    const context = { event_name: eventName, ref, sha }
+    const resolved = group.replace(/\$\{\{\s*github\.(\w+)\s*\}\}/gu, (_, key) => {
+      assert.ok(Object.hasOwn(context, key), `Unsupported concurrency context github.${key}`)
+      return context[key]
+    })
+    assert.doesNotMatch(resolved, /\$\{\{/u, 'Unsupported concurrency expression')
+    return resolved
+  }
+  const ref = 'refs/heads/main'
+  const sha = 'a'.repeat(40)
+  const events = ['push', 'schedule', 'workflow_dispatch', 'pull_request']
+  assert.equal(new Set(events.map(event => groupFor(event, ref, sha))).size, events.length,
+    'Different trigger events must not cancel each other on the same ref and revision')
+  for (const event of events) {
+    assert.equal(groupFor(event, ref, sha), groupFor(event, ref, 'b'.repeat(40)),
+      'A newer revision must supersede older runs for the same event and ref')
+    assert.notEqual(groupFor(event, ref, sha), groupFor(event, 'refs/heads/other', sha),
+      'Runs for different refs must remain independent')
+  }
+})
+
 test('OAuth security covers both providers and requires the real PostgreSQL lane', () => {
   for (const suite of [
     'com.skillpilot.backend.openai.de.oauth.*Test',
