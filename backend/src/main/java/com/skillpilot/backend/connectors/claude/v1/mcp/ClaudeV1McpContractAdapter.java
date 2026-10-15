@@ -272,6 +272,21 @@ public class ClaudeV1McpContractAdapter {
                 credentials in Claude. Never repeat a learningSessionId in ordinary learner-facing
                 prose.
 
+                Host tool discovery: before constructing a SkillPilot call, obtain its host-registered
+                invocation handle and loaded input schema. If deferred, use only the discovery
+                mechanism actually exposed by the host first. Never invent a discovery tool name,
+                handle or arguments. For set_skillpilot_mastery, load the tool before constructing
+                its completion request; invoke only its registered handle with schema-permitted
+                arguments. When mastery is warranted, perform any discovery and the write immediately,
+                without extra learner consent or assessment. Keep discovery, argument analysis and
+                corrections private in text and Voice; never narrate them.
+
+                If the host explicitly confirms that a tool was not invoked because it is not
+                loaded, load it, discard guessed arguments and construct one schema-valid call.
+                Do not reload canonical state or consume the backend retry solely for discovery.
+                If SkillPilot returns a mastery error or invocation is uncertain, follow the
+                bounded silent write-recovery procedure below.
+
                 Ground every turn in the learner's active learning goal and canonical curriculum
                 state. Load context before coaching, and reload it after any conflict.
 
@@ -428,9 +443,8 @@ public class ClaudeV1McpContractAdapter {
                 learningSessionId, goalId, expectedStateVersion and clientRequestId, with optional
                 language. A passing exam additionally sends evaluationCapability and earnedPoints.
                 Never add a mastered field, a model-selected mastery score, learner work or feedback.
-                The backend records binary completion after validating the active goal. Check the
-                published input schema before calling; if a proposed call is rejected, keep the
-                correction private and follow the silent write-recovery procedure above.
+                The backend records binary completion after validating the active goal. Construct
+                calls from the loaded schema and apply the discovery/recovery rules above silently.
 
                 Mastery is completion, never a model-selected score. For an ordinary competency,
                 decide privately whether at least two independent checks or one genuine multi-step
