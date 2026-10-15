@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "role": "bounded author source verification; not complete source/course review",
+  "sources": [
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HB/GyO_Chemie_2022.pdf",
+        "sha256": "sha256:3d803861caabe84e3db0a1b2fcd3fc09672f373fbfead6949927d463483a59c7",
+        "bytes": 421584
+      },
+      "rightsholder": "official third-party curriculum; no relicensing",
+      "shortOperatorExcerpt": "Isolierung von Wirkstoffen aus Naturstoffen.",
+      "ownScopedParaphrase": "Physical page36 supplies isolation and analysis/synthesis/model interplay duties; page37 places 4.3 compulsorily in LK. This does not establish entire course acquisition.",
+      "directlyReextractedPhysicalPages": [
+        {
+          "physicalPage": 36,
+          "extractionCommand": [
+            "pdftotext",
+            "-f",
+            "36",
+            "-l",
+            "36",
+            "-layout",
+            "curricula/DE/Gymnasium/input/HB/GyO_Chemie_2022.pdf",
+            "-"
+          ],
+          "fullPageExtractSHA256": "sha256:5f9038ec8c0a1b29b9481bdfdb5aa580bdbfa3ca1a3b09a0e436dba8b1276358",
+          "fullPageTextCommittedHere": false
+        },
+        {
+          "physicalPage": 37,
+          "extractionCommand": [
+            "pdftotext",
+            "-f",
+            "37",
+            "-l",
+            "37",
+            "-layout",
+            "curricula/DE/Gymnasium/input/HB/GyO_Chemie_2022.pdf",
+            "-"
+          ],
+          "fullPageExtractSHA256": "sha256:47b9a374cdc202ab64e1e70cd3285eb2290e3c9970dec215c0404f9806d8d974",
+          "fullPageTextCommittedHere": false
+        }
+      ]
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf",
+        "sha256": "sha256:3ae66c6c2db6371aa24153484f78832f1dfc2097deac8b8dfbffeb32bed28c62",
+        "bytes": 2155781
+      },
+      "rightsholder": "official third-party curriculum; no relicensing",
+      "shortOperatorExcerpt": "anwendungsorientierte Forschung und Entwicklung am Beispiel einer weiteren ausgewählten Stoffgruppe",
+      "ownScopedParaphrase": "Physical page42, printed40, section3.4.8(4), applies to Leistungsfach; the selected dyes route is one allowed family, not a cumulative requirement for all example families.",
+      "directlyReextractedPhysicalPages": [
+        {
+          "physicalPage": 42,
+          "extractionCommand": [
+            "pdftotext",
+            "-f",
+            "42",
+            "-l",
+            "42",
+            "-layout",
+            "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf",
+            "-"
+          ],
+          "fullPageExtractSHA256": "sha256:5b922d0d549bce923fe0930f369e8c46c3012d22585e44d44c5988ebe097a366",
+          "fullPageTextCommittedHere": false
+        }
+      ]
+    }
+  ]
+}

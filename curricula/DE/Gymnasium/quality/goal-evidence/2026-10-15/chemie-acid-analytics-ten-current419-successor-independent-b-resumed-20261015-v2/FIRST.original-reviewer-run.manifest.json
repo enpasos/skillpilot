@@ -1,0 +1,71 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-acid10-successor-fresh-b-resumed-20261015-v2",
+  "campaignId": "chemie-acid-analytics-ten-current419-native-20261015-v1-b",
+  "roundId": "chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-b",
+  "batchId": "chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:af9f4e6a1080407d44c96117301d66301e9e80ae5d37fde85071c53be1000e44",
+  "bundleFingerprint": "sha256:57e1875ccb3811ffa7fd8816a3e96c7041bb0c1a717d1b975b7c51fbeb6d61c9",
+  "bookDigest": "sha256:304c442b6df442e52f3a62ee11441c28cf37b5f34d1fa6514da72246a77d3839",
+  "provider": "OpenAI",
+  "model": "GPT-6 (family exposed; exact runtime identifier unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemie-acid10-successor-live-independent-b",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:3b3ae56990832d9829b80640fe8e1403026117935b59b98245dd63a06187eb9f",
+  "independenceGroupId": "chemie-acid-analytics-ten-current419-native-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+    "ba621c67-b750-5e45-ab37-a51ea45e3ccf",
+    "dc0470f1-0676-5949-a5cc-02783d478406",
+    "25729c34-33d5-553a-a723-046113a7da47",
+    "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+    "a449e874-6fec-502b-9667-6f078adc4d64",
+    "9fef5c29-62bc-5ada-b96b-6885bcb049cb",
+    "29742d91-732f-5da5-bc46-e963885f9a4a",
+    "5a58126e-0c51-5808-be9e-8faa9dae0c32",
+    "13877340-1370-5278-bb80-31cf382dd6f5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:bf593d2a850a206d5eaa9507bc83ef32953d60af525ac16bb3b01c80d7e860cc"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:7292d35751c234f09cdcd052650f644067a1a9554a630055a8ecc46e7a560add"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:67bc2e7700cbb5c8ecfaa8bb3b94a6eed809b326ee6fc6e18682db99a8c8f67b"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:304c442b6df442e52f3a62ee11441c28cf37b5f34d1fa6514da72246a77d3839"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:af9f4e6a1080407d44c96117301d66301e9e80ae5d37fde85071c53be1000e44"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:4ac0879dd62c13034ae700fd2792a9d48405e0a93ebb8053ab66c703b154c9d8"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-10-15T07:08:30.193994+00:00",
+  "completedAt": "2026-10-15T07:15:24.669803+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:89e6bd731cadc4455db4d0b284a558399c2cd121dfd5feee672892480270a922",
+  "toolchainVersion": "codex-interactive-original-review-v1"
+}

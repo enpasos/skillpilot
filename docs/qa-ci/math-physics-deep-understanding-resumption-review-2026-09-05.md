@@ -1,5 +1,19 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Aktuelle Chemie-Fortsetzung – 15. Oktober 2026
+
+Der [stabile Analytik-Zwischenstand](chemie315-acid10-checkpoint-2026-10-15.md)
+bestätigt im inaktiven zentralen Kandidaten **315/419 (75,2 %)**: drei neue
+fachliche Abschlüsse, alle bisherigen 312 erhalten, null reine
+Bindungswiederherstellungen, sechs Pflichtchecks PASS und 104 Ziele offen.
+Aktiv bleiben **231/402, M6**. Die offenen ganzen Quellen-, Kurs- und
+Erwerbspflichten verhindern eine vorzeitige M7-Ausweisung. Mathematik,
+Physik und Biologie bleiben geschützt M7. Die unabhängigen Quell-/Kontext-
+Nachprüfungen und das begonnene Laborpaket laufen getrennt weiter.
+Der Vorgänger `1422a742` hat GitHub-CI vollständig bestanden; der neue
+Chemie-Snapshot benötigt seinen eigenen erfolgreichen Lauf.
+Die nachstehenden älteren Zahlen sind historische Zwischenstände.
+
 ## Chemie: Folgecheckpoint der Naturstoff-Kontexte – 14. Oktober 2026
 
 Der [neue Arbeitscheckpoint](chemie-naturstoffe-context-checkpoint-2026-10-14.md)

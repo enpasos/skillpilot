@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-15T06:52:51.717Z",
+  "role": "bounded author schema, DAG, stock target projection and raw profile semantics check",
+  "inMemoryCandidateOnly": true,
+  "fullGoalCount": 554,
+  "stableNewGoalIds": [
+    "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+    "93a7ce4d-1c90-568c-9368-cac423011ef9",
+    "d815960a-21ab-5a42-8b23-ecd20d03db19"
+  ],
+  "changedWholeGoalIdsFromPrior422": [
+    "93a7ce4d-1c90-568c-9368-cac423011ef9"
+  ],
+  "viewsEdited": false,
+  "targetReports": [
+    {
+      "view": "de-hb-lk",
+      "viewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-four-source-duties-explicit-compulsory-domain-carriers-author-20261014-v3/candidate/views/de-hb-lk.view.author.json",
+      "viewSHA256": "sha256:ec6877043f51f1cfddcb6d2741b03d8d583dbcc5537dad1a6255f8464ef5f62b",
+      "targetCountBeforeAndAfterUnchanged": 185,
+      "newDomainTargets": [
+        "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+        "93a7ce4d-1c90-568c-9368-cac423011ef9"
+      ],
+      "goalRows": [
+        {
+          "goalId": "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+          "directRequires": [
+            "42a84bca-d27e-581f-a43a-eee424f0504d",
+            "5a709938-e0f5-42b7-94f0-cfded08963a2"
+          ],
+          "allDirectRequiresAreAtomicTargets": true,
+          "rawRequiresClosure": [
+            "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "42a84bca-d27e-581f-a43a-eee424f0504d",
+            "5a709938-e0f5-42b7-94f0-cfded08963a2",
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+            "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+          ],
+          "missingFromAtomicTargetSet": [
+            {
+              "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+              "title": "Arbeitsweisen der Chemie anwenden",
+              "kind": "cluster",
+              "authoredTargetRoleIncludesWholeId": true
+            },
+            {
+              "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+              "title": "Stoffe und Eigenschaften beschreiben",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            }
+          ],
+          "requiresClosureWithClusterContents": [
+            "13d4f336-ab16-54a7-9479-c920b458f385",
+            "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "416dfd33-8b43-5c49-903c-9847b95e4208",
+            "42a84bca-d27e-581f-a43a-eee424f0504d",
+            "5a709938-e0f5-42b7-94f0-cfded08963a2",
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+            "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+          ],
+          "missingContainedOrTransitiveAtomicTargets": [
+            {
+              "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+              "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden"
+            },
+            {
+              "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+              "title": "Grundlegende Laborarbeitsweisen anwenden"
+            },
+            {
+              "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+              "title": "Stoffe und Eigenschaften beschreiben"
+            }
+          ],
+          "clusterChildrenAreSeparateWholePerformanceGoals": true,
+          "sourceCourseAndAcquisitionStatus": "HOLD; target membership does not prove acquisition",
+          "acquisitionApproved": false
+        },
+        {
+          "goalId": "93a7ce4d-1c90-568c-9368-cac423011ef9",
+          "directRequires": [
+            "42a84bca-d27e-581f-a43a-eee424f0504d",
+            "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+          ],
+          "allDirectRequiresAreAtomicTargets": true,
+          "rawRequiresClosure": [
+            "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "326d45bf-9f77-57d5-a054-93e76b034dd5",
+            "42a84bca-d27e-581f-a43a-eee424f0504d",
+            "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+            "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+          ],
+          "missingFromAtomicTargetSet": [
+            {
+              "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+              "title": "Arbeitsweisen der Chemie anwenden",
+              "kind": "cluster",
+              "authoredTargetRoleIncludesWholeId": true
+            },
+            {
+              "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+              "title": "Aggregatzustände und Übergänge deuten",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+              "title": "Stoffe und Eigenschaften beschreiben",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            }
+          ],
+          "requiresClosureWithClusterContents": [
+            "13d4f336-ab16-54a7-9479-c920b458f385",
+            "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "326d45bf-9f77-57d5-a054-93e76b034dd5",
+            "416dfd33-8b43-5c49-903c-9847b95e4208",
+            "42a84bca-d27e-581f-a43a-eee424f0504d",
+            "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+            "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+          ],
+          "missingContainedOrTransitiveAtomicTargets": [
+            {
+              "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+              "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden"
+            },
+            {
+              "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+              "title": "Aggregatzustände und Übergänge deuten"
+            },
+            {
+              "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+              "title": "Grundlegende Laborarbeitsweisen anwenden"
+            },
+            {
+              "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+              "title": "Stoffe und Eigenschaften beschreiben"
+            }
+          ],
+          "clusterChildrenAreSeparateWholePerformanceGoals": true,
+          "sourceCourseAndAcquisitionStatus": "HOLD; target membership does not prove acquisition",
+          "acquisitionApproved": false
+        }
+      ],
+      "prerequisiteOnlyRolesNotInvented": true
+    },
+    {
+      "view": "de-hb-gk",
+      "viewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-four-source-duties-explicit-compulsory-domain-carriers-author-20261014-v3/inputs/views/de-hb-gk.view.exact.json",
+      "viewSHA256": "sha256:73e6052abe131cfa034347ecf582e4bc9ba68e24169a49e99dc8fbf87bc8fa32",
+      "targetCountBeforeAndAfterUnchanged": 155,
+      "newDomainTargets": [],
+      "goalRows": [],
+      "prerequisiteOnlyRolesNotInvented": true
+    },
+    {
+      "view": "de-bw-lk",
+      "viewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-four-source-duties-explicit-compulsory-domain-carriers-author-20261014-v3/candidate/views/de-bw-lk.view.author.json",
+      "viewSHA256": "sha256:9cfd630fe3f31de9fb202fda29bf8e396195fa397a399fe8d269a10ec6679b33",
+      "targetCountBeforeAndAfterUnchanged": 166,
+      "newDomainTargets": [
+        "d815960a-21ab-5a42-8b23-ecd20d03db19"
+      ],
+      "goalRows": [
+        {
+          "goalId": "d815960a-21ab-5a42-8b23-ecd20d03db19",
+          "directRequires": [
+            "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
+          ],
+          "allDirectRequiresAreAtomicTargets": true,
+          "rawRequiresClosure": [
+            "018bec90-445f-4a88-b8bc-228f8335dee6",
+            "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+            "13d4f336-ab16-54a7-9479-c920b458f385",
+            "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+            "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "326d45bf-9f77-57d5-a054-93e76b034dd5",
+            "416dfd33-8b43-5c49-903c-9847b95e4208",
+            "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+            "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+            "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+            "72236f2c-771e-4ab6-933a-e549ee49d15b",
+            "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "950c73c6-4ed1-488a-9267-1142e95e0055",
+            "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+            "9b5d6326-d27c-4ece-8c72-debda705464a",
+            "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+            "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+            "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+            "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+            "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+            "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+            "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+          ],
+          "missingFromAtomicTargetSet": [
+            {
+              "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+              "title": "Lösungen nach Arbeitsanweisung herstellen",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+              "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+              "title": "Arbeitsweisen der Chemie anwenden",
+              "kind": "cluster",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+              "title": "Grundlegende Laborarbeitsweisen anwenden",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+              "title": "Ionen als Ladungsträger erklären",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+              "title": "Bindungstypen sicher erläutern",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+              "title": "Molekülgeometrien mit dem EPA-Modell erklären",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+              "title": "Dalton-Modell und Modellcharakter erläutern",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            },
+            {
+              "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+              "title": "Chemische Symbole und Formeln sicher nutzen",
+              "kind": "atomic",
+              "authoredTargetRoleIncludesWholeId": false
+            }
+          ],
+          "requiresClosureWithClusterContents": [
+            "018bec90-445f-4a88-b8bc-228f8335dee6",
+            "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+            "13d4f336-ab16-54a7-9479-c920b458f385",
+            "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+            "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "326d45bf-9f77-57d5-a054-93e76b034dd5",
+            "416dfd33-8b43-5c49-903c-9847b95e4208",
+            "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+            "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+            "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+            "72236f2c-771e-4ab6-933a-e549ee49d15b",
+            "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "950c73c6-4ed1-488a-9267-1142e95e0055",
+            "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+            "9b5d6326-d27c-4ece-8c72-debda705464a",
+            "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+            "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+            "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+            "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+            "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+            "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+            "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+          ],
+          "missingContainedOrTransitiveAtomicTargets": [
+            {
+              "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+              "title": "Lösungen nach Arbeitsanweisung herstellen"
+            },
+            {
+              "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+              "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden"
+            },
+            {
+              "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+              "title": "Grundlegende Laborarbeitsweisen anwenden"
+            },
+            {
+              "goalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+              "title": "Ionen als Ladungsträger erklären"
+            },
+            {
+              "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+              "title": "Bindungstypen sicher erläutern"
+            },
+            {
+              "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+              "title": "Molekülgeometrien mit dem EPA-Modell erklären"
+            },
+            {
+              "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+              "title": "Dalton-Modell und Modellcharakter erläutern"
+            },
+            {
+              "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+              "title": "Chemische Symbole und Formeln sicher nutzen"
+            }
+          ],
+          "clusterChildrenAreSeparateWholePerformanceGoals": true,
+          "sourceCourseAndAcquisitionStatus": "HOLD; target membership does not prove acquisition",
+          "acquisitionApproved": false
+        }
+      ],
+      "prerequisiteOnlyRolesNotInvented": true
+    },
+    {
+      "view": "de-bw-gk",
+      "viewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-four-source-duties-explicit-compulsory-domain-carriers-author-20261014-v3/inputs/views/de-bw-gk.view.exact.json",
+      "viewSHA256": "sha256:47eb1cbc9af72ef4a937cf7096dd9ee091084ee162648694bdcdc687c09c8380",
+      "targetCountBeforeAndAfterUnchanged": 144,
+      "newDomainTargets": [],
+      "goalRows": [],
+      "prerequisiteOnlyRolesNotInvented": true
+    },
+    {
+      "view": "de-st-lk",
+      "viewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-four-source-duties-explicit-compulsory-domain-carriers-author-20261014-v3/inputs/views/de-st-lk.view.exact.json",
+      "viewSHA256": "sha256:bf3d26b513911f753228f68021ae628030c7d9d9ac6c2d9fcbc9de59cf42ee78",
+      "targetCountBeforeAndAfterUnchanged": 142,
+      "newDomainTargets": [],
+      "goalRows": [],
+      "prerequisiteOnlyRolesNotInvented": true
+    },
+    {
+      "view": "de-st-gk",
+      "viewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-four-source-duties-explicit-compulsory-domain-carriers-author-20261014-v3/inputs/views/de-st-gk.view.exact.json",
+      "viewSHA256": "sha256:b7bfc54cc1772aca0892e4c33294174db9bdcfb8d48aba080698987eb517ef76",
+      "targetCountBeforeAndAfterUnchanged": 120,
+      "newDomainTargets": [],
+      "goalRows": [],
+      "prerequisiteOnlyRolesNotInvented": true
+    }
+  ],
+  "profiles": [
+    {
+      "goalId": "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+      "goalFingerprint": "sha256:ce0056a4b2837e90f200de35703a4cb0fef46732152cf1c46704b6d8d6de1bbe",
+      "profileFingerprint": "sha256:d5a82ed381d668275d460789fdf7ef2cda712261b7ed12677aac84a3927b6b60",
+      "reviewInputFingerprint": "sha256:6086b40ae659ff978c9c44237ceeeb9616c766880b889aa063af9373b77f8f68",
+      "coverage": {
+        "functional-active-component": [
+          "HB-I1",
+          "HB-I2",
+          "HB-I3"
+        ],
+        "property-selective-separation": [
+          "HB-I1",
+          "HB-I3"
+        ],
+        "unchanged-identity-enriched-mixture": [
+          "HB-I1",
+          "HB-I2",
+          "HB-I3"
+        ],
+        "identity-origin-and-effect-limits": [
+          "HB-I1",
+          "HB-I2",
+          "HB-I3"
+        ]
+      },
+      "formalReviewStatus": "pending; technical author shape only"
+    },
+    {
+      "goalId": "93a7ce4d-1c90-568c-9368-cac423011ef9",
+      "goalFingerprint": "sha256:909207aa162f7b6a249abd619a665eb55b23c0f1fb5918b7bb9ea50742291f34",
+      "profileFingerprint": "sha256:263b1fafb9e562fa5cffac12dbb2e80284352e1b2b3f42d51da85cd1261adaae",
+      "reviewInputFingerprint": "sha256:1030f5486ccfb0b29bf7e4edd02a187fbebde841363a0e88c7796ca021b5bd55",
+      "coverage": {
+        "three-method-contributions": [
+          "HB-W1",
+          "HB-W2"
+        ],
+        "research-feedback-and-revision": [
+          "HB-W1",
+          "HB-W2"
+        ],
+        "specimen-identity-versus-causal-effect": [
+          "HB-W1",
+          "HB-W2"
+        ],
+        "justified-next-test-and-reach": [
+          "HB-W1",
+          "HB-W2"
+        ]
+      },
+      "formalReviewStatus": "pending; technical author shape only"
+    }
+  ],
+  "productionHelpersChanged": false,
+  "independentScienceReviewsExecuted": false,
+  "formalRecordsCreated": false,
+  "strictClosureGain": 0,
+  "sourceAndAcquisitionHOLDsRemainOpen": true,
+  "errors": []
+}

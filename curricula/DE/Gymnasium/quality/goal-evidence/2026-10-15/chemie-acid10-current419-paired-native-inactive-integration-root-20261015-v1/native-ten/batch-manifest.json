@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-acid-analytics-ten-current419-native-20261015-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid10-current419-paired-native-inactive-integration-root-20261015-v1/config/native10.exact-bundle-transport.config.json",
+  "configDigest": "sha256:6619342ddc99e4baea5d53c373710a69d021045df4534612e72c3664a1e941a9",
+  "goalIds": [
+    "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+    "ba621c67-b750-5e45-ab37-a51ea45e3ccf",
+    "dc0470f1-0676-5949-a5cc-02783d478406",
+    "25729c34-33d5-553a-a723-046113a7da47",
+    "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+    "a449e874-6fec-502b-9667-6f078adc4d64",
+    "9fef5c29-62bc-5ada-b96b-6885bcb049cb",
+    "29742d91-732f-5da5-bc46-e963885f9a4a",
+    "5a58126e-0c51-5808-be9e-8faa9dae0c32",
+    "13877340-1370-5278-bb80-31cf382dd6f5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 419,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-native-preparation-technical-20261015-v1/config/whole419.current-normal.stock-base.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:ffa236f5f3b1da993b3ef194fdac218791728caf90f14a2054c72c529a0ddc43"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:304c442b6df442e52f3a62ee11441c28cf37b5f34d1fa6514da72246a77d3839",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:57e1875ccb3811ffa7fd8816a3e96c7041bb0c1a717d1b975b7c51fbeb6d61c9",
+    "reviewInputFingerprint": "sha256:4ac0879dd62c13034ae700fd2792a9d48405e0a93ebb8053ab66c703b154c9d8",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-acid-analytics-ten-current419-native-20261015-v1-a",
+        "campaignDigest": "sha256:10da03615f1f36748eeed1d8790dec867d32e0977b5982c751cdc66d87ecef2b",
+        "roundId": "chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-a",
+        "independenceGroupId": "chemie-acid-analytics-ten-current419-native-20261015-v1-independent-a",
+        "batchId": "chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:dfa94b75742b5c30f9972dab827754e67809b38531b9a5b5b5d5a289bb0328bd"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-acid-analytics-ten-current419-native-20261015-v1-b",
+        "campaignDigest": "sha256:4a39823379ad2ef8a011154583eb481c139163c3df5c1073ca00ecae5fe19eeb",
+        "roundId": "chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-b",
+        "independenceGroupId": "chemie-acid-analytics-ten-current419-native-20261015-v1-independent-b",
+        "batchId": "chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:af9f4e6a1080407d44c96117301d66301e9e80ae5d37fde85071c53be1000e44"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

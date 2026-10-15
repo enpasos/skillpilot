@@ -1,0 +1,200 @@
+{
+  "calculator": "Python standard math; independent formulas written in this live review",
+  "rows": [
+    {
+      "caseId": "T01-C1",
+      "method": "1:1 EDTA, mean-minus-blank and reference",
+      "actualReviewerCalculation": true,
+      "corrected_mL": 19.75,
+      "c_mmol_L": 3.95,
+      "recovery_percent": 100.13333333333334
+    },
+    {
+      "caseId": "T01-C2",
+      "method": "dilution and spike difference",
+      "actualReviewerCalculation": true,
+      "original_mmol_L": 7.52,
+      "recovery_percent": 100.4
+    },
+    {
+      "caseId": "T02-C1",
+      "method": "inverse affine calibration, dilution, independent control",
+      "actualReviewerCalculation": true,
+      "unknown_mg_L": 25.5,
+      "reference_deviation_percent": 0.6666666666666599
+    },
+    {
+      "caseId": "T02-C2",
+      "method": "linear portion, nonlinear last standard, failed reference",
+      "actualReviewerCalculation": true,
+      "upper_linear_prediction": 0.81,
+      "unknown_provisional_mg_L": 5.0,
+      "reference_deviation_percent": 9.999999999999986
+    },
+    {
+      "caseId": "T03-C1",
+      "method": "conjugate-pair balance after acid",
+      "actualReviewerCalculation": true,
+      "initial_pH": 7.501029995663981,
+      "after_pH": 7.2
+    },
+    {
+      "caseId": "T03-C2",
+      "method": "positive quadratic root for formal halfpoint",
+      "actualReviewerCalculation": true,
+      "h_mol_L": 0.003596753586885024,
+      "pH": 2.4440893146201432,
+      "h_over_c": 0.10790260760655072,
+      "ampholyte_pH": 5.975,
+      "eq_mL": [
+        50,
+        100
+      ],
+      "half_mL": [
+        25,
+        75
+      ]
+    },
+    {
+      "caseId": "T04-C1",
+      "method": "test fictional A consistency with ideal phosphate balance",
+      "actualReviewerCalculation": true,
+      "after_one_mmol_per_L_pH": 6.9630065553529175
+    },
+    {
+      "caseId": "T04-C2",
+      "method": "balanced generic reactions and pKa proximity",
+      "actualReviewerCalculation": true,
+      "ratio_at_target": 1.2589254117941662,
+      "actual_or_ecological_execution": false
+    },
+    {
+      "caseId": "T05-C1",
+      "method": "excess stoichiometry and total volumes",
+      "actualReviewerCalculation": true,
+      "pH": [
+        1,
+        1.4771212547196626,
+        7,
+        11.958607314841775
+      ],
+      "neutral_at_changed_pKw": 6.6
+    },
+    {
+      "caseId": "T05-C2",
+      "method": "weak-acid root, allowed sqrt approximations and salt hydrolysis",
+      "actualReviewerCalculation": true,
+      "initial_exact_pH": 2.882862537409523,
+      "initial_approx_pH": 2.88,
+      "eq_approx_pH": 8.729485002168008,
+      "initial_fraction": 0.013095963699473056,
+      "hydrolysis_fraction": 0.00010727906947183653
+    },
+    {
+      "caseId": "T06-C1",
+      "method": "acid uptake before HH",
+      "actualReviewerCalculation": true,
+      "initial_pH": 5.362059991327962,
+      "after_pH": 5.127976785294594,
+      "tenfold_dilution": "same ratio and ideal pH, capacity per L divided by 10"
+    },
+    {
+      "caseId": "T06-C2",
+      "method": "base uptake before HH",
+      "actualReviewerCalculation": true,
+      "initial_pH": 8.948970004336019,
+      "after_pH": 9.192008053022313,
+      "formal_excess_at_60mmol_OH": 10
+    },
+    {
+      "caseId": "T07-C1",
+      "method": "acid and base stoichiometry",
+      "actualReviewerCalculation": true,
+      "acid_pulse_pair_mmol": [
+        6,
+        4
+      ],
+      "base_pulse_pair_mmol": [
+        4,
+        6
+      ],
+      "double_reserve_acid_pair_mmol": [
+        11,
+        9
+      ]
+    },
+    {
+      "caseId": "T07-C2",
+      "method": "named-pair exhaustion, not free final OH",
+      "actualReviewerCalculation": true,
+      "acid_pulse_pair_mmol": [
+        5,
+        5
+      ],
+      "base_pulse_formal_pair_mmol": [
+        0,
+        10
+      ],
+      "unassigned_base_load_mmol": 1
+    },
+    {
+      "caseId": "T08-C1",
+      "method": "compare same formal amounts; weak acid salt pH",
+      "actualReviewerCalculation": true,
+      "strong_half_pH": 1.4771212547196626,
+      "weak_half_pKa": 4.76,
+      "strong_eq_pH": 7,
+      "weak_eq_pH": 8.729485002168008
+    },
+    {
+      "caseId": "T08-C2",
+      "method": "conjugate acid and pKa+pKb relation",
+      "actualReviewerCalculation": true,
+      "pKb": 4.75,
+      "weak_initial_pH": 11.125,
+      "weak_eq_pH": 5.275514997831991
+    },
+    {
+      "caseId": "T09-C1",
+      "method": "atom and charge balance; explicit coupled mass transfer",
+      "actualReviewerCalculation": true,
+      "acid_reaction": "HCO3- + H3O+ -> H2CO3 + H2O",
+      "base_reaction": "H2CO3 + OH- -> HCO3- + H2O",
+      "numerical_pH_unsupported": true
+    },
+    {
+      "caseId": "T09-C2",
+      "method": "atom and charge balance; NH3 loss and retained NH4+",
+      "actualReviewerCalculation": true,
+      "acid_reaction": "NH3 + H3O+ -> NH4+ + H2O",
+      "base_reaction": "NH4+ + OH- -> NH3 + H2O",
+      "numerical_pH_unsupported": true
+    },
+    {
+      "caseId": "T10-C1",
+      "method": "finite stoichiometric bound vs local differential capacity",
+      "actualReviewerCalculation": true,
+      "ratio": 1.584893192461114,
+      "acid_mmol": 19.343158992342847,
+      "base_mmol": 30.656841007657157,
+      "beta": 0.05461733220420624,
+      "betaV": 0.02730866610210312,
+      "after_pH": 7.222826247327546,
+      "finite_limit_mmol": 2.791259319542532,
+      "minimum_C_for_same_pulse": 0.1791306155251625
+    },
+    {
+      "caseId": "T10-C2",
+      "method": "finite stoichiometric bound vs local differential capacity",
+      "actualReviewerCalculation": true,
+      "ratio": 1.7378008287493762,
+      "acid_mmol": 18.262833247384155,
+      "base_mmol": 31.73716675261585,
+      "beta": 0.10676821526395874,
+      "betaV": 0.026692053815989686,
+      "after_pH": 5.158914313887215,
+      "finite_limit_mmol": 4.944518368074533,
+      "minimum_C_for_same_pulse": 0.16179533383178263
+    }
+  ]
+}
