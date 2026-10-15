@@ -3,6 +3,7 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mockingDetails;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -13,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.StateMachineInfo;
@@ -117,6 +119,101 @@ class ClaudeV1MasteryContractTest {
     }
 
     @Test
+    void serializedReadOnlyContextPreparesMasteryBeforeTeachingWithoutWritingOrDisplacingTheImage() throws Exception {
+        GoalSourceLink image = new GoalSourceLink(
+                "goal-visualization", "Image", "/assets/goal-visualizations/synthetic-preparation.png",
+                "image", "SkillPilot", List.of(), null, "de", null, ACTIVE_GOAL_ID, "primary", null, "approved");
+        FrontierGoal active = preparationGoal("atomic", "tutor", List.of(), List.of(image));
+        when(coachToolFacade.getLearnerState(learnerId))
+                .thenReturn(learnerState(active, List.of(active), "teachActiveGoal"));
+        when(coachToolFacade.showGoalVisualizationsInChat(learnerId)).thenReturn(true);
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
+                connectionId, "unused",
+                List.of(new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_READ))));
+
+        McpSchema.CallToolResult result = callCoachContext();
+
+        assertThat(result.isError()).isFalse();
+        Map<String, Object> context = payload(result);
+        assertThat(context)
+                .containsEntry("stateVersion", (int) INITIAL_STATE_VERSION)
+                .containsEntry("language", "de")
+                .containsKey("goalVisualization")
+                .hasEntrySatisfying("toolPreparationInstruction", instruction -> assertThat(instruction.toString())
+                        .contains("Only before beginning or resuming authorized teaching", "set_skillpilot_mastery",
+                                "if it is not already registered with its input schema", "Never invent discovery tools",
+                                "During this preparation, load only: do not invoke it, construct arguments, assess the learner or ask a question",
+                                "Then continue authorized teaching normally",
+                                "Do not prepare tools for status-only requests, pauses or feedback",
+                                "If an enclosing continuation instruction requires a learner reply before teaching, wait for it; otherwise add no confirmation",
+                                "Keep loading and corrections private, including Voice",
+                                "If this fresh context's goalVisualization and presentationInstruction require rendering, the renderer remains the next SkillPilot tool"))
+                .hasEntrySatisfying("presentationInstruction", instruction -> assertThat(instruction.toString())
+                        .isEqualTo(ClaudeV1CoachContextProjector.GOAL_VISUALIZATION_PRESENTATION_INSTRUCTION)
+                        .contains("immediate next SkillPilot tool"));
+        assertThat(List.copyOf(context.keySet()).indexOf("toolPreparationInstruction"))
+                .isLessThan(List.copyOf(context.keySet()).indexOf("activeGoal"));
+        assertThat(context.toString()).doesNotContain(connectionId, learnerId);
+        assertContextReadDidNotMutate();
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void serializedContextWithoutImageOfferPreparesMasteryWithoutOfferingARenderer(boolean imagesEnabled) throws Exception {
+        FrontierGoal active = preparationGoal("atomic", "tutor", List.of(), List.of());
+        when(coachToolFacade.getLearnerState(learnerId))
+                .thenReturn(learnerState(active, List.of(active), "teachActiveGoal"));
+        when(coachToolFacade.showGoalVisualizationsInChat(learnerId)).thenReturn(imagesEnabled);
+
+        McpSchema.CallToolResult result = callCoachContext();
+
+        assertThat(result.isError()).isFalse();
+        assertThat(payload(result))
+                .doesNotContainKeys("goalVisualization", "presentationInstruction")
+                .hasEntrySatisfying("toolPreparationInstruction", instruction -> assertThat(instruction.toString())
+                        .contains("If this fresh context's goalVisualization and presentationInstruction require rendering"));
+        assertContextReadDidNotMutate();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"no-active-goal", "memory-node", "memorization-tag", "srs-deck-tag",
+            "orientation-with-memory-tag", "cluster"})
+    void serializedContextOmitsNormalMasteryPreparationWhenInapplicable(String variant) throws Exception {
+        FrontierGoal active = switch (variant) {
+            case "no-active-goal" -> null;
+            case "memory-node" -> preparationGoal("atomic", "memory", List.of(), List.of());
+            case "memorization-tag" -> preparationGoal("atomic", "tutor", List.of("memorization"), List.of());
+            case "srs-deck-tag" -> preparationGoal("atomic", "tutor", List.of("srs-deck:synthetic"), List.of());
+            case "orientation-with-memory-tag" -> preparationGoal(
+                    "atomic", "tutor", "orientation", List.of("memorization"), List.of());
+            case "cluster" -> preparationGoal("cluster", "tutor", List.of(), List.of());
+            default -> throw new IllegalArgumentException(variant);
+        };
+        when(coachToolFacade.getLearnerState(learnerId))
+                .thenReturn(learnerState(active, active == null ? List.of() : List.of(active), "teachActiveGoal"));
+
+        McpSchema.CallToolResult result = callCoachContext();
+
+        assertThat(result.isError()).isFalse();
+        assertThat(payload(result)).doesNotContainKey("toolPreparationInstruction");
+        assertContextReadDidNotMutate();
+    }
+
+    @Test
+    void serializedMasteryDescriptionKeepsDiscoveredSchemaAndRecoveryCorrectionsPrivate() {
+        var tool = contractAdapter.toolSpecifications().stream()
+                .filter(specification -> ClaudeV1Contract.TOOL_SET_MASTERY.equals(specification.tool().name()))
+                .findFirst().orElseThrow().tool();
+        String description = objectMapper.valueToTree(tool).path("description").asText();
+
+        assertThat(description).contains(
+                "There is no mastered field",
+                "During coaching and automatic recovery, keep private assessment, tool loading, schema checks and error correction out of spoken and written responses, including Voice",
+                "Never narrate fields, mistakes or retry plans",
+                "Use the loaded schema; follow bounded silent write recovery for returned SkillPilot errors or uncertain invocation");
+    }
+
+    @Test
     void completionWritesOnlyTheActiveGoalAndLeavesProgressionToTheCanonicalBackend() throws Exception {
         FrontierGoal activeGoal = goal(ACTIVE_GOAL_ID, "orientation");
         FrontierGoal backendNext = goal(BACKEND_NEXT_GOAL_ID, "content");
@@ -194,7 +291,12 @@ class ClaudeV1MasteryContractTest {
                 .hasEntrySatisfying("stateMachine", projectedStateMachine -> assertThat(projectedStateMachine)
                         .asInstanceOf(org.assertj.core.api.InstanceOfAssertFactories.MAP)
                         .containsEntry("requiredAction", "teachActiveGoal"))
-                .containsEntry("frontier", List.of());
+                .containsEntry("frontier", List.of())
+                .hasEntrySatisfying("toolPreparationInstruction", instruction -> assertThat(instruction.toString())
+                        .contains("If an enclosing continuation instruction requires a learner reply before teaching, wait for it; otherwise add no confirmation")
+                        .doesNotContain("for a successor context wait"));
+        assertThat(resultPayload.get("presentationInstruction").toString())
+                .contains("learner already accepted the offered closure", "do not ask for another confirmation");
         assertThat(successorContext.toString()).doesNotContain(COMPETING_GOAL_ID);
 
         jdbc.update(
@@ -268,6 +370,11 @@ class ClaudeV1MasteryContractTest {
                         .doesNotContain("already received feedback and agreed to close")
                         .doesNotContain("what went well", "what still needs practice")
                         .doesNotContain("previous orientation's completion"));
+        Map<?, ?> successorContext = (Map<?, ?>) resultPayload.get("context");
+        assertThat(successorContext.get("toolPreparationInstruction"))
+                .isInstanceOfSatisfying(String.class, instruction -> assertThat(instruction)
+                        .contains("If an enclosing continuation instruction requires a learner reply before teaching, wait for it; otherwise add no confirmation",
+                                "Do not prepare tools for status-only requests, pauses or feedback"));
         verify(coachToolFacade, times(1)).setMastery(eq(learnerId), any(MasteryUpdateRequest.class));
     }
 
@@ -483,6 +590,40 @@ class ClaudeV1MasteryContractTest {
         assertThat(idempotencyRepository.findLive(
                         sessionTokens.hash(connectionId), requestId, java.time.Instant.now()))
                 .isEmpty();
+    }
+
+    private McpSchema.CallToolResult callCoachContext() {
+        var specification = contractAdapter.toolSpecifications().stream()
+                .filter(candidate -> ClaudeV1Contract.TOOL_GET_COACH_CONTEXT.equals(candidate.tool().name()))
+                .findFirst().orElseThrow();
+        return specification.callHandler().apply(
+                McpTransportContext.EMPTY,
+                new McpSchema.CallToolRequest(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT,
+                        Map.of("learningSessionId", connectionId, "language", "en")));
+    }
+
+    private FrontierGoal preparationGoal(String type, String nodeKind, List<String> tags, List<GoalSourceLink> links) {
+        return preparationGoal(type, nodeKind, "content", tags, links);
+    }
+
+    private FrontierGoal preparationGoal(
+            String type, String nodeKind, String semanticKind, List<String> tags, List<GoalSourceLink> links) {
+        return new FrontierGoal(
+                ACTIVE_GOAL_ID, "Synthetic preparation goal", "Synthetic assessable competence", type, nodeKind,
+                semanticKind, null, tags, links, null, null, null, null, false);
+    }
+
+    private void assertContextReadDidNotMutate() {
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+        assertThat(jdbc.queryForObject(
+                "SELECT COUNT(*) FROM claude_v1_session_idempotency WHERE token_hash = ?",
+                Integer.class, sessionTokens.hash(connectionId))).isZero();
+        Set<String> readOnlyMethods = Set.of(
+                "getLearnerState", "getLearningPlanTodayStatus", "getPersonalizationPlan",
+                "getAdditionalLearningMaterials", "showGoalVisualizationsInChat", "getOrientationOutlook");
+        assertThat(mockingDetails(coachToolFacade).getInvocations())
+                .extracting(invocation -> invocation.getMethod().getName())
+                .allMatch(readOnlyMethods::contains);
     }
 
     private McpSchema.CallToolResult callMastery(

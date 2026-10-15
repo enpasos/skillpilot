@@ -773,8 +773,11 @@ public class ClaudeV1McpContractAdapter {
                         + "and optional language for ordinary or orientation completion. For a passing exam, "
                         + "also send evaluationCapability and earnedPoints. There is no mastered field; do "
                         + "not add one, a model-selected mastery score, learner work or feedback. The backend "
-                        + "records binary completion. Private assessment stays out of spoken and written "
-                        + "responses; only concise learner-facing feedback belongs in the conversation. "
+                        + "records binary completion. During coaching and automatic recovery, keep private assessment, "
+                        + "tool loading, schema checks and error correction out of spoken and written responses, "
+                        + "including Voice. Never narrate fields, mistakes or retry plans. Use the loaded schema; "
+                        + "follow bounded silent write recovery for returned SkillPilot errors or uncertain invocation. "
+                        + "Only learner-facing coaching and confirmed outcomes belong in the conversation. "
                         + "Writes learner state and advances the state revision.",
                 objectSchema(
                         List.of(
@@ -2458,7 +2461,7 @@ public class ClaudeV1McpContractAdapter {
         return goal != null && ("exam".equals(goal.nodeKind()) || goal.examData() != null);
     }
 
-    private boolean isMemoryGoal(FrontierGoal goal) {
+    static boolean isMemoryGoal(FrontierGoal goal) {
         if (goal == null) {
             return false;
         }
