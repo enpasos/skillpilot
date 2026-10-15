@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: unabhängige Quellen-/Analytikprüfungen und nativer Arbeitscheckpoint (15.10.2026)](chemie-independent-reviews-checkpoint-2026-10-15.md)
 - [Chemie: sieben Säure/Basen-Abschlüsse im Kandidaten 312/419 und gesicherte Autorenarbeiten (14.10.2026)](chemie-acid7-source-author-checkpoint-2026-10-14.md)
 - [Chemie: Naturstoff-Kontexte und gesicherte Quellen-/Säure-Basen-Arbeiten (14.10.2026)](chemie-naturstoffe-context-checkpoint-2026-10-14.md)
 - [Chemie: stabiler inaktiver Arbeitscheckpoint und Wiederaufnahme (14.10.2026)](chemie231-inactive-working-state-checkpoint-2026-10-14.md)
