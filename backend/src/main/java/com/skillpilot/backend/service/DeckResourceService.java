@@ -2,6 +2,7 @@ package com.skillpilot.backend.service;
 
 import com.skillpilot.backend.curriculumpackage.PackageCurriculumResourceState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
+import com.skillpilot.backend.landscape.PrunedFileTree;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ByteArrayResource;
@@ -139,15 +139,19 @@ public class DeckResourceService {
                 return;
             }
             deckIndex = buildDeckIndex(curriculaRoot);
-            deckIndexUpdatedAt = refreshedNow;
+            // A slow traversal must not consume the next refresh interval.
+            deckIndexUpdatedAt = System.currentTimeMillis();
             indexedRoot = rootKey;
         }
     }
 
     private Map<String, Path> buildDeckIndex(Path curriculaRoot) {
         Map<String, Path> index = new HashMap<>();
-        try (Stream<Path> paths = Files.walk(curriculaRoot)) {
-            paths.filter(Files::isRegularFile)
+        try {
+            PrunedFileTree.files(curriculaRoot,
+                            path -> !path.equals(curriculaRoot) && "quality".equals(path.getFileName().toString()))
+                    .stream()
+                    .filter(Files::isRegularFile)
                     .filter(this::isDeckSourceFile)
                     .forEach(path -> {
                         String fileName = path.getFileName().toString();
