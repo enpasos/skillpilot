@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto'
 import type { LearningGoal } from '../src/landscapeTypes'
+import { requiredTaskMaterialPayload } from './goalEvidenceTaskMaterials'
 
 export type GoalEvidenceReviewStatus = 'needs_human_review' | 'approved' | 'rejected'
 export type GoalEvidenceReviewAuthority = 'ai_candidate' | 'human'
@@ -125,6 +126,10 @@ export function goalEvidenceReviewInputPayload(
     contains: [...(goal.contains ?? [])].sort(),
     examples: [...(goal.examples ?? [])].map(normalizeGoalEvidenceText).sort(),
     goalVisualizations,
+    // Preserve all pre-existing review-input bytes when no required task material is declared.
+    ...((goal.resourceLinks ?? []).some((link) => link.type === 'task-material')
+      ? { requiredTaskMaterials: requiredTaskMaterialPayload(goal, resourceDigests) }
+      : {}),
   }
 }
 
@@ -182,14 +187,18 @@ export function validateGoalEvidenceRecordSemantics(
     errors.push(`${record.goalId}: stale goalFingerprint; expected ${expectedGoalFingerprint}`)
   }
 
-  const expectedReviewInputFingerprint = fingerprintGoalEvidenceReviewInput(
-    goal,
-    record.ruleVersion,
-    resourceDigests,
-    effectiveSemanticKind,
-  )
-  if (record.reviewInputFingerprint !== expectedReviewInputFingerprint) {
-    errors.push(`${record.goalId}: stale reviewInputFingerprint; expected ${expectedReviewInputFingerprint}`)
+  try {
+    const expectedReviewInputFingerprint = fingerprintGoalEvidenceReviewInput(
+      goal,
+      record.ruleVersion,
+      resourceDigests,
+      effectiveSemanticKind,
+    )
+    if (record.reviewInputFingerprint !== expectedReviewInputFingerprint) {
+      errors.push(`${record.goalId}: stale reviewInputFingerprint; expected ${expectedReviewInputFingerprint}`)
+    }
+  } catch (error) {
+    errors.push(`${record.goalId}: invalid required task-material binding: ${error instanceof Error ? error.message : String(error)}`)
   }
 
   const expectedProfileFingerprint = fingerprintGoalEvidenceProfile(record.profile, record.ruleVersion)

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "failedFirstHost": "tmp/checkpoint-chemie-20261013/current402-CQR-source-discovery-private-host",
+  "initialFailure": "Inherited app/scripts/fixtures directory symlink caused private copy routine to unlink tracked geminiStartUi.html; source copy then raised FileNotFoundError.",
+  "factualRecovery": "Immediately restored exact tracked HEAD bytes; git status for the fixture clean. No Chemistry active/review file altered. Parent informed.",
+  "restoredFixture": {
+    "path": "app/scripts/fixtures/geminiStartUi.html",
+    "bytes": 216,
+    "rawSHA256": "sha256:de4f562fdcd3e8a4fbef26eed3a7573ebe60dde31e95bd2eb52935951d7654ae"
+  },
+  "restoredEqualsTrackedHEAD": true,
+  "finalRecoveryGuard": "Minimal host uses physical app/scripts directories and asserts every destination parent resolves under privateHost before copy/write.",
+  "abandonedBulkCopyStopped": true,
+  "failedPartialHostRemovedAfterReceipt": true,
+  "secondInitializationFailure": "Directory-valued registry sourcePath raised IsADirectoryError; document-link routine then restricted to real files.",
+  "noScientificVote": true
+}

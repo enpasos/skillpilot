@@ -1,3 +1,4 @@
+import { hasApplicabilityContexts } from '../utils/applicabilityContexts'
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
@@ -25,6 +26,7 @@ import { useSrsMastery } from '../hooks/useSrsMastery'
 import { useFlashcardSetStatus } from '../hooks/useFlashcardSetStatus'
 import { getSrsFilterTagsForGoal } from '../utils/srsTags'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
+import { deriveRuntimeApplicabilityScope } from '../utils/compositionViewRuntime'
 import { goalMatchesFilter, isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
@@ -122,6 +124,7 @@ interface LearnerViewProps {
   landscapeId: string
   landscapeSubject?: string
   currentLandscapeHasMatchedCompositionView: boolean
+  compositionTargetGoalIdsByLandscapeId?: ReadonlyMap<string, ReadonlySet<string>>
   activeFilter?: string
   onLogout?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
@@ -375,6 +378,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   landscapeId,
   landscapeSubject,
   currentLandscapeHasMatchedCompositionView,
+  compositionTargetGoalIdsByLandscapeId,
   activeFilter = 'all',
   onLogout,
   onNotify,
@@ -811,11 +815,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         personalConfig,
         learnerStructureMode,
         rootLandscapeId,
+        undefined,
+        compositionTargetGoalIdsByLandscapeId,
       )
       return normalizeLearnerVisibleChildrenMap(goalIndexAll, baseVisibleChildren)
     },
     [
       currentLandscapeHasMatchedCompositionView,
+      compositionTargetGoalIdsByLandscapeId,
       effectiveActiveFilter,
       goalIndexAll,
       learnerStructureMode,
@@ -1411,7 +1418,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       // 1. If Atomic
       if (!g.contains || g.contains.length === 0) {
-        if (!bavarianMathCompositionView && !goalMatchesFilter(g, effectiveActiveFilter)) {
+        const completeScope = deriveRuntimeApplicabilityScope({ landscapeId: g.landscapeId ?? landscapeId,
+          activeLandscapeId: landscapeId, rootLandscapeId, scopeEnabled: true, activeFilter: effectiveActiveFilter,
+          learnerPersonalCurriculum: JSON.stringify(personalConfig) })
+        const admittedTargets = compositionTargetGoalIdsByLandscapeId?.get(g.landscapeId ?? landscapeId)
+        if (hasApplicabilityContexts(g) && admittedTargets) {
+          if (!admittedTargets.has(g.id)) return false
+        } else if (!(bavarianMathCompositionView && !hasApplicabilityContexts(g))
+          && !goalMatchesFilter(g, effectiveActiveFilter, completeScope)) {
           return false
         }
 
@@ -1443,7 +1457,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     visibleRootGoals.forEach(r => check(r.id))
 
     return ids
-  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter, bavarianMathCompositionView])
+  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter, bavarianMathCompositionView, landscapeId, rootLandscapeId, personalConfig, compositionTargetGoalIdsByLandscapeId])
 
   const atomicFrontierOptions = useMemo(() => {
     const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')
@@ -1854,6 +1868,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     claimAbi26PersonalizationOwnership,
     handleGuidedPersonalizationPlanChanged,
   ])
+
+  const applyGuidedSupplementOption = useCallback(async (optionId: string) => {
+    const nextPlan = await personalCurriculumEditor.applySupplementOption(optionId)
+    if (nextPlan) await handleGuidedPersonalizationPlanChanged()
+    return nextPlan
+  }, [personalCurriculumEditor.applySupplementOption, handleGuidedPersonalizationPlanChanged])
 
   const reopenGuidedPersonalization = useCallback(async () => {
     claimAbi26PersonalizationOwnership()
@@ -3876,6 +3896,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             ...personalCurriculumEditor,
             busy: personalCurriculumEditor.busy || guidedPersonalizationRefreshing,
             applyOption: applyGuidedPersonalizationOption,
+            applySupplementOption: applyGuidedSupplementOption,
             reopen: reopenGuidedPersonalization,
             rewind: rewindGuidedPersonalization,
           }

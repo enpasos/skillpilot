@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { collectRequiredTaskMaterialDigests } from './goalEvidenceTaskMaterials'
 import { existsSync, readFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -88,8 +89,9 @@ function readJsonl(path: string): { records: GoalEvidenceReviewRecord[]; errors:
 }
 
 function resourceDigestsForGoal(goal: SkillLandscape['goals'][number]): { digests: Record<string, string>; errors: string[] } {
-  const digests: Record<string, string> = {}
-  const errors: string[] = []
+  const taskState = collectRequiredTaskMaterialDigests(goal, repoRoot)
+  const digests: Record<string, string> = { ...taskState.digests }
+  const errors: string[] = [...taskState.errors]
   for (const link of goal.resourceLinks ?? []) {
     if (link.type !== 'goal-visualization') continue
     if (!link.url.startsWith('/assets/goal-visualizations/')) {

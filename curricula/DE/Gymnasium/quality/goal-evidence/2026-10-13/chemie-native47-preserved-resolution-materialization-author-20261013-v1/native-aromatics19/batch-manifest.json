@@ -1,0 +1,72 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-native47-preserved-resolution-materialization-author-20261013-v1/configs/native-aromatics19.batch.config.json",
+  "configDigest": "sha256:12f5ee5c30e6efbaf46e8c3f9dd49f4ae7bb476d7be21cc031efda1ea2a75376",
+  "goalIds": [
+    "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+    "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+    "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+    "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+    "64b03eff-a967-54a1-ace3-89cb7650a65c",
+    "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+    "e5941581-0aba-5354-b4b9-d0249d4538a8",
+    "b208b1a5-c609-53a1-8add-979417a93b7d",
+    "63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+    "188bd684-e894-5753-8a50-798220b04d97",
+    "34da1a4c-5082-54c8-9084-a94826fd36cd",
+    "b98f89e2-39f3-595b-9653-83e9412eecd1",
+    "b44f460b-3399-5c3c-94b2-fa5fc6c027f2",
+    "4b9810b0-5d3d-59d8-a948-c3f6dd6303c7",
+    "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+    "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+    "61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3",
+    "d61ce84f-1d0d-555f-be05-aedb589225ce",
+    "3dbd84de-51cb-5ff7-801b-077a54520fed"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 402,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-current231-source-native-author-root-20261013-v1/configs/whole402.final-frozen.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-current231-source-native-author-root-20261013-v1/candidate/canonical523.current402.normalized-book.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:02d46809a4148c0a0c711c2802a13368382ef4d5add7b23ee8658fe9fcf752ae"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:f77c0d8c56bbc55588ea090a37a3185c8f27e8efffe615974bc2e0cbdfc742e7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:582d9df26762d9b7adc71ac7f3c48692550ed905713802bc498a6bca3c12be87",
+    "reviewInputFingerprint": "sha256:3f9e0a9e58197e85a480cd17246c983e0c5f60d44f57efdf3bd5766ed8f8c3ea",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1-a",
+        "campaignDigest": "sha256:bc223a08e84141bd09cc332bdef4dbd972b97e9ad1db818aadcc3f6d71a430e6",
+        "roundId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1-first-pass-a",
+        "independenceGroupId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1-independent-a",
+        "batchId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4ef6d32c5ece68e46c073d7d22aa79554f328d9fa485647bb04ec4d7235c0b5e"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1-b",
+        "campaignDigest": "sha256:7ba0fa1e4b964f781eeb6377edd4c5ebde3048176f0081f834c2e82fd1d85e12",
+        "roundId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1-first-pass-b",
+        "independenceGroupId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1-independent-b",
+        "batchId": "chemie-poly18-aro19-final-source-aromatics19-20261013-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:74fc8f279a1f8fa2e7cdc8fc69ed14096553ce1aabfebcd342140b604dc702a2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

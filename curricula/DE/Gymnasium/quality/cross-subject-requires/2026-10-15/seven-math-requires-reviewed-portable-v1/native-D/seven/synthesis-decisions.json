@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "seven-math-current-informed-synthesis-20261015-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root/seven_math_dual_d_synthesis_candidate; GPT-6.1 Sol ultra configured; actual serving build unobserved; informed AI synthesizer",
+  "synthesizedAt": "2026-10-15T03:17:32.882Z",
+  "batch": {
+    "batchId": "seven-math-requires-current-context-20261015-v1",
+    "batchManifestDigest": "sha256:fecc3ec09de77d36fe50a95923306143151a05b69d7cb2f160d2721ee1213d27",
+    "configDigest": "sha256:f392b3121a42942fd895545d6736b7743111b8ae8b5344e8da3465e7548a52cf",
+    "bundleFingerprint": "sha256:d16d7d905e14e3263d6518cbc0b91cce00d62fb9d3720bfac839e7bb4e52272d",
+    "bookDigest": "sha256:a5aebb1c3c6c5ae7c635fb2144d8c4e7a4be17d2cc7e9081e7dde5b340911ebb",
+    "reviewInputFingerprint": "sha256:a06b149603f420ed5f80eb1df2af37b6cc862024b723167ee9acb2e153842801",
+    "dualSummaryDigest": "sha256:48154c52c60b20863bbcd6a902f275350aaf97c109bee12a525726bbe1ad152b",
+    "canonicalLandscapeDigest": "sha256:b153817339d9b582475df637a7a79cc1ff2d043b50048ebf858db9e494a81597"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "seven-math-requires-current-context-20261015-v1-a",
+      "campaignDigest": "sha256:d96799108c6986a5ed775627d969e91cb236e724fd2a752b1d2f55ffdb4bf1a4",
+      "roundId": "seven-math-requires-current-context-20261015-v1-first-pass-a",
+      "independenceGroupId": "seven-math-requires-current-context-20261015-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a06b149603f420ed5f80eb1df2af37b6cc862024b723167ee9acb2e153842801",
+      "batchId": "seven-math-requires-current-context-20261015-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:2c31da18887be76cd91db075e3450096b6cf6e58cb79bde9d58755a9bbdd8ce7",
+      "runId": "seven-math-description-blind-a-20261015-v1",
+      "runManifestDigest": "sha256:27950dcf1289d1a38705a175be6b2c17ea87cd7b8f1b0c5a39e3f7c936f6e5de",
+      "resultsDigest": "sha256:f7554086b88fdbee06487742b995937e8896f08f9f2c31f67abb60c40083ae2a"
+    },
+    "second": {
+      "campaignId": "seven-math-requires-current-context-20261015-v1-b",
+      "campaignDigest": "sha256:7429d87fb7b0a9b68628fb686e6bf0a2271ae154b09a52d9f7602b5ea901ec19",
+      "roundId": "seven-math-requires-current-context-20261015-v1-first-pass-b",
+      "independenceGroupId": "seven-math-requires-current-context-20261015-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a06b149603f420ed5f80eb1df2af37b6cc862024b723167ee9acb2e153842801",
+      "batchId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:bdfaff2ace6cb09bcee6a338e335767b45166ac480c35433bb85d87711f2fc00",
+      "runId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "runManifestDigest": "sha256:98b7dcf06575b7c5f24517467067a6cfcca031038112bc122b561ebc2aa3924d",
+      "resultsDigest": "sha256:26480177ea210721a000ace0c0a78be9da08bfc59f71ef199fdcc921a49f1660"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-001",
+      "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d686e2a5a7cc58752f9e2205fbfb568e97fa13d9f9b6b94826556ae4d65a93ef",
+      "pageFingerprint": "sha256:b24a1391c311017c15b303934264998de0b8a46a804389cb466bb15deff5d396",
+      "goalReviewContextFingerprint": "sha256:dad11143ca888074cd2d613315d08564e360b2782fe721cd7ef4351bc98fde66",
+      "finalText": {
+        "titleDe": "Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben",
+        "titleEn": "Describe positional relations of geometric objects using mathematical language",
+        "descriptionDe": "Die lernende Person kann Lagebeziehungen geometrischer Objekte wie parallel, senkrecht oder schneidend sowie Aussagen wie „halbiert einen Winkel“ oder „halbiert eine Strecke“ fachsprachlich beschreiben und in Skizzen sicher zuordnen.",
+        "descriptionEn": "The learner can use appropriate mathematical terminology to describe positional relationships such as parallel, perpendicular, or intersecting and statements such as “bisects an angle” or “bisects a segment”, and can identify them reliably in sketches."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "seven-math-description-blind-a-20261015-v1.record-001",
+          "recordDigest": "sha256:62e115d8c9d546eb77bb03edcc99e0a00fc5e660100764966d9c4cfa0ac692df"
+        },
+        "second": {
+          "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-001",
+          "recordDigest": "sha256:66b4dbd38d4323c1a00aee1157dfe9d412c188c665ae2fb6248cfea45ccdf03e"
+        }
+      },
+      "rationaleDe": "KEEP nach eigener Synthese: Die fünf Begriffsgruppen werden in DE/EN ausdrücklich auf dasselbe Beschreiben und Zuordnen bezogen. Gleichheit, Inzidenz und rechter Winkel tragen diese eine AB1-Sprachkompetenz; eine maßgenaue Konstruktion oder Koordinatendarstellung ist dafür nicht nötig. Runde B wird gewählt, weil sie ausdrücklich festhält, dass senkrechte Geraden ebenfalls schneiden und eine schräge Streckenhalbierende keine Winkelhalbierende sein muss. A ergänzt zutreffend den umgekehrten Skizzenweg; dieser bleibt im vollständigen P erhalten. Die betrachtete Seite zeigt korrekte Pfeil-, Rechtwinkel-, Schnittpunkt- und Mittelpunktmarken; das fehlende Winkelhalbierungspanel verkürzt weder Beschreibung noch P. Gedrehte eigene Skizzen mit getrennten Gleichheitsmarken machen Transfer beobachtbar. Keine Beschreibungskorrektur und kein neues P erforderlich.",
+      "rationaleEn": "KEEP after my informed synthesis: both languages explicitly place all five terminology families within the same describing-and-identifying competence. Equality, incidence and right angles organize this one introductory language skill; accurate instrument construction and coordinates are unnecessary. Round B is selected because it explicitly notes that perpendicular lines also intersect and an oblique segment bisector need not bisect an angle. A correctly adds reverse translation into a sketch, which remains in the complete P. The viewed page has correct parallel, right-angle, intersection and midpoint marks; its missing angle-bisection panel narrows neither description nor P. Rotated learner-created sketches with distinct equality marks provide observable transfer. No wording change or new P is required."
+    },
+    {
+      "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-002",
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e74256d7d55f0a954c7be30cd75e037712db87dc259450ef3aa0108f6f9556d1",
+      "pageFingerprint": "sha256:d3b4e93f62e490b6edee24fdb21e3adaccff1d7d96f1a23813ba833d41e8fc34",
+      "goalReviewContextFingerprint": "sha256:79d8ef9a8ee4f5e09ec2f12a93f23ccc30ebc700ce4f37e59f4fe7a3c2950bc5",
+      "finalText": {
+        "titleDe": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen",
+        "titleEn": "Describe angle relations in figures and use them for geometric arguments",
+        "descriptionDe": "Die lernende Person kann Winkelbeziehungen an Parallelen, in Dreiecken und in Vielecken fachsprachlich beschreiben und diese Beziehungen für einfache geometrische Argumentationen nutzen.",
+        "descriptionEn": "The learner can describe angle relations at parallel lines, in triangles, and in polygons using correct terminology and use these relations for simple geometric arguments."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "seven-math-description-blind-a-20261015-v1.record-002",
+          "recordDigest": "sha256:35c4c05b224f192b02c70afb640ab459646d8cb70e86c4c48875d9c1c2204d88"
+        },
+        "second": {
+          "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-002",
+          "recordDigest": "sha256:8525288c24d972894ab9fe4be6107bcca22162b0b871fd62d659c68efd875711"
+        }
+      },
+      "rationaleDe": "KEEP nach eigener Synthese: Parallelen-, Dreiecks- und Vieleckfälle sind Varianten derselben begründeten Winkelkette, nicht drei getrennte Routinen. Der aktuelle ganze P ersetzt die falsche allgemeine Eckpunktfächer-Aussage durch geeignete innere Diagonalen und bewahrt ausdrücklich konkave einfache Vielecke. AC, AD, DH, EH, EG liefern im beschriebenen C-Achteck sechs Dreiecke und 1080°; AF verlässt das Innere. Runde B wird wegen ihrer ausdrücklichen Fächergrenze gewählt; A ist mit ihrer inneren Zerlegung und Parallelitätsprüfung vereinbar. Die betrachtete Bildseite zeigt 180°/360° korrekt, nennt links aber keine gesonderte Parallelmarke: die Parallelität muss wie in Beschreibung und P gesichert sein. Die knappe bilinguale Beschreibung braucht weder Konstruktionsvorschrift noch Konkavitäts-Fallfolge; kein neues P erforderlich.",
+      "rationaleEn": "KEEP after my synthesis: parallel-line, triangle and polygon situations vary one justified chain of angle deductions rather than three unrelated routines. The complete current P replaces the false unrestricted vertex-fan statement with suitable interior diagonals while retaining simple concave polygons. AC, AD, DH, EH and EG form six triangles and 1080° in the specified C-octagon; AF leaves its interior. Round B is selected for explicitly stating the fan limitation; A is compatible through its interior decomposition and parallelism check. The viewed page correctly shows 180° and 360°, but its left panel has no separate parallel marks: parallelism must be established as required by the description and P. The concise bilingual description needs neither construction instructions nor a sequence of concavity cases; no new P is needed."
+    },
+    {
+      "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-003",
+      "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23041be80ac0e2a1a6e140e7c061e62fd364e856734c0cb0872bbb93c6c7192c",
+      "pageFingerprint": "sha256:6dd5656dcc4b77d7c325f337953a15ed398ccaed49de06a51258566947a80967",
+      "goalReviewContextFingerprint": "sha256:f2e4c79b6d68d0e38463660ad924295e679bd155f9ee973f8008a2699fd5d558",
+      "finalText": {
+        "titleDe": "Größen und Einheiten vergleichen und umrechnen",
+        "titleEn": "Compare and convert quantities and units",
+        "descriptionDe": "Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei anhand des Einheitenverhältnisses begründen, warum die dargestellte Größe unverändert bleibt, und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.",
+        "descriptionEn": "The learner can choose suitable units for everyday quantities, reliably convert measurements into equivalent units, justify the unchanged quantity from the relationship between the units, and compare measurement results meaningfully in a common unit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "seven-math-description-blind-a-20261015-v1.record-003",
+          "recordDigest": "sha256:bf2f7200936a655e45165404fc296728b13224c6ec0f0d5e94321d7102a9a6b2"
+        },
+        "second": {
+          "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-003",
+          "recordDigest": "sha256:6aa23d1150b274c0f281570a690cce60d7e74d7537f23c7a4a6af8bfb113aee8"
+        }
+      },
+      "rationaleDe": "KEEP nach eigener Synthese: Einheit wählen, mit einem Einheitenverhältnis umrechnen, Werterhaltung erklären und in gleicher Einheit vergleichen bilden eine zusammenhängende Messkompetenz. Für dieselbe Länge gilt etwa 0,004 km=4 m; Zahlenvergleich 4 gegenüber 390 ist erst nach 4 m=400 cm sinnvoll. Der Zeittransfer 1 h 20 min=80 min prüft gerade keine universelle Kommaregel. Runde B wird wegen der ausdrücklichen nichtdezimalen Zeitbeziehung gewählt; A enthält dieselbe Werterhaltung und ist sachlich vereinbar. Beide P-Erwartungen und beide Fälle sind vollständig, das betrachtete Bild rechnet 1,2 m=120 cm=0,12 dam richtig. Der historische BY-J5-Variationsname belegt keine Quellenabdeckung und verengt hier nicht die allgemeine Beschreibung. Keine neue Beschreibung und kein neues P erforderlich.",
+      "rationaleEn": "KEEP after my synthesis: selecting a unit, converting by its ratio, explaining invariance and comparing in a common unit form one coherent measurement competence. For example, 0.004 km equals 4 m; comparing 4 with 390 makes sense only after 4 m becomes 400 cm. The transfer 1 h 20 min equals 80 min specifically tests more than a universal decimal-point rule. Round B is selected for explicitly naming the non-decimal time relation; A agrees on preservation of quantity. Both complete P expectations and cases are sufficient, and the viewed image correctly equates 1.2 m, 120 cm and 0.12 dam. The historical BY-J5 variation label is no source-coverage proof and does not narrow the general description. No new description or P is needed."
+    },
+    {
+      "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-004",
+      "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23691ece3c71e7fd248d55df6dc2acff9a3b56bee73d796f62dffcaa113c4da0",
+      "pageFingerprint": "sha256:0f0a666ed2cb6c8ae901322d5f73eb8fa50389deccf7ce866960ca2bea1be715",
+      "goalReviewContextFingerprint": "sha256:8e78df0b828c68ee94d89da1381b786af23875d002afd4336c822f0a7826f309",
+      "finalText": {
+        "titleDe": "Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln",
+        "titleEn": "Develop the derivative concept from average and instantaneous rates of change",
+        "descriptionDe": "Die lernende Person kann mittlere Änderungsraten als Differenzenquotienten bestimmen, als Sekantensteigungen deuten und daraus den Übergang zur momentanen Änderungsrate als Tangentensteigung motivieren.",
+        "descriptionEn": "The learner can determine average rates of change as difference quotients, interpret them as secant slopes, and use them to motivate the transition to instantaneous rates of change as tangent slopes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "seven-math-description-blind-a-20261015-v1.record-004",
+          "recordDigest": "sha256:71036322eb5dd8dae2ab67ce49a6c02aac50d3269beae9a16359027966396bc7"
+        },
+        "second": {
+          "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-004",
+          "recordDigest": "sha256:28d1cb31440d6bdf897b01fc961db4a7f0af6afd13754485804b467f49eff98d"
+        }
+      },
+      "rationaleDe": "KEEP nach eigener Synthese: Die Beschreibung verbindet zwei Punkte, Differenzenquotient, Sekante und motivierten Tangentenübergang zu genau einer J10-Begriffsentwicklung. Runde B wird wegen a≠b und der expliziten Abgrenzung vom Einsetzen h=0 gewählt. A erklärt denselben bedingten Grenzübergang und den Vorzeichen-/Einheitentransfer. Eigene Gegenprüfung mit f(x)=3x² bei x=2 liefert für h≠0 den Quotienten 12+3h, also Tangentensteigung 12, ohne Formwechsel oder Ableitungsregel. Das vorhandene P prüft darüber hinaus fallende Höhe mit negativer Rate in m/s; das betrachtete Bild zeigt Sekante5 und Tangente4 zu x² korrekt. Weder endliche Tabellen noch Skizzen garantieren allgemeine Differenzierbarkeit; diese wird auch nicht beansprucht. Keine Wortlautrevision und kein neues P erforderlich.",
+      "rationaleEn": "KEEP after my synthesis: two points, difference quotient, secant and the motivated tangent transition make one introductory derivative concept. Round B is selected for its explicit a≠b condition and warning that substituting h=0 is not the limiting process. A explains the same conditional limit and transfer of sign and units. My check with f(x)=3x² at x=2 gives 12+3h for h≠0 and limiting slope 12, requiring neither form conversion nor a derivative rule. The existing complete P additionally tests falling height and a negative rate in m/s; the viewed image correctly shows secant slope5 and tangent slope4 for x². Finite tables and sketches do not guarantee general differentiability, which is not claimed here. No wording revision or new P is needed."
+    },
+    {
+      "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-005",
+      "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:207a4ce985f183f29898b3f53a2e877262aae925b9eef3a3cec0b06524c04e02",
+      "pageFingerprint": "sha256:6bc2afd75c5c64bc75da08c9b790f68dd7f9832936cd278e2fe1683d85b4114c",
+      "goalReviewContextFingerprint": "sha256:28804f9330f907901f1a02394ff67d94c1dfcc1d8861b0221511d1d2f6bf321b",
+      "finalText": {
+        "titleDe": "Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben",
+        "titleEn": "Describe exponential growth in expressions, tables, and graphs",
+        "descriptionDe": "Die lernende Person kann exponentielle Wachstums- und Zerfallsprozesse in Termen, Tabellen und Graphen beschreiben, Parameter deuten und typische Verläufe im Sachkontext erklären.",
+        "descriptionEn": "The learner can describe exponential growth and decay processes in expressions, tables, and graphs, interpret parameters, and explain typical trajectories in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "seven-math-description-blind-a-20261015-v1.record-005",
+          "recordDigest": "sha256:2ec51062f609b994b418040639d241b15363a25d54966d9d3ae1c7746ed07608"
+        },
+        "second": {
+          "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-005",
+          "recordDigest": "sha256:1db9a2b39bf64f93e3d9344df42f92c33ebde9514ecfc79798a3ee0e5ea368ff"
+        }
+      },
+      "rationaleDe": "KEEP nach eigener Synthese: Der Kern ist die Koordination von Term, Tabelle und Graph derselben multiplikativen Entwicklung samt Parameter- und Kontextbedeutung. Beide Sprachen nennen Wachstum und Zerfall, auch wenn der Titel Wachstum verkürzt. Runde A wird gewählt, weil ihr Transfer von Zerfallstext zu Wachstumstabelle die Ausgangsdarstellung und Richtung ändert und die begrenzte Realaussage ausdrücklich erhält; B beschreibt fachlich denselben Vertrag. Für 60·1,2^t sind die ersten Werte60,72,86,4 und die Zuwächse12,14,4 verschieden, obwohl der Faktor gleich bleibt. Das vollständige P fordert eigene Graphen für beide Richtungen; die betrachtete Akku-Seite zeigt100·0,8^t konsistent. GeoGebra-Tag, transformierte Potenzgraphen oder Geradenschnitte werden dadurch nicht zu notwendigen Methoden. Kein neues P und keine Textrevision erforderlich.",
+      "rationaleEn": "KEEP after my synthesis: the core is coordinating expression, table and graph of one multiplicative process with parameter and contextual meanings. Both descriptions include growth and decay although the title abbreviates this as growth. Round A is selected because its change from a decay narrative to a growth table varies both starting representation and direction while explicitly retaining the limitation of real-world claims; B expresses the same sound contract. For 60·1.2^t the first values60,72,86.4 have unequal gains12 and14.4 despite a fixed factor. The complete P requires learner-created graphs in both directions; the viewed battery page consistently represents100·0.8^t. A GeoGebra tag, transformed power graphs and line intersections do not become mandatory methods. No new P or wording revision is required."
+    },
+    {
+      "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-006",
+      "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8968498dd5be0578af5ab7d2bdceac94ca0e14aac2b95eeb98cc4b54ec903871",
+      "pageFingerprint": "sha256:b9ea87c97f289f59e6681d733479e18da2bac7d55dd5158fe096c48c333ad298",
+      "goalReviewContextFingerprint": "sha256:3d9a7c526ea523625948349d0805fd04e7cea6bb4d1a80339bf74623bc19fbda",
+      "finalText": {
+        "titleDe": "Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum abgrenzen",
+        "titleEn": "Describe exponential increase and decrease and distinguish them from linear growth",
+        "descriptionDe": "Die lernende Person kann exponentielle Zu- und Abnahme als Änderung mit konstantem Faktor je gleich großem Schritt beschreiben, veranschaulichen und von linearer Änderung mit konstanter Differenz begründet abgrenzen.",
+        "descriptionEn": "The learner can describe and illustrate exponential increase and decrease as change by a constant factor per equal step and justify the distinction from linear change by a constant difference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "seven-math-description-blind-a-20261015-v1.record-006",
+          "recordDigest": "sha256:8a33639aa9b1a88378239e8ced795942c6b3427ef69ec4c96ef488dac0200ec7"
+        },
+        "second": {
+          "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-006",
+          "recordDigest": "sha256:b8386f10d88c750df9f3e8f4bab57a6880034ce467e57f3306afd0a660fb81d9"
+        }
+      },
+      "rationaleDe": "KEEP nach eigener Synthese: Konstante Differenz gegen konstanten Faktor bei gleichen Schritten ist bereits präzise beschrieben; Begründen und Veranschaulichen gehören zur selben Strukturunterscheidung. Runde A wird gewählt, weil ihr Transfer von Zunahme zu Zerfall mit Graphbegründung unmittelbar dem vollständigen P entspricht. Bs zusätzlicher Vergleich zusammengefasster Schritte ist mathematisch richtig (zwei Schritte ergeben Faktor q² bzw. Differenz2d), aber keine neue Pflichtfacette. Gemeinsame Werte30,36 können linear mit42 oder exponentiell mit43,2 fortgesetzt werden; daher reicht ein Schritt nicht. Das P fordert mehrere Vergleiche und erklärt die abflachende Abnahme, und die betrachtete Bildseite stimmt mit allen drei Termen/Tabellen überein. Keine eindeutige unbegrenzte Realgesetzlichkeit aus endlichen Daten. Kein neues P und keine Beschreibungskorrektur erforderlich.",
+      "rationaleEn": "KEEP after my synthesis: constant difference versus constant factor over equal steps is already precise; justification and illustration belong to that one structural distinction. Round A is selected because its growth-to-decay transfer with graph reasoning directly matches the complete P. B additionally compares grouped steps correctly (two steps give q² or difference2d), but this is not made a new required facet. Shared values30,36 can continue linearly with42 or exponentially with43.2, so one step does not decide the rule. The P requires several comparisons and explains flattening decay, and the viewed page agrees with all three expressions and tables. Finite data do not establish a unique unlimited real-world law. No new P or description correction is needed."
+    },
+    {
+      "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-007",
+      "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:107c0d9336dce6a209fd51bbacc958e38f2065a95fea06f850e26c140f07a496",
+      "pageFingerprint": "sha256:d811546665682ec994ee26c43faf3e5698e02cf40fb9d97bc82d1f9e7093eef1",
+      "goalReviewContextFingerprint": "sha256:09fce9d2f5678d3d6b3c23d9833b3ebf3d2cac07c0dbd72a6134c6ac44a58eae",
+      "finalText": {
+        "titleDe": "Logarithmus definieren und einfache Werte bestimmen",
+        "titleEn": "Define logarithms and determine simple values",
+        "descriptionDe": "Die lernende Person kann den Logarithmus für eine positive Basis ungleich 1 und ein positives Argument als Umkehroperation des Potenzierens erläutern und in einfachen Fällen Werte mithilfe der Definition, sonst mit digitalen Werkzeugen bestimmen.",
+        "descriptionEn": "The learner can explain the logarithm for a positive base other than 1 and a positive argument as the inverse of exponentiation, determine simple values from the definition, and use digital tools for other values."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "seven-math-description-blind-a-20261015-v1.record-007",
+          "recordDigest": "sha256:a0f7656b60a1ef5e9b960a0d3ef0b517d532cc5cba24450f86706f39becc5bff"
+        },
+        "second": {
+          "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-007",
+          "recordDigest": "sha256:a7129e9706906338f8d5d7534450e6369a4cca4b9ddc2fe4bbf9811a6dcf1219"
+        }
+      },
+      "rationaleDe": "KEEP nach eigener Synthese: Der gesuchte Exponent verbindet Definition, exakte einfache Werte und geprüfte digitale Näherungen; diese sind keine unabhängigen Zielbündel. DE/EN nennen übereinstimmend b>0, b≠1 und positives Argument. Runde B wird gewählt, weil sie Exponent, Basis und Argument klar trennt und Näherung sowie unzulässige Eingaben zusammenführt; A ist damit vereinbar. Eigene Gegenprüfung log_(1/9)(3)=−1/2 und log_8(2)=1/3 zeigt, dass Basen unter1 und gebrochene Exponenten ohne Graphtransformation erfasst bleiben. Der vollständige P fordert exact und digital sowie Rückkontrolle, die betrachtete Bildseite zeigt Definition und drei korrekte Beispiele. Eine zusätzliche Basiswechsel-Methode oder allgemeine Logarithmengesetze werden nicht importiert. Kein neues P und keine Wortlautrevision erforderlich.",
+      "rationaleEn": "KEEP after my synthesis: the sought exponent connects definition, exact simple values and checked digital approximations rather than independent bundles of goals. Both languages require b>0, b≠1 and a positive argument. Round B is selected because it clearly distinguishes exponent, base and argument and connects approximation with inadmissible inputs; A is compatible. My checks log_(1/9)(3)=−1/2 and log_8(2)=1/3 retain bases below1 and fractional exponents without graph transformations. The complete P requires exact and digital work with reverse checks, while the viewed page gives the definition and three correct examples. No specific base-change method or general logarithm laws are imported. No new P or wording revision is required."
+    }
+  ],
+  "manifestFingerprint": "sha256:02498a944b2539b96e064c275ecfc15c2524a463f57224c9d4db69900f25fd91"
+}

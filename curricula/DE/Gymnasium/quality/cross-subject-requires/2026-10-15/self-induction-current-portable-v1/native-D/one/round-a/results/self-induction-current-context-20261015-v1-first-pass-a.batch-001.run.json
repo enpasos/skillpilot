@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "self-induction-current-context-20261015-v1-fresh-blind-a",
+  "campaignId": "self-induction-current-context-20261015-v1-a",
+  "roundId": "self-induction-current-context-20261015-v1-first-pass-a",
+  "batchId": "self-induction-current-context-20261015-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:42180e2ad4d16d74975494594b902d93753bb7ec14eabaf94eed1110e45552f9",
+  "bundleFingerprint": "sha256:996fccb894deedba8bdd2168abfcc6c5b58d577090aeed4879e2c2dd557f4658",
+  "bookDigest": "sha256:70d54d849eb0e90161e22c0bf27e61506e8001ab85be81718f995ae1443e5833",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol (configured)",
+  "modelVersion": "serving-build-unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:cbe68cc998561f5baffd9ff12ba9e258dd775e43f281bfbaf0d1bf535f8e6e6c",
+  "independenceGroupId": "self-induction-current-context-20261015-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "37f28bc4-def2-57cf-a06b-191dfd228205"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:da0bc579bd497963ab1dd72e11c1df99b14265b9b7284837a96407683b08bdc5"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:a69dec3752d3a692287349e2e8c72a4b8659491985655eec014c15a4a160671e"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:d12e7c6c4d0e4e0cce670db35234a71f2ec7ba3d83b093965e32e604f488b4df"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ff8608ee18a2f399cce0c88bdb6dca1de5539e3746344c87d3b8f3d5b1142d25"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:42180e2ad4d16d74975494594b902d93753bb7ec14eabaf94eed1110e45552f9"
+    }
+  ],
+  "startedAt": "2026-10-15T05:23:00.241Z",
+  "completedAt": "2026-10-15T05:23:00.245Z",
+  "status": "completed",
+  "outputDigest": "sha256:99858823c3894ddb895c9ed3ac34cbcc535bcdc6b6a576499b61692b64d1e0ae",
+  "toolchainVersion": "native-goal-description-review-v1"
+}

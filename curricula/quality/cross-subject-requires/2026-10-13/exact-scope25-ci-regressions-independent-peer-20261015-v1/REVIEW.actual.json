@@ -1,0 +1,119 @@
+{
+  "completedUTC": "2026-10-15T13:23:32.299720+00:00",
+  "status": "ACCEPT_BOUNDED_SIX_FILE_CI_REGRESSIONS",
+  "scope": "Exactly six test/fixture changes for Gymnasium exact-scope25 regressions; zero production/dependency/workflow/gate/data changes. No Main/index/DB writes or subagents by reviewer.",
+  "authorHandoffSHA256": "f818e1449b6e9ed1b3e919ed7a4dc3728b6cc955d64c9f6dd1da7667d033be32",
+  "authorSealSHA256": "e57670dca1c3fa3428774bbe96457e60a2dbe083399a35d758d0e46ef22a2f27",
+  "patchSHA256": "4a63afa70470fdacd8fda7d9aa7ccfb1711751d11f79ef8365aef47747540cf4",
+  "authorOwnedFilesRehashed": 58,
+  "files": [
+    {
+      "path": "app/scripts/assertExactScopeTargetsUi.ts",
+      "reviewedSHA256": "7d4fd500a9e4fe17fae931fc208aaf33687c77d717c44f8521e22f91eb4a6432",
+      "exactMainPreimageSHA256": null,
+      "opinion": "ACCEPT_BOUNDED_TEST_CHANGE",
+      "reason": "Actual mounted hook/view/tree through three source-authority scopes; positive target, independent Physics, wrong-course, exact[], unreferenced and ordinary-subject non-enrollment assertions. Non-GET denied locally."
+    },
+    {
+      "path": "app/scripts/fixtures/exactScopeTargetsUi.html",
+      "reviewedSHA256": "36b65d54d356ed66ab5c16fb242c0d6dd2e9e5cbd16455c5dee6b941b7d249c5",
+      "exactMainPreimageSHA256": null,
+      "opinion": "ACCEPT_BOUNDED_TEST_CHANGE",
+      "reason": "Local fixture entry only."
+    },
+    {
+      "path": "app/scripts/fixtures/exactScopeTargetsUi.tsx",
+      "reviewedSHA256": "0febe52fbba54976bd95ccdc4c4b6d956f876d96632fd48841c2a668f5acaa60",
+      "exactMainPreimageSHA256": null,
+      "opinion": "ACCEPT_BOUNDED_TEST_CHANGE",
+      "reason": "Actual production useAppCore and LearnerView imports with real core-generated target map, ordinary MemoryRouter root scope. No fake target-map helper."
+    },
+    {
+      "path": "app/scripts/testLearnerCoreStartupUi.ts",
+      "reviewedSHA256": "033efffc452d16e3df99093fff2af4f1cf76584f13ceca2ee05d449ccc7f1f38",
+      "exactMainPreimageSHA256": "cc0ce0884e567a4c73cb9da2efd684f4b161e04aba086ca0b4a05522be723304",
+      "opinion": "ACCEPT_BOUNDED_TEST_CHANGE",
+      "reason": "Existing CI entry imports and awaits new regression helper after retaining every existing assertion."
+    },
+    {
+      "path": "app/scripts/testLearnerViewStartupUi.ts",
+      "reviewedSHA256": "cda2631b032bf0ed64ed9c2d589969660682c5996aee3f9ea39bc26d77d53279",
+      "exactMainPreimageSHA256": "d905fe03305cc94c81ef5ed4c01686dbe1a07306bcfce1b01377474352b46549",
+      "opinion": "ACCEPT_BOUNDED_TEST_CHANGE",
+      "reason": "Separately authorized exact fixture-a/b GET empty composition-supplement-options contract. Original unexpected API/request-count/POST assertions remain intact; no production404 fallback."
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java",
+      "reviewedSHA256": "0b6f7edd51d5d7706de4525a1e79e4037bc189da5cd30ba6dfee7a6814a9f34f",
+      "exactMainPreimageSHA256": "c844e0ca14e30ec513f2e1735d7da836d0de11fbb2f8df03aca22a0072f7ab72",
+      "opinion": "ACCEPT_BOUNDED_TEST_CHANGE",
+      "reason": "Three discoverable real @Test methods call production public getFilteredAtomicGoalIds; mocks provide repository/composition inputs, not the target-eligibility decision. Positive primary/landscape/namespaced and legacy fallback controls plus no-write guard."
+    }
+  ],
+  "blockingFindings": [],
+  "CIWiring": {
+    "frontend": ".github/workflows/ci.yml:359 -> unchanged npm test:learner-cockpit-startup -> existing CoreStartup entry awaits new helper -> unchanged existing ViewStartup entry",
+    "frontendNode": "Actual .nvmrc20.20.2 used independently. CHOKIDAR_USEPOLLING=1 isolated watcher resources; test source and assertions unchanged.",
+    "backend": ".github/workflows/ci.yml:684 -> unchanged run_backend_ci.py -> unfiltered gradlew check on successful preflight path -> existing JUnit Platform class discovers three added@Test methods. A failed optional priority preflight already fails CI; no new green filter/exclusion.",
+    "newDependenciesWorkflowsPackagesOrBuildConfiguration": false,
+    "existingPlaywrightPinnedChromium": true
+  },
+  "independentExecution": {
+    "freshMainProductionJavaSourcesCompiledPrivately": 451,
+    "actualJUnitCurrent": "3found/3started/3passed/0failed/0skipped",
+    "actualJUnitPredecessor": "3found/2passed/1 genuine assertion failure: eligible target without authored authority included sek2-target",
+    "JUnitUsesActualPublicService": true,
+    "freshPredecessorLearnerServiceCompileOverCurrent451": "Other450 production sources SHA-equal, old source placed first on isolated classpath; candidate tests unchanged.",
+    "wholeExistingNpmCockpitChain": "PASS both existing scripts including3new modes",
+    "newMountedModes": [
+      "combined",
+      "supplement-only",
+      "missing-duration"
+    ],
+    "actualBrowserPredecessor": "Combined and supplement-only each fail genuine Math DOM0!=1 with unchanged helper/fixture; missing-duration control passes, no page errors.",
+    "changedTSFilesESLint": "PASS",
+    "helperFixtureAndProductionImportsTypecheck": "PASS",
+    "exactMainPreimagesAndSixFilePatchReplay": true,
+    "additionalIndependentNegative": "Exact original ViewStartup preimage without only the empty optionsGET stub fails at actual setup Losgehts heading after30000ms; same current production source. Full candidate chain passes.",
+    "protectedMainInputRecordsRehashedUnchanged": 764
+  },
+  "assertionIntegrity": {
+    "existingAssertionsRemovedOrRelaxed": 0,
+    "existingUnexpectedRequestLedgerPreserved": true,
+    "existingRequestDeduplicationAndScopeIsolationChecksPreserved": true,
+    "emptyOptionsMockOnlyExactNamedLearnersAndGET": true,
+    "POSTOrUnknownAPIGuardsWeakened": false,
+    "production404FallbackAdded": false,
+    "newHelperCallsRealUseAppCoreLearnerViewCompetenceTree": true,
+    "newMapComesFromProductionCore": true,
+    "noTargetAuthorityLogicCopiedIntoTests": true,
+    "noRealLearnerOrDBWrite": true
+  },
+  "preservation": {
+    "sealedAuthor58Unchanged": true,
+    "allSixMainPreimagesStillExact": true,
+    "threeNewPathsStillAbsentFromMain": true,
+    "MainProductionTestIndexDBWritesByReviewer": false,
+    "goalsSourceQAOrientationPRequiresBookPolicyChanged": false,
+    "noNew13Old475OrOtherTargetActivation": true,
+    "subagentsUsed": false
+  },
+  "limits": [
+    "Bounded acceptance of the six-file CI test patch only; separate Main adoption remains Root work.",
+    "Local backend execution selects only the three new real JUnit methods. No full backendcheck/native807/478/820 rerun, source/D/P/content/host acceptance or deployment claim.",
+    "Repository/composition/learner interfaces are synthetic mocked inputs in JUnit; public production service performs authority/eligibility projection. No database or OAuth/session lifecycle acceptance.",
+    "Browser API outputs are local fixtures for already-authorized selected scopes; supplement authority issuance is outside this test. New scope fixture imports actual hook/view/tree, not the full App component.",
+    "Existing startup unexpected API ledger remains strict. The new scope-only helper answers unknown reads404 and rejects non-GET405; it is not a new global request-budget test.",
+    "Only exact six-file preimages and protected source/build/CI records are conserved; no blanket whole-worktree or Git-index hash claim.",
+    "Execution classes,jars,caches,screenshots and unchanged production source copies are excluded from proposed adoption and bounded artifact ownership."
+  ],
+  "proofs": [
+    "java-execution/tests-current.actual.json",
+    "java-execution/tests-predecessor.actual.json",
+    "FRONTEND-TESTS.actual.json",
+    "MISSING-OPTIONS-MOCK-NEGATIVE.actual.json",
+    "PATCH-REPLAY.actual.json",
+    "FINAL-PRESERVATION.actual.json"
+  ],
+  "next": "Root may separately adopt exactly these six reviewed test/fixture files and run normal integration/CI. Keep production scope acceptance and source/content/native/activation gates separate."
+}

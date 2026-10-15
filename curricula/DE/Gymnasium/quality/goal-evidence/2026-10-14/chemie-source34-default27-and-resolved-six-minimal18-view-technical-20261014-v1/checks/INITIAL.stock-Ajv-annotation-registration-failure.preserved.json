@@ -1,0 +1,13 @@
+{
+  "completedAtUTC": "2026-10-14T03:30:46.475641+00:00",
+  "command": [
+    "node",
+    "app/node_modules/tsx/dist/cli.mjs",
+    "tmp/checkpoint-chemie-20261014/measure_source34_minimal18_stock.ts"
+  ],
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/util.ts:211\n  if (mode === true) throw new Error(msg)\n                           ^\n\n\nError: strict mode: unknown keyword: \"x-skillpilot-listSemantics\"\n    at checkStrictMode (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/util.ts:211:28)\n    at checkUnknownRules (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/util.ts:27:22)\n    at alwaysValidSchema (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/util.ts:17:3)\n    at <anonymous> (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/vocabularies/applicator/properties.ts:23:65)\n    at Array.filter (<anonymous>)\n    at Object.code (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/vocabularies/applicator/properties.ts:23:33)\n    at keywordCode (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:532:9)\n    at <anonymous> (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/validate/index.ts:265:9)\n    at CodeGen.code (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/codegen/index.ts:545:33)\n    at CodeGen.block (/home/enpasos/projects/skillpilot/app/node_modules/ajv/lib/compile/codegen/index.ts:700:20)\n\nNode.js v20.20.2\n",
+  "stockFunctionsUnmodified": true,
+  "activeAndHWrites": false
+}

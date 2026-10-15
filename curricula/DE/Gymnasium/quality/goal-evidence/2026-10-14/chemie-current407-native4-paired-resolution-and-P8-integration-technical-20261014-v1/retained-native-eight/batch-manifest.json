@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current406-final-resource-P7-native8-20261013-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-native4-paired-resolution-and-P8-integration-technical-20261014-v1/retained-native-eight.inactive-copy.batch.config.json",
+  "configDigest": "sha256:336a9675ee8990a518ecd9d9ef0d4bbc431a0cfb32f2086a7202b8cfbc6149d5",
+  "goalIds": [
+    "e56040b5-1da8-5080-b358-086d04922339",
+    "b208b1a5-c609-53a1-8add-979417a93b7d",
+    "17ab1148-7383-5cab-8b91-73aff795f1e4",
+    "981242bb-a729-5701-b02d-c2f7f489e5af",
+    "53db04a0-ea76-5810-9526-c8639100e497",
+    "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+    "f54b2c33-11f1-571f-aa1c-cf969cc141c4",
+    "b7ae47da-6afa-5651-977a-3139af7d6eab"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 406,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-final-resource-P7-native8-technical-author-20261013-v1/configs/whole406.final-resource-P7.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current406-final-resource-P7-native8-technical-author-20261013-v1/candidate/canonical531.current406.final-resources.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:42b9978b29410a7d1bcca50df1e3fbc582ea51d9b28100f9d9a3a7ebe6463641"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1bd460fc74c44976283b0a78f428e9a8d52d00b95a891288e8bce413bd93e534",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:49604a554686a4c8a7a7738fd662af9af33e7dbdac785cfcf0d5d6f61b14dc79",
+    "reviewInputFingerprint": "sha256:b68c88f708ad9523e4b3a63111a7424ebca0e9ef01fcf8458381d35dc13f877b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current406-final-resource-P7-native8-20261013-v1-a",
+        "campaignDigest": "sha256:605c65a4190dce27b493c87436a4067027e2d503b7afca76d199258327865ef3",
+        "roundId": "chemie-current406-final-resource-P7-native8-20261013-v1-first-pass-a",
+        "independenceGroupId": "chemie-current406-final-resource-P7-native8-20261013-v1-independent-a",
+        "batchId": "chemie-current406-final-resource-P7-native8-20261013-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d1baf888ae70f9eac005a66fb5e1591a8781b5da7e7706bbb35bec1a9c43e92c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current406-final-resource-P7-native8-20261013-v1-b",
+        "campaignDigest": "sha256:838d4bfe5d22f1942e95cbd1cc401d67cfca9c775b8f2f03ca0e51a42144de4f",
+        "roundId": "chemie-current406-final-resource-P7-native8-20261013-v1-first-pass-b",
+        "independenceGroupId": "chemie-current406-final-resource-P7-native8-20261013-v1-independent-b",
+        "batchId": "chemie-current406-final-resource-P7-native8-20261013-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b9e36fa153c70f0c81437c7281081911ea29a5e236dd5097ba8dd3d214123f0a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

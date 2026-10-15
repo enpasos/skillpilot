@@ -1,0 +1,481 @@
+{
+  "originalsUnchanged": true,
+  "records": [
+    {
+      "source": {
+        "path": "tmp/cross-subject-requires/p72-fifteen-after-peer-successor-author-20261014-v1/all15-after-peer-substantive-author-resolution.actual.json",
+        "sha256": "sha256:2b7dc733c0933286960d13a13bdf0406f27dfd1d69399212979848fedc5af98d",
+        "bytes": 49813
+      },
+      "record": {
+        "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+        "title": "Selbstinduktion und Induktivität",
+        "authorDecision": "review_required",
+        "oldAuthorDecision": "review_required",
+        "priorPeerScientificState": "review_required_current_P_correction_scientifically_supported",
+        "currentWholeGoalPBodyUnchanged": true,
+        "allFixedRequiredExpectationIds": [
+          "current-change-alters-own-flux",
+          "lenz-response-delays-change",
+          "inductance-measures-coupling-strength"
+        ],
+        "priorLiteralSolvesRetainedInOriginalPacket": 2,
+        "currentWholePProfileFingerprint": "sha256:7a04c4dd06d801a3ddd7a7c44360bf31e451250c50a32a19d1258dec1231dfe3",
+        "currentOwnerBinding": {
+          "config": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.config.json",
+            "bytes": 1776,
+            "sha256": "sha256:4e2727ed4263b28f4a873dd3c40cce1466f080accd8908a66c2d026c0f6a47e5"
+          },
+          "recordFile": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.review.jsonl",
+            "bytes": 117140,
+            "sha256": "sha256:6d808e612cbd5997e718779497412a8041755efc5d1ca69a1116d08000e95845"
+          },
+          "recordLine": 10,
+          "recordLineSha256": "sha256:49a0bd80d865e357bc8fd42df10ce731bc7db15a0e2a25fc8be6277741beabd7",
+          "profileFingerprint": "sha256:7a04c4dd06d801a3ddd7a7c44360bf31e451250c50a32a19d1258dec1231dfe3",
+          "goalFingerprint": "sha256:764f9a1dd26c85fb6bbb2c4f71590fce545d969630d8b3efb5217f1d0063bfb2",
+          "reviewInputFingerprint": "sha256:502e01e16558d5d5a602f2b40c9d7aad261ed872546d2554c7ab5b68b731bd9b",
+          "profileStatus": "needs_human_review",
+          "reviewAuthority": "ai_candidate"
+        },
+        "freshAuthorRationale": "Der volle direkte Induktions-P liefert Änderungsrate, Vorzeichenkonvention und Lenz; der Spulen-P106 liefert linearen Feld-Strom-Zusammenhang. Keine neue allgemeine Differentialrechnung ist durch dieses qualitative P notwendig. Die widersprüchliche Gegenüberstellung gleicher aufgeprägter Stromverläufe mit verschiedener tatsächlicher Stromverzögerung wird ausdrücklich als echte P-Korrektur versioniert. Gleicher dI/dt verlangt bei größeremL größeren Spannungsbetrag; größere Verzögerung darf nur bei gleicher Spannungsanregung und gleichemR behauptet werden. Neues P benötigt frische unabhängige D/P-Fachprüfung. AFTER PEER: Das unveränderte aktuelleP ist wegen Vermischung identischer gemessener Änderungsrate und angeblich verschiedener tatsächlicher Stromverzögerung nicht positiv abzuzeichnen. Der explizite Nachfolger trennt imposed-I(t) und gleiche-U/R-Anregung und behebt genau dies, ohne Rate/Polung/Kern/Windungszahl/Stationarität zu streichen. Der vollständige direkte Induktionsvorgänger enthält bereits Flussänderungsquotient und Vorzeichenkonvention; kein neuer voller Analysis- oder Ableitungsknoten ist dafür nötig. Die neue D/P-Qualitätsentscheidung und der geregelte neue P-Owner bleiben separate Gates.",
+        "semanticScopeResolved": false,
+        "SourceKindD_P_A_M_VHumanM7ApprovalCreated": false
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/p72-fifteen-after-peer-independent-science-20261014-v1/fresh-all15-substantive-independent-review.actual.json",
+        "sha256": "sha256:dc82de7f4efb161acef580c63d7b07211aa5211dc32a728b444f7645bfcd04d5",
+        "bytes": 131276
+      },
+      "record": {
+        "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+        "decisionId": "p72-after-peer-author-v1-37f28bc4-def2-57cf-a06b-191dfd228205",
+        "authorAction": "review_required",
+        "nativeIndependentDecision": "pending",
+        "scientificState": "review_required",
+        "freshRationaleDe": "Das aktuelle alteP verwechselt identischen dI/dt-Versuch mit unterschiedlicher tatsächlicher Verzögerung. Die vorgelegte explizite neue P-Fassung trennt aufgeprägten Strom und gleicheU/R-Erregung und ist wissenschaftlich sinnvoll korrigiert; Rate,Polung,Stationarität und lineare Kerne bleiben. Aktueller alter Owner wird nicht damit abgenommen. Native/Requires-Review erzeugt keine D/P-Ledgerautorität.",
+        "freshLiteralSolutions": [
+          {
+            "caseId": "switch-on-off-polarity",
+            "wholeBriefHash": "sha256:9ee3d12cd2d6f8f679ca96462f484bf0afef50cc1cc9061f2f98694f5fa7ca1e",
+            "solutionDe": "Bei endlichen Schaltspannungen und vorhandenem Entladepfad steigt oder fällt der Spulenstrom kontinuierlich. Die Selbstinduktionspolung wirkt jeweils seiner Änderung entgegen, beim Abbau versucht sie den bisherigen Strom zu erhalten. Langsamere gleiche Gesamtänderung erzeugt kleineren Spannungsbetrag; stationär ist dI/dt=0 und die Selbstinduktionsspannung verschwindet. Ein pfadlos ideal geöffnetes System ist eine Modellgrenze."
+          },
+          {
+            "caseId": "two-coils-same-current-change",
+            "wholeBriefHash": "sha256:0972a7c4e9d25139afdd8dfcfb8e8ed903d03b1fada7e8e38d79ee8d3a5c0385",
+            "solutionDe": "Gleiche gemessene dI/dt ergeben bei größerem L einen größeren Spannungsbetrag. Verschiedene tatsächliche Stromverzögerung folgt unter bereits identischer Änderungsrate nicht; bei nur gleicher Ableitung können Ströme höchstens um einen Anfangswert differieren. Ein Stromverbot ist falsch. Der alte Brief bleibt in seiner Verzögerungslesart fehlerhaft und wird nicht durch eine erfundene erfüllende Lösung akzeptiert."
+          }
+        ],
+        "freshOwnDiscriminatorDe": "Neue lineare Spulen mit L=0,3 H und0,9 H bei aufgeprägtem I=4t A haben Spannungsbeträge1,2 und3,6 V bei identischem tatsächlichem Strom. Getrennt bei U=9 V,R=6 Ohm,I(0)=0 sind Anfangssteigungen30 und10 A/s und Zeitkonstanten0,05 und0,15 s. Verschiedene Erregungen dürfen nicht in einen Vergleich gemischt werden.",
+        "allRequiredExpectationIds": [
+          "current-change-alters-own-flux",
+          "lenz-response-delays-change",
+          "inductance-measures-coupling-strength"
+        ],
+        "allCoverageExpectations": {
+          "requiredExpectationIds": [
+            "current-change-alters-own-flux",
+            "lenz-response-delays-change",
+            "inductance-measures-coupling-strength"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "allVariationAxes": [
+          {
+            "id": "switching-phase",
+            "textDe": "Einschalten, stationärer Gleichstrom oder Ausschalten",
+            "textEn": "Switch-on, steady direct current, or switch-off"
+          },
+          {
+            "id": "change-rate",
+            "textDe": "Schnelle oder langsame Stromänderung bei gleichem Endstrom",
+            "textEn": "Fast or slow current change for the same final current"
+          },
+          {
+            "id": "inductor-design",
+            "textDe": "Windungszahl, linearer Kern und relative Induktivität",
+            "textEn": "Turn count, linear core, and relative inductance"
+          }
+        ],
+        "wholeCurrentInputFile": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/p72-fifteen-after-peer-successor-author-20261014-v1/inputs/physics/37f28bc4-def2-57cf-a06b-191dfd228205.whole-current.json",
+        "wholeCurrentInputFileSha256": "sha256:6e77706c62536c11e30af6c3e1197d5a9157702bda8d0f0b4e2f2a2cf78e4203",
+        "freshAuthorArgumentFileSha256": "sha256:2b7dc733c0933286960d13a13bdf0406f27dfd1d69399212979848fedc5af98d",
+        "currentOwnerBinding": {
+          "config": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.config.json",
+            "bytes": 1776,
+            "sha256": "sha256:4e2727ed4263b28f4a873dd3c40cce1466f080accd8908a66c2d026c0f6a47e5"
+          },
+          "recordFile": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.review.jsonl",
+            "bytes": 117140,
+            "sha256": "sha256:6d808e612cbd5997e718779497412a8041755efc5d1ca69a1116d08000e95845"
+          },
+          "recordLine": 10,
+          "recordLineSha256": "sha256:49a0bd80d865e357bc8fd42df10ce731bc7db15a0e2a25fc8be6277741beabd7",
+          "profileFingerprint": "sha256:7a04c4dd06d801a3ddd7a7c44360bf31e451250c50a32a19d1258dec1231dfe3",
+          "goalFingerprint": "sha256:764f9a1dd26c85fb6bbb2c4f71590fce545d969630d8b3efb5217f1d0063bfb2",
+          "reviewInputFingerprint": "sha256:502e01e16558d5d5a602f2b40c9d7aad261ed872546d2554c7ab5b68b731bd9b",
+          "profileStatus": "needs_human_review",
+          "reviewAuthority": "ai_candidate"
+        },
+        "allActualOccurrences": [
+          {
+            "key": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:37f28bc4-def2-57cf-a06b-191dfd228205",
+            "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "selected": true,
+            "definitionSha256": "sha256:c1590296c7bdc677fa5f543021993fd44334538a05e938090eaf85634f094ac4",
+            "semanticKind": "curricularAtomic",
+            "semanticKindBasis": {
+              "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+              "sourceFingerprint": "sha256:3b518393364a736612cb293cfd89b65f44842e13f65e0a213756d31883b6a151"
+            },
+            "technicalRole": "leaf",
+            "title": "Selbstinduktion und Induktivität",
+            "directRequires": [
+              "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+              "106417ed-80db-5490-a1ee-bb4160d3f2b4"
+            ],
+            "effectiveRequiresRef": "sha256:70d332624e5bb19735d29a075af140e0ae24a4ae5b884d600f450c6ab78c4fec",
+            "prerequisiteOriginsRef": "sha256:4f3006948cbbf9af1e81865b5eb928a79b4cec6a3981e9cd7fcfc71d1bcc31ed",
+            "prerequisiteContextStatus": "resolved",
+            "scope": {
+              "applicability": {
+                "jurisdiction": [
+                  "DE-BB",
+                  "DE-BE",
+                  "DE-BW",
+                  "DE-BY",
+                  "DE-HB",
+                  "DE-HE",
+                  "DE-HH",
+                  "DE-MV",
+                  "DE-NI",
+                  "DE-NW",
+                  "DE-RP",
+                  "DE-SH",
+                  "DE-SL",
+                  "DE-SN",
+                  "DE-ST",
+                  "DE-TH"
+                ]
+              },
+              "placements": null,
+              "extendedData": {},
+              "provenanceRef": {
+                "path": "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+                "recordId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+                "locator": "landscapes[landscapeId=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a].goalProvenance[37f28bc4-def2-57cf-a06b-191dfd228205]",
+                "recordSha256": "sha256:dd568e4381d7e2578adc1392257e61ae4ac3fb172971185e76236a5a78004750"
+              },
+              "sourceBindingFilesRef": "sha256:36f4d8ff27cd303545e0980c6784e9ccac72b11ca9d9546733bae0227c6e1a3a",
+              "sourceBindingRecordCount": 39,
+              "sourceBindingsSha256": "sha256:50ef85484ea13c40a2e373ddfcee9ca12c41c35723c24f63c842fd7979a5871e"
+            },
+            "sourceRef": null,
+            "reviewInput": {
+              "semanticSha256": "sha256:64d0564cd0a7f1f2c21192ed312cb8fea65a247ffe194b7b61d71a2bcf9218e9",
+              "prerequisitesSha256": "sha256:cbe8419f3fefa2e887cd340a0fe6ed113b569aeb516d9253e0af95f8cb327aaf",
+              "scopeSha256": "sha256:1aef89eb284debd0cec7383e9d67616187299086e2c3b37d09a2e5cf5d9316b9"
+            }
+          }
+        ],
+        "reviewInput": {
+          "semanticSha256": "sha256:64d0564cd0a7f1f2c21192ed312cb8fea65a247ffe194b7b61d71a2bcf9218e9",
+          "prerequisitesSha256": "sha256:cbe8419f3fefa2e887cd340a0fe6ed113b569aeb516d9253e0af95f8cb327aaf",
+          "scopeSha256": "sha256:1aef89eb284debd0cec7383e9d67616187299086e2c3b37d09a2e5cf5d9316b9"
+        },
+        "noSourceKindD_PFullQualityHumanM7Authority": true
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-13/p72-fifteen-after-peer-independent-science-20261014-v1/fresh-native-independent-review.bound.actual.json",
+        "sha256": "sha256:2c93dffe2de30d0ec73532ceb7c44f1a3e4e2ef907f0c15f486e1fd5bcb9993f",
+        "bytes": 17488
+      },
+      "record": {
+        "decisionId": "p72-after-peer-author-v1-37f28bc4-def2-57cf-a06b-191dfd228205",
+        "decision": "pending",
+        "reviewer": "/root/p72_fifteen_successors_independent_science/after-peer-fresh-review",
+        "rationale": "Das aktuelle alteP verwechselt identischen dI/dt-Versuch mit unterschiedlicher tatsächlicher Verzögerung. Die vorgelegte explizite neue P-Fassung trennt aufgeprägten Strom und gleicheU/R-Erregung und ist wissenschaftlich sinnvoll korrigiert; Rate,Polung,Stationarität und lineare Kerne bleiben. Aktueller alter Owner wird nicht damit abgenommen. Native/Requires-Review erzeugt keine D/P-Ledgerautorität.",
+        "reviewInput": {
+          "semanticSha256": "sha256:64d0564cd0a7f1f2c21192ed312cb8fea65a247ffe194b7b61d71a2bcf9218e9",
+          "prerequisitesSha256": "sha256:cbe8419f3fefa2e887cd340a0fe6ed113b569aeb516d9253e0af95f8cb327aaf",
+          "scopeSha256": "sha256:1aef89eb284debd0cec7383e9d67616187299086e2c3b37d09a2e5cf5d9316b9"
+        },
+        "proposalBindingSha256": "sha256:643f5b50fae9dc3a29cc5a11c164fb87d19603112a02c275474c4a7347cc8135"
+      }
+    },
+    {
+      "source": {
+        "path": "tmp/cross-subject-requires/canonical-gymnasium-effective-review-index-20261015-v17/effective-goal-index.json",
+        "sha256": "sha256:1c52f6013bbf370a7d1e45ca79bb285cd1204bf8f6f15351fb33bd22411f367b",
+        "bytes": 13637983
+      },
+      "record": {
+        "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+        "subject": "physics",
+        "title": "Selbstinduktion und Induktivität",
+        "selectedRecord": {
+          "role": "P72-fifteen-fresh-current-one-approved-peer",
+          "decisionId": "p72-after-peer-author-v1-37f28bc4-def2-57cf-a06b-191dfd228205",
+          "dependentGoalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "authorPath": "tmp/cross-subject-requires/p72-fifteen-after-peer-successor-author-20261014-v1/fifteen-current-native.bound.inert.json",
+          "authorSha256": "sha256:b431733dcc0aaee53668547d0b15b79c7ed0befd07b74a633c26ea688da32fac",
+          "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/p72-fifteen-after-peer-independent-science-20261014-v1/fresh-native-independent-review.bound.actual.json",
+          "reviewSha256": "sha256:2c93dffe2de30d0ec73532ceb7c44f1a3e4e2ef907f0c15f486e1fd5bcb9993f",
+          "reviewRecordIndex": 4,
+          "independentScientificVerdict": "pending",
+          "requiresDecision": "review_required",
+          "proposedForeignPrerequisiteIds": [],
+          "originalReviewInput": {
+            "semanticSha256": "sha256:64d0564cd0a7f1f2c21192ed312cb8fea65a247ffe194b7b61d71a2bcf9218e9",
+            "prerequisitesSha256": "sha256:cbe8419f3fefa2e887cd340a0fe6ed113b569aeb516d9253e0af95f8cb327aaf",
+            "scopeSha256": "sha256:1aef89eb284debd0cec7383e9d67616187299086e2c3b37d09a2e5cf5d9316b9"
+          },
+          "currentMatchesBaseline": true,
+          "currentMatchesProposed": true,
+          "technicallyCurrentApprovedBinding": false,
+          "technicalErrors": [],
+          "positiveEvidenceBodyBinding": {
+            "selectedExplicitProposedProfileBodySha256": null,
+            "originalProfileBodySha256": null,
+            "actualCurrentOwners": [
+              {
+                "config": {
+                  "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-057.config.json",
+                  "sha256": "sha256:61ee465ebbbdaaee9b42440d1b4110c99d4f68cee75710b45fbcf03a7378df3e",
+                  "bytes": 1766
+                },
+                "review": {
+                  "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/approved-existing-math9-safe-portable-v1/current-P/retained-owner-06.review.jsonl",
+                  "sha256": "sha256:c1fdd3952684844899bb11ac2df1bde0a911ed8a14fac9b0e2d037c43bce061e",
+                  "bytes": 110919
+                },
+                "profileBodySha256": "sha256:182f585ced7cbc5d34787040d3cca56ecd2537fe0e227b9a0209003e3d1b6ad4",
+                "profileFingerprint": "sha256:7a04c4dd06d801a3ddd7a7c44360bf31e451250c50a32a19d1258dec1231dfe3",
+                "completeRecordSha256": "sha256:241563588868021053dc03c62f8f98e6b144d8a4142ccb3c96f5fc86e3bb3a3a"
+              }
+            ],
+            "explicitConditionalProfileSatisfied": null,
+            "originalProfileStillActive": null,
+            "explicitDirectProfileFingerprint": null,
+            "explicitDirectProfileFingerprintMatches": null,
+            "explicitDirectProfileBodySha256": null,
+            "explicitDirectProfileBodyMatches": null,
+            "explicitSelectedProfileBindingSatisfied": true,
+            "absenceOfAnExplicitProfileConditionDoesNotCreateNewWholeBodyScientificApproval": true
+          },
+          "nativeQualityOrAdoptionApprovalCreated": false
+        },
+        "selectionBasis": "later exact revision of this same goal; originals preserved",
+        "originalDecisionHistory": [
+          {
+            "role": "primary",
+            "decisionId": "canonical-physics-37f28bc4-def2-57cf-a06b-191dfd228205",
+            "dependentGoalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+            "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-003.proposal-candidate.json",
+            "authorSha256": "sha256:11959927b7b1524b746f7b3522010e1775423fceb92c0d8d6ca54f6b8f3f9f7b",
+            "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-003.independent-review.json",
+            "reviewSha256": "sha256:c70e433a6fa913db6504bc6cd88aa5b965523f126de2463da05356e76660dfd0",
+            "reviewRecordIndex": 65,
+            "independentScientificVerdict": "approved",
+            "requiresDecision": "no_cross_subject_required",
+            "proposedForeignPrerequisiteIds": [],
+            "originalReviewInput": {
+              "semanticSha256": "sha256:64d0564cd0a7f1f2c21192ed312cb8fea65a247ffe194b7b61d71a2bcf9218e9",
+              "prerequisitesSha256": "sha256:cbe8419f3fefa2e887cd340a0fe6ed113b569aeb516d9253e0af95f8cb327aaf",
+              "scopeSha256": "sha256:1aef89eb284debd0cec7383e9d67616187299086e2c3b37d09a2e5cf5d9316b9"
+            },
+            "currentMatchesBaseline": true,
+            "currentMatchesProposed": true,
+            "technicallyCurrentApprovedBinding": true,
+            "technicalErrors": [],
+            "positiveEvidenceBodyBinding": {
+              "selectedExplicitProposedProfileBodySha256": null,
+              "originalProfileBodySha256": null,
+              "actualCurrentOwners": [
+                {
+                  "config": {
+                    "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-057.config.json",
+                    "sha256": "sha256:61ee465ebbbdaaee9b42440d1b4110c99d4f68cee75710b45fbcf03a7378df3e",
+                    "bytes": 1766
+                  },
+                  "review": {
+                    "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/approved-existing-math9-safe-portable-v1/current-P/retained-owner-06.review.jsonl",
+                    "sha256": "sha256:c1fdd3952684844899bb11ac2df1bde0a911ed8a14fac9b0e2d037c43bce061e",
+                    "bytes": 110919
+                  },
+                  "profileBodySha256": "sha256:182f585ced7cbc5d34787040d3cca56ecd2537fe0e227b9a0209003e3d1b6ad4",
+                  "profileFingerprint": "sha256:7a04c4dd06d801a3ddd7a7c44360bf31e451250c50a32a19d1258dec1231dfe3",
+                  "completeRecordSha256": "sha256:241563588868021053dc03c62f8f98e6b144d8a4142ccb3c96f5fc86e3bb3a3a"
+                }
+              ],
+              "explicitConditionalProfileSatisfied": null,
+              "originalProfileStillActive": null,
+              "explicitDirectProfileFingerprint": null,
+              "explicitDirectProfileFingerprintMatches": null,
+              "explicitDirectProfileBodySha256": null,
+              "explicitDirectProfileBodyMatches": null,
+              "explicitSelectedProfileBindingSatisfied": true,
+              "absenceOfAnExplicitProfileConditionDoesNotCreateNewWholeBodyScientificApproval": true
+            },
+            "nativeQualityOrAdoptionApprovalCreated": false
+          },
+          {
+            "role": "physics72-current-whole-body-supplement-peer",
+            "decisionId": "whole-physics-P72-current-negative-root-v1-37f28bc4-def2-57cf-a06b-191dfd228205",
+            "dependentGoalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+            "authorPath": "tmp/cross-subject-requires/physics-whole-positive-coverage-intake-root-20261014-v1/72-native-proposal.bound.inert.json",
+            "authorSha256": "sha256:1adad1696aa75541db2113300619c48df2829831aa6fa62f9fc917635c6588c5",
+            "reviewPath": "tmp/cross-subject-requires/physics72-whole-positive-independent-supplement-20261014-v1/all72-native-independent-review.inert.json",
+            "reviewSha256": "sha256:288ccffd46a1eff897c9327074aef7e30dc6f85b43104085bea66998ec40bf3e",
+            "reviewRecordIndex": 15,
+            "independentScientificVerdict": "pending",
+            "requiresDecision": "no_cross_subject_required",
+            "proposedForeignPrerequisiteIds": [],
+            "originalReviewInput": {
+              "semanticSha256": "sha256:64d0564cd0a7f1f2c21192ed312cb8fea65a247ffe194b7b61d71a2bcf9218e9",
+              "prerequisitesSha256": "sha256:cbe8419f3fefa2e887cd340a0fe6ed113b569aeb516d9253e0af95f8cb327aaf",
+              "scopeSha256": "sha256:1aef89eb284debd0cec7383e9d67616187299086e2c3b37d09a2e5cf5d9316b9"
+            },
+            "currentMatchesBaseline": true,
+            "currentMatchesProposed": true,
+            "technicallyCurrentApprovedBinding": false,
+            "technicalErrors": [],
+            "positiveEvidenceBodyBinding": {
+              "selectedExplicitProposedProfileBodySha256": null,
+              "originalProfileBodySha256": null,
+              "actualCurrentOwners": [
+                {
+                  "config": {
+                    "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-057.config.json",
+                    "sha256": "sha256:61ee465ebbbdaaee9b42440d1b4110c99d4f68cee75710b45fbcf03a7378df3e",
+                    "bytes": 1766
+                  },
+                  "review": {
+                    "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/approved-existing-math9-safe-portable-v1/current-P/retained-owner-06.review.jsonl",
+                    "sha256": "sha256:c1fdd3952684844899bb11ac2df1bde0a911ed8a14fac9b0e2d037c43bce061e",
+                    "bytes": 110919
+                  },
+                  "profileBodySha256": "sha256:182f585ced7cbc5d34787040d3cca56ecd2537fe0e227b9a0209003e3d1b6ad4",
+                  "profileFingerprint": "sha256:7a04c4dd06d801a3ddd7a7c44360bf31e451250c50a32a19d1258dec1231dfe3",
+                  "completeRecordSha256": "sha256:241563588868021053dc03c62f8f98e6b144d8a4142ccb3c96f5fc86e3bb3a3a"
+                }
+              ],
+              "explicitConditionalProfileSatisfied": null,
+              "originalProfileStillActive": null,
+              "explicitDirectProfileFingerprint": null,
+              "explicitDirectProfileFingerprintMatches": null,
+              "explicitDirectProfileBodySha256": null,
+              "explicitDirectProfileBodyMatches": null,
+              "explicitSelectedProfileBindingSatisfied": true,
+              "absenceOfAnExplicitProfileConditionDoesNotCreateNewWholeBodyScientificApproval": true
+            },
+            "nativeQualityOrAdoptionApprovalCreated": false
+          },
+          {
+            "role": "P72-fifteen-fresh-current-one-approved-peer",
+            "decisionId": "p72-after-peer-author-v1-37f28bc4-def2-57cf-a06b-191dfd228205",
+            "dependentGoalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+            "authorPath": "tmp/cross-subject-requires/p72-fifteen-after-peer-successor-author-20261014-v1/fifteen-current-native.bound.inert.json",
+            "authorSha256": "sha256:b431733dcc0aaee53668547d0b15b79c7ed0befd07b74a633c26ea688da32fac",
+            "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/p72-fifteen-after-peer-independent-science-20261014-v1/fresh-native-independent-review.bound.actual.json",
+            "reviewSha256": "sha256:2c93dffe2de30d0ec73532ceb7c44f1a3e4e2ef907f0c15f486e1fd5bcb9993f",
+            "reviewRecordIndex": 4,
+            "independentScientificVerdict": "pending",
+            "requiresDecision": "review_required",
+            "proposedForeignPrerequisiteIds": [],
+            "originalReviewInput": {
+              "semanticSha256": "sha256:64d0564cd0a7f1f2c21192ed312cb8fea65a247ffe194b7b61d71a2bcf9218e9",
+              "prerequisitesSha256": "sha256:cbe8419f3fefa2e887cd340a0fe6ed113b569aeb516d9253e0af95f8cb327aaf",
+              "scopeSha256": "sha256:1aef89eb284debd0cec7383e9d67616187299086e2c3b37d09a2e5cf5d9316b9"
+            },
+            "currentMatchesBaseline": true,
+            "currentMatchesProposed": true,
+            "technicallyCurrentApprovedBinding": false,
+            "technicalErrors": [],
+            "positiveEvidenceBodyBinding": {
+              "selectedExplicitProposedProfileBodySha256": null,
+              "originalProfileBodySha256": null,
+              "actualCurrentOwners": [
+                {
+                  "config": {
+                    "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-057.config.json",
+                    "sha256": "sha256:61ee465ebbbdaaee9b42440d1b4110c99d4f68cee75710b45fbcf03a7378df3e",
+                    "bytes": 1766
+                  },
+                  "review": {
+                    "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/approved-existing-math9-safe-portable-v1/current-P/retained-owner-06.review.jsonl",
+                    "sha256": "sha256:c1fdd3952684844899bb11ac2df1bde0a911ed8a14fac9b0e2d037c43bce061e",
+                    "bytes": 110919
+                  },
+                  "profileBodySha256": "sha256:182f585ced7cbc5d34787040d3cca56ecd2537fe0e227b9a0209003e3d1b6ad4",
+                  "profileFingerprint": "sha256:7a04c4dd06d801a3ddd7a7c44360bf31e451250c50a32a19d1258dec1231dfe3",
+                  "completeRecordSha256": "sha256:241563588868021053dc03c62f8f98e6b144d8a4142ccb3c96f5fc86e3bb3a3a"
+                }
+              ],
+              "explicitConditionalProfileSatisfied": null,
+              "originalProfileStillActive": null,
+              "explicitDirectProfileFingerprint": null,
+              "explicitDirectProfileFingerprintMatches": null,
+              "explicitDirectProfileBodySha256": null,
+              "explicitDirectProfileBodyMatches": null,
+              "explicitSelectedProfileBindingSatisfied": true,
+              "absenceOfAnExplicitProfileConditionDoesNotCreateNewWholeBodyScientificApproval": true
+            },
+            "nativeQualityOrAdoptionApprovalCreated": false
+          }
+        ],
+        "unresolvedDistinctFourthBatchDissent": false,
+        "historicalDistinctFourthBatchVerdictsRemainSeparate": true,
+        "fourthBatchDisagreementReconciledHere": false,
+        "effectiveCurrentScientificBindingAccepted": false,
+        "explicitReviewedProfileCondition": {
+          "selectedExplicitProposedProfileBodySha256": null,
+          "originalProfileBodySha256": null,
+          "actualCurrentOwners": [
+            {
+              "config": {
+                "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-057.config.json",
+                "sha256": "sha256:61ee465ebbbdaaee9b42440d1b4110c99d4f68cee75710b45fbcf03a7378df3e",
+                "bytes": 1766
+              },
+              "review": {
+                "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/approved-existing-math9-safe-portable-v1/current-P/retained-owner-06.review.jsonl",
+                "sha256": "sha256:c1fdd3952684844899bb11ac2df1bde0a911ed8a14fac9b0e2d037c43bce061e",
+                "bytes": 110919
+              },
+              "profileBodySha256": "sha256:182f585ced7cbc5d34787040d3cca56ecd2537fe0e227b9a0209003e3d1b6ad4",
+              "profileFingerprint": "sha256:7a04c4dd06d801a3ddd7a7c44360bf31e451250c50a32a19d1258dec1231dfe3",
+              "completeRecordSha256": "sha256:241563588868021053dc03c62f8f98e6b144d8a4142ccb3c96f5fc86e3bb3a3a"
+            }
+          ],
+          "explicitConditionalProfileSatisfied": null,
+          "originalProfileStillActive": null,
+          "explicitDirectProfileFingerprint": null,
+          "explicitDirectProfileFingerprintMatches": null,
+          "explicitDirectProfileBodySha256": null,
+          "explicitDirectProfileBodyMatches": null,
+          "explicitSelectedProfileBindingSatisfied": true,
+          "absenceOfAnExplicitProfileConditionDoesNotCreateNewWholeBodyScientificApproval": true
+        },
+        "historicalEarlierSelectedPCondition": null,
+        "activeForeignRequires": [],
+        "firstTenAdoptionRecorded": false,
+        "firstTenAdoptionEvidence": null,
+        "otherNativeQualityOrAdoptionApprovedByThisIndex": false
+      }
+    }
+  ],
+  "authorResponse": "Agree with the retained drive-condition objection after fresh derivation. Disagree with the blanket earlier no-new-Math conclusion: eb1… supplies mean ΔΦ/Δt only; the mandatory fresh I(t) graph requires local rate interpretation, and current b1dcc… whole Goal/P is the narrow available match. No symbol manipulation, secant-limit derivation or ODE competence is claimed necessary."
+}

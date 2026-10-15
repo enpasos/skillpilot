@@ -291,9 +291,32 @@ Interpretation rules:
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - composition-view references may explicitly use `projectionRole: "target"` or `projectionRole: "prerequisiteOnly"`; an omitted role means `target`
 - projection roles are authored scope semantics and must never be inferred automatically from phase, year, stage, or `requires`
+- A goal may opt into `extendedData.applicabilityContexts` for reviewed eligibility
+  in exact scope combinations. Each closed record requires school form,
+  jurisdiction, stage, duration model and course profile; records are alternatives,
+  while every dimension within one record must match. Missing dimensions remain
+  unresolved. An explicit `null` is a resolved non-applicable value, never a
+  wildcard; Sek I has no course profile. An empty list permits no context.
+  Eligibility supplies neither source evidence nor target enrollment: a selected
+  source composition, explicit supplement or matching primary placement must
+  authorize the target. Combined stage/course views keep their actual source
+  branch scopes, including in the learner tree. An explicitly selected supplement
+  can supply its admitted targets and navigation without selecting the whole
+  ordinary subject. Legacy applicability remains unchanged for goals without
+  this field; it cannot coexist with the opted-in field. Package-v1 rejects this
+  new field until a supported runtime contract is negotiated.
 - only `target` goals participate in the learner-facing tree, frontier, progress, and completion scope; `prerequisiteOnly` goals retain their stable canonical IDs and global mastery values solely for prerequisite checks
 - within each matched composition view, when overlapping composition references assign different projection roles, specificity decides: a direct `goalEntry` overrides a role inherited from a `canonicalSubtree`, and the nearest/deepest matching `canonicalSubtree` overrides a broader subtree; only at equal specificity does `target` win
 - the committed Personal Curriculum joins the resolved `target` sets of independently selected subject views; a `prerequisiteOnly` reference in another selected subject does not remove an independently selected target. Combined course-profile source views are resolved by the reviewed course-profile merger before this subject-view union.
+- Missing cross-subject preparation can be selected as an explicit, reviewed,
+  Mathematics-owned supplement without enrolling the learner in the whole
+  ordinary Mathematics curriculum. Its named targets require backend-issued
+  selection authority; `requires` alone never creates targets, consent or mastery.
+  Preserve the canonical goal IDs and global mastery, combine independently
+  selected ordinary and supplemental targets without duplicate counting, and
+  distinguish formal Mathematics-source coverage from reviewed didactic
+  inference. An incompatible saved selection must remain visible for explicit
+  removal before changing scope or resetting configuration; never silently drop it.
 - within one resolved learner-facing scope, the default tree should show each goal at most once and under at most one visible parent
 - Bundesland-specific canonical supplement branches under a broad shared root may use `extendedData.applicabilityMappingInheritance = "boundary"` on the supplement cluster. This prevents old broad ancestor-cluster source mappings from being treated as source evidence for the supplement's atomic descendants, while direct mappings/provenance inside the branch and child-union visibility upward still count.
 - Practice or assessment terminal goals may use `extendedData.applicabilityFromRequires = true` when their visibility should be derived exactly from their prerequisite goals. This is for local autonomy/exam endpoints, not for ordinary content atoms, and the resulting `assessment-requires` evidence is applicability evidence only, not source-coverage evidence.
@@ -884,6 +907,12 @@ Rules:
 * Keep detailed didactic coverage in separate bilingual, fingerprint-bound goal
   evidence profiles. AI output can create review candidates only; current human
   approval is required before a profile may become authoritative.
+* A declared required task stimulus is part of the assessment evidence, separately
+  from an optional learning-goal visualization. Bind its exact content-addressed
+  source and public asset bytes even when optional visualization review is off.
+  Replacing that stimulus makes its evidence input stale. Goals without such a
+  declaration retain their existing evidence fingerprints; unrelated references
+  do not become mandatory assessment material by implication.
 * The fast multi-AI loop is the primary early improvement engine. The public
   teacher channel is installed as a slow, moderated signal and challenge path;
   silence is not evidence and one forceful report cannot create a global rule.

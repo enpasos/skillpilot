@@ -1,0 +1,97 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-math-positive-evidence-v1-b030-atlas-context-recheck-18-current-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+  "goalFingerprint": "sha256:70944a923ab0a81276dffe1c609255296acf419f8e07f9b7859f1c3d6b39df6d",
+  "reviewInputFingerprint": "sha256:a2645305a171aca9ee523c691e3be50576ee29ec0f61459cde8a4b54a6ebb5c9",
+  "profileFingerprint": "sha256:a4577d12b1f196c70afb3cc795af6d339214163d5b6f488b7f2ce4c68e555087",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-09-05T20:00:00.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-030-positive-understanding-candidate-author-2026-09-05",
+  "reason": "DE: Das Profil bindet a, b, c und d an Mittellinie, Amplitude, Periodenlänge und Phasenverschiebung und berücksichtigt die Nicht-Eindeutigkeit äquivalenter Terme. Drei datenbasierte Fälle wechseln Sinus/Kosinus, Vorzeichen und Kontext; a ≠ 0 und b ≠ 0 markieren den nicht entarteten Standardfall. EN: The profile binds a, b, c, and d to midline, amplitude, period, and phase shift and accounts for non-uniqueness of equivalent expressions. Three data-based cases vary sine/cosine, signs, and context; a ≠ 0 and b ≠ 0 mark the non-degenerate standard case.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "representation",
+    "expectations": [
+      {
+        "id": "parameter-feature-relations",
+        "essentialUnderstandingDe": "Für y = a sin(bx+c)+d sind |a| die Amplitude, d die Mittellinie, 2π/|b| die Periodenlänge und −c/b eine Phasenverschiebung; Vorzeichen von a beeinflusst die Orientierung.",
+        "essentialUnderstandingEn": "For y = a sin(bx+c)+d, |a| is amplitude, d the midline, 2π/|b| the period, and −c/b a phase shift; the sign of a affects orientation.",
+        "observablePerformanceDe": "Die lernende Person liest oder bestimmt die Parameter aus neuen Merkmalen und erklärt jede Größe einschließlich Einheit und Vorzeichenwirkung.",
+        "observablePerformanceEn": "The learner reads or determines parameters from fresh features and explains each quantity, including units and sign effects."
+      },
+      {
+        "id": "equivalent-parameterizations",
+        "essentialUnderstandingDe": "Wegen Periodizität und Sinus-Kosinus-Beziehungen kann dieselbe Funktion mehrere Parameterdarstellungen besitzen; eine gefundene Darstellung muss durch charakteristische Werte geprüft werden. Bei a = 0 oder b = 0 entarten Amplitude beziehungsweise Periodeninterpretation.",
+        "essentialUnderstandingEn": "Because of periodicity and sine-cosine identities, the same function can have multiple parameter representations; a proposed representation must be checked with characteristic values. For a = 0 or b = 0, amplitude or period interpretation degenerates.",
+        "observablePerformanceDe": "Die lernende Person formuliert einen passenden Term, prüft Mittellinie, Extrema, Periode und Phase und erkennt eine äquivalente Alternative.",
+        "observablePerformanceEn": "The learner formulates a suitable expression, checks midline, extrema, period, and phase, and recognizes an equivalent alternative."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "parameter-feature-relations",
+        "equivalent-parameterizations"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 3,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "base-function",
+        "textDe": "Sinus- oder Kosinusdarstellung",
+        "textEn": "sine or cosine representation"
+      },
+      {
+        "id": "parameter-sign",
+        "textDe": "positive oder negative Amplitude sowie positive oder negative Phase",
+        "textEn": "positive or negative amplitude and positive or negative phase"
+      },
+      {
+        "id": "source",
+        "textDe": "Term, charakteristische Daten oder Sachkontext",
+        "textEn": "expression, characteristic data, or context"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "term-feature-base",
+        "taskDemandDe": "Bestimme und deute Amplitude, Mittellinie, Periodenlänge und Phasenverschiebung von y = −3 sin(2x−π/2)+4. Prüfe die Verschiebung an einem charakteristischen Argument.",
+        "taskDemandEn": "Determine and interpret amplitude, midline, period, and phase shift of y = −3 sin(2x−π/2)+4. Check the shift at a characteristic argument.",
+        "expectedPerformanceDe": "Die lernende Person erhält Amplitude 3, Mittellinie 4, Periode π und Verschiebung π/4 nach rechts; das Minus spiegelt den Sinusverlauf an der Mittellinie.",
+        "expectedPerformanceEn": "The learner obtains amplitude 3, midline 4, period π, and a shift π/4 to the right; the minus sign reflects the sine trace across the midline.",
+        "understandingFocusDe": "Direkter Nachweis der korrekten Relation −c/b statt bloßer Deutung von c.",
+        "understandingFocusEn": "Direct evidence of the correct relation −c/b rather than merely interpreting c."
+      },
+      {
+        "id": "feature-to-expression-transfer",
+        "taskDemandDe": "Eine periodische Funktion hat Mittellinie −1, Maximum 4, Minimum −6, Periode 8 und erreicht bei x = 2 erstmals nach x = 0 ein Maximum. Gib einen passenden Kosinusterm an und prüfe ihn rechnerisch.",
+        "taskDemandEn": "A periodic function has midline −1, maximum 4, minimum −6, period 8, and reaches its first maximum after x = 0 at x = 2. Give a suitable cosine expression and check it algebraically.",
+        "expectedPerformanceDe": "Die lernende Person nutzt Amplitude 5, b = π/4 und beispielsweise y = 5 cos((π/4)(x−2))−1; Einsetzen bei x = 2 und vier Einheiten später bestätigt Maximum und Minimum.",
+        "expectedPerformanceEn": "The learner uses amplitude 5, b = π/4, and for example y = 5 cos((π/4)(x−2))−1; substitution at x = 2 and four units later confirms maximum and minimum.",
+        "understandingFocusDe": "Erster unabhängiger Transfer von Merkmalen zum Term mit eigener Prüfung.",
+        "understandingFocusEn": "First independent transfer from features to an expression with an independent check."
+      },
+      {
+        "id": "equivalent-tide-model-transfer",
+        "taskDemandDe": "Ein Wasserstand schwankt zwischen 1 m und 5 m mit Periode 6 h und liegt bei t = 0 im Maximum. Formuliere je einen äquivalenten Sinus- und Kosinusterm und erkläre, warum Parameterwerte nicht eindeutig sind; nenne den Gültigkeitsbereich des Modells.",
+        "taskDemandEn": "A water level oscillates between 1 m and 5 m with a 6 h period and is at its maximum at t = 0. Formulate equivalent sine and cosine expressions and explain why parameter values are not unique; state the model's validity domain.",
+        "expectedPerformanceDe": "Die lernende Person gibt etwa h(t)=3+2cos(πt/3) und h(t)=3+2sin(πt/3+π/2) an und prüft Gleichheit; das idealisierte Modell gilt nur im betrachteten Zeitraum bei annähernd stabiler periodischer Dynamik.",
+        "expectedPerformanceEn": "The learner gives, for example, h(t)=3+2cos(πt/3) and h(t)=3+2sin(πt/3+π/2) and checks equivalence; the idealized model applies only over the considered interval with approximately stable periodic dynamics.",
+        "understandingFocusDe": "Zweiter unabhängiger Transfer zu Kontext, äquivalenten Parametrisierungen und Modellgrenze.",
+        "understandingFocusEn": "Second independent transfer to context, equivalent parameterizations, and a model boundary."
+      }
+    ]
+  }
+}

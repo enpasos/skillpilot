@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-10-14T04:44:54.129Z",
+  "exactWallStartEndNotRecordedForTheseToolCalls": true,
+  "initialPreconditionFailure": {
+    "exitCode": 1,
+    "error": "Missing generated artifact: native-two/dual-summary.json",
+    "correctedBy": "normal summarize --write before synthesis",
+    "originalScienceChanged": false
+  },
+  "summarize": {
+    "exitCode": 0,
+    "output": "Standalone dual summary materialized: chemie-rest6-current414-two-shared-first-pass-20261014-v2; goals=2; requiresSynthesis=2\n"
+  },
+  "calls": [
+    {
+      "name": "synthesis",
+      "cmd": "node /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-native2-plus-f7-475-existing292-inactive-integration-technical-20261014-v1/config/native-two.original-common-v2.materialization-address-only.config.json --authoring curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-native2-plus-f7-475-existing292-inactive-integration-technical-20261014-v1/native-two/synthesis-authoring.json --write",
+      "chunk_id": "483a3e",
+      "wall_time_seconds": 0.803810627,
+      "exit_code": 0,
+      "original_token_count": 50,
+      "output": "Standalone synthesis manifest materialized: chemie-rest6-current414-two-shared-first-pass-20261014-v2; decisions=2; fingerprint=sha256:fa58a3aaa2223841b0b4dde001ebbbc2628f4719ca116cd10ddf753fa64dc1a4\n"
+    },
+    {
+      "name": "resolutions",
+      "cmd": "node /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs app/scripts/materializeGoalDescriptionRolloutResolutions.ts --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-native2-plus-f7-475-existing292-inactive-integration-technical-20261014-v1/config/native-two.original-common-v2.materialization-address-only.config.json --synthesis-manifest curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-native2-plus-f7-475-existing292-inactive-integration-technical-20261014-v1/native-two/synthesis-decisions.json --write",
+      "chunk_id": "0ada7a",
+      "wall_time_seconds": 0.992915462,
+      "exit_code": 0,
+      "original_token_count": 54,
+      "output": "Standalone manifest-bound resolutions materialized: chemie-rest6-current414-two-shared-first-pass-20261014-v2; strict=2/2; deferred=0; manifest=sha256:fa58a3aaa2223841b0b4dde001ebbbc2628f4719ca116cd10ddf753fa64dc1a4\n"
+    },
+    {
+      "name": "finalize",
+      "cmd": "node /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs app/scripts/materializeGoalDescriptionRolloutBatch.ts finalize --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-native2-plus-f7-475-existing292-inactive-integration-technical-20261014-v1/config/native-two.original-common-v2.materialization-address-only.config.json --write",
+      "chunk_id": "a5638e",
+      "wall_time_seconds": 1.001583882,
+      "session_id": 66483,
+      "original_token_count": 0,
+      "output": "Standalone resolution index materialized: chemie-rest6-current414-two-shared-first-pass-20261014-v2; strict=2/2; live denominator owned by central report\n",
+      "exit_code": 0,
+      "completedPoll": {
+        "chunk_id": "ac8c24",
+        "exit_code": 0
+      }
+    }
+  ]
+}

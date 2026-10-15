@@ -1,0 +1,242 @@
+{
+  "role": "independent scientific Requires peer",
+  "freshIndependentChecks": 17,
+  "checks": [
+    {
+      "id": "fresh-switch-on-voltage-amplitudes",
+      "description": "10 V, total 4 ohm, 0.8 H, I0=0, t=0.2 s",
+      "independentCalculation": "tau=.8/4=.2; I=(10/4)(1-exp(-1)); UR=4I; UL=10-UR",
+      "result": {
+        "tau_s": 0.2,
+        "I_A": 1.5803013970713942,
+        "UR_V": 6.321205588285577,
+        "UL_V": 3.6787944117144233
+      },
+      "passed": true
+    },
+    {
+      "id": "same-current-does-not-prove-delay",
+      "description": "Two imposed current histories I(t)=2+0.5t A with LA=.8 H, LB=1.6 H",
+      "independentCalculation": "dI/dt=.5 A/s, induced emf=-L dI/dt",
+      "result": {
+        "I_equal": true,
+        "emfA_V": -0.4,
+        "emfB_V": -0.8,
+        "delay_difference": false
+      },
+      "passed": true
+    },
+    {
+      "id": "separate-equal-U-R-zero-I0",
+      "description": "Same U=10 V, R=4 ohm, I0=0; L doubles .8→1.6 H",
+      "independentCalculation": "At .1 s use I=(U/R)(1-exp(-t/tau)); tau doubles and U/R is unchanged",
+      "result": {
+        "IA_A": 0.9836733507184164,
+        "IB_A": 0.5529980423214877,
+        "Iinf_A": 2.5,
+        "tauA_s": 0.2,
+        "tauB_s": 0.4
+      },
+      "passed": true
+    },
+    {
+      "id": "height-versus-local-rate",
+      "description": "I(t)=3+(t-1)^2 A near t=1 s",
+      "independentCalculation": "I(1)=3 A but I'(1)=0 A/s; I(.5)=I(1.5)=3.25 A",
+      "result": {
+        "emf_at_1": 0,
+        "constant_on_neighborhood": false,
+        "mean_rate_.5_to_1.5_A_per_s": 0
+      },
+      "passed": true
+    },
+    {
+      "id": "equal-mean-different-local",
+      "description": "I_A(t)=t A and I_B(t)=t² A over [0,1] s",
+      "independentCalculation": "Both mean rates=1 A/s; local rates at .25 s are 1 and .5 A/s",
+      "result": {
+        "mean_does_not_determine_local": true,
+        "emf_ratio_same_L_at_.25": 2
+      },
+      "passed": true
+    },
+    {
+      "id": "current-large-emf-zero",
+      "description": "Steady 8 A compared with instant I=0 A, dI/dt=4 A/s",
+      "independentCalculation": "For L=.8 H, steady emf=0 V; latter emf=-3.2 V",
+      "result": {
+        "large_current_not_large_emf": true
+      },
+      "passed": true
+    },
+    {
+      "id": "slower-same-total-change",
+      "description": "delta I=2 A over .25 s or 1 s in a linear ramp",
+      "independentCalculation": "For .8 H, magnitudes .8*8=6.4 V and .8*2=1.6 V",
+      "result": {
+        "slower_emf_magnitude_ratio": 0.25
+      },
+      "passed": true
+    },
+    {
+      "id": "switch-off-two-resistances",
+      "description": "Closed source-free discharge, same L=.8 H, same I0=1.5 A; total R=4 or 8 ohm",
+      "independentCalculation": "I=I0 exp(-tR/L); UR=RI; UL=-RI",
+      "result": [
+        {
+          "R_ohm": 4,
+          "tau_s": 0.2,
+          "I0_A": 1.5,
+          "UR0_V": 6.0,
+          "UL0_V": -6.0,
+          "I_at_.1_A": 0.9097959895689501,
+          "UR_at_.1_V": 3.6391839582758005,
+          "UL_at_.1_V": -3.6391839582758005
+        },
+        {
+          "R_ohm": 8,
+          "tau_s": 0.1,
+          "I0_A": 1.5,
+          "UR0_V": 12.0,
+          "UL0_V": -12.0,
+          "I_at_.1_A": 0.5518191617571635,
+          "UR_at_.1_V": 4.414553294057308,
+          "UL_at_.1_V": -4.414553294057308
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "total-resistance-trap",
+      "description": "External resistor=3 ohm, coil resistance=1 ohm, L=.8 H",
+      "independentCalculation": "Rtotal=4 ohm; tau=.2 s, not .8/3 s; ideal inductive voltage excludes coil ohmic drop",
+      "result": {
+        "tau_correct_s": 0.2,
+        "tau_wrong_s": 0.26666666666666666,
+        "ideal_coil_voltage_definition_required": true
+      },
+      "passed": true
+    },
+    {
+      "id": "nonzero-initial-current-and-voltage-sign",
+      "description": "Step to 6 V with R=4 ohm, L=.8 H, I0=2.5 A",
+      "independentCalculation": "Iinf=1.5 A; I=1.5+1*exp(-t/.2); UL0=6-4*2.5=-4 V, although source remains positive",
+      "result": [
+        {
+          "t_s": 0,
+          "I_A": 2.5,
+          "UR_V": 10.0,
+          "UL_V": -4.0
+        },
+        {
+          "t_s": 0.2,
+          "I_A": 1.8678794411714423,
+          "UR_V": 7.471517764685769,
+          "UL_V": -1.4715177646857693
+        },
+        {
+          "t_s": 1,
+          "I_A": 1.5067379469990854,
+          "UR_V": 6.0269517879963415,
+          "UL_V": -0.02695178799634146
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "general-step-affine-reduction",
+      "description": "Known physical Iinf=U/R supplies the offset",
+      "independentCalculation": "D(t)=I(t)-Iinf; equal-interval D ratios are q=exp(-dt/tau); U_R=R I and U_L=U-R I use the same q",
+      "result": {
+        "new_free_limit_inference_required": false,
+        "new_differential_equation_solution_required": false
+      },
+      "passed": true
+    },
+    {
+      "id": "multiple-data-points-and-residuals",
+      "description": "Switch-on data at 0,.1,.2,.3,.4 s, ±.005 A",
+      "independentCalculation": "Use deficits 2.5-I; ratios near exp(-.5); tau=-.1/log(q)=.2 s; L=4*.2=.8 H; compare all residuals",
+      "result": {
+        "measurements_A": [
+          0,
+          0.984,
+          1.581,
+          1.942,
+          2.162
+        ],
+        "model_A": [
+          0.0,
+          0.9836733507184164,
+          1.5803013970713942,
+          1.9421745996289255,
+          2.161661791908468
+        ],
+        "residuals_A": [
+          0.0,
+          0.00032664928158354645,
+          0.000698602928605796,
+          -0.00017459962892552028,
+          0.00033820809153173315
+        ],
+        "L_H": 0.8,
+        "fit_admissible_with_given_uncertainty": true
+      },
+      "passed": true
+    },
+    {
+      "id": "bad-offset-do-not-force-zero",
+      "description": "Instrument reads .10 A at physical zero with independently confirmed zero-current initial condition",
+      "independentCalculation": "Fit residual pattern or stated zero check flags sensor offset; raw I(0)=.10 is not evidence of a discontinuous inductor current",
+      "result": {
+        "must_distinguish_instrument_offset_from_initial_current": true
+      },
+      "passed": true
+    },
+    {
+      "id": "faster-tau-does-not-mean-greater-I-at-fixed-time",
+      "description": "Switch-on from zero, U=10 V,L=.8 H; compare R=4 and 8 ohm at .1 s",
+      "independentCalculation": "R doubles, tau halves but Iinf halves. I4=2.5(1-e^-.5), I8=1.25(1-e^-1)",
+      "result": {
+        "I4_A": 0.9836733507184164,
+        "I8_A": 0.7901506985356971
+      },
+      "passed": true
+    },
+    {
+      "id": "finite-voltage-scope",
+      "description": "A finite step can change UL at once while I remains continuous",
+      "independentCalculation": "UL=L dI/dt; bounded UL over a vanishing interval yields delta I tending to zero. Opening every path is outside closed-resistive ideal RL assumption",
+      "result": {
+        "no_current_jump_under_finite_voltage": true,
+        "voltage_may_jump": true,
+        "open_path_not_covered": true
+      },
+      "passed": true
+    },
+    {
+      "id": "linear-turns-and-core",
+      "description": "Otherwise identical long linear homogeneous solenoids",
+      "independentCalculation": "B scales with mu_r N I/ell, flux linkage N Phi gives L~mu_r N² A/ell. Doubling N raises L fourfold; doubling linear permeability doubles L",
+      "result": {
+        "N_doubled_L_ratio": 4,
+        "mu_r_doubled_L_ratio": 2,
+        "saturation_excluded": true
+      },
+      "passed": true
+    },
+    {
+      "id": "h-method-is-existing-gate-not-a-new-physics-task",
+      "description": "Existing b1 requires b42 in actual Main",
+      "independentCalculation": "For x² at x0=2, Q=4+h; for 1/x at1,Q=-1/(1+h), h!=0,-1. The fresh I(t) transfer reads local rate and does not demand these procedures",
+      "result": {
+        "b42_retained_unchanged": true,
+        "direct_37_b42_nomination": false,
+        "entire_effective_chain_declared_necessary": false
+      },
+      "passed": true
+    }
+  ],
+  "noLearnerEvidence": true,
+  "noHumanApproval": true
+}

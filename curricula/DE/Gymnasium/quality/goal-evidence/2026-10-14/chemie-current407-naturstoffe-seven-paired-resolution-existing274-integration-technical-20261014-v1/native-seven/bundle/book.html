@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Chemie – sieben aktuelle Naturstoffseiten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Chemie – sieben aktuelle Naturstoffseiten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>7 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:chemie-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-fd713faf6c8502b7e7241677" aria-label="Chemie – kanonische M7-Prüfsicht"><a href="#goal-065d764c-daec-5d35-95da-3e922d2029c7"><span class="toc-entry-label">Chemie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:442c31c5-c561-5c7a-90bb-2335d779175c" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-61e1c5b7a0d4217b4782dbac" aria-label="Chemie"><a href="#goal-065d764c-daec-5d35-95da-3e922d2029c7"><span class="toc-entry-label">Chemie</span></a></h3>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:ae683d59-06a5-59be-87b5-b8648fd138c8" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-3ea8d41b3f1006d6c2229645" aria-label="Naturstoffe und Synthesechemie"><a href="#goal-065d764c-daec-5d35-95da-3e922d2029c7"><span class="toc-entry-label">Naturstoffe&#160;<wbr>und&#160;<wbr>Synthesechemie</span></a></h4>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:24b47a95-c239-552a-9be7-324aa54a89dd" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-8abb9734bf1b10f3379ec2ca" aria-label="Q2.1 Naturstoffe"><a href="#goal-065d764c-daec-5d35-95da-3e922d2029c7"><span class="toc-entry-label">Q2.1&#160;<wbr>Naturstoffe</span></a></h5>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-065d764c-daec-5d35-95da-3e922d2029c7" data-goal-id="065d764c-daec-5d35-95da-3e922d2029c7" data-page-number="1" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:24b47a95-c239-552a-9be7-324aa54a89dd" aria-labelledby="goal-065d764c-daec-5d35-95da-3e922d2029c7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-065d764c-daec-5d35-95da-3e922d2029c7-title"><a class="goal-self-link" href="#goal-065d764c-daec-5d35-95da-3e922d2029c7">Proteinstruktur und Faltung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>065d764c-daec-5d35-95da-3e922d2029c7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-8abb9734bf1b10f3379ec2ca">Q2.1 Naturstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:db118fbb61b8b2c3be5c2f112e136b6fd71bf05beafe9f637536602c06fb3dcb" data-rendered-digest="sha256:a0bc954e044b48de5f82e03ba31e221b2a3a49b1115fc7e2f7c53c95d0adbbc2" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/065d764c-daec-5d35-95da-3e922d2029c7/065d764c-daec-5d35-95da-3e922d2029c7.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Proteinstruktur und Faltung&quot;. Die lernende Person kann Sekundär-, Tertiär- und Quartärstrukturen von Proteinen über Wechselwirkungen zwischen Peptidgruppen beziehungsweise Seitenketten erklären und daraus Eigenschaften ableiten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-065d764c-daec-5d35-95da-3e922d2029c7-description-heading">
+        <p class="section-heading" id="goal-065d764c-daec-5d35-95da-3e922d2029c7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Sekundär-, Tertiär- und Quartärstrukturen von Proteinen über Wechselwirkungen zwischen Peptidgruppen beziehungsweise Seitenketten erklären und daraus Eigenschaften ableiten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-065d764c-daec-5d35-95da-3e922d2029c7-requires-heading">
+          <p class="section-heading" id="goal-065d764c-daec-5d35-95da-3e922d2029c7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-065d764c-daec-5d35-95da-3e922d2029c7-reverse-heading">
+          <p class="section-heading" id="goal-065d764c-daec-5d35-95da-3e922d2029c7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-065d764c-daec-5d35-95da-3e922d2029c7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-065d764c-daec-5d35-95da-3e922d2029c7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-197bc2c5-835e-59e7-9263-5684e89799cc" rel="noreferrer noopener"><span>Peptidbindungen erklären</span> <code>197bc2c5-835e-59e7-9263-5684e89799cc</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-065d764c-daec-5d35-95da-3e922d2029c7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-065d764c-daec-5d35-95da-3e922d2029c7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-8872d828-a025-5e45-af74-3d84caedfb73" rel="noreferrer noopener"><span>Proteinshake und Denaturierung</span> <code>8872d828-a025-5e45-af74-3d84caedfb73</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-9deeac6f-d380-52c5-8fc9-e532ab1f4d3f" rel="noreferrer noopener"><span>Proteine und Ammoniumionen nachweisen</span> <code>9deeac6f-d380-52c5-8fc9-e532ab1f4d3f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-c245d5fd-ce46-5b45-ab2e-e610547b5f7c" rel="noreferrer noopener"><span>Enzymkinetik vertiefen</span> <code>c245d5fd-ce46-5b45-ab2e-e610547b5f7c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-058dca74-1b57-5eb3-9c94-1c7b6cc795ad" rel="noreferrer noopener"><span>Proteinlöslichkeit und Denaturierung erklären</span> <code>058dca74-1b57-5eb3-9c94-1c7b6cc795ad</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-014e6d85-eecf-5228-9031-52a39981cd0d" rel="noreferrer noopener"><span>Proteine in der Biotechnologie erklären</span> <code>014e6d85-eecf-5228-9031-52a39981cd0d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 7</span>
+      <span>Buch-Digest <code>sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bc3ed101b4dea95112c750df956eb8d073dba01e8d636dad06d873a6d387fc20</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current407-naturstoffe-seven-first-pass&amp;edition=curricular-atomic-v1&amp;goalId=065d764c-daec-5d35-95da-3e922d2029c7&amp;goalFingerprint=sha256%3Abc3ed101b4dea95112c750df956eb8d073dba01e8d636dad06d873a6d387fc20&amp;pageFingerprint=sha256%3A3437a59b1075642a958d92520a8512312ea15179282d19cd037032281a2f4916&amp;bookDigest=sha256%3A229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3681e688-7880-5bb4-9ab9-ef78289345c8" data-goal-id="3681e688-7880-5bb4-9ab9-ef78289345c8" data-page-number="2" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:24b47a95-c239-552a-9be7-324aa54a89dd" aria-labelledby="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-title"><a class="goal-self-link" href="#goal-3681e688-7880-5bb4-9ab9-ef78289345c8">Verdauungssäfte chemisch erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3681e688-7880-5bb4-9ab9-ef78289345c8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-8abb9734bf1b10f3379ec2ca">Q2.1 Naturstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f0cb569c3e1b980117ced583e58367e1143985fcdc493461c71750013630e0ab" data-rendered-digest="sha256:c823b6efad0b8465191a85abb004da8e1842280fef5f75f58192a222abb5ef33" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/3681e688-7880-5bb4-9ab9-ef78289345c8/3681e688-7880-5bb4-9ab9-ef78289345c8.png" alt="Drei Modelle zeigen Pepsin beim Zerlegen einer Proteinkette unter sauren Bedingungen, die Anpassung des pH im Darm und die physikalische Verteilung großer Fetttröpfchen in kleinere. Amphiphile Köpfe liegen außen, ihre unpolaren Teile im Fett.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-description-heading">
+        <p class="section-heading" id="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bedeutung verschiedener Verdauungssäfte aus chemischer Sicht erklären und Bezüge zu pH-Wert, Löslichkeit und Stoffumwandlung herstellen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-requires-heading">
+          <p class="section-heading" id="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-reverse-heading">
+          <p class="section-heading" id="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-f1ed86f0-534d-57d7-8952-a004a331cc54" rel="noreferrer noopener"><span>Lösungen berechnen und pH bestimmen</span> <code>f1ed86f0-534d-57d7-8952-a004a331cc54</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-360fccb9-896d-5e67-bf5d-5732621604c9" rel="noreferrer noopener"><span>Nahrungsmittelinhaltsstoffe strukturbezogen einordnen</span> <code>360fccb9-896d-5e67-bf5d-5732621604c9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3681e688-7880-5bb4-9ab9-ef78289345c8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-0b5342b9-512d-573f-90d5-7522aee35efa" rel="noreferrer noopener"><span>Individuelle Verdauungs- und Resorptionsunterschiede begründen</span> <code>0b5342b9-512d-573f-90d5-7522aee35efa</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00" rel="noreferrer noopener"><span>Magensäurebildung und Protonenpumpen-Hemmer erklären</span> <code>2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528" rel="noreferrer noopener"><span>Schmerzmittelwirkstoffe chemisch einordnen</span> <code>f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-98ae3f8e-4800-5ff3-bd2c-89434c006143" rel="noreferrer noopener"><span>Carbonsäureester und Carbonsäureamide durch Kondensation bilden</span> <code>98ae3f8e-4800-5ff3-bd2c-89434c006143</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873" rel="noreferrer noopener"><span>Verdauungshilfsmittel chemisch beurteilen</span> <code>5f151e8c-a62e-5e8c-979d-dcf4eb025873</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 7</span>
+      <span>Buch-Digest <code>sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358</code></span>
+      <span>Ziel-Fingerprint <code>sha256:56f10e051562ab0853afaa2ad8e23beed467d9a5d34cbbdc9163ff481a81c720</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current407-naturstoffe-seven-first-pass&amp;edition=curricular-atomic-v1&amp;goalId=3681e688-7880-5bb4-9ab9-ef78289345c8&amp;goalFingerprint=sha256%3A56f10e051562ab0853afaa2ad8e23beed467d9a5d34cbbdc9163ff481a81c720&amp;pageFingerprint=sha256%3Aabfdc0142b6b03314407eeba79284e63c00df75ff1569180563d5dd0be3aef8c&amp;bookDigest=sha256%3A229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee" data-goal-id="68292f39-04e7-5924-b6a5-731c7f7f82ee" data-page-number="3" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:24b47a95-c239-552a-9be7-324aa54a89dd" aria-labelledby="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-title"><a class="goal-self-link" href="#goal-68292f39-04e7-5924-b6a5-731c7f7f82ee">Zucker strukturbezogen vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>68292f39-04e7-5924-b6a5-731c7f7f82ee</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-8abb9734bf1b10f3379ec2ca">Q2.1 Naturstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:962a90624a2b7b2203bce57757cce401d6ef6b0627348723e6a53738a70d393e" data-rendered-digest="sha256:eab9409e1802677ee5ca69276f2787a24939ae59eb004ce270949d52c8a27d8e" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/68292f39-04e7-5924-b6a5-731c7f7f82ee/68292f39-04e7-5924-b6a5-731c7f7f82ee.png" alt="Ein ausdrücklich vereinfachtes Bausteinmodell vergleicht Glucose mit freiem anomerem Zentrum C1 und Saccharose mit verknüpften Zentren C1 und C2. Darunter stehen ein positiver roter und ein negativer blauer Kupfer-Nachweis.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-description-heading">
+        <p class="section-heading" id="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ausgewählte Zucker anhand ihres molekularen Baus vergleichen und daraus ihr chemisches Reaktionsverhalten begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-requires-heading">
+          <p class="section-heading" id="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-reverse-heading">
+          <p class="section-heading" id="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a9c22adc-b543-5b0c-a2d8-3189facdff08" rel="noreferrer noopener"><span>Warum Chemie? - Relevanz und Orientierung</span> <code>a9c22adc-b543-5b0c-a2d8-3189facdff08</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-973c12d9-d863-5292-8c68-9c80cdacf9e2" rel="noreferrer noopener"><span>Aldehyd- und Keton-Nachweise durchführen und deuten</span> <code>973c12d9-d863-5292-8c68-9c80cdacf9e2</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-68292f39-04e7-5924-b6a5-731c7f7f82ee-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a" rel="noreferrer noopener"><span>Zucker in Alltag und Ernährung bewerten</span> <code>127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 7</span>
+      <span>Buch-Digest <code>sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1e44fd0c3738901060390931258baa809e400be37e85cc73a3d9401ac4320d52</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current407-naturstoffe-seven-first-pass&amp;edition=curricular-atomic-v1&amp;goalId=68292f39-04e7-5924-b6a5-731c7f7f82ee&amp;goalFingerprint=sha256%3A1e44fd0c3738901060390931258baa809e400be37e85cc73a3d9401ac4320d52&amp;pageFingerprint=sha256%3A17458694805ffbabdb3ca19e9a6afaa5c1787482d85f94f258b82416e307767e&amp;bookDigest=sha256%3A229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8fe39739-2938-5e2c-8db2-08572b44569a" data-goal-id="8fe39739-2938-5e2c-8db2-08572b44569a" data-page-number="4" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:24b47a95-c239-552a-9be7-324aa54a89dd" aria-labelledby="goal-8fe39739-2938-5e2c-8db2-08572b44569a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8fe39739-2938-5e2c-8db2-08572b44569a-title"><a class="goal-self-link" href="#goal-8fe39739-2938-5e2c-8db2-08572b44569a">Lebensmittelinhaltsstoffe experimentell nachweisen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8fe39739-2938-5e2c-8db2-08572b44569a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-8abb9734bf1b10f3379ec2ca">Q2.1 Naturstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c7c12cead33be7401108308275240a27957e04dc38ef9dbd13d11a2f233f717e" data-rendered-digest="sha256:05113d938d0d4bddc35003dfb440fe91f091853f8da2e4f7a17686c65a418714" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/8fe39739-2938-5e2c-8db2-08572b44569a/8fe39739-2938-5e2c-8db2-08572b44569a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lebensmittelinhaltsstoffe experimentell nachweisen&quot;. Die lernende Person kann experimentelle Untersuchungen an Lebensmitteln durchführen, um Makronährstoffe und weitere Bestandteile fachgerecht nachzuweisen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8fe39739-2938-5e2c-8db2-08572b44569a-description-heading">
+        <p class="section-heading" id="goal-8fe39739-2938-5e2c-8db2-08572b44569a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann experimentelle Untersuchungen an Lebensmitteln durchführen, um Makronährstoffe und weitere Bestandteile fachgerecht nachzuweisen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8fe39739-2938-5e2c-8db2-08572b44569a-requires-heading">
+          <p class="section-heading" id="goal-8fe39739-2938-5e2c-8db2-08572b44569a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8fe39739-2938-5e2c-8db2-08572b44569a-reverse-heading">
+          <p class="section-heading" id="goal-8fe39739-2938-5e2c-8db2-08572b44569a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88"><span>Lebensmittelinhaltsstoffe quantitativ bestimmen</span><code>8da5c5cf-d346-5df9-b4c9-26938fc80a88</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18"><span>Aminocarbonsäuren und Peptide nachweisen</span><code>5c8f0bbb-103a-579f-87fc-c997afe4fd18</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8fe39739-2938-5e2c-8db2-08572b44569a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8fe39739-2938-5e2c-8db2-08572b44569a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-e81a4aed-9695-533e-8eb7-7a0c714346ea" rel="noreferrer noopener"><span>Angeleitete chemische Untersuchungen sicher durchführen</span> <code>e81a4aed-9695-533e-8eb7-7a0c714346ea</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-360fccb9-896d-5e67-bf5d-5732621604c9" rel="noreferrer noopener"><span>Nahrungsmittelinhaltsstoffe strukturbezogen einordnen</span> <code>360fccb9-896d-5e67-bf5d-5732621604c9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8fe39739-2938-5e2c-8db2-08572b44569a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8fe39739-2938-5e2c-8db2-08572b44569a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 7</span>
+      <span>Buch-Digest <code>sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358</code></span>
+      <span>Ziel-Fingerprint <code>sha256:196fb7db626d312dace2dec0a177930eefd42c44a7fc18149aad7e9b1013e36f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current407-naturstoffe-seven-first-pass&amp;edition=curricular-atomic-v1&amp;goalId=8fe39739-2938-5e2c-8db2-08572b44569a&amp;goalFingerprint=sha256%3A196fb7db626d312dace2dec0a177930eefd42c44a7fc18149aad7e9b1013e36f&amp;pageFingerprint=sha256%3A78871b9fe2b81623e1299669d58fa08d858bbfd8bc2022034957f7dcc23ecb2e&amp;bookDigest=sha256%3A229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18" data-goal-id="5c8f0bbb-103a-579f-87fc-c997afe4fd18" data-page-number="5" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:24b47a95-c239-552a-9be7-324aa54a89dd" aria-labelledby="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-title"><a class="goal-self-link" href="#goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18">Aminocarbonsäuren und Peptide nachweisen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5c8f0bbb-103a-579f-87fc-c997afe4fd18</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-8abb9734bf1b10f3379ec2ca">Q2.1 Naturstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3f86aca94888d3e305450dabffa3cca5e8ef183d4c306f189a7255a4841032d4" data-rendered-digest="sha256:fdd2c625d63ea865517edb209dfe17dc3a7eeafd6d3593d288d785210f6ad610" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/5c8f0bbb-103a-579f-87fc-c997afe4fd18/5c8f0bbb-103a-579f-87fc-c997afe4fd18.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Aminocarbonsäuren und Peptide nachweisen&quot;. Die lernende Person kann geeignete Nachweisreaktionen für Aminocarbonsäuren und Peptide durchführen und ihre Aussagekraft etwa bei Lebensmitteln auswerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-description-heading">
+        <p class="section-heading" id="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann geeignete Nachweisreaktionen für Aminocarbonsäuren und Peptide durchführen und ihre Aussagekraft etwa bei Lebensmitteln auswerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-requires-heading">
+          <p class="section-heading" id="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8fe39739-2938-5e2c-8db2-08572b44569a"><span>Lebensmittelinhaltsstoffe experimentell nachweisen</span><code>8fe39739-2938-5e2c-8db2-08572b44569a</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-reverse-heading">
+          <p class="section-heading" id="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-197bc2c5-835e-59e7-9263-5684e89799cc" rel="noreferrer noopener"><span>Peptidbindungen erklären</span> <code>197bc2c5-835e-59e7-9263-5684e89799cc</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5c8f0bbb-103a-579f-87fc-c997afe4fd18-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-31148286-b8db-57a7-8da2-2e0479240a2c" rel="noreferrer noopener"><span>Lernkarten - Naturstoffe</span> <code>31148286-b8db-57a7-8da2-2e0479240a2c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 7</span>
+      <span>Buch-Digest <code>sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e083b6eae8abc5d5cbb34b6c9ad3c89024417f321db63204e5d8a3dab1439492</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current407-naturstoffe-seven-first-pass&amp;edition=curricular-atomic-v1&amp;goalId=5c8f0bbb-103a-579f-87fc-c997afe4fd18&amp;goalFingerprint=sha256%3Ae083b6eae8abc5d5cbb34b6c9ad3c89024417f321db63204e5d8a3dab1439492&amp;pageFingerprint=sha256%3A1d596c384e3ae341480ef582c936cf2a4ed2c60bbeb3f9fe209d6ca72f4bc079&amp;bookDigest=sha256%3A229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88" data-goal-id="8da5c5cf-d346-5df9-b4c9-26938fc80a88" data-page-number="6" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:24b47a95-c239-552a-9be7-324aa54a89dd" aria-labelledby="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-title"><a class="goal-self-link" href="#goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88">Lebensmittelinhaltsstoffe quantitativ bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8da5c5cf-d346-5df9-b4c9-26938fc80a88</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-8abb9734bf1b10f3379ec2ca">Q2.1 Naturstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e1b3bfdcd2900af7a2330477035e86152cfe50ea172ab6ea07b0ff400fede63d" data-rendered-digest="sha256:3ca813fef27b19b7b8b04c4d7750e4721c863a91a4ddf68d7166806cc359df5c" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/8da5c5cf-d346-5df9-b4c9-26938fc80a88/8da5c5cf-d346-5df9-b4c9-26938fc80a88.png" alt="Eine Saftprobe, die gemessene Masse eines ausgewählten Inhaltsstoffs und das Volumen der ursprünglichen Probe führen zur Formel rho=m/V. Die Einheit g/L kennzeichnet die Massenkonzentration.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-description-heading">
+        <p class="section-heading" id="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann geeignete experimentelle Verfahren auswählen und auswerten, um den Gehalt von Lebensmittelinhaltsstoffen zu bestimmen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-requires-heading">
+          <p class="section-heading" id="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8fe39739-2938-5e2c-8db2-08572b44569a"><span>Lebensmittelinhaltsstoffe experimentell nachweisen</span><code>8fe39739-2938-5e2c-8db2-08572b44569a</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-reverse-heading">
+          <p class="section-heading" id="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-e313c1ee-a617-54ed-adea-c183da1e03d8" rel="noreferrer noopener"><span>Reinstoffgehalt in Stoffgemischen bestimmen</span> <code>e313c1ee-a617-54ed-adea-c183da1e03d8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8da5c5cf-d346-5df9-b4c9-26938fc80a88-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 7</span>
+      <span>Buch-Digest <code>sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358</code></span>
+      <span>Ziel-Fingerprint <code>sha256:88669bed33064c88ed05b4a23f759dc9f7c2784c52142c72fb86a22dc99f5168</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current407-naturstoffe-seven-first-pass&amp;edition=curricular-atomic-v1&amp;goalId=8da5c5cf-d346-5df9-b4c9-26938fc80a88&amp;goalFingerprint=sha256%3A88669bed33064c88ed05b4a23f759dc9f7c2784c52142c72fb86a22dc99f5168&amp;pageFingerprint=sha256%3A24dbe2f5ce7c0a4a369ccf7cb0d6f3b876bf32cb394f0efe0916098ba1fccb70&amp;bookDigest=sha256%3A229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b4ca3af2-77f1-59e8-955d-c4959e284242" data-goal-id="b4ca3af2-77f1-59e8-955d-c4959e284242" data-page-number="7" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:24b47a95-c239-552a-9be7-324aa54a89dd" aria-labelledby="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-title"><a class="goal-self-link" href="#goal-b4ca3af2-77f1-59e8-955d-c4959e284242">Außenfaktoren auf Enzymreaktionen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b4ca3af2-77f1-59e8-955d-c4959e284242</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-8abb9734bf1b10f3379ec2ca">Q2.1 Naturstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:82eb3a0402528dbb09b770454f7de93d035ed5b43a22146d8cc0a027cf314405" data-rendered-digest="sha256:8dbc5cc43a2e14e8e2719e53539411f8ad88af0d090cc3530ad9d6e21c20e649" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/b4ca3af2-77f1-59e8-955d-c4959e284242/b4ca3af2-77f1-59e8-955d-c4959e284242.png" alt="Zwei beispielhafte Aktivitätskurven zeigen ein saures pH-Optimum für Pepsin und ein annähernd neutrales für Amylase. Die Beschriftung erklärt, dass das Optimum vom Enzym abhängt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-description-heading">
+        <p class="section-heading" id="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Einfluss von Temperatur, pH-Wert, Konzentrationen und weiteren Außenfaktoren auf die Geschwindigkeit von Enzymreaktionen beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-requires-heading">
+          <p class="section-heading" id="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-reverse-heading">
+          <p class="section-heading" id="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-f7f35d71-927a-511c-a49e-65a66794a9bc" rel="noreferrer noopener"><span>Enzymreaktionen und Hemmung modellieren</span> <code>f7f35d71-927a-511c-a49e-65a66794a9bc</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b4ca3af2-77f1-59e8-955d-c4959e284242-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-3351fe47-5b0c-5407-a3bf-05229cfbf0c5" rel="noreferrer noopener"><span>Untersuchungen an Lebewesen sicher und hypothesengeleitet durchfuehren</span> <code>3351fe47-5b0c-5407-a3bf-05229cfbf0c5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 7</span>
+      <span>Buch-Digest <code>sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a2157e7640be7b4bd25b7e2841ff6d1b288974aa9b0c3ead3ce713fc37a4150c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current407-naturstoffe-seven-first-pass&amp;edition=curricular-atomic-v1&amp;goalId=b4ca3af2-77f1-59e8-955d-c4959e284242&amp;goalFingerprint=sha256%3Aa2157e7640be7b4bd25b7e2841ff6d1b288974aa9b0c3ead3ce713fc37a4150c&amp;pageFingerprint=sha256%3A1ddd6513cd6b4ef9db09337ff6361e1bd5506b9d247993c794a2ee5cc39ba1df&amp;bookDigest=sha256%3A229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

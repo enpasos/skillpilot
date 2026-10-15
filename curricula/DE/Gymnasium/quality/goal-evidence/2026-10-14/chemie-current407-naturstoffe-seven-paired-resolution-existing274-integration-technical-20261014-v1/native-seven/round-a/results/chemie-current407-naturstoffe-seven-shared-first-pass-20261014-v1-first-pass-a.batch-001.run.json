@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run",
+  "campaignId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-a",
+  "roundId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a",
+  "batchId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:7149de233162eed22feabee861c59aeb1e467422b0fffd3627702f7fcd95d7f3",
+  "bundleFingerprint": "sha256:f56edc0609456e036f256a2bc27b27bc8b265af93113ee81a2f65b8f2d5acfbf",
+  "bookDigest": "sha256:229012989d08020d4c6bd8ec3e3baea274243c398f1c6a9b5159a4e216286358",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex; exact revision unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:248541200e8442fa11088eb0467509b4237fddb7a9f1bbccd84f68b006e7417a",
+  "independenceGroupId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "065d764c-daec-5d35-95da-3e922d2029c7",
+    "3681e688-7880-5bb4-9ab9-ef78289345c8",
+    "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+    "8fe39739-2938-5e2c-8db2-08572b44569a",
+    "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+    "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+    "b4ca3af2-77f1-59e8-955d-c4959e284242"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:4929e938faca25e3e46fbb844dbd6406295250f85f3bf51bac144544e6cbe19e"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6c1f183178059889429d19123b2ce6c26568240971439ebd575d03a463032e0f"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:59bf29b6ed59edb7fc0223e35eb30bfc32523362205c3e13eef9a8c27dfa6da2"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:d52503f0b26b8c61bef0bd8c7a4ea631d120658d55c125f555fc4f441c88b0b3"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:5e9f67786a7e44283e5b4b5455e6629df545cfd8707f205444b927e3f3a97c90"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7149de233162eed22feabee861c59aeb1e467422b0fffd3627702f7fcd95d7f3"
+    }
+  ],
+  "startedAt": "2026-10-14T01:31:07Z",
+  "completedAt": "2026-10-14T01:40:19.617374+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:ffcdea59d4fabea1e0faf21550a5a133b2f92e1d17488ec75246dd754486c9de",
+  "toolchainVersion": "skillpilot-stock-goal-description-review-v2"
+}

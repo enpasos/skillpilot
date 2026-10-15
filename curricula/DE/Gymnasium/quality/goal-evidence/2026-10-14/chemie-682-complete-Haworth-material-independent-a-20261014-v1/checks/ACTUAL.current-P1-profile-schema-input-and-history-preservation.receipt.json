@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-14T01:56:04.048337+00:00",
+  "stockCheckExitCode": 0,
+  "stockCheckStdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-complete-Haworth-material-independent-a-20261014-v1/checks/stock-P1-current-goal-profile-source-join.actual.stdout.txt",
+    "bytes": 318,
+    "sha256": "sha256:e17b0d4fed72ae0b29df6237c9a79285cf7a55b3006a6aaf10cc889f78a0cc7a"
+  },
+  "stockCheckConfiguredGoals": 1,
+  "stockCheckBlockingIssues": 0,
+  "wholeOriginalProfileBodyExact": true,
+  "originalGoalProfileAndReviewInputFingerprintsExact": true,
+  "originalP1AAndBBytesUnchanged": true,
+  "ownFreshScientificReviewMetadataOnly": true,
+  "profile": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-complete-Haworth-material-independent-a-20261014-v1/positive/P1.current682.complete-material-reviewed-independent-a.jsonl",
+    "bytes": 5541,
+    "sha256": "sha256:c8fc9a86d5006dfaccc7c1637fa1e0fb0586171d523978667a7c2ac3c56371a5"
+  },
+  "config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-complete-Haworth-material-independent-a-20261014-v1/P1.current682.exact-existing-body-and-fresh-material-annex.stock.config.json",
+    "bytes": 1573,
+    "sha256": "sha256:0d4cf60a8ca29dbbfe9a2b080e2930c208336a9d62163f0e8b69f1fbfb4ccb78"
+  },
+  "schemaBindings": [
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "bytes": 8707,
+      "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    },
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-review-config.schema.json",
+      "bytes": 3328,
+      "sha256": "sha256:7233823673664115846059a5aab3eaa600c504f5975a9b24f8b7cf860e8b946d"
+    }
+  ],
+  "inputHashesAndWholeParses": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/NEUTRAL.current-682-two-cases-complete-Haworth-material.author-inputs.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/SEAL.finite-682-actual-complete-structural-material-author.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/inputs/whole-current-682-goal.exact.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/candidate/canonical533.current407.naturstoffe7-reviewed-resources.inactive.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/inputs/whole-original-682-case-pair-and-rubric.exact.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/candidate/whole-682-two-cases-and-rubric-with-complete-formulas.author.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/inputs/original-P1-a.byte-exact.jsonl",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/configs/P7.a.preserved-original-stock-check.config.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/inputs/original-P1-b.byte-exact.jsonl",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-shared-native-first-pass-technical-20261014-v1/configs/P7.b.preserved-original-stock-check.config.json"
+  ],
+  "firstScienceSealUnchanged": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-complete-Haworth-material-independent-a-20261014-v1/FIRST-SCIENCE-SEAL.complete-Haworth-material-independent-a.actual.json",
+    "bytes": 3105,
+    "sha256": "sha256:90c2a3c1af95be459956f78b5bba5e83dcd5cb732bc3104f1b3fb1537b51a10f"
+  },
+  "failedAttemptsPreserved": [
+    {
+      "path": "checks/attempt-1.invalid-reviewId-pattern.actual.stdout.txt",
+      "reason": "Own new reviewId initially used uppercase H, violating stock identifier pattern. Normalized only own identifier case; original science and profile body unchanged. Shell wrapper status did not preserve the first subcommand exit."
+    },
+    {
+      "path": "checks/attempt-2.main-checkout-inactive-alias-missing.actual.stdout.txt",
+      "exitCode": 1,
+      "reason": "Main checkout lacks the inactive candidate PNG public alias. Resolved only in a separate physical execution host using exact approved shared N7 bytes, preserving the original reviewInputFingerprint."
+    }
+  ],
+  "currentPStatus": "needs_human_review",
+  "currentPLevel": "E1/G1",
+  "humanOrLearnerPerformanceClaim": false
+}

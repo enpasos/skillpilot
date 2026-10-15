@@ -20,6 +20,8 @@ import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.GoalMappingService;
+import com.skillpilot.backend.landscape.GoalPlacement;
+import com.skillpilot.backend.landscape.ProgramUnit;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.ReleaseMetadata;
@@ -82,6 +84,94 @@ class ProjectionRoleLearnerServiceTest {
               }
             }
             """;
+
+    @Test
+    void exactEligibilityWithoutAuthoredTargetStaysSupportUntilPrimaryPlacementAuthorizesIt() throws Exception {
+        Fixture fixture = fixture(null);
+        when(fixture.compositionViewService().isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(false);
+        LearningGoal target = exactScopeTarget(fixture, "G9");
+        String config = exactScopeConfig(true);
+
+        for (boolean ignoreCourseFilters : List.of(false, true)) {
+            assertThat(fixture.service().getFilteredAtomicGoalIds(LANDSCAPE_ID, config, null, ignoreCourseFilters))
+                    .contains(OUTSIDE_TARGET_ID) // Absent-field legacy fallback remains unchanged.
+                    .doesNotContain(TARGET_ID);
+        }
+        assertThat(projectionSets(fixture.service(), config).structuralGoalIds()).contains(TARGET_ID);
+        assertThat(target.getRequires()).contains(PREREQUISITE_ID); // Neither contains nor requires enrolls it.
+
+        ProgramUnit unit = new ProgramUnit();
+        unit.setId("exact-scope-year");
+        unit.setKind("year");
+        unit.setLabel("Reviewed placement");
+        GoalPlacement placement = new GoalPlacement();
+        placement.setGoalId(TARGET_ID);
+        placement.setUnitId(unit.getId());
+        placement.setRelation("primary");
+        placement.setContext(Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-HE",
+                "stage", "SekII", "durationModel", "G9", "courseProfile", "GK"));
+        fixture.landscape().setProgramUnits(List.of(unit));
+        fixture.landscape().setGoalPlacements(List.of(placement));
+        assertThat(fixture.service().getFilteredAtomicGoalIds(LANDSCAPE_ID, config, null, false)).contains(TARGET_ID);
+        placement.setRelation("secondary");
+        assertThat(fixture.service().getFilteredAtomicGoalIds(LANDSCAPE_ID, config, null, false)).doesNotContain(TARGET_ID);
+        assertThat(fixture.savedGoals()).isEmpty();
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+    }
+
+    @Test
+    void selectedLandscapeAndNamespacedSubtreeReferencesAuthorizeTheirExactTargets() throws Exception {
+        for (Map<String, Object> reference : List.of(
+                Map.<String, Object>of("kind", "landscapeEntry", "landscapeId", LANDSCAPE_ID),
+                canonicalSubtree(LANDSCAPE_ID + ":" + NESTED_CLUSTER_ID))) {
+            Map<String, Object> selected = new LinkedHashMap<>(view(reference));
+            selected.put("scope", exactScopeContext("G9"));
+            Fixture fixture = fixture(selected);
+            exactScopeTarget(fixture, "G9");
+            assertThat(fixture.service().getFilteredAtomicGoalIds(
+                    LANDSCAPE_ID, exactScopeConfig(true), null, false)).contains(TARGET_ID);
+        }
+    }
+
+    @Test
+    void selectedTargetCannotConvertMissingDurationIntoAnExplicitNoneContext() throws Exception {
+        Map<String, Object> selected = new LinkedHashMap<>(view(goalEntry(TARGET_ID)));
+        Map<String, Object> unresolvedScope = exactScopeContext(null);
+        unresolvedScope.remove("durationModel");
+        selected.put("scope", unresolvedScope);
+        Fixture fixture = fixture(selected);
+        exactScopeTarget(fixture, null); // Literal null is resolved none, never a missing-choice wildcard.
+
+        assertThat(fixture.service().getFilteredAtomicGoalIds(
+                LANDSCAPE_ID, exactScopeConfig(false), null, false)).doesNotContain(TARGET_ID);
+        assertThat(projectionSets(fixture.service(), exactScopeConfig(false)).structuralGoalIds()).contains(TARGET_ID);
+    }
+
+    private LearningGoal exactScopeTarget(Fixture fixture, String duration) {
+        LearningGoal target = fixture.landscape().getGoals().stream()
+                .filter(goal -> TARGET_ID.equals(goal.getId())).findFirst().orElseThrow();
+        target.setExtendedData(Map.of("applicabilityContexts", List.of(exactScopeContext(duration))));
+        return target;
+    }
+
+    private Map<String, Object> exactScopeContext(String duration) {
+        Map<String, Object> context = new LinkedHashMap<>();
+        context.put("schoolForm", "Gymnasium");
+        context.put("jurisdiction", "DE-HE");
+        context.put("stage", "SekII");
+        context.put("durationModel", duration);
+        context.put("courseProfile", "GK");
+        return context;
+    }
+
+    private String exactScopeConfig(boolean durationSelected) throws Exception {
+        Map<String, Object> root = new LinkedHashMap<>(Map.of(
+                "selected", true, "filterId", "DE-HE", "stage", "SekII"));
+        if (durationSelected) root.put("durationModel", "G9");
+        return new ObjectMapper().writeValueAsString(Map.of(
+                "a0e13c56-c25f-4742-9272-3a1a603ee52e", root,
+                LANDSCAPE_ID, Map.of("selected", true, "filterId", "GK")));
+    }
 
     @Test
     void stalledExternalSupportIsExplainedWithoutChangingLearnerStateOrCoachLevelTwoAuthority() throws Exception {

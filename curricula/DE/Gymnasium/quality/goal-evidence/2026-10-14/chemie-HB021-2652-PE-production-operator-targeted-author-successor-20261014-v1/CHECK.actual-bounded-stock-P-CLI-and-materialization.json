@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-14T00:16:37Z",
+  "completedAt": "2026-10-14T00:16:38Z",
+  "stockCli": {
+    "command": [
+      "./app/node_modules/.bin/tsx",
+      "app/scripts/positiveGoalEvidenceReview.ts",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HB021-2652-PE-production-operator-targeted-author-successor-20261014-v1/configs/2652.targeted-PE-production.E0-G0.inactive.config.json",
+      "--mode=check"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot",
+    "returnCode": 0,
+    "stdout": "# Positive Goal Evidence Review: chemie-hb021-2652-pe-production-operator-author-candidate-20261014-v1\nScope: One unexecuted targeted PE manufacture addition, whole2652 retained; no operative replacement\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n",
+    "stderr": ""
+  },
+  "materializerHistory": [
+    {
+      "location": "existing physical T407 host",
+      "actualObservedReturnCode": 1,
+      "finding": "Initial author reviewId used upper-case HB/PE; original config schema requires lowercase slug. Corrected only the new author reviewId; no stock patch or scientific change."
+    },
+    {
+      "location": "existing physical T407 host",
+      "actualObservedReturnCode": 0,
+      "mode": "--write",
+      "stdout": "Wrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HB021-2652-PE-production-operator-targeted-author-successor-20261014-v1/positive/2652.PE-production-addition.E0-G0.ai-candidate.needs-human-review.jsonl: 1 current AI candidate profile(s).\n"
+    },
+    {
+      "location": "main repository",
+      "actualObservedReturnCode": 0,
+      "mode": "verify existing owned record, no --write",
+      "stdout": "Verified curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HB021-2652-PE-production-operator-targeted-author-successor-20261014-v1/positive/2652.PE-production-addition.E0-G0.ai-candidate.needs-human-review.jsonl: 1 current AI candidate profile(s).\n"
+    }
+  ],
+  "actualUnchangedResource": {
+    "path": "app/public/assets/goal-visualizations/chemie/2652caef-b557-58b9-9b28-70db62625ce5/2652caef-b557-58b9-9b28-70db62625ce5.jpg",
+    "sha256": "b127022fea9f8655ba2cfce3791c8161b28c7f324a0251e1de9545bdab8a47e8",
+    "hostBytesEqual": true
+  },
+  "bindings": {
+    "goalFingerprint": "sha256:f64cfcce30ef0f9830389a9cf8675f6257d0c5252aa341b095e389ceba520c33",
+    "reviewInputFingerprint": "sha256:ad2005682abd62018ffb054d472b5d7de2985fa9e2806f1c693f33620f45ff0b",
+    "profileFingerprint": "sha256:94bc15e3ba42f01625ef245e2c2d1ee80df763e8c6b0f76d32eda35e9e6f0d2d",
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "reviewAuthority": "ai_candidate",
+    "status": "needs_human_review"
+  },
+  "stockValidityClaim": "Structure, current resource/goal/profile fingerprints and original schema semantics only. E0/G0 is not scientific acceptance or executed positive evidence.",
+  "globalCheckRun": false,
+  "activeMaterialOrRegistryWritten": false
+}

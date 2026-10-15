@@ -1,0 +1,78 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-functions-diagrams-next10-image-six-20260923-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+  "goalFingerprint": "sha256:0b6f82885eb23596408962c9fc9cac66ea1f6b456b625b834f3ad6a2852897e0",
+  "reviewInputFingerprint": "sha256:f74ce938106c5b3e56e1c46372f73b08689a1cda3a4bc2098d52920b9d05ceb8",
+  "profileFingerprint": "sha256:46e26a09f896fb06345dce35f31f3c60e63f902fd9699fb146e3b772e89c295f",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-09-23T07:44:34Z",
+  "reviewer": "codex-math-m7-functions-diagrams-first-pass-2026-09-23",
+  "reason": "Current original pixels of the available trigonometric derivative image reviewed KEEP in math-m7-functions-diagrams-current-20260923-v1; canonical and public asset agree at sha256:e77b0abadf2563236a6eec79946d3d664d6498ca3cb31c1c689d4091643c1575. Image-bound AI candidate, not a human profile approval; fresh cases require own graph reasoning.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "procedure",
+    "expectations": [
+      {
+        "id": "derivative-identities",
+        "essentialUnderstandingDe": "Im Bogenmaß gilt (sin x)′=cos x und (cos x)′=−sin x; ein konstanter Vorfaktor bleibt beim Ableiten erhalten.",
+        "essentialUnderstandingEn": "In radians, (sin x)'=cos x and (cos x)'=−sin x; a constant multiplier remains on differentiation.",
+        "observablePerformanceDe": "Die lernende Person leitet einfache Sinus- und Kosinusterme mit Faktor und Vorzeichen korrekt ab und erklärt die Rolle des Faktors.",
+        "observablePerformanceEn": "The learner differentiates simple sine and cosine expressions with factor and sign correctly and explains the factor's role."
+      },
+      {
+        "id": "graphical-rate",
+        "essentialUnderstandingDe": "Der Ableitungswert entspricht der Steigung des Funktionsgraphen; an Extremstellen ist er null, in steigenden Abschnitten positiv und in fallenden negativ.",
+        "essentialUnderstandingEn": "A derivative value is the slope of the function graph; it is zero at turning points, positive while rising and negative while falling.",
+        "observablePerformanceDe": "Die lernende Person verbindet Funktions- und Ableitungsgraph an benannten Stellen durch Vorzeichen und Steigung, statt nur die Formel zu nennen.",
+        "observablePerformanceEn": "The learner relates function and derivative graphs at named points through slope and sign rather than only reciting a formula."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "derivative-identities",
+        "graphical-rate"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "base-function-sign",
+        "textDe": "positiv skalierter Sinus gegenüber negativ skaliertem Kosinus samt unterschiedlichen Steigungsverläufen",
+        "textEn": "positively scaled sine versus negatively scaled cosine with differing slope patterns"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "scaled-sine",
+        "taskDemandDe": "Für h(x)=2sin x: bilde h′(x) und erkläre graphisch die Steigungen bei x=0 und x=π/2.",
+        "taskDemandEn": "For h(x)=2sin x, find h′(x) and explain graph slopes at x=0 and x=π/2.",
+        "expectedPerformanceDe": "h′(x)=2cos x; h′(0)=2 bedeutet steigend mit Tangentensteigung 2, h′(π/2)=0 bedeutet waagerechte Tangente am Maximum.",
+        "expectedPerformanceEn": "h′(x)=2cos x; h′(0)=2 means increasing with tangent slope 2, and h′(π/2)=0 means a horizontal tangent at the maximum.",
+        "understandingFocusDe": "Faktor und Ableitungswert als graphische Steigung verbinden.",
+        "understandingFocusEn": "Connecting multiplier and derivative value to graph slope."
+      },
+      {
+        "id": "negative-cosine",
+        "taskDemandDe": "Für g(x)=−3cos x: bilde g′(x); begründe am Funktionsgraphen Vorzeichen und Nullwert der Steigung bei x=π/2 beziehungsweise x=0.",
+        "taskDemandEn": "For g(x)=−3cos x, find g′(x); justify slope sign and zero from the function graph at x=π/2 and x=0 respectively.",
+        "expectedPerformanceDe": "g′(x)=3sin x; bei π/2 ist die Steigung +3, dort steigt g. Bei 0 ist g′(0)=0 und g hat ein lokales Minimum −3.",
+        "expectedPerformanceEn": "g′(x)=3sin x; slope at π/2 is +3, where g rises. At 0, g′(0)=0 and g has a local minimum −3.",
+        "understandingFocusDe": "Negatives Vorzeichen beim Kosinus korrekt auf Ableitung und Graph übertragen.",
+        "understandingFocusEn": "Transferring a negative cosine factor to derivative and graph correctly."
+      }
+    ]
+  }
+}

@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   applyPersonalizationOption,
+  requestCompositionSupplementOptions,
   reopenMigratedPersonalization,
   requestPersonalizationPlan,
   rewindPersonalization,
   restartPersonalization,
 } from '../utils/personalCurriculumEditorApi'
-import type { PersonalizationPlan } from '../utils/personalCurriculumEditorApi'
+import type { PersonalizationPlan, CompositionSupplementOptions } from '../utils/personalCurriculumEditorApi'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -30,6 +31,8 @@ export interface UsePersonalCurriculumEditorOptions {
 
 export interface PersonalCurriculumEditorController {
   plan: PersonalizationPlan | null
+  supplementalOptions: CompositionSupplementOptions | null
+  applySupplementOption: (optionId: string) => Promise<PersonalizationPlan | null>
   loading: boolean
   busy: boolean
   error: Error | null
@@ -51,6 +54,7 @@ export const usePersonalCurriculumEditor = ({
 }: UsePersonalCurriculumEditorOptions): PersonalCurriculumEditorController => {
   const editorScopeKey = `${enabled ? 'enabled' : 'disabled'}\u0000${skillpilotId ?? ''}`
   const [plan, setPlan] = useState<PersonalizationPlan | null>(null)
+  const [supplementalOptions, setSupplementalOptions] = useState<CompositionSupplementOptions | null>(null)
   const [loading, setLoading] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<Error | null>(null)
@@ -81,6 +85,8 @@ export const usePersonalCurriculumEditor = ({
       const nextPlan = await requestPersonalizationPlan(skillpilotId)
       if (!isCurrentRequest()) return null
       setPlan(nextPlan)
+      const supplements = await requestCompositionSupplementOptions(skillpilotId)
+      if (isCurrentRequest()) setSupplementalOptions(supplements)
       return nextPlan
     } catch (cause) {
       const nextError = cause instanceof Error ? cause : new Error(String(cause))
@@ -99,6 +105,7 @@ export const usePersonalCurriculumEditor = ({
     invalidateLatestRequest(requestSequence)
     activeMutation.current = null
     setPlan(null)
+    setSupplementalOptions(null)
     setError(null)
     setLoading(false)
     setBusy(false)
@@ -136,6 +143,8 @@ export const usePersonalCurriculumEditor = ({
       const nextPlan = await request()
       if (!isCurrentRequest()) return null
       setPlan(nextPlan)
+      const supplements = await requestCompositionSupplementOptions(skillpilotId)
+      if (isCurrentRequest()) setSupplementalOptions(supplements)
       return nextPlan
     } catch (cause) {
       const nextError = cause instanceof Error ? cause : new Error(String(cause))
@@ -166,8 +175,17 @@ export const usePersonalCurriculumEditor = ({
     mutate(() => rewindPersonalization(skillpilotId ?? '', rewindId))
   ), [mutate, skillpilotId])
 
+  const applySupplementOption = useCallback(async (optionId: string) => (
+    mutate(async () => {
+      await requestCompositionSupplementOptions(skillpilotId ?? '', optionId)
+      return requestPersonalizationPlan(skillpilotId ?? '')
+    })
+  ), [mutate, skillpilotId])
+
   return {
     plan,
+    supplementalOptions,
+    applySupplementOption,
     loading: loading || (enabled && !!skillpilotId && plan === null && error === null),
     busy,
     error,

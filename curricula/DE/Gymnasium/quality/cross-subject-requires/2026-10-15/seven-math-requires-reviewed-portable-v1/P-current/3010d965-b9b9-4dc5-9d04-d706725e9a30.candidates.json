@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "seven-math-requires-current-p-3010d965-20261015-v1",
+  "reviewedAt": "2026-10-15T02:50:55.694781+00:00",
+  "reviewer": "Codex author /root/fc047_whole_p_polygon_successor_author",
+  "goals": [
+    {
+      "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "reason": "KEEP the whole concept profile, including the shared-first-step trap and decay transfer. SequenceA20,25,30,35 has difference5; B20,25,31.25,39.0625 has factor1.25. Decay100,80,64,51.2 has factor0.8 and nonconstant differences−20,−16,−12.8. Graph-behaviour expectation covers the flattening positive decay versus a straight line. Nothing requires root/power graph transformations or line intersections, while all retained linear/evaluation/rational-exponent/orientation guards stay. Distinguishing a law remains a multi-step argument, not just matching one point. Two processes30,36 can continue linearly42,48 or exponentially43.2,51.84 (factor1.2). Decay160,120,90,67.5 has constant factor0.75 and absolute drops40,30,22.5. These checks preserve both directions and explain the changed graph shape. Actual original-image inspection: Actually viewed original: linear1,3,5,7 matches2x+1; growth2,3,4.5,6.75 matches2·1.5^x; decay4,2,1,0.5 matches4·0.5^x. Qualitative graphs and constant difference/factor labels agree; no unsupported point-intersection inference. This is a fresh author judgment, not a relabelled old review; Kind source and direct requires were rechecked. No independent successor peer acceptance, D or human approval is claimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "difference-versus-ratio",
+            "essentialUnderstandingDe": "Lineare Änderung hat bei gleichen Schritten eine konstante Differenz, exponentielle Zu- oder Abnahme positiver Werte einen konstanten Faktor; beide können denselben Startwert und ersten Folgewert besitzen.",
+            "essentialUnderstandingEn": "Linear change has a constant difference over equal steps, while exponential increase or decrease of positive values has a constant factor; both may share an initial and first subsequent value.",
+            "observablePerformanceDe": "Die lernende Person vergleicht in frischen Tabellen mehrere Differenzen und Quotienten und begründet die Modellklasse sowie die Richtung, auch wenn ein einzelner Schritt nicht unterscheidet.",
+            "observablePerformanceEn": "The learner compares several differences and ratios in fresh tables and justifies the model class and direction even when one step alone does not distinguish them."
+          },
+          {
+            "id": "graph-behaviour-from-change-rule",
+            "essentialUnderstandingDe": "Bei positivem Anfangswert führt ein fester Faktor q>1 zu beschleunigt wirkender Zunahme, 0<q<1 zu abflachender Abnahme; eine Gerade stellt dagegen eine konstante absolute Änderung dar.",
+            "essentialUnderstandingEn": "With a positive initial value, a fixed factor q>1 produces increasing gains, while 0<q<1 gives a flattening decline; a straight line represents constant absolute change.",
+            "observablePerformanceDe": "Die lernende Person skizziert oder deutet aus der Änderungsregel einen passenden Verlauf und erklärt an mindestens zwei Schritten, warum der Vergleichsgraph nicht passt.",
+            "observablePerformanceEn": "The learner sketches or interprets a suitable curve from the change rule and explains using at least two steps why the comparison graph is unsuitable."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "difference-versus-ratio",
+            "graph-behaviour-from-change-rule"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "direction",
+            "textDe": "Zunahme und Abnahme",
+            "textEn": "increase and decrease"
+          },
+          {
+            "id": "evidence-form",
+            "textDe": "tabellarische Veränderungsregel gegenüber Graphvergleich",
+            "textEn": "tabular change rule versus graph comparison"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "same-first-step-different-law",
+            "taskDemandDe": "Zwei Folgen beginnen beide mit 20,25. A setzt mit 30,35 fort; B mit 31.25,39.0625. Ordne lineare bzw. exponentielle Zunahme zu und begründe.",
+            "taskDemandEn": "Two sequences both begin 20,25. A continues 30,35; B continues 31.25,39.0625. Identify linear versus exponential growth and justify.",
+            "expectedPerformanceDe": "A addiert je Schritt 5 und ist linear. B multipliziert je Schritt mit 1.25 und ist exponentiell; der gemeinsame erste Schritt entscheidet noch nicht.",
+            "expectedPerformanceEn": "A adds 5 each step and is linear. B multiplies by 1.25 each step and is exponential; the common first step does not decide the type.",
+            "understandingFocusDe": "Direkter Vergleich trotz identischen Anfangs.",
+            "understandingFocusEn": "Direct comparison despite identical initial values."
+          },
+          {
+            "id": "decay-transfer",
+            "taskDemandDe": "Ein Bestand fällt über drei gleiche Zeitabstände von 100 auf 80, 64, 51.2. Vergleiche einen exponentiellen und einen linearen Fortsetzungsgraphen und begründe den passenden.",
+            "taskDemandEn": "An amount falls over three equal intervals from 100 to 80, 64, 51.2. Compare exponential and linear continuation graphs and justify the suitable one.",
+            "expectedPerformanceDe": "Die Faktoren sind je 0.8, die Differenzen -20,-16,-12.8 nicht konstant. Ein positiver, fallender, zunehmend flacherer Exponentialgraph passt; eine Gerade mit fester negativer Differenz nicht.",
+            "expectedPerformanceEn": "Each factor is 0.8, while differences -20,-16,-12.8 are not constant. A positive, decreasing, flattening exponential graph fits; a straight line with constant negative difference does not.",
+            "understandingFocusDe": "Transfer zur Abnahme und graphischen Begründung.",
+            "understandingFocusEn": "Transfer to decay and graphical justification."
+          }
+        ]
+      }
+    }
+  ]
+}

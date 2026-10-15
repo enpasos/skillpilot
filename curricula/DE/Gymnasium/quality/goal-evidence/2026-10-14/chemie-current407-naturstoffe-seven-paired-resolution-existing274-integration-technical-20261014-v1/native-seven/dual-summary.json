@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f56edc0609456e036f256a2bc27b27bc8b265af93113ee81a2f65b8f2d5acfbf",
+  "reviewInputFingerprint": "sha256:bd51f77bb886abff756f6affa8ba304e22153dc46b7c766dd5ad5031bc4dee92",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-a",
+      "roundId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a",
+      "independenceGroupId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-independent-a",
+      "runIds": [
+        "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex; exact revision unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-b",
+      "roundId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-b",
+      "independenceGroupId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-independent-b",
+      "runIds": [
+        "chemie-current407-naturstoffe-seven-independent-b-20261014-v1.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (exact runtime variant unexposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+      "firstRecordId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.065d764c",
+      "secondRecordId": "chemie-current407-naturstoffe7-b-20261014-v1.065d764c-daec-5d35-95da-3e922d2029c7",
+      "firstRunId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run",
+      "secondRunId": "chemie-current407-naturstoffe-seven-independent-b-20261014-v1.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3681e688-7880-5bb4-9ab9-ef78289345c8",
+      "firstRecordId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.3681e688",
+      "secondRecordId": "chemie-current407-naturstoffe7-b-20261014-v1.3681e688-7880-5bb4-9ab9-ef78289345c8",
+      "firstRunId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run",
+      "secondRunId": "chemie-current407-naturstoffe-seven-independent-b-20261014-v1.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "68292f39-04e7-5924-b6a5-731c7f7f82ee",
+      "firstRecordId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.68292f39",
+      "secondRecordId": "chemie-current407-naturstoffe7-b-20261014-v1.68292f39-04e7-5924-b6a5-731c7f7f82ee",
+      "firstRunId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run",
+      "secondRunId": "chemie-current407-naturstoffe-seven-independent-b-20261014-v1.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+      "firstRecordId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.8fe39739",
+      "secondRecordId": "chemie-current407-naturstoffe7-b-20261014-v1.8fe39739-2938-5e2c-8db2-08572b44569a",
+      "firstRunId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run",
+      "secondRunId": "chemie-current407-naturstoffe-seven-independent-b-20261014-v1.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "firstRecordId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.5c8f0bbb",
+      "secondRecordId": "chemie-current407-naturstoffe7-b-20261014-v1.5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "firstRunId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run",
+      "secondRunId": "chemie-current407-naturstoffe-seven-independent-b-20261014-v1.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+      "firstRecordId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.8da5c5cf",
+      "secondRecordId": "chemie-current407-naturstoffe7-b-20261014-v1.8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+      "firstRunId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run",
+      "secondRunId": "chemie-current407-naturstoffe-seven-independent-b-20261014-v1.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
+      "firstRecordId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a.b4ca3af2",
+      "secondRecordId": "chemie-current407-naturstoffe7-b-20261014-v1.b4ca3af2-77f1-59e8-955d-c4959e284242",
+      "firstRunId": "chemie-current407-naturstoffe-seven-shared-first-pass-20261014-v1-first-pass-a-run",
+      "secondRunId": "chemie-current407-naturstoffe-seven-independent-b-20261014-v1.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

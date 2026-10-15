@@ -1,0 +1,208 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "supplementFormatVersion",
+    "supplementId",
+    "landscapeId",
+    "language",
+    "label",
+    "labelEn",
+    "scope",
+    "compatibleBaseViewIds",
+    "rootNodes",
+    "reviewPath"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/composition-supplement/v1/composition-supplement.schema.json"
+    },
+    "supplementFormatVersion": {
+      "const": "1.0"
+    },
+    "supplementId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]{0,299}$"
+    },
+    "landscapeId": {
+      "const": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+    },
+    "language": {
+      "enum": [
+        "de",
+        "en"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "labelEn": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schoolForm",
+        "jurisdiction",
+        "stage"
+      ],
+      "properties": {
+        "schoolForm": {
+          "const": "Gymnasium"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE(?:-[A-Z]{2})?$"
+        },
+        "stage": {
+          "enum": [
+            "SekI",
+            "SekII"
+          ]
+        },
+        "durationModel": {
+          "enum": [
+            "G8",
+            "G9"
+          ]
+        },
+        "courseProfile": {
+          "enum": [
+            "GK",
+            "LK",
+            "GK+LK"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "stage": {
+                "const": "SekI"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "courseProfile"
+              ]
+            }
+          },
+          "else": {
+            "required": [
+              "courseProfile"
+            ]
+          }
+        }
+      ]
+    },
+    "compatibleBaseViewIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]{0,299}$"
+      }
+    },
+    "rootNodes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "reviewPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/composition-supplement/v1/composition-supplement.schema.json",
+  "title": "Explicit Math-owned Gymnasium supplement v1; repository-only",
+  "description": "No active supplement is implied. Atomic owner-local target entries only; ordinary matcher and package-v1 semantics are unchanged.",
+  "$defs": {
+    "node": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/structure"
+        },
+        {
+          "$ref": "#/$defs/goalEntry"
+        }
+      ]
+    },
+    "structure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "label",
+        "children"
+      ],
+      "properties": {
+        "kind": {
+          "const": "structure"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]{0,299}$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        },
+        "children": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        }
+      }
+    },
+    "goalEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "goalId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "goalEntry"
+        },
+        "goalId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]{0,299}$"
+        },
+        "projectionRole": {
+          "const": "target"
+        },
+        "displayLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reviewFormatVersion",
+    "reviewId",
+    "ownerLandscapeId",
+    "goalId",
+    "goalSha256",
+    "scope",
+    "decision",
+    "authorId",
+    "reviewerId",
+    "conditions",
+    "sourceBinding",
+    "wholeGoalCoverage",
+    "reviewEvidence"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/composition-supplement/v1/regular-mathematics-source-review.schema.json"
+    },
+    "reviewFormatVersion": {
+      "const": "1.0"
+    },
+    "reviewId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "ownerLandscapeId": {
+      "const": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+    },
+    "goalId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "goalSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schoolForm",
+        "jurisdiction",
+        "stage"
+      ],
+      "properties": {
+        "schoolForm": {
+          "const": "Gymnasium"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE(?:-[A-Z]{2})?$"
+        },
+        "stage": {
+          "enum": [
+            "SekI",
+            "SekII"
+          ]
+        },
+        "durationModel": {
+          "enum": [
+            "G8",
+            "G9"
+          ]
+        },
+        "courseProfile": {
+          "enum": [
+            "GK",
+            "LK",
+            "GK+LK"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "stage": {
+                "const": "SekI"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "courseProfile"
+              ]
+            }
+          },
+          "else": {
+            "required": [
+              "courseProfile"
+            ]
+          }
+        }
+      ]
+    },
+    "decision": {
+      "const": "accepted"
+    },
+    "authorId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "reviewerId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "conditions": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "sourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceId",
+        "subject",
+        "edition",
+        "cohort",
+        "anchor",
+        "officialUrl",
+        "retainedEvidence"
+      ],
+      "properties": {
+        "sourceId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]{0,299}$"
+        },
+        "subject": {
+          "const": "Mathematics"
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        },
+        "cohort": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        },
+        "anchor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        },
+        "officialUrl": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "retainedEvidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000,
+              "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "wholeGoalCoverage": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "reviewEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/composition-supplement/v1/regular-mathematics-source-review.schema.json",
+  "title": "Exact accepted whole-goal regular Mathematics source binding for optional preparation"
+}

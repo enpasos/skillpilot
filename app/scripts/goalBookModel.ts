@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { collectRequiredTaskMaterialDigests } from './goalEvidenceTaskMaterials'
 import { readFileSync } from 'node:fs'
 import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'
 import { dirname, isAbsolute, relative, resolve } from 'node:path'
@@ -331,6 +332,7 @@ export interface GoalBookBuildInput {
   semanticKindLedger: unknown
   goalVisualizationQa: unknown
   goalVisualizationAssetDigests: Record<string, string>
+  requiredTaskMaterialDigests?: Record<string, string>
   evidenceReviewSources: GoalBookEvidenceReviewBuildSource[]
   config: GoalBookBuildConfig
 }
@@ -964,6 +966,7 @@ const parseEvidenceReviewSources = (
   landscape: CanonicalAuthoringLandscape,
   semanticKindByGoalId: ReadonlyMap<string, string>,
   qaRecordsByGoalId: ReadonlyMap<string, GoalVisualizationQaRecord>,
+  requiredTaskMaterialDigests: Readonly<Record<string, string>>,
 ): EvidenceReviewParseResult => {
   if (!Array.isArray(sources)) fail('evidenceReviewSources must be an array.')
   if (sources.length !== configuredPaths.length) {
@@ -1002,7 +1005,7 @@ const parseEvidenceReviewSources = (
       const semanticKind = semanticKindByGoalId.get(goalId)
         ?? fail(`${label} references unclassified goal ${goalId}.`)
 
-      const resourceDigests: Record<string, string> = {}
+      const resourceDigests: Record<string, string> = { ...requiredTaskMaterialDigests }
       const qaRecord = qaRecordsByGoalId.get(goalId)
       if (qaRecord) resourceDigests[qaRecord.imageUrl] = qaRecord.assetSha256
       const semanticErrors = validateGoalBookEvidenceReviewRecordSemantics(
@@ -1705,13 +1708,14 @@ const compileGoalBookViewSource = (
   source: GoalBookCompositionViewBuildSource,
   landscape: CanonicalAuthoringLandscape,
   semanticKindByGoalId: ReadonlyMap<string, string>,
+  qualityReview = false,
 ): CompiledGoalBookViewSource => {
   const path = nonEmptyString(source.path, 'composition-view source path')
   const view = normalizeCompositionView(source.view)
   if (view.landscapeId !== landscape.landscapeId) {
     fail(`composition view ${path} landscapeId ${view.landscapeId} does not match ${landscape.landscapeId}.`)
   }
-  const compilation = compileCompositionView(view, landscape)
+  const compilation = compileCompositionView(view, landscape, null, null, { purpose: qualityReview ? 'quality-review' : 'runtime' })
   const errors = compilation.findings.filter(({ severity }) => severity === 'error')
   if (errors.length > 0) {
     fail(`invalid composition view ${path}: ${errors
@@ -1830,6 +1834,7 @@ export const buildGoalBookModel = ({
   semanticKindLedger: rawSemanticKindLedger,
   goalVisualizationQa: rawGoalVisualizationQa,
   goalVisualizationAssetDigests,
+  requiredTaskMaterialDigests = {},
   evidenceReviewSources: rawEvidenceReviewSources,
   config,
 }: GoalBookBuildInput): GoalBookModel => {
@@ -1916,7 +1921,7 @@ export const buildGoalBookModel = ({
       if (source.path !== sourceManifest.sourcePaths[index]) {
         fail(`compositionViewSources[${index}].path does not match the source manifest.`)
       }
-      return compileGoalBookViewSource(source, landscape, semanticKindLedger.semanticKindByGoalId)
+      return compileGoalBookViewSource(source, landscape, semanticKindLedger.semanticKindByGoalId, mode === 'review')
     })
   } else {
     if (rawCompositionView === undefined || !compositionViewPath) {
@@ -1926,6 +1931,7 @@ export const buildGoalBookModel = ({
       { path: compositionViewPath, view: rawCompositionView },
       landscape,
       semanticKindLedger.semanticKindByGoalId,
+      mode === 'review',
     )]
   }
   const viewId = sourceManifest?.manifestId ?? compiledViewSources[0].view.viewId
@@ -1963,6 +1969,7 @@ export const buildGoalBookModel = ({
     landscape,
     semanticKindLedger.semanticKindByGoalId,
     goalVisualizationQaRecords,
+    requiredTaskMaterialDigests,
   )
   const projectedOccurrences = membershipTargetCollection.occurrences
   const membershipOccurrences = projectedOccurrences.filter(({ goalId }) => (
@@ -2780,6 +2787,12 @@ export const loadGoalBookBuildInputs = async (
     goalVisualizationQa,
     repositoryRoot,
   )
+  const requiredTaskMaterialDigests: Record<string, string> = {}
+  for (const goal of (parseJson(landscapeText, config.landscapePath) as { goals: LearningGoal[] }).goals) {
+    const taskState = collectRequiredTaskMaterialDigests(goal, repositoryRoot)
+    if (taskState.errors.length) fail(taskState.errors.join(" | "))
+    Object.assign(requiredTaskMaterialDigests, taskState.digests)
+  }
   const model = buildGoalBookModel({
     landscape: parseJson(landscapeText, config.landscapePath),
     ...(compositionViewText && config.compositionViewPath
@@ -2798,6 +2811,7 @@ export const loadGoalBookBuildInputs = async (
     semanticKindLedger: parseJson(semanticKindLedgerText, config.semanticKindLedgerPath),
     goalVisualizationQa,
     goalVisualizationAssetDigests,
+    requiredTaskMaterialDigests,
     evidenceReviewSources: config.evidenceReviewPaths.map((path, index) => ({
       path,
       text: evidenceReviewTexts[index],

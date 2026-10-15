@@ -1,0 +1,91 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "physics-five-proposed-current-whole-p-independent-peer-20261015-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+  "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+  "goalId": "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+  "goalFingerprint": "sha256:7d88450b7bd26dad77ae8935a9f74a1ec762f6446ae62ea3e64b4bac2093f5b4",
+  "reviewInputFingerprint": "sha256:4865c45d02cd43742c0d98afcaf4cfc30de0d6bea5aca2a5fce25a2a850e94d1",
+  "profileFingerprint": "sha256:33bf6190568eb4677321fb250f2c93619f056fca72503806817f9f4ac66aff08",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-15T07:13:03.462Z",
+  "reviewer": "/root/five_current_existing_math_requires_successor_independent_peer; NEW wholeP context review, informed by prior separate Requires work",
+  "reason": "NEW independent proposed-requires-context wholeP judgment. KEEP the complete procedure profile in the exact58d2f963 context. Both required understandings and briefs require the learner to construct the solution, use displacement and velocity initial data, verify the ODE and initial conditions by differentiation, translate equivalent representations and interpret physical parameters/conventions. The change-of-time/axis, equivalent-solution and damping-boundary axes expose more than substituted numbers. Trig differentiation preparation makes the verification step coherent but does not pre-solve the oscillator or remove the new physical model work. Own earlier examplex-double-dot+4x=0,x0=0,v0=−6 hasx=−3sin2t=3cos(2t+π/2),v=−6cos2t andx-double-dot=12sin2t=−4x. Shift time or reverse coordinate and track phase/sign whileA andω remain invariant. An equilibrium crossing with reversed initial velocity chooses the opposite phase; a rest-at-maximum start has different phase. A decaying amplitude signals failure of the undamped model rather than a mere phase change. The two independent evidence pieces can arise in a coherent multi-step task; the profile does not authorize unnecessary extra-task quotas after sufficient evidence. Source/scope observations remain; no source/placement/route/human acceptance. Original wholeP was held by codex-physics-rollout-v1-batch-033x-stable-current-carryover-1-positive-understanding-candidate-author-2026-09-05 under canonical-physics-positive-evidence-v1-b033x-stable-current-carryover-1-v1; original record is retained and this is not reattributed historical approval.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [
+    "Bounded current independent observation: Interpret unique integration constants as the sine/cosine coefficientsC,D for a fixed time convention. A positive-amplitude phase is defined modulo2π; forx0=v0=0 the zero solution hasA=0 and phase is not identifiable. The current P does not assert a unique numerical phase representative; do not introduce that false claim in tasks. This is a boundary clarification, not a substantive P defect requiring text revision.",
+    "Bounded current independent observation: The existing no-general-all-DGL-method and source/course limitations stay intact."
+  ],
+  "profile": {
+    "archetype": "procedure",
+    "expectations": [
+      {
+        "id": "independent-review-a-understanding",
+        "essentialUnderstandingDe": "Die lernende Person versteht, dass die lineare Gleichung x''(t) + ω²x(t) = 0 im idealisierten ungedämpften Modell eine sinusförmige Bewegung um die Gleichgewichtslage beschreibt: Die Kreisfrequenz bestimmt die Zeitskala, während Anfangsauslenkung und Anfangsgeschwindigkeit Amplitude und Phase der konkreten Lösung festlegen.",
+        "essentialUnderstandingEn": "The learner understands that the linear equation x''(t) + ω²x(t) = 0 describes sinusoidal motion about equilibrium in the idealized undamped model: angular frequency sets the time scale, while initial displacement and initial velocity determine the amplitude and phase of the particular solution.",
+        "observablePerformanceDe": "Zu vorgegebenen Anfangswerten löst die lernende Person die Differenzialgleichung selbstständig, bestimmt Amplitude und Phase mit konsistenter Vorzeichenkonvention, prüft Lösung und Anfangswerte durch Einsetzen und erläutert an Gleichung und Zeitdiagramm die physikalische Bedeutung von Amplitude, Kreisfrequenz und Phase.",
+        "observablePerformanceEn": "For specified initial values, the learner independently solves the differential equation, determines amplitude and phase using a consistent sign convention, verifies the solution and initial values by substitution, and explains from the equation and a time graph the physical meaning of amplitude, angular frequency, and phase."
+      },
+      {
+        "id": "independent-review-b-understanding",
+        "essentialUnderstandingDe": "Die allgemeine Lösung der ungedämpften Schwingungsgleichung x''+ω₀²x=0 kann gleichwertig als Linearkombination von Sinus und Kosinus oder als x(t)=A cos(ω₀t+φ) dargestellt werden; zwei Anfangsbedingungen bestimmen die beiden Integrationskonstanten eindeutig, während A die maximale Auslenkung, ω₀ die Zeitskala der Schwingung und φ den Anfangszustand im Zyklus beschreibt.",
+        "essentialUnderstandingEn": "The general solution of the undamped oscillator equation x''+ω₀²x=0 can equivalently be represented as a linear combination of sine and cosine or as x(t)=A cos(ω₀t+φ); two initial conditions uniquely determine the two integration constants, while A describes the maximum displacement, ω₀ the oscillator's time scale, and φ the initial state within the cycle.",
+        "observablePerformanceDe": "Die lernende Person löst die gegebene Differenzialgleichung, setzt Auslenkung und Geschwindigkeit zum Anfangszeitpunkt ein, bestimmt die Konstanten einschließlich eines zum Vorzeichen von x(0) und v(0) passenden Phasenwinkels und prüft durch Ableiten sowohl die Gleichung als auch beide Anfangsbedingungen; anschließend deutet sie A, ω₀ und φ mit Größen, Einheiten und Bezug auf die gewählte Zeit- und Koordinatenkonvention.",
+        "observablePerformanceEn": "The learner solves the given differential equation, applies the initial displacement and velocity, determines the constants including a phase angle consistent with the signs of x(0) and v(0), and checks both the equation and the two initial conditions by differentiation; the learner then interprets A, ω₀, and φ using physical quantities, units, and the chosen time and coordinate conventions."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "independent-review-a-understanding",
+        "independent-review-b-understanding"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "changed-initial-state-and-reference-convention",
+        "textDe": "Anfangsauslenkung, Anfangsgeschwindigkeit, Zeitnullpunkt oder Koordinatenrichtung werden so verändert, dass Amplitude und Phase neu und mit konsistenter Vorzeichenkonvention bestimmt werden müssen.",
+        "textEn": "Initial displacement, initial velocity, time origin, or coordinate direction is changed so that amplitude and phase must be determined anew using a consistent sign convention."
+      },
+      {
+        "id": "equivalent-solution-representation",
+        "textDe": "Die Lösung wird zwischen Sinus-Kosinus-Linearkombination, Amplituden-Phasen-Form und Zeitdiagramm übersetzt; die Gleichwertigkeit wird über Gleichung und Anfangsbedingungen geprüft.",
+        "textEn": "The solution is translated among a sine-cosine linear combination, amplitude-phase form, and time graph; equivalence is checked against the equation and initial conditions."
+      },
+      {
+        "id": "undamped-model-validity-boundary",
+        "textDe": "Ein Fall erfüllt das ungedämpfte lineare Modell, während ein zweiter Datensatz oder Verlauf eine erkennbare Dämpfung oder andere Modellabweichung enthält, die als Grenze der verwendeten Lösung benannt werden muss.",
+        "textEn": "One case satisfies the linear undamped model, while a second data set or trajectory contains detectable damping or another model deviation that must be identified as a limit of the solution used."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "fresh-independent-case-a",
+        "taskDemandDe": "Bei verschobenem Zeitnullpunkt oder umgekehrter Koordinatenrichtung bestimmt die lernende Person die neue Phasendarstellung, erkennt, welche Größen unverändert bleiben, und sagt den zugehörigen Verlauf von Auslenkung und Geschwindigkeit voraus, ohne nur Zahlen in eine bekannte Lösung einzusetzen.",
+        "taskDemandEn": "With a shifted time origin or reversed coordinate direction, the learner determines the new phase representation, identifies which quantities remain unchanged, and predicts the corresponding displacement and velocity histories without merely substituting new numbers into a familiar solution.",
+        "expectedPerformanceDe": "Zu vorgegebenen Anfangswerten löst die lernende Person die Differenzialgleichung selbstständig, bestimmt Amplitude und Phase mit konsistenter Vorzeichenkonvention, prüft Lösung und Anfangswerte durch Einsetzen und erläutert an Gleichung und Zeitdiagramm die physikalische Bedeutung von Amplitude, Kreisfrequenz und Phase.",
+        "expectedPerformanceEn": "For specified initial values, the learner independently solves the differential equation, determines amplitude and phase using a consistent sign convention, verifies the solution and initial values by substitution, and explains from the equation and a time graph the physical meaning of amplitude, angular frequency, and phase.",
+        "understandingFocusDe": "Die lernende Person versteht, dass die lineare Gleichung x''(t) + ω²x(t) = 0 im idealisierten ungedämpften Modell eine sinusförmige Bewegung um die Gleichgewichtslage beschreibt: Die Kreisfrequenz bestimmt die Zeitskala, während Anfangsauslenkung und Anfangsgeschwindigkeit Amplitude und Phase der konkreten Lösung festlegen.",
+        "understandingFocusEn": "The learner understands that the linear equation x''(t) + ω²x(t) = 0 describes sinusoidal motion about equilibrium in the idealized undamped model: angular frequency sets the time scale, while initial displacement and initial velocity determine the amplitude and phase of the particular solution."
+      },
+      {
+        "id": "fresh-independent-case-b",
+        "taskDemandDe": "Für einen unabhängig vorgelegten Oszillator, der statt aus einer Ruhelage bei maximaler Auslenkung nun beim Nulldurchgang mit vorgegebener Bewegungsrichtung startet, sagt die lernende Person zunächst die qualitative Änderung von Amplitude und Phase voraus, bestimmt danach die Lösung in einer anderen äquivalenten Sinus-Kosinus-Darstellung und weist die Übereinstimmung beider Darstellungen nach.",
+        "taskDemandEn": "For an independently presented oscillator that starts at equilibrium with a specified direction of motion rather than from rest at maximum displacement, the learner first predicts the qualitative change in amplitude and phase, then determines the solution in a different but equivalent sine-cosine representation and demonstrates that the two representations agree.",
+        "expectedPerformanceDe": "Die lernende Person löst die gegebene Differenzialgleichung, setzt Auslenkung und Geschwindigkeit zum Anfangszeitpunkt ein, bestimmt die Konstanten einschließlich eines zum Vorzeichen von x(0) und v(0) passenden Phasenwinkels und prüft durch Ableiten sowohl die Gleichung als auch beide Anfangsbedingungen; anschließend deutet sie A, ω₀ und φ mit Größen, Einheiten und Bezug auf die gewählte Zeit- und Koordinatenkonvention.",
+        "expectedPerformanceEn": "The learner solves the given differential equation, applies the initial displacement and velocity, determines the constants including a phase angle consistent with the signs of x(0) and v(0), and checks both the equation and the two initial conditions by differentiation; the learner then interprets A, ω₀, and φ using physical quantities, units, and the chosen time and coordinate conventions.",
+        "understandingFocusDe": "Die allgemeine Lösung der ungedämpften Schwingungsgleichung x''+ω₀²x=0 kann gleichwertig als Linearkombination von Sinus und Kosinus oder als x(t)=A cos(ω₀t+φ) dargestellt werden; zwei Anfangsbedingungen bestimmen die beiden Integrationskonstanten eindeutig, während A die maximale Auslenkung, ω₀ die Zeitskala der Schwingung und φ den Anfangszustand im Zyklus beschreibt.",
+        "understandingFocusEn": "The general solution of the undamped oscillator equation x''+ω₀²x=0 can equivalently be represented as a linear combination of sine and cosine or as x(t)=A cos(ω₀t+φ); two initial conditions uniquely determine the two integration constants, while A describes the maximum displacement, ω₀ the oscillator's time scale, and φ the initial state within the cycle."
+      }
+    ]
+  }
+}

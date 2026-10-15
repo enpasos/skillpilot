@@ -1,8 +1,9 @@
 import type { UiGoal } from '../goalTypes'
+import { hasApplicabilityContexts, goalMatchesApplicabilityContext } from './applicabilityContexts'
 import { normalizeDurationModel } from './durationModel'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
-type FilterableGoal = Pick<UiGoal, 'tags' | 'applicability'>
+type FilterableGoal = Pick<UiGoal, 'tags' | 'applicability' | 'extendedData'>
 type FilterDimension = 'courseProfile' | 'durationModel' | 'jurisdiction' | 'generic'
 
 const COURSE_FILTER_VALUES = new Set(['GK', 'LK', 'GK+LK'])
@@ -119,7 +120,8 @@ const getGenericFilterValues = (goal: FilterableGoal) => {
   return values
 }
 
-export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string): boolean => {
+export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string, selectedScope?: unknown): boolean => {
+  if (hasApplicabilityContexts(goal)) return goalMatchesApplicabilityContext(goal, selectedScope)
   const effectiveFilters = splitFilterIds(filterId).filter((value) => !isWildcardFilter(value))
   if (effectiveFilters.length === 0) return true
   if (effectiveFilters.length > 1) return goalMatchesFilters(goal, effectiveFilters)
@@ -161,7 +163,9 @@ export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string): bool
 export const goalMatchesFilters = (
   goal: FilterableGoal,
   filterIds?: string | string[],
+  selectedScope?: unknown,
 ): boolean => {
+  if (hasApplicabilityContexts(goal)) return goalMatchesApplicabilityContext(goal, selectedScope)
   const effectiveFilters = splitFilterIds(filterIds)
     .filter((value) => !isWildcardFilter(value))
 

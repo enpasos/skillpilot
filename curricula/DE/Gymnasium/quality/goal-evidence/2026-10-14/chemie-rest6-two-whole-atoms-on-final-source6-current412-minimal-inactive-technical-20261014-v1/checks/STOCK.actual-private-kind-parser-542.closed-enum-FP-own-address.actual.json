@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-14T03:57:17.955Z",
+  "status": "PASS",
+  "scope": "only unchanged stock private semantic-kind parser; no whole-book/model or PDF PASS claimed",
+  "stockEntryPoint": "goalBookModel.buildGoalBookModel -> parseSemanticKindLedger",
+  "canonicalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-two-whole-atoms-on-final-source6-current412-minimal-inactive-technical-20261014-v1/candidate/canonical542.prospective414.on-final-source6-539.minimal-inactive.json",
+  "ledgerPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-two-whole-atoms-on-final-source6-current412-minimal-inactive-technical-20261014-v1/candidate/semantic542.prospective414.paired-existing-science.closed-enum.json",
+  "parsedCurrentDecisions": 542,
+  "exactNextStageStop": "Goal-book model: compositionView must be provided for a single-view build.",
+  "negativeControlsInMemoryOnly": [
+    {
+      "name": "closed decisionBasis enum",
+      "rejected": true,
+      "stockError": "Goal-book model: semantic-kind ledger violates its closed JSON Schema: data must have required property 'profileFormatVersion'; data must have required property 'version'; data must have required property 'description'; data must have required property 'releaseModelContractVersion'; data must have required property 'source'; data must have required property 'coreBinding'; data must have required property 'namespaceBindings'; data must have required property 'applicationVocabulary'; data must have required property 'semanticKindDecisions'; data must have required property 'semanticKinds'; data must have required property 'mappings'; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data/documentType must be equal to constant; data/decisions/541/decisionBasis must be equal to one of the allowed values; data must match exactly one schema in oneOf."
+    },
+    {
+      "name": "actual raw source fingerprint",
+      "rejected": true,
+      "stockError": "Goal-book model: stale semantic-kind decision for goal d11fc507-4fae-5f2f-bd84-c3dbc9c43daf; expected sha256:e43befce0fdf02952bf34681ab4b0d33d896b6e81b04545c7c7760346ee1dbbe."
+    },
+    {
+      "name": "own exact source address",
+      "rejected": true,
+      "stockError": "Goal-book model: semantic-kind ledger binds curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-two-whole-atoms-on-final-source6-current412-minimal-inactive-technical-20261014-v1/candidate/not-the-configured-source.json, expected curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-rest6-two-whole-atoms-on-final-source6-current412-minimal-inactive-technical-20261014-v1/candidate/canonical542.prospective414.on-final-source6-539.minimal-inactive.json."
+    }
+  ],
+  "assetsRead": 0,
+  "hostsWritten": 0,
+  "scienceVotesCreated": 0
+}

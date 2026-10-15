@@ -1,3 +1,4 @@
+import { hasApplicabilityContexts } from './applicabilityContexts'
 import type { TeacherCoursePlan } from '../coursePlanTypes'
 import type { UiGoal } from '../goalTypes'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
@@ -6,6 +7,7 @@ import type { ClassSession } from '../trainerTypes'
 import {
   applyCompositionViewProjection,
   deriveRuntimeCompositionScope,
+  deriveRuntimeApplicabilityScope,
   deriveRuntimeGoalPlacementFilters,
 } from './compositionViewRuntime'
 import { normalizeCompositionView } from './authoring/compositionViewAuthoring'
@@ -277,7 +279,21 @@ export const resolveTeacherLearningPlanSubjectProjection = async ({
     activeFilter: session.activeFilter,
     learnerPersonalCurriculum: personalCurriculum,
   })
-  const placementProjectedEntries = applyGoalPlacementProjection(landscapeEntries, placementFilters)
+  const selectedScopesByLandscapeId = new Map(landscapeEntries.map((entry) => [entry.meta.landscapeId,
+    deriveRuntimeApplicabilityScope({
+      landscapeId: entry.meta.landscapeId,
+      activeLandscapeId: session.landscapeId,
+      rootLandscapeId: runtimeCatalogState.mode === 'package'
+        ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, entry.meta.landscapeId) ?? session.rootLandscapeId
+        : session.rootLandscapeId,
+      scopeEnabled: true,
+      activeFilter: session.activeFilter,
+      learnerPersonalCurriculum: personalCurriculum,
+    }),
+  ] as const))
+  const placementProjectedEntries = landscapeEntries.flatMap((entry) => applyGoalPlacementProjection(
+    [entry], placementFilters, selectedScopesByLandscapeId.get(entry.meta.landscapeId),
+  ))
   const compositionView = await fetchCompositionView({
     session,
     landscapeEntries,
@@ -295,6 +311,7 @@ export const resolveTeacherLearningPlanSubjectProjection = async ({
               ) ?? entry
         )),
         compositionView,
+        selectedScopesByLandscapeId.get(landscapeId),
       )
     : placementProjectedEntries
   const activeEntry = projectedEntries.find((entry) => entry.meta.landscapeId === landscapeId) ?? null
@@ -309,11 +326,11 @@ export const resolveTeacherLearningPlanSubjectProjection = async ({
   allGoalIndex.forEach((goal, goalId) => {
     const isVisible = compositionTargetIds
       ? compositionTargetIds.has(goalId)
-      : goalMatchesGlobalStageScope(
+      : (hasApplicabilityContexts(goal) || goalMatchesGlobalStageScope(
           goal,
           session.personalConfig ?? {},
           { rootLandscapeId: session.rootLandscapeId },
-        ) && goalMatchesFilters(goal, placementFilters)
+        )) && goalMatchesFilters(goal, placementFilters, selectedScopesByLandscapeId.get(goal.landscapeId ?? landscapeId))
     if (isVisible) goals.set(goalId, goal)
   })
   const visibleChildrenByParent = new Map<string, readonly string[]>()

@@ -1,4 +1,5 @@
 import type { UiGoal } from '../goalTypes'
+import { goalMatchesApplicabilityContext, hasApplicabilityContexts, normalizeCompleteApplicabilityContext } from './applicabilityContexts'
 import type { GoalPlacement, GoalPlacementContext, SkillLandscape, ProgramUnit } from '../landscapeTypes'
 import { normalizeDurationModel } from './durationModel'
 import { splitFilterIds } from './goalFilters'
@@ -234,6 +235,7 @@ const createSyntheticProgramUnitAnchor = (
 export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry>(
   entries: T[],
   activeFilter?: string | string[],
+  selectedScope?: unknown,
 ): T[] {
   return entries.map((entry) => {
     if (!Array.isArray(entry.goals) || entry.goals.length === 0) return entry
@@ -257,7 +259,23 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       })
     })
     const unitsById = new Map(entry.meta.programUnits.map((unit) => [unit.id, unit]))
-    const goalPlacements = entry.meta.goalPlacements ?? []
+    const goalPlacements = (entry.meta.goalPlacements ?? []).filter((placement) => {
+      const goal = goalById.get(placement.goalId)
+      return !goal || goalMatchesApplicabilityContext(goal, selectedScope)
+    })
+    const placementIsEligible = (placement: GoalPlacement): boolean => {
+      const goal = goalById.get(placement.goalId)
+      if (goal && hasApplicabilityContexts(goal)) {
+        const scope = normalizeCompleteApplicabilityContext(selectedScope)
+        if (!scope) return false
+        return Object.entries(placement.context ?? {}).every(([key, value]) =>
+          value === undefined || (typeof scope[key as keyof typeof scope] === 'string'
+            && contextValueMatchesFilter(value, scope[key as keyof typeof scope] as string, key)))
+      }
+      return normalizeFilterIds(activeFilter).length === 0
+        ? placementIsDefaultSafe(placement)
+        : placementMatchesFilters(placement, activeFilter)
+    }
     const anchorByUnitId = new Map<string, string>()
     const unitIdByAnchorGoalId = new Map<string, string>()
     const primaryPlacementAnchorByGoalId = new Map<string, string>()
@@ -275,9 +293,7 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
       if (!anchorGoalId) return
 
       const hasUnsafePlacement = goalPlacements.some((placement) => {
-        const eligible = normalizeFilterIds(activeFilter).length === 0
-          ? placementIsDefaultSafe(placement)
-          : placementMatchesFilters(placement, activeFilter)
+        const eligible = placementIsEligible(placement)
         if (!eligible) return false
         if (placement.unitId !== unit.id) return false
         if (placement.goalId === anchorGoalId) return false
@@ -323,9 +339,7 @@ export function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry
     }
 
     goalPlacements.forEach((placement) => {
-      const eligible = normalizeFilterIds(activeFilter).length === 0
-        ? placementIsDefaultSafe(placement)
-        : placementMatchesFilters(placement, activeFilter)
+      const eligible = placementIsEligible(placement)
       if (!eligible) return
       if (placement.relation !== 'primary') return
 

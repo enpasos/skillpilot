@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-14T02:23:45.843694+00:00",
+  "emptyNeighbourSelection": {
+    "retainedRaw": "checks/INITIAL.empty-neighbour-selection-before-sourceGoals-key-correction.json",
+    "cause": "Initial helper read goals rather than sourceGoals. Corrected selector now preserves14 whole neighbour rows and24 unique current partner bodies; no source cell changed."
+  },
+  "initialMCardStreamFallback": {
+    "retainedActualReceipt": "checks/STOCK.M5.author-pending-report.actual.json",
+    "initialConfig": "config/M5.author-pending-review.config.json",
+    "correction": "Explicit empty new card stream and additive config/M5.author-pending-review.explicit-empty-cards.config.json. Corrected scoped report has0 missing/stale goal records and0 duplicate/obsolete card records. Five unresolved M decisions remain."
+  },
+  "initialFinalPErrorCountAssertion": {
+    "actualFailedToolChunkId": "d4c045",
+    "exitCode": 1,
+    "cause": "Helper incorrectly expected only5 missing-kind errors. Actual normal stock also produces10 dependent kindless fingerprint errors. Candidate fingerprints correctly bind prospective kind; no authority or checker change used to suppress errors.",
+    "correctedActualToolChunkId": "0b4a49",
+    "finalReceipt": "checks/FINAL.STOCK.P5-current-full-case-fingerprints-schemas-and-five-classification-HOLDs.actual.json"
+  },
+  "authorTypo": "Dichteeignung corrected to Dichtungseignung in new unreviewed case/profile only. Whole case digest, criteria and all currentP fingerprints rebound and checked afterward.",
+  "noOriginalScientificArtifactsRewritten": true
+}

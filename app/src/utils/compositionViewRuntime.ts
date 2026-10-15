@@ -1,5 +1,6 @@
 import type { LandscapeEntry } from '../hooks/useLandscapes'
 import type { UiGoal } from '../goalTypes'
+import { goalMatchesApplicabilityContext, hasApplicabilityContexts, toSelectedApplicabilityScope, resolveApplicabilityBranchScope } from './applicabilityContexts'
 import type { GoalPlacementContext } from '../landscapeTypes'
 import {
   collectCompositionProjectionRoleGoalIds,
@@ -419,6 +420,18 @@ export const deriveRuntimeCompositionScope = ({
   }
 }
 
+
+/** Exact eligibility uses the selected subject's own course/duration. A filter
+ * on a different active subject can carry a root jurisdiction, never its course. */
+export const deriveRuntimeApplicabilityScope = (
+  options: Parameters<typeof deriveRuntimeCompositionScope>[0] & { activeLandscapeId?: string },
+): Record<string, unknown> | undefined => toSelectedApplicabilityScope(deriveRuntimeCompositionScope({
+  ...options,
+  activeFilter: options.activeLandscapeId === options.landscapeId
+    ? options.activeFilter
+    : splitFilterIds(options.activeFilter).filter((value) => !!normalizeJurisdictionCode(value)).join(','),
+}))
+
 const createSyntheticStructureGoal = ({
   entry,
   view,
@@ -434,7 +447,7 @@ const createSyntheticStructureGoal = ({
   treeOrder: number
   isRoot: boolean
 }): UiGoal => ({
-  id: `composition:${view.viewId}:structure:${node.id}`,
+  id: `composition:${typeof node.presentationViewId === 'string' ? node.presentationViewId : view.viewId}:structure:${node.id}`,
   landscapeId: entry.meta.landscapeId,
   title: node.label,
   description: node.label,
@@ -457,7 +470,7 @@ const createSyntheticStructureGoal = ({
   extendedData: {
     treeOrder,
     syntheticStructureKind: 'compositionView',
-    compositionViewId: view.viewId,
+    compositionViewId: typeof node.presentationViewId === 'string' ? node.presentationViewId : view.viewId,
     compositionNodeId: node.id,
   },
   type: 'cluster',
@@ -857,9 +870,36 @@ export const applyMatchedCompositionRouteGoalProjection = (
   })
 }
 
+/** Eligibility of a target remains tied to the same reviewed merger source branch. */
+export const goalMatchesResolvedCompositionView = (
+  goal: UiGoal, rawView: unknown, selectedScope: unknown, goalById: Map<string, UiGoal>,
+): boolean => {
+  if (!hasApplicabilityContexts(goal)) return true
+  const view = normalizeCompositionView(rawView)
+  const selectedDocuments = Array.isArray(view.resolvedSelectionViews) && Array.isArray(view.selectedCompositionViewIds)
+    ? view.resolvedSelectionViews.map(normalizeCompositionView).filter((source) =>
+      (view.selectedCompositionViewIds as unknown[]).includes(source.viewId))
+    : null
+  const courseBranches = Array.isArray(view.resolvedCourseProfileViews) && Array.isArray(view.mergedFromViewIds)
+    && String(view.viewId).startsWith('merged:')
+    ? view.resolvedCourseProfileViews.map(normalizeCompositionView).filter((source) =>
+      (view.mergedFromViewIds as unknown[]).includes(source.viewId))
+    : null
+  const branches = selectedDocuments ?? courseBranches
+  if (!branches) return goalMatchesApplicabilityContext(goal, resolveApplicabilityBranchScope(selectedScope, view.scope))
+  const roots = new Map([...goalById.values()].filter((candidate) => candidate.landscapeId
+    && candidate.tags?.includes(ROOT_TAG) && candidate.contains.length > 0)
+    .map((candidate) => [candidate.landscapeId!, candidate.id]))
+  return branches.some((source) =>
+    collectCompositionProjectionRoleGoalIds(source.rootNodes, goalById, roots).targetGoalIds.has(goal.id)
+    && goalMatchesResolvedCompositionView(goal, source,
+      resolveApplicabilityBranchScope(selectedScope, source.scope), goalById))
+}
+
 export const applyCompositionViewProjection = (
   entries: LandscapeEntry[],
   rawView: unknown,
+  selectedScope?: unknown,
 ): LandscapeEntry[] => {
   if (!rawView) return entries
 
@@ -868,7 +908,19 @@ export const applyCompositionViewProjection = (
     return entries
   }
 
-  const goalByIdAcrossEntries = new Map(entries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
+  // Eligibility restricts enrollment. Canonical definitions remain available
+  // for prerequisites; a subtree cannot re-enroll a denied target.
+  const canonicalById = new Map(entries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
+  const sourceEligibility = (goal: UiGoal) => goalMatchesResolvedCompositionView(goal, view, selectedScope, canonicalById)
+  const deniedTargetIds = new Set(entries.flatMap((entry) => entry.goals
+    .filter((goal) => !sourceEligibility(goal))
+    .map((goal) => goal.id)))
+  const eligibleEntries = entries.map((entry) => entry.meta.landscapeId !== view.landscapeId ? entry : ({
+    ...entry, goals: entry.goals.map((goal) => ({
+      ...goal, contains: goal.contains.filter((id) => !deniedTargetIds.has(id)),
+    })),
+  }))
+  const goalByIdAcrossEntries = new Map(eligibleEntries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
   const rootGoalIdByLandscapeId = new Map(
     entries.flatMap((entry) => {
       const rootGoal = entry.goals.find((goal) => (goal.tags ?? []).includes(ROOT_TAG) && goal.contains.length > 0)
@@ -881,7 +933,7 @@ export const applyCompositionViewProjection = (
     rootGoalIdByLandscapeId,
   )
 
-  return entries.map((entry) => {
+  return eligibleEntries.map((entry) => {
     if (entry.meta.landscapeId !== view.landscapeId) {
       return entry
     }
@@ -949,10 +1001,10 @@ export const applyCompositionViewProjection = (
     // Keep support goals in the returned data for prerequisite checks, but
     // never rematerialize them as visible children through a structure node.
     const strippedGoalById = new Map(strippedGoals
-      .filter((goal) => !prerequisiteOnlyGoalIds.has(goal.id))
+      .filter((goal) => !prerequisiteOnlyGoalIds.has(goal.id) && !deniedTargetIds.has(goal.id))
       .map((goal) => [goal.id, goal]))
     const projectedGoalById = new Map([...goalByIdAcrossEntries]
-      .filter(([goalId]) => !prerequisiteOnlyGoalIds.has(goalId)))
+      .filter(([goalId]) => !prerequisiteOnlyGoalIds.has(goalId) && !deniedTargetIds.has(goalId)))
     strippedGoalById.forEach((goal, goalId) => projectedGoalById.set(goalId, goal))
 
     if (authoredRootGoal) {
@@ -1004,4 +1056,33 @@ export const applyCompositionViewProjection = (
       goals: [...syntheticGoals, ...strippedGoals],
     }
   })
+}
+
+
+/** Backend resolves selection, review and scope. This function only materializes
+ * its already-pruned documents and preserves each authored focus identity. */
+export const combineSelectedCompositionDocuments = (documents: unknown[]): CompositionView | null => {
+  if (documents.length === 0) return null
+  const views = documents.map(normalizeCompositionView)
+  const first = views[0]
+  if (views.some((view) => view.landscapeId !== first.landscapeId)) throw new Error('Mixed composition owners')
+  const annotate = (nodes: CompositionViewNode[], viewId: string): CompositionViewNode[] => nodes.map((node) => (
+    node.kind === 'structure'
+      ? { ...node, presentationViewId: viewId, children: annotate(node.children, viewId) }
+      : node
+  ))
+  return { ...first, rootNodes: views.flatMap((view) => annotate(view.rootNodes, view.viewId)),
+    selectedCompositionViewIds: views.map((view) => view.viewId),
+    resolvedSelectionViews: views,
+  }
+}
+export const hasExplicitCompositionSupplements = (value?: string | null): boolean => {
+  if (!value) return false
+  try {
+    const raw = JSON.parse(value) as Record<string, unknown>
+    const config = typeof raw.personalCurriculum === 'object' && raw.personalCurriculum !== null
+      ? raw.personalCurriculum as Record<string, unknown> : raw
+    const math = config['68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'] as Record<string, unknown> | undefined
+    return Array.isArray(math?.supplementSelections) && math.supplementSelections.length > 0
+  } catch { return false }
 }

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-b.fresh-independent-b-run",
+  "campaignId": "self-induction-dependent-692-current-context-20261015-v1-b",
+  "roundId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-b",
+  "batchId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:01f4fe45c0836b77d6787cb7ab94b76d24603d66293a1e15a011a2b767207a8d",
+  "bundleFingerprint": "sha256:6a1bd039f94dd94ef81d837f9afd40d75bc64dc15de7278ee7b250456b6488c6",
+  "bookDigest": "sha256:99eb0e811d7bb425d81364947d677a8af74b0122c4ee7ceeb4a7b17eff5c0c18",
+  "provider": "OpenAI",
+  "model": "GPT-6.1 Sol (configured; Ultra reasoning)",
+  "modelVersion": "serving build unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:de677ef9b30f4b0543a800a88f3aa66dd3a8d5b6ad1d550b0457776deeacc005",
+  "independenceGroupId": "self-induction-dependent-692-current-context-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "692db5b6-8be1-5c7b-8307-3a02afb21ea0"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:ad7bc1e775e82331e69c0481b949ccfb648f5498d4e3b462410f18a762536dd8"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:0d54d073bbbde215fe66c7ed29ae7b04ac8895bd7f241ecd684b1c009f0d1afb"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:eebfcd156c5fbeb234ca0b2ee5229d109a5e1a7b2965486b8e72b87b2adb843e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:01f4fe45c0836b77d6787cb7ab94b76d24603d66293a1e15a011a2b767207a8d"
+    }
+  ],
+  "startedAt": "2026-10-15T05:26:29Z",
+  "completedAt": "2026-10-15T05:26:29Z",
+  "status": "completed",
+  "outputDigest": "sha256:03c968eec05473ea12c1349be55587ca3c60b3e9cccb32c085007bdb7417e1c4",
+  "toolchainVersion": "goal-description-review-v2"
+}

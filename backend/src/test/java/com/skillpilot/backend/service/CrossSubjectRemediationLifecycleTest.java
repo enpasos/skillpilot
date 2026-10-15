@@ -150,6 +150,113 @@ class CrossSubjectRemediationLifecycleTest {
         assertThat(storedMastery()).isEqualTo(completedStoredMathMastery);
     }
 
+    @ParameterizedTest
+    @CsvSource({"G8, GK", "G8, LK", "G8, GK+LK", "G9, GK", "G9, LK", "G9, GK+LK"})
+    void explicitMathOnlyStageDetourRetainsSavedMathOnPhysicsReturn(
+            String duration, String profile) throws Exception {
+        String kineticEnergy = "7eeff2de-6015-49a6-a96e-a488d886dc9f";
+        String substitution = "a6469c01-6ca3-5eb2-a82c-94f3d0560b32";
+        physicsProfile = profile;
+        mathProfile = "GK";
+        learnerId = service.createLearner().getSkillpilotId();
+        service.setPreferences(learnerId, "SEQUENTIAL", false, true, null, null);
+        service.setCurriculum(learnerId, ROOT);
+        choose(option -> "DE-RP".equals(option.filterId()));
+        choose(option -> "durationModel".equals(option.scopeKey()) && duration.equals(option.scopeValue()));
+        choose(option -> "stage".equals(option.scopeKey()) && "SekII".equals(option.scopeValue()));
+        chooseSubject(PHYSICS);
+        finishSubjectsAndChooseCurrentProfiles();
+
+        // Independent imported estimates isolate the still-open substitution skill.
+        // This fixture does not claim that these foundations were learned here.
+        List<String> priorCompetencies = List.of(
+                "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd", "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+                "0a6dab2e-1bbb-5587-adb0-456d3991c327", "65365dce-f33f-49d8-9516-42f75883aa86",
+                "ee48e811-4c9c-5080-9836-8403fc9f0810", "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                "3fde4db5-9e92-5f3a-98e1-d386a42b9e01", "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "9ef6c4fa-b97a-5d7a-86c1-96690f02d916", "cf474eab-1379-4877-907e-58b0892ce734",
+                "4b67bed9-06da-40b2-a306-24e9e7dfd390", "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d", "a4c2b831-02f0-5d55-a300-7823a71352c4",
+                "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077", "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+                "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee", "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+                "6b0075bb-f71c-59f6-ab98-fb894568cc26", "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                "05012547-7263-5bfa-9e7c-df970745a011", "26f668a0-6425-5466-9cf7-6295dd189005",
+                "e331a425-e9c6-46eb-89cb-dedf72857974", "d658e26a-e351-4bca-824e-f346deaa87c5",
+                "44cb7404-114e-5b14-b33a-ddee41952d46", "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+                "2f565855-bcd6-4da5-bc80-4b72a2d93d50", "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+                "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d", "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+                "02013455-72a0-5213-9509-ed77f7ede62b", "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+                "ca8b2e67-7d14-5baf-8404-26820fe3d548", "fe07241a-b779-5f35-a82d-7aa51ae74f42");
+        Learner learner = persisted();
+        masteries.saveAll(priorCompetencies.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        service.setPlannedGoals(learnerId, Set.of(kineticEnergy));
+        Set<String> originalTargets = currentTargets();
+        String originalCurriculum = persisted().getPersonalCurriculum();
+        Map<String, Double> originalStored = storedMastery();
+        assertThat(originalTargets).contains(kineticEnergy).doesNotContain(substitution);
+        assertThat(service.getLearnerState(learnerId).stateMachine().prerequisiteBlockers())
+                .anySatisfy(blocker -> {
+                    assertThat(blocker.goalId()).isEqualTo(kineticEnergy);
+                    assertThat(blocker.prerequisiteId()).isEqualTo(substitution);
+                    assertThat(blocker.reason()).isEqualTo("EXTERNAL_PREREQUISITE_UNMASTERED");
+                });
+        assertThat(service.getFrontier(learnerId)).doesNotContain(kineticEnergy, substitution);
+        assertThat(service.getPersonalizationPlan(learnerId).stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(persisted().getPersonalCurriculum()).isEqualTo(originalCurriculum);
+        assertThat(storedMastery()).isEqualTo(originalStored).doesNotContainKey(substitution);
+
+        // Explicitly select Math alone for this temporary detour. CrossStage Physics currently
+        // omits some SekII targets; that authored-view defect is not a required test behavior.
+        reopenStageChoice();
+        choose(option -> "stage".equals(option.scopeKey()) && "CrossStage".equals(option.scopeValue()));
+        chooseSubject(MATH);
+        finishSubjectsAndChooseCurrentProfiles();
+        assertThat(service.getPersonalCurriculumSubjectIds(learnerId)).containsExactly(MATH);
+        assertThat(currentTargets()).contains(substitution).doesNotContain(kineticEnergy);
+        assertThat(service.getPlannedGoals(learnerId)).doesNotContain(kineticEnergy);
+        assertThat(storedMastery()).isEqualTo(originalStored).doesNotContainKey(substitution);
+        service.setPlannedGoals(learnerId, Set.of(substitution));
+        assertThat(service.getFrontier(learnerId)).contains(substitution).doesNotContain(kineticEnergy);
+        service.setActiveGoal(learnerId, substitution);
+        service.setMastery(learnerId, new MasteryUpdateRequest(Map.of(substitution, 1.0), substitution));
+        Map<String, Double> completedStored = storedMastery();
+        assertThat(completedStored).containsAllEntriesOf(originalStored).containsEntry(substitution, 1.0)
+                .doesNotContainKey(kineticEnergy);
+
+        reopenStageChoice();
+        choose(option -> "stage".equals(option.scopeKey()) && "SekII".equals(option.scopeValue()));
+        chooseSubject(PHYSICS);
+        finishSubjectsAndChooseCurrentProfiles();
+        assertThat(service.getPersonalCurriculumSubjectIds(learnerId)).containsExactly(PHYSICS);
+        assertThat(currentTargets()).containsExactlyInAnyOrderElementsOf(originalTargets);
+        var returnedConfig = new ObjectMapper().readTree(persisted().getPersonalCurriculum());
+        assertThat(returnedConfig.path(ROOT).path("stage").asText()).isEqualTo("SekII");
+        assertThat(returnedConfig.path(ROOT).path("durationModel").asText()).isEqualTo(duration);
+        assertThat(returnedConfig.path(PHYSICS).path("filterId").asText()).isEqualTo(profile);
+        assertThat(storedMastery()).isEqualTo(completedStored);
+        assertThat(service.getMastery(learnerId)).containsEntry(substitution, 1.0).doesNotContainKey(kineticEnergy);
+        service.setPlannedGoals(learnerId, Set.of(kineticEnergy));
+        assertThat(service.getFrontier(learnerId)).contains(kineticEnergy).doesNotContain(substitution);
+        assertThat(service.getLearnerState(learnerId).stateMachine().prerequisiteBlockers()).isEmpty();
+        assertThatThrownBy(() -> service.setPlannedGoals(learnerId, Set.of(substitution)))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+        assertThat(service.getPlannedGoals(learnerId)).containsExactly(kineticEnergy);
+        assertThat(storedMastery()).isEqualTo(completedStored);
+    }
+
+    private Set<String> currentTargets() {
+        return service.getFilteredAtomicGoalIds(ROOT, persisted().getPersonalCurriculum(), null, false);
+    }
+
+    private void reopenStageChoice() {
+        String rewindId = service.getPersonalizationPlan(learnerId).completedDecisions().stream()
+                .filter(decision -> "stage".equals(decision.groupId()))
+                .map(PersonalizationPlan.CompletedDecision::rewindId)
+                .findFirst().orElseThrow(() -> new AssertionError("Missing current stage rewind"));
+        service.rewindPersonalization(learnerId, rewindId);
+    }
+
     private void assertSupportFocusRejected() {
         assertThatThrownBy(() -> service.setPlannedGoals(learnerId, Set.of(MATH_SUPPORT)))
                 .isInstanceOfSatisfying(ResponseStatusException.class, exception -> {

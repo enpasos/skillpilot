@@ -55,6 +55,102 @@ public class CompositionViewService {
     private final PackageCompositionViewState packageState;
     private final Supplier<Map<String, List<String>>> canonicalGraphSupplier;
     private volatile RepositoryViewIndex repositoryViewIndex;
+    private CompositionSupplementService supplements;
+    private final Map<String, Map<String, Object>> selectedSupplementViews = new java.util.concurrent.ConcurrentHashMap<>();
+
+    /** Repository-only extension. Package mode deliberately has no supplement capability. */
+    public void setSupplementService(CompositionSupplementService supplements) { this.supplements = supplements; }
+
+    public boolean supportsCompositionSupplements() { return supplements != null; }
+
+    public List<CompositionSupplementService.Supplement> availableSupplements() {
+        return supplements == null ? List.of() : supplements.validatedSupplements();
+    }
+
+    public List<CompositionSupplementService.Supplement> selectedSupplements(Map<String, Map<String, Object>> config) {
+        if (supplements != null) return supplements.selected(config);
+        if (config.values().stream().anyMatch(v -> v.containsKey(CompositionSupplementService.SELECTIONS))) {
+            throw new IllegalStateException("This curriculum source does not support composition-supplement-v1");
+        }
+        return List.of();
+    }
+
+    public void validateSupplementContext(CompositionSupplementService.Supplement supplement,
+            Map<String, String> mathScope, Map<String, String> physicsScope, boolean physicsSelected) {
+        Map<String, Object> anchor = findLearnerScopeView(CompositionSupplementService.MATH, mathScope);
+        Map<String, Object> physics = findLearnerScopeView(CompositionSupplementService.PHYSICS, physicsScope);
+        if (!supplement.scope().equals(mathScope) || !supplement.physicsScope().equals(physicsScope)
+                || !physicsSelected || anchor == null || physics == null
+                || !supplement.compatibleBaseViewIds().contains(asString(anchor.get("viewId")))
+                || !supplement.physicsViewId().equals(asString(physics.get("viewId")))
+                || !supplement.baseViewSha256().getOrDefault(asString(anchor.get("viewId")), "").equals(
+                        CompositionSupplementService.sha(new ObjectMapper().valueToTree(anchor)))
+                || !supplement.physicsViewSha256().equals(CompositionSupplementService.sha(new ObjectMapper().valueToTree(physics)))) {
+            throw new IllegalStateException("Mathematics preparation is incompatible with the current explicit scope or view anchor");
+        }
+        if (!resolvedTargetGoalIds(physics).containsAll(supplement.physicsDependentGoalIds())) {
+            throw new IllegalStateException("Mathematics preparation justification is outside the selected Physics TARGET projection");
+        }
+    }
+
+    /** Exact role specificity of the selected ordinary/merged view: direct entry,
+     * shortest canonical-subtree distance, target only at equal specificity. */
+    public Set<String> resolvedTargetGoalIds(Map<String, Object> view) {
+        Map<String,List<String>> graph = canonicalGraphSupplier == null ? Map.of() : canonicalGraphSupplier.get();
+        record Assignment(boolean target, boolean direct, int distance) {}
+        Map<String,Assignment> assignments = new LinkedHashMap<>();
+        java.util.function.BiConsumer<String,Assignment> assign = (id,incoming) -> assignments.merge(id,incoming,(current,next) -> {
+            if(current.direct()!=next.direct()) return next.direct()?next:current;
+            if(!current.direct()&&current.distance()!=next.distance()) return next.distance()<current.distance()?next:current;
+            return new Assignment(current.target()||next.target(),current.direct(),current.distance());
+        });
+        java.util.function.Consumer<Object> visit = new java.util.function.Consumer<>() {
+            public void accept(Object nodes) {
+                for(Map<String,Object> node:asNodeList(nodes)) {
+                    String kind=asString(node.get("kind"));
+                    if("structure".equals(kind)){accept(node.get("children"));continue;}
+                    if(!"goalEntry".equals(kind)&&!"canonicalSubtree".equals(kind)) continue;
+                    String id=asString(node.get("goalId")); if(id.contains(":"))id=id.substring(id.indexOf(':')+1);
+                    boolean target=projectionRole(node,null,"selected Physics dependency authorization")==ProjectionRole.TARGET;
+                    if("goalEntry".equals(kind)){assign.accept(id,new Assignment(target,true,0));continue;}
+                    Map<String,Integer> distances=new LinkedHashMap<>();java.util.ArrayDeque<String> pending=new java.util.ArrayDeque<>();distances.put(id,0);pending.add(id);
+                    while(!pending.isEmpty()) {String current=pending.remove();int distance=distances.get(current);assign.accept(current,new Assignment(target,false,distance));
+                        for(String child:graph.getOrDefault(current,List.of())) {String resolved=child.contains(":")?child.substring(child.indexOf(':')+1):child;if(!distances.containsKey(resolved)){distances.put(resolved,distance+1);pending.add(resolved);}}
+                    }
+                }
+            }
+        };
+        visit.accept(view.get("rootNodes"));
+        return assignments.entrySet().stream().filter(e->e.getValue().target()).map(Map.Entry::getKey).collect(java.util.stream.Collectors.toUnmodifiableSet());
+    }
+
+    /** Base targets keep their authored parent. Additional bundles use sorted stable IDs. */
+    public Map<String, Object> registerSelectedSupplement(CompositionSupplementService.Supplement supplement,
+            Set<String> occupiedTargetIds) {
+        List<Map<String, Object>> nodes = pruneSupplementNodes(supplement.document().get("rootNodes"), occupiedTargetIds);
+        if (nodes.isEmpty()) return null;
+        String suffix = CompositionSupplementService.sha(new com.fasterxml.jackson.databind.ObjectMapper().valueToTree(nodes));
+        Map<String, Object> view = new LinkedHashMap<>(supplement.document());
+        view.put("viewId", "selected-supplement:" + supplement.id() + ":" + suffix);
+        view.put("rootNodes", nodes);
+        view = Collections.unmodifiableMap(view);
+        selectedSupplementViews.put(asString(view.get("viewId")), view);
+        return view;
+    }
+
+    private static List<Map<String, Object>> pruneSupplementNodes(Object raw, Set<String> occupied) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (Map<String, Object> source : asNodeList(raw)) {
+            Map<String, Object> node = new LinkedHashMap<>(source);
+            if ("structure".equals(node.get("kind"))) {
+                List<Map<String, Object>> children = pruneSupplementNodes(node.get("children"), occupied);
+                if (children.isEmpty()) continue;
+                node.put("children", children);
+            } else if (occupied.contains(asString(node.get("goalId")))) continue;
+            result.add(Collections.unmodifiableMap(node));
+        }
+        return List.copyOf(result);
+    }
 
     public CompositionViewService(LandscapeProperties properties, ObjectMapper objectMapper) {
         this(properties, objectMapper, null);
@@ -616,6 +712,8 @@ public class CompositionViewService {
             return null;
         }
         String normalizedViewId = viewId.trim();
+        Map<String, Object> selectedSupplement = selectedSupplementViews.get(normalizedViewId);
+        if (selectedSupplement != null) return selectedSupplement;
         if (packageState != null) {
             return packageState.findViewDocumentById(normalizedViewId);
         }
@@ -970,6 +1068,8 @@ public class CompositionViewService {
         merged.put("scope", Collections.unmodifiableMap(new LinkedHashMap<>(requestedScope)));
         merged.put("rootNodes", mergedRootNodes);
         merged.put("mergedFromViewIds", sourceViewIds);
+        // Preserve the reviewed source branches for exact eligibility before target union.
+        merged.put("resolvedCourseProfileViews", normalizedViews);
         return Collections.unmodifiableMap(merged);
     }
 

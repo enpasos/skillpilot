@@ -1,37 +1,25 @@
-# Lernzielvisualisierung: Natürliche und ganze Zahlen multiplizieren und dividieren
+# Lernzielvisualisierung: Multiplikation und ganzzahlige Division als Umkehroperationen nutzen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `cafd6520-c4af-4109-9863-cc49ba6fad4d`
-- Titel: Natürliche und ganze Zahlen multiplizieren und dividieren
-- Beschreibung: Die lernende Person kann natürliche und ganze Zahlen sicher multiplizieren und dividieren, Rechengesetze nutzen und Ergebnisse in einfachen Sachzusammenhängen überprüfen.
+- Titel: Multiplikation und ganzzahlige Division als Umkehroperationen nutzen
+- Beschreibung: Die lernende Person kann natürliche und ganze Zahlen multiplizieren, eine zulässige ganzzahlige Division als zugehörige Umkehraufgabe deuten und berechnen, dabei Vorzeichen sowie die Bedingungen „Divisor ungleich null“ und „ganzzahliger Quotient“ begründen und das Ergebnis durch den Wechsel zur Umkehroperation prüfen, sofern diese definiert ist.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
-- Status: pilot
-- Quellbild: `cafd6520-c4af-4109-9863-cc49ba6fad4d.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/cafd6520-c4af-4109-9863-cc49ba6fad4d/cafd6520-c4af-4109-9863-cc49ba6fad4d.jpg`
+- Provider: OpenAI / Codex built-in imagegen (actual model unobserved)
+- Status: candidate
+- Quellbild: `cafd6520-c4af-4109-9863-cc49ba6fad4d.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/cafd6520-c4af-4109-9863-cc49ba6fad4d/cafd6520-c4af-4109-9863-cc49ba6fad4d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Natürliche und ganze Zahlen multiplizieren und dividieren
-Beschreibung: Die lernende Person kann natürliche und ganze Zahlen sicher multiplizieren und dividieren, Rechengesetze nutzen und Ergebnisse in einfachen Sachzusammenhängen überprüfen.
-
-Zusatzanweisung:
-Sehr wenig Text verwenden. Nutze genau passende, einfache Beispiele fuer Jahrgangsstufe 5. Zahlen und Rechenaussagen muessen korrekt sein. Bei ganzen Zahlen klare Zahlengerade oder Vorzeichenregeln verwenden. Keine technischen IDs, keine Wasserzeichen, keine Zusatzthemen.
+Use case: precise-object-edit.
+The single supplied image is the edit target. Change ONLY the apples on the THREE plates in the upper-right division panel. All other panels, characters, mathematical text, correct number line, colors, layout, shape, resolution and style must stay unchanged.
+The present division panel incorrectly has THREE apples per plate (9 total) but says “12 : 3 = 4” and “12 verteilt auf 3”. Correct it to exactly FOUR apples per plate, twelve apples overall.
+For each of the three white plates, draw four clearly distinct small red apples side by side in ONE ROW, with small visible gaps between the four separate fruit bodies. Each apple has its own clearly visible outline and stem. Do not overlap any apples; do not hide apples behind one another. Make the apples small enough or the plates slightly wider within the panel to fit four. The left plate contains exactly four apples; the middle plate exactly four; the right plate exactly four. No extra loose apples. Keep the text “12 : 3 = 4” and “12 verteilt auf 3” exactly. Preserve the correctly counted three groups of four apples in the upper-left multiplication panel. No new text, labels, ideas, IDs or logos.
 ```
 
 ## Review-Notiz

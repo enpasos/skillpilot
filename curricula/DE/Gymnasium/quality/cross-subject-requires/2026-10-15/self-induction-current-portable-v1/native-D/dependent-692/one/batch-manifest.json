@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "self-induction-dependent-692-current-context-20261015-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/self-induction-current-portable-v1/native-D/dependent-692/one.batch.config.json",
+  "configDigest": "sha256:61f17b4d5d9e24ef933d260a285849f9641cbe8c59d1522f898df3b9f0ccc8ae",
+  "goalIds": [
+    "692db5b6-8be1-5c7b-8307-3a02afb21ea0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/self-induction-current-portable-v1/native-D/dependent-692/base-full-candidate.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:5487c778d4b5bf05d78cdba827feb276ae882cf9e95e45f67904ba8b727bf35c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:99eb0e811d7bb425d81364947d677a8af74b0122c4ee7ceeb4a7b17eff5c0c18",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:6a1bd039f94dd94ef81d837f9afd40d75bc64dc15de7278ee7b250456b6488c6",
+    "reviewInputFingerprint": "sha256:6f3facd2be2c9e759aa6c3ccd4225b103e48f4a65940fc0b5c79203da03fef72",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "self-induction-dependent-692-current-context-20261015-v1-a",
+        "campaignDigest": "sha256:f3ab5b29eee3a9b7404a944920d7c24555b6eb6b9792ba7f329c9dbddb6edfa7",
+        "roundId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-a",
+        "independenceGroupId": "self-induction-dependent-692-current-context-20261015-v1-independent-a",
+        "batchId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:041be3344fd9fc9e6358be4e60017f270df7cbec11e6ddef1f6a00a28765b516"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "self-induction-dependent-692-current-context-20261015-v1-b",
+        "campaignDigest": "sha256:bfc4eb370ab505f3acb17e2484165b70495e8ced41d3f5397769b36a80742a31",
+        "roundId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-b",
+        "independenceGroupId": "self-induction-dependent-692-current-context-20261015-v1-independent-b",
+        "batchId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:01f4fe45c0836b77d6787cb7ab94b76d24603d66293a1e15a011a2b767207a8d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

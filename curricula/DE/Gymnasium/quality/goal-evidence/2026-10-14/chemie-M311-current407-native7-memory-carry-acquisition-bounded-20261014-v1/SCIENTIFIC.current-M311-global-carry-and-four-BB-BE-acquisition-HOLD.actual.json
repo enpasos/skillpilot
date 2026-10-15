@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "transparent_bounded_current_M311_memory_carry_and_acquisition",
+  "reviewer": "Codex /root/chemie_native8_fresh_independent_a",
+  "reviewedAtUTC": "2026-10-14T01:30:19.375974+00:00",
+  "historicalExposure": "Existing Nature A/B M necessity and C1 historical records were expressly read as data. Original C1 a/b lines are the same2026-05-17 record object with different serialization, not two new independent card votes. No current NativeD7 A/B science or outcome read.",
+  "globalCardAndMemoryCarryDecision": "ACCEPT_BOUNDED_CURRENT_GLOBAL_CONTENT_AND_BINDINGS",
+  "wholeNineScopeAcquisitionDecision": "HOLD_BB_BE_FOUR_COURSE_SCOPES",
+  "memoryGoalId": "31148286-b8db-57a7-8da2-2e0479240a2c",
+  "wholeCurrentMemoryGoal": {
+    "id": "31148286-b8db-57a7-8da2-2e0479240a2c",
+    "title": "Lernkarten - Naturstoffe",
+    "titleEn": "Flashcards - Biomolecules",
+    "description": "Die lernende Person kann zentrale Naturstoff-Begriffe und Nachweise mithilfe von Lernkarten sicher abrufen.",
+    "descriptionEn": "The learner can reliably recall core biomolecule terms and tests using flashcards.",
+    "weight": 0.5,
+    "tags": [
+      "GK",
+      "LK",
+      "srs-deck:de_gymnasium_chemistry_natural_q2",
+      "memorization"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_natural_q2.de.json"
+    },
+    "contains": [],
+    "requires": [
+      "62149f36-87c0-5a2d-8a78-e7d4203f58c2",
+      "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "96d33fb6-ed14-50ab-b5c7-5ce0559d518a"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "Q2",
+      "area": "Naturstoffe"
+    },
+    "nodeKind": "memory",
+    "type": "atomic"
+  },
+  "globalAcquisitionReason": [
+    "Current62149 whole amino-acid competence includes amino/carboxyl groups and zwitterion formation, covering cards001/002 without adopting the old e9/d8 split candidates.",
+    "Card003 peptide-bond formation is fully inside current197bc2c5, reached through311→5c8f→197bc2c5; deleting a direct peptide-parent edge did not delete the actual transitive acquisition route.",
+    "Card004 recalls only the compact Biuret peptide/protein assay link. Current5c whole assay competence and the actual supplied three Biuret/Ninhydrin cases teach this link, including negative glycine/control interpretation. The recall card does not certify execution, quantify peptide bonds or assert all peptides must test positive.",
+    "Card005 named reducing-sugar tests and glucose-specific GOD discrimination are acquired through current96d3 with current8761 carbohydrate/Fehling prerequisite.",
+    "All five exact card origins lie in the actual current44-node global requires closure; no missing ID or cycle was found. Source/frontend/backend deck bytes and actual card004 fingerprint are current."
+  ],
+  "scopeResidualFinding": {
+    "id": "M311-CURRENT-BB-BE-MISSING-ACQUISITION-004-005",
+    "severity": "HOLD",
+    "exactScopes": [
+      {
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+        "viewSHA256": "sha256:304d030ac8c656d67b8c8d7e2776a0d79191df915c7618b6c4baccf1236e611e"
+      },
+      {
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+        "viewSHA256": "sha256:c2a9753bd6197b77b9f894f54d082959471c2bd646f9f75fe3e600582b7636a1"
+      },
+      {
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+        "viewSHA256": "sha256:7aa0cc2fd01c80149ab6c61ae399f66842b3cad962eaa37a564fbcdb8ce5838d"
+      },
+      {
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+        "viewSHA256": "sha256:fa0dc13e930496a3e8a57a86a3ab3fbd0120869d085ea5b2fd442b2cad5486a0"
+      }
+    ],
+    "statement": "311 is target in all four BB/BE GK/LK views, but5c8f and96d3 are neither target nor prerequisiteOnly. Hence cards004/005 have no current in-plan acquisition origin in those scopes. Stock M visibility checks origin-visible⇒memory-visible, and passes; it does not prove the converse memory-visible⇒all deck origins acquirable.",
+    "nextNeeded": "Resolve the exact BB/BE learner target/source/acquisition scope while preserving current whole goals and source duties. Do not hash-refresh, infer mastery, weaken recall, adopt old split candidates or alter prerequisites merely to claim this gap closed.",
+    "changePerformed": false
+  },
+  "nationalGkLkAndNationalSourceNavigationAcquireAllFiveOrigins": true,
+  "SekI311AbsentNo311RecallDutyThere": true,
+  "stockM407NineVisibilityScopesPass": true,
+  "stockPassDoesNotRemoveScientificScopeHold": true,
+  "currentCard004Fingerprint": "sha256:d7cc23b407a7127ed38809dd5c36bf93dd7e274d16f1f9620cc90c833a1c1011",
+  "currentOrigin5cMemoryFingerprint": "sha256:210ee401d91bdf51378544b18297a4fcb75466a63623da01beffd42b1c6e3aa1",
+  "wholeMInferredFromDKEEP": false,
+  "newD7ScienceVote": false,
+  "newSourceUnionApproval": false,
+  "humanApproval": false,
+  "activeWrites": false,
+  "HHostMutation": false
+}

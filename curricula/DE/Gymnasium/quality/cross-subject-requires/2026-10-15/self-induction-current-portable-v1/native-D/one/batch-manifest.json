@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "self-induction-current-context-20261015-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/self-induction-current-portable-v1/native-D/one.batch.config.json",
+  "configDigest": "sha256:c962716b56be102aa3e237d18c03b2a04550a57cf26a422aefda442ab200300f",
+  "goalIds": [
+    "37f28bc4-def2-57cf-a06b-191dfd228205"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/self-induction-current-portable-v1/native-D/base-full-candidate.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:39c52cd9164da0ae13c8df9badfff14732024a719b1cb7e385269d5274a95d11"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:70d54d849eb0e90161e22c0bf27e61506e8001ab85be81718f995ae1443e5833",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:996fccb894deedba8bdd2168abfcc6c5b58d577090aeed4879e2c2dd557f4658",
+    "reviewInputFingerprint": "sha256:f6208ed85f1ce7d60ffe56248fad2894f2513d723525bba4dc5eda0ff2fc835d",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "self-induction-current-context-20261015-v1-a",
+        "campaignDigest": "sha256:879218a3577e54800012721cebca171b00a97e7abf58e03bab9a139667ae203f",
+        "roundId": "self-induction-current-context-20261015-v1-first-pass-a",
+        "independenceGroupId": "self-induction-current-context-20261015-v1-independent-a",
+        "batchId": "self-induction-current-context-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:42180e2ad4d16d74975494594b902d93753bb7ec14eabaf94eed1110e45552f9"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "self-induction-current-context-20261015-v1-b",
+        "campaignDigest": "sha256:00dc516ac7b7a94b330dc2a6cbc17d58eccb1206944e3404d9e005e48c8ca9d9",
+        "roundId": "self-induction-current-context-20261015-v1-first-pass-b",
+        "independenceGroupId": "self-induction-current-context-20261015-v1-independent-b",
+        "batchId": "self-induction-current-context-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:aa1941101dea3f47344f19d6f32f75734f79bcf9a9fa04acace3680e202164a8"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

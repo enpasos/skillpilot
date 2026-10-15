@@ -111,6 +111,32 @@ interface GrandfatheredOccurrence {
  * the check until the occurrence is reviewed again.
  */
 const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
+  // Preserve three independently verified, sealed Chemistry review/source occurrences.
+  // Exact eligibility: chemie-working-state-inactive-github-checkpoint-root-20261014-v1.
+  {
+    ruleId: "TRM-005",
+    path: "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current406-graph-scope-independent-20261013-v1/README.md",
+    line: 5,
+    column: 73,
+    found: "goal graph",
+    lineSha256: "efaedfda522f58ce07e9819eb149f29e7829143b7796f417482421f7b42d1623",
+  },
+  {
+    ruleId: "TRM-001",
+    path: "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HE-ten-closure-holds-six-direct-original-operator-components-author-20261014-v1/inputs/HE.retired-runtime-whole187-goals.original.json",
+    line: 8,
+    column: 19,
+    found: "Lernlandschaft",
+    lineSha256: "6d7eb7eea6c51e09d5ddf2e2d71b146d9e9c4d2816ab80eed1362ecc605e816f",
+  },
+  {
+    ruleId: "TRM-001",
+    path: "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-HE-ten-closure-holds-six-direct-original-operator-components-author-20261014-v1/inputs/HE.retired-runtime-whole187-goals.original.json",
+    line: 9,
+    column: 21,
+    found: "Learning landscape",
+    lineSha256: "de3b65c2a7504e4d05be2515f5030795eb5188ffbe29b6dadbe229c79d0e8031",
+  },
   // Preserve the exact licensing wording in three sealed, inactive B008 author records.
   // These are historical records; current authored prose still uses Skill-Landschaft.
   {

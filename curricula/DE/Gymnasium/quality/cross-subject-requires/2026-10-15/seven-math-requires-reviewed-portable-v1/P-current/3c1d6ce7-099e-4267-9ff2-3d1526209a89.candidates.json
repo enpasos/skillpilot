@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "seven-math-requires-current-p-3c1d6ce7-20261015-v1",
+  "reviewedAt": "2026-10-15T02:50:55.694781+00:00",
+  "reviewer": "Codex author /root/fc047_whole_p_polygon_successor_author",
+  "goals": [
+    {
+      "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "reason": "KEEP complete inverse-exponent and digital-check expectations. Cases3^4=81 and2^(−3)=1/8 check positive and negative exponents; log2(7)≈2.807 is bracketed between2 and3 and checked by powering back; invalid base1 and negative argument are independently addressed. General b>0,b≠1 includes bases below1, not only the sample bases2 and3. Root/power graph translation/stretch/reflection is not needed to invert exponentiation, and rational-exponent88abc remains. Digital work is not replaced by memorized exact logarithms. log_(1/2)(8)=−3 because(1/2)^(−3)=8; log_4(2)=1/2 because4^(1/2)=2. This exercises the retained general base range and rational exponent meaning. No real log with base0, base1 or nonpositive argument is admitted. Actual original-image inspection: Actually viewed original: b>0,b≠1,a>0; log_b(a)=x iff b^x=a. The displayed log2(8)=3, log10(100)=2, log5(1)=0 agree with2^3=8,10²=100,5^0=1. Image is introductory support; digital approximation and inadmissible cases remain in P. This is a fresh author judgment, not a relabelled old review; Kind source and direct requires were rechecked. No independent successor peer acceptance, D or human approval is claimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "logarithm-is-inverse-exponent",
+            "essentialUnderstandingDe": "Für b>0, b≠1 und z>0 bedeutet log_b(z)=x genau b^x=z; die Logarithmuszahl ist der gesuchte Exponent.",
+            "essentialUnderstandingEn": "For b>0, b≠1, and z>0, log_b(z)=x means exactly b^x=z; the logarithm is the required exponent.",
+            "observablePerformanceDe": "Die lernende Person formuliert eine neue Logarithmusaussage als Potenzgleichung und umgekehrt, begründet die zulässige Basis und das positive Argument und prüft einen einfachen Wert.",
+            "observablePerformanceEn": "The learner translates a fresh logarithm statement into a power equation and back, explains the valid base and positive argument, and checks a simple value."
+          },
+          {
+            "id": "tool-value-is-checked-by-definition",
+            "essentialUnderstandingDe": "Wenn ein Logarithmus nicht als einfache Potenz erkennbar ist, liefert ein digitales Werkzeug eine Näherung; ihre Plausibilität folgt aus benachbarten Potenzen oder Rückpotenzieren.",
+            "essentialUnderstandingEn": "When a logarithm is not recognizable as a simple power, a digital tool gives an approximation; its plausibility follows from nearby powers or exponentiating back.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet einen digital gefundenen Wert als Näherung und prüft seine Größenordnung mit der definierenden Potenzrelation.",
+            "observablePerformanceEn": "The learner labels a digitally obtained value as an approximation and checks its magnitude against the defining power relation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "logarithm-is-inverse-exponent",
+            "tool-value-is-checked-by-definition"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "exponent-kind",
+            "textDe": "ganzzahliger positiver oder negativer Exponent gegenüber nicht-einfachem Wert",
+            "textEn": "positive or negative integer exponent versus non-simple value"
+          },
+          {
+            "id": "reasoning-direction",
+            "textDe": "Logarithmus zu Potenzgleichung und umgekehrt",
+            "textEn": "logarithm to power equation and the reverse"
+          },
+          {
+            "id": "domain",
+            "textDe": "zulässige positive Basis ungleich 1 und positives Argument gegenüber unzulässiger Basis oder unzulässigem Argument",
+            "textEn": "valid positive base other than 1 and positive argument versus an invalid base or argument"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "exact-simple-values",
+            "taskDemandDe": "Bestimme log_3(81) und log_2(1/8) mit der Definition und schreibe beide als Potenzgleichungen.",
+            "taskDemandEn": "Determine log_3(81) and log_2(1/8) from the definition and write both as power equations.",
+            "expectedPerformanceDe": "3^4=81 und 2^(-3)=1/8; daher sind die gesuchten Werte 4 und -3. Beide Basen und Argumente erfüllen die Definitionsbedingungen.",
+            "expectedPerformanceEn": "3^4=81 and 2^(-3)=1/8; hence the values are 4 and -3. Both bases and arguments satisfy the domain conditions.",
+            "understandingFocusDe": "Exakte Umkehrung bei zwei unterschiedlichen Exponenten.",
+            "understandingFocusEn": "Exact inversion with two different exponents."
+          },
+          {
+            "id": "digital-approximation-transfer",
+            "taskDemandDe": "Bestimme log_2(7) mit einem digitalen Werkzeug näherungsweise und prüfe die Größenordnung ohne Werkzeug. Prüfe zusätzlich, ob log_1(7) und log_2(-7) als reelle Logarithmen definiert sind, und begründe.",
+            "taskDemandEn": "Approximate log_2(7) using a digital tool and check its order of magnitude without a tool. Also decide whether log_1(7) and log_2(-7) are defined as real logarithms, and justify.",
+            "expectedPerformanceDe": "Da 2^2=4<7<8=2^3, liegt log_2(7) zwischen 2 und 3; digital etwa 2.807, und 2^2.807 ist näherungsweise 7. log_1(7) ist wegen Basis 1 unzulässig; log_2(-7) wegen negativem Argument.",
+            "expectedPerformanceEn": "As 2^2=4<7<8=2^3, log_2(7) lies between 2 and 3; a tool gives about 2.807, and 2^2.807 is approximately 7. log_1(7) is inadmissible because its base is 1; log_2(-7) because its argument is negative.",
+            "understandingFocusDe": "Transfer zum Näherungswert mit Plausibilitätsprüfung und eigenständiger Anwendung beider Definitionsbedingungen.",
+            "understandingFocusEn": "Transfer to an approximate value with a plausibility check and independent application of both domain conditions."
+          }
+        ]
+      }
+    }
+  ]
+}

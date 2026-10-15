@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "stockFunction": "evaluateCourseLevelMappingConsistency",
+  "scope": "Whole frozen HB carriers before/after plus exact-cell021 course check; no mapping-content verdict inferred",
+  "baseline": {
+    "id": "CQR-004",
+    "status": "fail",
+    "summary": "2 upper-secondary course-level mapping issue(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed as LK-only.",
+    "metrics": {
+      "configuredMappingFiles": 1,
+      "sourceGoals": 89,
+      "sourceGoalsWithCourseLevel": 89,
+      "gkLkSourceGoals": 83,
+      "lkSourceGoals": 6,
+      "unspecifiedSourceGoals": 0,
+      "checkedMappingEdges": 6,
+      "defaultedUnspecifiedMappingEdges": 0,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 2
+    },
+    "details": [
+      "hb-chemistry-sekii-gyo2022-3-2-e-kunststoffe-020-2d42e381: no canonical mapping exists for course-level checked source goal",
+      "hb-chemistry-sekii-gyo2022-3-3-4-1-kunststoffe-079-7418c562: no canonical mapping exists for course-level checked source goal"
+    ]
+  },
+  "candidate": {
+    "id": "CQR-004",
+    "status": "fail",
+    "summary": "2 upper-secondary course-level mapping issue(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed as LK-only.",
+    "metrics": {
+      "configuredMappingFiles": 1,
+      "sourceGoals": 89,
+      "sourceGoalsWithCourseLevel": 89,
+      "gkLkSourceGoals": 83,
+      "lkSourceGoals": 6,
+      "unspecifiedSourceGoals": 0,
+      "checkedMappingEdges": 6,
+      "defaultedUnspecifiedMappingEdges": 0,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 2
+    },
+    "details": [
+      "hb-chemistry-sekii-gyo2022-3-2-e-kunststoffe-020-2d42e381: no canonical mapping exists for course-level checked source goal",
+      "hb-chemistry-sekii-gyo2022-3-3-4-1-kunststoffe-079-7418c562: no canonical mapping exists for course-level checked source goal"
+    ]
+  },
+  "wholeHBCarriersStockPass": false,
+  "noNewIssuesFrom021Correction": true,
+  "exact021Before": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 0 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 1,
+      "sourceGoals": 1,
+      "sourceGoalsWithCourseLevel": 1,
+      "gkLkSourceGoals": 1,
+      "lkSourceGoals": 0,
+      "unspecifiedSourceGoals": 0,
+      "checkedMappingEdges": 0,
+      "defaultedUnspecifiedMappingEdges": 0,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "exact021After": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 0 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 1,
+      "sourceGoals": 1,
+      "sourceGoalsWithCourseLevel": 1,
+      "gkLkSourceGoals": 1,
+      "lkSourceGoals": 0,
+      "unspecifiedSourceGoals": 0,
+      "checkedMappingEdges": 0,
+      "defaultedUnspecifiedMappingEdges": 0,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "exact021StockPass": true,
+  "sourceLevel": "GK_LK",
+  "phase": "E",
+  "oldCourseAndSchoolScopePreserved": true,
+  "scientificWholeOperatorAndWholeGoalCompletionNotInferred": true,
+  "pass": true
+}

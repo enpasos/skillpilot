@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "five-existing-math-current-proposed-context-20261015-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/native-D/five.batch.config.json",
+  "configDigest": "sha256:6b177349ec595f53cae134b4d1d2bccff5a8f987edf9ed67837a957111f8da0a",
+  "goalIds": [
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+    "215f5558-562c-5686-b649-931f324c7983",
+    "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+    "d18d4190-ddc1-5181-b1b6-e79947b737c2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/native-D/base-full-candidate.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:63aa359618cb09d344b59c8a1283e5cb8f6acf4cd75a8181fb8907683fca5429"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:213152c3096ca37b9dead3e74a2688bb4e65f35812ac3757ea785999f4dff567",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:d78a6a7ae35a8603ea420d746c676c1a2f04b539581d5ecaddd2acb272149b51",
+    "reviewInputFingerprint": "sha256:f6bee2fbfb9692adb77429ead0ba31ea18159cc56692310e5941a59cbda4a250",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "five-existing-math-current-proposed-context-20261015-v1-a",
+        "campaignDigest": "sha256:a1bebaad823316a4515c0be08c4c6f088a0096c88772b8e1c8c482007803e92b",
+        "roundId": "five-existing-math-current-proposed-context-20261015-v1-first-pass-a",
+        "independenceGroupId": "five-existing-math-current-proposed-context-20261015-v1-independent-a",
+        "batchId": "five-existing-math-current-proposed-context-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b9114ebd10707a76c74626a4d3a12b41a64fe1198b58525f5193633c6378a5cf"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "five-existing-math-current-proposed-context-20261015-v1-b",
+        "campaignDigest": "sha256:8cd5cd30b2f1d98a0b308907fa95f92d085641e4e45242506d5652ba3e2a7d81",
+        "roundId": "five-existing-math-current-proposed-context-20261015-v1-first-pass-b",
+        "independenceGroupId": "five-existing-math-current-proposed-context-20261015-v1-independent-b",
+        "batchId": "five-existing-math-current-proposed-context-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d03259dca308f3f9dd70a7f7b9dcd9d6e2d8151fab36ed24259700f05192b111"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

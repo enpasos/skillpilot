@@ -1,0 +1,97 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-math-positive-evidence-v1-b030-atlas-context-recheck-18-current-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+  "goalFingerprint": "sha256:019b103903500ef91caeadb83218a753fe8d708b031c65d2a747f237e9cb7328",
+  "reviewInputFingerprint": "sha256:bc4aa7b941e28069290a1f5c2988726aeda7f15c9ec48ad6b9d891f3dcbe9782",
+  "profileFingerprint": "sha256:ea41b4ed82af6e96be09fdbafd0faab6bee6eafbda96e969b2f7550e449d3fbf",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-09-05T20:00:00.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-030-positive-understanding-candidate-author-2026-09-05",
+  "reason": "DE: Das Profil prüft die Kettenregel als Zusammenspiel von äußerer trigonometrischer Ableitung am inneren Argument und innerem Faktor b. Drei Fälle wechseln Sinus/Kosinus, Vorzeichen und Phase; x wird im Bogenmaß verstanden, und b = 0 wird als konstanter Grenzfall erkannt. EN: The profile assesses the chain rule as the interaction of the outer trigonometric derivative evaluated at the inner argument and the inner factor b. Three cases vary sine/cosine, signs, and phase; x is understood in radians, and b = 0 is recognized as a constant boundary case.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "procedure",
+    "expectations": [
+      {
+        "id": "trigonometric-chain-rule",
+        "essentialUnderstandingDe": "Für u(x)=b(x−c) gilt [a sin u+d]'=ab cos u und [a cos u+d]'=−ab sin u; die äußere Ableitung wird bei u(x) ausgewertet und mit u'=b multipliziert.",
+        "essentialUnderstandingEn": "For u(x)=b(x−c), [a sin u+d]'=ab cos u and [a cos u+d]'=−ab sin u; the outer derivative is evaluated at u(x) and multiplied by u'=b.",
+        "observablePerformanceDe": "Die lernende Person leitet neue transformierte Sinus- und Kosinusfunktionen korrekt ab und erklärt Herkunft von Faktor, Vorzeichen und unverändertem inneren Argument.",
+        "observablePerformanceEn": "The learner correctly differentiates fresh transformed sine and cosine functions and explains the origins of the factor, sign, and unchanged inner argument."
+      },
+      {
+        "id": "chain-rule-check-and-boundary",
+        "essentialUnderstandingDe": "Eine Ableitung lässt sich an charakteristischen Stellen, über Einheiten oder durch Vergleich lokaler Steilheit prüfen. Der Faktor b setzt Bogenmaß voraus; bei b=0 ist die Funktion konstant und die übliche Periodendeutung entartet.",
+        "essentialUnderstandingEn": "A derivative can be checked at characteristic points, through units, or by comparison with local steepness. Factor b assumes radians; when b=0 the function is constant and the usual period interpretation degenerates.",
+        "observablePerformanceDe": "Die lernende Person prüft einen Ableitungsterm durch Einsetzen einer geeigneten Stelle und erkennt fehlenden Faktor, falsches Vorzeichen oder einen konstanten Grenzfall.",
+        "observablePerformanceEn": "The learner checks a derivative expression by substituting a suitable point and detects a missing factor, wrong sign, or constant boundary case."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "trigonometric-chain-rule",
+        "chain-rule-check-and-boundary"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 3,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "outer-function",
+        "textDe": "Sinus oder Kosinus",
+        "textEn": "sine or cosine"
+      },
+      {
+        "id": "inner-transformation",
+        "textDe": "positiver oder negativer Faktor sowie veränderte Phase",
+        "textEn": "positive or negative factor and changed phase"
+      },
+      {
+        "id": "check",
+        "textDe": "symbolisches Vereinfachen oder Prüfung an charakteristischer Stelle",
+        "textEn": "symbolic simplification or check at a characteristic point"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "transformed-sine-base",
+        "taskDemandDe": "Leite f(x)=3sin(2(x−π/4))+5 ab, erkläre jeden Faktor und prüfe f'(π/4) anhand der lokalen Phase.",
+        "taskDemandEn": "Differentiate f(x)=3sin(2(x−π/4))+5, explain every factor, and check f'(π/4) from the local phase.",
+        "expectedPerformanceDe": "Die lernende Person erhält f'(x)=6cos(2(x−π/4)); bei x=π/4 ist das innere Argument 0 und f'=6, passend zur maximal positiven Steigung.",
+        "expectedPerformanceEn": "The learner obtains f'(x)=6cos(2(x−π/4)); at x=π/4 the inner argument is 0 and f'=6, consistent with maximum positive slope.",
+        "understandingFocusDe": "Direkter Nachweis von äußerer Ableitung, innerem Faktor und Phasenprüfung.",
+        "understandingFocusEn": "Direct evidence of outer derivative, inner factor, and phase check."
+      },
+      {
+        "id": "negative-cosine-transfer",
+        "taskDemandDe": "Leite g(t)=−4cos(−3(t+1))+2 ab und vereinfache den Term unter Nutzung der Symmetrie von Sinus. Begründe das resultierende Vorzeichen.",
+        "taskDemandEn": "Differentiate g(t)=−4cos(−3(t+1))+2 and simplify using sine symmetry. Justify the resulting sign.",
+        "expectedPerformanceDe": "Zunächst ergibt die Kettenregel −12sin(−3(t+1)); wegen sin(−z)=−sin z ist dies 12sin(3(t+1)). Die lernende Person verfolgt beide Minuszeichen nachvollziehbar.",
+        "expectedPerformanceEn": "The chain rule first gives −12sin(−3(t+1)); since sin(−z)=−sin z, this is 12sin(3(t+1)). The learner tracks both minus signs transparently.",
+        "understandingFocusDe": "Erster unabhängiger Transfer zu Kosinus, negativem Innenfaktor und äquivalenter Form.",
+        "understandingFocusEn": "First independent transfer to cosine, a negative inner factor, and an equivalent form."
+      },
+      {
+        "id": "constant-boundary-transfer",
+        "taskDemandDe": "Untersuche h(x)=7sin(0·(x−4))−2. Bestimme h' und erkläre, warum die Formel 2π/|b| hier keine Periodenlänge liefert; vergleiche mit h₁(x)=7sin(0,1(x−4))−2.",
+        "taskDemandEn": "Investigate h(x)=7sin(0·(x−4))−2. Determine h' and explain why 2π/|b| gives no period here; compare with h₁(x)=7sin(0.1(x−4))−2.",
+        "expectedPerformanceDe": "Die lernende Person erkennt h≡−2 und h'=0; Division durch b=0 ist unzulässig. Für h₁ entsteht h₁'=0,7cos(0,1(x−4)) mit endlicher Periode 20π.",
+        "expectedPerformanceEn": "The learner recognizes h≡−2 and h'=0; division by b=0 is invalid. For h₁, h₁'=0.7cos(0.1(x−4)) with finite period 20π.",
+        "understandingFocusDe": "Zweiter unabhängiger Transfer zum entarteten Grenzfall und zur Geltungsgrenze der Parameterformeln.",
+        "understandingFocusEn": "Second independent transfer to a degenerate boundary case and the limits of parameter formulas."
+      }
+    ]
+  }
+}

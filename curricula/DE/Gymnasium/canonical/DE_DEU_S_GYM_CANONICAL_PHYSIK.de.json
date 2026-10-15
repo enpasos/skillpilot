@@ -6360,7 +6360,8 @@
       ],
       "contains": [],
       "requires": [
-        "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8188,9 +8189,7 @@
       ],
       "contains": [],
       "requires": [
-        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
-        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
-        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8232,12 +8231,12 @@
           "role": "primary",
           "skillpilotId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
           "title": "Visualisierung: Physik im Straßenverkehr: Sicherheitsabstände bewerten",
-          "url": "/assets/goal-visualizations/physik/4a2bf015-052b-4af0-aed7-324259fa1a8a/4a2bf015-052b-4af0-aed7-324259fa1a8a.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Physik im Straßenverkehr: Sicherheitsabstände bewerten.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Physik im Straßenverkehr: Sicherheitsabstände bewerten\". Die lernende Person kann Reaktions- und Bremswege qualitativ und mithilfe einfacher Modelle beurteilen und daraus Sicherheitsabstände in Alltagssituationen bewerten.",
+          "url": "/assets/goal-visualizations/physik/4a2bf015-052b-4af0-aed7-324259fa1a8a/model-boundaries-v2/4a2bf015-052b-4af0-aed7-324259fa1a8a.png",
+          "provider": "OpenAI / built-in image_gen edit",
+          "description": "Visualisierung zu Reaktions-/Bremsweg und getrennten Modellgrenzen für feste Hindernisse und vorausfahrende Fahrzeuge; korrigierter Nachfolger, eigene didaktische Illustration.",
+          "altText": "Schematische Trennung von Reaktionsweg, Bremsweg und Anhalteweg; 50 km/h entsprechen etwa 13,9 m/s. Modellgrenzen: festes Hindernis mit Anhalteweg plus Reserve; bei vorausfahrendem Fahrzeug den relativen Abstand auf gemeinsamer Zeitachse prüfen.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -8381,8 +8380,8 @@
       "id": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
       "title": "Gleichförmige Bewegung und Geschwindigkeit",
       "titleEn": "Uniform Motion and Velocity",
-      "description": "Die lernende Person kann gleichförmige Bewegungen im Diagramm erkennen, die Geschwindigkeit definieren und den Geschwindigkeitsbetrag experimentell bestimmen.",
-      "descriptionEn": "The learner can recognize uniform motions in the diagram, define velocity, and experimentally determine the magnitude of velocity.",
+      "description": "Die lernende Person kann geradlinige gleichförmige Bewegung anhand von Bewegungsdiagrammen erkennen und erläutern, die Geschwindigkeit als konstanten Quotienten aus vorzeichenbehafteter Ortsänderung und Zeitspanne definieren und ihren Betrag experimentell bestimmen.",
+      "descriptionEn": "The learner can recognize and explain uniform straight-line motion using motion graphs, define its velocity as the constant quotient of signed displacement and elapsed time, and experimentally determine its magnitude.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -8393,7 +8392,8 @@
       "contains": [],
       "requires": [
         "ce431132-dfc4-42c2-aff6-bd72035190f8",
-        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8457,7 +8457,9 @@
       ],
       "contains": [],
       "requires": [
-        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+        "b1dcc191-d046-50de-984a-ee5c17157628"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -8532,8 +8534,7 @@
       ],
       "contains": [],
       "requires": [
-        "bf8517a9-142b-5789-826a-767f3b277998",
-        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+        "bf8517a9-142b-5789-826a-767f3b277998"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8597,8 +8598,7 @@
       "contains": [],
       "requires": [
         "e4b38061-1f28-43ad-8371-a3e7c0e81856",
-        "ce431132-dfc4-42c2-aff6-bd72035190f8",
-        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        "ce431132-dfc4-42c2-aff6-bd72035190f8"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8663,7 +8663,7 @@
       "requires": [
         "ce431132-dfc4-42c2-aff6-bd72035190f8",
         "e4b38061-1f28-43ad-8371-a3e7c0e81856",
-        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb"
+        "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -9390,9 +9390,9 @@
       ],
       "contains": [],
       "requires": [
-        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
-        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
-        "5ea765ac-c279-551a-8a94-a07da2381e5b"
+        "5ea765ac-c279-551a-8a94-a07da2381e5b",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "54148506-c23f-41b8-959b-068dd194cf15"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -9570,7 +9570,8 @@
       ],
       "contains": [],
       "requires": [
-        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10807,7 +10808,9 @@
       ],
       "contains": [],
       "requires": [
-        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -18602,7 +18605,8 @@
       ],
       "contains": [],
       "requires": [
-        "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83"
+        "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -19413,7 +19417,8 @@
       "contains": [],
       "requires": [
         "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
-        "106417ed-80db-5490-a1ee-bb4160d3f2b4"
+        "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+        "b1dcc191-d046-50de-984a-ee5c17157628"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -25062,7 +25067,8 @@
       ],
       "contains": [],
       "requires": [
-        "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec"
+        "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec",
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -25424,7 +25430,8 @@
       ],
       "contains": [],
       "requires": [
-        "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+        "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -28146,7 +28153,8 @@
       "contains": [],
       "requires": [
         "d03f1cb6-c224-53db-ad91-76cc7827978d",
-        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df"
+        "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+        "58d2f963-4fb9-550d-a832-f5ac60808900"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -28211,7 +28219,8 @@
       ],
       "contains": [],
       "requires": [
-        "e6895bc3-fcbd-59ad-baef-a78c97a13e11"
+        "e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+        "9db266a2-1889-5792-82b0-a7463f0832f1"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -28405,7 +28414,8 @@
       ],
       "contains": [],
       "requires": [
-        "eb1ea150-ec6c-5000-bce3-f46c820dccf8"
+        "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+        "58d2f963-4fb9-550d-a832-f5ac60808900"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -28470,7 +28480,8 @@
       ],
       "contains": [],
       "requires": [
-        "37f28bc4-def2-57cf-a06b-191dfd228205"
+        "37f28bc4-def2-57cf-a06b-191dfd228205",
+        "27b63e2e-6a34-483e-8e5a-fe0f49670d1d"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -28664,7 +28675,8 @@
       ],
       "contains": [],
       "requires": [
-        "d5772db3-120c-5c37-ab46-2336d02236b0"
+        "d5772db3-120c-5c37-ab46-2336d02236b0",
+        "58d2f963-4fb9-550d-a832-f5ac60808900"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -29764,7 +29776,8 @@
       ],
       "contains": [],
       "requires": [
-        "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+        "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+        "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -42649,7 +42662,8 @@
       ],
       "contains": [],
       "requires": [
-        "a6e48b88-51ed-5942-bdb8-8d2192652e0d"
+        "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -44460,7 +44474,8 @@
       ],
       "contains": [],
       "requires": [
-        "53196a71-9dbd-4835-b2f9-ff21b8a8962c"
+        "53196a71-9dbd-4835-b2f9-ff21b8a8962c",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -46219,7 +46234,8 @@
       "contains": [],
       "requires": [
         "d3c153b9-e09b-5668-8386-73105546a7c1",
-        "5355fee0-0477-5570-a234-561477bf77ba"
+        "5355fee0-0477-5570-a234-561477bf77ba",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -49280,7 +49296,7 @@
       "shortKey": "canonical_physics_ac_phasor_ohmic_circuit",
       "title": "Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben",
       "titleEn": "Describe sinusoidal AC quantities using phasor diagrams",
-      "description": "Die lernende Person kann sinusfoermige Spannung und Stromstaerke in ohmschen Wechselstromkreisen mit Zeigerdiagrammen darstellen und Phasenbeziehungen fachlich deuten.",
+      "description": "Die lernende Person kann sinusförmige Spannung und Stromstärke in ohmschen Wechselstromkreisen mit Zeigerdiagrammen darstellen und Phasenbeziehungen fachlich deuten.",
       "descriptionEn": "The learner can represent sinusoidal voltage and current in resistive AC circuits using phasor diagrams and interpret their phase relationships in physical terms.",
       "weight": 1,
       "tags": [
@@ -49291,7 +49307,8 @@
       "contains": [],
       "requires": [
         "53196a71-9dbd-4835-b2f9-ff21b8a8962c",
-        "ac4ba260-6086-5fcc-bea2-c06f1425a1cc"
+        "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+        "bbef7cf2-90fa-59fa-a115-8b651aab9231"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -49368,7 +49385,9 @@
       "requires": [
         "5f97952e-5ac9-5749-94d0-d1dc50dda358",
         "8fca14c7-3251-5526-adde-2567ea6816b2",
-        "37f28bc4-def2-57cf-a06b-191dfd228205"
+        "37f28bc4-def2-57cf-a06b-191dfd228205",
+        "58d2f963-4fb9-550d-a832-f5ac60808900",
+        "bbef7cf2-90fa-59fa-a115-8b651aab9231"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -52459,7 +52478,9 @@
       "contains": [],
       "requires": [
         "497f1311-17d6-56ff-afb1-422a738e5c16",
-        "ba16948b-5e07-54af-b77b-776e677c6906"
+        "ba16948b-5e07-54af-b77b-776e677c6906",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "ae20183e-92b5-5521-b8e0-9a8662cf51f5"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -53130,7 +53151,9 @@
       ],
       "contains": [],
       "requires": [
-        "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745"
+        "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",

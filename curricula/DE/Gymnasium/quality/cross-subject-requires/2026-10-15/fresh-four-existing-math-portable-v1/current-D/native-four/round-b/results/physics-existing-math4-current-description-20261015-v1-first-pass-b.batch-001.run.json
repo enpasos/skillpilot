@@ -1,0 +1,86 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-existing-math4-current-description-independent-b-20261015-v1",
+  "campaignId": "physics-existing-math4-current-description-20261015-v1-b",
+  "roundId": "physics-existing-math4-current-description-20261015-v1-first-pass-b",
+  "batchId": "physics-existing-math4-current-description-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:faaa02860c8ac90d3a5a472506e49af79a08feee85e60e6b7b786b135bd699b6",
+  "bundleFingerprint": "sha256:c798ce2e1432b117953cd241ffc4acc1ebc0aab51ee473c45528ef62536f43e8",
+  "bookDigest": "sha256:69152c91c81e6faa35f521df3d366afc46029e74226dcc303b28db33c6cf9358",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "modelVersion": "serving-build-unobserved",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:9dd92c9a60ee81d25383a08f40f84fd357b1e3d62bf8c5c4b50899ffe1936019",
+  "independenceGroupId": "physics-existing-math4-current-description-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+    "bf8517a9-142b-5789-826a-767f3b277998",
+    "ec7a0a68-730b-5c94-ac72-a937508f8303",
+    "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:367bd4a5f9edd3acedfa60b9a1ce57fc942907d56b666e0ad52d953f68bf3d54"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:022b0332ceede0313681fc7442b2cc05e01e14a19f94966024b872e01c15574d"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:9bb5c52f5b78988868c57942b10c29763209ab590194727839c80a02ca251a5f"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:dc1ec99a2f75c8454d69d112c22a66ec630872baf3406819741d88f0a823fa1f"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:30ccdc9cb5a8866fe3b0b8952e7077e4706b27afdde1531840c351d0f5d0e009"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:915612e1b407cd4be454d55fe0f2e90e802297c6babbf64cdd6c22c8711db592"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:48eb076d16b51add36b420015a899673f71ba82f464874cfb4aa22cd74c383e7"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:1f813c0cbcc016f40cb2092f8e17f45417cd37189244324531a6d598d9734ef9"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:faaa02860c8ac90d3a5a472506e49af79a08feee85e60e6b7b786b135bd699b6"
+    }
+  ],
+  "startedAt": "2026-10-14T23:43:13.594314+00:00",
+  "completedAt": "2026-10-14T23:45:15.038671+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:030776733fb2286cdad85aedad54ff55ae8c59588973d9f3d68056a48c2f5a53",
+  "toolchainVersion": "codex-native-D4B-independent-20261015-v1"
+}

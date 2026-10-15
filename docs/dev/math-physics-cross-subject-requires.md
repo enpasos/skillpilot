@@ -22,62 +22,850 @@ The starting repository snapshot is
 and Physics both had protected M7 status. Active inventory excludes `quality`,
 `input`, and `archive`; retained source/review snapshots remain unchanged.
 
-## GitHub interim checkpoint, 14 October 2026
+## Scope and current status
 
-This checkpoint is limited to canonical Gymnasium Mathematics and Physics in
-Sekundarstufe I and II. The owner expressly requested a GitHub checkpoint with
-passing CI on 14 October 2026. This authorizes a review branch and draft PR;
-it does not authorize merging, deployment or release publication. The wider
-learning-graph objective remains active and incomplete.
+The current checkpoint on 15 October 2026 is the local working state recorded in
+`curricula/quality/cross-subject-requires/2026-10-13/work-checkpoint.json`.
+The following counts describe different evidence layers and must not be combined
+into a completion claim:
 
-The active curriculum changes are the independently checked first adoption:
-11 Mathematics prerequisites on 10 Physics atoms and 396 explicit
-`prerequisiteOnly` support references in 67 Physics views. Canonical Mathematics
-content is unchanged. Support references do not enlarge the learning targets,
-award Mathematics mastery or alter the learner's Personal Curriculum. Runtime
-blocker facts are exposed consistently in the first-party UI and coach contexts.
+| Evidence | Current result |
+| --- | --- |
+| Ordinary goals in active canonical scope | 807 Mathematics + 478 Physics = 1,285 |
+| Exact current scientific bindings after adoption | 1,250 accepted; 35 pending decisions |
+| Active cross-subject prerequisite references | 45 references on 36 Physics goals, using 29 Mathematics IDs; retained legacy cluster prerequisites remain included |
+| Authored Physics support | 4,954 explicit Mathematics prerequisite-only references across 69 views |
+| Actual adopted current D/P/A/M/V check | 807/807 Mathematics and 478/478 Physics; zero blocking issues; all ten protected curriculum floors pass |
+| Authorized GitHub interim checkpoint | Draft, unmerged PR #74, commit `28b948a`; four workflows and all 16 jobs successful for that published head |
+| Actual local RP repair | Eight files adopted; 30 existing targets restored per CrossStage profile; 23 CI-wired tests and all ten floors pass |
+| Actual local Mathematics route repair | 87 reviewed files adopted: seven existing prerequisite sets, three BW views, two terminal assessments; Main M7 and all ten floors pass |
+| Last native route census, before the Bavaria LK conservation correction | 89 exact / 163 expanded configuration/prerequisite occurrences; the 35 source-backed target placements close 38 exact / 88 expanded gaps, with no regression |
 
-The completed substantive decision index accepts 1,241 of the 1,285 nominated
-atoms and retains 44 unresolved Physics decisions (26 granularity gaps,
-11 review cases and seven scope gaps). All 807 Mathematics atoms now have
-complete Goal/P body review: 46 primary bodies and 761 supplemental bodies.
-The exact original judgments and unresolved disagreements are retained in the
-[current scientific index](https://github.com/enpasos/skillpilot/blob/review/gym-math-physics-interim-20261014/curricula/quality/cross-subject-requires/2026-10-13/current-scientific-index-1241-v3-preservation-20261014-v1/summary.json).
-An accepted decision is separate from active curriculum adoption and native
-Source/P/Kind/D, human approval and M7 evidence.
+The GitHub result was reconfirmed read-only again on 15 October during the retry
+for the published `28b948a` head. It excludes the later local RP repair and
+Post-RP audits below; it is not CI evidence for the current local worktree.
+No new push, merge or deployment follows from this checkpoint.
 
-The runtime correction merges complete GK/LK views without duplicate visible
-goals when a reference is genuinely redundant. Conflicting presentation
-metadata or an unrepresentable partial target overlap remain errors. A separate
-compiler correction checks overlap after projection roles are resolved, so
-`prerequisiteOnly` exclusions do not create a false visible-overlap error.
-Five new backend cases and 15 synthetic frontend cases are included in the
-ordinary CI suites. The unchanged 167 actual native stage/course documents and
-independent technical countercases are retained in the dated evidence packets.
+The subsequent unfiltered, normal-resource backend CI run on the actual local
+worktree finished with 2,386 tests: 2,374 passed, three failed and nine skipped.
+Two integration tests contained 44 old atomic-count expectations. An independent read-only replay of
+220 actual production projections reconstructs every difference from the exact
+reviewed data beforeimages and accepts a one-file test successor that also
+checks membership of the two common terminal assessment goals. The third
+failure is a real missing target: Bavaria's technical LK projection omits the
+already reviewed compulsory GK geometry-language goal
+`3e53a39b-1c75-4034-a647-8de85719e1fb`. A private one-view correction adds that
+single target with no removals; actual frontend and backend projections confirm
+conservation. Both independently accepted corrections are now adopted, and all
+three original failing tests actually pass with the original planning-scope
+assertion retained. A subsequent fresh Main compile and 188-test integration
+run also passes after the scope repair below. This does not establish a new
+complete backend or GitHub CI pass. The original complete run and its unchanged
+4,223 source bindings remain preserved.
 
-The whole-Physics route audit covers 1,190 effective foreign-prerequisite
-occurrences, 4,934 counterfactual configurations and 167 actual native backend
-queries. At its exact audited data state, 656 pairs were unavailable in the
-same stage: 307 had a route after an explicit global-stage change and 349 still
-had no complete route. Selected later candidate-route checks do not establish
-complete closure of this grid. The audit is preserved byte-exact inside its
-[original evidence archive](https://github.com/enpasos/skillpilot/blob/review/gym-math-physics-interim-20261014/curricula/quality/cross-subject-requires/2026-10-13/whole-physics-1190-pairs-4934-stage-course-native-audit-preservation-20261014-v1/exact-own-results-and-candidate.originals.tar.gz).
+The current v21 scientific index is preserved in
+`curricula/quality/cross-subject-requires/2026-10-13/current-scientific-index-1250-v21-preservation-20261015-v1/summary.json`.
+It selects the freshly sealed exact whole-Goal/P/Kind/Requires author and
+independent reviewer evidence for the Eye goal only. The selected scientific
+identity fields of the other 1,284 goals remain unchanged. The same three
+unchanged P records move to a retained owner file; all477 other complete
+Physics P-record lines remain exact. Current complete-body conditions and
+actual owner files are rechecked, without creating source, Kind, human, host
+or whole-feature acceptance. The preceding v20 five-goal decisions and every
+older verdict remain preserved in their original evidence packets.
 
-Five revised Goal/P bodies, new CAF placements, three additional accepted
-atomic edges, removal of two broad quadratic cluster prerequisites, the narrow
-square-inversion bridge and the decimal-rounding goal remain private or inert
-candidates. They are not active curriculum changes in this checkpoint. Their
-remaining source, placement, task/image review, native quality and route gates
-must be closed against their exact current inputs. The actual learner-consent,
-persistence and return flow also remains an acceptance task. Passing CI does
-not establish those substantive or real-host outcomes.
+The latest local graph adoption removes the unnecessary direct function-evaluation
+prerequisite from free fall, adds rational powers and mean rates to the chirp
+goal, and adds the transformed-trigonometric chain-rule goal to reflection,
+the oscillator equation and derivative-based induction. Five added references
+and one removal produce 45 references. The exact five Requires changes have
+separate whole-P/Kind review and two actual new native description rounds.
+Only prerequisite-only support was appended to 66 Physics views; every existing
+target set and all 88 Mathematics views remain unchanged. Actual Main graph,
+348 composition views, strict Mathematics 807/807 and Physics 478/478, generated
+status freshness and all ten protected floors pass. The actual Main status
+regeneration preserves twenty curriculum rows; only Physics source diagnostic
+warning counts change. The original failed invocation of a nonexistent graph
+script remains recorded alongside the successful corrected command.
+The adoption and its checks are recorded in
+`curricula/quality/cross-subject-requires/2026-10-13/five-existing-math45-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
 
-The sections below retain earlier checkpoints and their original failure
-records. The figures and boundaries in this dated section supersede earlier
-partial-review counts. The [machine checkpoint](https://github.com/enpasos/skillpilot/blob/review/gym-math-physics-interim-20261014/curricula/quality/cross-subject-requires/2026-10-13/github-interim-scope-and-status.json)
-records this publication boundary and the included technical evidence.
+A fresh native replay after the 35 target placements executes eleven stages and
+19,202 prerequisite guard cases. It confirms that mastered Physics does not
+bypass missing Math, without adding Math enrollment or mastery. Its 89 exact /
+163 expanded remaining gaps are configuration/prerequisite occurrences, not
+distinct goals. The preceding 127/251 census is historical: 38 exact and 88
+expanded gaps close, with no route regression. All 161 Physics-only projections
+remain identical; 103 explicitly combined Mathematics configurations gain 190
+reviewed target incidences. This replay uses synthetic mastery and reuses a
+byte-verified production build; it does not prove real learner consent,
+persistence, a fresh production compile or full CI. Its 8,266 consumed bindings
+were reverified after the validator-only correction below. The proof is preserved
+in
+`curricula/quality/cross-subject-requires/2026-10-13/current45-after35-source-targets-native-route-independent-peer-20261015-v1/HANDOFF.actual.json`.
+The source-backed repair now adopts 35 target placements in eighteen existing
+Mathematics views, after an informed independent review of all thirteen complete
+existing Goal/P contexts and the exact source/cohort scopes. Existing target and
+support bodies and compiled paths are preserved; the 88-view count, canonical
+goals, Requires and fallback policy are unchanged. Actual Main strict M7, all 348
+composition views, the existing assessment-route regressions, inventory
+freshness, generated quality status freshness and all ten protected floors pass.
+The first global view check exposed CPV211 ignoring an explicitly support-only
+RP J10 assessment. A separately reviewed one-file validator correction now uses
+the existing role-aware endpoint helper. It preserves the assessment's authored
+role; no exam target is inferred from the newly available prerequisites. Three
+independent actual-validator counterexamples retain the missing-exam gate. The
+original failure and exact correction remain recorded in
+`curricula/quality/cross-subject-requires/2026-10-13/eighteen-existing-Math-views-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`
+and
+`curricula/quality/cross-subject-requires/2026-10-13/cpv211-explicit-support-validator-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
+This does not adopt the proposed new full HB/TH/MV views: HB/TH introduce fifteen
+unrelated old-target source holds and MV still needs its whole-scope audit.
+Source support for individual new placements does not accept those whole views.
 
-## Scope and earlier checkpoint status
+Astra Ultra's reviewed-code plan now calls for explicit, bounded, Math-owned
+supplement selection for remaining preparation routes, usable without selecting
+the whole ordinary Mathematics curriculum. Its implementation is in progress;
+no supplement is active. Independent review holds the first detached runtime
+candidate for five material defects, including inadequate quality-evidence
+validation, lost selections on editor restart, incorrect Physics target-scope
+checks, schema mismatch and an escaping artifact symlink. A separate successor
+addresses these findings; passing unit tests on the predecessor do not accept it.
+The thirteen new Mathematics goals remain private candidates. Whole-profile
+content/Kind/atomicity/memory review and actual-raster review now keep all
+thirteen, with the original disagreements and rejected image attempts preserved.
+Their final source boundaries, resource-bound native evidence, two genuine
+description rounds, strict full 820-goal Mathematics gates and explicit target
+activation remain open. The old private views' 475 new target references are
+not adopted into the current 88 views.
+
+The independently accepted native task-material helper is now adopted as seven
+source files plus a regression in an existing CI test entry point. Required
+assessment SVGs bind their exact source/public bytes even when optional
+visualization review is disabled. The same regression fails the former producer
+and passes the successor; six existing evidence/GoalBook test programs pass.
+Actual Main strict checks remain 807/807 Mathematics and 478/478 Physics, with
+zero blocking issues, and all ten protected floors pass. This code-only change
+does not activate the thirteen candidate goals or accept their source metadata.
+
+Earlier independent runtime review found a missing executed compiler binding,
+unreachable saved-selection recovery, and direct-child cwd/environment bypasses.
+Those failed predecessors remain preserved; the accepted corrections form the
+43-path stack below. Separately, review of the unadopted exact five-dimensional
+scope successor found that missing duration was converted to resolved `null`,
+and real placement/tree callers omitted scope. Those defects and the merge of
+per-view supplemental scopes led to the separately reviewed successor below.
+No supplemental route is active, and no full current-worktree CI or real learner
+acceptance is claimed.
+
+Independent production-consumer review of that private scope successor found
+two further blockers: a backend fallback can turn eligibility into target
+authority without a matching source assignment, and the mounted shared-root
+GK/LK view can hide an otherwise authorized GK branch. Both concrete
+counterexamples and the original failed candidate are retained. The exact
+independently accepted 25-file additive repair is now adopted. It also preserves
+source-authorized supplement targets and their projected navigation when the
+ordinary Mathematics subject is unselected, without admitting unrelated targets.
+The independent reviewer exercised 22 backend authority cases and 16 mounted-hook
+cases, including 12 actual learner-view/tree mounts. All 88 current Mathematics
+views and 303 placements conserve their existing projection behavior without
+opted-in goal metadata. Actual Main frontend lint/type checks, scheduled supplement
+tests, role regressions, all 348 views, 188 freshly compiled backend tests,
+strict807/478, generated QA freshness and all ten floors pass. No new goal,
+source placement or supplement is activated by this code adoption.
+A six-file test-only successor now exercises the backend authority boundary and
+the mounted learner hook/view/tree through the existing CI entry points. Its
+author and independent reviewer reproduced the predecessor failures and passing
+correction; the exact six test/fixture files are now adopted. Three actual Java
+regressions, the complete existing Cockpit chain and its predecessor controls
+pass. The isolated GitHub checkpoint is prepared against the current remote
+Main, preserving its unrelated changes; full checkpoint CI and publication remain
+pending.
+The selected-scope source-QA successor is also preserved as an
+unadopted 45-file candidate, with 171 bounded Java tests and 25 TypeScript
+checks. The typed orientation-binding successor remains separate. Its author
+completed 185 bounded Java tests, 40 source-accounting cases and one genuine
+807/478 native orientation run. Independent review has reproduced a stale-report
+gap: changing authored/review bytes after the Java export at unchanged file count
+does not invalidate the Source-QA report. No learner-authorization bypass is
+established; the exact 17-file combined Source-QA/orientation layer remains held
+for correction.
+
+Two genuine native description rounds for fifteen pending contexts are now
+complete, with the first review locked before reading the second. Both rounds
+and all three dual-round validators pass the report-only diversity policy;
+the run labels do not prove distinct serving models. There are two description
+disagreements and one shared assessment gap. Three bounded private successors
+clarify the zero-input inverse check, the signed-radian description and an
+independent volume-measurement task. A fresh independent content/helper review
+keeps these successors and verifies all 1,285 existing evidence payloads remain
+byte-identical under the two-subject helper overlay. This is not fresh native
+D approval for the changed texts or acceptance of strict820, sources or targets.
+Two fresh independent content locks keep all three changed contexts, but their
+new native D campaigns are not materialized yet. Actual producer comparison found
+a GoalBook/P optional-image fingerprint mismatch and the need for genuine current
+Kind records. A private successor now produces regular native Books and campaign
+inputs using the actual review-context landscape, including the changed existing
+radian goal; no D verdict is fabricated by that transport. Final review and the
+actual current D campaign validation remain open. Independent transport review
+requires three corrections: schema resolution from the real npm working
+directory, binding actual configuration bytes while rejecting invalid UTF-8,
+and a valid handoff path to the sixteen current Kind judgments. An additive
+repair is in progress; the reviewed predecessor remains unchanged and held.
+The exact original rounds,
+disagreements and held successor evidence are preserved under the dated
+cross-subject quality directory.
+
+The exact independently accepted runtime stack is now locally adopted as 43
+paths, including the CI wiring. It combines the corrected native admission,
+explicit selection/removal and UI recovery layers. The ordinary CI test no longer
+requires a preconfigured compiler-override environment. The npm policy probes
+now choose their required repository working directory explicitly, preserving
+their rejection cases when invoked from `app/`; the native producer's unused
+declarations were removed. Independent actual registered807/478 replay under
+absent overrides, the scheduled npm chain, Python package guard and YAML checks
+pass. Actual Main full frontend lint/type checks, the scheduled npm suite,
+185 backend tests, projection-role regressions and all 348 composition views pass.
+Strict 807/478, regenerated quality-status freshness and all ten protected floors
+pass after adoption. No supplement artifact
+or new goal is activated. The later 25-file scope repair is described above;
+aggregate selected-scope source accounting and orientation remain unadopted.
+
+The freshly independently accepted five-file Eye P correction is also locally
+adopted. It states the initially normal far-focus and fixed relaxed-accommodation
+premises needed for a determinate prediction, preserves every required duty and
+the complete direct Lens prerequisite, and adds no direct Math prerequisite.
+All477 other Physics P-record lines remain exact. Actual Main strict807/478
+passes after this P-only change and the runtime adoption. Indexv21 now selects
+the fresh exact one-record independent judgment, bringing the selected scientific
+bindings to 1,250 accepted and 35 pending. Full final CI, source/target integration
+of the 13 candidates and usable supplemental routes remain open. The actual
+production prerequisite closure also includes two orientation goals across the
+45 foreign references. Their distinct completion semantics need an explicit
+binding in the supplemental route; they cannot be counted among ordinary
+content goals or silently completed.
+
+The previous v19 scientific index and original per-goal author/reviewer bindings
+remain preserved in
+`curricula/quality/cross-subject-requires/2026-10-13/current-scientific-index-1244-v19-preservation-20261015-v1/summary.json`.
+Index v19 selects fresh whole-Goal/P Requires author and independent peer records
+only for self-induction and its RL successor. All other 1,283 substantive records
+remain exact, including the seven Mathematics successors from v18. Twenty-one
+retained P owner-file references move mechanically; 1,262 whole records remain
+exact. All 721 current inputs and all 369 adopted target files were rehashed;
+all 65 earlier verdict files remain unchanged. Both complete current Goal/P bodies
+and native P fingerprints satisfy the actual `positiveEvidenceCondition` fields.
+The ordinary denominator remains 807 Mathematics + 478 Physics; canonical totals
+remain 1,254 + 764. The two assessment goals are outside the content denominator.
+
+The original 1,244 approved, 33 pending and eight rejected scientific verdicts
+remain preserved. The current selected verdicts are 1,250 approved and 35 pending.
+The eight-goal adoption had made 15 earlier prerequisite bindings stale:
+nine Mathematics and six Physics goals. Their own semantic and scope fingerprints
+were unchanged. Fresh whole-Goal/P authoring and independent review now confirm
+14 decisions and initially left one pending. A further independent review of the
+now-active reference-frame P resolves that last case; the original pending and
+stale records remain historical.
+The P-owner audit before the latest adoption found 20 earlier scientific approvals
+explicitly conditioned on different proposed profile bodies. Nineteen were
+previously counted as current; the twentieth was already stale. The completed
+independent whole-profile review keeps 18 proposals and identifies two actual
+defects. Separate additive successors correct
+the inconsistent conservative centimetre rounding in the traffic case and supply
+the local potential information missing from the gravitational-force case. A fresh
+independent review keeps both corrected complete profiles; the original two revise
+judgments remain intact. All twenty complete profiles are now adopted locally in
+an exact 21-file change: twenty new files and one central P-owner-list replacement.
+The other 458 complete Physics record lines remain byte-identical. All five
+subject entries and existing D indices remain intact apart from the Physics
+P-owner list. The actual Main checks pass for the current profiles, strict M7,
+generated status and all ten protected floors. All 21 dashboard curriculum rows
+remain identical; only their source bindings needed regeneration. The exact
+adoption is recorded in
+`curricula/quality/cross-subject-requires/2026-10-13/twenty-P-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
+An exact independent audit of all 478 existing description contexts and the native
+five-subject quality report confirms that this P-only change leaves those D
+bindings valid. The normal 478-page Physics GoalBook has an identical digest.
+Twenty additional description review rounds are therefore not required by this
+actual change; no existing D judgment is rewritten or newly attributed. The
+actual adopted worktree retains strict 807/807 Mathematics and 478/478 Physics
+with zero blocking issues. Chemistry remains at its unchanged 231/402, rather than being
+described as strictly complete. Seventeen old exact profile conditions now match.
+A fresh whole-Goal/P author judgment and independent Requires review also confirm
+the negative gravitational-potential decision for its exact corrected profile.
+The traffic predecessor's different exact profile condition remains historical.
+A fresh whole-current-Goal/P author and separate independent Requires review
+replace it with a negative decision for the actual unchanged profile; the old
+approval is not relabeled. The earlier reference-frame pending decision was
+about the actual old profile. Its predecessor's conditional approval remains
+history. The adopted profile subsequently received its own complete Requires
+decision about the independently constructed vector combination, as recorded
+in the fresh current-P review below. The current index computes
+conditions from each selected exact author and peer record and re-reads all
+active owner files. It does not attribute an
+earlier proposed profile to a fresh judgment of the actual profile. All 1,285
+ordinary goals have exactly one active P owner. The reference-frame pending
+record's old direct P binding is explicitly stale; this does not become a new
+negative approval.
+
+The fresh independent 15-case review approves ten negative decisions and four
+add decisions proposing seven atomic Mathematics edges; one case remains pending.
+All six nominated complete Mathematics profiles have independently worked case
+comparisons. Native validation against actual Main after the nine-goal adoption
+passes; the proposed global graph has no cycle or missing reference. Fresh P and
+Kind reviews now cover all four changed goals, and both actual D rounds are
+complete with four keep decisions. Native strict dual resolution passes for all
+four. The exact 268-file transport is now adopted in the local worktree: seven
+new direct Mathematics edges on four Physics goals and 257 additional support
+references in 66 Physics views. The 1,864 support references are authored as
+1,735 `goalEntry` and 129 `canonicalSubtree` references. All 157 Mathematics and
+Physics target sets and visible trees remain unchanged. All 478 complete Physics
+profiles, the 20 recently adopted owners, every previous prerequisite and all
+2,016 IDs remain intact. The actual worktree passes all ten required native
+commands, including 593 landscapes, 348 views, 100,136 schema files, strict
+807/478 M7 and all ten protected floors. The original failed preparations and
+discovery checks are retained. This local adoption is recorded in
+`curricula/quality/cross-subject-requires/2026-10-13/four-sets-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
+In particular, the now-adopted reference-frame profile supplies the numerical
+magnitude and angle but still demands an independently developed directed vector
+construction. Neither the old pending review of the numeric-demand profile nor
+its predecessor's conditional negative approval closes this current case.
+Seventeen independently accepted successors and one separately corrected
+ideal-gas successor closed 18 earlier scientific decisions. The original
+ideal-gas pair rejection and the later single-edge acceptance remain intact.
+A fresh whole-Goal/P author and independent peer now leave this case pending.
+Thirty-six actual production-native probes confirm that an indirect path does
+not replace a direct guard when an intermediate goal is mastered and its deeper
+prerequisite is unknown. The general equation goal is overbroad for the positive
+gas task, and the complete volume goal still needs a necessity decision. A
+conditional private scalar nominee does not establish a minimal approved pair.
+This correction supersedes the old acceptance in the current index without
+changing the graph or rewriting the original judgments.
+Scientific acceptance does not activate an edge or approve its source,
+placement, quality or learning route.
+
+The remaining 26 author successors now have a fresh sealed independent review
+after the earlier 23-approval/three-pending packet. All 26 nominations have
+conditional scientific approval: 25 cover all authored dependent scopes, while
+the lens case covers 15 jurisdictions and retains a Schleswig-Holstein gap.
+Their two native validation contexts include 12 private Mathematics goals,
+for 2,028 canonical nodes. The actual Main context still has 2,016 nodes and
+rejects the unknown private nominees. Those errors are preserved; these judgments
+do not close the current Main decision index.
+The 12 candidates include the earlier eight reusable skills, square and decimal
+skills, paired-data plotting, and a half-circle height/sine skill. The completed
+source/containment/placement author packet has 22 bounded HE/SH placements and
+170 explicitly open cells across 192 goal/jurisdiction combinations. All 12
+authoritative Kind decisions and full quality evidence remain open. Independent
+source review found two incorrect physical-page locators. A separately authored
+and independently checked successor corrects exactly those two references from
+27 to 26; the other 42 records and the frozen source extraction remain intact.
+This corrects the citations without creating a whole-source or placement approval.
+The HE sine/cosine addition identities are optional. The original private runtime
+fixture predates the latest seventeen adopted guards and does not prove current
+integration. No new Mathematics goal is adopted from this packet.
+The next BY/BW author packet provides 24 whole-Goal/P-bound source judgments:
+22 bounded partial placements and two open harmonic-identity cases. Its separate
+source peer finds the 22 mathematical cores supportable and identifies two exact
+artifact corrections: a BW trigonometry page range and upper-secondary course
+wording applied to eight BY lower-secondary cells. A separate additive author
+successor now corrects both; its independent peer passes exactly these changes.
+The complete range includes physical pages 39–40, printed pages 37–38. Eight BY
+Sek-I course descriptions now refer to compulsory grade content; the three
+Sek-II descriptions and technical GK/LK profiles remain unchanged. Exactly eleven
+cell artifacts change, without changing their whole-Goal/P judgments. BW's new G9
+plan moves the vector content into grade
+11; legacy G9 cohorts still follow the older progression, so `G9` alone does not
+select the correct version. The NI/NW author and independent peer also complete
+all 24 cells: 22 bounded regular-source cores and two harmonic-identity cases
+without a regular Mathematics source. The peer finds three NI course labels that
+confuse official gA/eA with technical GK/LK or the common E phase. A separate
+additive author and independent peer correct exactly six field occurrences.
+NI vector content remains in Q12/13, while the NW vector placement remains in E.
+All eight private view proposals compile without errors or warnings, retain
+every previous target ID and reject all 96 missing-candidate-ID negative controls.
+Those native checks precede the metadata-only correction; no new compiler run is
+attributed to that correction. The BE/BB author and fresh independent peer now
+complete another 24 cells: 18 bounded regular-source proposals, four open concrete
+Gymnasium entry routes, and two open regular-Mathematics harmonic-identity cases.
+All eight baseline and eight private candidate views compile, with 96 missing-ID
+negative controls detected. A further HH/HB author packet has 21 bounded proposals,
+one projection conditional on Bremen's LK+AG route, and two open harmonic-identity
+cases; its fresh independent source peer confirms these bounded categories. Bremen's published
+2026 lower-secondary plan starts with grade 5 in 2027/28 and does not replace every
+current cohort. Original page readers stay in TMP. These proposals do not activate
+new targets or close nationwide source, Kind or full-quality gates.
+
+The MV/RP author and fresh source peer complete another 24 cells: 19 bounded
+regular-source alignments, two RP course-track conditions, one MV pre-entry
+foundation case, and two open harmonic-identity cases. A separate additive
+author and independent peer support the exact date and two-unit corrections:
+the visible RP cover says March 2015, its older rear imprint says October 2014,
+and the two private content groupings are modules rather than a time phase or
+a combined official track. All thirty placement rows remain unchanged. A separate one-field German
+half-vector task
+correction has independent support. Original source judgments remain unchanged.
+SL/ST and SN/TH source authoring is now complete in separate sealed, normally
+preserved packets. Each has 24 original source cells, 58 case bindings and two
+separate corrected-wording successor bindings. Eight baseline/candidate views
+and 96 missing-ID controls pass for each pair; SL/ST has 12 units/30 placements,
+SN/TH has 15 units/32 placements. Both fresh independent whole-source peers
+have now resumed and completed their 24 original cell judgments, 58 case
+bindings and two separate corrected-wording successor judgments each. The
+earlier usage-limit partials remain unchanged. Their original coordinate
+dissents are retained: the positive P examples do not restrict the whole goal
+to nonnegative coordinates. Four separate source/placement successors now
+retain SL 5/6 with its compulsory four-quadrant context, retain current TH end 6,
+move ST to its 7/8 band, and propose SN 7 as an explicitly cumulative didactic
+inference from earlier coordinates and signed-number representation. Both
+independent peers support their respective two exact successor cells. Sixteen
+complete private views compile; four visible bands move, twelve view files
+remain exact, and target/support sets remain unchanged. The combined private
+program proposal has 29 units/62 placements; actual schema validation and two
+negative controls pass. No whole Goal/P body, Main placement or applicability
+is changed. SL live bytes and its GK version mismatch remain open, with three
+new GK targets withheld. SN uses the current 2021 plan; TH distinguishes the
+2026 growing cohorts from outgoing 2018 grades 8–10 and keeps E10 separate
+from the special grades 11–13 entry. Neither packet activates Main goals or
+closes open harmonic-identity, Kind or full-quality gates.
+New ordinary goals must enter the quality denominator; the existing 807/478 floors
+cannot be lowered. The earlier precise native impact audit of two broad
+quadratic-cluster prerequisites remains bound to its original snapshot.
+Only the two direct Physics owners change their immediate or contains-inherited
+guards, Requires inputs and relevant quality-context components; all other 762
+Physics guard sets stay identical. The historical 319-goal cohort comprises these
+two owners, 212 current transitive contexts and 105 goals whose old upstream path
+was already absent. Of the 226 ordinary goals outside the original 26 cases, only
+the two owners change their guards; 139 have transitive context only and 85 belong
+to the already disconnected historical subset. Transitive reachability does not
+itself impose a new whole-profile review on those unchanged goals. Both owners
+now have genuine complete-current-Goal/P author and separate independent
+minimality reviews. The traffic goal loses the whole quadratic-cluster and whole
+quotient/proportionality prerequisites; accelerated motion loses the whole
+quadratic-cluster prerequisite. Their local Physics predecessors remain. Both
+complete profiles permit supplied consistent model values and marked graphical
+data while requiring the physical interpretation, signs, common timeline and
+model limits. Their whole duties do not require the removed complete Mathematics
+routines. All 478 complete Physics profiles stay unchanged.
+The earlier hypothetical 149/277 route counts are historical impact evidence,
+not results for the current 40-reference graph.
+The exact audit and its retained preliminary results are preserved under
+`curricula/quality/cross-subject-requires/2026-10-13/broad5a-direct-versus-transitive-impact-audit-20261015-v1/`.
+
+The two reviewed Requires sets, three removals and corrected versioned traffic
+image are now adopted locally. All 157 authored Mathematics/Physics view bytes
+and target forests remain unchanged. A separate independent code review covers
+safe nested visualization paths and distinct declarations for 129 view-only
+prerequisite definitions; these do not become canonical Requires edges. The
+additional rollout-status regression has its own Root review. Actual Main passes
+16 selected native checks, including 100,350 schema files, 593 landscapes, 348
+views, the 69-view export contracts, all 2,487 visualization links, strict 807/478
+M7 and all ten protected floors. An initial asset-check failure exposed an earlier
+CAF backend-copy/retention omission; the exact copy and historical retention
+record repair it, and the rerun passes. Both that failure and an earlier
+preflight rejection remain preserved. This is focused validation, not a full-CI
+pass. The exact adoption is recorded in
+`curricula/quality/cross-subject-requires/2026-10-13/two-minimality-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
+
+The traffic correction was generated through the built-in OpenAI `image_gen`
+editor from the existing image; the serving image model is unobserved. Its new
+own asset is CC-BY-4.0, attributed to SkillPilot. It distinguishes stopping
+distance plus reserve for a fixed obstacle from relative separation for a moving
+vehicle. The PNG and reconstruction prompt use the new `model-boundaries-v2`
+directory; all three old JPEG copies and the old prompt remain byte-identical.
+
+The current Strom-Spannungs P3 profile has two separately sealed whole-goal
+reviews, both keeping the description and exact profile. Their native dual
+resolution is current and strict, with `report_only` honestly recording the same
+configured provider/model. The subsequent full private M7 check passes for
+807/478 goals, and the exact reviewed profile is now adopted with the eight-goal
+change. Its wider source and learning-route claims still require their own
+evidence.
+The complete Mathematics full-profile supplement is finished. A further Physics
+coverage audit found 72 earlier negative decisions without complete current
+profile-read metadata; an independent whole-Goal/P supplement checked
+all their cases. This metadata finding does not itself reject those decisions or
+prove their original reviewers did not read the profiles. The completed 72 exact,
+sealed reviews confirm 57 negative decisions, reject eight and leave seven
+pending. They contain 173 literal case solutions, 72 fresh transfers and 13
+complete Mathematics comparisons. The findings include uncovered time
+normalization, analog-scale reading, decimal thermometer resolution, experimental
+data plotting and two contradictory or incomplete Physics case conditions. The
+native index selects these actual successor verdicts and preserves every original
+decision. Its original outcome was 1,244 accepted, 33 pending and eight rejected
+bindings. All 15 new dissent cases have exact successor-author inputs;
+the supplement itself adds no edges and changes no profiles.
+Their sealed author follow-up was independently reviewed in full: the proposed
+geometric relation guard is supported, but its complete construction route is
+still unresolved; the counting-rate predecessor already covers the operational
+ratios, so an additional whole Dreisatz goal is unsupported. Eight granularity
+gaps and five other review cases remain. Close existing fine-scale goals are
+compared in full rather than assumed to be integer-only. Both explicit
+Physics-profile corrections are scientifically supported, with fresh D/P
+quality acceptance still pending. A new exact current author packet resolves
+two semantic-scope entries. Its fresh independent review accepts the counting-rate
+negative decision and leaves the other 14 pending, including the incomplete
+geometric construction route. These actual successor decisions are selected in
+the current index; the earlier verdicts remain intact.
+
+The next private candidate proposed 12 existing-Mathematics edges on 11 Physics
+goals. A fresh whole-Goal/P review found a missing measurement requirement in the
+passive-axon profile and an insufficient necessity argument for the whole time-unit
+prerequisite of ultrasound. The latter Mathematics profile also requires mixed
+hours/minutes conversion, which the Physics profile does not require. Its old
+approval is therefore superseded by a genuine one-record pending review, without
+reattributing the other 17 decisions in the original packet. The full candidate
+is preserved with its failed quality checks. The separately versioned nine-goal
+subset, excluding both cases, now has genuine fresh P, Kind, Requires and D
+evidence and an exact independent final review. It is adopted locally: ten new
+direct Mathematics edges, 67 updated Physics support views, no changed goal IDs,
+Goal/P text or images, and all five central subject owners preserved. The original
+341-file candidate and before-images are retained. Two global dashboard outputs
+had to be regenerated in actual Main because the private candidate's source
+availability differed. That initial failed check is preserved; the final actual
+status check passes. Only the Physics row changed against the actual previous
+Main dashboard; the other 20 rows are exactly unchanged. The effective manifest
+records 339 unchanged candidate files and these two derived replacements.
+All actual native gates pass, including 99,898 schema files, the graph, 348
+composition views, strict 807/478 M7 and all ten maturity floors. The sealed
+integration is recorded in
+`curricula/quality/cross-subject-requires/2026-10-13/safe-nine-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
+
+A fresh ultrasound author compares five whole Mathematics alternatives and
+nominates only the private nonnegative rational scaling/ratio atom `7ff1ff1c…`.
+A separate whole-Goal/P review supports that mathematical core, including its
+inverse and domain boundary, with 19 own exact checks. Its native add verdict
+remains pending: Physics applies to 16 jurisdictions, while the private nominee
+currently advertises only HE/SH, is absent from Main and lacks authoritative
+Kind, complete quality and placements. Native preparation correctly fails;
+zero approvals in a permissive private binding check do not waive that gate.
+The required independent depth calculation, full resolution/penetration task,
+existing wave predecessor and old whole-time-conversion dissent remain intact.
+This adds neither a current scientific acceptance nor a Mathematics goal.
+
+The CAF and three-edge changes are now adopted locally after a fresh exact
+eight-goal author and independent Requires review. All eight semantic scopes and
+direct sets are accepted, including retaining the immediate rational-arithmetic
+guard for uniform motion. Seven atomic Mathematics edges were added and two
+overbroad previous edges replaced. No goal ID was added or removed. All 2,016
+canonical IDs and 1,285 ordinary goals remain; inventory, graph, schemas and all
+348 composition views pass against the actual adopted worktree. The full schema
+run checked 99,676 files. The unrelated pending MV source-mapping change remains
+excluded.
+
+The reviewed 1,137-file transport preserved original review inputs and current
+image metadata. Its shared central registry initially omitted three unrelated
+subject owners. The global protected-floor check caught that defect. Their exact
+original entries are restored alongside the unchanged Mathematics/Physics
+entries; the failed run remains preserved. The regenerated global dashboard now
+passes all ten protected maturity floors, with both Mathematics and Physics at
+M7. This repair creates no new review or human authority.
+
+The preceding pre-RP 40-reference audit replayed all 69 exact authored Physics scopes
+and an expanded 161-scope grid. The exact grid has 1,959 native goal/guard
+occurrences. Of these, 1,638 have a complete Mathematics route under the tested
+same-stage or widened choices that retain the original Physics targets. Another
+166 have freshly replayed temporary Mathematics-only return potential, leaving
+155 without a complete Mathematics target route under those choices. The expanded
+counts are 4,313 occurrences, 3,583 target-preserving routes, 416 temporary-return
+potentials, and 314 remaining gaps involving 23 missing Mathematics atoms.
+These are native simulations starting with empty synthetic Mathematics mastery
+and hypothetical atomic completions, not observed learning, consent or saves.
+All 40 pairs are reached in 16,874 native guard probes. All 416 selected temporary
+returns restore the original target, support and view sets. In particular, 270
+expanded cases previously classed as widening lose other original Physics
+targets; they are not presented as legitimate Physics-retaining widening.
+The former 30-ID RP discrepancy did not explain every jurisdiction's scope
+difference. These counts remain bound to that pre-repair snapshot. The preceding
+operational audit is preserved under
+`curricula/quality/cross-subject-requires/2026-10-13/current-forty-adopted-route-audit-operational-20261015-v1/`.
+
+The reviewed local route repair removes eleven overbroad internal prerequisite
+edges on seven existing Mathematics goals and adds nine explicit placements in
+three BW views. A fresh independent replay of the final 87 files against the
+post-RP baseline now confirms 105 expanded and 56 exact route closures, with
+zero regressions. Its earlier private estimates remain separate historical data. The original stale quality bindings and false general
+single-vertex triangulation claim remain preserved as historical findings.
+The corrected complete polygon P has separate independent peer support.
+Seven current Kind/P author records and an actual seven-goal D bundle with
+nine physical PDF pages and PNG renders are now prepared. A separate informed
+content peer keeps all seven descriptions, complete P profiles and curricular
+atomic kinds after viewing all pages and original images. Its disclosed prior
+exposure means `blindToOtherRuns=false`; the native checker correctly rejects
+it with two blindness errors. It is separate content evidence, not a blind
+A/B first pass or quality/adoption authority. Both genuinely fresh D-A and D-B
+runs are now complete and normally preserved. Each has seven KEEP/P-none
+decisions, two native validation passes and six correctly detected negative
+controls. Supplied P provenance and metadata exposure are disclosed; neither
+run claims freedom from its supplied author framing. The actual informed
+synthesis, seven native resolutions and finalization are now complete; original
+A/B records and their authorship remain exact. Both actors were configured for
+GPT-6.1 Sol ultra. A native `report_only` comparison of different free-text model
+labels proves no serving diversity. Current isolated ordinary deep QA passes
+807/807 Mathematics and 478/478 Physics; this is no human approval.
+
+Full graph validation then exposed two genuine terminal-route gaps after the
+eleven removals: coordinate figures and structured integer problem solving.
+Two complete local assessment drafts were authored for the whole existing P contracts,
+including four quadrants, reverse translation and digital readback, or justified
+backwards solving and complete integer search. That draft successor passed
+global graph and all 348 views. It retained the 807 ordinary-goal denominator,
+corrected the year-5 parent child-union scope and six touched cluster weights,
+and left both new tasks explicitly `draft`. The complete floor checker
+therefore correctly failed on CQR-202/CQR-203; candidate maturity was M3 despite
+its passing ordinary D/P/A/M/V intersection. A fresh independent peer now
+accepts the complete tasks, solutions, scoring, four kinds and six weights.
+Its own final native regeneration keeps the other 20 curriculum objects exactly
+Main-identical. A separate content-identical reviewed release successor now passes the full
+native status generation and all ten protected floors: Mathematics and Physics
+are M7 with strict 807/478 ordinary coverage. All 348 views and the global graph
+pass; the other 20 curriculum objects remain exactly Main-identical. The
+successor retains all 85 original portable targets (83 byte-identical), changes
+only the two exam metadata/source references and their two native Kind
+bindings, and adds two own reviewed source documents, for 87 portable files.
+The operator is the same prior content peer, not a new independent reviewer;
+machine release grants no human or host acceptance. Original drafts, actual
+failed floor runs and the independent content verdict remain unchanged.
+Those final integration gates now pass: all 87 reviewed files are adopted locally,
+the Main inventory and scientific index are current, and strict M7 plus all ten
+floors pass after actual Main regeneration. All 20 other curriculum rows remain
+exact. Six focused regression scripts, 23 CI-wired source/stage-route cases and
+the exam-Markdown/hard-route checks pass. This is not a full integrated CI result
+for the later local worktree. The exact adoption, beforeimages and check receipts
+are preserved in `curricula/quality/cross-subject-requires/2026-10-13/released87-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
+Exact files and real failures are preserved under
+`curricula/quality/cross-subject-requires/2026-10-13/two-local-math-terminal-assessments-scope-weight-successor-author-root-20261015-v2/`.
+
+A fresh scientific author also reread the complete currently active
+reference-frame Goal/P and three whole Mathematics alternatives. Its new
+`no_cross_subject_required` proposal means no additional direct Mathematics
+owner: the existing uniform-motion guard and its effective Mathematics guards
+remain. The current P supplies numerical polar results but still requires the
+learner's own reference choice, directed graphical construction and transfer.
+Twenty-three author mathematical checks and native proposal preparation pass.
+A fresh independent whole-contract review accepts this exact current-P
+decision; the native review validator reports zero errors and 1/1 reviewed.
+The preceding index v17 changed only this one goal: all other 1,284 records and all 624 prior
+input bindings remain exact; all 627 current inputs were freshly rehashed.
+The resulting 1,243 accepted/42 pending decisions create no new edge, P-body,
+source, Kind, human or runtime approval. Earlier pending judgments remain
+unchanged historical evidence.
+
+The RP30 repair is now adopted in eight exact local files. It restores
+30 existing Physics targets per CrossStage profile and keeps the other
+155 Mathematics/Physics view files byte-identical. The QA helper preserves
+missing-endpoint checks, derives required same-view support for stage
+inspection, and uses actual full definition IDs for national-cluster
+prerequisites. The actual Main CI-wired command passes 23 tests; generated
+quality status and all ten unchanged floors pass at strict 807/478. The
+original CQR104 failures and the incomplete v2 national-cluster caller remain
+preserved. These local checks are not a GitHub CI run for the later worktree.
+
+The preceding sealed post-RP, pre-Mathematics-repair baseline audit has 1,969 occurrences in
+69 exact scopes: 1,691 target-preserving routes, 123 freshly replayed
+Mathematics-only return potentials and 155 remaining gaps. The expanded
+161 scopes have 4,358 occurrences: 3,834 / 210 / 314, involving 23 missing
+Mathematics atoms. Of the shared cases, 206 improve: 161 former RP
+upper-secondary target losses disappear and 45 formerly unsupported cases
+gain a target-preserving widening. The expanded grid also has 45 added
+occurrences; this is a separate count from the 206 improved shared cases.
+There are 109 remaining unsafe widenings, including one RP lower-secondary
+national-fallback difference that needs source/scope investigation. All
+40 pairs pass 17,054 fresh native guard probes; all 157 frontend/backend
+role comparisons agree. These read-only simulations establish no real learner
+consent, mastery or save. The exact baseline report is preserved under
+`curricula/quality/cross-subject-requires/2026-10-13/current-forty-post-RP-adopted-route-audit-operational-20261015-v2/`.
+
+The fresh final-87 audit has 1,738 safe same-stage/widened routes, 132 tested
+Mathematics-only returns and 99 gaps in the exact grid; the expanded counts are
+3,922 / 227 / 209. All 227 returns restore the complete original target, support
+and view sets. Mathematics-only complete plans rise from 2,177 to 2,264; no
+previously complete plan is lost. All 17,054 guard cases and 157 frontend/backend
+role comparisons pass. Root independently rehashed all 8,315 input files
+(367,610,704 bytes) against adopted Main, plus 444 production Java sources,
+867 sealed compiled classes and 161 dependency jars. The reused production build
+is explicitly identified; this is not a fresh production compilation or real
+learner/host acceptance. The separate RP Sek-I fallback difference remains.
+The normally preserved independent report is
+`curricula/quality/cross-subject-requires/2026-10-13/released87-post-RP-current-native-route-audit-20261015-v1/HANDOFF.actual.json`.
+
+The self-induction successor and its RL successor are now adopted locally in
+369 reviewed files: 72 changed and 297 new. Self-induction (`37f28bc4…`) gains
+only the direct local-rate prerequisite `b1dcc191…`; both local Physics
+predecessors remain. Sixty-eight Physics views receive an explicit 30-goal
+Mathematics support closure; no Mathematics learning target is added. The
+complete bilingual P distinguishes imposed current from the separate
+equal-voltage/equal-resistance delay experiment. The effective Mathematics
+closure still includes numerical local-rate/limit work; this is not a claim
+that the complete learning path has no calculus content.
+
+Both complete current P owners are selected properly. The amended RL P
+(`692db5b6…`) requires quantitative resistor and ideal-inductor terminal-voltage
+curves in both existing cases, with declared reference directions and a closed
+discharge path. Its direct prerequisites remain self-induction and `27b63e2e…`.
+Fresh author and independent Requires records validate both complete current
+bodies. Genuine fresh dual-D resolutions and supersessions are selected while
+all original A/B old-P inputs and their dissent remain intact. The original
+uppercase-P schema failure and earlier failed fixture preparations are retained.
+Both native P records remain `ai_candidate` / `needs_human_review`, with zero
+human approvals. The existing self-induction image is independently kept as
+phenomenological orientation; no new image approval is inferred.
+
+Actual Main strict M7 passes at 807/807 Mathematics and 478/478 Physics, with
+zero blocking issues. All ten protected floors and all 21 whole dashboard rows
+remain exact. All 13 recorded native Main commands pass, including the global
+graph, all 348 views, six focused suites and 23 CI-wired source/stage cases.
+This does not close the separate final integrated CI requirement or the earlier
+local legacy-recall daily-quota failure. The adoption, exact beforeimages and
+raw checks are preserved in
+`curricula/quality/cross-subject-requires/2026-10-13/self-induction41-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
+
+A fresh exact-current-Main native replay uses all 8,315 current input files.
+The earlier 41-edge candidate differed from later Main in one D/P registry
+file; that original result remains historical, without an all-input identity
+claim. The fresh replay copies the actual registry and preserves every input.
+Its current 69-scope grid has 2,037 occurrences: 1,802 target-preserving routes,
+136 Mathematics-only return potentials and 99 gaps. The expanded 161-scope
+grid has 4,496 occurrences: 4,054 / 233 / 209. The new edge adds 138 expanded
+occurrences, all with a complete route or tested return; no old outcome
+regresses. All 17,606 guards pass, including all 17,054 prior records and 552
+new threshold/dependent-only cases. All 598 target/view sets, 157 frontend/backend
+role comparisons and 233 native return target/support/view sets agree.
+The 4,669 synthetic Mathematics plans remain semantically exact, including
+2,264 complete plans. The audit binds 444 production Java sources, 867 reused
+sealed classes and 161 jars; it is not a fresh production compilation, persisted
+learner-consent flow or host acceptance. The fresh bounded proof is preserved in
+`curricula/quality/cross-subject-requires/2026-10-13/self-induction41-adopted-main-final-proof-20261015-v1/HANDOFF.actual.json`.
+
+For the twelve private Mathematics bridges, the independent source peer supports
+192 exact source-selection traces and eleven conservative jurisdiction unions,
+subject to all explicit cohort, stage, course and view holdouts. This is not
+192 source approvals. The initial consolidation lost thirteen existing canonical
+cluster target IDs in 391 view/ID occurrences. Final private v3 now resolves
+that finding: all nine changed old cluster goals are restored exactly, all
+original view references return, and the twelve new atoms are appended beneath
+the existing root. Existing targets, support and visible canonical paths survive.
+Four untimed SN/TH modules now refer to the existing Sek-II stage; all 65 program
+nodes and 462 placement references resolve with no missing parent or cycle.
+A genuine independent peer supports this exact repair and the root's
+`programStructure` classification; its new fingerprint is not registered as
+authoritative. No Mathematics atom has been adopted from this private candidate.
+All sixteen regular harmonic-identity source cells remain open.
+
+The separate complete twelve-goal Kind/A/M reviews preserve actual disagreement.
+Both propose twelve ordinary content goals and identify `1f4724d4…` as
+non-atomic: directed vector combinations and squared Euclidean length are
+separately assessable. The author leaves six other A and six M decisions
+different from the independent peer. Concrete P-coverage, supplied-information,
+title-domain and memory-origin/visibility issues remain recorded; no consensus
+or blanket no-memory decision is fabricated. A separate private split successor
+and individual memory-necessity resolution are in progress. The private ordinary
+Mathematics denominator is 819 before that split, and every added ordinary atom
+must remain in the enlarged quality denominator. Original sealed reviews are
+preserved under
+`curricula/quality/cross-subject-requires/2026-10-13/twelve-math-final-v3-whole-Kind-A-M-author-20261015-v1/`
+and its independent-peer sibling.
+
+Independent whole-profile review keeps the digital-measurement and mass profiles
+and conditionally keeps the exact corrected charge profile. The old charge
+profile still needs its physical-premise repair through its actual owner. All
+current/corrected prerequisite decisions remain pending; 47 independent numeric
+and adversarial checks do not turn broad units or integer goals into adequate
+prerequisites for the complete rational/mixed-unit tasks.
+
+The preceding native audit covered all 69 exact authored Physics scopes and all 43
+foreign references. Its 2,303 authored occurrences become 2,151 native target
+occurrences; 152 explicitly LK-tagged occurrences are filtered from GK. Of these,
+1,102 have a complete route from empty Mathematics mastery after explicit
+Mathematics selection at the same stage, 690 additionally require explicit stage
+widening, and 359 fail the stricter simultaneous-Physics-retention route test.
+The expanded 161-scope grid has 4,709 occurrences, split 2,490/1,543/676. All
+3,930 shared cases retain their exact previous outcomes. Every immediate guard
+definition exists; the remaining gaps concern complete Mathematics learning paths.
+
+The strict failures include potential temporary Level-2 detours: 20 exact-scope
+occurrences and 60 expanded-grid occurrences have a complete Mathematics route
+while the Physics target temporarily drops out. Such an explicitly accepted
+change can be followed by a return to Physics. Twelve new expanded cases
+(four exact-scope occurrences) now pass native read-only return checks: complete
+original target/support/view sets return, and hypothetical retained Mathematics
+mastery satisfies the isolated guard. The other 48 expanded candidates have no
+fresh return replay. These are potential routes, not demonstrated learner consent
+or persisted mastery. Excluding these candidates leaves 339/616 route-gap
+occurrences under the tested choices, without claiming them mathematically
+impossible. The new concrete obstacles include missing placement of the existing
+variable-role prerequisite `c9112f89…` and the literal radian chain
+`8d30d241… → fc047e6e… → 3e53a39b… → 2231c29b…`. Their source/placement or
+internal-prerequisite validity needs targeted review before changing the graph.
+
+A new Spring/H2 lifecycle regression executes six explicit Mathematics-only
+detours for RP G8/G9 and Physics GK/LK/GK+LK. Each case starts with 32 independently
+imported Mathematics foundations and two Physics estimates; it leaves the
+substitution skill `a6469c01…` unmastered. Actual authored choices select CrossStage
+Mathematics alone, persist that skill through the service and JPA, then return
+to the original Physics-only Sek-II configuration. The original target universe,
+duration and course profile return, the saved Mathematics value remains, and the
+Physics frontier becomes available without granting Physics mastery. All six
+cases pass in the corrected 3m31s run. This proves the tested state and persistence
+behavior with synthetic fixtures, not a whole learning session from empty mastery,
+real learner consent or host acceptance.
+
+Its independent code review rejected an earlier assertion that relied on Physics
+disappearing while Physics remained selected. The actual native role query found
+30 Sek-II targets missing from each RP GK/LK CrossStage target set, despite the
+stage option saying “Sekundarstufe I und II”. Runtime honors the authored roles;
+the view inconsistency remains an open repair, without blanket source approval
+or automatically changing all 30 roles. The corrected test explicitly deselects
+Physics, so its target/focus removal follows a deliberate subject choice. The
+original 9-case and 6-case passes and the rejected code judgment remain preserved;
+the subsequent exact Math-only source has its own independent keep review.
+The current regression is
+`backend/src/test/java/com/skillpilot/backend/service/CrossSubjectRemediationLifecycleTest.java`;
+bounded execution evidence is under
+`curricula/quality/cross-subject-requires/2026-10-13/temporary-stage-detour-lifecycle-root-20261015-v1/`.
+
+That preceding audit verifies all 444 production source files and 867 compiled production
+classes unchanged against the earlier native build, and freshly compiles its
+read-only harnesses. Matcher/projection/compiler checks pass for 322 requests and
+598 configurations; 18,458 native single-guard probes cover all 43 pairs. Readiness
+0 and 0.89 block; 0.9 and 1 satisfy the isolated guard. No learner, repository or
+transaction writes occur. The candidate author performed this operational audit,
+which creates no independent scientific approval. Compact own reports are
+preserved in
+`curricula/quality/cross-subject-requires/2026-10-13/current-fortythree-adopted-route-audit-operational-20261015-v1/`;
+complete readers and execution caches remain in TMP. The preceding 36-reference
+and 26-reference audits retain their exact historical evidence.
+
+The GitHub checkpoint is a draft, unmerged interim result:
+[PR #74](https://github.com/enpasos/skillpilot/pull/74).
+Its unchanged head `28b948a` was freshly queried again on 15 October: all four
+workflows and all 16 latest-attempt jobs are successful. The user-requested
+retry freshly confirmed the same exact head and all four/sixteen results; the
+read-only receipt is `github-interim-green-reverified-root-20261015-v8.actual.json`
+in the dated cross-subject evidence directory. The subsequent local
+20-profile and seven-edge changes, three broad-edge removals, image correction
+and export/path tooling are not part of that published checkpoint.
+A later local Main full-CI attempt remains failed: 2,333 backend tests, one legacy
+Verified Recall daily-quota failure, nine skips. The corrected-runtime focused
+and 110-case class replays passed; both remaining release verifiers also passed
+separately. Those results do not change the failed full run's exit code. Final
+required CI must cover the actually integrated final state.
+
+Package-boundary tests preserve another distinction. Selecting only Physics in
+the repository keeps Mathematics definitions installed. The current legacy
+Physics subject export declares its foreign references and passes its finished
+validator, but is explicitly not an installable runtime package. Actual runtime
+installation rejects it. Full standalone Physics and an actual canonical
+Mathematics+Physics package installation remain unsupported/unproven; generic
+multi-package fixture tests do not establish that combination. The package audit
+now has an additive replay for the current forty-edge integrated data: 196
+actual inputs, all 69 Physics views, forty canonical prerequisite declarations
+and 129 view-only declarations pass the production collector, consumer and
+unchanged package-contract checks. Unknown references, absent Mathematics and
+wrong-view/target use fail as required. The earlier replay failure is retained:
+its old assumption conflated view-only declarations with canonical edges. No
+product code or gate changed. This is not a new finished ZIP or runtime
+installation acceptance. No publication or deployment is part of this Goal.
 
 The machine configuration is
 [`math-physics.config.json`](https://github.com/enpasos/skillpilot/blob/main/curricula/quality/cross-subject-requires/math-physics.config.json).
@@ -113,7 +901,13 @@ inventory but do not become ordinary curricular goals. The historical broader in
 unclassified role for other families. New review decisions start `pending`. Authored candidates, independently accepted decisions, and
 open granularity/source/scope problems must remain distinguishable.
 
-## Verified first adoption and outstanding work
+## Preserved adoption and review history
+
+The following records describe their exact earlier source states, including
+then-current counts, gaps and test outcomes. The current checkpoint above and
+its linked evidence supersede their status statements. The complete preceding
+document is also preserved byte-exact under
+`curricula/quality/cross-subject-requires/2026-10-13/checkpoint-history/math-physics-cross-subject-requires.before-current-1259-status-20261014-v1.md`.
 
 The first adoption adds 11 Mathematics prerequisites to 10 canonical Physics
 atoms. The exact before/after inputs, substantive independent decisions, native
@@ -364,6 +1158,16 @@ drift is reported as visible warning debt by the graph gate and remains an
 explicit inventory conflict; it does not obtain approval from that warning.
 The baseline contains 19 such Mannheim graph-definition warnings.
 
+Runtime readiness checks those declared and inherited prerequisites, rather
+than adding every forward-reachable ancestor as another requirement. The current
+regression `manualOrImportedDependentMasteryDoesNotCreateTransitiveMasteryOrRequirements`
+keeps a target ready when its direct intermediate goal is mastered and that
+intermediate's own prerequisite remains unassessed. Adding the deeper goal as a
+direct prerequisite blocks the target. Thus a topologically overlapping direct
+edge can still be an intentional arithmetic guard; removing it changes behavior
+and needs an explicit didactic decision. The uniform-motion candidate retains
+its guard while this direct-set minimality question remains pending.
+
 Proposal graph validation uses the same complete reference universe as the
 global graph gate, including retained compatibility definitions needed by live
 overview references. Those definitions are not added to the active review
@@ -474,6 +1278,5 @@ frontier, prerequisite-only lookup and scoped learning behavior. A stage is
 closed only when its complete Gymnasium goal universe has
 current reviewed decisions, relevant conflict/gap records are resolved, the
 accepted graph matches the decisions, global direct/effective DAG checks pass,
-and required runtime and curriculum-quality checks pass. Publication and deployment require separate authorization. The owner
-authorized the GitHub interim branch/draft PR described above; merging,
-deployment and release publication remain separate operations.
+and required runtime and curriculum-quality checks pass. No publication or
+deployment is authorized by this workflow.

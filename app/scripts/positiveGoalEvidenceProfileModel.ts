@@ -156,14 +156,18 @@ export function validatePositiveGoalEvidenceRecordSemantics(
     errors.push(`${record.goalId}: stale goalFingerprint; expected ${expectedGoalFingerprint}`)
   }
 
-  const expectedReviewInputFingerprint = fingerprintPositiveGoalEvidenceReviewInput(
-    goal,
-    record.reviewCriteriaFingerprint,
-    resourceDigests,
-    effectiveSemanticKind,
-  )
-  if (record.reviewInputFingerprint !== expectedReviewInputFingerprint) {
-    errors.push(`${record.goalId}: stale reviewInputFingerprint; expected ${expectedReviewInputFingerprint}`)
+  try {
+    const expectedReviewInputFingerprint = fingerprintPositiveGoalEvidenceReviewInput(
+      goal,
+      record.reviewCriteriaFingerprint,
+      resourceDigests,
+      effectiveSemanticKind,
+    )
+    if (record.reviewInputFingerprint !== expectedReviewInputFingerprint) {
+      errors.push(`${record.goalId}: stale reviewInputFingerprint; expected ${expectedReviewInputFingerprint}`)
+    }
+  } catch (error) {
+    errors.push(`${record.goalId}: invalid required task-material binding: ${error instanceof Error ? error.message : String(error)}`)
   }
 
   const expectedProfileFingerprint = fingerprintPositiveGoalEvidenceProfile(record.profile)

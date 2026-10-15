@@ -1,0 +1,27 @@
+
+> skillpilot@0.0.0 check:terminology
+> tsx scripts/checkTerminology.ts
+
+Terminology check failed: 6 retired term(s) found.
+
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-working-state-inactive-github-checkpoint-root-20261014-v1/checks/terminology-historical-three.eligibility.actual.json:14:17: "goal graph" [TRM-005]
+  use instead: skill graph / Skill-Graph
+  why: The formal specification and the product describe the same object.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-working-state-inactive-github-checkpoint-root-20261014-v1/checks/terminology-historical-three.eligibility.actual.json:22:17: "Lernlandschaft" [TRM-001]
+  use instead: skill landscape / Skill-Landschaft
+  why: The target is skills, not the learning process and not knowledge.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-working-state-inactive-github-checkpoint-root-20261014-v1/checks/terminology-historical-three.eligibility.actual.json:30:17: "Learning landscape" [TRM-001]
+  use instead: skill landscape / Skill-Landschaft
+  why: The target is skills, not the learning process and not knowledge.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-working-state-inactive-github-checkpoint-root-20261014-v1/checks/terminology.actual.txt:7:144: "goal graph" [TRM-005]
+  use instead: skill graph / Skill-Graph
+  why: The formal specification and the product describe the same object.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-working-state-inactive-github-checkpoint-root-20261014-v1/checks/terminology.actual.txt:10:206: "Lernlandschaft" [TRM-001]
+  use instead: skill landscape / Skill-Landschaft
+  why: The target is skills, not the learning process and not knowledge.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-working-state-inactive-github-checkpoint-root-20261014-v1/checks/terminology.actual.txt:13:206: "Learning landscape" [TRM-001]
+  use instead: skill landscape / Skill-Landschaft
+  why: The target is skills, not the learning process and not knowledge.
+
+Definitions: docs/concept/glossary.md
+Rules and scope policy: app/scripts/checkTerminology.ts

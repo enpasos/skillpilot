@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.skillpilot.backend.curriculumpackage.PackageCurriculumDomainState;
 import com.skillpilot.backend.util.BundeslandCodeNormalizer;
+import com.skillpilot.backend.util.ApplicabilityContexts;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -305,7 +306,7 @@ public class LandscapeService {
                 gc.setRequires(g.getRequires());
                 gc.setContains(g.getContains());
                 gc.setExamples(g.getExamples());
-                gc.setApplicability(packageBacked
+                gc.setApplicability(ApplicabilityContexts.isPresent(g) ? null : packageBacked
                         ? g.getApplicability()
                         : mergeApplicability(
                                 resolveGoalApplicability(g),
@@ -753,6 +754,7 @@ public class LandscapeService {
                     }
 
                     SkillLandscape landscape = objectMapper.treeToValue(root, SkillLandscape.class);
+                    if (landscape.getGoals() != null) landscape.getGoals().forEach(ApplicabilityContexts::validate);
                     if (!StringUtils.hasText(landscape.getLandscapeId())) {
                         log.warn("Skipping landscape without id: {}", file);
                         continue;

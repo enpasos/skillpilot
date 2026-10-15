@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "runs": [
+    {
+      "label": "A5",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/config/A5.genuine-independent-a.config.json"
+      ],
+      "startedAtUTC": "2026-10-14T02:40:55.715926+00:00",
+      "endedAtUTC": "2026-10-14T02:40:56.057012+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/checks/A5.actual.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/checks/A5.actual.stderr.txt"
+    },
+    {
+      "label": "M5",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/config/M5.genuine-independent-a.config.json"
+      ],
+      "startedAtUTC": "2026-10-14T02:40:56.057388+00:00",
+      "endedAtUTC": "2026-10-14T02:40:56.402802+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/checks/M5.actual.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/checks/M5.actual.stderr.txt"
+    },
+    {
+      "label": "P5-normal-selection-held",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/config/P5.genuine-independent-a.NORMAL-SELECTION-HOLD-missing-kind-authority.config.json"
+      ],
+      "startedAtUTC": "2026-10-14T02:40:56.403222+00:00",
+      "endedAtUTC": "2026-10-14T02:40:56.931094+00:00",
+      "exitCode": 1,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/checks/P5-normal-selection-held.actual.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-a-20261014-v1/checks/P5-normal-selection-held.actual.stderr.txt"
+    }
+  ],
+  "normalPSelectionExpectedHeld": "No current authoritative semantic classifications were fabricated; low-level P schemas/fingerprints are separate.",
+  "newSourceOrD_V_humanApproval": false
+}

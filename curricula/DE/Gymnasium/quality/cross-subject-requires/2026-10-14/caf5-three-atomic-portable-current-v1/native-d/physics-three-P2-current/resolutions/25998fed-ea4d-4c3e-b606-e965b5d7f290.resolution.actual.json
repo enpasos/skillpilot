@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "root-p2-keep-25998fed-ea4d-4c3e-b606-e965b5d7f290",
+  "goal": {
+    "goalId": "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7d4102629d3772ec4d015a7cbc0a2b5c0dc4ac0f5663e05cdfc9636f6f92c17e",
+    "pageFingerprint": "sha256:0a8e8a6700547422df616f27c17b847c78413a33d02462c5e2c59df95714f559",
+    "goalReviewContextFingerprint": "sha256:71715510c0d0d31267d9e6eb6b4200b20231dcd49fdccecc516cc3d3fcd9db38",
+    "finalText": {
+      "titleDe": "Ladungserhaltung erläutern",
+      "titleEn": "Explain Conservation of Electric Charge",
+      "descriptionDe": "Die lernende Person kann elektrische Ladung als Erhaltungsgröße beschreiben und Ladungsumverteilungen in abgeschlossenen Systemen fachlich deuten.",
+      "descriptionEn": "The learner can describe electric charge as a conserved quantity and interpret charge redistribution in closed systems."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-three-p2-neutral-input-a-20261014-v1",
+      "campaignDigest": "sha256:53464094c5bcf95b246614d186fcbbf324528c7562407003df4fb106c22fb84b",
+      "roundId": "first-pass-a",
+      "independenceGroupId": "unperformed-three-atomic-p2-current-a",
+      "reviewInputFingerprint": "sha256:73ad61412e415f8093f03d53eb2593f568f6d13c8d4019914809beecc01a8335",
+      "goalReviewContextFingerprint": "sha256:71715510c0d0d31267d9e6eb6b4200b20231dcd49fdccecc516cc3d3fcd9db38",
+      "batchId": "first-pass-a.batch-001",
+      "runId": "three-atomic-p2-fresh-d-a-20261014-v1",
+      "runManifestDigest": "sha256:6a54fa5aea83d1e1fbbba783c59408b1e0fdbb3d881aec7b4fa29d541454be61",
+      "resultsDigest": "sha256:b53dd363b0d9f93a6fab82f2db2df1ddccbf3efe668be710386a46b217a2bdf5",
+      "recordId": "three-atomic-p2-fresh-d-a-20261014-v1.goal-1",
+      "recordDigest": "sha256:49812bae190c878d1651b224d04ed06087fc136a7302e4b43ffc20a89b61af8b"
+    },
+    "second": {
+      "campaignId": "physics-three-p2-fresh-d-b-20261014-v1",
+      "campaignDigest": "sha256:97b6853da814da1c175d746ce0f110e0a48796de9fb4e52d49a7ea313d13bd39",
+      "roundId": "first-pass-b",
+      "independenceGroupId": "three-atomic-p2-fresh-d-b-20261014-v1",
+      "reviewInputFingerprint": "sha256:73ad61412e415f8093f03d53eb2593f568f6d13c8d4019914809beecc01a8335",
+      "goalReviewContextFingerprint": "sha256:71715510c0d0d31267d9e6eb6b4200b20231dcd49fdccecc516cc3d3fcd9db38",
+      "batchId": "first-pass-b.batch-001",
+      "runId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001",
+      "runManifestDigest": "sha256:2be0c5f97310e2ece916b77193ff6a7942ff81c10927d104967a540ac5ff5b27",
+      "resultsDigest": "sha256:d44c41023896ef2b87a8af344d974cfba6129ba9decc8826b09de6d419e1edfe",
+      "recordId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001.goal-1",
+      "recordDigest": "sha256:94575a48f90550202c7921df34ec527040e7006db1725d24523aab74e6a8396e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:155ff5806b4189c0a28682b08b0ae89114f3050ba814a2b7825f803d43cc0bc2"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "current-three-goals.synthesis-manifest.actual.json",
+    "manifestId": "root-p2-current-three-D-keep-synthesis-manifest-20261014-v1",
+    "manifestDigest": "sha256:a4a6c652f9628cdbb922376f8e41ef2c907885dc7ccfb098b331f01aa7f5b68d",
+    "manifestFingerprint": "sha256:83d358ce9fa6c8b7cb0e1d26ce06dbaa57e91d6ea5d10a6d44b95f19812231db",
+    "decisionId": "root-p2-current-keep-25998fed-ea4d-4c3e-b606-e965b5d7f290"
+  },
+  "synthesis": {
+    "synthesisId": "root-p2-current-keep-25998fed-ea4d-4c3e-b606-e965b5d7f290",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "/root, informed synthesis after exact sealed independent first-pass A/B; no independent third review or human attestation",
+    "synthesizedAt": "2026-10-14T20:18:34.063Z",
+    "rationaleDe": "Die Beschreibung nennt elektrische Ladung als Erhaltungsgröße, Umverteilung und das abgeschlossene System; das ist die konkrete Erhaltungsrelation dieses Ziels. B benennt dieselbe Relation genauer, weist aber keinen falschen oder zusätzlich beanspruchten Sachverhalt nach. Die algebraische Summe und ihre Systemgrenze werden im vollständigen P unabhängig geprüft. Eigene frische Kontrolle: Aus (-6,+2,+9) nC folgt Gesamtladung +5 nC, nach Umverteilung (+1,q,-3) nC also q=+7 nC; die Betragssummen sind verschieden und kein Erhaltungskriterium. Eine geladene Behälterwand oder Erdung verändert die Bilanz eines unvollständigen Teilsystems. A/B lösen auch die beiden vollständigen Pflichtfälle und grenzen offene Teilsysteme ab. Die ausführlichere Formel-/Grenzbeschreibung ist eine mögliche didaktische Erklärung, keine erforderliche Änderung der bereits korrekten knappen Kompetenzbeschreibung. B-Unterstanding bleibt als fachlicher Originalbefund erhalten. Keine universelle Quellengeltung, Humanfreigabe, Bildfreigabe oder Mastery wird hier bewiesen.",
+    "rationaleEn": "The description names electric charge as a conserved quantity, redistribution, and the closed system: the concrete conservation relation of this goal. B states the same relation more explicitly but identifies no false or additionally claimed content. The whole P independently assesses the algebraic total and its system boundary. Fresh own check: (-6,+2,+9) nC totals +5 nC, so redistribution to (+1,q,-3) nC gives q=+7 nC; magnitude sums differ and are not the conservation criterion. A charged enclosure wall or grounding changes an incompletely chosen subsystem balance. Both actors also solve the two literal required cases and distinguish open subsystems. A longer formula/boundary explanation is a useful teaching option rather than a necessary revision of the correct concise competence. B understanding remains preserved as original scientific evidence. This does not prove universal source scope, human or asset approval, or learner mastery.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die algebraische Gesamtladung eines gegenüber Ladungstransfer abgeschlossenen Systems bleibt bei einer Umverteilung unverändert; einzelne Körper können dabei Ladung über ihre Teilgrenzen gewinnen oder verlieren.",
+      "essentialUnderstandingEn": "The algebraic total charge of a system isolated against charge transfer is unchanged by redistribution; individual bodies may gain or lose charge through their subsystem boundaries.",
+      "observablePerformanceDe": "Legt in einem frischen Mehrkörperfall die Systemgrenze fest, bildet die vorzeichenrichtige Vorher-Nachher-Summe, bestimmt oder kontrolliert eine fehlende Teilladung und erklärt, warum geänderte Körperladungen keine Verletzung der Gesamterhaltung sind.",
+      "observablePerformanceEn": "For a fresh multi-body case, specifies the system boundary, forms the correctly signed before-and-after total, determines or checks a missing component charge, and explains why changing body charges do not violate total conservation.",
+      "transferExpectationDe": "Erklärt bei geänderter Ladungsvorzeichenverteilung oder Erdung, warum die Einzelkörperbilanz offen ist und wie die erweiterte Grenze einschließlich des beteiligten Umfelds dieselbe Erhaltung wieder sichtbar macht.",
+      "transferExpectationEn": "With a changed mixture of charge signs or grounding, explains why the individual-body balance is open and how an expanded boundary including the involved surroundings makes the same conservation visible."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-a139878f4a20a86f2b26b6801ea832005d91ab49548ab156854028f897d51601",
+        "source": "second",
+        "textDe": "Die zweite Runde schlug folgende Revision vor: „Die lernende Person kann erläutern, dass in einem elektrisch abgeschlossenen System die algebraische Gesamtladung erhalten bleibt, und Änderungen der Ladungen einzelner Körper als Ladungsumverteilung deuten.“ Die Synthese verwirft diesen Ersatztext ausdrücklich und behält den aktuellen kanonischen Wortlaut bei. Die Beschreibung nennt elektrische Ladung als Erhaltungsgröße, Umverteilung und das abgeschlossene System; das ist die konkrete Erhaltungsrelation dieses Ziels. B benennt dieselbe Relation genauer, weist aber keinen falschen oder zusätzlich beanspruchten Sachverhalt nach. Die algebraische Summe und ihre Systemgrenze werden im vollständigen P unabhängig geprüft. Eigene frische Kontrolle: Aus (-6,+2,+9) nC folgt Gesamtladung +5 nC, nach Umverteilung (+1,q,-3) nC also q=+7 nC; die Betragssummen sind verschieden und kein Erhaltungskriterium. Eine geladene Behälterwand oder Erdung verändert die Bilanz eines unvollständigen Teilsystems. A/B lösen auch die beiden vollständigen Pflichtfälle und grenzen offene Teilsysteme ab. Die ausführlichere Formel-/Grenzbeschreibung ist eine mögliche didaktische Erklärung, keine erforderliche Änderung der bereits korrekten knappen Kompetenzbeschreibung. B-Unterstanding bleibt als fachlicher Originalbefund erhalten. Keine universelle Quellengeltung, Humanfreigabe, Bildfreigabe oder Mastery wird hier bewiesen.",
+        "textEn": "The second round proposed this revision: “The learner can explain that the algebraic total charge remains conserved in a charge-isolated system and interpret changes in individual bodies' charges as charge redistribution.” The synthesis explicitly rejects that replacement text and retains the current canonical wording. The description names electric charge as a conserved quantity, redistribution, and the closed system: the concrete conservation relation of this goal. B states the same relation more explicitly but identifies no false or additionally claimed content. The whole P independently assesses the algebraic total and its system boundary. Fresh own check: (-6,+2,+9) nC totals +5 nC, so redistribution to (+1,q,-3) nC gives q=+7 nC; magnitude sums differ and are not the conservation criterion. A charged enclosure wall or grounding changes an incompletely chosen subsystem balance. Both actors also solve the two literal required cases and distinguish open subsystems. A longer formula/boundary explanation is a useful teaching option rather than a necessary revision of the correct concise competence. B understanding remains preserved as original scientific evidence. This does not prove universal source scope, human or asset approval, or learner mastery.",
+        "disposition": "rejected_revision_evidence_accepted"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:19caee0ee5d4892f7965a7c74b83d975cc4026fbbe6cb0bc0733b55e8bdc3398"
+}

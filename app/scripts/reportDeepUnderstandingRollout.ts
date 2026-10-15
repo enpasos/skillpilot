@@ -1549,6 +1549,7 @@ const loadEvidenceReadyGoals = (
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   issues: string[],
+  observer?: (configPath: string, config: PositiveGoalEvidenceReviewConfig, record: ReturnType<typeof reviewPositiveGoalEvidenceConfig>['records'][number]) => void,
 ): Set<string> => {
   const validatedByConfig = new Map<string, Set<string>>()
   const ownerByGoalId = new Map<string, string>()
@@ -1604,7 +1605,7 @@ const loadEvidenceReadyGoals = (
         (record.status === 'needs_human_review' && record.reviewAuthority === 'ai_candidate')
         || (record.status === 'approved' && record.reviewAuthority === 'human')
       )
-      if (acceptedCandidate) configReady.add(record.goalId)
+      if (acceptedCandidate) { configReady.add(record.goalId); observer?.(configPath, evidenceConfig, record) }
     })
     validatedByConfig.set(configPath, configReady)
   }
@@ -1639,10 +1640,12 @@ export const loadDeepUnderstandingRolloutConfig = (
 
 export const generateDeepUnderstandingRollout = async (
   configuredPath = defaultConfigPath,
+  positiveEvidenceObserver?: Parameters<typeof loadEvidenceReadyGoals>[3],
+  subjectIds?: ReadonlySet<string>,
 ): Promise<DeepUnderstandingRolloutReport> => {
   const config = loadDeepUnderstandingRolloutConfig(configuredPath)
   const subjects: DeepUnderstandingSubjectReport[] = []
-  for (const subjectConfig of config.subjects) {
+  for (const subjectConfig of config.subjects.filter(subject => !subjectIds || subjectIds.has(subject.subject))) {
     const scope = loadAuthoritativeScope(subjectConfig)
     const descriptionIssues: string[] = []
     const evidenceIssues: string[] = []
@@ -1656,7 +1659,7 @@ export const generateDeepUnderstandingRollout = async (
       Promise.resolve(loadMemoryReadyGoals(subjectConfig, scope, memoryIssues)),
       Promise.resolve(loadVisualizationReadyGoals(subjectConfig, scope, visualizationIssues, deferredVisualizationGoalIds)),
     ])
-    const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues)
+    const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues, positiveEvidenceObserver)
     const strictCompleteGoalIds = scope.denominator === null
       ? []
       : intersectStrictGoalGates(scope.atomicGoalIds, [

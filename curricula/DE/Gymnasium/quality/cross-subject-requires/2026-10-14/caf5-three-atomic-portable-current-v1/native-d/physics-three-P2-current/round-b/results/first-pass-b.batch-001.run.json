@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001",
+  "campaignId": "physics-three-p2-fresh-d-b-20261014-v1",
+  "roundId": "first-pass-b",
+  "batchId": "first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:79d443e65b252c1a43a741cda6374103ebfcc5801bd8dffb0746423cd9c4272d",
+  "bundleFingerprint": "sha256:23259eb374c6fe132ffaf38efbd1b359bc512114cd9869771bb99cc4f970abde",
+  "bookDigest": "sha256:9169de69309af61e05ca97ca0d0640b30a862e8309626df2f0e8802d3ca17fb6",
+  "provider": "OpenAI/Codex session attribution; serving runtime metadata unexposed",
+  "model": "gpt-6.1-sol requested configuration; actual serving identifier unexposed",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:6203b3b7569ea18de67e7247e5ba0bb86e7c75a9f91032e4376b4265a2b04915",
+  "independenceGroupId": "three-atomic-p2-fresh-d-b-20261014-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+    "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:31dfc2c80734ce85b8da083a7acb0917fb1d99e9c99ad7fe6261aad431831300"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:f30e1ec42190091681bb07bafebbd8996414146919c4ed78524b8f9e1808738b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:79d443e65b252c1a43a741cda6374103ebfcc5801bd8dffb0746423cd9c4272d"
+    }
+  ],
+  "startedAt": "2026-10-14T19:34:39.642159+00:00",
+  "completedAt": "2026-10-14T19:42:17.996135+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:d44c41023896ef2b87a8af344d974cfba6129ba9decc8826b09de6d419e1edfe",
+  "toolchainVersion": "isolated-native-v3-node20.20.2-tsx"
+}

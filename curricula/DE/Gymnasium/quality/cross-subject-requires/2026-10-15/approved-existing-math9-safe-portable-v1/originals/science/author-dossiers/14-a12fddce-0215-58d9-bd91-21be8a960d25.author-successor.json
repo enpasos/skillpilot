@@ -1,0 +1,603 @@
+{
+  "position": 14,
+  "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+  "title": "Zerfallsgesetze anwenden",
+  "role": "INFORMED_SUCCESSOR_AUTHOR",
+  "priorSelectedDecisionPreserved": {
+    "role": "unresolved97-whole-body-successor-peer",
+    "decisionId": "informed97-author-004-a12fddce-0215-58d9-bd91-21be8a960d25",
+    "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "authorPath": "tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-004-final-v1/native-proposal",
+    "authorSha256": "sha256:f45d863aaa95aca11054d398567521e1870c3873b8afc3bfcb3da21d33e2ac2c",
+    "reviewPath": "tmp/cross-subject-requires/physics-unresolved97-fourth20-informed-independent-requires-review-20261014-v1/native-independent-requires-review.inert.json",
+    "reviewSha256": "sha256:a4344e6b5d74ef529b86d2a214b626933cb4dee3059336e7aed6894b8f060165",
+    "reviewRecordIndex": 2,
+    "independentScientificVerdict": "pending",
+    "requiresDecision": "review_required",
+    "proposedForeignPrerequisiteIds": [],
+    "originalReviewInput": {
+      "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+      "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+      "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+    },
+    "currentMatchesBaseline": true,
+    "currentMatchesProposed": true,
+    "technicallyCurrentApprovedBinding": false,
+    "technicalErrors": [],
+    "nativeQualityOrAdoptionApprovalCreated": false
+  },
+  "currentGoalWhole": {
+    "id": "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "title": "Zerfallsgesetze anwenden",
+    "titleEn": "Apply Decay Laws",
+    "description": "Die lernende Person kann mit einem einfachen exponentiellen Zerfallsgesetz die zeitliche Abnahme einer radioaktiven Substanz oder ihrer Aktivität bestimmen und die Halbwertszeit im Sachkontext interpretieren.",
+    "descriptionEn": "The learner can use a simple exponential decay law to determine the decrease of a radioactive substance or its activity over time and interpret the half-life in context.",
+    "weight": 1.15,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "Q4"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "title": "Visualisierung: Zerfallsgesetze anwenden",
+        "url": "/assets/goal-visualizations/physik/a12fddce-0215-58d9-bd91-21be8a960d25/a12fddce-0215-58d9-bd91-21be8a960d25.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation",
+        "description": "Visualisierung zum Lernziel: Zerfallsgesetze anwenden.",
+        "altText": "Formel und Zahlenkarten zeigen das exponentielle Zerfallsgesetz mit N null, N null halb, viertel und achtel sowie das Beispiel 100, 50 und 25 Milligramm.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "currentPositiveWhole": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "ensemble-exponential",
+        "essentialUnderstandingDe": "Bei einem einzelnen Isotop ohne Zu-/Abfuhr beschreibt N=N₀·2^(−t/T) die erwartete Restzahl; bei gleicher Zerfallskonstante nimmt A im gleichen Verhältnis ab. Die Halbwertszeit ist keine feste Lebensdauer jedes Kerns.",
+        "essentialUnderstandingEn": "For one isotope with no inflow/outflow N=N₀·2^(−t/T) describes the expected remaining population; activity falls in the same ratio for a fixed decay constant. Half-life is not each nucleus’s fixed lifetime.",
+        "observablePerformanceDe": "Wählt N oder A passend zur Frage, berechnet mit Zeiteinheiten und erklärt statistische Schwankungen gegenüber der Modellkurve.",
+        "observablePerformanceEn": "Selects N or A for the question, calculates with time units and explains statistical fluctuations around the model curve."
+      },
+      {
+        "id": "relative-not-absolute",
+        "essentialUnderstandingDe": "In gleichen Halbwertszeitintervallen halbiert sich der jeweils vorhandene Bestand; die absoluten Verluste werden kleiner. Eine Hintergrundzählrate ist nicht ohne Abzug die Aktivität des Isotops.",
+        "essentialUnderstandingEn": "Each half-life halves the population then present; absolute losses decrease. A background count rate is not the isotope’s activity without correction.",
+        "observablePerformanceDe": "Leitet eine Halbwertszeit oder Prognose aus neuen Daten ab und prüft, ob eine scheinbar fehlende Halbierung durch einen konstanten Hintergrund erklärbar ist.",
+        "observablePerformanceEn": "Infers a half-life or prediction from fresh data and checks whether constant background explains an apparent failure to halve."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "ensemble-exponential",
+        "relative-not-absolute"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "quantity",
+        "textDe": "Restbestand und Aktivität statt Tochterproduktion vergleichen.",
+        "textEn": "Compare remaining population and activity, not daughter production."
+      },
+      {
+        "id": "measurement",
+        "textDe": "Ideales Zerfallsmodell mit hintergrundbehafteten Zähldaten vergleichen.",
+        "textEn": "Compare ideal decay with count data including background."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "remaining-activity",
+        "taskDemandDe": "Eine isolierte Probe eines Isotops hat A₀=800 Bq und T=6 h. Prognostiziere A nach 18 h und skizziere den Verlauf mit den Werten nach 6 und 12 h. Prüfe: „In jedem 6-h-Intervall zerfallen gleich viele Kerne; nach 6 h ist jeder zweite bestimmte Kern sicher weg.“",
+        "taskDemandEn": "An isolated single-isotope sample has A₀=800 Bq, T=6 h. Predict A after 18 h and sketch the curve using values at 6 and 12 h. Assess: “Equal numbers decay in each 6-hour interval; after 6 hours every second specified nucleus is certainly gone.”",
+        "expectedPerformanceDe": "800→400→200→100 Bq; gleiche relative, nicht absolute Abnahme. Einzelschicksale sind zufällig, die Kurve beschreibt ein Ensemble. Bq bedeutet s⁻¹; die Halbwertszeit darf hier konsistent in Stunden ins Verhältnis t/T eingehen.",
+        "expectedPerformanceEn": "800→400→200→100 Bq; equal fractional, not absolute, decreases. Individual events are random and the curve describes an ensemble. Bq means s⁻¹; hours may consistently be used in t/T.",
+        "understandingFocusDe": "Exponentielle Abnahme mit physikalischer Interpretation statt bloßer Einsetzung.",
+        "understandingFocusEn": "Exponential decrease with physical meaning rather than substitution alone."
+      },
+      {
+        "id": "background-corrected-series",
+        "taskDemandDe": "Bei unveränderter Geometrie und Effizienz werden gemittelte Zählraten 110, 60, 35 min⁻¹ im Abstand von 4 h gemessen. Der separat bestimmte konstante Hintergrund ist 10 min⁻¹; statistische Fehler sind für diese gerundete Modellaufgabe vernachlässigbar. Bestimme T und die erwartete gesamte Zählrate nach weiteren 4 h. Erkläre, warum die Rohwerte nicht jeweils halbiert werden und warum Zählrate nicht ohne Effizienzangabe absolute Aktivität ist.",
+        "taskDemandEn": "With unchanged geometry/efficiency, mean count rates 110, 60, 35 min⁻¹ are measured 4 h apart. Separately measured constant background is 10 min⁻¹; statistical errors are negligible for this rounded model task. Infer T and total count rate after another 4 h. Explain why raw values do not halve and why count rate alone is not absolute activity without efficiency.",
+        "expectedPerformanceDe": "Korrigiert zu 100,50,25 min⁻¹; T=4 h. Nächstes Probensignal 12,5, insgesamt 22,5 min⁻¹. Hintergrund bleibt bestehen; unvollständige Nachweise verlangen einen Effizienzfaktor für Aktivität. Keine Tochterkettenrechnung eingeführt.",
+        "expectedPerformanceEn": "Corrects to 100,50,25 min⁻¹; T=4 h. Next sample signal 12.5, total 22.5 min⁻¹. Background persists; incomplete detection requires an efficiency factor to infer activity. No daughter-chain calculation.",
+        "understandingFocusDe": "Eigenständige Modellprüfung mit verändertem Messbezug.",
+        "understandingFocusEn": "Independent model checking with a changed measurement basis."
+      }
+    ]
+  },
+  "currentPositiveOwner": {
+    "config": {
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/positive/retained-owner-02.config.json",
+      "bytes": 1902,
+      "sha256": "sha256:44e07634ee45992f11e2ecda588749cf7efbc9df0e9e591232ebdcccf807ef13"
+    },
+    "recordFile": {
+      "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/positive/retained-owner-02.review.jsonl",
+      "bytes": 151933,
+      "sha256": "sha256:8de59e0cfdc49443fc64a0303aeb6ccd85335eb59d8f18c688e6dc434a2b4ff5"
+    },
+    "recordLine": 7,
+    "recordLineSha256": "sha256:2ff63642265415ea4b6687434e4573b031d98da37ebfa5a040611c648ce96694",
+    "profileFingerprint": "sha256:4a8a3b664ba7cdbfbb9683015ea33b2278cbc5b81d10e18b84cb74fb72d04f7d",
+    "goalFingerprint": "sha256:274b12c77c1772bd09b16c12307ecad61b415709316518afbc17d712a27b80a9",
+    "reviewInputFingerprint": "sha256:9efe3ee0dfd6f799b996b3065f5d57fb0f8033ed3ec85f4dbcdbea6ef2936e29",
+    "profileStatus": "needs_human_review",
+    "reviewAuthority": "ai_candidate"
+  },
+  "wholeReader": {
+    "path": "tmp/cross-subject-requires/remaining18-whole-science-author-20261014-v1/readings/14-a12fddce-0215-58d9-bd91-21be8a960d25.current-whole.json",
+    "bytes": 24416,
+    "sha256": "sha256:e55aa3c02591c3ce8554a29852db4c556616b683dc846742362c0da30877f633"
+  },
+  "sourceReader": {
+    "path": "tmp/cross-subject-requires/remaining18-whole-science-author-20261014-v1/sources/14-a12fddce-0215-58d9-bd91-21be8a960d25.current-source.json",
+    "bytes": 135845,
+    "sha256": "sha256:ccbdce50d4c292e504025fc231732f9be9457710449aa8ba7b47952637d595c5"
+  },
+  "wholeNominees": [
+    {
+      "goalId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "wholeGoal": {
+        "id": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "shortKey": "canonical_math_add_and_subtract_rational_numbers",
+        "title": "Rationale Zahlen addieren und subtrahieren",
+        "titleEn": "Add and subtract rational numbers",
+        "description": "Die lernende Person kann nicht ganze rationale Zahlen, insbesondere Brüche und Dezimalzahlen, wertgleich in eine für Addition oder Subtraktion geeignete Darstellung überführen, Additionen und Subtraktionen sicher ausführen, dabei Rechenvorteile nutzen und Ergebnisse durch Überschlag plausibilisieren.",
+        "descriptionEn": "The learner can transform non-integer rational numbers, especially fractions and decimals, into an equivalent representation suitable for addition or subtraction, carry out additions and subtractions reliably, use advantageous calculation structures, and check results for plausibility by estimation.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K3.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J6",
+          "area": "Arithmetic",
+          "topicCode": "CANONICAL.MATH.SEK1.J6.1E"
+        },
+        "contains": [],
+        "requires": [
+          "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+          "a4c2b831-02f0-5d55-a300-7823a71352c4",
+          "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+            "title": "Visualisierung: Rationale Zahlen addieren und subtrahieren",
+            "url": "/assets/goal-visualizations/mathematik/4eeab7d5-eeb3-579b-845e-1c52ffe9e89f/4eeab7d5-eeb3-579b-845e-1c52ffe9e89f.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Rationale Zahlen addieren und subtrahieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Rationale Zahlen addieren und subtrahieren\". Die lernende Person kann nicht ganze rationale Zahlen, insbesondere Brüche und Dezimalzahlen, wertgleich in eine für Addition oder Subtraktion geeignete Darstellung überführen, Additionen und Subtraktionen sicher ausführen, dabei Rechenvorteile nutzen und Ergebnisse durch Überschlag plausibilisieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ],
+        "semanticAtomic": true
+      },
+      "wholePositiveProfile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "choose-compatible-equivalent-forms",
+            "essentialUnderstandingDe": "Nicht ganze rationale Zahlen lassen sich als Brüche oder Dezimalzahlen wertgleich darstellen; für Addition oder Subtraktion müssen die Anteile durch gemeinsame Nenner oder die Dezimalwerte durch gleiche Stellenwerte kompatibel gemacht werden.",
+            "essentialUnderstandingEn": "Non-integer rational numbers can be represented equivalently as fractions or decimals; for addition or subtraction, the parts must be made compatible through common denominators or the decimal values through aligned place values.",
+            "observablePerformanceDe": "Die lernende Person wählt für einen neuen gemischten Term eine geeignete gemeinsame Darstellung, begründet deren Wertgleichheit und führt die Operation exakt aus.",
+            "observablePerformanceEn": "For a new mixed expression, the learner chooses a suitable common representation, justifies its equivalence, and carries out the operation exactly."
+          },
+          {
+            "id": "advantage-and-estimate-check",
+            "essentialUnderstandingDe": "Zulässiges Bündeln und Ergänzen kann eine Rechnung vereinfachen, ohne die Werte zu ändern; ein vorheriger Überschlag legt Größenordnung und häufig auch Vorzeichen fest und dient als unabhängige Plausibilitätskontrolle.",
+            "essentialUnderstandingEn": "Valid grouping and completing can simplify a calculation without changing values; a prior estimate establishes magnitude and often sign and serves as an independent plausibility check.",
+            "observablePerformanceDe": "Die lernende Person benennt und nutzt einen konkreten Rechenvorteil, schätzt das Ergebnis vorab und weist ein exaktes Scheinergebnis zurück, das der Schätzung widerspricht.",
+            "observablePerformanceEn": "The learner identifies and uses a specific computational advantage, estimates the result in advance, and rejects an apparently exact result that contradicts the estimate."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "choose-compatible-equivalent-forms",
+            "advantage-and-estimate-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-mix",
+            "textDe": "Nur Brüche, nur Dezimalzahlen oder eine Mischung beider wertgleicher Formen",
+            "textEn": "Fractions only, decimals only, or a mixture of both equivalent forms"
+          },
+          {
+            "id": "operation-sign",
+            "textDe": "Addition mit geschickter Ergänzung oder Subtraktion mit kleinem positiven beziehungsweise negativem Ergebnis",
+            "textEn": "Addition using convenient completion or subtraction with a small positive or negative result"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "mixed-advantage",
+            "taskDemandDe": "1,75−2/3+0,25 ist exakt zu bestimmen; Darstellungswahl, Rechenvorteil und Überschlag sind zu begründen.",
+            "taskDemandEn": "Determine 1.75−2/3+0.25 exactly; justify representation choice, computational advantage, and estimate.",
+            "expectedPerformanceDe": "Die lernende Person bündelt 1,75+0,25 zu 2, rechnet 2−2/3=4/3 und bestätigt durch Überschlag einen Wert etwas über 1.",
+            "expectedPerformanceEn": "The learner groups 1.75+0.25 to make 2, calculates 2−2/3=4/3, and confirms by estimation a value slightly above 1.",
+            "understandingFocusDe": "Wertgleicher Wechsel, Strukturvorteil und Plausibilität werden gemeinsam sichtbar.",
+            "understandingFocusEn": "Equivalent conversion, structural advantage, and plausibility become visible together."
+          },
+          {
+            "id": "small-signed-result",
+            "taskDemandDe": "−0,6+5/8 ist zu berechnen; vor der exakten Rechnung ist das Vorzeichen abzuschätzen und die Ergebnisse −1,225 und 0,025 sind zu beurteilen.",
+            "taskDemandEn": "Calculate −0.6+5/8; estimate the sign before exact calculation and assess the results −1.225 and 0.025.",
+            "expectedPerformanceDe": "Die lernende Person erkennt zwei fast gleich große entgegengesetzte Werte, wandelt 5/8=0,625 um, erhält 0,025 und verwirft −1,225 durch Vorzeichen- und Größenordnungsprüfung.",
+            "expectedPerformanceEn": "The learner recognizes two nearly equal opposite values, converts 5/8=0.625, obtains 0.025, and rejects −1.225 through sign and magnitude checks.",
+            "understandingFocusDe": "Der neue Vorzeichenfall verhindert rein mechanische Formumwandlung ohne Überschlagskontrolle.",
+            "understandingFocusEn": "The changed sign case prevents purely mechanical conversion without an estimation check."
+          }
+        ]
+      },
+      "positiveOwner": {
+        "config": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/m7-j5-units-source-bound-p-20260924-v1/retained-batch-002-unaffected-21.config.json",
+          "bytes": 2157,
+          "sha256": "sha256:51b9d4375df43fe4514b8829d9ffc8bcc77406b146bb520d47ac56cb3a5dca6f"
+        },
+        "recordFile": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/m7-j5-units-source-bound-p-20260924-v1/retained-batch-002-unaffected-21.review.jsonl",
+          "bytes": 122809,
+          "sha256": "sha256:95388cbbf3700f6e2335a6893807131baef956f2b7376c9d659a05fa217b5475"
+        },
+        "recordLine": 21,
+        "recordLineSha256": "sha256:5ed3e8aa1ad13166bf76bcd86d7efd3ceadd97e643db224b3fce7fa49eca2dfa",
+        "profileFingerprint": "sha256:0fa55487b0990b12509d314f057e152d5115b1524125d3ff86d6cb00485a3076",
+        "goalFingerprint": "sha256:f98fe0085f13b1db9a64df093a3f2b71c4de562eeb6eba2ba5d69c13d17284f5",
+        "reviewInputFingerprint": "sha256:a128f94b09fcbbe5982bf72250c7a12b5d445c4845d1fa98639e4118917d14ca",
+        "profileStatus": "needs_human_review",
+        "reviewAuthority": "ai_candidate"
+      },
+      "currentNativeOccurrence": {
+        "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "selected": true,
+        "definitionSha256": "sha256:69695720e3528b5ee8155f9977dc7b32fdab08336396625a8c1489f70ccfef6a",
+        "semanticKind": "curricularAtomic",
+        "semanticKindBasis": {
+          "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+          "sourceFingerprint": "sha256:41da2f31d0ac50964f6e885e001a27fb7da6bbcfe4b311c5683ebaa82fa21fce"
+        },
+        "technicalRole": "leaf",
+        "title": "Rationale Zahlen addieren und subtrahieren",
+        "directRequires": [
+          "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+          "a4c2b831-02f0-5d55-a300-7823a71352c4",
+          "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+        ],
+        "effectiveRequiresRef": "sha256:5b707b1c89393957c507ff3b292ff283fcbb0efce707fdd642a21aa6ddbea0b6",
+        "prerequisiteOriginsRef": "sha256:cf66d6fa6a5111436ecfa747f7765cb093ab2e32a76e631e02d32f18a3bd9f77",
+        "prerequisiteContextStatus": "resolved",
+        "scope": {
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "placements": null,
+          "extendedData": {},
+          "provenanceRef": {
+            "path": "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+            "recordId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+            "locator": "landscapes[landscapeId=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced].goalProvenance[4eeab7d5-eeb3-579b-845e-1c52ffe9e89f]",
+            "recordSha256": "sha256:da2077b2bca2f07cc8ba175f1f468d8fd59bd4ea9f7fecb3ddbe312522a14434"
+          },
+          "sourceBindingFilesRef": "sha256:165cdee53c6c0322e7a4801d2c1fbecc7c32f0a3614feb1441d4d47a2980c507",
+          "sourceBindingRecordCount": 181,
+          "sourceBindingsSha256": "sha256:cd9fa75fdde57aa9903fe3e89781bb885865f05ca1037bd72d684ec05eb3fe4e"
+        },
+        "sourceRef": null,
+        "reviewInput": {
+          "semanticSha256": "sha256:9e52484b5c61e7960a054acf3e1a528c20be47dbeb56898dc22ee250302ce872",
+          "prerequisitesSha256": "sha256:257aecb468de90160ac09f615980d5e3b4343c8d063317f87cbff34529f8177a",
+          "scopeSha256": "sha256:bd08053bff439aeefbd76303971ce40413bd0c0c0c2f3ac0628b5c65eb81ee28"
+        }
+      }
+    }
+  ],
+  "wholeNecessaryMathematicalAssessment": "Das ganze 16b94-P besitzt bereits wiederholte exponentielle Halbierung, numerische Anteile, Zeitskalen einschließlich nichtganzzahliger Intervalle und Daten-/Kurvenbezug. Eine erneute ganze Exponentialmodell-/Logarithmuskante wäre für das einfache vorgegebene Zerfallsgesetz nicht notwendig. Das aktuelle Folge-P fügt jedoch die selbständige Hintergrundkorrektur und spätere Rückaddition bei allgemeinen Zählraten hinzu. Dafür ist 4eeab das engere all16-Atom für rationale Addition/Subtraktion mit Darstellungs-/Vorzeichen- und Größenordnungsprüfung. Effizienz und Messgeometrie sind physikalischer Modellbezug, keine mathematische Zusatzbarriere. Keine DGL- oder Tochterkettenrechnung wird erzwungen.",
+  "allRequiredExpectationIdsRetainedAndAssessed": [
+    "ensemble-exponential",
+    "relative-not-absolute"
+  ],
+  "literalCurrentPCase": {
+    "caseId": "background-corrected-series",
+    "ownSolvedWork": "Rohzählraten 110,60,35 min⁻¹ minus konstanter Hintergrund 10 min⁻¹ ergeben 100,50,25 min⁻¹; der Probenanteil halbiert sich je 4 h, also T=4 h. Weiteres Probensignal 12,5 min⁻¹ und gesamtes Signal 22,5 min⁻¹. Die Rohwerte halbieren sich nicht, weil der Hintergrund bleibt. Ohne Detektionseffizienz kann die Probenzählrate keine absolute Aktivität angeben. Im ersten Literalfall 800→400→200→100 Bq nach 0,6,12,18 h; absolute Verluste verschieden, einzelne Kerne nicht deterministisch festgelegt.",
+    "abstractCaseDataWereExplicitlyInstantiated": false,
+    "noEmpiricalOrHistoricalDataFabricated": true
+  },
+  "freshDiscriminatingCounterexampleOrTransfer": "Frisch: 0,96/0,56/0,36 min⁻¹ bei gleichen 2-h-Abständen und Hintergrund 0,16 min⁻¹ ergeben 0,80/0,40/0,20; nächste gesamte Rate 0,26 min⁻¹. Ein bloßes Halbieren des letzten Rohwerts ergibt 0,18 und ist falsch. Für den unverändert gegebenen Grundfall bei 9 h gilt A=800·2^(−9/6)≈282,8427 Bq; damit wird die nichtganzzahlige Zeitpflicht nicht auf wiederholte ganzzahlige Halbierung verengt.",
+  "currentDirectedPaths": {
+    "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "allDirectedPaths": {
+      "a12fddce-0215-58d9-bd91-21be8a960d25": [],
+      "16b94a12-ecc5-5b5c-85b6-87b4290bebf8": [
+        {
+          "from": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "to": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+          "kind": "effective_requires"
+        }
+      ],
+      "1593d95c-2aac-504c-8527-37cb61877da9": [
+        {
+          "from": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "to": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+          "to": "1593d95c-2aac-504c-8527-37cb61877da9",
+          "kind": "effective_requires"
+        }
+      ],
+      "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb": [
+        {
+          "from": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "to": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+          "to": "1593d95c-2aac-504c-8527-37cb61877da9",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "1593d95c-2aac-504c-8527-37cb61877da9",
+          "to": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+          "kind": "effective_requires"
+        }
+      ],
+      "5c44b9ba-9b05-4774-95d5-073230d3fc4f": [
+        {
+          "from": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "to": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+          "to": "1593d95c-2aac-504c-8527-37cb61877da9",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "1593d95c-2aac-504c-8527-37cb61877da9",
+          "to": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+          "to": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+          "kind": "effective_requires"
+        }
+      ]
+    },
+    "mathematicsPaths": {}
+  },
+  "sourceAndScopeJudgment": "HE Q4.3 benennt Zerfallsgesetze und Aktivitätsabnahme, NI 3.3 Atomkern auch Nullrate; BY GA.4 verlangt Daten/Software, EA.4 zusätzlich DGL. Letztere ist keine universelle Pflicht dieses Atoms. Die verwobenen TH-Kurs-/Formeltexte wurden nicht als eindeutiger Rechenvertrag behandelt.",
+  "sourceGateApprovalCreated": false,
+  "PReviewOrM7ApprovalCreated": false,
+  "independentRequiresApprovalCreated": false,
+  "canonicalOrQualityFilesWritten": false,
+  "noBackwardPrerequisiteMasteryInference": true,
+  "ownContentLicense": "CC-BY-4.0; SkillPilot attribution",
+  "technicalEvidenceLicense": "Apache-2.0",
+  "candidate": {
+    "decisionId": "remaining18-whole-author-v1-a12fddce-0215-58d9-bd91-21be8a960d25",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "dependentTitle": "Zerfallsgesetze anwenden",
+    "dependentDescription": "Die lernende Person kann mit einem einfachen exponentiellen Zerfallsgesetz die zeitliche Abnahme einer radioaktiven Substanz oder ihrer Aktivität bestimmen und die Halbwertszeit im Sachkontext interpretieren.",
+    "decision": "add",
+    "prerequisiteGoalIds": [
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f"
+    ],
+    "rationale": "Das ganze 16b94-P besitzt bereits wiederholte exponentielle Halbierung, numerische Anteile, Zeitskalen einschließlich nichtganzzahliger Intervalle und Daten-/Kurvenbezug. Eine erneute ganze Exponentialmodell-/Logarithmuskante wäre für das einfache vorgegebene Zerfallsgesetz nicht notwendig. Das aktuelle Folge-P fügt jedoch die selbständige Hintergrundkorrektur und spätere Rückaddition bei allgemeinen Zählraten hinzu. Dafür ist 4eeab das engere all16-Atom für rationale Addition/Subtraktion mit Darstellungs-/Vorzeichen- und Größenordnungsprüfung. Effizienz und Messgeometrie sind physikalischer Modellbezug, keine mathematische Zusatzbarriere. Keine DGL- oder Tochterkettenrechnung wird erzwungen.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "goals[id=a12fddce-0215-58d9-bd91-21be8a960d25] full unchanged Goal, active positive body separately bound",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/positive/retained-owner-02.review.jsonl",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "JSONL line 7; whole current profile",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "goals[id=a12fddce-0215-58d9-bd91-21be8a960d25].applicability; current authored scope only",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "locator": "goals[id=4eeab7d5-eeb3-579b-845e-1c52ffe9e89f] whole current Goal/P and native scope bound in nominee-whole-reader",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Universality is about the unchanged currently authored Goal/P and exact canonical applicability, not a new all-state source coverage verdict.",
+        "HE Q4.3 benennt Zerfallsgesetze und Aktivitätsabnahme, NI 3.3 Atomkern auch Nullrate; BY GA.4 verlangt Daten/Software, EA.4 zusätzlich DGL. Letztere ist keine universelle Pflicht dieses Atoms. Die verwobenen TH-Kurs-/Formeltexte wurden nicht als eindeutiger Rechenvertrag behandelt."
+      ]
+    },
+    "author": "/root/remaining18_whole_science_author (informed successor author; no independent authority)",
+    "status": "author_candidate_pending_independent_review"
+  }
+}

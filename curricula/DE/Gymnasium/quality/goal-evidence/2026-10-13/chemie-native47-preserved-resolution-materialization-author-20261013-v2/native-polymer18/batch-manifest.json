@@ -1,0 +1,71 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-native47-preserved-resolution-materialization-author-20261013-v2/configs/native-polymer18.batch.config.json",
+  "configDigest": "sha256:f810ce9c6a47f7dd5ae7b39a39b715fd2472b5b103dbf1816e5fee3f0e3c5e82",
+  "goalIds": [
+    "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+    "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+    "9b942490-ad8f-52ba-8c5a-f8a9792b7db5",
+    "8721d943-8368-5304-bd3c-7d7944099662",
+    "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+    "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+    "2652caef-b557-58b9-9b28-70db62625ce5",
+    "e47b22ec-4443-5aae-bf38-71e3164b6b3e",
+    "c21a611c-1069-5b32-b673-4f37a89b094f",
+    "2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2",
+    "e56040b5-1da8-5080-b358-086d04922339",
+    "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+    "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+    "73cbd4d8-5da1-5e54-85ce-c88e7b1613fe",
+    "14f1fe97-0585-5738-845e-9c49173d8afa",
+    "0278a515-8990-5a1c-8a1b-a03382a144a3",
+    "7f8c990a-c207-5b86-a60f-860af295c0a9",
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 402,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-current231-source-native-author-root-20261013-v1/configs/whole402.final-frozen.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-current231-source-native-author-root-20261013-v1/candidate/canonical523.current402.normalized-book.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:02d46809a4148c0a0c711c2802a13368382ef4d5add7b23ee8658fe9fcf752ae"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:162da273dc4def7a46a347198b49bf836c67bd12af37aa655c3c3e0c2d796f61",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:5934741e79c39eb71feb4fb6b45cbb4a3f52d99ba9bf2e54b1723a84cec35ff8",
+    "reviewInputFingerprint": "sha256:de027cba7b8a762af0a47e5ab69c5c0004b75a8409e3031cf22d75af8fc97ddb",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1-a",
+        "campaignDigest": "sha256:5fa91c8a5f8668298e35a3c8bfd1fc780b7362e00f80c343c468c8e9d2dd67bd",
+        "roundId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1-first-pass-a",
+        "independenceGroupId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1-independent-a",
+        "batchId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f891ee856a6638e74b06f90cc2dc28cf6f3a8f55240ca8d4dcb244debe662dd2"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1-b",
+        "campaignDigest": "sha256:d8cf2d0b3c46a6dd654e7f5228912de005d3d340650e73de0589b606a4f2cce5",
+        "roundId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1-first-pass-b",
+        "independenceGroupId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1-independent-b",
+        "batchId": "chemie-poly18-aro19-final-source-polymer18-20261013-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f3972f8a2c4210e6ef9c4e9d52addbdb21e17c2954a1b49a7a78c62e3f742b77"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

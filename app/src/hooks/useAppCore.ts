@@ -1,3 +1,4 @@
+import { combineSelectedCompositionDocuments, hasExplicitCompositionSupplements } from '../utils/compositionViewRuntime'
 import React, { useMemo, useCallback, useEffect } from 'react'
 import { useNavigate, useSearchParams, useLocation, matchPath } from 'react-router-dom'
 import type { UiGoal as Goal, ExternalRequirement } from '../goalTypes'
@@ -22,10 +23,12 @@ import {
   applyCompositionViewProjection,
   deriveRuntimeGoalPlacementFilters,
   deriveRuntimeCompositionScope,
+  deriveRuntimeApplicabilityScope,
+  goalMatchesResolvedCompositionView,
   selectCompositionManagedLandscapeIds,
   shouldApplyLearnerPlacementFallback,
 } from '../utils/compositionViewRuntime'
-import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
+import { collectCompositionProjectionRoleGoalIds, normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { useRuntimeCurriculumCatalog } from './useRuntimeCurriculumCatalog'
 import { shouldSyncRouteStateToUrl } from '../utils/rootRoutePolicy'
@@ -349,6 +352,7 @@ export function useAppCore({
     landscapeError: loadedLandscapeError,
   } = useLandscapes(selectedLandscapeId, language, {
     enabled: enabled && runtimeCatalogReady && !scopedCanonicalLearner,
+    packageV1: runtimeCatalogState.mode === 'package',
   })
   const {
     learnerScopedLandscapeEntries,
@@ -358,7 +362,7 @@ export function useAppCore({
     selectedLandscapeId,
     language,
     skillpilotId,
-    { enabled: enabled && role === 'learner' && runtimeCatalogReady, refreshToken: learnerGraphRefreshToken },
+    { enabled: enabled && role === 'learner' && runtimeCatalogReady, refreshToken: learnerGraphRefreshToken, packageV1: runtimeCatalogState.mode === 'package' },
   )
   const landscapeEntries = scopedCanonicalLearner ? learnerScopedLandscapeEntries : publicLandscapeEntries
   const learnerProfileKey = JSON.stringify([skillpilotId, learnerGraphRefreshToken])
@@ -582,6 +586,19 @@ export function useAppCore({
     return requests
   }, [activeFilter, selectedOfferingId, graphSourceLandscapeEntries, learnerPersonalCurriculum, runtimeCatalogState, selectedLandscapeId, role, loadingLearnerProfile, currentLearnerProfile?.error])
 
+  const runtimeApplicabilityScopesByLandscapeId = useMemo(() => new Map(graphSourceLandscapeEntries.map((entry) => [
+    entry.meta.landscapeId,
+    deriveRuntimeApplicabilityScope({
+      landscapeId: entry.meta.landscapeId,
+      activeLandscapeId: selectedLandscapeId,
+      rootLandscapeId: runtimeCatalogState.mode === 'package'
+        ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, entry.meta.landscapeId) : undefined,
+      scopeEnabled: runtimeCatalogState.mode === 'package' || isRepositoryGymnasiumFramework(entry.meta.frameworkId),
+      activeFilter,
+      learnerPersonalCurriculum,
+    }),
+  ] as const)), [activeFilter, graphSourceLandscapeEntries, learnerPersonalCurriculum, runtimeCatalogState, selectedLandscapeId])
+
   const compositionRequestKey = JSON.stringify([learnerProfileKey, [...runtimeCompositionRequests]])
 
   useEffect(() => {
@@ -612,6 +629,16 @@ export function useAppCore({
           }
           const data = await res.json()
           return [landscapeId, normalizeCompositionView(data)] as const
+        }
+        if (skillpilotId && landscapeId === '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+          && hasExplicitCompositionSupplements(learnerPersonalCurriculum)) {
+          const params = new URLSearchParams({ landscapeId })
+          const res = await fetch(`/api/ui/learners/${encodeURIComponent(skillpilotId)}/selected-composition-views?${params}`, { credentials: 'include', signal })
+          if (!res.ok) throw new Error(`Failed to load selected Mathematics preparation (${res.status})`)
+          const documents: unknown = await res.json()
+          if (!Array.isArray(documents)) throw new Error('Invalid selected Mathematics compositions')
+          const view = combineSelectedCompositionDocuments(documents)
+          return view ? [landscapeId, view] as const : null
         }
         const scope = request.scope
         if (!scope) return null
@@ -660,12 +687,33 @@ export function useAppCore({
       })
 
     return () => controller.abort()
-  }, [role, runtimeCatalogState, runtimeCompositionRequests, compositionRequestKey])
+  }, [role, runtimeCatalogState, runtimeCompositionRequests, compositionRequestKey, skillpilotId, learnerPersonalCurriculum])
 
   const effectiveMatchedCompositionViewsByLandscapeId = useMemo(
     () => matchedCompositionViewsByLandscapeId,
     [matchedCompositionViewsByLandscapeId],
   )
+
+  // Carry target membership and exact source-branch eligibility together.
+  // A shared root has independently matched child views; its combined course
+  // selectors must never be reinterpreted as one concrete applicability tuple.
+  const compositionTargetGoalIdsByLandscapeId = useMemo(() => {
+    const canonicalGoals = new Map(graphSourceLandscapeEntries.flatMap((entry) =>
+      entry.goals.map((goal) => [goal.id, goal] as const)))
+    const roots = new Map(graphSourceLandscapeEntries.flatMap((entry) => {
+      const root = entry.goals.find((goal) => goal.tags?.includes('root') && goal.contains.length > 0)
+      return root ? [[entry.meta.landscapeId, root.id] as const] : []
+    }))
+    return new Map(Object.entries(effectiveMatchedCompositionViewsByLandscapeId).map(([landscapeId, rawView]) => {
+      const view = normalizeCompositionView(rawView)
+      const scope = runtimeApplicabilityScopesByLandscapeId.get(landscapeId)
+      const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, canonicalGoals, roots)
+      return [landscapeId, new Set([...targetGoalIds].filter((id) => {
+        const goal = canonicalGoals.get(id)
+        return !!goal && goalMatchesResolvedCompositionView(goal, view, scope, canonicalGoals)
+      }))] as const
+    }))
+  }, [effectiveMatchedCompositionViewsByLandscapeId, graphSourceLandscapeEntries, runtimeApplicabilityScopesByLandscapeId])
 
   const projectedLandscapeEntries = useMemo(() => {
     const compositionManagedLandscapeIds = selectCompositionManagedLandscapeIds(
@@ -698,6 +746,7 @@ export function useAppCore({
           activeFilter,
           learnerPersonalCurriculum,
         }),
+        runtimeApplicabilityScopesByLandscapeId.get(entry.meta.landscapeId),
       )[0] ?? entry
     ))
     const projectedByLandscapeId = new Map<string, (typeof graphSourceLandscapeEntries)[number]>()
@@ -715,7 +764,10 @@ export function useAppCore({
       .filter((entry): entry is (typeof graphSourceLandscapeEntries)[number] => !!entry)
 
     const compositionProjectedEntries = Object.values(effectiveMatchedCompositionViewsByLandscapeId).reduce(
-      (currentEntries, view) => applyCompositionViewProjection(currentEntries, view),
+      (currentEntries, view) => {
+        const scope = runtimeApplicabilityScopesByLandscapeId.get(String(view.landscapeId))
+        return applyCompositionViewProjection(currentEntries, view, scope)
+      },
       orderedProjectedEntries,
     )
     if (role !== 'learner') {
@@ -733,6 +785,7 @@ export function useAppCore({
     role,
     runtimeCatalogState,
     runtimeCompositionRequests,
+    runtimeApplicabilityScopesByLandscapeId,
   ])
 
   const projectedCurrentLandscapeEntry = useMemo(() => {
@@ -820,9 +873,15 @@ export function useAppCore({
     && (matchedMathScope as Record<string, unknown>).jurisdiction === 'DE-BY'
   const matchesActiveFilter = useCallback(
     (goal: Goal) => {
-      return bavarianMathCompositionView || goalMatchesFilter(goal, activeFilter)
+      const completeScope = runtimeApplicabilityScopesByLandscapeId.get(goal.landscapeId ?? selectedLandscapeId)
+      const matchedView = effectiveMatchedCompositionViewsByLandscapeId[goal.landscapeId ?? selectedLandscapeId]
+      if (goal.extendedData?.applicabilityContexts && matchedView) {
+        return goalMatchesResolvedCompositionView(goal, matchedView, completeScope, goalIndexAll)
+      }
+      return (bavarianMathCompositionView && !goal.extendedData?.applicabilityContexts)
+        || goalMatchesFilter(goal, activeFilter, completeScope)
     },
-    [activeFilter, bavarianMathCompositionView],
+    [activeFilter, bavarianMathCompositionView, runtimeApplicabilityScopesByLandscapeId, selectedLandscapeId, effectiveMatchedCompositionViewsByLandscapeId, currentLandscapeEntry, goalIndexAll],
   )
   const filteredNeighbors = useMemo(
     () => ({
@@ -1029,6 +1088,8 @@ export function useAppCore({
   })
 
   return {
+    hasSelectedMathPreparation: role === 'learner'
+      && hasExplicitCompositionSupplements(learnerPersonalCurriculum),
     landscapeEntries,
     loadingLandscapes:
       runtimeCatalogState.mode === 'loading'
@@ -1052,6 +1113,7 @@ export function useAppCore({
     currentRouteGoalId: goalId ?? '',
     currentLandscapeEntry,
     currentLandscapeHasMatchedCompositionView,
+    compositionTargetGoalIdsByLandscapeId,
     activeFilter,
     setActiveFilter,
     handleFilterChange,

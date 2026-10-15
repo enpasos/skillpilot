@@ -740,7 +740,17 @@
         },
         "extendedData": {
           "type": "object",
-          "description": "Arbitrary extra data (e.g. SRS deck config)."
+          "description": "Arbitrary extra data (e.g. SRS deck config).",
+          "properties": {
+            "applicabilityContexts": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/applicabilityContext"
+              },
+              "description": "Authoritative exact reviewed scope eligibility; [] denies all learner contexts. Never source coverage or target enrollment."
+            }
+          }
         },
         "type": {
           "type": "string",
@@ -856,7 +866,39 @@
             }
           }
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "extendedData"
+            ],
+            "properties": {
+              "extendedData": {
+                "required": [
+                  "applicabilityContexts"
+                ]
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "applicability"
+              ]
+            },
+            "properties": {
+              "extendedData": {
+                "not": {
+                  "required": [
+                    "applicabilityOverrides"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "programUnit": {
       "type": "object",
@@ -1019,6 +1061,88 @@
           }
         }
       }
+    },
+    "applicabilityContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schoolForm",
+        "jurisdiction",
+        "stage",
+        "durationModel",
+        "courseProfile"
+      ],
+      "properties": {
+        "schoolForm": {
+          "const": "Gymnasium"
+        },
+        "jurisdiction": {
+          "enum": [
+            "DE",
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "stage": {
+          "enum": [
+            "SekI",
+            "SekII"
+          ]
+        },
+        "durationModel": {
+          "enum": [
+            "G8",
+            "G9",
+            null
+          ]
+        },
+        "courseProfile": {
+          "enum": [
+            "GK",
+            "LK",
+            null
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "stage": {
+              "const": "SekI"
+            },
+            "courseProfile": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "stage": {
+              "const": "SekII"
+            },
+            "courseProfile": {
+              "enum": [
+                "GK",
+                "LK"
+              ]
+            }
+          }
+        }
+      ]
     }
   }
 }

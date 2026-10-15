@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "role": "DATA_AUTHOR_PROPOSAL_ONLY_NOT_INDEPENDENT_SOURCE_REVIEW",
+  "startedAtUTC": "2026-10-14T02:06:36Z",
+  "preparedAtUTC": "2026-10-14T02:20:23.526281+00:00",
+  "sourcePlans": [
+    {
+      "jurisdiction": "DE-BB",
+      "oldSource": {
+        "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+        "bytes": 385688,
+        "sha256": "sha256:c758210a10da178d9a0585dc0237cd4a2dc11aa9468aa59ec9ca7b783da8b342"
+      },
+      "oldReview": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+        "bytes": 199944,
+        "sha256": "sha256:64e6704ea89e3818c7fcb65d96d8790870c7dfc40d9945833cdc7e3ac0e162f4"
+      },
+      "oldLegacyMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+        "bytes": 84234,
+        "sha256": "sha256:a65718c3ad71a03c2b5abda4a1c002c13e3ca23fcd5023837cec3c05efa2d056"
+      },
+      "candidateSource": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/candidate/BB.whole205-source-inventory-two-exact-primary-assay-cells.author.json",
+        "bytes": 391264,
+        "sha256": "sha256:a1f8f0ca4e278796f3a8726438185f923dcf0b11e9fb2aff1508a2b2c6f61877"
+      },
+      "candidateReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/mapping/BB.whole205-decisions316-edges.author-nonoperative.json",
+        "bytes": 202398,
+        "sha256": "sha256:00e4616b433ecd79c378d77c7839248999a4d992918b9efb41ba74de94550eeb"
+      },
+      "newCells": [
+        {
+          "wholeNewSourceCell": {
+            "id": "bb-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+            "passageId": "bb-chemistry-sekii-rlp-3-2-1-verbindliche-nachweisversuche-p028",
+            "topicCode": "3.2.1",
+            "topicTitle": "Proteine",
+            "category": "Untersuchungen, Experimente",
+            "title": "Ninhydrin-Reaktion",
+            "description": "Die lernende Person kann die verbindliche Ninhydrin-Reaktion als Nachweisverfahren durchführen und die Befunde im Proteinkontext auswerten.",
+            "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+            "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, 3.2.1 Proteine, S. 28; Verbindlichkeits- und GK/LK-Regel S. 26.",
+            "sourcePage": 28,
+            "sourceText": "Ninhydrin-Reaktion",
+            "sourceSpan": {
+              "passageId": "bb-chemistry-sekii-rlp-3-2-1-verbindliche-nachweisversuche-p028",
+              "label": "Untersuchungen, Experimente: Ninhydrin-Reaktion"
+            },
+            "courseLevel": "GK_LK",
+            "tags": [
+              "subject:Chemie",
+              "jurisdiction:DE-BB",
+              "stage:SekII",
+              "topic:3.2.1",
+              "category:Untersuchungen-Experimente",
+              "courseLevel:GK_LK"
+            ],
+            "metadata": {
+              "extractionMethod": "additive-exact-original-experiment-cell-author-proposal",
+              "originalSourceTextUnmodified": true,
+              "courseBindingPhysicalPages": [
+                26,
+                28
+              ],
+              "newCanonicalCompetence": false,
+              "independentReviewRequired": true
+            }
+          },
+          "wholeNewAuthorDecision": {
+            "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+            "topicCode": "3.2.1",
+            "sourceSpan": "Ninhydrin-Reaktion",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+            ],
+            "matchType": "partial",
+            "rationale": "NONOPERATIVE AUTHOR E0/G0: Original Ninhydrin-Reaktion on p28 is mandatory under p26 for GK and inherited by LK. It supplies the Aminocarbonsäure-Nachweis component of whole5c; the other assay cell is a separate partner. No claim that this cell covers all5c or the neighbouring denaturation duty. Independent source/graph A/B remains required.",
+            "reviewedAt": "2026-10-14T02:20:23.526281+00:00",
+            "reviewer": "Codex data author only; not independent approval"
+          },
+          "wholeNewPartialEdge": {
+            "legacyGoalId": "bb-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+            "canonicalGoalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "matchType": "partial",
+            "reviewDecisionId": "bb-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+            "courseLevelDecision": "GK_LK",
+            "courseLevelRationale": "Original p26 binding rule and p28 GK column; LK explicitly additional to GK."
+          }
+        },
+        {
+          "wholeNewSourceCell": {
+            "id": "bb-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+            "passageId": "bb-chemistry-sekii-rlp-3-2-1-verbindliche-nachweisversuche-p028",
+            "topicCode": "3.2.1",
+            "topicTitle": "Proteine",
+            "category": "Untersuchungen, Experimente",
+            "title": "Biuret-Reaktion",
+            "description": "Die lernende Person kann die verbindliche Biuret-Reaktion als Nachweisverfahren durchführen und die Befunde im Proteinkontext auswerten.",
+            "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+            "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, 3.2.1 Proteine, S. 28; Verbindlichkeits- und GK/LK-Regel S. 26.",
+            "sourcePage": 28,
+            "sourceText": "Biuret-Reaktion",
+            "sourceSpan": {
+              "passageId": "bb-chemistry-sekii-rlp-3-2-1-verbindliche-nachweisversuche-p028",
+              "label": "Untersuchungen, Experimente: Biuret-Reaktion"
+            },
+            "courseLevel": "GK_LK",
+            "tags": [
+              "subject:Chemie",
+              "jurisdiction:DE-BB",
+              "stage:SekII",
+              "topic:3.2.1",
+              "category:Untersuchungen-Experimente",
+              "courseLevel:GK_LK"
+            ],
+            "metadata": {
+              "extractionMethod": "additive-exact-original-experiment-cell-author-proposal",
+              "originalSourceTextUnmodified": true,
+              "courseBindingPhysicalPages": [
+                26,
+                28
+              ],
+              "newCanonicalCompetence": false,
+              "independentReviewRequired": true
+            }
+          },
+          "wholeNewAuthorDecision": {
+            "sourceGoalId": "bb-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+            "topicCode": "3.2.1",
+            "sourceSpan": "Biuret-Reaktion",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+            ],
+            "matchType": "partial",
+            "rationale": "NONOPERATIVE AUTHOR E0/G0: Original Biuret-Reaktion on p28 is mandatory under p26 for GK and inherited by LK. It supplies the Peptid-/Protein-Nachweis component of whole5c; the other assay cell is a separate partner. No claim that this cell covers all5c or the neighbouring denaturation duty. Independent source/graph A/B remains required.",
+            "reviewedAt": "2026-10-14T02:20:23.526281+00:00",
+            "reviewer": "Codex data author only; not independent approval"
+          },
+          "wholeNewPartialEdge": {
+            "legacyGoalId": "bb-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+            "canonicalGoalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "matchType": "partial",
+            "reviewDecisionId": "bb-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+            "courseLevelDecision": "GK_LK",
+            "courseLevelRationale": "Original p26 binding rule and p28 GK column; LK explicitly additional to GK."
+          }
+        }
+      ],
+      "original203WholeCellsAndDecisions314EdgesExact": true,
+      "sourceCellCount": 205,
+      "newIndependentApproval": false,
+      "remainingOriginalDenaturationDuty": "Original p28 Denaturierung von Proteinen remains in the whole source context and old property/denaturation partners. This packet does not claim whole source-catalog completeness or approve a new denaturation experiment mapping."
+    },
+    {
+      "jurisdiction": "DE-BE",
+      "oldSource": {
+        "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+        "bytes": 385683,
+        "sha256": "sha256:0a6b2478c36d029a91fc77faf672fbf499a6889537ae7ff77399b3828d7957a0"
+      },
+      "oldReview": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+        "bytes": 199944,
+        "sha256": "sha256:f708d6d1f74368d139d3fa5699ab17d50bc1d48395ec87eb9d521c49f703a233"
+      },
+      "oldLegacyMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+        "bytes": 84234,
+        "sha256": "sha256:bfa186c6b8b1a0eca67a779919dadc89b67fb925d34700d8c91739fb9d36a8e9"
+      },
+      "candidateSource": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/candidate/BE.whole205-source-inventory-two-exact-primary-assay-cells.author.json",
+        "bytes": 391259,
+        "sha256": "sha256:f0dd4cea31abbe53ab11ccd4d77222f4e177bd264f38b2207077337e220014cc"
+      },
+      "candidateReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-M311-BB-BE-four-scope-whole-source-and-acquisition-remediation-author-20261014-v1/mapping/BE.whole205-decisions316-edges.author-nonoperative.json",
+        "bytes": 202398,
+        "sha256": "sha256:478dda3feae72df33d801a58633f2b10eff6433b08e0bf355938f0022950c743"
+      },
+      "newCells": [
+        {
+          "wholeNewSourceCell": {
+            "id": "be-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+            "passageId": "be-chemistry-sekii-rlp-3-2-1-verbindliche-nachweisversuche-p028",
+            "topicCode": "3.2.1",
+            "topicTitle": "Proteine",
+            "category": "Untersuchungen, Experimente",
+            "title": "Ninhydrin-Reaktion",
+            "description": "Die lernende Person kann die verbindliche Ninhydrin-Reaktion als Nachweisverfahren durchführen und die Befunde im Proteinkontext auswerten.",
+            "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+            "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, 3.2.1 Proteine, S. 28; Verbindlichkeits- und GK/LK-Regel S. 26.",
+            "sourcePage": 28,
+            "sourceText": "Ninhydrin-Reaktion",
+            "sourceSpan": {
+              "passageId": "be-chemistry-sekii-rlp-3-2-1-verbindliche-nachweisversuche-p028",
+              "label": "Untersuchungen, Experimente: Ninhydrin-Reaktion"
+            },
+            "courseLevel": "GK_LK",
+            "tags": [
+              "subject:Chemie",
+              "jurisdiction:DE-BE",
+              "stage:SekII",
+              "topic:3.2.1",
+              "category:Untersuchungen-Experimente",
+              "courseLevel:GK_LK"
+            ],
+            "metadata": {
+              "extractionMethod": "additive-exact-original-experiment-cell-author-proposal",
+              "originalSourceTextUnmodified": true,
+              "courseBindingPhysicalPages": [
+                26,
+                28
+              ],
+              "newCanonicalCompetence": false,
+              "independentReviewRequired": true
+            }
+          },
+          "wholeNewAuthorDecision": {
+            "sourceGoalId": "be-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+            "topicCode": "3.2.1",
+            "sourceSpan": "Ninhydrin-Reaktion",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+            ],
+            "matchType": "partial",
+            "rationale": "NONOPERATIVE AUTHOR E0/G0: Original Ninhydrin-Reaktion on p28 is mandatory under p26 for GK and inherited by LK. It supplies the Aminocarbonsäure-Nachweis component of whole5c; the other assay cell is a separate partner. No claim that this cell covers all5c or the neighbouring denaturation duty. Independent source/graph A/B remains required.",
+            "reviewedAt": "2026-10-14T02:20:23.526281+00:00",
+            "reviewer": "Codex data author only; not independent approval"
+          },
+          "wholeNewPartialEdge": {
+            "legacyGoalId": "be-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+            "canonicalGoalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "matchType": "partial",
+            "reviewDecisionId": "be-chemistry-sekii-rlp-3-2-1-experimente-001-9a7df8d0",
+            "courseLevelDecision": "GK_LK",
+            "courseLevelRationale": "Original p26 binding rule and p28 GK column; LK explicitly additional to GK."
+          }
+        },
+        {
+          "wholeNewSourceCell": {
+            "id": "be-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+            "passageId": "be-chemistry-sekii-rlp-3-2-1-verbindliche-nachweisversuche-p028",
+            "topicCode": "3.2.1",
+            "topicTitle": "Proteine",
+            "category": "Untersuchungen, Experimente",
+            "title": "Biuret-Reaktion",
+            "description": "Die lernende Person kann die verbindliche Biuret-Reaktion als Nachweisverfahren durchführen und die Befunde im Proteinkontext auswerten.",
+            "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+            "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, 3.2.1 Proteine, S. 28; Verbindlichkeits- und GK/LK-Regel S. 26.",
+            "sourcePage": 28,
+            "sourceText": "Biuret-Reaktion",
+            "sourceSpan": {
+              "passageId": "be-chemistry-sekii-rlp-3-2-1-verbindliche-nachweisversuche-p028",
+              "label": "Untersuchungen, Experimente: Biuret-Reaktion"
+            },
+            "courseLevel": "GK_LK",
+            "tags": [
+              "subject:Chemie",
+              "jurisdiction:DE-BE",
+              "stage:SekII",
+              "topic:3.2.1",
+              "category:Untersuchungen-Experimente",
+              "courseLevel:GK_LK"
+            ],
+            "metadata": {
+              "extractionMethod": "additive-exact-original-experiment-cell-author-proposal",
+              "originalSourceTextUnmodified": true,
+              "courseBindingPhysicalPages": [
+                26,
+                28
+              ],
+              "newCanonicalCompetence": false,
+              "independentReviewRequired": true
+            }
+          },
+          "wholeNewAuthorDecision": {
+            "sourceGoalId": "be-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+            "topicCode": "3.2.1",
+            "sourceSpan": "Biuret-Reaktion",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+            ],
+            "matchType": "partial",
+            "rationale": "NONOPERATIVE AUTHOR E0/G0: Original Biuret-Reaktion on p28 is mandatory under p26 for GK and inherited by LK. It supplies the Peptid-/Protein-Nachweis component of whole5c; the other assay cell is a separate partner. No claim that this cell covers all5c or the neighbouring denaturation duty. Independent source/graph A/B remains required.",
+            "reviewedAt": "2026-10-14T02:20:23.526281+00:00",
+            "reviewer": "Codex data author only; not independent approval"
+          },
+          "wholeNewPartialEdge": {
+            "legacyGoalId": "be-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+            "canonicalGoalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "matchType": "partial",
+            "reviewDecisionId": "be-chemistry-sekii-rlp-3-2-1-experimente-002-0d4256c6",
+            "courseLevelDecision": "GK_LK",
+            "courseLevelRationale": "Original p26 binding rule and p28 GK column; LK explicitly additional to GK."
+          }
+        }
+      ],
+      "original203WholeCellsAndDecisions314EdgesExact": true,
+      "sourceCellCount": 205,
+      "newIndependentApproval": false,
+      "remainingOriginalDenaturationDuty": "Original p28 Denaturierung von Proteinen remains in the whole source context and old property/denaturation partners. This packet does not claim whole source-catalog completeness or approve a new denaturation experiment mapping."
+    }
+  ],
+  "fullWhole5cCoverageClaim": "Proposed union of Ninhydrin and Biuret operational components, with source-specific GK/LK conditions; fresh A/B required. Neither PARTIAL edge alone grants the whole goal.",
+  "noOldSourceGoalIDOrDecisionRelabelled": true,
+  "primaryCourseChoiceBoundariesRetained": true,
+  "sourceMaturityGainClaim": false,
+  "A_M_V_P_DIndependentVotes": 0
+}

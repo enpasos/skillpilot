@@ -122,7 +122,7 @@ test('RP preserves original Sek-I support while teaching the methods once in its
     const root = structures(view.rootNodes).find(node => node.id === 'physics-root')!
     const support = structures(view.rootNodes).find(node => node.id === 'physics-seki-route-prerequisites')!
     assert.deepEqual(root.children[1], { kind: 'goalEntry', goalId: observation, projectionRole: 'prerequisiteOnly' }, path)
-    assert.deepEqual(support.children[37], { kind: 'goalEntry', goalId: models, projectionRole: 'prerequisiteOnly' }, path)
+    assert.deepEqual(support.children.find(node => node.kind === 'goalEntry' && node.goalId === models), { kind: 'goalEntry', goalId: models, projectionRole: 'prerequisiteOnly' }, path)
     const stageRoles = collectCompositionProjectionRoleGoalIds(withoutSekII(view.rootNodes), byId)
     for (const id of [observation, models]) {
       assert(stageRoles.prerequisiteOnlyGoalIds.has(id), `${path}: lost Sek-I support ${id}`)
@@ -158,5 +158,30 @@ test('all declared atlas views compile with the real cross-subject goal universe
   for (const { path, view } of views) {
     const result = compileCompositionView(view, physics, universe, landscapesById)
     assert.deepEqual(result.findings.filter(finding => finding.severity === 'error'), [], path)
+  }
+})
+
+
+test('RP CrossStage preserves every existing SekII Physics target while Math support stays hidden', () => {
+  const physicsIds = new Set(physics.goals.map(goal => goal.id))
+  const math = landscapes.find(landscape => landscape.landscapeId === '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced')!
+  assert(math)
+  const mathIds = new Set(math.goals.map(goal => goal.id))
+  for (const courseProfile of ['GK', 'LK']) {
+    const cross = views.find(({ view }) => view.scope.jurisdiction === 'DE-RP'
+      && view.scope.stage === 'CrossStage' && view.scope.courseProfile === courseProfile)!
+    const upper = views.find(({ view }) => view.scope.jurisdiction === 'DE-RP'
+      && view.scope.stage === 'SekII' && view.scope.courseProfile === courseProfile)!
+    assert(cross && upper)
+    const crossRoles = collectCompositionProjectionRoleGoalIds(cross.view.rootNodes, byId)
+    const upperRoles = collectCompositionProjectionRoleGoalIds(upper.view.rootNodes, byId)
+    for (const goalId of upperRoles.targetGoalIds) {
+      if (physicsIds.has(goalId)) assert(crossRoles.targetGoalIds.has(goalId), `${cross.path}: existing SekII target hidden: ${goalId}`)
+    }
+    for (const goalId of crossRoles.targetGoalIds) {
+      assert(!mathIds.has(goalId), `${cross.path}: Math support became a Physics target: ${goalId}`)
+    }
+    const compiled = compileCompositionView(cross.view, physics, universe, landscapesById)
+    assert.deepEqual(compiled.findings.filter(finding => finding.severity === 'error'), [], cross.path)
   }
 })

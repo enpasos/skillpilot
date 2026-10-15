@@ -1,0 +1,32 @@
+{
+  "verifiedAt": "2026-10-14T00:27:06.431848+00:00",
+  "stockModules": [
+    {
+      "path": "app/scripts/goalVisualizationQaModel.ts",
+      "sha256": "sha256:5abba6281d499c321167414d8f222fab4ca0d9115ed2b4c653e7e72920cc714d",
+      "bytes": 2286
+    },
+    {
+      "path": "app/src/utils/goalVisualizationQaStatus.ts",
+      "sha256": "sha256:35ddf582c806a08a4ea46b0b6fbdfbbeb52b62db1268dbabce3ce66e081557ef",
+      "bytes": 966
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "sha256": "sha256:b27d00c76f7e0f9dd99169fa26997ad6c9b333a20d30b928512c762cf10bb29d",
+      "bytes": 71502
+    }
+  ],
+  "centralVGuardContract": "reportDeepUnderstandingRollout.ts: hasCompletedDeepUnderstandingVisualizationReview requires available, empty missingReason, and isAiApprovedForCurrentAsset. This packet only measures exact asset readiness.",
+  "stockGuardResult": "checks/stock-existing-V5-guard.actual.json",
+  "initialSetupFailureReceipt": {
+    "commandClass": "Python here-document directory/input setup",
+    "stdout": "",
+    "stderr": "NameError: name 'PY' is not defined. Did you mean: 'Pt'?",
+    "cause": "Accidental +PY closing token; only own empty evidence directories had been created. No goal, QA, V input, review, asset or original run modified.",
+    "timestamp": "not separately recorded; no invented time"
+  },
+  "newReviewDatesOrVotes": false,
+  "activeWrites": false,
+  "rootT407HostWrites": false
+}

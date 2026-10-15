@@ -1,0 +1,38 @@
+{
+  "runs": [
+    {
+      "kind": "A",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-b-root-20261014-v1/config/A5.genuine-independent-b-root.config.json"
+      ],
+      "startedAtUTC": "2026-10-14T02:51:13.387728+00:00",
+      "completedAtUTC": "2026-10-14T02:51:13.937953+00:00",
+      "exitCode": 0,
+      "stdout": "# Semantic Atomicity Review: chemie-source6-five-current412-whole-p-a-m-independent-b-root-20261014-v1\nScope: Five author proposals, all needs_developer_review; no A/M gate grant\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 5\nCurrent reviewed atomic: 5\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "stderr": ""
+    },
+    {
+      "kind": "M",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-whole-P-A-M-independent-b-root-20261014-v1/config/M5.genuine-independent-b-root.config.json"
+      ],
+      "startedAtUTC": "2026-10-14T02:51:13.937980+00:00",
+      "completedAtUTC": "2026-10-14T02:51:14.355939+00:00",
+      "exitCode": 0,
+      "stdout": "# Memory Card Review: chemie-source6-five-current412-whole-p-a-m-independent-b-root-20261014-v1\nScope: Five author proposals, all needs_developer_review; no A/M gate grant\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 5\nCurrent no-memory decisions: 5\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 7\nDeck files: 8\nCard rows: 93\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n",
+      "stderr": ""
+    }
+  ],
+  "positiveProfileSchemasPassed": 5,
+  "unchangedAllFiveProfileBodies": true,
+  "normalPositiveSelection": "HOLD: five IDs absent from authoritative semantic-kind ledger; no fabricated fallback fingerprint or authority",
+  "retainedOwnConservativeEvidenceLevel": "E0/G0 design; no actual learner performance",
+  "noDOrVOrHumanVote": true,
+  "activeWrites": false
+}

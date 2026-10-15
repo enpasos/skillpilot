@@ -1,0 +1,83 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-math-positive-understanding-evidence-calibration-v2",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "goalId": "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+  "goalFingerprint": "sha256:44b4adeb92abeb732c6c65a46b9f0924d32c02e666a3ff1c607890089dc99ae5",
+  "reviewInputFingerprint": "sha256:b3028d60ecfa4e9e4634395df055fa7795c629b9bf47a9d30bbdb5c81a8fd843",
+  "profileFingerprint": "sha256:c7c1d15acb95547adeb1d3eefe8ab025e66a630b2a265f7ce8ed80d8e5a8b9a6",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-08-25T21:07:52.286Z",
+  "reviewer": "codex-math-calibration-profile-author-candidate-2026-08-25",
+  "reason": "AI-authored current-fingerprint candidate for Momentane Änderungsrate qualitativ verstehen. It requires content-specific explanation or checking in at least two independent demonstrations, including fresh transfer; it claims neither human approval nor a dedicated profile-review run.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "secant-to-tangent-limit",
+        "essentialUnderstandingDe": "Mittlere Änderungsraten sind Sekantensteigungen über Intervalle; wenn ein Intervall um einen Punkt schrumpft und sich die Sekantensteigungen stabilisieren, beschreibt ihr Grenzfall die momentane Änderungsrate.",
+        "essentialUnderstandingEn": "Average rates of change are secant slopes over intervals; as an interval around a point shrinks and the secant slopes stabilize, their limiting case describes the instantaneous rate of change.",
+        "observablePerformanceDe": "Die lernende Person beschreibt an mehreren kleiner werdenden Intervallen, wie sich die mittleren Änderungsraten der lokalen Steigung annähern, und erläutert den Grenzgedanken ohne eine einzelne Sekante mit der Tangente gleichzusetzen.",
+        "observablePerformanceEn": "Using several shrinking intervals, the learner describes how average rates approach the local slope and explains the limiting idea without equating a single secant with the tangent."
+      },
+      {
+        "id": "graphical-local-meaning",
+        "essentialUnderstandingDe": "Am Graphen ist die momentane Änderungsrate die Steigung der Tangente im betrachteten Punkt; Vorzeichen und Betrag beschreiben lokale Richtung und Stärke der Änderung.",
+        "essentialUnderstandingEn": "On a graph, the instantaneous rate of change is the tangent slope at the point considered; its sign and magnitude describe the local direction and strength of change.",
+        "observablePerformanceDe": "Die lernende Person verortet die Tangente an einem neuen Graphen und vergleicht qualitativ Vorzeichen und Steilheit momentaner Änderungsraten an verschiedenen Punkten.",
+        "observablePerformanceEn": "The learner locates the tangent on a new graph and qualitatively compares the signs and steepness of instantaneous rates at different points."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "secant-to-tangent-limit",
+        "graphical-local-meaning"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "local-behavior",
+        "textDe": "Steigender, fallender oder lokal waagerechter Graph",
+        "textEn": "Increasing, decreasing, or locally horizontal graph"
+      },
+      {
+        "id": "evidence-form",
+        "textDe": "Folge von Sekanten, Wertetabelle mittlerer Raten oder Tangentenskizze",
+        "textEn": "Sequence of secants, table of average rates, or tangent sketch"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "shrinking-intervals",
+        "taskDemandDe": "Zu einem gekrümmten Graphen sind mittlere Änderungsraten auf mehreren Intervallen mit gemeinsamem Endpunkt zu vergleichen und qualitativ auf die momentane Rate zu beziehen.",
+        "taskDemandEn": "For a curved graph, average rates over several intervals with a common endpoint must be compared and related qualitatively to the instantaneous rate.",
+        "expectedPerformanceDe": "Die lernende Person erkennt die Sekantensteigungen, beschreibt ihre Stabilisierung bei kleineren Intervallen und verbindet den Grenzfall mit der Tangentensteigung.",
+        "expectedPerformanceEn": "The learner identifies the secant slopes, describes their stabilization for smaller intervals, and connects the limiting case with the tangent slope.",
+        "understandingFocusDe": "Der Grenzprozess wird als Zusammenhang verstanden und nicht durch eine einzelne Differenzenquotientenrechnung ersetzt.",
+        "understandingFocusEn": "The limiting process is understood as a relationship rather than replaced by one difference-quotient calculation."
+      },
+      {
+        "id": "compare-local-slopes",
+        "taskDemandDe": "Ein anders geformter Graph besitzt einen steigenden, einen fallenden und einen lokal waagerechten Abschnitt; die momentanen Änderungsraten an markierten Punkten sind qualitativ zu ordnen und zu begründen.",
+        "taskDemandEn": "A differently shaped graph has increasing, decreasing, and locally horizontal sections; the instantaneous rates at marked points must be ordered qualitatively and justified.",
+        "expectedPerformanceDe": "Die lernende Person nutzt Tangentenrichtung und Steilheit, ordnet positive, negative und ungefähr null große Raten zu und erklärt die lokale Bedeutung.",
+        "expectedPerformanceEn": "The learner uses tangent direction and steepness, assigns positive, negative, and approximately zero rates, and explains their local meaning.",
+        "understandingFocusDe": "Die Übertragung auf verschiedene lokale Verläufe prüft graphisches Verständnis ohne vorgegebenes Rechenschema.",
+        "understandingFocusEn": "Transfer to different local behaviours checks graphical understanding without a supplied calculation template."
+      }
+    ]
+  }
+}

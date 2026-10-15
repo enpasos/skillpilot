@@ -1,0 +1,337 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical original-evidence integrator; no new scientific review",
+  "synthesizedAt": "2026-10-12T11:32:27.364Z",
+  "batch": {
+    "batchId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1",
+    "batchManifestDigest": "sha256:86bf30377c5ebfb9a6c1a64d80a73baa1052d11a61a66737b68ca1e5e47ce7e7",
+    "configDigest": "sha256:4c9120c29fd6d271460ff747d5991d24afd98437125f3c1fc740f0e514d7bb3c",
+    "bundleFingerprint": "sha256:f90ef55be3b8260c9eb32870b3311693e6544533fcd50c7361bd7cacb86f6351",
+    "bookDigest": "sha256:33e70d992ad48c2e3506ff766422ac4c1caebcb8820ad8a588f9f150ead39654",
+    "reviewInputFingerprint": "sha256:320b81907fd506b38c5f924c35c1087b690b5216666099c58cf5122a0af2100b",
+    "dualSummaryDigest": "sha256:f022f8003b1ec308c1b694fc84aa1b0f0182a07aebd22ce013cbc4eb84d3bf01",
+    "canonicalLandscapeDigest": "sha256:e9730d2a4163316dcab31bf853b8bed6080347a9574d8a45da8e125b423fb0ef"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current407-targeted-2-independent-a-v3",
+      "campaignDigest": "sha256:18e953f358c5205e6ebcd99fc7c6e800f77bebd7eab381b3caf50f3786e6e6e0",
+      "roundId": "a",
+      "independenceGroupId": "chemie-current407-targeted-v3-independent-a",
+      "reviewInputFingerprint": "sha256:320b81907fd506b38c5f924c35c1087b690b5216666099c58cf5122a0af2100b",
+      "batchId": "a.batch-001",
+      "batchInputFingerprint": "sha256:a951450cbade485d9d14aa47ed8e11f27a3b9553cec46a360dc8d65277053213",
+      "runId": "chemie-current407-remediation23-independent-a-v3-batch2-actual",
+      "runManifestDigest": "sha256:daf35931da8cc1f819a547d412169408903467f0783eae7ec843b1a4c5620016",
+      "resultsDigest": "sha256:459e30cdce1956fe88032b05dd9c31d481999bd9db3c051a0b0ad78f7f18b490"
+    },
+    "second": {
+      "campaignId": "chemie-current407-targeted-2-independent-b-v3",
+      "campaignDigest": "sha256:2f7e0bfa505b656604dd0777a5e765b2b5bca7621b106326e1e518eac3dc64bb",
+      "roundId": "b",
+      "independenceGroupId": "chemie-current407-targeted-v3-independent-b",
+      "reviewInputFingerprint": "sha256:320b81907fd506b38c5f924c35c1087b690b5216666099c58cf5122a0af2100b",
+      "batchId": "b.batch-001",
+      "batchInputFingerprint": "sha256:cd9617dee66b66a9f7198e38670cc69c5fc88cea8f0e93b3db1a840717979d2f",
+      "runId": "chemie-remediation24-fresh-b-native2-20261012-v3",
+      "runManifestDigest": "sha256:7ad3996e9ca9563477944870b33547ff115371ca66e5dbef6d609ee352517a02",
+      "resultsDigest": "sha256:478fb1bb974588e0f31aea1fb7ce7966ca6d3f7b11f3b2b3e55c9fffcf5afe44"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-001",
+      "goalId": "7b477c2b-0919-5d70-810b-188a88c55ffc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:daf6c73bab56dd7726c65911eb9c29e78701e34ffaa7a27702776f833b523ab0",
+      "pageFingerprint": "sha256:43b4980c44e56015ec94a3daec044d8931ca20fb2ce1d7dbd5bd2ee331c1d3df",
+      "goalReviewContextFingerprint": "sha256:b039595c75b2fd428ee6e42321a287ca6f968889289a609f117b34d0860582fe",
+      "finalText": {
+        "titleDe": "Glykosidische Bindungen",
+        "titleEn": "Glycosidic bonds",
+        "descriptionDe": "Die lernende Person kann die Verknüpfung von Zuckerbausteinen durch glykosidische Bindungen und deren Spaltung durch Hydrolyse anhand von Strukturformeln erklären.",
+        "descriptionEn": "The learner can explain the linkage of sugar units through glycosidic bonds and their cleavage by hydrolysis using structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-7b477c2b",
+          "recordDigest": "sha256:ca4bcf3583a1c007503fc5c2973552f8aae0021f8ffaddde8f809dffec92f70e"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.7b477c2b-0919-5d70-810b-188a88c55ffc",
+          "recordDigest": "sha256:26cf8a39d899f12589f9b909ca91e5bd630cfc2f15a9205f4fdc59833688eb3f"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-002",
+      "goalId": "f7f35d71-927a-511c-a49e-65a66794a9bc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3238b50e838d525699eb51f90ff4505968d55a8fc00caa66ea6e213ce353549e",
+      "pageFingerprint": "sha256:6329a99820ebf4cb0d197d5d29ae43194bf376efe0a01ab15969bac6b5a86254",
+      "goalReviewContextFingerprint": "sha256:107b5dc4453609708257c4405aecaf4f78babd45db8c0baabbafbefb4fb57856",
+      "finalText": {
+        "titleDe": "Enzymreaktionen und Hemmung modellieren",
+        "titleEn": "Model enzyme reactions and inhibition",
+        "descriptionDe": "Die lernende Person kann Enzymreaktionen mit einer einfachen Modellvorstellung darstellen und Enzyme als Biokatalysatoren einschließlich Hemmung beschreiben.",
+        "descriptionEn": "The learner can model enzyme reactions and describe enzymes as biocatalysts, including inhibition."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-f7f35d71",
+          "recordDigest": "sha256:5c11a35047150af65e99e2e406d11b0a3972bef1fa3fd4fd11f7ef4e33b540c3"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.f7f35d71-927a-511c-a49e-65a66794a9bc",
+          "recordDigest": "sha256:74f8b9af072bd2b2fa2d92c2ccfe1746a4c49dd03c1af67271439c4b1a9bd46a"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-003",
+      "goalId": "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:27f69338d2a92dbb425ca8b6838b667f2b8c8833040b6c7037169600cb005b50",
+      "pageFingerprint": "sha256:0e5e25b8eaa736777ccad52cb9dceb990dc7493e7925467f747530c6dd0e0cb6",
+      "goalReviewContextFingerprint": "sha256:108a1122cc8b35b09d6f4624df1e56a78d6bc3267ffb01e4d7aa8f2566fbe29e",
+      "finalText": {
+        "titleDe": "Michaelis–Menten-Modell als Vertiefung deuten",
+        "titleEn": "Interpret the Michaelis–Menten model as an enrichment",
+        "descriptionDe": "Die lernende Person kann im einfachen Michaelis–Menten-Modell Anfangsraten bei veränderter Substratkonzentration deuten, Sättigung und Km als Substratkonzentration bei halber Grenzrate erklären und die Gültigkeit der eigenen quantitativen Vertiefung auf konstante Untersuchungsbedingungen begrenzen.",
+        "descriptionEn": "The learner can interpret initial rates at changing substrate concentrations in the simple Michaelis–Menten model, explain saturation and Km as the substrate concentration at half the limiting rate, and limit this own quantitative enrichment to constant investigation conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-c245d5fd",
+          "recordDigest": "sha256:72614db3ae5cc155d267c524b6fb03459ae9f538130bdeb5615b547cd97af879"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+          "recordDigest": "sha256:6c7f20d2cc77f418fc88eb52e1e20d18180291845592656891311d76994ad8ba"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-004",
+      "goalId": "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d56ff914ba73cce41857f3277124d7c711138be5953bab37e8747d5c9f43f66b",
+      "pageFingerprint": "sha256:42ae122231c41183d6070630a151782fa6c350667bc5af9b6a8ca852318b89ec",
+      "goalReviewContextFingerprint": "sha256:61c37627d6e53f8332582d09029476146aa5797ce0be1ca5979b5fef32e4ba29",
+      "finalText": {
+        "titleDe": "Aminocarbonsäuren elektrophoretisch trennen und auswerten",
+        "titleEn": "Separate and evaluate amino carboxylic acids by electrophoresis",
+        "descriptionDe": "Die lernende Person kann Versuchsergebnisse der Elektrophorese von Aminosäuren und Proteinen auswerten und deren Wanderung anhand von Nettoladung und pH-Wert erklären; in Lehrplanrouten mit Planungsauftrag kann sie eine entsprechende Trennung planen.",
+        "descriptionEn": "The learner can evaluate amino-acid and protein electrophoresis results and explain migration through net charge and pH; in curriculum routes requiring planning, the learner can plan a corresponding separation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-d1244f5d",
+          "recordDigest": "sha256:332ed65e6b72b78527265058213e6a2a473b4f64f86b615c071f2d363ff0130d"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.d1244f5d-9a12-5b74-97fe-ae974f40af26",
+          "recordDigest": "sha256:5e0e9d00d685c3fab64d6a90ce84715dddeb88b4492caa4bc85e579fafc2992a"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-005",
+      "goalId": "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0a7730571fc9116f1aa42f8b251b72bb933de758b8a62e3380f624165906eac8",
+      "pageFingerprint": "sha256:836dc34a4a89d4442d2ad63b8f362c07bf9d211ddbb9a67152c8872bef1b0fbd",
+      "goalReviewContextFingerprint": "sha256:334ed13ae9f4829a2d5964c985ac440b174c145ec99bc70f69c97e222cc412c0",
+      "finalText": {
+        "titleDe": "Proteinlöslichkeit und Denaturierung erklären",
+        "titleEn": "Explain protein solubility and denaturation",
+        "descriptionDe": "Die lernende Person kann Löslichkeit und Denaturierung von Proteinen unter verschiedenen Reaktionsbedingungen erklären und Folgen für die Wirksamkeit von Enzymen in Stoffwechsel, Waschmitteln oder weiteren Kontexten ableiten.",
+        "descriptionEn": "The learner can explain protein solubility and denaturation under different reaction conditions and derive consequences for enzyme effectiveness in metabolism, detergents, or other contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-058dca74",
+          "recordDigest": "sha256:7ae758f423c64de9113a3dbaef75c18011a55bb43ffa6a79e09f1215082dc514"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+          "recordDigest": "sha256:fdc6aaf18cdc344a15c59a2a171b8fb3f7125d2bb34a76e2ee3ff9a940c2a367"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-006",
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:92f51b1cba59a6815ef76e9e008073166aafab689c672f39c20e8791e7e6c17d",
+      "pageFingerprint": "sha256:9d9e003c3977158fe386367718718dee70afbfa4e0a8df3be93ea28e97888622",
+      "goalReviewContextFingerprint": "sha256:17394fd31730e896195ae2f60e23e5099171e34963780102d335160d2a77aaf1",
+      "finalText": {
+        "titleDe": "Angeleitete chemische Untersuchungen sicher durchführen",
+        "titleEn": "Carry out guided chemical investigations safely",
+        "descriptionDe": "Die lernende Person kann eine angeleitete chemische Untersuchung zu einem Alltags- oder Technikphänomen sicher durchführen, vorgegebene Einflussgrößen und Arbeitsschritte beachten, Beobachtungen oder Messwerte nachvollziehbar protokollieren und erläutern, wie der Versuch die Ausgangshypothese prüft.",
+        "descriptionEn": "The learner can safely carry out a guided chemical investigation of an everyday or technical phenomenon, follow the specified variables and procedural steps, record observations or measurements transparently, and explain how the experiment tests the initial hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-e81a4aed",
+          "recordDigest": "sha256:d3fb895235d1761cff6bd902bf15b524f63e4d7c37f000fcbaa0892b0501c8e2"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.e81a4aed-9695-533e-8eb7-7a0c714346ea",
+          "recordDigest": "sha256:52909d563f2a3d510ea205e39ce15f22ccaf28420a9405ac9fdf550c0b3fdef7"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-007",
+      "goalId": "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:27b482798b04e63b6ed34c1f741514a765164a243284d52eebbb6aa93612cb03",
+      "pageFingerprint": "sha256:a06d448cc9aaab92ee8151ea75f8a5b6a5a5c01226f8880b153941ad795ecf2c",
+      "goalReviewContextFingerprint": "sha256:a866f5afa12e31563b79a344b4f28e17d84044a03ebab5b2574f9f761667b9d3",
+      "finalText": {
+        "titleDe": "Lebensmittelzusammensetzung recherchieren und kategorisieren",
+        "titleEn": "Research and classify food composition",
+        "descriptionDe": "Die lernende Person kann die Zusammensetzung von Lebensmitteln aus geeigneten Quellen recherchieren und Lebensmittel nach selbstgewählten chemisch begründeten Kriterien kategorisieren.",
+        "descriptionEn": "The learner can research the composition of foods from suitable sources and classify foods using self-selected chemically justified criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-9fa7d857",
+          "recordDigest": "sha256:195ebcde12d940b9d1bb95c0b7b80c51204c9867349389ed9b1decad23677380"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+          "recordDigest": "sha256:90e898fc916015f2a52ee0b0b181f3ae10df4e2500d605140b9e7801a29b8e48"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-008",
+      "goalId": "360fccb9-896d-5e67-bf5d-5732621604c9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a7855c2a26ef7625f432dbaa6145b069f29e3ffa9fea23f172122c07af9da9c8",
+      "pageFingerprint": "sha256:c3fe8346e35e7852a2b0c65e4f7ee20031a0435ef1caef194d4d95004e777e12",
+      "goalReviewContextFingerprint": "sha256:2ddebd955b9d0a095e68b50ea8e607d97a8fbee16b4b973eca017f0023e7661f",
+      "finalText": {
+        "titleDe": "Nahrungsmittelinhaltsstoffe strukturbezogen einordnen",
+        "titleEn": "Classify food components by structure",
+        "descriptionDe": "Die lernende Person kann ausgewählte Inhaltsstoffe von Nahrungsmitteln anhand ihres submikroskopischen Baus vergleichen, Makro- und Mikronährstoffen zuordnen und ihre Bedeutung für den menschlichen Körper beschreiben.",
+        "descriptionEn": "The learner can compare selected food components by submicroscopic structure, assign them to macro- and micronutrients, and describe their significance for the human body."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-360fccb9",
+          "recordDigest": "sha256:894af16985446c20654292094e398cf7e521913e008c21828fe38d51d076e7d5"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.360fccb9-896d-5e67-bf5d-5732621604c9",
+          "recordDigest": "sha256:6ea5d009713859fa156a79e0edf52db719a4376c772479f04c3f6fdc2848aec4"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-009",
+      "goalId": "9abd8069-17ad-5d30-9102-f8eff6055045",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:88054c4e809b558c204f8bc2dc4ccab429c29af477ec6b21194148c18551ccd7",
+      "pageFingerprint": "sha256:578eb21a1bf3ce2ef91be874013700e8a8dc0cfbc0cd7be5d985eb4ca5498c9b",
+      "goalReviewContextFingerprint": "sha256:c2f92c6497f93e37920fa6c3c58eb20e4abf4b254fb13a1f313dc44fe7e6fe12",
+      "finalText": {
+        "titleDe": "Nahrungsbestandteile nach Polarität und Resorption einordnen",
+        "titleEn": "Classify food components by polarity and resorption",
+        "descriptionDe": "Die lernende Person kann Nahrungsbestandteile als hydrophil, lipophil oder amphiphil einordnen und damit Vitaminresorption, Verweildauer im Körper sowie geeignete Lösemittel bei der Lebensmittelzubereitung begründen.",
+        "descriptionEn": "The learner can classify food components as hydrophilic, lipophilic, or amphiphilic and use this to justify vitamin resorption, residence time in the body, and suitable solvents in food preparation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-9abd8069",
+          "recordDigest": "sha256:70c3ea071e1823af22719a00564b4e0faefb8a617a5d34b8f9d61b64b2715610"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.9abd8069-17ad-5d30-9102-f8eff6055045",
+          "recordDigest": "sha256:a6845847f505ecaee1318faca1bd8189c238e1f66dd991a9779593556d832739"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    },
+    {
+      "decisionId": "chemie-original-d11-complete-historical-pair-retention-20261014-v1-complete-historical-synthesis-decision-010",
+      "goalId": "64a5bb87-358d-5a22-958a-f66ba5521cd5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ddfcb7137e59de6b7adabd1cb195c993d14905a9b3c8a71a49a37ffd32c3fb2c",
+      "pageFingerprint": "sha256:15570f4186875105e81aec28b8284b4178f7db8df1da2bfcb326f07783457b59",
+      "goalReviewContextFingerprint": "sha256:951a97e41fb3f210dd5b6e9b0114dc449d008f18d92de4d5e12915d5a1243096",
+      "finalText": {
+        "titleDe": "Proteinquellen nachhaltig und quellenkritisch bewerten",
+        "titleEn": "Evaluate protein sources sustainably and critically",
+        "descriptionDe": "Die lernende Person kann tierische und pflanzliche Proteinquellen recherchieren und anhand von Zusammensetzung, Funktion und Nachhaltigkeitskriterien vergleichen und bewerten.",
+        "descriptionEn": "The learner can research animal and plant protein sources and compare and evaluate them using composition, function and sustainability criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-remediation23-a-v3-64a5bb87",
+          "recordDigest": "sha256:970dec6fb0f5a844d4b39deb179641ee53936ead498095e8dad9785731fe5980"
+        },
+        "second": {
+          "recordId": "chemie-remediation24-fresh-b-native2-20261012-v3.64a5bb87-358d-5a22-958a-f66ba5521cd5",
+          "recordDigest": "sha256:b94ac9207151d63791914d1de4afd392340b195eb7773a9df3fa79f6d1a004b4"
+        }
+      },
+      "rationaleDe": "Technische Bindung der beiden vollständigen unveränderten tatsächlichen ursprünglichen KEEP-Urteile im damaligen ganzen Inputkontext. Dies ist ein historischer Originalcontainer, keine neue aktuelle Fachprüfung. Die operative aktuelle Auswahl wird getrennt durch echte bestehende Besitzerketten und genaue digestgebundene Withdrawals begrenzt; nur f7 und475 sind neue aktuelle Zielauswahlen. Keine Quellen-Ganzfreigabe oder Human-Freigabe.",
+      "rationaleEn": "Technical binding of both complete unchanged genuine original KEEP judgments in their historical whole-input context. Historical original container only, no new current scientific review. Current operational selection is separately limited by real existing owner chains and exact digest-bound withdrawals; only f7 and475 are new current selections. No whole-source or human approval."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "793189f8-78bd-5204-848b-fd2bbc12e458",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Die vollständigen ursprünglichen Urteile enthalten tatsächlich einen BLOCK (D11:793) beziehungsweise eine offene revise-Abweichung (D15:64a). Dieser echte historische offene Befund wird unverändert erhalten; spätere gültige aktuelle Besitzer bleiben getrennt bestehen.",
+      "rationaleEn": "The complete original pair genuinely contains a BLOCK (D11:793) or unresolved revise disagreement (D15:64a). Preserve that actual historical open finding unchanged; later valid current owners remain separate."
+    }
+  ],
+  "manifestFingerprint": "sha256:952fe7bc27c765b26eec6b0e75921b2154b7f52a741450df9c9a605e7ae11c24"
+}

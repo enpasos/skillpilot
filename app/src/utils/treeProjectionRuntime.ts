@@ -1,5 +1,7 @@
+import { hasApplicabilityContexts, parseApplicabilityContexts } from './applicabilityContexts'
+import { deriveRuntimeApplicabilityScope } from './compositionViewRuntime'
 import type { UiGoal } from '../goalTypes'
-import { goalMatchesFilter, goalMatchesFilters } from './goalFilters'
+import { goalMatchesFilters } from './goalFilters'
 import { goalMatchesGlobalStageScope } from './personalCurriculumStageScope'
 
 export type TreeStructureMode = 'all' | 'content' | 'competency'
@@ -47,10 +49,61 @@ export const buildVisibleChildrenMap = (
   personalConfig?: PersonalCurriculumConfigLike,
   structureMode: TreeStructureMode = 'all',
   rootLandscapeId?: string,
+  selectedScopesByLandscapeId?: ReadonlyMap<string, unknown>,
+  compositionTargetGoalIdsByLandscapeId?: ReadonlyMap<string, ReadonlySet<string>>,
 ) => {
   const visibleChildrenByParent = new Map<string, string[]>()
   const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
   const nestedUnderSyntheticProgramUnit = new Set<string>()
+  const scopeByLandscapeId = new Map<string, unknown>()
+  const personalCurriculum = JSON.stringify({ personalCurriculum: personalConfig ?? {} })
+  const selectedScopeFor = (goal: UiGoal) => {
+    const landscapeId = goal.landscapeId ?? goal.id
+    if (selectedScopesByLandscapeId?.has(landscapeId)) return selectedScopesByLandscapeId.get(landscapeId)
+    if (!scopeByLandscapeId.has(landscapeId)) scopeByLandscapeId.set(landscapeId,
+      deriveRuntimeApplicabilityScope({
+        landscapeId, rootLandscapeId, scopeEnabled: true, activeFilter,
+        learnerPersonalCurriculum: personalCurriculum,
+      }))
+    return scopeByLandscapeId.get(landscapeId)
+  }
+
+  // A separately selected supplement is valid without ordinary subject
+  // enrollment. Preserve only its proven targets and their already projected
+  // navigation paths; never turn the whole subject selection on.
+  const compositionPathGoalIds = new Set<string>()
+  const parentIdsByChildId = new Map<string, string[]>()
+  allGoals.forEach((parent) => (parent.contains ?? []).forEach((childId) => {
+    const parents = parentIdsByChildId.get(childId) ?? []
+    parents.push(parent.id)
+    parentIdsByChildId.set(childId, parents)
+  }))
+  compositionTargetGoalIdsByLandscapeId?.forEach((targetIds, landscapeId) => targetIds.forEach((id) => {
+    const goal = allGoals.get(id)
+    if (!goal || goal.landscapeId !== landscapeId) return
+    const parsed = parseApplicabilityContexts(goal)
+    if (parsed.present && (parsed.errors.length > 0 || parsed.contexts.length === 0)) return
+    compositionPathGoalIds.add(id)
+  }))
+  const pendingPathIds = [...compositionPathGoalIds]
+  while (pendingPathIds.length > 0) {
+    const childId = pendingPathIds.pop()!
+    for (const parentId of parentIdsByChildId.get(childId) ?? []) {
+      if (compositionPathGoalIds.has(parentId)) continue
+      compositionPathGoalIds.add(parentId)
+      pendingPathIds.push(parentId)
+    }
+  }
+
+  const matchesSelectedFilters = (goal: UiGoal, filters?: string | string[]): boolean => {
+    if (hasApplicabilityContexts(goal) && goal.landscapeId
+      && compositionTargetGoalIdsByLandscapeId?.has(goal.landscapeId)) {
+      const parsed = parseApplicabilityContexts(goal)
+      return parsed.errors.length === 0 && parsed.contexts.length > 0
+        && compositionTargetGoalIdsByLandscapeId.get(goal.landscapeId)!.has(goal.id)
+    }
+    return goalMatchesFilters(goal, filters, selectedScopeFor(goal))
+  }
 
   allGoals.forEach((parent) => {
     if (!isSyntheticProgramUnit(parent)) return
@@ -74,11 +127,11 @@ export const buildVisibleChildrenMap = (
       const child = allGoals.get(childId)
       if (!child) return false
 
-      if (!goalMatchesGlobalStageScope(child, personalConfig ?? {}, { rootLandscapeId })) {
+      if (!hasApplicabilityContexts(child) && !goalMatchesGlobalStageScope(child, personalConfig ?? {}, { rootLandscapeId })) {
         return false
       }
 
-      if (!goalMatchesFilter(child, activeFilter)) {
+      if (!matchesSelectedFilters(child, activeFilter)) {
         return false
       }
 
@@ -106,10 +159,10 @@ export const buildVisibleChildrenMap = (
       if (hasConfig) {
         const config = (child.landscapeId ? personalConfig?.[child.landscapeId] : undefined) ?? personalConfig?.[child.id]
         if (config) {
-          if (config.selected !== true) return false
+          if (config.selected !== true && !compositionPathGoalIds.has(child.id)) return false
           const effectiveFilters = [config.filterId, config.durationModel]
             .filter((value): value is string => typeof value === 'string')
-          if (!goalMatchesFilters(child, effectiveFilters)) {
+          if (!matchesSelectedFilters(child, effectiveFilters)) {
             return false
           }
         } else if (hasPositiveSibling) {

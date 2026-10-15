@@ -122,6 +122,83 @@ const CURRICULUM_QUALITY_STATUS_PATH = 'docs/qa-ci/status/curriculum-quality-sta
 const APPLICABILITY_OVERRIDE_REGISTRY_PATH =
   'curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json'
 const COMPOSITION_VIEW_DIRECTORY = 'curricula/DE/Gymnasium/composition-views/physik'
+// Exact adopted support sets include reviewed prerequisite context and retained
+// historical supports. They supply no Mathematics target enrollment or route completion.
+const ADOPTED_PHYSICS_MATH_SUPPORT_ROOTS = new Map<string, { count: number; sha256: string }>([
+  ['de-bb-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-bb-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-bb-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-bb-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-be-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-be-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-be-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-be-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-bw-gym-physics-gk', { count: 42, sha256: '4f9b4966403d193a3a7e83c901354f979907795643584f35e5d90018c9b46167' }],
+  ['de-bw-gym-physics-lk', { count: 53, sha256: 'e8185e3a8141eeac5a11f6609e37bce80b7bf4d4384db045cc3c04ec888f380d' }],
+  ['de-bw-gym-sekii-physics-gk', { count: 31, sha256: '1ad3119634efe2f370d3bf922f70ef5510b8149581be24c7eab2ef2991d1bad9' }],
+  ['de-bw-gym-sekii-physics-lk', { count: 42, sha256: '96a365db1450ecdb3ab20ebbd06c0f64c408709fdb3a74bc2dd8d922431a7b39' }],
+  ['de-by-gym-physics-gk', { count: 72, sha256: 'f56d339948bde0a99a9620f3ef6d6b05461c874845aa2b907aeef7ba00501c37' }],
+  ['de-by-gym-physics-lk', { count: 73, sha256: '228d3bd3edae8447b49eab35e7483164fdda81155a65a1a5c8d1215fa21ec700' }],
+  ['de-by-gym-sekii-physics-gk', { count: 65, sha256: 'b5f5fb86e066660bb9df07c22c37011245b90b07cf7ccf000f1314fad63fb53e' }],
+  ['de-by-gym-sekii-physics-lk', { count: 66, sha256: 'f4ecdfdbc069b39028d79ea5cbf44526e87bec0c288b0feb1bd21fe1cd9b34f9' }],
+  ['de-de-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-de-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-de-gym-seki-physics', { count: 10, sha256: '2d0ab07ed6f841292bc995a05320a22c13d04dfd4fd6bc57ed75db67c038042e' }],
+  ['de-de-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-de-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-hb-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-hb-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-hb-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-hb-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-he-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-he-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-he-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-he-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-hh-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-hh-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-hh-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-hh-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-mv-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-mv-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-mv-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-mv-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-ni-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-ni-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-ni-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-ni-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-nw-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-nw-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-nw-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-nw-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-rp-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-rp-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-rp-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-rp-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-sh-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-sh-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-sh-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-sh-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-sl-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-sl-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-sl-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-sl-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-sn-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-sn-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-sn-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-sn-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-st-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-st-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-st-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-st-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-th-gym-physics-gk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-th-gym-physics-lk', { count: 77, sha256: 'cf4982f283e50df2ea906fd1ee6a227798232df822bebadc41deb5f7f8b203a2' }],
+  ['de-th-gym-sekii-physics-gk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+  ['de-th-gym-sekii-physics-lk', { count: 73, sha256: '29d7411f24a87ce97803ec642248d70e96e792855e9316857839763a73e66441' }],
+])
+const RETAINED_HISTORICAL_MATH_SUPPORT_IDS = new Set([
+  '5a9702f4-7e4d-457d-b98c-f0bafcd1e386',
+  'e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb',
+])
 const NATIONAL_PHYSICS_VIEW_IDS = new Set([
   'de-de-gym-physics-gk',
   'de-de-gym-physics-lk',
@@ -205,6 +282,36 @@ const SEMANTIC_RECHECK_ATOMIC_GOAL_IDS = new Set([
   'f2538793-8b0a-5c3b-b216-5d329a4e87bd', // Normalized interval probability; no energy calculation claim.
   // B053: substantive model-function recheck in model-wording-informed-layer-a-alignment-20260913-v1.receipt.json.
   'e5bc2227-d900-585f-8ac0-9d3f1cb40e27',
+])
+// Exact adopted Requires/Kind successors take precedence over their historical basis.
+const ADOPTED_REQUIRES_RECHECK_ATOMIC_GOAL_IDS = new Set([
+  '05af2893-0201-4d7f-985b-272d7b88e26e',
+  '09029573-864f-40ca-bf8a-cee7bf6dcb73',
+  '18c1f954-487e-5121-bb18-6c64a82f573d',
+  '1b7e800a-1c0d-5faa-886b-7ef2f3b8348c',
+  '1c430e0a-b63e-5729-8715-a96a5a68740f',
+  '215f5558-562c-5686-b649-931f324c7983',
+  '25998fed-ea4d-4c3e-b606-e965b5d7f290',
+  '37f28bc4-def2-57cf-a06b-191dfd228205',
+  '44f0eefa-2d93-5954-879f-f6c49e5cebc7',
+  '48e3d6c2-00bf-5afd-8846-ba3dbd01e96d',
+  '4a2bf015-052b-4af0-aed7-324259fa1a8a',
+  '5f289cdc-fda1-4058-b44f-041ba1398e79',
+  '5f97952e-5ac9-5749-94d0-d1dc50dda358',
+  '66256e22-44a3-5939-8862-821e29d6711d',
+  '692db5b6-8be1-5c7b-8307-3a02afb21ea0',
+  '7eeff2de-6015-49a6-a96e-a488d886dc9f',
+  '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd',
+  'a12fddce-0215-58d9-bd91-21be8a960d25',
+  'ad62f563-4fee-5399-8d9c-03a214658aa9',
+  'b2fb9a25-4d26-5cf2-a917-823909dcb6bd',
+  'b615830a-e8b0-5754-81e0-99da98343a8d',
+  'bf8517a9-142b-5789-826a-767f3b277998',
+  'd18d4190-ddc1-5181-b1b6-e79947b737c2',
+  'd6dc0e02-831d-4894-a61a-852bcc74f147',
+  'e4b38061-1f28-43ad-8371-a3e7c0e81856',
+  'ec7a0a68-730b-5c94-ac72-a937508f8303',
+  'ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a',
 ])
 const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
   '2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c',
@@ -733,7 +840,9 @@ const explicitClassification = (
   if (reviewedAtomicGoalIds.has(goal.id)) {
     return {
       semanticKind: 'curricularAtomic',
-      decisionBasis: STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS.has(goal.id)
+      decisionBasis: ADOPTED_REQUIRES_RECHECK_ATOMIC_GOAL_IDS.has(goal.id)
+        ? 'reviewed-current-semantic-recheck-curricular-atomic'
+        : STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS.has(goal.id)
         && !['5e9cd796-3887-5457-8a1f-26863ca7eb28', '6f896466-e0ec-5f8d-82ad-2890433c82ba'].includes(goal.id)
         ? 'reviewed-current-structural-split-curricular-atomic'
         : new Set([
@@ -1240,26 +1349,51 @@ rawLandscape.goals.forEach((goal) => {
   }
 })
 assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must remain subject-internal')
-// Baseline ten relations plus eleven independently reviewed first-adoption
-// relations. Pin both endpoints so a same-sized replacement cannot pass.
+// Pin the current adopted state: retained historical baseline relations plus
+// independently reviewed successors, including replacements and removals.
+// Both endpoints stay fixed so a same-sized replacement cannot pass.
 const expectedForeignRequiresEdges = [
-  { ownerId: '09029573-864f-40ca-bf8a-cee7bf6dcb73', goalId: 'c65ecabf-d00b-4e2d-99ae-b64692325ffb' },
+  { ownerId: '05af2893-0201-4d7f-985b-272d7b88e26e', goalId: 'a6469c01-6ca3-5eb2-a82c-94f3d0560b32' },
+  { ownerId: '18c1f954-487e-5121-bb18-6c64a82f573d', goalId: '9db266a2-1889-5792-82b0-a7463f0832f1' },
+  { ownerId: '1b7e800a-1c0d-5faa-886b-7ef2f3b8348c', goalId: '88abc886-cce8-55cf-b86c-eb4ba45a92d7' },
+  { ownerId: '1b7e800a-1c0d-5faa-886b-7ef2f3b8348c', goalId: 'ae20183e-92b5-5521-b8e0-9a8662cf51f5' },
+  { ownerId: '1c430e0a-b63e-5729-8715-a96a5a68740f', goalId: '9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c' },
+  { ownerId: '215f5558-562c-5686-b649-931f324c7983', goalId: '58d2f963-4fb9-550d-a832-f5ac60808900' },
+  { ownerId: '25998fed-ea4d-4c3e-b606-e965b5d7f290', goalId: '4b67bed9-06da-40b2-a306-24e9e7dfd390' },
   { ownerId: '267170bd-f880-56a7-9719-ffb9751872c5', goalId: '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f' },
   { ownerId: '2eecd0e2-a7ca-4568-9b12-3d47706c65fb', goalId: '325771e1-602d-4bca-a199-a8f39a2d3dee' },
   { ownerId: '2eecd0e2-a7ca-4568-9b12-3d47706c65fb', goalId: 'a6469c01-6ca3-5eb2-a82c-94f3d0560b32' },
+  { ownerId: '37f28bc4-def2-57cf-a06b-191dfd228205', goalId: 'b1dcc191-d046-50de-984a-ee5c17157628' },
   { ownerId: '3c8e5510-a12d-5770-8a01-e5fe741b259c', goalId: '2331caf2-ccb2-5492-9fc6-48763b848bae' },
-  { ownerId: '4a2bf015-052b-4af0-aed7-324259fa1a8a', goalId: '5a9702f4-7e4d-457d-b98c-f0bafcd1e386' },
-  { ownerId: '4a2bf015-052b-4af0-aed7-324259fa1a8a', goalId: 'c1f50bcc-7848-4e49-b9de-0ec030cc6bca' },
-  { ownerId: '5f289cdc-fda1-4058-b44f-041ba1398e79', goalId: 'c1f50bcc-7848-4e49-b9de-0ec030cc6bca' },
+  { ownerId: '44f0eefa-2d93-5954-879f-f6c49e5cebc7', goalId: 'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186' },
+  { ownerId: '44f0eefa-2d93-5954-879f-f6c49e5cebc7', goalId: 'f2e42af5-67a6-477e-82ea-e65b09cc6cb3' },
+  { ownerId: '48e3d6c2-00bf-5afd-8846-ba3dbd01e96d', goalId: 'c63bbffd-8d1c-5fe2-a428-db194e6fe592' },
+  { ownerId: '5f289cdc-fda1-4058-b44f-041ba1398e79', goalId: '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f' },
+  { ownerId: '5f289cdc-fda1-4058-b44f-041ba1398e79', goalId: '54148506-c23f-41b8-959b-068dd194cf15' },
+  { ownerId: '5f97952e-5ac9-5749-94d0-d1dc50dda358', goalId: 'bbef7cf2-90fa-59fa-a115-8b651aab9231' },
+  { ownerId: '66256e22-44a3-5939-8862-821e29d6711d', goalId: 'c1f50bcc-7848-4e49-b9de-0ec030cc6bca' },
+  { ownerId: '692db5b6-8be1-5c7b-8307-3a02afb21ea0', goalId: '27b63e2e-6a34-483e-8e5a-fe0f49670d1d' },
+  { ownerId: '7eeff2de-6015-49a6-a96e-a488d886dc9f', goalId: 'a6469c01-6ca3-5eb2-a82c-94f3d0560b32' },
   { ownerId: '8a84de16-2fde-58ec-827a-f803e2ce8564', goalId: '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f' },
   { ownerId: '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', goalId: 'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186' },
+  { ownerId: '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', goalId: 'ee48e811-4c9c-5080-9836-8403fc9f0810' },
+  { ownerId: 'a12fddce-0215-58d9-bd91-21be8a960d25', goalId: '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f' },
+  { ownerId: 'ad62f563-4fee-5399-8d9c-03a214658aa9', goalId: 'ee48e811-4c9c-5080-9836-8403fc9f0810' },
   { ownerId: 'ae67bcf1-f3ee-50d6-9a12-25a159dff659', goalId: '80c232f1-8f72-5829-9dbe-5a610ccab3be' },
+  { ownerId: 'b2fb9a25-4d26-5cf2-a917-823909dcb6bd', goalId: '58d2f963-4fb9-550d-a832-f5ac60808900' },
+  { ownerId: 'b615830a-e8b0-5754-81e0-99da98343a8d', goalId: '0a6dab2e-1bbb-5587-adb0-456d3991c327' },
+  { ownerId: 'bf8517a9-142b-5789-826a-767f3b277998', goalId: 'ae20183e-92b5-5521-b8e0-9a8662cf51f5' },
+  { ownerId: 'bf8517a9-142b-5789-826a-767f3b277998', goalId: 'b1dcc191-d046-50de-984a-ee5c17157628' },
   { ownerId: 'c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0', goalId: 'ee48e811-4c9c-5080-9836-8403fc9f0810' },
   { ownerId: 'ce431132-dfc4-42c2-aff6-bd72035190f8', goalId: '09f47964-2cd0-410e-93ee-9632b582fc91' },
   { ownerId: 'ce431132-dfc4-42c2-aff6-bd72035190f8', goalId: 'a8c42ee9-2898-4247-819f-c235032ac78a' },
-  { ownerId: 'd6dc0e02-831d-4894-a61a-852bcc74f147', goalId: 'e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb' },
+  { ownerId: 'd18d4190-ddc1-5181-b1b6-e79947b737c2', goalId: '58d2f963-4fb9-550d-a832-f5ac60808900' },
+  { ownerId: 'd6dc0e02-831d-4894-a61a-852bcc74f147', goalId: 'f08d06dc-139d-5fd2-892c-8cc919b1e4fc' },
   { ownerId: 'e359f8bb-6106-44aa-9edf-694528d2d2a9', goalId: '858113c5-e53b-57bb-b01f-ba95c3ddcb6f' },
-  { ownerId: 'e4b38061-1f28-43ad-8371-a3e7c0e81856', goalId: '5a9702f4-7e4d-457d-b98c-f0bafcd1e386' },
+  { ownerId: 'ec7a0a68-730b-5c94-ac72-a937508f8303', goalId: '8d30d241-0247-48ac-83d3-4e0de61584d3' },
+  { ownerId: 'ec7a0a68-730b-5c94-ac72-a937508f8303', goalId: 'a6469c01-6ca3-5eb2-a82c-94f3d0560b32' },
+  { ownerId: 'ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a', goalId: '58d2f963-4fb9-550d-a832-f5ac60808900' },
+  { ownerId: 'ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a', goalId: 'bbef7cf2-90fa-59fa-a115-8b651aab9231' },
   { ownerId: 'f23fdfa9-38b6-5157-8301-ed302476c456', goalId: '15505229-efec-4d01-8e71-acf15f9c2424' },
   { ownerId: 'f74c691b-0b76-54e0-8fd6-a22211994e0a', goalId: '11e3cf89-9224-5894-8e4a-ae8ff5af0119' },
   { ownerId: 'f827b00f-af7f-52de-84aa-2a2bbaa035bd', goalId: '5f548596-9bc3-532e-88a0-81d5029809e9' },
@@ -1268,12 +1402,12 @@ const expectedForeignRequiresEdges = [
 assert.deepEqual(
   [...foreignRequiresEdges].sort((a, b) => compareCodePoints(`${a.ownerId}:${a.goalId}`, `${b.ownerId}:${b.goalId}`)),
   expectedForeignRequiresEdges,
-  'Physics cross-subject prerequisites must match the reviewed first-adoption state',
+  'Physics cross-subject prerequisites must match the current adopted 45-relation fixture',
 )
 assert.equal(
   new Set(foreignRequiresEdges.map(({ goalId }) => goalId)).size,
-  17,
-  'Physics cross-subject prerequisites must resolve to exactly seventeen mathematics goals',
+  29,
+  'Physics cross-subject prerequisites must resolve to exactly twenty-nine mathematics goals',
 )
 foreignRequiresEdges.forEach(({ goalId }) => {
   assert(mathGoalIds.has(goalId), `Physics cross-subject prerequisite ${goalId} is not canonical mathematics`)
@@ -1295,11 +1429,12 @@ const validateLedger = ledgerAjv.compile(ledgerSchema)
 assert(validateLedger(ledger), ledgerAjv.errorsText(validateLedger.errors, { separator: '; ' }))
 assert.equal(ledger.documentType, 'semantic-kind-ledger')
 assert.equal(ledger.ledgerFormatVersion, 1)
-assert.equal(ledger.ledgerId, 'de-gymnasium-physik-semantic-kinds-v1')
+// The adopted ledger revision retains the separate embedded decision-profile identity.
+assert.equal(ledger.ledgerId, 'de-gymnasium-physik-three-boundary-author-20261014-v1')
 assert.equal(
   ledger.profileId,
-  ledger.ledgerId,
-  'Physics profileId is the embedded decision-profile identity, not a phantom ontology profile',
+  'de-gymnasium-physik-semantic-kinds-v1',
+  'Physics profileId must retain the embedded decision-profile identity',
 )
 assert.equal(ledger.profileVersion, '1.0.0')
 assert.equal(ledger.sourceLandscapeId, LANDSCAPE_ID)
@@ -1449,6 +1584,36 @@ const physicsAndMathGoalUniverse: CanonicalAuthoringLandscape = {
 const physicsAndMathGoalById = new Map(
   physicsAndMathGoalUniverseGoals.map((goal) => [goal.id, goal]),
 )
+const mathParentIdsByChild = new Map<string, string[]>()
+mathLandscape.goals.forEach((goal) => goal.contains.map(normalizeGoalRef).forEach((childId) => {
+  mathParentIdsByChild.set(childId, [...(mathParentIdsByChild.get(childId) ?? []), goal.id])
+}))
+const collectRequiredMathContextGoalIds = (seeds: Iterable<string>): Set<string> => {
+  const result = new Set<string>()
+  const stack = [...seeds]
+  while (stack.length > 0) {
+    const goalId = stack.pop()!
+    if (result.has(goalId)) continue
+    const goal = mathGoalById.get(goalId)
+    assert(goal, `Mathematics prerequisite context references unknown goal ${goalId}`)
+    result.add(goalId)
+    stack.push(...goal.contains.map(normalizeGoalRef))
+    const seenAncestors = new Set<string>()
+    const ancestorStack = [goalId]
+    while (ancestorStack.length > 0) {
+      const ancestorId = ancestorStack.pop()!
+      if (seenAncestors.has(ancestorId)) continue
+      seenAncestors.add(ancestorId)
+      const ancestor = mathGoalById.get(ancestorId)
+      assert(ancestor, `Mathematics contains graph references unknown ancestor ${ancestorId}`)
+      stack.push(...ancestor.requires.map(normalizeGoalRef))
+      ancestorStack.push(...(mathParentIdsByChild.get(ancestorId) ?? []))
+    }
+  }
+  return result
+}
+const retainedHistoricalMathSupportOccurrences = new Map<string, number>()
+let authoredMathSupportRootOccurrences = 0
 const effectivePhysicsRequiresByGoalId = new Map<string, string[]>()
 landscapeWithSemanticKinds.goals.forEach((goal) => {
   const effectiveRequires = new Set(goal.requires.map(normalizeGoalRef))
@@ -1711,11 +1876,31 @@ allPhysicsViewPaths.forEach((viewPath) => {
   })
 
   assert.deepEqual(
-    [...authoredForeignPrerequisiteRootById.keys()].sort(compareCodePoints),
-    [...expectedForeignPrerequisiteIds].sort(compareCodePoints),
-    `${view.viewId} prerequisite-only support roots must exactly match effective foreign requires of authored available Physics goals`,
+    [...expectedForeignPrerequisiteIds].filter((goalId) => !authoredForeignPrerequisiteRootById.has(goalId)),
+    [],
+    `${view.viewId} must author every effective direct foreign prerequisite as support`,
   )
-  expectedForeignPrerequisiteIds.forEach((goalId) => {
+  const requiredMathContextGoalIds = collectRequiredMathContextGoalIds(expectedForeignPrerequisiteIds)
+  const adoptedSupport = ADOPTED_PHYSICS_MATH_SUPPORT_ROOTS.get(view.viewId)
+  assert(adoptedSupport, `${view.viewId} has no exact adopted support-set fixture`)
+  const authoredSupportRoots = [...authoredForeignPrerequisiteRootById.values()]
+    .sort((left, right) => compareCodePoints(left.goalId, right.goalId))
+  assert.equal(authoredSupportRoots.length, adoptedSupport.count, `${view.viewId} adopted support count drifted`)
+  assert.equal(
+    sha256(authoredSupportRoots.map(({ goalId, kind }) => `${goalId}:${kind}\n`).join('')),
+    adoptedSupport.sha256,
+    `${view.viewId} must retain its exact adopted support set, including historical supports`,
+  )
+  authoredMathSupportRootOccurrences += authoredSupportRoots.length
+  authoredForeignPrerequisiteRootById.forEach((_root, goalId) => {
+    if (requiredMathContextGoalIds.has(goalId)) return
+    assert(RETAINED_HISTORICAL_MATH_SUPPORT_IDS.has(goalId),
+      `${view.viewId} unrelated Mathematics support ${goalId} is outside the reviewed context and retention`)
+    retainedHistoricalMathSupportOccurrences.set(goalId,
+      (retainedHistoricalMathSupportOccurrences.get(goalId) ?? 0) + 1)
+  })
+  // The exact snapshot retains existing route gaps; context membership creates no target or mastery.
+  authoredForeignPrerequisiteRootById.forEach((_root, goalId) => {
     const mathGoal = mathGoalById.get(goalId)
     assert(mathGoal, `${view.viewId} foreign prerequisite ${goalId} is not canonical mathematics`)
     const expectedKind = resolveCanonicalNodeType(mathGoal) === 'cluster'
@@ -1742,6 +1927,20 @@ allPhysicsViewPaths.forEach((viewPath) => {
     validatedNationalPhysicsViewIds.add(view.viewId)
   }
 })
+assert.deepEqual(
+  [...ADOPTED_PHYSICS_MATH_SUPPORT_ROOTS.keys()].sort(compareCodePoints),
+  allPhysicsViewPaths.map((path) => normalizeCompositionView(readJson(path)).viewId).sort(compareCodePoints),
+  'the exact adopted support fixture must bind all and only the69 Physics views',
+)
+assert.equal(authoredMathSupportRootOccurrences, 4954, 'all adopted Mathematics support-root occurrences must remain')
+assert.deepEqual(
+  [...retainedHistoricalMathSupportOccurrences].sort(([left], [right]) => compareCodePoints(left, right)),
+  [
+    ['5a9702f4-7e4d-457d-b98c-f0bafcd1e386', 65],
+    ['e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb', 64],
+  ],
+  'only the finite reviewed historical support retention may lie outside current Mathematics context',
+)
 assert.deepEqual(
   [...validatedNationalPhysicsViewIds].sort(compareCodePoints),
   [...NATIONAL_PHYSICS_VIEW_IDS].sort(compareCodePoints),

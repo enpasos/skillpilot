@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: Apache-2.0
+from pathlib import Path
+import json,hashlib,datetime
+R=Path(__file__).resolve().parents[3];O=Path(__file__).resolve().parent
+
+def b(p):
+ raw=p.read_bytes();return {'path':str(p.relative_to(R)),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+def write(n,x):(O/n).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+peer=O/'five-portable-requires.native-independent-peer.v2.json';p=json.loads(peer.read_text());proof=json.loads((O/'portable-transport-comparison-and-native-check.actual.json').read_text());assert json.loads((O/'final-v2-portable-peer.native-focus-check.actual.json').read_text())=={'errors':[],'required':5,'reviewed':5,'open':0};now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+write('HANDOFF.actual.json',{'schemaVersion':1,'recordedAtUtc':now,'status':'EXPLICIT_SAME_REVIEWER_PORTABLE_TRANSPORT_CONTEXT_CONFIRMED; no new whole-five independent science or Main adoption','finalNativePeer':b(peer),'authorLedgerSha256':p['authorLedgerSha256'],'inventorySha256':p['inventorySha256'],'priorScientificPeerSha256':p['priorScientificPeerSha256'],'newScientificWholeFiveReviews':0,'separatePKindHandoffSha256':p['separateNewQualityEvidenceSha256'],'comparison':'All5 substantive decision/action/nominee/scope/native proposal fields equal frozen900f04de authorV2. New decisionId has the exact portable suffix; rationale is old exact text plus the disclosed transport-only suffix. All5 exact before/proposed Goal/P bodies and fullGoal/fullP/nativeprofileFP triples were rechecked. New candidateP owner paths/line locations resolve to unchanged fullP with the exact proposed nativeP context fingerprints from my separate quality review. All45 active paths exist under the private native root and are repository-relative nonsymlinks.','wholeProposedGoalAndPContextChecks':5,'newCandidatePOwnerAuthority':'ai_candidate/needs_human_review','normalNativeCoverage':proof['normalNativeCoverage'],'focusedNativeCoverage':proof['focusedNativeCoverage'],'finalV2NativeFocusedCheck':{'errors':[],'required':5,'reviewed':5,'open':0},'nativeReplayBoundary':'Small native review-validator checks only. No new broad inventory/global graph/M7/proposed-state/runtime replay. Prior exact native proposed5/5 proof is preserved and explicitly reused for the identical proposal bindings.','historicalLink':'Final peer explicitly references the existing portable history/original-requires-peer artifact, rehashed equal to original4d14d3b...; no nonexistent citation remains in the finalpeer.','preparationFailuresRetained':'Three fail-closed assertions initially assumed literal old identifiers/rationale, then oldV1 rather thanV2 suffix, then unchanged shared-owner line numbers. Their scripts and explanations remain. The initial nonfinalpeer also had a wrong historical attribution path; an additiveV2 corrects it, with native binding revalidated. No content or original sealed evidence was changed.','authorityNotCreated':['Main integration','new Requires science beyond prior exact decisions','PKindD quality from transport','source/placement/role approval','route closure','807/478M7','globalCI','human or host approval','learner writes'],'currentIndexMeaning':'The actual current index still has41 pending decisions; these5 are prepared for integration, not silently closed by this transport peer.','writeBoundary':'Only this new own TMP packet; prior Requires and PKind packets remain exact. No Main/Git/Docs/CP/image/learner/source-view/graph writes.','outputManifest':'OUTPUT-MANIFEST.actual.json','seal':'SEAL.actual.json'})
+parsed=0
+for q in O.rglob('*'):
+ if q.is_symlink():raise RuntimeError('Unexpected symlink')
+ if q.is_file() and q.suffix in ['.json','.jsonl']:
+  if q.suffix=='.json':json.loads(q.read_text())
+  else:
+   for l in q.read_text().splitlines():
+    if l.strip():json.loads(l)
+  parsed+=1
+manifest={'schemaVersion':1,'recordedAtUtc':now,'jsonAndJsonlFilesParsed':parsed,'files':[b(q) for q in sorted(O.rglob('*')) if q.is_file() and q.name not in ['OUTPUT-MANIFEST.actual.json','SEAL.actual.json']]};write('OUTPUT-MANIFEST.actual.json',manifest)
+seal={'schemaVersion':1,'recordedAtUtc':now,'handoff':b(O/'HANDOFF.actual.json'),'manifest':b(O/'OUTPUT-MANIFEST.actual.json'),'finalNativePeer':b(peer),'files':len(manifest['files']),'allJsonParsedAndAllBytesRehashed':True,'newWholeFiveScientificReviews':0,'noMainOrNewQualityAuthority':True};write('SEAL.actual.json',seal)
+for row in manifest['files']:assert b(R/row['path'])==row
+print(json.dumps({'HANDOFF':b(O/'HANDOFF.actual.json'),'SEAL':b(O/'SEAL.actual.json'),'finalNativePeer':b(peer),'files':len(manifest['files'])}))

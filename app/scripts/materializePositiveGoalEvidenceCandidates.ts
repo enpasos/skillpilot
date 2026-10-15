@@ -1,4 +1,5 @@
 import { createHash, randomUUID } from 'node:crypto'
+import { collectRequiredTaskMaterialDigests } from './goalEvidenceTaskMaterials'
 import { existsSync } from 'node:fs'
 import { readFile, rename, rm, writeFile } from 'node:fs/promises'
 import { basename, dirname, relative, resolve, sep } from 'node:path'
@@ -133,7 +134,9 @@ const resourceDigestsForGoal = async (
   goal: LearningGoal,
   reviewedResourceTypes: ReadonlySet<string>,
 ) => {
-  const digests: Record<string, string> = {}
+  const taskState = collectRequiredTaskMaterialDigests(goal, REPOSITORY_ROOT)
+  if (taskState.errors.length) throw new Error(taskState.errors.join('; '))
+  const digests: Record<string, string> = { ...taskState.digests }
   if (!reviewedResourceTypes.has('goal-visualization')) return digests
 
   for (const link of goal.resourceLinks ?? []) {

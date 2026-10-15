@@ -1,0 +1,99 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "self-induction-692-current-owner-informed-author-20261015-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+  "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+  "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+  "goalFingerprint": "sha256:02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad",
+  "reviewInputFingerprint": "sha256:53671e1f279ed21ce91c8ef36353279fe4572dc4b59f5f63e93f8a6c464f1a49",
+  "profileFingerprint": "sha256:4785bc814eb5081658c2c65ab9563b1242e65b9a3809a5929acb9fcb687d14ad",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-15T05:47:28.568824+00:00",
+  "reviewer": "/root/self_induction_two_goal_current_owner_requires_integration_author; GPT-6.1 Sol Ultra configured; serving build unobserved; informed current owner author, not independent peer",
+  "reason": "DE: Nach eigener vollständiger Lektüre beider Sprachen, sämtlicher Erwartungen, Coverage, Achsen und Fälle wird der exakte additive quantitative Spannungsfolger als aktueller privater Autorenfolger ausgewählt. U_R=RI, passive U_L=U_Quelle-RI und quellfreies U_L=-RI erfüllen die ausdrücklich quantitative Zielbeschreibung, ohne Ableitungsregeln oder DGL-Lösung einzuführen. EN: After own complete bilingual reading of every expectation, coverage rule, axis and case, select the exact additive quantitative-voltage successor as the current private author owner. U_R=RI, passive U_L=U_source-RI, and source-free U_L=-RI satisfy the explicitly quantitative description without derivative rules or ODE solving.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [
+    "Original frozen old-P D A found adequacy; original frozen old-P D B identified the quantitative-voltage gap. Both genuine reviews and their old-P inputs remain intact.",
+    "Separate Root whole-new-P scientific KEEP is retained exactly. This fresh current owner author is not that peer, a human approval, or an assertion that old D A/B read the new P. Native approved remains 0; needs_human_review 1."
+  ],
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "rl-current-is-continuous-and-exponential",
+        "essentialUnderstandingDe": "Im idealisierten linearen RL-Kreis kann der Spulenstrom nicht sprunghaft ändern. Widerstand und Selbstinduktion erzeugen exponentielle Ein- und Ausschaltverläufe mit physikalisch bestimmten Anfangs- und Grenzwerten. Dabei bezeichnet R den gesamten wirksamen Serienwiderstand des jeweiligen geschlossenen Strompfads; die Stromstetigkeit setzt endliche Spannungen voraus. Bei passiven Spannungsbezugsrichtungen in der markierten Stromrichtung gilt U_R(t) = R I(t), U_L(t) = U_Quelle(t) − R I(t) und U_Quelle = U_R + U_L. U_L ist die ideale induktive Klemmenspannung; die Selbstinduktions-EMK hat bei gleicher Umlaufrichtung das entgegengesetzte Vorzeichen. Nach einem Spannungssprung sind die Abweichungen vom jeweiligen Grenzwert exponentiell mit derselben Zeitkonstante.",
+        "essentialUnderstandingEn": "In an idealized linear RL circuit, inductor current cannot change discontinuously. Resistance and self-induction produce exponential switch-on and switch-off transients with physically determined initial and limiting values. Here R denotes the total effective series resistance of the relevant closed current path; current continuity presumes finite voltages. With passive voltage reference directions along the marked current direction, U_R(t) = R I(t), U_L(t) = U_source(t) − R I(t), and U_source = U_R + U_L. U_L is the ideal inductive terminal voltage; the self-induced emf has the opposite sign for the same circulation direction. After a voltage step, deviations from the respective limiting values are exponential with the same time constant.",
+        "observablePerformanceDe": "Die lernende Person ordnet aus frischen Strom- und Spannungsdaten Schaltphase und Bauteilgrößen zu, bestimmt Anfangs- und Grenzwerte und verwirft einen Verlauf mit unzulässigem Stromsprung. Sie analysiert auch die quantitativen Verläufe U_R(t) und U_L(t) anhand dieser Zusammenhänge, nennt ihre Bezugsrichtungen und bestimmt Spannungsamplituden, Anfangs- und Grenzwerte sowie die gemeinsame Zeitskala. Sie koordiniert Strom- und Spannungskurven und prüft die Maschenbeziehung; beim Ausschalten in einem geschlossenen quellfreien resistiven Pfad gilt U_Quelle = 0 und damit U_L = −U_R.",
+        "observablePerformanceEn": "From fresh current and voltage data, the learner identifies switching phase and component quantities, determines initial and limiting values, and rejects a curve with an inadmissible current jump. The learner also analyzes quantitative U_R(t) and U_L(t) histories through these relations, states the reference directions, and determines voltage amplitudes, initial and limiting values, and the shared timescale. The learner coordinates current and voltage curves and checks the loop relation; during switch-off into a closed source-free resistive path, U_source = 0, hence U_L = −U_R."
+      },
+      {
+        "id": "time-constant-connects-graph-and-components",
+        "essentialUnderstandingDe": "Die Zeitkonstante τ = L/R legt die Zeitskala fest; nach τ ist beim Einschalten ein charakteristischer Anteil des Endwerts erreicht. Bei bekanntem R erlaubt eine aus Daten bestimmte Zeitkonstante die Bestimmung von L.",
+        "essentialUnderstandingEn": "The time constant τ = L/R sets the timescale; after one τ a characteristic fraction of the final switch-on value is reached. With known R, a time constant determined from data allows L to be found.",
+        "observablePerformanceDe": "Die lernende Person bestimmt τ aus Graph, Tabellenwerten oder einem geeigneten Fit, berechnet L mit Einheit und gibt eine datenangemessene Genauigkeit statt Scheingenauigkeit an.",
+        "observablePerformanceEn": "The learner determines τ from a graph, tabulated values, or an appropriate fit, calculates L with units, and reports precision appropriate to the data rather than false precision."
+      },
+      {
+        "id": "changed-parameters-predict-transient",
+        "essentialUnderstandingDe": "Größeres L verlangsamt und größeres R beschleunigt über τ = L/R bei sonst gleichem Serien-RL-Modell die zeitliche Annäherung. Bei einem Spannungssprung bestimmen Quellenspannung und Gesamtwiderstand gemeinsam den stationären Grenzstrom U/R, während die Anfangsbedingung den Startwert festlegt; Spannungspolungen folgen der jeweiligen Schaltphase.",
+        "essentialUnderstandingEn": "Larger L slows and larger R speeds the approach through τ = L/R in an otherwise unchanged series RL model. For a voltage step, source voltage and total resistance jointly determine the steady-state limiting current U/R, while the initial condition sets the starting value; voltage polarities follow the switching phase.",
+        "observablePerformanceDe": "Vor Auswertung eines neuen Datensatzes sagt die lernende Person getrennt voraus, wie R und L die Zeitkonstante, wie Quellenspannung und R den Grenzstrom und wie der Anfangsstrom den Startwert verändern, und prüft die Prognose an Verlauf und Residuen.",
+        "observablePerformanceEn": "Before analyzing a fresh data set, the learner separately predicts how R and L affect the time constant, how source voltage and R affect the limiting current, and how initial current sets the starting value, then checks the prediction against the curve and residuals."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "rl-current-is-continuous-and-exponential",
+        "time-constant-connects-graph-and-components",
+        "changed-parameters-predict-transient"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "transient-type",
+        "textDe": "Einschalten, Ausschalten oder Übergang mit nichtverschwindendem Anfangsstrom",
+        "textEn": "Switch-on, switch-off, or transition with nonzero initial current"
+      },
+      {
+        "id": "component-change",
+        "textDe": "Änderung von R, L oder beiden bei unterschiedlicher Zeitkonstante",
+        "textEn": "Change of R, L, or both with different time constants"
+      },
+      {
+        "id": "data-quality",
+        "textDe": "Glatter Modellgraph, verrauschte Tabelle oder Datensatz mit erkennbarem Offset",
+        "textEn": "Smooth model curve, noisy table, or data set with a detectable offset"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "extract-inductance-from-switch-on-data",
+        "taskDemandDe": "Für einen RL-Kreis mit bekanntem R sind Strommesswerte nach dem Einschalten samt Unsicherheiten gegeben. Bestimme Endwert und τ, berechne L und prüfe, ob ein exponentielles Modell die Daten angemessen beschreibt. Die konstante Quellenspannung, der gesamte wirksame Serienwiderstand und der stromlose Anfangszustand sind angegeben. Bestimme zusätzlich die quantitativen Widerstands- und idealen Spulenklemmenspannungsverläufe mit ausdrücklich festgelegten passiven Polungsbezügen, einschließlich ihrer Amplituden, Anfangs- und Grenzwerte, und prüfe ihre Summe.",
+        "taskDemandEn": "For an RL circuit with known R, current measurements after switch-on are supplied with uncertainties. Determine the final value and τ, calculate L, and check whether an exponential model adequately describes the data. The constant source voltage, total effective series resistance, and zero-current initial state are specified. Additionally determine quantitative resistor and ideal inductor terminal-voltage histories with explicitly declared passive polarity references, including amplitudes and initial and limiting values, and check their sum.",
+        "expectedPerformanceDe": "Die lernende Person nutzt mehrere Datenpunkte oder einen Fit, erhält L = Rτ mit Einheit, vergleicht Abweichungen mit Unsicherheiten und formuliert eine begrenzte Modellentscheidung. Sie erhält aus demselben Modell U_R(t) = R I(t) und U_L(t) = U_Quelle − R I(t): U_R steigt von 0 auf U_Quelle, U_L fällt von U_Quelle auf 0, beide mit derselben Zeitkonstante. Die Summe bleibt U_Quelle. Sie verbindet die numerischen Spannungswerte mit den Stromdaten und kennzeichnet deren datenbedingte Genauigkeit; eine bloße Polungsangabe genügt nicht.",
+        "expectedPerformanceEn": "The learner uses multiple data points or a fit, obtains L = Rτ with units, compares deviations with uncertainties, and states a bounded model judgment. From the same model, the learner obtains U_R(t) = R I(t) and U_L(t) = U_source − R I(t): U_R rises from 0 to U_source, while U_L falls from U_source to 0, both with the same time constant. Their sum remains U_source. The learner connects numerical voltage values to the current data and indicates their data-limited precision; merely stating polarity is insufficient.",
+        "understandingFocusDe": "Der Fall prüft die quantitative Verbindung von Kurve, Zeitkonstante und Bauteilwert. Die zugehörigen quantitativen Spannungskurven werden am selben Fall mitgeprüft.",
+        "understandingFocusEn": "The case tests the quantitative link among curve, time constant, and component value. The associated quantitative voltage curves are also assessed within the same case."
+      },
+      {
+        "id": "resistance-change-switch-off-transfer",
+        "taskDemandDe": "Derselbe geladene Induktor wird über zwei verschiedene Widerstände entladen. Prognostiziere vorab die relative Zeitkonstante, ordne zwei unbekannte Stromkurven zu und erkläre Anfangswert sowie Spannungspolung. Für beide geschlossenen quellfreien Entladepfade sind derselbe positive Anfangsstrom I₀ und der jeweilige gesamte wirksame Widerstand angegeben. Sage auch die Änderung des anfänglichen Spannungsbetrags voraus, ordne neue Widerstands- und Spulenspannungskurven zu und bestimme ihre quantitativen Verläufe mit festgelegten passiven Polungsbezügen.",
+        "taskDemandEn": "The same energized inductor is discharged through two different resistors. Predict the relative time constants, assign two unlabeled current curves, and explain the initial value and voltage polarity. For both closed source-free discharge paths, the same positive initial current I₀ and the respective total effective resistance are specified. Also predict the change in initial voltage magnitude, assign fresh resistor and inductor voltage curves, and determine their quantitative histories with declared passive polarity references.",
+        "expectedPerformanceDe": "Die lernende Person erkennt τ = L/R, ordnet dem größeren R den schnelleren Abfall zu, erhält den kontinuierlichen gemeinsamen Anfangsstrom und begründet die Ausschaltpolung aus Selbstinduktion. Mit I(t) = I₀ exp(−t/τ) bestimmt sie U_R(t) = R I₀ exp(−t/τ) und U_L(t) = −R I₀ exp(−t/τ). Größeres R erzeugt bei gleichem I₀ und L den größeren anfänglichen Spannungsbetrag und die kürzere Zeitkonstante; beide Spannungen gehen gegen 0 und ihre Summe ist 0. Sie begründet, warum die Spulenklemmenspannung ihre Polung wechseln darf, obwohl der Strom stetig bleibt.",
+        "expectedPerformanceEn": "The learner uses τ = L/R, assigns faster decay to the larger R, preserves the common continuous initial current, and justifies switch-off polarity from self-induction. Using I(t) = I₀ exp(−t/τ), the learner determines U_R(t) = R I₀ exp(−t/τ) and U_L(t) = −R I₀ exp(−t/τ). With I₀ and L fixed, larger R gives a larger initial voltage magnitude and a shorter time constant; both voltages tend to 0 and sum to 0. The learner explains why the inductor terminal voltage may reverse polarity while current remains continuous.",
+        "understandingFocusDe": "Der Transfer prüft Parameterwirkung und physikalische Randwerte an einer anderen Schaltphase. Der quantitative Spannungsbetrag und seine Zeitentwicklung bleiben mit derselben Parameteränderung verbunden.",
+        "understandingFocusEn": "The transfer tests parameter effects and physical boundary values in a different switching phase. Quantitative voltage magnitude and its time dependence stay linked to the same parameter change."
+      }
+    ]
+  }
+}

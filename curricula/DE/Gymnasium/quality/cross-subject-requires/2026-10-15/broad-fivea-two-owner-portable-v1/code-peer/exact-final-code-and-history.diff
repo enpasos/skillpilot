@@ -1,0 +1,734 @@
+--- Main/scripts/goal_visualization_paths.mjs
++++ reviewed-private/scripts/goal_visualization_paths.mjs
+@@ -0,0 +1,16 @@
++// SPDX-License-Identifier: Apache-2.0
++const PREFIX = '/assets/goal-visualizations/'
++
++/** Literal authored asset paths; no decoding or traversal normalization. */
++export function goalVisualizationAssetSegments(url) {
++  if (typeof url !== 'string' || !url.startsWith(PREFIX)) return null
++  const suffix = url.slice(PREFIX.length)
++  // Negative character testing also rejects a final newline, unlike `$`.
++  // This matches the authored ASCII path contract used by the book runtime.
++  if (!suffix || /[^A-Za-z0-9/_.-]/u.test(suffix)) return null
++  const segments = suffix.split('/')
++  if (segments.length < 3 || segments.some((segment) => (
++    !segment || segment === '.' || segment === '..'
++  ))) return null
++  return segments
++}
+--- Main/scripts/goal_visualization_paths.d.mts
++++ reviewed-private/scripts/goal_visualization_paths.d.mts
+@@ -0,0 +1 @@
++export function goalVisualizationAssetSegments(url: unknown): string[] | null
+--- Main/scripts/test_goal_visualization_paths.mjs
++++ reviewed-private/scripts/test_goal_visualization_paths.mjs
+@@ -0,0 +1,115 @@
++// SPDX-License-Identifier: Apache-2.0
++import assert from 'node:assert/strict'
++import fs from 'node:fs'
++import os from 'node:os'
++import path from 'node:path'
++import { spawnSync } from 'node:child_process'
++import { fileURLToPath } from 'node:url'
++import { goalVisualizationAssetSegments } from './goal_visualization_paths.mjs'
++
++const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
++const prefix = '/assets/goal-visualizations/'
++const traffic = '4a2bf015-052b-4af0-aed7-324259fa1a8a'
++const acceleration = 'e4b38061-1f28-43ad-8371-a3e7c0e81856'
++const nested = `${prefix}physik/${traffic}/model-boundaries-v2/${traffic}.png`
++assert.deepEqual(goalVisualizationAssetSegments(nested), ['physik', traffic, 'model-boundaries-v2', `${traffic}.png`])
++assert.deepEqual(goalVisualizationAssetSegments(`${prefix}physik/${traffic}/${traffic}.jpg`), ['physik', traffic, `${traffic}.jpg`])
++
++const unsafe = [
++  '', '/assets/other/physik/id/id.png', '//assets/goal-visualizations/physik/id/id.png',
++  `${prefix}physik/id`, `${prefix}physik/id/`, `${prefix}physik//id.png`,
++  `${prefix}physik/./id.png`, `${prefix}physik/../id.png`,
++  `${prefix}physik/id/v2/../id.png`, `${prefix}physik/id/v2/./id.png`,
++  `${prefix}physik/id/v2//id.png`, `${prefix}physik/id\\v2/id.png`,
++  `${prefix}physik/id/id.png?x=1`, `${prefix}physik/id/id.png#x`,
++  `${prefix}physik/id/%2e%2e/id.png`, `${prefix}physik/id/%2E%2E/id.png`,
++  `${prefix}physik/id/%252e%252e/id.png`, `${prefix}physik/id/v2%2fid.png`,
++  `${prefix}physik/id/v2%5Cid.png`, `${prefix}physik/id/%00/id.png`,
++  `${prefix}physik/id/id.png\n`, `${prefix}physik/id/id.png\r`,
++  `${prefix}physik/id/id.png\u0000`, `${prefix}physik/id/id.png\t`,
++  `${prefix}physik/id/naïve.png`, `${prefix}physik/id/..／id.png`,
++]
++for (const value of unsafe) assert.equal(goalVisualizationAssetSegments(value), null, JSON.stringify(value))
++
++// Every current legacy URL retains exactly the previous three-component map.
++let legacyMappings = 0
++const canonicalDir = path.join(repoRoot, 'curricula/DE/Gymnasium/canonical')
++for (const name of fs.readdirSync(canonicalDir).filter((n) => n.endsWith('.json'))) {
++  const document = JSON.parse(fs.readFileSync(path.join(canonicalDir, name), 'utf8'))
++  for (const goal of document.goals ?? []) for (const link of goal.resourceLinks ?? []) {
++    if (link.type !== 'goal-visualization') continue
++    const legacy = link.url.match(/^\/assets\/goal-visualizations\/([^/]+)\/([^/]+)\/([^/]+)$/u)
++    if (!legacy) continue
++    const next = goalVisualizationAssetSegments(link.url)
++    assert(next, link.url)
++    assert.equal(path.join('canonical', ...next), path.join('canonical', legacy[1], legacy[2], legacy[3]), link.url)
++    legacyMappings++
++  }
++}
++assert(legacyMappings > 1000)
++
++// Exercise the actual asset checker on a bounded physical fixture, retaining
++// root-containment, owner/filename and exact three-copy hash checks.
++const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'skillpilot-visualization-paths-'))
++let nativeChecks = 0
++try {
++  fs.mkdirSync(path.join(fixture, 'scripts/config'), { recursive: true })
++  for (const name of ['check_goal_visualization_assets.mjs', 'goal_visualization_paths.mjs']) {
++    fs.copyFileSync(path.join(repoRoot, 'scripts', name), path.join(fixture, 'scripts', name))
++  }
++  // Native checker also uses the established scope contract.
++  fs.copyFileSync(path.join(repoRoot, 'scripts/goal_visualization_scope.mjs'), path.join(fixture, 'scripts/goal_visualization_scope.mjs'))
++  const source = JSON.parse(fs.readFileSync(path.join(canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), 'utf8'))
++  const doc = { ...source, goals: source.goals.filter((g) => [traffic, acceleration].includes(g.id)) }
++  assert.equal(doc.goals.length, 2)
++  const goal = doc.goals.find((g) => g.id === traffic)
++  const oldRelative = `physik/${traffic}/${traffic}.jpg`
++  const history = JSON.parse(fs.readFileSync(path.join(repoRoot, 'scripts/config/historical-goal-visualization-assets.json'), 'utf8'))
++  const oldPin = history.assets.find((a) => a.path === oldRelative)
++  assert(oldPin)
++  fs.writeFileSync(path.join(fixture, 'scripts/config/historical-goal-visualization-assets.json'), JSON.stringify({ schemaVersion: 1, reason: 'Bounded test retains the actual old traffic JPG.', assets: [oldPin] }))
++  const roots = ['curricula/DE/Gymnasium/visualizations', 'app/public/assets/goal-visualizations', 'backend/src/main/resources/static/assets/goal-visualizations']
++  for (const root of roots) {
++    for (const g of doc.goals) {
++      const url = g.resourceLinks.find((l) => l.type === 'goal-visualization').url
++      const relative = url.slice(prefix.length)
++      const target = path.join(fixture, root, relative)
++      fs.mkdirSync(path.dirname(target), { recursive: true })
++      fs.copyFileSync(path.join(repoRoot, root, relative), target)
++      if (root.startsWith('curricula/')) {
++        fs.copyFileSync(path.join(repoRoot, root, path.dirname(relative), 'prompt.de.md'), path.join(path.dirname(target), 'prompt.de.md'))
++      }
++    }
++    const retained = path.join(fixture, root, oldRelative)
++    fs.mkdirSync(path.dirname(retained), { recursive: true })
++    fs.copyFileSync(path.join(repoRoot, root, oldRelative), retained)
++  }
++  const docPath = path.join(fixture, 'curricula/DE/Gymnasium/canonical/two-current.json')
++  fs.mkdirSync(path.dirname(docPath), { recursive: true })
++  const run = (success, contains = '') => {
++    fs.writeFileSync(docPath, JSON.stringify(doc))
++    const result = spawnSync(process.execPath, [path.join(fixture, 'scripts/check_goal_visualization_assets.mjs')], { encoding: 'utf8' })
++    if (success) assert.equal(result.status, 0, result.stderr)
++    else {
++      assert.notEqual(result.status, 0)
++      assert((result.stderr + result.stdout).includes(contains), result.stderr)
++    }
++    nativeChecks++
++  }
++  run(true)
++  const link = goal.resourceLinks.find((l) => l.type === 'goal-visualization')
++  const originalUrl = link.url
++  link.url = originalUrl.replace(`/${traffic}/`, '/wrong-owner/')
++  run(false, 'url must use safe path segments')
++  link.url = originalUrl.replace(`${traffic}.png`, 'wrong-name.png')
++  run(false, 'image filename must be')
++  link.url = originalUrl.replace('/model-boundaries-v2/', '/%2e%2e/')
++  run(false, 'url must use safe path segments')
++  link.url = originalUrl
++  const backend = path.join(fixture, roots[2], originalUrl.slice(prefix.length))
++  fs.appendFileSync(backend, 'changed')
++  run(false, 'asset hashes differ')
++} finally {
++  fs.rmSync(fixture, { recursive: true, force: true })
++}
++console.log(`Goal visualization paths passed: ${legacyMappings} exact legacy mappings, ${unsafe.length} rejected unsafe inputs, nested version accepted, ${nativeChecks} actual bounded native asset-checker cases.`)
+--- Main/scripts/check_goal_visualization_assets.mjs
++++ reviewed-private/scripts/check_goal_visualization_assets.mjs
+@@ -2,6 +2,7 @@
+ import path from 'node:path'
+ import crypto from 'node:crypto'
+ import { fileURLToPath } from 'node:url'
++import { goalVisualizationAssetSegments } from './goal_visualization_paths.mjs'
+ 
+ const scriptDir = path.dirname(fileURLToPath(import.meta.url))
+ const repoRoot = path.resolve(scriptDir, '..')
+@@ -155,19 +156,18 @@
+         fail(`${prefix}: image filename must be ${expectedFileName}.`)
+       }
+ 
+-      const assetRelativePath = link.url.replace('/assets/goal-visualizations/', '')
+-      const assetSegments = assetRelativePath.split('/')
+-      const subjectSegment = assetSegments[0] ?? ''
++      const assetSegments = goalVisualizationAssetSegments(link.url)
++      const subjectSegment = assetSegments?.[0] ?? ''
+       if (
+-        assetSegments.length !== 3
++        !assetSegments
+         || !/^[a-z0-9][a-z0-9-]*$/u.test(subjectSegment)
+         || assetSegments[1] !== goal.id
+-        || assetSegments[2] !== expectedFileName
+-        || assetSegments.some((segment) => segment === '.' || segment === '..' || segment.includes('\\'))
++        || assetSegments.at(-1) !== expectedFileName
+       ) {
+-        fail(`${prefix}: url must use the exact path schema <subject>/${goal.id}/${expectedFileName}.`)
+-        continue
+-      }
++        fail(`${prefix}: url must use safe path segments <subject>/${goal.id}/[version/...]${expectedFileName}.`)
++        continue
++      }
++      const assetRelativePath = assetSegments.join('/')
+       const previousOwner = assetOwners.get(assetRelativePath)
+       if (previousOwner && previousOwner !== prefix) {
+         fail(`${prefix}: asset ${assetRelativePath} is already owned by ${previousOwner}.`)
+--- Main/scripts/generate_goal_visualization_reconstruction_prompts.mjs
++++ reviewed-private/scripts/generate_goal_visualization_reconstruction_prompts.mjs
+@@ -1,5 +1,6 @@
+ import fs from 'node:fs'
+ import path from 'node:path'
++import { goalVisualizationAssetSegments } from './goal_visualization_paths.mjs'
+ 
+ import {
+   ROOT_DIR,
+@@ -192,20 +193,20 @@
+   if (!url.startsWith(prefix)) {
+     throw new Error(`Goal ${goalId} has a primary visualization URL outside ${prefix}.`)
+   }
+-  const assetRelativePath = url.slice(prefix.length)
+-  const segments = assetRelativePath.split('/')
+-  const subject = segments[0] ?? ''
+-  const extension = path.extname(segments[2] ?? '').toLowerCase()
++  const segments = goalVisualizationAssetSegments(url)
++  const subject = segments?.[0] ?? ''
++  const extension = path.extname(segments?.at(-1) ?? '').toLowerCase()
+   if (
+-    segments.length !== 3
++    !segments
+     || !/^[a-z0-9][a-z0-9-]*$/u.test(subject)
+     || segments[1] !== goalId
+-    || segments[2] !== `${goalId}${extension}`
++    || segments.at(-1) !== `${goalId}${extension}`
+     || !allowedImageExtensions.has(extension)
+-    || segments.some((segment) => segment === '.' || segment === '..' || segment.includes('\\'))
+   ) {
+     throw new Error(`Goal ${goalId} has an invalid goal-visualization URL schema.`)
+   }
++
++  const assetRelativePath = segments.join('/')
+ 
+   const imagePath = path.resolve(CANONICAL_VISUALIZATION_ROOT, assetRelativePath)
+   if (!imagePath.startsWith(`${CANONICAL_VISUALIZATION_ROOT}${path.sep}`)) {
+--- Main/app/scripts/generateGoalVisualizationQaLedgers.ts
++++ reviewed-private/app/scripts/generateGoalVisualizationQaLedgers.ts
+@@ -2,6 +2,7 @@
+ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+ import path from 'node:path'
+ import { fileURLToPath } from 'node:url'
++import { goalVisualizationAssetSegments } from '../../scripts/goal_visualization_paths.mjs'
+ import {
+   emptyGoalVisualizationAiReview,
+   normalizeGoalVisualizationAiReview,
+@@ -186,14 +187,13 @@
+ }
+ 
+ const publicAssetPathFromUrl = (url: string): string => {
+-  const relativeUrl = url.replace(/^\/+/, '')
+-  return path.join(repoRoot, 'app/public', relativeUrl.replace(/^assets\//u, 'assets/'))
++  const segments = goalVisualizationAssetSegments(url)
++  return segments ? path.join(repoRoot, 'app/public/assets/goal-visualizations', ...segments) : ''
+ }
+ 
+ const canonicalAssetPathFromUrl = (url: string): string => {
+-  const match = url.match(/^\/assets\/goal-visualizations\/([^/]+)\/([^/]+)\/([^/]+)$/u)
+-  if (!match) return ''
+-  return path.join(canonicalAssetRoot, match[1] ?? '', match[2] ?? '', match[3] ?? '')
++  const segments = goalVisualizationAssetSegments(url)
++  return segments ? path.join(canonicalAssetRoot, ...segments) : ''
+ }
+ 
+ const readExistingLedger = (subject: string): GoalVisualizationQaLedger | null => {
+--- Main/app/scripts/reportGoalVisualizationRolloutStatus.ts
++++ reviewed-private/app/scripts/reportGoalVisualizationRolloutStatus.ts
+@@ -2,6 +2,7 @@
+ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+ import { basename, dirname, relative, resolve, sep } from 'node:path'
+ import { fileURLToPath } from 'node:url'
++import { goalVisualizationAssetSegments } from '../../scripts/goal_visualization_paths.mjs'
+ import type { SkillLandscape } from '../src/landscapeTypes'
+ import { isOrdinaryAtomicGoalForVisualization } from '../../scripts/goal_visualization_scope.mjs'
+ import { assertQualityDeferralEvidence } from './goalVisualizationQualityDeferral'
+@@ -320,12 +321,13 @@
+   if (!/^sha256:[0-9a-f]{64}$/u.test(record.assetSha256)
+     || record.aiApprovedAssetSha256 !== record.assetSha256) return false
+ 
+-  const urlParts = linked.url.match(/^\/assets\/goal-visualizations\/([a-z0-9-]+)\/([0-9a-f-]+)\/([0-9a-f-]+\.(?:png|jpe?g|webp))$/iu)
+-  if (!urlParts || urlParts[1] !== subject || urlParts[2] !== linked.goalId) return false
+-  const [, , , fileName] = urlParts
+-  if (!fileName.startsWith(`${linked.goalId}.`)) return false
++  const urlParts = goalVisualizationAssetSegments(linked.url)
++  if (!urlParts || urlParts[0] !== subject || urlParts[1] !== linked.goalId) return false
++  const fileName = urlParts.at(-1)!
++  const extension = fileName.slice(fileName.lastIndexOf('.'))
++  if (!/^\.(?:png|jpe?g|webp)$/iu.test(extension) || fileName !== `${linked.goalId}${extension}`) return false
+   const publicAssetPath = `app/public${linked.url}`
+-  const canonicalAssetPath = `curricula/DE/Gymnasium/visualizations/${subject}/${linked.goalId}/${fileName}`
++  const canonicalAssetPath = `curricula/DE/Gymnasium/visualizations/${urlParts.join('/')}`
+   if (record.publicAssetPath !== publicAssetPath || record.canonicalAssetPath !== canonicalAssetPath) return false
+ 
+   return [publicAssetPath, canonicalAssetPath].every((path) => {
+--- Main/app/scripts/buildSkillpilotExportPackage.ts
++++ reviewed-private/app/scripts/buildSkillpilotExportPackage.ts
+@@ -13,6 +13,7 @@
+ } from 'node:fs'
+ import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
+ import { fileURLToPath } from 'node:url'
++import { goalVisualizationAssetSegments } from '../../scripts/goal_visualization_paths.mjs'
+ import { crc32 } from 'node:zlib'
+ import {
+   defaultMemoryCardReviewConfigDir,
+@@ -473,7 +474,7 @@
+   },
+ }
+ 
+-const GOAL_VISUALIZATION_INDEX_SCHEMA = {
++export const GOAL_VISUALIZATION_INDEX_SCHEMA = {
+   $schema: 'https://json-schema.org/draft/2020-12/schema',
+   $id: 'https://skillpilot.local/schema/goal-visualization-index.schema.json',
+   title: 'SkillPilot goal visualization asset index',
+@@ -510,11 +511,11 @@
+           order: { type: 'integer', minimum: 0 },
+           packagePath: {
+             type: 'string',
+-            pattern: '^assets/goal-visualizations/[^/]+/[^/]+/[^/]+\\.(?:jpg|png)$',
++            pattern: '^assets/goal-visualizations/(?:(?!\\.{1,2}/)[A-Za-z0-9_.-]+/){2,}[A-Za-z0-9_.-]+\\.(?:jpg|png)(?![\\s\\S])',
+           },
+           publicUrl: {
+             type: 'string',
+-            pattern: '^/assets/goal-visualizations/[^/]+/[^/]+/[^/]+\\.(?:jpg|png)$',
++            pattern: '^/assets/goal-visualizations/(?:(?!\\.{1,2}/)[A-Za-z0-9_.-]+/){2,}[A-Za-z0-9_.-]+\\.(?:jpg|png)(?![\\s\\S])',
+           },
+           mediaType: { enum: ['image/jpeg', 'image/png'] },
+           bytes: { type: 'integer', minimum: 0 },
+@@ -1485,7 +1486,7 @@
+   return null
+ }
+ 
+-const selectGoalVisualizationAssets = (
++export const selectGoalVisualizationAssets = (
+   canonicalData: Record<string, JsonValue>,
+   subjectSlug: string,
+   errors: string[],
+@@ -1529,16 +1530,8 @@
+       }
+ 
+       const packagePath = publicUrl.startsWith('/') ? publicUrl.slice(1) : ''
+-      const pathSegments = packagePath.split('/')
+-      const pathIsSafe = publicUrl.startsWith('/')
+-        && !publicUrl.startsWith('//')
+-        && !publicUrl.includes('\\')
+-        && !publicUrl.includes('?')
+-        && !publicUrl.includes('#')
+-        && !publicUrl.includes('\0')
+-        && pathSegments.length > 0
+-        && pathSegments.every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
+-      if (!pathIsSafe) {
++      const pathSegments = goalVisualizationAssetSegments(publicUrl)
++      if (!pathSegments) {
+         errors.push(`${context}: url must be a safe root-relative asset path.`)
+         return
+       }
+@@ -1548,9 +1541,9 @@
+         errors.push(`${context}: only .jpg and .png assets are supported.`)
+         return
+       }
+-      const expectedPackagePath = `assets/goal-visualizations/${subjectSlug}/${goalId}/${goalId}${extension}`
+-      if (packagePath !== expectedPackagePath) {
+-        errors.push(`${context}: url must be /${expectedPackagePath}.`)
++      if (pathSegments[0] !== subjectSlug || pathSegments[1] !== goalId
++        || pathSegments.at(-1) !== `${goalId}${extension}`) {
++        errors.push(`${context}: url must belong to ${subjectSlug}/${goalId} and end in ${goalId}${extension}.`)
+         return
+       }
+       if (basename(packagePath) !== `${goalId}${extension}`) {
+@@ -1797,10 +1790,11 @@
+   return index
+ }
+ 
+-const collectExternalGoalReferences = (
++export const collectExternalGoalReferences = (
+   currentCanonicalPath: string,
+   canonicalData: Record<string, JsonValue>,
+   errors: string[],
++  compositionViews: JsonValue[] = [],
+ ) => {
+   const goals = Array.isArray(canonicalData.goals) ? canonicalData.goals : []
+   const localGoalIds = new Set(goals
+@@ -1839,9 +1833,45 @@
+     })
+   })
+ 
++  // View-only support definitions remain external even when no canonical
++  // requires edge names them. Declaring them does not create a runtime guard,
++  // teachable target, embedded definition, or standalone-readiness claim.
++  const goalRefsInView = (value: JsonValue): Array<{ goalId: string, projectionRole: JsonValue }> => {
++    if (Array.isArray(value)) return value.flatMap(goalRefsInView)
++    if (!isJsonObject(value)) return []
++    return [...(typeof value.goalId === 'string' ? [{ goalId: value.goalId, projectionRole: value.projectionRole ?? 'target' }] : []),
++      ...Object.values(value).flatMap(goalRefsInView)]
++  }
++  const canonicalExternalIds = new Set([...references.values()].flatMap((reference) => isJsonObject(reference) && typeof reference.targetGoalId === 'string' ? [reference.targetGoalId] : []))
++  for (const view of compositionViews) {
++    if (!isJsonObject(view) || typeof view.viewId !== 'string' || !view.viewId.trim()) {
++      errors.push('Composition view is missing its viewId for external-reference declaration')
++      continue
++    }
++    for (const { goalId: targetGoalId, projectionRole } of goalRefsInView(view.rootNodes ?? [])) {
++      if (localGoalIds.has(targetGoalId) || canonicalExternalIds.has(targetGoalId)) continue
++      if (projectionRole !== 'prerequisiteOnly') {
++        errors.push(`External composition-view target is unsupported in a single-subject package: ${view.viewId} to ${targetGoalId}`)
++        continue
++      }
++      const target = externalIndex.get(targetGoalId)
++      if (!target) errors.push(`Unresolved external composition-view reference from ${view.viewId} to ${targetGoalId}`)
++      references.set(`${view.viewId}|composition-view|${targetGoalId}`, {
++        fromViewId: view.viewId,
++        relation: 'composition-view',
++        projectionRole: 'prerequisiteOnly',
++        targetGoalId,
++        targetLandscapeId: target?.targetLandscapeId ?? null,
++        targetFrameworkId: target?.targetFrameworkId ?? null,
++        targetSubject: target?.targetSubject ?? null,
++        targetTitle: target?.targetTitle ?? null,
++      })
++    }
++  }
++
+   return [...references.values()].sort((left, right) => {
+-    const leftKey = isJsonObject(left) ? `${left.fromGoalId ?? ''}|${left.relation ?? ''}|${left.targetGoalId ?? ''}` : ''
+-    const rightKey = isJsonObject(right) ? `${right.fromGoalId ?? ''}|${right.relation ?? ''}|${right.targetGoalId ?? ''}` : ''
++    const leftKey = isJsonObject(left) ? `${left.fromGoalId ?? left.fromViewId ?? ''}|${left.relation ?? ''}|${left.targetGoalId ?? ''}` : ''
++    const rightKey = isJsonObject(right) ? `${right.fromGoalId ?? right.fromViewId ?? ''}|${right.relation ?? ''}|${right.targetGoalId ?? ''}` : ''
+     return compareCodeUnits(leftKey, rightKey)
+   })
+ }
+@@ -2276,7 +2306,7 @@
+     errors.push(`Goal visualizations exceed ${MAX_GOAL_VISUALIZATION_TOTAL_BYTES} total bytes.`)
+   }
+   const memoryCardReviewAudits = selectMemoryCardReviewAudits(canonicalLandscapeId, errors)
+-  const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors)
++  const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors, compositionFiles.map(readJson))
+   const sourceOriginalUrlIssues = sourceExtractionJsonFiles.flatMap(sourceExtractionOriginalUrlIssues)
+   errors.push(...sourceOriginalUrlIssues)
+   const sourceGoalReferences = sourceGoalReferenceIndex(sourceExtractionJsonFiles)
+@@ -2358,7 +2388,7 @@
+     archiveRoot,
+     'data/dependencies/external-goal-references.json',
+     {
+-      note: 'Cross-subject goal references used by this subject landscape. Target metadata is informational and points outside this subject package.',
++      note: 'Cross-subject canonical edges and composition-view definition references used by this subject package. View references do not create requires edges or targets; target metadata points outside this legacy package and does not establish standalone readiness.',
+       references: externalGoalReferences,
+     },
+     'external-dependencies',
+--- Main/app/scripts/validateSubjectExportPackages.ts
++++ reviewed-private/app/scripts/validateSubjectExportPackages.ts
+@@ -3,6 +3,7 @@
+ import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+ import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
+ import { fileURLToPath } from 'node:url'
++import { goalVisualizationAssetSegments } from '../../scripts/goal_visualization_paths.mjs'
+ 
+ type JsonValue =
+   | null
+@@ -679,21 +680,11 @@
+   | 'reviewStatus'
+ >
+ 
+-const expectedGoalVisualizationPath = (subjectSlug: string, goalId: string, extension: string) => (
+-  `assets/goal-visualizations/${subjectSlug}/${goalId}/${goalId}${extension}`
+-)
+-
+ const safeGoalVisualizationPackagePath = (value: string) => {
+-  const segments = value.split('/')
+-  return value.startsWith('assets/goal-visualizations/')
+-    && !value.includes('\\')
+-    && !value.includes('?')
+-    && !value.includes('#')
+-    && !value.includes('\0')
+-    && segments.every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
+-}
+-
+-const collectCanonicalGoalVisualizations = (canonicalData: JsonValue, subjectSlug: string) => {
++  return goalVisualizationAssetSegments(`/${value}`) !== null
++}
++
++export const collectCanonicalGoalVisualizations = (canonicalData: JsonValue, subjectSlug: string) => {
+   const data = jsonObject(canonicalData, 'canonical landscape')
+   const goals = Array.isArray(data.goals) ? data.goals : []
+   const records: CanonicalGoalVisualizationRecord[] = []
+@@ -753,9 +744,10 @@
+         issues.push(`${context}: unsafe or unsupported visualization URL ${publicUrl}`)
+         return
+       }
+-      const expectedPath = expectedGoalVisualizationPath(subjectSlug, goalId, extension)
+-      if (packagePath !== expectedPath) {
+-        issues.push(`${context}: expected /${expectedPath}, got ${publicUrl}`)
++      const segments = goalVisualizationAssetSegments(publicUrl)!
++      if (segments[0] !== subjectSlug || segments[1] !== goalId
++        || segments.at(-1) !== `${goalId}${extension}`) {
++        issues.push(`${context}: expected owner ${subjectSlug}/${goalId} and filename ${goalId}${extension}, got ${publicUrl}`)
+         return
+       }
+       records.push({
+@@ -886,6 +878,31 @@
+     ...(typeof data.goalId === 'string' ? [data.goalId] : []),
+     ...Object.values(data).flatMap(collectGoalIdsFromView),
+   ]
++}
++
++const hasAuthoredSupportReference = (value: JsonValue, goalId: string): boolean => {
++  const roles = (node: JsonValue): JsonValue[] => {
++    if (Array.isArray(node)) return node.flatMap(roles)
++    if (!node || typeof node !== 'object') return []
++    return [...(node.goalId === goalId ? [node.projectionRole ?? 'target'] : []), ...Object.values(node).flatMap(roles)]
++  }
++  const matchingRoles = roles(value)
++  return matchingRoles.length > 0 && matchingRoles.every((role) => role === 'prerequisiteOnly')
++}
++
++export const declaredCanonicalExternalGoalIds = (references: JsonValue[]): Set<string> => new Set(references.flatMap((reference) => {
++  const data = jsonObject(reference, 'external goal reference')
++  return (data.relation === 'contains' || data.relation === 'requires') && typeof data.targetGoalId === 'string' ? [data.targetGoalId] : []
++}))
++
++export const declaredExternalGoalIdsForView = (view: JsonValue, references: JsonValue[]): Set<string> => {
++  const viewData = jsonObject(view, 'composition view')
++  return new Set([...declaredCanonicalExternalGoalIds(references), ...references.flatMap((reference) => {
++    const data = jsonObject(reference, 'external goal reference')
++    return data.relation === 'composition-view' && data.fromViewId === viewData.viewId
++      && data.projectionRole === 'prerequisiteOnly' && typeof data.targetGoalId === 'string'
++      && hasAuthoredSupportReference(viewData.rootNodes ?? [], data.targetGoalId) ? [data.targetGoalId] : []
++  })])
+ }
+ 
+ export const unresolvedCompositionGoalReferences = (
+@@ -1253,17 +1270,15 @@
+       const targetSubject = referenceData.targetSubject
+       const targetLandscapeId = referenceData.targetLandscapeId
+       return typeof targetGoalId === 'string'
+-        && typeof fromGoalId === 'string'
+-        && (relation === 'contains' || relation === 'requires')
++        && (((relation === 'contains' || relation === 'requires') && typeof fromGoalId === 'string')
++          || (relation === 'composition-view' && referenceData.projectionRole === 'prerequisiteOnly'
++            && typeof referenceData.fromViewId === 'string' && referenceData.fromViewId.trim().length > 0))
+         && typeof targetSubject === 'string'
+         && typeof targetLandscapeId === 'string'
+         ? []
+         : [`Malformed external reference: ${JSON.stringify(referenceData)}`]
+     })
+-    const declaredExternalGoalIds = new Set(externalReferences.flatMap((reference) => {
+-      const referenceData = jsonObject(reference, 'external goal reference')
+-      return typeof referenceData.targetGoalId === 'string' ? [referenceData.targetGoalId] : []
+-    }))
++    const canonicalExternalGoalIds = declaredCanonicalExternalGoalIds(externalReferences)
+     counts.externalGoalReferences = externalReferences.length
+     check(
+       checks,
+@@ -1443,7 +1458,9 @@
+         issues.push(`${visualizationKey(record)}: unsafe packagePath/publicUrl`)
+       }
+       const extension = record.mediaType === 'image/jpeg' ? '.jpg' : '.png'
+-      if (record.packagePath !== expectedGoalVisualizationPath(subjectSlug, record.goalId, extension)) {
++      const assetSegments = goalVisualizationAssetSegments(record.publicUrl)
++      if (!assetSegments || assetSegments[0] !== subjectSlug || assetSegments[1] !== record.goalId
++        || assetSegments.at(-1) !== `${record.goalId}${extension}`) {
+         issues.push(`${visualizationKey(record)}: unexpected package path`)
+       }
+       if (record.skillpilotId !== record.goalId || record.role !== 'primary') {
+@@ -1507,8 +1524,8 @@
+ 
+     const containsUnknown = unknownReferences(goals, 'contains')
+     const requiresUnknown = unknownReferences(goals, 'requires')
+-    const undeclaredContainsUnknown = containsUnknown.filter((reference) => !declaredExternalGoalIds.has(reference.targetGoalId))
+-    const undeclaredRequiresUnknown = requiresUnknown.filter((reference) => !declaredExternalGoalIds.has(reference.targetGoalId))
++    const undeclaredContainsUnknown = containsUnknown.filter((reference) => !canonicalExternalGoalIds.has(reference.targetGoalId))
++    const undeclaredRequiresUnknown = requiresUnknown.filter((reference) => !canonicalExternalGoalIds.has(reference.targetGoalId))
+     check(
+       checks,
+       'canonical-contains-references-resolve',
+@@ -1526,10 +1543,25 @@
+ 
+     const goalIdSet = new Set(goalIds)
+     const viewEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/views/`) && entry.endsWith('.json'))
+-    const viewUnknownRefs = viewEntries.flatMap((entry) => unresolvedCompositionGoalReferences(
+-      readZipEntryJson(zipPath, entry), goalIdSet, declaredExternalGoalIds,
+-    )
+-      .map((goalId) => `${entry}: ${goalId}`))
++    const viewsById = new Map(viewEntries.map((entry) => {
++      const view = jsonObject(readZipEntryJson(zipPath, entry), 'composition view')
++      return [view.viewId, view] as const
++    }))
++    const invalidViewDeclarations = externalReferences.flatMap((reference) => {
++      const data = jsonObject(reference, 'external goal reference')
++      if (data.relation !== 'composition-view') return []
++      const view = viewsById.get(data.fromViewId)
++      return view && typeof data.targetGoalId === 'string' && !goalIdSet.has(data.targetGoalId)
++        && hasAuthoredSupportReference(view.rootNodes ?? [], data.targetGoalId) ? [] : [JSON.stringify(data)]
++    })
++    check(checks, 'composition-external-declarations-match-support-references', invalidViewDeclarations.length === 0,
++      invalidViewDeclarations.slice(0, 3).join(' | ') || 'ok')
++    const viewUnknownRefs = viewEntries.flatMap((entry) => {
++      const view = jsonObject(readZipEntryJson(zipPath, entry), 'composition view')
++      const declaredForView = declaredExternalGoalIdsForView(view, externalReferences)
++      return unresolvedCompositionGoalReferences(view, goalIdSet, declaredForView)
++        .map((goalId) => `${entry}: ${goalId}`)
++    })
+     counts.compositionViews = viewEntries.length
+     check(checks, 'composition-views-present', viewEntries.length > 0, `${viewEntries.length} view file(s)`)
+     check(checks, 'composition-view-goal-references-resolve', viewUnknownRefs.length === 0, viewUnknownRefs.slice(0, 5).join(' | ') || 'ok')
+--- Main/scripts/config/historical-goal-visualization-assets.json
++++ reviewed-private/scripts/config/historical-goal-visualization-assets.json
+@@ -180,6 +180,13 @@
+       "supersededBy": "chemie/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e/bef4c8eb-1d80-50fb-88cd-3a9904e38b4e.png",
+       "reason": "Exact historical JPEG retained after actual thermodynamics/RGT scientific defects and sealed independent reviews of the corrected PNG; retention is not approval.",
+       "reviewEvidencePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/checks/final-independent-review-and-scope-summary.actual.json"
++    },
++    {
++      "path": "physik/4a2bf015-052b-4af0-aed7-324259fa1a8a/4a2bf015-052b-4af0-aed7-324259fa1a8a.jpg",
++      "sha256": "b32148fe300167591782bc6aef2e4dd7ae62fdc24e18ab3092ada282f66110a7",
++      "supersededBy": "physik/4a2bf015-052b-4af0-aed7-324259fa1a8a/model-boundaries-v2/4a2bf015-052b-4af0-aed7-324259fa1a8a.png",
++      "reason": "Retain exact former primary JPG and original provider prompt as historical evidence after correction of its unqualified stopping-distance caption. Historical retention does not approve the old caption as a universal following-gap rule.",
++      "reviewEvidencePath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/broad-fivea-two-owner-portable-v1/peer/whole-P-Kind-V-independent-decisions.actual.json"
+     }
+   ]
+ }
+--- Main/app/scripts/testSubjectExportPackageContracts.ts
++++ reviewed-private/app/scripts/testSubjectExportPackageContracts.ts
+@@ -5,20 +5,59 @@
+ import {
+   SKILLPILOT_DATA_LICENSE_CATEGORY,
+   SKILLPILOT_LICENSE_SCOPE_PATH,
++  GOAL_VISUALIZATION_INDEX_SCHEMA,
++  selectGoalVisualizationAssets,
+   buildPackageLicense,
++  collectExternalGoalReferences,
+   buildSubjectExportLicensePolicy,
+   licenseCategoryForRepoSource,
+   sanitizeJsonForPackage,
+   subjectExportLicenseEntries,
+ } from './buildSkillpilotExportPackage'
+ import {
++  declaredCanonicalExternalGoalIds,
++  declaredExternalGoalIdsForView,
+   isKnownSubjectExportLicenseCategory,
+   subjectExportLicenseIssues,
+   unresolvedCompositionGoalReferences,
++  collectCanonicalGoalVisualizations,
+ } from './validateSubjectExportPackages'
+ 
+ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+ const readJson = (path: string) => JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
++
++const trafficId = '4a2bf015-052b-4af0-aed7-324259fa1a8a'
++const trafficGoal = readJson('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
++  .goals.find((goal: { id: string }) => goal.id === trafficId)
++const trafficUrl = `/assets/goal-visualizations/physik/${trafficId}/model-boundaries-v2/${trafficId}.png`
++const nestedGoal = structuredClone(trafficGoal)
++nestedGoal.resourceLinks.find((link: { type: string }) => link.type === 'goal-visualization').url = trafficUrl
++const nestedCanonical = { goals: [nestedGoal] }
++const packageErrors: string[] = []
++const selectedAssets = selectGoalVisualizationAssets(nestedCanonical, 'physik', packageErrors)
++assert.deepEqual(packageErrors, [], 'versioned actual asset passes export selection and file-signature/hash inspection')
++assert.equal(selectedAssets.length, 1)
++assert.equal(selectedAssets[0].record.packagePath, trafficUrl.slice(1))
++assert.equal(selectedAssets[0].record.publicUrl, trafficUrl)
++assert.equal(selectedAssets[0].record.mediaType, 'image/png')
++assert.equal(selectedAssets[0].record.sha256, 'b61d17e625e12d1a28108c92baa63743b223f5947b02fc7b5ad4ed03b52c6dd0')
++assert.deepEqual(collectCanonicalGoalVisualizations(nestedCanonical, 'physik').issues, [])
++const schemaProperties = GOAL_VISUALIZATION_INDEX_SCHEMA.properties.assets.items.properties
++for (const [property, value] of [['packagePath', trafficUrl.slice(1)], ['publicUrl', trafficUrl]] as const) {
++  const pattern = new RegExp(schemaProperties[property].pattern, 'u')
++  assert(pattern.test(value), 'export index schema accepts the same nested path')
++  for (const unsafe of [value + '\n', value + '?x=1', value + '#x', value.replace('/model-boundaries-v2/', '/../'), value.replace('/model-boundaries-v2/', '/%2e%2e/')]) {
++    assert.equal(pattern.test(unsafe), false, `index schema rejects ${JSON.stringify(unsafe)}`)
++  }
++}
++for (const badUrl of [trafficUrl.replace('/physik/', '/mathematik/'), trafficUrl.replace(`/${trafficId}/`, '/wrong-owner/'), trafficUrl.replace(`${trafficId}.png`, 'wrong-name.png'), trafficUrl.replace('/model-boundaries-v2/', '/%252e%252e/'), trafficUrl + '\n']) {
++  const badGoal = structuredClone(nestedGoal)
++  badGoal.resourceLinks.find((link: { type: string }) => link.type === 'goal-visualization').url = badUrl
++  const errors: string[] = []
++  assert.equal(selectGoalVisualizationAssets({ goals: [badGoal] }, 'physik', errors).length, 0)
++  assert(errors.length > 0, 'export builder preserves path safety/subject/goal/filename ownership')
++  assert(collectCanonicalGoalVisualizations({ goals: [badGoal] }, 'physik').issues.length > 0, 'package validator uses the same safe path and owner boundaries')
++}
+ 
+ const licensePolicy = buildSubjectExportLicensePolicy()
+ assert.equal(licensePolicy.defaultSkillpilotDataLicense, 'CC-BY-4.0')
+@@ -138,20 +177,47 @@
+ ))
+ assert(!sanitizedPhysics.includes('curricula/DE/Gymnasium/'), 'Exported Physics must not contain repository-local paths')
+ const physicsIds = new Set(physics.goals.map((goal) => goal.id))
+-const declaredPhysicsDependencies = new Set(physics.goals.flatMap((goal) => [
+-  ...(goal.contains ?? []), ...(goal.requires ?? []),
+-]).filter((id) => !physicsIds.has(id)))
++const physicsViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
++const physicsViewFiles = readdirSync(resolve(repoRoot, physicsViewDir)).filter((file) => file.endsWith('.view.json'))
++const dependencyErrors: string[] = []
++const declaredRecords = collectExternalGoalReferences(
++  resolve(repoRoot, canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), physics, dependencyErrors,
++  physicsViewFiles.map((file) => readJson(`${physicsViewDir}/${file}`)),
++) as Array<{ relation: string, fromGoalId?: string, fromViewId?: string, targetGoalId: string }>
++assert.deepEqual(dependencyErrors, [])
++const declaredPhysicsDependencies = new Set(declaredRecords.map((record) => record.targetGoalId))
++const viewOnlyRecord = declaredRecords.find((record) => record.relation === 'composition-view' && record.targetGoalId === 'e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb')
++assert(viewOnlyRecord?.fromViewId, 'View-only external definitions must be explicitly declared')
++assert(!viewOnlyRecord.fromGoalId, 'A composition declaration must not invent a canonical edge')
++assert(!declaredCanonicalExternalGoalIds([viewOnlyRecord]).has(viewOnlyRecord.targetGoalId), 'View declaration cannot authorize a canonical edge')
++const supportView = { viewId: viewOnlyRecord.fromViewId, rootNodes: [{ kind: 'goalEntry', goalId: viewOnlyRecord.targetGoalId, projectionRole: 'prerequisiteOnly' }] }
++assert(declaredExternalGoalIdsForView(supportView, [viewOnlyRecord]).has(viewOnlyRecord.targetGoalId))
++assert(!declaredExternalGoalIdsForView({ ...supportView, viewId: 'another-view' }, [viewOnlyRecord]).has(viewOnlyRecord.targetGoalId))
++assert(!declaredExternalGoalIdsForView({ ...supportView, rootNodes: [{ kind: 'goalEntry', goalId: viewOnlyRecord.targetGoalId }] }, [viewOnlyRecord]).has(viewOnlyRecord.targetGoalId))
++assert(!declaredExternalGoalIdsForView(supportView, [{ ...viewOnlyRecord, projectionRole: 'target' }]).has(viewOnlyRecord.targetGoalId))
++assert(!declaredExternalGoalIdsForView({ ...supportView, rootNodes: [...supportView.rootNodes, { kind: 'goalEntry', goalId: viewOnlyRecord.targetGoalId }] }, [viewOnlyRecord]).has(viewOnlyRecord.targetGoalId), 'A support declaration must not authorize a second target occurrence')
++const unknownErrors: string[] = []
++collectExternalGoalReferences(resolve(repoRoot, canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), physics, unknownErrors,
++  [{ viewId: 'negative-view', rootNodes: [{ kind: 'goalEntry', goalId: 'unknown-definition', projectionRole: 'prerequisiteOnly' }] }])
++assert(unknownErrors.some((error) => error.includes('Unresolved external composition-view reference')))
++const targetErrors: string[] = []
++const forbiddenTargetRecords = collectExternalGoalReferences(resolve(repoRoot, canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), physics, targetErrors,
++  [{ viewId: 'foreign-target-negative', rootNodes: [{ kind: 'goalEntry', goalId: 'e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb' }] }]) as Array<{ relation: string }>
++assert(targetErrors.some((error) => error.includes('External composition-view target is unsupported')))
++assert(!forbiddenTargetRecords.some((record) => record.relation === 'composition-view'))
++const missingIdErrors: string[] = []
++collectExternalGoalReferences(resolve(repoRoot, canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), physics, missingIdErrors, [{ rootNodes: [] }])
++assert(missingIdErrors.some((error) => error.includes('missing its viewId')))
+ const foreignGoalIds = new Set(readdirSync(resolve(repoRoot, canonicalDir))
+   .filter((file) => file.endsWith('.json') && file !== 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
+   .flatMap((file) => (readJson(`${canonicalDir}/${file}`).goals as Goal[]).map((goal) => goal.id)))
+ for (const id of declaredPhysicsDependencies) {
+   assert(foreignGoalIds.has(id), `External Physics dependency must have a canonical owner: ${id}`)
+ }
+-const physicsViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
+ let checkedViews = 0
+ for (const file of readdirSync(resolve(repoRoot, physicsViewDir)).filter((file) => file.endsWith('.view.json'))) {
+   assert.deepEqual(unresolvedCompositionGoalReferences(
+-    readJson(`${physicsViewDir}/${file}`), physicsIds, declaredPhysicsDependencies,
++    readJson(`${physicsViewDir}/${file}`), physicsIds, declaredExternalGoalIdsForView(readJson(`${physicsViewDir}/${file}`), declaredRecords),
+   ), [], `${file}: every composition reference must be local or declared external`)
+   checkedViews += 1
+ }
+--- Main/app/package.json
++++ reviewed-private/app/package.json
+@@ -170,6 +170,7 @@
+     "quality:goal-visualization-qa": "tsx scripts/generateGoalVisualizationQaLedgers.ts",
+     "check:goal-visualization-qa": "tsx scripts/generateGoalVisualizationQaLedgers.ts --check",
+     "test:goal-visualization-qa-model": "tsx scripts/testGoalVisualizationQaModel.ts",
++    "test:goal-visualization-paths": "node ../scripts/test_goal_visualization_paths.mjs",
+     "test:goal-visualization-scope": "tsx scripts/testGoalVisualizationScope.ts",
+     "test:goal-visualization-deploy": "tsx scripts/testDeployGoalVisualizations.ts",
+     "check:goal-visualization-assets": "node ../scripts/check_goal_visualization_assets.mjs",
+--- Main/run_ci.sh
++++ reviewed-private/run_ci.sh
+@@ -200,6 +200,7 @@
+   echo "--> Testing Goal Visualization QA Approval Model"
+   npm run test:goal-visualization-qa-status
+   npm run test:goal-visualization-qa-model
++  npm run test:goal-visualization-paths
+ 
+   echo "--> Running Learner Goal Selection Validation"
+   npm run validate:learner-goal-selection

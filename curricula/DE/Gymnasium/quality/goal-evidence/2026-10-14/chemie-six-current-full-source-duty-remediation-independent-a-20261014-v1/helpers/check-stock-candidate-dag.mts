@@ -1,0 +1,25 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import ts from '../../../../../../../../app/node_modules/typescript/lib/typescript.js';
+
+const root = process.argv[2];
+const load = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
+const input = load(`${root}/INPUTS.exact-neutral-original-full-primary-and-frozen-bindings.actual.json`);
+const candidateBinding = input.allNeutralInputBindingsVerified.find((b: any) => b.path.endsWith('canonical528.current402-plus-five-duty-atoms.author.inactive.json'));
+const candidate = load(candidateBinding.path);
+const stockPath = 'app/scripts/validateSubjectExportPackages.ts';
+const stockSource = readFileSync(stockPath, 'utf8');
+const start = stockSource.indexOf('const cycleCount = (goals: GoalRecord[]');
+const end = stockSource.indexOf('\nconst collectGoalIdsFromView', start);
+if (start < 0 || end < 0) throw Error('Cannot bind exact stock cycle function');
+const literal = stockSource.slice(start, end).trim();
+const js = ts.transpileModule(literal, { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText;
+const cycleCount = new Function(`${js}\nreturn cycleCount;`)();
+const containsCycles = cycleCount(candidate.goals, 'contains');
+const requiresCycles = cycleCount(candidate.goals, 'requires');
+if (containsCycles || requiresCycles) throw Error('Candidate cycle');
+const ids = new Set(candidate.goals.map((g: any) => g.id));
+const missingReferences = candidate.goals.flatMap((g: any) => ['contains', 'requires'].flatMap(relation => (g[relation] ?? []).filter((id: string) => !ids.has(id)).map((id: string) => ({ from: g.id, relation, id }))));
+if (ids.size !== candidate.goals.length || missingReferences.length) throw Error('Duplicate or unresolved graph IDs');
+writeFileSync(`${root}/CHECK.stock-unmodified-candidate-DAG-and-references.actual.json`, JSON.stringify({ schemaVersion: 1, stockFunction: `${stockPath}:cycleCount`, stockFunctionRawSHA256: createHash('sha256').update(literal).digest('hex'), stockWholeFileRawSHA256: createHash('sha256').update(stockSource).digest('hex'), literalUnmodifiedExceptTypeErasure: true, candidateBinding, nodeCount: candidate.goals.length, distinctGoalIds: ids.size, containsCycles, requiresCycles, missingReferences, graphStatus: 'PASS', scienceApprovalNotImplied: true, noFullGraphOrQSBuild: true }, null, 2) + '\n');
+console.log(JSON.stringify({ nodes: candidate.goals.length, containsCycles, requiresCycles, missingReferences: missingReferences.length }));

@@ -1,0 +1,547 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/composition-supplement/v1/native-acceptance-receipt.schema.json",
+  "title": "Repository-only native supplement admission snapshot; no installed receipt authority",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt",
+    "receiptSha256"
+  ],
+  "properties": {
+    "receipt": {
+      "$ref": "#/$defs/receipt"
+    },
+    "receiptSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "$defs": {
+    "positive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "landscapeId",
+        "configPath",
+        "reviewPath",
+        "reviewId",
+        "goalFingerprint",
+        "profileFingerprint",
+        "reviewInputFingerprint",
+        "recordSha256",
+        "reviewAuthority",
+        "status"
+      ],
+      "properties": {
+        "landscapeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "goalFingerprint": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "profileFingerprint": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "reviewInputFingerprint": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "recordSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reviewAuthority": {
+          "enum": [
+            "ai_candidate",
+            "human"
+          ]
+        },
+        "status": {
+          "enum": [
+            "needs_human_review",
+            "approved"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "reviewAuthority": {
+                "const": "ai_candidate"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "needs_human_review"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "approved"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reviewAuthority": {
+                "const": "human"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "landscapeId",
+        "landscapePath",
+        "rawGoalSha256",
+        "positiveEvidenceOwner"
+      ],
+      "properties": {
+        "landscapeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "landscapePath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rawGoalSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "positiveEvidenceOwner": {
+          "$ref": "#/$defs/positive"
+        }
+      }
+    },
+    "input": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "kind",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "kind": {
+              "const": "file"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "kind",
+            "entries"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "kind": {
+              "const": "directory"
+            },
+            "entries": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "kind"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "kind": {
+              "const": "absent"
+            }
+          }
+        }
+      ]
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "semantic-kind-scope",
+            "description-review-validation",
+            "positive-evidence-validation",
+            "semantic-atomicity-check",
+            "memory-card-check",
+            "visualization-freshness-and-approval-check"
+          ]
+        },
+        "status": {
+          "const": "pass"
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject",
+        "label",
+        "landscapeId",
+        "landscapePath",
+        "currentGoalIds",
+        "denominator",
+        "strictComplete",
+        "percentage",
+        "remaining",
+        "gates",
+        "strictCompleteGoalIds",
+        "deferredVisualizationGoalIds",
+        "requiredChecks",
+        "strictCompletionReady",
+        "issues"
+      ],
+      "properties": {
+        "subject": {
+          "enum": [
+            "mathematik",
+            "physik"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "landscapeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "landscapePath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "currentGoalIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "strictComplete": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "percentage": {
+          "const": "100.0%"
+        },
+        "remaining": {
+          "const": 0
+        },
+        "gates": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "currentDescriptionResolutions",
+            "currentPositiveEvidenceProfiles",
+            "currentSemanticAtomicityDecisions",
+            "currentMemoryReviewDecisions",
+            "currentVisualizationQaRecords"
+          ],
+          "properties": {
+            "currentDescriptionResolutions": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "currentPositiveEvidenceProfiles": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "currentSemanticAtomicityDecisions": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "currentMemoryReviewDecisions": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "currentVisualizationQaRecords": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "strictCompleteGoalIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "deferredVisualizationGoalIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "maxItems": 0
+        },
+        "requiredChecks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          },
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true
+        },
+        "strictCompletionReady": {
+          "const": true
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "maxItems": 0
+        }
+      }
+    },
+    "report": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "reportId",
+        "subjects",
+        "blockingIssueCount"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "reportId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/subject"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "blockingIssueCount": {
+          "const": 0
+        }
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "producerContract",
+        "configPath",
+        "report",
+        "goals",
+        "receiptFormatVersion",
+        "runtime",
+        "sourceInputs",
+        "executableInputs",
+        "executableLaunches"
+      ],
+      "properties": {
+        "producerContract": {
+          "const": "registered-gymnasium-native-acceptance-v2"
+        },
+        "configPath": {
+          "const": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json"
+        },
+        "report": {
+          "$ref": "#/$defs/report"
+        },
+        "goals": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/goal"
+          }
+        },
+        "receiptFormatVersion": {
+          "const": "2.0"
+        },
+        "runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nodeVersion",
+            "nodeExecutable",
+            "nodeExecutableSha256"
+          ],
+          "properties": {
+            "nodeVersion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nodeExecutable": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nodeExecutableSha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "sourceInputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/input"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "executableInputs": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "role",
+              "path",
+              "realPath",
+              "sha256"
+            ],
+            "properties": {
+              "role": {
+                "enum": [
+                  "node",
+                  "esbuild"
+                ]
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "realPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        "executableLaunches": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "role",
+              "path",
+              "realPath",
+              "sha256",
+              "args"
+            ],
+            "properties": {
+              "kind": {
+                "const": "executableLaunch"
+              },
+              "role": {
+                "enum": [
+                  "node",
+                  "esbuild"
+                ]
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "realPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

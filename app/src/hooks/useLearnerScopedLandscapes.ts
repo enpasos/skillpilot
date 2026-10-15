@@ -4,6 +4,7 @@ import type { LandscapeEntry } from './useLandscapes'
 import { prepareLandscapeEntries } from './useLandscapes'
 
 interface Options {
+  packageV1?: boolean
   enabled?: boolean
   refreshToken?: number
 }
@@ -14,10 +15,10 @@ export function useLearnerScopedLandscapes(
   landscapeId: string | undefined,
   language: string,
   skillpilotId: string | undefined,
-  { enabled = true, refreshToken = 0 }: Options = {},
+  { enabled = true, refreshToken = 0, packageV1 = false }: Options = {},
 ) {
   const isActive = enabled && !!landscapeId && !!skillpilotId
-  const requestKey = JSON.stringify([skillpilotId, landscapeId, language, refreshToken])
+  const requestKey = JSON.stringify([skillpilotId, landscapeId, language, refreshToken, packageV1])
   const [result, setResult] = useState<{
     key: string
     entries: LandscapeEntry[]
@@ -46,7 +47,7 @@ export function useLearnerScopedLandscapes(
         }
         const json = (await res.json()) as SkillLandscape[]
         if (signal.aborted) return
-        setResult({ key: requestKey, entries: prepareLandscapeEntries(json), error: null })
+        setResult({ key: requestKey, entries: prepareLandscapeEntries(json, packageV1), error: null })
       })
       .catch((err) => {
         if (signal.aborted) return

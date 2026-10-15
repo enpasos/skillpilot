@@ -1,0 +1,96 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-physics-positive-evidence-v1-b020-magnetism-induction-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+  "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+  "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+  "goalFingerprint": "sha256:6e7bb22629aecef659aa77d7681b80224fd2709c8ad1afa67b7ffb6e0de02a0f",
+  "reviewInputFingerprint": "sha256:c129a7732b9480c44dc4fb0b7e5edb8da6687743d138f0348cb7b03ab34932ee",
+  "profileFingerprint": "sha256:5117b3874164e549e8c55623d24205dc45336d90af48e1fa748388e76492689d",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-08-28T14:30:41.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-020-magnetism-induction-profile-author-candidate-2026-08-28",
+  "reason": "DE: Das Profil entfaltet die detaillierte Round-A-Kernevidenz in unabhängige Anforderungen an geometriegebundene Modellwahl, vektorielle und quantitative Anwendung sowie Gültigkeitsprüfung. Zwei frische Fälle wechseln zwischen Leiter und Spule und erzwingen Vorhersage vor Rechnung; die vorhandene Visualisierung wird nicht als Evidenzquelle gebunden. Der all-keep_current-Beschluss des finalisierten Batch020-Index wird respektiert, ohne menschliche Freigabe zu behaupten. EN: The profile expands the detailed Round-A core evidence into independent requirements for geometry-bound model selection, vector and quantitative application, and validity checking. Two fresh cases switch between conductor and solenoid and require prediction before calculation; the existing visualization is not bound as evidence. The all-keep_current decision in the finalized Batch020 index is respected without claiming human approval.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "geometry-selects-field-model",
+        "essentialUnderstandingDe": "Das Feld eines idealisierten langen geraden Leiters verläuft kreisförmig und fällt in Luft mit 1/r ab; im Inneren einer idealisierten langen Spule ist das Feld fern der Enden näherungsweise homogen und skaliert bei linearem homogenem Kern mit Strom, Windungsdichte und μr. Die Formeln sind deshalb an unterschiedliche Geometrien und Annahmen gebunden.",
+        "essentialUnderstandingEn": "The field of an idealized long straight conductor is circular and decreases as 1/r in air; inside an idealized long solenoid, far from its ends, the field is approximately uniform and scales with current, turn density, and μr for a linear homogeneous core. The formulas are therefore tied to different geometries and assumptions.",
+        "observablePerformanceDe": "Die lernende Person identifiziert in einer neuen Anordnung Leiter- oder Spulenmodell, nennt die relevanten geometrischen Größen und begründet die Auswahl, bevor sie eine Formel verwendet.",
+        "observablePerformanceEn": "For a fresh arrangement, the learner identifies the conductor or solenoid model, names the relevant geometric quantities, and justifies the choice before using a formula."
+      },
+      {
+        "id": "magnitude-direction-and-dependence",
+        "essentialUnderstandingDe": "Betrag und Richtung gehören gemeinsam zum Magnetfeldmodell: B = μ0 I/(2πr) beziehungsweise B ≈ μ0 μr (N/ℓ) I liefern den Betrag, während die Rechte-Hand-Regel die Orientierung aus der Stromrichtung bestimmt.",
+        "essentialUnderstandingEn": "Magnitude and direction jointly define the magnetic-field model: B = μ0 I/(2πr) or B ≈ μ0 μr (N/ℓ) I gives the magnitude, while the right-hand rule determines orientation from current direction.",
+        "observablePerformanceDe": "Die lernende Person sagt Skalierung und Richtungsänderung zunächst qualitativ voraus, berechnet B mit konsistenten Einheiten und zeichnet die Feldorientierung für eine festgelegte Ansicht widerspruchsfrei ein.",
+        "observablePerformanceEn": "The learner first predicts scaling and directional change qualitatively, calculates B with consistent units, and draws the field orientation consistently for a specified view."
+      },
+      {
+        "id": "idealization-limits-transfer",
+        "essentialUnderstandingDe": "Endbereiche, kurze Leiter oder Spulen sowie inhomogene oder nichtlineare Kerne verletzen Annahmen der einfachen Modelle; eine richtige Rechnung innerhalb eines unpassenden Modells ist keine belastbare Feldbestimmung.",
+        "essentialUnderstandingEn": "End regions, short conductors or solenoids, and inhomogeneous or nonlinear cores violate assumptions of the simple models; a correct calculation within an unsuitable model is not a defensible field determination.",
+        "observablePerformanceDe": "Bei veränderter Geometrie oder geändertem Kern grenzt die lernende Person den Bereich ab, in dem die Näherung trägt, benennt die verletzte Annahme und formuliert nur eine entsprechend begrenzte Vorhersage.",
+        "observablePerformanceEn": "When geometry or core material changes, the learner identifies the region where the approximation applies, names the violated assumption, and states only a correspondingly bounded prediction."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "geometry-selects-field-model",
+        "magnitude-direction-and-dependence",
+        "idealization-limits-transfer"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "field-geometry",
+        "textDe": "Gerader Leiter, Spuleninneres, Leiterende oder Spulenrand",
+        "textEn": "Straight conductor, solenoid interior, conductor end, or solenoid edge"
+      },
+      {
+        "id": "current-and-orientation",
+        "textDe": "Stromstärke, Stromumkehr, Abstand und Beobachtungsrichtung",
+        "textEn": "Current magnitude, current reversal, distance, and viewing direction"
+      },
+      {
+        "id": "core-regime",
+        "textDe": "Luft, homogener linearer Kern oder ausdrücklich inhomogener beziehungsweise sättigender Kern",
+        "textEn": "Air, homogeneous linear core, or explicitly inhomogeneous or saturating core"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "conductor-distance-and-reversal",
+        "taskDemandDe": "Für einen langen geraden Leiter sind Strom, zwei Abstände und eine feste Blickrichtung gegeben. Sage vor der Rechnung Verhältnis und Richtung der Felder voraus, berechne beide Beträge und konstruiere die Änderung nach Stromumkehr.",
+        "taskDemandEn": "For a long straight conductor, the current, two distances, and a fixed viewing direction are given. Before calculating, predict the ratio and direction of the fields, calculate both magnitudes, and construct the change after current reversal.",
+        "expectedPerformanceDe": "Die lernende Person nutzt die 1/r-Abhängigkeit, erhält konsistente Tesla-Werte, wendet die Rechte-Hand-Regel bezogen auf die Blickrichtung an und trennt Betragsänderung von Richtungsumkehr.",
+        "expectedPerformanceEn": "The learner uses the 1/r dependence, obtains consistent values in tesla, applies the right-hand rule relative to the viewing direction, and separates magnitude change from direction reversal.",
+        "understandingFocusDe": "Der Fall verbindet quantitative Abhängigkeit und vektorielle Orientierung im Leitermodell.",
+        "understandingFocusEn": "The case connects quantitative dependence and vector orientation in the conductor model."
+      },
+      {
+        "id": "solenoid-core-and-edge-claim",
+        "taskDemandDe": "Eine lange Spule mit linearem Kern wird mit einer halb so großen Windungsdichte neu gewickelt und mit doppeltem Strom betrieben; zusätzlich wird ein Messpunkt nahe dem Spulenende betrachtet. Prognostiziere B im Inneren und beurteile die Aussage, dieselbe Formel liefere am Rand einen exakten Wert.",
+        "taskDemandEn": "A long solenoid with a linear core is rewound with half the turn density and operated at twice the current; a measurement point near the end is also considered. Predict B in the interior and judge the claim that the same formula gives an exact value at the edge.",
+        "expectedPerformanceDe": "Die lernende Person erkennt die kompensierenden Skalierungen im Inneren, bestimmt die Richtung und weist den Exaktheitsanspruch am Endbereich wegen des inhomogenen Randfelds zurück.",
+        "expectedPerformanceEn": "The learner recognizes the compensating interior scalings, determines the direction, and rejects the exactness claim near the end because of the nonuniform fringe field.",
+        "understandingFocusDe": "Der Transfer prüft Modellwahl, Skalierung und explizite Gültigkeitsgrenze an einer anderen Geometrie.",
+        "understandingFocusEn": "The transfer tests model choice, scaling, and an explicit validity limit in a different geometry."
+      }
+    ]
+  }
+}

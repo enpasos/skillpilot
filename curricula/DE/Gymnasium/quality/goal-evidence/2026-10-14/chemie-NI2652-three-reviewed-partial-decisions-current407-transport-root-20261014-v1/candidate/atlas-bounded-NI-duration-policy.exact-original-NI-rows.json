@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-05-22",
+  "description": "Reviewed Gymnasium G8/G9 duration-model decisions for SkillPilot source-extraction scopes. The policy is about source/projection semantics; canonical goals remain shared.",
+  "decisions": [
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_CHEMIE_SEKI_KC2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Niedersachsen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    }
+  ]
+}

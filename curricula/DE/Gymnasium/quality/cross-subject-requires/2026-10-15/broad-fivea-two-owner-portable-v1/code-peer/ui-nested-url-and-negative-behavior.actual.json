@@ -1,0 +1,105 @@
+{
+  "actualExecutor": "/root/eight_scope_guard_successor_independent_peer",
+  "createdAtUTC": "2026-10-15T01:07:56.580Z",
+  "runtimeSource": {
+    "path": "app/src/utils/goalBookRuntime.ts",
+    "bytes": 49148,
+    "sha256": "sha256:506c7f883a7278a8968a29118d026b5faef5196f44003f815d88041b1db1f429"
+  },
+  "actualExistingFixtureSource": {
+    "path": "app/src/utils/goalBookRuntime.test.ts",
+    "bytes": 31380,
+    "sha256": "sha256:61f8c5a1807e9059505fa086eb015e56c099e0a13d1a1abd20fb424e036e7d78"
+  },
+  "fixtureExtraction": "Exact TypeScript AST declarations sha and fixture from existing test, transpiled without executing its test module; only visualization.url varied.",
+  "rows": [
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/goal-a.png",
+      "expected": "accepted_unchanged",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/model-boundaries-v2/goal-a.png",
+      "expected": "accepted_unchanged",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2/reviewed/goal-a.png",
+      "expected": "accepted_unchanged",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/./goal-a.png",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/../goal-a.png",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2//goal-a.png",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2/",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2/goal-a.png?x=1",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2/goal-a.png#hash",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/%2e%2e/goal-a.png",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2%2fother/goal-a.png",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2\\other/goal-a.png",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2/goal-a.png\n",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2/goal-a.png\r\n",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "/assets/goal-visualizations/mathematik/goal-a/v2/goal-a.png\u0000",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "https://skillpilot.invalid/assets/goal-visualizations/mathematik/goal-a/goal-a.png",
+      "expected": "rejected",
+      "passed": true
+    },
+    {
+      "url": "//skillpilot.invalid/assets/goal-visualizations/mathematik/goal-a/goal-a.png",
+      "expected": "rejected",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "backendHttpOrHostExecution": false,
+  "realAssetOwnershipOrBytesValidatedByThisUITest": false
+}

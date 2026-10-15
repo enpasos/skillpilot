@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-existing-math4-fresh-description-author-a-20261015-v1",
+  "campaignId": "physics-existing-math4-current-description-20261015-v1-a",
+  "roundId": "physics-existing-math4-current-description-20261015-v1-first-pass-a",
+  "batchId": "physics-existing-math4-current-description-20261015-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:addaf5ebc2fe52d98098fe4b540279047656ebe9afcc4cfd055fef2eec8268e8",
+  "bundleFingerprint": "sha256:c798ce2e1432b117953cd241ffc4acc1ebc0aab51ee473c45528ef62536f43e8",
+  "bookDigest": "sha256:69152c91c81e6faa35f521df3d366afc46029e74226dcc303b28db33c6cf9358",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "modelVersion": "serving-build-unobserved",
+  "role": "candidate_author",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:7a8d22ad720eca1320ab0390a5acf4fe5fe3f36a43050e5fb96756bd6a48ce89",
+  "independenceGroupId": "physics-existing-math4-current-description-20261015-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+    "bf8517a9-142b-5789-826a-767f3b277998",
+    "ec7a0a68-730b-5c94-ac72-a937508f8303",
+    "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ffa12d5058234032308c83a33afde5cc787623636cf23fd9a2a7aeaa53db732b"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:addaf5ebc2fe52d98098fe4b540279047656ebe9afcc4cfd055fef2eec8268e8"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:022b0332ceede0313681fc7442b2cc05e01e14a19f94966024b872e01c15574d"
+    }
+  ],
+  "startedAt": "2026-10-14T23:44:55.765485+00:00",
+  "completedAt": "2026-10-14T23:44:55.766398+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:c584c2060f75f7c13502e4e3fc8810261832dde9c7c96e771358a605676fcdae",
+  "toolchainVersion": "codex-actual-description-author-v1"
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import type { CompositionSupplementOptions } from '../utils/personalCurriculumEditorApi'
 import {
   AlertTriangle,
   Check,
@@ -22,6 +23,8 @@ import {
 
 export interface PersonalCurriculumEditorProps {
   plan: PersonalizationPlan | null
+  supplementalOptions?: CompositionSupplementOptions | null
+  applySupplementOption?: (optionId: string) => Promise<unknown> | unknown
   loading: boolean
   busy?: boolean
   error: Error | null
@@ -62,6 +65,8 @@ interface MutationFocusIntent {
 
 export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> = ({
   plan,
+  supplementalOptions,
+  applySupplementOption,
   loading,
   busy = false,
   error,
@@ -381,6 +386,32 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
     )
   }
 
+  const preparationChoices = supplementalOptions && applySupplementOption && (supplementalOptions.options.length > 0 || supplementalOptions.problemCode) ? (
+    <div className="rounded-xl border border-border-color p-4 space-y-3">
+      <h3 className="font-semibold">{isEnglish ? 'Mathematics preparation for Physics' : 'Mathematische Vorbereitung für Physik'}</h3>
+      <p className="text-sm text-text-secondary">{isEnglish
+        ? 'Each choice adds the listed Mathematics goals to your personal curriculum. They count toward progress and stay selected when you return to Physics.'
+        : 'Jede Auswahl ergänzt die aufgeführten Mathematikziele in deinem persönlichen Lehrplan. Sie zählen zum Fortschritt und bleiben bei der Rückkehr zur Physik ausgewählt.'}</p>
+      {supplementalOptions.problemCode && <p className="text-sm text-text-secondary" role="status">{supplementalOptions.problemCode === 'COMPOSITION_SUPPLEMENT_V1_UNSUPPORTED_BY_CURRICULUM_SOURCE'
+        ? (isEnglish ? 'This curriculum source does not support Mathematics preparation choices.' : 'Diese Lehrplanquelle unterstützt keine Auswahl mathematischer Vorbereitungen.')
+        : (isEnglish ? 'Current reviewed preparation choices are unavailable. You can remove an existing selection here and review your curriculum scope.' : 'Aktuell geprüfte Vorbereitungen sind nicht verfügbar. Du kannst eine bestehende Auswahl hier entfernen und deinen Lehrplanumfang prüfen.')}</p>}
+      {supplementalOptions.options.map((option) => (
+        <div key={option.optionId} className="rounded-lg border border-border-color p-3 space-y-2">
+          <p className="font-medium">{isEnglish ? option.labelEn : option.label}</p>
+          {option.action === 'ADD' && <>
+            {option.mathCourseProfile && <p className="text-sm">{isEnglish ? 'Mathematics profile' : 'Mathematikprofil'}: {option.mathCourseProfile}</p>}
+            <p className="text-sm">{isEnglish ? 'Additional goals in total progress' : 'Zusätzliche Ziele im Gesamtfortschritt'}: {option.additionalAtomicTargets}</p>
+            <ul className="list-disc pl-5 text-sm">{option.targets.map((target) => <li key={target.goalId}>{isEnglish ? target.titleEn ?? target.title : target.title}</li>)}</ul>
+          </>}
+          <button type="button" disabled={busy || loading} className="min-h-11 rounded-lg border border-border-color px-3 py-2"
+            onClick={() => { void applyAndNotify(() => applySupplementOption(option.optionId)) }}>
+            {option.action === 'ADD' ? (isEnglish ? 'Add this preparation' : 'Diese Vorbereitung hinzufügen') : (isEnglish ? 'Remove this preparation' : 'Diese Vorbereitung entfernen')}
+          </button>
+        </div>
+      ))}
+    </div>
+  ) : null
+
   if (!plan || plan.stage === 'INVALID') {
     return (
       <div className={`rounded-xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20 ${className ?? ''}`} role="alert">
@@ -389,6 +420,7 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
           <div>
             <h3 className="font-semibold text-amber-900 dark:text-amber-200">{copy.invalidTitle}</h3>
             <p className="mt-1 text-sm text-amber-800/80 dark:text-amber-200/80">{copy.invalidBody}</p>
+            {preparationChoices}
             {plan?.problemCode && (
               <p className="mt-2 font-mono text-xs text-amber-700 dark:text-amber-300">{plan.problemCode}</p>
             )}
@@ -438,6 +470,7 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
             </div>
           </div>
         </div>
+        {preparationChoices}
         {renderHistory(plan.completedDecisions)}
         {renderPreservedDecisions(
           plan.preservedDecisions,

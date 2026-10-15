@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-53db-transfer-correction-targeted-independent-a-20261013-v2",
+  "reviewKind": "bounded_P_content_correction_followup",
+  "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+  "caseId": "53db04a0-case-2",
+  "startedAt": "2026-10-13T21:39:09Z",
+  "completedAt": "2026-10-13T21:42:37.820708+00:00",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "decision": "accept_targeted_correction",
+  "provider": "OpenAI",
+  "modelFamily": "GPT-6",
+  "exactModelIdentifier": null,
+  "modelRevision": null,
+  "samplingParameters": null,
+  "modelKnowledgeBoundary": "Active Codex session identifies GPT-6 family only; no hidden deployment revision, sampler, seed or separate API execution is invented.",
+  "independence": {
+    "groupId": "chemie-53db-transfer-correction-targeted-independent-a-20261013-v2",
+    "newPeerFollowupRead": false,
+    "priorOwnEightReviewKnown": true,
+    "freshGlobalDescriptionReviewClaimed": false,
+    "authorRationaleUsedAsApprovalOracle": false
+  },
+  "exactBindings": {
+    "neutralSelector": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-53db-meaningful-transfer-case-targeted-author-20261013-v2/NEUTRAL.targeted53db-case2.exact-input-selector.json",
+      "sha256": "sha256:fa98d3e27a2ccacf8d71f2a5ed85f4fcb54106e8ac3ecac021b344df90b5a4dc"
+    },
+    "authorSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-53db-meaningful-transfer-case-targeted-author-20261013-v2/SEAL.finite-targeted53db-author.actual.json",
+      "sha256": "sha256:05738d64a426481051e067ce89bfb8b783160556cc7becbcd353931900756971"
+    },
+    "wholeCaseCAS": {
+      "serialization": "UTF-8 JSON sorted keys compact plus one LF",
+      "wholeBeforeCellSHA256": "sha256:ccb6bea6cb12cf827d0e2e9dc3b1a92413f95802c28093aec6fcd80e719e0126",
+      "wholeAfterCellSHA256": "sha256:bead30e561e2db7f1d9ed9dc6291f27352b4e0ffc93ca18cd04ff550323c8724"
+    },
+    "wholeProfileCAS": {
+      "serialization": "UTF-8 JSON sorted keys compact plus one LF",
+      "wholeBeforeCellSHA256": "sha256:252ba8b96f092c759e6f4d4ebec86ddd3bcf08caf20f5db87648b91b5f758b0b",
+      "wholeAfterCellSHA256": "sha256:9b68cf682896d7ac3c00960905842f13a11a5675dc1b5151aac0d4041bb1ad67"
+    },
+    "oldProfileFingerprint": "sha256:714fc56b8500c2c333264769cd29578d6debce56095ef0199ce1c5f153206bec",
+    "correctedProfileFingerprint": "sha256:1c3fbfd48c4798e2422797db89f66275da136d9c1a92fe011d655ecfc74566c5",
+    "goalFingerprintUnchanged": "sha256:22652fd19fca2ba96da08b964a2880b43ce14a034fbedbdaa0af66a7fb1306ae",
+    "goalImageReviewInputFingerprintUnchanged": "sha256:73850e89afeaa9ecfc7e83f860d63a0863267a059eb214f32af12326b608039f"
+  },
+  "scope": "Exactly the corrected 53db04a0 case2 and associated scientific P profile/candidate content, with whole original case1 and unchanged full current goal as reference. No new native D, A, M or V decision is materialized.",
+  "chemicalCorrectness": {
+    "decision": "pass",
+    "explanationDe": "X = R–CH(OH)–Ar ist die neutrale Diarylcarbinol-Zwischenstufe nach erster Aromatenaddition und Rearomatisierung: zwei Arylreste, H und OH ergeben vier Bindungen am zentralen C. Die Leukoverbindung R–CH(Ar)₂ trägt dagegen drei Arylreste und H, aber keine OH-Gruppe. Die zusätzliche Strukturdiagnose ist daher fachlich richtig. OH-Protonierung und Wasserabgabe ergeben R–CH(Ar)⁺; zweiter Ringangriff und Ringdeprotonierung bilden R–CH(Ar)₂. Erst danach gilt die deklarierte Leuko-Oxidation R–CH(Ar)₂ → [R–C(Ar)₂]⁺ + H⁺ + 2 e⁻, deren Gesamtladung 0 = +1 +1 −2 ist. Diese Halbreaktion fügt keinen Ar-Rest hinzu. Die Aussage betrifft ausdrücklich diese angegebene Route und macht keine pauschale Aussage über alle Oxidationsreaktionen oder ein unbekanntes Produkt aus X.",
+    "explanationEn": "X = R–CH(OH)–Ar is the neutral diarylcarbinol intermediate after the first arene addition and rearomatization: two aryl groups, H and OH give four central-C bonds. The leuco compound R–CH(Ar)₂ instead bears three aryl groups and H, with no OH group. The new structural diagnosis is chemically sound. OH protonation and water loss give R–CH(Ar)⁺; the second arene attack and ring deprotonation give R–CH(Ar)₂. Only then does the stated leuco oxidation R–CH(Ar)₂ → [R–C(Ar)₂]⁺ + H⁺ + 2 e⁻ apply, with net charge 0 = +1 +1 −2. That half-equation adds no Ar group. This addresses the supplied route specifically and makes no blanket claim about all oxidation reactions or an unknown product from X."
+  },
+  "wholeGoalCoverage": {
+    "decision": "pass",
+    "explanation": "The unchanged whole goal still includes aromatic aldehyde activation, both arene additions, protonation/water-loss steps, rearomatization, leuco formation and charge-balanced oxidation to the dye cation. Original case1 and case2 task1/rubric r1 retain that complete route. Added task2 diagnoses a point inside it; no prerequisite-level mechanism, source duty or full route was removed. The linked profile keeps expectation e2 and both whole data/task/model-answer joins."
+  },
+  "meaningfulTransfer": {
+    "decision": "pass",
+    "changedChemicalCondition": "Reaction progress is interrupted at the first-addition carbinol X, with an incorrect proposal to treat it as the finished leuco compound and apply only leuco oxidation.",
+    "requiredInference": "The learner must compare central-C substituents, distinguish two versus three aryl groups and OH retention, establish that the stated oxidation cannot form the missing aryl C–C bond, and reconstruct the remaining condensation stages before oxidation.",
+    "reason": "The old methyl-substituted aldehyde alone left the same route recital. The new case changes the route state and asks for a justified assessment of a defective proposal. It requires applying atom/bond accounting and process dependencies, not merely substituting R for Ph. The question signals a defect and names the missing bond, but the rubric gives zero for unsupported assertion and requires the structural and mechanistic justification; these cues do not supply the credited reasoning."
+  },
+  "separatelyGradedInference": {
+    "decision": "pass",
+    "criterionId": "53db04a0-case-2-r2",
+    "maximumPoints": 2,
+    "caseMaximumPoints": 4,
+    "originalRoutineCriterion": "53db04a0-case-2-r1",
+    "explanation": "r2 is linked to the new exact DE/EN task spans and grades justified structure mismatch, inability of the specified half-equation to supply the bond, and the remaining-stage order. The old complete-route r1 remains unchanged. Thus routine construction cannot receive the new inference credit by itself. Partial credit for one justified inference does not claim complete transfer or automatic goal mastery; the profile and grading boundary retain evidence-based completion."
+  },
+  "bilingualAndAssistanceBoundaries": {
+    "decision": "pass",
+    "explanation": "DE/EN data, demands, answers and r2 criteria preserve the same chemical claims. Other oxidation products of X are explicitly excluded; neither real synthesis nor a practical handling action is demanded. Whole task2 reasoning is demanded independently rather than provided as a solved model in the learner-facing data. The two case variants and two evidence pieces are not asserted as an additional-task quota."
+  },
+  "residualBlockingFindings": [],
+  "nonBlockingNotes": [
+    "This acceptance applies to the exact corrected P content and its new profile fingerprint. A fresh current native description/page review must bind that fingerprint before any current D conclusion is reused; this run does not perform that native rebind.",
+    "The former eight-goal verdict bytes and e56040b5 NON_ATOMIC finding remain immutable and are not resolved by this correction."
+  ],
+  "claims": {
+    "authoritativePApproval": false,
+    "currentNativeDApproval": false,
+    "newStrictCompletions": 0,
+    "humanApproval": false,
+    "realLearnerEvidence": false,
+    "realLaboratoryExecution": false,
+    "activeCurriculumWrites": false,
+    "gitWrites": false,
+    "runtimeAcceptance": false
+  }
+}

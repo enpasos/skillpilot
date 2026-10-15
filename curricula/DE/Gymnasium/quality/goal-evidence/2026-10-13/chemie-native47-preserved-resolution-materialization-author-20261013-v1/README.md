@@ -1,0 +1,11 @@
+# Erhaltene 47 native Chemie-Reviewpaare: technische Materialisierung
+
+Diese additive Vorbereitung kopiert die drei originalen nativen Prüfgruppen (18 Polymer-, 19 Aromaten-, 16 Kontextziele) und die tatsächlichen unabhängigen A/B-Urteile bytegenau. Alle 381 Originaldateien unter N, A und B bleiben erhalten und unverändert. Die eigenen geschlossenen Konfigurationen ändern nur das Ausgabeverzeichnis; die eigenen Transportmanifeste binden nur diesen neuen Konfigurationspfad und seinen Digest. Revieweingaben, Bundles, PDFs, Datensätze, Run-IDs und vorhandene Zeitangaben bleiben exakt.
+
+Die regulären Prepared-Checks bestehen für alle drei Gruppen. Alle tatsächlichen A-Ergebnisse bestehen auch die reguläre Ergebniskontrolle. Die B-Urteilsdatensätze sind echte, gültige fachliche Datensätze; ihre bisherigen Begleitdateien sind jedoch eigene Metadatenzusammenfassungen und erfüllen das geschlossene Run-Manifest-Schema nicht. Die regulären B-Ergebniskontrollen und die Summary-Materialisierung bleiben deshalb technisch offen. Dies ist kein fachlicher Misserfolg. Es wurden keine Ausführungszeiten, Parameter oder weiteren Urteile erfunden.
+
+Die drei Synthesis-Autoreninputs wählen genau 47 vorhandene keep/keep-Paare (17+17+13) und stellen sechs echte offene Befunde (1+2+3) ausdrücklich zurück. Sie erzeugen noch keine erfolgreich validierten Resolutionen. Der historische Synthese-Elternknoten e594 bleibt ein Split-Befund; das Standalone-v2-Indexformat darf ihn als historische Deferral erhalten.
+
+`receipts/B-original-run-contract-required-fields-and-provenance.actual.json` bindet die tatsächlich bekannten Metadaten und nennt die unberichteten Felder. Eine wahrheitsgemäße zusätzliche Run-Manifest-Begleitdatei benötigt ursprüngliche Ausführungsprovenienz oder eine ausdrücklich dokumentierte zulässige Rekonstruktion. Die erhaltenen Seal-Beobachtungszeiten sind keine behaupteten exakten Laufzeiten.
+
+Erst danach folgen die unveränderten Summary-, Synthesis-, Resolution- und Finalize-Skripte. Diese Arbeit erteilt keine aktuelle 403-Gate-, Quellen-, Ressourcen-, Human-Approval- oder aktive Freigabe und führt keine Vorbereitung, Bildrenderung, erneute fachliche Prüfung, breite QS, Git- oder Produktivänderung aus. Die separate Kompatibilitätsprüfung der Quellen und Ressourcen bleibt erforderlich.

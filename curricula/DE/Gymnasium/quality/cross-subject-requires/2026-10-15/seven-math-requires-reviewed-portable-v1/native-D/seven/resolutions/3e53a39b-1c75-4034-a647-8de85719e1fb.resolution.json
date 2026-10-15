@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "seven-math-requires-current-context-20261015-v1-resolution-3e53a39b-1c75-4034-a647-8de85719e1fb",
+  "goal": {
+    "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:d686e2a5a7cc58752f9e2205fbfb568e97fa13d9f9b6b94826556ae4d65a93ef",
+    "pageFingerprint": "sha256:b24a1391c311017c15b303934264998de0b8a46a804389cb466bb15deff5d396",
+    "goalReviewContextFingerprint": "sha256:dad11143ca888074cd2d613315d08564e360b2782fe721cd7ef4351bc98fde66",
+    "finalText": {
+      "titleDe": "Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben",
+      "titleEn": "Describe positional relations of geometric objects using mathematical language",
+      "descriptionDe": "Die lernende Person kann Lagebeziehungen geometrischer Objekte wie parallel, senkrecht oder schneidend sowie Aussagen wie „halbiert einen Winkel“ oder „halbiert eine Strecke“ fachsprachlich beschreiben und in Skizzen sicher zuordnen.",
+      "descriptionEn": "The learner can use appropriate mathematical terminology to describe positional relationships such as parallel, perpendicular, or intersecting and statements such as “bisects an angle” or “bisects a segment”, and can identify them reliably in sketches."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "seven-math-requires-current-context-20261015-v1-a",
+      "campaignDigest": "sha256:d96799108c6986a5ed775627d969e91cb236e724fd2a752b1d2f55ffdb4bf1a4",
+      "roundId": "seven-math-requires-current-context-20261015-v1-first-pass-a",
+      "independenceGroupId": "seven-math-requires-current-context-20261015-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a06b149603f420ed5f80eb1df2af37b6cc862024b723167ee9acb2e153842801",
+      "goalReviewContextFingerprint": "sha256:dad11143ca888074cd2d613315d08564e360b2782fe721cd7ef4351bc98fde66",
+      "batchId": "seven-math-requires-current-context-20261015-v1-first-pass-a.batch-001",
+      "runId": "seven-math-description-blind-a-20261015-v1",
+      "runManifestDigest": "sha256:27950dcf1289d1a38705a175be6b2c17ea87cd7b8f1b0c5a39e3f7c936f6e5de",
+      "resultsDigest": "sha256:f7554086b88fdbee06487742b995937e8896f08f9f2c31f67abb60c40083ae2a",
+      "recordId": "seven-math-description-blind-a-20261015-v1.record-001",
+      "recordDigest": "sha256:62e115d8c9d546eb77bb03edcc99e0a00fc5e660100764966d9c4cfa0ac692df"
+    },
+    "second": {
+      "campaignId": "seven-math-requires-current-context-20261015-v1-b",
+      "campaignDigest": "sha256:7429d87fb7b0a9b68628fb686e6bf0a2271ae154b09a52d9f7602b5ea901ec19",
+      "roundId": "seven-math-requires-current-context-20261015-v1-first-pass-b",
+      "independenceGroupId": "seven-math-requires-current-context-20261015-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a06b149603f420ed5f80eb1df2af37b6cc862024b723167ee9acb2e153842801",
+      "goalReviewContextFingerprint": "sha256:dad11143ca888074cd2d613315d08564e360b2782fe721cd7ef4351bc98fde66",
+      "batchId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001",
+      "runId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "runManifestDigest": "sha256:98b7dcf06575b7c5f24517467067a6cfcca031038112bc122b561ebc2aa3924d",
+      "resultsDigest": "sha256:26480177ea210721a000ace0c0a78be9da08bfc59f71ef199fdcc921a49f1660",
+      "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-001",
+      "recordDigest": "sha256:66b4dbd38d4323c1a00aee1157dfe9d412c188c665ae2fb6248cfea45ccdf03e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:48154c52c60b20863bbcd6a902f275350aaf97c109bee12a525726bbe1ad152b"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "seven-math-current-informed-synthesis-20261015-v1",
+    "manifestDigest": "sha256:c3fc2ecb3603582f50085fa824ea3f405c6aa5da8c3a5ffe79abdeab5589fa23",
+    "manifestFingerprint": "sha256:02498a944b2539b96e064c275ecfc15c2524a463f57224c9d4db69900f25fd91",
+    "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "seven-math-current-informed-synthesis-20261015-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root/seven_math_dual_d_synthesis_candidate; GPT-6.1 Sol ultra configured; actual serving build unobserved; informed AI synthesizer",
+    "synthesizedAt": "2026-10-15T03:17:32.882Z",
+    "rationaleDe": "KEEP nach eigener Synthese: Die fünf Begriffsgruppen werden in DE/EN ausdrücklich auf dasselbe Beschreiben und Zuordnen bezogen. Gleichheit, Inzidenz und rechter Winkel tragen diese eine AB1-Sprachkompetenz; eine maßgenaue Konstruktion oder Koordinatendarstellung ist dafür nicht nötig. Runde B wird gewählt, weil sie ausdrücklich festhält, dass senkrechte Geraden ebenfalls schneiden und eine schräge Streckenhalbierende keine Winkelhalbierende sein muss. A ergänzt zutreffend den umgekehrten Skizzenweg; dieser bleibt im vollständigen P erhalten. Die betrachtete Seite zeigt korrekte Pfeil-, Rechtwinkel-, Schnittpunkt- und Mittelpunktmarken; das fehlende Winkelhalbierungspanel verkürzt weder Beschreibung noch P. Gedrehte eigene Skizzen mit getrennten Gleichheitsmarken machen Transfer beobachtbar. Keine Beschreibungskorrektur und kein neues P erforderlich.",
+    "rationaleEn": "KEEP after my informed synthesis: both languages explicitly place all five terminology families within the same describing-and-identifying competence. Equality, incidence and right angles organize this one introductory language skill; accurate instrument construction and coordinates are unnecessary. Round B is selected because it explicitly notes that perpendicular lines also intersect and an oblique segment bisector need not bisect an angle. A correctly adds reverse translation into a sketch, which remains in the complete P. The viewed page has correct parallel, right-angle, intersection and midpoint marks; its missing angle-bisection panel narrows neither description nor P. Rotated learner-created sketches with distinct equality marks provide observable transfer. No wording change or new P is required.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Parallelität, Senkrechtstellung und Schneiden werden durch gemeinsame Punkte und rechte Winkel bestimmt, nicht durch die Bildlage. Senkrechte Geraden schneiden sich ebenfalls; Halbierung verlangt je nach Objekt zwei gleich große Teilwinkel oder zwei gleich lange Teilstrecken.",
+      "essentialUnderstandingEn": "Parallelism, perpendicularity, and intersection are determined by shared points and right angles, not by orientation on the page. Perpendicular lines also intersect; bisection requires two equal sub-angles or two equal-length sub-segments, depending on the object.",
+      "observablePerformanceDe": "Die lernende Person beschreibt die markierten Beziehungen einer neuen Skizze mit den passenden Fachbegriffen, benennt das jeweils halbierte Objekt und ordnet den Aussagen die richtigen Linien, Winkel oder Teilstrecken zu. Sie trennt die belegte Gleichheit beziehungsweise Rechtwinkligkeit vom bloßen Aussehen.",
+      "observablePerformanceEn": "The learner describes marked relations in a fresh sketch using appropriate terminology, names the object being bisected, and matches each statement to the correct lines, angles, or sub-segments. The learner distinguishes established equality or perpendicularity from mere appearance.",
+      "transferExpectationDe": "In einer unabhängig vorgelegten gedrehten, nicht maßstäblichen Figur mit zusätzlichen Linien ordnet die lernende Person dieselben Begriffe erneut anhand der Markierungen zu. Sie erkennt dabei auch eine schräge Linie durch einen Streckenmittelpunkt als Streckenhalbierende, ohne daraus Senkrechtstellung oder Winkelhalbierung abzuleiten.",
+      "transferExpectationEn": "In an independently presented rotated, not-to-scale figure containing additional lines, the learner identifies the same relations from their markings. The learner also recognizes an oblique line through a segment midpoint as a segment bisector without inferring perpendicularity or angle bisection."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b2928035ecfee7d83090a86ee811b50a413bdc9eee8a6c448ecc2c138910cb17",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:09def8c0907178ff2dea8c0b7d5e6e394675a9c81d5727253f04b944eb3768dc"
+}

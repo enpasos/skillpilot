@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:6a1bd039f94dd94ef81d837f9afd40d75bc64dc15de7278ee7b250456b6488c6",
+  "reviewInputFingerprint": "sha256:6f3facd2be2c9e759aa6c3ccd4225b103e48f4a65940fc0b5c79203da03fef72",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "self-induction-dependent-692-current-context-20261015-v1-a",
+      "roundId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-a",
+      "independenceGroupId": "self-induction-dependent-692-current-context-20261015-v1-independent-a",
+      "runIds": [
+        "self-induction-dependent-692-current-context-20261015-v1-fresh-blind-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol (configured)::serving-build-unknown"
+      ]
+    },
+    "second": {
+      "campaignId": "self-induction-dependent-692-current-context-20261015-v1-b",
+      "roundId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-b",
+      "independenceGroupId": "self-induction-dependent-692-current-context-20261015-v1-independent-b",
+      "runIds": [
+        "self-induction-dependent-692-current-context-20261015-v1-first-pass-b.fresh-independent-b-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6.1 Sol (configured; Ultra reasoning)::serving build unknown"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "firstRecordId": "self-induction-dependent-692-current-context-20261015-v1-fresh-blind-a.692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "secondRecordId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-b.fresh-independent-b-run.record-001",
+      "firstRunId": "self-induction-dependent-692-current-context-20261015-v1-fresh-blind-a",
+      "secondRunId": "self-induction-dependent-692-current-context-20261015-v1-first-pass-b.fresh-independent-b-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

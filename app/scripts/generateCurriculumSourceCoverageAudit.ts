@@ -1,3 +1,4 @@
+import { assertCompositionSupplementAccountingSupported } from './compositionSupplementSourceCoverage'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -11,6 +12,7 @@ import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEv
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
+assertCompositionSupplementAccountingSupported(repoRoot)
 const statusDir = resolve(repoRoot, 'docs/qa-ci/status')
 const auditJsonPath = resolve(statusDir, 'curriculum-source-coverage-audit.json')
 const auditMarkdownPath = resolve(statusDir, 'curriculum-source-coverage-audit.md')

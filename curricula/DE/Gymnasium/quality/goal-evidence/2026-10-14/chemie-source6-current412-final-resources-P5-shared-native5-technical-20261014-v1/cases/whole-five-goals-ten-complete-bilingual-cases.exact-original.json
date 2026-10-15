@@ -1,0 +1,708 @@
+{
+  "schemaVersion": 1,
+  "license": "CC-BY-4.0",
+  "authorOnly": true,
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "modelDataAreAuthoredNotMeasuredLearnerResults": true,
+  "materialsAreEntirelyInlineNoUnattachedStructureAssetsPromised": true,
+  "goals": [
+    {
+      "goalId": "ee78e2c9-45c9-5023-8193-7e9c20bce0a6",
+      "understandingFocusDe": "Funktionalität → Siloxanstruktur → Eigenschaften → begrenzte Verwendung für alle drei Familien.",
+      "understandingFocusEn": "Functionality → siloxane structure → properties → bounded uses for all three families.",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Die Herstellung erzeugt Si–O–Si durch geeignete Gruppenreaktionen.",
+          "essentialUnderstandingEn": "Manufacture creates Si–O–Si through appropriate group reactions."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Kettenende, Kettenbaustein und Vernetzungsstelle erfüllen verschiedene Rollen.",
+          "essentialUnderstandingEn": "Chain ends, chain units and crosslinking sites have different roles."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Öl, Harz und Kautschuk werden jeweils strukturbezogen charakterisiert und verwendet.",
+          "essentialUnderstandingEn": "Oil, resin and rubber each receive a structure-based property and use explanation."
+        },
+        {
+          "id": "e4",
+          "essentialUnderstandingDe": "Eine veränderte Funktionalität oder Aushärtungsbedingung verändert die begründete Auswahl.",
+          "essentialUnderstandingEn": "Changed functionality or cure conditions change the justified selection."
+        }
+      ],
+      "cases": [
+        {
+          "id": "case-1",
+          "titleDe": "Drei Silicone für drei Aufgaben",
+          "titleEn": "Three silicones for three jobs",
+          "materialDe": "Vollständiges Aufgabenmodell, keine Herstellungsanleitung: Me bedeutet CH3. M=Me3SiCl besitzt eine hydrolysierbare Gruppe; D=Me2SiCl2 zwei; T=MeSiCl3 drei. Hydrolyse ersetzt jeweils Si–Cl durch Si–OH unter Bildung von HCl. Zwei Si–OH-Gruppen können zu Si–O–Si und H2O kondensieren. Modellansätze: A hauptsächlich D mit wenigen M-Endgruppen, keine Vernetzung; B hoher T-Anteil mit D, dichtes Netzwerk; C lange flexible D-Ketten mit wenigen dreifunktionellen Vernetzern, weitmaschiges Netzwerk. Gegebene Eigenschaften bei Gebrauchstemperatur: A fließt; B ist ein formstabiler harter Film; C verformt sich reversibel. Gesucht sind ein fließender Schmierfilm, eine harte Beschichtung und eine elastische Dichtung. Die Angaben gelten für diese ausgewählten Qualitäten, nicht für alle Silicone.",
+          "materialEn": "Complete task model, not a manufacturing procedure: Me means CH3. M=Me3SiCl has one hydrolysable group; D=Me2SiCl2 has two; T=MeSiCl3 has three. Hydrolysis replaces each Si–Cl by Si–OH and forms HCl. Two Si–OH groups can condense to Si–O–Si and H2O. Model formulations: A mainly D with a few M end groups, no crosslinks; B high T content with D, dense network; C long flexible D chains with a few trifunctional crosslinkers, sparse network. Given properties at service temperature: A flows; B forms a hard shape-stable film; C deforms reversibly. Required uses are a flowing lubricating film, a hard coating and an elastic seal. These data describe selected grades, not all silicones.",
+          "taskDemandDe": "Beschreibe die Herstellung von A, B und C mit dem gegebenen Modell. Formuliere die ausgeglichene Hydrolyse von D und eine lokale Silanol-Kondensation. Erkläre M/D/T-Funktionalität und die drei unterschiedlichen Strukturen. Ordne alle drei Familien Öl/Harz/Kautschuk und alle Anwendungen begründet zu. Prüfe als Transfer: C wird bei gleicher Kettenlänge mit wesentlich mehr T-Vernetzer hergestellt. Bleibt die Eignung als weiche Dichtung automatisch gleich?",
+          "taskDemandEn": "Describe manufacture of A, B and C using the model. Write balanced hydrolysis of D and a local silanol condensation. Explain M/D/T functionality and the three structures. Assign all three oil/resin/rubber families and all uses with reasons. Transfer: C is made with substantially more T crosslinker at the same chain length. Does suitability as a soft seal automatically remain unchanged?",
+          "modelAnswerDe": "D+2 H2O → Me2Si(OH)2+2 HCl. Lokal: ≡Si–OH+HO–Si≡ → ≡Si–O–Si≡+H2O. Hydrolyse und anschließende kontrollierte Kondensation führen bei A mit M als Endbegrenzer vorwiegend zu unvernetzten Ketten: Siliconöl/Schmierfilm. Viel T ermöglicht bei B ein dichtes räumliches Netzwerk: Siliconharz/harte Beschichtung. Lange D-Ketten mit wenigen Vernetzungsstellen ergeben bei C ein weitmaschiges Netzwerk: Siliconkautschuk/elastische Dichtung. Mehr Vernetzer kann Beweglichkeit und Dehnbarkeit vermindern; unveränderte Dichtungseignung folgt nicht. Die Grenzwerte benötigen Qualitätsdaten. Auch andere Silicon-Cure-Routen existieren; dieses Modell ist kein universeller Herstellungsweg.",
+          "modelAnswerEn": "D+2 H2O → Me2Si(OH)2+2 HCl. Locally: ≡Si–OH+HO–Si≡ → ≡Si–O–Si≡+H2O. Hydrolysis followed by controlled condensation gives predominantly uncrosslinked chains in A, with M limiting ends: silicone oil/lubricating film. Much T permits a dense spatial network in B: silicone resin/hard coating. Long D chains with a few crosslinks give a sparse network in C: silicone rubber/elastic seal. More crosslinker can restrict mobility and extensibility; unchanged seal suitability does not follow. Grade data are needed for limits. Other silicone cure routes exist; this model is not a universal manufacturing route.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Hydrolyse und lokale Kondensation korrekt ausgeglichen; ihre Herstellungsfunktion für alle Ansätze erläutert.",
+              "fullCreditEn": "Balanced hydrolysis and local condensation; manufacturing role explained for all formulations.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "M als Endbegrenzer, D als Kettenbildner, T als möglicher Verzweigungs-/Netzpunkt; tatsächliche Vernetzung hängt vom Ansatz ab.",
+              "fullCreditEn": "M limits ends, D builds chains, T can form branch/network sites; actual crosslinking depends on formulation.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "A Öl/Schmierung, B Harz/Beschichtung, C Kautschuk/Dichtung jeweils über Struktur und gegebene Eigenschaft begründet.",
+              "fullCreditEn": "A oil/lubrication, B resin/coating, C rubber/seal each justified by structure and supplied properties.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Mehr T kann Dichtungseignung durch geringere Beweglichkeit verändern; keine universelle Elastizitäts-/Temperaturgarantie.",
+              "fullCreditEn": "More T may alter seal performance by restricting mobility; no universal elasticity/temperature guarantee.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Veränderte Vernetzerdichte muss eine neue begründete Funktionsprognose auslösen.",
+          "transferDemandEn": "Changed crosslink density must produce a newly justified functional prediction.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        },
+        {
+          "id": "case-2",
+          "titleDe": "Feuchteabhängige Aushärtung neu zuordnen",
+          "titleEn": "Reassign moisture-dependent cure",
+          "materialDe": "Et=C2H5. In dieser zweiten Modellreihe ersetzt Wasser Si–OEt durch Si–OH und setzt EtOH frei. Silanole kondensieren wie in Fall1. Ansatz O: Me2Si(OEt)2 plus kleine Menge Me3SiOEt, danach kontrollierte Kondensation zu endbegrenzten unvernetzten Ketten. Ansatz H: hoher Anteil MeSi(OEt)3, nach ausreichender Umsetzung dicht vernetzt. Ansatz K: vorliegende lange HO–[SiMe2–O]n–H-Ketten plus wenig MeSi(OEt)3, als feuchtehärtendes Kondensationssystem spezifiziert. Gegebene Zielqualitäten: O fließend für ein Dämpfungsfluid; H hart als Schutzlack; K elastisch als Fugenmasse. Für K wird der Auftrag von feuchter Luft auf vollständig trockene Umgebung umgestellt; sonst bleibt alles gleich. Die Materialien nennen keine Zahlenwerte für Cure-Zeit oder Temperaturbeständigkeit.",
+          "materialEn": "Et=C2H5. In this second model series, water replaces Si–OEt by Si–OH and releases EtOH. Silanols condense as in case1. Formulation O: Me2Si(OEt)2 with a little Me3SiOEt, followed by controlled condensation into end-limited uncrosslinked chains. H: much MeSi(OEt)3, densely crosslinked after sufficient conversion. K: existing long HO–[SiMe2–O]n–H chains plus a little MeSi(OEt)3, specified as a moisture-curing condensation system. Given target grades: O flowing damping fluid; H hard protective varnish; K elastic joint sealant. K application changes from moist air to an entirely dry environment; everything else stays the same. No cure-time or temperature-resistance numbers are supplied.",
+          "taskDemandDe": "Erläutere für O, H und K Herstellung, Funktionalität und Struktur. Formuliere die Hydrolyse von MeSi(OEt)3 und die lokale Kondensation. Begründe alle drei Familien-/Anwendungszuordnungen. Prüfe den trockenen Einsatz von K und vergleiche ihn mit O und H. Beurteile die Behauptung: Jedes Silicon braucht Luftfeuchtigkeit und jedes Siliconharz ist für jede Temperatur geeignet.",
+          "taskDemandEn": "Explain manufacture, functionality and structure for O, H and K. Write hydrolysis of MeSi(OEt)3 and local condensation. Justify all three family/use assignments. Evaluate dry application of K and compare it with O and H. Evaluate the claim that every silicone needs atmospheric moisture and every silicone resin suits any temperature.",
+          "modelAnswerDe": "MeSi(OEt)3+3 H2O → MeSi(OH)3+3 EtOH; zwei Silanole kondensieren unter H2O-Abgabe. O wird durch difunktionelle Kettenbildung und monofunktionelle Endbegrenzung zum Öl; H durch viele dreifunktionelle Einheiten zum Harznetzwerk; K vernetzt lange Ketten weitmaschig zum Kautschuk. Damit passen die angegebenen Eigenschaften zu Dämpfungsfluid, Lack und Fugenmasse. Bei trockenem K fehlt die vorgesehene Hydrolyseaktivierung des Vernetzers; die spezifizierte Aushärtung kann gehemmt sein. Die bereits hergestellten O/H sind nicht dieselbe Cure-Situation. Daraus folgt keine Feuchtepflicht anderer Routen, etwa additionshärtender Systeme, und keine universelle Temperaturfreigabe.",
+          "modelAnswerEn": "MeSi(OEt)3+3 H2O → MeSi(OH)3+3 EtOH; two silanols condense with H2O release. Difunctional chain formation with monofunctional end limitation gives oil O; many trifunctional units give resin network H; sparse crosslinking of long chains gives rubber K. The supplied properties therefore fit damping fluid, varnish and joint sealant. Dry K lacks the intended hydrolytic activation of its crosslinker, so the specified cure may be inhibited. Already manufactured O/H are different cure situations. This implies neither moisture dependence of other routes, such as addition-cured systems, nor universal temperature suitability.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Alkoxysilan-Hydrolyse und Silanol-Kondensation korrekt, einschließlich EtOH versus H2O als jeweiligem Produkt.",
+              "fullCreditEn": "Correct alkoxysilane hydrolysis and silanol condensation, including EtOH versus H2O products.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Funktionalität und Netz-/Kettenbau für O, H und K einzeln erklärt.",
+              "fullCreditEn": "Functionality and network/chain formation explained separately for O, H and K.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Alle drei Familien und Nutzungen aus den gegebenen Strukturen/Eigenschaften abgeleitet.",
+              "fullCreditEn": "All three families and uses derived from supplied structures/properties.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Trocknung hemmt den konkret vorgegebenen Feuchte-Cure; Grenzen gegenüber anderen Herstellungswegen und unbelegter Temperaturgarantie erläutert.",
+              "fullCreditEn": "Drying inhibits the specified moisture cure; limits regarding other manufacturing routes and unsupported temperature guarantees explained.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Neuer Vorläufertyp und geänderte Feuchte; Erklärung muss Stoffbilanz, Netzbildung und Nutzung gemeinsam übertragen.",
+          "transferDemandEn": "New precursor type and changed moisture; explanation must jointly transfer material balance, network formation and use.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        }
+      ],
+      "evidenceDesignBoundaryDe": "Zwei vollständig bereitgestellte Angebotsfälle. Bewertet werden nachvollziehbare fachliche Leistungen einschließlich verändertem Fall. Zwei unabhängige Belegstücke können innerhalb eines reichen Falls liegen; keine zusätzliche Aufgabenquote. Modellantworten sind Autorenmaterial, keine Lernendenleistung.",
+      "evidenceDesignBoundaryEn": "Two complete offered cases. Assessment requires explained scientific performance including a changed case. Two independent evidence pieces may occur within one rich case; no extra task quota. Model answers are author material, not learner work."
+    },
+    {
+      "goalId": "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+      "understandingFocusDe": "Drei Strukturklassen gegenüber fünf getrennten Einteilungskriterien.",
+      "understandingFocusEn": "Three structural classes compared across five distinct classification criteria.",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Azo und zwei weitere Klassen besitzen benennbare strukturelle Unterscheidungsmerkmale.",
+          "essentialUnderstandingEn": "Azo and two further classes have identifiable structural differences."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Löslichkeit und Herkunft sind von der Strukturklassifikation getrennt.",
+          "essentialUnderstandingEn": "Solubility and origin are separate from structural classification."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Färbemethode und Verwendung sind weitere, nicht identische Kriterien.",
+          "essentialUnderstandingEn": "Dyeing method and use are additional, non-identical criteria."
+        },
+        {
+          "id": "e4",
+          "essentialUnderstandingDe": "Ein geänderter Vertreter oder Herstellungsweg wird kriterientreu neu zugeordnet.",
+          "essentialUnderstandingEn": "A changed representative or production route is reassigned consistently with each criterion."
+        }
+      ],
+      "cases": [
+        {
+          "id": "case-1",
+          "titleDe": "Eine Sammlung, mehrere Ordnungssysteme",
+          "titleEn": "One collection, several classification systems",
+          "materialDe": "Vollständige Klassifikationskarten; keine vollständigen Strukturformeln oder Synthesemechanismen werden vorausgesetzt. Strukturkriterien: Azo=aromatischer Chromophor mit –N=N–; Triarylmethan=farbtragendes System mit zentralem C und drei Arylresten; Anthocyanin=Farbstoff mit glycosyliertem Flavylium-Grundgerüst (O-haltiger positiv geladener Heterocyclus mit aromatischem System). Löslichkeit, Herkunft, Färbemethode und Verwendung sind eigenständige Kriterien. Pigment/Farbstoff bezieht sich hier auf unlösliche/gelöste Anwendung im genannten Medium; daraus folgt keine globale Wasserlöslichkeitsregel. Karten: A enthält Ph–N=N–C6H4–OH, ist für diesen Fall synthetisch hergestellt, im angegebenen alkalischen Bad gelöst und wird direkt aus dem Bad auf ein geeignetes Textil aufgebracht. B besitzt [C(C6H4–NMe2)3]+ mit Gegenion, ist synthetisch und im angegebenen Tintenmedium gelöst; Verwendung Schreibtinte. C besitzt ein O-glycosyliertes Flavylium-Gerüst, wurde aus Beeren extrahiert, ist im angegebenen wässrig-sauren Medium gelöst und dient als pH-Indikator. Keine Sicherheits-/Lebensmittelfreigabe ist angegeben. Ph=C6H5, Me=CH3.",
+          "materialEn": "Complete classification cards; no complete structural formulae or synthesis mechanisms are assumed. Structural criteria: azo=aromatic chromophore containing –N=N–; triarylmethane=colour-bearing system with a central C and three aryl groups; anthocyanin=dye with a glycosylated flavylium scaffold (positively charged O-containing heterocycle in an aromatic system). Solubility, origin, dyeing method and use are independent criteria. Pigment/dye here describes insoluble/dissolved application in the stated medium; no universal water-solubility rule follows. Cards: A contains Ph–N=N–C6H4–OH, is synthetic in this case, dissolves in the specified alkaline bath, and is applied directly from that bath to a suitable textile. B contains [C(C6H4–NMe2)3]+ with a counterion, is synthetic and dissolved in the specified ink medium; use: writing ink. C contains an O-glycosylated flavylium scaffold, was extracted from berries, dissolves in the specified aqueous acidic medium and serves as a pH indicator. No safety/food-use authorization is supplied. Ph=C6H5, Me=CH3.",
+          "taskDemandDe": "Stelle Azo-, Triarylmethan- und Anthocyaninfarbstoffe mit je einem Strukturmerkmal vor und ordne A/B/C zu. Ordne dieselben Karten außerdem getrennt nach Löslichkeit, Herkunft, Färbemethode und Verwendung; markiere fehlende Daten statt sie zu erfinden. Erkläre, weshalb pH-Indikator keine vierte Molekülstrukturklasse ist. Transfer: C wird mit identischer molekularer Struktur synthetisch hergestellt. Welche Zuordnungen ändern sich sicher, welche nicht?",
+          "taskDemandEn": "Introduce azo, triarylmethane and anthocyanin dyes with one structural feature each and classify A/B/C. Also classify the same cards separately by solubility, origin, dyeing method and use; mark missing data rather than inventing them. Explain why pH indicator is not a fourth molecular-structure class. Transfer: C is synthesized with exactly the same molecular structure. Which assignments necessarily change and which do not?",
+          "modelAnswerDe": "A ist Azo wegen –N=N–; B Triarylmethan wegen zentralem C mit drei Arylresten; C Anthocyanin wegen glycosyliertem Flavylium-System. Im jeweils angegebenen Medium werden alle gelöst angewandt; ihre Strukturklassen sind dennoch verschieden. Herkunft: A/B synthetisch, C Pflanzenextrakt. Nur A hat eine angegebene direkte Textilanwendung; für B/C ist keine Textilfärbemethode belegt. Verwendung: A Textilfärbung, B Tinte, C Indikator. Ein Indikator ist eine Funktions-/Verwendungsgruppe, die Strukturklassen überschneiden kann. Synthetisches identisches C ändert die Herkunft, nicht die Anthocyanin-Zuordnung; gleiche Löslichkeitsbedingungen und Funktion können gleich bleiben. Naturherkunft beweist keine Unbedenklichkeit.",
+          "modelAnswerEn": "A is azo because of –N=N–; B is triarylmethane because its central C has three aryl groups; C is anthocyanin because of the glycosylated flavylium system. All are applied dissolved in their specified media, despite different structural classes. Origin: A/B synthetic, C plant extract. Only A has a stated direct textile application; no textile dyeing method is established for B/C. Uses: A textile dyeing, B ink, C indicator. An indicator is a functional/use grouping that can overlap structural classes. Identical synthetic C changes origin, not anthocyanin classification; solubility under identical conditions and function may remain unchanged. Natural origin does not prove harmlessness.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Azo plus beide weiteren Klassen vollständig vorgestellt und A/B/C strukturell begründet zugeordnet.",
+              "fullCreditEn": "Azo plus both further classes introduced fully and A/B/C assigned using structural reasons.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Löslichkeit im jeweiligen Medium und Herkunft getrennt ausgewiesen, nicht aus Farbe oder Familie erraten.",
+              "fullCreditEn": "Solubility in each medium and origin listed separately, not inferred from colour or family.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Textilmethode/Verwendung getrennt; fehlende B/C-Textilmethoden benannt; Indikator als Verwendung erklärt.",
+              "fullCreditEn": "Textile method/use separated; missing B/C textile methods identified; indicator explained as a use.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Identisches synthetisches C ändert Herkunft, nicht Strukturklasse; keine Natur=gesund-Ableitung.",
+              "fullCreditEn": "Identical synthetic C changes origin, not structural class; no natural=healthy inference.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Identische Molekülstruktur bei geändertem Gewinnungsweg entkoppelt Herkunft und Strukturklasse.",
+          "transferDemandEn": "Identical molecular structure with changed production route separates origin from structural class.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        },
+        {
+          "id": "case-2",
+          "titleDe": "Azo-Pigment und löslicher Klassenverwandter",
+          "titleEn": "An azo pigment and a soluble structural relative",
+          "materialDe": "Vollständige Klassifikationskarten; keine vollständigen Strukturformeln oder Synthesemechanismen werden vorausgesetzt. Strukturkriterien: Azo=aromatischer Chromophor mit –N=N–; Triarylmethan=farbtragendes System mit zentralem C und drei Arylresten; Anthocyanin=Farbstoff mit glycosyliertem Flavylium-Grundgerüst (O-haltiger positiv geladener Heterocyclus mit aromatischem System). Löslichkeit, Herkunft, Färbemethode und Verwendung sind eigenständige Kriterien. Pigment/Farbstoff bezieht sich hier auf unlösliche/gelöste Anwendung im genannten Medium; daraus folgt keine globale Wasserlöslichkeitsregel. Neue Karten: P besitzt zwei aromatisch eingebundene –N=N–-Gruppen, ist synthetisch und im Wasserlack als unlösliche Teilchen dispergiert; Verwendung Beschichtung. Q besitzt einen zentralen C mit drei Arylresten im farbtragenden System, ist synthetisch und in der angegebenen Drucktinte gelöst; Verwendung Druck. R besitzt ein glycosyliertes Flavylium-Gerüst, ist ein Pflanzenextrakt, im sauren Wasser gelöst und wird als Indikator verwendet. Zur Textilfärbung enthält die Sammlung keine Methodenangaben. Änderung: P wird durch einen sulfonierten Azo-Vertreter P′ ersetzt; dieser ist im gleichen Bad gelöst und wird laut Karte direkt zum Textilfärben eingesetzt. Strukturmerkmal –N=N– und synthetische Herkunft bleiben erhalten.",
+          "materialEn": "Complete classification cards; no complete structural formulae or synthesis mechanisms are assumed. Structural criteria: azo=aromatic chromophore containing –N=N–; triarylmethane=colour-bearing system with a central C and three aryl groups; anthocyanin=dye with a glycosylated flavylium scaffold (positively charged O-containing heterocycle in an aromatic system). Solubility, origin, dyeing method and use are independent criteria. Pigment/dye here describes insoluble/dissolved application in the stated medium; no universal water-solubility rule follows. New cards: P has two aromatic –N=N– groups, is synthetic and dispersed as insoluble particles in a waterborne coating; use: coating. Q has a central C with three aryl groups in its colour-bearing system, is synthetic and dissolved in the specified printing ink; use: printing. R has a glycosylated flavylium scaffold, is a plant extract, dissolves in acidic water and is used as an indicator. The collection supplies no textile dyeing methods. Change: P is replaced by a sulfonated azo representative P′, dissolved in the same bath and explicitly applied directly for textile dyeing. Its –N=N– feature and synthetic origin remain unchanged.",
+          "taskDemandDe": "Präsentiere die drei Strukturklassen und ordne P/Q/R anhand der Karten ein. Erstelle getrennte Zuordnungen nach allen fünf Kriterien einschließlich nachvollziehbarer Datenlücken. Vergleiche anschließend P mit P′: Begründe genau, welche Kriterien die Zuordnung ändern. Widerlege anhand der Karten die Aussage, jede Azo-Verbindung müsse ein wasserlöslicher Textilfarbstoff sein. Keine Synthesemechanismen sind gefordert.",
+          "taskDemandEn": "Present the three structural classes and classify P/Q/R using the cards. Classify separately by all five criteria, identifying data gaps. Then compare P with P′ and justify exactly which assignments change. Use the cards to refute the claim that every azo compound must be a water-soluble textile dye. No synthesis mechanisms are required.",
+          "modelAnswerDe": "P Azo, Q Triarylmethan und R Anthocyanin besitzen die jeweils genannten Strukturmerkmale. P wird als Pigmentteilchen, Q/R gelöst angewandt; Herkunft P/Q synthetisch, R pflanzlich; Verwendung Beschichtung/Druck/Indikator. Ohne Angaben sind Textilfärbemethoden nicht bestimmbar. P′ bleibt Azo und synthetisch, ändert aber unter den gegebenen Bedingungen Löslichkeit und Verwendungs-/Methodenzuordnung zu gelöstem Direkt-Textilfarbstoff. Die Strukturklasse allein determiniert weder Löslichkeit noch Einsatz. Die erhöhte Wasserverträglichkeit des sulfonierten Vertreters ist gegeben; ihre quantitative Größe wird nicht erfunden.",
+          "modelAnswerEn": "P is azo, Q triarylmethane and R anthocyanin, with the stated defining structural features. P is applied as pigment particles; Q/R are dissolved. Origin: P/Q synthetic, R plant-derived; uses: coating/printing/indicator. Textile dyeing methods cannot be determined without data. P′ remains azo and synthetic but changes solubility and use/method assignment under the given conditions to a dissolved direct textile dye. Structural class alone determines neither solubility nor use. Improved water compatibility of the sulfonated representative is supplied; its quantitative magnitude is not invented.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Alle drei Strukturklassen mit Azo und zwei weiteren Klassen korrekt benannt und begründet.",
+              "fullCreditEn": "All three structural classes, including azo and two further classes, correctly named and justified.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "P als unlöslich eingesetztes Pigment und Q/R als gelöst eingeordnet; Herkunft unabhängig angegeben.",
+              "fullCreditEn": "P classified as an insolubly applied pigment and Q/R as dissolved; origin supplied independently.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Verwendung von Struktur und nicht belegter Textilfärbemethode getrennt.",
+              "fullCreditEn": "Use separated from structure and from unestablished textile dyeing method.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "P→P′: Strukturklasse/Herkunft bleiben; Löslichkeit, Methode und Verwendung ändern sich laut Material; universelle Azo-Regel verworfen.",
+              "fullCreditEn": "P→P′: class/origin remain; solubility, method and use change as supplied; universal azo rule rejected.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Neue Vertreter und geänderte Löslichkeit erfordern eine echte mehrdimensionale Neueinteilung.",
+          "transferDemandEn": "New representatives and changed solubility require genuine multidimensional reassignment.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        }
+      ],
+      "evidenceDesignBoundaryDe": "Zwei vollständig bereitgestellte Angebotsfälle. Bewertet werden nachvollziehbare fachliche Leistungen einschließlich verändertem Fall. Zwei unabhängige Belegstücke können innerhalb eines reichen Falls liegen; keine zusätzliche Aufgabenquote. Modellantworten sind Autorenmaterial, keine Lernendenleistung.",
+      "evidenceDesignBoundaryEn": "Two complete offered cases. Assessment requires explained scientific performance including a changed case. Two independent evidence pieces may occur within one rich case; no extra task quota. Model answers are author material, not learner work."
+    },
+    {
+      "goalId": "03e12e4f-83eb-56a7-85ac-e0d628412dcc",
+      "understandingFocusDe": "Elektronenpaarweg und Protonentransfer erklären die wiederholbare Urethanverknüpfung.",
+      "understandingFocusEn": "Electron-pair movement and proton transfer explain repeatable urethane linking.",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Nukleophiler Angriff und π-Elektronenverschiebung erhalten die Valenz.",
+          "essentialUnderstandingEn": "Nucleophilic attack and π-electron movement preserve valence."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Protonentransfer liefert eine ladungsrichtige Urethanbindung.",
+          "essentialUnderstandingEn": "Proton transfer gives a charge-correct urethane linkage."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Bifunktionelle Gruppen reagieren wiederholt zu Ketten ohne kleine-Molekül-Abspaltung.",
+          "essentialUnderstandingEn": "Bifunctional groups react repeatedly into chains without small-molecule elimination."
+        },
+        {
+          "id": "e4",
+          "essentialUnderstandingDe": "Geänderte Funktionalität und fehlerhafte Pfeile werden begründet beurteilt.",
+          "essentialUnderstandingEn": "Changed functionality and erroneous arrows are evaluated with reasons."
+        }
+      ],
+      "cases": [
+        {
+          "id": "case-1",
+          "titleDe": "Vom Alkohol zur Polyurethankette",
+          "titleEn": "From an alcohol to a polyurethane chain",
+          "materialDe": "Material für eine ausdrücklich vereinfachte, ladungsbilanzierte Unterrichtsdarstellung, keine Behauptung eines einzigartigen mikroskopischen Reaktionswegs: Ein Alkohol-O hat freie Elektronenpaare, der zentrale C in R–N=C=O ist elektrophil. Eine bereitgestellte neutrale Base B: kann ein Proton aufnehmen und als BH+ wieder abgeben; B wird regeneriert. Protonentransfer darf über dieses Hilfsteilchen vermittelt werden. Elektronenpaarpfeile beginnen an einem freien Paar oder einer Bindung und enden am aufnehmenden Atom bzw. an der neu gebildeten Bindung. Alle Restgruppen bleiben erhalten. Keine Geschwindigkeits-/Katalysatoroptimierung oder Versuchsdurchführung ist verlangt. Ausgangsstoffe: O=C=N–(CH2)6–N=C=O und HO–CH2–CH2–OH. Beide besitzen zwei reaktive Endgruppen. Für den lokalen Schritt darf R–N=C=O+HO–R′ verwendet werden. Die geplante trockene Gruppenreaktion enthält kein Wasser. Nach einer einzelnen Verknüpfung bleiben am verbundenen Molekül zwei geeignete Endgruppen für weitere Reaktionen vorhanden.",
+          "materialEn": "Material for an explicitly simplified, charge-balanced teaching representation, not a claim of a unique microscopic route: An alcohol O has lone pairs and the central C in R–N=C=O is electrophilic. A supplied neutral base B: can accept a proton and return it as BH+; B is regenerated. Proton transfer may be mediated by this helper. Electron-pair arrows start at a lone pair or bond and end at the receiving atom or newly formed bond. All substituents are retained. No kinetic/catalyst optimization or experiment is required. Starting materials: O=C=N–(CH2)6–N=C=O and HO–CH2–CH2–OH. Each has two reactive end groups. Use R–N=C=O+HO–R′ for the local step. The intended dry group reaction contains no water. After one link forms, two suitable end groups remain on the combined molecule for further reactions.",
+          "taskDemandDe": "Zeichne oder beschreibe für den lokalen Schritt jeden Elektronenpaarpfeil: Angriff, π-Verschiebung, ladungsrichtiger Zwischenzustand und durch B/BH+ vermittelter Protonentransfer. Formuliere das Produkt und kontrolliere Ladung und Atomverbleib. Stelle anschließend eine Kettensequenz mit mindestens zwei Urethanverknüpfungen und erkennbaren fortsetzbaren Enden dar. Begründe den Namen Polyaddition. Transfer: Ein Teil des Diols wird durch gleich viele OH-Gruppen aus monofunktionellem Ethanol ersetzt. Erläutere die Folge für Kettenfortsetzung.",
+          "taskDemandEn": "Draw or describe every electron-pair arrow for the local step: attack, π shift, charge-correct intermediate and B/BH+-mediated proton transfer. Write the product and check charge and atom retention. Then show a chain segment with at least two urethane links and recognizable continuable ends. Justify the term polyaddition. Transfer: part of the diol is replaced by the same number of OH groups from monofunctional ethanol. Explain the effect on chain continuation.",
+          "modelAnswerDe": "Das freie Paar des Alkohol-O greift den NCO-C an; das π-Paar der C=N-Bindung geht zum N. Eine passende formale Zwischenstufe ist R–N−–C(=O)–O+(H)–R′. B: nimmt H am O auf, die O–H-Elektronen bleiben am O; N− nimmt H von BH+ auf, die B–H-Elektronen regenerieren B:. Produkt R–NH–C(=O)–O–R′. Gesamtladung und Atome bleiben erhalten. Eine mögliche Sequenz ist O=C=N–(CH2)6–NH–C(=O)–O–CH2CH2–O–C(=O)–NH–(CH2)6–N=C=O; die NCO-Enden können mit weiterem Diol reagieren. Bifunktionalität erlaubt Wiederholung ohne kleines Abspaltungsprodukt. Ethanol kann eine NCO-Endgruppe verbrauchen, liefert aber keine zweite OH-Gruppe zur Weiterverknüpfung: Endbegrenzung trotz gleicher anfänglicher OH-Zahl. Die Darstellung ist ein formales Unterrichtsmodell, keine Aussage über den dominierenden Elementarweg.",
+          "modelAnswerEn": "An alcohol-O lone pair attacks the NCO carbon; the C=N π pair moves to N. A suitable formal intermediate is R–N−–C(=O)–O+(H)–R′. B: accepts the O-bound H while the O–H electrons stay on O; N− accepts H from BH+, with B–H electrons regenerating B:. Product: R–NH–C(=O)–O–R′. Total charge and atoms are retained. One segment is O=C=N–(CH2)6–NH–C(=O)–O–CH2CH2–O–C(=O)–NH–(CH2)6–N=C=O; its NCO ends can react with more diol. Bifunctionality permits repetition without a small eliminated product. Ethanol can consume an NCO end but supplies no second OH group for further linking: end limitation despite the same initial OH count. This is a formal teaching model, not a claim about the dominant elementary route.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "O-Paar→NCO-C und C=N-π-Paar→N; keine fünfbindige C-Zwischenstufe.",
+              "fullCreditEn": "O pair→NCO C and C=N π pair→N; no five-bonded carbon intermediate.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "O+/N− sowie beide Protonentransferschritte mit korrekten Pfeilursprüngen und regeneriertem B; neutrales Urethanprodukt.",
+              "fullCreditEn": "O+/N− and both proton-transfer steps with correct arrow origins and regenerated B; neutral urethane product.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Mindestens zwei richtige Urethanverknüpfungen, fortsetzbare Enden und keine H2O-Abspaltung begründet.",
+              "fullCreditEn": "At least two correct urethane links, continuable ends and justified absence of H2O elimination.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Ethanol als monofunktionelle Endbegrenzung erkannt; OH-Zählung allein beweist keine gleiche Kettenlänge.",
+              "fullCreditEn": "Ethanol identified as a monofunctional end limiter; OH count alone does not prove equal chain length.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Gleiche Gruppenzahl bei anderer Monomerfunktionalität erfordert neue Kettenprognose.",
+          "transferDemandEn": "Equal group count with different monomer functionality requires a new chain prediction.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        },
+        {
+          "id": "case-2",
+          "titleDe": "Aromatischer Rest und falscher Elektronenpfeil",
+          "titleEn": "An aromatic substituent and an incorrect electron arrow",
+          "materialDe": "Material für eine ausdrücklich vereinfachte, ladungsbilanzierte Unterrichtsdarstellung, keine Behauptung eines einzigartigen mikroskopischen Reaktionswegs: Ein Alkohol-O hat freie Elektronenpaare, der zentrale C in R–N=C=O ist elektrophil. Eine bereitgestellte neutrale Base B: kann ein Proton aufnehmen und als BH+ wieder abgeben; B wird regeneriert. Protonentransfer darf über dieses Hilfsteilchen vermittelt werden. Elektronenpaarpfeile beginnen an einem freien Paar oder einer Bindung und enden am aufnehmenden Atom bzw. an der neu gebildeten Bindung. Alle Restgruppen bleiben erhalten. Keine Geschwindigkeits-/Katalysatoroptimierung oder Versuchsdurchführung ist verlangt. Neue Komponenten: O=C=N–C6H4–N=C=O mit NCO in para-Stellung und HO–(CH2)3–OH. Vergleichskomponente: CH3CH2OH. Eine fehlerhafte Erklärung behauptet, das N-Atom des Isocyanats greife den Alkohol-O an und Wasser werde abgespalten. Eine zweite Erklärung zeigt nur die korrekte Produktgleichung. Restgruppen und Polaritätsinformation sind vollständig angegeben; eine konkrete Reaktionsgeschwindigkeit ist nicht gegeben.",
+          "materialEn": "Material for an explicitly simplified, charge-balanced teaching representation, not a claim of a unique microscopic route: An alcohol O has lone pairs and the central C in R–N=C=O is electrophilic. A supplied neutral base B: can accept a proton and return it as BH+; B is regenerated. Proton transfer may be mediated by this helper. Electron-pair arrows start at a lone pair or bond and end at the receiving atom or newly formed bond. All substituents are retained. No kinetic/catalyst optimization or experiment is required. New components: O=C=N–C6H4–N=C=O with para NCO positions and HO–(CH2)3–OH. Comparison component: CH3CH2OH. An erroneous explanation claims that isocyanate N attacks alcohol O and water is eliminated. Another explanation gives only the correct product equation. Substituents and polarity information are fully supplied; no reaction rate is given.",
+          "taskDemandDe": "Entwickle für den neuen Fall selbst eine valenz- und ladungsrichtige lokale Pfeilfolge einschließlich Protonenrelay bis zur Urethanbindung. Stelle einen fortsetzbaren Kettenabschnitt dar und verknüpfe ihn mit Bifunktionalität und Stoffbilanz. Korrigiere beide unvollständigen Erklärungen. Beurteile dann den vollständigen Ersatz des Diols durch Ethanol bei gleichem OH:NCO-Gruppenverhältnis: entsteht dieselbe lange Kette? Begrenze Aussagen zum Einfluss des aromatischen Restes auf die Geschwindigkeit.",
+          "taskDemandEn": "Develop a valence- and charge-correct local arrow sequence for the new case, including proton relay to the urethane linkage. Show a continuable chain segment and connect it to bifunctionality and atom balance. Correct both incomplete explanations. Then evaluate complete replacement of the diol by ethanol at the same OH:NCO group ratio: is the same long chain formed? Limit claims about the aromatic substituent and reaction rate.",
+          "modelAnswerDe": "Wie durch die Polarität begründet geht das Alkohol-O-Paar zum elektrophilen C; C=N-π-Elektronen gehen zum N. Über Ar–N−–C(=O)–O+(H)–R′, Deprotonierung am O durch B und Protonierung am N durch BH+ entsteht Ar–NH–C(=O)–O–R′. Zwei solche Verknüpfungen verbinden etwa Diisocyanat–Diol–Diisocyanat; außen bleiben NCO-Enden. Kein kleines Molekül wird bei dieser trockenen Gruppenaddition eliminiert. Der N-Angriff und die Wasserabspaltung sind deshalb falsch; eine Produktgleichung allein zeigt keinen Mechanismus. Ethanol kappt beide NCO-Gruppen des Diisocyanats zu einem endbegrenzten Bisurethan, ohne diolische Brücken zu langen Ketten. Gleiche Gruppenzahlen ersetzen keine Bifunktionalität. Der Rest kann Reaktivität beeinflussen; eine quantitative Geschwindigkeitsrangfolge folgt nicht aus dem Material.",
+          "modelAnswerEn": "The polarity justifies alcohol-O pair attack at electrophilic C, with C=N π electrons moving to N. Via Ar–N−–C(=O)–O+(H)–R′, O deprotonation by B and N protonation by BH+, Ar–NH–C(=O)–O–R′ forms. Two such links connect, for example, diisocyanate–diol–diisocyanate, retaining outer NCO ends. No small molecule is eliminated in this dry group addition. N attack and water elimination are therefore incorrect; a product equation alone does not show a mechanism. Ethanol caps both NCO groups into an end-limited bisurethane, without diol bridges into long chains. Equal group counts cannot replace bifunctionality. Substituents can affect reactivity, but the material supplies no quantitative rate ranking.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Lokale Pfeile/Valenzen für neue Reste korrekt und falscher N-Angriff chemisch widerlegt.",
+              "fullCreditEn": "Local arrows/valences correct for new substituents; erroneous N attack chemically refuted.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Vollständige ladungsrichtige Protonenrelay-Folge und Urethanprodukt statt bloßer Reaktionsgleichung.",
+              "fullCreditEn": "Complete charge-correct proton-relay sequence and urethane product rather than only an overall equation.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Fortsetzbarer Abschnitt, Bifunktionalität und fehlende Abspaltung ausdrücklich begründet.",
+              "fullCreditEn": "Continuable segment, bifunctionality and absence of elimination explicitly justified.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Ethanol liefert endbegrenztes Bisurethan statt gleichartiger langer Kette; keine unbelegte Geschwindigkeitszahl/-rangfolge.",
+              "fullCreditEn": "Ethanol gives an end-limited bisurethane rather than the same long chain; no unsupported rate number/ranking.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Restwechsel plus vollständige Endkappung trennt lokale Reaktion von Polymerbildung und verlangt Mechanismusübertragung.",
+          "transferDemandEn": "Changed substituents plus complete end capping separate local reaction from polymer formation and require mechanism transfer.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        }
+      ],
+      "evidenceDesignBoundaryDe": "Zwei vollständig bereitgestellte Angebotsfälle. Bewertet werden nachvollziehbare fachliche Leistungen einschließlich verändertem Fall. Zwei unabhängige Belegstücke können innerhalb eines reichen Falls liegen; keine zusätzliche Aufgabenquote. Modellantworten sind Autorenmaterial, keine Lernendenleistung.",
+      "evidenceDesignBoundaryEn": "Two complete offered cases. Assessment requires explained scientific performance including a changed case. Two independent evidence pieces may occur within one rich case; no extra task quota. Model answers are author material, not learner work."
+    },
+    {
+      "goalId": "f4f7f028-10db-53f9-bdae-456e0c6d0896",
+      "understandingFocusDe": "Komplexbildung entfernt verbliebenes AgBr, nicht das metallische Bild.",
+      "understandingFocusEn": "Complex formation removes residual AgBr, not the metallic image.",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Liganden binden Ag(I) in einem löslichen Komplex und begünstigen AgBr-Auflösung.",
+          "essentialUnderstandingEn": "Ligands bind Ag(I) in a soluble complex and favour AgBr dissolution."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Die Fixiergleichung erhält Stoffe, Ladung und Silber-Oxidationsstufe.",
+          "essentialUnderstandingEn": "The fixing equation conserves atoms, charge and silver oxidation state."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Fixieren wird von Belichtung, Entwicklung und dem Ag(0)-Bild unterschieden.",
+          "essentialUnderstandingEn": "Fixing is distinguished from exposure, development and the Ag(0) image."
+        },
+        {
+          "id": "e4",
+          "essentialUnderstandingDe": "Geänderte freie Ligandkapazität begrenzt die Fixierung und die Bildstabilität.",
+          "essentialUnderstandingEn": "Changed free ligand capacity limits fixing and image stability."
+        }
+      ],
+      "cases": [
+        {
+          "id": "case-1",
+          "titleDe": "Warum das entwickelte Bild noch fixiert wird",
+          "titleEn": "Why a developed image still needs fixing",
+          "materialDe": "Vollständiges theoretisches Modell: Nach Belichtung und Entwicklung enthält eine Filmschicht 0,50 mmol metallisches Ag(s) im Bild und 1,00 mmol nicht entwickeltes AgBr(s). Belichtung erzeugt ein latentes Bild; der Entwickler bildet an geeigneten Stellen das sichtbare metallische Silber. AgBr ist lichtempfindlich und in Wasser schwer löslich. Im gegebenen Fixierbad bindet ein Ag(I) zwei Thiosulfat-Liganden S2O3^2− zum gut wasserlöslichen [Ag(S2O3)2]^3−. Anfangs sind 6,00 mmol freie Liganden vorhanden. Unter diesen Modellbedingungen wird Ag(0) nicht aufgelöst und es konkurrieren keine anderen Reaktionen. Der Komplex kann mit der Flüssigkeit aus der Schicht entfernt werden. Es handelt sich nicht um einen durchgeführten Versuch.",
+          "materialEn": "Complete theoretical model: After exposure and development a film layer contains 0.50 mmol metallic Ag(s) in its image and 1.00 mmol undeveloped AgBr(s). Exposure produces a latent image; the developer forms visible metallic silver at suitable sites. AgBr is light-sensitive and sparingly soluble in water. In the supplied fixing bath each Ag(I) binds two thiosulfate ligands S2O3^2− to form readily water-soluble [Ag(S2O3)2]^3−. Initially 6.00 mmol free ligands are available. Under these model conditions Ag(0) is not dissolved and no competing reactions occur. The complex can leave the layer with the liquid. This is not a performed experiment.",
+          "taskDemandDe": "Erläutere den Fixiervorgang auf Stoff- und Teilchenebene. Formuliere die vollständige ionische Gesamtgleichung mit Phasen und kontrolliere Atome, Gesamtladung und Ag-Oxidationsstufe. Bestimme den Ligandenbedarf und die verbleibende freie Menge für vollständige Modellfixierung. Erkläre den Verbleib des Bildes sowie den Unterschied zu Belichtung und Entwicklung. Transfer: Der Film wird statt mit Fixierer nur mit Wasser gespült und anschließend belichtet. Ist damit dieselbe Bildstabilität begründet?",
+          "taskDemandEn": "Explain fixing at substance and particle levels. Write the complete ionic overall equation with phases and check atoms, total charge and Ag oxidation state. Determine ligand demand and the remaining free amount for complete model fixing. Explain preservation of the image and the difference from exposure and development. Transfer: the film is rinsed only with water instead of fixer and then exposed to light. Is the same image stability justified?",
+          "modelAnswerDe": "AgBr(s)+2 S2O3^2−(aq) → [Ag(S2O3)2]^3−(aq)+Br−(aq). Beide Seiten enthalten Ag1, Br1, S4 und O6; Gesamtladung jeweils −4. Ag bleibt +I, während das Bild aus Ag(0) besteht. Liganden binden gelöstes Ag(I), vermindern dessen freie Konzentration und ermöglichen weitere AgBr-Auflösung; der lösliche Komplex wird entfernt. Für 1,00 mmol AgBr braucht das Modell 2,00 mmol Ligand, 4,00 mmol bleiben frei. Das bereits entwickelte Ag(0)-Bild bleibt. Fixierung ist weder die erste Belichtung noch die Reduktion durch den Entwickler. Wasser allein entfernt das schwerlösliche AgBr nicht in gleichem Maß; verbleibendes lichtempfindliches Halogenid kann nachdunkeln. Dies ist eine chemische Erklärung, kein Praxis- oder Entsorgungsnachweis.",
+          "modelAnswerEn": "AgBr(s)+2 S2O3^2−(aq) → [Ag(S2O3)2]^3−(aq)+Br−(aq). Each side contains Ag1, Br1, S4 and O6; total charge is −4 on each side. Ag remains +I, whereas the image is Ag(0). Ligands bind dissolved Ag(I), lower its free concentration and permit further AgBr dissolution; the soluble complex is removed. For 1.00 mmol AgBr the model needs 2.00 mmol ligand, leaving 4.00 mmol free. The developed Ag(0) image remains. Fixing is neither initial exposure nor developer reduction. Water alone does not remove sparingly soluble AgBr to the same extent; residual light-sensitive halide can darken later. This explains chemistry without claiming practical or disposal evidence.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Stoffebene Auflösung/Abtransport und Teilchenebene Ag(I)-Ligandbindung sowie Nachlösen verknüpft.",
+              "fullCreditEn": "Substance-level dissolution/removal connected to particle-level Ag(I) ligand binding and further dissolution.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Gleichung, Phasen, Ladung−4 beidseitig, Atome und Ag(+I) korrekt; 2,00 mmol Bedarf/4,00 mmol Rest.",
+              "fullCreditEn": "Correct equation, phases, −4 charge on both sides, atoms and Ag(+I); 2.00 mmol demand/4.00 mmol remaining.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Ag(0)-Bild bleibt; Belichtung/Entwicklung/Fixierung fachlich getrennt.",
+              "fullCreditEn": "Ag(0) image remains; exposure/development/fixing scientifically separated.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Nur-Wasser-Transfer: schwerlösliches lichtempfindliches AgBr bleibt möglich, daher keine gleichwertige Stabilitätsaussage.",
+              "fullCreditEn": "Water-only transfer: sparingly soluble light-sensitive AgBr may remain, so equivalent stability is not established.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Geändertes Spülmittel erfordert eine neue Erklärung der bleibenden Lichtempfindlichkeit.",
+          "transferDemandEn": "Changing the rinse medium requires a new explanation of residual light sensitivity.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        },
+        {
+          "id": "case-2",
+          "titleDe": "Ein gebrauchtes Bad mit begrenzter Kapazität",
+          "titleEn": "A used bath with limited capacity",
+          "materialDe": "Neuer Film: 0,80 mmol verbliebenes AgBr(s) und 0,50 mmol metallisches Ag-Bild. Ein gebrauchtes Fixierbad besitzt noch 1,20 mmol freie S2O3^2−-Liganden; bereits komplexgebundene Liganden zählen nicht als frei. Modellannahme für die Kapazitätsrechnung: nur der lösliche Bis(thiosulfato)komplex mit zwei Liganden pro Ag(I) wird berücksichtigt, keine weiteren Ligandenquellen/-senken, hinreichender Kontakt. Das Ag(0)-Bild bleibt unter diesen Bedingungen unverändert. Frisches Bad besitzt ausreichenden Ligandüberschuss. Aus einer rechnerischen Kapazität allein folgt keine gemessene reale Fixierzeit.",
+          "materialEn": "New film: 0.80 mmol residual AgBr(s) and a 0.50 mmol metallic Ag image. A used fixing bath has only 1.20 mmol free S2O3^2− ligands; already bound ligands do not count as free. Capacity-model assumptions: only the soluble bis(thiosulfato) complex with two ligands per Ag(I) is considered, no other ligand sources/sinks, sufficient contact. The Ag(0) image remains unchanged under these conditions. Fresh bath has sufficient excess ligand. Calculated capacity alone does not give a measured real fixing time.",
+          "taskDemandDe": "Leite die Fixiergleichung einschließlich Ladungs- und Oxidationsstufenprüfung erneut her und erkläre den Auflösungsvorgang. Berechne die maximale AgBr-Menge, die dieses vereinfachte Kapazitätsmodell entfernen kann, und den möglichen Rest. Begründe die Folge einer anschließenden Belichtung und die Wirkung eines frischen Bades. Korrigiere die Behauptungen: Der Fixierer erzeugt erst das metallische Bild; und: Nach Komplexierung enthält die Flüssigkeit kein Silber mehr. Gib die Grenzen des Zahlenmodells an.",
+          "taskDemandEn": "Derive the fixing equation again, checking charge and oxidation state, and explain dissolution. Calculate the maximum AgBr amount removable in this simplified capacity model and the possible residue. Explain subsequent exposure and the effect of fresh bath. Correct the claims that fixer first creates the metallic image and that complexed liquid no longer contains silver. State limits of the numerical model.",
+          "modelAnswerDe": "AgBr+2 S2O3^2− → [Ag(S2O3)2]^3−+Br−, mit AgBr fest und Ionen in Lösung, Gesamtladung−4 und Ag(+I) unverändert. Komplexbildung bindet Ag(I) und fördert die Auflösung des schwerlöslichen Salzes. Maximal 1,20/2=0,60 mmol AgBr werden nach der expliziten Modellannahme entfernt, mindestens 0,20 mmol bleiben; das ist eine Kapazitätsgrenze, keine reale Geschwindigkeitsmessung. Der Rest kann bei Licht nachdunkeln; ausreichend frisches Bad kann ihn durch denselben Mechanismus entfernen. Das 0,50-mmol-Ag(0)-Bild wurde beim Entwickeln gebildet und bleibt. Die abgeführte Lösung enthält Silber im Komplex; sie ist nicht silberfrei. Andere Spezies, Konkurrenzreaktionen und Transport können reale Resultate verändern und sind hier nicht bestimmt.",
+          "modelAnswerEn": "AgBr+2 S2O3^2− → [Ag(S2O3)2]^3−+Br−, with solid AgBr and aqueous ions, total charge−4 and unchanged Ag(+I). Complex formation binds Ag(I) and favours dissolution of the sparingly soluble salt. Under the explicit model assumption at most1.20/2=0.60 mmol AgBr is removed, leaving at least0.20 mmol; this is a capacity bound, not a real rate measurement. Residue may darken in light; sufficient fresh bath can remove it by the same mechanism. The0.50 mmol Ag(0) image formed during development and remains. Removed solution still contains silver as a complex; it is not silver-free. Other species, competing reactions and transport can change real results and are not determined here.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Ag(I)-Komplexierung als Ursache der AgBr-Auflösung auf Stoff-/Teilchenebene erklärt.",
+              "fullCreditEn": "Ag(I) complexation explained as the cause of AgBr dissolution at substance/particle levels.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Gleichung/Ladung/Oxidationsstufe und 0,60 mmol Modellmaximum/0,20 mmol Rest korrekt.",
+              "fullCreditEn": "Correct equation/charge/oxidation state and0.60 mmol model maximum/0.20 mmol residue.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Bildbildung durch Entwicklung getrennt; Ag(0) bleibt und Silber bleibt im abgeführten Komplex enthalten.",
+              "fullCreditEn": "Developer image formation separated; Ag(0) remains and removed complex still contains silver.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Resthalogenid/Licht und frisches Bad begründet; Kapazität nicht mit realer Fixierzeit oder vollständiger Speziation verwechselt.",
+              "fullCreditEn": "Residual halide/light and fresh bath explained; capacity not confused with real fixing time or complete speciation.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Geänderte freie Ligandmenge verbindet neue Stoffbilanz mit einer eigenständigen Stabilitätsprognose.",
+          "transferDemandEn": "Changed free ligand amount connects a new material balance to an independent stability prediction.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        }
+      ],
+      "evidenceDesignBoundaryDe": "Zwei vollständig bereitgestellte Angebotsfälle. Bewertet werden nachvollziehbare fachliche Leistungen einschließlich verändertem Fall. Zwei unabhängige Belegstücke können innerhalb eines reichen Falls liegen; keine zusätzliche Aufgabenquote. Modellantworten sind Autorenmaterial, keine Lernendenleistung.",
+      "evidenceDesignBoundaryEn": "Two complete offered cases. Assessment requires explained scientific performance including a changed case. Two independent evidence pieces may occur within one rich case; no extra task quota. Model answers are author material, not learner work."
+    },
+    {
+      "goalId": "0559cec7-330b-57f1-a409-31cf1b4ac9fb",
+      "understandingFocusDe": "Alle drei Routen werden anhand ihrer Chemie und gegebenen Bedingungen tatsächlich verglichen.",
+      "understandingFocusEn": "All three routes are actually compared through their chemistry and supplied conditions.",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Jede der drei Synthesen wird mit passender Monomer-/Gruppenreaktion identifiziert.",
+          "essentialUnderstandingEn": "Each of the three syntheses is identified with an appropriate monomer/group reaction."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Initiierung oder Katalyse und Temperatur werden routenbezogen verglichen.",
+          "essentialUnderstandingEn": "Initiation or catalysis and temperature are compared across routes."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Reaktionsführung wird aus Nebenprodukt, Feuchte und Wärme chemisch begründet.",
+          "essentialUnderstandingEn": "Reaction control is chemically justified through byproduct, moisture and heat."
+        },
+        {
+          "id": "e4",
+          "essentialUnderstandingDe": "Geänderte Beispiele widerlegen universelle Temperatur-/Katalysatorregeln.",
+          "essentialUnderstandingEn": "Changed examples disprove universal temperature/catalyst rules."
+        }
+      ],
+      "cases": [
+        {
+          "id": "case-1",
+          "titleDe": "Drei Routen, drei begründete Prozessfenster",
+          "titleEn": "Three routes, three justified process windows",
+          "materialDe": "Die vollständig angegebenen Fenster sind qualitative Aufgabenmodelle, keine Labor- oder Industrieanleitung. R: Styrol CH2=CH–Ph, thermisch zerfallender Radikalstarter, Modellfenster70°C, Sauerstoffeintrag begrenzt, Reaktionswärme kontrolliert; Addition an C=C, kein kleines Abspaltungsprodukt. K: Terephthalsäure HOOC–C6H4–COOH mit Ethandiol HO–CH2CH2–OH, geeigneter Esterbildungskatalysator, Modellfenster240°C, entstehendes Wasser wird abgeführt; Bildung von Esterverknüpfungen. A: OCN–(CH2)6–NCO mit HO–(CH2)4–OH, geeigneter Urethan-Katalysator, Modellstart25°C mit Wärmeabfuhr, trockenes System und annähernd ausgeglichene NCO/OH-Gruppenzahlen; bei NCO/OH-Addition kein kleines Abspaltungsprodukt. Wasser kann bei diesem Isocyanat mit NCO unter CO2-Entstehung reagieren. Die Zahlen sind zur Interpretation gegebene Beispiele, keine Klassenkonstanten.",
+          "materialEn": "The fully supplied windows are qualitative task models, not laboratory or industrial instructions. R: styrene CH2=CH–Ph, thermally decomposing radical initiator, model window70°C, limited oxygen entry, controlled reaction heat; C=C addition, no small eliminated product. K: terephthalic acid HOOC–C6H4–COOH with ethanediol HO–CH2CH2–OH, suitable esterification catalyst, model window240°C, generated water removed; ester links form. A: OCN–(CH2)6–NCO with HO–(CH2)4–OH, suitable urethane catalyst, model start25°C with heat removal, dry system and approximately balanced NCO/OH group amounts; no small eliminated product in NCO/OH addition. Water can react with this isocyanate NCO with CO2 formation. These numbers are supplied examples for interpretation, not class constants.",
+          "taskDemandDe": "Erstelle einen ausdrücklichen Vergleich aller drei Routen: Reaktionstyp, Gruppenreaktion/Verknüpfung, Initiierung bzw. Katalyse, Temperatur und Reaktionsführung. Begründe die Bedingungen chemisch. Unterscheide Starter von Katalysator und begründe, weshalb ein Katalysator allein die Gleichgewichtslage nicht verschiebt. Transfer: Für A wird das System feucht; für K wird die Wasserabfuhr unterbrochen. Sind die Folgen identisch? Begründe Unterschiede ohne eine vollständige Kinetik zu behaupten.",
+          "taskDemandEn": "Explicitly compare all three routes by reaction type, group reaction/linkage, initiation or catalysis, temperature and reaction control. Justify the conditions chemically. Distinguish initiator from catalyst and explain why a catalyst alone does not shift equilibrium. Transfer: A becomes wet while K loses its water-removal step. Are the consequences identical? Explain differences without claiming complete kinetics.",
+          "modelAnswerDe": "R ist radikalische Kettenpolymerisation: Starterzerfall erzeugt Radikale, Kettenwachstum verbraucht C=C;70°C dient dem gewählten Starter, Sauerstoff kann hemmen. K ist Polyester-Polykondensation: COOH/OH bilden Ester und H2O; gewählte Wärme/Katalyse fördern Umsetzung, Wasserabfuhr begünstigt Kondensation und hohe Umsetzung. A ist Polyaddition: NCO/OH bilden Urethan ohne kleines Hauptprodukt; trockenes System begrenzt Wassernebenreaktion, Wärmeabfuhr die Exothermie, Gruppenbilanz ermöglicht Kettenaufbau. Der Starter liefert reagierende Radikale; der Katalysator bietet einen günstigeren Reaktionsweg und beschleunigt die Gleichgewichtseinstellung, ändert bei gleicher Temperatur die Gleichgewichtskonstante nicht. Feuchte in A verbraucht NCO und kann CO2/Blasen erzeugen; fehlende Wasserabfuhr bei K verändert die Kondensationsbedingungen. Beide betreffen Wasser, aber verschiedene chemische Rollen. Die Beispiele belegen keine universelle Temperatur- oder Feuchteregel für die Klassen.",
+          "modelAnswerEn": "R is radical chain polymerization: initiator decomposition generates radicals and chain growth consumes C=C;70°C serves the selected initiator and oxygen may inhibit. K is polyester polycondensation: COOH/OH form ester and H2O; chosen heat/catalysis promote conversion, while water removal favours condensation and high conversion. A is polyaddition: NCO/OH form urethane without a small main product; dryness limits water side reaction, heat removal controls exothermicity, and group balance permits chain formation. The initiator supplies reacting radicals; a catalyst offers a more favourable pathway and accelerates equilibrium approach without changing the equilibrium constant at fixed temperature. Moisture in A consumes NCO and can create CO2/bubbles; absent water removal in K changes condensation conditions. Water has different chemical roles. These examples establish no universal temperature or moisture rule for entire classes.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "R/K/A einschließlich aller drei Verknüpfungsreaktionen korrekt gegenübergestellt.",
+              "fullCreditEn": "R/K/A correctly compared, including all three linkage reactions.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Drei gegebene Temperaturfenster und Starter/Katalysatorrollen erklärt; Katalyse nicht als Gleichgewichtsverschiebung dargestellt.",
+              "fullCreditEn": "Three supplied temperature windows and initiator/catalyst roles explained; catalysis not presented as shifting equilibrium.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Sauerstoff-/Wärmekontrolle, Wasserabfuhr und trockene NCO/OH-Führung chemisch und vergleichend begründet.",
+              "fullCreditEn": "Oxygen/heat control, water removal and dry NCO/OH control justified chemically and comparatively.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Feuchte in A versus Produktwasser in K unterscheidet Nebenreaktion von Kondensationsgleichgewicht; keine universellen Klassenbedingungen.",
+              "fullCreditEn": "Moisture in A versus product water in K distinguishes side reaction from condensation equilibrium; no universal class conditions.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Die gleiche Störgröße Wasser besitzt in zwei Routen unterschiedliche chemische Rollen.",
+          "transferDemandEn": "The same perturbation, water, has different chemical roles in two routes.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        },
+        {
+          "id": "case-2",
+          "titleDe": "Wenn Polymerisation kalt und Kondensation an Grenzflächen läuft",
+          "titleEn": "When polymerization is cool and condensation occurs at an interface",
+          "materialDe": "Zweite vollständige Beispielsammlung, reine Datenanalyse: R2 ist ein Methacrylat-Monomer mit CH2=C(CH3)–C(=O)–OR. Ein gegebener Photoinitiator bildet unter geeignetem Licht Radikale bei20°C; im Dunkeln fehlt diese Initiierung. K2 ist ein Modell der Grenzflächen-Polykondensation: H2N–(CH2)6–NH2 und Cl–C(=O)–(CH2)4–C(=O)–Cl bilden bei20°C Amidverknüpfungen und HCl; eine zugegebene Base fängt HCl ab, Kontakt der getrennten Phasen ist relevant. A2: OCN–R–NCO plus HO–R′–OH reagieren katalysiert bei25°C zu Urethanverknüpfungen; trocken, kontrollierte Wärmeabfuhr. Für den Störfall ist die Wassernebenreaktion R–NCO+H2O → R–NH2+CO2 angegeben. Keine tatsächliche Durchführung, allgemeine Geschwindigkeitszahlen oder vollständigen Industrieparameter sind gegeben.",
+          "materialEn": "Second complete example set, data analysis only: R2 is a methacrylate monomer with CH2=C(CH3)–C(=O)–OR. A supplied photoinitiator forms radicals under suitable light at20°C; darkness removes that initiation. K2 models interfacial polycondensation: H2N–(CH2)6–NH2 and Cl–C(=O)–(CH2)4–C(=O)–Cl form amide links and HCl at20°C; an added base captures HCl and contact between separated phases matters. A2: OCN–R–NCO plus HO–R′–OH react catalytically at25°C into urethane links; dry conditions and controlled heat removal. For the perturbation, water side reaction R–NCO+H2O → R–NH2+CO2 is supplied. No actual execution, general rate numbers or complete industrial parameters are supplied.",
+          "taskDemandDe": "Vergleiche erneut alle drei Routen vollständig hinsichtlich Gruppenreaktion, Initiierung/Katalyse, Temperatur und Reaktionsführung. Erläutere, warum20°C allein weder R2 noch K2 klassifiziert. Prüfe Änderungen: R2 bleibt dunkel; bei K2 wird die HCl-Abfangbase weggelassen; A2 enthält Wasser. Begründe jeweils die Folge aus der Chemie. Vergleiche die neuen Beispiele mit den heißen Beispielen aus Fall1 und korrigiere die Behauptung, Polykondensation brauche immer hohe Temperatur und Polyaddition immer denselben Katalysator.",
+          "taskDemandEn": "Again compare all three routes fully by group reaction, initiation/catalysis, temperature and reaction control. Explain why20°C alone classifies neither R2 nor K2. Evaluate changes: R2 stays dark; K2 loses its HCl-scavenging base; A2 contains water. Explain each consequence chemically. Compare these examples with the hot examples in case1 and correct the claim that polycondensation always needs high temperature and polyaddition always uses the same catalyst.",
+          "modelAnswerDe": "R2 ist lichtinitiierte radikalische Kettenpolymerisation über C=C, ohne kleines Abspaltungsprodukt. K2 ist Polykondensation über Amin-/Säurechloridgruppen zu Amid+HCl; Kontakt und HCl-Abfangung unterscheiden sich von heißer Polyesterbildung mit Wasserabfuhr. A2 ist NCO/OH-Polyaddition ohne kleines Haupt-Abspaltungsprodukt; Katalyse, Trockenheit und Wärmeführung betreffen dieses System. Im Dunkeln fehlt der vorgegebene Radikalstart; Temperatur allein ersetzt kein Licht. Ohne HCl-Abfangung kann Amin protoniert und als Nukleophil weniger verfügbar werden, die Führung verschlechtert sich. Wasser in A2 verbraucht NCO und erzeugt CO2 statt ausschließlich gewünschter Urethanverknüpfung. Gleiche20°C bedeuten nicht gleiche Reaktion; reaktive Gruppen und Bindungsänderungen klassifizieren die Route. Verschiedene Kondensations-/Additionsbeispiele benötigen verschiedene Bedingungen; keine universelle Temperatur oder einheitliche Katalysatoridentität folgt. Die Base in K2 ist als HCl-Abfänger, nicht pauschal als regenerierter Katalysator zu benennen.",
+          "modelAnswerEn": "R2 is light-initiated radical chain polymerization through C=C, without a small eliminated product. K2 is polycondensation of amine/acid-chloride groups into amide+HCl; contact and HCl capture differ from hot polyester formation with water removal. A2 is NCO/OH polyaddition without a small main eliminated product; catalysis, dryness and heat control apply to this system. Darkness removes the supplied radical initiation; temperature alone cannot replace light. Without HCl capture, amine can become protonated and less available as a nucleophile, impairing control. Water in A2 consumes NCO and forms CO2 instead of exclusively desired urethane linking. Equal20°C does not imply equal reaction: reactive groups and bond changes classify the route. Different condensation/addition examples need different conditions; no universal temperature or common catalyst identity follows. The K2 base is an HCl scavenger, not automatically a regenerated catalyst.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Alle drei Routen über C=C-, Amid- bzw. Urethanbildung korrekt gegenübergestellt, Nebenproduktunterschiede beachtet.",
+              "fullCreditEn": "All three routes correctly compared through C=C, amide and urethane formation, respecting byproduct differences.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Lichtstarter, gegebene A2-Katalyse und K2-HCl-Abfänger unterschieden; alle Temperaturangaben eingeordnet.",
+              "fullCreditEn": "Light initiator, supplied A2 catalysis and K2 HCl scavenger distinguished; all temperatures interpreted.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Dunkelheit/HCl/Feuchte als drei unterschiedliche chemische Störungen begründet, einschließlich Wärme-/Phasenkontrolle.",
+              "fullCreditEn": "Darkness/HCl/moisture explained as distinct chemical perturbations, including heat/phase control.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Vergleich mit Fall1 widerlegt universelle Temperatur-/Katalysatorregeln; Mechanismus/Gruppenreaktion statt Temperatur als Typkriterium.",
+              "fullCreditEn": "Comparison with case1 refutes universal temperature/catalyst rules; mechanism/group reaction rather than temperature used to classify type.",
+              "partialCreditDe": "2: fachlicher Kern mit begrenzter Lücke; 1: passender Teilaspekt ohne vollständige Begründung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: correct core with a limited gap; 1: relevant fragment without a complete explanation; 0: absent or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "coverageDesignClaim": "WHOLE_GOAL_DESIGN_CANDIDATE, not executed or independently accepted",
+          "transferDemandDe": "Neuer Initiierungsweg und neuer Kondensationspartner erzwingen einen echten ganzen Drei-Routen-Vergleich.",
+          "transferDemandEn": "New initiation route and condensation partner require a genuine complete three-route comparison.",
+          "learnerWorkPresent": false,
+          "executed": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0"
+        }
+      ],
+      "evidenceDesignBoundaryDe": "Zwei vollständig bereitgestellte Angebotsfälle. Bewertet werden nachvollziehbare fachliche Leistungen einschließlich verändertem Fall. Zwei unabhängige Belegstücke können innerhalb eines reichen Falls liegen; keine zusätzliche Aufgabenquote. Modellantworten sind Autorenmaterial, keine Lernendenleistung.",
+      "evidenceDesignBoundaryEn": "Two complete offered cases. Assessment requires explained scientific performance including a changed case. Two independent evidence pieces may occur within one rich case; no extra task quota. Model answers are author material, not learner work."
+    }
+  ]
+}

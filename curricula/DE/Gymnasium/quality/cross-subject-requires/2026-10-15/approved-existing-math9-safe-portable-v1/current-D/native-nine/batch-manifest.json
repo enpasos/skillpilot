@@ -1,0 +1,62 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-existing-math9-safe-current-description-20261015-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/approved-existing-math9-safe-portable-v1/current-D/nine.config.json",
+  "configDigest": "sha256:36955fcd4e152be1e9fd0413a965b7f13fabc14832e2730f113560da6926631e",
+  "goalIds": [
+    "05af2893-0201-4d7f-985b-272d7b88e26e",
+    "18c1f954-487e-5121-bb18-6c64a82f573d",
+    "1c430e0a-b63e-5729-8715-a96a5a68740f",
+    "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+    "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+    "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "ad62f563-4fee-5399-8d9c-03a214658aa9",
+    "b615830a-e8b0-5754-81e0-99da98343a8d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:91526ba7e64a1f0f069f86b02c2c9ffce31a0911e434ebbb676bd2ba39fc331f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:37e885179bad6236ca849c6231355e239bcc76ec509600505002288c284815be",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:cb1618d3ec6e1b0e4536a7246f16614bedb4813206963ea7da1b8a2047b06e1b",
+    "reviewInputFingerprint": "sha256:fc54d62e5c539b7adc4787b039713898baf0fb284f6b6cc509e29dc6fa10f43b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-existing-math9-safe-current-description-20261015-v1-a",
+        "campaignDigest": "sha256:0d13a95765ae50491c496d81bea197a35dcc5590c287f2be98debf50e8108c24",
+        "roundId": "physics-existing-math9-safe-current-description-20261015-v1-first-pass-a",
+        "independenceGroupId": "physics-existing-math9-safe-current-description-20261015-v1-independent-a",
+        "batchId": "physics-existing-math9-safe-current-description-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:84570394063cfbb33f17c7d30cd997d5e6ea23919c2ff8497bd6ad7115935be2"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-existing-math9-safe-current-description-20261015-v1-b",
+        "campaignDigest": "sha256:b903818be548fade241376a63e4fd022825102786e75c0f8e0e3d178957e1245",
+        "roundId": "physics-existing-math9-safe-current-description-20261015-v1-first-pass-b",
+        "independenceGroupId": "physics-existing-math9-safe-current-description-20261015-v1-independent-b",
+        "batchId": "physics-existing-math9-safe-current-description-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:db3328f3a953754f95d023c5fe025a873a0f777155b4d9a22c84c4a3106c2047"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

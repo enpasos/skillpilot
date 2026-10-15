@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "seven-math-requires-current-context-20261015-v1-resolution-3010d965-b9b9-4dc5-9d04-d706725e9a30",
+  "goal": {
+    "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:8968498dd5be0578af5ab7d2bdceac94ca0e14aac2b95eeb98cc4b54ec903871",
+    "pageFingerprint": "sha256:b9ea87c97f289f59e6681d733479e18da2bac7d55dd5158fe096c48c333ad298",
+    "goalReviewContextFingerprint": "sha256:3d9a7c526ea523625948349d0805fd04e7cea6bb4d1a80339bf74623bc19fbda",
+    "finalText": {
+      "titleDe": "Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum abgrenzen",
+      "titleEn": "Describe exponential increase and decrease and distinguish them from linear growth",
+      "descriptionDe": "Die lernende Person kann exponentielle Zu- und Abnahme als Änderung mit konstantem Faktor je gleich großem Schritt beschreiben, veranschaulichen und von linearer Änderung mit konstanter Differenz begründet abgrenzen.",
+      "descriptionEn": "The learner can describe and illustrate exponential increase and decrease as change by a constant factor per equal step and justify the distinction from linear change by a constant difference."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "seven-math-requires-current-context-20261015-v1-a",
+      "campaignDigest": "sha256:d96799108c6986a5ed775627d969e91cb236e724fd2a752b1d2f55ffdb4bf1a4",
+      "roundId": "seven-math-requires-current-context-20261015-v1-first-pass-a",
+      "independenceGroupId": "seven-math-requires-current-context-20261015-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a06b149603f420ed5f80eb1df2af37b6cc862024b723167ee9acb2e153842801",
+      "goalReviewContextFingerprint": "sha256:3d9a7c526ea523625948349d0805fd04e7cea6bb4d1a80339bf74623bc19fbda",
+      "batchId": "seven-math-requires-current-context-20261015-v1-first-pass-a.batch-001",
+      "runId": "seven-math-description-blind-a-20261015-v1",
+      "runManifestDigest": "sha256:27950dcf1289d1a38705a175be6b2c17ea87cd7b8f1b0c5a39e3f7c936f6e5de",
+      "resultsDigest": "sha256:f7554086b88fdbee06487742b995937e8896f08f9f2c31f67abb60c40083ae2a",
+      "recordId": "seven-math-description-blind-a-20261015-v1.record-006",
+      "recordDigest": "sha256:8a33639aa9b1a88378239e8ced795942c6b3427ef69ec4c96ef488dac0200ec7"
+    },
+    "second": {
+      "campaignId": "seven-math-requires-current-context-20261015-v1-b",
+      "campaignDigest": "sha256:7429d87fb7b0a9b68628fb686e6bf0a2271ae154b09a52d9f7602b5ea901ec19",
+      "roundId": "seven-math-requires-current-context-20261015-v1-first-pass-b",
+      "independenceGroupId": "seven-math-requires-current-context-20261015-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a06b149603f420ed5f80eb1df2af37b6cc862024b723167ee9acb2e153842801",
+      "goalReviewContextFingerprint": "sha256:3d9a7c526ea523625948349d0805fd04e7cea6bb4d1a80339bf74623bc19fbda",
+      "batchId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001",
+      "runId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "runManifestDigest": "sha256:98b7dcf06575b7c5f24517467067a6cfcca031038112bc122b561ebc2aa3924d",
+      "resultsDigest": "sha256:26480177ea210721a000ace0c0a78be9da08bfc59f71ef199fdcc921a49f1660",
+      "recordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-006",
+      "recordDigest": "sha256:b8386f10d88c750df9f3e8f4bab57a6880034ce467e57f3306afd0a660fb81d9"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:48154c52c60b20863bbcd6a902f275350aaf97c109bee12a525726bbe1ad152b"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "seven-math-current-informed-synthesis-20261015-v1",
+    "manifestDigest": "sha256:c3fc2ecb3603582f50085fa824ea3f405c6aa5da8c3a5ffe79abdeab5589fa23",
+    "manifestFingerprint": "sha256:02498a944b2539b96e064c275ecfc15c2524a463f57224c9d4db69900f25fd91",
+    "decisionId": "seven-math-current-informed-synthesis-20261015-v1-decision-006"
+  },
+  "synthesis": {
+    "synthesisId": "seven-math-current-informed-synthesis-20261015-v1-decision-006",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root/seven_math_dual_d_synthesis_candidate; GPT-6.1 Sol ultra configured; actual serving build unobserved; informed AI synthesizer",
+    "synthesizedAt": "2026-10-15T03:17:32.882Z",
+    "rationaleDe": "KEEP nach eigener Synthese: Konstante Differenz gegen konstanten Faktor bei gleichen Schritten ist bereits präzise beschrieben; Begründen und Veranschaulichen gehören zur selben Strukturunterscheidung. Runde A wird gewählt, weil ihr Transfer von Zunahme zu Zerfall mit Graphbegründung unmittelbar dem vollständigen P entspricht. Bs zusätzlicher Vergleich zusammengefasster Schritte ist mathematisch richtig (zwei Schritte ergeben Faktor q² bzw. Differenz2d), aber keine neue Pflichtfacette. Gemeinsame Werte30,36 können linear mit42 oder exponentiell mit43,2 fortgesetzt werden; daher reicht ein Schritt nicht. Das P fordert mehrere Vergleiche und erklärt die abflachende Abnahme, und die betrachtete Bildseite stimmt mit allen drei Termen/Tabellen überein. Keine eindeutige unbegrenzte Realgesetzlichkeit aus endlichen Daten. Kein neues P und keine Beschreibungskorrektur erforderlich.",
+    "rationaleEn": "KEEP after my synthesis: constant difference versus constant factor over equal steps is already precise; justification and illustration belong to that one structural distinction. Round A is selected because its growth-to-decay transfer with graph reasoning directly matches the complete P. B additionally compares grouped steps correctly (two steps give q² or difference2d), but this is not made a new required facet. Shared values30,36 can continue linearly with42 or exponentially with43.2, so one step does not decide the rule. The P requires several comparisons and explains flattening decay, and the viewed page agrees with all three expressions and tables. Finite data do not establish a unique unlimited real-world law. No new P or description correction is needed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei gleichen Eingabeschritten ist für lineare Änderung die absolute Differenz konstant, für exponentielle Änderung positiver Bestände der Quotient beziehungsweise Faktor. Ein gemeinsamer Start und erster Folgewert genügt nicht zur Unterscheidung. Bei positivem Anfangswert führen Faktoren über1 zu Zunahme und Faktoren zwischen0 und1 zu abflachender Abnahme.",
+      "essentialUnderstandingEn": "For equal input steps, linear change has a constant absolute difference, whereas exponential change of positive amounts has a constant ratio or factor. A shared initial and first subsequent value does not distinguish them. With a positive initial amount, factors above1 produce increase, and factors between0 and1 produce a flattening decrease.",
+      "observablePerformanceDe": "Die lernende Person untersucht selbstständig mehrere aufeinanderfolgende Differenzen und Quotienten, begründet damit lineare oder exponentielle Änderung und veranschaulicht den Verlauf durch eine passende eigene Skizze oder eine begründete Graphzuordnung. Sie verbindet die Kurvenform mit der Änderungsregel.",
+      "observablePerformanceEn": "The learner independently examines several successive differences and ratios, uses them to justify linear or exponential change, and illustrates the behaviour through a suitable independent sketch or justified graph match. The learner relates the curve shape to the change rule.",
+      "transferExpectationDe": "In einer unabhängig präsentierten Abnahmefolge nach einem Zunahmevergleich prüft die lernende Person erneut Differenzen und Faktoren und erklärt die abnehmenden absoluten Verluste. Sie weist eine geradlinige Fortsetzung mit konstantem Verlust zurück, obwohl diese denselben ersten Abnahmeschritt haben kann.",
+      "transferExpectationEn": "In an independently presented decay sequence following a growth comparison, the learner checks differences and factors again and explains the shrinking absolute losses. The learner rejects a straight-line continuation with constant loss even when it can share the first decrease step."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-d6666f5443f7c260efb706792db23f7e0a150f6ae446b6b4166c4187111b28ff",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0221123867d655b278628ebc0c1b2ad55f88b4a043b1693a36da1f2c222c2ca7"
+}

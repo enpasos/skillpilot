@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import type { SkillLandscape } from '../landscapeTypes'
 import type { UiGoal as Goal } from '../goalTypes'
+import { assertPackageV1HasNoApplicabilityContexts, parseApplicabilityContexts } from '../utils/applicabilityContexts'
 import { convertLearningGoal } from '../goalTypes'
 
 export interface LandscapeEntry {
@@ -28,6 +29,10 @@ function isSelfRef(ref: string, goalId: string): boolean {
 
 export function normalizeLandscape(raw: SkillLandscape | undefined): LandscapeEntry | null {
   if (!raw || !Array.isArray(raw.goals)) return null
+  raw.goals.forEach((goal) => {
+    const parsed = parseApplicabilityContexts(goal)
+    if (parsed.errors.length) throw new Error(parsed.errors.join(' '))
+  })
   return {
     meta: raw,
     goals: raw.goals.map((goal) => convertLearningGoal(goal, { landscapeId: raw.landscapeId })),
@@ -93,7 +98,8 @@ function applyEffectiveRequires(entries: LandscapeEntry[]): LandscapeEntry[] {
   return entries
 }
 
-export function prepareLandscapeEntries(items: SkillLandscape[]): LandscapeEntry[] {
+export function prepareLandscapeEntries(items: SkillLandscape[], packageV1 = false): LandscapeEntry[] {
+  if (packageV1) assertPackageV1HasNoApplicabilityContexts(items)
   const allGoalIds = new Set<string>()
   items.forEach((item) => {
     item.goals?.forEach((g) => allGoalIds.add(g.id))
@@ -122,13 +128,14 @@ export function prepareLandscapeEntries(items: SkillLandscape[]): LandscapeEntry
 }
 
 interface UseLandscapesOptions {
+  packageV1?: boolean
   enabled?: boolean
 }
 
 export function useLandscapes(
   landscapeId?: string,
   language: string = 'de',
-  { enabled = true }: UseLandscapesOptions = {},
+  { enabled = true, packageV1 = false }: UseLandscapesOptions = {},
 ) {
   const [entries, setEntries] = useState<LandscapeEntry[]>([])
   // Start loading immediately to prevent "No Data" flash during initial effect cycle
@@ -173,6 +180,7 @@ export function useLandscapes(
         })
         .catch((err) => {
           if (signal.aborted) return
+          if (packageV1) setEntries([])
           setError(err as Error)
         })
         .finally(() => {
@@ -194,11 +202,12 @@ export function useLandscapes(
         }
         const json = (await res.json()) as SkillLandscape[]
 
-        setEntries(prepareLandscapeEntries(json))
+        setEntries(prepareLandscapeEntries(json, packageV1))
       })
       .catch((err) => {
         if (signal.aborted) return // Ignore abort errors
-        setError(err as Error)
+        if (packageV1) setEntries([])
+          setError(err as Error)
       })
       .finally(() => {
         if (!signal.aborted) {
@@ -208,7 +217,7 @@ export function useLandscapes(
     return () => {
       controller.abort()
     }
-  }, [enabled, landscapeId, language])
+  }, [enabled, landscapeId, language, packageV1])
 
   return { landscapeEntries: entries, loadingLandscapes: loading, landscapeError: error }
 }

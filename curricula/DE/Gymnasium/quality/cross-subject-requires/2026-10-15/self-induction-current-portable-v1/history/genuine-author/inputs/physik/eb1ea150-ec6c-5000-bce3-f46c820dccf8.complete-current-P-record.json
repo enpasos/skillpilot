@@ -1,0 +1,96 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-physics-positive-evidence-v1-b020-magnetism-induction-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+  "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+  "goalId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+  "goalFingerprint": "sha256:3df7a3da385e749c48dd44579d3ccb0deff8fd15f5eed24dd7d37f097b829091",
+  "reviewInputFingerprint": "sha256:c75b63e547ff9ad044293e577da770d080beb98ec4b561d77ea92f7e2d9844f8",
+  "profileFingerprint": "sha256:a735960485781c19fdd874f31b8407acbe2ef6eab7ad0f7249f111f3cb4e8645",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-08-28T14:30:41.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-020-magnetism-induction-profile-author-candidate-2026-08-28",
+  "reason": "DE: Das Profil trennt Betrag der mittleren Induktionsspannung, konsistente Vorzeichenkonvention und Lenz-Begründung im geschlossenen Kreis. Offener Stromkreis, Wicklungsorientierung und Bewegungsumkehr prüfen die Grenzen einer schematischen Richtungsregel. EN: The profile separates the magnitude of mean induced voltage, consistent sign convention, and Lenz reasoning in a closed circuit. Open circuit, winding orientation, and motion reversal test the limits of a schematic direction rule.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "procedure",
+    "expectations": [
+      {
+        "id": "mean-voltage-tracks-flux-change-rate",
+        "essentialUnderstandingDe": "Für N gleichartige Windungen ist die mittlere Induktionsspannung proportional zu N und ΔΦ/Δt. Eine größere Flussänderung in kürzerer Zeit erzeugt einen größeren Betrag; die Einheit Weber pro Sekunde ist Volt.",
+        "essentialUnderstandingEn": "For N equivalent turns, mean induced voltage is proportional to N and ΔΦ/Δt. A larger flux change in a shorter time gives a larger magnitude; weber per second is a volt.",
+        "observablePerformanceDe": "Die lernende Person bestimmt aus Anfangs- und Endfluss sowie Zeitintervall den mittleren Spannungsbetrag, führt Einheiten und Windungszahl korrekt und prüft die Skalierung vor der Rechnung.",
+        "observablePerformanceEn": "From initial and final flux and a time interval, the learner determines mean voltage magnitude, correctly handles units and turn count, and checks the scaling before calculation."
+      },
+      {
+        "id": "minus-sign-encodes-consistent-orientation",
+        "essentialUnderstandingDe": "Das Minuszeichen in U_ind = −N ΔΦ/Δt kodiert bei festgelegter Flächen- und Umlauforientierung die Lenz-Beziehung. Ein Vorzeichen ist ohne dokumentierte Konvention nicht als absolute Polung interpretierbar.",
+        "essentialUnderstandingEn": "The minus sign in U_ind = −N ΔΦ/Δt encodes the Lenz relation under specified surface and loop orientations. A sign cannot be interpreted as absolute polarity without a documented convention.",
+        "observablePerformanceDe": "Die lernende Person legt Orientierung und Anschlusspolung fest, berechnet ein konsistentes Vorzeichen und erklärt, wie eine Umkehr der Konvention die Schreibweise, nicht die beobachtbare Wirkung, verändert.",
+        "observablePerformanceEn": "The learner specifies orientation and terminal polarity, calculates a consistent sign, and explains how reversing the convention changes the notation rather than the observable effect."
+      },
+      {
+        "id": "induced-current-opposes-flux-change",
+        "essentialUnderstandingDe": "Im geschlossenen Kreis erzeugt der Induktionsstrom ein Magnetfeld, das der verursachenden Flussänderung entgegenwirkt, nicht dem vorhandenen Fluss schlechthin. Im offenen Kreis kann Spannung bestehen, ohne dass ein anhaltender Induktionsstrom fließt.",
+        "essentialUnderstandingEn": "In a closed circuit, induced current creates a magnetic field opposing the causal change in flux, not the existing flux as such. In an open circuit, voltage can exist without a sustained induced current.",
+        "observablePerformanceDe": "Die lernende Person konstruiert aus zunehmendem oder abnehmendem Fluss zuerst die entgegenwirkende induzierte Feldrichtung und daraus die Stromrichtung; für einen offenen Kreis begrenzt sie die Aussage auf Spannungspolung.",
+        "observablePerformanceEn": "From increasing or decreasing flux, the learner first constructs the opposing induced-field direction and then the current direction; for an open circuit, the learner limits the claim to voltage polarity."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "mean-voltage-tracks-flux-change-rate",
+        "minus-sign-encodes-consistent-orientation",
+        "induced-current-opposes-flux-change"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "flux-history",
+        "textDe": "Zunehmender, abnehmender oder unveränderter Fluss mit verschiedenen Zeitintervallen",
+        "textEn": "Increasing, decreasing, or constant flux over different time intervals"
+      },
+      {
+        "id": "orientation-choice",
+        "textDe": "Flächennormale, Wicklungssinn und markierte Anschlusspolung",
+        "textEn": "Surface normal, winding sense, and marked terminal polarity"
+      },
+      {
+        "id": "circuit-state",
+        "textDe": "Offener Stromkreis oder geschlossener Kreis mit bestimmbarer Stromrichtung",
+        "textEn": "Open circuit or closed loop with a determinable current direction"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "magnet-approach-and-retreat",
+        "taskDemandDe": "Ein Stabmagnet nähert sich einer Spule in 0,20 s und wird danach langsamer entfernt; Flusswerte und Wicklungssinn sind gegeben. Bestimme mittlere Spannungen und begründe die Stromrichtungen im geschlossenen Kreis.",
+        "taskDemandEn": "A bar magnet approaches a coil in 0.20 s and is then withdrawn more slowly; flux values and winding sense are supplied. Determine mean voltages and justify current directions in the closed loop.",
+        "expectedPerformanceDe": "Die lernende Person berechnet Betrag und Vorzeichen unter eigener dokumentierter Konvention, erkennt den kleineren Betrag beim langsameren Rückzug und konstruiert entgegengesetzte induzierte Feldrichtungen für Zu- und Abnahme.",
+        "expectedPerformanceEn": "The learner calculates magnitude and sign under a documented convention, recognizes the smaller magnitude during slower withdrawal, and constructs opposite induced-field directions for increase and decrease.",
+        "understandingFocusDe": "Der Fall prüft Rate, Vorzeichenkonvention und Lenz-Wirkung gemeinsam.",
+        "understandingFocusEn": "The case jointly tests rate, sign convention, and the Lenz effect."
+      },
+      {
+        "id": "open-loop-reversal-transfer",
+        "taskDemandDe": "Dieselbe Spule wird offen betrieben; Bewegung und Wicklungsorientierung werden nacheinander umgekehrt. Sage die Anschluss-Polung voraus und beurteile die Aussage, die Lenz-Regel verlange in jedem Fall einen Strom.",
+        "taskDemandEn": "The same coil is operated open-circuit; motion and winding orientation are reversed in turn. Predict terminal polarity and judge the claim that Lenz's law requires a current in every case.",
+        "expectedPerformanceDe": "Die lernende Person verfolgt die Vorzeichenänderungen konsistent, unterscheidet induzierte Spannung von geschlossenem Strompfad und weist die pauschale Strombehauptung zurück.",
+        "expectedPerformanceEn": "The learner consistently tracks sign changes, distinguishes induced voltage from a closed current path, and rejects the blanket current claim.",
+        "understandingFocusDe": "Der Transfer deckt eine mechanische Anwendung der Lenz-Regel ohne Stromkreisprüfung auf.",
+        "understandingFocusEn": "The transfer reveals mechanical use of Lenz's law without checking the circuit."
+      }
+    ]
+  }
+}

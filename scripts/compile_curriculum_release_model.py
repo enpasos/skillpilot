@@ -2801,9 +2801,22 @@ def compile_publication_evidence(
     return logical_documents, build_inputs, counts
 
 
+def reject_unsupported_composition_supplements(profile: Mapping[str, Any], repo_root: Path) -> None:
+    """V1 packages cannot encode explicit supplement enrollment or its review contract."""
+    if profile.get("canonicalLandscape", {}).get("landscapeId") != "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced":
+        return
+    directory = repo_root / "curricula/DE/Gymnasium/composition-supplements/mathematik"
+    if directory.is_dir() and any(directory.rglob("*.supplement.json")):
+        raise CompilationError(
+            "composition-supplement-v1 is unsupported by curriculum-package v1; "
+            "refusing a package that silently omits authored optional Mathematics targets/reviews"
+        )
+
+
 def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     profile = load_json(profile_path)
     validate_schema(profile, "build-profile", str(profile_path))
+    reject_unsupported_composition_supplements(profile, REPO_ROOT)
     package = profile["package"]
     expected_release_id = f"{package['packageId']}@{package['packageVersion']}"
     if package["releaseId"] != expected_release_id:

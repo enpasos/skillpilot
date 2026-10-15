@@ -1,0 +1,697 @@
+{
+  "position": 12,
+  "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+  "title": "Ein- und Ausschaltvorgänge analysieren",
+  "role": "INFORMED_SUCCESSOR_AUTHOR",
+  "priorSelectedDecisionPreserved": {
+    "role": "unresolved97-whole-body-successor-peer",
+    "decisionId": "informed97-author-003-692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "dependentGoalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "authorPath": "tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-003-final-v1/native-proposal",
+    "authorSha256": "sha256:8c31bbcfff2c7e521f091343c554a87820da1c87e805999757a8ee442a1a8845",
+    "reviewPath": "tmp/cross-subject-requires/physics-unresolved97-third20-informed-independent-requires-review-20261013-v1/native-independent-requires-review.inert.json",
+    "reviewSha256": "sha256:ba0f834657917b91dbba624b38a65c24159587c0f683049ef2b878d26a09bd89",
+    "reviewRecordIndex": 4,
+    "independentScientificVerdict": "pending",
+    "requiresDecision": "scope_gap",
+    "proposedForeignPrerequisiteIds": [],
+    "originalReviewInput": {
+      "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+      "prerequisitesSha256": "sha256:4c9a04f571fd1716aef4ad91d346e9261e98b9b597d35fe324c5821ab3a64167",
+      "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+    },
+    "currentMatchesBaseline": true,
+    "currentMatchesProposed": true,
+    "technicallyCurrentApprovedBinding": false,
+    "technicalErrors": [],
+    "nativeQualityOrAdoptionApprovalCreated": false
+  },
+  "currentGoalWhole": {
+    "id": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "title": "Ein- und Ausschaltvorgänge analysieren",
+    "titleEn": "Analyze Switch-On and Switch-Off Processes",
+    "description": "Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.",
+    "descriptionEn": "The learner can quantitatively analyze current and voltage curves when an idealized RL circuit is switched on and off using the time constant τ = L/R and determine the inductance from such a transient.",
+    "weight": 1.05,
+    "tags": [
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "37f28bc4-def2-57cf-a06b-191dfd228205"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_FELDER",
+        "LI_ENERGIE"
+      ],
+      "phase": "Q2"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "title": "Visualisierung: Ein- und Ausschaltvorgänge analysieren",
+        "url": "/assets/goal-visualizations/physik/692db5b6-8be1-5c7b-8307-3a02afb21ea0/692db5b6-8be1-5c7b-8307-3a02afb21ea0.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Ein- und Ausschaltvorgänge analysieren.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Ein- und Ausschaltvorgänge analysieren\". Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "currentPositiveWhole": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "rl-current-is-continuous-and-exponential",
+        "essentialUnderstandingDe": "Im idealisierten linearen RL-Kreis kann der Spulenstrom nicht sprunghaft ändern. Widerstand und Selbstinduktion erzeugen exponentielle Ein- und Ausschaltverläufe mit physikalisch bestimmten Anfangs- und Grenzwerten.",
+        "essentialUnderstandingEn": "In an idealized linear RL circuit, inductor current cannot change discontinuously. Resistance and self-induction produce exponential switch-on and switch-off transients with physically determined initial and limiting values.",
+        "observablePerformanceDe": "Die lernende Person ordnet aus frischen Strom- und Spannungsdaten Schaltphase und Bauteilgrößen zu, bestimmt Anfangs- und Grenzwerte und verwirft einen Verlauf mit unzulässigem Stromsprung.",
+        "observablePerformanceEn": "From fresh current and voltage data, the learner identifies switching phase and component quantities, determines initial and limiting values, and rejects a curve with an inadmissible current jump."
+      },
+      {
+        "id": "time-constant-connects-graph-and-components",
+        "essentialUnderstandingDe": "Die Zeitkonstante τ = L/R legt die Zeitskala fest; nach τ ist beim Einschalten ein charakteristischer Anteil des Endwerts erreicht. Bei bekanntem R erlaubt eine aus Daten bestimmte Zeitkonstante die Bestimmung von L.",
+        "essentialUnderstandingEn": "The time constant τ = L/R sets the timescale; after one τ a characteristic fraction of the final switch-on value is reached. With known R, a time constant determined from data allows L to be found.",
+        "observablePerformanceDe": "Die lernende Person bestimmt τ aus Graph, Tabellenwerten oder einem geeigneten Fit, berechnet L mit Einheit und gibt eine datenangemessene Genauigkeit statt Scheingenauigkeit an.",
+        "observablePerformanceEn": "The learner determines τ from a graph, tabulated values, or an appropriate fit, calculates L with units, and reports precision appropriate to the data rather than false precision."
+      },
+      {
+        "id": "changed-parameters-predict-transient",
+        "essentialUnderstandingDe": "Größeres L verlangsamt und größeres R beschleunigt über τ = L/R bei sonst gleichem Serien-RL-Modell die zeitliche Annäherung. Bei einem Spannungssprung bestimmen Quellenspannung und Gesamtwiderstand gemeinsam den stationären Grenzstrom U/R, während die Anfangsbedingung den Startwert festlegt; Spannungspolungen folgen der jeweiligen Schaltphase.",
+        "essentialUnderstandingEn": "Larger L slows and larger R speeds the approach through τ = L/R in an otherwise unchanged series RL model. For a voltage step, source voltage and total resistance jointly determine the steady-state limiting current U/R, while the initial condition sets the starting value; voltage polarities follow the switching phase.",
+        "observablePerformanceDe": "Vor Auswertung eines neuen Datensatzes sagt die lernende Person getrennt voraus, wie R und L die Zeitkonstante, wie Quellenspannung und R den Grenzstrom und wie der Anfangsstrom den Startwert verändern, und prüft die Prognose an Verlauf und Residuen.",
+        "observablePerformanceEn": "Before analyzing a fresh data set, the learner separately predicts how R and L affect the time constant, how source voltage and R affect the limiting current, and how initial current sets the starting value, then checks the prediction against the curve and residuals."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "rl-current-is-continuous-and-exponential",
+        "time-constant-connects-graph-and-components",
+        "changed-parameters-predict-transient"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "transient-type",
+        "textDe": "Einschalten, Ausschalten oder Übergang mit nichtverschwindendem Anfangsstrom",
+        "textEn": "Switch-on, switch-off, or transition with nonzero initial current"
+      },
+      {
+        "id": "component-change",
+        "textDe": "Änderung von R, L oder beiden bei unterschiedlicher Zeitkonstante",
+        "textEn": "Change of R, L, or both with different time constants"
+      },
+      {
+        "id": "data-quality",
+        "textDe": "Glatter Modellgraph, verrauschte Tabelle oder Datensatz mit erkennbarem Offset",
+        "textEn": "Smooth model curve, noisy table, or data set with a detectable offset"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "extract-inductance-from-switch-on-data",
+        "taskDemandDe": "Für einen RL-Kreis mit bekanntem R sind Strommesswerte nach dem Einschalten samt Unsicherheiten gegeben. Bestimme Endwert und τ, berechne L und prüfe, ob ein exponentielles Modell die Daten angemessen beschreibt.",
+        "taskDemandEn": "For an RL circuit with known R, current measurements after switch-on are supplied with uncertainties. Determine the final value and τ, calculate L, and check whether an exponential model adequately describes the data.",
+        "expectedPerformanceDe": "Die lernende Person nutzt mehrere Datenpunkte oder einen Fit, erhält L = Rτ mit Einheit, vergleicht Abweichungen mit Unsicherheiten und formuliert eine begrenzte Modellentscheidung.",
+        "expectedPerformanceEn": "The learner uses multiple data points or a fit, obtains L = Rτ with units, compares deviations with uncertainties, and states a bounded model judgment.",
+        "understandingFocusDe": "Der Fall prüft die quantitative Verbindung von Kurve, Zeitkonstante und Bauteilwert.",
+        "understandingFocusEn": "The case tests the quantitative link among curve, time constant, and component value."
+      },
+      {
+        "id": "resistance-change-switch-off-transfer",
+        "taskDemandDe": "Derselbe geladene Induktor wird über zwei verschiedene Widerstände entladen. Prognostiziere vorab die relative Zeitkonstante, ordne zwei unbekannte Stromkurven zu und erkläre Anfangswert sowie Spannungspolung.",
+        "taskDemandEn": "The same energized inductor is discharged through two different resistors. Predict the relative time constants, assign two unlabeled current curves, and explain the initial value and voltage polarity.",
+        "expectedPerformanceDe": "Die lernende Person erkennt τ = L/R, ordnet dem größeren R den schnelleren Abfall zu, erhält den kontinuierlichen gemeinsamen Anfangsstrom und begründet die Ausschaltpolung aus Selbstinduktion.",
+        "expectedPerformanceEn": "The learner uses τ = L/R, assigns faster decay to the larger R, preserves the common continuous initial current, and justifies switch-off polarity from self-induction.",
+        "understandingFocusDe": "Der Transfer prüft Parameterwirkung und physikalische Randwerte an einer anderen Schaltphase.",
+        "understandingFocusEn": "The transfer tests parameter effects and physical boundary values in a different switching phase."
+      }
+    ]
+  },
+  "currentPositiveOwner": {
+    "config": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.config.json",
+      "bytes": 1776,
+      "sha256": "sha256:4e2727ed4263b28f4a873dd3c40cce1466f080accd8908a66c2d026c0f6a47e5"
+    },
+    "recordFile": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.review.jsonl",
+      "bytes": 117140,
+      "sha256": "sha256:6d808e612cbd5997e718779497412a8041755efc5d1ca69a1116d08000e95845"
+    },
+    "recordLine": 11,
+    "recordLineSha256": "sha256:b7eadc7b42db4fe1ac3121be5459fd2f74b2d5e4884a1b26010e4c4a058ee6f9",
+    "profileFingerprint": "sha256:4785bc814eb5081658c2c65ab9563b1242e65b9a3809a5929acb9fcb687d14ad",
+    "goalFingerprint": "sha256:02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad",
+    "reviewInputFingerprint": "sha256:cae18e3a8a69a82a4b84339090782eff4159e59594e6ae06d6143c7153e76165",
+    "profileStatus": "needs_human_review",
+    "reviewAuthority": "ai_candidate"
+  },
+  "wholeReader": {
+    "path": "tmp/cross-subject-requires/remaining18-whole-science-author-20261014-v1/readings/12-692db5b6-8be1-5c7b-8307-3a02afb21ea0.current-whole.json",
+    "bytes": 23942,
+    "sha256": "sha256:3af5570bd6754cb403cce46c984eb070909e4cc06af923b8dff032d8b0f2bd53"
+  },
+  "sourceReader": {
+    "path": "tmp/cross-subject-requires/remaining18-whole-science-author-20261014-v1/sources/12-692db5b6-8be1-5c7b-8307-3a02afb21ea0.current-source.json",
+    "bytes": 62428,
+    "sha256": "sha256:f3787c8c8cfce0938a546555eb0d3620addd5f5fcefa31b2717d9e65f7db2496"
+  },
+  "wholeNominees": [
+    {
+      "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "wholeGoal": {
+        "id": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "shortKey": "canonical_math_sek1_j10_exponential_modelling_contexts",
+        "title": "Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten",
+        "titleEn": "Model growth and decay contexts exponentially and evaluate results in context",
+        "description": "Die lernende Person kann realitätsnahe Wachstums- und Abklingvorgänge graphisch und rechnerisch mit geeigneten exponentiellen Modellen beschreiben, Modellannahmen variieren, Grenzen des Modells benennen und Ergebnisse im Sachzusammenhang kritisch bewerten.",
+        "descriptionEn": "The learner can describe real-world growth and decay processes graphically and numerically with suitable exponential models, vary modeling assumptions, identify model limits, and evaluate results critically in context.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical",
+          "modality:visual",
+          "representation:graph",
+          "tool:geogebra"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+            "title": "Visualisierung: Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten",
+            "url": "/assets/goal-visualizations/mathematik/27b63e2e-6a34-483e-8e5a-fe0f49670d1d/27b63e2e-6a34-483e-8e5a-fe0f49670d1d.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten\". Die lernende Person kann realitätsnahe Wachstums- und Abklingvorgänge graphisch und rechnerisch mit geeigneten exponentiellen Modellen beschreiben, Modellannahmen variieren, Grenzen des Modells benennen und Ergebnisse im Sachzusammenhang kritisch bewerten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          },
+          {
+            "type": "tool",
+            "title": "GeoGebra Graphing Calculator",
+            "url": "https://www.geogebra.org/graphing",
+            "resourceType": "graphing-calculator",
+            "provider": "GeoGebra",
+            "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
+            "lang": "mul"
+          }
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.3",
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4",
+            "L5"
+          ],
+          "phase": "J10",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL_MODELLING"
+        },
+        "contains": [],
+        "requires": [
+          "42e19186-6769-41ac-a7bf-ab39bdb50661",
+          "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true
+      },
+      "wholePositiveProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "multiplicative-model-structure",
+            "essentialUnderstandingDe": "Exponentielles Wachstum oder Abklingen beruht auf einem konstanten multiplikativen Faktor beziehungsweise einer konstanten relativen Änderung pro gleich langem Zeitintervall.",
+            "essentialUnderstandingEn": "Exponential growth or decay is based on a constant multiplicative factor, or constant relative change, per equal time interval.",
+            "observablePerformanceDe": "Die lernende Person identifiziert Ausgangswert, Zeiteinheit und Wachstums- oder Abklingfaktor aus Daten oder Kontext und begründet, warum ein exponentielles Modell zur angenommenen Struktur passt.",
+            "observablePerformanceEn": "The learner identifies the initial value, time unit, and growth or decay factor from data or context and explains why an exponential model fits the assumed structure."
+          },
+          {
+            "id": "coordinate-model-and-context",
+            "essentialUnderstandingDe": "Term, Wertetabelle und Graph beschreiben dasselbe Modell; Parameter und berechnete Werte müssen mit Bedeutung, Einheit und zeitlichem Bezug in den Sachzusammenhang zurückübersetzt werden.",
+            "essentialUnderstandingEn": "Expression, value table, and graph describe the same model; parameters and calculated values must be translated back into the context with meaning, unit, and time reference.",
+            "observablePerformanceDe": "Die lernende Person erstellt oder nutzt rechnerische und grafische Darstellungen konsistent und bewertet ein Ergebnis mit Einheit und sachlicher Bedeutung statt nur einen Zahlenwert anzugeben.",
+            "observablePerformanceEn": "The learner constructs or uses numerical and graphical representations consistently and evaluates a result with its unit and contextual meaning rather than merely giving a number."
+          },
+          {
+            "id": "assumptions-and-limits",
+            "essentialUnderstandingDe": "Die Verlässlichkeit einer Extrapolation hängt davon ab, ob der konstante relative Faktor und weitere Modellannahmen im betrachteten Zeitraum plausibel bleiben.",
+            "essentialUnderstandingEn": "The reliability of an extrapolation depends on whether the constant relative factor and other model assumptions remain plausible over the period considered.",
+            "observablePerformanceDe": "Die lernende Person variiert eine Annahme, beschreibt die Auswirkung auf das Modell und benennt eine konkrete zeitliche oder sachliche Grenze, jenseits derer das Ergebnis kritisch zu bewerten ist.",
+            "observablePerformanceEn": "The learner varies an assumption, describes its effect on the model, and identifies a concrete temporal or contextual limit beyond which the result must be treated critically."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "multiplicative-model-structure",
+            "coordinate-model-and-context",
+            "assumptions-and-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "process-direction",
+            "textDe": "Wachstum oder Abklingen mit Faktor größer oder kleiner als eins",
+            "textEn": "Growth or decay with a factor greater than or less than one"
+          },
+          {
+            "id": "assumption-horizon",
+            "textDe": "Kurzfristige Interpolation, langfristige Extrapolation oder veränderter relativer Faktor",
+            "textEn": "Short-term interpolation, long-term extrapolation, or a changed relative factor"
+          },
+          {
+            "id": "evidence-representation",
+            "textDe": "Kontexttext, Tabelle oder Graph als Ausgangsdaten",
+            "textEn": "Context, table, or graph as the starting data"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "medicine-decay-threshold",
+            "taskDemandDe": "Aus Halbwertszeit und Anfangsmenge eines Wirkstoffs ist ein exponentielles Abklingmodell zu bilden; eine spätere Menge und das Unterschreiten eines Schwellenwerts sind im Kontext zu bewerten.",
+            "taskDemandEn": "An exponential decay model must be formed from a medicine’s half-life and initial amount; a later amount and the crossing of a threshold must be evaluated in context.",
+            "expectedPerformanceDe": "Die lernende Person leitet den Faktor für die gewählte Zeiteinheit ab, verbindet Term und Graph, berechnet die Menge mit Einheit und erläutert die Schwellenwertaussage innerhalb der Modellannahmen.",
+            "expectedPerformanceEn": "The learner derives the factor for the chosen time unit, connects expression and graph, calculates the amount with a unit, and explains the threshold statement within the model assumptions.",
+            "understandingFocusDe": "Abklingstruktur, Zeitskala und kontextuelle Ergebnisdeutung werden gemeinsam sichtbar.",
+            "understandingFocusEn": "Decay structure, time scale, and contextual interpretation become visible together."
+          },
+          {
+            "id": "population-growth-limit",
+            "taskDemandDe": "Eine Tabelle zeigt zunächst annähernd konstantes relatives Wachstum einer Population; das Modell soll angepasst und eine sehr langfristige Prognose kritisch beurteilt werden.",
+            "taskDemandEn": "A table initially shows approximately constant relative growth in a population; a model must be fitted and a very long-term prediction assessed critically.",
+            "expectedPerformanceDe": "Die lernende Person begründet die exponentielle Modellwahl aus den relativen Änderungen, stellt eine Prognose dar und erklärt, warum begrenzte Ressourcen den konstanten Faktor langfristig unplausibel machen.",
+            "expectedPerformanceEn": "The learner justifies the exponential model from relative changes, represents a prediction, and explains why limited resources make a constant factor implausible in the long term.",
+            "understandingFocusDe": "Der geänderte Kontext prüft Modellgrenzen und verhindert, dass eine einmal gelernte Formel ungeprüft extrapoliert wird.",
+            "understandingFocusEn": "The changed context checks model limits and prevents uncritical extrapolation of a memorized formula."
+          }
+        ]
+      },
+      "positiveOwner": {
+        "config": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/positive-retained-after-user-image-import/747c8a4f536f.config.json",
+          "bytes": 1819,
+          "sha256": "sha256:e68dd6e7b0af470f178f97b40b5e02369ff237c1e0b6448b1291ea25cfc8ecba"
+        },
+        "recordFile": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/positive-retained-after-user-image-import/747c8a4f536f.review.jsonl",
+          "bytes": 80095,
+          "sha256": "sha256:5779c087afa51aa77b2be42c0af04c75d8b727a2f9cc1ed6629882af249f8e52"
+        },
+        "recordLine": 6,
+        "recordLineSha256": "sha256:371636693a60f9c0f5e7dba14f4a8ed921fd921fa9ff9cebd34ee98b6734b41f",
+        "profileFingerprint": "sha256:004057e7c05e65f3a25bef87f8e86156774400e79cb00d8c93bd6b88ca063fa1",
+        "goalFingerprint": "sha256:d2380f0c4ef65415fa058eb649e019a092edd41a2d79e2d45b9003f54e03c7c0",
+        "reviewInputFingerprint": "sha256:f71d4be9243b76cae2dc32aac6b66273cf4e751163ccf82a2f41c4fd6c33e6b5",
+        "profileStatus": "needs_human_review",
+        "reviewAuthority": "ai_candidate"
+      },
+      "currentNativeOccurrence": {
+        "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "selected": true,
+        "definitionSha256": "sha256:bfb9b4b28d93f94660e7d6e2e300049ff1439595070f63cc6f5948f8c57c6233",
+        "semanticKind": "curricularAtomic",
+        "semanticKindBasis": {
+          "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+          "sourceFingerprint": "sha256:7b6898c2f3c0a7bd2096040f385332ad12c5f02f2a0ae50f7d17ab9198bf2b89"
+        },
+        "technicalRole": "leaf",
+        "title": "Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten",
+        "directRequires": [
+          "42e19186-6769-41ac-a7bf-ab39bdb50661",
+          "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "effectiveRequiresRef": "sha256:8ea150051daacfafe0f79d31dc0d4a9d247470a3b2540b4791f1d83ed7870c95",
+        "prerequisiteOriginsRef": "sha256:8b76543a3f198395d8f048010f312a3a3d8bdf551b092a9cc0877b09f99f083f",
+        "prerequisiteContextStatus": "resolved",
+        "scope": {
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "placements": null,
+          "extendedData": {},
+          "provenanceRef": null,
+          "sourceBindingFilesRef": "sha256:e72bb4d9eb4007efe7b37cb763b427b6fe3016c9d36130fbca767003822bbc3b",
+          "sourceBindingRecordCount": 12,
+          "sourceBindingsSha256": "sha256:98a23e1c919a04f291c1e02d7ff7a3ae779f57256c1170a693f1e5566700f834"
+        },
+        "sourceRef": null,
+        "reviewInput": {
+          "semanticSha256": "sha256:dea696cf2809b08f1045e0532ba621a18eca7d4c0a72eab74f8b6277963bd3ab",
+          "prerequisitesSha256": "sha256:f56f70222b78e4126e7f0b2563a5ba183bf09ca2e927573ae8a01094f9f5f951",
+          "scopeSha256": "sha256:dff74516a0e75a59872ec552bec6f7c555779b8e3b600d3a8eec52a754b1c8a4"
+        }
+      }
+    }
+  ],
+  "wholeNecessaryMathematicalAssessment": "Das unveränderte ganze RL-P fordert eine selbstständige exponentielle Mehrpunkt-/Fit-Auswertung und Modellpassung. Der qualitative Selbstinduktionsvorgänger genügt hierfür nicht. Das all16-Atom 27b63 bildet und prüft exponentielle Modelle aus Daten mit Zeiteinheit, Parameterwirkung und Grenzen; seine gerichteten Vorgänger enthalten rechnerische/grafische Grundmodelle. Das auf 15 Länder begrenzte c74 wird nicht gebraucht. Ein selbst gelöstes allgemeines Logarithmusgleichungssystem oder eine DGL ist nicht universell, da der Literalauftrag Graph, Tabelle oder Fit ausdrücklich erlaubt. τ kann am 1−e⁻¹- bzw. e⁻¹-Anteil bestimmt werden; die physikalische Zuordnung L=Rτ bleibt Zielinhalt.",
+  "allRequiredExpectationIdsRetainedAndAssessed": [
+    "rl-current-is-continuous-and-exponential",
+    "time-constant-connects-graph-and-components",
+    "changed-parameters-predict-transient"
+  ],
+  "literalCurrentPCase": {
+    "caseId": "extract-inductance-from-switch-on-data",
+    "ownSolvedWork": "Explizite abstrakte Literalinstanz: R=10 Ω, t=0/1/2/3 ms, I=0/0,6321/0,8647/0,9502 A, Unsicherheit je ±0,0001 A, I∞=1 A aus bereitgestelltem stationären Messabschnitt. I=I∞(1−e^(−t/τ)) mit τ=1 ms liefert alle Punkte innerhalb der Bänder; L=Rτ=0,010 H. Nach 1 ms beträgt der Rest zum Endwert etwa e⁻¹. Anfangswert 0 und stetiger Strom werden erfüllt; der begrenzte Datensatz beweist kein universelles reales RL-Gesetz.",
+    "abstractCaseDataWereExplicitlyInstantiated": true,
+    "noEmpiricalOrHistoricalDataFabricated": true
+  },
+  "freshDiscriminatingCounterexampleOrTransfer": "Frisch: bei I0=0,4 A und gleichem I∞=1 A ist I(t)=1−0,6e^(−t/1 ms), also I(1 ms)=0,779272 A. Ein Nullstartfit wäre falsch; die normierten Restwerte [I∞−I(t)]/[I∞−I0] liefern weiter dieselbe τ. Bei gleicher L und verdoppeltem R halbiert sich τ, und bei unveränderter Quellenspannung halbiert sich zugleich der Grenzstrom. Beim Ausschalten bleibt der gemeinsame Anfangsstrom stetig, die Spulenpolung kehrt zur Stromerhaltung um.",
+  "currentDirectedPaths": {
+    "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "allDirectedPaths": {
+      "692db5b6-8be1-5c7b-8307-3a02afb21ea0": [],
+      "37f28bc4-def2-57cf-a06b-191dfd228205": [
+        {
+          "from": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "to": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "kind": "effective_requires"
+        }
+      ],
+      "106417ed-80db-5490-a1ee-bb4160d3f2b4": [
+        {
+          "from": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "to": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "to": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+          "kind": "effective_requires"
+        }
+      ],
+      "eb1ea150-ec6c-5000-bce3-f46c820dccf8": [
+        {
+          "from": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "to": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "to": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "kind": "effective_requires"
+        }
+      ],
+      "0f6b798b-594e-5480-8c5f-95e2486a4d85": [
+        {
+          "from": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "to": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "to": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+          "to": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+          "kind": "effective_requires"
+        }
+      ],
+      "1a037489-3c95-540b-8cae-0acd360358ee": [
+        {
+          "from": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "to": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "to": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "to": "1a037489-3c95-540b-8cae-0acd360358ee",
+          "kind": "effective_requires"
+        }
+      ],
+      "5c44b9ba-9b05-4774-95d5-073230d3fc4f": [
+        {
+          "from": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "to": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "to": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+          "to": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+          "to": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+          "kind": "effective_requires"
+        }
+      ],
+      "a522c8c0-f3a4-5568-acae-3010ed9feb87": [
+        {
+          "from": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "to": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "to": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "to": "1a037489-3c95-540b-8cae-0acd360358ee",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "1a037489-3c95-540b-8cae-0acd360358ee",
+          "to": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+          "kind": "effective_requires"
+        }
+      ],
+      "8c9394cb-f54a-508d-9750-4c49e31b3fa9": [
+        {
+          "from": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "to": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "to": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "to": "1a037489-3c95-540b-8cae-0acd360358ee",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "1a037489-3c95-540b-8cae-0acd360358ee",
+          "to": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+          "kind": "effective_requires"
+        },
+        {
+          "from": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+          "to": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+          "kind": "effective_requires"
+        }
+      ]
+    },
+    "mathematicsPaths": {}
+  },
+  "sourceAndScopeJudgment": "BY Ph12-EA.2.3 trägt mathematische RL-Verläufe ausdrücklich; GA.2.2 und HE Q2.2 sind teilweise qualitativ. BW 3.6.2.3 enthält Selbstinduktion. Keine unbedingte Identität dieser Quellenumfänge oder neue BY-GA-Freigabe.",
+  "sourceGateApprovalCreated": false,
+  "PReviewOrM7ApprovalCreated": false,
+  "independentRequiresApprovalCreated": false,
+  "canonicalOrQualityFilesWritten": false,
+  "noBackwardPrerequisiteMasteryInference": true,
+  "ownContentLicense": "CC-BY-4.0; SkillPilot attribution",
+  "technicalEvidenceLicense": "Apache-2.0",
+  "candidate": {
+    "decisionId": "remaining18-whole-author-v1-692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "familyId": "canonical-gymnasium",
+    "dependentGoalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "dependentTitle": "Ein- und Ausschaltvorgänge analysieren",
+    "dependentDescription": "Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.",
+    "decision": "add",
+    "prerequisiteGoalIds": [
+      "27b63e2e-6a34-483e-8e5a-fe0f49670d1d"
+    ],
+    "rationale": "Das unveränderte ganze RL-P fordert eine selbstständige exponentielle Mehrpunkt-/Fit-Auswertung und Modellpassung. Der qualitative Selbstinduktionsvorgänger genügt hierfür nicht. Das all16-Atom 27b63 bildet und prüft exponentielle Modelle aus Daten mit Zeiteinheit, Parameterwirkung und Grenzen; seine gerichteten Vorgänger enthalten rechnerische/grafische Grundmodelle. Das auf 15 Länder begrenzte c74 wird nicht gebraucht. Ein selbst gelöstes allgemeines Logarithmusgleichungssystem oder eine DGL ist nicht universell, da der Literalauftrag Graph, Tabelle oder Fit ausdrücklich erlaubt. τ kann am 1−e⁻¹- bzw. e⁻¹-Anteil bestimmt werden; die physikalische Zuordnung L=Rτ bleibt Zielinhalt.",
+    "evidenceKind": "didacticSequencing",
+    "sourceRefs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "locator": "goals[id=692db5b6-8be1-5c7b-8307-3a02afb21ea0] full unchanged Goal, active positive body separately bound",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.review.jsonl",
+        "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "locator": "JSONL line 11; whole current profile",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "locator": "goals[id=692db5b6-8be1-5c7b-8307-3a02afb21ea0].applicability; current authored scope only",
+        "supports": "scope"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "recordId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "locator": "goals[id=27b63e2e-6a34-483e-8e5a-fe0f49670d1d] whole current Goal/P and native scope bound in nominee-whole-reader",
+        "supports": "prerequisite"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+        "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+        "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "locator": "Exact current mapped rows and located source bodies in private source reader; no blanket source acceptance",
+        "supports": "goalSemantics"
+      }
+    ],
+    "applicability": {
+      "universality": "allDependentScopes",
+      "scopes": [
+        {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "alternatives": [
+        "Universality is about the unchanged currently authored Goal/P and exact canonical applicability, not a new all-state source coverage verdict.",
+        "BY Ph12-EA.2.3 trägt mathematische RL-Verläufe ausdrücklich; GA.2.2 und HE Q2.2 sind teilweise qualitativ. BW 3.6.2.3 enthält Selbstinduktion. Keine unbedingte Identität dieser Quellenumfänge oder neue BY-GA-Freigabe."
+      ]
+    },
+    "author": "/root/remaining18_whole_science_author (informed successor author; no independent authority)",
+    "status": "author_candidate_pending_independent_review"
+  }
+}

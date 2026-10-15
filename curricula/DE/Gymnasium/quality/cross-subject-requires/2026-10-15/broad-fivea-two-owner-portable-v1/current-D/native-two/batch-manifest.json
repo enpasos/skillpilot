@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-two-broad5a-current-description-20261015-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/broad-fivea-two-owner-portable-v1/current-D/two.config.json",
+  "configDigest": "sha256:9179db2f95da89192a9d1ff253f55b5c3610f45e8682012ccff58a0260a36f0d",
+  "goalIds": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:ab96f5fa43b9c40a5d8e3359bfb1c6ae41e594b18ad7a43ab107cee299c28e65"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:5f14191a90646150e659ae33315f7ddda4ee97ca4391d7e77d2adbaef94e9658",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:aaa8d50e507f53f06f19da3b6a4ebf2d4b010bab47bfd4ea949e0ea015f95457",
+    "reviewInputFingerprint": "sha256:4a0da35552c397231d6e7eb1271604096adbcf9d50381155bb3e78eddc5d38a5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-two-broad5a-current-description-20261015-v1-a",
+        "campaignDigest": "sha256:50a936e88a6e6ca15ad1310e18b82e532f2a76987de8ad66edd81591e87fb803",
+        "roundId": "physics-two-broad5a-current-description-20261015-v1-first-pass-a",
+        "independenceGroupId": "physics-two-broad5a-current-description-20261015-v1-independent-a",
+        "batchId": "physics-two-broad5a-current-description-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f87fd2c09afcb3fcd177216619c10668f92ec480fe632d19fc031cf09f30c775"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-two-broad5a-current-description-20261015-v1-b",
+        "campaignDigest": "sha256:bc35917b6d917e5c3de2839917a6de81c1f4149330fc13b08d7f0c6e08545be8",
+        "roundId": "physics-two-broad5a-current-description-20261015-v1-first-pass-b",
+        "independenceGroupId": "physics-two-broad5a-current-description-20261015-v1-independent-b",
+        "batchId": "physics-two-broad5a-current-description-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:70a5bf9af12d133f8d1d27ad4aebbcad6630ad0129ca36a947212c9eaaf1d924"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

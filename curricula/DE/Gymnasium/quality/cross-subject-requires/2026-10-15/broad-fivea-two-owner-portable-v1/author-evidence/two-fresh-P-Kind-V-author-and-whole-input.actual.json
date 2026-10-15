@@ -1,0 +1,569 @@
+{
+  "createdAtUTC": "2026-10-15T00:52:04.315Z",
+  "physicalCandidate": {
+    "path": "tmp/cross-subject-requires/broad-fivea-two-owner-portable-quality-author-20261015-v1/isolated-root/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "bytes": 2512829,
+    "sha256": "sha256:070ace1888edc2adc93585203606b53bc0ad74f15efcbb1db737db700ec5afa6"
+  },
+  "baselineMainPhysics": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "bytes": 2512906,
+    "sha256": "sha256:5642f34cbc4fab931951b4240e52ff017f2d9f0dc413229e25e5e4431e8a8760"
+  },
+  "currentWholeGoalAndP": [
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "wholeProposedGoal": {
+        "id": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+        "titleEn": "Physics in Road Traffic: Evaluating Safe Distances",
+        "description": "Die lernende Person kann Reaktions- und Bremswege qualitativ und mithilfe einfacher Modelle beurteilen und daraus Sicherheitsabstände in Alltagssituationen bewerten.",
+        "descriptionEn": "The learner can assess reaction and braking distances qualitatively and using simple models and evaluate safe distances in everyday situations.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK",
+          "Context",
+          "canonical",
+          "context:traffic",
+          "cross-subject:mathematics"
+        ],
+        "contains": [],
+        "requires": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG"
+          ],
+          "phase": "E"
+        },
+        "shortKey": "canonical_physics_traffic_safety",
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "title": "Visualisierung: Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+            "url": "/assets/goal-visualizations/physik/4a2bf015-052b-4af0-aed7-324259fa1a8a/model-boundaries-v2/4a2bf015-052b-4af0-aed7-324259fa1a8a.png",
+            "provider": "OpenAI / built-in image_gen edit",
+            "description": "Visualisierung zu Reaktions-/Bremsweg und getrennten Modellgrenzen für feste Hindernisse und vorausfahrende Fahrzeuge; korrigierter Nachfolger, eigene didaktische Illustration.",
+            "altText": "Schematische Trennung von Reaktionsweg, Bremsweg und Anhalteweg; 50 km/h entsprechen etwa 13,9 m/s. Modellgrenzen: festes Hindernis mit Anhalteweg plus Reserve; bei vorausfahrendem Fahrzeug den relativen Abstand auf gemeinsamer Zeitachse prüfen.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeCurrentP": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "broad-fivea-two-owner-current-P-author-20261015-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "goalFingerprint": "sha256:61e944870cf0c0907ead5f0208201a1de42cd453ada097b88de560c95cb6edd5",
+        "reviewInputFingerprint": "sha256:eeaa2665ebce3cc6ea274218e563332adc28b3ca45e88a9e8badd100e80b5da0",
+        "profileFingerprint": "sha256:076d616da816558887eda6bfb4718999ee2a229976160e2c7bd7c1ccb979b533",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-15T00:52:04.315Z",
+        "reviewer": "/root/portable_eight_scope_and_guard_successor_author; actual fresh informed whole-P/Kind/V author; OpenAI/gpt-6.1-sol requested ultra; serving-build-unobserved; independent judgments pending",
+        "reason": "Actual complete bilingual Goal/P reread with both required expectations, both mandatory cases and all variations. The physical duty is preserved: distinguish linear reaction and quadratic braking scaling, shared-time maximum separation loss, uncertainty and explicit reserve; numeric ranking alone is insufficient. Supplied consistent model/threshold data are explicitly allowed, with own numerical calculation optional. The exact two literal cases and fresh stronger-follower/uncertainty transfers were solved in the actual author packet,49exact assertions passed; these remain known own work, not new learner or independent evidence. The new actual image was viewed: its fixed-obstacle line now says stopping distance plus reserve and its moving-leader line requires relative-gap assessment. The50km/h≈13.9m/s,1s≈14m reaction,14m braking and28m total are a separate illustrative dry-road model, not the8m/s² mandatory task. Removing the two overbroad Math guards preserves the whole physical assessment. Local Physics predecessor minimality remains qualified; no content weakening or transitive mastery inference. Keep the entire exact P body, E1/G1, ai_candidate/needs_human_review and dissent. No Source/Placement/human/D/M7 authority.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "modeling",
+          "expectations": [
+            {
+              "id": "selected-blind-review-core",
+              "essentialUnderstandingDe": "Der Anhalteweg setzt sich aus Reaktions- und Bremsweg zusammen; bei einfachen Modellen wächst der Reaktionsweg proportional zu Geschwindigkeit und Reaktionszeit, der Bremsweg bei konstanter Verzögerung quadratisch mit der Geschwindigkeit. Reale Sicherheitsabstände müssen außerdem Bedingungen, Unsicherheiten und eine explizite Sicherheitsreserve berücksichtigen.",
+              "essentialUnderstandingEn": "Stopping distance is the sum of reaction and braking distance; in simple models, reaction distance is proportional to speed and reaction time, while braking distance under constant deceleration grows with the square of speed. Real safe distances must also account for conditions, uncertainty, and an explicit safety margin.",
+              "observablePerformanceDe": "Die lernende Person trennt Reaktions- und Bremsphase, deutet bereitgestellte konsistente Modellwerte mit Einheiten/Annahmen und bewertet einen vorgeschlagenen Abstand anhand offengelegter Reserve- und Unsicherheitskriterien. Eigene Zahlenrechnung ist eine mögliche Vertiefung, nicht Voraussetzung der Bewertung.",
+              "observablePerformanceEn": "The learner separates reaction and braking phases, interprets supplied consistent model values with units/assumptions, and evaluates a proposed gap using stated margin and uncertainty criteria. Numerical calculation is a possible extension rather than a prerequisite for evaluation."
+            },
+            {
+              "id": "relative-gap-requires-a-shared-motion-timeline",
+              "essentialUnderstandingDe": "Beim Abstand zu einem ebenfalls bewegten und bremsenden Fahrzeug ist nicht automatisch der volle Anhalteweg des Folgefahrzeugs die relevante Vergleichsgröße, sondern der größte Abbau des Abstands im gemeinsamen Zeitverlauf. Nur in passend begründeten einfachen Fällen lässt er sich als Differenz der Fahrwege bis zum Stillstand bestimmen; eine gesonderte Sicherheitsreserve bleibt erforderlich.",
+              "essentialUnderstandingEn": "When following another vehicle that is also moving and braking, the relevant quantity is not automatically the follower's full stopping distance but the greatest loss of separation over the shared time history. Only in suitably justified simple cases can this be obtained from the difference between the distances traveled before stopping; a separate safety margin is still required.",
+              "observablePerformanceDe": "Die lernende Person erklärt für ein Hindernis und ein bremsendes vorausfahrendes Fahrzeug den passenden gemeinsamen Zeit-/Wegvergleich, lokalisiert den größten Abstandsverlust in bereitgestellten Verläufen und bewertet den Abstand einschließlich gegebener Reserve.",
+              "observablePerformanceEn": "For an obstacle and a braking lead vehicle, the learner explains the appropriate shared time/distance comparison, locates the greatest separation loss in supplied histories, and assesses the gap including a given margin."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "selected-blind-review-core",
+              "relative-gap-requires-a-shared-motion-timeline"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "speed-and-reaction-latency",
+              "textDe": "Anfangsgeschwindigkeit und Reaktionszeit werden unabhängig verändert; äquivalente Geschwindigkeitswerte und Modellrechnungen dürfen bereitgestellt sein.",
+              "textEn": "Initial speed and reaction time vary independently; equivalent speed values and model calculations may be supplied."
+            },
+            {
+              "id": "effective-braking-conditions",
+              "textDe": "Trockene oder nasse Fahrbahn, Gefälle und fahrzeugspezifische effektive Bremsverzögerung verändern den Bremsweg.",
+              "textEn": "Dry or wet pavement, downhill grade, and vehicle-specific effective braking deceleration alter braking distance."
+            },
+            {
+              "id": "hazard-geometry-and-uncertainty",
+              "textDe": "Festes Hindernis oder mitbremsendes vorausfahrendes Fahrzeug sowie Punktwerte oder Unsicherheitsintervalle erfordern unterschiedliche Vergleichs- und Reserveentscheidungen.",
+              "textEn": "A fixed obstacle or a braking lead vehicle, together with point estimates or uncertainty intervals, requires different comparison and margin decisions."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "fixed-obstacle-two-speed-safety-test",
+              "taskDemandDe": "Für 50 beziehungsweise 100 km/h bei tR=0,80 s und |aB|=8,0 m/s² sind konsistente Modellwerte gegeben: Reaktionswege 11,11/22,22 m, Bremswege 12,06/48,23 m und Anhaltewege 23,17/70,45 m; dies sind gerundete Anzeigewerte. Die erforderlichen Mindestabstände werden einschließlich der vorgegebenen 10%-Reserve aus den ungerundeten Modellgrößen bestimmt und erst am Ende sicherheitsgerichtet auf den nächsten vollen Zentimeter aufgerundet: 25,49/77,50 m. Bewerte angebotene 30/75 m, erkläre Reaktions-/Bremsphase, Geschwindigkeitseinfluss und die Grenzen der trockenen ebenen Modellstraße. Keine neue Umrechnung oder Prozentrechnung ist gefordert.",
+              "taskDemandEn": "At 50 and 100 km/h with tR=0.80 s and |aB|=8.0 m/s², consistent model values are supplied: reaction distances 11.11/22.22 m, braking distances 12.06/48.23 m and stopping distances 23.17/70.45 m; these are rounded display values. Required minimum gaps including the supplied 10% margin are determined from the unrounded model quantities and only then conservatively rounded upward to the next whole centimetre: 25.49/77.50 m. Evaluate offered 30/75 m gaps and explain reaction/braking phases, speed effects and limits of the dry level-road model. No new conversion or percentage calculation is demanded.",
+              "expectedPerformanceDe": "Die lernende Person bewertet30m im Modell als ausreichend,75m als unzureichend, begründet dies mit den bereitgestellten Reservewerten und erklärt die lineare Reaktions-/quadratische Bremsabhängigkeit statt einer bloßen Zahlenrangfolge. Reale Straße/Fahrerbedingungen und Unsicherheit bleiben Aussagegrenzen.",
+              "expectedPerformanceEn": "The learner judges30m sufficient within the model and75m insufficient using the supplied margin values, and explains linear reaction versus quadratic braking dependence rather than merely ranking numbers. Real road/driver conditions and uncertainty remain limitations.",
+              "understandingFocusDe": "Geprüft werden getrennte Skalierung der beiden Phasen, konsistente Einheiten und die Unterscheidung zwischen berechnetem Modellminimum und begründetem Sicherheitsabstand.",
+              "understandingFocusEn": "This tests the distinct scaling of the two phases, consistent units, and the distinction between a calculated model minimum and a justified safe distance."
+            },
+            {
+              "id": "wet-road-following-gap-with-lead-vehicle",
+              "taskDemandDe": "Zwei Fahrzeuge starten mit 80 km/h und 40 m Abstand; das vordere bremst sofort mit 8,0 m/s², das folgende nach 1,0 s mit 5,0 m/s². Ein kollisionsfrei fortgesetzter Punktmodellverlauf samt gleichzeitigen Wegmarken ist gegeben. Gerundete Anzeigewerte sind: Fahrtwege bis zum Halt 30,86/71,60 m und maximaler Abstandsverlust 40,74 m. Aus dem ungerundeten maximalen Abstandsverlust und der geforderten 5-m-Reserve wird der Mindestanfangsabstand erst am Ende sicherheitsgerichtet auf den nächsten vollen Zentimeter aufgerundet: 45,75 m. Bewerte 40 m und erkläre aus dem gemeinsamen Verlauf, warum weder volle 71,60 m noch eine Faustregel die richtige Vergleichsgröße sind. Die Modell- und Reservewerte sind gegeben; eine neue Zahlenrechnung ist nicht gefordert.",
+              "taskDemandEn": "Two vehicles start at 80 km/h with a 40 m gap; the lead brakes immediately at 8.0 m/s² and the follower after 1.0 s at 5.0 m/s². A point-model history continued without collision effects and simultaneous position markers are supplied. Rounded display values are: total travel 30.86/71.60 m and maximum separation loss 40.74 m. The minimum initial gap is determined from the unrounded maximum separation loss plus the required 5 m margin and only then conservatively rounded upward to the next whole centimetre: 45.75 m. Assess 40 m and explain from the shared history why neither the full 71.60 m nor a rule of thumb is the correct comparison. Model and margin values are supplied; no new numerical calculation is demanded.",
+              "expectedPerformanceDe": "Die lernende Person verwirft40m, deutet den größten relativen Abstandsverlust statt einen Einzelanhalteweg, nennt die gemeinsame Zeitachse sowie die künstliche Fortsetzung ohne Kollisionswirkung und erklärt die zusätzliche Reserve.",
+              "expectedPerformanceEn": "The learner rejects40m, interprets greatest relative separation loss rather than one stopping distance, identifies the shared time axis and artificial continuation without collision effects, and explains the added margin.",
+              "understandingFocusDe": "Geprüft werden relativer Weg, veränderte Bremsbedingungen und die Fehlvorstellung, jeder Folgeabstand müsse schlicht dem vollständigen Anhalteweg des hinteren Fahrzeugs entsprechen.",
+              "understandingFocusEn": "This tests relative travel, changed braking conditions, and the misconception that every following gap is simply the rear vehicle's full stopping distance."
+            }
+          ]
+        }
+      },
+      "originalWholeP": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "physics-twenty-reviewed-precise-asset-context-author-20261015-v2",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "goalFingerprint": "sha256:61e944870cf0c0907ead5f0208201a1de42cd453ada097b88de560c95cb6edd5",
+        "reviewInputFingerprint": "sha256:8f6c5b6f0fa6c06b3dab04c8eb7ddf918bdef0025b1ddb8426faa9b681651759",
+        "profileFingerprint": "sha256:076d616da816558887eda6bfb4718999ee2a229976160e2c7bd7c1ccb979b533",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-14T23:31:21.798Z",
+        "reviewer": "/root/adopted_caf_three_native_scope_route_audit; informed integration AUTHOR; actual unchanged image context inspected",
+        "reason": "New actual current whole-Goal/whole-P/current-asset author context for independent native description review. Current image bytes were read as context. This AI candidate creates no independent D/V, human/source/Kind/Requires authority and supplies no prior reviewer conclusion. Original records and conditions remain immutable; any changed profile body requires genuinely fresh body-bound Requires review.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "modeling",
+          "expectations": [
+            {
+              "id": "selected-blind-review-core",
+              "essentialUnderstandingDe": "Der Anhalteweg setzt sich aus Reaktions- und Bremsweg zusammen; bei einfachen Modellen wächst der Reaktionsweg proportional zu Geschwindigkeit und Reaktionszeit, der Bremsweg bei konstanter Verzögerung quadratisch mit der Geschwindigkeit. Reale Sicherheitsabstände müssen außerdem Bedingungen, Unsicherheiten und eine explizite Sicherheitsreserve berücksichtigen.",
+              "essentialUnderstandingEn": "Stopping distance is the sum of reaction and braking distance; in simple models, reaction distance is proportional to speed and reaction time, while braking distance under constant deceleration grows with the square of speed. Real safe distances must also account for conditions, uncertainty, and an explicit safety margin.",
+              "observablePerformanceDe": "Die lernende Person trennt Reaktions- und Bremsphase, deutet bereitgestellte konsistente Modellwerte mit Einheiten/Annahmen und bewertet einen vorgeschlagenen Abstand anhand offengelegter Reserve- und Unsicherheitskriterien. Eigene Zahlenrechnung ist eine mögliche Vertiefung, nicht Voraussetzung der Bewertung.",
+              "observablePerformanceEn": "The learner separates reaction and braking phases, interprets supplied consistent model values with units/assumptions, and evaluates a proposed gap using stated margin and uncertainty criteria. Numerical calculation is a possible extension rather than a prerequisite for evaluation."
+            },
+            {
+              "id": "relative-gap-requires-a-shared-motion-timeline",
+              "essentialUnderstandingDe": "Beim Abstand zu einem ebenfalls bewegten und bremsenden Fahrzeug ist nicht automatisch der volle Anhalteweg des Folgefahrzeugs die relevante Vergleichsgröße, sondern der größte Abbau des Abstands im gemeinsamen Zeitverlauf. Nur in passend begründeten einfachen Fällen lässt er sich als Differenz der Fahrwege bis zum Stillstand bestimmen; eine gesonderte Sicherheitsreserve bleibt erforderlich.",
+              "essentialUnderstandingEn": "When following another vehicle that is also moving and braking, the relevant quantity is not automatically the follower's full stopping distance but the greatest loss of separation over the shared time history. Only in suitably justified simple cases can this be obtained from the difference between the distances traveled before stopping; a separate safety margin is still required.",
+              "observablePerformanceDe": "Die lernende Person erklärt für ein Hindernis und ein bremsendes vorausfahrendes Fahrzeug den passenden gemeinsamen Zeit-/Wegvergleich, lokalisiert den größten Abstandsverlust in bereitgestellten Verläufen und bewertet den Abstand einschließlich gegebener Reserve.",
+              "observablePerformanceEn": "For an obstacle and a braking lead vehicle, the learner explains the appropriate shared time/distance comparison, locates the greatest separation loss in supplied histories, and assesses the gap including a given margin."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "selected-blind-review-core",
+              "relative-gap-requires-a-shared-motion-timeline"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "speed-and-reaction-latency",
+              "textDe": "Anfangsgeschwindigkeit und Reaktionszeit werden unabhängig verändert; äquivalente Geschwindigkeitswerte und Modellrechnungen dürfen bereitgestellt sein.",
+              "textEn": "Initial speed and reaction time vary independently; equivalent speed values and model calculations may be supplied."
+            },
+            {
+              "id": "effective-braking-conditions",
+              "textDe": "Trockene oder nasse Fahrbahn, Gefälle und fahrzeugspezifische effektive Bremsverzögerung verändern den Bremsweg.",
+              "textEn": "Dry or wet pavement, downhill grade, and vehicle-specific effective braking deceleration alter braking distance."
+            },
+            {
+              "id": "hazard-geometry-and-uncertainty",
+              "textDe": "Festes Hindernis oder mitbremsendes vorausfahrendes Fahrzeug sowie Punktwerte oder Unsicherheitsintervalle erfordern unterschiedliche Vergleichs- und Reserveentscheidungen.",
+              "textEn": "A fixed obstacle or a braking lead vehicle, together with point estimates or uncertainty intervals, requires different comparison and margin decisions."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "fixed-obstacle-two-speed-safety-test",
+              "taskDemandDe": "Für 50 beziehungsweise 100 km/h bei tR=0,80 s und |aB|=8,0 m/s² sind konsistente Modellwerte gegeben: Reaktionswege 11,11/22,22 m, Bremswege 12,06/48,23 m und Anhaltewege 23,17/70,45 m; dies sind gerundete Anzeigewerte. Die erforderlichen Mindestabstände werden einschließlich der vorgegebenen 10%-Reserve aus den ungerundeten Modellgrößen bestimmt und erst am Ende sicherheitsgerichtet auf den nächsten vollen Zentimeter aufgerundet: 25,49/77,50 m. Bewerte angebotene 30/75 m, erkläre Reaktions-/Bremsphase, Geschwindigkeitseinfluss und die Grenzen der trockenen ebenen Modellstraße. Keine neue Umrechnung oder Prozentrechnung ist gefordert.",
+              "taskDemandEn": "At 50 and 100 km/h with tR=0.80 s and |aB|=8.0 m/s², consistent model values are supplied: reaction distances 11.11/22.22 m, braking distances 12.06/48.23 m and stopping distances 23.17/70.45 m; these are rounded display values. Required minimum gaps including the supplied 10% margin are determined from the unrounded model quantities and only then conservatively rounded upward to the next whole centimetre: 25.49/77.50 m. Evaluate offered 30/75 m gaps and explain reaction/braking phases, speed effects and limits of the dry level-road model. No new conversion or percentage calculation is demanded.",
+              "expectedPerformanceDe": "Die lernende Person bewertet30m im Modell als ausreichend,75m als unzureichend, begründet dies mit den bereitgestellten Reservewerten und erklärt die lineare Reaktions-/quadratische Bremsabhängigkeit statt einer bloßen Zahlenrangfolge. Reale Straße/Fahrerbedingungen und Unsicherheit bleiben Aussagegrenzen.",
+              "expectedPerformanceEn": "The learner judges30m sufficient within the model and75m insufficient using the supplied margin values, and explains linear reaction versus quadratic braking dependence rather than merely ranking numbers. Real road/driver conditions and uncertainty remain limitations.",
+              "understandingFocusDe": "Geprüft werden getrennte Skalierung der beiden Phasen, konsistente Einheiten und die Unterscheidung zwischen berechnetem Modellminimum und begründetem Sicherheitsabstand.",
+              "understandingFocusEn": "This tests the distinct scaling of the two phases, consistent units, and the distinction between a calculated model minimum and a justified safe distance."
+            },
+            {
+              "id": "wet-road-following-gap-with-lead-vehicle",
+              "taskDemandDe": "Zwei Fahrzeuge starten mit 80 km/h und 40 m Abstand; das vordere bremst sofort mit 8,0 m/s², das folgende nach 1,0 s mit 5,0 m/s². Ein kollisionsfrei fortgesetzter Punktmodellverlauf samt gleichzeitigen Wegmarken ist gegeben. Gerundete Anzeigewerte sind: Fahrtwege bis zum Halt 30,86/71,60 m und maximaler Abstandsverlust 40,74 m. Aus dem ungerundeten maximalen Abstandsverlust und der geforderten 5-m-Reserve wird der Mindestanfangsabstand erst am Ende sicherheitsgerichtet auf den nächsten vollen Zentimeter aufgerundet: 45,75 m. Bewerte 40 m und erkläre aus dem gemeinsamen Verlauf, warum weder volle 71,60 m noch eine Faustregel die richtige Vergleichsgröße sind. Die Modell- und Reservewerte sind gegeben; eine neue Zahlenrechnung ist nicht gefordert.",
+              "taskDemandEn": "Two vehicles start at 80 km/h with a 40 m gap; the lead brakes immediately at 8.0 m/s² and the follower after 1.0 s at 5.0 m/s². A point-model history continued without collision effects and simultaneous position markers are supplied. Rounded display values are: total travel 30.86/71.60 m and maximum separation loss 40.74 m. The minimum initial gap is determined from the unrounded maximum separation loss plus the required 5 m margin and only then conservatively rounded upward to the next whole centimetre: 45.75 m. Assess 40 m and explain from the shared history why neither the full 71.60 m nor a rule of thumb is the correct comparison. Model and margin values are supplied; no new numerical calculation is demanded.",
+              "expectedPerformanceDe": "Die lernende Person verwirft40m, deutet den größten relativen Abstandsverlust statt einen Einzelanhalteweg, nennt die gemeinsame Zeitachse sowie die künstliche Fortsetzung ohne Kollisionswirkung und erklärt die zusätzliche Reserve.",
+              "expectedPerformanceEn": "The learner rejects40m, interprets greatest relative separation loss rather than one stopping distance, identifies the shared time axis and artificial continuation without collision effects, and explains the added margin.",
+              "understandingFocusDe": "Geprüft werden relativer Weg, veränderte Bremsbedingungen und die Fehlvorstellung, jeder Folgeabstand müsse schlicht dem vollständigen Anhalteweg des hinteren Fahrzeugs entsprechen.",
+              "understandingFocusEn": "This tests relative travel, changed braking conditions, and the misconception that every following gap is simply the rear vehicle's full stopping distance."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "wholeProposedGoal": {
+        "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+        "titleEn": "Uniformly Accelerated Motion and Acceleration",
+        "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+        "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "cross-subject:mathematics"
+        ],
+        "contains": [],
+        "requires": [
+          "bf8517a9-142b-5789-826a-767f3b277998"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "E"
+        },
+        "shortKey": "canonical_physics_accelerated_motion",
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "title": "Visualisierung: Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+            "url": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Gleichmäßig beschleunigte Bewegung und Beschleunigung.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Gleichmäßig beschleunigte Bewegung und Beschleunigung\". Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeCurrentP": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "broad-fivea-two-owner-current-P-author-20261015-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "goalFingerprint": "sha256:70e4e02a89e3533891437bcd8ecdb5eebbf6844890928e623f32a6fbb2c2dd58",
+        "reviewInputFingerprint": "sha256:643570b38484e335a513c033530c648dca4aa32236d7985556a4a9ae95b4544f",
+        "profileFingerprint": "sha256:394cee3a11cdfc098a8cdf60c6c49058e2ff6a659c101b2a2d71a32c89dd76ba",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-15T00:52:04.315Z",
+        "reviewer": "/root/portable_eight_scope_and_guard_successor_author; actual fresh informed whole-P/Kind/V author; OpenAI/gpt-6.1-sol requested ultra; serving-build-unobserved; independent judgments pending",
+        "reason": "Actual complete bilingual Goal/P reread, including consistent qualitative a/v/s construction/explanation, equal velocity changes, signs/units/direction, marked velocity zero with nonzero acceleration, supplied signed partial areas versus travelled distance and bounded braking validity. Both literal briefs and a sign/origin/representation fresh transfer were solved in the actual Requires author packet; numeric supports were independently checked as own author work. The complete whole-P body already explicitly permits supplied supports and optional root/area calculation. The existing actual image was viewed again: a=2m/s²,initialv=s=0,velocity0/2/4/6 andposition0/1/4/9,linearv/parabolic s/horizontala are consistent; snapshots labelled not to scale. It is one teaching illustration, not sufficient evidence of the signed/turnaround transfer. Removing5a does not remove these physical duties. Existing bf predecessor and its separate whole-P minimality debt remain explicit; no deeper Math competence inferred from bf mastery. Keep entire exact P body, E1/G1, ai_candidate/needs_human_review and dissent. No Source/Placement/human/D/M7 authority.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "representation",
+          "expectations": [
+            {
+              "id": "selected-blind-review-core",
+              "essentialUnderstandingDe": "Konstante Beschleunigung bedeutet gleiche Geschwindigkeitsänderungen in gleichen Zeitintervallen; deshalb sind t-a-, t-v- und t-s-Darstellung über konstante Beschleunigung, lineare Geschwindigkeitsänderung und quadratische Ortsänderung miteinander verknüpft, wobei Anfangswerte und Vorzeichen den konkreten Verlauf bestimmen.",
+              "essentialUnderstandingEn": "Constant acceleration means equal changes in velocity in equal time intervals; therefore the time-acceleration, time-velocity, and time-position representations are linked through constant acceleration, linear velocity change, and quadratic position change, while initial values and signs determine the specific course.",
+              "observablePerformanceDe": "Für vorgelegte Anfangswerte und eine vorzeichenbehaftete konstante Beschleunigung erstellt oder erläutert die lernende Person konsistente qualitative t-a-,t-v-,t-s-Darstellungen aus einem Modell oder gegebenen Stützdaten. Sie begründet Steigungen, Vorzeichen, Einheiten und die Bewegungsrichtung; numerische Flächen-/Umkehrzeitrechnung kann vertiefen.",
+              "observablePerformanceEn": "For supplied initial values and signed constant acceleration, the learner constructs or explains consistent qualitative time-acceleration, time-velocity and time-position representations from a model or supplied support data. Slopes, signs, units and direction are justified; numerical area/turnaround calculation can extend the task."
+            },
+            {
+              "id": "signed-displacement-differs-from-distance",
+              "essentialUnderstandingDe": "Die vorzeichenbehaftete Fläche unter einem t-v-Diagramm ist die Ortsänderung. Nach einem Richtungswechsel ist die zurückgelegte Strecke die Summe der Beträge der Teilflächen und kann größer als der Betrag der Ortsänderung sein.",
+              "essentialUnderstandingEn": "The signed area under a time-velocity graph is displacement. After a reversal, distance traveled is the sum of the magnitudes of the partial areas and may exceed the magnitude of displacement.",
+              "observablePerformanceDe": "Die lernende Person trennt an einem aus dem Graphen erkennbaren Nulldurchgang die Bewegungsrichtungen und deutet bereitgestellte Teilflächen als Ortsänderung beziehungsweise Strecke. Bei Richtungswechsel können sich Ortsänderungen aufheben, während Strecke weiter wächst.",
+              "observablePerformanceEn": "At a zero crossing identifiable from the graph, the learner separates motion directions and interprets supplied partial areas as displacement versus distance. Displacements can cancel during reversal while distance continues to grow."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "selected-blind-review-core",
+              "signed-displacement-differs-from-distance"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "signed-initial-conditions",
+              "textDe": "Verschiedene Anfangsorte, Anfangsgeschwindigkeiten und Vorzeichen der Beschleunigung",
+              "textEn": "Different initial positions, initial velocities, and signs of acceleration"
+            },
+            {
+              "id": "starting-representation",
+              "textDe": "Gegebenes t-a-, t-v-, t-s-Diagramm oder Wertetabelle",
+              "textEn": "Given time-acceleration, time-velocity, time-position graph, or table"
+            },
+            {
+              "id": "model-interval",
+              "textDe": "Vollständig konstante Beschleunigung oder begrenztes Gültigkeitsintervall",
+              "textEn": "Fully constant acceleration or a bounded validity interval"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "ramp-cart-turnaround",
+              "taskDemandDe": "Ein Wagen fährt eine Rampe mit positiver Anfangsgeschwindigkeit und konstanter negativer Beschleunigung hinauf. Anfangswerte, ein beschriftetes t-v-Diagramm mit markiertem Nulldurchgang und bereits bestimmte positive/negative Teilflächen sind gegeben. Entwickle dazu konsistente t-a- und qualitative t-s-Verläufe und erkläre Umkehr, Ortsänderung und Strecke.",
+              "taskDemandEn": "A cart travels up a ramp with positive initial velocity and constant negative acceleration. Initial data, a labeled velocity-time graph with its zero crossing, and already determined positive/negative partial areas are supplied. Develop consistent acceleration-time and qualitative position-time histories and explain reversal, displacement and distance.",
+              "expectedPerformanceDe": "Die lernende Person begründet v=0 bei a≠0 am Umkehrpunkt, deutet gleich/entgegengesetzte Flächenbeiträge und konstruiert die passende Ortskurve. Neue Nullstellen- oder Flächenrechnung ist nicht gefordert.",
+              "expectedPerformanceEn": "The learner explains v=0 with a≠0 at reversal, interprets like/opposite area contributions and constructs the corresponding position curve. No new root-finding or area calculation is required.",
+              "understandingFocusDe": "Geschwindigkeit null ist nicht Beschleunigung null.",
+              "understandingFocusEn": "Zero velocity is not zero acceleration."
+            },
+            {
+              "id": "braking-model-beyond-stop",
+              "taskDemandDe": "Bremsdaten eines Fahrzeugs passen bis zum Stillstand zu konstanter negativer Beschleunigung. Setze das mathematische Modell zunächst fort und entscheide dann, ab wann es den realen Vorgang nicht mehr beschreibt. Gegebene Stützwerte/Graphen genügen zur Modellfortsetzung; ein eigener Gleichungslösungsalgorithmus ist keine zusätzliche Pflicht.",
+              "taskDemandEn": "Vehicle braking data fit constant negative acceleration up to rest. First extend the mathematical model and then decide when it ceases to describe the real process. Supplied support values/graphs suffice to continue the model; an equation-solving algorithm is not an added requirement.",
+              "expectedPerformanceDe": "Die rechnerische Rückwärtsbewegung nach dem Nulldurchgang wird als Folge einer unzulässigen Modellfortsetzung erkannt und das Gültigkeitsintervall datenbezogen begrenzt.",
+              "expectedPerformanceEn": "The calculated backward motion after the zero crossing is recognized as a consequence of invalid model extension, and the validity interval is bounded using the data.",
+              "understandingFocusDe": "Modellgleichung und reale Gültigkeit werden getrennt.",
+              "understandingFocusEn": "Model equation and physical validity are separated."
+            }
+          ]
+        }
+      },
+      "originalWholeP": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "physics-twenty-reviewed-precise-asset-context-author-20261015-v2",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "goalFingerprint": "sha256:70e4e02a89e3533891437bcd8ecdb5eebbf6844890928e623f32a6fbb2c2dd58",
+        "reviewInputFingerprint": "sha256:83d6be76aae5ad83b4c5a74d6bddc6c8db1d71b61cce16ed9324e69a317c9a2a",
+        "profileFingerprint": "sha256:394cee3a11cdfc098a8cdf60c6c49058e2ff6a659c101b2a2d71a32c89dd76ba",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-14T23:31:21.798Z",
+        "reviewer": "/root/adopted_caf_three_native_scope_route_audit; informed integration AUTHOR; actual unchanged image context inspected",
+        "reason": "New actual current whole-Goal/whole-P/current-asset author context for independent native description review. Current image bytes were read as context. This AI candidate creates no independent D/V, human/source/Kind/Requires authority and supplies no prior reviewer conclusion. Original records and conditions remain immutable; any changed profile body requires genuinely fresh body-bound Requires review.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "representation",
+          "expectations": [
+            {
+              "id": "selected-blind-review-core",
+              "essentialUnderstandingDe": "Konstante Beschleunigung bedeutet gleiche Geschwindigkeitsänderungen in gleichen Zeitintervallen; deshalb sind t-a-, t-v- und t-s-Darstellung über konstante Beschleunigung, lineare Geschwindigkeitsänderung und quadratische Ortsänderung miteinander verknüpft, wobei Anfangswerte und Vorzeichen den konkreten Verlauf bestimmen.",
+              "essentialUnderstandingEn": "Constant acceleration means equal changes in velocity in equal time intervals; therefore the time-acceleration, time-velocity, and time-position representations are linked through constant acceleration, linear velocity change, and quadratic position change, while initial values and signs determine the specific course.",
+              "observablePerformanceDe": "Für vorgelegte Anfangswerte und eine vorzeichenbehaftete konstante Beschleunigung erstellt oder erläutert die lernende Person konsistente qualitative t-a-,t-v-,t-s-Darstellungen aus einem Modell oder gegebenen Stützdaten. Sie begründet Steigungen, Vorzeichen, Einheiten und die Bewegungsrichtung; numerische Flächen-/Umkehrzeitrechnung kann vertiefen.",
+              "observablePerformanceEn": "For supplied initial values and signed constant acceleration, the learner constructs or explains consistent qualitative time-acceleration, time-velocity and time-position representations from a model or supplied support data. Slopes, signs, units and direction are justified; numerical area/turnaround calculation can extend the task."
+            },
+            {
+              "id": "signed-displacement-differs-from-distance",
+              "essentialUnderstandingDe": "Die vorzeichenbehaftete Fläche unter einem t-v-Diagramm ist die Ortsänderung. Nach einem Richtungswechsel ist die zurückgelegte Strecke die Summe der Beträge der Teilflächen und kann größer als der Betrag der Ortsänderung sein.",
+              "essentialUnderstandingEn": "The signed area under a time-velocity graph is displacement. After a reversal, distance traveled is the sum of the magnitudes of the partial areas and may exceed the magnitude of displacement.",
+              "observablePerformanceDe": "Die lernende Person trennt an einem aus dem Graphen erkennbaren Nulldurchgang die Bewegungsrichtungen und deutet bereitgestellte Teilflächen als Ortsänderung beziehungsweise Strecke. Bei Richtungswechsel können sich Ortsänderungen aufheben, während Strecke weiter wächst.",
+              "observablePerformanceEn": "At a zero crossing identifiable from the graph, the learner separates motion directions and interprets supplied partial areas as displacement versus distance. Displacements can cancel during reversal while distance continues to grow."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "selected-blind-review-core",
+              "signed-displacement-differs-from-distance"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "signed-initial-conditions",
+              "textDe": "Verschiedene Anfangsorte, Anfangsgeschwindigkeiten und Vorzeichen der Beschleunigung",
+              "textEn": "Different initial positions, initial velocities, and signs of acceleration"
+            },
+            {
+              "id": "starting-representation",
+              "textDe": "Gegebenes t-a-, t-v-, t-s-Diagramm oder Wertetabelle",
+              "textEn": "Given time-acceleration, time-velocity, time-position graph, or table"
+            },
+            {
+              "id": "model-interval",
+              "textDe": "Vollständig konstante Beschleunigung oder begrenztes Gültigkeitsintervall",
+              "textEn": "Fully constant acceleration or a bounded validity interval"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "ramp-cart-turnaround",
+              "taskDemandDe": "Ein Wagen fährt eine Rampe mit positiver Anfangsgeschwindigkeit und konstanter negativer Beschleunigung hinauf. Anfangswerte, ein beschriftetes t-v-Diagramm mit markiertem Nulldurchgang und bereits bestimmte positive/negative Teilflächen sind gegeben. Entwickle dazu konsistente t-a- und qualitative t-s-Verläufe und erkläre Umkehr, Ortsänderung und Strecke.",
+              "taskDemandEn": "A cart travels up a ramp with positive initial velocity and constant negative acceleration. Initial data, a labeled velocity-time graph with its zero crossing, and already determined positive/negative partial areas are supplied. Develop consistent acceleration-time and qualitative position-time histories and explain reversal, displacement and distance.",
+              "expectedPerformanceDe": "Die lernende Person begründet v=0 bei a≠0 am Umkehrpunkt, deutet gleich/entgegengesetzte Flächenbeiträge und konstruiert die passende Ortskurve. Neue Nullstellen- oder Flächenrechnung ist nicht gefordert.",
+              "expectedPerformanceEn": "The learner explains v=0 with a≠0 at reversal, interprets like/opposite area contributions and constructs the corresponding position curve. No new root-finding or area calculation is required.",
+              "understandingFocusDe": "Geschwindigkeit null ist nicht Beschleunigung null.",
+              "understandingFocusEn": "Zero velocity is not zero acceleration."
+            },
+            {
+              "id": "braking-model-beyond-stop",
+              "taskDemandDe": "Bremsdaten eines Fahrzeugs passen bis zum Stillstand zu konstanter negativer Beschleunigung. Setze das mathematische Modell zunächst fort und entscheide dann, ab wann es den realen Vorgang nicht mehr beschreibt. Gegebene Stützwerte/Graphen genügen zur Modellfortsetzung; ein eigener Gleichungslösungsalgorithmus ist keine zusätzliche Pflicht.",
+              "taskDemandEn": "Vehicle braking data fit constant negative acceleration up to rest. First extend the mathematical model and then decide when it ceases to describe the real process. Supplied support values/graphs suffice to continue the model; an equation-solving algorithm is not an added requirement.",
+              "expectedPerformanceDe": "Die rechnerische Rückwärtsbewegung nach dem Nulldurchgang wird als Folge einer unzulässigen Modellfortsetzung erkannt und das Gültigkeitsintervall datenbezogen begrenzt.",
+              "expectedPerformanceEn": "The calculated backward motion after the zero crossing is recognized as a consequence of invalid model extension, and the validity interval is bounded using the data.",
+              "understandingFocusDe": "Modellgleichung und reale Gültigkeit werden getrennt.",
+              "understandingFocusEn": "Model equation and physical validity are separated."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "Pconfig": {
+    "path": "tmp/cross-subject-requires/broad-fivea-two-owner-portable-quality-author-20261015-v1/isolated-root/curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/broad-fivea-two-owner-portable-v1/current-P/two.config.json",
+    "bytes": 1286,
+    "sha256": "sha256:84b67cfaab82f8a574c7a0c8989bbb618efeb19a1d15002b09e9405361f9faed"
+  },
+  "Pledger": {
+    "path": "tmp/cross-subject-requires/broad-fivea-two-owner-portable-quality-author-20261015-v1/isolated-root/curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/broad-fivea-two-owner-portable-v1/current-P/two.review.jsonl",
+    "bytes": 19993,
+    "sha256": "sha256:670c96f122730d9418836a695781f5e1af6fbe53b1ba61b1b23a50cc49cd1c69"
+  },
+  "freshKindAuthorJudgments": [
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "semanticKind": "curricularAtomic",
+      "sourceFingerprint": "sha256:2f7e0dacd6d2e0ae1585b0bc32760ba16b29bec72d214f709684ee557fb7c8bf",
+      "reviewedAt": "2026-10-15T00:52:04.315Z",
+      "reviewer": "/root/portable_eight_scope_and_guard_successor_author; actual fresh informed whole-P/Kind/V author; OpenAI/gpt-6.1-sol requested ultra; serving-build-unobserved; independent judgments pending",
+      "rationale": "One coherent context-specific competence: evaluate road-safety gaps from reaction/braking models, relative motion and stated uncertainty/reserve. The two scenarios transfer the same physical judgment; this is no orientation, memorization, structural node or separate independent routine bundle. Removal of broad Math guards and corrected instructional image do not alter the assessed competence.",
+      "priorSourceFingerprint": "sha256:73be7d3e681d49f34b287f130fada9e5871a64f2e156e2fa92b9caaa81087906",
+      "currentWholePProfileFingerprint": "sha256:076d616da816558887eda6bfb4718999ee2a229976160e2c7bd7c1ccb979b533",
+      "authority": "fresh AI author content judgment; independent quality judgment pending; no human/source authority"
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "semanticKind": "curricularAtomic",
+      "sourceFingerprint": "sha256:15e959abba07a6b1e156839c403dba071aa430bb45889752d700e940a01cd843",
+      "reviewedAt": "2026-10-15T00:52:04.315Z",
+      "reviewer": "/root/portable_eight_scope_and_guard_successor_author; actual fresh informed whole-P/Kind/V author; OpenAI/gpt-6.1-sol requested ultra; serving-build-unobserved; independent judgments pending",
+      "rationale": "One coherent constant-acceleration model competence connecting a/v/s representations, sign and direction, displacement/distance and model validity. Multiple coordinated representations and reversal are necessary views of that model, not independent unrelated skills requiring a split. Not orientation, memory, assessment or structure.",
+      "priorSourceFingerprint": "sha256:6bcf93f493e68160d5593dfcc6a5ba594344c88f844df53967a7eaf791cf77bb",
+      "currentWholePProfileFingerprint": "sha256:394cee3a11cdfc098a8cdf60c6c49058e2ff6a659c101b2a2d71a32c89dd76ba",
+      "authority": "fresh AI author content judgment; independent quality judgment pending; no human/source authority"
+    }
+  ],
+  "freshVAuthorJudgments": [
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "assetHash": "sha256:b61d17e625e12d1a28108c92baa63743b223f5947b02fc7b5ad4ed03b52c6dd0",
+      "imageUrl": "/assets/goal-visualizations/physik/4a2bf015-052b-4af0-aed7-324259fa1a8a/model-boundaries-v2/4a2bf015-052b-4af0-aed7-324259fa1a8a.png",
+      "actualViewed": true,
+      "decision": "approved_ai",
+      "reviewedAt": "2026-10-15T00:52:04.315Z",
+      "reviewer": "/root/portable_eight_scope_and_guard_successor_author; actual fresh informed whole-P/Kind/V author; OpenAI/gpt-6.1-sol requested ultra; serving-build-unobserved; independent judgments pending",
+      "rationale": "Actual new PNG viewed at full delivered resolution. Legible corrected model-boundary captions distinguish fixed obstacle (stopping distance plus reserve) and moving leader (relative gap); no universal full-follower-distance rule remains. Reaction/braking/total arrows match their phases.50km/h≈13.9m/s and1s≈14m reaction;14m dry braking is a coherent illustrative effective-deceleration model, with28m total. Wet bar is longer. Diagram is schematic teaching support, not a scaled measurement, exact8m/s² task or performance evidence. Labels/umlauts readable, approachable style consistent. Actual generator built-in OpenAI image_gen edit; own asset CC-BY-4.0, old Nano Banana JPG/prompt retained byteexact.",
+      "humanApprovalCreated": false
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "assetHash": "sha256:fd83544e329cc947ab46a9b49f4ab7a461a168a1c086b4624669a44679aa8fbf",
+      "imageUrl": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg",
+      "actualViewed": true,
+      "decision": "approved_ai",
+      "reviewedAt": "2026-10-15T00:52:04.315Z",
+      "reviewer": "/root/portable_eight_scope_and_guard_successor_author; actual fresh informed whole-P/Kind/V author; OpenAI/gpt-6.1-sol requested ultra; serving-build-unobserved; independent judgments pending",
+      "rationale": "Actual unchanged JPG viewed. Explicitly non-scaled snapshots and consistent a=2m/s²,v0=s0=0: velocities0/2/4/6m/s and positions0/1/4/9m. Time-position parabola, time-velocity straight line and constant acceleration line agree with formulas and units. Clear labels/umlauts; one positive-a teaching example does not certify whole signed/turnaround P. Historical Nano Banana source/provider and asset remain intact.",
+      "humanApprovalCreated": false
+    }
+  ],
+  "old18P20RecordsByteExact": true,
+  "allOther476PRecordsRetainOriginalOwners": true,
+  "allFiveSubjectsPreserved": true,
+  "fourNonPhysicsEntriesStructurallyExact": true,
+  "noNewHumanSourceDOrM7Authority": true,
+  "priorScientificWorkInformed": "Known whole2Requires author solutions and Root separate science peer, not blind to history. Independent new quality outputs have not been read."
+}

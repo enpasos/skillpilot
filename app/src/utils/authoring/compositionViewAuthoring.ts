@@ -1,4 +1,5 @@
 import type { GoalPlacementContext } from '../../landscapeTypes'
+import { goalMatchesApplicabilityContext, parseApplicabilityContexts, toSelectedApplicabilityScope, resolveApplicabilityBranchScope } from '../applicabilityContexts'
 import {
   STATE_LOOKING_TITLE_PATTERN,
   asRecord,
@@ -67,6 +68,8 @@ export interface CompiledCompositionPreviewNode {
 }
 
 export interface CompositionCompileResult {
+  projectionPurpose?: 'runtime' | 'quality-review'
+  runtimeAdmissible?: boolean
   compiledRootNodes: CompiledCompositionPreviewNode[]
   findings: CompositionViewFinding[]
 }
@@ -277,6 +280,7 @@ export const compileCompositionView = (
   landscape: CanonicalAuthoringLandscape | null,
   goalUniverse: CanonicalAuthoringLandscape | null = null,
   landscapeUniverseById: Map<string, CanonicalAuthoringLandscape> | null = null,
+  options: { purpose?: 'runtime' | 'quality-review', selectedScope?: unknown } = {},
 ): CompositionCompileResult => {
   const findings: CompositionViewFinding[] = []
   const hasScopeDiscriminator = ['jurisdiction', 'stage', 'courseProfile', 'durationModel']
@@ -305,7 +309,7 @@ export const compileCompositionView = (
   const canonicalLandscape = landscape ? normalizeCanonicalLandscape(landscape) : null
   if (!canonicalLandscape) {
     findings.push({ code: 'CPV-001', severity: 'error', message: 'Kein kanonischer Graph geladen.' })
-    return { compiledRootNodes: [], findings }
+    return { compiledRootNodes: [], findings, projectionPurpose: options.purpose ?? 'runtime', runtimeAdmissible: false }
   }
 
   const canonicalGoalUniverse = goalUniverse ? normalizeCanonicalLandscape(goalUniverse) : canonicalLandscape
@@ -333,6 +337,25 @@ export const compileCompositionView = (
     index.goalById,
     rootGoalIdByLandscapeId,
   )
+  const selectedScope = toSelectedApplicabilityScope(options.selectedScope ?? view.scope)
+  // Review inventory enumerates canonical bodies; it is never a runtime projection.
+  effectiveTargetGoalIds.forEach((goalId) => {
+    const goal = index.goalById.get(goalId)
+    if (!goal) return
+    const parsed = parseApplicabilityContexts(goal)
+    if (parsed.errors.length) findings.push({ code: 'CPV-216', severity: 'error', goalId,
+      message: parsed.errors.join(' ') })
+    else if (options.purpose !== 'quality-review' && !(Array.isArray(view.resolvedCourseProfileViews)
+      && Array.isArray(view.mergedFromViewIds) && String(view.viewId).startsWith('merged:')
+      ? view.resolvedCourseProfileViews.map(normalizeCompositionView).some((source) =>
+        (view.mergedFromViewIds as unknown[]).includes(source.viewId)
+        && collectCompositionProjectionRoleGoalIds(source.rootNodes, index.goalById, rootGoalIdByLandscapeId).targetGoalIds.has(goalId)
+        && goalMatchesApplicabilityContext(goal, resolveApplicabilityBranchScope(selectedScope, source.scope)))
+      : goalMatchesApplicabilityContext(goal, resolveApplicabilityBranchScope(selectedScope, view.scope)))) {
+      findings.push({ code: 'CPV-216', severity: 'error', goalId,
+        message: 'Target has no exact applicability context for this complete selected scope.' })
+    }
+  })
   const structureIds = new Set<string>()
   const subtreeRootsByPath = new Map<string, { goalId: string, visibleGoalIds: Set<string> }>()
   const goalOccurrenceCount = new Map<string, number>()
@@ -614,6 +637,8 @@ export const compileCompositionView = (
 
   return {
     compiledRootNodes,
+    projectionPurpose: options.purpose ?? 'runtime',
+    runtimeAdmissible: options.purpose !== 'quality-review' && !findings.some((item) => item.severity === 'error'),
     findings: findings.sort((left, right) => {
       const leftKey = `${left.severity}:${left.code}:${left.nodePath ?? ''}:${left.goalId ?? ''}:${left.message}`
       const rightKey = `${right.severity}:${right.code}:${right.nodePath ?? ''}:${right.goalId ?? ''}:${right.message}`

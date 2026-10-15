@@ -1,0 +1,1303 @@
+{
+  "schemaVersion": 1,
+  "stockAPIs": [
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "sha256:50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd"
+    },
+    {
+      "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+      "sha256": "sha256:7f8636d2f41474841aa693d81dc2f419521a9ed6707b047fb080ed9dc444a3ed"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb"
+    }
+  ],
+  "compilerBeforeSummary": {
+    "goals": 531,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 2118
+  },
+  "compilerAfterSummary": {
+    "goals": 531,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 2118
+  },
+  "compilerChanges": [
+    {
+      "goalId": "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+      "before": {
+        "goalId": "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+        "title": "Wellenfunktionen mit Wahrscheinlichkeitsdichten verknüpfen",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "provenance",
+            "source": "curricula/DE/Gymnasium/input/DE-BY/gymnasium/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#ff1ca997-b6cc-5ece-8e13-5498b4bbf808)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 386e28af-505a-5eb9-87fe-9c6946f10433"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c0c0f6e4-56be-5196-9408-20efc4504783"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 386e28af-505a-5eb9-87fe-9c6946f10433"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c0c0f6e4-56be-5196-9408-20efc4504783"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          }
+        ]
+      },
+      "after": {
+        "goalId": "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+        "title": "Wellenfunktionen mit Wahrscheinlichkeitsdichten verknüpfen",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "provenance",
+            "source": "curricula/DE/Gymnasium/input/DE-BY/gymnasium/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#ff1ca997-b6cc-5ece-8e13-5498b4bbf808)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 386e28af-505a-5eb9-87fe-9c6946f10433"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c0c0f6e4-56be-5196-9408-20efc4504783"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 386e28af-505a-5eb9-87fe-9c6946f10433"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c0c0f6e4-56be-5196-9408-20efc4504783"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          }
+        ]
+      },
+      "compiledApplicabilityChanged": false
+    },
+    {
+      "goalId": "386e28af-505a-5eb9-87fe-9c6946f10433",
+      "before": {
+        "goalId": "386e28af-505a-5eb9-87fe-9c6946f10433",
+        "title": "MO-Energieniveauschemata zur Molekülexistenz auswerten",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "provenance",
+            "source": "curricula/DE/Gymnasium/input/DE-BY/gymnasium/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#ff1ca997-b6cc-5ece-8e13-5498b4bbf808)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 70bcb6bd-b7f8-5e23-b466-f9bc270a9c67"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c0c0f6e4-56be-5196-9408-20efc4504783"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 70bcb6bd-b7f8-5e23-b466-f9bc270a9c67"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c0c0f6e4-56be-5196-9408-20efc4504783"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          }
+        ]
+      },
+      "after": {
+        "goalId": "386e28af-505a-5eb9-87fe-9c6946f10433",
+        "title": "MO-Energieniveauschemata zur Molekülexistenz auswerten",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "provenance",
+            "source": "curricula/DE/Gymnasium/input/DE-BY/gymnasium/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#ff1ca997-b6cc-5ece-8e13-5498b4bbf808)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 70bcb6bd-b7f8-5e23-b466-f9bc270a9c67"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c0c0f6e4-56be-5196-9408-20efc4504783"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 70bcb6bd-b7f8-5e23-b466-f9bc270a9c67"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c0c0f6e4-56be-5196-9408-20efc4504783"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          }
+        ]
+      },
+      "compiledApplicabilityChanged": false
+    },
+    {
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "before": {
+        "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+        "title": "Molekülorbital-Modelle anwenden",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-HH",
+            "DE-NI",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 2facec3b-ea18-5769-9396-0ffdcc4455c3"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "provenance",
+            "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#2f391ba2-ba1e-40e4-a8d2-dff049516c13)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 2facec3b-ea18-5769-9396-0ffdcc4455c3"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SL",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-ST",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          }
+        ]
+      },
+      "after": {
+        "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+        "title": "Molekülorbital-Modelle anwenden",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-HH",
+            "DE-NI",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 2facec3b-ea18-5769-9396-0ffdcc4455c3"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.chemie-source-cell-merge-poly18-aro19-final-20261013-v1.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "provenance",
+            "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#2f391ba2-ba1e-40e4-a8d2-dff049516c13)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 2facec3b-ea18-5769-9396-0ffdcc4455c3"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SL",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-ST",
+            "kind": "requires-closure",
+            "source": "required by b8d3b453-d638-5518-aab0-d84ec2e8567c"
+          }
+        ]
+      },
+      "compiledApplicabilityChanged": false
+    }
+  ],
+  "compilerFindingsBefore": [],
+  "compilerFindingsAfter": [],
+  "sourceAtlasBeforeCounts": {
+    "canonicalCurricularAtomicGoals": 406,
+    "publishedCurricularAtomicGoals": 383,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 458,
+    "omittedGoals": 23
+  },
+  "sourceAtlasAfterCounts": {
+    "canonicalCurricularAtomicGoals": 406,
+    "publishedCurricularAtomicGoals": 384,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 458,
+    "omittedGoals": 22
+  },
+  "sourceChanges": [
+    {
+      "key": "DE-BY/SekII/GK",
+      "added": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-f85-BY-source-current406-targeted-native-one-technical-20261013-v1/source-overlay/BY-MO.exact-whole-cell.portable-carrier.after.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current403-graph-source-integration-author-20261013-v4/source-inputs/payloads/sha256-d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056.json",
+          "sourceGoalId": "3221e78d-2d6b-524f-a22e-07f4f559f7c4",
+          "mappedTargetGoalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ],
+      "removed": [],
+      "addedGoalIds": [
+        "f85b4651-50ea-5b42-b193-3465c05257a7"
+      ],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-BY/SekII/LK",
+      "added": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-f85-BY-source-current406-targeted-native-one-technical-20261013-v1/source-overlay/BY-MO.exact-whole-cell.portable-carrier.after.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current403-graph-source-integration-author-20261013-v4/source-inputs/payloads/sha256-d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056.json",
+          "sourceGoalId": "3221e78d-2d6b-524f-a22e-07f4f559f7c4",
+          "mappedTargetGoalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ],
+      "removed": [],
+      "addedGoalIds": [
+        "f85b4651-50ea-5b42-b193-3465c05257a7"
+      ],
+      "removedGoalIds": []
+    }
+  ],
+  "rawF85SourceScopes": [
+    {
+      "key": "DE-BY/SekII/GK",
+      "witnesses": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-f85-BY-source-current406-targeted-native-one-technical-20261013-v1/source-overlay/BY-MO.exact-whole-cell.portable-carrier.after.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current403-graph-source-integration-author-20261013-v4/source-inputs/payloads/sha256-d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056.json",
+          "sourceGoalId": "3221e78d-2d6b-524f-a22e-07f4f559f7c4",
+          "mappedTargetGoalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ]
+    },
+    {
+      "key": "DE-BY/SekII/LK",
+      "witnesses": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-f85-BY-source-current406-targeted-native-one-technical-20261013-v1/source-overlay/BY-MO.exact-whole-cell.portable-carrier.after.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current403-graph-source-integration-author-20261013-v4/source-inputs/payloads/sha256-d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056.json",
+          "sourceGoalId": "3221e78d-2d6b-524f-a22e-07f4f559f7c4",
+          "mappedTargetGoalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ]
+    }
+  ],
+  "effectiveF85PublishedScopes": [
+    {
+      "jurisdiction": "DE-BY",
+      "scopes": [
+        {
+          "stage": "SekII",
+          "durationModel": "G9",
+          "courseProfile": "LK"
+        }
+      ]
+    }
+  ],
+  "actualStockCanonicalGKFilter": false,
+  "actualStockCanonicalLKFilter": true,
+  "rawNativeGAEAOccurrencesRetained": true,
+  "rawSourceGKWitnessIsNotAutomaticTechnicalGKTargetEntitlement": true,
+  "canonicalGoalObjectsChanged": [],
+  "sourceOnlyOverlay": true,
+  "retainedC0FullOperators": {
+    "id": "c0c0f6e4-56be-5196-9408-20efc4504783",
+    "shortKey": "canonical_chemistry_upper_wavefunction_molecular_orbital_schemes",
+    "title": "Wellenfunktionen und MO-Energieniveauschemata verknüpfen",
+    "titleEn": "Connect wave functions and molecular-orbital energy schemes",
+    "description": "Die lernende Person kann zweidimensionale Darstellungen von Wellenfunktionen bei Wasserstoff-Atomen und beim Wasserstoff-Molekül mit räumlichen Wahrscheinlichkeitsdichten verknüpfen und aus Energieniveauschemata die Existenz einfacher zweiatomiger Moleküle oder Molekül-Ionen der zweiten Periode ableiten.",
+    "descriptionEn": "The learner can connect two-dimensional representations of wave functions in hydrogen atoms and hydrogen molecules with spatial probability densities and infer the existence of simple diatomic molecules or molecular ions of the second period from energy-level schemes.",
+    "weight": 2,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [
+      "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+      "386e28af-505a-5eb9-87fe-9c6946f10433"
+    ],
+    "requires": [],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_AUFBAU"
+      ],
+      "phase": "GLOBAL",
+      "area": "Chemische Bindung",
+      "topicCode": "CANONICAL.CHEMISTRY.SEKII.WAVEFUNCTION_MO_ENERGY_SCHEMES"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+        "sourceGoalId": "3221e78d-2d6b-524f-a22e-07f4f559f7c4"
+      }
+    },
+    "type": "cluster",
+    "examples": []
+  },
+  "fullReviewModelPages": 406,
+  "fullReviewPageChanges": [],
+  "currentF85WholePage": {
+    "pageNumber": 131,
+    "navigationOrder": 141,
+    "treeOrder": 174,
+    "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+    "anchor": "goal-f85b4651-50ea-5b42-b193-3465c05257a7",
+    "title": "Molekülorbital-Modelle anwenden",
+    "description": "Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+    "breadcrumbs": [
+      "Chemie – kanonische M7-Prüfsicht",
+      "Chemie",
+      "Stoffgruppen",
+      "Q1.1 Chemische Bindung & Strukturen"
+    ],
+    "chapterIds": [
+      "structure:chemie-m7-review-root",
+      "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+      "goal:a0893975-1677-5dae-bbfb-675789be4f17",
+      "goal:2facec3b-ea18-5769-9396-0ffdcc4455c3"
+    ],
+    "requires": [
+      {
+        "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+        "title": "Struktur-Eigenschafts-Zusammenhänge ableiten",
+        "anchor": "goal-5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+        "pageNumber": 125
+      }
+    ],
+    "reverseRequires": [
+      {
+        "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+        "title": "Reaktivität aromatischer Systeme begründen",
+        "anchor": "goal-b8d3b453-d638-5518-aab0-d84ec2e8567c",
+        "pageNumber": 132
+      }
+    ],
+    "externalPrerequisites": [],
+    "externalReverseRequires": [
+      {
+        "goalId": "00139854-e5a7-5c12-ab50-2268c80bf776",
+        "title": "Fruchtsaft zwischen Sorbinsäure und Ascorbinsäure bewerten",
+        "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-00139854-e5a7-5c12-ab50-2268c80bf776"
+      },
+      {
+        "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+        "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+        "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+      },
+      {
+        "goalId": "bf6c39f0-1e44-53b2-8ff6-025f2e36e125",
+        "title": "Campingseife in hartem Wasser",
+        "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+      },
+      {
+        "goalId": "c91350bc-7d2e-523c-bd50-0324bccfcf98",
+        "title": "Propanon aus Reinigungsalkohol",
+        "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-c91350bc-7d2e-523c-bd50-0324bccfcf98"
+      }
+    ],
+    "visualization": {
+      "resourceType": "image",
+      "title": "Visualisierung: Molekülorbital-Modelle anwenden",
+      "url": "/assets/goal-visualizations/chemie/f85b4651-50ea-5b42-b193-3465c05257a7/f85b4651-50ea-5b42-b193-3465c05257a7.jpg",
+      "altText": "Didaktische Visualisierung zum Lernziel \"Molekülorbital-Modelle anwenden\". Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+      "originalDigest": "sha256:5a2ced1247a6ef47b080a6225cd70ec4db931ddb2f651bb3e636ce5f62941119",
+      "qaStatus": "review_candidate",
+      "approvedForPublication": false
+    },
+    "evidenceReview": {
+      "reviewId": "canonical-chemistry-positive-evidence-b003-q1-bonding-current-11-v2",
+      "status": "needs_human_review",
+      "reviewInputFingerprint": "sha256:4aecc7ed22a31f6828119d38adc51a77ce0de9a4281fefcf89e47ab9d799d8c5",
+      "profileFingerprint": "sha256:1e61d06141e217673455b7a0f9e6ce7b3e29ff0c7df4c1a71eb3b3a42532a1ec",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1"
+    },
+    "goalFingerprint": "sha256:9ffb4363e6e864a302afd1ae4ae743606b402cdde234375ccc281b9043c34ac8",
+    "pageFingerprint": "sha256:47752a473b8a19a35d47fb8e48b912e8ff6301b939b3d06caf4ab22bcd08f857"
+  },
+  "effectiveSourceAtlasF85WholePage": {
+    "pageNumber": 131,
+    "navigationOrder": 141,
+    "treeOrder": 173,
+    "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+    "anchor": "goal-f85b4651-50ea-5b42-b193-3465c05257a7",
+    "title": "Molekülorbital-Modelle anwenden",
+    "description": "Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+    "breadcrumbs": [
+      "Chemie",
+      "Stoffgruppen",
+      "Q1.1 Chemische Bindung & Strukturen"
+    ],
+    "chapterIds": [
+      "structure:canonical-goal-442c31c5-c561-5c7a-90bb-2335d779175c",
+      "structure:canonical-goal-a0893975-1677-5dae-bbfb-675789be4f17",
+      "structure:canonical-goal-2facec3b-ea18-5769-9396-0ffdcc4455c3"
+    ],
+    "applicability": [
+      {
+        "jurisdiction": "DE-BY",
+        "scopes": [
+          {
+            "stage": "SekII",
+            "durationModel": "G9",
+            "courseProfile": "LK"
+          }
+        ]
+      }
+    ],
+    "requires": [
+      {
+        "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+        "title": "Struktur-Eigenschafts-Zusammenhänge ableiten",
+        "anchor": "goal-5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+        "pageNumber": 125
+      }
+    ],
+    "reverseRequires": [
+      {
+        "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+        "title": "Reaktivität aromatischer Systeme begründen",
+        "anchor": "goal-b8d3b453-d638-5518-aab0-d84ec2e8567c",
+        "pageNumber": 132
+      }
+    ],
+    "externalPrerequisites": [],
+    "externalReverseRequires": [
+      {
+        "goalId": "00139854-e5a7-5c12-ab50-2268c80bf776",
+        "title": "Fruchtsaft zwischen Sorbinsäure und Ascorbinsäure bewerten",
+        "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-00139854-e5a7-5c12-ab50-2268c80bf776"
+      },
+      {
+        "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+        "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+        "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+      },
+      {
+        "goalId": "bf6c39f0-1e44-53b2-8ff6-025f2e36e125",
+        "title": "Campingseife in hartem Wasser",
+        "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+      },
+      {
+        "goalId": "c91350bc-7d2e-523c-bd50-0324bccfcf98",
+        "title": "Propanon aus Reinigungsalkohol",
+        "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-c91350bc-7d2e-523c-bd50-0324bccfcf98"
+      }
+    ],
+    "visualization": {
+      "resourceType": "image",
+      "title": "Visualisierung: Molekülorbital-Modelle anwenden",
+      "url": "/assets/goal-visualizations/chemie/f85b4651-50ea-5b42-b193-3465c05257a7/f85b4651-50ea-5b42-b193-3465c05257a7.jpg",
+      "altText": "Didaktische Visualisierung zum Lernziel \"Molekülorbital-Modelle anwenden\". Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+      "originalDigest": "sha256:5a2ced1247a6ef47b080a6225cd70ec4db931ddb2f651bb3e636ce5f62941119",
+      "qaStatus": "review_candidate",
+      "approvedForPublication": false
+    },
+    "evidenceReview": {
+      "reviewId": "canonical-chemistry-positive-evidence-b003-q1-bonding-current-11-v2",
+      "status": "needs_human_review",
+      "reviewInputFingerprint": "sha256:4aecc7ed22a31f6828119d38adc51a77ce0de9a4281fefcf89e47ab9d799d8c5",
+      "profileFingerprint": "sha256:1e61d06141e217673455b7a0f9e6ce7b3e29ff0c7df4c1a71eb3b3a42532a1ec",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1"
+    },
+    "goalFingerprint": "sha256:9ffb4363e6e864a302afd1ae4ae743606b402cdde234375ccc281b9043c34ac8",
+    "pageFingerprint": "sha256:398239fd8950212cbd1ed2efd7726b644353c7df29829fd624bb1fa96c81648b"
+  },
+  "semanticCountUnchanged406": true,
+  "newScientificVotes": 0,
+  "newStrictClaim": false,
+  "activeWrites": false,
+  "currentHistoricalOtherStateCanonicalApplicabilityIsNotCertifiedByNewBYSource": true,
+  "sourceCoverageUnionNotWholeF85CoversWholeSourceRow": true
+}

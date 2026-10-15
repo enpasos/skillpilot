@@ -49,7 +49,7 @@
     "test:composition-projection-roles": "tsx scripts/testCompositionProjectionRoles.ts",
     "test:composition-visible-overlap": "tsx scripts/testCompositionVisibleOverlap.ts",
     "test:course-level-mapping-consistency": "tsx scripts/testCourseLevelMappingConsistency.ts",
-    "test:physics-source-method-routes": "tsx --test ../scripts/check_physics_source_method_routes.test.ts",
+    "test:physics-source-method-routes": "tsx --test ../scripts/check_physics_source_method_routes.test.ts ../scripts/check_composition_stage_route_availability.test.ts",
     "test:goal-book-model": "tsx scripts/testGoalBookModel.ts && npm run test:math-distance-reflection-structure && npm run test:math-pythagoras-structure",
     "test:goal-book-chapter-projection": "tsx src/utils/goalBookChapterProjection.test.ts",
     "test:physics-goal-book-inputs": "tsx scripts/testPhysicsGoalBookInputs.ts",
@@ -170,6 +170,7 @@
     "quality:goal-visualization-qa": "tsx scripts/generateGoalVisualizationQaLedgers.ts",
     "check:goal-visualization-qa": "tsx scripts/generateGoalVisualizationQaLedgers.ts --check",
     "test:goal-visualization-qa-model": "tsx scripts/testGoalVisualizationQaModel.ts",
+    "test:goal-visualization-paths": "node ../scripts/test_goal_visualization_paths.mjs",
     "test:goal-visualization-scope": "tsx scripts/testGoalVisualizationScope.ts",
     "test:goal-visualization-deploy": "tsx scripts/testDeployGoalVisualizations.ts",
     "check:goal-visualization-assets": "node ../scripts/check_goal_visualization_assets.mjs",
@@ -261,7 +262,8 @@
     "apply:applicability": "tsx scripts/applyApplicability.ts",
     "mcp:server": "npm --prefix \"../ai/openai app\" run start",
     "test:math-distance-reflection-structure": "tsx scripts/testMathDistanceReflectionStructure.ts",
-    "test:math-pythagoras-structure": "tsx scripts/testMathPythagorasStructure.ts"
+    "test:math-pythagoras-structure": "tsx scripts/testMathPythagorasStructure.ts",
+    "test:composition-supplements": "tsx src/utils/compositionSupplementRuntime.test.ts && tsx scripts/testCompositionSupplementAccounting.ts && node scripts/testNativeSupplementExecutablePolicy.cjs && node scripts/testNativeSupplementDirectChildPolicy.cjs"
   },
   "dependencies": {
     "@types/dagre": "^0.7.53",

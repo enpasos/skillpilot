@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:23259eb374c6fe132ffaf38efbd1b359bc512114cd9869771bb99cc4f970abde",
+  "reviewInputFingerprint": "sha256:73ad61412e415f8093f03d53eb2593f568f6d13c8d4019914809beecc01a8335",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-three-p2-neutral-input-a-20261014-v1",
+      "roundId": "first-pass-a",
+      "independenceGroupId": "unperformed-three-atomic-p2-current-a",
+      "runIds": [
+        "three-atomic-p2-fresh-d-a-20261014-v1"
+      ],
+      "providers": [
+        "OpenAI / Codex configured review environment; serving identifier unexposed"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex configured review environment; serving identifier unexposed::gpt-6.1-sol (configured), reasoning ultra; serving identifier unexposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-three-p2-fresh-d-b-20261014-v1",
+      "roundId": "first-pass-b",
+      "independenceGroupId": "three-atomic-p2-fresh-d-b-20261014-v1",
+      "runIds": [
+        "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001"
+      ],
+      "providers": [
+        "OpenAI/Codex session attribution; serving runtime metadata unexposed"
+      ],
+      "modelIdentities": [
+        "OpenAI/Codex session attribution; serving runtime metadata unexposed::gpt-6.1-sol requested configuration; actual serving identifier unexposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+      "firstRecordId": "three-atomic-p2-fresh-d-a-20261014-v1.goal-1",
+      "secondRecordId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001.goal-1",
+      "firstRunId": "three-atomic-p2-fresh-d-a-20261014-v1",
+      "secondRunId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+      "firstRecordId": "three-atomic-p2-fresh-d-a-20261014-v1.goal-2",
+      "secondRecordId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001.goal-2",
+      "firstRunId": "three-atomic-p2-fresh-d-a-20261014-v1",
+      "secondRunId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "66256e22-44a3-5939-8862-821e29d6711d",
+      "firstRecordId": "three-atomic-p2-fresh-d-a-20261014-v1.goal-3",
+      "secondRecordId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001.goal-3",
+      "firstRunId": "three-atomic-p2-fresh-d-a-20261014-v1",
+      "secondRunId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

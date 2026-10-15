@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cb1618d3ec6e1b0e4536a7246f16614bedb4813206963ea7da1b8a2047b06e1b",
+  "reviewInputFingerprint": "sha256:fc54d62e5c539b7adc4787b039713898baf0fb284f6b6cc509e29dc6fa10f43b",
+  "goalCount": 9,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math9-safe-current-description-20261015-v1-a",
+      "roundId": "physics-existing-math9-safe-current-description-20261015-v1-first-pass-a",
+      "independenceGroupId": "physics-existing-math9-safe-current-description-20261015-v1-independent-a",
+      "runIds": [
+        "safe-nine-fresh-author-description-a-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::serving-build-unobserved"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-existing-math9-safe-current-description-20261015-v1-b",
+      "roundId": "physics-existing-math9-safe-current-description-20261015-v1-first-pass-b",
+      "independenceGroupId": "physics-existing-math9-safe-current-description-20261015-v1-independent-b",
+      "runIds": [
+        "safe-nine-current-description-independent-b-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::serving-build-unobserved"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6.1-sol::serving-build-unobserved"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 9,
+    "unavailable": 0,
+    "requiresSynthesis": 9
+  },
+  "goals": [
+    {
+      "goalId": "05af2893-0201-4d7f-985b-272d7b88e26e",
+      "firstRecordId": "safe-nine-fresh-author-description-a-05af2893-0201-4d7f-985b-272d7b88e26e-v1",
+      "secondRecordId": "safe-nine-current-d-b-01-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "18c1f954-487e-5121-bb18-6c64a82f573d",
+      "firstRecordId": "safe-nine-fresh-author-description-a-18c1f954-487e-5121-bb18-6c64a82f573d-v1",
+      "secondRecordId": "safe-nine-current-d-b-02-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1c430e0a-b63e-5729-8715-a96a5a68740f",
+      "firstRecordId": "safe-nine-fresh-author-description-a-1c430e0a-b63e-5729-8715-a96a5a68740f-v1",
+      "secondRecordId": "safe-nine-current-d-b-03-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+      "firstRecordId": "safe-nine-fresh-author-description-a-44f0eefa-2d93-5954-879f-f6c49e5cebc7-v1",
+      "secondRecordId": "safe-nine-current-d-b-04-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "firstRecordId": "safe-nine-fresh-author-description-a-48e3d6c2-00bf-5afd-8846-ba3dbd01e96d-v1",
+      "secondRecordId": "safe-nine-current-d-b-05-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "firstRecordId": "safe-nine-fresh-author-description-a-692db5b6-8be1-5c7b-8307-3a02afb21ea0-v1",
+      "secondRecordId": "safe-nine-current-d-b-06-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "firstRecordId": "safe-nine-fresh-author-description-a-a12fddce-0215-58d9-bd91-21be8a960d25-v1",
+      "secondRecordId": "safe-nine-current-d-b-07-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "firstRecordId": "safe-nine-fresh-author-description-a-ad62f563-4fee-5399-8d9c-03a214658aa9-v1",
+      "secondRecordId": "safe-nine-current-d-b-08-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+      "firstRecordId": "safe-nine-fresh-author-description-a-b615830a-e8b0-5754-81e0-99da98343a8d-v1",
+      "secondRecordId": "safe-nine-current-d-b-09-20261015-v1",
+      "firstRunId": "safe-nine-fresh-author-description-a-20261015-v1",
+      "secondRunId": "safe-nine-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

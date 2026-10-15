@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "prepareCommand": "python3 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current402-source-discovery-and-original-obligations-technical-20261013-v1/helpers/synchronize-current-chem-only-stock-host.py",
+  "workdir": "/home/enpasos/projects/skillpilot",
+  "stockCommand": "app/node_modules/.bin/tsx app/scripts/generateCurriculumQualityStatus.ts",
+  "apiCommand": "app/node_modules/.bin/tsx app/scripts/measure-stock-source-course-inventory-and-visible-coverage.mts <own-output-path>",
+  "commandsWorkdir": "/home/enpasos/projects/skillpilot/tmp/checkpoint-chemie-20261013/current402-CQR-source-discovery-minimal-private-host",
+  "helperMustBeCopiedIntoOwnPrivateAppScripts": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current402-source-discovery-and-original-obligations-technical-20261013-v1/helpers/measure-stock-source-course-inventory-and-visible-coverage.mts",
+  "baselineAndCandidateGeneratorExitCodes": {
+    "baseline": 0,
+    "candidate": 0
+  },
+  "baselineAndCandidateSourceApiExitCodes": {
+    "baseline": 0,
+    "candidate": 0
+  },
+  "generationExit0DoesNotMeanFailedCQRRulesPassed": true,
+  "sourceRulesPassed": [
+    "CQR-000",
+    "CQR-002",
+    "CQR-005"
+  ],
+  "sourceRulesStillFailed": [
+    "CQR-003",
+    "CQR-004"
+  ],
+  "noStockEnginePatch": true,
+  "protectedOtherSubjectsNotRecheckedOrChanged": true
+}

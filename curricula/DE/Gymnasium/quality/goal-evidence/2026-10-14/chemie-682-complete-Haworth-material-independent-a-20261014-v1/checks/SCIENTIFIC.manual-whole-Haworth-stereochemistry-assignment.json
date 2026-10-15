@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "input": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-682-maltose-sucrose-complete-Haworth-material-author-20261014-v1/candidate/whole-682-two-cases-and-rubric-with-complete-formulas.author.json",
+    "bytes": 22565,
+    "sha256": "sha256:f99c8da3ca5a90b39c07cb5bd5690aa8bd2a021e0063ead44e00689d68d344cb"
+  },
+  "referenceConvention": "Use each exact supplied ring traversal and stated Haworth viewing layout. In that standard orientation the D-glucose C2/C3/C4 oxygen pattern is down/up/down and D-fructofuranose C3/C4 hydroxy pattern is up/down; the C5 hydroxymethyl side is up. Alpha/beta refers to the relative anomeric oxygen versus the configurational reference side, not the absolute page top.",
+  "assignments": [
+    {
+      "unit": "Maltose A",
+      "ring": "AO5-AC1-AC2-AC3-AC4-AC5-AO5",
+      "C2C3C4HydroxySides": [
+        "down",
+        "up",
+        "down"
+      ],
+      "DReference": "AC5-AC6 up; AC5-H down",
+      "anomer": "AC1-Og down opposite AC5-AC6 up: alpha-D-glucopyranosyl",
+      "glycosidicSite": "AC1-Og-BC4; BC4-Og down replaces the normal C4 hydroxy substituent; no extra hydroxyl on AC1 or BC4."
+    },
+    {
+      "unit": "Maltose B",
+      "ring": "BO5-BC1-BC2-BC3-BC4-BC5-BO5",
+      "C2C3C4OxygenSubstituentSides": [
+        "down",
+        "up",
+        "down"
+      ],
+      "DReference": "BC5-BC6 up; BC5-H down",
+      "anomer": "BC1-OH down opposite BC5-BC6 up: alpha reducing-end anomer as labelled",
+      "freeCenter": "BC1 remains a hemiacetal carbon with ring oxygen, OH, carbon and H; drawing the alpha anomer does not block ring opening or make the anomer fixed in aqueous equilibrium."
+    },
+    {
+      "unit": "Sucrose G",
+      "ring": "GO5-GC1-GC2-GC3-GC4-GC5-GO5",
+      "C2C3C4HydroxySides": [
+        "down",
+        "up",
+        "down"
+      ],
+      "DReference": "GC5-GC6 up; GC5-H down",
+      "anomer": "GC1-Og down opposite GC5-GC6 up: alpha-D-glucopyranosyl"
+    },
+    {
+      "unit": "Sucrose F",
+      "ring": "FO5-FC2-FC3-FC4-FC5-FO5",
+      "C3C4HydroxySides": [
+        "up",
+        "down"
+      ],
+      "DReference": "FC5-FC6 up; FC5-H down",
+      "anomer": "FC2-Og up on the same side as FC5-FC6 up: beta-D-fructofuranosyl; FC2-FC1 down; FC2 has no H",
+      "glycosidicSite": "GC1-Og-FC2 connects both anomeric centres through exactly one oxygen; FC2 has ring-O, C3, C1 and bridge-O single bonds."
+    }
+  ],
+  "everyStereogenicRingCarbonReviewed": {
+    "maltose": [
+      "AC1",
+      "AC2",
+      "AC3",
+      "AC4",
+      "AC5",
+      "BC1",
+      "BC2",
+      "BC3",
+      "BC4",
+      "BC5"
+    ],
+    "sucrose": [
+      "GC1",
+      "GC2",
+      "GC3",
+      "GC4",
+      "GC5",
+      "FC2",
+      "FC3",
+      "FC4",
+      "FC5"
+    ]
+  },
+  "status": "PASS",
+  "inference": "The supplied configurations represent alpha-D-Glcp-(1->4)-alpha-D-Glcp and alpha-D-Glcp-(1->2)-beta-D-Fruf. No mannose/galactose epimer, missing terminal hydroxymethyl group, duplicate bridge oxygen or pentavalent carbon is introduced."
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:996fccb894deedba8bdd2168abfcc6c5b58d577090aeed4879e2c2dd557f4658",
+  "reviewInputFingerprint": "sha256:f6208ed85f1ce7d60ffe56248fad2894f2513d723525bba4dc5eda0ff2fc835d",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "self-induction-current-context-20261015-v1-a",
+      "roundId": "self-induction-current-context-20261015-v1-first-pass-a",
+      "independenceGroupId": "self-induction-current-context-20261015-v1-independent-a",
+      "runIds": [
+        "self-induction-current-context-20261015-v1-fresh-blind-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol (configured)::serving-build-unknown"
+      ]
+    },
+    "second": {
+      "campaignId": "self-induction-current-context-20261015-v1-b",
+      "roundId": "self-induction-current-context-20261015-v1-first-pass-b",
+      "independenceGroupId": "self-induction-current-context-20261015-v1-independent-b",
+      "runIds": [
+        "self-induction-current-context-20261015-v1-first-pass-b.fresh-independent-b-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6.1 Sol (configured; Ultra reasoning)::serving build unknown"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+      "firstRecordId": "self-induction-current-context-20261015-v1-fresh-blind-a.37f28bc4-def2-57cf-a06b-191dfd228205",
+      "secondRecordId": "self-induction-current-context-20261015-v1-first-pass-b.fresh-independent-b-run.record-001",
+      "firstRunId": "self-induction-current-context-20261015-v1-fresh-blind-a",
+      "secondRunId": "self-induction-current-context-20261015-v1-first-pass-b.fresh-independent-b-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

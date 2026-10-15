@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7975caf530ed7f569227b7f466c386da93206b71c425beec631d4599f6850258",
+  "reviewInputFingerprint": "sha256:b804a56c3f27e28318585dc47033caa5dfefc3f9cbd105ce8b5a6acf66280226",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-iv-p3-current-peer-a-20261014-v1",
+      "roundId": "current-independent-peer-a",
+      "independenceGroupId": "iv-p3-current-independent-peer-a",
+      "runIds": [
+        "iv-p3-current-peer-a-independent-description-run-20261014-v1"
+      ],
+      "providers": [
+        "OpenAI Codex configured environment; serving build not exposed"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex configured environment; serving build not exposed::gpt-6.1-sol::Configured model only; actual serving build unavailable"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-iv-p3-current-peer-b-20261014-v1",
+      "roundId": "current-independent-peer-b",
+      "independenceGroupId": "iv-p3-current-independent-peer-b",
+      "runIds": [
+        "physics-iv-p3-current-peer-b-D-run-20261014-v1"
+      ],
+      "providers": [
+        "OpenAI Codex configured environment; serving build not exposed"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex configured environment; serving build not exposed::gpt-6.1-sol::Configured model only; actual serving build unavailable"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI Codex configured environment; serving build not exposed"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI Codex configured environment; serving build not exposed::gpt-6.1-sol::Configured model only; actual serving build unavailable"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "66256e22-44a3-5939-8862-821e29d6711d",
+      "firstRecordId": "iv-p3-current-peer-a-66256e22-keep-v1",
+      "secondRecordId": "physics-iv-p3-current-peer-b-D-record-20261014-v1",
+      "firstRunId": "iv-p3-current-peer-a-independent-description-run-20261014-v1",
+      "secondRunId": "physics-iv-p3-current-peer-b-D-run-20261014-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

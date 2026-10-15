@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { collectRequiredTaskMaterialDigests } from './goalEvidenceTaskMaterials'
 import { existsSync, readFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -152,8 +153,9 @@ function resourceDigestsForGoal(
   goal: SkillLandscape['goals'][number],
   reviewedResourceTypes: ReadonlySet<string>,
 ): { digests: Record<string, string>; errors: string[] } {
-  const digests: Record<string, string> = {}
-  const errors: string[] = []
+  const taskState = collectRequiredTaskMaterialDigests(goal, repoRoot)
+  const digests: Record<string, string> = { ...taskState.digests }
+  const errors: string[] = [...taskState.errors]
   if (!reviewedResourceTypes.has('goal-visualization')) return { digests, errors }
 
   for (const link of goal.resourceLinks ?? []) {

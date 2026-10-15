@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-P9-remediation-current-seven-shared-technical-20261014-v1/configs/native-seven.current-P7.shared-first-pass.batch.config.json",
+  "configDigest": "sha256:f6027b376a8518c4d63c83185eaf270665ed62cf081cab9aab64e4dd26727b54",
+  "goalIds": [
+    "058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+    "793189f8-78bd-5204-848b-fd2bbc12e458",
+    "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+    "360fccb9-896d-5e67-bf5d-5732621604c9",
+    "9abd8069-17ad-5d30-9102-f8eff6055045",
+    "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 407,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-P9-remediation-current-seven-shared-technical-20261014-v1/configs/whole407.current-seven.stock-base.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-P9-remediation-current-seven-shared-technical-20261014-v1/candidate/canonical533.current407.exact-N7.unchanged.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:4f9da38ed5efb15f0e17656378d68736a4b04179ffd397a46f2ef76c2718d930"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:54f7da3f32d06df93c54122f986d82cadd0e0b7fa57a25bd15f4f1a62d9c29ce",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:811637a843a605c560c3b6e9b77ff7f64f6ba672c994e8ff177734f49c1fbac6",
+    "reviewInputFingerprint": "sha256:af6d4721b9210d12f2b04dd88e136ca24b8a518cae850c440302f10f592772b0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1-a",
+        "campaignDigest": "sha256:f154c5f9ef56f87ad5a3e047eb8556916f8fa49cb2de7e7797c89afa7b9aebbc",
+        "roundId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1-first-pass-a",
+        "independenceGroupId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1-independent-a",
+        "batchId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:0273c8f9421dd7a7be7e04a3484f8f1b21a88bbddf59a22804de2c37fe455bf4"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1-b",
+        "campaignDigest": "sha256:fdc95576354d2cfa0398c168ce844bff4a961f52ea0865e5997e5b855e2a0ca7",
+        "roundId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1-first-pass-b",
+        "independenceGroupId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1-independent-b",
+        "batchId": "chemie-current407-naturstoffe-P9-remediation-current-seven-shared-first-pass-20261014-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:871458d5ec4062d182d5e684d98a5c5273b1434caa5ab7e6deb5eb6c04156157"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

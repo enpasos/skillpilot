@@ -1,0 +1,63 @@
+{
+  "license": "CC-BY-4.0",
+  "attribution": "SkillPilot independent informed source/placement peer, 2026-10-14",
+  "role": "Own solved mathematical witnesses; no learner assessment and no native P approval",
+  "authorSolvedWitnessesUsedAsEvidence": false,
+  "boundWholeInputs": "author-inputs/whole-three-goals-and-positive-profiles.final10.exact.json",
+  "caf": {
+    "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+    "wholeGoalJsonFingerprint": "sha256:85e27f050579472fb53dd9909bdfd0494a2e2b3e8747878c2c86e1aa8f734e4a",
+    "wholePositiveProfileJsonFingerprint": "sha256:bc70f2f22e255eafd6cfa627afe1f02264a3539b2945f84dcb08be9976003000",
+    "wholeReasoning": "For integers a,b,c with a*b=c and b!=0, c/b=a is a defined exact integer quotient. If a!=0, c/a=b is also defined. Signs follow distributivity and additive inverses: (-a)*b=-(a*b); (-a)*(-b)=a*b. Zero multiplication is valid, but only a nonzero factor can be used as a division-check divisor. A noninteger rational quotient is defined in Q yet inadmissible for this explicitly integer-bounded goal. Dividing by zero is undefined; 0/0 cannot select a unique factor because every integer solves 0*q=0. These are distinct reasons, not one generic rejection rule.",
+    "mandatoryCasesIndependentlySolved": [
+      {"caseId":"signed-inverse-family","solution":"(-12)*7=-84; (-84)/7=-12 and (-84)/(-12)=7; both divisors nonzero. One negative factor yields a negative product, and signs remain consistent in both inverse equations."},
+      {"caseId":"division-admissibility-transfer","solution":"45/(-6)=-15/2 is rational-defined but outside the integer quotient domain. 0/(-7)=0 because (-7)*0=0 with nonzero divisor. 12/0 is undefined because 0*q can never equal12."},
+      {"caseId":"zero-product-check-transfer","solution":"0*(-9)=0 and 0*0=0. The first permits 0/(-9)=0, while dividing by its zero factor does not. Both inverse candidates of 0*0 are0/0 and fail uniqueness. Zero groups contain zero objects; alternatively, 0*b=(0+0)*b=0*b+0*b entails0*b=0 by additive cancellation, including b=0."}
+    ],
+    "freshPeerCases": [
+      {"id":"caf-peer-two-negatives","task":"Determine (-17)*(-6), both inverse equations, signs and divisor conditions.","solution":"102; 102/(-17)=-6 and102/(-6)=-17. Two negatives yield a positive product; both divisors are nonzero.","expectations":["deep-understanding"],"axes":["operation-direction","sign-and-domain"]},
+      {"id":"caf-peer-four-signs","task":"Compare13*5,(-13)*5,13*(-5),(-13)*(-5).","solution":"65,-65,-65,65. Negating one factor negates the product; negating both cancels the two negations. Every factor is nonzero, so the corresponding inverse equation is defined.","expectations":["deep-understanding"],"axes":["sign-and-domain"]},
+      {"id":"caf-peer-quotient-first","task":"Interpret84/(-12) as a missing factor and check it.","solution":"The missing factor is-7 because(-12)*(-7)=84; (-12)!=0 and-7 is integer.","expectations":["deep-understanding"],"axes":["operation-direction","sign-and-domain"]},
+      {"id":"caf-peer-rational-defined-integer-rejected","task":"Judge55/(-8),0/(-13),7/0 and0/0 without merging their reasons.","solution":"55/(-8)=-55/8 is rational-defined but not an integer. 0/(-13)=0 is defined and integer. 7/0 has no factor solution. 0/0 has every integer as a factor solution, hence no uniquely defined quotient.","expectations":["deep-understanding"],"axes":["sign-and-domain"]},
+      {"id":"caf-peer-zero-factor-reversal","task":"Independently judge(-19)*0 and choose a permissible control.","solution":"Product0; 0/(-19)=0 is permitted. 0/0 is forbidden. The position of the zero factor does not change definedness or the product.","expectations":["deep-understanding"],"axes":["operation-direction","sign-and-domain"]},
+      {"id":"caf-peer-wrong-sign-control","task":"A proposed product is(-17)*(-6)=-102. Decide whether inverse control confirms it.","solution":"(-102)/(-17)=6, not-6; the proposal fails the factor relationship. The correct product is102. Exact divisibility alone does not establish the proposed sign.","expectations":["deep-understanding"],"axes":["operation-direction","sign-and-domain"]}
+    ]
+  },
+  "f08": {
+    "goalId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+    "wholeGoalJsonFingerprint": "sha256:788aaeea3d099668a08f2330ab18966dbeb0676540015df9c8e5e6c286ab7101",
+    "wholePositiveProfileJsonFingerprint": "sha256:455e842594b7910ac6d156779ef14036108a64cffe8ca1194e25b6d8b178d739",
+    "wholeReasoning": "The outer operation and nested operand structure determine a variable expression's reading. A structurally faithful verbal reading must preserve grouping and distinguish a whole sum/difference multiplied by a factor from an addend outside that product. In context, variable values, constants and coefficients name quantities/rates; operations combine them in the stated relationship. Reading and interpreting these given expressions is narrower than transforming terms, deriving full models or solving equations.",
+    "mandatoryCasesIndependentlySolved": [
+      {"caseId":"read-base-plus-multiple","solution":"7+3x has outer addition, constant summand7 and product subterm3x; x is the variable and3 its coefficient/factor. Read: seven plus three times x. Product formation precedes addition."},
+      {"caseId":"compare-grouped-and-ungrouped","solution":"4(2+y) is four times the sum of two and y: outer product, inner sum. 4*2+y is the sum of the product4*2 and y, equivalently eight plus y. In the latter, y is outside the product."},
+      {"caseId":"interpret-rental-expression","solution":"h is rental hours;12 is fixed euro cost;2.5 is euros/hour;2.5h is variable euro cost; addition combines fixed and variable components into total euros. No invented numerical h is needed."}
+    ],
+    "freshPeerCases": [
+      {"id":"f08-peer-difference-tree","task":"Read and decompose11-4z without evaluating it.","solution":"Outer difference of eleven and four times z. Product subterm4z contains factor4 and variablez; compute that product before subtracting it from11.","expectations":["hierarchical-expression-structure","unambiguous-verbal-reading"],"axes":["operation-hierarchy","interpretation-mode"]},
+      {"id":"f08-peer-grouped-difference","task":"Compare6(5-q) and6*5-q in words and hierarchy.","solution":"First: six times the difference of five and q, with the whole difference inside the product. Second: the difference of thirty and q, with q outside the product. At q=2 these are18 and28, confirming they are not universally interchangeable; this numerical witness supplements rather than replaces structural reading.","expectations":["hierarchical-expression-structure","unambiguous-verbal-reading"],"axes":["grouping-change","operation-hierarchy","similar-symbolic-forms"]},
+      {"id":"f08-peer-printing-context","task":"A printing service gives8+0.12n euros, n being printed pages. Explain every component and operation.","solution":"8euros is the fixed charge;0.12euros/page is the rate; n is page count;0.12n is the variable charge in euros; outer addition gives total cost. n counts pages, not euros or hours.","expectations":["contextual-meaning-of-components"],"axes":["interpretation-mode"]},
+      {"id":"f08-peer-cart-context","task":"Three identical carts each contain a pencils of one kind and b of another. Interpret3(a+b) and explain why3a+b would change its meaning.","solution":"a+b is pencils in one cart;3 multiplies that whole count for three carts. 3a+b counts three a-groups but only one b-group. The changed outer/inner structure changes contextual meaning.","expectations":["hierarchical-expression-structure","unambiguous-verbal-reading","contextual-meaning-of-components"],"axes":["grouping-change","similar-symbolic-forms","interpretation-mode"]}
+    ],
+    "counterexample":"The bare phrase 'four times x plus two' does not by itself distinguish4x+2 from4(x+2). A valid reading must explicitly preserve whether the sum or only x is multiplied. This is directly covered by the unambiguous-verbal-reading expectation."
+  },
+  "5bba": {
+    "goalId": "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+    "wholeGoalJsonFingerprint": "sha256:d7c8076446920a07b69515f055fd972a4b6ba618154411b8c550e886ffd335ab",
+    "wholePositiveProfileJsonFingerprint": "sha256:d57e5a95a96322869ff727270f97a69fa9fd67d165809facc39a5c57cf6a3aa2",
+    "wholeReasoning": "A symbol's form does not determine its real-world quantity. Each variable must be defined consistently, and the relationship must agree in words and symbols. A new context or structure requires rebinding the symbols and selecting the relationship anew. Proportional, additive and fixed-plus-variable cases are distinguishable; a familiar multiplier cannot simply be copied into an additive or base-charge context.",
+    "mandatoryCasesIndependentlySolved": [
+      {"caseId":"bicycles-and-wheels","solution":"Let b count bicycles and r count wheels, both nonnegative integers. Every bicycle contributes two wheels: r=2b. A changeDelta b changes r by2Delta b; the same symbols keep these meanings throughout."},
+      {"caseId":"age-difference","solution":"Let l be Leo's age and m Mira's age in years; m=l+3. Each Leo age determines the Mira age three years greater. The relationship is additive, not m=3l; either age also determines the other if direction is reversed consistently."},
+      {"caseId":"taxi-base-and-distance","solution":"Let d be travelled kilometres and k fare in euros. k=4+2d;4 is fixed euros,2euros/km is the rate,2d is distance-dependent euros. d>=0; even d=0 does not remove the fixed base-charge component from this model."}
+    ],
+    "freshPeerCases": [
+      {"id":"variable-peer-cartons","task":"Every carton holds seven bottles. Choose symbols and state the relationship in words and symbols.","solution":"Let c be carton count and b bottle count. Bottle count is seven times carton count: b=7c, with c,b nonnegative integers. Here b means bottles rather than bicycles; its meaning is newly defined.","expectations":["context-bound-variable-meaning","relationship-in-words-and-symbols","changed-context-rebinding"],"axes":["relationship-structure","context-domain","representation-start"]},
+      {"id":"variable-peer-remaining-fuel","task":"A tank initially contains24litres; an independently varied amount is used. Define symbols for used and remaining fuel.","solution":"Let u be used litres and r remaining litres. Remaining fuel is initial fuel minus used fuel: r=24-u for0<=u<=24. Neither r=24u nor reuse of b=7c describes this changed relationship.","expectations":["context-bound-variable-meaning","relationship-in-words-and-symbols","changed-context-rebinding"],"axes":["relationship-structure","context-domain","quantity-role","representation-start"]},
+      {"id":"variable-peer-badge-order","task":"An order costs1.80euros packaging plus0.65euros per badge. Select variables and represent the cost.","solution":"Let n be badge count and C total euros. C=1.80+0.65n. The fixed packaging charge and varying per-badge charge have different roles; n is a nonnegative integer. In words, total cost equals packaging plus the badge price times the badge count.","expectations":["context-bound-variable-meaning","relationship-in-words-and-symbols","changed-context-rebinding"],"axes":["relationship-structure","context-domain","representation-start"]},
+      {"id":"variable-peer-reversed-roles","task":"The statement names bolt count m before box count b; each box contains six bolts. Explain which equation represents it.","solution":"Define m as bolt count and b as box count; m=6b, not b=6m. Both counts vary together, with bolts determined by boxes; reversing the order of mention does not reverse the mathematical relationship.","expectations":["context-bound-variable-meaning","relationship-in-words-and-symbols","changed-context-rebinding"],"axes":["quantity-role","context-domain","representation-start"]}
+    ],
+    "counterexample":"A learner who writes an equation but reuses its input symbol for a different quantity halfway through the explanation has not shown consistent variable binding. A correct isolated formula cannot replace the required context meaning and changed-context rebinding."
+  },
+  "wholeCoverage": {"requiredExpectationIds":7,"variationAxes":10,"mandatoryApplicationBriefs":9,"freshPeerCases":14,"fullWholeGoalProfileScientificWitness":true,"nativePApproval":false}
+}

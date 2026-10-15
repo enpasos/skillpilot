@@ -1,0 +1,94 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemistry-q3-thirteen-v3-targeted-review-a-original",
+  "campaignId": "chemistry-q3-thirteen-v3-targeted-independent-a",
+  "roundId": "chemistry-q3-thirteen-v3-targeted-independent-a-round",
+  "batchId": "chemistry-q3-thirteen-v3-targeted-independent-a-round.batch-001",
+  "batchInputFingerprint": "sha256:e4fdd23a070370d6b43d992c6d9a65e783ad703590ed5832f88fb1de19016a84",
+  "bundleFingerprint": "sha256:93808b1359cd18b3350cf263cf4726cee3b290f4bcee7cc269a8b80e6b758102",
+  "bookDigest": "sha256:3630973da77b0c359ec8c4ccae01363f9110eed33a95e118e607e1a1fb5806b2",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6 inherited Codex session",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:aeda1c2b29c543d66b48ec51200494ee793ada8d8bb12965ae8aacab6d82481b",
+  "independenceGroupId": "chemistry-q3-thirteen-v3-targeted-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+    "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+    "545a2e56-e981-5725-b0e4-a0c77f7f291e",
+    "882630ba-815c-5c6b-868c-2e6cd7eef459",
+    "c0463225-cba1-5e62-a1fb-e9046d7034b5",
+    "b8c8f70f-64cb-50b1-970c-e0c4295da3fb",
+    "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+    "93b914d4-747d-5b22-90ff-ac6320514b44",
+    "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+    "94a62b39-d4a2-5882-99d1-6886ead07726",
+    "56bc6377-1291-58bc-b433-5b9f673888e9",
+    "3ce81f96-4fbb-5022-88b7-337a000315ed",
+    "e62c6c58-b688-59c3-8ac5-2cfc26ac22d7"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:d8bee6dc6cd6f591c425715ce054fb36a48c7a1426e8c61d301a4703851fbbec"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:4e252ad88d0d8fdfef60d5e4c77c8449aca9620ee0ebce3747d186cedb2fa9a2"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:835af2f8088919de38ee1b085cd62e82904c241f1f7b284aaeb94e06a78d613d"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:0b6bc5008ed66db38c06535a636903664c6696c7fcad841c3b5226ebb12f774b"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:a1405d3eb2de913fabc9a5dea07a2728af44e36d0d7b5ed1cc17c559e9df5877"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:114e55a09553b0528d0cabbaa550249bd02b316c62b234609dab189bfadb1437"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:c86a6ac48fc725ee15faf2802d908b9318118694cd9c48446069ea4c3795794c"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:0b6fe17c83cf65edc10b0cbdb2aa31be2ff4f5dd66e09a467d02ddd1c7c90f0b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e4fdd23a070370d6b43d992c6d9a65e783ad703590ed5832f88fb1de19016a84"
+    }
+  ],
+  "startedAt": "2026-10-12T04:31:52.371625Z",
+  "completedAt": "2026-10-12T04:35:35.006892Z",
+  "status": "completed",
+  "outputDigest": "sha256:e8ea34336cf0082a8ac052807e43feb1382b0ba750c059089d42ae862befcb63",
+  "toolchainVersion": "goal-description-review-v3-targeted-follow-up-normal"
+}

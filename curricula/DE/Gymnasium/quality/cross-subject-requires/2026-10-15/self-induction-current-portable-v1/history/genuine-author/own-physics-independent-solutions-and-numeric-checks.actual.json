@@ -1,0 +1,211 @@
+{
+  "synthetic": true,
+  "copiedEarlierNumbers": false,
+  "checks": [
+    {
+      "test": "same imposed current",
+      "L_H": 0.2,
+      "I_t": "0.5+3t A for 0<t<1 s",
+      "slope_A_per_s": 3,
+      "emf_V": -0.6000000000000001,
+      "actualCurrentDelayDifference_s": 0
+    },
+    {
+      "test": "same imposed current",
+      "L_H": 0.8,
+      "I_t": "0.5+3t A for 0<t<1 s",
+      "slope_A_per_s": 3,
+      "emf_V": -2.4000000000000004,
+      "actualCurrentDelayDifference_s": 0
+    },
+    {
+      "test": "equal voltage and total resistance, zero initial current",
+      "L_H": 0.2,
+      "R_ohm": 4.0,
+      "U_V": 8.0,
+      "t_s": 0.1,
+      "tau_s": 0.05,
+      "I_A": 1.7293294335267746,
+      "initialSlope_A_per_s": 40.0,
+      "emf_V": -1.0826822658929016,
+      "halfFinalTime_s": 0.03465735902799726,
+      "steadyCurrent_A": 2.0
+    },
+    {
+      "test": "equal voltage and total resistance, zero initial current",
+      "L_H": 0.8,
+      "R_ohm": 4.0,
+      "U_V": 8.0,
+      "t_s": 0.1,
+      "tau_s": 0.2,
+      "I_A": 0.7869386805747332,
+      "initialSlope_A_per_s": 10.0,
+      "emf_V": -4.852245277701067,
+      "halfFinalTime_s": 0.13862943611198905,
+      "steadyCurrent_A": 2.0
+    },
+    {
+      "test": "larger L but same L/R",
+      "L_H": 0.2,
+      "R_ohm": 4,
+      "tau_s": 0.05,
+      "explanation": "Same fractional approach time, unequal DC final currents under same source; larger L alone does not order delays without fixed R."
+    },
+    {
+      "test": "larger L but same L/R",
+      "L_H": 0.8,
+      "R_ohm": 16,
+      "tau_s": 0.05,
+      "explanation": "Same fractional approach time, unequal DC final currents under same source; larger L alone does not order delays without fixed R."
+    },
+    {
+      "test": "equal initial self emf, unequal time constants",
+      "L_H": 0.2,
+      "R_ohm": 4,
+      "U_V": 8,
+      "initialEmf_V": -8,
+      "tau_s": 0.05,
+      "initialSlope_A_per_s": 40.0
+    },
+    {
+      "test": "equal initial self emf, unequal time constants",
+      "L_H": 0.8,
+      "R_ohm": 4,
+      "U_V": 8,
+      "initialEmf_V": -8,
+      "tau_s": 0.2,
+      "initialSlope_A_per_s": 10.0
+    },
+    {
+      "test": "local zero is not an interval of steady current",
+      "t_s": 0.9,
+      "I_A": 2.01,
+      "slope_A_per_s": -0.19999999999999996,
+      "L_H": 0.5,
+      "emf_V": 0.09999999999999998
+    },
+    {
+      "test": "local zero is not an interval of steady current",
+      "t_s": 1.0,
+      "I_A": 2.0,
+      "slope_A_per_s": 0.0,
+      "L_H": 0.5,
+      "emf_V": -0.0
+    },
+    {
+      "test": "local zero is not an interval of steady current",
+      "t_s": 1.1,
+      "I_A": 2.0100000000000002,
+      "slope_A_per_s": 0.20000000000000018,
+      "L_H": 0.5,
+      "emf_V": -0.10000000000000009
+    },
+    {
+      "test": "same mean but different local rates",
+      "onInterval_s": [
+        0,
+        1
+      ],
+      "curveA": "I_A(t)=t A",
+      "curveB": "I_B(t)=t^2 A",
+      "sameMean_A_per_s": 1,
+      "at_t_s": 0.25,
+      "localRateA_A_per_s": 1,
+      "localRateB_A_per_s": 0.5,
+      "L_H": 0.4,
+      "emfA_V": -0.4,
+      "emfB_V": -0.2,
+      "meaning": "Mean ΔI/Δt competence does not determine local dI/dt on a fresh curved graph."
+    },
+    {
+      "test": "switch-off with specified resistive path",
+      "L_H": 0.4,
+      "R_ohm": 2,
+      "I0_A": 3,
+      "initialSlope_A_per_s": -15,
+      "initialEmf_V": 6,
+      "initialPassiveVoltage_AB_V": -6,
+      "tau_s": 0.2,
+      "meaning": "Current remains A→B initially while induced source action supports that direction; passive v_AB reverses sign."
+    },
+    {
+      "test": "equal imposed EMF functions, unequal time constants",
+      "interval_s": [
+        0,
+        1
+      ],
+      "coilA": {
+        "L_H": 0.2,
+        "R_ohm": 4,
+        "I_t": "3t A",
+        "appliedSource_V": "0.6+12t V",
+        "selfEmf_V": -0.6,
+        "tau_s": 0.05
+      },
+      "coilB": {
+        "L_H": 0.8,
+        "R_ohm": 4,
+        "I_t": "0.75t A",
+        "appliedSource_V": "0.6+3t V",
+        "selfEmf_V": -0.6,
+        "tau_s": 0.2
+      },
+      "meaning": "Independently chosen time-dependent voltage sources generate the same entire induced-EMF history, while currents and RL time constants differ. Thus equal EMF by itself identifies no delay ordering. These sources are not the equal constant U comparison."
+    }
+  ],
+  "currentCaseSolutions": [
+    {
+      "caseId": "switch-on-off-polarity",
+      "solutionDe": "Ohne feste Klemmenspannungszählung ist eine absolute Plus/Minus-Angabe unterbestimmt. Mit positiver Stromrichtung A→B und passiver Zählung v_AB ist beim Stromaufbau v_AB>0 und U_ind<0, beim Abbau v_AB<0 und U_ind>0. Bei endlicher Spannung und vorhandenem resistivem Weiterstrompfad bleibt I stetig. An der DC-Quelle steigt I aus null monoton auf U/R; im Entladekreis fällt es gleichgerichtet auf null. Konstantes I liefert dI/dt=0 und keine eigene Induktions-EMK; ohmsche Wicklungsspannung kann trotzdem bestehen. Ein idealer pfadloser Schalter erlaubt diese endliche-Spannung-Skizze nicht ohne weiteres."
+    },
+    {
+      "caseId": "two-coils-same-current-change",
+      "solutionDe": "Aus U_ind=−L dI/dt folgt bei identischem gemessenem dI/dt gleicher Vorzeichenkonvention das Verhältnis der EMK-Beträge L_B/L_A (bei Rate null beide null). Die Daten geben keine unterschiedliche Verzögerung her. Falls zusätzlich Anfangsströme gleich sind, stimmen I(t) überein; nur gleiche Ableitungen lassen sonst einen konstanten Stromoffset offen. Nur für den anderen Versuch gleicher konstanter DC-Quelle, gleicher endlicher Serienresistenz und gleicher Null-Anfangsbedingung ist größerem L der langsamere Anstieg zum selben U/R zuzuordnen. Gleiche EMK kann bei verschiedenen R und L auftreten; τ=L/R wird damit nicht gemessen. Das Stromverbot ist falsch. Mehr Windungen stärken bei sonst gleicher langer Spule sowohl B pro I als auch die Zahl der verketteten Windungen; L wächst. Höhere konstante lineare μ verstärkt ebenfalls die Flussverkettung, keine solche pauschale Aussage bei Sättigung."
+    }
+  ],
+  "successorCaseSolutions": [
+    {
+      "caseId": "switch-on-off-polarity",
+      "solutionDe": "Wie im ersten aktuellen Fall, nun durch die explizite finite DC-RL- und Entladepfadannahme eindeutig. Im frischen glatten I(t)-Graphen folgt der Spannungsbetrag dem Betrag der lokalen Tangentensteigung, nicht der Stromhöhe. Ein isolierter waagerechter Punkt gibt nur dort U_ind=0; in einem horizontalen Zeitabschnitt bleibt U_ind dort null."
+    },
+    {
+      "caseId": "two-coils-same-current-change",
+      "solutionDe": "Im ersten Teil ist identisches I(t) ausdrücklich vorgegeben: gleiche tatsächliche Ankunftszeiten und L-proportionale EMK-Beträge. Im getrennten DC-RL-Teil ist dieselbe Spannung über den gesamten Kreis festgehalten: Anfangssteigung U/L, größerem L geringere Steigung, langsamerer Anstieg zum selben U/R. Bei t=0 ist U_ind in beiden gleich −U, obwohl die Zeitkonstanten verschieden sind. Mehr Windungen oder größere konstante μ verstärken L bei sonst gleicher Geometrie, ohne Stromfluss im stationären Zustand zu verbieten."
+    }
+  ],
+  "allRequiredExpectationIds": [
+    "current-change-alters-own-flux",
+    "lenz-response-delays-change",
+    "inductance-measures-coupling-strength"
+  ],
+  "allCoverageExpectations": {
+    "requiredExpectationIds": [
+      "current-change-alters-own-flux",
+      "lenz-response-delays-change",
+      "inductance-measures-coupling-strength"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "allVariationAxes": [
+    {
+      "id": "switching-phase",
+      "textDe": "Einschalten, stationärer Gleichstrom oder Ausschalten",
+      "textEn": "Switch-on, steady direct current, or switch-off"
+    },
+    {
+      "id": "change-rate",
+      "textDe": "Schnelle oder langsame Stromänderung bei gleichem Endstrom",
+      "textEn": "Fast or slow current change for the same final current"
+    },
+    {
+      "id": "inductor-design",
+      "textDe": "Windungszahl, linearer Kern und relative Induktivität",
+      "textEn": "Turn count, linear core, and relative inductance"
+    }
+  ],
+  "polarityConvention": "U_ind is a source emf along positive current circulation; passive terminal v_AB is its negative for ideal L. Resistive winding drop is separate.",
+  "authorEquationProof": "For finite U_ind and L>0, dI/dt is finite, so no finite instantaneous current jump. In linear regime linkage λ=LI gives induced emf −L dI/dt. In a source-driven series RL loop, U=RI+L dI/dt; in discharge 0=RI+L dI/dt. Exponential formulas used only as author checks; the learner is not required to solve an ODE or derive an exponential solution."
+}

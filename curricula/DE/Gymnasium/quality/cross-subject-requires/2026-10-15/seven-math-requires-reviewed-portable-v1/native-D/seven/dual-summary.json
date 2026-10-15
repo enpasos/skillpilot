@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:d16d7d905e14e3263d6518cbc0b91cce00d62fb9d3720bfac839e7bb4e52272d",
+  "reviewInputFingerprint": "sha256:a06b149603f420ed5f80eb1df2af37b6cc862024b723167ee9acb2e153842801",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "seven-math-requires-current-context-20261015-v1-a",
+      "roundId": "seven-math-requires-current-context-20261015-v1-first-pass-a",
+      "independenceGroupId": "seven-math-requires-current-context-20261015-v1-independent-a",
+      "runIds": [
+        "seven-math-description-blind-a-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI (configured; serving provider unobserved)"
+      ],
+      "modelIdentities": [
+        "OpenAI (configured; serving provider unobserved)::gpt-6.1-sol, reasoning ultra (configured; serving build unobserved)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "seven-math-requires-current-context-20261015-v1-b",
+      "roundId": "seven-math-requires-current-context-20261015-v1-first-pass-b",
+      "independenceGroupId": "seven-math-requires-current-context-20261015-v1-independent-b",
+      "runIds": [
+        "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6.1 Sol (configured)::actual serving model/build unobserved"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "firstRecordId": "seven-math-description-blind-a-20261015-v1.record-001",
+      "secondRecordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-001",
+      "firstRunId": "seven-math-description-blind-a-20261015-v1",
+      "secondRunId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "firstRecordId": "seven-math-description-blind-a-20261015-v1.record-002",
+      "secondRecordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-002",
+      "firstRunId": "seven-math-description-blind-a-20261015-v1",
+      "secondRunId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "firstRecordId": "seven-math-description-blind-a-20261015-v1.record-003",
+      "secondRecordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-003",
+      "firstRunId": "seven-math-description-blind-a-20261015-v1",
+      "secondRunId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "firstRecordId": "seven-math-description-blind-a-20261015-v1.record-004",
+      "secondRecordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-004",
+      "firstRunId": "seven-math-description-blind-a-20261015-v1",
+      "secondRunId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "firstRecordId": "seven-math-description-blind-a-20261015-v1.record-005",
+      "secondRecordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-005",
+      "firstRunId": "seven-math-description-blind-a-20261015-v1",
+      "secondRunId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "firstRecordId": "seven-math-description-blind-a-20261015-v1.record-006",
+      "secondRecordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-006",
+      "firstRunId": "seven-math-description-blind-a-20261015-v1",
+      "secondRunId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "firstRecordId": "seven-math-description-blind-a-20261015-v1.record-007",
+      "secondRecordId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra.goal-007",
+      "firstRunId": "seven-math-description-blind-a-20261015-v1",
+      "secondRunId": "seven-math-requires-current-context-20261015-v1-first-pass-b.batch-001.independent-gpt61sol-ultra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

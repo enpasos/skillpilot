@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import { normalizeGoalVisualizationAiReview } from '/home/enpasos/projects/skillpilot/app/scripts/goalVisualizationQaModel.ts';
+import { isAiApprovedForCurrentAsset } from '/home/enpasos/projects/skillpilot/app/src/utils/goalVisualizationQaStatus.ts';
+const own=path.dirname(new URL(import.meta.url).pathname);const root='/home/enpasos/projects/skillpilot';
+const read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8'));
+const proposals=read(path.join(own,'QA.two-actual-KEEP-only.native-typed-fields.proposals.json'));
+const science=read(path.join(own,'SCIENCE.first-two-whole-context-original-PNG-visual-judgments.independent-b.actual.json'));
+const allowed=['goalId','title','description','aiApproved','aiApprovedAssetSha256','aiReviewedAt','aiReviewer','aiNotes'];
+const rows=proposals.map((p:any)=>{assert.deepEqual(Object.keys(p),allowed);assert.equal(p.aiApproved,'yes');assert.equal(typeof p.aiReviewedAt,'string');assert.ok(Number.isFinite(Date.parse(p.aiReviewedAt)));const r=science.records.find((r:any)=>r.goalId===p.goalId);assert.equal(r.decision,'KEEP');const bytes=fs.readFileSync(path.join(root,r.image.path));const actual='sha256:'+crypto.createHash('sha256').update(bytes).digest('hex');assert.equal(actual,p.aiApprovedAssetSha256);
+const normalized=normalizeGoalVisualizationAiReview(p,actual);for(const k of ['aiApproved','aiApprovedAssetSha256','aiReviewedAt','aiReviewer','aiNotes'])assert.equal(normalized[k as keyof typeof normalized],p[k]);
+assert.equal(isAiApprovedForCurrentAsset({...p,assetSha256:actual}),true);return {goalId:p.goalId,actualOriginalAssetSha256:actual,nativeYesNoStringAndOriginalReviewerDatePreserved:true,stockNormalizationPreservesAllProposedAiFields:true,stockExactCurrentAssetPredicate:true};});
+const result={schemaVersion:1,role:'bounded unchanged stock QA normalization and exact-pixel approval predicate, not a full active ledger or public-path check',checkedAtUTC:new Date().toISOString(),rows,fullLedgerOrHCheckRun:false,noCanonicalOrPublicImagePresenceClaim:true};
+fs.writeFileSync(path.join(own,'CHECK.native-typed-QA-fields-and-unmodified-stock-asset-predicate.actual.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

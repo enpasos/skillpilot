@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-10-15T05:37:20.240720+00:00",
+  "reviewer": "/root; genuine informed independent P peer, independent of amendment authorship",
+  "exposure": "Read complete old and new bilingual P, complete frozen Goal and context, additive delta, author prerequisite rationale and prior A/B disagreement. This is informed, not blind.",
+  "configuredModelClaim": "Implementation requested as GPT-6.1 Sol Ultra; actual root serving build not independently observable; no model diversity claim.",
+  "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+  "decision": "KEEP_COMPLETE_NEW_P_AS_AI_REVIEWED_CANDIDATE",
+  "originalPDecision": "REVISE: current mandatory cases can establish current curves and voltage polarity without quantitatively establishing voltage amplitude and time dependence explicitly required by the Goal.",
+  "fullNewPRead": true,
+  "fullOldPRead": true,
+  "bothLanguagesRead": true,
+  "basis": [
+    "Both existing required cases now require quantitative resistor and ideal-inductor terminal-voltage curves, amplitudes, initial/limiting values and shared timescale; polarity alone explicitly does not pass.",
+    "The reference convention distinguishes passive ideal-inductor terminal voltage L dI/dt from self-induced EMF -L dI/dt in the same circulation direction. Switch-on and source-free switch-off satisfy their declared loop balances.",
+    "R is the total effective series resistance in each closed path; finite voltage supports current continuity. Source-free discharge is explicitly closed through resistance, so no ideal open-circuit exponential is asserted.",
+    "The zero-current switch-on constraints are confined to that case. The retained nonzero-initial-current variation allows approach to U/R from above or below; deviations, rather than every raw curve, are exponential.",
+    "The switch-off parameter claim is correctly about the initial voltage magnitude. Larger resistance gives a shorter tau and larger initial magnitude at fixed L and I0, without claiming larger voltage at all later times.",
+    "All prior text is retained as prefixes. All three expectation IDs, two case IDs, three variation axes, coverage rules, freshness, transfer and minimum two demonstrations remain exact. The new requirements assess the existing Goal without adding a new goal or an extra task quota.",
+    "The added voltage requirements need algebraic scaling and subtraction of the already modeled current. No new ODE-solving or exponential-differentiation performance is imposed by this amendment."
+  ],
+  "inputBindings": [
+    {
+      "path": "tmp/cross-subject-requires/self-induction-two-goal-genuine-dual-D-synthesis-20261015-v1/P-692-amendment/692.complete-frozen-reviewed-Goal-and-P.json",
+      "bytes": 32488,
+      "sha256": "sha256:7ff9f02c28da612496332c585302c458e603f87579792baa5b275de14b1cfdf4"
+    },
+    {
+      "path": "tmp/cross-subject-requires/self-induction-two-goal-genuine-dual-D-synthesis-20261015-v1/P-692-amendment/692.complete-bilingual-P-amendment.AUTHOR-UNREVIEWED.json",
+      "bytes": 12123,
+      "sha256": "sha256:6bb9331ea29edb5eab283bca8184b13e8f8ece227c41ef0477890a39028f132e"
+    },
+    {
+      "path": "tmp/cross-subject-requires/self-induction-two-goal-genuine-dual-D-synthesis-20261015-v1/P-692-amendment/692.actual-full-P-additive-delta.AUTHOR-UNREVIEWED.json",
+      "bytes": 13560,
+      "sha256": "sha256:e2f5532129682a2a4c432a3653acc89777231ec67b1540124572364733fb19d5"
+    },
+    {
+      "path": "tmp/cross-subject-requires/self-induction-two-goal-genuine-dual-D-synthesis-20261015-v1/P-692-amendment/692.prerequisite-minimality.AUTHOR-UNREVIEWED.json",
+      "bytes": 880,
+      "sha256": "sha256:81e10e5faf5e9c48b0a896e6ec400d23f81da3b9cd1b4b8ccb571832613e2120"
+    }
+  ],
+  "changedStringLeaves": [
+    {
+      "path": "/expectations/0/essentialUnderstandingDe",
+      "old": "Im idealisierten linearen RL-Kreis kann der Spulenstrom nicht sprunghaft ändern. Widerstand und Selbstinduktion erzeugen exponentielle Ein- und Ausschaltverläufe mit physikalisch bestimmten Anfangs- und Grenzwerten.",
+      "new": "Im idealisierten linearen RL-Kreis kann der Spulenstrom nicht sprunghaft ändern. Widerstand und Selbstinduktion erzeugen exponentielle Ein- und Ausschaltverläufe mit physikalisch bestimmten Anfangs- und Grenzwerten. Dabei bezeichnet R den gesamten wirksamen Serienwiderstand des jeweiligen geschlossenen Strompfads; die Stromstetigkeit setzt endliche Spannungen voraus. Bei passiven Spannungsbezugsrichtungen in der markierten Stromrichtung gilt U_R(t) = R I(t), U_L(t) = U_Quelle(t) − R I(t) und U_Quelle = U_R + U_L. U_L ist die ideale induktive Klemmenspannung; die Selbstinduktions-EMK hat bei gleicher Umlaufrichtung das entgegengesetzte Vorzeichen. Nach einem Spannungssprung sind die Abweichungen vom jeweiligen Grenzwert exponentiell mit derselben Zeitkonstante."
+    },
+    {
+      "path": "/expectations/0/essentialUnderstandingEn",
+      "old": "In an idealized linear RL circuit, inductor current cannot change discontinuously. Resistance and self-induction produce exponential switch-on and switch-off transients with physically determined initial and limiting values.",
+      "new": "In an idealized linear RL circuit, inductor current cannot change discontinuously. Resistance and self-induction produce exponential switch-on and switch-off transients with physically determined initial and limiting values. Here R denotes the total effective series resistance of the relevant closed current path; current continuity presumes finite voltages. With passive voltage reference directions along the marked current direction, U_R(t) = R I(t), U_L(t) = U_source(t) − R I(t), and U_source = U_R + U_L. U_L is the ideal inductive terminal voltage; the self-induced emf has the opposite sign for the same circulation direction. After a voltage step, deviations from the respective limiting values are exponential with the same time constant."
+    },
+    {
+      "path": "/expectations/0/observablePerformanceDe",
+      "old": "Die lernende Person ordnet aus frischen Strom- und Spannungsdaten Schaltphase und Bauteilgrößen zu, bestimmt Anfangs- und Grenzwerte und verwirft einen Verlauf mit unzulässigem Stromsprung.",
+      "new": "Die lernende Person ordnet aus frischen Strom- und Spannungsdaten Schaltphase und Bauteilgrößen zu, bestimmt Anfangs- und Grenzwerte und verwirft einen Verlauf mit unzulässigem Stromsprung. Sie analysiert auch die quantitativen Verläufe U_R(t) und U_L(t) anhand dieser Zusammenhänge, nennt ihre Bezugsrichtungen und bestimmt Spannungsamplituden, Anfangs- und Grenzwerte sowie die gemeinsame Zeitskala. Sie koordiniert Strom- und Spannungskurven und prüft die Maschenbeziehung; beim Ausschalten in einem geschlossenen quellfreien resistiven Pfad gilt U_Quelle = 0 und damit U_L = −U_R."
+    },
+    {
+      "path": "/expectations/0/observablePerformanceEn",
+      "old": "From fresh current and voltage data, the learner identifies switching phase and component quantities, determines initial and limiting values, and rejects a curve with an inadmissible current jump.",
+      "new": "From fresh current and voltage data, the learner identifies switching phase and component quantities, determines initial and limiting values, and rejects a curve with an inadmissible current jump. The learner also analyzes quantitative U_R(t) and U_L(t) histories through these relations, states the reference directions, and determines voltage amplitudes, initial and limiting values, and the shared timescale. The learner coordinates current and voltage curves and checks the loop relation; during switch-off into a closed source-free resistive path, U_source = 0, hence U_L = −U_R."
+    },
+    {
+      "path": "/applicationCaseBriefs/0/taskDemandDe",
+      "old": "Für einen RL-Kreis mit bekanntem R sind Strommesswerte nach dem Einschalten samt Unsicherheiten gegeben. Bestimme Endwert und τ, berechne L und prüfe, ob ein exponentielles Modell die Daten angemessen beschreibt.",
+      "new": "Für einen RL-Kreis mit bekanntem R sind Strommesswerte nach dem Einschalten samt Unsicherheiten gegeben. Bestimme Endwert und τ, berechne L und prüfe, ob ein exponentielles Modell die Daten angemessen beschreibt. Die konstante Quellenspannung, der gesamte wirksame Serienwiderstand und der stromlose Anfangszustand sind angegeben. Bestimme zusätzlich die quantitativen Widerstands- und idealen Spulenklemmenspannungsverläufe mit ausdrücklich festgelegten passiven Polungsbezügen, einschließlich ihrer Amplituden, Anfangs- und Grenzwerte, und prüfe ihre Summe."
+    },
+    {
+      "path": "/applicationCaseBriefs/0/taskDemandEn",
+      "old": "For an RL circuit with known R, current measurements after switch-on are supplied with uncertainties. Determine the final value and τ, calculate L, and check whether an exponential model adequately describes the data.",
+      "new": "For an RL circuit with known R, current measurements after switch-on are supplied with uncertainties. Determine the final value and τ, calculate L, and check whether an exponential model adequately describes the data. The constant source voltage, total effective series resistance, and zero-current initial state are specified. Additionally determine quantitative resistor and ideal inductor terminal-voltage histories with explicitly declared passive polarity references, including amplitudes and initial and limiting values, and check their sum."
+    },
+    {
+      "path": "/applicationCaseBriefs/0/expectedPerformanceDe",
+      "old": "Die lernende Person nutzt mehrere Datenpunkte oder einen Fit, erhält L = Rτ mit Einheit, vergleicht Abweichungen mit Unsicherheiten und formuliert eine begrenzte Modellentscheidung.",
+      "new": "Die lernende Person nutzt mehrere Datenpunkte oder einen Fit, erhält L = Rτ mit Einheit, vergleicht Abweichungen mit Unsicherheiten und formuliert eine begrenzte Modellentscheidung. Sie erhält aus demselben Modell U_R(t) = R I(t) und U_L(t) = U_Quelle − R I(t): U_R steigt von 0 auf U_Quelle, U_L fällt von U_Quelle auf 0, beide mit derselben Zeitkonstante. Die Summe bleibt U_Quelle. Sie verbindet die numerischen Spannungswerte mit den Stromdaten und kennzeichnet deren datenbedingte Genauigkeit; eine bloße Polungsangabe genügt nicht."
+    },
+    {
+      "path": "/applicationCaseBriefs/0/expectedPerformanceEn",
+      "old": "The learner uses multiple data points or a fit, obtains L = Rτ with units, compares deviations with uncertainties, and states a bounded model judgment.",
+      "new": "The learner uses multiple data points or a fit, obtains L = Rτ with units, compares deviations with uncertainties, and states a bounded model judgment. From the same model, the learner obtains U_R(t) = R I(t) and U_L(t) = U_source − R I(t): U_R rises from 0 to U_source, while U_L falls from U_source to 0, both with the same time constant. Their sum remains U_source. The learner connects numerical voltage values to the current data and indicates their data-limited precision; merely stating polarity is insufficient."
+    },
+    {
+      "path": "/applicationCaseBriefs/0/understandingFocusDe",
+      "old": "Der Fall prüft die quantitative Verbindung von Kurve, Zeitkonstante und Bauteilwert.",
+      "new": "Der Fall prüft die quantitative Verbindung von Kurve, Zeitkonstante und Bauteilwert. Die zugehörigen quantitativen Spannungskurven werden am selben Fall mitgeprüft."
+    },
+    {
+      "path": "/applicationCaseBriefs/0/understandingFocusEn",
+      "old": "The case tests the quantitative link among curve, time constant, and component value.",
+      "new": "The case tests the quantitative link among curve, time constant, and component value. The associated quantitative voltage curves are also assessed within the same case."
+    },
+    {
+      "path": "/applicationCaseBriefs/1/taskDemandDe",
+      "old": "Derselbe geladene Induktor wird über zwei verschiedene Widerstände entladen. Prognostiziere vorab die relative Zeitkonstante, ordne zwei unbekannte Stromkurven zu und erkläre Anfangswert sowie Spannungspolung.",
+      "new": "Derselbe geladene Induktor wird über zwei verschiedene Widerstände entladen. Prognostiziere vorab die relative Zeitkonstante, ordne zwei unbekannte Stromkurven zu und erkläre Anfangswert sowie Spannungspolung. Für beide geschlossenen quellfreien Entladepfade sind derselbe positive Anfangsstrom I₀ und der jeweilige gesamte wirksame Widerstand angegeben. Sage auch die Änderung des anfänglichen Spannungsbetrags voraus, ordne neue Widerstands- und Spulenspannungskurven zu und bestimme ihre quantitativen Verläufe mit festgelegten passiven Polungsbezügen."
+    },
+    {
+      "path": "/applicationCaseBriefs/1/taskDemandEn",
+      "old": "The same energized inductor is discharged through two different resistors. Predict the relative time constants, assign two unlabeled current curves, and explain the initial value and voltage polarity.",
+      "new": "The same energized inductor is discharged through two different resistors. Predict the relative time constants, assign two unlabeled current curves, and explain the initial value and voltage polarity. For both closed source-free discharge paths, the same positive initial current I₀ and the respective total effective resistance are specified. Also predict the change in initial voltage magnitude, assign fresh resistor and inductor voltage curves, and determine their quantitative histories with declared passive polarity references."
+    },
+    {
+      "path": "/applicationCaseBriefs/1/expectedPerformanceDe",
+      "old": "Die lernende Person erkennt τ = L/R, ordnet dem größeren R den schnelleren Abfall zu, erhält den kontinuierlichen gemeinsamen Anfangsstrom und begründet die Ausschaltpolung aus Selbstinduktion.",
+      "new": "Die lernende Person erkennt τ = L/R, ordnet dem größeren R den schnelleren Abfall zu, erhält den kontinuierlichen gemeinsamen Anfangsstrom und begründet die Ausschaltpolung aus Selbstinduktion. Mit I(t) = I₀ exp(−t/τ) bestimmt sie U_R(t) = R I₀ exp(−t/τ) und U_L(t) = −R I₀ exp(−t/τ). Größeres R erzeugt bei gleichem I₀ und L den größeren anfänglichen Spannungsbetrag und die kürzere Zeitkonstante; beide Spannungen gehen gegen 0 und ihre Summe ist 0. Sie begründet, warum die Spulenklemmenspannung ihre Polung wechseln darf, obwohl der Strom stetig bleibt."
+    },
+    {
+      "path": "/applicationCaseBriefs/1/expectedPerformanceEn",
+      "old": "The learner uses τ = L/R, assigns faster decay to the larger R, preserves the common continuous initial current, and justifies switch-off polarity from self-induction.",
+      "new": "The learner uses τ = L/R, assigns faster decay to the larger R, preserves the common continuous initial current, and justifies switch-off polarity from self-induction. Using I(t) = I₀ exp(−t/τ), the learner determines U_R(t) = R I₀ exp(−t/τ) and U_L(t) = −R I₀ exp(−t/τ). With I₀ and L fixed, larger R gives a larger initial voltage magnitude and a shorter time constant; both voltages tend to 0 and sum to 0. The learner explains why the inductor terminal voltage may reverse polarity while current remains continuous."
+    },
+    {
+      "path": "/applicationCaseBriefs/1/understandingFocusDe",
+      "old": "Der Transfer prüft Parameterwirkung und physikalische Randwerte an einer anderen Schaltphase.",
+      "new": "Der Transfer prüft Parameterwirkung und physikalische Randwerte an einer anderen Schaltphase. Der quantitative Spannungsbetrag und seine Zeitentwicklung bleiben mit derselben Parameteränderung verbunden."
+    },
+    {
+      "path": "/applicationCaseBriefs/1/understandingFocusEn",
+      "old": "The transfer tests parameter effects and physical boundary values in a different switching phase.",
+      "new": "The transfer tests parameter effects and physical boundary values in a different switching phase. Quantitative voltage magnitude and its time dependence stay linked to the same parameter change."
+    }
+  ],
+  "numericChecks": {
+    "count": 18,
+    "checks": [
+      {
+        "label": "Switch-on timescale and independently reconstructed inductance",
+        "passed": true,
+        "tauSeconds": 0.02,
+        "reconstructedHenry": 0.6
+      },
+      {
+        "label": "Switch-on passive loop balance at t=0.0",
+        "passed": true,
+        "currentAmpere": 0.0,
+        "resistorVolt": 0.0,
+        "inductorTerminalVolt": 12.0
+      },
+      {
+        "label": "Switch-on passive loop balance at t=0.01",
+        "passed": true,
+        "currentAmpere": 0.15738773611494664,
+        "resistorVolt": 4.721632083448399,
+        "inductorTerminalVolt": 7.278367916551601
+      },
+      {
+        "label": "Switch-on passive loop balance at t=0.02",
+        "passed": true,
+        "currentAmpere": 0.25284822353142306,
+        "resistorVolt": 7.585446705942692,
+        "inductorTerminalVolt": 4.414553294057308
+      },
+      {
+        "label": "Switch-on passive loop balance at t=0.04",
+        "passed": true,
+        "currentAmpere": 0.34586588670535495,
+        "resistorVolt": 10.375976601160648,
+        "inductorTerminalVolt": 1.6240233988393524
+      },
+      {
+        "label": "Switch-on passive loop balance at t=0.2",
+        "passed": true,
+        "currentAmpere": 0.399981840028095,
+        "resistorVolt": 11.99945520084285,
+        "inductorTerminalVolt": 0.0005447991571498182
+      },
+      {
+        "label": "One-tau voltage/current fractions",
+        "passed": true
+      },
+      {
+        "label": "Initial current derivative and passive/EMF signs",
+        "passed": true,
+        "initialCurrentDerivativeAmperePerSecond": 20.0,
+        "passiveTerminalVolt": 12.0,
+        "inducedEmfVolt": -12.0
+      },
+      {
+        "label": "Closed-path switch-off at R=30.0, t=0.0",
+        "passed": true,
+        "currentAmpere": 0.4,
+        "resistorVolt": 12.0,
+        "inductorTerminalVolt": -12.0
+      },
+      {
+        "label": "Closed-path switch-off at R=30.0, t=0.02",
+        "passed": true,
+        "currentAmpere": 0.14715177646857694,
+        "resistorVolt": 4.414553294057308,
+        "inductorTerminalVolt": -4.414553294057308
+      },
+      {
+        "label": "Closed-path switch-off at R=30.0, t=0.2",
+        "passed": true,
+        "currentAmpere": 1.815997190499394e-05,
+        "resistorVolt": 0.0005447991571498182,
+        "inductorTerminalVolt": -0.0005447991571498182
+      },
+      {
+        "label": "Closed-path switch-off at R=60.0, t=0.0",
+        "passed": true,
+        "currentAmpere": 0.4,
+        "resistorVolt": 24.0,
+        "inductorTerminalVolt": -24.0
+      },
+      {
+        "label": "Closed-path switch-off at R=60.0, t=0.02",
+        "passed": true,
+        "currentAmpere": 0.054134113294645084,
+        "resistorVolt": 3.248046797678705,
+        "inductorTerminalVolt": -3.248046797678705
+      },
+      {
+        "label": "Closed-path switch-off at R=60.0, t=0.2",
+        "passed": true,
+        "currentAmpere": 8.244614489754232e-10,
+        "resistorVolt": 4.946768693852539e-08,
+        "inductorTerminalVolt": -4.946768693852539e-08
+      },
+      {
+        "label": "Same initial current, double resistance: half tau and double initial voltage",
+        "passed": true,
+        "initialVoltages": [
+          12.0,
+          24.0
+        ]
+      },
+      {
+        "label": "Adversarial: larger initial switch-off voltage does not imply larger voltage at every later time",
+        "passed": true,
+        "crossingTimeSeconds": 0.013862943611198907
+      },
+      {
+        "label": "Nonzero initial current may reverse passive inductor voltage on a positive source step",
+        "passed": true,
+        "initialCurrentAmpere": 0.7,
+        "initialTerminalVolt": -9.0,
+        "finalCurrentAmpere": 0.4
+      },
+      {
+        "label": "Uncertainty remains linked to measured current, known R",
+        "passed": true,
+        "exampleCurrentUncertaintyAmpere": 0.002,
+        "resistorVoltageUncertaintyVolt": 0.06
+      }
+    ],
+    "switchOn": [
+      {
+        "timeSeconds": 0.0,
+        "currentAmpere": 0.0,
+        "resistorVolt": 0.0,
+        "inductorTerminalVolt": 12.0
+      },
+      {
+        "timeSeconds": 0.01,
+        "currentAmpere": 0.15738773611494664,
+        "resistorVolt": 4.721632083448399,
+        "inductorTerminalVolt": 7.278367916551601
+      },
+      {
+        "timeSeconds": 0.02,
+        "currentAmpere": 0.25284822353142306,
+        "resistorVolt": 7.585446705942692,
+        "inductorTerminalVolt": 4.414553294057308
+      },
+      {
+        "timeSeconds": 0.04,
+        "currentAmpere": 0.34586588670535495,
+        "resistorVolt": 10.375976601160648,
+        "inductorTerminalVolt": 1.6240233988393524
+      },
+      {
+        "timeSeconds": 0.2,
+        "currentAmpere": 0.399981840028095,
+        "resistorVolt": 11.99945520084285,
+        "inductorTerminalVolt": 0.0005447991571498182
+      }
+    ],
+    "switchOff": [
+      {
+        "resistanceOhm": 30.0,
+        "timeSeconds": 0.0,
+        "tauSeconds": 0.02,
+        "currentAmpere": 0.4,
+        "resistorVolt": 12.0,
+        "inductorTerminalVolt": -12.0
+      },
+      {
+        "resistanceOhm": 30.0,
+        "timeSeconds": 0.02,
+        "tauSeconds": 0.02,
+        "currentAmpere": 0.14715177646857694,
+        "resistorVolt": 4.414553294057308,
+        "inductorTerminalVolt": -4.414553294057308
+      },
+      {
+        "resistanceOhm": 30.0,
+        "timeSeconds": 0.2,
+        "tauSeconds": 0.02,
+        "currentAmpere": 1.815997190499394e-05,
+        "resistorVolt": 0.0005447991571498182,
+        "inductorTerminalVolt": -0.0005447991571498182
+      },
+      {
+        "resistanceOhm": 60.0,
+        "timeSeconds": 0.0,
+        "tauSeconds": 0.01,
+        "currentAmpere": 0.4,
+        "resistorVolt": 24.0,
+        "inductorTerminalVolt": -24.0
+      },
+      {
+        "resistanceOhm": 60.0,
+        "timeSeconds": 0.02,
+        "tauSeconds": 0.01,
+        "currentAmpere": 0.054134113294645084,
+        "resistorVolt": 3.248046797678705,
+        "inductorTerminalVolt": -3.248046797678705
+      },
+      {
+        "resistanceOhm": 60.0,
+        "timeSeconds": 0.2,
+        "tauSeconds": 0.01,
+        "currentAmpere": 8.244614489754232e-10,
+        "resistorVolt": 4.946768693852539e-08,
+        "inductorTerminalVolt": -4.946768693852539e-08
+      }
+    ]
+  },
+  "independentSourceChecks": [
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-4-rl-circuits",
+      "role": "Primary textbook circuit equations, closed discharge path, tau and transient shapes; own sign convention explicitly translated from source EMF convention"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-2-self-inductance-and-inductors",
+      "role": "Primary textbook self-induction and induced EMF"
+    }
+  ],
+  "sourceTextCopied": false,
+  "humanApproval": false,
+  "nativePApprovedCount": 0,
+  "prerequisiteDecisionScope": "Amendment adds no new independent mathematical routine. A complete current native Requires author/peer binding for the new P, including actual existing Math and Physics predecessor bodies and scope, remains a separate pending integration gate. This review is not that missing native Requires approval.",
+  "oldDReviewsRebound": false,
+  "activePSelected": false,
+  "mainCanonicalChanged": false,
+  "realHostOrLearnerAcceptance": false
+}

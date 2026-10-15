@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c798ce2e1432b117953cd241ffc4acc1ebc0aab51ee473c45528ef62536f43e8",
+  "reviewInputFingerprint": "sha256:d75ddb82e3b317f8c89341135b3e4bc14cb8672c22c3e080332bb18c19e3598b",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math4-current-description-20261015-v1-a",
+      "roundId": "physics-existing-math4-current-description-20261015-v1-first-pass-a",
+      "independenceGroupId": "physics-existing-math4-current-description-20261015-v1-independent-a",
+      "runIds": [
+        "physics-existing-math4-fresh-description-author-a-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::serving-build-unobserved"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-existing-math4-current-description-20261015-v1-b",
+      "roundId": "physics-existing-math4-current-description-20261015-v1-first-pass-b",
+      "independenceGroupId": "physics-existing-math4-current-description-20261015-v1-independent-b",
+      "runIds": [
+        "physics-existing-math4-current-description-independent-b-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::serving-build-unobserved"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6.1-sol::serving-build-unobserved"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "firstRecordId": "physics-existing-math4-fresh-description-author-a-20261015-v1.7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "secondRecordId": "physics-existing-math4-current-description-independent-b-20261015-v1.1",
+      "firstRunId": "physics-existing-math4-fresh-description-author-a-20261015-v1",
+      "secondRunId": "physics-existing-math4-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "firstRecordId": "physics-existing-math4-fresh-description-author-a-20261015-v1.bf8517a9-142b-5789-826a-767f3b277998",
+      "secondRecordId": "physics-existing-math4-current-description-independent-b-20261015-v1.2",
+      "firstRunId": "physics-existing-math4-fresh-description-author-a-20261015-v1",
+      "secondRunId": "physics-existing-math4-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "firstRecordId": "physics-existing-math4-fresh-description-author-a-20261015-v1.ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "secondRecordId": "physics-existing-math4-current-description-independent-b-20261015-v1.3",
+      "firstRunId": "physics-existing-math4-fresh-description-author-a-20261015-v1",
+      "secondRunId": "physics-existing-math4-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "firstRecordId": "physics-existing-math4-fresh-description-author-a-20261015-v1.ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "secondRecordId": "physics-existing-math4-current-description-independent-b-20261015-v1.4",
+      "firstRunId": "physics-existing-math4-fresh-description-author-a-20261015-v1",
+      "secondRunId": "physics-existing-math4-current-description-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

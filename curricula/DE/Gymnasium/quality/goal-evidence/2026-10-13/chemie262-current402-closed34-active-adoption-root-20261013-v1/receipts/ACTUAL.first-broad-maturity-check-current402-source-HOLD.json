@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "actualGenerationExited": 0,
+  "currentChemistryMaturity": "M1",
+  "scientificFiveGateStrictComplete": 262,
+  "maturityFloorUnchanged": "M6",
+  "integrationReadyForStableCommit": false,
+  "reason": "CQR003/CQR004 show real six distinct original-source deferrals and source inventory/binding discovery mismatch; neither checker nor floor is weakened",
+  "currentChemistryRules": [
+    {
+      "id": "CQR-001",
+      "status": "pass",
+      "summary": "Basic graph integrity checks pass.",
+      "metrics": {
+        "goals": 523,
+        "localReferenceIssues": 0
+      }
+    },
+    {
+      "id": "CQR-002",
+      "status": "pass",
+      "summary": "Explicit type metadata matches graph structure.",
+      "metrics": {
+        "mismatches": 0
+      }
+    },
+    {
+      "id": "CQR-000",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "completeSourceJurisdictions": 16,
+        "emptySourceJurisdictions": 0,
+        "missingReadableSourceInventoryJurisdictions": 0,
+        "originalSourceUrlIssues": 0,
+        "sourceExtractedGoals": 5865,
+        "sourceOriginalGoals": 5865,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 5865,
+        "sourceUnregisteredAtomicGoals": 0
+      }
+    },
+    {
+      "id": "CQR-003",
+      "status": "fail",
+      "summary": "2/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 2,
+        "fullCoverageJurisdictions": 2,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 11,
+        "unsupportedAssignmentJurisdictions": 11,
+        "sourceUnmappedJurisdictions": 7,
+        "unsupportedAssignedAtomicGoals": 58,
+        "unmappedSourceAtomicGoals": 12,
+        "sourceAtomicGoals": 5865,
+        "sourceMappedToViewAtomicGoals": 5853,
+        "sourceOriginalGoals": 5865,
+        "sourceFullyCoveredOriginalGoals": 5853,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 12,
+        "surrogateBackedAtomicGoals": 0,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 2,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 14,
+        "minSourceBackedAtomicGoals": 98,
+        "maxVisibleAtomicGoals": 339,
+        "maxSourceBackedAtomicGoals": 329,
+        "totalAtomicGoals": 342
+      },
+      "details": [
+        "DE-BW: 3 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-HE: 10 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-BY: 12 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-NI: 18 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-SH: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-HB: 6 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-MV: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-RP: 2 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-SL: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-SN: 2 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-ST: 2 assigned atomic goal(s) without source-backed Lehrplan evidence",
+        "DE-BB: 1 source Lehrplan atom(s) do not map into the Bundesland view",
+        "DE-BE: 1 source Lehrplan atom(s) do not map into the Bundesland view",
+        "DE-HB: 2 source Lehrplan atom(s) do not map into the Bundesland view",
+        "DE-MV: 1 source Lehrplan atom(s) do not map into the Bundesland view",
+        "DE-RP: 2 source Lehrplan atom(s) do not map into the Bundesland view",
+        "DE-SN: 3 source Lehrplan atom(s) do not map into the Bundesland view",
+        "DE-TH: 2 source Lehrplan atom(s) do not map into the Bundesland view",
+        "DE-BW: 139/142 source-backed view atomic goal(s)",
+        "DE-HE: 329/339 source-backed view atomic goal(s)"
+      ]
+    },
+    {
+      "id": "CQR-004",
+      "status": "fail",
+      "summary": "7 upper-secondary course-level mapping issue(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed as LK-only.",
+      "metrics": {
+        "configuredMappingFiles": 50,
+        "sourceGoals": 4009,
+        "sourceGoalsWithCourseLevel": 4009,
+        "gkLkSourceGoals": 2074,
+        "lkSourceGoals": 1442,
+        "unspecifiedSourceGoals": 368,
+        "checkedMappingEdges": 1905,
+        "defaultedUnspecifiedMappingEdges": 158,
+        "reviewedCourseLevelExceptions": 34,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 7
+      },
+      "details": [
+        "hb-chemistry-sekii-gyo2022-3-2-e-kunststoffe-020-2d42e381: no canonical mapping exists for course-level checked source goal",
+        "hb-chemistry-sekii-gyo2022-3-3-4-1-kunststoffe-079-7418c562: no canonical mapping exists for course-level checked source goal",
+        "rp-chem-sekii-rp-ch-sekii-2022-baustein-6-2-003-34dc2823: no canonical mapping exists for course-level checked source goal",
+        "rp-chem-sekii-rp-ch-sekii-2022-baustein-13-4-007-4a8501d0: no canonical mapping exists for course-level checked source goal",
+        "sn-chem-sekii-sn-ch-jahrgangsstufe-11-grundkurs-wb1-011-01-81755658: no canonical mapping exists for course-level checked source goal",
+        "th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0: no canonical mapping exists for course-level checked source goal",
+        "th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0: no canonical mapping exists for course-level checked source goal"
+      ]
+    },
+    {
+      "id": "CQR-005",
+      "status": "pass",
+      "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+      "metrics": {
+        "sourceExtractionSources": 32,
+        "peerBaselineChecks": 23,
+        "failedPeerBaselineChecks": 0,
+        "granularityChecks": 0,
+        "failedGranularityChecks": 0
+      }
+    },
+    {
+      "id": "CQR-301",
+      "status": "pass",
+      "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+      "metrics": {
+        "configs": 29,
+        "leafGoals": 281,
+        "atomic": 281,
+        "needsDeveloperReview": 0,
+        "nonAtomic": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0
+      }
+    },
+    {
+      "id": "CQR-302",
+      "status": "pass",
+      "summary": "Memory-card review is current: 57/402 ordinary atomic goals intentionally use memorization support, 75/75 primary cards are kept with origin traces, all 7 memory goals are traced, and 331 view-visible memory-required goals resolve to visible memory nodes.",
+      "metrics": {
+        "configs": 1,
+        "reviewedGoals": 402,
+        "noMemoryNeeded": 345,
+        "memoryRequired": 57,
+        "needsDeveloperReview": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0,
+        "duplicateRecords": 0,
+        "invalidRecords": 0,
+        "primaryCards": 75,
+        "keptCards": 75,
+        "cardsMarkedRemove": 0,
+        "cardNeedsDeveloperReview": 0,
+        "missingCardReviews": 0,
+        "staleCardReviews": 0,
+        "obsoleteCardReviews": 0,
+        "duplicateCardReviewRecords": 0,
+        "invalidCardReviewRecords": 0,
+        "untracedMemoryRequiredGoals": 0,
+        "visibilityScopes": 9,
+        "visibilityCheckedMemoryRequiredGoals": 331,
+        "visibilityMissingVisibleMemoryGoals": 0,
+        "visibilityErrors": 0,
+        "memoryGoals": 7,
+        "tracedMemoryGoals": 7,
+        "untracedMemoryGoals": 0,
+        "deckIds": 7,
+        "deckFiles": 8,
+        "cardRows": 93
+      },
+      "details": [
+        "canonical-chemistry-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-current402-native47-finite-slice-technical-20261013-v1/receipts/M402-check-only.actual.md"
+      ]
+    },
+    {
+      "id": "CQR-303",
+      "status": "warn",
+      "summary": "Deep curriculum QA is incomplete: 262/402 current curricularAtomic goals strictly complete.",
+      "metrics": {
+        "expectedGoals": 402,
+        "remaining": 140,
+        "strictComplete": 262,
+        "currentDescriptionResolutions": 263,
+        "currentPositiveEvidenceProfiles": 265,
+        "currentSemanticAtomicityDecisions": 281,
+        "currentMemoryReviewDecisions": 402,
+        "currentVisualizationQaRecords": 388,
+        "deferredVisualizations": 12,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      },
+      "details": [
+        "12 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+      ]
+    },
+    {
+      "id": "CQR-401",
+      "status": "pass",
+      "summary": "37 composition view(s) are registered.",
+      "metrics": {
+        "compositionViews": 37
+      }
+    },
+    {
+      "id": "CQR-501",
+      "status": "pass",
+      "summary": "No active applicability warning debt is visible.",
+      "metrics": {
+        "activeWarnings": 0,
+        "rawActiveWarnings": 0,
+        "diagnosticPartialOnlyWarnings": 2117,
+        "acceptedWarnings": 0,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 2117",
+        "diagnostic finding type APV-202: 2117"
+      ]
+    }
+  ],
+  "protectedM7Preserved": true
+}

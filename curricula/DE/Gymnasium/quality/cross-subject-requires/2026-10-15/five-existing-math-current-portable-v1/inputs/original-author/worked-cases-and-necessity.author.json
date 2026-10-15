@@ -1,0 +1,1563 @@
+{
+  "author": "/root/five_current_existing_math_requires_successor_author",
+  "role": "informed current-Main whole-body author reconsideration; original solved cases separately preserved with original identity",
+  "scope": "five Physics goals and seven existing Main Math nominee/alternative whole bodies only",
+  "noCIDrivenNecessity": true,
+  "Physics": [
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "fullPReadIncludingAllBilingualFields": true,
+      "coverageUnchanged": {
+        "requiredExpectationIds": [
+          "selected-blind-review-core",
+          "g-is-acceleration-not-weight-or-speed"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "allExpectations": [
+        {
+          "id": "selected-blind-review-core",
+          "essentialUnderstandingDe": "Die lernende Person versteht den freien Fall nahe der Erdoberfläche als näherungsweise gleichmäßig beschleunigte Bewegung unter Gravitation, unterscheidet gemessene Orts- und Zeitdaten von der daraus erschlossenen Gravitationsbeschleunigung und berücksichtigt, dass das Modell Luftwiderstand vernachlässigt sowie Koordinatenwahl und Anfangsbedingungen benötigt.",
+          "essentialUnderstandingEn": "The learner understands free fall near Earth's surface as approximately uniformly accelerated motion under gravity, distinguishes measured position and time data from the gravitational acceleration inferred from them, and recognizes that the model neglects air resistance and requires a coordinate choice and initial conditions.",
+          "observablePerformanceDe": "Die lernende Person plant oder nutzt eine sichere beaufsichtigte Video- oder Sensormessung beziehungsweise einen bereitgestellten Datensatz, stellt die Daten geeignet grafisch dar, bestimmt g mit Einheit und begründeter Unsicherheit, prüft die Modellpassung und formuliert ein dazu konsistentes Zeit-Ort-Gesetz mit Anfangsbedingungen.",
+          "observablePerformanceEn": "The learner plans or uses a safe supervised video or sensor measurement, or a supplied data set, represents the data in a suitable graph, determines g with a unit and justified uncertainty, checks the model fit, and formulates a consistent time-position law with initial conditions."
+        },
+        {
+          "id": "g-is-acceleration-not-weight-or-speed",
+          "essentialUnderstandingDe": "g ist im luftwiderstandsfreien Modell die lokale Beschleunigung und weder eine Geschwindigkeit noch eine Kraft. Verschiedene Massen haben dieselbe Fallbeschleunigung, obwohl ihre Gewichtskräfte m g verschieden sind.",
+          "essentialUnderstandingEn": "In the no-drag model, g is local acceleration, not a velocity or force. Different masses have the same falling acceleration even though their weights m g differ.",
+          "observablePerformanceDe": "Die lernende Person vergleicht Daten zweier Körper, trennt Beschleunigung, Geschwindigkeit und Gewichtskraft mit Einheiten und entscheidet, ob Abweichungen auf Messunsicherheit oder Luftwiderstand hinweisen.",
+          "observablePerformanceEn": "The learner compares data for two objects, distinguishes acceleration, velocity, and weight with units, and decides whether differences indicate uncertainty or drag."
+        }
+      ],
+      "allAxes": [
+        {
+          "id": "object-and-drag",
+          "textDe": "Kompakter Körper, flächiger Körper oder unterschiedliche Massen",
+          "textEn": "Compact object, broad object, or different masses"
+        },
+        {
+          "id": "coordinate-and-initial-state",
+          "textDe": "Fall aus Ruhe, Anfangsgeschwindigkeit, Bezugshöhe und Achsenrichtung",
+          "textEn": "Drop from rest, initial velocity, reference height, and axis direction"
+        },
+        {
+          "id": "measurement-method",
+          "textDe": "Video, Lichtschranke, Sensor oder bereitgestellter Datensatz",
+          "textEn": "Video, light gate, sensor, or supplied data"
+        }
+      ],
+      "cases": [
+        {
+          "caseId": "steel-ball-video-fit",
+          "wholeOriginalCase": {
+            "id": "steel-ball-video-fit",
+            "taskDemandDe": "Werte eine beaufsichtigt aufgezeichnete Fallbewegung einer Stahlkugel bei nach oben positiver Achse aus. Bestimme g grafisch, gib Unsicherheit und Einheit an und formuliere das Zeit-Ort-Gesetz.",
+            "taskDemandEn": "Analyze a supervised video recording of a falling steel ball with upward chosen as positive. Determine g graphically, state uncertainty and unit, and formulate the time-position law.",
+            "expectedPerformanceDe": "Gemessene Orte und Zeiten werden von g als erschlossener Größe getrennt; a = -g, Anfangshöhe und Anfangsgeschwindigkeit werden konsistent eingesetzt.",
+            "expectedPerformanceEn": "Measured positions and times are distinguished from inferred g; a = -g, initial height, and initial velocity are used consistently.",
+            "understandingFocusDe": "Vorzeichen und Anfangsbedingungen sind Teil des Modells.",
+            "understandingFocusEn": "Signs and initial conditions are part of the model."
+          },
+          "ownWorkedSolution": "Own synthetic video-derived measurements, not actual acquisition: y0=1.8 m, v0=+0.4 m/s, upward positive, t=0,0.1,0.2,0.3,0.4 s; y=1.800,1.791,1.684,1.479,1.176 m. Plot residual y−1.8−0.4t against t². The line slope is −4.9 m/s²; a fitted admissible slope interval [−5.0,−4.8] gives g in [9.6,10.0] m/s². Hence y(t)=1.8+0.4t−4.9t², a=−g. Positions/times are measurement inputs, acceleration is inferred. Reversing the vertical axis gives s(t)=−0.4t+4.9t²; the scalar g stays positive and is neither the changing velocity v=.4−9.8t nor the weight mg. The given model/initial state is to be checked against residuals, not asserted from a single datum.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        },
+        {
+          "caseId": "ball-and-filter-model-comparison",
+          "wholeOriginalCase": {
+            "id": "ball-and-filter-model-comparison",
+            "taskDemandDe": "Vergleiche bereitgestellte Fallmessungen einer kompakten Kugel und eines Papierfilters aus gleicher Höhe. Prüfe für beide das Modell ohne Luftwiderstand.",
+            "taskDemandEn": "Compare supplied falling-motion data for a compact ball and a paper filter released from the same height. Test the no-drag model for each.",
+            "expectedPerformanceDe": "Die Kugeldaten liefern innerhalb der Unsicherheit konstantes g; die Filterabweichung wird nicht als anderes Gravitationsfeld oder bloßer Masseneffekt, sondern als Modellgrenze eingeordnet.",
+            "expectedPerformanceEn": "The ball data yield constant g within uncertainty; the filter discrepancy is treated as a model limitation rather than a different gravitational field or merely a mass effect.",
+            "understandingFocusDe": "Abweichung vom Modell verändert nicht die Bedeutung von g.",
+            "understandingFocusEn": "Deviation from the model does not change the meaning of g."
+          },
+          "ownWorkedSolution": "Independent synthetic supplied comparison: ball fall distances from rest s_b=4.9t²; filter distances s_f=4.9t²/(1+t/(1 s)) over t=.1,.2,.3,.4 s. The ball inferred 2s/t² is 9.8 m/s² throughout. The filter ratios decrease as 9.8/(1+t/(1 s)); this is a no-drag model failure consistent with drag, not changed gravitational field or an acceleration law determined merely by mass. Two compact bodies of different masses share g within uncertainty but have weights m1g and m2g in N. At finite uncertainty, compare trends and residuals rather than treat every fluctuation as drag. A safe supervised video can be supplied; this solution is not evidence of own measurement acquisition.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        }
+      ],
+      "ownNecessityAndWholeAlternativeComparison": "Remove only directc65; retain e4b38061 andce431132 exactly. The allowed graphical fit/initial-state route constructs the Physics law without requiring every arbitrary-input/precedence task in wholec65. ae201 is also not universally needed: this model fit need not be assessed by the general function-plus-table average-rate family. This is an operation/whole-body necessity judgment, not an assertion that current Physics predecessors confer c65 mastery. General data acquisition versus supplied-data source adequacy remains open separately.",
+      "coverageAccount": "Both/all named independent application briefs solved; each required expectation and every variation axis is addressed explicitly by these solutions and fresh boundary comparisons. Minimum demonstration counts are preserved in full P; these author examples do not establish learner mastery.",
+      "sourceObservationRetained": "BW3.3.5.1(3)/(4) and HE E.1 distinguish actual data acquisition, graphs and initial-condition assumptions; active OR-P still permits supplied data. No source-strengthening companion is silently substituted.",
+      "allDependentScopes": "All16 unchanged authored jurisdictions; exact actual resolved view memberships enumerated in focused-native-and-scope-report.actual.json. No stage/course/year inferred from phase.",
+      "independentApproval": false,
+      "PKindDSourceOrM7Approval": false
+    },
+    {
+      "goalId": "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+      "fullPReadIncludingAllBilingualFields": true,
+      "coverageUnchanged": {
+        "requiredExpectationIds": [
+          "selected-blind-review-core",
+          "chirp-mass-is-a-degenerate-combination-not-total-mass",
+          "signal-extraction-and-model-regime-bound-the-inference"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "allExpectations": [
+        {
+          "id": "selected-blind-review-core",
+          "essentialUnderstandingDe": "Im führenden Näherungsmodell eines annähernd kreisförmigen Inspirals verknüpft die durch Gravitationsstrahlung verursachte Frequenzzunahme ḟ mit der Frequenz f die Chirp-Masse M_c = (m₁m₂)^(3/5)/(m₁+m₂)^(1/5). Diese Kombination steuert die führende Frequenzentwicklung, bestimmt aber nicht beide Einzelmassen; Näherungsregime und gegebenenfalls kosmologische Rotverschiebung begrenzen die Interpretation.",
+          "essentialUnderstandingEn": "In the leading approximation for a nearly circular inspiral, the gravitational-radiation-driven frequency increase ḟ together with frequency f determines the chirp mass M_c = (m₁m₂)^(3/5)/(m₁+m₂)^(1/5). This combination controls the leading frequency evolution but does not determine both component masses; the approximation regime and, where relevant, cosmological redshift limit the interpretation.",
+          "observablePerformanceDe": "Aus bereitgestellten Signalwerten oder einer Frequenz-Zeit-Darstellung bestimmt die lernende Person f und ḟ, prüft Einheiten und den inspiraltypischen Trend, wendet ein begründetes führendes Modell zur Abschätzung der Chirp-Masse an und erläutert, welche Größen gemessen beziehungsweise aus dem Signal bestimmt und welche Masseninformation modellabhängig inferiert wird, einschließlich Unsicherheiten und Gültigkeitsgrenzen.",
+          "observablePerformanceEn": "From supplied signal values or a frequency–time representation, the learner determines f and ḟ, checks units and the inspiral-like trend, applies a justified leading-order model to estimate the chirp mass, and explains which quantities are measured or extracted from the signal and which mass information is inferred through the model, including uncertainties and validity limits."
+        },
+        {
+          "id": "chirp-mass-is-a-degenerate-combination-not-total-mass",
+          "essentialUnderstandingDe": "Die Chirp-Masse ist eine bestimmte Kombination der beiden Komponentenmassen. Verschiedene Massenpaare können dieselbe oder ähnliche Chirp-Masse besitzen; selbst bei gleicher Gesamtmasse ändert ein anderes Massenverhältnis die Chirp-Masse. Deshalb legen f und ḟ im führenden Modell weder Gesamtmasse noch beide Einzelmassen eindeutig fest.",
+          "essentialUnderstandingEn": "Chirp mass is a specific combination of the two component masses. Different mass pairs can have the same or similar chirp mass; even at fixed total mass, a different mass ratio changes the chirp mass. Therefore, in the leading model, f and ḟ determine neither total mass nor both component masses uniquely.",
+          "observablePerformanceDe": "Die lernende Person vergleicht Massenpaare mit gleicher Gesamtmasse, berechnet oder begründet die Änderung ihrer Chirp-Masse, verbindet diese mit der relativen Frequenzentwicklung und formuliert die aus Signaldaten zulässige Masseninformation ohne unbegründete Einzelmassenangaben.",
+          "observablePerformanceEn": "The learner compares mass pairs with the same total mass, calculates or explains the change in their chirp mass, connects it to relative frequency evolution, and states the mass information supported by the signal data without unjustified component-mass claims."
+        },
+        {
+          "id": "signal-extraction-and-model-regime-bound-the-inference",
+          "essentialUnderstandingDe": "Frequenz und Frequenzänderungsrate werden aus einem endlichen, verrauschten Signalabschnitt bestimmt und sind keine direkt abgelesenen Massen. Das führende annähernd kreisförmige Inspiralmodell verliert bei starker Exzentrizität, sehr spätem Inspiral oder Verschmelzung seine ausreichende Gültigkeit; Mess- und Modellunsicherheit sind getrennt zu betrachten.",
+          "essentialUnderstandingEn": "Frequency and frequency derivative are extracted from a finite, noisy signal segment and are not directly read masses. The leading nearly circular inspiral model ceases to be adequate for strong eccentricity, very late inspiral, or merger; measurement and model uncertainty must be considered separately.",
+          "observablePerformanceDe": "Die lernende Person wählt einen begründeten Signalabschnitt, bestimmt f und ḟ mit einer Unsicherheitsabschätzung, prüft Trend und Einheiten, sagt den Einfluss von Rauschen oder Abschnittswahl voraus und entscheidet anhand sichtbarer Regimemerkmale, ob die führende Chirp-Massenbeziehung anwendbar, nur näherungsweise brauchbar oder zurückzuweisen ist.",
+          "observablePerformanceEn": "The learner selects a justified signal segment, determines f and ḟ with an uncertainty estimate, checks trend and units, predicts the effect of noise or segment choice, and uses visible regime characteristics to decide whether the leading chirp-mass relation is applicable, only approximately useful, or should be rejected."
+        }
+      ],
+      "allAxes": [
+        {
+          "id": "frequency-evolution-and-noise",
+          "textDe": "Unterschiedliche Frequenzsteigerung, Signal-Rausch-Verhältnis und Zeitfenster",
+          "textEn": "Different frequency increase, signal-to-noise ratio, and time window"
+        },
+        {
+          "id": "inspiral-regime",
+          "textDe": "Frühes annähernd kreisförmiges Inspiral, exzentrischer Fall oder später Verschmelzungsbereich",
+          "textEn": "Early nearly circular inspiral, eccentric case, or late merger regime"
+        },
+        {
+          "id": "component-mass-ratio",
+          "textDe": "Unterschiedliches Massenverhältnis bei gleicher oder veränderter Gesamtmasse",
+          "textEn": "Different component-mass ratio at fixed or changed total mass"
+        }
+      ],
+      "cases": [
+        {
+          "caseId": "clean-early-inspiral-inference",
+          "wholeOriginalCase": {
+            "id": "clean-early-inspiral-inference",
+            "taskDemandDe": "Für einen frischen, ausreichend rauscharmen Frequenz-Zeit-Verlauf eines frühen annähernd kreisförmigen Inspirals sind Zeit- und Frequenzunsicherheiten gegeben. Bestimme f und ḟ in einem begründeten Abschnitt, erschließe mit der bereitgestellten führenden Beziehung die Chirp-Masse und begrenze die Aussage.",
+            "taskDemandEn": "For a fresh, sufficiently low-noise frequency-time trace of an early nearly circular inspiral, time and frequency uncertainties are supplied. Determine f and ḟ in a justified segment, infer the chirp mass using the supplied leading relation, and bound the claim.",
+            "expectedPerformanceDe": "Die lernende Person prüft den inspiraltypischen Trend und die Einheiten, trennt Signalgrößen von der Masseninferenz, propagiert oder begründet die Unsicherheit und erklärt ausdrücklich, warum das Ergebnis keine getrennten Komponentenmassen liefert.",
+            "expectedPerformanceEn": "The learner checks the inspiral-like trend and units, separates signal quantities from mass inference, propagates or justifies uncertainty, and explicitly explains why the result does not yield separate component masses.",
+            "understandingFocusDe": "Der Fall prüft die vollständige Signal-zu-Chirp-Masse-Inferenz statt bloßer Formeleinsetzung.",
+            "understandingFocusEn": "The case tests the complete signal-to-chirp-mass inference rather than mere formula substitution."
+          },
+          "ownWorkedSolution": "Own synthetic early low-noise interval: (t,f)=(0,99.5),(.05,100),(.10,100.5), in s and Hz, with each endpoint frequency uncertainty .05 Hz and time uncertainty .0005 s. f near the interval centre is 100 Hz; the consistent endpoint secant is 10 Hz/s. Worst endpoint intervals give fdot in [.9/.101,1.1/.099]=[8.9109,11.1111] Hz/s. This is a finite-window estimate of local evolution, not an exact derivative from three points; inspect shorter windows/curvature and acquisition sampling. With the task-supplied leading circular-inspiral relation, M_c=(c³/G)[5 fdot/(96 π^(8/3) f^(11/3))]^(3/5). For c=299792458 m/s, G=6.67430e−11 SI, this gives the executed result below. c³/G has units kg/s; the bracket has s^(5/3), so the final unit is kg. Use extremes of f and fdot to bound mass; for small errors the contributions are (3/5)δfdot/fdot and (11/5)δf/f. Positive rational powers represent roots, and negative frequency exponent is reciprocal dependence. This is detector-frame chirp mass; an unknown redshift prevents a unique source-frame mass. The signal and its rate are extracted inputs, while mass is model-inferred.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        },
+        {
+          "caseId": "changed-chirp-and-regime-transfer",
+          "wholeOriginalCase": {
+            "id": "changed-chirp-and-regime-transfer",
+            "taskDemandDe": "Ein unabhängiges Signal zeigt bei gleicher Frequenz eine andere Frequenzänderungsrate und stärkeres Rauschen; ein später Abschnitt reicht erkennbar nahe an die Verschmelzung. Sage zunächst die Richtung der Chirp-Massenänderung im gültigen frühen Abschnitt voraus, schätze sie mit Unsicherheit und entscheide anschließend, ob der späte Abschnitt mit demselben Modell ausgewertet werden darf.",
+            "taskDemandEn": "An independent signal shows a different frequency derivative at the same frequency and stronger noise; a later segment visibly approaches merger. First predict the direction of the chirp-mass change in the valid early segment, estimate it with uncertainty, and then decide whether the late segment may be analysed with the same model.",
+            "expectedPerformanceDe": "Die lernende Person begründet die Skalierungsrichtung, passt die Unsicherheit an das Rauschen an, weist eine eindeutige Einzelmassenbestimmung zurück und begrenzt oder verwirft die führende Näherung für den späten Abschnitt anhand des Regimewechsels.",
+            "expectedPerformanceEn": "The learner justifies the scaling direction, adjusts uncertainty for the noise, rejects unique component-mass determination, and bounds or rejects the leading approximation for the late segment based on the regime change.",
+            "understandingFocusDe": "Der Transfer prüft Vorhersage, Unsicherheit, Parameterdegeneration und Modellgrenze in einem veränderten Signal.",
+            "understandingFocusEn": "The transfer tests prediction, uncertainty, parameter degeneracy, and model limits in a changed signal."
+          },
+          "ownWorkedSolution": "Independent early interval with the same f=100 Hz but fdot=20 Hz/s predicts a larger M_c before calculation: the mass ratio is 2^(3/5)=1.5157166. Higher noise produces a wider secant-rate and inferred-mass interval; selecting a different finite window can change systematic approximation error, not just numerical rounding. At total mass60 (same mass units), pairs (30,30) and (20,40) give 60*(1/4)^(3/5) and60*(2/9)^(3/5). The unequal pair has smaller chirp mass and, at fixed f, rate ratio8/9. Rescale both unequal masses by the chirp-mass ratio to obtain the same M_c with a different total mass: neither total nor component masses are determined. A visibly eccentric or near-merger interval fails the assumed early near-circular leading model; bound or reject that interval rather than report an unjustified precise mass. This preserves the noisy-window, degeneracy and regime duties.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        }
+      ],
+      "ownNecessityAndWholeAlternativeComparison": "Add exactly whole88abc andae201. Both mandatory cases extract an interval-consistent rate with units/sign/window limitations and use rational/reciprocal powers to infer and compare mass. The function and tabular average-rate cases are representations of the same whole competence; negative rate in cooling is not an unrelated new algorithm. Whole88abc covers only the coherent root/reciprocal meaning with real-domain caution, not an extra negative-base model requirement. Wholea646 merely substitutes term values and cannot supply either rate interpretation or rational exponent meaning. Full exact differentiation or component-mass identification is not imposed. Existing internal astro/wave prerequisites remain.",
+      "coverageAccount": "Both/all named independent application briefs solved; each required expectation and every variation axis is addressed explicitly by these solutions and fresh boundary comparisons. Minimum demonstration counts are preserved in full P; these author examples do not establish learner mastery.",
+      "sourceObservationRetained": "The complete BYPh13GA-ASTRO.4 passage supports optical/GW mass inference and bounded models, not the exact leading-order formula in every one of16 jurisdictions. SourcePlacement remains separate.",
+      "allDependentScopes": "All16 unchanged authored jurisdictions; exact actual resolved view memberships enumerated in focused-native-and-scope-report.actual.json. No stage/course/year inferred from phase.",
+      "independentApproval": false,
+      "PKindDSourceOrM7Approval": false
+    },
+    {
+      "goalId": "215f5558-562c-5686-b649-931f324c7983",
+      "fullPReadIncludingAllBilingualFields": true,
+      "coverageUnchanged": {
+        "requiredExpectationIds": [
+          "fixed-end-boundary-requires-phase-pi",
+          "free-end-boundary-requires-no-inversion"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "allExpectations": [
+        {
+          "id": "fixed-end-boundary-requires-phase-pi",
+          "essentialUnderstandingDe": "Am ideal festen Ende muss die Gesamtauslenkung zu jeder Zeit null sein. Einlaufende und reflektierte Auslenkungswelle erfüllen diese Randbedingung nur mit entgegengesetztem Vorzeichen am Ende; der Reflexionsfaktor ist −1 und entspricht einem Phasensprung von π beziehungsweise einer Pulsinversion.",
+          "essentialUnderstandingEn": "At an ideal fixed end, total displacement must be zero at all times. The incident and reflected displacement waves satisfy this boundary condition only with opposite signs at the end; the reflection coefficient is −1, corresponding to a phase shift of π or pulse inversion.",
+          "observablePerformanceDe": "Die lernende Person formuliert zu einer neuen einlaufenden Welle eine reflektierte Welle, setzt beide am festen Ende ein und zeigt rechnerisch und an einer eigenständig konstruierten Pulsdarstellung, dass sich die Auslenkungen dort aufheben.",
+          "observablePerformanceEn": "For a fresh incident wave, the learner formulates a reflected wave, substitutes both at the fixed end, and shows mathematically and with an independently constructed pulse diagram that the displacements cancel there."
+        },
+        {
+          "id": "free-end-boundary-requires-no-inversion",
+          "essentialUnderstandingDe": "Am ideal losen Ende verschwindet die transversale Kraft und damit im linearen Saitenmodell die räumliche Steigung der Gesamtauslenkung. Diese Randbedingung verlangt für die Auslenkungswelle einen Reflexionsfaktor +1: Der reflektierte Puls ist nicht invertiert und besitzt keinen Phasensprung gegenüber dem einlaufenden Puls.",
+          "essentialUnderstandingEn": "At an ideal free end, transverse force vanishes and therefore, in the linear string model, so does the spatial slope of total displacement. This boundary condition requires reflection coefficient +1 for the displacement wave: the reflected pulse is not inverted and has no phase shift relative to the incident pulse.",
+          "observablePerformanceDe": "Die lernende Person setzt die Ableitungsrandbedingung für eine neue Wellenform ein, begründet das gleiche Vorzeichen der reflektierten Auslenkung und sagt die Reflexionsform nach einem Wechsel zwischen festem und losem Ende korrekt voraus.",
+          "observablePerformanceEn": "The learner applies the derivative boundary condition to a fresh waveform, justifies the same sign of reflected displacement, and correctly predicts the reflection shape after switching between fixed and free ends."
+        }
+      ],
+      "allAxes": [
+        {
+          "id": "termination",
+          "textDe": "Ideales festes oder ideales loses Ende",
+          "textEn": "Ideal fixed or ideal free end"
+        },
+        {
+          "id": "wave-form",
+          "textDe": "Einzelner Puls, harmonische Welle oder Momentanbild der Überlagerung",
+          "textEn": "Single pulse, harmonic wave, or snapshot of the superposition"
+        },
+        {
+          "id": "representation-direction",
+          "textDe": "Mathematische Randbedingung zur Darstellung oder Darstellung zur Randbedingung",
+          "textEn": "Mathematical boundary condition to representation or representation to boundary condition"
+        }
+      ],
+      "cases": [
+        {
+          "caseId": "pulse-reflection-fixed-and-free",
+          "wholeOriginalCase": {
+            "id": "pulse-reflection-fixed-and-free",
+            "taskDemandDe": "Ein positiver nicht-sinusförmiger Auslenkungspuls läuft auf ein Seilende zu. Konstruiere getrennt die reflektierte Pulsform für einen ideal festen und einen ideal losen Abschluss, sage das Vorzeichen nach der Reflexion voraus und erkläre den Unterschied aus den jeweiligen Randbedingungen.",
+            "taskDemandEn": "A positive nonsinusoidal displacement pulse travels toward the end of a string. Separately construct the reflected pulse for an ideal fixed and an ideal free termination, predict its sign after reflection, and explain the difference from the respective boundary conditions.",
+            "expectedPerformanceDe": "Die lernende Person invertiert den Puls am festen Ende und lässt ihn am losen Ende gleich orientiert, erklärt am festen Ende die stets verschwindende Auslenkung und am losen Ende die verschwindende Steigung beziehungsweise Querkraft und nennt die Idealisation.",
+            "expectedPerformanceEn": "The learner inverts the pulse at the fixed end and keeps its orientation at the free end, explains zero displacement at the fixed end and zero slope or transverse force at the free end, and states the idealization.",
+            "understandingFocusDe": "Der Grundfall prüft den kausalen Zusammenhang zwischen Randbedingung und Pulsphase ohne bekannte Sinusvorlage.",
+            "understandingFocusEn": "The direct case tests the causal link between boundary condition and pulse phase without a familiar sinusoidal template."
+          },
+          "ownWorkedSolution": "Use the own positive nonsinusoidal compact pulse F(s)=(1−s²)^3 for |s|≤1 and0 outside, with scaled dimensionless argument (x−vt)/ell. Incoming F((x−vt)/ell) has reflected −F((−x−vt)/ell) at an ideal fixed end and +F((−x−vt)/ell) at an ideal free end. The fixed sum atx=0 is F−F=0 for everyt. The free sum spatial slope is F′/ell−F′/ell=0, hence zero linear-string transverse force. Draw/read the reflected pulse as a mirror in propagation direction, inverted only for fixed termination. The chosen pulse is differentiable at its support boundaries; these statements assume the ideal lossless linear string, not arbitrary impedance.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        },
+        {
+          "caseId": "harmonic-boundary-verification-transfer",
+          "wholeOriginalCase": {
+            "id": "harmonic-boundary-verification-transfer",
+            "taskDemandDe": "Für eine einlaufende harmonische Welle y_i(x,t) an einer Grenze x=0 sind zwei Kandidaten für y_r gegeben, einer mit Reflexionsfaktor +1 und einer mit −1. Prüfe für beide Endtypen durch Einsetzen von y_i+y_r beziehungsweise seiner räumlichen Ableitung, welcher Kandidat die Randbedingung erfüllt, und leite die zugehörige Phasendifferenz ab.",
+            "taskDemandEn": "For an incident harmonic wave y_i(x,t) at a boundary x=0, two candidates for y_r are supplied, one with reflection coefficient +1 and one with −1. For both termination types, test by substituting y_i+y_r or its spatial derivative which candidate satisfies the boundary condition, and derive the associated phase difference.",
+            "expectedPerformanceDe": "Die lernende Person wählt für das feste Ende den Faktor −1 und die Phasendifferenz π und für das lose Ende den Faktor +1 und die Phasendifferenz 0, wobei Vorzeichen- und Phasenkonvention konsistent bleiben.",
+            "expectedPerformanceEn": "The learner selects coefficient −1 and phase difference π for the fixed end and coefficient +1 and phase difference 0 for the free end, maintaining a consistent sign and phase convention.",
+            "understandingFocusDe": "Der Transfer verlangt eine explizite mathematische Prüfung beider idealen Randfälle.",
+            "understandingFocusEn": "The transfer requires explicit mathematical verification of both ideal boundary cases."
+          },
+          "ownWorkedSolution": "For y_i=A cos(kx−ωt+δ), compare y_r=R A cos(−kx−ωt+δ), R=±1. Atx=0 the sum is A(1+R)cos(−ωt+δ), which is identically zero only forR=−1: phaseπ. The spatial derivative there is Ak(R−1)sin(−ωt+δ), zero for everyt only forR=+1: phase0. Opposite inner spatial factors are indispensable, even withk<0 after reversing the spatial axis. A zero at one instant does not establish a boundary identity. Thek=0 constant-spatial limit loses the propagating-wave interpretation and cannot identify a free-end coefficient from a slope identicallyzero; the whole Math rule correctly returns derivative0 without dividing byk. The actual Physics case remains a propagating harmonic wave.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        }
+      ],
+      "ownNecessityAndWholeAlternativeComparison": "Add whole58d. Its full transformed sine/cosine family, phase and positive/negative inner factors are the very spatial-derivative operation required by the harmonic boundary case; the zero-factor check is a boundary of that same rule. Wholeea8 parameter interpretation alone cannot verify the free-end derivative; a qualitative-pulse-only route misses a mandatory case. Keep the nonsinusoidal construction and both end types. The retained internal d577 prerequisite remains unchanged.",
+      "coverageAccount": "Both/all named independent application briefs solved; each required expectation and every variation axis is addressed explicitly by these solutions and fresh boundary comparisons. Minimum demonstration counts are preserved in full P; these author examples do not establish learner mastery.",
+      "sourceObservationRetained": "HEQ2.3 explicitly separates no-phase-jump baseline from LK fixed/free reflection. Active all16 and derivative boundary operationalization are not given universal source approval.",
+      "allDependentScopes": "All16 unchanged authored jurisdictions; exact actual resolved view memberships enumerated in focused-native-and-scope-report.actual.json. No stage/course/year inferred from phase.",
+      "independentApproval": false,
+      "PKindDSourceOrM7Approval": false
+    },
+    {
+      "goalId": "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+      "fullPReadIncludingAllBilingualFields": true,
+      "coverageUnchanged": {
+        "requiredExpectationIds": [
+          "independent-review-a-understanding",
+          "independent-review-b-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "allExpectations": [
+        {
+          "id": "independent-review-a-understanding",
+          "essentialUnderstandingDe": "Die lernende Person versteht, dass die lineare Gleichung x''(t) + ω²x(t) = 0 im idealisierten ungedämpften Modell eine sinusförmige Bewegung um die Gleichgewichtslage beschreibt: Die Kreisfrequenz bestimmt die Zeitskala, während Anfangsauslenkung und Anfangsgeschwindigkeit Amplitude und Phase der konkreten Lösung festlegen.",
+          "essentialUnderstandingEn": "The learner understands that the linear equation x''(t) + ω²x(t) = 0 describes sinusoidal motion about equilibrium in the idealized undamped model: angular frequency sets the time scale, while initial displacement and initial velocity determine the amplitude and phase of the particular solution.",
+          "observablePerformanceDe": "Zu vorgegebenen Anfangswerten löst die lernende Person die Differenzialgleichung selbstständig, bestimmt Amplitude und Phase mit konsistenter Vorzeichenkonvention, prüft Lösung und Anfangswerte durch Einsetzen und erläutert an Gleichung und Zeitdiagramm die physikalische Bedeutung von Amplitude, Kreisfrequenz und Phase.",
+          "observablePerformanceEn": "For specified initial values, the learner independently solves the differential equation, determines amplitude and phase using a consistent sign convention, verifies the solution and initial values by substitution, and explains from the equation and a time graph the physical meaning of amplitude, angular frequency, and phase."
+        },
+        {
+          "id": "independent-review-b-understanding",
+          "essentialUnderstandingDe": "Die allgemeine Lösung der ungedämpften Schwingungsgleichung x''+ω₀²x=0 kann gleichwertig als Linearkombination von Sinus und Kosinus oder als x(t)=A cos(ω₀t+φ) dargestellt werden; zwei Anfangsbedingungen bestimmen die beiden Integrationskonstanten eindeutig, während A die maximale Auslenkung, ω₀ die Zeitskala der Schwingung und φ den Anfangszustand im Zyklus beschreibt.",
+          "essentialUnderstandingEn": "The general solution of the undamped oscillator equation x''+ω₀²x=0 can equivalently be represented as a linear combination of sine and cosine or as x(t)=A cos(ω₀t+φ); two initial conditions uniquely determine the two integration constants, while A describes the maximum displacement, ω₀ the oscillator's time scale, and φ the initial state within the cycle.",
+          "observablePerformanceDe": "Die lernende Person löst die gegebene Differenzialgleichung, setzt Auslenkung und Geschwindigkeit zum Anfangszeitpunkt ein, bestimmt die Konstanten einschließlich eines zum Vorzeichen von x(0) und v(0) passenden Phasenwinkels und prüft durch Ableiten sowohl die Gleichung als auch beide Anfangsbedingungen; anschließend deutet sie A, ω₀ und φ mit Größen, Einheiten und Bezug auf die gewählte Zeit- und Koordinatenkonvention.",
+          "observablePerformanceEn": "The learner solves the given differential equation, applies the initial displacement and velocity, determines the constants including a phase angle consistent with the signs of x(0) and v(0), and checks both the equation and the two initial conditions by differentiation; the learner then interprets A, ω₀, and φ using physical quantities, units, and the chosen time and coordinate conventions."
+        }
+      ],
+      "allAxes": [
+        {
+          "id": "changed-initial-state-and-reference-convention",
+          "textDe": "Anfangsauslenkung, Anfangsgeschwindigkeit, Zeitnullpunkt oder Koordinatenrichtung werden so verändert, dass Amplitude und Phase neu und mit konsistenter Vorzeichenkonvention bestimmt werden müssen.",
+          "textEn": "Initial displacement, initial velocity, time origin, or coordinate direction is changed so that amplitude and phase must be determined anew using a consistent sign convention."
+        },
+        {
+          "id": "equivalent-solution-representation",
+          "textDe": "Die Lösung wird zwischen Sinus-Kosinus-Linearkombination, Amplituden-Phasen-Form und Zeitdiagramm übersetzt; die Gleichwertigkeit wird über Gleichung und Anfangsbedingungen geprüft.",
+          "textEn": "The solution is translated among a sine-cosine linear combination, amplitude-phase form, and time graph; equivalence is checked against the equation and initial conditions."
+        },
+        {
+          "id": "undamped-model-validity-boundary",
+          "textDe": "Ein Fall erfüllt das ungedämpfte lineare Modell, während ein zweiter Datensatz oder Verlauf eine erkennbare Dämpfung oder andere Modellabweichung enthält, die als Grenze der verwendeten Lösung benannt werden muss.",
+          "textEn": "One case satisfies the linear undamped model, while a second data set or trajectory contains detectable damping or another model deviation that must be identified as a limit of the solution used."
+        }
+      ],
+      "cases": [
+        {
+          "caseId": "fresh-independent-case-a",
+          "wholeOriginalCase": {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Bei verschobenem Zeitnullpunkt oder umgekehrter Koordinatenrichtung bestimmt die lernende Person die neue Phasendarstellung, erkennt, welche Größen unverändert bleiben, und sagt den zugehörigen Verlauf von Auslenkung und Geschwindigkeit voraus, ohne nur Zahlen in eine bekannte Lösung einzusetzen.",
+            "taskDemandEn": "With a shifted time origin or reversed coordinate direction, the learner determines the new phase representation, identifies which quantities remain unchanged, and predicts the corresponding displacement and velocity histories without merely substituting new numbers into a familiar solution.",
+            "expectedPerformanceDe": "Zu vorgegebenen Anfangswerten löst die lernende Person die Differenzialgleichung selbstständig, bestimmt Amplitude und Phase mit konsistenter Vorzeichenkonvention, prüft Lösung und Anfangswerte durch Einsetzen und erläutert an Gleichung und Zeitdiagramm die physikalische Bedeutung von Amplitude, Kreisfrequenz und Phase.",
+            "expectedPerformanceEn": "For specified initial values, the learner independently solves the differential equation, determines amplitude and phase using a consistent sign convention, verifies the solution and initial values by substitution, and explains from the equation and a time graph the physical meaning of amplitude, angular frequency, and phase.",
+            "understandingFocusDe": "Die lernende Person versteht, dass die lineare Gleichung x''(t) + ω²x(t) = 0 im idealisierten ungedämpften Modell eine sinusförmige Bewegung um die Gleichgewichtslage beschreibt: Die Kreisfrequenz bestimmt die Zeitskala, während Anfangsauslenkung und Anfangsgeschwindigkeit Amplitude und Phase der konkreten Lösung festlegen.",
+            "understandingFocusEn": "The learner understands that the linear equation x''(t) + ω²x(t) = 0 describes sinusoidal motion about equilibrium in the idealized undamped model: angular frequency sets the time scale, while initial displacement and initial velocity determine the amplitude and phase of the particular solution."
+          },
+          "ownWorkedSolution": "Independently solve x″+4x=0 with x(0)=.03 m andv(0)=−.08 m/s by the sine/cosine ansatz: x=.03cos2t−.04sin2t=.05cos(2t+atan2(.04,.03)). Thus A=.05m, ω=2s^−1, φ=.927295218rad, T=πs. The derivative is−.06sin2t−.08cos2t; x″=−.12cos2t+.16sin2t=−4x and both initial data hold. For new time coordinateτ=t−.4s, phase isφ+.8rad; for reversed physical axis z=−x takeφ+π withApositive. A andω do not change under these convention changes. Displacement and velocity graphs remain a quarter-period apart and obey their new initial states. An envelope decay is outside the undamped model; no general all-ODE solution algorithm is claimed.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        },
+        {
+          "caseId": "fresh-independent-case-b",
+          "wholeOriginalCase": {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Für einen unabhängig vorgelegten Oszillator, der statt aus einer Ruhelage bei maximaler Auslenkung nun beim Nulldurchgang mit vorgegebener Bewegungsrichtung startet, sagt die lernende Person zunächst die qualitative Änderung von Amplitude und Phase voraus, bestimmt danach die Lösung in einer anderen äquivalenten Sinus-Kosinus-Darstellung und weist die Übereinstimmung beider Darstellungen nach.",
+            "taskDemandEn": "For an independently presented oscillator that starts at equilibrium with a specified direction of motion rather than from rest at maximum displacement, the learner first predicts the qualitative change in amplitude and phase, then determines the solution in a different but equivalent sine-cosine representation and demonstrates that the two representations agree.",
+            "expectedPerformanceDe": "Die lernende Person löst die gegebene Differenzialgleichung, setzt Auslenkung und Geschwindigkeit zum Anfangszeitpunkt ein, bestimmt die Konstanten einschließlich eines zum Vorzeichen von x(0) und v(0) passenden Phasenwinkels und prüft durch Ableiten sowohl die Gleichung als auch beide Anfangsbedingungen; anschließend deutet sie A, ω₀ und φ mit Größen, Einheiten und Bezug auf die gewählte Zeit- und Koordinatenkonvention.",
+            "expectedPerformanceEn": "The learner solves the given differential equation, applies the initial displacement and velocity, determines the constants including a phase angle consistent with the signs of x(0) and v(0), and checks both the equation and the two initial conditions by differentiation; the learner then interprets A, ω₀, and φ using physical quantities, units, and the chosen time and coordinate conventions.",
+            "understandingFocusDe": "Die allgemeine Lösung der ungedämpften Schwingungsgleichung x''+ω₀²x=0 kann gleichwertig als Linearkombination von Sinus und Kosinus oder als x(t)=A cos(ω₀t+φ) dargestellt werden; zwei Anfangsbedingungen bestimmen die beiden Integrationskonstanten eindeutig, während A die maximale Auslenkung, ω₀ die Zeitskala der Schwingung und φ den Anfangszustand im Zyklus beschreibt.",
+            "understandingFocusEn": "The general solution of the undamped oscillator equation x''+ω₀²x=0 can equivalently be represented as a linear combination of sine and cosine or as x(t)=A cos(ω₀t+φ); two initial conditions uniquely determine the two integration constants, while A describes the maximum displacement, ω₀ the oscillator's time scale, and φ the initial state within the cycle."
+          },
+          "ownWorkedSolution": "Independent oscillator x″+9x=0 starts at equilibriumx0=0 withv0=+.12m/s. The qualitative change from an equal-amplitude rest-at-maximum start is a quarter-cycle phase shift, not a changed frequency: C=0,D=.04m, x=.04sin3t=.04cos(3t−π/2). Differentiate: v=.12cos3t, x″=−.36sin3t=−9x, so both initial conditions and both representations agree. A=.04m, ω0=3s^−1, φ=−π/2rad in this convention. By contrast, for x=Ae^(−γt)cosω0t, x″+ω0²x=Ae^(−γt)(γ²cosω0t+2γω0sinω0t), generally nonzero. A visible decaying envelope is a validity boundary of this undamped solution, not a phase-only adjustment.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        }
+      ],
+      "ownNecessityAndWholeAlternativeComparison": "Add whole58d. Solving and checking both oscillator initial conditions and the ODE requires transformed harmonic derivatives including the inner frequency factor and consistent phase/sign under time/axis changes. Wholef9 only supplies simple untransformed sine/cosine derivatives; its full cases do not establish that inner factor. A supplied-solution-only route weakens the required independent solve. No general differential-equation algorithm is added. The whole Math limiting-case check is not a second unrelated competence. Keep all current internal predecessors.",
+      "coverageAccount": "Both/all named independent application briefs solved; each required expectation and every variation axis is addressed explicitly by these solutions and fresh boundary comparisons. Minimum demonstration counts are preserved in full P; these author examples do not establish learner mastery.",
+      "sourceObservationRetained": "HEQ2.1 explicitly prescribes an ansatz solution and distinguishes damped behavior; it does not assert a complete general separation/DGL method or identical16-state course scope.",
+      "allDependentScopes": "All16 unchanged authored jurisdictions; exact actual resolved view memberships enumerated in focused-native-and-scope-report.actual.json. No stage/course/year inferred from phase.",
+      "independentApproval": false,
+      "PKindDSourceOrM7Approval": false
+    },
+    {
+      "goalId": "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+      "fullPReadIncludingAllBilingualFields": true,
+      "coverageUnchanged": {
+        "requiredExpectationIds": [
+          "instantaneous-voltage-is-negative-flux-derivative",
+          "voltage-graph-translates-slope-and-sign",
+          "frequency-shape-and-differentiability-bound-transfer"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "allExpectations": [
+        {
+          "id": "instantaneous-voltage-is-negative-flux-derivative",
+          "essentialUnderstandingDe": "Für differenzierbaren Fluss gilt U_ind(t) = −N dΦ/dt. Der Spannungsbetrag misst die momentane Flussänderungsrate, nicht den Flusswert selbst; konstanter Fluss liefert null Spannung.",
+          "essentialUnderstandingEn": "For differentiable flux, U_ind(t) = −N dΦ/dt. Voltage magnitude measures the instantaneous rate of flux change, not the flux value itself; constant flux gives zero voltage.",
+          "observablePerformanceDe": "Die lernende Person wählt für eine neue Funktion oder einen glatten Graphen die Ableitungsform, bestimmt U_ind(t) mit Einheit und erklärt Nullstellen aus waagerechter Flussteigung.",
+          "observablePerformanceEn": "For a fresh function or smooth graph, the learner selects the derivative form, determines U_ind(t) with units, and explains zeros from horizontal flux slope."
+        },
+        {
+          "id": "voltage-graph-translates-slope-and-sign",
+          "essentialUnderstandingDe": "Maxima, Nulldurchgänge und Vorzeichenwechsel von U_ind entsprechen Steilheit und Vorzeichen der Φ-Steigung unter einer festen Orientierung. Eine große Flussamplitude erzeugt nicht automatisch große Spannung, wenn sie sich langsam ändert.",
+          "essentialUnderstandingEn": "Maxima, zero crossings, and sign changes of U_ind correspond to the magnitude and sign of the slope of Φ under a fixed orientation. Large flux amplitude does not automatically mean large voltage if it changes slowly.",
+          "observablePerformanceDe": "Die lernende Person skizziert aus einem unbekannten Φ(t)-Graphen den Spannungsverlauf, begründet charakteristische Punkte über Tangentensteigungen und prüft Vorzeichen und N-Skalierung.",
+          "observablePerformanceEn": "From an unfamiliar Φ(t) graph, the learner sketches the voltage curve, justifies characteristic points through tangent slopes, and checks sign and N scaling."
+        },
+        {
+          "id": "frequency-shape-and-differentiability-bound-transfer",
+          "essentialUnderstandingDe": "Frequenz und Kurvenform bestimmen die Änderungsrate; bei höherer Frequenz wächst bei gleicher Flussamplitude typischerweise der Spannungsmaßstab. An nicht differenzierbaren Stellen ist die gebundene momentane Ableitungsform nicht unmittelbar definiert.",
+          "essentialUnderstandingEn": "Frequency and curve shape determine rate of change; at higher frequency, with the same flux amplitude, the voltage scale typically increases. At nondifferentiable points, the bound instantaneous derivative form is not directly defined.",
+          "observablePerformanceDe": "Für veränderte Frequenz, Phase oder glatte Kurvenform prognostiziert und berechnet die lernende Person U_ind; bei einem Knick benennt sie die verletzte Voraussetzung statt einen beliebigen Momentanwert zu erfinden.",
+          "observablePerformanceEn": "For changed frequency, phase, or smooth curve shape, the learner predicts and calculates U_ind; at a corner, the learner identifies the violated assumption instead of inventing an instantaneous value."
+        }
+      ],
+      "allAxes": [
+        {
+          "id": "flux-form",
+          "textDe": "Sinusförmiger, polynomialer oder glatter abschnittsweise dargestellter Fluss",
+          "textEn": "Sinusoidal, polynomial, or smoothly piecewise-represented flux"
+        },
+        {
+          "id": "time-parameter",
+          "textDe": "Frequenz, Phase und zeitliche Streckung bei gleicher Flussamplitude",
+          "textEn": "Frequency, phase, and time stretching at equal flux amplitude"
+        },
+        {
+          "id": "regularity",
+          "textDe": "Differenzierbarer Verlauf gegenüber ausdrücklich nicht differenzierbarem Knick",
+          "textEn": "Differentiable curve versus an explicitly nondifferentiable corner"
+        }
+      ],
+      "cases": [
+        {
+          "caseId": "sinusoidal-flux-phase",
+          "wholeOriginalCase": {
+            "id": "sinusoidal-flux-phase",
+            "taskDemandDe": "Für Φ(t) = Φ0 cos(ωt) und N Windungen bestimme U_ind(t), skizziere beide Verläufe und erkläre Amplitude, Phasenlage und Nulldurchgänge physikalisch.",
+            "taskDemandEn": "For Φ(t) = Φ0 cos(ωt) and N turns, determine U_ind(t), sketch both curves, and physically explain amplitude, phase relation, and zero crossings.",
+            "expectedPerformanceDe": "Die lernende Person erhält U_ind = NωΦ0 sin(ωt) unter der festgelegten Konvention, verbindet den ω-Faktor mit Änderungsrate und ordnet Spannungsnullen den Flussextrema zu.",
+            "expectedPerformanceEn": "The learner obtains U_ind = NωΦ0 sin(ωt) under the specified convention, links the ω factor to rate of change, and associates voltage zeros with flux extrema.",
+            "understandingFocusDe": "Der Fall prüft Ableitung und physikalische Graphdeutung gemeinsam.",
+            "understandingFocusEn": "The case jointly tests differentiation and physical graph interpretation."
+          },
+          "ownWorkedSolution": "Retain the task symbols: Φ=Φ0cosωt gives dΦ/dt=−ωΦ0sinωt and U=+NωΦ0sinωt in the fixed orientation. Own scale check: Φ0=.002Wb,N=150,ω=40s^−1 gives U=12sin40t V. At flux extrema the voltage iszero; at downward zero crossingt=π/80s, U=+12V. The voltage leads the cosine flux by−π/2 in the representation U=U0cos(ωt−π/2); equivalently it is positive sine. Doublingω doubles voltage amplitude at unchanged flux amplitude; doublingN also doubles it. A constant flux offset contributes nothing; ω=0 giveszero, not division byzero. Reversing a phase/time axis requires the correct inner sign from58d.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        },
+        {
+          "caseId": "smooth-pulse-and-corner-audit",
+          "wholeOriginalCase": {
+            "id": "smooth-pulse-and-corner-audit",
+            "taskDemandDe": "Ein glatter magnetischer Flusspuls und ein zweiter Verlauf mit idealisiertem Knick werden vorgegeben. Skizziere für den glatten Puls U_ind(t), identifiziere Maxima und Vorzeichenwechsel und beurteile den Momentanwert genau am Knick des zweiten Verlaufs.",
+            "taskDemandEn": "A smooth magnetic-flux pulse and a second curve with an idealized corner are supplied. Sketch U_ind(t) for the smooth pulse, identify maxima and sign changes, and judge the instantaneous value exactly at the corner of the second curve.",
+            "expectedPerformanceDe": "Die lernende Person leitet den glatten Verlauf qualitativ aus der Steigung ab, lokalisiert größte Beträge an steilsten Stellen und erklärt, dass die klassische Ableitung am Knick keinen eindeutigen Momentanwert liefert.",
+            "expectedPerformanceEn": "The learner derives the smooth voltage qualitatively from slope, locates largest magnitudes at steepest points, and explains that the classical derivative gives no unique instantaneous value at the corner.",
+            "understandingFocusDe": "Der Transfer prüft Kurvenform und die explizite Differenzierbarkeitsgrenze.",
+            "understandingFocusEn": "The transfer tests curve shape and the explicit differentiability limit."
+          },
+          "ownWorkedSolution": "Own differentiable pulse Φ=.003exp(−(t/.2)^2)Wb withN=150 gives U=22.5t exp(−25t²)V, where t is measured in seconds. Before the pulse maximum Φ rises, soU<0; at t=0 the tangent is horizontal andU=0; after the maximumU>0. Largest magnitudes occur at t=±.2/√2s (steepest flux slopes), with opposite signs. This graph/slope reasoning is permitted without requiring a universal symbolic derivative method for every smooth pulse. Independent corner Φ=.002+.001|t/(1s)|Wb has left/right flux slopes−.001,+.001Wb/s, hence voltage limits+.15,−.15V; there is no unique classical derivative or bound momentary voltage att=0. Do not average the two limits and call that the derivative.",
+          "syntheticModelNotEmpiricalAcceptance": true
+        }
+      ],
+      "ownNecessityAndWholeAlternativeComparison": "Add whole58d. The mandatory symbolic cosine-flux output needs the innerω factor, outer-minus sign and changed phase; polynomial-only substitution or qualitative graph reading does not meet that fixed brief. The second pulse may remain graphical and its nondifferentiable corner must remain a limit. The coherent full58d transformed sine/cosine rule with constant boundary is the nominated whole goal, not merely a title match. Keep eb1ea150 and every other internal edge.",
+      "coverageAccount": "Both/all named independent application briefs solved; each required expectation and every variation axis is addressed explicitly by these solutions and fresh boundary comparisons. Minimum demonstration counts are preserved in full P; these author examples do not establish learner mastery.",
+      "sourceObservationRetained": "HEQ2.2 differentiates average and differential forms and notes increased mathematization. Missing formula fragments are not silently completed into source evidence.",
+      "allDependentScopes": "All16 unchanged authored jurisdictions; exact actual resolved view memberships enumerated in focused-native-and-scope-report.actual.json. No stage/course/year inferred from phase.",
+      "independentApproval": false,
+      "PKindDSourceOrM7Approval": false
+    }
+  ],
+  "Math": [
+    {
+      "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "wholeGoal": {
+        "id": "58d2f963-4fb9-550d-a832-f5ac60808900",
+        "title": "Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten",
+        "titleEn": "Differentiate transformed sine and cosine functions using the chain rule",
+        "description": "Die lernende Person kann Funktionen der Form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ beziehungsweise $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation für die Ableitung erklären.",
+        "descriptionEn": "The learner can differentiate functions of the form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ or $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ using the chain rule and explain the role of the inner linear transformation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "3401d95d-2191-5929-ac78-4de51d71a6be",
+          "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+          "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "E",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.E.TRIGONOMETRIC.CHAIN_RULE_TRANSFORMED_SINE_COSINE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.5, S. 33",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "shortKey": "canonical_math_e_chain_rule_transformed_sine_cosine",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+            "title": "Visualisierung: Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten",
+            "url": "/assets/goal-visualizations/mathematik/58d2f963-4fb9-550d-a832-f5ac60808900/58d2f963-4fb9-550d-a832-f5ac60808900.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten\". Die lernende Person kann Funktionen der Form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ beziehungsweise $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation für die Ableitung erklären.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeP": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "trigonometric-chain-rule",
+            "essentialUnderstandingDe": "Für u(x)=b(x−c) gilt [a sin u+d]'=ab cos u und [a cos u+d]'=−ab sin u; die äußere Ableitung wird bei u(x) ausgewertet und mit u'=b multipliziert.",
+            "essentialUnderstandingEn": "For u(x)=b(x−c), [a sin u+d]'=ab cos u and [a cos u+d]'=−ab sin u; the outer derivative is evaluated at u(x) and multiplied by u'=b.",
+            "observablePerformanceDe": "Die lernende Person leitet neue transformierte Sinus- und Kosinusfunktionen korrekt ab und erklärt Herkunft von Faktor, Vorzeichen und unverändertem inneren Argument.",
+            "observablePerformanceEn": "The learner correctly differentiates fresh transformed sine and cosine functions and explains the origins of the factor, sign, and unchanged inner argument."
+          },
+          {
+            "id": "chain-rule-check-and-boundary",
+            "essentialUnderstandingDe": "Eine Ableitung lässt sich an charakteristischen Stellen, über Einheiten oder durch Vergleich lokaler Steilheit prüfen. Der Faktor b setzt Bogenmaß voraus; bei b=0 ist die Funktion konstant und die übliche Periodendeutung entartet.",
+            "essentialUnderstandingEn": "A derivative can be checked at characteristic points, through units, or by comparison with local steepness. Factor b assumes radians; when b=0 the function is constant and the usual period interpretation degenerates.",
+            "observablePerformanceDe": "Die lernende Person prüft einen Ableitungsterm durch Einsetzen einer geeigneten Stelle und erkennt fehlenden Faktor, falsches Vorzeichen oder einen konstanten Grenzfall.",
+            "observablePerformanceEn": "The learner checks a derivative expression by substituting a suitable point and detects a missing factor, wrong sign, or constant boundary case."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "trigonometric-chain-rule",
+            "chain-rule-check-and-boundary"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "outer-function",
+            "textDe": "Sinus oder Kosinus",
+            "textEn": "sine or cosine"
+          },
+          {
+            "id": "inner-transformation",
+            "textDe": "positiver oder negativer Faktor sowie veränderte Phase",
+            "textEn": "positive or negative factor and changed phase"
+          },
+          {
+            "id": "check",
+            "textDe": "symbolisches Vereinfachen oder Prüfung an charakteristischer Stelle",
+            "textEn": "symbolic simplification or check at a characteristic point"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "transformed-sine-base",
+            "taskDemandDe": "Leite f(x)=3sin(2(x−π/4))+5 ab, erkläre jeden Faktor und prüfe f'(π/4) anhand der lokalen Phase.",
+            "taskDemandEn": "Differentiate f(x)=3sin(2(x−π/4))+5, explain every factor, and check f'(π/4) from the local phase.",
+            "expectedPerformanceDe": "Die lernende Person erhält f'(x)=6cos(2(x−π/4)); bei x=π/4 ist das innere Argument 0 und f'=6, passend zur maximal positiven Steigung.",
+            "expectedPerformanceEn": "The learner obtains f'(x)=6cos(2(x−π/4)); at x=π/4 the inner argument is 0 and f'=6, consistent with maximum positive slope.",
+            "understandingFocusDe": "Direkter Nachweis von äußerer Ableitung, innerem Faktor und Phasenprüfung.",
+            "understandingFocusEn": "Direct evidence of outer derivative, inner factor, and phase check."
+          },
+          {
+            "id": "negative-cosine-transfer",
+            "taskDemandDe": "Leite g(t)=−4cos(−3(t+1))+2 ab und vereinfache den Term unter Nutzung der Symmetrie von Sinus. Begründe das resultierende Vorzeichen.",
+            "taskDemandEn": "Differentiate g(t)=−4cos(−3(t+1))+2 and simplify using sine symmetry. Justify the resulting sign.",
+            "expectedPerformanceDe": "Zunächst ergibt die Kettenregel −12sin(−3(t+1)); wegen sin(−z)=−sin z ist dies 12sin(3(t+1)). Die lernende Person verfolgt beide Minuszeichen nachvollziehbar.",
+            "expectedPerformanceEn": "The chain rule first gives −12sin(−3(t+1)); since sin(−z)=−sin z, this is 12sin(3(t+1)). The learner tracks both minus signs transparently.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu Kosinus, negativem Innenfaktor und äquivalenter Form.",
+            "understandingFocusEn": "First independent transfer to cosine, a negative inner factor, and an equivalent form."
+          },
+          {
+            "id": "constant-boundary-transfer",
+            "taskDemandDe": "Untersuche h(x)=7sin(0·(x−4))−2. Bestimme h' und erkläre, warum die Formel 2π/|b| hier keine Periodenlänge liefert; vergleiche mit h₁(x)=7sin(0,1(x−4))−2.",
+            "taskDemandEn": "Investigate h(x)=7sin(0·(x−4))−2. Determine h' and explain why 2π/|b| gives no period here; compare with h₁(x)=7sin(0.1(x−4))−2.",
+            "expectedPerformanceDe": "Die lernende Person erkennt h≡−2 und h'=0; Division durch b=0 ist unzulässig. Für h₁ entsteht h₁'=0,7cos(0,1(x−4)) mit endlicher Periode 20π.",
+            "expectedPerformanceEn": "The learner recognizes h≡−2 and h'=0; division by b=0 is invalid. For h₁, h₁'=0.7cos(0.1(x−4)) with finite period 20π.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zum entarteten Grenzfall und zur Geltungsgrenze der Parameterformeln.",
+            "understandingFocusEn": "Second independent transfer to a degenerate boundary case and the limits of parameter formulas."
+          }
+        ]
+      },
+      "ownAllMandatoryCasesAndAxesSolutions": [
+        "transformed-sine-base: f′=6cos(2(x−π/4)); f′(π/4)=6. Outer derivative, b=2 and unchanged phase all accounted.",
+        "negative-cosine-transfer: g′=−12sin(−3(t+1))=12sin(3(t+1)); both the outer cosine minus and negative inner derivative tracked.",
+        "constant-boundary-transfer: h=−2,h′=0; 2π/|0| undefined. h1′=.7cos(.1(x−4)),T=20π. This supplies both sine/cosine, negative/positive inner factors, symbolic/check and zero-factor axes, all3 independent demonstrations."
+      ],
+      "allMandatoryCaseIds": [
+        "transformed-sine-base",
+        "negative-cosine-transfer",
+        "constant-boundary-transfer"
+      ],
+      "coverage": {
+        "requiredExpectationIds": [
+          "trigonometric-chain-rule",
+          "chain-rule-check-and-boundary"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 3,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "newStandaloneMathGateApproval": false
+    },
+    {
+      "goalId": "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+      "wholeGoal": {
+        "id": "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "shortKey": "canonical_math_sek1_j9_rational_exponents_as_roots_and_fractions",
+        "title": "Potenzen mit rationalen Exponenten als Wurzel- und Bruchausdrücke deuten",
+        "titleEn": "Interpret powers with rational exponents as roots and fractional expressions",
+        "description": "Die lernende Person kann Potenzen mit rationalen Exponenten als Wurzel- oder Bruchausdrücke deuten und sicher zwischen diesen Darstellungsformen wechseln.",
+        "descriptionEn": "The learner can interpret powers with rational exponents as radical or fractional expressions and switch reliably between these forms.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.POWERS.RATIONAL_EXPONENTS"
+        },
+        "contains": [],
+        "requires": [
+          "6596405a-9728-41df-9163-53670ec2a937",
+          "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+          "68505a32-3b1d-57b2-a495-00b4097eb50d"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.1, Kompetenz 2, S. 31.",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+            "title": "Visualisierung: Potenzen mit rationalen Exponenten als Wurzel- und Bruchausdrücke deuten",
+            "url": "/assets/goal-visualizations/mathematik/88abc886-cce8-55cf-b86c-eb4ba45a92d7/88abc886-cce8-55cf-b86c-eb4ba45a92d7.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Potenzen mit rationalen Exponenten als Wurzel- und Bruchausdrücke deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Potenzen mit rationalen Exponenten als Wurzel- und Bruchausdrücke deuten\". Die lernende Person kann Potenzen mit rationalen Exponenten als Wurzel- oder Bruchausdrücke deuten und sicher zwischen diesen Darstellungsformen wechseln.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeP": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "rational-power-forms",
+            "essentialUnderstandingDe": "Für zulässige reelle Grundzahlen bedeutet a^(m/n) eine n-te Wurzel mit m-ter Potenz; ein negativer Exponent bedeutet den Kehrwert, wobei die reelle Definitionsbedingung der Wurzel beachtet wird.",
+            "essentialUnderstandingEn": "For admissible real bases a^(m/n) means an nth root with an mth power; a negative exponent means a reciprocal, subject to the root’s real-domain condition.",
+            "observablePerformanceDe": "Die lernende Person übersetzt eine rationale Potenz in Wurzel- oder Bruchschreibweise und zurück, berechnet einen geeigneten Wert und erläutert Wurzelgrad, Exponent und gegebenenfalls den Kehrwert.",
+            "observablePerformanceEn": "The learner converts a rational power to root or quotient form and back, evaluates a suitable value, and explains root index, exponent, and reciprocal where relevant."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "rational-power-forms"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "rational-power-forms-variation",
+            "textDe": "Von positivem Exponenten mit gerader Wurzel wird zu negativem Exponenten mit ungerader Wurzel und Bruchdarstellung gewechselt.",
+            "textEn": "The case changes from a positive exponent with an even root to a negative exponent with an odd root and quotient form."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive-power",
+            "taskDemandDe": "Deute und berechne 16^(3/4) als Wurzelausdruck.",
+            "taskDemandEn": "Interpret and evaluate 16^(3/4) as a radical expression.",
+            "expectedPerformanceDe": "16^(3/4)=(⁴√16)³=2³=8; der Nenner 4 gibt den Wurzelgrad, der Zähler 3 die anschließende Potenz an.",
+            "expectedPerformanceEn": "16^(3/4)=(fourth root of 16)³=2³=8; denominator 4 gives the root index and numerator 3 the following power.",
+            "understandingFocusDe": "Potenz- und Wurzelschreibweise codieren dieselbe Operation.",
+            "understandingFocusEn": "Power and radical notation encode the same operation."
+          },
+          {
+            "id": "negative-power",
+            "taskDemandDe": "Schreibe 27^(−2/3) als Bruch mit Wurzel und berechne den Wert.",
+            "taskDemandEn": "Write 27^(−2/3) as a quotient with a root and evaluate it.",
+            "expectedPerformanceDe": "27^(−2/3)=1/(³√27)²=1/9; die Kubikwurzel ergibt 3 und das Minuszeichen des Exponenten bildet den Kehrwert.",
+            "expectedPerformanceEn": "27^(−2/3)=1/(cube root of 27)²=1/9; the cube root gives 3 and the negative exponent takes the reciprocal.",
+            "understandingFocusDe": "Der negative Exponent ändert die Darstellung zum Kehrwert, nicht den Wurzelgrad.",
+            "understandingFocusEn": "A negative exponent changes the expression to a reciprocal, not the root index."
+          }
+        ]
+      },
+      "ownAllMandatoryCasesAndAxesSolutions": [
+        "positive-power:16^(3/4)=(fourth-root16)^3=2^3=8; positive base permits principal even root.",
+        "negative-power:27^(−2/3)=1/(cube-root27)^2=1/9; numerator/denominator roles retained, minus is reciprocal. A negative real base with even root is not admitted automatically. The positive-even to negative-exponent/odd-root representation variation is covered."
+      ],
+      "allMandatoryCaseIds": [
+        "positive-power",
+        "negative-power"
+      ],
+      "coverage": {
+        "requiredExpectationIds": [
+          "rational-power-forms"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "newStandaloneMathGateApproval": false
+    },
+    {
+      "goalId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+      "wholeGoal": {
+        "id": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "shortKey": "canonical_math_sek1_j7_evaluate_variable_terms_by_substitution",
+        "title": "Termwerte durch Einsetzen berechnen",
+        "titleEn": "Evaluate algebraic expressions by substitution",
+        "description": "Die lernende Person kann in Terme mit Variablen konkrete Werte einsetzen, die Termwerte korrekt berechnen und die Rechnung nachvollziehbar notieren.",
+        "descriptionEn": "The learner can substitute concrete values into algebraic expressions, calculate the resulting values correctly, and record the calculation transparently.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J7",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J7.TERMS.SUBSTITUTION"
+        },
+        "contains": [],
+        "requires": [
+          "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+          "0a6dab2e-1bbb-5587-adb0-456d3991c327"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.1, Kompetenz 6, S. 24.",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+            "title": "Visualisierung: Termwerte durch Einsetzen berechnen",
+            "url": "/assets/goal-visualizations/mathematik/a6469c01-6ca3-5eb2-a82c-94f3d0560b32/a6469c01-6ca3-5eb2-a82c-94f3d0560b32.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Termwerte durch Einsetzen berechnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Termwerte durch Einsetzen berechnen\". Die lernende Person kann in Terme mit Variablen konkrete Werte einsetzen, die Termwerte korrekt berechnen und die Rechnung nachvollziehbar notieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeP": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "consistent-variable-assignment",
+            "essentialUnderstandingDe": "Eine Variablenbelegung ordnet jeder Variablen genau einen konkreten Wert zu, der an jedem Vorkommen derselben Variablen eingesetzt werden muss; verschiedene Variablen können unterschiedliche Werte erhalten.",
+            "essentialUnderstandingEn": "An assignment gives each variable exactly one concrete value that must be substituted at every occurrence of that variable; different variables can receive different values.",
+            "observablePerformanceDe": "Die lernende Person notiert die gegebene Belegung, ersetzt jedes Variablenvorkommen eindeutig und konsistent und hält bei mehreren Variablen deren verschiedene Zuordnungen auseinander.",
+            "observablePerformanceEn": "The learner records the given assignment, replaces every occurrence of each variable unambiguously and consistently, and keeps the different assignments distinct when several variables are present."
+          },
+          {
+            "id": "preserve-signs-grouping-and-order",
+            "essentialUnderstandingDe": "Nach dem Einsetzen bleibt die Rechenstruktur des Terms erhalten. Negative oder gebrochene Werte benötigen eine eindeutige Klammerung, und Vorzeichen, Potenzen sowie die Rechenreihenfolge bestimmen den entstehenden Zahlenwert.",
+            "essentialUnderstandingEn": "After substitution, the operational structure of the expression remains intact. Negative or fractional values require unambiguous parentheses, and signs, powers, and order of operations determine the resulting numerical value.",
+            "observablePerformanceDe": "Die lernende Person setzt insbesondere negative oder gebrochene Werte mit passenden Klammern ein und wertet den entstandenen Zahlenterm in einer nachvollziehbaren, strukturgerechten Reihenfolge aus.",
+            "observablePerformanceEn": "The learner substitutes negative or fractional values in particular using appropriate parentheses and evaluates the resulting numerical expression in a transparent order that respects its structure."
+          },
+          {
+            "id": "term-value-belongs-to-assignment",
+            "essentialUnderstandingDe": "Ein Termwert ist kein dauerhafter Wert des Variablenterms, sondern das Ergebnis für eine bestimmte Variablenbelegung; ändert sich die Belegung, kann sich der Termwert ändern.",
+            "essentialUnderstandingEn": "An expression value is not a permanent value of the variable expression but the result for a particular assignment of variables; if the assignment changes, the expression value can change.",
+            "observablePerformanceDe": "Die lernende Person dokumentiert Belegung, eingesetzten Zahlenterm, Rechenschritte und Ergebnis zusammen, ordnet das Ergebnis ausdrücklich dieser Belegung zu und kann bei geänderter Belegung den neuen Termwert getrennt bestimmen.",
+            "observablePerformanceEn": "The learner records the assignment, substituted numerical expression, calculation steps, and result together, explicitly relates the result to that assignment, and can determine a separate new value when the assignment changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "consistent-variable-assignment",
+            "preserve-signs-grouping-and-order",
+            "term-value-belongs-to-assignment"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "value-type-and-sign",
+            "textDe": "Positive ganze Werte gegenüber negativen und gebrochenen rationalen Werten",
+            "textEn": "Positive integer values versus negative and fractional rational values"
+          },
+          {
+            "id": "variable-multiplicity",
+            "textDe": "Ein Vorkommen einer Variablen gegenüber wiederholten Vorkommen und mehreren verschieden belegten Variablen",
+            "textEn": "One occurrence of a variable versus repeated occurrences and several differently assigned variables"
+          },
+          {
+            "id": "expression-structure",
+            "textDe": "Lineare Summenstruktur gegenüber Potenz, Produkt und verschachtelter Klammer",
+            "textEn": "A linear sum structure versus a power, product, and nested grouping"
+          },
+          {
+            "id": "assignment-change",
+            "textDe": "Eine feste Belegung gegenüber einer zweiten unabhängig vorgelegten Belegung desselben Terms",
+            "textEn": "One fixed assignment versus a second independently presented assignment of the same expression"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-value-with-power",
+            "taskDemandDe": "Berechne den Wert von 2x² - 3x + 1 für x = -2. Notiere die Belegung, das Einsetzen und alle wesentlichen Rechenschritte so, dass Vorzeichen und Potenz eindeutig bleiben.",
+            "taskDemandEn": "Evaluate 2x² - 3x + 1 for x = -2. Record the assignment, substitution, and all substantial calculation steps so that signs and the power remain unambiguous.",
+            "expectedPerformanceDe": "Die lernende Person notiert 2(-2)² - 3(-2) + 1, setzt -2 an beiden x-Stellen konsistent und verwendet Klammern. Sie berechnet zuerst (-2)² = 4 und erhält 8 + 6 + 1 = 15, das sie als Termwert für die Belegung x = -2 kennzeichnet.",
+            "expectedPerformanceEn": "The learner writes 2(-2)² - 3(-2) + 1, substitutes -2 consistently at both occurrences of x, and uses parentheses. The learner first calculates (-2)² = 4 and obtains 8 + 6 + 1 = 15, identifying it as the expression value for the assignment x = -2.",
+            "understandingFocusDe": "Der Fall prüft konsistentes mehrfaches Einsetzen, Klammerung eines negativen Werts, Potenz-vor-Multiplikation und die Zuordnung des Ergebnisses zur Belegung.",
+            "understandingFocusEn": "The case tests consistent repeated substitution, grouping of a negative value, powers before multiplication, and relating the result to the assignment."
+          },
+          {
+            "id": "two-variables-with-fraction",
+            "taskDemandDe": "Berechne den Wert von 3a - 2b für a = -1/2 und b = 4. Halte die beiden Belegungen und die Vorzeichen in deiner Rechnung eindeutig auseinander.",
+            "taskDemandEn": "Evaluate 3a - 2b for a = -1/2 and b = 4. Keep the two assignments and the signs unambiguously distinct in your calculation.",
+            "expectedPerformanceDe": "Die lernende Person notiert 3(-1/2) - 2 · 4, ordnet jedem Symbol den richtigen Wert zu und erhält -3/2 - 8 = -19/2 beziehungsweise -9,5. Sie kennzeichnet das Ergebnis als Wert des Terms für a = -1/2 und b = 4.",
+            "expectedPerformanceEn": "The learner writes 3(-1/2) - 2 · 4, assigns the correct value to each symbol, and obtains -3/2 - 8 = -19/2 or -9.5. The learner identifies the result as the value of the expression for a = -1/2 and b = 4.",
+            "understandingFocusDe": "Der Transfer führt zwei verschieden belegte Variablen und einen negativen Bruch ein und prüft die strukturtreue Auswertung ohne Zuordnungsvertauschung.",
+            "understandingFocusEn": "The transfer introduces two differently assigned variables and a negative fraction and tests structure-preserving evaluation without swapping assignments."
+          },
+          {
+            "id": "nested-grouping-and-new-assignment",
+            "taskDemandDe": "Berechne 4 - (x - 2y) zuerst für x = -3 und y = 1,5 und danach unabhängig für x = 2 und y = -1. Dokumentiere beide Belegungen getrennt und erkläre, warum zwei verschiedene Termwerte entstehen können.",
+            "taskDemandEn": "Evaluate 4 - (x - 2y) first for x = -3 and y = 1.5 and then independently for x = 2 and y = -1. Record the two assignments separately and explain why two different expression values can result.",
+            "expectedPerformanceDe": "Für die erste Belegung notiert die lernende Person 4 - ((-3) - 2 · 1,5) und erhält 10; für die zweite notiert sie 4 - (2 - 2 · (-1)) und erhält 0. Sie wahrt die innere Klammer und alle Vorzeichen und ordnet jedes Ergebnis nur der jeweils verwendeten Belegung zu.",
+            "expectedPerformanceEn": "For the first assignment, the learner writes 4 - ((-3) - 2 · 1.5) and obtains 10; for the second, the learner writes 4 - (2 - 2 · (-1)) and obtains 0. The learner preserves the inner grouping and all signs and relates each result only to the assignment used.",
+            "understandingFocusDe": "Der unabhängige Fall kombiniert verschachtelte Klammern, mehrere Variablen, negative Werte und einen Belegungswechsel und macht die Belegungsabhängigkeit des Termwerts sichtbar.",
+            "understandingFocusEn": "The independent case combines nested grouping, several variables, negative values, and a changed assignment, making the assignment-dependence of the expression value visible."
+          }
+        ]
+      },
+      "ownAllMandatoryCasesAndAxesSolutions": [
+        "negative-value-with-power:2(−2)^2−3(−2)+1=15; both occurrences use the same value and grouping precedes multiplication.",
+        "two-variables-with-fraction:3(−1/2)−2(4)=−19/2=−9.5, tied to this assignment.",
+        "nested-grouping-and-new-assignment:4−((−3)−2(1.5))=10; independently4−(2−2(−1))=0. This covers all4 axes and3 required demonstrations; differing assignments do not redefine the expression."
+      ],
+      "allMandatoryCaseIds": [
+        "negative-value-with-power",
+        "two-variables-with-fraction",
+        "nested-grouping-and-new-assignment"
+      ],
+      "coverage": {
+        "requiredExpectationIds": [
+          "consistent-variable-assignment",
+          "preserve-signs-grouping-and-order",
+          "term-value-belongs-to-assignment"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 3,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "newStandaloneMathGateApproval": false
+    },
+    {
+      "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+      "wholeGoal": {
+        "id": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+        "title": "Mittlere Änderungsrate berechnen und deuten",
+        "titleEn": "Calculate and interpret average rate of change",
+        "description": "Die lernende Person kann mittlere Änderungsraten als Differenzenquotienten berechnen und im Kontext von Sachsituationen (z. B. Durchschnittsgeschwindigkeit) deuten.",
+        "descriptionEn": "The learner can calculate average rates of change as difference quotients and interpret them in the context of real-world situations (e.g., average speed).",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "a8c42ee9-2898-4247-819f-c235032ac78a",
+          "09f47964-2cd0-410e-93ee-9632b582fc91"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.1",
+            "K3.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+            "title": "Visualisierung: Mittlere Änderungsrate berechnen und deuten",
+            "url": "/assets/goal-visualizations/mathematik/ae20183e-92b5-5521-b8e0-9a8662cf51f5/ae20183e-92b5-5521-b8e0-9a8662cf51f5.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Mittlere Änderungsrate berechnen und deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Mittlere Änderungsrate berechnen und deuten\". Die lernende Person kann mittlere Änderungsraten als Differenzenquotienten berechnen und im Kontext von Sachsituationen (z. B. Durchschnittsgeschwindigkeit) deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeP": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "difference-quotient",
+            "essentialUnderstandingDe": "Die mittlere Änderungsrate auf [a,b], a≠b, ist (f(b)-f(a))/(b-a); Zähler und Nenner müssen zum selben Intervall gehören.",
+            "essentialUnderstandingEn": "The average rate of change on [a,b], a≠b, is (f(b)-f(a))/(b-a); numerator and denominator must refer to the same interval.",
+            "observablePerformanceDe": "Berechnet beide Differenzen konsistent und gibt den Quotienten mit passender zusammengesetzter Einheit an.",
+            "observablePerformanceEn": "Calculates both differences consistently and gives the quotient with the appropriate compound unit."
+          },
+          {
+            "id": "rate-interpretation",
+            "essentialUnderstandingDe": "Vorzeichen und Einheit beschreiben die mittlere Veränderung der Ausgangsgröße je Eingabeeinheit, nicht notwendig einen konstanten Verlauf.",
+            "essentialUnderstandingEn": "Sign and unit describe the average change of the output per input unit, not necessarily a constant course.",
+            "observablePerformanceDe": "Deutet den berechneten Wert im Sachzusammenhang und begrenzt die Aussage auf das betrachtete Intervall.",
+            "observablePerformanceEn": "Interprets the calculated value in context and limits the statement to the interval considered."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "difference-quotient",
+            "rate-interpretation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "data-and-sign",
+            "textDe": "Aus zwei Streckenmessungen einen positiven Mittelwert bestimmen und unabhängig aus einem nichtlinearen Temperaturmodell einen negativen Mittelwert deuten.",
+            "textEn": "Determine a positive average from two distance measurements and independently interpret a negative average from a nonlinear temperature model."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "travel-average",
+            "taskDemandDe": "Eine kumulierte Wegmessung liefert s(2 min)=100 m und s(5 min)=460 m. Bestimme die Durchschnittsgeschwindigkeit in diesem Intervall und erläutere, ob sie die Geschwindigkeit zu jedem Zeitpunkt festlegt.",
+            "taskDemandEn": "A cumulative distance measurement gives s(2 min)=100 m and s(5 min)=460 m. Determine average speed on this interval and explain whether it determines speed at every instant.",
+            "expectedPerformanceDe": "Berechnet (460-100)/(5-2)=120 m/min=2 m/s. Deutet 120 m je Minute im Durchschnitt auf [2,5] min; die beiden Messwerte legen den momentanen Geschwindigkeitsverlauf nicht fest.",
+            "expectedPerformanceEn": "Calculates (460-100)/(5-2)=120 m/min=2 m/s. Interprets 120 m per minute on average over [2,5] min; the two measurements do not determine the instantaneous speed course.",
+            "understandingFocusDe": "Mittlere Rate von Gesamtstrecke und Momentanwert unterscheiden.",
+            "understandingFocusEn": "Distinguish an average rate from total distance and an instantaneous value."
+          },
+          {
+            "id": "cooling-average",
+            "taskDemandDe": "Auf 0≤t≤8 min beschreibt T(t)=80-3t+0,1t² die Temperatur in °C. Berechne und deute die mittlere Änderungsrate von t=2 bis t=6 min.",
+            "taskDemandEn": "On 0≤t≤8 min, T(t)=80-3t+0.1t² describes temperature in °C. Calculate and interpret the average rate of change from t=2 to t=6 min.",
+            "expectedPerformanceDe": "Erhält T(2)=74,4 und T(6)=65,6 sowie (65,6-74,4)/4=-2,2 °C/min. Erklärt eine durchschnittliche Abnahme um 2,2 °C je Minute, ohne eine konstante Abkühlrate zu behaupten.",
+            "expectedPerformanceEn": "Obtains T(2)=74.4 and T(6)=65.6 and (65.6-74.4)/4=-2.2 °C/min. Explains an average decrease of 2.2 °C per minute without claiming a constant cooling rate.",
+            "understandingFocusDe": "Eine negative mittlere Rate eines nichtlinearen Modells im Kontext deuten.",
+            "understandingFocusEn": "Interpret a negative average rate of a nonlinear model in context."
+          }
+        ]
+      },
+      "ownAllMandatoryCasesAndAxesSolutions": [
+        "travel-average:(460−100)/(5−2)=120m/min=2m/s, not s(5)/5 and not each instantaneous speed. Both differences use[2,5].",
+        "cooling-average:T(2)=74.4,T(6)=65.6,rate=−8.8/4=−2.2°C/min over[2,6]; T′ varies and constant cooling is not inferred. Two representations/signs and finite-interval interpretation retained."
+      ],
+      "allMandatoryCaseIds": [
+        "travel-average",
+        "cooling-average"
+      ],
+      "coverage": {
+        "requiredExpectationIds": [
+          "difference-quotient",
+          "rate-interpretation"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "newStandaloneMathGateApproval": false
+    },
+    {
+      "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "wholeGoal": {
+        "id": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "title": "Funktionswerte berechnen",
+        "titleEn": "Calculate function values",
+        "description": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+        "descriptionEn": "The learner can correctly calculate function values for concrete x-values from given function terms $f(x)$ and interpret them as the outputs corresponding to those inputs.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "shortKey": "canonical_math_calculate_function_values",
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+            "title": "Visualisierung: Funktionswerte berechnen",
+            "url": "/assets/goal-visualizations/mathematik/c65ecabf-d00b-4e2d-99ae-b64692325ffb/c65ecabf-d00b-4e2d-99ae-b64692325ffb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Funktionswerte berechnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Funktionswerte berechnen\". Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeP": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "evaluate-expression",
+            "essentialUnderstandingDe": "Der konkrete Eingabewert ersetzt jedes Vorkommen von x; Klammern, Potenzen und Vorzeichen gehören zum gegebenen Funktionsterm.",
+            "essentialUnderstandingEn": "The concrete input replaces every occurrence of x; brackets, powers and signs belong to the given function expression.",
+            "observablePerformanceDe": "Die lernende Person setzt gegebene zulässige Eingaben selbstständig ein und berechnet die Werte unter Beachtung der Termstruktur.",
+            "observablePerformanceEn": "The learner independently substitutes supplied admissible inputs and calculates values respecting the structure of the expression."
+          },
+          {
+            "id": "input-output-meaning",
+            "essentialUnderstandingDe": "f(a)=b ordnet der Eingabe a die Ausgabe b zu; unterschiedliche Eingaben können denselben Ausgabewert besitzen.",
+            "essentialUnderstandingEn": "f(a)=b assigns output b to input a; different inputs may have the same output.",
+            "observablePerformanceDe": "Die lernende Person deutet ihre berechneten Werte als zugehörige Eingabe-Ausgabe-Paare und unterscheidet dabei Eingabewert, Funktionsname und Ergebnis.",
+            "observablePerformanceEn": "The learner interprets calculated values as corresponding input-output pairs, distinguishing input, function name and result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "evaluate-expression",
+            "input-output-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "expression-structure",
+            "textDe": "Von einem linearen Term zu Potenzen wechseln und ein Minuszeichen außerhalb gegenüber innerhalb der Potenz unterscheiden.",
+            "textEn": "Change from a linear expression to powers and distinguish a minus sign outside versus inside the power."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "linear-evaluation",
+            "taskDemandDe": "Gegeben ist f(x)=3x−2. Berechne ohne Musterlösung f(−1) und f(4) und erkläre jeweils, welche Eingabe zu welcher Ausgabe gehört.",
+            "taskDemandEn": "Given f(x)=3x−2, calculate f(−1) and f(4) without a worked solution and explain which input corresponds to which output.",
+            "expectedPerformanceDe": "f(−1)=3·(−1)−2=−5 und f(4)=10. −1 bzw. 4 sind die Eingaben, −5 bzw. 10 die vom Term zugeordneten Ausgaben.",
+            "expectedPerformanceEn": "f(−1)=3·(−1)−2=−5 and f(4)=10. The inputs are −1 and 4, and the outputs assigned by the expression are −5 and 10.",
+            "understandingFocusDe": "Korrekte Auswertung und Bedeutung der Schreibweise werden an denselben Werten verbunden.",
+            "understandingFocusEn": "Correct evaluation and the meaning of notation are connected through the same values."
+          },
+          {
+            "id": "minus-and-power",
+            "taskDemandDe": "Eine neue Aufgabe gibt p(x)=−x² und q(x)=(−x)² vor. Berechne p(−2), q(−2) und q(2). Deute die drei Zuordnungen und erläutere den für die unterschiedlichen Ergebnisse entscheidenden Unterschied im Term.",
+            "taskDemandEn": "A fresh task gives p(x)=−x² and q(x)=(−x)². Calculate p(−2), q(−2) and q(2). Interpret the three assignments and explain the difference in the expressions that determines the differing results.",
+            "expectedPerformanceDe": "p(−2)=−(−2)²=−4, q(−2)=(−(−2))²=4 und q(2)=(−2)²=4. Bei p wird das Quadrat negiert, bei q wird der gesamte geklammerte Wert quadriert. q ordnet hier zwei verschiedenen Eingaben denselben Wert 4 zu; eine inverse Funktion muss nicht bestimmt werden.",
+            "expectedPerformanceEn": "p(−2)=−(−2)²=−4, q(−2)=(−(−2))²=4 and q(2)=(−2)²=4. In p the square is negated, whereas q squares the entire bracketed value. Here q assigns the same value 4 to two different inputs; finding an inverse function is not required.",
+            "understandingFocusDe": "Die veränderte Termstruktur verlangt eine neue Auswertung; das Ergebnis bleibt als Ausgabe der konkreten Eingabe verständlich.",
+            "understandingFocusEn": "The altered expression structure requires fresh evaluation while retaining the result's meaning as output for the concrete input."
+          }
+        ]
+      },
+      "ownAllMandatoryCasesAndAxesSolutions": [
+        "linear-evaluation:f(−1)=−5,f(4)=10; pairs(−1,−5),(4,10), input/output/function-name kept distinct.",
+        "minus-and-power:p(−2)=−4,q(−2)=4,q(2)=4. Negating a square differs from squaring the negated input; two inputs may share an output. These arbitrary expression/precedence/input-output duties remain required in Math but are not universally prior to the Physics fitted-law route."
+      ],
+      "allMandatoryCaseIds": [
+        "linear-evaluation",
+        "minus-and-power"
+      ],
+      "coverage": {
+        "requiredExpectationIds": [
+          "evaluate-expression",
+          "input-output-meaning"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "newStandaloneMathGateApproval": false
+    },
+    {
+      "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "wholeGoal": {
+        "id": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+        "title": "Parameter periodischer Funktionen deuten",
+        "titleEn": "Interpret parameters of periodic functions",
+        "description": "Die lernende Person kann Amplitude, Periodenlänge, Phasenverschiebung und vertikale Verschiebung interpretieren und entsprechende Parameter in Termen $y = a \\cdot \\sin(bx+c)+d$ bestimmen.",
+        "descriptionEn": "The learner can interpret amplitude, period, phase shift and vertical shift and determine corresponding parameters in terms $y = a \\cdot \\sin(bx+c)+d$.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "bbef7cf2-90fa-59fa-a115-8b651aab9231"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+            "title": "Visualisierung: Parameter periodischer Funktionen deuten",
+            "url": "/assets/goal-visualizations/mathematik/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Parameter periodischer Funktionen deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Parameter periodischer Funktionen deuten\". Die lernende Person kann Amplitude, Periodenlänge, Phasenverschiebung und vertikale Verschiebung interpretieren und entsprechende Parameter in Termen $y = a \\cdot \\sin(bx+c)+d$ bestimmen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeP": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "parameter-feature-relations",
+            "essentialUnderstandingDe": "Für y = a sin(bx+c)+d sind |a| die Amplitude, d die Mittellinie, 2π/|b| die Periodenlänge und −c/b eine Phasenverschiebung; Vorzeichen von a beeinflusst die Orientierung.",
+            "essentialUnderstandingEn": "For y = a sin(bx+c)+d, |a| is amplitude, d the midline, 2π/|b| the period, and −c/b a phase shift; the sign of a affects orientation.",
+            "observablePerformanceDe": "Die lernende Person liest oder bestimmt die Parameter aus neuen Merkmalen und erklärt jede Größe einschließlich Einheit und Vorzeichenwirkung.",
+            "observablePerformanceEn": "The learner reads or determines parameters from fresh features and explains each quantity, including units and sign effects."
+          },
+          {
+            "id": "equivalent-parameterizations",
+            "essentialUnderstandingDe": "Wegen Periodizität und Sinus-Kosinus-Beziehungen kann dieselbe Funktion mehrere Parameterdarstellungen besitzen; eine gefundene Darstellung muss durch charakteristische Werte geprüft werden. Bei a = 0 oder b = 0 entarten Amplitude beziehungsweise Periodeninterpretation.",
+            "essentialUnderstandingEn": "Because of periodicity and sine-cosine identities, the same function can have multiple parameter representations; a proposed representation must be checked with characteristic values. For a = 0 or b = 0, amplitude or period interpretation degenerates.",
+            "observablePerformanceDe": "Die lernende Person formuliert einen passenden Term, prüft Mittellinie, Extrema, Periode und Phase und erkennt eine äquivalente Alternative.",
+            "observablePerformanceEn": "The learner formulates a suitable expression, checks midline, extrema, period, and phase, and recognizes an equivalent alternative."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameter-feature-relations",
+            "equivalent-parameterizations"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "base-function",
+            "textDe": "Sinus- oder Kosinusdarstellung",
+            "textEn": "sine or cosine representation"
+          },
+          {
+            "id": "parameter-sign",
+            "textDe": "positive oder negative Amplitude sowie positive oder negative Phase",
+            "textEn": "positive or negative amplitude and positive or negative phase"
+          },
+          {
+            "id": "source",
+            "textDe": "Term, charakteristische Daten oder Sachkontext",
+            "textEn": "expression, characteristic data, or context"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "term-feature-base",
+            "taskDemandDe": "Bestimme und deute Amplitude, Mittellinie, Periodenlänge und Phasenverschiebung von y = −3 sin(2x−π/2)+4. Prüfe die Verschiebung an einem charakteristischen Argument.",
+            "taskDemandEn": "Determine and interpret amplitude, midline, period, and phase shift of y = −3 sin(2x−π/2)+4. Check the shift at a characteristic argument.",
+            "expectedPerformanceDe": "Die lernende Person erhält Amplitude 3, Mittellinie 4, Periode π und Verschiebung π/4 nach rechts; das Minus spiegelt den Sinusverlauf an der Mittellinie.",
+            "expectedPerformanceEn": "The learner obtains amplitude 3, midline 4, period π, and a shift π/4 to the right; the minus sign reflects the sine trace across the midline.",
+            "understandingFocusDe": "Direkter Nachweis der korrekten Relation −c/b statt bloßer Deutung von c.",
+            "understandingFocusEn": "Direct evidence of the correct relation −c/b rather than merely interpreting c."
+          },
+          {
+            "id": "feature-to-expression-transfer",
+            "taskDemandDe": "Eine periodische Funktion hat Mittellinie −1, Maximum 4, Minimum −6, Periode 8 und erreicht bei x = 2 erstmals nach x = 0 ein Maximum. Gib einen passenden Kosinusterm an und prüfe ihn rechnerisch.",
+            "taskDemandEn": "A periodic function has midline −1, maximum 4, minimum −6, period 8, and reaches its first maximum after x = 0 at x = 2. Give a suitable cosine expression and check it algebraically.",
+            "expectedPerformanceDe": "Die lernende Person nutzt Amplitude 5, b = π/4 und beispielsweise y = 5 cos((π/4)(x−2))−1; Einsetzen bei x = 2 und vier Einheiten später bestätigt Maximum und Minimum.",
+            "expectedPerformanceEn": "The learner uses amplitude 5, b = π/4, and for example y = 5 cos((π/4)(x−2))−1; substitution at x = 2 and four units later confirms maximum and minimum.",
+            "understandingFocusDe": "Erster unabhängiger Transfer von Merkmalen zum Term mit eigener Prüfung.",
+            "understandingFocusEn": "First independent transfer from features to an expression with an independent check."
+          },
+          {
+            "id": "equivalent-tide-model-transfer",
+            "taskDemandDe": "Ein Wasserstand schwankt zwischen 1 m und 5 m mit Periode 6 h und liegt bei t = 0 im Maximum. Formuliere je einen äquivalenten Sinus- und Kosinusterm und erkläre, warum Parameterwerte nicht eindeutig sind; nenne den Gültigkeitsbereich des Modells.",
+            "taskDemandEn": "A water level oscillates between 1 m and 5 m with a 6 h period and is at its maximum at t = 0. Formulate equivalent sine and cosine expressions and explain why parameter values are not unique; state the model's validity domain.",
+            "expectedPerformanceDe": "Die lernende Person gibt etwa h(t)=3+2cos(πt/3) und h(t)=3+2sin(πt/3+π/2) an und prüft Gleichheit; das idealisierte Modell gilt nur im betrachteten Zeitraum bei annähernd stabiler periodischer Dynamik.",
+            "expectedPerformanceEn": "The learner gives, for example, h(t)=3+2cos(πt/3) and h(t)=3+2sin(πt/3+π/2) and checks equivalence; the idealized model applies only over the considered interval with approximately stable periodic dynamics.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zu Kontext, äquivalenten Parametrisierungen und Modellgrenze.",
+            "understandingFocusEn": "Second independent transfer to context, equivalent parameterizations, and a model boundary."
+          }
+        ]
+      },
+      "ownAllMandatoryCasesAndAxesSolutions": [
+        "term-feature-base:amplitude3,midline4,periodπ,right shiftπ/4 for−3sin(2x−π/2)+4; negative amplitude reflects around the midline, not negative amplitude magnitude.",
+        "feature-to-expression-transfer:y=5cos((π/4)(x−2))−1; atx=2 y=4 andx=6 y=−6,T=8.",
+        "equivalent-tide-model-transfer:h=3+2cos(πt/3)=3+2sin(πt/3+π/2),unitm,Th=6h,max5,min1. Stable periodic approximation only over the stated range; a=0 orb=0 degenerates and multiple phase representatives exist. All3 axes and3 demonstrations retained."
+      ],
+      "allMandatoryCaseIds": [
+        "term-feature-base",
+        "feature-to-expression-transfer",
+        "equivalent-tide-model-transfer"
+      ],
+      "coverage": {
+        "requiredExpectationIds": [
+          "parameter-feature-relations",
+          "equivalent-parameterizations"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 3,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "newStandaloneMathGateApproval": false
+    },
+    {
+      "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeGoal": {
+        "id": "f9fdb733-5838-4983-888a-05624eabbe17",
+        "shortKey": "canonical_math_sek1_j10_trig_derivatives",
+        "title": "Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen",
+        "titleEn": "Use derivatives of sine and cosine functions in simple cases",
+        "description": "Die lernende Person kann die Ableitungen von Sinus- und Kosinusfunktionen in einfachen Termen angeben, einsetzen und den Zusammenhang zwischen Funktion und Ableitung graphisch deuten.",
+        "descriptionEn": "The learner can state and use the derivatives of sine and cosine functions in simple expressions and interpret the relationship between the function and its derivative graphically.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical",
+          "modality:visual",
+          "representation:graph",
+          "tool:geogebra"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f9fdb733-5838-4983-888a-05624eabbe17",
+            "title": "Visualisierung: Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen",
+            "url": "/assets/goal-visualizations/mathematik/f9fdb733-5838-4983-888a-05624eabbe17/f9fdb733-5838-4983-888a-05624eabbe17.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen\". Die lernende Person kann die Ableitungen von Sinus- und Kosinusfunktionen in einfachen Termen angeben, einsetzen und den Zusammenhang zwischen Funktion und Ableitung graphisch deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "approved"
+          },
+          {
+            "type": "tool",
+            "title": "GeoGebra Graphing Calculator",
+            "url": "https://www.geogebra.org/graphing",
+            "resourceType": "graphing-calculator",
+            "provider": "GeoGebra",
+            "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
+            "lang": "mul"
+          }
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "J10",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK1.J10.7E"
+        },
+        "contains": [],
+        "requires": [
+          "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+          "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true
+      },
+      "wholeP": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "derivative-identities",
+            "essentialUnderstandingDe": "Im Bogenmaß gilt (sin x)′=cos x und (cos x)′=−sin x; ein konstanter Vorfaktor bleibt beim Ableiten erhalten.",
+            "essentialUnderstandingEn": "In radians, (sin x)'=cos x and (cos x)'=−sin x; a constant multiplier remains on differentiation.",
+            "observablePerformanceDe": "Die lernende Person leitet einfache Sinus- und Kosinusterme mit Faktor und Vorzeichen korrekt ab und erklärt die Rolle des Faktors.",
+            "observablePerformanceEn": "The learner differentiates simple sine and cosine expressions with factor and sign correctly and explains the factor's role."
+          },
+          {
+            "id": "graphical-rate",
+            "essentialUnderstandingDe": "Der Ableitungswert entspricht der Steigung des Funktionsgraphen; an Extremstellen ist er null, in steigenden Abschnitten positiv und in fallenden negativ.",
+            "essentialUnderstandingEn": "A derivative value is the slope of the function graph; it is zero at turning points, positive while rising and negative while falling.",
+            "observablePerformanceDe": "Die lernende Person verbindet Funktions- und Ableitungsgraph an benannten Stellen durch Vorzeichen und Steigung, statt nur die Formel zu nennen.",
+            "observablePerformanceEn": "The learner relates function and derivative graphs at named points through slope and sign rather than only reciting a formula."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "derivative-identities",
+            "graphical-rate"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "base-function-sign",
+            "textDe": "positiv skalierter Sinus gegenüber negativ skaliertem Kosinus samt unterschiedlichen Steigungsverläufen",
+            "textEn": "positively scaled sine versus negatively scaled cosine with differing slope patterns"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "scaled-sine",
+            "taskDemandDe": "Für h(x)=2sin x: bilde h′(x) und erkläre graphisch die Steigungen bei x=0 und x=π/2.",
+            "taskDemandEn": "For h(x)=2sin x, find h′(x) and explain graph slopes at x=0 and x=π/2.",
+            "expectedPerformanceDe": "h′(x)=2cos x; h′(0)=2 bedeutet steigend mit Tangentensteigung 2, h′(π/2)=0 bedeutet waagerechte Tangente am Maximum.",
+            "expectedPerformanceEn": "h′(x)=2cos x; h′(0)=2 means increasing with tangent slope 2, and h′(π/2)=0 means a horizontal tangent at the maximum.",
+            "understandingFocusDe": "Faktor und Ableitungswert als graphische Steigung verbinden.",
+            "understandingFocusEn": "Connecting multiplier and derivative value to graph slope."
+          },
+          {
+            "id": "negative-cosine",
+            "taskDemandDe": "Für g(x)=−3cos x: bilde g′(x); begründe am Funktionsgraphen Vorzeichen und Nullwert der Steigung bei x=π/2 beziehungsweise x=0.",
+            "taskDemandEn": "For g(x)=−3cos x, find g′(x); justify slope sign and zero from the function graph at x=π/2 and x=0 respectively.",
+            "expectedPerformanceDe": "g′(x)=3sin x; bei π/2 ist die Steigung +3, dort steigt g. Bei 0 ist g′(0)=0 und g hat ein lokales Minimum −3.",
+            "expectedPerformanceEn": "g′(x)=3sin x; slope at π/2 is +3, where g rises. At 0, g′(0)=0 and g has a local minimum −3.",
+            "understandingFocusDe": "Negatives Vorzeichen beim Kosinus korrekt auf Ableitung und Graph übertragen.",
+            "understandingFocusEn": "Transferring a negative cosine factor to derivative and graph correctly."
+          }
+        ]
+      },
+      "ownAllMandatoryCasesAndAxesSolutions": [
+        "scaled-sine:h′=2cosx,h′(0)=2,h′(π/2)=0,consistent with rising point and maximum.",
+        "negative-cosine:g′=3sinx,g′(π/2)=3,g′(0)=0 atminimum−3. This covers both simple derivative identities and graphical slope, but does not by itself establish the58d inner-factor operation."
+      ],
+      "allMandatoryCaseIds": [
+        "scaled-sine",
+        "negative-cosine"
+      ],
+      "coverage": {
+        "requiredExpectationIds": [
+          "derivative-identities",
+          "graphical-rate"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "newStandaloneMathGateApproval": false
+    }
+  ],
+  "noEmpiricalHostLearnerOrHumanAcceptance": true
+}

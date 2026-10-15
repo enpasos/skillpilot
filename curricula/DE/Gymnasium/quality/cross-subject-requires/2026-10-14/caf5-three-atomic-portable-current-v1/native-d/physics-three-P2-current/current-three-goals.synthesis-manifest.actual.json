@@ -1,0 +1,148 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "root-p2-current-three-D-keep-synthesis-manifest-20261014-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "/root, informed synthesis after exact sealed independent first-pass A/B; no independent third review or human attestation",
+  "synthesizedAt": "2026-10-14T20:18:34.063Z",
+  "batch": {
+    "batchId": "root-three-current-D-syntheses-20261014-v1",
+    "batchManifestDigest": "sha256:93148840bb03068ee6502a7fa40d24e69090e072a1ea8b1ff3525c0fefe1c930",
+    "configDigest": "sha256:acfc4c28fe405cab768538236afc50d16614411653ce5c192fdae9e10d60c7c4",
+    "bundleFingerprint": "sha256:23259eb374c6fe132ffaf38efbd1b359bc512114cd9869771bb99cc4f970abde",
+    "bookDigest": "sha256:9169de69309af61e05ca97ca0d0640b30a862e8309626df2f0e8802d3ca17fb6",
+    "reviewInputFingerprint": "sha256:73ad61412e415f8093f03d53eb2593f568f6d13c8d4019914809beecc01a8335",
+    "dualSummaryDigest": "sha256:155ff5806b4189c0a28682b08b0ae89114f3050ba814a2b7825f803d43cc0bc2",
+    "canonicalLandscapeDigest": "sha256:7e321fc5d8a40e5137968e5c7000def0b0443b6c619062807a502b3d207b45a0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-three-p2-neutral-input-a-20261014-v1",
+      "campaignDigest": "sha256:53464094c5bcf95b246614d186fcbbf324528c7562407003df4fb106c22fb84b",
+      "roundId": "first-pass-a",
+      "independenceGroupId": "unperformed-three-atomic-p2-current-a",
+      "reviewInputFingerprint": "sha256:73ad61412e415f8093f03d53eb2593f568f6d13c8d4019914809beecc01a8335",
+      "batchId": "first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:881ec1ea2afacbc0f9f855061b4593e64568eac762ffed1b31f457693ddbc04c",
+      "runId": "three-atomic-p2-fresh-d-a-20261014-v1",
+      "runManifestDigest": "sha256:6a54fa5aea83d1e1fbbba783c59408b1e0fdbb3d881aec7b4fa29d541454be61",
+      "resultsDigest": "sha256:b53dd363b0d9f93a6fab82f2db2df1ddccbf3efe668be710386a46b217a2bdf5"
+    },
+    "second": {
+      "campaignId": "physics-three-p2-fresh-d-b-20261014-v1",
+      "campaignDigest": "sha256:97b6853da814da1c175d746ce0f110e0a48796de9fb4e52d49a7ea313d13bd39",
+      "roundId": "first-pass-b",
+      "independenceGroupId": "three-atomic-p2-fresh-d-b-20261014-v1",
+      "reviewInputFingerprint": "sha256:73ad61412e415f8093f03d53eb2593f568f6d13c8d4019914809beecc01a8335",
+      "batchId": "first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:79d443e65b252c1a43a741cda6374103ebfcc5801bd8dffb0746423cd9c4272d",
+      "runId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001",
+      "runManifestDigest": "sha256:2be0c5f97310e2ece916b77193ff6a7942ff81c10927d104967a540ac5ff5b27",
+      "resultsDigest": "sha256:d44c41023896ef2b87a8af344d974cfba6129ba9decc8826b09de6d419e1edfe"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "root-p2-current-keep-25998fed-ea4d-4c3e-b606-e965b5d7f290",
+      "goalId": "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7d4102629d3772ec4d015a7cbc0a2b5c0dc4ac0f5663e05cdfc9636f6f92c17e",
+      "pageFingerprint": "sha256:0a8e8a6700547422df616f27c17b847c78413a33d02462c5e2c59df95714f559",
+      "goalReviewContextFingerprint": "sha256:71715510c0d0d31267d9e6eb6b4200b20231dcd49fdccecc516cc3d3fcd9db38",
+      "finalText": {
+        "titleDe": "Ladungserhaltung erläutern",
+        "titleEn": "Explain Conservation of Electric Charge",
+        "descriptionDe": "Die lernende Person kann elektrische Ladung als Erhaltungsgröße beschreiben und Ladungsumverteilungen in abgeschlossenen Systemen fachlich deuten.",
+        "descriptionEn": "The learner can describe electric charge as a conserved quantity and interpret charge redistribution in closed systems."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "three-atomic-p2-fresh-d-a-20261014-v1.goal-1",
+          "recordDigest": "sha256:49812bae190c878d1651b224d04ed06087fc136a7302e4b43ffc20a89b61af8b"
+        },
+        "second": {
+          "recordId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001.goal-1",
+          "recordDigest": "sha256:94575a48f90550202c7921df34ec527040e7006db1725d24523aab74e6a8396e"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann erläutern, dass in einem elektrisch abgeschlossenen System die algebraische Gesamtladung erhalten bleibt, und Änderungen der Ladungen einzelner Körper als Ladungsumverteilung deuten.",
+        "proposedDescriptionEn": "The learner can explain that the algebraic total charge remains conserved in a charge-isolated system and interpret changes in individual bodies' charges as charge redistribution.",
+        "rationaleDe": "Die Beschreibung nennt elektrische Ladung als Erhaltungsgröße, Umverteilung und das abgeschlossene System; das ist die konkrete Erhaltungsrelation dieses Ziels. B benennt dieselbe Relation genauer, weist aber keinen falschen oder zusätzlich beanspruchten Sachverhalt nach. Die algebraische Summe und ihre Systemgrenze werden im vollständigen P unabhängig geprüft. Eigene frische Kontrolle: Aus (-6,+2,+9) nC folgt Gesamtladung +5 nC, nach Umverteilung (+1,q,-3) nC also q=+7 nC; die Betragssummen sind verschieden und kein Erhaltungskriterium. Eine geladene Behälterwand oder Erdung verändert die Bilanz eines unvollständigen Teilsystems. A/B lösen auch die beiden vollständigen Pflichtfälle und grenzen offene Teilsysteme ab. Die ausführlichere Formel-/Grenzbeschreibung ist eine mögliche didaktische Erklärung, keine erforderliche Änderung der bereits korrekten knappen Kompetenzbeschreibung. B-Unterstanding bleibt als fachlicher Originalbefund erhalten. Keine universelle Quellengeltung, Humanfreigabe, Bildfreigabe oder Mastery wird hier bewiesen.",
+        "rationaleEn": "The description names electric charge as a conserved quantity, redistribution, and the closed system: the concrete conservation relation of this goal. B states the same relation more explicitly but identifies no false or additionally claimed content. The whole P independently assesses the algebraic total and its system boundary. Fresh own check: (-6,+2,+9) nC totals +5 nC, so redistribution to (+1,q,-3) nC gives q=+7 nC; magnitude sums differ and are not the conservation criterion. A charged enclosure wall or grounding changes an incompletely chosen subsystem balance. Both actors also solve the two literal required cases and distinguish open subsystems. A longer formula/boundary explanation is a useful teaching option rather than a necessary revision of the correct concise competence. B understanding remains preserved as original scientific evidence. This does not prove universal source scope, human or asset approval, or learner mastery."
+      },
+      "rationaleDe": "Die Beschreibung nennt elektrische Ladung als Erhaltungsgröße, Umverteilung und das abgeschlossene System; das ist die konkrete Erhaltungsrelation dieses Ziels. B benennt dieselbe Relation genauer, weist aber keinen falschen oder zusätzlich beanspruchten Sachverhalt nach. Die algebraische Summe und ihre Systemgrenze werden im vollständigen P unabhängig geprüft. Eigene frische Kontrolle: Aus (-6,+2,+9) nC folgt Gesamtladung +5 nC, nach Umverteilung (+1,q,-3) nC also q=+7 nC; die Betragssummen sind verschieden und kein Erhaltungskriterium. Eine geladene Behälterwand oder Erdung verändert die Bilanz eines unvollständigen Teilsystems. A/B lösen auch die beiden vollständigen Pflichtfälle und grenzen offene Teilsysteme ab. Die ausführlichere Formel-/Grenzbeschreibung ist eine mögliche didaktische Erklärung, keine erforderliche Änderung der bereits korrekten knappen Kompetenzbeschreibung. B-Unterstanding bleibt als fachlicher Originalbefund erhalten. Keine universelle Quellengeltung, Humanfreigabe, Bildfreigabe oder Mastery wird hier bewiesen.",
+      "rationaleEn": "The description names electric charge as a conserved quantity, redistribution, and the closed system: the concrete conservation relation of this goal. B states the same relation more explicitly but identifies no false or additionally claimed content. The whole P independently assesses the algebraic total and its system boundary. Fresh own check: (-6,+2,+9) nC totals +5 nC, so redistribution to (+1,q,-3) nC gives q=+7 nC; magnitude sums differ and are not the conservation criterion. A charged enclosure wall or grounding changes an incompletely chosen subsystem balance. Both actors also solve the two literal required cases and distinguish open subsystems. A longer formula/boundary explanation is a useful teaching option rather than a necessary revision of the correct concise competence. B understanding remains preserved as original scientific evidence. This does not prove universal source scope, human or asset approval, or learner mastery."
+    },
+    {
+      "decisionId": "root-p2-current-keep-5f97952e-5ac9-5749-94d0-d1dc50dda358",
+      "goalId": "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bafbdd94a248a19d01b7f4d570c8378a321efe0337f65d38b16bdbcf63da8c85",
+      "pageFingerprint": "sha256:a599027044815f735b06d0bc6146bcff5fd3c0556808c7ecba249c43005077d9",
+      "goalReviewContextFingerprint": "sha256:78ccb6623433865790c840053a6682cbac3956d5cb4e69cf0b3766947e58576e",
+      "finalText": {
+        "titleDe": "Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben",
+        "titleEn": "Describe sinusoidal AC quantities using phasor diagrams",
+        "descriptionDe": "Die lernende Person kann sinusförmige Spannung und Stromstärke in ohmschen Wechselstromkreisen mit Zeigerdiagrammen darstellen und Phasenbeziehungen fachlich deuten.",
+        "descriptionEn": "The learner can represent sinusoidal voltage and current in resistive AC circuits using phasor diagrams and interpret their phase relationships in physical terms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "three-atomic-p2-fresh-d-a-20261014-v1.goal-2",
+          "recordDigest": "sha256:9e3ba84ee55a055b371693b06eb969c924ea7539e093b429b974a73b8deb41ef"
+        },
+        "second": {
+          "recordId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001.goal-2",
+          "recordDigest": "sha256:9846ca17c45d534e2c31403bc0ba38eec132415d10b195ad4daa3f9423dcbe6f"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann sinusförmige Spannung und Stromstärke eines ideal ohmschen Wechselstromkreises mit Amplitudenzeigern darstellen, ihre Zeitverläufe durch eine festgelegte Projektion erklären und ihre Phasengleichheit bei passenden Bezugsrichtungen deuten.",
+        "proposedDescriptionEn": "The learner can represent sinusoidal voltage and current in an ideal resistive AC circuit with amplitude phasors, explain their time signals through a specified projection, and interpret their being in phase under consistent reference directions.",
+        "rationaleDe": "Die Beschreibung begrenzt die Zeigerdarstellung auf sinusförmige Spannung/Stromstärke im ohmschen Wechselstromkreis und fordert fachliche Phasendeutung. Projektion ist der Bedeutungsinhalt der genannten Darstellungsform; Phasengleichheit ist die zu zeigende ohmsche Relation. B formuliert diese korrekt explizit, benennt aber keine Fehlbehauptung oder fehlende Teilkompetenz im bestehenden Wortlaut. Die vollständige aktuelle P verlangt beide Darstellungsrichtungen, klare Projektions-/Drehkonvention und den Unterschied von gemeinsamem Anfangswinkel und relativer Phase. Eigene frische Kontrolle: u=12 sin(ωt+π/6) V an R=300 Ω ergibt i=0,040 sin(ωt+π/6) A, u(0)=6 V, i(0)=0,020 A und relative Phase null. Dieselben Signale entstehen mit horizontaler Kosinusprojektion und Anfangswinkel -π/3; ein anderer gemeinsamer Zeitursprung erzeugt keinen Stromnachlauf. Die B-Präzisierung bleibt als Erklärung erhalten, ohne sie zur neuen Beschreibungsanforderung zu machen. Bildannotation und LC-Sequenzbeobachtung sind getrennte Befunde; keine neuen Blind-, Human-, Quellen- oder M7-Gesamtfreigaben.",
+        "rationaleEn": "The description confines phasor representation to sinusoidal voltage/current in an ohmic AC circuit and requires physical phase interpretation. Projection is the meaning of the named representation; being in phase is the ohmic relation to demonstrate. B makes these correct relations explicit but identifies no false statement or omitted competence in the existing wording. The whole current P requires translation in both directions, stated projection/rotation conventions, and the distinction between a common initial angle and relative phase. Fresh own check: u=12 sin(ωt+π/6) V with R=300 Ω gives i=0.040 sin(ωt+π/6) A, u(0)=6 V, i(0)=0.020 A and zero relative phase. The same signals arise from horizontal cosine projection with initial angle -π/3; changing the shared time origin creates no current lag. B precision is retained as explanation without becoming a new description requirement. Image annotation and LC sequencing remain separate findings; no new blindness, human, source or whole-M7 acceptance is claimed."
+      },
+      "rationaleDe": "Die Beschreibung begrenzt die Zeigerdarstellung auf sinusförmige Spannung/Stromstärke im ohmschen Wechselstromkreis und fordert fachliche Phasendeutung. Projektion ist der Bedeutungsinhalt der genannten Darstellungsform; Phasengleichheit ist die zu zeigende ohmsche Relation. B formuliert diese korrekt explizit, benennt aber keine Fehlbehauptung oder fehlende Teilkompetenz im bestehenden Wortlaut. Die vollständige aktuelle P verlangt beide Darstellungsrichtungen, klare Projektions-/Drehkonvention und den Unterschied von gemeinsamem Anfangswinkel und relativer Phase. Eigene frische Kontrolle: u=12 sin(ωt+π/6) V an R=300 Ω ergibt i=0,040 sin(ωt+π/6) A, u(0)=6 V, i(0)=0,020 A und relative Phase null. Dieselben Signale entstehen mit horizontaler Kosinusprojektion und Anfangswinkel -π/3; ein anderer gemeinsamer Zeitursprung erzeugt keinen Stromnachlauf. Die B-Präzisierung bleibt als Erklärung erhalten, ohne sie zur neuen Beschreibungsanforderung zu machen. Bildannotation und LC-Sequenzbeobachtung sind getrennte Befunde; keine neuen Blind-, Human-, Quellen- oder M7-Gesamtfreigaben.",
+      "rationaleEn": "The description confines phasor representation to sinusoidal voltage/current in an ohmic AC circuit and requires physical phase interpretation. Projection is the meaning of the named representation; being in phase is the ohmic relation to demonstrate. B makes these correct relations explicit but identifies no false statement or omitted competence in the existing wording. The whole current P requires translation in both directions, stated projection/rotation conventions, and the distinction between a common initial angle and relative phase. Fresh own check: u=12 sin(ωt+π/6) V with R=300 Ω gives i=0.040 sin(ωt+π/6) A, u(0)=6 V, i(0)=0.020 A and zero relative phase. The same signals arise from horizontal cosine projection with initial angle -π/3; changing the shared time origin creates no current lag. B precision is retained as explanation without becoming a new description requirement. Image annotation and LC sequencing remain separate findings; no new blindness, human, source or whole-M7 acceptance is claimed."
+    },
+    {
+      "decisionId": "root-p2-current-keep-66256e22-44a3-5939-8862-821e29d6711d",
+      "goalId": "66256e22-44a3-5939-8862-821e29d6711d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:726ad86f33f10e44be128ce796c0746610fac16ade219f5423617b912faf4b64",
+      "pageFingerprint": "sha256:8135cda54cd13d097e96dd8da52b20ec929e52c1a00de32c682d733ae3f9f872",
+      "goalReviewContextFingerprint": "sha256:25712b30ef322b6414a18cc3468728d521c661ef1264449ef5485c28dd1fa61e",
+      "finalText": {
+        "titleDe": "Strom-Spannungs-Kennlinien einfacher Bauteile experimentell untersuchen und deuten",
+        "titleEn": "Experimentally investigate and interpret current-voltage characteristics of simple components",
+        "descriptionDe": "Die lernende Person kann unter sicheren Kleinspannungsbedingungen Stromstärke und Spannung an einfachen Bauteilen systematisch messen, Kennlinien erstellen und den Zusammenhang von Spannung, Stromstärke und Widerstand deuten.",
+        "descriptionEn": "Under safe low-voltage conditions, the learner can systematically measure current and voltage for simple components, construct current-voltage characteristics, and interpret the relationship among voltage, current, and resistance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "three-atomic-p2-fresh-d-a-20261014-v1.goal-3",
+          "recordDigest": "sha256:719823362870d2bf2e9d6b86a55f183a9f354814a454d2fa4b54cb8475cf8446"
+        },
+        "second": {
+          "recordId": "three-atomic-p2-fresh-d-b-20261014-v1.actual-run-001.goal-3",
+          "recordDigest": "sha256:85a4d664074405dda163a54901c9a649f3630c14acf26e0272a2cfb9071f905d"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Erstpässe behalten die vollständige Kennlinienbeschreibung bei. Sie benennt sichere Kleinspannung, systematische persönliche Messung, Kennlinienerstellung und die Deutung von Spannung, Strom und Widerstand als eine zusammenhängende Kompetenz. Ich übernehme B-Verständnisevidenz, weil sie zulässige angeleitete Durchführung bei eigenständiger Erklärung und frischem Transfer ausdrücklich wahrt. Die P2-Pflicht zur Neukonstruktion ohne Vorlage ist ein separater, akzeptierter Profilbefund; der private P3-Autorennachfolger korrigiert ihn anhand der tatsächlich kompilierten zwei BY-Zielansichten. Die vorliegende Auflösung bestätigt ausschließlich den unveränderten Beschreibungskern am vollständigen geprüften P2-Kontext und erteilt keine P2- oder P3-Profilfreigabe. Eigene numerische Kontrolle für eine klar als eigene Simulation deklarierte geführte Messung: U=0,5/1/1,5 V und I=0,5/1/1,5 mA ergeben jeweils1000 Ω. U=I=0 ist kein definierter Quotient. Ein übernommener Wert I=2,5 mA bei U=3 V erfordert eine erneute gepaarte Ablesung statt sofortiger Modellverwerfung. Einheiten, sichere Grenzwerte, Systemzustand und Begründung bleiben verpflichtend. Der neue P3-Kontext benötigt eine eigene aktuelle unabhängige Prüfung, bevor Gesamt-M7 oder Adoption behauptet werden kann.",
+      "rationaleEn": "Both current independent first passes keep the complete current-voltage-characteristic description. Safe low voltage, systematic personal measurement, plotting, and physical interpretation of voltage, current and resistance form one coherent competence. I select B understanding evidence because it explicitly preserves guided acquisition with independent explanation and fresh transfer. The P2 demand for unaided construction is a separate accepted profile finding; the private P3 author successor corrects it using the two actually compiled BY target views. This resolution confirms only the unchanged description core under the complete reviewed P2 context and grants no P2 or P3 profile approval. Fresh own check for an explicitly own simulated guided series: U=0.5/1/1.5 V and I=0.5/1/1.5 mA each give1000 Ω. U=I=0 has no defined quotient. Copying I=2.5 mA into the U=3 V row calls for a fresh paired reading before rejecting the model. Units, safe limits, operating state, and justification remain mandatory. The P3 context needs its own current independent review before whole-M7 or adoption can be claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:83d358ce9fa6c8b7cb0e1d26ce06dbaa57e91d6ea5d10a6d44b95f19812231db"
+}

@@ -200,6 +200,7 @@ run_application_frontend_ci() {
   echo "--> Testing Goal Visualization QA Approval Model"
   npm run test:goal-visualization-qa-status
   npm run test:goal-visualization-qa-model
+  npm run test:goal-visualization-paths
 
   echo "--> Running Learner Goal Selection Validation"
   npm run validate:learner-goal-selection

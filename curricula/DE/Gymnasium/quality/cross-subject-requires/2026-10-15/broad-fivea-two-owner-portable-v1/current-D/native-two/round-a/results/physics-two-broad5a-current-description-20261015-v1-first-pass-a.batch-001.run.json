@@ -1,0 +1,52 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-two-broad5a-fresh-description-author-a-20261015-v1",
+  "campaignId": "physics-two-broad5a-current-description-20261015-v1-a",
+  "roundId": "physics-two-broad5a-current-description-20261015-v1-first-pass-a",
+  "batchId": "physics-two-broad5a-current-description-20261015-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:f87fd2c09afcb3fcd177216619c10668f92ec480fe632d19fc031cf09f30c775",
+  "bundleFingerprint": "sha256:aaa8d50e507f53f06f19da3b6a4ebf2d4b010bab47bfd4ea949e0ea015f95457",
+  "bookDigest": "sha256:5f14191a90646150e659ae33315f7ddda4ee97ca4391d7e77d2adbaef94e9658",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "modelVersion": "serving-build-unobserved",
+  "role": "candidate_author",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:49154ddd4919a5f6b0dda616893d8ec50e6152e02bf7ba186e359094093b6da4",
+  "independenceGroupId": "physics-two-broad5a-current-description-20261015-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:60d0421faaf3d2fde341e1c85de45321c43d29bf3187a72c9ab6fe4ade45883c"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f87fd2c09afcb3fcd177216619c10668f92ec480fe632d19fc031cf09f30c775"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:a9446e54412ec579a03f5921c601d88369f363de0349b2f45148a75ddc6cc198"
+    }
+  ],
+  "startedAt": "2026-10-15T00:56:37.963541+00:00",
+  "completedAt": "2026-10-15T00:56:37.964979+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:c3975b41814053042e831778819655283755e8b06fca56e6ff127bf124565f62",
+  "toolchainVersion": "codex-actual-two-description-author-v1"
+}

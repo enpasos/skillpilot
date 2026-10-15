@@ -1,3 +1,4 @@
+import { hasApplicabilityContexts } from '../utils/applicabilityContexts'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CompetenceTree } from '../components/CompetenceTree'
@@ -47,6 +48,7 @@ import {
   applyCompositionViewProjection,
   applyMatchedCompositionRouteGoalProjection,
   deriveRuntimeCompositionScope,
+  deriveRuntimeApplicabilityScope,
 } from '../utils/compositionViewRuntime'
 import {
   normalizeCompositionView,
@@ -852,9 +854,24 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const matchedTrainerCompositionView = currentCompositionResolution?.status === 'ready'
     ? currentCompositionResolution.view
     : null
+  const trainerSelectedScopesByLandscapeId = useMemo(() => new Map(landscapeEntries.map((entry) => [
+    entry.meta.landscapeId,
+    deriveRuntimeApplicabilityScope({
+      landscapeId: entry.meta.landscapeId,
+      activeLandscapeId: activeClass?.landscapeId,
+      rootLandscapeId: runtimeCatalogState.mode === 'package'
+        ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, entry.meta.landscapeId) ?? activeClass?.rootLandscapeId
+        : activeClass?.rootLandscapeId,
+      scopeEnabled: true,
+      activeFilter: activeClass?.activeFilter,
+      learnerPersonalCurriculum: activeClassPersonalCurriculum,
+    }),
+  ] as const)), [activeClass?.activeFilter, activeClass?.landscapeId, activeClass?.rootLandscapeId, activeClassPersonalCurriculum, landscapeEntries, runtimeCatalogState])
   const placementProjectedTrainerLandscapeEntries = useMemo(
-    () => applyGoalPlacementProjection(landscapeEntries, activeClassFilterIds),
-    [activeClassFilterIds, landscapeEntries],
+    () => landscapeEntries.flatMap((entry) => applyGoalPlacementProjection(
+      [entry], activeClassFilterIds, trainerSelectedScopesByLandscapeId.get(entry.meta.landscapeId),
+    )),
+    [activeClassFilterIds, landscapeEntries, trainerSelectedScopesByLandscapeId],
   )
   const levelTwoProjectedTrainerLandscapeEntries = useMemo(() => {
     if (!trainerCompositionRequest) {
@@ -875,6 +892,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     const compositionProjectedEntries = applyCompositionViewProjection(
       compositionSourceEntries,
       matchedTrainerCompositionView,
+      trainerSelectedScopesByLandscapeId.get(trainerCompositionRequest.landscapeId),
     )
     return compositionProjectedEntries
   }, [
@@ -882,6 +900,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     matchedTrainerCompositionView,
     placementProjectedTrainerLandscapeEntries,
     trainerCompositionRequest,
+    trainerSelectedScopesByLandscapeId,
   ])
   const projectedTrainerLandscapeEntries = useMemo(() => {
     if (!trainerCompositionRequest) {
@@ -923,15 +942,15 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     if (trainerCompositionTargetGoalIds) {
       return trainerCompositionTargetGoalIds.has(goal.id)
     }
-    if (!goalMatchesGlobalStageScope(
+    if (!hasApplicabilityContexts(goal) && !goalMatchesGlobalStageScope(
       goal,
       activeClass.personalConfig ?? {},
       { rootLandscapeId: activeClass.rootLandscapeId },
     )) {
       return false
     }
-    return goalMatchesFilters(goal, activeClassFilterIds)
-  }, [activeClass, activeClassFilterIds, trainerCompositionTargetGoalIds])
+    return goalMatchesFilters(goal, activeClassFilterIds, trainerSelectedScopesByLandscapeId.get(goal.landscapeId ?? activeClass.landscapeId))
+  }, [activeClass, activeClassFilterIds, trainerCompositionTargetGoalIds, trainerSelectedScopesByLandscapeId])
   const coursePlanActiveLandscapeEntry = useMemo(
     () => coursePlanProjectedTrainerLandscapeEntries.find(
       (entry) => entry.meta.landscapeId === activeClass?.landscapeId,
@@ -957,15 +976,15 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     if (coursePlanCompositionTargetGoalIds) {
       return coursePlanCompositionTargetGoalIds.has(goal.id)
     }
-    if (!goalMatchesGlobalStageScope(
+    if (!hasApplicabilityContexts(goal) && !goalMatchesGlobalStageScope(
       goal,
       activeClass.personalConfig ?? {},
       { rootLandscapeId: activeClass.rootLandscapeId },
     )) {
       return false
     }
-    return goalMatchesFilters(goal, activeClassFilterIds)
-  }, [activeClass, activeClassFilterIds, coursePlanCompositionTargetGoalIds])
+    return goalMatchesFilters(goal, activeClassFilterIds, trainerSelectedScopesByLandscapeId.get(goal.landscapeId ?? activeClass.landscapeId))
+  }, [activeClass, activeClassFilterIds, coursePlanCompositionTargetGoalIds, trainerSelectedScopesByLandscapeId])
   const coursePlanGoalIndex = useMemo(() => {
     const result = new Map<string, UiGoal>()
     coursePlanGoalIndexAll.forEach((goal, goalId) => {
