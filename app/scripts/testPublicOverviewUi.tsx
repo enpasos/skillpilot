@@ -1515,6 +1515,9 @@ try {
     // Reading mode is a shareable URL choice, independent of media playback.
     await page.goto(`${origin}/whitepaper/${language}?source=preview#whitepaper`)
     await page.locator('#whitepaper .prose table').waitFor()
+    // The loaded document schedules its anchor focus in an animation frame.
+    // Wait for that navigation to finish before testing another focus target.
+    await page.waitForFunction(() => document.activeElement?.id === 'whitepaper')
     const fullMode = page.getByTestId('whitepaper-reading-mode-full')
     const storyMode = page.getByTestId('whitepaper-reading-mode-story')
     assert.equal(await fullMode.getAttribute('aria-current'), 'page', 'full text remains the default')
