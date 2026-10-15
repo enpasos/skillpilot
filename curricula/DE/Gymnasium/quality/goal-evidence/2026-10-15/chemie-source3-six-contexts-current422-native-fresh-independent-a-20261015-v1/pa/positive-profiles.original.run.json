@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "87248a8b-bcf4-422b-9529-319733710816",
+  "bundleFingerprint": "sha256:a6815c58216088332618f1f4ff79dba8c473675dcb3ec6610563c66abb7e76a2",
+  "bookDigest": "sha256:9a9de46a55fa59f14da8f93eea259fbdccaed9e565bcd406a0ce6d248d677d9b",
+  "provider": "OpenAI Codex agent environment",
+  "model": "unknown exact model; instruction identity: Codex based on GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2-original-design-review",
+  "promptFingerprint": "sha256:73c3030b0b816bf67b9a824130322fbc74245c91017fd1d2acea98ebc0dda949",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:39f530be795837c69080735bc203f6de39c6abf6bd9d58ae72d05c5ccb91a3b9",
+  "independenceGroupId": "chemie-source3-six-contexts-current422-native-20261015-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+    "93a7ce4d-1c90-568c-9368-cac423011ef9",
+    "d815960a-21ab-5a42-8b23-ecd20d03db19"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:7d832d8ad0da0383739e6af428a2123801697944705133c18636092089c2a95d"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:4386a276a03f9e5521b46dd14f4a4c529097f1afa7618fa5da2befd6348b9042"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:a2587f052db8c85bcd234e4aefacd65a99e18702b14b0654b37d003520787e07"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:73c3030b0b816bf67b9a824130322fbc74245c91017fd1d2acea98ebc0dda949"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-15T07:45:26.767214+00:00",
+  "completedAt": "2026-10-15T07:47:07.458Z",
+  "status": "completed",
+  "outputDigest": "sha256:922b57ea1fbdd455bc4e04137fde1e334351f1ae1bdb58c5ff8f9f2ed02cdb5e",
+  "toolchainVersion": "repository-stock-positive-goal-evidence-v2"
+}

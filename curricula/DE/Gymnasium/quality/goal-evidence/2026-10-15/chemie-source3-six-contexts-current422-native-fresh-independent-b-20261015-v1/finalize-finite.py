@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: Apache-2.0
+import json,pathlib,hashlib,datetime
+repo=pathlib.Path.cwd();out=pathlib.Path(__file__).parent;prep=out.parent/'chemie-source3-six-contexts-current422-native-preparation-root-20261015-v1'
+def sha(p):return 'sha256:'+hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def bind(p):
+ p=pathlib.Path(p);return {'path':p.relative_to(repo).as_posix(),'sha256':sha(p),'bytes':p.stat().st_size}
+def save(n,x):(out/n).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+first=json.load(open(out/'FIRST.original-scientific-native.seal.json'));sel=json.load(open(prep/'NEUTRAL.native-nine-physical-inputs.json'));campaign=json.load(open(out/'round-b/description-review-campaign.json'));batch=campaign['batches'][0]['batchId'];results=out/'round-b/results';records=results/(batch+'.records.jsonl');run=results/(batch+'.run.json')
+for r in first['files']:
+ p=repo/r['path'];assert sha(p)==r['sha256'] and p.stat().st_size==r['bytes'],p
+canonical=json.load(open(sel['wholeCanonical']['path']));goals={g['id']:g for g in canonical['goals']}; authored=json.load(open(sel['wholeThreeGoals']['path']));assert all(goals[g['id']]==g for g in authored)
+rr=[json.loads(l) for l in records.read_text().splitlines()];assert [r['goalId'] for r in rr]==sel['goalIds'];assert [r['decision'] for r in rr]==['keep']*6+['block']*3;assert json.load(open(run))['outputDigest']==sha(records)
+assets=json.load(open(out/'MV3/ASSETS.exact-from-canonical-and-neutral-map.json'))
+for a in assets['rows']:
+ assert sha(repo/a['physicalSource']['path'])==a['physicalSource']['sha256']
+ for d in a['inspectionDerivatives']:assert sha(repo/d['path'])==d['sha256']
+for name in ['native-round-b-batch','native-round-b-campaign','memory-three.stock-check','visualization-three.stock-model-check']:
+ assert json.load(open(out/'receipts'/f'{name}.actual.json'))['exitCode']==0
+for p in out.rglob('*.json'):json.load(open(p))
+for p in out.rglob('*.jsonl'):
+ for l in p.read_text().splitlines():json.loads(l)
+assert not any(p.is_symlink() for p in out.rglob('*'))
+source_map={'schemaVersion':1,'role':'Portable committed sources behind historical sparse execution paths; host is not a persistent input dependency','stockSources':[]}
+for rel in ['app/src/utils/authoring/compositionViewAuthoring.ts','app/src/utils/authoring/canonicalAuthoring.ts','app/scripts/validateGoalDescriptionReviewCampaign.ts','app/scripts/validateGoalDescriptionReviewCampaignResults.ts']:
+ p=repo/rel;host=repo/'tmp/chemie-m7-resumed-20261015/source3-six-native-host'/rel;assert sha(p)==sha(host);source_map['stockSources'].append(bind(p))
+source_map['normalMemoryAndVModelSources']=[bind(repo/r) for r in ['app/scripts/memoryCardReview.ts','app/scripts/goalVisualizationQaModel.ts','app/src/utils/goalVisualizationQaStatus.ts']]
+save('REPRODUCIBILITY.portable-stock-execution-source-map.json',source_map)
+entries=[('original_first_scientific_seal',out/'FIRST.original-scientific-native.seal.json'),('native_round_b_campaign',out/'round-b/description-review-campaign.json'),('native_round_b_input',out/'round-b/description-review-input.json'),('original_native_records',records),('actual_original_run',run),('original_whole_science_notes_and_holds',out/'FIRST.original-scientific-context-notes.json'),('actual_read_inventory',out/'INPUTS.original-actual-read-and-visibility.json'),('own_calculations',out/'read/CALCULATIONS.original-B.actual.json'),('own_compiled_course_routes',out/'read/compiled-four-course-routes.actual.json'),('own_informed_mv_disclosure',out/'MV3/EXPOSURE-and-actual-MV3-review.json'),('normal_three_memory_config',out/'MV3/memory-three.config.json'),('normal_three_memory_records',out/'MV3/memory-three.review.jsonl'),('normal_empty_card_records',out/'MV3/memory-three.cards.review.jsonl'),('normal_three_visualization_records',out/'MV3/visualization-three.qa.json'),('actual_visual_assets_and_derivatives',out/'MV3/ASSETS.exact-from-canonical-and-neutral-map.json'),('portable_stock_source_map',out/'REPRODUCIBILITY.portable-stock-execution-source-map.json'),('readme',out/'README.md')]
+save('NEUTRAL.original-B-native-description-plus-informed-MV3.json',{'schemaVersion':1,'recordedAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'originalRunId':first['runId'],'descriptionReviewer':'internal_ai_reviewer groupB; original fresh peerblind first pass','descriptionOriginalFirstSealedBeforeLaterExposure':True,'additionalMVRole':'Own informed actual review; V is not peerblind','goalIds':sel['goalIds'],'newSourceGoalIds':sel['newSourceGoalIds'],'descriptionDecisions':{'keep':sel['existingAffectedContextIds'],'block':sel['newSourceGoalIds']},'inputSelector':bind(prep/'NEUTRAL.native-nine-physical-inputs.json'),'nativeBookInputs':{k:sel[k] for k in ['nativePDF','nativeHTML','nativeBookModel','nativeReviewInput']},'outputs':[{'role':role,**bind(p)} for role,p in entries],'finiteSealPath':(out/'FILES.finite-own-artifacts.seal.json').relative_to(repo).as_posix(),'status':{'newStrictClosures':0,'restoredBindings':0,'M3NoMemoryNeeded':3,'V3KeepApprovedAiInformed':3,'newPRecords':0,'newARecords':0,'newCards':0,'newLearningImages':0,'sourceCourseAcquisitionHoldsOpen':True,'humanApproval':False,'humanTrial':False,'activeIntegration':False}})
+save('CHECK.finite-integrity.actual.json',{'schemaVersion':1,'checkedAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'passed','originalFirstFilesAllUnchanged':True,'exactNineNativeRecordOrder':True,'wholeThreeCanonicalObjectsEqualBoundAuthorInputs':True,'normalBatchAndCampaignPassed':True,'normalScopedMemoryCheckerPassed':True,'stockVModelAndCurrentHashPredicatesPassed':True,'allJsonAndJsonlParsed':True,'physicalOwnRootSymlinks':0,'gitBackedWholeRepositorySymlinkGate':'not run here; root-owned separate gate','sourceAssetChanges':0,'newLearningImages':0,'humanApproval':False,'humanTrial':False})
+files=sorted(p for p in out.rglob('*') if p.is_file() and p.name!='FILES.finite-own-artifacts.seal.json')
+save('FILES.finite-own-artifacts.seal.json',{'schemaVersion':1,'sealedAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'purpose':'End of this own finite original B description plus informed M3/V3 package; no later own writes','fileCount':len(files),'files':[bind(p) for p in files],'originalFirstUnchanged':True,'humanApproval':False,'humanTrial':False,'newStrictClosures':0,'restoredBindings':0})
+print(json.dumps({'finiteFiles':len(files),'seal':(out/'FILES.finite-own-artifacts.seal.json').relative_to(repo).as_posix(),'originalFirstUnchanged':True,'nativeD':'6keep/3block','M':'3no_memory_needed','V':'3KEEP informed approvedAI','holdsOpen':True},indent=2))

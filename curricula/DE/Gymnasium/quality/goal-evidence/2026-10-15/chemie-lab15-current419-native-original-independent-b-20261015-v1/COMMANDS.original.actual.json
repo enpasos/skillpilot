@@ -1,0 +1,34 @@
+{
+  "recordedAtUTC": "2026-10-15T08:25:46.431193+00:00",
+  "scope": "Actual original-run command inventory, no invented per-command wall-clock timestamps. Full invocation/output evidence is also in the parent conversation tool stream.",
+  "commands": [
+    "python3 read-input-unit.py1 through15 (own script; individual commands recorded in READ.units.actual.jsonl)",
+    "python3 author-original-decisions.py",
+    "python3 calculate-original.py",
+    "pdftoppm -f3 -l17 -scale-to1200 -png <native book.pdf> <own visual/native-page>",
+    "view_image five PDF sheets for actual pages3–17",
+    "node inspect-native-html.cjs: initial file origin; then actual resolved same-origin interception with unchanged native HTML and current image bytes",
+    "view_image HTML-resolved-native-page-06.png",
+    "view_image whole original cfa5c1e4 image",
+    "Stock validator source/schema reads; no stock results validation has yet run.",
+    "Web primary manufacturer reference search for observed NaCl conductivity inconsistency"
+  ],
+  "observedTechnicalProblems": [
+    {
+      "command": "Initial read-input-unit.py5",
+      "error": "IndexError while splitting E4:90 with colon-space assumption",
+      "repair": "Parser now splits at colon and strips optional spaces; case/profile05 fully reread successfully. No source artifact changed."
+    },
+    {
+      "command": "Initial raw file:// native HTML load",
+      "error": "Root-relative /assets paths did not resolve;15 images unladen.",
+      "repair": "Read-only Playwright request routing supplied unchanged HTML and exact existing public image bytes under one origin;15/15 images loaded, no overflow."
+    },
+    {
+      "command": "Primary MT PDF screenshot/download",
+      "error": "Web screenshot timeout; direct urllib fetch403.",
+      "effect": "No downloaded document or exact conductivity replacement is claimed. Hach primary standard supplies the recorded concentration-scale reference."
+    }
+  ],
+  "writes": "Only own reviewer root. No active data, author/preparation root, registry, ledger, host, Git/CI, runtime or plugin changes."
+}

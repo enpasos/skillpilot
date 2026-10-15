@@ -1,0 +1,96 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-lab15-whole-author-20261015-06",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+  "goalFingerprint": "sha256:491990b5ed7e48ce4cdc7bb0eda47b92fcd6240e14a3968dbb0f75d14d8fad80",
+  "reviewInputFingerprint": "sha256:59172472936686a6b0656dca1f4baeb08fd84be43812cf5db4b98a3f613389a1",
+  "profileFingerprint": "sha256:ea71caf200018bf990a482ae8998203218dd6df511d5f6efff937d65a467d2ec",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-15T00:00:00.000Z",
+  "reviewer": "codex-chemie-laboratory-communication15-author",
+  "reason": "Unreviewed author design E0/G0. Two complete bilingual cases and120 rubric rows across15 goals. Exact material sha256:237164761cab4389b6d3de236f3193c7708b5db0116db47cb660cf08feea7c5d. No independent D/P/A/M/V vote, learner execution or human approval. Legacy status name is preserved by the production schema; it does not create a human prerequisite for machine M7.",
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "reviewRunIds": [],
+  "dissent": [
+    "Source/course/view/acquisition holds remain separate and open; canonical applicability is not source or course clearance. Practical source operators require future actual observable performance; blank observation fields are intentional and no prior learner trial is required for machine M7."
+  ],
+  "profile": {
+    "archetype": "experiment",
+    "expectations": [
+      {
+        "id": "e1",
+        "essentialUnderstandingDe": "Isolierungsverfahren folgen Unterschieden in Löslichkeit, Teilchengröße oder Temperaturverhalten.",
+        "essentialUnderstandingEn": "Isolation methods follow differences in solubility, particle size or temperature response.",
+        "observablePerformanceDe": "Trennfolge aus Löslichkeit und Teilchengröße begründen. Aus temperaturabhängiger Löslichkeit selektive Kristallisation statt Verdampfen aller Stoffe wählen.",
+        "observablePerformanceEn": "Justify separation sequence using solubility and particle size. Use temperature-dependent solubility to choose selective crystallisation over evaporating everything."
+      },
+      {
+        "id": "e2",
+        "essentialUnderstandingDe": "Sichere Isolierung und Reinigung verlangen tatsächliches Trennen, Waschen und Trocknen.",
+        "essentialUnderstandingEn": "Safe isolation and purification require actual separation, washing and drying.",
+        "observablePerformanceDe": "Eigene Filtration, sparsames Waschen und sichere Trocknung tatsächlich zeigen. Waschen/Trocknen und sichere Planung begründen; tatsächliche Ausführung bleibt zusätzlich im Fall06-a erforderlich.",
+        "observablePerformanceEn": "Actually demonstrate filtration, limited rinsing and safe drying. Justify washing/drying and safe planning; actual execution is additionally required in case06-a."
+      },
+      {
+        "id": "e3",
+        "essentialUnderstandingDe": "Mutterlauge, Waschverluste und Feuchte müssen im Originalprotokoll sichtbar bleiben.",
+        "essentialUnderstandingEn": "Mother liquor, washing losses and moisture must remain visible in the original record.",
+        "observablePerformanceDe": "Originalprotokoll mit Massenkonstanz, Verlustorten und Blindprobe führen. Mutterlauge, Waschmenge, Temperatur und Trockenmasse als benötigte Protokollgrößen festlegen.",
+        "observablePerformanceEn": "Keep an original record including constant mass, loss locations and blank. Specify mother liquor, wash volume, temperature and dry mass as required record items."
+      },
+      {
+        "id": "e4",
+        "essentialUnderstandingDe": "Reinheit und Ausbeute unterscheiden sich durch Stoffmasse und Bezugsnenner.",
+        "essentialUnderstandingEn": "Purity and yield differ in component mass and reference denominator.",
+        "observablePerformanceDe": "95,0% Reinheit und85,5% Rückgewinnung mit passenden Nennern unterscheiden. 4,00 g theoretisches A,95% Reinheit und57% A-Rückgewinnung korrekt begrenzen.",
+        "observablePerformanceEn": "Distinguish95.0% purity and85.5% recovery using appropriate denominators. Correctly bound4.00 g theoretical A,95% purity and57% A recovery."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "chemically-meaningful-change",
+        "textDe": "Frisch enthält das Gemisch zusätzlich gelösten Zucker. Wähle selbst eine weitere Prüfung und erkläre, weshalb Wasserverdampfen nun keine selektive Salzreinigung garantiert. Im frischen Modell fällt auch die Löslichkeit von B beim Kühlen stark. Entscheide ohne Methodenvorgabe, ob Kristallisation noch ausreichend selektiv ist, und entwirf eine unterscheidende Reinheitsprüfung.",
+        "textEn": "A fresh mixture additionally contains dissolved sugar. Independently choose a further test and explain why evaporating water no longer guarantees selective salt purification. In the fresh model B solubility also falls strongly on cooling. Independently decide whether crystallisation remains selective and devise a discriminating purity test."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "lab15-06-a",
+        "taskDemandDe": "Vollständige eigene Materialien, Protokoll und Daten: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-laboratory-communication-fifteen-current419-whole-author-20261015-v1/materials/thirty-complete-DE-EN-cases.author.json #lab15-06-a. Führe das geplante Verfahren aus, protokolliere Originalmengen und Verluste und schlage eine Reinheitsprüfung vor. Berechne aus den Lehrdaten Produktreinheit und NaCl-Rückgewinnung getrennt. Entscheide, ob Filtration allein genügt.",
+        "taskDemandEn": "Complete original materials, protocol and data: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-laboratory-communication-fifteen-current419-whole-author-20261015-v1/materials/thirty-complete-DE-EN-cases.author.json #lab15-06-a. Execute the plan, record original quantities/losses and propose a purity test. Calculate product purity and NaCl recovery separately from the practice data. Decide whether filtration alone suffices.",
+        "expectedPerformanceDe": "Filtration entfernt Sand, nicht gelöstes NaCl; Kristallisation trennt Wasser ab. Reinheit=2,565/2,70=95,0%; NaCl-Rückgewinnung=2,565/3,00=85,5%; bloße Produktmasse ergibt90% und ist keine reine NaCl-Ausbeute. Zu viel Waschwasser erhöht Verdampfungsaufwand; ungetrocknete Kristalle verfälschen Masse. Eigene Ausführung muss beobachtet werden.",
+        "expectedPerformanceEn": "Filtration removes sand, not dissolved NaCl; crystallisation removes water. Purity=2.565/2.70=95.0%; NaCl recovery=2.565/3.00=85.5%; gross product mass gives90%, not pure NaCl yield. Excess rinse water increases evaporation demand; wet crystals distort mass. Own performance must be observed.",
+        "understandingFocusDe": "Gebundenes Fallmaterial sha256:237164761cab4389b6d3de236f3193c7708b5db0116db47cb660cf08feea7c5d. Frisch enthält das Gemisch zusätzlich gelösten Zucker. Wähle selbst eine weitere Prüfung und erkläre, weshalb Wasserverdampfen nun keine selektive Salzreinigung garantiert.",
+        "understandingFocusEn": "Bound case material sha256:237164761cab4389b6d3de236f3193c7708b5db0116db47cb660cf08feea7c5d. A fresh mixture additionally contains dissolved sugar. Independently choose a further test and explain why evaporating water no longer guarantees selective salt purification."
+      },
+      {
+        "id": "lab15-06-b",
+        "taskDemandDe": "Vollständige eigene Materialien, Protokoll und Daten: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-laboratory-communication-fifteen-current419-whole-author-20261015-v1/materials/thirty-complete-DE-EN-cases.author.json #lab15-06-b. Plane am vollständigen Modell die Kristallisation; berechne theoretisch abgeschiedenes A sowie Produktreinheit und Rückgewinnung. Begründe Waschen und getrennte Mutterlauge; erkläre, weshalb diese Modellrechnung für sich keine praktische Ausführung beweist.",
+        "taskDemandEn": "Complete original materials, protocol and data: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-laboratory-communication-fifteen-current419-whole-author-20261015-v1/materials/thirty-complete-DE-EN-cases.author.json #lab15-06-b. Plan crystallisation using the complete model; calculate theoretical A crystallisation, product purity and recovery. Justify washing and separate mother liquor; explain why this model calculation alone proves no practical execution.",
+        "expectedPerformanceDe": "Bei50°C lösen sich6,00 g A; bei20°C bleiben2,00 g A gelöst, theoretisch4,00 g kristallisieren. B könnte vollständig gelöst bleiben, Verunreinigung ist durch Mutterlaugenreste möglich. Produktreinheit95%; A-Rückgewinnung57%; bezogen auf theoretische Kristallmasse85,5%. Diese Nenner beantworten verschiedene Fragen. Reale Verteilung/Temperatur muss geprüft werden.",
+        "expectedPerformanceEn": "At50°C6.00 g A dissolves; at20°C2.00 g remains dissolved, so theoretically4.00 g crystallises. B could remain dissolved; retained mother liquor can contaminate crystals. Product purity95%; A recovery57%; relative to theoretical crystals85.5%. These denominators answer different questions. Real partitioning/temperature needs checking.",
+        "understandingFocusDe": "Gebundenes Fallmaterial sha256:237164761cab4389b6d3de236f3193c7708b5db0116db47cb660cf08feea7c5d. Im frischen Modell fällt auch die Löslichkeit von B beim Kühlen stark. Entscheide ohne Methodenvorgabe, ob Kristallisation noch ausreichend selektiv ist, und entwirf eine unterscheidende Reinheitsprüfung.",
+        "understandingFocusEn": "Bound case material sha256:237164761cab4389b6d3de236f3193c7708b5db0116db47cb660cf08feea7c5d. In the fresh model B solubility also falls strongly on cooling. Independently decide whether crystallisation remains selective and devise a discriminating purity test."
+      }
+    ]
+  }
+}

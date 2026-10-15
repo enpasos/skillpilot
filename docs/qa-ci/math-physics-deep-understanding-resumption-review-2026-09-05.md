@@ -2,6 +2,18 @@
 
 ## Aktuelle Chemie-Fortsetzung – 15. Oktober 2026
 
+Der [Folgecheckpoint der Quellen- und Laborarbeit](chemie-source-lab-current422-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Kandidaten **319/422 (75,6 %)**: vier neue
+fachliche Abschlüsse, alle bisherigen 315 erhalten, acht betroffene
+Bestandskontexte erneut bestätigt, sechs Pflichtchecks PASS und 103 Ziele
+offen. Ganze Quellen-, Kurs-, Erwerbs- und Memory-Sichtbefunde bleiben offen;
+aktiv bleiben **231/402, M6**. Mathematik, Physik und Biologie bleiben
+unverändert M7. Der Vorgänger `e74e6536` hat alle 14 GitHub-Checks bestanden;
+der Folgecheckpoint benötigt seinen eigenen erfolgreichen Lauf.
+Die nachstehenden Zahlen dokumentieren ihre jeweiligen historischen Stände.
+
+## Vorheriger Chemie-Analytikstand – 15. Oktober 2026
+
 Der [stabile Analytik-Zwischenstand](chemie315-acid10-checkpoint-2026-10-15.md)
 bestätigt im inaktiven zentralen Kandidaten **315/419 (75,2 %)**: drei neue
 fachliche Abschlüsse, alle bisherigen 312 erhalten, null reine
