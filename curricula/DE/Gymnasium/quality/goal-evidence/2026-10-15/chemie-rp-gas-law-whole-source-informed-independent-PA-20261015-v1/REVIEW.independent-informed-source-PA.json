@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-15",
+  "role": "Independent informed scientific source/P/semantic-atomicity review; no D role or normal QA record",
+  "independence": {
+    "authorContributionToReviewedCandidate": false,
+    "authorMaterialsReadAsInputs": true,
+    "peerVerdictsReadAsAuthority": false,
+    "priorPeerFirstArtifactsRead": false,
+    "currentSelectedNormalKpPReviewRowRead": false,
+    "ownScientificDerivation": "FIRST.own-independent-science.md",
+    "ownDeterministicArithmetic": "checks/ACTUAL.own-independent-arithmetic.json"
+  },
+  "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+  "primarySource": {
+    "sha256": "sha256:8d701aad7c4de870d6e20075ec49c04601d5cb51a90f51443a15be8efd62c4e3",
+    "physicalAndPrintedPagesReadInFullTextAndRendered": [19, 20, 50, 51, 52],
+    "correctCellPage": 52,
+    "correctContext": "Framework block 7 illustrative enrichment/interconnection; outside compulsory numbered block 7.5",
+    "sourcePermitsOptionalGKUse": true,
+    "sourcePermitsOptionalLKUse": true,
+    "sourceRequiresThisItemForAllGKOrLK": false,
+    "sourceMakesThisItemLKExclusive": false,
+    "separateNumberedWorWPBlock": false,
+    "currentWebBytesProvenIdenticalToPinnedLocalPdf": false
+  },
+  "wholeSourceScientificCoverage": {
+    "decision": "joint_topic_coverage_supported_with_integration_held",
+    "contributors": [
+      {
+        "goalId": "5db51274-dc1e-5e5a-80ad-4df26add7d42",
+        "matchTypeRelativeToWholeCell": "partial",
+        "actualContribution": "General quantitative p,V,n,T ideal-gas state model, conditions, consistent units and model applicability",
+        "aloneCoversWholeCell": false
+      },
+      {
+        "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+        "matchTypeRelativeToWholeCell": "partial",
+        "actualContribution": "Kp pressure-form gas equilibrium through derived relation to Kc, standards, gas stoichiometry and limits",
+        "aloneCoversWholeCell": false
+      }
+    ],
+    "twoPartialLabelsAloneCountAsCoverage": false,
+    "wholeCellScientificUnionCovered": true,
+    "exactMasteryEquivalence": false,
+    "falseGasDetectionEdgeScientificallyDefensible": false,
+    "acceptedSourceClosureIncludingCoursePlacement": false,
+    "other324SourceDecisionsReReviewed": false
+  },
+  "newGoalReview": {
+    "goalId": "5db51274-dc1e-5e5a-80ad-4df26add7d42",
+    "wholeBodyAndBothDEENCasesAndFullRawProfileRead": true,
+    "semanticAtomic": true,
+    "semanticAtomicityDecision": "atomic",
+    "atomicityReason": "Application, conditional state-change explanation and applicability judgment are facets of one gas-state modeling competence; no unrelated routines are bundled",
+    "scientificNumericErrors": 0,
+    "DEENScientificEquivalence": true,
+    "rawPScientificDecision": "scientifically_suitable_with_one_minor_boundary_condition_clarification_before_adoption",
+    "allRawExpectationsSupportedByCompleteCasePair": true,
+    "noFixedTaskQuotaInferred": true,
+    "normalPGranted": false,
+    "normalAGranted": false,
+    "observedLearnerPerformance": false
+  },
+  "existingKpReview": {
+    "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+    "wholeGoalAndBothDEENCasesAndOriginalScientificProfileRead": true,
+    "semanticAtomic": true,
+    "numericDerivationAndModelLimitsSoundUnderStatedDefinitions": true,
+    "scientificNumericErrors": 0,
+    "reusedNormalPReviewAsOwnJudgment": false,
+    "visualImageReviewPerformed": false,
+    "existingGoalChangesRecommended": false
+  },
+  "findings": [
+    {
+      "id": "RP-PA-F1",
+      "severity": "minor_material_boundary_ambiguity",
+      "evidence": "Case a starts with a rigid sealed vessel; its transfer then doubles gas volume without expressly replacing the rigidity assumption",
+      "numericResultIncorrect": false,
+      "requiresNewGoalOrNewTask": false,
+      "smallestCorrection": {
+        "scope": "Only prefix transfer-a DE/EN text consistently in the complete case and duplicated raw profile locations",
+        "prefixDe": "Für die folgende Variante wird dieselbe abgeschlossene Gasmenge in einem System mit veränderlichem Volumen betrachtet. ",
+        "prefixEn": "For this variation, consider the same sealed amount of gas in a system with variable volume. ",
+        "wholeCasePointers": ["/cases/0/freshIndependentTransferDe", "/cases/0/freshIndependentTransferEn"],
+        "rawProfilePointers": ["/profile/variationAxes/0/textDe", "/profile/variationAxes/0/textEn", "/profile/applicationCaseBriefs/0/understandingFocusDe", "/profile/applicationCaseBriefs/0/understandingFocusEn"],
+        "authorOrHistoricalBytesChangedHere": false
+      }
+    },
+    {
+      "id": "RP-PA-F2",
+      "severity": "open_source_course_integration",
+      "evidence": "Optional views are unregistered authorship. Current defaults have CrossStage scopes, candidates SekII scopes; Kp still carries LK and BY/HE metadata. No explicit additive selection route or its prerequisite access is demonstrated",
+      "sameLiteralScopeCollisionWithCurrentDefaults": false,
+      "automaticViewActivationAllowedByThisReview": false,
+      "smallestNextWork": "Prove an explicit reviewed optional selection and consistent RP/course projection, including prerequisite access; keep defaults byte-exact and retain source placement HOLD until then",
+      "implementedOptInUXClaimed": false
+    }
+  ],
+  "bounds": {
+    "DReviewPerformed": false,
+    "normalQARecordsWritten": 0,
+    "newM3Accepted": false,
+    "newM7Accepted": false,
+    "newStrictCount": 0,
+    "humanApproval": false,
+    "humanTrial": false,
+    "physicalMeasurementsPerformed": false,
+    "learnerActionsObserved": false,
+    "activeWrites": 0,
+    "runtimeWrites": 0,
+    "registryWrites": 0,
+    "gitWrites": 0,
+    "centralRuns": 0,
+    "fullBuilds": 0,
+    "authorAndHistoricalArtifactsChanged": false
+  }
+}

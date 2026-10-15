@@ -1,0 +1,13 @@
+# Eigene gezielte informierte Nachprüfung der sechs Transfertexte
+
+15. Oktober 2026. Additive unabhängige fachliche Nachprüfung ausschließlich von RP-PA-F1 des eigenen vorherigen Pakets. Die ursprüngliche FIRST-Wissenschaft, ihr Review und ihre Versiegelung bleiben unverändert. Keine D-Rolle, kein neuer unabhängiger Vollreview und keine Übernahme fremder Peerurteile.
+
+Der neue Autorenselector mit SHA-256 `bd7778cab102fcebfe4230fe30e04b1a58ef07265488ea9c740a291bb9e8ac40` bindet einen vollständigen Fall- und einen vollständigen rohen P-Nachfolger. Der strukturelle Vergleich mit den ursprünglichen Dateien ergibt exakt zwei geänderte Fallstrings, vier entsprechende P-Duplikate und ausschließlich zusätzlich die ehrliche Umadressierung von `fullCasesPath` auf das vollständige Nachfolgermaterial. Fall b und alle anderen Felder sind strukturell exakt gleich. Die drei deutschen beziehungsweise drei englischen Transferfassungen sind jeweils identisch.
+
+Die neue Randbedingung ist fachlich eindeutig: Ein geschlossener Modellbehälter mit beweglicher Wand ersetzt für diese Variante ausdrücklich den starren Ausgangsbehälter. Bei unverändert n=0,0800 mol und konstant 50,0 °C wird V von 2,00 auf 4,00 L verändert. Eine geschlossene Gasmenge kann bei beweglicher Wand ihr Volumen ändern; die Starrheitsannahme des Ausgangsfalls wird hier gerade nicht weiterverwendet. T=323,15 K und V=0,00400 m³ ergeben unabhängig p=nRT/V=53 733,382 Pa=0,53733382 bar mit dem vorgegebenen R=8,314 Pa m³/(mol K). Die vorliegende Rundung 0,537 bar stimmt. DE und EN fordern übereinstimmend Rechnung und Begründung der konstanten Stoffmenge und absoluten Temperatur.
+
+**Eigene Entscheidung:** RP-PA-F1 ist für exakt diese sechs Nachfolgerstrings erledigt. Das korrigierte rohe P-Material ist auf Grundlage des früheren vollständigen informierten P-Reviews und dieses exakt begrenzten Deltas fachlich geeignet; die zuvor nötige Klarstellung ist erfüllt. Die frühere Atomaritätsentscheidung bleibt durch dieses Materialdelta unberührt. Eine Musterlösung oder ein erwarteter Transfer ist weder eine tatsächliche Lernerhandlung noch eine Messung. Dies ist keine normale P-Gewährung und keine menschliche Freigabe.
+
+RP-PA-F2 sowie Quellen-/Kurs-/Opt-in-HOLD bleiben vollständig bestehen. Es wurden weder Views noch Ziele, Quellenzuordnungen, Normal-QA, Registry, Runtime oder Git geändert. Keine neue D-Runde, kein zentraler Lauf, kein Build und keine M3-/M7-/Strict-Zählung. Die akzeptierte P-Eignung gilt dem adressierten Nachfolger, nicht rückwirkend den unveränderten Originalstrings.
+
+Eigene wissenschaftliche Darstellung: CC-BY-4.0. Technischer Prüfer: Apache-2.0. Eingangsbytes und eigene Artefakte sind im endlichen Selector und Seal gebunden.

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "role": "Raw understanding profile body for later independent P review; no normal review record or fingerprints minted",
+  "goalId": "5db51274-dc1e-5e5a-80ad-4df26add7d42",
+  "profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "e1",
+        "essentialUnderstandingDe": "Die ideale Gasgleichung verbindet vier Zustandsgrößen; absolute Temperatur, absoluter Druck und zu R passende Einheiten sind Teil des Modells.",
+        "essentialUnderstandingEn": "The ideal gas equation relates four state quantities; absolute temperature, absolute pressure and units consistent with R are part of the model.",
+        "observablePerformanceDe": "Im Fall a Kelvin und m³ begründet einsetzen, im Fall b Überdruck zu absolutem Druck umrechnen und Stoffmenge bestimmen; p,V,n,T jeweils deuten.",
+        "observablePerformanceEn": "Use justified Kelvin and m³ values in case a; convert gauge to absolute pressure and determine amount in case b; interpret all four quantities."
+      },
+      {
+        "id": "e2",
+        "essentialUnderstandingDe": "Eine Zustandsänderung folgt aus dem gemeinsamen Modell und ausdrücklich festgehaltenen Bedingungen; eine Proportionalität ohne feste Größen genügt nicht.",
+        "essentialUnderstandingEn": "State-change predictions follow from the joint model and explicitly fixed conditions; proportionality without fixed quantities is insufficient.",
+        "observablePerformanceDe": "Unbekannte p, V und T bestimmen, Druck- und Volumenänderungen chemisch-physikalisch erklären und den Verlust der Annahme n=konstant beim Ventilöffnen erkennen.",
+        "observablePerformanceEn": "Find unknown p, V and T, explain pressure/volume changes physically and recognize that opening a valve removes the assumption of fixed n."
+      },
+      {
+        "id": "e3",
+        "essentialUnderstandingDe": "Ideales Gas ist eine Näherung mit vernachlässigtem Eigenvolumen und vernachlässigten Wechselwirkungen; Einheitenrichtigkeit beweist keine Modellgültigkeit.",
+        "essentialUnderstandingEn": "An ideal gas approximation neglects molecular volume and interactions; dimensional correctness does not establish model validity.",
+        "observablePerformanceDe": "Geringe Dichte und Abstand zum Phasenwechsel als günstige Bedingungen nennen, den getrennten Datensatz mit pV/(nRT) prüfen und den Bedarf an Realgasbeschreibung begründen.",
+        "observablePerformanceEn": "Identify low density and separation from phase change as favourable conditions, test the separate data via pV/(nRT), and justify the need for a real-gas description."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "rp-ideal-gas-a-transfer",
+        "textDe": "Unabhängiger Transfer mit geänderter Volumenrandbedingung: Ein geschlossener Modellbehälter mit beweglicher Wand enthält dieselbe Stoffmenge n = 0,0800 mol bei konstant 50,0 °C. Anders als der starre Behälter des Ausgangsfalls kann sein Volumen verändert werden. Das Volumen wird von 2,00 L auf 4,00 L verdoppelt. Begründe und berechne den neuen Druck. Erkläre, warum diese Vorhersage unveränderte Stoffmenge und gleiche absolute Temperatur voraussetzt. Erwartet: p = 53 733,382 Pa ≈ 0,537 bar. Dies ist eine ideale Modellvorhersage, keine praktische Durchführung.",
+        "textEn": "Independent transfer with a changed volume constraint: A sealed model container with a movable wall holds the same amount n = 0.0800 mol at constant 50.0 °C. Unlike the rigid container in the starting case, its volume can change. Volume doubles from 2.00 L to 4.00 L. Explain and calculate the new pressure, stating why the prediction requires unchanged amount of substance and absolute temperature. Expected: p = 53,733.382 Pa ≈ 0.537 bar. This is an ideal-model prediction, not an actual procedure."
+      },
+      {
+        "id": "rp-ideal-gas-b-transfer",
+        "textDe": "Bei unverändertem n und 27,0 °C wird V₁ von 1,50 L auf 1,00 L verkleinert; der Umgebungsdruck bleibt 1,00 bar. Sage absoluten Druck und Überdruck voraus und begründe beide. Erwartet im idealen Modell: p = 1,80 bar absolut, Überdruck 0,80 bar. Die Aussage ist eine Modellvorhersage, keine Anleitung oder reale Messbestätigung.",
+        "textEn": "At unchanged n and 27.0 °C, reduce V₁ from 1.50 L to 1.00 L while ambient pressure stays 1.00 bar. Predict and explain absolute and gauge pressures. Expected in the ideal model: 1.80 bar absolute and 0.80 bar gauge. This is a model prediction, not a procedure or measured confirmation."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "rp-ideal-gas-a",
+        "taskDemandDe": "Ordne p, V, n und T ihren Bedeutungen und Einheiten zu und begründe die Modellannahmen. Bestimme die beiden Drücke in Pa und bar. Erkläre die Druckänderung mit den festgehaltenen Größen und prüfe den Vorschlag, den Druck mit 50/20 zu multiplizieren. Bestimme bei unverändertem n und V die Temperatur für 1,20 bar. Erkläre, welche Aussage nach Öffnen eines Ventils nicht mehr aus den ursprünglichen Angaben folgt und unter welchen physikalischen Bedingungen die Idealannahme unzuverlässig werden kann.",
+        "taskDemandEn": "Identify the meanings and units of p, V, n and T and justify the assumptions. Calculate both pressures in Pa and bar. Explain the pressure change using the fixed quantities and assess multiplying pressure by 50/20. Find the temperature required for 1.20 bar at unchanged n and V. Explain which prediction is no longer supported after opening a valve and when the ideal-gas assumption may become unreliable.",
+        "expectedPerformanceDe": "p bezeichnet absoluten Druck, V Gasvolumen, n Stoffmenge und T absolute Temperatur. Im gewählten SI-System stehen p in Pa, V in m³, n in mol und T in K; Pa m³ ist mit J äquivalent. V = 0,00200 m³, T₁ = 293,15 K und T₂ = 323,15 K. Aus p = nRT/V ergeben sich p₁ = 97 489,964 Pa ≈ 0,975 bar und p₂ = 107 466,764 Pa ≈ 1,07 bar. Bei konstantem n und V gilt p₂/p₁ = T₂/T₁ ≈ 1,102; der Druck steigt um rund 10,2 %, nicht um den Faktor 2,5 aus Celsiuswerten. Für 1,20 bar gilt T = pV/(nR) = 360,837 K ≈ 87,7 °C. Nach Öffnen eines Ventils darf n nicht ohne weitere Daten als konstant gelten; dieselbe Proportionalrechnung ist dann unbegründet. Das ideale Modell vernachlässigt Teilcheneigenvolumen und zwischenmolekulare Wechselwirkungen. Bei ausreichend geringer Dichte fern von Kondensation ist es oft eine brauchbare Näherung; hohe Dichte oder die Nähe eines Phasenwechsels verlangen eine erneute Modellprüfung. Es gibt aus diesen Angaben keine universelle Druckgrenze für alle Gase.",
+        "expectedPerformanceEn": "p is absolute pressure, V gas volume, n amount of substance and T absolute temperature. The selected SI units are Pa, m³, mol and K; Pa m³ is equivalent to J. V = 0.00200 m³, T₁ = 293.15 K and T₂ = 323.15 K. Using p = nRT/V gives p₁ = 97,489.964 Pa ≈ 0.975 bar and p₂ = 107,466.764 Pa ≈ 1.07 bar. With fixed n and V, p₂/p₁ = T₂/T₁ ≈ 1.102: pressure rises by about 10.2%, not by the Celsius ratio 2.5. For 1.20 bar, T = pV/(nR) = 360.837 K ≈ 87.7 °C. Opening a valve removes the justification for keeping n constant without further data. The ideal model neglects molecular volume and intermolecular interactions. It is often a useful approximation at sufficiently low density away from condensation; high density or proximity to a phase change requires reassessment. These data establish no universal pressure cutoff for every gas.",
+        "understandingFocusDe": "Unabhängiger Transfer mit geänderter Volumenrandbedingung: Ein geschlossener Modellbehälter mit beweglicher Wand enthält dieselbe Stoffmenge n = 0,0800 mol bei konstant 50,0 °C. Anders als der starre Behälter des Ausgangsfalls kann sein Volumen verändert werden. Das Volumen wird von 2,00 L auf 4,00 L verdoppelt. Begründe und berechne den neuen Druck. Erkläre, warum diese Vorhersage unveränderte Stoffmenge und gleiche absolute Temperatur voraussetzt. Erwartet: p = 53 733,382 Pa ≈ 0,537 bar. Dies ist eine ideale Modellvorhersage, keine praktische Durchführung.",
+        "understandingFocusEn": "Independent transfer with a changed volume constraint: A sealed model container with a movable wall holds the same amount n = 0.0800 mol at constant 50.0 °C. Unlike the rigid container in the starting case, its volume can change. Volume doubles from 2.00 L to 4.00 L. Explain and calculate the new pressure, stating why the prediction requires unchanged amount of substance and absolute temperature. Expected: p = 53,733.382 Pa ≈ 0.537 bar. This is an ideal-model prediction, not an actual procedure."
+      },
+      {
+        "id": "rp-ideal-gas-b",
+        "taskDemandDe": "Bestimme zuerst den absoluten Anfangsdruck und die Stoffmenge. Berechne V₂ und die absolute sowie die Celsius-Temperatur des dritten Zustands und erkläre die jeweils festgehaltenen Größen. Prüfe den Versuch, den Überdruck direkt in die Gasgleichung einzusetzen. Vergleiche für die getrennte dichte Gasprobe pV und nRT einschließlich Einheiten. Entscheide begründet, ob die ideale Gasgleichung dort innerhalb der vorgegebenen Toleranz ausreicht; erläutere mögliche Modellgrenzen und die zusätzlich benötigte Art von Beschreibung, ohne aus der Abweichung eine bestimmte Stoffidentität abzuleiten.",
+        "taskDemandEn": "First determine the initial absolute pressure and amount of substance. Calculate V₂ and the absolute and Celsius temperatures of the third state, explaining which quantities remain fixed. Assess substituting gauge pressure directly into the equation. For the separate dense-gas sample, compare pV and nRT with units. Judge whether the ideal equation is adequate within the stipulated tolerance; explain possible model limits and the type of additional description needed, without inferring a specific substance from the discrepancy.",
+        "expectedPerformanceDe": "Anfangs p₁ = 0,20 bar + 1,00 bar = 1,20 bar absolut und T₁ = 300,15 K. Damit n = p₁V₁/(RT₁) = 0,07213136 mol ≈ 0,0721 mol. Der Überdruck allein ergäbe einen um Faktor 6 zu kleinen Stoffmengenwert, da die Gasgleichung den absoluten Druck benötigt. Mit T₂ = 320,15 K folgt V₂ = nRT₂/p₂ = 2,1332667 L ≈ 2,13 L. Für den dritten Zustand ergibt T₃ = p₃V₃/(nR) = 333,50 K = 60,35 °C. Bei diesen Zustandsvergleichen ist n konstant; die anderen Größen werden jeweils ausdrücklich aus den Angaben übernommen. Für den getrennten dichten Datensatz gilt pV = (4,00·10⁶ Pa)(0,500·10⁻³ m³) = 2000 J, nRT = 2494,2 J und pV/(nRT) ≈ 0,802. Die Abweichung vom Idealwert 1 beträgt rund 19,8 % und liegt deutlich außerhalb ±2 %. Die ideale Gleichung reicht hier für die verlangte Genauigkeit nicht aus. Teilchenwechselwirkungen und endliches Teilchenvolumen können relevant sein; nötig wären geeignete Realgasdaten oder eine passende Zustandsgleichung. Der eine Verhältniswert identifiziert weder den Stoff noch die einzelnen Ursachen quantitativ. Ein Gas kann also nicht allein wegen einer erfolgreichen Einheitenrechnung als ideal gelten.",
+        "expectedPerformanceEn": "Initially p₁ = 0.20 + 1.00 = 1.20 bar absolute and T₁ = 300.15 K. Thus n = p₁V₁/(RT₁) = 0.07213136 mol ≈ 0.0721 mol. Gauge pressure alone would underestimate n by a factor of 6 because the equation requires absolute pressure. At T₂ = 320.15 K, V₂ = nRT₂/p₂ = 2.1332667 L ≈ 2.13 L. The third state gives T₃ = p₃V₃/(nR) = 333.50 K = 60.35 °C. Amount n stays fixed; other state quantities must be taken from the stated conditions. For the separate dense-gas data, pV = (4.00·10⁶ Pa)(0.500·10⁻³ m³) = 2000 J, whereas nRT = 2494.2 J, so pV/(nRT) ≈ 0.802. The deviation from 1 is about 19.8%, beyond ±2%. The ideal equation is inadequate for the requested accuracy here. Molecular interactions and finite molecular volume may matter; suitable real-gas data or an appropriate equation of state are needed. One ratio does not identify the substance or separate the causes quantitatively. Correct units alone do not establish ideal behaviour.",
+        "understandingFocusDe": "Bei unverändertem n und 27,0 °C wird V₁ von 1,50 L auf 1,00 L verkleinert; der Umgebungsdruck bleibt 1,00 bar. Sage absoluten Druck und Überdruck voraus und begründe beide. Erwartet im idealen Modell: p = 1,80 bar absolut, Überdruck 0,80 bar. Die Aussage ist eine Modellvorhersage, keine Anleitung oder reale Messbestätigung.",
+        "understandingFocusEn": "At unchanged n and 27.0 °C, reduce V₁ from 1.50 L to 1.00 L while ambient pressure stays 1.00 bar. Predict and explain absolute and gauge pressures. Expected in the ideal model: 1.80 bar absolute and 0.80 bar gauge. This is a model prediction, not a procedure or measured confirmation."
+      }
+    ]
+  },
+  "fullCasesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-rp-ideal-gas-variable-volume-transfer-author-successor-20261015-v1/two-whole-ideal-gas-DEEN-cases.variable-volume-transfer.author.json",
+  "noObservedLearnerPerformance": true,
+  "reviewAuthority": "unreviewed_author_proposal",
+  "normalPGranted": false
+}

@@ -1,0 +1,169 @@
+{
+  "source": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-native-preparation-inactive-technical-20261015-v1/inputs/eight-whole-DEEN-cases-four-scientific-profile-bodies.neutral.json",
+    "sha256": "sha256:f45bb987a5c7afa8a70a3700b3c2cadb6f394e77c62b0b3265fe1642e88cdb98",
+    "bytes": 76803
+  },
+  "cases": [
+    {
+      "id": "eqrk16-07-a",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "title": "Gasdissoziation mit sauberem Standardzustand",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Ideales Gasmodell: N2O4(g) ⇌ 2 NO2(g) bei 298 K. Hier sind Kc = Π(ci/c°)^νi und Kp = Π(pi/p°)^νi dimensionslos definiert. Es gelten c° = 1 mol/L, p° = 1 bar und R = 0,08314 L bar/(mol K). Gegeben ist Kc = 0,00500 für genau diese Reaktionsrichtung. Dies ist eine Datenaufgabe, kein NO2-Versuch.",
+      "materialsEn": "Ideal gas model: N2O4(g) ⇌ 2 NO2(g) at 298 K. Define dimensionless Kc = Π(ci/c°)^νi and Kp = Π(pi/p°)^νi. Use c° = 1 mol/L, p° = 1 bar and R = 0.08314 L bar/(mol K). Kc = 0.00500 refers to this exact reaction direction. Data exercise, no NO2 experiment.",
+      "taskDe": "Leite die Umrechnung aus dem idealen Gasgesetz her, bestimme Δν und berechne Kp. Vergleiche die unnormierte Schreibweise Kp = Kc (RT)^Δν. Prüfe R = 8,314 ohne Einheitenanpassung.",
+      "taskEn": "Derive the conversion from the ideal gas law, identify Δν and calculate Kp. Contrast the unnormalised formula Kp = Kc (RT)^Δν. Assess using R = 8.314 without changing units.",
+      "workedReasoningDe": "Δν = 2 − 1 = 1. Aus pi/p° = (ci/c°)(RTc°/p°) folgt Kp = Kc (RTc°/p°)^Δν. Der Faktor ist 24,77572; Kp = 0,123879 ist dimensionslos. Unnormierte Produkte hätten hier Kc in mol/L und Kp in bar; RT wäre dann der Faktor mit Einheit. Beide Konventionen dürfen nicht unmarkiert vermischt werden. R = 8,314 J/(mol K) verlangt konsistente Pa- und m³-Einheiten sowie umgerechnete Standards; blindes Einsetzen ergibt hier einen Faktor-100-Fehler. Die Herleitung setzt ideale Gase bei der genannten Temperatur voraus.",
+      "workedReasoningEn": "Δν = 1. From pi/p° = (ci/c°)(RTc°/p°), obtain Kp = Kc (RTc°/p°)^Δν. The factor is 24.77572, giving dimensionless Kp = 0.123879. Unnormalised products instead give Kc in mol/L and Kp in bar, with a dimensional RT factor. Do not silently mix conventions. R = 8.314 J/(mol K) requires consistent Pa/m³ units and converted standards; blind substitution here gives a factor-100 error. The derivation assumes ideal gases at the stated temperature.",
+      "freshIndependentTransferDe": "Verdopple die ganze Reaktionsgleichung. Leite Kp′, Kc′ und Δν′ ab und begründe die Abhängigkeit von der gewählten Gleichung.",
+      "freshIndependentTransferEn": "Double the entire reaction equation. Derive Kp′, Kc′ and Δν′ and explain their dependence on how the reaction is written.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Den Faktor aus Partialgrößen und Standardzuständen herleiten.",
+          "observableEn": "Derive the factor using partial quantities and standard states.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Δν = 1 und Kp = 0,123879 mit Einheitenkonsistenz berechnen.",
+          "observableEn": "Calculate Δν = 1 and Kp = 0.123879 consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Unnormierte Schulform, Aktivitätskonvention und Grenzen unterscheiden.",
+          "observableEn": "Distinguish classroom products, activity conventions and limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-07-b",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "title": "Feststoff zählt nicht zu gasförmigem Δν",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Zwei ideale Gasmodelle bei 500 K: I: H2(g) + I2(g) ⇌ 2 HI(g), dimensionslos Kc = 4,00. II: CaCO3(s) ⇌ CaO(s) + CO2(g), dimensionslos Kp = 0,200; reine Feststoffe haben Aktivität 1. Standards wie in 7a; R = 0,08314 L bar/(mol K). Die Konstanten sind Lehrmodelldaten, keine Realdaten bei dieser Temperatur. Ein Anbieter möchte die Formel ohne Korrektur auf dichte Hochdruckgase anwenden.",
+      "materialsEn": "Two ideal gas teaching models at 500 K: I: H2(g) + I2(g) ⇌ 2 HI(g), dimensionless Kc = 4.00. II: CaCO3(s) ⇌ CaO(s) + CO2(g), dimensionless Kp = 0.200; pure solid activities are 1. Standards as in 7a; R = 0.08314 L bar/(mol K). Constants are teaching values, not real data at this temperature. A supplier proposes applying the formula to dense high-pressure gas without corrections.",
+      "taskDe": "Bestimme Δν und das jeweils fehlende K. Erläutere die Rolle der Feststoffe und die nötige zusätzliche Größe bei Nichtidealität. Prüfe die Aussage, Δν = 0 bedeute stets ideales Verhalten.",
+      "taskEn": "Find Δν and the missing K. Explain the role of solids and the additional quantity needed for nonideality. Assess whether Δν = 0 always implies ideal behaviour.",
+      "workedReasoningDe": "I: Δν = 0, daher Kp = Kc = 4,00 im idealen Modell. II: Gas-Δν = 1; reine Feststoffe werden nicht in diese Gaszählung aufgenommen. Der Faktor ist 41,57 und Kc = 0,200/41,57 = 0,004811. Bei vorhandenen reinen Feststoffphasen gilt Aktivität 1; ihre physische Menge verschwindet dadurch nicht. Reale Gase erfordern Fugazitäten beziehungsweise Fugazitätskoeffizienten. Δν = 0 entfernt nur den idealen RT-Faktor; verschiedene Nichtidealitäten heben sich nicht automatisch auf. Phasenwechsel und dichte Gemische brauchen eine neue Modellprüfung.",
+      "workedReasoningEn": "I: Δν = 0, so Kp = Kc = 4.00 in the ideal model. II: gas Δν = 1; do not include solids in the gas count. The factor is 41.57, giving Kc = 0.004811. Pure solid phases have unit activity while present; their physical amount has not vanished. Real gases require fugacities or fugacity coefficients. Δν = 0 removes only the ideal RT factor, not necessarily different nonideal effects. Phase changes and dense mixtures require reassessment.",
+      "freshIndependentTransferDe": "Für überkritisches CO2 ist p/(cRT) deutlich ungleich 1. Identifiziere den versagenden Herleitungsschritt, statt K allein aus Totaldruck zu berechnen.",
+      "freshIndependentTransferEn": "For supercritical CO2, p/(cRT) differs substantially from 1. Identify the failing derivation step rather than computing K from total pressure alone.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Gasstöchiometrie und Feststoffphasen unterscheiden.",
+          "observableEn": "Distinguish gas stoichiometry and solid phases.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Kp = 4,00 und Kc = 0,004811 bestimmen.",
+          "observableEn": "Determine Kp = 4.00 and Kc = 0.004811.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Fugazität und die begrenzte Bedeutung von Δν = 0 erklären.",
+          "observableEn": "Explain fugacity and the limited meaning of Δν = 0.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Kp/Kc-Umrechnung folgt p_i=c_iRT und gasförmigen stöchiometrischen Exponenten.",
+            "essentialUnderstandingEn": "Kp/Kc conversion follows p_i=c_iRT and gas-phase stoichiometric exponents.",
+            "observablePerformanceDe": "eqrk16-07-a: Den Faktor aus Partialgrößen und Standardzuständen herleiten. eqrk16-07-b: Gasstöchiometrie und Feststoffphasen unterscheiden.",
+            "observablePerformanceEn": "eqrk16-07-a: Derive the factor using partial quantities and standard states. eqrk16-07-b: Distinguish gas stoichiometry and solid phases."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Dimensionslose Standardzustände und unnormierte Schulprodukte benötigen unterschiedliche explizite Faktoren.",
+            "essentialUnderstandingEn": "Dimensionless standard states and unnormalised classroom products require different explicit factors.",
+            "observablePerformanceDe": "eqrk16-07-a: Δν = 1 und Kp = 0,123879 mit Einheitenkonsistenz berechnen. eqrk16-07-b: Kp = 4,00 und Kc = 0,004811 bestimmen.",
+            "observablePerformanceEn": "eqrk16-07-a: Calculate Δν = 1 and Kp = 0.123879 consistently. eqrk16-07-b: Determine Kp = 4.00 and Kc = 0.004811."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Nichtideale Gase und mitgezählte Feststoffe verletzen die einfache Umrechnungsannahme.",
+            "essentialUnderstandingEn": "Nonideal gases and including solids violate the simple conversion assumptions.",
+            "observablePerformanceDe": "eqrk16-07-a: Unnormierte Schulform, Aktivitätskonvention und Grenzen unterscheiden. eqrk16-07-b: Fugazität und die begrenzte Bedeutung von Δν = 0 erklären.",
+            "observablePerformanceEn": "eqrk16-07-a: Distinguish classroom products, activity conventions and limits. eqrk16-07-b: Explain fugacity and the limited meaning of Δν = 0."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-07-a-transfer",
+            "textDe": "Verdopple die ganze Reaktionsgleichung. Leite Kp′, Kc′ und Δν′ ab und begründe die Abhängigkeit von der gewählten Gleichung.",
+            "textEn": "Double the entire reaction equation. Derive Kp′, Kc′ and Δν′ and explain their dependence on how the reaction is written."
+          },
+          {
+            "id": "eqrk16-07-b-transfer",
+            "textDe": "Für überkritisches CO2 ist p/(cRT) deutlich ungleich 1. Identifiziere den versagenden Herleitungsschritt, statt K allein aus Totaldruck zu berechnen.",
+            "textEn": "For supercritical CO2, p/(cRT) differs substantially from 1. Identify the failing derivation step rather than computing K from total pressure alone."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-07-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-07-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Leite die Umrechnung aus dem idealen Gasgesetz her, bestimme Δν und berechne Kp. Vergleiche die unnormierte Schreibweise Kp = Kc (RT)^Δν. Prüfe R = 8,314 ohne Einheitenanpassung.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-07-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Derive the conversion from the ideal gas law, identify Δν and calculate Kp. Contrast the unnormalised formula Kp = Kc (RT)^Δν. Assess using R = 8.314 without changing units.",
+            "expectedPerformanceDe": "Δν = 2 − 1 = 1. Aus pi/p° = (ci/c°)(RTc°/p°) folgt Kp = Kc (RTc°/p°)^Δν. Der Faktor ist 24,77572; Kp = 0,123879 ist dimensionslos. Unnormierte Produkte hätten hier Kc in mol/L und Kp in bar; RT wäre dann der Faktor mit Einheit. Beide Konventionen dürfen nicht unmarkiert vermischt werden. R = 8,314 J/(mol K) verlangt konsistente Pa- und m³-Einheiten sowie umgerechnete Standards; blindes Einsetzen ergibt hier einen Faktor-100-Fehler. Die Herleitung setzt ideale Gase bei der genannten Temperatur voraus.",
+            "expectedPerformanceEn": "Δν = 1. From pi/p° = (ci/c°)(RTc°/p°), obtain Kp = Kc (RTc°/p°)^Δν. The factor is 24.77572, giving dimensionless Kp = 0.123879. Unnormalised products instead give Kc in mol/L and Kp in bar, with a dimensional RT factor. Do not silently mix conventions. R = 8.314 J/(mol K) requires consistent Pa/m³ units and converted standards; blind substitution here gives a factor-100 error. The derivation assumes ideal gases at the stated temperature.",
+            "understandingFocusDe": "Verdopple die ganze Reaktionsgleichung. Leite Kp′, Kc′ und Δν′ ab und begründe die Abhängigkeit von der gewählten Gleichung.",
+            "understandingFocusEn": "Double the entire reaction equation. Derive Kp′, Kc′ and Δν′ and explain their dependence on how the reaction is written."
+          },
+          {
+            "id": "eqrk16-07-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-07-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Bestimme Δν und das jeweils fehlende K. Erläutere die Rolle der Feststoffe und die nötige zusätzliche Größe bei Nichtidealität. Prüfe die Aussage, Δν = 0 bedeute stets ideales Verhalten.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-07-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Find Δν and the missing K. Explain the role of solids and the additional quantity needed for nonideality. Assess whether Δν = 0 always implies ideal behaviour.",
+            "expectedPerformanceDe": "I: Δν = 0, daher Kp = Kc = 4,00 im idealen Modell. II: Gas-Δν = 1; reine Feststoffe werden nicht in diese Gaszählung aufgenommen. Der Faktor ist 41,57 und Kc = 0,200/41,57 = 0,004811. Bei vorhandenen reinen Feststoffphasen gilt Aktivität 1; ihre physische Menge verschwindet dadurch nicht. Reale Gase erfordern Fugazitäten beziehungsweise Fugazitätskoeffizienten. Δν = 0 entfernt nur den idealen RT-Faktor; verschiedene Nichtidealitäten heben sich nicht automatisch auf. Phasenwechsel und dichte Gemische brauchen eine neue Modellprüfung.",
+            "expectedPerformanceEn": "I: Δν = 0, so Kp = Kc = 4.00 in the ideal model. II: gas Δν = 1; do not include solids in the gas count. The factor is 41.57, giving Kc = 0.004811. Pure solid phases have unit activity while present; their physical amount has not vanished. Real gases require fugacities or fugacity coefficients. Δν = 0 removes only the ideal RT factor, not necessarily different nonideal effects. Phase changes and dense mixtures require reassessment.",
+            "understandingFocusDe": "Für überkritisches CO2 ist p/(cRT) deutlich ungleich 1. Identifiziere den versagenden Herleitungsschritt, statt K allein aus Totaldruck zu berechnen.",
+            "understandingFocusEn": "For supercritical CO2, p/(cRT) differs substantially from 1. Identify the failing derivation step rather than computing K from total pressure alone."
+          }
+        ]
+      }
+    }
+  ]
+}

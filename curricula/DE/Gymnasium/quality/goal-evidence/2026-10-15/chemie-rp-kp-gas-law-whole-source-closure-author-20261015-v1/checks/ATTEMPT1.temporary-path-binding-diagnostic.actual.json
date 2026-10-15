@@ -1,0 +1,8 @@
+{
+  "role": "Actual first author preflight harness failure, not source hold guard or science outcome",
+  "actualFailure": "Review/source-extraction binding mismatch in temporary staged review",
+  "cause": "The source-lane contract requires review.sourceExtractionPath to equal the raw binding; the first harness retained the original path while relocating the fork.",
+  "remedy": "Relocate this path in temporary staged review only; preserve original files and compiler/profile.",
+  "failureWasNotClaimedAsHeldDecisionGuard": true,
+  "originalInputsChanged": false
+}

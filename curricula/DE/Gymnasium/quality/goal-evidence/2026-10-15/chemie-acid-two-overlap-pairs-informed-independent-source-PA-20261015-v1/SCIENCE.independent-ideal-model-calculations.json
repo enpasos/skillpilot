@@ -1,0 +1,82 @@
+{
+  "role": "Reviewer calculations on stipulated synthetic ideal models; no laboratory or learner evidence",
+  "weakAcidCurve": {
+    "assumptions": "25C,gamma1,additive volumes,25mL0.1M monoprotic acid,0.1M NaOH,pKa4.76,Kw1e-14",
+    "balance": "h+[Na+]=Kw/h+C_total*Ka/(Ka+h);C_total=n0/V;[Na+]=n_titrant/V",
+    "solver": "Own100-step scalar bisection in pH0..14; no repository validator used",
+    "points": [
+      {
+        "NaOH_mL": 0,
+        "pH": 2.882862536135044,
+        "roundedToThreeDecimals": 2.883
+      },
+      {
+        "NaOH_mL": 6.25,
+        "pH": 4.2843816599578695,
+        "roundedToThreeDecimals": 4.284
+      },
+      {
+        "NaOH_mL": 12.5,
+        "pH": 4.760452344012249,
+        "roundedToThreeDecimals": 4.76
+      },
+      {
+        "NaOH_mL": 18.75,
+        "pH": 5.237355890519654,
+        "roundedToThreeDecimals": 5.237
+      },
+      {
+        "NaOH_mL": 24.5,
+        "pH": 6.450339272364886,
+        "roundedToThreeDecimals": 6.45
+      },
+      {
+        "NaOH_mL": 24.9,
+        "pH": 7.156039637479109,
+        "roundedToThreeDecimals": 7.156
+      },
+      {
+        "NaOH_mL": 24.98,
+        "pH": 7.849106739858247,
+        "roundedToThreeDecimals": 7.849
+      },
+      {
+        "NaOH_mL": 25,
+        "pH": 8.72953717757299,
+        "roundedToThreeDecimals": 8.73
+      },
+      {
+        "NaOH_mL": 25.02,
+        "pH": 9.609498829425668,
+        "roundedToThreeDecimals": 9.609
+      },
+      {
+        "NaOH_mL": 25.1,
+        "pH": 10.300475056909349,
+        "roundedToThreeDecimals": 10.3
+      },
+      {
+        "NaOH_mL": 25.5,
+        "pH": 10.995691250564459,
+        "roundedToThreeDecimals": 10.996
+      },
+      {
+        "NaOH_mL": 30,
+        "pH": 11.958607452344964,
+        "roundedToThreeDecimals": 11.959
+      }
+    ]
+  },
+  "HHnumbers": {
+    "T06C1initial": 5.362059991327962,
+    "T06C1after": 5.127976785294594,
+    "T06C2initial": 8.948970004336019,
+    "T06C2after": 9.192008053022313,
+    "G7C1initial": 5.101029995663981,
+    "G7C1after": 4.8,
+    "G7C2initial": 9.50102999566398,
+    "G7C2afterA": 8.50102999566398
+  },
+  "measuredPH": false,
+  "learnerPointsAwarded": null
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "goalId": "0773a104-aaeb-5e96-a615-2a2bec3eb096",
+  "createdAt": "2026-10-15T20:46:04.641689+00:00",
+  "role": "image author candidate, awaiting independent actual V review",
+  "provider": "OpenAI / ChatGPT-Codex",
+  "tool": "built-in image_gen.imagegen",
+  "modelVersion": "not exposed by tool",
+  "generationMode": "generate new; no referenced images; transparent_background=false",
+  "generationCount": 1,
+  "originalGeneratedArtifactId": "01a1414a-b0f3-7070-8d9b-97acc1d29ab3/exec-c74f05d9-16ad-4fd3-a7e6-debfbfadc518.png",
+  "asset": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/images/0773a104-aaeb-5e96-a615-2a2bec3eb096.png",
+    "sha256": "sha256:b9b69c82605bd610a54538d67d8fe6cb0d51ae8b4dd25050657e51f9fb01c9a0",
+    "bytes": 1510797
+  },
+  "format": {
+    "mime": "image/png",
+    "width": 1672,
+    "height": 941,
+    "aspectRatio": 1.7768331562167907,
+    "requested": "16:9; approximately 1600x900; close native size allowed",
+    "formatException": false,
+    "colors": "8-bit RGB",
+    "resampledOriginal": false
+  },
+  "actualProviderPrompt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/prompts/prompt.en.txt",
+    "sha256": "sha256:84f484893cd4af4fe3db9972cd129d6d8b1162ddaae57ca97cd0ad9c9d72bb80",
+    "bytes": 3577
+  },
+  "germanPromptTranslation": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/prompts/prompt.de.txt",
+    "sha256": "sha256:9cf8e5c38431f5a25db137f0be3c8b61ca9dca5107ba1e84a22d4c2dbf474b33",
+    "bytes": 3090
+  },
+  "reviewDerivatives": [
+    {
+      "asset": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/responsive/0773a104.phone-360.png",
+        "sha256": "sha256:2bd226f2346fa8ea900bf133f8a1a53def63f5d53904abc0835848008687004a",
+        "bytes": 94656
+      },
+      "width": 360,
+      "height": 203,
+      "command": "ffmpeg -v error -i <original> -vf scale=360:-1:flags=lanczos -frames:v 1 <phone-preview>",
+      "actualViewImageInspectedByAuthor": true
+    },
+    {
+      "asset": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/responsive/0773a104.desktop-680.png",
+        "sha256": "sha256:9ec6eaee343c31c8db4ba2a3bb453901a21edeb0420aa34fd69a93e4c244b8da",
+        "bytes": 319041
+      },
+      "width": 680,
+      "height": 383,
+      "command": "ffmpeg -v error -i <original> -vf scale=680:-1:flags=lanczos -frames:v 1 <desktop-preview>",
+      "actualViewImageInspectedByAuthor": true
+    }
+  ],
+  "licenseExpression": "CC-BY-4.0",
+  "attribution": "SkillPilot — Tensidstrukturen optimieren, 2026-10-15; enpasos - Enterprise Patterns & Solutions GmbH; CC-BY-4.0 for our applicable rights. AI-generated, author-curated candidate.",
+  "thirdPartyImageInputs": [],
+  "independentVDecision": null,
+  "humanApproval": false,
+  "humanTrial": false,
+  "normalQaWrites": 0,
+  "activeWrites": 0,
+  "builds": 0,
+  "centralRuns": 0
+}

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "role": "Conditional whole-source author mapping recipe only, outside consumed mapping directories",
+  "conditionBeforeAnyAdoption": "Independent whole-source and optional-placement review plus P/A/D review of the new atom; this recipe is not an accepted mapping or M3 grant.",
+  "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+  "wholeSourceCellInventoryUnchanged": 325,
+  "reuseOtherDecisions": 324,
+  "oldFalseGasDetectionRelationRemoved": true,
+  "newSourceCoverageArgument": [
+    {
+      "sourceStrand": "ideales Gasgesetz (Allgemeine Gasgleichung)",
+      "canonicalGoalId": "5db51274-dc1e-5e5a-80ad-4df26add7d42",
+      "matchType": "partial"
+    },
+    {
+      "sourceStrand": "Kp",
+      "canonicalGoalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "matchType": "partial"
+    }
+  ],
+  "uncoveredSourceStrandsInAuthorArgument": [],
+  "masteryEquivalenceClaimed": false,
+  "wholeMappingRecipes": [
+    {
+      "base": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_to_canonical_chemistry.json",
+        "sha256": "sha256:413445dd9c647a7a83d58aee33619145e6fdcd7d0197d4fb20c5dc2f67426f0e",
+        "bytes": 349881
+      },
+      "operations": [
+        {
+          "operation": "replaceWholeArrayRowWithRows",
+          "jsonPointer": "/mappings/644",
+          "before": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "matchType": "exact",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+          },
+          "afterRows": [
+            {
+              "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+              "canonicalGoalId": "5db51274-dc1e-5e5a-80ad-4df26add7d42",
+              "matchType": "partial",
+              "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+            },
+            {
+              "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+              "canonicalGoalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+              "matchType": "partial",
+              "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+            }
+          ]
+        }
+      ],
+      "originalRowCount": 1264,
+      "candidateRowCount": 1265,
+      "allOtherMappingRowsAnd324DecisionsUnchanged": true
+    },
+    {
+      "base": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "sha256:31aadba54416add6093cff0eb9b86c59b7af2cada0966b1f35b95f01cd491f72",
+        "bytes": 567178
+      },
+      "operations": [
+        {
+          "operation": "replaceWholeArrayRowWithRows",
+          "jsonPointer": "/mappings/644",
+          "before": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "matchType": "exact",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+          },
+          "afterRows": [
+            {
+              "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+              "canonicalGoalId": "5db51274-dc1e-5e5a-80ad-4df26add7d42",
+              "matchType": "partial",
+              "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+            },
+            {
+              "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+              "canonicalGoalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+              "matchType": "partial",
+              "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+            }
+          ]
+        },
+        {
+          "operation": "replaceWholeObject",
+          "jsonPointer": "/decisions/165",
+          "before": {
+            "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "topicCode": "BAUSTEIN-7-5",
+            "sourceSpan": "7.5 angewandte Verfahren, Source-Ziel 10",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "580b3616-f121-5d82-ac6b-fc24f145fbdc"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "after": {
+            "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "topicCode": "FRAMEWORK-7-ENRICHMENT-KP-IDEAL-GAS",
+            "sourceSpan": "Rahmenbaustein 7 Gleichgewicht und Kinetik; exemplarische Vertiefungs-/Verzahnungsmöglichkeit: Kp und ideales Gasgesetz",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "5db51274-dc1e-5e5a-80ad-4df26add7d42",
+              "a8ddb351-3501-5b6d-a908-c82a5d2f14d4"
+            ],
+            "matchType": "partial",
+            "rationale": "UNREVIEWED AUTHOR PROPOSAL. Joint whole-source topic coverage: the new ideal-gas-model atom covers the general p,V,n,T relation, consistent units, state assumptions and applicability; unchanged a8 covers the Kp strand through Kp/Kc derivation/conversion for ideal gas equilibria. Each contributor is partial relative to the combined source cell. The source item is an optional framework-7 enrichment on p52; it does not authorize automatic RP default targets or exact mastery transfer. All other 324 decisions are reused, not re-reviewed.",
+            "authorPreparedAt": "2026-10-15",
+            "author": "Codex source-data author; independent source/P/A/D review pending"
+          }
+        },
+        {
+          "operation": "replaceWholeObject",
+          "jsonPointer": "/status",
+          "before": {
+            "scope": "DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 325,
+            "mappedSourceGoals": 325,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 325,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+          },
+          "after": {
+            "scope": "DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 325,
+            "mappedSourceGoals": 325,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 325,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "CONDITIONAL AUTHOR DRAFT COUNTS ONLY, not accepted current M3. 324 historical decisions reused; this one two-target whole-source closure and optional placement are proposals awaiting independent source/P/A/D review. This status may be adopted only after those reviews and explicit optional-view handling; source lane success alone is not approval.",
+            "authorDraftOnly": true,
+            "acceptedNewSourceClosures": 0
+          }
+        }
+      ],
+      "originalRowCount": 1264,
+      "candidateRowCount": 1265,
+      "allOtherMappingRowsAnd324DecisionsUnchanged": true
+    }
+  ],
+  "actualCurrentSourceStatus": "HOLD until independent review and explicit optional placement are accepted",
+  "newM3Approval": false,
+  "activeWrites": 0,
+  "materializationBindingRule": "When materializing a review/source-extraction fork, set only the temporary review.sourceExtractionPath to the exact staged extraction path and bind that same path. This explicit path relocation is not a source judgment and never edits the original review."
+}

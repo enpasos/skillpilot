@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: 392/426, sechs neue Abschlüsse und acht aktuelle Reviewpaare (16.10.2026)](chemie-native8-current426-checkpoint-2026-10-16.md)
 - [Chemie: 386/426, 15 neue Praktikumsabschlüsse und 40 offene Ziele (15.10.2026)](chemie-bcp-current426-checkpoint-2026-10-15.md)
 - [Vorherige Chemie-Fortsetzung: 371/422, vier neue Gleichgewichtsabschlüsse und getrennte Praktikumsarbeit (15.10.2026)](chemie-source4-current371-checkpoint-2026-10-15.md)
 - [Chemie: 367/422, sechs neue fachliche Abschlüsse und drei wiederhergestellte Bindungen (15.10.2026)](chemie-native9-current367-continuation-2026-10-15.md)

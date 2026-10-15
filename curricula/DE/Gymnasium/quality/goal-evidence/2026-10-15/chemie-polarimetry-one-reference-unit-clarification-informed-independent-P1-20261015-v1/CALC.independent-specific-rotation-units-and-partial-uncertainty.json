@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "role": "Independent arithmetic and quantity check of supplied fictional data only",
+  "checkedAtUTC": "2026-10-15T21:22:18.117428+00:00",
+  "alpha_deg": 5.3,
+  "angularUncertainty_deg": 0.1,
+  "path_dm": 1.0,
+  "concentration_g_per_mL": 0.1,
+  "convention": "alpha = [alpha] * l * c, c in g/mL and l in dm",
+  "specificRotation_deg_mL_per_g_dm": 52.99999999999999,
+  "partialUncertaintyFromAngleOnly_deg_mL_per_g_dm": 1.0,
+  "simplifiedInterval_deg_mL_per_g_dm": [
+    52.0,
+    53.99999999999999
+  ],
+  "referenceSpecificRotations_deg_mL_per_g_dm": {
+    "glucose": 52.7,
+    "fructose": -92.4
+  },
+  "membership": {
+    "glucoseInInterval": true,
+    "fructoseInInterval": false
+  },
+  "crossCheckPredictedAngles_deg": {
+    "glucose": 5.2700000000000005,
+    "fructose": -9.24
+  },
+  "referenceDifferenceSpecificUnits": {
+    "glucose": 0.29999999999999716,
+    "fructose": 145.4
+  },
+  "units": "degree / (dm * g/mL) = degree * mL / (g * dm); reference values now carry this exact quantity and convention.",
+  "uncertaintyBoundary": "Only the supplied angular uncertainty is propagated. Path and concentration are held fixed as the task asks; this is not a combined experimental uncertainty, confidence interval, instrument calibration or proof of reference accuracy.",
+  "primaryMethodReadRetained": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-digestion-polarimetry-two-current426-informed-PA-20261015-v1/inputs/bounded-literal-source-contributions-and-primary-method-reads.json",
+    "sha256": "sha256:0979436fec42f8e709bd4c94c429f70878b158e393050886cbeccd9e4eaf54ae",
+    "bytes": 11039
+  },
+  "primaryMethodURL": "https://openstax.org/books/organic-chemistry/pages/5-3-optical-activity",
+  "sourceUse": "Previously actually read primary textbook relation checks the alpha versus bracket-alpha normalization. Supplied glucose/fructose numbers are fictional task references, not independently measured literature constants."
+}

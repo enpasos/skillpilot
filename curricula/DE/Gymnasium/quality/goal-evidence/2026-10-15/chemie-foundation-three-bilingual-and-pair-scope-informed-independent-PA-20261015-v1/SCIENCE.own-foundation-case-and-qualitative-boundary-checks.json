@@ -1,0 +1,81 @@
+{
+  "role": "Reviewer own finite science; quantitative retained-extension checks are NOT qualitativeB477requirements",
+  "redoxChecks": {
+    "MnInPermanganate": 7,
+    "MnReducedTo": 2,
+    "formalElectronGainPerMn": 5,
+    "FeFormalElectronLoss": 1,
+    "overallAcidReactionAtomCountsBothSides": {
+      "Mn": 1,
+      "Fe": 5,
+      "O": 4,
+      "H": 8
+    },
+    "overallChargeBothSides": 17,
+    "ethanolLocalCarbonON": [
+      -3,
+      -1
+    ],
+    "ethanalLocalCarbonON": [
+      -3,
+      1
+    ],
+    "reactiveCarbonElectronLoss": 2,
+    "copperElectronGain": 2,
+    "neutralizationIsNotRedox": true,
+    "oxidationNumbersDoNotProveMechanism": true
+  },
+  "solutionChecks": {
+    "HCLAmount_mol": 0.0025,
+    "stockVolume_L": 0.024999999999999998,
+    "ordinaryPH": 2.0,
+    "idealExtremeHCL_H_mol_L": 1.0512492197250394e-07,
+    "idealExtremeHCL_pH": 6.978294313542888,
+    "CaOH2Amount_mol": 6.25e-05,
+    "CaOH2DissolvedMass_mg": 4.630625,
+    "CaOH2FinalFormalConcentration_mol_L": 0.00025,
+    "CaOH2PH": 10.698970004336019,
+    "equalFormalNaOHPH": 10.397940008672037,
+    "PHStoichiometryDifference": 0.3010299956639812
+  },
+  "qualitativePairChecks": {
+    "pair1AtomCountsBothSides": {
+      "C": 2,
+      "H": 7,
+      "N": 1,
+      "O": 2
+    },
+    "pair1ChargeBothSides": 0,
+    "pair2HydroniumAtomCountsBothSides": {
+      "C": 1,
+      "H": 4,
+      "O": 4
+    },
+    "pair2HydroniumChargeBothSides": 0,
+    "pair2HydroxideAtomCountsBothSides": {
+      "C": 1,
+      "H": 2,
+      "O": 4
+    },
+    "pair2HydroxideChargeBothSides": -2,
+    "suppliedRelativeStrengthOrdersConsistent": true,
+    "roleSwitchSuppliesRealAmphiproticTransfer": true,
+    "numericalKaOrKRequiredByNewCore": false
+  },
+  "counterexamples": [
+    "Ionic neutralization is not automatically redox; H/O oxidation numbers stay unchanged.",
+    "Ethanol oxidation to ethanal does not require adding oxygen to the organicmolecule.",
+    "EqualformalNaOH/CaOH2 concentrations donot implyequalOH orPH.",
+    "Verydilutestrongacid cannot beclassifiedwithpH=-logc alone;watermatters.",
+    "Product-favoredequilibrium isnot instantaneousforwardreactionfor everystartingmixture:startingonlyproductsallowsreverseformation.",
+    "Oneamphiprotic speciesneednot haveonefixedprotonrole.",
+    "Given indicator colours are not independently observed handling or unique moleculeidentity."
+  ],
+  "retainedQuantitativeExtensionArithmeticOnly": {
+    "originalK1": 30902.95432513592,
+    "originalK2": 4677.351412871981,
+    "keptOutsideNewQualitativeCore": true,
+    "whole48115MWGOrSourceRouteApproved": false
+  },
+  "actualLabOrLearnerPerformance": false
+}

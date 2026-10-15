@@ -1,0 +1,182 @@
+{
+  "role": "Whole bilingual author case successor; original remains unchanged",
+  "source": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-bounded-author-remediation-20261015-v1/materials/twenty-complete-DEEN-cases.author.json",
+    "sha256": "sha256:2e39bc0851da8c559cbe05bc0d7c6454528b25a750fdbe27b132ead332ec37cb",
+    "bytes": 179222
+  },
+  "jsonPointer": "/cases/11",
+  "wholeBeforeCaseObjectSha256": "sha256:5429e4c2ed2cf18d31b967df27fc52c2d7b923c73c4dc86b4c74dfde9f58d112",
+  "before": {
+    "id": "T06-C2",
+    "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+    "titleDe": "Ammonium mit Baselast",
+    "materialDe": "25°C;γ=1,pKa(NH₄⁺)=9.25.500.0mL enthalten50.0mmolNH₄⁺ und25.0mmolNH₃. Geschlossener Behälter,keinNH₃-Verlust. Zugabe10.0mmolNaOH,Volumenänderungvernachlässigbar. Alternativ wird gefragt,ob60mmolOH⁻ nochmit derselben Pufferformel ausgewertetwerden dürfen. Ein zusätzlicher qualitativer Vergleich öffnet den Behälter für NH₃-Verlust; der konkrete Verlust ist unbekannt.",
+    "materialEn": "25°C,γ=1, pKa(NH₄⁺)=9.25.500.0 mL contains 50.0 mmol NH₄⁺/25.0 mmol NH₃.Closed vessel, no NH₃ loss. Add 10.0 mmol NaOH, negligible volume change. Alternative: can 60 mmol OH⁻ still be evaluated using the same buffer formula? An additional qualitative comparison opens the vessel to NH₃ loss; its amount is unknown.",
+    "taskDemandDe": "1. Bestimme die korrespondierenden Partner und berechne den Anfangs-pH mit der richtigen Quotientenrichtung.\n2. Berechne denpH nach10.0mmolOH⁻ mithilfe einer vorgeschalteten Stoffmengenbilanz.\n3. Beurteile die60mmol-Alternative und erkläre,warum ein negatives Säuremengenresultat kein HH-Eingabewertist.\n4. Dürfen im offenen Vergleich unverändert die ursprünglichen NH₃-Mengen in die Gleichung eingesetzt werden? Begründe Richtung und quantitative Grenze der Aussage.",
+    "taskDemandEn": "1. Identify conjugate partners and calculate initial pH with correct ratio orientation.\n2. Calculate pH after 10.0 mmol OH⁻ using mole balance first.\n3. Assess 60 mmol alternative and explain why negative acid amount is not a valid HH input.\n4. Can the original NH₃ amounts be used unchanged in the open comparison? Explain the direction and quantitative limitation.",
+    "modelAnswerDe": "1. Das Paar ist NH₄⁺/NH₃; anfangs ist pH 8.949. 2. NH₄⁺ + OH⁻ → NH₃ + H₂O verbraucht 10 mmol Säure und bildet 10 mmol Base: 40/35 mmol und pH 9.192. 3. 60 mmol OH⁻ überschreiten den 50-mmol-Säurevorrat. Eine formal negative NH₄⁺-Menge zeigt Erschöpfung und ist kein Logarithmusargument. 10 mmol formale zusätzliche Baselast verlangen eine neue Bilanz mit Wasser, NH₃ und starkem Baseüberschuss. Im geschlossenen Gefäß ist kein zusätzlicher NH₃-Verlust gegeben. 4. Bei unbekanntem NH₃-Verlust darf das alte Verhältnis nicht übernommen werden; der pH kann sinken. Für eine neue Zahl sind verbleibende Mengen oder Austausch-/Gleichgewichtsdaten nötig.",
+    "modelAnswerEn": "1. NH₄⁺/NH₃ is the pair; pH 8.949. 2. NH₄⁺+OH⁻→NH₃+H₂O consumes 10 mmol acid and forms 10 mmol base:40/35 mmol, pH 9.192. 3. 60 mmol OH⁻ exceeds 50 mmol acid reserve. A formal negative NH₄⁺ amount signals depletion, not the input of a logarithm.10 mmol OH⁻ remains in excess; new balance including excess base/water and NH₃ is required. Closed-vessel conditions exclude additional open-system change.\n4. No: unknown NH₃ loss changes the base/acid ratio and can lower pH. Remaining amounts or flow/equilibrium data are needed for a new numerical pH.",
+    "rubric": [
+      {
+        "expectationId": "e1",
+        "maximumPoints": 3,
+        "fullCreditDe": "SäureNH₄⁺,BaseNH₃;pH9.25+log(25/50)=8.949.",
+        "fullCreditEn": "Acid NH₄⁺, base NH₃; initial pH 8.949.",
+        "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+        "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+        "creditBasis": "written-explicit-task",
+        "actualPointsAwarded": null
+      },
+      {
+        "expectationId": "e2",
+        "maximumPoints": 3,
+        "fullCreditDe": "NH₄⁺40,NH₃35mmol;pH9.25+log(35/40)=9.192.",
+        "fullCreditEn": "NH₄⁺40, NH₃35 mmol; pH 9.192.",
+        "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+        "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+        "creditBasis": "written-explicit-task",
+        "actualPointsAwarded": null
+      },
+      {
+        "expectationId": "e3",
+        "maximumPoints": 3,
+        "fullCreditDe": "50mmolSäurereserveerschöpft,10mmolOH⁻ Überschuss;Restbasen-/Wassergleichgewichtstatt lognegativer Zahl.",
+        "fullCreditEn": "50 mmol acid reserve exhausted,10 mmol OH⁻ excess; excess base/water equilibrium, no log of negative amount.",
+        "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+        "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+        "creditBasis": "written-explicit-task",
+        "actualPointsAwarded": null
+      },
+      {
+        "expectationId": "e4",
+        "maximumPoints": 3,
+        "fullCreditDe": "Nein: unbekannter NH₃-Verlust verändert das Basen-/Säureverhältnis und kann den pH senken. Ohne verbleibende Mengen bzw. Fluss-/Gleichgewichtsangaben gibt es keinen neuen Zahlen-pH aus den ursprünglichen Mengen.",
+        "fullCreditEn": "No: unknown NH₃ loss changes the base/acid ratio and can lower pH. Remaining amounts or flow/equilibrium data are needed for a new numerical pH.",
+        "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+        "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+        "creditBasis": "written-design",
+        "actualPointsAwarded": null
+      }
+    ],
+    "maximumPoints": 12,
+    "fullCreditRequiresAllFourExpectations": true,
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "authorOnly": true,
+    "executed": false,
+    "learnerWorkPresent": false,
+    "practicalExecutionRequired": false,
+    "actualObservationRecords": [],
+    "actualPointsAwarded": null,
+    "wholeGoalScope": {
+      "tags": [
+        "LK"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-NI"
+        ]
+      }
+    },
+    "sourceAuthorCase": {
+      "caseId": "a449e874-case-2",
+      "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+      "wholeOldCaseObjectSha256": "sha256:ae773252ba3f710028041461c3ef3b5b3e4e996460909d7d9cd88751171f318c"
+    },
+    "newIndependentReviewStatus": "pending; author material only"
+  },
+  "after": {
+    "id": "T06-C2",
+    "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+    "titleDe": "Ammonium mit Baselast",
+    "materialDe": "25°C;γ=1,pKa(NH₄⁺)=9.25.500.0mL enthalten50.0mmolNH₄⁺ und25.0mmolNH₃. Geschlossener Behälter,keinNH₃-Verlust. Zugabe10.0mmolNaOH,Volumenänderungvernachlässigbar. Alternativ wird gefragt,ob60mmolOH⁻ nochmit derselben Pufferformel ausgewertetwerden dürfen. Ein zusätzlicher qualitativer Vergleich öffnet den Behälter für NH₃-Verlust; der konkrete Verlust ist unbekannt.",
+    "materialEn": "25°C,γ=1, pKa(NH₄⁺)=9.25.500.0 mL contains 50.0 mmol NH₄⁺/25.0 mmol NH₃.Closed vessel, no NH₃ loss. Add 10.0 mmol NaOH, negligible volume change. Alternative: can 60 mmol OH⁻ still be evaluated using the same buffer formula? An additional qualitative comparison opens the vessel to NH₃ loss; its amount is unknown.",
+    "taskDemandDe": "1. Bestimme die korrespondierenden Partner und berechne den Anfangs-pH mit der richtigen Quotientenrichtung.\n2. Berechne denpH nach10.0mmolOH⁻ mithilfe einer vorgeschalteten Stoffmengenbilanz.\n3. Beurteile die60mmol-Alternative und erkläre,warum ein negatives Säuremengenresultat kein HH-Eingabewertist.\n4. Dürfen im offenen Vergleich unverändert die ursprünglichen NH₃-Mengen in die Gleichung eingesetzt werden? Begründe Richtung und quantitative Grenze der Aussage.",
+    "taskDemandEn": "1. Identify conjugate partners and calculate initial pH with correct ratio orientation.\n2. Calculate pH after 10.0 mmol OH⁻ using mole balance first.\n3. Assess 60 mmol alternative and explain why negative acid amount is not a valid HH input.\n4. Can the original NH₃ amounts be used unchanged in the open comparison? Explain the direction and quantitative limitation.",
+    "modelAnswerDe": "1. Das Paar ist NH₄⁺/NH₃; anfangs ist pH 8.949. 2. NH₄⁺ + OH⁻ → NH₃ + H₂O verbraucht 10 mmol Säure und bildet 10 mmol Base: 40/35 mmol und pH 9.192. 3. 60 mmol OH⁻ überschreiten den 50-mmol-Säurevorrat. Eine formal negative NH₄⁺-Menge zeigt Erschöpfung und ist kein Logarithmusargument. 10 mmol formale zusätzliche Baselast verlangen eine neue Bilanz mit Wasser, NH₃ und starkem Baseüberschuss. Im geschlossenen Gefäß ist kein zusätzlicher NH₃-Verlust gegeben. 4. Bei unbekanntem NH₃-Verlust darf das alte Verhältnis nicht übernommen werden; der pH kann sinken. Für eine neue Zahl sind verbleibende Mengen oder Austausch-/Gleichgewichtsdaten nötig.",
+    "modelAnswerEn": "1. NH₄⁺/NH₃ is the pair; pH 8.949. 2. NH₄⁺+OH⁻→NH₃+H₂O consumes 10 mmol acid and forms 10 mmol base:40/35 mmol, pH 9.192. 3. 60 mmol OH⁻ exceeds 50 mmol acid reserve. A formal negative NH₄⁺ amount signals depletion, not the input of a logarithm.10 mmol is the formal stoichiometric OH⁻ excess, not a determined free-ion amount; new balance including excess base/water and NH₃ is required. Closed-vessel conditions exclude additional open-system change.\n4. No: unknown NH₃ loss changes the base/acid ratio and can lower pH. Remaining amounts or flow/equilibrium data are needed for a new numerical pH.",
+    "rubric": [
+      {
+        "expectationId": "e1",
+        "maximumPoints": 3,
+        "fullCreditDe": "SäureNH₄⁺,BaseNH₃;pH9.25+log(25/50)=8.949.",
+        "fullCreditEn": "Acid NH₄⁺, base NH₃; initial pH 8.949.",
+        "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+        "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+        "creditBasis": "written-explicit-task",
+        "actualPointsAwarded": null
+      },
+      {
+        "expectationId": "e2",
+        "maximumPoints": 3,
+        "fullCreditDe": "NH₄⁺40,NH₃35mmol;pH9.25+log(35/40)=9.192.",
+        "fullCreditEn": "NH₄⁺40, NH₃35 mmol; pH 9.192.",
+        "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+        "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+        "creditBasis": "written-explicit-task",
+        "actualPointsAwarded": null
+      },
+      {
+        "expectationId": "e3",
+        "maximumPoints": 3,
+        "fullCreditDe": "50mmolSäurereserveerschöpft,10mmolOH⁻ Überschuss;Restbasen-/Wassergleichgewichtstatt lognegativer Zahl.",
+        "fullCreditEn": "50 mmol formal acid reserve is exhausted, with 10 mmol formal stoichiometric OH⁻ excess; a new excess-base/water equilibrium is required, not a logarithm of a negative amount or a claim of exact free hydroxide.",
+        "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+        "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+        "creditBasis": "written-explicit-task",
+        "actualPointsAwarded": null
+      },
+      {
+        "expectationId": "e4",
+        "maximumPoints": 3,
+        "fullCreditDe": "Nein: unbekannter NH₃-Verlust verändert das Basen-/Säureverhältnis und kann den pH senken. Ohne verbleibende Mengen bzw. Fluss-/Gleichgewichtsangaben gibt es keinen neuen Zahlen-pH aus den ursprünglichen Mengen.",
+        "fullCreditEn": "No: unknown NH₃ loss changes the base/acid ratio and can lower pH. Remaining amounts or flow/equilibrium data are needed for a new numerical pH.",
+        "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+        "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+        "creditBasis": "written-design",
+        "actualPointsAwarded": null
+      }
+    ],
+    "maximumPoints": 12,
+    "fullCreditRequiresAllFourExpectations": true,
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "authorOnly": true,
+    "executed": false,
+    "learnerWorkPresent": false,
+    "practicalExecutionRequired": false,
+    "actualObservationRecords": [],
+    "actualPointsAwarded": null,
+    "wholeGoalScope": {
+      "tags": [
+        "LK"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-NI"
+        ]
+      }
+    },
+    "sourceAuthorCase": {
+      "caseId": "a449e874-case-2",
+      "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+      "wholeOldCaseObjectSha256": "sha256:ae773252ba3f710028041461c3ef3b5b3e4e996460909d7d9cd88751171f318c"
+    },
+    "newIndependentReviewStatus": "pending; v2 wording precision only, no learner evidence or scientific acceptance"
+  },
+  "changedFields": [
+    "modelAnswerEn",
+    "rubric/2/fullCreditEn",
+    "newIndependentReviewStatus"
+  ],
+  "newChemicalOperation": false,
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "learnerWorkPresent": false,
+  "executed": false
+}

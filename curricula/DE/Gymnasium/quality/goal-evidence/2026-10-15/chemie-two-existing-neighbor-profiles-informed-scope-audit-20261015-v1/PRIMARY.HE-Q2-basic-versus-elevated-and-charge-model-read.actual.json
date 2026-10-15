@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual bounded official primary-source and supplied-model scope checks",
+  "checkedAtUTC": "2026-10-15T21:48:33.683780+00:00",
+  "localOriginalPDF": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+    "sha256": "sha256:628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+    "bytes": 527976
+  },
+  "currentSourceExtraction": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+    "sha256": "sha256:b59c73ba9bcda71630a80246a3727a1a8a2abd4a4f0b0aa9af115c74a8cdc005",
+    "bytes": 380949
+  },
+  "actualLocalRead": "pdftotext -f42 -l42 -layout on the pinned local original PDF; printed page42, Q2.1 Naturstoffe. Full page read with its basic/elevated headings.",
+  "livePrimaryRead": {
+    "landingURL": "https://kultus.hessen.de/unterricht/kerncurricula-und-lehrplaene/kerncurricula/kerncurricula-fuer-die-gymnasiale-oberstufe-kcgo",
+    "PDFURL": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-07/kcgo_chemie_21.04.2026.pdf",
+    "method": "Direct PDF request first returned redirect loop; following the current official Chemie April2026 download link succeeded. The primary PDF page41 zero-index / printed42 was read.",
+    "byteIdentityClaim": "No live-download/local-byte identity is claimed; relevant headings/clauses agree."
+  },
+  "boundedOwnRead": [
+    "On basic level shared by GK and LK, the amino-acid clause includes zwitterions, structures and acid/base properties. The carbohydrate clause includes glucose/fructose as compounds, Fehling with aldoses, and reducing versus nonreducing disaccharides.",
+    "The elevated LK section separately assigns the isoelectric point and fructose keto-enol tautomerism. Listing fructose among basic compounds does not assign its enediol/tautomeric explanation as a mandatory basic assay criterion.",
+    "The read Q2.1 amino-acid clause and the actual whole e9 goal do not require electric-field migration. This is not a claim that no possible curriculum anywhere contains electrophoresis."
+  ],
+  "minimalExactClauseLabels": [
+    "Fehling-Probe mit Aldosen",
+    "Keto-Enol-Tautomerie am Beispiel von Fructose",
+    "Säure-Base-Eigenschaften",
+    "isoelektrischer Punkt"
+  ],
+  "suppliedModelChecks": {
+    "glycine": {
+      "givenPKa": [
+        2.3,
+        9.6
+      ],
+      "dominantFormsByPH": {
+        "1": "H3N+-CH2-COOH, formal+1",
+        "6": "H3N+-CH2-COO−, formal0",
+        "12": "H2N-CH2-COO−, formal−1"
+      },
+      "boundary": "Dominant means not exclusive; pKa values are supplied task-model inputs, not measured here."
+    },
+    "lysine": {
+      "givenPKa": [
+        2.2,
+        9.0,
+        10.5
+      ],
+      "atPH7": "One COO− and two predominantly protonated ammonium groups give dominant formal net+1; glycine is predominantly the net0 zwitterion.",
+      "NH2overNH3Ratios": [
+        0.01,
+        0.00031622776601683794
+      ],
+      "boundary": "Under an added simple electrophoresis model, positive charge can support migration toward the negative electrode. That extra application does not become an essential acid/base explanation merely because it is chemically coherent."
+    },
+    "reducingAssays": "Glucose access to a carbonyl form, maltose with a free anomeric centre, and sucrose linking both anomeric centres provide a coherent basic positive/negative/transfer comparison. Fructose can undergo alkaline enediol/isomerisation chemistry; the case is an enrichment model, not an exhaustive elementary mechanism or a new result observed here."
+  },
+  "sourceBoundary": "Only this current HE Q2.1 primary distinction and the two literal current goals/profiles are audited. No all-country mapping, whole GK/LK course release or assessment of every other source route is attempted."
+}

@@ -1,0 +1,175 @@
+[
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current402-targeted-author-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+    "goalFingerprint": "sha256:5e004f86532dec13242591f1ae3043ba488ae176a10d5ce272d6a4e373d4bcce",
+    "reviewInputFingerprint": "sha256:db36b8a3641dbe945619ee0e917b7489a709423aaa6296069cb46ff71c6f7428",
+    "profileFingerprint": "sha256:f8835e914f5f2b1f5a07efbb312f74938c988b72004b92db7c94405d7daee211",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T05:00:00Z",
+    "reviewer": "Codex chemistry author; independent review pending",
+    "reason": "Konkrete DE/EN-Aufgaben und bewertbare Ergebnisse als E1/G1-Autorenkandidat. Keine ausgeführte Lernendenarbeit, HumanApproval oder HumanTrial behauptet.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "experiment",
+      "expectations": [
+        {
+          "id": "structure-and-evidence",
+          "essentialUnderstandingDe": "Reduktionsnachweise und enzymatische Glucosenachweise beantworten verschiedene analytische Fragen.",
+          "essentialUnderstandingEn": "Reducing assays and enzymatic glucose assays answer different analytical questions.",
+          "observablePerformanceDe": "Reduzierendes Material ist angezeigt; ein positiver Benedictbefund identifiziert nicht Glucose. GOD ist im festgelegten Verfahren glucosespezifischer; Nachweisgrenze/Interferenz bleiben zu beachten.",
+          "observablePerformanceEn": "Reducing material is indicated; Benedict positivity does not identify glucose. GOD is more glucose-specific in the stated procedure; detection limits/interference remain relevant."
+        },
+        {
+          "id": "fresh-transfer",
+          "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+          "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+          "observablePerformanceDe": "Maltose ist vorher reduzierend, Saccharose erst nach Hydrolyse positiv aufgrund zugänglicher Monosaccharide. Säurebehandlung wird vor alkalischem Test passend kontrolliert; Planung allein belegt keine Durchführung.",
+          "observablePerformanceEn": "Maltose reduces before, sucrose after hydrolysis due to accessible monosaccharides. Acid treatment needs appropriate control before alkaline testing; planning alone does not prove execution."
+        },
+        {
+          "id": "execution",
+          "essentialUnderstandingDe": "Ausführenundunterschiedliche Nachweisleistungvergleichen.",
+          "essentialUnderstandingEn": "Execute and compare assay peRformance.",
+          "observablePerformanceDe": "Benedictkann Glucose/Fructosezeigen, GODnur Glucose imgeeigneten Messbereich. Positive/negative Kontrollentrennen Reagenzfehler; CuII→CuI/Reduktionsvermögen versus Enzymspezifität; Verdünnungfalls GOD-Skalaüberschritten.",
+          "observablePerformanceEn": "Benedict can indicate glucose/fructose; GOD specifically glucose within detection range. Controls separate reagent failure; Cu(II)/Cu(I) reducing behaviour versus enzyme specificity; dilute if GOD scale exceeded."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "structure-and-evidence",
+          "fresh-transfer",
+          "execution"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-operator-context",
+          "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+          "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-a",
+          "taskDemandDe": "Ein Modellprotokoll zeigt Benedict positiv, GOD negativ; Vergleichsproben reagieren erwartungsgemäß. Was ist über reduzierende Zucker und Glucose belegt?",
+          "taskDemandEn": "A model record shows Benedict positive, GOD negative, with valid controls. What is established about reducing sugars and glucose?",
+          "expectedPerformanceDe": "Reduzierendes Material ist angezeigt; ein positiver Benedictbefund identifiziert nicht Glucose. GOD ist im festgelegten Verfahren glucosespezifischer; Nachweisgrenze/Interferenz bleiben zu beachten.",
+          "expectedPerformanceEn": "Reducing material is indicated; Benedict positivity does not identify glucose. GOD is more glucose-specific in the stated procedure; detection limits/interference remain relevant.",
+          "understandingFocusDe": "Reduktionsnachweise und enzymatische Glucosenachweise beantworten verschiedene analytische Fragen.",
+          "understandingFocusEn": "Reducing assays and enzymatic glucose assays answer different analytical questions."
+        },
+        {
+          "id": "case-b-transfer",
+          "taskDemandDe": "Plane im freigegebenen Schullabor einen Vergleich von Maltose und Saccharose vor/nach Hydrolyse; erläutere erwartete reduzierende Befunde und notwendige Kontrollen.",
+          "taskDemandEn": "Plan an authorised school-lab comparison of maltose and sucrose before/after hydrolysis; explain expected reducing results and controls.",
+          "expectedPerformanceDe": "Maltose ist vorher reduzierend, Saccharose erst nach Hydrolyse positiv aufgrund zugänglicher Monosaccharide. Säurebehandlung wird vor alkalischem Test passend kontrolliert; Planung allein belegt keine Durchführung.",
+          "expectedPerformanceEn": "Maltose reduces before, sucrose after hydrolysis due to accessible monosaccharides. Acid treatment needs appropriate control before alkaline testing; planning alone does not prove execution.",
+          "understandingFocusDe": "Reduktionsnachweise und enzymatische Glucosenachweise beantworten verschiedene analytische Fragen.",
+          "understandingFocusEn": "Reducing assays and enzymatic glucose assays answer different analytical questions."
+        },
+        {
+          "id": "execution-1",
+          "taskDemandDe": "Führe betreut einen Vergleich Glucose/Fructose/Wasser aus: je2mL1%Lösung. Benedict: je2mLbereitgestelltes Benedictreagenz, 5min80°C-Wasserbad. Parallel GOD-QUANTOFIX2seintauchen, abschütteln, 30sabwarten, Skalavergleichen. Protokolliere Zeit/Temperatur/Befunde undbegründe Selektivität.",
+          "taskDemandEn": "Execute supervised glucose/fructose/water comparison: 2mL1%solutions. Benedict: add2ml provided reagent, 5min80°C water bath. Parallel QUANTOFIX GOD dip2s, shake off, wait30s, compare scale. Log time/temperature/findings, explaining selectivity.",
+          "expectedPerformanceDe": "Benedictkann Glucose/Fructosezeigen, GODnur Glucose imgeeigneten Messbereich. Positive/negative Kontrollentrennen Reagenzfehler; CuII→CuI/Reduktionsvermögen versus Enzymspezifität; Verdünnungfalls GOD-Skalaüberschritten.",
+          "expectedPerformanceEn": "Benedict can indicate glucose/fructose; GOD specifically glucose within detection range. Controls separate reagent failure; Cu(II)/Cu(I) reducing behaviour versus enzyme specificity; dilute if GOD scale exceeded.",
+          "understandingFocusDe": "Ausführenundunterschiedliche Nachweisleistungvergleichen.",
+          "understandingFocusEn": "Execute and compare assay peRformance."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current402-author-20261012-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "0b5342b9-512d-573f-90d5-7522aee35efa",
+    "goalFingerprint": "sha256:b6c5ccea12b4eaa66b46991da35588131b35eb842335cf2d44f93a534a7c162c",
+    "reviewInputFingerprint": "sha256:3d4d4f23148005ff27b8af745ad3858408ae3d515d6627ba1acb599fe4f05553",
+    "profileFingerprint": "sha256:340389468dde1e1faee0f3cc3d201df80a66a6725c6f50b4a39296e3aacfea90",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T02:22:52.691417+00:00",
+    "reviewer": "Codex chemistry Q2 author; not an independent review",
+    "reason": "DE: Konkreter Autorenkandidat mit zwei neu variierten Aufgaben, chemischen Modellantworten und prüfbaren Schlussgrenzen. EN: Concrete author candidate with two freshly varied tasks, chemical model answers and assessable inference limits. Keine Durchführung, unabhängige Freigabe oder menschliche Erprobung behauptet.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "structure-and-evidence",
+          "essentialUnderstandingDe": "Substratabbau und Aufnahme sind verschiedene Vorgänge; Enzymausstattung und Transport können variieren.",
+          "essentialUnderstandingEn": "Substrate digestion and uptake are distinct; enzyme availability and transport can vary.",
+          "observablePerformanceDe": "Geringere Lactaseaktivität vermindert Hydrolyse zu Glucose/Galactose; unverdaute Lactose kann weiter in den Darm gelangen. Dies ist eine Mechanismuserklärung, keine individuelle Diagnose.",
+          "observablePerformanceEn": "Lower lactase activity reduces hydrolysis to glucose/galactose; unhydrolysed lactose may pass farther along the gut. This explains a mechanism, not a diagnosis."
+        },
+        {
+          "id": "fresh-transfer",
+          "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+          "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+          "observablePerformanceDe": "Beim ersten Fall ist die enzymatische Spaltung begrenzt, beim zweiten die Resorption. Genetische/erworbene Veränderungen können an verschiedenen Schritten ansetzen.",
+          "observablePerformanceEn": "The first limits enzymatic cleavage, the second uptake. Genetic or acquired changes may affect different steps."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "structure-and-evidence",
+          "fresh-transfer"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-and-conditions",
+          "textDe": "Material, Stoffstruktur, Messbedingung oder Bewertungsdossier wechseln wie in den zwei ausdrücklich ausgearbeiteten Fällen; quantitative Angaben sind synthetische Aufgabenwerte.",
+          "textEn": "Material, molecular structure, measurement conditions or evaluation dossier vary as explicitly specified in the two worked cases; numerical values are synthetic task data."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-a",
+          "taskDemandDe": "Modellfall: Zwei Personen unterscheiden sich nur in der Lactaseaktivität. Erkläre die Folgen für Lactosehydrolyse und die anschließend aufnehmbaren Produkte.",
+          "taskDemandEn": "Model case: two people differ only in lactase activity. Explain effects on lactose hydrolysis and available products for uptake.",
+          "expectedPerformanceDe": "Geringere Lactaseaktivität vermindert Hydrolyse zu Glucose/Galactose; unverdaute Lactose kann weiter in den Darm gelangen. Dies ist eine Mechanismuserklärung, keine individuelle Diagnose.",
+          "expectedPerformanceEn": "Lower lactase activity reduces hydrolysis to glucose/galactose; unhydrolysed lactose may pass farther along the gut. This explains a mechanism, not a diagnosis.",
+          "understandingFocusDe": "Substratabbau und Aufnahme sind verschiedene Vorgänge; Enzymausstattung und Transport können variieren.",
+          "understandingFocusEn": "Substrate digestion and uptake are distinct; enzyme availability and transport can vary."
+        },
+        {
+          "id": "case-b-transfer",
+          "taskDemandDe": "In einem zweiten Modell wird ein Monosaccharid gebildet, aber sein Transport durch die Darmwand ist vermindert. Vergleiche dies mit fehlender Lactase.",
+          "taskDemandEn": "In another model a monosaccharide is produced but intestinal transport is reduced. Compare with lactase absence.",
+          "expectedPerformanceDe": "Beim ersten Fall ist die enzymatische Spaltung begrenzt, beim zweiten die Resorption. Genetische/erworbene Veränderungen können an verschiedenen Schritten ansetzen.",
+          "expectedPerformanceEn": "The first limits enzymatic cleavage, the second uptake. Genetic or acquired changes may affect different steps.",
+          "understandingFocusDe": "Substratabbau und Aufnahme sind verschiedene Vorgänge; Enzymausstattung und Transport können variieren.",
+          "understandingFocusEn": "Substrate digestion and uptake are distinct; enzyme availability and transport can vary."
+        }
+      ]
+    }
+  }
+]
