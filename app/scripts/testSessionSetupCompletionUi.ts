@@ -179,6 +179,15 @@ const installApi = async (page: Page) => {
       return
     }
     if (
+      [existingLearnerId, generatedLearnerId, incompleteLearnerId].some(
+        (learnerId) => path === `/api/ui/learners/${learnerId}/composition-supplement-options`,
+      )
+      && request.method() === 'GET'
+    ) {
+      await respond({ options: [], problemCode: null })
+      return
+    }
+    if (
       path.endsWith('/personalization-rewind')
       && request.method() === 'POST'
     ) {
