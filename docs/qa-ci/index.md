@@ -53,7 +53,8 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
-- [Chemie: 371/422, vier neue Gleichgewichtsabschlüsse und getrennte Praktikumsarbeit (15.10.2026)](chemie-source4-current371-checkpoint-2026-10-15.md)
+- [Chemie: 386/426, 15 neue Praktikumsabschlüsse und 40 offene Ziele (15.10.2026)](chemie-bcp-current426-checkpoint-2026-10-15.md)
+- [Vorherige Chemie-Fortsetzung: 371/422, vier neue Gleichgewichtsabschlüsse und getrennte Praktikumsarbeit (15.10.2026)](chemie-source4-current371-checkpoint-2026-10-15.md)
 - [Chemie: 367/422, sechs neue fachliche Abschlüsse und drei wiederhergestellte Bindungen (15.10.2026)](chemie-native9-current367-continuation-2026-10-15.md)
 - [Chemie: 20 neue Carbonyl-/Gleichgewichtsabschlüsse im Kandidaten 358/422 (15.10.2026)](chemie-carbonyl-equilibrium-current358-checkpoint-2026-10-15.md)
 - [Chemie: 17 neue Energieabschlüsse im Kandidaten 338/422 (15.10.2026)](chemie-energy18-current422-checkpoint-2026-10-15.md)

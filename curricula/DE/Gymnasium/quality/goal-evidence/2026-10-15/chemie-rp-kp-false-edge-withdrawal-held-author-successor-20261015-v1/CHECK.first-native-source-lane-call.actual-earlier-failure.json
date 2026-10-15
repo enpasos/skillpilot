@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual diagnostic outcome of one unchanged native source-lane call; expected held-decision test was not reached",
+  "command": "python3 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-rp-kp-false-edge-withdrawal-held-author-successor-20261015-v1/check_held_source_lane.py",
+  "script": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-rp-kp-false-edge-withdrawal-held-author-successor-20261015-v1/check_held_source_lane.py",
+    "sha256": "sha256:236ce15f031db16e8b6e189d1d24779005e8fcb88e4c1a5dfd524f4dad53f18b",
+    "bytes": 5692
+  },
+  "actualExitCode": 1,
+  "actualCompilationError": "Incomplete official source document in /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json",
+  "failedStockLocation": "scripts/compile_curriculum_release_model.py:1688",
+  "expectedHoldDecisionGuardReached": false,
+  "proofOfSpecificHoldGuard": false,
+  "nativePublicationPassed": false,
+  "sourceNativePreparationStillRequired": true,
+  "originalMappingWrites": 0,
+  "tempInputDirectoryRemovedByContextManager": true,
+  "repeatCalls": 0,
+  "explanation": "The exact current legacy source extraction fails its existing official-document metadata gate before the authoritative-decision loop. The attempt must not be called a successful held-decision negative test, nor repaired by weakening the compiler or inventing source roles. The distinct held-decision rejection is supported only by direct reading of the unchanged code, not execution in this attempt."
+}

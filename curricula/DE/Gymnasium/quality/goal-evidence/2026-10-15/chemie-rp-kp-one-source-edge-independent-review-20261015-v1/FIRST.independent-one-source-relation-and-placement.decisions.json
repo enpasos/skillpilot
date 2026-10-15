@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "runId": "5a425502-4fee-46d0-9215-73d5a1dd178d",
+  "recordedAtUTC": "2026-10-15T18:54:05.801245+00:00",
+  "role": "Independent source relation and placement reviewer only; no D/P/A/M/V review",
+  "reviewAuthority": "ai_candidate",
+  "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+  "inputCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-rp-kp-one-wrong-source-edge-remediation-author-20261015-v1/NEUTRAL.one-RP-source-cell-whole-inputs-and-proposal.selector.json",
+    "sha256": "sha256:2620b43a9c8c03f218e1ee38ac415919ded4ea2695fa8e7710e4395aa94a96bf",
+    "bytes": 6445
+  },
+  "wholeSourceCellParentMappingsAndBothCanonicalPartnersRead": true,
+  "oldRelation": {
+    "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+    "titleDe": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+    "wholeCurrentCanonicalGoalObjectSha256": "sha256:81353d9fb49b34564a8d8bca0c8ca5798e577c9d8155dea96470c667a2cefe13",
+    "storedMatchType": "exact",
+    "decision": "REJECT_FALSE_SOURCE_RELATION",
+    "reasonDe": "Die RP-Zelle nennt Kp und das ideale Gasgesetz im Gleichgewichtskontext. Der ganze kanonische Partner 580b prüft qualitativ-experimentelle Nachweise von O2, CO2 und H2 und deren Beobachtungsdeutung. Er enthält weder Kp/Kc, Partialdruck/Stoffmengenkonzentration noch pV=nRT. Gemeinsame Gaswörter begründen keine Teil- oder exakte Abdeckung. Die konkrete Quellkante muss enden; das kanonische Gasnachweisziel und andere gültige Quellenkanten bleiben davon fachlich unberührt."
+  },
+  "newRelation": {
+    "canonicalGoalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+    "titleDe": "Kp und Kc verknüpfen",
+    "wholeCurrentCanonicalGoalObjectSha256": "sha256:87d69df304cfb7274b91b81c9112e40503b79434bf940bd428b5ef1811971490",
+    "proposedMatchType": "partial",
+    "scientificDecision": "THEMATIC_PARTIAL_RELATION_SUPPORTED_AS_NON_CONSUMING_CANDIDATE_ONLY",
+    "reasonDe": "Der ganze a8-Partner verbindet Kp und Kc aus dem idealen Gaszusammenhang. Das ist ein sachlich passender Bezug zum amtlich genannten Kp-/Gasgesetz-Thema. Die knappe Themenzelle operationalisiert jedoch weder die gesamte kanonische Herleitungs-, Standardzustands-, Umrechnungs- und Modellgrenzenleistung noch alle eigenständigen pV=nRT-Anwendungen. Auch die allgemeinen Kompetenzpassagen machen daraus keine vollständige Eins-zu-eins-Gleichheit. Eine partielle thematische Beziehung ist vertretbar; vollständige Abdeckung, exact-Mastery-Transfer oder RP-Pflichtzuordnung sind damit nicht bewiesen.",
+    "fullSourceCoverage": "NOT_ESTABLISHED",
+    "exactMasteryEquivalence": false,
+    "RPCompulsoryPlacement": "NOT_AUTHORIZED_BY_THIS_PASSAGE",
+    "exclusiveRPLKAssignment": "NOT_ESTABLISHED"
+  },
+  "placementDecision": {
+    "status": "NEEDS_VIEW_PLACEMENT_REVIEW",
+    "reasonDe": "Die amtliche Kp-Nennung ist eine Vertiefungs-/Verzahnungsmöglichkeit. Der vorliegende Kandidat legt keine separat akzeptierte optionale Auswahl/Platzierung vor, die eine automatische RP-Pflichtzielwirkung ausschließt. partial ist im vorhandenen System sichtbarkeitswirksam und kein Quarantänestatus.",
+    "actualConcreteRPViewTargetEffectExecutedOrProven": false,
+    "potentialMappingDrivenRPVisibilitySupportedByCode": true,
+    "ordinaryMandatoryTargetGrant": false,
+    "optionalPlacementGranted": false
+  },
+  "wholeAuthorProposalDecision": "HOLD_REVISE_REQUIRED",
+  "wholeProposalReasonDe": "Das Ziel der Korrektur ist fachlich richtig, aber mapped/partial plus offene Statusprosa hält die Kante technisch nicht offen. Die konsumierbare a8-Ersatzkante ist deshalb in diesem Zustand nicht akzeptiert. Die kleinste sichere datenseitige Nachbesserung ist die Entfernung der einen falschen Kante aus beiden Rohmapping-Arrays, mit explizitem offenen Quellen-/Platzierungsfall und a8 ausschließlich als nicht konsumiertem Kandidaten. Bis zur getrennten Auflösung bleibt ein M3-/Release-Hold bestehen.",
+  "existingCanonicalGoalAndResourceBodiesChangedByThisReview": false,
+  "noAuthorMappingMutation": true,
+  "noSourceAtlasRegistration": true,
+  "noM3Acceptance": true,
+  "noNormalBinding": true,
+  "humanApproval": false,
+  "humanTrial": false,
+  "D_P_A_M_VGranted": false,
+  "newStrict": 0
+}

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "artifactRole": "Inactive source-data author successor recipe; explicitly incomplete, not an accepted M3 mapping file",
+  "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+  "supersededAuthorProposal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-rp-kp-one-wrong-source-edge-remediation-author-20261015-v1/PROPOSAL.wholeMappingProposalSparseRecipe.author-unreviewed.json",
+    "sha256": "sha256:fbf7ffcabe023f8614f60db557d5abfa5e7e3ccf48250dc3b686c473d7607ee2",
+    "bytes": 8225
+  },
+  "independentScientificFinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-rp-kp-one-source-edge-independent-review-20261015-v1/FIRST.smallest-data-only-remedy-and-native-contract-boundary.json",
+    "sha256": "sha256:a96997f9ed7402f07e96f0da93d3a346beb53d172c83f4b1f9c2c90cf073fcd4",
+    "bytes": 7436
+  },
+  "reconstructionRule": "Verify exact original bytes, then apply only the listed whole-row removal/replacements in RAM. No original or active file is written. Both raw mapping copies must withdraw this false edge. This file itself is outside consumed mapping directories.",
+  "wholeMappingSparseRecipes": [
+    {
+      "originalFile": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_to_canonical_chemistry.json",
+        "sha256": "sha256:413445dd9c647a7a83d58aee33619145e6fdcd7d0197d4fb20c5dc2f67426f0e",
+        "bytes": 349881
+      },
+      "operations": [
+        {
+          "operation": "removeWholeArrayRow",
+          "jsonPointer": "/mappings/644",
+          "before": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "matchType": "exact",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+          }
+        }
+      ],
+      "originalMappingRows": 1264,
+      "heldMappingRows": 1263,
+      "expectedRemovedRows": 1,
+      "outputCanonicalJsonSha256": "sha256:151626771768f6385357637a0669f304b0c8819ad5ab49f84d7ce71a151eb843",
+      "allOtherRowsAndFieldsSemanticallyExact": true
+    },
+    {
+      "originalFile": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "sha256:31aadba54416add6093cff0eb9b86c59b7af2cada0966b1f35b95f01cd491f72",
+        "bytes": 567178
+      },
+      "operations": [
+        {
+          "operation": "removeWholeArrayRow",
+          "jsonPointer": "/mappings/644",
+          "before": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "matchType": "exact",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+          }
+        },
+        {
+          "operation": "replaceWholeObject",
+          "jsonPointer": "/decisions/165",
+          "before": {
+            "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "topicCode": "BAUSTEIN-7-5",
+            "sourceSpan": "7.5 angewandte Verfahren, Source-Ziel 10",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "580b3616-f121-5d82-ac6b-fc24f145fbdc"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "after": {
+            "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "topicCode": "BAUSTEIN-7-5",
+            "sourceSpan": "7.5 angewandte Verfahren, Source-Ziel 10",
+            "decision": "needs_view_placement_review",
+            "canonicalGoalIds": [],
+            "rationale": "Independent source review: the former exact relation to gas-detection goal 580b is false. The actual RP2022 Kp/ideal-gas item is an enrichment/interconnection suggestion on printed/physical page 52 of framework block 7. The old page-25/7.5/LK labels remain historical extraction data and do not establish obligation. Goal a8 is a plausible partial thematic candidate only, retained in the external quality record; there is no accepted mapping or optional/mandatory placement for this source cell. Source inventory and full-coverage requirement remain unchanged.",
+            "reviewedAt": "2026-10-15",
+            "reviewer": "codex-author-successor-based-on-separate-source-FIRST"
+          }
+        },
+        {
+          "operation": "replaceWholeObject",
+          "jsonPointer": "/status",
+          "before": {
+            "scope": "DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 325,
+            "mappedSourceGoals": 325,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 325,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+          },
+          "after": {
+            "scope": "DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 325,
+            "mappedSourceGoals": 324,
+            "needsViewPlacementReview": 1,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 325,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "INAKTIVER AUTORENNACHFOLGER. reviewedSourceGoals zählt325 aufgezeichnete Entscheidungen, nicht325 akzeptierte Abdeckungen. 324 historische Quellenentscheidungen unverändert; eine fachlich falsche Gasnachweis-Kante nach unabhängiger Quellenprüfung in beiden konsumierten Mapping-Arrays entfernt. Die vollständige Kp-/Gasgesetz-Quellzelle bleibt im325er-Inventar und als needs_view_placement_review ohne akzeptiertes Ziel erhalten. a8 bleibt nur ein externer partieller Fachkandidat; Quellenabdeckung/optionale Platzierung sind offen. Kein M3- oder Publikationsabschluss."
+          }
+        }
+      ],
+      "originalMappingRows": 1264,
+      "heldMappingRows": 1263,
+      "expectedRemovedRows": 1,
+      "outputCanonicalJsonSha256": "sha256:b1ba591b04724caea4f4ad43641f05db200238f9995b82d1eab924d1e86a2b0c",
+      "allOtherRowsAndFieldsSemanticallyExact": true
+    }
+  ],
+  "sourceInventoryChanged": false,
+  "sourceInventoryCount": 325,
+  "acceptedHistoricalSourceDecisionsUnchanged": 324,
+  "openSourcePlacementCount": 1,
+  "acceptedReplacementTargets": [],
+  "nonConsumingCandidateOnly": {
+    "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+    "relation": "partial thematic candidate",
+    "where": "external sealed quality evidence only",
+    "visibilityGranted": false
+  },
+  "wholeSourceCoverageGranted": false,
+  "nativePublicationCompatible": false,
+  "doNotWeakenNativeFullCoverageGate": true,
+  "normalD_P_A_M_VGrant": false,
+  "activeWrites": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "newStrict": 0
+}

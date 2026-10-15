@@ -1,6 +1,35 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-## Aktuelle Chemie-Fortsetzung: 371/422 – 15. Oktober 2026
+## Aktuelle Chemie-Fortsetzung: 386/426 – 15. Oktober 2026
+
+Der [Praktikums-Folgecheckpoint](chemie-bcp-current426-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Bericht **386/426 (90,6 %)**:
+15 fachliche Erstabschlüsse, alle bisherigen 371 erhalten, **40 offen**.
+Sechs breite Atome werden zu Kontexten mit zehn Kindern; der Nenner steigt
+netto um vier. Fünf weitere Bestandsziele sind erstmals abgeschlossen.
+Eine erneuerte e7-Kontextbindung bringt netto keinen Erstabschluss;
+acht alte Beschreibungsbindungen bleiben exakt erhalten. Alle sechs
+Pflichtprüfungen bestehen; D/P/A/M/V stehen bei **388/397/401/426/422**.
+Der einmalige Zentralbericht lief in 55,024 Sekunden ohne Befunde.
+
+BcP bleibt ein getrennter bayerischer Praktikums-Wahlumfang für 12/13 mit
+52 erhaltenen Quellzellen; fiktive Fallwerte belegen keine echte Durchführung.
+Zehn Kindbilder sind bei 360/680 Pixeln geprüft, gültige Bestandsbilder bleiben
+erhalten. Fünf fehlerhafte optionale Kontextbildlinks sind gezielt entfernt,
+alte Bildbytes erhalten. Vier Cluster-Bild-HOLDs, vier atomare V-Lücken und
+die globale Bild-QA HOLD bleiben offen. Die Titel/Icon-Überlappung bei
+`0f632595-5875-5a95-83d8-7de3180bdaa6` bleibt eine separate UI-REVISION;
+die RP-Kp→Gasnachweis-Korrektur ist zurückgestellt und nicht integriert.
+Layer A und M7 bleiben offen. Alle 697 geschützten aktiven Eingaben bleiben
+bytegleich; aktiv ist Chemie **231/402, M6**, die drei geschützten Fächer
+bleiben M7.
+
+Für den gepushten 371er-Commit `2fd57186` sind
+[alle acht Hauptjobs, 14 Checks und vier Workflows erfolgreich](https://github.com/enpasos/skillpilot/actions/runs/38786527795)
+belegt. Der 386er-Folgecommit benötigt seinen eigenen GitHub-CI-Nachweis.
+Nach stabilem Commit und erfolgreicher CI folgen die 40 offenen Chemieziele.
+
+## Vorherige Chemie-Fortsetzung: 371/422 – 15. Oktober 2026
 
 Der [Gleichgewichts-Folgecheckpoint](chemie-source4-current371-checkpoint-2026-10-15.md)
 erreicht im inaktiven zentralen Bericht **371/422 (87,9 %)**:
