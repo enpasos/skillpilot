@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "role": "Isolated unselected registration and reader-change proposal; not runnable as a release candidate with the current reader",
+  "status": "needs-independent-source-course-adoption-and-separate-reader-design",
+  "active": false,
+  "existingBookConfig": {
+    "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.json",
+    "sha256": "sha256:f5507ed4d9ff44211aa601a886fc41cc4ce4b781a19818d8bb79441edff89448",
+    "bytes": 740
+  },
+  "existingInputCompanion": {
+    "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+    "sha256": "sha256:da3e18b54ff65e72c15f7f87a160f38d952362d468ece0b9893f32e3e7958782",
+    "bytes": 16529
+  },
+  "existingManifest": {
+    "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.sources.json",
+    "sha256": "sha256:2ed18e262bf825864325800015bae677ea2ef660050793f07413f51e0504c7e3",
+    "bytes": 7320
+  },
+  "candidateInputs": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/canonical560.current422.two-model-bound-descriptions.author.json",
+      "sha256": "sha256:a698fcd53270584358cd7aa5dd9d5f2175c7fda6ecf4ca8a3c6c2232ee351abe",
+      "bytes": 1893684
+    },
+    "semantic": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/semantic560.two-description-source-identities.author.json",
+      "sha256": "sha256:c443108204e97d857b41f1852285a3c7f3e420031272485239d81751777d43e5",
+      "bytes": 180070
+    },
+    "unreviewedMappingCandidates": [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/mappings/DE-BY.scope4.unreviewed-author.mapping-candidate.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/mappings/DE-HE.scope4.unreviewed-author.mapping-candidate.json"
+    ]
+  },
+  "hypotheticalCompanionDeltaAfterAdoption": [
+    {
+      "op": "replace",
+      "path": "/landscapePath",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/canonical560.current422.two-model-bound-descriptions.author.json"
+    },
+    {
+      "op": "replace",
+      "path": "/semanticKindLedgerPath",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/semantic560.two-description-source-identities.author.json"
+    },
+    {
+      "op": "add",
+      "path": "/mappingPaths/-",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/mappings/DE-BY.scope4.unreviewed-author.mapping-candidate.json"
+    },
+    {
+      "op": "add",
+      "path": "/mappingPaths/-",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/mappings/DE-HE.scope4.unreviewed-author.mapping-candidate.json"
+    }
+  ],
+  "deltaMustNotBeAppliedNow": true,
+  "actualReaderBoundaries": [
+    {
+      "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+      "lines": [
+        232,
+        244,
+        250,
+        251,
+        256,
+        289,
+        302
+      ],
+      "actualBehavior": "Reads only config.mappingPaths and mapping.decisions. Requires reviewer/reviewedAt/rationale before the mapped filter, requires complete decision coverage, then document.official===true. It neither reads sourceKind nor authorProposals. A mapped witness is labelled profileBasis:source-metadata. Our empty decision lists fail complete review coverage; fabricating mapped/reviewed/official data to pass is forbidden."
+    },
+    {
+      "path": "app/scripts/goalBookOriginalSources.ts",
+      "lines": [
+        58,
+        79,
+        128,
+        162,
+        164,
+        171
+      ],
+      "actualBehavior": "Current original-source selection comes from the checked input companion mappingPaths. Only decision:mapped rows contribute and only official URLs are emitted. sourceKind is not emitted as an authorship distinction. A non-official author declaration must not masquerade as an official original source."
+    },
+    {
+      "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+      "lines": [
+        227,
+        289,
+        296,
+        354
+      ],
+      "actualBehavior": "Existing profileBasis variants are source-metadata and authored-view. The authored-view fallback is explicitly limited to BB/BE, not an authorization for BY/HE authored extensions. Generated sourcePaths and navigation derive from the actual scoped union; this task does not regenerate them."
+    }
+  ],
+  "minimumSeparateReaderDesignToReview": [
+    "Keep official normative antecedents and authored component/course declarations as different provenance routes. Preserve the original source duty, source course, source exclusions and whole partner unions.",
+    "Decide source/course applicability independently on all eight actual author components and the complete four-goal material context. Preserve the HE2027 and Nernst exclusions; a model contribution is not full official coverage.",
+    "If a future source-atlas reader is asked to display adopted authored components, add an explicit authorship-preserving route and visible role; do not relabel them source-metadata or make their documents official.",
+    "Review the corresponding original-source output route so it cannot turn authored material into an official quotation/link. Retain ordinary official-source evidence as context.",
+    "Only after that separate implementation/adoption bind an isolated matching book input companion and generated manifest. No count change, target removal, prerequisiteOnly conversion or core:false trick in this candidate."
+  ],
+  "existingSourceAtlasCountObservedOnly": 382,
+  "currentSemanticCurricularAtomicClassesRetained": 422,
+  "countsNotRewrittenOrEquated": true,
+  "sourceAtlasInclusionClaimed": false,
+  "runtimePublicationOrReviewApproval": false
+}

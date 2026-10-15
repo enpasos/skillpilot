@@ -1,0 +1,81 @@
+{
+  "role": "Read-only reference to existing record structures, no import of their judgments or approvals",
+  "examples": [
+    {
+      "mappingStructureExample": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HE/source-components/he-lk_biology_neurobiology_bounded_components.reviewed-20261007-v1.review.json",
+        "sha256": "sha256:40d627a0c5624cb8f06411a3a4c2008c9d94467c0bfa634dc0f3cd88c7d25269",
+        "bytes": 11019
+      },
+      "extractionStructureExample": {
+        "path": "curricula/DE/Gymnasium/input/HE/source-components/DE_HE_BIOLOGIE_NEURO8_HE-LK.author-v2.source-extraction.json",
+        "sha256": "sha256:817b2e725ac72af0bb367c7f648a87c2fa5b71a685c823034d4c0b9822e38eb8",
+        "bytes": 14133
+      },
+      "fieldExamplesOnly": [
+        {
+          "sourceGoalId": "dd222f8c-f60d-5e22-96f6-7d126934c786",
+          "canonicalGoalIds": [
+            "4f631f78-e13a-58e5-9092-f4db0b8d377a"
+          ],
+          "sourceKind": "authoredModelSpecialisation",
+          "wholeOriginalSourceCoverage": false,
+          "wholeCanonicalGoalApproval": false
+        }
+      ]
+    },
+    {
+      "mappingStructureExample": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HE/source-components/biologie-bio8-current397-dual-reviewed-20261011-v6.review.json",
+        "sha256": "sha256:d9280f30fbf4b44a5f35ea83708f30eb26429c07c09f1786f489d2aea73ab3a6",
+        "bytes": 196690
+      },
+      "extractionStructureExample": {
+        "path": "curricula/DE/Gymnasium/input/HE/source-components/DE_HE_BIOLOGIE_BIO8_CURRENT397_REVIEWED_20261011_V6.source-extraction.json",
+        "sha256": "sha256:392b5c9857ecbfecc6f7707ae1c8f4107a8f32a339dca07430a0b110a1743bb4",
+        "bytes": 592213
+      },
+      "fieldExamplesOnly": [
+        {
+          "sourceGoalId": "66cf434b-fd0a-4cb0-8dbf-5411732b6598",
+          "canonicalGoalIds": [
+            "3accc03b-3daf-5119-9f33-93af6f709919"
+          ],
+          "sourceKind": "authoredModelSpecialisation",
+          "wholeOriginalSourceCoverage": false,
+          "wholeCanonicalGoalApproval": false
+        },
+        {
+          "sourceGoalId": "917cf7ba-de25-4d1e-89eb-64ef5c2ddf55",
+          "canonicalGoalIds": [
+            "de1c19a2-2f8a-57bf-bd58-ecc460f47987"
+          ],
+          "sourceKind": "authoredExtensionNotNamedMandatory",
+          "wholeOriginalSourceCoverage": false,
+          "wholeCanonicalGoalApproval": false
+        }
+      ]
+    }
+  ],
+  "reusedStructure": [
+    "sourceLandscapeId",
+    "targetLandscapeId",
+    "sourceExtractionPath",
+    "sourceGoals",
+    "sourceDocumentKey",
+    "sourceKind",
+    "mappings.legacyGoalId",
+    "mappings.canonicalGoalId",
+    "mappings.matchType",
+    "wholeOriginalSourceCoverage:false",
+    "wholeCanonicalGoalApproval:false"
+  ],
+  "ownCandidateDifferencesRequiredByTruth": [
+    "Own authored document has official:false, no invented official URL.",
+    "decisions:[] and zero reviewed/mapped summary counts; compatibility mappings/authorProposals are unreviewed partial suggestions.",
+    "CourseLevel LK denotes proposed own course application. Official antecedent course/headings remain in exact referenced original bodies.",
+    "sourceKind is existing provenance modelling, not an implemented optional runtime choice or automatic source-scope approval."
+  ],
+  "validationScope": "No general source schema, source review checker or source atlas build invoked. JSON authoring structures follow the cited existing repository collection shapes and retain the genuine pending-review boundary.",
+  "newReviewVotes": 0
+}

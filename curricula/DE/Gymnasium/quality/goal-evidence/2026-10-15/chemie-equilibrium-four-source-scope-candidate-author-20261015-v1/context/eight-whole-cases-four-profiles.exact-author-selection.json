@@ -1,0 +1,693 @@
+{
+  "role": "Exact whole scientific author bodies selected by reference; no new P/A claims",
+  "all32Cases": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json",
+    "sha256": "sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e",
+    "bytes": 174942
+  },
+  "all16Profiles": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/sixteen-profile-bodies.scientific-successor.jsonl",
+    "sha256": "sha256:03bb29af4f1caa867d56cc5c66659afa561ea90ccc98707ad6e3ad1bade84da8",
+    "bytes": 146908
+  },
+  "cases": [
+    {
+      "id": "eqrk16-07-a",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "title": "Gasdissoziation mit sauberem Standardzustand",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Ideales Gasmodell: N2O4(g) ⇌ 2 NO2(g) bei 298 K. Hier sind Kc = Π(ci/c°)^νi und Kp = Π(pi/p°)^νi dimensionslos definiert. Es gelten c° = 1 mol/L, p° = 1 bar und R = 0,08314 L bar/(mol K). Gegeben ist Kc = 0,00500 für genau diese Reaktionsrichtung. Dies ist eine Datenaufgabe, kein NO2-Versuch.",
+      "materialsEn": "Ideal gas model: N2O4(g) ⇌ 2 NO2(g) at 298 K. Define dimensionless Kc = Π(ci/c°)^νi and Kp = Π(pi/p°)^νi. Use c° = 1 mol/L, p° = 1 bar and R = 0.08314 L bar/(mol K). Kc = 0.00500 refers to this exact reaction direction. Data exercise, no NO2 experiment.",
+      "taskDe": "Leite die Umrechnung aus dem idealen Gasgesetz her, bestimme Δν und berechne Kp. Vergleiche die unnormierte Schreibweise Kp = Kc (RT)^Δν. Prüfe R = 8,314 ohne Einheitenanpassung.",
+      "taskEn": "Derive the conversion from the ideal gas law, identify Δν and calculate Kp. Contrast the unnormalised formula Kp = Kc (RT)^Δν. Assess using R = 8.314 without changing units.",
+      "workedReasoningDe": "Δν = 2 − 1 = 1. Aus pi/p° = (ci/c°)(RTc°/p°) folgt Kp = Kc (RTc°/p°)^Δν. Der Faktor ist 24,77572; Kp = 0,123879 ist dimensionslos. Unnormierte Produkte hätten hier Kc in mol/L und Kp in bar; RT wäre dann der Faktor mit Einheit. Beide Konventionen dürfen nicht unmarkiert vermischt werden. R = 8,314 J/(mol K) verlangt konsistente Pa- und m³-Einheiten sowie umgerechnete Standards; blindes Einsetzen ergibt hier einen Faktor-100-Fehler. Die Herleitung setzt ideale Gase bei der genannten Temperatur voraus.",
+      "workedReasoningEn": "Δν = 1. From pi/p° = (ci/c°)(RTc°/p°), obtain Kp = Kc (RTc°/p°)^Δν. The factor is 24.77572, giving dimensionless Kp = 0.123879. Unnormalised products instead give Kc in mol/L and Kp in bar, with a dimensional RT factor. Do not silently mix conventions. R = 8.314 J/(mol K) requires consistent Pa/m³ units and converted standards; blind substitution here gives a factor-100 error. The derivation assumes ideal gases at the stated temperature.",
+      "freshIndependentTransferDe": "Verdopple die ganze Reaktionsgleichung. Leite Kp′, Kc′ und Δν′ ab und begründe die Abhängigkeit von der gewählten Gleichung.",
+      "freshIndependentTransferEn": "Double the entire reaction equation. Derive Kp′, Kc′ and Δν′ and explain their dependence on how the reaction is written.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Den Faktor aus Partialgrößen und Standardzuständen herleiten.",
+          "observableEn": "Derive the factor using partial quantities and standard states.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Δν = 1 und Kp = 0,123879 mit Einheitenkonsistenz berechnen.",
+          "observableEn": "Calculate Δν = 1 and Kp = 0.123879 consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Unnormierte Schulform, Aktivitätskonvention und Grenzen unterscheiden.",
+          "observableEn": "Distinguish classroom products, activity conventions and limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-07-b",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "title": "Feststoff zählt nicht zu gasförmigem Δν",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Zwei ideale Gasmodelle bei 500 K: I: H2(g) + I2(g) ⇌ 2 HI(g), dimensionslos Kc = 4,00. II: CaCO3(s) ⇌ CaO(s) + CO2(g), dimensionslos Kp = 0,200; reine Feststoffe haben Aktivität 1. Standards wie in 7a; R = 0,08314 L bar/(mol K). Die Konstanten sind Lehrmodelldaten, keine Realdaten bei dieser Temperatur. Ein Anbieter möchte die Formel ohne Korrektur auf dichte Hochdruckgase anwenden.",
+      "materialsEn": "Two ideal gas teaching models at 500 K: I: H2(g) + I2(g) ⇌ 2 HI(g), dimensionless Kc = 4.00. II: CaCO3(s) ⇌ CaO(s) + CO2(g), dimensionless Kp = 0.200; pure solid activities are 1. Standards as in 7a; R = 0.08314 L bar/(mol K). Constants are teaching values, not real data at this temperature. A supplier proposes applying the formula to dense high-pressure gas without corrections.",
+      "taskDe": "Bestimme Δν und das jeweils fehlende K. Erläutere die Rolle der Feststoffe und die nötige zusätzliche Größe bei Nichtidealität. Prüfe die Aussage, Δν = 0 bedeute stets ideales Verhalten.",
+      "taskEn": "Find Δν and the missing K. Explain the role of solids and the additional quantity needed for nonideality. Assess whether Δν = 0 always implies ideal behaviour.",
+      "workedReasoningDe": "I: Δν = 0, daher Kp = Kc = 4,00 im idealen Modell. II: Gas-Δν = 1; reine Feststoffe werden nicht in diese Gaszählung aufgenommen. Der Faktor ist 41,57 und Kc = 0,200/41,57 = 0,004811. Bei vorhandenen reinen Feststoffphasen gilt Aktivität 1; ihre physische Menge verschwindet dadurch nicht. Reale Gase erfordern Fugazitäten beziehungsweise Fugazitätskoeffizienten. Δν = 0 entfernt nur den idealen RT-Faktor; verschiedene Nichtidealitäten heben sich nicht automatisch auf. Phasenwechsel und dichte Gemische brauchen eine neue Modellprüfung.",
+      "workedReasoningEn": "I: Δν = 0, so Kp = Kc = 4.00 in the ideal model. II: gas Δν = 1; do not include solids in the gas count. The factor is 41.57, giving Kc = 0.004811. Pure solid phases have unit activity while present; their physical amount has not vanished. Real gases require fugacities or fugacity coefficients. Δν = 0 removes only the ideal RT factor, not necessarily different nonideal effects. Phase changes and dense mixtures require reassessment.",
+      "freshIndependentTransferDe": "Für überkritisches CO2 ist p/(cRT) deutlich ungleich 1. Identifiziere den versagenden Herleitungsschritt, statt K allein aus Totaldruck zu berechnen.",
+      "freshIndependentTransferEn": "For supercritical CO2, p/(cRT) differs substantially from 1. Identify the failing derivation step rather than computing K from total pressure alone.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Gasstöchiometrie und Feststoffphasen unterscheiden.",
+          "observableEn": "Distinguish gas stoichiometry and solid phases.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Kp = 4,00 und Kc = 0,004811 bestimmen.",
+          "observableEn": "Determine Kp = 4.00 and Kc = 0.004811.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Fugazität und die begrenzte Bedeutung von Δν = 0 erklären.",
+          "observableEn": "Explain fugacity and the limited meaning of Δν = 0.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-08-a",
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "title": "Endotherme Dissoziation: neues K und Gültigkeitsbereich",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Idealisierte Gasdissoziation A2 ⇌ 2 A: dimensionslos K1 = 0,100 bei T1 = 298 K. Über 298–318 K sei ΔrH° = +50,0 kJ/mol näherungsweise konstant. R = 8,314 J/(mol K). Es gilt ln(K2/K1) = −ΔrH°/R · (1/T2 − 1/T1). Dies sind Lehrmodelldaten; es wird keine gefährliche Stoffprobe untersucht.",
+      "materialsEn": "Idealised gas dissociation A2 ⇌ 2 A: dimensionless K1 = 0.100 at T1 = 298 K. Assume ΔrH° = +50.0 kJ/mol is approximately constant over 298–318 K. R = 8.314 J/(mol K). Use ln(K2/K1) = −ΔrH°/R · (1/T2 − 1/T1). Teaching model data; no hazardous sample is investigated.",
+      "taskDe": "Berechne K2 bei 318 K und prüfe Vorzeichen und Plausibilität. Unterscheide mehr Produkte im Gleichgewicht von einer schnelleren Reaktion. Beurteile die Extrapolation bis 1000 K ohne weitere Daten.",
+      "taskEn": "Calculate K2 at 318 K and check sign and plausibility. Distinguish more equilibrium products from faster reaction. Assess extrapolation to 1000 K without further data.",
+      "workedReasoningDe": "ΔrH° ist in 50000 J/mol umzurechnen. Der Exponent ist +1,2692, also K2 ≈ 0,3558. Dies passt zur endothermen Hinreaktion. Eine Zusammensetzung folgt erst mit Stoffbilanz und Druckbedingungen; K liefert keine Einstellzeit. Kinetik benötigt eigene Raten- oder Aktivierungsgrößen. Bis 1000 K wären Änderungen der Wärmekapazitäten, Phasen und Reaktionswege sowie ΔrH°(T) zu prüfen. Die konstante Enthalpie ist dort nicht belegt. Die Formel verwendet Kelvin und natürlichen Logarithmus, keine Celsiuswerte oder unkonvertierten Zehnerlogarithmen.",
+      "workedReasoningEn": "Convert ΔrH° to 50000 J/mol. The exponent is +1.2692, so K2 ≈ 0.3558, consistent with an endothermic forward reaction. Composition also needs balances and pressure conditions; K gives no equilibration time. Kinetics requires separate rate or activation parameters. Extrapolation to 1000 K requires checking heat capacities, phases, pathways and ΔrH°(T). Constant enthalpy is not established there. Use Kelvin and natural logarithms, not Celsius or unconverted base-ten logarithms.",
+      "freshIndependentTransferDe": "Kehre die Reaktionsgleichung um. Leite K1′, ΔrH°′ und K2′ ab und prüfe den reziproken Zusammenhang.",
+      "freshIndependentTransferEn": "Reverse the reaction equation. Derive K1′, ΔrH°′ and K2′ and check the reciprocal relation.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Kelvin, Joule und natürlichen Logarithmus mit richtigem Vorzeichen verwenden.",
+          "observableEn": "Use Kelvin, joules and natural logarithms with the correct sign.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "K2 ≈ 0,356 chemisch deuten.",
+          "observableEn": "Interpret K2 ≈ 0.356 chemically.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Konstantes ΔrH°, Kinetik und Extrapolationsgrenze erläutern.",
+          "observableEn": "Explain constant ΔrH°, kinetics and extrapolation limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-08-b",
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "title": "Enthalpie aus Gleichgewichtsdaten und falsche Aktivierungsdeutung",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Lehrmodell B ⇌ C: dimensionslose Gleichgewichtskonstanten K = 10,0 bei 300 K und K = 5,00 bei 320 K; Unsicherheit je ±5 %. Das sind zwei Messpunkte. Eine ergänzende qualitative Beschreibung eines ln-K-gegen-1/T-Diagramms mit drei weiteren fiktiven Punkten zeigt oberhalb 400 K deutliche Krümmung. Ein Autor nennt die daraus berechnete Enthalpie die Aktivierungsenergie der Hinreaktion.",
+      "materialsEn": "Teaching model B ⇌ C: dimensionless equilibrium constants K = 10.0 at 300 K and K = 5.00 at 320 K, each with ±5% uncertainty. These are two measured points. An additional qualitative ln-K-versus-1/T plot description with three further fictional points shows marked curvature above 400 K. An author calls the calculated enthalpy the forward activation energy.",
+      "taskDe": "Bestimme die mittlere van’t-Hoff-Reaktionsenthalpie über 300–320 K. Deute Vorzeichen und Krümmung. Widerlege die Aktivierungsbehauptung mit einem Energieniveauschema und benenne nötige kinetische Daten.",
+      "taskEn": "Estimate the average van’t Hoff reaction enthalpy over 300–320 K. Interpret its sign and the curvature. Refute the activation-energy claim with an energy-level sketch and identify necessary kinetic data.",
+      "workedReasoningDe": "ΔrH° ≈ −R ln(5/10)/(1/320 − 1/300) = −27,66 kJ/mol. Erwärmen begünstigt die Rückreaktion des exothermen Hinumsatzes; K sinkt. Zwei Punkte liefern einen Sekantenwert, keine universelle konstante Enthalpie. Die K-Unsicherheit begrenzt die Genauigkeit. Krümmung kann auf ΔrH°(T), geänderte Spezies oder Nichtidealität hinweisen. Reaktionsenthalpie ist die Energiedifferenz der Endzustände; Aktivierungsenergie betrifft die Barriere beziehungsweise Temperaturabhängigkeit von Raten. Dafür wären echte Geschwindigkeitskonstanten bei Temperaturvariation und kontrolliertem Mechanismus nötig.",
+      "workedReasoningEn": "ΔrH° ≈ −R ln(5/10)/(1/320 − 1/300) = −27.66 kJ/mol. Heating favours the reverse of an exothermic forward process, lowering K. Two points yield a secant estimate, not a universal constant enthalpy, and K uncertainty limits precision. Curvature can indicate ΔrH°(T), species changes or nonideality. Reaction enthalpy compares end states; activation energy concerns barriers or rate-temperature dependence. The latter needs actual rate constants across temperatures with a controlled mechanism.",
+      "freshIndependentTransferDe": "Eine Reaktion hat ΔrH° nahe null, läuft bei höherer Temperatur aber rascher. Erkläre die Vereinbarkeit von fast unverändertem K und größeren Raten.",
+      "freshIndependentTransferEn": "A reaction has nearly zero ΔrH° yet is faster at higher temperature. Explain how nearly unchanged K and larger rates are compatible.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "−27,66 kJ/mol und die Richtung des Temperatureffekts ableiten.",
+          "observableEn": "Derive −27.66 kJ/mol and the temperature direction.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Sekantenwert und Kurvenkrümmung als Modellgrenzen erklären.",
+          "observableEn": "Explain the secant estimate and curvature as model limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Reaktionsenthalpie und Aktivierungsenergie anhand von Energieniveaus trennen.",
+          "observableEn": "Separate reaction enthalpy and activation energy using energy levels.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-09-a",
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "title": "Carbonat lösen in einem definierten Pufferreservoir",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C, c° = 1 mol/L und verdünnt-idealen Bedingungen gilt: CaCO3(s) ⇌ Ca2+ + CO3²− mit KL = 3,3 · 10−9; HCO3− ⇌ H+ + CO3²− mit Ka2 = 4,7 · 10−11. Ein großes Reservoir hält pH = 8,00 und freie [HCO3−] = 0,0100 mol/L bei kleiner CaCO3-Mengenänderung konstant. Feststoff bleibt vorhanden. Andere Komplexe und CO2-Austausch werden vernachlässigt. Dies ist kein geschlossener Reinstwasseransatz.",
+      "materialsEn": "At 25 °C with c° = 1 mol/L and dilute-ideal conditions: CaCO3(s) ⇌ Ca2+ + CO3²− has Ksp = 3.3 × 10−9; HCO3− ⇌ H+ + CO3²− has Ka2 = 4.7 × 10−11. A large reservoir holds pH = 8.00 and free [HCO3−] = 0.0100 mol/L constant during a small CaCO3 change. Solid remains. Neglect other complexes and CO2 exchange. This is not a closed pure-water system.",
+      "taskDe": "Addiere geeignete Gleichungen und leite die Gesamtkonstante sowie freie Carbonat- und Calciumkonzentration her. Deute eine pH-Absenkung um 1 bei weiter konstantem Hydrogencarbonat. Welche Bilanzen fehlen für einen kleinen geschlossenen Becher?",
+      "taskEn": "Add suitable equations and derive the net constant and free carbonate and calcium concentrations. Interpret lowering pH by 1 at fixed bicarbonate. Which extra balances are needed for a small closed beaker?",
+      "workedReasoningDe": "Die umgekehrte Ka2-Reaktion ergibt mit dem Lösen: CaCO3 + H+ ⇌ Ca2+ + HCO3−; Kges = KL/Ka2 ≈ 70,21. [CO3²−]/c° = Ka2 ([HCO3−]/c°)/aH+ = 4,7 · 10−5. Damit [Ca2+] ≈ 7,02 · 10−5 mol/L. Bei pH 7 und weiterhin 0,0100 M HCO3− sinkt Carbonat zehnfach und Calcium steigt im bedingten Modell auf 7,02 · 10−4 M. Protonierung verbraucht Carbonat und fördert weiteres Lösen, ohne die Konstanten zu ändern. Ein geschlossener Becher benötigt Kohlenstoff- und Calciumbilanzen, Elektroneutralität, weitere Säuregleichgewichte und gegebenenfalls eine Gasbilanz. Ein endlicher Puffer löst nicht unbegrenzt Feststoff.",
+      "workedReasoningEn": "Reverse the Ka2 reaction and add dissolution: CaCO3 + H+ ⇌ Ca2+ + HCO3−, with Knet = Ksp/Ka2 ≈ 70.21. [CO3²−]/c° = Ka2 ([HCO3−]/c°)/aH+ = 4.7 × 10−5, giving [Ca2+] ≈ 7.02 × 10−5 mol/L. At pH 7 and the same 0.0100 M bicarbonate, carbonate falls tenfold and conditional calcium rises to 7.02 × 10−4 M. Protonation consumes carbonate and drives dissolution without changing constants. A closed beaker needs carbon/calcium balances, electroneutrality, further acid equilibria and possibly a gas balance. A finite buffer cannot dissolve solid indefinitely.",
+      "freshIndependentTransferDe": "Öffne einen geschlossenen Carbonatansatz für CO2-Austausch. Begründe eine Gasrandbedingung statt eines ohne Beleg festgehaltenen pH-Werts.",
+      "freshIndependentTransferEn": "Open a closed carbonate system to CO2 exchange. Explain the need for a gas boundary condition rather than an arbitrarily fixed pH.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die gekoppelte Gleichung und KL/Ka2 durch Reaktionsaddition erzeugen.",
+          "observableEn": "Construct the coupled equation and Ksp/Ka2 by reaction addition.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "4,7 · 10−5 M Carbonat und 7,02 · 10−5 M Calcium berechnen.",
+          "observableEn": "Calculate 4.7 × 10−5 M carbonate and 7.02 × 10−5 M calcium.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Reservoir und endliche Stoff- und Ladungsbilanz abgrenzen.",
+          "observableEn": "Distinguish the reservoir from finite material and charge balances.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-09-b",
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "title": "Komplexbildung koppelt an AgCl-Lösen",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C gilt KL(AgCl) = 1,8 · 10−10 und für Ag+ + 2 NH3 ⇌ [Ag(NH3)2]+ die Konstante β2 = 1,6 · 10^7; beide dimensionslos mit c° = 1 M. Für sämtliche gelösten Spezies gilt ausdrücklich die verdünnt-ideale Näherung a_i = c_i/c°; ihre Aktivitätskoeffizienten werden als 1 gesetzt. Ein Reservoir hält freies aNH3 = 0,100. AgCl-Feststoff ist vorhanden, anfängliches Chlorid vernachlässigbar. Gelöstes Silber liegt nur frei oder als genannter Komplex vor. Dies ist eine Datenaufgabe, kein Ammoniak- oder Silberversuch.",
+      "materialsEn": "At 25 °C, AgCl Ksp = 1.8 × 10−10 and Ag+ + 2 NH3 ⇌ [Ag(NH3)2]+ has β2 = 1.6 × 10^7, both dimensionless with c° = 1 M. For every dissolved species explicitly assume the dilute-ideal approximation a_i = c_i/c°; take its activity coefficient as 1. A reservoir maintains free aNH3 = 0.100. Solid AgCl remains; initial chloride is negligible. Dissolved silver is free or in the stated complex only. Data exercise, no ammonia or silver experiment.",
+      "taskDe": "Bilde Gesamtgleichung und Konstante. Berechne die Löslichkeit mit dominierendem Komplex und prüfe danach freies Ag+ sowie die Näherung. Warum ist derselbe Wert in einer geschlossenen Probe mit nur 0,001 M Gesamtsammoniak unmöglich?",
+      "taskEn": "Construct the net equation and constant. Calculate solubility with dominant complex, then check free Ag+ and the approximation. Why is the same value impossible in a closed sample with only 0.001 M total ammonia?",
+      "workedReasoningDe": "AgCl + 2 NH3 ⇌ [Ag(NH3)2]+ + Cl−; Knet = KL β2 = 0,00288. Bei Komplexdominanz gilt s ≈ [Komplex] ≈ [Cl−], daher s ≈ 0,005367 M. Innerhalb des angegebenen Idealmodells gilt s² = KL (1 + β2 aNH3²) c°²; der Faktor 160001 gibt denselben gerundeten Wert. Freies Ag+ = s/160001 ≈ 3,35 · 10−8 M; das Produkt mit Chlorid bestätigt KL. Gesamt- und freies Silber unterscheiden sich. 0,005367 M Komplex würde 0,01073 M gebundenes NH3 benötigen und kann nicht aus 0,001 M Gesamtsammoniak entstehen. Eine Ligandenbilanz und eine neue freie NH3-Konzentration sind nötig; analytisches Gesamtsammoniak darf nicht einfach in β eingesetzt werden.",
+      "workedReasoningEn": "AgCl + 2 NH3 ⇌ [Ag(NH3)2]+ + Cl−, with Knet = Ksp β2 = 0.00288. Under complex dominance, s ≈ [complex] ≈ [Cl−], giving s ≈ 0.005367 M. Within the stated ideal model, s² = Ksp (1 + β2 aNH3²) c°²; the factor 160001 gives the same rounded result. Free Ag+ = s/160001 ≈ 3.35 × 10−8 M, whose product with chloride verifies Ksp. Total and free silver differ. That complex concentration requires 0.01073 M bound NH3 and cannot arise from 0.001 M total ammonia. A ligand balance and a new free NH3 concentration are needed; analytical total ammonia cannot simply replace free activity in β.",
+      "freshIndependentTransferDe": "Ein Ligand bildet stattdessen ML im Verhältnis 1:1. Konstruiere den Kopplungsausdruck neu und benenne geänderte Exponenten und Bilanz.",
+      "freshIndependentTransferEn": "A ligand instead forms 1:1 ML. Reconstruct the coupled expression and identify the changed exponents and balance.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Knet = 0,00288 aus Lösen und Komplexbildung ableiten.",
+          "observableEn": "Derive Knet = 0.00288 from dissolution and complex formation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Die gegebene Idealnäherung a_i = c_i/c° beim Konzentrationsansatz benennen und Löslichkeit sowie freies Ag+ mit dem Massenwirkungsgesetz prüfen.",
+          "observableEn": "State the supplied ideal approximation a_i = c_i/c° when forming the concentration equations and check solubility and free Ag+ using mass action.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Die geschlossene Ligandenbilanz als Gegenprobe nutzen.",
+          "observableEn": "Use the closed ligand balance as a countercheck.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-10-a",
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "title": "Ein eigenes vereinfachtes Cu/Wasser-pE-pH-Diagramm konstruieren",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C gilt Eh = 0,05916 pE in Volt gegen SHE. Wassergrenzen bei H2- und O2-Aktivität 1, bezogen auf 1 bar: pE = −pH für H+/H2 und pE = 20,78 − pH für O2/H2O. Für Cu2+ + 2 e− ⇌ Cu gilt E° = 0,340 V und festes aCu2+ = 10−6. Das Cu-Untermodell enthält nur gelöstes Cu2+ und reines Kupfermetall. Oxide, Hydroxide und Komplexe sind ausgeschlossen; Cu-Entscheidungen nur für pH 0–5.",
+      "materialsEn": "At 25 °C, Eh = 0.05916 pE in volts versus SHE. Water boundaries at H2 and O2 activity 1, relative to 1 bar, are pE = −pH for H+/H2 and pE = 20.78 − pH for O2/H2O. Cu2+ + 2 e− ⇌ Cu has E° = 0.340 V and fixed aCu2+ = 10−6. The Cu submodel contains only dissolved Cu2+ and pure metal. Oxides, hydroxides and complexes are excluded; restrict Cu decisions to pH 0–5.",
+      "taskDe": "Konstruiere eine beschriftete pE/pH-Skizze und die Cu-Grenze. Ordne P(pH 2, pE 1), Q(2, 6) und R(2, −4) chemisch ein. Unterscheide Modellstabilität von realer Korrosionsgeschwindigkeit.",
+      "taskEn": "Construct a labelled pE/pH sketch and the Cu boundary. Classify P(pH 2, pE 1), Q(2, 6) and R(2, −4) chemically. Distinguish model stability from actual corrosion rate.",
+      "workedReasoningDe": "Die Cu-Linie ist horizontal: Eh = 0,340 + 0,05916/2 · log(10−6) = 0,16252 V, also pE ≈ 2,747. Oberhalb wird Cu2+, unterhalb Metall bevorzugt. Bei pH 2 reicht das Wasserfenster von pE −2 bis 18,78. P liegt darin im Metallbereich, Q darin im Cu2+-Bereich. R liegt unter der H2-Grenze: Wasserreduktion ist thermodynamisch möglich, der Punkt ist kein dauerhaft unverändert stabiler Wasserzustand. Das Zweiformenmodell beweist weder reale Passivierung noch eine Rate und lässt außerhalb pH 0–5 wichtige Cu-Spezies aus. pE ist dimensionslos, Eh eine Spannung.",
+      "workedReasoningEn": "The Cu boundary is horizontal: Eh = 0.16252 V, hence pE ≈ 2.747. Cu2+ is favoured above it, metal below. At pH 2 the water window extends from pE −2 to 18.78. P lies inside it in the metal region and Q inside it in the Cu2+ region. R is below the H2 boundary, so water reduction is thermodynamically possible; it is not an unchanged stable aqueous state. This two-form model establishes neither actual passivation nor a corrosion rate, and omits important Cu species outside pH 0–5. pE is dimensionless; Eh is voltage.",
+      "freshIndependentTransferDe": "Erhöhe die Cu2+-Aktivität hundertfach. Leite die Grenzverschiebung ab und begründe, warum eine fehlende Aktivitätsangabe das Diagramm unvollständig macht.",
+      "freshIndependentTransferEn": "Increase Cu2+ activity one hundredfold. Derive the boundary shift and explain why missing activity information makes the diagram incomplete.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Wassergrenzen und horizontale Cu-Linie konstruieren.",
+          "observableEn": "Construct water boundaries and the horizontal Cu line.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Drei Punkte mit korrekter pE/Eh-Bedeutung einordnen.",
+          "observableEn": "Classify three points with correct pE/Eh meaning.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Fehlende Spezies, Rate und Passivierungsinformation benennen.",
+          "observableEn": "Identify missing species, rate and passivation information.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-10-b",
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "title": "Geneigte und vertikale Grenze eines Modellmetalls",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Ein eigenes idealisiertes Metall M beschreibt nicht die vollständige Eisenchemie. M2+ + 2 e− ⇌ M hat E° = −0,440 V. M(OH)2(s) ⇌ M2+ + 2 OH− hat KL = 10−15; Kw = 10−14 bei 25 °C. Als Grenze für gelöstes Metall gilt aM2+ = 10−6. Nur M, M2+ und M(OH)2 werden berücksichtigt; Eh = 0,05916 pE. Wassergrenzen wie in 10a. Ein Feststoffbereich garantiert keine dichte, haftende Schutzschicht.",
+      "materialsEn": "An own idealised metal M does not represent complete iron chemistry. M2+ + 2 e− ⇌ M has E° = −0.440 V. M(OH)2(s) ⇌ M2+ + 2 OH− has Ksp = 10−15; Kw = 10−14 at 25 °C. Use aM2+ = 10−6 as the dissolved-metal threshold. Include only M, M2+ and M(OH)2; Eh = 0.05916 pE. Water boundaries are as in 10a. A solid region does not guarantee an adherent protective film.",
+      "taskDe": "Leite die vertikale Fällungsgrenze und die M/M(OH)2-Gerade her. Ordne P(pH 8, Eh −0,50 V) und Q(pH 11, Eh −0,50 V) ein. Warum ersetzt das Schema keinen Materialschutztest?",
+      "taskEn": "Derive the vertical precipitation boundary and M/M(OH)2 line. Classify P(pH 8, Eh −0.50 V) and Q(pH 11, Eh −0.50 V). Why does the scheme not replace a material-protection test?",
+      "workedReasoningDe": "Bei aM2+ = 10−6 gilt aOH− = √(10−15/10−6) = 10−4,5, also pOH 4,5 und pH 9,5. Die Metall/Ion-Linie ist Eh = −0,61748 V. Einsetzen von aM2+ = KL/aOH² ergibt die Feststoff/Metall-Gerade Eh = −0,05546 − 0,05916 pH. P liegt unter pH 9,5 und oberhalb −0,61748 V, also im M2+-Bereich. Q liegt oberhalb pH 9,5 und oberhalb −0,70622 V, also im M(OH)2-Bereich. Beide Punkte liegen im Wasserfenster. Der Schnittpunkt bei pH 9,5 prüft die Konsistenz. Haftung, Porosität, Kinetik, weitere Oxidationsstufen und Komplexe fehlen; ein Feststofffeld bedeutet keinen nachgewiesenen Schutz.",
+      "workedReasoningEn": "At aM2+ = 10−6, aOH− = 10−4.5, giving pOH 4.5 and pH 9.5. The metal/ion line is Eh = −0.61748 V. Substituting aM2+ = Ksp/aOH² gives the solid/metal line Eh = −0.05546 − 0.05916 pH. P has pH below 9.5 and Eh above −0.61748 V, placing it in the M2+ region. Q has pH above 9.5 and Eh above −0.70622 V, placing it in the hydroxide region. Both lie inside the water window. Check consistency at the intersection at pH 9.5. Adhesion, porosity, kinetics, other oxidation states and complexes are absent; a solid field is not proven protection.",
+      "freshIndependentTransferDe": "Füge einen starken M2+-Liganden hinzu. Begründe die nötige Neuberechnung der Grenzen statt einer unveränderten Farbflächenannahme.",
+      "freshIndependentTransferEn": "Add a strong M2+ ligand. Explain the need to recalculate boundaries rather than assuming unchanged coloured regions.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die vertikale pH-9,5-Grenze aus KL und Kw ableiten.",
+          "observableEn": "Derive the vertical pH-9.5 boundary from Ksp and Kw.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Geneigte Grenze und beide Punkte konsistent bestimmen.",
+          "observableEn": "Determine the sloping boundary and classify both points consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Feststoffstabilität von tatsächlicher Passivierung trennen.",
+          "observableEn": "Separate solid stability from actual passivation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Kp/Kc-Umrechnung folgt p_i=c_iRT und gasförmigen stöchiometrischen Exponenten.",
+            "essentialUnderstandingEn": "Kp/Kc conversion follows p_i=c_iRT and gas-phase stoichiometric exponents.",
+            "observablePerformanceDe": "eqrk16-07-a: Den Faktor aus Partialgrößen und Standardzuständen herleiten. eqrk16-07-b: Gasstöchiometrie und Feststoffphasen unterscheiden.",
+            "observablePerformanceEn": "eqrk16-07-a: Derive the factor using partial quantities and standard states. eqrk16-07-b: Distinguish gas stoichiometry and solid phases."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Dimensionslose Standardzustände und unnormierte Schulprodukte benötigen unterschiedliche explizite Faktoren.",
+            "essentialUnderstandingEn": "Dimensionless standard states and unnormalised classroom products require different explicit factors.",
+            "observablePerformanceDe": "eqrk16-07-a: Δν = 1 und Kp = 0,123879 mit Einheitenkonsistenz berechnen. eqrk16-07-b: Kp = 4,00 und Kc = 0,004811 bestimmen.",
+            "observablePerformanceEn": "eqrk16-07-a: Calculate Δν = 1 and Kp = 0.123879 consistently. eqrk16-07-b: Determine Kp = 4.00 and Kc = 0.004811."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Nichtideale Gase und mitgezählte Feststoffe verletzen die einfache Umrechnungsannahme.",
+            "essentialUnderstandingEn": "Nonideal gases and including solids violate the simple conversion assumptions.",
+            "observablePerformanceDe": "eqrk16-07-a: Unnormierte Schulform, Aktivitätskonvention und Grenzen unterscheiden. eqrk16-07-b: Fugazität und die begrenzte Bedeutung von Δν = 0 erklären.",
+            "observablePerformanceEn": "eqrk16-07-a: Distinguish classroom products, activity conventions and limits. eqrk16-07-b: Explain fugacity and the limited meaning of Δν = 0."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-07-a-transfer",
+            "textDe": "Verdopple die ganze Reaktionsgleichung. Leite Kp′, Kc′ und Δν′ ab und begründe die Abhängigkeit von der gewählten Gleichung.",
+            "textEn": "Double the entire reaction equation. Derive Kp′, Kc′ and Δν′ and explain their dependence on how the reaction is written."
+          },
+          {
+            "id": "eqrk16-07-b-transfer",
+            "textDe": "Für überkritisches CO2 ist p/(cRT) deutlich ungleich 1. Identifiziere den versagenden Herleitungsschritt, statt K allein aus Totaldruck zu berechnen.",
+            "textEn": "For supercritical CO2, p/(cRT) differs substantially from 1. Identify the failing derivation step rather than computing K from total pressure alone."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-07-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-07-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Leite die Umrechnung aus dem idealen Gasgesetz her, bestimme Δν und berechne Kp. Vergleiche die unnormierte Schreibweise Kp = Kc (RT)^Δν. Prüfe R = 8,314 ohne Einheitenanpassung.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-07-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Derive the conversion from the ideal gas law, identify Δν and calculate Kp. Contrast the unnormalised formula Kp = Kc (RT)^Δν. Assess using R = 8.314 without changing units.",
+            "expectedPerformanceDe": "Δν = 2 − 1 = 1. Aus pi/p° = (ci/c°)(RTc°/p°) folgt Kp = Kc (RTc°/p°)^Δν. Der Faktor ist 24,77572; Kp = 0,123879 ist dimensionslos. Unnormierte Produkte hätten hier Kc in mol/L und Kp in bar; RT wäre dann der Faktor mit Einheit. Beide Konventionen dürfen nicht unmarkiert vermischt werden. R = 8,314 J/(mol K) verlangt konsistente Pa- und m³-Einheiten sowie umgerechnete Standards; blindes Einsetzen ergibt hier einen Faktor-100-Fehler. Die Herleitung setzt ideale Gase bei der genannten Temperatur voraus.",
+            "expectedPerformanceEn": "Δν = 1. From pi/p° = (ci/c°)(RTc°/p°), obtain Kp = Kc (RTc°/p°)^Δν. The factor is 24.77572, giving dimensionless Kp = 0.123879. Unnormalised products instead give Kc in mol/L and Kp in bar, with a dimensional RT factor. Do not silently mix conventions. R = 8.314 J/(mol K) requires consistent Pa/m³ units and converted standards; blind substitution here gives a factor-100 error. The derivation assumes ideal gases at the stated temperature.",
+            "understandingFocusDe": "Verdopple die ganze Reaktionsgleichung. Leite Kp′, Kc′ und Δν′ ab und begründe die Abhängigkeit von der gewählten Gleichung.",
+            "understandingFocusEn": "Double the entire reaction equation. Derive Kp′, Kc′ and Δν′ and explain their dependence on how the reaction is written."
+          },
+          {
+            "id": "eqrk16-07-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-07-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Bestimme Δν und das jeweils fehlende K. Erläutere die Rolle der Feststoffe und die nötige zusätzliche Größe bei Nichtidealität. Prüfe die Aussage, Δν = 0 bedeute stets ideales Verhalten.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-07-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Find Δν and the missing K. Explain the role of solids and the additional quantity needed for nonideality. Assess whether Δν = 0 always implies ideal behaviour.",
+            "expectedPerformanceDe": "I: Δν = 0, daher Kp = Kc = 4,00 im idealen Modell. II: Gas-Δν = 1; reine Feststoffe werden nicht in diese Gaszählung aufgenommen. Der Faktor ist 41,57 und Kc = 0,200/41,57 = 0,004811. Bei vorhandenen reinen Feststoffphasen gilt Aktivität 1; ihre physische Menge verschwindet dadurch nicht. Reale Gase erfordern Fugazitäten beziehungsweise Fugazitätskoeffizienten. Δν = 0 entfernt nur den idealen RT-Faktor; verschiedene Nichtidealitäten heben sich nicht automatisch auf. Phasenwechsel und dichte Gemische brauchen eine neue Modellprüfung.",
+            "expectedPerformanceEn": "I: Δν = 0, so Kp = Kc = 4.00 in the ideal model. II: gas Δν = 1; do not include solids in the gas count. The factor is 41.57, giving Kc = 0.004811. Pure solid phases have unit activity while present; their physical amount has not vanished. Real gases require fugacities or fugacity coefficients. Δν = 0 removes only the ideal RT factor, not necessarily different nonideal effects. Phase changes and dense mixtures require reassessment.",
+            "understandingFocusDe": "Für überkritisches CO2 ist p/(cRT) deutlich ungleich 1. Identifiziere den versagenden Herleitungsschritt, statt K allein aus Totaldruck zu berechnen.",
+            "understandingFocusEn": "For supercritical CO2, p/(cRT) differs substantially from 1. Identify the failing derivation step rather than computing K from total pressure alone."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Van’t Hoff verbindet Gleichgewichtskonstante und absolute Temperatur über die Reaktionsenthalpie.",
+            "essentialUnderstandingEn": "Van’t Hoff relates equilibrium constants and absolute temperature through reaction enthalpy.",
+            "observablePerformanceDe": "eqrk16-08-a: Kelvin, Joule und natürlichen Logarithmus mit richtigem Vorzeichen verwenden. eqrk16-08-b: −27,66 kJ/mol und die Richtung des Temperatureffekts ableiten.",
+            "observablePerformanceEn": "eqrk16-08-a: Use Kelvin, joules and natural logarithms with the correct sign. eqrk16-08-b: Derive −27.66 kJ/mol and the temperature direction."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Die integrierte Zwei-Temperatur-Form setzt annähernd konstantes ΔrH° voraus, nicht konstante Aktivierungsenergie.",
+            "essentialUnderstandingEn": "The integrated two-temperature form assumes approximately constant ΔrH°, not constant activation energy.",
+            "observablePerformanceDe": "eqrk16-08-a: K2 ≈ 0,356 chemisch deuten. eqrk16-08-b: Sekantenwert und Kurvenkrümmung als Modellgrenzen erklären.",
+            "observablePerformanceEn": "eqrk16-08-a: Interpret K2 ≈ 0.356 chemically. eqrk16-08-b: Explain the secant estimate and curvature as model limits."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Gleichgewichtslage, Einstellgeschwindigkeit und extrapolierte Temperaturbereiche sind verschiedene Aussagen.",
+            "essentialUnderstandingEn": "Equilibrium position, equilibration speed and extrapolated temperature ranges are different claims.",
+            "observablePerformanceDe": "eqrk16-08-a: Konstantes ΔrH°, Kinetik und Extrapolationsgrenze erläutern. eqrk16-08-b: Reaktionsenthalpie und Aktivierungsenergie anhand von Energieniveaus trennen.",
+            "observablePerformanceEn": "eqrk16-08-a: Explain constant ΔrH°, kinetics and extrapolation limits. eqrk16-08-b: Separate reaction enthalpy and activation energy using energy levels."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-08-a-transfer",
+            "textDe": "Kehre die Reaktionsgleichung um. Leite K1′, ΔrH°′ und K2′ ab und prüfe den reziproken Zusammenhang.",
+            "textEn": "Reverse the reaction equation. Derive K1′, ΔrH°′ and K2′ and check the reciprocal relation."
+          },
+          {
+            "id": "eqrk16-08-b-transfer",
+            "textDe": "Eine Reaktion hat ΔrH° nahe null, läuft bei höherer Temperatur aber rascher. Erkläre die Vereinbarkeit von fast unverändertem K und größeren Raten.",
+            "textEn": "A reaction has nearly zero ΔrH° yet is faster at higher temperature. Explain how nearly unchanged K and larger rates are compatible."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-08-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-08-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Berechne K2 bei 318 K und prüfe Vorzeichen und Plausibilität. Unterscheide mehr Produkte im Gleichgewicht von einer schnelleren Reaktion. Beurteile die Extrapolation bis 1000 K ohne weitere Daten.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-08-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Calculate K2 at 318 K and check sign and plausibility. Distinguish more equilibrium products from faster reaction. Assess extrapolation to 1000 K without further data.",
+            "expectedPerformanceDe": "ΔrH° ist in 50000 J/mol umzurechnen. Der Exponent ist +1,2692, also K2 ≈ 0,3558. Dies passt zur endothermen Hinreaktion. Eine Zusammensetzung folgt erst mit Stoffbilanz und Druckbedingungen; K liefert keine Einstellzeit. Kinetik benötigt eigene Raten- oder Aktivierungsgrößen. Bis 1000 K wären Änderungen der Wärmekapazitäten, Phasen und Reaktionswege sowie ΔrH°(T) zu prüfen. Die konstante Enthalpie ist dort nicht belegt. Die Formel verwendet Kelvin und natürlichen Logarithmus, keine Celsiuswerte oder unkonvertierten Zehnerlogarithmen.",
+            "expectedPerformanceEn": "Convert ΔrH° to 50000 J/mol. The exponent is +1.2692, so K2 ≈ 0.3558, consistent with an endothermic forward reaction. Composition also needs balances and pressure conditions; K gives no equilibration time. Kinetics requires separate rate or activation parameters. Extrapolation to 1000 K requires checking heat capacities, phases, pathways and ΔrH°(T). Constant enthalpy is not established there. Use Kelvin and natural logarithms, not Celsius or unconverted base-ten logarithms.",
+            "understandingFocusDe": "Kehre die Reaktionsgleichung um. Leite K1′, ΔrH°′ und K2′ ab und prüfe den reziproken Zusammenhang.",
+            "understandingFocusEn": "Reverse the reaction equation. Derive K1′, ΔrH°′ and K2′ and check the reciprocal relation."
+          },
+          {
+            "id": "eqrk16-08-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-08-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Bestimme die mittlere van’t-Hoff-Reaktionsenthalpie über 300–320 K. Deute Vorzeichen und Krümmung. Widerlege die Aktivierungsbehauptung mit einem Energieniveauschema und benenne nötige kinetische Daten.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-08-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Estimate the average van’t Hoff reaction enthalpy over 300–320 K. Interpret its sign and the curvature. Refute the activation-energy claim with an energy-level sketch and identify necessary kinetic data.",
+            "expectedPerformanceDe": "ΔrH° ≈ −R ln(5/10)/(1/320 − 1/300) = −27,66 kJ/mol. Erwärmen begünstigt die Rückreaktion des exothermen Hinumsatzes; K sinkt. Zwei Punkte liefern einen Sekantenwert, keine universelle konstante Enthalpie. Die K-Unsicherheit begrenzt die Genauigkeit. Krümmung kann auf ΔrH°(T), geänderte Spezies oder Nichtidealität hinweisen. Reaktionsenthalpie ist die Energiedifferenz der Endzustände; Aktivierungsenergie betrifft die Barriere beziehungsweise Temperaturabhängigkeit von Raten. Dafür wären echte Geschwindigkeitskonstanten bei Temperaturvariation und kontrolliertem Mechanismus nötig.",
+            "expectedPerformanceEn": "ΔrH° ≈ −R ln(5/10)/(1/320 − 1/300) = −27.66 kJ/mol. Heating favours the reverse of an exothermic forward process, lowering K. Two points yield a secant estimate, not a universal constant enthalpy, and K uncertainty limits precision. Curvature can indicate ΔrH°(T), species changes or nonideality. Reaction enthalpy compares end states; activation energy concerns barriers or rate-temperature dependence. The latter needs actual rate constants across temperatures with a controlled mechanism.",
+            "understandingFocusDe": "Eine Reaktion hat ΔrH° nahe null, läuft bei höherer Temperatur aber rascher. Erkläre die Vereinbarkeit von fast unverändertem K und größeren Raten.",
+            "understandingFocusEn": "A reaction has nearly zero ΔrH° yet is faster at higher temperature. Explain how nearly unchanged K and larger rates are compatible."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Gekoppelte Gleichgewichte teilen Spezies; Addition von Reaktionen multipliziert passende Konstanten.",
+            "essentialUnderstandingEn": "Coupled equilibria share species; adding reactions multiplies compatible constants.",
+            "observablePerformanceDe": "eqrk16-09-a: Die gekoppelte Gleichung und KL/Ka2 durch Reaktionsaddition erzeugen. eqrk16-09-b: Knet = 0,00288 aus Lösen und Komplexbildung ableiten.",
+            "observablePerformanceEn": "eqrk16-09-a: Construct the coupled equation and Ksp/Ka2 by reaction addition. eqrk16-09-b: Derive Knet = 0.00288 from dissolution and complex formation."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Bilanzen und freie statt analytischer Gesamtkonzentrationen schließen die Rechnung; der Übergang von Aktivitäten zu Konzentrationen benötigt eine explizite Idealnäherung oder Aktivitätskoeffizienten.",
+            "essentialUnderstandingEn": "Balances and free rather than analytical total concentrations close the calculation; converting activities into concentrations requires an explicit ideal approximation or activity coefficients.",
+            "observablePerformanceDe": "eqrk16-09-a: 4,7 · 10−5 M Carbonat und 7,02 · 10−5 M Calcium berechnen. eqrk16-09-b: Löslichkeit und freies Ag+ mit dem Massenwirkungsgesetz unter der gegebenen Idealnäherung prüfen.",
+            "observablePerformanceEn": "eqrk16-09-a: Calculate 4.7 × 10−5 M carbonate and 7.02 × 10−5 M calcium. eqrk16-09-b: Check solubility and free Ag+ using mass action under the supplied ideal approximation."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Protonierung und Komplexbildung sind verschiedene Kopplungsmechanismen, keine unabhängigen Einzelrechnungen.",
+            "essentialUnderstandingEn": "Protonation and complex formation are distinct coupling mechanisms rather than independent calculations.",
+            "observablePerformanceDe": "eqrk16-09-a: Reservoir und endliche Stoff- und Ladungsbilanz abgrenzen. eqrk16-09-b: Die geschlossene Ligandenbilanz als Gegenprobe nutzen.",
+            "observablePerformanceEn": "eqrk16-09-a: Distinguish the reservoir from finite material and charge balances. eqrk16-09-b: Use the closed ligand balance as a countercheck."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-09-a-transfer",
+            "textDe": "Öffne einen geschlossenen Carbonatansatz für CO2-Austausch. Begründe eine Gasrandbedingung statt eines ohne Beleg festgehaltenen pH-Werts.",
+            "textEn": "Open a closed carbonate system to CO2 exchange. Explain the need for a gas boundary condition rather than an arbitrarily fixed pH."
+          },
+          {
+            "id": "eqrk16-09-b-transfer",
+            "textDe": "Ein Ligand bildet stattdessen ML im Verhältnis 1:1. Konstruiere den Kopplungsausdruck neu und benenne geänderte Exponenten und Bilanz.",
+            "textEn": "A ligand instead forms 1:1 ML. Reconstruct the coupled expression and identify the changed exponents and balance."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-09-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-09-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Addiere geeignete Gleichungen und leite die Gesamtkonstante sowie freie Carbonat- und Calciumkonzentration her. Deute eine pH-Absenkung um 1 bei weiter konstantem Hydrogencarbonat. Welche Bilanzen fehlen für einen kleinen geschlossenen Becher?",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-09-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Add suitable equations and derive the net constant and free carbonate and calcium concentrations. Interpret lowering pH by 1 at fixed bicarbonate. Which extra balances are needed for a small closed beaker?",
+            "expectedPerformanceDe": "Die umgekehrte Ka2-Reaktion ergibt mit dem Lösen: CaCO3 + H+ ⇌ Ca2+ + HCO3−; Kges = KL/Ka2 ≈ 70,21. [CO3²−]/c° = Ka2 ([HCO3−]/c°)/aH+ = 4,7 · 10−5. Damit [Ca2+] ≈ 7,02 · 10−5 mol/L. Bei pH 7 und weiterhin 0,0100 M HCO3− sinkt Carbonat zehnfach und Calcium steigt im bedingten Modell auf 7,02 · 10−4 M. Protonierung verbraucht Carbonat und fördert weiteres Lösen, ohne die Konstanten zu ändern. Ein geschlossener Becher benötigt Kohlenstoff- und Calciumbilanzen, Elektroneutralität, weitere Säuregleichgewichte und gegebenenfalls eine Gasbilanz. Ein endlicher Puffer löst nicht unbegrenzt Feststoff.",
+            "expectedPerformanceEn": "Reverse the Ka2 reaction and add dissolution: CaCO3 + H+ ⇌ Ca2+ + HCO3−, with Knet = Ksp/Ka2 ≈ 70.21. [CO3²−]/c° = Ka2 ([HCO3−]/c°)/aH+ = 4.7 × 10−5, giving [Ca2+] ≈ 7.02 × 10−5 mol/L. At pH 7 and the same 0.0100 M bicarbonate, carbonate falls tenfold and conditional calcium rises to 7.02 × 10−4 M. Protonation consumes carbonate and drives dissolution without changing constants. A closed beaker needs carbon/calcium balances, electroneutrality, further acid equilibria and possibly a gas balance. A finite buffer cannot dissolve solid indefinitely.",
+            "understandingFocusDe": "Öffne einen geschlossenen Carbonatansatz für CO2-Austausch. Begründe eine Gasrandbedingung statt eines ohne Beleg festgehaltenen pH-Werts.",
+            "understandingFocusEn": "Open a closed carbonate system to CO2 exchange. Explain the need for a gas boundary condition rather than an arbitrarily fixed pH."
+          },
+          {
+            "id": "eqrk16-09-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-09-b; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Bilde Gesamtgleichung und Konstante. Berechne die Löslichkeit mit dominierendem Komplex und prüfe danach freies Ag+ sowie die Näherung. Warum ist derselbe Wert in einer geschlossenen Probe mit nur 0,001 M Gesamtsammoniak unmöglich?",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-09-b; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Construct the net equation and constant. Calculate solubility with dominant complex, then check free Ag+ and the approximation. Why is the same value impossible in a closed sample with only 0.001 M total ammonia?",
+            "expectedPerformanceDe": "AgCl + 2 NH3 ⇌ [Ag(NH3)2]+ + Cl−; Knet = KL β2 = 0,00288. Bei Komplexdominanz gilt s ≈ [Komplex] ≈ [Cl−], daher s ≈ 0,005367 M. Innerhalb des angegebenen Idealmodells gilt s² = KL (1 + β2 aNH3²) c°²; der Faktor 160001 gibt denselben gerundeten Wert. Freies Ag+ = s/160001 ≈ 3,35 · 10−8 M; das Produkt mit Chlorid bestätigt KL. Gesamt- und freies Silber unterscheiden sich. 0,005367 M Komplex würde 0,01073 M gebundenes NH3 benötigen und kann nicht aus 0,001 M Gesamtsammoniak entstehen. Eine Ligandenbilanz und eine neue freie NH3-Konzentration sind nötig; analytisches Gesamtsammoniak darf nicht einfach in β eingesetzt werden.",
+            "expectedPerformanceEn": "AgCl + 2 NH3 ⇌ [Ag(NH3)2]+ + Cl−, with Knet = Ksp β2 = 0.00288. Under complex dominance, s ≈ [complex] ≈ [Cl−], giving s ≈ 0.005367 M. Within the stated ideal model, s² = Ksp (1 + β2 aNH3²) c°²; the factor 160001 gives the same rounded result. Free Ag+ = s/160001 ≈ 3.35 × 10−8 M, whose product with chloride verifies Ksp. Total and free silver differ. That complex concentration requires 0.01073 M bound NH3 and cannot arise from 0.001 M total ammonia. A ligand balance and a new free NH3 concentration are needed; analytical total ammonia cannot simply replace free activity in β.",
+            "understandingFocusDe": "Ein Ligand bildet stattdessen ML im Verhältnis 1:1. Konstruiere den Kopplungsausdruck neu und benenne geänderte Exponenten und Bilanz.",
+            "understandingFocusEn": "A ligand instead forms 1:1 ML. Reconstruct the coupled expression and identify the changed exponents and balance."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "pE und Eh beschreiben Redoxbedingungen; Stabilitätsgrenzen folgen definierten Aktivitäten und Gleichgewichten.",
+            "essentialUnderstandingEn": "pE and Eh describe redox conditions; stability boundaries follow defined activities and equilibria.",
+            "observablePerformanceDe": "eqrk16-10-a: Wassergrenzen und horizontale Cu-Linie konstruieren. eqrk16-10-b: Die vertikale pH-9,5-Grenze aus KL und Kw ableiten.",
+            "observablePerformanceEn": "eqrk16-10-a: Construct water boundaries and the horizontal Cu line. eqrk16-10-b: Derive the vertical pH-9.5 boundary from Ksp and Kw."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Horizontale, vertikale und geneigte Grenzen trennen unterschiedliche Elektronen-/Protonenbilanzen.",
+            "essentialUnderstandingEn": "Horizontal, vertical and sloping boundaries express different electron and proton balances.",
+            "observablePerformanceDe": "eqrk16-10-a: Drei Punkte mit korrekter pE/Eh-Bedeutung einordnen. eqrk16-10-b: Geneigte Grenze und beide Punkte konsistent bestimmen.",
+            "observablePerformanceEn": "eqrk16-10-a: Classify three points with correct pE/Eh meaning. eqrk16-10-b: Determine the sloping boundary and classify both points consistently."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Pourbaix-Bereiche sind thermodynamische Modellbereiche, keine direkte Aussage über Geschwindigkeit oder vollständigen Korrosionsschutz.",
+            "essentialUnderstandingEn": "Pourbaix regions are thermodynamic model domains, not direct predictions of rates or complete corrosion protection.",
+            "observablePerformanceDe": "eqrk16-10-a: Fehlende Spezies, Rate und Passivierungsinformation benennen. eqrk16-10-b: Feststoffstabilität von tatsächlicher Passivierung trennen.",
+            "observablePerformanceEn": "eqrk16-10-a: Identify missing species, rate and passivation information. eqrk16-10-b: Separate solid stability from actual passivation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-10-a-transfer",
+            "textDe": "Erhöhe die Cu2+-Aktivität hundertfach. Leite die Grenzverschiebung ab und begründe, warum eine fehlende Aktivitätsangabe das Diagramm unvollständig macht.",
+            "textEn": "Increase Cu2+ activity one hundredfold. Derive the boundary shift and explain why missing activity information makes the diagram incomplete."
+          },
+          {
+            "id": "eqrk16-10-b-transfer",
+            "textDe": "Füge einen starken M2+-Liganden hinzu. Begründe die nötige Neuberechnung der Grenzen statt einer unveränderten Farbflächenannahme.",
+            "textEn": "Add a strong M2+ ligand. Explain the need to recalculate boundaries rather than assuming unchanged coloured regions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-10-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-10-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Konstruiere eine beschriftete pE/pH-Skizze und die Cu-Grenze. Ordne P(pH 2, pE 1), Q(2, 6) und R(2, −4) chemisch ein. Unterscheide Modellstabilität von realer Korrosionsgeschwindigkeit.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-10-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Construct a labelled pE/pH sketch and the Cu boundary. Classify P(pH 2, pE 1), Q(2, 6) and R(2, −4) chemically. Distinguish model stability from actual corrosion rate.",
+            "expectedPerformanceDe": "Die Cu-Linie ist horizontal: Eh = 0,340 + 0,05916/2 · log(10−6) = 0,16252 V, also pE ≈ 2,747. Oberhalb wird Cu2+, unterhalb Metall bevorzugt. Bei pH 2 reicht das Wasserfenster von pE −2 bis 18,78. P liegt darin im Metallbereich, Q darin im Cu2+-Bereich. R liegt unter der H2-Grenze: Wasserreduktion ist thermodynamisch möglich, der Punkt ist kein dauerhaft unverändert stabiler Wasserzustand. Das Zweiformenmodell beweist weder reale Passivierung noch eine Rate und lässt außerhalb pH 0–5 wichtige Cu-Spezies aus. pE ist dimensionslos, Eh eine Spannung.",
+            "expectedPerformanceEn": "The Cu boundary is horizontal: Eh = 0.16252 V, hence pE ≈ 2.747. Cu2+ is favoured above it, metal below. At pH 2 the water window extends from pE −2 to 18.78. P lies inside it in the metal region and Q inside it in the Cu2+ region. R is below the H2 boundary, so water reduction is thermodynamically possible; it is not an unchanged stable aqueous state. This two-form model establishes neither actual passivation nor a corrosion rate, and omits important Cu species outside pH 0–5. pE is dimensionless; Eh is voltage.",
+            "understandingFocusDe": "Erhöhe die Cu2+-Aktivität hundertfach. Leite die Grenzverschiebung ab und begründe, warum eine fehlende Aktivitätsangabe das Diagramm unvollständig macht.",
+            "understandingFocusEn": "Increase Cu2+ activity one hundredfold. Derive the boundary shift and explain why missing activity information makes the diagram incomplete."
+          },
+          {
+            "id": "eqrk16-10-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-10-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Leite die vertikale Fällungsgrenze und die M/M(OH)2-Gerade her. Ordne P(pH 8, Eh −0,50 V) und Q(pH 11, Eh −0,50 V) ein. Warum ersetzt das Schema keinen Materialschutztest?",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-10-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Derive the vertical precipitation boundary and M/M(OH)2 line. Classify P(pH 8, Eh −0.50 V) and Q(pH 11, Eh −0.50 V). Why does the scheme not replace a material-protection test?",
+            "expectedPerformanceDe": "Bei aM2+ = 10−6 gilt aOH− = √(10−15/10−6) = 10−4,5, also pOH 4,5 und pH 9,5. Die Metall/Ion-Linie ist Eh = −0,61748 V. Einsetzen von aM2+ = KL/aOH² ergibt die Feststoff/Metall-Gerade Eh = −0,05546 − 0,05916 pH. P liegt unter pH 9,5 und oberhalb −0,61748 V, also im M2+-Bereich. Q liegt oberhalb pH 9,5 und oberhalb −0,70622 V, also im M(OH)2-Bereich. Beide Punkte liegen im Wasserfenster. Der Schnittpunkt bei pH 9,5 prüft die Konsistenz. Haftung, Porosität, Kinetik, weitere Oxidationsstufen und Komplexe fehlen; ein Feststofffeld bedeutet keinen nachgewiesenen Schutz.",
+            "expectedPerformanceEn": "At aM2+ = 10−6, aOH− = 10−4.5, giving pOH 4.5 and pH 9.5. The metal/ion line is Eh = −0.61748 V. Substituting aM2+ = Ksp/aOH² gives the solid/metal line Eh = −0.05546 − 0.05916 pH. P has pH below 9.5 and Eh above −0.61748 V, placing it in the M2+ region. Q has pH above 9.5 and Eh above −0.70622 V, placing it in the hydroxide region. Both lie inside the water window. Check consistency at the intersection at pH 9.5. Adhesion, porosity, kinetics, other oxidation states and complexes are absent; a solid field is not proven protection.",
+            "understandingFocusDe": "Füge einen starken M2+-Liganden hinzu. Begründe die nötige Neuberechnung der Grenzen statt einer unveränderten Farbflächenannahme.",
+            "understandingFocusEn": "Add a strong M2+ ligand. Explain the need to recalculate boundaries rather than assuming unchanged coloured regions."
+          }
+        ]
+      }
+    }
+  ],
+  "caseObjectBindings": [
+    {
+      "id": "eqrk16-07-a",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "objectSha256": "sha256:4494fe657bf010d47ec16b7efa4d1569fbbdb86a6328abe1d9a3e61209641eb4"
+    },
+    {
+      "id": "eqrk16-07-b",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "objectSha256": "sha256:905c36178eb420f80f8123d54dfa3b8f4e860f754e6349e0acd4a2cff6a23ebd"
+    },
+    {
+      "id": "eqrk16-08-a",
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "objectSha256": "sha256:090cde3a6394b983d19896ee84a4f18d8d2d444024aa79a51db50541bb6c82b8"
+    },
+    {
+      "id": "eqrk16-08-b",
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "objectSha256": "sha256:fbc5c9308ef098bc5c21661d9ac1cf7b7286e0146eea384629c820e7a4ec42ce"
+    },
+    {
+      "id": "eqrk16-09-a",
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "objectSha256": "sha256:852b494c0505652e2d2bfbfd0b28ce79b2b03a19232293a021b8cf76d9b9a835"
+    },
+    {
+      "id": "eqrk16-09-b",
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "objectSha256": "sha256:008689c68da804148af52e98777375bb41c3a32e5dbf95d07483867e0967b5ad"
+    },
+    {
+      "id": "eqrk16-10-a",
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "objectSha256": "sha256:b293766948b94208afe2552d3d4f5f0c0df5863a7a2e33b3d03209ee3b62938e"
+    },
+    {
+      "id": "eqrk16-10-b",
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "objectSha256": "sha256:6362ba57dbef59338892610ce0c88799e1708220bd98ec428315aafc7da7f8da"
+    }
+  ],
+  "case09bExplicitIdealAssumptionPresent": true,
+  "internalHistoricalBriefReferences": "Existing profile brief pointers remain byte-exact; the controlling whole32 selection here is c9d14994. Unchanged case bodies can still have their original exact history references."
+}

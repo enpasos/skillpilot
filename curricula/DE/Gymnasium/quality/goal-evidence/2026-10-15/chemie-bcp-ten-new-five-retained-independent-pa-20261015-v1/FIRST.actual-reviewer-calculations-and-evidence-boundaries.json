@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "runId": "91d2b453-1b16-4729-a5bb-d6d60a152ec3",
+  "recordedAtUTC": "2026-10-15T17:51:52.838441+00:00",
+  "role": "Actual reviewer arithmetic and conservation checks on declared fictitious teaching inputs, no real experiment",
+  "checks": [
+    {
+      "caseId": "bcp-mixture-composition-a",
+      "expression": "100*m_i/5.00;100*sum(m_i)/5.00",
+      "inputMassG": {
+        "iron": 1.2,
+        "sand": 1.5,
+        "salt": 2.2
+      },
+      "correctRecoveredMassSharesPercent": {
+        "iron": 24.0,
+        "sand": 30.0,
+        "salt": 44.00000000000001
+      },
+      "recoveryPercent": 98.00000000000001,
+      "unassignedPercent": 1.999999999999993,
+      "matchesCurrentLabelAssignments": false
+    },
+    {
+      "caseId": "bcp-unknown-pure-substance-identity-a",
+      "NaClAmountConcentrationMolPerL": 0.10010266940451745,
+      "conductivityMeanMSPerCm": 9.95,
+      "conductivityRangeMSPerCm": 0.29999999999999893,
+      "rangeIsNotFullInstrumentUncertainty": true
+    },
+    {
+      "caseId": "bcp-biotechnological-preparation-a",
+      "balancedFermentationAtomCountsBothSides": {
+        "C": 6,
+        "H": 12,
+        "O": 6
+      },
+      "activeMinusControlGasMLAt10And20min": [
+        12,
+        26
+      ],
+      "doesNotIdentifyGasOrEthanol": true
+    },
+    {
+      "caseId": "bcp-chemical-preparation-a",
+      "CaAmountMol": 0.002,
+      "carbonateAmountMol": 0.0025000000000000005,
+      "theoreticalMassG": 0.2002,
+      "grossYieldPercent": 89.91008991008991,
+      "pureMassG": 0.17099999999999999,
+      "purityCorrectedYieldPercent": 85.4145854145854
+    },
+    {
+      "caseId": "bcp-chemical-preparation-b",
+      "firstLimitingReactant": "Ca2+",
+      "secondLimitingReactant": "carbonate",
+      "theoreticalMassGBothBatches": 0.25025,
+      "equalTheoryDoesNotFixActualYield": true
+    },
+    {
+      "caseId": "bcp-organism-requirements-investigation-a",
+      "moistGerminationPercent": 85.0,
+      "dryGerminationPercent": 1.6666666666666667,
+      "independentDishesPerCondition": 3
+    },
+    {
+      "caseId": "bcp-organism-requirements-investigation-b",
+      "conservationCheck": "5mL0.5%w/v NaCl;1mL water evaporation;replace1mL with0.5%solution",
+      "initialSaltG": 0.025,
+      "newSaltG": 0.030000000000000002,
+      "newConcentrationPercentWV": 0.6,
+      "initial1PercentAnalogBecomes": 1.2
+    },
+    {
+      "caseIds": [
+        "bcp-enzyme-reaction-investigation-a",
+        "bcp-enzyme-reaction-investigation-b"
+      ],
+      "balancedCatalaseEquation": "2H2O2 -> 2H2O + O2",
+      "atomCountsBothSides": {
+        "H": 4,
+        "O": 4
+      },
+      "substrateStockVolumeML": 2,
+      "totalVolumeMLEachBLevel": 3,
+      "extractLevelsML": [
+        0,
+        0.5,
+        1
+      ],
+      "initialSubstrateStockDilutionFraction": 0.6666666666666666,
+      "noQuantitativeGasOrKcatFromOrdinalCodes": true
+    },
+    {
+      "caseIds": [
+        "bcp-organism-stimulus-response-a",
+        "bcp-organism-stimulus-response-b"
+      ],
+      "constructedExampleOnly": true,
+      "touchPercent": [
+        80,
+        70,
+        90
+      ],
+      "shamPercent": [
+        0,
+        0,
+        10
+      ],
+      "touchMeanPercent": 80,
+      "shamMeanPercent": 3.3333333333333335,
+      "differencePercentagePoints": 76.66666666666667,
+      "independentMainPlantsPerCondition": 3,
+      "separateTransferPlants": 6
+    },
+    {
+      "caseIds": [
+        "bcp-community-site-field-investigation-a",
+        "bcp-community-site-field-investigation-b"
+      ],
+      "lawnGrassUnitsPerM2Sunny": 48.0,
+      "lawnGrassUnitsPerM2Shade": 32.0,
+      "pondCoverMeanPercentOpen": 20,
+      "pondCoverMeanPercentShade": 6.666666666666667,
+      "differencePercentagePoints": 13.333333333333332,
+      "notCausalSingleFactorOrMultiplicationRate": true
+    }
+  ],
+  "casesWithNoSuppliedMeasuredOutcome": [
+    "bcp-mixture-composition-b",
+    "bcp-unknown-pure-substance-identity-b",
+    "bcp-biotechnological-preparation-b",
+    "bcp-chemical-preparation-b",
+    "bcp-organism-requirements-investigation-b",
+    "bcp-enzyme-reaction-investigation-a",
+    "bcp-enzyme-reaction-investigation-b",
+    "bcp-organism-stimulus-response-a",
+    "bcp-organism-stimulus-response-b",
+    "bcp-organism-identification-a",
+    "bcp-organism-identification-b",
+    "bcp-controlled-environment-habitat-investigation-a",
+    "bcp-controlled-environment-habitat-investigation-b"
+  ],
+  "allFutureObservationRecordsRemainNull": true,
+  "allRubricMetAndFutureObservationsRemainNull": true
+}

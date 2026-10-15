@@ -1,0 +1,306 @@
+{
+  "role": "Only the four affected whole scientific profile bodies are replaced; independent amendment remains pending",
+  "profiles": [
+    {
+      "goalId": "57d2c98d-30b8-5123-b823-e56a4f22b191",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Eine Stoffeigenschaft begründet einen Trennschritt; Fraktionen sind noch kein universeller Identitätsnachweis.",
+            "essentialUnderstandingEn": "A material property justifies a separation step; fractions are not a universal identity test.",
+            "observablePerformanceDe": "Begründet inA den Magnet-/Löse-/Filtrationsweg für Eisen/NaCl/Sand und inB den entsprechenden Weg mit zusätzlicher Saccharose; kennzeichnet gemeinsame und tatsächlich einzeln bestimmte Fraktionen.",
+            "observablePerformanceEn": "Justifies magnetism/dissolution/filtration for iron/NaCl/sand inA and the corresponding route with added sucrose inB; labels combined versus actually separately determined fractions."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Qualitative Zusammensetzung und Mengenanteil brauchen beobachtete Trennung, nicht bloße Datenlektüre.",
+            "essentialUnderstandingEn": "Qualitative composition and mass fractions need observed separation rather than data reading.",
+            "observablePerformanceDe": "Führt die Trennung unter Aufsicht selbst aus, trocknet nach freigegebener Methode, tariert und bewahrt eigene Einwaagen und Rückgewinnungsmassen.",
+            "observablePerformanceEn": "Personally separates under supervision, dries by an approved method, tares and retains original input and recovered masses."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Rückgewinnungsbilanz und Zusammensetzung sind verschiedene Aussagen; fehlende Masse ist keine neue Stofffraktion.",
+            "essentialUnderstandingEn": "Recovery balance and composition are different claims; missing mass is not a new constituent.",
+            "observablePerformanceDe": "Bilanziert jede Probe aus ihrer eigenen Einwaage und ihren tatsächlich bestimmten Fraktionen. Nur LehrfallA:24% Eisen,30% Sand,44% Salz,98% Rückgewinnung,2% unzugeordnet. Frischer FallB: keine festen Ergebniszahlen; lösliche NaCl-/Saccharosefraktion ohne selektive Bestimmung nicht aufteilen.",
+            "observablePerformanceEn": "Balances each sample against its own input and actually determined fractions. Teaching caseA only:24% iron,30% sand,44% salt,98% recovery,2% unassigned. Fresh caseB: no fixed results; do not divide soluble NaCl/sucrose without selective determination."
+          },
+          {
+            "id": "e4",
+            "essentialUnderstandingDe": "Eine geänderte Löslichkeit kann den bisherigen analytischen Schluss mehrdeutig machen.",
+            "essentialUnderstandingEn": "Changed solubility can make the prior analytical conclusion ambiguous.",
+            "observablePerformanceDe": "Entwirft und prüft für einen zusätzlichen löslichen Stoff eine unterscheidende Kontrolle statt den gesamten gelösten Rückstand als NaCl zu etikettieren.",
+            "observablePerformanceEn": "Designs and tests a discriminating control for an added soluble material instead of labelling all dissolved residue NaCl."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3",
+            "e4"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "independent-changed-condition",
+            "textDe": "Zusätzlicher löslicher Nicht-Elektrolyt und fehlende quantitative Selektivität.",
+            "textEn": "Added soluble non-electrolyte and missing quantitative selectivity."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bcp-mixture-composition-a",
+            "taskDemandDe": "Plane und führe die vollständige Trennung einer frisch codierten Eisen/NaCl/Sand-Probe selbst aus; dokumentiere Einwaage, sichere Handgriffe, trockene Fraktionen und Materialbilanz. Werte die getrennt markierten Lehrdaten aus. Vollständiges Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-mixture-composition-a",
+            "taskDemandEn": "Plan and personally separate a fresh coded iron/NaCl/sand sample; record input mass, safe actions, dry fractions and material balance. Separately analyse the labelled practice data. Complete material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-mixture-composition-a",
+            "expectedPerformanceDe": "Die Lehrdaten ergeben bei5,00g Ausgangsprobe: Eisen1,20g→24%, Sand1,50g→30%, Salz2,20g→44%; zusammen4,90g beziehungsweise98% Rückgewinnung. Die fehlenden0,10g beziehungsweise2% bleiben unzugeordnet; sie beweisen weder einen vierten Stoff noch die Reinheit einer Fraktion. Eigene praktische Resultate werden erst erhoben.",
+            "expectedPerformanceEn": "For the5.00g teaching sample: iron1.20g→24%, sand1.50g→30%, salt2.20g→44%; total4.90g or98% recovery. Missing0.10g or2% remains unassigned and establishes neither a fourth material nor fraction purity. Original practical results remain to be collected.",
+            "understandingFocusDe": "Neu enthält die Probe ein zweites wasserlösliches Salz. Entwickle eigenständig die Zusatzprüfung, die nötig wäre, bevor der ganze lösliche Rückstand NaCl heißen darf.",
+            "understandingFocusEn": "A fresh sample contains a second soluble salt. Independently devise the additional test needed before calling the whole soluble residue NaCl."
+          },
+          {
+            "id": "bcp-mixture-composition-b",
+            "taskDemandDe": "Erst nach dem ersten Ergebnis aufdecken: Eine neue10,00-g-Probe enthält Eisen, Sand, NaCl und Saccharose. Plane ohne Mustertrennweg eine zusätzliche Unterscheidung der gelösten Stoffe. Führe die von der Aufsicht freigegebenen Schritte an einem neuen Ansatz aus und bilanziere nur die tatsächlich getrennt bestimmten Fraktionen. Vollständiges Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-mixture-composition-b",
+            "taskDemandEn": "Reveal after the first result: a new10.00-g sample contains iron, sand, NaCl and sucrose. Independently plan an additional distinction between the dissolved substances. Carry out the supervisor-approved steps on a new batch and balance only fractions actually separately determined. Complete material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-mixture-composition-b",
+            "expectedPerformanceDe": "Magnet/Filtration unterscheiden Eisen und Sand; das eingedampfte Filtrat enthält beide löslichen Stoffe. Ein qualitativer Leitfähigkeitsbefund kann Elektrolyt anzeigen, liefert ohne matrixgerechte Kalibrierung aber keine einzelnen Massenanteile. Eine ehrliche gemeinsame lösliche Fraktion mit offener Einzelzuordnung ist besser begründet als erfundene vier exakte Anteile. Die versuchte Methode und deren Grenze müssen praktisch dokumentiert werden.",
+            "expectedPerformanceEn": "Magnetism/filtration distinguish iron and sand; evaporated filtrate contains both solutes. Qualitative conductivity can indicate an electrolyte but does not give individual mass fractions without matrix-appropriate calibration. An honestly combined soluble fraction with unresolved individual allocation is justified; four invented exact fractions are not. Actual method and limits must be recorded.",
+            "understandingFocusDe": "Dieser frische Fall ergänzt Saccharose als weiteren löslichen Nicht-Elektrolyten. Begründe und prüfe unabhängig, welche selektive Information nötig ist, bevor die gemeinsame lösliche Masse in einzelne NaCl- und Saccharoseanteile aufgeteilt werden darf.",
+            "understandingFocusEn": "This fresh case adds sucrose as another soluble non-electrolyte. Independently justify and test the selective information needed before dividing combined soluble mass into NaCl and sucrose shares."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7b80efe6-b77d-5ace-8886-973ba38e6f9e",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Eine Identität gilt nur im begründeten Kandidatenraum und braucht unterscheidende Merkmale.",
+            "essentialUnderstandingEn": "Identity is conditional on a justified candidate set and discriminating traits.",
+            "observablePerformanceDe": "Entwirft fallbezogen einen begründeten Entscheidungsweg: A für NaCl/Saccharose/Sand mittels Löslichkeit und Leitfähigkeit; B für NaCl/KCl mittels selektiver Na-/K-Elementbestimmung mit Referenzen.",
+            "observablePerformanceEn": "Designs a justified case-specific route: A uses solubility/conductivity for NaCl/sucrose/sand; B uses selective Na/K elemental analysis with references for NaCl/KCl."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Vergleichbare Referenzen benötigen passende Konzentration, Temperatur, Blindwert und unverunreinigte Probe.",
+            "essentialUnderstandingEn": "Comparable references require matched concentration, temperature, blank and uncontaminated sample.",
+            "observablePerformanceDe": "Führt die jeweils vollständige eigene Proben-/Referenz-/Blindmessung aus: A0,117g/20,0mL bei20°C mit gespülter Leitfähigkeitssonde; B0,100g/20,0mL mit freigegebener Emissionsmessung, zwei unbekannten Aliquoten, Nachblank und aufbewahrten eigenen Spektren.",
+            "observablePerformanceEn": "Personally performs each complete sample/reference/blank measurement: A0.117g/20.0mL at20°C with a rinsed conductivity probe; B0.100g/20.0mL with approved emission measurement, two unknown aliquots, final blank and retained original spectra."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Übereinstimmung ist kein analytischer Reinheitsprozentsatz.",
+            "essentialUnderstandingEn": "Agreement is not an analytical purity percentage.",
+            "observablePerformanceDe": "Ordnet nur im jeweiligen Kandidatenraum zu und begrenzt Reinheitsbehauptungen: A deutet U/V,9,95mS/cm und0,3mS/cm Streuung ausschließlich als Lehrdaten; B vergleicht eigene Na-/K-Liniensignaturen samt Blanks und kennzeichnet Mehrdeutigkeit oder Verschleppung ohne übertragene Leitfähigkeitszahlen.",
+            "observablePerformanceEn": "Assigns only within each candidate set and limits purity claims: A interprets U/V,9.95mS/cm and0.3mS/cm spread only as teaching data; B compares original Na/K line signatures with blanks, marking ambiguity/carryover without imported conductivity results."
+          },
+          {
+            "id": "e4",
+            "essentialUnderstandingDe": "Ein zusätzlicher Elektrolyt verlangt eine unabhängige selektive Information.",
+            "essentialUnderstandingEn": "An added electrolyte requires independent selective information.",
+            "observablePerformanceDe": "Wählt und prüft mit Na-/K-Referenzen eine Elementbestimmung; identifiziert innerhalb des deklarierten NaCl/KCl-Raums und begrenzt Aussagen über Anionen oder Mischungen.",
+            "observablePerformanceEn": "Selects and tests elemental analysis against Na/K references; identifies within the declared NaCl/KCl set and limits claims about anions or mixtures."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3",
+            "e4"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "independent-changed-condition",
+            "textDe": "Erweiterter Kandidatenraum erzwingt eine neue selektive Methode; Konzentrationsanpassung und Kontaminationskontrollen bleiben nötig.",
+            "textEn": "An expanded candidate set requires a new selective method; concentration matching and contamination controls remain necessary."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bcp-unknown-pure-substance-identity-a",
+            "taskDemandDe": "Führe den selbst begründeten Löslichkeits-/Leitfähigkeitsweg mit einer frisch codierten Reinstoffprobe tatsächlich aus; prüfe Blindwert und Referenzen bei20°C und0,117g/20,0mL Gesamtvolumen. Dokumentiere Rohdaten und entscheide einschließlich Mehrdeutigkeiten. Vollständiges Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-unknown-pure-substance-identity-a",
+            "taskDemandEn": "Personally execute your justified solubility/conductivity route on a fresh coded pure sample; check blank/references at20°C and0.117g/20.0mL total volume. Record raw data and decide including ambiguity. Complete material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-unknown-pure-substance-identity-a",
+            "expectedPerformanceDe": "U passt im Kandidatenraum zu NaCl, V zu Sand. Saccharose und NaCl sehen gelöst beide klar aus; Leitfähigkeit unterscheidet sie hier. U-Mittel9,95 mS/cm; Streuung0,3 mS/cm ist keine vollständig bestimmte Geräteunsicherheit. Andere ionische Stoffe könnten außerhalb des Kandidatenraums gleich reagieren. Kein analytischer Reinheitsprozentsatz ohne geeignete quantitative Kalibrierung.",
+            "expectedPerformanceEn": "Within the candidate set U matches NaCl and V sand. Dissolved sucrose and NaCl both look clear; conductivity distinguishes them here. U mean9.95 mS/cm; a0.3 mS/cm spread is not a full instrument uncertainty. Other ionic materials outside the set could behave similarly. No purity percentage without suitable quantitative calibration.",
+            "understandingFocusDe": "Im frischen Kandidatensatz kommt KCl hinzu, das ebenfalls gut leitet. Wähle selbst eine zusätzliche Referenzmethode; die bisherige Zuordnung darf ohne sie nur „löslicher Elektrolyt“ lauten.",
+            "understandingFocusEn": "Fresh candidates include KCl, also a good conductor. Independently choose an additional reference method; without it the present assignment is only “soluble electrolyte”."
+          },
+          {
+            "id": "bcp-unknown-pure-substance-identity-b",
+            "taskDemandDe": "Erst nach der ersten Antwort: Der neue ausdrücklich reine unbekannte Stoff ist entweder NaCl oder KCl; beide sind löslich und leitfähig. Begründe eine selektive Ergänzung, bereite eigene frische Aliquote und Blind-/Referenzproben vor und miss sie am freigegebenen geschlossenen Element-Emissionsmessplatz nach Geräteeinweisung. Zeichne die eigenen Spektren mit Wellenlängenskala auf, entscheide und prüfe Verschleppung durch eine nachfolgende Blindprobe. Vollständiges Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-unknown-pure-substance-identity-b",
+            "taskDemandEn": "After case1: a new explicitly pure unknown is NaCl or KCl; both dissolve and conduct. Justify a selective additional method, prepare fresh original aliquots and blank/reference samples and measure at an approved enclosed elemental-emission station after device instruction. Retain original wavelength-labelled spectra, decide and check carryover with a subsequent blank. Complete material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-unknown-pure-substance-identity-b",
+            "expectedPerformanceDe": "Na- und K-Referenzen liefern unterscheidende Liniensignaturen; die Auswahl erfolgt gegen gemessene Referenzen, nicht allein nach sichtbarer Flammenfarbe. NIST-Orientierung: Na um589,0/589,6nm; K um766,5/769,9nm. Gemischte Signaturen oder kontaminierte Blanks lassen die reine Kandidatenzuordnung offen. Elementnachweis identifiziert im erklärten NaCl/KCl-Raum, weist aber Chlorid oder analytische Reinheit nicht unabhängig nach. Keine Messwerte werden erfunden.",
+            "expectedPerformanceEn": "Measured Na and K references provide discriminating line signatures; decide against references rather than visible flame colour alone. NIST orientation: Na near589.0/589.6nm; K near766.5/769.9nm. Mixed signatures or contaminated blanks leave pure-candidate identity unresolved. Elemental evidence identifies within the declared NaCl/KCl set but does not independently establish chloride or analytical purity. No results are invented.",
+            "understandingFocusDe": "Im frischen Kandidatensatz kommt KCl hinzu, das ebenfalls gut leitet. Wähle selbst eine zusätzliche Referenzmethode; die bisherige Zuordnung darf ohne sie nur „löslicher Elektrolyt“ lauten.",
+            "understandingFocusEn": "Fresh candidates include KCl, also a good conductor. Independently choose an additional reference method; without it the present assignment is only “soluble electrolyte”."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Ein Anforderungsversuch braucht eine prüfbare Hypothese und eine vorab festgelegte biologische Messgröße.",
+            "essentialUnderstandingEn": "A requirements experiment needs a testable hypothesis and predefined biological outcome.",
+            "observablePerformanceDe": "Legt Wasserangebot, Keimkriterium≥2mm Wurzel, gleiche Charge und Messdauer fest.",
+            "observablePerformanceEn": "Defines water availability, germination criterion≥2mm root, matched seed lot and duration."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Feuchtigkeit und Sauerstoffverfügbarkeit dürfen nicht unbemerkt zugleich verändert werden.",
+            "essentialUnderstandingEn": "Moisture and oxygen availability must not change together unnoticed.",
+            "observablePerformanceDe": "FührtA als trockenen/feuchten nicht überfluteten Vergleich aus. FührtB bei gleichem anfänglichem Volumen und dokumentierter eigener Startmasse aus; ergänzt spätere plausible Verdunstung ausschließlich mit Wasser, meldet andere Verluste und beachtet in beiden Fällen Schutz-/Schimmelregeln.",
+            "observablePerformanceEn": "PerformsA as an unflooded dry/moist comparison. PerformsB with matched initial volumes and each recorded original starting mass; replaces later plausible evaporation with water only, reports other losses and follows protection/mould rules in both cases."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Wiederholungen begrenzen zufällige und biologische Variation; Samen derselben Schale sind keine unabhängigen Schalen.",
+            "essentialUnderstandingEn": "Replicates constrain random/biological variation; seeds in one dish are not independent dishes.",
+            "observablePerformanceDe": "Hält eigene Keimzählungen und Wiederholungen je Schale fest; inB zusätzlich Start-/Tagesmassen, Wasserzugaben und Verluste. Berechnet Keimanteile und berichtet fehlende/uneindeutige Daten statt Ergebnisse ausA zu übernehmen.",
+            "observablePerformanceEn": "Retains original germination counts/replicates by dish; inB also starting/daily masses, water additions and losses. Calculates germination fractions and reports missing/ambiguous data without importing outcomes fromA."
+          },
+          {
+            "id": "e4",
+            "essentialUnderstandingDe": "Ein Wasserbefund bestimmt kein allgemeines Optimum oder Salzverhalten.",
+            "essentialUnderstandingEn": "A water finding determines neither a universal optimum nor salinity response.",
+            "observablePerformanceDe": "Prüft neue nominale Salz-Startstufen mit Wasser-Kontrolle und dokumentiertem Wasserhaushalt; begründet Wasser statt Salzlösung bei Verdunstungsausgleich, unterscheidet Lösungs-/Materialverluste und begrenzt die Aussage auf die geprüfte Art und tatsächliche Bedingungen.",
+            "observablePerformanceEn": "Tests new nominal initial salinity levels against water control with documented water accounting; justifies water rather than salt-solution evaporation replacement, distinguishes solution/material losses and limits inference to the species and actual conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3",
+            "e4"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "independent-changed-condition",
+            "textDe": "Frisch soll Salzgehalt bei gleichem Wasserangebot geprüft werden. Entwickle unabhängig Verdünnungsstufen, Wasser-Kontrolle und Abbruchregel; übertrage nicht bloß die alte Trocken/Feucht-Erklärung.",
+            "textEn": "Fresh investigation tests salinity with equal water supply. Independently devise dilution levels, water control and a stop rule instead of merely repeating the dry/moist explanation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bcp-organism-requirements-investigation-a",
+            "taskDemandDe": "Plane, führe und dokumentiere den Vergleich tatsächlich. Werte die Fremddaten als unabhängiges Lehrbeispiel aus. Erkläre, weshalb Feuchtigkeit nicht mit Sauerstoffausschluss verwechselt werden darf, und welche Aussage über alle Pflanzen unzulässig wäre. Vollständiges Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-organism-requirements-investigation-a",
+            "taskDemandEn": "Plan, actually conduct and document the comparison. Analyse external data as a separate teaching example. Explain why moisture must not be confused with oxygen exclusion and what generalisation to all plants would be invalid. Complete material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-organism-requirements-investigation-a",
+            "expectedPerformanceDe": "Feucht51/60=85%, trocken1/60≈1,7%. Daten stützen Wasserbedarf unter diesen Bedingungen, nicht eine ideale Menge oder Eignung für jede Art. Überflutung kann Sauerstoff begrenzen; gleiche Samencharge und Zeit kontrollieren Alternativerklärungen. Einzelne trockene Keimung kann Restfeuchte/Variation sein. Eigene Rohdaten und Schutzverhalten müssen erst beobachtet werden.",
+            "expectedPerformanceEn": "Moist51/60=85%, dry1/60≈1.7%. Data support a water requirement under these conditions, not an ideal amount or all-species rule. Flooding can limit oxygen; matched seed lot/time control alternatives. A dry germination may reflect residual moisture/variation. Original raw data and protective handling remain to be observed.",
+            "understandingFocusDe": "Frisch soll Salzgehalt bei gleichem Wasserangebot geprüft werden. Entwickle unabhängig Verdünnungsstufen, Wasser-Kontrolle und Abbruchregel; übertrage nicht bloß die alte Trocken/Feucht-Erklärung.",
+            "understandingFocusEn": "Fresh investigation tests salinity with equal water supply. Independently devise dilution levels, water control and a stop rule instead of merely repeating the dry/moist explanation."
+          },
+          {
+            "id": "bcp-organism-requirements-investigation-b",
+            "taskDemandDe": "Nach der ersten Auswertung: Formuliere eine neue Salz-Hypothese und plane unabhängig Kontrolle, Zuteilung und Auswertung. Nutze frische Samen einer Charge und je drei Schalen für Wasser beziehungsweise nominal anfängliche0,5%/1,0% NaCl bei jeweils5,0mL. Führe den freigegebenen Vergleich tatsächlich durch. Dokumentiere die eigene Startmasse jeder vollständigen Schale, tägliche Massen und Keimzählungen sowie ausschließlich mit Wasser ausgeglichene plausible Verdunstungsverluste. Begründe getrennt den Umgang mit Lösungs-/Materialverlusten und biologischen Änderungen; berichte Abweichungen und begrenze die neue Hypothese auf die tatsächlich untersuchten Bedingungen. Vollständiges Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-organism-requirements-investigation-b",
+            "taskDemandEn": "After case1 formulate a salinity hypothesis and independently plan controls, assignment and analysis. Use fresh seeds from one lot and three dishes each for water or nominal initial0.5%/1.0% NaCl, each initially5.0mL. Actually conduct the approved comparison. Record each complete dish’s own starting mass, daily masses/germination counts and plausible evaporative losses replaced with water only. Separately justify handling of solution/material losses and biological changes; report deviations and limit the hypothesis to conditions actually studied. Complete material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-organism-requirements-investigation-b",
+            "expectedPerformanceDe": "Verdunstendes Wasser nimmt das gelöste NaCl nicht mit.5,0mL0,5%-Lösung enthalten anfangs0,025g NaCl: Nach1,0mL reiner Wasserverdunstung würde1,0mL derselben Salzlösung weitere0,005g hinzufügen und bei wieder5,0mL ungefähr0,6% statt0,5% ergeben; beim1,0%-Ansatz entsprechend1,2%. Nur Wasser führt bei tatsächlichem reinem Wasserverlust die ursprüngliche Wasserbilanz näherungsweise zurück. Bei entnommener/verschütteter Lösung gehen Wasser und Salz verloren; solche Verluste dürfen nicht wie reine Verdunstung behandelt werden. Eigene m0-Werte, Tagesmassen, Zugaben und Abweichungen müssen vorliegen. Gaswechsel/biologische Veränderungen begrenzen die Massenmethode; die Salzstufen sind nominale Startbedingungen, keine kontinuierlich nachgewiesenen konstanten Konzentrationen. Richtung und Stärke der Keimwirkung bleiben bis zu eigenen Daten offen. Trocken/Feucht-Ergebnisse liefern keinen Salzschwellenwert; fehlende Keimung beweist ohne weitere Prüfung keinen Tod.",
+            "expectedPerformanceEn": "Evaporating water does not carry dissolved NaCl away. Initially5.0mL0.5% solution contains0.025g NaCl: after1.0mL pure-water evaporation,1.0mL of the same salt solution would add0.005g, giving about0.6% rather than0.5% at5.0mL again; the1.0% treatment would analogously reach1.2%. Only water approximately restores the original water balance after actual water-only loss. Sampling/spilling solution removes both salt and water and must not be treated as pure evaporation. Original m0 values, daily masses, additions and deviations must be available. Gas exchange/biological changes limit gravimetry; salinity levels are nominal starting conditions, not continuously verified constant concentrations. Direction/size of germination effects remain open until original data exist. Dry/moist results give no salinity threshold; non-germination alone does not establish death.",
+            "understandingFocusDe": "Prüfe die neue Salz-Hypothese mit eigenem Plan und Wasser-Kontrolle. Lege vorab eine Wasserbilanz fest: später nur Wasser für plausible Verdunstung zur eigenen Startmasse, andere Verluste gesondert behandeln. Die alte Trocken/Feucht-Erklärung liefert keine Ergebnisse dieses Falls.",
+            "understandingFocusEn": "Test the new salinity hypothesis with an original plan and water control. Predefine water accounting: later use water only for plausible evaporation back to each unit’s own starting mass; handle other losses separately. The old dry/moist explanation supplies no results for this case."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4d16601e-fa57-5bcb-a5b6-f308d5b8036a",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Reaktionsgleichung und limitierendes Edukt begrenzen die theoretische Produktmasse.",
+            "essentialUnderstandingEn": "Reaction equation and limiting reactant bound theoretical product mass.",
+            "observablePerformanceDe": "Bilanziert CaCl2/Na2CO3, bestimmt das limitierende Edukt und berechnet die theoretische Masse vor der Herstellung.",
+            "observablePerformanceEn": "Balances CaCl2/Na2CO3, identifies the limiting reactant and calculates theoretical mass before preparation."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Fällung, Waschen und Trocknen bestimmen das gewonnene Produkt und seine Verunreinigungen.",
+            "essentialUnderstandingEn": "Precipitation, washing and drying determine recovered product and contaminants.",
+            "observablePerformanceDe": "Führt Herstellung und kontrollierte Aufarbeitung unter Aufsicht selbst aus und dokumentiert Einwaagen, Waschschritte, Trocknung und Produktmasse.",
+            "observablePerformanceEn": "Personally performs preparation and controlled work-up under supervision, recording quantities, washing, drying and product mass."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Ausbeute vergleicht trockene Produktmasse mit der Theorie; sie ist kein Reinheitsnachweis.",
+            "essentialUnderstandingEn": "Yield compares dry product mass with theory; it is not proof of purity.",
+            "observablePerformanceDe": "Berechnet mit den eigenen Mengen die Ausbeute und erklärt Restfeuchte, gelöste Salze und Verluste als getrennte Grenzen.",
+            "observablePerformanceEn": "Calculates yield from original amounts and explains residual moisture, soluble salts and losses as distinct limits."
+          },
+          {
+            "id": "e4",
+            "essentialUnderstandingDe": "Eine veränderte Stoffmenge kann das limitierende Edukt wechseln.",
+            "essentialUnderstandingEn": "A changed quantity can switch the limiting reactant.",
+            "observablePerformanceDe": "Plant und führt einen neuen Ansatz nach selbständiger Mengenprognose aus und prüft eine abweichende Produktmasse ohne erfundene Reinheitsannahme.",
+            "observablePerformanceEn": "Plans and executes a new batch after an independent prediction and examines differing product mass without assuming purity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3",
+            "e4"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "independent-changed-condition",
+            "textDe": "FallA: ursprünglicher20,0/25,0mL-Ansatz mit verdoppelter CaCl2-Konzentration, passend4,00/2,50mmol. FallB: ausdrücklich ERSTER neuer25,0/30,0mL-Ansatz mit CaCl2 nun0,200mol/L und Carbonat weiter0,100mol/L; Stoffmengen und Limitierung unabhängig herleiten. Die Referenzansätze nicht vermischen.",
+            "textEn": "CaseA: original20.0/25.0mL batch with doubled CaCl2 concentration, consistently4.00/2.50mmol. CaseB: explicitly the FIRST new25.0/30.0mL batch with CaCl2 now0.200mol/L and carbonate still0.100mol/L; independently derive amounts and limitation. Do not mix reference batches."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bcp-chemical-preparation-a",
+            "taskDemandDe": "Plane und führe die Synthese und Aufarbeitung selbst aus. Begründe limitierendes Edukt und Blindprobe. Berechne theoretische Produktmasse, rohe Massenausbeute und reinheitskorrigierte Ausbeute aus den Lehrdaten. Erkläre den Nutzen des Waschens. Vollständiges Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-chemical-preparation-a",
+            "taskDemandEn": "Plan and personally perform synthesis/work-up. Justify limiting reagent and blank. Calculate theoretical mass, gross mass yield and purity-corrected yield from practice data. Explain washing. Complete material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-chemical-preparation-a",
+            "expectedPerformanceDe": "Ca2++CO3^2−→CaCO3(s);2,00 mmol Ca2+ begrenzen gegenüber2,50 mmol Carbonat. Theoretisch0,2002 g; rohe Ausbeute89,9%; reines Produkt0,171 g, korrigiert85,4%. Waschen entfernt lösliche Begleitsalze; zu starkes Waschen/Übertragungsverluste können Menge senken. Ein weißer Niederschlag allein ist kein vollständiger Reinheitsnachweis.",
+            "expectedPerformanceEn": "Ca2++CO3^2−→CaCO3(s);2.00 mmol Ca2+ limits against2.50 mmol carbonate. Theoretical0.2002 g; gross yield89.9%; pure product0.171 g, corrected85.4%. Washing removes soluble salts; excessive washing/transfer loss can reduce amount. White precipitate alone is not a complete purity test.",
+            "understandingFocusDe": "Neu bleibt die Carbonatmenge gleich, aber CaCl2 ist doppelt konzentriert. Entscheide selbst über den nun limitierenden Stoff und passe Produktprognose und Kontrolle an.",
+            "understandingFocusEn": "Fresh carbonate amount stays fixed while CaCl2 concentration doubles. Independently identify the new limiting reagent and adapt the prediction/control."
+          },
+          {
+            "id": "bcp-chemical-preparation-b",
+            "taskDemandDe": "Leite vor Durchführung für beide neuen Ansätze das limitierende Edukt und die theoretische Produktmasse selbst her. Präpariere sie getrennt, wasche und trockne nach den gleichen freigegebenen Bedingungen und vergleiche deine wirklichen Ausbeuten. Vollständiges Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-chemical-preparation-b",
+            "taskDemandEn": "Independently derive the limiting reactant and theoretical mass before both new batches. Prepare separately, wash/dry under the same approved conditions and compare actual yields. Complete material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/materials/eight-whole-cases.four-goals.unreviewed-author-successor.json #bcp-chemical-preparation-b",
+            "expectedPerformanceDe": "Beide neuen Ansätze haben2,50mmol limitierendes Edukt und0,25025g theoretisches CaCO3; welches Edukt limitiert, wechselt. Gleiche Theorie erzwingt keine gleiche reale Ausbeute oder Reinheit. Nur tatsächlich gemessene trockene Massen zählen. Zusätzlich eindeutig bezogener Transfer: Zum eindeutig bezeichneten ersten neuen Ansatz: n(Ca2+)=0,0250L·0,200mol/L=0,00500mol=5,00mmol; n(Carbonat)=0,0300L·0,100mol/L=0,00300mol=3,00mmol. Die1:1-Fällung wird durch Carbonat begrenzt; m_theor(CaCO3)=0,00300mol·100,1g/mol=0,3003g. Gleiche Blindprobe und kontrolliertes Waschen bleiben nötig. Theoretische Masse ist keine gemessene Ausbeute oder Reinheit. Die4,00/2,50mmol des ursprünglichen FallsA sind auf diesen neuen Bezug nicht übertragbar.",
+            "expectedPerformanceEn": "Both new batches have2.50mmol limiting reactant and0.25025g theoretical CaCO3; the limiting reactant switches. Equal theory does not ensure equal actual yield or purity. Only measured dry masses count. Additionally anchored transfer: For the explicitly identified first new batch: n(Ca2+)=0.0250L·0.200mol/L=0.00500mol=5.00mmol; n(carbonate)=0.0300L·0.100mol/L=0.00300mol=3.00mmol. Carbonate limits the1:1 precipitation; m_theoretical(CaCO3)=0.00300mol·100.1g/mol=0.3003g. Retain the blank and controlled washing. Theoretical mass is not measured yield or purity. Original caseA’s4.00/2.50mmol does not apply to this new reference.",
+            "understandingFocusDe": "Zusätzlicher Transfer nach den beiden neuen Ansätzen: Verwende ausdrücklich den ERSTEN neuen Ansatz als Bezug. Seine25,0mL CaCl2-Lösung sind nun0,200mol/L statt0,100mol/L konzentriert; die30,0mL Na2CO3-Lösung bleiben0,100mol/L. Leite unabhängig die beiden Stoffmengen, das limitierende Edukt und die theoretische CaCO3-Masse her und begründe passende Kontrollen. Es sind keine neuen gemessenen Produktmassen vorgegeben.",
+            "understandingFocusEn": "Additional transfer after both new batches: explicitly use the FIRST new batch as reference. Its25.0mL CaCl2 solution is now0.200mol/L rather than0.100mol/L; the30.0mL Na2CO3 solution remains0.100mol/L. Independently derive both amounts, the limiting reactant and theoretical CaCO3 mass and justify suitable controls. No new measured product masses are supplied."
+          }
+        ]
+      }
+    }
+  ],
+  "newScientificVotes": 0
+}

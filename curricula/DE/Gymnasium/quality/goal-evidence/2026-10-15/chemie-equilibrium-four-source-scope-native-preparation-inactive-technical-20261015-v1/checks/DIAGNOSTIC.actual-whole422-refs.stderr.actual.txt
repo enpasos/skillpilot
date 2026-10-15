@@ -1,0 +1,17 @@
+/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/source4-no-render-stock-context-capsule-v1/app/scripts/goalBookEvidenceReviewLoader.ts:49
+    throw new Error(`Goal-book model: ${label} violates the closed goal-evidence schema: ${validator.ajv.errorsText(
+          ^
+
+
+Error: Goal-book model: diagnostic-inputs/current.selected-records.jsonl record 1 violates the closed goal-evidence schema: data/reviewId must match pattern "^[a-z0-9]+(?:-[a-z0-9]+)*$".
+    at parseGoalBookEvidenceReviewRecord (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/source4-no-render-stock-context-capsule-v1/app/scripts/goalBookEvidenceReviewLoader.ts:49:11)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/source4-no-render-stock-context-capsule-v1/app/scripts/goalBookModel.ts:974:22)
+    at Array.forEach (<anonymous>)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/source4-no-render-stock-context-capsule-v1/app/scripts/goalBookModel.ts:972:13)
+    at Array.forEach (<anonymous>)
+    at parseEvidenceReviewSources (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/source4-no-render-stock-context-capsule-v1/app/scripts/goalBookModel.ts:957:11)
+    at buildGoalBookModel (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/source4-no-render-stock-context-capsule-v1/app/scripts/goalBookModel.ts:1937:27)
+    at loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/source4-no-render-stock-context-capsule-v1/app/scripts/goalBookModel.ts:2760:17)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-native-preparation-inactive-technical-20261015-v1/scripts/diagnose_actual_stock_contexts_no_render.mts:54:15)
+
+Node.js v20.20.2

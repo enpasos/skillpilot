@@ -1,0 +1,9 @@
+# Vorläufige unabhängige Quellenlektüre für vier Ziele
+
+Dies ist eine endliche Auswahl ganzer wissenschaftlicher Materialien zu den endgültigen DE/EN-Texten a142/c443. Lies alle vier ganzen Kompetenzen mit tatsächlichen Requires/Eltern, alle acht ganzen DE/EN-Aufgaben samt Daten/Modelllösungen/Rubriken/Transfer und alle vier wissenschaftlichen Profilkörper. Lies die ganzen rohen Quellenzellen, Passagen und tatsächlichen Partnerkompetenzen sowie die ganzen referenzierten Primärseiten. Verwende bei Quellen `rawText`, falls nichtleer, sonst `text`; ein leeres `rawText` ist keine leere Quelle.
+
+Die acht Autorenkomponenten, zusätzlichen Modellannahmen und LK-Rollen stehen ausdrücklich als ungeprüfte Autorenpropositionen getrennt von amtlichen Quellen. Prüfe ihren tatsächlichen Inhalt und Geltungsanspruch selbst. Die bestehenden nationalen und HE-LK-Zielumfänge enthalten alle vier Ziele; der bestehende BY-/HE-LK-SourceAtlas enthält sie nicht. Aus einer Autorenproposition folgt keine amtlich benannte Pflicht oder Quellen-/Kursfreigabe. Die vollständigen Chemie-Seiten des HE-Abiturerlasses2027 sind Primärmaterial zum Prüfungskontext2027; ihre Bedeutung für andere Geltungsbereiche ist zu prüfen.
+
+Die aktuelle Kp-Bilddarstellung verwendet dimensionslose normierte Größen mit expliziten Standardzuständen. Beurteile Bild-/Text-/Modellkonventionen zusammen mit den ganzen Fällen; andere zulässig definierte Konventionen werden dadurch nicht zu falschen Formeln.
+
+Diese Auswahl enthält noch keine aktuellen Buchseiten, kein Nativebundle und keine D-Bindung. Eine abschließende eigene FIRST-/Normalbindung erfolgt erst nach Lektüre des finalen kombinierten Quellen- und Seitenselectors. Diese vorläufige Quellenlektüre erteilt keine Reviewclaim-/Quellen-/Kurs-/Humanfreigabe. Ausschließlich die im Selector ausgewählten wissenschaftlichen Dateien sind Leseinputs; die übrigen technischen Arbeitsdateien dieses Roots gehören nicht zum unabhängigen Leseauftrag.

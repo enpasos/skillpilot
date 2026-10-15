@@ -1,0 +1,62 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-six-inputs-three-scope-native9-preparation-technical-20261015-v1/config/native9.normal-prepare-only.config.json",
+  "configDigest": "sha256:0aaa9f8c37ff1382226d7295f786a21db8e4dfd366564d9a5179a36db9a2f7d8",
+  "goalIds": [
+    "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528",
+    "6d3a2bad-8c67-5964-a720-375f138adaba",
+    "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+    "16f0dc69-6da8-5751-a00e-abbc1c882dbc",
+    "b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+    "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+    "f85b4651-50ea-5b42-b193-3465c05257a7",
+    "057a6826-f599-53b1-bdd1-5a83037a1494",
+    "39c85aa0-b01f-56ec-a148-b8009bf650f5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 422,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-six-inputs-three-scope-native9-preparation-technical-20261015-v1/config/whole422.normal-stock-base.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:be93b6b838362546dbc543eb5eb20b99dd861c938bb32af35e656b2ebe8b808c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:fb3b040ff4b76187aad1a88f9af56c1d7c31e51a739731e2f0f3935dab7c046b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b398cfe1ed289d20d9711963cd420c84d22510efb18531e029120048266d8813",
+    "reviewInputFingerprint": "sha256:ba4787ec67e276486f09a29be1845dc4725e62d60fbe7b89d3d40503d4312602",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1-a",
+        "campaignDigest": "sha256:b8ec37fbf15a5444e2c7b9458d55a559e0760208a7ab9561a58e314bfdaea065",
+        "roundId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1-first-pass-a",
+        "independenceGroupId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1-independent-a",
+        "batchId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:852d97f8254b35fbe8f9f1f129ac54355d8365ba8c5a997a7b4c21726cbe6832"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1-b",
+        "campaignDigest": "sha256:59205d82ac401c2037e8203da6c187f570b3d3edf003c1a264d046b95bf014f6",
+        "roundId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1-first-pass-b",
+        "independenceGroupId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1-independent-b",
+        "batchId": "chemie-six-inputs-three-scope-current422-native9-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:59e8600f08cec36c008c0b422f7bf010bedcbd4739b6b0025232880b0b17c5b7"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

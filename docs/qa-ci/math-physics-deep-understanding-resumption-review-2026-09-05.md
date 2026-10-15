@@ -1,6 +1,37 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-## Aktuelle Chemie-Fortsetzung – 15. Oktober 2026
+## Aktuelle Chemie-Fortsetzung: 371/422 – 15. Oktober 2026
+
+Der [Gleichgewichts-Folgecheckpoint](chemie-source4-current371-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Bericht **371/422 (87,9 %)**:
+vier fachliche Erstabschlüsse, alle bisherigen367 erhalten, **51 offen**.
+Alle sechs Pflichtprüfungen bestehen; D/P/A/M/V stehen bei
+**373/392/393/422/418**. Zwei unabhängige aktuelle Beschreibungsrunden
+liegen vor. Der Quellenbefund RP-Kp→Gasnachweis bleibt ausdrücklich offen;
+Autorenrollen werden nicht als amtliche Pflicht oder aktive SourceAtlas-
+Zuordnung ausgegeben. Ungezählte Praktikumsfolger enthalten unabhängig
+nachgeprüfte konkrete Materialkorrekturen. Aktive Eingaben und die drei
+geschützten M7-Fächer bleiben bytegleich. Ein eigener GitHub-Lauf des
+Folgecommits bleibt erforderlich.
+
+## Vorherige Chemie-Fortsetzung: 367/422 – 15. Oktober 2026
+
+Der [geprüfte Folgeintegrationstand](chemie-native9-current367-continuation-2026-10-15.md)
+erreicht im inaktiven zentralen Bericht **367/422 (87,0 %)**:
+sechs fachliche Erstabschlüsse und drei wiederhergestellte Geltungs-/Seitenbindungen,
+alle bisherigen 358 erhalten, **55 offen**. Alle sechs Pflichtprüfungen bestehen;
+D/P/A/M/V stehen bei **369/392/393/422/418**. Der vollständige Bericht wurde
+genau einmal ausgeführt. Quellen-/Kursbefunde und ungeprüfte nächste Kandidaten
+bleiben offen und ungezählt; aktive Eingaben und die drei geschützten M7-Fächer
+bleiben bytegleich.
+
+Für den gepushten 358er-Commit `e45c6f20` ist
+[GitHub CI vollständig bestanden](https://github.com/enpasos/skillpilot/actions/runs/38763740674).
+Der lokale 367er-Nachfolger benötigt seinen eigenen GitHub-Lauf.
+Die nächsten Pakete betreffen ausschließlich die offenen Chemie-Quellenrollen
+und Praktikumsgrenzen; unveränderte gültige Science wird wiederverwendet.
+
+## Vorherige Chemie-Fortsetzung: 358/422 – 15. Oktober 2026
 
 Der [Carbonyl-/Gleichgewichts-Folgecheckpoint](chemie-carbonyl-equilibrium-current358-checkpoint-2026-10-15.md)
 erreicht im inaktiven zentralen Kandidaten **358/422 (84,8 %)**: 20 neue

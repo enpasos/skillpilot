@@ -1,0 +1,707 @@
+{
+  "schemaVersion": 1,
+  "runId": "91d2b453-1b16-4729-a5bb-d6d60a152ec3",
+  "recordedAtUTC": "2026-10-15T17:51:52.838441+00:00",
+  "purpose": "Scientific first decisions BEFORE any normal fingerprint binding",
+  "inputSelector": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/NEUTRAL.finite-author-candidate.selector.json",
+    "sha256": "sha256:16dda0df75ec0511426c1c39c2ddd2acf7f7082936942cec9f9cfe0b1fb1b22c",
+    "bytes": 3760
+  },
+  "decisions": [
+    {
+      "ordinal": 1,
+      "goalId": "57d2c98d-30b8-5123-b823-e56a4f22b191",
+      "titleDe": "Stoffgemische qualitativ und quantitativ analysieren",
+      "titleEn": "Analyse mixture composition qualitatively and quantitatively",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-mixture-composition-a",
+        "bcp-mixture-composition-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:d7c5a667e2e2577671b5f5afe47c3dbba20c95b6db737c42b9bc0b143c6749b7",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:39def5aa250ffe4ff78ba57318b240cd10943c8b8c2f32e02b5ffc3210f959f1",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-mixture-composition-a",
+          "canonicalObjectSha256": "sha256:4f10bcd1da5df4f4257efadbf88b0f01f0990b14c8081e8de9de6c9cd31b0bc2"
+        },
+        {
+          "caseId": "bcp-mixture-composition-b",
+          "canonicalObjectSha256": "sha256:00c5a597a7521e7f10839712b849a25f6d457fbee60f98f379986d05f640683e"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "4aa3a130-b517-5ac5-87b2-147fe432cadd"
+      ],
+      "directParents": [
+        "cfa5c1e4-6714-5be7-9a57-a24b201b6231"
+      ],
+      "positiveDesignDecision": "REVISE_REQUIRED",
+      "positiveEvidenceLevel": "E0",
+      "positiveMaximumClaimScope": "G0",
+      "positiveReason": {
+        "de": "Zusammensetzung und Rückgewinnungsbilanz sind fachlich ein zusammengehöriges Analyseziel. Das Design hat aber vertauschte Salz-/Sand-Massenanteile in DE und EN; Fall-b erhält zudem die unpassenden festen 24/30/44-/98-/2%-Rubrikwerte trotz fehlender Vorgabemassen. Diese Fehler bleiben offen, bis ein separater Autorfolger gezielt geprüft wurde.",
+        "en": "Composition and recovery balance form one coherent analytical outcome. The design reverses salt/sand mass fractions in both languages, and case-b retains fixed 24/30/44,98,2-percent rubric values despite no supplied fraction masses. These defects remain open until separately authored changes are reviewed."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "1,20/5,00=24% Eisen;1,50/5,00=30% Sand;2,20/5,00=44% Salz. Summe4,90/5,00=98%, unzugeordnet0,10/5,00=2%.",
+        "Die fehlenden2% lassen sich keiner Fraktion zuweisen. 98% Rückgewinnung ist weder Reinheitsnachweis noch sichere ursprüngliche Zusammensetzung, wenn Fraktionen verunreinigt/verloren sind.",
+        "NaCl/Saccharose im Filtrat brauchen selektive oder matrixgerecht kalibrierte Zusatzanalyse; qualitative Leitfähigkeit allein liefert keine Einzelmassen.",
+        "Magnet, Löslichkeit und Filterung sind für den deklarierten Modellraum begründbar; keine sichere Unbekanntanalyse außerhalb dieses Raums."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 begründet selektive Trennschritte im bekannten Gemischraum.",
+        "e2 verlangt eigene sichere Trennung, Trocknung/Massenkonstanz und Originalwägungen.",
+        "e3 hat richtiges Zahlen-Set, aber die A-Lösung vertauscht Sand/Salz und die B-Rubrik schreibt feste fremde Werte vor.",
+        "e4 fordert einen unabhängigen Unterscheidungs-/Kontrollgedanken beim zusätzlichen löslichen Stoff."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Gemischzusammensetzung durch selektive Trennung und stoffbezogene Massenbilanz bestimmen ist ein einziges assessierbares Ergebnis. Qualitative Zuordnung, quantitative Anteile und Aussagegrenzen gehören zusammen. Unbekannte Reinstoffidentität wurde getrennt. Der Rechen-/Rubrikfehler macht den Zieltext nicht nichtatomar.",
+      "linkedFindingIds": [
+        "BCP-PA-001",
+        "BCP-PA-002"
+      ],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 2,
+      "goalId": "7b80efe6-b77d-5ace-8886-973ba38e6f9e",
+      "titleDe": "Unbekannte Reinstoffproben analytisch identifizieren",
+      "titleEn": "Identify unknown pure-substance samples analytically",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-unknown-pure-substance-identity-a",
+        "bcp-unknown-pure-substance-identity-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:0b1146d4de9853be3caa89dccdd50832fd258ab900b872e68f934a55013b77b2",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:de886da59a8a45f2ed4ec9e077857fd342272a7eeec170c15ae7a4daa6cf92d8",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-unknown-pure-substance-identity-a",
+          "canonicalObjectSha256": "sha256:791e191b48fd6feb147147de9b991a81b684da866aea92e68f0317cae96f5bcb"
+        },
+        {
+          "caseId": "bcp-unknown-pure-substance-identity-b",
+          "canonicalObjectSha256": "sha256:958c773f9364a7031fcd13f9bd0b46877b914448dad8adec9e250f092c34c4dc"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "4aa3a130-b517-5ac5-87b2-147fe432cadd"
+      ],
+      "directParents": [
+        "cfa5c1e4-6714-5be7-9a57-a24b201b6231"
+      ],
+      "positiveDesignDecision": "REVISE_REQUIRED",
+      "positiveEvidenceLevel": "E0",
+      "positiveMaximumClaimScope": "G0",
+      "positiveReason": {
+        "de": "Die begründete Identifikation in einem endlichen Reinstoff-Kandidatenraum ist schlüssig;0,117g/20,0mL entspricht ungefähr0,100mol/L NaCl und U-Mittel9,95mS/cm stimmt. Fall-b verlangt aber0,100g/20,0mL und Elementemission, während seine e1–e3-Rubrik noch den NaCl/Saccharose/Sand-Leitfähigkeitsfall mit0,117g und U/V bewertet. Die gegensätzliche Fallbindung muss vor einer positiven P-Entscheidung geklärt werden.",
+        "en": "Conditional identification in a finite pure-substance set is coherent;0.117g/20.0mL is approximately0.100mol/L NaCl and U mean9.95mS/cm is correct. However case-b requires0.100g/20.0mL and elemental emission while its e1–e3 rubric still assesses the NaCl/sucrose/sand conductivity case at0.117g with U/V. That contradictory case binding requires revision before positive P."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "0,117g/(58,44g/mol·0,0200L)=0,1001026694mol/L für den NaCl-Kandidaten; gleiche Massenbeladung der anderen Stoffe bedeutet keine gleiche Stoffmengenkonzentration.",
+        "U-Mittel(9,8+10,1)/2=9,95mS/cm; Spannweite0,3mS/cm ist keine vollständige Geräteunsicherheit.",
+        "NaCl und KCl sind beide lösliche Elektrolyte; passend gemessene Na-/K-Elementlinien unterscheiden die zwei ausdrücklich reinen Kandidaten, beweisen aber Chlorid oder Reinheit nicht unabhängig.",
+        "NIST-Luftwellenlängen: Na5889,950/5895,924Å=588,9950/589,5924nm; K7664,8991/7698,9645Å=766,48991/769,89645nm. Die gerundeten Fallangaben stimmen.",
+        "Geschlossener zugelassener Messplatz, Aufsicht an der Anregung, Blanks gegen Verschleppung und keine behaupteten Messresultate sind sachgerechte Designgrenzen. Fehlender Messplatz ist ausdrücklich eine spätere Ausführungsbedingung."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 macht Kandidatenraum und unterscheidende Methoden begründbar, ist in B jedoch noch falsch an den A-Raum gebunden.",
+        "e2 nennt in A den richtigen0,117g-Ansatz, widerspricht in B dessen0,100g-Vorgabe.",
+        "e3 ist für A richtig, enthält in B nicht vorhandene U/V-Leitfähigkeitsdaten.",
+        "e4 passt zur neuen Na/K-Elementanalyse und begrenzt deren Reichweite korrekt."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Eine unbekannte, ausdrücklich reine Probe durch begründet unterscheidende Referenzanalytik zu identifizieren ist ein Ziel. Kandidatenraum, Standardansatz, Blindwert, Eigenhandlung und Unsicherheit sind notwendige Teile dieses Identifikationsschlusses; Gemischquantifizierung wird nicht zusätzlich verlangt.",
+      "linkedFindingIds": [
+        "BCP-PA-003"
+      ],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 3,
+      "goalId": "cb7125b7-8734-51c6-8306-9163114dc0cc",
+      "titleDe": "Stoffe mit biotechnologischen Verfahren herstellen",
+      "titleEn": "Produce substances using biotechnological procedures",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-biotechnological-preparation-a",
+        "bcp-biotechnological-preparation-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:78cfedfefeff218000da606cecd58f0a2b84efc930417f09441cad0dfe869e1e",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:1e96623de86f6ce65b3cabbb67dcfc4f72e9a79e5c70fd91bfc9b4d0a7ec5378",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-biotechnological-preparation-a",
+          "canonicalObjectSha256": "sha256:01529580df8619e2aaa7a247e4988a6996fdd56c78b8f2d6c09d9c222937b119"
+        },
+        {
+          "caseId": "bcp-biotechnological-preparation-b",
+          "canonicalObjectSha256": "sha256:61dc2dcce8e70bf5c1c537a49b6389008b4a2efbde0c88a58a7a3c908999ac45"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+      ],
+      "directParents": [
+        "9ace7bd2-136b-595c-a021-6e03077508a7"
+      ],
+      "positiveDesignDecision": "KEEP_DESIGN",
+      "positiveEvidenceLevel": "E1",
+      "positiveMaximumClaimScope": "G1",
+      "positiveReason": {
+        "de": "Die zwei neuen Fälle planen tatsächliche künftige biologische Herstellung mit aktiver/inaktivierter Hefe, offenem Gasabgang, eigenem Zeit-/Mengenprotokoll und separater Aufarbeitung. Gärung ist ein bilanziertes Modell; Gasbildung und Filtration werden nicht als Nachweis reinen Ethanols gewertet. Stärke statt Glucose verlangt eine selbst begründete, vor Durchführung sicher geprüfte Vorbehandlung mit Kontrollen und neuen Daten. Das ist eine fachliche Prozessänderung.",
+        "en": "The two new cases require future actual biological preparation with active/inactive yeast, unobstructed gas outlets, original time/quantity records and separate work-up. Fermentation is a balanced model; gas and filtration do not establish pure ethanol. Starch replacing glucose requires independently justified, supervisor-assessed pretreatment with controls and fresh data, a substantive process change."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "C6H12O6→2C2H5OH+2CO2 ist atomar bilanziert:C6,H12,O6 auf beiden Seiten.",
+        "Aktiv/inaktiv kontrolliert einen Zusammenhang mit aktivem biologischem Material; Gasvolumen allein isoliert weder eine einzelne Enzymreaktion noch alkoholische Gärung gegenüber jeder anderen Gasursache.",
+        "Ein CO2-Zusatznachweis identifiziert gegebenenfalls CO2, aber nicht unabhängig Ethanol. Wenn künftig Ethanol als identifiziertes Produkt beansprucht werden soll, braucht es einen passenden Ethanolnachweis. Der vorliegende engere Anspruch ist eine unreine Präparation mit offener Produktidentifikation.",
+        "Filtration trennt Zellen/Partikel, nicht sicher gelösten Zucker oder Ethanol; Druckfreiheit, kein Verzehr/keine Destillation und kontrollierte Entsorgung sind Teil der Eigenhandlung.",
+        "Normale Bäckerhefe darf nicht ohne geprüften Vorprozess als stärkespaltend angenommen werden. Eine zugelassene Stärkehydrolyse wird vor Durchführung festgelegt; Glucose-/ohne-Vorbehandlung-/biologische Kontrollen und eigener möglicher Nullbefund bleiben erforderlich."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 fordert biologische Kontrollen unter gleichen Mengen/Temperatur.",
+        "e2 verlangt tatsächliche künftige Eigenherstellung, Originalaufzeichnung und Aufarbeitung.",
+        "e3 trennt Modellgleichung, gasförmigen Hinweis, Präparation und gelöste Stoffe.",
+        "e4 verlangt neue kontrollierte Stärke-/Vorbehandlungserprobung, keine behauptete Gaswirkung."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Ein gewählter biotechnologischer Herstellungsweg wird geplant, praktisch umgesetzt, aufgearbeitet und hinsichtlich Produktnachweis erklärt. Dies ist eine zusammenhängende Herstellungskompetenz. Die chemische Präparation bildet ein eigenes Kind; allgemeine biologische Versuche werden hier nicht zusätzlich gefordert.",
+      "linkedFindingIds": [],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 4,
+      "goalId": "4d16601e-fa57-5bcb-a5b6-f308d5b8036a",
+      "titleDe": "Stoffe chemisch präparieren und aufarbeiten",
+      "titleEn": "Prepare and work up substances chemically",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-chemical-preparation-a",
+        "bcp-chemical-preparation-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:660972f06e8a6a610aad1a3e02c31ef4276c6468c8c0a3066226ab19335136c2",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:b6eed765f169cedaef4e481e4f2d83d0e6598f5584ae5e11818f739e2e55a4b4",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-chemical-preparation-a",
+          "canonicalObjectSha256": "sha256:7f78d2aa30497ab4ff0de9368b55cf96da202c2ec2766cc0691778eed15d1444"
+        },
+        {
+          "caseId": "bcp-chemical-preparation-b",
+          "canonicalObjectSha256": "sha256:94b838f0a17836a81a47a6817350e56b2a77738dc41f7cf9ba3855554c60ffbc"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+      ],
+      "directParents": [
+        "9ace7bd2-136b-595c-a021-6e03077508a7"
+      ],
+      "positiveDesignDecision": "KEEP_DESIGN",
+      "positiveEvidenceLevel": "E1",
+      "positiveMaximumClaimScope": "G1",
+      "positiveReason": {
+        "de": "Die Reaktions- und Ausbeuterechnungen stimmen. Herstellung, Waschen, massenkonstantes Trocknen und getrennte Interpretation von Ausbeute/Reinheit bilden beobachtbare künftige Eigenleistung. Die veränderten Ansätze prüfen den Wechsel des limitierenden Edukts und erklären, warum gleiche theoretische Masse keine gleiche reale Ausbeute erzwingt. Die fehlende Gleichungs-/Stoffmengen-Voraussetzung im aktuellen Graphpfad wird als gesonderte Sequenzgrenze offen dokumentiert.",
+        "en": "Reaction and yield calculations are correct. Preparation, washing, constant-mass drying and distinguishing yield from purity provide observable future performance. Changed batches test a switching limiting reactant and why equal theoretical mass does not guarantee equal actual yield. Missing equation/amount foundations in the current prerequisite path remain a separately recorded sequencing concern."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "CaCl2+Na2CO3→CaCO3(s)+2NaCl beziehungsweise Ca2++CO3^2−→CaCO3(s) ist atomar und in der Nettogleichung ladungsbilanziert.",
+        "A:2,00mmol Calcium gegenüber2,50mmol Carbonat;0,2002g theoretisch.0,180/0,2002·100=89,9101%;0,180·0,95=0,171g;85,4146% reinheitskorrigiert.",
+        "B:2,50/3,00mmol und3,00/2,50mmol wechseln das limitierende Edukt; beide haben0,25025g theoretische Masse.",
+        "Das 95%-Datum ist ein ausdrücklich mitgeteilter unabhängiger Analysewert der Lehrprobe, kein eigener gemessener Reinheitswert. Für eigene Ansätze bleiben reale Masse und Reinheit offen.",
+        "Lösliche Begleitsalze/Restfeuchte können die Bruttomasse beeinflussen; weiße Fällung und hohe Massenausbeute sind keine Reinheitsbeweise."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 fordert Stoffmengenbegründung vor der Herstellung.",
+        "e2 koppelt freigegebene Eigenpräparation an protokolliertes Waschen/Trocknen/Wiegen.",
+        "e3 trennt Ausbeute, Restfeuchte, lösliche Salze und Verluste.",
+        "e4 verlangt neue Mengenprognose und echte weitere Ausführung, nicht nur Zahlenersetzung."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Eine chemische Präparation anhand ihrer Stoffmengen sicher planen, durchführen, aufarbeiten und den Produktertrag erklären ist eine Prozesskompetenz. Die Ausbeute-/Reinheitsgrenze bewertet genau das hergestellte Produkt und ist kein unabhängiges angehängtes Ziel. Biotechnologische Produktion ist getrennt.",
+      "linkedFindingIds": [
+        "BCP-PA-005"
+      ],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 5,
+      "goalId": "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49",
+      "titleDe": "Grundlegende Anforderungen von Lebewesen experimentell untersuchen",
+      "titleEn": "Investigate basic requirements of organisms experimentally",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-organism-requirements-investigation-a",
+        "bcp-organism-requirements-investigation-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:6b7d80881acb0e147b7691f2c73c17668927a8cded68022b50f46f73dfe68bc3",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:e315293eabe971520abb43df342665890aa31f5296bf05eb1530d314c40f35d4",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-organism-requirements-investigation-a",
+          "canonicalObjectSha256": "sha256:f7ee1159e2d1ef783d86038b3dff89add894866bd8f68ed8d6449e8045b16916"
+        },
+        {
+          "caseId": "bcp-organism-requirements-investigation-b",
+          "canonicalObjectSha256": "sha256:79b8efd817f6502ff1b5dc57a9f49faac3153f2c39df6787e883fdfcc6c9c8f2"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+      ],
+      "directParents": [
+        "3351fe47-5b0c-5407-a3bf-05229cfbf0c5"
+      ],
+      "positiveDesignDecision": "REVISE_REQUIRED",
+      "positiveEvidenceLevel": "E0",
+      "positiveMaximumClaimScope": "G0",
+      "positiveReason": {
+        "de": "Der trockene/feuchte Kressevergleich, unabhängige Schalen, Keimkriterium und51/60=85% beziehungsweise1/60≈1,7% sind schlüssig. Im neuen Salzfall soll jedoch nach Bedarf mit der jeweils zugeteilten Salzlösung nachgefüllt werden. Als Verdunstungsersatz erhöht dies die Salzkonzentration statt sie kontrolliert zu halten. Die neue Faktorprüfung braucht eine korrigierte Volumen-/Salzregel oder eine explizite andere Dosierungsfrage.",
+        "en": "Dry/moist cress, independent dishes, germination criterion and51/60=85%,1/60≈1.7% are sound. In the new salinity case, additional liquid is the allocated salt solution. Replacing evaporation this way increases salt concentration rather than maintaining the factor. The changed-factor test requires a corrected water/salt replacement rule or an explicitly different dosing question."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "51/60=85% und1/60=1,6667%; drei Schalen je Bedingung sind die unabhängigen Behandlungseinheiten,60 Samen nicht60 unabhängige Schalen.",
+        "Feuchte nicht mit Überflutung/Sauerstoffausschluss verwechseln; Nichtkeimung beweist keinen Tod und der Befund kein allgemeines Optimum für alle Pflanzen.",
+        "0,5%w/v=0,5g/100mL.5,0mL enthalten0,025g Salz. Verdunstet1mL und wird1mL derselben Lösung ergänzt, liegen0,030g in5mL vor:0,6%w/v. Bei1,0% entstehen im selben Beispiel1,2%.",
+        "Die neuen zukünftigen Ergebnisse sind ausdrücklich offen. Ein schon erfolgter Schülerlauf wird für die Designbeurteilung weder gefordert noch behauptet."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 operationalisiert Wasserangebot/Keimkriterium/Charge/Zeit.",
+        "e2 fordert schonende tatsächliche Ausführung und Schimmel-Abbruch.",
+        "e3 fordert Originalzählungen je Schale und ehrliche unklare/fehlende Befunde.",
+        "e4 fordert eine neue Salzfaktorprüfung bei kontrolliertem Wasserangebot; die zugewiesene Salzlösungs-Nachfüllregel gefährdet die erforderliche Kontrolle."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Eine prüfbare Hypothese über eine grundlegende Anforderung an eine konkrete Organismengruppe durch kontrollierte Untersuchung zu prüfen ist ein Ziel. Planung, Ausführung, Dokumentation und bedingte Schlussfolgerung gehören zusammen. Enzymwirkung und Reizantwort sind eigenständige Kinder.",
+      "linkedFindingIds": [
+        "BCP-PA-004"
+      ],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 6,
+      "goalId": "dd59351e-3b16-5104-b7c6-ff9e402e4de7",
+      "titleDe": "Einflüsse auf Enzymreaktionen experimentell untersuchen",
+      "titleEn": "Investigate factors affecting enzyme reactions experimentally",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-enzyme-reaction-investigation-a",
+        "bcp-enzyme-reaction-investigation-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:0be569cdd5f73926fe8658cf282ae8cbaa7ac05437c1f41142c9336630822187",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:195598946a137f2eaa8276698eae5ff87a6c928c229ca279acc003091af1bce2",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-enzyme-reaction-investigation-a",
+          "canonicalObjectSha256": "sha256:ecd73d2fb57540a34b4096661af1adde3a21b9f4972e9706caf3ef7f844cf9d2"
+        },
+        {
+          "caseId": "bcp-enzyme-reaction-investigation-b",
+          "canonicalObjectSha256": "sha256:687987666ace3b01b047cd5b0c569f3aab0b966ec5ec53c30ffdb8d1c936aba7"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "b4ca3af2-77f1-59e8-955d-c4959e284242"
+      ],
+      "directParents": [
+        "3351fe47-5b0c-5407-a3bf-05229cfbf0c5"
+      ],
+      "positiveDesignDecision": "KEEP_DESIGN",
+      "positiveEvidenceLevel": "E1",
+      "positiveMaximumClaimScope": "G1",
+      "positiveReason": {
+        "de": "Die beiden tatsächlich neuen Kartoffel-Katalase-Designs prüfen Wärmevorbehandlung bei gleicher Messtemperatur und anschließend Extraktmenge bei gleichem Substrat/Gesamtvolumen. Kontrollansätze, drei neue Aliquote, feste ordinale Messregel und eigene Zeit-/Rohbeobachtungen sind angelegt. Roh-Extrakt, Blasenartefakte und fehlende Gasidentifikation begrenzen den Schluss; weder Enzymreinheit, kcat noch ein allgemeines Optimum werden behauptet.",
+        "en": "The genuinely new potato-catalase designs test heat pretreatment at equal measurement temperature, then extract amount at fixed substrate and total volume. Blanks, three fresh aliquots, predefined ordinal scoring and original timed observations support future performance. Crude extract, bubble artefacts and absent gas identification bound inference; no enzyme purity, kcat or universal optimum is claimed."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "2H2O2→2H2O+O2 ist atomar bilanziert. Kartoffel-Rohextrakt ist ein plausibler katalasehaltiger Reaktionskontext, keine gereinigte Einzelkomponente.",
+        "Erhitzen und auf20°C Abkühlen erlaubt einen Vorbehandlungsvergleich, ohne höhere aktuelle Messtemperatur als Alternativerklärung einzuführen. Tatsächliche Vorbehandlungstemperatur/-dauer und Volumenänderungen sind vor späterer Ausführung zu dokumentieren.",
+        "H2O2-ohne-Extrakt, Extrakt-ohne-H2O2 und Wärmevergleich prüfen Hintergrund und Eigenblasen; sie garantieren keine exklusive molekulare Ursachenidentifikation.",
+        "B hält2,0mL desselben H2O2-Stocks in3,0mL Gesamtvolumen konstant;0/0,5/1,0mL Extrakt ändern katalasehaltiges Rohmaterial. Kein linearer doppelter Effekt aus den Ordinalcodes0/1/2.",
+        "Drei frische Aliquote sind technische Replikate des jeweiligen Extrakts, keine unabhängigen Kartoffelpopulationen. Ganze Hefe11-b bleibt Systemkontext und liefert keine neue Einzel-Enzym-Freigabe."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 trennt Gleichungsmodell/Gasbeobachtung/Identifikation.",
+        "e2 verlangt sinnvolle Vorbehandlungs- und Blankkontrollen bei gleicher Messtemperatur.",
+        "e3 verlangt neue offene sichere Kleinstmengenansätze mit originalen Codes, keine Ergebnisfiktion.",
+        "e4 verlangt neue Extraktmengenprüfung; bekanntes Wärmeversuchsergebnis ersetzt ihre Daten nicht."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Den Einfluss eines Außenfaktors auf eine Enzymreaktion kontrolliert experimentell prüfen ist eine Untersuchungskompetenz. Eine andere Faktorwahl variiert dieselbe Kompetenz. Die aktive Stoffwechselreaktion ganzer Hefezellen wird ausdrücklich nicht als eindeutiger Ersatzbeweis übernommen.",
+      "linkedFindingIds": [],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 7,
+      "goalId": "c8198159-2109-5ad0-9d37-252ebac0219d",
+      "titleDe": "Reizantworten von Lebewesen kontrolliert untersuchen",
+      "titleEn": "Investigate organism stimulus responses with controls",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-organism-stimulus-response-a",
+        "bcp-organism-stimulus-response-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:10b2d6f208565d743b590a47cfb7c7d1e21fe7558f2e099787699e4e62cf2c2e",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:76a828476b2cf87327339ffd69b66ce96b58dd1229d6c69003a7954395289f21",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-organism-stimulus-response-a",
+          "canonicalObjectSha256": "sha256:c383fdda58e88d9de65104b3dcb16b7cc88713f9f25f2f57f84f5f92003f70d4"
+        },
+        {
+          "caseId": "bcp-organism-stimulus-response-b",
+          "canonicalObjectSha256": "sha256:8ed4a3582d58a6a0b3acf53259f0baf596868bdcc256f7028b8eee8757930f0a"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+      ],
+      "directParents": [
+        "3351fe47-5b0c-5407-a3bf-05229cfbf0c5"
+      ],
+      "positiveDesignDecision": "KEEP_DESIGN",
+      "positiveEvidenceLevel": "E1",
+      "positiveMaximumClaimScope": "G1",
+      "positiveReason": {
+        "de": "Das vollständige Mimosa-Design hat klare Kontakt-/Scheinbedingungen, Paarung/Zufallszuteilung, N/C/U-Zählregel, Zeitbezug, Abbruch- und Pflegegrenzen. Sechs weitere nicht gereizte Pflanzen tragen den erst später aufgedeckten, eigenständig geplanten Topfbewegungs-Transfer. Das Rechenbeispiel ist korrekt und bleibt nachgelagerte Fiktion. Weder zelluläre Signalwege noch Schmerz/Lernen werden aus bloßer Bewegung abgeleitet.",
+        "en": "The whole Mimosa design specifies touch/sham, pairing/randomisation, N/C/U scoring, timecodes and protection/care rules. Six separate unstimulated plants support the later revealed independently planned pot-movement transfer. The arithmetic illustration is correct and remains subsequent fiction. Visible movement does not establish cellular signals, pain or learning."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "A:sechs Hauptpflanzen, drei Größenpaare, pro Bedingung n=3 Pflanzen. B:sechs andere vorher ungereizte Transferpflanzen. Fiederblattpaare/Zeitpunkte sind abhängige Messungen.",
+        "Δp=100·(C30/N−C0/N) sind Prozentpunkte; bei U>0 gelten AnteilsgrenzenC/N bis(C+U)/N und keine geratene Schließung.",
+        "Erfundene80/70/90% ergeben80%; Schein0/0/10% ergibt3,3333%; Differenz76,6667Prozentpunkte. Das sind keine realen Beobachtungen und kein zweiter Fall.",
+        "Ein einzelner sanfter Pinselkontakt, kein Nachreizen/Verstärken, Transferbewegung≤10mm über≥2s ohne Anheben/Kippen/Stoß und anschließende Pflege halten die vorgeschlagenen Schutzgrenzen ein.",
+        "Die Primärforschung unterstützt grundsätzliche mechanische Reizbarkeit. Das eigene Schuldesign wird dadurch weder als identisch validiert noch in seiner konkreten Erfolgsrate bestätigt."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 fordert Hypothese/Alternativerklärung, Randomisierung, Scheinbehandlung und Messregel.",
+        "e2 fordert tatsächliche schonende Eigenhandlung und keine heimliche Ausfallersetzung.",
+        "e3 fordert eigene N/C/U-Daten samt Null-/Scheinbefunden; n ist Pflanzenzahl.",
+        "e4 fordert den neu geplanten tatsächlichen Topfbewegungstest an sechs separaten Pflanzen, ohne ungemessene Zell-/Schmerz-/Lernbehauptung."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Eine Reizantwort gegen eine passende Scheinbedingung zeitbezogen nachweisen und begrenzt interpretieren ist ein einzelnes Untersuchungsziel. Topfbewegung verändert denselben Kausalvergleich; Zellmechanismus oder allgemeine Organismusanforderungen werden nicht zusätzlich als Können verlangt.",
+      "linkedFindingIds": [],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 8,
+      "goalId": "9d6e1966-b10c-5a70-b215-df7007c95b07",
+      "titleDe": "Lebewesen mit Bestimmungsliteratur bestimmen",
+      "titleEn": "Identify organisms using identification literature",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-organism-identification-a",
+        "bcp-organism-identification-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:2dfeb7fa93b66c384491aaac1eaf241fde482af0b9aaef8430f6abdb907b34cf",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:91c1136e5d1e83cf7a7eb670fed2a8d7f176f56202fe4a4a29a6b522cc81d073",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-organism-identification-a",
+          "canonicalObjectSha256": "sha256:659f6ca6a4831b7591bdbe8700baf38d9e0a9bdee9316d871120f23ed9fd16d4"
+        },
+        {
+          "caseId": "bcp-organism-identification-b",
+          "canonicalObjectSha256": "sha256:3740d44e8f408265ecb1cf5b92f96452baf09987b95432efc6709a4657a085f6"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+      ],
+      "directParents": [
+        "ebe2f6db-95a3-5157-a27d-2624f6c82e4e"
+      ],
+      "positiveDesignDecision": "KEEP_DESIGN",
+      "positiveEvidenceLevel": "E1",
+      "positiveMaximumClaimScope": "G1",
+      "positiveReason": {
+        "de": "Die zwei eigentlichen Aufgaben prüfen literaturgestützte Bestimmung an Rasen und anschließend Gewässerrand mit dokumentierten eigenen Merkmalen/Entscheidungspfaden und offener Unsicherheit. Ein regional passender Führer muss die eigene Gruppierungsübung überprüfen; drei Gruppen werden nicht als drei Arten gewertet. Die zweite Bestimmung verlangt neue Merkmale/Literatur und schont das Habitat. Übernommene ökologische Zusatzfragen sind durch die explizite Kindgrenze Kontext und dürfen nicht als Bestimmungs-Transfer angerechnet werden.",
+        "en": "The actual tasks assess literature-based identification on a lawn and subsequently at a pond edge, retaining original traits/decision routes and uncertainty. A suitable regional guide must check the practice grouping key; three groups are not three species. The changed habitat needs new traits/literature and careful observation. Retained ecological extra questions are explicitly contextual and must not count as identification transfer."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "Parallele Blattnerven, dreiteilige Blätter und gezähnte Rosette identifizieren für sich keine sichere Art; die zusätzliche geeignete Literaturprüfung und Unsicherheitsangabe sind wesentlich.",
+        "Wasserlinsen-/Algenverdacht ist eine vorläufige Gruppenzuordnung; fehlende mikroskopische Merkmale dürfen nicht erfunden werden.",
+        "Bestimmungsweg, genaue Literaturstelle und tatsächlich beobachtete Merkmale müssen künftig vorliegen; künstliche Zählungen ersetzen dies nicht.",
+        "Sicherer erlaubter Weg, kein Wassereintritt/Wildentnahme und keine Personendaten sind sinnvolle Grenzen."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 verlangt eigene Merkmale, Literaturstelle und Entscheidungspfad.",
+        "e2 verlangt Überprüfung der vereinfachten Gruppierung mit geeigneter Literatur.",
+        "e3 verlangt schonende Vor-Ort-Bestimmung und Naturschutz.",
+        "e4 verlangt Anpassung an den anderen Lebensraum; reine Häufigkeit ist keine Artenzahl."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Lebewesen mit geeigneter Bestimmungsliteratur anhand von Merkmalen bis zur gerechtfertigten Auflösung zu bestimmen ist ein Ziel. Habitatwechsel ist Transfer dieser Bestimmung. Gemeinschaftsaufnahme und kontrollierte Umweltwirkung bilden andere Kinder und erhalten dadurch keine Erledigung.",
+      "linkedFindingIds": [
+        "BCP-PA-006"
+      ],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 9,
+      "goalId": "0f632595-5875-5a95-83d8-7de3180bdaa6",
+      "titleDe": "Lebensgemeinschaften und Standortfaktoren im Freiland charakterisieren",
+      "titleEn": "Characterise communities and site factors in the field",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-community-site-field-investigation-a",
+        "bcp-community-site-field-investigation-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:23052fffed17b3820a8de85015c14ecbc8900d5423a90b7590be9b85244ebdf4",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:0422612aff88ef8d6fae6e0b03baa729e8684ce0c083ed145b390aba6c683099",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-community-site-field-investigation-a",
+          "canonicalObjectSha256": "sha256:7acb90dadbb9294dd42fe277c7659e1a06767a4a8c0cca77bce685b4cba86fab"
+        },
+        {
+          "caseId": "bcp-community-site-field-investigation-b",
+          "canonicalObjectSha256": "sha256:b7b413d733d217e90d112093f96944fd5d0ed7801fcf26dcabaad2d43d204f17"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "9d6e1966-b10c-5a70-b215-df7007c95b07"
+      ],
+      "directParents": [
+        "ebe2f6db-95a3-5157-a27d-2624f6c82e4e"
+      ],
+      "positiveDesignDecision": "KEEP_DESIGN",
+      "positiveEvidenceLevel": "E1",
+      "positiveMaximumClaimScope": "G1",
+      "positiveReason": {
+        "de": "Die zwei Feldaufgaben erfordern eigene hypothesenbezogene Stichproben gleicher Fläche, definierte Zählung beziehungsweise Deckung und zeitnahe Standortdaten. Der Wechsel von Rasen-Dichtezählung zu Gewässer-Deckung prüft eine echte methodische Anpassung.48/32 pro m² und20/6,7% Deckung stimmen. Die Interpretation bleibt eine beobachtete Standortassoziation; Kausalintervention und Vermehrungsrate werden nicht erfunden.",
+        "en": "Both field tasks require original hypothesis-based matched-area sampling, defined counts or cover and contemporaneous site data. Moving from lawn density to pond cover tests substantive methodological adaptation.48/32per m² and20/6.7% cover are correct. Interpretation remains an observed site association, without invented causal intervention or multiplication rates."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "Sonnige Grasgruppe:(12+14+10)/3=12je0,25m²→48/m²; Schatten:(8+9+7)/3=8→32/m². Die definierte Einheit ist nicht automatisch ein genetisch eigenständiges Pflanzenindividuum.",
+        "Offene Uferdeckung:(20+25+15)/3=20%; Schatten:(5+10+5)/3=6,6667%; Differenz13,3333Prozentpunkte.",
+        "Feuchteindex0–100 ist ein relativer Geräteskalenwert, kein kalibrierter Prozentwassergehalt.",
+        "Nur drei Stichproben innerhalb je eines Standorts erlauben keine unabhängige Wiederholung ganzer Habitattypen; die Aussage ist standortbezogen explorativ.",
+        "Licht/Feuchte/Temperatur/Betritt und andere Faktoren können kovariieren. Eine Beobachtung kann den Zusammenhang beschreiben, ohne einen alleinigen Faktor kausal zu isolieren."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 operationalisiert Flächengröße, Zufallsauswahl und Zähl-/Deckungsmaß.",
+        "e2 verlangt eigene Stichproben und relevante Standortgrößen, keine übernommenen Fremdmesswerte.",
+        "e3 prüft Größen-/Einheitenverständnis und unterscheidet Dichte/Deckung/Artenzahl.",
+        "e4 prüft begrenzten Schluss bei Kovariation und neue angemessene Beprobung im zweiten Habitat."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Eine Lebensgemeinschaft zusammen mit ihren abiotischen Standortbedingungen qualitativ und quantitativ zu charakterisieren ist ein integriertes ökologisches Untersuchungsziel. Die Standortdaten machen den Gemeinschaftsvergleich interpretierbar; sie sind keine lose angehängte zweite Routine. Artenbestimmung ist ein vorausgesetztes eigenes Kind, manipulative Umweltprüfung ein anderes Kind.",
+      "linkedFindingIds": [
+        "BCP-PA-006"
+      ],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    },
+    {
+      "ordinal": 10,
+      "goalId": "843484b9-1acf-54e0-a030-bc214b3b0656",
+      "titleDe": "Umweltwirkungen kontrolliert prüfen und Lebensraumeignung beurteilen",
+      "titleEn": "Test environmental effects with controls and assess habitat suitability",
+      "reviewBasis": "NEW independent whole-current science; no historical parent vote imported",
+      "wholeGoalAndDEENRead": true,
+      "rawProfileReadWhole": true,
+      "wholeCaseIds": [
+        "bcp-controlled-environment-habitat-investigation-a",
+        "bcp-controlled-environment-habitat-investigation-b"
+      ],
+      "wholeCaseBodiesReadDEEN": true,
+      "rawGoalBodyDigestNotStockFingerprint": "sha256:b82f1454158340f8857ebfcfacb1cebc4343ec380e3ca7ab4fb957a48396e3e0",
+      "rawProfileBodyDigestNotStockFingerprint": "sha256:364270dcd0be92b259d25262aa00778864c636cca36b7477728e660417900305",
+      "wholeCaseBodyDigests": [
+        {
+          "caseId": "bcp-controlled-environment-habitat-investigation-a",
+          "canonicalObjectSha256": "sha256:cf962ac7fe134310a47c594c3ac08a10ca6d7cfe3ac2de2568e4ae432de94cc2"
+        },
+        {
+          "caseId": "bcp-controlled-environment-habitat-investigation-b",
+          "canonicalObjectSha256": "sha256:8a5b8282e0fcdff3b598be05788456bb450149909e443a907335986a7a1e4e9e"
+        }
+      ],
+      "directPrerequisites": [
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49"
+      ],
+      "directParents": [
+        "ebe2f6db-95a3-5157-a27d-2624f6c82e4e"
+      ],
+      "positiveDesignDecision": "KEEP_DESIGN",
+      "positiveEvidenceLevel": "E1",
+      "positiveMaximumClaimScope": "G1",
+      "positiveReason": {
+        "de": "Die beiden Aufgaben trennen kontrollierte ökologische Wirkung von bloßer Freilandverteilung. Eigene Kresse-Feuchteansätze und neue Wasserlinsen-Lichtansätze verlangen gleiche Mitfaktoren, Gefäßreplikate, eigene Messdaten und ein auf Art/Population, Messgröße und Bedingungen beschränktes Eignungsurteil. Ein Habitatgesamturteil oder ein Populationseffekt aus bloßer Deckung wird nicht abgeleitet.",
+        "en": "Both tasks distinguish controlled ecological effects from field distribution. Original cress-moisture and fresh duckweed-light experiments require matched covariates, vessel replicates, original data and a suitability judgement limited to the species/population, outcome and conditions. No whole-habitat conclusion or multiplication effect follows from cover alone."
+      },
+      "scientificChecksAndInferenceBoundariesDe": [
+        "Kressekeimung ist art-/stadienbezogen; dieser Versuch erklärt nicht die Verteilung aller Rasenpflanzen. Niedrigere/höhere Wasserzugaben müssen vor Durchführung festgelegt und nicht überflutet werden.",
+        "Wasserlinsen-Sprossvermehrung braucht einen definierten frond-Zählbegriff, Ausgangszahl10/Gefäß, gleiche Nährlösung/Volumen und tatsächliche Licht-/Temperaturbeobachtung. Gefäße sind Replikate.",
+        "Positionstausch darf nur innerhalb der zugeteilten Lichtbedingung beziehungsweise nach einem begründeten Plan erfolgen, der die intendierten Lichtstufen erhält. Temperatur/Lampenwärme und Verdunstung dürfen nicht unbeobachtete Mitfaktoren werden.",
+        "Daten bleiben künftig und offen; Null-/Konfliktbefunde erlauben kein erzwungenes Eignungsurteil. Kommerzielle Pflanzen werden nicht freigesetzt.",
+        "Das weitergehende Nährstoffbeispiel ist eine mögliche neue Planungsvariation, keine schon ausgeführte Leistung und keine Aussage über alle Gemeinschaften."
+      ],
+      "allFourExpectationAuditDe": [
+        "e1 verlangt Hypothese, artbezogene Messgröße und Gegenkontrolle.",
+        "e2 verlangt eigene kontrollierte und geschützte Laborhandlung.",
+        "e3 verlangt Originalzahlen, Mitfaktor-/Volumen-/Zeitprotokoll und Gefäße als Replikate.",
+        "e4 verbindet nur die tatsächlich geprüfte Umweltwirkung mit einem begrenzten Eignungsurteil."
+      ],
+      "atomicityDecision": "atomic",
+      "semanticAtomic": true,
+      "atomicityReasonDe": "Eine Umweltwirkung kontrolliert prüfen und genau daraus ein begrenztes Eignungsurteil begründen ist eine einzige kausale Anwendungskompetenz. Die Beurteilung ist der Schluss aus demselben Versuch. Getrennte Artenbestimmung und Freilandaufnahme werden nicht erneut als beherrscht mitgezählt; Anforderungen-Kind07bf ist eine sinnvolle vorausgehende Untersuchungskompetenz.",
+      "linkedFindingIds": [],
+      "statusForAnyLaterNormalPRecord": "needs_human_review",
+      "reviewAuthorityForAnyLaterNormalPRecord": "ai_candidate",
+      "actualLearnerExecutionClaimed": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "MOrVVote": false,
+      "sourceDescriptionCoursePublicationClearance": false
+    }
+  ],
+  "counts": {
+    "newPKeepE1G1": 7,
+    "newPReviseE0G0": 3,
+    "newAAtomic": 10,
+    "retargetedParentVotes": 0
+  },
+  "normalBindingsDeferred": true,
+  "noAuthorSelfCorrection": true,
+  "notM7Closure": true
+}

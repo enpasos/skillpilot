@@ -1,0 +1,17 @@
+# Source4 – begrenzte inaktive Integrationsvorbereitung auf367
+
+**Nur Phase1, keine D4-Paarung und kein Zentralbericht.** Eigenständiges B ist noch kein gewählter Input; sein Ergebnis wird nicht vorweggenommen. ROOTREADY fehlt. Der vorbereitete Kandidat ist eine Auswahlvorlage und keine ausführbare finale Centralkonfiguration.
+
+Aktuelle Basis: a142/c443, echte aktuelle C-P2/A2 sowie genau C-M422 `fa34d4de…` und C-QA438 `c9cc9c5c…`. P2/A2 ersetzen ausschließlich die alten ausgewählten Bindungen von a8/f0. Je ein alter P-/A-Container wird auf unveränderte ganze Rohzeilen reduziert; alle anderen390 P- und398 A-Zeilen sowie ursprüngliche Kriterien, ResourceScopes und originale P-Runbindungen bleiben exakt. Die400 ausgewählten A-Rohzeilen sind keine Behauptung400 gültiger atomarer Freigaben. Neue ganze C-P2/A2-Records sind bytegleiche Originalkopien mit unveränderter ursprünglicher Runbindung; die lokalen Konfigurationen ändern nur Dateiadressen.
+
+Genau vier betroffene normale P/A-Prüfungen plus einmal QA438-Stockfrischecheck wurden erfolgreich ausgeführt. Keine QA-Neugenerierung. Der echte vorhandene C-M422-Check wird als Originalnachweis referenziert; hier wird kein weiteres M-Votum erfunden.420 andere M-Rohzeilen und436 andere QA-Objekte sind nach tatsächlichem Vergleich gleich.
+
+Vier künftige D4-Ziele: a8/f0 besitzen geänderte ganze Beschreibungen und a8 eine geänderte Bild-/Standardzustandsdarstellung; e0/1a behalten ihre Ziele/Fälle/Profilkörper/Bilder und benötigen unabhängige Bewertung des zusätzlichen Quellen-/Kursdeklarationskontexts. Diese beiden sind keine Wiederherstellung eines aktuell vorhandenen positiven D-Claims. Keines der vier Ziele besitzt in den87 ausgewählten alten D-Indizes einen positiven aktuellen Claim. Historische negative/Deferralzeilen bleiben mit ihren ganzen Originalrunden erhalten. Alte D9 und alle anderen Indizes, Supersessions und Withdrawals bleiben unverändert. Erst nach finit gelieferten echten B-FIRST-/Normaloriginalen und Rootfreigabe darf die originale A/B-D4-Paarung erfolgen; ein optionales `deferredGoals`-Feld wird nur bei einer nichtleeren Liste geschrieben.
+
+Die acht Autorenquellenkomponenten und die LK-Deklaration bleiben ungeprüfte zusätzliche Inputs. Sie werden nicht als amtliche M3-Entscheidungen, SourceAtlas-Registrierung, Kursfreigabe oder optionale Runtimefunktion übernommen. Eine spätere maschinelle D-/Strict-Auswertung ersetzt diese Quellen-/Kursgrenzen nicht.
+
+Minimaler frischer ignorierter Host:31 exakte physische Stockmodule,51 exakt gebundene Datenaliase (nur drei JSON-Dateien physisch; übrige Originalreferenzen),4,032,724 reguläre Bytes und keine Rasterkopien. Die bestehende gepinnte leere Legacy-Markdown-Discovery aus367 ist im Hostmap und im readonly Rebuildhelper explizit fixiert; die heutige Repositoryhistorie wird nicht als andere Eingabe eingelesen. Rebuildhelper führt keine Renderer/Checks/Central aus.
+
+Nachher-CAS: alter367-Root mit allen142 Nutzdateien und Siegel exakt; alle367 bisherigen vollständigen Zielkörper, dieselben422 IDs, alle560 IDs/Kanten und697 geschützte aktive Dateien exakt. Keine neue Strictzahl, keine Integration, keine neuen wissenschaftlichen D/P/A/M/V-Voten, keine Aktiv-/Runtime-/Gitänderung und keine Human-/M7-Freigabe. Native4 und seine vier echten Zielseiten bleiben unverändert und werden nicht neu erzeugt.
+
+Der Phase1-Selector und sein Seal schließen genau diesen Vorbereitungsstand ab. Später autorisierte Folgearbeit kann neue Dateien ergänzen; alle hier versiegelten Bytes bleiben unverändert.
