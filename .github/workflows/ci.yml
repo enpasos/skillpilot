@@ -486,6 +486,12 @@ jobs:
         run: npm run check:m6-duration-policy-readiness
       - name: Check Gymnasium Duration Offerings
         run: npm run check:gymnasium-duration-offerings
+      - name: Setup required read-only supplement QA runtime when artifacts exist
+        if: ${{ hashFiles('curricula/DE/Gymnasium/composition-supplements/mathematik/**/*.supplement.json') != '' }}
+        uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
       - name: Check Curriculum Source Coverage
         run: npm run quality:source-coverage-audit:check
       - name: Check Goal Source Rationale Runtime Index

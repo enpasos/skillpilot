@@ -1,0 +1,196 @@
+{
+  "writtenUTC": "2026-10-15T22:42:00.950149+00:00",
+  "solutions": [
+    {
+      "index": 0,
+      "cases": [
+        {
+          "id": "zwei-bestrahlungen",
+          "solution": "Use a supervised current-limited low-voltage cell or interactive measurement simulation. Vary load independently at two stable irradiances, measure U in parallel and I in the series load branch, control cell temperature and illumination drift and record actual independent settings/uncertainty. Do not call the supplied synthetic numbers a performed experiment. U·I in V·mA gives mW: high0,19.6,36,35,0;low0,9.6,16,10,0. Sampled maximum at.4V in both. Neither open-circuit I=0 nor short-circuit U=0 yields output power. Finite sampling does not prove the continuous optimum; measure more densely around.4–.5V under controls."
+        },
+        {
+          "id": "unsicherer-spitzenbereich",
+          "solution": "A second independent acquisition is required at two stable irradiances; reciting products alone does not satisfy it. Nominal high powers24,26,25mW;low12,12.4,11mW. High product bounds computed from positive endpoints:[.29·75,.31·85]=[21.75,26.35],[.39·60,.41·70]=[23.4,28.7],[.49·45,.51·55]=[22.05,28.05]mW. Low bounds[10.15,13.95],[10.14,14.76],[8.33,13.77]mW also overlap. Nominal.4V is not an exactly known MPP or firm ranking; repeat/resolve more finely."
+        }
+      ],
+      "fresh": "Reviewer-generated third controlled acquisition U=.25,.35,.45V,I=60,50,30mA gives15,17.5,13.5mW and a sampled optimum.35V. A heating drift during the high-irradiance run confounds attributing the change purely to irradiance; re-stabilize temperature and repeat. Construct numeric U-I/P-U plots and bound continuous inference. Fresh data are analytic examples, not actual measurements.",
+      "priorNeed": "Independent numeric scale/unit reading, products and interval comparisons; wholeMath alternatives still to inspect. Differentiating an arbitrary curve is not universally required to locate a measured maximum.",
+      "newPhysics": "Safe acquisition, instrument arrangement, load/irradiance/temperature controls, electrical power meaning and finite-resolution MPP interpretation.",
+      "goalId": "02876b2e-7cf0-5de6-ad04-d4ee95b7f80e",
+      "wholePProfileFingerprint": "sha256:5d1566b1601b74bdd8eac86f9dd9710688551015454827de427f8fbe7ce109aa",
+      "status": "OWN_SCIENTIFIC_WORK_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    },
+    {
+      "index": 1,
+      "cases": [
+        {
+          "id": "fresh-independent-case-a",
+          "solution": "Reviewer-realization of unspecified decay data: N'=-.2s^-1 N,N(0)=1000. N=1000exp(-.2t) differentiates to N'=-200exp(-.2t)s^-1=-.2N, N0=1000; exponent dimensionless, decay time5s, long-time N→0. This is a model for a state/rate relation, not arbitrary chosen minus sign."
+        },
+        {
+          "id": "fresh-independent-case-b",
+          "solution": "Reviewer-realization with different state and sign: population x'=+.3s^-1x,x0=20 gives20exp(.3t), derivative6exp(.3t)s^-1=.3x, initial20, characteristic time10/3s and model growth. Finite resources/saturation invalidate the constant-proportionality model; logistic x'=k x(1-x/K) is not solved by that same unrestricted exponential."
+        }
+      ],
+      "fresh": "For a deviation from ambient X=T-Tambient, X'=-.5min^-1X,X0=-8K givesX=-8exp(-.5t),X'=+4exp(-.5t)K/min: temperature warms toward ambient while |X| decays. X0=0 yields X=0 without division by X; k=0 yields a constant, no finite decay time. These independently test sign, initial condition, representation and model limit.",
+      "priorNeed": "Function/derivative notation and elementary exponential differentiation may be prior preparation; exact wholeMath profiles must be compared. Choosing the physical ansatz and verifying this DGL are the new target method, so do not gate it by an equivalent wholeDGL target.",
+      "newPhysics": "Recognize physical proportional rate, choose state/zero, determine ansatz parameters and units, verify DGL+initial state and interpret model validity.",
+      "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+      "wholePProfileFingerprint": "sha256:2750721e83c19a940af4464164b00a9501ce31fab934019e80cfc56056da8f23",
+      "status": "OWN_SCIENTIFIC_WORK_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    },
+    {
+      "index": 2,
+      "cases": [
+        {
+          "id": "sticking-carts",
+          "solution": "Take the two carts as system, neglect external impulse only during short collision. p=2·3+1·0=6kgm/s and common v=6/3=+2m/s because sticking supplied. InitialK=.5·2·3²=9J,finalK=.5·3·2²=6J;3J converts to internal/deformation energy, total energy not destroyed."
+        },
+        {
+          "id": "separating-carts",
+          "solution": "p=1·3+1·(-1)=2kgm/s;vA=0 given,so vB=+2m/s. InitialK=.5(9+1)=5J,finalK=.5·4=2J;3J conversion. Without measuredvA,onlyvA+vB=2:infinitely many pairs, even adding an inelastic energy inequality does not uniquely determine them. Inelastic does not mean sticking."
+        }
+      ],
+      "fresh": "Reviewer-generated approaching carts mA=.5kg,uA=+4m/s,mB=1.5kg,uB=-2m/s,sticking. p=-1kgm/s,v=-.5m/s,Kinitial=7J,Kfinal=.25J,conversion6.75J. Reversing everyvelocity reverses momentum/finalv but leaves kinetic energies unchanged. External impulse would break the closed-system momentum equation.",
+      "priorNeed": "Signed sums/products/division and squares; a whole2×2equation-system course is not universally needed when the second final velocity is supplied. WholeMath alternatives pending reading.",
+      "newPhysics": "Choose collision system and conservation premise, distinguish shared end speed from inelasticity, interpret energy conversion and information sufficiency.",
+      "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "wholePProfileFingerprint": "sha256:ae8a687b15fed457a18352461bf91585b806f0f8dcf95b4b604fc5ff7d86e111",
+      "status": "OWN_SCIENTIFIC_WORK_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    },
+    {
+      "index": 3,
+      "cases": [
+        {
+          "id": "conductor-distance-and-reversal",
+          "solution": "Reviewer-generated completion of unspecified values:I=8A,r1=.02m,r2=.06m,reviewer-supplied textbook approximation μ0≈4π·10^-7Tm/A. B1=80µT,B2=80/3µT,ratio3. Viewed with current toward viewer(out of page),fieldcircles counterclockwise;at right ofwire field pointsup. Current reversal reverses orientation,notmagnitudes. Use long-wireairmodel and distinguish distancefromwire fromsolenoidturn density."
+        },
+        {
+          "id": "solenoid-core-and-edge-claim",
+          "solution": "Reviewer-realizationN=600,ℓ=.3m,I=.4A,air:turn density2000m^-1,B≈1.0053mT. Halfdensity1000m^-1,doublecurrent.8A leavesBunchanged for same homogeneous linearμr. Right-handgrip gives axialorientation. Nearanendnonuniformfringing violates longinterior approximation,so noexactedgevalue follows. Nonlinearity/saturation orinhomogeneouscore alsobreakconstantμr scaling."
+        }
+      ],
+      "fresh": "Reviewer-generated wire current halves to4A,distance doubles to.04m:field20µT,onequarter of80µT; reversing currentalso reversesdirection. For a longlinear homogeneouscore withμr5,interiorB isfiveairvalue; nofivefoldclaimafter saturation orat theedge. No integration of Biot-Savart law is imposed by this profile.",
+      "priorNeed": "Numeric ratios/products, inverseproportionaldependence and unit scaling. WholeMathinversefunction/linearmodel courses require separate comparison; using this fieldlaw and right-handrule are newPhysics.",
+      "newPhysics": "Geometry-bound modelselection, currentdirection/vectororientation, coreidealization and modelvalidity.",
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "wholePProfileFingerprint": "sha256:5117b3874164e549e8c55623d24205dc45336d90af48e1fa748388e76492689d",
+      "status": "OWN_SCIENTIFIC_WORK_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    },
+    {
+      "index": 4,
+      "cases": [
+        {
+          "id": "fresh-independent-case",
+          "solution": "Separate hot,cold and isolated pair. Energyarrow100J hot→cold,ΔEhot=-100J,ΔEcold=+100J. ΔShot=-100/400=-1/4J/K,ΔScold=100/300=1/3J/K;exactsum1/12J/K≈.08333positive. Equal opposite energies do not cancel temperature-weighted entropies. Absolute temperatures and constant idealreservoir model are essential."
+        },
+        {
+          "id": "independent-changed-case",
+          "solution": "Claimed80J cold250K→hot500K givesΔScold=-80/250=-.32J/K,ΔShot=80/500=.16J/K,total-.16J/K. Reject spontaneous otherwiseisolatedprocess. Swap only labels system/surroundings:sum andphysicaldirection unchanged. A drivenrefrigerator adds work/otherentropy exchanges,so isadifferent total system."
+        }
+      ],
+      "fresh": "Reviewer-generatedQ=60J,Th=600K,Tc=300K:hot-.1,cold+.2,total+.1J/K;reversegives-.1J/K. At equalT,thetransfercontribution iszero,notpositive. For finiteobjectswithchangingT,Q/Tconstantformula isnotjustified;no logarithmicvariable-temperatureintegration is demandedhere.",
+      "priorNeed": "Signed rational addition anddivision, exactfractions/comparison and reciprocal-order reasoning may be prior. WholeMathprofiles must be read; no generalcalculus/integration requirement follows from these constantreservoir duties.",
+      "newPhysics": "Systemboundary andentropy vsenergybalance, heat-flowdirection, second-law interpretation and modelassumptions.",
+      "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+      "wholePProfileFingerprint": "sha256:b2047dc38c772366574aa5ce1e0c49cfd762e128e554a82e0631577b590292fa",
+      "status": "OWN_SCIENTIFIC_WORK_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    },
+    {
+      "index": 5,
+      "cases": [
+        {
+          "id": "derive-and-check",
+          "solution": "For fixedmass/fixedforcecentre/inertialframe, dL/dt=d[r×mv]/dt=m(v×v+r×a)=r×F=0 for radialF. ThusL constant. In dt,dr=vdt+o(dt); suppliedtrianglearea givesdA/dt=|r×v|/2=|L|/(2m). Atapsidesr⊥v,r1v1=r2v2:2·5=5v2,so v2=2m/s,arealspeed=5m²/s atboth. Thefactor1/2comesfrom suppliedtrianglegeometry,not from anunjustifiedmerkmuster."
+        },
+        {
+          "id": "central-versus-thrust",
+          "solution": "EvenF(r,t)=f(r,t)rhat givesr×F=0,soL andarea-rate constant without needinginverse-square magnitude. Tangentialthrustgivesr×Fnonzero andchangesL duringthepulse;arealspeed isnotconstantacrossit. Before/aftercentraperiods mayeachhave differentconstantvalues. Fixedcentre,constantmass andinertialframe remain premises."
+        }
+      ],
+      "fresh": "Reviewer-generatedm=2kg,r=3m,vtransverse=4m/s givesL=24kgm²/s,area-rate6m²/s. A tangentialimpulseJ=+2kgm/s atfixedr changesL by6kgm²/s;afterwardarea-rate7.5m²/s ifdirectionunchanged. A purelyradialimpulsechangesradialvelocitybutnotL. PurelyradialmotionL=0 giveszero sweptarea,also consistent. Suppliedproductrule andtrianglelemmata remainavailable inallcases;do notrequiretheirwholeproof asprior.",
+      "priorNeed": "Apply givenvector identities and ratios; fullcross-productcomputation/area/derivative-goals cannotbe demanded solely bytitle. NeedreadfullMathalternatives before finalset.",
+      "newPhysics": "Use NewtonII+centrality toderive conservedangularmomentum andconstantarealrate; identifyphysicalproofpremises andfailureundertorque.",
+      "goalId": "16caf92e-2800-57d1-946c-5b92ce848a96",
+      "wholePProfileFingerprint": "sha256:2c2d92593a2c43e1895ff41fccaa88fcd412240db018a4e1edac60674e04659e",
+      "status": "OWN_SCIENTIFIC_WORK_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    }
+  ],
+  "actualCalculations": {
+    "PVhigh_mW": [
+      0,
+      19.6,
+      36.0,
+      35.0,
+      0.0
+    ],
+    "PVlow_mW": [
+      0,
+      9.600000000000001,
+      16.0,
+      10.0,
+      0.0
+    ],
+    "PVhighBounds": [
+      [
+        0.29,
+        0.31,
+        75,
+        85,
+        21.75,
+        26.35
+      ],
+      [
+        0.39,
+        0.41000000000000003,
+        60,
+        70,
+        23.400000000000002,
+        28.700000000000003
+      ],
+      [
+        0.49,
+        0.51,
+        45,
+        55,
+        22.05,
+        28.05
+      ]
+    ],
+    "PVlowBounds": [
+      [
+        10.149999999999999,
+        13.95
+      ],
+      [
+        10.14,
+        14.760000000000002
+      ],
+      [
+        8.33,
+        13.77
+      ]
+    ],
+    "freshInelastic": {
+      "momentum": -1.0,
+      "v": -0.5,
+      "initialK": 7.0,
+      "finalK": 0.25
+    },
+    "wireB_T": [
+      7.999999999999999e-05,
+      2.666666666666667e-05
+    ],
+    "solenoidB_T": 0.001005309649148734,
+    "entropy_exact": "1/12",
+    "Kepler_afterImpulse_areaRate": 7.5
+  },
+  "notYetRequiresSetVerdicts": true,
+  "nativeBriefsWithoutNumbersReviewerRealizedTransparently": true
+}

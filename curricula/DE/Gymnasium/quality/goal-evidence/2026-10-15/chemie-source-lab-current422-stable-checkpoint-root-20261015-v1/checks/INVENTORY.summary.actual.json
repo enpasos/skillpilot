@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "role": "Read-only finite technical precommit inventory; no scientific, schema-runtime, gate, source, course, strict or human approval",
+  "startedAtUTC": "2026-10-15T09:27:52.040476+00:00",
+  "completedAtUTC": "2026-10-15T09:28:01.657517+00:00",
+  "repository": "/home/enpasos/projects/skillpilot",
+  "boundary": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15",
+  "explicitlyExcludedStillAuthoredRoot": "",
+  "excludedNewFilesAtStart": 0,
+  "includedRootCount": 23,
+  "newWorkingFileCount": 891,
+  "newWorkingGitPayloadBytes": 76685257,
+  "newWorkingResolvedContentBytes": 86874344,
+  "helperSource": {
+    "path": "scripts/validate_schemas.py",
+    "sha256": "sha256:e92ed9b240ec601c6e326d57cd79659414ccadfea88cabe0f63f20bf98246664",
+    "curriculumSymlinkDiscoveryUnmodified": true,
+    "looksLikeRuntimeLandscapeBoundaryUnmodified": true
+  },
+  "normalCurriculumSymlinkErrors": [],
+  "rootsMissingFinalSeal": [],
+  "rootsWithFinalPayloadErrors": [],
+  "rootsWithFinalSealCountMismatch": [],
+  "rootsWithUnlistedCommittableFiles": [],
+  "rootsWithUnlistedPhysicalEntries": [],
+  "JSONAndJSONLFilesParsed": 591,
+  "JSONAndJSONLErrors": [],
+  "pythonASTFiles": 30,
+  "pythonASTErrors": [],
+  "runtimeLandscapeBoundaryTrueFiles": [],
+  "actualTransientEntries": [],
+  "unsafeOrBrokenSymlinks": [],
+  "concretePotentialPrivateArtifactFindings": [],
+  "newNonexcludedPathsChangedDuringInventory": {
+    "added": [],
+    "removed": []
+  },
+  "noRepositoryWrites": true,
+  "allOutputsIgnored": true,
+  "originalHonestFailuresPreserved": "Every listed original artifact is hashed byte-for-byte. Historical recorded failure outputs remain evidence and are not reinterpreted as current syntax corruption.",
+  "privateFindingBoundary": "Public curriculum/review UUIDs are not learner identifiers. Checks flag concrete session/event serializers, nonempty sensitive-key values and credential-shaped text; absence is bounded to these finite candidate inputs.",
+  "commands": [
+    {
+      "label": "git-new-E15",
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15"
+      ],
+      "startedAt": "2026-10-15T09:27:52.040501+00:00",
+      "completedAt": "2026-10-15T09:27:52.121553+00:00",
+      "exitCode": 0,
+      "stdoutBytes": 156336,
+      "stdoutSHA256": "sha256:ef209585311393e69e036528f791c6446a1ba5151c1c223ce587b8f217ecb5ab",
+      "stderrBytes": 0,
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-committable-E15",
+      "argv": [
+        "git",
+        "ls-files",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15"
+      ],
+      "startedAt": "2026-10-15T09:27:52.123375+00:00",
+      "completedAt": "2026-10-15T09:27:52.211029+00:00",
+      "exitCode": 0,
+      "stdoutBytes": 238994,
+      "stdoutSHA256": "sha256:1584a165b67cc6a48aad82047af5b538c39875c4346b561d2646f00aa34845df",
+      "stderrBytes": 0,
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-output-ignore",
+      "argv": [
+        "git",
+        "check-ignore",
+        "-v",
+        "tmp/chemie-m7-resumed-20261015/precommit-final-all23/"
+      ],
+      "startedAt": "2026-10-15T09:27:52.224195+00:00",
+      "completedAt": "2026-10-15T09:27:52.266315+00:00",
+      "exitCode": 0,
+      "stdoutBytes": 72,
+      "stdoutSHA256": "sha256:07cfe8743f68514b41809850389f2dfc1a6dd9f131afc43bdba1878465b4bbe7",
+      "stderrBytes": 0,
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "normal-curriculum-symlink-errors",
+      "pythonCall": "scripts/validate_schemas.py::curriculum_symlink_errors(REPO)",
+      "startedAt": "2026-10-15T09:27:52.386954+00:00",
+      "completedAt": "2026-10-15T09:27:58.095559+00:00",
+      "helperSourceSHA256": "sha256:e92ed9b240ec601c6e326d57cd79659414ccadfea88cabe0f63f20bf98246664",
+      "discoveryUnmodified": true,
+      "internalGitCommand": [
+        "git",
+        "ls-files",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "errors": []
+    },
+    {
+      "label": "git-new-E15-end",
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15"
+      ],
+      "startedAt": "2026-10-15T09:28:01.466661+00:00",
+      "completedAt": "2026-10-15T09:28:01.550610+00:00",
+      "exitCode": 0,
+      "stdoutBytes": 156336,
+      "stdoutSHA256": "sha256:ef209585311393e69e036528f791c6446a1ba5151c1c223ce587b8f217ecb5ab",
+      "stderrBytes": 0,
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

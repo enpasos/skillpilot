@@ -1,0 +1,27 @@
+{
+  "role": "Logical reproducibility timestamp is distinct from actual execution clock",
+  "originalRunCompletedAt": [
+    "2026-10-15T14:36:44.609085+00:00",
+    "2026-10-15T14:44:40.561931+00:00"
+  ],
+  "stockSynthesizedAt": "2026-10-15T14:44:41.561Z",
+  "rule": "maximum genuine original run.completedAt +1000ms",
+  "actualSynthesisCommand": {
+    "role": "Actual unchanged stock command; informed technical integration only",
+    "argv": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-paired12-stock-host-v1/app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-native-paired12-with-three-open-technical-20261015-v1/config/native15.original-context-paired12.config.json",
+      "--authoring",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-native-paired12-with-three-open-technical-20261015-v1/native15/synthesis-authoring.bounded-v2.json",
+      "--write"
+    ],
+    "cwd": "tmp/chemie-m7-resumed-20261015/carbonyl15-paired12-stock-host-v1",
+    "startedAtUTC": "2026-10-15T15:14:48.178434+00:00",
+    "completedAtUTC": "2026-10-15T15:14:49.282785+00:00",
+    "exitCode": 0,
+    "newScientificVotes": 0
+  },
+  "newScientificVotes": 0
+}

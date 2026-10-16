@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "attemptsBeforeValidInspection": [
+    {
+      "issue": "Outside-app HTML initially bypassed Vite HTML transformation or failed its HTML proxy resolution.",
+      "result": "No visual acceptance from failed imports.",
+      "resolution": "Temporary isolated HTML entry served by Vite; actual component and CSS imported from repository."
+    },
+    {
+      "issue": "Initial temporary-root Tailwind scan omitted utility classes: measured padding0px and image widths360/680px.",
+      "result": "Invalid render attempt rejected and not used for image judgments.",
+      "resolution": "Temporary CSS build scan directive references actual app/src; no CSS rule changed. Final measured padding20px, image316/636px, object-fit contain. Screenshots were replaced before inspection and sealing."
+    }
+  ],
+  "allFinalEightScreenshotsActuallyInspected": true,
+  "nativeDistinctOriginalPngsActuallyInspected": 3,
+  "noAuthorAssetChanged": true
+}

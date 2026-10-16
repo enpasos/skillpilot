@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "chemie-four-material-gap-remediation-author-20261015-v1",
+  "reviewedAt": "2026-10-15T15:21:52.223089+00:00",
+  "reviewer": "Informed material author after independent A/B reviews; not a new review role",
+  "goals": [
+    {
+      "goalId": "b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+      "reason": "Author-only bounded material correction in eqrk16-04-b; implements the sealed four-gap author plan. This is not an independent P/A/D judgment.",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "dissent": [
+        "Unreviewed successor author material; independent review remains required. No observed learner/laboratory performance or human acceptance.",
+        "Canonical wording and source mappings are unchanged; this correction does not resolve external source/projection concerns."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Die reversible Zellspannung folgt aus stöchiometrischem Q und Elektronenzahl n.",
+            "essentialUnderstandingEn": "Reversible cell voltage follows stoichiometric Q and electron number n.",
+            "observablePerformanceDe": "eqrk16-04-a: Polung und Nettoionentransfer mit Halbgleichungen herleiten. eqrk16-04-b: Stöchiometrisches Q und 1,04084 V erklären.",
+            "observablePerformanceEn": "eqrk16-04-a: Derive polarity and net ionic transfer from half-reactions. eqrk16-04-b: Explain stoichiometric Q and 1.04084 V."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Konzentrationszellen gewinnen Arbeit beim Ausgleich chemischer Potenziale; gleiche Metalle bedeuten nicht immer E=0.",
+            "essentialUnderstandingEn": "Concentration cells deliver work while chemical potentials equalise; identical metals do not always give E=0.",
+            "observablePerformanceDe": "eqrk16-04-a: Q=0,0100 und 59,16 mV konsistent berechnen. eqrk16-04-b: Skalierungsinvarianz mit Q²/n′ zeigen.",
+            "observablePerformanceEn": "eqrk16-04-a: Calculate Q=0.0100 and 59.16 mV consistently. eqrk16-04-b: Show scaling invariance using Q²/n′."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Aktivitätsnäherung, Flüssigkeitsgrenzpotenzial und Lastverluste begrenzen eine Konzentrationsrechnung.",
+            "essentialUnderstandingEn": "Activity approximations, liquid-junction potential and load losses limit a concentration calculation.",
+            "observablePerformanceDe": "eqrk16-04-a: Ratioänderung von gemeinsamer Skalierung und Lastverlusten trennen. eqrk16-04-b: Reversible Spannung von unbekannten Lastverlusten abgrenzen und die Cu2+-Konzentration im frischen Metall/Metallion-Fall aus dem Leerlaufmesswert mit der gegebenen Idealnäherung bestimmen.",
+            "observablePerformanceEn": "eqrk16-04-a: Separate ratio changes, common scaling, and load loss. eqrk16-04-b: Distinguish reversible voltage from unknown load losses and determine Cu2+ concentration in the fresh metal/metal-ion case from the open-circuit reading using the stated ideal approximation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-04-a-transfer",
+            "textDe": "Ein ligandhaltiges rechtes Gefäß besitzt gleiche Gesamtkupferkonzentration wie links, aber zehnfach kleinere freie Cu2+-Aktivität. Bestimme ohne Bild die neue Anode und begründe, warum Gesamtgehalt nicht in Q eingesetzt werden darf.",
+            "textEn": "The right vessel contains a ligand and the same total copper as the left, but tenfold lower free Cu2+ activity. Locate the new anode without a diagram and explain why total copper cannot replace free activity in Q."
+          },
+          {
+            "id": "eqrk16-04-b-transfer",
+            "textDe": "Eine neue Daniell-Modellzelle bei 25 °C liefert den fiktiven, korrigierten hochohmigen Leerlaufmesswert U(Cu minus Zn) = +1,07042 V. Es gelten E° = 1,100 V, n = 2, c(Zn2+) = 0,100 mol/L und c° = 1 mol/L. Für alle gelösten Ionen wird a_i = c_i/c° angenähert; reine Metalle haben Aktivität 1, Grenzpotenziale werden vernachlässigt. Bestimme die unbekannte Cu2+-Konzentration aus dem Spannungswert und begründe, warum der Lastwert 1,000 V aus der Hauptaufgabe dafür nicht ohne weitere Daten geeignet wäre. Die Daten sind ein Lehrmodell, keine tatsächlich ausgeführte Messung.",
+            "textEn": "A new Daniell model cell at 25 °C gives the fictional, corrected high-impedance open-circuit reading U(Cu minus Zn) = +1.07042 V. Use E° = 1.100 V, n = 2, c(Zn2+) = 0.100 mol/L and c° = 1 mol/L. Approximate every dissolved-ion activity as a_i = c_i/c°; pure metals have unit activity and junction potentials are neglected. Determine the unknown Cu2+ concentration from the voltage and explain why the main task’s loaded reading of 1.000 V cannot be used for that purpose without further data. These are teaching-model data, not an actually performed measurement."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-04-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-04-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Leite Polung, Teilreaktionen, Q und positive Leerlaufspannung her. Erkläre auf Teilchenebene, wie sich beide Aktivitäten bei Stromabgabe verändern. Untersuche das Vertauschen der Lösungen und die Verdopplung beider Aktivitäten.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-04-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Derive polarity, half-reactions, Q and positive open-circuit voltage. Explain how both activities change during discharge. Investigate swapping solutions and doubling both activities.",
+            "expectedPerformanceDe": "Links Anode: Cu→Cu2++2e−; rechts Kathode: Cu2++2e−→Cu. Gesamt wird Cu2+ rechts nach links übertragen; Q=a(links)/a(rechts)=0,0100, E°(Zelle)=0. E=−0,05916/2·logQ=+0,05916V. Links steigt gelöstes Cu2+, rechts sinkt es; der Aktivitätsunterschied nimmt ab. Lösungstausch kehrt die Polung relativ zu festen Kabeln um; gemeinsames Verdoppeln lässt das Verhältnis und ideal E unverändert. Elektronen fließen außen von links nach rechts; die Salzbrücke trägt Ionen. E ist keine Stromstärke oder Dauerlastspannung.",
+            "expectedPerformanceEn": "Left anode: Cu→Cu2++2e−; right cathode: Cu2++2e−→Cu. Net transfer moves Cu2+ from right to left; Q=aLeft/aRight=0.0100 and cell E°=0. E=−0.05916/2·logQ=+0.05916V. Dissolved Cu2+ increases on the left and decreases on the right, reducing the activity difference. Swapping solutions reverses polarity at fixed leads; doubling both activities preserves the ratio and ideal E. Electrons flow externally left to right; the bridge carries ions. E is neither current nor loaded voltage.",
+            "understandingFocusDe": "Ein ligandhaltiges rechtes Gefäß besitzt gleiche Gesamtkupferkonzentration wie links, aber zehnfach kleinere freie Cu2+-Aktivität. Bestimme ohne Bild die neue Anode und begründe, warum Gesamtgehalt nicht in Q eingesetzt werden darf.",
+            "understandingFocusEn": "The right vessel contains a ligand and the same total copper as the left, but tenfold lower free Cu2+ activity. Locate the new anode without a diagram and explain why total copper cannot replace free activity in Q."
+          },
+          {
+            "id": "eqrk16-04-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-04-b; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Berechne reversible Spannung und erkläre den Konzentrationseinfluss. Beweise, dass Verdopplung der Reaktionsgleichung E nicht verdoppelt. Prüfe, ob die Abweichung des Lastmesswerts die Nernst-Gleichung widerlegt und welche zusätzliche Messung sinnvoll wäre.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-04-b; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Calculate reversible voltage and explain the concentration effect. Show that doubling the chemical equation does not double E. Assess whether the loaded value disproves Nernst and identify a useful additional measurement.",
+            "expectedPerformanceDe": "Q=100; E=1,100−(0,05916/2)·2=1,04084V. Produkt-Zn2+ relativ hoch und Akzeptor-Cu2+ niedrig vermindern den thermodynamischen Antrieb gegenüber Standardzuständen. Doppelte Gleichung hat Q′=Q² und n′=4; logQ′/n′=logQ/2, E bleibt gleich. Die fehlenden 40,84 mV unter Last können aus ohmschen und kinetischen/Transportverlusten stammen; aus nur diesem Wert folgt keine eindeutige Ursache. Hochohmige Leerlaufmessung bei kontrollierter Temperatur und Aktivitäten sowie Strom/Spannungs-Kennlinie trennen Modell- und Lastfragen. Keine universelle Fehlerfreiheit realer Grenzflächen unterstellen. Frischer inverser Transfer: log Q = (1,100 − 1,07042)/(0,05916/2) = 1, also Q = 10. Mit Q = a(Zn2+)/a(Cu2+) und der gegebenen Idealnäherung folgt c(Cu2+) = 0,100/10 = 0,0100 mol/L. Die bekannte metallische Paarung und Reaktionsrichtung bleiben erhalten; nun wird die unbekannte Ionenkonzentration aus einem vorgegebenen Leerlaufmesswert bestimmt. Der unbekannte Lastverlust der Hauptaufgabe verhindert dieselbe Inversion ihres Lastwerts. Ein realer Messnachweis müsste Temperatur, Polung, Kalibrierung und Grenzpotenziale kontrollieren; der fiktive Zahlenwert belegt keine Durchführung.",
+            "expectedPerformanceEn": "Q=100; E=1.100−(0.05916/2)·2=1.04084V. High relative product Zn2+ and low acceptor Cu2+ reduce the thermodynamic driving force. Doubling gives Q′=Q² and n′=4, preserving logQ′/n′ and hence E. The 40.84 mV loaded deficit may reflect ohmic, kinetic or transport losses; one value does not identify the cause. A high-impedance open-circuit measurement at controlled temperature/activities and a current-voltage curve separate equilibrium and load questions. Fresh inverse transfer: log Q = (1.100 − 1.07042)/(0.05916/2) = 1, hence Q = 10. With Q = a(Zn2+)/a(Cu2+) and the stated ideal approximation, c(Cu2+) = 0.100/10 = 0.0100 mol/L. The metal/metal-ion pairing and reaction direction are retained; the unknown ion concentration is now inferred from a supplied open-circuit reading. The main task’s unknown load losses prevent the same inversion of its loaded value. An actual measurement would need controlled temperature, polarity, calibration and junction potentials; the fictional number proves no experimental conduct.",
+            "understandingFocusDe": "Eine neue Daniell-Modellzelle bei 25 °C liefert den fiktiven, korrigierten hochohmigen Leerlaufmesswert U(Cu minus Zn) = +1,07042 V. Es gelten E° = 1,100 V, n = 2, c(Zn2+) = 0,100 mol/L und c° = 1 mol/L. Für alle gelösten Ionen wird a_i = c_i/c° angenähert; reine Metalle haben Aktivität 1, Grenzpotenziale werden vernachlässigt. Bestimme die unbekannte Cu2+-Konzentration aus dem Spannungswert und begründe, warum der Lastwert 1,000 V aus der Hauptaufgabe dafür nicht ohne weitere Daten geeignet wäre. Die Daten sind ein Lehrmodell, keine tatsächlich ausgeführte Messung.",
+            "understandingFocusEn": "A new Daniell model cell at 25 °C gives the fictional, corrected high-impedance open-circuit reading U(Cu minus Zn) = +1.07042 V. Use E° = 1.100 V, n = 2, c(Zn2+) = 0.100 mol/L and c° = 1 mol/L. Approximate every dissolved-ion activity as a_i = c_i/c°; pure metals have unit activity and junction potentials are neglected. Determine the unknown Cu2+ concentration from the voltage and explain why the main task’s loaded reading of 1.000 V cannot be used for that purpose without further data. These are teaching-model data, not an actually performed measurement."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "reason": "Author-only bounded material correction in eqrk16-09-b; implements the sealed four-gap author plan. This is not an independent P/A/D judgment.",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "dissent": [
+        "Unreviewed successor author material; independent review remains required. No observed learner/laboratory performance or human acceptance.",
+        "Canonical wording and source mappings are unchanged; this correction does not resolve external source/projection concerns."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Gekoppelte Gleichgewichte teilen Spezies; Addition von Reaktionen multipliziert passende Konstanten.",
+            "essentialUnderstandingEn": "Coupled equilibria share species; adding reactions multiplies compatible constants.",
+            "observablePerformanceDe": "eqrk16-09-a: Die gekoppelte Gleichung und KL/Ka2 durch Reaktionsaddition erzeugen. eqrk16-09-b: Knet = 0,00288 aus Lösen und Komplexbildung ableiten.",
+            "observablePerformanceEn": "eqrk16-09-a: Construct the coupled equation and Ksp/Ka2 by reaction addition. eqrk16-09-b: Derive Knet = 0.00288 from dissolution and complex formation."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Bilanzen und freie statt analytischer Gesamtkonzentrationen schließen die Rechnung; der Übergang von Aktivitäten zu Konzentrationen benötigt eine explizite Idealnäherung oder Aktivitätskoeffizienten.",
+            "essentialUnderstandingEn": "Balances and free rather than analytical total concentrations close the calculation; converting activities into concentrations requires an explicit ideal approximation or activity coefficients.",
+            "observablePerformanceDe": "eqrk16-09-a: 4,7 · 10−5 M Carbonat und 7,02 · 10−5 M Calcium berechnen. eqrk16-09-b: Löslichkeit und freies Ag+ mit dem Massenwirkungsgesetz unter der gegebenen Idealnäherung prüfen.",
+            "observablePerformanceEn": "eqrk16-09-a: Calculate 4.7 × 10−5 M carbonate and 7.02 × 10−5 M calcium. eqrk16-09-b: Check solubility and free Ag+ using mass action under the supplied ideal approximation."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Protonierung und Komplexbildung sind verschiedene Kopplungsmechanismen, keine unabhängigen Einzelrechnungen.",
+            "essentialUnderstandingEn": "Protonation and complex formation are distinct coupling mechanisms rather than independent calculations.",
+            "observablePerformanceDe": "eqrk16-09-a: Reservoir und endliche Stoff- und Ladungsbilanz abgrenzen. eqrk16-09-b: Die geschlossene Ligandenbilanz als Gegenprobe nutzen.",
+            "observablePerformanceEn": "eqrk16-09-a: Distinguish the reservoir from finite material and charge balances. eqrk16-09-b: Use the closed ligand balance as a countercheck."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-09-a-transfer",
+            "textDe": "Öffne einen geschlossenen Carbonatansatz für CO2-Austausch. Begründe eine Gasrandbedingung statt eines ohne Beleg festgehaltenen pH-Werts.",
+            "textEn": "Open a closed carbonate system to CO2 exchange. Explain the need for a gas boundary condition rather than an arbitrarily fixed pH."
+          },
+          {
+            "id": "eqrk16-09-b-transfer",
+            "textDe": "Ein Ligand bildet stattdessen ML im Verhältnis 1:1. Konstruiere den Kopplungsausdruck neu und benenne geänderte Exponenten und Bilanz.",
+            "textEn": "A ligand instead forms 1:1 ML. Reconstruct the coupled expression and identify the changed exponents and balance."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-09-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-09-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Addiere geeignete Gleichungen und leite die Gesamtkonstante sowie freie Carbonat- und Calciumkonzentration her. Deute eine pH-Absenkung um 1 bei weiter konstantem Hydrogencarbonat. Welche Bilanzen fehlen für einen kleinen geschlossenen Becher?",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-09-a; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Add suitable equations and derive the net constant and free carbonate and calcium concentrations. Interpret lowering pH by 1 at fixed bicarbonate. Which extra balances are needed for a small closed beaker?",
+            "expectedPerformanceDe": "Die umgekehrte Ka2-Reaktion ergibt mit dem Lösen: CaCO3 + H+ ⇌ Ca2+ + HCO3−; Kges = KL/Ka2 ≈ 70,21. [CO3²−]/c° = Ka2 ([HCO3−]/c°)/aH+ = 4,7 · 10−5. Damit [Ca2+] ≈ 7,02 · 10−5 mol/L. Bei pH 7 und weiterhin 0,0100 M HCO3− sinkt Carbonat zehnfach und Calcium steigt im bedingten Modell auf 7,02 · 10−4 M. Protonierung verbraucht Carbonat und fördert weiteres Lösen, ohne die Konstanten zu ändern. Ein geschlossener Becher benötigt Kohlenstoff- und Calciumbilanzen, Elektroneutralität, weitere Säuregleichgewichte und gegebenenfalls eine Gasbilanz. Ein endlicher Puffer löst nicht unbegrenzt Feststoff.",
+            "expectedPerformanceEn": "Reverse the Ka2 reaction and add dissolution: CaCO3 + H+ ⇌ Ca2+ + HCO3−, with Knet = Ksp/Ka2 ≈ 70.21. [CO3²−]/c° = Ka2 ([HCO3−]/c°)/aH+ = 4.7 × 10−5, giving [Ca2+] ≈ 7.02 × 10−5 mol/L. At pH 7 and the same 0.0100 M bicarbonate, carbonate falls tenfold and conditional calcium rises to 7.02 × 10−4 M. Protonation consumes carbonate and drives dissolution without changing constants. A closed beaker needs carbon/calcium balances, electroneutrality, further acid equilibria and possibly a gas balance. A finite buffer cannot dissolve solid indefinitely.",
+            "understandingFocusDe": "Öffne einen geschlossenen Carbonatansatz für CO2-Austausch. Begründe eine Gasrandbedingung statt eines ohne Beleg festgehaltenen pH-Werts.",
+            "understandingFocusEn": "Open a closed carbonate system to CO2 exchange. Explain the need for a gas boundary condition rather than an arbitrarily fixed pH."
+          },
+          {
+            "id": "eqrk16-09-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-09-b; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Bilde Gesamtgleichung und Konstante. Berechne die Löslichkeit mit dominierendem Komplex und prüfe danach freies Ag+ sowie die Näherung. Warum ist derselbe Wert in einer geschlossenen Probe mit nur 0,001 M Gesamtsammoniak unmöglich?",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-09-b; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Construct the net equation and constant. Calculate solubility with dominant complex, then check free Ag+ and the approximation. Why is the same value impossible in a closed sample with only 0.001 M total ammonia?",
+            "expectedPerformanceDe": "AgCl + 2 NH3 ⇌ [Ag(NH3)2]+ + Cl−; Knet = KL β2 = 0,00288. Bei Komplexdominanz gilt s ≈ [Komplex] ≈ [Cl−], daher s ≈ 0,005367 M. Innerhalb des angegebenen Idealmodells gilt s² = KL (1 + β2 aNH3²) c°²; der Faktor 160001 gibt denselben gerundeten Wert. Freies Ag+ = s/160001 ≈ 3,35 · 10−8 M; das Produkt mit Chlorid bestätigt KL. Gesamt- und freies Silber unterscheiden sich. 0,005367 M Komplex würde 0,01073 M gebundenes NH3 benötigen und kann nicht aus 0,001 M Gesamtsammoniak entstehen. Eine Ligandenbilanz und eine neue freie NH3-Konzentration sind nötig; analytisches Gesamtsammoniak darf nicht einfach in β eingesetzt werden.",
+            "expectedPerformanceEn": "AgCl + 2 NH3 ⇌ [Ag(NH3)2]+ + Cl−, with Knet = Ksp β2 = 0.00288. Under complex dominance, s ≈ [complex] ≈ [Cl−], giving s ≈ 0.005367 M. Within the stated ideal model, s² = Ksp (1 + β2 aNH3²) c°²; the factor 160001 gives the same rounded result. Free Ag+ = s/160001 ≈ 3.35 × 10−8 M, whose product with chloride verifies Ksp. Total and free silver differ. That complex concentration requires 0.01073 M bound NH3 and cannot arise from 0.001 M total ammonia. A ligand balance and a new free NH3 concentration are needed; analytical total ammonia cannot simply replace free activity in β.",
+            "understandingFocusDe": "Ein Ligand bildet stattdessen ML im Verhältnis 1:1. Konstruiere den Kopplungsausdruck neu und benenne geänderte Exponenten und Bilanz.",
+            "understandingFocusEn": "A ligand instead forms 1:1 ML. Reconstruct the coupled expression and identify the changed exponents and balance."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+      "reason": "Author-only bounded material correction in eqrk16-11-a; implements the sealed four-gap author plan. This is not an independent P/A/D judgment.",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "dissent": [
+        "Unreviewed successor author material; independent review remains required. No observed learner/laboratory performance or human acceptance.",
+        "Canonical wording and source mappings are unchanged; this correction does not resolve external source/projection concerns."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Elektrolyse erzwingt einen Redoxumsatz gegen die thermodynamisch bevorzugte Richtung durch elektrische Arbeit.",
+            "essentialUnderstandingEn": "Electrolysis drives redox conversion against its thermodynamically preferred direction using electrical work.",
+            "observablePerformanceDe": "eqrk16-11-a: E und ΔrG auf dieselbe Reaktionsrichtung und das Arbeitsvorzeichen beziehen. eqrk16-11-b: Teilreaktionen und 1,22884 V aus ΔrG herleiten.",
+            "observablePerformanceEn": "eqrk16-11-a: Relate E and ΔrG to the same reaction direction and work sign. eqrk16-11-b: Derive half-reactions and 1.22884 V from ΔrG."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "E, ΔrG und Q/K müssen zur gleichen formulierten Reaktionsrichtung gehören.",
+            "essentialUnderstandingEn": "E, ΔrG and Q/K must refer to the same written reaction direction.",
+            "observablePerformanceDe": "eqrk16-11-a: Q = K und K ≈ 1,54 · 10^37 herleiten. eqrk16-11-b: Betriebsverluste berechnen und Katalyse von Gleichgewicht trennen.",
+            "observablePerformanceEn": "eqrk16-11-a: Derive Q = K and K ≈ 1.54 × 10^37. eqrk16-11-b: Calculate operating losses and separate catalysis from equilibrium."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Lokales Elektroden-Gleichgewicht, offener Stromkreis und globales chemisches Gleichgewicht sind verschieden.",
+            "essentialUnderstandingEn": "Local electrode equilibrium, open circuit and global chemical equilibrium are different.",
+            "observablePerformanceDe": "eqrk16-11-a: Leerlauf, lokale und globale Gleichgewichte sowie reales Laden unterscheiden und die geänderte reversible Gegenarbeit bei selektiver Zn2+-Bindung unter der Reservoirgrenze erklären. eqrk16-11-b: Offene Gasgrenze und unvollständige Werbung beurteilen.",
+            "observablePerformanceEn": "eqrk16-11-a: Distinguish open circuit, local/global equilibria and real charging, and explain the changed reversible opposing work under the reservoir boundary with selective Zn2+ binding. eqrk16-11-b: Evaluate the open gas boundary and incomplete advert."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-11-a-transfer",
+            "textDe": "Ein Ligandenreservoir nur in der Zinkhalbzelle bindet Zn2+ und hält dessen freie Aktivität bei 0,0100 statt 1, während a(Cu2+) = 1 und 25 °C unverändert bleiben. Kein Ligandtransfer und keine weitere Redoxreaktion; reine Metalle bleiben vorhanden. Berechne die neue reversible Vorwärtsspannung und die minimale elektrische Arbeit pro Mol für den erzwungenen Rückumsatz unter diesen Reservoirbedingungen. Begründe die Änderung mit Q und unterscheide sie von einer Änderung der Gleichgewichtskonstante der unveränderten Redoxgleichung. Eine Energiebewertung des gesamten Kreislaufs müsste auch die unbekannte Ligandenregeneration berücksichtigen.",
+            "textEn": "A ligand reservoir only in the zinc half-cell binds Zn2+ and maintains its free activity at 0.0100 instead of 1, while a(Cu2+) = 1 and 25 °C remain unchanged. There is no ligand transfer or additional redox reaction; pure metals remain present. Calculate the new reversible forward voltage and minimum electrical work per mole for forced reversal under these reservoir conditions. Explain the change using Q and distinguish it from a change in the equilibrium constant of the unchanged redox equation. An energy assessment of the full cycle would also need the unknown ligand-regeneration contribution."
+          },
+          {
+            "id": "eqrk16-11-b-transfer",
+            "textDe": "Erhöhe bei gleichbleibendem Sauerstoff und gleicher Temperatur den Wasserstoffpartialdruck. Begründe mit Q die höhere reversible Elektrolysespannung trotz gleichen Katalysators.",
+            "textEn": "Increase hydrogen partial pressure at fixed oxygen and temperature. Use Q to explain increased reversible electrolysis voltage despite an unchanged catalyst."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-11-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-11-a; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Ordne E und ΔrG für beide Reaktionsrichtungen zu und leite K aus E = 0 her. Warum besitzt eine stromlos gemessene 1,100-V-Zelle noch kein globales chemisches Gleichgewicht? Beschreibe Polung, Arbeit und reale Grenzen des erzwungenen Rückumsatzes.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-11-a; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Assign E and ΔrG to both directions and derive K from E = 0. Why is an open-circuit cell measuring 1.100 V not at global chemical equilibrium? Describe polarity, work and real limitations when forcing the reverse process.",
+            "expectedPerformanceDe": "Vorwärts gilt E = +1,100 V und ΔrG = −212,27 kJ/mol; rückwärts E = −1,100 V und ΔrG = +212,27 kJ/mol. Bei E = 0 ist Q = K; log K = nE°/0,05916 ≈ 37,19 und K ≈ 1,54 · 10^37 für diese Gleichung. Ein offener Außenkreis verhindert Strom, obwohl der chemische Antrieb nicht null ist. Lokale Doppelschichtgleichgewichte bedeuten nicht global Q = K. Rückwärts oxidiert Cu an der positiven Anode und Zn2+ wird an der negativen Kathode reduziert. Die Quelle liefert mindestens reversible Arbeit sowie bei Strom zusätzliche Verluste. Wasserstoffbildung, Dendriten und Passivierung können eine reale Wiederaufladung verhindern; das Modell beweist keinen brauchbaren Akku. Frischer chemischer Transfer: Das selektive Binden des Produkts ergibt Q = 0,0100 und E = 1,100 − (0,05916/2) log(0,0100) = 1,15916 V. Für den Vorwärtsumsatz ist ΔrG = −2F E = −223,68 kJ/mol; der erzwungene Rückumsatz benötigt im reversiblen Modell mindestens +223,68 kJ/mol elektrische Arbeit bei diesen festgehaltenen Bedingungen. Die Arbeit ist um 11,42 kJ/mol größer als bei Q = 1. Zn2+ wird beim Rückumsatz verbraucht; seine durch Produktbindung kleinere freie Aktivität erhöht unter diesen Bedingungen die reversible Gegenarbeit. Die Änderung von Q ändert nicht K der unveränderten Zn/Cu2+-Redoxgleichung bei 25 °C. Die Zahl gilt für den Zellprozess mit den angegebenen Reservoirrandbedingungen, nicht als vollständige Energiebilanz von Ligandentrennung und Regeneration. Für endlichen Strom kommen unbekannte Verluste hinzu.",
+            "expectedPerformanceEn": "Forward E = +1.100 V and ΔrG = −212.27 kJ/mol; reverse E = −1.100 V and ΔrG = +212.27 kJ/mol. At E = 0, Q = K; log K ≈ 37.19 and K ≈ 1.54 × 10^37 for this equation. Opening the external circuit stops current without removing chemical driving force. Local double-layer equilibria do not imply global Q = K. Forced reversal oxidises Cu at the positive anode and reduces Zn2+ at the negative cathode. The source supplies reversible work and finite-current losses. Hydrogen evolution, dendrites and passivation can prevent useful rechargeability; the model proves no practical rechargeable battery. Fresh chemical transfer: Selectively binding the product gives Q = 0.0100 and E = 1.100 − (0.05916/2) log(0.0100) = 1.15916 V. Forward ΔrG = −2F E = −223.68 kJ/mol; forced reversal requires at least +223.68 kJ/mol electrical work in the reversible model under these maintained conditions. This exceeds the Q = 1 value by 11.42 kJ/mol. Zn2+ is consumed during reversal; its lower free activity due to product binding increases the reversible opposing work under these conditions. Changing Q does not change K for the unchanged Zn/Cu2+ redox equation at 25 °C. The number describes the cell process with the stated reservoir boundaries, not a complete energy balance for ligand separation and regeneration. Finite current adds unspecified losses.",
+            "understandingFocusDe": "Ein Ligandenreservoir nur in der Zinkhalbzelle bindet Zn2+ und hält dessen freie Aktivität bei 0,0100 statt 1, während a(Cu2+) = 1 und 25 °C unverändert bleiben. Kein Ligandtransfer und keine weitere Redoxreaktion; reine Metalle bleiben vorhanden. Berechne die neue reversible Vorwärtsspannung und die minimale elektrische Arbeit pro Mol für den erzwungenen Rückumsatz unter diesen Reservoirbedingungen. Begründe die Änderung mit Q und unterscheide sie von einer Änderung der Gleichgewichtskonstante der unveränderten Redoxgleichung. Eine Energiebewertung des gesamten Kreislaufs müsste auch die unbekannte Ligandenregeneration berücksichtigen.",
+            "understandingFocusEn": "A ligand reservoir only in the zinc half-cell binds Zn2+ and maintains its free activity at 0.0100 instead of 1, while a(Cu2+) = 1 and 25 °C remain unchanged. There is no ligand transfer or additional redox reaction; pure metals remain present. Calculate the new reversible forward voltage and minimum electrical work per mole for forced reversal under these reservoir conditions. Explain the change using Q and distinguish it from a change in the equilibrium constant of the unchanged redox equation. An energy assessment of the full cycle would also need the unknown ligand-regeneration contribution."
+          },
+          {
+            "id": "eqrk16-11-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-11-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Leite Mindestspannung und Betriebsspannung vor und nach Katalysatoreinsatz her. Formuliere saure Teilreaktionen und erkläre, weshalb K und die thermodynamische Richtung nicht durch Katalyse umgekehrt werden. Beurteile eine unvollständige 0,9-V-Werbung.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-11-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Derive reversible minimum and operating voltages before and after catalysis. Construct acidic half-reactions and explain why catalysis does not reverse K or thermodynamic direction. Assess an incomplete 0.9-V advert.",
+            "expectedPerformanceDe": "Kathode: 2 H+ + 2 e− → H2; Anode: H2O → ½ O2 + 2 H+ + 2 e−. Urev = ΔrG/(nF) = 1,22884 V. Betrieb vorher: 1,62884 V, nachher: 1,50384 V. Der Katalysator reduziert einen kinetischen Verlust, nicht ΔrG° oder K bei gleichen Endzuständen. Die Standard-Hinreaktion benötigt Arbeit; die Rückreaktion ist thermodynamisch begünstigt. Dauernde Gasabfuhr ist eine offene Randbedingung, keine geschlossene Gleichgewichtseinstellung. Eine 0,9-V-Aussage benötigt andere Bedingungen, weitere Energie, Kopplung oder eine andere Messgrenze. Ohne Systemdaten folgt weder eine Erklärung noch eine pauschale Betrugsdiagnose.",
+            "expectedPerformanceEn": "Cathode: 2 H+ + 2 e− → H2; anode: H2O → ½ O2 + 2 H+ + 2 e−. Urev = 1.22884 V, giving operating voltages of 1.62884 V before and 1.50384 V after catalysis. Catalysis reduces a kinetic loss, not ΔrG° or K at identical end states. The standard forward reaction requires work; the reverse is thermodynamically favoured. Continuous gas removal is an open boundary, not closed equilibration. A 0.9-V claim requires changed conditions, extra energy, coupling or another measurement boundary; system data are needed before explaining or dismissing it.",
+            "understandingFocusDe": "Erhöhe bei gleichbleibendem Sauerstoff und gleicher Temperatur den Wasserstoffpartialdruck. Begründe mit Q die höhere reversible Elektrolysespannung trotz gleichen Katalysators.",
+            "understandingFocusEn": "Increase hydrogen partial pressure at fixed oxygen and temperature. Use Q to explain increased reversible electrolysis voltage despite an unchanged catalyst."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+      "reason": "Author-only bounded material correction in eqrk16-12-a; implements the sealed four-gap author plan. This is not an independent P/A/D judgment.",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "dissent": [
+        "Unreviewed successor author material; independent review remains required. No observed learner/laboratory performance or human acceptance.",
+        "Canonical wording and source mappings are unchanged; this correction does not resolve external source/projection concerns."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Ein Geschwindigkeitsgesetz schränkt kompatible Mechanismen ein, legt sie allgemein aber nicht eindeutig fest.",
+            "essentialUnderstandingEn": "A rate law constrains compatible mechanisms but generally does not identify a unique one.",
+            "observablePerformanceDe": "eqrk16-12-a: Ordnungen und k = 0,20 mit korrekter Produktnormierung ermitteln. eqrk16-12-b: Die Quasistationaritätsgleichung mit allen Bildungs- und Verlusttermen ableiten.",
+            "observablePerformanceEn": "eqrk16-12-a: Determine orders and k = 0.20 with correct product normalisation. eqrk16-12-b: Derive the steady-state equation with every formation and loss term."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Elementarschritte, Zwischenprodukte und Vor-Gleichgewichte müssen Gesamtstöchiometrie und beobachtetes Gesetz reproduzieren.",
+            "essentialUnderstandingEn": "Elementary steps, intermediates and pre-equilibria must reproduce stoichiometry and the observed law.",
+            "observablePerformanceDe": "eqrk16-12-a: Zwei eigene unterschiedliche mehrstufige Mechanismushypothesen aus Gesetz und Nettoreaktion entwerfen und durch Zwischenproduktelimination, Erhaltung von Atomen/Ladung und korrekte GBS-Bedeutung prüfen. eqrk16-12-b: Beide Raten und Grenzgesetze quantitativ deuten.",
+            "observablePerformanceEn": "eqrk16-12-a: Independently propose two different multistep mechanisms from the law and net reaction and test them by eliminating intermediates, conserving atoms/charge and defining GBS correctly. eqrk16-12-b: Interpret both rates and limiting laws quantitatively."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Mechanismus-Hypothesen benötigen geänderte Bedingungen oder zusätzliche Beobachtungen zur Unterscheidung.",
+            "essentialUnderstandingEn": "Mechanistic hypotheses need changed conditions or additional observations to distinguish them.",
+            "observablePerformanceDe": "eqrk16-12-a: Nicht-Eindeutigkeit und eine unabhängige Unterscheidungsmessung begründen. eqrk16-12-b: Die Näherung und die Identifizierbarkeitsgrenze am geänderten Verlauf prüfen.",
+            "observablePerformanceEn": "eqrk16-12-a: Explain nonuniqueness and an independent discriminating measurement. eqrk16-12-b: Test the approximation and identifiability limit against the changed course."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "eqrk16-12-a-transfer",
+            "textDe": "Ein anderer Bedingungsbereich zeigt Sättigung bezüglich O2. Prüfe für deine selbst entworfenen Hypothesen, ob sie unter den jeweils genannten Näherungen diesen Verlauf vorhersagen können und welche Annahme gegebenenfalls neu geprüft werden muss. Ein Modell, das nur im untersuchten Anfangsbereich linear in O2 ist, darf nicht ohne Prüfung global extrapoliert werden.",
+            "textEn": "A different conditions range shows saturation with respect to O2. For each mechanism you proposed, check whether it can predict this behaviour under its stated approximations and which assumption, if any, needs reassessment. A model linear in O2 only over the initial range must not be extrapolated globally without checking."
+          },
+          {
+            "id": "eqrk16-12-b-transfer",
+            "textDe": "Nach einem Impuls steigt [I] zunächst deutlich. Welche Zeitphase verletzt die Näherung, und welche vollständige Differentialgleichung muss dort gelten?",
+            "textEn": "After a pulse, [I] initially accumulates substantially. Which time phase violates the approximation, and which full differential equation applies there?"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eqrk16-12-a",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-12-a; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Leite das empirische Geschwindigkeitsgesetz und k mit Einheiten her. Entwirf selbst zwei unterschiedliche mögliche mehrstufige Mechanismushypothesen aus diesem Gesetz und der Nettoreaktion, einschließlich der Zusammensetzung ihrer Zwischenprodukte und der benötigten Näherungen. Zeige für jede Hypothese durch Summierung und Zwischenproduktelimination die Vereinbarkeit mit Nettoreaktion und Gesetz. Erkläre gegebenenfalls den geschwindigkeitsbestimmenden Schritt (GBS), die fehlende Eindeutigkeit und eine zusätzliche unterscheidende Beobachtung. Andere chemisch konsistente Vorschläge als die Musterlösung sind zulässig.",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json #eqrk16-12-a; sha256:c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e. Derive the empirical rate law and k with units. Independently propose two different possible multistep mechanisms from this law and the net reaction, including intermediate compositions and the required approximations. For each hypothesis, demonstrate compatibility with the net reaction and law by adding steps and eliminating intermediates. Explain any rate-determining step (GBS), nonuniqueness and an additional discriminating observation. Chemically consistent proposals different from the sample solution are acceptable.",
+            "expectedPerformanceDe": "Aus der Datenvariation folgt v = k[NO]²[O2], k = 0,20 L²/(mol² s). Ein selbst entwickeltes zulässiges Paar: A: 2 NO ⇌ N2O2 schnell, N2O2 + O2 → 2 NO2 langsam; B: NO + O2 ⇌ NO3 schnell, NO3 + NO → 2 NO2 langsam. Beide erhalten Atome/Ladung und summieren sich zur Nettoreaktion. A liefert mit [N2O2] = KA[NO]² das Gesetz v = kA KA[NO]²[O2], B mit [NO3] = KB[NO][O2] dasselbe Gesetz. Konzentrationsbezogene KA/KB und elementare Ratenkonstanten müssen passende Einheiten besitzen. Schnelle Vorgleichgewichte und langsame Produktschritte sind explizite Modellannahmen; GBS bezeichnet hier den geschwindigkeitsbestimmenden langsamen Schritt. Gleichwertige eigene Konstruktionen mit hergeleitetem Gesetz sind zuzulassen. Zwei kompatible Modelle beweisen keine eindeutige reale Schrittfolge; zeitaufgelöster Zwischenproduktnachweis mit ausreichender Empfindlichkeit und weitere Kinetikdaten könnten unterscheiden. Im neuen Sättigungsbereich müssen die einfachen linearen Musteransätze neu geprüft werden. Für A ergibt quasistationäres N2O2 als mögliche Erweiterung v = k1 k2[NO]²[O2]/(k−1 + k2[O2]); das ist bei kleinem O2 linear und bei großem O2 sättigend. Andere selbst entworfene Modelle werden nach ihrer eigenen Herleitung und ihren Gültigkeitsbedingungen beurteilt. Hypothesen bleiben unbestätigte Modelle.",
+            "expectedPerformanceEn": "The data give v = k[NO]²[O2], k = 0.20 L²/(mol² s). One admissible independently constructed pair is A: fast 2 NO ⇌ N2O2, slow N2O2 + O2 → 2 NO2; B: fast NO + O2 ⇌ NO3, slow NO3 + NO → 2 NO2. Both conserve atoms/charge and sum to the net reaction. A gives [N2O2] = KA[NO]² and v = kA KA[NO]²[O2]; B gives [NO3] = KB[NO][O2] and the same law. Concentration-based KA/KB and elementary rate constants need consistent units. Fast pre-equilibria and slow product steps are explicit model assumptions; GBS here denotes the slow rate-determining step. Accept equivalent independent constructions with a derived law. Two compatible models establish no unique actual step sequence; time-resolved intermediate detection with adequate sensitivity and further kinetic data could discriminate. In the new saturation range the simple linear sample expressions need reassessment. For A, steady-state N2O2 could instead give v = k1 k2[NO]²[O2]/(k−1 + k2[O2]), linear at low O2 and saturating at high O2. Judge other independently proposed models by their own derivations and validity conditions. Hypotheses remain unconfirmed models.",
+            "understandingFocusDe": "Ein anderer Bedingungsbereich zeigt Sättigung bezüglich O2. Prüfe für deine selbst entworfenen Hypothesen, ob sie unter den jeweils genannten Näherungen diesen Verlauf vorhersagen können und welche Annahme gegebenenfalls neu geprüft werden muss. Ein Modell, das nur im untersuchten Anfangsbereich linear in O2 ist, darf nicht ohne Prüfung global extrapoliert werden.",
+            "understandingFocusEn": "A different conditions range shows saturation with respect to O2. For each mechanism you proposed, check whether it can predict this behaviour under its stated approximations and which assumption, if any, needs reassessment. A model linear in O2 only over the initial range must not be extrapolated globally without checking."
+          },
+          {
+            "id": "eqrk16-12-b",
+            "taskDemandDe": "Vollständiges eigenes Material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-12-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Leite das Gesetz mit der gegebenen Näherung her, berechne v bei C = 0,010 und 10 M und deute die Grenzfälle. Warum beweist eine passende Rate den Mechanismus noch nicht?",
+            "taskDemandEn": "Complete own material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json #eqrk16-12-b; sha256:86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e. Derive the law under the stated approximation, calculate v at C = 0.010 and 10 M, and interpret the limits. Why does a good rate fit not prove the mechanism?",
+            "expectedPerformanceDe": "0 ≈ k1[A][B] − k−1[I] − k2[I][C]. Damit [I] ≈ k1[A][B]/(k−1 + k2[C]) und v = k1k2[A][B][C]/(k−1 + k2[C]). Bei 0,010 M ergibt sich 9,95 · 10−5 M/s; bei 10 M 0,01667 M/s. Bei niedrigem C gilt näherungsweise v = (k1k2/k−1)[A][B][C]; bei hohem C nähert sich v dem Wert k1[A][B] = 0,0200 M/s. Rückzerfall und Abfangen von I erklären die geänderte Abhängigkeit. Gesamtstöchiometrie allein liefert kein Rategesetz. Kurze I-Lebensdauer, Quasistationarität und fehlende Nebenwege benötigen eigene Evidenz, etwa Zeitauflösung oder I-Nachweis. Reale Aktivitätseffekte bei 10 M können die Näherung verletzen.",
+            "expectedPerformanceEn": "Steady state gives 0 ≈ k1[A][B] − k−1[I] − k2[I][C], hence [I] ≈ k1[A][B]/(k−1 + k2[C]) and v = k1k2[A][B][C]/(k−1 + k2[C]). At 0.010 M, v ≈ 9.95 × 10−5 M/s; at 10 M, v ≈ 0.01667 M/s. Low C gives v ≈ (k1k2/k−1)[A][B][C]; high C approaches k1[A][B] = 0.0200 M/s. Competing return and capture of I explain the changing dependence. Overall stoichiometry alone gives no rate law. Short I lifetime, steady state and absence of side routes need independent evidence such as time resolution or I detection. Actual activity effects at 10 M may invalidate the approximation.",
+            "understandingFocusDe": "Nach einem Impuls steigt [I] zunächst deutlich. Welche Zeitphase verletzt die Näherung, und welche vollständige Differentialgleichung muss dort gelten?",
+            "understandingFocusEn": "After a pulse, [I] initially accumulates substantially. Which time phase violates the approximation, and which full differential equation applies there?"
+          }
+        ]
+      }
+    }
+  ]
+}

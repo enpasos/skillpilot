@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual unmodified stock prepare in isolated image-only staging host, not active integration",
+  "startedAtUTC": "2026-10-14T19:23:17.217213+00:00",
+  "command": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+    "--landscape",
+    "candidate/image-only-staging-landscape.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex image generation",
+    "--review-status",
+    "pilot"
+  ],
+  "exitCode": 0,
+  "sourceGoal": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-four-original-duty-a880-minimality-and-two-material-corrections-author-20261014-v2/candidate/one-new-isolation-explanation-whole-goal.author.json",
+  "sourceGoalSha256": "sha256:f192cae34526260064a44d15d16c111e235faee6c77dccdd5379cd8b431970ae",
+  "sourceHelpers": [
+    {
+      "path": "scripts/prepare_goal_visualization.mjs",
+      "sha256": "sha256:5785aab47d0305bd7bc038c480ff7ef29df5411f84903b3f2637f3742181109e",
+      "executionCopyByteExact": true
+    },
+    {
+      "path": "scripts/import_goal_visualization.mjs",
+      "sha256": "sha256:8de19e502028c48bf02e656eaef9337490e0f44b2ec8b5430d4e12ebd70697ac",
+      "executionCopyByteExact": true
+    },
+    {
+      "path": "scripts/goal_visualization_common.mjs",
+      "sha256": "sha256:ed91152f2bc3be33d449e3a405cc55ffc76fea7ba14bed1c85ea01845f7bc23a",
+      "executionCopyByteExact": true
+    }
+  ],
+  "landscapeContainsOneUnreviewedGoal": true,
+  "activeWrites": false,
+  "provider": "OpenAI / ChatGPT-Codex image generation"
+}

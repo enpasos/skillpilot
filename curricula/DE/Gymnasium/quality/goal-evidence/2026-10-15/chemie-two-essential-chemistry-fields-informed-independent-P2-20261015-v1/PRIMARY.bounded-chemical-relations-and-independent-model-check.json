@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-15T22:21:32.555951+00:00",
+  "role": "Own bounded chemical check using actual primary textbook passages; no copied third-party tasks, images or source text",
+  "actualCurrentReads": [
+    {
+      "title": "John McMurry / OpenStax, Organic Chemistry, 25.6 Reactions of Monosaccharides",
+      "url": "https://openstax.org/books/organic-chemistry/pages/25-6-reactions-of-monosaccharides",
+      "passagesActuallyRead": "Ring/open-chain equilibrium; basic copper reducing assay; glycoside restriction; fructose enediol rearrangement.",
+      "ownBoundedUse": "The text supports the stated relation between accessible sugar carbonyl forms and metal reduction. Its fructose example supports a possible alkaline rearrangement route. It does not establish glucose identity from a positive copper result."
+    },
+    {
+      "title": "John McMurry / OpenStax, Organic Chemistry, 25.8 Disaccharides",
+      "url": "https://openstax.org/books/organic-chemistry/pages/25-8-disaccharides",
+      "passagesActuallyRead": "Free anomeric hemiacetal in maltose; both anomeric centres linked in sucrose.",
+      "ownBoundedUse": "The reducing-end comparison supports the current maltose-versus-sucrose transfer. The result concerns the specified assay conditions, rather than a universal assertion that sucrose can never become reducing after chemical treatment."
+    },
+    {
+      "title": "John McMurry / OpenStax, Organic Chemistry, 26.1 Structures of Amino Acids",
+      "url": "https://openstax.org/books/organic-chemistry/pages/26-1-structures-of-amino-acids",
+      "passagesActuallyRead": "Ionic backbone, zwitterions, acid/base response, side-chain classification and glutamic-acid groups/pKa table.",
+      "ownBoundedUse": "The shared ionisable groups prevent inference of universal insolubility from a hydrocarbon side chain. Side-chain categories describe chemical functionality; whole-molecule charge remains necessary when explaining free-amino-acid observations."
+    },
+    {
+      "title": "John McMurry / OpenStax, Organic Chemistry, 26.2 Amino Acids and the Henderson–Hasselbalch Equation: Isoelectric Points",
+      "url": "https://openstax.org/books/organic-chemistry/pages/26-2-amino-acids-and-the-henderson-hasselbalch-equation-isoelectric-points",
+      "passagesActuallyRead": "pH−pKa as logarithm of deprotonated/protonated ratio; mixtures and dominant forms.",
+      "ownBoundedUse": "The equation checks dominant species without asserting complete protonation or equating a dominant neutral species with exactly zero mean charge. The later protein-solubility discussion is not used as a quantitative free-glutamic-acid solubility source."
+    }
+  ],
+  "ownNumericalModelCheck": {
+    "equation": "successive species ratio = 10^(pH - supplied pKa)",
+    "suppliedPkaValues": [
+      2.2,
+      4.3,
+      9.7
+    ],
+    "modelBoundary": "Use the rounded pKa values supplied by the fictional task. The normalised three-step species model is an additional explanatory check, not measured solution composition or activity-corrected speciation.",
+    "checks": [
+      {
+        "pH": 3.0,
+        "successiveDeprotonatedToProtonatedRatios": [
+          6.30957344480193,
+          0.05011872336272725,
+          1.995262314968883e-07
+        ],
+        "speciesChargesInOrder": [
+          1,
+          0,
+          -1,
+          -2
+        ],
+        "normalisedFractionsInSimplifiedThreeStepModel": [
+          0.13113376077877736,
+          0.8273980947267825,
+          0.04146813622045921,
+          8.273980947267842e-09
+        ],
+        "meanChargeForDistinctionOnly": 0.08966560801035627,
+        "newEmpiricalMeasurements": false
+      },
+      {
+        "pH": 8.0,
+        "successiveDeprotonatedToProtonatedRatios": [
+          630957.344480193,
+          5011.872336272725,
+          0.01995262314968883
+        ],
+        "speciesChargesInOrder": [
+          1,
+          0,
+          -1,
+          -2
+        ],
+        "normalisedFractionsInSimplifiedThreeStepModel": [
+          3.099809828471508e-10,
+          0.00019558477777659853,
+          0.9802459371345825,
+          0.019558477777659893
+        ],
+        "meanChargeForDistinctionOnly": -1.0193628923799214,
+        "newEmpiricalMeasurements": false
+      }
+    ],
+    "pIInThisRoundedSchoolModel": 3.25,
+    "loadingGPerL": 10.0,
+    "loadingBoundary": "10 g/L is supplied total loading, not a measured or inferred numerical saturation solubility. Solid/no-solid observations cannot isolate counterion, ionic-strength and crystal effects."
+  },
+  "curriculumScope": {
+    "retainedOwnOriginalBoundedClauseRead": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-two-existing-neighbor-profiles-informed-scope-audit-20261015-v1/PRIMARY.HE-Q2-basic-versus-elevated-and-charge-model-read.actual.json",
+      "sha256": "sha256:c32fbac87dbb6072e7dc505c54e535690b7475bd42a8486b843cad1fc012ee5e",
+      "bytes": 3888
+    },
+    "unchangedConclusion": "The previously read HE Q2 basic route supports reducing assays and disaccharide reasoning; the separate elevated/LK clause supplies the fructose/keto-enol extension. No universal basic-route fructose requirement is inferred.",
+    "otherJurisdictions": "No new clause reads or whole-country/course coverage claims. Applicability tags and metadata are not scientific source proof."
+  },
+  "licensesAndProvenance": "External pages are cited only for a bounded fact check. No external image, assessment, source text or task is incorporated or relicensed. The existing own fictional case materials remain at their original provenance and license.",
+  "noHumanTrial": true,
+  "actualMeasurements": false
+}

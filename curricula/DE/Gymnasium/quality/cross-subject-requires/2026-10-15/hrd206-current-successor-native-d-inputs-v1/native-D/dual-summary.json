@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:651e7f7b1d583008408e33d0c8634b31dc628fa811e5b62a7a166eec8b49a2f5",
+  "reviewInputFingerprint": "sha256:2c4651f21952e14549fb0767d9f7e016ee24aa8cdf720874707217fba4b7d04b",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-hrd206-current-successor-context-20261015-v1-a",
+      "roundId": "physik-hrd206-current-successor-context-20261015-v1-first-pass-a",
+      "independenceGroupId": "physik-hrd206-current-successor-context-20261015-v1-independent-a",
+      "runIds": [
+        "hrd206-current-successor-native-d-round-a-independent-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol (requested)::unobservable"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-hrd206-current-successor-context-20261015-v1-b",
+      "roundId": "physik-hrd206-current-successor-context-20261015-v1-first-pass-b",
+      "independenceGroupId": "physik-hrd206-current-successor-context-20261015-v1-independent-b",
+      "runIds": [
+        "hrd206-current-successor-native-d-b-root-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol (requested)::unobservable"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6.1-sol (requested)::unobservable"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "firstRecordId": "hrd206-current-successor-native-d-round-a-206-20261015-v1",
+      "secondRecordId": "hrd206-current-successor-native-d-b-root-20261015-v1-206fe51d",
+      "firstRunId": "hrd206-current-successor-native-d-round-a-independent-20261015-v1",
+      "secondRunId": "hrd206-current-successor-native-d-b-root-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

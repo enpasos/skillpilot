@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "role": "author technical checks; no executed learner evidence",
+  "profileSchema": {
+    "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+    "bytes": 8707
+  },
+  "profileSchemaRowsPassed": 2,
+  "unchanged93ScientificProfileExceptExplicitCasePaths": true,
+  "calculations": {
+    "I1_N_to_O": {
+      "exactRatio": "9/10",
+      "percent": 90.0
+    },
+    "I1_Z_to_O": {
+      "exactRatio": "1/5",
+      "percent": 20.0
+    },
+    "I1_N_share_of_N_plus_Z_initial": {
+      "exactRatio": "2/3",
+      "percent": 66.66666666666667
+    },
+    "I1_N_share_of_N_plus_Z_O": {
+      "exactRatio": "9/10",
+      "percent": 90.0
+    },
+    "I1_N_recovery_O": {
+      "exactRatio": "9/10",
+      "percent": 90.0
+    },
+    "I3_U_share_of_U_plus_V_initial": {
+      "exactRatio": "3/5",
+      "percent": 60.0
+    },
+    "I3_U_share_of_U_plus_V_F1": {
+      "exactRatio": "10/11",
+      "percent": 90.9090909090909
+    },
+    "I3_U_recovery_F1": {
+      "exactRatio": "5/6",
+      "percent": 83.33333333333333
+    }
+  },
+  "I1N_ZAndI3U_VMassBalancesExact": true,
+  "allAmountsReferOnlyToBalancedSolutes": true,
+  "wholeLiquidPurityComputable": false,
+  "changedCases": [
+    "HB-I1",
+    "HB-I2",
+    "HB-I3"
+  ],
+  "otherEightCasesExact": true,
+  "caseCount": 11,
+  "rubricCount": 44,
+  "wholeCaseFieldDeltas": [
+    {
+      "caseId": "HB-I1",
+      "fieldDeltas": [
+        {
+          "jsonPointer": "/materialDe",
+          "before": "Vollständige Modellkarte, keine Untersuchung oder Anwendung am Menschen: Ein gedachtes Pflanzenmaterial enthält den bereits darin vorhandenen molekularen Naturstoff N sowie Z und unlösliche Fasern. N und Z bezeichnen Molekülarten, nicht die Elemente Stickstoff oder Zink. Nur N verursacht im vorgegebenen nichtklinischen Test die gewünschte biologische Wirkung; Z und Fasern zeigen diese Wirkung unter den gegebenen Bedingungen nicht. Definition für diese Karte: Der Wirkstoff ist die für die beabsichtigte Wirkung verantwortliche Substanz, nicht das gesamte Gemisch. Nach einer vorgegebenen theoretischen Aufarbeitung liegt eine Mischung aus0.20gN und0.10gZ vor. Filtration hält gelöste N-/Z-Moleküle nicht zurück. Vorgegeben ist eine Flüssig-Flüssig-Verteilung zwischen zwei unmischbaren Modellphasen W und O mit gleichem Volumen, ohne chemische Reaktion oder Stoffverlust. Für gelöstes N gilt D_N=c_O/c_W=9; für Z gilt D_Z=0.25. Die Ausgangsmengen befinden sich zunächst in W. Nach Einstellung der Verteilung und Abtrennen der Phasen enthält O0.18gN+0.02gZ, W dagegen0.02gN+0.08gZ. Die unterschiedlichen Verteilungsverhältnisse sind Modell-Eingaben, keine hier zu erratenden Stoffdaten oder Benennung realer Lösungsmittel. Die Identität der N-Moleküle bleibt unverändert; es werden keine Bindungen neu gebildet. Aufarbeitungsprinzipien, keine nachzumachende Rezeptur. Klinische Wirksamkeit, Verträglichkeit und Freigabe fehlen.",
+          "after": "Vollständige Modellkarte, keine Untersuchung oder Anwendung am Menschen: Ein gedachtes Pflanzenmaterial enthält den bereits darin vorhandenen molekularen Naturstoff N sowie Z und unlösliche Fasern. N und Z bezeichnen Molekülarten, nicht die Elemente Stickstoff oder Zink. Nur N verursacht im vorgegebenen nichtklinischen Test die gewünschte biologische Wirkung; Z und Fasern zeigen diese Wirkung unter den gegebenen Bedingungen nicht. Definition für diese Karte: Der Wirkstoff ist die für die beabsichtigte Wirkung verantwortliche Substanz, nicht das gesamte Gemisch. Nach einer vorgegebenen theoretischen Aufarbeitung liegt eine Mischung aus0.20gN und0.10gZ vor. Filtration hält gelöste N-/Z-Moleküle nicht zurück. Vorgegeben ist eine Flüssig-Flüssig-Verteilung zwischen zwei unmischbaren Modellphasen W und O mit gleichem Volumen, ohne chemische Reaktion oder Stoffverlust. Für gelöstes N gilt D_N=c_O/c_W=9; für Z gilt D_Z=0.25. Die Ausgangsmengen befinden sich zunächst in W. Nach Einstellung der Verteilung und Abtrennen der Phasen enthält O0.18gN+0.02gZ, W dagegen0.02gN+0.08gZ. Die unterschiedlichen Verteilungsverhältnisse sind Modell-Eingaben, keine hier zu erratenden Stoffdaten oder Benennung realer Lösungsmittel. Die Identität der N-Moleküle bleibt unverändert; es werden keine Bindungen neu gebildet. Aufarbeitungsprinzipien, keine nachzumachende Rezeptur. Klinische Wirksamkeit, Verträglichkeit und Freigabe fehlen. Alle genannten Grammwerte bilanzieren ausschließlich die gelösten Stoffe N und Z. Massen der Lösungsmittel sind nicht gegeben. Ein N-Massenanteil wird hier nur auf die Summe N+Z bezogen; die Reinheit oder Zusammensetzung der gesamten Flüssigphase ist damit nicht bestimmt."
+        },
+        {
+          "jsonPointer": "/materialEn",
+          "before": "Complete model card, no human use/investigation: imagined plant material already contains molecular natural product N, Z and insoluble fibres. N/Z label molecules, not the elements nitrogen or zinc. Only N produces the specified desired effect in a supplied nonclinical assay; Z/fibres do not under those conditions. Card definition: the active ingredient is the substance responsible for the intended effect, not the whole mixture. A theoretical work-up supplies0.20gN+0.10gZ. Filtration does not retain dissolved N/Z molecules. A liquid-liquid partition between immiscible model phases W and O of equal volume is supplied, without chemical reaction or loss. Dissolved N has D_N=c_O/c_W=9, while Z has D_Z=0.25. Both initial amounts are in W. After equilibration and phase separation, O contains0.18gN+0.02gZ and W contains0.02gN+0.08gZ. These distribution ratios are supplied model inputs, not real-solvent data to guess. N’s molecular identity is unchanged; no new bonds form. These are work-up principles, not a recipe to perform. Clinical efficacy, tolerability and authorization are absent.",
+          "after": "Complete model card, no human use/investigation: imagined plant material already contains molecular natural product N, Z and insoluble fibres. N/Z label molecules, not the elements nitrogen or zinc. Only N produces the specified desired effect in a supplied nonclinical assay; Z/fibres do not under those conditions. Card definition: the active ingredient is the substance responsible for the intended effect, not the whole mixture. A theoretical work-up supplies0.20gN+0.10gZ. Filtration does not retain dissolved N/Z molecules. A liquid-liquid partition between immiscible model phases W and O of equal volume is supplied, without chemical reaction or loss. Dissolved N has D_N=c_O/c_W=9, while Z has D_Z=0.25. Both initial amounts are in W. After equilibration and phase separation, O contains0.18gN+0.02gZ and W contains0.02gN+0.08gZ. These distribution ratios are supplied model inputs, not real-solvent data to guess. N’s molecular identity is unchanged; no new bonds form. These are work-up principles, not a recipe to perform. Clinical efficacy, tolerability and authorization are absent. Every stated gram value balances only the dissolved substances N and Z. Solvent masses are not supplied. An N mass fraction here refers only to the sum N+Z; it does not determine the purity or composition of the whole liquid phase."
+        },
+        {
+          "jsonPointer": "/modelAnswerDe",
+          "before": "N ist der vorgegebene biologisch aktive Naturstoff; Pflanzenmaterial und beide Fraktionen sind Gemische. Die angereicherte Fraktion enthält90%N und gewinnt90%des ursprünglich enthaltenen N zurück; das ist weder völlige Reinheit noch quantitative Rückgewinnung. Gelöste Moleküle passieren den Filter. Isolierung trennt vorhandenes N ab, statt es chemisch neu zu bilden. Der Testeffekt eines unbekannten Extraktgemischs identifiziert nicht dessen wirksame Molekülart und beweist keine klinische Wirksamkeit oder Unbedenklichkeit aus pflanzlicher Herkunft. Bei gleichen Phasenvolumina gehen die Anteile D/(1+D) in O: für N9/10=0.90, für Z0.25/1.25=0.20. So gelangen0.18gN und0.02gZ in dieselbe O-Phase; die Moleküle werden nach unterschiedlicher Verteilung getrennt, nicht chemisch umgebaut. O enthält weiterhin ein Gemisch und keine reine N-Substanz.",
+          "after": "N ist der vorgegebene biologisch aktive Naturstoff; Pflanzenmaterial und beide Fraktionen sind Gemische. In O beträgt der N-Massenanteil innerhalb der bilanzierten gelösten Stoffe 0.18/(0.18+0.02)=90 % (anfangs 0.20/(0.20+0.10)≈66.7 %). Die N-Rückgewinnung beträgt dagegen 0.18/0.20=90 %. Die Nenner sind verschieden; ohne Lösungsmittelmassen folgt keine Reinheit der gesamten Flüssigphase. Auch die bilanzierten gelösten Stoffe sind kein reines N, und nicht alles N wird in O zurückgewonnen. Gelöste Moleküle passieren den Filter. Isolierung trennt vorhandenes N ab, statt es chemisch neu zu bilden. Der Testeffekt eines unbekannten Extraktgemischs identifiziert nicht dessen wirksame Molekülart und beweist keine klinische Wirksamkeit oder Unbedenklichkeit aus pflanzlicher Herkunft. Bei gleichen Phasenvolumina gehen die Anteile D/(1+D) in O: für N9/10=0.90, für Z0.25/1.25=0.20. So gelangen0.18gN und0.02gZ in dieselbe O-Phase; die Moleküle werden nach unterschiedlicher Verteilung getrennt, nicht chemisch umgebaut. O enthält weiterhin ein Gemisch und keine reine N-Substanz."
+        },
+        {
+          "jsonPointer": "/modelAnswerEn",
+          "before": "N is the supplied active natural compound; the plant material/fractions are mixtures. The enriched fraction is90%N and recovers90%of initial N, not complete purity or quantitative recovery. Dissolved molecules pass a filter. Isolation separates existing N rather than chemically producing it. An unknown extract’s assay effect identifies neither its active molecule nor clinical efficacy/safety; natural origin is no guarantee. With equal phase volumes the fraction entering O is D/(1+D):9/10=0.90 for N and0.25/1.25=0.20 for Z. Thus O receives0.18gN and0.02gZ; different partitioning separates existing molecules without chemically converting them. O remains a mixture, not pure N.",
+          "after": "N is the supplied active natural compound; the plant material/fractions are mixtures. In O, the N mass fraction within the balanced dissolved substances is 0.18/(0.18+0.02)=90% (initially 0.20/(0.20+0.10)≈66.7%). N recovery instead is 0.18/0.20=90%. The denominators differ; without solvent masses no whole-liquid-phase purity follows. Even the balanced solutes are not pure N, and O does not recover all N. Dissolved molecules pass a filter. Isolation separates existing N rather than chemically producing it. An unknown extract’s assay effect identifies neither its active molecule nor clinical efficacy/safety; natural origin is no guarantee. With equal phase volumes the fraction entering O is D/(1+D):9/10=0.90 for N and0.25/1.25=0.20 for Z. Thus O receives0.18gN and0.02gZ; different partitioning separates existing molecules without chemically converting them. O remains a mixture, not pure N."
+        },
+        {
+          "jsonPointer": "/rubric/2/fullCreditDe",
+          "before": "90%Reinheit/90%N-Rückgewinnung und Isolierung ohne neue Bindungsbildung korrekt.",
+          "after": "90 % N-Massenanteil nur an N+Z: 0.18/(0.18+0.02); 90 % N-Rückgewinnung: 0.18/0.20. Nenner unterschieden, ohne Lösungsmittelmasse keine Reinheit der gesamten Flüssigphase behauptet; Isolierung ohne neue Bindungsbildung erklärt."
+        },
+        {
+          "jsonPointer": "/rubric/2/fullCreditEn",
+          "before": "Correct90%purity/90%N recovery and isolation without new bonds.",
+          "after": "90% N mass fraction only within N+Z: 0.18/(0.18+0.02); 90% N recovery: 0.18/0.20. Distinguishes denominators, makes no whole-liquid-phase purity claim without solvent mass, and explains isolation without new bonds."
+        },
+        {
+          "jsonPointer": "/taskDemandDe",
+          "before": "Erkläre Wirkstoff, Naturstoff, Gemisch und Fraktion am Beispiel. Begründe, weshalb einfache Filtration die gelösten Bestandteile nicht trennt. Beurteile Reinheit, Ausbeutegrenze und Isolierung gegenüber Synthese. Transfer: Ein neuer Naturauszug ist pflanzlich und zeigt einen Testeffekt; welche Wirkstoff- oder Unbedenklichkeitsbehauptung folgt daraus noch nicht? Erkläre das tatsächlich gegebene Verteilungsprinzip: Warum reichert O N stärker als Z an, obwohl gewöhnliche Filtration beide gelösten Molekülarten passieren lässt?",
+          "after": "Erkläre Wirkstoff, Naturstoff, Gemisch und Fraktion am Beispiel. Begründe, weshalb einfache Filtration die gelösten Bestandteile nicht trennt. Beurteile den N-Massenanteil innerhalb der bilanzierten gelösten Stoffe N+Z (nicht der gesamten Flüssigphase), die Rückgewinnungsgrenze und Isolierung gegenüber Synthese. Transfer: Ein neuer Naturauszug ist pflanzlich und zeigt einen Testeffekt; welche Wirkstoff- oder Unbedenklichkeitsbehauptung folgt daraus noch nicht? Erkläre das tatsächlich gegebene Verteilungsprinzip: Warum reichert O N stärker als Z an, obwohl gewöhnliche Filtration beide gelösten Molekülarten passieren lässt?"
+        },
+        {
+          "jsonPointer": "/taskDemandEn",
+          "before": "Explain active ingredient, natural product, mixture and fraction. Explain why simple filtration cannot separate the dissolved compounds. Assess purity, recovery and isolation versus synthesis. Transfer: a new plant extract produces an assay effect; which active-ingredient or safety conclusion still does not follow? Explain the supplied partition principle: why does O enrich N more strongly than Z even though ordinary filtration passes both dissolved species?",
+          "after": "Explain active ingredient, natural product, mixture and fraction. Explain why simple filtration cannot separate the dissolved compounds. Assess the N mass fraction within the balanced dissolved substances N+Z (not the whole liquid phase), recovery and isolation versus synthesis. Transfer: a new plant extract produces an assay effect; which active-ingredient or safety conclusion still does not follow? Explain the supplied partition principle: why does O enrich N more strongly than Z even though ordinary filtration passes both dissolved species?"
+        }
+      ]
+    },
+    {
+      "caseId": "HB-I2",
+      "fieldDeltas": [
+        {
+          "jsonPointer": "/materialDe",
+          "before": "Vollständiger zweiter Modellfall. P ist als Molekülstruktur vollständig verbal gegeben: Benzolring mit COOH an Ringposition1 und OH an Position2. Q hat dieselbe Summenformel C7H6O3, aber OH an Position3; P und Q sind daher verschiedene Molekülarten. Die Datentabelle gibt für diesen nichtklinischen Test einen gewünschten Effekt nur für P an. Pflanzenextrakt E enthält P+Q; eine vorgegebene geeignete Trennung liefert die Fraktionen F1(95%P,5%Q) und F2(10%P,90%Q). Eine separat beschriebene Synthese stellt P aus chemisch anderen Edukten durch Bindungsumordnung her; eine anschließende Analyse bestätigt die oben genannte vollständige P-Struktur. Für den Vergleich werden gleiche Konzentration und Testbedingungen vorgegeben. Kein eigener Versuch, keine therapeutische Aussage und keine Empfehlung, diese Stoffe zu verwenden.",
+          "after": "Vollständiger zweiter Modellfall. P ist als Molekülstruktur vollständig verbal gegeben: Benzolring mit COOH an Ringposition1 und OH an Position2. Q hat dieselbe Summenformel C7H6O3, aber OH an Position3; P und Q sind daher verschiedene Molekülarten. Die Datentabelle gibt für diesen nichtklinischen Test einen gewünschten Effekt nur für P an. Pflanzenextrakt E enthält P+Q; eine vorgegebene geeignete Trennung liefert die Fraktionen F1(95%P,5%Q) und F2(10%P,90%Q). Eine separat beschriebene Synthese stellt P aus chemisch anderen Edukten durch Bindungsumordnung her; eine anschließende Analyse bestätigt die oben genannte vollständige P-Struktur. Für den Vergleich werden gleiche Konzentration und Testbedingungen vorgegeben. Kein eigener Versuch, keine therapeutische Aussage und keine Empfehlung, diese Stoffe zu verwenden. Die Prozentzahlen sind ausschließlich Massenanteile innerhalb der bilanzierten gelösten Stoffe P+Q. Lösungsmittelmassen und mögliche nicht charakterisierte Verunreinigungen sind nicht angegeben; deshalb ist die Reinheit der gesamten Flüssigphase oder einer vollständig charakterisierten Probe daraus nicht bestimmbar. Ein selektiver Trennmechanismus wird in diesem Identitäts-/Herkunftsfall nicht geliefert."
+        },
+        {
+          "jsonPointer": "/materialEn",
+          "before": "Complete second model. P’s full verbal constitution is a benzene ring with COOH at position1 and OH at position2. Q has the same formula C7H6O3 but OH at position3; they are different molecular species. Supplied nonclinical data assign the desired effect only to P in this assay. Plant extract E contains P+Q; a suitable supplied separation gives F1(95%P/5%Q) and F2(10%P/90%Q). A separate synthesis produces P from chemically different reactants by bond rearrangement; subsequent analysis confirms the full stated P constitution. Concentration/test conditions are equal for comparisons. No experiment, therapeutic claim or recommendation to use the substances.",
+          "after": "Complete second model. P’s full verbal constitution is a benzene ring with COOH at position1 and OH at position2. Q has the same formula C7H6O3 but OH at position3; they are different molecular species. Supplied nonclinical data assign the desired effect only to P in this assay. Plant extract E contains P+Q; a suitable supplied separation gives F1(95%P/5%Q) and F2(10%P/90%Q). A separate synthesis produces P from chemically different reactants by bond rearrangement; subsequent analysis confirms the full stated P constitution. Concentration/test conditions are equal for comparisons. No experiment, therapeutic claim or recommendation to use the substances. The percentages are mass fractions only within the balanced dissolved substances P+Q. Solvent masses and possible uncharacterized impurities are unspecified, so purity of the whole liquid phase or a fully characterized sample cannot be determined. This identity/origin case supplies no selective separation mechanism."
+        },
+        {
+          "jsonPointer": "/modelAnswerDe",
+          "before": "Isolierung reichert bereits vorhandenes P an; Synthese bildet P aus anderen Edukten. F1 und F2 bleiben Gemische, F1 ist P-reicher, aber nicht automatisch rein. Die vollständige Verknüpfungsstruktur unterscheidet P und Q trotz gleicher Summenformel. Dasselbe bestätigte P-Molekül kann aus beiden Wegen stammen; Herkunft allein beweist weder eine andere Identität noch identische Verunreinigungen. Angaben zu Verunreinigungen, Exposition und klinischer Wirksamkeit/Sicherheit fehlen, daher folgt keine Anwendungsfreigabe.",
+          "after": "Isolierung reichert bereits vorhandenes P an; Synthese bildet P aus anderen Edukten. F1 und F2 bleiben Gemische, F1 ist P-reicher, aber nicht automatisch rein. Die vollständige Verknüpfungsstruktur unterscheidet P und Q trotz gleicher Summenformel. Dasselbe bestätigte P-Molekül kann aus beiden Wegen stammen; Herkunft allein beweist weder eine andere Identität noch identische Verunreinigungen. Angaben zu Verunreinigungen, Exposition und klinischer Wirksamkeit/Sicherheit fehlen, daher folgt keine Anwendungsfreigabe. Die Angaben 95 %/5 % und 10 %/90 % beziehen sich nur auf die jeweils bilanzierte P+Q-Masse, nicht auf die gesamte Flüssigphase. Ohne Lösungsmittel- und weitere Verunreinigungsdaten ist deren Reinheit offen. Dieser Fall prüft Identität und Herkunft; er liefert keinen zweiten kausalen Trennmechanismus."
+        },
+        {
+          "jsonPointer": "/modelAnswerEn",
+          "before": "Isolation enriches existing P; synthesis forms P from different reactants. Both fractions remain mixtures and F1 is more P-rich. Full connectivity distinguishes P/Q despite equal formula. The same confirmed P molecule can arise by either route; origin alone establishes neither different identity nor equal impurity profiles. Impurity characterization, exposure/dose and clinical/safety evidence are absent, preventing a use authorization.",
+          "after": "Isolation enriches existing P; synthesis forms P from different reactants. Both fractions remain mixtures and F1 is more P-rich. Full connectivity distinguishes P/Q despite equal formula. The same confirmed P molecule can arise by either route; origin alone establishes neither different identity nor equal impurity profiles. Impurity characterization, exposure/dose and clinical/safety evidence are absent, preventing a use authorization. The 95%/5% and 10%/90% values refer only to the balanced P+Q mass in each fraction, not the whole liquid phase. Its purity remains undetermined without solvent and further impurity data. This case checks identity and origin and supplies no second causal separation mechanism."
+        },
+        {
+          "jsonPointer": "/rubric/1/fullCreditDe",
+          "before": "Beide Fraktionen als Gemische mit unterschiedlicher Anreicherung eingeordnet.",
+          "after": "Beide Fraktionen als Gemische mit unterschiedlicher Anreicherung eingeordnet. Prozentwerte ausdrücklich nur an der bilanzierten gelösten P+Q-Masse, nicht an der gesamten Flüssigphase, festgemacht."
+        },
+        {
+          "jsonPointer": "/rubric/1/fullCreditEn",
+          "before": "Classifies both fractions as mixtures with differing enrichment.",
+          "after": "Classifies both fractions as mixtures with differing enrichment. Explicitly restricts percentages to the balanced dissolved P+Q mass, not the whole liquid phase."
+        },
+        {
+          "jsonPointer": "/rubric/3/fullCreditDe",
+          "before": "Keine Reinheits-, klinische oder Sicherheitsfreigabe ohne Daten erfunden.",
+          "after": "Keine Reinheits-, klinische oder Sicherheitsfreigabe ohne Daten erfunden. Fehlende Lösungsmittel-/weitere Verunreinigungsdaten und fehlenden Trennmechanismus nicht erfunden."
+        },
+        {
+          "jsonPointer": "/rubric/3/fullCreditEn",
+          "before": "Invents no purity, clinical or safety authorization without data.",
+          "after": "Invents no purity, clinical or safety authorization without data. Does not invent absent solvent/further impurity data or a separation mechanism."
+        },
+        {
+          "jsonPointer": "/taskDemandDe",
+          "before": "Erläutere die Wirkstoff-Isolierung und grenze sie von der angegebenen Synthese ab. Ordne die Fraktionen ein. Prüfe die Behauptungen: gleiche Summenformel bedeutet gleicher Wirkstoff; pflanzlich isoliertes P muss chemisch anders sein als synthetisches P. Welche Angaben fehlen für Reinheits- oder Anwendungsbehauptungen?",
+          "after": "Erläutere die Wirkstoff-Isolierung und grenze sie von der angegebenen Synthese ab. Ordne die Fraktionen ein. Prüfe die Behauptungen: gleiche Summenformel bedeutet gleicher Wirkstoff; pflanzlich isoliertes P muss chemisch anders sein als synthetisches P. Welche Angaben fehlen für Reinheits- oder Anwendungsbehauptungen? Benenne ausdrücklich P+Q als Bezugsmasse der angegebenen Anteile und grenze sie von der gesamten Flüssigphase ab; erfinde keinen hier nicht gegebenen Trennmechanismus."
+        },
+        {
+          "jsonPointer": "/taskDemandEn",
+          "before": "Explain active-ingredient isolation versus the supplied synthesis. Classify fractions. Evaluate: equal molecular formula means the same active compound; plant-isolated P must differ chemically from synthetic P. What data are missing for purity/use claims?",
+          "after": "Explain active-ingredient isolation versus the supplied synthesis. Classify fractions. Evaluate: equal molecular formula means the same active compound; plant-isolated P must differ chemically from synthetic P. What data are missing for purity/use claims? Explicitly identify P+Q as the reference mass for the stated fractions and distinguish it from the whole liquid phase; do not invent an absent separation mechanism."
+        }
+      ]
+    },
+    {
+      "caseId": "HB-I3",
+      "fieldDeltas": [
+        {
+          "jsonPointer": "/materialDe",
+          "before": "Vollständig vorgegebener neuer Modellfall, keine Versuchsanleitung. Ein Pflanzenextrakt enthält die gelösten Molekülarten U und V. Nur U verursacht im vorgegebenen nichtklinischen Test die beabsichtigte biologische Wirkung; V zeigt diese Wirkung unter diesen Bedingungen nicht. U und V sind Bezeichnungen für Molekülarten, keine Elementsymbole. Der aufgetragene Extrakt enthält 0.12 g U und 0.08 g V. Gewöhnliche Filtration lässt beide gelösten Molekülarten passieren. Ein gegebenes Säulenmodell enthält eine feste Oberfläche und ein durchströmendes flüssiges Transportmittel. Unter den angegebenen Modellbedingungen haften U-Moleküle schwächer und V-Moleküle stärker, jeweils reversibel, an der Oberfläche. Es entstehen keine neuen kovalenten Bindungen; zwischenzeitlich haftende Moleküle lösen sich unverändert wieder. Daher werden U-Moleküle im Mittel früher weitertransportiert. Zwei gesammelte Modellfraktionen enthalten F1: 0.10 g U und 0.01 g V; F2: 0.02 g U und 0.07 g V. Es gibt keinen Stoffverlust und keinen weiteren Bestandteil. Diese Zahlen und Haftungsunterschiede sind erfundene, ausdrücklich gelieferte Unterrichtsdaten; reale Stoffe, Lösungsmittel und eine Durchführung werden nicht verlangt. Für einen neuen Vergleich wird nur der Haftungsunterschied vertauscht: U haftet jetzt stärker als V; die Zahlen der ersten Tabelle dürfen nicht auf diesen neuen Vergleich übertragen werden. Klinische Wirkung, Sicherheit und Produktfreigabe sind nicht untersucht.",
+          "after": "Vollständig vorgegebener neuer Modellfall, keine Versuchsanleitung. Ein Pflanzenextrakt enthält die gelösten Molekülarten U und V. Nur U verursacht im vorgegebenen nichtklinischen Test die beabsichtigte biologische Wirkung; V zeigt diese Wirkung unter diesen Bedingungen nicht. U und V sind Bezeichnungen für Molekülarten, keine Elementsymbole. Der aufgetragene Extrakt enthält 0.12 g U und 0.08 g V. Gewöhnliche Filtration lässt beide gelösten Molekülarten passieren. Ein gegebenes Säulenmodell enthält eine feste Oberfläche und ein durchströmendes flüssiges Transportmittel. Unter den angegebenen Modellbedingungen haften U-Moleküle schwächer und V-Moleküle stärker, jeweils reversibel, an der Oberfläche. Es entstehen keine neuen kovalenten Bindungen; zwischenzeitlich haftende Moleküle lösen sich unverändert wieder. Daher werden U-Moleküle im Mittel früher weitertransportiert. Zwei gesammelte Modellfraktionen enthalten F1: 0.10 g U und 0.01 g V; F2: 0.02 g U und 0.07 g V. Für die bilanzierten gelösten Stoffe U und V gibt es keinen Verlust und keinen weiteren bilanzierten gelösten Bestandteil. Die Massen des flüssigen Transportmittels und der festen Oberfläche gehören nicht zu dieser U+V-Bilanz. Lösungsmittelmassen sind nicht gegeben. U-Massenanteile beziehen sich ausschließlich auf die Summe U+V, nicht auf die gesamte Flüssigphase. Diese Zahlen und Haftungsunterschiede sind erfundene, ausdrücklich gelieferte Unterrichtsdaten; reale Stoffe, Lösungsmittel und eine Durchführung werden nicht verlangt. Für einen neuen Vergleich wird nur der Haftungsunterschied vertauscht: U haftet jetzt stärker als V; die Zahlen der ersten Tabelle dürfen nicht auf diesen neuen Vergleich übertragen werden. Klinische Wirkung, Sicherheit und Produktfreigabe sind nicht untersucht."
+        },
+        {
+          "jsonPointer": "/materialEn",
+          "before": "Complete new supplied model, not a laboratory procedure. A plant extract contains dissolved molecular species U and V. Only U causes the intended biological effect in the supplied nonclinical assay; V does not under these conditions. U and V label molecular species, not elements. The loaded extract contains 0.12 g U and 0.08 g V. Ordinary filtration passes both dissolved species. A supplied column model has a solid surface and a flowing liquid carrier. Under the stated model conditions U molecules adhere more weakly and V molecules more strongly, reversibly, to the surface. No new covalent bonds form; temporarily attached molecules detach unchanged. U molecules are therefore transported onward earlier on average. Two collected model fractions contain F1: 0.10 g U and 0.01 g V; F2: 0.02 g U and 0.07 g V. There is no substance loss or additional component. The values and adhesion differences are fictional supplied classroom inputs; no real compounds, solvents or execution are requested. A fresh comparison reverses only the adhesion difference: U now adheres more strongly than V; the original table values cannot be transferred to that new comparison. Clinical efficacy, safety and product authorization have not been studied.",
+          "after": "Complete new supplied model, not a laboratory procedure. A plant extract contains dissolved molecular species U and V. Only U causes the intended biological effect in the supplied nonclinical assay; V does not under these conditions. U and V label molecular species, not elements. The loaded extract contains 0.12 g U and 0.08 g V. Ordinary filtration passes both dissolved species. A supplied column model has a solid surface and a flowing liquid carrier. Under the stated model conditions U molecules adhere more weakly and V molecules more strongly, reversibly, to the surface. No new covalent bonds form; temporarily attached molecules detach unchanged. U molecules are therefore transported onward earlier on average. Two collected model fractions contain F1: 0.10 g U and 0.01 g V; F2: 0.02 g U and 0.07 g V. There is no loss of the balanced dissolved substances U and V or additional balanced dissolved component. The liquid carrier and solid surface masses are outside this U+V balance. Solvent masses are not supplied. U mass fractions refer only to the sum U+V, not the whole liquid phase. The values and adhesion differences are fictional supplied classroom inputs; no real compounds, solvents or execution are requested. A fresh comparison reverses only the adhesion difference: U now adheres more strongly than V; the original table values cannot be transferred to that new comparison. Clinical efficacy, safety and product authorization have not been studied."
+        },
+        {
+          "jsonPointer": "/modelAnswerDe",
+          "before": "U hat im vorgegebenen Test die Wirkstoffrolle; Extrakt, F1 und F2 enthalten jeweils U und V. Schwächere reversible Haftung hält U im ersten Modell durchschnittlich kürzer zurück, sodass die frühere Fraktion F1 U-reicher ist. Gewöhnliche Filtration hält die gelösten Moleküle nicht entsprechend ihrer Haftung an dieser Säulenoberfläche getrennt zurück. Beide U-Mengen summieren sich zu 0.12 g, beide V-Mengen zu 0.08 g; die vorhandenen Moleküle werden verteilt, nicht synthetisiert. F1 enthält 0.10/0.11, also rund 90.9 % U; die U-Rückgewinnung in F1 beträgt 0.10/0.12, also rund 83.3 %. Unterschiedliche Bezugsgrößen erklären die unterschiedlichen Anteile; F1 ist weder völlig rein noch enthält sie alles U. Im neuen Modell kommt schwächer haftendes V im Mittel früher, stärker haftendes U später; konkrete neue Mengen sind nicht gegeben. U bleibt dieselbe Molekülart. Ein Testeffekt eines unbekannten Gemischs würde dessen wirksamen Bestandteil und klinische Sicherheit nicht allein feststellen.",
+          "after": "U hat im vorgegebenen Test die Wirkstoffrolle; Extrakt, F1 und F2 enthalten jeweils U und V. Schwächere reversible Haftung hält U im ersten Modell durchschnittlich kürzer zurück, sodass die frühere Fraktion F1 U-reicher ist. Gewöhnliche Filtration hält die gelösten Moleküle nicht entsprechend ihrer Haftung an dieser Säulenoberfläche getrennt zurück. Beide U-Mengen summieren sich zu 0.12 g, beide V-Mengen zu 0.08 g; die vorhandenen Moleküle werden verteilt, nicht synthetisiert. Der U-Massenanteil innerhalb der bilanzierten gelösten Stoffe in F1 beträgt 0.10/(0.10+0.01), also rund 90.9 % (anfangs 0.12/(0.12+0.08)=60 %); die U-Rückgewinnung in F1 beträgt 0.10/0.12, also rund 83.3 %. Die Nenner U+V in F1 und anfängliches U erklären die unterschiedlichen Anteile. Ohne Lösungsmittelmasse ist die Reinheit der gesamten Flüssigphase nicht bestimmt; die bilanzierten gelösten Stoffe sind ebenfalls nicht reines U, und F1 enthält nicht alles U. Im neuen Modell kommt schwächer haftendes V im Mittel früher, stärker haftendes U später; konkrete neue Mengen sind nicht gegeben. U bleibt dieselbe Molekülart. Ein Testeffekt eines unbekannten Gemischs würde dessen wirksamen Bestandteil und klinische Sicherheit nicht allein feststellen."
+        },
+        {
+          "jsonPointer": "/modelAnswerEn",
+          "before": "U has the active-ingredient role in the supplied assay; the extract, F1 and F2 each contain U and V. Weaker reversible adhesion delays U less on average in the first model, so earlier F1 is more U-rich. Ordinary filtration does not selectively retain the dissolved species according to their adhesion to this column surface. The U amounts sum to 0.12 g and the V amounts to 0.08 g: existing molecules are distributed, not synthesized. F1 contains 0.10/0.11, about 90.9% U, while recovery of initial U in F1 is 0.10/0.12, about 83.3%. Different reference quantities explain the different proportions; F1 is neither completely pure nor contains all U. In the fresh model the more weakly adhering V emerges earlier on average and the more strongly adhering U later; new amounts are not supplied. U remains the same molecular species. An unknown mixture’s assay effect alone would establish neither its active component nor clinical safety.",
+          "after": "U has the active-ingredient role in the supplied assay; the extract, F1 and F2 each contain U and V. Weaker reversible adhesion delays U less on average in the first model, so earlier F1 is more U-rich. Ordinary filtration does not selectively retain the dissolved species according to their adhesion to this column surface. The U amounts sum to 0.12 g and the V amounts to 0.08 g: existing molecules are distributed, not synthesized. The U mass fraction within the balanced dissolved substances in F1 is 0.10/(0.10+0.01), about 90.9% (initially 0.12/(0.12+0.08)=60%), while recovery of initial U in F1 is 0.10/0.12, about 83.3%. The denominators U+V in F1 and initial U explain the different proportions. Without solvent mass, whole-liquid-phase purity is undetermined; the balanced solutes are not pure U either, and F1 does not contain all U. In the fresh model the more weakly adhering V emerges earlier on average and the more strongly adhering U later; new amounts are not supplied. U remains the same molecular species. An unknown mixture’s assay effect alone would establish neither its active component nor clinical safety."
+        },
+        {
+          "jsonPointer": "/rubric/2/fullCreditDe",
+          "before": "Anreicherung von Synthese, vollständiger Reinheit und vollständiger U-Rückgewinnung getrennt; bei Verwendung der Zahlen richtige Bezugsgrößen verwendet.",
+          "after": "Anreicherung von Synthese und vollständiger Rückgewinnung getrennt. Bei den Zahlen rund 90.9 % U an U+V in F1: 0.10/(0.10+0.01), gegenüber rund 83.3 % U-Rückgewinnung: 0.10/0.12. Fehlende Lösungsmittelmasse verhindert jede Reinheitsangabe für die gesamte Flüssigphase; kein reines U behauptet."
+        },
+        {
+          "jsonPointer": "/rubric/2/fullCreditEn",
+          "before": "Distinguishes enrichment from synthesis, complete purity and complete U recovery; uses correct reference quantities when using the values.",
+          "after": "Distinguishes enrichment from synthesis and complete recovery. With the values, about 90.9% U within U+V in F1: 0.10/(0.10+0.01), versus about 83.3% U recovery: 0.10/0.12. Absent solvent mass prevents a whole-liquid-phase purity claim; does not claim pure U."
+        },
+        {
+          "jsonPointer": "/taskDemandDe",
+          "before": "Erkläre, welcher Stoff hier Wirkstoff ist und weshalb Extrakt und Fraktionen Gemische bleiben. Erkläre mit dem tatsächlich gegebenen Haftungsmodell, weshalb F1 an U angereichert ist und warum einfache Filtration diese gelösten Moleküle nicht selektiv abtrennen würde. Grenze die Anreicherung von einer Synthese und vollständiger Reinigung ab; unterscheide den U-Anteil in F1 von der Rückgewinnung des ursprünglich enthaltenen U. Transfer: Welche Molekülart würde bei vertauschter Haftungsstärke früher austreten, und was ändert sich daran, wann man U erwarten würde? Begründe, warum daraus weder neue Moleküle noch die Unbedenklichkeit eines unbekannten Pflanzenextrakts folgen.",
+          "after": "Erkläre, welcher Stoff hier Wirkstoff ist und weshalb Extrakt und Fraktionen Gemische bleiben. Erkläre mit dem tatsächlich gegebenen Haftungsmodell, weshalb F1 an U angereichert ist und warum einfache Filtration diese gelösten Moleküle nicht selektiv abtrennen würde. Grenze die Anreicherung von einer Synthese und vollständiger Reinigung ab; unterscheide den U-Massenanteil an den bilanzierten gelösten Stoffen U+V in F1 (nicht an der gesamten Flüssigphase) von der Rückgewinnung des ursprünglich enthaltenen U. Transfer: Welche Molekülart würde bei vertauschter Haftungsstärke früher austreten, und was ändert sich daran, wann man U erwarten würde? Begründe, warum daraus weder neue Moleküle noch die Unbedenklichkeit eines unbekannten Pflanzenextrakts folgen."
+        },
+        {
+          "jsonPointer": "/taskDemandEn",
+          "before": "Explain which substance is the active ingredient and why the extract and fractions remain mixtures. Use the supplied adhesion model to explain U enrichment in F1 and why ordinary filtration would not selectively separate these dissolved species. Distinguish enrichment from synthesis and complete purification, and distinguish the U fraction in F1 from recovery of the initial U. Transfer: which species would emerge earlier after reversing adhesion strength, and how does that change when U is expected? Explain why neither new molecules nor safety of an unknown plant extract follows.",
+          "after": "Explain which substance is the active ingredient and why the extract and fractions remain mixtures. Use the supplied adhesion model to explain U enrichment in F1 and why ordinary filtration would not selectively separate these dissolved species. Distinguish enrichment from synthesis and complete purification, and distinguish the U mass fraction within the balanced dissolved substances U+V in F1 (not the whole liquid phase) from recovery of the initial U. Transfer: which species would emerge earlier after reversing adhesion strength, and how does that change when U is expected? Explain why neither new molecules nor safety of an unknown plant extract follows."
+        }
+      ]
+    }
+  ],
+  "raw40ProfileFieldDeltas": [
+    {
+      "jsonPointer": "/applicationCaseBriefs/0/expectedPerformanceDe",
+      "before": "D/(1+D) erklärt 0.18 g N und 0.02 g Z in O; 90 % Reinheit und 90 % Rückgewinnung haben verschiedene Bezugsgrößen. N bleibt chemisch unverändert.",
+      "after": "D/(1+D) erklärt 0.18 g N und 0.02 g Z in O; 0.18/(0.18+0.02)=90 % N an N+Z unterscheidet sich im Nenner von 0.18/0.20=90 % N-Rückgewinnung. Ohne Lösungsmittelmasse keine Reinheit der gesamten Flüssigphase. N bleibt chemisch unverändert."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/0/expectedPerformanceEn",
+      "before": "D/(1+D) explains 0.18 g N and 0.02 g Z in O; 90% purity and 90% recovery use different reference quantities. N remains chemically unchanged.",
+      "after": "D/(1+D) explains 0.18 g N and 0.02 g Z in O; 0.18/(0.18+0.02)=90% N within N+Z differs in denominator from 0.18/0.20=90% N recovery. No whole-liquid-phase purity follows without solvent mass. N remains chemically unchanged."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/0/taskDemandDe",
+      "before": "Erkläre funktionellen Wirkstoff, W/O-Anreicherung, Filtergrenze und Fraktionsstatus. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall HB-I1.",
+      "after": "Erkläre funktionellen Wirkstoff, W/O-Anreicherung, Filtergrenze und Fraktionsstatus. Vollständiges Material, Auftrag, Lösung und vier Kriterien: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-carriers-prospective422-bounded-author-remediation-20261015-v1/materials/eleven-complete-cases.remediated.author.json, Fall HB-I1. Begrenze Stoffanteile ausdrücklich auf die bilanzierte gelöste Stoffmasse und unterscheide Rückgewinnung sowie die nicht bestimmte gesamte Flüssigphase."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/0/taskDemandEn",
+      "before": "Explain functional active ingredient, W/O enrichment, the filter limit and fraction status. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case HB-I1.",
+      "after": "Explain functional active ingredient, W/O enrichment, the filter limit and fraction status. Complete material, task, solution and four criteria: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-carriers-prospective422-bounded-author-remediation-20261015-v1/materials/eleven-complete-cases.remediated.author.json, case HB-I1. Explicitly bound solute fractions to the balanced dissolved-substance mass and distinguish recovery and the undetermined whole liquid phase."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/1/expectedPerformanceDe",
+      "before": "P kann nach bestätigter voller Struktur aus beiden Wegen stammen; P/Q bleiben verschiedene Molekülarten und F1/F2 Gemische. Ein selektiver Trennmechanismus ist hier nicht gegeben.",
+      "after": "P kann nach bestätigter voller Struktur aus beiden Wegen stammen; P/Q bleiben verschiedene Molekülarten und F1/F2 Gemische. Ein selektiver Trennmechanismus ist hier nicht gegeben. Prozentwerte gelten nur an der bilanzierten gelösten P+Q-Masse, nicht an der gesamten Flüssigphase; Lösungsmittel- und weitere Verunreinigungsdaten fehlen."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/1/expectedPerformanceEn",
+      "before": "Confirmed full P structure can arise by either route; P/Q remain different species and F1/F2 mixtures. No selective separation mechanism is supplied here.",
+      "after": "Confirmed full P structure can arise by either route; P/Q remain different species and F1/F2 mixtures. No selective separation mechanism is supplied here. Percentages apply only within the balanced dissolved P+Q mass, not the whole liquid phase; solvent and further impurity data are absent."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/1/taskDemandDe",
+      "before": "Vergleiche Isolierung und Synthese sowie gleiche Summenformel und verschiedene Konstitution; ordne F1/F2 ein. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall HB-I2.",
+      "after": "Vergleiche Isolierung und Synthese sowie gleiche Summenformel und verschiedene Konstitution; ordne F1/F2 ein. Vollständiges Material, Auftrag, Lösung und vier Kriterien: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-carriers-prospective422-bounded-author-remediation-20261015-v1/materials/eleven-complete-cases.remediated.author.json, Fall HB-I2. Begrenze Stoffanteile ausdrücklich auf die bilanzierte gelöste Stoffmasse und unterscheide Rückgewinnung sowie die nicht bestimmte gesamte Flüssigphase."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/1/taskDemandEn",
+      "before": "Compare isolation/synthesis and equal formula/different constitution; classify F1/F2. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case HB-I2.",
+      "after": "Compare isolation/synthesis and equal formula/different constitution; classify F1/F2. Complete material, task, solution and four criteria: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-carriers-prospective422-bounded-author-remediation-20261015-v1/materials/eleven-complete-cases.remediated.author.json, case HB-I2. Explicitly bound solute fractions to the balanced dissolved-substance mass and distinguish recovery and the undetermined whole liquid phase."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/2/expectedPerformanceDe",
+      "before": "Schwächer haftendes U kommt zunächst früher; nach Vertauschung kommt V früher und U später. Fraktionen bleiben Gemische, Moleküle bleiben unverändert; neue Mengen sind nicht gegeben.",
+      "after": "Schwächer haftendes U kommt zunächst früher; nach Vertauschung kommt V früher und U später. Fraktionen bleiben Gemische, Moleküle bleiben unverändert; neue Mengen sind nicht gegeben. 0.10/(0.10+0.01)≈90.9 % U an U+V und 0.10/0.12≈83.3 % U-Rückgewinnung sind verschiedene Bezugsgrößen; die Reinheit der gesamten Flüssigphase ist ohne Lösungsmittelmasse nicht bestimmbar."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/2/expectedPerformanceEn",
+      "before": "More weakly adhering U emerges earlier initially; after reversal V emerges earlier and U later. Fractions remain mixtures and molecules unchanged; new amounts are not given.",
+      "after": "More weakly adhering U emerges earlier initially; after reversal V emerges earlier and U later. Fractions remain mixtures and molecules unchanged; new amounts are not given. 0.10/(0.10+0.01)≈90.9% U within U+V and 0.10/0.12≈83.3% U recovery use different denominators; whole-liquid-phase purity is undetermined without solvent mass."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/2/taskDemandDe",
+      "before": "Erkläre die U/V-Anreicherung über reversible Haftung und übertrage sie auf vertauschte Haftungsstärken. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall HB-I3.",
+      "after": "Erkläre die U/V-Anreicherung über reversible Haftung und übertrage sie auf vertauschte Haftungsstärken. Vollständiges Material, Auftrag, Lösung und vier Kriterien: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-carriers-prospective422-bounded-author-remediation-20261015-v1/materials/eleven-complete-cases.remediated.author.json, Fall HB-I3. Begrenze Stoffanteile ausdrücklich auf die bilanzierte gelöste Stoffmasse und unterscheide Rückgewinnung sowie die nicht bestimmte gesamte Flüssigphase."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/2/taskDemandEn",
+      "before": "Explain U/V enrichment through reversible adhesion and transfer it to reversed adhesion strengths. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case HB-I3.",
+      "after": "Explain U/V enrichment through reversible adhesion and transfer it to reversed adhesion strengths. Complete material, task, solution and four criteria: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-carriers-prospective422-bounded-author-remediation-20261015-v1/materials/eleven-complete-cases.remediated.author.json, case HB-I3. Explicitly bound solute fractions to the balanced dissolved-substance mass and distinguish recovery and the undetermined whole liquid phase."
+    },
+    {
+      "jsonPointer": "/expectations/2/essentialUnderstandingDe",
+      "before": "Physikalische Isolierung trennt vorhandene Moleküle; Anreicherung ist weder Synthese noch automatisch vollständige Reinheit oder Rückgewinnung.",
+      "after": "Physikalische Isolierung trennt vorhandene Moleküle. Der Massenanteil am bilanzierten gelösten Stoffgemisch ist von der Rückgewinnung zu unterscheiden; ohne Lösungsmittelmasse ist keine Reinheit der gesamten Flüssigphase gegeben. Anreicherung ist weder Synthese noch vollständige Reinigung."
+    },
+    {
+      "jsonPointer": "/expectations/2/essentialUnderstandingEn",
+      "before": "Physical isolation separates existing molecules; enrichment is neither synthesis nor automatically complete purity or recovery.",
+      "after": "Physical isolation separates existing molecules. Mass fraction within the balanced dissolved mixture differs from recovery; without solvent mass, whole-liquid-phase purity is undetermined. Enrichment is neither synthesis nor complete purification."
+    },
+    {
+      "jsonPointer": "/expectations/2/observablePerformanceDe",
+      "before": "Sie erklärt die unveränderte Molekülidentität, den fortbestehenden Gemischstatus der Fraktionen und die verschiedenen Bezugsgrößen von Reinheit und Rückgewinnung an den gelieferten Daten.",
+      "after": "Sie erklärt unveränderte Molekülidentität und Gemischstatus. Sie nennt N+Z bzw. U+V (in I2 P+Q) als Bezugsmasse der gelösten Stoffanteile, anfängliches N bzw. U als Nenner der Rückgewinnung und begründet, warum daraus keine Reinheit der gesamten Flüssigphase folgt."
+    },
+    {
+      "jsonPointer": "/expectations/2/observablePerformanceEn",
+      "before": "The learner explains unchanged molecular identity, the fractions’ continuing mixture status and the different reference quantities for purity and recovery using the supplied data.",
+      "after": "The learner explains unchanged molecular identity and mixture status, identifies N+Z or U+V (P+Q in I2) as the solute mass-fraction denominator and initial N or U as the recovery denominator, and explains why no whole-liquid-phase purity follows."
+    },
+    {
+      "jsonPointer": "/variationAxes/1/textDe",
+      "before": "Reinheit/Rückgewinnung, gleiche Summenformel/verschiedene Konstitution und verschiedene Herkunft/dieselbe bestätigte Struktur unterscheiden.",
+      "after": "Anteil an den bilanzierten gelösten Stoffen/Rückgewinnung gegenüber nicht bestimmter Reinheit der gesamten Flüssigphase, gleiche Summenformel/verschiedene Konstitution und verschiedene Herkunft/dieselbe bestätigte Struktur unterscheiden."
+    },
+    {
+      "jsonPointer": "/variationAxes/1/textEn",
+      "before": "Distinguish purity/recovery, equal formula/different constitution and different origin/the same confirmed structure.",
+      "after": "Distinguish balanced-solute mass fraction/recovery from undetermined whole-liquid-phase purity, equal formula/different constitution and different origin/the same confirmed structure."
+    }
+  ],
+  "mechanismCredit": {
+    "HB-I1": true,
+    "HB-I2": false,
+    "HB-I3": true
+  },
+  "errors": [],
+  "newStrictClosures": 0
+}

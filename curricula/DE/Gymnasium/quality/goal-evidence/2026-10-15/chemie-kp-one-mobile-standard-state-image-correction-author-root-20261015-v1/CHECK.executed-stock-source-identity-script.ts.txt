@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import { fingerprintSemanticKindSourceGoal } from '../../app/scripts/goalBookModel.ts';
+const root='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/';
+const candidatePath=root+'chemie-kp-one-mobile-standard-state-image-correction-author-root-20261015-v1/candidate-v1/canonical560.current422.one-Kp-PNG.image-only-author.json';
+const semanticPath=root+'chemie-equilibrium-four-source-scope-candidate-author-20261015-v1/candidate/semantic560.two-description-source-identities.author.json';
+const canonical=JSON.parse(fs.readFileSync(candidatePath,'utf8'));
+const semantic=JSON.parse(fs.readFileSync(semanticPath,'utf8'));
+const decisions=new Map(semantic.decisions.map((x:any)=>[x.goalId,x]));
+const errors:string[]=[];
+for(const g of canonical.goals){ const d:any=decisions.get(g.id);if(!d||fingerprintSemanticKindSourceGoal(g)!==d.sourceFingerprint)errors.push(g.id); }
+if(canonical.goals.length!==560||decisions.size!==560||errors.length)throw Error(JSON.stringify(errors));
+const receipt={schemaVersion:1,role:'Actual unchanged stock semantic source identity verification, no A review or classification change',timeUTC:new Date().toISOString(),stockFunction:'app/scripts/goalBookModel.ts::fingerprintSemanticKindSourceGoal',stockModuleSHA256:crypto.createHash('sha256').update(fs.readFileSync('app/scripts/goalBookModel.ts')).digest('hex'),currentCanonicalPath:candidatePath,currentSemanticPath:semanticPath,all560CurrentSourceIdentitiesMatch:true,semanticClassChanges:0,errors,scientificApprovals:0,HumanApproval:false};
+const dest=root+'chemie-kp-one-mobile-standard-state-image-correction-author-root-20261015-v1/CHECK.image-only-all560-stock-source-identities.actual.json';
+if(fs.existsSync(dest))throw Error('receipt exists');fs.writeFileSync(dest,JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify({all560Match:true,receipt:dest}));

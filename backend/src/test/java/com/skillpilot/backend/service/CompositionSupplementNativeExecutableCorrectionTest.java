@@ -30,6 +30,33 @@ class CompositionSupplementNativeExecutableCorrectionTest {
         assertThat(owner.path("reviewAuthority").asText()).isEqualTo("ai_candidate"); // native machine authority, never human approval
         assertThat(gate.requireAccepted(CompositionSupplementService.PHYSICS,physics)).isEqualTo(physicsAcceptance);
         assertThat(ReflectionTestUtils.getField(gate,"cached")).isSameAs(cached); // private in-process cache reuse
+        // Real authoritative non-curricular Kind remains outside807 ordinary P/D/A/M/V.
+        var orientationProof=mapper.createObjectNode();
+        for(String id:List.of("65365dce-f33f-49d8-9516-42f75883aa86","71cec9fb-3751-4d61-8b34-c5adbbf6e5f2")) {
+            LearningGoal orientation=goal(repository,"MATHEMATIK",id);
+            assertThat(LearnerService.isOrientationGoal(orientation)).isTrue();
+            String binding=gate.requireOrientationAccepted(CompositionSupplementService.MATH,orientation);
+            assertThat(binding).matches("[a-f0-9]{64}");
+            JsonNode context=gate.currentOrientationBindingsForQa().path(id);
+            assertThat(CompositionSupplementService.sha(context)).isEqualTo(binding);
+            assertThat(context.path("rawGoalSha256").asText()).isNotBlank();
+            assertThat(context.path("completionContract").asText()).isEqualTo("orientation-binary-completion-v1");
+            assertThat(context.path("receiptSha256").asText()).isEqualTo(cached.path("receiptSha256").asText());
+            assertThat(cached.path("receipt").path("goals").has(id)).isFalse();
+            assertThatThrownBy(()->gate.requireAccepted(CompositionSupplementService.MATH,orientation)).hasMessageContaining("not accepted");
+            LearningGoal changed=goal(repository,"MATHEMATIK",id);changed.setTitle(changed.getTitle()+" TEST_ONLY changed whole Goal");
+            assertThatThrownBy(()->gate.requireOrientationAccepted(CompositionSupplementService.MATH,changed)).hasMessageContaining("whole orientation Goal differs");
+            assertThatThrownBy(()->gate.requireOrientationAccepted(CompositionSupplementService.PHYSICS,orientation)).hasMessageContaining("Only Math");
+            for(String field:List.of("canonicalSourceBinding","semanticKindSourceBinding"))assertThat(cached.path("receipt").path("sourceInputs")).contains(context.path(field));
+            orientationProof.set(id,context);
+        }
+        new CompositionSupplementSchemaValidator(repository.resolve("contracts/composition-supplement/v1"),mapper)
+            .validate(orientationProof,"registered-orientation-context-bindings.schema.json");
+        assertThat(gate.currentOrientationBindingsForQa()).isEqualTo(orientationProof);
+        assertThat(ReflectionTestUtils.getField(gate,"cached")).isSameAs(cached);
+        System.out.println("CURRENT_ORIENTATION_NATIVE_PROOF="+mapper.writeValueAsString(orientationProof));
+        String orientationEvidence=System.getenv("SKILLPILOT_TEST_ORIENTATION_NATIVE_PROOF");
+        if(orientationEvidence!=null)mapper.writeValue(Path.of(orientationEvidence).toFile(),orientationProof); // test-only output, never acceptance input
         Path override=optionalHostileOverride(System.getenv("ESBUILD_BINARY_PATH"));
         if(override!=null)assertThat(Files.exists(override.resolveSibling("invocations.log"))).isFalse();
         JsonNode receipt=cached.path("receipt");

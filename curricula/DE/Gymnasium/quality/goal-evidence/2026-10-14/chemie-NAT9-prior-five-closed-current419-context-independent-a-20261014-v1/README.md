@@ -1,0 +1,17 @@
+# Fünf bestehende Abschlüsse: unabhängiger aktueller Kontextreview A
+
+Die fünf unveränderten ganzen Ziele 065d764c, 70b34ae7, 85342c52, 973c12d9 und ca216bc6 wurden im tatsächlich geänderten aktuellen D-Seiten-/Kontext geprüft. Ergebnis: fünfmal `keep` für diesen aktuellen Kontext. Das Urteil ist keine erneute Freigabe ihrer unveränderten P/A/M/V-Nachweise.
+
+Geprüft wurden die aktuellen ganzen Zieltexte und Voraussetzungen, die aktuellen nativen PDF-Seiten und das Buchmodell, die aus dem HTML ausgelesenen sichtbaren Texte, die tatsächlichen alten Seitenkontexte und die exakten alten/aktuellen Deltas ohne alte Urteile. Die vier Elternkörper vor und nach der Zerlegung waren bereits im unmittelbar vorausgehenden D2-Review mit identischer Dateibindung vollständig gelesen worden und wurden hier als solche gebunden. Die Lesespur benennt die tatsächlichen Zugriffe; die sieben PDF-Seiten wurden als Kontaktübersicht visuell betrachtet. Dies ist kein neues Visualisierungsurteil V.
+
+Die neuen direkten Nachfolger präzisieren den Kontext: Proteinstruktur führt zum Biuret-Nachweis, Estergrundlagen zur Fettstruktur, Stereochemie zu Projektionen/Anomerie, Carbonyl-Nachweise zu reduzierenden Zuckern und Aciditätsgrundlagen zum Aminosäuren-Säure-Base-Verhalten. Diese Relationen verändern keine der fünf bisherigen eigenständigen Kompetenzen und importieren keine zusätzlichen Nachweis-, Forschungs- oder Ausführungsaufträge in sie. Die einzelnen Begründungen und sechs Verständnisfelder stehen im FIRST-Dokument.
+
+Der Reviewer war zuvor NAT9- und D2-Kontextreviewer A und an getrennten Säure-Base-/Source4-Arbeiten als Autor oder Reviewer beteiligt. Keine Autorrolle an diesen fünf Zielen. Aktuelle D5-B-Ergebnisse wurden nicht gelesen. Historische D4-KEEP-/Synthesetexte für die zwei anderen D2-Ziele waren zuvor im bereitgestellten D2-Vergleich sichtbar; historische Blindheit wird ausdrücklich nicht behauptet. Auch historische technische Profilmetadaten können im eigenen A-Kontext sichtbar sein. `blindToOtherRuns` im Laufmanifest bezeichnet die Unabhängigkeit von der anderen aktuellen D5-Runde.
+
+Die erste fachliche Entscheidung wurde vor normaler Formatierung versiegelt: `FIRST.five-current-context-independent-a.science.json`, SHA-256 `71d06d0ab570af4f1f092e3c8ac15d28ccc737b3d791132390091d8ac2484579`. Keine fachliche Änderung nach diesem Siegel. Die fünf normalen Kandidatendatensätze und das tatsächliche Laufmanifest liegen unter dem technischen Eingabepaket in `native-five-current/round-a/results`. Der unveränderte produktive `validateGoalDescriptionReviewBatch` hat die eigene A-Runde geprüft: fünf Datensätze, null Fehler. Das ist keine A/B-Synthese oder menschliche bzw. praktische Freigabe. Quellen-, Kurs-, Sicht- und Erwerbsholds bleiben getrennt.
+
+## Angeforderter Haltepunkt
+
+Nach Abschluss dieses D5-Pakets stoppt diese Arbeitsrolle auf ausdrückliche Anweisung des Root-Agenten. Die geplante V3-Source4-Autorschaft ist nicht begonnen: kein V3-Verzeichnis und keine V3-Kandidatendatei existieren. Nur gedankliche Planung und der zuvor offengelegte Quellen-/Bestandsvergleich liegen vor. Die abgeschlossene V2-A-Begutachtung bleibt eigenständige historische Evidenz und keine Freigabe eines künftigen V3-Autorenpakets. Es wurde kein aktiver kanonischer Inhalt, keine aktive Sicht/Registry und kein Git-Zustand verändert.
+
+Eigene fachliche Reviewtexte: CC-BY-4.0; technische Skripte/Dokumentation: Apache-2.0. Fremdquellen und historische Originale behalten ihre Rechte und exakten Bindungen.

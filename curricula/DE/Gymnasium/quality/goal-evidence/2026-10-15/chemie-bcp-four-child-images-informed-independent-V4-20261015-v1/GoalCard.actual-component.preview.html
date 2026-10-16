@@ -1,0 +1,14 @@
+<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Isolated four-child GoalCard V review</title></head><body><main id="root"></main><script type="module">
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import {GoalCard} from '../../../../../../../app/src/components/GoalCard.tsx';
+import {LanguageProvider} from '../../../../../../../app/src/contexts/LanguageContext.tsx';
+import '../../../../../../../app/src/index.css';
+const selector=await (await fetch('../chemie-bcp-stimulus-and-existing-child-images-author-root-20261015-v1/NEUTRAL.four-child-image-candidates.author.selector.json')).json();
+const source=await (await fetch('../chemie-bcp-stimulus-and-existing-child-images-author-root-20261015-v1/candidate-v1/four-whole-goals.primary-images-only.unreviewed.json')).json();
+const width=Number(new URLSearchParams(location.search).get('width')||360);
+const base=new URL('../chemie-bcp-stimulus-and-existing-child-images-author-root-20261015-v1/NEUTRAL.four-child-image-candidates.author.selector.json',location.href);
+const assetFor=id=>{const f=selector.assets.find(a=>a.path.includes('/'+id+'/'));return new URL('../../../../../../../'+f.path,location.href).href;};
+const cards=source.wholeGoals.map(original=>{const goal={...original,resourceLinks:original.resourceLinks.map(link=>({...link,url:assetFor(original.id)}))};return React.createElement('section',{key:goal.id,id:'review-'+goal.id,style:{width:width+'px',margin:'0 0 16px'}},React.createElement(GoalCard,{goal,masteryValue:0,showLearnerTools:true,readOnly:true,useRawGoalTitles:true}));});
+createRoot(document.getElementById('root')).render(React.createElement(LanguageProvider,null,...cards));
+</script></body></html>

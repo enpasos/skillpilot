@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "role": "inactive author proposal, no integration permission or source/gate approval",
+  "baseCanonical": "inputs/canonical551.current419.exact.json",
+  "afterCanonical": "candidate/canonical554.prospective422.three-new-atoms.inactive.author.json",
+  "onlyExistingCanonicalGoalChanged": {
+    "goalId": "d11fc507-4fae-5f2f-bd84-c3dbc9c43daf",
+    "fields": [
+      "contains",
+      "weight"
+    ],
+    "why": "Use the existing supported source-boundary supplement branch. No extra cluster/ontology;40 whole object stays byte-exact and cannot inherit broad ancestor source mappings."
+  },
+  "newAtomicGoalIds": [
+    "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+    "93a7ce4d-1c90-568c-9368-cac423011ef9",
+    "d815960a-21ab-5a42-8b23-ecd20d03db19"
+  ],
+  "prospectiveAtomicDelta": 3,
+  "strictClosureDelta": 0,
+  "viewChanges": [
+    {
+      "view": "de-hb-lk",
+      "addedTargetEntries": [
+        {
+          "structureId": "chemistry-de-hb-lk-upper-3-3-4-3-aromaten",
+          "goalId": "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+          "projectionRole": "target"
+        },
+        {
+          "structureId": "chemistry-de-hb-lk-upper-3-3-4-3-aromaten",
+          "goalId": "93a7ce4d-1c90-568c-9368-cac423011ef9",
+          "projectionRole": "target"
+        },
+        {
+          "structureId": "chemistry-de-hb-lk-upper-3-3-4-1-kunststoffe",
+          "goalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+          "projectionRole": "target"
+        },
+        {
+          "structureId": "chemistry-de-hb-lk-upper-3-3-4-1-kunststoffe",
+          "goalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+          "projectionRole": "target"
+        }
+      ],
+      "existingEntriesRemoved": [],
+      "existingRequiresChanged": false
+    },
+    {
+      "view": "de-bw-lk",
+      "addedTargetEntries": [
+        {
+          "structureId": "chemistry-de-bw-lk-farbstoffchemie",
+          "goalId": "d815960a-21ab-5a42-8b23-ecd20d03db19",
+          "projectionRole": "target"
+        }
+      ],
+      "existingEntriesRemoved": [],
+      "existingRequiresChanged": false
+    }
+  ],
+  "newCarrierSourceProposals": [
+    {
+      "jurisdiction": "DE-HB",
+      "sourceGoalId": "hb-chemistry-sekii-gyo2022-primary-active-ingredient-definition-isolation-de664078",
+      "mandatoryDomainCarrier": "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+      "supportingPartialIds": [
+        "42a84bca-d27e-581f-a43a-eee424f0504d",
+        "5a709938-e0f5-42b7-94f0-cfded08963a2"
+      ]
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "sourceGoalId": "hb-chemistry-sekii-gyo2022-primary-active-ingredient-research-interplay-ab22c8c6",
+      "mandatoryDomainCarrier": "93a7ce4d-1c90-568c-9368-cac423011ef9",
+      "a880UnchangedNotUsedAsSourceClosure": true
+    },
+    {
+      "jurisdiction": "DE-BW",
+      "sourceGoalId": "bw-chem-sekii-3-4-8-b04-a01-51bba460",
+      "mandatoryDomainCarrier": "d815960a-21ab-5a42-8b23-ecd20d03db19",
+      "oldBoundedContributionsRetainedAsHistoricalComparisons": true,
+      "existingDyeTargetsRemoved": false,
+      "alternativeFamiliesMadeMandatory": false
+    }
+  ],
+  "HB_GK_BW_GK_ST_viewsUnchanged": true,
+  "a880WholeBodyWholeProfileAndApplicabilityUnchanged": true,
+  "requiresDeleted": [],
+  "projectionRolesReclassified": [],
+  "unaffectedNanoAndSTMaterialBodiesUnchanged": true,
+  "PAMVApprovedRowsCreated": false,
+  "wholeSourceCourseAndAcquisitionApproval": false
+}

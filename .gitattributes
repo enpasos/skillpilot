@@ -41,6 +41,13 @@ curricula/**/quality/**/native/**/*.html -text -whitespace
 curricula/**/quality/**/inspected-exact-native/**/*.html -text -whitespace
 curricula/**/quality/**/book.html -text -whitespace
 curricula/**/quality/**/*.normal-renderer.html -text -whitespace
+# Exact captured native article: retain the renderer's sealed empty-line spacing.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-nernst-one-corrected-alt-current422-targeted-independent-V-20261015-v1/inputs/current-whole-native-a338-article.exact.html -text -whitespace
+
+# These sealed official source responses contain original CRLF line endings.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-grignard-one-primary-scope-author-20261015-v1/sources/BY12EA-current.official-observed.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-grignard-one-primary-scope-author-20261015-v1/sources/BY13EA-current.official-observed.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-grignard-one-primary-scope-author-20261015-v1/sources/HE-current-index.official-observed.html -text -whitespace
 
 # Native validation reports are captured tool outputs; preserve their sealed bytes.
 curricula/**/quality/**/*.normal.report.md -text -whitespace
@@ -74,3 +81,26 @@ curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current402-requir
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie262-current402-closed34-active-adoption-root-20261013-v1/history/*.curriculum-quality-status.md -text -whitespace
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-actual-PNG-candidates-author-20261014-v1/candidate/visualizations/chemie/*/prompt.de.md -text -whitespace
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-source6-five-current412-actual-PNG-candidates-author-20261014-v1/selected/visualizations/chemie/*/*prompt.de.md -text -whitespace
+
+# Exact captured instructions and normal M419 output in the inactive NAT9 checkpoint.
+# Preserve their sealed whitespace; neither file is authored formatting to normalize.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-four-original-duty-fresh-independent-b-20261014-v1/frozen-inputs/external/AGENTS.md -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/receipts/M419.normal-all-nine-visibility.actual.md -whitespace
+
+# Preserve sealed Chemistry author material and the exact instructions read by reviewer B.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-analytics-remaining-ten-whole-material-and-profile-author-20261014-v1/materials/twenty-complete-DEEN-cases.author.md -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-current419-targeted-six-independent-b-20261014-v3/frozen-inputs/AGENTS.md -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-three-explicit-source-duty-carriers-current422-independent-b-20261014-v1/frozen-inputs/AGENTS.md -whitespace
+
+# Preserve the exact current BcP source capture used by the finite Chemistry reviews.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab-bcp-eleven-whole-source-and-scope-author-20261015-v1/sources/BY-BcP12-13.current-official.html -text -whitespace
+
+# Retain the sealed browser fixtures actually used for narrow/wide image reviews.
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-two-preparation-child-images-informed-independent-V2-20261015-v1/browser/*.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-final-context-independent-V-20261015-v1/browser/*.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-kpkc-pourbaix-two-wording-current422-informed-P2-A2-M2-V2-20261015-v1/browser/*.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-two-mobile-final-context-independent-V2-20261015-v1/browser/*.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-four-child-images-informed-independent-V4-20261015-v1/GoalCard.actual-component.preview.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-four-ecology-child-images-informed-independent-V4-20261015-v1/GoalCard.actual-component.preview.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-six-context-overviews-informed-independent-V6-20261015-v1/GoalCard.actual-six-context-components.preview.html -text -whitespace
+curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-rp-ideal-gas-one-image-informed-independent-V1-20261015-v1/preview-sources/index.html -text -whitespace

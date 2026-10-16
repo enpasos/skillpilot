@@ -1,0 +1,33 @@
+{
+  "createdAt": "2026-10-15T08:22:51.194165+00:00",
+  "runId": "53d7dd88-ad9f-436e-816e-443a4ebb8c17",
+  "originalFirstSeal": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-current419-native-original-independent-a-20261015-v1/FIRST.original-scientific-native.seal.json",
+  "firstStockValidator": {
+    "exitCode": 1,
+    "stderr": [
+      "Run input artifact review_input_json digest does not match the review bundle",
+      "Run input artifact finding_schema digest does not match the review bundle"
+    ]
+  },
+  "changes": [
+    {
+      "role": "review_input_json",
+      "oldMisboundDigest": "sha256:8d8fa60d5bd02af252863c692d4c8348efc71660a0bf2290e8840397ce65d7be",
+      "correctBoundArtifact": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-current419-native-preparation-root-20261015-v1/native-fifteen/bundle/review-input.json",
+      "actualSha256": "sha256:1d2daee68536821d015c3959e41d625298b4f3fc210742e3aefc536a45634b47",
+      "bytes": 49452
+    },
+    {
+      "role": "finding_schema",
+      "oldMisboundDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "correctBoundArtifact": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-current419-native-preparation-root-20261015-v1/native-fifteen/bundle/contracts/goal-evidence-finding.schema.json",
+      "actualSha256": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    }
+  ],
+  "scienceRecordsBytesUnchanged": true,
+  "recordsDigest": "sha256:bb9ef2582f2d60a8269cc64586c803e5a68efab08d318ed5947dd58d8bc23ca2",
+  "actualOriginalRunRemainsSame": true,
+  "additionalIndependentScientificVote": false,
+  "explanation": "Generic stock bundle roles refer to bundle/review-input.json and generic evidence finding schema, not description-review-input.json and description record schema. Original FIRST remains byte-exact; this additive normal transport corrects only those two artifact bindings."
+}

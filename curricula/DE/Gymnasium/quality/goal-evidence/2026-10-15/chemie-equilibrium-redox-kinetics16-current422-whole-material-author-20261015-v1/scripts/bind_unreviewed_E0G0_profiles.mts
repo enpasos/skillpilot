@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: Apache-2.0
+// Technical author binding only, after actual original author science is sealed.
+import assert from 'node:assert/strict'
+import {readFileSync,writeFileSync,existsSync} from 'node:fs'
+import {createHash} from 'node:crypto'
+import {resolve,relative,dirname} from 'node:path'
+import {fileURLToPath,pathToFileURL} from 'node:url'
+import {createRequire} from 'node:module'
+const repo=process.cwd(),own=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rel=relative(repo,own)
+assert.ok(!existsSync(resolve(own,'FILES.finite-whole-material-author.seal.json')))
+const at=(p:string)=>JSON.parse(readFileSync(resolve(repo,p),'utf8')),get=(p:string)=>JSON.parse(readFileSync(resolve(own,p),'utf8'))
+const hash=(b:string|Buffer)=>'sha256:'+createHash('sha256').update(b).digest('hex')
+const bind=(p:string)=>{const b=readFileSync(resolve(repo,p));return {path:p,sha256:hash(b),bytes:b.length}}
+const write=(p:string,v:any)=>writeFileSync(resolve(own,p),JSON.stringify(v,null,2)+'\n')
+const input=get('inputs/final-author-physical-inputs.json'),first=at(input.FIRST.path)
+for(const f of first.files){assert.equal(bind(f.path).sha256,f.sha256);assert.equal(bind(f.path).bytes,f.bytes)}
+const can=at(input.canonical.path),sem=at(input.semantic.path),G=new Map<string,any>(can.goals.map((g:any)=>[g.id,g]))
+const helperPath='app/scripts/positiveGoalEvidenceProfileModel.ts',helper=await import(pathToFileURL(resolve(repo,helperPath)).href)
+const bookPath='app/scripts/goalBookModel.ts',book=await import(pathToFileURL(resolve(repo,bookPath)).href)
+const schemaPath='contracts/goal-evidence/v2/goal-evidence-profile.schema.json',req=createRequire(resolve(repo,'app/package.json')),Ajv=req('ajv/dist/2020').default,formats=req('ajv-formats'),ajv=new Ajv({strict:false,allErrors:true});formats(ajv)
+const validate=ajv.compile(at(schemaPath))
+const assets=get('inputs/fifteen-final-assets.exact-bindings.json'),digests:Record<string,string>={}
+for(const a of assets.assets){assert.equal(bind(a.path).sha256,a.sha256);const g=G.get(a.goalId),r=g.resourceLinks.find((x:any)=>x.type==='goal-visualization');digests[r.url]=a.sha256}
+const materialsPath=rel+'/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json',materials=at(materialsPath),specs=get('science/sixteen-understanding-specifications.final-manual.author.json').specifications
+const scientific=get('science/FIRST.sixteen-whole-material-understanding.author.json'),ch=input.criteria.sha256,records:any[]=[],checks:any[]=[]
+for(const [n,id] of input.goalIds.entries()){
+ const g=G.get(id),s=specs[n],cc=materials.cases.filter((c:any)=>c.goalId===id),d=sem.decisions.find((d:any)=>d.goalId===id)
+ assert.equal(d.semanticKind,'curricularAtomic');assert.equal(d.sourceFingerprint,book.fingerprintSemanticKindSourceGoal(g));assert.equal(cc.length,2)
+ const profile={archetype:s.archetype,expectations:s.essentialPairs.map((p:string[],i:number)=>({id:'e'+(i+1),essentialUnderstandingDe:p[0],essentialUnderstandingEn:p[1],observablePerformanceDe:cc.map((c:any)=>c.id+': '+c.criterionToObservableRubric[i].observableDe).join(' '),observablePerformanceEn:cc.map((c:any)=>c.id+': '+c.criterionToObservableRubric[i].observableEn).join(' ')})),coverageExpectations:{requiredExpectationIds:['e1','e2','e3'],alternativeExpectationGroups:[],minimumIndependentDemonstrations:2,freshVariationRequired:true,independentTransferRequired:true},variationAxes:cc.map((c:any)=>({id:c.id+'-transfer',textDe:c.freshIndependentTransferDe,textEn:c.freshIndependentTransferEn})),applicationCaseBriefs:cc.map((c:any)=>({id:c.id,taskDemandDe:`Vollständiges eigenes Material: ${materialsPath} #${c.id}; ${bind(materialsPath).sha256}. ${c.taskDe}`,taskDemandEn:`Complete own material: ${materialsPath} #${c.id}; ${bind(materialsPath).sha256}. ${c.taskEn}`,expectedPerformanceDe:c.workedReasoningDe,expectedPerformanceEn:c.workedReasoningEn,understandingFocusDe:c.freshIndependentTransferDe,understandingFocusEn:c.freshIndependentTransferEn}))}
+ const record={$schema:helper.POSITIVE_GOAL_EVIDENCE_SCHEMA_URL,schemaVersion:2,reviewId:'chemie-eqrk16-whole-author-20261015-'+String(n+1).padStart(2,'0'),goalFingerprintRuleVersion:'goal-evidence-v1',profileRuleVersion:'positive-understanding-evidence-v2',reviewCriteriaFingerprint:ch,landscapeId:can.landscapeId,goalId:id,goalFingerprint:helper.fingerprintGoalForPositiveEvidence(g,'curricularAtomic'),reviewInputFingerprint:helper.fingerprintPositiveGoalEvidenceReviewInput(g,ch,digests,'curricularAtomic'),profileFingerprint:helper.fingerprintPositiveGoalEvidenceProfile(profile),status:'needs_human_review',reviewAuthority:'ai_candidate',reviewedAt:new Date().toISOString(),reviewer:'Codex equilibrium/redox/kinetics16 material AUTHOR; not an independent reviewer',reason:'Unreviewed E0/G0 author design after original whole-material science. Thirty-two bilingual whole cases contain supplied data, full reasoning, criterion-linked rubrics and independent changed-condition transfer. Three real numerical corrections are separately preserved as whole before/after cases. No independent D/P/A/M/V approval, learner mastery, completed trial or active integration is claimed.',evidenceLevel:'E0',maximumClaimScope:'G0',reviewRunIds:[],dissent:['Five goals have no selected direct named mapping route: Kp/Kc, van’t Hoff, coupled equilibria, Pourbaix, and electrolysis/equilibrium. Related passages do not silently close exact source/course scope.','Current tags and source partner duties are preserved. General applicability does not prove nationwide or whole-GK/LK course approval; broad coupled-equilibrium scope remains for developer/source review.','Future own conduct must be observable where the operator demands it. Supplied fictional measurements, blank future records and this answer key are not learner or lab evidence. Prior human trials are not a machine-M7 prerequisite.','All cases are independent of recognising the visualization. Fourteen original JPGs are kept; final 138 PNG/text/ALT are external author context with a separate genuine V record. Pourbaix has no visualization. No new V vote is created here.','The two demonstration design slots are not a runtime task quota or automatic mastery rule. One sufficiently rich task can show more than one independent performance; absent aspects remain unproven.'],profile}
+ const schemaOK=validate(record),errors=helper.validatePositiveGoalEvidenceRecordSemantics(record,g,digests,'curricularAtomic')
+ checks.push({goalId:id,schemaOK,schemaErrors:schemaOK?[]:structuredClone(validate.errors),semanticErrors:errors,evidenceLevel:'E0',maximumClaimScope:'G0',imageInputBound:Boolean(g.resourceLinks?.some((x:any)=>x.type==='goal-visualization'))});records.push(record)
+}
+const ok=checks.every(c=>c.schemaOK&&!c.semanticErrors.length)
+writeFileSync(resolve(own,'candidate/sixteen-unreviewed-E0G0.author-profiles.jsonl'),records.map(r=>JSON.stringify(r)).join('\n')+'\n')
+write('checks/PROFILE16.closed-schema-and-unmodified-normal-helper.actual.json',{schemaVersion:1,checkedAtUTC:new Date().toISOString(),pass:ok,normalHelper:bind(helperPath),semanticHelper:bind(bookPath),schema:bind(schemaPath),criteria:input.criteria,firstScienceSeal:input.FIRST,materials:bind(materialsPath),actualFinalCanonical:input.canonical,actualFinalSemantic:input.semantic,records:checks,authorProfiles:16,independentApprovals:0,newGateVotes:0,normalReviewRunManifestsCreated:0,activeWrites:0})
+assert.ok(ok,JSON.stringify(checks.filter(c=>!c.schemaOK||c.semanticErrors.length)))
+console.log(JSON.stringify({pass:true,rawAuthorProfiles:16,E0:16,G0:16,schemaErrors:0,normalSemanticErrors:0,independentApprovals:0,newStrict:0}))

@@ -53,6 +53,18 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: 392/426, sechs neue Abschlüsse und acht aktuelle Reviewpaare (16.10.2026)](chemie-native8-current426-checkpoint-2026-10-16.md)
+- [Chemie: 386/426, 15 neue Praktikumsabschlüsse und 40 offene Ziele (15.10.2026)](chemie-bcp-current426-checkpoint-2026-10-15.md)
+- [Vorherige Chemie-Fortsetzung: 371/422, vier neue Gleichgewichtsabschlüsse und getrennte Praktikumsarbeit (15.10.2026)](chemie-source4-current371-checkpoint-2026-10-15.md)
+- [Chemie: 367/422, sechs neue fachliche Abschlüsse und drei wiederhergestellte Bindungen (15.10.2026)](chemie-native9-current367-continuation-2026-10-15.md)
+- [Chemie: 20 neue Carbonyl-/Gleichgewichtsabschlüsse im Kandidaten 358/422 (15.10.2026)](chemie-carbonyl-equilibrium-current358-checkpoint-2026-10-15.md)
+- [Chemie: 17 neue Energieabschlüsse im Kandidaten 338/422 (15.10.2026)](chemie-energy18-current422-checkpoint-2026-10-15.md)
+- [Chemie: zwei weitere Laborabschlüsse und vorhandene Bildfreigaben im Kandidaten 321/422 (15.10.2026)](chemie321-lab-carbonyl-keep-checkpoint-2026-10-15.md)
+- [Chemie: vier neue Quellen-/Laborabschlüsse im Kandidaten 319/422 (15.10.2026)](chemie-source-lab-current422-checkpoint-2026-10-15.md)
+- [Chemie: drei neue Analytikabschlüsse und stabiler Kandidat 315/419 (15.10.2026)](chemie315-acid10-checkpoint-2026-10-15.md)
+- [Chemie: unabhängige Quellen-/Analytikprüfungen und nativer Arbeitscheckpoint (15.10.2026)](chemie-independent-reviews-checkpoint-2026-10-15.md)
+- [Chemie: sieben Säure/Basen-Abschlüsse im Kandidaten 312/419 und gesicherte Autorenarbeiten (14.10.2026)](chemie-acid7-source-author-checkpoint-2026-10-14.md)
+- [Chemie: Naturstoff-Kontexte und gesicherte Quellen-/Säure-Basen-Arbeiten (14.10.2026)](chemie-naturstoffe-context-checkpoint-2026-10-14.md)
 - [Chemie: stabiler inaktiver Arbeitscheckpoint und Wiederaufnahme (14.10.2026)](chemie231-inactive-working-state-checkpoint-2026-10-14.md)
 - [Chemie: 262/402 im Fünf-Gate-Bericht und offene Quellenintegration vom 14. Oktober](chemie262-five-gate-integration-source-holds-2026-10-14.md)
 - [Chemie: gesicherte Quellen- und Profilprüfungen bei 231/402 vom 13. Oktober](chemie231-reviewed-source-profile-checkpoint-2026-10-13.md)

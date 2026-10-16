@@ -1,0 +1,9 @@
+# Drei aktuelle Energieziele: P und Atomarität
+
+Die eigene tatsächliche informierte Wissenschaft lag vor der normalen Materialisierung vor. Drei vollständige Profilkörper werden fachlich begründet unverändert übernommen: zwei verschiedene Sekundärzellensysteme mit eigener zukünftiger Recherche, Lithium-Ionen-Fahrzeuge mit Lade-/Entladewegen und Betriebsgrenzen sowie eine kriteriengestützte Waschmittelabwägung mit ausdrücklich unvollständigen Umwelt-/Sozialdaten. Alle sechs vollständigen Fälle wurden gelesen, konkrete Modellrechnungen und Transfergrenzen gegengeprüft. Drei originale JPGs wurden tatsächlich betrachtet; hier wird keine unabhängige Handy-/Desktop-V-Freigabe behauptet.
+
+Normale P-Prüfung: drei E1/G1, ai_candidate, needs_human_review; null Blocker. Getrennte tatsächliche A-Wissenschaft begründet für die drei aktuellen Ziele jeweils einen integrierten Kompetenzkern einschließlich Prärequisiten- und Transfergrenze. Die normale A-Prüfung besteht mit drei atomic und null fehlenden/veralteten/überflüssigen Records. Hashbindungen wurden erst nach der versiegelten eigenen Wissenschaft erstellt. Der Root hatte die begrenzte kanonische Wortpräzisierung authoriert; er behauptet keine blinde Reviewrolle. Zwei echte unabhängige D-Runden und die V4-Kontextfreigabe bleiben getrennte Arbeiten.
+
+Keine bereits ausgeführte Lernendenrecherche, Labor-/Fahrbeobachtung oder menschliche Freigabe wird erfunden. Reale zukünftige Erwerbsleistungen bleiben ausdrücklich erforderlich, ohne sie als vorgeschaltete Maschinen-M7-Voraussetzung auszugeben. Quellen-/Kurs-/Partner- und optionale Auswahlgrenzen bleiben offen. Keine aktive Integration, kein Zentralbericht und null neuer Strictclaim durch diesen Teilabschluss.
+
+Technische Skripte und Dokumentation Apache-2.0; eigene fachliche Inhalte CC-BY-4.0, externe Quellenrechte unverändert.

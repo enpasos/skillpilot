@@ -1,0 +1,944 @@
+{
+  "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+  "title": "Zerfallsgesetze anwenden",
+  "wholeCurrentGoalAndPositiveBody": {
+    "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "subject": "physik",
+    "wholeCurrentCanonicalGoal": {
+      "id": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "title": "Zerfallsgesetze anwenden",
+      "titleEn": "Apply Decay Laws",
+      "description": "Die lernende Person kann mit einem einfachen exponentiellen Zerfallsgesetz die zeitliche Abnahme einer radioaktiven Substanz oder ihrer Aktivit\u00e4t bestimmen und die Halbwertszeit im Sachkontext interpretieren.",
+      "descriptionEn": "The learner can use a simple exponential decay law to determine the decrease of a radioactive substance or its activity over time and interpret the half-life in context.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "title": "Visualisierung: Zerfallsgesetze anwenden",
+          "url": "/assets/goal-visualizations/physik/a12fddce-0215-58d9-bd91-21be8a960d25/a12fddce-0215-58d9-bd91-21be8a960d25.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Zerfallsgesetze anwenden.",
+          "altText": "Formel und Zahlenkarten zeigen das exponentielle Zerfallsgesetz mit N null, N null halb, viertel und achtel sowie das Beispiel 100, 50 und 25 Milligramm.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "currentSourceLandscape": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "bytes": 2511701,
+      "sha256": "sha256:4704c85973997b0bc822c360a9802fa55ce897a98936ec2c8782ed7c8f47076e"
+    },
+    "semanticKind": "curricularAtomic",
+    "currentPerGoalReviewInput": {
+      "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+      "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+      "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+    },
+    "positiveBodyOwner": {
+      "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/positive/retained-owner-02.config.json",
+      "configSha256": "sha256:44e07634ee45992f11e2ecda588749cf7efbc9df0e9e591232ebdcccf807ef13",
+      "recordPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-13/physics-first10-v1/positive/retained-owner-02.review.jsonl",
+      "recordFileSha256": "sha256:8de59e0cfdc49443fc64a0303aeb6ccd85335eb59d8f18c688e6dc434a2b4ff5",
+      "recordLine": 7,
+      "recordRawLineSha256": "sha256:f56f73d8c721571ca890709daf729b9a97bcdf4317e56d047b972a13366a9530",
+      "currentProfileFingerprint": "sha256:4a8a3b664ba7cdbfbb9683015ea33b2278cbc5b81d10e18b84cb74fb72d04f7d",
+      "currentGoalFingerprint": "sha256:274b12c77c1772bd09b16c12307ecad61b415709316518afbc17d712a27b80a9",
+      "currentReviewInputFingerprint": "sha256:9efe3ee0dfd6f799b996b3065f5d57fb0f8033ed3ec85f4dbcdbea6ef2936e29",
+      "wholePositiveProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "ensemble-exponential",
+            "essentialUnderstandingDe": "Bei einem einzelnen Isotop ohne Zu-/Abfuhr beschreibt N=N\u2080\u00b72^(\u2212t/T) die erwartete Restzahl; bei gleicher Zerfallskonstante nimmt A im gleichen Verh\u00e4ltnis ab. Die Halbwertszeit ist keine feste Lebensdauer jedes Kerns.",
+            "essentialUnderstandingEn": "For one isotope with no inflow/outflow N=N\u2080\u00b72^(\u2212t/T) describes the expected remaining population; activity falls in the same ratio for a fixed decay constant. Half-life is not each nucleus\u2019s fixed lifetime.",
+            "observablePerformanceDe": "W\u00e4hlt N oder A passend zur Frage, berechnet mit Zeiteinheiten und erkl\u00e4rt statistische Schwankungen gegen\u00fcber der Modellkurve.",
+            "observablePerformanceEn": "Selects N or A for the question, calculates with time units and explains statistical fluctuations around the model curve."
+          },
+          {
+            "id": "relative-not-absolute",
+            "essentialUnderstandingDe": "In gleichen Halbwertszeitintervallen halbiert sich der jeweils vorhandene Bestand; die absoluten Verluste werden kleiner. Eine Hintergrundz\u00e4hlrate ist nicht ohne Abzug die Aktivit\u00e4t des Isotops.",
+            "essentialUnderstandingEn": "Each half-life halves the population then present; absolute losses decrease. A background count rate is not the isotope\u2019s activity without correction.",
+            "observablePerformanceDe": "Leitet eine Halbwertszeit oder Prognose aus neuen Daten ab und pr\u00fcft, ob eine scheinbar fehlende Halbierung durch einen konstanten Hintergrund erkl\u00e4rbar ist.",
+            "observablePerformanceEn": "Infers a half-life or prediction from fresh data and checks whether constant background explains an apparent failure to halve."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ensemble-exponential",
+            "relative-not-absolute"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quantity",
+            "textDe": "Restbestand und Aktivit\u00e4t statt Tochterproduktion vergleichen.",
+            "textEn": "Compare remaining population and activity, not daughter production."
+          },
+          {
+            "id": "measurement",
+            "textDe": "Ideales Zerfallsmodell mit hintergrundbehafteten Z\u00e4hldaten vergleichen.",
+            "textEn": "Compare ideal decay with count data including background."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "remaining-activity",
+            "taskDemandDe": "Eine isolierte Probe eines Isotops hat A\u2080=800 Bq und T=6 h. Prognostiziere A nach 18 h und skizziere den Verlauf mit den Werten nach 6 und 12 h. Pr\u00fcfe: \u201eIn jedem 6-h-Intervall zerfallen gleich viele Kerne; nach 6 h ist jeder zweite bestimmte Kern sicher weg.\u201c",
+            "taskDemandEn": "An isolated single-isotope sample has A\u2080=800 Bq, T=6 h. Predict A after 18 h and sketch the curve using values at 6 and 12 h. Assess: \u201cEqual numbers decay in each 6-hour interval; after 6 hours every second specified nucleus is certainly gone.\u201d",
+            "expectedPerformanceDe": "800\u2192400\u2192200\u2192100 Bq; gleiche relative, nicht absolute Abnahme. Einzelschicksale sind zuf\u00e4llig, die Kurve beschreibt ein Ensemble. Bq bedeutet s\u207b\u00b9; die Halbwertszeit darf hier konsistent in Stunden ins Verh\u00e4ltnis t/T eingehen.",
+            "expectedPerformanceEn": "800\u2192400\u2192200\u2192100 Bq; equal fractional, not absolute, decreases. Individual events are random and the curve describes an ensemble. Bq means s\u207b\u00b9; hours may consistently be used in t/T.",
+            "understandingFocusDe": "Exponentielle Abnahme mit physikalischer Interpretation statt blo\u00dfer Einsetzung.",
+            "understandingFocusEn": "Exponential decrease with physical meaning rather than substitution alone."
+          },
+          {
+            "id": "background-corrected-series",
+            "taskDemandDe": "Bei unver\u00e4nderter Geometrie und Effizienz werden gemittelte Z\u00e4hlraten 110, 60, 35 min\u207b\u00b9 im Abstand von 4 h gemessen. Der separat bestimmte konstante Hintergrund ist 10 min\u207b\u00b9; statistische Fehler sind f\u00fcr diese gerundete Modellaufgabe vernachl\u00e4ssigbar. Bestimme T und die erwartete gesamte Z\u00e4hlrate nach weiteren 4 h. Erkl\u00e4re, warum die Rohwerte nicht jeweils halbiert werden und warum Z\u00e4hlrate nicht ohne Effizienzangabe absolute Aktivit\u00e4t ist.",
+            "taskDemandEn": "With unchanged geometry/efficiency, mean count rates 110, 60, 35 min\u207b\u00b9 are measured 4 h apart. Separately measured constant background is 10 min\u207b\u00b9; statistical errors are negligible for this rounded model task. Infer T and total count rate after another 4 h. Explain why raw values do not halve and why count rate alone is not absolute activity without efficiency.",
+            "expectedPerformanceDe": "Korrigiert zu 100,50,25 min\u207b\u00b9; T=4 h. N\u00e4chstes Probensignal 12,5, insgesamt 22,5 min\u207b\u00b9. Hintergrund bleibt bestehen; unvollst\u00e4ndige Nachweise verlangen einen Effizienzfaktor f\u00fcr Aktivit\u00e4t. Keine Tochterkettenrechnung eingef\u00fchrt.",
+            "expectedPerformanceEn": "Corrects to 100,50,25 min\u207b\u00b9; T=4 h. Next sample signal 12.5, total 22.5 min\u207b\u00b9. Background persists; incomplete detection requires an efficiency factor to infer activity. No daughter-chain calculation.",
+            "understandingFocusDe": "Eigenst\u00e4ndige Modellpr\u00fcfung mit ver\u00e4ndertem Messbezug.",
+            "understandingFocusEn": "Independent model checking with a changed measurement basis."
+          }
+        ]
+      }
+    },
+    "directPrerequisiteGoals": [
+      {
+        "id": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+        "shortKey": "canonical_physics_sek1_interpret_radioactive_half_life",
+        "title": "Halbwertszeit radioaktiver Stoffe deuten",
+        "titleEn": "Interpret the half-life of radioactive substances",
+        "description": "Die lernende Person kann die Halbwertszeit als statistische Halbierung der Zahl noch nicht zerfallener Kerne in einem gro\u00dfen Ensemble deuten und erkl\u00e4ren, warum der Zerfallszeitpunkt eines einzelnen Kerns nicht vorhergesagt werden kann.",
+        "descriptionEn": "The learner can interpret half-life as the statistical halving of the number of undecayed nuclei in a large ensemble and explain why the decay time of an individual nucleus cannot be predicted.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "1593d95c-2aac-504c-8527-37cb61877da9"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_MATERIE"
+          ],
+          "phase": "GLOBAL",
+          "area": "Atom- und Kernphysik",
+          "topicCode": "CANONICAL.PHYSICS.SEK1.NUCLEAR.DECAY_RADIATION.HALF_LIFE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "competencyRefs": [
+          "PROCESS.PK2",
+          "PROCESS.PK3"
+        ],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+            "title": "Visualisierung: Halbwertszeit radioaktiver Stoffe deuten",
+            "url": "/assets/goal-visualizations/physik/16b94a12-ecc5-5b5c-85b6-87b4290bebf8/16b94a12-ecc5-5b5c-85b6-87b4290bebf8.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Halbwertszeit radioaktiver Stoffe deuten.",
+            "altText": "Vier gleichm\u00e4\u00dfig angeordnete Karten zeigen die im Mittel verbleibenden radioaktiven Kerne 16, 8, 4 und 2 zu den Zeiten 0, T, 2T und 3T sowie zuf\u00e4llige Einzelzerf\u00e4lle.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      }
+    ],
+    "primaryMathWholePositiveBodyPreviouslyRead": null,
+    "newScientificOrNativeVerdict": null,
+    "sourceScopePrerequisiteNecessityStillRequiresSubstantiveReview": true
+  },
+  "originalIndependentHistory": [
+    {
+      "originalBinding": {
+        "role": "primary",
+        "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+        "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.proposal-candidate.json",
+        "authorSha256": "sha256:da2a8f02ac0d286d3c1be81b82ad214f5044ef3c3e6e9304545a93fbf7a14974",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.parallel-independent-review.json",
+        "reviewSha256": "sha256:b966252d4d1008e2f300de5e824dd66cc2d566d3d32bd5656ae218b40da47bb3",
+        "reviewRecordIndex": 54,
+        "independentScientificVerdict": "pending",
+        "requiresDecision": "add",
+        "proposedForeignPrerequisiteIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+          "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": false,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      },
+      "wholeOriginalProposal": {
+        "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+        "familyId": "canonical-gymnasium",
+        "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "dependentTitle": "Zerfallsgesetze anwenden",
+        "dependentDescription": "Die lernende Person kann mit einem einfachen exponentiellen Zerfallsgesetz die zeitliche Abnahme einer radioaktiven Substanz oder ihrer Aktivit\u00e4t bestimmen und die Halbwertszeit im Sachkontext interpretieren.",
+        "prerequisiteGoalIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "decision": "add",
+        "rationale": "Die Abnahme wird mit einem exponentiellen Gesetz numerisch bestimmt und Halbwertszeit wird interpretiert. Parameter einer Exponentialfunktion deuten und Funktionswerte berechnen sind die notwendigen mathematischen Grundlagen. Das L\u00f6sen nach einer unbekannten Zeit wird nicht verlangt, daher keine universelle Logarithmusgleichung.",
+        "evidenceKind": "didacticSequencing",
+        "sourceRefs": [
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+            "locator": "goals[id=a12fddce-0215-58d9-bd91-21be8a960d25]",
+            "supports": "goalSemantics"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+            "locator": "goals[id=a12fddce-0215-58d9-bd91-21be8a960d25].applicability",
+            "supports": "scope"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "locator": "goals[id=c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7]",
+            "supports": "prerequisite"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+            "locator": "goals[id=c65ecabf-d00b-4e2d-99ae-b64692325ffb]",
+            "supports": "prerequisite"
+          }
+        ],
+        "applicability": {
+          "universality": "allDependentScopes",
+          "scopes": [
+            {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            }
+          ],
+          "alternatives": []
+        },
+        "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+        "status": "candidate_pending_independent_review",
+        "inventoryIndex": 265,
+        "reviewInput": {
+          "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+          "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+        },
+        "proposalBinding": {
+          "baseline": {
+            "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+            "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+            "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+          },
+          "proposed": {
+            "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+            "prerequisitesSha256": "sha256:c7d29769801be65efb9abc1e25ceb2cf0afdc3a54da72e383f30a5dd36fadc21",
+            "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+          },
+          "baselineRequires": [
+            "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+          ],
+          "proposedRequires": [
+            "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+            "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+          ],
+          "changesSha256": "sha256:60b8b43669ddf679e2f2b70f23aeceeb06242416c8c73908e937cbbc8e0baff8",
+          "prerequisiteInputs": [
+            {
+              "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+              "semanticSha256": "sha256:fbd3f9bd574bd332894a480b2e4b877855ef5cd500c1b080b901a6e04943f625",
+              "scopeSha256": "sha256:618b5e703848f29c47e45975f48de12493673872847aff17119d0ace7df93047"
+            },
+            {
+              "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+              "semanticSha256": "sha256:31bbfd5c6dc2a9088844ba32b441c71594ee872e26bde8e26b46b4a86bfe7bc2",
+              "scopeSha256": "sha256:de1402e8aeb8a48443a48714a27fa5aaac3b9e3f88390b92226269c10d677788"
+            }
+          ]
+        }
+      },
+      "wholeOriginalIndependentReview": {
+        "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+        "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "decision": "pending",
+        "reviewDisposition": "needs_revision",
+        "reviewer": "Codex GPT-6.1 Sol Ultra / independent canonical prerequisite reviewer /root/requires_parallel_review",
+        "rationale": "Exponentielle Parameter und Funktionswerte passen semantisch zu Zerfallsvorhersage; das native Hintergrund-P f\u00fchrt keine Logarithmuszeit-Inversion ein. Der nominierte Parameter-Atom schlie\u00dft jedochDE-BY aus, w\u00e4hrend der PhysikgoalDE-BY umfasst. Explizite Au\u00dfenscope-prerequisiteOnly/Lookup-Eignung oder geeigneter universeller Mathegegenpart muss vor Adoption gepr\u00fcft werden; keine automatische Bavarian target promotion.",
+        "reviewInput": {
+          "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+          "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+        },
+        "proposalBindingSha256": "sha256:ff465da853f2d180225f9ea5ff9b86aa033839b349d6d0e9c9cbbdb6b5f3cdaf",
+        "reviewedContext": {
+          "description": "Die lernende Person kann mit einem einfachen exponentiellen Zerfallsgesetz die zeitliche Abnahme einer radioaktiven Substanz oder ihrer Aktivit\u00e4t bestimmen und die Halbwertszeit im Sachkontext interpretieren.",
+          "directRequires": [
+            "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+          ],
+          "effectiveRequires": [
+            "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+          ],
+          "prerequisiteOriginsRef": "sha256:b8d6110cde40de4032dfacd009ae209a30a36eb81cb46aacd79b38dcbf7abc75",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "phase": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [],
+            "phase": "Q4"
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52",
+          "sourceBindingFiles": [
+            "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+            "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json",
+            "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_source_extraction_to_canonical_physics.review.json"
+          ]
+        },
+        "nominatedMathematicsRead": [
+          {
+            "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "title": "Parameter exponentieller Funktionen aus Gleichung und Werten deuten",
+            "description": "Die lernende Person kann Funktionsgleichungen exponentieller Funktionen lesen, ihre Parameter aus gegebenen Werten oder Darstellungen bestimmen und Anfangswert sowie Wachstums- oder Zerfallsfaktor im Kontext deuten.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "K1.2",
+                "K2.3",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "J10",
+              "area": "Analysis",
+              "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.PARAMETERS"
+            }
+          },
+          {
+            "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+            "title": "Funktionswerte berechnen",
+            "description": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte f\u00fcr konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben geh\u00f6rigen Ausgabewerte deuten.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K1.1",
+                "K5.1"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "E"
+            }
+          }
+        ],
+        "positiveEvidenceReview": {
+          "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-nuclear-current-20260920-v1.config.json",
+          "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-nuclear-current-20260920-v1.review.jsonl",
+          "profileFingerprint": "sha256:4a8a3b664ba7cdbfbb9683015ea33b2278cbc5b81d10e18b84cb74fb72d04f7d",
+          "reviewInputFingerprint": "sha256:9efe3ee0dfd6f799b996b3065f5d57fb0f8033ed3ec85f4dbcdbea6ef2936e29",
+          "goalFingerprint": "sha256:274b12c77c1772bd09b16c12307ecad61b415709316518afbc17d712a27b80a9",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "expectationIdsRead": [
+            "ensemble-exponential",
+            "relative-not-absolute"
+          ],
+          "caseIdsRead": [
+            "remaining-activity",
+            "background-corrected-series"
+          ],
+          "profileBodyReadLanguage": "de",
+          "suitabilityRationale": "Exponentielle Parameter und Funktionswerte passen semantisch zu Zerfallsvorhersage; das native Hintergrund-P f\u00fchrt keine Logarithmuszeit-Inversion ein. Der nominierte Parameter-Atom schlie\u00dft jedochDE-BY aus, w\u00e4hrend der PhysikgoalDE-BY umfasst. Explizite Au\u00dfenscope-prerequisiteOnly/Lookup-Eignung oder geeigneter universeller Mathegegenpart muss vor Adoption gepr\u00fcft werden; keine automatische Bavarian target promotion.",
+          "successorAction": "do-not-rebind-before-substantive-resolution"
+        }
+      }
+    },
+    {
+      "originalBinding": {
+        "role": "distinct-fourth-batch-peer",
+        "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+        "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.proposal-candidate.json",
+        "authorSha256": "sha256:da2a8f02ac0d286d3c1be81b82ad214f5044ef3c3e6e9304545a93fbf7a14974",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.independent-review.json",
+        "reviewSha256": "sha256:33bc37ddedadc5ec972b3355feb47f5a9e6637c4ee3a4ca40cb3265d398bf068",
+        "reviewRecordIndex": 54,
+        "independentScientificVerdict": "approved",
+        "requiresDecision": "add",
+        "proposedForeignPrerequisiteIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+          "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": true,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      },
+      "wholeOriginalProposal": {
+        "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+        "familyId": "canonical-gymnasium",
+        "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "dependentTitle": "Zerfallsgesetze anwenden",
+        "dependentDescription": "Die lernende Person kann mit einem einfachen exponentiellen Zerfallsgesetz die zeitliche Abnahme einer radioaktiven Substanz oder ihrer Aktivit\u00e4t bestimmen und die Halbwertszeit im Sachkontext interpretieren.",
+        "prerequisiteGoalIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "decision": "add",
+        "rationale": "Die Abnahme wird mit einem exponentiellen Gesetz numerisch bestimmt und Halbwertszeit wird interpretiert. Parameter einer Exponentialfunktion deuten und Funktionswerte berechnen sind die notwendigen mathematischen Grundlagen. Das L\u00f6sen nach einer unbekannten Zeit wird nicht verlangt, daher keine universelle Logarithmusgleichung.",
+        "evidenceKind": "didacticSequencing",
+        "sourceRefs": [
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+            "locator": "goals[id=a12fddce-0215-58d9-bd91-21be8a960d25]",
+            "supports": "goalSemantics"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+            "locator": "goals[id=a12fddce-0215-58d9-bd91-21be8a960d25].applicability",
+            "supports": "scope"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "locator": "goals[id=c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7]",
+            "supports": "prerequisite"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+            "locator": "goals[id=c65ecabf-d00b-4e2d-99ae-b64692325ffb]",
+            "supports": "prerequisite"
+          }
+        ],
+        "applicability": {
+          "universality": "allDependentScopes",
+          "scopes": [
+            {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            }
+          ],
+          "alternatives": []
+        },
+        "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+        "status": "candidate_pending_independent_review",
+        "inventoryIndex": 265,
+        "reviewInput": {
+          "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+          "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+        },
+        "proposalBinding": {
+          "baseline": {
+            "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+            "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+            "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+          },
+          "proposed": {
+            "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+            "prerequisitesSha256": "sha256:c7d29769801be65efb9abc1e25ceb2cf0afdc3a54da72e383f30a5dd36fadc21",
+            "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+          },
+          "baselineRequires": [
+            "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+          ],
+          "proposedRequires": [
+            "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+            "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+          ],
+          "changesSha256": "sha256:60b8b43669ddf679e2f2b70f23aeceeb06242416c8c73908e937cbbc8e0baff8",
+          "prerequisiteInputs": [
+            {
+              "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+              "semanticSha256": "sha256:fbd3f9bd574bd332894a480b2e4b877855ef5cd500c1b080b901a6e04943f625",
+              "scopeSha256": "sha256:618b5e703848f29c47e45975f48de12493673872847aff17119d0ace7df93047"
+            },
+            {
+              "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+              "semanticSha256": "sha256:31bbfd5c6dc2a9088844ba32b441c71594ee872e26bde8e26b46b4a86bfe7bc2",
+              "scopeSha256": "sha256:de1402e8aeb8a48443a48714a27fa5aaac3b9e3f88390b92226269c10d677788"
+            }
+          ]
+        }
+      },
+      "wholeOriginalIndependentReview": {
+        "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+        "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "decision": "approved",
+        "reviewDisposition": "accepted",
+        "reviewer": "Codex GPT-6.1 Sol Ultra / independent canonical prerequisite reviewer /root/requires_canonical_review",
+        "rationale": "Ein exponentieller Funktionsterm wird quantitativ genutzt und seine Parameter/Halbwertszeit interpretiert. Beide Atome treffen die notwendige Mathematikbasis; Physikeigenschaften sind Einzelisotop-/Ensembleannahme, N gegen\u00fcber A und der Hintergrundbezug. Der Mathe-Parameter-Atom ist au\u00dferhalb DE-BY-target applicability, daher globale prerequisite lookup/closure separat erhalten, keine Target-Promotion behaupten.",
+        "reviewInput": {
+          "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+          "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+        },
+        "proposalBindingSha256": "sha256:ff465da853f2d180225f9ea5ff9b86aa033839b349d6d0e9c9cbbdb6b5f3cdaf",
+        "reviewedContext": {
+          "description": "Die lernende Person kann mit einem einfachen exponentiellen Zerfallsgesetz die zeitliche Abnahme einer radioaktiven Substanz oder ihrer Aktivit\u00e4t bestimmen und die Halbwertszeit im Sachkontext interpretieren.",
+          "directRequires": [
+            "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+          ],
+          "effectiveRequires": [
+            "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+          ],
+          "prerequisiteOriginsRef": "sha256:b8d6110cde40de4032dfacd009ae209a30a36eb81cb46aacd79b38dcbf7abc75",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "phase": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [],
+            "phase": "Q4"
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52",
+          "sourceBindingFiles": [
+            "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+            "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json",
+            "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_source_extraction_to_canonical_physics.review.json"
+          ]
+        },
+        "nominatedMathematicsRead": [
+          {
+            "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "title": "Parameter exponentieller Funktionen aus Gleichung und Werten deuten",
+            "description": "Die lernende Person kann Funktionsgleichungen exponentieller Funktionen lesen, ihre Parameter aus gegebenen Werten oder Darstellungen bestimmen und Anfangswert sowie Wachstums- oder Zerfallsfaktor im Kontext deuten.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "K1.2",
+                "K2.3",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "J10",
+              "area": "Analysis",
+              "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.PARAMETERS"
+            }
+          },
+          {
+            "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+            "title": "Funktionswerte berechnen",
+            "description": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte f\u00fcr konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben geh\u00f6rigen Ausgabewerte deuten.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K1.1",
+                "K5.1"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "E"
+            }
+          }
+        ],
+        "positiveEvidenceReview": {
+          "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-nuclear-current-20260920-v1.config.json",
+          "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-nuclear-current-20260920-v1.review.jsonl",
+          "profileFingerprint": "sha256:4a8a3b664ba7cdbfbb9683015ea33b2278cbc5b81d10e18b84cb74fb72d04f7d",
+          "reviewInputFingerprint": "sha256:9efe3ee0dfd6f799b996b3065f5d57fb0f8033ed3ec85f4dbcdbea6ef2936e29",
+          "goalFingerprint": "sha256:274b12c77c1772bd09b16c12307ecad61b415709316518afbc17d712a27b80a9",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "expectationIdsRead": [
+            "ensemble-exponential",
+            "relative-not-absolute"
+          ],
+          "caseIdsRead": [
+            "remaining-activity",
+            "background-corrected-series"
+          ],
+          "profileBodyReadLanguage": "de",
+          "suitabilityRationale": "ensemble-exponential/relative-not-absolute und remaining-activity/background-corrected-series bleiben geeignet. Funktionswert-/Parameterkompetenz ist assumed mathematics; Ensemble statt feste Einzellebensdauer, relative Halbung und abgezogener Hintergrund gegen\u00fcber absoluter Aktivit\u00e4t m\u00fcssen fachlich erkl\u00e4rt werden. Mathe-Au\u00dfenscope ist separat lookup/closure-relevant.",
+          "successorAction": "preserve-body-additive-input-successor-after-adoption"
+        }
+      }
+    }
+  ],
+  "unresolvedDistinctFourthBatchDissent": true,
+  "originalEffectiveIndexRecord": {
+    "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "subject": "physics",
+    "title": "Zerfallsgesetze anwenden",
+    "selectedRecord": {
+      "role": "primary",
+      "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+      "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.proposal-candidate.json",
+      "authorSha256": "sha256:da2a8f02ac0d286d3c1be81b82ad214f5044ef3c3e6e9304545a93fbf7a14974",
+      "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.parallel-independent-review.json",
+      "reviewSha256": "sha256:b966252d4d1008e2f300de5e824dd66cc2d566d3d32bd5656ae218b40da47bb3",
+      "reviewRecordIndex": 54,
+      "independentScientificVerdict": "pending",
+      "requiresDecision": "add",
+      "proposedForeignPrerequisiteIds": [
+        "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "originalReviewInput": {
+        "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+        "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+        "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+      },
+      "currentMatchesBaseline": true,
+      "currentMatchesProposed": false,
+      "technicallyCurrentApprovedBinding": false,
+      "technicalErrors": [],
+      "nativeQualityOrAdoptionApprovalCreated": false
+    },
+    "selectionBasis": "primary exact record",
+    "originalDecisionHistory": [
+      {
+        "role": "primary",
+        "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+        "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.proposal-candidate.json",
+        "authorSha256": "sha256:da2a8f02ac0d286d3c1be81b82ad214f5044ef3c3e6e9304545a93fbf7a14974",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.parallel-independent-review.json",
+        "reviewSha256": "sha256:b966252d4d1008e2f300de5e824dd66cc2d566d3d32bd5656ae218b40da47bb3",
+        "reviewRecordIndex": 54,
+        "independentScientificVerdict": "pending",
+        "requiresDecision": "add",
+        "proposedForeignPrerequisiteIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+          "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": false,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      },
+      {
+        "role": "distinct-fourth-batch-peer",
+        "decisionId": "canonical-physics-a12fddce-0215-58d9-bd91-21be8a960d25",
+        "dependentGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.proposal-candidate.json",
+        "authorSha256": "sha256:da2a8f02ac0d286d3c1be81b82ad214f5044ef3c3e6e9304545a93fbf7a14974",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-004.independent-review.json",
+        "reviewSha256": "sha256:33bc37ddedadc5ec972b3355feb47f5a9e6637c4ee3a4ca40cb3265d398bf068",
+        "reviewRecordIndex": 54,
+        "independentScientificVerdict": "approved",
+        "requiresDecision": "add",
+        "proposedForeignPrerequisiteIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:9a7fe79bb1fe61fa924e3ea9df5cfee4e144591566068b1062c5af479c6d2667",
+          "prerequisitesSha256": "sha256:597d201077a27aa322a88177d5a527caa7a70cb7dc86a01e2838f97b6e2c09d5",
+          "scopeSha256": "sha256:1de97b6270e529ae06f9e21bf240b0a9fc20ae9c765adbc90c44ee4a5a7aac52"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": true,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      }
+    ],
+    "unresolvedDistinctFourthBatchDissent": true,
+    "fourthBatchDisagreementReconciledHere": false,
+    "effectiveCurrentScientificBindingAccepted": false,
+    "activeForeignRequires": [],
+    "firstTenAdoptionRecorded": false,
+    "firstTenAdoptionEvidence": null,
+    "otherNativeQualityOrAdoptionApprovedByThisIndex": false
+  },
+  "sourceBindingFilesToReadSubstantively": [
+    "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+    "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json",
+    "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_source_extraction_to_canonical_physics.review.json"
+  ],
+  "preparedInputOnly": true,
+  "newScientificDecisionOrApprovalCreated": false,
+  "currentSourceApplicabilityOrWholePQualityApprovedHere": false
+}

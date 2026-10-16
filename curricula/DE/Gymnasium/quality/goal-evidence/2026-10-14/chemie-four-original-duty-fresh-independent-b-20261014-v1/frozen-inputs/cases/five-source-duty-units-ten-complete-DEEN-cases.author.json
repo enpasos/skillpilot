@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-14T04:36:56.014708+00:00",
+  "authorOnly": true,
+  "license": "CC-BY-4.0",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "allMaterialsInline": true,
+  "unitCount": 5,
+  "caseCount": 10,
+  "newGoalCount": 1,
+  "units": [
+    {
+      "dutyUnit": "HB-LK-nanotechnology-plastic-property-change",
+      "wholeCurrentGoalIds": [
+        "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+        "2652caef-b557-58b9-9b28-70db62625ce5",
+        "5e2eb826-6e60-5273-91d6-c23f6dfa33b1"
+      ],
+      "sourceDutyDesignClaim": "Author proposal: existing nano/property/dimension union with explicit polymer-matrix and surface-nanostructuring cases; not mere conductive conjugation or Ag packaging.",
+      "caseCount": 2,
+      "cases": [
+        {
+          "id": "HB-N1",
+          "materialDe": "Vollständiger theoretischer Modelldatensatz, kein Herstellungsversuch. Ein und dieselbe PMMA-Matrix wird in drei Proben verglichen: P ohne Füller; M mit5Volumenprozent kugelförmigen SiO2-Teilchen mit Durchmesser20µm; N mit5Volumenprozent kugelförmigen SiO2-Teilchen mit Durchmesser20nm. Gleich sind Polymerketten, Vernetzung, Prüftemperatur, Füllervolumen und Probengeometrie. Alle Teilchen sind gut verteilt; die Karte nennt wirksame Wechselwirkungen an der Polymer/Füller-Grenzfläche. Für diese vorgegebenen Proben gelten Zugmodul P2.0GPa, M2.2GPa, N2.8GPa und Bruchdehnung P5%, M4%, N2%. Kugelmodell: Oberfläche je Füllervolumen ist6/d. Eine zweite Karte zeigt bei gleicher chemischer Matrix eine nanostrukturierte Oberfläche mit gegebenen Erhebungen80nm und eine glatte Oberfläche; unter derselben ausdrücklich geeigneten Benetzungsmessung sind die Kontaktwinkel105° und75°. Dies sind gegebene Modelldaten, keine allgemeine Behauptung, jede Nanostruktur mache hydrophob. Zur Bearbeitung werden keine Stoffe berührt oder Pulver freigesetzt. Feiner freier Staub kann anders exponieren als im Polymer gebundene Teilchen; konkrete Freisetzungs- und Expositionsdaten fehlen. Für diese Benetzungsmessung ist ausdrücklich vorgegeben, dass die geeignet gestaltete Struktur einen teilweise luftgetragenen Kontaktzustand ermöglicht; reine Vergrößerung einer vollständig benetzten hydrophilen Fläche wird nicht als Erklärung vorausgesetzt.",
+          "materialEn": "Complete theoretical model data, no preparation experiment. The same PMMA matrix is compared in three specimens: P without filler; M with5volume percent spherical SiO2 particles20µm in diameter; N with5volume percent spherical SiO2 particles20nm in diameter. Polymer chains, crosslinking, test temperature, filler volume and specimen geometry are equal. All particles are well dispersed; the card states effective interactions at the polymer/filler interface. Supplied tensile moduli are P2.0GPa, M2.2GPa and N2.8GPa; failure strains are P5%, M4% and N2%. Spherical model: area per filler volume is6/d. A second card compares an80nm-patterned surface and a smooth surface of the same chemical matrix; under the same specified suitable wetting measurement their contact angles are105° and75°. These are supplied model data, not a rule that every nanostructure is hydrophobic. No materials are touched or powders released. Exposure to free fine dust can differ from particles bound in polymer; release/exposure data are absent. This wetting measurement explicitly assumes a suitable pattern supporting a partly air-bearing contact state; mere enlargement of a completely wetted hydrophilic area is not assumed as the explanation.",
+          "taskDemandDe": "Ordne M und N nach Größenordnung ein. Erkläre mit6/d, Grenzfläche und gegebenen Messwerten die Eigenschaftsänderung des Kunststoffs, einschließlich des Zielkonflikts. Unterscheide Füllerverstärkung von Oberflächen-Nanostrukturierung. Leite eine begrenzte Anwendungsaussage und offene Nutzen-Risiko-Frage ab. Transfer: Eine vierte Probe hat dieselben20nm-Teilchen, aber Agglomerate und schlechten Grenzflächenkontakt; darf ihr Zugmodul aus N übernommen werden?",
+          "taskDemandEn": "Classify M and N by size. Explain the plastic property change using6/d, interfaces and supplied measurements, including the trade-off. Distinguish nanoparticle reinforcement from surface nanostructuring. Derive a bounded application statement and an open benefit-risk question. Transfer: a fourth specimen has the same20nm particles but agglomeration/poor interfacial contact; can N’s modulus be transferred?",
+          "modelAnswerDe": "20µm entsprechen20000nm: N ist nanoskalig, M mikroskalig. Bei gleichem Füllervolumen und Kugelgeometrie bietet N die1000fache Grenzfläche. In der vorgegebenen gut verteilten, wirksam wechselwirkenden Matrix passt das zur größeren beobachteten Steifigkeit; die geringere Bruchdehnung bleibt ein eigener Nachteil. Die Oberflächen-Nanostrukturierung verändert Topographie und Flüssigkeitskontakt statt Monomeridentität oder Füllervolumen. Anwendungen müssen zur benötigten Eigenschaft passen; weder die Werte noch das Wort nano beweisen allgemeine Sicherheit. Freisetzung und Exposition freier gegenüber gebundenen Partikeln brauchen eigene Daten. Agglomerate und schlechter Grenzflächenkontakt verletzen die Voraussetzungen für eine Übertragung des N-Zugmoduls.",
+          "modelAnswerEn": "20µm equals20000nm: N is nanoscale and M microscale. At fixed filler volume with spheres, N has1000times the interface area. In the supplied well-dispersed interacting matrix this supports the observed stiffness increase; its lower failure strain is a distinct cost. Surface nanostructuring changes topography rather than filler content or monomer identity and changes wetting only under the given conditions. Select an application by its needed properties; neither the data nor nano establishes universal safety. Bound/free particle exposure and release require evidence. Agglomeration/poor interfaces invalidate transferring N’s modulus to the fourth specimen.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Nano-/Mikroordnung und1000facher Grenzflächenvergleich korrekt, keine neue Monomersynthese behauptet.",
+              "fullCreditEn": "Correct nano/micro classification and1000fold interface comparison; no new monomer synthesis invented.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Beobachtete Steifigkeit und verringerte Dehnung mit Bedingungen und Zielkonflikt erklärt.",
+              "fullCreditEn": "Explains observed stiffness and reduced strain with conditions/trade-off.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Nanostrukturierung von Nanofüllerverstärkung getrennt und Anwendung sowie offene Exposition begrenzt.",
+              "fullCreditEn": "Distinguishes nanostructuring and nanoparticle reinforcement; bounds application/exposure inference.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Agglomerations-Transfer begründet abgelehnt statt universeller Nano-Verbesserungsregel.",
+              "fullCreditEn": "Rejects agglomeration transfer with reasons, avoiding a universal nano-improvement rule.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        },
+        {
+          "id": "HB-N2",
+          "materialDe": "Neuer vollständiger Modelldatensatz zu einem Polycarbonatbauteil. Matrixchemie und Probendicke sind konstant. A ist glatt ohne Partikel: Ritzhärte H1.0, Wasser-Kontaktwinkel78°. B enthält gut gebundene30nm-SiO2-Teilchen bei derselben glatten Außentopographie: H1.6, Winkel79°. C enthält dieselben gebundenen Teilchen und zusätzlich eine100nm-Oberflächenstruktur: H1.6, Winkel111° bei der gegebenen Messung. Die Materialkarte erklärt, dass Grenzflächen eine mechanische Beanspruchung übertragen können; die geometrische Oberflächenstruktur verändert den tatsächlichen Flüssigkeitskontakt. Nach intensivem Abrieb ist bei C die Struktur teilweise abgetragen und der Winkel86°; eine Partikelfreisetzung wurde nicht untersucht. Für das Forschungsbeispiel ist hohe Ritzbeständigkeit erwünscht; für eine optische Anwendung fehlen Trübungsdaten. Kein Laborversuch, keine verallgemeinerte Produktfreigabe. H ist ein relativer Ritzbeständigkeitsindex; größer bedeutet in dieser Messung ritzbeständiger. Für die Benetzungsmessung ermöglicht die geeignete Struktur teilweise eingeschlossene Luft; daraus folgt keine universelle Benetzungsregel.",
+          "materialEn": "New complete model data for a polycarbonate part. Matrix chemistry/thickness are constant. A is smooth without particles: scratch hardness H1.0, water contact angle78°. B contains well-bound30nm-SiO2 particles with the same smooth external topography: H1.6, angle79°. C has the same bound particles plus a100nm surface pattern: H1.6, angle111° in the supplied measurement. The card states that interfaces can transmit mechanical stress and that surface geometry changes actual liquid contact. After intensive abrasion C’s pattern is partly worn and its angle is86°; particle release was not investigated. The research example seeks scratch resistance; optical use lacks haze data. No experiment or universal product authorization. H is a relative scratch-resistance index; larger means more scratch resistant in this test. The suitable wetting-test pattern retains partial air pockets, not a universal wetting rule.",
+          "taskDemandDe": "Trenne anhand der kontrollierten Vergleiche A/B und B/C die beiden nanotechnologischen Beiträge. Erkläre den Nutzen und die Aussagegrenzen nach Abrieb. Formuliere die noch fehlende Prüfung für eine transparente Abdeckung. Transfer: Eine Werbung schreibt beide Änderungen ausschließlich neuen Polymermolekülen zu und nennt das Produkt pauschal sicher. Prüfe beide Folgerungen.",
+          "taskDemandEn": "Use controlled A/B and B/C comparisons to distinguish both nanotechnology contributions. Explain benefit and post-abrasion limits. State the missing test for a transparent cover. Transfer: advertising attributes both changes exclusively to new polymer molecules and calls the product universally safe. Evaluate both conclusions.",
+          "modelAnswerDe": "A/B trennt den Beitrag gebundener Nanopartikel und ihrer Grenzfläche zur Ritzbeständigkeit ab; B/C isoliert den Beitrag zusätzlicher Oberflächentopographie zur Benetzung. Die Polymerchemie bleibt laut Material gleich. Der Abrieb begrenzt die Beständigkeit des Oberflächeneffekts, beweist aber ohne Freisetzungsmessung weder eine bestimmte Freisetzung noch Sicherheit. Für eine transparente Abdeckung fehlen Trübungs-/Transmissionsdaten und anwendungsrelevante Beständigkeits-/Expositionsdaten. Die Werbung verwechselt Strukturierung mit neuen Polymermolekülen und behauptet allgemeine Sicherheit ohne Grundlage.",
+          "modelAnswerEn": "A/B isolates nanoparticle/interface reinforcement of scratch resistance; B/C isolates surface-topography effects on wetting. Polymer chemistry is unchanged. Abrasion limits persistence of the surface effect; absent release measurements support no release/safety verdict. Optical haze/transmission testing is required for a transparent cover, together with relevant durability/exposure information. Advertising invents new polymer molecules and an unsupported universal safety conclusion.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Zwei kontrollierte Vergleiche und Kunststoff-Eigenschaftsänderungen konkret zugeordnet.",
+              "fullCreditEn": "Assigns both controlled comparisons to concrete plastic-property changes.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Grenzflächen und Topographie statt unbewiesener neuer Polymerchemie unterschieden.",
+              "fullCreditEn": "Distinguishes interfaces/topography from unproved new polymer chemistry.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Abrieb-, Freisetzungs- und optische Aussagegrenzen korrekt angegeben.",
+              "fullCreditEn": "Correctly states abrasion, release and optical limits.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Werbeaussagen materialgestützt korrigiert; keine erfundenen Sicherheitsdaten.",
+              "fullCreditEn": "Corrects advertising from supplied material without invented safety data.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        }
+      ],
+      "notNewGateEvidence": true
+    },
+    {
+      "dutyUnit": "HB-LK-active-ingredient-concept-and-natural-product-isolation",
+      "wholeCurrentGoalIds": [
+        "42a84bca-d27e-581f-a43a-eee424f0504d",
+        "5a709938-e0f5-42b7-94f0-cfded08963a2"
+      ],
+      "sourceDutyDesignClaim": "Author proposal: existing substance/mixture and separation union explains the bounded source concept/isolation duty; theoretical cases do NOT certify the stronger actual separation performance.",
+      "caseCount": 2,
+      "cases": [
+        {
+          "id": "HB-I1",
+          "materialDe": "Vollständige Modellkarte, keine Untersuchung oder Anwendung am Menschen: Ein gedachtes Pflanzenmaterial enthält den bereits darin vorhandenen molekularen Naturstoff N sowie Z und unlösliche Fasern. N und Z bezeichnen Molekülarten, nicht die Elemente Stickstoff oder Zink. Nur N verursacht im vorgegebenen nichtklinischen Test die gewünschte biologische Wirkung; Z und Fasern zeigen diese Wirkung unter den gegebenen Bedingungen nicht. Definition für diese Karte: Der Wirkstoff ist die für die beabsichtigte Wirkung verantwortliche Substanz, nicht das gesamte Gemisch. Nach einer vorgegebenen theoretischen Aufarbeitung liegt eine Mischung aus0.20gN und0.10gZ vor. Filtration hält gelöste N-/Z-Moleküle nicht zurück. Ein geeignetes selektives Trennverfahren ergibt eine Fraktion mit0.18gN+0.02gZ und eine Restfraktion0.02gN+0.08gZ. Die Identität der N-Moleküle bleibt unverändert; es werden keine Bindungen neu gebildet. Aufarbeitungsprinzipien, keine nachzumachende Rezeptur. Klinische Wirksamkeit, Verträglichkeit und Freigabe fehlen.",
+          "materialEn": "Complete model card, no human use/investigation: imagined plant material already contains molecular natural product N, Z and insoluble fibres. N/Z label molecules, not the elements nitrogen or zinc. Only N produces the specified desired effect in a supplied nonclinical assay; Z/fibres do not under those conditions. Card definition: the active ingredient is the substance responsible for the intended effect, not the whole mixture. A theoretical work-up supplies0.20gN+0.10gZ. Filtration does not retain dissolved N/Z molecules. A suitable selective separation gives0.18gN+0.02gZ and a remainder0.02gN+0.08gZ. N’s molecular identity is unchanged; no new bonds form. These are work-up principles, not a recipe to perform. Clinical efficacy, tolerability and authorization are absent.",
+          "taskDemandDe": "Erkläre Wirkstoff, Naturstoff, Gemisch und Fraktion am Beispiel. Begründe, weshalb einfache Filtration die gelösten Bestandteile nicht trennt. Beurteile Reinheit, Ausbeutegrenze und Isolierung gegenüber Synthese. Transfer: Ein neuer Naturauszug ist pflanzlich und zeigt einen Testeffekt; welche Wirkstoff- oder Unbedenklichkeitsbehauptung folgt daraus noch nicht?",
+          "taskDemandEn": "Explain active ingredient, natural product, mixture and fraction. Explain why simple filtration cannot separate the dissolved compounds. Assess purity, recovery and isolation versus synthesis. Transfer: a new plant extract produces an assay effect; which active-ingredient or safety conclusion still does not follow?",
+          "modelAnswerDe": "N ist der vorgegebene biologisch aktive Naturstoff; Pflanzenmaterial und beide Fraktionen sind Gemische. Die angereicherte Fraktion enthält90%N und gewinnt90%des ursprünglich enthaltenen N zurück; das ist weder völlige Reinheit noch quantitative Rückgewinnung. Gelöste Moleküle passieren den Filter. Isolierung trennt vorhandenes N ab, statt es chemisch neu zu bilden. Der Testeffekt eines unbekannten Extraktgemischs identifiziert nicht dessen wirksame Molekülart und beweist keine klinische Wirksamkeit oder Unbedenklichkeit aus pflanzlicher Herkunft.",
+          "modelAnswerEn": "N is the supplied active natural compound; the plant material/fractions are mixtures. The enriched fraction is90%N and recovers90%of initial N, not complete purity or quantitative recovery. Dissolved molecules pass a filter. Isolation separates existing N rather than chemically producing it. An unknown extract’s assay effect identifies neither its active molecule nor clinical efficacy/safety; natural origin is no guarantee.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Wirkstoffrolle und Stoff/Gemisch/Fraktion anhand der gegebenen Wirkung unterschieden.",
+              "fullCreditEn": "Distinguishes active role and substance/mixture/fraction using supplied effects.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Selektives Trennprinzip und Filtergrenze chemisch begründet.",
+              "fullCreditEn": "Explains selective separation and filter limits.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "90%Reinheit/90%N-Rückgewinnung und Isolierung ohne neue Bindungsbildung korrekt.",
+              "fullCreditEn": "Correct90%purity/90%N recovery and isolation without new bonds.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Neuer Extrakt erlaubt weder Stoffidentifikation noch klinische/Sicherheitsgarantie.",
+              "fullCreditEn": "New extract supports neither molecular identification nor clinical/safety guarantee.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        },
+        {
+          "id": "HB-I2",
+          "materialDe": "Vollständiger zweiter Modellfall. P ist als Molekülstruktur vollständig verbal gegeben: Benzolring mit COOH an Ringposition1 und OH an Position2. Q hat dieselbe Summenformel C7H6O3, aber OH an Position3; P und Q sind daher verschiedene Molekülarten. Die Datentabelle gibt für diesen nichtklinischen Test einen gewünschten Effekt nur für P an. Pflanzenextrakt E enthält P+Q; eine vorgegebene geeignete Trennung liefert die Fraktionen F1(95%P,5%Q) und F2(10%P,90%Q). Eine separat beschriebene Synthese stellt P aus chemisch anderen Edukten durch Bindungsumordnung her; eine anschließende Analyse bestätigt die oben genannte vollständige P-Struktur. Für den Vergleich werden gleiche Konzentration und Testbedingungen vorgegeben. Kein eigener Versuch, keine therapeutische Aussage und keine Empfehlung, diese Stoffe zu verwenden.",
+          "materialEn": "Complete second model. P’s full verbal constitution is a benzene ring with COOH at position1 and OH at position2. Q has the same formula C7H6O3 but OH at position3; they are different molecular species. Supplied nonclinical data assign the desired effect only to P in this assay. Plant extract E contains P+Q; a suitable supplied separation gives F1(95%P/5%Q) and F2(10%P/90%Q). A separate synthesis produces P from chemically different reactants by bond rearrangement; subsequent analysis confirms the full stated P constitution. Concentration/test conditions are equal for comparisons. No experiment, therapeutic claim or recommendation to use the substances.",
+          "taskDemandDe": "Erläutere die Wirkstoff-Isolierung und grenze sie von der angegebenen Synthese ab. Ordne die Fraktionen ein. Prüfe die Behauptungen: gleiche Summenformel bedeutet gleicher Wirkstoff; pflanzlich isoliertes P muss chemisch anders sein als synthetisches P. Welche Angaben fehlen für Reinheits- oder Anwendungsbehauptungen?",
+          "taskDemandEn": "Explain active-ingredient isolation versus the supplied synthesis. Classify fractions. Evaluate: equal molecular formula means the same active compound; plant-isolated P must differ chemically from synthetic P. What data are missing for purity/use claims?",
+          "modelAnswerDe": "Isolierung reichert bereits vorhandenes P an; Synthese bildet P aus anderen Edukten. F1 und F2 bleiben Gemische, F1 ist P-reicher, aber nicht automatisch rein. Die vollständige Verknüpfungsstruktur unterscheidet P und Q trotz gleicher Summenformel. Dasselbe bestätigte P-Molekül kann aus beiden Wegen stammen; Herkunft allein beweist weder eine andere Identität noch identische Verunreinigungen. Angaben zu Verunreinigungen, Exposition und klinischer Wirksamkeit/Sicherheit fehlen, daher folgt keine Anwendungsfreigabe.",
+          "modelAnswerEn": "Isolation enriches existing P; synthesis forms P from different reactants. Both fractions remain mixtures and F1 is more P-rich. Full connectivity distinguishes P/Q despite equal formula. The same confirmed P molecule can arise by either route; origin alone establishes neither different identity nor equal impurity profiles. Impurity characterization, exposure/dose and clinical/safety evidence are absent, preventing a use authorization.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Isolierung vorhandener Moleküle und chemische Bildung neuer Moleküle abgegrenzt.",
+              "fullCreditEn": "Distinguishes isolation of existing molecules and chemical formation.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Beide Fraktionen als Gemische mit unterschiedlicher Anreicherung eingeordnet.",
+              "fullCreditEn": "Classifies both fractions as mixtures with differing enrichment.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Konstitution statt nur Summenformel/Herkunft zur Identität verwendet.",
+              "fullCreditEn": "Uses constitution rather than formula/origin alone for identity.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Keine Reinheits-, klinische oder Sicherheitsfreigabe ohne Daten erfunden.",
+              "fullCreditEn": "Invents no purity, clinical or safety authorization without data.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        }
+      ],
+      "notNewGateEvidence": true
+    },
+    {
+      "dutyUnit": "HB-LK-analysis-synthesis-molecular-modelling-feedback",
+      "wholeCurrentGoalIds": [
+        "93a7ce4d-1c90-568c-9368-cac423011ef9"
+      ],
+      "sourceDutyDesignClaim": "One new narrow whole-goal author candidate; explains the relation between methods rather than claiming actual synthesis/software execution. Independent atomarity/P/D/M/V/source reviews pending.",
+      "caseCount": 2,
+      "cases": [
+        {
+          "id": "HB-W1",
+          "materialDe": "Alle folgenden Befunde sind ausdrücklich erfundene, konsistente nichtklinische Unterrichts-Modelldaten. Forschung fragt nach einem Molekül, das ein gegebenes Enzym im zellfreien Test hemmt. Eine Analyse nach Isolierung identifiziert Naturstoff N=R–OH, wobei R einen unveränderten Molekülrest bezeichnet; Reinheit 98%. Kontrollierte Messung: Enzymaktivität ohne N100%, mit N60%. Molecular Modelling berechnet eine mögliche räumliche Bindungsanordnung und schlägt Derivat D mit einer veränderten Gruppe als stärker bindenden Kandidaten vor; das ist eine Modellvorhersage, keine Messung. Als Synthesemodell ist gegeben: R–OH+(CH3CO)2O→R–O–C(=O)–CH3+CH3COOH. D bezeichnet den neuen Ester, nicht bloß gereinigtes N. Eine anschließende Struktur- und Reinheitsanalyse bestätigt D(98%); bei gleicher Konzentration ergibt der nichtklinische Test40%Enzymaktivität. Die Karten enthalten keine Daten zu Aufnahme, Abbau, Nebenwirkungen, Menschen oder Marktfreigabe. Kein praktischer Versuch und keine therapeutische Anleitung.",
+          "materialEn": "All following results are explicitly fictional consistent nonclinical classroom model data. Research seeks a molecule inhibiting a supplied enzyme in a cell-free assay. Analysis after isolation identifies natural product N=R–OH, where R is the unchanged molecular remainder; purity 98%. Controlled enzyme activity is100%without N and60%with N. Molecular modelling calculates a possible spatial binding arrangement and proposes modified derivative D as a stronger-binding candidate; this is prediction, not measurement. Supplied synthesis model: R–OH+(CH3CO)2O→R–O–C(=O)–CH3+CH3COOH. D is the new ester, not simply purified N. Subsequent structure/purity analysis confirms D(98%); at equal concentration the nonclinical assay gives40%activity. No uptake, metabolism, adverse-effect, human or marketing data are supplied. No actual experiment or therapeutic instruction.",
+          "taskDemandDe": "Erläutere die Beiträge von Isolierung/Analyse, Synthese, Molecular Modelling und erneutem Prüfen zu derselben Forschungsfrage. Stelle ihre Rückkopplung als begründete Folge dar, ohne ein starres Einbahnstraßenverfahren zu behaupten. Trenne Vorhersage, chemische Identitätsprüfung und nichtklinischen Messbefund. Transfer: Darf D aufgrund des Ergebnisses als besseres zugelassenes Medikament bezeichnet werden?",
+          "taskDemandEn": "Explain isolation/analysis, synthesis, modelling and renewed testing in the same research question. Describe feedback between methods rather than a rigid one-way recipe. Distinguish prediction, chemical identity check and nonclinical measurement. Transfer: can D be called a better approved medicine from these results?",
+          "modelAnswerDe": "Isolierung und Analyse liefern einen identifizierten Kandidaten und einen experimentellen Ausgangsbefund. Das Modell liefert eine strukturelle Änderungshypothese. Die Synthese bildet das vorgeschlagene andere Molekül; Analytik prüft Identität und Reinheit, bevor die beobachtete Wirkung D zugeschrieben wird. Erneutes Messen prüft eine Modellfolge und wirkt auf Modell und Gestaltungsentscheidung zurück. Stärkere Hemmung gilt nur im gegebenen Test; sie beweist weder den vollständigen Bindungsmechanismus noch menschlichen Nutzen, Sicherheit oder Zulassung. Neue Befunde können andere Entwürfe oder korrigierte Annahmen verlangen.",
+          "modelAnswerEn": "Isolation/analysis establishes a candidate and starting observation; modelling proposes a structural hypothesis; synthesis makes a different proposed molecule; analysis checks identity/purity before assigning the observed effect. New measurements test a model consequence and feed back into design/model assumptions. Stronger inhibition applies only to this assay, proving neither the full mechanism nor human efficacy/safety/authorization. New findings may require redesign or revised assumptions.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Analyse, Synthese und Modellierung mit ihren verschiedenen Beiträgen fachlich richtig zugeordnet.",
+              "fullCreditEn": "Correctly distinguishes contributions of analysis, synthesis and modelling.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Zusammenspiel und mindestens eine begründete Rückkopplung statt bloßer Schlagwortliste erklärt.",
+              "fullCreditEn": "Explains interplay and a reasoned feedback loop, not just method labels.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Vorhersage, Identitäts-/Reinheitsprüfung und zellfreien Testbefund unterschieden.",
+              "fullCreditEn": "Separates prediction, identity/purity analysis and cell-free observation.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Transfer auf Medikamentenbehauptung anhand fehlender Daten begrenzt.",
+              "fullCreditEn": "Bounds the medicine claim using missing evidence.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        },
+        {
+          "id": "HB-W2",
+          "materialDe": "Neuer vollständiger nichtklinischer Modellfall mit abweichendem Ergebnis. Eine frühere ungetrennte Probe enthielt P und Q. Ihr Enzymtest zeigte bei den angegebenen gleichen Bedingungen35%Restaktivität. Ein Molecular-Modelling-Modell hatte für P eine günstige Bindungsanordnung vorhergesagt; Q war im Modell nicht berücksichtigt. Eine verbesserte Analyse trennt und identifiziert zwei verschiedene Substanzen. Ein vorgeschlagener Syntheseweg kann reines P gezielt herstellen; danach werden Identität und Reinheit analytisch bestätigt. Kontrolltest mit reinem P ergibt95%Restaktivität, mit isoliertem Q20%, ohne Prüfstoff100%. Für Mischungen ist keine Additivität gegeben; aus den Zahlen soll kein Wirkmechanismus berechnet werden. Alle Daten sind erfundene Unterrichts-Modelldaten, keine klinischen Resultate. Eigene Synthese oder Computersimulation wird nicht verlangt.",
+          "materialEn": "New complete nonclinical model with a divergent result. An earlier unseparated specimen contained P and Q and gave35%residual enzyme activity under the supplied equal conditions. Molecular modelling predicted a favourable binding arrangement for P; Q was absent from the model. Improved analysis separates/identifies two substances. A proposed synthesis can deliberately produce pure P, followed by analytical identity/purity confirmation. Controlled tests give95%activity with pure P,20%with isolated Q and100%without test compound. Mixture additivity is not supplied; no mechanism is to be computed from these values. All are fictional classroom model data, not clinical outcomes. No actual synthesis/software simulation is required.",
+          "taskDemandDe": "Rekonstruiere, warum die ursprüngliche Zuordnung der Hemmung zu P nicht gesichert war. Erkläre, wie verbesserte Analyse, gezielte Synthese und Modellkritik aufeinander wirken. Entwickle einen nächsten begründeten Forschungsschritt. Transfer: Welche Änderung wäre nötig, wenn neuere Analytik für die vermeintlich reine P-Probe eine weitere Verunreinigung zeigt?",
+          "taskDemandEn": "Reconstruct why the original attribution to P was uncertain. Explain interaction between improved analysis, deliberate synthesis and criticism of model assumptions. Propose a justified next research step. Transfer: what must change if later analysis reveals another impurity in the supposedly pure P specimen?",
+          "modelAnswerDe": "Das ursprüngliche Gemisch zeigte nicht, welcher Bestandteil wirkte. Verbesserte Analyse änderte die Fragestellung; gezielte Synthese und Reinheitsprüfung erlaubten einen kontrollierten P-Test statt Vertrauen in die Modellpassung. Die Reinsubstanzdaten verhindern die Übertragung des Gemischeffekts auf P und begründen eine Untersuchung von Q, Kontrollen und Modelllücken. Daraus folgt noch kein eindeutiger Bindungsmechanismus oder additiver Mischungseffekt. Eine neue Verunreinigung verlangt erneute Charakterisierung/Trennung und kontrolliertes Prüfen vor Wirkzuordnung oder Modellbestätigung. Forschung koppelt die Methoden zurück, statt eine Simulation als Beweis zu behandeln.",
+          "modelAnswerEn": "The mixture did not identify the active component. Improved analysis reframed the question; deliberate synthesis and purity checks permitted a controlled P test rather than trusting model fit. Pure-P data prevent transferring the mixture effect to P and motivate investigating Q, controls and omitted model factors; no unique mechanism/additivity follows. A new impurity requires characterization/separation and controlled retesting before effect attribution or model validation. Research iterates rather than treating a simulation as proof.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Mischungsbefund nicht mit spezifischem P-Nachweis verwechselt.",
+              "fullCreditEn": "Does not equate a mixture result with proof for P.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Beiträge aller drei Methoden und Änderung der Forschungsfrage erläutert.",
+              "fullCreditEn": "Explains all three methods and the changed research question.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Widerspruch zwischen Modell und kontrolliertem Befund zur begründeten Rückkopplung genutzt.",
+              "fullCreditEn": "Uses prediction/controlled-result disagreement for justified feedback.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Neue Verunreinigung ändert Analytik/Prüfung; keine unbelegte Mechanismus- oder Klinikbehauptung.",
+              "fullCreditEn": "New impurity changes analysis/testing; no invented mechanism or clinical conclusion.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        }
+      ],
+      "notNewGateEvidence": true
+    },
+    {
+      "dutyUnit": "BW-LK-selected-dye-family-historical-current-future-research",
+      "wholeCurrentGoalIds": [
+        "188bd684-e894-5753-8a50-798220b04d97",
+        "61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3",
+        "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+        "b208b1a5-c609-53a1-8add-979417a93b7d",
+        "e5941581-0aba-5354-b4b9-d0249d4538a8"
+      ],
+      "sourceDutyDesignClaim": "Explicit author selection of dyes for BW3.4.8(4), not every optional material family. Complete joint source cases show historical/current/future research perspectives; existing goal bodies are not re-reviewed or altered.",
+      "caseCount": 2,
+      "cases": [
+        {
+          "id": "BW-B1",
+          "materialDe": "Gewählte Stoffgruppe: Farbstoffe. Vollständige historische Karte: BASF brachte1897 synthetischen Indigo nach Forschung und technischer Entwicklung auf den Markt; das ist eine historische Herstellerquelle, keine neutrale Gesamtbewertung aller gesellschaftlichen Folgen (https://www.basf.com/global/de/who-we-are/history/chronology/1865-1901/1897). Chemische Karte: Indigo ist in Wasser schwer löslich; eine reduzierte lösliche Form ermöglicht das Aufbringen auf Baumwolle, Luftoxidation liefert wieder Indigo. Diese begrenzten Angaben sind durch ACS beschrieben (https://www.acs.org/molecule-of-the-week/archive/i/indigo.html). Es wird keine kovalente Bindung von Indigo an Cellulose behauptet. Die folgenden heutigen/zukünftigen Prozessdaten sind erfundene, intern konsistente Unterrichts-Modelldaten pro gleicher Menge gefärbter Baumwolle: heutiger Prozess U Wasser100Einheiten, Reduktionsmittel4Einheiten, Energie10Einheiten, nach festgelegter Wäsche verbleibender Farbanteil0.95. Forschungsvorschlag V soll einen biotechnologisch erzeugten Vorläufer verwenden und in situ Indigo entstehen lassen: Wasser70, Reduktionsmittel0, Energie20, bisheriger Labor-Farbanteil nach derselben Wäsche0.80. Aufwendungen für Enzym-/Vorläuferherstellung, Freisetzung und Skalierung fehlen. Struktur-/Spektrenkarte bestätigt in beiden Endproben denselben Indigo; sie beweist keine gleiche Prozessbilanz. Kein eigener Färbeversuch und keine Produktfreigabe.",
+          "materialEn": "Selected family: dyes. Complete historical card: BASF marketed synthetic indigo in1897 after research and technical development; this manufacturer’s historical source is not a neutral assessment of every social consequence (https://www.basf.com/global/de/who-we-are/history/chronology/1865-1901/1897). Chemistry card: indigo has low water solubility; a soluble reduced form permits application to cotton and air oxidation reforms indigo. ACS describes these bounded points (https://www.acs.org/molecule-of-the-week/archive/i/indigo.html). No covalent indigo–cellulose bond is claimed. The following current/future process values are fictional internally consistent classroom model data per equal amount of dyed cotton: current U uses water100units, reductant4units, energy10units and retains0.95colour after specified washing. Research proposal V would use a biotechnology-derived precursor with in-situ indigo formation: water70, reductant0, energy20, current laboratory wash retention0.80. Enzyme/precursor production, release and scale-up inputs are absent. Structural/spectral information confirms the same indigo in both final specimens, not equal process impacts. No actual dyeing experiment/product authorization.",
+          "taskDemandDe": "Erläutere am selben Farbstoffbeispiel die historische Entwicklung, die heutige Anwendung mit chemischer Erklärung und die zukünftige Forschungsfrage. Verknüpfe Stoffanalyse, Verfahrensentwicklung und benötigte Prüfungen statt nur Jahreszahlen aufzuzählen. Beurteile V unter mindestens zwei gegebenen Kriterien und nenne fehlende Daten. Transfer: Beweist identisches Indigo im Endprodukt, dass beide Verfahren gleich nachhaltig sind?",
+          "taskDemandEn": "Explain historical development, current chemically grounded use and a future research question for the same dye example. Link substance analysis, process development and needed tests, not just dates. Assess V against at least two supplied criteria and identify missing data. Transfer: does identical final indigo prove equal sustainability?",
+          "modelAnswerDe": "Die historische Entwicklung zeigt den Übergang zu einer technisch nutzbaren Synthese und veränderten industriellen Herstellung, nicht automatisch eine Fortschritts- oder Umweltgarantie. Die heutige Anwendung nutzt die unterschiedliche Löslichkeit der Redoxformen; Analyse bestätigt den Farbstoff, nicht den gesamten Prozess. V ist ein Forschungsvorschlag mit geringerem gegebenem Wasser-/Reduktionsmitteleinsatz, aber höherem Energiebedarf und bisher geringerer Waschbeständigkeit. Die nächste Entwicklung muss etwa Farbbestand, Gesamtaufwand und Skalierbarkeit kontrolliert prüfen. Gleiche Molekülidentität lässt unterschiedliche Rohstoff-, Energie-, Wasser- und Abfallbilanzen zu. Die Herstellerquelle ist für das historische Ereignis nutzbar, ihre Interessen und die fehlenden anderen Perspektiven bleiben zu beachten.",
+          "modelAnswerEn": "History shows development of a technically usable synthesis/industrial route, not an automatic progress/environmental guarantee. Current use exploits differing solubility of redox forms; analysis identifies the dye, not the whole process. V is a research proposal with lower supplied water/reductant use but higher energy and presently lower wash fastness. Development must test retention, total inputs and scale-up under controlled conditions. Identical molecules permit different material/energy/water/waste impacts. The manufacturer source supports the historical event while its interests and missing perspectives remain relevant.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Historische, aktuelle und zukünftige Perspektive zu derselben gewählten Stoffgruppe konkret verbunden.",
+              "fullCreditEn": "Concretely links historical, current and future perspectives for the selected family.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Chemische Anwendung und Rolle von Analyse/Verfahrensentwicklung erklärt, keine kovalente Indigo-Faserbindung erfunden.",
+              "fullCreditEn": "Explains chemical use and analysis/process development; invents no covalent indigo–fibre bond.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Mindestens zwei Datengrößen samt Zielkonflikt und fehlenden Lebenszyklusdaten abgewogen.",
+              "fullCreditEn": "Weighs at least two supplied criteria, trade-offs and missing lifecycle data.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Molekülidentität von Prozessbilanz getrennt und historische Quelleninteressen berücksichtigt.",
+              "fullCreditEn": "Separates molecular identity and process impact; considers historical source interests.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        },
+        {
+          "id": "BW-B2",
+          "materialDe": "Zweiter vollständiger Forschungsfall derselben gewählten Stoffgruppe. Historischer Bezug: Die1897 erreichte technische Indigosynthese ist ein belegtes Beispiel dafür, dass Laborchemie durch Verfahrensentwicklung industrielle Farbstoffproduktion verändern konnte; dies ist keine Aussage, der heutige Fall sei Indigo oder1897 schon ein Azofarbstoff gewesen. Im neuen aktuellen Modellprojekt sollen Baumwollfasern mit einem Azofarbstoff gefärbt werden. Gegebene Chromophor-Grundform: Ar–N=N–Ar′. Ein bloßes Reaktionsschema der Kupplung lautet Ar–N2+ + H–Ar′→Ar–N=N–Ar′+H+; Ar/Ar′ bezeichnen die gegebenen aromatischen Reste, keine eigene Laboranweisung. Die beiden vollständig beschriebenen Kandidaten haben denselben Azo-Grundkörper: A trägt zusätzlich eine laut Material reaktive Ankergruppe, die unter der angegebenen geeigneten Prozessbedingung eine Bindung zur Faser ausbilden kann; B trägt diese Gruppe nicht. Modelldaten: Absorptionsmaxima A500nm, B505nm; nach gleicher Waschprüfung verbleiben90%von A und60%von B. Die Daten behaupten keine identische Wahrnehmungsfarbe oder universelle Umweltwirkung. Ein künftiger Kandidat C soll eine besser abbaubare Seitengruppe tragen; bekannt sind nur die Modellvorhersage einer ähnlichen Absorption und eine Syntheseskizze. Daten zu Waschbeständigkeit, Abbauprodukten und deren Wirkung fehlen. Keine tatsächliche Synthese/Färbung; alle numerischen Projektwerte sind erfundene Unterrichts-Modelldaten.",
+          "materialEn": "Second complete research case in the same selected family. Historical context: technical indigo synthesis achieved in1897 is an evidenced example of laboratory chemistry plus process development changing industrial dye production; this does not mean the current project is indigo or that indigo was an azo dye in1897. A new current model project dyes cotton with an azo dye. Supplied chromophore: Ar–N=N–Ar′. A bare coupling scheme is Ar–N2+ + H–Ar′→Ar–N=N–Ar′+H+; Ar/Ar′ denote supplied aromatic groups, not a procedure to perform. Both candidates have the same azo core: A additionally has an anchor group stated to react with the fibre under the specified suitable process condition; B lacks it. Model absorption maxima are A500nm/B505nm; identical washing retains90%of A and60%of B. These do not assert identical perceived colour or universal environmental effects. Future C would carry a more degradable side group; only predicted similar absorption and a synthesis sketch are known. Wash performance, degradation products and their effects are missing. No actual synthesis/dyeing; all numerical project values are fictional classroom data.",
+          "taskDemandDe": "Erläutere, wie historisches Wissen über industrielle Verfahrensentwicklung die heutige Frage rahmt, ohne unterschiedliche Farbstoffklassen gleichzusetzen. Verbinde Synthesemodell, Struktureigenschaft, Spektrenprüfung und Anwendungsprüfung bei A/B. Entwickle eine überprüfbare nächste Forschungsfrage zu C und erkläre die Grenzen des Zukunftsversprechens. Transfer: Ein Poster erklärt wegen ähnlichem Absorptionsmaximum und geplanter Abbaubarkeit C für gleich geeignet und unbedenklich; korrigiere das.",
+          "taskDemandEn": "Explain how historical industrial process development frames the current problem without equating different dye classes. Connect synthesis model, structural feature, spectra and application testing for A/B. Develop a testable next research question for C and limits on the future promise. Transfer: a poster calls C equally suitable/harmless from similar predicted absorption and planned degradability; correct it.",
+          "modelAnswerDe": "Die historische Karte belegt einen Wandel der Herstellungswege; sie ersetzt keine heutige Struktur- oder Leistungsprüfung und macht Indigo nicht zum Azofarbstoff. Das Kupplungsschema beschreibt die Bildung des Azo-Grundkörpers, während eine Ankergruppe und Prozessbedingungen die Faserbindung beeinflussen. Ähnliche Absorptionsmaxima allein erklären nicht die unterschiedliche Waschbeständigkeit. Für C müssen nach einer geeigneten Herstellung Identität, tatsächliche Absorption, Bindungs-/Wascheigenschaften und Abbauprodukte geprüft werden. Eine Modellvorhersage ist noch kein Messwert; bessere Abbaubarkeit garantiert weder gleich gute Anwendung noch harmlose Produkte. Forschung verknüpft daher historische Erfahrung, chemische Gestaltung, Analyse und kontrollierte Erprobung mit begrenzten zukünftigen Erwartungen.",
+          "modelAnswerEn": "The historical card evidences a change in production routes, not current structure/performance or an azo identity for indigo. Coupling forms an azo core, while anchor groups and conditions affect fibre bonding. Similar absorption maxima do not establish equal wash fastness. C requires identity, actual spectra, binding/wash tests and degradation-product analysis after suitable preparation. Prediction is not measurement; greater degradability guarantees neither equal suitability nor harmless products. Research connects historical experience, chemical design, analysis and controlled testing with bounded future expectations.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Historischer Forschungs-/Industriebezug erhalten, Indigo und Azofarbstoffe nicht verwechselt.",
+              "fullCreditEn": "Retains historical research/industry perspective without confusing indigo and azo dyes.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Synthese, Struktur, Spektrum und Anwendung als verschiedene zusammenwirkende Beiträge erklärt.",
+              "fullCreditEn": "Explains distinct interacting roles of synthesis, structure, spectra and use.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Konkrete prüfbare nächste Schritte für C mit offenen Daten angegeben.",
+              "fullCreditEn": "States concrete testable next steps for C and missing evidence.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Vorhersage/Beobachtung und Abbaubarkeit/Unbedenklichkeit begründet getrennt.",
+              "fullCreditEn": "Separates prediction/observation and degradability/harmlessness with reasons.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        }
+      ],
+      "notNewGateEvidence": true
+    },
+    {
+      "dutyUnit": "ST-original-carbon-allotrope-and-nanotube-structure-property-context",
+      "wholeCurrentGoalIds": [
+        "02dc29ae-4046-556a-b048-d64a0feb8f16",
+        "5e2eb826-6e60-5273-91d6-c23f6dfa33b1"
+      ],
+      "sourceDutyDesignClaim": "Existing structure/property-ordering and nanoscale-dimension union with actual carbon models; replaces unrelated lab-cluster coverage, no compulsory Ag-packaging substitute.",
+      "caseCount": 2,
+      "cases": [
+        {
+          "id": "ST-T1",
+          "materialDe": "Vollständige Strukturmodellkarte: Diamant und Graphit bestehen beide nur aus Kohlenstoffatomen. Im Diamantmodell ist jedes C-Atom über vier gerichtete kovalente Bindungen tetraedrisch mit Nachbarn zu einem dreidimensionalen Netzwerk verbunden; es werden keine frei beweglichen Ladungsträger angenommen. Im Graphitmodell bindet jedes C-Atom in einer ebenen Sechseckschicht an drei Nachbarn; innerhalb der Schichten sind Elektronen delokalisiert, zwischen den Schichten wirken deutlich schwächere Wechselwirkungen als die Bindungen im Netz. Gegebene Beobachtungen: Diamant ist sehr hart und leitet in der betrachteten reinen Probe kaum elektrischen Strom; Graphit lässt sich schichtweise abreiben und leitet entlang der Schichten deutlich besser. Es werden keine fehlenden Bilder vorausgesetzt: Die Nachbarzahlen, Anordnung und Bindungsarten sind hier vollständig beschrieben. Keine Aussage, alle Richtungen, alle Defekte oder jede Kohlenstoffprobe hätten identische Werte.",
+          "materialEn": "Complete structural model: diamond and graphite consist only of carbon atoms. Each diamond-model C has four directed covalent bonds in a tetrahedral three-dimensional network; no mobile charge carriers are assumed. Each graphite C bonds to three neighbours in a planar hexagonal sheet; electrons are delocalised within sheets and inter-sheet interactions are much weaker than network bonds. Supplied observations: diamond is very hard and the considered pure specimen scarcely conducts electricity; graphite can rub off in sheets and conducts much better along them. No unavailable picture is required: neighbour counts, arrangements and bond types are fully described. No identical-value claim for all directions, defects or every carbon specimen.",
+          "taskDemandDe": "Ordne beide Stoffe als Element bzw. Verbindung/Gemisch ein und erläutere Kohlenstoffmodifikation. Nutze die Modelle, um Härte/Abreibbarkeit und Leitfähigkeit zu erklären. Prüfe die Behauptung: gleiche Atomsorte verlangt gleiche Stoffeigenschaften. Transfer: Eine unbekannte Kohlenstoffprobe leitet schlechter als der gegebene Graphit; beweist das allein Diamant?",
+          "taskDemandEn": "Classify both as element/compound/mixture and explain carbon modification/allotropy. Use the models to explain hardness/rubbing and conductivity. Evaluate: the same atom type requires identical material properties. Transfer: does lower conductivity of an unknown carbon sample alone prove diamond?",
+          "modelAnswerDe": "Beide sind elementare Kohlenstoffstoffe mit unterschiedlicher Atomanordnung, keine unterschiedlichen Elemente und keine Gemische. Das dreidimensionale starke Diamantnetz erklärt große Härte; schwächere Wechselwirkungen zwischen Graphitschichten erlauben deren Verschiebung/Abreiben. Delokalisierte Elektronen in der Graphitschicht ermöglichen dort Ladungstransport; das gegebene Diamantmodell besitzt solche Träger nicht. Gleiche Atomsorte legt die Struktur und damit die Eigenschaften nicht allein fest. Eine einzelne Leitfähigkeitsbeobachtung identifiziert die unbekannte Probe nicht eindeutig; Struktur, Reinheit, Orientierung und weitere Eigenschaften wären zu klären.",
+          "modelAnswerEn": "Both are elemental carbon with different atomic arrangements, not different elements or mixtures. The strong three-dimensional diamond network explains hardness; weaker inter-sheet graphite interactions allow sliding/rubbing. Delocalised graphite-sheet electrons enable charge transport; the supplied diamond model has no such carriers. Atom type alone does not determine structure/properties. One conductivity observation cannot identify the unknown sample; structure, purity, orientation and other properties need investigation.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Element, Modifikation und Strukturmodell fachlich korrekt unterschieden.",
+              "fullCreditEn": "Correctly distinguishes element, allotrope and structural model.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "Härte/Abreiben aus Netzwerk und Schichtwechselwirkungen erklärt.",
+              "fullCreditEn": "Explains hardness/rubbing from network and inter-sheet interactions.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Leitfähigkeit aus gegebenen Ladungsträgern statt bloßer Atomsorte erklärt.",
+              "fullCreditEn": "Explains conductivity through given carriers, not atom type alone.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Unbekannte Probe nicht aus einem Einzelmerkmal eindeutig identifiziert.",
+              "fullCreditEn": "Does not uniquely identify an unknown specimen from one feature.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        },
+        {
+          "id": "ST-T2",
+          "materialDe": "Neue vollständige Modellkarte zu modernen Kohlenstoffwerkstoffen: Ein einwandiges Kohlenstoff-Nanoröhrchen wird als gerollte, kovalent verknüpfte Sechseckschicht modelliert. Jedes C hat drei nächste C-Nachbarn; der Außendurchmesser beträgt2nm, die Länge1µm=1000nm. Als Vergleich ist eine makroskopische Graphitplatte mit vielen übereinanderliegenden Sechseckschichten gegeben. Das Röhrchenmodell besitzt starke Bindungen entlang der Wand und große zugängliche Oberfläche bezogen auf kleine Materialmenge; für die konkret gegebene Röhrchenprobe wird gute elektrische Leitfähigkeit berichtet, nicht für jede mögliche Röhrchenstruktur. Eine fiktive Materialstudie vergleicht denselben Kunststoff ohne Füller und mit gut angebundenen Röhrchen: gegebene Festigkeit steigt von50auf65beliebige, identisch bestimmte Einheiten; bei Agglomeraten steigt sie nur auf52. Nebenwirkungen, Freisetzung und Gesamtnachhaltigkeit wurden nicht untersucht. Dies ist ein Unterrichtsmodell ohne echte Pulverhandhabung. Silbernanopartikel kommen hier nicht vor.",
+          "materialEn": "New complete modern carbon-material model: a single-wall carbon nanotube is a rolled covalently connected hexagonal sheet. Each C has three nearest carbon neighbours; external diameter2nm, length1µm=1000nm. A macroscopic graphite plate with many stacked hexagonal layers is supplied for comparison. The tube model has strong wall bonds and large accessible surface relative to small material amount. Good electrical conductivity is reported for this particular tube specimen, not every possible tube structure. A fictional material study compares the same polymer without filler and with well-bonded tubes: strength rises from50to65arbitrary consistently measured units; with agglomerates it rises only to52. Side effects, release and total sustainability were not studied. Classroom model only, no powder handling. No silver nanoparticles occur.",
+          "taskDemandDe": "Beschreibe das Röhrchen als Kohlenstoff-Nanostruktur und grenze Durchmesser von Länge ab. Vergleiche seine Struktur mit der gegebenen Graphitplatte. Erkläre einen begrenzten Nutzen im modernen Verbundwerkstoff anhand Struktur/Grenzfläche und Daten. Transfer: Warum erlaubt der Befund weder die Übertragung auf Agglomerate noch die Aussage, alle Nanomaterialien und alle Röhrchen seien gleich leitfähig oder unbedenklich?",
+          "taskDemandEn": "Describe the tube as a carbon nanostructure and distinguish diameter/length. Compare it with the graphite plate. Explain a bounded modern-composite benefit using structure/interfaces and supplied values. Transfer: why do results support neither agglomerate transfer nor equal conductivity/harmlessness for all nanotubes/nanomaterials?",
+          "modelAnswerDe": "Die einzelne Wand beruht auf einer gekrümmten Sechseck-Kohlenstoffstruktur; die Graphitplatte besitzt viele gestapelte Schichten. Der2nm-Durchmesser ist nanoskalig, obwohl die Länge1000nm beträgt; das Objekt ist nicht kugelförmig und muss nicht in jeder Abmessung gleich klein sein. Starke Wandbindungen und eine geeignete Anbindung an die Matrix können im gegebenen Materialmodell Last übertragen; die Messwerte zeigen Nutzen nur unter diesen Bedingungen. Agglomeration und schlechte Anbindung verhindern dieselbe Schlussfolgerung. Leitfähigkeit ist für die konkrete Probe vorgegeben und darf nicht aus dem Wort nano verallgemeinert werden. Ohne Freisetzungs-/Expositions- und weitere Daten folgt keine allgemeine Unbedenklichkeits- oder Nachhaltigkeitsaussage.",
+          "modelAnswerEn": "The single wall is a curved hexagonal carbon network, whereas the graphite plate has many stacked sheets. Its2nm diameter is nanoscale despite a1000nm length; it is not spherical or equally small in every dimension. Strong wall bonds and suitable matrix attachment can transfer load in the supplied model; benefit applies only under those conditions. Agglomeration/poor attachment prevents the same inference. Conductivity is given for the specific specimen and is not a universal nano property. Missing release/exposure and other data preclude blanket safety/sustainability conclusions.",
+          "rubric": [
+            {
+              "expectationId": "e1",
+              "maximumPoints": 3,
+              "fullCreditDe": "Kohlenstoff-Netzstruktur und Verhältnis zur Graphitschicht konkret beschrieben.",
+              "fullCreditEn": "Concretely describes the carbon network and relation to a graphite sheet.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e2",
+              "maximumPoints": 3,
+              "fullCreditDe": "2nm-Durchmesser von1000nm-Länge unterschieden, keine Kugel-/Allmaßregel erfunden.",
+              "fullCreditEn": "Distinguishes2nm diameter and1000nm length without inventing a spherical/all-dimension rule.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e3",
+              "maximumPoints": 3,
+              "fullCreditDe": "Materialnutzen aus Bindung/Anbindung und den kontrollierten Daten begründet.",
+              "fullCreditEn": "Explains benefit through bonds/interface and controlled data.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            },
+            {
+              "expectationId": "e4",
+              "maximumPoints": 3,
+              "fullCreditDe": "Agglomerations-, Leitfähigkeits- und Sicherheitsübertragung begrenzt.",
+              "fullCreditEn": "Bounds agglomeration, conductivity and safety transfer.",
+              "partialCreditDe": "2: fachlich richtiger Kern mit einer begrenzten Lücke; 1: richtiger Teilaspekt ohne die geforderte Verknüpfung; 0: fehlt oder widerspricht dem Material.",
+              "partialCreditEn": "2: scientifically correct core with one limited gap; 1: correct fragment without the required link; 0: missing or contradicted by the material."
+            }
+          ],
+          "maximumPoints": 12,
+          "fullCreditRequiresAllFourExpectations": true,
+          "executed": false,
+          "learnerWorkPresent": false,
+          "evidenceLevel": "E0",
+          "maximumClaimScope": "G0",
+          "authorOnly": true,
+          "scope": "complete supplied theoretical material case; no real experiment, clinical acceptance, independent review or existing full-profile replacement"
+        }
+      ],
+      "notNewGateEvidence": true
+    }
+  ],
+  "claimBoundary": "Cases are complete author designs for source-duty unions. They are neither executed learner evidence nor independent full-profile reviews of existing goals. No source approval, Gate D/P/A/M/V, memory decision, human release, current strict count or active scope update is asserted."
+}

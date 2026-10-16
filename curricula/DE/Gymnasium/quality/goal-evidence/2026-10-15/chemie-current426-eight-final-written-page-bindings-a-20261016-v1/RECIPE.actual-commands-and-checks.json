@@ -1,0 +1,66 @@
+{
+  "format": "actual executed local individual D serialization and verification recipe v1",
+  "cwd": "/home/enpasos/projects/skillpilot",
+  "executed": [
+    {
+      "argv": [
+        "python",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-final-written-page-bindings-a-20261016-v1/seal_own_final_page_amendment.py"
+      ],
+      "exitCode": 0,
+      "effect": "Verified neutral byte pins and raw profile equality; sealed own actual page amendment before records."
+    },
+    {
+      "argv": [
+        "python",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-final-written-page-bindings-a-20261016-v1/serialize_own_current_stock_records.py"
+      ],
+      "exitCode": 0,
+      "effect": "Created exactly eight own current candidate records and one local run; no previously existing file overwritten."
+    },
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-b47-framework-P1-native8-successor-technical-20261015-v1/native-final-eight/bundle/manifest.json",
+        "--input",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-b47-framework-P1-native8-successor-technical-20261015-v1/native-final-eight/round-a/description-review-input.json",
+        "--campaign",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-b47-framework-P1-native8-successor-technical-20261015-v1/native-final-eight/round-a/description-review-campaign.json",
+        "--batches-dir",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-b47-framework-P1-native8-successor-technical-20261015-v1/native-final-eight/round-a/batches",
+        "--results-dir",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-final-written-page-bindings-a-20261016-v1/results"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "completedAt": "2026-10-15T22:38:58.541072+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-final-written-page-bindings-a-20261016-v1/CHECK.closed-stock-campaign.actual.log"
+    },
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-final-written-page-bindings-a-20261016-v1/check_current_target_binding.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "completedAt": "2026-10-15T22:38:58.807501+00:00",
+      "exitCode": 1,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-final-written-page-bindings-a-20261016-v1/CHECK.current-target-binding.actual.log"
+    },
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-final-written-page-bindings-a-20261016-v1/check_current_target_binding.v2.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "completedAt": "2026-10-15T22:39:21.766287+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-final-written-page-bindings-a-20261016-v1/CHECK.current-target-binding.v2.actual.log",
+      "initialCheckerCorrection": "v1 wrongly compared logical model source digest to file-byte digest; v2 follows stock stableGoalBookJson logical digest and independently checks original byte pins. v1 and failure retained; no stock code or records changed."
+    }
+  ],
+  "replayBoundary": "Creation scripts use exclusive writes and deliberately fail if replayed into this sealed root. The two successful validation commands can be rerun read-only against these existing references; no native prepare or render command is part of this recipe.",
+  "initialCheckerFailure": "The first own target checker incorrectly compared the logical stock model source digest with a file-byte digest. Preserved v1 log/receipt/script show the failure. Own v2 uses stock stableGoalBookJson logical digests and separately checks the original file-byte pins. Stock helpers, schemas, campaign, input and own records were not changed to obtain the pass.",
+  "metadataBoundary": "The exact provider model identifier, version and sampling parameters are not exposed in this agent session. They are explicitly unexposed in the parameter artifact; the local run identity and actual local timestamps are not provider request or laboratory metadata."
+}

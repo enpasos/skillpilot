@@ -1,0 +1,321 @@
+{
+  "role": "Exact whole author profile bodies before future merged-profile review",
+  "curves": {
+    "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+    "goalTitleDe": "Titrationskurven deuten",
+    "wholeGoalObjectSha256": "sha256:e06c35268cedcb124827fac6d609248aef2720194344f023d7e12198418eaa88",
+    "wholeGoalObjectDigestRule": "UTF-8 JSON, recursively sorted keys, no spaces, ensure_ascii=false; not a production goal fingerprint",
+    "authorStatus": "unreviewed-author-shape",
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "fullCaseReferences": [
+      {
+        "caseId": "T05-C1",
+        "path": "materials/twenty-complete-DEEN-cases.author.json",
+        "jsonPointer": "/cases/8",
+        "wholeCaseObjectSha256": "sha256:28c354ca4a12ce9e44180ed7c6dacf6a296048b6fdb2c646a19be4c1f627acc1",
+        "coveredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "e4"
+        ]
+      },
+      {
+        "caseId": "T05-C2",
+        "path": "materials/twenty-complete-DEEN-cases.author.json",
+        "jsonPointer": "/cases/9",
+        "wholeCaseObjectSha256": "sha256:eb199ef9ae89659c07827ac5dbe7cb5722ec4f349c68288b42d7a3d2aaa25b70",
+        "coveredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "e4"
+        ]
+      }
+    ],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Äquivalenzpunkt, Halbäquivalenzpunkt und Indikatorendpunkt haben unterschiedliche Bedeutungen; die Kurvenform enthält Informationen zur Säurestärke.",
+          "essentialUnderstandingEn": "Equivalence point, half-equivalence point and indicator endpoint have different meanings; curve shape provides evidence about acid strength.",
+          "observablePerformanceDe": "Die lernende Person ordnet die vorgelegten Kurven einer starken beziehungsweise schwachen Säure zu und begründet die charakteristischen Bereiche und den Äquivalenzverbrauch.",
+          "observablePerformanceEn": "The learner assigns the supplied curves to strong and weak acids, explaining their characteristic regions and equivalence volume."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Anfang, Halbmenge, Äquivalenz und Überschuss verlangen jeweils ein passendes Stoffmengen- und Gleichgewichtsmodell.",
+          "essentialUnderstandingEn": "Initial solution, half amount, equivalence and excess each require an appropriate amount and equilibrium model.",
+          "observablePerformanceDe": "Sie berechnet die vier gegebenen Kurvenpunkte mit Verdünnung und Einheiten und begründet die Näherungen für schwache Säure und hydrolysierendes Salz.",
+          "observablePerformanceEn": "The learner calculates the four supplied curve points with dilution and units, justifying the weak-acid and hydrolysing-salt approximations."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Ein Indikator muss zum steilen Kurvenbereich und zur geforderten Endpunkttoleranz passen; der neutrale pH ist temperaturabhängig.",
+          "essentialUnderstandingEn": "An indicator must fit the steep curve region and required endpoint tolerance; neutral pH depends on temperature.",
+          "observablePerformanceDe": "Sie vergleicht die gegebenen Umschlagsbereiche, begründet BTB beziehungsweise Phenolphthalein als geeignete Kandidaten und trennt qualitative Eignung von einem nicht berechneten Volumenfehler.",
+          "observablePerformanceEn": "The learner compares supplied transition ranges, justifies BTB or phenolphthalein as candidates and separates qualitative suitability from an uncalculated volume error."
+        },
+        {
+          "id": "e4",
+          "essentialUnderstandingDe": "Gleiche Ausgangsstoffmenge kann trotz verschiedener Säurestärke den gleichen Äquivalenzverbrauch ergeben; pH 7 ist keine allgemeine Definition von Äquivalenz.",
+          "essentialUnderstandingEn": "Equal initial amounts can give equal equivalence volumes despite different acid strengths; pH 7 does not generally define equivalence.",
+          "observablePerformanceDe": "Sie erklärt gemeinsame und verschiedene Kurvenbereiche gleich konzentrierter starker und schwacher Säuren und berechnet bei pKᵥ=13.20 den neutralen pH 6.60.",
+          "observablePerformanceEn": "The learner explains shared and different regions for equally concentrated strong and weak acids and calculates neutral pH 6.60 at pKᵥ=13.20."
+        }
+      ],
+      "variationAxes": [
+        {
+          "id": "acid-strength",
+          "textDe": "Bei gleicher Stoffmenge von starker zu schwacher Säure wechseln und die veränderten Gleichgewichte begründen.",
+          "textEn": "Change from strong to weak acid at equal amount and explain the altered equilibria."
+        },
+        {
+          "id": "curve-region",
+          "textDe": "Dasselbe Reagenzsystem vor, bei und nach Äquivalenz mit unterschiedlichen Bilanzmodellen behandeln.",
+          "textEn": "Use different balance models for the same reagent system before, at and after equivalence."
+        },
+        {
+          "id": "temperature-and-indicator",
+          "textDe": "Neutralität bei verändertem pKᵥ und die begrenzte Aussage eines Indikatorbereichs prüfen.",
+          "textEn": "Check neutrality at changed pKᵥ and the limited information supplied by an indicator range."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "t05-c1",
+          "taskDemandDe": "Die tatsächlich vorgelegte unbekannte synthetische Kurve X mit Tabellenbelegen deuten, charakteristische Punkte berechnen und Stoff-/Indikatoraussagen begrenzen. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/twenty-complete-DEEN-cases.author.json, Fall T05-C1.",
+          "taskDemandEn": "Interpret the actually supplied unknown synthetic curve X using table evidence, calculate characteristic points, and bound substance/indicator claims. Complete material, task, solution and four criteria: materials/twenty-complete-DEEN-cases.author.json, case T05-C1.",
+          "expectedPerformanceDe": "1. X passt im vorgegebenen Modell zur starken einprotonigen Säure: pH 1.000 bei 0.100 mol/L, bei halber Titrantmenge nur pH 1.477 und kein schwacher HA/A⁻-Pufferbereich. Der Sprung von 4.398 auf 9.602 liegt um 25.00 mL; bei 25.00 mL ist pH 7.000. n=2.500 mmol bestätigt Vₑq=25.00 mL. Vorher bestimmt H₃O⁺-Überschuss den pH, bei Äquivalenz Wasser mit nicht hydrolysierenden Gegenionen, danach OH⁻-Überschuss. 2. Die berechneten pH-Werte sind 1.000, 1.477, 7.000 und 11.959. Bei 12.50 mL gilt [H₃O⁺]=1.250 mmol/37.50 mL=0.03333 mol/L; bei 30.00 mL [OH⁻]=0.500 mmol/55.00 mL=0.009091 mol/L. Die Werte stimmen auf die Tabellenrundung; der Halbpunkt liefert hier keinen pKₐ. 3. BTB liegt um den neutralen Äquivalenzbereich. Auch Methylorange oder Phenolphthalein können je nach Toleranz im steilen Bereich passen: die zusätzliche Tabelle stützt einen schmalen Volumenbereich, aber ohne festgelegtes Farbkriterium und feinere Auflösung keinen exakten Volumenfehler. Die Kurve belegt unter den Modellannahmen die Klasse, nicht eine eindeutige Säureidentität. 4. Gleiche Hydronium- und Hydroxidaktivitäten bedeuten pH=pKᵥ/2=6.60. Der ursprüngliche neutrale Wert 7 war an pKᵥ=14 gebunden; Äquivalenz ist stöchiometrisch definiert.",
+          "expectedPerformanceEn": "1. Within the supplied alternatives X is a strong monoprotic acid: pH 1.000 at 0.100 mol/L, only 1.477 at half titrant amount and no weak HA/A⁻ buffer region. The jump from 4.398 to 9.602 lies around 25.00 mL, where pH is 7.000. The 2.500 mmol amount confirms Vₑq=25.00 mL. Before equivalence H₃O⁺ excess controls pH; at equivalence water and non-hydrolysing counterions do; afterwards OH⁻ excess does. 2. Calculated values are 1.000, 1.477, 7.000 and 11.959. At 12.50 mL, [H₃O⁺]=1.250 mmol/37.50 mL=0.03333 mol/L; at 30.00 mL, [OH⁻]=0.500 mmol/55.00 mL=0.009091 mol/L. These agree with table rounding; this halfpoint does not yield pKₐ. 3. BTB lies around neutral equivalence. Methyl orange or phenolphthalein may also fit the steep region depending on tolerance. The additional table supports a narrow volume interval but supplies no exact volume error without a colour criterion and finer resolution. The curve supports the class under the model, not unique molecular identity. 4. Equal hydronium and hydroxide activities give pH=pKᵥ/2=6.60. Neutral pH 7 depended on pKᵥ=14; equivalence is defined stoichiometrically.",
+          "understandingFocusDe": "Stöchiometrie bestimmt die Äquivalenz; Wasser bestimmt im idealen Fall den temperaturabhängigen neutralen pH.",
+          "understandingFocusEn": "Stoichiometry determines equivalence; water determines temperature-dependent neutral pH in the ideal case."
+        },
+        {
+          "id": "t05-c2",
+          "taskDemandDe": "Die tatsächlich vorgelegte unbekannte synthetische Kurve Y mit Tabellenbelegen deuten, charakteristische Punkte berechnen und Stoff-/Indikatoraussagen begrenzen. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/twenty-complete-DEEN-cases.author.json, Fall T05-C2.",
+          "taskDemandEn": "Interpret the actually supplied unknown synthetic curve Y using table evidence, calculate characteristic points, and bound substance/indicator claims. Complete material, task, solution and four criteria: materials/twenty-complete-DEEN-cases.author.json, case T05-C2.",
+          "expectedPerformanceDe": "1. Y ist im vorgegebenen Modell schwach: Anfang pH 2.883 statt etwa 1, vor Äquivalenz ein flacherer HA/A⁻-Bereich (6.25 mL: 4.284; 12.50 mL: 4.760; 18.75 mL: 5.237), bei 25.00 mL laut Tabelle basisch 8.730. Der starke Anstieg liegt bei 25.00 mL. 2.500 mmol Säure bestätigen dieses Äquivalenzvolumen; der Halbpunkt liegt bei 12.50 mL und liefert näherungsweise pKₐ=4.76. 2. Kₐ=1.738·10⁻⁵ ergibt näherungsweise Anfangs-pH 2.880 mit 1.32 % Umsetzung; vollständig gelöst ist es 2.883, eine Abweichung von etwa 0.003. Am Halbpunkt ist pH≈4.760. Bei Äquivalenz gilt c(Salz)=0.0500 mol/L, Kᵦ=5.754·10⁻¹⁰, [OH⁻]≈5.363·10⁻⁶ mol/L, pH≈8.729 und nur etwa 0.011 % Hydrolyse. Bei 30.00 mL bestimmt der starke Baseüberschuss pH 11.959. Die Abweichungen bleiben unter 0.01. 3. Phenolphthalein passt zum basischen Äquivalenzbereich. BTB verändert die Farbe früher; das belegt allein keinen exakt berechneten Volumenfehler. Farbumschlag und chemische Äquivalenz bleiben verschieden, und pKₐ 4.76 identifiziert keine bestimmte Molekülstruktur. 4. Äquivalenzvolumen und pH bei gleichem starkem Baseüberschuss bleiben gleich; Anfangs-pH, Voräquivalenz-Pufferung und Äquivalenz-pH ändern sich.",
+          "expectedPerformanceEn": "1. Y is weak within the supplied model: initial pH 2.883 rather than about 1, a flatter HA/A⁻ region before equivalence (6.25 mL: 4.284; 12.50 mL: 4.760; 18.75 mL: 5.237), and table pH 8.730 at 25.00 mL. The steep rise lies around 25.00 mL. The 2.500 mmol acid amount confirms this equivalence volume. Half-equivalence is 12.50 mL, yielding approximate pKₐ=4.76. 2. Kₐ=1.738·10⁻⁵ gives approximate initial pH 2.880 and 1.32% conversion; the complete solution gives 2.883, differing by about 0.003. At half-equivalence pH≈4.760. At equivalence c(salt)=0.0500 mol/L, Kᵦ=5.754·10⁻¹⁰, [OH⁻]≈5.363·10⁻⁶ mol/L, pH≈8.729 and about 0.011% hydrolysis. At 30.00 mL strong base excess gives pH 11.959. Differences are below 0.01. 3. Phenolphthalein fits basic equivalence. BTB changes earlier, which alone supplies no exact calculated volume error. Colour endpoint and chemical equivalence remain distinct; pKₐ 4.76 identifies no unique molecular structure. 4. Equivalence volume and pH at the same strong-base excess remain equal; initial pH, pre-equivalence buffering and equivalence pH change.",
+          "understandingFocusDe": "Pufferbereich und Salzhydrolyse ändern den pH, aber nicht die für vollständige Neutralisation nötige Stoffmenge.",
+          "understandingFocusEn": "The buffer region and salt hydrolysis alter pH but not the amount required for complete neutralisation."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "e4"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      }
+    }
+  },
+  "hh": {
+    "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+    "goalTitleDe": "Puffergleichungen anwenden (LK)",
+    "wholeGoalObjectSha256": "sha256:d29832d307bcd125fab0c376e545a439d33c174e7478463a4a3d9d204fe439cc",
+    "wholeGoalObjectDigestRule": "UTF-8 JSON, recursively sorted keys, no spaces, ensure_ascii=false; not a production goal fingerprint",
+    "authorStatus": "unreviewed-author-shape",
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "fullCaseReferences": [
+      {
+        "caseId": "T06-C1",
+        "path": "materials/twenty-complete-DEEN-cases.author.json",
+        "jsonPointer": "/cases/10",
+        "wholeCaseObjectSha256": "sha256:6486efd8a09ddcabfadc171ad852e3863f936dbb6767884649aaafcf40bd732b",
+        "coveredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "e4"
+        ]
+      },
+      {
+        "caseId": "T06-C2",
+        "path": "materials/twenty-complete-DEEN-cases.author.json",
+        "jsonPointer": "/cases/11",
+        "wholeCaseObjectSha256": "sha256:5429e4c2ed2cf18d31b967df27fc52c2d7b923c73c4dc86b4c74dfde9f58d112",
+        "coveredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "e4"
+        ]
+      }
+    ],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Die Henderson-Hasselbalch-Gleichung verbindet im geeigneten Modell den pH mit pKₐ und dem Verhältnis des korrespondierenden Paares.",
+          "essentialUnderstandingEn": "In an appropriate model, the Henderson–Hasselbalch equation relates pH to pKₐ and the conjugate-pair ratio.",
+          "observablePerformanceDe": "Die lernende Person ordnet Säure und Base zu, bildet den Quotienten in der richtigen Richtung und berechnet den Ausgangs-pH beider gegebenen Systeme.",
+          "observablePerformanceEn": "The learner identifies acid and base, forms the ratio in the correct direction and calculates initial pH for both supplied systems."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Eine starke Säure- oder Basezugabe verändert zuerst die Partnerstoffmengen; erst danach wird das Gleichgewichtsmodell angewendet.",
+          "essentialUnderstandingEn": "Added strong acid or base first changes the partner amounts; only then is the equilibrium model applied.",
+          "observablePerformanceDe": "Sie bilanziert HCl beziehungsweise OH⁻ mit dem passenden Partner und berechnet den neuen pH aus den positiven Restmengen.",
+          "observablePerformanceEn": "The learner balances HCl or OH⁻ against its reacting partner and calculates the new pH from positive remaining amounts."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Konstantes Partnerverhältnis bedeutet im idealen Modell gleichen pH, aber nicht gleiche Pufferreserve je Liter; vollständiger Partnerverbrauch beendet die einfache Pufferrechnung.",
+          "essentialUnderstandingEn": "A constant partner ratio implies equal pH in the ideal model but not equal reserve per litre; complete consumption of a partner ends the simple buffer calculation.",
+          "observablePerformanceDe": "Sie erklärt die zehnfache Verdünnung und erkennt bei 60 mmol OH⁻ den erschöpften NH₄⁺-Vorrat, statt einen Logarithmus negativer Mengen zu verwenden.",
+          "observablePerformanceEn": "The learner explains tenfold dilution and recognises exhausted NH₄⁺ after 60 mmol OH⁻ rather than taking a logarithm of negative amounts."
+        },
+        {
+          "id": "e4",
+          "essentialUnderstandingDe": "Verdünnung, freie starke Säure und Stoffaustausch dürfen nicht durch ein unverändert übernommenes Verhältnis verwechselt werden.",
+          "essentialUnderstandingEn": "Dilution, free strong acid and matter exchange cannot be handled by blindly retaining the original ratio.",
+          "observablePerformanceDe": "Sie widerlegt eine pH-Abnahme um genau eins bei idealer Pufferverdünnung und begründet, warum unbekannter NH₃-Verlust eine neue Mengenbilanz verlangt.",
+          "observablePerformanceEn": "The learner refutes an exact one-unit pH fall on ideal buffer dilution and explains why unknown NH₃ loss requires a new amount balance."
+        }
+      ],
+      "variationAxes": [
+        {
+          "id": "acid-versus-base-dose",
+          "textDe": "Vom Acetatpuffer mit Säurelast zum Ammoniumpuffer mit Baselast wechseln und den jeweils verbrauchten Partner bestimmen.",
+          "textEn": "Change from acetate under acid load to ammonium under base load, identifying the consumed partner."
+        },
+        {
+          "id": "ratio-and-reserve",
+          "textDe": "Gleiches Verhältnis nach Verdünnung mit veränderter Reserve und mit erschöpftem Partner vergleichen.",
+          "textEn": "Compare an unchanged dilution ratio with altered reserve and an exhausted partner."
+        },
+        {
+          "id": "closed-to-open",
+          "textDe": "Die geschlossene Mengenbilanz mit unbekanntem NH₃-Verlust konfrontieren, ohne ungestützte Zahlen zu erzeugen.",
+          "textEn": "Challenge the closed amount balance with unknown NH₃ loss without inventing numerical results."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "t06-c1",
+          "taskDemandDe": "Acetatpuffer vor und nach HCl berechnen und die zehnfache Verdünnung prüfen. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/twenty-complete-DEEN-cases.author.json, Fall T06-C1.",
+          "taskDemandEn": "Calculate acetate buffer pH before and after HCl and assess tenfold dilution. Complete material, task, solution and four criteria: materials/twenty-complete-DEEN-cases.author.json, case T06-C1.",
+          "expectedPerformanceDe": "1. Aus Kₐ=a(H)·a(A⁻)/a(HA) folgt pH=pKₐ+log(a(A⁻)/a(HA)). Im Modell γ=1 kürzt sich dasselbe Volumen. Anfangs ist pH 5.362. 2. A⁻ + H₃O⁺ → HA + H₂O lässt 35.0 mmol A⁻ und 15.0 mmol HA zurück; pH 5.128. 3. Zehnfache Verdünnung erhält den Quotienten und näherungsweise den pH. Konzentrationen und lokale Kapazität je Liter fallen auf ein Zehntel; die gesamten Partnerstoffmengen des verdünnten Ansatzes bleiben erhalten. Gleicher pH bedeutet keine gleiche Belastbarkeit je Liter. Weitere Verdünnung erfordert neue Wasser-/Aktivitätsprüfungen. 4. Beide Behauptungen sind im gegebenen Bereich falsch: Verdünnung erhält den Quotienten, und HCl wird zunächst von A⁻ aufgenommen, statt vollständig frei zu bleiben. Reserven und Modellgrenzen bleiben endlich.",
+          "expectedPerformanceEn": "1. Ka=aH·aA/aHA yields pH=pKa+log(aA/aHA). Common volume cancels in theγ=1 model. Initial pH 5.362. 2. A⁻+H₃O⁺→HA+H₂O leaves 35.0 mmol A⁻/15.0 mmol HA, pH 5.128. 3. Tenfold dilution preserves the ratio and approximately pH under stated conditions. Total buffer concentration and local capacity per litre fall tenfold; the total partner amounts in the diluted whole preparation are unchanged. Same pH does not mean equal load tolerance; further dilution requires new water/activity checks.\n4. Both statements are false within the supplied buffer regime: dilution preserves the common ratio, while HCl is first consumed by A⁻. Finite reserves and limits of the ideal assumption remain relevant.",
+          "understandingFocusDe": "Reaktion kommt vor Logarithmus; pH-Verhältnis und Reserve sind getrennt zu beurteilen.",
+          "understandingFocusEn": "Reaction precedes the logarithm; assess the pH ratio and reserve separately."
+        },
+        {
+          "id": "t06-c2",
+          "taskDemandDe": "NH₄⁺/NH₃ mit kleiner und übergroßer OH⁻-Last sowie mit unbekanntem NH₃-Verlust beurteilen. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/twenty-complete-DEEN-cases.author.json, Fall T06-C2.",
+          "taskDemandEn": "Assess NH₄⁺/NH₃ under small and excessive OH⁻ loads and unknown NH₃ loss. Complete material, task, solution and four criteria: materials/twenty-complete-DEEN-cases.author.json, case T06-C2.",
+          "expectedPerformanceDe": "1. Das Paar ist NH₄⁺/NH₃; anfangs ist pH 8.949. 2. NH₄⁺ + OH⁻ → NH₃ + H₂O verbraucht 10 mmol Säure und bildet 10 mmol Base: 40/35 mmol und pH 9.192. 3. 60 mmol OH⁻ überschreiten den 50-mmol-Säurevorrat. Eine formal negative NH₄⁺-Menge zeigt Erschöpfung und ist kein Logarithmusargument. 10 mmol formale zusätzliche Baselast verlangen eine neue Bilanz mit Wasser, NH₃ und starkem Baseüberschuss. Im geschlossenen Gefäß ist kein zusätzlicher NH₃-Verlust gegeben. 4. Bei unbekanntem NH₃-Verlust darf das alte Verhältnis nicht übernommen werden; der pH kann sinken. Für eine neue Zahl sind verbleibende Mengen oder Austausch-/Gleichgewichtsdaten nötig.",
+          "expectedPerformanceEn": "1. NH₄⁺/NH₃ is the pair; pH 8.949. 2. NH₄⁺+OH⁻→NH₃+H₂O consumes 10 mmol acid and forms 10 mmol base:40/35 mmol, pH 9.192. 3. 60 mmol OH⁻ exceeds 50 mmol acid reserve. A formal negative NH₄⁺ amount signals depletion, not the input of a logarithm.10 mmol OH⁻ remains in excess; new balance including excess base/water and NH₃ is required. Closed-vessel conditions exclude additional open-system change.\n4. No: unknown NH₃ loss changes the base/acid ratio and can lower pH. Remaining amounts or flow/equilibrium data are needed for a new numerical pH.",
+          "understandingFocusDe": "Partnererschöpfung und Stoffaustausch verlangen ein anderes oder ergänztes Modell.",
+          "understandingFocusEn": "Partner exhaustion and matter exchange require a different or augmented model."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "e4"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      }
+    }
+  },
+  "additionalWholeD746Profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "mass-action-buffer-ratio",
+        "essentialUnderstandingDe": "Die logarithmische Pufferbeziehung folgt aus dem MWG; das Verhältnis steht für konjugierte Base zu schwacher Säure, auch beim B/BH+-Puffer.",
+        "essentialUnderstandingEn": "The logarithmic buffer relation follows from mass action; its ratio is conjugate base to weak acid, including for a B/BH+ buffer.",
+        "observablePerformanceDe": "Die lernende Person begründet pH≈pKS+log([A−]/[HA]) und die Orientierung n(B)/n(BH+) bei pKS(BH+)=9.20.",
+        "observablePerformanceEn": "The learner justifies pH≈pKa+log([A−]/[HA]) and the n(B)/n(BH+) orientation when pKa(BH+)=9.20."
+      },
+      {
+        "id": "neutralize-before-equilibrium",
+        "essentialUnderstandingDe": "Zugegebene starke Säure verändert zuerst die Puffermengen stöchiometrisch; erst die verbleibenden positiven Mengen dürfen in die Pufferrechnung eingehen.",
+        "essentialUnderstandingEn": "Added strong acid first changes buffer amounts stoichiometrically; only the remaining positive amounts enter the buffer calculation.",
+        "observablePerformanceDe": "Sie bilanziert den Verbrauch von A− bzw. B und die Bildung von HA bzw. BH+, bevor sie die neuen pH-Werte 4.80 bzw. 8.501 ermittelt.",
+        "observablePerformanceEn": "The learner balances consumption of A− or B and formation of HA or BH+ before obtaining the new pH values 4.80 or 8.501."
+      },
+      {
+        "id": "dilution-and-capacity-basis",
+        "essentialUnderstandingDe": "Gemeinsame Verdünnung erhält das Verhältnis und damit den näherungsweisen Puffer-pH, senkt aber die Puffermengen je Liter.",
+        "essentialUnderstandingEn": "Common dilution preserves the ratio and hence approximate buffer pH, while reducing buffer amounts per litre.",
+        "observablePerformanceDe": "Sie begründet für G7-C1 nach Verdünnung auf 2.000 L weiter pH≈4.80, korrigiert „doppeltes Volumen halbiert pH“ und nennt den Volumenbezug der Kapazitätsaussage.",
+        "observablePerformanceEn": "The learner justifies pH≈4.80 after dilution to 2.000 L in G7-C1, repairs “doubling volume halves pH” and states the volume basis of the capacity claim."
+      },
+      {
+        "id": "reserve-and-domain-exhaustion",
+        "essentialUnderstandingDe": "Die Pufferformel setzt ein verbleibendes konjugiertes Paar im gültigen Näherungsbereich voraus; verbrauchte Reserve und negative Mengen kennzeichnen einen Modellwechsel.",
+        "essentialUnderstandingEn": "The buffer formula requires a remaining conjugate pair within the valid approximation; exhausted reserve and negative amounts signal a change of model.",
+        "observablePerformanceDe": "Sie erkennt bei 0.0250 mol HCl den vollständigen formalen Verbrauch von 0.0200 mol B, nennt 0.00500 mol Säureüberschuss und verwirft den negativen Logarithmusansatz ohne eine ungestützte genaue pH-Zahl.",
+        "observablePerformanceEn": "The learner identifies complete formal consumption of 0.0200 mol B by 0.0250 mol HCl, states the 0.00500 mol acid excess and rejects the negative-logarithm approach without an unsupported exact pH."
+      }
+    ],
+    "variationAxes": [
+      {
+        "id": "acid-to-base-buffer",
+        "textDe": "Den Säurepuffer HA/A− mit dem Basenpuffer B/BH+ vergleichen und die Säure im Verhältnis korrekt bestimmen.",
+        "textEn": "Compare HA/A− acid buffer with B/BH+ base buffer and identify the acid in the ratio correctly."
+      },
+      {
+        "id": "addition-and-dilution",
+        "textDe": "Starke Säurezugabe mit anschließender reiner Verdünnung vergleichen: Mengenverhältnis und Mengen je Liter ändern sich verschieden.",
+        "textEn": "Compare strong-acid addition and subsequent dilution: amount ratio and amounts per litre change differently."
+      },
+      {
+        "id": "reserve-below-above",
+        "textDe": "Eine Zugabe unterhalb der Reserve mit einer getrennten Probe oberhalb der Reserve vergleichen und die Rechenmethode neu auswählen.",
+        "textEn": "Compare addition below the reserve with a separate sample above the reserve and select the calculation method afresh."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "g7-c1",
+        "taskDemandDe": "Nutze 0.0100 mol HA/0.0200 mol A− in 1.000 L, pKS 4.80, 0.00500 mol HCl und anschließende Verdünnung auf 2.000 L. Vollständiges Material, Auftrag, Lösung und vier Kriterien: inputs/fourteen-full-cases.bound.exact.json, Fall G7-C1.",
+        "taskDemandEn": "Use 0.0100 mol HA/0.0200 mol A− in 1.000 L, pKa 4.80, 0.00500 mol HCl and subsequent dilution to 2.000 L. Complete material, task, solution and four criteria: inputs/fourteen-full-cases.bound.exact.json, case G7-C1.",
+        "expectedPerformanceDe": "Anfang pH≈5.101. HCl macht je 0.0150 mol; pH≈4.80. Verdünnung erhält dieses Verhältnis und den Näherungs-pH, halbiert aber die Puffermengen je Liter. Die Aussage gilt im angegebenen Modellbereich.",
+        "expectedPerformanceEn": "Initial pH≈5.101. HCl leaves 0.0150 mol each; pH≈4.80. Dilution preserves this ratio and approximate pH but halves buffer amounts per litre. The claim is limited to the stipulated model domain.",
+        "understandingFocusDe": "Stöchiometrie vor MWG und logarithmischen pH vom Kapazitätsbezug je Liter unterscheiden.",
+        "understandingFocusEn": "Apply stoichiometry before mass action and distinguish logarithmic pH from capacity per litre."
+      },
+      {
+        "id": "g7-c2",
+        "taskDemandDe": "Nutze 0.0200 mol B/0.0100 mol BH+ und pKS 9.20; vergleiche die getrennten Zugaben 0.0150 und 0.0250 mol HCl. Vollständiges Material, Auftrag, Lösung und vier Kriterien: inputs/fourteen-full-cases.bound.exact.json, Fall G7-C2.",
+        "taskDemandEn": "Use 0.0200 mol B/0.0100 mol BH+ and pKa 9.20; compare separate additions of 0.0150 and 0.0250 mol HCl. Complete material, task, solution and four criteria: inputs/fourteen-full-cases.bound.exact.json, case G7-C2.",
+        "expectedPerformanceDe": "Anfang pH≈9.501; Probe A enthält 0.00500/0.0250 mol B/BH+, pH≈8.501. Probe B verbraucht die 0.0200-mol-Reserve und lässt 0.00500 mol starke Säure übrig; der negative-Mengen-Logarithmus ist unzulässig.",
+        "expectedPerformanceEn": "Initial pH≈9.501; sample A has 0.00500/0.0250 mol B/BH+, pH≈8.501. Sample B consumes the 0.0200 mol reserve and leaves 0.00500 mol strong acid; a logarithm of a negative amount is invalid.",
+        "understandingFocusDe": "Die zweite Probe verlangt eine Modellgrenzenentscheidung, keine weitere mechanische Pufferformeleinsetzung.",
+        "understandingFocusEn": "The second sample requires a model-domain decision rather than another mechanical buffer-formula substitution."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "mass-action-buffer-ratio",
+        "neutralize-before-equilibrium",
+        "dilution-and-capacity-basis",
+        "reserve-and-domain-exhaustion"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    }
+  },
+  "noNormalPRecordCreated": true,
+  "futureProfileRequirement": "An independent P role must decide the complete merged coverage. Curve pool includes both titrant directions and four strong/weak classes; HH pool includes ratio orientation, balance, dilution, reserve and approximation validity. Existing four-expectation mappings are inputs, not automatic new accepted profiles."
+}

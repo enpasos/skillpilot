@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-acid-base-seven-current419-whole-material-20261014-v2",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-current419-paired-D6-retained059-P7A7M2V1-inactive-integration-technical-20261014-v4/config/D7.original-whole-container.historical-normal-address.config.json",
+  "configDigest": "sha256:994c12acdc0e9fe010f99e8b57e2b5000c173b2994b1630e6e9cdf813b65a021",
+  "goalIds": [
+    "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+    "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+    "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+    "c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
+    "33034876-8da5-5619-ad86-e1272e0304b0",
+    "059acb11-29b3-5645-ac4c-b4214dc41a2d",
+    "d7461c15-6992-5342-b899-6c490ee0cbb7"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 419,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/config/whole419.stock-base.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:94f5dac070b1f285e812942e4e58fea54e0d193a1e96d81255dcdff065ec93a0"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a17b54198e68e97d1dea24144114e92f13feb6f64f1b3fcc9d2ea03b44ab0cb9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:72b551b4805cf366037011ad28487fc9ef842288e9cafd3e6c5192cde8f88f1a",
+    "reviewInputFingerprint": "sha256:9a022e8e943fa80654436903584c5d360dfb0c64a8df272f70f6507d83ac967e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-acid-base-seven-current419-whole-material-20261014-v2-a",
+        "campaignDigest": "sha256:3589d98bcbf237753380c94c6c756ee88cc37f04c58202f267d8afb370fcb913",
+        "roundId": "chemie-acid-base-seven-current419-whole-material-20261014-v2-first-pass-a",
+        "independenceGroupId": "chemie-acid-base-seven-current419-whole-material-20261014-v2-independent-a",
+        "batchId": "chemie-acid-base-seven-current419-whole-material-20261014-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:9d08e89a93950664e70e3c59620ebb0bf80c124961388a079a6634afdb025991"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-acid-base-seven-current419-whole-material-20261014-v2-b",
+        "campaignDigest": "sha256:6bb6cb76a3f4d913852acdae0189c6ba4f1c23b506903b7d8cdd7b4dbd25ae10",
+        "roundId": "chemie-acid-base-seven-current419-whole-material-20261014-v2-first-pass-b",
+        "independenceGroupId": "chemie-acid-base-seven-current419-whole-material-20261014-v2-independent-b",
+        "batchId": "chemie-acid-base-seven-current419-whole-material-20261014-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:180827346423c39c139e46094a58987909819f8f844b38b3dafd4f76fb0b0903"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

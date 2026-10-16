@@ -1,0 +1,620 @@
+{
+  "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+  "title": "Ein- und Ausschaltvorg\u00e4nge analysieren",
+  "wholeCurrentGoalAndPositiveBody": {
+    "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "subject": "physik",
+    "wholeCurrentCanonicalGoal": {
+      "id": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "title": "Ein- und Ausschaltvorg\u00e4nge analysieren",
+      "titleEn": "Analyze Switch-On and Switch-Off Processes",
+      "description": "Die lernende Person kann Strom- und Spannungsverl\u00e4ufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante \u03c4 = L/R quantitativ analysieren und die Induktivit\u00e4t aus einem solchen Verlauf bestimmen.",
+      "descriptionEn": "The learner can quantitatively analyze current and voltage curves when an idealized RL circuit is switched on and off using the time constant \u03c4 = L/R and determine the inductance from such a transient.",
+      "weight": 1.05,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "37f28bc4-def2-57cf-a06b-191dfd228205"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+          "title": "Visualisierung: Ein- und Ausschaltvorg\u00e4nge analysieren",
+          "url": "/assets/goal-visualizations/physik/692db5b6-8be1-5c7b-8307-3a02afb21ea0/692db5b6-8be1-5c7b-8307-3a02afb21ea0.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Ein- und Ausschaltvorg\u00e4nge analysieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ein- und Ausschaltvorg\u00e4nge analysieren\". Die lernende Person kann Strom- und Spannungsverl\u00e4ufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante \u03c4 = L/R quantitativ analysieren und die Induktivit\u00e4t aus einem solchen Verlauf bestimmen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "currentSourceLandscape": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "bytes": 2511701,
+      "sha256": "sha256:4704c85973997b0bc822c360a9802fa55ce897a98936ec2c8782ed7c8f47076e"
+    },
+    "semanticKind": "curricularAtomic",
+    "currentPerGoalReviewInput": {
+      "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+      "prerequisitesSha256": "sha256:4c9a04f571fd1716aef4ad91d346e9261e98b9b597d35fe324c5821ab3a64167",
+      "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+    },
+    "positiveBodyOwner": {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.config.json",
+      "configSha256": "sha256:4e2727ed4263b28f4a873dd3c40cce1466f080accd8908a66c2d026c0f6a47e5",
+      "recordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.review.jsonl",
+      "recordFileSha256": "sha256:6d808e612cbd5997e718779497412a8041755efc5d1ca69a1116d08000e95845",
+      "recordLine": 11,
+      "recordRawLineSha256": "sha256:37c78243a089c94995c5ee1b9c590592aa3030271b2beb4a0cfca04d8ebada24",
+      "currentProfileFingerprint": "sha256:4785bc814eb5081658c2c65ab9563b1242e65b9a3809a5929acb9fcb687d14ad",
+      "currentGoalFingerprint": "sha256:02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad",
+      "currentReviewInputFingerprint": "sha256:cae18e3a8a69a82a4b84339090782eff4159e59594e6ae06d6143c7153e76165",
+      "wholePositiveProfile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "rl-current-is-continuous-and-exponential",
+            "essentialUnderstandingDe": "Im idealisierten linearen RL-Kreis kann der Spulenstrom nicht sprunghaft \u00e4ndern. Widerstand und Selbstinduktion erzeugen exponentielle Ein- und Ausschaltverl\u00e4ufe mit physikalisch bestimmten Anfangs- und Grenzwerten.",
+            "essentialUnderstandingEn": "In an idealized linear RL circuit, inductor current cannot change discontinuously. Resistance and self-induction produce exponential switch-on and switch-off transients with physically determined initial and limiting values.",
+            "observablePerformanceDe": "Die lernende Person ordnet aus frischen Strom- und Spannungsdaten Schaltphase und Bauteilgr\u00f6\u00dfen zu, bestimmt Anfangs- und Grenzwerte und verwirft einen Verlauf mit unzul\u00e4ssigem Stromsprung.",
+            "observablePerformanceEn": "From fresh current and voltage data, the learner identifies switching phase and component quantities, determines initial and limiting values, and rejects a curve with an inadmissible current jump."
+          },
+          {
+            "id": "time-constant-connects-graph-and-components",
+            "essentialUnderstandingDe": "Die Zeitkonstante \u03c4 = L/R legt die Zeitskala fest; nach \u03c4 ist beim Einschalten ein charakteristischer Anteil des Endwerts erreicht. Bei bekanntem R erlaubt eine aus Daten bestimmte Zeitkonstante die Bestimmung von L.",
+            "essentialUnderstandingEn": "The time constant \u03c4 = L/R sets the timescale; after one \u03c4 a characteristic fraction of the final switch-on value is reached. With known R, a time constant determined from data allows L to be found.",
+            "observablePerformanceDe": "Die lernende Person bestimmt \u03c4 aus Graph, Tabellenwerten oder einem geeigneten Fit, berechnet L mit Einheit und gibt eine datenangemessene Genauigkeit statt Scheingenauigkeit an.",
+            "observablePerformanceEn": "The learner determines \u03c4 from a graph, tabulated values, or an appropriate fit, calculates L with units, and reports precision appropriate to the data rather than false precision."
+          },
+          {
+            "id": "changed-parameters-predict-transient",
+            "essentialUnderstandingDe": "Gr\u00f6\u00dferes L verlangsamt und gr\u00f6\u00dferes R beschleunigt \u00fcber \u03c4 = L/R bei sonst gleichem Serien-RL-Modell die zeitliche Ann\u00e4herung. Bei einem Spannungssprung bestimmen Quellenspannung und Gesamtwiderstand gemeinsam den station\u00e4ren Grenzstrom U/R, w\u00e4hrend die Anfangsbedingung den Startwert festlegt; Spannungspolungen folgen der jeweiligen Schaltphase.",
+            "essentialUnderstandingEn": "Larger L slows and larger R speeds the approach through \u03c4 = L/R in an otherwise unchanged series RL model. For a voltage step, source voltage and total resistance jointly determine the steady-state limiting current U/R, while the initial condition sets the starting value; voltage polarities follow the switching phase.",
+            "observablePerformanceDe": "Vor Auswertung eines neuen Datensatzes sagt die lernende Person getrennt voraus, wie R und L die Zeitkonstante, wie Quellenspannung und R den Grenzstrom und wie der Anfangsstrom den Startwert ver\u00e4ndern, und pr\u00fcft die Prognose an Verlauf und Residuen.",
+            "observablePerformanceEn": "Before analyzing a fresh data set, the learner separately predicts how R and L affect the time constant, how source voltage and R affect the limiting current, and how initial current sets the starting value, then checks the prediction against the curve and residuals."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "rl-current-is-continuous-and-exponential",
+            "time-constant-connects-graph-and-components",
+            "changed-parameters-predict-transient"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "transient-type",
+            "textDe": "Einschalten, Ausschalten oder \u00dcbergang mit nichtverschwindendem Anfangsstrom",
+            "textEn": "Switch-on, switch-off, or transition with nonzero initial current"
+          },
+          {
+            "id": "component-change",
+            "textDe": "\u00c4nderung von R, L oder beiden bei unterschiedlicher Zeitkonstante",
+            "textEn": "Change of R, L, or both with different time constants"
+          },
+          {
+            "id": "data-quality",
+            "textDe": "Glatter Modellgraph, verrauschte Tabelle oder Datensatz mit erkennbarem Offset",
+            "textEn": "Smooth model curve, noisy table, or data set with a detectable offset"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "extract-inductance-from-switch-on-data",
+            "taskDemandDe": "F\u00fcr einen RL-Kreis mit bekanntem R sind Strommesswerte nach dem Einschalten samt Unsicherheiten gegeben. Bestimme Endwert und \u03c4, berechne L und pr\u00fcfe, ob ein exponentielles Modell die Daten angemessen beschreibt.",
+            "taskDemandEn": "For an RL circuit with known R, current measurements after switch-on are supplied with uncertainties. Determine the final value and \u03c4, calculate L, and check whether an exponential model adequately describes the data.",
+            "expectedPerformanceDe": "Die lernende Person nutzt mehrere Datenpunkte oder einen Fit, erh\u00e4lt L = R\u03c4 mit Einheit, vergleicht Abweichungen mit Unsicherheiten und formuliert eine begrenzte Modellentscheidung.",
+            "expectedPerformanceEn": "The learner uses multiple data points or a fit, obtains L = R\u03c4 with units, compares deviations with uncertainties, and states a bounded model judgment.",
+            "understandingFocusDe": "Der Fall pr\u00fcft die quantitative Verbindung von Kurve, Zeitkonstante und Bauteilwert.",
+            "understandingFocusEn": "The case tests the quantitative link among curve, time constant, and component value."
+          },
+          {
+            "id": "resistance-change-switch-off-transfer",
+            "taskDemandDe": "Derselbe geladene Induktor wird \u00fcber zwei verschiedene Widerst\u00e4nde entladen. Prognostiziere vorab die relative Zeitkonstante, ordne zwei unbekannte Stromkurven zu und erkl\u00e4re Anfangswert sowie Spannungspolung.",
+            "taskDemandEn": "The same energized inductor is discharged through two different resistors. Predict the relative time constants, assign two unlabeled current curves, and explain the initial value and voltage polarity.",
+            "expectedPerformanceDe": "Die lernende Person erkennt \u03c4 = L/R, ordnet dem gr\u00f6\u00dferen R den schnelleren Abfall zu, erh\u00e4lt den kontinuierlichen gemeinsamen Anfangsstrom und begr\u00fcndet die Ausschaltpolung aus Selbstinduktion.",
+            "expectedPerformanceEn": "The learner uses \u03c4 = L/R, assigns faster decay to the larger R, preserves the common continuous initial current, and justifies switch-off polarity from self-induction.",
+            "understandingFocusDe": "Der Transfer pr\u00fcft Parameterwirkung und physikalische Randwerte an einer anderen Schaltphase.",
+            "understandingFocusEn": "The transfer tests parameter effects and physical boundary values in a different switching phase."
+          }
+        ]
+      }
+    },
+    "directPrerequisiteGoals": [
+      {
+        "id": "37f28bc4-def2-57cf-a06b-191dfd228205",
+        "title": "Selbstinduktion und Induktivit\u00e4t",
+        "titleEn": "Self-Induction and Inductance",
+        "description": "Die lernende Person kann ph\u00e4nomenologisch erkl\u00e4ren, wie eine Spule bei Ein- und Ausschaltvorg\u00e4ngen durch eine der Strom\u00e4nderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivit\u00e4t als Ma\u00df f\u00fcr die St\u00e4rke dieses Zusammenhangs deuten.",
+        "descriptionEn": "The learner can phenomenologically explain how a coil responds during switch-on and switch-off processes through a self-induced voltage that opposes the change in current and interpret inductance as a measure of the strength of this relation.",
+        "weight": 1.05,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+          "106417ed-80db-5490-a1ee-bb4160d3f2b4"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+            "title": "Visualisierung: Selbstinduktion und Induktivit\u00e4t",
+            "url": "/assets/goal-visualizations/physik/37f28bc4-def2-57cf-a06b-191dfd228205/37f28bc4-def2-57cf-a06b-191dfd228205.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Selbstinduktion und Induktivit\u00e4t.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Selbstinduktion und Induktivit\u00e4t\". Die lernende Person kann ph\u00e4nomenologisch erkl\u00e4ren, wie eine Spule bei Ein- und Ausschaltvorg\u00e4ngen durch eine der Strom\u00e4nderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivit\u00e4t als Ma\u00df f\u00fcr die St\u00e4rke dieses Zusammenhangs deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      }
+    ],
+    "primaryMathWholePositiveBodyPreviouslyRead": null,
+    "newScientificOrNativeVerdict": null,
+    "sourceScopePrerequisiteNecessityStillRequiresSubstantiveReview": true
+  },
+  "originalIndependentHistory": [
+    {
+      "originalBinding": {
+        "role": "primary",
+        "decisionId": "canonical-physics-692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "dependentGoalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-005.proposal-candidate.json",
+        "authorSha256": "sha256:caedf555f44a1d3899f1381dcd311f90e25fdd7323bfc2cafc56d3e086600421",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-005.parallel-independent-review.json",
+        "reviewSha256": "sha256:92802e9e627165ba5bc824c30f6e9988fde86faae2a7ca9b567bc38257461eb7",
+        "reviewRecordIndex": 17,
+        "independentScientificVerdict": "pending",
+        "requiresDecision": "add",
+        "proposedForeignPrerequisiteIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+          "prerequisitesSha256": "sha256:4c9a04f571fd1716aef4ad91d346e9261e98b9b597d35fe324c5821ab3a64167",
+          "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": false,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      },
+      "wholeOriginalProposal": {
+        "decisionId": "canonical-physics-692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "familyId": "canonical-gymnasium",
+        "dependentGoalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "dependentTitle": "Ein- und Ausschaltvorg\u00e4nge analysieren",
+        "dependentDescription": "Die lernende Person kann Strom- und Spannungsverl\u00e4ufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante \u03c4 = L/R quantitativ analysieren und die Induktivit\u00e4t aus einem solchen Verlauf bestimmen.",
+        "prerequisiteGoalIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "decision": "add",
+        "rationale": "RL-Schaltverl\u00e4ufe werden quantitativ als exponentielle Verl\u00e4ufe mit Zeitkonstante ausgewertet. Exponentialparameter deuten und Funktionswerte berechnen sind daf\u00fcr die gemeinsamen Mathematikbasen. Induktivit\u00e4t kann aus einer grafischen Zeitkonstante gewonnen werden; eine logarithmische Zeitgleichung ist nicht universell n\u00f6tig.",
+        "evidenceKind": "didacticSequencing",
+        "sourceRefs": [
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+            "locator": "goals[id=692db5b6-8be1-5c7b-8307-3a02afb21ea0]",
+            "supports": "goalSemantics"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+            "locator": "goals[id=692db5b6-8be1-5c7b-8307-3a02afb21ea0].applicability",
+            "supports": "scope"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "locator": "goals[id=c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7]",
+            "supports": "prerequisite"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+            "locator": "goals[id=c65ecabf-d00b-4e2d-99ae-b64692325ffb]",
+            "supports": "prerequisite"
+          }
+        ],
+        "applicability": {
+          "universality": "allDependentScopes",
+          "scopes": [
+            {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            }
+          ],
+          "alternatives": [
+            "Zeitkonstante aus einem charakteristischen Kurvenpunkt oder exponentiellem Fit."
+          ]
+        },
+        "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+        "status": "candidate_pending_independent_review",
+        "inventoryIndex": 298,
+        "reviewInput": {
+          "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+          "prerequisitesSha256": "sha256:4c9a04f571fd1716aef4ad91d346e9261e98b9b597d35fe324c5821ab3a64167",
+          "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+        },
+        "proposalBinding": {
+          "baseline": {
+            "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+            "prerequisitesSha256": "sha256:4c9a04f571fd1716aef4ad91d346e9261e98b9b597d35fe324c5821ab3a64167",
+            "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+          },
+          "proposed": {
+            "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+            "prerequisitesSha256": "sha256:4e4e8549e7f884d647e6570490503e6935b2d9d65062c96fd76c38a3601cdb22",
+            "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+          },
+          "baselineRequires": [
+            "37f28bc4-def2-57cf-a06b-191dfd228205"
+          ],
+          "proposedRequires": [
+            "37f28bc4-def2-57cf-a06b-191dfd228205",
+            "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+          ],
+          "changesSha256": "sha256:b873307245eb883bbb7ef43b4214d92b902622e5f8ee0726c0a423bcc35de6de",
+          "prerequisiteInputs": [
+            {
+              "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+              "semanticSha256": "sha256:fbd3f9bd574bd332894a480b2e4b877855ef5cd500c1b080b901a6e04943f625",
+              "scopeSha256": "sha256:618b5e703848f29c47e45975f48de12493673872847aff17119d0ace7df93047"
+            },
+            {
+              "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+              "semanticSha256": "sha256:31bbfd5c6dc2a9088844ba32b441c71594ee872e26bde8e26b46b4a86bfe7bc2",
+              "scopeSha256": "sha256:de1402e8aeb8a48443a48714a27fa5aaac3b9e3f88390b92226269c10d677788"
+            }
+          ]
+        }
+      },
+      "wholeOriginalIndependentReview": {
+        "decisionId": "canonical-physics-692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "dependentGoalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "decision": "pending",
+        "reviewDisposition": "needs_revision",
+        "reviewer": "Codex GPT-6.1 Sol Ultra / independent canonical prerequisite reviewer /root/requires_parallel_review",
+        "rationale": "Exponentialparameter und Funktionswerte tragen die RL-Auswertung und das current P ben\u00f6tigt keine universelle logarithmische Zeitinversion. Der Parameter-Atom schlie\u00dft jedoch DE-BY aus. Vor Adoption bleibt seine explizite Au\u00dfenscope-prerequisiteOnly/Lookup-Eignung oder ein global passender Gegenpart zu pr\u00fcfen; kein automatisch promoviertes Bavarian Math-target.",
+        "reviewInput": {
+          "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+          "prerequisitesSha256": "sha256:4c9a04f571fd1716aef4ad91d346e9261e98b9b597d35fe324c5821ab3a64167",
+          "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+        },
+        "proposalBindingSha256": "sha256:88e09aec13f2914ad6e8e95451734fc15a8dd75474478c7647a03f23944a8d0a",
+        "reviewedContext": {
+          "description": "Die lernende Person kann Strom- und Spannungsverl\u00e4ufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante \u03c4 = L/R quantitativ analysieren und die Induktivit\u00e4t aus einem solchen Verlauf bestimmen.",
+          "directRequires": [
+            "37f28bc4-def2-57cf-a06b-191dfd228205"
+          ],
+          "effectiveRequires": [
+            "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:37f28bc4-def2-57cf-a06b-191dfd228205"
+          ],
+          "prerequisiteOriginsRef": "sha256:23fe559e03490ea56495ae2d9ff171f7318172d311ef24752a3f1de413825fc0",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "phase": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN",
+              "PK3_MATHEMATISIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_FELDER",
+              "LI_ENERGIE"
+            ],
+            "phase": "Q2"
+          },
+          "tags": [
+            "LK"
+          ],
+          "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b",
+          "sourceBindingFiles": [
+            "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json"
+          ]
+        },
+        "nominatedMathematicsRead": [
+          {
+            "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "title": "Parameter exponentieller Funktionen aus Gleichung und Werten deuten",
+            "description": "Die lernende Person kann Funktionsgleichungen exponentieller Funktionen lesen, ihre Parameter aus gegebenen Werten oder Darstellungen bestimmen und Anfangswert sowie Wachstums- oder Zerfallsfaktor im Kontext deuten.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "K1.2",
+                "K2.3",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "J10",
+              "area": "Analysis",
+              "topicCode": "CANONICAL.MATH.SEK1.J10.EXPONENTIAL.PARAMETERS"
+            }
+          },
+          {
+            "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+            "title": "Funktionswerte berechnen",
+            "description": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte f\u00fcr konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben geh\u00f6rigen Ausgabewerte deuten.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K1.1",
+                "K5.1"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "E"
+            }
+          }
+        ],
+        "positiveEvidenceReview": {
+          "configPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.config.json",
+          "reviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/p004.review.jsonl",
+          "profileFingerprint": "sha256:4785bc814eb5081658c2c65ab9563b1242e65b9a3809a5929acb9fcb687d14ad",
+          "reviewInputFingerprint": "sha256:cae18e3a8a69a82a4b84339090782eff4159e59594e6ae06d6143c7153e76165",
+          "goalFingerprint": "sha256:02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "expectationIdsRead": [
+            "rl-current-is-continuous-and-exponential",
+            "time-constant-connects-graph-and-components",
+            "changed-parameters-predict-transient"
+          ],
+          "caseIdsRead": [
+            "extract-inductance-from-switch-on-data",
+            "resistance-change-switch-off-transfer"
+          ],
+          "profileBodyReadLanguage": "de",
+          "suitabilityRationale": "Exponentialparameter und Funktionswerte tragen die RL-Auswertung und das current P ben\u00f6tigt keine universelle logarithmische Zeitinversion. Der Parameter-Atom schlie\u00dft jedoch DE-BY aus. Vor Adoption bleibt seine explizite Au\u00dfenscope-prerequisiteOnly/Lookup-Eignung oder ein global passender Gegenpart zu pr\u00fcfen; kein automatisch promoviertes Bavarian Math-target.",
+          "successorAction": "do-not-rebind-before-substantive-resolution"
+        }
+      }
+    }
+  ],
+  "unresolvedDistinctFourthBatchDissent": false,
+  "originalEffectiveIndexRecord": {
+    "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "subject": "physics",
+    "title": "Ein- und Ausschaltvorg\u00e4nge analysieren",
+    "selectedRecord": {
+      "role": "primary",
+      "decisionId": "canonical-physics-692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "dependentGoalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-005.proposal-candidate.json",
+      "authorSha256": "sha256:caedf555f44a1d3899f1381dcd311f90e25fdd7323bfc2cafc56d3e086600421",
+      "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-005.parallel-independent-review.json",
+      "reviewSha256": "sha256:92802e9e627165ba5bc824c30f6e9988fde86faae2a7ca9b567bc38257461eb7",
+      "reviewRecordIndex": 17,
+      "independentScientificVerdict": "pending",
+      "requiresDecision": "add",
+      "proposedForeignPrerequisiteIds": [
+        "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "originalReviewInput": {
+        "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+        "prerequisitesSha256": "sha256:4c9a04f571fd1716aef4ad91d346e9261e98b9b597d35fe324c5821ab3a64167",
+        "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+      },
+      "currentMatchesBaseline": true,
+      "currentMatchesProposed": false,
+      "technicallyCurrentApprovedBinding": false,
+      "technicalErrors": [],
+      "nativeQualityOrAdoptionApprovalCreated": false
+    },
+    "selectionBasis": "primary exact record",
+    "originalDecisionHistory": [
+      {
+        "role": "primary",
+        "decisionId": "canonical-physics-692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "dependentGoalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-005.proposal-candidate.json",
+        "authorSha256": "sha256:caedf555f44a1d3899f1381dcd311f90e25fdd7323bfc2cafc56d3e086600421",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-005.parallel-independent-review.json",
+        "reviewSha256": "sha256:92802e9e627165ba5bc824c30f6e9988fde86faae2a7ca9b567bc38257461eb7",
+        "reviewRecordIndex": 17,
+        "independentScientificVerdict": "pending",
+        "requiresDecision": "add",
+        "proposedForeignPrerequisiteIds": [
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:6b78084f6eb7ea168a5cb71086ed32d5c3bf4ab376eae03354e72db2ee276eb6",
+          "prerequisitesSha256": "sha256:4c9a04f571fd1716aef4ad91d346e9261e98b9b597d35fe324c5821ab3a64167",
+          "scopeSha256": "sha256:8bcecfb76b7f80689b28c17e5d104bbbccb13d5a717a78821507cf579257e65b"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": false,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      }
+    ],
+    "unresolvedDistinctFourthBatchDissent": false,
+    "fourthBatchDisagreementReconciledHere": false,
+    "effectiveCurrentScientificBindingAccepted": false,
+    "activeForeignRequires": [],
+    "firstTenAdoptionRecorded": false,
+    "firstTenAdoptionEvidence": null,
+    "otherNativeQualityOrAdoptionApprovedByThisIndex": false
+  },
+  "sourceBindingFilesToReadSubstantively": [
+    "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json"
+  ],
+  "preparedInputOnly": true,
+  "newScientificDecisionOrApprovalCreated": false,
+  "currentSourceApplicabilityOrWholePQualityApprovedHere": false
+}

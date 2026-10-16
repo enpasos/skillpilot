@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "runId": "e0d8207d-94cf-4fcc-8f8d-bce5799cd4bb",
+  "recordedAtUTC": "2026-10-15T18:12:53.459197+00:00",
+  "goalId": "4d16601e-fa57-5bcb-a5b6-f308d5b8036a",
+  "singleWholeGoalRecipe": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/variants/canonical570.base-plus-one-whole-goal.author.json",
+    "sha256": "sha256:c538683e2005e3bb537cddbc8081223df6ad2a1cb728fbe61d34c803da5d022d",
+    "bytes": 1310
+  },
+  "beforeAndAfterOnlyRequiresDiffer": true,
+  "twoAddedDirectEdges": [
+    "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+    "8a2ad724-df5e-5986-8de9-560ba43caac2"
+  ],
+  "wholeCurrentGoalReference": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-three-material-and-preparation-path-corrections-author-20261015-v1/candidate/one-whole-preparation-goal.prerequisite-only.author.json",
+    "sha256": "sha256:9dc6c56cd1d0c6b1f5e917842de2129f0a0887c83911e31107d82e80d7b5bfd4",
+    "bytes": 3014
+  },
+  "missingEquationMoleMolarMassFindingResolved": true,
+  "directScientificReasonDe": "11bea liefert die Bedeutung und korrekte Bildung der Reaktionsgleichung;8a verknüpft Formel, molare Masse, Stoffmenge und Masse und enthält1dc(Mol) bereits transitiv. Diese Grundlage passt zur1:1-Fällung und zur Produktmassenplanung. Es ist keine zusätzliche pH-/Gas-/Arznei- oder allgemeine Laborfamilien-Voraussetzung nötig, nur weil der Zieltext Stoffmenge enthält. n=cV und die Limitierungsentscheidung sind im aktuellen Präparationsziel expliziter Lern-/Beurteilungsgegenstand.",
+  "fullPathRows": [
+    {
+      "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+      "titleDe": "Einfache Reaktionsgleichungen ableiten",
+      "titleEn": "Derive simple reaction equations",
+      "descriptionDe": "Die lernende Person kann einfache Reaktionsgleichungen aus Reaktionsschemata fachlich korrekt ableiten sowie Teil- und Gesamtgleichungen nutzen, um chemische Reaktionen zu beschreiben.",
+      "descriptionEn": "The learner can correctly derive simple reaction equations from reaction schemes and use half-equations and overall equations to describe chemical reactions.",
+      "type": "atomic",
+      "directRequires": [
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:a50a5e8cd8b461ab136c9af0ae67beed0c4212e74f98776ac38e65ccc1399fb7",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ]
+    },
+    {
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "titleDe": "Allgemeine Sicherheitsregeln im Chemielabor anwenden",
+      "titleEn": "Apply general laboratory safety rules",
+      "descriptionDe": "Die lernende Person kann grundlegende Sicherheitsregeln im Chemielabor situationsbezogen anwenden.",
+      "descriptionEn": "The learner can apply basic safety rules in the chemistry laboratory in context.",
+      "type": "atomic",
+      "directRequires": [
+        "416dfd33-8b43-5c49-903c-9847b95e4208"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:19b2665a78703c2d0fcb513e2bf61a2cbcface7623aa0424c4467767664733f3",
+      "ancestorRequirements": [
+        {
+          "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "title": "Arbeitsweisen der Chemie anwenden",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        },
+        {
+          "goalId": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+          "title": "Chemische Grundlagen (Sek I)",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        }
+      ],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "416dfd33-8b43-5c49-903c-9847b95e4208",
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ]
+    },
+    {
+      "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "titleDe": "Massenerhaltung bei Reaktionen erklären",
+      "titleEn": "Explain conservation of mass in reactions",
+      "descriptionDe": "Die lernende Person kann einfache Massenbilanz-Versuche auswerten und das Gesetz von der Erhaltung der Masse fachlich erklären.",
+      "descriptionEn": "The learner can evaluate simple mass-balance experiments and explain the law of conservation of mass.",
+      "type": "atomic",
+      "directRequires": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:a04b8c5781b6cfc6e7ef5b19835b978cd8176010e894a463873750a8a6507b35",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ]
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "titleDe": "Stoffmenge und Einheit Mol nutzen",
+      "titleEn": "Use amount of substance and the unit mole",
+      "descriptionDe": "Die lernende Person kann die Stoffmenge als Maß für die Anzahl festgelegter Teilchen deuten und Stoffmengen eindeutig mit der Einheit Mol angeben.",
+      "descriptionEn": "The learner can interpret amount of substance as a measure of the number of specified particles and state amounts of substance unambiguously using the unit mole.",
+      "type": "atomic",
+      "directRequires": [
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:2a0f6d741a3b0c297b3d64b30a9fa75d43ee2b3f4118a6333b5b953296b336a5",
+      "ancestorRequirements": [
+        {
+          "goalId": "680c7dc6-9af5-58fb-86f5-e003aa78d0f5",
+          "title": "Stoffmenge, molare Groessen und Gase (Sek I)",
+          "requires": [
+            "fb3bdf39-4baf-4510-a192-c8a12fbf5dba"
+          ]
+        }
+      ],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "fb3bdf39-4baf-4510-a192-c8a12fbf5dba"
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "titleDe": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "titleEn": "Create simple redox equations using oxidation numbers",
+      "descriptionDe": "Die lernende Person kann Oxidationszahlen nutzen, einfache Redoxteilgleichungen in wässrigen Lösungen formulieren und Redoxgleichungen fachlich korrekt erstellen.",
+      "descriptionEn": "The learner can use oxidation numbers, formulate simple redox half-equations in aqueous solutions, and write redox equations correctly.",
+      "type": "atomic",
+      "directRequires": [
+        "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+        "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:d3bf402f8012b2da258ea3c8c5a55e38f47ade1f16464373cf707048236c60cf",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+        "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+      ]
+    },
+    {
+      "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+      "titleDe": "Arbeitsweisen der Chemie anwenden",
+      "titleEn": "Apply chemistry working methods",
+      "descriptionDe": "Cluster für grundlegende chemische Laborarbeitsweisen und allgemeine Sicherheitsregeln in der Sekundarstufe I.",
+      "descriptionEn": "Cluster for basic chemistry laboratory methods and general safety rules in lower secondary.",
+      "type": "cluster",
+      "directRequires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "contains": [
+        "416dfd33-8b43-5c49-903c-9847b95e4208",
+        "13d4f336-ab16-54a7-9479-c920b458f385"
+      ],
+      "wholeGoalObjectSha256": "sha256:d3087bf4c58440e4ce34453edd571a6d50d48dca2bbc7d3fa21a8a7b67d95651",
+      "ancestorRequirements": [
+        {
+          "goalId": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+          "title": "Chemische Grundlagen (Sek I)",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        }
+      ],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ]
+    },
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "titleDe": "Aggregatzustände und Übergänge deuten",
+      "titleEn": "Interpret states of matter and transitions",
+      "descriptionDe": "Die lernende Person kann feste, flüssige und gasförmige Zustände anhand beobachtbarer Eigenschaften unterscheiden und Übergänge zwischen ihnen als Zustandsänderungen desselben Stoffes erklären.",
+      "descriptionEn": "The learner can distinguish solid, liquid and gaseous states by observable properties and explain transitions between them as changes in the state of the same substance.",
+      "type": "atomic",
+      "directRequires": [
+        "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:ae1e1b653a3fa0ab13b09d788c65d3eb67ffe268784a60efcc0a649542603d3a",
+      "ancestorRequirements": [
+        {
+          "goalId": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+          "title": "Chemische Grundlagen (Sek I)",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        }
+      ],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+        "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+      ]
+    },
+    {
+      "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "titleDe": "Grundlegende Laborarbeitsweisen anwenden",
+      "titleEn": "Apply basic laboratory methods",
+      "descriptionDe": "Die lernende Person kann grundlegende chemische Laborarbeitsweisen sachgerecht ausführen und Beobachtungen geordnet dokumentieren.",
+      "descriptionEn": "The learner can carry out basic chemistry laboratory methods appropriately and document observations in an organized way.",
+      "type": "atomic",
+      "directRequires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:95070a9deb660e4f2c61b1c4ac551b4b020ebfa1e12c47198a2554397d9eeca3",
+      "ancestorRequirements": [
+        {
+          "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "title": "Arbeitsweisen der Chemie anwenden",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        },
+        {
+          "goalId": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+          "title": "Chemische Grundlagen (Sek I)",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        }
+      ],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ]
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "titleDe": "Molare Masse bestimmen und verwenden",
+      "titleEn": "Determine and use molar mass",
+      "descriptionDe": "Die lernende Person kann die molare Masse als Masse pro Stoffmenge deuten, aus chemischen Formeln und Atommassen bestimmen und Masse und Stoffmenge damit verknüpfen.",
+      "descriptionEn": "The learner can interpret molar mass as mass per amount of substance, determine it from chemical formulas and atomic masses, and use it to relate mass and amount of substance.",
+      "type": "atomic",
+      "directRequires": [
+        "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:294242596628ea6ebf913d8b2bfa59b0e3ad33609a248683ba59c547d5feec44",
+      "ancestorRequirements": [
+        {
+          "goalId": "680c7dc6-9af5-58fb-86f5-e003aa78d0f5",
+          "title": "Stoffmenge, molare Groessen und Gase (Sek I)",
+          "requires": [
+            "fb3bdf39-4baf-4510-a192-c8a12fbf5dba"
+          ]
+        }
+      ],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "fb3bdf39-4baf-4510-a192-c8a12fbf5dba"
+      ]
+    },
+    {
+      "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "titleDe": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+      "titleEn": "Distinguish chemical reactions from physical processes",
+      "descriptionDe": "Die lernende Person kann chemische Reaktionen anhand neu entstehender Stoffe von physikalischen Vorgängen unterscheiden und Beobachtungen wie Temperatur- oder Farbänderungen als mögliche, allein nicht beweiskräftige Hinweise einordnen.",
+      "descriptionEn": "The learner can distinguish chemical reactions from physical processes by the formation of new substances and interpret observations such as temperature or colour changes as possible clues that are not conclusive on their own.",
+      "type": "atomic",
+      "directRequires": [
+        "326d45bf-9f77-57d5-a054-93e76b034dd5"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:32cf15dbaa4f4b3b9d9ef3c9d0ab4ab0cdb41ee13d8ca262070a03f1dbdbe471",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "326d45bf-9f77-57d5-a054-93e76b034dd5"
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "titleDe": "Dalton-Modell und Modellcharakter erläutern",
+      "titleEn": "Explain Dalton's model and the nature of models",
+      "descriptionDe": "Die lernende Person kann Daltons Atomhypothese erläutern und den Modellcharakter gegenüber Gesetz und Hypothese fachlich abgrenzen.",
+      "descriptionEn": "The learner can explain Dalton's atomic hypothesis and distinguish the model character from laws and hypotheses.",
+      "type": "atomic",
+      "directRequires": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:4384a7ba9506aec34d3ffc4e4b1fd584d318869f287cd379ba4ac203fc7c8fa4",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ]
+    },
+    {
+      "goalId": "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+      "titleDe": "Warum Chemie? - Relevanz und Orientierung",
+      "titleEn": "Why Chemie? - Relevance and Orientation",
+      "descriptionDe": "Der Big-Picture-Einstieg zeigt, welche Möglichkeiten Chemie im Alltag, bei gesellschaftlicher Teilhabe sowie in Studium und Beruf eröffnet und welche positiven Perspektiven der folgende Stoff bietet. Die lernende Person wählt nur, was sie neugierig macht oder ob sie weiterlernen möchte; fachliches Detailwissen wird hier weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Chemie matters for everyday life, social participation, studies, and career, and how working through this curriculum systematically leads to durable competence growth.",
+      "type": "atomic",
+      "directRequires": [],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:f9c7bb4a3e93c943885a9d96100874159acab75494aa38311c98ef5604b53a52",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": []
+    },
+    {
+      "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+      "titleDe": "Oxidation und Reduktion bei einfachen Reaktionen erkennen",
+      "titleEn": "Recognize oxidation and reduction in simple reactions",
+      "descriptionDe": "Die lernende Person kann Oxidations- und Reduktionsvorgänge bei einfachen Reaktionen von Metallen und Nichtmetallen fachlich deuten.",
+      "descriptionEn": "The learner can interpret oxidation and reduction processes in simple reactions involving metals and non-metals.",
+      "type": "atomic",
+      "directRequires": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:84bdacb87fd42d8ba48bd5ac45f5bc1abde132c3018cc4ac03a1c6aa8bd1c0f4",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "titleDe": "Konstante Massenverhältnisse beschreiben",
+      "titleEn": "Describe constant mass proportions",
+      "descriptionDe": "Die lernende Person kann konstante Massenverhältnisse an einfachen Oxid- und Sulfidbildungen erkennen und fachlich beschreiben.",
+      "descriptionEn": "The learner can recognize and describe constant mass proportions in simple oxide and sulfide formation.",
+      "type": "atomic",
+      "directRequires": [
+        "1bdaf7f2-ff3b-455a-a7fb-95a44642762a"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:c4dbbe6e189d210afddfd6d3a373b7826764af9f2e7d5db3569ddc9e9ba5e8a8",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "1bdaf7f2-ff3b-455a-a7fb-95a44642762a"
+      ]
+    },
+    {
+      "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "titleDe": "Chemische Symbole und Formeln sicher nutzen",
+      "titleEn": "Use chemical symbols and formulas confidently",
+      "descriptionDe": "Die lernende Person kann chemische Symbole deuten und Molekülformeln einfacher Verbindungen fachlich korrekt bilden.",
+      "descriptionEn": "The learner can interpret chemical symbols and correctly form molecular formulas of simple compounds.",
+      "type": "atomic",
+      "directRequires": [
+        "9b5d6326-d27c-4ece-8c72-debda705464a"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:41748819d9a60bd3757739d4741d8d32b26758af3464dac371713316a55b21b0",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "9b5d6326-d27c-4ece-8c72-debda705464a"
+      ]
+    },
+    {
+      "goalId": "fb3bdf39-4baf-4510-a192-c8a12fbf5dba",
+      "titleDe": "Chemische Symbolsprache und Anwendung (Sek I)",
+      "titleEn": "Chemical Symbolism and Application (Lower Secondary)",
+      "descriptionDe": "Cluster für konstante Massenverhältnisse, Dalton-Modell, chemische Formelsprache, einfache Reaktionsgleichungen und erste Redoxschemata aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for constant proportions, Dalton's model, chemical formula language, simple reaction equations, and first redox schemes from lower secondary Gymnasium chemistry.",
+      "type": "cluster",
+      "directRequires": [],
+      "contains": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+        "9b5d6326-d27c-4ece-8c72-debda705464a",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+        "22133f29-ef02-4408-8f8d-2bbea3275d91"
+      ],
+      "wholeGoalObjectSha256": "sha256:23da6aeb2ead9b36e3ce41f53a0b69c2c0144e0524a497b36037db664daf9b02",
+      "ancestorRequirements": [],
+      "effectiveRequiresFromOwnPlusAllAncestors": []
+    },
+    {
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "titleDe": "Stoffe und Eigenschaften beschreiben",
+      "titleEn": "Describe substances and properties",
+      "descriptionDe": "Die lernende Person kann Stoffe anhand von Eigenschaftsmerkmalen beschreiben und ordnen.",
+      "descriptionEn": "The learner can describe and classify substances based on properties.",
+      "type": "atomic",
+      "directRequires": [
+        "266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+      ],
+      "contains": [],
+      "wholeGoalObjectSha256": "sha256:a4f66abb3750076c4b49977fbb9e8f0703fb69fb3913822bd5a43c3abde063d8",
+      "ancestorRequirements": [
+        {
+          "goalId": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+          "title": "Chemische Grundlagen (Sek I)",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        }
+      ],
+      "effectiveRequiresFromOwnPlusAllAncestors": [
+        "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ]
+    }
+  ],
+  "fullTwoAddedFoundationsEffectivePathCount": 17,
+  "existingCompatibilityInheritanceBoundary": {
+    "path": [
+      "4d16601e-fa57-5bcb-a5b6-f308d5b8036a requires8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "8a under680c7dc6-9af5-58fb-86f5-e003aa78d0f5",
+      "680c7dc6 requiresfb3bdf39-4baf-4510-a192-c8a12fbf5dba",
+      "fb3bdf39 contains22133f29-ef02-4408-8f8d-2bbea3275d91 and other symbol-language goals",
+      "22133f29 requiresbcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+    ],
+    "meaning": "The two newly added direct edges are narrow atomic foundations. Existing cluster-level inheritance still makes the effective path wider, including redox children through the symbol-language cluster. This is observed existing compatibility semantics, not a new scientific statement that redox is chemically necessary for calcium-carbonate precipitation.",
+    "globalPrerequisiteMinimalityOrRuntimeAcceptanceGranted": false,
+    "upstreamExistingGoalsNotNewlyApproved": true,
+    "sourceProjectionVisibilityNotProvenByCanonicalPath": true,
+    "requiresNewBroadPrerequisiteEdges": false
+  },
+  "currentPreparationAtomicOutcomeUnchanged": true,
+  "noNormalFingerprintOrRuntimeProof": true
+}

@@ -1,0 +1,40 @@
+{
+  "role": "Dependency-free execution harness of the exact unmodified production method bodies and exclusion constant; no full backend build or new runtime code.",
+  "productionSource": {
+    "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "sha256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+    "bytes": 529427
+  },
+  "exactMethodBodyHashes": [
+    "sha256:5814444d0288db9d7e2484756f1de122bb4e9e3ff7d004c181aac40d159a1f96",
+    "sha256:1d53b5a40190180dd13f9716c121573c36e2b4b3207e290128473cdbcaae0717"
+  ],
+  "constantHash": "sha256:14009d2973fc1c9f8f138fd4dc55fbc6e17bdcef35d46f21b90b01b089c1388c",
+  "runs": [
+    {
+      "name": "javac",
+      "command": [
+        "javac",
+        "-d",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/tooling/classes",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/tooling/ExactBackendSrsSelection.java"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "backend-selection",
+      "command": [
+        "java",
+        "-cp",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/tooling/classes",
+        "ExactBackendSrsSelection",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/tooling/backend-fixtures.tsv"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "actualGroups": 18,
+  "matchesActualFrontendSelections": true,
+  "allSixOldGlobalSelectionsUnchanged": true,
+  "allSixNewSelectionsExact": true
+}

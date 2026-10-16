@@ -1,0 +1,82 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-bcp-current426-D1-original-independent-a-20261015-v1",
+  "campaignId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-a",
+  "roundId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-first-pass-a",
+  "batchId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:9dfc90785eab1d4c93b894ce221a3d1ac6643428286ced6c44c3207c2f3ad016",
+  "bundleFingerprint": "sha256:b4d2227ef39c8e3fc1d9494b35002666d02d1a29d813a9720fa9b7c8298e4b3d",
+  "bookDigest": "sha256:ae8eb69f638569d0d8125cda072465ebc47b98a1609b3bb2baacc5ef257c0c7e",
+  "provider": "not_exposed_by_runtime",
+  "model": "not_exposed_by_runtime",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:9be3bfe6731a9e9e62f93feab62c1fc5c071a087429fcad79fbc4485f51c345e",
+  "independenceGroupId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:f242904a7b1f076e181510df1cd28de26394477e5a123a3cc94c7bd15ad1e0a7"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ec218804712c1d7528dbe0114f8931f86fbd501529395e599ffc220a33b1acce"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:1ab32653df2a239edc06b3a314a76f95e5513bd489f9d856c25009a51afb5bd6"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:131a5c1f9051a9473d1fff08addf47b98baa794248d3edaf9a6173d3f23a68e4"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:b8bbb1bfb3a7c529a3eaebd5ea846d0f0d4f0138f8f69a81a67f6ca5ce6265ca"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:eca63dbd8350d1a992cf7bd266f2bc880ef9e09f875e0743d05df835c0c446fa"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:0bf1d3251f283ff943ab4c8b260899e22d40fa9acac13b633664de8227b53d4b"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:e5aaa6a7d91f2e58091bb532d34f476f74ebe1f41acac6c3b0dabbc11af4ef94"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9dfc90785eab1d4c93b894ce221a3d1ac6643428286ced6c44c3207c2f3ad016"
+    }
+  ],
+  "startedAt": "2026-10-15T20:08:50.528895+00:00",
+  "completedAt": "2026-10-15T20:12:44.821968+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:de9ff6849e2e53ea1d93137bd6c44f832713228fe637e011ecf98f4cf28b25e7",
+  "toolchainVersion": "skillpilot-original-FIRST-technical-transport-v1"
+}

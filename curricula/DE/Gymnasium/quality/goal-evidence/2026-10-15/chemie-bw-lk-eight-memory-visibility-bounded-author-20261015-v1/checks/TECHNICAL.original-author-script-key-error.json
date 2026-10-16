@@ -1,0 +1,9 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 tmp/chemie-m7-resumed-20261015/bw-lk-eight-memory-visibility-host/tooling/build_bounded_analysis.py",
+  "actualExitCode": 1,
+  "actualError": "KeyError: 'rootGoalId'",
+  "actualCause": "The temporary author comparison script initially used rootGoalId instead of the real canonicalSubtree.goalId field.",
+  "correction": "Only the temporary author comparison was corrected to goalId before any CAS result or stock run. No production helper was changed.",
+  "originalTemporaryScriptSha256": "sha256:d8fa9d42d53e5cdb384e79ca244c2f1909022b2b22d7e800ef4fff4fcb411c6a",
+  "scope": "Technical preparation failure, not a scientific decision or production validator failure."
+}

@@ -4,9 +4,9 @@ import { lstatSync, readFileSync, realpathSync } from 'node:fs'
 import { relative, resolve, sep } from 'node:path'
 import type { LearningGoal, ResourceLink } from '../src/landscapeTypes'
 
-// This declaration is deliberately narrow: an own, required SVG assessment stimulus.
+// This declaration is deliberately narrow: own, required SVG assessment stimuli in the two reviewed subject lanes.
 // Unrelated resources and external URLs are not assessment inputs by implication.
-const taskURL = /^\/assets\/task-material\/mathematik\/([a-z0-9][a-z0-9-]*-([a-f0-9]{64})\.svg)$/u
+const taskURL = /^\/assets\/task-material\/(mathematik|physik)\/([a-z0-9][a-z0-9-]*-([a-f0-9]{64})\.svg)$/u
 const linksFor = (goal: LearningGoal) => (goal.resourceLinks ?? []).filter((link) => link.type === 'task-material')
 
 function declaration(goal: LearningGoal, link: ResourceLink) {
@@ -16,7 +16,7 @@ function declaration(goal: LearningGoal, link: ResourceLink) {
     || link.skillpilotId !== goal.id || !link.title?.trim()
     || link.license !== 'CC-BY-4.0' || link.lang !== 'de'
   ) throw new Error(`${goal.id}: unsupported required task-material declaration ${link.url}`)
-  return { filename: match[1], digest: `sha256:${match[2]}` }
+  return { subject: match[1], filename: match[2], digest: `sha256:${match[3]}` }
 }
 
 export function requiredTaskMaterialPayload(
@@ -56,7 +56,7 @@ export function collectRequiredTaskMaterialDigests(goal: LearningGoal, repositor
       const declared = declaration(goal, link)
       if (Object.hasOwn(digests, link.url)) throw new Error(`duplicate task-material ${link.url}`)
       const publicBytes = readConfinedFile(repositoryRoot, `app/public${link.url}`)
-      const sourceBytes = readConfinedFile(repositoryRoot, `curricula/DE/Gymnasium/task-material/mathematik/${declared.filename}`)
+      const sourceBytes = readConfinedFile(repositoryRoot, `curricula/DE/Gymnasium/task-material/${declared.subject}/${declared.filename}`)
       const publicDigest = `sha256:${createHash('sha256').update(publicBytes).digest('hex')}`
       const sourceDigest = `sha256:${createHash('sha256').update(sourceBytes).digest('hex')}`
       if (publicDigest !== declared.digest || sourceDigest !== declared.digest || !publicBytes.equals(sourceBytes)) {

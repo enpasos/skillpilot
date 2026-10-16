@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "radian-three-guard-current8d30-20261016-a-sol-ultra-native-first-pass",
+  "campaignId": "radian-requires-three-guard-current8d30-20261016-v1-a",
+  "roundId": "radian-requires-three-guard-current8d30-20261016-v1-first-pass-a",
+  "batchId": "radian-requires-three-guard-current8d30-20261016-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:9cfe5ecad6452fa412c1529caf3d9566078e44fa60a147bc953b39be48b35001",
+  "bundleFingerprint": "sha256:f55d2b87699d9c4829a204d683eeda03dff4d14e3d5f98692ea38c89d9340865",
+  "bookDigest": "sha256:e930869539758119466b8d5a4c8d28d8d86623fb010960e450ef1f90c7f6862d",
+  "provider": "OpenAI / Codex agent; direct local judgment, no external model API run",
+  "model": "gpt-6.1-sol (task-assigned; self-reported)",
+  "modelVersion": "ultra reasoning requested by parent; no telemetry attestation",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:880169e52811c62d441e45ed6441142c7bfd25de29c7527d26d6d94a505c71a1",
+  "independenceGroupId": "radian-requires-three-guard-current8d30-20261016-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8d30d241-0247-48ac-83d3-4e0de61584d3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:697407ed73bba4a494fdb552a0942ffc954ea75842f2f39daa69cf64aeb1bc38"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:e9299854903780a4abcb2ef45c4e5f3eec687223353394ca8724d902c74f7919"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9cfe5ecad6452fa412c1529caf3d9566078e44fa60a147bc953b39be48b35001"
+    }
+  ],
+  "startedAt": "2026-10-16T00:14:52.096829+00:00",
+  "completedAt": "2026-10-16T00:16:58.204526+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:cf76c7308b286a041f1831ea7642b46592a5571a3a5654ed3ae442011ed41f15",
+  "toolchainVersion": "codex-agent-native-jsonl-description-review-v1"
+}

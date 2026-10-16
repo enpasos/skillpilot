@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b4d2227ef39c8e3fc1d9494b35002666d02d1a29d813a9720fa9b7c8298e4b3d",
+  "reviewInputFingerprint": "sha256:bd5b59fbdd5f6c180d2d0fe87fec9f9ce1db11ffe9c4e2aee006df0719165953",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-a",
+      "roundId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-first-pass-a",
+      "independenceGroupId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-independent-a",
+      "runIds": [
+        "chemie-bcp-current426-D1-original-independent-a-20261015-v1"
+      ],
+      "providers": [
+        "not_exposed_by_runtime"
+      ],
+      "modelIdentities": [
+        "not_exposed_by_runtime::not_exposed_by_runtime::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-b",
+      "roundId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-first-pass-b",
+      "independenceGroupId": "chemie-bcp-current426-e7-required-D1-technical-20261015-v1-independent-b",
+      "runIds": [
+        "chemie-bcp-current426-D1-original-independent-b-20261015-v1"
+      ],
+      "providers": [
+        "not_exposed_by_runtime"
+      ],
+      "modelIdentities": [
+        "not_exposed_by_runtime::not_exposed_by_runtime::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "not_exposed_by_runtime"
+    ],
+    "sharedModelIdentities": [
+      "not_exposed_by_runtime::not_exposed_by_runtime::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "firstRecordId": "chemie-bcp-D1-a-e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "secondRecordId": "chemie-bcp-D1-b-e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "firstRunId": "chemie-bcp-current426-D1-original-independent-a-20261015-v1",
+      "secondRunId": "chemie-bcp-current426-D1-original-independent-b-20261015-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

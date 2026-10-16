@@ -1,0 +1,23 @@
+{
+  "corrections": [
+    {
+      "operation": "First current D check",
+      "actualFailureReceipt": "receipts/D6.current.check.completed-run.actual.json",
+      "error": "Own new root alias absent in newly cloned ignored host",
+      "repair": "Added only the new owned O4 namespace alias in H4; normal current check then PASS."
+    },
+    {
+      "operation": "P7 normal check",
+      "actualFailureReceipt": "receipts/P7.normal-check.completed-run.actual.json",
+      "error": "481 reason exceeded production max2000 characters; second missing-record message derives from that schema rejection",
+      "repair": "Concise per-goal production reasons, with all original full source judgments retained in the bound input packet; regenerated actual synthesizer output/run and normal check PASS."
+    },
+    {
+      "operation": "Local unsealed input assembler",
+      "error": "Initial narrow assertion did not recognize genuine B481 reuse_prior_profile_science_and_accept_corrected_image_alignment; then V481 rationale was a list",
+      "repair": "Accepted the exact actual review decision label and joined its genuine rationale sentences; no scientific decision was altered."
+    }
+  ],
+  "failedStockReceiptsRetained": true,
+  "productionCodeOrThresholdChanged": false
+}

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "role": "Concrete minimal inactive QS composition proposal using existing goalEntry pattern;not active or reviewed",
+  "actualCurrentFullCanonicalViewError": {
+    "codes": [
+      "CPV-005",
+      "CPV-006"
+    ],
+    "goalId": "31781d00-8f20-5041-bd7f-e261b27af162",
+    "parents": [
+      "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+      "fb41c82c-12c3-5f9a-9e8d-40f10c9fade9"
+    ],
+    "referenceOnly": "Error: Goal-book model: invalid composition view curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-views/chemie-m7-full-canonical.view.json: CPV-005 31781d00-8f20-5041-bd7f-e261b27af162: Kanonisches Ziel erscheint mehrfach im kompilierten Baum: 31781d00-8f20-5041-bd7f-e261b27af162 | CPV-006 31781d00-8f20-5041-bd7f-e261b27af162: Kanonisches Ziel hat mehr als einen sichtbaren Parent im kompilierten Baum: 31781d00-8f20-5041-bd7f-e261b27af162"
+  },
+  "proposal": {
+    "viewId": "chemie-bcp-fifteen-and-nine-contexts-inactive-qs-proposal-20261015",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "scope": {
+      "schoolForm": "Gymnasium",
+      "stage": "CrossStage"
+    },
+    "rootNodes": [
+      {
+        "kind": "structure",
+        "id": "bcp-whole-fifteen-science-and-source-duty",
+        "label": "BcP: ganze Kompetenzen und Quellenpflichten",
+        "children": [
+          {
+            "kind": "goalEntry",
+            "goalId": "57d2c98d-30b8-5123-b823-e56a4f22b191"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "7b80efe6-b77d-5ace-8886-973ba38e6f9e"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "cb7125b7-8734-51c6-8306-9163114dc0cc"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "4d16601e-fa57-5bcb-a5b6-f308d5b8036a"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "dd59351e-3b16-5104-b7c6-ff9e402e4de7"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "c8198159-2109-5ad0-9d37-252ebac0219d"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "9d6e1966-b10c-5a70-b215-df7007c95b07"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "0f632595-5875-5a95-83d8-7de3180bdaa6"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "843484b9-1acf-54e0-a030-bc214b3b0656"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "e6dcd3a0-264d-503b-aaac-a3e86eeb7059"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "fec1563e-a34a-5fc1-93bb-03981f35ab13"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "7b443158-8ca9-5b8e-8328-a8fa56f6e26f"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "dc4a26c7-8304-529d-8705-7333b2f038fc"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "ffebca5e-76b5-55d7-80d6-df1e7d2c75ea"
+          }
+        ]
+      },
+      {
+        "kind": "structure",
+        "id": "bcp-nine-context-neighbours-only",
+        "label": "Bestand: nur geänderte Beziehungen und Kontexte",
+        "children": [
+          {
+            "kind": "goalEntry",
+            "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "31781d00-8f20-5041-bd7f-e261b27af162"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea"
+          }
+        ]
+      }
+    ]
+  },
+  "technicalCompile": {
+    "goals": 24,
+    "errorCount": 0,
+    "actualExistingStockFunction": "compileCompositionView",
+    "inMemory": true,
+    "findings": []
+  },
+  "limitations": [
+    "This finite QS view fixes duplicate occurrence only for this prospective bounded review input. It does not repair or replace the failing whole426 review/atlas-navigation view.",
+    "No goal leaves the canonical universe and no ordinary process-course target is removed.31781 has one explicit visible goalEntry in this QS proposal.",
+    "The15 science/source-duty targets and9 context-only targets have different review work;this does not require unchanged science to be reassessed.",
+    "The final native scope may need additional genuinely changed nonstrict context such as11bea;24 is not a claimed final whole-book impact count.",
+    "No Native preparation,rendered PDF,Normal binding,review vote or active composition write occurred."
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "reviewerId": "fresh-independent-a-acid6-current419-v3",
+  "scientificFirstSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-current419-targeted-six-fresh-independent-a-20261014-v3/FIRST.seal.json",
+    "sha256": "sha256:04b35488ab5c4b4c723871937e8aabdaddac492023c0fb381875dbb2bb14782a"
+  },
+  "wholeCurrentCanonicalBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-two-description-one-image-current419-native-successor-technical-20261014-v3/candidate/canonical551.current419.three-author-deltas.exact.json",
+    "sha256": "sha256:b07e023f03a7c573e2b823c491e030c0ca1b5d530b17116de2b4a3d8010d0339",
+    "bytes": 1859268
+  },
+  "wholeOriginalCases": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-current419-targeted-six-fresh-independent-a-20261014-v3/inputs/fourteen-full-cases.bound.exact.json",
+    "sha256": "sha256:a8bac93673dc0a2e0796348352dedc9a190b5fd8567aad43aa3154db83c65af0"
+  },
+  "wholeOriginalRawProfiles": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-current419-targeted-six-fresh-independent-a-20261014-v3/inputs/author-profiles.seven.raw.json",
+    "sha256": "sha256:937ad763f4cbf46f2ff3eaa13393ad2950554defc315a83532bf22525b1a95c2"
+  },
+  "humanApproval": false,
+  "strictClosureGranted": false,
+  "activeIntegrationPerformed": false,
+  "artifactKind": "P-current-six-independent-reviewed-design-results",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "originalAuthorEnvelopeRemains": "E0/G0; exact bytes retained",
+  "learnerExecutions": [],
+  "runtimeQuotaAdded": false,
+  "records": [
+    {
+      "goalId": "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+      "goalFingerprint": "sha256:16fb445c26beae199d3cf26e156e3a1b5dd860eae09354820fda177f10490a91",
+      "pageFingerprint": "sha256:655bece2afcb01499091d643625e018407ea768bc3c58f48c19d4b2196741255",
+      "decision": "design_matches_current_goal",
+      "reason": "G1-C1 equations preserve atoms/charge and correctly distinguish the two conjugate pairs from the two reactants. G1-C2 changes the same HCO3− species from acceptor to donor with a changed partner, explicitly excludes CO2 follow-up chemistry and supplies the species. All four profile expectations and both bilingual cases match the new one-proton text.",
+      "archetype": "concept",
+      "wholeRawProfilePointer": "/profiles/0",
+      "wholeRawProfileSha256": "sha256:2343f9fb4b8bf8fdb1eda7d5cd491b17f1ffab7a9dd338039be66536dbf447b4",
+      "originalAuthorGoalBodyBinding": "sha256:1c398ec0a0ba0c410a437b15b0b4b11db5662b3f6b7fde7ce9310a29c2cc81e9",
+      "currentSemanticMatchingReviewed": true,
+      "currentNativePageAndDirectContextReviewed": true,
+      "requiredExpectationIds": [
+        "proton-transfer-conservation",
+        "one-proton-conjugates",
+        "partner-dependent-roles",
+        "role-transfer-counterexamples"
+      ],
+      "fullCases": [
+        {
+          "caseId": "G1-C1",
+          "jsonPointer": "/cases/0",
+          "fullCaseTextSha256": "sha256:ec68d1a31658b613728c0f60f058bdde5729def54580d9a75dcb1365d78c79e3",
+          "coveredExpectationIds": [
+            "proton-transfer-conservation",
+            "one-proton-conjugates",
+            "partner-dependent-roles",
+            "role-transfer-counterexamples"
+          ]
+        },
+        {
+          "caseId": "G1-C2",
+          "jsonPointer": "/cases/1",
+          "fullCaseTextSha256": "sha256:4bf530049e7c55257d1cb612c555594d57da994dd1829ed619d47a4f3a786d13",
+          "coveredExpectationIds": [
+            "proton-transfer-conservation",
+            "one-proton-conjugates",
+            "partner-dependent-roles",
+            "role-transfer-counterexamples"
+          ]
+        }
+      ],
+      "dissent": []
+    },
+    {
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "goalFingerprint": "sha256:1aa0edcc590ee24a93b88b0001ddafa68ccbc04d18be76c8bf2691b9a3c3dcf9",
+      "pageFingerprint": "sha256:2b59aeb28717b83a1c1eb2a9400bf588fadffdb1538e104b3665788ed51465e6",
+      "decision": "design_matches_current_goal",
+      "reason": "G2-C1: Ka ratio 10^5, conjugate pKb 10/5 and strength versus formal concentration are correct. G2-C2: pKb 3/5 gives conjugate pKa 11/9 and cross constants 10/0.1. The new diagram independently supports the same mass-action/pK concept, without becoming assessment evidence. Whole raw profile and both cases still match current goal semantics.",
+      "archetype": "concept",
+      "wholeRawProfilePointer": "/profiles/1",
+      "wholeRawProfileSha256": "sha256:ebc409f28079016de7d6ed73d365b1bd31745f9b875fcbffb7c6dd5ef8dd3258",
+      "originalAuthorGoalBodyBinding": "sha256:eefcbe95368793d2d536b1803f09e44d38146532e522ccbee7b4d18f42d7ed2a",
+      "currentSemanticMatchingReviewed": true,
+      "currentNativePageAndDirectContextReviewed": true,
+      "requiredExpectationIds": [
+        "mass-action-protolysis",
+        "negative-log-strength",
+        "conjugate-strength-relation",
+        "equilibrium-direction-limits"
+      ],
+      "fullCases": [
+        {
+          "caseId": "G2-C1",
+          "jsonPointer": "/cases/2",
+          "fullCaseTextSha256": "sha256:432658e513fe81b6b9e068724c83412ae5e339375bb0967ff712e2cbb07b2fb5",
+          "coveredExpectationIds": [
+            "mass-action-protolysis",
+            "negative-log-strength",
+            "conjugate-strength-relation",
+            "equilibrium-direction-limits"
+          ]
+        },
+        {
+          "caseId": "G2-C2",
+          "jsonPointer": "/cases/3",
+          "fullCaseTextSha256": "sha256:b9bcb8f9858950784624edaf09e2fddceb72b76b1129f0133e34203404660b62",
+          "coveredExpectationIds": [
+            "mass-action-protolysis",
+            "negative-log-strength",
+            "conjugate-strength-relation",
+            "equilibrium-direction-limits"
+          ]
+        }
+      ],
+      "dissent": []
+    },
+    {
+      "goalId": "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+      "goalFingerprint": "sha256:8ad18615c017e1ee29b826eca541a255d7206d247ce872a7ce8567c1238dfcca",
+      "pageFingerprint": "sha256:3ce53f2548f85ee9110cb626807b0ad17c3ce7ccb2e1884dd43281ced8e79549",
+      "decision": "design_matches_current_goal",
+      "reason": "G3-C1/C2 and all four profile expectations remain chemically correct in the stated normalized ideal model. T* is deliberately hypothetical; pH 6.50 is neutral at pKw 13, and the separate 25 °C sample with 10^-6/10^-8 M is acidic. Changed one-proton prerequisite makes the same reasoning available without altering this design.",
+      "archetype": "concept",
+      "wholeRawProfilePointer": "/profiles/2",
+      "wholeRawProfileSha256": "sha256:3fcc8e6cce9e233fded24b8af9a4cd48061f7a9a3bad0fc1c88e287587ce1e37",
+      "originalAuthorGoalBodyBinding": "sha256:46532fde6fbdedefe7aac9e9f46343701ae0d3930b13e7d51e24758825b44d2b",
+      "currentSemanticMatchingReviewed": true,
+      "currentNativePageAndDirectContextReviewed": true,
+      "requiredExpectationIds": [
+        "two-water-proton-transfer",
+        "solvent-and-ion-product",
+        "neutrality-equal-activities",
+        "temperature-dependent-reference"
+      ],
+      "fullCases": [
+        {
+          "caseId": "G3-C1",
+          "jsonPointer": "/cases/4",
+          "fullCaseTextSha256": "sha256:2aec008c39bbc08c87a2051c7605c0adca8aa93bf7c3ed627f9dfaa9224afa13",
+          "coveredExpectationIds": [
+            "two-water-proton-transfer",
+            "solvent-and-ion-product",
+            "neutrality-equal-activities"
+          ]
+        },
+        {
+          "caseId": "G3-C2",
+          "jsonPointer": "/cases/5",
+          "fullCaseTextSha256": "sha256:7725ca114195d033d683865d61818ac0fdd60f40eea39df4018d713d139c7111",
+          "coveredExpectationIds": [
+            "two-water-proton-transfer",
+            "solvent-and-ion-product",
+            "neutrality-equal-activities",
+            "temperature-dependent-reference"
+          ]
+        }
+      ],
+      "dissent": []
+    },
+    {
+      "goalId": "c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
+      "goalFingerprint": "sha256:d5ec64abf51863fffa55e92ba70d0f945c8536396f53ee6e714c7d19a4de2893",
+      "pageFingerprint": "sha256:da05bd175967d0a77a15cab726aa5567419ae846c006930a1f42d2dbaa127fa9",
+      "decision": "design_matches_current_goal",
+      "reason": "G4-C1/C2 and all four expectations retain acid/base stoichiometry, pOH conversion and measured-record caution. Ca(OH)2 supplies two OH−; the explicitly supplied ultradilute helper gives pH about 6.9978. The helper derivation is not made an extra requirement. All cases stand without images.",
+      "archetype": "modeling",
+      "wholeRawProfilePointer": "/profiles/3",
+      "wholeRawProfileSha256": "sha256:d3e097a0021a546b819ee2c6911e8337672b1590d9bc3f00c266d8557f2317c9",
+      "originalAuthorGoalBodyBinding": "sha256:da76e6b065fb59868d99ecc34fdf15c74b7d7a36474ac7118506ce6794d77532",
+      "currentSemanticMatchingReviewed": true,
+      "currentNativePageAndDirectContextReviewed": true,
+      "requiredExpectationIds": [
+        "stoichiometric-ion-concentration",
+        "ph-poh-logarithms",
+        "interpret-records-cautiously",
+        "dilution-and-water-limit"
+      ],
+      "fullCases": [
+        {
+          "caseId": "G4-C1",
+          "jsonPointer": "/cases/6",
+          "fullCaseTextSha256": "sha256:40ac3d03c7f50de041ccc92cd739b90edfffed3593a7daaeeffe55e355c38794",
+          "coveredExpectationIds": [
+            "stoichiometric-ion-concentration",
+            "ph-poh-logarithms",
+            "interpret-records-cautiously",
+            "dilution-and-water-limit"
+          ]
+        },
+        {
+          "caseId": "G4-C2",
+          "jsonPointer": "/cases/7",
+          "fullCaseTextSha256": "sha256:ab5b562ce46cf672ec7287c3b471066a12032d81736a98dfaceca884c806d24e",
+          "coveredExpectationIds": [
+            "stoichiometric-ion-concentration",
+            "ph-poh-logarithms",
+            "dilution-and-water-limit"
+          ]
+        }
+      ],
+      "dissent": []
+    },
+    {
+      "goalId": "33034876-8da5-5619-ad86-e1272e0304b0",
+      "goalFingerprint": "sha256:b48a87c514b3d6b479da95f0e238f7209677056724693c8bd8ef90bf08cb1ba3",
+      "pageFingerprint": "sha256:56794e187defdb5853d6c85f826bfe6fd6a4f3b365d025add5695fbce932b0da",
+      "decision": "design_matches_current_goal",
+      "reason": "G5-C1/C2 retain all four expectations. At c=0.100 M and K=10^-5, q/c about 1% supports the square-root model. At c=K=10^-5, blind q/c=100% fails; supplied quadratic gives 61.8% and pH 5.209/8.791. This is a model-validity transfer, not merely another numerical substitution.",
+      "archetype": "modeling",
+      "wholeRawProfilePointer": "/profiles/4",
+      "wholeRawProfileSha256": "sha256:a4a8af5ec53855dd15906913708b875fa21d5bd4cd549e589612c150513c302b",
+      "originalAuthorGoalBodyBinding": "sha256:3d7a5f74afbe2b178f6e1204cbce325b543be8007bde2b0909038c03b2c934be",
+      "currentSemanticMatchingReviewed": true,
+      "currentNativePageAndDirectContextReviewed": true,
+      "requiredExpectationIds": [
+        "strength-versus-formal-concentration",
+        "derive-root-approximation",
+        "four-system-ph-conversion",
+        "independent-neglect-conditions"
+      ],
+      "fullCases": [
+        {
+          "caseId": "G5-C1",
+          "jsonPointer": "/cases/8",
+          "fullCaseTextSha256": "sha256:2f1e149c11eee58971170631b4083b3ef705019289be3391052f131cd1b6ef37",
+          "coveredExpectationIds": [
+            "strength-versus-formal-concentration",
+            "derive-root-approximation",
+            "four-system-ph-conversion"
+          ]
+        },
+        {
+          "caseId": "G5-C2",
+          "jsonPointer": "/cases/9",
+          "fullCaseTextSha256": "sha256:04d41aba284d11a52419ea6f5c1e47ea607eb702ea9c0dac60b201f492e07944",
+          "coveredExpectationIds": [
+            "strength-versus-formal-concentration",
+            "four-system-ph-conversion",
+            "independent-neglect-conditions"
+          ]
+        }
+      ],
+      "dissent": []
+    },
+    {
+      "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7",
+      "goalFingerprint": "sha256:bca6ce46b6e069b9eacd6347bb4d9d1387e9cea15b09ac0953984c5225b12e79",
+      "pageFingerprint": "sha256:1b5c1978033211abc3c4575290c789405515080c7520cf0deb6a5a557cc81aba",
+      "decision": "design_matches_current_goal",
+      "reason": "G7-C1 correctly gives 5.101 then 4.80 after neutralization, with the same ratio on dilution. G7-C2 gives 9.501 initially and 8.501 for sample A; sample B exhausts the 0.0200 mol base reserve and leaves 0.00500 mol acid, invalidating negative-log substitution. Both whole cases and the four-expectation raw profile match the new ratio-and-validity description.",
+      "archetype": "modeling",
+      "wholeRawProfilePointer": "/profiles/6",
+      "wholeRawProfileSha256": "sha256:e26a9b0c4fc61812aab8eca294ca6e5cddf7edc6d2a3206900e2e30362a4cb37",
+      "originalAuthorGoalBodyBinding": "sha256:485953f1779d180aaa1d4899a23123e91afb1accc713f1ca505962c95e3c76ee",
+      "currentSemanticMatchingReviewed": true,
+      "currentNativePageAndDirectContextReviewed": true,
+      "requiredExpectationIds": [
+        "mass-action-buffer-ratio",
+        "neutralize-before-equilibrium",
+        "dilution-and-capacity-basis",
+        "reserve-and-domain-exhaustion"
+      ],
+      "fullCases": [
+        {
+          "caseId": "G7-C1",
+          "jsonPointer": "/cases/12",
+          "fullCaseTextSha256": "sha256:c383421fe01c48f9c0654138a2a0ac3e4f83bc8e4f4c205f309708ed5b73db93",
+          "coveredExpectationIds": [
+            "mass-action-buffer-ratio",
+            "neutralize-before-equilibrium",
+            "dilution-and-capacity-basis"
+          ]
+        },
+        {
+          "caseId": "G7-C2",
+          "jsonPointer": "/cases/13",
+          "fullCaseTextSha256": "sha256:4fe94b2a9d11cb37cee0b1156b285fbac22b8ed11387f6b4dd5d1a82489e0afc",
+          "coveredExpectationIds": [
+            "mass-action-buffer-ratio",
+            "neutralize-before-equilibrium",
+            "reserve-and-domain-exhaustion"
+          ]
+        }
+      ],
+      "dissent": []
+    }
+  ]
+}

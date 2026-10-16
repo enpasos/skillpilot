@@ -1,5 +1,142 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Aktuelle Chemie-Fortsetzung: 386/426 – 15. Oktober 2026
+
+Der [Praktikums-Folgecheckpoint](chemie-bcp-current426-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Bericht **386/426 (90,6 %)**:
+15 fachliche Erstabschlüsse, alle bisherigen 371 erhalten, **40 offen**.
+Sechs breite Atome werden zu Kontexten mit zehn Kindern; der Nenner steigt
+netto um vier. Fünf weitere Bestandsziele sind erstmals abgeschlossen.
+Eine erneuerte e7-Kontextbindung bringt netto keinen Erstabschluss;
+acht alte Beschreibungsbindungen bleiben exakt erhalten. Alle sechs
+Pflichtprüfungen bestehen; D/P/A/M/V stehen bei **388/397/401/426/422**.
+Der einmalige Zentralbericht lief in 55,024 Sekunden ohne Befunde.
+
+BcP bleibt ein getrennter bayerischer Praktikums-Wahlumfang für 12/13 mit
+52 erhaltenen Quellzellen; fiktive Fallwerte belegen keine echte Durchführung.
+Zehn Kindbilder sind bei 360/680 Pixeln geprüft, gültige Bestandsbilder bleiben
+erhalten. Fünf fehlerhafte optionale Kontextbildlinks sind gezielt entfernt,
+alte Bildbytes erhalten. Vier Cluster-Bild-HOLDs, vier atomare V-Lücken und
+die globale Bild-QA HOLD bleiben offen. Die Titel/Icon-Überlappung bei
+`0f632595-5875-5a95-83d8-7de3180bdaa6` bleibt eine separate UI-REVISION;
+die RP-Kp→Gasnachweis-Korrektur ist zurückgestellt und nicht integriert.
+Layer A und M7 bleiben offen. Alle 697 geschützten aktiven Eingaben bleiben
+bytegleich; aktiv ist Chemie **231/402, M6**, die drei geschützten Fächer
+bleiben M7.
+
+Für den gepushten 371er-Commit `2fd57186` sind
+[alle acht Hauptjobs, 14 Checks und vier Workflows erfolgreich](https://github.com/enpasos/skillpilot/actions/runs/38786527795)
+belegt. Der 386er-Folgecommit benötigt seinen eigenen GitHub-CI-Nachweis.
+Nach stabilem Commit und erfolgreicher CI folgen die 40 offenen Chemieziele.
+
+## Vorherige Chemie-Fortsetzung: 371/422 – 15. Oktober 2026
+
+Der [Gleichgewichts-Folgecheckpoint](chemie-source4-current371-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Bericht **371/422 (87,9 %)**:
+vier fachliche Erstabschlüsse, alle bisherigen367 erhalten, **51 offen**.
+Alle sechs Pflichtprüfungen bestehen; D/P/A/M/V stehen bei
+**373/392/393/422/418**. Zwei unabhängige aktuelle Beschreibungsrunden
+liegen vor. Der Quellenbefund RP-Kp→Gasnachweis bleibt ausdrücklich offen;
+Autorenrollen werden nicht als amtliche Pflicht oder aktive SourceAtlas-
+Zuordnung ausgegeben. Ungezählte Praktikumsfolger enthalten unabhängig
+nachgeprüfte konkrete Materialkorrekturen. Aktive Eingaben und die drei
+geschützten M7-Fächer bleiben bytegleich. Ein eigener GitHub-Lauf des
+Folgecommits bleibt erforderlich.
+
+## Vorherige Chemie-Fortsetzung: 367/422 – 15. Oktober 2026
+
+Der [geprüfte Folgeintegrationstand](chemie-native9-current367-continuation-2026-10-15.md)
+erreicht im inaktiven zentralen Bericht **367/422 (87,0 %)**:
+sechs fachliche Erstabschlüsse und drei wiederhergestellte Geltungs-/Seitenbindungen,
+alle bisherigen 358 erhalten, **55 offen**. Alle sechs Pflichtprüfungen bestehen;
+D/P/A/M/V stehen bei **369/392/393/422/418**. Der vollständige Bericht wurde
+genau einmal ausgeführt. Quellen-/Kursbefunde und ungeprüfte nächste Kandidaten
+bleiben offen und ungezählt; aktive Eingaben und die drei geschützten M7-Fächer
+bleiben bytegleich.
+
+Für den gepushten 358er-Commit `e45c6f20` ist
+[GitHub CI vollständig bestanden](https://github.com/enpasos/skillpilot/actions/runs/38763740674).
+Der lokale 367er-Nachfolger benötigt seinen eigenen GitHub-Lauf.
+Die nächsten Pakete betreffen ausschließlich die offenen Chemie-Quellenrollen
+und Praktikumsgrenzen; unveränderte gültige Science wird wiederverwendet.
+
+## Vorherige Chemie-Fortsetzung: 358/422 – 15. Oktober 2026
+
+Der [Carbonyl-/Gleichgewichts-Folgecheckpoint](chemie-carbonyl-equilibrium-current358-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Kandidaten **358/422 (84,8 %)**: 20 neue
+fachliche Abschlüsse, alle bisherigen 338 erhalten, sechs Pflichtprüfungen
+PASS und 64 Ziele offen. Vier echte Materialbefunde bleiben ungezählt;
+neun Beschreibungsbefunde bleiben zurückgestellt. Vorbereitete Korrekturen
+werden erst nach unabhängiger Prüfung gezählt. Reine Bindungen erzeugen
+keine zusätzlichen erstmaligen Abschlüsse. Aktiv bleiben **231/402, M6**;
+Mathematik, Physik und Biologie bleiben geschützt M7. Der Vorgänger
+`f1902648` hat alle 14 GitHub-Checks und acht Hauptjobs bestanden. Dieser
+Folgecheckpoint benötigt seinen eigenen erfolgreichen GitHub-Lauf.
+
+## Vorheriger Energie-Stand – 15. Oktober 2026
+
+Der [Energie-Folgecheckpoint](chemie-energy18-current422-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Kandidaten **338/422 (80,1 %)**: 17 neue
+fachliche Abschlüsse, alle bisherigen 321 erhalten, sechs Pflichtprüfungen
+PASS und 84 Ziele offen. Wiederhergestellte Bindungen schaffen keine
+zusätzlichen erstmaligen Abschlüsse. Quellen-, Kurs-, Bild- und
+Teilungsbefunde bleiben getrennt offen; aktiv bleiben **231/402, M6**.
+Mathematik, Physik und Biologie bleiben geschützt M7. Der Vorgänger
+`adb8b46d` hat alle 14 GitHub-Checks und acht Hauptjobs bestanden; der neue
+Folgecheckpoint benötigt seinen eigenen erfolgreichen GitHub-Lauf.
+
+## Vorheriger Labor-/Memory-Stand – 15. Oktober 2026
+
+Der [Labor- und Bildfolgecheckpoint](chemie321-lab-carbonyl-keep-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Kandidaten **321/422 (76,1 %)**: zwei neue
+fachliche Abschlüsse, alle bisherigen 319 erhalten, drei frühere gültige
+Bildfreigaben unverändert übernommen, sechs Pflichtprüfungen PASS und
+101 Ziele offen. Sechs echte Kartenkorrekturen und zwei unabhängige
+13er-Kontextreviews sichern nun auch die vollständige Memory-Prüfung mit
+den bisherigen neun Sichten und der ganzen BW-LK-Sicht ab; der Zentralstand
+bleibt exakt 321/422. Ganze Quellen-, Kurs- und Erwerbsbefunde bleiben offen;
+aktiv bleiben **231/402, M6**. Mathematik, Physik und Biologie
+bleiben unverändert M7. Der zugehörige GitHub-Erfolg muss für den tatsächlich
+gepushten Folgecommit separat nachgewiesen werden.
+
+## Vorheriger Quellen-/Laborstand – 15. Oktober 2026
+
+Der [Folgecheckpoint der Quellen- und Laborarbeit](chemie-source-lab-current422-checkpoint-2026-10-15.md)
+erreicht im inaktiven zentralen Kandidaten **319/422 (75,6 %)**: vier neue
+fachliche Abschlüsse, alle bisherigen 315 erhalten, acht betroffene
+Bestandskontexte erneut bestätigt, sechs Pflichtchecks PASS und 103 Ziele
+offen. Ganze Quellen-, Kurs-, Erwerbs- und Memory-Sichtbefunde bleiben offen;
+aktiv bleiben **231/402, M6**. Mathematik, Physik und Biologie bleiben
+unverändert M7. Der Vorgänger `e74e6536` hat alle 14 GitHub-Checks bestanden;
+`4eef6c60` hat inzwischen ebenfalls alle 14 Checks und acht Hauptjobs bestanden;
+der neue Folgecheckpoint benötigt seinen eigenen erfolgreichen Lauf.
+Die nachstehenden Zahlen dokumentieren ihre jeweiligen historischen Stände.
+
+## Vorheriger Chemie-Analytikstand – 15. Oktober 2026
+
+Der [stabile Analytik-Zwischenstand](chemie315-acid10-checkpoint-2026-10-15.md)
+bestätigt im inaktiven zentralen Kandidaten **315/419 (75,2 %)**: drei neue
+fachliche Abschlüsse, alle bisherigen 312 erhalten, null reine
+Bindungswiederherstellungen, sechs Pflichtchecks PASS und 104 Ziele offen.
+Aktiv bleiben **231/402, M6**. Die offenen ganzen Quellen-, Kurs- und
+Erwerbspflichten verhindern eine vorzeitige M7-Ausweisung. Mathematik,
+Physik und Biologie bleiben geschützt M7. Die unabhängigen Quell-/Kontext-
+Nachprüfungen und das begonnene Laborpaket laufen getrennt weiter.
+Der Vorgänger `1422a742` hat GitHub-CI vollständig bestanden; der neue
+Chemie-Snapshot benötigt seinen eigenen erfolgreichen Lauf.
+Die nachstehenden älteren Zahlen sind historische Zwischenstände.
+
+## Chemie: Folgecheckpoint der Naturstoff-Kontexte – 14. Oktober 2026
+
+Der [neue Arbeitscheckpoint](chemie-naturstoffe-context-checkpoint-2026-10-14.md)
+sichert die seit dem grünen GitHub-Commit `cd297c280` begonnenen Arbeiten.
+Aktiv bleiben **231/402 und M6**. Der isolierte Kandidat erreicht nach den
+neun neuen Naturstoffabschlüssen und der Wiederherstellung aller sieben
+betroffenen Bestandskontexte **305/419 (72,8 %)**, sechs Prüfungen PASS und
+keine Blocker im Fünf-Gate-Bericht. Quellen- und Säure/Basen-Entwürfe bleiben
+mit ihrem tatsächlichen Prüfstatus erhalten. Vor neuer fachlicher Arbeit
+folgen Commit, Push und erfolgreicher GitHub-Lauf für diesen Folgecheckpoint.
+
 ## Stabiler Chemie-Arbeitscheckpoint – 14. Oktober 2026
 
 Der [vollständige inaktive Zwischenstand](chemie231-inactive-working-state-checkpoint-2026-10-14.md)

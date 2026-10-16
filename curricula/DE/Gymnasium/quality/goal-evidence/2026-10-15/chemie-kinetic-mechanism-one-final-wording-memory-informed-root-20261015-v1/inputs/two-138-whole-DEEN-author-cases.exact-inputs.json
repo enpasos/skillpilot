@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "role": "Exact unmodified whole case bodies extracted for this M1 decision; no new task or P approval",
+  "observedAuthorSource": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.manual-whole-prose.author.json",
+    "bytes": 165052,
+    "sha256": "sha256:61f1953450ea416969e09e69dd574b3abcda46eee455747745485ce184e50efb"
+  },
+  "sourceExactSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-kinetic-mechanism-one-final-wording-memory-informed-root-20261015-v1/inputs/author32-whole-prose.observed-exact-source-snapshot.json",
+    "bytes": 165052,
+    "sha256": "sha256:61f1953450ea416969e09e69dd574b3abcda46eee455747745485ce184e50efb"
+  },
+  "cases": [
+    {
+      "id": "eqrk16-12-a",
+      "goalId": "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+      "title": "Zwei Mechanismen für dieselbe NO-Oxidationskinetik",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Datenmodell 2 NO + O2 → 2 NO2 bei 25 °C; v = ½ d[NO2]/dt. Anfangsdaten [NO]/[O2] in mol/L → v in mol/(L s): 0,10/0,10 → 2,0 · 10−4; 0,20/0,10 → 8,0 · 10−4; 0,10/0,20 → 4,0 · 10−4. Hypothese A: 2 NO ⇌ N2O2 als schnelles Vorgleichgewicht, dann N2O2 + O2 → 2 NO2 langsam. Hypothese B: NO + O2 ⇌ NO3 als schnelles Vorgleichgewicht, dann NO3 + NO → 2 NO2 langsam. Dies sind hypothetische Modelle zur Identifizierbarkeit, kein bewiesener realer NO-Mechanismus. Kein Umgang mit NO-Gas.",
+      "materialsEn": "Data model 2 NO + O2 → 2 NO2 at 25 °C; v = ½ d[NO2]/dt. Initial [NO]/[O2] in mol/L → v in mol/(L s): 0.10/0.10 → 2.0 × 10−4; 0.20/0.10 → 8.0 × 10−4; 0.10/0.20 → 4.0 × 10−4. Hypothesis A: fast pre-equilibrium 2 NO ⇌ N2O2, followed by slow N2O2 + O2 → 2 NO2. Hypothesis B: fast pre-equilibrium NO + O2 ⇌ NO3, followed by slow NO3 + NO → 2 NO2. These are hypothetical identifiability models, not a proven actual NO mechanism. No NO gas handling.",
+      "taskDe": "Leite empirisches Gesetz und k mit Einheiten her. Prüfe beide Hypothesen durch Summierung und Elimination der Zwischenprodukte. Benenne das GBS korrekt und schlage zusätzliche unterscheidende Evidenz vor.",
+      "taskEn": "Derive the empirical law and k with units. Test both hypotheses by adding steps and eliminating intermediates. Define GBS correctly and propose additional discriminating evidence.",
+      "workedReasoningDe": "Doppelte NO-Konzentration vervierfacht v, doppelte O2-Konzentration verdoppelt v: v = k[NO]²[O2] mit k = 0,20 L²/(mol² s). A: [N2O2] = KA[NO]², daher v = kA KA [NO]²[O2]. B: [NO3] = KB[NO][O2], daher v = kB KB [NO]²[O2]. Beide summieren sich zur Gesamtgleichung und passen zum Gesetz. GBS bedeutet geschwindigkeitsbestimmender Schritt, hier jeweils der langsame Schritt unter den genannten Näherungen, nicht „Elementarschritt des Gesetzes“. Zeitaufgelöste Spektroskopie der Zwischenprodukte sowie konsistente Temperatur- und Kinetikdaten könnten weiter unterscheiden. Ein fehlender Nachweis bei zu geringer Empfindlichkeit widerlegt einen Weg nicht allein.",
+      "workedReasoningEn": "Doubling NO quadruples v and doubling O2 doubles v: v = k[NO]²[O2], with k = 0.20 L²/(mol² s). For A, [N2O2] = KA[NO]², so v = kA KA [NO]²[O2]. For B, [NO3] = KB[NO][O2], so v = kB KB [NO]²[O2]. Both sum correctly and fit the law. GBS means rate-determining step, here the slow step under the stated approximations, not an “elementary step of the law”. Time-resolved intermediate spectroscopy and consistent temperature/kinetic data may discriminate further. Failure to detect an intermediate with insufficient sensitivity is not decisive.",
+      "freshIndependentTransferDe": "Ein anderer Bedingungsbereich zeigt Sättigung bezüglich O2. Begründe die nötige Neubewertung beider einfachen Modelle mit streng linearer O2-Abhängigkeit.",
+      "freshIndependentTransferEn": "A different conditions range shows saturation with respect to O2. Explain why both simple models with strictly linear O2 dependence need reassessment.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Ordnungen und k = 0,20 mit korrekter Produktnormierung ermitteln.",
+          "observableEn": "Determine orders and k = 0.20 with correct product normalisation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Beide Mechanismen durch Zwischenproduktelimination und korrekte GBS-Bedeutung prüfen.",
+          "observableEn": "Test both mechanisms by eliminating intermediates and defining GBS correctly.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Nicht-Eindeutigkeit und eine unabhängige Unterscheidungsmessung begründen.",
+          "observableEn": "Explain nonuniqueness and an independent discriminating measurement.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-12-b",
+      "goalId": "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+      "title": "Vorgleichgewicht mit Rückreaktion: Änderung des scheinbaren Gesetzes",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Eigenes atomkonservierendes Modell: A + B ⇌ I mit k1 und k−1; I + C → P mit k2. I enthält die Atome von A+B, P jene von A+B+C. I sei kurzlebig; verwende d[I]/dt ≈ 0. Es gelten k1 = 2,0 L/(mol s), k−1 = 10 s−1 und k2 = 5,0 L/(mol s). [A] = [B] = 0,100 M sind fest. C variiert von 0,010 bis 10 M. Die hohe Konzentration ist eine formale Modellgrenze, keine Behauptung idealer realer Lösungen.",
+      "materialsEn": "Own atom-conserving model: A + B ⇌ I with k1 and k−1; I + C → P with k2. I contains atoms from A+B and P from A+B+C. Assume short-lived I and d[I]/dt ≈ 0. Use k1 = 2.0 L/(mol s), k−1 = 10 s−1 and k2 = 5.0 L/(mol s). [A] = [B] = 0.100 M are fixed; C varies from 0.010 to 10 M. The high concentration is a formal model limit, not a claim of ideal real solutions.",
+      "taskDe": "Leite das Gesetz mit der gegebenen Näherung her, berechne v bei C = 0,010 und 10 M und deute die Grenzfälle. Warum beweist eine passende Rate den Mechanismus noch nicht?",
+      "taskEn": "Derive the law under the stated approximation, calculate v at C = 0.010 and 10 M, and interpret the limits. Why does a good rate fit not prove the mechanism?",
+      "workedReasoningDe": "0 ≈ k1[A][B] − k−1[I] − k2[I][C]. Damit [I] ≈ k1[A][B]/(k−1 + k2[C]) und v = k1k2[A][B][C]/(k−1 + k2[C]). Bei 0,010 M ergibt sich 9,95 · 10−5 M/s; bei 10 M 0,01667 M/s. Bei niedrigem C gilt näherungsweise v = (k1k2/k−1)[A][B][C]; bei hohem C nähert sich v dem Wert k1[A][B] = 0,0200 M/s. Rückzerfall und Abfangen von I erklären die geänderte Abhängigkeit. Gesamtstöchiometrie allein liefert kein Rategesetz. Kurze I-Lebensdauer, Quasistationarität und fehlende Nebenwege benötigen eigene Evidenz, etwa Zeitauflösung oder I-Nachweis. Reale Aktivitätseffekte bei 10 M können die Näherung verletzen.",
+      "workedReasoningEn": "Steady state gives 0 ≈ k1[A][B] − k−1[I] − k2[I][C], hence [I] ≈ k1[A][B]/(k−1 + k2[C]) and v = k1k2[A][B][C]/(k−1 + k2[C]). At 0.010 M, v ≈ 9.95 × 10−5 M/s; at 10 M, v ≈ 0.01667 M/s. Low C gives v ≈ (k1k2/k−1)[A][B][C]; high C approaches k1[A][B] = 0.0200 M/s. Competing return and capture of I explain the changing dependence. Overall stoichiometry alone gives no rate law. Short I lifetime, steady state and absence of side routes need independent evidence such as time resolution or I detection. Actual activity effects at 10 M may invalidate the approximation.",
+      "freshIndependentTransferDe": "Nach einem Impuls steigt [I] zunächst deutlich. Welche Zeitphase verletzt die Näherung, und welche vollständige Differentialgleichung muss dort gelten?",
+      "freshIndependentTransferEn": "After a pulse, [I] initially accumulates substantially. Which time phase violates the approximation, and which full differential equation applies there?",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die Quasistationaritätsgleichung mit allen Bildungs- und Verlusttermen ableiten.",
+          "observableEn": "Derive the steady-state equation with every formation and loss term.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Beide Raten und Grenzgesetze quantitativ deuten.",
+          "observableEn": "Interpret both rates and limiting laws quantitatively.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Die Näherung und die Identifizierbarkeitsgrenze am geänderten Verlauf prüfen.",
+          "observableEn": "Test the approximation and identifiability limit against the changed course.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    }
+  ],
+  "other30CasesNotScientificallyReviewedHere": true,
+  "spacingVariantsNotUsed": true
+}

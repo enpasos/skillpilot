@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik – acht aktuelle Root-P-Kontexte</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik – acht aktuelle Root-P-Kontexte</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>8 atomare Lernziele</dt><dd>16 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-e-phase" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-25f6161a11157cd3d11bdc8c" aria-label="Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen"><a href="#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73"><span class="toc-entry-label">Einführungsphase:&#160;<wbr>Mechanik,&#160;<wbr>Gravitation,&#160;<wbr>Thermodynamik&#160;<wbr>und&#160;<wbr>Drehbewegungen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-structure:physics-e1-motion" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-3fc31bc5972d0a40493ab412" aria-label="E.1 Bewegungen und ihre Beschreibung"><a href="#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73"><span class="toc-entry-label">E.1&#160;<wbr>Bewegungen&#160;<wbr>und&#160;<wbr>ihre&#160;<wbr>Beschreibung</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-structure:physics-e1-accelerated-and-free-fall" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-30eb17c306ec89d6ca5a5d12" aria-label="Beschleunigte Bewegung und freier Fall"><a href="#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73"><span class="toc-entry-label">Beschleunigte&#160;<wbr>Bewegung&#160;<wbr>und&#160;<wbr>freier&#160;<wbr>Fall</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q1" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-497492896f4798b54bff1e35" aria-label="Q1 Elektrisches und magnetisches Feld"><a href="#goal-25998fed-ea4d-4c3e-b606-e965b5d7f290"><span class="toc-entry-label">Q1&#160;<wbr>Elektrisches&#160;<wbr>und&#160;<wbr>magnetisches&#160;<wbr>Feld</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-f371ad1e6774cdc769c15b0b" aria-label="Elektrisches Feld"><a href="#goal-25998fed-ea4d-4c3e-b606-e965b5d7f290"><span class="toc-entry-label">Elektrisches&#160;<wbr>Feld</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-7df599e8-21ac-5be4-89f9-9b2a6f2e4465" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-db361f321401128dd7fc6997" aria-label="Grundlagen des elektrischen Feldes"><a href="#goal-25998fed-ea4d-4c3e-b606-e965b5d7f290"><span class="toc-entry-label">Grundlagen&#160;<wbr>des&#160;<wbr>elektrischen&#160;<wbr>Feldes</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q2" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-5a757cedb5fee9673179ff39" aria-label="Q2 Schwingungen, Induktion und mechanische Wellen"><a href="#goal-215f5558-562c-5686-b649-931f324c7983"><span class="toc-entry-label">Q2&#160;<wbr>Schwingungen,&#160;<wbr>Induktion&#160;<wbr>und&#160;<wbr>mechanische&#160;<wbr>Wellen</span></a></h4>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-aee9676f-7cd6-50f0-a504-fd88ef67b59e" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-c66f6d008b8babe09a24c5cd" aria-label="Mechanische Schwingungen"><a href="#goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd"><span class="toc-entry-label">Mechanische&#160;<wbr>Schwingungen</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-b2b74d0a-575c-5c6b-8e24-b0b0f32c1126" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-f9723ca6eee15149b3136452" aria-label="Induktion und elektromagnetische Schwingungen"><a href="#goal-5f97952e-5ac9-5749-94d0-d1dc50dda358"><span class="toc-entry-label">Induktion&#160;<wbr>und&#160;<wbr>elektromagnetische&#160;<wbr>Schwingungen</span></a></h5>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-dc38c943-11f6-5f4f-945b-67e330814727" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-8d81a79b8de17aba96c1b1ca" aria-label="Mechanische Wellen"><a href="#goal-215f5558-562c-5686-b649-931f324c7983"><span class="toc-entry-label">Mechanische&#160;<wbr>Wellen</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-a32e16a8fc1b9d4f750c94e1" aria-label="Astrophysik"><a href="#goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c"><span class="toc-entry-label">Astrophysik</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-e34e3237b4797361b00f97b3" aria-label="Massenbestimmung in Doppelsternsystemen und Gravitationswellen deuten"><a href="#goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c"><span class="toc-entry-label">Massenbestimmung&#160;<wbr>in&#160;<wbr>Doppelsternsystemen&#160;<wbr>und&#160;<wbr>Gravitationswellen&#160;<wbr>deuten</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-4ea39b40-1563-58ab-8d54-5fc20efa5365" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-8b07995e60b772a8f45c108c" aria-label="Massenparameter aus Doppelstern- und Gravitationswellendaten erschließen"><a href="#goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c"><span class="toc-entry-label">Massenparameter&#160;<wbr>aus&#160;<wbr>Doppelstern-&#160;<wbr>und&#160;<wbr>Gravitationswellendaten&#160;<wbr>erschließen</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73" data-goal-id="09029573-864f-40ca-bf8a-cee7bf6dcb73" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-structure:physics-e1-motion structure:canonical-structure:physics-e1-accelerated-and-free-fall" aria-labelledby="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-title"><a class="goal-self-link" href="#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73">Freier Fall experimentell untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>09029573-864f-40ca-bf8a-cee7bf6dcb73</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-3fc31bc5972d0a40493ab412">E.1 Bewegungen und ihre Beschreibung</a></li><li><a href="#chapter-30eb17c306ec89d6ca5a5d12">Beschleunigte Bewegung und freier Fall</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:814704c3c964ed3d7a1a78a9b8b7af66eda5741107a71e7d4f27f8385b15bace" data-rendered-digest="sha256:32b701a8271e23c422ec9efd212644f4b0b135e5f4b745940265f48ace5ad688" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/09029573-864f-40ca-bf8a-cee7bf6dcb73/09029573-864f-40ca-bf8a-cee7bf6dcb73.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Freier Fall experimentell untersuchen&quot;. Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-description-heading">
+        <p class="section-heading" id="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-requires-heading">
+          <p class="section-heading" id="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-reverse-heading">
+          <p class="section-heading" id="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ce431132-dfc4-42c2-aff6-bd72035190f8" rel="noreferrer noopener"><span>Bewegungen mit Diagrammen untersuchen</span> <code>ce431132-dfc4-42c2-aff6-bd72035190f8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e4b38061-1f28-43ad-8371-a3e7c0e81856" rel="noreferrer noopener"><span>Gleichmäßig beschleunigte Bewegung und Beschleunigung</span> <code>e4b38061-1f28-43ad-8371-a3e7c0e81856</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-09029573-864f-40ca-bf8a-cee7bf6dcb73-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a9562b05-c54d-5635-9244-3f7dd24a8642" rel="noreferrer noopener"><span>Bewegungsanalyse und freier Fall</span> <code>a9562b05-c54d-5635-9244-3f7dd24a8642</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dd99528a-bae5-5b78-89e6-c6092c927f8d" rel="noreferrer noopener"><span>Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren</span> <code>dd99528a-bae5-5b78-89e6-c6092c927f8d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-92d8f398-0c9f-523c-88d7-44165b6b4768" rel="noreferrer noopener"><span>Massenanziehung qualitativ beschreiben</span> <code>92d8f398-0c9f-523c-88d7-44165b6b4768</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-12260012-cf04-5409-b57d-f5b3a46d9126" rel="noreferrer noopener"><span>Fallbewegung mit Luftwiderstand und Grenzgeschwindigkeit</span> <code>12260012-cf04-5409-b57d-f5b3a46d9126</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 8</span>
+      <span>Buch-Digest <code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></span>
+      <span>Ziel-Fingerprint <code>sha256:130790489acb03f5ba26be963eb06339ad5f38783763c65e16a1646eb7acd6ab</code></span>
+      <a href="https://skillpilot.com/api/goal-feedback?bookId=physik-eight-root-current-whole-p-contexts-20261015-v1&amp;edition=curricular-atomic-v1&amp;goalId=09029573-864f-40ca-bf8a-cee7bf6dcb73&amp;goalFingerprint=sha256%3A130790489acb03f5ba26be963eb06339ad5f38783763c65e16a1646eb7acd6ab&amp;pageFingerprint=sha256%3A71e0680b16ab09375e75dd1cd8aa87a16ca461ab09b3f2f069e65db501ea810c&amp;bookDigest=sha256%3A5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c" data-goal-id="1b7e800a-1c0d-5faa-886b-7ef2f3b8348c" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6 structure:canonical-goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4 structure:canonical-goal-4ea39b40-1563-58ab-8d54-5fc20efa5365" aria-labelledby="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-title"><a class="goal-self-link" href="#goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c">Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1b7e800a-1c0d-5faa-886b-7ef2f3b8348c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-a32e16a8fc1b9d4f750c94e1">Astrophysik</a></li><li><a href="#chapter-e34e3237b4797361b00f97b3">Massenbestimmung in Doppelsternsystemen und Gravitationswellen deuten</a></li><li><a href="#chapter-8b07995e60b772a8f45c108c">Massenparameter aus Doppelstern- und Gravitationswellendaten erschließen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ba6fe05e3420edd34e74a4f177cb7081c3af32cb8cf24de851f448942937be9c" data-rendered-digest="sha256:48259d16067aeeff76df8e25fc05b83da21e313ab1906b9ddede5c22dc1fd7d3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/1b7e800a-1c0d-5faa-886b-7ef2f3b8348c/1b7e800a-1c0d-5faa-886b-7ef2f3b8348c.png" alt="Comicartige Infografik eines anwachsenden Gravitationswellen-Chirps, die höhere Frequenzentwicklung mit größerer Chirp-Masse verknüpft.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-description-heading">
+        <p class="section-heading" id="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus Frequenz und Frequenzänderungsrate eines inspiralartigen Gravitationswellensignals mit einem begründeten Näherungsmodell die Chirp-Masse als bestimmte Kombination der Komponentenmassen abschätzen sowie Annahmen, Unsicherheiten und Grenzen dieser Inferenz erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-requires-heading">
+          <p class="section-heading" id="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-reverse-heading">
+          <p class="section-heading" id="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-88abc886-cce8-55cf-b86c-eb4ba45a92d7" rel="noreferrer noopener"><span>Potenzen mit rationalen Exponenten als Wurzel- und Bruchausdrücke deuten</span> <code>88abc886-cce8-55cf-b86c-eb4ba45a92d7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ae20183e-92b5-5521-b8e0-9a8662cf51f5" rel="noreferrer noopener"><span>Mittlere Änderungsrate berechnen und deuten</span> <code>ae20183e-92b5-5521-b8e0-9a8662cf51f5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-497f1311-17d6-56ff-afb1-422a738e5c16" rel="noreferrer noopener"><span>Kepler-Gesetze anwenden</span> <code>497f1311-17d6-56ff-afb1-422a738e5c16</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ba16948b-5e07-54af-b77b-776e677c6906" rel="noreferrer noopener"><span>Gravitationswellen und elektromagnetische Wellen vergleichen</span> <code>ba16948b-5e07-54af-b77b-776e677c6906</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 8</span>
+      <span>Buch-Digest <code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f9dd3bb5f751beee489d52dd51da52b1ead479f552b32d9c6240ad37430c718e</code></span>
+      <a href="https://skillpilot.com/api/goal-feedback?bookId=physik-eight-root-current-whole-p-contexts-20261015-v1&amp;edition=curricular-atomic-v1&amp;goalId=1b7e800a-1c0d-5faa-886b-7ef2f3b8348c&amp;goalFingerprint=sha256%3Af9dd3bb5f751beee489d52dd51da52b1ead479f552b32d9c6240ad37430c718e&amp;pageFingerprint=sha256%3A5cec0997bb69c574946803235e7278dc3899d8f564c33437ecf7f7830a744921&amp;bookDigest=sha256%3A5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-215f5558-562c-5686-b649-931f324c7983" data-goal-id="215f5558-562c-5686-b649-931f324c7983" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q2 structure:canonical-goal-dc38c943-11f6-5f4f-945b-67e330814727" aria-labelledby="goal-215f5558-562c-5686-b649-931f324c7983-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-215f5558-562c-5686-b649-931f324c7983-title"><a class="goal-self-link" href="#goal-215f5558-562c-5686-b649-931f324c7983">Phasensprünge bei Reflexion</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>215f5558-562c-5686-b649-931f324c7983</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-5a757cedb5fee9673179ff39">Q2 Schwingungen, Induktion und mechanische Wellen</a></li><li><a href="#chapter-8d81a79b8de17aba96c1b1ca">Mechanische Wellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:cb20118b703bae07cc239ff6a4b33e9ea28f3d86b7ccad998d40e2963702f869" data-rendered-digest="sha256:a23e31443e04d92ae9567582839b9ee86538261a4bf3ff77b7d6a7afa0ec12ff" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/215f5558-562c-5686-b649-931f324c7983/215f5558-562c-5686-b649-931f324c7983.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Phasensprünge bei Reflexion&quot;. Die lernende Person kann erklären und mathematisch beschreiben, warum eine eindimensionale Auslenkungswelle bei der Reflexion am festen Ende einen Phasensprung von π und am losen Ende keinen Phasensprung erfährt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-215f5558-562c-5686-b649-931f324c7983-description-heading">
+        <p class="section-heading" id="goal-215f5558-562c-5686-b649-931f324c7983-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann erklären und mathematisch beschreiben, warum eine eindimensionale Auslenkungswelle bei der Reflexion am festen Ende einen Phasensprung von π und am losen Ende keinen Phasensprung erfährt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-215f5558-562c-5686-b649-931f324c7983" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-215f5558-562c-5686-b649-931f324c7983-requires-heading">
+          <p class="section-heading" id="goal-215f5558-562c-5686-b649-931f324c7983-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-215f5558-562c-5686-b649-931f324c7983-reverse-heading">
+          <p class="section-heading" id="goal-215f5558-562c-5686-b649-931f324c7983-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-215f5558-562c-5686-b649-931f324c7983-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-215f5558-562c-5686-b649-931f324c7983-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-58d2f963-4fb9-550d-a832-f5ac60808900" rel="noreferrer noopener"><span>Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten</span> <code>58d2f963-4fb9-550d-a832-f5ac60808900</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d5772db3-120c-5c37-ab46-2336d02236b0" rel="noreferrer noopener"><span>Stehende Wellen und Wellenlängenbestimmung</span> <code>d5772db3-120c-5c37-ab46-2336d02236b0</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-215f5558-562c-5686-b649-931f324c7983-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-215f5558-562c-5686-b649-931f324c7983-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ab2b9c0f-db98-5d20-adee-e46eafe037b4" rel="noreferrer noopener"><span>Interferenz, stehende Wellen und Musikinstrumente</span> <code>ab2b9c0f-db98-5d20-adee-e46eafe037b4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 8</span>
+      <span>Buch-Digest <code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></span>
+      <span>Ziel-Fingerprint <code>sha256:121419eee6e868a60edb230924a92e66409c55aa61e8cc859fa36e7ddcc4c222</code></span>
+      <a href="https://skillpilot.com/api/goal-feedback?bookId=physik-eight-root-current-whole-p-contexts-20261015-v1&amp;edition=curricular-atomic-v1&amp;goalId=215f5558-562c-5686-b649-931f324c7983&amp;goalFingerprint=sha256%3A121419eee6e868a60edb230924a92e66409c55aa61e8cc859fa36e7ddcc4c222&amp;pageFingerprint=sha256%3A16a767263391068fcd31d1c35f6301411f922cfc98a17adb9ec8fc1790e6f180&amp;bookDigest=sha256%3A5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290" data-goal-id="25998fed-ea4d-4c3e-b606-e965b5d7f290" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 structure:canonical-goal-7df599e8-21ac-5be4-89f9-9b2a6f2e4465" aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-title"><a class="goal-self-link" href="#goal-25998fed-ea4d-4c3e-b606-e965b5d7f290">Ladungserhaltung erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>25998fed-ea4d-4c3e-b606-e965b5d7f290</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-f371ad1e6774cdc769c15b0b">Elektrisches Feld</a></li><li><a href="#chapter-db361f321401128dd7fc6997">Grundlagen des elektrischen Feldes</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9cc7c92df54fdc88897b516935d601733a8e2d2b1f97f3e0b9af12a040a191fd" data-rendered-digest="sha256:d2b011f5438e4135c6407e43d5995ec2cd6aa7f47ce0d3983e711f902c852653" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/25998fed-ea4d-4c3e-b606-e965b5d7f290/25998fed-ea4d-4c3e-b606-e965b5d7f290.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ladungserhaltung erläutern&quot;. Die lernende Person kann elektrische Ladung als Erhaltungsgröße beschreiben und Ladungsumverteilungen in abgeschlossenen Systemen fachlich deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-description-heading">
+        <p class="section-heading" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann elektrische Ladung als Erhaltungsgröße beschreiben und Ladungsumverteilungen in abgeschlossenen Systemen fachlich deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-25998fed-ea4d-4c3e-b606-e965b5d7f290" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-requires-heading">
+          <p class="section-heading" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-reverse-heading">
+          <p class="section-heading" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4b67bed9-06da-40b2-a306-24e9e7dfd390" rel="noreferrer noopener"><span>Ganze Zahlen addieren</span> <code>4b67bed9-06da-40b2-a306-24e9e7dfd390</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d" rel="noreferrer noopener"><span>Ladungsphänomene und Reibungselektrizität</span> <code>a6e48b88-51ed-5942-bdb8-8d2192652e0d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-841edfdb-5e12-5a37-ab12-552a1d8e92ca" rel="noreferrer noopener"><span>Elektrostatik und Potenzial</span> <code>841edfdb-5e12-5a37-ab12-552a1d8e92ca</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9fb1dd85-11b7-4a5a-b124-27fea8d1788e" rel="noreferrer noopener"><span>Influenz bei Leitern untersuchen</span> <code>9fb1dd85-11b7-4a5a-b124-27fea8d1788e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 8</span>
+      <span>Buch-Digest <code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7d4102629d3772ec4d015a7cbc0a2b5c0dc4ac0f5663e05cdfc9636f6f92c17e</code></span>
+      <a href="https://skillpilot.com/api/goal-feedback?bookId=physik-eight-root-current-whole-p-contexts-20261015-v1&amp;edition=curricular-atomic-v1&amp;goalId=25998fed-ea4d-4c3e-b606-e965b5d7f290&amp;goalFingerprint=sha256%3A7d4102629d3772ec4d015a7cbc0a2b5c0dc4ac0f5663e05cdfc9636f6f92c17e&amp;pageFingerprint=sha256%3A4278d010916737b286e54cfce28ae289bb52c369dcd2809cbeed80aa1111e559&amp;bookDigest=sha256%3A5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358" data-goal-id="5f97952e-5ac9-5749-94d0-d1dc50dda358" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q2 structure:canonical-goal-b2b74d0a-575c-5c6b-8e24-b0b0f32c1126" aria-labelledby="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-title"><a class="goal-self-link" href="#goal-5f97952e-5ac9-5749-94d0-d1dc50dda358">Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5f97952e-5ac9-5749-94d0-d1dc50dda358</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-5a757cedb5fee9673179ff39">Q2 Schwingungen, Induktion und mechanische Wellen</a></li><li><a href="#chapter-f9723ca6eee15149b3136452">Induktion und elektromagnetische Schwingungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:32de0b0652e73ad4a1ecbd36f48ad3a0b615ae5d2cad56012607e920fa3caf6f" data-rendered-digest="sha256:e5330c3a9eaace48f8230cdf6a7e1c6d1255bd4978d10e9e17542c4cdeb2c432" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/5f97952e-5ac9-5749-94d0-d1dc50dda358/5f97952e-5ac9-5749-94d0-d1dc50dda358.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben&quot;. Die lernende Person kann sinusfoermige Spannung und Stromstaerke in ohmschen Wechselstromkreisen mit Zeigerdiagrammen darstellen und Phasenbeziehungen fachlich deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-description-heading">
+        <p class="section-heading" id="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann sinusförmige Spannung und Stromstärke in ohmschen Wechselstromkreisen mit Zeigerdiagrammen darstellen und Phasenbeziehungen fachlich deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f97952e-5ac9-5749-94d0-d1dc50dda358" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-requires-heading">
+          <p class="section-heading" id="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-reverse-heading">
+          <p class="section-heading" id="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bbef7cf2-90fa-59fa-a115-8b651aab9231" rel="noreferrer noopener"><span>Sinus- und Kosinusfunktionen verstehen</span> <code>bbef7cf2-90fa-59fa-a115-8b651aab9231</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c" rel="noreferrer noopener"><span>Zusammenhang von Spannung und Stromstärke qualitativ erläutern</span> <code>53196a71-9dbd-4835-b2f9-ff21b8a8962c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ac4ba260-6086-5fcc-bea2-c06f1425a1cc" rel="noreferrer noopener"><span>Elektromagnetischen Schwingkreis analysieren</span> <code>ac4ba260-6086-5fcc-bea2-c06f1425a1cc</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f97952e-5ac9-5749-94d0-d1dc50dda358-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a" rel="noreferrer noopener"><span>Kondensator und Spule im Wechselstromkreis analysieren</span> <code>ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 8</span>
+      <span>Buch-Digest <code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bafbdd94a248a19d01b7f4d570c8378a321efe0337f65d38b16bdbcf63da8c85</code></span>
+      <a href="https://skillpilot.com/api/goal-feedback?bookId=physik-eight-root-current-whole-p-contexts-20261015-v1&amp;edition=curricular-atomic-v1&amp;goalId=5f97952e-5ac9-5749-94d0-d1dc50dda358&amp;goalFingerprint=sha256%3Abafbdd94a248a19d01b7f4d570c8378a321efe0337f65d38b16bdbcf63da8c85&amp;pageFingerprint=sha256%3Acf8df831472817efb87979908d584abe584faf9044ce0c6cd44aa53403e4eebe&amp;bookDigest=sha256%3A5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0" data-goal-id="692db5b6-8be1-5c7b-8307-3a02afb21ea0" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q2 structure:canonical-goal-b2b74d0a-575c-5c6b-8e24-b0b0f32c1126" aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-title"><a class="goal-self-link" href="#goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0">Ein- und Ausschaltvorgänge analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>692db5b6-8be1-5c7b-8307-3a02afb21ea0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-5a757cedb5fee9673179ff39">Q2 Schwingungen, Induktion und mechanische Wellen</a></li><li><a href="#chapter-f9723ca6eee15149b3136452">Induktion und elektromagnetische Schwingungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:37f463e5aacdbb1dee87d10eb90868f0481527b8396c232fb1b6e555d58185d1" data-rendered-digest="sha256:b5cef719b2591636becb102a7ba494d3c781b1ecafb4df36fd1fe7faa94865be" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/692db5b6-8be1-5c7b-8307-3a02afb21ea0/692db5b6-8be1-5c7b-8307-3a02afb21ea0.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ein- und Ausschaltvorgänge analysieren&quot;. Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-description-heading">
+        <p class="section-heading" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-requires-heading">
+          <p class="section-heading" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-reverse-heading">
+          <p class="section-heading" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d" rel="noreferrer noopener"><span>Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten</span> <code>27b63e2e-6a34-483e-8e5a-fe0f49670d1d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-37f28bc4-def2-57cf-a06b-191dfd228205" rel="noreferrer noopener"><span>Selbstinduktion und Induktivität</span> <code>37f28bc4-def2-57cf-a06b-191dfd228205</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-86015397-23c4-5ed7-b893-bc619ec961a8" rel="noreferrer noopener"><span>Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)</span> <code>86015397-23c4-5ed7-b893-bc619ec961a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-acf192a8-c398-51dc-a03b-672ab55df957" rel="noreferrer noopener"><span>Selbstinduktion, Einschaltvorgaenge und Feldenergie</span> <code>acf192a8-c398-51dc-a03b-672ab55df957</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf892388-6cb4-5981-adf2-7168aeb948b1" rel="noreferrer noopener"><span>Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad</span> <code>cf892388-6cb4-5981-adf2-7168aeb948b1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 8</span>
+      <span>Buch-Digest <code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></span>
+      <span>Ziel-Fingerprint <code>sha256:02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad</code></span>
+      <a href="https://skillpilot.com/api/goal-feedback?bookId=physik-eight-root-current-whole-p-contexts-20261015-v1&amp;edition=curricular-atomic-v1&amp;goalId=692db5b6-8be1-5c7b-8307-3a02afb21ea0&amp;goalFingerprint=sha256%3A02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad&amp;pageFingerprint=sha256%3Ae46258ae996cb4b863e2d5dfa3d1317ea9e7295d5349ca49a56403d399ca224a&amp;bookDigest=sha256%3A5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd" data-goal-id="b2fb9a25-4d26-5cf2-a917-823909dcb6bd" data-page-number="7" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q2 structure:canonical-goal-aee9676f-7cd6-50f0-a504-fd88ef67b59e" aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-title"><a class="goal-self-link" href="#goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd">Schwingungsgleichung lösen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b2fb9a25-4d26-5cf2-a917-823909dcb6bd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-5a757cedb5fee9673179ff39">Q2 Schwingungen, Induktion und mechanische Wellen</a></li><li><a href="#chapter-c66f6d008b8babe09a24c5cd">Mechanische Schwingungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fbc8a7abc93029587515f193f34e4e268099b59666f7effd3e43a1574fe6d6e7" data-rendered-digest="sha256:696e3f3ab5e3deb439f806c26f87b9508a205182fc66f4710a13aa76aae96604" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b2fb9a25-4d26-5cf2-a917-823909dcb6bd/b2fb9a25-4d26-5cf2-a917-823909dcb6bd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Schwingungsgleichung lösen&quot;. Die lernende Person kann die lineare Differenzialgleichung einer ungedämpften harmonischen Schwingung für gegebene Anfangsbedingungen lösen und die Lösung anhand von Amplitude, Kreisfrequenz und Phase physikalisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-description-heading">
+        <p class="section-heading" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die lineare Differenzialgleichung einer ungedämpften harmonischen Schwingung für gegebene Anfangsbedingungen lösen und die Lösung anhand von Amplitude, Kreisfrequenz und Phase physikalisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-requires-heading">
+          <p class="section-heading" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-reverse-heading">
+          <p class="section-heading" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-58d2f963-4fb9-550d-a832-f5ac60808900" rel="noreferrer noopener"><span>Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten</span> <code>58d2f963-4fb9-550d-a832-f5ac60808900</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d03f1cb6-c224-53db-ad91-76cc7827978d" rel="noreferrer noopener"><span>Harmonische Schwingung verstehen</span> <code>d03f1cb6-c224-53db-ad91-76cc7827978d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df" rel="noreferrer noopener"><span>Methode: Lösungsansatz für DGL (Exponentialfunktion)</span> <code>09f2cdbd-64e0-55d2-ada7-1190f4fd50df</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-99954602-819d-57f3-9c09-737e69f162df" rel="noreferrer noopener"><span>Vorschlag B (LK) - Schwingungsdiagnostik mit Grenzflächenanalyse</span> <code>99954602-819d-57f3-9c09-737e69f162df</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d350cfa7-c606-501e-abf7-1c9e546b266b" rel="noreferrer noopener"><span>Resonanz, Daempfung und Schwingungsgleichung</span> <code>d350cfa7-c606-501e-abf7-1c9e546b266b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-fa333c2f-3150-5831-a649-28615164b2f2" rel="noreferrer noopener"><span>Vorschlag B (LK) - Aktives Schwingungsmanagement</span> <code>fa333c2f-3150-5831-a649-28615164b2f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4888444f-4520-437a-9ba7-e74e8f8ed129" rel="noreferrer noopener"><span>Überlagerungen unabhängiger Schwingungen qualitativ beschreiben</span> <code>4888444f-4520-437a-9ba7-e74e8f8ed129</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a7255b83-336c-4d42-ba5c-bc2f6248ea36" rel="noreferrer noopener"><span>Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen</span> <code>a7255b83-336c-4d42-ba5c-bc2f6248ea36</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 8</span>
+      <span>Buch-Digest <code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7d88450b7bd26dad77ae8935a9f74a1ec762f6446ae62ea3e64b4bac2093f5b4</code></span>
+      <a href="https://skillpilot.com/api/goal-feedback?bookId=physik-eight-root-current-whole-p-contexts-20261015-v1&amp;edition=curricular-atomic-v1&amp;goalId=b2fb9a25-4d26-5cf2-a917-823909dcb6bd&amp;goalFingerprint=sha256%3A7d88450b7bd26dad77ae8935a9f74a1ec762f6446ae62ea3e64b4bac2093f5b4&amp;pageFingerprint=sha256%3Abf91d8ddaff57ff6219e66a477624710d792c054bf20e13482255cd164df40cb&amp;bookDigest=sha256%3A5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2" data-goal-id="d18d4190-ddc1-5181-b1b6-e79947b737c2" data-page-number="8" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q2 structure:canonical-goal-b2b74d0a-575c-5c6b-8e24-b0b0f32c1126" aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-title"><a class="goal-self-link" href="#goal-d18d4190-ddc1-5181-b1b6-e79947b737c2">Induktionsgesetz in Ableitungsform anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d18d4190-ddc1-5181-b1b6-e79947b737c2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-5a757cedb5fee9673179ff39">Q2 Schwingungen, Induktion und mechanische Wellen</a></li><li><a href="#chapter-f9723ca6eee15149b3136452">Induktion und elektromagnetische Schwingungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:42ae30f63a9d1f48b08dc77f1cd052fe542225cd3b2a3c0e8527aadc183531a6" data-rendered-digest="sha256:3f1004ea4eec92e7582906faef7246cec15637638bab14217e30a49fd9ef4205" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/d18d4190-ddc1-5181-b1b6-e79947b737c2/d18d4190-ddc1-5181-b1b6-e79947b737c2.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Induktionsgesetz in Ableitungsform anwenden&quot;. Die lernende Person kann bei einem differenzierbaren zeitabhängigen magnetischen Fluss die momentane Induktionsspannung einer Spule mit N gleichartigen Windungen mit U_ind(t) = −N · dΦ(t)/dt bestimmen und den zeitlichen Spannungsverlauf physikalisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-description-heading">
+        <p class="section-heading" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei einem differenzierbaren zeitabhängigen magnetischen Fluss die momentane Induktionsspannung einer Spule mit N gleichartigen Windungen mit U_ind(t) = −N · dΦ(t)/dt bestimmen und den zeitlichen Spannungsverlauf physikalisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d18d4190-ddc1-5181-b1b6-e79947b737c2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-requires-heading">
+          <p class="section-heading" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-reverse-heading">
+          <p class="section-heading" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-58d2f963-4fb9-550d-a832-f5ac60808900" rel="noreferrer noopener"><span>Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten</span> <code>58d2f963-4fb9-550d-a832-f5ac60808900</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8" rel="noreferrer noopener"><span>Induktionsgesetz und Lenz’sche Regel</span> <code>eb1ea150-ec6c-5000-bce3-f46c820dccf8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-86015397-23c4-5ed7-b893-bc619ec961a8" rel="noreferrer noopener"><span>Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)</span> <code>86015397-23c4-5ed7-b893-bc619ec961a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-acf192a8-c398-51dc-a03b-672ab55df957" rel="noreferrer noopener"><span>Selbstinduktion, Einschaltvorgaenge und Feldenergie</span> <code>acf192a8-c398-51dc-a03b-672ab55df957</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf892388-6cb4-5981-adf2-7168aeb948b1" rel="noreferrer noopener"><span>Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad</span> <code>cf892388-6cb4-5981-adf2-7168aeb948b1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 8</span>
+      <span>Buch-Digest <code>sha256:5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e779dacc231c01467f281b8dbe76aab4e0376a814c360d70709772e9afbded29</code></span>
+      <a href="https://skillpilot.com/api/goal-feedback?bookId=physik-eight-root-current-whole-p-contexts-20261015-v1&amp;edition=curricular-atomic-v1&amp;goalId=d18d4190-ddc1-5181-b1b6-e79947b737c2&amp;goalFingerprint=sha256%3Ae779dacc231c01467f281b8dbe76aab4e0376a814c360d70709772e9afbded29&amp;pageFingerprint=sha256%3A14d140b34a25758dfc5500f1f9cdca2c6b430b2186ced0edc2522d1bc9ebc456&amp;bookDigest=sha256%3A5cc5a9d93123bacd16d273d0f32c245eb76de139489c2e22c9230047ef90f091&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

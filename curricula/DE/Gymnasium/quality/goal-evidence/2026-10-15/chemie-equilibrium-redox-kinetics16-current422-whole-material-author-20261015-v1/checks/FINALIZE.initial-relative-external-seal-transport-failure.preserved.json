@@ -1,0 +1,9 @@
+{
+  "role": "Preserved initial technical finalizer failure; no scientific input changed",
+  "recordedAtUTC": "2026-10-15T14:25:36.746495+00:00",
+  "exception": "FileNotFoundError: /home/enpasos/projects/skillpilot/BINDING.exact-final-DEEN-ALT-PNG.one-normal-V.actual.json",
+  "cause": "The external V finite seal uses paths relative to its own root. Initial finalizer assumed repository-relative paths for every external seal row.",
+  "technicalCorrection": "Resolve an external seal row against its containing seal directory when the repository-relative path does not exist. Verify the exact expected hash and size unchanged.",
+  "scientificRecordChanges": 0,
+  "finalSealHadBeenCreated": false
+}

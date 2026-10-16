@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-energy-three-final-informed-root-pa-20261015-v1-P3",
+  "bundleFingerprint": "sha256:edc8719a496bc4ab41db5f6cb04047fc6d4299a4bd7b6619f0427b610f134790",
+  "bookDigest": "sha256:fa4876ca843d6931b1e6658d8726d5fb7d89bf978ec7d77306422c1f7fd41b56",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex (exact revision and decoding settings not exposed)",
+  "role": "synthesizer",
+  "promptFamilyId": "positive-understanding-evidence-profile-authoring-v2",
+  "promptFingerprint": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:779e60b418c72083050776fbd48b26a4af97854820b2562b109dfd782b2a81e5",
+  "independenceGroupId": "chemie-energy-three-final-informed-root-pa-20261015-v1-informed-not-blind",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+    "7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3",
+    "551d81a7-2308-540f-8323-df35c6871d62"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:fa4876ca843d6931b1e6658d8726d5fb7d89bf978ec7d77306422c1f7fd41b56"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:edc8719a496bc4ab41db5f6cb04047fc6d4299a4bd7b6619f0427b610f134790"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:258cc1210535859a312817870541b7ee0042b7f0fd9ad1f50b6e5fd4be1ed96a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-15T12:48:29.953Z",
+  "completedAt": "2026-10-15T12:48:30.059Z",
+  "status": "completed",
+  "outputDigest": "sha256:170f7675488321c2cf8bd0781acf9446ec7e909e84f797c5b3a101bc3a3919ed",
+  "toolchainVersion": "positive-understanding-evidence-v2"
+}

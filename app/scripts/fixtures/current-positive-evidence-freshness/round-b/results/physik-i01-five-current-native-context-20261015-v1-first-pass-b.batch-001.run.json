@@ -1,0 +1,74 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "gymnasium-i01-current-native-d-blind-b-20261015-v1-run-001",
+  "campaignId": "physik-i01-five-current-native-context-20261015-v1-b",
+  "roundId": "physik-i01-five-current-native-context-20261015-v1-first-pass-b",
+  "batchId": "physik-i01-five-current-native-context-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:280d805d8ec8b102539625e26df333ba58c089a42fc4475790589c831d4806bb",
+  "bundleFingerprint": "sha256:4e86df352b03fced6ed88dc4ac6fffb20758869b537b042a8d9e698105c9404b",
+  "bookDigest": "sha256:60a69c6ea229ce1557b815619fc7f88ff7d3be7e984a8b12c57c302b55feed71",
+  "provider": "OpenAI / Codex",
+  "model": "GPT6.1SolUltra (task-designated; runtime identity not independently exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:27a17f814c36c71949e5332b9a20d9c75c3fd1c9f80af662e5d19a5c31dbd45b",
+  "independenceGroupId": "physik-i01-five-current-native-context-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+    "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+    "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+    "89124b92-5769-5e13-8a5d-78497936260f",
+    "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:98412ace518d7611b11847f1b3cd2c7064a7c22b6a3dcea3133568826ec62f6c"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:d49b317d64d51673540e799e4a11e3dfe1ca1265fd1e790576b7165589f43e40"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:cfb84545ee07ea2e524131308155bcacbea19ec9f620615f7612dbe2490128fe"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:ce48d1f43cf7741b1e1cf0cadfd0c69293e6615b5f5e81387c9f8e2fe8f3b8f6"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:7c7a320fd43c0491fec7b62800faa4eb198717118f5984b551408916c6249f70"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:21250be7e3405fe2411326bf3a25b9e6aa488f3d1fdfbe23af4aa3c393992301"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:27f285786b5700422cd4b488ed2e6eb4359dc03bd4dd6825fbd5fd84efbf3791"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:280d805d8ec8b102539625e26df333ba58c089a42fc4475790589c831d4806bb"
+    }
+  ],
+  "startedAt": "2026-10-15T17:18:54.647800Z",
+  "completedAt": "2026-10-15T17:24:32.557756Z",
+  "status": "completed",
+  "outputDigest": "sha256:fcf694c785ac84edb0a76c89ba82765eaabd06b200393284f936a79969b2b7df",
+  "toolchainVersion": "native-d-blind-b-20261015-v1"
+}

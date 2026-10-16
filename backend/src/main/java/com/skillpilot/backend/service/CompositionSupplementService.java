@@ -52,7 +52,7 @@ public final class CompositionSupplementService {
 
     public record AuthorizationAccounting(int totalAuthoredTargetAtomicGoals,
             int regularSourceBackedAtomicGoals, int reviewedDidacticSupplementAtomicGoals,
-            int unresolvedTargetAtomicGoals, List<String> regularSourceClaimStillUnestablishedGoalIds) {}
+            int unresolvedTargetAtomicGoals, List<String> regularSourceClaimStillUnestablishedGoalIds, int orientationTargetGoals) {}
 
     public record Supplement(String id, String label, String labelEn, Map<String, String> scope,
             List<String> compatibleBaseViewIds, Map<String, String> baseViewSha256, String physicsViewId,
@@ -135,8 +135,9 @@ public final class CompositionSupplementService {
         require(!targetIds.isEmpty(), "empty supplement");
         // A selected bundle must teach its whole local prerequisite closure; it cannot
         // rely on unselected ordinary Mathematics or on mastery-dependent target shrinking.
+        TeachingGraph teachingGraph=teachingGraph(goals);
         for (String target : targetIds) {
-            Set<String> required = effectivePrerequisiteClosure(target, goals);
+            Set<String> required = effectivePrerequisiteClosure(target, teachingGraph);
             require(targetIds.containsAll(required), "supplement omits its Math teaching closure");
         }
         JsonNode review = read(boundPath(text(document, "reviewPath")));
@@ -144,7 +145,7 @@ public final class CompositionSupplementService {
         closed(review, Set.of("$schema", "reviewFormatVersion", "reviewId", "supplementSha256", "ownerLandscapeId",
                 "scope", "compatibleBaseViewIds", "decision", "authorId", "reviewerId", "conditions", "dissent",
                 "mathGoalBindings", "mathTeachingClosureSha256", "baseViewBindings", "physicsContext", "physicsGoalBindings", "sourceBindings", "targetAuthorizations"));
-        require(REVIEW_SCHEMA.equals(text(review, "$schema")) && "1.0".equals(text(review, "reviewFormatVersion")), "unsupported inference review schema");
+        require(REVIEW_SCHEMA.equals(text(review, "$schema")) && Set.of("1.0", "1.1").contains(text(review, "reviewFormatVersion")), "unsupported inference review schema");
         text(review, "reviewId");
         require(MATH.equals(text(review, "ownerLandscapeId")), "wrong inference owner");
         require("accepted".equals(text(review, "decision")), "supplement review is not accepted");
@@ -183,15 +184,23 @@ public final class CompositionSupplementService {
         require(authorizations != null && authorizations.isArray(), "target authorizations required");
         Set<String> authorized = new LinkedHashSet<>();
         Set<String> regularSourceBacked = new LinkedHashSet<>();
+        Set<String> orientations = new LinkedHashSet<>();
         for (JsonNode auth : authorizations) {
             closed(auth, Set.of("goalId", "classification", "regularMathematicsSourceCoverageClaim", "physicsDependentGoalIds",
                     "mandatoryOperation", "mathematicalInference", "inputAvailability", "wholePerformanceAlternatives", "minimality", "decision",
-                    "regularMathematicsSourceReview"));
+                    "regularMathematicsSourceReview", "orientationRationale", "completionContract"));
             String goalId = text(auth, "goalId");
             require(targetIds.contains(goalId) && authorized.add(goalId), "target authorization set mismatch");
             String classification = text(auth, "classification");
             require(auth.path("regularMathematicsSourceCoverageClaim").isBoolean(), "explicit source-claim distinction required");
-            if ("regular-mathematics-source-backed".equals(classification)) {
+            boolean orientation="orientation".equals(nativeSemanticKind(MATH,goals.get(goalId)));
+            if (orientation) {
+                require("1.1".equals(text(review,"reviewFormatVersion"))&&"reviewed-mathematics-orientation-preparation".equals(classification),"Orientation requires its explicit typed review lane");
+                require(!auth.path("regularMathematicsSourceCoverageClaim").booleanValue()&&!auth.has("regularMathematicsSourceReview"),"Orientation never certifies official content coverage");
+                require("orientation-binary-completion-v1".equals(text(auth,"completionContract")),"Unknown orientation completion contract");text(auth,"orientationRationale");
+                for(String field:List.of("mandatoryOperation","mathematicalInference","inputAvailability","wholePerformanceAlternatives","minimality"))require(!auth.has(field),"Orientation is not assessed mathematical performance");
+                orientations.add(goalId);
+            } else if ("regular-mathematics-source-backed".equals(classification)) {
                 require(auth.path("regularMathematicsSourceCoverageClaim").booleanValue(), "regular lane requires its separate whole-Math source review");
                 validateRegularMathematicsSourceReview(auth.get("regularMathematicsSourceReview"), goalId, scope);
                 regularSourceBacked.add(goalId);
@@ -204,8 +213,10 @@ public final class CompositionSupplementService {
             require(!dependents.isEmpty() && physicsIds.containsAll(dependents), "unbound Physics dependent");
             require(dependents.stream().allMatch(dependent -> dependsOn(dependent, goalId, new LinkedHashSet<>())),
                     "Math target is not in the actual Physics prerequisite closure");
-            for (String key : List.of("mandatoryOperation", "mathematicalInference", "wholePerformanceAlternatives", "minimality")) text(auth, key);
             require("accepted".equals(text(auth, "decision")), "unaccepted target authorization");
+            if(orientation) continue;
+            require(!auth.has("orientationRationale")&&!auth.has("completionContract"),"Content cannot use orientation semantics");
+            for (String key : List.of("mandatoryOperation", "mathematicalInference", "wholePerformanceAlternatives", "minimality")) text(auth, key);
             JsonNode availability = auth.get("inputAvailability");
             closed(availability, Set.of("mode", "decision", "rationale"));
             require(Set.of("supplied", "retained", "independently-derived").contains(text(availability, "mode"))
@@ -216,8 +227,8 @@ public final class CompositionSupplementService {
         // This accounting is a conjunctive runtime admission check, separate from the
         // unchanged regular-source predicate and canonical quality denominator.
         AuthorizationAccounting accounting = new AuthorizationAccounting(targetIds.size(), regularSourceBacked.size(),
-                authorized.size() - regularSourceBacked.size(), targetIds.size() - authorized.size(),
-                targetIds.stream().filter(goalId -> !regularSourceBacked.contains(goalId)).toList());
+                authorized.size() - regularSourceBacked.size() - orientations.size(), targetIds.size() - authorized.size(),
+                targetIds.stream().filter(goalId -> !regularSourceBacked.contains(goalId)&&!orientations.contains(goalId)).toList(),orientations.size());
         require(accounting.unresolvedTargetAtomicGoals() == 0, "unresolved supplemental target authorization");
         String authorizationDigest = sha(mapper.valueToTree(Map.of("supplement", document, "review", review)));
         Map<String, Object> runtimeView = new LinkedHashMap<>();
@@ -275,15 +286,20 @@ public final class CompositionSupplementService {
         require(bindings != null && bindings.isArray(), "complete Goal/P bindings required");
         Set<String> ids = new LinkedHashSet<>();
         for (JsonNode binding : bindings) {
-            closed(binding, Set.of("goalId", "goalSha256", "semanticKind", "nativeAcceptanceSha256"));
+            closed(binding, Set.of("goalId", "goalSha256", "semanticKind", "nativeAcceptanceSha256", "orientationContextBindingSha256"));
             String id = text(binding, "goalId");
             require(ids.add(id) && owner.equals(landscapes.getLandscapeIdForGoal(id)), "wrong or duplicate goal owner");
             LearningGoal goal = landscapes.getGoalDefinition(id);
             require(goal != null && sha(mapper.valueToTree(goal)).equals(text(binding, "goalSha256")), "stale complete Goal/P binding");
             String actualKind = nativeSemanticKind(owner, goal);
-            require("curricularAtomic".equals(actualKind) && text(binding, "semanticKind").equals(actualKind), "stale or unavailable native semantic kind");
-            require(nativeAcceptance.requireAccepted(owner, goal).equals(text(binding, "nativeAcceptanceSha256")),
-                    "stale or unaccepted registered native Kind/D/P/A/M/V and external P identity");
+            require(text(binding,"semanticKind").equals(actualKind),"stale or unavailable native semantic kind");
+            if("orientation".equals(actualKind)&&MATH.equals(owner)) {
+                require(!binding.has("nativeAcceptanceSha256"),"Orientation cannot use content native P/D/A/M/V");
+                require(nativeAcceptance.requireOrientationAccepted(owner,goal).equals(text(binding,"orientationContextBindingSha256")),"stale registered Math orientation source/Kind context");
+            } else {
+                require("curricularAtomic".equals(actualKind)&&!binding.has("orientationContextBindingSha256"),"unsupported supplemental noncontent kind");
+                require(nativeAcceptance.requireAccepted(owner,goal).equals(text(binding,"nativeAcceptanceSha256")),"stale or unaccepted registered native Kind/D/P/A/M/V and external P identity");
+            }
         }
         require(expected == null || ids.equals(expected), "review omits target or closure goals");
         return ids;
@@ -332,50 +348,64 @@ public final class CompositionSupplementService {
         Map<String, LearningGoal> goals = new LinkedHashMap<>();
         landscapes.getById(MATH).getGoals().forEach(goal -> goals.put(goal.getId(), goal));
         Map<String, Object> bindings = new TreeMap<>();
+        TeachingGraph graph=teachingGraph(goals);
         for (String target : targetIds) {
             List<LearningGoal> ancestors = new ArrayList<>();
-            collectAncestors(target, goals, ancestors, new LinkedHashSet<>());
+            collectAncestors(target, graph, ancestors);
             Map<String, String> ancestorBindings = new TreeMap<>();
             ancestors.forEach(goal -> ancestorBindings.put(goal.getId(), sha(mapper.valueToTree(goal))));
-            bindings.put(target, Map.of("effectivePrerequisites", effectivePrerequisiteClosure(target, goals).stream().sorted().toList(),
+            bindings.put(target, Map.of("effectivePrerequisites", effectivePrerequisiteClosure(target, graph).stream().sorted().toList(),
                     "ancestorGoalBindings", ancestorBindings));
         }
         return sha(mapper.valueToTree(bindings));
     }
 
-    private Set<String> effectivePrerequisiteClosure(String id, Map<String, LearningGoal> goals) {
-        LinkedHashSet<String> required = new LinkedHashSet<>();
-        java.util.ArrayDeque<String> queue = new java.util.ArrayDeque<>();
-        queue.add(id);
-        Set<String> visited = new LinkedHashSet<>();
-        while (!queue.isEmpty()) {
-            String current = queue.remove();
-            require(visited.add(current) || !current.equals(id), "requires cycle");
-            if (visited.size() > 10000) throw failure("oversized closure");
-            LearningGoal goal = goals.get(current);
-            require(goal != null, "foreign or missing Math prerequisite");
-            List<LearningGoal> ancestors = new ArrayList<>();
-            collectAncestors(current, goals, ancestors, new LinkedHashSet<>());
-            ancestors.add(goal);
-            for (LearningGoal ancestor : ancestors) {
-                for (String ref : ancestor.getRequires() == null ? List.<String>of() : ancestor.getRequires()) {
-                    String unqualified = ref.contains(":") ? ref.substring(ref.indexOf(':') + 1) : ref;
-                    require(goals.containsKey(unqualified), "foreign or missing Math prerequisite");
-                    expandRequiredAtomic(unqualified, goals, required, new LinkedHashSet<>());
-                }
-            }
-            for (String requiredId : List.copyOf(required)) if (!visited.contains(requiredId)) queue.add(requiredId);
-        }
-        require(!required.contains(id), "requires cycle");
-        return required;
+    /** Parent and pending indexes remove repeated DAG paths without changing
+     * inherited requires, atomic expansion or the final closure/origin sets. */
+    private record TeachingGraph(Map<String,LearningGoal> goals,Map<String,List<LearningGoal>> parents) {}
+    private TeachingGraph teachingGraph(Map<String,LearningGoal> goals) {
+        Map<String,List<LearningGoal>> parents=new LinkedHashMap<>();
+        for(LearningGoal parent:goals.values())for(String child:parent.getContains()==null?List.<String>of():parent.getContains())
+            parents.computeIfAbsent(child,key->new ArrayList<>()).add(parent);
+        return new TeachingGraph(goals,parents);
     }
-
-    private void collectAncestors(String id, Map<String, LearningGoal> goals, List<LearningGoal> result, Set<String> visited) {
-        require(visited.add(id), "contains cycle");
-        for (LearningGoal goal : goals.values()) if (goal.getContains() != null && goal.getContains().contains(id)) {
-            result.add(goal); collectAncestors(goal.getId(), goals, result, visited);
+    private Set<String> effectivePrerequisiteClosure(String id,Map<String,LearningGoal> goals) {
+        return effectivePrerequisiteClosure(id,teachingGraph(goals));
+    }
+    private Set<String> effectivePrerequisiteClosure(String id,TeachingGraph graph) {
+        LinkedHashSet<String> required=new LinkedHashSet<>(),visited=new LinkedHashSet<>(),pending=new LinkedHashSet<>();
+        java.util.ArrayDeque<String> queue=new java.util.ArrayDeque<>();queue.add(id);pending.add(id);
+        while(!queue.isEmpty()) {
+            String current=queue.remove();pending.remove(current);
+            if(!visited.add(current))continue;
+            require(visited.size()<=10000,"oversized closure");LearningGoal goal=graph.goals().get(current);
+            require(goal!=null,"foreign or missing Math prerequisite");
+            List<LearningGoal> ancestors=new ArrayList<>();collectAncestors(current,graph,ancestors);ancestors.add(goal);
+            for(LearningGoal ancestor:ancestors)for(String ref:ancestor.getRequires()==null?List.<String>of():ancestor.getRequires()) {
+                String unqualified=ref.contains(":")?ref.substring(ref.indexOf(':')+1):ref;
+                require(graph.goals().containsKey(unqualified),"foreign or missing Math prerequisite");
+                expandRequiredAtomic(unqualified,graph.goals(),required,new LinkedHashSet<>());
+            }
+            for(String requiredId:required)if(!visited.contains(requiredId)&&pending.add(requiredId))queue.add(requiredId);
         }
-        visited.remove(id);
+        require(!required.contains(id),"requires cycle");return required;
+    }
+    private void collectAncestors(String id,Map<String,LearningGoal> goals,List<LearningGoal> result,Set<String> visited) {
+        collectAncestors(id,teachingGraph(goals),result);
+    }
+    private void collectAncestors(String id,TeachingGraph graph,List<LearningGoal> result) {
+        collectAncestors(id,graph,result,new LinkedHashSet<>(),new LinkedHashSet<>(),new LinkedHashSet<>());
+    }
+    private void collectAncestors(String id,TeachingGraph graph,List<LearningGoal> result,Set<String> active,Set<String> expanded,Set<String> emitted) {
+        require(active.add(id),"contains cycle");
+        if(!expanded.contains(id)) {
+            for(LearningGoal parent:graph.parents().getOrDefault(id,List.of())) {
+                if(emitted.add(parent.getId()))result.add(parent);
+                collectAncestors(parent.getId(),graph,result,active,expanded,emitted);
+            }
+            expanded.add(id);
+        }
+        active.remove(id);
     }
 
     private void expandRequiredAtomic(String id, Map<String, LearningGoal> goals, Set<String> result, Set<String> visited) {

@@ -11,10 +11,11 @@ publication, or deployment.
 
 The dated `curricula/quality/cross-subject-requires/2026-10-13/work-checkpoint.json`
 records the incomplete state per family and the remaining gates. The persistent
-Goal service reports `active` after the user's continuation on 13 October
-2026, verified again at 15:41:45 UTC after the user pressed Continue. Earlier
-blocked-state checkpoints remain preserved. The first adoption
-does not mark the full objective complete.
+Goal service is currently **paused**. The explicitly requested PR checkpoint
+update continues as a separate authorized task. Earlier continuation and
+blocked-state checkpoints remain history; this checkpoint does not complete
+the full objective. The effective goal amendment below is versioned here and
+in the checkpoint; the available Goal tools cannot edit the service objective.
 
 The starting repository snapshot is
 `aea54de69a0ed988be2bd8ed19ce531a28a2beb3`. The original graph check passed for
@@ -22,31 +23,342 @@ The starting repository snapshot is
 and Physics both had protected M7 status. Active inventory excludes `quality`,
 `input`, and `archive`; retained source/review snapshots remain unchanged.
 
+## Required work after primary goal completion
+
+The Product Owner added these two work packages on 16 October 2026. They begin
+only after the original Gymnasium Mathematics/Physics goal meets its acceptance
+criteria. Publishing an intermediate PR with green CI does not satisfy that
+condition. Both work packages remain unstarted while the Goal is paused.
+
+1. **Consolidate process artifacts into necessary result files.** Inventory file
+   counts, bytes, actual consumers and dependencies. Distinguish durable graph
+   results, required decision evidence and reproducible inputs from duplicate
+   snapshots, caches and superseded intermediate outputs. Derive a justified
+   minimal retained set; the mere existence of a process copy does not justify
+   retaining it. Validate the proposed consolidation in a clean checkout using
+   regular generators, reference/hash checks, protected M7 floors and the relevant
+   complete CI. Report before/after counts and bytes, reproduction instructions
+   and specific reasons for remaining exceptions. Preserve immutable published
+   artifacts and the independent originals actually required by current evidence;
+   do not bulk-delete quality directories or replace substantive reviews with
+   rewritten approvals.
+2. **Review the process for future MINT Requires analyses.** Assess substantive
+   correctness, whole-goal necessity, helpful versus indispensable skills,
+   granularity, source/scope fidelity, independent review and runtime integration.
+   Identify avoidable copies, repeated reviews/generation, binding drift, CI
+   failures and effort using concrete process evidence. Produce a reusable,
+   smaller workflow with explicit minimal inputs/results, review and stop
+   criteria, shared-input/cache rules and targeted requalification. Check its
+   applicability on bounded examples from Mathematics, Physics, Chemistry and
+   Biology and record its limits. This retrospective does not enroll Chemistry
+   or Biology in the current implementation goal.
+
+Exactly two learning-goal relation types remain allowed: **`requires` and
+`contains`**. Existing view roles such as `prerequisiteOnly` are view metadata;
+they do not create another learning-goal relation type.
+
 ## Scope and current status
 
-The current checkpoint on 15 October 2026 is the local working state recorded in
-`curricula/quality/cross-subject-requires/2026-10-13/work-checkpoint.json`.
-The following counts describe different evidence layers and must not be combined
-into a completion claim:
+Updated on 16 October 2026. Scope is **canonical Gymnasium Mathematics and Physics, Sek I/II only**. The overall goal remains incomplete.
 
-| Evidence | Current result |
+| Evidence | Current local result |
 | --- | --- |
-| Ordinary goals in active canonical scope | 807 Mathematics + 478 Physics = 1,285 |
-| Exact current scientific bindings after adoption | 1,250 accepted; 35 pending decisions |
-| Active cross-subject prerequisite references | 45 references on 36 Physics goals, using 29 Mathematics IDs; retained legacy cluster prerequisites remain included |
-| Authored Physics support | 4,954 explicit Mathematics prerequisite-only references across 69 views |
-| Actual adopted current D/P/A/M/V check | 807/807 Mathematics and 478/478 Physics; zero blocking issues; all ten protected curriculum floors pass |
-| Authorized GitHub interim checkpoint | Draft, unmerged PR #74, commit `28b948a`; four workflows and all 16 jobs successful for that published head |
-| Actual local RP repair | Eight files adopted; 30 existing targets restored per CrossStage profile; 23 CI-wired tests and all ten floors pass |
-| Actual local Mathematics route repair | 87 reviewed files adopted: seven existing prerequisite sets, three BW views, two terminal assessments; Main M7 and all ten floors pass |
-| Last native route census, before the Bavaria LK conservation correction | 89 exact / 163 expanded configuration/prerequisite occurrences; the 35 source-backed target placements close 38 exact / 88 expanded gaps, with no regression |
+| Ordinary canonical goals | 807 Mathematics + 478 Physics = 1,285 |
+| Canonical prerequisites | 72 foreign references on 54 Physics goals, using 32 existing Mathematics IDs; zero reverse references |
+| Physics support | 5,118 explicit Mathematics `prerequisiteOnly` references across 69 views |
+| Machine quality | Actual registered native acceptance: 807/807 Mathematics and 478/478 Physics; six required checks per subject pass, zero blocking issues, 13,228 current inputs |
+| Owning checks | All nine actual-Root checks pass after adopting the radian correction, including full quality status and all ten protected maturity floors |
+| Known preparation-route gaps | 34 expanded occurrences, including 20 in the exact-69 subset; reduced from the previous 100/64 known-gap corpus |
+| Persisted learning regression | Real Spring/H2/JPA test starts without Mathematics mastery, saves all 33 frontier-selected completions and restores exact Physics targets |
+| Further Physics proposals | Six additional edges at four goals are prepared privately; they are not integrated |
+| New Mathematics goals | Thirteen earlier drafts and one narrow coordinate/straight-line helper remain inactive |
+| GitHub checkpoint | [PR #74](https://github.com/enpasos/skillpilot/pull/74) is being refreshed with this gated local checkpoint and current `main`; new integrated CI remains pending |
+
+The radian correction is actually adopted. Only its prerequisite list changed;
+the whole goal, positive evidence profile, visualization and all 2,018 canonical
+IDs remain intact. Two genuine description-review rounds and the current
+P/Kind/A/M records pass normal native validation. The final actual-Root run
+passes for all 807 Mathematics and 478 Physics goals. M7 is machine quality;
+it establishes neither human learning nor host acceptance.
+
+The bounded route replay examines 135 affected expanded cases: 60 retain the
+Physics scope, 51 retain it after an explicit widening, and 24 provide a separate
+Mathematics-only return potential. All 540 isolated guards remain exact. Matching
+those cases against the previous known-gap corpus closes 66 expanded and 44
+exact-69 occurrences, leaving 34/20. The other 31 foreign Mathematics dependency
+subgraphs are unchanged. This is no new global replay or reclassification of
+all historical route buckets.
+
+The selected v24 scientific index remains immutable history. Its earlier
+1,235/50 counts and 76 accepted sets awaiting integration belong to its original
+selection epoch; four whole-file bindings became stale after the radian change.
+A sealed, portable v25 proposal exists but is not selected in this checkpoint.
+The fresh scientific pair approves the radian goal's empty foreign set and
+rejects the dependent oscillation goal's proposed whole-Mathematics set as too
+broad. No accepted empty set follows from that rejection.
+
+The separate Minkowski challenge remains explicit: in Hessen G9, Sek II, GK,
+the existing coordinate prerequisite adds an unnecessary bounded-segment duty.
+Its original author claim was withdrawn after independent counterexamples.
+A new narrow signed-coordinate/straight-line helper has paired scientific
+support, but native D/V, source/eligibility/target and integration gates remain
+open. It is absent from the canonical graph and supplies no automatic enrollment
+or mastery. The scoped challenge supplies no nationwide review claim.
+
+Runtime prerequisite checks remain direct and `contains`-inherited. A mastered
+intermediate goal never grants mastery of an unmastered prerequisite. The real
+JPA regression covers explicit outward and return choices, all 33 persistence
+steps, retained global values and exact restoration of Physics targets. Its
+33-goal substitution closure is unchanged by the radian correction. Orientation
+retains its separate binary completion semantics.
+
+The Product Owner requested this PR update and the merge of current `main`
+**into the PR branch**. Preserve unrelated Chemistry and other Main changes.
+The previous GitHub head `d6714e5` passed all 16 jobs and four workflows; that
+result excludes the newer local work. The current merged checkpoint needs its
+own full CI result. The PR remains a draft; this operation does not merge it
+into Main, deploy, publish a release or finish the overall goal.
+
+The free-fall decision remains open. Its new actual whole Physics P includes
+the required safe experiment planning. The Requires author nominated the whole
+Mathematics axes/scales/units goal 80c232. The independent peer first locked its
+own full solutions and rejected that nomination: numerical axes, scales and
+units are necessary, but the additional categorical-axis transfer is not a
+universal prior requirement. This granularity gap authorizes neither a whole-80c
+edge nor an accepted empty prerequisite set.
+
+A separate inactive standing-wave P successor supplies generic sine/cosine
+addition identities while retaining the expected derivations, interpretations,
+boundaries, modes, variations and coverage. Independent review accepts the bounded
+P correction and conditionally supports a separate whole-d934 nomination. The
+existing HE/SH Mathematics source support does not cover Physics scopes in all
+16 states. Source/supplement, target, route and current-description gates remain
+open; that successor and the 13 new Mathematics drafts are inactive.
+
+The following material records earlier checkpoints and must be read with its
+original source and time bindings.
 
 The GitHub result was reconfirmed read-only again on 15 October during the retry
 for the published `28b948a` head. It excludes the later local RP repair and
 Post-RP audits below; it is not CI evidence for the current local worktree.
-No new push, merge or deployment follows from this checkpoint.
+The authorized successor `beb3418` is now published on the same draft PR. Its
+exact tree `8e4051e97bb27a993474d79c474a261fa82749e2` and both parents (the old
+PR head and current Main) were independently read from GitHub and verified.
+The follow-up `a73dd58314a0f6c0673125b6587e6cace4ea1623` is now published on
+the same draft PR. Its exact tree `7855d56b06bc784e5b4116cda1dc0c1eb21593ac`
+and parent `beb3418` were freshly verified from GitHub. This publishes review
+checkpoints only; no merge or deployment follows. The subsequent `ecafe242`
+and `8ec9ecae` heads were likewise read back and verified, with exact trees
+`97d284b2103c6d02df03f25f79b7e5aeefe7a325` and
+`edf6b919160403bf459ee3067f7b1395fc2ffb59`, each retaining its preceding head
+as the sole parent.
 
-The subsequent unfiltered, normal-resource backend CI run on the actual local
+A fresh read-only audit of all 1,285 records verifies all 737 current input
+bindings and compares their selected proposed foreign prerequisite sets with
+the actual canonical graph. Among accepted review bindings, 108 `add` proposals
+and one `replace` proposal still differ from the graph. All proposed IDs exist
+in the current opposite subject. These 109 reconciliation items are additional
+to the 35 pending review decisions. They require effective-prerequisite,
+source/scope, DAG and learning-route checks before integration; the comparison
+does not authorize applying every proposal. Equal foreign sets likewise do not
+establish complete Goal/P/source/target or learner acceptance. The exact audit is
+preserved in the dated quality directory as
+`current-science-proposal-versus-adoption-audit-root-20261015-v1`.
+
+The completed Astra Ultra integration plan assigns all 109 proposals to 35
+small packages, with exact current Goal/P inputs and a code-verified freshness
+matrix. The first five-owner package has independent whole-goal prerequisite,
+P and Kind agreement plus bounded D context judgments. It remains private: its
+actual native five-goal book/review inputs and three necessary real image-bound
+P successors are being prepared and independently checked. Broad inherited Math
+citations and historical native projections do not prove the complete current
+chosen Mathematics route. No one of these five is adopted yet, so the 109-item
+count and the active 45 references remain unchanged.
+
+The subsequent isolated complete-CI attempt generated and checked all five
+regular GoalBooks (807 Mathematics, 478 Physics, 382 Chemistry, 397 Biology,
+346 Economics), then failed an outdated Physics test fixture. Its independently
+accepted one-file successor pins the actual 45 cross-subject references, the
+separate ledger/profile identities, 27 bounded Kind rechecks and all 69 exact
+support sets. It preserves all other assertions and the original failures.
+The next ordinary complete run passes that Physics test, then stops before
+backend tests because the visualization-path fixture copies ignored backend
+assets before the normal runtime-asset generation step. That bounded fixture
+correction is now independently accepted and adopted: the unchanged production
+tool generates only its temporary fixture copies, with actual App bytes checked
+before generation and all previous negative checks retained. The following
+ordinary run passes both corrected fixtures, graph/inventory checks and the
+617/617 Hessen duration audit, then stops at a stale reviewed Mathematics layout
+plan: its full canonical hash still binds the earlier 1,252-goal source instead
+of the current reviewed 1,254-goal source. The independently reviewed two-file
+generator/policy correction conserves the existing 348 views exactly, including
+the reviewed source-backed placements and existing RP targets. The Gemini
+startup failure is an incomplete HTTP test fixture: it returned a generic empty
+object for the explicit supplement-options endpoint. Its three-line correction
+supplies the actual empty-options response and preserves the malformed-response
+and failed-request checks. Two missing generated memory reports and their status
+registry entry have also been independently regenerated and verified. All six
+files are adopted to Root and the isolated candidate; five focused checks pass
+on actual Root without changing the 737 scientific input bindings.
+
+The following ordinary complete run passes the corrected Math generation and
+stops after 157.5 seconds at three stale description copies in the public
+source-rationale indices. Backend tests were not reached. The independently
+accepted five-file refresh now updates those copies, the additional Mathematics
+all-relevant description copy and current coverage counts. Historical source
+routes, all 90 alternatives, MEM evidence, status and limitations remain exact;
+the two additional non-content assessment goals were already adopted. The
+unneeded live MEM identifier and gap-report timestamp changes are retained as
+discarded diagnostics only.
+
+The old GitHub run ended with five failed jobs. Besides the Math plan, Gemini
+fixture and missing reports, the backend job lacked the application dependencies
+used by its native acceptance tests, and a separate completed-session UI fixture
+lacked the supplement-options endpoint. The workflow adds ordinary locked
+`npm ci`; the unchanged two backend classes reproduce both failures without the
+dependencies and pass seven tests after installation. A nine-line fixture fix
+matches only the three existing fake learners and GET requests, preserving every
+original assertion and fallback. Five following frontend UI tests also pass.
+All seven additional files are adopted to Root and the isolated checkpoint,
+with 348 views and 737 scientific bindings unchanged. The actual installed
+session test passes in the checkpoint, and all six actual Root postchecks pass.
+
+The new ordinary complete run started on 15 October at 15:37:26 UTC against the
+published tree, passed all previous failure points and ended after 389.8 seconds
+at two stale generated Mathematics image-rollout reports. Asset checks, the
+three subject QA ledgers and approval coverage passed; backend tests were not
+reached. All four generated Mathematics/Physics rollout reports have since
+been independently accepted and adopted; the ordinary coverage and parity
+checks pass with all scientific input bindings and 348 views unchanged. The
+next unfiltered complete run passes those checks and the normal frontend build,
+then fails after 566.8 seconds at package-consumer isolation: the shared
+supplement-presence helper and its hook embed a repository Mathematics ID.
+The independently accepted three-file successor detects saved selection
+presence by the actual owner ID while retaining backend authorization. It is
+adopted and published as `ecafe242`; actual installed supplement and core-startup
+checks pass. The next ordinary complete local run passes the package build and
+its unchanged UUID gate, then stops after 557.8 seconds at a missing local
+`bwrap` dependency in the hermetic consumer self-test. The existing GitHub job
+already installs bubblewrap and strace. Verified Ubuntu tools now run at normal
+paths in a separately reviewed temporary unprivileged namespace; the unchanged
+owning self-test passes, without host-file or sysctl changes.
+
+The earlier `a73dd58` frontend job also exposed three stale AI-transparency
+inventory fields: the goal count and the extension/provider counts for the two
+previously adopted PNG replacements. The existing emitter and independent
+source trace produce exactly seven changed leaves. The one-file successor is
+adopted and published as `8ec9ecae`; its actual installed normal checker passes.
+All policies, other media bindings and approval conclusions remain unchanged.
+The unfiltered local complete run against exact tree `edf6b919` ended after
+658.710 seconds at 17:01:04 UTC. The normal package build, UUID isolation gate
+and mandatory hermetic self-test pass; the next compiler fails on two stale
+release-profile counts. The independently measured one-file correction now
+changes 1,252 to 1,254 total goals and 1,638,192,987 to 1,637,468,654 embedded
+image bytes. Two previously adopted assessment goals and the sole existing
+CAF JPG-to-PNG replacement explain both differences; the 807 ordinary goals
+and the other 835 image payloads remain exact. The normal compiler and two
+normal validators pass, including all 49 adversarial cases. That correction and the normal regenerated redistribution ledger are now
+published on draft PR74 as `d6714e5`, exact tree `d3d763bc`, with sole parent
+`8ec9ecae`. Independent normal generation is byte-identical: twelve data fields
+change while all 840 decision rows retain their decision fields. Both complete
+five-command sets pass, including strict source checks with 49 real PDFs.
+Source-verification ledger/report, generator code and schemas remain exact.
+The first full local run on this tree actually ended with tool exit 143 and no
+normal runner completion receipt; its sender/cause is unproven. Both bound host
+processes were absent and the tree remained exact. An identical full retry
+started at 17:45:24 UTC and completed at 18:12:32 UTC with actual exit 0.
+The unchanged normal `bash run_ci.sh all` passes, including the owning
+release-conformance wrapper, independent model validation, current bindings
+and two byte-identical model builds. The 254 current JUnit suites contain
+2,394 tests, zero failures/errors and nine skipped tests. Independent
+inspection confirms that the three working-copy changes are generated
+Python bytecode caches only; their sources and the staged tree are exact.
+The new GitHub OAuth PostgreSQL job initially hit ECR data limits before
+checkout. Its exact-job retry actually succeeds, and Docs, Gemini and
+OAuth workflows pass. The final head-bound 18:48 UTC audit confirms all 16 current jobs and
+all four workflows completed successfully on `d6714e5`. Fresh public
+workflow metadata independently confirms all four exact heads; OAuth
+uses successful attempt 2. A fresh read after the PR-body update at
+18:57 UTC retains the same open draft and all four successful workflows.
+The requested green GitHub interim checkpoint is achieved; the overall
+Gymnasium integration goal remains active and incomplete. The isolated checkpoint preserves unrelated current Main changes
+and remains separate from the later Source-QA adoption below, including its six
+Root-only workflow lines.
+
+The first five-goal integration packet has completed its informed native-D
+synthesis and independent successor review. Three description refinements
+and two complete P-profile corrections are supported; seven of the ten
+whole cases remain exact and three are locally clarified. The old native
+rounds remain unchanged. Three current Kind judgments and two additional
+whole-P input records now have an independent exact-input confirmation.
+Normal native preparation/checking succeeds for four pages: three new
+descriptions and the unchanged Magnetfeld description with its changed P
+context. Two independent native D rounds are complete with four keep/none judgments
+each. Their normal dual validation passes; all four formally differ in
+their independently written rationale and understanding evidence. A separate
+informed synthesis now resolves all four with current native strict4/4,
+deferred0 and exact current whole-P/Kind parity. Different literal model labels do not
+establish actual serving diversity; both were configured as Sol6.1/ultra. Source, scope and complete Mathematics-route acceptance
+remain open. This does not change the 45 active references or resolve
+the 109 outstanding proposals.
+
+A bounded normal check also exposes a current-context integration gap:
+the old Magnetfeld resolution validates when passed its stored old input,
+while a newly generated current input rejects it. A separate synthetic
+negative check isolates the actual P-only change from page-layout changes.
+The central reporter supplies its stored first-round input and intersects
+D and current P by goal ID; a full aggregate false-current result remains
+code-path inference. Astra has completed the corrective guard and bounded migration plan.
+Its JSON-only inventory identifies 17 P-bound Root D contexts, nine exact
+and eight requiring targeted migration. The other 1,268 have both profile
+and page summary null and retain their independent D contract. The private
+62-file guard/Book-import candidate now has an independent review with no
+blocking finding. Both meaningful regressions pass, the original reporter
+fails the intended defect assertion, and the complete normal GoalBookModel
+test passes under a verified read-only scripts overlay using the actual
+Root/index/catalog without a Git bypass. Eight genuine current native
+input packages and both independent A/B reviews are complete. Their normal
+informed synthesis yields seven strict description resolutions and one
+genuine induction-description deferral. Free-fall, oscillator and induction
+P findings remain explicit; description completion does not accept those
+profiles. The free-fall planning successor now has an independent whole-P
+peer and normal checks; bounded oscillator/induction successors are being
+authored before fresh changed-context D. Joint code/data adoption and
+full807/478 checks remain open. Existing lawful P-independent D reviews, historical
+evidence and protected maturity floors must be preserved.
+
+A private regression sandbox accidentally followed a deep curriculum
+directory link and temporarily modified Root Physics and Kind files.
+The original bytes were restored from independently bound copies.
+Root independently verifies all 737 science bindings, 348 views, 45/0
+foreign references, the index, and exact Physics/Kind parity with W.
+The failed attempts and restoration remain recorded. Further regressions
+use real private fixture copies plus a tested OS namespace in which
+only their own lane is writable; an outside canary write fails EROFS.
+The published successful GitHub commit is unchanged.
+
+A new actual route replay at 19:10–19:13 UTC freshly compiles all 452 current
+production Java sources into 884 classes and passes twelve read-only probe
+stages. It executes 322 scope matches, 598 projections and 19,202 foreign
+guard cases. The current45 census reconfirms 89 exact and 163 expanded
+remaining route occurrences. I01 has 567 Physics-only owner/scope occurrences:
+256 complete same-stage target routes, 237 explicit widening routes retaining
+all Physics targets, and 74 target-route gaps. These are current synthetic
+technical facts, with no source, enrollment, consent or persistence acceptance.
+The measured HE-G9-SekI volume holdout exposes an unnecessarily advanced
+Q2 nominee. An earlier independently accepted correction selects the existing
+J6 cuboid/cube goal instead. The private follow-up reuses its already reviewed
+whole-P measurement successor, required SVG and exact native resolution; a
+normal current807-Math reuse check passes without importing13 helper goals.
+The required two-subject task-material transport code remains a named
+integration dependency, and HE source-mapping limits plus upstream route
+taxonomy remain explicit. The twenty-goal Q2 baseline is not preparation
+approval. No supplement or new canonical goal is active. The next18 accepted
+proposal owners in I02–I05 are also under complete current author review.
+The current replay and completed informed
+synthesis/code peer are preserved in the dated cross-subject quality tree.
+
+An earlier unfiltered, normal-resource backend CI run on the actual local
 worktree finished with 2,386 tests: 2,374 passed, three failed and nine skipped.
 Two integration tests contained 44 old atomic-count expectations. An independent read-only replay of
 220 actual production projections reconstructs every difference from the exact
@@ -90,7 +402,7 @@ script remains recorded alongside the successful corrected command.
 The adoption and its checks are recorded in
 `curricula/quality/cross-subject-requires/2026-10-13/five-existing-math45-exact-main-adoption-root-20261015-v1/HANDOFF.actual.json`.
 
-A fresh native replay after the 35 target placements executes eleven stages and
+An earlier native replay after the 35 target placements executes eleven stages and
 19,202 prerequisite guard cases. It confirms that mastered Physics does not
 bypass missing Math, without adding Math enrollment or mastery. Its 89 exact /
 163 expanded remaining gaps are configuration/prerequisite occurrences, not
@@ -181,15 +493,20 @@ regressions, the complete existing Cockpit chain and its predecessor controls
 pass. The isolated GitHub checkpoint is prepared against the current remote
 Main, preserving its unrelated changes; full checkpoint CI and publication remain
 pending.
-The selected-scope source-QA successor is also preserved as an
-unadopted 45-file candidate, with 171 bounded Java tests and 25 TypeScript
-checks. The typed orientation-binding successor remains separate. Its author
-completed 185 bounded Java tests, 40 source-accounting cases and one genuine
-807/478 native orientation run. Independent review has reproduced a stale-report
-gap: changing authored/review bytes after the Java export at unchanged file count
-does not invalidate the Source-QA report. No learner-authorization bypass is
-established; the exact 17-file combined Source-QA/orientation layer remains held
-for correction.
+The earlier selected-scope source-QA and typed orientation candidates remain
+preserved, including the independently reproduced stale-report gap: changing
+authored/review bytes after Java export at unchanged file count did not invalidate
+the report. The corrected combined 18-file layer is now independently accepted
+and actually adopted at Root. It binds the current authored and review bytes,
+and preserves typed orientation context separately from content mastery. Its
+exact current-source validation includes 192 Java cases, 62 Source-QA cases,
+22 byte-drift controls and the actual existing Cockpit startup chain. After
+adoption, actual Root supplement tests, the normal Java exporter, source-coverage
+audit and all ten protected maturity floors pass. All 737 scientific input
+bindings and 1,079 protected inputs remain exact; the prior 13,031 native facts
+have zero drift. The 192 Java cases were not rerun by the post-adoption reviewer.
+No large native engine, new goal or active supplement is created by this code
+adoption. The independently tested Source-QA predecessor failure is retained.
 
 Two genuine native description rounds for fifteen pending contexts are now
 complete, with the first review locked before reading the second. Both rounds
@@ -201,17 +518,20 @@ independent volume-measurement task. A fresh independent content/helper review
 keeps these successors and verifies all 1,285 existing evidence payloads remain
 byte-identical under the two-subject helper overlay. This is not fresh native
 D approval for the changed texts or acceptance of strict820, sources or targets.
-Two fresh independent content locks keep all three changed contexts, but their
-new native D campaigns are not materialized yet. Actual producer comparison found
-a GoalBook/P optional-image fingerprint mismatch and the need for genuine current
-Kind records. A private successor now produces regular native Books and campaign
-inputs using the actual review-context landscape, including the changed existing
-radian goal; no D verdict is fabricated by that transport. Final review and the
-actual current D campaign validation remain open. Independent transport review
-requires three corrections: schema resolution from the real npm working
-directory, binding actual configuration bytes while rejecting invalid UTF-8,
-and a valid handoff path to the sixteen current Kind judgments. An additive
-repair is in progress; the reviewed predecessor remains unchanged and held.
+Two fresh independent content locks keep all three changed contexts. Their
+regular native A/B campaigns and actual dual-round validators now pass, followed
+by three actual native synthesis-resolution passes. This is bounded AI
+description completion only. The private producer binds the actual P-policy and
+current Kind records, including the changed existing radian goal. Its independently
+accepted transport correction resolves schemas from the real npm working
+directory, hashes actual configuration bytes while rejecting invalid UTF-8, and
+points to the sixteen current Kind judgments. The failed predecessor remains
+unchanged. A separate audit confirms that twelve older unchanged Goal/Kind/P
+bodies remain equivalent, but none of their historical Book-only context wrappers
+is exactly reusable: the native context checks reject both old rounds as stale.
+Current-context addenda for those twelve are still required; no old opinion was
+silently rebound. The genuine Mathematics root-Kind policy disagreement also
+remains recorded; neither label changes the bounded content-atom count.
 The exact original rounds,
 disagreements and held successor evidence are preserved under the dated
 cross-subject quality directory.

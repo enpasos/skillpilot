@@ -1,0 +1,15 @@
+/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/app/scripts/goalBookModel.ts:437
+  throw new Error(`Goal-book model: ${message}`)
+        ^
+
+
+Error: Goal-book model: semantic-kind ledger violates its closed JSON Schema: data must have required property 'profileFormatVersion'; data must have required property 'version'; data must have required property 'description'; data must have required property 'releaseModelContractVersion'; data must have required property 'source'; data must have required property 'coreBinding'; data must have required property 'namespaceBindings'; data must have required property 'applicationVocabulary'; data must have required property 'semanticKindDecisions'; data must have required property 'semanticKinds'; data must have required property 'mappings'; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data/documentType must be equal to constant; data/decisions/554/decisionBasis must be equal to one of the allowed values; data/decisions/555/decisionBasis must be equal to one of the allowed values; data/decisions/556/decisionBasis must be equal to one of the allowed values; data/decisions/557/decisionBasis must be equal to one of the allowed values; data/decisions/558/decisionBasis must be equal to one of the allowed values; data/decisions/559/decisionBasis must be equal to one of the allowed values; data must match exactly one schema in oneOf.
+    at fail (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/app/scripts/goalBookModel.ts:437:9)
+    at parseSemanticKindLedger (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/app/scripts/goalBookModel.ts:793:5)
+    at buildGoalBookModel (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/app/scripts/goalBookModel.ts:1872:30)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host/tooling/stock_projection_srs.mts:69:10)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

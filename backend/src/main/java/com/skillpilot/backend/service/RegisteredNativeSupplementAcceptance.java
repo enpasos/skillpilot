@@ -13,10 +13,15 @@ public final class RegisteredNativeSupplementAcceptance implements NativeSupplem
     private JsonNode cached; private Map<Path,String> signatures;
     private final ThreadLocal<JsonNode> activeSnapshot = new ThreadLocal<>();
     private final Map<String,JsonNode> canonicalGoals = new LinkedHashMap<>();
+    private final Map<String,JsonNode> orientationBindings = new LinkedHashMap<>();
+    synchronized JsonNode currentOrientationBindingsForQa() { return mapper.valueToTree(orientationBindings); }
+    /** Read-only snapshot for the fixed aggregate QA bridge, within withSnapshot. */
+    synchronized JsonNode currentSnapshotForQa() { return current().deepCopy(); }
+
     @Override public synchronized <T> T withSnapshot(java.util.function.Supplier<T> action) {
         if(activeSnapshot.get()!=null)return action.get();
         activeSnapshot.set(current());
-        try { T result=action.get();if(!fresh()){cached=null;signatures=null;canonicalGoals.clear();throw new IllegalStateException("Native source/P/asset/code changed during admission");}return result; }
+        try { T result=action.get();if(!fresh()){cached=null;signatures=null;canonicalGoals.clear();orientationBindings.clear();throw new IllegalStateException("Native source/P/asset/code changed during admission");}return result; }
         finally { activeSnapshot.remove(); }
     }
     private static final Set<String> CHECKS=Set.of("semantic-kind-scope","description-review-validation","positive-evidence-validation","semantic-atomicity-check","memory-card-check","visualization-freshness-and-approval-check");
@@ -39,8 +44,64 @@ public final class RegisteredNativeSupplementAcceptance implements NativeSupplem
             return CompositionSupplementService.sha(mapper.valueToTree(Map.of("receiptSha256",envelope.path("receiptSha256").asText(),"nativeGoal",nativeGoal)));
         }catch(java.io.IOException e){throw new IllegalStateException("Native canonical goal unavailable",e);}
     }
+    /** The registered semantic-kind-scope gate validates every canonical Goal's
+     * authoritative Kind/source fingerprint before choosing its807 content goals.
+     * Reuse that exact snapshot for orientation; create no P or content gate record. */
+    @Override public synchronized String requireOrientationAccepted(String owner,LearningGoal goal) {
+        require(CompositionSupplementService.MATH.equals(owner),"Only Math orientation preparation is supported");
+        require(LearnerService.isOrientationGoal(goal),"Authoritative orientation must retain existing runtime binary-completion semantics");
+        JsonNode envelope=activeSnapshot.get()==null?current():activeSnapshot.get(),receipt=envelope.path("receipt");
+        try {
+            JsonNode config=readCurrentNativeBoundJson(receipt,CONFIG),subject=null;
+            for(JsonNode candidate:config.path("subjects"))if("mathematik".equals(candidate.path("subject").asText())) {
+                require(subject==null,"Duplicate registered Math orientation owner");subject=candidate;
+            }
+            require(subject!=null,"Registered Math orientation owner unavailable");
+            String canonicalPath=subject.path("landscapePath").asText(),kindPath=subject.path("semanticKindLedgerPath").asText();
+            JsonNode canonicalBinding=requiredCurrentNativeSourceBinding(receipt,canonicalPath);
+            JsonNode kindBinding=requiredCurrentNativeSourceBinding(receipt,kindPath);
+            JsonNode canonical=readCurrentNativeBoundJson(receipt,canonicalPath);
+            require(owner.equals(canonical.path("landscapeId").asText()),"Registered orientation canonical owner differs");
+            JsonNode nativeOwner=null;
+            for(JsonNode candidate:receipt.path("report").path("subjects"))if(owner.equals(candidate.path("landscapeId").asText())){require(nativeOwner==null,"Duplicate native orientation owner");nativeOwner=candidate;}
+            require(nativeOwner!=null&&canonicalPath.equals(nativeOwner.path("landscapePath").asText()),"Registered orientation report/source owner differs");
+            JsonNode rawGoal=null;
+            for(JsonNode candidate:canonical.path("goals"))if(goal.getId().equals(candidate.path("id").asText())) {
+                require(rawGoal==null,"Duplicate canonical orientation goal");rawGoal=candidate;
+            }
+            require(rawGoal!=null,"Missing canonical Math orientation goal");
+            LearningGoal source=mapper.treeToValue(rawGoal,LearningGoal.class);
+            require(CompositionSupplementService.sha(mapper.valueToTree(source)).equals(CompositionSupplementService.sha(mapper.valueToTree(goal))),"Runtime whole orientation Goal differs from the registered canonical source");
+            JsonNode ledger=readCurrentNativeBoundJson(receipt,kindPath),decision=null;
+            require(owner.equals(ledger.path("sourceLandscapeId").asText())&&"semantic-kind-source-fingerprint-v1".equals(ledger.path("sourceFingerprintContractId").asText()),"Unsupported orientation Kind source contract");
+            for(JsonNode candidate:ledger.path("decisions"))if(goal.getId().equals(candidate.path("goalId").asText())) {
+                require(decision==null,"Duplicate authoritative orientation Kind");decision=candidate;
+            }
+            require(decision!=null&&"authoritative".equals(decision.path("decisionStatus").asText())&&"orientation".equals(decision.path("semanticKind").asText())&&!decision.path("sourceFingerprint").asText().isBlank(),"Goal is not a current authoritative Math orientation");
+            require(!receipt.path("goals").has(goal.getId()),"Orientation cannot use the curricularAtomic native denominator");
+            var binding=mapper.createObjectNode().put("bindingContract","registered-math-orientation-context-v1")
+                .put("receiptSha256",envelope.path("receiptSha256").asText()).put("landscapeId",owner).put("goalId",goal.getId())
+                .put("rawGoalSha256",CompositionSupplementService.sha(rawGoal)).put("kindDecisionSha256",CompositionSupplementService.sha(decision))
+                .put("completionContract","orientation-binary-completion-v1");
+            binding.set("canonicalSourceBinding",canonicalBinding);binding.set("semanticKindSourceBinding",kindBinding);
+            orientationBindings.put(goal.getId(),binding);
+            return CompositionSupplementService.sha(binding);
+        } catch(java.io.IOException exception) {throw new IllegalStateException("Current registered orientation source context unavailable",exception);}
+    }
+    private JsonNode readCurrentNativeBoundJson(JsonNode receipt,String path)throws java.io.IOException {
+        JsonNode binding=requiredCurrentNativeSourceBinding(receipt,path);byte[] bytes=Files.readAllBytes(resolve(path));
+        require(CompositionSupplementService.hashBytes(bytes).equals(binding.path("sha256").asText()),"Registered orientation source changed during read");return mapper.readTree(bytes);
+    }
+    private JsonNode requiredCurrentNativeSourceBinding(JsonNode receipt,String path)throws java.io.IOException {
+        JsonNode found=null;
+        for(JsonNode input:receipt.path("sourceInputs"))if(path.equals(input.path("path").asText())) {
+            require(found==null,"Duplicate native orientation source input");found=input;
+        }
+        require(found!=null&&"file".equals(found.path("kind").asText()),"Registered native snapshot omits full orientation source/Kind input");
+        verifyInput(resolve(path),found);return found.deepCopy();
+    }
     private JsonNode current(){
-        if(cached!=null){if(!fresh()){cached=null;signatures=null;canonicalGoals.clear();throw new IllegalStateException("Native acceptance source/P/asset/code snapshot changed; current preparation authorization is stale");}return cached;}
+        if(cached!=null){if(!fresh()){cached=null;signatures=null;canonicalGoals.clear();orientationBindings.clear();throw new IllegalStateException("Native acceptance source/P/asset/code snapshot changed; current preparation authorization is stale");}return cached;}
         Path producer=resolve("app/scripts/runCompositionSupplementNativeAcceptance.cjs");
         Path tsx=resolve("app/node_modules/tsx/dist/cli.mjs");
         require(Files.isRegularFile(producer)&&Files.isRegularFile(tsx),"Repository native producer/Node/tsx support is unavailable; installed receipts are unsupported");

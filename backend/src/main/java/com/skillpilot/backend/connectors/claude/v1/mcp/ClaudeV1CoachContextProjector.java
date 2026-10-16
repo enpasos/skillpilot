@@ -58,6 +58,17 @@ public class ClaudeV1CoachContextProjector {
                     + "presentation step in every interaction mode, including voice mode: never make it "
                     + "carry a task, assume it is visible or ask a question that requires inspecting it. "
                     + "Never infer or request a client type.";
+    private static final String TOOL_PREPARATION_INSTRUCTION =
+            "Only before beginning or resuming authorized teaching, silently load set_skillpilot_mastery "
+                    + "through the host's exposed tool discovery if it is not already registered with its input "
+                    + "schema. Never invent discovery tools. During this preparation, load only: do not invoke "
+                    + "it, construct arguments, assess the learner or ask a question. Then continue authorized "
+                    + "teaching normally. Do not prepare tools for status-only requests, pauses or feedback. "
+                    + "If an enclosing continuation instruction requires a learner reply before teaching, wait "
+                    + "for it; otherwise add no confirmation. Keep loading and corrections private, including "
+                    + "Voice. If this fresh context's goalVisualization and "
+                    + "presentationInstruction require rendering, the renderer remains the next SkillPilot tool. "
+                    + "Host discovery is not a SkillPilot tool call.";
     private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
             "/assets/goal-visualizations/";
     private static final Set<String> CURATED_GOAL_VISUALIZATION_STATUSES = Set.of(
@@ -123,6 +134,10 @@ public class ClaudeV1CoachContextProjector {
         FrontierGoal activeGoal = projectedState.activeGoal();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
+        if (activeGoal != null && "atomic".equals(activeGoal.type())
+                && !ClaudeV1McpContractAdapter.isMemoryGoal(activeGoal)) {
+            context.put("toolPreparationInstruction", TOOL_PREPARATION_INSTRUCTION);
+        }
         Map<String, Object> dailyPlan = projectLearningPlanToday(
                 coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language), activeGoal != null, language);
         context.put("learningPlanToday", dailyPlan);

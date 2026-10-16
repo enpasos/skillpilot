@@ -1,0 +1,107 @@
+{
+  "runs": [
+    {
+      "phase": "before",
+      "scope": "old-nine",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/config/before.old-nine.memory.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host",
+      "startedAt": "2026-10-15T10:23:39.722155+00:00",
+      "exitCode": 0,
+      "rawOutput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/checks/STOCK.memory.before.old-nine.actual.txt",
+        "sha256": "sha256:9367ea6ae24ed3cfd5b95b3bf03e16d96ccc57571e43f3d947446f9ed0f506ff",
+        "bytes": 17871
+      },
+      "ordinaryAtomicGoalsInScope": 422,
+      "missingVisibleMemoryRefFindings": 0,
+      "staleCardRecordOccurrences": 0,
+      "missingCardRecordOccurrences": 0,
+      "approvalBoundary": "author-after is expected nonpassing against unchanged original card approvals; no card hash was rewritten into a kept review."
+    },
+    {
+      "phase": "before",
+      "scope": "old-nine-plus-whole-BW",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/config/before.old-nine-plus-whole-BW.memory.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host",
+      "startedAt": "2026-10-15T10:23:40.090332+00:00",
+      "exitCode": 1,
+      "rawOutput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/checks/STOCK.memory.before.old-nine-plus-whole-BW.actual.txt",
+        "sha256": "sha256:4668d580c1263594182c7f580c819914ee339f22d0f78b987966e34c624e0ee6",
+        "bytes": 46504
+      },
+      "ordinaryAtomicGoalsInScope": 422,
+      "missingVisibleMemoryRefFindings": 40,
+      "staleCardRecordOccurrences": 0,
+      "missingCardRecordOccurrences": 0,
+      "approvalBoundary": "author-after is expected nonpassing against unchanged original card approvals; no card hash was rewritten into a kept review."
+    },
+    {
+      "phase": "author-after",
+      "scope": "old-nine",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/config/author-after.old-nine.memory.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host",
+      "startedAt": "2026-10-15T10:23:40.414690+00:00",
+      "exitCode": 1,
+      "rawOutput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/checks/STOCK.memory.author-after.old-nine.actual.txt",
+        "sha256": "sha256:890c3afd7cbadf50b890473e610def665eef732caa4ea237b2dd0352b314436b",
+        "bytes": 49040
+      },
+      "ordinaryAtomicGoalsInScope": 422,
+      "missingVisibleMemoryRefFindings": 0,
+      "staleCardRecordOccurrences": 82,
+      "missingCardRecordOccurrences": 0,
+      "approvalBoundary": "author-after is expected nonpassing against unchanged original card approvals; no card hash was rewritten into a kept review."
+    },
+    {
+      "phase": "author-after",
+      "scope": "old-nine-plus-whole-BW",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/config/author-after.old-nine-plus-whole-BW.memory.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/bw-memory-support-selection-host",
+      "startedAt": "2026-10-15T10:23:40.760340+00:00",
+      "exitCode": 1,
+      "rawOutput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/checks/STOCK.memory.author-after.old-nine-plus-whole-BW.actual.txt",
+        "sha256": "sha256:13aa5570eaf1cc88a110ae815f9551dfdaa378bba34e1d433d982fc4aa00c436",
+        "bytes": 46797
+      },
+      "ordinaryAtomicGoalsInScope": 422,
+      "missingVisibleMemoryRefFindings": 0,
+      "staleCardRecordOccurrences": 82,
+      "missingCardRecordOccurrences": 0,
+      "approvalBoundary": "author-after is expected nonpassing against unchanged original card approvals; no card hash was rewritten into a kept review."
+    }
+  ],
+  "normalHelper": {
+    "path": "app/scripts/memoryCardReview.ts",
+    "sha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672",
+    "bytes": 48353
+  },
+  "old75CardReviewLedgerUnchanged": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/M/current75.other73-original-lines-plus-two-original-a-retarget-lines.candidate.jsonl",
+    "sha256": "sha256:79764e20464d14b1a233c9178d8b0480102c3e0b2699b353646f0b3713284197",
+    "bytes": 53587
+  },
+  "independentApprovals": 0
+}

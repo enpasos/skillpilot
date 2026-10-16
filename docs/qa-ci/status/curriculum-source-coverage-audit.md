@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/`
 > Source of truth: `curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json`
 
-Generated: 2026-10-11T21:53:37.060Z
+Generated: 2026-10-15T23:30:27.475Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, automatic `requires-closure`, and `assessment-requires` do not count as source coverage.
 
@@ -27,22 +27,22 @@ Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic go
 
 | Bundesland | Status | View status | Covered | Direct | Surrogate-only | Missing | Visible | Visible covered | Unsupported visible | Partial source links | Warnings | Errors |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| DE-BW | partial | covered | 788/807 (97.6%) | 788 | 0 | 19 | 703 | 703 | 0 | 502 | 0 | 0 |
+| DE-BW | partial | covered | 788/807 (97.6%) | 788 | 0 | 19 | 720 | 720 | 0 | 519 | 0 | 0 |
 | DE-HE | partial | covered | 793/807 (98.3%) | 792 | 1 | 14 | 785 | 785 | 0 | 16 | 0 | 0 |
-| DE-BY | partial | covered | 624/807 (77.3%) | 605 | 19 | 183 | 568 | 568 | 0 | 346 | 0 | 0 |
-| DE-BB | partial | covered | 783/807 (97%) | 783 | 0 | 24 | 684 | 684 | 0 | 7 | 0 | 0 |
-| DE-BE | partial | covered | 780/807 (96.7%) | 780 | 0 | 27 | 671 | 671 | 0 | 3 | 0 | 0 |
-| DE-NI | partial | covered | 781/807 (96.8%) | 778 | 3 | 26 | 683 | 683 | 0 | 620 | 0 | 0 |
-| DE-NW | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 678 | 678 | 0 | 554 | 0 | 0 |
+| DE-BY | partial | covered | 624/807 (77.3%) | 605 | 19 | 183 | 570 | 570 | 0 | 347 | 0 | 0 |
+| DE-BB | partial | covered | 783/807 (97%) | 783 | 0 | 24 | 686 | 686 | 0 | 7 | 0 | 0 |
+| DE-BE | partial | covered | 780/807 (96.7%) | 780 | 0 | 27 | 673 | 673 | 0 | 3 | 0 | 0 |
+| DE-NI | partial | covered | 781/807 (96.8%) | 778 | 3 | 26 | 685 | 685 | 0 | 622 | 0 | 0 |
+| DE-NW | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 680 | 680 | 0 | 555 | 0 | 0 |
 | DE-SH | partial | covered | 739/807 (91.6%) | 739 | 0 | 68 | 714 | 714 | 0 | 481 | 0 | 0 |
-| DE-HB | partial | covered | 763/807 (94.5%) | 751 | 12 | 44 | 654 | 654 | 0 | 586 | 0 | 0 |
-| DE-HH | partial | covered | 779/807 (96.5%) | 777 | 2 | 28 | 680 | 680 | 0 | 565 | 0 | 0 |
-| DE-MV | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 630 | 630 | 0 | 574 | 0 | 0 |
+| DE-HB | partial | covered | 763/807 (94.5%) | 751 | 12 | 44 | 656 | 656 | 0 | 587 | 0 | 0 |
+| DE-HH | partial | covered | 779/807 (96.5%) | 777 | 2 | 28 | 682 | 682 | 0 | 567 | 0 | 0 |
+| DE-MV | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 633 | 633 | 0 | 577 | 0 | 0 |
 | DE-RP | partial | covered | 783/807 (97%) | 780 | 3 | 24 | 735 | 735 | 0 | 691 | 0 | 0 |
-| DE-SL | partial | covered | 788/807 (97.6%) | 785 | 3 | 19 | 690 | 690 | 0 | 647 | 0 | 0 |
-| DE-SN | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 682 | 682 | 0 | 634 | 0 | 0 |
-| DE-ST | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 676 | 676 | 0 | 635 | 0 | 0 |
-| DE-TH | partial | covered | 781/807 (96.8%) | 778 | 3 | 26 | 619 | 619 | 0 | 588 | 0 | 0 |
+| DE-SL | partial | covered | 788/807 (97.6%) | 785 | 3 | 19 | 693 | 693 | 0 | 649 | 0 | 0 |
+| DE-SN | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 683 | 683 | 0 | 635 | 0 | 0 |
+| DE-ST | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 679 | 679 | 0 | 638 | 0 | 0 |
+| DE-TH | partial | covered | 781/807 (96.8%) | 778 | 3 | 26 | 624 | 624 | 0 | 593 | 0 | 0 |
 
 ## Physik (Gymnasium, DE)
 

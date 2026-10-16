@@ -1,0 +1,11 @@
+<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Actual ideal gas GoalCard independent V1</title></head><body><main id="root"></main><script type="module">
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import {GoalCard} from '../../../app/src/components/GoalCard.tsx';
+import {LanguageProvider} from '../../../app/src/contexts/LanguageContext.tsx';
+import './style.css';
+const source=await (await fetch('./whole-contexts.json')).json();
+const width=Number(new URLSearchParams(location.search).get('width')||360);
+const cards=source.wholeContexts.map(row=>{const original=row.goal;const goal={...original,resourceLinks:original.resourceLinks.map(link=>link.type==='goal-visualization'?{...link,url:'/review-assets/'+original.id}:link)};return React.createElement('section',{key:goal.id,id:'review-'+goal.id,style:{width:width+'px',margin:'0 0 16px'}},React.createElement(GoalCard,{goal,masteryValue:0,showLearnerTools:true,readOnly:true,useRawGoalTitles:true}));});
+createRoot(document.getElementById('root')).render(React.createElement(LanguageProvider,null,...cards));
+</script></body></html>

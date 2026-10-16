@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-ln-existing-png-20260927-v1-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex AI synthesis of two blind current-image description reviews; no human approval",
+  "synthesizedAt": "2026-09-27T10:02:57.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-ln-existing-png-20260927-v1",
+    "batchManifestDigest": "sha256:dd3a5262e8658c8147e8bed8b057aad4efdf26b58e72d79973b7188f14d11b8b",
+    "configDigest": "sha256:459fe75d4ce401a868f6c137d4ba9ba2ac2ab048644f3fc2abb979f048dc6149",
+    "bundleFingerprint": "sha256:2834af6e354ed6ecc61542a686b07de8319720f993befafce39da08c0531d0a7",
+    "bookDigest": "sha256:d09ecd5da484f40a7af094b575633c4d6d103a25c675e6399a87e6408be9a61c",
+    "reviewInputFingerprint": "sha256:d99fd7a0eeeb2068ff5983973b8f15753dcc6900c608a02d6be4846bef9e9fe6",
+    "dualSummaryDigest": "sha256:c201226393e1c2f5c941e791390a2fcd95dc33de266433545ed09810e104af2b",
+    "canonicalLandscapeDigest": "sha256:d55cbe19310091d0c31f9aaee196cb1f891d828cb55559aa105a1c766bc1c761"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-ln-existing-png-20260927-v1-a",
+      "campaignDigest": "sha256:a25b63c6878cbada5c23bdeb126efe305a2847552f110a8465a0c842004a705e",
+      "roundId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-ln-existing-png-20260927-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d99fd7a0eeeb2068ff5983973b8f15753dcc6900c608a02d6be4846bef9e9fe6",
+      "batchId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3f1d52cb22dd32dab9fe61fca9dc7adcc3df06758a75238511f1a998ead55703",
+      "runId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "runManifestDigest": "sha256:3380710ef02c3493aeddf23e4bba33564fa60e5a199c9480937012f83c2f70b8",
+      "resultsDigest": "sha256:71c7276a2227ae595a8ea451495d7c39cac63da0c283e7043ed0bb15e8b6340e"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-ln-existing-png-20260927-v1-b",
+      "campaignDigest": "sha256:8ac017cda04fe06a04b3ba24a027e63426223032601994ffa8f60a366f4e074b",
+      "roundId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-ln-existing-png-20260927-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d99fd7a0eeeb2068ff5983973b8f15753dcc6900c608a02d6be4846bef9e9fe6",
+      "batchId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e75f39fdd6e99e7f792ba91b605980d51de61f65be95d8af57e93e07137203ae",
+      "runId": "math-m7-ln-existing-png-b-run-20260927-01",
+      "runManifestDigest": "sha256:ebb22b2383c94727fe8cab933d6f617b1418399ed4ea12349da20e4a878d89d8",
+      "resultsDigest": "sha256:2f48a33bb3137e01a6b79c4838a9993fcd46f9e64cf581a06d01774126acae50"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-ln-existing-png-20260927-v1-informed-synthesis-decision-001",
+      "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a23e3293dcf9cd787b1d702666e17dcdbec1ecc57f253726c099377855e7eedb",
+      "pageFingerprint": "sha256:965c64b59869881d4080772214bbb569eca5863b417522c16d45f166e060faf1",
+      "goalReviewContextFingerprint": "sha256:b3d301e62cebbfbf8f3f7367c3990f479f7c473d135dcc2f45df8c5de2c6ea75",
+      "finalText": {
+        "titleDe": "Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
+        "titleEn": "Explain the natural logarithm as the inverse of the exponential function (advanced course)",
+        "descriptionDe": "Die lernende Person kann $\\ln(x)$ als Umkehrfunktion von $e^x$ erklären und die gegenseitige Zuordnung der Graphen durch Spiegelung an der Geraden $y=x$ darstellen.",
+        "descriptionEn": "The learner can explain $\\ln(x)$ as the inverse of $e^x$ and represent the relationship between their graphs as reflection in the line $y=x$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-ln-existing-png-20260927-v1-a-goal-01",
+          "recordDigest": "sha256:544d9fb5da2fef1231fa9dc92e76fbd488523052e9511c1b40265bdc45e5e15b"
+        },
+        "second": {
+          "recordId": "math-m7-ln-existing-png-b-record-20260927-01",
+          "recordDigest": "sha256:03a0dd9ae43aa15626f911b7ac57de9c82339c6ccb71a39ab5b8e72ea47eb9ec"
+        }
+      },
+      "rationaleDe": "Beide getrennten KI-Runden bestätigen den aktuellen deutschen und englischen Zieltext als eine zusammenhängende Kompetenz: Die Umkehrung von e^x vertauscht Ein- und Ausgabe und spiegelt die Graphen an y=x. Das aktuelle PNG zeigt bei gleicher Achsenskalierung die korrekten Punktpaare (0,1)/(1,0) und (1,e)/(e,1); der ln-Graph liegt nur bei x>0. Diese Darstellung veranschaulicht das Ziel, belegt aber keine Lernendenleistung. Für die D-Auflösung wird die erste Runde gewählt, weil ihr Vorschlag für ein P-v2-Profil zur tatsächlich gebundenen Buchseite mit evidenceProfile=null passt. Runde B verweist auf ein separates P-v2-Kandidatenprofil und empfiehlt deshalb none; diese unterschiedliche Empfehlung wird nicht als P-Freigabe oder Bildfreigabe gewertet. Die beiden Runden bleiben KI-Kandidaten ohne menschliche Zustimmung; länderbezogene GK/LK-Projektion und weitere M7-Gates werden hier nicht entschieden.",
+      "rationaleEn": "Both separate AI rounds affirm the current German and English goal text as one connected competence: inverting e^x exchanges input and output and reflects the graphs across y=x. The current PNG uses equal axis scales and shows the correct point pairs (0,1)/(1,0) and (1,e)/(e,1); the ln graph is restricted to x>0. This image illustrates the goal but is not learner performance evidence. The first round supplies the selected D evidence because its suggestion to create a P-v2 profile matches the actual bound book page, where evidenceProfile is null. Round B cites a separate P-v2 candidate profile and therefore recommends none; this difference is not treated as P approval or image approval. Both rounds remain AI candidates without human approval; jurisdiction-specific course projection and the other M7 gates are outside this decision."
+    }
+  ],
+  "manifestFingerprint": "sha256:ee39c8919ac1bfa7ceba5735f4142c757d071304b3e45dd5d4a97ed31836da29"
+}

@@ -508,7 +508,47 @@ class ClaudeV1McpContractTest {
         assertTrue(instructions.contains(
                 "including in Voice: never speak or write a schema field, proposed argument correction or retry plan"));
         assertTrue(instructions.contains(
-                "if a proposed call is rejected, keep the correction private and follow the silent write-recovery procedure"));
+                "Construct calls from the loaded schema and apply the discovery/recovery rules above silently"));
+    }
+
+    @Test
+    void initializationInstructionsLoadDeferredMasteryBeforeConstructingItsCall() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+
+        assertTrue(instructions.contains(
+                "before constructing a SkillPilot call, obtain its host-registered invocation handle and loaded input schema"));
+        assertTrue(instructions.contains(
+                "If deferred, use only the discovery mechanism actually exposed by the host first"));
+        assertTrue(instructions.contains(
+                "Never invent a discovery tool name, handle or arguments"));
+        assertTrue(instructions.contains(
+                "For set_skillpilot_mastery, load the tool before constructing its completion request; invoke only its registered handle with schema-permitted arguments"));
+        assertTrue(instructions.contains(
+                "When mastery is warranted, perform any discovery and the write immediately, without extra learner consent or assessment"));
+
+        int discovery = instructions.indexOf("Host tool discovery:");
+        int constructMastery = instructions.indexOf("For set_skillpilot_mastery, load the tool");
+        int startCoaching = instructions.indexOf("Ground every turn");
+        assertTrue(discovery >= 0 && discovery < constructMastery && constructMastery < startCoaching,
+                "Initialization must establish discovery before constructing mastery or beginning coaching");
+    }
+
+    @Test
+    void instructionsSeparateHostDiscoveryFromBackendWriteRecoveryWithoutVoiceNarration() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+
+        assertTrue(instructions.contains(
+                "If the host explicitly confirms that a tool was not invoked because it is not loaded, load it, discard guessed arguments and construct one schema-valid call"));
+        assertTrue(instructions.contains(
+                "Do not reload canonical state or consume the backend retry solely for discovery"));
+        assertTrue(instructions.contains(
+                "If SkillPilot returns a mastery error or invocation is uncertain, follow the bounded silent write-recovery procedure below"));
+        assertTrue(instructions.contains(
+                "Keep discovery, argument analysis and corrections private in text and Voice; never narrate them"));
+        assertTrue(instructions.contains("Reload the canonical context exactly once without commentary"));
+        assertTrue(instructions.contains("retry at most once with the current stateVersion and a fresh UUID"));
+        assertTrue(instructions.contains(
+                "including in Voice: never speak or write a schema field, proposed argument correction or retry plan"));
     }
 
     @Test

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "role": "Independent visual and chemical reviewer; not the image author",
+  "reviewerTask": "/root/chemie_carbonyl15_native_fresh_independent_a_20261015",
+  "reviewScope": "Only Pourbaix goal f0f2c5f8-06f1-5774-a176-d96505727acf and its one newly supplied native PNG",
+  "decidedAtUTC": "2026-10-15T14:41:33.166430+00:00",
+  "decision": "accepted",
+  "decisionAuthority": "ai_candidate",
+  "newNormalVBindingsAtFIRST": 0,
+  "authorScientificFIRSTRead": false,
+  "authorVerdictAdopted": false,
+  "otherImageReviewScienceAdopted": false,
+  "wholeCurrentGermanTitle": "pE/pH- und Pourbaix-Diagramme",
+  "wholeCurrentEnglishTitle": "pE/pH and Pourbaix diagrams",
+  "wholeCurrentGermanDescription": "Die lernende Person kann pE/pH-Diagramme interpretieren und Stabilitätsbereiche ableiten.",
+  "wholeCurrentEnglishDescription": "The learner can interpret pE/pH diagrams and derive stability ranges.",
+  "fullFinalALT": "Ein ausdrücklich schematisches pE/pH-Diagramm zeigt das idealisierte Modellmetall M. Nach oben steigt pE, nach rechts pH. Oberhalb der horizontalen Grenze liegt links gelöstes M²⁺; rechts der vertikalen Grenze und über der nach rechts fallenden Grenze liegt festes M(OH)₂. Unterhalb der horizontalen und fallenden Grenze liegt Metall M. Die drei Grenzen treffen sich in einem Punkt. Ein Pfeil führt bei gleichem pE zu höherem pH vom Ionen- in den Feststoffbereich. „Stabilität ≠ Tempo“ trennt Stabilität und Reaktionsgeschwindigkeit. Ohne Zahlenskalen, Wasserstabilitätslinien und weitere Spezies; ein Feststofffeld beweist keine Schutzschicht.",
+  "contextActuallyRead": [
+    "Whole current German/English goal including LK/Q3 and direct prerequisite",
+    "Whole direct prerequisite: standard reduction potentials and electrochemical series, German/English",
+    "Both complete existing German/English cases eqrk16-10-a and eqrk16-10-b, including data, worked reasoning, transfers and rubrics",
+    "Final candidate goal with the new primary resource link, its description and full ALT",
+    "Actual native1672x941RGB PNG pixels",
+    "Four actual Chromium screenshots at image widths360,316,680,636 CSS pixels"
+  ],
+  "scientificReasoning": {
+    "horizontalBoundary": "M2+ +2e- <=> M contains no proton. At fixed dissolved activity the Nernst boundary is independent of pH. The actual horizontal black segment divides upper-left aqueous M2+ from lower metallic M.",
+    "verticalBoundary": "M(OH)2(s) <=> M2+ +2OH- contains no electron. At fixed threshold activity, the precipitation boundary is independent of pE. The actual vertical segment divides left aqueous M2+ from right hydroxide.",
+    "fallingBoundary": "Substitution aM2+=Ksp/aOH-^2 into the metal-ion Nernst equation gives a negative Eh-pH slope, hence a negative pE-pH slope. The actual rightward-falling segment divides upper hydroxide from lower metal.",
+    "commonIntersection": "All three actual black segments meet at one visible filled point, with no gap, crossing or conflicting region. The horizontal and descending segments form the lower envelope of the two oxidized-form regions.",
+    "caseConsistency": "The second supplied ideal-M case gives pH9.5, horizontalEh=-.61748V and descendingEh=-.05546-.05916pH, meeting at the same model point. The picture has no numerical scale and does not purport to encode those numerical coordinates. The separate Cu/water case is not being collapsed into the M/hydroxide sketch.",
+    "regionLabelsAndAxes": "M²⁺ appears only in the upper-left solution field, M(OH)₂ in the upper-right powder field, M in the lower metal field. pE points upward, pH rightward. The yellow arrow crosses the vertical line to the right at fixed height: increasing pH at fixed pE can favor hydroxide in this restricted model.",
+    "scopeAndOmissions": "The conspicuous Schematisches Modell label and full ALT make the abstraction explicit. No numeric ticks, water lines, complete iron chemistry, extra oxidation states or complexes are claimed. Their absence is permissible for this representative didactic sketch; the separate complete case material teaches relevant water/model limits.",
+    "protectionAndRate": "The powder is distinct from the metallic block; no coating, protective film, passivation efficacy or corrosion rate is drawn. Stabilität ≠ Tempo is understandable here as the thermodynamic/kinetic distinction: field location is not reaction speed. It provides a memorable warning, not a quantitative law. The ALT explicitly states that a solid field proves no protective layer.",
+    "representationAndAgeFit": "Large formulas, three colored fields, one intersection and one pH-change arrow support an LK-level interpretation task without giving a full solved numerical exercise. Black outlines and formulas preserve meaning beyond color alone; no technical IDs, watermark or distracting additional topic is visible."
+  },
+  "responsivePixelObservations": [
+    {
+      "actualImageCSSWidth": 360,
+      "finding": "Axes, signs/subscripts, labels, triple point, arrow and both short captions are clear. No crop."
+    },
+    {
+      "actualImageCSSWidth": 316,
+      "finding": "The narrow GoalCard view retains distinct 2+ versus hydroxide subscript2 and legible pE/pH. Thick borders, one intersection and falling slope remain separable. Both captions remain readable without zoom."
+    },
+    {
+      "actualImageCSSWidth": 680,
+      "finding": "Complete image is visible below the448px cap; all chemical and directional details clear."
+    },
+    {
+      "actualImageCSSWidth": 636,
+      "finding": "Actual GoalCard padding/borders retain full image and all content at object-fit contain. No crop or text overflow."
+    }
+  ],
+  "browserBoundary": "Actual Chromium147.0.7727.15, deviceScaleFactor1, zoom1, faithful bounded live-GoalCard CSS fragment inspected against GoalCard.tsx; not a full application or real-host acceptance test.",
+  "independentSourceCheck": [
+    {
+      "url": "https://github.com/materialsproject/public-docs/blob/main/methodology/aqueous-stability-pourbaix.md",
+      "readScope": "Introduction and thermodynamic-equilibrium qualification; official primary project methodology opened. Used only to verify equilibrium-model scope, not the fiction-specific boundary constants."
+    },
+    {
+      "url": "https://goldbook.iupac.org/terms/view/S05900",
+      "readScope": "Official indexed definition supports distinction of thermodynamic stability and kinetics; direct full-page open returned403. No claim of full-page reading."
+    }
+  ],
+  "decisionRationale": "Accept this single exact candidate for the stated schematic model and the complete final goal/ALT context. The visibly correct boundary topology and region assignment survive all four actual render widths. Stability-versus-rate and solid-versus-protective-film limits are clear. No change is required for a truthful controlled-pilot visualization.",
+  "boundaries": {
+    "newDescriptionVotes": 0,
+    "newProfileVotes": 0,
+    "newAssessmentVotes": 0,
+    "newMemoryVotes": 0,
+    "humanApproval": false,
+    "humanTrial": false,
+    "learnerPerformanceObserved": false,
+    "activeWrites": 0,
+    "M7Granted": false,
+    "D15Changed": false
+  }
+}

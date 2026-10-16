@@ -1,0 +1,11 @@
+{
+  "savedAtUTC": "2026-10-15T08:48:28.231Z",
+  "label": "curriculum-symlinks",
+  "command": "python - <<'PY'\nimport importlib.util,json,time\nfrom pathlib import Path\np=Path('scripts/validate_schemas.py');s=importlib.util.spec_from_file_location('stock_curriculum_validation',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)\nstart=time.time();errors=m.curriculum_symlink_errors('.')\nprint(json.dumps({'normalHelper':'scripts/validate_schemas.py:curriculum_symlink_errors','internalDiscovery':'unmodified read-only git ls-files from the requested stock helper','errors':errors,'errorCount':len(errors),'elapsedSeconds':time.time()-start},ensure_ascii=False,indent=2))\nraise SystemExit(bool(errors))\nPY",
+  "cwd": ".",
+  "exitCode": 0,
+  "wallTimeSeconds": 5.809835076,
+  "toolStatus": "fulfilled",
+  "rawOutputPath": "checks/curriculum-symlinks.stdout-stderr.actual.txt",
+  "additionalScientificVote": false
+}

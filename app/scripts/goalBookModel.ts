@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs'
 import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'
 import { dirname, isAbsolute, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { TextDecoder } from 'node:util'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { LearningGoal } from '../src/landscapeTypes'
@@ -40,6 +41,10 @@ import {
   parseGoalBookEvidenceReviewRecord,
   validateGoalBookEvidenceReviewRecordSemantics,
 } from './goalBookEvidenceReviewLoader'
+import {
+  isCanonicalMathPhysicsEvidenceSource,
+  loadRegisteredCurrentPositiveEvidenceOwners,
+} from './currentPositiveEvidenceOwners'
 
 export const GOAL_BOOK_MODEL_SCHEMA_VERSION = '1.1.0' as const
 export const GOAL_BOOK_CONFIG_SCHEMA_VERSION = 1 as const
@@ -202,6 +207,11 @@ export interface GoalBookEvidenceReviewSummary {
 export interface GoalBookEvidenceReviewSource {
   path: string
   digest: string
+  producerConfig?: {
+    path: string
+    digest: string
+    reviewedResourceTypes: Array<'goal-visualization'>
+  }
 }
 
 export interface GoalBookCompositionViewSource {
@@ -297,6 +307,7 @@ export interface GoalBookConfigFile {
   publicationMode: GoalBookPublicationMode
   atlasBaseUrl?: string
   evidenceReviewPaths: string[]
+  evidenceReviewConfigPaths?: string[]
   externalLandscapePaths?: string[]
   outputPath: string
 }
@@ -313,7 +324,14 @@ export interface GoalBookBuildConfig {
   publicationMode: GoalBookPublicationMode
   atlasBaseUrl?: string
   evidenceReviewPaths: string[]
+  evidenceReviewConfigPaths?: string[]
   externalLandscapePaths?: string[]
+}
+
+export interface GoalBookEvidenceReviewConfigBuildSource {
+  path: string
+  bytes: Uint8Array
+  reviewCriteriaDigest: string
 }
 
 export interface GoalBookEvidenceReviewBuildSource {
@@ -334,6 +352,7 @@ export interface GoalBookBuildInput {
   goalVisualizationAssetDigests: Record<string, string>
   requiredTaskMaterialDigests?: Record<string, string>
   evidenceReviewSources: GoalBookEvidenceReviewBuildSource[]
+  evidenceReviewConfigSources?: GoalBookEvidenceReviewConfigBuildSource[]
   config: GoalBookBuildConfig
 }
 
@@ -960,6 +979,67 @@ const parseGoalVisualizationQa = (
   return recordsByGoalId
 }
 
+const decodeProducerConfigUtf8 = (bytes: Uint8Array, label: string): string => {
+  try {
+    return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes)
+  } catch {
+    return fail(`producer config ${label} must contain valid UTF-8 bytes.`)
+  }
+}
+
+// A selected producer config owns its exact record source and scope. It changes
+// only P input validation; page visualization and V bindings remain independent.
+const parseEvidenceReviewConfigSources = (
+  sources: GoalBookEvidenceReviewConfigBuildSource[],
+  configuredPaths: string[],
+  evidenceReviewPaths: string[],
+  landscapePath: string,
+  landscapeId: string,
+) => {
+  if (sources.length !== configuredPaths.length) {
+    fail('evidenceReviewConfigSources must match config.evidenceReviewConfigPaths exactly.')
+  }
+  const byReviewPath = new Map<string, {
+    config: import('./positiveGoalEvidenceReview').PositiveGoalEvidenceReviewConfig
+    binding: NonNullable<GoalBookEvidenceReviewSource['producerConfig']>
+    reviewCriteriaDigest: string
+  }>()
+  if (sources.length === 0) return byReviewPath
+  const validator = createSchemaValidator(resolve(
+    REPOSITORY_ROOT,
+    'contracts/goal-evidence/v2/goal-evidence-review-config.schema.json',
+  ))
+  sources.forEach((source, index) => {
+    if (source.path !== configuredPaths[index]) {
+      fail(`evidenceReviewConfigSources[${index}].path does not match config.evidenceReviewConfigPaths.`)
+    }
+    const raw = parseJson(decodeProducerConfigUtf8(source.bytes, source.path), source.path)
+    if (!validator.validate(raw)) {
+      fail(`producer config ${source.path} violates its closed P-v2 schema: ${validator.ajv.errorsText(validator.validate.errors)}.`)
+    }
+    const config = raw as import('./positiveGoalEvidenceReview').PositiveGoalEvidenceReviewConfig
+    if (config.landscapePath !== landscapePath || config.landscapeId !== landscapeId) {
+      fail(`producer config ${source.path} does not own this landscape.`)
+    }
+    if (!evidenceReviewPaths.includes(config.reviewPath)) {
+      fail(`producer config ${source.path} does not own a configured evidence review source.`)
+    }
+    if (byReviewPath.has(config.reviewPath)) {
+      fail(`ambiguous producer configs for evidence review source ${config.reviewPath}.`)
+    }
+    byReviewPath.set(config.reviewPath, {
+      config,
+      binding: {
+        path: source.path,
+        digest: digestBytes(source.bytes),
+        reviewedResourceTypes: [...config.reviewedResourceTypes],
+      },
+      reviewCriteriaDigest: sha256Digest(source.reviewCriteriaDigest, `${source.path} reviewCriteriaDigest`),
+    })
+  })
+  return byReviewPath
+}
+
 const parseEvidenceReviewSources = (
   sources: GoalBookEvidenceReviewBuildSource[],
   configuredPaths: string[],
@@ -967,6 +1047,9 @@ const parseEvidenceReviewSources = (
   semanticKindByGoalId: ReadonlyMap<string, string>,
   qaRecordsByGoalId: ReadonlyMap<string, GoalVisualizationQaRecord>,
   requiredTaskMaterialDigests: Readonly<Record<string, string>>,
+  producerConfigs: ReturnType<typeof parseEvidenceReviewConfigSources>,
+  goalVisualizationAssetDigests: Readonly<Record<string, string>>,
+  sourceIdentity: { landscapePath: string; semanticKindLedgerPath: string },
 ): EvidenceReviewParseResult => {
   if (!Array.isArray(sources)) fail('evidenceReviewSources must be an array.')
   if (sources.length !== configuredPaths.length) {
@@ -976,6 +1059,22 @@ const parseEvidenceReviewSources = (
   const goalById = buildCanonicalGraphIndex(landscape).goalById
   const summaryByGoalId = new Map<string, GoalBookEvidenceReviewSummary>()
   const parsedSources: GoalBookEvidenceReviewSource[] = []
+  const currentOwners = sources.length > 0 && isCanonicalMathPhysicsEvidenceSource({
+    landscapePath: sourceIdentity.landscapePath,
+    landscapeId: landscape.landscapeId,
+  })
+    ? loadRegisteredCurrentPositiveEvidenceOwners({
+      ...sourceIdentity,
+      landscapeId: landscape.landscapeId,
+      atomicGoalIds: new Set([...semanticKindByGoalId]
+        .filter(([, kind]) => kind === 'curricularAtomic')
+        .map(([goalId]) => goalId)),
+    })
+    : null
+  if (currentOwners && currentOwners.issues.length > 0) {
+    fail(`current positive-evidence owner validation failed: ${currentOwners.issues.join(' | ')}`)
+  }
+
 
   sources.forEach((source, sourceIndex) => {
     const sourceRecord = asRecord(source, `evidenceReviewSources[${sourceIndex}]`)
@@ -990,13 +1089,28 @@ const parseEvidenceReviewSources = (
       .filter(({ line }) => line !== '')
       .map(({ line, lineNumber }) => parseJson(line, `${path}:${lineNumber}`))
     if (records.length === 0) fail(`evidence review source ${path} contains no records.`)
-    parsedSources.push({ path, digest: digest(records) })
+    const producer = producerConfigs.get(path)
+    if (producer && (
+      records.length !== producer.config.scope.goalIds.length
+      || records.some((record, index) => (record as { goalId?: string }).goalId !== producer.config.scope.goalIds[index])
+    )) {
+      fail(`producer config ${producer.binding.path} scope does not match its record source exactly and in order.`)
+    }
+    parsedSources.push({ path, digest: digest(records), ...(producer ? { producerConfig: producer.binding } : {}) })
 
     records.forEach((rawRecord, recordIndex) => {
       const label = `${path} record ${recordIndex + 1}`
       const record = parseGoalBookEvidenceReviewRecord(rawRecord, label)
       if (record.landscapeId !== landscape.landscapeId) {
         fail(`${label} targets ${record.landscapeId}, expected ${landscape.landscapeId}.`)
+      }
+      if (producer && (
+        record.schemaVersion !== 2
+        || record.reviewId !== producer.config.reviewId
+        || record.reviewCriteriaFingerprint !== producer.reviewCriteriaDigest
+        || (producer.config.requireApproved && record.status !== 'approved')
+      )) {
+        fail(`${label} does not match its selected P producer owner, criteria or approval requirement.`)
       }
       const goalId = record.goalId
       if (summaryByGoalId.has(goalId)) fail(`duplicate evidence review record for ${goalId}.`)
@@ -1007,7 +1121,29 @@ const parseEvidenceReviewSources = (
 
       const resourceDigests: Record<string, string> = { ...requiredTaskMaterialDigests }
       const qaRecord = qaRecordsByGoalId.get(goalId)
-      if (qaRecord) resourceDigests[qaRecord.imageUrl] = qaRecord.assetSha256
+      if (producer) {
+        if (producer.config.reviewedResourceTypes.includes('goal-visualization')) {
+          for (const link of (goal as unknown as LearningGoal).resourceLinks ?? []) {
+            if (link.type !== 'goal-visualization') continue
+            resourceDigests[link.url] = sha256Digest(
+              goalVisualizationAssetDigests[link.url],
+              `${label} selected producer goal-visualization digest for ${link.url}`,
+            )
+          }
+        }
+      } else {
+        const owner = currentOwners?.owners.get(goalId)
+        // An implicit policy may omit the optional image only for an exact,
+        // normally validated registered owner. Explicit producer configs above
+        // bind their own record source and raw bytes. Required task materials
+        // remain mandatory in the digest base for both paths.
+        const exactCurrentOwner = record.schemaVersion === 2
+          && owner !== undefined
+          && stableGoalBookJson(record) === stableGoalBookJson(owner.record)
+        if (qaRecord && (!exactCurrentOwner || owner.config.reviewedResourceTypes.includes('goal-visualization'))) {
+          resourceDigests[qaRecord.imageUrl] = qaRecord.assetSha256
+        }
+      }
       const semanticErrors = validateGoalBookEvidenceReviewRecordSemantics(
         record,
         goal as unknown as LearningGoal,
@@ -1836,6 +1972,7 @@ export const buildGoalBookModel = ({
   goalVisualizationAssetDigests,
   requiredTaskMaterialDigests = {},
   evidenceReviewSources: rawEvidenceReviewSources,
+  evidenceReviewConfigSources = [],
   config,
 }: GoalBookBuildInput): GoalBookModel => {
   const bookId = nonEmptyString(config.bookId, 'config.bookId')
@@ -1963,6 +2100,13 @@ export const buildGoalBookModel = ({
     landscapeId,
     goalVisualizationAssetDigests,
   )
+  const producerConfigs = parseEvidenceReviewConfigSources(
+    evidenceReviewConfigSources,
+    uniqueStringArray(config.evidenceReviewConfigPaths ?? [], 'config.evidenceReviewConfigPaths'),
+    config.evidenceReviewPaths,
+    landscapePath,
+    landscapeId,
+  )
   const evidenceReviews = parseEvidenceReviewSources(
     rawEvidenceReviewSources,
     evidenceReviewPaths,
@@ -1970,6 +2114,9 @@ export const buildGoalBookModel = ({
     semanticKindLedger.semanticKindByGoalId,
     goalVisualizationQaRecords,
     requiredTaskMaterialDigests,
+    producerConfigs,
+    goalVisualizationAssetDigests,
+    { landscapePath, semanticKindLedgerPath },
   )
   const projectedOccurrences = membershipTargetCollection.occurrences
   const membershipOccurrences = projectedOccurrences.filter(({ goalId }) => (
@@ -2667,6 +2814,9 @@ const parseGoalBookConfig = (value: unknown): GoalBookConfigFile => {
       record.evidenceReviewPaths,
       'config.evidenceReviewPaths',
     ),
+    ...(record.evidenceReviewConfigPaths === undefined
+      ? {}
+      : { evidenceReviewConfigPaths: uniqueStringArray(record.evidenceReviewConfigPaths, 'config.evidenceReviewConfigPaths') }),
     ...(record.externalLandscapePaths === undefined
       ? {}
       : {
@@ -2783,12 +2933,43 @@ export const loadGoalBookBuildInputs = async (
       sourceManifest.durationModelPolicyPath,
     )
     : undefined
+  const evidenceReviewConfigSources = await Promise.all((config.evidenceReviewConfigPaths ?? []).map(async (path) => {
+    const bytes = await readFile(resolveRepositoryPath(repositoryRoot, path, 'evidenceReviewConfigPath'))
+    const producer = asRecord(parseJson(decodeProducerConfigUtf8(bytes, path), path), path)
+    const criteriaPath = nonEmptyString(producer.reviewCriteriaPath, `${path}.reviewCriteriaPath`)
+    return {
+      path,
+      bytes,
+      reviewCriteriaDigest: digestBytes(await readFile(resolveRepositoryPath(repositoryRoot, criteriaPath, 'reviewCriteriaPath'))),
+    }
+  }))
+  const parsedLandscape = parseJson(landscapeText, config.landscapePath) as { landscapeId: string; goals: LearningGoal[] }
+  const selectedProducers = parseEvidenceReviewConfigSources(
+    evidenceReviewConfigSources,
+    config.evidenceReviewConfigPaths ?? [],
+    config.evidenceReviewPaths,
+    config.landscapePath,
+    parsedLandscape.landscapeId,
+  )
   const goalVisualizationAssetDigests = await loadGoalVisualizationAssetDigests(
     goalVisualizationQa,
     repositoryRoot,
   )
+  for (const { config: producer } of selectedProducers.values()) {
+    if (!producer.reviewedResourceTypes.includes('goal-visualization')) continue
+    for (const goal of parsedLandscape.goals.filter(({ id }) => producer.scope.goalIds.includes(id))) {
+      for (const link of goal.resourceLinks ?? []) {
+        if (link.type !== 'goal-visualization') continue
+        if (!link.url.startsWith('/assets/goal-visualizations/') || link.url.split('/').some((part) => part === '..' || part === '.')) {
+          fail(`selected producer has unsupported goal-visualization URL ${link.url}.`)
+        }
+        const assetPath = resolveRepositoryPath(repositoryRoot, `app/public${link.url}`, 'producer goal-visualization')
+        goalVisualizationAssetDigests[link.url] = digestBytes(await readFile(assetPath))
+      }
+    }
+  }
   const requiredTaskMaterialDigests: Record<string, string> = {}
-  for (const goal of (parseJson(landscapeText, config.landscapePath) as { goals: LearningGoal[] }).goals) {
+  for (const goal of parsedLandscape.goals) {
     const taskState = collectRequiredTaskMaterialDigests(goal, repositoryRoot)
     if (taskState.errors.length) fail(taskState.errors.join(" | "))
     Object.assign(requiredTaskMaterialDigests, taskState.digests)
@@ -2812,6 +2993,7 @@ export const loadGoalBookBuildInputs = async (
     goalVisualizationQa,
     goalVisualizationAssetDigests,
     requiredTaskMaterialDigests,
+    evidenceReviewConfigSources,
     evidenceReviewSources: config.evidenceReviewPaths.map((path, index) => ({
       path,
       text: evidenceReviewTexts[index],

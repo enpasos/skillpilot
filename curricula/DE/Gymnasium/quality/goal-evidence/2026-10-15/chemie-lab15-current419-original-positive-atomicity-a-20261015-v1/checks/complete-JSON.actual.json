@@ -1,0 +1,11 @@
+{
+  "savedAtUTC": "2026-10-15T08:48:28.231Z",
+  "label": "complete-JSON",
+  "command": "python - <<'PY'\nimport json\nfrom pathlib import Path\nr=Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-current419-original-positive-atomicity-a-20261015-v1');counts={'json':0,'jsonl':0,'jsonlRecords':0}\nfor p in sorted(r.rglob('*')):\n if not p.is_file():continue\n if p.suffix=='.json':json.loads(p.read_text());counts['json']+=1\n elif p.suffix=='.jsonl':\n  lines=[s for s in p.read_text().splitlines() if s.strip()]\n  for s in lines:json.loads(s)\n  counts['jsonl']+=1;counts['jsonlRecords']+=len(lines)\nprint(json.dumps({'completeWrittenFileParse':counts,'errorCount':0},indent=2))\nPY",
+  "cwd": ".",
+  "exitCode": 0,
+  "wallTimeSeconds": 0.006655521,
+  "toolStatus": "fulfilled",
+  "rawOutputPath": "checks/complete-JSON.stdout-stderr.actual.txt",
+  "additionalScientificVote": false
+}

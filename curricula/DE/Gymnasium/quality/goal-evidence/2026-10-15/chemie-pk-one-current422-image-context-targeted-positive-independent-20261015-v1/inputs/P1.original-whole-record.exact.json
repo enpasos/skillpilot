@@ -1,0 +1,106 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-acid7-current419-reviewed-profile-design-informed-synthesis-20261014-v4",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+  "goalFingerprint": "sha256:1aa0edcc590ee24a93b88b0001ddafa68ccbc04d18be76c8bf2691b9a3c3dcf9",
+  "reviewInputFingerprint": "sha256:61a37cf71ddd0fc6abde547500bc0277c55fb4037ea25077ee800fb1a6ef0a41",
+  "profileFingerprint": "sha256:5c2f83f7a2b11dbbf362a19bea49d00facc84de63a9b20e7f876145af749f33a",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-14T20:11:37.969047+00:00",
+  "reviewer": "Informed technical adapter of original independent A/B plus unrelated current A and current B science; no new independent vote",
+  "reason": "Informed technical synthesis of the genuine original independent A/B design reviews; exact whole raw profile and both full bilingual cases retained. Original A: Die Modellsäuren und -basen verlangen MWG, negative Logarithmen, KaKb=Kw und die begründete Kreuzreaktionsrichtung. Unabhängige Rechnung bestätigt pKb 10/5, konjugierte pKa 11/9 und K=1e5/10/0.1. Stärke wird von Anfangskonzentration und bevorzugte Seite von vollständigem Umsatz getrennt. Der Bildbefund betrifft diese textbasiert eigenständig lösbaren Fälle nicht. Current unrelated fresh A: G2-C1: Ka ratio 10^5, conjugate pKb 10/5 and strength versus formal concentration are correct. G2-C2: pKb 3/5 gives conjugate pKa 11/9 and cross constants 10/0.1. The new diagram independently supports the same mass-action/pK concept, without becoming assessment evidence. Whole raw profile and both cases still match current goal semantics. Original B and current targeted B judgments are bound whole per goal in P7.informed-synthesis.actual-input-packet.json. E1/G1 design only; needs_human_review and ai_candidate. Author cases remain E0/G0; no executions or observations.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [
+    "chemie-acid7-P7-informed-technical-synthesis-20261014-v4"
+  ],
+  "dissent": [],
+  "profile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "mass-action-protolysis",
+        "essentialUnderstandingDe": "Ka und Kb beziehen sich auf die konkrete Protonenübertragung; die Lösungsmittelaktivität ist in der Konstante enthalten.",
+        "essentialUnderstandingEn": "Ka and Kb refer to the actual proton transfer; solvent activity is included in the constant.",
+        "observablePerformanceDe": "Die lernende Person stellt HA + H2O ⇌ H3O+ + A− bzw. B + H2O ⇌ BH+ + OH− und die zugehörigen normierten MWG-Ausdrücke auf.",
+        "observablePerformanceEn": "The learner writes HA + H2O ⇌ H3O+ + A− or B + H2O ⇌ BH+ + OH− with the corresponding normalized mass-action expressions."
+      },
+      {
+        "id": "negative-log-strength",
+        "essentialUnderstandingDe": "Ein kleinerer pK bedeutet wegen des negativen Logarithmus eine größere Gleichgewichtskonstante und größere jeweilige Säure- oder Basenstärke.",
+        "essentialUnderstandingEn": "A smaller pK means a larger equilibrium constant and greater corresponding acid or base strength because the logarithm is negative.",
+        "observablePerformanceDe": "Sie begründet die HX/HY- und B1/B2-Reihenfolgen über die K-Werte und korrigiert die Behauptung, ein größeres pKB bedeute eine stärkere Base.",
+        "observablePerformanceEn": "The learner justifies the HX/HY and B1/B2 orders through K values and corrects the claim that a larger pKb means a stronger base."
+      },
+      {
+        "id": "conjugate-strength-relation",
+        "essentialUnderstandingDe": "Für ein korrespondierendes Paar bei derselben Temperatur gilt KaKb=Kw; die stärkere Säure hat die schwächere konjugierte Base.",
+        "essentialUnderstandingEn": "For a conjugate pair at the same temperature, KaKb=Kw; a stronger acid has a weaker conjugate base.",
+        "observablePerformanceDe": "Sie leitet pKB(X−)=10, pKB(Y−)=5 sowie pKS(B1H+)=11 und pKS(B2H+)=9 aus pKw=14 ab und erklärt die umgekehrten Paarreihenfolgen.",
+        "observablePerformanceEn": "The learner derives pKb(X−)=10, pKb(Y−)=5, pKa(B1H+)=11 and pKa(B2H+)=9 from pKw=14 and explains the reversed conjugate orders."
+      },
+      {
+        "id": "equilibrium-direction-limits",
+        "essentialUnderstandingDe": "Das Verhältnis passender Säurekonstanten bestimmt die Bevorzugung einer Protonenübertragung; Stärke ist von Anfangskonzentration und vollständigem Umsatz zu unterscheiden.",
+        "essentialUnderstandingEn": "The ratio of appropriate acid constants determines a proton transfer’s favoured side; strength is distinct from initial concentration and complete conversion.",
+        "observablePerformanceDe": "Sie kombiniert Gleichgewichte zu K=10^5, 10 bzw. 0.1, deutet jeweils die bevorzugte Seite und widerlegt die Konzentrationsbegründung, ohne vollständigen Umsatz zu behaupten.",
+        "observablePerformanceEn": "The learner combines equilibria to obtain K=10^5, 10 or 0.1, interprets the favoured side and refutes the concentration argument without claiming complete conversion."
+      }
+    ],
+    "variationAxes": [
+      {
+        "id": "acid-to-base-data",
+        "textDe": "Von pKS-Daten zu pKB-Daten wechseln und die jeweils passende logarithmische Richtung begründen.",
+        "textEn": "Change from pKa data to pKb data and justify the corresponding logarithmic order."
+      },
+      {
+        "id": "conjugates-and-cross-transfer",
+        "textDe": "Vom Einzelgleichgewicht zum korrespondierenden Partner und dann zu einer anderen Säure/Base-Kombination übergehen.",
+        "textEn": "Move from a single equilibrium to its conjugate partner and then to a different acid/base combination."
+      },
+      {
+        "id": "constant-versus-concentration",
+        "textDe": "Die intrinsische Stärkereihenfolge bei ungleichen Anfangskonzentrationen und bei K oberhalb bzw. unterhalb 1 beurteilen.",
+        "textEn": "Judge intrinsic strength with unequal initial concentrations and reaction constants above or below 1."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "g2-c1",
+        "taskDemandDe": "Vergleiche HX/HY mit pKS 4/9, bestimme die konjugierten pKB und begründe HX + Y− ⇌ X− + HY trotz ungleicher Konzentrationen. Vollständiges Material, Auftrag, Lösung und vier Kriterien: inputs/fourteen-full-cases.bound.exact.json, Fall G2-C1.",
+        "taskDemandEn": "Compare HX/HY with pKa 4/9, determine conjugate pKb and justify HX + Y− ⇌ X− + HY despite unequal concentrations. Complete material, task, solution and four criteria: inputs/fourteen-full-cases.bound.exact.json, case G2-C1.",
+        "expectedPerformanceDe": "HX ist stärker; Y− ist die stärkere Base. KaKb=Kw liefert 10/5; K=Ka(X)/Ka(Y)=10^5 begünstigt Produkte. 0.001 M bzw. 0.1 M ändern diese Stärkeordnung nicht.",
+        "expectedPerformanceEn": "HX is stronger; Y− is the stronger base. KaKb=Kw gives 10/5; K=Ka(X)/Ka(Y)=10^5 favours products. 0.001 M versus 0.1 M does not change the strength order.",
+        "understandingFocusDe": "Konstante, negative Logarithmen, korrespondierende Paare und Anfangskonzentration logisch auseinanderhalten.",
+        "understandingFocusEn": "Keep constants, negative logarithms, conjugate pairs and initial concentration logically distinct."
+      },
+      {
+        "id": "g2-c2",
+        "taskDemandDe": "Nutze pKB(B1/B2)=3/5 und pKS(HA)=10 für beide Kreuzgleichgewichte und korrigiere die falsche pKB-Regel. Vollständiges Material, Auftrag, Lösung und vier Kriterien: inputs/fourteen-full-cases.bound.exact.json, Fall G2-C2.",
+        "taskDemandEn": "Use pKb(B1/B2)=3/5 and pKa(HA)=10 for both cross-equilibria and repair the false pKb rule. Complete material, task, solution and four criteria: inputs/fourteen-full-cases.bound.exact.json, case G2-C2.",
+        "expectedPerformanceDe": "B1 ist stärker, konjugierte pKS sind 11/9. Die Kreuzkonstanten 10 und 0.1 begünstigen entgegengesetzte Seiten; keine davon beweist vollständige Umsetzung.",
+        "expectedPerformanceEn": "B1 is stronger; conjugate pKa values are 11/9. Cross-reaction constants 10 and 0.1 favour opposite sides; neither proves complete conversion.",
+        "understandingFocusDe": "Der Wechsel zu Basendaten verlangt eine neue Begründung der Richtung statt zweimaliges mechanisches Umkehren.",
+        "understandingFocusEn": "Switching to base data requires a fresh justification of direction rather than reversing a rule mechanically twice."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "mass-action-protolysis",
+        "negative-log-strength",
+        "conjugate-strength-relation",
+        "equilibrium-direction-limits"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    }
+  }
+}

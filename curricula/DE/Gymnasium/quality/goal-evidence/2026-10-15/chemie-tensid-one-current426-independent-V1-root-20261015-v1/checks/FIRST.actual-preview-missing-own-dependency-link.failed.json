@@ -1,0 +1,9 @@
+{
+  "role": "Observed actual first capture failure; not an image or application failure",
+  "observedExitCode": 1,
+  "actualError": "Failed to resolve react imports from own ignored preview; locator.scrollIntoViewIfNeeded timeout30000ms; no actual GoalCard screenshot obtained",
+  "cause": "Own preview node_modules reference absent; actual project dependency/source unchanged",
+  "correction": "Create only own ignored relative node_modules symlink to ../../../app/node_modules before one corrected retry",
+  "firstAttemptClaimedSuccessful": false,
+  "sourceCodeWrites": 0
+}

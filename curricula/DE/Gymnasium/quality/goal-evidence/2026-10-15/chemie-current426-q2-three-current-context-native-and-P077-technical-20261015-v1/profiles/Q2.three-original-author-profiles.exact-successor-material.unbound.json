@@ -1,0 +1,253 @@
+[
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current402-targeted-author-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+    "goalFingerprint": "sha256:5e004f86532dec13242591f1ae3043ba488ae176a10d5ce272d6a4e373d4bcce",
+    "reviewInputFingerprint": "sha256:db36b8a3641dbe945619ee0e917b7489a709423aaa6296069cb46ff71c6f7428",
+    "profileFingerprint": "sha256:f8835e914f5f2b1f5a07efbb312f74938c988b72004b92db7c94405d7daee211",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T05:00:00Z",
+    "reviewer": "Codex chemistry author; independent review pending",
+    "reason": "Konkrete DE/EN-Aufgaben und bewertbare Ergebnisse als E1/G1-Autorenkandidat. Keine ausgeführte Lernendenarbeit, HumanApproval oder HumanTrial behauptet.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "experiment",
+      "expectations": [
+        {
+          "id": "structure-and-evidence",
+          "essentialUnderstandingDe": "Reduktionsnachweise und enzymatische Glucosenachweise beantworten verschiedene analytische Fragen.",
+          "essentialUnderstandingEn": "Reducing assays and enzymatic glucose assays answer different analytical questions.",
+          "observablePerformanceDe": "Reduzierendes Material ist angezeigt; ein positiver Benedictbefund identifiziert nicht Glucose. GOD ist im festgelegten Verfahren glucosespezifischer; Nachweisgrenze/Interferenz bleiben zu beachten.",
+          "observablePerformanceEn": "Reducing material is indicated; Benedict positivity does not identify glucose. GOD is more glucose-specific in the stated procedure; detection limits/interference remain relevant."
+        },
+        {
+          "id": "fresh-transfer",
+          "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+          "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+          "observablePerformanceDe": "Maltose ist vorher reduzierend, Saccharose erst nach Hydrolyse positiv aufgrund zugänglicher Monosaccharide. Säurebehandlung wird vor alkalischem Test passend kontrolliert; Planung allein belegt keine Durchführung.",
+          "observablePerformanceEn": "Maltose reduces before, sucrose after hydrolysis due to accessible monosaccharides. Acid treatment needs appropriate control before alkaline testing; planning alone does not prove execution."
+        },
+        {
+          "id": "execution",
+          "essentialUnderstandingDe": "Ausführenundunterschiedliche Nachweisleistungvergleichen.",
+          "essentialUnderstandingEn": "Execute and compare assay peRformance.",
+          "observablePerformanceDe": "Benedictkann Glucose/Fructosezeigen, GODnur Glucose imgeeigneten Messbereich. Positive/negative Kontrollentrennen Reagenzfehler; CuII→CuI/Reduktionsvermögen versus Enzymspezifität; Verdünnungfalls GOD-Skalaüberschritten.",
+          "observablePerformanceEn": "Benedict can indicate glucose/fructose; GOD specifically glucose within detection range. Controls separate reagent failure; Cu(II)/Cu(I) reducing behaviour versus enzyme specificity; dilute if GOD scale exceeded."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "structure-and-evidence",
+          "fresh-transfer",
+          "execution"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-operator-context",
+          "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+          "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-a",
+          "taskDemandDe": "Ein Modellprotokoll zeigt Benedict positiv, GOD negativ; Vergleichsproben reagieren erwartungsgemäß. Was ist über reduzierende Zucker und Glucose belegt?",
+          "taskDemandEn": "A model record shows Benedict positive, GOD negative, with valid controls. What is established about reducing sugars and glucose?",
+          "expectedPerformanceDe": "Reduzierendes Material ist angezeigt; ein positiver Benedictbefund identifiziert nicht Glucose. GOD ist im festgelegten Verfahren glucosespezifischer; Nachweisgrenze/Interferenz bleiben zu beachten.",
+          "expectedPerformanceEn": "Reducing material is indicated; Benedict positivity does not identify glucose. GOD is more glucose-specific in the stated procedure; detection limits/interference remain relevant.",
+          "understandingFocusDe": "Reduktionsnachweise und enzymatische Glucosenachweise beantworten verschiedene analytische Fragen.",
+          "understandingFocusEn": "Reducing assays and enzymatic glucose assays answer different analytical questions."
+        },
+        {
+          "id": "case-b-transfer",
+          "taskDemandDe": "Plane im freigegebenen Schullabor einen Vergleich von Maltose und Saccharose vor/nach Hydrolyse; erläutere erwartete reduzierende Befunde und notwendige Kontrollen.",
+          "taskDemandEn": "Plan an authorised school-lab comparison of maltose and sucrose before/after hydrolysis; explain expected reducing results and controls.",
+          "expectedPerformanceDe": "Maltose ist vorher reduzierend, Saccharose erst nach Hydrolyse positiv aufgrund zugänglicher Monosaccharide. Säurebehandlung wird vor alkalischem Test passend kontrolliert; Planung allein belegt keine Durchführung.",
+          "expectedPerformanceEn": "Maltose reduces before, sucrose after hydrolysis due to accessible monosaccharides. Acid treatment needs appropriate control before alkaline testing; planning alone does not prove execution.",
+          "understandingFocusDe": "Reduktionsnachweise und enzymatische Glucosenachweise beantworten verschiedene analytische Fragen.",
+          "understandingFocusEn": "Reducing assays and enzymatic glucose assays answer different analytical questions."
+        },
+        {
+          "id": "execution-1",
+          "taskDemandDe": "Führe betreut einen Vergleich Glucose/Fructose/Wasser aus: je2mL1%Lösung. Benedict: je2mLbereitgestelltes Benedictreagenz, 5min80°C-Wasserbad. Parallel GOD-QUANTOFIX2seintauchen, abschütteln, 30sabwarten, Skalavergleichen. Protokolliere Zeit/Temperatur/Befunde undbegründe Selektivität.",
+          "taskDemandEn": "Execute supervised glucose/fructose/water comparison: 2mL1%solutions. Benedict: add2ml provided reagent, 5min80°C water bath. Parallel QUANTOFIX GOD dip2s, shake off, wait30s, compare scale. Log time/temperature/findings, explaining selectivity.",
+          "expectedPerformanceDe": "Benedictkann Glucose/Fructosezeigen, GODnur Glucose imgeeigneten Messbereich. Positive/negative Kontrollentrennen Reagenzfehler; CuII→CuI/Reduktionsvermögen versus Enzymspezifität; Verdünnungfalls GOD-Skalaüberschritten.",
+          "expectedPerformanceEn": "Benedict can indicate glucose/fructose; GOD specifically glucose within detection range. Controls separate reagent failure; Cu(II)/Cu(I) reducing behaviour versus enzyme specificity; dilute if GOD scale exceeded.",
+          "understandingFocusDe": "Ausführenundunterschiedliche Nachweisleistungvergleichen.",
+          "understandingFocusEn": "Execute and compare assay peRformance."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current402-targeted-author-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "b47d542d-c2d7-5554-95dc-10b47ab622ab",
+    "goalFingerprint": "sha256:d20eff71943cb24db354393c4bfee0af12c4128a1e482099132000822d09b788",
+    "reviewInputFingerprint": "sha256:52366eee2b583119374b40be8be70498eaa15e7fbd2f1f29ff550eb41e2052db",
+    "profileFingerprint": "sha256:f6b48035c680429c2018c56e45d7783f534063691fecf3c9834a78bb6089abb9",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T05:00:00Z",
+    "reviewer": "Codex chemistry author; independent review pending",
+    "reason": "Konkrete DE/EN-Aufgaben und bewertbare Ergebnisse als E1/G1-Autorenkandidat. Keine ausgeführte Lernendenarbeit, HumanApproval oder HumanTrial behauptet.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "aspect-1",
+          "essentialUnderstandingDe": "Beobachtete Eigenschaftderfreien Aminosäureerklären.",
+          "essentialUnderstandingEn": "Explain observed properties of free amino acids.",
+          "observablePerformanceDe": "Leucinrestunpolar, Lysinrestbasisch/bei7weitgehendprotoniert. Auch Leucinträgt NH3+/COO−undistnichtpauschalwasserunlöslich. Ladung, pH, Kristallgitter, Konzentration/Temperaturbeeinflussenfreie AA-Löslichkeit; Datenkeine Proteinpositionsregel.",
+          "observablePerformanceEn": "Leucine residue nonpolar, lysine basic/protonated near7. Leucine also has NH3+/COO− and is not absolutely insoluble. Charge, pH, lattice, concentration/temperature affect free amino acids; not protein position rule."
+        },
+        {
+          "id": "aspect-2",
+          "essentialUnderstandingDe": "pH-Variationüberfreie AA-Seitenkettenhinausdeuten.",
+          "essentialUnderstandingEn": "Interpret ph variation beyond residue polarity.",
+          "observablePerformanceDe": "Beip H3 alpha COO−, NH3+, Seiten COOH: netto0; beip H8 beide COO−, NH3+: netto−1. Protonierung/Wasserkontakteverändernsich; beobachtete Löslichkeitbenötigtkontrollierte Mengen/Gitterbedingungen.",
+          "observablePerformanceEn": "At pH3alpha COO−, NH3+, side COOH net0; at pH8two COO−/NH3+net−1. Protonation/water interactions changes; solubility requires controlled amounts/lattice conditions."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "aspect-1",
+          "aspect-2"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-operator-context",
+          "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+          "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-1",
+          "taskDemandDe": "Synthetischer Beobachtungsfall: freie Leucinlösungzeigtbei20°C, pH7 und20g/Lkeinen Feststoff, bei50g/LFeststoff; Lysin50g/Listklar. Ordne Seitenketteneinundbegründeunterschiedliche Löslichkeitunterdiesen Bedingungenmitgemeinsamenionisierbaren Gruppen; keine Allgemeinaussageunlöslich.",
+          "taskDemandEn": "Synthetic observations: free leucine20g/L at20°C, pH7is clear, 50g/L has solid; lysine50g/L is clear. Classify sidechains and explain bounded solubility with shared ionisable groups; do not say insoluble.",
+          "expectedPerformanceDe": "Leucinrestunpolar, Lysinrestbasisch/bei7weitgehendprotoniert. Auch Leucinträgt NH3+/COO−undistnichtpauschalwasserunlöslich. Ladung, pH, Kristallgitter, Konzentration/Temperaturbeeinflussenfreie AA-Löslichkeit; Datenkeine Proteinpositionsregel.",
+          "expectedPerformanceEn": "Leucine residue nonpolar, lysine basic/protonated near7. Leucine also has NH3+/COO− and is not absolutely insoluble. Charge, pH, lattice, concentration/temperature affect free amino acids; not protein position rule.",
+          "understandingFocusDe": "Beobachtete Eigenschaftderfreien Aminosäureerklären.",
+          "understandingFocusEn": "Explain observed properties of free amino acids."
+        },
+        {
+          "id": "case-2",
+          "taskDemandDe": "Vorgegebener fiktiver Vergleichsdatensatz, keine echte Messung: Zwei getrennte Ansätze enthalten jeweils insgesamt 1,00 g derselben kristallinen L-Glutaminsäure in 100 mL wässriger Endmischung bei 20 °C. Der pH wird im jeweiligen Ansatz konstant auf 3,0 beziehungsweise 8,0 gehalten. Nach Erreichen des modellierten Lösungsgleichgewichts wird vorgegeben: bei pH 3,0 bleibt sichtbarer Feststoff zurück; bei pH 8,0 ist kein Feststoff sichtbar. Dies sind qualitative Modellbeobachtungen, keine numerischen Sättigungslöslichkeiten. pKa-Werte im vereinfachten Modell: 2,2 (alpha-Carboxylgruppe), 4,3 (Seitenketten-Carboxylgruppe), 9,7 (alpha-Ammoniumgruppe). Gegenionen und Ionenstärke sind nicht quantitativ bestimmt; ihr Einfluss ist daher aus dem Vergleich nicht isoliert ausgeschlossen.\n\nOrdne den unveränderten Seitenketten-Grundtyp ein. Bestimme mithilfe der pKa-Werte die überwiegenden Protonierungsformen und ihre ganzzahligen Nettoladungen bei pH 3,0 und 8,0. Vergleiche die tatsächlich vorgegebenen Feststoffbeobachtungen und erläutere einen plausiblen Beitrag der Protonierung und Wasserwechselwirkungen. Begründe, warum daraus weder eine genaue Sättigungslöslichkeit noch ein Beweis folgt, dass allein die Seitenkettenpolarität den Unterschied verursacht. Unterscheide überwiegende Form und Gemisch nahe einem pKa-Wert; keine vollständig einheitliche Protonierung behaupten.",
+          "taskDemandEn": "Supplied fictional comparison data, not actual measurements: Two separate samples each contain a total of 1.00 g of the same crystalline L-glutamic acid in a final aqueous mixture of 100 mL at 20 °C. The pH is maintained at 3.0 or 8.0 respectively. After the modeled dissolution equilibrium has been reached, the supplied qualitative observations are: visible solid remains at pH 3.0; no solid is visible at pH 8.0. These are qualitative model observations, not numerical saturation solubilities. Model pKa values are 2.2 (alpha carboxyl), 4.3 (side-chain carboxyl), and 9.7 (alpha ammonium). Counterions and ionic strength have not been determined quantitatively, so the comparison does not separately exclude their influence.\n\nClassify the unchanged side-chain type. Use the pKa values to identify the predominant protonation forms and their integer net charges at pH 3.0 and 8.0. Compare the actual supplied solid/no-solid observations and explain a plausible contribution from protonation and interactions with water. Explain why the data establish neither numerical saturation solubilities nor that side-chain polarity alone causes the difference. Distinguish a predominant form from a mixture near a pKa; do not claim completely uniform protonation.",
+          "expectedPerformanceDe": "Die Seitenkette ist sauer und enthält eine Carboxylgruppe; die kovalente Seitenkettenidentität bleibt beim pH-Wechsel gleich. Bei pH 3,0 ist die alpha-Carboxylgruppe überwiegend COO−, die alpha-Aminogruppe NH3+ und die Seitenketten-Carboxylgruppe überwiegend COOH: die überwiegende Form hat Nettoladung 0. Sie ist nicht die einzige Form; zum Beispiel beträgt im vereinfachten Modell COO−/COOH für die alpha-Gruppe 10^(3,0−2,2)≈6,3 und für die Seitenkette 10^(3,0−4,3)≈0,050. Bei pH 8,0 dominieren zwei COO−-Gruppen und NH3+; die überwiegende Form hat Nettoladung −1. Auch dort ist die Ammoniumgruppe nicht zu 100 % protoniert (NH2/NH3+≈10^(8,0−9,7)≈0,020). Die erhöhte negative Ladung und veränderte Hydratation sind ein plausibler Beitrag dazu, dass im vorgegebenen pH-8-Ansatz kein Feststoff sichtbar bleibt. Im pH-3-Ansatz bleibt dagegen Feststoff. Der Vergleich gilt nur für vorgegebene Gesamtmenge, Endvolumen, Temperatur und Ausgangs-Kristallform. Er bestimmt keine numerischen Sättigungskonzentrationen, trennt Kristallgitter-/Gegenionen-/Ionenstärkeeinflüsse nicht vollständig und belegt keine allgemeine Wasserunlöslichkeit unpolarer Reste oder eine Protein-Positionsregel.",
+          "expectedPerformanceEn": "The side chain is acidic and contains a carboxyl group; its covalent identity is unchanged by the pH change. At pH 3.0, the alpha carboxyl is predominantly COO−, the alpha amino group NH3+, and the side-chain carboxyl predominantly COOH, giving the predominant form net charge 0. This is a mixture, not a single exclusive form: the simplified alpha-carboxyl COO−/COOH ratio is 10^(3.0−2.2)≈6.3, and the side-chain ratio is 10^(3.0−4.3)≈0.050. At pH 8.0, two COO− groups and NH3+ predominate, giving net charge −1. Ammonium is not completely protonated either (NH2/NH3+≈10^(8.0−9.7)≈0.020). Greater negative charge and changed hydration plausibly contribute to the supplied absence of visible solid at pH 8.0, while solid remains at pH 3.0. The comparison is bounded by the supplied total amount, final volume, temperature, and initial crystal form. It determines no numerical saturation concentrations, does not fully separate lattice/counterion/ionic-strength effects, and establishes neither universal water insolubility of nonpolar residues nor a protein-position rule.",
+          "understandingFocusDe": "pH-Variationüberfreie AA-Seitenkettenhinausdeuten.",
+          "understandingFocusEn": "Interpret ph variation beyond residue polarity."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current402-author-20261012-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "ffec1761-c954-5b5d-a0cf-4c8367f91705",
+    "goalFingerprint": "sha256:d00d567d1a55f40cfc88b3ce12f0596bd293130618c7f1a12f94238fe7d4091b",
+    "reviewInputFingerprint": "sha256:4c2056db4346a3d4bbfec42118281df0990f544ccff4395932c85ae00a20c822",
+    "profileFingerprint": "sha256:d0e2a6ddcfd2c4d19a7ebb5387b70d9447c2199277f82719cdcf6ad2a05eb61b",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T02:22:52.691417+00:00",
+    "reviewer": "Codex chemistry Q2 author; not an independent review",
+    "reason": "DE: Konkreter Autorenkandidat mit zwei neu variierten Aufgaben, chemischen Modellantworten und prüfbaren Schlussgrenzen. EN: Concrete author candidate with two freshly varied tasks, chemical model answers and assessable inference limits. Keine Durchführung, unabhängige Freigabe oder menschliche Erprobung behauptet.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "structure-and-evidence",
+          "essentialUnderstandingDe": "Systematische Namen legen Stammkette, Carboxyl-C als C1 und Aminogruppenposition fest.",
+          "essentialUnderstandingEn": "Systematic names specify parent chain, carboxyl C1 and amino-group position.",
+          "observablePerformanceDe": "2-Aminoethansäure und 2-Aminopropansäure; das Carboxyl-C ist C1. Trivialnamen Glycin/Alanin dürfen ergänzen, ersetzen aber die Regelanwendung nicht.",
+          "observablePerformanceEn": "2-aminoethanoic acid and 2-aminopropanoic acid; carboxyl carbon is C1. Glycine/alanine can supplement but do not replace rule application."
+        },
+        {
+          "id": "fresh-transfer",
+          "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+          "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+          "observablePerformanceDe": "HO-CH2-CH(NH2)-COOH; Amino an C2, Hydroxy an C3. Der Fehler verwechselt Carboxyl-C1 und alpha-C2; ohne Zusatz ist keine Stereokonfiguration behauptet.",
+          "observablePerformanceEn": "HO-CH2-CH(NH2)-COOH; amino at C2 and hydroxy at C3. Error confuses carboxyl C1 and alpha C2; no stereoconfiguration is asserted without further notation."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "structure-and-evidence",
+          "fresh-transfer"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-and-conditions",
+          "textDe": "Material, Stoffstruktur, Messbedingung oder Bewertungsdossier wechseln wie in den zwei ausdrücklich ausgearbeiteten Fällen; quantitative Angaben sind synthetische Aufgabenwerte.",
+          "textEn": "Material, molecular structure, measurement conditions or evaluation dossier vary as explicitly specified in the two worked cases; numerical values are synthetic task data."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-a",
+          "taskDemandDe": "Benenne H2N-CH2-COOH und CH3-CH(NH2)-COOH systematisch und kennzeichne die Zählrichtung.",
+          "taskDemandEn": "Systematically name H2N-CH2-COOH and CH3-CH(NH2)-COOH and indicate numbering.",
+          "expectedPerformanceDe": "2-Aminoethansäure und 2-Aminopropansäure; das Carboxyl-C ist C1. Trivialnamen Glycin/Alanin dürfen ergänzen, ersetzen aber die Regelanwendung nicht.",
+          "expectedPerformanceEn": "2-aminoethanoic acid and 2-aminopropanoic acid; carboxyl carbon is C1. Glycine/alanine can supplement but do not replace rule application.",
+          "understandingFocusDe": "Systematische Namen legen Stammkette, Carboxyl-C als C1 und Aminogruppenposition fest.",
+          "understandingFocusEn": "Systematic names specify parent chain, carboxyl C1 and amino-group position."
+        },
+        {
+          "id": "case-b-transfer",
+          "taskDemandDe": "Zeichne aus dem Namen 2-Amino-3-hydroxypropansäure eine passende Konnektivität und prüfe den fehlerhaften Namen 1-Aminopropansäure für Alanin.",
+          "taskDemandEn": "Draw connectivity from 2-amino-3-hydroxypropanoic acid and assess erroneous 1-aminopropanoic acid for alanine.",
+          "expectedPerformanceDe": "HO-CH2-CH(NH2)-COOH; Amino an C2, Hydroxy an C3. Der Fehler verwechselt Carboxyl-C1 und alpha-C2; ohne Zusatz ist keine Stereokonfiguration behauptet.",
+          "expectedPerformanceEn": "HO-CH2-CH(NH2)-COOH; amino at C2 and hydroxy at C3. Error confuses carboxyl C1 and alpha C2; no stereoconfiguration is asserted without further notation.",
+          "understandingFocusDe": "Systematische Namen legen Stammkette, Carboxyl-C als C1 und Aminogruppenposition fest.",
+          "understandingFocusEn": "Systematic names specify parent chain, carboxyl C1 and amino-group position."
+        }
+      ]
+    }
+  }
+]

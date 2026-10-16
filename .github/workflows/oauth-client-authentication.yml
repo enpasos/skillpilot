@@ -15,6 +15,7 @@ on:
       - 'scripts/lib/openai_v1_service_environment.sh'
       - 'scripts/oauth_client_auth_ci.test.mjs'
       - '.github/workflows/oauth-client-authentication.yml'
+      - '.github/actions/postgres-service/**'
       - '.java-version'
       - '.corretto-version'
   push:
@@ -29,6 +30,7 @@ on:
       - 'scripts/lib/openai_v1_service_environment.sh'
       - 'scripts/oauth_client_auth_ci.test.mjs'
       - '.github/workflows/oauth-client-authentication.yml'
+      - '.github/actions/postgres-service/**'
       - '.java-version'
       - '.corretto-version'
 
@@ -36,7 +38,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: oauth-client-authentication-${{ github.ref }}
+  group: oauth-client-authentication-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -179,22 +181,15 @@ jobs:
     name: OAuth profiles and token security PostgreSQL 15
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    services:
-      postgres:
-        # Official Docker mirror; identical digest, without Docker Hub's anonymous quota.
-        image: public.ecr.aws/docker/library/postgres@sha256:9b1d34adbce1dd07ee6e94b4a2cf698884b89bd44a6c9c12f5da8f3acbfe4957
-        env:
-          POSTGRES_DB: skillpilot_oauth_test
-          POSTGRES_PASSWORD: skillpilot-test-only
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres -d skillpilot_oauth_test"
-          --health-interval 2s
-          --health-timeout 5s
-          --health-retries 20
     steps:
       - uses: actions/checkout@v6
+      - name: Test disposable PostgreSQL setup and registry fallback
+        run: python3 -m unittest discover -s .github/actions/postgres-service -p 'test_*.py' -v
+      - name: Start disposable PostgreSQL 15
+        timeout-minutes: 10
+        uses: ./.github/actions/postgres-service
+        with:
+          database: skillpilot_oauth_test
       - uses: actions/setup-java@v5
         with:
           distribution: corretto
@@ -225,6 +220,12 @@ jobs:
         run: >-
           ./gradlew test --console=plain --rerun-tasks
           --tests 'com.skillpilot.backend.oauth.OAuthClientSecurityPostgresIntegrationTest'
+      - name: Stop disposable PostgreSQL
+        if: always()
+        uses: ./.github/actions/postgres-service
+        with:
+          command: stop
+          database: skillpilot_oauth_test
       - name: Require executed PostgreSQL evidence without skipped tests
         if: always()
         run: |

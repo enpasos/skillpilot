@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source4-current422-bounded-inactive-integration-technical-20261015-v1/phase2/config/native4.original-A-B.pair-only.config.json",
+  "configDigest": "sha256:9bd5d783a1ad890ad1ab4b9249d664173ef54bb8488a40426d61f45a6b72b6e2",
+  "goalIds": [
+    "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+    "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+    "1a51362e-fd84-5964-89b5-b435772c2149",
+    "f0f2c5f8-06f1-5774-a176-d96505727acf"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 422,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-native-preparation-inactive-technical-20261015-v1/config/whole422.final-native4.normal-stock-base.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:c7355c60390c52a63e7ef8b9ab3a0193e8a2a44756b7fae07e80339c05631426"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6d1844f961149c85b33e523646ef4fd5d2af26854075c9e6e5326fc45b78b3c6",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:658a9db0b42b220409ccff53529d38552eda750a7a8c8acbe338023096878951",
+    "reviewInputFingerprint": "sha256:3f26e214a8b6786e278fad229f953db60be3345ee78cb35a31758b50ccb83ebd",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1-a",
+        "campaignDigest": "sha256:bd93b58fe6f1f2b168ca7b9325bedf45c3e198fde67dc1cbb194f8ee04b0ce5a",
+        "roundId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1-first-pass-a",
+        "independenceGroupId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1-independent-a",
+        "batchId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:a2ebdc1d81b61f5a16e6231a6985f038a97d0f0645eb0173287b123483bdeef8"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1-b",
+        "campaignDigest": "sha256:6e0e7653d88d2648647833e009971c69f9b1e50d333512634f7e05fc3a3b98b3",
+        "roundId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1-first-pass-b",
+        "independenceGroupId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1-independent-b",
+        "batchId": "chemie-equilibrium-four-source-scope-current422-native4-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:8545537fb948ad35e8f38dadfa2c85002a3f47794e8074557f001e7c3a342a06"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

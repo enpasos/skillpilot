@@ -1,0 +1,96 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-bcp-current426-D15-original-independent-b-20261015-v1",
+  "campaignId": "chemie-bcp-current426-bcp-fifteen-technical-20261015-v1-b",
+  "roundId": "chemie-bcp-current426-bcp-fifteen-technical-20261015-v1-first-pass-b",
+  "batchId": "chemie-bcp-current426-bcp-fifteen-technical-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:d337f9059243d3f3b27e46f10731b4c1864f4bdc29cb813b16444ef42865dd40",
+  "bundleFingerprint": "sha256:ea5bf65b74b1cefb8a9b5342c352c5aa97240e07c40c6a7046d88ce210c18d43",
+  "bookDigest": "sha256:2496d3043e48e850902d7d2593c3d7289d46f5b40ced4a4277432f573a716e7d",
+  "provider": "not_exposed_by_runtime",
+  "model": "not_exposed_by_runtime",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:9be3bfe6731a9e9e62f93feab62c1fc5c071a087429fcad79fbc4485f51c345e",
+  "independenceGroupId": "chemie-bcp-current426-bcp-fifteen-technical-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cb7125b7-8734-51c6-8306-9163114dc0cc",
+    "4d16601e-fa57-5bcb-a5b6-f308d5b8036a",
+    "fec1563e-a34a-5fc1-93bb-03981f35ab13",
+    "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49",
+    "dd59351e-3b16-5104-b7c6-ff9e402e4de7",
+    "c8198159-2109-5ad0-9d37-252ebac0219d",
+    "e6dcd3a0-264d-503b-aaac-a3e86eeb7059",
+    "7b443158-8ca9-5b8e-8328-a8fa56f6e26f",
+    "dc4a26c7-8304-529d-8705-7333b2f038fc",
+    "ffebca5e-76b5-55d7-80d6-df1e7d2c75ea",
+    "9d6e1966-b10c-5a70-b215-df7007c95b07",
+    "0f632595-5875-5a95-83d8-7de3180bdaa6",
+    "843484b9-1acf-54e0-a030-bc214b3b0656",
+    "57d2c98d-30b8-5123-b823-e56a4f22b191",
+    "7b80efe6-b77d-5ace-8886-973ba38e6f9e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:a1fe827477e657df51b8950e5f1fe92b207058c3770603b4936a66ec1145d619"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:26cf02b6b890d96a00961143fb165fc0658dfaa3916a2df81fd2134048886085"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:b09e088de6eacaecee7dc8d33ec47f882b597fbdd4ac88127f97de849a226181"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:b65c433f3156d883a15ce139162b87974e3b59b636a7486a6c3c86030ed0c3e4"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:20c386393eee11232ac5e0928b23da4c5316ebaa6dd5c1c56a55e782817d649c"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:e9b7a2478862386cf6a3f1c1056798d831d7a72996f3207919028a7741889943"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:621ac6490d1940f65a565faaaf235c5f7fba7440c9ee26109cdfa7eeda73583f"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:e9337186f291235011db9038b16f05f145d0f4530cd844aa26987788eec44d73"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:d337f9059243d3f3b27e46f10731b4c1864f4bdc29cb813b16444ef42865dd40"
+    }
+  ],
+  "startedAt": "2026-10-15T20:07:12.263093+00:00",
+  "completedAt": "2026-10-15T20:10:50.720734+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:b2a10a1dd65b3f0ada6c97f6759de7eb60049cb8a2a7afaf16f75204a471e0b2",
+  "toolchainVersion": "skillpilot-original-FIRST-technical-transport-v1"
+}

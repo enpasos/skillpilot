@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "kind": "Original informed independent pixel and responsive FIRST; no normal V binding",
+  "reviewerRole": "informedIndependent",
+  "reviewer": "Codex independent B; no image authorship",
+  "writtenAtUTC": "2026-10-15T13:58:41.931860+00:00",
+  "goalId": "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+  "phase": "1 pixel and responsive only",
+  "decision": "revise",
+  "normalVDecisionCreated": false,
+  "originalImage": {
+    "path": "curricula/DE/Gymnasium/visualizations/chemie/13838147-c26d-54ca-b9be-5f2f0b8e9de5/13838147-c26d-54ca-b9be-5f2f0b8e9de5.jpg",
+    "sha256": "sha256:9825229b0e658ba76a7ab12d9d4387270e210939fe376a9637c65d1716212207",
+    "bytes": 2143259
+  },
+  "candidateImage": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-kinetic-mechanism-one-actual-GBS-image-correction-author-root-20261015-v1/candidate/visualizations/chemie/13838147-c26d-54ca-b9be-5f2f0b8e9de5/13838147-c26d-54ca-b9be-5f2f0b8e9de5.png",
+    "sha256": "sha256:8c96f8b674a09d58b3981cb8d1a59041d1e136e1bc7a21759cf26c52789c6607",
+    "bytes": 1509058
+  },
+  "context": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-kinetic-mechanism-one-current-context-independent-V-20261015-v1/inputs/CONTEXT.supplied-current560.whole-goal-and-direct-context.json",
+    "sha256": "sha256:9558d8047f19dbcd434941415dda85aa831a9643e359e27785e55d67dca18751",
+    "bytes": 7194
+  },
+  "actualBrowserReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-kinetic-mechanism-one-current-context-independent-V-20261015-v1/browser/RECEIPT.actual-Chromium-responsive-rendering.json",
+    "sha256": "sha256:025a403e77dc477a827febfd024d17bf67f7d0a2bafa5221dc27954882816d01",
+    "bytes": 10313
+  },
+  "independenceDisclosure": {
+    "priorTechnicalRoutingOnlyForThisGoal": true,
+    "imageAuthorship": false,
+    "readOtherIndependentVResults": false,
+    "priorInformationFromRoot": [
+      "Original GBS expansion reported wrong",
+      "New PNG intended to correct expansion and unique-inference framing",
+      "Final DE/EN description and final resource/ALT are pending"
+    ],
+    "roleIsNotBlindFirstPass": true
+  },
+  "actualInspection": {
+    "originalNativePixels": [
+      2752,
+      1536
+    ],
+    "candidateNativePixels": [
+      1672,
+      941
+    ],
+    "nativeImagesBothActuallyViewed": true,
+    "originalAndCandidateChromiumAt360And680CSSPxActuallyViewed": true,
+    "alsoViewedActualGoalCardP5ViewportVariants": true,
+    "browserVersion": "147.0.7727.15",
+    "deviceScaleFactor": 1,
+    "zoom": 1,
+    "imageCss": "display:block;height:auto;max-height:28rem;width:100%;object-fit:contain",
+    "actual680GoalCardImageCSSPixels": [
+      636,
+      357.9375
+    ],
+    "actual360GoalCardImageCSSPixels": [
+      316,
+      177.84375
+    ],
+    "heightCapPixels": 448,
+    "heightCapClipsNeitherTestWidth": true,
+    "productionBrowserScope": "Actual Chromium using the inspected GoalCard image/figure/p-5 CSS fragment; full React application was not run"
+  },
+  "ownScientificObservations": [
+    {
+      "id": "ORIGINAL-GBS",
+      "asset": "original",
+      "finding": "issue",
+      "detail": "The visible wording GBS = Elementarschritt des Gesetzes is wrong. It does not name the rate-determining step."
+    },
+    {
+      "id": "ORIGINAL-INFERENCE",
+      "asset": "original",
+      "finding": "issue",
+      "detail": "The derived-mechanism heading and forward inference framing overstate what the observed rate law alone establishes."
+    },
+    {
+      "id": "PNG-GBS",
+      "asset": "candidate",
+      "finding": "correct-at-native",
+      "detail": "The actual pixels say GBS = geschwindigkeitsbestimmender Schritt, and the callout points to step 1."
+    },
+    {
+      "id": "PNG-MECHANISM",
+      "asset": "candidate",
+      "finding": "scientifically-plausible-model",
+      "detail": "A+B→I followed by I→P sums to A+B→P, with I consumed as the intermediate. A slow elementary bimolecular first step with a non-limiting fast second step is compatible with v=k[A][B] in this illustrative model. The drawing labels a possible mechanism/hypothesis and comparison with measurement; it does not establish unique inference."
+    },
+    {
+      "id": "PNG-VISUAL-IDENTITIES",
+      "asset": "candidate",
+      "finding": "coherent",
+      "detail": "A/B/I/P labels, colors, reaction arrows, two step boxes and the rate-law formula are mutually consistent. Generic species balls make no atom-by-atom structural or molecular conservation claim."
+    },
+    {
+      "id": "PNG-680",
+      "asset": "candidate",
+      "finding": "readable",
+      "detail": "At 680 image CSS pixels and in the 680 viewport card (636 image pixels), the title, rate-law formula, hypothesis heading, slow/fast annotations and GBS expansion are readable with adequate contrast. The main two-panel motif is clear."
+    },
+    {
+      "id": "PNG-360",
+      "asset": "candidate",
+      "finding": "material-readability-failure",
+      "detail": "At 360 image CSS pixels the GBS expansion, geschwindigkeitsbestimmend qualifier, Hypothese subtitle and compare-with-measurement annotation are miniature text. The 360 viewport GoalCard reduces the image further to 316×177.844 CSS pixels, where these essential distinctions cannot be read comfortably or reliably at normal scale. Recognition after viewing the native asset is not independent mobile legibility. Title, colored species and large arrows remain visible but do not carry the corrected scientific distinction alone."
+    }
+  ],
+  "rationaleDE": "Das neue PNG korrigiert die falsche GBS-Expansion und die eindeutige Mechanismusinferenz fachlich sinnvoll. Die für diese Korrektur unverzichtbaren Beschriftungen sind bei der verlangten mobilen Darstellungsbreite jedoch nicht verlässlich lesbar. Deshalb revise; ein gutes Desktopbild allein genügt hier nicht.",
+  "rationaleEN": "The PNG meaningfully corrects the GBS expansion and the claim of uniquely deriving a mechanism. The labels that convey these corrections are not reliably readable at the required mobile size. Therefore revise despite the coherent desktop rendering.",
+  "requiredChangesDE": [
+    "Die entscheidenden Aussagen bei 360 CSS-Pixeln ohne Zoom lesbar machen: Hypothese/möglicher Mechanismus, langsamer geschwindigkeitsbestimmender Schritt, schneller Folgeschritt und Vergleich mit Messung.",
+    "Weniger Text, größere Kennzeichnungen und eine kompaktere oder vertikale Anordnung prüfen; eine andere konkrete Gestaltung bleibt Aufgabe des Bildautors.",
+    "Nach einem tatsächlichen Pixelnachfolger diesen wieder bei 360/680 CSS-Pixeln und mit GoalCard contain/28rem prüfen. Keine Freigabe durch ALT-Text oder Hashaktualisierung ersetzen."
+  ],
+  "requiredChangesEN": [
+    "Make the essential hypothesis, rate-determining slow step, fast subsequent step and measurement-comparison cues readable at 360 CSS pixels without zoom.",
+    "Consider fewer words, larger labels and a compact or vertical composition; the image author chooses the actual design.",
+    "Review an actual pixel successor again at 360/680 CSS pixels using GoalCard contain/28rem. ALT text or refreshed hashes cannot substitute for readable pixels."
+  ],
+  "finalContextBoundary": {
+    "finalDEENDescriptionRead": false,
+    "finalALTRead": false,
+    "normalVBindingAuthorizedNow": false,
+    "whyPending": "Final bounded DE/EN wording and resource/ALT are to be supplied later. This phase does not claim current exact goal/resource/ALT acceptance."
+  },
+  "terminologyReferences": [
+    {
+      "title": "IUPAC Gold Book: rate-controlling step",
+      "url": "https://goldbook.iupac.org/terms/view/R05139",
+      "usedFor": "Terminology and the limiting role of a step; no source/course approval"
+    },
+    {
+      "title": "IUPAC Gold Book: order of reaction",
+      "url": "https://goldbook.iupac.org/terms/view/O04322",
+      "usedFor": "Elementary-step relation between reactant stoichiometry and partial order; the drawing remains a schematic hypothesis"
+    }
+  ],
+  "sourceApproval": false,
+  "newDPAOrMVotes": 0,
+  "newNormalVVotes": 0,
+  "strictClosures": 0,
+  "machineM7Granted": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": 0,
+  "gitWrites": 0,
+  "imageEdits": 0
+}

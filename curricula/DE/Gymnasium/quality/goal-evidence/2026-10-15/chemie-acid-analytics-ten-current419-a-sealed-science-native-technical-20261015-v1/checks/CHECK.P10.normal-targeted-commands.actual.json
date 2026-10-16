@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "commands": [
+    {
+      "label": "P10.stock-candidate-materializer-verify",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-a-sealed-science-native-technical-20261015-v1/config/P10.normal-E1G1-ai-candidate.inactive.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-a-sealed-science-native-technical-20261015-v1/P/P10.sealed-A-warranted-candidate-set.json"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-a-sealed-science-native-technical-20261015-v1/checks/P10.stock-candidate-materializer-verify.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-a-sealed-science-native-technical-20261015-v1/checks/P10.stock-candidate-materializer-verify.stderr.txt"
+    },
+    {
+      "label": "P10.stock-normal-positive-review",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-a-sealed-science-native-technical-20261015-v1/config/P10.normal-E1G1-ai-candidate.inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-a-sealed-science-native-technical-20261015-v1/checks/P10.stock-normal-positive-review.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-a-sealed-science-native-technical-20261015-v1/checks/P10.stock-normal-positive-review.stderr.txt"
+    }
+  ]
+}

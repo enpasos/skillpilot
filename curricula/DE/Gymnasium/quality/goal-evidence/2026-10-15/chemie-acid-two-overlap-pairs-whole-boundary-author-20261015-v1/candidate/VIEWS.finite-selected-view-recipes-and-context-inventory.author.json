@@ -1,0 +1,1433 @@
+{
+  "role": "Sparse whole-node data recipes against exact current physical files; no runtime projection claim",
+  "baseCheckpointPhysicalMap": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-bounded-inactive-integration-technical-20261015-v1/preparation/REBUILD.final-current426-measured-inactive-checkpoint.physical-map.json",
+    "sha256": "sha256:1f6c75c9ab7ef2393d9fc847e00c027df3b92f9f69380fca1e9824d09e064166",
+    "bytes": 434320
+  },
+  "views": [
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-bb-gk.view.json",
+        "sha256": "sha256:bff00f5c8fcb7740dfb442f2a66ad7133a827aa9679068756912efb2a1752139",
+        "bytes": 26552
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:c07d0fe87e1d64b9b16422147cd43b0f1046e3cc831c431366651769352fc648",
+      "wholeAfterObjectSha256": "sha256:c07d0fe87e1d64b9b16422147cd43b0f1046e3cc831c431366651769352fc648",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "BB/BE direct HH default targets proposed removed because primary says no calculation. Any remaining broad subtree-derived HH target remains an explicit HOLD requiring an authored whole-view/source projection decision; no prOnly role invented."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-bb-lk.view.json",
+        "sha256": "sha256:a1156ddb01b783eb39d6f476e63231195892b62e748fdcc82b93d6d3e4b36169",
+        "bytes": 30384
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [
+        {
+          "operation": "remove-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/21",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          },
+          "reason": "BB/BE44 excludes quantitative buffer obligation; qualitative25729 duty retained separately. No prOnly hiding."
+        },
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/25",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        },
+        {
+          "operation": "remove-exact-duplicate-sibling-after-translation",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/25",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "translatedNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Same kind/ID/role under same visible parent; no role inference."
+        }
+      ],
+      "wholeBeforeObjectSha256": "sha256:a10078e585191dbcdcbb987198f8251d48ca6ba124aa4bf4a85fd81c669799f8",
+      "wholeAfterObjectSha256": "sha256:a838e5d8f2830d4c072c01b2b6d7d53cd7a9973aef2704273dc3ff68e028dd3c",
+      "directObjectChanges": true,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "BB/BE direct HH default targets proposed removed because primary says no calculation. Any remaining broad subtree-derived HH target remains an explicit HOLD requiring an authored whole-view/source projection decision; no prOnly role invented."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-be-gk.view.json",
+        "sha256": "sha256:d839adbf7398150e467aaede8144a2de885dc3f2b6a9fa0701fe2a07cbb063ad",
+        "bytes": 26552
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:a8967d281a2a104aff4a878445aed04dd1005777cbe21c4bb5ca354c79aa4d49",
+      "wholeAfterObjectSha256": "sha256:a8967d281a2a104aff4a878445aed04dd1005777cbe21c4bb5ca354c79aa4d49",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "BB/BE direct HH default targets proposed removed because primary says no calculation. Any remaining broad subtree-derived HH target remains an explicit HOLD requiring an authored whole-view/source projection decision; no prOnly role invented."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-be-lk.view.json",
+        "sha256": "sha256:c656b2533b1280b1dfd2665672f8dba73c6c5212d61a935cc061e3396b263fb4",
+        "bytes": 30384
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [
+        {
+          "operation": "remove-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/21",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          },
+          "reason": "BB/BE44 excludes quantitative buffer obligation; qualitative25729 duty retained separately. No prOnly hiding."
+        },
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/25",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        },
+        {
+          "operation": "remove-exact-duplicate-sibling-after-translation",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/25",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "translatedNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Same kind/ID/role under same visible parent; no role inference."
+        }
+      ],
+      "wholeBeforeObjectSha256": "sha256:1155575df4db56438e3ecb41e498e9dd99745bb172fc2df3cfed20536c08ce38",
+      "wholeAfterObjectSha256": "sha256:c4af6f874d2a120c5b6326e2b774a32d4024a7890afe0a9304c417a1f96615fc",
+      "directObjectChanges": true,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "BB/BE direct HH default targets proposed removed because primary says no calculation. Any remaining broad subtree-derived HH target remains an explicit HOLD requiring an authored whole-view/source projection decision; no prOnly role invented."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-acquisition-routes-author-20261015-v1/inputs/de-bw-gk.whole-original.exact.json",
+        "sha256": "sha256:47eb1cbc9af72ef4a937cf7096dd9ee091084ee162648694bdcdc687c09c8380",
+        "bytes": 25976
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:f36cfa826bb1147c7289d9f1cd751b44200443532690b55bb7d778477b1bfb1e",
+      "wholeAfterObjectSha256": "sha256:f36cfa826bb1147c7289d9f1cd751b44200443532690b55bb7d778477b1bfb1e",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-acquisition-routes-author-20261015-v1/candidate/de-bw-lk.whole-view.author.json",
+        "sha256": "sha256:410135e6efc27fbb2e592468043c3eac5b620fda65dde443d83657911948447d",
+        "bytes": 31161
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:6b5ea48885e6d2cb3a821a8398e6502bbdc781d9ed5d02c86a9c3430a07afcb7",
+      "wholeAfterObjectSha256": "sha256:6b5ea48885e6d2cb3a821a8398e6502bbdc781d9ed5d02c86a9c3430a07afcb7",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+        "sha256": "sha256:42c8949bfa163a0d5e66e395493e0ea7f9ad222222d3a16b7756dcfc9546eb06",
+        "bytes": 3753
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:1fb597b634d86c3840b9cf8b2bd382bde6433b7f1aff3d29ec2fd1ae67302a97",
+      "wholeAfterObjectSha256": "sha256:1fb597b634d86c3840b9cf8b2bd382bde6433b7f1aff3d29ec2fd1ae67302a97",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/2/children/3",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+        "sha256": "sha256:920152ccd48178cf767b3b9befb9376d54d7e6ffafeed8a10993afd6e626c027",
+        "bytes": 3753
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:b17aad1b45e12127c1ed087fcd32bb450d46f68c7a6cbe4ec5341f8fa68c8e43",
+      "wholeAfterObjectSha256": "sha256:b17aad1b45e12127c1ed087fcd32bb450d46f68c7a6cbe4ec5341f8fa68c8e43",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/2/children/3",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+        "sha256": "sha256:226b9b262e736a434e08c88e0cb9812466568ffe6cfe6c5eaa6444ff6b15f1dd",
+        "bytes": 1831
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:1d6da7b627b1e8b98482363e5cff014147d5277072e39c513ae6cf432cfd2376",
+      "wholeAfterObjectSha256": "sha256:1d6da7b627b1e8b98482363e5cff014147d5277072e39c513ae6cf432cfd2376",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+        "sha256": "sha256:557120ec43bac903cf3c072bc563401b0f266a5ba407acab8687fb4cdd94648d",
+        "bytes": 1827
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:aee3b478130d81033972140caa9b4c640e89cf77e9d9b9463f7ba399e63b9d68",
+      "wholeAfterObjectSha256": "sha256:aee3b478130d81033972140caa9b4c640e89cf77e9d9b9463f7ba399e63b9d68",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/1/children/3",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+        "sha256": "sha256:19ef4ce9f43c4c7130158eafd0f758dc37e32f5dccabf5ee03ab07c21b4669e6",
+        "bytes": 1827
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:2d90382252501c1af3eed098f81a699f66d775b78b49badaf962bd76f27ae4fb",
+      "wholeAfterObjectSha256": "sha256:2d90382252501c1af3eed098f81a699f66d775b78b49badaf962bd76f27ae4fb",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/1/children/3",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-acquisition-routes-author-20261015-v1/inputs/de-hb-gk.whole-original.exact.json",
+        "sha256": "sha256:73e6052abe131cfa034347ecf582e4bc9ba68e24169a49e99dc8fbf87bc8fa32",
+        "bytes": 31462
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:4925c0f3d7709ee181962b93f27961198fecb34d2cc9304d182515c55426a4fa",
+      "wholeAfterObjectSha256": "sha256:4925c0f3d7709ee181962b93f27961198fecb34d2cc9304d182515c55426a4fa",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-three-source-duty-acquisition-routes-author-20261015-v1/candidate/de-hb-lk.whole-view.author.json",
+        "sha256": "sha256:4f2035ce4c5be8f46a65ecae93b745f55e0f11e11268da0bb7d0d711be954d65",
+        "bytes": 37526
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/2/children/17/children/7",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "a449e874-6fec-502b-9667-6f078adc4d64"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        }
+      ],
+      "wholeBeforeObjectSha256": "sha256:a39cc92f4e0d85b474257453b916ebc7ab4e800c9f1277e3c883fba1069117de",
+      "wholeAfterObjectSha256": "sha256:c347de899366da3e0cb93d53b83500b329f71eef8370f70509d32f5e81d86f9e",
+      "directObjectChanges": true,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+        "sha256": "sha256:3ad4b599c9c98667a64725d61f084d0a13710360cccf5cbf3c5b7e28ec3b0b4c",
+        "bytes": 7211
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:688af89fc43b688d521c183422a86f65e8b1ffe25ee9c1ba35732af572bd237f",
+      "wholeAfterObjectSha256": "sha256:688af89fc43b688d521c183422a86f65e8b1ffe25ee9c1ba35732af572bd237f",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/2/children/3",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+        "sha256": "sha256:091cdff7f56824f86c900389b41bf7b478a40691e6ec77e7aec48294a6e5c712",
+        "bytes": 7211
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:328855057dba72898f20fdf5fae8a6a24b64a5b4f85a203410e9a272c1ce375a",
+      "wholeAfterObjectSha256": "sha256:328855057dba72898f20fdf5fae8a6a24b64a5b4f85a203410e9a272c1ce375a",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/2/children/3",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+        "sha256": "sha256:db629d8607b747977fd32fedaa394682e54a73261af16007ca091f3e8ef1d18d",
+        "bytes": 1856
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:17373e9f13c60ae2451174fa1f381808964824507fb16c141694c8ffb2b7d61a",
+      "wholeAfterObjectSha256": "sha256:17373e9f13c60ae2451174fa1f381808964824507fb16c141694c8ffb2b7d61a",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/1/children/3",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json",
+        "sha256": "sha256:155cc907ea9b1565e35dc32f19701ccc81e6b28232c13b2db36982bb9a99048c",
+        "bytes": 1856
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:54067fc857fd9936cfdad4a26d3103e9d2d0400177344fb1c4c27c905e41abb0",
+      "wholeAfterObjectSha256": "sha256:54067fc857fd9936cfdad4a26d3103e9d2d0400177344fb1c4c27c905e41abb0",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/1/children/3",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-hh-gk.view.json",
+        "sha256": "sha256:fb3189d3d3c0986065650cd3af2f0a22c3323840fba750e998c42403c8455422",
+        "bytes": 20981
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:420e4d8e6059f0c329c8d2baeb86d078592df63e5bfe65b95b5e4e702c7244e5",
+      "wholeAfterObjectSha256": "sha256:420e4d8e6059f0c329c8d2baeb86d078592df63e5bfe65b95b5e4e702c7244e5",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-hh-lk.view.json",
+        "sha256": "sha256:4d598a4fa4e94689b250c1afe322ee2d26edc5d7ec03cd665be948ace509b201",
+        "bytes": 24048
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:444f4b3d3ab7bf3bf854edf23f555c5730134526ba1c27a2c04e1871a7b0a377",
+      "wholeAfterObjectSha256": "sha256:444f4b3d3ab7bf3bf854edf23f555c5730134526ba1c27a2c04e1871a7b0a377",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-mv-gk.view.json",
+        "sha256": "sha256:42201e9f203e3bcebc970de808c6f5463f27fc6c26068dfca9bba7e91e16f507",
+        "bytes": 25247
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:f41ec92e0ab71f32185d593238c0e9420d19feef1c173646cf265736dd8341f0",
+      "wholeAfterObjectSha256": "sha256:f41ec92e0ab71f32185d593238c0e9420d19feef1c173646cf265736dd8341f0",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-mv-lk.view.json",
+        "sha256": "sha256:f4c1ebebb5b8ec0c123bdffb81d89d4c31de57a100faa457cf1794c15f3a4aa9",
+        "bytes": 28457
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:6369b5419f09060deb7ec1c164849e0c627d7a00794ecc134e54f3fbe324905d",
+      "wholeAfterObjectSha256": "sha256:6369b5419f09060deb7ec1c164849e0c627d7a00794ecc134e54f3fbe324905d",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-ni-gk.view.json",
+        "sha256": "sha256:bdd1283f586ca6b5d81abbffa0830ed573b907bae92e34a7e109efa85c93c8e1",
+        "bytes": 31394
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:b2c2766aa618251eadeebb2f2d0ca66266e07739715c2f3f9d28284e37596fe6",
+      "wholeAfterObjectSha256": "sha256:b2c2766aa618251eadeebb2f2d0ca66266e07739715c2f3f9d28284e37596fe6",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-ni-lk.view.json",
+        "sha256": "sha256:90291eb682f9faff1049909b114962317e33c73f5f444eaadf7b770291e1e24a",
+        "bytes": 34969
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/13/children/18",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "a449e874-6fec-502b-9667-6f078adc4d64"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        },
+        {
+          "operation": "remove-exact-duplicate-sibling-after-translation",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/13/children/18",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          },
+          "translatedNode": {
+            "kind": "goalEntry",
+            "goalId": "a449e874-6fec-502b-9667-6f078adc4d64"
+          },
+          "reason": "Same kind/ID/role under same visible parent; no role inference."
+        },
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/13/children/22",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        },
+        {
+          "operation": "remove-exact-duplicate-sibling-after-translation",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/13/children/22",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "translatedNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Same kind/ID/role under same visible parent; no role inference."
+        }
+      ],
+      "wholeBeforeObjectSha256": "sha256:d13ca510b029f65473ae94ac6dc5b49833fbce81518661b29c5b40f9d24e5224",
+      "wholeAfterObjectSha256": "sha256:56031884532d3c3142a9be7303711180a127ed3f101c3d3f5e345c8c84c9c1d8",
+      "directObjectChanges": true,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-nw-gk.view.json",
+        "sha256": "sha256:519bb7f5154e6ea5a9fbdc9f329717caf3fac090da79a361d9942e116380270f",
+        "bytes": 19451
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:337e0e532d9d71091000c05620ca51710076bf9736db7d57da994c2293d3a6cc",
+      "wholeAfterObjectSha256": "sha256:337e0e532d9d71091000c05620ca51710076bf9736db7d57da994c2293d3a6cc",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-nw-lk.view.json",
+        "sha256": "sha256:b2e7f4cf4f4b328c438508df985c78de5c4a2de8f393a4466827357057585221",
+        "bytes": 20166
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:2d7471784f5844810fe6995f10f065e92812473e574591c97c118c82932b1ac1",
+      "wholeAfterObjectSha256": "sha256:2d7471784f5844810fe6995f10f065e92812473e574591c97c118c82932b1ac1",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-rp-gk.view.json",
+        "sha256": "sha256:04c70835d8535ed4b466c6647793d09d5deba6dab9d48a51fbc7603b08aa3159",
+        "bytes": 27693
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:7892a1d9593193c29e6090a28824a61dd83cc6df13ec6a69213e23819b06bae4",
+      "wholeAfterObjectSha256": "sha256:7892a1d9593193c29e6090a28824a61dd83cc6df13ec6a69213e23819b06bae4",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-rp-lk.view.json",
+        "sha256": "sha256:5b962737ed7cdaec007b936ed6617cf387c28ac493f5e9b7e67964ae5fef2960",
+        "bytes": 31954
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:0d8abf4dbe91a372b6af40df567a9f78d816fac2e60cf79d9ff540326baef1c2",
+      "wholeAfterObjectSha256": "sha256:0d8abf4dbe91a372b6af40df567a9f78d816fac2e60cf79d9ff540326baef1c2",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-sh-gk.view.json",
+        "sha256": "sha256:36d3af40db129022d6e823e86fe3b772e7018cdc79f237acfca24c80bea14c79",
+        "bytes": 25492
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:25aa3d4e616a640c4c0a0d94b81591aba413907e1cff5d767828b4feb7528685",
+      "wholeAfterObjectSha256": "sha256:25aa3d4e616a640c4c0a0d94b81591aba413907e1cff5d767828b4feb7528685",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-sh-lk.view.json",
+        "sha256": "sha256:77675e1b6f7af2ef3bb8e8dd5c1a437f688907e70c6c1d544575b8a569d74ed1",
+        "bytes": 29353
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:2eec445ac04b4849175fc97fd00a2d4f83937c94d7623710e6df5929572ad9bb",
+      "wholeAfterObjectSha256": "sha256:2eec445ac04b4849175fc97fd00a2d4f83937c94d7623710e6df5929572ad9bb",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-sl-gk.view.json",
+        "sha256": "sha256:80a8265745ccf164817f2af858d596ac337e147726d182bdf01eeeeb7aacd964",
+        "bytes": 27600
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:6a71c897c34388fde4d91ddc84c47f926dbffafe4f3d8c877b4599d88721fb76",
+      "wholeAfterObjectSha256": "sha256:6a71c897c34388fde4d91ddc84c47f926dbffafe4f3d8c877b4599d88721fb76",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-sl-lk.view.json",
+        "sha256": "sha256:502c6ef93cb481ccdfa78897985f5abb4fcc1d20ff3444fb8eff68204187c74d",
+        "bytes": 30667
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:389cbe4d151f2f57b2eaa2ef99bf154d7b130781dd5ccd1cfe88224d2ca2651d",
+      "wholeAfterObjectSha256": "sha256:389cbe4d151f2f57b2eaa2ef99bf154d7b130781dd5ccd1cfe88224d2ca2651d",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-sn-gk.view.json",
+        "sha256": "sha256:f33d3d762c842005d12e3071eddcbe1e25237620d5481c50cfc05d8d0099b765",
+        "bytes": 28815
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:6eeacce8ff1904775ccdd83cd2be26beb1afa0f3d73fad17fa3cf187a4fb6bde",
+      "wholeAfterObjectSha256": "sha256:6eeacce8ff1904775ccdd83cd2be26beb1afa0f3d73fad17fa3cf187a4fb6bde",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-sn-lk.view.json",
+        "sha256": "sha256:2d8f6d3587fac2ec1dc00b8a43de665792ea7e4d2ebcae78802c51fcb5559a3e",
+        "bytes": 32533
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:76a8411515661bf06e7b305283394eae4c8c0ef6c454a12f94188ee047d9d198",
+      "wholeAfterObjectSha256": "sha256:76a8411515661bf06e7b305283394eae4c8c0ef6c454a12f94188ee047d9d198",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-st-gk.view.json",
+        "sha256": "sha256:b7bfc54cc1772aca0892e4c33294174db9bdcfb8d48aba080698987eb517ef76",
+        "bytes": 26169
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:b7975e94c3b67e535868b32229eee7c0129b0b4873939d4bbc01254efc190f5e",
+      "wholeAfterObjectSha256": "sha256:b7975e94c3b67e535868b32229eee7c0129b0b4873939d4bbc01254efc190f5e",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-st-lk.view.json",
+        "sha256": "sha256:bf3d26b513911f753228f68021ae628030c7d9d9ac6c2d9fcbc9de59cf42ee78",
+        "bytes": 29744
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:408351125cd7a7201ffbff29f50f6c861da6e6c2cd8b84df46639526d5412410",
+      "wholeAfterObjectSha256": "sha256:408351125cd7a7201ffbff29f50f6c861da6e6c2cd8b84df46639526d5412410",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-th-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-th-gk.view.json",
+        "sha256": "sha256:9aa9026804deed9647cf3a826f182bfe31b7edb122b1f3373a3af29595d5b004",
+        "bytes": 26548
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:ddeaf9a174b04d2d7303668788328dadebe7c4b474e0ff0a1e89d487e05545ab",
+      "wholeAfterObjectSha256": "sha256:ddeaf9a174b04d2d7303668788328dadebe7c4b474e0ff0a1e89d487e05545ab",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-th-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT9-current419-isolated-integration-technical-20261014-v1/candidate/views/de-th-lk.view.json",
+        "sha256": "sha256:c9953b8710b133dfb0aebf992a58a21811477a27563c9d8249f1b46eb83c4be8",
+        "bytes": 29615
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:c0e28ee14a7c39616156d62090f8208813c59401355da12c1e816fc1712e25c8",
+      "wholeAfterObjectSha256": "sha256:c0e28ee14a7c39616156d62090f8208813c59401355da12c1e816fc1712e25c8",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-targeted-scoring-source-binding-author-successor-20261011-v7/candidate/navigation.current-source-union.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-targeted-scoring-source-binding-author-successor-20261011-v7/candidate/navigation.current-source-union.view.json",
+        "sha256": "sha256:a20ebb733cf6da5054da2f596558cdfcaae7b3bc41c17709f0e6d45ea575d807",
+        "bytes": 72029
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE",
+        "stage": "CrossStage"
+      },
+      "recipeOperations": [
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/14/children/1/children/5",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        },
+        {
+          "operation": "remove-exact-duplicate-sibling-after-translation",
+          "oldJSONPointer": "/rootNodes/0/children/14/children/1/children/5",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "translatedNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Same kind/ID/role under same visible parent; no role inference."
+        },
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/14/children/3/children/2",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "a449e874-6fec-502b-9667-6f078adc4d64"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        }
+      ],
+      "wholeBeforeObjectSha256": "sha256:6301f80fdb5481a21ad55155f1bc87c5c125c14567d8510aa96112721fcf095c",
+      "wholeAfterObjectSha256": "sha256:acb04ca706d55fcc5f4e4f3462a03b099223044c20b750843ad5c8b29d127201",
+      "directObjectChanges": true,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-targeted-scoring-source-binding-author-successor-20261011-v7/candidate/source-views/de-gym-chemie-bundesweit-source-de-he-seki.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-targeted-scoring-source-binding-author-successor-20261011-v7/candidate/source-views/de-gym-chemie-bundesweit-source-de-he-seki.view.json",
+        "sha256": "sha256:1f53bf6a8974ef09bd39c49d4661a273e237e50f5f13f0a628896e5291f90107",
+        "bytes": 9910
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:5aaae5fdb0fc2e91a00c7e6c04119034a9088706231a9002d2b9d626b924d3e9",
+      "wholeAfterObjectSha256": "sha256:5aaae5fdb0fc2e91a00c7e6c04119034a9088706231a9002d2b9d626b924d3e9",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/views/de-bb-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/views/de-bb-gk.view.json",
+        "sha256": "sha256:bff00f5c8fcb7740dfb442f2a66ad7133a827aa9679068756912efb2a1752139",
+        "bytes": 26552
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:c07d0fe87e1d64b9b16422147cd43b0f1046e3cc831c431366651769352fc648",
+      "wholeAfterObjectSha256": "sha256:c07d0fe87e1d64b9b16422147cd43b0f1046e3cc831c431366651769352fc648",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "BB/BE direct HH default targets proposed removed because primary says no calculation. Any remaining broad subtree-derived HH target remains an explicit HOLD requiring an authored whole-view/source projection decision; no prOnly role invented."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/views/de-bb-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/views/de-bb-lk.view.json",
+        "sha256": "sha256:a1156ddb01b783eb39d6f476e63231195892b62e748fdcc82b93d6d3e4b36169",
+        "bytes": 30384
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [
+        {
+          "operation": "remove-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/21",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          },
+          "reason": "BB/BE44 excludes quantitative buffer obligation; qualitative25729 duty retained separately. No prOnly hiding."
+        },
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/25",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        },
+        {
+          "operation": "remove-exact-duplicate-sibling-after-translation",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/25",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "translatedNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Same kind/ID/role under same visible parent; no role inference."
+        }
+      ],
+      "wholeBeforeObjectSha256": "sha256:a10078e585191dbcdcbb987198f8251d48ca6ba124aa4bf4a85fd81c669799f8",
+      "wholeAfterObjectSha256": "sha256:a838e5d8f2830d4c072c01b2b6d7d53cd7a9973aef2704273dc3ff68e028dd3c",
+      "directObjectChanges": true,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "BB/BE direct HH default targets proposed removed because primary says no calculation. Any remaining broad subtree-derived HH target remains an explicit HOLD requiring an authored whole-view/source projection decision; no prOnly role invented."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/views/de-be-gk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/views/de-be-gk.view.json",
+        "sha256": "sha256:d839adbf7398150e467aaede8144a2de885dc3f2b6a9fa0701fe2a07cbb063ad",
+        "bytes": 26552
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:a8967d281a2a104aff4a878445aed04dd1005777cbe21c4bb5ca354c79aa4d49",
+      "wholeAfterObjectSha256": "sha256:a8967d281a2a104aff4a878445aed04dd1005777cbe21c4bb5ca354c79aa4d49",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "BB/BE direct HH default targets proposed removed because primary says no calculation. Any remaining broad subtree-derived HH target remains an explicit HOLD requiring an authored whole-view/source projection decision; no prOnly role invented."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/views/de-be-lk.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-NAT31-nine-reviewed-children-four-parent-clusters-current414-minimal-author-integration-proposal-20261014-v1/views/de-be-lk.view.json",
+        "sha256": "sha256:c656b2533b1280b1dfd2665672f8dba73c6c5212d61a935cc061e3396b263fb4",
+        "bytes": 30384
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [
+        {
+          "operation": "remove-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/21",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          },
+          "reason": "BB/BE44 excludes quantitative buffer obligation; qualitative25729 duty retained separately. No prOnly hiding."
+        },
+        {
+          "operation": "replace-whole-node",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/25",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "wholeAfterNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Preserve authored course/ordered position while replacing the retired duplicate with the single primary."
+        },
+        {
+          "operation": "remove-exact-duplicate-sibling-after-translation",
+          "oldJSONPointer": "/rootNodes/0/children/1/children/11/children/25",
+          "wholeBeforeNode": {
+            "kind": "goalEntry",
+            "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a"
+          },
+          "translatedNode": {
+            "kind": "goalEntry",
+            "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          },
+          "reason": "Same kind/ID/role under same visible parent; no role inference."
+        }
+      ],
+      "wholeBeforeObjectSha256": "sha256:1155575df4db56438e3ecb41e498e9dd99745bb172fc2df3cfed20536c08ce38",
+      "wholeAfterObjectSha256": "sha256:c4af6f874d2a120c5b6326e2b774a32d4024a7890afe0a9304c417a1f96615fc",
+      "directObjectChanges": true,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 1,
+      "memoryGoalLiteralOccurrencesAfter": 1,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "BB/BE direct HH default targets proposed removed because primary says no calculation. Any remaining broad subtree-derived HH target remains an explicit HOLD requiring an authored whole-view/source projection decision; no prOnly role invented."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-full426-single-placement-qs-view-pure-context-author-20261015-v1/candidate/full426.single-visible-placement.inactive-QS.author.view.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-full426-single-placement-qs-view-pure-context-author-20261015-v1/candidate/full426.single-visible-placement.inactive-QS.author.view.json",
+        "sha256": "sha256:f3f8c8250d7f3a8537f62643c48dd9ae03f4e316fc4149982c1816d9eede1574",
+        "bytes": 8972
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:4b51ad96fe9150ec941648ffed499ee7f45388480e6442afef381cace3ed6ac3",
+      "wholeAfterObjectSha256": "sha256:4b51ad96fe9150ec941648ffed499ee7f45388480e6442afef381cace3ed6ac3",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [
+        {
+          "jsonPointer": "/rootNodes/0/children/0/children/15",
+          "rootGoalId": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "affectedOldDescendants": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "29742d91-732f-5da5-bc46-e963885f9a4a",
+            "a449e874-6fec-502b-9667-6f078adc4d64",
+            "d7461c15-6992-5342-b899-6c490ee0cbb7"
+          ]
+        }
+      ],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    },
+    {
+      "normalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/candidate/de-bw-lk.whole-view.memory-support-selection.author.json",
+      "currentPhysicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory-support-selection-author-20261015-v1/candidate/de-bw-lk.whole-view.memory-support-selection.author.json",
+        "sha256": "sha256:4a66365a3c5079a45d83913b8b00d412488a5c21384aa45a270e94df7ad9ac0f",
+        "bytes": 32381
+      },
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "recipeOperations": [],
+      "wholeBeforeObjectSha256": "sha256:4dc8c418a849d531ed4721e22ebd53f410019f0ca5b977c7302db7ab36d2d268",
+      "wholeAfterObjectSha256": "sha256:4dc8c418a849d531ed4721e22ebd53f410019f0ca5b977c7302db7ab36d2d268",
+      "directObjectChanges": false,
+      "changedCanonicalSubtreeContexts": [],
+      "memoryGoalLiteralOccurrencesBefore": 0,
+      "memoryGoalLiteralOccurrencesAfter": 0,
+      "memoryGoalReferencesChanged": false,
+      "status": "author_data_recipe_only; whole normal projection/native acceptance pending",
+      "sourceCourseBoundary": "Existing unresolved whole-source/full-target/acquisition holds preserved; no new course approval."
+    }
+  ],
+  "copiedWholeViews": 0,
+  "explicitNewProjectionRoles": 0,
+  "fullStockCompilationsRun": 0
+}

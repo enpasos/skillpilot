@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { generateDeepUnderstandingRollout, loadDeepUnderstandingRolloutConfig } from './reportDeepUnderstandingRollout'
+import { generateDeepUnderstandingRollout, loadDeepUnderstandingRolloutConfig, assertRegisteredMathPhysicsNativeAcceptanceComplete } from './reportDeepUnderstandingRollout'
 
 // No config/report/receipt path argument is accepted. Authority is the current
 // registered Math+Physics native pipeline, including its full input/asset checks.
@@ -18,7 +18,7 @@ if(process.argv.slice(2).length===1&&process.argv[2]==='--native-worker'&&proces
       reviewId:record.reviewId,goalFingerprint:record.goalFingerprint,profileFingerprint:record.profileFingerprint,
       reviewInputFingerprint:record.reviewInputFingerprint,recordSha256:digest(record),reviewAuthority:record.reviewAuthority,status:record.status}
   },new Set(['mathematik','physik']))
-  if(report.blockingIssueCount!==0||report.subjects.length!==2||report.subjects.some(s=>!s.strictCompletionReady))throw new Error('Current registered native Kind/D/P/A/M/V acceptance is incomplete: '+JSON.stringify(report.subjects.map(s=>({subject:s.subject,strict:s.strictComplete,denominator:s.denominator,issues:s.issues}))))
+  assertRegisteredMathPhysicsNativeAcceptanceComplete(report)
   const config=loadDeepUnderstandingRolloutConfig(configPath)
   const goals=Object.fromEntries(config.subjects.filter(s=>['mathematik','physik'].includes(s.subject)).flatMap(s=>{
     const raw=JSON.parse(readFileSync(resolve(root,s.landscapePath),'utf8'))

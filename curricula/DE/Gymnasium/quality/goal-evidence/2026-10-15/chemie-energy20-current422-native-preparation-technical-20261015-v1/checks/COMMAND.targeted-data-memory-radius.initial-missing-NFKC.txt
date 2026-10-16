@@ -1,0 +1,22 @@
+argv: ["/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx", "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-current422-native-preparation-technical-20261015-v1/scripts/check_data_and_memory_radius.mts"]
+exitCode: 1
+stdout:
+
+stderr:
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  write('checks/M422.exact-original-rows-four-author-text-stales.actual.json',{role:'Mechanical production fingerprint-payload comparison only; not a new M judgment or central run',pass:true,originalWholeMReviewerSelector:sel.actualWholeM422ReviewerSelector,originalWholeM422Rows:sel.actualWholeM422OriginalRows,before560All422Current:true,after560418StillCurrent:true,after560FourTextStales:stale,normalWholeMConfigNotRunOnKnownStaleAuthorCandidate:true,sourceCourseHoldsRemainOpen:true,originalRowsEdited:0,fingerprintsRefreshed:0,newVotes:0,rows:radius})
+
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-current422-native-preparation-technical-20261015-v1/scripts/check_data_and_memory_radius.mts:30:8) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v20.20.2

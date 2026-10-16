@@ -1,0 +1,27 @@
+{
+  "role": "Logical reproducibility timestamp is distinct from actual execution clock",
+  "originalRunCompletedAt": [
+    "2026-10-15T12:50:49.225670+00:00",
+    "2026-10-15T12:57:12.187263+00:00"
+  ],
+  "stockSynthesizedAt": "2026-10-15T12:57:13.187Z",
+  "rule": "maximum genuine original run.completedAt +1000ms",
+  "actualSynthesisCommand": {
+    "role": "Actual unchanged stock command; informed technical integration only",
+    "argv": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/tmp/chemie-four-paired-portable-20261015-host-v1/app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-final-contexts-paired-native-technical-20261015-v1/config/native4.frozen560-paired.config.json",
+      "--authoring",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-final-contexts-paired-native-technical-20261015-v1/native-four/synthesis-authoring.stock-bounded.json",
+      "--write"
+    ],
+    "cwd": "tmp/chemie-four-paired-portable-20261015-host-v1",
+    "startedAtUTC": "2026-10-15T13:10:24.490292+00:00",
+    "completedAtUTC": "2026-10-15T13:10:25.597196+00:00",
+    "exitCode": 0,
+    "newScientificVotes": 0
+  },
+  "newScientificVotes": 0
+}

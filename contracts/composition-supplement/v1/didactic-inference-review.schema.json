@@ -27,7 +27,10 @@
       "const": "https://skillpilot.com/schemas/composition-supplement/v1/didactic-inference-review.schema.json"
     },
     "reviewFormatVersion": {
-      "const": "1.0"
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
     },
     "reviewId": {
       "type": "string",
@@ -168,8 +171,7 @@
         "required": [
           "goalId",
           "goalSha256",
-          "semanticKind",
-          "nativeAcceptanceSha256"
+          "semanticKind"
         ],
         "properties": {
           "goalId": {
@@ -181,13 +183,52 @@
             "pattern": "^[0-9a-f]{64}$"
           },
           "semanticKind": {
-            "const": "curricularAtomic"
+            "enum": [
+              "curricularAtomic",
+              "orientation"
+            ]
           },
           "nativeAcceptanceSha256": {
             "type": "string",
             "pattern": "^[0-9a-f]{64}$"
+          },
+          "orientationContextBindingSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
           }
-        }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "nativeAcceptanceSha256"
+            ],
+            "properties": {
+              "semanticKind": {
+                "const": "curricularAtomic"
+              }
+            },
+            "not": {
+              "required": [
+                "orientationContextBindingSha256"
+              ]
+            }
+          },
+          {
+            "required": [
+              "orientationContextBindingSha256"
+            ],
+            "properties": {
+              "semanticKind": {
+                "const": "orientation"
+              }
+            },
+            "not": {
+              "required": [
+                "nativeAcceptanceSha256"
+              ]
+            }
+          }
+        ]
       }
     },
     "physicsContext": {
@@ -387,11 +428,6 @@
           "classification",
           "regularMathematicsSourceCoverageClaim",
           "physicsDependentGoalIds",
-          "mandatoryOperation",
-          "mathematicalInference",
-          "inputAvailability",
-          "wholePerformanceAlternatives",
-          "minimality",
           "decision"
         ],
         "properties": {
@@ -402,7 +438,8 @@
           "classification": {
             "enum": [
               "reviewed-didactic-mathematics-supplement-motivated-by-physics",
-              "regular-mathematics-source-backed"
+              "regular-mathematics-source-backed",
+              "reviewed-mathematics-orientation-preparation"
             ]
           },
           "regularMathematicsSourceCoverageClaim": {
@@ -490,6 +527,15 @@
                 "pattern": "^[0-9a-f]{64}$"
               }
             }
+          },
+          "orientationRationale": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+          },
+          "completionContract": {
+            "const": "orientation-binary-completion-v1"
           }
         },
         "allOf": [
@@ -523,6 +569,83 @@
                 ]
               }
             }
+          },
+          {
+            "if": {
+              "properties": {
+                "classification": {
+                  "const": "reviewed-mathematics-orientation-preparation"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "orientationRationale",
+                "completionContract"
+              ],
+              "allOf": [
+                {
+                  "not": {
+                    "required": [
+                      "mandatoryOperation"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "mathematicalInference"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "inputAvailability"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "wholePerformanceAlternatives"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "minimality"
+                    ]
+                  }
+                }
+              ]
+            },
+            "else": {
+              "required": [
+                "mandatoryOperation",
+                "mathematicalInference",
+                "inputAvailability",
+                "wholePerformanceAlternatives",
+                "minimality"
+              ],
+              "allOf": [
+                {
+                  "not": {
+                    "required": [
+                      "orientationRationale"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "completionContract"
+                    ]
+                  }
+                }
+              ]
+            }
           }
         ]
       }
@@ -535,5 +658,41 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://skillpilot.com/schemas/composition-supplement/v1/didactic-inference-review.schema.json",
   "title": "Reviewed didactic Math preparation motivated by Physics v1",
-  "description": "Author and independent reviewer must differ. Complete current runtime Goal/P hashes, native Kind and D/P/A/M/V artifact identities, exact view bytes, closure, input availability and retained source evidence are runtime-validated. This record never grants regular Mathematics source coverage."
+  "description": "Author and independent reviewer must differ. Complete current runtime Goal/P hashes, native Kind and D/P/A/M/V artifact identities, exact view bytes, closure, input availability and retained source evidence are runtime-validated. This record never grants regular Mathematics source coverage.",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "reviewFormatVersion": {
+            "const": "1.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "mathGoalBindings": {
+            "items": {
+              "properties": {
+                "semanticKind": {
+                  "const": "curricularAtomic"
+                }
+              }
+            }
+          },
+          "targetAuthorizations": {
+            "items": {
+              "properties": {
+                "classification": {
+                  "enum": [
+                    "reviewed-didactic-mathematics-supplement-motivated-by-physics",
+                    "regular-mathematics-source-backed"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

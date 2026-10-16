@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "role": "Read-only stock API boundary proof; genuine D1 from an unchanged Native9 bundle is unavailable under current contracts",
+  "createdAtUTC": "2026-10-15T20:09:03.233499+00:00",
+  "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+  "status": "HOLD_requires_authorized_proper_D1_artifacts",
+  "existingNineBundleManifest": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-native24-preparation-technical-20261015-v1/native-relations-nine/bundle/manifest.json",
+    "sha256": "sha256:ad8128af4cd33202e6a13d27f1713a23ef2fc3c31ae79ca46e60577b58523d1a",
+    "bytes": 6279
+  },
+  "existingNineModel": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-native24-preparation-technical-20261015-v1/native-relations-nine/bundle/book-model.json",
+    "sha256": "sha256:3e1efc16e22b7ff40b1471048996844614f323eb833ed5e17bcb2007df1ceb4d",
+    "bytes": 282979
+  },
+  "existingNinePdf": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-native24-preparation-technical-20261015-v1/native-relations-nine/bundle/book.pdf",
+    "sha256": "sha256:b69d5d76e095784f76dd6dc0716d836a0c4e4193cb927ffb624dc85bf9347809",
+    "bytes": 1175077
+  },
+  "existingActualE7PdfPage": {
+    "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+    "batch": "relations-nine",
+    "goalPageNumber": 7,
+    "physicalPdfPage": 9,
+    "actualWholePagePng": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-native24-preparation-technical-20261015-v1/pages/relations-nine/PDF.physical-09.e7c3d20e-4b13-560b-b8ee-c5abca8cc624.png",
+      "sha256": "sha256:3ef2f2d07731c8868edcaf41b5b75bfcef31fcfae2dc7696b51dc011e09e32b1",
+      "bytes": 674759
+    },
+    "actualPageText": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-native24-preparation-technical-20261015-v1/pages/relations-nine/PDF.physical-09.e7c3d20e-4b13-560b-b8ee-c5abca8cc624.txt",
+      "sha256": "sha256:206a30abfafb55c7f3e103353b4ac57649d1d195f780437f8f57dd73ca339c14",
+      "bytes": 2036
+    },
+    "argv": [
+      "pdftoppm",
+      "-f",
+      "9",
+      "-l",
+      "9",
+      "-r",
+      "120",
+      "-png",
+      "-singlefile",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-native24-preparation-technical-20261015-v1/native-relations-nine/bundle/book.pdf",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-native24-preparation-technical-20261015-v1/pages/relations-nine/PDF.physical-09.e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+    ],
+    "exitCode": 0
+  },
+  "exactExistingE7V3ContextSidecar": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-bounded-inactive-integration-technical-20261015-v1/phase2/e7-one/EXACT.e7-whole-existing-Native9-goal-context.technical-sidecar-not-campaign.json",
+    "sha256": "sha256:4e1b758dcfe21a19bf9ec5852f72bc9e4bd162d02a40edcae23abe4506caba78",
+    "bytes": 7611
+  },
+  "stockBoundaries": [
+    {
+      "module": {
+        "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+        "sha256": "sha256:3a99d98a69c60c8e24cfcf40d5f6fe27748715651933176d5f7e6c667b7e1bf9",
+        "bytes": 36070
+      },
+      "functions": [
+        "buildGoalDescriptionReviewInput",
+        "validateReviewInputBindings",
+        "validateGoalDescriptionReviewCampaign"
+      ],
+      "reason": "Input and campaign must cover every review-bundle goal exactly; a nine-goal bundle requires nine input/campaign goals."
+    },
+    {
+      "module": {
+        "path": "app/scripts/exportGoalBookReviewBundle.ts",
+        "sha256": "sha256:b3243f6eb2a9345d68a57fd6a2f01b9469b8c4afa87e24ff79467a78a395130d",
+        "bytes": 26486
+      },
+      "function": "buildGoalBookReviewBundle",
+      "reason": "Filtered JSON with full-book artifacts is explicitly rejected; a dedicated subset BookModel and matching subset HTML/PDF are required."
+    },
+    {
+      "module": {
+        "path": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "sha256": "sha256:36f2ac8ab823cd70f4402deb5f4c96d2399f719f90dfa4a95916467b52962df8",
+        "bytes": 10382
+      },
+      "function": "validateGoalDescriptionReviewCampaignResults",
+      "reason": "batchSize=1 still creates nine campaign batches; every batch/result and all nine records are required."
+    },
+    {
+      "module": {
+        "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+        "sha256": "sha256:4b83f4c6c924527a989e6321a9427a6525a4565f312caf4e4c82699ea7b01136",
+        "bytes": 47407
+      },
+      "function": "validateGoalDescriptionDualRoundResolution",
+      "reason": "Strict goal resolution reruns complete dual-round/campaign validation; one valid batch alone does not complete the nine-goal campaign."
+    }
+  ],
+  "minimalProperAlternativeOutsideCurrentNoRenderAuthorization": "An explicitly authorized proper one-goal subset model and matching one-goal HTML/PDF/bundle, then genuine independent D1 campaigns and original FIRST bindings. No full426 PDF is needed. Existing actual nine-page source remains preserved as supporting evidence.",
+  "currentAuthorizationObserved": {
+    "newModelOrRender": false,
+    "newD1Campaign": false,
+    "FIRSTsRead": false,
+    "normalRecords": 0,
+    "runManifests": 0,
+    "pairing": 0,
+    "oldEightBindingsChanged": false,
+    "oldNineTransportChanged": false,
+    "contextAmendmentsRecastAsD9": false
+  }
+}

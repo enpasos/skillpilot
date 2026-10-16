@@ -1,0 +1,351 @@
+[
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current402-targeted-author-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "b47d542d-c2d7-5554-95dc-10b47ab622ab",
+    "goalFingerprint": "sha256:d20eff71943cb24db354393c4bfee0af12c4128a1e482099132000822d09b788",
+    "reviewInputFingerprint": "sha256:52366eee2b583119374b40be8be70498eaa15e7fbd2f1f29ff550eb41e2052db",
+    "profileFingerprint": "sha256:f6b48035c680429c2018c56e45d7783f534063691fecf3c9834a78bb6089abb9",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T05:00:00Z",
+    "reviewer": "Codex chemistry author; independent review pending",
+    "reason": "Konkrete DE/EN-Aufgaben und bewertbare Ergebnisse als E1/G1-Autorenkandidat. Keine ausgeführte Lernendenarbeit, HumanApproval oder HumanTrial behauptet.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "aspect-1",
+          "essentialUnderstandingDe": "Beobachtete Eigenschaftderfreien Aminosäureerklären.",
+          "essentialUnderstandingEn": "Explain observed properties of free amino acids.",
+          "observablePerformanceDe": "Leucinrestunpolar, Lysinrestbasisch/bei7weitgehendprotoniert. Auch Leucinträgt NH3+/COO−undistnichtpauschalwasserunlöslich. Ladung, pH, Kristallgitter, Konzentration/Temperaturbeeinflussenfreie AA-Löslichkeit; Datenkeine Proteinpositionsregel.",
+          "observablePerformanceEn": "Leucine residue nonpolar, lysine basic/protonated near7. Leucine also has NH3+/COO− and is not absolutely insoluble. Charge, pH, lattice, concentration/temperature affect free amino acids; not protein position rule."
+        },
+        {
+          "id": "aspect-2",
+          "essentialUnderstandingDe": "pH-Variationüberfreie AA-Seitenkettenhinausdeuten.",
+          "essentialUnderstandingEn": "Interpret ph variation beyond residue polarity.",
+          "observablePerformanceDe": "Beip H3 alpha COO−, NH3+, Seiten COOH: netto0; beip H8 beide COO−, NH3+: netto−1. Protonierung/Wasserkontakteverändernsich; beobachtete Löslichkeitbenötigtkontrollierte Mengen/Gitterbedingungen.",
+          "observablePerformanceEn": "At pH3alpha COO−, NH3+, side COOH net0; at pH8two COO−/NH3+net−1. Protonation/water interactions changes; solubility requires controlled amounts/lattice conditions."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "aspect-1",
+          "aspect-2"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-operator-context",
+          "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+          "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-1",
+          "taskDemandDe": "Synthetischer Beobachtungsfall: freie Leucinlösungzeigtbei20°C, pH7 und20g/Lkeinen Feststoff, bei50g/LFeststoff; Lysin50g/Listklar. Ordne Seitenketteneinundbegründeunterschiedliche Löslichkeitunterdiesen Bedingungenmitgemeinsamenionisierbaren Gruppen; keine Allgemeinaussageunlöslich.",
+          "taskDemandEn": "Synthetic observations: free leucine20g/L at20°C, pH7is clear, 50g/L has solid; lysine50g/L is clear. Classify sidechains and explain bounded solubility with shared ionisable groups; do not say insoluble.",
+          "expectedPerformanceDe": "Leucinrestunpolar, Lysinrestbasisch/bei7weitgehendprotoniert. Auch Leucinträgt NH3+/COO−undistnichtpauschalwasserunlöslich. Ladung, pH, Kristallgitter, Konzentration/Temperaturbeeinflussenfreie AA-Löslichkeit; Datenkeine Proteinpositionsregel.",
+          "expectedPerformanceEn": "Leucine residue nonpolar, lysine basic/protonated near7. Leucine also has NH3+/COO− and is not absolutely insoluble. Charge, pH, lattice, concentration/temperature affect free amino acids; not protein position rule.",
+          "understandingFocusDe": "Beobachtete Eigenschaftderfreien Aminosäureerklären.",
+          "understandingFocusEn": "Explain observed properties of free amino acids."
+        },
+        {
+          "id": "case-2",
+          "taskDemandDe": "Vorgegebener fiktiver Vergleichsdatensatz, keine echte Messung: Zwei getrennte Ansätze enthalten jeweils insgesamt 1,00 g derselben kristallinen L-Glutaminsäure in 100 mL wässriger Endmischung bei 20 °C. Der pH wird im jeweiligen Ansatz konstant auf 3,0 beziehungsweise 8,0 gehalten. Nach Erreichen des modellierten Lösungsgleichgewichts wird vorgegeben: bei pH 3,0 bleibt sichtbarer Feststoff zurück; bei pH 8,0 ist kein Feststoff sichtbar. Dies sind qualitative Modellbeobachtungen, keine numerischen Sättigungslöslichkeiten. pKa-Werte im vereinfachten Modell: 2,2 (alpha-Carboxylgruppe), 4,3 (Seitenketten-Carboxylgruppe), 9,7 (alpha-Ammoniumgruppe). Gegenionen und Ionenstärke sind nicht quantitativ bestimmt; ihr Einfluss ist daher aus dem Vergleich nicht isoliert ausgeschlossen.\n\nOrdne den unveränderten Seitenketten-Grundtyp ein. Bestimme mithilfe der pKa-Werte die überwiegenden Protonierungsformen und ihre ganzzahligen Nettoladungen bei pH 3,0 und 8,0. Vergleiche die tatsächlich vorgegebenen Feststoffbeobachtungen und erläutere einen plausiblen Beitrag der Protonierung und Wasserwechselwirkungen. Begründe, warum daraus weder eine genaue Sättigungslöslichkeit noch ein Beweis folgt, dass allein die Seitenkettenpolarität den Unterschied verursacht. Unterscheide überwiegende Form und Gemisch nahe einem pKa-Wert; keine vollständig einheitliche Protonierung behaupten.",
+          "taskDemandEn": "Supplied fictional comparison data, not actual measurements: Two separate samples each contain a total of 1.00 g of the same crystalline L-glutamic acid in a final aqueous mixture of 100 mL at 20 °C. The pH is maintained at 3.0 or 8.0 respectively. After the modeled dissolution equilibrium has been reached, the supplied qualitative observations are: visible solid remains at pH 3.0; no solid is visible at pH 8.0. These are qualitative model observations, not numerical saturation solubilities. Model pKa values are 2.2 (alpha carboxyl), 4.3 (side-chain carboxyl), and 9.7 (alpha ammonium). Counterions and ionic strength have not been determined quantitatively, so the comparison does not separately exclude their influence.\n\nClassify the unchanged side-chain type. Use the pKa values to identify the predominant protonation forms and their integer net charges at pH 3.0 and 8.0. Compare the actual supplied solid/no-solid observations and explain a plausible contribution from protonation and interactions with water. Explain why the data establish neither numerical saturation solubilities nor that side-chain polarity alone causes the difference. Distinguish a predominant form from a mixture near a pKa; do not claim completely uniform protonation.",
+          "expectedPerformanceDe": "Die Seitenkette ist sauer und enthält eine Carboxylgruppe; die kovalente Seitenkettenidentität bleibt beim pH-Wechsel gleich. Bei pH 3,0 ist die alpha-Carboxylgruppe überwiegend COO−, die alpha-Aminogruppe NH3+ und die Seitenketten-Carboxylgruppe überwiegend COOH: die überwiegende Form hat Nettoladung 0. Sie ist nicht die einzige Form; zum Beispiel beträgt im vereinfachten Modell COO−/COOH für die alpha-Gruppe 10^(3,0−2,2)≈6,3 und für die Seitenkette 10^(3,0−4,3)≈0,050. Bei pH 8,0 dominieren zwei COO−-Gruppen und NH3+; die überwiegende Form hat Nettoladung −1. Auch dort ist die Ammoniumgruppe nicht zu 100 % protoniert (NH2/NH3+≈10^(8,0−9,7)≈0,020). Die erhöhte negative Ladung und veränderte Hydratation sind ein plausibler Beitrag dazu, dass im vorgegebenen pH-8-Ansatz kein Feststoff sichtbar bleibt. Im pH-3-Ansatz bleibt dagegen Feststoff. Der Vergleich gilt nur für vorgegebene Gesamtmenge, Endvolumen, Temperatur und Ausgangs-Kristallform. Er bestimmt keine numerischen Sättigungskonzentrationen, trennt Kristallgitter-/Gegenionen-/Ionenstärkeeinflüsse nicht vollständig und belegt keine allgemeine Wasserunlöslichkeit unpolarer Reste oder eine Protein-Positionsregel.",
+          "expectedPerformanceEn": "The side chain is acidic and contains a carboxyl group; its covalent identity is unchanged by the pH change. At pH 3.0, the alpha carboxyl is predominantly COO−, the alpha amino group NH3+, and the side-chain carboxyl predominantly COOH, giving the predominant form net charge 0. This is a mixture, not a single exclusive form: the simplified alpha-carboxyl COO−/COOH ratio is 10^(3.0−2.2)≈6.3, and the side-chain ratio is 10^(3.0−4.3)≈0.050. At pH 8.0, two COO− groups and NH3+ predominate, giving net charge −1. Ammonium is not completely protonated either (NH2/NH3+≈10^(8.0−9.7)≈0.020). Greater negative charge and changed hydration plausibly contribute to the supplied absence of visible solid at pH 8.0, while solid remains at pH 3.0. The comparison is bounded by the supplied total amount, final volume, temperature, and initial crystal form. It determines no numerical saturation concentrations, does not fully separate lattice/counterion/ionic-strength effects, and establishes neither universal water insolubility of nonpolar residues nor a protein-position rule.",
+          "understandingFocusDe": "pH-Variationüberfreie AA-Seitenkettenhinausdeuten.",
+          "understandingFocusEn": "Interpret ph variation beyond residue polarity."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current402-author-20261012-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "ffec1761-c954-5b5d-a0cf-4c8367f91705",
+    "goalFingerprint": "sha256:d00d567d1a55f40cfc88b3ce12f0596bd293130618c7f1a12f94238fe7d4091b",
+    "reviewInputFingerprint": "sha256:4c2056db4346a3d4bbfec42118281df0990f544ccff4395932c85ae00a20c822",
+    "profileFingerprint": "sha256:d0e2a6ddcfd2c4d19a7ebb5387b70d9447c2199277f82719cdcf6ad2a05eb61b",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T02:22:52.691417+00:00",
+    "reviewer": "Codex chemistry Q2 author; not an independent review",
+    "reason": "DE: Konkreter Autorenkandidat mit zwei neu variierten Aufgaben, chemischen Modellantworten und prüfbaren Schlussgrenzen. EN: Concrete author candidate with two freshly varied tasks, chemical model answers and assessable inference limits. Keine Durchführung, unabhängige Freigabe oder menschliche Erprobung behauptet.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "structure-and-evidence",
+          "essentialUnderstandingDe": "Systematische Namen legen Stammkette, Carboxyl-C als C1 und Aminogruppenposition fest.",
+          "essentialUnderstandingEn": "Systematic names specify parent chain, carboxyl C1 and amino-group position.",
+          "observablePerformanceDe": "2-Aminoethansäure und 2-Aminopropansäure; das Carboxyl-C ist C1. Trivialnamen Glycin/Alanin dürfen ergänzen, ersetzen aber die Regelanwendung nicht.",
+          "observablePerformanceEn": "2-aminoethanoic acid and 2-aminopropanoic acid; carboxyl carbon is C1. Glycine/alanine can supplement but do not replace rule application."
+        },
+        {
+          "id": "fresh-transfer",
+          "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+          "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+          "observablePerformanceDe": "HO-CH2-CH(NH2)-COOH; Amino an C2, Hydroxy an C3. Der Fehler verwechselt Carboxyl-C1 und alpha-C2; ohne Zusatz ist keine Stereokonfiguration behauptet.",
+          "observablePerformanceEn": "HO-CH2-CH(NH2)-COOH; amino at C2 and hydroxy at C3. Error confuses carboxyl C1 and alpha C2; no stereoconfiguration is asserted without further notation."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "structure-and-evidence",
+          "fresh-transfer"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-and-conditions",
+          "textDe": "Material, Stoffstruktur, Messbedingung oder Bewertungsdossier wechseln wie in den zwei ausdrücklich ausgearbeiteten Fällen; quantitative Angaben sind synthetische Aufgabenwerte.",
+          "textEn": "Material, molecular structure, measurement conditions or evaluation dossier vary as explicitly specified in the two worked cases; numerical values are synthetic task data."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-a",
+          "taskDemandDe": "Benenne H2N-CH2-COOH und CH3-CH(NH2)-COOH systematisch und kennzeichne die Zählrichtung.",
+          "taskDemandEn": "Systematically name H2N-CH2-COOH and CH3-CH(NH2)-COOH and indicate numbering.",
+          "expectedPerformanceDe": "2-Aminoethansäure und 2-Aminopropansäure; das Carboxyl-C ist C1. Trivialnamen Glycin/Alanin dürfen ergänzen, ersetzen aber die Regelanwendung nicht.",
+          "expectedPerformanceEn": "2-aminoethanoic acid and 2-aminopropanoic acid; carboxyl carbon is C1. Glycine/alanine can supplement but do not replace rule application.",
+          "understandingFocusDe": "Systematische Namen legen Stammkette, Carboxyl-C als C1 und Aminogruppenposition fest.",
+          "understandingFocusEn": "Systematic names specify parent chain, carboxyl C1 and amino-group position."
+        },
+        {
+          "id": "case-b-transfer",
+          "taskDemandDe": "Zeichne aus dem Namen 2-Amino-3-hydroxypropansäure eine passende Konnektivität und prüfe den fehlerhaften Namen 1-Aminopropansäure für Alanin.",
+          "taskDemandEn": "Draw connectivity from 2-amino-3-hydroxypropanoic acid and assess erroneous 1-aminopropanoic acid for alanine.",
+          "expectedPerformanceDe": "HO-CH2-CH(NH2)-COOH; Amino an C2, Hydroxy an C3. Der Fehler verwechselt Carboxyl-C1 und alpha-C2; ohne Zusatz ist keine Stereokonfiguration behauptet.",
+          "expectedPerformanceEn": "HO-CH2-CH(NH2)-COOH; amino at C2 and hydroxy at C3. Error confuses carboxyl C1 and alpha C2; no stereoconfiguration is asserted without further notation.",
+          "understandingFocusDe": "Systematische Namen legen Stammkette, Carboxyl-C als C1 und Aminogruppenposition fest.",
+          "understandingFocusEn": "Systematic names specify parent chain, carboxyl C1 and amino-group position."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current402-targeted-author-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+    "goalFingerprint": "sha256:f562efa768e6a5157ba0cc797e35badfeb5c165f07d063c503b6fce26d4b21f7",
+    "reviewInputFingerprint": "sha256:50a6a9f83713ecd4ae06f90e862dafeb910e3c734c76006508e0bca878e52672",
+    "profileFingerprint": "sha256:8b17cb690901e120b0bd1c2ab105f8378edb4f649169f88c9dca088e50c2fc7d",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T05:00:00Z",
+    "reviewer": "Codex chemistry author; independent review pending",
+    "reason": "Konkrete DE/EN-Aufgaben und bewertbare Ergebnisse als E1/G1-Autorenkandidat. Keine ausgeführte Lernendenarbeit, HumanApproval oder HumanTrial behauptet.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "structure-and-evidence",
+          "essentialUnderstandingDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+          "essentialUnderstandingEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength.",
+          "observablePerformanceDe": "[alpha]=+60 Grad mL g^-1 dm^-1; Vergleich verlangt gleiche Temperatur/Wellenlänge/Lösemittel. (+) bestimmt keine D-Konfiguration.",
+          "observablePerformanceEn": "[alpha]=+60 degrees mL g^-1 dm^-1; compare at same temperature/wavelength/solvent. Positive sign does not establish D configuration."
+        },
+        {
+          "id": "fresh-transfer",
+          "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+          "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+          "observablePerformanceDe": "Enantiomere drehen gleich groß entgegengesetzt unter identischen Bedingungen; Racemat kompensiert. Null kann auch achiral oder andere Ursachen bedeuten und beweist nicht Stoffidentität.",
+          "observablePerformanceEn": "Enantiomers rotate equally and oppositely under identical conditions; racemate cancels. Zero can also reflect achirality or other causes and does not identify a substance."
+        },
+        {
+          "id": "execution",
+          "essentialUnderstandingDe": "Charakterisierung/Identifikationgegenexplizite Referenzen.",
+          "essentialUnderstandingEn": "Characterise/identify against explicit references.",
+          "observablePerformanceDe": "[alpha]=+53°mL/(gdm), innerhalb Messgenauigkeitpassend Glucose. Bedingungen, Reinheit/Gleichgewicht/Referenzbestandwichtig; Wertalleinbewirktkeineuniverselle Identifikationaller Naturstoffe.",
+          "observablePerformanceEn": "Specific rotation+53°mL/(g dm), matches glucose within precision. Conditions, purity/equilibrium/reference universe matter; one value does not identify all substances uniquely."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "structure-and-evidence",
+          "fresh-transfer",
+          "execution"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-operator-context",
+          "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+          "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-a",
+          "taskDemandDe": "Bei vorgegebener Konvention alpha=[alpha]lc, c in g/mL, l in dm, sind alpha=+6 Grad, l=2 dm, c=0.05 g/mL. Bestimme die spezifische Rotation und benenne Bedingungen.",
+          "taskDemandEn": "Using supplied alpha=[alpha]lc with c in g/mL and l in dm, alpha=+6 degrees, l=2 dm, c=0.05 g/mL. Determine specific rotation and conditions.",
+          "expectedPerformanceDe": "[alpha]=+60 Grad mL g^-1 dm^-1; Vergleich verlangt gleiche Temperatur/Wellenlänge/Lösemittel. (+) bestimmt keine D-Konfiguration.",
+          "expectedPerformanceEn": "[alpha]=+60 degrees mL g^-1 dm^-1; compare at same temperature/wavelength/solvent. Positive sign does not establish D configuration.",
+          "understandingFocusDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+          "understandingFocusEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength."
+        },
+        {
+          "id": "case-b-transfer",
+          "taskDemandDe": "Vergleiche ein reines Enantiomer und ein 1: 1-Racemat gleicher Gesamtkonzentration. Was folgt aus Drehung null und was nicht?",
+          "taskDemandEn": "Compare a pure enantiomer and 1: 1 racemate at equal total concentration. What does zero rotation establish and fail to establish?",
+          "expectedPerformanceDe": "Enantiomere drehen gleich groß entgegengesetzt unter identischen Bedingungen; Racemat kompensiert. Null kann auch achiral oder andere Ursachen bedeuten und beweist nicht Stoffidentität.",
+          "expectedPerformanceEn": "Enantiomers rotate equally and oppositely under identical conditions; racemate cancels. Zero can also reflect achirality or other causes and does not identify a substance.",
+          "understandingFocusDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+          "understandingFocusEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength."
+        },
+        {
+          "id": "execution-1",
+          "taskDemandDe": "Vorgegebener fiktiver Polarimetrie-Datensatz, keine tatsächlich ausgeführte Messung: Eine als rein vorausgesetzte Modellprobe in Wasser hat bei 20 °C und 589 nm in einer Küvette der Länge l = 1,00 dm bei c = 0,100 g/mL den beobachteten Drehwinkel alpha = +5,3° mit vorgegebener Winkelunsicherheit ±0,1°. Für dieses Aufgabenmodell sind ausdrücklich die SPEZIFISCHEN Drehungen als Referenzen vorgegeben: [alpha](Glucose) = +52,7 °·mL/(g·dm), [alpha](Fructose) = −92,4 °·mL/(g·dm), beide im selben Lösemittel, bei derselben Temperatur und Wellenlänge und im für den Vergleich vorausgesetzten Gleichgewichtszustand. Diese Referenzgrößen sind NICHT beobachtete Winkel bei der angegebenen Küvettenlänge/Konzentration. Nutze die vorgegebene Konvention alpha = [alpha] l c.\n\nBerechne die spezifische Drehung samt der hier allein betrachteten Winkelunsicherheit. Ordne die Probe ausschließlich innerhalb der beiden vorgegebenen Referenzkandidaten ein und begründe, warum dieser eingeschränkte Vergleich keine universelle Stoffidentifikation und keine Zuordnung des Drehzeichens zur D/L-Konfiguration erlaubt.",
+          "taskDemandEn": "Supplied fictional polarimetry data, not an actual measurement: A model sample assumed pure in water at 20 °C and 589 nm has observed rotation alpha = +5.3° with stipulated angular uncertainty ±0.1°, path length l = 1.00 dm, and c = 0.100 g/mL. The reference values supplied specifically for this model are SPECIFIC rotations: [alpha](glucose) = +52.7 °·mL/(g·dm) and [alpha](fructose) = −92.4 °·mL/(g·dm), in the same solvent, at the same temperature and wavelength, and in the stipulated equilibrium state. These are NOT observed angles at the given path length and concentration. Use the supplied convention alpha = [alpha] l c.\n\nCalculate the specific rotation and the uncertainty arising solely from the supplied angular uncertainty. Identify the sample only within the two stipulated reference candidates and explain why this restricted comparison neither identifies any possible substance uniquely nor assigns D/L configuration from the rotation sign.",
+          "expectedPerformanceDe": "[alpha] = +5,3°/(1,00 dm · 0,100 g/mL) = +53 °·mL/(g·dm). Bei hier als exakt gesetztem l und c ergibt die Winkelunsicherheit ±1 °·mL/(g·dm). +52,7 liegt innerhalb dieses vereinfachten Intervalls; −92,4 passt nicht. Unter den ausdrücklich beschränkten zwei Alternativen und Reinheits-/Gleichgewichtsannahmen passt daher Glucose. Die Zahlen +52,7/−92,4 sind spezifische Referenzdrehungen, nicht direkt vergleichbare gemessene Winkel. Andere Substanzen oder Gemische können ähnliche Drehungen liefern; Temperatur, Wellenlänge, Lösemittel, Konzentrationskonvention und Gleichgewichtszustand müssen passen. (+) beweist keine D-Konfiguration. Dieser fiktive Fall ist keine tatsächliche Stoffanalyse oder Messbestätigung.",
+          "expectedPerformanceEn": "[alpha] = +5.3°/(1.00 dm · 0.100 g/mL) = +53 °·mL/(g·dm). Taking l and c as exact in this model, the angular uncertainty gives ±1 °·mL/(g·dm). +52.7 is within that simplified interval, whereas −92.4 is incompatible. Glucose therefore fits under the explicitly restricted two alternatives and purity/equilibrium assumptions. The +52.7/−92.4 values are specific reference rotations, not directly comparable observed angles. Other substances or mixtures may have similar rotations, so temperature, wavelength, solvent, concentration convention, and equilibrium state must match. A positive sign does not establish D configuration. The fictional case is not an actual substance analysis or measurement confirmation.",
+          "understandingFocusDe": "Charakterisierung/Identifikationgegenexplizite Referenzen.",
+          "understandingFocusEn": "Characterise/identify against explicit references."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-energy-eleven-kept-informed-pa-20261015-v1-p",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "0773a104-aaeb-5e96-a615-2a2bec3eb096",
+    "goalFingerprint": "sha256:c31304804b1a5fb1cba021032cd83772de4c89b9b0eda939dd7d13dd18c1961a",
+    "reviewInputFingerprint": "sha256:d180c96e8647e9ac9a61e9d87be97cdb632de91a2668cfaa0af56d518bb26dad",
+    "profileFingerprint": "sha256:e3b31ed8ac427f816af2e36e44b004383a8dd819def64ec6ae43a5b80e9e1b2f",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-15T12:25:17.855885+00:00",
+    "reviewer": "Codex reviewer C; informed P/A successor after own D20; no new blind D vote",
+    "reason": "Begründete Auswahl unter Dosis-, Härte- und Temperaturbedingungen ist ein tragfähiger gemeinsamer Zielkern; Durchführung des vorgeschlagenen Kontrolltests bleibt optional und ersetzt keine Praxispflicht eines Quellenpartners. Echter Fallmangel: Homogenität bei5°C belegt den ausgewählten15°C-Zustand nicht. Der eigene ganze Nachfolger gibt den tatsächlich benötigten fiktiven15°C/0,08g/L-Testzustand an und begrenzt das Urteil darauf. Source-/Image-Hold bleibt offen.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [
+      "chemie-energy-eleven-kept-informed-pa-20261015-v1-P11-final-current"
+    ],
+    "dissent": [
+      "Informed single-goal AI assessment design; no learner/lab trial, human acceptance, D blind vote or M/V/source/course approval.",
+      "Current image bytes and supplied page contexts are input-bound; image recognition is not performance and this P record grants no V vote.",
+      "National partial source mappings, optional selections and separately assigned practical source-partner duties remain open.",
+      "0773 has no visualization and no established universal source duty for optimisation; Source-/Image-Hold remains open."
+    ],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Optimiert wird eine Formulierung durch Strukturwahl unter konkreten Zielen/Nebenbedingungen.",
+          "essentialUnderstandingEn": "A formulation is optimised by structure choice under explicit objectives/constraints.",
+          "observablePerformanceDe": "energy20-19-a: Strukturwahl an Ziel und drei Nebenbedingungen binden. energy20-19-b: Strukturwahl als bedingte Formulierungsoptimierung erklären.",
+          "observablePerformanceEn": "energy20-19-a: Bind a concrete structure choice to objectives and three constraints. energy20-19-b: Explain structure selection as conditional formulation optimisation."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Kopf,Kette,Krafft-/Trübungspunkt,Härte und Konzentration begrenzen Eignung.",
+          "essentialUnderstandingEn": "Head,tail,Krafft/cloud point,hardness and concentration constrain suitability.",
+          "observablePerformanceDe": "energy20-19-a: A/B/C anhand gegebener Grenzwerte begründet auswählen/ausschließen. energy20-19-b: Kopfhydratation, Trübung und Fettentfernung getrennt nutzen.",
+          "observablePerformanceEn": "energy20-19-a: Chemically justify excluding/selectingA/B/C from given thresholds. energy20-19-b: Separately use head hydration/cloud point and fat removal."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Schaum,Waschleistung und Umweltwirkung sind getrennte Prüfgrößen.",
+          "essentialUnderstandingEn": "Foam,cleaning and environmental impact are separate measurements.",
+          "observablePerformanceDe": "energy20-19-a: Kontrollierte Überprüfung und offene Umweltkriterien benennen. energy20-19-b: Schaumnebenbedingung und ungeprüfte Ionenmischung beurteilen.",
+          "observablePerformanceEn": "energy20-19-a: Specify a controlled test and missing environmental criteria. energy20-19-b: Critique foam constraints and untested ionic mixtures."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "energy20-19-a-transfer",
+          "textDe": "Die Temperatur steigt auf45°C. PrüfeC neu und fordere für höherethoxylierte Alternativen gezielt Daten statt „mehrEO ist immer besser“.",
+          "textEn": "Temperature rises to45°C. Reconsider the choice and request cloud/performance data for a higher-EO alternative rather than asserting moreEO is always better."
+        },
+        {
+          "id": "energy20-19-b-transfer",
+          "textDe": "BeiHandwäsche wird Schaum erwünscht, Fettentfernung bleibtgleich. Wie ändert der Zweck die Gewichtung, ohne chemische Daten umzuschreiben?",
+          "textEn": "Foam becomes desirable for handwashing while fat removal remains equal. Explain how changed use changes objective weighting without rewriting chemistry data."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "energy20-19-a",
+          "taskDemandDe": "Ganzes eigenes Material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-eleven-kept-current422-positive-and-atomic-informed-20261015-v1/materials/eleven-whole-cases22.targeted-informed-successor.json #energy20-19-a. Wähle eine Struktur unter allen Ziel-/Nebenbedingungen. Erkläre Kopf/Kettenwirkung und prüfe Konzentration, Temperatur, Härte getrennt. Plane eine kontrollierte Prüfung mit Wasserblank und gleicher Ölmenge statt unspezifizierter „Waschkraft“.",
+          "taskDemandEn": "Whole own material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-eleven-kept-current422-positive-and-atomic-informed-20261015-v1/materials/eleven-whole-cases22.targeted-informed-successor.json #energy20-19-a. Choose a structure under stated objectives/constraints and explain head/tail effects. Separately check concentration,temperature and hardness. Design a controlled check with water blank/equal oil amount;do not merely maximise undefined“cleaning power”.",
+          "expectedPerformanceDe": "C erfüllt die angegebenen Bedingungen:0,08>0,05g/L und15°C im ausdrücklich angegebenen Homogenitätstest und unter dem Trübungspunkt, keine angegebene Härtestörung. A verfehlt Temperatur/Dosis, B Dosis und Härte. DerEthoxykopf unterstützt Hydratation, die Kette Ölwechselwirkung; Micellen allein beweisen keine Universalwirkung. Test: Gleichdosis, Temperatur, Öl, Schüttelzeit, Blank und Wiederholung. Toxizität, Abbau und Kosten fehlen für eine Gesamtoptimierung.",
+          "expectedPerformanceEn": "C is justified within this model:0.08>0.05g/L,15°C as explicitly confirmed by the supplied homogeneity test and below35°C cloud point,no stated hardness problem. A fails temperature and dose;B fails dose and has hardness sensitivity. Ethoxy head hydration and tail/oil interaction explain the choice;more micelles is not universal performance evidence. Equal dose,temperature,oil,agitation,time,blank and repetition test the prediction. Toxicity,degradation,cost remain missing for overall optimisation.",
+          "understandingFocusDe": "Die Temperatur steigt auf45°C. PrüfeC neu und fordere für höherethoxylierte Alternativen gezielt Daten statt „mehrEO ist immer besser“.",
+          "understandingFocusEn": "Temperature rises to45°C. Reconsider the choice and request cloud/performance data for a higher-EO alternative rather than asserting moreEO is always better."
+        },
+        {
+          "id": "energy20-19-b",
+          "taskDemandDe": "Ganzes eigenes Material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-eleven-kept-current422-positive-and-atomic-informed-20261015-v1/materials/eleven-whole-cases22.targeted-informed-successor.json #energy20-19-b. Optimiere durch begründete Strukturwahl und nenne Zielkonflikte. Warum sind Kopfänderung und Temperatur wichtig, Schaum aber kein Entfernungsmaß? BeurteileF/G und entwickle eine Prüffrage, keine Rezeptur.",
+          "taskDemandEn": "Whole own material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-eleven-kept-current422-positive-and-atomic-informed-20261015-v1/materials/eleven-whole-cases22.targeted-informed-successor.json #energy20-19-b. Optimise the formulation through justified structure selection and identify trade-offs. Explain head-group relevance and why foam alone is not a removal measure. Assess untestedF/G and devise a test question,not a laboratory recipe.",
+          "expectedPerformanceDe": "D erfüllt die gegebenen Bedingungen besser. E liegt über seinem Trübungspunkt und entfernt hier weniger Fett. Gleiche Schwänze garantieren bei anderer Kopfhydratation keine gleiche Löslichkeit. Wenig Schaum ist eine Maschinennebenbedingung, nicht der Reinigungsbeweis. F/G können ionisch wechselwirken; Stabilität und Leistung sind offen. Test fixiert Dosis, Last und Temperatur und misst Niederschlag/Fettentfernung getrennt; kein universelles Umweltoptimum.",
+          "expectedPerformanceEn": "D better meets the stated temperature/fat/foam constraints;E exceeds its cloud point and removes less fat in these data. Equal tails do not ensure equal solubility because head hydration differs. Low foam is a machine constraint,not proof of cleaning. F/G can interact ionically;stability/performance are unresolved without data. A fair test fixes dose/load/temperature and separately measures precipitate/fat removal;no blanket environmental optimum follows.",
+          "understandingFocusDe": "BeiHandwäsche wird Schaum erwünscht, Fettentfernung bleibtgleich. Wie ändert der Zweck die Gewichtung, ohne chemische Daten umzuschreiben?",
+          "understandingFocusEn": "Foam becomes desirable for handwashing while fat removal remains equal. Explain how changed use changes objective weighting without rewriting chemistry data."
+        }
+      ]
+    }
+  }
+]

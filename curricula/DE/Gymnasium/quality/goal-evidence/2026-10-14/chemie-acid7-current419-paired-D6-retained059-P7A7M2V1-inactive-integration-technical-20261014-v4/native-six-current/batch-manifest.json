@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-current419-paired-D6-retained059-P7A7M2V1-inactive-integration-technical-20261014-v4/config/D6.current-whole-container.normal-address.config.json",
+  "configDigest": "sha256:2958e4e39ed501f201e0e1f993fd83d006dfdbadded19176f548e9ece57995b2",
+  "goalIds": [
+    "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+    "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+    "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+    "c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
+    "33034876-8da5-5619-ad86-e1272e0304b0",
+    "d7461c15-6992-5342-b899-6c490ee0cbb7"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 419,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-two-description-one-image-current419-native-successor-technical-20261014-v3/config/whole419.native-preparation-only.stock-base.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:84903b69859240d4e85fde42f873e7d1b57f2dcabeeae5d5b8ad677ffc2d29cb"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:f5e60c3561557ed5f4b4018b992134fb42bc4a57cb525d2bf33ddd0ed76449ad",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:12252b1d62a60747a8d7147f6b32d8f6afe56cae2a3063f137fdfc3761de3ce6",
+    "reviewInputFingerprint": "sha256:5051a2bd40a7ad6fe30681222afc1ffca8354464c8796af2d4f78150235a3e2f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-a",
+        "campaignDigest": "sha256:909a1a3f9813828fbe01bdef0b2ea59a54af3855e33440f4d16b3ec5f6cfaafd",
+        "roundId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-first-pass-a",
+        "independenceGroupId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-independent-a",
+        "batchId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7e87dadcc77db4107632eb55e2d65038ae6d7e5652121f91da51b8c6831d14b9"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-b",
+        "campaignDigest": "sha256:ef93a9bc2bbd2a83688b9dd05c9eae5d3d29f1168048bcc0c1599aab62136441",
+        "roundId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-first-pass-b",
+        "independenceGroupId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-independent-b",
+        "batchId": "chemie-acid7-two-text-one-image-current419-targeted-six-20261014-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6abe5e85197e78e025bc61c7a80a62395163a4764725ebd8867ffcffa96f30ec"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

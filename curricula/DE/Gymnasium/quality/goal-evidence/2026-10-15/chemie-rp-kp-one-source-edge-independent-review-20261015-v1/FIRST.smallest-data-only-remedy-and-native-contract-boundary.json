@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "runId": "5a425502-4fee-46d0-9215-73d5a1dd178d",
+  "recordedAtUTC": "2026-10-15T18:54:05.801245+00:00",
+  "artifactKind": "Reviewer recommendation for a separate data-author successor; no mapping data changed here",
+  "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+  "smallestSafeAuthoredDelta": [
+    {
+      "file": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_to_canonical_chemistry.json",
+      "operation": "REMOVE_ONLY_THIS_WHOLE_MAPPING_ROW",
+      "originalJsonPointer": "/mappings/644",
+      "wholeBeforeRow": {
+        "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+        "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "matchType": "exact",
+        "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+      },
+      "replacementMappingRow": null
+    },
+    {
+      "file": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "operation": "REMOVE_ONLY_THIS_WHOLE_REDUNDANT_MAPPING_ROW",
+      "originalJsonPointer": "/mappings/644",
+      "wholeBeforeRow": {
+        "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+        "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "matchType": "exact",
+        "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+      },
+      "replacementMappingRow": null
+    },
+    {
+      "file": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "operation": "REPLACE_THIS_ONE_AUTHORING_DECISION_WITH_EXPLICIT_HOLD",
+      "originalJsonPointer": "/decisions/165",
+      "wholeBeforeRow": {
+        "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+        "topicCode": "BAUSTEIN-7-5",
+        "sourceSpan": "7.5 angewandte Verfahren, Source-Ziel 10",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "580b3616-f121-5d82-ac6b-fc24f145fbdc"
+        ],
+        "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+        "reviewedAt": "2026-05-11",
+        "reviewer": "codex"
+      },
+      "recommendedHeldAuthoringDecisionBeforeActualReviewerTimestampFieldsAreSet": {
+        "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+        "topicCode": "BAUSTEIN-7-5",
+        "sourceSpan": "7.5 angewandte Verfahren, Source-Ziel 10",
+        "decision": "needs_view_placement_review",
+        "canonicalGoalIds": [],
+        "rationale": "Independent source review: the former exact relation to gas-detection goal 580b is false. The actual RP2022 Kp/ideal-gas item is an enrichment/interconnection suggestion on printed/physical page 52 of framework block 7. The old page-25/7.5/LK labels remain historical extraction data and do not establish obligation. Goal a8 is a plausible partial thematic candidate only, retained in the external quality record; there is no accepted mapping or optional/mandatory placement for this source cell. Source inventory and full-coverage requirement remain unchanged."
+      },
+      "acceptedCanonicalTargets": [],
+      "candidatePartnerRetainedOnlyOutsideConsumedMappings": {
+        "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+        "relation": "possible partial thematic relation",
+        "placement": "open",
+        "source": "this independent sealed source review"
+      }
+    }
+  ],
+  "statusConsequence": {
+    "totalSourceGoalsMustRemain": 325,
+    "mappedSourceGoalsAfterThisOneFalseEdgeIsWithdrawn": 324,
+    "needsViewPlacementReview": 1,
+    "needsCanonicalGoalNotEstablishedByThisReview": false,
+    "reviewedSourceGoalsCounter": "State explicitly whether this counts recorded review decisions or only resolved accepted mappings; never use it to claim this held cell is mapped. 324 historical decisions are unchanged, one source cell is independently adjudicated but unresolved for placement/whole coverage.",
+    "no325Of325CoverageClaim": true,
+    "sourceCellMustNotBeDeletedOrOmittedFromDenominator": true
+  },
+  "whyBothRawArraysMatter": {
+    "actualApplicabilityCompiler": {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "sha256:50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    },
+    "codeReferences": [
+      {
+        "lines": [
+          543,
+          563
+        ],
+        "fact": "All JSON files under a mapping directory are loaded; raw mappings are read without consulting source decision/rationale/status."
+      },
+      {
+        "lines": [
+          817,
+          831
+        ],
+        "fact": "Each canonicalGoalId in the raw mappings array contributes target mapping evidence."
+      },
+      {
+        "lines": [
+          1122,
+          1145
+        ],
+        "fact": "Both exact and partial rows add the mapping jurisdiction; partial is recorded as strength, not an exclusion."
+      },
+      {
+        "lines": [
+          1198,
+          1216
+        ],
+        "fact": "Partial-only applicability is diagnostic APV-202; it still produces compiled jurisdiction applicability."
+      }
+    ],
+    "changingOnlyDecisionOrStatusWouldRemoveVisibilityEdge": false,
+    "movingTheCandidateToAnotherConsumedMappingJsonWouldBeSafe": false
+  },
+  "nativePublicationBoundary": {
+    "compiler": {
+      "path": "scripts/compile_curriculum_release_model.py",
+      "sha256": "sha256:daf4dbcad32aa553960a4aea2f2e4a95cd36224bb0256aa345c9e506afef22cd",
+      "bytes": 184557
+    },
+    "validator": {
+      "path": "scripts/validate_curriculum_release_model.py",
+      "sha256": "sha256:2242b33878d01f2c9df54ac4065ae61bd57abbddfef3fe08e2ee4358dea8ec0f",
+      "bytes": 256345
+    },
+    "closedEdgeSchema": {
+      "path": "contracts/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+      "sha256": "sha256:47e8e8ad0b81eedd2bed46b98f82a6cc27402fd2caa88d97542ba1353a808b91",
+      "bytes": 3765
+    },
+    "actualCodeReferences": [
+      {
+        "compilerLines": [
+          1882,
+          1954
+        ],
+        "fact": "Native source lane accepts only mapped decisions with nonempty targets, exact/partial match types and complete source-goal coverage. It does not interpret the warning rationale or aggregate needsViewPlacementReview counter as a hold."
+      },
+      {
+        "validatorLines": [
+          2422,
+          2504
+        ],
+        "fact": "Independent validator enforces the same mapped/nonempty/full-source join."
+      }
+    ],
+    "proposedMappedPartialRowWouldRemainPositiveSourceEdge": true,
+    "openHeldAuthoringDecisionIsNotNativePublicationCompatible": true,
+    "existingNativeFailureMustRemainFailClosed": true,
+    "doNotChangeCompilerValidatorSchemaToAcceptIncompleteSourceCoverage": true,
+    "doNotManufactureAnotherPositiveMappingToSatisfyGate": true
+  },
+  "futureScopeForPositiveMapping": "Only after separate source/placement work establishes an explicitly selected optional RP route and whole-cell coverage treatment may a8 be considered for an accepted mapping. This review does not require a new canonical goal or prescribe new runtime/UX.",
+  "notAnAppliedOrApprovedM3Recipe": true,
+  "noSchemaRuntimeReleaseOrActivationChanges": true
+}

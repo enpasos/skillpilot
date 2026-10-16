@@ -1,0 +1,35 @@
+{
+  "recordedAtUTC": "2026-10-15T08:42:16.091918+00:00",
+  "perCommandTimes": "Exact start/end for earlier commands were not separately logged; no synthetic timings are supplied. Production helper and validation files contain their actual write/check UTC timestamps.",
+  "actualCommands": [
+    {
+      "argv": [
+        "python3",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-preparation-purity-whole-author-20261015-v1/author-material.py"
+      ],
+      "exitCode": 0,
+      "observedOutput": "Wrote one-goal full bilingual material and profile body; exact retained a,28 external exact object references."
+    },
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-preparation-purity-whole-author-20261015-v1/build-raw-profile.mts"
+      ],
+      "environment": {
+        "TSX_DISABLE_CACHE": "1"
+      },
+      "exitCode": 0,
+      "observedOutput": "Production raw-profile helper valid:1 E0/G0 candidate; unchanged goal/resource input binding."
+    },
+    {
+      "argv": [
+        "python3",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-preparation-purity-whole-author-20261015-v1/check-author-successor.py"
+      ],
+      "exitCode": 0,
+      "observedOutput": "Schema/JSON/CAS valid. Actual arithmetic:22 plus atom balance. Normal curriculum_symlink_errors:0."
+    }
+  ],
+  "checkedGateFunction": "scripts.validate_schemas.curriculum_symlink_errors(real repository), internally uses normal Git ls-files read only. No Git mutation.",
+  "writes": "Only new author root. No original frozen root, active data, registry, runtime or plugin writes."
+}

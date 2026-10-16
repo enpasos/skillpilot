@@ -1,0 +1,658 @@
+{
+  "contract": "genuine-whole20-physics-personal-case-solutions-v1",
+  "completedUTC": "2026-10-15T22:52:40.854647+00:00",
+  "rows": [
+    {
+      "goalId": "02876b2e-7cf0-5de6-ad04-d4ee95b7f80e",
+      "title": "Photovoltaische Kennlinien und Maximum-Power-Point untersuchen",
+      "wholeCurrentPExpectationIds": [
+        "kennlinienmessung",
+        "leistung-und-mpp"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "kennlinienmessung",
+          "leistung-und-mpp"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "zwei-bestrahlungen",
+          "ownPersonalSolution": "Voltmeter parallel zur Zelle, Strommesser in Reihe im strombegrenzten Lastkreis; keine Netz-/Dachanlage. Last systematisch ändern, jeweils Bestrahlung stabilisieren, Zelltemperatur25°C kontrollieren, Gerätebereiche/Unsicherheiten und Zeit protokollieren. Die Übungswerte liefern P_hoch=[0,19.6,36,35,0]mW und P_niedrig=[0,9.6,16,10,0]mW. Beide Punktmaxima liegen bei0.4V; endliche Abtastung beweist keinen exakten stetigenMPP. Um0.4–0.5V nachmessen; an Leerlauf I=0 und Kurzschluss U=0 ist P=0. Eigene virtuelle Aufnahmen coarse/refined sind getrennt von diesen bereitgestellten Daten und keine realen Messungen.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "unsicherer-spitzenbereich",
+          "ownPersonalSolution": "Zweite Aufnahme mit gleichen dokumentierten Kontrollen, feiner Lastwahl und beidenE-Stufen; Nennleistungen hoch24/26/25mW, niedrig12/12.4/11mW. Hochintervalle aus positiven Produktgrenzen: [21.75,26.35],[23.4,28.7],[22.05,28.05]mW; niedrig[10.15,13.95],[10.14,14.76],[8.33,13.77]mW. Sämtliche benachbarten Intervalle überlappen.0.4V ist nominal am besten, aber Rangordnung und exakterMPP sind nicht sicher. Genauere unabhängige Messung und dichteres Raster bei stabilen Bedingungen nötig; Unsicherheit wird nicht durch Wiederholen derselben Rechnung beseitigt.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "Eigene virtuelleLehrzelleE=800/400Wm⁻²,25°C,ModellI=max(0,Isc(1−(U/.6V)^6)); eigenercoarseScan[0,.15,.30,.45,.60]VhatzunächstPunktmaximum.45V; unabhängigneuinitialisierterfeinerScan.38.. .50VfindetPunktmaximum.43V≈29.739/14.870mW. KeinexakterkontinuierlicherMPP,keinrealesMessgerät/validiertesSolarzellenfit. KontrollenundaktiveLastwahlindenzweiPV-virtual-acquisitionReceiptsdokumentiert.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+      "title": "Methode: Lösungsansatz für DGL (Exponentialfunktion)",
+      "wholeCurrentPExpectationIds": [
+        "independent-review-a-understanding",
+        "independent-review-b-understanding"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "independent-review-a-understanding",
+          "independent-review-b-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "fresh-independent-case-a",
+          "ownPersonalSolution": "Eigene numerische Instanz des offenen Zerfallsfalls: N′=−0.02N/s,N(0)=8000. AnsatzN=8000exp(−0.02t/s) ergibtN′=−160exp(−0.02t/s)/s=−0.02N/s und den Anfangswert. k<0 bedeutet Abklingen, [k]=s⁻¹, Zeitmaß50s; N(50s)=8000/e≈2943, langfristig0 im kontinuierlichen Modell, keine Aussage über genaues individuelles Zerfallsereignis.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "fresh-independent-case-b",
+          "ownPersonalSolution": "Eigene andere Zustandsgröße: x′=(0.1/s)x,x(0)=2m. x=2exp(0.1t/s)m, x′=0.2exp(0.1t/s)m/s=(0.1/s)x. Anfangswert2m, positiveRate,Wachstum,Zeitskala10s; bei konstanterk ohne weitere Grenzphysik unbeschränkt. Ein real begrenzter Prozess oder zeitabhängiges k wird damit nicht global beschrieben.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "Temperaturdifferenzθ′=−(0.25/min)θ,θ(0)=40K:θ=40e^(−t/4min),Ableitung−10e^(−t/4min)K/min,Zeitskala4min. Bei18°CUmgebungistT=18°C+θ;TselbsterfülltnichtT′=−.25T. ZeitabhängigeskwürdeneineneueAnnahmeerfordern.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "title": "Inelastische Stöße",
+      "wholeCurrentPExpectationIds": [
+        "system-momentum",
+        "inelastic-energy"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "system-momentum",
+          "inelastic-energy"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "sticking-carts",
+          "ownPersonalSolution": "Abgeschlossenes Zweikörpersystem während kurzen Stoßes: p=2·3+1·0=6kgm/s. Haften erzwingt gemeinsame Geschwindigkeitv=6/3=+2m/s. E_vor=0.5·2·3²=9J,E_nach=0.5·3·2²=6J.3J werden in innere Energie/Verformung umgewandelt; Gesamtenergie einschließlich dieser Anteile bleibt erhalten.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "separating-carts",
+          "ownPersonalSolution": "p_vor=1·(+3)+1·(−1)=2kgm/s. Mit gemessenem v_A=0 folgtv_B=+2m/s. E_vor=4.5+0.5=5J,E_nach=2J;3J Umwandlung, daher inelastisch trotz getrenntem Weiterfahren. Ohne Enddatum nurv_A+v_B=2 mit unendlich vielen Paaren; das Wortinelastisch liefert keine gemeinsame Geschwindigkeit und keine zweite Gleichung.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "FrischerHaftstoßmA=1kg,uA=+4m/s,mB=3kg,uB=−2m/s:p=−2kgm/s,v=−.5m/s. E_vor14J,E_nach.5J,Umwandlung13.5J. NegativeEndgeschwindigkeitmachtpositivekinetischeEnergienichtnegativ.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "title": "Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden",
+      "wholeCurrentPExpectationIds": [
+        "geometry-selects-field-model",
+        "magnitude-direction-and-dependence",
+        "idealization-limits-transfer"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "geometry-selects-field-model",
+          "magnitude-direction-and-dependence",
+          "idealization-limits-transfer"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "conductor-distance-and-reversal",
+          "ownPersonalSolution": "Eigene DatenI=10A,r1=0.02m,r2=0.04m,μ0=4π·10⁻⁷T m/A. Langer Leiter in Luft: B1=10⁻⁴T,B2=5·10⁻⁵T; Verdoppelung des Abstands halbiert Betrag. Blick auf Strom aus der Blattebene: Feld gegen Uhrzeigersinn, am Punkt rechts nachoben. Stromumkehr erhält Beträge und kehrt Richtung um. Kurzer Leiter/Endnähe rechtfertigt diese unendlicheLeiterformel nicht exakt.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "solenoid-core-and-edge-claim",
+          "ownPersonalSolution": "Eigene Referenz langeSpule n=1000m⁻¹,I=0.5A,μr=100 konstantlinear: B≈0.06283T. Neuwicklungn/2 und Strom2I erhaltennI und damit innerenBetrag. Vom betrachteten Ende gegenUhrzeigersinn fließender Strom bedeutetB zum Betrachter. Am Rand ist das Feld inhomogen; der Innenraumansatz ist dort kein exakter Wert. Sättigender/inhomegenerKern benötigt weitere Modelldaten.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "LeiterhalberStromunddoppelterAbstand⇒BumFaktor1/4. SpulemitsättigendemKern:konstantesμristnichtgegeben,alsozahlgenaueHochstromextrapolationabgelehnt. PositiveBetragsrechnungundgesonderteRichtungsumkehrbleibengetrennt.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+      "title": "Entropie E08: Entropiebilanz für System + Umgebung",
+      "wholeCurrentPExpectationIds": [
+        "physical-understanding"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "physical-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "fresh-independent-case",
+          "ownPersonalSolution": "Gesamtsystem beide isolierten Reservoire; Energiepfeil heiß400K --100J→ kalt300K. ΔU_heiß=−100J,ΔU_kalt=+100J,Summe0. EntropieΔS_heiß=−100/400=−1/4J/K,ΔS_kalt=+100/300=+1/3J/K; Summe1/12≈0.08333J/K>0. Verschiedene Temperaturgewichte verhindern Entropiekürzung trotz Energieausgleich.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "independent-changed-case",
+          "ownPersonalSolution": "Behaupteter Rückfluss80J vom250K- zum500K-Reservoir: ΔS_kalt=−80/250=−0.32J/K,ΔS_heiß=80/500=0.16J/K,gesamt−0.16J/K. Als spontaner Vorgang des sonstisoliertenPaares unzulässig. NurSystem/Umgebung umzubenennen vertauscht Summanden ohne physikalische Änderung. Ein angetriebener Kühler braucht die zusätzlicheArbeitsquelle/Umgebung in der Gesamtbilanz.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "60Jvon600Kzu300K:ΔS_heiß=−.1J/K,ΔS_kalt=.2J/K,gesamt+.1J/K,Energiesumme0. BeiendlichenKörpernmitveränderlichemTistQ/TmitfestemTkeineglobalexakteBilanz;gebundeneReservoirannahmezählt.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "16caf92e-2800-57d1-946c-5b92ce848a96",
+      "title": "2. Kepler-Gesetz aus Drehimpulserhaltung herleiten (LK)",
+      "wholeCurrentPExpectationIds": [
+        "torque-area",
+        "central-condition"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "torque-area",
+          "central-condition"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "derive-and-check",
+          "ownPersonalSolution": "L=m(r×v). Mit gegebenem bilinearenAbleitungslemma folgtL̇=m(v×v+r×a)=r×F. v×v=0 und radialeFparallelr liefernL̇=0. Die kleine überstrichene Fläche ist|r×vdt|/2+o(dt), somitȦ=|r×v|/2=|L|/(2m) konstant. An Apsiden v⊥r:r1v1=2·5=10m²/s=r2v2, daher v2=2m/s,Ȧ=5m²/s. Massekonstanz,festesZentrum,Inertialsystem genannt; Flächenfaktor1/2 folgt der gegebenenDreiecksfläche, nicht einem vorgegebenenPhysikergebnis.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "central-versus-thrust",
+          "ownPersonalSolution": "Für jedezeitabhängige reinradialeKraftbleibtr×F=0,alsoL konstant undȦ konstant; ein inversesQuadratgesetz ist unnötig. Ein tangentialerSchub hat imAllgemeinen r×F≠0 bzwΔL=r×J und verändertȦ. Während diesesEingriffs ist die zentraleBeweiszeile verletzt; nachher kann ein neuer konstanterWert gelten. Die bereitgestelltenMathelemmas allein liefern nicht diesePhysikfolgerung.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "Frischerr=3m,v_quer=4m/s⇒Ȧ=6m²/s. EinezusätzlicheradialeMomentangeschwindigkeit1m/sändertdiesenKreuzproduktwertnicht; eintangentialerImpulsverändertL. KeinausFlächensatzerschlossenesZentralgesetzmit1/r²notwendig.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+      "title": "Galaxienentfernungen bestimmen und Verfahren beurteilen",
+      "wholeCurrentPExpectationIds": [
+        "selected-blind-review-core",
+        "method-choice-follows-range-and-calibration"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "selected-blind-review-core",
+          "method-choice-follows-range-and-calibration"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "calibrated-standard-candle-galaxy",
+          "ownPersonalSolution": "Eigene vollständig angegebene bolometrische Standardkerzeninstanz: L=10³⁶W mit10%Kalibriersystematik; korrigierterF=8.36·10⁻¹³W/m² mit5%Messfehler, beobachteterF vorgegebenerExtinktionskorrekturF_obs=0.8F. d=sqrt(L/(4πF))≈3.085·10²³m≈10Mpc. Kleine unabhängigeF-Unsicherheit gibtδd/d≈2.5%,L-Kalibration≈5% separat; Unsicherheit desExtinktionsfaktors zusätzlich getrennt. Alternative vorgegebenesStandardlinealD=20kpc mitWinkel0.002rad gibtD/θ=10Mpc, aber seinePopulationskalibration kann systematisch abweichen. BeobachtetwerdenF_obs/Winkel, kalibriertL/D, erschlossenEntfernung; Korrelationen nicht blind quadratisch alsMessstreuung summieren.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "range-limit-and-missing-calibrator",
+          "ownPersonalSolution": "FehltL/Kalibrator, bestimmtF allein keineDistanz; starke/unklareExtinktion verschärft dies. Als eigene verfügbareAlternative seienz=0.02,H0=70km/s/Mpc,c≈300000km/s angegeben: imniedrigzHubblemodell d≈85.7Mpc, mit300km/sEigengeschwindigkeit schon≈4.3Mpc systematischerSkala. Bei z~1 istcz/H0 keine hinreichende kosmologischeDistanzformel. Ohne passendeAlternativkalibration/Extinktionsmodell keine belastbare Zahl; keine universelleMethode oder exakteIndividualdistanz.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "GegebenerFlusssinktbeigleicherbekannterLauf1/9⇒dreifacheDistanz;verdoppelteL-KalibrationbeigleichemFluss⇒sqrt2fachesd. FehlenKalibrationsdatenoderdieExtinktionskorrektur,keineeindeutigeZahl. NASAInverseSquareQuellealsfachlicheGegenkontrolle,keineSourcecurriculum-Freigabe.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+      "title": "Relativistische Geschwindigkeitsaddition anwenden",
+      "wholeCurrentPExpectationIds": [
+        "signed-collinear-conversion"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "signed-collinear-conversion"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "overtaking-and-low-speed-limit",
+          "ownPersonalSolution": "Systeme gleichorientiert,S′ mitv=+0.6c. Körperu=+0.8c überholt S′,also u′>0. u′=(0.8−0.6)/(1−0.48)c=5/13c≈0.384615c. Der dimensionslose Nenner0.52 trägt dieZeittransformation; bloßeDifferenz0.2c falsch. Für u=c folgt(1−0.6)/(1−0.6)c=c. Bei35m/s und30m/s istuv/c²~1.17·10⁻¹⁴,also u′≈5m/s.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "opposing-motion-inverse",
+          "ownPersonalSolution": "InverseTransformationbei u′=−0.8c,v=+0.6c: u=(−0.8+0.6)/(1−0.48)c=−5/13c. Für u′=−c erhält man−c. Für gleichgerichteteTeilchengeschwindigkeiten u′=0.8c,v=0.6c ergibt inverseSumme1.4/1.48c< c, während klassischeAddition1.4c unzulässig wäre. Beschränkungaufkollineare gleichförmigrelativeInertialsysteme behalten.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "InverseAdditionu′=.75c,v=.5c⇒u=1.25/1.375c=10/11c. Bei u′=−.75cgleichemv⇒u=−.25/.625c=−.4c. Richtungs-/KlammerwechselmussganzeBelegungkonsistentdurchhalten.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+      "title": "Ersten Hauptsatz in Prozessen quantitativ bilanzieren",
+      "wholeCurrentPExpectationIds": [
+        "physical-understanding"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "physical-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "fresh-independent-case",
+          "ownPersonalSolution": "Gas alsSystem; bei ArbeitamGas ΔU=Q+W_on. Q=+120J,W_on=−50J ergibtΔU=+70J. AlternativeArbeitdesGasesW_out=+50J: ΔU=Q−W_out=70J. Konventionswechsel ändertZeichenbuchhaltung, nichtphysikalischenZustandsunterschied; alleTermeJoule.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "independent-changed-case",
+          "ownPersonalSolution": "StarrerBehälter ohneandereArbeitsformen: W=0,Q=40J⇒ΔU=40J. IsolierterbeweglicherKolben: Q=0,W_on=40J⇒ΔU=40J. GleicheinnereEnergieänderung entsteht durchnichtgleicheProzesse; WärmeaustauschundArbeitwerdennichtalsZustandsgrößen verwechselt.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "FrischesgeschlossenesGas:Q=−.6J,W_on=5/8J=.625J⇒ΔU=.025J;vorabkleinespositivesErgebniserwartet. AlternativQ=3/4J,W_on=−1/2J⇒ΔU=1/4J. PhysikalischgültigeNichtganzzahl-/Darstellungsvariation,keineneueZustandsgleichung.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "24b4686a-e8a6-4583-8952-33e6f653c2a3",
+      "title": "Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen",
+      "wholeCurrentPExpectationIds": [
+        "forces-relative-to-airflow",
+        "dynamic-versus-archimedean-lift"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "forces-relative-to-airflow",
+          "dynamic-versus-archimedean-lift"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "oblique-glider-airflow",
+          "ownPersonalSolution": "EigeneKoordinatenkontrolledergegebenenschrägenAnströmung: relativerStrömungspfeil(−1,−1) nachhint/unten; Widerstandparallel dazu inStrömungsrichtung. BeiobenlinksmarkierterTragflächenoberseite zeigtpositiverAuftrieb entlang(−1,+1),senkrechtzumFluss. DiesistKontrollrechnungdesReviewers, keinKoordinatenrechenprereq; SchülerbegründunggleicheRichtung/rechterWinkel unterunabhängigerDrehung. BodenhorizontalekeinBezugsvektor.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "wing-balloon-comparison",
+          "ownPersonalSolution": "Windkanal mithorizontalerAnströmung: DragparallelzurStrömung und dynamischerLiftquerzurmarkiertenOberseite, auchwennFlügelamBoden ruht. LeichterBallon inruhenderLuft: archimedischerAuftrieb durchGewichtverdrängterLuft, ohneerforderlicheAnströmung. GleicheRichtungobenbeweistkeinegleicheUrsache; keinGeschwindigkeits/Bernoulli-Einsetzfall vorgeschrieben.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "GesamteFluss-/Flügelzeichnungum40°drehenundPfeilursprüngezurBeschriftungauseinanderziehen:Drag/Liftbleibenparallel/senkrechtzudenTrägergeradenderStrömung,nichtzumBlattrand. KurzePfeiledürfenausfehlendemsichtbaremSchnittnichtfürparallelgehaltenwerden.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "title": "Elektrisches Potenzial berechnen",
+      "wholeCurrentPExpectationIds": [
+        "independent-review-a-understanding",
+        "independent-review-b-understanding"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "independent-review-a-understanding",
+          "independent-review-b-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "fresh-independent-case-a",
+          "ownPersonalSolution": "EigeneNeueUniformfeldinstanz:E=+100V/m inxRichtung,φ(0)=20V,φ(x)=20−100xV(xinm). BeiP:x=.1m istφP=10V,beiQ:.3mistφQ=−10V, U_PQ=φP−φQ=20V. Äquipotentialenx=konstant stehen senkrechtzuE; gleiche5VSchrittehaben.05mAbstand. GemeinsameNullpunktverschiebung+50Vergibt60/40V,unveränderte20V undunverändertenGradienten. PotenzialwerteundSpannungszeichen sindgetrennt.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "fresh-independent-case-b",
+          "ownPersonalSolution": "EigeneandereGeometrie:Punktladungsmodellmitkq=12V m,Null∞⇒φ(r)=12/rV. Beir=.1m/.2m:120V/60V,U=60V. Äquipotentialkurven KreisquerschnittevonKugelflächen, Feldradial; gleichePotenzialabständeliegeninnenräumlichenger, also größererGradient. Verschiebung−150Vergibt−30/−90V,weiter60V; einewirklicheGeometrie/LadungsänderungändertGradient/Spannung. r=0istimPunktmodell nichtdefiniert. EndlicheElektrodenrandfelder begrenzen einuniformesE-Modell.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "Frischgegebenesφ(x)=2x²−3x+1VmitxinMetern,fürlokalesidealesvorgegebenesFeldE_x=−(4x−3)V/m:φ(−2)=15V,φ(1/2)=0V. DiezulässigeVorzeichen/Bruch/PotenzbelegungbenötigtstrukturgerechtesEinsetzen;gemeinsamerOffsetändertU=15Vnicht. Diesist eineeigenezulässige Feldinstanz,keinevomOriginalPsuppliedZahl.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "title": "Nervenleitungs-Messverfahren physikalisch beurteilen",
+      "wholeCurrentPExpectationIds": [
+        "method-bound-field-judgement",
+        "induction-role-and-validity"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "method-bound-field-judgement",
+          "induction-role-and-validity"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "electric-stimulus-common-delay",
+          "ownPersonalSolution": "NurModellrechnung,keineAnwendungamMenschen: E≈24mV/2mm=.024V/.002m=12V/m für0–.3ms. GemeinsameGeräteverzögerungδ kürztsichaus(7ms+δ)−(4ms+δ)=3ms; v=.18m/.003s=60m/s. KonstanterFluss⇒keineinduzierteSpannungausdiesemFluss. NeuerzeitgleicherfrüherAusschlaginbeidenKanälenistmitinduktiverLeitungsschleifenstörungvereinbar; dasgetrennte3msSignalpaarträgtweiterdieLaufzeit. NichtgetrennteSpurenwürdenkeinbelastbaresvliefern.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "magnetic-ramp-calibration",
+          "ownPersonalSolution": "FlächenmodellA=4cm²=4·10⁻⁴m²,ΔΦ=2·10⁻⁶Wb⇒ΔB=5mT. VorgegebeneKalibrierspannungen4mVbei.5ms und1mVbei2ms passenqualitativzukleinererFlussänderungsrate; imPlateaukeineweitereInduktion. IchbenutzegegebenenSpannungswerte,keineneuequantitativeInduktionspflicht. GleicherB-MaximalwertbeweistnichtgleichezeitlicheAnregung/Störfreiheit. OhnekonkreteguttrennbareAntwort/StörspurenbleibtMessqualitätbedingt; Kalibrierloop-SpannungistohneGewebemodell keineMembranspannung.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "WerdenbeideKanäleumdasselbeδverschoben,bleibtdie3msDifferenz. UnterschiedlichezusätzlicheVerzögerungvon.5msimzweitenKanalergäbeungeprüftv=.18/.0035≈51.43m/s;ohneKanalkalibrationkeinegesicherte60m/s. EinlangsamererB-AnstiegbeigleichemPeakkanndieStör/Nutztrennungändern.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "title": "Methode: Naturkonstanten bestimmen (Linearisierung)",
+      "wholeCurrentPExpectationIds": [
+        "linear-physical-mapping",
+        "uncertainty-and-model-check"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "linear-physical-mapping",
+          "uncertainty-and-model-check"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "energy-fit",
+          "ownPersonalSolution": "Frequenzalsx,EmaxalsymitUnsicherheit. SymmetrischeDatengebenm≈6.6·10⁻³⁴Js,b≈−2.9967·10⁻¹⁹J,W_A≈2.997·10⁻¹⁹J. Residuen[−.00333,+.00667,−.00333]·10⁻¹⁹J sindkleinerals.04·10⁻¹⁹J. EndpunktgrenzenΔE=(1.32±.08)·10⁻¹⁹Jüber2·10¹⁴Hz ergebenh∈[6.2,7.0]·10⁻³⁴Js; deterministischeFehlergrenze,keinKonfidenzintervall. KeinUrsprungszwang: AustrittsarbeitistphysikalischerAbschnitt.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "voltage-fit",
+          "ownPersonalSolution": "Ug-Gerade: Steigung(.82V)/(2·10¹⁴Hz)=4.10·10⁻¹⁵Vs,b=.48−(4.1·10⁻¹⁵)(6·10¹⁴)=−1.98V. h=e·m=(1.60·10⁻¹⁹C)(4.10·10⁻¹⁵Vs)=6.56·10⁻³⁴Js; reineSpannungssteigungist h/e, nicht h. Residuen0fürsynthetischeNennwerte,Endpointband[3.8,4.4]·10⁻¹⁵Vs⇒h[6.08,7.04]·10⁻³⁴Js. Frequenzfehler lautAufgabevernachlässigt,sonstzuberücksichtigen.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "EigenefrischeSpannungsdatenf=[5,6,7]·10¹⁴Hz,Ug=[.2,.6,1.0]V:Steigung4·10⁻¹⁵Vs,b=−1.8V,h=6.4·10⁻³⁴Jsbei e=1.6·10⁻¹⁹C. EineabsteigendeMessreiheliefernichtnegativeshalsNaturkonstante:lineareNegativsteigungistmathematischzudeutenundphysikalischalsModell-/Kalibrationsproblemzuprüfen. Darstellungswechsel/ParameterrollenkeinenUrsprungszwangersetzen.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "title": "Kern und Hülle des Atoms qualitativ beschreiben",
+      "wholeCurrentPExpectationIds": [
+        "nucleus-and-shell-are-distinct-model-regions",
+        "diameters-differ-by-orders-of-magnitude",
+        "schematic-size-does-not-provide-scale-evidence",
+        "bounded-analogy-preserves-ratio-and-limit"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "nucleus-and-shell-are-distinct-model-regions",
+          "diameters-differ-by-orders-of-magnitude",
+          "schematic-size-does-not-provide-scale-evidence",
+          "bounded-analogy-preserves-ratio-and-limit"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 3,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "supplied-diameter-order-comparison",
+          "ownPersonalSolution": "Atom1.2·10⁻¹⁰m,Kern1.0·10⁻¹⁵m⇒Durchmesserverhältnis1.2·10⁵=120000. Größenordnungen10⁻¹⁰und10⁻¹⁵m. KernkleinerzentralerBereich,Hülleräumlichvielausgedehnter; ZeichnungmitbeidensichtbarenObjektenistüblicherweisenichtlinearmaßstäblich. FaktorbeziehtsichaufDurchmesser,nichtFlächeoderVolumen.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "critique-two-atom-diagrams",
+          "ownPersonalSolution": "BeideSkizzenkönnenqualitativeKern/Hülle-Schemata sein. UnterschiedlichgroßgezeichneterKernliefertkeinenempirischenDurchmesserfaktor. NurseparateMaßstabsdatenrechtfertigenquantitativeRückschlüsse; unklareZeichnungbrauchtNichtmaßstabskennzeichnungundDaten. KeinePhotonographie/ElektronenbahnvorstellungausderZeichnungableiten.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "construct-consistent-scale-analogy",
+          "ownPersonalSolution": "Gemeinsame lineareSkalierung:1mmKerndurchmesser×100000=100000mm=100mAtomdurchmesser. Kernbleibtzentral,Hülleumfassend,keinegefüllteharteKugeloderfestenPlanetenbahnen. Analogie erklärtGrößenverhältnis, nichtgenaueElektronenbahnenoderinnereKernstruktur.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "NeueDurchmesser2.4·10⁻¹⁰m/3·10⁻¹⁵m=8·10⁴. BeiModellkern2mmwirdAtom160m. GeändertepositiveKoeffizientenändernVerhältnisundAnalogie,nichtdieExponentbedeutungoderdenModellcharakter. DarauskeinequalitativenElektronenbahnenableiten.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+      "title": "Sternentfernungen mit dem HRD abschätzen",
+      "wholeCurrentPExpectationIds": [
+        "hrd-calibration-distance",
+        "classification-absorption"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "hrd-calibration-distance",
+          "classification-absorption"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "classified-main-sequence",
+          "ownPersonalSolution": "UnabhängigeSpektralklassifikationbegründetgleichesL; beobachteterF_X=F_ref/16,d_ref=12pc. F∝L/d²⇒d_X=12sqrt16=48pc. GemessenF,kalibriertL,modellerschlossend; TemperaturalleinhättenichtgleichesLbegründet.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "unknown-class-dust",
+          "ownPersonalSolution": "Bei1oder100L_sun undgleichemFskaliertd mitsqrtL:Entfernungsverhältnis10:1,keineeindeutigeKlasseausTallein. Bei bekannterKlasseundzusätzlicherDämpfungF_obs=F_true/4 ergibteineunberücksichtigteAbsorption d_falsch=2d_true. FalscheKlassifikationundStaubsindverschiedeneFehlerquellen; keineindividuelleEntfernungohneweitereInfo.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "GleicheKlasse,Referenz20pc,Xhat1/25Fluss⇒100pc. FallszusätzlichAbsorptionauf1/4unberücksichtigt,naive200pcstatt100pc. BeiL-Verwechslung100fachwirdDistanz10fach,nicht100fach;GleichheitvonTemperaturbeweistkeineKlasse.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "title": "Zerfallsreihen analysieren",
+      "wholeCurrentPExpectationIds": [
+        "chain-bookkeeping",
+        "consistency-not-existence"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "chain-bookkeeping",
+          "consistency-not-existence"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "supplied-alpha-beta",
+          "ownPersonalSolution": "HypothetischeReihe220,86 α→216,84korrekt; β−muss216,85ergeben,weilKernZumeinssteigt,danachα→212,83. DerursprünglicheersteFehlerwirdbeiFolgeschrittkorrekturmitgeführt. DasnegativeausgesandteElektronistkeineAbnahmederKernladungszahl.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "supplied-beta-plus-gamma",
+          "ownPersonalSolution": "β+ändert(30,15)zu(30,14)*beigleichemA; γentregtzu(30,14)ohneA/ZÄnderung. GammaNachfolger(29,14)istunvereinbar. A/Z-BuchhaltungbeweistkeineenergetischeZulässigkeit,Wartezeit,realeVerzweigungoderGewissheiteinesindividuellenEreignisses.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "Frischhypothetisch(100,40) --β−→(100,41) --α→(96,39) --γ→(96,39). VorwärtsZählregelgenügt;keineverdeckteExponential-/HalbwertszeitoderWahrscheinlichkeitsrechnungundkeineExistenzbehauptung.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
+      "title": "Kreisbahnen geladener Teilchen quantitativ bestimmen",
+      "wholeCurrentPExpectationIds": [
+        "lorentz-force-supplies-centripetal-force",
+        "radius-and-period-follow-different-scalings",
+        "charge-sign-and-model-regime-bound-result"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "lorentz-force-supplies-centripetal-force",
+          "radius-and-period-follow-different-scalings",
+          "charge-sign-and-model-regime-bound-result"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "electron-proton-orbit-comparison",
+          "ownPersonalSolution": "Bei v⊥B: |q|vB=mv²/r⇒r=mv/(|q|B)fürv>0. T=2πr/v=2πm/(|q|B). Gleichev,Bund|q|vonProton/Elektron⇒r_p/r_e=T_p/T_e=m_p/m_e≈1836(massratioalsModelldatum); Umlaufsinnegegengesetzt. vnachrechts,BausBlatt⇒v×Bnachunten,positiveLadungzunächstnachunten,Elektronnachoben. F⊥v⇒keineArbeit,Ekin/Betragvkonstant.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "changed-speed-model-audit",
+          "ownPersonalSolution": "GleichesIon/gleichesBmit2v: rverdoppelt,TunverändertimnichtrelativistischenModell. NahecistnichtrelativistischeDynamikunzulässig; keineFormelmitunverändertemmzuverlässigübertragen. SchrägerEintrittergibtzusätzlicheParallelbewegung(Helix),inhomogenesFeldkeineeinfachegebundeneKreisbahn. v=0wärekeineumlaufendeKreisbahnunddasKürzenvbedarfv>0.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "GleichesIon,m→2m,|q|→|q|,B→2B,vgleich⇒rundTunverändert. BeimB-RichtungswechselnurDrehsinnumkehrt. Nulleingangv=0oderfehlendesBistkeinefortgesetzteKreisbahnmitblindgekürztenNennern.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "3d3e5917-d367-535d-a6ad-b9d87259e6ce",
+      "title": "Polarisation quantitativ mit dem Malus-Gesetz untersuchen",
+      "wholeCurrentPExpectationIds": [
+        "derive-malus-from-field-projection",
+        "test-malus-model-and-deviations"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "derive-malus-from-field-projection",
+          "test-malus-model-and-deviations"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "malus-table-with-background",
+          "ownPersonalSolution": "EigeneoffeneTabelleninstanzα=[0,30,45,60,90,120,150,180]Grad,I=[10.5,8,5.5,3,.5,3,8,10.5]Einheiten,Messgrenze±.1,Dunkelwert.5±.05. NachOffsetkorrekturI0=10 undnormierteWerte[1,.75,.5,.25,0,.25,.75,1]=cos²α. RestminimumistmitDunkelwertvereinbar,keinBelegfürFilterleck. FeldprojektionE=E0cosα plusI∝E²begründetMalus; ExaktheitüberMessgrenzenhinausnichtbehauptet.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "shifted-polarization-and-imperfect-minimum",
+          "ownPersonalSolution": "EigenezweiteInstanzmitgeprüftlinearpolarisierterEingabe: I(α)=2.2+8cos²(α−25°),Dunkelwert.2±.05,Messfehler±.1. Maximum25°mod180°,Minimum115°=2.2,deutlichüberDunkelwert. Bei55°(Δ30°)I=8.2,bei85°(Δ60°)I=4.2. UntergrundalleinerklärtNettoleck2nicht; endlicheExtinktionistbeiunabhängiggesicherterPolarisationplausibel. OhneEingabepolarisationsprüfungkannunvollständigePolarisationähnlicheKurveerzeugen,alsoUrsachenichtuniquebeweisen.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "NeuesMaximum70°,Dunkelwert.3,idealnettoI0=12:bei115°(Δ45°)I=6.3,bei160°I=.3. Messminimum.3±.1istmitOffsetvereinbar,alsohierkeinLecknachgewiesen. Bezugum180°liefertgleichesI,trotzVorzeichenwechselderFeldkomponente.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "title": "Erzwungene Schwingungen und Resonanz",
+      "wholeCurrentPExpectationIds": [
+        "periodic-driving-response",
+        "frequency-ratio-resonance",
+        "damping-curve-interpretation"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "periodic-driving-response",
+          "frequency-ratio-resonance",
+          "damping-curve-interpretation"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "driven-swing-frequency-scan",
+          "ownPersonalSolution": "GleichekleineAnregungsstärke,funterhalb,nahe,oberhalbf0: nachdemEinschwingenistAntwortfrequenzjeweilsf_drive,nichtstetsf0;größteAmplitudegewöhnlichnahef0beigleicherkleinerDämpfung. PassendePhasenübervielePeriodenermöglicheneffektiveEnergieübertragung. GroßeKraftweitabf0istalleinnichtResonanz. KeineexaktePeaklagef=f0fürjedeDämpfungbehauptet.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "compare-damped-response-curves",
+          "ownPersonalSolution": "Hohe/schmaleAntwortgehörtschwacherDämpfung,niedrige/breiterezustärkererDämpfungbeianderenvergleichbarenParametern. Bei derselbenbenanntenFrequenzbeideKurvenablesen; MaximaunterschiedlicherFrequenzennichtalsgleichfrequenteMessungvergleichen. StärkereDämpfungdissipiertmehrEnergie. OhnekonkreteKurvenwertekeinunumkehrbarerZahlenvergleichbeliebigerFlankenpunkte;qualitativeBeschreibungbleibtexplizit.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "Neuerf0=2Hz,gleichekleineAnregungbei.5/2/5Hz:stärksteAntwortnahe2Hz,stationäreAntwortfrequenzen.5/2/5Hz. VerdoppelungDämpfungverbreitert/senktPeakqualitativ,keinallgemeinerExaktwertohneSystemmodell. GroßeAnregungbei.5HzalleinnichtResonanz.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "title": "Kräfte vektoriell zusammensetzen und Resultierende bestimmen",
+      "wholeCurrentPExpectationIds": [
+        "force-vector-encoding",
+        "resultant-construction-and-meaning"
+      ],
+      "wholeCoverage": {
+        "requiredExpectationIds": [
+          "force-vector-encoding",
+          "resultant-construction-and-meaning"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "mandatoryCases": [
+        {
+          "caseId": "scaled-two-rope-resultant",
+          "ownPersonalSolution": "Maßstab1cm:10N.30NnachOsten→3cmrechterPfeil,40NnachNorden→4cmobererPfeil; SpitzeanSchaft(parallelesVerschieben)oderParallelogrammschließtzu5cmNordost,also50N. Richtungliegtetwa53°nördlichvonOsten(nurgrafischabgelesen,keinTrigonometrieprereq).70NignoriertRichtungen. ResultierendebetriffttranslatorischeBeschleunigung,nichtohneAngriffspunktejedeDrehwirkung.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        },
+        {
+          "caseId": "balanced-forces-countercase",
+          "ownPersonalSolution": "Zwei25N-KräfteamgleichenRingpunktnachlinks/rechtssindweiterhinvorhanden,ihreVektorsummeist0N. KeinetranslatorischeBewegungsänderung,nichtKraftfreiheit. DieidentischenAngriffspunkteverhindernindiesemgegebenenFall einKräftepaar; allgemeinwärenbeianderenWirkungslinienDrehwirkungenohneZusatzdatennichtausResultierender0auszuschließen.",
+          "unspecifiedDataExplicitlyInstantiatedWhereNeeded": true
+        }
+      ],
+      "ownFreshVariationAndSolution": "NeuerKraftmaßstab2cm:50N⇒1cm:25N;50N→2cm,75N→3cm. GezeichneteResultierende4cm→100N. EinMaßstabmitnichtnullOffsetwärefürKraftpfeileungültig,weilNullkraftNullpfeilentspricht. UmkehrbezugundRückskalierungprüfenDreisatz;keinneuerKartenLänge/Länge-Atom.",
+      "maximumClaim": "Scientific author problem solving and explicitly labeled mathematical/virtual instances; no learner mastery, actual human/hardware performance or new nativeP approval."
+    }
+  ],
+  "allMandatoryCases": 41,
+  "freshVariations": 20,
+  "independentNewPeerBodyRead": false
+}

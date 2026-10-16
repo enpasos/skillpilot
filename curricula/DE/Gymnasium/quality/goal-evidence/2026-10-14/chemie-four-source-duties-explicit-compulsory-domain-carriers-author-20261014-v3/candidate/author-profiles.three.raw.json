@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "raw-positive-understanding-evidence-v2-author-shapes",
+  "createdAtUTC": "2026-10-14T19:28:56.143119+00:00",
+  "role": "V3 author only, not independent reviewer of own authored successor",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "profileSchemaReference": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json#/$defs/profile",
+  "goalIds": [
+    "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+    "93a7ce4d-1c90-568c-9368-cac423011ef9",
+    "d815960a-21ab-5a42-8b23-ecd20d03db19"
+  ],
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "unreviewed": true,
+  "learnerExecutions": [],
+  "independentScientificReviewRunIds": [],
+  "reviewRecordsCreated": false,
+  "activeConfigCreated": false,
+  "gateClearancesCreated": [],
+  "profiles": [
+    {
+      "goalId": "40f2db27-0ebe-5f03-941d-708aebcc64b7",
+      "goalTitleDe": "Wirkstoff-Isolierung als Stofftrennung erklären",
+      "authorStatus": "unreviewed-author-shape",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "wholeGoalObjectSha256": "sha256:75eaa51fc3ceb3c9af4a3be1169014b9547f8844efb8e04ec7ada7f8455211f5",
+      "fullCaseReferences": [
+        {
+          "caseId": "HB-I1",
+          "path": "materials/eleven-complete-cases.v3.bound.author.json",
+          "jsonPointer": "/cases/2",
+          "wholeCaseObjectSha256": "sha256:851d5ae3730e9ad02a0e69bbd268a8d45bb8af1f9fd3e48df05412bd33cedec8",
+          "coveredExpectationIds": [
+            "functional-active-component",
+            "property-selective-separation",
+            "unchanged-identity-enriched-mixture",
+            "identity-origin-and-effect-limits"
+          ],
+          "mechanismSupplied": true
+        },
+        {
+          "caseId": "HB-I2",
+          "path": "materials/eleven-complete-cases.v3.bound.author.json",
+          "jsonPointer": "/cases/3",
+          "wholeCaseObjectSha256": "sha256:25b324d1ebf3eba1ce2145555436b63aa8729d6fce06d12c84ef6647a1b61194",
+          "coveredExpectationIds": [
+            "functional-active-component",
+            "unchanged-identity-enriched-mixture",
+            "identity-origin-and-effect-limits"
+          ],
+          "mechanismSupplied": false
+        },
+        {
+          "caseId": "HB-I3",
+          "path": "materials/eleven-complete-cases.v3.bound.author.json",
+          "jsonPointer": "/cases/10",
+          "wholeCaseObjectSha256": "sha256:031d67e62d84138e17f28a5b1383ce7fcc76d8b8ea369a8743f155d0d658c809",
+          "coveredExpectationIds": [
+            "functional-active-component",
+            "property-selective-separation",
+            "unchanged-identity-enriched-mixture",
+            "identity-origin-and-effect-limits"
+          ],
+          "mechanismSupplied": true
+        }
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "functional-active-component",
+            "essentialUnderstandingDe": "Wirkstoff bezeichnet hier die Substanz mit der vorgegebenen beabsichtigten Wirkung; ein Extrakt oder eine Fraktion kann mehrere Molekülarten enthalten.",
+            "essentialUnderstandingEn": "Here the active ingredient is the substance with the specified intended effect; an extract or fraction may contain several molecular species.",
+            "observablePerformanceDe": "Die lernende Person ordnet N, P bzw. U die gegebene Wirkstoffrolle zu und grenzt diese Molekülart von dem wirkstoffhaltigen Gemisch ab.",
+            "observablePerformanceEn": "The learner identifies the supplied active role of N, P or U and distinguishes that molecular species from the mixture containing it."
+          },
+          {
+            "id": "property-selective-separation",
+            "essentialUnderstandingDe": "Selektive Anreicherung beruht auf den ausdrücklich gegebenen unterschiedlichen physikalischen Verteilungen oder Haftungen der gelösten Moleküle.",
+            "essentialUnderstandingEn": "Selective enrichment follows from the explicitly supplied differences in physical partitioning or adhesion of dissolved molecules.",
+            "observablePerformanceDe": "Sie erklärt in HB-I1 die unterschiedlichen W/O-Verteilungen und in HB-I3 die reversible Haftung/Transportzeit; sie überträgt die Erklärung auf vertauschte Haftungsstärken und begrenzt einfache Filtration.",
+            "observablePerformanceEn": "The learner explains unequal W/O partitioning in HB-I1 and reversible adhesion/transport time in HB-I3, transfers the explanation to reversed adhesion and states the ordinary-filter limit."
+          },
+          {
+            "id": "unchanged-identity-enriched-mixture",
+            "essentialUnderstandingDe": "Physikalische Isolierung trennt vorhandene Moleküle; Anreicherung ist weder Synthese noch automatisch vollständige Reinheit oder Rückgewinnung.",
+            "essentialUnderstandingEn": "Physical isolation separates existing molecules; enrichment is neither synthesis nor automatically complete purity or recovery.",
+            "observablePerformanceDe": "Sie erklärt die unveränderte Molekülidentität, den fortbestehenden Gemischstatus der Fraktionen und die verschiedenen Bezugsgrößen von Reinheit und Rückgewinnung an den gelieferten Daten.",
+            "observablePerformanceEn": "The learner explains unchanged molecular identity, the fractions’ continuing mixture status and the different reference quantities for purity and recovery using the supplied data."
+          },
+          {
+            "id": "identity-origin-and-effect-limits",
+            "essentialUnderstandingDe": "Summenformel, pflanzliche Herkunft oder ein Gemischeffekt allein beweisen weder dieselbe Molekülidentität noch klinischen Nutzen oder Sicherheit.",
+            "essentialUnderstandingEn": "Molecular formula, plant origin or a mixture effect alone proves neither molecular identity nor clinical benefit or safety.",
+            "observablePerformanceDe": "Sie korrigiert die Herkunfts-/Summenformelbehauptungen in HB-I2 und begründet an einem unbekannten Extrakt bzw. einer veränderten Trennung, welche Zuordnungen offenbleiben.",
+            "observablePerformanceEn": "The learner corrects the origin/formula claims in HB-I2 and explains which attributions remain open for an unknown extract or changed separation."
+          }
+        ],
+        "variationAxes": [
+          {
+            "id": "separation-principle",
+            "textDe": "Vom W/O-Verteilungsmodell zur reversiblen Haftung an einer Säulenoberfläche wechseln.",
+            "textEn": "Change from W/O partitioning to reversible adhesion to a column surface."
+          },
+          {
+            "id": "fraction-and-identity",
+            "textDe": "Reinheit/Rückgewinnung, gleiche Summenformel/verschiedene Konstitution und verschiedene Herkunft/dieselbe bestätigte Struktur unterscheiden.",
+            "textEn": "Distinguish purity/recovery, equal formula/different constitution and different origin/the same confirmed structure."
+          },
+          {
+            "id": "causal-reversal",
+            "textDe": "Vertauschte Haftungsstärken kausal erklären statt nur gegebene Prozentzahlen nachzurechnen.",
+            "textEn": "Explain reversed adhesion strengths causally rather than only recalculate given percentages."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "hb-i1",
+            "taskDemandDe": "Erkläre funktionellen Wirkstoff, W/O-Anreicherung, Filtergrenze und Fraktionsstatus. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall HB-I1.",
+            "taskDemandEn": "Explain functional active ingredient, W/O enrichment, the filter limit and fraction status. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case HB-I1.",
+            "expectedPerformanceDe": "D/(1+D) erklärt 0.18 g N und 0.02 g Z in O; 90 % Reinheit und 90 % Rückgewinnung haben verschiedene Bezugsgrößen. N bleibt chemisch unverändert.",
+            "expectedPerformanceEn": "D/(1+D) explains 0.18 g N and 0.02 g Z in O; 90% purity and 90% recovery use different reference quantities. N remains chemically unchanged.",
+            "understandingFocusDe": "Gegebenes physikalisches Trennprinzip kausal mit Anreicherung verbinden.",
+            "understandingFocusEn": "Link the supplied physical separation principle causally to enrichment."
+          },
+          {
+            "id": "hb-i2",
+            "taskDemandDe": "Vergleiche Isolierung und Synthese sowie gleiche Summenformel und verschiedene Konstitution; ordne F1/F2 ein. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall HB-I2.",
+            "taskDemandEn": "Compare isolation/synthesis and equal formula/different constitution; classify F1/F2. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case HB-I2.",
+            "expectedPerformanceDe": "P kann nach bestätigter voller Struktur aus beiden Wegen stammen; P/Q bleiben verschiedene Molekülarten und F1/F2 Gemische. Ein selektiver Trennmechanismus ist hier nicht gegeben.",
+            "expectedPerformanceEn": "Confirmed full P structure can arise by either route; P/Q remain different species and F1/F2 mixtures. No selective separation mechanism is supplied here.",
+            "understandingFocusDe": "Begrenzter Identitäts-/Herkunftstransfer; kein zweiter Mechanismus- oder Ausführungsnachweis.",
+            "understandingFocusEn": "Limited identity/origin transfer; not a second mechanism or execution demonstration."
+          },
+          {
+            "id": "hb-i3",
+            "taskDemandDe": "Erkläre die U/V-Anreicherung über reversible Haftung und übertrage sie auf vertauschte Haftungsstärken. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall HB-I3.",
+            "taskDemandEn": "Explain U/V enrichment through reversible adhesion and transfer it to reversed adhesion strengths. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case HB-I3.",
+            "expectedPerformanceDe": "Schwächer haftendes U kommt zunächst früher; nach Vertauschung kommt V früher und U später. Fraktionen bleiben Gemische, Moleküle bleiben unverändert; neue Mengen sind nicht gegeben.",
+            "expectedPerformanceEn": "More weakly adhering U emerges earlier initially; after reversal V emerges earlier and U later. Fractions remain mixtures and molecules unchanged; new amounts are not given.",
+            "understandingFocusDe": "Frische kausale Übertragung auf ein anderes gegebenes Trennprinzip statt Zahlenersetzung.",
+            "understandingFocusEn": "Fresh causal transfer to a different supplied separation principle rather than number substitution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "functional-active-component",
+            "property-selective-separation",
+            "unchanged-identity-enriched-mixture",
+            "identity-origin-and-effect-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        }
+      }
+    },
+    {
+      "goalId": "93a7ce4d-1c90-568c-9368-cac423011ef9",
+      "goalTitleDe": "Wirkstoffforschung mit Analyse, Synthese und Molecular Modelling erklären",
+      "authorStatus": "unreviewed-author-shape",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "wholeGoalObjectSha256": "sha256:09ee6c8639659aa278fdaa92239fd037b5dedd68a09f10638777ef97323405be",
+      "fullCaseReferences": [
+        {
+          "caseId": "HB-W1",
+          "path": "materials/eleven-complete-cases.v3.bound.author.json",
+          "jsonPointer": "/cases/4",
+          "wholeCaseObjectSha256": "sha256:e7fb72e49824de21edd31ac213649ac86849c7ad2fdc95571e28c4854797fdd1",
+          "coveredExpectationIds": [
+            "three-method-contributions",
+            "research-feedback-and-revision",
+            "specimen-identity-versus-causal-effect",
+            "justified-next-test-and-reach"
+          ],
+          "mechanismSupplied": null
+        },
+        {
+          "caseId": "HB-W2",
+          "path": "materials/eleven-complete-cases.v3.bound.author.json",
+          "jsonPointer": "/cases/5",
+          "wholeCaseObjectSha256": "sha256:c0dc06cb8372e7aa74430a9cd09f669ac0f019eb0560d8e0a2ea182b9ccdda2a",
+          "coveredExpectationIds": [
+            "three-method-contributions",
+            "research-feedback-and-revision",
+            "specimen-identity-versus-causal-effect",
+            "justified-next-test-and-reach"
+          ],
+          "mechanismSupplied": null
+        }
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "three-method-contributions",
+            "essentialUnderstandingDe": "Analyse identifiziert und charakterisiert Proben, Synthese stellt gezielt andere oder reine Kandidaten bereit, Molecular Modelling liefert begrenzte Struktur-/Bindungshypothesen.",
+            "essentialUnderstandingEn": "Analysis identifies and characterizes specimens, synthesis deliberately supplies modified or pure candidates, and molecular modelling provides bounded structure/binding hypotheses.",
+            "observablePerformanceDe": "Die lernende Person ordnet in HB-W1 und HB-W2 alle drei Verfahren konkreten Angaben derselben Wirkstoff-Forschungsfrage zu; reine Methodenetiketten genügen nicht.",
+            "observablePerformanceEn": "The learner assigns all three methods to concrete inputs for the same active-ingredient research question in HB-W1 and HB-W2; method labels alone do not suffice."
+          },
+          {
+            "id": "research-feedback-and-revision",
+            "essentialUnderstandingDe": "Experimentelle Befunde und Modellannahmen beeinflussen die nächste Analyse-, Synthese- oder Modellentscheidung; Forschung ist keine feste Einbahnstraße.",
+            "essentialUnderstandingEn": "Experimental findings and model assumptions inform the next analytical, synthetic or modelling decision; research is not a fixed one-way sequence.",
+            "observablePerformanceDe": "Sie erläutert eine begründete Rückkopplung im N/D-Fall und rekonstruiert im P/Q-Fall, wie der Widerspruch zur P-Vorhersage die Forschungsfrage und Modellannahmen ändert.",
+            "observablePerformanceEn": "The learner explains reasoned feedback in the N/D case and reconstructs how disagreement with the P prediction changes the research question and model assumptions in the P/Q case."
+          },
+          {
+            "id": "specimen-identity-versus-causal-effect",
+            "essentialUnderstandingDe": "Struktur-/Reinheitsanalyse und ein Proben-Assay beantworten verschiedene Fragen; ein Gemisch oder 98 % Reinheit sichern keine ausschließliche Wirkungszuordnung zum benannten Molekül.",
+            "essentialUnderstandingEn": "Structure/purity analysis and a specimen assay answer different questions; a mixture or 98% purity does not establish exclusive attribution to the named molecule.",
+            "observablePerformanceDe": "Sie trennt Vorhersage, Identitätsbefund und Testbeobachtung, begrenzt die kausale D-Zuordnung und erklärt, weshalb die alte P/Q-Probe den Effekt nicht P zuordnen konnte.",
+            "observablePerformanceEn": "The learner separates prediction, identity findings and assay observation, limits causal attribution to D and explains why the earlier P/Q specimen could not assign the effect to P."
+          },
+          {
+            "id": "justified-next-test-and-reach",
+            "essentialUnderstandingDe": "Ein nächster Forschungsschritt muss die konkrete offene Zuordnung oder Modellannahme prüfen; nichtklinische Daten ersetzen keine klinische Wirksamkeit oder Sicherheit.",
+            "essentialUnderstandingEn": "A next research step must test the specific open attribution or model assumption; nonclinical data do not replace clinical efficacy or safety evidence.",
+            "observablePerformanceDe": "Sie begründet passende, noch nicht ausgeführte Reinheits-/Verunreinigungs-/Kontrolltests und überträgt die Rückkopplung auf eine neu entdeckte Verunreinigung, ohne Mechanismus, Additivität oder Zulassung zu erfinden.",
+            "observablePerformanceEn": "The learner justifies appropriate unperformed purity/impurity/control tests and transfers feedback to a newly detected impurity without inventing mechanism, additivity or authorization."
+          }
+        ],
+        "variationAxes": [
+          {
+            "id": "agreement-versus-contradiction",
+            "textDe": "Vom D-Probenbefund zur P/Q-Widerlegung der ursprünglichen Zuordnung wechseln.",
+            "textEn": "Change from the D-specimen result to P/Q evidence contradicting the original attribution."
+          },
+          {
+            "id": "specimen-composition",
+            "textDe": "98-%-Probe, ungetrenntes Gemisch, bestätigte Reinsubstanz und später erkannte Verunreinigung unterscheiden.",
+            "textEn": "Distinguish a 98% specimen, unseparated mixture, confirmed pure compound and later detected impurity."
+          },
+          {
+            "id": "method-direction",
+            "textDe": "Analyse verändert Modell-/Syntheseentscheidung und ein neuer Test verändert die nächste Fragestellung.",
+            "textEn": "Analysis changes modelling/synthesis decisions and a new assay changes the next research question."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "hb-w1",
+            "taskDemandDe": "Erkläre Analyse, Synthese und Molecular Modelling im N/D-Forschungsweg einschließlich Rückkopplung und ungetesteter Verunreinigungen. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall HB-W1.",
+            "taskDemandEn": "Explain analysis, synthesis and molecular modelling in the N/D inquiry, including feedback and unassayed impurities. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case HB-W1.",
+            "expectedPerformanceDe": "Modellvorschlag, Esterbildung, Struktur-/Reinheitsanalyse und Probenwirkung bleiben verschiedene Beiträge. 98 % Reinheit beweisen keine ausschließliche D-Kausalität; geeignete Kontrollen sind erst vorgeschlagen.",
+            "expectedPerformanceEn": "Model proposal, ester formation, structure/purity analysis and specimen effect remain distinct contributions. 98% purity does not prove exclusive D causation; suitable controls are only proposed.",
+            "understandingFocusDe": "Alle drei domänenspezifischen Methoden und ihre begründete Rückkopplung sind obligatorisch.",
+            "understandingFocusEn": "All three domain-specific methods and their reasoned feedback are compulsory."
+          },
+          {
+            "id": "hb-w2",
+            "taskDemandDe": "Rekonstruiere den P/Q-Widerspruch zur Modellvorhersage und begründe einen nächsten Schritt bei neuer Verunreinigung. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall HB-W2.",
+            "taskDemandEn": "Reconstruct the P/Q disagreement with the model prediction and justify a next step after a new impurity. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case HB-W2.",
+            "expectedPerformanceDe": "35 % Gemischaktivität identifiziert P nicht; reines P ergibt 95 %, Q 20 %. Analytik/Synthese ermöglichen kontrollierte Zuordnung und veranlassen Modellkritik; Additivität/Mechanismus bleiben offen.",
+            "expectedPerformanceEn": "35% mixture activity does not identify P; pure P gives 95%, Q 20%. Analysis/synthesis enable controlled attribution and motivate model criticism; additivity/mechanism remain open.",
+            "understandingFocusDe": "Abweichender Befund muss die Forschungsfrage verändern können.",
+            "understandingFocusEn": "A divergent observation must be able to change the research question."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "three-method-contributions",
+            "research-feedback-and-revision",
+            "specimen-identity-versus-causal-effect",
+            "justified-next-test-and-reach"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        }
+      }
+    },
+    {
+      "goalId": "d815960a-21ab-5a42-8b23-ecd20d03db19",
+      "goalTitleDe": "Anwendungsorientierte Farbstoffforschung im zeitlichen Wandel erklären",
+      "authorStatus": "unreviewed-author-shape",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "wholeGoalObjectSha256": "sha256:7a0c2571db8ff5b83c0d553b1315a690a7b0d54596be2b72bfd579efd2b2178d",
+      "fullCaseReferences": [
+        {
+          "caseId": "BW-B1",
+          "path": "materials/eleven-complete-cases.v3.bound.author.json",
+          "jsonPointer": "/cases/6",
+          "wholeCaseObjectSha256": "sha256:f6dac9230260a07b75242103801ca4f9864e1e7e0cd0dabd432493c22741b038",
+          "coveredExpectationIds": [
+            "connected-three-perspectives",
+            "chemical-design-and-application-evidence",
+            "conditional-comparison-and-limit",
+            "future-question-from-current-gap"
+          ],
+          "mechanismSupplied": null
+        },
+        {
+          "caseId": "BW-B2",
+          "path": "materials/eleven-complete-cases.v3.bound.author.json",
+          "jsonPointer": "/cases/7",
+          "wholeCaseObjectSha256": "sha256:e5a1705ef8227fa6a9b16f3256f1b75524ba5709aecc0301f54c9ac3f4b09bcd",
+          "coveredExpectationIds": [
+            "connected-three-perspectives",
+            "chemical-design-and-application-evidence",
+            "conditional-comparison-and-limit",
+            "future-question-from-current-gap"
+          ],
+          "mechanismSupplied": null
+        }
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "connected-three-perspectives",
+            "essentialUnderstandingDe": "Der geforderte Forschungsbogen verbindet wissenschaftshistorische Entwicklung, heutige Anwendung/Prüfung und eine begründete Zukunftsfrage derselben gewählten Stoffgruppe Farbstoffe.",
+            "essentialUnderstandingEn": "The required research account connects scientific-historical development, current application/testing and a justified future question within the same selected family of dyes.",
+            "observablePerformanceDe": "Die lernende Person erläutert in BW-B1 und BW-B2 alle drei Perspektiven als Zusammenhang; sie setzt Indigo und Azofarbstoffe dabei nicht gleich und ersetzt den Zusammenhang nicht durch Jahreszahlen.",
+            "observablePerformanceEn": "The learner connects all three perspectives in BW-B1 and BW-B2, without equating indigo with azo dyes or replacing the account with dates."
+          },
+          {
+            "id": "chemical-design-and-application-evidence",
+            "essentialUnderstandingDe": "Molekül-/Verfahrensgestaltung, Stoffanalyse und Anwendungsprüfung leisten verschiedene Beiträge zur Lösung eines konkreten Farbstoffproblems.",
+            "essentialUnderstandingEn": "Molecular/process design, substance analysis and application testing make different contributions to solving a specific dye problem.",
+            "observablePerformanceDe": "Sie erklärt aus den gelieferten Angaben die Löslichkeits-/Redoxrolle bei Indigo sowie den Unterschied zwischen Azo-Grundkörper, Ankergruppe, Absorptionsprüfung und Waschbeständigkeit im A/B-Fall.",
+            "observablePerformanceEn": "The learner uses the supplied information to explain indigo’s solubility/redox role and distinguish azo core, anchor group, absorption testing and wash fastness in the A/B case."
+          },
+          {
+            "id": "conditional-comparison-and-limit",
+            "essentialUnderstandingDe": "Ein einzelner Stoffbefund oder Leistungswert entscheidet keine gesamte Prozessbilanz und belegt kein allgemeines Zukunftsversprechen.",
+            "essentialUnderstandingEn": "One identity finding or performance value does not decide a complete process assessment or establish a general future promise.",
+            "observablePerformanceDe": "Sie verknüpft bei U/V mindestens zwei gelieferte Kriterien mit dem Zielkonflikt und erklärt bei C, warum ähnliche vorhergesagte Absorption oder geplante Abbaubarkeit keine gleiche Eignung oder Unbedenklichkeit belegt.",
+            "observablePerformanceEn": "The learner connects at least two supplied U/V criteria to the trade-off and explains why C’s similar predicted absorption or planned degradability establishes neither equal suitability nor harmlessness."
+          },
+          {
+            "id": "future-question-from-current-gap",
+            "essentialUnderstandingDe": "Eine zukunftsorientierte F&E-Erklärung leitet die nächste prüfbare Frage aus den gegenwärtigen Befunden und Lücken ab; eine geplante Prüfung ist noch kein Ergebnis.",
+            "essentialUnderstandingEn": "A future-oriented R&D explanation derives the next testable question from current findings and gaps; a planned test is not a result.",
+            "observablePerformanceDe": "Sie begründet für V bzw. C die nötigen Leistungs-, Gesamtaufwands-, Skalierungs- oder Abbauproduktprüfungen und trennt reale historische Angaben, gegebene Modellbeobachtungen und Zukunftshypothesen.",
+            "observablePerformanceEn": "The learner justifies necessary performance, total-input, scale-up or degradation-product tests for V or C and distinguishes historical information, supplied model observations and future hypotheses."
+          }
+        ],
+        "variationAxes": [
+          {
+            "id": "dye-and-development-problem",
+            "textDe": "Indigo-Verfahrenswechsel und Azo-Ankergruppenprojekt innerhalb der gewählten Farbstofffamilie vergleichen.",
+            "textEn": "Compare indigo process change and an azo-anchor-group project within the selected dye family."
+          },
+          {
+            "id": "criterion-conflict",
+            "textDe": "Wasser/Reduktionsmittel gegen Energie/Waschbeständigkeit bzw. Absorption gegen Bindung/Abbauprodukte abwägen.",
+            "textEn": "Compare water/reductant with energy/wash performance or absorption with binding/degradation products."
+          },
+          {
+            "id": "time-and-evidence-status",
+            "textDe": "Belegtes historisches Ereignis, erfundene heutige Modelldaten und ungeprüfte Zukunftshypothese klar auseinanderhalten.",
+            "textEn": "Keep a sourced historical event, fictional current model data and an untested future hypothesis distinct."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bw-b1",
+            "taskDemandDe": "Verbinde historische Indigosynthese, heutige Redox-/Löslichkeitsanwendung und die Zukunftsfrage U/V anhand der gelieferten Kriterien. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall BW-B1.",
+            "taskDemandEn": "Connect historical indigo synthesis, current redox/solubility use and the U/V future question using supplied criteria. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case BW-B1.",
+            "expectedPerformanceDe": "V spart gegebenes Wasser/Reduktionsmittel, benötigt mehr Energie und hat geringere bisherige Waschbeständigkeit; Gesamtaufwand/Skalierung fehlen. Gleiches Indigo bedeutet keine gleiche Prozessbilanz.",
+            "expectedPerformanceEn": "V saves supplied water/reductant but needs more energy and currently has lower wash fastness; total inputs/scale-up are missing. Identical indigo does not imply equal process impacts.",
+            "understandingFocusDe": "Ein zusammenhängender zeitlicher F&E-Bogen mit chemischem Anwendungsproblem und offenem nächsten Test.",
+            "understandingFocusEn": "One connected temporal R&D account with a chemical application problem and an open next test."
+          },
+          {
+            "id": "bw-b2",
+            "taskDemandDe": "Verknüpfe historischen Verfahrenswandel mit dem heutigen A/B-Projekt und einer prüfbaren C-Zukunftsfrage. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/eleven-complete-cases.v3.bound.author.json, Fall BW-B2.",
+            "taskDemandEn": "Connect historical process change with the current A/B project and a testable future C question. Complete material, task, solution and four criteria: materials/eleven-complete-cases.v3.bound.author.json, case BW-B2.",
+            "expectedPerformanceDe": "Indigo ist kein Azofarbstoff. Azo-Kern, Ankergruppe, Spektren und Waschprüfung leisten verschiedene Beiträge; C braucht reale Leistungs- und Abbauproduktdaten.",
+            "expectedPerformanceEn": "Indigo is not an azo dye. Azo core, anchor group, spectra and wash tests make distinct contributions; C needs actual performance and degradation-product data.",
+            "understandingFocusDe": "Übertragung auf einen anderen Farbstoff-/Gestaltungsfall ohne Zukunftsversprechen als Messung auszugeben.",
+            "understandingFocusEn": "Transfer to another dye/design problem without presenting a future promise as a measurement."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "connected-three-perspectives",
+            "chemical-design-and-application-evidence",
+            "conditional-comparison-and-limit",
+            "future-question-from-current-gap"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        }
+      }
+    }
+  ],
+  "coverageInterpretationDe": "Zwei unabhängige Demonstrationen bedeuten frische kausale Übertragung, keine zwei Aufgabenetiketten. Für40 liefern I1 und I3 ausdrücklich verschiedene physikalische Trennprinzipien; I2 ist zusätzlicher begrenzter Identitäts-/Herkunftstransfer und deckt keinen fehlenden Trennmechanismus ab. Material-/Rubrikentwürfe sind E0/G0, keine Lernendenbelege.",
+  "coverageInterpretationEn": "Two independent demonstrations require fresh causal transfer, not two task labels. For40, I1 and I3 explicitly supply different physical separation principles; I2 adds limited identity/origin transfer and does not cover an absent mechanism. Material/rubric designs are E0/G0, not learner evidence.",
+  "a880WholePUnchanged": true,
+  "formalDPAMVAndSourceViewAcquisitionStatus": "all new formal approvals pending; no selectable accepted rows or completed runs created"
+}

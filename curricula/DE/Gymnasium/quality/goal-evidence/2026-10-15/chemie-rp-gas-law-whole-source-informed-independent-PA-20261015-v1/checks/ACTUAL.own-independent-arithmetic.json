@@ -1,0 +1,49 @@
+{
+  "role": "Independent deterministic model calculations, never a physical measurement or learner action",
+  "precisionDigits": 28,
+  "suppliedRUsedRatherThanSubstitutedModernConstant": true,
+  "formulas": [
+    "p=nRT/V",
+    "p1V1/T1=p2V2/T2 at fixed n",
+    "Z=pV/(nRT)",
+    "Kp=Kc(RTc0/p0)^deltaNu"
+  ],
+  "results": {
+    "gasA": {
+      "pressure1Pa": "97489.9640",
+      "pressure2Pa": "107466.7640",
+      "pressureRatio": "1.102336687702541361077946444",
+      "pressureIncreasePercent": "10.23366877025413610779464440",
+      "temperatureFor1_20barK": "360.8371421698340149146018764",
+      "transferPressurePa": "53733.3820"
+    },
+    "gasB": {
+      "initialAbsolutePressureBar": "1.20",
+      "amountMol": "0.07213136275259050772905584735",
+      "volume2L": "2.133266699983341662502082292",
+      "temperature3K": "333.50",
+      "densePVJ": "2000",
+      "denseNRTJ": "2494.200",
+      "denseZ": "0.8018603159329644775880041697",
+      "denseDeviationPercent": "19.81396840670355224119958303",
+      "transferAbsolutePressureBar": "1.80",
+      "transferGaugePressureBar": "0.80"
+    },
+    "kpA": {
+      "deltaNu": "1",
+      "normalisedFactor": "24.77572",
+      "Kp": "0.1238786000",
+      "doubledDeltaNu": "2",
+      "doubledKc": "0.0000250000",
+      "doubledKp": "0.01534590753796000000"
+    },
+    "kpB": {
+      "modelIdeltaNu": "0",
+      "modelIKp": "4.00",
+      "modelIIdeltaNu": "1",
+      "normalisedFactor": "41.57000",
+      "modelIIKc": "0.004811161895597786865528025018"
+    }
+  },
+  "numericCorrectionsRequired": 0
+}

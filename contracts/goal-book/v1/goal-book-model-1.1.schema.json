@@ -159,7 +159,20 @@
       "required": ["path", "digest"],
       "properties": {
         "path": { "$ref": "#/$defs/nonBlank" },
-        "digest": { "$ref": "#/$defs/sha256" }
+        "digest": { "$ref": "#/$defs/sha256" },
+        "producerConfig": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "digest", "reviewedResourceTypes"],
+          "properties": {
+            "path": { "$ref": "#/$defs/nonBlank" },
+            "digest": { "$ref": "#/$defs/sha256" },
+            "reviewedResourceTypes": {
+              "type": "array", "maxItems": 1, "uniqueItems": true,
+              "items": { "const": "goal-visualization" }
+            }
+          }
+        }
       }
     },
     "externalLandscapeSource": {

@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "role": "Complete selected existing task materials and actual image generation/edit prompts; no P decision",
+  "wholeSelectedCaseFile": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/inputs/P-cases.two-whole-selected.exact.json",
+    "sha256": "sha256:71ba9c035399eed8842dd2b4456b098422b65c9b5b1f017d693a7a37e94605c7",
+    "bytes": 8834
+  },
+  "wholeSelectedCaseContent": {
+    "source": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-eleven-kept-current422-positive-and-atomic-informed-20261015-v1/materials/eleven-whole-cases22.targeted-informed-successor.json",
+      "sha256": "sha256:cb44cfd8b07629e3094b0f87e1e6fd53df3af366da16e1e211345818e9e4104b",
+      "bytes": 97356
+    },
+    "cases": [
+      {
+        "id": "energy20-19-a",
+        "goalId": "0773a104-aaeb-5e96-a615-2a2bec3eb096",
+        "title": "Kalte Wäsche mit hartem Wasser optimieren",
+        "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+        "imageRequired": false,
+        "materialsDe": "Eigene Modellwerte, keine Produktspezifikationen:15°C, hohe Härte, Dosisgrenze0,08g/L. A C12-Sulfat wirkt ab0,20g/L und oberhalb Krafft20°C. B linearer Sulfonatkopf wirkt ab0,10g/L, Krafft8°C, härteempfindlich. C C12-Ethoxylat6EO wirkt ab0,05g/L, bei15°C im vorgegebenen Test mit0,08g/L homogen, Trübungspunkt35°C, härtetolerant. Ziel: gleiche Ölentfernung ohne Niederschlag. Keine Synthese/Umweltfreigabe.",
+        "materialsEn": "Own model table,not real specifications:at15°C/high hardness candidateA,C12 sulfate,works above0.20g/L andKrafft20°C;B,linear sulfonate head,above0.10g/L/Krafft8°C but hardness reduces performance;C,C12 ethoxylate6EO,above0.05g/L/homogeneous at15°C at0.08g/L in the supplied test/cloud point35°C,hardness-tolerant. Dose limit0.08g/L. Goal:equal oil removal without precipitation;no synthesis or guaranteed environmental safety.",
+        "taskDe": "Wähle eine Struktur unter allen Ziel-/Nebenbedingungen. Erkläre Kopf/Kettenwirkung und prüfe Konzentration, Temperatur, Härte getrennt. Plane eine kontrollierte Prüfung mit Wasserblank und gleicher Ölmenge statt unspezifizierter „Waschkraft“.",
+        "taskEn": "Choose a structure under stated objectives/constraints and explain head/tail effects. Separately check concentration,temperature and hardness. Design a controlled check with water blank/equal oil amount;do not merely maximise undefined“cleaning power”.",
+        "workedReasoningDe": "C erfüllt die angegebenen Bedingungen:0,08>0,05g/L und15°C im ausdrücklich angegebenen Homogenitätstest und unter dem Trübungspunkt, keine angegebene Härtestörung. A verfehlt Temperatur/Dosis, B Dosis und Härte. DerEthoxykopf unterstützt Hydratation, die Kette Ölwechselwirkung; Micellen allein beweisen keine Universalwirkung. Test: Gleichdosis, Temperatur, Öl, Schüttelzeit, Blank und Wiederholung. Toxizität, Abbau und Kosten fehlen für eine Gesamtoptimierung.",
+        "workedReasoningEn": "C is justified within this model:0.08>0.05g/L,15°C as explicitly confirmed by the supplied homogeneity test and below35°C cloud point,no stated hardness problem. A fails temperature and dose;B fails dose and has hardness sensitivity. Ethoxy head hydration and tail/oil interaction explain the choice;more micelles is not universal performance evidence. Equal dose,temperature,oil,agitation,time,blank and repetition test the prediction. Toxicity,degradation,cost remain missing for overall optimisation.",
+        "freshIndependentTransferDe": "Die Temperatur steigt auf45°C. PrüfeC neu und fordere für höherethoxylierte Alternativen gezielt Daten statt „mehrEO ist immer besser“.",
+        "freshIndependentTransferEn": "Temperature rises to45°C. Reconsider the choice and request cloud/performance data for a higher-EO alternative rather than asserting moreEO is always better.",
+        "criterionToObservableRubric": [
+          {
+            "criterionId": "e1",
+            "observableDe": "Strukturwahl an Ziel und drei Nebenbedingungen binden.",
+            "observableEn": "Bind a concrete structure choice to objectives and three constraints.",
+            "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+          },
+          {
+            "criterionId": "e2",
+            "observableDe": "A/B/C anhand gegebener Grenzwerte begründet auswählen/ausschließen.",
+            "observableEn": "Chemically justify excluding/selectingA/B/C from given thresholds.",
+            "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+          },
+          {
+            "criterionId": "e3",
+            "observableDe": "Kontrollierte Überprüfung und offene Umweltkriterien benennen.",
+            "observableEn": "Specify a controlled test and missing environmental criteria.",
+            "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+          }
+        ]
+      },
+      {
+        "id": "energy20-19-b",
+        "goalId": "0773a104-aaeb-5e96-a615-2a2bec3eb096",
+        "title": "Geringe Schaumbildung und heißes Waschprogramm",
+        "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+        "imageRequired": false,
+        "materialsDe": "Fiktiver Frontlader:60°C, kein Niederschlag, wenig Schaum, gleiche Fettentfernung. D Ethoxykopf: Trübungspunkt80°C, Entfernung90%, Schaum10mm. E gleiche Kette/anderer Kopf: Trübung45°C, Entfernungbei60°C70%, Schaum30mm. Hersteller schlägt kationischesF plus anionischesG ohne Verträglichkeitsdaten vor. Gleiche Dosis/Mechanik; Fremdmodelldaten.",
+        "materialsEn": "Fictional front-loader requirement:60°C,no visible precipitate,low foam,equal fat removal. D has an ethoxy head/cloud point80°C,model90%fat removal/10mmfoam;E has the same tail with another head/cloud45°C,70%removal/30mmfoam at60°C. A maker suggests mixing cationicF with anionicG without compatibility data. Equal dose/mechanical work;all supplied external model data.",
+        "taskDe": "Optimiere durch begründete Strukturwahl und nenne Zielkonflikte. Warum sind Kopfänderung und Temperatur wichtig, Schaum aber kein Entfernungsmaß? BeurteileF/G und entwickle eine Prüffrage, keine Rezeptur.",
+        "taskEn": "Optimise the formulation through justified structure selection and identify trade-offs. Explain head-group relevance and why foam alone is not a removal measure. Assess untestedF/G and devise a test question,not a laboratory recipe.",
+        "workedReasoningDe": "D erfüllt die gegebenen Bedingungen besser. E liegt über seinem Trübungspunkt und entfernt hier weniger Fett. Gleiche Schwänze garantieren bei anderer Kopfhydratation keine gleiche Löslichkeit. Wenig Schaum ist eine Maschinennebenbedingung, nicht der Reinigungsbeweis. F/G können ionisch wechselwirken; Stabilität und Leistung sind offen. Test fixiert Dosis, Last und Temperatur und misst Niederschlag/Fettentfernung getrennt; kein universelles Umweltoptimum.",
+        "workedReasoningEn": "D better meets the stated temperature/fat/foam constraints;E exceeds its cloud point and removes less fat in these data. Equal tails do not ensure equal solubility because head hydration differs. Low foam is a machine constraint,not proof of cleaning. F/G can interact ionically;stability/performance are unresolved without data. A fair test fixes dose/load/temperature and separately measures precipitate/fat removal;no blanket environmental optimum follows.",
+        "freshIndependentTransferDe": "BeiHandwäsche wird Schaum erwünscht, Fettentfernung bleibtgleich. Wie ändert der Zweck die Gewichtung, ohne chemische Daten umzuschreiben?",
+        "freshIndependentTransferEn": "Foam becomes desirable for handwashing while fat removal remains equal. Explain how changed use changes objective weighting without rewriting chemistry data.",
+        "criterionToObservableRubric": [
+          {
+            "criterionId": "e1",
+            "observableDe": "Strukturwahl als bedingte Formulierungsoptimierung erklären.",
+            "observableEn": "Explain structure selection as conditional formulation optimisation.",
+            "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+          },
+          {
+            "criterionId": "e2",
+            "observableDe": "Kopfhydratation, Trübung und Fettentfernung getrennt nutzen.",
+            "observableEn": "Separately use head hydration/cloud point and fat removal.",
+            "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+          },
+          {
+            "criterionId": "e3",
+            "observableDe": "Schaumnebenbedingung und ungeprüfte Ionenmischung beurteilen.",
+            "observableEn": "Critique foam constraints and untested ionic mixtures.",
+            "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+          }
+        ]
+      }
+    ]
+  },
+  "wholePromptContents": [
+    {
+      "reference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/prompts/README.prompt-provenance.md",
+        "sha256": "sha256:ec07c84aa0987c30bdcdb610c25517d88ee512c9e36f606a43037e1a43742eda",
+        "bytes": 1076
+      },
+      "role": "Original generation prompt/provenance, not current V approval",
+      "completeText": "# Prompt provenance\n\nThe actual single built-in `image_gen.imagegen` invocation used the exact body in `prompt.en.txt`, with `transparent_background: false` and no image reference inputs. `prompt.de.txt` is the German reconstruction/translation of that design brief, not an additional provider invocation. Technical goal IDs were excluded from the provider prompt. Four existing curriculum images were viewed locally for KEEP/style orientation; their pixels were not supplied to the provider.\n\nThe model/version behind the built-in tool was not exposed. No model version, provider API trace or human review is inferred. The source PNG is copied byte for byte from the built-in generated artifact. Two smaller PNG files are review-only FFmpeg Lanczos downsamplings, not additional generated candidates.\n\nContent attribution: SkillPilot — Tensidstrukturen optimieren, author candidate, 2026-10-15; enpasos - Enterprise Patterns & Solutions GmbH; CC-BY-4.0 for our applicable rights. AI generation is provenance and does not independently establish rights or quality approval.\n"
+    },
+    {
+      "reference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/prompts/prompt.de.txt",
+        "sha256": "sha256:9cf8e5c38431f5a25db137f0be3c8b61ca9dca5107ba1e84a22d4c2dbf474b33",
+        "bytes": 3090
+      },
+      "role": "Original generation prompt/provenance, not current V approval",
+      "completeText": "Verwendung: naturwissenschaftliche Lernzielillustration; genau ein PNG im breiten Format 16:9, nativ etwa 1672 × 941 Pixel.\nHauptanliegen: Eine freundliche, abstrakte, klare Comicillustration zeigt, dass Tensidstrukturen zu vorgegebenen Waschbedingungen und Zielkriterien ausgewählt werden. Zwei amphiphile Bauformen sollen verglichen werden. Kein universell bestes Tensid, keine Zahlenaufgabenlösung, keine Synthese.\nStil: Große abgerundete Formen, klare dunkle Konturen, sanftes Blau und warmes Orange auf hellem Hintergrund, großzügige Abstände, keine Fotorealistik und keine dichte Datentafel. Die wichtigen Gegenstände bleiben bei 360 Pixel Gesamtbreite erkennbar.\nKomposition oben: Drei große Bedingungssymbole nebeneinander: Thermometer, Wassertropfen mit wenigen Mineralpunkten, Dosierlöffel. Darunter jeweils nur „Temperatur“, „Wasserhärte“, „Dosis“. Das sind zu bestimmende Bedingungen, keine Behauptung, dass mehr stets besser wirkt. Keine Zahlenwerte.\nKomposition Mitte: Zwei gleichwertige abgerundete Karten nebeneinander, nur mit „A“ und „B“ bezeichnet. Jede enthält eine vergrößerte symbolische amphiphile Struktur: ein langer orangefarbener gewellter unpolarer Kohlenwasserstoffschwanz ist rechts mit einem blauen hydrophilen Kopfbereich verbunden. A besitzt einen kompakten runden ionischen Kopf mit einem klaren Minuszeichen. B besitzt einen verlängerten ungeladenen polyetherartigen hydrophilen Bereich aus drei breiten verbundenen blauen Wölbungen ohne Ladungszeichen. Die Wölbungen symbolisieren einen hydrophilen Bereich, keine Einzelatome. Nur neben beiden blauen Kopfbereichen stehen wenige kleine blassblaue Wassertropfen. Gleichwertiger Hintergrund und Maßstab; keine Häkchen, Kreuze, Siegerfarben oder Rangfolge. Die Schwänze sollen symbolisch vergleichbar sein, keine Kettenlängenaussage tragen.\nKomposition unten: Sehr große offene Frage „Welche Struktur passt?“, dazu ein fettbeflecktes Tuch und eine kleine Gruppe von Schaumblasen. Die beiden Kriterien heißen „Fettentfernung“ und „Schaum“. Keine Verbesserungsergebnisse, keine Auswahl eines Siegers, keine Waage, keine Balken und kein Richtungspfeil zugunsten einer Bauform. Schaum ist kein Ersatzmaß für Fettentfernung.\nEinziger Bildtext: „Temperatur“, „Wasserhärte“, „Dosis“, „A“, „B“, ein Minuszeichen in A, „Welche Struktur passt?“, „Fettentfernung“, „Schaum“.\nFachliche Grenzen: Beide Bauformen besitzen einen verbundenen unpolaren Schwanz und hydrophilen Kopfbereich. Geladener Kopf und ungeladener hydrophiler Bereich bleiben unterscheidbar. Keine Reaktionsformeln, keine universelle Verknüpfung von Kettenlänge und Reinigung, keine pauschale Härteverträglichkeit oder Umweltfreigabe. Es ist ein qualitativer Symbolvergleich, kein Messergebnis und keine atomistische Strukturzeichnung.\nVermeiden: technische Kennungen, Marken, Wasserzeichen, Logos, Personen, geschützte Figuren, Kleinschrift, lange wiederholte Titel, unverbundene Köpfe, erfundene Summenformeln, Gewinner und vollständige Falllösungen.\n"
+    },
+    {
+      "reference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/prompts/prompt.en.txt",
+        "sha256": "sha256:84f484893cd4af4fe3db9972cd129d6d8b1162ddaae57ca97cd0ad9c9d72bb80",
+        "bytes": 3577
+      },
+      "role": "Original generation prompt/provenance, not current V approval",
+      "completeText": "Use case: scientific-educational\nAsset type: one compact chemistry learning-goal orientation illustration, PNG, wide landscape 16:9, native about 1672 x 941 pixels.\nPrimary request: A friendly, abstract, clear comic-style illustration showing that surfactant structures are CHOSEN for specified washing conditions and objectives. The viewer compares two amphiphilic structures and weighs requirements. There must be no universally best surfactant, no answer to a numerical exercise, and no synthesis.\nStyle: approachable hand-drawn rounded forms, strong clean dark outlines, soft blue and warm orange, white/light-blue uncluttered background, very generous spacing. Crisp large objects, at most two candidate structures, no photorealism, no dense chart. Everything important remains recognizable when the whole image is only 360 pixels wide.\nComposition: At the top, one simple horizontal row of three large condition icons: a thermometer, a water droplet containing a few mineral dots, and one measured dosing spoon. Under each icon print its single large German label, respectively \"Temperatur\", \"Wasserhärte\", \"Dosis\". These are variables to specify, not claims that increasing any one always helps. No numeric values.\nIn the middle, TWO equally prominent rounded candidate cards side by side, labeled just \"A\" and \"B\". Each shows ONE enlarged symbolic amphiphilic molecule horizontally, with the same long warm-orange wavy hydrophobic hydrocarbon tail and a distinct blue hydrophilic head at its right-hand end. The tail must be visibly connected to the head. Candidate A: compact circular blue ionic head containing a single clear minus sign. Candidate B: extended blue neutral polyether-like hydrophilic head represented by a small chain of three broad blue lobes with no charge signs. The lobes are a symbolic hydrophilic segment, NOT an atom-by-atom formula. Add a few small pale-blue water droplets beside BOTH hydrophilic head regions only. Do not put water droplets at the orange tails. Keep both candidates on the SAME neutral pale background, same size and same tail length. No ticks, crosses, trophies, success colours or performance ranking.\nAt the bottom, an open decision question \"Welche Struktur passt?\" in very large readable type, accompanied by two large independent objective icons: a cloth with an oil stain and a small cluster of foam bubbles. Label the two icons in large German type \"Fettentfernung\" and \"Schaum\". Show neither an improvement result nor a contest between candidates. The cloth and bubbles identify criteria to weigh; foam is not a proxy for cleaning. No balance scale, no output bars, no increasing bubbles to indicate success, no selection arrow favouring A or B.\nText (verbatim, ONLY these words/signs): \"Temperatur\", \"Wasserhärte\", \"Dosis\", \"A\", \"B\", a minus sign inside A's head, \"Welche Struktur passt?\", \"Fettentfernung\", \"Schaum\".\nScientific constraints: both structures have a clear connected hydrophobic tail and hydrophilic head; ionic head charge is distinct from the neutral hydrophilic segment; no chemical reactions, no unbalanced formulas, no universal relation between tail length and cleaning, no blanket hardness tolerance or environmental-safety claim. This is a qualitative structural comparison, NOT a measured result and NOT an atomistic drawing.\nAvoid: technical IDs, brand names, watermarks, logos, people, protected characters, tiny labels, repeated long titles, crowded panels, invented chemical formulas, molecules without tails, any winner or complete task solution. Generate exactly one finished image.\n"
+    },
+    {
+      "reference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-two-letter-removal-image-author-successor-20261015-v1/prompts/edit.actual.en.txt",
+        "sha256": "sha256:8eeccb5d9fcc99d44afe879ae33af3840be0938ada95b43d14b86b89d60ff3e2",
+        "bytes": 1045
+      },
+      "role": "Actual edit prompt and German reconstruction, not independent approval",
+      "completeText": "Edit the supplied chemistry educational comic with the smallest possible change: remove ONLY the two large dark-blue letters A and B from the upper-left corners INSIDE the two pale-blue comparison panels. Fill those letter areas naturally with their existing pale background. Keep every other visual element: the thermometer, hard-water droplet and scoop, all five German condition/objective labels, both complete orange surfactant tails, the negatively charged blue head at left and the uncharged extended blue head at right, little water droplets, the oil-stained cloth, foam bubbles, the large question Welche Struktur passt?, panel borders, all positions, friendly comic style, colours, lighting, margins and full wide composition. Do not add replacement labels, numbers, a winner, an answer, a chemical formula or any new text. Do not crop, mirror or rearrange. Preserve the roughly16:9 landscape PNG at the same native size if possible. The letters conflict with actual exercise table identifiers; only these two letters should disappear.\n"
+    },
+    {
+      "reference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-two-letter-removal-image-author-successor-20261015-v1/prompts/edit.reconstruction.de.txt",
+        "sha256": "sha256:5069272510a65a45c662cc148fa207e270bc6527af24ae2241ef4abf64675544",
+        "bytes": 428
+      },
+      "role": "Actual edit prompt and German reconstruction, not independent approval",
+      "completeText": "Nur die beiden beliebigen Buchstaben A und B aus den hellblauen Tensidvergleichsfeldern entfernen. Alle Molekülsymbole, Ladung, Waschbedingungs-/Zielmotive, deutsche Beschriftungen, Anordnung, Querformat und freundlichen Comicstil beibehalten. Keine neuen Alternativbezeichnungen, Rangfolge oder Aufgabenlösung hinzufügen. Dies ist eine deutsche Rekonstruktion der tatsächlich englisch gesendeten Bildbearbeitungsanweisung.\n"
+    }
+  ],
+  "originalWholeCurrentGoal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-tensid-structure-choice-one-missing-image-author-20261015-v1/inputs/whole-goal.exact-current426.json",
+    "sha256": "sha256:b5ad9e41746d63c08b077b64233ccb5e34807759fc6101b4d540209c356b3edc",
+    "bytes": 1462
+  },
+  "originalGoalWholeTextExactToCurrent426": true,
+  "current426Selector": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-current426-bounded-inactive-integration-technical-20261015-v1/OUTPUTS.finite-current426-measured-inactive-checkpoint.final-selector.json",
+    "sha256": "sha256:31c913a579fea1e21eb494d44329a41b1d844936b1305e84d3c98dddb5ba1bff",
+    "bytes": 7592
+  },
+  "current426Canonical": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-five-defective-optional-context-image-links-withdrawal-author-20261015-v1/candidate/canonical570.current426.five-defective-optional-context-links-withdrawn.inactive.json",
+    "sha256": "sha256:8ca749ac1aa686fe5443c6dfb1be41b30737ef48042b216fdf0052f1b8f6c13d",
+    "bytes": 1941151
+  }
+}

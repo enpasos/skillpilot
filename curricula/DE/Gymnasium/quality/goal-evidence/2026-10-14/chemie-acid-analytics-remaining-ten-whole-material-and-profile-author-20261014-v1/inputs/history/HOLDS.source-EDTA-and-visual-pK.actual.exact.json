@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "scopeGoalIds": [
+    "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+    "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+    "ba621c67-b750-5e45-ab37-a51ea45e3ccf",
+    "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+    "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+    "c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
+    "dc0470f1-0676-5949-a5cc-02783d478406",
+    "33034876-8da5-5619-ad86-e1272e0304b0",
+    "25729c34-33d5-553a-a723-046113a7da47",
+    "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+    "a449e874-6fec-502b-9667-6f078adc4d64",
+    "9fef5c29-62bc-5ada-b96b-6885bcb049cb",
+    "29742d91-732f-5da5-bc46-e963885f9a4a",
+    "059acb11-29b3-5645-ac4c-b4214dc41a2d",
+    "5a58126e-0c51-5808-be9e-8faa9dae0c32",
+    "d7461c15-6992-5342-b899-6c490ee0cbb7",
+    "13877340-1370-5278-bb80-31cf382dd6f5"
+  ],
+  "holds": [
+    {
+      "goalId": "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+      "kind": "source/operator hold",
+      "jurisdictions": [
+        "DE-BB",
+        "DE-BE"
+      ],
+      "sourceGoalIds": [
+        "bb-chemistry-sekii-rlp-3-2-5-inhalte-013-aed46f7b",
+        "be-chemistry-sekii-rlp-3-2-5-inhalte-013-aed46f7b"
+      ],
+      "literalSourceText": "Grundlagen der Konduktometrie",
+      "finding": "Conductometry basics do not alone specify performing complexometric EDTA titration. Current mapping aliases are not scientifically cleared by matching hashes.",
+      "positiveDirectWitnesses": [
+        "BY78ca79fd-ce73-5023-8b38-c6c4fed232f1 explicitly requires EDTA titration execution",
+        "RP011 names complexometry/complexones/metal indicators"
+      ],
+      "proposedCorrection": "Root/source author must review the BB/BE source-to-target/operator boundary and actual learner-facing scope; do not silently discharge it through the EDTA profile. No newID,source edit ordenominator change proposed here.",
+      "authorCases": "Two real feasible supervised-practical task designs with synthetic evaluation logs; actual execution remains required for later learner evidence.",
+      "newVotes": 0
+    },
+    {
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "kind": "visual pixel hold",
+      "assetBinding": {
+        "path": "app/public/assets/goal-visualizations/chemie/48115ff7-7aca-5d0b-a9e7-7fc6c78434ef/48115ff7-7aca-5d0b-a9e7-7fc6c78434ef.jpg",
+        "sha256": "sha256:ef9e8763a6ecdfee85c413f4e756927cd932fa5e682693c6bcfd546cf7c08674"
+      },
+      "finding": "Concrete lower acid-panel double reaction arrow connects HCl+H₂O and CH₃COOH+H₂O without balanced products; a comparison needs different notation.",
+      "proposedCorrection": "Separate the two acid comparisons and show their own balanced protolysis equations; use a bounded additive imagegen successor, preserve original bytes/provenance and obtain an actual fresh asset review before adoption.",
+      "oldAssetApprovalTransferred": false,
+      "activeAssetRemovedOrChanged": false,
+      "newVotes": 0
+    }
+  ],
+  "heldGoalIds": [
+    "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+    "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+  ],
+  "allOther15UnheldByTheseTwoFindings": true,
+  "reviewQuestions": [
+    {
+      "goalIds": [
+        "a449e874-6fec-502b-9667-6f078adc4d64",
+        "d7461c15-6992-5342-b899-6c490ee0cbb7"
+      ],
+      "question": "Similar generic quantitative HH descriptions and sharedHEb04: authored closed-versus-flow contexts use current prerequisite/parent context; independent A/B must judge scope/granularity. No author atomic approval or graph/ID rewrite."
+    }
+  ],
+  "rawPassageGapTruth": {
+    "selectedSourcePassages": 96,
+    "emptyRawText": 64,
+    "wholeLiteralSourceTextRowsRetained": 323,
+    "emptyRawTextNotPretendedVerified": true
+  },
+  "newSourceCoverageOrPeerJudgements": 0
+}

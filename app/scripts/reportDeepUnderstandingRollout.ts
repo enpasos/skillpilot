@@ -12,9 +12,12 @@ import {
   stableGoalBookJson,
 } from './goalBookModel'
 import {
-  reviewPositiveGoalEvidenceConfig,
-  type PositiveGoalEvidenceReviewConfig,
-} from './positiveGoalEvidenceReview'
+  isCanonicalMathPhysicsEvidenceSource,
+  loadCurrentPositiveEvidenceOwners,
+  validateDescriptionPositiveEvidenceBinding,
+  type CurrentPositiveEvidenceOwner,
+  type CurrentPositiveEvidenceObserver,
+} from './currentPositiveEvidenceOwners'
 import {
   loadGoalDescriptionReviewCampaignResultDirectories,
 } from './validateGoalDescriptionReviewCampaignResults'
@@ -1033,6 +1036,7 @@ const validateResolutionIndex = async (
   scope: AuthoritativeScope,
   supersededGoalIds: ReadonlySet<string> = new Set(),
   withdrawnResolutionDigests: ReadonlyMap<string, string> = new Map(),
+  currentEvidenceOwners?: ReadonlyMap<string, CurrentPositiveEvidenceOwner>,
 ): Promise<{
   ready: Set<string>
   claimedGoalIds: Set<string>
@@ -1271,6 +1275,17 @@ const validateResolutionIndex = async (
         addIssue(issues, indexScope, `${entry.goalId}: strictDescriptionComplete conflicts with fresh validation`)
         continue
       }
+      if (validation.strictDescriptionComplete && currentEvidenceOwners) {
+        const bindingErrors = [group.first, group.second].flatMap((round, index) => {
+          const inputGoal = round.input.goals.find(({ goalId }) => goalId === entry.goalId)
+          if (!inputGoal) return [`${entry.goalId}: round-${index === 0 ? 'a' : 'b'} lacks bound input goal`]
+          return validateDescriptionPositiveEvidenceBinding(inputGoal, currentEvidenceOwners.get(entry.goalId)).errors
+        })
+        if (bindingErrors.length) {
+          [...new Set(bindingErrors)].forEach((error) => addIssue(issues, indexScope, error))
+          continue
+        }
+      }
       if (validation.strictDescriptionComplete) ready.add(entry.goalId)
     } catch (error) {
       addIssue(issues, indexScope, `${entry.goalId}: ${error instanceof Error ? error.message : String(error)}`)
@@ -1363,6 +1378,7 @@ const loadDescriptionReadyGoals = async (
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   issues: string[],
+  currentEvidenceOwners?: ReadonlyMap<string, CurrentPositiveEvidenceOwner>,
 ): Promise<Set<string>> => {
   const validationResults: ResolutionIndexValidation[] = []
   const ownerByGoalId = new Map<string, string>()
@@ -1403,7 +1419,7 @@ const loadDescriptionReadyGoals = async (
   }
   for (const indexPath of config.resolutionIndexPaths) {
     const result = await validateResolutionIndex(
-      indexPath, config, scope, supersededByIndex.get(indexPath), withdrawnByIndex.get(indexPath),
+      indexPath, config, scope, supersededByIndex.get(indexPath), withdrawnByIndex.get(indexPath), currentEvidenceOwners,
     )
     result.issues.forEach((issue) => issues.push(issue))
     validationResults.push({ path: indexPath, ...result })
@@ -1545,77 +1561,24 @@ const validateCurrentCanonicalBindingAudits = (
   })
 }
 
-const loadEvidenceReadyGoals = (
+/** Bounded native D/P stage used by the report and focused regression checks.
+ * It still loads and validates actual owner configs, complete D rounds and
+ * resolutions; it accepts no caller-supplied readiness receipts. */
+export const loadCurrentDescriptionEvidenceGates = async (
   config: DeepUnderstandingSubjectConfig,
-  scope: AuthoritativeScope,
-  issues: string[],
-  observer?: (configPath: string, config: PositiveGoalEvidenceReviewConfig, record: ReturnType<typeof reviewPositiveGoalEvidenceConfig>['records'][number]) => void,
-): Set<string> => {
-  const validatedByConfig = new Map<string, Set<string>>()
-  const ownerByGoalId = new Map<string, string>()
-  const uniqueClaims = new Set<string>()
-  for (const configPath of config.positiveEvidenceConfigPaths) {
-    let rawEvidenceConfig: PositiveGoalEvidenceReviewConfig
-    try {
-      rawEvidenceConfig = loadJson<PositiveGoalEvidenceReviewConfig>(configPath)
-      const rawGoalIds = Array.isArray(rawEvidenceConfig.scope?.goalIds)
-        ? rawEvidenceConfig.scope.goalIds
-        : []
-      rawGoalIds.forEach((goalId) => {
-        const previousOwner = claimUniqueGoal(goalId, configPath, ownerByGoalId, uniqueClaims)
-        if (previousOwner) {
-          addIssue(issues, config.subject, `positive-evidence overlap for ${goalId}: ${previousOwner} and ${configPath}`)
-        }
-      })
-    } catch (error) {
-      addIssue(issues, config.subject, `${configPath}: ${error instanceof Error ? error.message : String(error)}`)
-      continue
-    }
-    let result: ReturnType<typeof reviewPositiveGoalEvidenceConfig>
-    try {
-      result = reviewPositiveGoalEvidenceConfig(configPath)
-    } catch (error) {
-      addIssue(issues, config.subject, `${configPath}: ${error instanceof Error ? error.message : String(error)}`)
-      continue
-    }
-    const evidenceConfig: PositiveGoalEvidenceReviewConfig = result.config
-    const duplicateScopeGoalIds = duplicateValues(evidenceConfig.scope.goalIds)
-    duplicateScopeGoalIds.forEach((goalId) => {
-      addIssue(issues, config.subject, `${configPath}: duplicate configured evidence goal ${goalId}`)
-    })
-    if (
-      evidenceConfig.landscapeId !== scope.landscape.landscapeId
-      || evidenceConfig.landscapePath !== config.landscapePath
-      || evidenceConfig.semanticKindLedgerPath !== config.semanticKindLedgerPath
-    ) {
-      addIssue(issues, config.subject, `${configPath}: evidence config is bound to another subject source`)
-      continue
-    }
-    if (result.errors.length > 0 || duplicateScopeGoalIds.length > 0) {
-      result.errors.forEach((error) => addIssue(issues, config.subject, `${configPath}: ${error}`))
-      continue
-    }
-    const configReady = new Set<string>()
-    result.records.forEach((record) => {
-      if (!scope.atomicGoalIds.has(record.goalId)) {
-        addIssue(issues, config.subject, `${configPath}: evidence goal ${record.goalId} is not current curricularAtomic`)
-        return
-      }
-      const acceptedCandidate = (
-        (record.status === 'needs_human_review' && record.reviewAuthority === 'ai_candidate')
-        || (record.status === 'approved' && record.reviewAuthority === 'human')
-      )
-      if (acceptedCandidate) { configReady.add(record.goalId); observer?.(configPath, evidenceConfig, record) }
-    })
-    validatedByConfig.set(configPath, configReady)
-  }
-  const ready = new Set<string>()
-  validatedByConfig.forEach((goalIds) => {
-    goalIds.forEach((goalId) => {
-      if (uniqueClaims.has(goalId)) ready.add(goalId)
-    })
-  })
-  return ready
+  observer?: CurrentPositiveEvidenceObserver,
+) => {
+  const scope = loadAuthoritativeScope(config)
+  const evidence = loadCurrentPositiveEvidenceOwners({
+    ...config, landscapeId: scope.landscape.landscapeId ?? '', atomicGoalIds: scope.atomicGoalIds,
+  }, observer)
+  const descriptionIssues: string[] = []
+  const currentOwners = isCanonicalMathPhysicsEvidenceSource({
+    landscapePath: config.landscapePath, landscapeId: scope.landscape.landscapeId,
+  }) ? evidence.owners : undefined
+  const descriptionReady = await loadDescriptionReadyGoals(config, scope, descriptionIssues, currentOwners)
+  return { scope, evidenceReady: evidence.ready, evidenceOwners: evidence.owners,
+    evidenceIssues: evidence.issues, descriptionReady, descriptionIssues }
 }
 
 const validateConfig = (raw: unknown): DeepUnderstandingRolloutConfig => {
@@ -1638,71 +1601,90 @@ export const loadDeepUnderstandingRolloutConfig = (
   configuredPath = defaultConfigPath,
 ): DeepUnderstandingRolloutConfig => validateConfig(loadJson<unknown>(configuredPath))
 
+/** Shared report projection. Production readiness always comes from the native
+ * loaders above; this pure projection grants no producer or acceptance receipt. */
+export const projectDeepUnderstandingSubjectReport = (
+  config: DeepUnderstandingSubjectConfig,
+  state: Omit<Awaited<ReturnType<typeof loadCurrentDescriptionEvidenceGates>>, 'evidenceOwners'> & {
+    atomicityReady: ReadonlySet<string>; atomicityIssues: string[]
+    memoryReady: ReadonlySet<string>; memoryIssues: string[]
+    visualizationReady: ReadonlySet<string>; visualizationIssues: string[]
+    deferredVisualizationGoalIds: ReadonlySet<string>
+  },
+): DeepUnderstandingSubjectReport => {
+  const { scope, descriptionReady, descriptionIssues, evidenceReady, evidenceIssues,
+    atomicityReady, atomicityIssues, memoryReady, memoryIssues,
+    visualizationReady, visualizationIssues, deferredVisualizationGoalIds } = state
+  const strictCompleteGoalIds = scope.denominator === null
+    ? []
+    : intersectStrictGoalGates(scope.atomicGoalIds, [
+      descriptionReady,
+      evidenceReady,
+      atomicityReady,
+      memoryReady,
+      visualizationReady,
+    ])
+  const scopeIssues = [...scope.issues]
+  if (scope.denominator === 0) addIssue(scopeIssues, config.subject, 'current curricularAtomic scope is empty')
+  const checkIssues = [
+    scopeIssues, descriptionIssues, evidenceIssues, atomicityIssues, memoryIssues, visualizationIssues,
+  ]
+  const uniqueIssues = [...new Set(checkIssues.flat())].sort()
+  const requiredChecks = deepUnderstandingCompletionCheckIds.map((id, index): DeepUnderstandingCompletionCheck => ({
+    id,
+    status: checkIssues[index].length === 0 ? 'pass' : 'fail',
+  }))
+  const subjectReport: DeepUnderstandingSubjectReport = {
+    subject: config.subject,
+    label: config.label,
+    landscapeId: scope.landscape.landscapeId ?? '',
+    landscapePath: config.landscapePath,
+    currentGoalIds: [...scope.atomicGoalIds].sort(),
+    denominator: scope.denominator,
+    strictComplete: strictCompleteGoalIds.length,
+    percentage: formatRolloutPercentage(strictCompleteGoalIds.length, scope.denominator),
+    remaining: scope.denominator === null ? null : scope.denominator - strictCompleteGoalIds.length,
+    gates: {
+      currentDescriptionResolutions: descriptionReady.size,
+      currentPositiveEvidenceProfiles: evidenceReady.size,
+      currentSemanticAtomicityDecisions: atomicityReady.size,
+      currentMemoryReviewDecisions: memoryReady.size,
+      currentVisualizationQaRecords: visualizationReady.size,
+    },
+    strictCompleteGoalIds,
+    deferredVisualizationGoalIds: [...deferredVisualizationGoalIds].sort(),
+    requiredChecks,
+    strictCompletionReady: false,
+    issues: uniqueIssues,
+  }
+  subjectReport.strictCompletionReady = hasStrictDeepUnderstandingCompletion(subjectReport)
+  return subjectReport
+}
+
 export const generateDeepUnderstandingRollout = async (
   configuredPath = defaultConfigPath,
-  positiveEvidenceObserver?: Parameters<typeof loadEvidenceReadyGoals>[3],
+  positiveEvidenceObserver?: CurrentPositiveEvidenceObserver,
   subjectIds?: ReadonlySet<string>,
 ): Promise<DeepUnderstandingRolloutReport> => {
   const config = loadDeepUnderstandingRolloutConfig(configuredPath)
   const subjects: DeepUnderstandingSubjectReport[] = []
   for (const subjectConfig of config.subjects.filter(subject => !subjectIds || subjectIds.has(subject.subject))) {
-    const scope = loadAuthoritativeScope(subjectConfig)
-    const descriptionIssues: string[] = []
-    const evidenceIssues: string[] = []
+    const { scope, descriptionReady, descriptionIssues, evidenceReady, evidenceIssues } =
+      await loadCurrentDescriptionEvidenceGates(subjectConfig, positiveEvidenceObserver)
     const atomicityIssues: string[] = []
     const memoryIssues: string[] = []
     const visualizationIssues: string[] = []
     const deferredVisualizationGoalIds = new Set<string>()
-    const [descriptionReady, atomicityReady, memoryReady, visualizationReady] = await Promise.all([
-      loadDescriptionReadyGoals(subjectConfig, scope, descriptionIssues),
+    const [atomicityReady, memoryReady, visualizationReady] = await Promise.all([
       Promise.resolve(loadAtomicityReadyGoals(subjectConfig, scope, atomicityIssues)),
       Promise.resolve(loadMemoryReadyGoals(subjectConfig, scope, memoryIssues)),
       Promise.resolve(loadVisualizationReadyGoals(subjectConfig, scope, visualizationIssues, deferredVisualizationGoalIds)),
     ])
-    const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues, positiveEvidenceObserver)
-    const strictCompleteGoalIds = scope.denominator === null
-      ? []
-      : intersectStrictGoalGates(scope.atomicGoalIds, [
-        descriptionReady,
-        evidenceReady,
-        atomicityReady,
-        memoryReady,
-        visualizationReady,
-      ])
-    const scopeIssues = [...scope.issues]
-    if (scope.denominator === 0) addIssue(scopeIssues, subjectConfig.subject, 'current curricularAtomic scope is empty')
-    const checkIssues = [
-      scopeIssues, descriptionIssues, evidenceIssues, atomicityIssues, memoryIssues, visualizationIssues,
-    ]
-    const uniqueIssues = [...new Set(checkIssues.flat())].sort()
-    const requiredChecks = deepUnderstandingCompletionCheckIds.map((id, index): DeepUnderstandingCompletionCheck => ({
-      id,
-      status: checkIssues[index].length === 0 ? 'pass' : 'fail',
-    }))
-    const subjectReport: DeepUnderstandingSubjectReport = {
-      subject: subjectConfig.subject,
-      label: subjectConfig.label,
-      landscapeId: scope.landscape.landscapeId ?? '',
-      landscapePath: subjectConfig.landscapePath,
-      currentGoalIds: [...scope.atomicGoalIds].sort(),
-      denominator: scope.denominator,
-      strictComplete: strictCompleteGoalIds.length,
-      percentage: formatRolloutPercentage(strictCompleteGoalIds.length, scope.denominator),
-      remaining: scope.denominator === null ? null : scope.denominator - strictCompleteGoalIds.length,
-      gates: {
-        currentDescriptionResolutions: descriptionReady.size,
-        currentPositiveEvidenceProfiles: evidenceReady.size,
-        currentSemanticAtomicityDecisions: atomicityReady.size,
-        currentMemoryReviewDecisions: memoryReady.size,
-        currentVisualizationQaRecords: visualizationReady.size,
-      },
-      strictCompleteGoalIds,
-      deferredVisualizationGoalIds: [...deferredVisualizationGoalIds].sort(),
-      requiredChecks,
-      strictCompletionReady: false,
-      issues: uniqueIssues,
-    }
-    subjectReport.strictCompletionReady = hasStrictDeepUnderstandingCompletion(subjectReport)
+    const subjectReport = projectDeepUnderstandingSubjectReport(subjectConfig, {
+      scope, descriptionReady, descriptionIssues, evidenceReady, evidenceIssues,
+      atomicityReady, atomicityIssues, memoryReady, memoryIssues,
+      visualizationReady, visualizationIssues, deferredVisualizationGoalIds,
+    })
     subjects.push(subjectReport)
   }
   return {
@@ -1710,6 +1692,16 @@ export const generateDeepUnderstandingRollout = async (
     reportId: config.reportId,
     subjects,
     blockingIssueCount: subjects.reduce((sum, subject) => sum + subject.issues.length, 0),
+  }
+}
+
+/** Existing fixed native producer boundary, shared only to exercise it without
+ * invoking the whole-source executable. It consumes the central report as-is. */
+export const assertRegisteredMathPhysicsNativeAcceptanceComplete = (report: DeepUnderstandingRolloutReport): void => {
+  if (report.blockingIssueCount !== 0 || report.subjects.length !== 2 || report.subjects.some((subject) => !subject.strictCompletionReady)) {
+    throw new Error('Current registered native Kind/D/P/A/M/V acceptance is incomplete: '
+      + JSON.stringify(report.subjects.map((subject) => ({ subject: subject.subject,
+        strict: subject.strictComplete, denominator: subject.denominator, issues: subject.issues }))))
   }
 }
 

@@ -1,0 +1,364 @@
+{
+  "runId": "3ba7c6a3-5803-45e9-af13-1ffaf491b52c",
+  "computedAt": "2026-10-15T08:47:01.628075+00:00",
+  "role": "Own recomputation/chemical model check of all30 whole original cases; original cases/profiles remain unchanged.",
+  "checks": [
+    {
+      "caseId": "lab15-01a",
+      "computed": null,
+      "judgementDe": "Waage/Meniskus, Salz passiert den Filter; nasse Rückstandsmasse ist keine trockene Sandmasse.",
+      "judgementEn": "Balance/meniscus; salt passes paper, and wet residue is not dry sand mass."
+    },
+    {
+      "caseId": "lab15-01b",
+      "computed": null,
+      "judgementDe": "Dekantierrest und Benetzung begrenzen Rückgewinnung; Tropfenzahl ist keine kalibrierte Volumenmessung.",
+      "judgementEn": "Deliberate remainder/wetting limit recovery; drop count is not a calibrated volume measurement."
+    },
+    {
+      "caseId": "lab15-02a",
+      "computed": null,
+      "judgementDe": "Gefühlte Nüchternheit und Kaffee belegen keine Wiederherstellung von Koordination/Urteil. Keine individuelle Mengen-/Zeitdiagnose.",
+      "judgementEn": "Feeling sober and coffee do not establish recovered coordination/judgement; no personal dose/time diagnosis."
+    },
+    {
+      "caseId": "lab15-02b",
+      "computed": null,
+      "judgementDe": "Natürlich fermentiert ist nicht risikofrei; biologische, psychische und soziale Faktoren sind nicht persönliche Schuld.",
+      "judgementEn": "Naturally fermented does not mean risk-free; interacting biological, psychological and social factors are not personal fault."
+    },
+    {
+      "caseId": "lab15-03a",
+      "computed": {
+        "reagent_mmol": 1.0,
+        "theoryCaCO3_g": 0.1001,
+        "grossYield_pct": 89.91008991008991,
+        "freshHalfCarbonateTheory_g": 0.05005
+      },
+      "judgementDe": "PASS: Ladung+2−2=0; CaCO3 enthält dieselben Ca/C/O-Atome.0,01g-Wägeauflösung macht≈90% nur grob.",
+      "judgementEn": "PASS: charge+2−2=0 and Ca/C/O are balanced.0.01g resolution makes roughly90% only approximate."
+    },
+    {
+      "caseId": "lab15-03b",
+      "computed": {
+        "catalaseEquation": "2H2O2 -> 2H2O + O2",
+        "H_atoms_eachSide": 4,
+        "O_atoms_eachSide": 4
+      },
+      "judgementDe": "PASS: Ca2+ vernetzt Alginat ohne neue Polymerketten. Gleiche Kugelzahl belegt bei anderer Tropfengröße keine gleiche Produktmasse.",
+      "judgementEn": "PASS: Ca2+ crosslinks alginate without new polymer chains; equal bead count does not imply equal mass with different drop size."
+    },
+    {
+      "caseId": "lab15-04a",
+      "computed": {
+        "means_uS_cm": [
+          5.5,
+          1200.0,
+          9.5
+        ]
+      },
+      "judgementDe": "PASS:5,5/1200/9,5µS/cm. Ionenbeweglichkeit ist Modellbegründung, keine direkt beobachtete Ionenabbildung.",
+      "judgementEn": "PASS:5.5/1200/9.5µS/cm; ion mobility is a model explanation rather than directly observed ions."
+    },
+    {
+      "caseId": "lab15-04b",
+      "computed": {
+        "initial_C": 20,
+        "X_peak_C": 24,
+        "Y_min_C": 16,
+        "final_C": [
+          22,
+          18
+        ],
+        "sensorResolution_C": 0.5
+      },
+      "judgementDe": "PASS: Zeitverlauf und Wärmeaustausch werden begrenzt dargestellt; ohne Systemgrenze/Wärmekapazitäten keine exakte Enthalpie.",
+      "judgementEn": "PASS: time course and heat exchange are bounded; no exact enthalpy without system boundaries/heat capacities."
+    },
+    {
+      "caseId": "lab15-05a",
+      "computed": {
+        "NaClRecovery_pct": 90.0
+      },
+      "judgementDe": "PASS:90% Rückgewinnung ist keine Produktreinheit; eine neue natürliche Sole ändert den Gewinnungsschritt.",
+      "judgementEn": "PASS:90% recovery is not purity; natural brine changes extraction."
+    },
+    {
+      "caseId": "lab15-05b",
+      "computed": {
+        "equation": "Fe2O3 + 3CO -> 2Fe + 3CO2",
+        "leftAtoms": {
+          "Fe": 2,
+          "C": 3,
+          "O": 6
+        },
+        "rightAtoms": {
+          "Fe": 2,
+          "C": 3,
+          "O": 6
+        }
+      },
+      "judgementDe": "HOLD: Die ausgeglichene Gleichung enthält6O pro Seite;3O in Originalfall und Profil ist falsch und bleibt unkorrigiert markiert.",
+      "judgementEn": "HOLD: the balanced equation has6O on each side; original case/profile3O is wrong and remains explicitly uncorrected."
+    },
+    {
+      "caseId": "lab15-06a",
+      "computed": {
+        "purity_pct": 95.0,
+        "NaClRecovery_pct": 85.5,
+        "grossProductMass_pct": 90.0
+      },
+      "judgementDe": "RECHNUNG PASS, DESIGN HOLD:95/85,5/90% haben verschiedene Nenner. Eigene tatsächliche künftige Reinheitsanalyse fehlt.",
+      "judgementEn": "ARITHMETIC PASS, DESIGN HOLD:95/85.5/90% use different denominators; actual future original purity analysis is missing."
+    },
+    {
+      "caseId": "lab15-06b",
+      "computed": {
+        "solubleAt50_g": 6.0,
+        "solubleAt20_g": 2.0,
+        "theoryCrystalA_g": 4.0,
+        "purity_pct": 95.0,
+        "initialRecovery_pct": 56.99999999999999,
+        "theoryCrystalYield_pct": 85.5
+      },
+      "judgementDe": "RECHNUNG PASS, DESIGN HOLD:4g,95%,57%,85,5% richtig; ausdrücklich fiktives Modell belegt keine eigene analytische Prüfung.",
+      "judgementEn": "ARITHMETIC PASS, DESIGN HOLD:4g,95%,57%,85.5% are correct; explicitly fictitious model does not establish original analytical performance."
+    },
+    {
+      "caseId": "lab15-07a",
+      "computed": {
+        "startingMassFractions_pct": [
+          24.0,
+          30.0,
+          44.00000000000001
+        ],
+        "closure_pct": 98.00000000000001
+      },
+      "judgementDe": "PASS:24/30/44%=98%; Verlustanteil darf nicht willkürlich einer Komponente zugeordnet werden.",
+      "judgementEn": "PASS:24/30/44%=98%; missing mass cannot arbitrarily be assigned to one component."
+    },
+    {
+      "caseId": "lab15-07b",
+      "computed": {
+        "NaClApproxMolarity_mol_L": 0.8555783709787816,
+        "U_mean_mS_cm": 9.95,
+        "manufacturer_mS_cm": {
+          "0.1M": [
+            8.8,
+            10.4
+          ],
+          "0.5M": [
+            39.1,
+            45.9
+          ],
+          "1.0M": [
+            74.5,
+            81.1
+          ]
+        }
+      },
+      "judgementDe": "HOLD:≈0,856M-Rezeptur passt nicht zu8–12mS/cm. Herstellerwerte begründen die Größenordnung, keine erfundene genaue20°C-Messung.",
+      "judgementEn": "HOLD: about0.856M recipe does not match8–12mS/cm. Manufacturer values establish scale, not an invented exact20°C measurement."
+    },
+    {
+      "caseId": "lab15-08a",
+      "computed": {
+        "fermentationEquation": "C6H12O6 -> 2C2H5OH + 2CO2",
+        "atoms_eachSide": {
+          "C": 6,
+          "H": 12,
+          "O": 6
+        }
+      },
+      "judgementDe": "PASS: Gasvolumen allein identifiziert weder Gas noch Ethanolreinheit; Filtration trennt keine gelösten Bestandteile.",
+      "judgementEn": "PASS: gas volume alone proves neither gas identity nor ethanol purity; filtration does not separate dissolved components."
+    },
+    {
+      "caseId": "lab15-08b",
+      "computed": {
+        "Ca_mmol": 2.0,
+        "carbonate_mmol": 2.5,
+        "theory_g": 0.2002,
+        "grossYield_pct": 89.91008991008991,
+        "pureProduct_g": 0.17099999999999999,
+        "purityCorrectedYield_pct": 85.4145854145854,
+        "freshTheory_g": 0.25025
+      },
+      "judgementDe": "PASS: Calcium limitiert zunächst, bei Verdoppelung limitiert Carbonat.0,2002g und frische0,25025g sind richtige Bezugsgrößen.",
+      "judgementEn": "PASS: calcium initially limits; doubling it makes carbonate limiting.0.2002g and fresh0.25025g are correct reference masses."
+    },
+    {
+      "caseId": "lab15-09a",
+      "computed": {
+        "A_mean_ml": 122,
+        "B_mean_ml": 81.5,
+        "rise_pct": [
+          52.5,
+          1.875
+        ]
+      },
+      "judgementDe": "PASS:52,5% und1,875%; Teigvolumen ist kein direktes Maß der gesamten CO2-Produktion.",
+      "judgementEn": "PASS:52.5% and1.875%; dough volume is not a direct measure of total CO2 production."
+    },
+    {
+      "caseId": "lab15-09b",
+      "computed": {
+        "pHChange": [
+          6.5,
+          4.5
+        ],
+        "stripStep_pH": 0.5
+      },
+      "judgementDe": "PASS: Säurebildung beeinflusst Proteinwechselwirkungen. pH-Streifen sind keine genaue Säuregehaltsmessung und Dicke kein Hygienenachweis.",
+      "judgementEn": "PASS: acid formation affects protein interactions; strips do not give exact acid concentration and thickness does not establish hygiene."
+    },
+    {
+      "caseId": "lab15-10a",
+      "computed": {
+        "totalMagnification": 100
+      },
+      "judgementDe": "PASS:100×; größere Vergrößerung beseitigt kein überlagertes Präparat, ungesehene Zellkerne werden nicht eingezeichnet.",
+      "judgementEn": "PASS:100×; greater magnification does not remove overlapping layers and unseen nuclei are not drawn."
+    },
+    {
+      "caseId": "lab15-10b",
+      "computed": {
+        "granuleMeans_um": [
+          40.0,
+          16.666666666666668
+        ]
+      },
+      "judgementDe": "PASS:40/16,67µm;100×-Kalibrierung ist bei400× nicht unverändert gültig. Ein Stärkekorn ist keine ganze Zelle.",
+      "judgementEn": "PASS:40/16.67µm;100× calibration cannot be reused unchanged at400×. A starch granule is not a whole cell."
+    },
+    {
+      "caseId": "lab15-11a",
+      "computed": {
+        "germinated_pct": [
+          85.0,
+          1.6666666666666667
+        ]
+      },
+      "judgementDe": "PASS:85/1,67%; Wasserangebot ist von Sauerstoffausschluss zu unterscheiden, keine Allgemeingültigkeit für alle Arten.",
+      "judgementEn": "PASS:85/1.67%; water supply differs from oxygen exclusion and is not an all-species rule."
+    },
+    {
+      "caseId": "lab15-11b",
+      "computed": {
+        "gasMeans_ml": [
+          9.0,
+          18.0,
+          11.0
+        ]
+      },
+      "judgementDe": "PASS:9/18/11mL;30°C ist nur das Maximum geprüfter Bedingungen, kein universelles Enzymoptimum.",
+      "judgementEn": "PASS:9/18/11mL;30°C is highest among tested conditions, not a universal enzyme optimum."
+    },
+    {
+      "caseId": "lab15-12a",
+      "computed": {
+        "initialRecipe_g": 10.0,
+        "freshRecipe_g": 10.0
+      },
+      "judgementDe": "PASS: je10g; Emulsion ist disperse Mischung,30min Stabilität beweist keine Haltbarkeit/Hautverträglichkeit.",
+      "judgementEn": "PASS: both10g; an emulsion is dispersed mixture and30min stability proves no shelf-life/skin compatibility."
+    },
+    {
+      "caseId": "lab15-12b",
+      "computed": {
+        "waxFractions_pct": [
+          30.0,
+          20.0
+        ],
+        "indentation_mm": [
+          1,
+          3
+        ]
+      },
+      "judgementDe": "PASS:30/20%Wachs; Schmelzen/Mischen ist keine belegte neue Synthese; Temperatur/Last/Zeit/Geometrie begrenzen Konsistenzvergleich.",
+      "judgementEn": "PASS:30/20%wax; melting/mixing is not demonstrated new synthesis and temperature/load/time/geometry limit comparison."
+    },
+    {
+      "caseId": "lab15-13a",
+      "computed": {
+        "equation": "CaSO4·0.5H2O + 1.5H2O -> CaSO4·2H2O",
+        "atoms_eachSide": {
+          "Ca": 1,
+          "S": 1,
+          "O": 6,
+          "H": 4
+        },
+        "failureLoadMeans_N": [
+          9.0,
+          5.0
+        ]
+      },
+      "judgementDe": "PASS:9/5N; Poren-/Restfeuchte- und Geometriegrenzen verhindern eine pauschale reale Bauzulassung.",
+      "judgementEn": "PASS:9/5N; pores, residual moisture and geometry prevent blanket real structural approval."
+    },
+    {
+      "caseId": "lab15-13b",
+      "computed": {
+        "bendRadiusMeans_mm": [
+          7.0,
+          4.0
+        ],
+        "waterUptake_pct": [
+          20,
+          35
+        ]
+      },
+      "judgementDe": "PASS:7/4mm; enger biegbar ist keine größere Zugfestigkeit. Dicke/Trocknung vor kausalem Glycerinvergleich kontrollieren.",
+      "judgementEn": "PASS:7/4mm; tighter bending does not mean greater tensile strength. Control thickness/drying before a causal glycerol comparison."
+    },
+    {
+      "caseId": "lab15-14a",
+      "computed": {
+        "grass_per_m2": [
+          48.0,
+          32.0
+        ]
+      },
+      "judgementDe": "PASS:48/32 pro m² bei definierter Zähleinheit; Gruppen-/Art- und Klonproblem bleiben sichtbar. Feuchteindex ist kein Wassermassenprozent.",
+      "judgementEn": "PASS:48/32 per m² with a declared counting unit; group/species and clone limits remain visible. Moisture index is not water mass percent."
+    },
+    {
+      "caseId": "lab15-14b",
+      "computed": {
+        "coverMeans_pct": [
+          20.0,
+          6.666666666666667
+        ]
+      },
+      "judgementDe": "PASS:20/6,67%; Deckung beschreibt Bestand, nicht Vermehrungsrate. Kontrollierter Laborbefund gilt zunächst für geprüfte Population/Bedingungen.",
+      "judgementEn": "PASS:20/6.67%; cover describes standing stock, not growth rate. Controlled lab results first apply to tested population/conditions."
+    },
+    {
+      "caseId": "lab15-15a",
+      "computed": {
+        "outerTemperatures_C": [
+          32,
+          25
+        ],
+        "sourceTemperature_C": 40,
+        "ambient_C": 20
+      },
+      "judgementDe": "PASS: Ein Zeitfenstervergleich zeigt vereinbare Verzögerung, keine vollständige Materialleitfähigkeit; Dicke/Kontakt sind Mitfaktoren.",
+      "judgementEn": "PASS: transient comparison is consistent with delay, not full material conductivity; thickness/contact also matter."
+    },
+    {
+      "caseId": "lab15-15b",
+      "computed": {
+        "modelFlow_ml_s": [
+          5.0,
+          1.1111111111111112
+        ],
+        "timeRatio": 4.5
+      },
+      "judgementDe": "PASS:5/1,11mL/s und4,5fach längere Modellzeit; klare Flüssigkeit ist kein Nachweis von Salzrückhalt oder Trinkwassersicherheit.",
+      "judgementEn": "PASS:5/1.11mL/s and4.5times longer model time; clarity does not establish salt removal or potability."
+    }
+  ],
+  "primaryConductivityReference": "https://assets.thermofisher.com/TFS-Assets/BPD/Reference-Materials/gibco-sodium-chloride-spec-sheet.pdf",
+  "executionBoundary": "Calculated model data and future-observation designs; no actual learner/laboratory measurements."
+}

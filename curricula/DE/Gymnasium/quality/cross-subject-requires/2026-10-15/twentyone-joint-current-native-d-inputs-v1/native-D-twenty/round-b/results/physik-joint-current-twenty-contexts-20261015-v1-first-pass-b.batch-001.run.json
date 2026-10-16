@@ -1,0 +1,101 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "twentyone-joint-native-d-blind-b-twenty-20261015-v1",
+  "campaignId": "physik-joint-current-twenty-contexts-20261015-v1-b",
+  "roundId": "physik-joint-current-twenty-contexts-20261015-v1-first-pass-b",
+  "batchId": "physik-joint-current-twenty-contexts-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:0ee5ed54caa36ff6dd3f027c31e9666e4870624e8ffaf3882bb69f9945e00f67",
+  "bundleFingerprint": "sha256:f101f8052fb8fa423c1a992205179cfd5b8f20046bedf6c8900699e69673ea80",
+  "bookDigest": "sha256:4f61ee4319d93b19d1b0b804bd2d5823287c4107bae855ced4abd54dfb76414c",
+  "provider": "OpenAI / Codex",
+  "model": "GPT-6.1 Sol Ultra requested; serving model/build/effort unobservable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:c8b788d8e835bc16213d9cc02ded0c486c04f26f623a259d6612d85faa442baf",
+  "independenceGroupId": "physik-joint-current-twenty-contexts-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "b92827a7-5d62-5fdb-a6f5-ac44461f4a7b",
+    "f7f2c254-1663-5861-bed7-a32c00495b19",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+    "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+    "ac25ffe3-fd42-592d-a937-79cc13460313",
+    "6ebb6182-f221-5f4c-b112-4ac72b104321",
+    "79da5c34-86b2-5c10-9726-9de886ccef7d",
+    "206fe51d-cc78-5422-b139-32cc97eb1c37",
+    "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+    "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+    "946ecf7b-0fcf-5776-9fb6-d397423c2f12",
+    "23335a89-f8e6-5c22-8705-d71193aeac96",
+    "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+    "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+    "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+    "ce14a7e7-7e2a-517f-a465-78ba3fbe414d",
+    "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+    "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:d3973c6d6ddd2fad2582d003c3ff261730927357924ba9873ddb1c2a661389a0"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ef5fc469d1c663ff9ebc54cbbf5e7422c585e40e7002bbaa42414da2e8bf0ef1"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:736f14352dd36079f5faa22d5552e9f886bd87d46dc3233f091a4e47817a7dc6"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:ce3800c655e27560e980f715b26d69a1c1f36262f2effd01f99ded0739d4d10b"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:338cb3412e79b6555a79a5939664724b91987e5016ef5cdcaaf5019b15263e49"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:d71ad5dbeab7fdd1c41301bf96b74a5ef619093469df7cb6c202ca4115b3d1c5"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:2a2ce9f844e35367b3b282a787d1f7918f66af1af476515a36017aba8bd8427d"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:07b220d97092639339c0b660c56c3eb25284810036c2bfca42f0f06d804c75a2"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:0ee5ed54caa36ff6dd3f027c31e9666e4870624e8ffaf3882bb69f9945e00f67"
+    }
+  ],
+  "startedAt": "2026-10-15T20:16:19.433731+00:00",
+  "completedAt": "2026-10-15T20:24:29.907057+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:b1d3d655ca4741690a3a384afdf7b44bd1c74d48d73c28855d470b16b2d40e8c",
+  "toolchainVersion": "skillpilot-native-description-v2-os-root-ro-20261015"
+}

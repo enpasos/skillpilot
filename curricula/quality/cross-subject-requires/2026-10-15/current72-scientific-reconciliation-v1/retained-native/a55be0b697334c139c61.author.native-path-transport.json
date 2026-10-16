@@ -1,0 +1,1819 @@
+{
+  "schemaVersion": 1,
+  "status": "path_only_technical_transport_existing_native_author_ledger",
+  "bindingMethod": "exact-baseline-and-proposed-inputs-no-substantive-approval",
+  "sourceAuthorArtifact": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/d8440d496183ce4221bd9ad19c7df915f54a2860150f464af596b2deb2ea66db.source.json",
+  "sourceAuthorSha256": "sha256:d8440d496183ce4221bd9ad19c7df915f54a2860150f464af596b2deb2ea66db",
+  "baselineInventorySha256": "sha256:05fee31821ab14ab716f161eb48a3a63121539e2ca3e583da72388b582fc0dc3",
+  "proposedStateSha256": "sha256:a4e97109702d6989bb06c316689dbfd661d0769da8b511ceff2cda4155560168",
+  "proposedGraphCycles": [],
+  "decisions": [
+    {
+      "decisionId": "informed97-author-002-3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+      "dependentTitle": "Passive Signalleitung mit Kondensator-Ladekurven vergleichen",
+      "dependentDescription": "Die lernende Person kann den lokalen zeitlichen Signalaufbau eines passiven Axonsegments mit einer Kondensator-Lade- oder Entladekurve vergleichen, durch ein exponentielles RC-Modell mathematisch beschreiben und von der zus\u00e4tzlichen r\u00e4umlichen Abschw\u00e4chung gekoppelter Segmente abgrenzen.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Das zeitliche Exponentialmodell, RC-Zeitkonstante und numerische Zwischenwerte bleiben vollst\u00e4ndig verbindlich. Der ganze 3308-Vorg\u00e4nger verlangt bereits DGL-Herleitung, Exponentialansatz, Parameterkontrolle und Anfangsbedingungen; c2e0 erkl\u00e4rt Membran-/Axialwiderstand und Kapazit\u00e4t mehrerer Segmente. Damit ist die hier neu physikalisch interpretierte Zeitkurve erreichbar, ohne eine zus\u00e4tzliche ganze c74-Exponential- oder separierbare-DGL-Kante zu erzwingen. Vorhandene gerichtete Math-Arithmetik bleibt erhalten.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+          "locator": "goals[id=3aaac6ad-948e-502a-9d49-ce40db0f2ca3]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+          "locator": "goals[id=3aaac6ad-948e-502a-9d49-ce40db0f2ca3].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/d1c9e2213e2d0832093a00191332ded4cf5ce96b0d717817189af228a1428f99.source.json",
+          "recordId": "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Gleiche Zeitkonstante bedeutet keine gleiche r\u00e4umliche Endamplitude. Gr\u00f6\u00dferes C verlangsamt die lokale Aufladung; mehr R_mem kann den Leckverlust verringern. Ein passives Modell regeneriert kein Aktionspotential, selbst wenn eine Kurve exponentiell passt.",
+          "BY Ph12-GA-BIO.4 unterscheidet ausdr\u00fccklich r\u00e4umliche Widerstandsleiter, zeitlichen Kondensatorvergleich und aktive physiologische Leitung. Die neue RC-Rechnung ist eine gebundene Operationalisierung, keine Vollabdeckung aller aktiven Leitungsmechanismen oder pauschale Scope-Freigabe."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:56e997f8546b9972f125e5563c6c20d21750d0486d14402b6ddeb8fd8bc426d5",
+        "prerequisitesSha256": "sha256:78f1160b719515ae0876ea5f79f036b2bbc3d489ee4cb904710845003a54774d",
+        "scopeSha256": "sha256:e039d7127cc4b624e271bd2db35f5010f5749b196893b075b3f5b0b9580bbd1f"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:56e997f8546b9972f125e5563c6c20d21750d0486d14402b6ddeb8fd8bc426d5",
+          "prerequisitesSha256": "sha256:78f1160b719515ae0876ea5f79f036b2bbc3d489ee4cb904710845003a54774d",
+          "scopeSha256": "sha256:e039d7127cc4b624e271bd2db35f5010f5749b196893b075b3f5b0b9580bbd1f"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:56e997f8546b9972f125e5563c6c20d21750d0486d14402b6ddeb8fd8bc426d5",
+          "prerequisitesSha256": "sha256:78f1160b719515ae0876ea5f79f036b2bbc3d489ee4cb904710845003a54774d",
+          "scopeSha256": "sha256:e039d7127cc4b624e271bd2db35f5010f5749b196893b075b3f5b0b9580bbd1f"
+        },
+        "baselineRequires": [
+          "c2e0fc31-27a2-5727-9025-a824db9150d2",
+          "330808f6-789a-583d-86df-e271a7683d8b"
+        ],
+        "proposedRequires": [
+          "c2e0fc31-27a2-5727-9025-a824db9150d2",
+          "330808f6-789a-583d-86df-e271a7683d8b"
+        ],
+        "changesSha256": "sha256:69ed24983966f52a852a5bce9d4f089e7c6e114a1a8987816cb4b6002d0a3a4c",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-3ed3279e-c524-5230-a277-dda89493df6d",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+      "dependentTitle": "SI-Einheiten in physikalischen Beispielen nutzen",
+      "dependentDescription": "Die lernende Person kann die Funktion des SI-Einheitensystems erl\u00e4utern und einfache physikalische Gr\u00f6\u00dfen mit passenden SI-Einheiten angeben.",
+      "prerequisiteGoalIds": [
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+      ],
+      "decision": "add",
+      "rationale": "SI-P enth\u00e4lt ausdr\u00fccklich eine echte Umrechnung und einen gemeinsamen Gr\u00f6\u00dfenvergleich: 120 cm versus 1.20 m. Der einzige aktuelle Vorg\u00e4nger ist eine Orientierung ohne fachliche Pr\u00fcfung. Ganzes f2e42 bearbeitet passende Einheiten, Werterhaltung, Umrechnungsrichtung und Vergleich in derselben Einheit; genau diese Struktur ist hier Voraussetzung der physikalischen SI-Deutung. Ich nominiere es als informierten Kandidaten, ohne eine neue Math-/P-/Kind-/Routenfreigabe zu behaupten.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "3ed3279e-c524-5230-a277-dda89493df6d",
+          "locator": "goals[id=3ed3279e-c524-5230-a277-dda89493df6d]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "3ed3279e-c524-5230-a277-dda89493df6d",
+          "locator": "goals[id=3ed3279e-c524-5230-a277-dda89493df6d].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/c68183a7d7f076e5ac647e805a6efb096e2af009af80827282a3b1ae851ca755.source.json",
+          "recordId": "3ed3279e-c524-5230-a277-dda89493df6d",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_PHYSIK_SEKI_BP2016_V2.source-extraction.json",
+          "recordId": "3ed3279e-c524-5230-a277-dda89493df6d",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_PHYSIK_SEKII_BP2016_V2.source-extraction.json",
+          "recordId": "3ed3279e-c524-5230-a277-dda89493df6d",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "3ed3279e-c524-5230-a277-dda89493df6d",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "3ed3279e-c524-5230-a277-dda89493df6d",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+          "locator": "goals[id=f2e42af5-67a6-477e-82ea-e65b09cc6cb3]",
+          "supports": "prerequisite"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Ein blo\u00dfes Einheitenetikett erf\u00fcllt die aktive Zahlenvergleichsleistung nicht. Eine ganze Physik-Bewegungsformel, Fl\u00e4chen-/Volumenumrechnung oder allgemeine Algebra w\u00e4re zus\u00e4tzliche nicht geforderte Leistung. Die umfangreiche bereits vorhandene interne Math-Prereq-Kette von f2e42 wird weder ge\u00e4ndert noch als heute gepr\u00fcfter Floor angenommen.",
+          "BW 3.2.1/3.3.1 bindet SI-Funktion/Bedeutung; BY Quellen pr\u00fcfen korrekte Einheiten in Strom-, Bewegungs- und Energierechnungen. BW Astrophysik ben\u00f6tigt zus\u00e4tzlich fachliche astronomische Einheiten, die dieses fr\u00fche Atom allein nicht abdeckt. Keine vollst\u00e4ndige SourceCoverage aus dem Trefferbestand."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:b503a430c9ef23467a6996e45fc2134cb7717c9a6fc08c9a1d9e98a10d4273b4",
+        "prerequisitesSha256": "sha256:c04d3fb32fa78ab26480e958d8d83fb292b59197e40fc56f2aec7dea78681cbf",
+        "scopeSha256": "sha256:7f33bc4a6292bc466f674d62997fa59f23b69e18e8c28f05b21380b174c164c9"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:b503a430c9ef23467a6996e45fc2134cb7717c9a6fc08c9a1d9e98a10d4273b4",
+          "prerequisitesSha256": "sha256:c04d3fb32fa78ab26480e958d8d83fb292b59197e40fc56f2aec7dea78681cbf",
+          "scopeSha256": "sha256:7f33bc4a6292bc466f674d62997fa59f23b69e18e8c28f05b21380b174c164c9"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:b503a430c9ef23467a6996e45fc2134cb7717c9a6fc08c9a1d9e98a10d4273b4",
+          "prerequisitesSha256": "sha256:cfed3b4b2bb3b8cdf1174a80bb458cac5239baec1f37a275a0d7481006e35c9a",
+          "scopeSha256": "sha256:7f33bc4a6292bc466f674d62997fa59f23b69e18e8c28f05b21380b174c164c9"
+        },
+        "baselineRequires": [
+          "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+        ],
+        "proposedRequires": [
+          "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+          "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+        ],
+        "changesSha256": "sha256:a95cb417e8f0c10fada53fa0d79b044632ebdcfe6ce8a6931475309772306d67",
+        "prerequisiteInputs": [
+          {
+            "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "semanticSha256": "sha256:74013f90efd5d46be70b1c99dd3235cb8f1d3e085424875f39d65f54098a0ccf",
+            "scopeSha256": "sha256:2b9545d3f290722ae2eeb64ac266482fe35b5a61dde24e0ba02af2bc6b329905"
+          }
+        ]
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-41872413-497e-5b88-ac65-365ed7d9851f",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "41872413-497e-5b88-ac65-365ed7d9851f",
+      "dependentTitle": "Beugungsbegrenzte Winkelaufl\u00f6sung des Auges absch\u00e4tzen",
+      "dependentDescription": "Die lernende Person kann die Fraunhofer-Beugung an einer Kreisblende nutzen, um aus Wellenl\u00e4nge und Pupillendurchmesser die beugungsbegrenzte Winkelaufl\u00f6sung des Auges abzusch\u00e4tzen, und diese ideale optische Grenze von biologischen Einfl\u00fcssen auf die Sehsch\u00e4rfe unterscheiden.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Die ganze 709e-Raleigh-Leistung berechnet bereits Winkel- und Ortsaufl\u00f6sung, kontrolliert SI-/Winkeleinheiten und grenzt die biologische Augenleistung von der idealen Beugungsgrenze ab. Augen-P verlangt weiterhin seine numerische Absch\u00e4tzung einschlie\u00dflich Winkelminuten und Unsicherheit. Diese Spezialisierung braucht kein zus\u00e4tzliches ganzes a646-Termwert- oder periodisches Bogenma\u00dfziel; Winkelminuten sind eine linear umgerechnete Anzeige derselben Modellgr\u00f6\u00dfe.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "41872413-497e-5b88-ac65-365ed7d9851f",
+          "locator": "goals[id=41872413-497e-5b88-ac65-365ed7d9851f]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "41872413-497e-5b88-ac65-365ed7d9851f",
+          "locator": "goals[id=41872413-497e-5b88-ac65-365ed7d9851f].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/31737edb6044a97216f61c1d5d925dfd75d3880d76ee414acf99db96f084c4ef.source.json",
+          "recordId": "41872413-497e-5b88-ac65-365ed7d9851f",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "41872413-497e-5b88-ac65-365ed7d9851f",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "41872413-497e-5b88-ac65-365ed7d9851f",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Gr\u00f6\u00dfere Pupille kann die ideale Beugungsgrenze verbessern, zugleich aber andere biologische/optische Grenzen ver\u00e4ndern. Ein kleinerer theoretischer Grenzwinkel beweist keine bessere reale Wahrnehmung; den Winkelminutenauftrag still zu entfernen w\u00e4re unzul\u00e4ssig.",
+          "BY Das Auge verlangt quantitative Lochblenden\u00fcbertragung, Messunsicherheiten und Vergleich verschiedener Absch\u00e4tzungen. Die Augenanwendung erbt hier eine bereits quantitative fachliche Rayleighroute; sie ist keine allgemeine Genehmigung s\u00e4mtlicher biologischer Evolutions- oder Messpflichten des Quellabschnitts."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:808b5ee153520f8e04213d35ae821d8ccd95d89156e4d1e4195d91b0b4ca31e6",
+        "prerequisitesSha256": "sha256:33ec43133e7e737345bbef0de9140f7e7b74f2285b38e97a4034d2a62dbe23d3",
+        "scopeSha256": "sha256:09e62621bbc051973b4ae9966d524507851bba852194f62a72af3581e071cff6"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:808b5ee153520f8e04213d35ae821d8ccd95d89156e4d1e4195d91b0b4ca31e6",
+          "prerequisitesSha256": "sha256:33ec43133e7e737345bbef0de9140f7e7b74f2285b38e97a4034d2a62dbe23d3",
+          "scopeSha256": "sha256:09e62621bbc051973b4ae9966d524507851bba852194f62a72af3581e071cff6"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:808b5ee153520f8e04213d35ae821d8ccd95d89156e4d1e4195d91b0b4ca31e6",
+          "prerequisitesSha256": "sha256:33ec43133e7e737345bbef0de9140f7e7b74f2285b38e97a4034d2a62dbe23d3",
+          "scopeSha256": "sha256:09e62621bbc051973b4ae9966d524507851bba852194f62a72af3581e071cff6"
+        },
+        "baselineRequires": [
+          "709e688c-eb07-5f83-a506-82c9bfe0d89f"
+        ],
+        "proposedRequires": [
+          "709e688c-eb07-5f83-a506-82c9bfe0d89f"
+        ],
+        "changesSha256": "sha256:91deb0dfd6dde0643400799a216a0cfc09c6fb9e55eb47f853440b7ae4d0e422",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-43adaa0b-1f37-5d55-a496-6900555274a1",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "43adaa0b-1f37-5d55-a496-6900555274a1",
+      "dependentTitle": "Potentialverlaeufe und Atombindung quantenmechanisch plausibilisieren",
+      "dependentDescription": "Die lernende Person kann einfache Potentialverl\u00e4ufe mithilfe von Simulationen untersuchen, Wellenfunktionen und Energieniveaus qualitativ vergleichen und damit das Zustandekommen von Atombindung plausibel machen.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Die Simulation und Gesamtenergiebilanz bleiben inklusive negativer Dezimalwerte Pflicht. cc2d ist tats\u00e4chlich ein Cluster ohne eigenes P; sein enthaltener ef6-Vorg\u00e4nger besitzt ganzes quantitatives P mit negativen Wasserstoffniveaus und Differenzen. Die gerichtete Route enth\u00e4lt rationale Rechenf\u00e4higkeiten. Das neue Zusammenf\u00fchren elektronischer Energie und Kernabsto\u00dfung ist physikalische Modellleistung, kein Grund f\u00fcr ein zus\u00e4tzliches allgemeines Differentialgleichungs- oder Integralziel.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "43adaa0b-1f37-5d55-a496-6900555274a1",
+          "locator": "goals[id=43adaa0b-1f37-5d55-a496-6900555274a1]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "43adaa0b-1f37-5d55-a496-6900555274a1",
+          "locator": "goals[id=43adaa0b-1f37-5d55-a496-6900555274a1].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/ddb7afed4466a73a9ceacf1152b9f87eb14d8fc1d4f493fa2bb753289f7ebb4e.source.json",
+          "recordId": "43adaa0b-1f37-5d55-a496-6900555274a1",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "43adaa0b-1f37-5d55-a496-6900555274a1",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "43adaa0b-1f37-5d55-a496-6900555274a1",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Eine niedrigere elektronische Energie allein belegt noch keine Molek\u00fclbindung. Das Minimum dreier Datenpunkte ist kein exakt bestimmtes Gleichgewichts-R; das Modell einzelner Orbitale beschreibt keine starre Bahn und keine vollst\u00e4ndige Vielteilchenchemie.",
+          "BY GA/EA13 Potentialmodell nennt digitale Simulation, Wellenfunktionsform, Energieniveaus und Atombindung. EA hat zus\u00e4tzliche station\u00e4re Schr\u00f6dinger-L\u00f6sungen, die nicht zur universellen Mathmethodenquote des hier qualitativen Bindungsatoms erkl\u00e4rt werden."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:b3cbaaff74f8e95398c94706d92172b6ca9a2aae9812dbe825a6d6eacb2b7de2",
+        "prerequisitesSha256": "sha256:3ce0c0a4a9cc4293b6ffcbac4b810bc0b169c2243a6dfc8c3761be7d44cb7d0a",
+        "scopeSha256": "sha256:086be98642104cb17a7128dc4676aa1f8459d861cbbaab8be2e63d7ad5dabcae"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:b3cbaaff74f8e95398c94706d92172b6ca9a2aae9812dbe825a6d6eacb2b7de2",
+          "prerequisitesSha256": "sha256:3ce0c0a4a9cc4293b6ffcbac4b810bc0b169c2243a6dfc8c3761be7d44cb7d0a",
+          "scopeSha256": "sha256:086be98642104cb17a7128dc4676aa1f8459d861cbbaab8be2e63d7ad5dabcae"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:b3cbaaff74f8e95398c94706d92172b6ca9a2aae9812dbe825a6d6eacb2b7de2",
+          "prerequisitesSha256": "sha256:3ce0c0a4a9cc4293b6ffcbac4b810bc0b169c2243a6dfc8c3761be7d44cb7d0a",
+          "scopeSha256": "sha256:086be98642104cb17a7128dc4676aa1f8459d861cbbaab8be2e63d7ad5dabcae"
+        },
+        "baselineRequires": [
+          "cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7",
+          "ef6d5067-96b0-5388-87dd-5ac4e6a3e313"
+        ],
+        "proposedRequires": [
+          "cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7",
+          "ef6d5067-96b0-5388-87dd-5ac4e6a3e313"
+        ],
+        "changesSha256": "sha256:dac7371aa52a93e0a93adf94b2cca1b191a0e2e5675365c126aa6593103c0ae9",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "dependentTitle": "R\u00f6ntgenspektren deuten",
+      "dependentDescription": "Die lernende Person kann Entstehung kontinuierlicher und diskreter R\u00f6ntgenspektren sowie das Moseley-Gesetz erkl\u00e4ren.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Ganzes d724-P verlangt E_n=-13.6/n\u00b2, signed \u00dcbergangsdifferenzen und inverse Niveaupr\u00fcfung. Die vorhandene Mathroute enth\u00e4lt rationale Produkte/Quotienten und gerichtete Rechenvorleistungen. Moseley-Verh\u00e4ltnisse (Z-sigma)\u00b2 und die unabh\u00e4ngige Bremsgrenze eU sind vollst\u00e4ndig berechenbar auf dieser Route; kein neues allgemeines Logarithmen-, LGS- oder Termleseziel ist zus\u00e4tzlich universal n\u00f6tig.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "goals[id=48e77690-17f7-5ebe-a8f7-87b2ee9820da]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "goals[id=48e77690-17f7-5ebe-a8f7-87b2ee9820da].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/334d0972ad998ab8d7d131767f5662d1975f1b8b4c194e12b64262e065c8171d.source.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_PHYSIK_SEKII_BP2016_V2.source-extraction.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_PHYSIK_SEKII_RAHMENPLAN_2022.source-extraction.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_PHYSIK_SEKII_KLP_2022.source-extraction.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_PHYSIK_SEKII_GOS_2023.source-extraction.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_PHYSIK_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+          "recordId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Mehr U verschiebt bei gleichem Anodenmaterial nicht automatisch die charakteristischen Linien; die Schwellenanregung muss m\u00f6glich sein. Einfaches Screening ist ein Modell f\u00fcr entsprechende Linien und kein universelles Spektrum aller Atome oder exakte Abschirmzahl.",
+          "HE Q3.3 benennt Moseley ausdr\u00fccklich, viele BY/BW/NW Quellen dagegen R\u00f6ntgenerzeugung/Bremsgrenze/charakteristische Strahlung; medizinische Anwendungen und Abschirmung sind nur Teil\u00fcberlappung. SL-Extrakte besitzen abgebrochene Aussagen/Formelfehler, weshalb ihre Textbytes kein vollst\u00e4ndiger prim\u00e4rer Inhalts-PASS sind."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:dc6e40691ad7354edd83cc5d0bcc0888a32c202dd698728c919fdae8dcacb51b",
+        "prerequisitesSha256": "sha256:9043d141d3bdfc1b970eafe0ebe48d5f7df6bfd388052ddb0515bebb3f2f1c4c",
+        "scopeSha256": "sha256:2c4a7838dfc35d54e153ab447b67e14f43d9ac269bd543ac0ba2d4434ea51269"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:dc6e40691ad7354edd83cc5d0bcc0888a32c202dd698728c919fdae8dcacb51b",
+          "prerequisitesSha256": "sha256:9043d141d3bdfc1b970eafe0ebe48d5f7df6bfd388052ddb0515bebb3f2f1c4c",
+          "scopeSha256": "sha256:2c4a7838dfc35d54e153ab447b67e14f43d9ac269bd543ac0ba2d4434ea51269"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:dc6e40691ad7354edd83cc5d0bcc0888a32c202dd698728c919fdae8dcacb51b",
+          "prerequisitesSha256": "sha256:9043d141d3bdfc1b970eafe0ebe48d5f7df6bfd388052ddb0515bebb3f2f1c4c",
+          "scopeSha256": "sha256:2c4a7838dfc35d54e153ab447b67e14f43d9ac269bd543ac0ba2d4434ea51269"
+        },
+        "baselineRequires": [
+          "d7244ce4-5409-58d1-a1b4-bfae35f391e1"
+        ],
+        "proposedRequires": [
+          "d7244ce4-5409-58d1-a1b4-bfae35f391e1"
+        ],
+        "changesSha256": "sha256:29cd71ed8092ffb21a151326d5ea7a38abebe9d5fba6f8fe9bdf143b716c5908",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "dependentTitle": "Spektrum elektromagnetischer Wellen",
+      "dependentDescription": "Die lernende Person kann das elektromagnetische Spektrum nach Frequenz und Wellenl\u00e4nge geordnet darstellen, typische Bereiche einordnen, technische Anwendungen passenden Spektralbereichen zuordnen und die Zuordnung anhand relevanter Welleneigenschaften begr\u00fcnden.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Ganzes cb0-P rechnet T,f,lambda,v mit Einheiten, mehrere Orts-/Zeitabst\u00e4nde und ge\u00e4nderte Mediumbedingungen. Das ganze Spektrum-P verlangt ausdr\u00fccklich c=lambda f und deren numerische Umkehrung sowie sachgerechte Anwendung. Diese quantitative Leistung bleibt erhalten und wird auf die bereits geforderte Wellenparameter-/Arithmetikroute \u00fcbertragen; eine zus\u00e4tzliche ganze Log-Skalen-/Algebra-/Statistik-Kante ist nicht notwendig.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "goals[id=4a7cbe83-b694-57d3-85ce-1eeca418daaf]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "goals[id=4a7cbe83-b694-57d3-85ce-1eeca418daaf].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/2812dfd65139beb5f4334391f1809356ad7318b29a7efddeadd1f56a004cf2d0.source.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_PHYSIK_SEKII_BP2016_V2.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_PHYSIK_SEKII_RAHMENPLAN_2022.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-json/DE_NDS_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_PHYSIK_SEKII_GOS_2023.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_PHYSIK_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+          "recordId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Eine Spektralgrenze ist kein scharfes biologisches universelles Reaktionsgesetz. H\u00f6here Frequenz hei\u00dft bei gleichem c kleinere lambda, nicht gr\u00f6\u00dfere Ausbreitungsgeschwindigkeit. Anwendungen sind anhand Wechselwirkung und Nachweisbedingungen zu erkl\u00e4ren, nicht nur einer Farbenreihe.",
+          "65 direkte Quellenobjekte umfassen gute Spektrums\u00fcbersicht und blo\u00dfe Anwendungsteil\u00fcberlappung: SN Farbfernsehbildtechnik, W\u00e4rmed\u00e4mmung oder atomare Linienserien werden durch diesen einen Atomkern nicht vollst\u00e4ndig erf\u00fcllt. Umfang und Platzierung s\u00e4mtlicher Skalen/SekI/II-Quellen bleiben getrennt offen."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:98cba9f5847b737552bcc5432725f83d2fb6946e66b14440a6f97c40ad489c5b",
+        "prerequisitesSha256": "sha256:d74b23615bbd3229af1b6ffa360225a00d9d763435f9a578533a87db844c7e4d",
+        "scopeSha256": "sha256:dbfa887365d765ec5c8a66685f5efee93ae0ba0a2147bbb40f4e871926661710"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:98cba9f5847b737552bcc5432725f83d2fb6946e66b14440a6f97c40ad489c5b",
+          "prerequisitesSha256": "sha256:d74b23615bbd3229af1b6ffa360225a00d9d763435f9a578533a87db844c7e4d",
+          "scopeSha256": "sha256:dbfa887365d765ec5c8a66685f5efee93ae0ba0a2147bbb40f4e871926661710"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:98cba9f5847b737552bcc5432725f83d2fb6946e66b14440a6f97c40ad489c5b",
+          "prerequisitesSha256": "sha256:d74b23615bbd3229af1b6ffa360225a00d9d763435f9a578533a87db844c7e4d",
+          "scopeSha256": "sha256:dbfa887365d765ec5c8a66685f5efee93ae0ba0a2147bbb40f4e871926661710"
+        },
+        "baselineRequires": [
+          "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+        ],
+        "proposedRequires": [
+          "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+        ],
+        "changesSha256": "sha256:1fa9d0f247c4efd2f81390dd88ce5a91211aea8dae8301d11a8d6e7fbd887747",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+      "dependentTitle": "Hadronen aus Quarks deuten",
+      "dependentDescription": "Die lernende Person kann Protonen, Neutronen und ausgew\u00e4hlte Mesonen als Quark-Systeme beschreiben und die Bedeutung der Quarkstruktur f\u00fcr Materiemodelle erl\u00e4utern.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Die ganze aktive P-Leistung fordert Ladungssummen mit signierten Dritteln und Antiquark-Vorzeichen. 4e046 ordnet bereits u,d samt +2/3,-1/3 zu; seine tats\u00e4chliche gerichtete Math-Prereq-Kette enth\u00e4lt 4b67 und ee48. Man kann den gemeinsamen Ladungsma\u00dfstab e/3 w\u00e4hlen und die ganze Integeraddition auf +2,+2,-1 beziehungsweise +2,-1,-1 anwenden. Keine neue direkte Rationaladditionskante und keine Erweiterung des CAF-Z-Bereichs wird daraus erzeugt.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+          "locator": "goals[id=4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+          "locator": "goals[id=4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/d6af0267c896eb866ae000addf374d4ddc6b64e03a5ef366fbfa7761f192be24.source.json",
+          "recordId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Antiquark bedeutet entgegengesetzte Ladung seines passenden Quarks, nicht immer negative Ladung. Aufnehmen eines weiteren gleichen Einheitenma\u00dfstabs darf keine falsche Behauptung rationaler CAF-Kompetenz erzeugen. Quarkmodell ist kein festes Planeten-/Drei-K\u00fcgelchen-Bild aller Hadronen.",
+          "BY Strukturuntersuchungen/Standardmodell gibt den fachlichen Zusammenhang; HE-Legacy ist kuratierte konkretisierte Hadronenfl\u00e4che. Das konkrete Ladungsrechnen stammt aus dem aktuellen P, nicht einer behaupteten amtlichen direkten Math-Requires-Anweisung."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:f46afbef462418b04320f0a155f2c9f626480c380f2d9c7f5ff687b9e4485a9f",
+        "prerequisitesSha256": "sha256:919dd9dc6f47ef1941d1061333616306132d74d576301403838e840c757f5315",
+        "scopeSha256": "sha256:94e12d71351023df643734900272a1fd7733a35bf0d7025356e6b7f88f17f97a"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:f46afbef462418b04320f0a155f2c9f626480c380f2d9c7f5ff687b9e4485a9f",
+          "prerequisitesSha256": "sha256:919dd9dc6f47ef1941d1061333616306132d74d576301403838e840c757f5315",
+          "scopeSha256": "sha256:94e12d71351023df643734900272a1fd7733a35bf0d7025356e6b7f88f17f97a"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:f46afbef462418b04320f0a155f2c9f626480c380f2d9c7f5ff687b9e4485a9f",
+          "prerequisitesSha256": "sha256:919dd9dc6f47ef1941d1061333616306132d74d576301403838e840c757f5315",
+          "scopeSha256": "sha256:94e12d71351023df643734900272a1fd7733a35bf0d7025356e6b7f88f17f97a"
+        },
+        "baselineRequires": [
+          "4e046c1c-bcc7-5e3c-9f71-f80d69027483"
+        ],
+        "proposedRequires": [
+          "4e046c1c-bcc7-5e3c-9f71-f80d69027483"
+        ],
+        "changesSha256": "sha256:922458f15f11e0b2bc29604cc5be6966354bb83fa3b342910633e7e24aad45a3",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "dependentTitle": "Energieumwandlung in der Sonne",
+      "dependentDescription": "Die lernende Person kann die Umwandlung von Wasserstoffkernen zu Helium in der Proton-Proton-Kette der Sonne erl\u00e4utern und die dabei frei werdende Energie mit der Abnahme der Summe der Ruhemassen der beteiligten Teilchen erkl\u00e4ren.",
+      "prerequisiteGoalIds": [],
+      "decision": "granularity_gap",
+      "rationale": "Die Sonnenfusion-P fordert Reaktionsvielfachheiten, eine quantitative Massendefekt-/Energiebilanz und die Trennung von Neutrinoverlust und deponierter Energie. Der vorhandene Sonnensystem-Vorg\u00e4nger ist rein qualitative Repr\u00e4sentation und hat nur Orientierung als Voraussetzung. Eine neue ganze rationale Multiplikations-/Divisions- oder allgemeine Termwertkompetenz ist f\u00fcr den schmalen bereitgestellten positiven Massendefektproduktfall noch nicht universal als ganzer Atomkern nachgewiesen. Eine reale arithmetische L\u00fccke bleibt granularity_gap; quantitative P wird nicht weggelassen.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "locator": "goals[id=4c5c7cb1-f238-52c8-b82c-159c6c299c0e]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "locator": "goals[id=4c5c7cb1-f238-52c8-b82c-159c6c299c0e].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/dc14b49660c84ff1544f452b5489a0e2ca109e1bed5b066e89012c774d4f1f35.source.json",
+          "recordId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_PHYSIK_SEKII_BP2016_V2.source-extraction.json",
+          "recordId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+          "recordId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "unresolved",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Die zweite PP-Reaktion wird zweimal und die abschlie\u00dfende einmal verwendet; Nettobilanz darf Zwischen-Deuterium/He3 nicht als zus\u00e4tzliche Endprodukte behalten. Der Massendefekt muss zum Atom-/Kern-/Positronen-/Annihilationsbudget passen. Das vollst\u00e4ndige Fusionsthema ist nicht durch Sonnensystemnamen oder eine Dezimalproduktzahl bereits bewiesen.",
+          "BY Astro13 verlangt ausdr\u00fccklich quantitative Fusionsbetrachtung; BW nennt pp-Kette/Bindungsenergie und HE Q4.6 Proton-Proton-Reaktion. Der Sonnen-Spektral-/Temperatur-SourceGoal ist nur andere Teildeckung. Eine Quellenbindung allein liefert die fehlende kanonische Rechenvorleistung nicht."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:b2c32d9b2188578ea3ce41ba47538f03e616d0a47455b044c0a38c3eca171c14",
+        "prerequisitesSha256": "sha256:1f7e9982389d0757092b370f644f0f635a18063c0a1b31580a5f1b8e263f483c",
+        "scopeSha256": "sha256:eadfa885f24a81a04275c31fe58c3922150a5e729243269288129a6344d2fb19"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:b2c32d9b2188578ea3ce41ba47538f03e616d0a47455b044c0a38c3eca171c14",
+          "prerequisitesSha256": "sha256:1f7e9982389d0757092b370f644f0f635a18063c0a1b31580a5f1b8e263f483c",
+          "scopeSha256": "sha256:eadfa885f24a81a04275c31fe58c3922150a5e729243269288129a6344d2fb19"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:b2c32d9b2188578ea3ce41ba47538f03e616d0a47455b044c0a38c3eca171c14",
+          "prerequisitesSha256": "sha256:1f7e9982389d0757092b370f644f0f635a18063c0a1b31580a5f1b8e263f483c",
+          "scopeSha256": "sha256:eadfa885f24a81a04275c31fe58c3922150a5e729243269288129a6344d2fb19"
+        },
+        "baselineRequires": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+        ],
+        "proposedRequires": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+        ],
+        "changesSha256": "sha256:5cba2080bf5b8f876afc92250751fecd9399f38f5f2c60c5d8a79c19ca7c9a64",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-4c919da9-157a-5a14-a725-f7343975c9ab",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "dependentTitle": "Stehende elektromagnetische Wellen",
+      "dependentDescription": "Die lernende Person kann eindimensionale stehende elektromagnetische Wellen als \u00dcberlagerung gegenl\u00e4ufiger Wellen mit festen Knoten und B\u00e4uchen erkl\u00e4ren und Resonatorbeispiele \u00fcber ihre Randbedingungen einordnen.",
+      "prerequisiteGoalIds": [],
+      "decision": "granularity_gap",
+      "rationale": "d577-P tr\u00e4gt quantitative Knotenabst\u00e4nde und lambda; cb0/fcf liefern numerische Parameter und harmonische Zeitfunktionen. Das aktive EM-P fordert zus\u00e4tzlich ausdr\u00fccklich eine symbolische Summe-zu-Produkt-Umformung bei gegenl\u00e4ufigen Wellen. Dieser spezielle Methodenteil ist weder durch die vorhandenen ganzen Vorg\u00e4nger noch als universeller ganzer trigonometrischer Mathatomkern bewiesen. Ich erhalte die Pflicht im aktuellen Urteil und lasse granularity_gap offen; eine mathematisch gleichwertige alternative Darstellung w\u00e4re erst nach echter separater P-Nachfolgerbindung ma\u00dfgeblich.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+          "locator": "goals[id=4c919da9-157a-5a14-a725-f7343975c9ab]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+          "locator": "goals[id=4c919da9-157a-5a14-a725-f7343975c9ab].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/587cfc13bb269bd794e5b7070a0648bee642f737f6a6c0fdbb22b47cbfb3f28d.source.json",
+          "recordId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+          "recordId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "unresolved",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Eine stehende Welle hat station\u00e4re Knoten und zeitlich schwingende Felder; E- und B-Knoten fallen im idealen Resonator nicht generell zusammen. Eine blo\u00dfe Knotenzeichnung kann den aktuell geforderten expliziten Umformungsfall nicht ersetzen. Eine Additionstheorem-/komplexe Fourierquote f\u00fcr jeden Scope ist nicht automatisch aus dem Physiktext abzuleiten.",
+          "HE Q3.1 nennt stehende EM-Wellen im eindimensionalen Fall, aber keine verbindliche Summe-zu-Produkt-L\u00f6sungsmethode. Die vollst\u00e4ndige harmonische Wellen-/Superpositionsleistung und quantitative Moden bleiben bestehen. Eine m\u00f6gliche Methoden\u00e4quivalenzkorrektur ist ein getrennt begr\u00fcndeter inertes Companion-Vorschlag, keine aktuelle Erleichterung."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:5acee58c8f00528bd91f87ae99676c79bfc50dcdc15f8c76a0c0a9c44ad009af",
+        "prerequisitesSha256": "sha256:beeb631884e3558b0232012b676203b4d34aad098219b6c8aeed4caa0e62c32b",
+        "scopeSha256": "sha256:43b2a1054ff1cf72b8d6d20147e7eafbdb4404a673631164df1777cfd3188cad"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:5acee58c8f00528bd91f87ae99676c79bfc50dcdc15f8c76a0c0a9c44ad009af",
+          "prerequisitesSha256": "sha256:beeb631884e3558b0232012b676203b4d34aad098219b6c8aeed4caa0e62c32b",
+          "scopeSha256": "sha256:43b2a1054ff1cf72b8d6d20147e7eafbdb4404a673631164df1777cfd3188cad"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:5acee58c8f00528bd91f87ae99676c79bfc50dcdc15f8c76a0c0a9c44ad009af",
+          "prerequisitesSha256": "sha256:beeb631884e3558b0232012b676203b4d34aad098219b6c8aeed4caa0e62c32b",
+          "scopeSha256": "sha256:43b2a1054ff1cf72b8d6d20147e7eafbdb4404a673631164df1777cfd3188cad"
+        },
+        "baselineRequires": [
+          "d5772db3-120c-5c37-ab46-2336d02236b0"
+        ],
+        "proposedRequires": [
+          "d5772db3-120c-5c37-ab46-2336d02236b0"
+        ],
+        "changesSha256": "sha256:102ffa3e62190fb571ac53dcd9ad18ec71d7d559fde0a7feb21269f5639aaa0e",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-51bc5513-6879-548f-b19a-9746b667f1a3",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+      "dependentTitle": "Wellenfunktion und Wahrscheinlichkeitsdeutung",
+      "dependentDescription": "Die lernende Person kann qualitativ erl\u00e4utern, wie das Betragsquadrat der quantenmechanischen Wellenfunktion eine Wahrscheinlichkeitsdichte angibt und daraus die Wahrscheinlichkeit f\u00fcr den Nachweis eines Quantenobjekts in einem Raumbereich folgt.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Das aktuelle P verlangt |psi|\u00b2, gleiche Intervalll\u00e4ngen beziehungsweise gewichtete positive L\u00e4ngenprodukte und dimensionslose Wahrscheinlichkeit. Der vorhandene d724-P und seine gerichtete ganze rationale Rechenkette tragen Quadrieren, positive Faktoren und Quotienten. Ganzes269675 verlangt dar\u00fcber hinaus orientierte negative Gesamtwirkungen, Aufhebung und Netto-/Betragssummen; Wahrscheinlichkeitsdichte ist nicht negativ und dieser ganze Mehrumfang ist nicht universell n\u00f6tig. Kein Integrations- oder komplexes-Modul-Verfahren wird automatisch erzwungen.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "locator": "goals[id=51bc5513-6879-548f-b19a-9746b667f1a3]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "locator": "goals[id=51bc5513-6879-548f-b19a-9746b667f1a3].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/7b755e7cf6cfda61793e12cc07fb4d9f2306013524ccf49b1cfe95acabe8e8ac.source.json",
+          "recordId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+          "recordId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json",
+          "recordId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Eine gr\u00f6\u00dfere Dichte an einem Punkt bedeutet bei verschieden gro\u00dfen Regionen nicht automatisch gr\u00f6\u00dfere Gesamtwahrscheinlichkeit. Das Vorzeichen einer reellen psi ist keine negative Wahrscheinlichkeit; die Phase/Superposition kann dennoch in anderen Versuchen relevant sein. Eine 1D-Beispielrechnung zertifiziert kein unpr\u00fcftes 3D-Orbitalmodell.",
+          "HE Q4.1 unterscheidet qualitative Dichteinterpretation und LK-Raumelement-/Potentialtopfzusatz; BY/RP nennen die Interpretation und eigene weitergehende Atommodelle. Diese sind weder identischer Quellenumfang noch ein amtlicher direkter Integral-Prereq-Beleg."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:5523bac3fccad3597e233db1f3f99e11321053041918d2d063b20265e96549c1",
+        "prerequisitesSha256": "sha256:535af00f6fad739401d758b918c968d91c79897898901cc878db6c35dd683cd7",
+        "scopeSha256": "sha256:8fae49c46cada59e74ee9911fb49821892cf0d667686064491a395fe84ae8e04"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:5523bac3fccad3597e233db1f3f99e11321053041918d2d063b20265e96549c1",
+          "prerequisitesSha256": "sha256:535af00f6fad739401d758b918c968d91c79897898901cc878db6c35dd683cd7",
+          "scopeSha256": "sha256:8fae49c46cada59e74ee9911fb49821892cf0d667686064491a395fe84ae8e04"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:5523bac3fccad3597e233db1f3f99e11321053041918d2d063b20265e96549c1",
+          "prerequisitesSha256": "sha256:535af00f6fad739401d758b918c968d91c79897898901cc878db6c35dd683cd7",
+          "scopeSha256": "sha256:8fae49c46cada59e74ee9911fb49821892cf0d667686064491a395fe84ae8e04"
+        },
+        "baselineRequires": [
+          "d7244ce4-5409-58d1-a1b4-bfae35f391e1"
+        ],
+        "proposedRequires": [
+          "d7244ce4-5409-58d1-a1b4-bfae35f391e1"
+        ],
+        "changesSha256": "sha256:41263baf2fceae8ea4dc80d9cc9a111e4c5eff2c9b3c92b89ce321a6301e57df",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-52b6722a-b3b2-5d2d-a507-0215532b0422",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+      "dependentTitle": "Quanteninterferometer mit Phasen und Weginformation deuten",
+      "dependentDescription": "Die lernende Person kann Interferenzexperimente mit einzelnen Photonen, etwa im Mach-Zehnder-Interferometer, mit Phasenbeziehungen, Zeigerdiagrammen und Weginformation deuten.",
+      "prerequisiteGoalIds": [],
+      "decision": "granularity_gap",
+      "rationale": "Aktives MZI-P verlangt eigene numerische Phasoren, normierte Amplituden und quadratische Detektorwahrscheinlichkeiten, insbesondere phi=2pi/3. Die vorhandenen c541/6031-Ps erkl\u00e4ren Z\u00e4hlh\u00e4ufigkeiten und Markierungen, aber keine eigene beliebige Phasorkomponentenbestimmung. Ganzes bbef7 ist ein plausibler Phasen-/Kreiskoordinatenkandidat; seine vollst\u00e4ndigen Grundgraphen, Nullstellen/Extrema und mehrfachen Kreisbewegungsf\u00e4lle sind jedoch nicht als unvermeidliche ganze Vorleistung jeder zul\u00e4ssigen Phasor-Geometrie nachgewiesen. Der Kandidat bleibt granularity_gap.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "goals[id=52b6722a-b3b2-5d2d-a507-0215532b0422]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "goals[id=52b6722a-b3b2-5d2d-a507-0215532b0422].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/766663517263dbc5c1f5c4c5194b34ddfc74810c02fa8aeed3c7d42696c274c1.source.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_PHYSIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_PHYSIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_PHYSIK_SEKII_RAHMENPLAN_2022.source-extraction.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_PHYSIK_SEKII_KC2022.source-extraction.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_PHYSIK_SEKII_KLP_2022.source-extraction.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_PHYSIK_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json",
+          "recordId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "unresolved",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Die komplexe Schreibweise ist eine Darstellung, keine Pflicht zu einem ganzen komplexen-Zahlen- oder analytischen Trigonometriepaket. Ein ma\u00dfst\u00e4bliches Phasorbild plus geometrische Komponenten/Quadrat kann dieselbe aktuelle Rechnung tragen, muss sie aber tats\u00e4chlich ausf\u00fchren. Ungelesene orthogonale Wegmarkierungen erzeugen trotzdem ein inkoh\u00e4rentes unbedingtes Muster.",
+          "BY EA13 verlangt Phasenanalyse mit Zeigerdiagrammen; NI/SH nennen Zeigeramplituden, w\u00e4hrend andere direkte Zuordnungen nur klassische Michelson-/LIGO-Interferometrie beschreiben. Diese Teil\u00fcberlappung ist keine ganze Quanten-MZI-/16-Scope-Abdeckung und kein Beweis einer spezifischen komplexen Methodenvorgabe."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:48ea42a7de61c3cf9990db2bc5d2e62f754e4ae6073ecf1e0fc5a3597a706d8d",
+        "prerequisitesSha256": "sha256:970906a362284372e3e3424e7983ca57bdfda8141342310747077417b0d97709",
+        "scopeSha256": "sha256:452d43c288ca4c37dc1c0857f5169d6c313b1f3f31f3df1e88c808a18439e07e"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:48ea42a7de61c3cf9990db2bc5d2e62f754e4ae6073ecf1e0fc5a3597a706d8d",
+          "prerequisitesSha256": "sha256:970906a362284372e3e3424e7983ca57bdfda8141342310747077417b0d97709",
+          "scopeSha256": "sha256:452d43c288ca4c37dc1c0857f5169d6c313b1f3f31f3df1e88c808a18439e07e"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:48ea42a7de61c3cf9990db2bc5d2e62f754e4ae6073ecf1e0fc5a3597a706d8d",
+          "prerequisitesSha256": "sha256:970906a362284372e3e3424e7983ca57bdfda8141342310747077417b0d97709",
+          "scopeSha256": "sha256:452d43c288ca4c37dc1c0857f5169d6c313b1f3f31f3df1e88c808a18439e07e"
+        },
+        "baselineRequires": [
+          "c5413852-abae-566b-b435-f9939209ca63",
+          "6031bed0-9baa-4f45-b2a5-57ffb00d39cc"
+        ],
+        "proposedRequires": [
+          "c5413852-abae-566b-b435-f9939209ca63",
+          "6031bed0-9baa-4f45-b2a5-57ffb00d39cc"
+        ],
+        "changesSha256": "sha256:617bd4e0c0467de04d624f7722a0da883f196d8a88d034b1eba280aa676cf85e",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "dependentTitle": "Kohaerentes Licht als elektromagnetische Welle beschreiben",
+      "dependentDescription": "Die lernende Person kann kohaerentes Licht als elektromagnetische Welle beschreiben und die Lichtgeschwindigkeit als charakteristische Ausbreitungsgroesse fachlich einordnen.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Das ganze aktive P verlangt Vakuum-c=lambda f, numerische Periodendauer und Phasen-/Feldrichtungen. 5da f\u00fchrt tats\u00e4chlich zu ac4-Schwingkreis und seiner bestehenden quantitativen harmonischen Route; diese enth\u00e4lt ganze rationale und proportionale Mathleistung. Ich erhalte die Rechnungen, ohne zus\u00e4tzliche allgemeine Trigonometrie-/Maxwell-/Ableitungskante aus einem rein qualitativen alten D abzuleiten.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+          "locator": "goals[id=5b90066f-b5b3-4e82-8d31-7b95ff0a0451]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+          "locator": "goals[id=5b90066f-b5b3-4e82-8d31-7b95ff0a0451].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/4b147b12b2f2921c406364080764396fbad61d2a1a3e3f39238aaf6372b3dda9.source.json",
+          "recordId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_PHYSIK_SEKII_BP2016_V2.source-extraction.json",
+          "recordId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json",
+          "recordId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Gleiche Farbe alleine garantiert keine zeitlich stabile relative Phase. E,B und Ausbreitungsrichtung sind beim idealen Fernfeld transversal; Leiterladungen reisen nicht bis zum Empf\u00e4nger. Gr\u00f6\u00dfere Intensit\u00e4t \u00e4ndert im gegebenen Vakuummodell nicht c.",
+          "BW Wellenoptik nennt koh\u00e4rentes Licht und c, BY11 qualitative monochromatische Interferenz, RP EM-Ausbreitung. Diese Teilkontexte sind keine ganze Maxwell-L\u00f6sung oder universelle quantitative Pflicht aus einer Quellenphase. Alle SourcePlacement-/Routenfreigaben bleiben offen."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:70b69a9b9c8733fab8e5b543be93baccbd86b429fb5bcc6330ae8623ee641a5b",
+        "prerequisitesSha256": "sha256:9af3fc9b4bcfed70e86a559b7103f409df29f61af953db54c5b1699db83831db",
+        "scopeSha256": "sha256:47b63abd9ac1f67d31ad66924ba07001280abf69cea1529bb287b0bfb5651c2e"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:70b69a9b9c8733fab8e5b543be93baccbd86b429fb5bcc6330ae8623ee641a5b",
+          "prerequisitesSha256": "sha256:9af3fc9b4bcfed70e86a559b7103f409df29f61af953db54c5b1699db83831db",
+          "scopeSha256": "sha256:47b63abd9ac1f67d31ad66924ba07001280abf69cea1529bb287b0bfb5651c2e"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:70b69a9b9c8733fab8e5b543be93baccbd86b429fb5bcc6330ae8623ee641a5b",
+          "prerequisitesSha256": "sha256:9af3fc9b4bcfed70e86a559b7103f409df29f61af953db54c5b1699db83831db",
+          "scopeSha256": "sha256:47b63abd9ac1f67d31ad66924ba07001280abf69cea1529bb287b0bfb5651c2e"
+        },
+        "baselineRequires": [
+          "5da7d4d0-878e-44fd-b398-1b1de8b636a4"
+        ],
+        "proposedRequires": [
+          "5da7d4d0-878e-44fd-b398-1b1de8b636a4"
+        ],
+        "changesSha256": "sha256:623ab3bab0936b80f4f7c5f1c9870a5c5b0a93ede496499fa7b7abb1b0b2835c",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "dependentTitle": "Physikalische Methoden im Forschungsgebiet anwenden",
+      "dependentDescription": "Die lernende Person kann fachliche Konzepte, Modelle und Arbeitsweisen aus der Kursstufe auf ein ausgewaehltes Forschungsgebiet uebertragen.",
+      "prerequisiteGoalIds": [],
+      "decision": "granularity_gap",
+      "rationale": "Das ganze aktuelle P wird mit quantitativer Vorhersage, Unsicherheitsvergleich, Signal-Modell-Trennung und zwei vorgestellten GW-F\u00e4llen gepr\u00fcft. Der vorhandene14ec-Vorg\u00e4nger beschreibt Messprinzipien qualitativ und vermittelt keine numerischen Mehrvariablenformeln. a646 w\u00e4re eine plausible Termwertteilhilfe, ist aber f\u00fcr die offene Auswahl verschiedener Forschungsthemen nicht als ganzer universeller Satz bewiesen. Ich lasse die arithmetische/Methodengranularit\u00e4t offen, ohne aus dem Wort vorgeschlagen eine verbindliche GW-Quote aller Quellen zu fingieren oder die derzeitigen Zahlenf\u00e4lle zu streichen.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+          "locator": "goals[id=5c0d5040-92e4-50f6-9695-9d33d889a080]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+          "locator": "goals[id=5c0d5040-92e4-50f6-9695-9d33d889a080].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/4c88f74f44d37fc96aee7298e8c71283e33b239443b42851185f061783ec6031.source.json",
+          "recordId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_PHYSIK_SEKII_BP2016_V2.source-extraction.json",
+          "recordId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "unresolved",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "\u00dcbereinstimmung einer k\u00fcnstlichen Interferenzphase mit einer Vorhersage beweist keine Gravitationswelle; Arm-Cavities, St\u00f6rungen und Kalibrierung sind im vereinfachten Modell bewusst ausgelassen. Die Zweistationszeit erlaubt eine Konsistenzpr\u00fcfung, keine eindeutige Quellenart. Ein gew\u00e4hltes anderes Forschungsgebiet braucht seine echte passende ganze P-Nachfolgerbindung, bevor damit die aktuellen beiden F\u00e4lle ersetzt werden.",
+          "BW3.6.7 l\u00e4sst mehrere ausgew\u00e4hlte Arbeitsgebiete und exemplarische erlernte Fachmethoden zu; BY11 NTG-Profil nennt Forschungsmodellierung mit unterschiedlichen technischen Kontexten. Das belegt weder eine versteckte universelle GW-Methodenquote noch das automatisch gen\u00fcgende Weglassen aller quantitativen Modellkontrolle."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:f3c30c92e0a9a6fb23a2b0d79528070478364f4a7b1ee0662c15e928d6845b8f",
+        "prerequisitesSha256": "sha256:67510696b7d9ccc31fe2e8a38681d5936099ac957b6e3c001ee3e99f198c129d",
+        "scopeSha256": "sha256:7693f482a94921f77c903e087b651ea118aea77752c4ee5b22a46e0ee5f179e1"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:f3c30c92e0a9a6fb23a2b0d79528070478364f4a7b1ee0662c15e928d6845b8f",
+          "prerequisitesSha256": "sha256:67510696b7d9ccc31fe2e8a38681d5936099ac957b6e3c001ee3e99f198c129d",
+          "scopeSha256": "sha256:7693f482a94921f77c903e087b651ea118aea77752c4ee5b22a46e0ee5f179e1"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:f3c30c92e0a9a6fb23a2b0d79528070478364f4a7b1ee0662c15e928d6845b8f",
+          "prerequisitesSha256": "sha256:67510696b7d9ccc31fe2e8a38681d5936099ac957b6e3c001ee3e99f198c129d",
+          "scopeSha256": "sha256:7693f482a94921f77c903e087b651ea118aea77752c4ee5b22a46e0ee5f179e1"
+        },
+        "baselineRequires": [
+          "14ec85b9-68f6-5400-ad43-5e8dddfddf44"
+        ],
+        "proposedRequires": [
+          "14ec85b9-68f6-5400-ad43-5e8dddfddf44"
+        ],
+        "changesSha256": "sha256:212f614ed9db555ba589d512b6f764e91251730955c38bc1704f4c3fd7facb43",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "informed97-author-002-5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "dependentTitle": "Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern",
+      "dependentDescription": "Die lernende Person kann erlaeutern, warum Quantenobjekte nicht durch klassische Bahnaussagen beschrieben werden, sondern durch Wahrscheinlichkeitsaussagen ueber moegliche Messergebnisse.",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "rationale": "Das aktuelle P verlangt echte numerische Ensemble-Erwartungswerte und zugleich keine sichere Einzeltrefferprognose. Ganzes4245-P trennt die quantenmechanische Musterbildung und Wegmarkierung; seine tats\u00e4chliche gerichtete Vorg\u00e4ngerkette enth\u00e4lt rationale Multiplikation/Division und proportionale Mathleistung. p mal N ist damit erreichbar; allgemeine Binomialtests, Konfidenzintervalle oder Statistik-Methodenpakete sind keine zus\u00e4tzliche universelle Pflicht dieses begrenzten Deutungsatoms.",
+      "evidenceKind": "didacticSequencing",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "locator": "goals[id=5c57dbc7-d258-4aad-a84c-e773f3c493ae]",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "recordId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "locator": "goals[id=5c57dbc7-d258-4aad-a84c-e773f3c493ae].applicability",
+          "supports": "scope"
+        },
+        {
+          "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/a771294d5bd255b199b6e4dace90fdb1c466c9f1fb28ff7f1bfdfc3cdf7beefd.source.json",
+          "recordId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "locator": "wholeCurrentGoalAndPositiveBody;originalIndependentHistory",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_PHYSIK_SEKII_BP2016_V2.source-extraction.json",
+          "recordId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_PHYSIK.de.json.snapshot",
+          "recordId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+          "recordId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "recordId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+          "recordId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "locator": "exact source IDs and whole passages in dossier; no blanket SourceCoverage",
+          "supports": "goalSemantics"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        ],
+        "alternatives": [
+          "Erwartete175 Treffer bedeuten weder genau175 in jeder Stichprobe noch einen bestimmten n\u00e4chsten Treffer. Identische grobe Endh\u00e4ufigkeiten belegen keine klassische Bahn oder identischen Versuchsaufbau. Eine einzelne Schwankung ohne festgelegte Testregel rechtfertigt keine sichere Modellverwerfung.",
+          "BW/BY/HE nennen stochastische Vorhersagbarkeit, determinierte Verteilung und klassische/quantische Unterscheidung. Die konkrete numerische Erwartungsrechnung ist die aktuelle eigene Operationalisierung und wird nicht gegen eine qualitative Altbeschreibung ausgespielt. Keine volle SourceCoverage oder Statistikfreigabe."
+        ]
+      },
+      "author": "/root/gym_math_two_zero_product_native_d_informed_synthesis",
+      "status": "candidate",
+      "reviewInput": {
+        "semanticSha256": "sha256:fc05f0a3509379695ac0ba6cc9e3b8998991a3980e3537d846de67143a5889c9",
+        "prerequisitesSha256": "sha256:51dbcdeac55f7c0c2ac996be788a69e1684f15bb7800caee9c0673b0b26246bb",
+        "scopeSha256": "sha256:5ce5c8a6d4f4b8ad8fd1c8d773beb7399a731e8e5f07c1a20efeb6426234ed2e"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:fc05f0a3509379695ac0ba6cc9e3b8998991a3980e3537d846de67143a5889c9",
+          "prerequisitesSha256": "sha256:51dbcdeac55f7c0c2ac996be788a69e1684f15bb7800caee9c0673b0b26246bb",
+          "scopeSha256": "sha256:5ce5c8a6d4f4b8ad8fd1c8d773beb7399a731e8e5f07c1a20efeb6426234ed2e"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:fc05f0a3509379695ac0ba6cc9e3b8998991a3980e3537d846de67143a5889c9",
+          "prerequisitesSha256": "sha256:51dbcdeac55f7c0c2ac996be788a69e1684f15bb7800caee9c0673b0b26246bb",
+          "scopeSha256": "sha256:5ce5c8a6d4f4b8ad8fd1c8d773beb7399a731e8e5f07c1a20efeb6426234ed2e"
+        },
+        "baselineRequires": [
+          "4245c54f-d609-41bc-9eff-e9ceeff4902f"
+        ],
+        "proposedRequires": [
+          "4245c54f-d609-41bc-9eff-e9ceeff4902f"
+        ],
+        "changesSha256": "sha256:20a81a89c5857c19f5e401e53fe8d46bfdefe3beb8547affac729f717fe46a85",
+        "prerequisiteInputs": []
+      }
+    }
+  ],
+  "technicalCurrentSelectionSubset": {
+    "decisionIds": [
+      "informed97-author-002-3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+      "informed97-author-002-3ed3279e-c524-5230-a277-dda89493df6d",
+      "informed97-author-002-41872413-497e-5b88-ac65-365ed7d9851f",
+      "informed97-author-002-43adaa0b-1f37-5d55-a496-6900555274a1",
+      "informed97-author-002-48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "informed97-author-002-4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "informed97-author-002-4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+      "informed97-author-002-4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "informed97-author-002-4c919da9-157a-5a14-a725-f7343975c9ab",
+      "informed97-author-002-51bc5513-6879-548f-b19a-9746b667f1a3",
+      "informed97-author-002-52b6722a-b3b2-5d2d-a507-0215532b0422",
+      "informed97-author-002-5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "informed97-author-002-5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "informed97-author-002-5c57dbc7-d258-4aad-a84c-e773f3c493ae"
+    ],
+    "reason": "Only current v23 selected records use this shell; complete original author/review ledgers remain exact raw history. Full normal validation inventory remains1285."
+  },
+  "scientificTransport": {
+    "newScientificJudgment": false,
+    "originalAuthorLedger": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/d8440d496183ce4221bd9ad19c7df915f54a2860150f464af596b2deb2ea66db.source.json",
+    "originalAuthorLedgerSha256": "sha256:d8440d496183ce4221bd9ad19c7df915f54a2860150f464af596b2deb2ea66db",
+    "allOriginalDecisionIdsAuthorsRationalesInputsAndProposalBindingsPreserved": true,
+    "onlySourceRefAndEvidenceLocationFieldsMapped": [
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/21-38e0ff49-f132-44c8-b17a-73dada5344db.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/d1ac9fa2c10f43a8fba1c39840a6372fd320d26f503a6673c19187cd23c1fcfb.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-38e0ff49-f132-44c8-b17a-73dada5344db"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/22-39ef1e8a-9203-5192-8c76-8e0c3322646f.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/f5cc3af20b97576056ab0df163d16dec30625e4fff3deb4ff18deb734dd483db.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-39ef1e8a-9203-5192-8c76-8e0c3322646f"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/23-3aaac6ad-948e-502a-9d49-ce40db0f2ca3.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/d1c9e2213e2d0832093a00191332ded4cf5ce96b0d717817189af228a1428f99.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-3aaac6ad-948e-502a-9d49-ce40db0f2ca3"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/24-3ed3279e-c524-5230-a277-dda89493df6d.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/c68183a7d7f076e5ac647e805a6efb096e2af009af80827282a3b1ae851ca755.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-3ed3279e-c524-5230-a277-dda89493df6d"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/25-41872413-497e-5b88-ac65-365ed7d9851f.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/31737edb6044a97216f61c1d5d925dfd75d3880d76ee414acf99db96f084c4ef.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-41872413-497e-5b88-ac65-365ed7d9851f"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/26-43adaa0b-1f37-5d55-a496-6900555274a1.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/ddb7afed4466a73a9ceacf1152b9f87eb14d8fc1d4f493fa2bb753289f7ebb4e.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-43adaa0b-1f37-5d55-a496-6900555274a1"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/27-44f0eefa-2d93-5954-879f-f6c49e5cebc7.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/ddb33aaac105eff27062b6012fc7f6587a6e2b2846e13b355a11710aed8ef586.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-44f0eefa-2d93-5954-879f-f6c49e5cebc7"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/28-48e3d6c2-00bf-5afd-8846-ba3dbd01e96d.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/ab5a635e2938e062812477f809c4153578be14abee63a93d3d812c9b38a6d962.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-48e3d6c2-00bf-5afd-8846-ba3dbd01e96d"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/29-48e77690-17f7-5ebe-a8f7-87b2ee9820da.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/334d0972ad998ab8d7d131767f5662d1975f1b8b4c194e12b64262e065c8171d.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-48e77690-17f7-5ebe-a8f7-87b2ee9820da"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/30-4a42cddd-7827-5204-87e5-8d9eac7792f1.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/e2c9c4fd65e7a95aa259a67943641660561592d7667a37ebe7022a325482fdd3.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-4a42cddd-7827-5204-87e5-8d9eac7792f1"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/31-4a7cbe83-b694-57d3-85ce-1eeca418daaf.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/2812dfd65139beb5f4334391f1809356ad7318b29a7efddeadd1f56a004cf2d0.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-4a7cbe83-b694-57d3-85ce-1eeca418daaf"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/32-4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/d6af0267c896eb866ae000addf374d4ddc6b64e03a5ef366fbfa7761f192be24.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/33-4c5c7cb1-f238-52c8-b82c-159c6c299c0e.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/dc14b49660c84ff1544f452b5489a0e2ca109e1bed5b066e89012c774d4f1f35.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-4c5c7cb1-f238-52c8-b82c-159c6c299c0e"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/34-4c919da9-157a-5a14-a725-f7343975c9ab.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/587cfc13bb269bd794e5b7070a0648bee642f737f6a6c0fdbb22b47cbfb3f28d.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-4c919da9-157a-5a14-a725-f7343975c9ab"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/35-51bc5513-6879-548f-b19a-9746b667f1a3.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/7b755e7cf6cfda61793e12cc07fb4d9f2306013524ccf49b1cfe95acabe8e8ac.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-51bc5513-6879-548f-b19a-9746b667f1a3"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/36-52b6722a-b3b2-5d2d-a507-0215532b0422.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/766663517263dbc5c1f5c4c5194b34ddfc74810c02fa8aeed3c7d42696c274c1.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-52b6722a-b3b2-5d2d-a507-0215532b0422"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/37-58db62d4-458f-5e2d-9ca0-968e09f4944b.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/8466a13891024d635114f14dd5a6ab5494bd5fca06749ae1b73a9e306021c995.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-58db62d4-458f-5e2d-9ca0-968e09f4944b"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/38-5b90066f-b5b3-4e82-8d31-7b95ff0a0451.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/4b147b12b2f2921c406364080764396fbad61d2a1a3e3f39238aaf6372b3dda9.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-5b90066f-b5b3-4e82-8d31-7b95ff0a0451"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/39-5c0d5040-92e4-50f6-9695-9d33d889a080.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/4c88f74f44d37fc96aee7298e8c71283e33b239443b42851185f061783ec6031.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-5c0d5040-92e4-50f6-9695-9d33d889a080"
+      },
+      {
+        "old": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/physics-unresolved97-whole-body-successor-author-20261013-v1/batch-002/readings/40-5c57dbc7-d258-4aad-a84c-e773f3c493ae.whole-original-inert.json",
+        "new": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/inputs/retained-original/a771294d5bd255b199b6e4dace90fdb1c466c9f1fb28ff7f1bfdfc3cdf7beefd.source.json",
+        "field": "sourceRefs.path",
+        "decisionId": "informed97-author-002-5c57dbc7-d258-4aad-a84c-e773f3c493ae"
+      }
+    ],
+    "fullOriginalMetadataAndOpinionsPreservedRaw": true
+  }
+}

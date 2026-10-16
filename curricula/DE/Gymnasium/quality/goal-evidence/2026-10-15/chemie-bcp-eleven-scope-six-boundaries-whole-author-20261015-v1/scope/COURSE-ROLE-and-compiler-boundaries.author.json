@@ -1,0 +1,80 @@
+{
+  "sourceCourse": {
+    "jurisdiction": "DE-BY",
+    "sourceSubject": "Biologisch-chemisches Praktikum",
+    "sourceYears": [
+      "12",
+      "13"
+    ],
+    "courseRole": "separate-selected-practical-course",
+    "ordinaryChemistryGKOrLKObligation": false,
+    "selectionRule": "At least three of areas2–7 in a school year, balanced biology/chemistry; area1 where appropriate. Source expectations and content are suggestions, not an obligation to teach all.",
+    "authorProposalOnly": true,
+    "runtimeSelectionUXImplemented": false
+  },
+  "allElevenOldIds": [
+    "cf2631d9-da24-50e8-9e50-db625e6efaad",
+    "fb41c82c-12c3-5f9a-9e8d-40f10c9fade9",
+    "cfa5c1e4-6714-5be7-9a57-a24b201b6231",
+    "9ace7bd2-136b-595c-a021-6e03077508a7",
+    "e6dcd3a0-264d-503b-aaac-a3e86eeb7059",
+    "fec1563e-a34a-5fc1-93bb-03981f35ab13",
+    "3351fe47-5b0c-5407-a3bf-05229cfbf0c5",
+    "7b443158-8ca9-5b8e-8328-a8fa56f6e26f",
+    "dc4a26c7-8304-529d-8705-7333b2f038fc",
+    "ebe2f6db-95a3-5157-a27d-2624f6c82e4e",
+    "ffebca5e-76b5-55d7-80d6-df1e7d2c75ea"
+  ],
+  "newTenIds": [
+    "57d2c98d-30b8-5123-b823-e56a4f22b191",
+    "7b80efe6-b77d-5ace-8886-973ba38e6f9e",
+    "cb7125b7-8734-51c6-8306-9163114dc0cc",
+    "4d16601e-fa57-5bcb-a5b6-f308d5b8036a",
+    "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49",
+    "dd59351e-3b16-5104-b7c6-ff9e402e4de7",
+    "c8198159-2109-5ad0-9d37-252ebac0219d",
+    "9d6e1966-b10c-5a70-b215-df7007c95b07",
+    "0f632595-5875-5a95-83d8-7de3180bdaa6",
+    "843484b9-1acf-54e0-a030-bc214b3b0656"
+  ],
+  "sourceSelection": {
+    "minimumAreas": 3,
+    "eligibleAreas": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "balanceAcrossBiologyAndChemistry": true,
+    "area1WhereAppropriate": true,
+    "allExpectationsMandatory": false
+  },
+  "metadataDelta": {
+    "applicability": "Only currently evidenced DE-BY retained on11 BcP-only nodes and10 new children; old unsupported state lists preserved in baseline. Other source states require separate evidence.",
+    "tags": "GK/LK removed only from11 BcP-only nodes and10 new children",
+    "core": "Explicit false; convertLearningGoal otherwise derives core from GK tag. This metadata change is not an optional-course UX."
+  },
+  "stockSemantics": {
+    "core": {
+      "path": "app/src/goalTypes.ts",
+      "function": "convertLearningGoal",
+      "rule": "Explicit boolean core wins; otherwise GK tag determines core. courseLevel also injects GK/LK tags."
+    },
+    "projection": {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "function": "compileCompositionView",
+      "rule": "Only explicit target references appear; prerequisiteOnly does not create a visible target. Duplicate IDs and visible parents fail CPV005/006. No course-selection minimum/balance inferred from tags."
+    }
+  },
+  "actualExample": "The inactive example selects3,5,6 (one chemistry-focused and two biology-focused areas), plus area1 communication where appropriate. It demonstrates a finite projection, not a newly implemented or reviewed course enrolment flow.",
+  "unresolvedIntegration": [
+    "Existing ordinary-chemistry composition views and applicability-from-source paths require their own source-bound impact decision before integration.",
+    "Full-universe and selected-course example must not be installed together as duplicated targets.",
+    "Global navigation should retain31781 in exactly one visible chapter; context wrapper fb41 may be omitted there."
+  ],
+  "noAutomaticInferenceFromPhaseOrRequires": true,
+  "noNewCourseUX": true,
+  "noScopeRemovalToShrinkM7": true
+}

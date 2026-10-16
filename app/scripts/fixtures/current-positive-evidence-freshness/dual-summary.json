@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:4e86df352b03fced6ed88dc4ac6fffb20758869b537b042a8d9e698105c9404b",
+  "reviewInputFingerprint": "sha256:7158e120c51c09516f5a42462718270ebb152fe5d3261efe7209ee31d8f3e971",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-i01-five-current-native-context-20261015-v1-a",
+      "roundId": "physik-i01-five-current-native-context-20261015-v1-first-pass-a",
+      "independenceGroupId": "physik-i01-five-current-native-context-20261015-v1-independent-a",
+      "runIds": [
+        "gymnasium-i01-current-native-d-blind-a-20261015-v1"
+      ],
+      "providers": [
+        "OpenAI via Codex native subagent"
+      ],
+      "modelIdentities": [
+        "OpenAI via Codex native subagent::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-i01-five-current-native-context-20261015-v1-b",
+      "roundId": "physik-i01-five-current-native-context-20261015-v1-first-pass-b",
+      "independenceGroupId": "physik-i01-five-current-native-context-20261015-v1-independent-b",
+      "runIds": [
+        "gymnasium-i01-current-native-d-blind-b-20261015-v1-run-001"
+      ],
+      "providers": [
+        "OpenAI / Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex::GPT6.1SolUltra (task-designated; runtime identity not independently exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "firstRecordId": "gymnasium-i01-current-native-d-blind-a-20261015-v1-001",
+      "secondRecordId": "gymnasium-i01-native-d-b-20261015-001",
+      "firstRunId": "gymnasium-i01-current-native-d-blind-a-20261015-v1",
+      "secondRunId": "gymnasium-i01-current-native-d-blind-b-20261015-v1-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+      "firstRecordId": "gymnasium-i01-current-native-d-blind-a-20261015-v1-002",
+      "secondRecordId": "gymnasium-i01-native-d-b-20261015-002",
+      "firstRunId": "gymnasium-i01-current-native-d-blind-a-20261015-v1",
+      "secondRunId": "gymnasium-i01-current-native-d-blind-b-20261015-v1-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+      "firstRecordId": "gymnasium-i01-current-native-d-blind-a-20261015-v1-003",
+      "secondRecordId": "gymnasium-i01-native-d-b-20261015-003",
+      "firstRunId": "gymnasium-i01-current-native-d-blind-a-20261015-v1",
+      "secondRunId": "gymnasium-i01-current-native-d-blind-b-20261015-v1-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "firstRecordId": "gymnasium-i01-current-native-d-blind-a-20261015-v1-004",
+      "secondRecordId": "gymnasium-i01-native-d-b-20261015-004",
+      "firstRunId": "gymnasium-i01-current-native-d-blind-a-20261015-v1",
+      "secondRunId": "gymnasium-i01-current-native-d-blind-b-20261015-v1-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+      "firstRecordId": "gymnasium-i01-current-native-d-blind-a-20261015-v1-005",
+      "secondRecordId": "gymnasium-i01-native-d-b-20261015-005",
+      "firstRunId": "gymnasium-i01-current-native-d-blind-a-20261015-v1",
+      "secondRunId": "gymnasium-i01-current-native-d-blind-b-20261015-v1-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

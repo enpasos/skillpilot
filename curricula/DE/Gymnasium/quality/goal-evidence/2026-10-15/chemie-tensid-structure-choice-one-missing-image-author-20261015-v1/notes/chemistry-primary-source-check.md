@@ -1,0 +1,7 @@
+# Bounded chemistry source check
+
+The drawing uses qualitative symbols rather than molecular formulas. IUPAC describes surface-active molecules as amphiphilic with hydrophilic and hydrophobic/lipophilic groups. This supports the connected head/tail distinction only; it does not supply numerical performance, generic product claims or a winner. Source: [IUPAC, Surface Active Agents](https://stats.iupac.org/reports/2001/colloid_2001/manual_of_s_and_t/node36.html), retrieved through web search 2026-10-15.
+
+The IUPAC [Krafft point](https://old.goldbook.iupac.org/html/K/K03415.html) entry describes a narrow temperature range above which surfactant solubility rises sharply; [cloud point](https://goldbook.iupac.org/terms/view/12241/html) describes the onset of turbidity caused by phase separation. These definitions support retaining temperature and composition as conditions in the design brief. The image does not label a threshold or predict the performance of either pictured structure. Retrieved through web search 2026-10-15. Direct page opens were unavailable (403/timeout), so no fuller unseen source content is claimed.
+
+The two explicitly selected P cases and their numerical values remain clearly labeled fictional teaching models. No current commercial specifications or new experimental observations are introduced. No quoted source text, third-party diagram or source layout was supplied to the image provider or reproduced in the image.

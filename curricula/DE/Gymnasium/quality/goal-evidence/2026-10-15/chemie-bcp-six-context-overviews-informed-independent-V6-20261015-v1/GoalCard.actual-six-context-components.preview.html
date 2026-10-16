@@ -1,0 +1,13 @@
+<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Six current BcP context GoalCards</title></head><body><main id="root"></main><script type="module">
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import {GoalCard} from '../../../../../../../app/src/components/GoalCard.tsx';
+import {LanguageProvider} from '../../../../../../../app/src/contexts/LanguageContext.tsx';
+import '../../../../../../../app/src/index.css';
+const selector=await (await fetch('INPUTS.six-current-context-overviews-and-source52.selector.json')).json();
+const source=await (await fetch(new URL('../../../../../../../'+selector.canonical.path,location.href))).json();
+const width=Number(new URLSearchParams(location.search).get('width')||360);
+const assetFor=id=>new URL('../../../../../../../'+selector.assets.find(a=>a.goalId===id).asset.path,location.href).href;
+const cards=selector.goalIds.map(id=>{const original=source.goals.find(g=>g.id===id);const goal={...original,resourceLinks:original.resourceLinks.map(link=>({...link,url:assetFor(original.id)}))};return React.createElement('section',{key:id,id:'review-'+id,style:{width:width+'px',margin:'0 0 16px'}},React.createElement(GoalCard,{goal,masteryValue:0,showLearnerTools:true,readOnly:true,useRawGoalTitles:true}));});
+createRoot(document.getElementById('root')).render(React.createElement(LanguageProvider,null,...cards));
+</script></body></html>

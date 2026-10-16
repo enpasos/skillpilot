@@ -1,0 +1,53 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-energy-four-context-informed-pa-20261015-v1-P4-final-current",
+  "bundleFingerprint": "sha256:ee55bc40db70e9aa19c0342b0711d1067e4e5169c8544ffe9156fc97654921d6",
+  "bookDigest": "sha256:c4d37d0cc9db5b0dc15e59e8aabb5750c8abbcedf288afe55bc694954811b286",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex (exact revision and decoding settings not exposed)",
+  "role": "synthesizer",
+  "promptFamilyId": "positive-understanding-evidence-profile-authoring-v2",
+  "promptFingerprint": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:a43ce6a5c746c950ea24ea9b3de2478a7f4f1b2ade51640b5e3b90a38f8a3416",
+  "independenceGroupId": "chemie-energy-four-context-informed-pa-20261015-v1-informed-not-blind",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "ecce0306-13dc-5563-a097-afe69805a8d6",
+    "a3386a86-f1ee-55b8-bcd5-03bfb1f9d987",
+    "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+    "e20d205f-03a4-5f96-b456-9b20460605a2"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c4d37d0cc9db5b0dc15e59e8aabb5750c8abbcedf288afe55bc694954811b286"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:197c717769f986a21892638763124eecbec9ca583a9536e6cd764216ef1e9306"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ee55bc40db70e9aa19c0342b0711d1067e4e5169c8544ffe9156fc97654921d6"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:d86e9f1f5c512e8309a6633df9665283f113566660dca932e7bebebd2c75028b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-15T12:48:36.586Z",
+  "completedAt": "2026-10-15T12:48:36.640Z",
+  "status": "completed",
+  "outputDigest": "sha256:e198fb65ed6b53d18c280e8be45ae60ee62a5146c03b808b3dadb0a7cedafad0",
+  "toolchainVersion": "positive-understanding-evidence-v2"
+}

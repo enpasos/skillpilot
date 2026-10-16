@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "separateFirstSha256": "sha256:8f0138f9e5a2cd74ae4b58d4056d4c2552aeaa0865e7c008ef198db47b15d8e7",
+  "unchangedStockModules": [
+    {
+      "path": "app/package.json",
+      "sha256": "sha256:8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/src/landscapeTypes.ts",
+      "sha256": "sha256:448f9107929ccf9ebac985faed0a12bcb109fb4e6cded8752da7d26c223aa838",
+      "bytes": 4731
+    },
+    {
+      "path": "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+      "sha256": "sha256:ae02d37a78fbdd02fbecff6d61c47e86f775c47aeacc6a85367a10c1d2c9cec7",
+      "bytes": 11856
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceReview.ts",
+      "sha256": "sha256:179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6",
+      "bytes": 18781
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6",
+      "bytes": 8448
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "sha256:50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26",
+      "bytes": 8335
+    },
+    {
+      "path": "app/scripts/semanticAtomicityReview.ts",
+      "sha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9",
+      "bytes": 12015
+    },
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+      "bytes": 8707
+    },
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-review-config.schema.json",
+      "sha256": "sha256:7233823673664115846059a5aab3eaa600c504f5975a9b24f8b7cf860e8b946d",
+      "bytes": 3328
+    },
+    {
+      "path": "contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+      "sha256": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-three-wording-four-alt-bounded-author-root-20261015-v1/candidate/canonical560.current422.three-wording-four-alt.author.json",
+      "sha256": "sha256:e36d631c46c019466478d2f4a900ae0b5161d52b52e85bb6e701aadf7ee90545",
+      "bytes": 1888927
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-final-contexts-native-preparation-technical-20261015-v1/candidate/semantic560.three-description-source-bindings.json",
+      "sha256": "sha256:3fd88d8d1e7414fe655972247451fe03cc81bc207f5e391e6e17f74c407fab8c",
+      "bytes": 180070
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md",
+      "sha256": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "bytes": 2137
+    }
+  ],
+  "commands": [
+    {
+      "name": "P15.materialize",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/P15.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/P15.candidates.json",
+        "--write"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1",
+      "startedAt": "2026-10-15T14:56:54.891339+00:00",
+      "completedAt": "2026-10-15T14:56:55.580620+00:00",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/CHECK.stock-P15.materialize.actual.txt",
+      "actualOutputSha256": "sha256:011f14230988c1e7ca4b09f1e19cf1ee7ea28ff4790aff712428ea3fba62b0b8"
+    },
+    {
+      "name": "P15.verify",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/P15.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/P15.candidates.json"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1",
+      "startedAt": "2026-10-15T14:56:55.581043+00:00",
+      "completedAt": "2026-10-15T14:56:56.231693+00:00",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/CHECK.stock-P15.verify.actual.txt",
+      "actualOutputSha256": "sha256:c4b46d14c186d15e460c4c9109c26572c2d1c84673e411d95153c8303a4e183b"
+    },
+    {
+      "name": "P15.check",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/P15.config.json",
+        "--mode=check"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1",
+      "startedAt": "2026-10-15T14:56:56.232174+00:00",
+      "completedAt": "2026-10-15T14:56:56.773093+00:00",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/CHECK.stock-P15.check.actual.txt",
+      "actualOutputSha256": "sha256:d003ab6625489626329d6694ec76c3ee77cc79f65fc47c3816f931c8dbffc118"
+    },
+    {
+      "name": "A15.initial-stock-fingerprints",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/A15.config.json",
+        "--write-fingerprints"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1",
+      "startedAt": "2026-10-15T14:56:56.773813+00:00",
+      "completedAt": "2026-10-15T14:56:57.082524+00:00",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/CHECK.stock-A15.initial-stock-fingerprints.actual.txt",
+      "actualOutputSha256": "sha256:76f34bee5f2952ecfe2d5a5228d9d1a4e8ffa0b87e5adc8e876a2c4ebc5cb7bd"
+    },
+    {
+      "name": "A15.check",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1/app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/A15.config.json",
+        "--mode=check"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/carbonyl15-informed-pa-b-host-v1",
+      "startedAt": "2026-10-15T14:56:57.083034+00:00",
+      "completedAt": "2026-10-15T14:56:57.390419+00:00",
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl15-current422-informed-pa-b-20261015-v1/CHECK.stock-A15.check.actual.txt",
+      "actualOutputSha256": "sha256:67f34b5c63cb81a262eb195e80b90b72cc943d7beb6d772524cc7219d0a727d3"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-15T07:48:15.397Z",
+  "validators": [
+    {
+      "kind": "positive-profile",
+      "cmd": "app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-six-contexts-current422-native-fresh-independent-a-20261015-v1/pa/positive-profiles.original.config.json --mode=check",
+      "chunk_id": "6f3420",
+      "wall_time_seconds": 0.321673428,
+      "exit_code": 0,
+      "original_token_count": 68,
+      "output": "# Positive Goal Evidence Review: chemie-source3-fresh-independent-a-pa-20261015-v1\nScope: Three source-duty prospective chemistry goals: original independent A design review, E1/G1 only\nConfigured goals: 3\nApproved: 0\nNeeds human review: 3\nRejected: 0\nBlocking issues: 0\n"
+    },
+    {
+      "kind": "semantic-atomicity",
+      "cmd": "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-six-contexts-current422-native-fresh-independent-a-20261015-v1/pa/atomicity.original.config.json --mode=check",
+      "chunk_id": "0f2bba",
+      "wall_time_seconds": 0.152851631,
+      "exit_code": 0,
+      "original_token_count": 96,
+      "output": "# Semantic Atomicity Review: chemie-source3-fresh-independent-a-pa-20261015-v1\nScope: Only three new source-duty goals; original within-goal atomicity judgment A\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 3\nCurrent reviewed atomic: 3\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+    }
+  ],
+  "humanApprovals": 0,
+  "strictClosures": 0,
+  "allScientificHoldsRemainOpen": true
+}

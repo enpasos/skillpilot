@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "status": "inert_revision_author_candidate",
+  "author": "Codex GPT-6.1 Sol Ultra / REVISION AUTHOR /root/requires_canonical_review (new role; independent reviewer must be another agent)",
+  "createdAt": "2026-10-13T09:23:00.982834+00:00",
+  "sourceContextPath": "tmp/cross-subject-requires/physics-energy-gradient-revision-author-20261013-v2.context.exact.json",
+  "sourceContextFileSha256": "sha256:54f81284ca7d4f710840fa1a51fd738c80b4cc13beeaa744401974559687432d",
+  "amendments": [
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "currentNativeReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-016-thermodynamics-modern-physics-optics-current-v1.retained-after-final-context-v1.review.jsonl",
+      "currentNativeReviewFileSha256": "sha256:c775ed5b24dae6f316e2f00be0c330a42fab31eb448aad3ae74b3a6580061a4a",
+      "currentNativeRecordSha256": "sha256:08e15379ce14c2d7a428eadacca1bbd5937b80b0c906668035ade0466226807c",
+      "currentProfileFingerprint": "sha256:061bc2dccf38e187778b6378b7c2e9df6179cbf81f547e83ed16224da7901d03",
+      "currentProfileBodySha256": "sha256:4c2f3ff5c047292d4e2c31cfa9e7de3eb7c0a5f9c054d3654c92c5dd034c7701",
+      "proposedProfile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "newton-law-yields-kinetic-power-balance",
+            "essentialUnderstandingDe": "F\u00fcr ein festgelegtes System konstanter Masse in einem Inertialsystem wird durch das Skalarprodukt von m\u00b7dv/dt = F mit v die Beziehung dE_kin/dt = F\u00b7v sichtbar. Der Schritt verbindet die vektorielle Bewegungsgleichung mit der skalaren \u00c4nderungsrate kinetischer Energie und setzt die konstante Masse ausdr\u00fccklich voraus.",
+            "essentialUnderstandingEn": "For a defined constant-mass system in an inertial frame, taking the scalar product of m\u00b7dv/dt = F with v yields dE_kin/dt = F\u00b7v. This step connects the vector equation of motion with the scalar rate of change of kinetic energy and explicitly requires constant mass.",
+            "observablePerformanceDe": "Die lernende Person legt System, Inertialsystem und konstante Masse fest, bildet selbst das Skalarprodukt von Newton II mit v und verbindet es mit der bereitgestellten mathematischen Identit\u00e4t d[m(v\u00b7v)/2]/dt = m v\u00b7dv/dt. Sie gewinnt dE_kin/dt = F\u00b7v, begr\u00fcndet die Operation, Einheit und Massenvoraussetzung und unterscheidet die mathematische Hilfe von der eigenen physikalischen Leistungsbilanz.",
+            "observablePerformanceEn": "The learner defines the system, inertial frame and constant mass, independently takes the scalar product of Newton II with v and connects it to the supplied mathematical identity d[m(v\u00b7v)/2]/dt = m v\u00b7dv/dt. The learner obtains dE_kin/dt = F\u00b7v, justifies the operation, unit and mass condition, and distinguishes mathematical support from the independently developed physical power balance."
+          },
+          {
+            "id": "conservative-potential-cancels-kinetic-change",
+            "essentialUnderstandingDe": "F\u00fcr eine konservative Kraft F = \u2212\u2207U mit nicht explizit zeitabh\u00e4ngigem Potenzial gilt entlang der Bewegung dU/dt = \u2207U\u00b7v. Deshalb ist die Kraftleistung F\u00b7v = \u2212dU/dt und die Summe E_kin + U besitzt die \u00c4nderungsrate null.",
+            "essentialUnderstandingEn": "For a conservative force F = \u2212\u2207U with no explicit time dependence in the potential, dU/dt = \u2207U\u00b7v along the motion. Therefore the force power F\u00b7v equals \u2212dU/dt and the sum E_kin + U has zero rate of change.",
+            "observablePerformanceDe": "Die lernende Person erkl\u00e4rt den Gradient als Vektor der \u00f6rtlichen \u00c4nderungsraten des Potenzials in kartesischen Koordinaten. Mit der gegebenen mathematischen Bahnidentit\u00e4t dU/dt = \u2207U\u00b7v verbindet sie selbst F = \u2212\u2207U mit der kinetischen Leistungsbilanz und leitet d(E_kin + U)/dt = 0 her. In einem gekoppelten kartesischen Potentialfall bestimmt oder \u00fcberpr\u00fcft sie Komponenten \u00fcber Koordinatenschnitte bei jeweils festgehaltener anderer Koordinate; allgemeine Mehrvariablen-Ableitungsregeln sind keine zus\u00e4tzliche Pflichtkompetenz. Die Aufhebung und mechanische Erhaltung werden nicht als Eingangsfakten gegeben.",
+            "observablePerformanceEn": "The learner explains the gradient as the vector of local spatial rates of change of the potential in Cartesian coordinates. Using the supplied mathematical path identity dU/dt = \u2207U\u00b7v, the learner independently connects F = \u2212\u2207U to the kinetic power balance and derives d(E_kin + U)/dt = 0. In a coupled Cartesian potential, components are determined or checked on coordinate sections holding the other coordinate constant; general multivariable differentiation rules are not an additional compulsory skill. Cancellation and mechanical conservation are not supplied as input facts."
+          },
+          {
+            "id": "conservation-claim-depends-on-explicit-conditions",
+            "essentialUnderstandingDe": "Die Schlussfolgerung gilt nur innerhalb der benannten Modellbedingungen: konstante Masse, Inertialsystem, ausschlie\u00dflich konservative Kr\u00e4fte im betrachteten mechanischen System und kein explizit zeitabh\u00e4ngiges Potenzial. Nichtkonservative Kr\u00e4fte oder ein zeitabh\u00e4ngiges Potenzial f\u00fchren zu einem Energieaustausch beziehungsweise Zusatzterm und nicht zu unver\u00e4nderter mechanischer Energie.",
+            "essentialUnderstandingEn": "The conclusion holds only under the stated model conditions: constant mass, an inertial frame, exclusively conservative forces in the mechanical system under consideration, and no explicit time dependence of the potential. Non-conservative forces or a time-dependent potential introduce energy transfer or an additional term rather than unchanged mechanical energy.",
+            "observablePerformanceDe": "Die lernende Person pr\u00fcft bei einem neuen Kraftmodell jede Herleitungsvoraussetzung, lokalisiert bei Reibung oder U(x,t) den nicht mehr g\u00fcltigen Schritt und formuliert aus der gegebenen Kraft oder Zeitabh\u00e4ngigkeit die Richtung beziehungsweise den Term der mechanischen Energie\u00e4nderung.",
+            "observablePerformanceEn": "For a fresh force model, the learner checks every premise of the derivation, locates the step that fails when friction or U(x,t) is present, and uses the supplied force or time dependence to state the direction or term of the mechanical-energy change."
+          },
+          {
+            "id": "derived-conservation-supports-bounded-prediction",
+            "essentialUnderstandingDe": "Die hergeleitete Konstante erlaubt innerhalb ihres G\u00fcltigkeitsbereichs physikalische Vorhersagen \u00fcber zug\u00e4ngliche Orte, Geschwindigkeiten und Umkehrpunkte. Eine solche Vorhersage muss zur Potenzialreferenz, zu E_kin \u2265 0, zu Einheiten und zu Grenzf\u00e4llen passen; sie ist keine allgemeine Aussage f\u00fcr beliebige \u00e4u\u00dfere Einwirkung.",
+            "essentialUnderstandingEn": "Within its domain of validity, the derived constant supports physical predictions about accessible positions, speeds, and turning points. Such a prediction must be consistent with the potential reference, E_kin \u2265 0, units, and limiting cases; it is not a general statement for arbitrary external action.",
+            "observablePerformanceDe": "Aus einem frischen Potenzialverlauf und einer Anfangsbedingung bestimmt die lernende Person qualitativ oder quantitativ zug\u00e4ngliche Bereiche und einen Umkehrpunkt, pr\u00fcft die Energiebilanz auf Einheiten und Plausibilit\u00e4t und benennt, welche \u00c4nderung der Modellbedingungen diese Vorhersage ung\u00fcltig machen w\u00fcrde.",
+            "observablePerformanceEn": "From a fresh potential curve and initial condition, the learner determines qualitatively or quantitatively the accessible region and a turning point, checks the energy balance for units and plausibility, and states which change in model conditions would invalidate the prediction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "newton-law-yields-kinetic-power-balance",
+            "conservative-potential-cancels-kinetic-change",
+            "conservation-claim-depends-on-explicit-conditions",
+            "derived-conservation-supports-bounded-prediction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "potential-and-force-geometry",
+            "textDe": "Eindimensionales U(x), gekoppeltes kartesisches U(x,y), lineare Gewichtskraft oder nichtlineare konservative Kraft. Die allgemeine Bahnidentit\u00e4t ist mathematische Hilfsinformation; eigene Ableitungsalgorithmen sind alternative Vertiefung, keine kumulative AND-Pflicht.",
+            "textEn": "One-dimensional U(x), a coupled Cartesian U(x,y), uniform gravity or a nonlinear conservative force. The general path identity is mathematical support; independent differentiation algorithms are alternative extensions rather than cumulative AND requirements."
+          },
+          {
+            "id": "validity-condition",
+            "textDe": "Nur konservative Kr\u00e4fte, zus\u00e4tzliche Reibung, explizit zeitabh\u00e4ngiges Potenzial oder ver\u00e4nderliche Systemmasse als zu pr\u00fcfende Modellgrenze",
+            "textEn": "Conservative forces only, added friction, explicitly time-dependent potential, or changing system mass as a model boundary to be checked"
+          },
+          {
+            "id": "representation-chain",
+            "textDe": "Vektorielles Kraftfeld, Bewegungsgleichung, Potenzialkurve, Bahn oder Energie-Zeit-Darstellung",
+            "textEn": "Vector force field, equation of motion, potential curve, trajectory, or energy-time representation"
+          },
+          {
+            "id": "independent-demand",
+            "textDe": "Herleitung, Voraussetzungenpr\u00fcfung, Fehlerdiagnose oder begrenzte Vorhersage aus der hergeleiteten Erhaltung",
+            "textEn": "Derivation, audit of assumptions, diagnosis of a failed step, or bounded prediction from the derived conservation law"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "particle-in-supplied-one-dimensional-potential",
+            "taskDemandDe": "Ein Teilchen konstanter Masse bewegt sich in einem bereitgestellten glatten, zeitunabh\u00e4ngigen Potenzial U(x). Leite aus m\u00b7dv/dt = \u2212dU/dx die Erhaltung von E_kin + U her, markiere f\u00fcr eine gegebene Anfangsenergie die zug\u00e4nglichen Bereiche und bestimme einen Umkehrpunkt aus dem Potenzial statt aus einer auswendig gelernten Spezialformel. Als rein mathematische Hilfe stehen f\u00fcr konstantes m die Identit\u00e4t d[m(v\u00b7v)/2]/dt = m v\u00b7dv/dt und f\u00fcr ein glattes Potenzial entlang einer differenzierbaren Bahn dU/dt = \u2207U\u00b7v zur Verf\u00fcgung; bei expliziter Zeitabh\u00e4ngigkeit kommt \u2202U/\u2202t hinzu. Im Physikziel wird erkl\u00e4rt: Die kartesische Gradientenkomponente ist die gew\u00f6hnliche Ableitung auf einem Koordinatenschnitt bei festgehaltenen anderen Koordinaten. Passende elementare Ableitungsregeln d\u00fcrfen als mathematische Hilfsinformation bereitgestellt werden. Eigenst\u00e4ndige Produkt-/Kettenregelrechnung ist eine alternative Vertiefungsroute. Keine Kraftkomponente, physikalische Leistungsbilanz oder Energieaufhebung wird als L\u00f6sung geliefert.",
+            "taskDemandEn": "A constant-mass particle moves in a supplied smooth, time-independent potential U(x). Derive conservation of E_kin + U from m\u00b7dv/dt = \u2212dU/dx, mark the accessible regions for a given initial energy, and determine a turning point from the potential rather than from a memorized special-case formula. Purely mathematical support supplies, for constant m, d[m(v\u00b7v)/2]/dt = m v\u00b7dv/dt and, for a smooth potential along a differentiable path, dU/dt = \u2207U\u00b7v; explicit time dependence adds \u2202U/\u2202t. The Physics goal explains that a Cartesian gradient component is the ordinary derivative on a coordinate section holding the other coordinates constant. Suitable elementary differentiation rules may be supplied as mathematical support. Independent product/chain-rule calculation is an alternative extension. No force component, physical power balance or energy cancellation is supplied as a solution.",
+            "expectedPerformanceDe": "Die lernende Person gewinnt aus Newton, eigener Skalarmultiplikation und den mathematischen Hilfsidentit\u00e4ten die konstante mechanische Summe. Sie erl\u00e4utert alle Bedingungen, bestimmt aus E_kin \u2265 0 zug\u00e4ngliche Bereiche und einen Umkehrpunkt und pr\u00fcft Referenzniveau, Einheiten und Plausibilit\u00e4t. Die mathematische Unterst\u00fctzung ersetzt nicht die physikalische Verbindung und Herleitung.",
+            "expectedPerformanceEn": "The learner derives the constant mechanical sum from Newton, independently chosen scalar multiplication and the mathematical support identities. All conditions are explained; E_kin \u2265 0 determines accessible regions and a turning point, with reference level, units and plausibility checked. Mathematical support does not replace the physical connection and derivation.",
+            "understandingFocusDe": "Der Fall verbindet die allgemeine Herleitung mit der physikalischen Bedeutung der Energiefl\u00e4che, ohne auf ein bekanntes Standardproblem beschr\u00e4nkt zu bleiben.",
+            "understandingFocusEn": "The case connects the general derivation with the physical meaning of the energy landscape without restricting it to a familiar standard problem."
+          },
+          {
+            "id": "two-dimensional-conservative-field-path",
+            "taskDemandDe": "Ein Teilchen konstanter Masse bewegt sich in U(x,y) = kx\u00b2/2 + cxy + ly\u00b2/2, wobei k, c und l zeitunabh\u00e4ngige Konstanten mit passenden Einheiten sind. F = \u2212\u2207U ist die physikalische Kraft-Potenzial-Beziehung. Entwickle die kartesischen Kraftkomponenten \u00fcber die beschriebenen Koordinatenschnitte, stelle die Leistungsbilanz f\u00fcr eine beliebige differenzierbare Bahn auf und leite die allgemeine mechanische Erhaltung her. Erkl\u00e4re f\u00fcr zwei Wege zwischen denselben markierten Endpunkten, welche \u00c4nderung nur von den Potenzialendwerten abh\u00e4ngt, und grenze dies gegen die konstante mechanische Summe ab. Pr\u00fcfe den Fall v = 0 bei einem Ort mit nicht verschwindendem Gradient. Als rein mathematische Hilfe stehen f\u00fcr konstantes m die Identit\u00e4t d[m(v\u00b7v)/2]/dt = m v\u00b7dv/dt und f\u00fcr ein glattes Potenzial entlang einer differenzierbaren Bahn dU/dt = \u2207U\u00b7v zur Verf\u00fcgung; bei expliziter Zeitabh\u00e4ngigkeit kommt \u2202U/\u2202t hinzu. Im Physikziel wird erkl\u00e4rt: Die kartesische Gradientenkomponente ist die gew\u00f6hnliche Ableitung auf einem Koordinatenschnitt bei festgehaltenen anderen Koordinaten. Passende elementare Ableitungsregeln d\u00fcrfen als mathematische Hilfsinformation bereitgestellt werden. Eigenst\u00e4ndige Produkt-/Kettenregelrechnung ist eine alternative Vertiefungsroute. Keine Kraftkomponente, physikalische Leistungsbilanz oder Energieaufhebung wird als L\u00f6sung geliefert.",
+            "taskDemandEn": "A constant-mass particle moves in U(x,y) = kx\u00b2/2 + cxy + ly\u00b2/2, where k, c and l are time-independent constants with appropriate units. F = \u2212\u2207U is the physical force-potential relation. Develop Cartesian force components using the described coordinate sections, set up the power balance along any differentiable trajectory and derive general mechanical conservation. For two paths between the same marked endpoints, explain which change depends only on the endpoint potential values and distinguish it from the constant mechanical sum. Check v = 0 at a point with nonzero gradient. Purely mathematical support supplies, for constant m, d[m(v\u00b7v)/2]/dt = m v\u00b7dv/dt and, for a smooth potential along a differentiable path, dU/dt = \u2207U\u00b7v; explicit time dependence adds \u2202U/\u2202t. The Physics goal explains that a Cartesian gradient component is the ordinary derivative on a coordinate section holding the other coordinates constant. Suitable elementary differentiation rules may be supplied as mathematical support. Independent product/chain-rule calculation is an alternative extension. No force component, physical power balance or energy cancellation is supplied as a solution.",
+            "expectedPerformanceDe": "Die lernende Person gewinnt F_x = \u2212kx \u2212 cy und F_y = \u2212cx \u2212 ly, ordnet beide Koordinaten und Geschwindigkeitskomponenten zu und verbindet F\u00b7v mit dU/dt = (kx + cy)v_x + (cx + ly)v_y. Sie hebt beide \u00c4nderungsraten selbst zu d(E_kin + U)/dt = 0 auf. Sie erkl\u00e4rt W_konservativ = \u2212\u0394U und die entsprechende \u00c4nderung der kinetischen Energie als Endpunktaussagen, ohne daraus eine \u00c4nderung der mechanischen Summe zu machen. Bei v = 0 folgt momentane Nullleistung, aber weder Nullkraft noch ein r\u00e4umlich konstantes Potenzial. Auch der gemischte Term wird korrekt erfasst; eine allgemeine neue Mehrvariablen-Rechenroutine wird nicht vorausgesetzt.",
+            "expectedPerformanceEn": "The learner obtains F_x = \u2212kx \u2212 cy and F_y = \u2212cx \u2212 ly, assigns both coordinates and velocity components, and connects F\u00b7v with dU/dt = (kx + cy)v_x + (cx + ly)v_y. The two rates are independently cancelled into d(E_kin + U)/dt = 0. W_conservative = \u2212\u0394U and the corresponding kinetic-energy change are explained as endpoint statements, without confusing them with a change in the mechanical sum. At v = 0, instantaneous power vanishes while force may be nonzero and the potential may vary in space. The mixed term is handled correctly without presupposing a new general multivariable calculation routine.",
+            "understandingFocusDe": "Die neue Geometrie pr\u00fcft, ob Gradient, Skalarprodukt und Energiebeziehung verstanden und nicht nur in einer Raumrichtung reproduziert werden.",
+            "understandingFocusEn": "The changed geometry tests whether gradient, scalar product, and the energy relation are understood rather than reproduced only in one dimension."
+          },
+          {
+            "id": "damped-motion-breaks-mechanical-conservation",
+            "taskDemandDe": "Ein unabh\u00e4ngiger Modellfall erg\u00e4nzt zur konservativen Kraft \u2212\u2207U eine lineare Reibungskraft \u2212b\u00b7v. Untersuche die urspr\u00fcngliche Herleitung, bestimme d(E_kin + U)/dt und erkl\u00e4re f\u00fcr b > 0 die Richtung des Energieaustauschs und die Systemgrenze. Als rein mathematische Hilfe stehen f\u00fcr konstantes m die Identit\u00e4t d[m(v\u00b7v)/2]/dt = m v\u00b7dv/dt und f\u00fcr ein glattes Potenzial entlang einer differenzierbaren Bahn dU/dt = \u2207U\u00b7v zur Verf\u00fcgung; bei expliziter Zeitabh\u00e4ngigkeit kommt \u2202U/\u2202t hinzu. Im Physikziel wird erkl\u00e4rt: Die kartesische Gradientenkomponente ist die gew\u00f6hnliche Ableitung auf einem Koordinatenschnitt bei festgehaltenen anderen Koordinaten. Passende elementare Ableitungsregeln d\u00fcrfen als mathematische Hilfsinformation bereitgestellt werden. Eigenst\u00e4ndige Produkt-/Kettenregelrechnung ist eine alternative Vertiefungsroute. Keine Kraftkomponente, physikalische Leistungsbilanz oder Energieaufhebung wird als L\u00f6sung geliefert.",
+            "taskDemandEn": "An independent model case adds a linear drag force \u2212b\u00b7v to the conservative force \u2212\u2207U. Examine the original derivation, determine d(E_kin + U)/dt, and explain for b > 0 the direction of energy transfer and the system boundary. Purely mathematical support supplies, for constant m, d[m(v\u00b7v)/2]/dt = m v\u00b7dv/dt and, for a smooth potential along a differentiable path, dU/dt = \u2207U\u00b7v; explicit time dependence adds \u2202U/\u2202t. The Physics goal explains that a Cartesian gradient component is the ordinary derivative on a coordinate section holding the other coordinates constant. Suitable elementary differentiation rules may be supplied as mathematical support. Independent product/chain-rule calculation is an alternative extension. No force component, physical power balance or energy cancellation is supplied as a solution.",
+            "expectedPerformanceDe": "Die lernende Person beh\u00e4lt f\u00fcr den konservativen Anteil die Aufhebung bei, erg\u00e4nzt die Leistung \u2212b\u00b7v\u00b2, erh\u00e4lt d(E_kin + U)/dt = \u2212b\u00b7v\u00b2 und deutet die Abnahme als \u00dcbertragung aus der betrachteten mechanischen Energie, statt den Erhaltungssatz trotz verletzter Voraussetzung weiter anzuwenden.",
+            "expectedPerformanceEn": "The learner retains the cancellation for the conservative part, adds the power \u2212b\u00b7v\u00b2, obtains d(E_kin + U)/dt = \u2212b\u00b7v\u00b2, and interprets the decrease as transfer out of the mechanical energy under consideration instead of continuing to apply conservation after its condition has failed.",
+            "understandingFocusDe": "Der Reibungsfall erzwingt Transfer auf eine ge\u00e4nderte Kraftart und lokalisiert genau die G\u00fcltigkeitsgrenze der Herleitung.",
+            "understandingFocusEn": "The drag case requires transfer to a changed force type and locates the exact validity boundary of the derivation."
+          }
+        ]
+      },
+      "proposedProfileBodySha256": "sha256:339b875ae424dc5a5353a553804f9de45d274934e55f6359195136a36f2b4e3e",
+      "status": "inert_revision_author_candidate_pending_different_agent_native_QA",
+      "authority": "ai_candidate",
+      "revisionAuthorAgent": "/root/requires_canonical_review",
+      "rationale": "Das ganze kanonische Herleitungsziel bleibt erhalten: aus Newton II und F = \u2212\u2207U folgt f\u00fcr konstante Masse, Inertialsystem und ausschlie\u00dflich konservative Kr\u00e4fte mit zeitunabh\u00e4ngigem Potenzial eine konstante mechanische Energie. Eine allgemeine Mehrvariablen-Kettenregel wird deshalb nicht als fehlendes universelles Mathematikatom behauptet. Kartesische Gradientenkomponenten k\u00f6nnen durch gew\u00f6hnliche Ableitung nach einer Koordinate bei festgehaltener anderer Koordinate bestimmt werden; ein gemischter Term cxy widerlegt die Behauptung, nur separierbare Potentiale seien m\u00f6glich. Dieser Komponentenweg allein beweist die allgemeine Bahnidentit\u00e4t noch nicht. Die neue vollst\u00e4ndige P-Fassung stellt die g\u00fcltige mathematische Bahnidentit\u00e4t sowie die kinetische Ableitungsidentit\u00e4t ausdr\u00fccklich bereit und erkl\u00e4rt die Gradientenbedeutung im Physikdelta. Eine eigenst\u00e4ndige Ableitung mit vorhandener einvariabler Produkt-/Kettenregel bleibt eine zul\u00e4ssige Vertiefungsroute; sie und eine allgemeine partielle Ableitungsroutine werden nicht gemeinsam als AND-Vorleistungen erzwungen. Universell gebraucht werden die ganzen Atome f\u00fcr momentane \u00c4nderungsrate, Skalarproduktdefinition und \u00e4quivalente Termumformung. Die alte elementare Ableitungsroutine wird in diesem gemeinsamen, mit mathematischen Hilfsinformationen ausgestatteten Kern ersetzt; sie w\u00fcrde keine allgemeine Mehrvariablen-Kettenregel zertifizieren. P verlangt weiter einen allgemeinen symbolischen Beweis, einen gekoppelten zweidimensionalen quantitativen Potentialfall, korrekte Endpunkt-/Wegunabh\u00e4ngigkeitsaussage, zug\u00e4ngliche Bereiche/Umkehrpunkte und eigenst\u00e4ndigen Reibungs-/Zeitabh\u00e4ngigkeitstransfer. Kein Energiebilanzresultat, keine Kraftkomponente und keine Aufhebung wird als Aufgabenl\u00f6sung geliefert. Die amtlichen HE E.2-Klauseln fordern Energieerhaltung und Bedingungen, keine eigenst\u00e4ndig nachgewiesene allgemeine Mehrvariablen-Ableitung; das pr\u00e4zisere eigene kanonische Ziel und die fr\u00fchere Legacy-Herleitung bleiben als eigener Anspruch vollst\u00e4ndig erhalten. Andere Jurisdiktionen sind im aktuellen Ziel anwendbar, werden durch die HE-Quelle allein aber nicht offiziell best\u00e4tigt. Eine andere Person muss dieses neue Autorenpaket unabh\u00e4ngig pr\u00fcfen.",
+      "fullBilingualBodyRead": true,
+      "changedBody": true,
+      "sourceContextPath": "tmp/cross-subject-requires/physics-energy-gradient-revision-author-20261013-v2.context.exact.json",
+      "sourceContextFileSha256": "sha256:54f81284ca7d4f710840fa1a51fd738c80b4cc13beeaa744401974559687432d",
+      "bodyAndSourceBoundary": "Full canonical proof and all four essential expectations remain. Three independent cases, fresh variation and transfer are retained. The new Cartesian quantitative case is not merely a qualitative substitute. No old independent verdict or native receipt is rebound.",
+      "qualityImpact": {
+        "D": "Canonical bilingual goal text unchanged; correspondence of the actual revised P must be independently reviewed.",
+        "P": "Complete proposed body changes require real independent native QA and additive successor fingerprints,never old-verdict rebind.",
+        "A": "Every modified task/solution/transfer must be substantively checked before adoption.",
+        "M": "No goal semantic/memory content changed by this inert proposal.",
+        "V": "No visual mutation or fresh asset-review claim; actual retained image suitability still requires applicable independent checks."
+      },
+      "supersedesAuthorCandidateOnly": {
+        "path": "tmp/cross-subject-requires/physics-pending20-revision-author-v1.profile-amendments.candidate.json",
+        "fileSha256": "sha256:91e6742b5695256ff2f5d216aac1ad49f304337ca7147131c782d72045e051dd",
+        "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "bodySha256": "sha256:0c7702de4f78fc752adabf7c7b2f9c4c0143e2d670efb89ab6ba6b0cda1da157"
+      }
+    }
+  ]
+}

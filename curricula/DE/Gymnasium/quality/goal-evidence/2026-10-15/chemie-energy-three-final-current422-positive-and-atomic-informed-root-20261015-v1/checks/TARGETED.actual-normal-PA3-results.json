@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "name": "P3",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-three-final-current422-positive-and-atomic-informed-root-20261015-v1/normal/P3.current-final.image-bound.config.json",
+        "--mode=check"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/energy-three-final-informed-pa-minimal-host-v1",
+      "startedAtUTC": "2026-10-15T12:49:22.755388+00:00",
+      "returncode": 0
+    },
+    {
+      "name": "A3-bind",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-three-final-current422-positive-and-atomic-informed-root-20261015-v1/normal/A3.current-final.config.json",
+        "--write-fingerprints"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/energy-three-final-informed-pa-minimal-host-v1",
+      "startedAtUTC": "2026-10-15T12:49:23.268329+00:00",
+      "returncode": 0
+    },
+    {
+      "name": "A3-check",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-three-final-current422-positive-and-atomic-informed-root-20261015-v1/normal/A3.current-final.config.json",
+        "--mode=check"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261015/energy-three-final-informed-pa-minimal-host-v1",
+      "startedAtUTC": "2026-10-15T12:49:23.570265+00:00",
+      "returncode": 0
+    }
+  ]
+}

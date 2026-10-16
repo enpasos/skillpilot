@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /** Lists file entries without descending into directories excluded by the caller. */
-final class PrunedFileTree {
+public final class PrunedFileTree {
     private PrunedFileTree() {
     }
 
-    static List<Path> files(Path root, Predicate<Path> excludedDirectory) throws IOException {
+    public static List<Path> files(Path root, Predicate<Path> excludedDirectory) throws IOException {
         List<Path> files = new ArrayList<>();
         // No FOLLOW_LINKS: directory symlinks retain Files.walk's traversal behavior.
         Files.walkFileTree(root, new SimpleFileVisitor<>() {

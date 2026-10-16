@@ -1,0 +1,17 @@
+{
+  "createdUTC": "2026-10-15T23:19:10.683989+00:00",
+  "canaries": [
+    {
+      "path": "/home/enpasos/projects/skillpilot/.current20-must-be-readonly-canary",
+      "expectedFailureErrno": 30,
+      "message": "[Errno 30] Read-only file system: '/home/enpasos/projects/skillpilot/.current20-must-be-readonly-canary'"
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/.current20-must-be-readonly-canary",
+      "expectedFailureErrno": 30,
+      "message": "[Errno 30] Read-only file system: '/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/.current20-must-be-readonly-canary'"
+    }
+  ],
+  "onlyCurrentOwnLaneWritable": true,
+  "noRootOrPriorPacketMutation": true
+}

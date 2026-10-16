@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "role": "Targeted author technical verification; no D/P/A/M/V approval",
+  "exactWholeGoals": 554,
+  "wholeObjectsChanged": 4,
+  "wholeObjectsUnchanged": 550,
+  "removedClusterRequires": [
+    {
+      "goalId": "a00d302b-7762-4b9d-a6d7-de0c58b35540",
+      "requires": "3588c15e-adbe-5b81-b3a7-10da20574e3d"
+    },
+    {
+      "goalId": "fb3bdf39-4baf-4510-a192-c8a12fbf5dba",
+      "requires": "a00d302b-7762-4b9d-a6d7-de0c58b35540"
+    },
+    {
+      "goalId": "1e803ef8-fc76-493d-85c5-de877cd38fda",
+      "requires": "fb3bdf39-4baf-4510-a192-c8a12fbf5dba"
+    }
+  ],
+  "addedAtomicRequires": [
+    {
+      "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+      "requires": "1286f2fe-89b7-4454-8e11-85b6abd6e278"
+    }
+  ],
+  "allOriginalAtomicRequiresPreserved": true,
+  "allGoalTextsContainsScopesResourcesExact": true,
+  "semanticClassificationsExact": true,
+  "changedSourceFingerprints": 4,
+  "exactPhysicalBindingsChecked": 71,
+  "uniqueExactPhysicalPathsChecked": 39,
+  "wholeLKViewTargets": [
+    189,
+    174
+  ],
+  "exactGKViewTargets": [
+    155,
+    144
+  ],
+  "actualProjectedEffectiveAcquisitionPass": true,
+  "directContainsExpandedPass": true,
+  "effectiveAffected": 347,
+  "directEffectiveAffected": 43,
+  "selfReachableBeforeAfter": [
+    50,
+    0
+  ],
+  "actualChanged315ContextIds": [
+    "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+    "c441d9e8-d9d9-5e55-a189-a37345541321"
+  ],
+  "unchanged315Contexts": 313,
+  "wholeChildRationaleRows": 40,
+  "normalCurriculumSymlinkErrors": 0,
+  "jsonFilesCompletelyParsedBeforeThisReceipt": 20,
+  "jsonlFilesCompletelyParsed": 0,
+  "allWrittenJsonHasActualTerminalNewline": true,
+  "ownSymlinks": 0,
+  "commandReceipts": [
+    {
+      "argv": [
+        "python3",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1/scripts/author_candidate.py"
+      ],
+      "exitCode": 0,
+      "rawOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1/checks/COMMAND.1.author_candidate.actual.txt",
+      "rawOutputSha256": "sha256:c00cfa83f523aa195dbad9496052221b4cae4d48af9fa5bb678a47f7a35526c9"
+    },
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1/scripts/check_semantics_effects_and_book_contexts.mts"
+      ],
+      "exitCode": 0,
+      "rawOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1/checks/COMMAND.2.check_semantics_effects_and_book_contexts.actual.txt",
+      "rawOutputSha256": "sha256:c4132c45dbc5c26ae381ab15303a3e8a270521a801823cd3a07a60ca09302913"
+    },
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1/scripts/check_routes.mts"
+      ],
+      "exitCode": 0,
+      "rawOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1/checks/COMMAND.3.check_routes.actual.txt",
+      "rawOutputSha256": "sha256:5c676229f6e394b33b8f3e447f5aa3a47cbaf39de882c4b4f56f656628802b87"
+    },
+    {
+      "argv": [
+        "python3",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1/scripts/finalize_author_records.py"
+      ],
+      "exitCode": 0,
+      "rawOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1/checks/COMMAND.4.finalize_author_records.actual.txt",
+      "rawOutputSha256": "sha256:7e3c75b6d2f7553548a5729820d1310e5db0124e68dbfaa792caad52d2aee52e"
+    }
+  ],
+  "newApprovals": 0,
+  "newStrictClosures": 0,
+  "restoredBindings": 0,
+  "activeIntegration": false,
+  "M7": false
+}

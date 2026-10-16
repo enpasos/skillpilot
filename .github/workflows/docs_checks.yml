@@ -34,6 +34,7 @@ on:
       - '.github/actions/ubuntu-apt/**'
       - 'scripts/ci_ubuntu_apt.test.mjs'
       - '.github/workflows/docs_checks.yml'
+      - '.github/actions/postgres-service/**'
   pull_request:
     branches: [ main ]
     paths:
@@ -63,6 +64,7 @@ on:
       - '.github/actions/ubuntu-apt/**'
       - 'scripts/ci_ubuntu_apt.test.mjs'
       - '.github/workflows/docs_checks.yml'
+      - '.github/actions/postgres-service/**'
 
 permissions:
   contents: read
@@ -116,23 +118,16 @@ jobs:
   claude-revocation-postgres:
     name: Claude Revocation PostgreSQL 15
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        # Official Docker mirror; identical digest, without Docker Hub's anonymous quota.
-        image: public.ecr.aws/docker/library/postgres@sha256:9b1d34adbce1dd07ee6e94b4a2cf698884b89bd44a6c9c12f5da8f3acbfe4957
-        env:
-          POSTGRES_PASSWORD: skillpilot-test-only
-          POSTGRES_DB: skillpilot_revoke_test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres -d skillpilot_revoke_test"
-          --health-interval 2s
-          --health-timeout 5s
-          --health-retries 20
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Test disposable PostgreSQL setup and registry fallback
+        run: python3 -m unittest discover -s .github/actions/postgres-service -p 'test_*.py' -v
+      - name: Start disposable PostgreSQL 15
+        timeout-minutes: 10
+        uses: ./.github/actions/postgres-service
+        with:
+          database: skillpilot_revoke_test
       - name: Use Python
         uses: actions/setup-python@v6
         with:
@@ -150,6 +145,12 @@ jobs:
           SKILLPILOT_CLAUDE_V1_REVOKE_TEST_CONFIRM: USE-LOCAL-DISPOSABLE-POSTGRES
           PYTHONDONTWRITEBYTECODE: '1'
         run: python3 -m unittest -v scripts.test_claude_v1_revoke
+      - name: Stop disposable PostgreSQL
+        if: always()
+        uses: ./.github/actions/postgres-service
+        with:
+          command: stop
+          database: skillpilot_revoke_test
 
   docs-build:
     name: MkDocs Build

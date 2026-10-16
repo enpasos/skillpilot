@@ -1,0 +1,24 @@
+{
+  "startUTC": "2026-10-15T23:33:08.231422+00:00",
+  "endUTC": "2026-10-15T23:33:13.641324+00:00",
+  "command": [
+    "/home/enpasos/projects/skillpilot/tmp/ci-tools/node-v20.20.2-linux-x64/bin/node",
+    "--import",
+    "tsx",
+    "/home/enpasos/projects/skillpilot/app/scripts/generateCrossSubjectRequiresInventory.ts",
+    "--check",
+    "--ledger",
+    "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-independent-peer-20261016-v1/NATIVE-FIRST20-PREPARED-AUTHOR.actual.json",
+    "--independent-review",
+    "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-independent-peer-20261016-v1/NATIVE-FIRST20-INDEPENDENT-PEER.actual.json",
+    "--family",
+    "canonical-gymnasium"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/app",
+  "exitCode": 0,
+  "rootOSReadonly": true,
+  "onlyOwnLaneWritable": true,
+  "owningCLISha256": "6bb4f486a1f623991fdafec621e4c7a062f7f401709fe939e72c6c06a41c2113",
+  "stdout": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-independent-peer-20261016-v1/checks/native-first20-check.stdout.actual.txt",
+  "stderr": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-independent-peer-20261016-v1/checks/native-first20-check.stderr.actual.txt"
+}

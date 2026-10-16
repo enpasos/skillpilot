@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:600f3c8b31ec6361f640c9652b357bc39a5a95f4f26c84cf055a1bbd06ee1a58",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "physik-joint-current-one-contexts-20261015-v1",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/api/goal-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:a0fa57a28313a5a4d54aa21686d17f0147f8701f75081196f26081b1319960b0",
+      "pageFingerprint": "sha256:d40af9bda82c07fac38431d796546ad34ea2e1977af81cb2af5da251e517db11",
+      "evidenceReview": {
+        "reviewId": "gymnasium-i02-i05-current-requires-author-20261015-v1-3857891b",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:cf6e095476fa49dfa211b5cdbf195fb66619788afa4abb1a1090b7117db71371",
+        "profileFingerprint": "sha256:814e6486ceafa1bfb6daba546a7bf31626ba373deaf559f1e783edf6bd61e70c",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:a2ba2f53dd0d34a95c895affe2bd51bf5f5d038bca98d325ac08520cc3f71ca8",
+      "bytes": 359495
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:eb79d52bd39ebc0638c8367c29181ad8698277e4d8d629f2226ae89c1050e8d4",
+      "bytes": 108146
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:2067a0e8310861581be866b3609e54018cb6bdc336151c1c19de21c91fac9216",
+      "bytes": 3406
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:50e4bccd22692b7b57ddfb20921272f4662a16e74b57153abbbdf548ef4a1c7a",
+      "bytes": 21035
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:3ebf6cf67f1c42920dc3cd7fb3fae7e95d818936edf397237affe2a3aa51e562",
+      "bytes": 3407
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:c72e7f5225e6122ada5527d3d64ed1458f31d4547f2f8e9febf7c271ed43bc40",
+      "bytes": 14635
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:5514cafb0e6afb33f3fc12d9834cef12b093a6cb403e6086271e2d8c817706c7",
+      "bytes": 11295
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:38f74c4f1a4641c76f9458e77cd958760094a7c8514fbf64492af5134bcdf61c",
+      "bytes": 6483
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+      "bytes": 6989
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:56f26bd456a8eb8dbf8e5a445de2cb3863bdfe7e7326acb5718ae953d5b9fc5c"
+}

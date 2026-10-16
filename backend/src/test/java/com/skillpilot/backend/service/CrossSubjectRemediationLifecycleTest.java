@@ -245,6 +245,138 @@ class CrossSubjectRemediationLifecycleTest {
         assertThat(storedMastery()).isEqualTo(completedStored);
     }
 
+
+    @org.junit.jupiter.api.Test
+    void explicitMathOnlyDetourFromEmptyMathPersistsEachFrontierStepAndRestoresPhysicsTargets()
+            throws Exception {
+        String kineticEnergy = "7eeff2de-6015-49a6-a96e-a488d886dc9f";
+        String substitution = "a6469c01-6ca3-5eb2-a82c-94f3d0560b32";
+        physicsProfile = "GK";
+        mathProfile = "GK";
+        learnerId = service.createLearner().getSkillpilotId();
+        service.setPreferences(learnerId, "SEQUENTIAL", false, true, null, null);
+        service.setCurriculum(learnerId, ROOT);
+        choose(option -> "DE-RP".equals(option.filterId()));
+        choose(option -> "durationModel".equals(option.scopeKey()) && "G9".equals(option.scopeValue()));
+        choose(option -> "stage".equals(option.scopeKey()) && "SekII".equals(option.scopeValue()));
+        chooseSubject(PHYSICS);
+        finishSubjectsAndChooseCurrentProfiles();
+
+        // Only Physics estimates are imported. No Mathematics foundation is pre-mastered.
+        Learner learner = persisted();
+        masteries.saveAll(List.of(
+                new Mastery(learner, "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd", 1.0),
+                new Mastery(learner, "5c44b9ba-9b05-4774-95d5-073230d3fc4f", 1.0)));
+        service.setPlannedGoals(learnerId, Set.of(kineticEnergy));
+        Set<String> originalTargets = currentTargets();
+        String originalCurriculum = persisted().getPersonalCurriculum();
+        Map<String, Double> originalStored = storedMastery();
+        long originalRevision = persisted().getCoachStateRevision();
+        assertThat(originalStored).hasSize(2).doesNotContainKeys(substitution, kineticEnergy);
+        assertThat(service.getLearnerState(learnerId).stateMachine().prerequisiteBlockers())
+                .anySatisfy(blocker -> {
+                    assertThat(blocker.goalId()).isEqualTo(kineticEnergy);
+                    assertThat(blocker.prerequisiteId()).isEqualTo(substitution);
+                    assertThat(blocker.reason()).isEqualTo("EXTERNAL_PREREQUISITE_UNMASTERED");
+                });
+        assertThat(service.getFrontier(learnerId)).doesNotContain(kineticEnergy, substitution);
+        assertThat(persisted().getPersonalCurriculum()).isEqualTo(originalCurriculum);
+        assertThat(persisted().getCoachStateRevision()).isEqualTo(originalRevision);
+        assertThat(storedMastery()).isEqualTo(originalStored);
+
+        // These are the 33 existing atoms in the independently checked native route.
+        // The API must make each a target/frontier item before its test completion write.
+        // Synthetic content evidence and orientation completion certify no human learning.
+        List<String> reviewedMathClosure = List.of(
+                "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+                "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+                "65365dce-f33f-49d8-9516-42f75883aa86",
+                "ee48e811-4c9c-5080-9836-8403fc9f0810",
+                "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+                "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "cf474eab-1379-4877-907e-58b0892ce734",
+                "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+                "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "a4c2b831-02f0-5d55-a300-7823a71352c4",
+                "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+                "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+                "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+                "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+                "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                "05012547-7263-5bfa-9e7c-df970745a011",
+                "26f668a0-6425-5466-9cf7-6295dd189005",
+                "e331a425-e9c6-46eb-89cb-dedf72857974",
+                "d658e26a-e351-4bca-824e-f346deaa87c5",
+                "44cb7404-114e-5b14-b33a-ddee41952d46",
+                "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+                "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+                "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+                "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+                "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+                "02013455-72a0-5213-9509-ed77f7ede62b",
+                "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+                "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42");
+        assertThat(reviewedMathClosure).hasSize(33).doesNotHaveDuplicates();
+        reopenStageChoice();
+        choose(option -> "stage".equals(option.scopeKey()) && "CrossStage".equals(option.scopeValue()));
+        chooseSubject(MATH);
+        finishSubjectsAndChooseCurrentProfiles();
+        assertThat(service.getPersonalCurriculumSubjectIds(learnerId)).containsExactly(MATH);
+        assertThat(currentTargets()).containsAll(reviewedMathClosure).doesNotContain(kineticEnergy);
+        assertThat(storedMastery()).isEqualTo(originalStored);
+        service.setPlannedGoals(learnerId, new java.util.LinkedHashSet<>(reviewedMathClosure));
+        var remaining = new java.util.LinkedHashSet<>(reviewedMathClosure);
+        var completed = new java.util.LinkedHashSet<String>();
+        while (!remaining.isEmpty()) {
+            var frontier = service.getFrontier(learnerId);
+            assertThat(frontier).doesNotContain(kineticEnergy);
+            String next = remaining.stream().filter(frontier::contains).findFirst()
+                    .orElseThrow(() -> new AssertionError("No frontier step for reviewed Math route: " + remaining));
+            Map<String, Double> beforeStep = storedMastery();
+            assertThat(beforeStep).doesNotContainKey(next);
+            service.setActiveGoal(learnerId, next);
+            // Orientation uses the existing binary completion marker; it is not graded mastery.
+            service.setMastery(learnerId, new MasteryUpdateRequest(Map.of(next, 1.0), next));
+            completed.add(next);
+            remaining.remove(next);
+            Map<String, Double> afterStep = storedMastery();
+            assertThat(afterStep).hasSize(beforeStep.size() + 1)
+                    .containsAllEntriesOf(beforeStep).containsEntry(next, 1.0)
+                    .doesNotContainKey(kineticEnergy);
+            assertThat(afterStep.keySet()).containsAll(completed);
+            assertThat(java.util.Collections.disjoint(afterStep.keySet(), remaining)).isTrue();
+        }
+        Map<String, Double> completedStored = storedMastery();
+        assertThat(completedStored).hasSize(35).containsEntry(substitution, 1.0)
+                .doesNotContainKey(kineticEnergy);
+
+        // Return and removal are separate explicit authored choices, preserving global values.
+        reopenStageChoice();
+        choose(option -> "stage".equals(option.scopeKey()) && "SekII".equals(option.scopeValue()));
+        chooseSubject(PHYSICS);
+        finishSubjectsAndChooseCurrentProfiles();
+        assertThat(service.getPersonalCurriculumSubjectIds(learnerId)).containsExactly(PHYSICS);
+        assertThat(currentTargets()).containsExactlyInAnyOrderElementsOf(originalTargets);
+        var returnedConfig = new ObjectMapper().readTree(persisted().getPersonalCurriculum());
+        assertThat(returnedConfig.path(ROOT).path("stage").asText()).isEqualTo("SekII");
+        assertThat(returnedConfig.path(ROOT).path("durationModel").asText()).isEqualTo("G9");
+        assertThat(returnedConfig.path(PHYSICS).path("filterId").asText()).isEqualTo("GK");
+        assertThat(storedMastery()).isEqualTo(completedStored);
+        service.setPlannedGoals(learnerId, Set.of(kineticEnergy));
+        assertThat(service.getFrontier(learnerId)).contains(kineticEnergy).doesNotContain(substitution);
+        assertThat(service.getLearnerState(learnerId).stateMachine().prerequisiteBlockers()).isEmpty();
+        assertThatThrownBy(() -> service.setPlannedGoals(learnerId, Set.of(substitution)))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+        assertThat(service.getPlannedGoals(learnerId)).containsExactly(kineticEnergy);
+        assertThat(storedMastery()).isEqualTo(completedStored);
+    }
+
     private Set<String> currentTargets() {
         return service.getFilteredAtomicGoalIds(ROOT, persisted().getPersonalCurriculum(), null, false);
     }

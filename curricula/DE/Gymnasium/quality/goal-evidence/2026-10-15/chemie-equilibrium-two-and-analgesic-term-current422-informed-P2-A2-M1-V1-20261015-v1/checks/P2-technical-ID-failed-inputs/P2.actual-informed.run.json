@@ -1,0 +1,39 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-equilibrium-two-current-final-informed-P2-20261015-v1-actual-informed-synthesis",
+  "bundleFingerprint": "sha256:bacc7d15f803b6860e668e894c559f5f19cf1cf6df04d4a1dbc5949bcbb165f2",
+  "bookDigest": "sha256:bacc7d15f803b6860e668e894c559f5f19cf1cf6df04d4a1dbc5949bcbb165f2",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; exact revision not exposed",
+  "role": "synthesizer",
+  "promptFamilyId": "positive-understanding-evidence-profile-authoring-v2",
+  "promptFingerprint": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:11e9248dab6fc50c929d226cd89cf5278eacd7caaa7d5074ff571f0d6078f397",
+  "independenceGroupId": "chemie-equilibrium-two-current-final-informed-P2-20261015-v1-informed-not-blind",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+    "1a51362e-fd84-5964-89b5-b435772c2149"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:bacc7d15f803b6860e668e894c559f5f19cf1cf6df04d4a1dbc5949bcbb165f2"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-15T17:08:12.732Z",
+  "completedAt": "2026-10-15T17:08:12.758Z",
+  "status": "completed",
+  "outputDigest": "sha256:2e167e6c47bf0adca27ec2ede6c53c5158e649546f17f93f0a0cc6ac18031a36",
+  "toolchainVersion": "positive-understanding-evidence-v2"
+}

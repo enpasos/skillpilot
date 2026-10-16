@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "findings": [
+    {
+      "findingId": "UI-ECOV4-001",
+      "classification": "Observed local GoalCard header layout issue outside original image raster",
+      "goalId": "0f632595-5875-5a95-83d8-7de3180bdaa6",
+      "containerWidth": 360,
+      "screenshot": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-four-ecology-child-images-informed-independent-V4-20261015-v1/GoalCard.0f632595-5875-5a95-83d8-7de3180bdaa6.container-360.png",
+        "sha256": "sha256:07a0d0a259eaa9f0aaae5aeb840fe4fa702816d63ba7f779c0bfb86d4ee4e9c8",
+        "bytes": 180698
+      },
+      "actualObservation": "Das lange ungetrennte Titelwort Lebensgemeinschaften reicht rechts unter das Statussymbol. Das Bild darunter ist vollständig enthalten, seine Beschriftungen sind davon nicht betroffen. Bei680px ist diese Überlagerung nicht sichtbar.",
+      "smallestNextStep": "Getrennte zuständige UI-Arbeit soll den langen Titel im tatsächlichen GoalCard-Header umbrechen bzw. dem Symbol Platz reservieren und die360px-Ansicht gezielt prüfen. Keine Änderung von PNG, Lernzielsemantik oder Qualitätsgates ist dafür erforderlich.",
+      "rasterDecision": "KEEP remains a visual-orientation candidate only; this does not approve the observed header layout.",
+      "normalVOrRuntimeChangeMade": false
+    }
+  ],
+  "scopeBoundary": "Concrete observed rendering context finding; recorded without UI mutation or turning it into an invented scientific PNG defect."
+}

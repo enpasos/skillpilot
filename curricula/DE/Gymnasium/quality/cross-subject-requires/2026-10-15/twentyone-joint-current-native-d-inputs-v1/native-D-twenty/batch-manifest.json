@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-joint-current-twenty-contexts-20261015-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/twentyone-joint-current-native-d-inputs-v1/batch-twenty.config.json",
+  "configDigest": "sha256:c3c1949b6c0b727652f0f4f3f90617c6100c1534324bad4b20fd4d89ff7fd199",
+  "goalIds": [
+    "b92827a7-5d62-5fdb-a6f5-ac44461f4a7b",
+    "f7f2c254-1663-5861-bed7-a32c00495b19",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+    "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+    "ac25ffe3-fd42-592d-a937-79cc13460313",
+    "6ebb6182-f221-5f4c-b112-4ac72b104321",
+    "79da5c34-86b2-5c10-9726-9de886ccef7d",
+    "206fe51d-cc78-5422-b139-32cc97eb1c37",
+    "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+    "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+    "946ecf7b-0fcf-5776-9fb6-d397423c2f12",
+    "23335a89-f8e6-5c22-8705-d71193aeac96",
+    "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+    "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+    "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+    "ce14a7e7-7e2a-517f-a465-78ba3fbe414d",
+    "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+    "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/twentyone-joint-current-native-d-inputs-v1/base-goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:e9e320d5e49fe9438d9a6becb202b01c6cc26a1f20ccc0b67b3b13e83596cf14"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:4f61ee4319d93b19d1b0b804bd2d5823287c4107bae855ced4abd54dfb76414c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:f101f8052fb8fa423c1a992205179cfd5b8f20046bedf6c8900699e69673ea80",
+    "reviewInputFingerprint": "sha256:5d4645c4e4b21189dee639ef539f1ef40b61e3dff2b816086ad372f64128296b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-joint-current-twenty-contexts-20261015-v1-a",
+        "campaignDigest": "sha256:5c56efbcd737ce29390a796004b8a46323f2b6bd75782ca6b88dec7d68c485f6",
+        "roundId": "physik-joint-current-twenty-contexts-20261015-v1-first-pass-a",
+        "independenceGroupId": "physik-joint-current-twenty-contexts-20261015-v1-independent-a",
+        "batchId": "physik-joint-current-twenty-contexts-20261015-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3f2c117692a1c6a0ff0481313534cc4dd83963c161d1db880bbff3a574c2d57c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-joint-current-twenty-contexts-20261015-v1-b",
+        "campaignDigest": "sha256:9290f7bdd3ee38781211a58115811b899e28744f70a56b35b824c75c649d363e",
+        "roundId": "physik-joint-current-twenty-contexts-20261015-v1-first-pass-b",
+        "independenceGroupId": "physik-joint-current-twenty-contexts-20261015-v1-independent-b",
+        "batchId": "physik-joint-current-twenty-contexts-20261015-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0ee5ed54caa36ff6dd3f027c31e9666e4870624e8ffaf3882bb69f9945e00f67"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

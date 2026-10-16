@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-c441-sequencing-successor-positive-atomicity-memory-independent-a-20261015-v1-pam-run",
+  "bundleFingerprint": "sha256:cc290ed3d8da6c550cecdf418d7be18df80bd09282bdfe66b074581079f88bd0",
+  "bookDigest": "sha256:e9bc6417215d9ce82f7fa13224ad15d3e2c14d27d9a46c62c74225118ea0b7f2",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; exact served model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-profile-authoring-v2",
+  "promptFingerprint": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:1033ae6a93906b20c81a1cd8066e71953fbbc7c31ef98fb9bf4808f60a098cd6",
+  "independenceGroupId": "chemie-c441-sequencing-successor-positive-atomicity-memory-independent-a-20261015-v1-current-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c441d9e8-d9d9-5e55-a189-a37345541321"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:cf2a00dfaae210e2ca0f6ca2b00476ccee8e41ded514943135f55478bca6b0b4"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:e9bc6417215d9ce82f7fa13224ad15d3e2c14d27d9a46c62c74225118ea0b7f2"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:989c3f9f8fd0a37f62dd8788d08aa0d09a52aa40db87dad7164fa3292a63be31"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:1cc097c08f58b9801d4493c561e4188ae205d9967f5cc27c8fda5bafa6c3cbff"
+    }
+  ],
+  "startedAt": "2026-10-15T09:01:52Z",
+  "completedAt": "2026-10-15T09:06:28.926Z",
+  "status": "completed",
+  "outputDigest": "sha256:3063d6e1e0e4b6deca32df245d1f4f8d093b1ec18af4542e15572700a5a17fd6",
+  "toolchainVersion": "codex-c441-independent-current-pam-20261015-v1"
+}

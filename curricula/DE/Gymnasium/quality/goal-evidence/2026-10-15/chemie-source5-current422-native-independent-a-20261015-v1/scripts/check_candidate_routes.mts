@@ -1,0 +1,31 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+const repo=process.cwd(), own=resolve(repo,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source5-current422-native-independent-a-20261015-v1');
+const base='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-source3-three-cluster-sequencing-author-20261015-v1';
+const read=(p:string)=>JSON.parse(readFileSync(resolve(repo,p),'utf8'));
+const hash=(p:string)=>'sha256:'+createHash('sha256').update(readFileSync(resolve(repo,p))).digest('hex');
+const paths={land:base+'/candidate/canonical554.prospective422.three-clusters-one-atomic-edge.author.json',kind:base+'/candidate/semantic554.same-classifications-four-source-fingerprints.author.json',cas:base+'/CAS.two-whole-LK-views-and-two-exact-GK-controls.author.json'};
+const land=read(paths.land), kind=read(paths.kind),cas=read(paths.cas);
+const G=new Map<string,any>(land.goals.map((g:any)=>[g.id,g]));
+const K=new Map<string,string>(kind.decisions.map((d:any)=>[d.goalId,d.semanticKind]));
+const mods=['app/src/utils/authoring/compositionViewAuthoring.ts','app/scripts/compositionViewSourceCoverage.ts','app/src/hooks/useLandscapes.ts','app/src/utils/compositionViewRuntime.ts'];
+const {compileCompositionView,collectCompositionProjectionRoleGoalIds}=await import(pathToFileURL(resolve(repo,mods[0])).href);
+const {collectAuthoritativeTargetAtomicGoalIds}=await import(pathToFileURL(resolve(repo,mods[1])).href);
+const {prepareLandscapeEntries}=await import(pathToFileURL(resolve(repo,mods[2])).href);
+const {applyCompositionViewProjection}=await import(pathToFileURL(resolve(repo,mods[3])).href);
+const ids=['1286f2fe-89b7-4454-8e11-85b6abd6e278','c441d9e8-d9d9-5e55-a189-a37345541321','40f2db27-0ebe-5f03-941d-708aebcc64b7','93a7ce4d-1c90-568c-9368-cac423011ef9','d815960a-21ab-5a42-8b23-ecd20d03db19'];
+const reports=[];
+for(const c of cas.rows){
+ const view=read(c.after.path),compiled=compileCompositionView(view,land),targets=collectAuthoritativeTargetAtomicGoalIds(land,view),roles=collectCompositionProjectionRoleGoalIds(view.rootNodes,G);
+ const projected=new Map<string,any>(applyCompositionViewProjection(prepareLandscapeEntries([land]),view)[0].goals.map((g:any)=>[g.id,g]));
+ const deps=(id:string)=>{const seen=new Set<string>(),stack=[...(projected.get(id)?.effectiveRequires??[])];while(stack.length){const p=stack.pop()!;if(seen.has(p))continue;seen.add(p);stack.push(...(projected.get(p)?.effectiveRequires??[]),...(projected.get(p)?.contains??[]));}return [...seen].sort();};
+ const rows=[...targets].sort().map((id:string)=>{const d=deps(id);return {goalId:id,title:G.get(id)?.title,description:G.get(id)?.description,directRaw:G.get(id)?.requires,effectiveDirect:projected.get(id)?.effectiveRequires,closure:d,selfReachable:d.includes(id),missingCurricularTarget:d.filter(i=>K.get(i)==='curricularAtomic'&&!targets.has(i))};});
+ const restricted=rows.filter(r=>ids.includes(r.goalId));
+ const unresolved=rows.filter(r=>r.selfReachable||r.missingCurricularTarget.length);
+ reports.push({view:c.name,wholeViewBinding:{...c.after,actualSHA256:hash(c.after.path)},scope:view.scope,compileFindings:compiled.findings,targetCount:targets.size,prerequisiteOnlyCount:roles.prerequisiteOnlyGoalIds.size,allVisibleTargetRoutes:rows,reviewedGoalRoutes:restricted,unresolvedWholeViewRoutes:unresolved,sourceGoalsAbsent:ids.filter(i=>!targets.has(i)),noMasteryAssumed:true});
+}
+const out={schemaVersion:1,role:'Reviewer A own current candidate whole-route contextual check, not gate decisions for other goals',actualCompletedAt:new Date().toISOString(),inputs:Object.fromEntries(Object.entries(paths).map(([k,p])=>[k,{path:p,sha256:hash(p)}])),helpers:mods.map(p=>({path:p,sha256:hash(p)})),reports,humanApproval:false,humanTrial:false,activeIntegration:false};
+writeFileSync(resolve(own,'checks/CHECK.own-stock-full-visible-target-routes.actual.json'),JSON.stringify(out,null,2)+'\n');
+console.log(JSON.stringify(reports.map(r=>({view:r.view,targetCount:r.targetCount,prerequisiteOnlyCount:r.prerequisiteOnlyCount,compileErrors:r.compileFindings.filter((f:any)=>f.severity==='error'),unresolved:r.unresolvedWholeViewRoutes.map(x=>({id:x.goalId,self:x.selfReachable,missing:x.missingCurricularTarget})),reviewedRoutes:r.reviewedGoalRoutes.map(x=>({id:x.goalId,self:x.selfReachable,missing:x.missingCurricularTarget,closure:x.closure}))})),null,2));

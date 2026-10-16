@@ -1,0 +1,101 @@
+{
+  "role": "Author numerical/conservation/answer checks, not an independent review vote",
+  "createdAtUTC": "2026-10-15T15:26:20.553626+00:00",
+  "checks": [
+    {
+      "case": "eqrk16-04-b",
+      "arithmetic": {
+        "logQ": 1.0000000000000056,
+        "Q": 10.000000000000128,
+        "cCuMolPerL": 0.009999999999999872,
+        "forwardSubstitutionV": 1.07042,
+        "originalForwardDaniellV": 1.04084
+      },
+      "boundary": "Fictional corrected open-circuit reading; fixed25C; metal/metal-ion pairs; explicit dilute-ideal concentrations; no actual measurement claimed."
+    },
+    {
+      "case": "eqrk16-09-b",
+      "arithmetic": {
+        "Knet": 0.00288,
+        "alpha": 160001.00000000003,
+        "exactIdealSolubilityMolPerL": 0.005366579916483123,
+        "freeAgMolPerL": 3.3540914847301716e-08,
+        "complexAgMolPerL": 0.005366546375568275,
+        "ionicProduct": 1.7999999999999997e-10,
+        "boundNH3MolPerL": 0.01073309275113655,
+        "closedTotalNH3MolPerL": 0.001
+      },
+      "boundary": "All dissolved-species activity coefficients explicitly1; exact means within that model; finite ligand counterexample preserved."
+    },
+    {
+      "case": "eqrk16-11-a",
+      "arithmetic": {
+        "newQ": 0.01,
+        "forwardEVolts": 1.1591600000000002,
+        "forwardDeltaGkJPerMol": -223.68310520000006,
+        "minimumReversalWorkkJPerMol": 223.68310520000006,
+        "referenceQ1WorkkJPerMol": 212.26700000000002,
+        "workIncreasekJPerMol": 11.416105200000032
+      },
+      "boundary": "Forward createsZn2+; reversal consumesZn2+. Reservoir maintains the stated free activities. Ligand regeneration and finite-current losses excluded from the reported cell work."
+    },
+    {
+      "case": "eqrk16-12-a",
+      "arithmetic": {
+        "orderNO": 2.0,
+        "orderO2": 1.0,
+        "kL2PerMol2s": 0.19999999999999996
+      },
+      "stepConservation": [
+        {
+          "step": "A1",
+          "atomDifference": {
+            "N": 0,
+            "O": 0
+          },
+          "chargeDifference": 0
+        },
+        {
+          "step": "A2",
+          "atomDifference": {
+            "N": 0,
+            "O": 0
+          },
+          "chargeDifference": 0
+        },
+        {
+          "step": "B1",
+          "atomDifference": {
+            "N": 0,
+            "O": 0
+          },
+          "chargeDifference": 0
+        },
+        {
+          "step": "B2",
+          "atomDifference": {
+            "N": 0,
+            "O": 0
+          },
+          "chargeDifference": 0
+        }
+      ],
+      "preEquilibriumElimination": [
+        "[N2O2]=KA[NO]^2 -> v=kA*KA[NO]^2[O2]",
+        "[NO3]=KB[NO][O2] -> v=kB*KB[NO]^2[O2]"
+      ],
+      "freshTransferDerivation": "0=k1[NO]^2-kminus1[I]-k2[I][O2];v=k1*k2[NO]^2[O2]/(kminus1+k2[O2]);lowO2 linear,highO2 limit=k1[NO]^2",
+      "boundary": "No mechanism steps in task materials; independent proposals required; samples and saturation extension remain hypothetical, alternatives explicitly allowed."
+    },
+    {
+      "case": "eqrk16-12-b",
+      "status": "Full case retained byte exact after reread",
+      "lowRateMolPerLs": 9.950248756218905e-05,
+      "highRateMolPerLs": 0.016666666666666666,
+      "highCLimitMolPerLs": 0.02,
+      "boundary": "Formal10M limit remains explicit; the paired12-a now tests independent model construction;12-b retains SSA and transient validation."
+    }
+  ],
+  "result": "Listed calculations and atom/charge balances are consistent under the supplied models; independent successor review remains required",
+  "scientificApprovalVote": false
+}

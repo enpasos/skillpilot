@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2834af6e354ed6ecc61542a686b07de8319720f993befafce39da08c0531d0a7",
+  "reviewInputFingerprint": "sha256:d99fd7a0eeeb2068ff5983973b8f15753dcc6900c608a02d6be4846bef9e9fe6",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-ln-existing-png-20260927-v1-a",
+      "roundId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-ln-existing-png-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-ln-existing-png-20260927-v1-first-pass-a.batch-001.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-ln-existing-png-20260927-v1-b",
+      "roundId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-ln-existing-png-20260927-v1-independent-b",
+      "runIds": [
+        "math-m7-ln-existing-png-b-run-20260927-01"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::unknown::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+      "firstRecordId": "mathematik-m7-ln-existing-png-20260927-v1-a-goal-01",
+      "secondRecordId": "math-m7-ln-existing-png-b-record-20260927-01",
+      "firstRunId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "math-m7-ln-existing-png-b-run-20260927-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

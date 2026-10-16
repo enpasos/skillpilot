@@ -1,0 +1,189 @@
+{
+  "runId": "53d7dd88-ad9f-436e-816e-443a4ebb8c17",
+  "method": "Original hand reasoning checked with the arithmetic expressions below; all values are constructed author teaching data, not measured laboratory results.",
+  "checks": [
+    {
+      "case": "03a",
+      "theoreticalCaCO3_g": 0.1001,
+      "grossYield_pct": 89.91008991008991,
+      "freshHalfCarbonateTheory_g": 0.05005,
+      "decision": "pass; ±0.01g strongly limits precision"
+    },
+    {
+      "case": "04a",
+      "means_uS_cm": [
+        5.5,
+        1200.0,
+        9.5
+      ],
+      "decision": "pass"
+    },
+    {
+      "case": "05a",
+      "recovery_pct": 90.0,
+      "decision": "pass; not purity"
+    },
+    {
+      "case": "05b",
+      "reaction": "Fe2O3 + 3CO -> 2Fe + 3CO2",
+      "leftAtoms": {
+        "Fe": 2,
+        "C": 3,
+        "O": 6
+      },
+      "rightAtoms": {
+        "Fe": 2,
+        "C": 3,
+        "O": 6
+      },
+      "decision": "FAIL in bilingual case solution AND raw profile05: total O=6, not3; balanced equation itself is correct"
+    },
+    {
+      "case": "06a",
+      "purity_pct": 95.0,
+      "NaClRecovery_pct": 85.5,
+      "grossMass_pct": 90.0,
+      "decision": "arithmetic pass; future analytical purity check/self-synthesised preparation source duty incomplete"
+    },
+    {
+      "case": "06b",
+      "theoryCrystalA_g": 4.0,
+      "purity_pct": 95.0,
+      "initialARecovery_pct": 56.99999999999999,
+      "theoryCrystalYield_pct": 85.5,
+      "decision": "pass; fictitious A/B not executed chemistry"
+    },
+    {
+      "case": "07a",
+      "recoveredStartingMass_pct": [
+        24.0,
+        30.0,
+        44.00000000000001
+      ],
+      "massClosure_pct": 98.00000000000001,
+      "decision": "pass; unallocated2%loss"
+    },
+    {
+      "case": "07b",
+      "NaClApproxMolarity_mol_L": 0.8555783709787816,
+      "meanPracticeConductivity_mS_cm": 9.95,
+      "referenceUrl": "https://assets.thermofisher.com/TFS-Assets/BPD/Reference-Materials/gibco-sodium-chloride-spec-sheet.pdf",
+      "manufacturerTable": {
+        "0.1M_mS_cm": [
+          8.8,
+          10.4
+        ],
+        "0.5M_mS_cm": [
+          39.1,
+          45.9
+        ],
+        "1.0M_mS_cm": [
+          74.5,
+          81.1
+        ]
+      },
+      "decision": "FAIL physical recipe/reference consistency; table not an exact20°Cprediction; independently measure concentration-matched standards or correct recipe/data before use"
+    },
+    {
+      "case": "08b",
+      "limitingCa_mmol": 2.0,
+      "carbonate_mmol": 2.5,
+      "theory_g": 0.2002,
+      "gross_pct": 89.91008991008991,
+      "pureProduct_g": 0.17099999999999999,
+      "corrected_pct": 85.4145854145854,
+      "freshCarbonateLimitingTheory_g": 0.25025,
+      "decision": "pass"
+    },
+    {
+      "case": "09a",
+      "rise_pct": [
+        52.5,
+        1.875
+      ],
+      "decision": "pass"
+    },
+    {
+      "case": "10a",
+      "totalMagnification": 100,
+      "decision": "pass; no invented unobserved nuclei"
+    },
+    {
+      "case": "10b",
+      "means_um": [
+        40.0,
+        16.666666666666668
+      ],
+      "decision": "pass; calibration setting-specific"
+    },
+    {
+      "case": "11a",
+      "germination_pct": [
+        85.0,
+        1.6666666666666667
+      ],
+      "decision": "pass; moisture not oxygen exclusion"
+    },
+    {
+      "case": "11b",
+      "gasMeans_ml": [
+        9.0,
+        18.0,
+        11.0
+      ],
+      "decision": "pass; tested maximum not universal optimum"
+    },
+    {
+      "case": "12a",
+      "freshRecipeMass_g": 10.0,
+      "decision": "pass; emulsifier effect not clinical safety"
+    },
+    {
+      "case": "13a",
+      "reaction": "CaSO4·0.5H2O + 1.5H2O -> CaSO4·2H2O",
+      "Ca_S_O_H_counts_eachSide": [
+        1,
+        1,
+        6,
+        4
+      ],
+      "failureMeans_N": [
+        9,
+        5
+      ],
+      "decision": "pass; geometry/moisture conditions matter"
+    },
+    {
+      "case": "13b",
+      "bendMean_mm": [
+        7,
+        4
+      ],
+      "waterUptake_pct": [
+        20,
+        35
+      ],
+      "decision": "pass; neither tensile strength nor compostability inferred"
+    },
+    {
+      "case": "14a",
+      "meanGrass_per_m2": [
+        48.0,
+        32.0
+      ],
+      "decision": "pass conditional on a declared count unit; group not species and clones limit individual count"
+    },
+    {
+      "case": "14b",
+      "coverMeans_pct": [
+        20.0,
+        6.666666666666667
+      ],
+      "decision": "pass; cover not growth"
+    },
+    {
+      "case": "15a/b",
+      "decision": "pass on model reasoning: transient temperature not full conductivity; layered filter not removal of dissolved salt or drinking-water approval; actual futureassembly required"
+    }
+  ]
+}

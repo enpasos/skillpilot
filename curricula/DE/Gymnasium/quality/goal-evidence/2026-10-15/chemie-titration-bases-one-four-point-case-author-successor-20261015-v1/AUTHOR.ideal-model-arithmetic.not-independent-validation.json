@@ -1,0 +1,34 @@
+{
+  "role": "Author arithmetic only; unreviewed scientific design",
+  "weakBaseConstant": 1.778279410038923e-05,
+  "ammoniumAcidConstant": 5.623413251903491e-10,
+  "rows": [
+    {
+      "addedHCl_mL": 0.0,
+      "totalVolume_L": 0.025,
+      "weakBase_pH_massChargeReference": 11.122104317703602,
+      "strongBase_pH_massChargeReference": 13.000000000000433
+    },
+    {
+      "addedHCl_mL": 12.5,
+      "totalVolume_L": 0.0375,
+      "weakBase_pH_massChargeReference": 9.24953713006823,
+      "strongBase_pH_massChargeReference": 12.522878745284245
+    },
+    {
+      "addedHCl_mL": 25.0,
+      "totalVolume_L": 0.05,
+      "weakBase_pH_massChargeReference": 5.275460798282042,
+      "strongBase_pH_massChargeReference": 7.0
+    },
+    {
+      "addedHCl_mL": 30.0,
+      "totalVolume_L": 0.055,
+      "weakBase_pH_massChargeReference": 2.041392550783792,
+      "strongBase_pH_massChargeReference": 2.0413926851056754
+    }
+  ],
+  "chargeEquation": "[H+]+C_B,total·[H+]/(Ka+[H+])−Kw/[H+]−C_Cl=0",
+  "arithmeticMethod": "Monotonic log10([H+]) bisection on−14..0,180iterations. Strong-base reference uses stable quadratic charge-balance formula.",
+  "observations": "Reference weak half pH9.249537 differs negligibly from the justified9.25 approximation. No experiment or independent validation claimed."
+}

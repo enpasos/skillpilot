@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-energy-eleven-kept-informed-pa-20261015-v1-P11-final-current",
+  "bundleFingerprint": "sha256:a3de5334021270048b94874d3be9922f887497542124df02977703c41bf2af7b",
+  "bookDigest": "sha256:c4d37d0cc9db5b0dc15e59e8aabb5750c8abbcedf288afe55bc694954811b286",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex (exact revision and decoding settings not exposed)",
+  "role": "synthesizer",
+  "promptFamilyId": "positive-understanding-evidence-profile-authoring-v2",
+  "promptFingerprint": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:33d57f4e8cc22fb8edd460564b18897986c584c754a8ee00bb4f6c47a0f47786",
+  "independenceGroupId": "chemie-energy-eleven-kept-informed-pa-20261015-v1-informed-not-blind",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "a76ab487-4663-5005-8454-cb3196f3773b",
+    "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+    "1051c091-a044-5a09-8946-60a4b5e5d185",
+    "ceda84ff-f48a-5e16-84fd-ad681de7e460",
+    "4d7554d4-3f89-5c64-8a67-4b73b55b4442",
+    "0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+    "a78aacf9-92ea-5627-8776-a595111f754c",
+    "7dc80ee2-64e3-50c1-8aaa-0fef0ed0919d",
+    "1873eb42-1c85-548e-918c-4f4f73ed784f",
+    "0773a104-aaeb-5e96-a615-2a2bec3eb096",
+    "ebfa2c18-0599-5282-bf7a-80c14d86331e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c4d37d0cc9db5b0dc15e59e8aabb5750c8abbcedf288afe55bc694954811b286"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:197c717769f986a21892638763124eecbec9ca583a9536e6cd764216ef1e9306"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:a3de5334021270048b94874d3be9922f887497542124df02977703c41bf2af7b"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:cf3066796c613716e6928572c66ce79b11fb3ff25dae7a858569cd3c46a76351"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-15T12:34:01.713Z",
+  "completedAt": "2026-10-15T12:34:01.809Z",
+  "status": "completed",
+  "outputDigest": "sha256:bc82b152e6726075d413379be029d75369ecd5cc079a61cacafbacc398591124",
+  "toolchainVersion": "positive-understanding-evidence-v2"
+}

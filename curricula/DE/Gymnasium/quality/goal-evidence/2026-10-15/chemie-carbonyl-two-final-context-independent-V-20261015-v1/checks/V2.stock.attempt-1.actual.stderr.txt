@@ -1,0 +1,17 @@
+node:fs:573
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl-two-independent-V2-minimal-host-v1/contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json'
+    at Object.openSync (node:fs:573:18)
+    at readFileSync (node:fs:452:35)
+    at assertPinnedSemanticKindFingerprintProfile (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl-two-independent-V2-minimal-host-v1/app/scripts/goalBookModel.ts:600:17)
+    at Object.fingerprintSemanticKindSourceGoal (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl-two-independent-V2-minimal-host-v1/app/scripts/goalBookModel.ts:628:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl-two-final-context-independent-V-20261015-v1/scripts/check_exact_normal_V2.mts:50:48) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/carbonyl-two-independent-V2-minimal-host-v1/contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json'
+}
+
+Node.js v20.20.2

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual stock import in isolated one-goal image staging host",
+  "startedAtUTC": "2026-10-14T19:34:12.960284+00:00",
+  "command": [
+    "node",
+    "scripts/import_goal_visualization.mjs",
+    "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-two-description-one-image-targeted-author-remediation-20261014-v2/attempt-1/pK-corrected.first-generated.original.png",
+    "--landscape",
+    "candidate/image-only-staging-landscape.json",
+    "--subject",
+    "chemie",
+    "--provider",
+    "OpenAI / ChatGPT-Codex image generation",
+    "--review-status",
+    "pilot",
+    "--license",
+    "CC-BY-4.0",
+    "--prompt",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-two-description-one-image-targeted-author-remediation-20261014-v2/actual-pK-correction-provider-prompt.de.txt",
+    "--reconstruction-prompt",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-two-description-one-image-targeted-author-remediation-20261014-v2/image-reconstruction-prompt.de.md",
+    "--alt-text",
+    "Zwei getrennte Protolysegleichgewichte: HA und Wasser ergeben korrespondierende Base und Oxonium, B und Wasser ergeben korrespondierende Säure und Hydroxid. Die jeweiligen Massenwirkungsausdrücke und negativen Zehnerlogarithmen verbinden K mit pK; kleinere pK-Werte bedeuten innerhalb des jeweiligen Säure- oder Basenvergleichs größere Stärke.",
+    "--description",
+    "Ausgeglichene Säure- und Base-Protolyse mit Massenwirkungsausdrücken und pK-Beziehung; keine Reaktion zwischen Vergleichsproben."
+  ],
+  "exitCode": 0,
+  "assetSha256": "sha256:3c3eac20b0e373c7ef4c1b74f82d6d7921db0540158e24b59d1197a5936c8213",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "provider": "OpenAI / ChatGPT-Codex image_gen.imagegen",
+  "threeStagingImageCopiesByteExact": true,
+  "onlyResourceLinkChangedFor481": true,
+  "activeWrites": false,
+  "independentScientificApproval": false,
+  "humanApproval": false
+}

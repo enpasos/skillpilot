@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:97ded962ef02ae8afb77757d19e856d4268caee5a65961e0afe490c4f96183dc",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "physik-hrd206-current-successor-context-20261015-v1",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/api/goal-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2",
+      "pageFingerprint": "sha256:f38bd45236f426f0ed0e9768961e9914cde402e57ecc60fa82d39d5880a279ad",
+      "evidenceReview": {
+        "reviewId": "hrd206-elementary-evolution-whole-p-informed-author-20261015-v1",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:56acac1521742d8cd0a482f82e754536787b42291bcd061f41ed684dc66b9f0e",
+        "profileFingerprint": "sha256:218c679bfe4366041c026b22204f2302a00ffd4388a2c2f61e090e6937410eec",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:f6395677172cbc40da3dc82f2c471e13cc14b65fcf23f232a9767fe31a447fd0",
+      "bytes": 352492
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:3e4f1e5d729acb9bf5cecd4e62718ac8812dc4a1ef8b9449c2c00a753a653122",
+      "bytes": 177042
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:d6344ecea2e593bad43b955a4533a652609fad8661433c4201897762b6a17de7",
+      "bytes": 3945
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:318c7df9f799f552e482548d98aadcfaf8685fe1bb224fb4279484fdbeac0207",
+      "bytes": 22192
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:a41ce19516565fc46ffbc75fa0ebb1e848505f26ae2e66ff48c853ccda10c47a",
+      "bytes": 3946
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:b9de0871bb2cc96f158cf33f722fa65c695ab1707d208e45cf69d28d249a2ba5",
+      "bytes": 25123
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:3b22eff120dc3bde831ff7e178fbbedf7663dc8693ab0a547ad247d4ab78eed3",
+      "bytes": 18421
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:3196f2f1bd89009bb2fae0eceb7417b09dabf7a6d6a76cb29205bbec639a6a9b",
+      "bytes": 11192
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+      "bytes": 6989
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:651e7f7b1d583008408e33d0c8634b31dc628fa811e5b62a7a166eec8b49a2f5"
+}

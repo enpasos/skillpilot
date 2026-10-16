@@ -1,4 +1,4 @@
-import { assertCompositionSupplementAccountingSupported } from './compositionSupplementSourceCoverage'
+import { readCompositionSupplementAssessment, SUPPLEMENT_MATH, type CompositionSupplementCoverage } from './compositionSupplementSourceCoverage'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -20,7 +20,7 @@ import {
   defaultMemoryCardReviewConfigDir,
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
-import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
+import { generateDeepUnderstandingRollout, loadDeepUnderstandingRolloutConfig, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
@@ -617,6 +617,7 @@ interface CurriculumStatus {
   atomicGoals: number
   clusterGoals: number
   jurisdictionCoverage?: JurisdictionCoverage
+  selectedMathematicsPreparation?: CompositionSupplementCoverage
   mappingPipeline?: MappingPipelineStatus
   scopes: ScopeStatus[]
   rules: RuleResult[]
@@ -624,7 +625,7 @@ interface CurriculumStatus {
 
 interface StatusDocument {
   schemaVersion: 1
-  rulesVersion: 'curriculum-quality-v5'
+  rulesVersion: 'curriculum-quality-v5' | 'curriculum-quality-v7-selected-preparation-orientation'
   generatedAt: string
   generatedBy: string
   sources: {
@@ -6079,6 +6080,20 @@ function evaluateSourceSnapshotIngestion(
   )
 }
 
+/** Add selected preparation accounting to the existing official-source rule.
+ * Inference can authorize preparation, but never discharges official source duties. */
+export function evaluateSelectedPreparationCoverage(ordinary: RuleResult, supplemental: CompositionSupplementCoverage | undefined): RuleResult {
+  if (!supplemental) return ordinary
+  const failed = supplemental.configurations.filter(config => config.targetAuthorizationStatus !== 'pass')
+  return {
+    ...ordinary,
+    status: failed.length ? 'fail' : ordinary.status,
+    summary: ordinary.summary + ` Selected Math preparation: ${supplemental.configurations.length - failed.length}/${supplemental.configurations.length} exact configurations have complete target authorization; reviewed inference does not count as official Math source coverage.`,
+    metrics: { ...ordinary.metrics, selectedPreparationConfigurations: supplemental.configurations.length, unresolvedPreparationConfigurations: failed.length, officialSourceObligationsSatisfiedByPreparationInference: 0, officialReverseMappingsAddedByPreparationInference: 0 },
+    details: [ ...(ordinary.details ?? []), ...failed.map(config => `${config.configurationId}: ${config.unresolvedTargetAtomicGoals} unresolved target(s); ${config.ordinaryTargetSourceObligationMissingGoalIds.length} missing ordinary source duty/duties`) ],
+  }
+}
+
 function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined): RuleResult {
   if (!coverage) {
     return makeRule('CQR-003', 'not_configured', 'No Bundesland coverage projection is available for this curriculum.')
@@ -6328,6 +6343,16 @@ function renderMarkdown(status: StatusDocument): string {
     lines.push(`| ${curriculum.title} | ${coverage.sourceCompleteJurisdictions}/${coverage.totalJurisdictions} | ${coverage.totalAtomicGoals} | ${coverage.rawAtomicGoals} | ${coverage.sourceBackedJurisdictions} | ${coverage.sourceExtractedGoals} | ${coverage.sourceOriginalGoals} | ${coverage.sourceFullyCoveredOriginalGoals} | ${coverage.sourceUnregisteredGoals} | ${coverage.sourceExtractedAtomicGoals} | ${coverage.sourceUnregisteredAtomicGoals} | ${coverage.unsupportedAssignedAtomicGoals} | ${coverage.unmappedSourceAtomicGoals} | ${coverage.partialJurisdictions} | ${coverage.errorJurisdictions} | ${coverage.maxSourceBackedAtomicGoals} (${coverage.maxSourceBackedCoveragePercent}%) |`)
   })
   lines.push('')
+  for (const curriculum of status.curricula) if (curriculum.selectedMathematicsPreparation) {
+    lines.push('## Explicitly selected Mathematics preparation')
+    lines.push('')
+    lines.push('Ordinary official-source denominators and reverse mappings are unchanged. Reviewed didactic inference authorizes bounded preparation only.')
+    lines.push('')
+    lines.push('| Configuration | Math base | Unique targets | Regular Math source | Reviewed preparation inference | Orientation | Ordinary non-curricular | Unresolved |')
+    lines.push('| --- | --- | --- | --- | --- | --- | --- | --- |')
+    for (const config of curriculum.selectedMathematicsPreparation.configurations) lines.push(`| ${config.configurationId} | ${config.mathBaseSelected} | ${config.totalAuthoredTargetAtomicGoals} | ${config.regularSourceBackedAtomicGoals} | ${config.reviewedDidacticSupplementAtomicGoals} | ${config.orientationTargetGoals} | ${config.ordinaryNonCurricularTargetGoals} | ${config.unresolvedTargetAtomicGoals} |`)
+    lines.push('')
+  }
   lines.push('## Rule Catalog')
   lines.push('')
   lines.push('| Rule | Target | Category | Description |')
@@ -6339,14 +6364,43 @@ function renderMarkdown(status: StatusDocument): string {
   return `${lines.join('\n')}\n`
 }
 
+/** Reuse only the genuinely admitted Math/Physics result. Other registered
+ * subjects retain their ordinary native checks and original report ordering. */
+export async function generateQualityNativeReport(
+  admitted?: DeepUnderstandingRolloutReport,
+  generate: typeof generateDeepUnderstandingRollout = generateDeepUnderstandingRollout,
+): Promise<DeepUnderstandingRolloutReport> {
+  if (!admitted) return generate()
+  const config = loadDeepUnderstandingRolloutConfig()
+  const admittedSubjects = new Map(admitted.subjects.map(subject => [subject.subject, subject]))
+  if (admittedSubjects.size !== 2 || !admittedSubjects.has('mathematik') || !admittedSubjects.has('physik')
+      || admitted.subjects.length !== 2 || admitted.reportId !== config.reportId) {
+    throw new Error('Current selected-preparation native result must bind exactly registered Math and Physics')
+  }
+  const remaining = new Set(config.subjects.filter(subject => !admittedSubjects.has(subject.subject)).map(subject => subject.subject))
+  const ordinary = remaining.size ? await generate(undefined, undefined, remaining) : undefined
+  if (ordinary && (ordinary.reportId !== config.reportId || ordinary.schemaVersion !== admitted.schemaVersion)) {
+    throw new Error('Registered native report context changed during selected-preparation quality accounting')
+  }
+  const bySubject = new Map([...admitted.subjects, ...(ordinary?.subjects ?? [])].map(subject => [subject.subject, subject]))
+  if (bySubject.size !== config.subjects.length || bySubject.size !== admitted.subjects.length + (ordinary?.subjects.length ?? 0)
+      || config.subjects.some(subject => !bySubject.has(subject.subject))) {
+    throw new Error('Selected-preparation accounting cannot omit or duplicate another registered native subject')
+  }
+  const subjects = config.subjects.map(subject => bySubject.get(subject.subject)!)
+  return { schemaVersion: admitted.schemaVersion, reportId: config.reportId, subjects,
+    blockingIssueCount: subjects.reduce((sum, subject) => sum + subject.issues.length, 0) }
+}
+
 async function main() {
-  assertCompositionSupplementAccountingSupported(repoRoot)
   const shouldCheck = process.argv.includes('--check')
   const applicabilityCompilation = buildApplicabilityCompilation()
+  const supplementalAssessment = await readCompositionSupplementAssessment(repoRoot, applicabilityCompilation)
+  const supplementalCoverage = supplementalAssessment?.coverage
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
   const goalVisualizationQaLedgers = readGoalVisualizationQaLedgers()
-  const deepUnderstandingReport = await generateDeepUnderstandingRollout()
+  const deepUnderstandingReport = await generateQualityNativeReport(supplementalAssessment?.nativeReport)
   const compositionViewCountsByLandscapeId = readCompositionViewCountsByLandscapeId()
   const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId(applicabilityCompilation)
   const jurisdictionCoverageByLandscapeId = readJurisdictionCoverageByLandscapeId(applicabilityCompilation)
@@ -6369,7 +6423,7 @@ async function main() {
         evaluateGraphIntegrity(landscape, globalGoalIds),
         evaluateTypeConsistency(landscape),
         evaluateSourceSnapshotIngestion(jurisdictionCoverage, mappingPipeline),
-        evaluateJurisdictionCoverage(jurisdictionCoverage),
+        evaluateSelectedPreparationCoverage(evaluateJurisdictionCoverage(jurisdictionCoverage), landscape.landscapeId === SUPPLEMENT_MATH ? supplementalCoverage : undefined),
         evaluateCourseLevelMappingConsistency(landscape),
         evaluateSourceGoalCountPlausibility(mappingPipeline),
         evaluateSemanticAtomicity(landscape, semanticConfigsByLandscapeId.get(landscape.landscapeId) ?? []),
@@ -6406,6 +6460,7 @@ async function main() {
         atomicGoals,
         clusterGoals: landscape.goals.length - atomicGoals,
         jurisdictionCoverage: jurisdictionCoverageByLandscapeId.get(landscape.landscapeId),
+        ...(landscape.landscapeId === SUPPLEMENT_MATH && supplementalCoverage ? { selectedMathematicsPreparation: supplementalCoverage } : {}),
         mappingPipeline,
         scopes,
         rules: curriculumRules,
@@ -6428,7 +6483,7 @@ async function main() {
 
   const statusDraft: StatusDocument = {
     schemaVersion: 1,
-    rulesVersion: 'curriculum-quality-v5',
+    rulesVersion: supplementalCoverage ? 'curriculum-quality-v7-selected-preparation-orientation' : 'curriculum-quality-v5',
     generatedAt: new Date().toISOString(),
     generatedBy: 'app/scripts/generateCurriculumQualityStatus.ts',
     sources: {

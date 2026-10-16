@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "status": "expected-technical-hold",
+  "normalValidator": "validateGoalDescriptionReviewCampaignResultDirectories",
+  "campaignPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-a-sealed-science-native-technical-20261015-v1/native/round-a/description-review-campaign.json",
+  "errors": [
+    "Missing campaign-result artifact: chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-a.batch-001.run.json",
+    "Missing campaign-result artifact: chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-a.batch-001.records.jsonl",
+    "Missing result pair for campaign batch chemie-acid-analytics-ten-current419-native-20261015-v1-first-pass-a.batch-001",
+    "Campaign result pairs must occur exactly once in deterministic campaign batch order",
+    "Campaign records must contain exactly 10 records; found 0",
+    "Campaign records must cover every input goal exactly once and in deterministic campaign order"
+  ],
+  "selectableIndependentRoundResults": 0,
+  "scientificRowsPreserved": 10,
+  "scientificCountsVerbatim": {
+    "D_keep": 5,
+    "D_block": 2,
+    "D_split_review": 3,
+    "P_design_pass": 10,
+    "P_design_fail": 0,
+    "A_atomic": 7,
+    "A_needs_developer_review": 3,
+    "M_exact_existing_reused": 10,
+    "V_exact_existing_reused": 10,
+    "newM_or_V_votes": 0,
+    "newStrictClosures": 0,
+    "strictGain": 0
+  },
+  "missingOriginalReviewerRun": {
+    "originalReviewerRunManifest": true,
+    "actualProviderAndExactModelIdentity": true,
+    "originalRunIdAndGenerationParameters": true,
+    "actualOriginalRunStartAndCompletionTimes": true,
+    "exactNativeOutputDigestAndReviewerInputArtifactBindings": true
+  },
+  "originalFIRSTScienceIsNotRevoked": true,
+  "synthesizerCanSupplyIndependentRoundAuthority": false,
+  "contractEvidence": [
+    "app/scripts/validateGoalDescriptionReviewCampaign.ts:781 independent campaigns require run.blindToOtherRuns=true",
+    "app/scripts/validateGoalDescriptionReviewDualRound.ts:182-186 rejects synthesizer campaigns and requires independent campaign blindness",
+    "contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json requires original provider/model/run/time/output/parameter metadata"
+  ],
+  "requiredFollowup": "Recover genuine original native reviewer-run evidence if it exists; otherwise arrange an actual independently executed native round under repository review rules. Do not relabel this serializer as independent."
+}

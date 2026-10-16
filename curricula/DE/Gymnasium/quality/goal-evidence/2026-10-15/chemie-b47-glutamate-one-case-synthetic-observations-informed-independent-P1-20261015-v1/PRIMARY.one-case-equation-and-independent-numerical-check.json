@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "role": "Bounded primary method lookup and independently recomputed model numbers",
+  "accessedAtUTC": "2026-10-15T21:15:59.907527+00:00",
+  "actualRead": {
+    "title": "University of Texas at Austin CH302: Henderson-Hasselbalch Equation",
+    "url": "https://ch302.cm.utexas.edu/chemEQ/neutralizations/selector.php?name=hh-equation",
+    "support": "The author teaching page gives pH = pKa + log10([A−]/[HA]) and distinguishes predominant protonated/deprotonated forms from equal concentrations at pH = pKa.",
+    "usedFor": "Independent equation and majority-form cross-check only, not the supplied pKa values, glutamate solubility, laboratory execution or curriculum source coverage."
+  },
+  "failedPrimaryLookup": {
+    "urls": [
+      "https://goldbook.iupac.org/terms/view/H02781",
+      "https://goldbook.iupac.org/terms/view/H02781/plain",
+      "https://goldbook.iupac.org/terms/view/H02781/pdf",
+      "https://old.goldbook.iupac.org/html/H/H02781.html"
+    ],
+    "outcome": "IUPAC entry was located but whole-text fetch returned 403/502. It is not represented as fully read."
+  },
+  "equationApplied": "ratio of deprotonated/protonated forms = 10**(pH - pKa), within the supplied simplified concentration model",
+  "independentRecomputedRatios": [
+    {
+      "pH": 3.0,
+      "pKa": 2.2,
+      "comparison": "alpha carboxyl deprotonated/protonated, stipulated simplified model",
+      "ratio": 6.30957344480193
+    },
+    {
+      "pH": 3.0,
+      "pKa": 4.3,
+      "comparison": "side carboxyl deprotonated/protonated, stipulated simplified model",
+      "ratio": 0.05011872336272725
+    },
+    {
+      "pH": 8.0,
+      "pKa": 9.7,
+      "comparison": "alpha NH2/NH3+, stipulated simplified model",
+      "ratio": 0.01995262314968883
+    }
+  ],
+  "netChargeCheck": [
+    {
+      "pH": 3.0,
+      "dominantGroups": [
+        "alpha COO−",
+        "alpha NH3+",
+        "side COOH"
+      ],
+      "formalChargeSum": 0
+    },
+    {
+      "pH": 8.0,
+      "dominantGroups": [
+        "alpha COO−",
+        "alpha NH3+",
+        "side COO−"
+      ],
+      "formalChargeSum": -1
+    }
+  ],
+  "loadingCheck": {
+    "mass_g": 1.0,
+    "finalVolume_L": 0.1,
+    "totalLoading_g_per_L": 10.0,
+    "meaning": "Specified total loading, including any solid; this is not a measured dissolved concentration or numerical saturation solubility."
+  },
+  "modelLimit": "The supplied site-assigned pKa values and Henderson ratios are a teaching model. No exact microstate fractions, activity coefficients, counterion concentrations, ionic strength or complete causation are inferred."
+}

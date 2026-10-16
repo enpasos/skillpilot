@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/composition-supplement/v1/whole-mathematics-source-scope-review.schema.json",
+  "title": "Independent whole Mathematics source and material-context scope review for explicit preparation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reviewFormatVersion",
+    "ownerLandscapeId",
+    "goalId",
+    "goalSha256",
+    "scope",
+    "decision",
+    "authorId",
+    "reviewerId",
+    "conditions",
+    "coverageScope",
+    "sourceEdition",
+    "sourceCohort",
+    "contextRestrictionResolution",
+    "sourceContexts"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/composition-supplement/v1/whole-mathematics-source-scope-review.schema.json"
+    },
+    "reviewFormatVersion": {
+      "const": "1.0"
+    },
+    "ownerLandscapeId": {
+      "const": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+    },
+    "goalId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "goalSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schoolForm",
+        "jurisdiction",
+        "stage"
+      ],
+      "properties": {
+        "schoolForm": {
+          "const": "Gymnasium"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE(?:-[A-Z]{2})?$"
+        },
+        "stage": {
+          "enum": [
+            "SekI",
+            "SekII"
+          ]
+        },
+        "durationModel": {
+          "enum": [
+            "G8",
+            "G9"
+          ]
+        },
+        "courseProfile": {
+          "enum": [
+            "GK",
+            "LK",
+            "GK+LK"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "stage": {
+                "const": "SekI"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "courseProfile"
+              ]
+            }
+          },
+          "else": {
+            "required": [
+              "courseProfile"
+            ]
+          }
+        }
+      ]
+    },
+    "decision": {
+      "const": "accepted"
+    },
+    "authorId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "reviewerId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "conditions": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "coverageScope": {
+      "const": "whole-goal-in-entire-declared-scope"
+    },
+    "sourceEdition": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "sourceCohort": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "contextRestrictionResolution": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "sourceContexts": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sourceGoalId",
+          "mappingPath",
+          "sourceExtractionPath",
+          "materialContextSha256"
+        ],
+        "properties": {
+          "sourceGoalId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+          },
+          "mappingPath": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+          },
+          "sourceExtractionPath": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+          },
+          "materialContextSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

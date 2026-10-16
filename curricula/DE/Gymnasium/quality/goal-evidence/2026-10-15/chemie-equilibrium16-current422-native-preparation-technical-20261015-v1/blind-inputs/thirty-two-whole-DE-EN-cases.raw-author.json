@@ -1,0 +1,1382 @@
+{
+  "schemaVersion": 1,
+  "role": "Whole unreviewed E0/G0 author teaching materials",
+  "cases": [
+    {
+      "id": "eqrk16-01-a",
+      "goalId": "ac1bcf34-169c-5339-92ba-efe8c3022560",
+      "title": "Unterschiedliche Stöchiometrie, keine Löslichkeitsrangfolge aus KL allein",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "25 °C; ideale verdünnte Lösungen, c°=1 mol/L. AgCl(s) ⇌ Ag+ + Cl−, KL=1,8·10−10; CaF2(s) ⇌ Ca2+ + 2 F−, KL=3,2·10−11. In reinem Wasser seien Hydrolyse und Komplexbildung vernachlässigbar. Beide Gefäße enthalten nach langer Zeit sichtbaren Feststoff. Datenaufgabe, kein Umgang mit Silber- oder Fluoridsalzen.",
+      "materialsEn": "25 °C; ideal dilute solutions, c°=1 mol/L. AgCl(s) ⇌ Ag+ + Cl−, Ksp=1.8×10−10; CaF2(s) ⇌ Ca2+ + 2 F−, Ksp=3.2×10−11. In pure water neglect hydrolysis and complex formation. Both vessels retain visible solid after a long time. Data exercise, no handling of silver or fluoride salts.",
+      "taskDe": "Leite die beiden KL-Ausdrücke und molaren Löslichkeiten her. Prüfe die Behauptungen „kleineres KL bedeutet stets weniger gelöste Formeleinheiten“ und „sichtbarer Feststoff bedeutet, dass keine Teilchen mehr wechseln“. Begründe die verwendeten Näherungen.",
+      "taskEn": "Derive both Ksp expressions and molar solubilities. Assess “a smaller Ksp always means fewer dissolved formula units” and “visible solid means particles no longer exchange”. Justify your approximations.",
+      "workedReasoningDe": "AgCl: KL=(s/c°)^2, s=√(1,8·10−10)c°=1,34·10−5 mol/L. CaF2: KL=(s/c°)(2s/c°)^2=4(s/c°)^3, s = 2,00·10−4 mol/L. Trotz kleinerem KL ist hier die molare Löslichkeit von CaF2 größer; unterschiedliche Stöchiometrie verhindert die pauschale Rangfolge. Im gesättigten System laufen Lösen und Kristallisieren mit gleicher mittlerer Rate weiter. KL beschreibt Aktivitäten; Konzentrationen sind nur unter der Idealnäherung passend, Feststoffaktivität ist eins.",
+      "workedReasoningEn": "AgCl: Ksp=(s/c°)^2, giving s=1.34×10−5 mol/L. CaF2: Ksp=4(s/c°)^3, giving s=2.00×10−4 mol/L. Despite its smaller Ksp, CaF2 has the greater molar solubility here; different stoichiometry defeats the blanket ranking. Dissolution and crystallisation continue at equal average rates in the saturated system. Ksp uses activities; concentrations apply only with the stated ideal approximation, and pure solid has unit activity.",
+      "freshIndependentTransferDe": "Ein Salz M2X liefert 2 M+ und X2−. Stelle seinen Ausdruck selbst auf und entscheide, ob der AgCl-Wurzelansatz zulässig ist. Prüfe anschließend, was fehlender Feststoff über Sättigung tatsächlich aussagt.",
+      "freshIndependentTransferEn": "A salt M2X yields 2 M+ and X2−. Construct its expression and decide whether the AgCl square-root method applies. Then explain what the absence of solid actually tells you about saturation.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Exponenten aus Auflösungsgleichungen ableiten.",
+          "observableEn": "Derive exponents from dissolution stoichiometry.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "1,34·10−5 und 2,00·10−4 mol/L einschließlich Rangfolgengegenbeispiel herleiten.",
+          "observableEn": "Derive both solubilities and the counterexample to simple Ksp ranking.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Dynamischen Teilchenaustausch und Konzentrationsnäherung erklären.",
+          "observableEn": "Explain dynamic particle exchange and the concentration approximation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-01-b",
+      "goalId": "ac1bcf34-169c-5339-92ba-efe8c3022560",
+      "title": "Gleichion und Fällungsentscheidung nach dem Mischen",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "25 °C; AgCl-KL=1,8·10−10, c°=1 mol/L. Je 50,0 mL AgNO3 (2,0·10−5 mol/L) und NaCl (2,0·10−5 mol/L) werden im Gedankenexperiment gemischt; Volumina additiv. Ein zweites gesättigtes AgCl-System steht mit 0,0100 mol/L NaCl und überschüssigem Feststoff in Kontakt. Keine weiteren Reaktionen, verdünnt-ideal.",
+      "materialsEn": "At 25 °C, AgCl Ksp=1.8×10−10 and c°=1 mol/L. Mix 50.0 mL each of 2.0×10−5 mol/L AgNO3 and NaCl in a thought experiment; volumes add. A second saturated AgCl system contains 0.0100 mol/L NaCl and excess solid. No other reactions; dilute-ideal model.",
+      "taskDe": "Berechne Q unmittelbar nach dem Mischen und entscheide über eine Fällung. Berechne im zweiten System die Gleichgewichtskonzentration von Ag+ und erläutere, warum Zugabe von NaCl KL nicht verkleinert. Stelle die Wirkung von Ammoniak als neuer Komplexbildner qualitativ gegenüber, ohne Zahlen zu erfinden.",
+      "taskEn": "Calculate Q immediately after mixing and decide whether precipitation occurs. Calculate equilibrium Ag+ in the second system and explain why adding NaCl does not reduce Ksp. Contrast ammonia as a new complexing agent qualitatively without inventing constants.",
+      "workedReasoningDe": "Nach Verdünnung jeweils 1,0·10−5 mol/L, daher Q=1,0·10−10<KL: keine thermodynamisch erforderliche Fällung, Lösung ungesättigt. Im NaCl-System [Ag+]≈KL c°²/[Cl−]=1,8·10−8 mol/L; zusätzliches Chlorid unterdrückt das Lösen, KL bleibt bei gleicher Temperatur gleich. Ammoniak bindet freies Ag+ zu einem Komplex; der gekoppelte Verbrauch freier Ionen kann mehr Feststoff lösen. Gesamtsilber und freies Ag+ sind dann verschieden; quantitative Aussagen brauchen Komplexkonstante und Bilanz.",
+      "workedReasoningEn": "After dilution each concentration is 1.0×10−5 mol/L, hence Q=1.0×10−10<Ksp: precipitation is not thermodynamically required and the solution is unsaturated. With NaCl, [Ag+]≈1.8×10−8 mol/L. Extra chloride suppresses dissolution; Ksp at the same temperature is unchanged. Ammonia binds free Ag+ in a complex and can drive further dissolution. Total silver differs from free Ag+; quantitative conclusions need formation constants and balances.",
+      "freshIndependentTransferDe": "Eine dritte Probe wird zehnfach mit Wasser verdünnt. Unterscheide ein Gefäß mit überschüssigem AgCl von einer zuvor abfiltrierten gesättigten Lösung: Wo kann durch weiteres Lösen wieder Sättigung entstehen?",
+      "freshIndependentTransferEn": "Dilute a third sample tenfold with water. Contrast excess solid AgCl with a previously filtered saturated solution: where can further dissolution restore saturation?",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Verdünnung vor Q-Vergleich berücksichtigen.",
+          "observableEn": "Include dilution before comparing Q with Ksp.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Gleichionwirkung quantitativ erklären, ohne KL-Änderung zu behaupten.",
+          "observableEn": "Quantify the common-ion effect without changing Ksp.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Freie Ionenkonzentration, Gesamtgehalt und Komplexkopplung trennen.",
+          "observableEn": "Distinguish free ions, total concentration, and complex coupling.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-02-a",
+      "goalId": "cc803809-fa7f-517c-b356-9f2f7caf21a5",
+      "title": "Zink verdrängt Kupfer: Thermometrie planen und auswerten",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bereitgestellte Modellmessung: 20,0 mL einer 0,200-mol/L-CuSO4-Lösung mit Zinküberschuss. Flüssigkeitsmasse 20,0 g, c = 4,18 J/(g K), Gefäßwärmekapazität 15,0 J/K. Vor Zugabe 20,0 °C, auf Zugabezeit rückextrapoliert 29,0 °C; Auflösung je Temperatur ±0,1 K. Für die Rechnung gilt vollständiger Cu2+-Umsatz. Praktischer Zukunftspfad nur im beaufsichtigten Schullabor mit durch die Lehrkraft geprüftem Kleinstmengenprotokoll: Schutzbrille, Rührer, Sonde, Suspension nicht anfassen. Kupferhaltige Abfälle getrennt sammeln, nicht in den Ausguss. Keine Heimdurchführung.",
+      "materialsEn": "Supplied model measurement: 20.0 mL of 0.200 mol/L CuSO4 with excess zinc. Liquid mass 20.0 g, c = 4.18 J/(g K), vessel heat capacity 15.0 J/K. Temperature before addition is 20.0 °C and back-extrapolated to mixing is 29.0 °C; each has resolution ±0.1 K. Assume complete Cu2+ conversion. Future practical work requires a supervised school laboratory and a teacher-approved microscale protocol: goggles, stirrer, probe, no touching the suspension. Collect copper waste separately, never in the drain. No home experiment.",
+      "taskDe": "Erzeuge Teil- und Gesamtgleichung, Donator/Akzeptor und einen Stoff-zu-Teilchen-Bezug. Plane Messfolge, Leerwert und Kontrollbedingungen für einen eigenen zukünftigen Versuch. Berechne Wärme und molare Reaktionsenthalpie im Modell, erläutere Vorzeichen und mindestens zwei Grenzen. Die bereitgestellten Daten ersetzen keine eigene Durchführung.",
+      "taskEn": "Construct half/overall equations, donor/acceptor roles, and an observation-to-particle link. Plan a measurement sequence, blank, and controls for a future investigation. Calculate heat and molar reaction enthalpy in the model; explain signs and at least two limitations. Supplied data do not demonstrate your own conduct.",
+      "workedReasoningDe": "Zn→Zn2++2e−; Cu2++2e−→Cu; gesamt Zn+Cu2+→Zn2++Cu. Zink ist Elektronendonator, Cu2+ Akzeptor; Kupferabscheidung und abnehmende blaue Färbung wären passende, aber getrennt zu protokollierende Beobachtungen. n = 0,00400 mol; C = 20,0 · 4,18 + 15,0 = 98,6 J/K; q(Umgebung)=+887,4J, q(Reaktion)≈−887,4J, ΔrH≈−222kJ/mol Umsatz. Bei gleichem Anfangszustand vor/nach Zugabe regelmäßig T und Zeit, Rühren und Isolation protokollieren; Leerwert mit Lösung ohne reagierendes Zink prüft Drift/Mischwärme. Wärmeverlust, Metallwärmekapazität, unvollständige Reaktion und Extrapolation begrenzen die Näherung; Auflösungsgrenze für ΔT konservativ ±0,2 K ergibt etwa ±2,2 % nur für diesen Anteil. Exothermie sagt nichts über die Höhe der Aktivierungsbarriere.",
+      "workedReasoningEn": "Zn→Zn2++2e−; Cu2++2e−→Cu; overall Zn+Cu2+→Zn2++Cu. Zinc donates electrons and Cu2+ accepts them; copper deposition and fading blue colour would be relevant observations requiring a separate record. n = 0.00400 mol; C=98.6J/K; surroundings gain 887.4 J, reaction releases about 887.4 J, giving ΔrH≈−222kJ/mol conversion. Record T/time regularly before/after mixing under controlled stirring/insulation; a nonreacting solution blank tests drift/mixing heat. Heat loss, metal heat capacity, incomplete conversion and extrapolation limit the estimate. Conservative resolution ±0.2 K in ΔT corresponds to about ±2.2% for this contribution alone. Exothermicity does not specify the activation barrier.",
+      "freshIndependentTransferDe": "Ein elektrisch belastetes galvanisches System setzt dieselbe Redoxreaktion räumlich getrennt um. Erkläre, warum gemessene Wärme allein dort nicht dieselbe gesamte Energieübertragung erfasst, und ergänze die notwendige elektrische Messung.",
+      "freshIndependentTransferEn": "A loaded galvanic cell spatially separates the same redox reaction. Explain why heat alone no longer measures all energy transfer and specify the electrical measurements needed.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Bilanzierte Elektronenübertragung mit Donator/Akzeptor zuordnen.",
+          "observableEn": "Assign donor/acceptor roles using balanced electron transfer.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Messplan und 887 J/−222kJmol−1 mit Systemvorzeichen erzeugen.",
+          "observableEn": "Produce a controlled measurement plan and the heat/enthalpy with signs.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Eigene Durchführung, Modellmessung, Unsicherheit und Aktivierungsbarriere abgrenzen.",
+          "observableEn": "Separate own conduct, model data, uncertainty, and activation barrier.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-02-b",
+      "goalId": "cc803809-fa7f-517c-b356-9f2f7caf21a5",
+      "title": "Wärmeverlust und andere Akzeptorstufe",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Datenmodell einer vorbereiteten sauren Lösung: Zn + 2 Fe3+ → Zn2+ + 2 Fe2+, mit Fe3+-Überschuss und 0,00500 mol umgesetztem Zn. Die effektive Wärmekapazität beträgt 229 J/K. Ein isoliertes Modellgerät zeigt ΔT = 4,00 K, ein weniger isoliertes ΔT = 3,10 K. Anfangstemperatur und Stoffmengen sind gleich. Ein Hersteller behauptet, die niedrigere Temperatur beweise kleinere chemische Reaktionsenergie. Keine Schülerzubereitung saurer Metallsalzlösungen.",
+      "materialsEn": "Data model of a prepared acidic solution: Zn + 2 Fe3+ → Zn2+ + 2 Fe2+, with excess Fe3+ and 0.00500 mol Zn converted. Effective heat capacity is 229 J/K. An insulated model apparatus gives ΔT = 4.00 K; a less insulated one gives 3.10 K. Initial temperature and quantities are identical. A supplier claims the lower temperature proves smaller chemical reaction energy. Students do not prepare acidic metal-salt solutions.",
+      "taskDe": "Leite Teilgleichungen und Elektronenbilanz selbst ab. Vergleiche beide scheinbaren molaren Wärmen und prüfe die Herstellerbehauptung. Entwirf eine unabhängige Kontrolle, die Wärmeverlust von unvollständigem Umsatz trennt. Begründe, warum Fe3+ hier Akzeptor ist, obwohl metallisches Eisen in anderen Zellen Donator sein kann.",
+      "taskEn": "Derive half-reactions and electron balance. Compare the two apparent molar heats and assess the supplier claim. Design an independent control distinguishing heat loss from incomplete conversion. Explain why Fe3+ accepts electrons here although iron metal can donate electrons elsewhere.",
+      "workedReasoningDe": "Zn→Zn2++2e− und 2 Fe3++2e−→2Fe2+. q=916J bzw. 709,9 J; scheinbare molare Werte −183,2 bzw. −142,0 kJ/mol Zn. Unterschiedliche Isolation verändert Wärmeabgabe an ungemessene Umgebung; sie beweist keinen anderen Reaktionszustandsunterschied. Temperatur-Zeit-Kurven, Kalibrierung und unabhängige Bestimmung des verbliebenen Zn oder gebildeten Fe2+ würden Wärmeverlust/Umsatz auseinanderhalten. Rollen gehören zu konkreten Redoxpaaren und Zuständen: Fe3+ wird reduziert; Fe0 kann zu Fe2+ oxidieren. Keine Gleichsetzung der Werte mit Aktivierungsenergien oder einer isolierten Elektronenenergie.",
+      "workedReasoningEn": "Zn→Zn2++2e− and 2 Fe3++2e−→2Fe2+. Heat is 916 J versus 709.9 J, giving apparent −183.2 versus −142.0 kJ/mol Zn. Insulation changes heat loss into unmeasured surroundings; it does not establish a different reaction state-function change. Temperature/time curves, calibration, and independent measurement of remaining Zn or produced Fe2+ distinguish heat loss from conversion. Roles refer to particular couples/states:Fe3+ is reduced; Fe0 can be oxidised to Fe2+. Neither value is an activation energy or isolated “electron energy”.",
+      "freshIndependentTransferDe": "Bei konstantem Volumen ohne elektrische Arbeit wird Qv gemessen. Erläutere, welche zusätzliche Annahme eine Bezeichnung als ΔH erfordern würde, statt Qv automatisch gleichzusetzen.",
+      "freshIndependentTransferEn": "At fixed volume without electrical work Qv is measured. Explain which additional assumption is needed before labelling it ΔH rather than automatically equating them.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Fe3+/Fe2+ und Zn/Zn2+ statt pauschaler Elementrollen verwenden.",
+          "observableEn": "Use actual redox couples rather than fixed elemental roles.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Beide scheinbaren molaren Wärmen auf gleichen Umsatz beziehen.",
+          "observableEn": "Compare apparent molar heats on the same conversion basis.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Kontrolle zur Trennung von Wärmeverlust und Stoffumsatz entwerfen.",
+          "observableEn": "Design a control separating heat loss from conversion.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-03-a",
+      "goalId": "642d5ea5-b62f-50c8-b0bd-cf132619725f",
+      "title": "Beschädigte Zink- und Zinnschicht auf Stahl",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Belüftetes neutrales Salzwasser; Schicht und Stahl sind elektrisch verbunden. Tabelle Standard-Reduktionspotenziale als qualitative Hilfe: Zn2+/Zn−0,76V; Fe2+/Fe−0,44V; Sn2+/Sn−0,14V. Fall A Zinküberzug mit kleiner Schramme; Fall B Zinnüberzug mit gleich großer Schramme. Löslicher Sauerstoff kann an kathodischen Stellen reduziert werden. Datenmodell; keine Salzwasserversuche mit Schwermetallabfällen zu Hause.",
+      "materialsEn": "Aerated neutral saline water; coating and steel are electrically connected. Standard reduction potentials as a qualitative aid: Zn2+/Zn−0.76V; Fe2+/Fe−0.44V; Sn2+/Sn−0.14V. A: zinc coating with a small scratch; B:tin coating with the same scratch. Dissolved oxygen can be reduced at cathodic sites. Data model, no home heavy-metal corrosion experiment.",
+      "taskDe": "Erkläre beide Lokalelemente mit Teilgleichungen und Elektronen-/Ionenwegen. Entscheide, welche Schicht auch nach Verletzung Opferwirkung besitzt. Begründe einen möglichen Flächeneffekt und die Grenzen einer allein aus E° berechneten Korrosionsprognose.",
+      "taskEn": "Explain both local cells with half-reactions and electron/ion paths. Decide which coating retains sacrificial protection after damage. Discuss a possible area effect and limitations of predicting corrosion solely from E°.",
+      "workedReasoningDe": "Zink: Zn→Zn2++2e−; Elektronen gelangen durch Metall zum Stahl, dort O2+2H2O+4e−→4OH−. Stahl wird kathodisch geschützt, solange der Zinkkontakt und Elektrolytleitweg bestehen. Bei Zinn ist freigelegtes Eisen die bevorzugte Anode: Fe→Fe2++2e−, Sauerstoffreduktion an edlerer Zinnfläche. Große Kathodenfläche bei kleiner Eisenanode kann den lokalen Angriff verstärken; konkrete Rate benötigt Polarisation, Transport, Passivierung und Geometrie. Ionenwanderung im Wasser erhält Ladungsbilanz; Elektronen laufen nicht als freie Elektronen durch die Salzlösung. Rostbildung umfasst weitere Hydroxid-/Oxidationsschritte, nicht bloß Fe→Fe2+.",
+      "workedReasoningEn": "With zinc: Zn→Zn2++2e−; electrons pass through metal to steel, where O2+2H2O+4e−→4OH− occurs. Steel is cathodically protected while metallic/electrolytic paths remain. With tin, exposed iron is the preferred anode:Fe→Fe2++2e−, with oxygen reduction on nobler tin. A large cathode with a small iron anode can intensify local attack; actual rate also requires polarisation, transport, passivation and geometry. Ionic motion maintains charge balance in water; free electrons do not travel through the salt solution. Rust formation includes further hydroxide/oxidation chemistry.",
+      "freshIndependentTransferDe": "Ersetze belüftetes neutrales Wasser durch sauerstoffarmes saures Medium. Welche kathodische Teilreaktion kann nun wichtig werden, und welche frühere Sauerstoffbegründung muss neu geprüft werden?",
+      "freshIndependentTransferEn": "Replace aerated neutral water with oxygen-poor acidic solution. Which cathodic half-reaction can become important and which oxygen-based explanation must be reconsidered?",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Beide Lokalelemente mit korrektem Sauerstoffreduktionsweg erklären.",
+          "observableEn": "Explain both local cells with balanced oxygen reduction.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Barrierewirkung, Opferwirkung und Defektflächen vergleichen.",
+          "observableEn": "Compare barrier protection, sacrificial action and defect areas.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Thermodynamische Richtung von unbekannter Korrosionsrate trennen.",
+          "observableEn": "Separate thermodynamic tendency from unknown corrosion rate.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-03-b",
+      "goalId": "642d5ea5-b62f-50c8-b0bd-cf132619725f",
+      "title": "Opferanode ohne Kontakt und Belüftungselement",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Modell eines Stahlbehälters im leitfähigen Wasser. A: angeschraubte Zinkanode mit blankem Metallkontakt; B: gleiche Zinkanode an isolierendem Nylonhalter ohne Kabel. Ein Wassertropfen auf ungeschütztem Stahl besitzt sauerstoffreichen Rand und sauerstoffarmen Mittelpunkt. Lokale Messidee: Potentiale mit Referenzelektrode, Materialabtrag und Sauerstoffverteilung; noch keine Messwerte.",
+      "materialsEn": "Model steel tank in conducting water. A: zinc anode bolted with clean metal contact; B: same zinc on an insulating nylon holder without a wire. A droplet on unprotected steel has an oxygen-rich rim and oxygen-poor centre. Proposed local measurements: reference-electrode potentials, material loss and oxygen distribution; no measurements have yet been made.",
+      "taskDe": "Begründe Schutz oder fehlenden Schutz in A/B und leite Anoden-/Kathodenorte im Belüftungselement ab. Plane eine überprüfbare Wartungsentscheidung einschließlich Anodenverbrauch und Kontrollen; erfinde keine gemessene Schutzwirkung. Ist „mehr Sauerstoff bedeutet an jedem Ort mehr Eisenauflösung“ tragfähig?",
+      "taskEn": "Explain protection or its absence in A/B and locate anodic/cathodic sites in the differential-aeration cell. Plan a testable maintenance decision including anode consumption and controls; do not invent measured protection. Assess “more oxygen means more iron dissolution at every location”.",
+      "workedReasoningDe": "A ermöglicht einen äußeren metallischen Elektronenweg; Zink oxidiert bevorzugt. In B fehlt dieser Weg, daher schützt allein das benachbarte Zink den Tank nicht verlässlich. Am sauerstoffreichen Rand wird die kathodische Sauerstoffreduktion begünstigt, im sauerstoffärmeren Zentrum kann Eisen anodisch aufgelöst werden; gekoppelte Orte widerlegen die einfache Ortsregel. Wartung prüft Kontakt, verbleibende Masse/Geometrie, Elektrolytleitfähigkeit und Potential unter definierten Bedingungen; Austausch vor Verbrauch. Abtrag und Potentialmessung mit/ohne Kontakt und ohne Zink bei kontrolliertem Sauerstoff erlauben eine reale Prüfung. Passivierung und örtliche Strömung können die Situation ändern; keine Erfolgsbehauptung aus dem Plan.",
+      "workedReasoningEn": "A supplies a metallic electron path and zinc preferentially oxidises. B lacks that path; adjacent zinc alone does not reliably protect the tank. Oxygen reduction is favoured at the oxygen-rich rim while iron can dissolve anodically in the oxygen-poor centre; coupled sites defeat the simple location rule. Maintenance checks contact, remaining mass/geometry, conductivity and potential under defined conditions; replace before depletion. Controlled loss/potential comparisons with/without contact and without zinc can test actual protection. Passivation/flow may change the outcome; a plan is not a successful trial.",
+      "freshIndependentTransferDe": "Eine Gleichstromquelle ersetzt die Zinkanode durch eine Fremdstromanlage. Begründe benötigte Polung am Stahl und warum sich der Wartungsbefund „Zinkverbrauch“ nicht einfach überträgt.",
+      "freshIndependentTransferEn": "An external DC supply replaces the sacrificial zinc system. Justify the steel polarity and explain why the zinc-consumption maintenance rule no longer transfers directly.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Metallischen und elektrolytischen Kreis als Schutzbedingung zeigen.",
+          "observableEn": "Identify metallic and electrolytic paths as protection conditions.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Differenzbelüftung mit getrennten lokalen Reaktionsorten begründen.",
+          "observableEn": "Explain differential aeration through separate reaction sites.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Überprüfbaren Wartungsplan ohne erfundene Daten entwickeln.",
+          "observableEn": "Develop a testable maintenance plan without invented results.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-04-a",
+      "goalId": "b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+      "title": "Kupfer-Konzentrationszelle und Umkehrung",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "25°C, Cu|Cu2+(links a=0,00100)||Cu2+(rechts a=0,100)|Cu. Beide Kupferfeststoffe rein. Aktivität dimensionslos, n=2, 2,303RT/F=0,05916V. Flüssigkeitsgrenzpotenziale und ohmscher Spannungsabfall vernachlässigt; stromlose hochohmige Messung.",
+      "materialsEn": "25 °C, Cu|Cu2+(left a=0.00100)||Cu2+(right a=0.100)|Cu. Pure solid copper; dimensionless activities, n=2, 2.303RT/F=0.05916V. Neglect liquid-junction potential and ohmic loss; high-impedance open-circuit measurement.",
+      "taskDe": "Leite Polung, Teilreaktionen, Q und positive Leerlaufspannung her. Erkläre auf Teilchenebene, wie sich beide Aktivitäten bei Stromabgabe verändern. Untersuche das Vertauschen der Lösungen und die Verdopplung beider Aktivitäten.",
+      "taskEn": "Derive polarity, half-reactions, Q and positive open-circuit voltage. Explain how both activities change during discharge. Investigate swapping solutions and doubling both activities.",
+      "workedReasoningDe": "Links Anode: Cu→Cu2++2e−; rechts Kathode: Cu2++2e−→Cu. Gesamt wird Cu2+ rechts nach links übertragen; Q=a(links)/a(rechts)=0,0100, E°(Zelle)=0. E=−0,05916/2·logQ=+0,05916V. Links steigt gelöstes Cu2+, rechts sinkt es; der Aktivitätsunterschied nimmt ab. Lösungstausch kehrt die Polung relativ zu festen Kabeln um; gemeinsames Verdoppeln lässt das Verhältnis und ideal E unverändert. Elektronen fließen außen von links nach rechts; die Salzbrücke trägt Ionen. E ist keine Stromstärke oder Dauerlastspannung.",
+      "workedReasoningEn": "Left anode: Cu→Cu2++2e−; right cathode: Cu2++2e−→Cu. Net transfer moves Cu2+ from right to left; Q=aLeft/aRight=0.0100 and cell E°=0. E=−0.05916/2·logQ=+0.05916V. Dissolved Cu2+ increases on the left and decreases on the right, reducing the activity difference. Swapping solutions reverses polarity at fixed leads; doubling both activities preserves the ratio and ideal E. Electrons flow externally left to right; the bridge carries ions. E is neither current nor loaded voltage.",
+      "freshIndependentTransferDe": "Ein ligandhaltiges rechtes Gefäß besitzt gleiche Gesamtkupferkonzentration wie links, aber zehnfach kleinere freie Cu2+-Aktivität. Bestimme ohne Bild die neue Anode und begründe, warum Gesamtgehalt nicht in Q eingesetzt werden darf.",
+      "freshIndependentTransferEn": "The right vessel contains a ligand and the same total copper as the left, but tenfold lower free Cu2+ activity. Locate the new anode without a diagram and explain why total copper cannot replace free activity in Q.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Polung und Nettoionentransfer mit Halbgleichungen herleiten.",
+          "observableEn": "Derive polarity and net ionic transfer from half-reactions.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Q=0,0100 und 59,16 mV konsistent berechnen.",
+          "observableEn": "Calculate Q=0.0100 and 59.16 mV consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Ratioänderung von gemeinsamer Skalierung und Lastverlusten trennen.",
+          "observableEn": "Separate ratio changes, common scaling, and load loss.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-04-b",
+      "goalId": "b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+      "title": "Nichtstandard-Daniell und Messwertgrenze",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "25°C; Zn+Cu2+→Zn2++Cu, E°=1,100V. aZn2+=0,100, aCu2+=0,00100; n=2. Zellgleichung kann alternativ mit allen Koeffizienten verdoppelt werden. Unter einer bestimmten Last werden 1,000 V gemessen; Strom/Innenwiderstand und Aktivitätskoeffizienten sind nicht bekannt.",
+      "materialsEn": "25°C; Zn+Cu2+→Zn2++Cu, E°=1.100V. aZn2+=0.100, aCu2+=0.00100; n=2. The overall equation may alternatively be doubled. A certain load gives 1.000 V; current, internal resistance and activity coefficients are unknown.",
+      "taskDe": "Berechne reversible Spannung und erkläre den Konzentrationseinfluss. Beweise, dass Verdopplung der Reaktionsgleichung E nicht verdoppelt. Prüfe, ob die Abweichung des Lastmesswerts die Nernst-Gleichung widerlegt und welche zusätzliche Messung sinnvoll wäre.",
+      "taskEn": "Calculate reversible voltage and explain the concentration effect. Show that doubling the chemical equation does not double E. Assess whether the loaded value disproves Nernst and identify a useful additional measurement.",
+      "workedReasoningDe": "Q=100; E=1,100−(0,05916/2)·2=1,04084V. Produkt-Zn2+ relativ hoch und Akzeptor-Cu2+ niedrig vermindern den thermodynamischen Antrieb gegenüber Standardzuständen. Doppelte Gleichung hat Q′=Q² und n′=4; logQ′/n′=logQ/2, E bleibt gleich. Die fehlenden 40,84 mV unter Last können aus ohmschen und kinetischen/Transportverlusten stammen; aus nur diesem Wert folgt keine eindeutige Ursache. Hochohmige Leerlaufmessung bei kontrollierter Temperatur und Aktivitäten sowie Strom/Spannungs-Kennlinie trennen Modell- und Lastfragen. Keine universelle Fehlerfreiheit realer Grenzflächen unterstellen.",
+      "workedReasoningEn": "Q=100; E=1.100−(0.05916/2)·2=1.04084V. High relative product Zn2+ and low acceptor Cu2+ reduce the thermodynamic driving force. Doubling gives Q′=Q² and n′=4, preserving logQ′/n′ and hence E. The 40.84 mV loaded deficit may reflect ohmic, kinetic or transport losses; one value does not identify the cause. A high-impedance open-circuit measurement at controlled temperature/activities and a current-voltage curve separate equilibrium and load questions.",
+      "freshIndependentTransferDe": "Wechsle zu einem Redoxpaar mit n=1 und gelösten oxidierten/reduzierten Formen auf beiden Seiten. Konstruiere Q aus der neuen Gesamtreaktion; übertrage nicht blind den Faktor 1/2 oder den Metallfeststoff-Ansatz.",
+      "freshIndependentTransferEn": "Change to an n=1 couple with dissolved oxidised/reduced forms. Construct Q from its new overall reaction instead of copying the factor 1/2 or assuming a pure solid metal.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Stöchiometrisches Q und 1,04084 V erklären.",
+          "observableEn": "Explain stoichiometric Q and 1.04084 V.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Skalierungsinvarianz mit Q²/n′ zeigen.",
+          "observableEn": "Show scaling invariance using Q²/n′.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Reversible Spannung von unbekannten Lastverlusten abgrenzen.",
+          "observableEn": "Distinguish reversible voltage from unknown load losses.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-05-a",
+      "goalId": "536030f8-70dc-519d-8039-92290c68d95d",
+      "title": "Zerteilungsgrad bei Carbonat und Säure",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Fiktive Daten bei 20 °C und gleichem Druck: 0,100 g CaCO3 gleicher Herkunft mit 10,0 mL HCl der Konzentration 0,500 mol/L. Verglichen werden grobe Körner und feines Granulat. Gasvolumen in mL bei 0/10/20/30/60/120 s: grob 0/2/4/6/12/22, fein 0/8/15/20/24/24. Unsicherheit ±1 mL, Spritzenleerwert ohne Carbonat 0 ±1 mL. Stelle die Gesamtreaktion selbst auf. Zukunftsversuch nur beaufsichtigt nach Gefährdungsbeurteilung: Brille, staubarmes Granulat, Säurespritzer vermeiden, frei bewegliche Gasspritze und niemals Druckverschluss. Temperatur, Rühren und Startverfahren angleichen.",
+      "materialsEn": "Fictional data at 20 °C and equal pressure: 0.100 g same-source CaCO3 with 10.0 mL of 0.500 mol/L HCl. Compare coarse grains and fine granules. Gas volumes in mL at 0/10/20/30/60/120 s are 0/2/4/6/12/22 for coarse and 0/8/15/20/24/24 for fine material. Uncertainty is ±1 mL; the no-carbonate syringe blank is 0 ±1 mL. Construct the overall reaction. Future work requires supervision and risk assessment: goggles, low-dust granules, avoid acid splashes, use a freely moving gas syringe and never pressure-seal. Match temperature, stirring and start procedure.",
+      "taskDe": "Formuliere Hypothese und kontrollierten eigenen Messplan einschließlich Wiederholungen. Werte mittlere Anfangsgeschwindigkeiten 0–20 s und den Endumsatz aus; erkläre den Oberflächeneffekt auf Teilchenebene. Lege fest, welche zukünftigen Rohprotokolle eine eigene sichere Durchführung zeigen würden, und was die gegebenen Modellwerte nicht beweisen.",
+      "taskEn": "Formulate a hypothesis and a controlled measurement plan including repeats. Evaluate average initial rates over 0–20 s and final conversion; explain surface effects at particle level. Specify future raw records demonstrating safe own conduct and what the supplied model data cannot prove.",
+      "workedReasoningDe": "Hypothese: mehr zugängliche Oberfläche erhöht bei gleicher Stoffmenge und sonst gleichen Bedingungen die anfängliche CO2-Bildungsrate. CaCO3+2H+→Ca2++CO2+H2O. Mittelraten 0,20 bzw. 0,75 mL/s; Differenz deutlich größer als aus ±1 mL folgenden ±0,10 mL/s pro Differenzquotient. Mehr Grenzflächenplätze ermöglichen mehr wirksame Kontakte pro Zeit. Gleiche CaCO3-Menge begrenzt theoretisch denselben Endumsatz; grobe Probe ist bei 120 s noch nicht sicher beendet,22±1 gegenüber24±1 allein belegt keinen anderen endgültigen Umsatz. Mindestens kontrollierte Wiederholungen, Dichtigkeit/Leerwert, gleiche Körnerherkunft und Temperatur. Künftige originale Zeitreihen, Start-/Bediennotizen, Abweichungen und sichere Entsorgung dokumentieren; die erfundenen Daten sind kein Durchführungsnachweis.",
+      "workedReasoningEn": "Hypothesis: greater accessible area increases initial CO2 formation at equal amount and other conditions. CaCO3+2H+→Ca2++CO2+H2O. Mean rates 0.20 and 0.75 mL/s; their difference exceeds the conservative ±0.10 mL/s contribution from ±1 mL endpoints. More interfacial sites allow more effective contacts per time. Equal CaCO3 limits the same theoretical final conversion; at 120 s the coarse sample may still react, so22±1 versus24±1 does not establish a different final yield. Use repeats, leak/blank checks, same source and temperature. Future original time series, handling/start notes, deviations and safe disposal document conduct; fictional data do not.",
+      "freshIndependentTransferDe": "Vergleiche stattdessen gleiche Körnung bei zwei Säurekonzentrationen, aber gleicher Säurestoffmenge durch verschiedene Volumina. Identifiziere die neue Volumen-/Mischkonfundierung und entwirf eine saubere Alternative.",
+      "freshIndependentTransferEn": "Instead compare equal grain sizes at two acid concentrations but equal acid amounts through different volumes. Identify the new volume/mixing confound and design a cleaner comparison.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Hypothese und Faktor-/Kontrollvariablen einschließlich sicherer Messfolge festlegen.",
+          "observableEn": "Specify hypothesis, factor/controls, and a safe measurement sequence.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "0,20/0,75mL/s samt Unsicherheit und Teilchenerklärung auswerten.",
+          "observableEn": "Evaluate both rates, uncertainty, and particle explanation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Zeitlicher Verlauf, Endumsatz und tatsächliche künftige Durchführung trennen.",
+          "observableEn": "Separate time course, final conversion, and actual future conduct.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-05-b",
+      "goalId": "536030f8-70dc-519d-8039-92290c68d95d",
+      "title": "Temperaturvergleich mit unfairer Tablette",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Werbekarte A: ganze Brausetablette in 100 mL Wasser bei 10 °C, sichtbares Sprudeln 60 s. B: zerstoßene Tablette in 200 mL Wasser bei 50 °C, Sprudeln 20 s. Gasmengen und Konzentrationen fehlen. Ein kontrollierter Modellversuch mit derselben gelösten Reaktionsmischung gibt bei 20 °C nach 0/10/20 s jeweils 0/4/8 mL CO2, bei 30 °C 0/7/14 mL. Nach einer Kühlstrecke wird Gas stets bei 20 °C und gleichem Druck gemessen; Massen, Startkonzentrationen und Rühren sind kontrolliert.",
+      "materialsEn": "Advert A: a whole effervescent tablet in 100 mL water at 10 °C visibly bubbles for 60 s. B: a crushed tablet in 200 mL water at 50 °C bubbles for 20 s. Gas quantities and concentrations are missing. A controlled model with the same dissolved reaction mixture gives 0/4/8 mL CO2 at 0/10/20 s at 20 °C, and 0/7/14 mL at 30 °C. Gas is always measured at 20 °C after cooling and at equal pressure; masses, initial concentrations and stirring are controlled.",
+      "taskDe": "Prüfe die Behauptung „Die Tablettenbilder beweisen allein den Temperatureffekt“. Werte den kontrollierten Vergleich aus und leite einen nächsten eigenen Versuch bei unverändertem Zerteilungsgrad ab. Beziehe Gaslöslichkeit, Wärmedehnung, Wiederholungen und möglichen Abbruch bei Undichtigkeit ein.",
+      "taskEn": "Assess “the tablet images alone prove a temperature effect”. Evaluate the controlled comparison and plan a further own experiment with unchanged division. Consider gas solubility, thermal expansion, repeats, and stopping if leaks occur.",
+      "workedReasoningDe": "Die Werbekarten ändern Temperatur, Volumen, Konzentration und Oberfläche zugleich. Das sichtbare Ende hängt außerdem von Lösen und Gasfreisetzung ab; ein Temperatureffekt ist nicht isoliert. Die kontrollierten Raten sind 0,40 und 0,70 mL/s, also Faktor 1,75 für dieses Intervall. Daraus folgt keine allgemeine RGT-Konstante oder Reaktionsordnung. Ein größerer Anteil genügend energiereicher Zusammenstöße ist plausibel. Kontrolliere Lösungstemperatur und gemeinsame Gasmesstemperatur sowie Druck; berücksichtige CO2-Löslichkeit, Wiederholungen und einen dichten, aber beweglichen Gasweg. Bei Leck stoppen und Rohdaten sowie Abweichung dokumentieren. Passende Ergebnisse dürfen nicht erfunden werden; ein eigener Verlauf bleibt zu erheben.",
+      "workedReasoningEn": "The adverts change temperature, volume, concentration and area together. The visible endpoint also depends on dissolution and gas release, so temperature is not isolated. Controlled rates are 0.40 and 0.70 mL/s, a ratio of 1.75 for this interval, not a universal temperature rule or reaction order. A larger fraction of sufficiently energetic collisions is plausible. Control solution temperature and common gas temperature/pressure; consider dissolved CO2, repeats and a leak-free freely moving gas path. Stop if a leak occurs and record raw data and deviations. Do not invent fitting results; an own time series remains future work.",
+      "freshIndependentTransferDe": "Ein Enzym zeigt bei 60 °C weniger Produkt als bei 35 °C. Formuliere statt „RGT widerlegt“ zwei prüfbare Hypothesen und einen Rückkühl-/Aktivitätskontrollversuch.",
+      "freshIndependentTransferEn": "An enzyme gives less product at 60 °C than 35 °C. Propose two testable hypotheses and a cooling-back/activity control instead of simply rejecting all temperature effects.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Drei konkrete Konfundierungen der Werbekarten identifizieren.",
+          "observableEn": "Identify three concrete confounds in the adverts.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Kontrollierte Daten und begrenzten Faktor 1,75 interpretieren.",
+          "observableEn": "Interpret controlled data and the limited 1.75 factor.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Gasphysik und sichere eigene Kontrollmessung einplanen.",
+          "observableEn": "Include gas physics and safe own control measurements.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-06-a",
+      "goalId": "5cdf490f-bfb2-54c2-bbd7-7062cc69a2ef",
+      "title": "Induktionsphase bei Permanganat und Oxalat",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 40 °C und konstanter saurer Matrix reagiert Permanganat mit Oxalatüberschuss. Die fiktive Absorbanz ist proportional zu [MnO4−]. Zeiten 0/20/40/60/80/100/120 s: ohne Mn2+-Zugabe 1,00/0,96/0,86/0,60/0,22/0,05/0,01; mit kleiner Mn2+-Zugabe 1,00/0,78/0,38/0,10/0,02/0,01/0,01. Blindzugaben gleichen Ionenstärke und Volumen ab. Weglänge und Temperatur sind konstant; Unsicherheit der Absorbanz ±0,02. Dies ist eine Datenaufgabe; Oxalsäure und Permanganat werden nicht zu Hause gehandhabt.",
+      "materialsEn": "At 40 °C, permanganate reacts with excess oxalate in a constant acidic matrix. Fictional absorbance is proportional to [MnO4−]. At 0/20/40/60/80/100/120 s, unseeded values are 1.00/0.96/0.86/0.60/0.22/0.05/0.01; values with a small Mn2+ seed are 1.00/0.78/0.38/0.10/0.02/0.01/0.01. Blank additions match ionic strength and volume. Temperature and path length are constant; absorbance uncertainty is ±0.02. Supplied data replace hazardous home handling of oxalic acid and permanganate.",
+      "taskDe": "Ordne langsame, beschleunigte und abklingende Abschnitte zu und berechne zwei Verbrauchsraten. Formuliere die saure Redoxgleichung mit Oxalat und Permanganat. Begründe die Evidenz durch Produktzugabe und ihre Grenzen.",
+      "taskEn": "Identify induction, acceleration and depletion sections and calculate two consumption rates. Construct the acidic oxalate/permanganate equation. Explain the evidence from product seeding and its limits.",
+      "workedReasoningDe": "Ohne Zugabe beträgt −ΔA/Δt zunächst 0,002 s−1 (0–20 s), dann 0,019 s−1 (60–80 s) und zuletzt 0,002 s−1 (100–120 s). Produktbildung beschleunigt sich zunächst und verlangsamt sich bei Verarmung der Ausgangsstoffe; die Absorbanz selbst fällt. Die Bilanz lautet: 2 MnO4− + 5 C2O4²− + 16 H+ → 2 Mn2+ + 10 CO2 + 8 H2O. Entstehendes Mn2+ kann einen katalytischen Weg fördern; vorgelegtes Mn2+ verkürzt die Induktionsphase. Thermostatisierung und Matrixblindprobe schwächen Wärme- und Salzeffekte als Alternativen. Die Daten stützen diese Erklärung, beweisen aber keinen eindeutigen elementaren Manganmechanismus. Endwerte im Rauschen nicht überinterpretieren.",
+      "workedReasoningEn": "Unseeded −ΔA/Δt is initially 0.002 s−1 (0–20 s), then 0.019 s−1 (60–80 s), and finally 0.002 s−1 (100–120 s). Product formation first accelerates and then slows as reactants are depleted; absorbance itself falls. The balance is 2 MnO4− + 5 C2O4²− + 16 H+ → 2 Mn2+ + 10 CO2 + 8 H2O. Product Mn2+ can promote a catalytic route, and seeding shortens induction. Thermostat and matrix controls weaken heating and salt effects as alternatives. This supports the explanation without proving a unique elementary manganese mechanism. Do not overinterpret endpoints near noise.",
+      "freshIndependentTransferDe": "Eine weitere S-Kurve entsteht bei gleichzeitigem Temperaturanstieg um 15 K. Eine kontrollierte Mn2+-Zugabe hat keinen Effekt. Erkläre die schwächere Evidenz und die entscheidende neue Kontrolle.",
+      "freshIndependentTransferEn": "Another S-shaped curve occurs while temperature rises by 15 K, and controlled Mn2+ seeding has no effect. Explain the weaker evidence and the decisive additional control.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Verbrauch und Produktbildung unterscheiden und Intervallraten berechnen.",
+          "observableEn": "Distinguish consumption and product formation and calculate interval rates.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Atome und Ladung der Oxalat-Permanganat-Gleichung erhalten.",
+          "observableEn": "Balance atoms and charge in the oxalate-permanganate equation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Produktzugabe und Blindprobe als Evidenz statt Kurvenbeweis beurteilen.",
+          "observableEn": "Evaluate seeding and blanks as evidence rather than treating shape as proof.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-06-b",
+      "goalId": "5cdf490f-bfb2-54c2-bbd7-7062cc69a2ef",
+      "title": "Autokatalyse und einfache Katalyse auseinanderhalten",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Zwei eigene Modelle setzen A zu B um. Bei [A]0 = 0,100 mol/L und [B]0 = 0/0,010/0,020 mol/L hat Modell X Anfangsraten von 0,001/0,003/0,005 mol/(L s). Gesamtvolumen und Medium bleiben bei B-Zugabe gleich. In Modell Y wird ein fremder Katalysator C zugegeben; B ist dort nicht katalytisch. Beide Modelle erreichen bei gleicher Temperatur dasselbe Endgleichgewicht wie ohne Katalyse. Ein Anbieter nennt jede Katalysatorzugabe Autokatalyse.",
+      "materialsEn": "Two own models convert A to B. At [A]0 = 0.100 mol/L and [B]0 = 0/0.010/0.020 mol/L, model X has initial rates of 0.001/0.003/0.005 mol/(L s). Match volume and medium when adding B. Model Y uses an external catalyst C; B has no catalytic role. At equal temperature both reach the same final equilibrium as without catalysis. A supplier calls every catalyst addition autocatalysis.",
+      "taskDe": "Leite einen zu X passenden Anfangsratenansatz her und deute Grund- und Produktanteil. Erkläre den Unterschied zu Y und das unveränderte K. Entwirf einen Test außerhalb der gegebenen Startreihe.",
+      "taskEn": "Derive an initial-rate expression compatible with X and interpret basal and product-dependent terms. Contrast Y and explain unchanged K. Propose a test beyond the supplied initial series.",
+      "workedReasoningDe": "Bei festem [A]0 passt v0 = 0,001 + 0,20 [B]0, jeweils mit passenden Einheiten für mol/(L s). Ein möglicher umfassender Ansatz ist v = (0,010 s−1 + 2,0 L mol−1 s−1 [B]) [A]. Die feste A-Konzentration beweist die Ordnung in A nicht; eine A-Variation prüft sie. In X fördert Produkt B den Weg, was zur Autokatalysehypothese passt. C ist in Y kein Produkt; gewöhnliche Katalyse reicht als Erklärung. Alternative Wege ändern Raten, nicht ΔrG° oder das thermodynamische K. Spätes Abklingen kann aus A-Verarmung folgen. Elementarschritte und allgemeine Gültigkeit bleiben unbestimmt.",
+      "workedReasoningEn": "At fixed [A]0, v0 = 0.001 + 0.20 [B]0 fits, with units consistent with mol/(L s). A possible broader expression is v = (0.010 s−1 + 2.0 L mol−1 s−1 [B]) [A]. Fixed-A data do not establish the order in A; vary A to test it. Product B promotes the route in X, supporting autocatalysis. C in Y is not a product, so ordinary catalysis suffices. Alternative pathways change rates, not ΔrG° or thermodynamic K. Late slowing may reflect A depletion. Elementary steps and general validity remain undetermined.",
+      "freshIndependentTransferDe": "Ein Produkt hemmt die Reaktion. Skizziere den geänderten qualitativen Verlauf und begründe Produktinhibition statt Autokatalyse.",
+      "freshIndependentTransferEn": "A product inhibits the reaction. Sketch the changed qualitative course and explain product inhibition rather than autocatalysis.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die Abhängigkeit von Produktzugabe mit Einheiten herleiten.",
+          "observableEn": "Derive the seeding dependence with units.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Produkt und fremden Katalysator sowie unverändertes K unterscheiden.",
+          "observableEn": "Distinguish product and external catalyst and explain unchanged K.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Eine neue Bedingung zur Prüfung der unbekannten A-Ordnung entwerfen.",
+          "observableEn": "Design a changed condition testing the unknown order in A.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-07-a",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "title": "Gasdissoziation mit sauberem Standardzustand",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Ideales Gasmodell: N2O4(g) ⇌ 2 NO2(g) bei 298 K. Hier sind Kc = Π(ci/c°)^νi und Kp = Π(pi/p°)^νi dimensionslos definiert. Es gelten c° = 1 mol/L, p° = 1 bar und R = 0,08314 L bar/(mol K). Gegeben ist Kc = 0,00500 für genau diese Reaktionsrichtung. Dies ist eine Datenaufgabe, kein NO2-Versuch.",
+      "materialsEn": "Ideal gas model: N2O4(g) ⇌ 2 NO2(g) at 298 K. Define dimensionless Kc = Π(ci/c°)^νi and Kp = Π(pi/p°)^νi. Use c° = 1 mol/L, p° = 1 bar and R = 0.08314 L bar/(mol K). Kc = 0.00500 refers to this exact reaction direction. Data exercise, no NO2 experiment.",
+      "taskDe": "Leite die Umrechnung aus dem idealen Gasgesetz her, bestimme Δν und berechne Kp. Vergleiche die unnormierte Schreibweise Kp = Kc (RT)^Δν. Prüfe R = 8,314 ohne Einheitenanpassung.",
+      "taskEn": "Derive the conversion from the ideal gas law, identify Δν and calculate Kp. Contrast the unnormalised formula Kp = Kc (RT)^Δν. Assess using R = 8.314 without changing units.",
+      "workedReasoningDe": "Δν = 2 − 1 = 1. Aus pi/p° = (ci/c°)(RTc°/p°) folgt Kp = Kc (RTc°/p°)^Δν. Der Faktor ist 24,77572; Kp = 0,123879 ist dimensionslos. Unnormierte Produkte hätten hier Kc in mol/L und Kp in bar; RT wäre dann der Faktor mit Einheit. Beide Konventionen dürfen nicht unmarkiert vermischt werden. R = 8,314 J/(mol K) verlangt konsistente Pa- und m³-Einheiten sowie umgerechnete Standards; blindes Einsetzen ergibt hier einen Faktor-100-Fehler. Die Herleitung setzt ideale Gase bei der genannten Temperatur voraus.",
+      "workedReasoningEn": "Δν = 1. From pi/p° = (ci/c°)(RTc°/p°), obtain Kp = Kc (RTc°/p°)^Δν. The factor is 24.77572, giving dimensionless Kp = 0.123879. Unnormalised products instead give Kc in mol/L and Kp in bar, with a dimensional RT factor. Do not silently mix conventions. R = 8.314 J/(mol K) requires consistent Pa/m³ units and converted standards; blind substitution here gives a factor-100 error. The derivation assumes ideal gases at the stated temperature.",
+      "freshIndependentTransferDe": "Verdopple die ganze Reaktionsgleichung. Leite Kp′, Kc′ und Δν′ ab und begründe die Abhängigkeit von der gewählten Gleichung.",
+      "freshIndependentTransferEn": "Double the entire reaction equation. Derive Kp′, Kc′ and Δν′ and explain their dependence on how the reaction is written.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Den Faktor aus Partialgrößen und Standardzuständen herleiten.",
+          "observableEn": "Derive the factor using partial quantities and standard states.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Δν = 1 und Kp = 0,123879 mit Einheitenkonsistenz berechnen.",
+          "observableEn": "Calculate Δν = 1 and Kp = 0.123879 consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Unnormierte Schulform, Aktivitätskonvention und Grenzen unterscheiden.",
+          "observableEn": "Distinguish classroom products, activity conventions and limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-07-b",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "title": "Feststoff zählt nicht zu gasförmigem Δν",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Zwei ideale Gasmodelle bei 500 K: I: H2(g) + I2(g) ⇌ 2 HI(g), dimensionslos Kc = 4,00. II: CaCO3(s) ⇌ CaO(s) + CO2(g), dimensionslos Kp = 0,200; reine Feststoffe haben Aktivität 1. Standards wie in 7a; R = 0,08314 L bar/(mol K). Die Konstanten sind Lehrmodelldaten, keine Realdaten bei dieser Temperatur. Ein Anbieter möchte die Formel ohne Korrektur auf dichte Hochdruckgase anwenden.",
+      "materialsEn": "Two ideal gas teaching models at 500 K: I: H2(g) + I2(g) ⇌ 2 HI(g), dimensionless Kc = 4.00. II: CaCO3(s) ⇌ CaO(s) + CO2(g), dimensionless Kp = 0.200; pure solid activities are 1. Standards as in 7a; R = 0.08314 L bar/(mol K). Constants are teaching values, not real data at this temperature. A supplier proposes applying the formula to dense high-pressure gas without corrections.",
+      "taskDe": "Bestimme Δν und das jeweils fehlende K. Erläutere die Rolle der Feststoffe und die nötige zusätzliche Größe bei Nichtidealität. Prüfe die Aussage, Δν = 0 bedeute stets ideales Verhalten.",
+      "taskEn": "Find Δν and the missing K. Explain the role of solids and the additional quantity needed for nonideality. Assess whether Δν = 0 always implies ideal behaviour.",
+      "workedReasoningDe": "I: Δν = 0, daher Kp = Kc = 4,00 im idealen Modell. II: Gas-Δν = 1; reine Feststoffe werden nicht in diese Gaszählung aufgenommen. Der Faktor ist 41,57 und Kc = 0,200/41,57 = 0,004811. Bei vorhandenen reinen Feststoffphasen gilt Aktivität 1; ihre physische Menge verschwindet dadurch nicht. Reale Gase erfordern Fugazitäten beziehungsweise Fugazitätskoeffizienten. Δν = 0 entfernt nur den idealen RT-Faktor; verschiedene Nichtidealitäten heben sich nicht automatisch auf. Phasenwechsel und dichte Gemische brauchen eine neue Modellprüfung.",
+      "workedReasoningEn": "I: Δν = 0, so Kp = Kc = 4.00 in the ideal model. II: gas Δν = 1; do not include solids in the gas count. The factor is 41.57, giving Kc = 0.004811. Pure solid phases have unit activity while present; their physical amount has not vanished. Real gases require fugacities or fugacity coefficients. Δν = 0 removes only the ideal RT factor, not necessarily different nonideal effects. Phase changes and dense mixtures require reassessment.",
+      "freshIndependentTransferDe": "Für überkritisches CO2 ist p/(cRT) deutlich ungleich 1. Identifiziere den versagenden Herleitungsschritt, statt K allein aus Totaldruck zu berechnen.",
+      "freshIndependentTransferEn": "For supercritical CO2, p/(cRT) differs substantially from 1. Identify the failing derivation step rather than computing K from total pressure alone.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Gasstöchiometrie und Feststoffphasen unterscheiden.",
+          "observableEn": "Distinguish gas stoichiometry and solid phases.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Kp = 4,00 und Kc = 0,004811 bestimmen.",
+          "observableEn": "Determine Kp = 4.00 and Kc = 0.004811.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Fugazität und die begrenzte Bedeutung von Δν = 0 erklären.",
+          "observableEn": "Explain fugacity and the limited meaning of Δν = 0.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-08-a",
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "title": "Endotherme Dissoziation: neues K und Gültigkeitsbereich",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Idealisierte Gasdissoziation A2 ⇌ 2 A: dimensionslos K1 = 0,100 bei T1 = 298 K. Über 298–318 K sei ΔrH° = +50,0 kJ/mol näherungsweise konstant. R = 8,314 J/(mol K). Es gilt ln(K2/K1) = −ΔrH°/R · (1/T2 − 1/T1). Dies sind Lehrmodelldaten; es wird keine gefährliche Stoffprobe untersucht.",
+      "materialsEn": "Idealised gas dissociation A2 ⇌ 2 A: dimensionless K1 = 0.100 at T1 = 298 K. Assume ΔrH° = +50.0 kJ/mol is approximately constant over 298–318 K. R = 8.314 J/(mol K). Use ln(K2/K1) = −ΔrH°/R · (1/T2 − 1/T1). Teaching model data; no hazardous sample is investigated.",
+      "taskDe": "Berechne K2 bei 318 K und prüfe Vorzeichen und Plausibilität. Unterscheide mehr Produkte im Gleichgewicht von einer schnelleren Reaktion. Beurteile die Extrapolation bis 1000 K ohne weitere Daten.",
+      "taskEn": "Calculate K2 at 318 K and check sign and plausibility. Distinguish more equilibrium products from faster reaction. Assess extrapolation to 1000 K without further data.",
+      "workedReasoningDe": "ΔrH° ist in 50000 J/mol umzurechnen. Der Exponent ist +1,2692, also K2 ≈ 0,3558. Dies passt zur endothermen Hinreaktion. Eine Zusammensetzung folgt erst mit Stoffbilanz und Druckbedingungen; K liefert keine Einstellzeit. Kinetik benötigt eigene Raten- oder Aktivierungsgrößen. Bis 1000 K wären Änderungen der Wärmekapazitäten, Phasen und Reaktionswege sowie ΔrH°(T) zu prüfen. Die konstante Enthalpie ist dort nicht belegt. Die Formel verwendet Kelvin und natürlichen Logarithmus, keine Celsiuswerte oder unkonvertierten Zehnerlogarithmen.",
+      "workedReasoningEn": "Convert ΔrH° to 50000 J/mol. The exponent is +1.2692, so K2 ≈ 0.3558, consistent with an endothermic forward reaction. Composition also needs balances and pressure conditions; K gives no equilibration time. Kinetics requires separate rate or activation parameters. Extrapolation to 1000 K requires checking heat capacities, phases, pathways and ΔrH°(T). Constant enthalpy is not established there. Use Kelvin and natural logarithms, not Celsius or unconverted base-ten logarithms.",
+      "freshIndependentTransferDe": "Kehre die Reaktionsgleichung um. Leite K1′, ΔrH°′ und K2′ ab und prüfe den reziproken Zusammenhang.",
+      "freshIndependentTransferEn": "Reverse the reaction equation. Derive K1′, ΔrH°′ and K2′ and check the reciprocal relation.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Kelvin, Joule und natürlichen Logarithmus mit richtigem Vorzeichen verwenden.",
+          "observableEn": "Use Kelvin, joules and natural logarithms with the correct sign.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "K2 ≈ 0,356 chemisch deuten.",
+          "observableEn": "Interpret K2 ≈ 0.356 chemically.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Konstantes ΔrH°, Kinetik und Extrapolationsgrenze erläutern.",
+          "observableEn": "Explain constant ΔrH°, kinetics and extrapolation limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-08-b",
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "title": "Enthalpie aus Gleichgewichtsdaten und falsche Aktivierungsdeutung",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Lehrmodell B ⇌ C: dimensionslose Gleichgewichtskonstanten K = 10,0 bei 300 K und K = 5,00 bei 320 K; Unsicherheit je ±5 %. Das sind zwei Messpunkte. Eine ergänzende qualitative Beschreibung eines ln-K-gegen-1/T-Diagramms mit drei weiteren fiktiven Punkten zeigt oberhalb 400 K deutliche Krümmung. Ein Autor nennt die daraus berechnete Enthalpie die Aktivierungsenergie der Hinreaktion.",
+      "materialsEn": "Teaching model B ⇌ C: dimensionless equilibrium constants K = 10.0 at 300 K and K = 5.00 at 320 K, each with ±5% uncertainty. These are two measured points. An additional qualitative ln-K-versus-1/T plot description with three further fictional points shows marked curvature above 400 K. An author calls the calculated enthalpy the forward activation energy.",
+      "taskDe": "Bestimme die mittlere van’t-Hoff-Reaktionsenthalpie über 300–320 K. Deute Vorzeichen und Krümmung. Widerlege die Aktivierungsbehauptung mit einem Energieniveauschema und benenne nötige kinetische Daten.",
+      "taskEn": "Estimate the average van’t Hoff reaction enthalpy over 300–320 K. Interpret its sign and the curvature. Refute the activation-energy claim with an energy-level sketch and identify necessary kinetic data.",
+      "workedReasoningDe": "ΔrH° ≈ −R ln(5/10)/(1/320 − 1/300) = −27,66 kJ/mol. Erwärmen begünstigt die Rückreaktion des exothermen Hinumsatzes; K sinkt. Zwei Punkte liefern einen Sekantenwert, keine universelle konstante Enthalpie. Die K-Unsicherheit begrenzt die Genauigkeit. Krümmung kann auf ΔrH°(T), geänderte Spezies oder Nichtidealität hinweisen. Reaktionsenthalpie ist die Energiedifferenz der Endzustände; Aktivierungsenergie betrifft die Barriere beziehungsweise Temperaturabhängigkeit von Raten. Dafür wären echte Geschwindigkeitskonstanten bei Temperaturvariation und kontrolliertem Mechanismus nötig.",
+      "workedReasoningEn": "ΔrH° ≈ −R ln(5/10)/(1/320 − 1/300) = −27.66 kJ/mol. Heating favours the reverse of an exothermic forward process, lowering K. Two points yield a secant estimate, not a universal constant enthalpy, and K uncertainty limits precision. Curvature can indicate ΔrH°(T), species changes or nonideality. Reaction enthalpy compares end states; activation energy concerns barriers or rate-temperature dependence. The latter needs actual rate constants across temperatures with a controlled mechanism.",
+      "freshIndependentTransferDe": "Eine Reaktion hat ΔrH° nahe null, läuft bei höherer Temperatur aber rascher. Erkläre die Vereinbarkeit von fast unverändertem K und größeren Raten.",
+      "freshIndependentTransferEn": "A reaction has nearly zero ΔrH° yet is faster at higher temperature. Explain how nearly unchanged K and larger rates are compatible.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "−27,66 kJ/mol und die Richtung des Temperatureffekts ableiten.",
+          "observableEn": "Derive −27.66 kJ/mol and the temperature direction.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Sekantenwert und Kurvenkrümmung als Modellgrenzen erklären.",
+          "observableEn": "Explain the secant estimate and curvature as model limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Reaktionsenthalpie und Aktivierungsenergie anhand von Energieniveaus trennen.",
+          "observableEn": "Separate reaction enthalpy and activation energy using energy levels.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-09-a",
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "title": "Carbonat lösen in einem definierten Pufferreservoir",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C, c° = 1 mol/L und verdünnt-idealen Bedingungen gilt: CaCO3(s) ⇌ Ca2+ + CO3²− mit KL = 3,3 · 10−9; HCO3− ⇌ H+ + CO3²− mit Ka2 = 4,7 · 10−11. Ein großes Reservoir hält pH = 8,00 und freie [HCO3−] = 0,0100 mol/L bei kleiner CaCO3-Mengenänderung konstant. Feststoff bleibt vorhanden. Andere Komplexe und CO2-Austausch werden vernachlässigt. Dies ist kein geschlossener Reinstwasseransatz.",
+      "materialsEn": "At 25 °C with c° = 1 mol/L and dilute-ideal conditions: CaCO3(s) ⇌ Ca2+ + CO3²− has Ksp = 3.3 × 10−9; HCO3− ⇌ H+ + CO3²− has Ka2 = 4.7 × 10−11. A large reservoir holds pH = 8.00 and free [HCO3−] = 0.0100 mol/L constant during a small CaCO3 change. Solid remains. Neglect other complexes and CO2 exchange. This is not a closed pure-water system.",
+      "taskDe": "Addiere geeignete Gleichungen und leite die Gesamtkonstante sowie freie Carbonat- und Calciumkonzentration her. Deute eine pH-Absenkung um 1 bei weiter konstantem Hydrogencarbonat. Welche Bilanzen fehlen für einen kleinen geschlossenen Becher?",
+      "taskEn": "Add suitable equations and derive the net constant and free carbonate and calcium concentrations. Interpret lowering pH by 1 at fixed bicarbonate. Which extra balances are needed for a small closed beaker?",
+      "workedReasoningDe": "Die umgekehrte Ka2-Reaktion ergibt mit dem Lösen: CaCO3 + H+ ⇌ Ca2+ + HCO3−; Kges = KL/Ka2 ≈ 70,21. [CO3²−]/c° = Ka2 ([HCO3−]/c°)/aH+ = 4,7 · 10−5. Damit [Ca2+] ≈ 7,02 · 10−5 mol/L. Bei pH 7 und weiterhin 0,0100 M HCO3− sinkt Carbonat zehnfach und Calcium steigt im bedingten Modell auf 7,02 · 10−4 M. Protonierung verbraucht Carbonat und fördert weiteres Lösen, ohne die Konstanten zu ändern. Ein geschlossener Becher benötigt Kohlenstoff- und Calciumbilanzen, Elektroneutralität, weitere Säuregleichgewichte und gegebenenfalls eine Gasbilanz. Ein endlicher Puffer löst nicht unbegrenzt Feststoff.",
+      "workedReasoningEn": "Reverse the Ka2 reaction and add dissolution: CaCO3 + H+ ⇌ Ca2+ + HCO3−, with Knet = Ksp/Ka2 ≈ 70.21. [CO3²−]/c° = Ka2 ([HCO3−]/c°)/aH+ = 4.7 × 10−5, giving [Ca2+] ≈ 7.02 × 10−5 mol/L. At pH 7 and the same 0.0100 M bicarbonate, carbonate falls tenfold and conditional calcium rises to 7.02 × 10−4 M. Protonation consumes carbonate and drives dissolution without changing constants. A closed beaker needs carbon/calcium balances, electroneutrality, further acid equilibria and possibly a gas balance. A finite buffer cannot dissolve solid indefinitely.",
+      "freshIndependentTransferDe": "Öffne einen geschlossenen Carbonatansatz für CO2-Austausch. Begründe eine Gasrandbedingung statt eines ohne Beleg festgehaltenen pH-Werts.",
+      "freshIndependentTransferEn": "Open a closed carbonate system to CO2 exchange. Explain the need for a gas boundary condition rather than an arbitrarily fixed pH.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die gekoppelte Gleichung und KL/Ka2 durch Reaktionsaddition erzeugen.",
+          "observableEn": "Construct the coupled equation and Ksp/Ka2 by reaction addition.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "4,7 · 10−5 M Carbonat und 7,02 · 10−5 M Calcium berechnen.",
+          "observableEn": "Calculate 4.7 × 10−5 M carbonate and 7.02 × 10−5 M calcium.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Reservoir und endliche Stoff- und Ladungsbilanz abgrenzen.",
+          "observableEn": "Distinguish the reservoir from finite material and charge balances.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-09-b",
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "title": "Komplexbildung koppelt an AgCl-Lösen",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C gilt KL(AgCl) = 1,8 · 10−10 und für Ag+ + 2 NH3 ⇌ [Ag(NH3)2]+ die Konstante β2 = 1,6 · 10^7; beide dimensionslos mit c° = 1 M. Ein Reservoir hält freies aNH3 = 0,100. AgCl-Feststoff ist vorhanden, anfängliches Chlorid vernachlässigbar. Gelöstes Silber liegt nur frei oder als genannter Komplex vor. Dies ist eine Datenaufgabe, kein Ammoniak- oder Silberversuch.",
+      "materialsEn": "At 25 °C, AgCl Ksp = 1.8 × 10−10 and Ag+ + 2 NH3 ⇌ [Ag(NH3)2]+ has β2 = 1.6 × 10^7, both dimensionless with c° = 1 M. A reservoir maintains free aNH3 = 0.100. Solid AgCl remains; initial chloride is negligible. Dissolved silver is free or in the stated complex only. Data exercise, no ammonia or silver experiment.",
+      "taskDe": "Bilde Gesamtgleichung und Konstante. Berechne die Löslichkeit mit dominierendem Komplex und prüfe danach freies Ag+ sowie die Näherung. Warum ist derselbe Wert in einer geschlossenen Probe mit nur 0,001 M Gesamtsammoniak unmöglich?",
+      "taskEn": "Construct the net equation and constant. Calculate solubility with dominant complex, then check free Ag+ and the approximation. Why is the same value impossible in a closed sample with only 0.001 M total ammonia?",
+      "workedReasoningDe": "AgCl + 2 NH3 ⇌ [Ag(NH3)2]+ + Cl−; Knet = KL β2 = 0,00288. Bei Komplexdominanz gilt s ≈ [Komplex] ≈ [Cl−], daher s ≈ 0,005367 M. Exakt ist s² = KL (1 + β2 aNH3²) c°²; der Faktor 160001 gibt denselben gerundeten Wert. Freies Ag+ = s/160001 ≈ 3,35 · 10−8 M; das Produkt mit Chlorid bestätigt KL. Gesamt- und freies Silber unterscheiden sich. 0,005367 M Komplex würde 0,01073 M gebundenes NH3 benötigen und kann nicht aus 0,001 M Gesamtsammoniak entstehen. Eine Ligandenbilanz und eine neue freie NH3-Konzentration sind nötig; analytisches Gesamtsammoniak darf nicht einfach in β eingesetzt werden.",
+      "workedReasoningEn": "AgCl + 2 NH3 ⇌ [Ag(NH3)2]+ + Cl−, with Knet = Ksp β2 = 0.00288. Under complex dominance, s ≈ [complex] ≈ [Cl−], giving s ≈ 0.005367 M. Exactly, s² = Ksp (1 + β2 aNH3²) c°²; the factor 160001 gives the same rounded result. Free Ag+ = s/160001 ≈ 3.35 × 10−8 M, whose product with chloride verifies Ksp. Total and free silver differ. That complex concentration requires 0.01073 M bound NH3 and cannot arise from 0.001 M total ammonia. A ligand balance and a new free NH3 concentration are needed; analytical total ammonia cannot simply replace free activity in β.",
+      "freshIndependentTransferDe": "Ein Ligand bildet stattdessen ML im Verhältnis 1:1. Konstruiere den Kopplungsausdruck neu und benenne geänderte Exponenten und Bilanz.",
+      "freshIndependentTransferEn": "A ligand instead forms 1:1 ML. Reconstruct the coupled expression and identify the changed exponents and balance.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Knet = 0,00288 aus Lösen und Komplexbildung ableiten.",
+          "observableEn": "Derive Knet = 0.00288 from dissolution and complex formation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Löslichkeit und freies Ag+ mit dem Massenwirkungsgesetz prüfen.",
+          "observableEn": "Check solubility and free Ag+ using mass action.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Die geschlossene Ligandenbilanz als Gegenprobe nutzen.",
+          "observableEn": "Use the closed ligand balance as a countercheck.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-10-a",
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "title": "Ein eigenes vereinfachtes Cu/Wasser-pE-pH-Diagramm konstruieren",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C gilt Eh = 0,05916 pE in Volt gegen SHE. Wassergrenzen bei H2- und O2-Aktivität 1, bezogen auf 1 bar: pE = −pH für H+/H2 und pE = 20,78 − pH für O2/H2O. Für Cu2+ + 2 e− ⇌ Cu gilt E° = 0,340 V und festes aCu2+ = 10−6. Das Cu-Untermodell enthält nur gelöstes Cu2+ und reines Kupfermetall. Oxide, Hydroxide und Komplexe sind ausgeschlossen; Cu-Entscheidungen nur für pH 0–5.",
+      "materialsEn": "At 25 °C, Eh = 0.05916 pE in volts versus SHE. Water boundaries at H2 and O2 activity 1, relative to 1 bar, are pE = −pH for H+/H2 and pE = 20.78 − pH for O2/H2O. Cu2+ + 2 e− ⇌ Cu has E° = 0.340 V and fixed aCu2+ = 10−6. The Cu submodel contains only dissolved Cu2+ and pure metal. Oxides, hydroxides and complexes are excluded; restrict Cu decisions to pH 0–5.",
+      "taskDe": "Konstruiere eine beschriftete pE/pH-Skizze und die Cu-Grenze. Ordne P(pH 2, pE 1), Q(2, 6) und R(2, −4) chemisch ein. Unterscheide Modellstabilität von realer Korrosionsgeschwindigkeit.",
+      "taskEn": "Construct a labelled pE/pH sketch and the Cu boundary. Classify P(pH 2, pE 1), Q(2, 6) and R(2, −4) chemically. Distinguish model stability from actual corrosion rate.",
+      "workedReasoningDe": "Die Cu-Linie ist horizontal: Eh = 0,340 + 0,05916/2 · log(10−6) = 0,16252 V, also pE ≈ 2,747. Oberhalb wird Cu2+, unterhalb Metall bevorzugt. Bei pH 2 reicht das Wasserfenster von pE −2 bis 18,78. P liegt darin im Metallbereich, Q darin im Cu2+-Bereich. R liegt unter der H2-Grenze: Wasserreduktion ist thermodynamisch möglich, der Punkt ist kein dauerhaft unverändert stabiler Wasserzustand. Das Zweiformenmodell beweist weder reale Passivierung noch eine Rate und lässt außerhalb pH 0–5 wichtige Cu-Spezies aus. pE ist dimensionslos, Eh eine Spannung.",
+      "workedReasoningEn": "The Cu boundary is horizontal: Eh = 0.16252 V, hence pE ≈ 2.747. Cu2+ is favoured above it, metal below. At pH 2 the water window extends from pE −2 to 18.78. P lies inside it in the metal region and Q inside it in the Cu2+ region. R is below the H2 boundary, so water reduction is thermodynamically possible; it is not an unchanged stable aqueous state. This two-form model establishes neither actual passivation nor a corrosion rate, and omits important Cu species outside pH 0–5. pE is dimensionless; Eh is voltage.",
+      "freshIndependentTransferDe": "Erhöhe die Cu2+-Aktivität hundertfach. Leite die Grenzverschiebung ab und begründe, warum eine fehlende Aktivitätsangabe das Diagramm unvollständig macht.",
+      "freshIndependentTransferEn": "Increase Cu2+ activity one hundredfold. Derive the boundary shift and explain why missing activity information makes the diagram incomplete.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Wassergrenzen und horizontale Cu-Linie konstruieren.",
+          "observableEn": "Construct water boundaries and the horizontal Cu line.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Drei Punkte mit korrekter pE/Eh-Bedeutung einordnen.",
+          "observableEn": "Classify three points with correct pE/Eh meaning.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Fehlende Spezies, Rate und Passivierungsinformation benennen.",
+          "observableEn": "Identify missing species, rate and passivation information.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-10-b",
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "title": "Geneigte und vertikale Grenze eines Modellmetalls",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Ein eigenes idealisiertes Metall M beschreibt nicht die vollständige Eisenchemie. M2+ + 2 e− ⇌ M hat E° = −0,440 V. M(OH)2(s) ⇌ M2+ + 2 OH− hat KL = 10−15; Kw = 10−14 bei 25 °C. Als Grenze für gelöstes Metall gilt aM2+ = 10−6. Nur M, M2+ und M(OH)2 werden berücksichtigt; Eh = 0,05916 pE. Wassergrenzen wie in 10a. Ein Feststoffbereich garantiert keine dichte, haftende Schutzschicht.",
+      "materialsEn": "An own idealised metal M does not represent complete iron chemistry. M2+ + 2 e− ⇌ M has E° = −0.440 V. M(OH)2(s) ⇌ M2+ + 2 OH− has Ksp = 10−15; Kw = 10−14 at 25 °C. Use aM2+ = 10−6 as the dissolved-metal threshold. Include only M, M2+ and M(OH)2; Eh = 0.05916 pE. Water boundaries are as in 10a. A solid region does not guarantee an adherent protective film.",
+      "taskDe": "Leite die vertikale Fällungsgrenze und die M/M(OH)2-Gerade her. Ordne P(pH 8, Eh −0,50 V) und Q(pH 11, Eh −0,50 V) ein. Warum ersetzt das Schema keinen Materialschutztest?",
+      "taskEn": "Derive the vertical precipitation boundary and M/M(OH)2 line. Classify P(pH 8, Eh −0.50 V) and Q(pH 11, Eh −0.50 V). Why does the scheme not replace a material-protection test?",
+      "workedReasoningDe": "Bei aM2+ = 10−6 gilt aOH− = √(10−15/10−6) = 10−4,5, also pOH 4,5 und pH 9,5. Die Metall/Ion-Linie ist Eh = −0,61748 V. Einsetzen von aM2+ = KL/aOH² ergibt die Feststoff/Metall-Gerade Eh = −0,05546 − 0,05916 pH. P liegt unter pH 9,5 und oberhalb −0,61748 V, also im M2+-Bereich. Q liegt oberhalb pH 9,5 und oberhalb −0,70622 V, also im M(OH)2-Bereich. Beide Punkte liegen im Wasserfenster. Der Schnittpunkt bei pH 9,5 prüft die Konsistenz. Haftung, Porosität, Kinetik, weitere Oxidationsstufen und Komplexe fehlen; ein Feststofffeld bedeutet keinen nachgewiesenen Schutz.",
+      "workedReasoningEn": "At aM2+ = 10−6, aOH− = 10−4.5, giving pOH 4.5 and pH 9.5. The metal/ion line is Eh = −0.61748 V. Substituting aM2+ = Ksp/aOH² gives the solid/metal line Eh = −0.05546 − 0.05916 pH. P has pH below 9.5 and Eh above −0.61748 V, placing it in the M2+ region. Q has pH above 9.5 and Eh above −0.70622 V, placing it in the hydroxide region. Both lie inside the water window. Check consistency at the intersection at pH 9.5. Adhesion, porosity, kinetics, other oxidation states and complexes are absent; a solid field is not proven protection.",
+      "freshIndependentTransferDe": "Füge einen starken M2+-Liganden hinzu. Begründe die nötige Neuberechnung der Grenzen statt einer unveränderten Farbflächenannahme.",
+      "freshIndependentTransferEn": "Add a strong M2+ ligand. Explain the need to recalculate boundaries rather than assuming unchanged coloured regions.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die vertikale pH-9,5-Grenze aus KL und Kw ableiten.",
+          "observableEn": "Derive the vertical pH-9.5 boundary from Ksp and Kw.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Geneigte Grenze und beide Punkte konsistent bestimmen.",
+          "observableEn": "Determine the sloping boundary and classify both points consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Feststoffstabilität von tatsächlicher Passivierung trennen.",
+          "observableEn": "Separate solid stability from actual passivation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-11-a",
+      "goalId": "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+      "title": "Daniell entladen, reversibel rückwärts treiben und echtes Gleichgewicht",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C gilt Zn + Cu2+ ⇌ Zn2+ + Cu mit E° = 1,100 V, n = 2 und F = 96485 C/mol. Anfangs ist Q = 1. E = E° − 0,05916/n · log Q und ΔrG = −nFE. In einem hypothetischen umkehrbaren Modell ohne Nebenreaktion können sich die Aktivitäten ändern. Ein reales Ladegerät benötigt bei endlichem Strom zusätzliche Spannung für Verluste; konkrete Überspannungen fehlen. Keine praktische Zinkabscheidung aus Wasser.",
+      "materialsEn": "At 25 °C, Zn + Cu2+ ⇌ Zn2+ + Cu has E° = 1.100 V, n = 2 and F = 96485 C/mol. Initially Q = 1. Use E = E° − 0.05916/n · log Q and ΔrG = −nFE. Activities may vary in a hypothetical reversible model without side reactions. A real charger needs additional voltage for finite-current losses; overpotentials are unspecified. Do not attempt aqueous zinc plating.",
+      "taskDe": "Ordne E und ΔrG für beide Reaktionsrichtungen zu und leite K aus E = 0 her. Warum besitzt eine stromlos gemessene 1,100-V-Zelle noch kein globales chemisches Gleichgewicht? Beschreibe Polung, Arbeit und reale Grenzen des erzwungenen Rückumsatzes.",
+      "taskEn": "Assign E and ΔrG to both directions and derive K from E = 0. Why is an open-circuit cell measuring 1.100 V not at global chemical equilibrium? Describe polarity, work and real limitations when forcing the reverse process.",
+      "workedReasoningDe": "Vorwärts gilt E = +1,100 V und ΔrG = −212,27 kJ/mol; rückwärts E = −1,100 V und ΔrG = +212,27 kJ/mol. Bei E = 0 ist Q = K; log K = nE°/0,05916 ≈ 37,19 und K ≈ 1,54 · 10^37 für diese Gleichung. Ein offener Außenkreis verhindert Strom, obwohl der chemische Antrieb nicht null ist. Lokale Doppelschichtgleichgewichte bedeuten nicht global Q = K. Rückwärts oxidiert Cu an der positiven Anode und Zn2+ wird an der negativen Kathode reduziert. Die Quelle liefert mindestens reversible Arbeit sowie bei Strom zusätzliche Verluste. Wasserstoffbildung, Dendriten und Passivierung können eine reale Wiederaufladung verhindern; das Modell beweist keinen brauchbaren Akku.",
+      "workedReasoningEn": "Forward E = +1.100 V and ΔrG = −212.27 kJ/mol; reverse E = −1.100 V and ΔrG = +212.27 kJ/mol. At E = 0, Q = K; log K ≈ 37.19 and K ≈ 1.54 × 10^37 for this equation. Opening the external circuit stops current without removing chemical driving force. Local double-layer equilibria do not imply global Q = K. Forced reversal oxidises Cu at the positive anode and reduces Zn2+ at the negative cathode. The source supplies reversible work and finite-current losses. Hydrogen evolution, dendrites and passivation can prevent useful rechargeability; the model proves no practical rechargeable battery.",
+      "freshIndependentTransferDe": "Lasse den äußeren Widerstand gegen unendlich wachsen, während Q gleich bleibt. Prüfe erneut „kein Strom bedeutet ΔrG = 0“ und vergleiche mit Q = K.",
+      "freshIndependentTransferEn": "Let external resistance approach infinity while Q stays unchanged. Reassess “no current means ΔrG = 0” and contrast Q = K.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "E und ΔrG auf dieselbe Reaktionsrichtung und das Arbeitsvorzeichen beziehen.",
+          "observableEn": "Relate E and ΔrG to the same reaction direction and work sign.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Q = K und K ≈ 1,54 · 10^37 herleiten.",
+          "observableEn": "Derive Q = K and K ≈ 1.54 × 10^37.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Leerlauf, lokale und globale Gleichgewichte sowie reales Laden unterscheiden.",
+          "observableEn": "Distinguish open circuit, local/global equilibria and real charging.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-11-b",
+      "goalId": "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+      "title": "Wasserelektrolyse als erzwungener Redoxweg, kein Gleichgewichts-Katalysatortrick",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C: H2O(l) → H2(g) + ½ O2(g), ΔrG° = +237,13 kJ/mol, n = 2, F = 96485 C/mol. Ideale Gase liegen jeweils bei 1 bar vor; Wasseraktivität ist 1. Bei einem angegebenen Strom seien die Verluste: Anode 0,25 V, Kathode 0,10 V, ohmscher Abfall 0,05 V. Ein Katalysator halbiert nur die Anodenüberspannung; Temperatur und Endzustände bleiben gleich. Datenaufgabe ohne Gasaufbau oder Zündung.",
+      "materialsEn": "At 25 °C: H2O(l) → H2(g) + ½ O2(g), ΔrG° = +237.13 kJ/mol, n = 2 and F = 96485 C/mol. Each ideal gas is at 1 bar and water activity is 1. At a stated current, losses are 0.25 V at the anode, 0.10 V at the cathode and 0.05 V ohmic drop. A catalyst halves only the anode overpotential; temperature and end states are unchanged. Data exercise, no gas assembly or ignition.",
+      "taskDe": "Leite Mindestspannung und Betriebsspannung vor und nach Katalysatoreinsatz her. Formuliere saure Teilreaktionen und erkläre, weshalb K und die thermodynamische Richtung nicht durch Katalyse umgekehrt werden. Beurteile eine unvollständige 0,9-V-Werbung.",
+      "taskEn": "Derive reversible minimum and operating voltages before and after catalysis. Construct acidic half-reactions and explain why catalysis does not reverse K or thermodynamic direction. Assess an incomplete 0.9-V advert.",
+      "workedReasoningDe": "Kathode: 2 H+ + 2 e− → H2; Anode: H2O → ½ O2 + 2 H+ + 2 e−. Urev = ΔrG/(nF) = 1,22884 V. Betrieb vorher: 1,62884 V, nachher: 1,50384 V. Der Katalysator reduziert einen kinetischen Verlust, nicht ΔrG° oder K bei gleichen Endzuständen. Die Standard-Hinreaktion benötigt Arbeit; die Rückreaktion ist thermodynamisch begünstigt. Dauernde Gasabfuhr ist eine offene Randbedingung, keine geschlossene Gleichgewichtseinstellung. Eine 0,9-V-Aussage benötigt andere Bedingungen, weitere Energie, Kopplung oder eine andere Messgrenze. Ohne Systemdaten folgt weder eine Erklärung noch eine pauschale Betrugsdiagnose.",
+      "workedReasoningEn": "Cathode: 2 H+ + 2 e− → H2; anode: H2O → ½ O2 + 2 H+ + 2 e−. Urev = 1.22884 V, giving operating voltages of 1.62884 V before and 1.50384 V after catalysis. Catalysis reduces a kinetic loss, not ΔrG° or K at identical end states. The standard forward reaction requires work; the reverse is thermodynamically favoured. Continuous gas removal is an open boundary, not closed equilibration. A 0.9-V claim requires changed conditions, extra energy, coupling or another measurement boundary; system data are needed before explaining or dismissing it.",
+      "freshIndependentTransferDe": "Erhöhe bei gleichbleibendem Sauerstoff und gleicher Temperatur den Wasserstoffpartialdruck. Begründe mit Q die höhere reversible Elektrolysespannung trotz gleichen Katalysators.",
+      "freshIndependentTransferEn": "Increase hydrogen partial pressure at fixed oxygen and temperature. Use Q to explain increased reversible electrolysis voltage despite an unchanged catalyst.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Teilreaktionen und 1,22884 V aus ΔrG herleiten.",
+          "observableEn": "Derive half-reactions and 1.22884 V from ΔrG.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Betriebsverluste berechnen und Katalyse von Gleichgewicht trennen.",
+          "observableEn": "Calculate operating losses and separate catalysis from equilibrium.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Offene Gasgrenze und unvollständige Werbung beurteilen.",
+          "observableEn": "Evaluate the open gas boundary and incomplete advert.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-12-a",
+      "goalId": "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+      "title": "Zwei Mechanismen für dieselbe NO-Oxidationskinetik",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Datenmodell 2 NO + O2 → 2 NO2 bei 25 °C; v = ½ d[NO2]/dt. Anfangsdaten [NO]/[O2] in mol/L → v in mol/(L s): 0,10/0,10 → 2,0 · 10−4; 0,20/0,10 → 8,0 · 10−4; 0,10/0,20 → 4,0 · 10−4. Hypothese A: 2 NO ⇌ N2O2 als schnelles Vorgleichgewicht, dann N2O2 + O2 → 2 NO2 langsam. Hypothese B: NO + O2 ⇌ NO3 als schnelles Vorgleichgewicht, dann NO3 + NO → 2 NO2 langsam. Dies sind hypothetische Modelle zur Identifizierbarkeit, kein bewiesener realer NO-Mechanismus. Kein Umgang mit NO-Gas.",
+      "materialsEn": "Data model 2 NO + O2 → 2 NO2 at 25 °C; v = ½ d[NO2]/dt. Initial [NO]/[O2] in mol/L → v in mol/(L s): 0.10/0.10 → 2.0 × 10−4; 0.20/0.10 → 8.0 × 10−4; 0.10/0.20 → 4.0 × 10−4. Hypothesis A: fast pre-equilibrium 2 NO ⇌ N2O2, followed by slow N2O2 + O2 → 2 NO2. Hypothesis B: fast pre-equilibrium NO + O2 ⇌ NO3, followed by slow NO3 + NO → 2 NO2. These are hypothetical identifiability models, not a proven actual NO mechanism. No NO gas handling.",
+      "taskDe": "Leite empirisches Gesetz und k mit Einheiten her. Prüfe beide Hypothesen durch Summierung und Elimination der Zwischenprodukte. Benenne das GBS korrekt und schlage zusätzliche unterscheidende Evidenz vor.",
+      "taskEn": "Derive the empirical law and k with units. Test both hypotheses by adding steps and eliminating intermediates. Define GBS correctly and propose additional discriminating evidence.",
+      "workedReasoningDe": "Doppelte NO-Konzentration vervierfacht v, doppelte O2-Konzentration verdoppelt v: v = k[NO]²[O2] mit k = 0,20 L²/(mol² s). A: [N2O2] = KA[NO]², daher v = kA KA [NO]²[O2]. B: [NO3] = KB[NO][O2], daher v = kB KB [NO]²[O2]. Beide summieren sich zur Gesamtgleichung und passen zum Gesetz. GBS bedeutet geschwindigkeitsbestimmender Schritt, hier jeweils der langsame Schritt unter den genannten Näherungen, nicht „Elementarschritt des Gesetzes“. Zeitaufgelöste Spektroskopie der Zwischenprodukte sowie konsistente Temperatur- und Kinetikdaten könnten weiter unterscheiden. Ein fehlender Nachweis bei zu geringer Empfindlichkeit widerlegt einen Weg nicht allein.",
+      "workedReasoningEn": "Doubling NO quadruples v and doubling O2 doubles v: v = k[NO]²[O2], with k = 0.20 L²/(mol² s). For A, [N2O2] = KA[NO]², so v = kA KA [NO]²[O2]. For B, [NO3] = KB[NO][O2], so v = kB KB [NO]²[O2]. Both sum correctly and fit the law. GBS means rate-determining step, here the slow step under the stated approximations, not an “elementary step of the law”. Time-resolved intermediate spectroscopy and consistent temperature/kinetic data may discriminate further. Failure to detect an intermediate with insufficient sensitivity is not decisive.",
+      "freshIndependentTransferDe": "Ein anderer Bedingungsbereich zeigt Sättigung bezüglich O2. Begründe die nötige Neubewertung beider einfachen Modelle mit streng linearer O2-Abhängigkeit.",
+      "freshIndependentTransferEn": "A different conditions range shows saturation with respect to O2. Explain why both simple models with strictly linear O2 dependence need reassessment.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Ordnungen und k = 0,20 mit korrekter Produktnormierung ermitteln.",
+          "observableEn": "Determine orders and k = 0.20 with correct product normalisation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Beide Mechanismen durch Zwischenproduktelimination und korrekte GBS-Bedeutung prüfen.",
+          "observableEn": "Test both mechanisms by eliminating intermediates and defining GBS correctly.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Nicht-Eindeutigkeit und eine unabhängige Unterscheidungsmessung begründen.",
+          "observableEn": "Explain nonuniqueness and an independent discriminating measurement.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-12-b",
+      "goalId": "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+      "title": "Vorgleichgewicht mit Rückreaktion: Änderung des scheinbaren Gesetzes",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Eigenes atomkonservierendes Modell: A + B ⇌ I mit k1 und k−1; I + C → P mit k2. I enthält die Atome von A+B, P jene von A+B+C. I sei kurzlebig; verwende d[I]/dt ≈ 0. Es gelten k1 = 2,0 L/(mol s), k−1 = 10 s−1 und k2 = 5,0 L/(mol s). [A] = [B] = 0,100 M sind fest. C variiert von 0,010 bis 10 M. Die hohe Konzentration ist eine formale Modellgrenze, keine Behauptung idealer realer Lösungen.",
+      "materialsEn": "Own atom-conserving model: A + B ⇌ I with k1 and k−1; I + C → P with k2. I contains atoms from A+B and P from A+B+C. Assume short-lived I and d[I]/dt ≈ 0. Use k1 = 2.0 L/(mol s), k−1 = 10 s−1 and k2 = 5.0 L/(mol s). [A] = [B] = 0.100 M are fixed; C varies from 0.010 to 10 M. The high concentration is a formal model limit, not a claim of ideal real solutions.",
+      "taskDe": "Leite das Gesetz mit der gegebenen Näherung her, berechne v bei C = 0,010 und 10 M und deute die Grenzfälle. Warum beweist eine passende Rate den Mechanismus noch nicht?",
+      "taskEn": "Derive the law under the stated approximation, calculate v at C = 0.010 and 10 M, and interpret the limits. Why does a good rate fit not prove the mechanism?",
+      "workedReasoningDe": "0 ≈ k1[A][B] − k−1[I] − k2[I][C]. Damit [I] ≈ k1[A][B]/(k−1 + k2[C]) und v = k1k2[A][B][C]/(k−1 + k2[C]). Bei 0,010 M ergibt sich 9,95 · 10−5 M/s; bei 10 M 0,01667 M/s. Bei niedrigem C gilt näherungsweise v = (k1k2/k−1)[A][B][C]; bei hohem C nähert sich v dem Wert k1[A][B] = 0,0200 M/s. Rückzerfall und Abfangen von I erklären die geänderte Abhängigkeit. Gesamtstöchiometrie allein liefert kein Rategesetz. Kurze I-Lebensdauer, Quasistationarität und fehlende Nebenwege benötigen eigene Evidenz, etwa Zeitauflösung oder I-Nachweis. Reale Aktivitätseffekte bei 10 M können die Näherung verletzen.",
+      "workedReasoningEn": "Steady state gives 0 ≈ k1[A][B] − k−1[I] − k2[I][C], hence [I] ≈ k1[A][B]/(k−1 + k2[C]) and v = k1k2[A][B][C]/(k−1 + k2[C]). At 0.010 M, v ≈ 9.95 × 10−5 M/s; at 10 M, v ≈ 0.01667 M/s. Low C gives v ≈ (k1k2/k−1)[A][B][C]; high C approaches k1[A][B] = 0.0200 M/s. Competing return and capture of I explain the changing dependence. Overall stoichiometry alone gives no rate law. Short I lifetime, steady state and absence of side routes need independent evidence such as time resolution or I detection. Actual activity effects at 10 M may invalidate the approximation.",
+      "freshIndependentTransferDe": "Nach einem Impuls steigt [I] zunächst deutlich. Welche Zeitphase verletzt die Näherung, und welche vollständige Differentialgleichung muss dort gelten?",
+      "freshIndependentTransferEn": "After a pulse, [I] initially accumulates substantially. Which time phase violates the approximation, and which full differential equation applies there?",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die Quasistationaritätsgleichung mit allen Bildungs- und Verlusttermen ableiten.",
+          "observableEn": "Derive the steady-state equation with every formation and loss term.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Beide Raten und Grenzgesetze quantitativ deuten.",
+          "observableEn": "Interpret both rates and limiting laws quantitatively.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Die Näherung und die Identifizierbarkeitsgrenze am geänderten Verlauf prüfen.",
+          "observableEn": "Test the approximation and identifiability limit against the changed course.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-13-a",
+      "goalId": "16f0dc69-6da8-5751-a00e-abbc1c882dbc",
+      "title": "Drei Katalyseformen auf gemeinsamem Energiebezug",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Drei Lehrwege derselben exothermen Reaktion haben gleiche Endzustände mit ΔrH = −30 kJ/mol. Unkatalysierte Vorwärtsbarriere: 90 kJ/mol. Homogener Säureweg: Zwischenstufe und regenerierter Katalysator, Barriere 55 kJ/mol. Heterogener Weg: Adsorption, Oberflächenumsatz und Desorption, Barriere 45 kJ/mol. Enzym in Lösung: ES-Komplex, Barriere 35 kJ/mol, bei hoher Temperatur deaktivierbar. Dies sind illustrative Profile, keine universelle Raten- oder Kostenrangfolge; Vorfaktoren und aktive Zentrenzahl fehlen.",
+      "materialsEn": "Three teaching pathways for the same exothermic reaction share end states with ΔrH = −30 kJ/mol. Uncatalysed forward barrier: 90 kJ/mol. Homogeneous acid route: intermediate and catalyst regeneration, barrier 55 kJ/mol. Heterogeneous route: adsorption, surface conversion and desorption, barrier 45 kJ/mol. Enzyme in solution: ES complex, barrier 35 kJ/mol, susceptible to thermal deactivation. These are illustrative profiles, not universal rate or cost rankings; prefactors and site counts are missing.",
+      "taskDe": "Zeichne vergleichbare Profile und berechne im Einmaximum-Modell die Rückbarrieren. Vergleiche Phasenlage, Enzymspezifität und Transportgrenzen. Ist das Enzym zwingend am schnellsten oder nachhaltigsten?",
+      "taskEn": "Draw comparable profiles and calculate reverse barriers in the single-maximum model. Compare phases, enzyme specificity and transport limits. Must the enzyme be fastest or most sustainable?",
+      "workedReasoningDe": "Edukte bei 0 und Produkte bei −30 kJ/mol mit Maxima bei 90/55/45/35 ergeben Rückbarrieren von 120/85/75/65 kJ/mol. Endzustandsdifferenz und K bleiben gleich. Homogen bedeutet gleiche Phase der aktiven Spezies; heterogen bedeutet Grenzflächenplätze mit möglicher Transportbegrenzung. Enzymkatalyse ist keine dritte ausschließliche Phasenkategorie: hier in Lösung, immobilisiert gegebenenfalls heterogen. Spezifische Bindung unterstützt einen passenden Übergangszustand; das Enzym wird regeneriert. Denaturierung verändert seine Struktur. Ohne Vorfaktoren, Zentrenzahl, Substratzugang und Lebensdauer folgt aus den Barrieren allein keine allgemeine Raten- oder Nachhaltigkeitsrangfolge.",
+      "workedReasoningEn": "With reactants at 0 and products at −30 kJ/mol, maxima at 90/55/45/35 give reverse barriers of 120/85/75/65 kJ/mol. End-state differences and K are unchanged. Homogeneous catalysis uses active species in one phase; heterogeneous catalysis uses interfaces and may be transport-limited. Enzyme catalysis is not a third mutually exclusive phase category: here it is in solution, but immobilisation may make it heterogeneous. Specific binding supports a suitable transition state; the enzyme is regenerated and denaturation changes its structure. Missing prefactors, site counts, access and lifetime prevent a universal rate or sustainability ranking.",
+      "freshIndependentTransferDe": "Immobilisiere das Enzym auf einem porösen Träger. Erkläre die geänderte Phasenzuordnung und warum eine Transportbegrenzung keine höhere chemische Barriere beweist.",
+      "freshIndependentTransferEn": "Immobilise the enzyme on a porous support. Explain the changed phase relationship and why transport limitation does not prove a higher chemical barrier.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Gleiche Endniveaus und Rückbarrieren von 120/85/75/65 kJ/mol konstruieren.",
+          "observableEn": "Construct equal end levels and reverse barriers of 120/85/75/65 kJ/mol.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Phasen, Enzymmechanismus und Regeneration vergleichen.",
+          "observableEn": "Compare phases, enzyme mechanism and regeneration.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Grenzen einer Rangfolge aus Ea allein einschließlich Transport erklären.",
+          "observableEn": "Explain limits of ranking by Ea alone, including transport.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-13-b",
+      "goalId": "16f0dc69-6da8-5751-a00e-abbc1c882dbc",
+      "title": "Deaktivierung und scheinbare Aktivierung auseinanderhalten",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Fiktive Anfangsraten in µmol/min bei gleichen Substrat- und Katalysatormengen: Bei 20/35/60 °C gibt ein lösliches Enzym 4/9/1, ein gelöster Säurekatalysator 2/4/10 und ein Feststoff ohne Rühren 1/1,5/2 beziehungsweise mit Rühren 3/6/12. Nach Rückkühlung von 60 auf 35 °C liefert das Enzym 1 statt 9; frisches Enzym liefert bei 35 °C wieder 9. pH, Volumen und Messzeit sind kontrolliert. Modellwerte, keine Realdaten oder allgemeine Phasenrangfolge.",
+      "materialsEn": "Fictional initial rates in µmol/min at equal substrate/catalyst amounts: at 20/35/60 °C, soluble enzyme gives 4/9/1, dissolved acid catalyst 2/4/10, and solid without stirring 1/1.5/2 or with stirring 3/6/12. After cooling from 60 to 35 °C the enzyme gives 1 instead of 9; fresh enzyme gives 9 at 35 °C. Control pH, volume and measurement time. Model values, not real data or a universal phase ranking.",
+      "taskDe": "Welche Daten stützen Deaktivierung beziehungsweise Transportbegrenzung? Beurteile einen Arrheniusfit über alle Enzympunkte. Plane eine Kontrolle für einen alternativen pH-Effekt.",
+      "taskEn": "Which data support deactivation or transport limitation? Assess an Arrhenius fit across all enzyme points. Design a control for an alternative pH effect.",
+      "workedReasoningDe": "Der bleibende Verlust nach Rückkühlung unter gleichen Testbedingungen stützt irreversible Deaktivierung beziehungsweise Denaturierung. Frisches Enzym kontrolliert die Messung. Ein einziger Arrheniusfit bei wechselnder aktiver Enzymmenge isoliert keine chemische Barriere. Der Rühreffekt stützt einen Transportanteil, beweist aber keinen eindeutigen Porenmechanismus. pH bei der jeweiligen Temperatur messen, gepufferte Kontrollen und frische Enzymzugabe prüfen Alternativen. Vergleiche müssen aktive Menge und Zustand berücksichtigen; das kausale Detail bleibt offen.",
+      "workedReasoningEn": "Persistent loss after cooling under the same test conditions supports irreversible deactivation or denaturation; fresh enzyme controls the measurement. A single Arrhenius fit across changing active-enzyme amounts does not isolate a chemical barrier. Stirring dependence supports transport involvement but proves no unique pore mechanism. Measure pH at each temperature and use buffer controls and fresh enzyme addition to test alternatives. Comparisons must account for active amount and state; causal details remain open.",
+      "freshIndependentTransferDe": "Ein fein verteilter Feststoff wird rührunabhängig. Begründe die geringere mögliche Transportbegrenzung bei weiterhin heterogener Katalyse.",
+      "freshIndependentTransferEn": "A finely divided solid becomes stirring-independent. Explain reduced possible transport limitation while catalysis remains heterogeneous.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Rückkühlung und frisches Enzym als Deaktivierungsevidenz nutzen.",
+          "observableEn": "Use recooling and fresh enzyme as deactivation evidence.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Rührabhängigkeit von chemischer Barrierenänderung trennen.",
+          "observableEn": "Separate stirring dependence from chemical barrier changes.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Arrheniusfit und pH-Alternative kritisch prüfen.",
+          "observableEn": "Critically assess the Arrhenius fit and pH alternative.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-14-a",
+      "goalId": "00c647e8-0858-5640-b9da-76d85d528820",
+      "title": "CO-Abgasreinigung bei gleicher Reinigungsfunktion",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Fiktiver Anlagenvergleich über 1000 Betriebsstunden bei gleichem Gasdurchsatz und 90 % CO-Umsatz: thermischer Weg 10 kWh/h, Katalysatorweg 4 kWh/h plus anteilig 100 kg CO2e für Katalysatorherstellung und Entsorgung je 1000 h. Beide nutzen den Energiefaktor 0,40 kg CO2e/kWh. Von 1,00 kg/h CO werden jeweils 0,90 kg/h zu CO2 oxidiert; M(CO) = 28 und M(CO2) = 44 g/mol. Die Klima-Teilrechnung umfasst zugeführte Energie und Katalysator, nicht die weitere CO-Folgechemie oder alle Nebenstoffe. Der Feststoffkatalysator kann vergiftet werden.",
+      "materialsEn": "Fictional comparison over 1000 operating hours at equal gas flow and 90% CO conversion: thermal route 10 kWh/h; catalytic route 4 kWh/h plus allocated 100 kg CO2e for catalyst production/disposal per 1000 h. Both use an energy factor of 0.40 kg CO2e/kWh. Each oxidises 0.90 kg/h of 1.00 kg/h incoming CO to CO2; molar masses are 28 and 44 g/mol. The climate sub-account covers input energy and catalyst, not subsequent CO fate or all side pollutants. The solid catalyst can be poisoned.",
+      "taskDe": "Erkläre Stoff- und Teilchenwirkung und bilanziere die CO-Oxidation. Berechne CO2-Bildung und beide Klima-Teilbilanzen. Beurteile die Technik bedingt und prüfe, ob weniger Energie vollständige Nachhaltigkeit beweist. Welche Lebensdauer- und Betriebsdaten sind entscheidend?",
+      "taskEn": "Explain substance and particle action and balance CO oxidation. Calculate CO2 formation and both climate sub-accounts. Evaluate the technology conditionally and assess whether less energy proves complete sustainability. Which lifetime and operating data matter?",
+      "workedReasoningDe": "2 CO + O2 → 2 CO2. Adsorption und ein alternativer Oberflächenweg senken die wirksame Barriere; Desorption regeneriert Zentren bei gleichen Endzuständen. CO2-Bildung: 0,90 · 44/28 = 1,414 kg/h auf beiden Wegen; 0,10 kg/h CO bleibt gesundheitsrelevant. Energiebezogene Emissionen sind 4000 gegenüber 1600 + 100 = 1700 kg CO2e: Vorteil 2300 kg je 1000 h im Teilmodell. Die gleiche stoffliche CO2-Bildung darf nicht als unterschiedlicher Effekt doppelt gezählt werden. Dies ist keine volle Ökobilanz, CO-Oxidation keine CO2-Entfernung. Anfahren, Vergiftung, Ersatzhäufigkeit, Metallgewinnung und Entsorgung können das Urteil ändern. Der gegebene Vorteil bedeutet keine allgemeine Unbedenklichkeit.",
+      "workedReasoningEn": "2 CO + O2 → 2 CO2. Adsorption and an alternative surface path lower an effective barrier; desorption regenerates sites at unchanged end states. Both form 0.90 × 44/28 = 1.414 kg/h CO2, while 0.10 kg/h CO remains health-relevant. Energy emissions are 4000 versus 1600 + 100 = 1700 kg CO2e, a sub-model advantage of 2300 kg per 1000 h. Do not double-count identical material CO2 formation as a difference. This is not a full LCA and CO oxidation does not remove CO2. Start-up, poisoning, replacement, metal production and disposal can change the judgment; the stated benefit does not imply general harmlessness.",
+      "freshIndependentTransferDe": "Nach Vergiftung steigt der CO-Rest bei gleichem Energiebedarf auf 0,40 kg/h. Prüfe die gleiche Reinigungsfunktion erneut, bevor der frühere Energievorteil zur Empfehlung wird.",
+      "freshIndependentTransferEn": "After poisoning, residual CO rises to 0.40 kg/h at unchanged energy use. Reassess equivalent cleaning service before using the earlier energy advantage as a recommendation.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Katalysezyklus und CO-Oxidation atomrichtig erklären.",
+          "observableEn": "Explain the catalyst cycle and atom-balanced CO oxidation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "1,414 kg/h stoffliches CO2 und 2300 kg Teilbilanzvorteil getrennt berechnen.",
+          "observableEn": "Separately calculate 1.414 kg/h material CO2 and the 2300 kg sub-account advantage.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Gleiche Funktion, Lebensdauer und Grenzen gegen pauschale Ökowerbung prüfen.",
+          "observableEn": "Check equal service, lifetime and limits against blanket environmental claims.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-14-b",
+      "goalId": "00c647e8-0858-5640-b9da-76d85d528820",
+      "title": "SCR, Selektivität und widersprüchliche Quellen",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Eigene Karten für 100 kg NO am Eintritt: A, unabhängiges Prüflabor mit gleichem Gasstrom und gleicher Temperatur, nennt 90 kg NO-Umsatz, 0,50 kg unverbrauchtes NH3 im Auslass und 1000 h Standzeit. B, Hersteller, wirbt mit „100 % sauber“, nennt 90 % NO-Umsatz und 3000 h aus schwefelfreiem Testgas, aber keine NH3-Daten. Einsatzgas enthält Schwefel. Reaktionsvorschlag: 4 NH3 + 4 NO + O2 → 4 N2 + 6 H2O. M(NO) = 30, M(NH3) = 17 g/mol. Energie- und Materialkosten fehlen.",
+      "materialsEn": "Own cards per 100 kg incoming NO: A, independent testing at equal flow/temperature, reports 90 kg NO conversion, 0.50 kg unreacted NH3 in the outlet, and 1000 h lifetime. B, manufacturer, claims “100% clean”, giving 90% conversion and 3000 h in sulfur-free test gas but no NH3 data. Actual gas contains sulfur. Proposed reaction: 4 NH3 + 4 NO + O2 → 4 N2 + 6 H2O. Molar masses: NO 30, NH3 17 g/mol. Energy and material costs are missing.",
+      "taskDe": "Prüfe die Bilanz und berechne verbrauchtes NH3 sowie verbleibendes NO. Erkläre Oberflächenwirkung und Vergiftung. Beurteile Quellenübertragbarkeit und Risiken und formuliere eine entscheidbare Rückfrage ohne erfundene Preise oder Ökobilanz.",
+      "taskEn": "Check the balance and calculate consumed NH3 and remaining NO. Explain surface action and poisoning. Evaluate source transferability and risks and pose a decision-relevant question without inventing prices or an LCA.",
+      "workedReasoningDe": "Die Bilanz erhält N8, H12 und O6. 90 kg NO sind 3,00 kmol und verbrauchen 51,0 kg NH3. Mit dem genannten Schlupf sind mindestens 51,5 kg NH3 zuzuführen, wenn nur diese beiden Wege betrachtet werden. 10 kg NO bleiben; NH3-Schlupf ist eine weitere Emission. 90 % Umsatz ist keine vollständige Reinigung. Schwefel kann benötigte Adsorptions- und Reaktionsplätze blockieren. A ist kontextnäher als Bs schwefelfreier Test, doch Urheberschaft allein beweist nichts. Methodik, Langzeitverlauf, NO2 und weitere Produkte, Unsicherheit und NH3-Erfassung prüfen. Eine passende Rückfrage betrifft Standzeit und Schlupf bei gleichem realem Gasstrom und Zielumsatz. Kosten- und Gesamtumwelt-Rangfolge bleiben offen.",
+      "workedReasoningEn": "The balance preserves N8, H12 and O6. Converting 90 kg NO, or 3.00 kmol, consumes 51.0 kg NH3. Including the stated slip requires at least 51.5 kg NH3 input if these are the only two paths considered. 10 kg NO remains, and NH3 slip adds another emission; 90% conversion is not complete cleaning. Sulfur may block adsorption/reaction sites. A is closer to the actual context than B’s sulfur-free test, but authorship alone proves nothing. Check methods, long-term data, NO2/side products, uncertainty and NH3 detection. Ask for lifetime and slip at the same real flow and conversion target. Cost and full environmental rankings remain open.",
+      "freshIndependentTransferDe": "Ein anderer Katalysator hat weniger NH3-Schlupf, aber mehr Energie- und Seltenmetallbedarf. Wähle Funktions- und Zeitgrenze und benenne zusätzlich nötige Daten.",
+      "freshIndependentTransferEn": "Another catalyst has less NH3 slip but uses more energy and rare metals. Select service and time boundaries and identify additional necessary data.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "NO/NH3-Verhältnis, 51,0 kg Verbrauch und Schlupf bilanzieren.",
+          "observableEn": "Balance the NO/NH3 ratio, 51.0 kg consumption and slip.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Oberflächenwirkung und Vergiftung auf Teilchenebene erklären.",
+          "observableEn": "Explain surface action and poisoning at particle level.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Quellenkontext und mehrere Kriterien ohne erfundene Rangfolge abwägen.",
+          "observableEn": "Weigh source context and multiple criteria without inventing a ranking.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-15-a",
+      "goalId": "0fb337de-b63b-5345-b5d6-57eee3921dc9",
+      "title": "Daniell optimieren ohne Metallmasse mit Spannung zu verwechseln",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C gilt für Zn + Cu2+ ⇌ Zn2+ + Cu: E° = 1,100 V, n = 2 und E = E° − 0,05916/2 · log Q. Anfangs aZn2+ = aCu2+ = 0,100. Optionen: A erhöht aCu2+ auf 0,200 bei gleichem aZn2+; B verdoppelt die Zinkblechmasse, beide Elektroden bleiben reine Feststoffe; C senkt aZn2+ auf 0,0100 bei gleichem aCu2+. Ziel ist zunächst höhere reversible Leerlaufspannung, keine Leistungsbehauptung.",
+      "materialsEn": "At 25 °C, Zn + Cu2+ ⇌ Zn2+ + Cu has E° = 1.100 V, n = 2 and E = E° − 0.05916/2 · log Q. Initially aZn2+ = aCu2+ = 0.100. A raises aCu2+ to 0.200 at fixed aZn2+; B doubles the zinc-sheet mass with pure solid electrodes remaining; C lowers aZn2+ to 0.0100 at fixed aCu2+. The initial objective is higher reversible open-circuit voltage, not power.",
+      "taskDe": "Leite Q und die Wirkung jeder Option aus Le Chatelier und Teilchenrollen ab. Berechne die Spannungsänderungen und begrenze eine Empfehlung für Dauerleistung und Ressourceneffizienz.",
+      "taskEn": "Derive Q and each option’s effect using Le Chatelier and particle roles. Calculate voltage changes and bound a recommendation for sustained power and resource efficiency.",
+      "workedReasoningDe": "Q = aZn2+/aCu2+; reine Metalle haben Aktivität 1. A: Q = 0,5, ΔE = +0,00890 V; mehr Elektronenakzeptor begünstigt den Vorwärtsumsatz. B: Q und E bleiben gleich; mehr Metall kann Kapazität oder Oberfläche ändern, beweist aber keine höhere Leerlaufspannung. C: Q = 0,1, ΔE = +0,02958 V; niedrigere Produktaktivität erhöht den Antrieb. Bei konstanter Temperatur bleibt K gleich; Q und Triebkraft ändern sich. Für Dauerleistung fehlen Strom, Innenwiderstand, Transport und Verluste. Verdünnung, Salzeinsatz und Abfall können Gegenkriterien sein; kleine Spannungsgewinne beweisen kein allgemein bestes Design.",
+      "workedReasoningEn": "Q = aZn2+/aCu2+; pure metals have unit activity. A: Q = 0.5, ΔE = +0.00890 V; more electron acceptor favours forward conversion. B leaves Q and E unchanged; extra metal may change capacity or area but proves no higher open-circuit voltage. C: Q = 0.1, ΔE = +0.02958 V; lower product activity raises driving force. At fixed temperature K is unchanged while Q and driving force change. Sustained power also needs current, resistance, transport and losses. Dilution, salt use and waste may count against an option; a small voltage gain is no universal optimum.",
+      "freshIndependentTransferDe": "Bei A steigt wegen geänderter Elektrolytbedingungen der Innenwiderstand stark. Erkläre die mögliche Kombination aus höherer Leerlaufspannung und kleinerer Lastleistung.",
+      "freshIndependentTransferEn": "In A, changed electrolyte conditions greatly increase internal resistance. Explain how higher open-circuit voltage can coexist with lower loaded power.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Le Chatelier, korrektes Q und Teilchenrollen verknüpfen.",
+          "observableEn": "Link Le Chatelier, correct Q and particle roles.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "8,90 mV, null und 29,58 mV für A/B/C begründen.",
+          "observableEn": "Justify 8.90 mV, zero and 29.58 mV for A/B/C.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Spannungsziel von Kapazität, Leistung und Aufwand trennen.",
+          "observableEn": "Distinguish voltage objective from capacity, power and resource cost.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-15-b",
+      "goalId": "0fb337de-b63b-5345-b5d6-57eee3921dc9",
+      "title": "Kupferkomplex senkt freie Aktivität trotz gleichem Gesamtgehalt",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Eigene Daniell-Daten bei 25 °C: zunächst aZn2+ = aCu2+ = 0,0100. Ein Ligand nur in der Cu-Halbzelle lässt Gesamtkupfer bei 0,0100 M, senkt aber freies aCu2+ auf 10−5. Kein Ligandtransfer, keine weitere Redoxreaktion; Volumenänderung vernachlässigbar. E° = 1,100 V, n = 2. Der Hersteller verspricht mehr Spannung durch „stabileres Kupfer“. Energie für Ligandentrennung und Regeneration ist unbekannt.",
+      "materialsEn": "Own Daniell data at 25 °C: initially aZn2+ = aCu2+ = 0.0100. A ligand added only to the Cu half-cell leaves total copper at 0.0100 M but lowers free aCu2+ to 10−5. No ligand transfer or additional redox route; volume change is negligible. E° = 1.100 V, n = 2. A manufacturer promises more voltage through “more stable copper”. Ligand separation/regeneration energy is unknown.",
+      "taskDe": "Prüfe die Behauptung und berechne die Spannung vor und nach Zugabe. Erkläre die Kopplung und vergleiche selektive Produktentfernung in der Zinkhalbzelle. Welche Aktivitätskontrollen und welches Optimierungsziel sind nötig?",
+      "taskEn": "Assess the claim and calculate voltage before and after addition. Explain the coupling and contrast selective product removal in the zinc half-cell. Which activity controls and optimisation objective are needed?",
+      "workedReasoningDe": "Vorher Q = 1 und E = 1,100 V. Nachher Q = 1000 und E = 1,100 − 0,08874 = 1,01126 V. Komplexierung vermindert den freien Elektronenakzeptor Cu2+; Gesamtkupfer ersetzt keine freie Aktivität in Q. Selektiver Entzug von freiem Zn2+ würde dagegen Produktaktivität senken und E erhöhen, sofern keine anderen Spezies oder Elektrodenreaktionen geändert werden. Kontrolliere Ionenstärke, Temperatur, freie Aktivität, Leerlauf- und Lastwerte sowie Volumen- und Salzbrückeneffekte. Der Ligand kann andere Vorteile haben; „stabiler“ erklärt aber keine höhere Spannung. Regenerationsaufwand bleibt offen.",
+      "workedReasoningEn": "Initially Q = 1 and E = 1.100 V. Afterwards Q = 1000 and E = 1.01126 V. Complexation lowers free electron-acceptor Cu2+; total copper cannot replace free activity in Q. Selective removal of free Zn2+ would instead lower product activity and raise E, provided other species and electrode reactions were unchanged. Control ionic strength, temperature, free activity, open-circuit/loaded readings, volume and bridge effects. The ligand may offer other benefits, but “stable” does not justify higher voltage. Regeneration effort remains unknown.",
+      "freshIndependentTransferDe": "Ein produktbindender Ligand passiert die Salzbrücke und bindet auch Cu2+. Begründe die Abhängigkeit des Ergebnisses vom Verhältnis beider freien Aktivitätsänderungen.",
+      "freshIndependentTransferEn": "A product-binding ligand crosses the bridge and also binds Cu2+. Explain why the result depends on the ratio of both free-activity changes.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Freie Aktivität und Gesamtkupfer unterscheiden.",
+          "observableEn": "Distinguish free activity and total copper.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Q = 1000 und 1,01126 V mit richtiger Änderungsrichtung herleiten.",
+          "observableEn": "Derive Q = 1000 and 1.01126 V with the correct direction.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Selektivität, Kontrollen und Optimierungsziel im Transfer prüfen.",
+          "observableEn": "Test selectivity, controls and the optimisation objective in transfer.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-16-a",
+      "goalId": "b781745a-256e-52b2-8d86-c1072845ccdd",
+      "title": "SHE aufbauen und zwei Metalle relativ einordnen",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Gedanklicher Aufbau bei 25 °C: platinierte Pt-Elektrode in Kontakt mit H2 bei Standarddruck 1 bar und wässriger Lösung mit aH+ = 1. Eine Salzbrücke verbindet die Metall/M2+-Halbzelle bei Aktivität 1. Ein hochohmiges Voltmeter hat links SHE und rechts Metall; Urechts−links beträgt für Cu +0,340 V, für Zn −0,760 V. Pt wird nicht als Reaktand verbraucht. Kein Gasaufbau und keine Zündung.",
+      "materialsEn": "Thought setup at 25 °C: platinised Pt contacts H2 at standard pressure 1 bar and aqueous aH+ = 1. A salt bridge connects a metal/M2+ half-cell at activity 1. A high-impedance voltmeter has SHE on the left and metal on the right; Uright−left is +0.340 V for Cu and −0.760 V for Zn. Pt is not consumed as a reactant. No gas assembly or ignition.",
+      "taskDe": "Beschrifte Aufbau und Ladungswege und erkläre Pt sowie Standardbedingungen. Konstruiere für kleine gedachte Stromabgabe jeweils Anode, Kathode und Gesamtgleichung. Berechne die Daniell-Standardspannung und prüfe „0 V bedeutet keine chemische Funktion“.",
+      "taskEn": "Label setup and charge paths and explain Pt and standard conditions. For a small hypothetical discharge, construct anode, cathode and overall equation for each coupling. Calculate Daniell standard voltage and assess “0 V means no chemical function”.",
+      "workedReasoningDe": "SHE: 2 H+ + 2 e− ⇌ H2. Pt stellt leitenden Kontakt und katalytische Oberfläche bereit; Gas und definierte Protonenaktivität sind nötig. Außen fließen Elektronen, durch die Salzbrücke Ionen. Mit Cu ist die SHE Anode: H2 + Cu2+ → 2 H+ + Cu; positive Zellspannung 0,340 V. Mit Zn ist Zn Anode und SHE Kathode: Zn + 2 H+ → Zn2+ + H2; positive Zellspannung 0,760 V bei passender Messpolung. Relative Standardpotenziale +0,340 und −0,760 geben 1,100 V für Daniell. Null ist eine Referenzkonvention, nicht fehlende Redoxfunktion oder absolutes Nullpotenzial. aH+ = 1 bedeutet nicht in jedem realen Medium genau 1 mol/L.",
+      "workedReasoningEn": "SHE: 2 H+ + 2 e− ⇌ H2. Pt provides conducting contact and a catalytic surface; gas contact and defined proton activity are needed. Electrons flow externally and ions through the bridge. With Cu, SHE is anode: H2 + Cu2+ → 2 H+ + Cu, giving positive cell voltage 0.340 V. With Zn, Zn is anode and SHE cathode: Zn + 2 H+ → Zn2+ + H2, giving positive voltage 0.760 V with suitable polarity. Relative standard potentials +0.340 and −0.760 give Daniell 1.100 V. Zero is a reference convention, not absent redox function or absolute zero potential. aH+ = 1 need not mean exactly 1 mol/L in every real medium.",
+      "freshIndependentTransferDe": "Vertausche bei gleicher Chemie die Messkabel. Erkläre das geänderte Anzeigevorzeichen bei unveränderten Standard-Reduktionspotenzialen und chemischen Möglichkeiten.",
+      "freshIndependentTransferEn": "Swap voltmeter leads without changing chemistry. Explain the changed reading sign while standard reduction potentials and chemical possibilities remain unchanged.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Standards, Pt, H+/H2-Teilreaktion und Ladungswege beschriften.",
+          "observableEn": "Label standards, Pt, the H+/H2 half-reaction and charge paths.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Beide Kopplungen und 1,100 V für Daniell mit Vorzeichen ableiten.",
+          "observableEn": "Derive both couplings and Daniell 1.100 V with signs.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Relative Nullkonvention, chemische Funktion und Aktivität trennen.",
+          "observableEn": "Separate zero-reference convention, chemical function and activity.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    {
+      "id": "eqrk16-16-b",
+      "goalId": "b781745a-256e-52b2-8d86-c1072845ccdd",
+      "title": "Wasserstoffelektrode unter Nichtstandardbedingungen ist keine SHE",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C ist die linke Elektrode Pt|H2(1 bar)|H+(a = 10−3) mit rechts Standard-Cu2+/Cu bei E° = +0,340 V verbunden. Für H2 bei 1 bar gilt E = −0,05916 pH, in Volt gegen SHE. Das Gerät trägt trotz geänderter Protonenaktivität noch die Beschriftung „SHE = 0,000 V“. Eine zweite Messung verwendet eine echte SHE, aber vertauschte Kabel. Sage deren Anzeige selbst voraus.",
+      "materialsEn": "At 25 °C, left Pt|H2(1 bar)|H+(a = 10−3) connects to right standard Cu2+/Cu with E° = +0.340 V. At 1 bar H2, E = −0.05916 pH in volts versus SHE. Despite changed proton activity, the device still carries the label “SHE = 0.000 V”. A second measurement uses an actual SHE but reversed leads; predict its reading yourself.",
+      "taskDe": "Prüfe die Referenzbeschriftung und berechne linkes Potenzial sowie Urechts−links. Unterscheide Standardpotenzial und aktuelles Elektrodenpotenzial. Sage die zweite Anzeige voraus und benenne eine Kontakt- oder Kontaminationsgrenze.",
+      "taskEn": "Check the reference label and calculate left potential and Uright−left. Distinguish standard and current electrode potentials. Predict the second reading and identify a contact or contamination limitation.",
+      "workedReasoningDe": "Bei pH 3 gilt EH = −0,17748 V und U = 0,340 − (−0,17748) = +0,51748 V. Die linke Elektrode ist wegen aH+ ≠ 1 keine SHE, obwohl sie eine Wasserstoffelektrode ist. E° des Paars H+/H2 bleibt definitionsgemäß null; aktuelle Bedingungen verändern E. Eine echte SHE gegen die Cu-Halbzelle ergibt bei normaler Polung +0,340 V, mit vertauschten Kabeln −0,340 V. Pt-Vergiftung, fehlender H2-Kontakt, Grenzpotenzial und unkontrollierte Temperatur begrenzen Referenzqualität; die Rechnung beweist keine reale Messgüte. Die bereitgestellte pH-Variation ist Transfer, keine Behauptung verpflichtender HE-Nernst-pH-Berechnungen.",
+      "workedReasoningEn": "At pH 3, EH = −0.17748 V and U = +0.51748 V. The left electrode is a hydrogen electrode but not a SHE because aH+ differs from 1. The H+/H2 standard potential remains zero by definition; actual conditions change E. An actual SHE against Cu gives +0.340 V with normal leads and −0.340 V with reversed leads. Pt poisoning, missing H2 contact, junction potential and uncontrolled temperature limit reference quality; the calculation proves no actual measurement quality. Supplied pH variation is transfer, not a claim that HE requires Nernst pH calculations.",
+      "freshIndependentTransferDe": "Verändere bei Standard-Protonenaktivität den H2-Druck. Erkläre, warum auch dies vom SHE-Zustand abweicht und welche Größe in Q erscheint.",
+      "freshIndependentTransferEn": "Change H2 pressure at standard proton activity. Explain why this also departs from the SHE state and which quantity enters Q.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Standardabweichung und 0,51748 V konsistent ableiten.",
+          "observableEn": "Derive the nonstandard condition and 0.51748 V consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "E°-Konvention, aktuelles E und Kabelvorzeichen unterscheiden.",
+          "observableEn": "Distinguish the E° convention, actual E and lead polarity.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Referenzqualität, Kursgrenze und Drucktransfer erklären.",
+          "observableEn": "Explain reference quality, the course boundary and pressure transfer.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    }
+  ]
+}

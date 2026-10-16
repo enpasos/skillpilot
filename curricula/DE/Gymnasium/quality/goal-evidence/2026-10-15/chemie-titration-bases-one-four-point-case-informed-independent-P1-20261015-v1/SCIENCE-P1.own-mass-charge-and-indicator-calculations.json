@@ -1,0 +1,182 @@
+{
+  "role": "Reviewer own scientific calculation on ideal model; no learner or laboratory result",
+  "inputMaterial": {
+    "wholeCaseFile": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-titration-bases-one-four-point-case-author-successor-20261015-v1/AUTHOR.one-whole-DEEN-base-four-point-case.material-and-rubric.json",
+      "sha256": "sha256:29667425cdfd532d6606ef96a2be22e94958990f90dd04f4ee34297e1f611e95",
+      "bytes": 11913
+    },
+    "wholeCaseObjectSha256": "sha256:0dbf24173a3794c76c186c759e6199c2544f73eadc8d36490660b9325d9ced14",
+    "materialAndDataObjectSha256": "sha256:3ff085f83120ca280d90e0b43e5758d89b11df5985360be73b45a2d8e4786dc6"
+  },
+  "derivation": {
+    "weakVariable": "y=[OH-]",
+    "weakMassBalance": "[NH3]+[NH4+]=CT; CT=N/V",
+    "weakEquilibrium": "[NH4+]=CT*Kb/(Kb+y);[NH3]=CT*y/(Kb+y)",
+    "weakWater": "[H3O+]=Kw/y",
+    "weakChargeRoot": "y-Kw/y-CT*Kb/(Kb+y)+CCl=0",
+    "strictMonotonicDerivative": "1+Kw/y^2+CT*Kb/(Kb+y)^2 > 0",
+    "strongVariable": "y=[OH-]",
+    "strongQuadratic": "y^2-d*y-Kw=0;d=(N-nHCl)/V",
+    "inverseVolumeForNH3": "v=(q*V0+N*f)/(cHCl-q),q=h-Kw/h,f=h/(Ka+h)",
+    "inverseVolumeForNaOH": "v=(q*V0+N)/(cHCl-q)"
+  },
+  "independentMethod": "Own hydroxide-variable balance;140-step bisection oflog10(y) on[-14,0] forNH3; independent stable positive quadratic root forNaOH; inverse charge balance forindicator interval boundaries. Author arithmetic only compared after this computation.",
+  "constants": {
+    "Kb": 1.778279410038923e-05,
+    "Ka": 5.623413251903491e-10,
+    "Kw": 1e-14,
+    "formalBaseAmount_mol": 0.0025
+  },
+  "allRequestedPointsAndTwoIndicatorRegionPoints": [
+    {
+      "addedHCl_mL": 0,
+      "totalVolume_L": 0.025,
+      "weakBase_pH": 11.1221043177036,
+      "strongBase_pH": 13.000000000000433,
+      "weakSpecies_mol_L": {
+        "NH3": 0.09867534032679437,
+        "NH4+": 0.0013246596732056205,
+        "OH-": 0.001324659680754727,
+        "H3O+": 7.549108759996744e-12,
+        "Cl-": 0.0
+      },
+      "weakMassResidual_mol_L": 0.0,
+      "weakChargeResidual_mol_L": 2.168404344971009e-18,
+      "strongChargeResidual_mol_L": 1.3877787807814457e-17
+    },
+    {
+      "addedHCl_mL": 12.5,
+      "totalVolume_L": 0.037500000000000006,
+      "weakBase_pH": 9.24953713006823,
+      "strongBase_pH": 12.522878745284245,
+      "weakSpecies_mol_L": {
+        "NH3": 0.03331557004493333,
+        "NH4+": 0.03335109662173332,
+        "OH-": 1.776385134095042e-05,
+        "H3O+": 5.629409866174308e-10,
+        "Cl-": 0.03333333333333333
+      },
+      "weakMassResidual_mol_L": 0.0,
+      "weakChargeResidual_mol_L": 2.0816681711721685e-17,
+      "strongChargeResidual_mol_L": -6.938893903907228e-18
+    },
+    {
+      "addedHCl_mL": 24.9,
+      "totalVolume_L": 0.0499,
+      "weakBase_pH": 6.853949745089704,
+      "strongBase_pH": 10.301899562516331,
+      "weakSpecies_mol_L": {
+        "NH3": 0.00020046933516669179,
+        "NH4+": 0.04989973106563491,
+        "OH-": 7.14413652053986e-08,
+        "H3O+": 1.399749286880135e-07,
+        "Cl-": 0.0498997995991984
+      },
+      "weakMassResidual_mol_L": 0.0,
+      "weakChargeResidual_mol_L": -6.938893903907228e-18,
+      "strongChargeResidual_mol_L": -6.938893903907228e-18
+    },
+    {
+      "addedHCl_mL": 25,
+      "totalVolume_L": 0.05,
+      "weakBase_pH": 5.275460798281479,
+      "strongBase_pH": 6.999999999981165,
+      "weakSpecies_mol_L": {
+        "NH3": 5.301328952135129e-06,
+        "NH4+": 0.04999469867104785,
+        "OH-": 1.885648753171599e-09,
+        "H3O+": 5.3032146009060965e-06,
+        "Cl-": 0.05000000000000001
+      },
+      "weakMassResidual_mol_L": -6.938893903907228e-18,
+      "weakChargeResidual_mol_L": -6.938893903907228e-18,
+      "strongChargeResidual_mol_L": -6.938893903907228e-18
+    },
+    {
+      "addedHCl_mL": 25.1,
+      "totalVolume_L": 0.050100000000000006,
+      "weakBase_pH": 3.699532052890792,
+      "strongBase_pH": 3.699837616858936,
+      "weakSpecies_mol_L": {
+        "NH3": 1.4048602129067045e-07,
+        "NH4+": 0.049900059114777115,
+        "OH-": 5.006475012080853e-11,
+        "H3O+": 0.00019974133448922733,
+        "Cl-": 0.050099800399201595
+      },
+      "weakMassResidual_mol_L": 6.938893903907228e-18,
+      "weakChargeResidual_mol_L": -6.938893903907228e-18,
+      "strongChargeResidual_mol_L": -6.938893903907228e-18
+    },
+    {
+      "addedHCl_mL": 30,
+      "totalVolume_L": 0.055,
+      "weakBase_pH": 2.041392550783794,
+      "strongBase_pH": 2.0413926851056754,
+      "weakSpecies_mol_L": {
+        "NH3": 2.8117055820606225e-09,
+        "NH4+": 0.04545454264283987,
+        "OH-": 1.0999996596506342e-12,
+        "H3O+": 0.009090911903714638,
+        "Cl-": 0.05454545454545455
+      },
+      "weakMassResidual_mol_L": 0.0,
+      "weakChargeResidual_mol_L": -4.163336342344337e-17,
+      "strongChargeResidual_mol_L": -6.938893903907228e-18
+    }
+  ],
+  "indicatorBoundaryVolumes": [
+    {
+      "pHBoundary": 10,
+      "NH3_HCl_mL": 3.7457432158130124,
+      "NaOH_HCl_mL": 24.9500499999501,
+      "NH3ModelBoundaryBiasPercent": -85.01702713674796,
+      "actualColourEndpoint": false
+    },
+    {
+      "pHBoundary": 8.2,
+      "NH3_HCl_mL": 22.953447395855857,
+      "NaOH_HCl_mL": 24.999210720649927,
+      "NH3ModelBoundaryBiasPercent": -8.186210416576571,
+      "actualColourEndpoint": false
+    },
+    {
+      "pHBoundary": 6.2,
+      "NH3_HCl_mL": 24.978045986234928,
+      "NaOH_HCl_mL": 25.00030755609808,
+      "NH3ModelBoundaryBiasPercent": -0.08781605506028711,
+      "actualColourEndpoint": false
+    },
+    {
+      "pHBoundary": 4.4,
+      "NH3_HCl_mL": 25.01955989041878,
+      "NaOH_HCl_mL": 25.0199131604553,
+      "NH3ModelBoundaryBiasPercent": 0.07823956167511881,
+      "actualColourEndpoint": false
+    },
+    {
+      "pHBoundary": 7.6,
+      "NH3_HCl_mL": 24.45239058216014,
+      "NaOH_HCl_mL": 24.99981350654248,
+      "NH3ModelBoundaryBiasPercent": -2.190437671359433,
+      "actualColourEndpoint": false
+    },
+    {
+      "pHBoundary": 6.0,
+      "NH3_HCl_mL": 24.98644423391911,
+      "NaOH_HCl_mL": 25.00049500490055,
+      "NH3ModelBoundaryBiasPercent": -0.054223064323565495,
+      "actualColourEndpoint": false
+    }
+  ],
+  "maximumAbsoluteWeakChargeResidual_mol_L": 4.163336342344337e-17,
+  "initialNH3ConversionFraction": 0.013246596732056205,
+  "initialWeakSquareRootPH": 11.125,
+  "initialWeakSquareRootPHMinusFull": 0.002895682296399471,
+  "halfWeakPHMinus_pKa": -0.00046286993176991587,
+  "fullWeakMinusStrongPH_at30mL": -1.3432188161743852e-07,
+  "authorReferenceAgreementIsComparisonOnly": true,
+  "actualMeasurements": false,
+  "actualLearnerSubmissions": 0
+}

@@ -1,0 +1,13 @@
+# Grignard: gezielte Primärquellen- und Scopeklärung
+
+Für genau `8edee6b6-9ead-515e-93f5-feada64522b2` ist kein positiver Beleg für eine verpflichtende praktische Grignardausführung aus den tatsächlich geprüften aktuellen HE-/BY-Passagen gewonnen worden. Die spezifische Quellen-/Scopefrage bleibt offen. Keine nationale Abwesenheit oder ganze Kursfreigabe wird behauptet.
+
+Die eigene ursprüngliche HE-Graphfassung enthält bereits denselben DE/EN-Wortlaut „Reagenzien einsetzen“. Sie ist Projektprovenienz und keine amtliche Primärstelle. Der heutige Satz ist mehrdeutig; die zwei vollständigen gefrorenen Fälle und das E0/G0-Profil machen dagegen einen echten Laborvollzug zwingend. Deren ehrlicher Hinweis auf fehlende Beobachtungen ersetzt keinen curricularen Beleg für diese zusätzliche Pflicht.
+
+Die gelesenen ganzen HE-Q1.2-Passagen der Ausgabe2024 und der aktuellen Ausgabe21.04.2026 nennen andere, konkret begrenzte LK-Inhalte. Der aktuelle offizielle HE-PDF-Body stimmt bytegenau mit dem lokalen Original überein. BY12/13-eA liefern allgemeine experimentelle und modellbezogene Kompetenzen, aber keinen hier gefundenen spezifischen Grignardoperator. Alle exakten Stellen, vollständigen relevanten Seiten, Spalten-/Kursüberschriften, Operatorgrenzen und aktuellen offiziellen HTML-Bytes sind gebunden. Nicht gelesene ganze Dokumente werden nicht freigegeben. Beide `rawText`/`text`-Quellfelder wurden berücksichtigt.
+
+`FIRST.grignard-one-primary-scope.author.original.json` wurde vor den Vorschlägen und dem finalen Binder unverändert gesondert versiegelt. Der begrenzte, **unselektierte** Autorenvorschlag formuliert die Auswahl von Reaktionspartnern und das Erklären der Additions-/Protonierungsschritte eindeutig. Das erhält ein didaktisches Synthesebeispiel, löst aber nicht automatisch den fehlenden spezifischen Pflichtbeleg. Eine konkrete Mappingkante wird mangels positiver Äquivalenz nicht erfunden. Falls der Wortlaut später übernommen wird, müssen beide ganzen Fälle und der Autorprofilkörper konsistente, ausdrücklich dokumentierte Nachfolger erhalten; die aktuelle praktische e3 wird hier nicht rückwirkend umgedeutet.
+
+ID, LK-Tag, DE-BY/DE-HE-Geltung, Kanten, Bilder, aktive Mappings und Denominator bleiben exakt. Keine D/P/A/M/V-Stimme, Source-/Course-/Human-/M7-Freigabe, kein Lernenden-/Labornachweis, kein Nativehost oder Zentralbericht. Root prüft das endliche Paket; danach STOP.
+
+Eigene fachliche Texte und Kandidaten: CC-BY-4.0 gemäß Repository-Lizenzzuordnung. Technische Skripte: Apache-2.0. Amtliche Originalquellen bleiben unverändert und werden nicht neu lizenziert.

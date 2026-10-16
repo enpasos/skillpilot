@@ -1,0 +1,9 @@
+# Gemeinsame BcP-Quellenbasis für elf offene Chemieziele
+
+Inaktiver Quellen-/Struktur-Autorstand, noch kein kanonischer Nachfolger und keine Reviewfreigabe. Die aktuelle amtliche Fachlehrplanseite wurde tatsächlich vollständig gelesen und mitHTTP200 als unveränderte Originalbytes erfasst. Alle52 lokalen ganzen Quellenzellen stehen, abgesehen von reiner Weißraumbehandlung im Vergleich, vollständig im sichtbaren aktuellen Original. Die beiden Jahrgangsvorkommen bleiben erhalten.
+
+Die Auswahl aus mindestens drei der sechs praktischen Bereiche je Schuljahr, biologische/chemische Balance und der anlassbezogene allgemeine Bereich1 sind ausdrücklich zu erhalten. Die ganze Liste ist kein Pflichtkatalog aller Einzelmethoden und kein Nachweis gewöhnlicher Chemie-GK/LK-Pflicht oder anderer Länder. Der aktuelle52er-M3-Review wird von der älteren90er-Seeddatei und einem veralteten eingebetteten Pipelinehinweis getrennt. M3-complete ist keine M7-Freigabe.
+
+Elf ganze aktuelle Zielkörper, ihre tatsächlichen Vorgänger/Eltern/direkten Nachfolger, der ganze31781-Kommunikationspartner und alle betroffenen ganzen M3-Quellenzellen sind gebunden. Die Autorbefunde benennen konkrete Identitäts-/Strukturgrenzen und erhalten echte Dissense. Kein Ziel, kein Materialfall, keine Karte und kein Bild wurden hier verändert; insbesondere keine Kompetenz zur Verbesserung einer Prozentzahl entfernt.
+
+Nächster begrenzter Autorauftrag: gemeinsame reale Kurs-/Auswahlbindung und vollständige Verteilung der konkreten Methoden-/Analyse-/Synthese-/Ökologie-Endkompetenzen. Gute Aggregatebilder und vorhandene ganze Fälle bleiben erhalten; die bereits vorhandene335-Reizantwortkorrektur ist wiederzuverwenden. Erst danach gezielte unabhängige Prüfung der tatsächlich geänderten Körper/Quellen/Seiten. Keine neue Human-/D/P/A/M/V-/Strict-/M7-Freigabe, kein Runtime-/Pluginprojekt.

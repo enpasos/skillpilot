@@ -1,0 +1,30 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+const repo=resolve(process.cwd(),'..');
+const out='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-current419-native-original-independent-a-20261015-v1';
+const mapPath='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab15-current419-native-preparation-root-20261015-v1/checks/REBUILD.current419-lab15.physical-map.json';
+const sha=(x:Buffer|string)=>'sha256:'+createHash('sha256').update(x).digest('hex');
+const map=JSON.parse(await readFile(resolve(repo,mapPath),'utf8'));
+const mod='tmp/chemie-m7-resumed-20261015/lab15-native-host/app/src/utils/authoring/compositionViewAuthoring.ts';
+const {compileCompositionView}=await import(pathToFileURL(resolve(repo,mod)).href);
+const canA=map.aliases.find((a:any)=>a.normalHostAlias.endsWith('/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'));
+const canBytes=await readFile(resolve(repo,canA.physicalRepositorySource.path));
+const can=JSON.parse(canBytes.toString());
+const selected=JSON.parse(await readFile(resolve(repo,out,'round-a/description-review-input.json'),'utf8')).goals.map((x:any)=>x.goalId);
+const names=['de-he-gk.view.json','de-he-lk.view.json','de-bb-gk.view.json','de-bb-lk.view.json','de-be-gk.view.json','de-be-lk.view.json','de-de-gym-sekii-chemistry-gk.view.json','de-de-gym-sekii-chemistry-lk.view.json'];
+const rows=[];
+for(const name of names){
+ const a=map.aliases.find((a:any)=>a.normalHostAlias.endsWith('/'+name));
+ if(!a)throw Error('Missing bound alias '+name);
+ const b=await readFile(resolve(repo,a.physicalRepositorySource.path));
+ if(sha(b)!==a.physicalRepositorySource.sha256)throw Error('View digest drift '+name);
+ const v=JSON.parse(b.toString());const c=compileCompositionView(v,can);
+ const ids=new Set<string>();const walks:any[]=[];
+ const walk=(n:any,path:string[])=>{const q=[...path,n.label];if(n.sourceGoalId){ids.add(n.sourceGoalId);if(selected.includes(n.sourceGoalId))walks.push({goalId:n.sourceGoalId,visiblePath:q})}for(const x of n.children)walk(x,q)};
+ for(const x of c.compiledRootNodes)walk(x,[]);
+ rows.push({name,physicalView:a.physicalRepositorySource,scope:v.scope,findings:c.findings,targetGoalCount:ids.size,selectedPresent:selected.filter((id:string)=>ids.has(id)),selectedAbsent:selected.filter((id:string)=>!ids.has(id)),selectedVisiblePaths:walks});
+}
+await writeFile(resolve(repo,out,'read/COMPILED.bound-target-routes.actual.json'),JSON.stringify({createdAt:new Date().toISOString(),stockCompiler:mod,compilerSha256:sha(await readFile(resolve(repo,mod))),canonical:canA.physicalRepositorySource,physicalMap:{path:mapPath,sha256:sha(await readFile(resolve(repo,mapPath)))},boundary:'Actual stock compiler target preview of exact bound inputs; no claim of deployed runtime. No actual pupil or laboratory performance.',rows},null,2)+'\n');
+console.log(JSON.stringify(rows.map(x=>({name:x.name,selectedPresent:x.selectedPresent,findings:x.findings})),null,2));

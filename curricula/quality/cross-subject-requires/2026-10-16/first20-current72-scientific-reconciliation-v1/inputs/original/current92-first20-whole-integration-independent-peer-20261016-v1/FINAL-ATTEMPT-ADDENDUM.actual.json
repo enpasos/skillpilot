@@ -1,0 +1,39 @@
+{
+  "recordedUTC": "2026-10-15T23:35:43.809338+00:00",
+  "priorAttemptHistoryUnchanged": "ATTEMPT-HISTORY.actual.json",
+  "additionalFailures": [
+    {
+      "stage": "First addendum verification launch",
+      "rawToolOutput": "bwrap: execvp --: No such file or directory",
+      "exitCode": 1,
+      "cause": "Supplied extra -- to a wrapper that directly forwards argv; removed extra marker. No verification or authorbody read occurred in failed launch."
+    },
+    {
+      "stage": "First graphical renderer",
+      "rawReceipts": "checks/graphical-case-work.*",
+      "exitCode": 1,
+      "cause": "matplotlib not installed; original script/rawfailure retained, standard Pillow/SVG implementation used without installing dependencies."
+    },
+    {
+      "stage": "Initial standard geometry illustration",
+      "rawArtifacts": "own-graphical-case-work/*standard.png and*.svg",
+      "cause": "Unequal horizontal/vertical pixel-per-unit scales invalidate geometric angles; v2 equal-aspect correction separate and initial images preserved."
+    },
+    {
+      "stage": "First native prepare",
+      "rawReceipts": "checks/native-first20-prepare.*",
+      "exitCode": 1,
+      "rawError": "listen EROFS: read-only file system private-scratch/tsx-1000/3.pipe",
+      "cause": "Node18 tsx CLI launcher failed while making IPC socket before owning prepare executed. Same unmodified owningCLI succeeded via existingNode20 --importtsx, rawfailedattempt retained."
+    },
+    {
+      "stage": "First additional wholeMath owner check",
+      "exitCode": 1,
+      "rawToolOutput": "Traceback (most recent call last):\n  File \"<string>\", line 16, in <module>\nAssertionError",
+      "cause": "Reviewer assumed neutral rawRecordLine was1-based. Actualreader uses0-based index, including0. Rechecked every actualrawJSONL indexed record and completeGoal/Kind/P/owner/hash:8nominations exact. Author inputs unchanged, normal gates unchanged.",
+      "correctionReceipt": "AUTHOR-COMPLETE-WHOLE-MATH-CONDITIONS-COMPARISON.actual.json"
+    }
+  ],
+  "finalChecks": "normalprepare20 exit0; normalcheck20 exit0; helperbinding20 exit0. No gate/schema/assertion changes.",
+  "displayTruncation": "Large combined postlock displays were truncated; all20 finalrationales and selected wholeP/Math semantic fields were read in bounded targeted displays. No full Englishduplicate/image/source inspection implied."
+}

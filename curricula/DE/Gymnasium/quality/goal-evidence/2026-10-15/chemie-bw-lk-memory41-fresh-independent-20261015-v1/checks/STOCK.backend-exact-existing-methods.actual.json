@@ -1,0 +1,64 @@
+{
+  "commands": [
+    {
+      "command": [
+        "javac",
+        "-d",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-memory41-fresh-independent-20261015/stock-host/classes",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-memory41-fresh-independent-20261015/stock-host/IndependentBackendSelection.java"
+      ],
+      "startedAt": "2026-10-15T10:41:12.821642+00:00",
+      "completedAt": "2026-10-15T10:41:13.552745+00:00",
+      "exitCode": 0,
+      "rawOutput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory41-fresh-independent-20261015-v1/checks/STOCK.backend-javac.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "java",
+        "-cp",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-memory41-fresh-independent-20261015/stock-host/classes",
+        "IndependentBackendSelection",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-memory41-fresh-independent-20261015/stock-host/backend-fixtures.tsv"
+      ],
+      "startedAt": "2026-10-15T10:41:13.552870+00:00",
+      "completedAt": "2026-10-15T10:41:13.613469+00:00",
+      "exitCode": 0,
+      "rawOutput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-memory41-fresh-independent-20261015-v1/checks/STOCK.backend-execution.actual.txt",
+        "sha256": "sha256:d884fc567f8ea00f0add35a68df3a5c261947b5781c022d4122640678727216c",
+        "bytes": 3465
+      }
+    }
+  ],
+  "source": {
+    "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "sha256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+    "bytes": 529427
+  },
+  "extractedExactProductionParts": [
+    {
+      "part": "private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(",
+      "sha256": "sha256:14009d2973fc1c9f8f138fd4dc55fbc6e17bdcef35d46f21b90b01b089c1388c",
+      "bytes": 336
+    },
+    {
+      "part": "private List<String> getSrsFilterTags(LearningGoal goal) {",
+      "sha256": "sha256:5814444d0288db9d7e2484756f1de122bb4e9e3ff7d004c181aac40d159a1f96",
+      "bytes": 920
+    },
+    {
+      "part": "private List<SrsCard> filterSrsCards(LearningGoal goal, List<SrsCard> cards) {",
+      "sha256": "sha256:1d53b5a40190180dd13f9716c121573c36e2b4b3207e290128473cdbcaae0717",
+      "bytes": 501
+    }
+  ],
+  "cases": 18,
+  "allResultsEqualIndependentFrontendSelection": true,
+  "limitation": "Executes exact two current production selection methods and their exact exclusion constant with minimal data holders. This is not a full Spring/HTTP/session/persistence integration test and grants no host or runtime acceptance.",
+  "runtimeCodeChanges": 0,
+  "scientificCardApprovals": 0
+}

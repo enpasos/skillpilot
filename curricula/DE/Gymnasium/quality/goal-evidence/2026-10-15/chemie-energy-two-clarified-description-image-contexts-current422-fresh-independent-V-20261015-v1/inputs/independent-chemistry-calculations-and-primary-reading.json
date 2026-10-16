@@ -1,0 +1,84 @@
+{
+  "actualAt": "2026-10-15T11:53:35.052061+00:00",
+  "fuelCell": {
+    "halfReactions": [
+      "2 H2 -> 4 H+ + 4 e-",
+      "O2 + 4 H+ + 4 e- -> 2 H2O"
+    ],
+    "sum": "2 H2 + O2 -> 2 H2O",
+    "n": 4,
+    "dimensionlessQ": "a(H2O)^2 / [(p(H2)/p°)^2 (p(O2)/p°)]",
+    "gasAssumption": "Ideal gas activities approximated by dimensionless p/p°; current cases explicitly state this model.",
+    "waterAssumption": "Liquid water at unit activity; not a universal vapor-water simplification.",
+    "qForOneH2": 21.821789023599237,
+    "qForTwoH2": 476.19047619047615,
+    "EusingN2": 1.1893981259715287,
+    "EusingN4": 1.1893981259715287,
+    "n2N4VoltageExactAgreement": true,
+    "pH14HalfCellPotentials": [
+      -0.82824,
+      0.4007600000000001
+    ],
+    "pH14Difference": 1.229,
+    "loadedVoltageBoundary": "Activation, ohmic and mass-transport losses require additional data; Nernst alone does not give an arbitrary loaded terminal voltage."
+  },
+  "secondaryCells": {
+    "LiFePO4Model": "LiC6 + FePO4 -> C6 + LiFePO4; recharge requires external energy.",
+    "leadModel": "Pb + PbO2 + 2 H2SO4 -> 2 PbSO4 + 2 H2O",
+    "testApproximationWh": 324,
+    "leadAfterConverterWh": 357.0,
+    "imageBoundary": "The yellow circular arrows with lightning symbols denote charge/discharge conversion. They do not label electron trajectories through electrolyte and are not a quantitative closed energy cycle."
+  },
+  "currentPrimaryReading": [
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium%20/12/chemie/grundlegend",
+      "publisher": "ISB Bayern",
+      "wholeUnitRead": "C12 GA.8, expectations and contents",
+      "ownConclusion": "Secondary-cell construction, charging energetics, uses, authorship and quotations are one coherent target; source review and use evaluation remain open work for the learner."
+    },
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium%20/12/chemie/erhoeht",
+      "publisher": "ISB Bayern",
+      "wholeUnitRead": "C12 EA.8, expectations and contents",
+      "ownConclusion": "Leerlaufspannung, Nernst and secondary-cell use fit the clarified target scope. No obligatory loaded-voltage model follows from this orientation image."
+    },
+    {
+      "url": "https://www.energy.gov/cmei/fuels/fuel-cell-basics",
+      "publisher": "US DOE",
+      "wholePassageRead": "How Fuel Cells Work and PEM section",
+      "ownConclusion": "PEM protons cross the electrolyte and electrons use an external path; water is formed on the cathode side."
+    },
+    {
+      "url": "https://goldbook.iupac.org/terms/view/09068/plain",
+      "publisher": "IUPAC",
+      "wholePassageRead": "Current indexed definition, both notes, source and version metadata",
+      "ownConclusion": "The equation gives equilibrium electrode potential from temperature and species activities; the stoichiometric exponents and electron number must match."
+    },
+    {
+      "url": "https://netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf",
+      "publisher": "DOE NETL",
+      "wholePassageRead": "Indexed section2.5 Actual Performance and section2.1 opening",
+      "ownConclusion": "Actual fuel-cell voltage is lower than ideal potential through activation, ohmic and transport losses.",
+      "accessLimit": "Full PDF web-open timed out after metadata succeeded. The relevant indexed whole section2.5 was returned and read; no claim to all427pages."
+    }
+  ],
+  "localPrimaryWholePagesRead": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-detergents20-current422-whole-material-author-20261015-v1/sources/primary-HE.whole-pages.exact-text.json",
+      "sha256": "sha256:62f3688f13aaaa5154a60203a41c0aa02abadf4f7fa415d6901d6061993d7c5e",
+      "bytes": 7256
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-detergents20-current422-whole-material-author-20261015-v1/sources/primary-HB.whole-pages.exact-text.json",
+      "sha256": "sha256:42a9583b8e7733d4fb8aaa517d7a998e1eed401c04aea9b0f65e9655ac435903",
+      "bytes": 11050
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-detergents20-current422-whole-material-author-20261015-v1/sources/primary-BY.whole-related-structured-units-and-children.json",
+      "sha256": "sha256:a0579211c6622044f8ba4de9a36ded781e2455d0629fa23fbb4c097523880dbe",
+      "bytes": 22084
+    }
+  ],
+  "sourceCourseAndAtomicityHoldsRemain": true,
+  "notSourceReviewOrDPAEvidence": true
+}

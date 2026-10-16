@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-ln-existing-png-b-run-20260927-01",
+  "campaignId": "mathematik-m7-ln-existing-png-20260927-v1-b",
+  "roundId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-b",
+  "batchId": "mathematik-m7-ln-existing-png-20260927-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e75f39fdd6e99e7f792ba91b605980d51de61f65be95d8af57e93e07137203ae",
+  "bundleFingerprint": "sha256:2834af6e354ed6ecc61542a686b07de8319720f993befafce39da08c0531d0a7",
+  "bookDigest": "sha256:d09ecd5da484f40a7af094b575633c4d6d103a25c675e6399a87e6408be9a61c",
+  "provider": "openai",
+  "model": "unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:ac27836f5933933309f30e990df6d1205b3c9cf5c9582610ff0a58ae2971d168",
+  "independenceGroupId": "mathematik-m7-ln-existing-png-20260927-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "06ce2b1b-e888-5322-9ed9-dfc6d322956a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:40946b8cba54f3ad992f763c51e573a4f00851a040724274d27c264b617707f8"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:bf711ebb6b1825a905a679f12cf9df6f7934e9ed85d7b0fccf328e4117f9c9f2"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e75f39fdd6e99e7f792ba91b605980d51de61f65be95d8af57e93e07137203ae"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-27T10:01:49Z",
+  "completedAt": "2026-09-27T10:02:56Z",
+  "status": "completed",
+  "outputDigest": "sha256:2f48a33bb3137e01a6b79c4838a9993fcd46f9e64cf581a06d01774126acae50",
+  "toolchainVersion": "not_observed"
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "actualRole": "bounded source-remediation author",
+  "authorTask": "/root/chemie_rp_kp_wrong_source_mapping_author_20261015",
+  "createdAtUTC": "2026-10-15T18:40:50.218028+00:00",
+  "modelIdentity": "Codex, GPT-6 family; no more specific runtime identifier supplied to this agent",
+  "toolsActuallyUsed": [
+    "functions.exec / tools.exec_command: Python JSON reading, hashes, pdftotext, bounded rg and sed",
+    "functions.exec / tools.view_image: existing current Kp PNG inspected",
+    "functions.exec / tools.web__run: official RP2022 URL attempted and official-domain search read"
+  ],
+  "independentReview": false,
+  "sourceCheckKind": "own author finding and candidate rationale only",
+  "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+  "officialPrimary": {
+    "document": {
+      "path": "curricula/DE/Gymnasium/input/RP/Chemie_Sekundarstufe_II_MSS_2022.pdf",
+      "sha256": "sha256:8d701aad7c4de870d6e20075ec49c04601d5cb51a90f51443a15be8efd62c4e3",
+      "bytes": 1915019
+    },
+    "wholePageText": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-source-scope-author-20261015-v1/reading/PRIMARY.RP2022.selected-whole-physical-pages.actual.txt",
+      "sha256": "sha256:c265fb6486e7c786446c088cc9e330ffabf7b67a817c7a3f19d2f90d28fae103",
+      "bytes": 32347
+    },
+    "pagesActuallyReadWhole": [
+      9,
+      10,
+      12,
+      19,
+      20,
+      50,
+      51,
+      52
+    ],
+    "freshTextVerification": [
+      {
+        "physicalAndPrintedPage": 9,
+        "existingWholePageTextEqualsFreshPdftotext": true,
+        "extractedWholePageTextSha256": "sha256:240e3330554cecc69eb5d0e16bd164e072486c5595915144afc0d43190c8f6f6"
+      },
+      {
+        "physicalAndPrintedPage": 10,
+        "existingWholePageTextEqualsFreshPdftotext": true,
+        "extractedWholePageTextSha256": "sha256:c173d0830a2e6c924905a4b16d4253d60b31c8833e33b8d97bf67ed42893adcc"
+      },
+      {
+        "physicalAndPrintedPage": 12,
+        "existingWholePageTextEqualsFreshPdftotext": true,
+        "extractedWholePageTextSha256": "sha256:46def0e3756cf05e29f63595e73ee2a66050c8f3ea500c368cf65ef587d9910f"
+      },
+      {
+        "physicalAndPrintedPage": 19,
+        "existingWholePageTextEqualsFreshPdftotext": true,
+        "extractedWholePageTextSha256": "sha256:b0f8c9fe6d84ab5ca42b89a4f53135e6a36896b67276406e35dd225e6a158765"
+      },
+      {
+        "physicalAndPrintedPage": 20,
+        "existingWholePageTextEqualsFreshPdftotext": true,
+        "extractedWholePageTextSha256": "sha256:4d6d12b16209321c7c91a29b37b78ef532929c82f02d26f4fd059e3171d8cdb2"
+      },
+      {
+        "physicalAndPrintedPage": 50,
+        "existingWholePageTextEqualsFreshPdftotext": true,
+        "extractedWholePageTextSha256": "sha256:66b7466efd515b46340d747bafdf69c9f9296b89bec06b90f07fc63bf07d3df9"
+      },
+      {
+        "physicalAndPrintedPage": 51,
+        "existingWholePageTextEqualsFreshPdftotext": true,
+        "extractedWholePageTextSha256": "sha256:37b6629ad198dac60b140573d9884d4406f3241d74315f54ec29cd1ef2574653"
+      },
+      {
+        "physicalAndPrintedPage": 52,
+        "existingWholePageTextEqualsFreshPdftotext": true,
+        "extractedWholePageTextSha256": "sha256:52bb35bc27d68df92af7778d6a823086c55f85a84b6d18fd88d823666da2c406"
+      }
+    ],
+    "liveCheck": {
+      "attemptedURL": "https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Bitem%5D=67901&type=432522",
+      "result": "Direct official old download route failed HTTP 400 both browser tool and urllib. Official-domain search indexed the same 2022 document and exact S.52 optional bullet; this is corroboration, not a successful fresh complete PDF download. Existing original 2022 PDF was hashed and read directly.",
+      "officialIndexedURL": "https://bildung.rlp.de/lehrplaene/?cHash=d79e73a212abb51b925d738539194af4&tx_rlpbase_download%5Baction%5D=download&tx_rlpbase_download%5Bcontroller%5D=Download&tx_rlpbase_download%5Bitem%5D=67901&type=432522"
+    }
+  },
+  "wholeSourceContext": {
+    "printedAndPhysicalPage": 52,
+    "section": "7 Gleichgewicht und Kinetik / Vertiefungs- bzw. Verzahnungsmöglichkeiten",
+    "wholeSourceCell": "Kp, ideales Gasgesetz (Allgemeine Gasgleichung)",
+    "contextFinding": "Whole p.19 explains end-of-Rahmenbaustein deepening/interconnection lists are examples, not exhaustive or exclusive. Whole pp.50-51 contain separate obligatory 7.1-7.5 tables; p.52 is a separate final optional list.",
+    "legacyMetadataCaveat": "Unchanged legacy sourceRef S.25, parent passage 7.5 and LK tag are extraction metadata, not evidence that the p.52 optional bullet is mandatory or exclusive to LK. Correct locator and optionality must stay attached to any later review/placement; active extraction is unchanged."
+  },
+  "wrongPartnerCounterexample": {
+    "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+    "finding": "A learner may correctly perform/interpret O2/CO2/H2 detection reactions without defining Kp, applying pV=nRT or connecting Kp/Kc. Conversely, Kp/Kc conversion does not demonstrate the three detection reactions. Thus old exact edge fails in both directions.",
+    "wholeRowReference": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-rp-kp-one-wrong-source-edge-remediation-author-20261015-v1/INPUTS.whole-affected-original-rows.json",
+      "sha256": "sha256:00350e436143e35e01f0fe0e6a0b1231194d8e761254adaa39de5fd558628893",
+      "bytes": 17238
+    }
+  },
+  "candidateFinding": {
+    "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+    "wholeDescriptionAndResourceLinksRead": true,
+    "wholeMaterialCaseIdsRead": [
+      "eqrk16-07-a",
+      "eqrk16-07-b"
+    ],
+    "wholeDEENProfileRead": true,
+    "existingPNGViewed": true,
+    "formulaCheck": "For ideal gases pi=ciRT, so pi/p°=(ci/c°)(RTc°/p°), hence Kp=Kc(RTc°/p°)^Δν. R and standards must use compatible units; T is in kelvin; Δν uses gas species only. Unnormalised classroom products use dimensional RT and cannot be silently mixed. Nonideal gases require fugacity treatment; Δν=0 does not establish ideality.",
+    "numericalChecks": {
+      "0.08314_times_298": 24.775720000000003,
+      "0.00500_times_0.08314_times_298": 0.1238786,
+      "0.200_div_0.08314_div_500": 0.004811161895597787
+    },
+    "bestExistingPartner": true,
+    "relation": "partial",
+    "reasonNotExact": "Source topic bullet is unoperationalised and optional; it does not demand all canonical derivation/conversion/model-limit performances. General independent gas-law operations outside the equilibrium link are not shown in full by this candidate.",
+    "wholeSourceCellCoverage": "partial/open; no whole-coverage approval"
+  },
+  "remainingOpen": [
+    "Independent science review of exact proposed row and whole source/canonical material",
+    "Optional author placement must not become an RP compulsory target via partial applicability",
+    "Legacy locator/parent/LK metadata reconciliation is separate; no silent source-row rewrite",
+    "Only affected downstream D/page/source bindings after accepted changes"
+  ],
+  "newSourceApprovals": 0,
+  "normalGrant": false,
+  "humanApproval": false,
+  "M7Granted": false,
+  "activeWrites": 0,
+  "protectedState": "Active Chemie 231/402 M6, current inactive 371/422 and baseline Mathematics/Physics/Biology untouched; these counts are parent-supplied scope boundaries, not newly recomputed claims."
+}

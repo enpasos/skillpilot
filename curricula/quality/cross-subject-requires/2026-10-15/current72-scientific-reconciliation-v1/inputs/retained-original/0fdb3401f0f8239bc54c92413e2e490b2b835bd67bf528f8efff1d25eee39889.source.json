@@ -1,0 +1,638 @@
+{
+  "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+  "title": "Sternradien aus HRD-Daten absch\u00e4tzen",
+  "wholeCurrentGoalAndPositiveBody": {
+    "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+    "subject": "physik",
+    "wholeCurrentCanonicalGoal": {
+      "id": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+      "shortKey": "canonical_physics_astro_hrd_stellar_radius",
+      "title": "Sternradien aus HRD-Daten absch\u00e4tzen",
+      "titleEn": "Estimate stellar radii from HR-diagram data",
+      "description": "Die lernende Person kann aus Leuchtkraft und Oberfl\u00e4chentemperatur eines Sterns im Hertzsprung-Russell-Diagramm seinen Radius mit einem thermischen Strahlungsmodell absch\u00e4tzen und erkl\u00e4ren, wie beide Gr\u00f6\u00dfen die Sch\u00e4tzung bestimmen.",
+      "descriptionEn": "The learner can estimate a star's radius from its luminosity and surface temperature in a Hertzsprung\u2013Russell diagram using a thermal-radiation model and explain how both quantities determine the estimate.",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "206fe51d-cc78-5422-b139-32cc97eb1c37",
+        "89124b92-5769-5e13-8a5d-78497936260f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "Q4",
+        "area": "Astrophysik",
+        "topicCode": "CANONICAL_PHYSICS_ASTRO_HRD_STELLAR_RADIUS",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ]
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+          "title": "Visualisierung: Sternradien aus HRD-Daten absch\u00e4tzen",
+          "url": "/assets/goal-visualizations/physik/6a73cacc-e86d-5248-a180-fd3da8454b0f/6a73cacc-e86d-5248-a180-fd3da8454b0f.png",
+          "provider": "image_gen",
+          "description": "Visualisierung zum Lernziel: Sternradien aus HRD-Daten absch\u00e4tzen.",
+          "altText": "Schematisches HRD: Zwei Punkte A und B liegen bei derselben Oberfl\u00e4chentemperatur T\u2080; B hat die vierfache Leuchtkraft. Das thermische Modell L = 4\u03c0R\u00b2\u03c3T\u2074 liefert R = \u221a(L / (4\u03c0\u03c3T\u2074)). Rechts zeigt B ungef\u00e4hr den doppelten Radius von A. Bei gleicher Leuchtkraft f\u00fchrt eine h\u00f6here Temperatur zu einem kleineren Modellradius.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "currentSourceLandscape": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "bytes": 2511701,
+      "sha256": "sha256:4704c85973997b0bc822c360a9802fa55ce897a98936ec2c8782ed7c8f47076e"
+    },
+    "semanticKind": "curricularAtomic",
+    "currentPerGoalReviewInput": {
+      "semanticSha256": "sha256:e190a07443790fd9e25d486f168d488c3240416592120063ced402a8b904c553",
+      "prerequisitesSha256": "sha256:f10ffcf3945c38d95b70ff0349b2da9a36e9ef1ddff0f2c540af9f2588a943a4",
+      "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2"
+    },
+    "positiveBodyOwner": {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.config.json",
+      "configSha256": "sha256:0cf80a6ab6bff4477420f67c695851360356e1cd18a75b67093fc9b6e30bfb58",
+      "recordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.review.jsonl",
+      "recordFileSha256": "sha256:a1410101ae336dd7300a3e3d9ed867a7575ac1dc6ab288bb159e434311ca3f99",
+      "recordLine": 1,
+      "recordRawLineSha256": "sha256:a1410101ae336dd7300a3e3d9ed867a7575ac1dc6ab288bb159e434311ca3f99",
+      "currentProfileFingerprint": "sha256:1f8ec4a5f744f3e4013e9b28c78b3c79e2fca3aa3e274d5a9b799bbc53dfce89",
+      "currentGoalFingerprint": "sha256:4b4ff84b658c2084e673adb740aa4571bb3bc7d79826a14cb0ffcb2c0cbdd318",
+      "currentReviewInputFingerprint": "sha256:bedda3fc94a8e6c22f6c74e0d936ac56993b9867861b0bcb16afdec44a98b2a4",
+      "wholePositiveProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "radius-from-radiative-state",
+            "essentialUnderstandingDe": "Leuchtkraft ist die gesamte Strahlungsleistung; im thermischen Kugelmodell h\u00e4ngt sie gemeinsam von Oberfl\u00e4che und Temperatur hoch vier ab. Die zwei HRD-Koordinaten bestimmen so einen Modellradius, nicht einen r\u00e4umlichen Ort.",
+            "essentialUnderstandingEn": "Luminosity is total radiated power; in the thermal spherical model it depends jointly on surface area and temperature to the fourth power. The two HR-diagram coordinates therefore determine a model radius, not a spatial location.",
+            "observablePerformanceDe": "Die lernende Person gewinnt selbstst\u00e4ndig aus L=4\u03c0R\u00b2\u03c3T\u2074 eine Radius- oder Verh\u00e4ltnisbeziehung, wertet neue HRD-Wertepaare aus und erkl\u00e4rt den Einfluss beider Gr\u00f6\u00dfen.",
+            "observablePerformanceEn": "The learner independently obtains a radius or ratio relation from L=4\u03c0R\u00b2\u03c3T\u2074, evaluates fresh HR-diagram value pairs, and explains the effect of both quantities."
+          },
+          {
+            "id": "radius-inference-limits",
+            "essentialUnderstandingDe": "Leuchtkraft oder Temperatur allein legt den Radius nicht fest; die thermische Modellannahme und unsichere Eingangsgr\u00f6\u00dfen begrenzen die Aussage.",
+            "essentialUnderstandingEn": "Neither luminosity nor temperature alone fixes radius; the thermal-model assumption and uncertain inputs limit the inference.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder deutet einen Gegenfall gleicher Leuchtkraft bei verschiedener Temperatur und benennt die fehlende Information oder eine relevante Unsicherheit.",
+            "observablePerformanceEn": "The learner constructs or interprets a counterexample with equal luminosity and different temperatures, and identifies missing information or relevant uncertainty."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "radius-from-radiative-state",
+            "radius-inference-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "physical-condition-change",
+            "textDe": "Gleiche Temperatur gegen\u00fcber gleicher Leuchtkraft; vollst\u00e4ndige Wertepaarung gegen\u00fcber unvollst\u00e4ndiger oder unsicherer Eingabe.",
+            "textEn": "Equal temperature versus equal luminosity; complete value pairs versus incomplete or uncertain input."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "equal-temperature",
+            "taskDemandDe": "Zwei neue HRD-Punkte besitzen dieselbe Temperatur, aber Leuchtkr\u00e4fte 1 und 9 L\u2609. Erkl\u00e4re mit dem thermischen Modell ihr Radiusverh\u00e4ltnis und warum das HRD keine ma\u00dfst\u00e4bliche Sternkarte ist.",
+            "taskDemandEn": "Two fresh HR-diagram points have equal temperature but luminosities of 1 and 9 L\u2609. Explain their radius ratio using the thermal model and why the diagram is not a spatial star map.",
+            "expectedPerformanceDe": "R\u2082/R\u2081=\u221a9=3; bei gleicher Temperatur strahlt jede Fl\u00e4cheneinheit gleich viel, also ben\u00f6tigt die neunfache Gesamtleistung die neunfache Oberfl\u00e4che. Die Achsen beschreiben Zustandsgr\u00f6\u00dfen.",
+            "expectedPerformanceEn": "R\u2082/R\u2081=\u221a9=3; at equal temperature each unit area radiates equally, so nine times the total power requires nine times the area. The axes represent state quantities.",
+            "understandingFocusDe": "Verh\u00e4ltnis aus physikalischer Fl\u00e4chenbedeutung selbst entwickeln.",
+            "understandingFocusEn": "Independently develop the ratio from the physical meaning of emitting area."
+          },
+          {
+            "id": "equal-luminosity-temperature-uncertainty",
+            "taskDemandDe": "Ein anderer Sternvergleich hat gleiche Leuchtkraft, aber doppelte Temperatur f\u00fcr B. Sage sein Radiusverh\u00e4ltnis voraus. Pr\u00fcfe zus\u00e4tzlich, ob eine Radiusangabe aus Leuchtkraft allein eindeutig w\u00e4re und wie eine zu hoch gesch\u00e4tzte Temperatur den Radius beeinflusst.",
+            "taskDemandEn": "A different pair has equal luminosity but twice the temperature for B. Predict its radius ratio. Also assess whether luminosity alone gives a unique radius and how an overestimated temperature affects the inferred radius.",
+            "expectedPerformanceDe": "R_B/R_A=1/4, weil R bei festem L proportional T\u207b\u00b2 ist. Ohne Temperatur bleibt der Radius mehrdeutig; \u00fcbersch\u00e4tztes T f\u00fchrt bei festem L zu untersch\u00e4tztem R. Das ist eine Modellinferenz, kein direkt gemessener Sternrand.",
+            "expectedPerformanceEn": "R_B/R_A=1/4 because R is proportional to T\u207b\u00b2 at fixed L. Without temperature, radius remains ambiguous; overestimating T underestimates R at fixed L. This is a model inference, not a directly measured stellar edge.",
+            "understandingFocusDe": "Transfer vom Fl\u00e4chenvergleich zur kompensierenden Temperatur\u00e4nderung und Fehlerwirkung.",
+            "understandingFocusEn": "Transfer from area comparison to compensating temperature change and error direction."
+          }
+        ]
+      }
+    },
+    "directPrerequisiteGoals": [
+      {
+        "id": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+        "title": "Hertzsprung-Russell-Diagramm (HRD)",
+        "titleEn": "Hertzsprung\u2013Russell Diagram (HRD)",
+        "description": "Die lernende Person kann Sterne anhand ihrer Leuchtkraft und Oberfl\u00e4chentemperatur im Hertzsprung-Russell-Diagramm einordnen und die Bereiche Hauptreihe, Rote Riesen und Wei\u00dfe Zwerge im Zusammenhang mit der Sternentwicklung deuten.",
+        "descriptionEn": "The learner can place stars in the Hertzsprung\u2013Russell diagram using their luminosity and surface temperature and interpret the main-sequence, red-giant and white-dwarf regions in relation to stellar evolution.",
+        "weight": 1.15,
+        "tags": [
+          "LK",
+          "Method"
+        ],
+        "contains": [],
+        "requires": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_KOSMOS"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+            "title": "Visualisierung: Hertzsprung-Russell-Diagramm (HRD)",
+            "url": "/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Freundlich illustrierte Visualisierung des Hertzsprung-Russell-Diagramms mit logarithmischen Achsen und den Sternbereichen Hauptreihe, Rote Riesen und Wei\u00dfe Zwerge.",
+            "altText": "Freundlich illustriertes Hertzsprung-Russell-Diagramm auf hellem Karopapier: Die logarithmische Oberfl\u00e4chentemperatur nimmt von 30 000 Kelvin links bis 3 000 Kelvin rechts ab, die logarithmische Leuchtkraft steigt nach oben. Die farbige Hauptreihe verl\u00e4uft von links oben nach rechts unten, Rote Riesen liegen rechts oben, Wei\u00dfe Zwerge links unten und die Sonne nahe 5772 Kelvin und einer Sonnenleuchtkraft.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      {
+        "id": "89124b92-5769-5e13-8a5d-78497936260f",
+        "shortKey": "canonical_physics_astro_stellar_surface_temperature_radiation_laws",
+        "title": "Oberfl\u00e4chentemperaturen von Sternen aus Strahlungsdaten absch\u00e4tzen",
+        "titleEn": "Estimate Stellar Surface Temperatures from Radiation Data",
+        "description": "Die lernende Person kann die Oberfl\u00e4chentemperatur eines Sterns aus dem Spektralmaximum mit dem Wienschen Verschiebungsgesetz oder bei bekannten Gr\u00f6\u00dfen zu Radius und Strahlungsleistung mit dem Stefan-Boltzmann-Gesetz absch\u00e4tzen.",
+        "descriptionEn": "The learner can estimate a star\u2019s surface temperature from its spectral maximum using Wien\u2019s displacement law or, when radius and radiated power are known, using the Stefan\u2013Boltzmann law.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "2b700858-bc2e-5ddf-a791-b14d44160480"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK3_MATHEMATISIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_KOSMOS",
+            "LI_ENERGIE"
+          ],
+          "phase": "GLOBAL",
+          "area": "Astrophysik",
+          "topicCode": "CANONICAL_PHYSICS_ASTRO_STELLAR_SURFACE_TEMPERATURE_RADIATION_LAWS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "competencyRefs": [
+          "PROCESS.PK3_MATHEMATISIEREN",
+          "PROCESS.PK4_KOMMUNIZIEREN"
+        ],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "89124b92-5769-5e13-8a5d-78497936260f",
+            "title": "Visualisierung: Oberfl\u00e4chentemperaturen von Sternen aus Strahlungsdaten absch\u00e4tzen",
+            "url": "/assets/goal-visualizations/physik/89124b92-5769-5e13-8a5d-78497936260f/89124b92-5769-5e13-8a5d-78497936260f.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Oberfl\u00e4chentemperaturen von Sternen aus Strahlungsdaten absch\u00e4tzen \u2014 Schematische absolute Strahlungsintensit\u00e4t \u00fcber der Wellenl\u00e4nge: Die blaue Kurve des hei\u00dferen Sterns liegt oberhalb der roten Kurve des k\u00fchleren Sterns und erreicht ihr Maximum bei k\u00fcrzerer Wellenl\u00e4nge. Die Maxima sind markiert; das Wiensche Gesetz lautet \u03bbmax \u00b7 T = konstant.",
+            "altText": "Schematische absolute Strahlungsintensit\u00e4t \u00fcber der Wellenl\u00e4nge: Die blaue Kurve des hei\u00dferen Sterns liegt oberhalb der roten Kurve des k\u00fchleren Sterns und erreicht ihr Maximum bei k\u00fcrzerer Wellenl\u00e4nge. Die Maxima sind markiert; das Wiensche Gesetz lautet \u03bbmax \u00b7 T = konstant.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      }
+    ],
+    "primaryMathWholePositiveBodyPreviouslyRead": null,
+    "newScientificOrNativeVerdict": null,
+    "sourceScopePrerequisiteNecessityStillRequiresSubstantiveReview": true
+  },
+  "originalIndependentHistory": [
+    {
+      "originalBinding": {
+        "role": "primary",
+        "decisionId": "canonical-physics-6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "dependentGoalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-007.proposal-candidate.json",
+        "authorSha256": "sha256:63194f3fd320868628aae48cf55512648fbda02c3e9e801c0263259c2b1e1ac7",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-007.parallel-independent-review.json",
+        "reviewSha256": "sha256:b0f13f4a978b96bdfac86278b616b7d661887c79ac90d0f05ba0570c67eb3485",
+        "reviewRecordIndex": 29,
+        "independentScientificVerdict": "pending",
+        "requiresDecision": "add",
+        "proposedForeignPrerequisiteIds": [
+          "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+          "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:e190a07443790fd9e25d486f168d488c3240416592120063ced402a8b904c553",
+          "prerequisitesSha256": "sha256:f10ffcf3945c38d95b70ff0349b2da9a36e9ef1ddff0f2c540af9f2588a943a4",
+          "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": false,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      },
+      "wholeOriginalProposal": {
+        "decisionId": "canonical-physics-6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "familyId": "canonical-gymnasium",
+        "dependentGoalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "dependentTitle": "Sternradien aus HRD-Daten absch\u00e4tzen",
+        "dependentDescription": "Die lernende Person kann aus Leuchtkraft und Oberfl\u00e4chentemperatur eines Sterns im Hertzsprung-Russell-Diagramm seinen Radius mit einem thermischen Strahlungsmodell absch\u00e4tzen und erkl\u00e4ren, wie beide Gr\u00f6\u00dfen die Sch\u00e4tzung bestimmen.",
+        "prerequisiteGoalIds": [
+          "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+          "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+        ],
+        "decision": "add",
+        "rationale": "Leuchtkraft/Temperatur werden als HRD-Daten gelesen und im Strahlungsmodell zur Radiusabsch\u00e4tzung eingesetzt. Diagrammachsen/Skalen/Einheiten und Formeleinsetzung sind die notwendigen Basen; logarithmische Achsentransformation selbst rechnen oder eine Kugelfl\u00e4chenformel beweisen ist nicht gefordert.",
+        "evidenceKind": "didacticSequencing",
+        "sourceRefs": [
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+            "locator": "goals[id=6a73cacc-e86d-5248-a180-fd3da8454b0f]",
+            "supports": "goalSemantics"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+            "locator": "goals[id=6a73cacc-e86d-5248-a180-fd3da8454b0f].applicability",
+            "supports": "scope"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+            "locator": "goals[id=80c232f1-8f72-5829-9dbe-5a610ccab3be]",
+            "supports": "prerequisite"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+            "locator": "goals[id=a6469c01-6ca3-5eb2-a82c-94f3d0560b32]",
+            "supports": "prerequisite"
+          }
+        ],
+        "applicability": {
+          "universality": "allDependentScopes",
+          "scopes": [
+            {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            }
+          ],
+          "alternatives": []
+        },
+        "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+        "status": "candidate_pending_independent_review",
+        "inventoryIndex": 450,
+        "reviewInput": {
+          "semanticSha256": "sha256:e190a07443790fd9e25d486f168d488c3240416592120063ced402a8b904c553",
+          "prerequisitesSha256": "sha256:f10ffcf3945c38d95b70ff0349b2da9a36e9ef1ddff0f2c540af9f2588a943a4",
+          "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2"
+        },
+        "proposalBinding": {
+          "baseline": {
+            "semanticSha256": "sha256:e190a07443790fd9e25d486f168d488c3240416592120063ced402a8b904c553",
+            "prerequisitesSha256": "sha256:f10ffcf3945c38d95b70ff0349b2da9a36e9ef1ddff0f2c540af9f2588a943a4",
+            "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2"
+          },
+          "proposed": {
+            "semanticSha256": "sha256:e190a07443790fd9e25d486f168d488c3240416592120063ced402a8b904c553",
+            "prerequisitesSha256": "sha256:83d539c32b518361273c154ee531b917e3c80dd71b0956310660cd7f062e7328",
+            "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2"
+          },
+          "baselineRequires": [
+            "206fe51d-cc78-5422-b139-32cc97eb1c37",
+            "89124b92-5769-5e13-8a5d-78497936260f"
+          ],
+          "proposedRequires": [
+            "206fe51d-cc78-5422-b139-32cc97eb1c37",
+            "89124b92-5769-5e13-8a5d-78497936260f",
+            "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+            "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+          ],
+          "changesSha256": "sha256:6edbdeb69278b4ddb085c851df02651af38e7c4fc99030845ad331e0e764e2a6",
+          "prerequisiteInputs": [
+            {
+              "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+              "semanticSha256": "sha256:0e74b53030e53609c99a961f4c3e4c530acbb6c0e7ed96c9ccbd16578ea56c1b",
+              "scopeSha256": "sha256:5295c1172d1ab4b64a4b2ce0c9e76d6ced1324705c193dd2ff47ffb8d06c6d4d"
+            },
+            {
+              "goalId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+              "semanticSha256": "sha256:15fc46efee1b0a15a28771ce96b6029ecc77eb191e1782dda88c63852da6c1f4",
+              "scopeSha256": "sha256:e02e669f495540c9260f8e7d750006147c0d3399337b751150286359c8208e2c"
+            }
+          ]
+        }
+      },
+      "wholeOriginalIndependentReview": {
+        "decisionId": "canonical-physics-6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "dependentGoalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "decision": "pending",
+        "reviewDisposition": "needs_revision",
+        "reviewer": "Codex GPT-6.1 Sol Ultra / independent canonical prerequisite reviewer /root/requires_parallel_review",
+        "rationale": "HRD-Achsen und Termauswertung sind plausible Eing\u00e4nge. Das current radius-from-state-P verpflichtet aber zum selbstst\u00e4ndigen Gewinnen der Radius-/Verh\u00e4ltnisbeziehung aus L=4\u03c0R\u00b2\u03c3T\u2074. Diese Wurzel-/\u00e4quivalente Umformungsleistung ist in den beiden vollst\u00e4ndigen nominees nicht abgesichert. Engen algebraischen Kern oder unabh\u00e4ngig gebundene bereitgestellte Radiusbeziehung pr\u00fcfen; BY-HRD-Quelle ist keine direkte Matheprereq-Aussage.",
+        "reviewInput": {
+          "semanticSha256": "sha256:e190a07443790fd9e25d486f168d488c3240416592120063ced402a8b904c553",
+          "prerequisitesSha256": "sha256:f10ffcf3945c38d95b70ff0349b2da9a36e9ef1ddff0f2c540af9f2588a943a4",
+          "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2"
+        },
+        "proposalBindingSha256": "sha256:a0c8da4d1ea60259a829b5efe0514c15a3e2a286d5cda8277b5fc0e8520dd7f2",
+        "reviewedContext": {
+          "description": "Die lernende Person kann aus Leuchtkraft und Oberfl\u00e4chentemperatur eines Sterns im Hertzsprung-Russell-Diagramm seinen Radius mit einem thermischen Strahlungsmodell absch\u00e4tzen und erkl\u00e4ren, wie beide Gr\u00f6\u00dfen die Sch\u00e4tzung bestimmen.",
+          "directRequires": [
+            "206fe51d-cc78-5422-b139-32cc97eb1c37",
+            "89124b92-5769-5e13-8a5d-78497936260f"
+          ],
+          "effectiveRequires": [
+            "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:206fe51d-cc78-5422-b139-32cc97eb1c37",
+            "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:89124b92-5769-5e13-8a5d-78497936260f"
+          ],
+          "prerequisiteOriginsRef": "sha256:6f3b3897a06a72b5cbc120ab2d8d6d6baea8f78c02880c17f3f95edb730458d2",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY"
+            ]
+          },
+          "phase": null,
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-physics",
+            "phase": "Q4",
+            "area": "Astrophysik",
+            "topicCode": "CANONICAL_PHYSICS_ASTRO_HRD_STELLAR_RADIUS",
+            "demandLevel": "AB3",
+            "processCompetencies": [
+              "PK3_MATHEMATISIEREN",
+              "PK2_MODELLIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_KOSMOS"
+            ]
+          },
+          "tags": [
+            "GK",
+            "canonical"
+          ],
+          "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2",
+          "sourceBindingFiles": [
+            "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json"
+          ]
+        },
+        "nominatedMathematicsRead": [
+          {
+            "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+            "title": "Achsen, Skalen und Einheiten lesen",
+            "description": "Die lernende Person kann bei Diagrammen Achsenbeschriftung, Skalierung und Einheiten korrekt lesen und daraus Werte bzw. Aussagen ableiten.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "K4.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "J7"
+            }
+          },
+          {
+            "goalId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+            "title": "Termwerte durch Einsetzen berechnen",
+            "description": "Die lernende Person kann in Terme mit Variablen konkrete Werte einsetzen, die Termwerte korrekt berechnen und die Rechnung nachvollziehbar notieren.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K4.1",
+                "K5.1"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "J7",
+              "area": "Algebra",
+              "topicCode": "CANONICAL.MATH.SEK1.J7.TERMS.SUBSTITUTION"
+            }
+          }
+        ],
+        "positiveEvidenceReview": {
+          "configPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.config.json",
+          "reviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.review.jsonl",
+          "profileFingerprint": "sha256:1f8ec4a5f744f3e4013e9b28c78b3c79e2fca3aa3e274d5a9b799bbc53dfce89",
+          "reviewInputFingerprint": "sha256:bedda3fc94a8e6c22f6c74e0d936ac56993b9867861b0bcb16afdec44a98b2a4",
+          "goalFingerprint": "sha256:4b4ff84b658c2084e673adb740aa4571bb3bc7d79826a14cb0ffcb2c0cbdd318",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "expectationIdsRead": [
+            "radius-from-radiative-state",
+            "radius-inference-limits"
+          ],
+          "caseIdsRead": [
+            "equal-temperature",
+            "equal-luminosity-temperature-uncertainty"
+          ],
+          "profileBodyReadLanguage": "de",
+          "suitabilityRationale": "HRD-Achsen und Termauswertung sind plausible Eing\u00e4nge. Das current radius-from-state-P verpflichtet aber zum selbstst\u00e4ndigen Gewinnen der Radius-/Verh\u00e4ltnisbeziehung aus L=4\u03c0R\u00b2\u03c3T\u2074. Diese Wurzel-/\u00e4quivalente Umformungsleistung ist in den beiden vollst\u00e4ndigen nominees nicht abgesichert. Engen algebraischen Kern oder unabh\u00e4ngig gebundene bereitgestellte Radiusbeziehung pr\u00fcfen; BY-HRD-Quelle ist keine direkte Matheprereq-Aussage.",
+          "successorAction": "do-not-rebind-before-substantive-resolution"
+        }
+      }
+    }
+  ],
+  "unresolvedDistinctFourthBatchDissent": false,
+  "originalEffectiveIndexRecord": {
+    "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+    "subject": "physics",
+    "title": "Sternradien aus HRD-Daten absch\u00e4tzen",
+    "selectedRecord": {
+      "role": "primary",
+      "decisionId": "canonical-physics-6a73cacc-e86d-5248-a180-fd3da8454b0f",
+      "dependentGoalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+      "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-007.proposal-candidate.json",
+      "authorSha256": "sha256:63194f3fd320868628aae48cf55512648fbda02c3e9e801c0263259c2b1e1ac7",
+      "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-007.parallel-independent-review.json",
+      "reviewSha256": "sha256:b0f13f4a978b96bdfac86278b616b7d661887c79ac90d0f05ba0570c67eb3485",
+      "reviewRecordIndex": 29,
+      "independentScientificVerdict": "pending",
+      "requiresDecision": "add",
+      "proposedForeignPrerequisiteIds": [
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+      ],
+      "originalReviewInput": {
+        "semanticSha256": "sha256:e190a07443790fd9e25d486f168d488c3240416592120063ced402a8b904c553",
+        "prerequisitesSha256": "sha256:f10ffcf3945c38d95b70ff0349b2da9a36e9ef1ddff0f2c540af9f2588a943a4",
+        "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2"
+      },
+      "currentMatchesBaseline": true,
+      "currentMatchesProposed": false,
+      "technicallyCurrentApprovedBinding": false,
+      "technicalErrors": [],
+      "nativeQualityOrAdoptionApprovalCreated": false
+    },
+    "selectionBasis": "primary exact record",
+    "originalDecisionHistory": [
+      {
+        "role": "primary",
+        "decisionId": "canonical-physics-6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "dependentGoalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-007.proposal-candidate.json",
+        "authorSha256": "sha256:63194f3fd320868628aae48cf55512648fbda02c3e9e801c0263259c2b1e1ac7",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-007.parallel-independent-review.json",
+        "reviewSha256": "sha256:b0f13f4a978b96bdfac86278b616b7d661887c79ac90d0f05ba0570c67eb3485",
+        "reviewRecordIndex": 29,
+        "independentScientificVerdict": "pending",
+        "requiresDecision": "add",
+        "proposedForeignPrerequisiteIds": [
+          "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+          "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:e190a07443790fd9e25d486f168d488c3240416592120063ced402a8b904c553",
+          "prerequisitesSha256": "sha256:f10ffcf3945c38d95b70ff0349b2da9a36e9ef1ddff0f2c540af9f2588a943a4",
+          "scopeSha256": "sha256:bb1ba17903f5c124c0337db9d28802a949b32bff9cae82ddb65b3f1c28f767c2"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": false,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      }
+    ],
+    "unresolvedDistinctFourthBatchDissent": false,
+    "fourthBatchDisagreementReconciledHere": false,
+    "effectiveCurrentScientificBindingAccepted": false,
+    "activeForeignRequires": [],
+    "firstTenAdoptionRecorded": false,
+    "firstTenAdoptionEvidence": null,
+    "otherNativeQualityOrAdoptionApprovedByThisIndex": false
+  },
+  "sourceBindingFilesToReadSubstantively": [
+    "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json"
+  ],
+  "preparedInputOnly": true,
+  "newScientificDecisionOrApprovalCreated": false,
+  "currentSourceApplicabilityOrWholePQualityApprovedHere": false
+}

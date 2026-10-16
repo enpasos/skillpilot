@@ -1,0 +1,107 @@
+{
+  "writtenUTC": "2026-10-15T22:47:14.460612+00:00",
+  "solutions": [
+    {
+      "index": 10,
+      "cases": [
+        {
+          "id": "fresh-independent-case-a",
+          "solution": "Reviewer-given homogeneousE=(100,0)V/m withphi(0,y)=0 hasphi(x,y)=-100xV (xmetres). AtA(.02,0),phiA=-2V;B(.05,.01),phiB=-5V. DefineU_AB=phiA-phiB=+3V. Equipotentialsx=constant arevertical,perpendiculartofield;equal1Vcontoursseparated.01m. Shiftallpotentialsby+7V:gives5,2V,unchangedU_AB=3V andE. Referencechangeisnotphysicalfieldchange."
+        },
+        {
+          "id": "fresh-independent-case-b",
+          "solution": "Reviewer-given pointchargefield withkQ=9Vm andzerophiat infinity:phi(r)=9/rV. At.1m90V,at.2m45V;defineU_AB=45V. Equipotentialcircles (spheresspatial)r=9/phi;equalpotentialstepsgetclosernearcentre,indicatinglargerfield. FieldradialoutwardforpositiveQ,andlocalcontoursperpendicular. Alteringcharge/electrodeschangesgeometry/voltages,whereasuniformadditivezeroshiftdoesnot. Domainr>0,pointchargemodelnotvalidinsideafinitesizechargedbody;boundaryconditionshavetoexist."
+        }
+      ],
+      "fresh": "Reviewer-givenphi=-50x+100yV:field(50,-100)V/m,contours-50x+100y=constant,slope.5;normalisfielddirection. Points(.02,.01)and(0,0)both0V,samepotentialdoesnotmeanzerofield. Closercontourspacingmeanslargerfieldonlyifequalpotentialincrementsareused. Unequal-labelledcontourscannotbecomparedbyspacingsalone.",
+      "priorNeed": "Signeddifferences,independentnumericrepresentation andparallel/perpendicularrelations;readwholeMathnominees. Evaluatinggenericfunctions,fullinverse-functionpreimages orvectorcalculusdonotfollowautomaticallyfromthispotentialcontract.",
+      "newPhysics": "Potentialzerochoice,voltageconvention,field/potentialrelation,equipotentialconstruction andphysicalgeometry/modelboundaries.",
+      "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "wholePProfileFingerprint": "sha256:06b5025ffd2dc6e10ea8f66e35a685d51685cfd1a53d03db5a8eb80bad9c00c0",
+      "status": "OWN_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    },
+    {
+      "index": 11,
+      "cases": [
+        {
+          "id": "electric-stimulus-common-delay",
+          "solution": "Modelpulse24mV/2mm=.024V/.002m=12V/m for0..0.3ms. Correspondingfeatures7ms-4ms=3ms apartacross.18m give60m/s;unknowncommondelaycancels. Constantfluxthroughfixedmeasuringpathcausesnoinducedvoltage. Inprovidedexternalpulse/leadloopcontext,earlysimultaneousdeflectionisconsistentwithgiveninductiveinterference;separatethe3ms-latepropagatingpair. Iftracesnottemporallydistinguishable,nojustrateclaim. Suppliedmodelsnotmedicaldevicesettings."
+        },
+        {
+          "id": "magnetic-ramp-calibration",
+          "solution": "Looparea4cm²=4·10^-4m²,ΔPhi=2µWb=2·10^-6Wb,soΔB=.005T=5mT underperpendicularhomogeneousmodel. GivenUcal4mVduring.5msrampand1mVduring2msrampreflectfastervsslowerfluxchange;plateauconstantfluxgivesnoinductivevoltage. Do notequatecalibrationloopvoltagewithmembranevoltage. SameBmaxdoesnotestablishequalneuralstimulationorquality;needprovidedresponse/interferencetracesandsignalresolution. Ifthoseareabsent,themethodjudgmentmustremainbounded/unresolved. AseparatequantitativeFaradaycalculationisnotanadditionalprofileprerequisite."
+        }
+      ],
+      "fresh": "Acommonadditional5msdelaymovesthepairto9/12mswithsame60m/s;adifferentialchannelbiasof.5mswouldyieldapparent.18/.0035≈51.43m/sifignored. Correctdifferentialbiasorwithholdreliablevalue. DoubleloopareaatsamefluxwouldhalvinferredB,sowrongarea/orientationinvalidatesestimate. Keepneuralpath,calibrationpath,triggerandinterferenceidentitydistinct.",
+      "priorNeed": "Positiveunits/ratios,differencesofmatchedtimestamps andtable/traceinterpretation. Genericwholeaverage-ratefunctioncourseorquantitativeinductionlawisnotuniversalwheninducedvoltageisgiven;wholeMathcomparisonsstillpending.",
+      "newPhysics": "Matchpropagationpath/timefeatures,explainroleofelectric/magneticfields,commondelayvspropagation,inductiveinterferenceandboundedmethodjudgment.",
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "wholePProfileFingerprint": "sha256:825b36fa1d42bd7850e47e04b7ac8c2a84164bc06435a353fc071e5ef25dc0ee",
+      "status": "OWN_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    },
+    {
+      "index": 12,
+      "cases": [
+        {
+          "id": "energy-fit",
+          "solution": "Forf=(5,6,7)·10^14Hz andE=(.30,.97,1.62)·10^-19J,theleast-squareslinehas h=6.6·10^-34Js,intercept=-2.9966667·10^-19J,soW_A≈3.0·10^-19J. PredictedE=(.303333,.963333,1.623333)·10^-19J;residuals(-.003333,+.006667,-.003333)·10^-19J within±.04·10^-19. Endpointslopebounds(6.2..7.0)·10^-34Js aremeasurementbounds,notstatisticalCI. Originforcingwoulddiscardphysicalworkfunctionandbiasinference."
+        },
+        {
+          "id": "voltage-fit",
+          "solution": "U=(.48,.89,1.30)V atf=(6,7,8)·10^14Hz islinearwithslope4.10·10^-15Vs andintercept-1.98V. E=eU withgiven e=1.60·10^-19C yields h=6.56·10^-34Js;voltageslopealonehaswrongunit/physicalfactorforh. Endpoints3.8..4.4·10^-15Vs imply h6.08..7.04·10^-34Js. Thesedataareestimatedapparatusresults,notclaimsthattheSIdefinitionof h isuncertain."
+        }
+      ],
+      "fresh": "Reviewer-generatednewmaterialwithh_model=6.4·10^-34Js,W_A=2.0·10^-19J andf=(4,5,6)·10^14Hz givesE=(.56,1.20,1.84)·10^-19J. Recover slopeandnegativeintercept,notoriginratio;thechangedworkfunctionshiftsthelinewithoutchangingmodelh. Axesanduncertaintychoicesremainindependent. Graphicalfitandallowedendpointbandavoidrequiringauniversalstatisticscourse.",
+      "priorNeed": "Linearrelationshipacrossequation/table/graph,slope/interceptandunits,scientificnotation/products/ratios;wholeMathlinearprofilemustberead. Generalextrema,fullcalculusorgenericregressionstatisticsnotrequiredbythecontract.",
+      "newPhysics": "MapEinsteinrelationtoobservables,translateeU,interpret h/workfunction andfit/residual/uncertaintymodellimit.",
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "wholePProfileFingerprint": "sha256:5b73d9eb68736f1087e5bea27c88012c84a233ba9e17181245d3d834d8925c76",
+      "status": "OWN_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    },
+    {
+      "index": 13,
+      "cases": [
+        {
+          "id": "supplied-diameter-order-comparison",
+          "solution": "(1.2·10^-10m)/(1.0·10^-15m)=1.2·10^5=120000 diameterfactor;orders10^-10and10^-15. Nucleussmallcentralmodelregion,shelldominatesatomicextent. Diameterfactorisnotarea(its square)orvolume(itscube). Atomdiameter10cmwouldmakekernelabout.000833mm,notaconvenientvisiblelinearpageobject;consequentlyschematicenlargementmustbelabelled."
+        },
+        {
+          "id": "critique-two-atom-diagrams",
+          "solution": "Bothdifferent-sizedrawnucleicanbequalitativenucleus-shellschemata. Onlyexplicitdata/scalecarrynumericalratio;non-scalelabelpreventsreadingdrawnsizeasmeasurement,andunlabelledonehasmissingcalibration. Correctinferenceusesgivendiameters,notpixelareas. Noexternalphoto/preciseelectronorbitorinternalstructureproofcomesfromschematic."
+        },
+        {
+          "id": "construct-consistent-scale-analogy",
+          "solution": "1mmnucleusdiameter×100000=100000mm=100matomdiameter,usingonecommonlinearscale. Kerncentral,shellspatiallyextended;notexactelectrontrajectories,norinnernuclearstructure;analogyisnotaphotographicstructuremodel."
+        }
+      ],
+      "fresh": "Reviewer-givenatom2.0·10^-10m,nucleus4.0·10^-15m gives5.0·10^4diameterfactor. A2mmmodelnucleusimplies100matomdiameter. Afigurewithnucleusradius1cmandatomradius5cmdoesnotreportphysicalratio5unlessexplicitlycalibrated;criticizethisagainstdata. Optionalnm/fmornormalizedpowerrepresentationsmustkeepthelinearquantityidentity.",
+      "priorNeed": "Readpositivevery-smallpowers,compute theirratio,maintainlinearunit/scaleandcritiqueuncalibrateddrawing;entiregeneralpowerlawswithnegativebasesarenotautomaticwholeprerequisites. Activeandfinalinactive13alternativebodiesmustbecompared;inactivepowercoresnotqualifiedyet.",
+      "newPhysics": "Nucleus/shellmodelregions,physicaldiameterorders,spatialinterpretationandexplicitlimitsofmodel/analogy.",
+      "goalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "wholePProfileFingerprint": "sha256:88bf9ec3690a8eb07f02e2893dc4000252497bc1947a45b7b248258dd3d05501",
+      "status": "OWN_DRAFT_NOT_FINALLOCK",
+      "new20AuthorBodyRead": false
+    }
+  ],
+  "actualCalculations": {
+    "photoelectricSlope_Js": 6.6000000000000005e-34,
+    "intercept_J": -2.9966666666666663e-19,
+    "residuals_1e19J": [
+      -0.003333333333333688,
+      0.006666666666666599,
+      -0.0033333333333334103
+    ],
+    "voltageSlope_Vs": 4.1e-15,
+    "hFromVoltage_Js": 6.5599999999999996e-34,
+    "nerveField_V_m": 12.0,
+    "nerveSpeed_m_s": 60.0,
+    "loopB_T": 0.004999999999999999,
+    "freshChannelBiasedSpeed_m_s": 51.42857142857142,
+    "atomicRatio": 119999.99999999999,
+    "analogy_m": 100.0
+  },
+  "notYetRequiresSetVerdicts": true
+}

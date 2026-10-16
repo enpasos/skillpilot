@@ -1,0 +1,615 @@
+{
+  "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+  "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz l\u00f6sen",
+  "wholeCurrentGoalAndPositiveBody": {
+    "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+    "subject": "physik",
+    "wholeCurrentCanonicalGoal": {
+      "id": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz l\u00f6sen",
+      "titleEn": "Solve the Differential Equation of an Electromagnetic Oscillating Circuit by Ansatz",
+      "description": "Die lernende Person kann die Differentialgleichung eines idealisierten elektromagnetischen Schwingkreises mit einem geeigneten Ansatz l\u00f6sen und die L\u00f6sungen im Hinblick auf Periodendauer, Frequenz und Energieumlagerung deuten.",
+      "descriptionEn": "The learner can solve the differential equation of an idealized electromagnetic oscillating circuit using a suitable ansatz and interpret the solutions with respect to period, frequency, and energy transfer.",
+      "weight": 1.05,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+        "b2fb9a25-4d26-5cf2-a917-823909dcb6bd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+          "title": "Visualisierung: Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz l\u00f6sen",
+          "url": "/assets/goal-visualizations/physik/a7255b83-336c-4d42-ba5c-bc2f6248ea36/a7255b83-336c-4d42-ba5c-bc2f6248ea36.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz l\u00f6sen.",
+          "altText": "LC-Schwingkreis mit Kondensator und Spule sowie zwei nichtnegativen Energiekurven, die sich periodisch ineinander umwandeln.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "currentSourceLandscape": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "bytes": 2511701,
+      "sha256": "sha256:4704c85973997b0bc822c360a9802fa55ce897a98936ec2c8782ed7c8f47076e"
+    },
+    "semanticKind": "curricularAtomic",
+    "currentPerGoalReviewInput": {
+      "semanticSha256": "sha256:937b10a43718af141f22056997220b31c85feb2f8053362d8ba0a3f2ae9a442c",
+      "prerequisitesSha256": "sha256:ae837070d2b45c9f9240adddc99b7d61a1ca46ca35496a9240c913c06337ebfd",
+      "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55"
+    },
+    "positiveBodyOwner": {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-astro-inference-current-20260920-v1.config.json",
+      "configSha256": "sha256:0b3281d5165d05b74c268626ad68364c52ce3d1cccb72b93a90d4f5c64383c02",
+      "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-astro-inference-current-20260920-v1.review.jsonl",
+      "recordFileSha256": "sha256:647d56936d24fb42f0d4cc418ad5865ac8e252036711c5de352f2b6c4b7dbdd9",
+      "recordLine": 10,
+      "recordRawLineSha256": "sha256:e2052e5bc7eb21c07d6ccafb3db10df39d32a62cdb36d79556cf88f07c4fb99d",
+      "currentProfileFingerprint": "sha256:5378438bb0a8a9ac16b7d648bb82480a81639628cb6d66b597adf9cff141b545",
+      "currentGoalFingerprint": "sha256:7e003c6a9d03116efd62706b78d18b3848b88ee1be7ff1429f8df4cf384ba032",
+      "currentReviewInputFingerprint": "sha256:30aa34d7c40503e04caed74c56923077f481c224abafd305aaaa7c51710cbbe2",
+      "wholePositiveProfile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "ansatz-and-initial-state",
+            "essentialUnderstandingDe": "F\u00fcr den idealen LC-Kreis erf\u00fcllt q die Gleichung q\u2033+q/(LC)=0. Ein Sinus-Cosinus-Ansatz muss sowohl diese Gleichung als auch Anfangsladung und Anfangsstrom erf\u00fcllen.",
+            "essentialUnderstandingEn": "For an ideal LC circuit, q satisfies q\u2033+q/(LC)=0. A sine-cosine ansatz must satisfy both the equation and the initial charge and current.",
+            "observablePerformanceDe": "Setzt den Ansatz ein, bestimmt Kreisfrequenz und Konstanten und \u00fcberpr\u00fcft mit der vereinbarten Stromrichtung i=q\u2032 die Anfangsbedingungen.",
+            "observablePerformanceEn": "Substitutes the ansatz, determines angular frequency and constants, and checks initial conditions using the chosen current convention i=q\u2032."
+          },
+          {
+            "id": "solution-meaning",
+            "essentialUnderstandingDe": "Periodendauer, Frequenz und periodische elektrische/magnetische Energieumlagerung folgen aus derselben L\u00f6sung; der ideale Kreis ist verlustfrei und nicht extern angetrieben.",
+            "essentialUnderstandingEn": "Period, frequency, and periodic electric/magnetic energy redistribution follow from the same solution; the ideal circuit has no losses or external drive.",
+            "observablePerformanceDe": "Deutet q(t), i(t) und Energiephasen konsistent und benennt die Idealisation.",
+            "observablePerformanceEn": "Interprets q(t), i(t), and energy phases consistently and states the idealisation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ansatz-and-initial-state",
+            "solution-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "charged-and-current-initialisation",
+            "textDe": "Anfangs elektrisch gespeicherte und anfangs magnetisch gespeicherte Energie mit verschiedenen Phasen der L\u00f6sung vergleichen.",
+            "textEn": "Compare initially electric and initially magnetic stored energy through different solution phases."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "charged-capacitor",
+            "taskDemandDe": "Gegeben sind L=0,1 H, C=10 \u03bcF, q\u2033+q/(LC)=0 sowie q(0)=20 \u03bcC, i(0)=0 mit i=q\u2032. L\u00f6se mit geeignetem Ansatz und deute T, f und die Energie nach einer Viertelperiode. Die Energieausdr\u00fccke q\u00b2/(2C) und Li\u00b2/2 d\u00fcrfen verwendet werden.",
+            "taskDemandEn": "Given L=0.1 H, C=10 \u03bcF, q\u2033+q/(LC)=0, q(0)=20 \u03bcC, and i(0)=0 with i=q\u2032, solve using a suitable ansatz and interpret T, f, and energy after a quarter-period. You may use energy expressions q\u00b2/(2C) and Li\u00b2/2.",
+            "expectedPerformanceDe": "\u03c9=1000 s\u207b\u00b9, q(t)=20\u00b710\u207b\u2076 cos(1000t) C und i(t)=\u22120,020 sin(1000t) A erf\u00fcllen Gleichung und Startwerte. T\u22486,283 ms, f\u2248159,155 Hz. Nach T/4 ist q=0 und i=\u221220 mA; die anf\u00e4nglichen 20 \u03bcJ elektrischer Energie liegen vollst\u00e4ndig magnetisch vor.",
+            "expectedPerformanceEn": "\u03c9=1000 s\u207b\u00b9, q(t)=20\u00b710\u207b\u2076 cos(1000t) C and i(t)=\u22120.020 sin(1000t) A satisfy the equation and initial values. T\u22486.283 ms, f\u2248159.155 Hz. At T/4, q=0 and i=\u221220 mA; the initial 20 \u03bcJ of electric energy is entirely magnetic.",
+            "understandingFocusDe": "Ansatz, Stromvorzeichen und Energieumlagerung aus derselben L\u00f6sung begr\u00fcnden.",
+            "understandingFocusEn": "Justify the ansatz, current sign, and energy exchange from the same solution."
+          },
+          {
+            "id": "initial-current",
+            "taskDemandDe": "F\u00fcr einen anderen idealen Kreis gilt q\u2033+40000q=0, q(0)=0, i(0)=+0,040 A und i=q\u2032. L=0,5 H ist gegeben. Bestimme q(t), i(t), Periodendauer und die Energiephase beim ersten positiven Ladungsmaximum.",
+            "taskDemandEn": "For another ideal circuit, q\u2033+40000q=0, q(0)=0, i(0)=+0.040 A, and i=q\u2032. L=0.5 H is supplied. Determine q(t), i(t), period, and energy phase at the first positive charge maximum.",
+            "expectedPerformanceDe": "\u03c9=200 s\u207b\u00b9, q(t)=2\u00b710\u207b\u2074 sin(200t) C, i(t)=0,040 cos(200t) A. T\u224831,416 ms, f\u224831,831 Hz; nach T/4 ist q maximal und i=0. C=1/(L\u03c9\u00b2)=50 \u03bcF; die anf\u00e4nglichen 0,4 mJ magnetischer Energie liegen dann elektrisch vor. Ein reiner Cosinus ohne Phasenanpassung w\u00fcrde die Anfangsbedingungen verfehlen.",
+            "expectedPerformanceEn": "\u03c9=200 s\u207b\u00b9, q(t)=2\u00b710\u207b\u2074 sin(200t) C, i(t)=0.040 cos(200t) A. T\u224831.416 ms, f\u224831.831 Hz; at T/4 q is maximal and i=0. C=1/(L\u03c9\u00b2)=50 \u03bcF; the initial 0.4 mJ of magnetic energy is then electric. An unshifted pure cosine would fail the initial conditions.",
+            "understandingFocusDe": "Die Phase durch eine ge\u00e4nderte Anfangssituation bestimmen statt dieselbe Musterl\u00f6sung zu wiederholen.",
+            "understandingFocusEn": "Determine phase from a changed initial situation rather than repeat the same model solution."
+          }
+        ]
+      }
+    },
+    "directPrerequisiteGoals": [
+      {
+        "id": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+        "title": "Elektromagnetischen Schwingkreis analysieren",
+        "titleEn": "Analyze Electromagnetic Oscillating Circuit",
+        "description": "Die lernende Person kann einen einfachen LC-Schwingkreis beschreiben, charakteristische Gr\u00f6\u00dfen wie Periodendauer, Frequenz und Amplituden angeben und die periodische Energieumwandlung qualitativ erkl\u00e4ren.",
+        "descriptionEn": "The learner can describe a simple LC oscillating circuit, state characteristic quantities like period, frequency, and amplitudes, and qualitatively explain periodic energy conversion.",
+        "weight": 1.05,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+          "9f59a088-3939-59e9-821d-167fadfda782"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+            "title": "Visualisierung: Elektromagnetischen Schwingkreis analysieren",
+            "url": "/assets/goal-visualizations/physik/ac4ba260-6086-5fcc-bea2-c06f1425a1cc/ac4ba260-6086-5fcc-bea2-c06f1425a1cc.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Elektromagnetischen Schwingkreis analysieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Elektromagnetischen Schwingkreis analysieren\". Die lernende Person kann einen einfachen LC-Schwingkreis beschreiben, charakteristische Gr\u00f6\u00dfen wie Periodendauer, Frequenz und Amplituden angeben und die periodische Energieumwandlung qualitativ erkl\u00e4ren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      {
+        "id": "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+        "title": "Schwingungsgleichung l\u00f6sen",
+        "titleEn": "Solve Oscillation Equation",
+        "description": "Die lernende Person kann die lineare Differenzialgleichung einer unged\u00e4mpften harmonischen Schwingung f\u00fcr gegebene Anfangsbedingungen l\u00f6sen und die L\u00f6sung anhand von Amplitude, Kreisfrequenz und Phase physikalisch deuten.",
+        "descriptionEn": "The learner can solve the linear differential equation of an undamped harmonic oscillator for given initial conditions and physically interpret the solution in terms of amplitude, angular frequency, and phase.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "d03f1cb6-c224-53db-ad91-76cc7827978d",
+          "09f2cdbd-64e0-55d2-ada7-1190f4fd50df"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_WELLEN",
+            "LI_ENERGIE"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+            "title": "Visualisierung: Schwingungsgleichung l\u00f6sen",
+            "url": "/assets/goal-visualizations/physik/b2fb9a25-4d26-5cf2-a917-823909dcb6bd/b2fb9a25-4d26-5cf2-a917-823909dcb6bd.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Schwingungsgleichung l\u00f6sen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Schwingungsgleichung l\u00f6sen\". Die lernende Person kann die lineare Differenzialgleichung einer unged\u00e4mpften harmonischen Schwingung f\u00fcr gegebene Anfangsbedingungen l\u00f6sen und die L\u00f6sung anhand von Amplitude, Kreisfrequenz und Phase physikalisch deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      }
+    ],
+    "primaryMathWholePositiveBodyPreviouslyRead": null,
+    "newScientificOrNativeVerdict": null,
+    "sourceScopePrerequisiteNecessityStillRequiresSubstantiveReview": true
+  },
+  "originalIndependentHistory": [
+    {
+      "originalBinding": {
+        "role": "primary",
+        "decisionId": "canonical-physics-a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "dependentGoalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-003.proposal-candidate.json",
+        "authorSha256": "sha256:11959927b7b1524b746f7b3522010e1775423fceb92c0d8d6ca54f6b8f3f9f7b",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-003.independent-review.json",
+        "reviewSha256": "sha256:c70e433a6fa913db6504bc6cd88aa5b965523f126de2463da05356e76660dfd0",
+        "reviewRecordIndex": 64,
+        "independentScientificVerdict": "pending",
+        "requiresDecision": "review_required",
+        "proposedForeignPrerequisiteIds": [
+          "58d2f963-4fb9-550d-a832-f5ac60808900"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:937b10a43718af141f22056997220b31c85feb2f8053362d8ba0a3f2ae9a442c",
+          "prerequisitesSha256": "sha256:ae837070d2b45c9f9240adddc99b7d61a1ca46ca35496a9240c913c06337ebfd",
+          "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": false,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      },
+      "wholeOriginalProposal": {
+        "decisionId": "canonical-physics-a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "familyId": "canonical-gymnasium",
+        "dependentGoalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "dependentTitle": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz l\u00f6sen",
+        "dependentDescription": "Die lernende Person kann die Differentialgleichung eines idealisierten elektromagnetischen Schwingkreises mit einem geeigneten Ansatz l\u00f6sen und die L\u00f6sungen im Hinblick auf Periodendauer, Frequenz und Energieumlagerung deuten.",
+        "prerequisiteGoalIds": [
+          "58d2f963-4fb9-550d-a832-f5ac60808900"
+        ],
+        "decision": "review_required",
+        "rationale": "Das Ansatzl\u00f6sen des idealen LC-Oszillators ben\u00f6tigt die wiederholte Ableitung einer zeitlich skalierten Schwingungsfunktion, wenn der gebundene Ansatz Sinus/Kosinus ist. Das vorhandene spezielle Kettenregelatom passt diesem \u00fcblichen reellen Weg. Da die Beschreibung einen geeigneten Ansatz offen l\u00e4sst, muss die positive Evidenz unabh\u00e4ngig best\u00e4tigen, dass kein alternativer komplexer Ansatz als gleichberechtigte Route ausgeschlossen wird; das nur qualitative DGL-Atom zweiter Ordnung allein reicht nicht f\u00fcr das geforderte L\u00f6sen.",
+        "evidenceKind": "didacticSequencing",
+        "sourceRefs": [
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+            "locator": "goals[id=a7255b83-336c-4d42-ba5c-bc2f6248ea36]",
+            "supports": "goalSemantics"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+            "recordId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+            "locator": "goals[id=a7255b83-336c-4d42-ba5c-bc2f6248ea36].applicability",
+            "supports": "scope"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+            "recordId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+            "locator": "goals[id=58d2f963-4fb9-550d-a832-f5ac60808900]",
+            "supports": "prerequisite"
+          }
+        ],
+        "applicability": {
+          "universality": "allDependentScopes",
+          "scopes": [
+            {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            }
+          ],
+          "alternatives": [
+            "Reeller Sinus-/Kosinusansatz oder \u00e4quivalenter komplexer Exponentialansatz; nicht beide als AND."
+          ]
+        },
+        "author": "Codex GPT-6.1 Sol Ultra / canonical prerequisite author",
+        "status": "candidate_pending_independent_review",
+        "inventoryIndex": 205,
+        "reviewInput": {
+          "semanticSha256": "sha256:937b10a43718af141f22056997220b31c85feb2f8053362d8ba0a3f2ae9a442c",
+          "prerequisitesSha256": "sha256:ae837070d2b45c9f9240adddc99b7d61a1ca46ca35496a9240c913c06337ebfd",
+          "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55"
+        },
+        "proposalBinding": {
+          "baseline": {
+            "semanticSha256": "sha256:937b10a43718af141f22056997220b31c85feb2f8053362d8ba0a3f2ae9a442c",
+            "prerequisitesSha256": "sha256:ae837070d2b45c9f9240adddc99b7d61a1ca46ca35496a9240c913c06337ebfd",
+            "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55"
+          },
+          "proposed": {
+            "semanticSha256": "sha256:937b10a43718af141f22056997220b31c85feb2f8053362d8ba0a3f2ae9a442c",
+            "prerequisitesSha256": "sha256:30572ba3174e45fb289ebb88f2e90e99534125a0fbcaafa6a968987b5f5d5d59",
+            "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55"
+          },
+          "baselineRequires": [
+            "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+            "b2fb9a25-4d26-5cf2-a917-823909dcb6bd"
+          ],
+          "proposedRequires": [
+            "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+            "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+            "58d2f963-4fb9-550d-a832-f5ac60808900"
+          ],
+          "changesSha256": "sha256:9333d00d604a38f6e7ed3b550303d91770bf6f4264c6b5cce15e773b73a4aa5f",
+          "prerequisiteInputs": [
+            {
+              "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+              "semanticSha256": "sha256:98d1206b2e4fc5c8fbcd1c4d937e43252bf9673761232c70659b6eb07e3996c7",
+              "scopeSha256": "sha256:448e0ed3ccd1a57ba1f05e2e66a9936c3c313b97e273c6678287fdbfec25ec79"
+            }
+          ]
+        }
+      },
+      "wholeOriginalIndependentReview": {
+        "decisionId": "canonical-physics-a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "dependentGoalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "decision": "pending",
+        "reviewDisposition": "needs_revision",
+        "reviewer": "Codex GPT-6.1 Sol Ultra / independent canonical prerequisite reviewer /root/requires_canonical_review",
+        "rationale": "Die aktuelle native P-Route ist ausdr\u00fccklich Sinus-Cosinus-Ansatz, inklusive wiederholter Ableitung, Anfangsbedingungen und Energiephase. Der spezialisierte Kettenregel-Atom passt zu dieser Route. Der kanonische Goal erlaubt aber einen geeigneten Ansatz generell; ein \u00e4quivalenter komplexer Weg darf nicht durch eine unbewiesene universelle Voraussetzung ausgeschlossen werden. Zudem braucht die Konstanten-/Anfangswertbestimmung ihre tats\u00e4chliche einfache Algebraannahme. review_required bleibt offen bis zur unabh\u00e4ngigen Routenentscheidung.",
+        "reviewInput": {
+          "semanticSha256": "sha256:937b10a43718af141f22056997220b31c85feb2f8053362d8ba0a3f2ae9a442c",
+          "prerequisitesSha256": "sha256:ae837070d2b45c9f9240adddc99b7d61a1ca46ca35496a9240c913c06337ebfd",
+          "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55"
+        },
+        "proposalBindingSha256": "sha256:ff0e4ea6e7188b9b52b5c8091f9b599ae3448da6c41f07646cc0dfa0fe4e7bdf",
+        "reviewedContext": {
+          "description": "Die lernende Person kann die Differentialgleichung eines idealisierten elektromagnetischen Schwingkreises mit einem geeigneten Ansatz l\u00f6sen und die L\u00f6sungen im Hinblick auf Periodendauer, Frequenz und Energieumlagerung deuten.",
+          "directRequires": [
+            "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+            "b2fb9a25-4d26-5cf2-a917-823909dcb6bd"
+          ],
+          "effectiveRequires": [
+            "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+            "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:b2fb9a25-4d26-5cf2-a917-823909dcb6bd"
+          ],
+          "prerequisiteOriginsRef": "sha256:6e5b7ad70b37c2a5f9698d4ef832cc800cc08df3e98d8ca4274bfa7cd1b27783",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "phase": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN",
+              "PK3_MATHEMATISIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_FELDER",
+              "LI_ENERGIE"
+            ],
+            "phase": "Q2"
+          },
+          "tags": [
+            "LK"
+          ],
+          "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55",
+          "sourceBindingFiles": [
+            "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+            "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json"
+          ]
+        },
+        "nominatedMathematicsRead": [
+          {
+            "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+            "title": "Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten",
+            "description": "Die lernende Person kann Funktionen der Form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ beziehungsweise $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation f\u00fcr die Ableitung erkl\u00e4ren.",
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "K2.3",
+                "K5.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L2"
+              ],
+              "phase": "E",
+              "area": "Analysis",
+              "topicCode": "CANONICAL.MATH.E.TRIGONOMETRIC.CHAIN_RULE_TRANSFORMED_SINE_COSINE"
+            }
+          }
+        ],
+        "positiveEvidenceReview": {
+          "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-astro-inference-current-20260920-v1.config.json",
+          "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-m7-astro-inference-current-20260920-v1.review.jsonl",
+          "profileFingerprint": "sha256:5378438bb0a8a9ac16b7d648bb82480a81639628cb6d66b597adf9cff141b545",
+          "reviewInputFingerprint": "sha256:30aa34d7c40503e04caed74c56923077f481c224abafd305aaaa7c51710cbbe2",
+          "goalFingerprint": "sha256:7e003c6a9d03116efd62706b78d18b3848b88ee1be7ff1429f8df4cf384ba032",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "expectationIdsRead": [
+            "ansatz-and-initial-state",
+            "solution-meaning"
+          ],
+          "caseIdsRead": [
+            "charged-capacitor",
+            "initial-current"
+          ],
+          "profileBodyReadLanguage": "de",
+          "suitabilityRationale": "Die aktuelle native P-Route ist ausdr\u00fccklich Sinus-Cosinus-Ansatz, inklusive wiederholter Ableitung, Anfangsbedingungen und Energiephase. Der spezialisierte Kettenregel-Atom passt zu dieser Route. Der kanonische Goal erlaubt aber einen geeigneten Ansatz generell; ein \u00e4quivalenter komplexer Weg darf nicht durch eine unbewiesene universelle Voraussetzung ausgeschlossen werden. Zudem braucht die Konstanten-/Anfangswertbestimmung ihre tats\u00e4chliche einfache Algebraannahme. review_required bleibt offen bis zur unabh\u00e4ngigen Routenentscheidung.",
+          "successorAction": "do-not-rebind-before-substantive-resolution"
+        }
+      }
+    }
+  ],
+  "unresolvedDistinctFourthBatchDissent": false,
+  "originalEffectiveIndexRecord": {
+    "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+    "subject": "physics",
+    "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz l\u00f6sen",
+    "selectedRecord": {
+      "role": "primary",
+      "decisionId": "canonical-physics-a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "dependentGoalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-003.proposal-candidate.json",
+      "authorSha256": "sha256:11959927b7b1524b746f7b3522010e1775423fceb92c0d8d6ca54f6b8f3f9f7b",
+      "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-003.independent-review.json",
+      "reviewSha256": "sha256:c70e433a6fa913db6504bc6cd88aa5b965523f126de2463da05356e76660dfd0",
+      "reviewRecordIndex": 64,
+      "independentScientificVerdict": "pending",
+      "requiresDecision": "review_required",
+      "proposedForeignPrerequisiteIds": [
+        "58d2f963-4fb9-550d-a832-f5ac60808900"
+      ],
+      "originalReviewInput": {
+        "semanticSha256": "sha256:937b10a43718af141f22056997220b31c85feb2f8053362d8ba0a3f2ae9a442c",
+        "prerequisitesSha256": "sha256:ae837070d2b45c9f9240adddc99b7d61a1ca46ca35496a9240c913c06337ebfd",
+        "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55"
+      },
+      "currentMatchesBaseline": true,
+      "currentMatchesProposed": false,
+      "technicallyCurrentApprovedBinding": false,
+      "technicalErrors": [],
+      "nativeQualityOrAdoptionApprovalCreated": false
+    },
+    "selectionBasis": "primary exact record",
+    "originalDecisionHistory": [
+      {
+        "role": "primary",
+        "decisionId": "canonical-physics-a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "dependentGoalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "authorPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-003.proposal-candidate.json",
+        "authorSha256": "sha256:11959927b7b1524b746f7b3522010e1775423fceb92c0d8d6ca54f6b8f3f9f7b",
+        "reviewPath": "curricula/quality/cross-subject-requires/2026-10-13/canonical-review-candidates/physics-batch-003.independent-review.json",
+        "reviewSha256": "sha256:c70e433a6fa913db6504bc6cd88aa5b965523f126de2463da05356e76660dfd0",
+        "reviewRecordIndex": 64,
+        "independentScientificVerdict": "pending",
+        "requiresDecision": "review_required",
+        "proposedForeignPrerequisiteIds": [
+          "58d2f963-4fb9-550d-a832-f5ac60808900"
+        ],
+        "originalReviewInput": {
+          "semanticSha256": "sha256:937b10a43718af141f22056997220b31c85feb2f8053362d8ba0a3f2ae9a442c",
+          "prerequisitesSha256": "sha256:ae837070d2b45c9f9240adddc99b7d61a1ca46ca35496a9240c913c06337ebfd",
+          "scopeSha256": "sha256:3ada3dbb6a677bd4dc71acf680d492609ff8f32668318ecaac5bd0bba6dbba55"
+        },
+        "currentMatchesBaseline": true,
+        "currentMatchesProposed": false,
+        "technicallyCurrentApprovedBinding": false,
+        "technicalErrors": [],
+        "nativeQualityOrAdoptionApprovalCreated": false
+      }
+    ],
+    "unresolvedDistinctFourthBatchDissent": false,
+    "fourthBatchDisagreementReconciledHere": false,
+    "effectiveCurrentScientificBindingAccepted": false,
+    "activeForeignRequires": [],
+    "firstTenAdoptionRecorded": false,
+    "firstTenAdoptionEvidence": null,
+    "otherNativeQualityOrAdoptionApprovedByThisIndex": false
+  },
+  "sourceBindingFilesToReadSubstantively": [
+    "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json"
+  ],
+  "preparedInputOnly": true,
+  "newScientificDecisionOrApprovalCreated": false,
+  "currentSourceApplicabilityOrWholePQualityApprovedHere": false
+}

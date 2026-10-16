@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "artifactRole": "Inactive whole mapping materialisation recipe; author proposal, not a reviewed mapping release",
+  "actualRole": "bounded source-remediation author",
+  "independentReview": false,
+  "active": false,
+  "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+  "candidateTargetGoalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+  "proposedMatchType": "partial",
+  "reconstructionRule": "Read exact originalFile; verify its SHA and all complete before rows; deep-copy in memory and replace only listed whole rows at JSON pointers. Never write originals. Preserve all unlisted bytes semantically; this JSON recipe is not itself an M3 mapping file.",
+  "wholeMappingProposalSparseRecipe": [
+    {
+      "originalFile": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_to_canonical_chemistry.json",
+        "sha256": "sha256:413445dd9c647a7a83d58aee33619145e6fdcd7d0197d4fb20c5dc2f67426f0e",
+        "bytes": 349881
+      },
+      "outputRole": "inactive proposed complete legacy mapping object only",
+      "replaceWholeRows": [
+        {
+          "jsonPointer": "/mappings/644",
+          "before": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "matchType": "exact",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+          },
+          "after": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "canonicalGoalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+            "matchType": "partial",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+          }
+        }
+      ]
+    },
+    {
+      "originalFile": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "sha256:31aadba54416add6093cff0eb9b86c59b7af2cada0966b1f35b95f01cd491f72",
+        "bytes": 567178
+      },
+      "outputRole": "inactive proposed complete M3 author object only",
+      "replaceWholeRows": [
+        {
+          "jsonPointer": "/mappings/644",
+          "before": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "matchType": "exact",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+          },
+          "after": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "canonicalGoalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+            "matchType": "partial",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1"
+          }
+        },
+        {
+          "jsonPointer": "/decisions/165",
+          "before": {
+            "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "topicCode": "BAUSTEIN-7-5",
+            "sourceSpan": "7.5 angewandte Verfahren, Source-Ziel 10",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "580b3616-f121-5d82-ac6b-fc24f145fbdc"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "after": {
+            "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-7-5-010-d11b3fc1",
+            "topicCode": "BAUSTEIN-7-5",
+            "sourceSpan": "7.5 angewandte Verfahren, Source-Ziel 10",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "a8ddb351-3501-5b6d-a908-c82a5d2f14d4"
+            ],
+            "matchType": "partial",
+            "rationale": "Autorenentwurf, noch nicht unabhängig geprüft. Ganze amtliche RP2022-Quellzelle auf gedruckter/physischer S.52: Kp und ideales Gasgesetz (Allgemeine Gasgleichung), im Rahmenbaustein 7 Gleichgewicht und Kinetik unter Vertiefungs- bzw. Verzahnungsmöglichkeiten. S.19 erklärt diese Liste als beispielhaft, weder abschließend noch ausschließlich; keine Pflicht- oder exklusive LK-Zuordnung aus dieser Zelle ableiten. Der bisherige Partner 580b3616-f121-5d82-ac6b-fc24f145fbdc prüft O2/CO2/H2-Nachweisreaktionen und trägt weder Kp noch die allgemeine Gasgleichung. a8ddb351-3501-5b6d-a908-c82a5d2f14d4 ist der beste bestehende fachliche Partner: Kp/Kc-Verknüpfung für ideale Gasgleichgewichte aus pi=ciRT bei festgelegten Standardzuständen, Umrechnung und Modellgrenzen. partial: Die knappe amtliche Themenzelle operationalisiert keine vollständige Gleichheit mit der zusätzlichen kanonischen Herleitungs-, Standardzustands- und Modellgrenzenleistung; eigenständige allgemeine pV=nRT-Anwendungen über die Gleichgewichtsverknüpfung hinaus sind dadurch ebenfalls nicht vollständig nachgewiesen. Kein exact-/Mastery-Transfer, keine RP-Pflichtziel-Zuordnung und keine vollständige Source-Abdeckung; optionale Platzierung bleibt gesondert offen. Legacy sourceRef S.25 und Passageklammer 7.5 werden als historische Angaben erhalten, fachlicher Primärlocator ist S.52."
+          }
+        },
+        {
+          "jsonPointer": "/status",
+          "before": {
+            "scope": "DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 325,
+            "mappedSourceGoals": 325,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 325,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+          },
+          "after": {
+            "scope": "DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 324,
+            "mappedSourceGoals": 325,
+            "needsViewPlacementReview": 1,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 325,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "INAKTIVER AUTORENENTWURF. 324 unveränderte historische Entscheidungen sind nur aus der Originaldatei geerbt, keine neuen Autor-Reviewurteile. Die eine Kp-Kante ist ein ungeprüfter partial-Vorschlag; ganze Source-Abdeckung, unabhängige Prüfung und optionale Platzierung bleiben offen. partial belegt hier keine vollständige Kompetenzgleichheit. Keine abgeschlossene M3-Prüfung für diesen Entwurf."
+          }
+        }
+      ]
+    }
+  ],
+  "contractReferences": [
+    {
+      "path": "scripts/compile_curriculum_release_model.py",
+      "lines": [
+        1886,
+        1950
+      ],
+      "purpose": "Native accepted exact/partial rows and authoritative decision/target join"
+    },
+    {
+      "path": "scripts/validate_curriculum_release_model.py",
+      "lines": [
+        2422,
+        2505
+      ],
+      "purpose": "Independent native structural join checks"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+      "jsonPointer": "/$defs/mappingEdge",
+      "purpose": "Only exact and partial; author metadata is outside M3 rows"
+    },
+    {
+      "path": "docs/dev/canonical-gymnasium-applicability-design.md",
+      "lines": [
+        370,
+        376
+      ],
+      "purpose": "partial can affect visibility and cannot imply exact mastery"
+    }
+  ],
+  "requiredBeforeAnyActivation": [
+    "Independent whole source-cell scientific review of this exact partial proposal",
+    "Resolve optional placement: do not compile this authored optional source into an RP compulsory target by default",
+    "Rebind only affected source/D/page evidence after reviewed acceptance"
+  ],
+  "wholeOfficialSourceCoverageGranted": false,
+  "normalGrant": false,
+  "humanApproval": false,
+  "M7Granted": false
+}

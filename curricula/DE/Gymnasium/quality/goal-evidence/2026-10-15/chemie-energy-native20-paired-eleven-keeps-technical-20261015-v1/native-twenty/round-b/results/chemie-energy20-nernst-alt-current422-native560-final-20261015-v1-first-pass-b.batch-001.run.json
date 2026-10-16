@@ -1,0 +1,101 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-energy20-final-v3-genuine-independent-b-20261015-run-001",
+  "campaignId": "chemie-energy20-nernst-alt-current422-native560-final-20261015-v1-b",
+  "roundId": "chemie-energy20-nernst-alt-current422-native560-final-20261015-v1-first-pass-b",
+  "batchId": "chemie-energy20-nernst-alt-current422-native560-final-20261015-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:6a201fb93e4df0a2050b6f726b2cb1dfa71f834f6918a415f84cca06ac6e554c",
+  "bundleFingerprint": "sha256:8a797014db8e9093cbf50fb71349fca4876788198dada8180e358493db9ae5a6",
+  "bookDigest": "sha256:1c0fab30a3e9e6fdaccd11d92e103c995630e5689fffb1c843b59d647aba061a",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex; serving snapshot not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-positive-understanding-evidence-v2-independent-b",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:65fb375aadf3cca2328e97dea7fb3fc2c4785060378c0f2a8dcecab10d3c5c9a",
+  "independenceGroupId": "chemie-energy20-nernst-alt-current422-native560-final-20261015-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "ecce0306-13dc-5563-a097-afe69805a8d6",
+    "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+    "e64a79df-7f21-5651-9b5d-e7d17580569e",
+    "a76ab487-4663-5005-8454-cb3196f3773b",
+    "7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3",
+    "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+    "1051c091-a044-5a09-8946-60a4b5e5d185",
+    "ceda84ff-f48a-5e16-84fd-ad681de7e460",
+    "4d7554d4-3f89-5c64-8a67-4b73b55b4442",
+    "0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+    "a78aacf9-92ea-5627-8776-a595111f754c",
+    "a3386a86-f1ee-55b8-bcd5-03bfb1f9d987",
+    "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+    "e20d205f-03a4-5f96-b456-9b20460605a2",
+    "7dc80ee2-64e3-50c1-8aaa-0fef0ed0919d",
+    "1873eb42-1c85-548e-918c-4f4f73ed784f",
+    "551d81a7-2308-540f-8323-df35c6871d62",
+    "c21d430b-424d-5b13-adf6-999f2490d2dc",
+    "0773a104-aaeb-5e96-a615-2a2bec3eb096",
+    "ebfa2c18-0599-5282-bf7a-80c14d86331e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c4d37d0cc9db5b0dc15e59e8aabb5750c8abbcedf288afe55bc694954811b286"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:197c717769f986a21892638763124eecbec9ca583a9536e6cd764216ef1e9306"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:3aaa83e372c9ceaf3719b80547ac3a8cb040d95f0992d6b99aa0843196d46e1c"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:429c9120768dfc999daf14e1d2fc8f3f253bb087818d778b3928c991f0bd4de6"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:50a5e5634d2e7cddfb35f1b6801dfbf9cef1268dc48d816d609857c0a994995b"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:19a6b65ff2e9a5d31dde17da344b66c562bf969232d976df089dbed5c07d17df"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:4e7919d029192b510129c4839075133c96c74326bfecfb520174b96c583e6455"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:6bbb084a3319ee716742ccb9cf38fa68f0dd2b830fdd5a0cd333c80c7baf8bb2"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:6a201fb93e4df0a2050b6f726b2cb1dfa71f834f6918a415f84cca06ac6e554c"
+    }
+  ],
+  "startedAt": "2026-10-15T12:02:10Z",
+  "completedAt": "2026-10-15T12:07:35.285Z",
+  "status": "completed",
+  "outputDigest": "sha256:8945351f4c1b5279036baaf3858b9a28cb6a6901ead7159bcbe2e46f0b48d397",
+  "toolchainVersion": "codex-independent-manual-native-d-review-v1"
+}

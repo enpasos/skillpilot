@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "runId": "91d2b453-1b16-4729-a5bb-d6d60a152ec3",
+  "recordedAtUTC": "2026-10-15T17:51:52.838441+00:00",
+  "findings": [
+    {
+      "findingId": "BCP-PA-001",
+      "severity": "blocking-positive-design",
+      "goalIds": [
+        "57d2c98d-30b8-5123-b823-e56a4f22b191"
+      ],
+      "caseIds": [
+        "bcp-mixture-composition-a"
+      ],
+      "languages": [
+        "de",
+        "en"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/0/materialsAndSuppliedData/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/0/expectedReasoningAndSolution/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/candidate/fifteen-profiles.raw-E0G0.stock-bindings.author.jsonl line1 #/profile/applicationCaseBriefs/0/expectedPerformance{De,En}"
+      ],
+      "observed": "Input masses iron1.20g,sand1.50g,salt2.20g in5.00g; both solutions state iron24%,salt30%,sand44%.",
+      "independentCheck": "Correct recovered shares are iron24%,sand30%,salt44%; total98% recovered and2% unassigned.",
+      "requiredSeparateAuthorAction": "Correct the constituent-to-percentage assignments in both complete case solution languages and both profile brief expected-performance languages. Preserve raw input and historical first report. Do not infer where the missing mass belongs.",
+      "reviewerChangedAuthorMaterial": false
+    },
+    {
+      "findingId": "BCP-PA-002",
+      "severity": "blocking-positive-design",
+      "goalIds": [
+        "57d2c98d-30b8-5123-b823-e56a4f22b191"
+      ],
+      "caseIds": [
+        "bcp-mixture-composition-b"
+      ],
+      "languages": [
+        "de",
+        "en"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/1/criterionToObservableRubric/2/criterionAndObservable/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/candidate/fifteen-profiles.raw-E0G0.stock-bindings.author.jsonl line1 #/profile/expectations/2/observablePerformance{De,En}"
+      ],
+      "observed": "Case-b supplies a fresh10.00g Fe/sand/NaCl/sucrose mixture and explicitly no measured fractions; its copied e3 rubric still demands24/30/44%,98% recovery and2% difference from case-a.",
+      "independentCheck": "No numerical b fraction/recovery can be calculated before its own masses are obtained. The known additional sucrose also prevents assigning the entire soluble residue to NaCl.",
+      "requiredSeparateAuthorAction": "Make b-specific e3 scoring depend on its actual original masses and conditional separated/combined fractions. If the profile e3 intentionally refers only to a teaching calculation, label its applicability and map b separately. Do not score b from the supplied case-a numbers.",
+      "reviewerChangedAuthorMaterial": false
+    },
+    {
+      "findingId": "BCP-PA-003",
+      "severity": "blocking-positive-design",
+      "goalIds": [
+        "7b80efe6-b77d-5ace-8886-973ba38e6f9e"
+      ],
+      "caseIds": [
+        "bcp-unknown-pure-substance-identity-b"
+      ],
+      "languages": [
+        "de",
+        "en"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/3/materialsAndSuppliedData/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/3/criterionToObservableRubric/0/criterionAndObservable/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/3/criterionToObservableRubric/1/criterionAndObservable/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/3/criterionToObservableRubric/2/criterionAndObservable/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/candidate/fifteen-profiles.raw-E0G0.stock-bindings.author.jsonl line2 #/profile/expectations/{0,1,2}/observablePerformance{De,En}"
+      ],
+      "observed": "b uses pure NaCl/KCl,0.100g/20.0mL,element emission and actual spectra. e1 still names NaCl/sucrose/sand; e2 demands0.117g/20.0mL and conductivity-probe handling; e3 still scores U/V and9.95mS/cm, which b does not supply.",
+      "independentCheck": "The a conductivity data are internally valid. The b Na/K lines and candidate inference are also scientifically plausible. The defect is criterion-to-case binding, not a reason to destroy either whole source case.",
+      "requiredSeparateAuthorAction": "Provide b-specific observable criteria for a justified Na/K decision path, actual0.100g preparation, matched reference/blank spectra, contamination checks and bounded identity. Alternatively explicitly restrict a-specific criteria to a and provide an unambiguous b mapping for the required new demonstration. Preserve all whole case IDs/provenance.",
+      "reviewerChangedAuthorMaterial": false
+    },
+    {
+      "findingId": "BCP-PA-004",
+      "severity": "blocking-positive-design",
+      "goalIds": [
+        "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49"
+      ],
+      "caseIds": [
+        "bcp-organism-requirements-investigation-b"
+      ],
+      "languages": [
+        "de",
+        "en"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/9/materialsAndSuppliedData/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/9/actualTask/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/9/criterionToObservableRubric/3/criterionAndObservable/{de,en}",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/candidate/fifteen-profiles.raw-E0G0.stock-bindings.author.jsonl line5 #/profile/expectations/3 and #/profile/applicationCaseBriefs/1"
+      ],
+      "observed": "For water,0.5%/1.0%w/v NaCl with5.0mL initially, materials instruct additions using the allocated solution. As replacement for evaporated water this adds more salt and does not preserve the nominal factor level.",
+      "independentCheck": "5mL0.5% contains0.025gNaCl; after1mL water evaporation plus1mL0.5%solution,0.030g remains in5mL=0.6%. The analogous1.0% treatment becomes1.2%.",
+      "requiredSeparateAuthorAction": "Before execution specify a consistent water/volume/salt control. Replace evaporation by water to a documented start mass/volume, distinguish liquid removed by sampling from evaporative loss, and log actual additions/deviations. A deliberately variable salt-dosing regime is possible only if its different question and scope are explicit. Align case task/expected criterion and profile as needed; do not invent results.",
+      "reviewerChangedAuthorMaterial": false
+    },
+    {
+      "findingId": "BCP-PA-005",
+      "severity": "separate-sequencing-context-decision-open",
+      "goalIds": [
+        "4d16601e-fa57-5bcb-a5b6-f308d5b8036a"
+      ],
+      "caseIds": [
+        "bcp-chemical-preparation-a",
+        "bcp-chemical-preparation-b"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/candidate/canonical570.current426.bcp-eleven-six-boundaries.author.json goal4d16601e-fa57-5bcb-a5b6-f308d5b8036a #/requires"
+      ],
+      "observed": "All current ancestor requires are empty; the recursive direct-prerequisite/cluster-descendant path provides laboratory safety and documentation but no reaction-equation/amount-of-substance/molar-mass foundation. The new e1 nevertheless expects independent reaction/limiting-reagent/theoretical-mass reasoning before practical preparation.",
+      "independentCheck": "Existing equation goal11bea4c6-7b8a-47e0-8293-2eb1ce34cf66 and mole/molar-mass goals1dc15fa2-fca4-56b0-b5c1-4d215613dde0 and8a2ad724-df5e-5986-8de9-560ba43caac2 are absent from the full computed prerequisite closure.",
+      "requiredSeparateAuthorAction": "Make a scoped sequencing decision: bind suitable genuinely necessary atomic foundations or explain where those foundations are actually taught within this goal before their independent assessment. Do not restore a broad all-lab-methods cluster prerequisite. This note does not retract the correct intrinsic chemical design or decide D/source/course gates.",
+      "reviewerChangedAuthorMaterial": false,
+      "intrinsicPDesignBlockedByThisNoteAlone": false
+    },
+    {
+      "findingId": "BCP-PA-006",
+      "severity": "context-boundary-do-not-miscount",
+      "goalIds": [
+        "9d6e1966-b10c-5a70-b215-df7007c95b07",
+        "0f632595-5875-5a95-83d8-7de3180bdaa6"
+      ],
+      "caseIds": [
+        "bcp-organism-identification-a",
+        "bcp-organism-identification-b",
+        "bcp-community-site-field-investigation-a",
+        "bcp-community-site-field-investigation-b"
+      ],
+      "paths": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/{14,15,16,17}/freshIndependentTransfer",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-eleven-scope-six-boundaries-whole-author-20261015-v1/materials/twenty-complete-child-cases.raw-E0G0.author.json#/cases/{14,15,16,17}/freshTransferExpectedReasoning"
+      ],
+      "observed": "Whole retained project material still contains factorial-irrigation/nutrient manipulation transfer questions. Those questions assess controlled ecological effect design, not organism identification or observational community/site characterisation.",
+      "independentCheck": "The actual child tasks and profile case briefs do supply proper fresh second-habitat identification or field sampling. Explicit childAssessmentBoundary says other subprojects are context and receive no competence credit. Hence these inherited extra questions are not used as the required child transfer in this review.",
+      "requiredSeparateAuthorAction": "No forced rewrite of intact whole historical materials. Keep contextual extra questions explicitly separate from counted child assessment; optional field annotation may make this clearer. Do not treat these copied questions as extra positive evidence or as a reason to retarget a parent vote.",
+      "reviewerChangedAuthorMaterial": false,
+      "intrinsicPDesignBlocked": false
+    }
+  ],
+  "blockingGoalIds": [
+    "57d2c98d-30b8-5123-b823-e56a4f22b191",
+    "7b80efe6-b77d-5ace-8886-973ba38e6f9e",
+    "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49"
+  ],
+  "blockingFindingCount": 4,
+  "blockingGoalCount": 3,
+  "separateContextFindings": 2,
+  "separateAuthorRemediationRequired": true,
+  "stockValidationCannotOverrideTheseFindings": true,
+  "normalBindingsDeferred": true
+}

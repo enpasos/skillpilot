@@ -1,0 +1,9 @@
+# Vollständige Eingaben für zwei unabhängige Erstprüfungen
+
+Scope ausschließlich62bdb5b1-4f67-59d4-bf5c-da80ee03eeb2 unde7c3d20e-4b13-560b-b8ee-c5abca8cc624. Die Zielkörper und der ganze aktuelle554/422-Kontext bleiben unverändert. Die native PDF hat zwei Frontseiten und genau zwei Zielseiten. PDF/HTML/BookModel/ReviewInput und zugewiesene leere Runde sind im neutralen Selektor gebunden.
+
+Für die wissenschaftliche Erstprüfung vollständig lesen: `materials/four-whole-DE-EN-cases.exact-source-objects.json`, beide ganzen Rohprofilzeilen in `candidate/two-raw-profiles.E0-G0.exact-original-lines.jsonl`, den vollständigen e7-Originalcontainer, das leere eigene Präparations-/Reinheitsprotokoll, sämtliche wörtlichen amtlichen Quellkontexte einschließlich kompletter BcP-Quelle und kompletter Source-Extraction sowie die unveränderten Primärmethoden-/Adaptationshinweise. Die vier Fälle enthalten Material/Daten, Protokoll, tatsächliche Aufgabe, erwartete Überlegung/Lösung, vollständige zweisprachige Kriterien und unabhängigen Transfer. Kein Rubrik-Auszug ersetzt den ganzen Fall.
+
+Die beiden vollständigen E0/G0-Rohprofile sind zusätzlich unverändert im normalen nativen ReviewInput enthalten. Es sind Autorenkandidaten, keine positive P-Freigabe. Praktische Operatoren bleiben tatsächliche künftige Ausführung mit leeren Beobachtungsfeldern, Sicherheit/Kontrollen/Unsicherheit; keine früheren Lernerversuche oder Human-Trials werden behauptet oder als Maschinen-M7-Voraussetzung erfunden.
+
+RundeA undB bleiben unabhängig und ohne Ergebnisrecords. Die technische Wiederverwendbarkeitsprüfung vorhandener A/M/V-Zeilen ist keine neue wissenschaftliche Prüfung und kein vorauszunehmendes D/P-Urteil. Für den blinden Erstpass keine andere Runde oder historische Gateurteile lesen. Root teilt die zugewiesene Runde und dieselben vollständigen wissenschaftlichen Inputs zu. Alle Quellen-/Kurs-/Globalholds bleiben getrennt offen.

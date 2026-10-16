@@ -1,0 +1,176 @@
+{
+  "method": "Reviewer independently reconstructed stoichiometric and equilibrium balances. All inputs are synthetic teaching models.",
+  "EDTA": {
+    "C1_corrected_mL": 19.75,
+    "C1_total_mmol_L": 3.95,
+    "C1_reference_recovery_percent": 100.13333333333334,
+    "C2_original_mmol_L": 7.52,
+    "C2_spike_recovery_percent": 100.4
+  },
+  "photometry": {
+    "C1_original_mg_L": 25.5,
+    "C1_control_relative_percent": 0.6666666666666599,
+    "C2_original_mg_L": 5.0,
+    "C2_control_relative_percent": 9.999999999999986
+  },
+  "polyprotic": {
+    "phosphate_initial_pH": 7.501029995663981,
+    "after_5mmol_HCl_pH": 7.2,
+    "glycine_first_half_h_mol_L": 0.003596753586885024,
+    "glycine_first_half_pH": 2.4440893146201432,
+    "glycine_h_over_cstar": 0.10790260760655072,
+    "glycine_first_equivalence_approx_pH": 5.975
+  },
+  "T05_full_curve_independent_charge_balance": [
+    {
+      "curve": "X",
+      "V_mL": 0,
+      "chargeBalancePH": 0.9999999999995657
+    },
+    {
+      "curve": "X",
+      "V_mL": 6.25,
+      "chargeBalancePH": 1.22184874961515
+    },
+    {
+      "curve": "X",
+      "V_mL": 12.5,
+      "chargeBalancePH": 1.4771212547157537
+    },
+    {
+      "curve": "X",
+      "V_mL": 18.75,
+      "chargeBalancePH": 1.8450980399929762
+    },
+    {
+      "curve": "X",
+      "V_mL": 24.5,
+      "chargeBalancePH": 2.9956351903410328
+    },
+    {
+      "curve": "X",
+      "V_mL": 24.9,
+      "chargeBalancePH": 3.69810043748367
+    },
+    {
+      "curve": "X",
+      "V_mL": 24.98,
+      "chargeBalancePH": 4.39776354398237
+    },
+    {
+      "curve": "X",
+      "V_mL": 25,
+      "chargeBalancePH": 7.000000000027557
+    },
+    {
+      "curve": "X",
+      "V_mL": 25.02,
+      "chargeBalancePH": 9.601889024756428
+    },
+    {
+      "curve": "X",
+      "V_mL": 25.1,
+      "chargeBalancePH": 10.300162383141064
+    },
+    {
+      "curve": "X",
+      "V_mL": 25.5,
+      "chargeBalancePH": 10.995678630647596
+    },
+    {
+      "curve": "X",
+      "V_mL": 30,
+      "chargeBalancePH": 11.958607314894326
+    },
+    {
+      "curve": "Y",
+      "V_mL": 0,
+      "chargeBalancePH": 2.882862536135044
+    },
+    {
+      "curve": "Y",
+      "V_mL": 6.25,
+      "chargeBalancePH": 4.2843816599578695
+    },
+    {
+      "curve": "Y",
+      "V_mL": 12.5,
+      "chargeBalancePH": 4.760452344012249
+    },
+    {
+      "curve": "Y",
+      "V_mL": 18.75,
+      "chargeBalancePH": 5.237355890519654
+    },
+    {
+      "curve": "Y",
+      "V_mL": 24.5,
+      "chargeBalancePH": 6.450339272364886
+    },
+    {
+      "curve": "Y",
+      "V_mL": 24.9,
+      "chargeBalancePH": 7.156039637479109
+    },
+    {
+      "curve": "Y",
+      "V_mL": 24.98,
+      "chargeBalancePH": 7.849106739858247
+    },
+    {
+      "curve": "Y",
+      "V_mL": 25,
+      "chargeBalancePH": 8.729537177573217
+    },
+    {
+      "curve": "Y",
+      "V_mL": 25.02,
+      "chargeBalancePH": 9.609498829425668
+    },
+    {
+      "curve": "Y",
+      "V_mL": 25.1,
+      "chargeBalancePH": 10.300475056909349
+    },
+    {
+      "curve": "Y",
+      "V_mL": 25.5,
+      "chargeBalancePH": 10.995691250564459
+    },
+    {
+      "curve": "Y",
+      "V_mL": 30,
+      "chargeBalancePH": 11.958607452344964
+    }
+  ],
+  "HH": {
+    "acetate_before": 5.362059991327962,
+    "acetate_after": 5.127976785294594,
+    "ammonium_before": 8.948970004336019,
+    "ammonium_after": 9.192008053022313
+  },
+  "qualitative_checks": [
+    "Acid/base uptake reactions conserve charge and atoms.",
+    "T07 symmetric pair after acid6/4; after base4/6; base-rich pair after acid5/5. Further phosphate/water equilibria remain beyond the named pair reserve.",
+    "T08 pKa9.25 implies pKb4.75 at pKw14; BH+ acid reaction causes acidic equivalence.",
+    "T09 CO2 removal and NH3 resupply have different boundaries; neither implies fixed pH or infinite reserve."
+  ],
+  "T10_C1": {
+    "initial_acid_mmol": 19.343158992342847,
+    "initial_base_mmol": 30.656841007657157,
+    "beta_mol_L_pH": 0.05461733220420624,
+    "betaV_mol_pH": 0.02730866610210312,
+    "pH_after_load": 7.222826247327546,
+    "finite_limit_load_mmol": 2.791259319542532,
+    "min_C_for_5mmol": 0.1791306155251625
+  },
+  "T10_C2": {
+    "initial_acid_mmol": 18.262833247384155,
+    "initial_base_mmol": 31.73716675261585,
+    "beta_mol_L_pH": 0.10676821526395874,
+    "betaV_mol_pH": 0.026692053815989686,
+    "pH_after_load": 5.158914313887215,
+    "finite_limit_load_mmol": 4.944518368074531,
+    "min_C_for_5mmol": null
+  }
+}

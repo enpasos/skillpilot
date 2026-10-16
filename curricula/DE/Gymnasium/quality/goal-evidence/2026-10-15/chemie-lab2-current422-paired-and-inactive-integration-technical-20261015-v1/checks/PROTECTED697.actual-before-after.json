@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "beforeSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-lab2-current422-paired-and-inactive-integration-technical-20261015-v1/checks/PROTECTED.active-inputs.before.json",
+    "sha256": "sha256:3ca2dcff7c6a7ceee401496d03fc421125aaa1389021d8283ff090f360de0640",
+    "bytes": 206844
+  },
+  "checkedFiles": 697,
+  "changedFiles": [],
+  "protectedMathPhysicsBioMaturity": {
+    "Mathematik": "M7",
+    "Physik": "M7",
+    "Biologie": "M7"
+  },
+  "activeChemistryMaturity": "M6",
+  "activeChemistryStrict": 231,
+  "activeChemistryDenominator": 402,
+  "wholeActiveCQR303Rule": {
+    "id": "CQR-303",
+    "status": "warn",
+    "summary": "Deep curriculum QA is incomplete: 231/402 current curricularAtomic goals strictly complete.",
+    "metrics": {
+      "expectedGoals": 402,
+      "remaining": 171,
+      "strictComplete": 231,
+      "currentDescriptionResolutions": 232,
+      "currentPositiveEvidenceProfiles": 231,
+      "currentSemanticAtomicityDecisions": 248,
+      "currentMemoryReviewDecisions": 402,
+      "currentVisualizationQaRecords": 386,
+      "deferredVisualizations": 15,
+      "requiredChecksPassed": 6,
+      "requiredChecksTotal": 6,
+      "blockingIssues": 0
+    },
+    "details": [
+      "15 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+    ]
+  },
+  "interpretation": "Exact active input preservation; no fresh whole-subject review or active adoption."
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "name": "P.alias-normal",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/acid10-current419-integration-host/app/scripts/positiveGoalEvidenceReview.ts",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid10-current419-paired-native-inactive-integration-root-20261015-v1/config/P10.original-B.normal-address.inactive.config.json",
+      "--mode=check"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.551
+  },
+  {
+    "name": "A.alias-normal",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/acid10-current419-integration-host/app/scripts/semanticAtomicityReview.ts",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid10-current419-paired-native-inactive-integration-root-20261015-v1/config/A10.original-B.normal-address.inactive.config.json",
+      "--mode=check"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.292
+  },
+  {
+    "name": "D.native-check",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/acid10-current419-integration-host/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "check",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid10-current419-paired-native-inactive-integration-root-20261015-v1/config/native10.exact-bundle-transport.config.json"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.931
+  },
+  {
+    "name": "D.dual-summary",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261015/acid10-current419-integration-host/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "summarize",
+      "--config",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid10-current419-paired-native-inactive-integration-root-20261015-v1/config/native10.exact-bundle-transport.config.json",
+      "--write"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.801
+  }
+]

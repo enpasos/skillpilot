@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "radian-requires-three-guard-current8d30-20261016-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-16/radian-three-guard-current-portable-v1/batch.config.json",
+  "configDigest": "sha256:5206f7a63c520bc16ce0db1fa7256ae7afca077a65dfbf8694ab92c0595770a4",
+  "goalIds": [
+    "8d30d241-0247-48ac-83d3-4e0de61584d3"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-16/radian-three-guard-current-portable-v1/private-full807.goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:6cd2e6a98ffec05d7e451b1e14d6b7f6db36462f62b76e70b41506a03df3b152"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e930869539758119466b8d5a4c8d28d8d86623fb010960e450ef1f90c7f6862d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:f55d2b87699d9c4829a204d683eeda03dff4d14e3d5f98692ea38c89d9340865",
+    "reviewInputFingerprint": "sha256:6116bfca15c40316402691abcd34aa70815d6509d0ef81f41d345195e049f109",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "radian-requires-three-guard-current8d30-20261016-v1-a",
+        "campaignDigest": "sha256:7c1eedbf81442a0a412cc9720e9b86d595f51f472b898fe58ffa6f2a26e5d928",
+        "roundId": "radian-requires-three-guard-current8d30-20261016-v1-first-pass-a",
+        "independenceGroupId": "radian-requires-three-guard-current8d30-20261016-v1-independent-a",
+        "batchId": "radian-requires-three-guard-current8d30-20261016-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:9cfe5ecad6452fa412c1529caf3d9566078e44fa60a147bc953b39be48b35001"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "radian-requires-three-guard-current8d30-20261016-v1-b",
+        "campaignDigest": "sha256:a30aa52e539c889f23f9b81ece00ad464fd73790f74e2a36f965c22fbb0dcbb5",
+        "roundId": "radian-requires-three-guard-current8d30-20261016-v1-first-pass-b",
+        "independenceGroupId": "radian-requires-three-guard-current8d30-20261016-v1-independent-b",
+        "batchId": "radian-requires-three-guard-current8d30-20261016-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:83d2a8c1e823a5774b520b8478f7e8699f48c0ef0a5075512ae8a761db3515a0"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,17 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { join } from 'node:path';
+const root='/home/enpasos/projects/skillpilot';const host=join(root,'tmp/chemie-resume-20261014/acid7-integration-v4-host');
+const O='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-current419-paired-D6-retained059-P7A7M2V1-inactive-integration-technical-20261014-v4';
+const { buildPositiveGoalEvidenceCandidateRecords }=await import(join(host,'app/scripts/materializePositiveGoalEvidenceCandidates.ts'));
+const cfg=JSON.parse(await readFile(join(root,O,'config/P7.current419.normal-E1G1-ai-candidate.inactive.config.json'),'utf8'));
+const candidateSet=JSON.parse(await readFile(join(root,O,'P/P7.original-raw-bodies.actual-reviewed-candidate-set.json'),'utf8'));
+const records=await buildPositiveGoalEvidenceCandidateRecords({config:cfg,candidateSet});
+const runId='chemie-acid7-P7-informed-technical-synthesis-20261014-v4';for(const r of records)r.reviewRunIds=[runId];
+const bytes=records.map((r:any)=>JSON.stringify(r)).join('\n')+'\n';await writeFile(join(root,cfg.reviewPath),bytes);
+const sha=(b:any)=>`sha256:${createHash('sha256').update(b).digest('hex')}`;
+const packet=await readFile(join(root,O,'P/P7.informed-synthesis.actual-input-packet.json'));const params=await readFile(join(root,O,'P/P7.actual-informed-technical-synthesis.generation-parameters.json'));const paramDoc=JSON.parse(params.toString());
+const prompt=await readFile(join(root,O,'P/P7.actual-informed-technical-synthesis.prompt.md'));const criteria=await readFile(join(root,cfg.reviewCriteriaPath));
+const model=JSON.parse(await readFile(join(root,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid7-two-description-one-image-current419-native-successor-technical-20261014-v3/candidate/seven-current.stock-comparison-only.book-model.json'),'utf8'));
+const run={$schema:'https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json',schemaVersion:1,runId,bundleFingerprint:sha(packet),bookDigest:model.digest,provider:'OpenAI',model:'GPT-6 inherited Codex; exact backend identifier unexposed',role:'synthesizer',promptFamilyId:'acid7-informed-actual-design-science-normal-format-v4',promptFingerprint:sha(prompt),criteriaFingerprint:sha(criteria),generationParametersFingerprint:sha(params),independenceGroupId:'acid7-informed-technical-synthesis-no-independent-vote',blindToOtherRuns:false,goalIds:records.map((r:any)=>r.goalId),inputArtifacts:[{role:'review_prompt',digest:sha(prompt)},{role:'review_criteria',digest:sha(criteria)},{role:'review_input_json',digest:sha(packet)}],startedAt:paramDoc.actualStartedAtUTC,completedAt:new Date().toISOString(),status:'completed',outputDigest:sha(bytes),toolchainVersion:'skillpilot-stock-positive-understanding-evidence-v2'};
+await writeFile(join(root,O,'P/P7.actual-informed-technical-synthesis.run.json'),JSON.stringify(run,null,2)+'\n');console.log(JSON.stringify({normalRecordCount:records.length,role:run.role,blindToOtherRuns:false,outputDigest:run.outputDigest,statuses:[...new Set(records.map((r:any)=>r.status))]}));

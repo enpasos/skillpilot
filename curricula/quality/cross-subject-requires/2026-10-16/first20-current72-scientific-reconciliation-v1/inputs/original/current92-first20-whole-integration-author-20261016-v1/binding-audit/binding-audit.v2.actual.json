@@ -1,0 +1,1476 @@
+{
+  "supersedesAuditIndexingErrorOnly": {
+    "path": "binding-audit.actual.json",
+    "initialRawFailurePreserved": true,
+    "cause": "neutral rawRecordLine uses zero-based indexing; audit initially compared one-based physical line numbers",
+    "wholePObjectsUnchanged": true
+  },
+  "schemaVersion": 1,
+  "technicalOnly": true,
+  "scientificOpinion": null,
+  "createdUTC": "2026-10-15T23:02:16.095883+00:00",
+  "result": "pass",
+  "checks": [
+    {
+      "check": "NEUTRAL-FIRST20-WHOLE-PHYSICS-CONTEXTS.actual.json pinned hash",
+      "pass": true
+    },
+    {
+      "check": "NEUTRAL-COMPLETE-MATH-PHYSICS-LOOKUP.actual.json pinned hash",
+      "pass": true
+    },
+    {
+      "check": "all neutral READ-BINDINGS sources current",
+      "pass": true,
+      "detail": {
+        "count": 606
+      }
+    },
+    {
+      "check": "pinned curricula/quality/cross-subject-requires/math-physics.inventory.json",
+      "pass": true,
+      "detail": {
+        "path": "curricula/quality/cross-subject-requires/math-physics.inventory.json",
+        "bytes": 6928479,
+        "sha256": "sha256:f4ba04ba28493ecd4ebd9bee853ffe72b06c956853339ee5f73db71f05f99c02"
+      }
+    },
+    {
+      "check": "pinned .git/index",
+      "pass": true,
+      "detail": {
+        "path": ".git/index",
+        "bytes": 44369771,
+        "sha256": "sha256:6590754da8fa7a96703a630fd004fcb28978e5e1e18af447dcf24a7b77c6d9e8"
+      }
+    },
+    {
+      "check": "authorized addition curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+      "pass": true,
+      "detail": {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+        "bytes": 33918,
+        "sha256": "sha256:143d376035ad9874f606d51146826c0f81e06b54a3f66984f13eb5eb275a9baf"
+      }
+    },
+    {
+      "check": "authorized addition curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/effective-goal-index.v23.selected.actual.json",
+      "pass": true,
+      "detail": {
+        "path": "curricula/quality/cross-subject-requires/2026-10-15/current72-scientific-reconciliation-v1/effective-goal-index.v23.selected.actual.json",
+        "bytes": 15574407,
+        "sha256": "sha256:c06f1561f75d772a2dfed21078f66e7a7ee965dcd84739ae8b67a2dd221b240d"
+      }
+    },
+    {
+      "check": "mathematik unique registered current P count",
+      "pass": true,
+      "detail": {
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalCount": 1254,
+        "PconfigCount": 187,
+        "PscopeRows": 807,
+        "PscopeUnique": 807,
+        "PrawRecords": 807,
+        "PrawUnique": 807,
+        "duplicateScopeGoalIds": [],
+        "duplicateRawGoalIds": []
+      }
+    },
+    {
+      "check": "physik unique registered current P count",
+      "pass": true,
+      "detail": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalCount": 764,
+        "PconfigCount": 114,
+        "PscopeRows": 478,
+        "PscopeUnique": 478,
+        "PrawRecords": 478,
+        "PrawUnique": 478,
+        "duplicateScopeGoalIds": [],
+        "duplicateRawGoalIds": []
+      }
+    },
+    {
+      "check": "all registered config scopes resolve exactly one raw P",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "check": "complete neutral lookup matches all current whole Goal Kind P definitions",
+      "pass": true,
+      "detail": {
+        "lookupEntries": 2018,
+        "canonicalEntries": 2018,
+        "mismatches": []
+      }
+    },
+    {
+      "check": "20 unique stable ordered neutral contexts",
+      "pass": true
+    },
+    {
+      "check": "20 exact whole Goal Kind P plus unique owners",
+      "pass": true
+    },
+    {
+      "check": "native command completed",
+      "pass": true,
+      "detail": {
+        "command": [
+          "/usr/bin/node",
+          "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+          "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/native-binding-check.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit",
+        "runner": "../run-root-readonly.py",
+        "startedUTC": "2026-10-15T22:59:39.704388+00:00",
+        "finishedUTC": "2026-10-15T22:59:50.520962+00:00",
+        "exitCode": 0,
+        "TSX_DISABLE_CACHE": "1"
+      }
+    },
+    {
+      "check": "native current inventory exact",
+      "pass": true
+    },
+    {
+      "check": "native 20 exact whole Goal and Kind",
+      "pass": true
+    },
+    {
+      "check": "native owning P API errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "check": "native owning P API exact 20 whole records",
+      "pass": true
+    },
+    {
+      "check": "20 native prerequisite closures agree with inventory immediate edges",
+      "pass": true
+    },
+    {
+      "check": "closure inherited-origin contains paths present",
+      "pass": true
+    },
+    {
+      "check": "closure no relevant graph diagnostic",
+      "pass": true
+    }
+  ],
+  "failureCount": 0,
+  "failuresRaw": [],
+  "counts": {
+    "neutralFirstContexts": 20,
+    "neutralLookupEntries": 2018,
+    "neutralBoundSourceFiles": 606,
+    "neutralSourceByteHashMatches": 606,
+    "currentPsubjects": {
+      "mathematik": {
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalCount": 1254,
+        "PconfigCount": 187,
+        "PscopeRows": 807,
+        "PscopeUnique": 807,
+        "PrawRecords": 807,
+        "PrawUnique": 807,
+        "duplicateScopeGoalIds": [],
+        "duplicateRawGoalIds": []
+      },
+      "physik": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalCount": 764,
+        "PconfigCount": 114,
+        "PscopeRows": 478,
+        "PscopeUnique": 478,
+        "PrawRecords": 478,
+        "PrawUnique": 478,
+        "duplicateScopeGoalIds": [],
+        "duplicateRawGoalIds": []
+      }
+    },
+    "uniqueFirst20PconfigOwners": 18,
+    "nativePconfigApiCalls": 18,
+    "dependencyFiles": 9057,
+    "prerequisiteClosures": 20,
+    "nomineesPerClosure": 18
+  },
+  "first20Bindings": [
+    {
+      "goalId": "02876b2e-7cf0-5de6-ad04-d4ee95b7f80e",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 8,
+      "actualRawRecordLine1Based": 9,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:4e4c74c33c297cd84275952a97c674ad44596fdf4a4902e1f4daeda5c86fc26d",
+      "kindObjectCanonicalSha256": "sha256:0734ac50efcceca0ceb85126ac3dc0ab58621bc855d8ba5571bf2a144617a83a",
+      "PobjectCanonicalSha256": "sha256:8f55f6bc28c95296d2943e8bf565230bb56e63b3cf4ba1e72ab01a815d9dd107",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-032.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/approved-existing-math9-safe-portable-v1/current-P/retained-owner-04.review.jsonl",
+        "rawRecordLine": 9,
+        "rawLineBytes": 8572,
+        "rawLineSha256": "sha256:c3ebbe6b4c8c0305f6cfcb5ca637f1033ce17db1efba49a9654197f423fda3fb",
+        "scopeSize": 15
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-032.config.json",
+        "bytes": 1874,
+        "sha256": "sha256:3dcf76d7e4cab21fe9676d6eb636df33fa452acbccdb1fc149001e175d95aa92"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/approved-existing-math9-safe-portable-v1/current-P/retained-owner-04.review.jsonl",
+        "bytes": 113896,
+        "sha256": "sha256:eb84a6b446068bd5f337b53832a88325cd050c1fb73ea3f0c00301888c84e3f7"
+      },
+      "profileFingerprint": "sha256:5d1566b1601b74bdd8eac86f9dd9710688551015454827de427f8fbe7ce109aa",
+      "goalFingerprint": "sha256:472a53bc9c8d9ae1ea2f310d797526812e88a0b148213a500a469500eda248ff",
+      "reviewInputFingerprint": "sha256:80edb4a2801f98db927bf491bfbae4cc3eac5877d5832ef9e2e9b78ab659e268"
+    },
+    {
+      "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 1,
+      "actualRawRecordLine1Based": 2,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:3aff110bb18d3c951ac757063c92c7b60ec7bc634308024877f2893a59ba4c67",
+      "kindObjectCanonicalSha256": "sha256:2b25611acf4ee2a90ebc6ceb3ec60cea1f5acc49170dc2f06b0e915b67b9188e",
+      "PobjectCanonicalSha256": "sha256:f87f0591a9bdaa7e4769e9bd6944da4c1546534f7a6c7dcd49628a4590863303",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-078.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-078.review.jsonl",
+        "rawRecordLine": 2,
+        "rawLineBytes": 9487,
+        "rawLineSha256": "sha256:edb6424c5ab3d5232a9d8e10e9301261f4f3873aea609965c52443f7e0052ab3",
+        "scopeSize": 6
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-078.config.json",
+        "bytes": 1453,
+        "sha256": "sha256:16d8c7d65c45f44231b597c59e50b4db70c00dafe70ae928495b8fd5dcd3cc1f"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-078.review.jsonl",
+        "bytes": 61154,
+        "sha256": "sha256:bc5278423b05fa710dec67d51c9cd24c575fcba613f671db5944075313e36014"
+      },
+      "profileFingerprint": "sha256:2750721e83c19a940af4464164b00a9501ce31fab934019e80cfc56056da8f23",
+      "goalFingerprint": "sha256:4a84495d204bf0ccdc70a5ff739b8482f6bbbe9581f4b95a095a45cb029f4149",
+      "reviewInputFingerprint": "sha256:cc3ec0d4bf5aabb643c0436a930f0d21a5094904b0c175faeefbe8112a1e8992"
+    },
+    {
+      "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 1,
+      "actualRawRecordLine1Based": 2,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:8de508bfc652407ab65a4d7bec2d09c18e595393e2fb570932d3b4d5e275bcfd",
+      "kindObjectCanonicalSha256": "sha256:5ef6c9b220c92322566eada21741bdeff390b9718c57d085776ff8d3e4d88098",
+      "PobjectCanonicalSha256": "sha256:6fe615bc173880a32c520c10f2f7ab4c7d092737a9f8304faa7a8393d008b1ca",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-018.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-018.review.jsonl",
+        "rawRecordLine": 2,
+        "rawLineBytes": 7464,
+        "rawLineSha256": "sha256:108f44410023027906a842e1c1cc1530f1dc692c54c144246d99384443f0f34b",
+        "scopeSize": 2
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-018.config.json",
+        "bytes": 1557,
+        "sha256": "sha256:95d4c84a90cc33fa73bf73f4ca242b00f77f0ce4c20d731868df0d4411193df8"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-018.review.jsonl",
+        "bytes": 14363,
+        "sha256": "sha256:add34d0a8fe283fc82864aebc19df72d9a48f233e5a46043681609f2afe6a7a4"
+      },
+      "profileFingerprint": "sha256:ae8a687b15fed457a18352461bf91585b806f0f8dcf95b4b604fc5ff7d86e111",
+      "goalFingerprint": "sha256:f0ddb081f7a9c073577a639331731aa4df0af1d8fa8f1111804fb0ba161b38dd",
+      "reviewInputFingerprint": "sha256:de98168a3e1058fa145bb655ee03bbbe3a66a160b192d1158cbf6964d5a466b6"
+    },
+    {
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 0,
+      "actualRawRecordLine1Based": 1,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:497c2bd8430e192cb2b91c09559a1cbcf967024a394fff8b2fa054b5cdfdb7d3",
+      "kindObjectCanonicalSha256": "sha256:b5717682f789c9b5449be8b96cb541f83dc1dcdeb8c32a57c39584922dc60043",
+      "PobjectCanonicalSha256": "sha256:8e2d5f67cf5fe89c4d45befc75d70678044770a6eb947830ef40505c355e133d",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-03.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-03.review.jsonl",
+        "rawRecordLine": 1,
+        "rawLineBytes": 8764,
+        "rawLineSha256": "sha256:a08b53206e60875114406179a3ce571da72214f1988b7bc5988da42774f491c9",
+        "scopeSize": 12
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-03.config.json",
+        "bytes": 1846,
+        "sha256": "sha256:6ea776c2fa86a75993435a8eb7be335b6dd254c4680369f095d2975b0f8c95a8"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-03.review.jsonl",
+        "bytes": 95474,
+        "sha256": "sha256:efe6994b2b332c67ed181f9c03accc2ae83593dd083bd518ca27bfafe78c1cda"
+      },
+      "profileFingerprint": "sha256:5117b3874164e549e8c55623d24205dc45336d90af48e1fa748388e76492689d",
+      "goalFingerprint": "sha256:6e7bb22629aecef659aa77d7681b80224fd2709c8ad1afa67b7ffb6e0de02a0f",
+      "reviewInputFingerprint": "sha256:c129a7732b9480c44dc4fb0b7e5edb8da6687743d138f0348cb7b03ab34932ee"
+    },
+    {
+      "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 8,
+      "actualRawRecordLine1Based": 9,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:079bb8199c85812b441e9e3fc646e1ad39a67c4c43da7e1cb314335578ca38e8",
+      "kindObjectCanonicalSha256": "sha256:4071338125b5746b4eef6185829250bcd886d62312a745bb4e93c794465df3bd",
+      "PobjectCanonicalSha256": "sha256:a6e3e7342808342b70184ea01c473d2cdbc5f382afcb14c407bfae1892f8c00d",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/physik/twenty-explicit-profile-conditions-current-20261015-v1/P.retained-019.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/physik/twenty-explicit-profile-conditions-current-20261015-v1/P.retained-019.original-records.jsonl",
+        "rawRecordLine": 9,
+        "rawLineBytes": 6965,
+        "rawLineSha256": "sha256:c8eab3ab787e3944da48aac88ec986fafae991e65a97f46792e62c1a6e631d8b",
+        "scopeSize": 18
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/physik/twenty-explicit-profile-conditions-current-20261015-v1/P.retained-019.config.json",
+        "bytes": 2072,
+        "sha256": "sha256:d9310faa67f4c27f1427837457b84e48870a65bee294855fb2326088dafa070a"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/physik/twenty-explicit-profile-conditions-current-20261015-v1/P.retained-019.original-records.jsonl",
+        "bytes": 129705,
+        "sha256": "sha256:78a20796cd69dd93effafc3e49fcea3b54d488853eb5349bb7abc9bb3ff58286"
+      },
+      "profileFingerprint": "sha256:b2047dc38c772366574aa5ce1e0c49cfd762e128e554a82e0631577b590292fa",
+      "goalFingerprint": "sha256:4db43a46de920f19f74945d6aba58faa5995c220ba6a284d2f992ec70804f96d",
+      "reviewInputFingerprint": "sha256:36b8bb6acffc03e017b2c7811f7e8a0095d0b4e02ab149ae71504068694fff1e"
+    },
+    {
+      "goalId": "16caf92e-2800-57d1-946c-5b92ce848a96",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 1,
+      "actualRawRecordLine1Based": 2,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:4ea7486f0b90ee6ad2eec158bd0a8786b7c42ec382c419f4d3fd6e1bcc2ff08e",
+      "kindObjectCanonicalSha256": "sha256:60fed344d8ce7a48ab777c3cade30adef2daf9af5d7c5e49fdfd99698686110e",
+      "PobjectCanonicalSha256": "sha256:ade53e6a9fcbc56913bfd3ca4fb9d6255cbfc61b2ad90e46d6893a474e5cdf35",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-11.retained.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-11.retained.review.jsonl",
+        "rawRecordLine": 2,
+        "rawLineBytes": 6422,
+        "rawLineSha256": "sha256:84ff14fa20f0e00f70582caded11acc40bf209f6507bd6f317aafb40891173e2",
+        "scopeSize": 17
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-11.retained.config.json",
+        "bytes": 1949,
+        "sha256": "sha256:db84bd98c97202a042e00a8a1ebe82bdb27a382d9074c3610773a8a38b1930f8"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-11.retained.review.jsonl",
+        "bytes": 165552,
+        "sha256": "sha256:685be40c82737854deee2ad0cce0adb4d6ba93e49f21505e4011ba72437576ed"
+      },
+      "profileFingerprint": "sha256:2c2d92593a2c43e1895ff41fccaa88fcd412240db018a4e1edac60674e04659e",
+      "goalFingerprint": "sha256:114f263b76cb92b20052de7b37a1b107b339b39e55417cbd6f487541a5c66005",
+      "reviewInputFingerprint": "sha256:2d91477fb2c6883ad35a173e40484c305b3ce88d998e4b13dffcca1c9c793634"
+    },
+    {
+      "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 2,
+      "actualRawRecordLine1Based": 3,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:a95e1f6b23e1ef671fa3acec4d30b0efc81c3a590690a4bcc255cccd700e6d6c",
+      "kindObjectCanonicalSha256": "sha256:6923aeed0afd89c6651ba56b4ece074b25d27cb79e61512562232d49a53d3f53",
+      "PobjectCanonicalSha256": "sha256:dc55b9d08f7edc27597219d92423c9b40aa3f62b8dcd8a12ec2871e2d2b7c08d",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-02.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-02.review.jsonl",
+        "rawRecordLine": 3,
+        "rawLineBytes": 7927,
+        "rawLineSha256": "sha256:ca4ee13811235930a67239514d43dcc4be3a0a22ba5c279a3d74ec2cc4df4972",
+        "scopeSize": 12
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-02.config.json",
+        "bytes": 1776,
+        "sha256": "sha256:5f2e5caff03cded9b8e0c2d87bc50be8b392fc3505ceba91b76f5e8c6f742099"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-02.review.jsonl",
+        "bytes": 105477,
+        "sha256": "sha256:4b74ebd8298b313a09752a491a8dfce8c6f7e1164a870146e4fe00ce749f7092"
+      },
+      "profileFingerprint": "sha256:5d397e90ba80e0ad3fce1925d987778b600a0f3ce142f84914a7180e718ed6aa",
+      "goalFingerprint": "sha256:ecb93156ffba2e939cdac9cba9e9f38cc9071fe5622c70a4cef28ade31e9addc",
+      "reviewInputFingerprint": "sha256:93c1adff9549180e6aa6e82d577d462413767921f8beccc1c93208c7cb995a02"
+    },
+    {
+      "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 4,
+      "actualRawRecordLine1Based": 5,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:4aef56bd34af9227ffb1ecb996ab5c458a9a8f2f5c3c05c62827416868b783f1",
+      "kindObjectCanonicalSha256": "sha256:174f3782428c48d3ae9e9894d98f5ac72961db0877d4cf4caada08b79cb29f69",
+      "PobjectCanonicalSha256": "sha256:ca3f9c8d67cf4fa04686b6292ae1842aaf55c738ac1eb39b20ca6511d691c82b",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-02.retained.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-02.retained.review.jsonl",
+        "rawRecordLine": 5,
+        "rawLineBytes": 8048,
+        "rawLineSha256": "sha256:d3737fe6ed98b677f898c68b3e3fb939544191d67898d2481910456ccb642a06",
+        "scopeSize": 5
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-02.retained.config.json",
+        "bytes": 1373,
+        "sha256": "sha256:8d08ba881d434d60993160dc60e47f23e3f95b2e00c83c18366804aab3bd7231"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-02.retained.review.jsonl",
+        "bytes": 43649,
+        "sha256": "sha256:4bab516a92efc24ff5f7dfc6dadfb06ee9f7fd9611a02fcb0c503f70296f53ce"
+      },
+      "profileFingerprint": "sha256:75a3ec8364b0e0ad7c8425ee82022e3ebf13a8dad88c255b7411c3d01fc15859",
+      "goalFingerprint": "sha256:79b8e7ed5d70a915cab522e5c4f5a4237b70b34f47784e238efc77f1abdd8758",
+      "reviewInputFingerprint": "sha256:3376273b5de8996400ca42cb819c0904afdce703f34f3c4e4e1bb2ed95dabd6a"
+    },
+    {
+      "goalId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 14,
+      "actualRawRecordLine1Based": 15,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:f2559aedb412303d652d2f0e7a4ca8fe338742b23e98f0727925e37f7dc4415f",
+      "kindObjectCanonicalSha256": "sha256:6a3917db5e019a51423e8468186f377d348742a736f7cbfcaa332819aaf2f2ad",
+      "PobjectCanonicalSha256": "sha256:d489f06573ffd1bb8913668abb94316a1356337bdadf802359a31be82d4554c7",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/physik/twenty-explicit-profile-conditions-current-20261015-v1/P.retained-019.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/physik/twenty-explicit-profile-conditions-current-20261015-v1/P.retained-019.original-records.jsonl",
+        "rawRecordLine": 15,
+        "rawLineBytes": 7189,
+        "rawLineSha256": "sha256:81a2f6ca89e691a0ad7697a82b7e1b562fb9c0c5745cc57f9600848bbe88a699",
+        "scopeSize": 18
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/physik/twenty-explicit-profile-conditions-current-20261015-v1/P.retained-019.config.json",
+        "bytes": 2072,
+        "sha256": "sha256:d9310faa67f4c27f1427837457b84e48870a65bee294855fb2326088dafa070a"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/physik/twenty-explicit-profile-conditions-current-20261015-v1/P.retained-019.original-records.jsonl",
+        "bytes": 129705,
+        "sha256": "sha256:78a20796cd69dd93effafc3e49fcea3b54d488853eb5349bb7abc9bb3ff58286"
+      },
+      "profileFingerprint": "sha256:afb1c3ebd8ba052f4da111a4c9c80b1422ad2cc38af14d438779fe930be4004c",
+      "goalFingerprint": "sha256:a6424845c4fcc99bd34cacd3dd77eae8b327d50a9a9909b32235945374cde5eb",
+      "reviewInputFingerprint": "sha256:a7a731101be13a97287658a2189021da67664e6eb6b83eaa0d9451b84bbb2085"
+    },
+    {
+      "goalId": "24b4686a-e8a6-4583-8952-33e6f653c2a3",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 3,
+      "actualRawRecordLine1Based": 4,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:3f50cd994574b47ce510dff823ed3976fc692027af3ab043e727e8bb47b4f397",
+      "kindObjectCanonicalSha256": "sha256:d6877827cd2c3e0b04cb01e4eca21bfce2311380aa5632675b2761b895dbfb7d",
+      "PobjectCanonicalSha256": "sha256:1830dfeeb1f25a065fdba7c76d69fe2cbb7d2b404ab23bce4f13ed47276e4136",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-045.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-045.review.jsonl",
+        "rawRecordLine": 4,
+        "rawLineBytes": 7896,
+        "rawLineSha256": "sha256:2435c890f35464bf829fa843c770cb0ae43b96db0a18229a7d257389654e11b9",
+        "scopeSize": 4
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-045.config.json",
+        "bytes": 1356,
+        "sha256": "sha256:4c4eef45f00275223a22907c52a1648b479e24471cf9d23ed67d57246d6782d2"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-045.review.jsonl",
+        "bytes": 32381,
+        "sha256": "sha256:e0360a96ddbf6384f24e8e74f2c3dca9ec5f1cbe19d448f2006df3e592003a1f"
+      },
+      "profileFingerprint": "sha256:968e5e272e98a8c0215d8157468195735e3492f6c3842430854ba2926f0649bc",
+      "goalFingerprint": "sha256:9fdc5b1b62f08efff49ecc3fb0d4045c0e99cd93f509897e0afa2f5f571a1f03",
+      "reviewInputFingerprint": "sha256:fe5494cce4b987d83152619754b5d936aed11d16a905e566c436e5ea5f39c5fd"
+    },
+    {
+      "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 1,
+      "actualRawRecordLine1Based": 2,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:0537c5ff10ff70158b1abfb840ffeb78b8feb38f09d8fcc51d1ff432e2a041b1",
+      "kindObjectCanonicalSha256": "sha256:586d43350937434d29db884018a718b3b75d9c20cbea49df8934e522201517e4",
+      "PobjectCanonicalSha256": "sha256:3114e5efa5448cb219b9990db868a2a4a4fce404af078bcbb4331412b5c0feca",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-076.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-076.review.jsonl",
+        "rawRecordLine": 2,
+        "rawLineBytes": 10060,
+        "rawLineSha256": "sha256:9ba67094910206c5e0e4e7c923d42faed5a2747850743a04f459324b6124e0c3",
+        "scopeSize": 8
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-076.config.json",
+        "bytes": 1533,
+        "sha256": "sha256:de81dceb9306f8ef2234c3514c47919b675e10b49b7c31bb1c5a9d973ddbc8d1"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-076.review.jsonl",
+        "bytes": 80949,
+        "sha256": "sha256:88f747aa8ed20ff63976158e7a19cc44060a5cb28d238940d0ebf2a4774c5dd1"
+      },
+      "profileFingerprint": "sha256:06b5025ffd2dc6e10ea8f66e35a685d51685cfd1a53d03db5a8eb80bad9c00c0",
+      "goalFingerprint": "sha256:8ddf2aa3c20db5fbf4266efd09d01e7c47d0abbb0addfdffd5ca64ca8456b29d",
+      "reviewInputFingerprint": "sha256:e675884bd0794257843884d8c8670ef7cc67bbc8f32772a09762ce35966aa6d7"
+    },
+    {
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 1,
+      "actualRawRecordLine1Based": 2,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:2bfe3dcedc6c670e5be7df5e071d910341cac4eaf51a5f7cb1740c511d569563",
+      "kindObjectCanonicalSha256": "sha256:f2ebd3148b7b3c8163b5e5b52c95bba358a8ec6ef015438ee853110480a692b7",
+      "PobjectCanonicalSha256": "sha256:a250c7d1a18b7be87a6fbf3790d639c31e1751fc9e50efaacf15f2a1ff599350",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-022.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-022.review.jsonl",
+        "rawRecordLine": 2,
+        "rawLineBytes": 11883,
+        "rawLineSha256": "sha256:0d0868356a96d03d0392143490cc91e71fed709bc7c662b2ce9b1b12f2708c7e",
+        "scopeSize": 2
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-022.config.json",
+        "bytes": 1253,
+        "sha256": "sha256:62d8547a2c98e788da56d7f3f0f0521c64251de74a9275ea4d4220af59364681"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-022.review.jsonl",
+        "bytes": 21112,
+        "sha256": "sha256:c4522789748d842124669b2ba395edb6e234b764bb99a41ca7195105ea0158d9"
+      },
+      "profileFingerprint": "sha256:825b36fa1d42bd7850e47e04b7ac8c2a84164bc06435a353fc071e5ef25dc0ee",
+      "goalFingerprint": "sha256:2ef62e5f9cc8d69cf635e385746768f1935de1d4259f2724ba4cb1c53864d0f8",
+      "reviewInputFingerprint": "sha256:08952e8a62d52391aba05b260db628e39b947cd5e5b718088ff418b6793a7523"
+    },
+    {
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 1,
+      "actualRawRecordLine1Based": 2,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:4d30597519433c0a2464405b4703b01da55192998637867c5e2228310f09854c",
+      "kindObjectCanonicalSha256": "sha256:ce9a8f9d139c47a1d5cfb61b036135c69514ae372ab5fd69950c20c43cc193a6",
+      "PobjectCanonicalSha256": "sha256:37df7102d5c76157b91536250be31a1d6f0b4e0ce4850917b254119b6d2e2154",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-033.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-033.review.jsonl",
+        "rawRecordLine": 2,
+        "rawLineBytes": 6639,
+        "rawLineSha256": "sha256:ed9a90c91db6e0be1063bf751d9c3f1465f0bd91153631dad935ff9058d82efb",
+        "scopeSize": 2
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-033.config.json",
+        "bytes": 1370,
+        "sha256": "sha256:c9e0a00ca34869c2370f689cbcf2064f81ab861150c3afee84b64e93b7229b37"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-033.review.jsonl",
+        "bytes": 13596,
+        "sha256": "sha256:f6f20658530e48d45be3b515d029738d3a0bc6b0f833e0dc7c4833bf56d52c93"
+      },
+      "profileFingerprint": "sha256:5b73d9eb68736f1087e5bea27c88012c84a233ba9e17181245d3d834d8925c76",
+      "goalFingerprint": "sha256:10ef9c1deeaff93b0397893e696e0c1c7a53c854337385c59a0c7538055b8a4f",
+      "reviewInputFingerprint": "sha256:0d039377edb72bc35caee8278f903a3153dcc6473d27968ae2701c4ab04504c3"
+    },
+    {
+      "goalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 0,
+      "actualRawRecordLine1Based": 1,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:4e100e1c7fc308545330253a69a6d8715561d53cbf2ef9565e914df402b78541",
+      "kindObjectCanonicalSha256": "sha256:561a6da8be5b38fc005989653addb6d77b91b9104c89d60fbc22d3f4defe62e5",
+      "PobjectCanonicalSha256": "sha256:694af04fc8f70aa88f9a3051197e9459bdabaefc6070e09d197663658bc964cd",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-055.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-055.review.jsonl",
+        "rawRecordLine": 1,
+        "rawLineBytes": 13249,
+        "rawLineSha256": "sha256:bfdf631cda467eb03e0d7580ee5da7969b9ed1f0965410b644710b8072721eba",
+        "scopeSize": 2
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-055.config.json",
+        "bytes": 1226,
+        "sha256": "sha256:2364095b1bac33a4ac528f712ddf032061dfa1a2469398aaff5d6f019633faee"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-055.review.jsonl",
+        "bytes": 26087,
+        "sha256": "sha256:a688a5e0f22f40c10cb0b2ef93d698a29a72f7a72fc038ea3b131081e7b7d54d"
+      },
+      "profileFingerprint": "sha256:88bf9ec3690a8eb07f02e2893dc4000252497bc1947a45b7b248258dd3d05501",
+      "goalFingerprint": "sha256:deb6f327d86c00d57d07c30e3138a114b2563bcc4fb7686353cb48fb655fef30",
+      "reviewInputFingerprint": "sha256:9d5fe5cd8a5484741198da2869641d100abba9518f75cc6d9c6da3e0c1217360"
+    },
+    {
+      "goalId": "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 0,
+      "actualRawRecordLine1Based": 1,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:5b012b6de445b376444551bed7561ac2bdf44eff2b13839531c30be3168b8059",
+      "kindObjectCanonicalSha256": "sha256:de3644967ff178eb576498dc33ce06d9e0722d5e542407acb1efdc36d547b683",
+      "PobjectCanonicalSha256": "sha256:02c6f246f670fa2601209c35de110ff7cf689dfb6da505bcfc772fff89a0d7a5",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-04.retained.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-04.retained.review.jsonl",
+        "rawRecordLine": 1,
+        "rawLineBytes": 6668,
+        "rawLineSha256": "sha256:8cc6efbaf7fac86376d1435482aca8a6e4fbac7d18320b2365c512538cb10b73",
+        "scopeSize": 3
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-04.retained.config.json",
+        "bytes": 1229,
+        "sha256": "sha256:3f45c1d5bed81ee182db5d891fb5a40370fc914baf4a9dc4024f2094fd1f1e37"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-04.retained.review.jsonl",
+        "bytes": 19307,
+        "sha256": "sha256:701f05efe6fc56af071eca167fb8fe5fe36d3310adba0b04b347e320ee1a08a7"
+      },
+      "profileFingerprint": "sha256:7a8904fbecaa097878696509dd3cb9619ca1db11f6f3a06ab240f3c59c77bbdb",
+      "goalFingerprint": "sha256:7f668486f88ba67327b3d6a5f13072f04d7796aa345375b4daf1428b16641efe",
+      "reviewInputFingerprint": "sha256:9daf61a40ddefeba41c7d7ec6b000fa1d28ad4afa3168e4335d8f3bfbafe33e6"
+    },
+    {
+      "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 1,
+      "actualRawRecordLine1Based": 2,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:01477ac2f84e659f50e61c68da442b45df67e4e38cf7d2003b0d1848c2cf93c9",
+      "kindObjectCanonicalSha256": "sha256:f1ce2f2aac7388f130f564496a67eec430e1b8ccdc41945b588ced4bc85e1ff4",
+      "PobjectCanonicalSha256": "sha256:316ac31346ae9a58373e9755a332c115073f79931094d7d56e21c3c6d731c392",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-023.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-023.review.jsonl",
+        "rawRecordLine": 2,
+        "rawLineBytes": 5839,
+        "rawLineSha256": "sha256:615147a4f78a03000cd0696a1b270a24df36886e8abcef9e1f263fc527aa0301",
+        "scopeSize": 6
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-023.config.json",
+        "bytes": 1405,
+        "sha256": "sha256:3f6728a985ddd5747e2a367addd05d7e46853b757c76d2348b7c8f2c00926d42"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-023.review.jsonl",
+        "bytes": 42457,
+        "sha256": "sha256:dbe1b5517db9ca11acbe9e76eac8bba840af04c324e673dc4416460e89169fc8"
+      },
+      "profileFingerprint": "sha256:0c350620c60d6cb0336c2adbaa2eb0f1fbeab9032ecb3697b971743bd8210079",
+      "goalFingerprint": "sha256:8ffe9d76f231ad79cd5c470e50dcd9d407fdccb6800f6aa1ff254c738928c4de",
+      "reviewInputFingerprint": "sha256:36135ca5856d3547f6af3a3d75fea2cf6b93fb45693de7aa8a9d79869207178b"
+    },
+    {
+      "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 2,
+      "actualRawRecordLine1Based": 3,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:e32807ec3d62cdbfbe245302700c2ed64f156fc0ca5fee7937313e7ea0708ca3",
+      "kindObjectCanonicalSha256": "sha256:3e866be1862b177f8ba4020b274747eeedf0fb0408049a4a944024117df5d521",
+      "PobjectCanonicalSha256": "sha256:edc3c205e2c6a7e14a0cbf8802452e862853bd5ea02b8f2544dc8aaf63df9d26",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-03.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-03.review.jsonl",
+        "rawRecordLine": 3,
+        "rawLineBytes": 7759,
+        "rawLineSha256": "sha256:203120abbe63402ce01d42e65a3f5b22247e5f33f843c5c1982d1b54d3a9cfd6",
+        "scopeSize": 12
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-03.config.json",
+        "bytes": 1846,
+        "sha256": "sha256:6ea776c2fa86a75993435a8eb7be335b6dd254c4680369f095d2975b0f8c95a8"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/five-existing-math-current-portable-v1/P/retained-owner-03.review.jsonl",
+        "bytes": 95474,
+        "sha256": "sha256:efe6994b2b332c67ed181f9c03accc2ae83593dd083bd518ca27bfafe78c1cda"
+      },
+      "profileFingerprint": "sha256:b405a4303968248e6e48d7aedafac4ba61bdf1006a6459364d5b494be50a0202",
+      "goalFingerprint": "sha256:e899fc22beb6521026f118067dbea8b404f30f4df121a397c69afb48d45842a4",
+      "reviewInputFingerprint": "sha256:efa01f74a427e036d2a0c6379c3d8d9353a1ddde526fa458551923dabbdb4ada"
+    },
+    {
+      "goalId": "3d3e5917-d367-535d-a6ad-b9d87259e6ce",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 0,
+      "actualRawRecordLine1Based": 1,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:a45d8fc74d6ce4272cf734f3890b236c72c8f5eced413d603e577fd97f4b548e",
+      "kindObjectCanonicalSha256": "sha256:fb13eb731a96deeed3b3395b12b2474fabfe70641ad815c26ac4926755db1570",
+      "PobjectCanonicalSha256": "sha256:515aa084d6024ccaf1e1e0f69afdba418a34e7ee374d02f5a37175786ca476db",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-073.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-073.review.jsonl",
+        "rawRecordLine": 1,
+        "rawLineBytes": 7080,
+        "rawLineSha256": "sha256:02ddcba48c6e7f98cb5b644016f324dc758e7feb4bf43793ab726ec2f206cd7b",
+        "scopeSize": 14
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/boundary-review-inputs/P.unchanged-owner-073.config.json",
+        "bytes": 1809,
+        "sha256": "sha256:76aeac2fbcc4e46eac8ffdcc2784ac71bad575f9cfae266a08c746a07077fbe5"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-14/caf5-three-atomic-portable-current-v1/inputs/candidate-quality/physik/P.retained-073.review.jsonl",
+        "bytes": 97635,
+        "sha256": "sha256:24fe510a15418867d7b29656f85880aaffcb82d753a94b911b3970676de6ec16"
+      },
+      "profileFingerprint": "sha256:1958babf5e124b92e2260eeab10b895f0fabd5cc1617d673b780fbb2b1282b98",
+      "goalFingerprint": "sha256:259f5660dc08a8fdecc670b39db9c1cc2afe7a5dcaa3aaf7aedbebdd5cc2fa93",
+      "reviewInputFingerprint": "sha256:4908f54b5d08d82426336b7439648f9f67dbe8bd2a5e70a00ba38f518d9f009a"
+    },
+    {
+      "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 10,
+      "actualRawRecordLine1Based": 11,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:48164bcb0ef5e288e4080fe6773640ff3e71cd697bb38d336a2d264d6690edb9",
+      "kindObjectCanonicalSha256": "sha256:4455e7843dae91b71c217d385b2e2c426003739af8a718bf0a9f6f6ad5df2a52",
+      "PobjectCanonicalSha256": "sha256:688deef82d2ee2b3e698de8a19da0412cd388c4a6b57e2bed02912fbd2217e9a",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-01.retained.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-01.retained.review.jsonl",
+        "rawRecordLine": 11,
+        "rawLineBytes": 8516,
+        "rawLineSha256": "sha256:1edce641a807529b0e220a633088414d636d723e4f07e11d50bc1664d492acae",
+        "scopeSize": 14
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-01.retained.config.json",
+        "bytes": 1791,
+        "sha256": "sha256:c760db8db8e18d63c4fb43787d7363359cae81a3b1511869d5738637c8bac6be"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-01.retained.review.jsonl",
+        "bytes": 116759,
+        "sha256": "sha256:524711f8034ab07825c87af24accb386a6df2f5c6ee970499e8df5691c7b1261"
+      },
+      "profileFingerprint": "sha256:e1f20ce8d4fc548b5f065603e215bdcd3f3e155a57afee296eeb0d90c284c089",
+      "goalFingerprint": "sha256:e0f2ec55b3794bf95b122e8cf2b69ad44a4fae38c4804af173c3f41551ccd53d",
+      "reviewInputFingerprint": "sha256:3969a47cd7f90fa9dd68e2f5a44e7ef1b8770fba38132bf2c6027c22a1ce643c"
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "subject": "physik",
+      "wholeCurrentExactAgainstLookup": true,
+      "wholeGoalExact": true,
+      "wholeKindExact": true,
+      "wholePExact": true,
+      "uniqueCurrentPOwnerCount": 1,
+      "neutralRawRecordIndex0Based": 1,
+      "actualRawRecordLine1Based": 2,
+      "rawLocatorMatches": true,
+      "uniqueCanonicalOwner": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+      },
+      "goalFileBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytes": 2515286,
+        "sha256": "sha256:a1309a6143dcce96eea9ad0d2b39299995bc59ce322a02c52a5783857706fe24"
+      },
+      "kindFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "bytes": 247360,
+        "sha256": "sha256:2b3ef5ef9eb7b55116b9bd8a9cd301cff1d006954fe9d183b1e5a1cae15f8d4c"
+      },
+      "goalObjectCanonicalSha256": "sha256:5bfe86e5fa1e44c9fda3222e21fbb4cd1d2b73a53c1280de3503299947aabbca",
+      "kindObjectCanonicalSha256": "sha256:1c3d89ad85fea8bf1349d1805dd7bdc739a5992fdb0eb1167cd197fff320dc7c",
+      "PobjectCanonicalSha256": "sha256:34e37610eaa4b0cb2dba19ff7c4a7541df694e40435bbbca85e590f4ad446dea",
+      "Powner": {
+        "configPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-10.retained.config.json",
+        "rawRecordsPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-10.retained.review.jsonl",
+        "rawRecordLine": 2,
+        "rawLineBytes": 6774,
+        "rawLineSha256": "sha256:7996d1dd51795259b4935b110d6047bece9d140cbcfa96288b8124883827337d",
+        "scopeSize": 21
+      },
+      "PconfigFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-10.retained.config.json",
+        "bytes": 2122,
+        "sha256": "sha256:4977c7cfde9fe86aed2e2bd4d9c3740c8743682042fc8be4e021734a2aa2047d"
+      },
+      "PrawFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/gymnasium-i02-i05-eighteen-current-integration-v1/P/source-10.retained.review.jsonl",
+        "bytes": 138973,
+        "sha256": "sha256:3dea20596ba93ff8124b4c7988c06182411d6a8c7d09c6023019ec26c506cc06"
+      },
+      "profileFingerprint": "sha256:0cb6e2b4b04ad56ac769ef7f0eceed7c9914435020a2fee1bf23105e70f45d69",
+      "goalFingerprint": "sha256:adb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87",
+      "reviewInputFingerprint": "sha256:d9e055009f212435b4813c11be443ebdb8ecb6a3ff7e21aa20c56b267c336064"
+    }
+  ],
+  "closureSummary": [
+    {
+      "goalId": "02876b2e-7cf0-5de6-ad04-d4ee95b7f80e",
+      "closureCount": 32,
+      "inheritedImmediateOriginCount": 2,
+      "reachableNomineeIds": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+      "closureCount": 24,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "closureCount": 52,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "b1dcc191-d046-50de-984a-ee5c17157628",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "closureCount": 2,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+      "closureCount": 35,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "16caf92e-2800-57d1-946c-5b92ce848a96",
+      "closureCount": 76,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+      "closureCount": 36,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+      "closureCount": 2,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+      "closureCount": 28,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "24b4686a-e8a6-4583-8952-33e6f653c2a3",
+      "closureCount": 39,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "closureCount": 22,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "closureCount": 12,
+      "inheritedImmediateOriginCount": 3,
+      "reachableNomineeIds": [],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "closureCount": 71,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "b1dcc191-d046-50de-984a-ee5c17157628",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "closureCount": 1,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+      "closureCount": 38,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "closureCount": 17,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
+      "closureCount": 3,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "3d3e5917-d367-535d-a6ad-b9d87259e6ce",
+      "closureCount": 48,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "b1dcc191-d046-50de-984a-ee5c17157628",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "closureCount": 57,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "b1dcc191-d046-50de-984a-ee5c17157628",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "closureCount": 5,
+      "inheritedImmediateOriginCount": 0,
+      "reachableNomineeIds": [
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ],
+      "relevantDiagnosticCount": 0
+    }
+  ],
+  "dependencyBindings": {
+    "path": "tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/dependency-bindings.v2.actual.json",
+    "bytes": 2965252,
+    "sha256": "sha256:e60c1f698e77604ef5a6e24dc46e69d81ba4213975fdd9bb869a6cc306839fd8"
+  },
+  "nativeBindingCheck": {
+    "path": "tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/native-binding-check.actual.json",
+    "bytes": 258746,
+    "sha256": "sha256:bea1275eb9d5896b8f3ffbec61f4a76ccd017c8ac452a12e2ea709ce77822183"
+  },
+  "effectivePrerequisiteClosure": {
+    "path": "tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/effective-prerequisite-closure.actual.json",
+    "bytes": 2204343,
+    "sha256": "sha256:da471463df2be2f5d324b1040800e8a6b15eeb1ac34a2463a0699b39a4e44211"
+  },
+  "failedExecutionAttemptsPreserved": [
+    {
+      "receipt": {
+        "path": "tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/attempt1-native-command-receipt.actual.json",
+        "bytes": 610,
+        "sha256": "sha256:efb9aad22726382fdfc9346eb4ade1304c559861cbd087aaf590828f3c2d1701"
+      },
+      "exitCode": 1,
+      "stdout": {
+        "path": "tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/attempt1-native-command.stdout.txt",
+        "bytes": 0,
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/attempt1-native-command.stderr.txt",
+        "bytes": 1747,
+        "sha256": "sha256:352528a3305ae2b21c628f2beffc0cfc780f6bc369b5ec5a964c64445a01a8af"
+      },
+      "failureRaw": "node:internal/process/esm_loader:40\n      internalBinding('errors').triggerUncaughtException(\n                                ^\n\nError: Transform failed with 3 errors:\n/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/native-binding-check.ts:18:77: ERROR: Top-level await is currently not supported with the \"cjs\" output format\n/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/native-binding-check.ts:19:35: ERROR: Top-level await is currently not supported with the \"cjs\" output format\n/home/enpasos/projects/skillpilot/tmp/cross-subject-requires/current92-first20-whole-integration-author-20261016-v1/binding-audit/native-binding-check.ts:20:43: ERROR: Top-level await is currently not supported with the \"cjs\" output format\n    at failureErrorWithLog (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:1467:15)\n    at /home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:736:50\n    at responseCallbacks.<computed> (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:603:9)\n    at handleIncomingPacket (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:658:12)\n    at Socket.readFromStdout (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:581:7)\n    at Socket.emit (node:events:517:28)\n    at addChunk (node:internal/streams/readable:368:12)\n    at readableAddChunk (node:internal/streams/readable:341:9)\n    at Readable.push (node:internal/streams/readable:278:10)\n    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23) {\n  name: 'TransformError'\n}\n\nNode.js v18.19.1\n",
+      "resolution": "Private audit package marked ESM in local package.json; native source files unchanged; subsequent native command successful."
+    }
+  ],
+  "limitations": [
+    "This records exact current bytes, registered ownership and native technical API results only; it grants no scientific, source, human or release approval.",
+    "The neutral rawRecordLine field is a zero-based raw line index; this corrected audit also records the physical one-based line explicitly. The initial one-based-comparison failure remains unchanged in binding-audit.actual.json.",
+    "807 Mathematics and 478 Physics counts are current registered unique raw-P ownership counts. Native P semantic/freshness validation was executed for the 18 owning configs of the requested 20 Physics contexts, not as an independent scientific review.",
+    "Current BW composition view and v23 selected index are explicitly authorized technical additions; their presence is not classified as scientific drift.",
+    "All audit writes were confined to binding-audit and executed through the parent root-readonly runner; no Git status, index mutation, staging, source edits or edge edits were performed."
+  ]
+}

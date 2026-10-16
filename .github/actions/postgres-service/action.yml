@@ -1,0 +1,17 @@
+name: Disposable PostgreSQL 15
+description: Start the digest-pinned test database with a second official registry on pull failure.
+inputs:
+  command:
+    description: start or stop
+    default: start
+  database:
+    description: Name of the disposable test database
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        POSTGRES_SERVICE_COMMAND: ${{ inputs.command }}
+        POSTGRES_SERVICE_DATABASE: ${{ inputs.database }}
+      run: python3 "$GITHUB_ACTION_PATH/postgres_service.py" "$POSTGRES_SERVICE_COMMAND" "$POSTGRES_SERVICE_DATABASE"
