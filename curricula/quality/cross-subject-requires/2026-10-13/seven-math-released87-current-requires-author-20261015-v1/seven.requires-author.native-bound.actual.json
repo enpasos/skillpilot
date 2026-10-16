@@ -1,0 +1,1126 @@
+{
+  "schemaVersion": 1,
+  "status": "author_candidate_pending_independent_review",
+  "bindingMethod": "exact-baseline-and-proposed-inputs-no-substantive-approval",
+  "sourceAuthorArtifact": "../seven.requires-author.unbound.actual.json",
+  "sourceAuthorSha256": "sha256:d872126ffa22a9708d607abcc22f07b0490eceb67738bf82e38d870ac5ea951c",
+  "baselineInventorySha256": "sha256:5eca6dd857835306d8c0be4302c8f04a3016cfcb2c3bdb825732776ba6785333",
+  "proposedStateSha256": "sha256:c35dc00918c9b2b8c00cb8a2cb7fd16e2e3338bf66e1c028936b07840ee32364",
+  "proposedGraphCycles": [],
+  "decisions": [
+    {
+      "decisionId": "seven-math-released87-current-author-3e53a39b-1c75-4034-a647-8de85719e1fb-20261015-v1",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "author": "Codex /root/seven_math_released87_current_requires_author; configured gpt-6.1-sol ultra; serving build unobserved",
+      "evidenceKind": "didacticSequencing",
+      "rationale": "The assessed performance is the translation between geometric incidence/equality markings and mathematical language, in both directions and under rotation. Parallelism, right angles, intersection, equal subangles and equal segment parts are mathematical properties. Their interpretation does not depend on light, forces, experimental instruments or any other Physics content. The full current profile requires both angle and segment bisection; neither is discarded. Thus the complete universal Physics prerequisite set is empty across the stated German Gymnasium scopes.",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/3e53a39b-1c75-4034-a647-8de85719e1fb.review.jsonl",
+          "recordId": "seven-math-requires-current-p-3e53a39b-20261015-v1",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+          "locator": "subjects[subject=mathematik].positiveEvidenceConfigPaths",
+          "supports": "scope"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "schoolType": "Gymnasium",
+            "jurisdictions": "all16DEasdeclaredbycurrentgoal",
+            "stage": "SekI",
+            "subject": "Mathematik",
+            "phase": "J7"
+          }
+        ],
+        "alternatives": [
+          {
+            "goalId": "3c8e5510-a12d-5770-8a01-e5fe741b259c",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "Reflection experiments use normals and angles but add empirical law and uncertainty obligations. Abstract incidence/bisection can be mastered before that experiment."
+          }
+        ]
+      },
+      "currentCandidateInputBindings": {
+        "wholeGoalSnapshotSha256": "sha256:189885f750e42749d909d80a3c9f0d52d5d9a716ab29ee471c556a1f0f14dd02",
+        "completePRecordSnapshotSha256": "sha256:f98dca7034ef0dc3d0d374e936d5783274d8d23aedb87250e06c443a953135af",
+        "nativePRecordSha256": "sha256:c763029c74a4a83af10d0e802119dcfcf9f0e6d7dba0b6b07ffcae4b5a4dab54",
+        "goalFingerprint": "sha256:d686e2a5a7cc58752f9e2205fbfb568e97fa13d9f9b6b94826556ae4d65a93ef",
+        "pReviewInputFingerprint": "sha256:99f47bc63759b247fd293dd3add789de010d2a90eda50d7295181d833dafbce7",
+        "pProfileFingerprint": "sha256:995d8858798baa07930fc91f749e98fcfd63cf74283d092780a8e95918a8941a",
+        "pStatus": "needs_human_review",
+        "pAuthority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "currentMainComparison": {
+        "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+        "candidateRequires": [
+          "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "mainRequires": [
+          "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+          "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "removedInternalIds": [
+          "121e3fdf-54d2-4d46-bc2d-f6e725f10f41"
+        ],
+        "otherChanges": [],
+        "activePPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/3e53a39b-1c75-4034-a647-8de85719e1fb.review.jsonl",
+        "mandatoryCaseIds": [
+          "marked-relations-not-to-scale",
+          "verbal-constraints-to-annotated-sketch"
+        ]
+      },
+      "internalRequiresRemovalAssessment": {
+        "verdict": "accept_exact_candidate_removed_internal_edges",
+        "rationale": "Remove the direct four-quadrant-figure prerequisite 121e3fdf: neither classification of marked relations nor an informal rotated sketch requires assigning or reading Cartesian coordinates. Keep the candidate relations prerequisite 2231c29b and orientation guard as supplied. This is a fresh affirmative judgement of the one removed edge, not a claim that all remaining Math edges are globally minimal.",
+        "removedGoalIds": [
+          "121e3fdf-54d2-4d46-bc2d-f6e725f10f41"
+        ],
+        "candidateInternalRequiresRetained": [
+          "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "nativeCrossSubjectProposalDoesNotRemoveInternalEdges": true
+      },
+      "workedMandatoryCases": [
+        {
+          "caseId": "marked-relations-not-to-scale",
+          "solution": "Arrow marks give g∥h. The square at h∩k gives h⊥k. The incidence of m and g gives intersection; absence of a square supplies no perpendicularity claim and by itself does not prove nonperpendicularity either. Equal arcs at S identify w as the bisector of angle uSv, with the ray inside that angle. AM=MB and M on AB identify its midpoint; line n through M bisects the segment and need not be perpendicular to AB. Each conclusion uses its stated marking, not the picture scale.",
+          "requirementsUsed": "Incidence, equality, angle and segment concepts; no coordinates or Physics law."
+        },
+        {
+          "caseId": "verbal-constraints-to-annotated-sketch",
+          "solution": "Choose distinct parallel p,q, mark their parallel arrows, draw r through q with a right-angle mark, and draw s crossing both p and r obliquely. At S=r∩s place v inside the chosen angle and mark the two subangles equal. Place X,M,Y collinearly with equal XM,MY tick marks. Rotate the entire figure and add two unmarked distractor lines. Label each incidence and equality: the five constraints survive rotation because the marks refer to the same objects. This is an informal consistent sketch, with no coordinate calculations or instrument-accuracy obligation.",
+          "requirementsUsed": "Geometric relation concepts and meaningful annotations."
+        }
+      ],
+      "ownFreshDiscriminators": [
+        {
+          "task": "A line n crosses XY at its midpoint M at an oblique angle. Is it a segment bisector, an angle bisector, or necessarily a perpendicular bisector?",
+          "solution": "It is a segment bisector from XM=MY; angle bisection needs separate equal-angle evidence; perpendicular bisection additionally needs a right angle. Equal lengths cannot establish that right angle.",
+          "purpose": "Tests the often-confused distinction without coordinate work or optics."
+        },
+        {
+          "task": "A rotated pair looks almost parallel but has no parallel statement or markings. Can a picture alone certify parallelism?",
+          "solution": "No. An ideal relation requires stated conditions/markings, not apparent horizontal alignment.",
+          "purpose": "Separates definition/annotation reasoning from visual guessing."
+        }
+      ],
+      "bothDirectionsConsidered": {
+        "MathDependentPhysicsPrerequisites": "complete_empty_set",
+        "PhysicsDependentMathPrerequisites": "The geometry language can support later Physics diagrams. This does not make reflection an antecedent of geometry or justify a new prerequisite on every optical goal; no Physics dependent is changed here.",
+        "PhysicsLedgerRecordsReauthored": 0
+      },
+      "completedUTC": "2026-10-15T04:47:25.557052+00:00",
+      "authority": "fresh_author_pending_independent_requires_review",
+      "reviewInput": {
+        "semanticSha256": "sha256:b4b9df5244981e0d61e698607312adb7cade2b56155e97cbc835e53a9b2564ab",
+        "prerequisitesSha256": "sha256:7dc03a67bd9ec166508b7a4e489dc302367ffdec208f9d8b1d437b56d8decb83",
+        "scopeSha256": "sha256:22b93071966d9030c5ea08f784c15c2b11f53c8d322b3fb52616611c5ae6d8d4"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:b4b9df5244981e0d61e698607312adb7cade2b56155e97cbc835e53a9b2564ab",
+          "prerequisitesSha256": "sha256:7dc03a67bd9ec166508b7a4e489dc302367ffdec208f9d8b1d437b56d8decb83",
+          "scopeSha256": "sha256:22b93071966d9030c5ea08f784c15c2b11f53c8d322b3fb52616611c5ae6d8d4"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:b4b9df5244981e0d61e698607312adb7cade2b56155e97cbc835e53a9b2564ab",
+          "prerequisitesSha256": "sha256:7dc03a67bd9ec166508b7a4e489dc302367ffdec208f9d8b1d437b56d8decb83",
+          "scopeSha256": "sha256:22b93071966d9030c5ea08f784c15c2b11f53c8d322b3fb52616611c5ae6d8d4"
+        },
+        "baselineRequires": [
+          "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "proposedRequires": [
+          "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "changesSha256": "sha256:3692703b2e213597d0ced2c9dd4bfa6085f1c47a07db0f10e99730af34d1eb72",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "seven-math-released87-current-author-fc047e6e-5d6d-460f-99fc-ade3a23b9a8e-20261015-v1",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "author": "Codex /root/seven_math_released87_current_requires_author; configured gpt-6.1-sol ultra; serving build unobserved",
+      "evidenceKind": "didacticSequencing",
+      "rationale": "All current obligations are Euclidean angle deductions from stated incidence/parallelism and a valid simple-polygon triangulation. The full profile includes the concave C-octagon and distinguishes it from both convex vertex fans and self-intersections. The proofs use geometric properties, not a physical propagation law or measurement result. The complete universal Physics prerequisite set is empty; the extra concavity case is not removed to reach that decision.",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/fc047e6e-5d6d-460f-99fc-ade3a23b9a8e.review.jsonl",
+          "recordId": "seven-math-requires-current-p-fc047e6e-20261015-v1",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+          "locator": "subjects[subject=mathematik].positiveEvidenceConfigPaths",
+          "supports": "scope"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "schoolType": "Gymnasium",
+            "jurisdictions": "all16DEasdeclaredbycurrentgoal",
+            "stage": "SekI",
+            "subject": "Mathematik",
+            "phase": "J7"
+          }
+        ],
+        "alternatives": [
+          {
+            "goalId": "3c8e5510-a12d-5770-8a01-e5fe741b259c",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "The equality of reflection angles is an empirical optics law; no reflection experiment is used to establish the Euclidean polygon sum."
+          }
+        ]
+      },
+      "currentCandidateInputBindings": {
+        "wholeGoalSnapshotSha256": "sha256:df3b8f0f26fa8377435db39a291e3c5468dbe2d4e1fc49afb5a210d90d656987",
+        "completePRecordSnapshotSha256": "sha256:ccd5ee9d3d3fc2ed1c36e7e3bbe6c517061650360d7b33f980d00416952bc5e8",
+        "nativePRecordSha256": "sha256:d7cf5906938899f26a0f293f6d1959e090680b278abc40af29ad086b663e6949",
+        "goalFingerprint": "sha256:e74256d7d55f0a954c7be30cd75e037712db87dc259450ef3aa0108f6f9556d1",
+        "pReviewInputFingerprint": "sha256:3285d2655fa4c78074e2b806b635f3c7cb2866eb9e8a10a10779c87f8f6a48ef",
+        "pProfileFingerprint": "sha256:d64514dc0c64ec2e165a43783846c0bfbcd481280e71554269722075dde86bbf",
+        "pStatus": "needs_human_review",
+        "pAuthority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "currentMainComparison": {
+        "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+        "candidateRequires": [
+          "3e53a39b-1c75-4034-a647-8de85719e1fb",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "mainRequires": [
+          "3e53a39b-1c75-4034-a647-8de85719e1fb",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "c31d3a7a-778b-5ae3-9aa4-7b5674047f83"
+        ],
+        "removedInternalIds": [
+          "c31d3a7a-778b-5ae3-9aa4-7b5674047f83"
+        ],
+        "otherChanges": [],
+        "activePPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/fc047e6e-5d6d-460f-99fc-ade3a23b9a8e.review.jsonl",
+        "mandatoryCaseIds": [
+          "parallel-angle-chain-transfer",
+          "hexagon-decomposition-transfer",
+          "concave-octagon-decomposition-transfer"
+        ]
+      },
+      "internalRequiresRemovalAssessment": {
+        "verdict": "accept_exact_candidate_removed_internal_edges",
+        "rationale": "Remove c31d3a7a as a compulsory predecessor: constructing parallel/perpendicular lines accurately with a set square or compass is a different performance from using given parallelism and choosing conceptual interior diagonals in a sketch. The current C-octagon expressly excludes an instrument-accuracy requirement. Keep 3e53a39b language and orientation as supplied. All eleven removal judgements are about those full predecessor competencies, not a ban on drawing.",
+        "removedGoalIds": [
+          "c31d3a7a-778b-5ae3-9aa4-7b5674047f83"
+        ],
+        "candidateInternalRequiresRetained": [
+          "3e53a39b-1c75-4034-a647-8de85719e1fb",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "nativeCrossSubjectProposalDoesNotRemoveInternalEdges": true
+      },
+      "workedMandatoryCases": [
+        {
+          "caseId": "parallel-angle-chain-transfer",
+          "solution": "With g∥h the specified alternate interior angle at B is 68°. Its adjacent supplementary angle is 180°−68°=112°. Removing the parallelism premise invalidates the equality of alternate angles; local supplementary-angle sums remain valid at an intersection, but the B angle is not fixed from the single A angle.",
+          "requirementsUsed": "Parallel-angle theorem and linear-pair theorem, not measured picture angles."
+        },
+        {
+          "caseId": "hexagon-decomposition-transfer",
+          "solution": "A convex six-gon admits four nonoverlapping interior triangles. Sum=4·180°=720°. Known angles add to 110+125+130+140+115=620°, hence the missing one is 100°. A self-intersecting boundary does not have the same simple interior decomposition or unqualified usual interior-angle convention.",
+          "requirementsUsed": "Triangle sum and a simple-polygon decomposition."
+        },
+        {
+          "caseId": "concave-octagon-decomposition-transfer",
+          "solution": "Represent the walk for checking as A(0,0),B(6,0),C(6,1),D(2,1),E(2,4),F(6,4),G(6,5),H(0,5). Interior diagonals AC,AD,DH,EH,EG give triangles ABC,ACD,ADH,DEH,EGH,EFG. Their areas are 3,2,5,3,3,2 and sum18, the area30−12 of the C region. These six triangles tile it without overlap; sum=6·180°=1080°. D and E have reflex interior angles270°, all six others90°: 540+540=1080°. AF contains (3,2), in the missing notch x>2,1<y<4; a fan from A therefore leaves the polygon. Coordinates here independently verify the verbal configuration; coordinate-figure mastery is not required by the goal or the sketch task.",
+          "requirementsUsed": "Boundary incidence, interior-diagonal checking, triangle sums and simple versus self-intersecting distinction."
+        }
+      ],
+      "ownFreshDiscriminators": [
+        {
+          "task": "A convex pentagon has four angles100°,110°,120°,95°. Find the last by decomposition; decide whether an arbitrary fan works in any concave polygon.",
+          "solution": "Three triangles give540°; four angles total425°, hence115°. Arbitrary fans can exit a concave polygon; test diagonals inside the region, not merely the number of vertices.",
+          "purpose": "Fresh polygon size and conceptual validity test independent of instrument construction."
+        },
+        {
+          "task": "An unmarked sketch of two lines suggests parallelism. May a 72° angle be copied by the alternate-angle theorem?",
+          "solution": "No, without a parallelism premise the second angle is undetermined. With the premise it is72°, with supplementary partner108°.",
+          "purpose": "Fresh condition discriminator preserving theorem-based argument."
+        }
+      ],
+      "bothDirectionsConsidered": {
+        "MathDependentPhysicsPrerequisites": "complete_empty_set",
+        "PhysicsDependentMathPrerequisites": "Angle reasoning can be used in Physics, but the polygon proof is not universally required for every angle-measurement task. No reverse Physics edge is invented from shared vocabulary.",
+        "PhysicsLedgerRecordsReauthored": 0
+      },
+      "completedUTC": "2026-10-15T04:47:25.557052+00:00",
+      "authority": "fresh_author_pending_independent_requires_review",
+      "reviewInput": {
+        "semanticSha256": "sha256:8dd85cf5bf79347ea4e6e10d9118325dc2d0657138bfb6a0169aae0405142aae",
+        "prerequisitesSha256": "sha256:06cf689596bb47f1a0efbcc9bef7020d1e6aea3529f768827f47b7b9ac8c056c",
+        "scopeSha256": "sha256:39493a5e6d7dc9ce8244cbcda12729ec4c3fc9a62116851dc1dc8f5031f5170a"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:8dd85cf5bf79347ea4e6e10d9118325dc2d0657138bfb6a0169aae0405142aae",
+          "prerequisitesSha256": "sha256:06cf689596bb47f1a0efbcc9bef7020d1e6aea3529f768827f47b7b9ac8c056c",
+          "scopeSha256": "sha256:39493a5e6d7dc9ce8244cbcda12729ec4c3fc9a62116851dc1dc8f5031f5170a"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:8dd85cf5bf79347ea4e6e10d9118325dc2d0657138bfb6a0169aae0405142aae",
+          "prerequisitesSha256": "sha256:06cf689596bb47f1a0efbcc9bef7020d1e6aea3529f768827f47b7b9ac8c056c",
+          "scopeSha256": "sha256:39493a5e6d7dc9ce8244cbcda12729ec4c3fc9a62116851dc1dc8f5031f5170a"
+        },
+        "baselineRequires": [
+          "3e53a39b-1c75-4034-a647-8de85719e1fb",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "proposedRequires": [
+          "3e53a39b-1c75-4034-a647-8de85719e1fb",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "changesSha256": "sha256:d3d6879ce9b266c898a1eec6203af811d799949abe59e26cba8f2b3a358a35c0",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "seven-math-released87-current-author-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-20261015-v1",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "author": "Codex /root/seven_math_released87_current_requires_author; configured gpt-6.1-sol ultra; serving build unobserved",
+      "evidenceKind": "didacticSequencing",
+      "rationale": "The full competence is invariant quantity under a unit change plus justified comparison after normalization, including choosing a sensible unit and nondecimal time. Everyday length, mass, money and time supply mathematical unit relations without first explaining the SI system, selecting a physical apparatus or knowing experimental uncertainty. Hence no universal Physics predecessor is necessary. The task is not reduced to decimal shifting.",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/f2e42af5-67a6-477e-82ea-e65b09cc6cb3.review.jsonl",
+          "recordId": "seven-math-requires-current-p-f2e42af5-20261015-v1",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+          "locator": "subjects[subject=mathematik].positiveEvidenceConfigPaths",
+          "supports": "scope"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "schoolType": "Gymnasium",
+            "jurisdictions": "all16DEasdeclaredbycurrentgoal",
+            "stage": "SekI",
+            "subject": "Mathematik",
+            "phase": "J5"
+          }
+        ],
+        "alternatives": [
+          {
+            "goalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "Explaining the SI system in physical examples is broader domain context and excludes money; no such explanation is needed for mathematical conversion."
+          }
+        ]
+      },
+      "currentCandidateInputBindings": {
+        "wholeGoalSnapshotSha256": "sha256:c7ad13b0be7e1839fcbf46bf9eb401430e0f80f57a6cfbb04522bd6fa775c4f5",
+        "completePRecordSnapshotSha256": "sha256:82bf55a639097b56744e9df45da94f03cf37f4b35a3c2b2eecdd26d08bac4d93",
+        "nativePRecordSha256": "sha256:277205db162555902b3a1ff62be1eea600597cf84389d278e09e392a81f3a611",
+        "goalFingerprint": "sha256:23041be80ac0e2a1a6e140e7c061e62fd364e856734c0cb0872bbb93c6c7192c",
+        "pReviewInputFingerprint": "sha256:f50540d5780c1bd1b807f8ce084139ace1e748ed0aedfed3d373669b2b4b6fad",
+        "pProfileFingerprint": "sha256:9bf78ebdbf7d2177c99ac7e9b497fc97d65dae6b1d14fb8205b25ea2c58e519f",
+        "pStatus": "needs_human_review",
+        "pAuthority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "currentMainComparison": {
+        "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+        "candidateRequires": [
+          "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+          "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+          "191c67db-44a8-4f63-994a-d85e8e301194",
+          "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+          "54148506-c23f-41b8-959b-068dd194cf15",
+          "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+          "2ae76eae-799c-463e-9ec9-82327f8209a8",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "mainRequires": [
+          "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+          "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+          "191c67db-44a8-4f63-994a-d85e8e301194",
+          "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+          "54148506-c23f-41b8-959b-068dd194cf15",
+          "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+          "2ae76eae-799c-463e-9ec9-82327f8209a8",
+          "b5de0574-93ed-409c-80ee-312211420cd6",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "removedInternalIds": [
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+          "b5de0574-93ed-409c-80ee-312211420cd6"
+        ],
+        "otherChanges": [],
+        "activePPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/f2e42af5-67a6-477e-82ea-e65b09cc6cb3.review.jsonl",
+        "mandatoryCaseIds": [
+          "mixed-lengths",
+          "mixed-time-sixty-factor-check"
+        ]
+      },
+      "internalRequiresRemovalAssessment": {
+        "verdict": "accept_exact_candidate_removed_internal_edges",
+        "rationale": "Remove 1a25ef44,8d1bb6ce,b5de0574: proving natural-number unboundedness, general integer assertions/counterexamples, and heuristic integer problem solving are not compulsory antecedents of a justified concrete unit conversion. Checking the false120-min display uses 60+20, not the full general integer-proof goal; explaining a conversion does not certify a general integer strategy competency. All eight candidate arithmetic/unit/orientation guards remain unchanged and are not reclassified here.",
+        "removedGoalIds": [
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+          "b5de0574-93ed-409c-80ee-312211420cd6"
+        ],
+        "candidateInternalRequiresRetained": [
+          "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+          "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+          "191c67db-44a8-4f63-994a-d85e8e301194",
+          "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+          "54148506-c23f-41b8-959b-068dd194cf15",
+          "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+          "2ae76eae-799c-463e-9ec9-82327f8209a8",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "nativeCrossSubjectProposalDoesNotRemoveInternalEdges": true
+      },
+      "workedMandatoryCases": [
+        {
+          "caseId": "mixed-lengths",
+          "solution": "Using1m=100cm and1km=1000m, obtain2.35m,2.28m,2.4m. Ascending order:228cm<2.35m<0.0024km. A smaller chosen unit gives a correspondingly larger number while the same segment is described;228 is not a length without its unit.",
+          "requirementsUsed": "Given/equivalent length relations, arithmetic and comparison."
+        },
+        {
+          "caseId": "mixed-time-sixty-factor-check",
+          "solution": "1h20min=60min+20min=80min. The display120min would mean2h and is false.80min−75min=5min, so the first journey lasts5min longer. Its actual duration is unchanged by expressing it in minutes; the hour-minute relation is60, not100.",
+          "requirementsUsed": "Nondecimal unit relation and addition/subtraction."
+        }
+      ],
+      "ownFreshDiscriminators": [
+        {
+          "task": "Compare0.65kg and640g; choose a sensible common unit and explain why conversion changes no mass.",
+          "solution": "0.65kg=650g>640g by10g; grams are1/1000 of a kilogram, so the numerical value multiplies by1000 while describing the same mass. Weighing equipment knowledge is unnecessary because measurements are supplied.",
+          "purpose": "Fresh mass-type transfer tests invariant quantity, rather than a length-only decimal rule."
+        },
+        {
+          "task": "Are2€35ct and235ct equal, and is1h35min equal to135min?",
+          "solution": "Money:yes, since1€=100ct. Time:no,1h35min=95min. Distinct unit ratios forbid carrying the decimal money rule to clock time.",
+          "purpose": "Covers money and the nondecimal ratio discriminator without an integer-infinity proof."
+        }
+      ],
+      "bothDirectionsConsidered": {
+        "MathDependentPhysicsPrerequisites": "complete_empty_set",
+        "PhysicsDependentMathPrerequisites": "There is an actual incoming Physics edge:44f0eefa-2d93-5954-879f-f6c49e5cebc7 requires this units goal. For a supplied H0=70km s^-1 Mpc^-1 and1Mpc=3.086e19km,1/H0=4.4086e17s≈13.97Gyr with1yr=365.25·86400s. Unit normalization is essential to this estimate; the current edge remains scientifically plausible and untouched. The simplifying constant-expansion interpretation is separate Physics evidence and cannot be certified by mastering conversions. No wholesale reapproval of that Physics goal or its full P is claimed.",
+        "PhysicsLedgerRecordsReauthored": 0
+      },
+      "completedUTC": "2026-10-15T04:47:25.557052+00:00",
+      "authority": "fresh_author_pending_independent_requires_review",
+      "reviewInput": {
+        "semanticSha256": "sha256:74013f90efd5d46be70b1c99dd3235cb8f1d3e085424875f39d65f54098a0ccf",
+        "prerequisitesSha256": "sha256:b05b0d9457eec4ce4ee1ea972cd259d6be7571bd1c823a901e3fd791735c4c62",
+        "scopeSha256": "sha256:2b9545d3f290722ae2eeb64ac266482fe35b5a61dde24e0ba02af2bc6b329905"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:74013f90efd5d46be70b1c99dd3235cb8f1d3e085424875f39d65f54098a0ccf",
+          "prerequisitesSha256": "sha256:b05b0d9457eec4ce4ee1ea972cd259d6be7571bd1c823a901e3fd791735c4c62",
+          "scopeSha256": "sha256:2b9545d3f290722ae2eeb64ac266482fe35b5a61dde24e0ba02af2bc6b329905"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:74013f90efd5d46be70b1c99dd3235cb8f1d3e085424875f39d65f54098a0ccf",
+          "prerequisitesSha256": "sha256:b05b0d9457eec4ce4ee1ea972cd259d6be7571bd1c823a901e3fd791735c4c62",
+          "scopeSha256": "sha256:2b9545d3f290722ae2eeb64ac266482fe35b5a61dde24e0ba02af2bc6b329905"
+        },
+        "baselineRequires": [
+          "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+          "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+          "191c67db-44a8-4f63-994a-d85e8e301194",
+          "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+          "54148506-c23f-41b8-959b-068dd194cf15",
+          "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+          "2ae76eae-799c-463e-9ec9-82327f8209a8",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "proposedRequires": [
+          "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+          "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+          "191c67db-44a8-4f63-994a-d85e8e301194",
+          "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+          "54148506-c23f-41b8-959b-068dd194cf15",
+          "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+          "2ae76eae-799c-463e-9ec9-82327f8209a8",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "changesSha256": "sha256:80f1d8ef5a867491734be279d66d44e0c5f3502dd30d403e35ac16e8c566c219",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "seven-math-released87-current-author-7156558c-57f1-4372-9ba7-0640c3f7cb3a-20261015-v1",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "author": "Codex /root/seven_math_released87_current_requires_author; configured gpt-6.1-sol ultra; serving build unobserved",
+      "evidenceKind": "didacticSequencing",
+      "rationale": "The current profile explicitly requires finite difference quotients, near-point quotients, secant-to-tangent reasoning, signs and the units in a supplied height model. All can be derived from the given functions. A real gravitational law, experimental motion determination or a Physics velocity definition is not an antecedent of this mathematical derivative entry. Even the negative height rate is interpreted as change per second from the model itself. The complete universal Physics prerequisite set is empty.",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/7156558c-57f1-4372-9ba7-0640c3f7cb3a.review.jsonl",
+          "recordId": "seven-math-requires-current-p-7156558c-20261015-v1",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+          "locator": "subjects[subject=mathematik].positiveEvidenceConfigPaths",
+          "supports": "scope"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "schoolType": "Gymnasium",
+            "jurisdictions": "all16DEasdeclaredbycurrentgoal",
+            "stage": "SekI",
+            "subject": "Mathematik",
+            "phase": "J10"
+          }
+        ],
+        "alternatives": [
+          {
+            "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "Physics distinguishes actual average/instantaneous velocity in a time-position diagram. Requiring that first would reverse the mathematical dependency and impose motion on a general function concept."
+          }
+        ]
+      },
+      "currentCandidateInputBindings": {
+        "wholeGoalSnapshotSha256": "sha256:65450a7ae537a542b203862a8f723ad2b6486eb0abc6000737a1edba41b0df44",
+        "completePRecordSnapshotSha256": "sha256:0bb3bf490b9d7425ad833602df2fe904def6c54a285bb1c31679c0518a4b7fcd",
+        "nativePRecordSha256": "sha256:b59e8d6658e08528bbd7a7e802e4a823b308b2027fb99abbc3d3e54b978aaca1",
+        "goalFingerprint": "sha256:23691ece3c71e7fd248d55df6dc2acff9a3b56bee73d796f62dffcaa113c4da0",
+        "pReviewInputFingerprint": "sha256:3cde1a7f392d74716888cbd62ab1b4dec8efef47aebe808e244477eec98b4417",
+        "pProfileFingerprint": "sha256:982cb4b145ccbf9a1fb96c19b62d8dc648bddc745039e36759488e68db3899da",
+        "pStatus": "needs_human_review",
+        "pAuthority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "currentMainComparison": {
+        "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+        "candidateRequires": [
+          "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "mainRequires": [
+          "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+          "7bff61c1-1a69-4991-97de-0cff764f507e",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "removedInternalIds": [
+          "7bff61c1-1a69-4991-97de-0cff764f507e"
+        ],
+        "otherChanges": [],
+        "activePPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/7156558c-57f1-4372-9ba7-0640c3f7cb3a.review.jsonl",
+        "mandatoryCaseIds": [
+          "square-near-one",
+          "falling-height"
+        ]
+      },
+      "internalRequiresRemovalAssessment": {
+        "verdict": "accept_exact_candidate_removed_internal_edges",
+        "rationale": "Remove7bff61c1 as the full prerequisite. Neither mandatory case needs choosing among standard, vertex and factorized quadratic forms for their respective advantages. Substitution, expansion and cancellation in a supplied expression suffice. Keep graph behavioura1c79897, linear slopeaf3d6bff and orientation exactly as the candidate does. This does not claim that elementary algebra can be skipped.",
+        "removedGoalIds": [
+          "7bff61c1-1a69-4991-97de-0cff764f507e"
+        ],
+        "candidateInternalRequiresRetained": [
+          "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "nativeCrossSubjectProposalDoesNotRemoveInternalEdges": true
+      },
+      "workedMandatoryCases": [
+        {
+          "caseId": "square-near-one",
+          "solution": "f(1)=1,f(2)=4, so the finite secant slope is3. Forh>0,[(1+h)^2−1]/h=(2h+h²)/h=2+h. As the second point approaches(1,1),h→0+ and the slopes tend2; this is the tangent slope. This entry motivates the local rate; it does not use the derivative rule as its premise.",
+          "requirementsUsed": "Function values, algebraic difference quotient and linear slope interpretation."
+        },
+        {
+          "caseId": "falling-height",
+          "solution": "H(2)=6m,H(3)=1m;ΔH/Δt=−5m/s. H(2+h)−H(2)=−4h−h², so quotient=−4−h m/s for nonzeroh and limit−4m/s. At t=2 the model height decreases at4m per second; minus encodes decrease, not a negative magnitude of speed. No claim is made that10−t² is the terrestrial free-fall law.",
+          "requirementsUsed": "Supplied model, signed rate and unit quotient."
+        }
+      ],
+      "ownFreshDiscriminators": [
+        {
+          "task": "Usef(x)=x³ atx=1. Compute the quotient from1 to1+h and interpret its limit without invoking a ready derivative formula.",
+          "solution": "[(1+h)^3−1]/h=3+3h+h² for h≠0, tending3. This gives slope3 at(1,1); it does not involve quadratic-form selection at all.",
+          "purpose": "Fresh function family distinguishes derivative concept from the removed quadratic-representation competency."
+        },
+        {
+          "task": "ForP(t)=7−2t, compare the average rate over[1,4] with a short-interval rate near1.",
+          "solution": "Both equal−2 per unit time; a straight-line graph has the same secant and tangent slope. A physical motion scenario is optional.",
+          "purpose": "Tests rate interpretation without mechanics."
+        }
+      ],
+      "bothDirectionsConsidered": {
+        "MathDependentPhysicsPrerequisites": "complete_empty_set",
+        "PhysicsDependentMathPrerequisites": "This entry may prepare later Physics velocity work, but the current Physics goal already has different exact Math predecessorsae20183e andb1dcc191. Those bodies and their full profiles were not reauthored here; shared secant/tangent words do not justify adding a duplicate edge to7156558c. No Physics prerequisite set is changed.",
+        "PhysicsLedgerRecordsReauthored": 0
+      },
+      "completedUTC": "2026-10-15T04:47:25.557052+00:00",
+      "authority": "fresh_author_pending_independent_requires_review",
+      "reviewInput": {
+        "semanticSha256": "sha256:09d7767d81a3dba402ecab952dbfb73425e3a6de744572055b75fbd77c630b5f",
+        "prerequisitesSha256": "sha256:7cdf92db6b9777508390194fadb9cc73c9d05cc70423925e4d1e2c0cadec5efd",
+        "scopeSha256": "sha256:112b154272a1c424284efaa970a0ebf46486e6b29995aea61806651a8c0cd1d1"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:09d7767d81a3dba402ecab952dbfb73425e3a6de744572055b75fbd77c630b5f",
+          "prerequisitesSha256": "sha256:7cdf92db6b9777508390194fadb9cc73c9d05cc70423925e4d1e2c0cadec5efd",
+          "scopeSha256": "sha256:112b154272a1c424284efaa970a0ebf46486e6b29995aea61806651a8c0cd1d1"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:09d7767d81a3dba402ecab952dbfb73425e3a6de744572055b75fbd77c630b5f",
+          "prerequisitesSha256": "sha256:7cdf92db6b9777508390194fadb9cc73c9d05cc70423925e4d1e2c0cadec5efd",
+          "scopeSha256": "sha256:112b154272a1c424284efaa970a0ebf46486e6b29995aea61806651a8c0cd1d1"
+        },
+        "baselineRequires": [
+          "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "proposedRequires": [
+          "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "changesSha256": "sha256:5d2e5185091d218af762cebcca0864f537934a0bc2796cf4077d4fdaaa04c03a",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "seven-math-released87-current-author-42e19186-6769-41ac-a7bf-ab39bdb50661-20261015-v1",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "author": "Codex /root/seven_math_released87_current_requires_author; configured gpt-6.1-sol ultra; serving build unobserved",
+      "evidenceKind": "didacticSequencing",
+      "rationale": "The current complete profile requires constructing a term, three table values and a fresh qualitative graph for both decay and growth, and interpreting parameters and model limits. A battery measured inWh is a supplied idealized amount: the problem supplies its25% hourly loss and asks no circuit, voltage, power or energy-law explanation. The culture model similarly supplies its data. These are mathematical exponential models; no Physics goal is universally necessary.",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/42e19186-6769-41ac-a7bf-ab39bdb50661.review.jsonl",
+          "recordId": "seven-math-requires-current-p-42e19186-20261015-v1",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+          "locator": "subjects[subject=mathematik].positiveEvidenceConfigPaths",
+          "supports": "scope"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "schoolType": "Gymnasium",
+            "jurisdictions": "all16DEasdeclaredbycurrentgoal",
+            "stage": "SekI",
+            "subject": "Mathematik",
+            "phase": "J10"
+          }
+        ],
+        "alternatives": [
+          {
+            "goalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "Statistical radioactive half-life is one particular application; neither the supplied battery law nor culture table depends on nuclear ensembles."
+          },
+          {
+            "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "Choosing/verifying an exponential solution of a physical differential equation is a later calculus task, absent from this profile."
+          }
+        ]
+      },
+      "currentCandidateInputBindings": {
+        "wholeGoalSnapshotSha256": "sha256:e8fdb24e28b88a70ab96802d7ccacdb7b3a92b86c03003e6dc4df05eb3878e87",
+        "completePRecordSnapshotSha256": "sha256:eeec5245514393bad544fa41d5f3369e2edb19797923438bd8a096e4e6d596f7",
+        "nativePRecordSha256": "sha256:fc01155a12da267659a4ddd6c906c1309ade2de7d378a038fb1f936e469fe1fe",
+        "goalFingerprint": "sha256:207a4ce985f183f29898b3f53a2e877262aae925b9eef3a3cec0b06524c04e02",
+        "pReviewInputFingerprint": "sha256:e819e48f70c342067a63c47d963b252b7c31223c78d5431b11886eb0f9d79125",
+        "pProfileFingerprint": "sha256:e4d623bf2bb706fcdb50c72f8fbec5294d0b4b9fc08a34b842cb40d38d6d15b5",
+        "pStatus": "needs_human_review",
+        "pAuthority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "currentMainComparison": {
+        "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+        "candidateRequires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "mainRequires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "removedInternalIds": [
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7"
+        ],
+        "otherChanges": [],
+        "activePPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/42e19186-6769-41ac-a7bf-ab39bdb50661.review.jsonl",
+        "mandatoryCaseIds": [
+          "battery-capacity",
+          "growing-culture-transfer"
+        ]
+      },
+      "internalRequiresRemovalAssessment": {
+        "verdict": "accept_exact_candidate_removed_internal_edges",
+        "rationale": "Remove2f598bc7 andeb28b403. Finding the intersection of two linear functions and recognizing translated/stretched/reflected power/root graphs are not needed to buildB0q^t, evaluate values or explain its qualitative trend. Retain the candidate linear-function, function-value, rational-exponent and orientation guards. The loss/growth direction and three-representation requirement are retained in full.",
+        "removedGoalIds": [
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7"
+        ],
+        "candidateInternalRequiresRetained": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "nativeCrossSubjectProposalDoesNotRemoveInternalEdges": true
+      },
+      "workedMandatoryCases": [
+        {
+          "caseId": "battery-capacity",
+          "solution": "Witht measured in hours,B(t)=200·0.75^t Wh. t=0,1,2 gives200,150,112.5Wh. Losses are50then37.5Wh because25% acts on the remaining stock. The graph starts at(0,200), decreases and flattens, staying positive for finite modeled time. This ideal law does not prove the behaviour of a real battery at every time; no circuit law was used.",
+          "requirementsUsed": "Percentage factor, exponentiation, values, units and graph shape."
+        },
+        {
+          "caseId": "growing-culture-transfer",
+          "solution": "60/40=90/60=1.5. N(t)=40·1.5^t for hours t, with values40,60,90. Gains20and30differ because each is50% of the current amount. Sketch an increasing graph with increasingly steep increments through these points. This finite model table does not establish unlimited real growth or integer-valued cells at every real instant.",
+          "requirementsUsed": "Ratio and representation transfer."
+        }
+      ],
+      "ownFreshDiscriminators": [
+        {
+          "task": "A machine account begins with500tokens and retains80% per day. Give a term and days0,1,2; contrast a line losing100tokens per day.",
+          "solution": "E(d)=500·0.8^d gives500,400,320; L(d)=500−100d gives500,400,300. The first step coincides, but the second distinguishes shrinking absolute losses from a fixed loss. Exponential stays positive; the linear rule eventually leaves the nonnegative account context.",
+          "purpose": "Fresh nonphysical context tests factor, parameter and graph interpretation without line-intersection solving or power/root transformations."
+        }
+      ],
+      "bothDirectionsConsidered": {
+        "MathDependentPhysicsPrerequisites": "complete_empty_set",
+        "PhysicsDependentMathPrerequisites": "Later Physics models can use exponential representations, but neither every half-life explanation nor every physicsDGL task requires this exact Sek-I goal as an added direct edge. Their complete P bodies and other nominees would need their own current review. No reverse edge or implied mastery is created.",
+        "PhysicsLedgerRecordsReauthored": 0
+      },
+      "completedUTC": "2026-10-15T04:47:25.557052+00:00",
+      "authority": "fresh_author_pending_independent_requires_review",
+      "reviewInput": {
+        "semanticSha256": "sha256:9563aa0deb804c84ada3401a455fcfedb8ac15bd252853211356f250323f7ddf",
+        "prerequisitesSha256": "sha256:b436d2787bbd093b6e980dfd645322f0d8a1aff2519ca90a9e1ad63ccc6eb925",
+        "scopeSha256": "sha256:311d92a5305ca4cdc1e1770abb48eb7aee414a3a200fb1f3bb7974ccad73987a"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:9563aa0deb804c84ada3401a455fcfedb8ac15bd252853211356f250323f7ddf",
+          "prerequisitesSha256": "sha256:b436d2787bbd093b6e980dfd645322f0d8a1aff2519ca90a9e1ad63ccc6eb925",
+          "scopeSha256": "sha256:311d92a5305ca4cdc1e1770abb48eb7aee414a3a200fb1f3bb7974ccad73987a"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:9563aa0deb804c84ada3401a455fcfedb8ac15bd252853211356f250323f7ddf",
+          "prerequisitesSha256": "sha256:b436d2787bbd093b6e980dfd645322f0d8a1aff2519ca90a9e1ad63ccc6eb925",
+          "scopeSha256": "sha256:311d92a5305ca4cdc1e1770abb48eb7aee414a3a200fb1f3bb7974ccad73987a"
+        },
+        "baselineRequires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "proposedRequires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "changesSha256": "sha256:f9be8dd01c92944d116a15218c3328cfe4c307d66028ed0fa9bc5ae2ddeb22b8",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "seven-math-released87-current-author-3010d965-b9b9-4dc5-9d04-d706725e9a30-20261015-v1",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "author": "Codex /root/seven_math_released87_current_requires_author; configured gpt-6.1-sol ultra; serving build unobserved",
+      "evidenceKind": "didacticSequencing",
+      "rationale": "This concept goal requires comparing several differences and ratios, including two laws with a common first step, and explaining increase/decay graph shapes. Both whole expectations and both mandatory cases are mathematical tests of the rule over equal input steps. Physical causal models are unnecessary; time may merely label the steps. The complete universal Physics prerequisite set is empty.",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/3010d965-b9b9-4dc5-9d04-d706725e9a30.review.jsonl",
+          "recordId": "seven-math-requires-current-p-3010d965-20261015-v1",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+          "locator": "subjects[subject=mathematik].positiveEvidenceConfigPaths",
+          "supports": "scope"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "schoolType": "Gymnasium",
+            "jurisdictions": "all16DEasdeclaredbycurrentgoal",
+            "stage": "SekI",
+            "subject": "Mathematik",
+            "phase": "J10"
+          }
+        ],
+        "alternatives": [
+          {
+            "goalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "The stochastic nuclear interpretation is domain-specific and not required for testing numerical change rules."
+          }
+        ]
+      },
+      "currentCandidateInputBindings": {
+        "wholeGoalSnapshotSha256": "sha256:6ad40a9995ed927c50bd920e6c2e7a530601c16a070c0bc7d80bfc39db1966e5",
+        "completePRecordSnapshotSha256": "sha256:ae02caaa1c4e23026071bd2beb560860f201a4d01e1af3bb47c9b2b236cff7f1",
+        "nativePRecordSha256": "sha256:d6aa21071e8b78b68865595e8366c3e7d019159beb811a6697c2f01e17787d8f",
+        "goalFingerprint": "sha256:8968498dd5be0578af5ab7d2bdceac94ca0e14aac2b95eeb98cc4b54ec903871",
+        "pReviewInputFingerprint": "sha256:2ac12167837dd66ed1ac44074406d3dc94b3c974be473e3f5c996dec295ba226",
+        "pProfileFingerprint": "sha256:5d7416788b6cdd26c10442e2971c5eb16f6b3df7ea92f2926b10338c5b72f879",
+        "pStatus": "needs_human_review",
+        "pAuthority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "currentMainComparison": {
+        "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+        "candidateRequires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "mainRequires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "removedInternalIds": [
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7"
+        ],
+        "otherChanges": [],
+        "activePPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/3010d965-b9b9-4dc5-9d04-d706725e9a30.review.jsonl",
+        "mandatoryCaseIds": [
+          "same-first-step-different-law",
+          "decay-transfer"
+        ]
+      },
+      "internalRequiresRemovalAssessment": {
+        "verdict": "accept_exact_candidate_removed_internal_edges",
+        "rationale": "Remove2f598bc7 andeb28b403: testing differences versus ratios and connecting the rule with graph shape does not require solving line intersections or knowing power/root transformations. A shared initial point is not a demand to calculate an intersection; it is evidence that one step cannot identify a law. All four candidate prerequisites remain as supplied.",
+        "removedGoalIds": [
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7"
+        ],
+        "candidateInternalRequiresRetained": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "nativeCrossSubjectProposalDoesNotRemoveInternalEdges": true
+      },
+      "workedMandatoryCases": [
+        {
+          "caseId": "same-first-step-different-law",
+          "solution": "A20,25,30,35 has differences5,5,5 and varying ratios1.25,1.2,7/6; it is linear. B20,25,31.25,39.0625 has ratio1.25at each equal step and increasing gains5,6.25,7.8125; it is exponential growth. Identical first two values do not decide which law continues.",
+          "requirementsUsed": "Several arithmetic comparisons and distinction between absolute/relative change."
+        },
+        {
+          "caseId": "decay-transfer",
+          "solution": "100,80,64,51.2 has factors0.8,0.8,0.8 and differences−20,−16,−12.8. With positive initial amount its exponential curve decreases but flattens; a line descending by20each time would instead give100,80,60,40and cross zero after five steps. Thus a constant negative difference is the wrong continuation.",
+          "requirementsUsed": "Ratio/difference comparison and qualitative graph reasoning."
+        }
+      ],
+      "ownFreshDiscriminators": [
+        {
+          "task": "Sequences start12,18. One has a constant difference, the other a constant factor. Give two more terms for each and explain why the shared first step is insufficient.",
+          "solution": "Linear gives24,30by+6; exponential gives27,40.5by×1.5. A single transition admits both; checking the next transitions separates them.",
+          "purpose": "Fresh common-first-step evidence without intersection solving."
+        },
+        {
+          "task": "64,32,16,8 is compared with64,32,0,−32. Which can be positive exponential decay?",
+          "solution": "The first has constant factor1/2 and decreasing absolute losses; the second has constant difference−32 and is linear. Positive exponential decay does not reach zero in finite steps.",
+          "purpose": "Independent decay graph/sign discriminator with no physical radioactivity premise."
+        }
+      ],
+      "bothDirectionsConsidered": {
+        "MathDependentPhysicsPrerequisites": "complete_empty_set",
+        "PhysicsDependentMathPrerequisites": "The factor/difference distinction can support later Physics model selection, but neither broad overlap nor using the word decay makes it a universal direct predecessor of all radioactivity content. No new Physics edge is asserted.",
+        "PhysicsLedgerRecordsReauthored": 0
+      },
+      "completedUTC": "2026-10-15T04:47:25.557052+00:00",
+      "authority": "fresh_author_pending_independent_requires_review",
+      "reviewInput": {
+        "semanticSha256": "sha256:8f94968f3a3a93df9d488f67d87b91696b25c7ccc78486d80a14e87670ca0d51",
+        "prerequisitesSha256": "sha256:ab8464cb11de0559cf914436f962eb4680907eb4679c47799113f7ec73b099a5",
+        "scopeSha256": "sha256:fb9cf8cb3bcd591587409400512ec373fbbcfca293978a200086ca60552dec75"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:8f94968f3a3a93df9d488f67d87b91696b25c7ccc78486d80a14e87670ca0d51",
+          "prerequisitesSha256": "sha256:ab8464cb11de0559cf914436f962eb4680907eb4679c47799113f7ec73b099a5",
+          "scopeSha256": "sha256:fb9cf8cb3bcd591587409400512ec373fbbcfca293978a200086ca60552dec75"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:8f94968f3a3a93df9d488f67d87b91696b25c7ccc78486d80a14e87670ca0d51",
+          "prerequisitesSha256": "sha256:ab8464cb11de0559cf914436f962eb4680907eb4679c47799113f7ec73b099a5",
+          "scopeSha256": "sha256:fb9cf8cb3bcd591587409400512ec373fbbcfca293978a200086ca60552dec75"
+        },
+        "baselineRequires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "proposedRequires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "changesSha256": "sha256:f8f7c346edf3f35905f073fef8393a31d623984e2ad93e5d1e2c29b6f16ca107",
+        "prerequisiteInputs": []
+      }
+    },
+    {
+      "decisionId": "seven-math-released87-current-author-3c1d6ce7-099e-4267-9ff2-3d1526209a89-20261015-v1",
+      "familyId": "canonical-gymnasium",
+      "dependentGoalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "prerequisiteGoalIds": [],
+      "decision": "no_cross_subject_required",
+      "author": "Codex /root/seven_math_released87_current_requires_author; configured gpt-6.1-sol ultra; serving build unobserved",
+      "evidenceKind": "didacticSequencing",
+      "rationale": "The complete current profile demands inverse-exponent meaning in both directions, domain conditions, exact positive and negative exponents, and a checked digital approximation. These are real-number operations. Sound intensity, radioactive decay or exponential differential equations are possible uses, not necessary sources of the definition. There is no universal Physics antecedent. General positive bases other than1, including bases below1, remain in scope.",
+      "sourceRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "recordId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/3c1d6ce7-099e-4267-9ff2-3d1526209a89.review.jsonl",
+          "recordId": "seven-math-requires-current-p-3c1d6ce7-20261015-v1",
+          "supports": "goalSemantics"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+          "locator": "subjects[subject=mathematik].positiveEvidenceConfigPaths",
+          "supports": "scope"
+        }
+      ],
+      "applicability": {
+        "universality": "allDependentScopes",
+        "scopes": [
+          {
+            "schoolType": "Gymnasium",
+            "jurisdictions": "all16DEasdeclaredbycurrentgoal",
+            "stage": "SekI",
+            "subject": "Mathematik",
+            "phase": "J10"
+          }
+        ],
+        "alternatives": [
+          {
+            "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "A physical exponentialDGL solution is a later application and is not needed to invert a power."
+          },
+          {
+            "goalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+            "verdict": "reject_as_universal_prerequisite",
+            "reason": "Interpreting statistical half-life does not define logarithms and is not needed in the nonphysical log cases."
+          }
+        ]
+      },
+      "currentCandidateInputBindings": {
+        "wholeGoalSnapshotSha256": "sha256:5cafb778facf9a03f10ed3fcdd4aaa5628e6048b046edd44d9fe58191afb3281",
+        "completePRecordSnapshotSha256": "sha256:ecec32084babf48f88176ef72eb02d4c7972d92cb14a317db830ec3c4182d09d",
+        "nativePRecordSha256": "sha256:b26d23a38f25086adcf33902695137a92a11139e3ca4ff63c84e072949caa86a",
+        "goalFingerprint": "sha256:107c0d9336dce6a209fd51bbacc958e38f2065a95fea06f850e26c140f07a496",
+        "pReviewInputFingerprint": "sha256:e81464be389f9a937e6b5065a46ef4642e8d0a5e7cb61a79320e0b11863ab777",
+        "pProfileFingerprint": "sha256:5a65598a1edabc92a9690c0739215fd570317170ddccda03f62e3ff80ed15dca",
+        "pStatus": "needs_human_review",
+        "pAuthority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "currentMainComparison": {
+        "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "candidateRequires": [
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "mainRequires": [
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "removedInternalIds": [
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7"
+        ],
+        "otherChanges": [],
+        "activePPath": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/seven-math-requires-reviewed-portable-v1/P-current/3c1d6ce7-099e-4267-9ff2-3d1526209a89.review.jsonl",
+        "mandatoryCaseIds": [
+          "exact-simple-values",
+          "digital-approximation-transfer"
+        ]
+      },
+      "internalRequiresRemovalAssessment": {
+        "verdict": "accept_exact_candidate_removed_internal_edges",
+        "rationale": "Removeeb28b403: shifts, stretches and reflections of power/root graphs are not required forlog_b(z)=x iff b^x=z or checking a calculator approximation. Retain rational-exponent88abc886 and orientation unchanged, since rational/negative exponent meaning remains essential to the stated definition work. This does not replace the full profile by memorized integer logarithms.",
+        "removedGoalIds": [
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7"
+        ],
+        "candidateInternalRequiresRetained": [
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "nativeCrossSubjectProposalDoesNotRemoveInternalEdges": true
+      },
+      "workedMandatoryCases": [
+        {
+          "caseId": "exact-simple-values",
+          "solution": "3^4=81implieslog_3(81)=4;2^(−3)=1/8implieslog_2(1/8)=−3. In each case the base is positive and not1 and the argument is positive. The result is the exponent; the negative result is allowed although the argument must remain positive.",
+          "requirementsUsed": "Exponentiation and its inverse, with domain conditions."
+        },
+        {
+          "caseId": "digital-approximation-transfer",
+          "solution": "2²=4<7<8=2³, hence2<log_2(7)<3. A digital evaluation gives2.807354922057604; to three decimals2.807, and2^2.807≈6.9983, consistent with rounding. log_1(7) has no defining exponent because1^x=1;log_2(−7)has none because2^x>0for all realx. Both are undefined as the stated real logarithms.",
+          "requirementsUsed": "Calculator approximation, bounding powers and domain reasoning."
+        }
+      ],
+      "ownFreshDiscriminators": [
+        {
+          "task": "Findlog_(1/2)(8)andlog_9(3); testlog_0(2)andlog_2(0).",
+          "solution": "(1/2)^(−3)=8gives−3;9^(1/2)=3gives1/2. Base0is excluded; positive-base powers never produce0, so a zero argument is excluded. This covers a base below1, a rational exponent and two different domain failures.",
+          "purpose": "Fresh full-domain and rational-exponent discriminator; no graph transformation or physical logarithmic scale needed."
+        },
+        {
+          "task": "A calculator reportslog_3(10)≈2.096. Check the scale without recomputing the logarithm.",
+          "solution": "3²=9<10<27=3³so the value must lie between2and3;3^2.096≈10.0011provides a return check consistent with rounding.",
+          "purpose": "Fresh numerical tool check separate from memorized powers."
+        }
+      ],
+      "bothDirectionsConsidered": {
+        "MathDependentPhysicsPrerequisites": "complete_empty_set",
+        "PhysicsDependentMathPrerequisites": "A Physics problem solving for elapsed exponential time may need logarithms, but the qualitative half-life goal does not automatically require a digital logarithm; it could ask only repeated halving. No blanket reverse edge is derived, and no Physics full-profile acceptance is claimed.",
+        "PhysicsLedgerRecordsReauthored": 0
+      },
+      "completedUTC": "2026-10-15T04:47:25.557052+00:00",
+      "authority": "fresh_author_pending_independent_requires_review",
+      "reviewInput": {
+        "semanticSha256": "sha256:65948e86910705207b07f4c5cd313d3eeb39639cf20515881e42089c474c0492",
+        "prerequisitesSha256": "sha256:c151bf6bab59f3222151e6e8753fbbefeb3591318991eb9b735e2d5d7e1c3930",
+        "scopeSha256": "sha256:a559ddc809cf545ad558005bdad30195108b03504fad20b3230f110c3f35f151"
+      },
+      "proposalBinding": {
+        "baseline": {
+          "semanticSha256": "sha256:65948e86910705207b07f4c5cd313d3eeb39639cf20515881e42089c474c0492",
+          "prerequisitesSha256": "sha256:c151bf6bab59f3222151e6e8753fbbefeb3591318991eb9b735e2d5d7e1c3930",
+          "scopeSha256": "sha256:a559ddc809cf545ad558005bdad30195108b03504fad20b3230f110c3f35f151"
+        },
+        "proposed": {
+          "semanticSha256": "sha256:65948e86910705207b07f4c5cd313d3eeb39639cf20515881e42089c474c0492",
+          "prerequisitesSha256": "sha256:c151bf6bab59f3222151e6e8753fbbefeb3591318991eb9b735e2d5d7e1c3930",
+          "scopeSha256": "sha256:a559ddc809cf545ad558005bdad30195108b03504fad20b3230f110c3f35f151"
+        },
+        "baselineRequires": [
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "proposedRequires": [
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "changesSha256": "sha256:238bcc9d83987cc3e9947eb61a8b2f661fae22622b682bf6d7a10e75030669b9",
+        "prerequisiteInputs": []
+      }
+    }
+  ]
+}

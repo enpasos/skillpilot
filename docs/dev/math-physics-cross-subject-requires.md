@@ -57,6 +57,31 @@ Exactly two learning-goal relation types remain allowed: **`requires` and
 `contains`**. Existing view roles such as `prerequisiteOnly` are view metadata;
 they do not create another learning-goal relation type.
 
+## IDE checkout and local-artifact reconciliation
+
+The 16 October 2026 reconciliation examined all 9,163 visible agent-created
+paths. Of these, 4,607 already matched the PR exactly. Five old generated
+outputs, the main-derived Claude tool-preparation change and four Python cache
+files were reconciled to the published PR. The IDE now uses the ordinary
+`review/gym-math-physics-interim-20261014` branch.
+
+Among 4,546 unpublished quality/process files, the bounded reference and content
+audit retains 165 exact original files (42,493,692 bytes), plus five specifically
+needed original members (1,930,736 bytes) and their additive locator map. The
+other 4,381 local process paths (2,154,502,819 bytes) are individually designated
+for retirement: 568 have exact published copies, 1,266 belong to earlier or
+superseded documentary history, and 2,547 have no selected/current/remaining-primary
+dependency. Some contain unique older opinions; no reconstruction claim or new
+scientific verdict follows from excluding them from this checkpoint.
+
+The [complete path/hash/reference disposition](../../curricula/quality/cross-subject-requires/2026-10-16/current-checkpoint-original-retention-v1/LOCAL-ARTIFACT-RECONCILIATION.actual.json)
+and [exact original locators](../../curricula/quality/cross-subject-requires/2026-10-16/current-checkpoint-original-retention-v1/ORIGINAL-LOCATORS.actual.json)
+make the retained evidence reviewable in the PR. No stash substitutes for this
+review. Existing versioned evidence remains intact. This bounded reconciliation
+of uncommitted files does not complete the later consolidation of the whole
+result set or the MINT process retrospective, which still follow primary-goal
+completion.
+
 ## Scope and current status
 
 Updated on 16 October 2026. Scope is **canonical Gymnasium Mathematics and Physics, Sek I/II only**. The overall goal remains incomplete.

@@ -1,0 +1,2740 @@
+{
+  "scope": "Final private13 ordinary Mathematics goals/P; no review opinions supplied. No ordinary view activation.",
+  "rows": [
+    {
+      "goal": {
+        "id": "7ff1ff1c-8bbb-5235-826d-300e67f8c41f",
+        "shortKey": "canonical_math_nonnegative_rational_scalar_products_quotients",
+        "title": "Nichtnegative rationale Skalierungen und Verhältnisse berechnen",
+        "titleEn": "Calculate nonnegative rational scalings and ratios",
+        "description": "Die lernende Person kann eine gegebene multiplikative Beziehung zwischen nichtnegativen rationalen Größenwerten als Skalierung oder Verhältnis deuten, das gesuchte Produkt beziehungsweise den Quotienten bei positivem Divisor in Bruch- oder Dezimalschreibweise berechnen und das Ergebnis durch Größenordnung und Umkehroperation prüfen.",
+        "descriptionEn": "The learner can interpret a given multiplicative relationship between nonnegative rational quantity values as scaling or a ratio, calculate the required product or quotient with a positive divisor in fractional or decimal notation, and check the result using magnitude and the inverse operation.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J6",
+          "area": "Arithmetic",
+          "topicCode": "CANONICAL.MATH.BRIDGE.NONNEGATIVE_RATIONAL_SCALAR_PRODUCTS_QUOTIENTS"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "sourceGoalId": "he-math-seki-kc-7-3-operationen-j5-6-01-52662867"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/7ff1ff1c-8bbb-5235-826d-300e67f8c41f.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "7ff1ff1c-8bbb-5235-826d-300e67f8c41f",
+            "title": "Visualisierung: Nichtnegative rationale Skalierungen und Verhältnisse berechnen",
+            "url": "/assets/goal-visualizations/mathematik/7ff1ff1c-8bbb-5235-826d-300e67f8c41f/7ff1ff1c-8bbb-5235-826d-300e67f8c41f.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Nichtnegative rationale Skalierungen und Verhältnisse berechnen.",
+            "altText": "Ein vierteiliges Band von 4 m zeigt seine Hälfte von 2 m. Ein separates Band von 2 m besteht aus vier Teilen zu je 0,5 m; passende Produkt-, Quotienten- und Umkehrausdrücke verdeutlichen die Beziehungen.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reusable-mathematical-core",
+            "essentialUnderstandingDe": "Multiplikation skaliert einen nichtnegativen Wert; Division durch einen positiven Wert kehrt eine Skalierung um oder bestimmt ein Verhältnis. Ein Faktor unter eins verkleinert, ein Divisor unter eins kann den Quotienten vergrößern. Null ist ein möglicher Wert, aber kein Divisor.",
+            "essentialUnderstandingEn": "Multiplication scales a nonnegative value; division by a positive value reverses a scaling or finds a ratio. A factor below one reduces the value, whereas division by a value below one can increase it. Zero is a possible value but not a divisor.",
+            "observablePerformanceDe": "Deutet Produkt und Quotient aus der angegebenen Beziehung, rechnet ohne vorgegebenes Ergebnis, begründet Darstellung und Größenordnung und prüft durch Rückrechnung.",
+            "observablePerformanceEn": "Interprets the product and quotient from the stated relationship, calculates without a supplied result, explains representation and magnitude, and checks by reversing the operation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reusable-mathematical-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-boundary",
+            "textDe": "Neue Zahlen und Darstellung sowie ein mathematisch relevanter Grenz- oder Gegenfall; keine zusätzliche Aufgabenquote nach ausreichender Evidenz.",
+            "textEn": "Fresh numbers and representation plus a mathematically relevant boundary or countercase; no extra task quota once sufficient evidence exists."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "scale",
+            "taskDemandDe": "Ein Wert von 2,4 wird mit 3/8 skaliert; bestimme den neuen Wert und prüfe durch Rückrechnung.",
+            "taskDemandEn": "Scale 2.4 by 3/8; find the new value and check by reversing the operation.",
+            "expectedPerformanceDe": "2,4·3/8=0,9; 0,9:(3/8)=2,4. Der Faktor liegt unter eins.",
+            "expectedPerformanceEn": "2.4×3/8=0.9; 0.9÷(3/8)=2.4. The multiplier is below one.",
+            "understandingFocusDe": "Multiplikation skaliert einen nichtnegativen Wert; Division durch einen positiven Wert kehrt eine Skalierung um oder bestimmt ein Verhältnis. Ein Faktor unter eins verkleinert, ein Divisor unter eins kann den Quotienten vergrößern. Null ist ein möglicher Wert, aber kein Divisor.",
+            "understandingFocusEn": "Multiplication scales a nonnegative value; division by a positive value reverses a scaling or finds a ratio. A factor below one reduces the value, whereas division by a value below one can increase it. Zero is a possible value but not a divisor."
+          },
+          {
+            "id": "inverse",
+            "taskDemandDe": "Für 0,12 je Teil stehen insgesamt 0,9 zur Verfügung. Bestimme die Anzahl solcher Teile einschließlich eines möglichen Bruchteils. Prüfe außerdem 0:0,12 und 0,9:0.",
+            "taskDemandEn": "At 0.12 per part, a total of 0.9 is available. Find the number of parts, including a possible fractional part. Also assess 0÷0.12 and 0.9÷0.",
+            "expectedPerformanceDe": "0,9:0,12=7,5; 7,5·0,12=0,9. Null geteilt durch 0,12 ist null; Division durch null ist nicht definiert.",
+            "expectedPerformanceEn": "0.9÷0.12=7.5; 7.5×0.12=0.9. Zero divided by 0.12 is zero; division by zero is undefined.",
+            "understandingFocusDe": "Multiplikation skaliert einen nichtnegativen Wert; Division durch einen positiven Wert kehrt eine Skalierung um oder bestimmt ein Verhältnis. Ein Faktor unter eins verkleinert, ein Divisor unter eins kann den Quotienten vergrößern. Null ist ein möglicher Wert, aber kein Divisor.",
+            "understandingFocusEn": "Multiplication scales a nonnegative value; division by a positive value reverses a scaling or finds a ratio. A factor below one reduces the value, whereas division by a value below one can increase it. Zero is a possible value but not a divisor."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "9f5cfd1e-7cfd-559b-8bde-7d2eade7f778",
+        "shortKey": "canonical_math_positive_powers_ten_interpret_compare",
+        "title": "Positive Größen in Zehnerpotenzschreibweise deuten und vergleichen",
+        "titleEn": "Interpret and compare positive quantities in powers-of-ten notation",
+        "description": "Die lernende Person kann positive Zahlen der Form a·10ⁿ mit 1≤a<10 und ganzzahligem n als Stellenwertdarstellung deuten, zwischen dieser Form und Dezimalschreibweise wechseln und wertgleiche oder unterschiedlich große Angaben begründet vergleichen.",
+        "descriptionEn": "The learner can interpret positive numbers a×10ⁿ with 1≤a<10 and integer n as place-value representations, convert between this form and decimal notation, and explain comparisons of equivalent or differently sized values.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Arithmetic",
+          "topicCode": "CANONICAL.MATH.BRIDGE.POSITIVE_POWERS_TEN_INTERPRET_COMPARE"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "sourceGoalId": "he-math-seki-kc-7-3-operationen-j7-8-03-943a8e96"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/9f5cfd1e-7cfd-559b-8bde-7d2eade7f778.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "9f5cfd1e-7cfd-559b-8bde-7d2eade7f778",
+            "title": "Visualisierung: Positive Größen in Zehnerpotenzschreibweise deuten und vergleichen",
+            "url": "/assets/goal-visualizations/mathematik/9f5cfd1e-7cfd-559b-8bde-7d2eade7f778/9f5cfd1e-7cfd-559b-8bde-7d2eade7f778.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Positive Größen in Zehnerpotenzschreibweise deuten und vergleichen.",
+            "altText": "Zehnerpotenzkarten zeigen 0,004 als 4 mal 10 hoch minus 3, eine wertgleiche Normalisierung und den Vergleich von 2000 mit 900, bei dem der Exponent mitentscheidet.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reusable-mathematical-core",
+            "essentialUnderstandingDe": "Ein negativer Exponent bezeichnet hier den Kehrwert einer positiven Zehnerpotenz, keinen negativen Zahlenwert. Bei normierten positiven Angaben entscheidet zuerst n und bei gleichem n der Faktor a; unnormierte Angaben müssen wertgleich normalisiert werden.",
+            "essentialUnderstandingEn": "Here a negative exponent means the reciprocal of a positive power of ten, not a negative number. For normalized positive numbers, compare n first and then a when n is equal; unnormalized entries must be normalized without changing value.",
+            "observablePerformanceDe": "Schreibt neue große und kleine positive Werte um, erklärt den Exponenten und korrigiert einen scheinbaren Vergleich anhand des ursprünglichen Koeffizienten.",
+            "observablePerformanceEn": "Converts fresh large and small positive values, explains the exponent, and corrects a misleading comparison based on the original coefficient."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reusable-mathematical-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-boundary",
+            "textDe": "Neue Zahlen und Darstellung sowie ein mathematisch relevanter Grenz- oder Gegenfall; keine zusätzliche Aufgabenquote nach ausreichender Evidenz.",
+            "textEn": "Fresh numbers and representation plus a mathematically relevant boundary or countercase; no extra task quota once sufficient evidence exists."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "small",
+            "taskDemandDe": "Vergleiche 6,2·10⁻⁴ und 7,1·10⁻⁵ und schreibe beide dezimal.",
+            "taskDemandEn": "Compare 6.2×10⁻⁴ and 7.1×10⁻⁵ and write both in decimals.",
+            "expectedPerformanceDe": "0,00062>0,000071; der größere Koeffizient allein entscheidet nicht.",
+            "expectedPerformanceEn": "0.00062>0.000071; the larger coefficient alone does not decide.",
+            "understandingFocusDe": "Ein negativer Exponent bezeichnet hier den Kehrwert einer positiven Zehnerpotenz, keinen negativen Zahlenwert. Bei normierten positiven Angaben entscheidet zuerst n und bei gleichem n der Faktor a; unnormierte Angaben müssen wertgleich normalisiert werden.",
+            "understandingFocusEn": "Here a negative exponent means the reciprocal of a positive power of ten, not a negative number. For normalized positive numbers, compare n first and then a when n is equal; unnormalized entries must be normalized without changing value."
+          },
+          {
+            "id": "renormalize",
+            "taskDemandDe": "Ordne 0,84·10⁷, 8,3·10⁶ und 84·10⁵. Erkläre, welche Angaben gleich sind.",
+            "taskDemandEn": "Order 0.84×10⁷, 8.3×10⁶ and 84×10⁵. Explain which entries are equal.",
+            "expectedPerformanceDe": "0,84·10⁷=84·10⁵=8,4·10⁶>8,3·10⁶.",
+            "expectedPerformanceEn": "0.84×10⁷=84×10⁵=8.4×10⁶>8.3×10⁶.",
+            "understandingFocusDe": "Ein negativer Exponent bezeichnet hier den Kehrwert einer positiven Zehnerpotenz, keinen negativen Zahlenwert. Bei normierten positiven Angaben entscheidet zuerst n und bei gleichem n der Faktor a; unnormierte Angaben müssen wertgleich normalisiert werden.",
+            "understandingFocusEn": "Here a negative exponent means the reciprocal of a positive power of ten, not a negative number. For normalized positive numbers, compare n first and then a when n is equal; unnormalized entries must be normalized without changing value."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "4e67c87c-1294-5afb-8191-f9a2a22c3918",
+        "shortKey": "canonical_math_positive_powers_ten_products_ratios",
+        "title": "Produkte und Verhältnisse positiver Zehnerpotenzangaben berechnen",
+        "titleEn": "Calculate products and ratios of positive powers-of-ten values",
+        "description": "Die lernende Person kann Produkte und Quotienten positiver Zahlen in Zehnerpotenzschreibweise berechnen, Koeffizienten und ganzzahlige Exponenten konsistent verknüpfen, das Ergebnis normalisieren und seine Größenordnung unabhängig prüfen.",
+        "descriptionEn": "The learner can calculate products and quotients of positive numbers in powers-of-ten notation, combine coefficients and integer exponents consistently, normalize the result, and independently check its magnitude.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [
+          "7ff1ff1c-8bbb-5235-826d-300e67f8c41f",
+          "9f5cfd1e-7cfd-559b-8bde-7d2eade7f778"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Arithmetic",
+          "topicCode": "CANONICAL.MATH.BRIDGE.POSITIVE_POWERS_TEN_PRODUCTS_RATIOS"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "sourceGoalId": "he-math-seki-kc-7-3-operationen-j7-8-03-943a8e96"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/4e67c87c-1294-5afb-8191-f9a2a22c3918.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4e67c87c-1294-5afb-8191-f9a2a22c3918",
+            "title": "Visualisierung: Produkte und Verhältnisse positiver Zehnerpotenzangaben berechnen",
+            "url": "/assets/goal-visualizations/mathematik/4e67c87c-1294-5afb-8191-f9a2a22c3918/4e67c87c-1294-5afb-8191-f9a2a22c3918.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Produkte und Verhältnisse positiver Zehnerpotenzangaben berechnen.",
+            "altText": "Zwei Rechenstationen verknüpfen Koeffizienten und Exponenten bei Produkt und Quotient. Die anschließende Normalisierung verändert Koeffizient und Exponent gegensinnig.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reusable-mathematical-core",
+            "essentialUnderstandingDe": "Bei Produkten werden Exponenten gleicher Basis addiert, bei Quotienten subtrahiert. Eine Normalisierung ändert Koeffizient und Exponent gegensinnig, nicht den Wert.",
+            "essentialUnderstandingEn": "For products, exponents with the same base are added; for quotients they are subtracted. Normalization changes coefficient and exponent inversely, preserving value.",
+            "observablePerformanceDe": "Berechnet einen neuen Größenvergleich und eine unabhängige Skalierung, verfolgt alle Exponenten und prüft durch Gegenrechnung oder grobe Größenordnung. Rekonstruiert die Exponentenverknüpfung bei Bedarf durch Zehnerskalierung und prüft auch ein Ergebnis, dessen Rohkoeffizient außerhalb [1;10) liegt.",
+            "observablePerformanceEn": "Calculates a fresh ratio and an independent scaling, tracks every exponent, and checks through an inverse calculation or rough magnitude. Reconstructs exponent combination through tenfold scaling when useful and also checks a result whose raw coefficient is outside [1,10)."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reusable-mathematical-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-boundary",
+            "textDe": "Neue Zahlen und Darstellung sowie ein mathematisch relevanter Grenz- oder Gegenfall; keine zusätzliche Aufgabenquote nach ausreichender Evidenz.",
+            "textEn": "Fresh numbers and representation plus a mathematically relevant boundary or countercase; no extra task quota once sufficient evidence exists."
+          },
+          {
+            "id": "normalization-boundary",
+            "textDe": "Ein Produkt mit Rohkoeffizient mindestens zehn oder ein Quotient mit Rohkoeffizient unter eins erfordert eine wertgleiche Normalisierung.",
+            "textEn": "A product with raw coefficient at least ten or a quotient with raw coefficient below one requires value-preserving normalization."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ratio",
+            "taskDemandDe": "Berechne (3,6·10⁻⁸)/(1,2·10⁻¹¹) und prüfe die Größenordnung.",
+            "taskDemandEn": "Calculate (3.6×10⁻⁸)/(1.2×10⁻¹¹) and check its magnitude.",
+            "expectedPerformanceDe": "3,0·10³; der Zähler ist etwa dreitausendmal der Nenner.",
+            "expectedPerformanceEn": "3.0×10³; the numerator is about three thousand times the denominator.",
+            "understandingFocusDe": "Bei Produkten werden Exponenten gleicher Basis addiert, bei Quotienten subtrahiert. Eine Normalisierung ändert Koeffizient und Exponent gegensinnig, nicht den Wert.",
+            "understandingFocusEn": "For products, exponents with the same base are added; for quotients they are subtracted. Normalization changes coefficient and exponent inversely, preserving value."
+          },
+          {
+            "id": "product",
+            "taskDemandDe": "Bestimme (0,25·10⁻³)(8,0·10⁻⁶) und kontrolliere durch Division durch den zweiten Faktor.",
+            "taskDemandEn": "Find (0.25×10⁻³)(8.0×10⁻⁶) and check by dividing by the second factor.",
+            "expectedPerformanceDe": "2,0·10⁻⁹; Division durch 8,0·10⁻⁶ ergibt 0,25·10⁻³.",
+            "expectedPerformanceEn": "2.0×10⁻⁹; division by 8.0×10⁻⁶ gives 0.25×10⁻³.",
+            "understandingFocusDe": "Bei Produkten werden Exponenten gleicher Basis addiert, bei Quotienten subtrahiert. Eine Normalisierung ändert Koeffizient und Exponent gegensinnig, nicht den Wert.",
+            "understandingFocusEn": "For products, exponents with the same base are added; for quotients they are subtracted. Normalization changes coefficient and exponent inversely, preserving value."
+          },
+          {
+            "id": "coefficient-boundary",
+            "taskDemandDe": "Berechne (6,4·10⁻³)(5·10⁻⁶) und (1,5·10⁻⁷)/(6·10²). Gib jeweils ein normiertes Ergebnis an, erkläre die Änderung von Koeffizient und Exponent und prüfe durch Rückrechnung sowie eine grobe Größenordnung.",
+            "taskDemandEn": "Calculate (6.4×10⁻³)(5×10⁻⁶) and (1.5×10⁻⁷)/(6×10²). Give normalized results, explain the coefficient/exponent changes, and check by reversing the operation and estimating magnitude.",
+            "expectedPerformanceDe": "32·10⁻⁹=3,2·10⁻⁸ und 0,25·10⁻⁹=2,5·10⁻¹⁰. Die Normalisierung erhält den Wert. Division durch 5·10⁻⁶ ergibt 6,4·10⁻³; Multiplikation mit 6·10² ergibt 1,5·10⁻⁷. Exponentenregeln werden erklärt oder aus Zehnerskalierung rekonstruiert.",
+            "expectedPerformanceEn": "32×10⁻⁹=3.2×10⁻⁸ and 0.25×10⁻⁹=2.5×10⁻¹⁰. Normalization preserves value. Dividing by 5×10⁻⁶ recovers 6.4×10⁻³; multiplying by 6×10² recovers 1.5×10⁻⁷. Exponent rules are explained or reconstructed from tenfold scaling.",
+            "understandingFocusDe": "Beide Normalisierungsrichtungen erhalten denselben Größenwert; eine frisch rekonstruierte Regel ist verwertbare Verständnisevidenz.",
+            "understandingFocusEn": "Both normalization directions preserve the quantity value; a freshly reconstructed rule is valid understanding evidence."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "171347c0-1a27-5a3f-8fd6-5f1e78cefef9",
+        "shortKey": "canonical_math_acute_sine_relation_inverse",
+        "title": "Winkel im abgeschlossenen ersten Viertelkreis aus Sinusverhältnissen bestimmen",
+        "titleEn": "Determine angles on the closed first quarter circle from sine ratios",
+        "description": "Die lernende Person kann aus einer gegebenen Beziehung sin θ=r mit 0≤θ≤π/2 den Winkel mit passender Grad- oder Bogenmaßeinstellung bestimmen, die eindeutige Astwahl und den zulässigen Bereich 0≤r≤1 begründen und das Ergebnis durch Rückeinsetzen prüfen.",
+        "descriptionEn": "From a supplied relation sin θ=r with 0≤θ≤π/2, the learner can determine the angle using the appropriate degree or radian mode, justify the unique branch and admissible range 0≤r≤1, and check by substitution.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [
+          "7ff1ff1c-8bbb-5235-826d-300e67f8c41f"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.BRIDGE.ACUTE_SINE_RELATION_INVERSE"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "sourceGoalId": "he-math-seki-g9-10-4-05-88d10835"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/171347c0-1a27-5a3f-8fd6-5f1e78cefef9.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "171347c0-1a27-5a3f-8fd6-5f1e78cefef9",
+            "title": "Visualisierung: Winkel im abgeschlossenen ersten Viertelkreis aus Sinusverhältnissen bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/171347c0-1a27-5a3f-8fd6-5f1e78cefef9/171347c0-1a27-5a3f-8fd6-5f1e78cefef9.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Winkel im abgeschlossenen ersten Viertelkreis aus Sinusverhältnissen bestimmen.",
+            "altText": "Ein allgemeiner erster Viertelkreis mit eingeschlossenen Randwinkeln zeigt den Sinus als Höhe r bei Radius 1. Ein getrenntes Beispiel verbindet Sinus 0,5 mit 30 Grad; Wertebereich und ein unzulässiger Eingang sind markiert.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reusable-mathematical-core",
+            "essentialUnderstandingDe": "Auf dem genannten Viertelkreis wächst Sinus von null bis eins; der inverse Wert gehört nur zu diesem ausdrücklich gewählten Ast. Ein Quotient größer eins besitzt dort keine Lösung; der kleine Winkel ist nicht in jedem Fall mit seinem Sinus gleichzusetzen. Der Ast ist das abgeschlossene Intervall [0;π/2]: r=0 liefert 0° und r=1 liefert 90°; diese Randwinkel sind nicht spitz. Auch r<0 ist auf diesem Ast unzulässig.",
+            "essentialUnderstandingEn": "On the stated quarter circle sine increases from zero to one; the inverse value belongs only to that explicitly selected branch. A ratio above one has no solution there; an angle cannot always be equated with its sine. The branch is the closed interval [0,π/2]: r=0 gives 0° and r=1 gives 90°; these endpoint angles are not acute. Values r<0 are also inadmissible on this branch.",
+            "observablePerformanceDe": "Bestimmt aus neuen Quotienten beide Winkeleinheiten, kontrolliert die Einstellung und weist einen unzulässigen Eingang sowie eine unberechtigte Kleinwinkelnäherung zurück. Prüft beide eingeschlossenen Randwerte und einen negativen Eingang ausdrücklich, ohne den Ast auf spitze Winkel zu verengen.",
+            "observablePerformanceEn": "Obtains both angular units from fresh ratios, checks calculator mode, and rejects an inadmissible input and an unjustified small-angle approximation. Explicitly checks both included endpoints and a negative input without narrowing the branch to acute angles."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reusable-mathematical-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-boundary",
+            "textDe": "Neue Zahlen und Darstellung sowie ein mathematisch relevanter Grenz- oder Gegenfall; keine zusätzliche Aufgabenquote nach ausreichender Evidenz.",
+            "textEn": "Fresh numbers and representation plus a mathematically relevant boundary or countercase; no extra task quota once sufficient evidence exists."
+          },
+          {
+            "id": "closed-branch-endpoints",
+            "textDe": "Eingeschlossene Randwerte r=0 und r=1 sowie Eingänge unter null oder über eins; Innenwinkel bleiben enthalten.",
+            "textEn": "Included endpoints r=0 and r=1, inputs below zero or above one, and retained interior angles."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "small",
+            "taskDemandDe": "Für sin θ=0,035 bestimme θ im genannten Ast in Grad und Bogenmaß und prüfe.",
+            "taskDemandEn": "For sin θ=0.035 find θ on the stated branch in degrees and radians and check.",
+            "expectedPerformanceDe": "θ≈0,03500715 rad≈2,00576°; sin θ≈0,035.",
+            "expectedPerformanceEn": "θ≈0.03500715 rad≈2.00576°; sin θ≈0.035.",
+            "understandingFocusDe": "Auf dem genannten Viertelkreis wächst Sinus von null bis eins; der inverse Wert gehört nur zu diesem ausdrücklich gewählten Ast. Ein Quotient größer eins besitzt dort keine Lösung; der kleine Winkel ist nicht in jedem Fall mit seinem Sinus gleichzusetzen.",
+            "understandingFocusEn": "On the stated quarter circle sine increases from zero to one; the inverse value belongs only to that explicitly selected branch. A ratio above one has no solution there; an angle cannot always be equated with its sine."
+          },
+          {
+            "id": "boundary",
+            "taskDemandDe": "Bestimme für r=0,8 den akuten Winkel und beurteile r=1,02 sowie die Näherung θ=r.",
+            "taskDemandEn": "Find the acute angle for r=0.8 and assess r=1.02 and the approximation θ=r.",
+            "expectedPerformanceDe": "arcsin0,8≈0,927295 rad≈53,1301°; 0,8 rad ist hier keine gute Gleichsetzung. Für 1,02 gibt es keine reelle Astlösung.",
+            "expectedPerformanceEn": "arcsin0.8≈0.927295 rad≈53.1301°; equating it to 0.8 rad is inaccurate here. For 1.02 there is no real solution on this branch.",
+            "understandingFocusDe": "Auf dem genannten Viertelkreis wächst Sinus von null bis eins; der inverse Wert gehört nur zu diesem ausdrücklich gewählten Ast. Ein Quotient größer eins besitzt dort keine Lösung; der kleine Winkel ist nicht in jedem Fall mit seinem Sinus gleichzusetzen.",
+            "understandingFocusEn": "On the stated quarter circle sine increases from zero to one; the inverse value belongs only to that explicitly selected branch. A ratio above one has no solution there; an angle cannot always be equated with its sine."
+          },
+          {
+            "id": "closed-endpoints-and-negative-input",
+            "taskDemandDe": "Für den festgelegten Ast 0≤θ≤π/2 bestimme θ zu r=0 und r=1 in Grad und Bogenmaß und prüfe durch Einsetzen. Entscheide anschließend über r=−0,2. Erkläre, ob die beiden Randwinkel spitz sind.",
+            "taskDemandEn": "For the specified branch 0≤θ≤π/2, find θ for r=0 and r=1 in degrees and radians and check by substitution. Then assess r=−0.2. Explain whether the two endpoint angles are acute.",
+            "expectedPerformanceDe": "r=0 liefert θ=0 rad=0°, r=1 liefert θ=π/2 rad=90°. sin0=0 und sin(π/2)=1. Beide Randwerte gehören zum Ast, sind aber keine spitzen Winkel. Für r=−0,2 gibt es auf diesem Ast keine Lösung; eine außerhalb des Astes liegende inverse Werkzeugantwort ist unzulässig.",
+            "expectedPerformanceEn": "r=0 gives θ=0 rad=0°; r=1 gives θ=π/2 rad=90°. sin0=0 and sin(π/2)=1. Both endpoints belong to the branch but are not acute. There is no solution on this branch for r=−0.2; a tool output outside the branch is inadmissible.",
+            "understandingFocusDe": "Astwahl, Wertebereich und Randfälle sind Teil derselben inversen Beziehung.",
+            "understandingFocusEn": "Branch, range and endpoints belong to the same inverse relationship."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "d934e616-08e3-5c50-840b-e50e0f018c84",
+        "shortKey": "canonical_math_paired_harmonic_sums_products",
+        "title": "Gleichamplitudige harmonische Paare als Produkte darstellen",
+        "titleEn": "Express equal-amplitude harmonic pairs as products",
+        "description": "Die lernende Person kann die Summe oder Differenz zweier gleichamplitudiger Sinus- beziehungsweise Kosinusterme mit paarweise entgegengesetztem Argumentanteil mithilfe der Additionstheoreme in ein Produkt umformen und die Gleichwertigkeit sowie orts- oder zeitunabhängige Nullstellen aus den getrennten Faktoren begründen.",
+        "descriptionEn": "Using addition identities, the learner can transform a sum or difference of equal-amplitude sine or cosine terms with opposite paired argument components into a product, verify equivalence, and explain variable-independent zeros from the separated factors.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [
+          "bbef7cf2-90fa-59fa-a115-8b651aab9231"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.BRIDGE.PAIRED_HARMONIC_SUMS_PRODUCTS"
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": []
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/d934e616-08e3-5c50-840b-e50e0f018c84.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d934e616-08e3-5c50-840b-e50e0f018c84",
+            "title": "Visualisierung: Gleichamplitudige harmonische Paare als Produkte darstellen",
+            "url": "/assets/goal-visualizations/mathematik/d934e616-08e3-5c50-840b-e50e0f018c84/d934e616-08e3-5c50-840b-e50e0f018c84.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Gleichamplitudige harmonische Paare als Produkte darstellen.",
+            "altText": "Ein gleichamplitudiges Sinuspaar wird als Produkt aus getrennten Faktoren dargestellt. Das Beispiel 2 sin x mal cos t unterscheidet feste räumliche Nullstellen von einem überall verschwindenden Momentanbild.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reusable-mathematical-core",
+            "essentialUnderstandingDe": "Aus sin(u+v)±sin(u−v) entstehen 2sin u cos v beziehungsweise 2cos u sin v. Entsprechende Kosinusformen folgen aus derselben Argumentstruktur. Ein stets verschwindender Faktor und eine nur momentane Null sind verschiedene Aussagen.",
+            "essentialUnderstandingEn": "sin(u+v)±sin(u−v) become 2sin u cos v and 2cos u sin v respectively. Corresponding cosine forms follow from the same argument structure. A factor that vanishes for all values and a momentary zero are different statements.",
+            "observablePerformanceDe": "Leitet aus den bereitgestellten Sinus- und Kosinus-Additionstheoremen durch Einsetzen, Zusammenfassen und Ausklammern selbst die Trennung für Summen und Differenzen her, überprüft einen nichttrivialen Punkt und deutet die Nullmengen beider Faktoren getrennt.",
+            "observablePerformanceEn": "Independently derives separated factors for sums and differences from supplied sine and cosine addition identities by substitution, combining and factoring, checks a nontrivial point, and separately interprets both factors' zero sets."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reusable-mathematical-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-boundary",
+            "textDe": "Neue Zahlen und Darstellung sowie ein mathematisch relevanter Grenz- oder Gegenfall; keine zusätzliche Aufgabenquote nach ausreichender Evidenz.",
+            "textEn": "Fresh numbers and representation plus a mathematically relevant boundary or countercase; no extra task quota once sufficient evidence exists."
+          },
+          {
+            "id": "function-and-pairing",
+            "textDe": "Sinus oder Kosinus sowie Summe oder Differenz wechseln; gleiche Amplitude und die gepaarten Argumentanteile werden im Einsetzen verfolgt.",
+            "textEn": "Vary sine/cosine and sum/difference; track equal amplitudes and paired argument components during substitution."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sine-pair",
+            "taskDemandDe": "Als Ausgangsinformation sind gegeben: sin(u±v)=sin(u)cos(v)±cos(u)sin(v) und cos(u±v)=cos(u)cos(v)∓sin(u)sin(v). Forme 3sin(2x+5t)+3sin(2x−5t) um und bestimme x, bei denen der Ausdruck für jedes t null ist.",
+            "taskDemandEn": "The following input identities are supplied: sin(u±v)=sin(u)cos(v)±cos(u)sin(v) and cos(u±v)=cos(u)cos(v)∓sin(u)sin(v). Transform 3sin(2x+5t)+3sin(2x−5t) and find x for which it vanishes for every t.",
+            "expectedPerformanceDe": "6sin(2x)cos(5t); feste Nullstellen x=nπ/2. cos(5t)=0 setzt nur das jeweilige Momentanbild auf null.",
+            "expectedPerformanceEn": "6sin(2x)cos(5t); fixed zeros x=nπ/2. cos(5t)=0 makes only that snapshot zero.",
+            "understandingFocusDe": "Aus sin(u+v)±sin(u−v) entstehen 2sin u cos v beziehungsweise 2cos u sin v. Entsprechende Kosinusformen folgen aus derselben Argumentstruktur. Ein stets verschwindender Faktor und eine nur momentane Null sind verschiedene Aussagen.",
+            "understandingFocusEn": "sin(u+v)±sin(u−v) become 2sin u cos v and 2cos u sin v respectively. Corresponding cosine forms follow from the same argument structure. A factor that vanishes for all values and a momentary zero are different statements."
+          },
+          {
+            "id": "cosine-difference",
+            "taskDemandDe": "Als Ausgangsinformation sind gegeben: sin(u±v)=sin(u)cos(v)±cos(u)sin(v) und cos(u±v)=cos(u)cos(v)∓sin(u)sin(v). Forme 2cos(3x−4t)−2cos(3x+4t) um und prüfe bei x=π/6,t=π/8.",
+            "taskDemandEn": "The following input identities are supplied: sin(u±v)=sin(u)cos(v)±cos(u)sin(v) and cos(u±v)=cos(u)cos(v)∓sin(u)sin(v). Transform 2cos(3x−4t)−2cos(3x+4t) and check at x=π/6,t=π/8.",
+            "expectedPerformanceDe": "4sin(3x)sin(4t); beide Ausgangsterme ergeben zusammen 4 und auch das Produkt ergibt 4.",
+            "expectedPerformanceEn": "4sin(3x)sin(4t); the original difference and the product both equal 4.",
+            "understandingFocusDe": "Aus sin(u+v)±sin(u−v) entstehen 2sin u cos v beziehungsweise 2cos u sin v. Entsprechende Kosinusformen folgen aus derselben Argumentstruktur. Ein stets verschwindender Faktor und eine nur momentane Null sind verschiedene Aussagen.",
+            "understandingFocusEn": "sin(u+v)±sin(u−v) become 2sin u cos v and 2cos u sin v respectively. Corresponding cosine forms follow from the same argument structure. A factor that vanishes for all values and a momentary zero are different statements."
+          },
+          {
+            "id": "sine-difference-transfer",
+            "taskDemandDe": "Als Ausgangsinformation sind gegeben: sin(u±v)=sin(u)cos(v)±cos(u)sin(v) und cos(u±v)=cos(u)cos(v)∓sin(u)sin(v). Forme 4sin(3x+2t)−4sin(3x−2t) durch Einsetzen um. Bestimme x, für die das Ergebnis für jedes t null ist, und prüfe einen selbst gewählten nichttrivialen Punkt.",
+            "taskDemandEn": "The following input identities are supplied: sin(u±v)=sin(u)cos(v)±cos(u)sin(v) and cos(u±v)=cos(u)cos(v)∓sin(u)sin(v). Transform 4sin(3x+2t)−4sin(3x−2t) by substitution. Find x for which it vanishes for every t and check a self-chosen nontrivial point.",
+            "expectedPerformanceDe": "8cos(3x)sin(2t); feste x-Nullen sind x=π/6+nπ/3 für ganzzahliges n. Ein nur verschwindender Zeitfaktor begründet keine feste räumliche Nullstelle.",
+            "expectedPerformanceEn": "8cos(3x)sin(2t); fixed x zeros are x=π/6+nπ/3 for integer n. A vanishing time factor alone does not establish a fixed spatial zero.",
+            "understandingFocusDe": "Die Produktform entsteht aus den gegebenen Ausgangsidentitäten; feste Nullstellen werden mit dem Für-alle-Quantor begründet.",
+            "understandingFocusEn": "The product is derived from the supplied input identities; permanent zeros are justified using the for-all quantifier."
+          },
+          {
+            "id": "cosine-sum-transfer",
+            "taskDemandDe": "Als Ausgangsinformation sind gegeben: sin(u±v)=sin(u)cos(v)±cos(u)sin(v) und cos(u±v)=cos(u)cos(v)∓sin(u)sin(v). Forme 5cos(2x+3t)+5cos(2x−3t) durch Einsetzen um. Bestimme die zeitunabhängigen x-Nullstellen und prüfe einen selbst gewählten nichttrivialen Punkt.",
+            "taskDemandEn": "The following input identities are supplied: sin(u±v)=sin(u)cos(v)±cos(u)sin(v) and cos(u±v)=cos(u)cos(v)∓sin(u)sin(v). Transform 5cos(2x+3t)+5cos(2x−3t) by substitution. Find time-independent x zeros and check a self-chosen nontrivial point.",
+            "expectedPerformanceDe": "10cos(2x)cos(3t); feste x-Nullstellen x=π/4+nπ/2 für ganzzahliges n. Das Vorzeichen der Kosinus-Additionstheoreme wird durch tatsächliches Einsetzen und Kürzen erklärt.",
+            "expectedPerformanceEn": "10cos(2x)cos(3t); fixed x zeros x=π/4+nπ/2 for integer n. Signs in the cosine addition identities are explained through actual substitution and cancellation.",
+            "understandingFocusDe": "Die Produktform entsteht aus den gegebenen Ausgangsidentitäten; feste Nullstellen werden mit dem Für-alle-Quantor begründet.",
+            "understandingFocusEn": "The product is derived from the supplied input identities; permanent zeros are justified using the for-all quantifier."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "1f4724d4-0df2-5e2d-8782-d7577e25a15f",
+        "shortKey": "canonical_math_planar_directed_scaled_sums",
+        "title": "Planare Zeigersummen mit reeller Skalierung bestimmen",
+        "titleEn": "Determine planar arrow sums with real scaling",
+        "description": "Die lernende Person kann eine vorgegebene Summe gerichteter Zeiger in einer Ebene unter Einbezug einer angegebenen reellen Skalierung als resultierenden Zeiger geometrisch oder komponentenweise bestimmen und dabei die Wirkung entgegengesetzter Richtungen, eines negativen Skalierungsfaktors und des Nullfalls erklären.",
+        "descriptionEn": "The learner can determine the resultant of a supplied sum of directed planar arrows with a stated real scaling, geometrically or component-wise, and explain the effects of opposite directions, a negative scale factor, and the zero case.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [
+          "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+          "ee48e811-4c9c-5080-9836-8403fc9f0810"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.BRIDGE.PLANAR_DIRECTED_SCALED_SUMS"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+            "sourceGoalId": "he-math-sekii-q2-2-b02-a03-5d12cf5d"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-MV",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-MV",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/1f4724d4-0df2-5e2d-8782-d7577e25a15f.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "1f4724d4-0df2-5e2d-8782-d7577e25a15f",
+            "title": "Visualisierung: Planare Zeigersummen mit reeller Skalierung bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/1f4724d4-0df2-5e2d-8782-d7577e25a15f/1f4724d4-0df2-5e2d-8782-d7577e25a15f.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Planare Zeigersummen mit reeller Skalierung bestimmen.",
+            "altText": "Zwei gerichtete Pfeile werden hintereinandergelegt und ihr Summenzeiger verbindet Anfang und Ende. Eine zweite Darstellung zeigt Richtungsumkehr durch Faktor minus 1 und den richtungslosen Nullzeiger bei Faktor null.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "directed-scaled-resultant",
+            "essentialUnderstandingDe": "Gerichtete Zeiger werden als Verschiebungen addiert; entgegengesetzte Komponenten können sich aufheben. Ein gemeinsamer reeller Faktor wirkt auf den gesamten Summenzeiger und damit auf jede seiner Komponenten. Ein negativer Faktor kehrt die Richtung um; Faktor null oder ein schon verschwindender Summenzeiger liefert den Nullzeiger. Geometrisches Hintereinanderlegen und komponentenweises Rechnen sind gleichwertige Lösungswege.",
+            "essentialUnderstandingEn": "Directed arrows add as displacements; opposite components can cancel. A common real factor acts on the entire resultant and therefore on each component. A negative factor reverses direction; factor zero or an already vanishing sum gives the zero arrow. Head-to-tail geometry and component calculation are equivalent solution methods.",
+            "observablePerformanceDe": "Die lernende Person bestimmt einen neuen skalierten Summenzeiger selbstständig auf einem geeigneten Weg, hält Richtungen und den Geltungsbereich des Faktors ein und begründet einen veränderten Vorzeichen- oder Nullfall. Die jeweils andere Darstellung darf als Kontrolle dienen, wird aber nicht als zusätzliche unabhängige Leistung erzwungen. Betragsbildung wird nicht verlangt.",
+            "observablePerformanceEn": "The learner independently determines a fresh scaled resultant by a suitable method, respects directions and the scope of the factor, and justifies a changed sign or zero case. The other representation may serve as a check but is not forced as an additional independent performance. No magnitude calculation is required."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "directed-scaled-resultant"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sum-and-scaling-scope",
+            "textDe": "Zwei oder drei gegebene Zeiger; ein auf die ganze Summe wirkender Faktor statt versehentlich nur eines skalierten Summanden.",
+            "textEn": "Two or three given arrows; a factor acting on the entire sum rather than accidentally on only one summand."
+          },
+          {
+            "id": "direction-and-zero",
+            "textDe": "Positive gebrochene, negative und verschwindende Faktoren sowie ein sich bereits aufhebender Summenzeiger.",
+            "textEn": "Positive fractional, negative, and zero factors, and a resultant that already cancels."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "half-of-two-directed-arrows",
+            "taskDemandDe": "Bestimme den Zeiger (1/2)·[(1,0)+(−1/2,√3/2)] geometrisch oder komponentenweise. Erläutere, warum die Halbierung die ganze Summe betrifft.",
+            "taskDemandEn": "Determine the arrow (1/2)·[(1,0)+(−1/2,√3/2)] geometrically or component-wise. Explain why halving acts on the entire sum.",
+            "expectedPerformanceDe": "Die Summe ist (1/2,√3/2), der skalierte Zeiger (1/4,√3/4). Beide Summenkomponenten werden halbiert; gleichwertig können beide Ausgangszeiger vor der Addition halbiert werden. Eine Pfeilkonstruktion mit derselben Verschiebung ist gleichwertig.",
+            "expectedPerformanceEn": "The sum is (1/2,√3/2), and the scaled arrow is (1/4,√3/4). Both sum components are halved; equivalently, both original arrows can be halved before adding. An arrow construction with the same displacement is equivalent.",
+            "understandingFocusDe": "Die skalierte gerichtete Summe wird als ein Ergebnis bestimmt; keine Längen- oder Betragsquadratfrage.",
+            "understandingFocusEn": "Determine one directed scaled sum; no length or squared-magnitude question."
+          },
+          {
+            "id": "cancellation-and-negative-scaling",
+            "taskDemandDe": "Gegeben sind (1,0), (−1/2,√3/2) und (−1/2,−√3/2). Bestimme ihre Summe. Ersetze danach nur den ersten Zeiger durch (2,0) und bestimme das −2-Fache der neuen Summe. Begründe die Richtungsänderung.",
+            "taskDemandEn": "Given (1,0), (−1/2,√3/2), and (−1/2,−√3/2), determine their sum. Then replace only the first arrow by (2,0) and determine −2 times the new sum. Explain the direction change.",
+            "expectedPerformanceDe": "Zunächst heben sich beide Komponenten zu (0,0) auf. Nach der Änderung ist die Summe (1,0), ihr −2-Faches ist (−2,0). Der negative Faktor kehrt die Richtung des nichtverschwindenden Summenzeigers um; der Nullzeiger besitzt keine ausgezeichnete Richtung.",
+            "expectedPerformanceEn": "Initially both components cancel to (0,0). After the change the sum is (1,0), whose −2 multiple is (−2,0). The negative factor reverses the nonzero resultant; the zero arrow has no distinguished direction.",
+            "understandingFocusDe": "Ein geänderter Zeiger hebt die vorherige Auslöschung auf; negative Skalierung wird an der resultierenden Verschiebung erklärt.",
+            "understandingFocusEn": "Changing one arrow removes the previous cancellation; explain negative scaling through the resultant displacement."
+          },
+          {
+            "id": "zero-factor-on-nonzero-sum",
+            "taskDemandDe": "Bestimme 0·[(-3,2)+(1,-5)] und erläutere, ob die Null durch die Ausgangssumme oder durch die Skalierung entsteht.",
+            "taskDemandEn": "Determine 0·[(-3,2)+(1,-5)] and explain whether the zero comes from the original sum or from scaling.",
+            "expectedPerformanceDe": "Die ursprüngliche Summe ist (−2,−3) und damit nicht der Nullzeiger. Erst die Multiplikation mit null ergibt (0,0); beide Komponenten werden null.",
+            "expectedPerformanceEn": "The original sum is (−2,−3), so it is not the zero arrow. Multiplication by zero gives (0,0); both components become zero.",
+            "understandingFocusDe": "Der neue Nullfall unterscheidet skalierungsbedingte Null von gegenseitiger Aufhebung.",
+            "understandingFocusEn": "The changed zero case distinguishes zero caused by scaling from cancellation."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "b2acaace-ef91-50d6-806e-77fd7e9ee61a",
+        "shortKey": "canonical_math_elementary_piecewise_linear_signed_area",
+        "title": "Vorzeichenbehaftete Flächen unter stückweise linearen Graphen bestimmen",
+        "titleEn": "Determine signed areas under piecewise linear graphs",
+        "description": "Die lernende Person kann bei einem auf einem geordneten Intervall gegebenen stückweise linearen Graphen Nullstellen zur Zerlegung nutzen, Rechtecks-, Dreiecks- oder Trapezflächen bestimmen und ihre vorzeichenbehaftete Summe von der Summe der Flächenbeträge unterscheiden und mit dem Produkt der Achseneinheiten angeben.",
+        "descriptionEn": "For a piecewise linear graph on an ordered interval, the learner can use zeros to partition the interval, calculate rectangular, triangular or trapezoidal areas, distinguish their signed sum from the sum of absolute areas, and state the product of the axis units.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [
+          "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+          "ee48e811-4c9c-5080-9836-8403fc9f0810"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.BRIDGE.ELEMENTARY_PIECEWISE_LINEAR_SIGNED_AREA"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+            "sourceGoalId": "he-math-sekii-q1-1-b01-a01-2d704412"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-MV",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-MV",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/b2acaace-ef91-50d6-806e-77fd7e9ee61a.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "b2acaace-ef91-50d6-806e-77fd7e9ee61a",
+            "title": "Visualisierung: Vorzeichenbehaftete Flächen unter stückweise linearen Graphen bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/b2acaace-ef91-50d6-806e-77fd7e9ee61a/b2acaace-ef91-50d6-806e-77fd7e9ee61a.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Vorzeichenbehaftete Flächen unter stückweise linearen Graphen bestimmen.",
+            "altText": "Ein stückweise linearer Graph mit Achseneinheiten Meter und Sekunden wird an einer inneren Nullstelle in positiv und negativ gefärbte Rechteck-, Trapez- und Dreiecksbereiche zerlegt. Vorzeichenbehaftete Summe und Summe der Flächenbeträge sind getrennt angegeben.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reusable-mathematical-core",
+            "essentialUnderstandingDe": "Die Länge der Teilintervalle und die Graphenhöhen bestimmen elementare Flächen. Beiträge oberhalb und unterhalb der Achse besitzen entgegengesetzte Vorzeichen; geometrischer Gesamtinhalt und algebraische Summe stimmen bei Vorzeichenwechseln im Allgemeinen nicht überein.",
+            "essentialUnderstandingEn": "Subinterval lengths and graph heights determine elementary areas. Contributions above and below the axis have opposite signs; total geometric area and algebraic sum generally differ when signs change.",
+            "observablePerformanceDe": "Zerlegt selbstständig an Nullstellen, zeigt die Flächenrechnung mit korrekten Einheiten und erklärt einen Gegenfall, in dem die vorzeichenbehaftete Summe verschwindet, obwohl Flächen vorhanden sind. Ein Vorzeichenwechsel innerhalb eines linearen Teilstücks wird selbst gefunden. Rechteck- und Trapezbeiträge werden wirklich berechnet; die Einheit ist das Produkt beider benannten Achseneinheiten.",
+            "observablePerformanceEn": "Independently partitions at zeros, shows area calculations with correct units, and explains a countercase where the signed sum vanishes although nonzero areas exist. Independently locates a sign change inside a linear piece. Actually calculates rectangular and trapezoidal contributions and gives the product of the two named axis units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reusable-mathematical-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-boundary",
+            "textDe": "Neue Zahlen und Darstellung sowie ein mathematisch relevanter Grenz- oder Gegenfall; keine zusätzliche Aufgabenquote nach ausreichender Evidenz.",
+            "textEn": "Fresh numbers and representation plus a mathematically relevant boundary or countercase; no extra task quota once sufficient evidence exists."
+          },
+          {
+            "id": "interior-crossing-shapes-and-axis-units",
+            "textDe": "Nullstelle im Inneren eines nicht waagerechten Teilstücks; konstante Abschnitte und gleichseitig zur Achse liegende unterschiedliche Endhöhen; verschieden benannte Achseneinheiten.",
+            "textEn": "A zero in the interior of a nonhorizontal piece, constant pieces and unequal endpoint heights on the same side of the axis, with differently named axis units."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "symmetric",
+            "taskDemandDe": "Der Graph verbindet (0,3), (2,0), (4,−3). Bestimme auf [0,4] die vorzeichenbehaftete Summe und die Summe der Flächenbeträge.",
+            "taskDemandEn": "The graph joins (0,3), (2,0), (4,−3). Find the signed sum and total absolute area on [0,4].",
+            "expectedPerformanceDe": "+3 und −3 ergeben 0; Summe der Beträge ist 6 in Produkten der Achseneinheiten.",
+            "expectedPerformanceEn": "+3 and −3 sum to 0; total absolute area is 6 in the product of the axis units.",
+            "understandingFocusDe": "Die Länge der Teilintervalle und die Graphenhöhen bestimmen elementare Flächen. Beiträge oberhalb und unterhalb der Achse besitzen entgegengesetzte Vorzeichen; geometrischer Gesamtinhalt und algebraische Summe stimmen bei Vorzeichenwechseln im Allgemeinen nicht überein.",
+            "understandingFocusEn": "Subinterval lengths and graph heights determine elementary areas. Contributions above and below the axis have opposite signs; total geometric area and algebraic sum generally differ when signs change."
+          },
+          {
+            "id": "offset",
+            "taskDemandDe": "Ein neuer Graph verbindet (0,−2),(1,0),(3,4). Bestimme beide Flächensummen und prüfe eine Rechnung mit der letzten Höhe mal Gesamtbreite.",
+            "taskDemandEn": "A fresh graph joins (0,−2),(1,0),(3,4). Find both area sums and assess using the final height times total width.",
+            "expectedPerformanceDe": "Beiträge −1 und +4: algebraisch 3, absolut 5. 4·3=12 passt nicht zum veränderlichen Verlauf.",
+            "expectedPerformanceEn": "Contributions −1 and +4 give signed sum 3 and absolute sum 5. 4×3=12 does not describe the varying graph.",
+            "understandingFocusDe": "Die Länge der Teilintervalle und die Graphenhöhen bestimmen elementare Flächen. Beiträge oberhalb und unterhalb der Achse besitzen entgegengesetzte Vorzeichen; geometrischer Gesamtinhalt und algebraische Summe stimmen bei Vorzeichenwechseln im Allgemeinen nicht überein.",
+            "understandingFocusEn": "Subinterval lengths and graph heights determine elementary areas. Contributions above and below the axis have opposite signs; total geometric area and algebraic sum generally differ when signs change."
+          },
+          {
+            "id": "interior-zero-rectangles-trapezoid-and-units",
+            "taskDemandDe": "Die x-Achse ist in Sekunden (s), die y-Achse in Metern (m) beschriftet. Der Graph verbindet geradlinig (0;2),(2;2),(4;−2),(6;−2),(8;−4). Bestimme auf [0;8] selbst alle zur Vorzeichenzerlegung nötigen Stellen, berechne die elementaren Beiträge und gib die vorzeichenbehaftete Summe sowie die Summe der Flächenbeträge mit Einheit an. Beurteile die Behauptung, eine Nullsumme der beiden Dreiecke bedeute, dass dort keine Fläche liege.",
+            "taskDemandEn": "The x-axis is labeled seconds (s), and the y-axis meters (m). The graph joins (0,2),(2,2),(4,−2),(6,−2),(8,−4) by straight segments. On [0,8], independently locate every point needed to partition by sign, calculate elementary contributions, and give both the signed sum and the sum of absolute areas with units. Assess the claim that a zero sum of the two triangles means there is no area there.",
+            "expectedPerformanceDe": "Im Teilstück von x=2 bis 4 wird y=0 bei x=3 erreicht, nicht an einem vorgegebenen Eckpunkt. Die Beiträge sind Rechteck +4 auf [0;2], Dreieck +1 auf [2;3], Dreieck −1 auf [3;4], Rechteck −4 auf [4;6] und Trapez −6 auf [6;8], jeweils in m·s. Die vorzeichenbehaftete Summe ist −6 m·s, die Summe der Beträge 16 m·s. Die Dreiecksbeiträge heben sich algebraisch auf, besitzen aber zusammen den positiven Flächenbetrag 2 m·s.",
+            "expectedPerformanceEn": "On the piece from x=2 to 4, y=0 occurs at x=3, not at a supplied vertex. Contributions are a rectangle +4 on [0,2], triangle +1 on [2,3], triangle −1 on [3,4], rectangle −4 on [4,6], and trapezoid −6 on [6,8], each in m·s. The signed sum is −6 m·s; the sum of magnitudes is 16 m·s. The triangular contributions cancel algebraically but have positive total absolute area 2 m·s.",
+            "understandingFocusDe": "Innere Nullstelle, echte Rechtecks-/Trapezrechnung und Einheitenprodukt erhalten den Unterschied zwischen vorzeichenbehafteter und geometrischer Summe.",
+            "understandingFocusEn": "An interior zero, actual rectangle/trapezoid calculation and unit product preserve the distinction between signed and geometric totals."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "eb49f1ef-2367-53a9-8677-a1792707d5e5",
+        "shortKey": "canonical_math_planar_signed_scalar_projection",
+        "title": "Gerichtete skalare Projektionen in der Ebene bestimmen",
+        "titleEn": "Determine directed scalar projections in the plane",
+        "description": "Die lernende Person kann zu einem ebenen gerichteten Pfeil und einer orientierten Bezugsgeraden die orthogonale Projektion konstruieren, ihre gerichtete Länge aus Komponenten oder Betrag und gegebenem Winkel mithilfe einer bereitgestellten Kosinusbeziehung bestimmen und Vorzeichen, Nullfall und Bezugsrichtungswechsel begründen.",
+        "descriptionEn": "Given a directed planar arrow and an oriented reference line, the learner can construct its orthogonal projection, find its signed length from components or from magnitude and a stated angle using a supplied cosine relation, and explain its sign, zero case, and reversal of the reference direction.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.BRIDGE.PLANAR_SIGNED_SCALAR_PROJECTION"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+            "sourceGoalId": "he-math-sekii-q2-2-b03-a01-79ba7556"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-MV",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-MV",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/eb49f1ef-2367-53a9-8677-a1792707d5e5.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "eb49f1ef-2367-53a9-8677-a1792707d5e5",
+            "title": "Visualisierung: Gerichtete skalare Projektionen in der Ebene bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/eb49f1ef-2367-53a9-8677-a1792707d5e5/eb49f1ef-2367-53a9-8677-a1792707d5e5.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Gerichtete skalare Projektionen in der Ebene bestimmen.",
+            "altText": "Ein nach links oben gerichteter Pfeil wird senkrecht auf eine nach rechts orientierte Gerade projiziert und hat einen negativen skalaren Anteil. Weitere Skizzen zeigen den Nullfall und das positive Vorzeichen nach Umkehr der Bezugsrichtung.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reusable-mathematical-core",
+            "essentialUnderstandingDe": "Eine Projektion erhält nur den Anteil parallel zur Bezugsrichtung; ihre Länge ist gerichtet und kann negativ sein. Für Pfeilbetrag a und Winkel θ zur positiven Bezugsrichtung ist sie a cosθ; bei 90° verschwindet sie und ein Richtungswechsel kehrt das Vorzeichen um.",
+            "essentialUnderstandingEn": "Projection retains only the component parallel to the reference direction; its length is directed and can be negative. For arrow magnitude a and angle θ to the positive reference direction it is a cosθ; it vanishes at 90° and reversing the reference direction reverses its sign.",
+            "observablePerformanceDe": "Zeichnet den Lotfuß, berechnet eine neue Projektion aus einem Winkel oder Komponenten mit benannter Einheit und prüft eine veränderte Bezugsrichtung.",
+            "observablePerformanceEn": "Draws the perpendicular foot, calculates a fresh projection from an angle or components with a stated unit, and checks a changed reference direction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reusable-mathematical-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-boundary",
+            "textDe": "Neue Zahlen und Darstellung sowie ein mathematisch relevanter Grenz- oder Gegenfall; keine zusätzliche Aufgabenquote nach ausreichender Evidenz.",
+            "textEn": "Fresh numbers and representation plus a mathematically relevant boundary or countercase; no extra task quota once sufficient evidence exists."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive",
+            "taskDemandDe": "Gegeben ist die Beziehung p=a·cos(θ), wobei p die gerichtete Projektionslänge, a der Pfeilbetrag und θ der Winkel zur positiven Bezugsrichtung ist. Ein Pfeil von 8 Einheiten liegt bei 60° zur positiven horizontalen Richtung. Konstruiere und berechne die Projektion; cos60°=1/2 ist gegeben. Erläutere auch die Umkehr der Bezugsrichtung.",
+            "taskDemandEn": "The relation p=a cos(θ) is supplied, where p is signed projected length, a is arrow magnitude, and θ is measured to the positive reference direction. An arrow of length 8 lies at 60° to the positive horizontal direction. Construct and calculate its projection; cos60°=1/2 is given. Also explain reversal of the reference direction.",
+            "expectedPerformanceDe": "Gerichtete Projektion +4; nach Umkehr der Bezugsrichtung −4. Die volle Pfeillänge 8 ist kein horizontaler Anteil.",
+            "expectedPerformanceEn": "Signed projection +4; after reversing the reference direction it is −4. The full length 8 is not the horizontal component.",
+            "understandingFocusDe": "Eine Projektion erhält nur den Anteil parallel zur Bezugsrichtung; ihre Länge ist gerichtet und kann negativ sein. Für Pfeilbetrag a und Winkel θ zur positiven Bezugsrichtung ist sie a cosθ; bei 90° verschwindet sie und ein Richtungswechsel kehrt das Vorzeichen um.",
+            "understandingFocusEn": "Projection retains only the component parallel to the reference direction; its length is directed and can be negative. For arrow magnitude a and angle θ to the positive reference direction it is a cosθ; it vanishes at 90° and reversing the reference direction reverses its sign."
+          },
+          {
+            "id": "negative",
+            "taskDemandDe": "Ein neuer Pfeil hat Komponenten (3,−2). Projiziere auf die nach oben gerichtete vertikale Gerade und vergleiche mit einem rein horizontalen Pfeil (3,0).",
+            "taskDemandEn": "A fresh arrow has components (3,−2). Project onto the upward-oriented vertical line and compare with a horizontal arrow (3,0).",
+            "expectedPerformanceDe": "Lotfuß (0,−2), gerichteter Wert −2; für den horizontalen Pfeil 0. Ein negativer Anteil bedeutet keine negative geometrische Länge.",
+            "expectedPerformanceEn": "Perpendicular foot (0,−2), directed value −2; the horizontal arrow gives 0. A negative component is not a negative geometric length.",
+            "understandingFocusDe": "Eine Projektion erhält nur den Anteil parallel zur Bezugsrichtung; ihre Länge ist gerichtet und kann negativ sein. Für Pfeilbetrag a und Winkel θ zur positiven Bezugsrichtung ist sie a cosθ; bei 90° verschwindet sie und ein Richtungswechsel kehrt das Vorzeichen um.",
+            "understandingFocusEn": "Projection retains only the component parallel to the reference direction; its length is directed and can be negative. For arrow magnitude a and angle θ to the positive reference direction it is a cosθ; it vanishes at 90° and reversing the reference direction reverses its sign."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "11b5e521-9f83-59e4-8285-98e2a5a26333",
+        "shortKey": "canonical_math_nonnegative_scaled_square_inverse",
+        "title": "Nichtnegative Werte aus Quadratbeziehungen bestimmen",
+        "titleEn": "Determine nonnegative values from square relationships",
+        "description": "Die lernende Person kann bei einer gegebenen Beziehung q·z² = r mit q > 0 und z ≥ 0 den gesuchten Wert z = √(r/q) bestimmen, die Zulässigkeit und die nichtnegative Auswahl begründen und exakte Werte oder mit einem geeigneten Rechenwerkzeug erhaltene Näherungen durch Quadrieren und Rückeinsetzen unter Beachtung der Rundungsgenauigkeit prüfen.",
+        "descriptionEn": "For a given relationship q·z² = r with q > 0 and z ≥ 0, the learner can determine the required value z = √(r/q), justify admissibility and the nonnegative choice, and check exact values or approximations obtained with a suitable calculation tool by squaring and substitution while accounting for rounding accuracy.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.SQUARE_RELATION.NONNEGATIVE_INVERSE"
+        },
+        "contains": [],
+        "requires": [
+          "ee48e811-4c9c-5080-9836-8403fc9f0810",
+          "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/11b5e521-9f83-59e4-8285-98e2a5a26333.json",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "sourceGoalId": "he-math-seki-kc-7-3-zahlen-j7-8-02-1e930168"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "11b5e521-9f83-59e4-8285-98e2a5a26333",
+            "title": "Visualisierung: Nichtnegative Werte aus Quadratbeziehungen bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/11b5e521-9f83-59e4-8285-98e2a5a26333/11b5e521-9f83-59e4-8285-98e2a5a26333.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Nichtnegative Werte aus Quadratbeziehungen bestimmen.",
+            "altText": "Eine gegebene Quadratbeziehung wird durch Division auf die Fläche eines Quadrats und seine nichtnegative Seitenlänge zurückgeführt. Null und negative rechte Seite sowie eine ausdrücklich gerundete Rückprobe werden unterschieden.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "nonnegative-square-inverse-with-independent-check",
+            "essentialUnderstandingDe": "Für q > 0 ist q·z² stets nichtnegativ. Bei r ≥ 0 ergibt Division durch q die Quadratbeziehung z² = r/q; √(r/q) bezeichnet ihren eindeutig nichtnegativen Wert. r = 0 liefert z = 0, während r < 0 im reellen Zahlenbereich unzulässig ist. Ein gerundeter Näherungswert muss die Ausgangsbeziehung innerhalb einer zur angegebenen Genauigkeit passenden Rundungstoleranz erfüllen.",
+            "essentialUnderstandingEn": "For q > 0, q·z² is always nonnegative. If r ≥ 0, division by q gives the square relationship z² = r/q; √(r/q) denotes its unique nonnegative value. r = 0 gives z = 0, whereas r < 0 is inadmissible over the real numbers. A rounded approximation must satisfy the original relationship within a rounding tolerance appropriate to the stated accuracy.",
+            "observablePerformanceDe": "Die lernende Person bildet für eine frische Beziehung den Radikanden r/q selbst, begründet die Zulässigkeit und die nichtnegative Auswahl, bestimmt einen exakten Wert oder eine gekennzeichnete Werkzeugnäherung und prüft das Ergebnis unabhängig durch eigenes Quadrieren und Rückeinsetzen. Bei Näherungen begründet sie die angegebene Rundung anhand zusätzlicher Werkzeugstellen oder einer passenden Rundungstoleranz und erklärt eine dadurch entstehende kleine Abweichung.",
+            "observablePerformanceEn": "For a fresh relationship, the learner independently forms the radicand r/q, justifies admissibility and the nonnegative choice, determines an exact value or a labelled tool approximation, and independently checks the result by squaring and substitution. For approximations, the learner justifies the reported rounding using additional tool digits or a suitable rounding tolerance and explains the small discrepancy caused by rounding."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "nonnegative-square-inverse-with-independent-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "admissibility-and-zero",
+            "textDe": "Positive rechte Seite, Null und negative rechte Seite verändern Existenz und zulässigen Wert; q bleibt positiv.",
+            "textEn": "A positive right-hand side, zero and a negative right-hand side change existence and the admissible value; q stays positive."
+          },
+          {
+            "id": "exactness-and-representation",
+            "textDe": "Ganzzahlige Daten mit exaktem Wert, Bruchdaten mit Radikand unter 1 und Dezimaldaten mit nicht exakt endender Werkzeugnäherung verlangen verschiedene Ergebnisdarstellungen und Prüfgenauigkeiten.",
+            "textEn": "Integer data with an exact value, fraction data with a radicand below 1, and decimal data with a non-terminating tool approximation require different result representations and checking accuracies."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "exact-positive-and-zero",
+            "taskDemandDe": "Bestimme für 3·z² = 75 mit z ≥ 0 den zulässigen Wert und begründe die Auswahl. Prüfe ihn durch Quadrieren und Rückeinsetzen. Beurteile anschließend (7/3)·z² = 0 im selben Zahlenbereich und prüfe auch diesen Wert.",
+            "taskDemandEn": "For 3·z² = 75 with z ≥ 0, determine the admissible value and justify the choice. Check it by squaring and substitution. Then assess (7/3)·z² = 0 in the same domain and check that value as well.",
+            "expectedPerformanceDe": "75/3 = 25, daher z = √25 = 5; −5 ist wegen z ≥ 0 nicht zulässig. Die eigene Prüfung ergibt 5² = 25 und 3·25 = 75. Im Nullfall ist 0/(7/3) = 0 und z = 0; (7/3)·0² = 0 bestätigt die Ausgangsbeziehung.",
+            "expectedPerformanceEn": "75/3 = 25, so z = √25 = 5; −5 is inadmissible because z ≥ 0. The independent check gives 5² = 25 and 3·25 = 75. For the zero case, 0/(7/3) = 0 and z = 0; (7/3)·0² = 0 confirms the original relationship.",
+            "understandingFocusDe": "Division isoliert das Quadrat; die vorgegebene Nichtnegativität entscheidet die Wertauswahl auch im Nullfall.",
+            "understandingFocusEn": "Division isolates the square; the stipulated nonnegativity determines the choice, including the zero case."
+          },
+          {
+            "id": "fresh-fractional-exact-value",
+            "taskDemandDe": "Löse (3/4)·z² = 27/64 für z ≥ 0. Bilde den Radikanden selbst, gib den Wert exakt an und prüfe durch eigenes Quadrieren und Rückeinsetzen. Erkläre, warum ein Radikand zwischen 0 und 1 zulässig ist.",
+            "taskDemandEn": "Solve (3/4)·z² = 27/64 for z ≥ 0. Form the radicand independently, state the exact value, and check it by independently squaring and substituting. Explain why a radicand between 0 and 1 is admissible.",
+            "expectedPerformanceDe": "(27/64)/(3/4) = 9/16 und z = 3/4. (3/4)² = 9/16 sowie (3/4)·(9/16) = 27/64 bestätigen den Wert. Nichtnegativität verlangt keinen Radikanden von mindestens 1; 9/16 ist positiv und der nichtnegative Wert 3/4 liegt ebenfalls unter 1.",
+            "expectedPerformanceEn": "(27/64)/(3/4) = 9/16 and z = 3/4. (3/4)² = 9/16 and (3/4)·(9/16) = 27/64 confirm the value. Nonnegativity does not require a radicand of at least 1; 9/16 is positive and its nonnegative value 3/4 is also below 1.",
+            "understandingFocusDe": "Der Darstellungswechsel zu Brüchen und die Skalierung unter 1 erhalten dieselbe Inversionsbedeutung.",
+            "understandingFocusEn": "Changing to fractions and scaling below 1 preserve the same meaning of inversion."
+          },
+          {
+            "id": "fresh-tool-approximation-and-negative-right-side",
+            "taskDemandDe": "Bestimme für 0,16·z² = 0,048 mit z ≥ 0 den Radikanden selbst und mit einem geeigneten Rechenwerkzeug einen Näherungswert auf drei Dezimalstellen. Begründe die Rundung und prüfe die Ausgangsbeziehung durch eigenes Quadrieren und Rückeinsetzen unter Berücksichtigung der Rundung. Beurteile danach 0,16·z² = −0,048 im selben Zahlenbereich.",
+            "taskDemandEn": "For 0.16·z² = 0.048 with z ≥ 0, form the radicand independently and use a suitable calculation tool to obtain an approximation to three decimal places. Justify the rounding and check the original relationship by independently squaring and substituting while accounting for rounding. Then assess 0.16·z² = −0.048 in the same domain.",
+            "expectedPerformanceDe": "0,048/0,16 = 0,3, daher z = √0,3 ≈ 0,5477225575 und auf drei Dezimalstellen z ≈ 0,548. Die zusätzlichen Stellen begründen die Rundung. Eigenes Quadrieren ergibt 0,548² = 0,300304 und Rückeinsetzen 0,16·0,300304 = 0,04804864. Die Abweichung 0,00004864 ist mit der Rundung vereinbar, etwa weil die Rundungszelle [0,5475; 0,5485) nach Quadrieren und Multiplikation [0,047961; 0,04813636) ergibt und 0,048 darin liegt. Eine gleichwertige begründete Toleranzprüfung ist zulässig. Bei negativer rechter Seite wäre z² = −0,3; weil q·z² ≥ 0 gilt, existiert keine reelle nichtnegative Lösung.",
+            "expectedPerformanceEn": "0.048/0.16 = 0.3, so z = √0.3 ≈ 0.5477225575 and to three decimal places z ≈ 0.548. The additional digits justify the rounding. Independently squaring gives 0.548² = 0.300304 and substitution gives 0.16·0.300304 = 0.04804864. The discrepancy 0.00004864 is consistent with rounding, for example because the rounding cell [0.5475, 0.5485) gives [0.047961, 0.04813636) after squaring and multiplication, which contains 0.048. An equivalent justified tolerance check is admissible. With a negative right-hand side, z² would equal −0.3; since q·z² ≥ 0, there is no real nonnegative solution.",
+            "understandingFocusDe": "Werkzeugnäherung, unabhängige Rückprüfung und eine veränderte Zulässigkeitsbedingung machen den Transfer sichtbar.",
+            "understandingFocusEn": "A tool approximation, independent back-check and a changed admissibility condition make transfer observable."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "077d5e2f-27f2-5215-9d48-fe002cf1c663",
+        "shortKey": "canonical_math_sek1_decimal_numbers_round_given_place",
+        "title": "Nichtnegative Dezimalzahlen auf eine vorgegebene Stelle runden",
+        "titleEn": "Round nonnegative decimals to a specified place",
+        "description": "Die lernende Person kann nichtnegative endliche Dezimalzahlen auf eine vorgegebene Stelle zum nächstgelegenen Nachbarwert auf dieser Stelle runden, bei genau halbem Abstand nach der angegebenen Schulregel den größeren Wert wählen, die Entscheidung mit der Bedeutung der Dezimalstellen einschließlich Nullen und Überträgen begründen und Runden vom Abschneiden unterscheiden.",
+        "descriptionEn": "The learner can round nonnegative terminating decimals to the nearest value at a specified place, choose the larger value at an exact halfway point under the stated school rule, justify the choice using decimal place-value meaning including zeros and carrying, and distinguish rounding from truncation.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "contains": [],
+        "requires": [
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K3.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J6",
+          "area": "Arithmetic",
+          "topicCode": "CANONICAL.MATH.SEK1.DECIMAL.ROUND_GIVEN_PLACE"
+        },
+        "semanticKind": "curricularAtomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "077d5e2f-27f2-5215-9d48-fe002cf1c663",
+            "title": "Visualisierung: Nichtnegative Dezimalzahlen auf eine vorgegebene Stelle runden",
+            "url": "/assets/goal-visualizations/mathematik/077d5e2f-27f2-5215-9d48-fe002cf1c663/077d5e2f-27f2-5215-9d48-fe002cf1c663.png",
+            "provider": "OpenAI / Codex built-in imagegen (actual model version not observed)",
+            "description": "Visualisierung zum Lernziel: Nichtnegative Dezimalzahlen auf eine vorgegebene Stelle runden.",
+            "altText": "Eine Stellenwerttafel zeigt 2,347 als 2 Einer, 3 Zehntel, 4 Hundertstel und 7 Tausendstel. Beim Runden auf Hundertstel ergibt sich 2,35, beim Abschneiden 2,34. Weitere Beispiele zeigen die Halbregel 0,125 zu 0,13 und den Übertrag 9,995 zu 10,00.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "candidate"
+          }
+        ],
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "sourceGoalId": "he-math-seki-kc-7-3-zahlen-j5-6-07-0a028bac"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/077d5e2f-27f2-5215-9d48-fe002cf1c663.json"
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "requested-place-and-value",
+            "essentialUnderstandingDe": "Eine Dezimalstelle bezeichnet Zehntel, Hundertstel und weitere jeweils zehnmal kleinere Einheiten. Nullen halten unbesetzte Stellen frei. Die Zielstelle setzt das Raster benachbarter Rundungswerte; der benachbarte rechte Stellenwert zerlegt einen solchen Schritt in zehn gleiche Teile.",
+            "essentialUnderstandingEn": "Decimal places denote tenths, hundredths and further units each ten times smaller. Zeros preserve unoccupied places. The target place sets the grid of neighboring rounded values; the adjacent place on the right divides a step into ten equal parts.",
+            "observablePerformanceDe": "Die lernende Person deutet für eine neue Zahl Ziel- und Folgestelle sowie Nullen selbstständig und erklärt den Zehn-zu-eins-Zusammenhang mündlich oder schriftlich. Sie begründet die Näherungsentscheidung ohne markierte Ziffern oder vorgegebene Antwortwerte. Eine höchstens beschriftete, sonst leere Stellenwerttafel darf sie optional selbst ausfüllen; eine Tabelle ist kein Pflichtnachweis.",
+            "observablePerformanceEn": "For a fresh number, the learner independently interprets the target and following place and zeros and explains the ten-to-one relationship orally or in writing. The learner justifies the approximation without highlighted digits or supplied answer values. The learner may optionally fill an at-most labelled, otherwise blank place-value table; a table is not required evidence."
+          },
+          {
+            "id": "round-and-justify-under-given-rule",
+            "essentialUnderstandingDe": "Die übliche Schulrundung wählt den nächstgelegenen Wert des vorgegebenen Stellenrasters. Ein Rest unter einer halben Einheit führt nach unten, ein größerer Rest nach oben; genau die Hälfte folgt der ausdrücklich angegebenen positiven Regel nach oben. Überträge sind Bündelungen von zehn kleineren Einheiten.",
+            "essentialUnderstandingEn": "Conventional school rounding chooses the nearest value on the specified place grid. A remainder below half a unit rounds down and a larger remainder up; exactly half follows the explicitly stated positive ties-up rule. Carrying regroups ten smaller units.",
+            "observablePerformanceDe": "Die lernende Person entscheidet in neuen Fällen selbstständig für den unteren oder oberen Wert, begründet die Grenze über Stellenwerte und führt nötige Überträge aus. Auch spätere große Ziffern bei kleiner erster entfernter Ziffer und ein Nullergebnis werden erklärt; eine eigene Dezimalsubtraktion ist nicht nötig.",
+            "observablePerformanceEn": "In fresh cases, the learner independently chooses the lower or upper value, explains the boundary using place value, and carries when needed. Later large digits following a small first discarded digit and a zero result are explained; independent decimal subtraction is unnecessary."
+          },
+          {
+            "id": "distinguish-rounding-from-truncation",
+            "essentialUnderstandingDe": "Abschneiden entfernt die Ziffern hinter der Zielstelle; Runden kann den beibehaltenen Teil ändern. Für dieselbe nichtnegative Zahl und Zielstelle können beide Verfahren verschiedene Werte liefern. Der gerundete Wert gibt die entfernten Ziffern nicht wieder.",
+            "essentialUnderstandingEn": "Truncation removes the digits after the target place; rounding can change the retained part. For the same nonnegative number and target place, the procedures can produce different values. The rounded value does not preserve the removed digits.",
+            "observablePerformanceDe": "Die lernende Person berechnet in einem neuen Fall Rundungs- und Abschneidewert selbstständig und erklärt ihre Verschiedenheit; ein weiterer Abrundungsfall zeigt, warum gelegentliche Gleichheit die Verfahren nicht gleichsetzt.",
+            "observablePerformanceEn": "In a fresh case, the learner independently obtains the rounded and truncated values and explains their difference; a further downward case shows why occasional equality does not make the procedures identical."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "requested-place-and-value",
+            "round-and-justify-under-given-rule",
+            "distinguish-rounding-from-truncation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "place-and-zero-layout",
+            "textDe": "Hundertstel, Tausendstel oder Zehntausendstel bei einer Zahl über eins oder bei einer kleinen Zahl mit inneren Nullen; die Stelle bleibt immer vorgegeben.",
+            "textEn": "Hundredths, thousandths, or ten-thousandths for a value above one or a small value with internal zeros; the target place is always given."
+          },
+          {
+            "id": "rounding-boundary-and-carry",
+            "textDe": "Ein Fall ohne Übertrag, ein exakter Halbfall und ein Übertrag über mehrere Neunen in den ganzzahligen Teil.",
+            "textEn": "A case without carrying, an exact tie, and a carry across several nines into the integer part."
+          },
+          {
+            "id": "direct-choice-and-procedure-comparison",
+            "textDe": "Selbstständiges Runden und Vergleich mit Abschneiden; eine höchstens beschriftete leere Tafel unterstützt die Darstellung, gibt aber keine Entscheidungsziffer, Nachbarwerte oder Antwort vor.",
+            "textEn": "Independent rounding and comparison with truncation; an optionally labelled blank table supports representation without supplying a deciding digit, neighboring values or the answer."
+          },
+          {
+            "id": "lower-neighbor-and-zero-output",
+            "textDe": "Ein größerer späterer Restziffernwert darf eine kleine erste entfernte Ziffer nicht überstimmen; ein positiver Eingang kann zu Null gerundet werden.",
+            "textEn": "A larger later digit must not override a small first discarded digit; a positive input can round to zero."
+          },
+          {
+            "id": "original-number-direct-rounding",
+            "textDe": "Direkt aus der ursprünglichen Zahl entscheiden; ein weiterer Fall unterscheidet dies von erst feinerem und dann gröberem Runden. Der Auftrag verrät diese Fallklasse nicht.",
+            "textEn": "Decide directly from the original number; a further case separates this from rounding first to a finer and then a coarser place. The prompt does not reveal this case class."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "decimal-case-001",
+            "taskDemandDe": "Runde 7,386 auf Hundertstel. Wähle den nächstgelegenen Wert auf dieser Stelle; bei genau halbem Abstand wähle den größeren Wert. Begründe dein Ergebnis. Bestimme für dieselbe Ausgangszahl auch den Wert beim Abschneiden hinter derselben vorgegebenen Stelle. Vergleiche die Ergebnisse und die Prinzipien der beiden Verfahren.",
+            "taskDemandEn": "Round 7.386 to hundredths. Choose the nearest value at that place; at an exact halfway point choose the larger value. Justify your answer. For the same original number, also determine the value obtained by truncating after the same specified place. Compare the results and the principles of the two procedures.",
+            "expectedPerformanceDe": "7,39. Die selbst bestimmte Hundertstelziffer 8 bezeichnet acht Hundertstel; die folgende 6 bezeichnet sechs Tausendstel. Der Rest entspricht 6 von 10 Tausendsteln und liegt über einer halben Hundertsteleinheit. 7,39 ist daher näher als 7,38. Abschneiden ergäbe 7,38; die Verfahren unterscheiden sich.",
+            "expectedPerformanceEn": "7.39. The independently identified hundredths digit 8 denotes eight hundredths; the following 6 denotes six thousandths. The tail is 6 of 10 thousandths, exceeding half one hundredth. Thus 7.39 is nearer than 7.38. Truncation gives 7.38, so the procedures differ.",
+            "understandingFocusDe": "Selbstständige Stellenwahl und begründete obere Nachbarwahl; Unterschied zu Abschneiden.",
+            "understandingFocusEn": "Independent place identification and justified upper-neighbor choice; contrast with truncation."
+          },
+          {
+            "id": "decimal-case-002",
+            "taskDemandDe": "Runde 0,00327 auf Zehntausendstel. Wähle den nächstgelegenen Wert auf dieser Stelle; bei genau halbem Abstand wähle den größeren Wert. Begründe dein Ergebnis.",
+            "taskDemandEn": "Round 0.00327 to ten-thousandths. Choose the nearest value at that place; at an exact halfway point choose the larger value. Justify your answer.",
+            "expectedPerformanceDe": "0,0033. Die Nullstellen halten Zehntel und Hundertstel frei. 3 steht für drei Tausendstel, 2 für zwei Zehntausendstel und 7 für sieben Hunderttausendstel. Der Zielschritt ist ein Zehntausendstel, also zehn Hunderttausendstel. Sieben dieser zehn Teile liegen über der Hälfte; 0,0033 ist näher als 0,0032. Optionale, unbewertete Zusatzhilfe; für diesen Auftrag ist sie kein Pflichtnachweis: Abschneiden ergäbe 0,0032.",
+            "expectedPerformanceEn": "0.0033. The zero places preserve empty tenths and hundredths. 3 denotes three thousandths, 2 two ten-thousandths and 7 seven hundred-thousandths. The target step is one ten-thousandth, or ten hundred-thousandths. Seven of those ten parts exceed half, making 0.0033 nearer than 0.0032. Optional, ungraded supplemental guidance; it is not required evidence for this task: truncation gives 0.0032.",
+            "understandingFocusDe": "Unmarkierte Dezimalstellen und Nullhalter bei kleiner positiver Zahl.",
+            "understandingFocusEn": "Unmarked decimal places and zero placeholders for a small positive value."
+          },
+          {
+            "id": "decimal-case-003",
+            "taskDemandDe": "Runde 29,995 auf Hundertstel. Wähle den nächstgelegenen Wert auf dieser Stelle; bei genau halbem Abstand wähle den größeren Wert. Begründe dein Ergebnis.",
+            "taskDemandEn": "Round 29.995 to hundredths. Choose the nearest value at that place; at an exact halfway point choose the larger value. Justify your answer.",
+            "expectedPerformanceDe": "30,00. Der Rest von fünf Tausendsteln ist genau die Hälfte einer Hundertsteleinheit; dies wird aus der Zahl erkannt, nicht im Lernauftrag vorgegeben. Die gegebene Regel wählt den größeren Nachbarn. Ein Hundertstel mehr als 29,99 erfordert Bündelungen über die Neunen: zehn Hundertstel werden ein Zehntel, zehn Zehntel ein Einer, zehn Einer ein Zehner. 30 und 30,00 sind wertgleich; die Darstellung behauptet keine Messgenauigkeit. Optionale, unbewertete Zusatzhilfe; für diesen Auftrag ist sie kein Pflichtnachweis: Abschneiden ergäbe 29,99.",
+            "expectedPerformanceEn": "30.00. The tail of five thousandths is exactly half one hundredth; the learner identifies this from the number rather than a classified prompt. The supplied rule chooses the larger neighbor. Increasing 29.99 by a hundredth regroups across the nines: ten hundredths make a tenth, ten tenths one, and ten ones a ten. 30 and 30.00 have equal value; the notation makes no measurement-precision claim. Optional, ungraded supplemental guidance; it is not required evidence for this task: truncation gives 29.99.",
+            "understandingFocusDe": "Selbst erkannter Halbfall und vollständiges Zehn-zu-eins-Bündeln.",
+            "understandingFocusEn": "Independently recognized tie and complete ten-to-one regrouping."
+          },
+          {
+            "id": "decimal-case-004",
+            "taskDemandDe": "Runde 4,7328 auf Hundertstel. Wähle den nächstgelegenen Wert auf dieser Stelle; bei genau halbem Abstand wähle den größeren Wert. Begründe dein Ergebnis. Bestimme für dieselbe Ausgangszahl auch den Wert beim Abschneiden hinter derselben vorgegebenen Stelle. Vergleiche die Ergebnisse und die Prinzipien der beiden Verfahren.",
+            "taskDemandEn": "Round 4.7328 to hundredths. Choose the nearest value at that place; at an exact halfway point choose the larger value. Justify your answer. For the same original number, also determine the value obtained by truncating after the same specified place. Compare the results and the principles of the two procedures.",
+            "expectedPerformanceDe": "4,73. Zwei Tausendstel mit acht weiteren Zehntausendsteln bleiben unter drei Tausendsteln und somit unter der halben Hundertsteleinheit von fünf Tausendsteln. 4,73 ist näher als 4,74. Die weiter rechts stehende 8 ändert diese Grenze nicht. Abschneiden liefert hier denselben Wert; das macht Abschneiden und Runden nicht allgemein gleich.",
+            "expectedPerformanceEn": "4.73. Two thousandths plus eight further ten-thousandths remain below three thousandths, hence below half a hundredth, which is five thousandths. 4.73 is nearer than 4.74. The later 8 does not change that bound. Truncation gives the same value here, but this does not make truncation and rounding identical in general.",
+            "understandingFocusDe": "Frische untere Nachbarwahl trotz späterer großer Ziffer, ohne Richtungshinweis.",
+            "understandingFocusEn": "Fresh lower-neighbor choice despite a later large digit, with no direction cue."
+          },
+          {
+            "id": "decimal-case-005",
+            "taskDemandDe": "Runde 0,00031 auf Tausendstel. Wähle den nächstgelegenen Wert auf dieser Stelle; bei genau halbem Abstand wähle den größeren Wert. Begründe dein Ergebnis.",
+            "taskDemandEn": "Round 0.00031 to thousandths. Choose the nearest value at that place; at an exact halfway point choose the larger value. Justify your answer.",
+            "expectedPerformanceDe": "0,000. Drei Zehntausendstel mit einem weiteren Hunderttausendstel bleiben unter vier Zehntausendsteln und damit unter der halben Tausendsteleinheit. Der nähere Nachbar ist Null, obwohl die Ausgangszahl positiv ist. Die Nullhalter erhalten die vorgegebene Stellenordnung. 0 und 0,000 sind wertgleich; kein nichtnull Ergebnis wird verlangt. Optionale, unbewertete Zusatzhilfe; für diesen Auftrag ist sie kein Pflichtnachweis: Abschneiden ergäbe ebenfalls Null.",
+            "expectedPerformanceEn": "0.000. Three ten-thousandths plus a further hundred-thousandth remain below four ten-thousandths, and thus below half a thousandth. Zero is the nearer neighbor although the input is positive. Zero placeholders preserve the requested place layout. 0 and 0.000 have equal value; no nonzero result is required. Optional, ungraded supplemental guidance; it is not required evidence for this task: truncation also gives zero.",
+            "understandingFocusDe": "Frisches selbst ermitteltes Nullergebnis und begründete Nullhalter.",
+            "understandingFocusEn": "Fresh independently obtained zero result and justified zero placeholders."
+          },
+          {
+            "id": "decimal-case-006",
+            "taskDemandDe": "Runde 1,2449 auf Hundertstel. Wähle den nächstgelegenen Wert auf dieser Stelle; bei genau halbem Abstand wähle den größeren Wert. Begründe dein Ergebnis.",
+            "taskDemandEn": "Round 1.2449 to hundredths. Choose the nearest value at that place; at an exact halfway point choose the larger value. Justify your answer.",
+            "expectedPerformanceDe": "1,24. Vier Tausendstel mit weiterem Rest von neun Zehntausendsteln bleiben unter fünf Tausendsteln; das ist weniger als eine halbe Hundertsteleinheit. Direktes Runden auf die vorgegebene Hundertstelstelle wählt 1,24. Optionale, unbewertete Zusatzhilfe; für diesen Auftrag ist sie kein Pflichtnachweis: Erst auf Tausendstel zu 1,245 und dann auf Hundertstel zu 1,25 zu runden verändert die Ausgangszahl und ist hier falsch. Abschneiden ergäbe 1,24.",
+            "expectedPerformanceEn": "1.24. Four thousandths plus a tail of nine ten-thousandths remain below five thousandths, hence below half one hundredth. Direct rounding to the requested hundredths chooses 1.24. Optional, ungraded supplemental guidance; it is not required evidence for this task: first rounding to thousandths as 1.245 and then to hundredths as 1.25 changes the original number and is incorrect here. Truncation gives 1.24.",
+            "understandingFocusDe": "Direkte Entscheidung aus unveränderter Ausgangszahl statt Doppelrunden.",
+            "understandingFocusEn": "Direct decision from the unchanged original number instead of double rounding."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "fc9a9a35-3d4d-5a38-9149-6b0bbfbd73c4",
+        "shortKey": "canonical_math_paired_numeric_data_point_diagrams",
+        "title": "Zahlenpaare in Punktdiagramme übertragen und zurücklesen",
+        "titleEn": "Translate numerical pairs to and from point diagrams",
+        "description": "Die lernende Person kann zusammengehörige Zahlenpaare in einem passend skalierten und beschrifteten kartesischen Punktdiagramm darstellen und aus einem solchen Diagramm wieder als geordnete Wertepaare lesen, ohne die Paarzuordnung zu verändern.",
+        "descriptionEn": "The learner can display associated numerical pairs in an appropriately scaled and labeled Cartesian point diagram and read them back as ordered pairs without changing their association.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical",
+          "candidate"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K4"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Statistics",
+          "topicCode": "CANONICAL.MATH.CANDIDATE.PAIRED_NUMERIC_DATA_POINT_DIAGRAMS"
+        },
+        "contains": [],
+        "requires": [],
+        "type": "atomic",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "sourceGoalId": "he-math-seki-kc-7-3-zahlen-j7-8-05-13092ac1"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/fc9a9a35-3d4d-5a38-9149-6b0bbfbd73c4.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "fc9a9a35-3d4d-5a38-9149-6b0bbfbd73c4",
+            "title": "Visualisierung: Zahlenpaare in Punktdiagramme übertragen und zurücklesen",
+            "url": "/assets/goal-visualizations/mathematik/fc9a9a35-3d4d-5a38-9149-6b0bbfbd73c4/fc9a9a35-3d4d-5a38-9149-6b0bbfbd73c4.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Zahlenpaare in Punktdiagramme übertragen und zurücklesen.",
+            "altText": "Drei vollständige Tabellenzeilen mit Zeit in Minuten und Temperatur in Grad Celsius werden als einzelne Punkte in einem signierten Koordinatensystem dargestellt. Die Achsen nutzen unterschiedliche Zahlenschritte; die Punkte sind nicht verbunden.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          },
+          {
+            "type": "task-material",
+            "resourceType": "image",
+            "role": "assessment-stimulus",
+            "skillpilotId": "fc9a9a35-3d4d-5a38-9149-6b0bbfbd73c4",
+            "title": "Aufgabenbild: unabhängiges signiertes Punktdiagramm",
+            "url": "/assets/task-material/mathematik/fc9a9a35-signed-readback-2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe.svg",
+            "description": "Eigenständiges Aufgabenbild für independent-signed-diagram-readback; ohne Koordinatenliste oder Lösung ausgeben.",
+            "lang": "de",
+            "license": "CC-BY-4.0"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "reusable-mathematical-core",
+            "essentialUnderstandingDe": "Ein Datenpunkt steht für genau ein geordnetes Zahlenpaar. Achsenrolle, Einheit und Skalierung legen seine Lage fest; ein Maßstabswechsel verändert die dargestellten Zahlenpaare nicht. Punkte allein begründen weder eine Verbindungslinie noch eine Ursache.",
+            "essentialUnderstandingEn": "A data point represents exactly one ordered numerical pair. Axis roles, units, and scaling determine its location; changing scale does not change the pairs. Points alone justify neither a connecting line nor a cause.",
+            "observablePerformanceDe": "Wählt Achsen und geeignete Skalen, trägt unbekannte Paare ein, liest sie mit Einheit zurück und diagnostiziert vertauschte Koordinaten oder unabhängig sortierte Spalten. Nutzt auch negative Werte beider Größen, Null und Punkte zwischen beschrifteten Skalenwerten. Das Zurücklesen wird zusätzlich an einem unabhängig vorgegebenen Diagramm ohne ausgeschriebene Punktkoordinaten gezeigt.",
+            "observablePerformanceEn": "Chooses axes and suitable scales, plots unfamiliar pairs, reads them back with units, and diagnoses swapped coordinates or independently sorted columns. Also uses negative values of both quantities, zero and points between labeled ticks. Readback is additionally demonstrated on an independently supplied diagram without written point coordinates."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reusable-mathematical-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "0",
+            "textDe": "Veränderte Spaltenfolge, Achsenrollen oder Achsenskalierung.",
+            "textEn": "Changed column order, axis roles, or scaling."
+          },
+          {
+            "id": "signed-quadrants-zero-and-independent-readback",
+            "textDe": "Positive und negative Werte in beiden Koordinaten, Nullpunkt, Zwischenwerte der Skala und ein eigenständiges fremdes Diagramm; Spaltenfolge und geforderte Ausgabeordnung bleiben ausdrücklich benannt.",
+            "textEn": "Positive and negative values in both coordinates, origin, intermediate scale values and an independent unfamiliar diagram; column order and required output order remain explicit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "paired-cartesian",
+            "taskDemandDe": "Stelle (Zeit in min; Länge in cm)=(0;3),(2;1),(5;4) als Punkte dar. Lies die Paare zurück und beurteile, was durch aufsteigendes Sortieren nur der zweiten Spalte geschieht.",
+            "taskDemandEn": "Plot (time in min; length in cm)=(0;3),(2;1),(5;4). Read the pairs back and assess sorting only the second column in ascending order.",
+            "expectedPerformanceDe": "x=Zeit, y=Länge, beschriftete Skalen; drei Punkte (0,3),(2,1),(5,4). Einzelsortieren der zweiten Spalte ergibt fälschlich (0,1),(2,3),(5,4) und verändert zwei Paare. Nur gemeinsame Zeilenpermutationen erhalten die Zuordnung.",
+            "expectedPerformanceEn": "Use time on x and length on y with labeled scales; plot (0,3),(2,1),(5,4). Sorting only the second column incorrectly produces (0,1),(2,3),(5,4), changing two pairs. Only common row permutations preserve association.",
+            "understandingFocusDe": "Ein Datenpunkt steht für genau ein geordnetes Zahlenpaar. Achsenrolle, Einheit und Skalierung legen seine Lage fest; ein Maßstabswechsel verändert die dargestellten Zahlenpaare nicht. Punkte allein begründen weder eine Verbindungslinie noch eine Ursache.",
+            "understandingFocusEn": "A data point represents exactly one ordered numerical pair. Axis roles, units, and scaling determine its location; changing scale does not change the pairs. Points alone justify neither a connecting line nor a cause."
+          },
+          {
+            "id": "changed-scale-and-order",
+            "taskDemandDe": "Die Spalten stehen jetzt als (Masse in g; Zeit in s)=(4;1),(9;2),(16;3). Die Zeit soll auf die x-Achse. Trage die Paare ein und lies sie an einer x-Skala mit Zweierschritten zurück.",
+            "taskDemandEn": "Columns now give (mass in g; time in s)=(4;1),(9;2),(16;3). Put time on x. Plot the pairs and read them back on an x scale with increments of two.",
+            "expectedPerformanceDe": "Die gezeichneten Koordinaten sind (1,4),(2,9),(3,16); x=1 liegt zwischen 0 und 2. Die Spaltenfolge ändert die vorher festgelegte Größenrolle nicht.",
+            "expectedPerformanceEn": "The plotted coordinates are (1,4),(2,9),(3,16); x=1 lies between 0 and 2. Column order does not change the assigned variable roles.",
+            "understandingFocusDe": "Ein Datenpunkt steht für genau ein geordnetes Zahlenpaar. Achsenrolle, Einheit und Skalierung legen seine Lage fest; ein Maßstabswechsel verändert die dargestellten Zahlenpaare nicht. Punkte allein begründen weder eine Verbindungslinie noch eine Ursache.",
+            "understandingFocusEn": "A data point represents exactly one ordered numerical pair. Axis roles, units, and scaling determine its location; changing scale does not change the pairs. Points alone justify neither a connecting line nor a cause."
+          },
+          {
+            "id": "signed-plot-with-reversed-column-order",
+            "taskDemandDe": "Die Tabelle nennt (Temperatur in °C; Zeit relativ zum Start in min)=(-4;−2),(2;−1),(0;0),(−2;2),(4;3). Stelle alle Paare in einem beschrifteten Punktdiagramm mit Zeit waagerecht und Temperatur senkrecht dar. Wähle geeignete Skalen einschließlich negativer Werte und lies die Paare als (Zeit;Temperatur) zurück. Stelle dieselben Daten zusätzlich mit waagerechten Zweierschritten und senkrechten Viererschritten dar und erkläre, was unverändert bleibt.",
+            "taskDemandEn": "The table gives (temperature in °C; time relative to the start in min)=(-4,−2),(2,−1),(0,0),(−2,2),(4,3). Plot every pair with time horizontal and temperature vertical on labeled axes. Choose suitable scales including negative values, then read back as (time,temperature). Also show the same data with horizontal steps of two and vertical steps of four and explain what is unchanged.",
+            "expectedPerformanceDe": "Die Punkte sind (−2;−4),(−1;2),(0;0),(2;−2),(3;4) in der Reihenfolge (min;°C). Achsenrollen werden aus dem Auftrag, nicht aus der ersten Tabellenspalte abgeleitet. Im zweiten Diagramm liegen manche Punkte zwischen beschrifteten Skalenwerten; die Werte, Vorzeichen und Paarzuordnungen bleiben gleich. Eine Verbindungslinie oder Kausalität folgt nicht allein aus den Punkten.",
+            "expectedPerformanceEn": "Points are (−2,−4),(−1,2),(0,0),(2,−2),(3,4) in (min,°C) order. Axis roles follow the instruction, not the first table column. In the second diagram some points lie between labeled tick values; numerical values, signs and pair associations remain unchanged. Points alone imply neither a connecting line nor causation.",
+            "understandingFocusDe": "Genuin vorzeichenbehaftetes Eintragen mit Spalten-/Achsenrollen und verschieden skaliertem Rücklesen.",
+            "understandingFocusEn": "Genuinely signed plotting with column/axis roles and readback under changed scales."
+          },
+          {
+            "id": "independent-signed-diagram-readback",
+            "taskDemandDe": "Lies im separat bereitgestellten Aufgabenbild fc9a9a35-signed-readback.svg die Punkte A bis D als (Zeit relativ zum Start in min; Temperatur in °C) ab. Benutze die Achsenbeschriftungen und Skalen. Gib danach dieselben Zuordnungen in der Ausgabeordnung (Temperatur;Zeit) an. Das Aufgabenbild muss gezeigt werden; seine Koordinatenliste oder der Erwartungsteil darf nicht mitgeliefert werden.",
+            "taskDemandEn": "Read points A through D in the separately supplied task image fc9a9a35-signed-readback.svg as (time relative to start in min, temperature in °C), using its axis labels and scales. Then give the same associations in (temperature,time) output order. The task image must be shown; its coordinate list or expected answer must not be supplied.",
+            "expectedPerformanceDe": "Das eigenständig bereitgestellte Bild liefert A=(−3;2), B=(−1;−3), C=(1;−1), D=(3;3), jeweils (min;°C). In umgekehrter Ausgabeordnung: A=(2;−3), B=(−3;−1), C=(−1;1), D=(3;3), jeweils (°C;min). Die beschrifteten Skalen springen in Zweierschritten; unbeschriftete Zwischenlinien erlauben Einerwerte. Vertauschen der Ausgabeordnung vertauscht jedes vollständige Paar, nicht unabhängig die Spalten.",
+            "expectedPerformanceEn": "The independently supplied image gives A=(−3,2), B=(−1,−3), C=(1,−1), D=(3,3), in (min,°C). Reversed output order gives A=(2,−3), B=(−3,−1), C=(−1,1), D=(3,3), in (°C,min). Labeled scales advance by two; unlabeled intermediate grid lines permit unit values. Reversing output order swaps each complete pair rather than sorting columns independently.",
+            "understandingFocusDe": "Fremdes signiertes Diagramm wirklich ablesen; Achsenrolle, Skalenabstand und Ausgabeordnung bewusst auseinanderhalten.",
+            "understandingFocusEn": "Actually read an unfamiliar signed diagram while coordinating axis role, tick interval and requested output order."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "935b440a-b26e-5a98-b6f5-286c436b0688",
+        "shortKey": "canonical_math_nonnegative_sine_heights_on_halfcircle",
+        "title": "Nichtnegative Höhen mit dem Sinus bestimmen",
+        "titleEn": "Determine nonnegative heights using sine",
+        "description": "Die lernende Person kann bei einer Strecke mit positiver Länge a und einem Winkel α zwischen 0° und 180° zu einer Grundlinie den nichtnegativen senkrechten Abstand ihres Endpunkts als h = a · sin(α) bestimmen, den Zusammenhang über ein rechtwinkliges Hilfsdreieck beziehungsweise den Einheitskreis begründen, Ergänzungswinkel und die Grenzfälle 0°, 90° und 180° erklären und die Nullstrecke als entarteten Fall ohne festgelegte Richtung einordnen.",
+        "descriptionEn": "The learner can determine the nonnegative perpendicular distance of a segment endpoint as h = a · sin(α), for positive segment length a and angle α from 0° to 180° to a baseline, justify the relation using an auxiliary right triangle or the unit circle, explain supplementary angles and the cases 0°, 90°, and 180°, and recognize the zero segment as a degenerate case without a defined direction.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical",
+          "candidate"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2",
+            "K4"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L3"
+          ],
+          "phase": "GLOBAL",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.CANDIDATE.SINE_HEIGHTS_HALFCIRCLE"
+        },
+        "contains": [],
+        "requires": [],
+        "type": "atomic",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "sourceGoalId": "he-math-seki-kc-7-3-funktionen-gleichungen-j9-10-05-2d3b9eb3"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/935b440a-b26e-5a98-b6f5-286c436b0688.json",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "935b440a-b26e-5a98-b6f5-286c436b0688",
+            "title": "Visualisierung: Nichtnegative Höhen mit dem Sinus bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/935b440a-b26e-5a98-b6f5-286c436b0688/935b440a-b26e-5a98-b6f5-286c436b0688.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Nichtnegative Höhen mit dem Sinus bestimmen.",
+            "altText": "Hilfsdreiecke für einen spitzen und seinen stumpfen Ergänzungswinkel zeigen dieselbe nichtnegative Höhe. Eine gedrehte Grundlinie mit senkrechter Höhe und die Randfälle 0, 90 und 180 Grad sowie die Nullstrecke ergänzen die Darstellung.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "sine-height-and-supplement",
+            "essentialUnderstandingDe": "Der senkrechte Abstand ist nichtnegativ und höchstens a. Für einen spitzen Winkel ist h/a das Gegenkatheten-Hypotenusen-Verhältnis im Hilfsdreieck. Bei einem stumpfen Winkel liegt der Lotfuß auf der verlängerten Grundlinie; der spitze Ergänzungswinkel besitzt dieselbe Höhe, daher sin(180°−α)=sin(α). Bei a=0 fällt der Endpunkt auf den Anfangspunkt: h=0, ein geometrischer Richtungswinkel ist nicht festgelegt, und h/a darf nicht gebildet werden.",
+            "essentialUnderstandingEn": "Perpendicular distance is nonnegative and at most a. For an acute angle, h/a is the opposite-to-hypotenuse ratio in an auxiliary right triangle. At an obtuse angle the perpendicular foot is on the extended baseline; the acute supplementary angle gives the same height, so sin(180°−α)=sin(α). For a=0 the endpoint coincides with the start: h=0, a geometric direction angle is undefined, and h/a cannot be formed.",
+            "observablePerformanceDe": "Kennzeichnet Grundlinie, Streckenlänge und senkrechten Abstand, begründet den Sinuszusammenhang mit einer eigenen Skizze, berechnet eine neue Höhe mit benannter Einheit und prüft Ergänzungswinkel und die Grenzen 0≤h≤a. Eine negative gerichtete Längskomponente wird nicht mit der Höhe verwechselt.",
+            "observablePerformanceEn": "Labels the baseline, segment length and perpendicular distance, justifies the sine relation with a self-made sketch, calculates an unfamiliar height with units, and checks supplementary angles and 0≤h≤a. Does not confuse a negative signed longitudinal component with height."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "sine-height-and-supplement"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "angle-and-baseline",
+            "textDe": "Spitzer oder stumpfer Winkel, gedrehte Grundlinie, Streckenlänge und passende Einheit wechseln; Null- und Maximalfall werden selbst erkannt.",
+            "textEn": "Change acute/obtuse angle, rotate the baseline, and change segment length and unit; independently recognize zero and maximum cases."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "acute-and-obtuse-height",
+            "taskDemandDe": "Als Ausgangsdefinition steht für einen spitzen Hilfswinkel β bereit: sin(β)=Gegenkathete/Hypotenuse. Numerische Sinuswerte dürfen berechnet oder geometrisch hergeleitet werden. Eine 8,0 cm lange Strecke beginnt auf einer waagerechten Grundlinie und liegt zunächst unter 30°, dann unter 150° zu deren rechter Richtung. Zeichne beide Lagen und die senkrechten Abstände. Bestimme die Höhen und erkläre, warum sie gleich sind, obwohl die Endpunkte auf verschiedenen Seiten des Anfangspunkts liegen.",
+            "taskDemandEn": "For an acute auxiliary angle β the defining relation sin(β)=opposite side/hypotenuse is supplied. Numerical sine values may be calculated or geometrically derived. An 8.0 cm segment starts on a horizontal baseline and makes 30°, then 150°, with its rightward direction. Draw both positions and perpendicular distances. Find the heights and explain why they agree although endpoints lie on different sides of the starting point.",
+            "expectedPerformanceDe": "Beide Höhen betragen 8·sin30°=4,0 cm. Im stumpfen Fall liegt der Lotfuß links vom Anfang; der Hilfswinkel ist 30°. Die waagerechte Lage ändert ihr Vorzeichen, die senkrechte Abstandslänge bleibt positiv.",
+            "expectedPerformanceEn": "Both heights are 8 sin30°=4.0 cm. For the obtuse case the foot lies left of the start, with auxiliary angle 30°. Horizontal position changes sign while perpendicular distance stays positive.",
+            "understandingFocusDe": "Der senkrechte Abstand ist nichtnegativ und höchstens a. Für einen spitzen Winkel ist h/a das Gegenkatheten-Hypotenusen-Verhältnis im Hilfsdreieck. Bei einem stumpfen Winkel liegt der Lotfuß auf der verlängerten Grundlinie; der spitze Ergänzungswinkel besitzt dieselbe Höhe, daher sin(180°−α)=sin(α). Bei a=0 fällt der Endpunkt auf den Anfangspunkt: h=0, ein geometrischer Richtungswinkel ist nicht festgelegt, und h/a darf nicht gebildet werden.",
+            "understandingFocusEn": "Perpendicular distance is nonnegative and at most a. For an acute angle, h/a is the opposite-to-hypotenuse ratio in an auxiliary right triangle. At an obtuse angle the perpendicular foot is on the extended baseline; the acute supplementary angle gives the same height, so sin(180°−α)=sin(α). For a=0 the endpoint coincides with the start: h=0, a geometric direction angle is undefined, and h/a cannot be formed."
+          },
+          {
+            "id": "rotated-baseline-and-limits",
+            "taskDemandDe": "Als Ausgangsdefinition steht für einen spitzen Hilfswinkel β bereit: sin(β)=Gegenkathete/Hypotenuse. Numerische Sinuswerte dürfen berechnet oder geometrisch hergeleitet werden. Eine neue Grundlinie ist schräg gezeichnet. Von einem Punkt auf ihr geht eine 5,0 m lange Strecke unter 120° zur benannten Grundrichtung aus. Konstruiere eine Skizze des senkrechten Abstands und berechne ihn. Sage die Höhen für 0°, 90° und 180° voraus und prüfe zusätzlich den Fall a=0.",
+            "taskDemandEn": "For an acute auxiliary angle β the defining relation sin(β)=opposite side/hypotenuse is supplied. Numerical sine values may be calculated or geometrically derived. A new baseline is tilted. A 5.0 m segment starts on it at 120° to its named positive direction. Sketch the perpendicular distance and calculate it. Predict heights at 0°, 90°, and 180° and also check a=0.",
+            "expectedPerformanceDe": "h=5·sin120°=5·sin60°≈4,33 m; Drehung der ganzen Zeichnung verändert den Abstand nicht. Bei 0° und 180° ist h=0, bei 90° h=5,0 m. Bei a=0 ist h=0; ein geometrischer Richtungswinkel ist nicht festgelegt. Die formale Fortsetzung 0·sin(α)=0 ist keine Winkelmessung, und Division durch a ist unzulässig.",
+            "expectedPerformanceEn": "h=5 sin120°=5 sin60°≈4.33 m; rotating the whole drawing does not change distance. At 0° and 180° h=0, at 90° h=5.0 m. For a=0, h=0 and geometric direction angle is undefined. The formal extension 0 sin(α)=0 is not an angle measurement, and division by a is invalid.",
+            "understandingFocusDe": "Der senkrechte Abstand ist nichtnegativ und höchstens a. Für einen spitzen Winkel ist h/a das Gegenkatheten-Hypotenusen-Verhältnis im Hilfsdreieck. Bei einem stumpfen Winkel liegt der Lotfuß auf der verlängerten Grundlinie; der spitze Ergänzungswinkel besitzt dieselbe Höhe, daher sin(180°−α)=sin(α). Bei a=0 fällt der Endpunkt auf den Anfangspunkt: h=0, ein geometrischer Richtungswinkel ist nicht festgelegt, und h/a darf nicht gebildet werden.",
+            "understandingFocusEn": "Perpendicular distance is nonnegative and at most a. For an acute angle, h/a is the opposite-to-hypotenuse ratio in an auxiliary right triangle. At an obtuse angle the perpendicular foot is on the extended baseline; the acute supplementary angle gives the same height, so sin(180°−α)=sin(α). For a=0 the endpoint coincides with the start: h=0, a geometric direction angle is undefined, and h/a cannot be formed."
+          }
+        ]
+      }
+    },
+    {
+      "goal": {
+        "id": "c5d5a152-efe6-573c-a2dc-09e9fc3b11da",
+        "shortKey": "canonical_math_planar_squared_euclidean_magnitude",
+        "title": "Betragsquadrate planarer Zeiger bestimmen und deuten",
+        "titleEn": "Determine and interpret squared magnitudes of planar arrows",
+        "description": "Die lernende Person kann für einen in orthonormalen Koordinaten gegebenen planaren Zeiger (X,Y) das Betragsquadrat X²+Y² bestimmen, es als Quadrat seiner nichtnegativen euklidischen Länge begründen und anhand bereits gegebener Summenzeiger von der Summe einzelner Betragsquadrate unterscheiden.",
+        "descriptionEn": "For a planar arrow (X,Y) given in orthonormal coordinates, the learner can determine its squared magnitude X²+Y², justify it as the square of its nonnegative Euclidean length, and use already supplied resultants to distinguish it from the sum of individual squared magnitudes.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "contains": [],
+        "requires": [
+          "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+          "ee48e811-4c9c-5080-9836-8403fc9f0810"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.BRIDGE.PLANAR_SQUARED_EUCLIDEAN_MAGNITUDE"
+        },
+        "sourceRef": "curricula/DE/Gymnasium/quality/cross-subject-requires/2026-10-15/new13-reviewed-scope-metadata-successor-v1/c5d5a152-efe6-573c-a2dc-09e9fc3b11da.json",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+            "sourceGoalId": "he-math-sekii-q2-2-b02-a05-556a9620"
+          },
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityContexts": [
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-MV",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BE",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HB",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-HH",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-MV",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-SN",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-ST",
+              "stage": "SekII",
+              "durationModel": "G8",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-BY",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NI",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-NW",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            },
+            {
+              "schoolForm": "Gymnasium",
+              "jurisdiction": "DE-RP",
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "c5d5a152-efe6-573c-a2dc-09e9fc3b11da",
+            "title": "Visualisierung: Betragsquadrate planarer Zeiger bestimmen und deuten",
+            "url": "/assets/goal-visualizations/mathematik/c5d5a152-efe6-573c-a2dc-09e9fc3b11da/c5d5a152-efe6-573c-a2dc-09e9fc3b11da.png",
+            "provider": "OpenAI built-in image_gen.imagegen",
+            "description": "Visualisierung zum Lernziel: Betragsquadrate planarer Zeiger bestimmen und deuten.",
+            "altText": "Eine allgemeine rechtwinklige Komponentenskizze erläutert Länge L und Betragsquadrat X Quadrat plus Y Quadrat. Ein gesondertes Zahlenbeispiel zeigt die Einheiten; ein gegebenes verschwindendes Resultat unterscheidet sein Betragsquadrat von der Summe der Einzelwerte.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "private-author-candidate"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "squared-euclidean-length",
+            "essentialUnderstandingDe": "In orthonormalen Koordinaten sind die Komponenten orthogonale gerichtete Anteile. Der Satz des Pythagoras liefert für die nichtnegative Länge L die Beziehung L²=X²+Y². Das Betragsquadrat ist nichtnegativ, beim Nullzeiger null und bei Längeneinheiten in deren Quadrat angegeben. Es genügt die Quadratsumme; eine Quadratwurzel ist für das Betragsquadrat nicht nötig.",
+            "essentialUnderstandingEn": "In orthonormal coordinates, the components are perpendicular directed parts. Pythagoras gives L²=X²+Y² for the nonnegative length L. Squared magnitude is nonnegative, is zero for the zero arrow, and has squared length units. The sum of squares suffices; no square root is needed for squared magnitude.",
+            "observablePerformanceDe": "Die lernende Person bestimmt das Betragsquadrat aus frischen gegebenen Komponenten und begründet die Quadratsumme geometrisch, einschließlich negativer Komponenten und des Nullfalls. Sie unterscheidet Länge, deren Quadrat und die passenden Einheiten.",
+            "observablePerformanceEn": "The learner determines squared magnitude from fresh given components and justifies the sum of squares geometrically, including negative components and the zero case. The learner distinguishes length, its square, and their units."
+          },
+          {
+            "id": "metric-of-given-resultant-is-not-additive",
+            "essentialUnderstandingDe": "Bei einem bereits gegebenen Summenzeiger wird dessen Quadratsumme ausgewertet. Das ist im Allgemeinen ein anderer Wert als die Summe der einzelnen Betragsquadrate. Aufhebung kann Betragsquadrat null trotz positiver Einzelwerte erzeugen; gelegentliche Gleichheit macht die Betragsquadratabbildung nicht additiv.",
+            "essentialUnderstandingEn": "For an already supplied resultant, evaluate its own sum of squares. This generally differs from the sum of individual squared magnitudes. Cancellation can give zero squared magnitude despite positive individual values; occasional equality does not make squared magnitude additive.",
+            "observablePerformanceDe": "Die lernende Person wertet die gegebenen Einzel- und Summenzeiger getrennt aus, vergleicht die Werte und erklärt an einem geänderten Beispiel, weshalb man die Einzelquadrate nicht pauschal addieren darf. Alle Summenzeiger sind im Auftrag gegeben; ihre Konstruktion ist kein Prüfgegenstand dieses Ziels.",
+            "observablePerformanceEn": "The learner separately evaluates the supplied individual arrows and resultants, compares the values, and explains with a changed example why individual squared magnitudes cannot simply be added. Every resultant is supplied in the task; constructing it is outside this goal assessment."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "squared-euclidean-length",
+            "metric-of-given-resultant-is-not-additive"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "component-sign-and-unit",
+            "textDe": "Negative, gebrochene oder einfache exakte Wurzelkomponenten; Nullzeiger und gegebenenfalls benannte Längeneinheiten.",
+            "textEn": "Negative, fractional, or simple exact radical components; zero arrow and, where relevant, stated length units."
+          },
+          {
+            "id": "given-resultant-and-metric-contrast",
+            "textDe": "Schon vorgegebene resultierende Zeiger bei teilweiser Aufhebung, voller Aufhebung und einem Gleichheitsfall.",
+            "textEn": "Already supplied resultants with partial cancellation, full cancellation, and an equality case."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-signed-components-with-units",
+            "taskDemandDe": "Ein Zeiger hat in einem orthonormalen System die Komponenten (−3 cm,4 cm). Bestimme sein Betragsquadrat und seine Länge und begründe den Zusammenhang. Vergleiche mit dem Zeiger (−3 cm,−4 cm) und dem Nullzeiger.",
+            "taskDemandEn": "An arrow has components (−3 cm,4 cm) in an orthonormal system. Determine its squared magnitude and length and justify their relationship. Compare with (−3 cm,−4 cm) and the zero arrow.",
+            "expectedPerformanceDe": "Die Quadratsumme ist 9+16=25 cm²; die nichtnegative Länge ist 5 cm. Der andere nichtverschwindende Zeiger hat ebenfalls 25 cm², weil sich durch das Vorzeichen die Richtung, nicht das Komponentenquadrat ändert. Der Nullzeiger hat Betragsquadrat 0. Rechtwinklige Komponentenstrecken begründen Pythagoras.",
+            "expectedPerformanceEn": "The sum of squares is 9+16=25 cm²; the nonnegative length is 5 cm. The other nonzero arrow also has 25 cm² because the sign changes direction, not the component square. The zero arrow has squared magnitude 0. Perpendicular component segments justify Pythagoras.",
+            "understandingFocusDe": "Betragsquadrat und Länge mit richtiger Einheit aus einer frischen Komponentendarstellung.",
+            "understandingFocusEn": "Squared magnitude and length with correct units from fresh components."
+          },
+          {
+            "id": "supplied-half-arrow-resultant",
+            "taskDemandDe": "Die Zeiger u=(1/2,0), v=(−1/4,√3/4) und ihr bereits bestimmter Summenzeiger r=(1/4,√3/4) sind gegeben. Bestimme |r|² und |u|²+|v|², vergleiche und begründe, warum die Verfahren unterschiedliche Größen berechnen. Die Summe ist nicht erneut zu konstruieren.",
+            "taskDemandEn": "Given u=(1/2,0), v=(−1/4,√3/4), and their already determined resultant r=(1/4,√3/4), determine |r|² and |u|²+|v|², compare, and explain why the procedures evaluate different quantities. Do not reconstruct the sum.",
+            "expectedPerformanceDe": "|r|²=1/16+3/16=1/4. |u|²=1/4 und |v|²=1/16+3/16=1/4, also ist die Summe der Einzelwerte 1/2. Die gerichteten Beiträge sind vor der Betragsbildung teilweise gegeneinander gerichtet; das Betragsquadrat des gegebenen Resultats ist nicht die Summe der Einzelquadrate.",
+            "expectedPerformanceEn": "|r|²=1/16+3/16=1/4. |u|²=1/4 and |v|²=1/16+3/16=1/4, so their sum is 1/2. Directed contributions partially oppose each other before magnitude is taken; the squared magnitude of the supplied resultant differs from the individual squared magnitudes added together.",
+            "understandingFocusDe": "Der ursprüngliche Halbierungsvergleich bleibt vollständig als reine Metrikfrage erhalten.",
+            "understandingFocusEn": "The original halving comparison is retained fully as a metric question."
+          },
+          {
+            "id": "supplied-three-arrow-cancellation-and-change",
+            "taskDemandDe": "Drei Zeiger u=(1,0), v=(−1/2,√3/2), w=(−1/2,−√3/2) und ihr bereits bestimmtes Resultat r=(0,0) sind gegeben. Nach dem Austausch von u durch u*=(2,0) ist das Resultat r*=(1,0) bereits gegeben. Bestimme jeweils das Betragsquadrat des Resultats und die Summe der drei Einzelbetragsquadrate und erkläre den Unterschied.",
+            "taskDemandEn": "Given three arrows u=(1,0), v=(−1/2,√3/2), w=(−1/2,−√3/2), with already determined resultant r=(0,0), replacing u by u*=(2,0) gives supplied resultant r*=(1,0). In each case determine the resultant squared magnitude and the sum of the three individual squared magnitudes and explain the difference.",
+            "expectedPerformanceDe": "Zunächst |r|²=0 gegenüber 1+1+1=3. Danach |r*|²=1 gegenüber 4+1+1=6. Die Summe der Einzelquadrate beschreibt nicht das Betragsquadrat des resultierenden Zeigers; bei vollständiger Aufhebung bleibt es null. Kein Summenzeiger muss in dieser Aufgabe neu berechnet werden.",
+            "expectedPerformanceEn": "Initially |r|²=0 versus 1+1+1=3. After the change, |r*|²=1 versus 4+1+1=6. Adding individual squares does not give resultant squared magnitude; complete cancellation leaves it zero. No resultant has to be newly calculated in this task.",
+            "understandingFocusDe": "Der zweite ursprüngliche Vergleich mit Auslöschung und verändertem ersten Zeiger wird bewahrt.",
+            "understandingFocusEn": "Retains the second original comparison with cancellation and a changed first arrow."
+          },
+          {
+            "id": "equality-does-not-establish-additivity",
+            "taskDemandDe": "Gegeben sind u=(1,0), v=(0,1) und ihr Resultat r=(1,1). Vergleiche erneut |r|² und |u|²+|v|². Erkläre zusammen mit einem vorherigen Gegenfall, ob die Gleichheit allgemein gilt.",
+            "taskDemandEn": "Given u=(1,0), v=(0,1), and their resultant r=(1,1), compare |r|² with |u|²+|v|². Use a preceding countercase to explain whether equality is universal.",
+            "expectedPerformanceDe": "Hier sind beide Werte 2. Dieser Gleichheitsfall widerlegt die vorherigen Gegenbeispiele nicht: Die Gleichheit ist nicht allgemein gültig. Die orthogonalen Komponenten begründen den konkreten Gleichheitsfall, ohne eine neue allgemeine Skalarproduktformel zu verlangen.",
+            "expectedPerformanceEn": "Both values equal 2 here. This equality does not remove the earlier counterexamples: equality is not universal. The orthogonal components explain this instance without requiring a new general scalar-product formula.",
+            "understandingFocusDe": "Gelegentliche Gleichheit wird von einer allgemeinen additiven Regel unterschieden.",
+            "understandingFocusEn": "Distinguishes occasional equality from a universal additive rule."
+          }
+        ]
+      }
+    }
+  ],
+  "taskMaterial": [
+    {
+      "schemaVersion": 1,
+      "goalId": "fc9a9a35-3d4d-5a38-9149-6b0bbfbd73c4",
+      "caseId": "independent-signed-diagram-readback",
+      "originalFilename": "fc9a9a35-signed-readback.svg",
+      "deliveryURL": "/assets/task-material/mathematik/fc9a9a35-signed-readback-2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe.svg",
+      "sourcePath": "curricula/DE/Gymnasium/task-material/mathematik/fc9a9a35-signed-readback-2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe.svg",
+      "nativeResourceDigest": "sha256:2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe",
+      "source": {
+        "path": "tmp/cross-subject-requires/thirteen-math-final-core-source-boundary-author-20261015-v1/candidate/curricula/DE/Gymnasium/task-material/mathematik/fc9a9a35-signed-readback-2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe.svg",
+        "bytes": 1984,
+        "sha256": "2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe"
+      },
+      "public": {
+        "path": "tmp/cross-subject-requires/thirteen-math-final-core-source-boundary-author-20261015-v1/candidate/app/public/assets/task-material/mathematik/fc9a9a35-signed-readback-2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe.svg",
+        "bytes": 1984,
+        "sha256": "2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe"
+      },
+      "backend": {
+        "path": "tmp/cross-subject-requires/thirteen-math-final-core-source-boundary-author-20261015-v1/candidate/backend/src/main/resources/static/assets/task-material/mathematik/fc9a9a35-signed-readback-2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe.svg",
+        "bytes": 1984,
+        "sha256": "2cadb0194d391d4021939a618d3c94065ec062a14d1ea63860f6306242c20dbe"
+      },
+      "license": "CC-BY-4.0",
+      "deliveryInstruction": "Show the actual linked SVG; never supply its point-coordinate list or expected answers. P task filename remains its pedagogical label; this record resolves that label to immutable delivered bytes.",
+      "nativePBinding": "Main predecessor helper ignored task-material. The separately authorized detached native successor consumes this required SVG digest through goalEvidenceTaskMaterials and goalEvidenceReviewInputPayload; actual producer/config/goalBook-P readers and negative controls are recorded separately. No relabeling as goal visualization."
+    }
+  ],
+  "taskImageDeliveryRequiredForCase": "fc9a9a35/independent-signed-diagram-readback",
+  "authority": "AI candidate content; no human/source/host/adoption claim.",
+  "sourceScopeMetadataSuccessor": "Exact context author nominations; whole competence/P/image/task semantics unchanged; fresh independent metadata review pending."
+}
