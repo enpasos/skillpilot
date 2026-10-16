@@ -1,0 +1,102 @@
+{
+  "85342c52-9722-54b0-8fbb-513d9d648363": {
+    "path": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current437-paired-nine-five-gate-owner-integration-technical-20261016-v1/records/P-retained-003.whole-exact-original-lines.jsonl",
+    "record": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-chemistry-positive-evidence-b003-q1-bonding-current-11-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "goalFingerprint": "sha256:b3cf84dd3646af2f70f38d0775a12cd48871c3f6aea46e14076bb03c0201b64d",
+      "reviewInputFingerprint": "sha256:5c8f98d807b348f2c08023d54da0019a67d9a530da5a9097dc76153897ff4555",
+      "profileFingerprint": "sha256:6180900e307f9b03e92e9b3bf803d82b5421dd3297f1f21a394ea88072f5bece",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-30T16:36:31Z",
+      "reviewer": "codex-gpt-6-chemistry-b003-positive-profile-author-after-independent-qa",
+      "reason": "Die drei Begriffe bilden ein gemeinsames Abgrenzungsschema; das Darstellen dient als Nachweis der Unterscheidung, nicht als zweites unabhängiges Ziel. Zwei unabhängige, vom bestehenden Bild nicht ablesbare Fälle prüfen fachlichen Transfer. KI-Kandidat bleibt needs_human_review, keine menschliche Freigabe. Unabhängiger P-HOLD aus v1: Die ausdrücklichen R/S- und E/Z-Anteile des Zieltexts werden nun mit drei verschiedenen Fallbriefs und einem zweiten erforderlichen Erwartungsaspekt geprüft.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b003-85342c52-core",
+            "essentialUnderstandingDe": "Konstitution betrifft die Verknüpfung, Konfiguration eine ohne Bindungsbruch nicht frei änderbare räumliche Anordnung und Konformation eine durch Drehung um Einfachbindungen erreichbare Lage.",
+            "essentialUnderstandingEn": "Constitution concerns connectivity, configuration a spatial arrangement not freely changed without bond breaking, and conformation an arrangement reached by rotation around single bonds.",
+            "observablePerformanceDe": "Die lernende Person zeichnet für geeignete Beispiele die drei Arten der Änderung und erläutert, welche Bindungen erhalten bleiben.",
+            "observablePerformanceEn": "The learner depicts the three kinds of change in suitable examples and explains which bonds remain intact."
+          },
+          {
+            "id": "b003-85342c52-config-rs-ez",
+            "essentialUnderstandingDe": "R/S beschreibt die absolute Anordnung an einem geeigneten tetraedrischen Stereozentrum nach Prioritätsregeln; E/Z beschreibt die Anordnung an einer geeigneten Doppelbindung. Beide sind Konfigurationsunterschiede und nicht durch freie Einfachbindungsdrehung gleichzusetzen.",
+            "essentialUnderstandingEn": "R/S describes absolute arrangement at a suitable tetrahedral stereocenter under priority rules; E/Z describes arrangement at a suitable double bond. Both are configurational differences and cannot be equated with free rotation around single bonds.",
+            "observablePerformanceDe": "Die lernende Person ordnet aus vorgegebenen, eindeutigen räumlichen Darstellungen ein einfaches R/S-Paar und ein E/Z-Paar begründet zu und erklärt die jeweiligen Prioritäten beziehungsweise Seitenlagen.",
+            "observablePerformanceEn": "The learner assigns a simple R/S pair and an E/Z pair from unambiguous supplied spatial structures, explaining substituent priorities or relative sides respectively."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b003-85342c52-core",
+            "b003-85342c52-config-rs-ez"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "change",
+            "textDe": "Bindungsverknüpfung, Konfiguration und Drehung werden unterschieden.",
+            "textEn": "Connectivity, configuration, and rotation are distinguished."
+          },
+          {
+            "id": "representation",
+            "textDe": "Strukturformel und räumliche Skizze werden verglichen.",
+            "textEn": "Structural formula and spatial sketch are compared."
+          },
+          {
+            "id": "configuration-type",
+            "textDe": "R/S an einem tetraedrischen Zentrum und E/Z an einer Doppelbindung werden beide geprüft.",
+            "textEn": "Both R/S at a tetrahedral center and E/Z at a double bond are assessed."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "butanol-connectivity-rotation",
+            "taskDemandDe": "Vergleiche Butan-1-ol mit Butan-2-ol sowie zwei um eine C-C-Einfachbindung gedrehte Ansichten von Butan. Ordne Konstitution und Konformation zu.",
+            "taskDemandEn": "Compare butan-1-ol with butan-2-ol and two views of butane rotated around a C-C single bond. Classify constitution and conformation.",
+            "expectedPerformanceDe": "Die lernende Person erkennt andere OH-Verknüpfung bei den Butanolen, aber unveränderte Bindungen bei der Drehung; sie benennt unterschiedliche Veränderungstypen.",
+            "expectedPerformanceEn": "The learner recognizes changed OH connectivity for the butanols but unchanged bonds in rotation and names the distinct change types.",
+            "understandingFocusDe": "Bindungsänderung und Rotation werden getrennt.",
+            "understandingFocusEn": "Bond change and rotation are separated."
+          },
+          {
+            "id": "fresh-e-z-alkene",
+            "taskDemandDe": "Ein neues Paar E-/Z-But-2-en wird einmal nur aus anderer Blickrichtung gezeichnet. Entscheide, wann eine andere Konfiguration vorliegt und ob einfache Rotation um C=C sie erzeugt.",
+            "taskDemandEn": "A fresh pair of E/Z-but-2-ene is also drawn from another viewing angle. Decide when configuration differs and whether simple rotation around C=C produces it.",
+            "expectedPerformanceDe": "Die lernende Person unterscheidet echte E/Z-Anordnung von einer gedrehten Papieransicht und erklärt, dass freie Rotation um C=C ohne Bindungsbruch nicht möglich ist.",
+            "expectedPerformanceEn": "The learner distinguishes true E/Z arrangement from a rotated page view and explains that free rotation around C=C is not possible without bond breaking.",
+            "understandingFocusDe": "Neue Raumdarstellung prüft Konfigurationsbegriff.",
+            "understandingFocusEn": "A new spatial drawing tests configuration."
+          },
+          {
+            "id": "fresh-rs-butan-two-ol-pair",
+            "taskDemandDe": "Zwei neue Keilstrichbilder von Butan-2-ol zeigen H jeweils nach hinten. Die Prioritäten sind OH > Ethyl > Methyl > H. Bei Bild A verläuft 1→2→3 im Uhrzeigersinn, bei Bild B gegen den Uhrzeigersinn. Ordne R/S zu und erkläre, warum bloßes Drehen um eine C-C-Einfachbindung die beiden Konfigurationen nicht ineinander überführt.",
+            "taskDemandEn": "Two fresh wedge-dash drawings of butan-2-ol show H pointing away in each. Priorities are OH > ethyl > methyl > H. In drawing A, 1→2→3 runs clockwise; in B, counterclockwise. Assign R/S and explain why merely rotating a C-C single bond cannot interconvert these configurations.",
+            "expectedPerformanceDe": "Die lernende Person ordnet A als R und B als S ein, weil die niedrigste Priorität nach hinten zeigt; sie trennt die Konfigurationsumkehr am Stereozentrum von einer Konformationsänderung.",
+            "expectedPerformanceEn": "The learner assigns A as R and B as S because the lowest priority points away; they distinguish inversion of the stereocenter from conformational change.",
+            "understandingFocusDe": "R/S wird nach Prioritäten und Blickrichtung bestimmt, nicht aus der optischen Links-rechts-Lage einer beliebigen Zeichnung.",
+            "understandingFocusEn": "R/S follows priorities and viewing direction, not arbitrary left-right placement in a drawing."
+          }
+        ]
+      }
+    }
+  }
+}

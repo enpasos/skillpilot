@@ -54,6 +54,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
 - [Chemie: Themenumfang, sechs aktuelle Seitenbindungen und offene Geltungsintegration (16.10.2026)](chemie-current437-source-scope-integration-checkpoint-2026-10-16.md)
+- [Chemie: geprüfter inaktiver Arbeitsstand mit 438 fachlichen Zielen (16.10.2026)](chemie-current438-reviewed-working-checkpoint-2026-10-16.md)
 - [Chemie nach dem 418er-Messstand: sechs geprüfte Kinderbilder, Quellen- und Memory-Integration (16.10.2026)](chemie-current418-next-package-progress-2026-10-16.md)
 - [Chemie 418/429: 15 weitere Abschlüsse, zwei korrigierte Bildseiten und elf offene Ziele (16.10.2026)](chemie-native15-current429-progress-2026-10-16.md)
 - [Chemie 403/429: sechs Beschreibungsabschlüsse, P-/A-Folger und offene Befunde vom 16. Oktober](chemie-native11-current429-progress-2026-10-16.md)

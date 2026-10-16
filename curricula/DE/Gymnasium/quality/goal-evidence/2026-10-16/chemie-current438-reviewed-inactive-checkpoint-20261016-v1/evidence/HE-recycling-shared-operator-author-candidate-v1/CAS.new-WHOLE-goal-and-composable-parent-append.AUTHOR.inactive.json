@@ -1,0 +1,160 @@
+{
+  "role": "Inactive AUTHOR proposals, no apply/no independent review",
+  "baseCanonical": {
+    "path": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "sha256:62f13c6ae943186ddcb60ae4af1b075c6bd6ad3c48ac766d21cc583cac6c1746",
+    "bytes": 2557722
+  },
+  "operations": [
+    {
+      "operation": "add-whole-goal-if-id-absent",
+      "goalId": "459724db-9f9a-5967-8d9a-2b6277415275",
+      "before": null,
+      "after": {
+        "id": "459724db-9f9a-5967-8d9a-2b6277415275",
+        "shortKey": "canonical_chemistry_mechanical_feedstock_monomer_recycling_common",
+        "title": "Werkstoffliches Recycling und Monomerrückgewinnung beurteilen",
+        "titleEn": "Evaluate mechanical recycling and monomer recovery",
+        "description": "Die lernende Person kann werkstoffliches Recycling durch Umschmelzen von Thermoplasten und rohstoffliches Recycling am gegebenen Beispiel einer Zerlegung in Monomere fachlich erklären, die überwiegende Erhaltung beziehungsweise Spaltung der Polymerketten unterscheiden und beide Wege für denselben Produktbedarf anhand bereitgestellter Qualitäts-, Ausbeute-, Energie- und Kostendaten ökologisch und ökonomisch begründet beurteilen sowie die Grenzen der Daten benennen.",
+        "descriptionEn": "The learner can explain mechanical recycling by remelting thermoplastics and feedstock recycling using a supplied example of decomposition into monomers, distinguish largely retaining from breaking polymer chains, and give reasoned environmental and economic judgements about both routes for the same product demand using supplied quality, yield, energy and cost data while identifying the limits of those data.",
+        "type": "atomic",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "3aef6d91-04ff-5ec7-b92e-ccf330d9816a"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK4_KOMMUNIZIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "GLOBAL",
+          "area": "Kunststoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.POLYMER_RECYCLING_COMMON"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ],
+          "stage": [
+            "SekII"
+          ],
+          "courseProfile": [
+            "GK",
+            "LK"
+          ]
+        },
+        "examples": [
+          "common-recycling-pmma-equivalent-granulate",
+          "common-recycling-pmma-quality-blend-transfer"
+        ],
+        "resourceLinks": [],
+        "extendedData": {
+          "provenance": {
+            "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+            "sourceExtractionSHA256": "sha256:332f33fbb990d23d38ed51d619840a3d2c514b1ed827ec0427339581d675e686",
+            "sourceGoalId": "he-chem-sekii-q2-2-b05-a01-8bec290b",
+            "sourceSpan": "Q2.2#B05A01",
+            "actualOriginalPDFPrintedPage": 43,
+            "officialSourceCourseLevel": "GK_LK",
+            "sourceURL": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-07/kcgo_chemie_21.04.2026.pdf"
+          },
+          "authorProposal": {
+            "status": "DRAFT_INACTIVE_UNREVIEWED",
+            "role": "AUTHOR, no independent vote",
+            "package": "tmp/chemie-m7-resumed-20261016/HE-recycling-shared-operator-author-candidate-v1",
+            "proposedSemanticKind": "curricularAtomic",
+            "canonicalParentId": "6b6bceca-e1d9-56f7-ae6c-d7f7c2fa9338",
+            "parentReason": "Existing source-bound supplement boundary prevents broad ancestral other-jurisdiction source claims. Learner placements belong under actual HEQ2.2.",
+            "officialScope": "Common HE Q2.2 duty for GK and LK. Hydrolysis of polycondensates and the explicit PE value-cycle extension remain separately increased-level content in8721; no other-jurisdiction duty inferred.",
+            "AFB3IsAuthorOperationalization": true,
+            "prerequisiteReason": "Existing3aef teaches thermoplastic thermal behaviour from chain structure and already requires6eb radical polymerisation. Thus polymer/monomer and remelting foundations are available without the broader8721 hydrolysis unit; no redundant direct predecessor is added.",
+            "directPrerequisiteClosureContains8721": false,
+            "imageStatus": "Root to create a matching new visual; existing8721 image stays exact and is not rebound as primary",
+            "independentSourceWholePAVMReviewsPending": true,
+            "HumanApproval": false,
+            "HumanTrial": false
+          }
+        }
+      },
+      "afterWholeObjectFingerprint": "sha256:8bbb3cc6ac311e88ce5c2c3e8d0b747fed2c5063c06566e4f75a74ec9f6e31be"
+    },
+    {
+      "operation": "append-one-existing-parent-contains-composable",
+      "goalId": "6b6bceca-e1d9-56f7-ae6c-d7f7c2fa9338",
+      "field": "contains",
+      "baseWholeParent": {
+        "id": "6b6bceca-e1d9-56f7-ae6c-d7f7c2fa9338",
+        "title": "Quellengebundene Chemie-Ergänzungen",
+        "titleEn": "Source-bound chemistry supplements",
+        "description": "Vollständige Ergänzungskompetenzen für ausdrücklich benannte Quellen- und Programmkontexte.",
+        "descriptionEn": "Complete supplementary competencies for explicitly named source and programme contexts.",
+        "weight": 10,
+        "tags": [
+          "canonical",
+          "supplement"
+        ],
+        "contains": [
+          "ee78e2c9-45c9-5023-8193-7e9c20bce0a6",
+          "03e12e4f-83eb-56a7-85ac-e0d628412dcc",
+          "f4f7f028-10db-53f9-bdae-456e0c6d0896",
+          "0559cec7-330b-57f1-a409-31cf1b4ac9fb",
+          "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+          "37374918-78c9-577f-9827-695d111ab22d",
+          "5fdc4fb2-a23b-5949-8d6b-ad43009120dd",
+          "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+          "4a7dee38-1056-5e27-acec-e6a12f58109f",
+          "3eb2a06c-d283-57aa-9eb4-088940c4801a"
+        ],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "GLOBAL"
+        },
+        "type": "cluster",
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        }
+      },
+      "baseWholeParentFingerprint": "sha256:5b741115b6aca536d08decd9eb393632d8938d386b2bb001478e2a3c03c50ea1",
+      "baseContains": [
+        "ee78e2c9-45c9-5023-8193-7e9c20bce0a6",
+        "03e12e4f-83eb-56a7-85ac-e0d628412dcc",
+        "f4f7f028-10db-53f9-bdae-456e0c6d0896",
+        "0559cec7-330b-57f1-a409-31cf1b4ac9fb",
+        "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+        "37374918-78c9-577f-9827-695d111ab22d",
+        "5fdc4fb2-a23b-5949-8d6b-ad43009120dd",
+        "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+        "4a7dee38-1056-5e27-acec-e6a12f58109f",
+        "3eb2a06c-d283-57aa-9eb4-088940c4801a"
+      ],
+      "appendGoalIds": [
+        "459724db-9f9a-5967-8d9a-2b6277415275"
+      ],
+      "fieldsChangedOnly": [
+        "contains"
+      ],
+      "compositionGuard": "Check actual current whole parent; only independently authorised disjoint contains appends may precede this append. No old whole-parent overwrite.",
+      "applicabilityMappingInheritanceBoundaryMustRemainExact": true
+    }
+  ],
+  "allCurrent639GoalBodiesUnchangedAtThisStage": true,
+  "noGateClosureClaim": true
+}

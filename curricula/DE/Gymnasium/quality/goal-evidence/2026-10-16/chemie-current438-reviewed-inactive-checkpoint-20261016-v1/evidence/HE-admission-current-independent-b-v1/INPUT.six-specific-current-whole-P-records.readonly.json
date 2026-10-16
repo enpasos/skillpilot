@@ -1,0 +1,600 @@
+[
+  {
+    "technicalLocator": {
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "activeConfig": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current437-paired-nine-five-gate-owner-integration-technical-20261016-v1/config/P-retained-003.original-review-identity.config.json",
+      "wholePositiveReviewFile": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current437-paired-nine-five-gate-owner-integration-technical-20261016-v1/records/P-retained-003.whole-exact-original-lines.jsonl",
+      "lineNumber": 7
+    },
+    "wholeRecord": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-chemistry-positive-evidence-b003-q1-bonding-current-11-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "goalFingerprint": "sha256:b3cf84dd3646af2f70f38d0775a12cd48871c3f6aea46e14076bb03c0201b64d",
+      "reviewInputFingerprint": "sha256:5c8f98d807b348f2c08023d54da0019a67d9a530da5a9097dc76153897ff4555",
+      "profileFingerprint": "sha256:6180900e307f9b03e92e9b3bf803d82b5421dd3297f1f21a394ea88072f5bece",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-30T16:36:31Z",
+      "reviewer": "codex-gpt-6-chemistry-b003-positive-profile-author-after-independent-qa",
+      "reason": "Die drei Begriffe bilden ein gemeinsames Abgrenzungsschema; das Darstellen dient als Nachweis der Unterscheidung, nicht als zweites unabhängiges Ziel. Zwei unabhängige, vom bestehenden Bild nicht ablesbare Fälle prüfen fachlichen Transfer. KI-Kandidat bleibt needs_human_review, keine menschliche Freigabe. Unabhängiger P-HOLD aus v1: Die ausdrücklichen R/S- und E/Z-Anteile des Zieltexts werden nun mit drei verschiedenen Fallbriefs und einem zweiten erforderlichen Erwartungsaspekt geprüft.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b003-85342c52-core",
+            "essentialUnderstandingDe": "Konstitution betrifft die Verknüpfung, Konfiguration eine ohne Bindungsbruch nicht frei änderbare räumliche Anordnung und Konformation eine durch Drehung um Einfachbindungen erreichbare Lage.",
+            "essentialUnderstandingEn": "Constitution concerns connectivity, configuration a spatial arrangement not freely changed without bond breaking, and conformation an arrangement reached by rotation around single bonds.",
+            "observablePerformanceDe": "Die lernende Person zeichnet für geeignete Beispiele die drei Arten der Änderung und erläutert, welche Bindungen erhalten bleiben.",
+            "observablePerformanceEn": "The learner depicts the three kinds of change in suitable examples and explains which bonds remain intact."
+          },
+          {
+            "id": "b003-85342c52-config-rs-ez",
+            "essentialUnderstandingDe": "R/S beschreibt die absolute Anordnung an einem geeigneten tetraedrischen Stereozentrum nach Prioritätsregeln; E/Z beschreibt die Anordnung an einer geeigneten Doppelbindung. Beide sind Konfigurationsunterschiede und nicht durch freie Einfachbindungsdrehung gleichzusetzen.",
+            "essentialUnderstandingEn": "R/S describes absolute arrangement at a suitable tetrahedral stereocenter under priority rules; E/Z describes arrangement at a suitable double bond. Both are configurational differences and cannot be equated with free rotation around single bonds.",
+            "observablePerformanceDe": "Die lernende Person ordnet aus vorgegebenen, eindeutigen räumlichen Darstellungen ein einfaches R/S-Paar und ein E/Z-Paar begründet zu und erklärt die jeweiligen Prioritäten beziehungsweise Seitenlagen.",
+            "observablePerformanceEn": "The learner assigns a simple R/S pair and an E/Z pair from unambiguous supplied spatial structures, explaining substituent priorities or relative sides respectively."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b003-85342c52-core",
+            "b003-85342c52-config-rs-ez"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "change",
+            "textDe": "Bindungsverknüpfung, Konfiguration und Drehung werden unterschieden.",
+            "textEn": "Connectivity, configuration, and rotation are distinguished."
+          },
+          {
+            "id": "representation",
+            "textDe": "Strukturformel und räumliche Skizze werden verglichen.",
+            "textEn": "Structural formula and spatial sketch are compared."
+          },
+          {
+            "id": "configuration-type",
+            "textDe": "R/S an einem tetraedrischen Zentrum und E/Z an einer Doppelbindung werden beide geprüft.",
+            "textEn": "Both R/S at a tetrahedral center and E/Z at a double bond are assessed."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "butanol-connectivity-rotation",
+            "taskDemandDe": "Vergleiche Butan-1-ol mit Butan-2-ol sowie zwei um eine C-C-Einfachbindung gedrehte Ansichten von Butan. Ordne Konstitution und Konformation zu.",
+            "taskDemandEn": "Compare butan-1-ol with butan-2-ol and two views of butane rotated around a C-C single bond. Classify constitution and conformation.",
+            "expectedPerformanceDe": "Die lernende Person erkennt andere OH-Verknüpfung bei den Butanolen, aber unveränderte Bindungen bei der Drehung; sie benennt unterschiedliche Veränderungstypen.",
+            "expectedPerformanceEn": "The learner recognizes changed OH connectivity for the butanols but unchanged bonds in rotation and names the distinct change types.",
+            "understandingFocusDe": "Bindungsänderung und Rotation werden getrennt.",
+            "understandingFocusEn": "Bond change and rotation are separated."
+          },
+          {
+            "id": "fresh-e-z-alkene",
+            "taskDemandDe": "Ein neues Paar E-/Z-But-2-en wird einmal nur aus anderer Blickrichtung gezeichnet. Entscheide, wann eine andere Konfiguration vorliegt und ob einfache Rotation um C=C sie erzeugt.",
+            "taskDemandEn": "A fresh pair of E/Z-but-2-ene is also drawn from another viewing angle. Decide when configuration differs and whether simple rotation around C=C produces it.",
+            "expectedPerformanceDe": "Die lernende Person unterscheidet echte E/Z-Anordnung von einer gedrehten Papieransicht und erklärt, dass freie Rotation um C=C ohne Bindungsbruch nicht möglich ist.",
+            "expectedPerformanceEn": "The learner distinguishes true E/Z arrangement from a rotated page view and explains that free rotation around C=C is not possible without bond breaking.",
+            "understandingFocusDe": "Neue Raumdarstellung prüft Konfigurationsbegriff.",
+            "understandingFocusEn": "A new spatial drawing tests configuration."
+          },
+          {
+            "id": "fresh-rs-butan-two-ol-pair",
+            "taskDemandDe": "Zwei neue Keilstrichbilder von Butan-2-ol zeigen H jeweils nach hinten. Die Prioritäten sind OH > Ethyl > Methyl > H. Bei Bild A verläuft 1→2→3 im Uhrzeigersinn, bei Bild B gegen den Uhrzeigersinn. Ordne R/S zu und erkläre, warum bloßes Drehen um eine C-C-Einfachbindung die beiden Konfigurationen nicht ineinander überführt.",
+            "taskDemandEn": "Two fresh wedge-dash drawings of butan-2-ol show H pointing away in each. Priorities are OH > ethyl > methyl > H. In drawing A, 1→2→3 runs clockwise; in B, counterclockwise. Assign R/S and explain why merely rotating a C-C single bond cannot interconvert these configurations.",
+            "expectedPerformanceDe": "Die lernende Person ordnet A als R und B als S ein, weil die niedrigste Priorität nach hinten zeigt; sie trennt die Konfigurationsumkehr am Stereozentrum von einer Konformationsänderung.",
+            "expectedPerformanceEn": "The learner assigns A as R and B as S because the lowest priority points away; they distinguish inversion of the stereocenter from conformational change.",
+            "understandingFocusDe": "R/S wird nach Prioritäten und Blickrichtung bestimmt, nicht aus der optischen Links-rechts-Lage einer beliebigen Zeichnung.",
+            "understandingFocusEn": "R/S follows priorities and viewing direction, not arbitrary left-right placement in a drawing."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "technicalLocator": {
+      "goalId": "18819a59-2442-530f-a7c3-26755398ec66",
+      "activeConfig": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-root-normal-final-integration-20261011-v1/active-configs/positive-retained-26.config.json",
+      "wholePositiveReviewFile": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/positive-evidence.two-new.review.jsonl",
+      "lineNumber": 2
+    },
+    "wholeRecord": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-q1-quantitative-two-independent-p-20261005-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "18819a59-2442-530f-a7c3-26755398ec66",
+      "goalFingerprint": "sha256:d4c56d08d03e4a56e9f2d218f82e29688bc97e3cdce521881684cfb65a00f06a",
+      "reviewInputFingerprint": "sha256:481a3de14719fd3c92ce596814e87c5ce7a4c0864901bef025a8b4e33b150d4c",
+      "profileFingerprint": "sha256:718f9be536b8b6c81057ac0425473d58f1ff30499910a0e5db8d5d40e665d48e",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-05T22:23:58.162969+00:00",
+      "reviewer": "Codex independent two-goal P/A/M reviewer; not the quantitative-split author",
+      "reason": "Independent full DE/EN profile review: all three required expectations preserve one specified p-hydroxybenzoic acid ester and actual own planning AND performance. Chromatography is a conditional example with available authorised equipment, not a universal school requirement. Peak time is separated from calibrated response; methylparaben standards cannot be transferred unchecked to ethylparaben. Fresh ester, matrix/coelution, changed working range and further dilution demand independent controls and actual remeasurement. Both calibration lines and dilution results are correct. No scientific blocker found. This is authored LK analytical transfer, not literal HE B05 Paraben-use source closure or a complete B04 claim. E1/G1 needs_human_review, ai_candidate only; no actual laboratory learner evidence.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "specified-paraben-structure-and-method",
+            "essentialUnderstandingDe": "Die bereitgestellte Struktur eines vorgegebenen p-Hydroxybenzoesäureesters begründet eine geeignete quantitative Mess- und Trennmethode. Ein geeignetes kalibriertes chromatographisches Verfahren ist ein Beispiel, nicht die einzige erlaubte Methode oder eine überall verfügbare Schulausstattung.",
+            "essentialUnderstandingEn": "The supplied structure of a specified p-hydroxybenzoic acid ester justifies a suitable quantitative measurement and separation method. Appropriate calibrated chromatography is one example, not the only permitted method or equipment available in every school.",
+            "observablePerformanceDe": "Für den tatsächlich vorgegebenen einzelnen Paraben-Ester eine geeignete Methode anhand von Struktur, Matrix und verfügbaren Verfahrensdaten auswählen und begründen.",
+            "observablePerformanceEn": "Select and justify an appropriate method for the one actually specified paraben ester using structure, matrix and available method data."
+          },
+          {
+            "id": "actual-controlled-paraben-planning-and-execution",
+            "essentialUnderstandingDe": "Die quantitative Parabenbestimmung verlangt eigene Planung UND tatsächliche Durchführung mit passenden Blind-/Matrixkontrollen, Referenzstandards und nachvollziehbarer Probenvorbereitung. Ein fremdes Chromatogramm oder eine simulierte Messung allein belegt keine eigene Durchführung.",
+            "essentialUnderstandingEn": "Quantitative paraben determination requires the learner’s own planning AND actual execution with appropriate blank/matrix controls, reference standards and traceable preparation. Another person’s chromatogram or a simulated measurement alone does not demonstrate the learner’s execution.",
+            "observablePerformanceDe": "Eine geeignete autorisierte Bestimmung für den vorgegebenen Ester tatsächlich planen und durchführen; eigene Kontrollen, Standards, Probenvorbereitung und Messwerte dokumentieren.",
+            "observablePerformanceEn": "Actually plan and carry out a suitable authorised assay for the specified ester; document the learner’s own controls, standards, sample preparation and readings."
+          },
+          {
+            "id": "paraben-calibration-range-dilution-selectivity",
+            "essentialUnderstandingDe": "Chromatographische Retentionszeit identifiziert Peaklagen und ist keine Konzentration. Ein geeigneter kalibrierter Signalbezug liefert Konzentration nur im validierten Arbeitsbereich; Verdünnung, unterschiedliche Analytenantwort und koeluierende Matrixbestandteile müssen berücksichtigt werden.",
+            "essentialUnderstandingEn": "Chromatographic retention time locates peaks and is not concentration. Appropriate calibrated signal response gives concentration only within the validated working range; dilution, different analyte response and coeluting matrix components must be considered.",
+            "observablePerformanceDe": "Kalibrierung oder passende Stöchiometrie gültig anwenden, den Gehalt mit Einheiten und Verdünnung bestimmen und bei frischer Range-/Selektivitätsstörung wirklich neu messen statt extrapolieren oder Peakzeit als Gehalt auszugeben.",
+            "observablePerformanceEn": "Apply valid calibration or suitable stoichiometry, determine content with units and dilution, and for fresh range/selectivity interference actually remeasure rather than extrapolate or present peak time as content."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "specified-paraben-structure-and-method",
+            "actual-controlled-paraben-planning-and-execution",
+            "paraben-calibration-range-dilution-selectivity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fresh-analyte-specific-controlled-assay",
+            "textDe": "Jeweils ein vorgegebener Ester und frische Matrix; geeignete neue analytspezifische Standards, veränderte Verdünnung/Kalibrierung, Arbeitsbereich und Koelution; tatsächliche Planung/Durchführung.",
+            "textEn": "One specified ester at a time and fresh matrix; suitable new analyte-specific standards, changed dilution/calibration, working range and coelution; actual planning/execution."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-specified-methylparaben-own-calibrated-assay",
+            "taskDemandDe": "Plane und führe eine geeignete quantitative Bestimmung von vorgegebenem Methylparaben in einer geeigneten Schulprobe tatsächlich durch. In diesem konkreten Material steht ein freigegebenes HPLC-Verfahren zur Verfügung; begründe es aus Struktur und Matrix, nutze Blankprobe und analytspezifische Standards und lege eigene Vorbereitung, Kontroll- und Rohmessprotokolle vor. Zusätzliche Rechenkontrolle: Standards c=0,5;2,0;5,0mg/L liefern A=65;200;470. Gültiger Bereich0,5–5,0mg/L, Probenfläche A=290, Verdünnungsfaktor8.",
+            "taskDemandEn": "Plan and actually perform an appropriate quantitative determination of specified methylparaben in a suitable school sample. This particular material provides an authorised HPLC procedure; justify it from structure and matrix, use a blank and analyte-specific standards, and submit the learner’s own preparation, control and raw-measurement records. Additional calculation check: standards c=0.5;2.0;5.0mg/L give A=65;200;470. Valid range0.5–5.0mg/L, sample area A=290, dilution factor8.",
+            "expectedPerformanceDe": "Die eigenen Durchführungsschritte und Kontrollen sind von den Zusatzdaten getrennt belegt. Kontrollgerade A=90c+20; c=3,0mg/L Messlösung und24,0mg/L Original, innerhalb des Bereichs. Retentionszeit ist nicht Konzentration; passende Standards und Matrix-/Trennkontrollen müssen die Zuordnung des Signals tragen. Kein Anspruch, HPLC sei überall verfügbar oder für alle Parabene zwingend.",
+            "expectedPerformanceEn": "The learner’s own execution and controls are evidenced separately from the extra data. Check line A=90c+20; c=3.0mg/L measured solution and24.0mg/L original, within range. Retention time is not concentration; appropriate standards and matrix/separation controls must support assignment of the signal. Do not claim HPLC is universally available or mandatory for every paraben.",
+            "understandingFocusDe": "Tatsächliche analytspezifische Bestimmung, getrennte Zeit-/Konzentrationsachsen und gültige Kalibrierung.",
+            "understandingFocusEn": "Actual analyte-specific assay, distinct time/concentration axes and valid calibration."
+          },
+          {
+            "id": "fresh-specified-ethylparaben-range-and-matrix-remeasurement",
+            "taskDemandDe": "Plane und führe eine Bestimmung an einer frischen geeigneten Probe des nun vorgegebenen Ethylparabens durch; begründe geeignete Methode und Standards erneut aus seiner bereitgestellten Struktur. Eine Peaküberlagerung durch Matrix ist zunächst möglich. Die neue gültige Kalibrierung A=75c+10 gilt nur0,5–4,0mg/L. Nach anfänglicher Probenverdünnung6 liefert die Probe A=460. Plane UND führe geeignete Selektivitätskontrollen und zusätzliche Verdünnung mit neuer Messung aus; eine weitere dreifache Verdünnung liefert bei geeigneter Trennung A=160.",
+            "taskDemandEn": "Plan and carry out an assay on a fresh suitable sample of now-specified ethylparaben; justify suitable method and standards again using its supplied structure. Matrix peak overlap is initially possible. New valid calibration A=75c+10 applies only to0.5–4.0mg/L. After initial sample dilution6 the sample gives A=460. Plan AND actually perform appropriate selectivity controls and additional dilution with new measurement; a further threefold dilution gives A=160 when separation is suitable.",
+            "expectedPerformanceDe": "Eigene frische Kontroll-/Messprotokolle belegen Durchführung und geprüfte Trennung; weder identische Retentionszeit noch allein ein Standard beweisen Abwesenheit von Koelution. A=460 ergäbe6,0mg/L außerhalb des Bereichs und darf nicht als gültiger Gehalt extrapoliert werden. Neue tatsächlich geeignet getrennte Messung A=160 liefert2,0mg/L; Gesamtverdünnung18 ergibt36,0mg/L Original. Ohne belegte Selektivität bleibt die präzise analytspezifische Gehaltsangabe offen. Keine ungeprüfte Übernahme der Methylparaben-Kalibrierung.",
+            "expectedPerformanceEn": "The learner’s fresh control/measurement records demonstrate execution and checked separation; neither matching retention time nor a standard alone proves absence of coelution. A=460 would give6.0mg/L outside range and cannot be extrapolated as a valid content. The new actually suitably separated measurement A=160 gives2.0mg/L; total dilution18 gives36.0mg/L original. Without evidenced selectivity the precise analyte-specific content remains open. Do not reuse the methylparaben calibration unchecked.",
+            "understandingFocusDe": "Frischer eigenständiger analytspezifischer Experimentaltransfer mit Bereichs- und Matrixgrenzen.",
+            "understandingFocusEn": "Fresh independent analyte-specific experimental transfer with range and matrix limitations."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "technicalLocator": {
+      "goalId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+      "activeConfig": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/active-configs/P9.config.json",
+      "wholePositiveReviewFile": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/positive/P9.final-native-bound.original-author.exact.jsonl",
+      "lineNumber": 6
+    },
+    "wholeRecord": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-q4-thermodynamics-eleven-author-20261012-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+      "goalFingerprint": "sha256:59faaef06c5474fde92ecfe28351d2d0b9c61c28d197c765c55a18bd4fdf7120",
+      "reviewInputFingerprint": "sha256:60f36b6c741b15c3fb03d1a417e21def8742f1a801df18a50c86fd2f40f894de",
+      "profileFingerprint": "sha256:1c3162b8f3b90c1f3214d79b1dc2f22de2b2e5fb35dc3724e805fd9dd9503ca1",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-12T10:50:16.593853+00:00",
+      "reviewer": "Codex chemistry Q4 author; independent acceptance pending",
+      "reason": "Eigene vollständige DE/EN-Fälle mit konkreten Materialien, Daten, Modellantworten und fachlichen Rubriken; Quellenoperatoren bleiben bindend. E1/G1; keine Laborausführung/Lernendenleistung oder menschliche Annahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "expectation-cyclic-engine-balance",
+            "essentialUnderstandingDe": "Zyklische Wärme-Arbeit-Grenze von Energieerhaltung unterscheiden.",
+            "essentialUnderstandingEn": "Distinguish cyclic heat/work limits from energy conservation.",
+            "observablePerformanceDe": "Zyklus: ΔU_Maschine=0, Q_out=1000-300=700 J; Energie bleibt erhalten. Reservoirsumme -1000/500+700/300=+0,333 J/K, mit dem 2. Hauptsatz vereinbar. Nutzarbeit ist 300 J, die anderen 700 J werden abgegeben, nicht vernichtet. Die behauptete Ein-Reservoir-Maschine wäre energetisch bilanziert, aber ihre einzige Umweltänderung hätte ΔS=-2 J/K; sie verletzt die Kelvin-Planck-Aussage. Die Einschränkung gilt für zyklische Wärmekraftmaschinen und vollständige Gesamtbilanz, nicht pauschal für jede einmalige Wärme-Arbeit-Umwandlung.",
+            "observablePerformanceEn": "Cycle: ΔU_engine=0 and Q_out=1000-300=700 J; energy is conserved. Reservoir sum -1000/500+700/300=+0.333 J/K is consistent with the second law. Useful work is 300 J; 700 J is transferred out, not destroyed. The claimed single-reservoir engine balances energy but its only environmental change has ΔS=-2 J/K, violating Kelvin-Planck. The restriction concerns cyclic heat engines and the full balance, not every one-time heat-to-work conversion."
+          },
+          {
+            "id": "expectation-finite-expansion-vs-cycle",
+            "essentialUnderstandingDe": "Eine einmalige reversible Expansion gegen den vollständigen Zyklus abgrenzen.",
+            "essentialUnderstandingEn": "Distinguish a single reversible expansion from a complete cycle.",
+            "observablePerformanceDe": "W_out≈1728,85 J und Q_in gleicher Betrag; ΔS_Gas=nR ln2≈5,763 J/K, ΔS_Reservoir=-5,763 J/K, Gesamt=0 im reversiblen Modell. Das Gasvolumen und seine Entropie haben sich verändert: kein Zyklus. Reversible Rückkompression bei derselben T benötigt entsprechende Arbeit und gibt Wärme ab; die vollständige Bilanz gewinnt keine Nettoarbeit aus einem einzigen Reservoir. Ein Kühlschrank braucht Arbeit zum Wärmetransport vom kalten zum warmen Reservoir. Energie bleibt erhalten, Bedingungen und Systemzustand bestimmen die Umwandlungsgrenze.",
+            "observablePerformanceEn": "W_out≈1728.85 J and Q_in has the same magnitude; ΔS_gas=nR ln2≈5.763 J/K, ΔS_reservoir=-5.763 J/K, total zero in the reversible model. Gas volume/entropy changed, so this is not a cycle. Reversible recompression at the same T needs corresponding work and rejects heat; the full cycle obtains no net work from one reservoir. A refrigerator needs work to move heat from cold to hot. Energy is conserved; conditions and system state define conversion limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "expectation-cyclic-engine-balance",
+            "expectation-finite-expansion-vs-cycle"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chemically-relevant-conditions",
+            "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+            "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cyclic-engine-balance",
+            "taskDemandDe": "Synthetische zyklische Wärmekraftmaschine: heißes Reservoir 500 K, kaltes Reservoir 300 K. Je Zyklus Q_in=1000 J, W_out=300 J. Die Maschine kehrt in denselben Zustand zurück. Zweite Behauptung: 1000 J aus nur einem Reservoir vollständig in Arbeit, keinerlei weitere Änderung. Bilanziere Abwärme, erkläre Energieverbrauch/-verlust und prüfe beide Aussagen mit 1. und 2. Hauptsatz. Berechne ergänzend die Reservoir-Entropieänderung; erläutere die Rolle des vollständigen Zyklus.",
+            "taskDemandEn": "Synthetic cyclic heat engine: hot reservoir 500 K, cold reservoir 300 K. Per cycle Q_in=1000 J and W_out=300 J; the machine returns to its initial state. Another claim: convert 1000 J from one reservoir entirely to work with no other change. Balance rejected heat, interpret energy consumption/loss and assess both claims with the first/second laws. Additionally calculate reservoir entropy change and explain why a complete cycle matters.",
+            "expectedPerformanceDe": "Zyklus: ΔU_Maschine=0, Q_out=1000-300=700 J; Energie bleibt erhalten. Reservoirsumme -1000/500+700/300=+0,333 J/K, mit dem 2. Hauptsatz vereinbar. Nutzarbeit ist 300 J, die anderen 700 J werden abgegeben, nicht vernichtet. Die behauptete Ein-Reservoir-Maschine wäre energetisch bilanziert, aber ihre einzige Umweltänderung hätte ΔS=-2 J/K; sie verletzt die Kelvin-Planck-Aussage. Die Einschränkung gilt für zyklische Wärmekraftmaschinen und vollständige Gesamtbilanz, nicht pauschal für jede einmalige Wärme-Arbeit-Umwandlung.",
+            "expectedPerformanceEn": "Cycle: ΔU_engine=0 and Q_out=1000-300=700 J; energy is conserved. Reservoir sum -1000/500+700/300=+0.333 J/K is consistent with the second law. Useful work is 300 J; 700 J is transferred out, not destroyed. The claimed single-reservoir engine balances energy but its only environmental change has ΔS=-2 J/K, violating Kelvin-Planck. The restriction concerns cyclic heat engines and the full balance, not every one-time heat-to-work conversion.",
+            "understandingFocusDe": "Zyklische Wärme-Arbeit-Grenze von Energieerhaltung unterscheiden.",
+            "understandingFocusEn": "Distinguish cyclic heat/work limits from energy conservation."
+          },
+          {
+            "id": "finite-expansion-vs-cycle",
+            "taskDemandDe": "Ideales Gas expandiert einmalig isotherm und reversibel bei 300 K von V auf 2V, n=1,00 mol, R=8,314 J/(mol K). Zugeführte Wärme wird bei ΔU=0 vollständig als Arbeit abgegeben; der Gaszustand ändert sich. Vergleich: Ein Zyklus muss anschließend denselben Anfangszustand wiederherstellen. Prüfe die vermeintliche Widerlegung des 2. Hauptsatzes, berechne W_out=nRT ln2 und die Entropieänderungen, und erkläre warum das Zurücksetzen nicht kostenlos ist. Ordne das Alltagsbild eines Kühlschranks/Wärmemotors fachlich ein.",
+            "taskDemandEn": "An ideal gas undergoes one reversible isothermal expansion at 300 K from V to 2V; n=1.00 mol, R=8.314 J/(mol K). With ΔU=0, supplied heat is all released as work, but gas state changes. Contrast: a cycle must subsequently restore its initial state. Assess the alleged violation of the second law, calculate W_out=nRT ln2 and entropy changes and explain why resetting is not free. Give a scientific interpretation of a refrigerator/heat-engine everyday model.",
+            "expectedPerformanceDe": "W_out≈1728,85 J und Q_in gleicher Betrag; ΔS_Gas=nR ln2≈5,763 J/K, ΔS_Reservoir=-5,763 J/K, Gesamt=0 im reversiblen Modell. Das Gasvolumen und seine Entropie haben sich verändert: kein Zyklus. Reversible Rückkompression bei derselben T benötigt entsprechende Arbeit und gibt Wärme ab; die vollständige Bilanz gewinnt keine Nettoarbeit aus einem einzigen Reservoir. Ein Kühlschrank braucht Arbeit zum Wärmetransport vom kalten zum warmen Reservoir. Energie bleibt erhalten, Bedingungen und Systemzustand bestimmen die Umwandlungsgrenze.",
+            "expectedPerformanceEn": "W_out≈1728.85 J and Q_in has the same magnitude; ΔS_gas=nR ln2≈5.763 J/K, ΔS_reservoir=-5.763 J/K, total zero in the reversible model. Gas volume/entropy changed, so this is not a cycle. Reversible recompression at the same T needs corresponding work and rejects heat; the full cycle obtains no net work from one reservoir. A refrigerator needs work to move heat from cold to hot. Energy is conserved; conditions and system state define conversion limits.",
+            "understandingFocusDe": "Eine einmalige reversible Expansion gegen den vollständigen Zyklus abgrenzen.",
+            "understandingFocusEn": "Distinguish a single reversible expansion from a complete cycle."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "technicalLocator": {
+      "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "activeConfig": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/config/P6.a.original-science-except-held682.normal-alias.config.json",
+      "wholePositiveReviewFile": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/P/P6.a.exact-original-lines-except-held682.jsonl",
+      "lineNumber": 3
+    },
+    "wholeRecord": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "goalFingerprint": "sha256:e083b6eae8abc5d5cbb34b6c9ad3c89024417f321db63204e5d8a3dab1439492",
+      "reviewInputFingerprint": "sha256:bce8a207ef38d65a1fecf13b90a29dcb5023a231e37b42daaffa10ee879a9c2a",
+      "profileFingerprint": "sha256:0515a1dfea6fc4c3428b070c530ca5463d40c0bb91cb4e3a60388332b727d736",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-12T06:59:54.903149+00:00",
+      "reviewer": "Fresh independent A; original author profile body retained for binding check",
+      "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "structure-and-evidence",
+            "essentialUnderstandingDe": "Nachweise reagieren auf chemische Merkmale und erfordern Kontrollen sowie reale Durchführungsevidenz.",
+            "essentialUnderstandingEn": "Assays respond to chemical features and require controls plus evidence of actual execution.",
+            "observablePerformanceDe": "Ninhydrin zeigt bei vielen freien Aminogruppen eine Färbung; Biuret verlangt mehrere geeignete Peptidbindungen, Glycin bleibt negativ. Reagenzien/Probeninterferenzen werden kontrolliert.",
+            "observablePerformanceEn": "Ninhydrin responds to many free amino groups; biuret requires multiple suitable peptide bonds and glycine is negative. Reagent/sample interferences are controlled."
+          },
+          {
+            "id": "fresh-transfer",
+            "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+            "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+            "observablePerformanceDe": "Befunde stützen die jeweilige Stoffklasse, nicht die eindeutige Verbindung. Ein analysiertes fremdes Protokoll belegt keine eigene Versuchsdurchführung; hierfür sind beobachtetes Arbeiten und eigenes Protokoll nötig.",
+            "observablePerformanceEn": "Results support classes, not unique compounds. Analysing a supplied record does not demonstrate personally executing the experiment; observed practice and personal records are required."
+          },
+          {
+            "id": "execution",
+            "essentialUnderstandingDe": "Durchführen undchemische Selektivitätvergleichen.",
+            "essentialUnderstandingEn": "Execute and compare chemical selectivity.",
+            "observablePerformanceDe": "Glycinmit Ninhydrinviolett, mit Biuretkein Proteinnachweis; Eiklar Biuretviolett. Richtige Proben/Kontrollen und Dokumentationder Reihenfolge zählen. Ninhydrin reagiertmitgeeigneten Aminogruppen, nichtproteinexklusiv; Prolin kannabweichen.",
+            "observablePerformanceEn": "Glycine ninhydrin violet, but not positive protein biuret; eggwhite biuret positive. Correct samples/controls and execution order count. Ninhydrin reacts with suitable amino groups, not exclusively proteins; proline can differ."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "structure-and-evidence",
+            "fresh-transfer",
+            "execution"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "material-operator-context",
+            "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+            "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "case-a",
+            "taskDemandDe": "Plane in einem schulisch freigegebenen Verfahren Ninhydrin- und Biuret-Vergleich an Glycin und einem Protein samt Blindproben; begründe erwartete Befunde.",
+            "taskDemandEn": "Plan school-authorised ninhydrin and biuret comparison of glycine and a protein with blanks; justify expected results.",
+            "expectedPerformanceDe": "Ninhydrin zeigt bei vielen freien Aminogruppen eine Färbung; Biuret verlangt mehrere geeignete Peptidbindungen, Glycin bleibt negativ. Reagenzien/Probeninterferenzen werden kontrolliert.",
+            "expectedPerformanceEn": "Ninhydrin responds to many free amino groups; biuret requires multiple suitable peptide bonds and glycine is negative. Reagent/sample interferences are controlled.",
+            "understandingFocusDe": "Nachweise reagieren auf chemische Merkmale und erfordern Kontrollen sowie reale Durchführungsevidenz.",
+            "understandingFocusEn": "Assays respond to chemical features and require controls plus evidence of actual execution."
+          },
+          {
+            "id": "case-b-transfer",
+            "taskDemandDe": "Werte ein bereitgestelltes Protokoll aus: Blindprobe ungefärbt, Glycin Ninhydrin positiv/Biuret negativ, Protein Biuret positiv. Welche Aussagen und welche Durchführungsevidenz fehlen?",
+            "taskDemandEn": "Evaluate a supplied record: blank colourless, glycine ninhydrin positive/biuret negative, protein biuret positive. What conclusions and execution evidence remain absent?",
+            "expectedPerformanceDe": "Befunde stützen die jeweilige Stoffklasse, nicht die eindeutige Verbindung. Ein analysiertes fremdes Protokoll belegt keine eigene Versuchsdurchführung; hierfür sind beobachtetes Arbeiten und eigenes Protokoll nötig.",
+            "expectedPerformanceEn": "Results support classes, not unique compounds. Analysing a supplied record does not demonstrate personally executing the experiment; observed practice and personal records are required.",
+            "understandingFocusDe": "Nachweise reagieren auf chemische Merkmale und erfordern Kontrollen sowie reale Durchführungsevidenz.",
+            "understandingFocusEn": "Assays respond to chemical features and require controls plus evidence of actual execution."
+          },
+          {
+            "id": "execution-1",
+            "taskDemandDe": "Führe betreut zwei Nachweise aus. Ninhydrin: jeein Tropfen1%Glycin und Wasser aufgetrennte Filterpapierfelder; mitbereitgestellterethanolischer Ninhydrinlösung im Abzug nach Freigabe benetzen, trocknen undimwarmluftfreien80°C-Trockenschrank2min erwärmen. Biuret: je2mLverdünntes Eiklar, Glycin, Wasser +1mLNaOH1M +10Tropfen CuSO4 0, 1M, mischen. Protokolliere Ausführung, Kontrollen undtatsächliche Befunde.",
+            "taskDemandEn": "Execute supervised two assays. Ninhydrin: one drop each1%glycine/water on separate paper fields; wet using provided ethanolic ninhydrin in hood, leave dry then warm2min80°C drying cabinet. Biuret: 2ml diluted eggwhite, glycine, water+1mL1M NaOH+10drops0.1M CuSO4, mix. Log execution, controls and actual findings.",
+            "expectedPerformanceDe": "Glycinmit Ninhydrinviolett, mit Biuretkein Proteinnachweis; Eiklar Biuretviolett. Richtige Proben/Kontrollen und Dokumentationder Reihenfolge zählen. Ninhydrin reagiertmitgeeigneten Aminogruppen, nichtproteinexklusiv; Prolin kannabweichen.",
+            "expectedPerformanceEn": "Glycine ninhydrin violet, but not positive protein biuret; eggwhite biuret positive. Correct samples/controls and execution order count. Ninhydrin reacts with suitable amino groups, not exclusively proteins; proline can differ.",
+            "understandingFocusDe": "Durchführen undchemische Selektivitätvergleichen.",
+            "understandingFocusEn": "Execute and compare chemical selectivity."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "technicalLocator": {
+      "goalId": "1051c091-a044-5a09-8946-60a4b5e5d185",
+      "activeConfig": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-reviewed-inactive-integration-technical-20261016-v1/preparation/config/P-retained-baseline-03.original-review-id.config.json",
+      "wholePositiveReviewFile": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-reviewed-inactive-integration-technical-20261016-v1/preparation/positive-retentions/baseline-03.exact-original-rest-lines.jsonl",
+      "lineNumber": 3
+    },
+    "wholeRecord": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-energy-eleven-kept-informed-pa-20261015-v1-p",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "1051c091-a044-5a09-8946-60a4b5e5d185",
+      "goalFingerprint": "sha256:fbd6ec7fb7bcf3be73429ddd207662a4356cfc183d580bd76f5224bac1219876",
+      "reviewInputFingerprint": "sha256:be8b8a2f559cb0e74b3cc26a7f5c07765174899e3b11d3acfbd7419361cd1398",
+      "profileFingerprint": "sha256:8158ab79bd67b5d48c8453d81c6c5605543da2461abb3a752fea46d4f1a7fb01",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-15T12:25:17.855885+00:00",
+      "reviewer": "Codex reviewer C; informed P/A successor after own D20; no new blind D vote",
+      "reason": "Das vorhandene Profil deckt Wasseroxidation, CO2-Reduktion, Tracerdeutung und begrenzte Trägerkopplung durch zwei vollständige unterschiedliche Fälle ab. Die unabhängige Dunkel-/N2-Variation zeigt Stoff- gegen Energiequelle und verhindert bloßes Ablesen der Abbildung. Der positive Profilkörper ist sachlich tragfähig und bleibt unverändert; E1/G1 bezieht sich auf dieses Ziel, nicht die vollständige nationale Abdeckung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [
+        "chemie-energy-eleven-kept-informed-pa-20261015-v1-P11-final-current"
+      ],
+      "dissent": [
+        "Informed single-goal AI assessment design; no learner/lab trial, human acceptance, D blind vote or M/V/source/course approval.",
+        "Current image bytes and supplied page contexts are input-bound; image recognition is not performance and this P record grants no V vote.",
+        "National partial source mappings, optional selections and separately assigned practical source-partner duties remain open."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Photosynthetischer Sauerstoff entsteht aus Wasseroxidation,CO2 wird reduziert.",
+            "essentialUnderstandingEn": "Photosynthetic oxygen arises from water oxidation whileCO2 is reduced.",
+            "observablePerformanceDe": "energy20-07-a: Wasser als Donator undCO2 als Akzeptor durch Tracer und Bilanz verbinden. energy20-07-b: Lichtreaktion undCO2-Reduktion kausal verbinden, ohne sie gleichzusetzen.",
+            "observablePerformanceEn": "energy20-07-a: Identify water as donor andCO2 as acceptor from balance/tracer evidence. energy20-07-b: Causally connect light reaction andCO2 reduction without conflating them."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Nettoformel und Tracerexperiment liefern unterschiedliche Information.",
+            "essentialUnderstandingEn": "Net equations and tracer experiments provide different information.",
+            "observablePerformanceDe": "energy20-07-a: Vier Elektronen und erhaltene Ladung korrekt bilanzieren. energy20-07-b: Glucose-Nettoformel und expliziten Wasserumsatz deuten.",
+            "observablePerformanceEn": "energy20-07-a: Connect half-reactions with4electrons and conserved charge. energy20-07-b: Interpret glucose balance and explicit water turnover correctly."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Lichtenergie und gekoppelte Träger ermöglichen chemische Speicherung ohne Atomerzeugung.",
+            "essentialUnderstandingEn": "Light energy/coupled carriers enable chemical storage without creating atoms.",
+            "observablePerformanceDe": "energy20-07-a: Netto-, Mechanismus- und Lichtenergieaussage unterscheiden. energy20-07-b: C-Fixierung nicht ausO2 allein ableiten.",
+            "observablePerformanceEn": "energy20-07-a: Distinguish net equation,mechanism and light-energy claims. energy20-07-b: Do not infer carbon fixation fromO2 alone."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "energy20-07-a-transfer",
+            "textDe": "Im Dunkeln setzt sichCO2-Fixierung mit vorhandenenATP/NADPH kurz fort. Warum beweist das keine unbegrenzte Wasseroxidation ohne Licht?",
+            "textEn": "CO2 fixation briefly continues in darkness ifATP/NADPH are available. Explain why this does not show unlimited dark water oxidation."
+          },
+          {
+            "id": "energy20-07-b-transfer",
+            "textDe": "ErsetzeCO2 durchN2. Welche Produktbehauptung ist trotzO2-Freisetzung unbelegt, und welche Messung prüftC-Speicherung?",
+            "textEn": "A new experiment releasesO2 afterCO2 is replaced byN2. Without a diagram,predict the unsupported product claim and a measurement of carbon storage."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "energy20-07-a",
+            "taskDemandDe": "Ganzes eigenes Material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json #energy20-07-a,sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe. Leite dieO2-Herkunft ab. Stelle Wasseroxidation undCO2-Reduktion auf derCH2O-Modellstufe dar. Erkläre die Grenze einer Nettogleichung sowie Lichtabhängigkeit und Energiespeicherung.",
+            "taskDemandEn": "Whole own material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json #energy20-07-a,sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe. Infer the releasedO2 source and represent water oxidation andCO2 reduction at theCH2O model level. Explain why the net equation alone does not prove atom origins. Assign light dependence and stored chemical energy.",
+            "expectedPerformanceDe": "2H2O→O2+4H++4e−; CO2+4H++4e−→CH2O+H2O; nettoCO2+H2O→CH2O+O2. Tracer verknüpftO2 mit Wasseroxidation, CO2 wird reduziert. CH2O bezeichnet ein Kohlenhydratäquivalent, kein isoliertes Pflanzenprodukt Formaldehyd. Die Nettogleichung verbirgt Wasserumsatz und Zwischenreaktionen. Licht treibt Speicherung chemischer Energie; Enzyme erzeugen diese Energie nicht.",
+            "expectedPerformanceEn": "2H2O→O2+4H++4e−;CO2+4H++4e−→CH2O+H2O;netCO2+H2O→CH2O+O2. Tracer evidence linksO2 to water oxidation;CO2 is reduced,not split toO2. The shortened net equation hides intermediates/water turnover;CH2O is a carbohydrate equivalent,not isolated plant formaldehyde. Light drives coupled energy storage;enzymes do not create energy.",
+            "understandingFocusDe": "Im Dunkeln setzt sichCO2-Fixierung mit vorhandenenATP/NADPH kurz fort. Warum beweist das keine unbegrenzte Wasseroxidation ohne Licht?",
+            "understandingFocusEn": "CO2 fixation briefly continues in darkness ifATP/NADPH are available. Explain why this does not show unlimited dark water oxidation."
+          },
+          {
+            "id": "energy20-07-b",
+            "taskDemandDe": "Ganzes eigenes Material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json #energy20-07-b,sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe. Erkläre die Daten durch gekoppelte, aber verschiedene Teilprozesse. Formuliere die Glucose-Nettoformel und ihre Grenze. Widerlege „CO2 ist der Brennstoff der Lichtreaktion, Wasser nur Lösemittel“.",
+            "taskDemandEn": "Whole own material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json #energy20-07-b,sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe. Explain the data as coupled but distinct partial processes. Formulate the glucose net equation and its limitation. Refute“CO2 fuels the light reaction while water is merely solvent”.",
+            "expectedPerformanceDe": "6CO2+6H2O→C6H12O6+6O2 ist die Nettobilanz mit Lichtzufuhr. Expliziter Wasserumsatz:6CO2+12H2O→C6H12O6+6O2+6H2O. Wasseroxidation liefert Elektronen undO2, CO2-Reduktion bindetC. Die Daten zeigen Trägerkopplung, keine unbegrenzte Dunkelreaktion. Atome und Energie haben unterschiedliche Quellen. AnfangsO2 ohneCO2 ist kein Nachweis neuer Kohlenhydratsynthese.",
+            "expectedPerformanceEn": "6CO2+6H2O→C6H12O6+6O2 is the net material balance with light input;explicit turnover can be written6CO2+12H2O→C6H12O6+6O2+6H2O. Water oxidation supplies electrons/O2;CO2 reduction builds carbon compounds. Data indicate separate carrier dependence,not unlimited dark processes. Atoms and energy have distinct sources;O2 can initially form withoutCO2,but carbon fixation cannot continue without its carbon source.",
+            "understandingFocusDe": "ErsetzeCO2 durchN2. Welche Produktbehauptung ist trotzO2-Freisetzung unbelegt, und welche Messung prüftC-Speicherung?",
+            "understandingFocusEn": "A new experiment releasesO2 afterCO2 is replaced byN2. Without a diagram,predict the unsupported product claim and a measurement of carbon storage."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "technicalLocator": {
+      "goalId": "7dc80ee2-64e3-50c1-8aaa-0fef0ed0919d",
+      "activeConfig": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-reviewed-inactive-integration-technical-20261016-v1/preparation/config/P-retained-baseline-03.original-review-id.config.json",
+      "wholePositiveReviewFile": "tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-reviewed-inactive-integration-technical-20261016-v1/preparation/positive-retentions/baseline-03.exact-original-rest-lines.jsonl",
+      "lineNumber": 8
+    },
+    "wholeRecord": {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-energy-eleven-kept-informed-pa-20261015-v1-p",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "7dc80ee2-64e3-50c1-8aaa-0fef0ed0919d",
+      "goalFingerprint": "sha256:9097ae929906c69d4477b16f6718eb40f4947ee21d7a64728215726d8bb55610",
+      "reviewInputFingerprint": "sha256:00730e666aadc8cc4132aba62383ad77e3689c90322f235fcaadebacff5303e0",
+      "profileFingerprint": "sha256:06a3773f694cfbfdbf5124316ec8efffc5a36f40a113145d2010c77f4987ce2e",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-15T12:25:17.855885+00:00",
+      "reviewer": "Codex reviewer C; informed P/A successor after own D20; no new blind D vote",
+      "reason": "Beide ganzen Fälle decken zusammen den gekoppelten Erzeugungs-/Speichervergleich ab. Echter Profilmangel: e1 benannte nur Erzeugung, enthielt aber Speicherleistung; e2 benannte nur Speichergrenzen, enthielt aber die Solarbilanz. Die essentialUnderstanding-Felder werden auf den tatsächlich geprüften qualitativen Systempfad beziehungsweise die quantitativen gemeinsamen Grenzen ausgerichtet. Fallmaterial und positive beobachtbare Leistungen bleiben inhaltlich erhalten.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [
+        "chemie-energy-eleven-kept-informed-pa-20261015-v1-P11-final-current"
+      ],
+      "dissent": [
+        "Informed single-goal AI assessment design; no learner/lab trial, human acceptance, D blind vote or M/V/source/course approval.",
+        "Current image bytes and supplied page contexts are input-bound; image recognition is not performance and this P record grants no V vote.",
+        "National partial source mappings, optional selections and separately assigned practical source-partner duties remain open."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Wasserstofferzeugung und Speicherung koppeln Energiequelle, Wasserspaltung und die physikalische Aufnahme oder chemische Bindung von Wasserstoff innerhalb eines Erzeugungs-/Speichersystems.",
+            "essentialUnderstandingEn": "Hydrogen generation and storage connect the energy source, water splitting and physical storage or chemical binding of hydrogen within one generation and storage system.",
+            "observablePerformanceDe": "energy20-15-a: Elektrochemischen und photokatalytischen Pfad samt Bilanz trennen. energy20-15-b: Physikalische Speicherung von chemischer Hydridbindung unterscheiden.",
+            "observablePerformanceEn": "energy20-15-a: Distinguish electrochemical/direct photocatalytic paths and water balance. energy20-15-b: Distinguish physical storage from chemical hydride binding."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Gemeinsame Systemgrenzen und eine erklärte Nutzfunktion ermöglichen quantitative Vergleiche von Sonnenenergieausbeute, Rückgewinnung und massenbezogener Speicherenergie; Wärme und Strom werden getrennt bilanziert.",
+            "essentialUnderstandingEn": "Common system boundaries and a declared service permit quantitative comparison of solar-energy conversion, recovery and mass-specific storage energy; heat and electricity are accounted for separately.",
+            "observablePerformanceDe": "energy20-15-a: 1,19gegen0,68kWh mit gleicher Solargrenze berechnen. energy20-15-b: 9,09%/2% und beide Systemenergien korrekt normieren.",
+            "observablePerformanceEn": "energy20-15-a: Calculate1.19versus0.68kWh on the same solar boundary. energy20-15-b: Correctly normalise9.09%/2% and useful system energy."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Katalysatorbedarf,Lebensdauer und Nutzung bestimmen eine bedingte ökologische/ökonomischeWertung.",
+            "essentialUnderstandingEn": "Catalyst demand,lifetime and use determine conditional environmental/economic judgement.",
+            "observablePerformanceDe": "energy20-15-a: Katalysatorbedarf, Lebensdauer und partielle Photosyntheseanalogie erklären. energy20-15-b: Freisetzungswärme, Ressourcen und anwendungsbezogene Gewichtung beurteilen.",
+            "observablePerformanceEn": "energy20-15-a: Explain catalyst demand,lifetime and the partial photosynthesis analogy. energy20-15-b: Explicitly assess release heat,resources and use-specific weighting."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "energy20-15-a-transfer",
+            "textDe": "D verdoppelt die Lichtausbeute, aber halbiert die Lebensdauer. Prüfe Energie- und Materialaussage getrennt über gleiche Betriebszeit.",
+            "textEn": "D now doubles light conversion but halves lifetime. Reassess energy and material claims separately over the same operating time."
+          },
+          {
+            "id": "energy20-15-b-transfer",
+            "textDe": "Geeignete Abwärme ist jetzt nachweisbar verfügbar. Welche ökonomische/ökologische Grenze ändert sich, welche Massenwerte nicht?",
+            "textEn": "Waste heat at a proven suitable temperature becomes available. Identify the changed economic/environmental boundary and unchanged mass figures."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "energy20-15-a",
+            "taskDemandDe": "Ganzes eigenes Material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json #energy20-15-a,sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe. Vergleiche Energiepfade und Wasserbilanz. Berechne gespeicherteH2-Energie und beurteile Grundstoffe/Katalysatoren ökonomisch und ökologisch. Welche Teilanalogie zur Photosynthese besteht, welche fehlt?",
+            "taskDemandEn": "Whole own material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json #energy20-15-a,sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe. Compare energy paths and water balance,calculate storedH2 energy and give conditional resource/catalyst,economic/environmental judgements. Explain which part of natural photosynthesis these routes imitate and which they do not.",
+            "expectedPerformanceDe": "P:10×0,20×0,70×0,85=1,19kWh; D:10×0,08×0,85=0,68kWhH2. Beide nutzen2H2O→2H2+O2 mit Energiezufuhr; P über Strom, D über direkte Lichtanregung. Das bildet lichtgetriebene Energiespeicherung ab, keine vollständigeCO2-Reduktion zu Kohlenhydraten. Kleinere Katalysatormasse bedeutet ohne Verfügbarkeit/Lebensdauer keinen geringeren Ressourcenbedarf. Kosten, Fläche, Recycling und Stabilität fehlen; Katalysatoren ändern keine Stoffbilanz und schaffen keine Energie.",
+            "expectedPerformanceEn": "P:10×0.20×0.70×0.85=1.19kWhH2;D:10×0.08×0.85=0.68kWh. Both2H2O→2H2+O2 with energy input;P uses intermediate electricity,D direct catalyst excitation. They mimic light-driven energy storage,not completeCO2 reduction to carbohydrate. Less catalyst mass does not mean lower resource burden without availability/lifetime. Cost,recycling,area and stability are missing for a universal ranking;the catalyst does not alter stoichiometry or create energy.",
+            "understandingFocusDe": "D verdoppelt die Lichtausbeute, aber halbiert die Lebensdauer. Prüfe Energie- und Materialaussage getrennt über gleiche Betriebszeit.",
+            "understandingFocusEn": "D now doubles light conversion but halves lifetime. Reassess energy and material claims separately over the same operating time."
+          },
+          {
+            "id": "energy20-15-b",
+            "taskDemandDe": "Ganzes eigenes Material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json #energy20-15-b,sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe. Vergleiche physikalische/chemische Speicherung, Massenanteil und nutzbare Energie. Bewerte stationären und mobilen Einsatz mit Freisetzungswärme und Rohstoffbedarf. Setze Wärme und Strom nicht ungeprüft gleich.",
+            "taskDemandEn": "Whole own material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json #energy20-15-b,sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe. Compare physical/chemical storage,hydrogen mass fraction and recoverable energy. Include release heat/resource demand for stationary/mobile use;do not silently treat heat and electricity as equivalent.",
+            "expectedPerformanceDe": "T:1/11=9,09%H2 und31,635kWh pro System, bzw2,876kWh/kgSystem. H:2%H2 und59,94kWh pro System, bzw0,5994kWh/kg. Der Tank speichert Gas physikalisch, das Hydrid bindetH chemisch. Daraus folgt kein universelles Sicherheitsranking. H benötigt8kWh Freisetzungswärme pro voller Beladung; Temperatur und Herkunft dieser Wärme sind entscheidend. Stationär kann Gewicht weniger stören. Rohstoff- und Lebensdauerfragen bleiben offen.",
+            "expectedPerformanceEn": "T:H2 mass fraction1/11=9.09%,recoverable chemical energy31.635kWh/system. H:2/100=2%,recoverable59.94kWh/system,0.5994kWh/kg system versus2.876kWh/kg forT. Hydride chemically bindsH;the tank physically stores gas;neither alone establishes universal safety. H additionally needs8kWh release heat per full charge,whose temperature/source matters. Stationary use may tolerate mass;mobile use weights it differently. Resource/lifetime data remain open.",
+            "understandingFocusDe": "Geeignete Abwärme ist jetzt nachweisbar verfügbar. Welche ökonomische/ökologische Grenze ändert sich, welche Massenwerte nicht?",
+            "understandingFocusEn": "Waste heat at a proven suitable temperature becomes available. Identify the changed economic/environmental boundary and unchanged mass figures."
+          }
+        ]
+      }
+    }
+  }
+]
