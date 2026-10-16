@@ -1,0 +1,11 @@
+# Additiver Autoren-Nachtrag: genau ein Abschlussweg
+
+Der große Source/P-Autorenteil wurde vor diesem neuen Auftrag versiegelt. Seine 23 Dateien und sein Selektor bleiben bytegenau erhalten. Dieser Nachtrag ist ebenfalls inaktiv und ausschließlich Autorarbeit.
+
+Assessment-ID: **`69928892-ac71-553d-a35c-4f96f16b6d6e`**. Vorgeschlagener semantischer Typ: `practiceAssessment`, kein weiteres curricularAtomic-Ziel. `requires`, tatsächliches `examData.coveredGoalIds` und dokumentierte `assessedCoverage` enthalten jeweils ausschließlich das neue Ordinary-Ziel `3eb2a06c-d283-57aa-9eb4-088940c4801a`.
+
+Die vollständige DE/EN-Abschlussaufgabe übernimmt den schon vollständig gelösten P-Fall A und genau dessen bereits vorhandenen frischen Transfer. Alle Materialien, Aufgaben, Lösungen und Rubriken stehen im Exam-Objekt selbst. Keine weitere Quelle oder neues Thema ist nötig. Vier obligatorische Kriterien zu je4BE ergeben **16/16** als Bestehensgrenze. Das ist unmittelbar aus der vorhandenen P-Rubrik abgeleitet; Aufgabe4 umfasst sowohl den verbundenen Grundfall als auch den neuen Produktionsbefund.
+
+Kanonischer Parent-Vorschlag ist `5964272f-e835-5a24-b2b1-c162be6b75cb`. Der Wholecluster-CAS fügt genau diesen einen Endpunkt hinzu und lässt alle übrigen Felder unverändert. `applicabilityFromRequires: true` bindet den Endpunkt an das eine SH-Ziel. Die vorhandene breite BY/HE-Platzierung des Parents soll keinen zusätzlichen Target-Scope erzeugen. Der einschlägige Stock-Algorithmus wurde gelesen; eine vollständige neue Scope-Compilation wird hier nicht behauptet. Ein expliziter GoalEntry ist nur für dasselbe ausgewählte SH-Medikamententhema vorgeschlagen. Es gibt keine normale Viewänderung und keine neue allgemeine GK-Pflicht.
+
+Die endlichen Autorenchecks prüfen Exam-Schema, vollständige DE/EN-Materialübernahme, exakte Einzelabdeckung, Punkte, Parent-Append und beide DAG-Relationen. Die kombinierte rein prospektive Integration beider neuen Leaves ergäbe631 ganze Knoten,436 Ordinary,57 Memory und45 PracticeAssessment. Keine Normaldatei, aktuelle Zielzahl oder Gatezählung wurde geändert. Alle unabhängigen Source-/Scope-/P-/D-/A-/M-/V-Bindungen bleiben offen; auch dieser Endpunkt ist `draft` und nicht freigegeben.

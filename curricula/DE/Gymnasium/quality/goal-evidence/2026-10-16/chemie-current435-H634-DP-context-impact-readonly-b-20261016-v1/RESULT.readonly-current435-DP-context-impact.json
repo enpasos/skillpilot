@@ -1,0 +1,132 @@
+{
+  "scope": "Read-only current435 D/P integration-context impact. Independent technical diagnosis only.",
+  "pins": {
+    "baselineCanonicalSha256": "sha256:6bed948af8d0ba47d722fb6205bacba6f8792e233f58c1772366395dd8450d8e",
+    "baselineFull435BaseDigest": "sha256:9d777ae5a46caaf11e3b07620ea0302654356ad618bbb36820b53542c3ce8bd0",
+    "currentHCanonicalSha256": "sha256:d17b3219212d5157a3731cc54b8424cc07816835781984bcbeb3a98f4064268f",
+    "normalRCanonicalSha256": "sha256:9a68501347031f266572dea551e71c3507b66fb5ed94142a1a99f6a282708960",
+    "centralPrior435ReportSha256": "sha256:2ff3e4a852f27c5ec5f28d63f5607d95ec96711ebb0951cb4908f5c985097377",
+    "full435ViewBeforeSha256": "sha256:5d220869aecd87e7517c9c6e42a5aba070727815cf89aae9a167f86147ea67d0",
+    "full435ViewAfterCandidateSha256": "sha256:a133ab6e3207a0bf7ddeb9e67163e23e35e0f64b853f1b88de7e207f2e355a02",
+    "mapping82InventorySha256": "sha256:8892529b961228a14d99254ad2ce086eb85bafb55b762218f664244afca6aeb2",
+    "P435ExactRecordBindingsSha256": "sha256:e8529a56a98b94f3dd9285316da72a41c92f97f7c28a6ce514ef21375475586d",
+    "D435InternalBindingsAndNewSubsetPageCandidatesSha256": "sha256:5945b6c7a940fa25a122c70c93c933c751eee0040c8c1bc671d6a0e2f0abae28",
+    "deltaExactListsSha256": "sha256:5b559831532afe8444421978addae47f3a179d209bef9f7e6e5b4441615ac25f",
+    "learner31ViewCompilerResultSha256": "sha256:14e550045fd159c3621896c0cd64d3eb41679d00d52a5170f34b34aa0233cc6f"
+  },
+  "result": {
+    "ordinaryWholeBodiesExact": 435,
+    "ordinaryGoalFingerprintsExact": 435,
+    "DOriginalPageFingerprintInternallyValid": 435,
+    "DOriginalGoalReviewContextFingerprintInternallyValid": 435,
+    "DOriginalGoalFingerprintStillCurrent": 435,
+    "PActualReviewInputBindingsExactBeforeAndAfter": "435 PASS",
+    "PActualGoalFingerprintsExact": 435,
+    "currentDSubsetPagesNewH634ContextDelta": 293,
+    "externalReverseRequiresDeltaPages": 291,
+    "orphanAncestryAndOrderDeltaPages": 2,
+    "noAdditionalH634CurrentSubsetContextDeltaPages": 142,
+    "full435BookPagesChanged": 302,
+    "full435BookPagesUnchanged": 133,
+    "mappingFilesDiscoveredByActualCompiler": 82,
+    "selectedOriginalDGroupsCompared": 82,
+    "learnerViewsCompiled": 31,
+    "learnerViewsOrdinaryMembershipChanges": 0,
+    "learnerViewsOrdinaryAncestryChanges": 0,
+    "learnerViewCompilerErrors": 0
+  },
+  "technicalFix": {
+    "role": "Technical input successor only; preserve the existing historical view and all31 learner views",
+    "existingFull435ConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-five-supported-description-normal-H-and-native5-technical-20261016-v1/base-full435-P5-current-normal-H.stock.config.json",
+    "existingTechnicalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-seventeen-pending-description-native-technical-20261016-v1/VIEW.full435-existing-whole-QS-plus-two-explicit-targets.technical.json",
+    "before": {
+      "snapshot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-H634-DP-context-impact-readonly-b-20261016-v1/VIEW.full435-before.exact.json",
+      "sha256": "sha256:5d220869aecd87e7517c9c6e42a5aba070727815cf89aae9a167f86147ea67d0"
+    },
+    "after": {
+      "snapshot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-H634-DP-context-impact-readonly-b-20261016-v1/VIEW.full435-H634-two-redundant-direct-entries-removed.DIAGNOSTIC-ONLY.json",
+      "sha256": "sha256:a133ab6e3207a0bf7ddeb9e67163e23e35e0f64b853f1b88de7e207f2e355a02"
+    },
+    "proposedSuccessorConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-H634-DP-context-impact-readonly-b-20261016-v1/CONFIG.full435-H634-context-diagnostic.no-render-no-write.json",
+    "removedNodes": [
+      {
+        "path": [
+          "rootNodes",
+          0,
+          "children",
+          2,
+          "children",
+          0
+        ],
+        "wholeNode": {
+          "kind": "goalEntry",
+          "goalId": "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+          "projectionRole": "target"
+        }
+      },
+      {
+        "path": [
+          "rootNodes",
+          0,
+          "children",
+          2,
+          "children",
+          1
+        ],
+        "wholeNode": {
+          "kind": "goalEntry",
+          "goalId": "4a7dee38-1056-5e27-acec-e6a12f58109f",
+          "projectionRole": "target"
+        }
+      },
+      {
+        "path": [
+          "rootNodes",
+          0,
+          "children",
+          2
+        ],
+        "wholeNode": {
+          "kind": "structure",
+          "id": "chemie-two-current-method-goals-QS",
+          "label": "Aktuelle Methodenlernziele – reine QS-Vervollständigung",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+              "projectionRole": "target"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "4a7dee38-1056-5e27-acec-e6a12f58109f",
+              "projectionRole": "target"
+            }
+          ]
+        },
+        "reason": "Empty wrapper after its two redundant direct entries are removed; CPV-007 otherwise"
+      }
+    ],
+    "otherViewFieldsPreserved": true,
+    "learnerViewMutations": 0,
+    "HOrRMutation": false,
+    "scienceVote": false
+  },
+  "interpretation": [
+    "435 ordinary goal bodies and their existing scientific D judgments are unaffected by this integration. All435 actual P records retain exact bindings.",
+    "293 is the new navigation/context delta of the current group comparison, not 293 failed scientific reviews and not authorization to relabel their historical page fingerprints.",
+    "Original D input pages and bound review-context fingerprints remain internally valid. Historical book layouts differ from the exact last paired629 full435 base; 433 legacy pages do not equal the newly reconstructed629 group page, for pre-existing layout/P-annotation/context reasons recorded per goal.",
+    "291 pages need a targeted current reverse-navigation context witness; two orphan goals need a targeted current chapter/ancestry/order witness. No forward prerequisite page fields changed in the full435 base.",
+    "302 fullbook page changes include nine effects normalized away in the subgroup comparison. Do not confuse a fullbook page fingerprint with an original D subgroup fingerprint.",
+    "The corrective technical full435 view candidate removes the two now-redundant direct entries and their empty wrapper. Existing historical view/config and31 learner views are preserved."
+  ],
+  "boundaries": {
+    "scienceVote": false,
+    "FIRSTScienceFileCreated": false,
+    "D_P_RecordsRebound": 0,
+    "normalOrHMutation": false,
+    "fullBuildOrRenderer": false,
+    "HumanApproval": false,
+    "HumanTrial": false,
+    "M7Claim": false
+  }
+}

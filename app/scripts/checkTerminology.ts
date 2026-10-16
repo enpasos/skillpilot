@@ -111,6 +111,33 @@ interface GrandfatheredOccurrence {
  * the check until the occurrence is reviewed again.
  */
 const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
+  // Exact source/licensing and author-script wording in two sealed inactive
+  // Chemistry packets from 2026-10-16. Preserve their reviewed historical bytes;
+  // current prose and any changed line still have to use the glossary terms.
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-HE-transitive-course-prerequisites-targeted-author-successor-20261016-v1/author-qualitative-faraday/AUTHOR.content-scope-and-M.md',
+    line: 44,
+    column: 563,
+    found: 'Wissenslandschaft',
+    lineSha256: '7d0f13fdfad08734ba7a37bdfd1dc697e67d9a3534397a7d505c37b697054e2e',
+  },
+  {
+    ruleId: 'TRM-005',
+    path: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-HE-transitive-course-prerequisites-targeted-author-successor-20261016-v1/technical-scripts/seal_HE_author_packet.py',
+    line: 25,
+    column: 3,
+    found: 'Goal graph',
+    lineSha256: '2a3cd8c06176d91cbdd1f83ba2b6db26942ddc883d247670e08d22e4c7025500',
+  },
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-course-terminal-route-and-practical-author-remediation-20261016-v1/author-practical-design/SOURCES-AND-SAFETY.author.md',
+    line: 36,
+    column: 71,
+    found: 'Wissenslandschaft',
+    lineSha256: '5cbc8114aee96fb465ee8c8f8c37a3cd3ff80e1b0d4e1fb3026d691cea1b5652',
+  },
   // Preserve three independently verified, sealed Chemistry review/source occurrences.
   // Exact eligibility: chemie-working-state-inactive-github-checkpoint-root-20261014-v1.
   {

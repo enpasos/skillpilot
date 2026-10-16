@@ -1,0 +1,277 @@
+{
+  "role": "Actual R code and validators, no other review outputs",
+  "files": [
+    {
+      "path": "contracts/curriculum-package/v1/composition-view.schema.json",
+      "sha256": "a90e68ba07e141e54789d5dbd3de862a6d98f9fff513e57465efbb02c9fc57a6",
+      "excerpts": [
+        {
+          "lineStart": 20,
+          "lineEnd": 39,
+          "text": "    },\n    \"viewFormatVersion\": {\n      \"const\": \"1.0\"\n    },\n    \"viewId\": {\n      \"$ref\": \"#/$defs/id\"\n    },\n    \"landscapeId\": {\n      \"$ref\": \"#/$defs/id\"\n    },\n    \"language\": {\n      \"$ref\": \"#/$defs/languageTag\"\n    },\n    \"title\": {\n      \"$ref\": \"#/$defs/nonBlankText\"\n    },\n    \"scope\": {\n      \"$ref\": \"#/$defs/scope\"\n    },\n    \"rootNodes\": {"
+        },
+        {
+          "lineStart": 75,
+          "lineEnd": 127,
+          "text": "    \"scope\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"required\": [\n        \"schoolForm\"\n      ],\n      \"properties\": {\n        \"schoolForm\": {\n          \"$ref\": \"#/$defs/nonBlankText\"\n        },\n        \"jurisdiction\": {\n          \"type\": \"string\",\n          \"pattern\": \"^DE(?:-[A-Z]{2})?$\"\n        },\n        \"stage\": {\n          \"$ref\": \"#/$defs/nonBlankText\"\n        },\n        \"courseProfile\": {\n          \"$ref\": \"#/$defs/nonBlankText\"\n        },\n        \"durationModel\": {\n          \"$ref\": \"#/$defs/nonBlankText\"\n        }\n      }\n    },\n    \"structureNode\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"required\": [\n        \"kind\",\n        \"id\",\n        \"label\",\n        \"children\"\n      ],\n      \"properties\": {\n        \"kind\": {\n          \"const\": \"structure\"\n        },\n        \"id\": {\n          \"$ref\": \"#/$defs/id\"\n        },\n        \"label\": {\n          \"$ref\": \"#/$defs/nonBlankText\"\n        },\n        \"children\": {\n          \"type\": \"array\",\n          \"maxItems\": 1000000,\n          \"x-skillpilot-listSemantics\": \"ordered\",\n          \"items\": {\n            \"$ref\": \"#/$defs/node\"\n          }\n        }\n      }"
+        }
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "sha256": "9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+      "excerpts": [
+        {
+          "lineStart": 41,
+          "lineEnd": 46,
+          "text": "    private static final Set<String> LEARNER_SCOPE_DIMENSIONS = Set.of(\n            \"schoolForm\",\n            \"jurisdiction\",\n            STAGE_KEY,\n            \"durationModel\",\n            COURSE_PROFILE_KEY);"
+        },
+        {
+          "lineStart": 503,
+          "lineEnd": 517,
+          "text": "                        scoreScopeMatch(normalizeScope(asMap(view.get(\"scope\"))), normalizedRequestedScope)))\n                .filter(match -> match.score() != null)\n                .filter(match -> !requireExactStage\n                        || hasExactLearnerAnchorScope(\n                                asMap(match.view().get(\"scope\")),\n                                normalizedRequestedScope))\n                .sorted(Comparator\n                        .<ViewMatch>comparingInt(match -> match.score().scopeSize())\n                        .reversed()\n                        .thenComparingInt(match -> match.score().stageFallbackCount())\n                        .thenComparingInt(match -> match.score().courseFallbackCount())\n                        .thenComparingInt(match -> match.score().coursePreferenceRank())\n                        .thenComparing(match -> asString(match.view().get(\"viewId\"))))\n                .toList();\n        if (matches.isEmpty()) {"
+        },
+        {
+          "lineStart": 563,
+          "lineEnd": 612,
+          "text": "    public Map<String, Object> findLearnerScopeView(\n            String landscapeId,\n            Map<String, String> requestedScope) {\n        Map<String, String> normalizedRequestedScope =\n                normalizeScope(requestedScope == null ? Map.of() : requestedScope);\n        if (!isConstrainedLearnerScope(normalizedRequestedScope)) {\n            return null;\n        }\n        if (packageState == null) {\n            return findRepositoryMatchingView(\n                    landscapeId,\n                    normalizedRequestedScope,\n                    true);\n        }\n\n        if (!StringUtils.hasText(landscapeId)) {\n            return null;\n        }\n        List<PackageOfferingMatch> matches = packageState.offeringsByLandscapeId()\n                .getOrDefault(landscapeId.trim(), List.of())\n                .stream()\n                .map(offering -> new PackageOfferingMatch(\n                        offering,\n                        scoreScopeMatch(offering.scope(), normalizedRequestedScope)))\n                .filter(match -> match.score() != null)\n                .filter(match -> hasExactLearnerAnchorScope(\n                        match.offering().scope(),\n                        normalizedRequestedScope))\n                .sorted(Comparator\n                        .<PackageOfferingMatch>comparingInt(match -> match.score().scopeSize())\n                        .reversed()\n                        .thenComparingInt(match -> match.score().courseFallbackCount())\n                        .thenComparingInt(match -> match.score().coursePreferenceRank())\n                        .thenComparing(match -> match.offering().offeringId()))\n                .toList();\n        if (matches.isEmpty()) {\n            return null;\n        }\n        return packageState.resolveOfferingDocument(\n                matches.get(0).offering().offeringId());\n    }\n\n    private static boolean isConstrainedLearnerScope(\n            Map<String, String> normalizedRequestedScope) {\n        return LEARNER_SCOPE_DIMENSIONS.containsAll(normalizedRequestedScope.keySet())\n                && StringUtils.hasText(normalizedRequestedScope.get(\"schoolForm\"))\n                && StringUtils.hasText(normalizedRequestedScope.get(STAGE_KEY))\n                && !\"ALL\".equals(normalizeValue(\n                        normalizedRequestedScope.get(\"jurisdiction\")));\n    }"
+        },
+        {
+          "lineStart": 614,
+          "lineEnd": 642,
+          "text": "    public Map<String, Object> findViewById(String viewId) {\n        if (!StringUtils.hasText(viewId)) {\n            return null;\n        }\n        String normalizedViewId = viewId.trim();\n        if (packageState != null) {\n            return packageState.findViewDocumentById(normalizedViewId);\n        }\n        if (normalizedViewId.startsWith(\"merged:\")) {\n            List<Map<String, Object>> sourceViews = Arrays.stream(normalizedViewId.substring(\"merged:\".length()).split(\"\\\\+\"))\n                    .map(String::trim)\n                    .filter(StringUtils::hasText)\n                    .map(this::findSingleViewById)\n                    .filter(Objects::nonNull)\n                    .toList();\n            if (sourceViews.isEmpty()) {\n                return null;\n            }\n            if (sourceViews.size() == 1) {\n                return Collections.unmodifiableMap(new LinkedHashMap<>(sourceViews.get(0)));\n            }\n            return mergeViews(\n                    asString(sourceViews.get(0).get(\"landscapeId\")),\n                    asStringMap(sourceViews.get(0).get(\"scope\")),\n                    sourceViews);\n        }\n        return findSingleViewById(normalizedViewId);\n    }\n"
+        }
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "excerpts": [
+        {
+          "lineStart": 5158,
+          "lineEnd": 5194,
+          "text": "        if (option.kind() == PersonalizationPlan.OptionKind.SCOPE_VALUE) {\n            if (option.landscapeId() == null\n                    || option.landscapeId().isBlank()\n                    || option.scopeKey() == null\n                    || option.scopeKey().isBlank()\n                    || option.scopeValue() == null\n                    || option.scopeValue().isBlank()) {\n                throw new ResponseStatusException(\n                        org.springframework.http.HttpStatus.BAD_REQUEST,\n                        \"A valid authored personalization scope option is required\");\n            }\n            SkillLandscape landscape = landscapeService.getById(option.landscapeId());\n            if (landscape == null) {\n                throw new ResponseStatusException(\n                        org.springframework.http.HttpStatus.CONFLICT,\n                        \"The authored personalization landscape is no longer available\");\n            }\n\n            Object existingSettings = finalConfig.get(option.landscapeId());\n            Map<String, Object> settings = existingSettings instanceof Map<?, ?> existingMap\n                    ? new LinkedHashMap<>((Map<String, Object>) existingMap)\n                    : new LinkedHashMap<>();\n            settings.put(\"selected\", true);\n            /*\n             * Scope values are orthogonal to curriculum filters. In\n             * particular, persisting G8/G9 must preserve an already selected\n             * jurisdiction or course profile instead of replacing it.\n             */\n            settings.put(option.scopeKey(), option.scopeValue());\n            finalConfig.put(option.landscapeId(), settings);\n            synchronizeCanonicalStageScope(learner, finalConfig, option);\n\n            learner.setLearningState(LearningState.FRONTIER);\n            revalidatePlannedGoalsForProjectedScope(learner, finalConfig);\n            persistPersonalCurriculum(learner, finalConfig);\n            return;\n        }"
+        },
+        {
+          "lineStart": 5734,
+          "lineEnd": 5781,
+          "text": "    private Map<String, Object> normalizePersonalCurriculumPayload(Map<String, Object> config) {\n        if (config == null || config.isEmpty()) {\n            return new LinkedHashMap<>();\n        }\n\n        Object nestedConfig = config.get(\"personalCurriculum\");\n        if (config.size() == 1 && nestedConfig instanceof Map<?, ?> nestedMap) {\n            Map<String, Object> normalized = new LinkedHashMap<>();\n            for (Map.Entry<?, ?> entry : nestedMap.entrySet()) {\n                if (entry.getKey() instanceof String key) {\n                    normalized.put(key, entry.getValue());\n                }\n            }\n            return normalized;\n        }\n\n        return new LinkedHashMap<>(config);\n    }\n\n    private Map<String, Map<String, Object>> coercePersonalCurriculumConfig(Object parsed) {\n        if (!(parsed instanceof Map<?, ?> rawConfig)) {\n            return new HashMap<>();\n        }\n\n        Object configCandidate = rawConfig;\n        if (rawConfig.size() == 1 && rawConfig.get(\"personalCurriculum\") instanceof Map<?, ?> nestedConfig) {\n            configCandidate = nestedConfig;\n        }\n\n        if (!(configCandidate instanceof Map<?, ?> configMap)) {\n            return new HashMap<>();\n        }\n\n        Map<String, Map<String, Object>> normalized = new LinkedHashMap<>();\n        for (Map.Entry<?, ?> entry : configMap.entrySet()) {\n            if (!(entry.getKey() instanceof String key) || !(entry.getValue() instanceof Map<?, ?> valueMap)) {\n                continue;\n            }\n            Map<String, Object> normalizedEntry = new LinkedHashMap<>();\n            for (Map.Entry<?, ?> valueEntry : valueMap.entrySet()) {\n                if (valueEntry.getKey() instanceof String valueKey) {\n                    normalizedEntry.put(valueKey, valueEntry.getValue());\n                }\n            }\n            normalized.put(key, normalizedEntry);\n        }\n        return normalized;\n    }"
+        },
+        {
+          "lineStart": 9737,
+          "lineEnd": 9762,
+          "text": "            boolean authoritative = compositionViewService.isAuthoritativeForLandscape(landscape.getLandscapeId());\n            authoritativeCandidateSeen |= authoritative;\n            if (defaultCurriculumViewRequested && landscape.getLandscapeId().equals(curriculumId)) {\n                continue;\n            }\n            Map<String, String> requestedScope = deriveCompositionScope(landscape.getLandscapeId(), effectiveConfig);\n            if (requestedScope.isEmpty()) {\n                if (!authoritative) {\n                    addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);\n                }\n                continue;\n            }\n            Map<String, Object> matchedView =\n                    compositionViewService.findLearnerScopeView(\n                            landscape.getLandscapeId(),\n                            requestedScope);\n            if (matchedView == null || matchedView.isEmpty()) {\n                if (!authoritative) {\n                    addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);\n                }\n                continue;\n            }\n            addCompositionViewId(matchedView, compositionViewIds);\n            addCompositionPresentationRootGoalId(\n                    matchedView,\n                    landscape,"
+        },
+        {
+          "lineStart": 10015,
+          "lineEnd": 10046,
+          "text": "    private Map<String, String> deriveCompositionScope(String landscapeId, Map<String, Map<String, Object>> config) {\n        String rootFilterId = readFilterId(config, CANONICAL_GYMNASIUM_ROOT_ID);\n        String landscapeFilterId = readFilterId(config, landscapeId);\n        String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);\n        String courseProfile = normalizeCourseProfileScope(landscapeFilterId);\n        String stage = inferCompositionStageScope(config, landscapeId);\n        String durationModel = resolveDurationModelScope(\n                readScopeValue(config, landscapeId, \"durationModel\"),\n                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, \"durationModel\"),\n                rootFilterId,\n                landscapeFilterId);\n\n        if (jurisdiction == null && stage == null && courseProfile == null && durationModel == null) {\n            return Collections.emptyMap();\n        }\n\n        Map<String, String> scope = new LinkedHashMap<>();\n        scope.put(\"schoolForm\", \"Gymnasium\");\n        if (jurisdiction != null) {\n            scope.put(\"jurisdiction\", jurisdiction);\n        }\n        if (stage != null) {\n            scope.put(\"stage\", stage);\n        }\n        if (courseProfile != null && !\"SekI\".equals(stage)) {\n            scope.put(\"courseProfile\", courseProfile);\n        }\n        if (durationModel != null) {\n            scope.put(\"durationModel\", durationModel);\n        }\n        return scope;\n    }"
+        }
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/PersonalizationSourceKind.java",
+      "sha256": "e9366ae0e2e45b24c6f30acef6c0209112ec6cf2b0588b2bbc97ded6254352b3",
+      "excerpts": [
+        {
+          "lineStart": 7,
+          "lineEnd": 22,
+          "text": " * Explicit source of user-selectable curriculum-personalization options.\n *\n * <p>These sources are deliberately independent of the skill graph.\n * Neither {@code contains} nor {@code requires} may be interpreted as a\n * personalization decision.</p>\n */\npublic enum PersonalizationSourceKind {\n    LANDSCAPE_FILTERS(\"landscapeFilters\"),\n    LANDSCAPES(\"landscapes\"),\n    FILTERS_FOR_SELECTED_LANDSCAPES(\"filtersForSelectedLandscapes\"),\n    SCOPE_VALUES(\"scopeValues\"),\n    OFFERED_LANDSCAPES(\"offeredLandscapes\"),\n    OFFERED_FILTERS_FOR_SELECTED_LANDSCAPES(\"offeredFiltersForSelectedLandscapes\"),\n    OFFERED_SCOPE_VALUES(\"offeredScopeValues\");\n\n    private final String wireValue;"
+        }
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/ProgramUnit.java",
+      "sha256": "e5f810bd60b4866ec7fddc21cdd88ae837d47f10dcf9cc84ba8ed8d5fb3aae92",
+      "excerpts": [
+        {
+          "lineStart": 1,
+          "lineEnd": 15,
+          "text": "package com.skillpilot.backend.landscape;\n\nimport com.fasterxml.jackson.annotation.JsonIgnoreProperties;\n\n@JsonIgnoreProperties(ignoreUnknown = true)\npublic class ProgramUnit {\n    private String id;\n    private String kind;\n    private String label;\n    private String shortLabel;\n    private Integer order;\n    private String parentUnitId;\n\n    public String getId() {\n        return id;"
+        }
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/GoalPlacement.java",
+      "sha256": "4af4dcc9a85235e0fb70ddaa5316e3f21a0b9671b079bc3b4a571961774eb382",
+      "excerpts": [
+        {
+          "lineStart": 1,
+          "lineEnd": 14,
+          "text": "package com.skillpilot.backend.landscape;\n\nimport com.fasterxml.jackson.annotation.JsonIgnoreProperties;\nimport java.util.Map;\n\n@JsonIgnoreProperties(ignoreUnknown = true)\npublic class GoalPlacement {\n    private String goalId;\n    private String unitId;\n    private String relation;\n    private Map<String, String> context;\n\n    public String getGoalId() {\n        return goalId;"
+        }
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/api/CreateLearnerRequest.java",
+      "sha256": "8507fb3633cb00798ff9d884bd92a787364ae9e527b210e2269a34eb1b749e41",
+      "excerpts": [
+        {
+          "lineStart": 1,
+          "lineEnd": 4,
+          "text": "package com.skillpilot.backend.api;\n\npublic record CreateLearnerRequest() {\n}"
+        }
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/ui/LearnerUiController.java",
+      "sha256": "395a34276f22a76f39bbba7e7cc150112ac86d899b2ab66cb9f227b177523b33",
+      "excerpts": [
+        {
+          "lineStart": 150,
+          "lineEnd": 174,
+          "text": "    @PostMapping(\"/{skillpilotId}/personalization-options\")\n    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = \"x-openai-isConsequential\", value = \"false\", parseValue = true)))\n    public PersonalizationPlan applyPersonalizationOption(\n            @PathVariable String skillpilotId,\n            @RequestBody PersonalizationRequest request) {\n        return learnerLifecycle.withActivity(skillpilotId, () -> {\n            learnerService.assertWritableLearningSession(skillpilotId);\n            if (request == null) {\n                throw new org.springframework.web.server.ResponseStatusException(\n                        org.springframework.http.HttpStatus.BAD_REQUEST,\n                        \"Personalization request is required.\");\n            }\n            if (request.optionId() == null || request.optionId().isBlank()) {\n                throw new org.springframework.web.server.ResponseStatusException(\n                        org.springframework.http.HttpStatus.BAD_REQUEST,\n                        \"A current opaque personalization option is required.\");\n            }\n            learnerService.patchPersonalCurriculum(\n                    skillpilotId,\n                    request.config(),\n                    request.goalIds(),\n                    request.filters(),\n                    request.optionId());\n            return learnerService.getPersonalizationPlan(skillpilotId);\n        });"
+        },
+        {
+          "lineStart": 282,
+          "lineEnd": 289,
+          "text": "    public PlannedGoalsMutationResponse setPlanned(\n            @PathVariable String skillpilotId,\n            @Valid @RequestBody PlannedGoalsRequest request) {\n        return learnerLifecycle.withActivity(skillpilotId, () -> {\n            learnerService.assertWritableLearningSession(skillpilotId);\n            return learnerService.setPlannedGoalsAndGetState(skillpilotId, request.goals());\n        });\n    }"
+        },
+        {
+          "lineStart": 330,
+          "lineEnd": 338,
+          "text": "    @PutMapping(\"/{skillpilotId}/personal-curriculum\")\n    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = \"x-openai-isConsequential\", value = \"false\", parseValue = true)))\n    public void updatePersonalCurriculum(@PathVariable String skillpilotId,\n            @RequestBody UpdatePersonalCurriculumRequest request) {\n        learnerLifecycle.withActivity(skillpilotId, () -> {\n            learnerService.assertWritableLearningSession(skillpilotId);\n            learnerService.setPersonalCurriculum(skillpilotId, request, null, null);\n        });\n    }"
+        }
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/PackageCompositionViewState.java",
+      "sha256": "a32dbf081f7afd79c1767c6e9955da63c560550414348bbe216e401bbc423548",
+      "excerpts": [
+        {
+          "lineStart": 113,
+          "lineEnd": 124,
+          "text": "                    descriptor.mergeDimension(),\n                    descriptor.viewIds());\n            validateOffering(offering, views, packageDescriptor);\n            putUnique(offerings, offering.offeringId(), offering, \"offeringId\");\n            putUnique(\n                    offeringsByScope,\n                    new OfferingScope(offering.landscapeId(), offering.scope()),\n                    offering,\n                    \"landscape/scope offering\");\n            offeringsByLandscape.computeIfAbsent(offering.landscapeId(), ignored -> new ArrayList<>()).add(offering);\n            offeredViewIds.addAll(offering.viewIds());\n"
+        }
+      ]
+    },
+    {
+      "path": "scripts/validate_curriculum_runtime_catalog_contract.py",
+      "sha256": "51e9f233e89bdb805459c75803d0cb2a79060067e6169c67c65dd3e32395e05c",
+      "excerpts": [
+        {
+          "lineStart": 267,
+          "lineEnd": 275,
+          "text": "    view_scope_identities: list[tuple[Any, tuple[tuple[str, str], ...]]] = []\n    for index, view in enumerate(views):\n        landscape_id = view.get(\"landscapeId\")\n        if landscape_id not in landscape_by_id:\n            diagnostics.append(Diagnostic(\"VIEW_LANDSCAPE_UNKNOWN\", f\"/views/{index}/landscapeId\", f\"Unknown landscape {landscape_id!r}\"))\n        validate_scope(view.get(\"scope\"), f\"/views/{index}/scope\", dimensions, diagnostics)\n        view_scope_identities.append((landscape_id, scope_key(view.get(\"scope\"))))\n    add_duplicates(diagnostics, \"DUPLICATE_VIEW_SCOPE\", \"/views\", view_scope_identities)\n"
+        },
+        {
+          "lineStart": 318,
+          "lineEnd": 326,
+          "text": "                            mismatch = True\n                    actual_members.append(view_scope.get(merge_dimension))\n                if mismatch:\n                    diagnostics.append(Diagnostic(\"MERGE_VIEW_SCOPE_MISMATCH\", f\"/offeredScopes/{index}/viewResolution\", \"Merged views must match every non-merge scope dimension exactly\"))\n                if actual_members != composite_members:\n                    diagnostics.append(Diagnostic(\"MERGE_MEMBER_MISMATCH\", f\"/offeredScopes/{index}/viewResolution/viewIds\", f\"Expected ordered composite members {composite_members!r}\"))\n    add_duplicates(diagnostics, \"DUPLICATE_OFFERED_SCOPE\", \"/offeredScopes\", offered_scope_identities)\n\n    for index, view in enumerate(views):"
+        }
+      ]
+    },
+    {
+      "path": "app/src/hooks/useAppCore.ts",
+      "sha256": "c0e54554ff9b4f2e31a12883e0cb53feb7b2deb30e2c819a6c3183a28fb6ad92",
+      "excerpts": [
+        {
+          "lineStart": 137,
+          "lineEnd": 156,
+          "text": "const readPersonalCurriculumOfferingId = (\n  value: string | null | undefined,\n  landscapeId: string,\n): string | undefined => {\n  if (!value) return undefined\n  try {\n    const parsed = JSON.parse(value)\n    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return undefined\n    const nested = (parsed as Record<string, unknown>).personalCurriculum\n    const config = nested && typeof nested === 'object' && !Array.isArray(nested)\n      ? nested as Record<string, unknown>\n      : parsed as Record<string, unknown>\n    const entry = config[landscapeId]\n    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return undefined\n    const offeringId = (entry as Record<string, unknown>).offeringId\n    return typeof offeringId === 'string' && offeringId.trim().length > 0 ? offeringId.trim() : undefined\n  } catch {\n    return undefined\n  }\n}"
+        },
+        {
+          "lineStart": 512,
+          "lineEnd": 515,
+          "text": "  const selectedOfferingId = searchParams.get('offering')\n  const runtimeCompositionRequests = useMemo(() => {\n    const requests = new Map<string, {\n      scope: ReturnType<typeof deriveRuntimeCompositionScope>"
+        },
+        {
+          "lineStart": 540,
+          "lineEnd": 578,
+          "text": "        )\n        if (!catalogLandscape) return\n        const hasOfferings = runtimeCatalogState.catalog.offerings.some(\n          (candidate) => candidate.landscapeId === entry.meta.landscapeId,\n        )\n        if (!hasOfferings && !catalogLandscape.defaultOfferingId) return\n        const requestedScope = scope && hasExplicitPersonalCurriculumScope(learnerPersonalCurriculum)\n          ? Object.entries(scope).reduce<Record<string, string>>((result, [key, value]) => {\n              if (key !== 'landscapeId' && typeof value === 'string' && value.length > 0) {\n                result[key] = value\n              }\n              return result\n            }, {})\n          : null\n        const queryOfferingId = entry.meta.landscapeId === selectedLandscapeId\n          ? selectedOfferingId\n          : null\n        const configuredOfferingId = queryOfferingId\n          ?? readPersonalCurriculumOfferingId(learnerPersonalCurriculum, entry.meta.landscapeId)\n        const explicitOfferingId = configuredOfferingId\n          ? resolveExplicitRuntimeOfferingId(\n              runtimeCatalogState.catalog,\n              entry.meta.landscapeId,\n              configuredOfferingId,\n            )\n          : undefined\n        requests.set(entry.meta.landscapeId, {\n          scope,\n          offeringId: configuredOfferingId\n            ? explicitOfferingId\n            : resolveLearnerRuntimeOfferingId(\n                runtimeCatalogState.catalog,\n                entry.meta.landscapeId,\n                requestedScope,\n              ),\n        })\n        return\n      }\n      if (runtimeCatalogState.mode === 'repository' && scope) {"
+        }
+      ]
+    },
+    {
+      "path": "app/src/utils/runtimeCurriculumCatalog.ts",
+      "sha256": "055fe3dc214ac0c22a63c2a7523e5b3cb61eac1c6c575821980655f91b85d12c",
+      "excerpts": [
+        {
+          "lineStart": 323,
+          "lineEnd": 324,
+          "text": "  assertUnique(offerings.map((entry) => entry.offeringId), 'offering IDs')\n  assertUnique(offerings.map((entry) => `${entry.landscapeId}\\u0000${scopeKey(entry.scope)}`), 'landscape offering scopes')"
+        },
+        {
+          "lineStart": 540,
+          "lineEnd": 551,
+          "text": "export const resolveExplicitRuntimeOfferingId = (\n  catalog: RuntimeCurriculumCatalog,\n  landscapeId: string,\n  offeringId?: string | null,\n): string | undefined => {\n  if (!offeringId) return undefined\n  const normalized = offeringId.trim()\n  if (!normalized) return undefined\n  return catalog.offerings.some((entry) => (\n    entry.landscapeId === landscapeId && entry.offeringId === normalized\n  )) ? normalized : undefined\n}"
+        }
+      ]
+    },
+    {
+      "path": "app/src/utils/compositionViewRuntime.ts",
+      "sha256": "ed65b0b28ecca6c9c17f8152440681af998b8dd193e7826316d5fd12a51c3fa9",
+      "excerpts": [
+        {
+          "lineStart": 287,
+          "lineEnd": 295,
+          "text": "      const record = entry as Record<string, unknown>\n      config[key] = {\n        selected: typeof record.selected === 'boolean' ? record.selected : undefined,\n        filterId: typeof record.filterId === 'string' ? record.filterId : undefined,\n        durationModel: typeof record.durationModel === 'string' ? record.durationModel : undefined,\n        stage: typeof record.stage === 'string' ? record.stage : undefined,\n      }\n    })\n    return config"
+        },
+        {
+          "lineStart": 398,
+          "lineEnd": 420,
+          "text": "  if (!jurisdiction && !stage && !courseProfile && !durationModel) {\n    return null\n  }\n\n  if (stage === 'SekI') {\n    return {\n      landscapeId,\n      schoolForm: 'Gymnasium',\n      ...(jurisdiction ? { jurisdiction } : {}),\n      stage,\n      ...(durationModel ? { durationModel } : {}),\n    }\n  }\n\n  return {\n    landscapeId,\n    schoolForm: 'Gymnasium',\n    ...(jurisdiction ? { jurisdiction } : {}),\n    ...(stage ? { stage } : {}),\n    ...(courseProfile ? { courseProfile } : {}),\n    ...(durationModel ? { durationModel } : {}),\n  }\n}"
+        }
+      ]
+    },
+    {
+      "path": "app/src/utils/learnerCompositionScopeMatching.ts",
+      "sha256": "9aaf7a2da264244faa993f8e58c6dc1a4e12b61b5e23c3beeded1bb97fcc71a8",
+      "excerpts": [
+        {
+          "lineStart": 1,
+          "lineEnd": 7,
+          "text": "export const LEARNER_COMPOSITION_SCOPE_DIMENSIONS = [\n  'schoolForm',\n  'jurisdiction',\n  'stage',\n  'durationModel',\n  'courseProfile',\n] as const"
+        },
+        {
+          "lineStart": 37,
+          "lineEnd": 47,
+          "text": "export const isConstrainedLearnerCompositionScope = (\n  rawScope?: Readonly<Record<string, unknown>> | null,\n): boolean => {\n  const scope = normalizeLearnerCompositionScope(rawScope)\n  return Object.keys(scope).every((dimension) =>\n    learnerCompositionScopeDimensions.has(dimension)\n  )\n    && normalizeToken(scope.schoolForm).length > 0\n    && normalizeToken(scope.stage).length > 0\n    && normalizeToken(scope.jurisdiction) !== 'ALL'\n}"
+        },
+        {
+          "lineStart": 65,
+          "lineEnd": 81,
+          "text": "export const scoreLearnerCompositionScope = (\n  rawAuthoredScope: Readonly<Record<string, unknown>>,\n  rawRequestedScope: Readonly<Record<string, unknown>>,\n): LearnerCompositionScopeMatch | null => {\n  const authoredScope = normalizeLearnerCompositionScope(rawAuthoredScope)\n  const requestedScope = normalizeLearnerCompositionScope(rawRequestedScope)\n  if (!isConstrainedLearnerCompositionScope(requestedScope)) {\n    return null\n  }\n  if (\n    normalizeToken(authoredScope.schoolForm) !== normalizeToken(requestedScope.schoolForm)\n    || normalizeToken(authoredScope.stage) !== normalizeToken(requestedScope.stage)\n  ) {\n    return null\n  }\n\n  let courseFallbackCount = 0"
+        }
+      ]
+    },
+    {
+      "path": "app/src/utils/goalPlacementProjection.ts",
+      "sha256": "bd52486a44aec069eb097d673e101ed3fd5c2700838634be0e3a11f0bdbe5a1c",
+      "excerpts": [
+        {
+          "lineStart": 233,
+          "lineEnd": 243,
+          "text": "\nexport function applyGoalPlacementProjection<T extends ProjectableLandscapeEntry>(\n  entries: T[],\n  activeFilter?: string | string[],\n): T[] {\n  return entries.map((entry) => {\n    if (!Array.isArray(entry.goals) || entry.goals.length === 0) return entry\n    if (!Array.isArray(entry.meta.programUnits) || entry.meta.programUnits.length === 0) return entry\n    if (!Array.isArray(entry.meta.goalPlacements) || entry.meta.goalPlacements.length === 0) return entry\n\n    const clonedGoals: UiGoal[] = entry.goals.map((goal) => ({"
+        },
+        {
+          "lineStart": 325,
+          "lineEnd": 338,
+          "text": "    goalPlacements.forEach((placement) => {\n      const eligible = normalizeFilterIds(activeFilter).length === 0\n        ? placementIsDefaultSafe(placement)\n        : placementMatchesFilters(placement, activeFilter)\n      if (!eligible) return\n      if (placement.relation !== 'primary') return\n\n      const unit = unitsById.get(placement.unitId)\n      if (!unit) return\n\n      const anchorGoalId = ensureAnchorForUnit(unit.id)\n      if (!anchorGoalId || anchorGoalId === placement.goalId) return\n\n      const anchorGoal = goalById.get(anchorGoalId)"
+        }
+      ]
+    },
+    {
+      "path": "app/src/components/PersonalCurriculumSetup.tsx",
+      "sha256": "471c2bf11633111ccc672099d56347109a087285b76f1c24642c1c3fb1367c32",
+      "excerpts": [
+        {
+          "lineStart": 42,
+          "lineEnd": 49,
+          "text": "interface PersonalCurriculumConfig {\n    [landscapeId: string]: {\n        selected: boolean\n        filterId?: string\n        durationModel?: string\n        stage?: string\n    }\n}"
+        }
+      ]
+    },
+    {
+      "path": "app/src/views/LearnerView.tsx",
+      "sha256": "5b8f6d1372bccc11b27ecaf18ad76b67052d52709b8902566cc1d3e373e6f61f",
+      "excerpts": [
+        {
+          "lineStart": 135,
+          "lineEnd": 140,
+          "text": "type PersonalCurriculumConfig = Record<string, {\n  selected: boolean\n  filterId?: string\n  durationModel?: string\n  stage?: string\n}>"
+        }
+      ]
+    }
+  ]
+}

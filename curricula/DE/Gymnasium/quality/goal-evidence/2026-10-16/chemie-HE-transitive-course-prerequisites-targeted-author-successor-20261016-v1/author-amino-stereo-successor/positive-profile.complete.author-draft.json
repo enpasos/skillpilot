@@ -1,0 +1,102 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-amino-stereo-bounded-spatial-author-successor-20261016-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "d8eeed29-d1b7-5a48-94b5-343629f8e867",
+  "goalFingerprint": "sha256:59c4ca1cb068998969b7b00efefee6a0f4580885ecb8e542a614b65acb21442e",
+  "reviewInputFingerprint": "sha256:f72d03c2eae8b0e167cc78d0459112bc28d8ee64c2fb7947544c3b7be5993ea9",
+  "profileFingerprint": "sha256:64a32065bcb3b7f4959c4c03ff64db1d178bf375d3c189710489159e22dab8d1",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-16T14:10:35Z",
+  "reviewer": "AUTHOR /root/chemie_native17_independent_b_20261016/local_practical_route_author_design; no independent review",
+  "reason": "Eigenes vollständiges E0/G0-Nachfolgedesign nach freigegebenem Fehlerbefund: räumlich bestimmte Strukturmodelle statt alleiniger R/S-Namen. Zwei ganze DE/EN-Fälle mit vollständigen Materialien, Lösungen, Rubriken und Transfer. Zwei neue unabhängige Inhaltsreviews offen; keine KEEP-Stimme, Lernendenbeobachtung, Human Approval oder Human Trial.",
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "reviewRunIds": [],
+  "dissent": [
+    "Altes vollständiges CIP/R/S-Profil bleibt im history-Verzeichnis exact und wird durch dieses author-draft nicht freigegeben.",
+    "HE-/Länder-Scope, aktuelle Source-Mappings, native D-Seiten sowie A/M/V-Bindungen sind getrennt von dieser Aufgabenserialisierung zu prüfen."
+  ],
+  "profile": {
+    "archetype": "representation",
+    "expectations": [
+      {
+        "id": "chiral-achiral-enantiomer",
+        "essentialUnderstandingDe": "Vier verschiedene Gruppen am tetraedrischen C ermöglichen Chiralität und ein nicht deckungsgleiches Spiegelbild; Glycin besitzt zwei gleiche H.",
+        "essentialUnderstandingEn": "Four distinct groups at tetrahedral C allow chirality and a nonsuperimposable mirror image; glycine has two identical H groups.",
+        "observablePerformanceDe": "Begründet Chiralität/Enantiomerie an Alanin oder Cystein, zeichnet das Spiegelbild und grenzt achirales Glycin ab.",
+        "observablePerformanceEn": "Justifies chirality/enantiomerism in alanine or cysteine, draws the mirror and distinguishes achiral glycine."
+      },
+      {
+        "id": "spatial-to-fischer",
+        "essentialUnderstandingDe": "Fischerprojektionen codieren räumliche Bindungsrichtungen: horizontal nach vorn, vertikal nach hinten.",
+        "essentialUnderstandingEn": "Fischer projections encode spatial bond directions: horizontal forwards and vertical backwards.",
+        "observablePerformanceDe": "Überführt das eindeutig räumlich gegebene Modell mit allen vier Gruppen und richtiger Tiefenbedeutung in die Fischerprojektion.",
+        "observablePerformanceEn": "Converts an unambiguously specified spatial model into a complete Fischer projection with all four groups and correct bond depth."
+      },
+      {
+        "id": "standard-orientation-dl",
+        "essentialUnderstandingDe": "D/L wird bei den betrachteten einfachen 2-Aminosäuren in der COOH-oben-/Seitenkette-unten-Orientierung an der Position der Aminogruppe abgelesen.",
+        "essentialUnderstandingEn": "For the simple 2-amino acids considered, D/L is read from amino-group position with COOH at the top and the side chain at the bottom.",
+        "observablePerformanceDe": "Normalisiert eine gedreht gegebene Darstellung ohne Konfigurationswechsel und ordnet D/L sowie das jeweilige Enantiomer begründet zu.",
+        "observablePerformanceEn": "Normalizes a rotated input without changing configuration and justifies D/L and its enantiomer."
+      },
+      {
+        "id": "representation-transfer-and-limits",
+        "essentialUnderstandingDe": "Erneute Fischerlesart nach 90° und ein einzelner Gruppentausch ändern Konfiguration; 180° erhält sie. Konnektivität allein und D/L allein tragen keine weitergehenden Raumaussagen bzw. Drehvorzeichen.",
+        "essentialUnderstandingEn": "Renewed Fischer interpretation after 90° and one group exchange change configuration; 180° preserves it. Connectivity alone and D/L alone do not determine additional spatial information or rotation sign respectively.",
+        "observablePerformanceDe": "Erklärt Darstellungsfehler selbstständig am Tiefenmodell, überträgt auf einen neuen Seitenkettenrest und erkennt unzureichende Angaben ohne CIP-/R/S- oder Polarimetriebehauptung.",
+        "observablePerformanceEn": "Independently explains representation errors using bond depth, transfers to a new side chain and identifies insufficient information without a CIP/R/S or polarimetry claim."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "chiral-achiral-enantiomer",
+        "spatial-to-fischer",
+        "standard-orientation-dl",
+        "representation-transfer-and-limits"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "alanine-cysteine-serine-glycine",
+        "textDe": "CH3-, CH2SH- und CH2OH-Seitenkette, dazu achirales Glycin mit zwei H.",
+        "textEn": "CH3, CH2SH and CH2OH side chains plus achiral glycine with two H groups."
+      },
+      {
+        "id": "input-orientation-and-depth",
+        "textDe": "Standardorientiert oder um180° gedreht vorgegebenes Raummodell; zulässige und unzulässige neue Fischerlesarten.",
+        "textEn": "Standard or180°-rotated supplied spatial models; permitted and invalid renewed Fischer interpretations."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "amino-spatial-fischer-alanine-glycine",
+        "taskDemandDe": "Eigenes synthetisches Raummodell, keine Messung. Neutrale Formeln sind Darstellungshilfen. Alanin HOOC–CH(NH2)–CH3: COOH oben/hinten, CH3 unten/hinten, NH2 links/vorn, H rechts/vorn am tetraedrischen C. Glycin: zentrale Gruppen NH2, COOH, H, H. Fischerkonvention: horizontal vorn, vertikal hinten; bei COOH oben/Seitenkette unten bedeutet NH2 links L, rechts D. D/L legt kein Drehvorzeichen fest; kein CIP/R/S. 1) Überführe das vollständige Raummodell in Fischer und ordne D/L begründet zu. 2) Begründe Chiralität, zeichne das vollständige Spiegelbild und erkläre Nichtdeckungsgleichheit. 3) Prüfe Glycin auf Stereozentrum/DL-Paar. 4) Frischer Transfer: Beurteile 90°-Drehung mit erneuter Fischerlesart gegenüber 180°; begründe, warum bloße Konnektivität ohne Tiefenangaben keine eindeutige Konfiguration festlegt. Ganze Ausführung/Einzelrubrik: two-complete-DE-EN-material-cases.author-draft.json, Fall amino-spatial-fischer-alanine-glycine.",
+        "taskDemandEn": "Own synthetic spatial model, not a measurement. Neutral formulas are representation aids. Alanine HOOC–CH(NH2)–CH3 has COOH top/back, CH3 bottom/back, NH2 left/front, H right/front at tetrahedral C. Glycine: central groups NH2, COOH, H, H. Fischer convention: horizontal front, vertical back; with COOH top/side chain bottom, amino left means L and right D. D/L determines no rotation sign; no CIP/R/S. 1) Convert the complete spatial input to Fischer and justify D/L. 2) Explain chirality, draw the complete mirror and explain nonsuperimposability. 3) Examine glycine for a stereocentre/DL pair. 4) Fresh transfer: assess 90° rotation with renewed Fischer reading against 180°; explain why connectivity without depth does not fix unique configuration. Complete original/individual rubric: two-complete-DE-EN-material-cases.author-draft.json, amino-spatial-fischer-alanine-glycine.",
+        "expectedPerformanceDe": "A: COOH oben, CH3 unten, NH2 links, H rechts; horizontal vorn und vertikal hinten, daher L. Vier verschiedene Gruppen am tetraedrischen C begründen Chiralität. Das Spiegelbild hat COOH oben, CH3 unten, H links und NH2 rechts: D, gleiche Konstitution und nicht deckungsgleich. Glycin trägt zwei H, ist achiral und hat kein D/L-Enantiomerenpaar. 90° plus erneute Fischerlesart tauscht die Tiefenkategorien und kehrt die Konfiguration um; 180° erhält sie. Zum D/L-Ablesen Standardorientierung wiederherstellen. Konnektivität ohne Raumangaben legt weder ein bestimmtes Enantiomer noch automatisch ein Racemat fest. Rubrik /12: Projektion 3 P (vier Gruppen 1, Tiefe 1, L begründen 1); Enantiomerie 3 P (vier verschiedene Gruppen 1, D-Spiegel 1, Nichtdeckungsgleichheit 1); Glycin 2 P (zwei H/kein Stereozentrum 1, achiral/kein D/L-Paar 1); Transfer 4 P (90° nicht identisch 1, Tiefenbezug 1, 180°/Standardorientierung 1, Unterbestimmtheit/kein unterstelltes Racemat 1).",
+        "expectedPerformanceEn": "A: COOH top, CH3 bottom, NH2 left, H right; horizontal forwards and vertical backwards, therefore L. Four distinct groups at tetrahedral C justify chirality. Its mirror has COOH top, CH3 bottom, H left and NH2 right: D, identical connectivity and nonsuperimposable. Glycine has two H groups, is achiral and has no D/L enantiomer pair. 90° plus renewed Fischer reading changes depth categories and reverses configuration; 180° preserves it. Restore standard orientation before reading D/L. Connectivity without spatial information specifies neither one enantiomer nor an assumed racemate. Rubric /12: projection 3 points (all groups 1, depth 1, justified L 1); enantiomerism 3 (four distinct groups 1, D mirror 1, nonsuperimposability 1); glycine 2 (two H/no stereocentre 1, achiral/no D/L pair 1); transfer 4 (reject 90° identity 1, depth 1, 180°/standard orientation 1, underdetermination/no assumed racemate 1).",
+        "understandingFocusDe": "Die Begründung des 90°-Fehlers und die neue unbestimmte Konnektivitätsdarstellung müssen selbstständig erklärt werden. Produktnamen oder ein nachgezeichnetes Bild allein reichen nicht. Zwei unabhängige Nachweisschritte können innerhalb einer integrierten Leistung auftreten. Die zwei Fälle sind keine Pflichtaufgabenquote. Sobald alle Aspekte und eigenständiger Transfer hinreichend gezeigt sind, endet die Prüfung. Kein beobachteter Versuch oder Lernerfolg ist behauptet.",
+        "understandingFocusEn": "The 90° error and the new underdetermined connectivity representation require independent explanation. Names or a copied drawing alone are insufficient. Two independent demonstration steps may occur within one integrated performance. The two cases are not a mandatory task quota. Stop assessment when all aspects and independent transfer are sufficiently shown. No observed experiment or learner success is asserted."
+      },
+      {
+        "id": "amino-spatial-fischer-cysteine-serine-transfer",
+        "taskDemandDe": "Eigenes synthetisches Raummodell mit neutralen Darstellungsformeln, keine Messung. Cystein HOOC–CH(NH2)–CH2SH: CH2SH oben/hinten, COOH unten/hinten, H links/vorn, NH2 rechts/vorn. Fischer: horizontal vorn, vertikal hinten. D/L erst bei COOH oben/Seitenkette unten: NH2 links L, rechts D.180° in der Papierebene erhält Konfiguration; ein Gruppentausch kehrt sie um. Glycinvergleich: NH2, COOH, H, H. Frisches Serin C: COOH oben/hinten, CH2OH unten/hinten, H links/vorn, NH2 rechts/vorn. 1) Zeichne gegebenes B und normalisiere durch erlaubte Umformung; bestimme D/L und korrigiere „rechts also D“. 2) Begründe Chiralität, zeichne Spiegelbild, vergleiche Glycin und Seitenkettenwechsel. 3) Beurteile 180°,90° mit erneuter Fischerinterpretation und einmal NH2↔H mit Tiefenbegründung. 4) Zeichne frisches Serin und Spiegel, ordne D/L; beurteile „L heißt linksdrehend; Schwefel verlangt CIP zum DL-Lesen“. Kein R/S/CIP und keine Polarimetrie bestimmen. Ganze Ausführung: two-complete-DE-EN-material-cases.author-draft.json, amino-spatial-fischer-cysteine-serine-transfer.",
+        "taskDemandEn": "Own synthetic spatial model using neutral representation formulas, not measured data. Cysteine HOOC–CH(NH2)–CH2SH: CH2SH top/back, COOH bottom/back, H left/front, NH2 right/front. Fischer horizontal means front, vertical back. Read D/L only with COOH top/side chain bottom: amino left L, right D.180° on paper preserves configuration; one group exchange reverses it. Glycine comparison: NH2, COOH, H, H. Fresh serine C: COOH top/back, CH2OH bottom/back, H left/front, NH2 right/front. 1) Draw supplied B and normalize using a permitted transformation; assign D/L and correct “right therefore D”. 2) Justify chirality, draw mirror, compare glycine and side-chain change. 3) Assess 180°,90° plus renewed Fischer interpretation and one NH2/H exchange using bond depth. 4) Draw fresh serine/mirror and assign D/L; assess “L means left-rotating; sulfur requires CIP to read DL”. Determine no R/S/CIP or polarimetry. Complete original: two-complete-DE-EN-material-cases.author-draft.json, amino-spatial-fischer-cysteine-serine-transfer.",
+        "expectedPerformanceDe": "B anfangs: CH2SH oben, COOH unten, H links, NH2 rechts. Nach 180°: COOH oben, CH2SH unten, NH2 links, H rechts, daher L-Cystein; die Eingabe war nicht standardorientiert. Vier verschiedene Gruppen begründen Chiralität. Der standardisierte Spiegel hat NH2 rechts und H links: nicht deckungsgleiches D-Cystein. Glycin mit zwei H ist achiral. Die Seitenkette ändert die D/L-Konvention nicht. 180° erhält die Tiefenkategorien; 90° mit erneuter Fischerlesart oder ein einzelner Gruppentausch kehrt die Konfiguration um. Reale Moleküldrehung wandelt Enantiomere nicht ineinander um. Serin C: COOH oben, CH2OH unten, H links, NH2 rechts = D; Spiegel = L. D/L legt kein Drehvorzeichen fest; zum Ablesen standardisierten Cysteins wird kein CIP benötigt. Rubrik /12: B-Normalisierung 3 P (gegebenes Kreuz 1, 180° mit allen Endpositionen 1, L und Fehlerkorrektur 1); Chiralität/Spiegel 3 P (vier Gruppen 1, D-Spiegel 1, Glycin und Seitenkettenregel 1); Umformungen 3 P (180° mit Tiefe 1, 90°-Umkehr 1, Tausch versus Moleküldrehung 1); frischer Transfer 3 P (D-Serin/L-Spiegel 1, D/L versus Drehvorzeichen 1, ohne CIP oder Messbehauptung 1).",
+        "expectedPerformanceEn": "Initial B: CH2SH top, COOH bottom, H left, NH2 right. After 180°: COOH top, CH2SH bottom, NH2 left, H right, hence L-cysteine; the input was nonstandard. Four distinct groups justify chirality. The standard mirror has NH2 right and H left: nonsuperimposable D-cysteine. Glycine with two H groups is achiral. A new side chain does not change the D/L convention. 180° preserves depth categories; 90° plus renewed Fischer reading or one exchange reverses configuration. Real molecular rotation does not interconvert enantiomers. Serine C: COOH top, CH2OH bottom, H left, NH2 right = D; mirror = L. D/L determines no rotation sign; reading standardized cysteine needs no CIP. Rubric /12: B normalization 3 points (input cross 1, 180° with all final positions 1, L and correction 1); chirality/mirror 3 (four groups 1, D mirror 1, glycine/side-chain rule 1); transformations 3 (180° with depth 1, reversal at 90° 1, exchange versus molecular rotation 1); fresh transfer 3 (D-serine/L mirror 1, D/L versus rotation sign 1, no CIP or measurement claim 1).",
+        "understandingFocusDe": "Das nicht standardorientierte Cystein und das frische Serin erzwingen eigene Darstellungsentscheidungen; die Position im ersten Bild darf nicht als bloßes Links-/Rechts-Schlagwort übernommen werden. Zwei unabhängige Nachweisschritte können innerhalb einer integrierten Leistung auftreten. Die zwei Fälle sind keine Pflichtaufgabenquote. Sobald alle Aspekte und eigenständiger Transfer hinreichend gezeigt sind, endet die Prüfung. Kein beobachteter Versuch oder Lernerfolg ist behauptet.",
+        "understandingFocusEn": "Nonstandard cysteine and fresh serine require independent representation choices; input position must not simply be repeated as a left/right label. Two independent demonstration steps may occur within one integrated performance. The two cases are not a mandatory task quota. Stop assessment when all aspects and independent transfer are sufficiently shown. No observed experiment or learner success is asserted."
+      }
+    ]
+  }
+}

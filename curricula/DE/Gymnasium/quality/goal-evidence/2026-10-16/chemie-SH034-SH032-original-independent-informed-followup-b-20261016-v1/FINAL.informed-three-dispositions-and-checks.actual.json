@@ -1,0 +1,95 @@
+{
+  "role": "Completed informed targeted follow-up by original independent reviewer B; not a second independent reviewer",
+  "createdAt": "2026-10-16T12:42:33.489274+00:00",
+  "reviewer": "/root/chemie_global145_fresh_exam_review_b_20261016",
+  "authorOfCandidate": false,
+  "candidateSelectorSHA256": "sha256:4af7354dd41bbd7d34eac4e04a75513bc36321cc9374fd966b00184a22a9dd12",
+  "scienceFrozenFirst": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH034-SH032-original-independent-informed-followup-b-20261016-v1/FIRST.informed-SH034-SH032.science-before-checks.frozen.md",
+    "sha256": "sha256:9f30158f362fadc7313df443339b31d7216972cbf1b21aa7cc4bd4683077521d",
+    "bytes": 8282
+  },
+  "separateDispositions": [
+    {
+      "finding": "SH034-COURSE-COLUMN",
+      "decision": "KEEP",
+      "status": "specific source-course correction resolved in inactive candidate",
+      "wholeSourceOrSevenPartnerUnionApproved": false
+    },
+    {
+      "finding": "SH032-wrong-BY-practicum-current-edge-and-history",
+      "decision": "KEEP",
+      "status": "specific wrong current contribution resolved in inactive candidate; old whole decision and all four edges retained nonoperatively",
+      "remainingThreePartnerUnionApprovedAsComplete": false
+    },
+    {
+      "finding": "SH032-whole-research-manufacture-marketing-source-coverage",
+      "decision": "HOLD",
+      "status": "still unreviewed; complete chain not established by current carrier bodies",
+      "missingEstablishedFacets": [
+        "research-and-development chain",
+        "laboratory-versus-large-scale manufacture",
+        "marketing"
+      ]
+    }
+  ],
+  "technicalIdentity": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH034-SH032-original-independent-informed-followup-b-20261016-v1/CHECK.independent-three-CAS-raw-history-retention.actual.json",
+    "sha256": "sha256:bcf83dc482063e4878d48ba8c71a1cb2eb85a8533544209d69e53fdf3a5ab4d7",
+    "bytes": 18330
+  },
+  "boundedStockChecks": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH034-SH032-original-independent-informed-followup-b-20261016-v1/CHECK.independent-scoped-stock-CQR004-two-views.actual.json",
+    "sha256": "sha256:639111a1eb598210c1ff41c5fe0e3c904e9b3991333fc041dd0da89d9fb5cc35",
+    "bytes": 25322
+  },
+  "independentIdentityChecksPassed": 15,
+  "wholeFileCAS": 3,
+  "sourceCellsRetained": 165,
+  "courseBeforeAndAfter": "PASS scoped only",
+  "explicitSH034CourseChecks": 14,
+  "twoSHViewSchemasAndCompilersPass": true,
+  "actualViewRoleComparison": [
+    {
+      "normalPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+      "exactToPriorIndependentStep1RoleSets": {
+        "ordinaryTargetIds": true,
+        "memoryTargetIds": true,
+        "ordinaryPrerequisiteOnlyIds": true,
+        "memoryPrerequisiteOnlyIds": true
+      },
+      "ordinaryTargets": 145,
+      "memoryTargets": 18
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json",
+      "exactToPriorIndependentStep1RoleSets": {
+        "ordinaryTargetIds": true,
+        "memoryTargetIds": true,
+        "ordinaryPrerequisiteOnlyIds": true,
+        "memoryPrerequisiteOnlyIds": true
+      },
+      "ordinaryTargets": 170,
+      "memoryTargets": 17
+    }
+  ],
+  "SH035RetainedExact": true,
+  "all18MetadataSixWholeFilesRetainedExact": true,
+  "ac700Observation": "separate not adjudicated; no scope expansion or approval",
+  "statusCounterMeaning": "164 mapped/reviewed and one unreviewed are persisted decision counters, not new independent whole-source approvals",
+  "step1ThenStep2CASRequired": true,
+  "current435CheckpointCommitIncludesThisSuccessor": false,
+  "normalHOrRWrites": 0,
+  "newD_P_A_M_VVotes": 0,
+  "newStrictClosures": 0,
+  "netStrictGain": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "wholeSHSourceCourseApproved": false,
+  "M7Claim": false,
+  "fullAtlasBuildCIExecuted": false,
+  "reproduceCommands": [
+    "python3 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH034-SH032-original-independent-informed-followup-b-20261016-v1/verify_three_cas_informed_b.py",
+    "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH034-SH032-original-independent-informed-followup-b-20261016-v1/verify_stock_informed_b.ts"
+  ]
+}

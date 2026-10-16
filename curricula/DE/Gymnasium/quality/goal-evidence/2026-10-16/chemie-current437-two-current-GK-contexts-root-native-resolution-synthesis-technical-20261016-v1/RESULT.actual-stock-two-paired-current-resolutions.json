@@ -1,0 +1,113 @@
+{
+  "role": "Actual stock Native2 dual-round synthesis and strict current resolution finalization; machine QA only",
+  "inputCanonicalSHA256": "sha256:36975262a3d66998c75cca5c9bbe899d57f98b2614edcbded2baec4833e77903",
+  "independentRoundSources": [
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-generic-GK-priors-and-recall-fresh-independent-a-20261016-v1/native-two-description-results/chemie-current437-l4-native-two-current-inputs-20261016-v1-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:73481da074af0cef1e5d590be602d3f16df08bb332afa42280c27e99db1f537b",
+      "selectedRound": "a",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two/round-a/results/chemie-current437-l4-native-two-current-inputs-20261016-v1-first-pass-a.batch-001.records.jsonl",
+      "wholeSourceBytesExact": true
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-generic-GK-priors-and-recall-fresh-independent-a-20261016-v1/native-two-description-results/chemie-current437-l4-native-two-current-inputs-20261016-v1-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:c33763c7ade06dbad45d6af482e0b30a0b780909dd3cd2c5c35db518ef38fdc0",
+      "selectedRound": "a",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two/round-a/results/chemie-current437-l4-native-two-current-inputs-20261016-v1-first-pass-a.batch-001.run.json",
+      "wholeSourceBytesExact": true
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-generic-GK-priors-and-recall-independent-b-20261016-v1/native-d-results/chemie-current437-l4-native-two-current-inputs-20261016-v1-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:04d51bd492fc26be0f42ad696583767cf9c7522d201260be4f5f066ff1a38ab4",
+      "selectedRound": "b",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two/round-b/results/chemie-current437-l4-native-two-current-inputs-20261016-v1-first-pass-b.batch-001.records.jsonl",
+      "wholeSourceBytesExact": true
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-generic-GK-priors-and-recall-independent-b-20261016-v1/native-d-results/chemie-current437-l4-native-two-current-inputs-20261016-v1-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:c5e4832561e32a84e405d6a63577641e0023c5bdc72666091b2efc306ec5adf0",
+      "selectedRound": "b",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two/round-b/results/chemie-current437-l4-native-two-current-inputs-20261016-v1-first-pass-b.batch-001.run.json",
+      "wholeSourceBytesExact": true
+    }
+  ],
+  "actualRuns": [
+    {
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two.current-l4.stock.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/app",
+      "exitCode": 0,
+      "elapsedSeconds": 0.768663174007088
+    },
+    {
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two.current-l4.stock.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two/synthesis-authoring.actual-root.two-paired-keep.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/app",
+      "exitCode": 0,
+      "elapsedSeconds": 0.8816235559934285
+    },
+    {
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two.current-l4.stock.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two/synthesis-decisions.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/app",
+      "exitCode": 0,
+      "elapsedSeconds": 1.020413782011019
+    },
+    {
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two.current-l4.stock.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-combined639-two-GK-priors-final-review-capsule-v1/app",
+      "exitCode": 0,
+      "elapsedSeconds": 1.0337060270248912
+    }
+  ],
+  "resolutionIndex": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-two-gk-priors-native-two-private-l4-technical-20261016-v1/native-two/resolution-index.json",
+    "sha256": "sha256:d21be0d84e3abdbf0054f0f8bc7973df044407fca6cd0c7b76faa1272f384753"
+  },
+  "strictCurrentResolutions": 2,
+  "denominatorOwnedByCentralReport": true,
+  "central437NotRerunHere": true,
+  "normalWrites": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "M7Claim": false
+}

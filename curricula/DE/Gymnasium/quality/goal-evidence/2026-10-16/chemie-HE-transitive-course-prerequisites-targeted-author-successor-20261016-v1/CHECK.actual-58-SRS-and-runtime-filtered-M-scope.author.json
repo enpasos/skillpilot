@@ -1,0 +1,3833 @@
+{
+  "role": "Actual unchanged getSrsFilterTags + extracted current FlashcardDrill predicate over all58 candidate memory nodes, with actual source/course/jurisdiction filtered39-view comparison. Author technical/context evidence only.",
+  "sourceCode": [
+    {
+      "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/src/utils/srsTags.ts",
+      "sha256": "sha256:b56555b0a069ac25faa766003e4efe1e4f59128aeb8116036efec6186eec7ad0"
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/src/components/srs/FlashcardDrill.tsx",
+      "sha256": "sha256:f0f4c7e40e1cca9d50bdc979377a72e2c55f7455be705a94fc3c2542f3e03642"
+    }
+  ],
+  "extractedPredicate": "card.tags && card.tags.some(tag => filterTags.includes(tag))",
+  "candidateCanonicalSha256": "sha256:8ee85c5a6e6cc9de4a65cea2583dcfba6764f25f2febdf68162a188d9083d974",
+  "memoryNodes": 58,
+  "old57SelectionsExact": true,
+  "newNarrowSelectionOnly012013": true,
+  "rows": [
+    {
+      "memoryGoalId": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+      "title": "Lernkarten - Chemische Grundlagen",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_001",
+        "chem_basics_002",
+        "chem_basics_003",
+        "chem_basics_004",
+        "chem_basics_005",
+        "chem_basics_006",
+        "chem_basics_007",
+        "chem_basics_008",
+        "chem_basics_009",
+        "chem_basics_010",
+        "chem_basics_011",
+        "chem_basics_012",
+        "chem_basics_013",
+        "fec5886f-2463-5ca7-af58-0c3e17b5498b",
+        "6ff2e974-3691-5239-9531-2aa966c8c620"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_001",
+          "front": "Gefahrstoffkennzeichnung: Was leisten GHS-Piktogramme?",
+          "back": "GHS-Piktogramme signalisieren Gefahrenklassen, zum Beispiel entzündbar, akut toxisch, ätzend, gesundheitsgefährdend oder umweltgefährlich.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:9e656697-fc05-5aa9-9aca-871af2e89eb7"
+          ]
+        },
+        {
+          "id": "chem_basics_002",
+          "front": "Nachweise für O₂, H₂ und CO₂?",
+          "back": "O₂: Glimmspanprobe\n\nH₂: Knallgasprobe\n\nCO₂: Kalkwasserprobe, Kalkwasser wird trüb",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_003",
+          "front": "Elementsymbol, Molekülformel, Verhältnisformel?",
+          "back": "Elementsymbol: ein Element, zum Beispiel Na\n\nMolekülformel: Teilchenzusammensetzung eines Moleküls, zum Beispiel H₂O\n\nVerhältnisformel: kleinstes Zahlenverhältnis in Ionengittern, zum Beispiel NaCl",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_004",
+          "front": "Bei Hauptgruppenelementen: Was bedeuten Ordnungszahl, Periode und Hauptgruppe (I–VIII)?",
+          "back": "Ordnungszahl = Protonenzahl.\n\nIm einfachen Schalenmodell des Grundzustands gibt die Periode die Zahl besetzter Schalen an.\n\nDie klassische Hauptgruppennummer I–VIII gibt die Zahl der Valenzelektronen an. Ausnahme: Helium steht in Hauptgruppe VIII (moderner Gruppe 18), hat aber nur zwei Außenelektronen.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d74940-1e0e-4511-9718-4851f49ad7a5",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_005",
+          "front": "Atomare Grundteilchen?",
+          "back": "Proton: positiv, im Kern\n\nNeutron: neutral, im Kern\n\nElektron: negativ, in der Hülle",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:72236f2c-771e-4ab6-933a-e549ee49d15b",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_006",
+          "front": "Kation und Anion: Bildung?",
+          "back": "Kation: Elektronenabgabe, positiv geladen\n\nAnion: Elektronenaufnahme, negativ geladen",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+            "select:chemistry-bw-lk-basics_seki",
+            "select:chemistry-ion-charges-mobile-ions-only",
+            "goal:2d16528c-1424-5999-b3d2-af4593a147fc"
+          ]
+        },
+        {
+          "id": "chem_basics_007",
+          "front": "Warum leiten Salzlösungen Strom?",
+          "back": "In Lösung sind Ionen beweglich.\n\nBewegliche Kationen und Anionen transportieren Ladung.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+            "select:chemistry-bw-lk-basics_seki",
+            "select:chemistry-ion-charges-mobile-ions-only",
+            "goal:2d16528c-1424-5999-b3d2-af4593a147fc"
+          ]
+        },
+        {
+          "id": "chem_basics_008",
+          "front": "Stoffmenge $n$: Grundidee und Einheit?",
+          "back": "Die Stoffmenge $n$ ist ein Maß für die Anzahl festgelegter Teilchen (z. B. Wasser-Moleküle). Ihre Einheit ist Mol ($\\mathrm{mol}$).\n\n$1\\,\\mathrm{mol}$ enthält genau $6{,}02214076\\cdot10^{23}$ der angegebenen Teilchen.\n\nEs gilt $N=n\\cdot N_A$ mit $N_A=6{,}02214076\\cdot10^{23}\\,\\mathrm{mol}^{-1}$. Die Teilchenzahl $N$ hat die Einheit Eins.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_009",
+          "front": "Avogadro-Konstante?",
+          "back": "$N_A \\approx 6{,}022\\cdot10^{23}\\,\\mathrm{mol}^{-1}$\n\nSie verknüpft Stoffmenge und Teilchenzahl.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e45c0022-ac0d-5c83-b433-5f68655e382f",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_010",
+          "front": "Molare Masse: Formel?",
+          "back": "$M=\\frac{m}{n}$\n\n$M$: molare Masse, $m$: Masse, $n$: Stoffmenge",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:8a2ad724-df5e-5986-8de9-560ba43caac2",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_011",
+          "front": "Molares Volumen: Formel?",
+          "back": "$V_m=\\frac{V}{n}$\n\nDer Zahlenwert gilt immer nur für festgelegte Bedingungen.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:2924f784-5261-54e8-93ee-49ac3b3cd300",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_012",
+          "front": "pH-Skala: sauer, neutral, alkalisch – für verdünnte wässrige Lösungen bei etwa 25 °C?",
+          "back": "Bei etwa $25^\\circ\\mathrm{C}$ gilt als schulischer Richtwert:\n\nSauer: $\\mathrm{pH}<7$; neutral: $\\mathrm{pH}\\approx7$; alkalisch/basisch: $\\mathrm{pH}>7$.\n\nNeutralität bedeutet im verdünnten Modell gleich große Oxonium- und Hydroxidionenkonzentrationen. Der neutrale pH-Wert hängt von der Temperatur ab; die Grenze 7 ist kein temperaturunabhängiges Naturgesetz.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:d2ccd1d5-56f7-583f-9724-e97441367f91",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_013",
+          "front": "Saure und basische Lösung auf Teilchenebene?",
+          "back": "Saure Lösung: erhöhte Konzentration an Oxonium-Ionen $H_3O^+$\n\nBasische Lösung: erhöhte Konzentration an Hydroxid-Ionen $OH^-$",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "fec5886f-2463-5ca7-af58-0c3e17b5498b",
+          "front": "Wie ist der Massenanteil wᵢ eines Bestandteils i definiert?",
+          "back": "wᵢ = mᵢ / Σmⱼ. Der Nenner ist die Gesamtmasse aller Bestandteile des Gemisches, einschließlich i. Der Anteil ist dimensionslos; Prozentangabe = 100 · wᵢ %.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4aeced1e-15cd-58df-83f7-68e2531c2d32"
+          ]
+        },
+        {
+          "id": "6ff2e974-3691-5239-9531-2aa966c8c620",
+          "front": "Wie ist der Volumenanteil φᵢ eines Bestandteils i definiert? Welche Volumina stehen im Nenner?",
+          "back": "φᵢ = Vᵢ / ΣVⱼ mit den bei gleicher Temperatur und gleichem Druck vor dem Mischen bestimmten Bestandteilsvolumina. Der Nenner ist deren Summe, auch wenn das gemessene Endvolumen abweicht. Der Anteil ist dimensionslos; Prozentangabe = 100 · φᵢ %.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:49d42c38-419c-5048-b7e9-860645dd122d"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "1dc15fa2-fca4-56b0-b5c1-4d215613dde0"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "1e519951-9850-5a07-ac82-d9f0075e3d05",
+      "title": "Lernkarten - Atombau und Bindung",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_001",
+        "chem_bond_002",
+        "chem_bond_003",
+        "chem_bond_004",
+        "chem_bond_005",
+        "chem_bond_006",
+        "chem_bond_007",
+        "chem_bond_008",
+        "chem_bond_009"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_001",
+          "front": "Bohrsches Energiestufenmodell: Kernidee?",
+          "back": "Elektronen befinden sich in bestimmten Energiestufen beziehungsweise Schalen.\n\nÜbergänge zwischen Stufen sind mit Energieaufnahme oder Energieabgabe verbunden.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_002",
+          "front": "Valenzstrichschreibweise: Was zeigen Punkte und Striche?",
+          "back": "Punkte stehen für Valenzelektronen.\n\nEin Strich steht für ein Elektronenpaar, als Bindungspaar oder freies Elektronenpaar.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e74f5301-70d3-5869-bd3d-79a5763a1718",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_003",
+          "front": "Mesomerie: Merksatz?",
+          "back": "Mesomere Grenzstrukturen haben dieselbe Atomverknüpfung, aber unterschiedliche Elektronenverteilung.\n\nDie reale Struktur ist kein schnelles Umschalten, sondern ein delokalisiertes Zwischenbild.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:23533087-89ea-5f29-8ec1-9f2e01197bb6",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_004",
+          "front": "EPA-Modell: Grundregel?",
+          "back": "Elektronenpaare stoßen sich ab.\n\nDie Molekülgeometrie ordnet Bindungs- und freie Elektronenpaare mit möglichst großem Abstand an.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:67cd332f-9db7-50e1-87f6-172ef3714300",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_005",
+          "front": "Bindungspolarität vs. Molekülpolarität?",
+          "back": "Bindungspolarität folgt aus Elektronegativitätsunterschieden.\n\nMolekülpolarität hängt zusätzlich von der räumlichen Geometrie ab.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_006",
+          "front": "Drei grundlegende Bindungstypen?",
+          "back": "Ionenbindung: Anziehung von Ionen\n\nElektronenpaarbindung: gemeinsame Elektronenpaare\n\nMetallbindung: Metallkationen im Elektronengas",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:448815cc-4127-54b7-96bf-e54b3d2a38c5",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_007",
+          "front": "Wichtige zwischenmolekulare Kräfte?",
+          "back": "Van-der-Waals-Kräfte, Dipol-Dipol-Wechselwirkungen, Wasserstoffbrücken und Ionen-Dipol-Wechselwirkungen.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+            "select:chemistry-bw-lk-bonding_structure",
+            "select:chemistry-intermolecular-forces-only",
+            "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+          ]
+        },
+        {
+          "id": "chem_bond_008",
+          "front": "Aufbauprinzip, Pauli-Prinzip, Hundsche Regel?",
+          "back": "Aufbauprinzip: energiearme Orbitale zuerst\n\nPauli: max. zwei Elektronen pro Orbital mit entgegengesetztem Spin\n\nHund: entartete Orbitale erst einfach besetzen",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:3bc48951-025c-5144-99b1-924db611a5f9"
+          ]
+        },
+        {
+          "id": "chem_bond_009",
+          "front": "Hybridisierung: typische Zuordnung?",
+          "back": "$sp$: linear\n\n$sp^2$: trigonal-planar\n\n$sp^3$: tetraedrisch",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:37b4081a-244a-58d8-b448-88ed83344210"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "72236f2c-771e-4ab6-933a-e549ee49d15b",
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "67cd332f-9db7-50e1-87f6-172ef3714300"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+      "title": "Lernkarten - Organische Stoffklassen",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+      "deckSha256": "sha256:bdbd3ab4c7b98b2ea47c826d7462824003e8285d61efbd78304ab29bfc57ee03",
+      "actualOrderedSelectedCardIds": [
+        "chem_org_q1_001",
+        "chem_org_q1_002",
+        "chem_org_q1_003",
+        "chem_org_q1_004",
+        "chem_org_q1_005",
+        "chem_org_q1_006",
+        "chem_org_q1_007",
+        "chem_org_q1_008",
+        "chem_org_q1_009",
+        "chem_org_q1_010"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_org_q1_001",
+          "front": "Alkane, Alkene, Alkine: Bindung und allgemeine Formel?",
+          "back": "Acyclische Kohlenwasserstoffe:\n\nAlkane: nur Einfachbindungen, $C_nH_{2n+2}$\n\nAlkene: genau eine Doppelbindung, sonst Einfachbindungen, $C_nH_{2n}$\n\nAlkine: genau eine Dreifachbindung, sonst Einfachbindungen, $C_nH_{2n-2}$\n\nDie Formeln gelten nicht für Ringe oder mehrere Mehrfachbindungen.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        },
+        {
+          "id": "chem_org_q1_002",
+          "front": "Wichtige funktionelle Gruppen?",
+          "back": "Alkohol: $-OH$\n\nAldehyd: $-CHO$\n\nKeton: $>C=O$\n\nCarbonsäure: $-COOH$\n\nEster: $-COOR$",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:7990387d-f254-5d3b-a589-a3e7ed9502a3",
+            "select:chemistry-bw-lk-organic_q1",
+            "select:chemistry-functional-groups-only",
+            "goal:cc5a626a-dc85-57e2-b422-259f92901545",
+            "goal:0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+            "goal:4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+            "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+          ]
+        },
+        {
+          "id": "chem_org_q1_003",
+          "front": "IUPAC-Endungen für sauerstoffhaltige Stoffklassen?",
+          "back": "Alkanol: -ol\n\nAldehyd: -al\n\nKeton: -on\n\nCarbonsäure: -säure",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e14abd24-a0e5-5ab5-ade3-a8ae4f49e935",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        },
+        {
+          "id": "chem_org_q1_004",
+          "front": "Nachweise: C=C-Doppelbindung und Aldehydgruppe?",
+          "back": "C=C-Doppelbindung: Bromwasser wird entfärbt.\n\nAldehydgruppe: Fehling- oder Tollens-Probe positiv.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:3de28598-672f-5753-8a45-8f559c2f9dc2",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        },
+        {
+          "id": "chem_org_q1_005",
+          "front": "Aldehyd vs. Keton: Fehling/Tollens?",
+          "back": "Aldehyde reagieren in der Regel positiv.\n\nKetone reagieren unter Schulbedingungen meist nicht positiv.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:973c12d9-d863-5292-8c68-9c80cdacf9e2"
+          ]
+        },
+        {
+          "id": "chem_org_q1_006",
+          "front": "Halogenidionen-Nachweis mit Silbernitrat?",
+          "back": "Mit $AgNO_3$ entstehen schwerlösliche Silberhalogenide:\n\n$AgCl$ weiß, $AgBr$ cremefarben, $AgI$ gelblich.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:41396457-d97b-55f3-9804-2af1bb188e79"
+          ]
+        },
+        {
+          "id": "chem_org_q1_007",
+          "front": "Konfiguration vs. Konformation?",
+          "back": "Konfiguration: nur durch Bindungsbruch änderbar, zum Beispiel R/S oder E/Z.\n\nKonformation: durch Drehung um Einfachbindungen änderbar.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:85342c52-9722-54b0-8fbb-513d9d648363",
+            "select:chemistry-configuration-conformation-only",
+            "goal:4955f745-b946-5d3d-82d6-5e52dc8549a3"
+          ]
+        },
+        {
+          "id": "chem_org_q1_008",
+          "front": "Enantiomer, Diastereomer, E/Z?",
+          "back": "Enantiomere: nicht deckungsgleiche Spiegelbilder\n\nDiastereomere: Stereoisomere, aber keine Spiegelbilder\n\nE/Z: Konfiguration an Doppelbindungen",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:9decc36b-a69a-5599-a9f0-fcebdf0203d8"
+          ]
+        },
+        {
+          "id": "chem_org_q1_009",
+          "front": "Stereozentrum am Kohlenstoff?",
+          "back": "Ein asymmetrisches Kohlenstoff-Atom ist an vier verschiedene Substituenten gebunden.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b92bfa45-b500-5647-8fd2-a14b708aaf59"
+          ]
+        },
+        {
+          "id": "chem_org_q1_010",
+          "front": "IR und $^1H$-NMR: Wofür nutzt man sie?",
+          "back": "IR-Spektren zeigen charakteristische Schwingungen funktioneller Gruppen.\n\n$^1H$-NMR unterscheidet Wasserstoff-Umgebungen im Molekül.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:466bd2e9-39a5-5221-b620-945934adce00"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+        "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+        "85342c52-9722-54b0-8fbb-513d9d648363"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "31148286-b8db-57a7-8da2-2e0479240a2c",
+      "title": "Lernkarten - Naturstoffe",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_natural_q2.de.json",
+      "deckSha256": "sha256:5fe9381decc69eef1b4950d3b79357ce486dba3d1f7c18b66fb294365a92a2dd",
+      "actualOrderedSelectedCardIds": [
+        "chem_nat_q2_001",
+        "chem_nat_q2_002",
+        "chem_nat_q2_003",
+        "chem_nat_q2_004",
+        "chem_nat_q2_005"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_nat_q2_001",
+          "front": "Aminosäure: Grundstruktur?",
+          "back": "Eine Aminosäure besitzt mindestens eine Aminogruppe und eine Carboxylgruppe.\n\nProteinogene α-Aminosäuren tragen beide Gruppen am α-C-Atom.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_002",
+          "front": "Zwitterion bei Aminosäuren?",
+          "back": "In wässriger Lösung kann eine Aminosäure zugleich positiv geladene $-NH_3^+$-Gruppe und negativ geladene $-COO^-$-Gruppe tragen.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_003",
+          "front": "Peptidbindung: Was ist das?",
+          "back": "Eine Peptidbindung ist eine Amidbindung zwischen Carboxylgruppe einer Aminosäure und Aminogruppe einer anderen Aminosäure unter Wasserabspaltung.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:197bc2c5-835e-59e7-9263-5684e89799cc",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_004",
+          "front": "Biuret-Reaktion: Was weist sie nach?",
+          "back": "Die Biuret-Reaktion ist ein typischer Nachweis für Proteine und längere Peptide. Für die charakteristische violette Komplexbildung mit Kupfer(II)-Ionen in alkalischer Lösung werden mindestens zwei passende Peptidbindungen benötigt (bei einfachen Peptidketten ab dem Tripeptid).\n\nEine einzelne Peptidbindung, etwa in einem einfachen Dipeptid, genügt dafür nicht. Ein positiver Test bestimmt nicht die Identität eines bestimmten Proteins.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_005",
+          "front": "Reduzierende Zucker: typische Nachweise?",
+          "back": "Fehling-, Benedict- oder Tollens-Probe können reduzierende Zucker anzeigen.\n\nDer GOD-Test ist spezifisch für Glucose.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "62149f36-87c0-5a2d-8a78-e7d4203f58c2",
+        "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+        "96d33fb6-ed14-50ab-b5c7-5ce0559d518a"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+      "title": "Lernkarten - Gleichgewichte und Elektrochemie",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_001",
+        "chem_eq_q3_002",
+        "chem_eq_q3_003",
+        "chem_eq_q3_004",
+        "chem_eq_q3_005",
+        "chem_eq_q3_006",
+        "chem_eq_q3_007",
+        "chem_eq_q3_008",
+        "chem_eq_q3_009",
+        "chem_eq_q3_010",
+        "chem_eq_q3_011"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_001",
+          "front": "Massenwirkungsgesetz: Grundform?",
+          "back": "Für $aA+bB \\rightleftharpoons cC+dD$ gilt näherungsweise:\n\n$K_c=\\frac{c(C)^c\\,c(D)^d}{c(A)^a\\,c(B)^b}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:20f92ba0-f7f4-5407-bb96-07e30da9002f",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_002",
+          "front": "Le-Chatelier-Prinzip?",
+          "back": "Ein Gleichgewicht reagiert auf äußeren Zwang so, dass die Störung teilweise abgeschwächt wird.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_003",
+          "front": "Ionenprodukt des Wassers?",
+          "back": "$K_w=[H_3O^+]\\,[OH^-]$\n\nBei $25^\\circ C$ gilt näherungsweise $K_w=10^{-14}\\,\\mathrm{mol^2/L^2}$.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_004",
+          "front": "pH und pOH?",
+          "back": "$pH=-\\log[H_3O^+]$\n\n$pOH=-\\log[OH^-]$\n\nBei $25^\\circ C$: $pH+pOH=14$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:f1ed86f0-534d-57d7-8952-a004a331cc54",
+            "goal:acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "goal:edcfc5f0-900d-5819-830f-3b14af2bc369",
+            "select:chemistry-bw-lk-equilibria_q3",
+            "select:chemistry-ph-poh-relations-only"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_005",
+          "front": "pKS und pKB: Merksatz?",
+          "back": "$pK_S=-\\log K_S$, $pK_B=-\\log K_B$\n\nJe kleiner der pKS-Wert, desto stärker die Säure.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_006",
+          "front": "Henderson-Hasselbalch-Gleichung?",
+          "back": "$pH=pK_S+\\log\\frac{c(A^-)}{c(HA)}$\n\nfür einen Puffer aus schwacher Säure und korrespondierender Base.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a449e874-6fec-502b-9667-6f078adc4d64",
+            "select:chemistry-bw-lk-equilibria_q3",
+            "select:chemistry-henderson-hasselbalch-only"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_007",
+          "front": "Nernst-Gleichung für eine als Reduktion geschriebene Halbgleichung: Formel und Reaktionsquotient?",
+          "back": "$E=E^\\circ-\\frac{RT}{zF}\\ln Q$; bei $25^\\circ\\mathrm{C}$ näherungsweise $E=E^\\circ-\\frac{0{,}05916\\,\\mathrm{V}}{z}\\log_{10}Q$.\n\n$Q$ enthält die Aktivitäten der Produkte geteilt durch die der Edukte, jeweils mit den stöchiometrischen Koeffizienten als Potenzen; Elektronen werden nicht eingesetzt. Reine feste Stoffe und reine Flüssigkeiten haben in ihrem Standardzustand die Aktivität 1.\n\nFür $\\mathrm{Ox}+ze^-\\rightleftharpoons\\mathrm{Red}$ ist $Q=a(\\mathrm{Red})/a(\\mathrm{Ox})$. Für $\\mathrm{Cu}^{2+}+2e^-\\rightleftharpoons\\mathrm{Cu}(s)$ gilt daher $Q=1/a(\\mathrm{Cu}^{2+})$.\n\nDie dimensionslose Aktivität lässt sich nur im passenden verdünnten idealen Lösungsmodell durch $c/c^\\circ$ annähern; Konzentrations- und Aktivitätsform nicht unbesehen vermischen.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_008",
+          "front": "Faraday-Beziehung für Elektrolyse?",
+          "back": "$Q=I\\cdot t=z\\cdot F\\cdot n$\n\n$F\\approx 96485\\,\\mathrm{C/mol}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_009",
+          "front": "Elektrochemische Spannungsreihe: Vorzeichen-Deutung?",
+          "back": "Je positiver das Standardpotenzial, desto stärker wirkt die oxidierte Form als Oxidationsmittel.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:8be14f15-2258-58e6-ae4e-38953f5d0570",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_010",
+          "front": "Arrhenius-Beziehung?",
+          "back": "$k=A\\,e^{-E_A/(RT)}$\n\nIm $\\ln k$ gegen $1/T$-Diagramm ist die Steigung $-E_A/R$.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e62c6c58-b688-59c3-8ac5-2cfc26ac22d7"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_011",
+          "front": "Löslichkeitsprodukt: Grundidee?",
+          "back": "Für ein Salzgleichgewicht ist $K_L$ das Produkt der Ionenkonzentrationen in der gesättigten Lösung, jeweils mit stöchiometrischem Exponenten.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:ac1bcf34-169c-5339-92ba-efe8c3022560",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+        "8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "6122faf0-6718-52b3-b40d-b206a2e963ae",
+      "title": "Lernkarten - Energie und Nachhaltigkeit",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "deckSha256": "sha256:8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "actualOrderedSelectedCardIds": [
+        "chem_energy_q4_001",
+        "chem_energy_q4_002",
+        "chem_energy_q4_003",
+        "chem_energy_q4_004",
+        "chem_energy_q4_005",
+        "chem_energy_q4_006",
+        "chem_energy_q4_007"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_energy_q4_001",
+          "front": "1. Hauptsatz der Thermodynamik: Kernidee?",
+          "back": "Energie wird weder erzeugt noch vernichtet, sondern umgewandelt oder übertragen.\n\nEin geschlossenes System kann Energie durch Wärme und Arbeit austauschen, aber keine Materie.\n\nEin offenes System kann zusätzlich Energie mit ein- und ausströmender Materie austauschen.\n\nEin isoliertes System tauscht weder Energie noch Materie mit der Umgebung aus.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:801790f9-be3a-51fe-9b0f-3452c1bba887",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_002",
+          "front": "Satz von Hess?",
+          "back": "Reaktionsenthalpien sind wegunabhängig.\n\nGesamtenthalpieänderungen können aus Teilschritten oder Bildungsenthalpien summiert werden.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_003",
+          "front": "Gibbs-Helmholtz-Gleichung?",
+          "back": "$\\Delta G=\\Delta H-T\\Delta S$\n\n$\\Delta G<0$ spricht unter den betrachteten Bedingungen für freiwilligen Ablauf.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_004",
+          "front": "RGT-Regel?",
+          "back": "Eine Temperaturerhöhung um $10\\,K$ erhöht die Reaktionsgeschwindigkeit häufig ungefähr auf das Zwei- bis Vierfache.\n\nEs ist eine Faustregel, kein Naturgesetz.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_005",
+          "front": "Green-Chemistry-Metriken: Atomökonomie, E-Faktor, PMI?",
+          "back": "Atomökonomie: Anteil der Eduktmasse im Zielprodukt\n\nE-Faktor: Abfallmasse pro Produktmasse\n\nPMI: gesamte eingesetzte Masse pro Produktmasse",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:ebfa2c18-0599-5282-bf7a-80c14d86331e"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_006",
+          "front": "Heizwert vs. Brennwert?",
+          "back": "Heizwert: ohne Nutzung der Kondensationswärme des entstehenden Wassers\n\nBrennwert: mit Nutzung dieser Kondensationswärme",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:ecdc3c08-9ba3-56e5-ab00-4b02357867ac",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_007",
+          "front": "Wirkungsgrad: Formel?",
+          "back": "$\\eta=\\frac{E_\\text{nutz}}{E_\\text{zugeführt}}$\n\noder entsprechend Leistung: $\\eta=\\frac{P_\\text{nutz}}{P_\\text{zugeführt}}$",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:3ec31fe1-e01b-5edd-bd9a-936191d67639"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "801790f9-be3a-51fe-9b0f-3452c1bba887",
+        "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+        "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "417e65ec-68be-5f2e-9452-c3ba9b1d362f",
+      "title": "Säuren- und Basennamen mit Formeln abrufen",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "sourceDeck": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-independent-a-v1/de_gymnasium_chemistry_arrhenius_names_formulas.de.reviewed.inactive.candidate.json",
+      "deckSha256": "sha256:af995d4da6f9f2108cefe745ccf1a922093449effb0f12ef7533ef4374746382",
+      "actualOrderedSelectedCardIds": [
+        "chem_arrhenius_sulfuric_formula_to_name",
+        "chem_arrhenius_sulfuric_name_to_formula",
+        "chem_arrhenius_nitric_formula_to_name",
+        "chem_arrhenius_nitric_name_to_formula",
+        "chem_arrhenius_carbonic_formula_to_name",
+        "chem_arrhenius_carbonic_name_to_formula",
+        "chem_arrhenius_phosphoric_formula_to_name",
+        "chem_arrhenius_phosphoric_name_to_formula",
+        "chem_arrhenius_hydrogen_chloride_formula_to_name",
+        "chem_arrhenius_hydrogen_chloride_name_to_formula",
+        "chem_arrhenius_sodium_hydroxide_formula_to_name",
+        "chem_arrhenius_sodium_hydroxide_name_to_formula",
+        "chem_arrhenius_potassium_hydroxide_formula_to_name",
+        "chem_arrhenius_potassium_hydroxide_name_to_formula",
+        "chem_arrhenius_calcium_hydroxide_formula_to_name",
+        "chem_arrhenius_calcium_hydroxide_name_to_formula",
+        "chem_arrhenius_barium_hydroxide_formula_to_name",
+        "chem_arrhenius_barium_hydroxide_name_to_formula"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_arrhenius_sulfuric_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $H_2SO_4$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Schwefelsäure.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_sulfuric_name_to_formula",
+          "front": "Wie lautet die Stoffformel von Schwefelsäure?",
+          "back": "$H_2SO_4$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_nitric_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $HNO_3$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Salpetersäure.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_nitric_name_to_formula",
+          "front": "Wie lautet die Stoffformel von Salpetersäure?",
+          "back": "$HNO_3$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_carbonic_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $H_2CO_3$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Kohlensäure.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_carbonic_name_to_formula",
+          "front": "Wie lautet die Stoffformel von Kohlensäure?",
+          "back": "$H_2CO_3$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_phosphoric_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $H_3PO_4$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Phosphorsäure.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_phosphoric_name_to_formula",
+          "front": "Wie lautet die Stoffformel von Phosphorsäure?",
+          "back": "$H_3PO_4$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_hydrogen_chloride_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $HCl$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Chlorwasserstoff; die wässrige Lösung heißt Salzsäure.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_hydrogen_chloride_name_to_formula",
+          "front": "Welche Stoffformel gehört zum Ausgangsstoff von Salzsäure?",
+          "back": "Chlorwasserstoff: $HCl$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_sodium_hydroxide_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $NaOH$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Natriumhydroxid; die wässrige Lösung heißt Natronlauge.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_sodium_hydroxide_name_to_formula",
+          "front": "Welche Stoffformel gehört zum Ausgangsstoff von Natronlauge?",
+          "back": "Natriumhydroxid: $NaOH$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_potassium_hydroxide_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $KOH$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Kaliumhydroxid; die wässrige Lösung heißt Kalilauge.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_potassium_hydroxide_name_to_formula",
+          "front": "Welche Stoffformel gehört zum Ausgangsstoff von Kalilauge?",
+          "back": "Kaliumhydroxid: $KOH$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_calcium_hydroxide_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $Ca(OH)_2$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Calciumhydroxid; die klare wässrige Lösung heißt Kalkwasser.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_calcium_hydroxide_name_to_formula",
+          "front": "Welche Stoffformel gehört zum Ausgangsstoff von klarem Kalkwasser?",
+          "back": "Calciumhydroxid: $Ca(OH)_2$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_barium_hydroxide_formula_to_name",
+          "front": "Wie heißt der Stoff mit der Formel $Ba(OH)_2$? Nenne bei HCl oder einem Hydroxid auch den gebräuchlichen Namen der zugehörigen wässrigen Lösung.",
+          "back": "Bariumhydroxid; die wässrige Lösung heißt Barytwasser.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        },
+        {
+          "id": "chem_arrhenius_barium_hydroxide_name_to_formula",
+          "front": "Welche Stoffformel gehört zum Ausgangsstoff von Barytwasser?",
+          "back": "Bariumhydroxid: $Ba(OH)_2$. Die Formel beschreibt die Zusammensetzung des Stoffes, nicht sämtliche Teilchen in einer wässrigen Lösung.",
+          "category": "Chemie – Säure-Base-Namen und Formeln",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:28bb9d15-f865-5843-a035-6066580fea64"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "cf423d0f-682f-588b-8c24-688c67d28f7a",
+      "title": "Lernkarten - Chemische Grundlagen – Kursauswahl",
+      "actualFilterTags": [
+        "select:chemistry-bw-lk-basics_seki"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_002",
+        "chem_basics_003",
+        "chem_basics_004",
+        "chem_basics_005",
+        "chem_basics_006",
+        "chem_basics_007",
+        "chem_basics_008",
+        "chem_basics_009",
+        "chem_basics_010",
+        "chem_basics_011",
+        "chem_basics_012",
+        "chem_basics_013"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_002",
+          "front": "Nachweise für O₂, H₂ und CO₂?",
+          "back": "O₂: Glimmspanprobe\n\nH₂: Knallgasprobe\n\nCO₂: Kalkwasserprobe, Kalkwasser wird trüb",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_003",
+          "front": "Elementsymbol, Molekülformel, Verhältnisformel?",
+          "back": "Elementsymbol: ein Element, zum Beispiel Na\n\nMolekülformel: Teilchenzusammensetzung eines Moleküls, zum Beispiel H₂O\n\nVerhältnisformel: kleinstes Zahlenverhältnis in Ionengittern, zum Beispiel NaCl",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_004",
+          "front": "Bei Hauptgruppenelementen: Was bedeuten Ordnungszahl, Periode und Hauptgruppe (I–VIII)?",
+          "back": "Ordnungszahl = Protonenzahl.\n\nIm einfachen Schalenmodell des Grundzustands gibt die Periode die Zahl besetzter Schalen an.\n\nDie klassische Hauptgruppennummer I–VIII gibt die Zahl der Valenzelektronen an. Ausnahme: Helium steht in Hauptgruppe VIII (moderner Gruppe 18), hat aber nur zwei Außenelektronen.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d74940-1e0e-4511-9718-4851f49ad7a5",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_005",
+          "front": "Atomare Grundteilchen?",
+          "back": "Proton: positiv, im Kern\n\nNeutron: neutral, im Kern\n\nElektron: negativ, in der Hülle",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:72236f2c-771e-4ab6-933a-e549ee49d15b",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_006",
+          "front": "Kation und Anion: Bildung?",
+          "back": "Kation: Elektronenabgabe, positiv geladen\n\nAnion: Elektronenaufnahme, negativ geladen",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+            "select:chemistry-bw-lk-basics_seki",
+            "select:chemistry-ion-charges-mobile-ions-only",
+            "goal:2d16528c-1424-5999-b3d2-af4593a147fc"
+          ]
+        },
+        {
+          "id": "chem_basics_007",
+          "front": "Warum leiten Salzlösungen Strom?",
+          "back": "In Lösung sind Ionen beweglich.\n\nBewegliche Kationen und Anionen transportieren Ladung.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+            "select:chemistry-bw-lk-basics_seki",
+            "select:chemistry-ion-charges-mobile-ions-only",
+            "goal:2d16528c-1424-5999-b3d2-af4593a147fc"
+          ]
+        },
+        {
+          "id": "chem_basics_008",
+          "front": "Stoffmenge $n$: Grundidee und Einheit?",
+          "back": "Die Stoffmenge $n$ ist ein Maß für die Anzahl festgelegter Teilchen (z. B. Wasser-Moleküle). Ihre Einheit ist Mol ($\\mathrm{mol}$).\n\n$1\\,\\mathrm{mol}$ enthält genau $6{,}02214076\\cdot10^{23}$ der angegebenen Teilchen.\n\nEs gilt $N=n\\cdot N_A$ mit $N_A=6{,}02214076\\cdot10^{23}\\,\\mathrm{mol}^{-1}$. Die Teilchenzahl $N$ hat die Einheit Eins.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_009",
+          "front": "Avogadro-Konstante?",
+          "back": "$N_A \\approx 6{,}022\\cdot10^{23}\\,\\mathrm{mol}^{-1}$\n\nSie verknüpft Stoffmenge und Teilchenzahl.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e45c0022-ac0d-5c83-b433-5f68655e382f",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_010",
+          "front": "Molare Masse: Formel?",
+          "back": "$M=\\frac{m}{n}$\n\n$M$: molare Masse, $m$: Masse, $n$: Stoffmenge",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:8a2ad724-df5e-5986-8de9-560ba43caac2",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_011",
+          "front": "Molares Volumen: Formel?",
+          "back": "$V_m=\\frac{V}{n}$\n\nDer Zahlenwert gilt immer nur für festgelegte Bedingungen.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:2924f784-5261-54e8-93ee-49ac3b3cd300",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_012",
+          "front": "pH-Skala: sauer, neutral, alkalisch – für verdünnte wässrige Lösungen bei etwa 25 °C?",
+          "back": "Bei etwa $25^\\circ\\mathrm{C}$ gilt als schulischer Richtwert:\n\nSauer: $\\mathrm{pH}<7$; neutral: $\\mathrm{pH}\\approx7$; alkalisch/basisch: $\\mathrm{pH}>7$.\n\nNeutralität bedeutet im verdünnten Modell gleich große Oxonium- und Hydroxidionenkonzentrationen. Der neutrale pH-Wert hängt von der Temperatur ab; die Grenze 7 ist kein temperaturunabhängiges Naturgesetz.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:d2ccd1d5-56f7-583f-9724-e97441367f91",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_013",
+          "front": "Saure und basische Lösung auf Teilchenebene?",
+          "back": "Saure Lösung: erhöhte Konzentration an Oxonium-Ionen $H_3O^+$\n\nBasische Lösung: erhöhte Konzentration an Hydroxid-Ionen $OH^-$",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "1dc15fa2-fca4-56b0-b5c1-4d215613dde0"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "9321ef8b-e1d8-549e-83f4-1484e72d35f6",
+      "title": "Lernkarten - Atombau und Bindung – Kursauswahl",
+      "actualFilterTags": [
+        "select:chemistry-bw-lk-bonding_structure"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_001",
+        "chem_bond_002",
+        "chem_bond_003",
+        "chem_bond_004",
+        "chem_bond_005",
+        "chem_bond_006",
+        "chem_bond_007"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_001",
+          "front": "Bohrsches Energiestufenmodell: Kernidee?",
+          "back": "Elektronen befinden sich in bestimmten Energiestufen beziehungsweise Schalen.\n\nÜbergänge zwischen Stufen sind mit Energieaufnahme oder Energieabgabe verbunden.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_002",
+          "front": "Valenzstrichschreibweise: Was zeigen Punkte und Striche?",
+          "back": "Punkte stehen für Valenzelektronen.\n\nEin Strich steht für ein Elektronenpaar, als Bindungspaar oder freies Elektronenpaar.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e74f5301-70d3-5869-bd3d-79a5763a1718",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_003",
+          "front": "Mesomerie: Merksatz?",
+          "back": "Mesomere Grenzstrukturen haben dieselbe Atomverknüpfung, aber unterschiedliche Elektronenverteilung.\n\nDie reale Struktur ist kein schnelles Umschalten, sondern ein delokalisiertes Zwischenbild.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:23533087-89ea-5f29-8ec1-9f2e01197bb6",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_004",
+          "front": "EPA-Modell: Grundregel?",
+          "back": "Elektronenpaare stoßen sich ab.\n\nDie Molekülgeometrie ordnet Bindungs- und freie Elektronenpaare mit möglichst großem Abstand an.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:67cd332f-9db7-50e1-87f6-172ef3714300",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_005",
+          "front": "Bindungspolarität vs. Molekülpolarität?",
+          "back": "Bindungspolarität folgt aus Elektronegativitätsunterschieden.\n\nMolekülpolarität hängt zusätzlich von der räumlichen Geometrie ab.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_006",
+          "front": "Drei grundlegende Bindungstypen?",
+          "back": "Ionenbindung: Anziehung von Ionen\n\nElektronenpaarbindung: gemeinsame Elektronenpaare\n\nMetallbindung: Metallkationen im Elektronengas",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:448815cc-4127-54b7-96bf-e54b3d2a38c5",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_007",
+          "front": "Wichtige zwischenmolekulare Kräfte?",
+          "back": "Van-der-Waals-Kräfte, Dipol-Dipol-Wechselwirkungen, Wasserstoffbrücken und Ionen-Dipol-Wechselwirkungen.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+            "select:chemistry-bw-lk-bonding_structure",
+            "select:chemistry-intermolecular-forces-only",
+            "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "72236f2c-771e-4ab6-933a-e549ee49d15b",
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "67cd332f-9db7-50e1-87f6-172ef3714300"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "453a3489-ab98-5594-aeda-621438d43c8e",
+      "title": "Lernkarten - Energie und Nachhaltigkeit – Kursauswahl",
+      "actualFilterTags": [
+        "select:chemistry-bw-lk-energy_q4"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "deckSha256": "sha256:8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "actualOrderedSelectedCardIds": [
+        "chem_energy_q4_001",
+        "chem_energy_q4_002",
+        "chem_energy_q4_003",
+        "chem_energy_q4_004",
+        "chem_energy_q4_006"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_energy_q4_001",
+          "front": "1. Hauptsatz der Thermodynamik: Kernidee?",
+          "back": "Energie wird weder erzeugt noch vernichtet, sondern umgewandelt oder übertragen.\n\nEin geschlossenes System kann Energie durch Wärme und Arbeit austauschen, aber keine Materie.\n\nEin offenes System kann zusätzlich Energie mit ein- und ausströmender Materie austauschen.\n\nEin isoliertes System tauscht weder Energie noch Materie mit der Umgebung aus.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:801790f9-be3a-51fe-9b0f-3452c1bba887",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_002",
+          "front": "Satz von Hess?",
+          "back": "Reaktionsenthalpien sind wegunabhängig.\n\nGesamtenthalpieänderungen können aus Teilschritten oder Bildungsenthalpien summiert werden.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_003",
+          "front": "Gibbs-Helmholtz-Gleichung?",
+          "back": "$\\Delta G=\\Delta H-T\\Delta S$\n\n$\\Delta G<0$ spricht unter den betrachteten Bedingungen für freiwilligen Ablauf.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_004",
+          "front": "RGT-Regel?",
+          "back": "Eine Temperaturerhöhung um $10\\,K$ erhöht die Reaktionsgeschwindigkeit häufig ungefähr auf das Zwei- bis Vierfache.\n\nEs ist eine Faustregel, kein Naturgesetz.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_006",
+          "front": "Heizwert vs. Brennwert?",
+          "back": "Heizwert: ohne Nutzung der Kondensationswärme des entstehenden Wassers\n\nBrennwert: mit Nutzung dieser Kondensationswärme",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:ecdc3c08-9ba3-56e5-ab00-4b02357867ac",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "801790f9-be3a-51fe-9b0f-3452c1bba887",
+        "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+        "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "045efaa4-a91a-5a91-add9-bff49cbed324",
+      "title": "Lernkarten - Gleichgewichte und Elektrochemie – Kursauswahl",
+      "actualFilterTags": [
+        "select:chemistry-bw-lk-equilibria_q3"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_001",
+        "chem_eq_q3_002",
+        "chem_eq_q3_003",
+        "chem_eq_q3_004",
+        "chem_eq_q3_005",
+        "chem_eq_q3_006",
+        "chem_eq_q3_007",
+        "chem_eq_q3_009",
+        "chem_eq_q3_011"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_001",
+          "front": "Massenwirkungsgesetz: Grundform?",
+          "back": "Für $aA+bB \\rightleftharpoons cC+dD$ gilt näherungsweise:\n\n$K_c=\\frac{c(C)^c\\,c(D)^d}{c(A)^a\\,c(B)^b}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:20f92ba0-f7f4-5407-bb96-07e30da9002f",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_002",
+          "front": "Le-Chatelier-Prinzip?",
+          "back": "Ein Gleichgewicht reagiert auf äußeren Zwang so, dass die Störung teilweise abgeschwächt wird.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_003",
+          "front": "Ionenprodukt des Wassers?",
+          "back": "$K_w=[H_3O^+]\\,[OH^-]$\n\nBei $25^\\circ C$ gilt näherungsweise $K_w=10^{-14}\\,\\mathrm{mol^2/L^2}$.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_004",
+          "front": "pH und pOH?",
+          "back": "$pH=-\\log[H_3O^+]$\n\n$pOH=-\\log[OH^-]$\n\nBei $25^\\circ C$: $pH+pOH=14$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:f1ed86f0-534d-57d7-8952-a004a331cc54",
+            "goal:acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "goal:edcfc5f0-900d-5819-830f-3b14af2bc369",
+            "select:chemistry-bw-lk-equilibria_q3",
+            "select:chemistry-ph-poh-relations-only"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_005",
+          "front": "pKS und pKB: Merksatz?",
+          "back": "$pK_S=-\\log K_S$, $pK_B=-\\log K_B$\n\nJe kleiner der pKS-Wert, desto stärker die Säure.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_006",
+          "front": "Henderson-Hasselbalch-Gleichung?",
+          "back": "$pH=pK_S+\\log\\frac{c(A^-)}{c(HA)}$\n\nfür einen Puffer aus schwacher Säure und korrespondierender Base.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a449e874-6fec-502b-9667-6f078adc4d64",
+            "select:chemistry-bw-lk-equilibria_q3",
+            "select:chemistry-henderson-hasselbalch-only"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_007",
+          "front": "Nernst-Gleichung für eine als Reduktion geschriebene Halbgleichung: Formel und Reaktionsquotient?",
+          "back": "$E=E^\\circ-\\frac{RT}{zF}\\ln Q$; bei $25^\\circ\\mathrm{C}$ näherungsweise $E=E^\\circ-\\frac{0{,}05916\\,\\mathrm{V}}{z}\\log_{10}Q$.\n\n$Q$ enthält die Aktivitäten der Produkte geteilt durch die der Edukte, jeweils mit den stöchiometrischen Koeffizienten als Potenzen; Elektronen werden nicht eingesetzt. Reine feste Stoffe und reine Flüssigkeiten haben in ihrem Standardzustand die Aktivität 1.\n\nFür $\\mathrm{Ox}+ze^-\\rightleftharpoons\\mathrm{Red}$ ist $Q=a(\\mathrm{Red})/a(\\mathrm{Ox})$. Für $\\mathrm{Cu}^{2+}+2e^-\\rightleftharpoons\\mathrm{Cu}(s)$ gilt daher $Q=1/a(\\mathrm{Cu}^{2+})$.\n\nDie dimensionslose Aktivität lässt sich nur im passenden verdünnten idealen Lösungsmodell durch $c/c^\\circ$ annähern; Konzentrations- und Aktivitätsform nicht unbesehen vermischen.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_009",
+          "front": "Elektrochemische Spannungsreihe: Vorzeichen-Deutung?",
+          "back": "Je positiver das Standardpotenzial, desto stärker wirkt die oxidierte Form als Oxidationsmittel.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:8be14f15-2258-58e6-ae4e-38953f5d0570",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_011",
+          "front": "Löslichkeitsprodukt: Grundidee?",
+          "back": "Für ein Salzgleichgewicht ist $K_L$ das Produkt der Ionenkonzentrationen in der gesättigten Lösung, jeweils mit stöchiometrischem Exponenten.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:ac1bcf34-169c-5339-92ba-efe8c3022560",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+        "8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "0f0c6c98-13dc-5347-ac95-5b50c9c17bb6",
+      "title": "Lernkarten - Naturstoffe – Kursauswahl",
+      "actualFilterTags": [
+        "select:chemistry-bw-lk-natural_q2"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_natural_q2.de.json",
+      "deckSha256": "sha256:5fe9381decc69eef1b4950d3b79357ce486dba3d1f7c18b66fb294365a92a2dd",
+      "actualOrderedSelectedCardIds": [
+        "chem_nat_q2_001",
+        "chem_nat_q2_002",
+        "chem_nat_q2_003",
+        "chem_nat_q2_004",
+        "chem_nat_q2_005"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_nat_q2_001",
+          "front": "Aminosäure: Grundstruktur?",
+          "back": "Eine Aminosäure besitzt mindestens eine Aminogruppe und eine Carboxylgruppe.\n\nProteinogene α-Aminosäuren tragen beide Gruppen am α-C-Atom.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_002",
+          "front": "Zwitterion bei Aminosäuren?",
+          "back": "In wässriger Lösung kann eine Aminosäure zugleich positiv geladene $-NH_3^+$-Gruppe und negativ geladene $-COO^-$-Gruppe tragen.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_003",
+          "front": "Peptidbindung: Was ist das?",
+          "back": "Eine Peptidbindung ist eine Amidbindung zwischen Carboxylgruppe einer Aminosäure und Aminogruppe einer anderen Aminosäure unter Wasserabspaltung.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:197bc2c5-835e-59e7-9263-5684e89799cc",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_004",
+          "front": "Biuret-Reaktion: Was weist sie nach?",
+          "back": "Die Biuret-Reaktion ist ein typischer Nachweis für Proteine und längere Peptide. Für die charakteristische violette Komplexbildung mit Kupfer(II)-Ionen in alkalischer Lösung werden mindestens zwei passende Peptidbindungen benötigt (bei einfachen Peptidketten ab dem Tripeptid).\n\nEine einzelne Peptidbindung, etwa in einem einfachen Dipeptid, genügt dafür nicht. Ein positiver Test bestimmt nicht die Identität eines bestimmten Proteins.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_005",
+          "front": "Reduzierende Zucker: typische Nachweise?",
+          "back": "Fehling-, Benedict- oder Tollens-Probe können reduzierende Zucker anzeigen.\n\nDer GOD-Test ist spezifisch für Glucose.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+        "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+        "96d33fb6-ed14-50ab-b5c7-5ce0559d518a"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "f6d7386c-dda4-501d-84da-0c881362e724",
+      "title": "Lernkarten - Organische Stoffklassen – Kursauswahl",
+      "actualFilterTags": [
+        "select:chemistry-bw-lk-organic_q1"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+      "deckSha256": "sha256:bdbd3ab4c7b98b2ea47c826d7462824003e8285d61efbd78304ab29bfc57ee03",
+      "actualOrderedSelectedCardIds": [
+        "chem_org_q1_001",
+        "chem_org_q1_002",
+        "chem_org_q1_003",
+        "chem_org_q1_004"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_org_q1_001",
+          "front": "Alkane, Alkene, Alkine: Bindung und allgemeine Formel?",
+          "back": "Acyclische Kohlenwasserstoffe:\n\nAlkane: nur Einfachbindungen, $C_nH_{2n+2}$\n\nAlkene: genau eine Doppelbindung, sonst Einfachbindungen, $C_nH_{2n}$\n\nAlkine: genau eine Dreifachbindung, sonst Einfachbindungen, $C_nH_{2n-2}$\n\nDie Formeln gelten nicht für Ringe oder mehrere Mehrfachbindungen.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        },
+        {
+          "id": "chem_org_q1_002",
+          "front": "Wichtige funktionelle Gruppen?",
+          "back": "Alkohol: $-OH$\n\nAldehyd: $-CHO$\n\nKeton: $>C=O$\n\nCarbonsäure: $-COOH$\n\nEster: $-COOR$",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:7990387d-f254-5d3b-a589-a3e7ed9502a3",
+            "select:chemistry-bw-lk-organic_q1",
+            "select:chemistry-functional-groups-only",
+            "goal:cc5a626a-dc85-57e2-b422-259f92901545",
+            "goal:0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+            "goal:4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+            "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+          ]
+        },
+        {
+          "id": "chem_org_q1_003",
+          "front": "IUPAC-Endungen für sauerstoffhaltige Stoffklassen?",
+          "back": "Alkanol: -ol\n\nAldehyd: -al\n\nKeton: -on\n\nCarbonsäure: -säure",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e14abd24-a0e5-5ab5-ade3-a8ae4f49e935",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        },
+        {
+          "id": "chem_org_q1_004",
+          "front": "Nachweise: C=C-Doppelbindung und Aldehydgruppe?",
+          "back": "C=C-Doppelbindung: Bromwasser wird entfärbt.\n\nAldehydgruppe: Fehling- oder Tollens-Probe positiv.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:3de28598-672f-5753-8a45-8f559c2f9dc2",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+        "7990387d-f254-5d3b-a589-a3e7ed9502a3"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "076cb333-3b61-5025-8f32-32afc16f9987",
+      "title": "pH- und pOH-Beziehungen abrufen",
+      "actualFilterTags": [
+        "select:chemistry-ph-poh-relations-only"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_004"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_004",
+          "front": "pH und pOH?",
+          "back": "$pH=-\\log[H_3O^+]$\n\n$pOH=-\\log[OH^-]$\n\nBei $25^\\circ C$: $pH+pOH=14$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:f1ed86f0-534d-57d7-8952-a004a331cc54",
+            "goal:acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "goal:edcfc5f0-900d-5819-830f-3b14af2bc369",
+            "select:chemistry-bw-lk-equilibria_q3",
+            "select:chemistry-ph-poh-relations-only"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "28bb9d15-f865-5843-a035-6066580fea64"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "c8bf3178-383d-570f-825d-d2d7b9507e6e",
+      "title": "Henderson-Hasselbalch-Beziehung abrufen",
+      "actualFilterTags": [
+        "select:chemistry-henderson-hasselbalch-only"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_006"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_006",
+          "front": "Henderson-Hasselbalch-Gleichung?",
+          "back": "$pH=pK_S+\\log\\frac{c(A^-)}{c(HA)}$\n\nfür einen Puffer aus schwacher Säure und korrespondierender Base.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a449e874-6fec-502b-9667-6f078adc4d64",
+            "select:chemistry-bw-lk-equilibria_q3",
+            "select:chemistry-henderson-hasselbalch-only"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "a449e874-6fec-502b-9667-6f078adc4d64"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "1a0eab44-b0b2-534b-a3db-988a1bb76a87",
+      "title": "Ionenladungen und bewegliche Ionen abrufen",
+      "actualFilterTags": [
+        "select:chemistry-ion-charges-mobile-ions-only"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_006",
+        "chem_basics_007"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_006",
+          "front": "Kation und Anion: Bildung?",
+          "back": "Kation: Elektronenabgabe, positiv geladen\n\nAnion: Elektronenaufnahme, negativ geladen",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+            "select:chemistry-bw-lk-basics_seki",
+            "select:chemistry-ion-charges-mobile-ions-only",
+            "goal:2d16528c-1424-5999-b3d2-af4593a147fc"
+          ]
+        },
+        {
+          "id": "chem_basics_007",
+          "front": "Warum leiten Salzlösungen Strom?",
+          "back": "In Lösung sind Ionen beweglich.\n\nBewegliche Kationen und Anionen transportieren Ladung.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+            "select:chemistry-bw-lk-basics_seki",
+            "select:chemistry-ion-charges-mobile-ions-only",
+            "goal:2d16528c-1424-5999-b3d2-af4593a147fc"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "98781dda-8049-5173-899b-42a5c2902b86",
+      "title": "Funktionelle Gruppen abrufen",
+      "actualFilterTags": [
+        "select:chemistry-functional-groups-only"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+      "deckSha256": "sha256:bdbd3ab4c7b98b2ea47c826d7462824003e8285d61efbd78304ab29bfc57ee03",
+      "actualOrderedSelectedCardIds": [
+        "chem_org_q1_002"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_org_q1_002",
+          "front": "Wichtige funktionelle Gruppen?",
+          "back": "Alkohol: $-OH$\n\nAldehyd: $-CHO$\n\nKeton: $>C=O$\n\nCarbonsäure: $-COOH$\n\nEster: $-COOR$",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:7990387d-f254-5d3b-a589-a3e7ed9502a3",
+            "select:chemistry-bw-lk-organic_q1",
+            "select:chemistry-functional-groups-only",
+            "goal:cc5a626a-dc85-57e2-b422-259f92901545",
+            "goal:0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+            "goal:4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+            "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "7990387d-f254-5d3b-a589-a3e7ed9502a3"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "be8d0aa1-b3b5-55ca-bfc1-3b3ff3744b1b",
+      "title": "Konfiguration und Konformation unterscheiden: Begriffe abrufen",
+      "actualFilterTags": [
+        "select:chemistry-configuration-conformation-only"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+      "deckSha256": "sha256:bdbd3ab4c7b98b2ea47c826d7462824003e8285d61efbd78304ab29bfc57ee03",
+      "actualOrderedSelectedCardIds": [
+        "chem_org_q1_007"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_org_q1_007",
+          "front": "Konfiguration vs. Konformation?",
+          "back": "Konfiguration: nur durch Bindungsbruch änderbar, zum Beispiel R/S oder E/Z.\n\nKonformation: durch Drehung um Einfachbindungen änderbar.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:85342c52-9722-54b0-8fbb-513d9d648363",
+            "select:chemistry-configuration-conformation-only",
+            "goal:4955f745-b946-5d3d-82d6-5e52dc8549a3"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "85342c52-9722-54b0-8fbb-513d9d648363"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "46ce8cc4-b639-5abd-9ef4-743e21888ab5",
+      "title": "Namen zwischenmolekularer Wechselwirkungen abrufen",
+      "actualFilterTags": [
+        "select:chemistry-intermolecular-forces-only"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_007"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_007",
+          "front": "Wichtige zwischenmolekulare Kräfte?",
+          "back": "Van-der-Waals-Kräfte, Dipol-Dipol-Wechselwirkungen, Wasserstoffbrücken und Ionen-Dipol-Wechselwirkungen.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+            "select:chemistry-bw-lk-bonding_structure",
+            "select:chemistry-intermolecular-forces-only",
+            "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "21066929-2b7f-5d31-924b-338677053238",
+      "title": "Primärabbau und Mineralisierung: Begriffe abrufen",
+      "actualFilterTags": [
+        "select:chemistry-surfactant-primary-mineralisation-only"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+      "deckSha256": "sha256:bdbd3ab4c7b98b2ea47c826d7462824003e8285d61efbd78304ab29bfc57ee03",
+      "actualOrderedSelectedCardIds": [
+        "chem_split_tensid_primary_vs_mineralisation"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_split_tensid_primary_vs_mineralisation",
+          "front": "Primärabbau und Mineralisierung: Was ist der Unterschied?",
+          "back": "Beim Primärabbau verändern biologische Prozesse den Ausgangsstoff so, dass eine spezifische Eigenschaft verloren geht, bei Tensiden die Oberflächenaktivität; Zwischenprodukte können bleiben. Mineralisierung führt organischen Kohlenstoff in anorganische Endprodukte über, bei vollständigem aerobem Kohlenstoffabbau insbesondere CO2. Ausgangsstoffentfernung allein belegt keine vollständige Mineralisierung; Sorption ist nur Phasenverlagerung.",
+          "category": "Chemie - Tensidabbau",
+          "tags": [
+            "goal:cc5a626a-dc85-57e2-b422-259f92901545",
+            "select:chemistry-surfactant-primary-mineralisation-only"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "cc5a626a-dc85-57e2-b422-259f92901545"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "7513bc49-807b-5bae-9a8e-1587ac2340a5",
+      "title": "Viskose und Celluloseacetat: Stoffidentität abrufen",
+      "actualFilterTags": [
+        "select:chemistry-viscose-cellulose-identity-only"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_natural_q2.de.json",
+      "deckSha256": "sha256:5fe9381decc69eef1b4950d3b79357ce486dba3d1f7c18b66fb294365a92a2dd",
+      "actualOrderedSelectedCardIds": [
+        "chem_split_viscose_regenerated_cellulose"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_split_viscose_regenerated_cellulose",
+          "front": "Viskose und Celluloseacetat: Welche Stoffidentität bleibt nach der Herstellung?",
+          "back": "Viskose ist nach vorübergehender Verarbeitung regenerierte Cellulose; das Xanthat ist kein dauerhaftes Endprodukt. Celluloseacetat ist ein dauerhaft chemisch modifiziertes Cellulosederivat mit Acetatestergruppen anstelle eines Teils der OH-Gruppen. Das Cellulose-Rückgrat bleibt in beiden Fällen erhalten.",
+          "category": "Chemie - Cellulosefasern",
+          "tags": [
+            "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7",
+            "select:chemistry-viscose-cellulose-identity-only"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+      ],
+      "authoredCourseProfile": null
+    },
+    {
+      "memoryGoalId": "91e4962c-3324-5c52-b192-505c4eb3c762",
+      "title": "Bedeutung der GHS-Piktogramme abrufen",
+      "actualFilterTags": [
+        "goal:9e656697-fc05-5aa9-9aca-871af2e89eb7"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_001"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_001",
+          "front": "Gefahrstoffkennzeichnung: Was leisten GHS-Piktogramme?",
+          "back": "GHS-Piktogramme signalisieren Gefahrenklassen, zum Beispiel entzündbar, akut toxisch, ätzend, gesundheitsgefährdend oder umweltgefährlich.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:9e656697-fc05-5aa9-9aca-871af2e89eb7"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7"
+      ],
+      "authoredCourseProfile": [
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "a738ca10-c93d-5575-bec3-2dd7b94af9d3",
+      "title": "Nachweise für Sauerstoff, Wasserstoff und Kohlenstoffdioxid abrufen",
+      "actualFilterTags": [
+        "goal:580b3616-f121-5d82-ac6b-fc24f145fbdc"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_002"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_002",
+          "front": "Nachweise für O₂, H₂ und CO₂?",
+          "back": "O₂: Glimmspanprobe\n\nH₂: Knallgasprobe\n\nCO₂: Kalkwasserprobe, Kalkwasser wird trüb",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "580b3616-f121-5d82-ac6b-fc24f145fbdc"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "9a078cd0-f73b-5176-b9c0-4dfe842739a5",
+      "title": "Symbol-, Molekül- und Verhältnisformel unterscheiden: Begriffe abrufen",
+      "actualFilterTags": [
+        "goal:e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_003"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_003",
+          "front": "Elementsymbol, Molekülformel, Verhältnisformel?",
+          "back": "Elementsymbol: ein Element, zum Beispiel Na\n\nMolekülformel: Teilchenzusammensetzung eines Moleküls, zum Beispiel H₂O\n\nVerhältnisformel: kleinstes Zahlenverhältnis in Ionengittern, zum Beispiel NaCl",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "5904c7bc-e4c8-5476-aad5-c78cd9c19c65",
+      "title": "Atomteilchen und Periodensystembegriffe abrufen",
+      "actualFilterTags": [
+        "goal:e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "goal:72236f2c-771e-4ab6-933a-e549ee49d15b"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_004",
+        "chem_basics_005"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_004",
+          "front": "Bei Hauptgruppenelementen: Was bedeuten Ordnungszahl, Periode und Hauptgruppe (I–VIII)?",
+          "back": "Ordnungszahl = Protonenzahl.\n\nIm einfachen Schalenmodell des Grundzustands gibt die Periode die Zahl besetzter Schalen an.\n\nDie klassische Hauptgruppennummer I–VIII gibt die Zahl der Valenzelektronen an. Ausnahme: Helium steht in Hauptgruppe VIII (moderner Gruppe 18), hat aber nur zwei Außenelektronen.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d74940-1e0e-4511-9718-4851f49ad7a5",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_005",
+          "front": "Atomare Grundteilchen?",
+          "back": "Proton: positiv, im Kern\n\nNeutron: neutral, im Kern\n\nElektron: negativ, in der Hülle",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:72236f2c-771e-4ab6-933a-e549ee49d15b",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "72236f2c-771e-4ab6-933a-e549ee49d15b"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "8adb0ea6-8c81-5638-b331-eee4e9e7efda",
+      "title": "Periodensystembegriffe abrufen",
+      "actualFilterTags": [
+        "goal:e9d74940-1e0e-4511-9718-4851f49ad7a5"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_004"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_004",
+          "front": "Bei Hauptgruppenelementen: Was bedeuten Ordnungszahl, Periode und Hauptgruppe (I–VIII)?",
+          "back": "Ordnungszahl = Protonenzahl.\n\nIm einfachen Schalenmodell des Grundzustands gibt die Periode die Zahl besetzter Schalen an.\n\nDie klassische Hauptgruppennummer I–VIII gibt die Zahl der Valenzelektronen an. Ausnahme: Helium steht in Hauptgruppe VIII (moderner Gruppe 18), hat aber nur zwei Außenelektronen.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d74940-1e0e-4511-9718-4851f49ad7a5",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5"
+      ],
+      "authoredCourseProfile": [
+        "GK"
+      ]
+    },
+    {
+      "memoryGoalId": "20b61026-fc0a-5e7e-9657-707207adb0b1",
+      "title": "Kation und Anion abrufen",
+      "actualFilterTags": [
+        "goal:a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_006"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_006",
+          "front": "Kation und Anion: Bildung?",
+          "back": "Kation: Elektronenabgabe, positiv geladen\n\nAnion: Elektronenaufnahme, negativ geladen",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+            "select:chemistry-bw-lk-basics_seki",
+            "select:chemistry-ion-charges-mobile-ions-only",
+            "goal:2d16528c-1424-5999-b3d2-af4593a147fc"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca"
+      ],
+      "authoredCourseProfile": [
+        "GK"
+      ]
+    },
+    {
+      "memoryGoalId": "af544d8b-98b1-5497-9fee-76282b1bed5b",
+      "title": "Stoffmenge und molare Masse: Begriffe und Formel abrufen",
+      "actualFilterTags": [
+        "goal:1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+        "goal:8a2ad724-df5e-5986-8de9-560ba43caac2"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_008",
+        "chem_basics_010"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_008",
+          "front": "Stoffmenge $n$: Grundidee und Einheit?",
+          "back": "Die Stoffmenge $n$ ist ein Maß für die Anzahl festgelegter Teilchen (z. B. Wasser-Moleküle). Ihre Einheit ist Mol ($\\mathrm{mol}$).\n\n$1\\,\\mathrm{mol}$ enthält genau $6{,}02214076\\cdot10^{23}$ der angegebenen Teilchen.\n\nEs gilt $N=n\\cdot N_A$ mit $N_A=6{,}02214076\\cdot10^{23}\\,\\mathrm{mol}^{-1}$. Die Teilchenzahl $N$ hat die Einheit Eins.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_010",
+          "front": "Molare Masse: Formel?",
+          "back": "$M=\\frac{m}{n}$\n\n$M$: molare Masse, $m$: Masse, $n$: Stoffmenge",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:8a2ad724-df5e-5986-8de9-560ba43caac2",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+        "8a2ad724-df5e-5986-8de9-560ba43caac2"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "47a39e42-33ea-501e-9b87-261e7389bc44",
+      "title": "Avogadro-Konstante abrufen",
+      "actualFilterTags": [
+        "goal:e45c0022-ac0d-5c83-b433-5f68655e382f"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_009"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_009",
+          "front": "Avogadro-Konstante?",
+          "back": "$N_A \\approx 6{,}022\\cdot10^{23}\\,\\mathrm{mol}^{-1}$\n\nSie verknüpft Stoffmenge und Teilchenzahl.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e45c0022-ac0d-5c83-b433-5f68655e382f",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e45c0022-ac0d-5c83-b433-5f68655e382f"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "5a75246d-2dd8-5756-8404-41bff88f3416",
+      "title": "Molares Volumen: Formel und Bedingungsbindung abrufen",
+      "actualFilterTags": [
+        "goal:2924f784-5261-54e8-93ee-49ac3b3cd300"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_011"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_011",
+          "front": "Molares Volumen: Formel?",
+          "back": "$V_m=\\frac{V}{n}$\n\nDer Zahlenwert gilt immer nur für festgelegte Bedingungen.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:2924f784-5261-54e8-93ee-49ac3b3cd300",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "2924f784-5261-54e8-93ee-49ac3b3cd300"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "7b58e778-81af-5d92-a0d1-175b5606e704",
+      "title": "Saure und basische Lösungen: pH-Zuordnung und Ionen abrufen",
+      "actualFilterTags": [
+        "goal:d2ccd1d5-56f7-583f-9724-e97441367f91",
+        "goal:fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_012",
+        "chem_basics_013"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_012",
+          "front": "pH-Skala: sauer, neutral, alkalisch – für verdünnte wässrige Lösungen bei etwa 25 °C?",
+          "back": "Bei etwa $25^\\circ\\mathrm{C}$ gilt als schulischer Richtwert:\n\nSauer: $\\mathrm{pH}<7$; neutral: $\\mathrm{pH}\\approx7$; alkalisch/basisch: $\\mathrm{pH}>7$.\n\nNeutralität bedeutet im verdünnten Modell gleich große Oxonium- und Hydroxidionenkonzentrationen. Der neutrale pH-Wert hängt von der Temperatur ab; die Grenze 7 ist kein temperaturunabhängiges Naturgesetz.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:d2ccd1d5-56f7-583f-9724-e97441367f91",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        },
+        {
+          "id": "chem_basics_013",
+          "front": "Saure und basische Lösung auf Teilchenebene?",
+          "back": "Saure Lösung: erhöhte Konzentration an Oxonium-Ionen $H_3O^+$\n\nBasische Lösung: erhöhte Konzentration an Hydroxid-Ionen $OH^-$",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "d2ccd1d5-56f7-583f-9724-e97441367f91",
+        "fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "efe1eb01-f9de-5116-b763-9fcac0e72434",
+      "title": "Schulische pH-Zuordnung mit Temperaturgrenze abrufen",
+      "actualFilterTags": [
+        "goal:d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "deckSha256": "sha256:13bf4a2d598b9bc6f4ad31c0876ebd54538a03228cde2427b459efa383ffce76",
+      "actualOrderedSelectedCardIds": [
+        "chem_basics_012"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_basics_012",
+          "front": "pH-Skala: sauer, neutral, alkalisch – für verdünnte wässrige Lösungen bei etwa 25 °C?",
+          "back": "Bei etwa $25^\\circ\\mathrm{C}$ gilt als schulischer Richtwert:\n\nSauer: $\\mathrm{pH}<7$; neutral: $\\mathrm{pH}\\approx7$; alkalisch/basisch: $\\mathrm{pH}>7$.\n\nNeutralität bedeutet im verdünnten Modell gleich große Oxonium- und Hydroxidionenkonzentrationen. Der neutrale pH-Wert hängt von der Temperatur ab; die Grenze 7 ist kein temperaturunabhängiges Naturgesetz.",
+          "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:d2ccd1d5-56f7-583f-9724-e97441367f91",
+            "select:chemistry-bw-lk-basics_seki"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "8afc9ff2-9290-5ff0-96fe-bced78cd7084",
+      "title": "Energiestufenmodell: Kernidee abrufen",
+      "actualFilterTags": [
+        "goal:f5efab9d-2c61-44ea-b36a-87f873b51fd8"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_001"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_001",
+          "front": "Bohrsches Energiestufenmodell: Kernidee?",
+          "back": "Elektronen befinden sich in bestimmten Energiestufen beziehungsweise Schalen.\n\nÜbergänge zwischen Stufen sind mit Energieaufnahme oder Energieabgabe verbunden.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "f5efab9d-2c61-44ea-b36a-87f873b51fd8"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "e16c2a63-fc78-5dd4-86d8-143647167717",
+      "title": "Valenzstrichschreibweise und Mesomerie: Begriffe abrufen",
+      "actualFilterTags": [
+        "goal:e74f5301-70d3-5869-bd3d-79a5763a1718",
+        "goal:23533087-89ea-5f29-8ec1-9f2e01197bb6"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_002",
+        "chem_bond_003"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_002",
+          "front": "Valenzstrichschreibweise: Was zeigen Punkte und Striche?",
+          "back": "Punkte stehen für Valenzelektronen.\n\nEin Strich steht für ein Elektronenpaar, als Bindungspaar oder freies Elektronenpaar.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e74f5301-70d3-5869-bd3d-79a5763a1718",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_003",
+          "front": "Mesomerie: Merksatz?",
+          "back": "Mesomere Grenzstrukturen haben dieselbe Atomverknüpfung, aber unterschiedliche Elektronenverteilung.\n\nDie reale Struktur ist kein schnelles Umschalten, sondern ein delokalisiertes Zwischenbild.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:23533087-89ea-5f29-8ec1-9f2e01197bb6",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e74f5301-70d3-5869-bd3d-79a5763a1718",
+        "23533087-89ea-5f29-8ec1-9f2e01197bb6"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "8f3b0bc3-9bd0-59d7-bf13-7cffef236518",
+      "title": "Mesomerie: begrifflichen Merksatz abrufen",
+      "actualFilterTags": [
+        "goal:23533087-89ea-5f29-8ec1-9f2e01197bb6"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_003"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_003",
+          "front": "Mesomerie: Merksatz?",
+          "back": "Mesomere Grenzstrukturen haben dieselbe Atomverknüpfung, aber unterschiedliche Elektronenverteilung.\n\nDie reale Struktur ist kein schnelles Umschalten, sondern ein delokalisiertes Zwischenbild.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:23533087-89ea-5f29-8ec1-9f2e01197bb6",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "23533087-89ea-5f29-8ec1-9f2e01197bb6"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "6824a504-7a3a-5b42-b351-3b84a521a3fc",
+      "title": "EPA-Modell und Molekülpolarität: Grundregeln abrufen",
+      "actualFilterTags": [
+        "goal:67cd332f-9db7-50e1-87f6-172ef3714300",
+        "goal:747c5777-07d7-51a9-9be3-7d0d6f51d4e2"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_004",
+        "chem_bond_005"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_004",
+          "front": "EPA-Modell: Grundregel?",
+          "back": "Elektronenpaare stoßen sich ab.\n\nDie Molekülgeometrie ordnet Bindungs- und freie Elektronenpaare mit möglichst großem Abstand an.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:67cd332f-9db7-50e1-87f6-172ef3714300",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_005",
+          "front": "Bindungspolarität vs. Molekülpolarität?",
+          "back": "Bindungspolarität folgt aus Elektronegativitätsunterschieden.\n\nMolekülpolarität hängt zusätzlich von der räumlichen Geometrie ab.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "67cd332f-9db7-50e1-87f6-172ef3714300",
+        "747c5777-07d7-51a9-9be3-7d0d6f51d4e2"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "b5f585e9-a3ca-5796-ad0b-95410f034de2",
+      "title": "Bindungs- und Molekülpolarität unterscheiden: Begriffe abrufen",
+      "actualFilterTags": [
+        "goal:747c5777-07d7-51a9-9be3-7d0d6f51d4e2"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_005"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_005",
+          "front": "Bindungspolarität vs. Molekülpolarität?",
+          "back": "Bindungspolarität folgt aus Elektronegativitätsunterschieden.\n\nMolekülpolarität hängt zusätzlich von der räumlichen Geometrie ab.",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "747c5777-07d7-51a9-9be3-7d0d6f51d4e2"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "64d71d34-3c52-5428-9948-a62064e99ed0",
+      "title": "Bindungstypen und Hybridisierungszuordnungen abrufen",
+      "actualFilterTags": [
+        "goal:448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "goal:37b4081a-244a-58d8-b448-88ed83344210"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_006",
+        "chem_bond_009"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_006",
+          "front": "Drei grundlegende Bindungstypen?",
+          "back": "Ionenbindung: Anziehung von Ionen\n\nElektronenpaarbindung: gemeinsame Elektronenpaare\n\nMetallbindung: Metallkationen im Elektronengas",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:448815cc-4127-54b7-96bf-e54b3d2a38c5",
+            "select:chemistry-bw-lk-bonding_structure"
+          ]
+        },
+        {
+          "id": "chem_bond_009",
+          "front": "Hybridisierung: typische Zuordnung?",
+          "back": "$sp$: linear\n\n$sp^2$: trigonal-planar\n\n$sp^3$: tetraedrisch",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:37b4081a-244a-58d8-b448-88ed83344210"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+        "37b4081a-244a-58d8-b448-88ed83344210"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "277af899-aec7-5b27-aab7-de67c0f45dbe",
+      "title": "Aufbau-, Pauli- und Hund-Regeln abrufen",
+      "actualFilterTags": [
+        "goal:3bc48951-025c-5144-99b1-924db611a5f9"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "deckSha256": "sha256:346e8f7ee85571b7a79173eae3aa2f06b3521e2210bc16466e8faf7c392b8084",
+      "actualOrderedSelectedCardIds": [
+        "chem_bond_008"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_bond_008",
+          "front": "Aufbauprinzip, Pauli-Prinzip, Hundsche Regel?",
+          "back": "Aufbauprinzip: energiearme Orbitale zuerst\n\nPauli: max. zwei Elektronen pro Orbital mit entgegengesetztem Spin\n\nHund: entartete Orbitale erst einfach besetzen",
+          "category": "Chemie - Atombau, Bindung und Struktur",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:3bc48951-025c-5144-99b1-924db611a5f9"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "3bc48951-025c-5144-99b1-924db611a5f9"
+      ],
+      "authoredCourseProfile": [
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "567b5b63-8cc5-562f-85d1-13e2bbda9b54",
+      "title": "Aldehyd-/Keton- und Halogenidnachweise: Merkmale abrufen",
+      "actualFilterTags": [
+        "goal:973c12d9-d863-5292-8c68-9c80cdacf9e2",
+        "goal:41396457-d97b-55f3-9804-2af1bb188e79"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+      "deckSha256": "sha256:bdbd3ab4c7b98b2ea47c826d7462824003e8285d61efbd78304ab29bfc57ee03",
+      "actualOrderedSelectedCardIds": [
+        "chem_org_q1_005",
+        "chem_org_q1_006"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_org_q1_005",
+          "front": "Aldehyd vs. Keton: Fehling/Tollens?",
+          "back": "Aldehyde reagieren in der Regel positiv.\n\nKetone reagieren unter Schulbedingungen meist nicht positiv.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:973c12d9-d863-5292-8c68-9c80cdacf9e2"
+          ]
+        },
+        {
+          "id": "chem_org_q1_006",
+          "front": "Halogenidionen-Nachweis mit Silbernitrat?",
+          "back": "Mit $AgNO_3$ entstehen schwerlösliche Silberhalogenide:\n\n$AgCl$ weiß, $AgBr$ cremefarben, $AgI$ gelblich.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:41396457-d97b-55f3-9804-2af1bb188e79"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+        "41396457-d97b-55f3-9804-2af1bb188e79"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "8b28172c-9ba3-58c8-9a94-4f94ab580b0d",
+      "title": "IR und Protonen-NMR: Darstellungszweck abrufen",
+      "actualFilterTags": [
+        "goal:466bd2e9-39a5-5221-b620-945934adce00"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+      "deckSha256": "sha256:bdbd3ab4c7b98b2ea47c826d7462824003e8285d61efbd78304ab29bfc57ee03",
+      "actualOrderedSelectedCardIds": [
+        "chem_org_q1_010"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_org_q1_010",
+          "front": "IR und $^1H$-NMR: Wofür nutzt man sie?",
+          "back": "IR-Spektren zeigen charakteristische Schwingungen funktioneller Gruppen.\n\n$^1H$-NMR unterscheidet Wasserstoff-Umgebungen im Molekül.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:466bd2e9-39a5-5221-b620-945934adce00"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "466bd2e9-39a5-5221-b620-945934adce00"
+      ],
+      "authoredCourseProfile": [
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "d92b3a20-28e8-5d1c-a400-d5e1fa03ec81",
+      "title": "Aminosäure, Zwitterion und Peptidbindung abrufen",
+      "actualFilterTags": [
+        "goal:e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+        "goal:197bc2c5-835e-59e7-9263-5684e89799cc"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_natural_q2.de.json",
+      "deckSha256": "sha256:5fe9381decc69eef1b4950d3b79357ce486dba3d1f7c18b66fb294365a92a2dd",
+      "actualOrderedSelectedCardIds": [
+        "chem_nat_q2_001",
+        "chem_nat_q2_002",
+        "chem_nat_q2_003"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_nat_q2_001",
+          "front": "Aminosäure: Grundstruktur?",
+          "back": "Eine Aminosäure besitzt mindestens eine Aminogruppe und eine Carboxylgruppe.\n\nProteinogene α-Aminosäuren tragen beide Gruppen am α-C-Atom.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_002",
+          "front": "Zwitterion bei Aminosäuren?",
+          "back": "In wässriger Lösung kann eine Aminosäure zugleich positiv geladene $-NH_3^+$-Gruppe und negativ geladene $-COO^-$-Gruppe tragen.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_003",
+          "front": "Peptidbindung: Was ist das?",
+          "back": "Eine Peptidbindung ist eine Amidbindung zwischen Carboxylgruppe einer Aminosäure und Aminogruppe einer anderen Aminosäure unter Wasserabspaltung.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:197bc2c5-835e-59e7-9263-5684e89799cc",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+        "197bc2c5-835e-59e7-9263-5684e89799cc"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "428b4d9c-f6e6-548f-b9da-336466ddb62e",
+      "title": "Peptidbindung und Biuret-Nachweisgrenze abrufen",
+      "actualFilterTags": [
+        "goal:197bc2c5-835e-59e7-9263-5684e89799cc",
+        "goal:5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_natural_q2.de.json",
+      "deckSha256": "sha256:5fe9381decc69eef1b4950d3b79357ce486dba3d1f7c18b66fb294365a92a2dd",
+      "actualOrderedSelectedCardIds": [
+        "chem_nat_q2_003",
+        "chem_nat_q2_004"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_nat_q2_003",
+          "front": "Peptidbindung: Was ist das?",
+          "back": "Eine Peptidbindung ist eine Amidbindung zwischen Carboxylgruppe einer Aminosäure und Aminogruppe einer anderen Aminosäure unter Wasserabspaltung.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:197bc2c5-835e-59e7-9263-5684e89799cc",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        },
+        {
+          "id": "chem_nat_q2_004",
+          "front": "Biuret-Reaktion: Was weist sie nach?",
+          "back": "Die Biuret-Reaktion ist ein typischer Nachweis für Proteine und längere Peptide. Für die charakteristische violette Komplexbildung mit Kupfer(II)-Ionen in alkalischer Lösung werden mindestens zwei passende Peptidbindungen benötigt (bei einfachen Peptidketten ab dem Tripeptid).\n\nEine einzelne Peptidbindung, etwa in einem einfachen Dipeptid, genügt dafür nicht. Ein positiver Test bestimmt nicht die Identität eines bestimmten Proteins.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "197bc2c5-835e-59e7-9263-5684e89799cc",
+        "5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+      ],
+      "authoredCourseProfile": [
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "87d01187-21b5-59c3-8b9a-e8fd584afbd2",
+      "title": "Zucker- und Glucosenachweise: Merkmale abrufen",
+      "actualFilterTags": [
+        "goal:96d33fb6-ed14-50ab-b5c7-5ce0559d518a"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_natural_q2.de.json",
+      "deckSha256": "sha256:5fe9381decc69eef1b4950d3b79357ce486dba3d1f7c18b66fb294365a92a2dd",
+      "actualOrderedSelectedCardIds": [
+        "chem_nat_q2_005"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_nat_q2_005",
+          "front": "Reduzierende Zucker: typische Nachweise?",
+          "back": "Fehling-, Benedict- oder Tollens-Probe können reduzierende Zucker anzeigen.\n\nDer GOD-Test ist spezifisch für Glucose.",
+          "category": "Chemie Q2 - Naturstoffe",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+            "select:chemistry-bw-lk-natural_q2"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "96d33fb6-ed14-50ab-b5c7-5ce0559d518a"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "2dc50422-2be1-5ff5-bcd2-2688830e5ad0",
+      "title": "MWG, Le Chatelier und pK-Begriffe abrufen",
+      "actualFilterTags": [
+        "goal:20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "goal:5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+        "goal:48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_001",
+        "chem_eq_q3_002",
+        "chem_eq_q3_005"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_001",
+          "front": "Massenwirkungsgesetz: Grundform?",
+          "back": "Für $aA+bB \\rightleftharpoons cC+dD$ gilt näherungsweise:\n\n$K_c=\\frac{c(C)^c\\,c(D)^d}{c(A)^a\\,c(B)^b}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:20f92ba0-f7f4-5407-bb96-07e30da9002f",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_002",
+          "front": "Le-Chatelier-Prinzip?",
+          "back": "Ein Gleichgewicht reagiert auf äußeren Zwang so, dass die Störung teilweise abgeschwächt wird.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_005",
+          "front": "pKS und pKB: Merksatz?",
+          "back": "$pK_S=-\\log K_S$, $pK_B=-\\log K_B$\n\nJe kleiner der pKS-Wert, desto stärker die Säure.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+        "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "ad68b3ca-a53f-5642-9d78-f4db10360fd1",
+      "title": "Ionenprodukt des Wassers abrufen",
+      "actualFilterTags": [
+        "goal:07879ea2-b6a1-5eb3-b548-15d45bbcb227"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_003"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_003",
+          "front": "Ionenprodukt des Wassers?",
+          "back": "$K_w=[H_3O^+]\\,[OH^-]$\n\nBei $25^\\circ C$ gilt näherungsweise $K_w=10^{-14}\\,\\mathrm{mol^2/L^2}$.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "07879ea2-b6a1-5eb3-b548-15d45bbcb227"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "d9bd6482-ef18-51d2-860b-facc6095793b",
+      "title": "Standardpotenziale und Nernst-Beziehung abrufen",
+      "actualFilterTags": [
+        "goal:b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+        "goal:8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_007",
+        "chem_eq_q3_009"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_007",
+          "front": "Nernst-Gleichung für eine als Reduktion geschriebene Halbgleichung: Formel und Reaktionsquotient?",
+          "back": "$E=E^\\circ-\\frac{RT}{zF}\\ln Q$; bei $25^\\circ\\mathrm{C}$ näherungsweise $E=E^\\circ-\\frac{0{,}05916\\,\\mathrm{V}}{z}\\log_{10}Q$.\n\n$Q$ enthält die Aktivitäten der Produkte geteilt durch die der Edukte, jeweils mit den stöchiometrischen Koeffizienten als Potenzen; Elektronen werden nicht eingesetzt. Reine feste Stoffe und reine Flüssigkeiten haben in ihrem Standardzustand die Aktivität 1.\n\nFür $\\mathrm{Ox}+ze^-\\rightleftharpoons\\mathrm{Red}$ ist $Q=a(\\mathrm{Red})/a(\\mathrm{Ox})$. Für $\\mathrm{Cu}^{2+}+2e^-\\rightleftharpoons\\mathrm{Cu}(s)$ gilt daher $Q=1/a(\\mathrm{Cu}^{2+})$.\n\nDie dimensionslose Aktivität lässt sich nur im passenden verdünnten idealen Lösungsmodell durch $c/c^\\circ$ annähern; Konzentrations- und Aktivitätsform nicht unbesehen vermischen.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_009",
+          "front": "Elektrochemische Spannungsreihe: Vorzeichen-Deutung?",
+          "back": "Je positiver das Standardpotenzial, desto stärker wirkt die oxidierte Form als Oxidationsmittel.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:8be14f15-2258-58e6-ae4e-38953f5d0570",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+        "8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "authoredCourseProfile": [
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "4bae8c8d-7653-5005-b965-d56edb71b2b3",
+      "title": "Vorzeichendeutung von Standardpotenzialen abrufen",
+      "actualFilterTags": [
+        "goal:8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_009"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_009",
+          "front": "Elektrochemische Spannungsreihe: Vorzeichen-Deutung?",
+          "back": "Je positiver das Standardpotenzial, desto stärker wirkt die oxidierte Form als Oxidationsmittel.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:8be14f15-2258-58e6-ae4e-38953f5d0570",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "authoredCourseProfile": [
+        "GK"
+      ]
+    },
+    {
+      "memoryGoalId": "ddde45b7-a3de-585b-b41e-3ae841349c87",
+      "title": "Faraday-Beziehungen abrufen",
+      "actualFilterTags": [
+        "goal:b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_008"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_008",
+          "front": "Faraday-Beziehung für Elektrolyse?",
+          "back": "$Q=I\\cdot t=z\\cdot F\\cdot n$\n\n$F\\approx 96485\\,\\mathrm{C/mol}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "50ea4d12-6da8-5a56-a79f-f518e105efd7",
+      "title": "Arrhenius-Beziehung und lineare Steigung abrufen",
+      "actualFilterTags": [
+        "goal:e62c6c58-b688-59c3-8ac5-2cfc26ac22d7"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_010"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_010",
+          "front": "Arrhenius-Beziehung?",
+          "back": "$k=A\\,e^{-E_A/(RT)}$\n\nIm $\\ln k$ gegen $1/T$-Diagramm ist die Steigung $-E_A/R$.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e62c6c58-b688-59c3-8ac5-2cfc26ac22d7"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "e62c6c58-b688-59c3-8ac5-2cfc26ac22d7"
+      ],
+      "authoredCourseProfile": [
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "be848fa1-8f52-5099-923f-79b776f07f2f",
+      "title": "Löslichkeitsprodukt abrufen",
+      "actualFilterTags": [
+        "goal:ac1bcf34-169c-5339-92ba-efe8c3022560"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_011"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_011",
+          "front": "Löslichkeitsprodukt: Grundidee?",
+          "back": "Für ein Salzgleichgewicht ist $K_L$ das Produkt der Ionenkonzentrationen in der gesättigten Lösung, jeweils mit stöchiometrischem Exponenten.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:ac1bcf34-169c-5339-92ba-efe8c3022560",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "ac1bcf34-169c-5339-92ba-efe8c3022560"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "9ca180a2-07f7-559e-bf3a-d638ebbea75d",
+      "title": "Energieerhaltung und Hess-Satz abrufen",
+      "actualFilterTags": [
+        "goal:801790f9-be3a-51fe-9b0f-3452c1bba887",
+        "goal:4a08f31f-204c-5339-9d9f-5d2af28d5d5c"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "deckSha256": "sha256:8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "actualOrderedSelectedCardIds": [
+        "chem_energy_q4_001",
+        "chem_energy_q4_002"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_energy_q4_001",
+          "front": "1. Hauptsatz der Thermodynamik: Kernidee?",
+          "back": "Energie wird weder erzeugt noch vernichtet, sondern umgewandelt oder übertragen.\n\nEin geschlossenes System kann Energie durch Wärme und Arbeit austauschen, aber keine Materie.\n\nEin offenes System kann zusätzlich Energie mit ein- und ausströmender Materie austauschen.\n\nEin isoliertes System tauscht weder Energie noch Materie mit der Umgebung aus.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:801790f9-be3a-51fe-9b0f-3452c1bba887",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        },
+        {
+          "id": "chem_energy_q4_002",
+          "front": "Satz von Hess?",
+          "back": "Reaktionsenthalpien sind wegunabhängig.\n\nGesamtenthalpieänderungen können aus Teilschritten oder Bildungsenthalpien summiert werden.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "801790f9-be3a-51fe-9b0f-3452c1bba887",
+        "4a08f31f-204c-5339-9d9f-5d2af28d5d5c"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "6ac1472c-86a1-5237-b0c7-d75b8d5d7423",
+      "title": "Energieerhaltung und Systemarten abrufen",
+      "actualFilterTags": [
+        "goal:801790f9-be3a-51fe-9b0f-3452c1bba887"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "deckSha256": "sha256:8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "actualOrderedSelectedCardIds": [
+        "chem_energy_q4_001"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_energy_q4_001",
+          "front": "1. Hauptsatz der Thermodynamik: Kernidee?",
+          "back": "Energie wird weder erzeugt noch vernichtet, sondern umgewandelt oder übertragen.\n\nEin geschlossenes System kann Energie durch Wärme und Arbeit austauschen, aber keine Materie.\n\nEin offenes System kann zusätzlich Energie mit ein- und ausströmender Materie austauschen.\n\nEin isoliertes System tauscht weder Energie noch Materie mit der Umgebung aus.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:801790f9-be3a-51fe-9b0f-3452c1bba887",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "801790f9-be3a-51fe-9b0f-3452c1bba887"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "e512ec3e-0420-5860-873f-1a9b0755903b",
+      "title": "Satz von Hess abrufen",
+      "actualFilterTags": [
+        "goal:4a08f31f-204c-5339-9d9f-5d2af28d5d5c"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "deckSha256": "sha256:8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "actualOrderedSelectedCardIds": [
+        "chem_energy_q4_002"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_energy_q4_002",
+          "front": "Satz von Hess?",
+          "back": "Reaktionsenthalpien sind wegunabhängig.\n\nGesamtenthalpieänderungen können aus Teilschritten oder Bildungsenthalpien summiert werden.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "4a08f31f-204c-5339-9d9f-5d2af28d5d5c"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "3a1ff945-dea8-5f8b-9b2b-b483315dcdc4",
+      "title": "Gibbs-Helmholtz-Beziehung abrufen",
+      "actualFilterTags": [
+        "goal:dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "deckSha256": "sha256:8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "actualOrderedSelectedCardIds": [
+        "chem_energy_q4_003"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_energy_q4_003",
+          "front": "Gibbs-Helmholtz-Gleichung?",
+          "back": "$\\Delta G=\\Delta H-T\\Delta S$\n\n$\\Delta G<0$ spricht unter den betrachteten Bedingungen für freiwilligen Ablauf.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5"
+      ],
+      "authoredCourseProfile": [
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "2ab83298-e12b-5d4e-bd90-4cacdbccecf2",
+      "title": "RGT-Faustregel abrufen",
+      "actualFilterTags": [
+        "goal:56115f9d-1d32-5454-94b1-00dbc4a7bc6f"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "deckSha256": "sha256:8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "actualOrderedSelectedCardIds": [
+        "chem_energy_q4_004"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_energy_q4_004",
+          "front": "RGT-Regel?",
+          "back": "Eine Temperaturerhöhung um $10\\,K$ erhöht die Reaktionsgeschwindigkeit häufig ungefähr auf das Zwei- bis Vierfache.\n\nEs ist eine Faustregel, kein Naturgesetz.",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "56115f9d-1d32-5454-94b1-00dbc4a7bc6f"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "memoryGoalId": "fdd72195-e113-5a78-ab0b-02ed631b34aa",
+      "title": "Heizwert und Brennwert unterscheiden: Begriffe abrufen",
+      "actualFilterTags": [
+        "goal:ecdc3c08-9ba3-56e5-ab00-4b02357867ac"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "deckSha256": "sha256:8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "actualOrderedSelectedCardIds": [
+        "chem_energy_q4_006"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_energy_q4_006",
+          "front": "Heizwert vs. Brennwert?",
+          "back": "Heizwert: ohne Nutzung der Kondensationswärme des entstehenden Wassers\n\nBrennwert: mit Nutzung dieser Kondensationswärme",
+          "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:ecdc3c08-9ba3-56e5-ab00-4b02357867ac",
+            "select:chemistry-bw-lk-energy_q4"
+          ]
+        }
+      ],
+      "oldSelectionExact": true,
+      "requires": [
+        "ecdc3c08-9ba3-56e5-ab00-4b02357867ac"
+      ],
+      "authoredCourseProfile": [
+        "GK"
+      ]
+    },
+    {
+      "memoryGoalId": "03b08b91-6809-576a-8cf1-4a131caab4e5",
+      "title": "Qualitative Faraday-Zusammenhänge abrufen",
+      "actualFilterTags": [
+        "goal:0e3f849b-133d-57da-882c-0d67c3eb05b8"
+      ],
+      "sourceDeck": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "deckSha256": "sha256:d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_012",
+        "chem_eq_q3_013"
+      ],
+      "wholeSelectedCards": [
+        {
+          "id": "chem_eq_q3_012",
+          "front": "Erstes Faraday-Gesetz: Wie hängen bei derselben Elektrodenreaktion Ladung und Stoff-/Massenumsatz zusammen?",
+          "back": "Bei unveränderter Elektrodenreaktion und gleicher Stromausbeute ist der umgesetzte Stoff proportional zur dafür durchgesetzten Ladung. Für denselben Stoff gilt das auch für seine Masse. Mehr Gesamtladung allein genügt bei wechselnden Nebenreaktionen nicht.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "goal:0e3f849b-133d-57da-882c-0d67c3eb05b8"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_013",
+          "front": "Zweites Faraday-Gesetz: Was bestimmt bei gleicher für die Reaktion genutzter Ladung Stoffmenge und Masse verschiedener Produkte?",
+          "back": "Gleiche Ladung liefert die gleiche Elektronenmenge. Je mehr Elektronen pro Produktteilchen benötigt werden, desto weniger Teilchen und Stoffmenge entstehen. Die Produktmasse hängt zusätzlich von der molaren Masse ab: gleiche Stoffmenge verschiedener Stoffe bedeutet nicht gleiche Masse. Die Reaktion und Stromausbeute müssen festliegen.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "goal:0e3f849b-133d-57da-882c-0d67c3eb05b8"
+          ]
+        }
+      ],
+      "oldSelectionExact": null,
+      "requires": [
+        "0e3f849b-133d-57da-882c-0d67c3eb05b8"
+      ],
+      "authoredCourseProfile": [
+        "GK",
+        "LK"
+      ]
+    }
+  ],
+  "newQualitativeAcquisitionScopes": [
+    {
+      "viewId": "de-bb-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-bb-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-be-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-be-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-by-gym-chemistry-lk-explicit-source-union-author",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-de-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-de-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-de-gym-sekii-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-de-gym-sekii-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-hb-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-hb-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-he-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-he-gym-sekii-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-ni-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    },
+    {
+      "viewId": "de-ni-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "qualitativeTarget": true,
+      "qualitativeMemoryTarget": true
+    }
+  ],
+  "runtimeFilteredMissingMemoryCount": 4,
+  "runtimeFilteredMissingMemory": [
+    {
+      "viewId": "de-he-gym-chemistry-gk",
+      "file": "de-he-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "goalId": "ac1bcf34-169c-5339-92ba-efe8c3022560",
+      "referencedMemoryGoalIds": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "045efaa4-a91a-5a91-add9-bff49cbed324",
+        "be848fa1-8f52-5099-923f-79b776f07f2f"
+      ],
+      "actualFilteredMemoryTargetIds": [
+        "076cb333-3b61-5025-8f32-32afc16f9987",
+        "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "2dc50422-2be1-5ff5-bcd2-2688830e5ad0",
+        "31148286-b8db-57a7-8da2-2e0479240a2c",
+        "417e65ec-68be-5f2e-9452-c3ba9b1d362f",
+        "4bae8c8d-7653-5005-b965-d56edb71b2b3",
+        "567b5b63-8cc5-562f-85d1-13e2bbda9b54",
+        "6122faf0-6718-52b3-b40d-b206a2e963ae",
+        "9321ef8b-e1d8-549e-83f4-1484e72d35f6",
+        "ad68b3ca-a53f-5642-9d78-f4db10360fd1",
+        "f6d7386c-dda4-501d-84da-0c881362e724"
+      ],
+      "status": "HOLD, retained finite actual content/scope issue; no flags or LK additions used"
+    },
+    {
+      "viewId": "de-he-gym-chemistry-lk",
+      "file": "de-he-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "goalId": "e62c6c58-b688-59c3-8ac5-2cfc26ac22d7",
+      "referencedMemoryGoalIds": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "50ea4d12-6da8-5a56-a79f-f518e105efd7"
+      ],
+      "actualFilteredMemoryTargetIds": [
+        "03b08b91-6809-576a-8cf1-4a131caab4e5",
+        "076cb333-3b61-5025-8f32-32afc16f9987",
+        "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "21066929-2b7f-5d31-924b-338677053238",
+        "2dc50422-2be1-5ff5-bcd2-2688830e5ad0",
+        "31148286-b8db-57a7-8da2-2e0479240a2c",
+        "417e65ec-68be-5f2e-9452-c3ba9b1d362f",
+        "6122faf0-6718-52b3-b40d-b206a2e963ae",
+        "64d71d34-3c52-5428-9948-a62064e99ed0",
+        "7513bc49-807b-5bae-9a8e-1587ac2340a5",
+        "9321ef8b-e1d8-549e-83f4-1484e72d35f6",
+        "ad68b3ca-a53f-5642-9d78-f4db10360fd1",
+        "be848fa1-8f52-5099-923f-79b776f07f2f",
+        "c8bf3178-383d-570f-825d-d2d7b9507e6e",
+        "d9bd6482-ef18-51d2-860b-facc6095793b",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24"
+      ],
+      "status": "HOLD, retained finite actual content/scope issue; no flags or LK additions used"
+    },
+    {
+      "viewId": "de-he-gym-sekii-chemistry-gk",
+      "file": "de-he-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "goalId": "ac1bcf34-169c-5339-92ba-efe8c3022560",
+      "referencedMemoryGoalIds": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "045efaa4-a91a-5a91-add9-bff49cbed324",
+        "be848fa1-8f52-5099-923f-79b776f07f2f"
+      ],
+      "actualFilteredMemoryTargetIds": [
+        "076cb333-3b61-5025-8f32-32afc16f9987",
+        "2dc50422-2be1-5ff5-bcd2-2688830e5ad0",
+        "31148286-b8db-57a7-8da2-2e0479240a2c",
+        "417e65ec-68be-5f2e-9452-c3ba9b1d362f",
+        "46ce8cc4-b639-5abd-9ef4-743e21888ab5",
+        "4bae8c8d-7653-5005-b965-d56edb71b2b3",
+        "567b5b63-8cc5-562f-85d1-13e2bbda9b54",
+        "6122faf0-6718-52b3-b40d-b206a2e963ae",
+        "9321ef8b-e1d8-549e-83f4-1484e72d35f6",
+        "ad68b3ca-a53f-5642-9d78-f4db10360fd1",
+        "f6d7386c-dda4-501d-84da-0c881362e724"
+      ],
+      "status": "HOLD, retained finite actual content/scope issue; no flags or LK additions used"
+    },
+    {
+      "viewId": "de-he-gym-sekii-chemistry-lk",
+      "file": "de-he-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "goalId": "e62c6c58-b688-59c3-8ac5-2cfc26ac22d7",
+      "referencedMemoryGoalIds": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "50ea4d12-6da8-5a56-a79f-f518e105efd7"
+      ],
+      "actualFilteredMemoryTargetIds": [
+        "03b08b91-6809-576a-8cf1-4a131caab4e5",
+        "076cb333-3b61-5025-8f32-32afc16f9987",
+        "1a0eab44-b0b2-534b-a3db-988a1bb76a87",
+        "21066929-2b7f-5d31-924b-338677053238",
+        "2dc50422-2be1-5ff5-bcd2-2688830e5ad0",
+        "31148286-b8db-57a7-8da2-2e0479240a2c",
+        "417e65ec-68be-5f2e-9452-c3ba9b1d362f",
+        "46ce8cc4-b639-5abd-9ef4-743e21888ab5",
+        "6122faf0-6718-52b3-b40d-b206a2e963ae",
+        "64d71d34-3c52-5428-9948-a62064e99ed0",
+        "7513bc49-807b-5bae-9a8e-1587ac2340a5",
+        "ad68b3ca-a53f-5642-9d78-f4db10360fd1",
+        "be848fa1-8f52-5099-923f-79b776f07f2f",
+        "c8bf3178-383d-570f-825d-d2d7b9507e6e",
+        "d9bd6482-ef18-51d2-860b-facc6095793b",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24"
+      ],
+      "status": "HOLD, retained finite actual content/scope issue; no flags or LK additions used"
+    }
+  ],
+  "fullStockMExitCode": 1,
+  "fullStockMRawVisibilityMissing": 18,
+  "rawVsActual": "Full stock M currently expands canonicalSubtree role sets without actual course filters. Four listed cases remain genuinely visible and unresolved; other14 raw entries are not actual GK target goals. No runtime change or scope trick is made here.",
+  "MachineM7Pass": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

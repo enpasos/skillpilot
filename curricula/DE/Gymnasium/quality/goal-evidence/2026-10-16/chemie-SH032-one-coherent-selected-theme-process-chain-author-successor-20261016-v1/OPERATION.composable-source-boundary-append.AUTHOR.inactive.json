@@ -1,0 +1,36 @@
+{
+  "authority": "AUTHOR_PROPOSAL_ONLY",
+  "canonicalParentId": "6b6bceca-e1d9-56f7-ae6c-d7f7c2fa9338",
+  "baseCanonicalSha256": "sha256:6bed948af8d0ba47d722fb6205bacba6f8792e233f58c1772366395dd8450d8e",
+  "wholeBeforeInCASFile": "CAS.existing-boundary-parent-whole-before-after.AUTHOR.inactive.json",
+  "operation": {
+    "field": "contains",
+    "appendUnique": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+    "preserveAllExistingChildrenAndTheirOrder": true,
+    "requiresActualParentStillBoundary": true,
+    "doNotApplyStaleWholeAfterOverNewerParent": true
+  },
+  "derivedField": {
+    "field": "weight",
+    "rule": "Recompute number of unique curricular atomic descendants after append against actual composed canonical;7→8 only for exact6bed example",
+    "actualCurrentExample": {
+      "actualBeforeStoredWeight": 7,
+      "actualBeforeUniqueAtomicChildren": 9,
+      "afterUniqueAtomicChildren": 10,
+      "proposedDerivedWeight": 10,
+      "reason": "Preserve both independently supported source-boundary structural additions and derive the resulting exact unique atomic descendant count after adding this one author leaf."
+    }
+  },
+  "compositionWithPendingRootStructuralChanges": "Later independently supported root442/6b6 structural CAS may be composed first; validate actual whole parent and preserve all new children, then append this one new ID and derive weight. No broad old whole-parent overwrite.",
+  "learnerFacingPlacementProposal": {
+    "kind": "goalEntry",
+    "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+    "projectionRole": "target",
+    "context": "Within explicitly selected SH Chemie und Medikamente theme, common GK/LK column",
+    "normalViewWrite": false,
+    "notACompleteViewOrScopeDecision": true
+  },
+  "noPharmacyContainsAppend": true,
+  "noNormalWrites": true,
+  "latestComposedBaseSha256": "sha256:a3bd44bf5e65b5e21de15ded3982f6f74105e06446d6bff054991b518479bea3"
+}

@@ -1,0 +1,76 @@
+{
+  "role": "Technical input successor only; preserve the existing historical view and all31 learner views",
+  "existingFull435ConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-five-supported-description-normal-H-and-native5-technical-20261016-v1/base-full435-P5-current-normal-H.stock.config.json",
+  "existingTechnicalViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-seventeen-pending-description-native-technical-20261016-v1/VIEW.full435-existing-whole-QS-plus-two-explicit-targets.technical.json",
+  "before": {
+    "snapshot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-H634-DP-context-impact-readonly-b-20261016-v1/VIEW.full435-before.exact.json",
+    "sha256": "sha256:5d220869aecd87e7517c9c6e42a5aba070727815cf89aae9a167f86147ea67d0"
+  },
+  "after": {
+    "snapshot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-H634-DP-context-impact-readonly-b-20261016-v1/VIEW.full435-H634-two-redundant-direct-entries-removed.DIAGNOSTIC-ONLY.json",
+    "sha256": "sha256:a133ab6e3207a0bf7ddeb9e67163e23e35e0f64b853f1b88de7e207f2e355a02"
+  },
+  "proposedSuccessorConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-H634-DP-context-impact-readonly-b-20261016-v1/CONFIG.full435-H634-context-diagnostic.no-render-no-write.json",
+  "removedNodes": [
+    {
+      "path": [
+        "rootNodes",
+        0,
+        "children",
+        2,
+        "children",
+        0
+      ],
+      "wholeNode": {
+        "kind": "goalEntry",
+        "goalId": "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "path": [
+        "rootNodes",
+        0,
+        "children",
+        2,
+        "children",
+        1
+      ],
+      "wholeNode": {
+        "kind": "goalEntry",
+        "goalId": "4a7dee38-1056-5e27-acec-e6a12f58109f",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "path": [
+        "rootNodes",
+        0,
+        "children",
+        2
+      ],
+      "wholeNode": {
+        "kind": "structure",
+        "id": "chemie-two-current-method-goals-QS",
+        "label": "Aktuelle Methodenlernziele – reine QS-Vervollständigung",
+        "children": [
+          {
+            "kind": "goalEntry",
+            "goalId": "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+            "projectionRole": "target"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "4a7dee38-1056-5e27-acec-e6a12f58109f",
+            "projectionRole": "target"
+          }
+        ]
+      },
+      "reason": "Empty wrapper after its two redundant direct entries are removed; CPV-007 otherwise"
+    }
+  ],
+  "otherViewFieldsPreserved": true,
+  "learnerViewMutations": 0,
+  "HOrRMutation": false,
+  "scienceVote": false
+}

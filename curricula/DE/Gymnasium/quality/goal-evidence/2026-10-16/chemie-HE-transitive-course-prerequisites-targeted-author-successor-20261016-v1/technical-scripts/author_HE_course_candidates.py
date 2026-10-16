@@ -1,0 +1,61 @@
+from pathlib import Path
+import json,copy,hashlib
+O=Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-HE-transitive-course-prerequisites-targeted-author-successor-20261016-v1');H=Path('tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1');D=O/'author-goal-and-course-candidates';D.mkdir(exist_ok=True)
+def read(p):return json.loads(p.read_text())
+def write(p,x):q=Path(str(p)+'.tmp');q.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');q.replace(p)
+a=read(H/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json');b={g['id']:g for g in a['goals']};e=read(O/'ERROR-MAP.first-full-readonly-current-H-primary-sources-before-authoring.json');F=[x['missingGoalId'] for x in e['twelveGenuineFoundationPlacementCases']]
+Q='0e3f849b-133d-57da-882c-0d67c3eb05b8';M='03b08b91-6809-576a-8cf1-4a131caab4e5';B='b8c8f70f-64cb-50b1-970c-e0c4295da3fb';four=['73547696-e225-5f14-839b-c77f54c32bae','2bc1a15b-a677-5612-a564-33e826d11327','0acc8cd2-be6d-567e-a023-1d9e90475510','fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d','386e28af-505a-5eb9-87fe-9c6946f10433','70bcb6bd-b7f8-5e23-b466-f9bc270a9c67'];polar='f4d5a02d-711b-5a6b-a41d-971359c1f64d';changes={}
+qual=read(O/'author-qualitative-faraday/ordinary-goal.author-draft.json');qual['tags']=['GK','LK','canonical','SekII'];qual['applicability']={'jurisdiction':['DE-HE']};qual['extendedData']['scopeBoundary']['otherJurisdictions']='The retained quantitative Faraday goal in BY/BB/BE/HB/NI requires this qualitative charge/electron/amount foundation. Its extra-country visibility is stock requires-closure, not an assertion of identical course naming or an additional HE-GK obligation.';qual['extendedData']['scopeBoundary']['globalTags']='GK/LK preserve valid cross-country quantitative-course routes. Four HE views explicitly place the qualitative goal in HE-LK only.';qual['resourceLinks'][0]['provider']='OpenAI / ChatGPT-Codex image_gen';qual['resourceLinks'][0]['description']='Freundlicher echter PNG-Autorenkandidat: qualitative Ladungs-/Teilchenvergleiche für Silber und Kupfer ohne Nebenreaktionen, mit Erinnerung an Stoffmenge und molare Masse. Zwei unabhängige tatsächliche Bildprüfungen stehen aus.';qual['resourceLinks'][0]['reviewStatus']='pending-independent-actual-review';changes[Q]=qual
+changes[M]=read(O/'author-qualitative-faraday/memory-unit.author-draft.json');changes[M]['applicability']['courseProfile']=['GK','LK'];changes[M]['extendedData']['actualAdditionalAcquisitionScope']={'basis':'The new qualitative ordinary is also an explicit prerequisite target in nine valid quantitative courses; recall follows that learned qualitative origin. HE-GK is excluded explicitly in the HE view, and no quantitative HE law obligation is introduced.','candidateMemoryReviewOriginBinding':'New positive qualitative M row is required in the prospective436 selector, with independent review pending.'}
+g=copy.deepcopy(b[B]);g['requires']=[Q];g['extendedData']['provenance']={'sourceLandscapeId':'ff1ca997-b6cc-5ece-8e13-5498b4bbf808','sourceLandscapeTitle':'DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)','sourceGoalId':'0bcad875-ec45-582e-b28e-ca2a17b22200'};changes[B]=g
+k='98ae3f8e-4800-5ff3-bd2c-89434c006143';g=copy.deepcopy(b[k]);g['requires']=[i for i in g['requires'] if i not in ['55f35372-d7a3-5299-bf9e-9828d6720366','3681e688-7880-5bb4-9ab9-ef78289345c8']];changes[k]=g
+k='f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528';g=copy.deepcopy(b[k]);g['requires']=[i for i in g['requires'] if i not in ['55f35372-d7a3-5299-bf9e-9828d6720366','3681e688-7880-5bb4-9ab9-ef78289345c8']];changes[k]=g
+k='37b4081a-244a-58d8-b448-88ed83344210';g=copy.deepcopy(b[k]);g['requires']=['e74f5301-70d3-5869-bd3d-79a5763a1718' if i=='70bcb6bd-b7f8-5e23-b466-f9bc270a9c67' else i for i in g['requires']];changes[k]=g
+for k in ['2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00','5f151e8c-a62e-5e8c-979d-dcf4eb025873']:
+ g=copy.deepcopy(b[k]);g['requires']=[i for i in g['requires'] if i!='55f35372-d7a3-5299-bf9e-9828d6720366'];changes[k]=g
+k='567b5b63-8cc5-562f-85d1-13e2bbda9b54';g=copy.deepcopy(b[k]);g['applicability']['courseProfile']=['GK','LK'];changes[k]=g
+k='33766473-86a1-5f82-afc9-bdb8ed6a2ab6';g=copy.deepcopy(b[k]);g['contains'].insert(g['contains'].index(B),Q);g['weight']=len(g['contains']);changes[k]=g
+k='633f4fd4-1c36-5377-8fe6-44d8eeac3c56';g=copy.deepcopy(b[k]);g['contains'].append(M);changes[k]=g
+for cp,gid in [('GK','14577339-9e0c-5b44-8e47-91e1a4947367'),('LK','32705a3a-9b7f-5cc0-ba41-881d13d0c45b')]:
+ v=next(x for x in e['HECurrentScope'] if x['scope']['stage']=='SekII' and x['scope']['courseProfile']==cp);oldtargets=set(v['ordinaryTargetIds']);g=copy.deepcopy(b[gid]);extra=set(g['requires'])-oldtargets;assert len(extra)==1,(cp,extra);assert len(set(g['requires'])&oldtargets)==len(oldtargets)
+ exclude=set(four+[B]+([polar,'3eada74b-25b8-55dc-811a-acb473196f53','37b4081a-244a-58d8-b448-88ed83344210','c98683ae-3309-581e-b02b-b10ad703d8a0','707998c1-872d-582d-a2d6-14e7d967cbdb','321d801d-28e4-54a2-bd31-8c07bda2f392','e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e'] if cp=='GK' else []));desired=(oldtargets-exclude)|set(F)|({Q} if cp=='LK' else set());g['requires']=[x for x in g['requires'] if x in desired or x in extra]+[x for x in F if x not in g['requires']]+([Q] if cp=='LK' else []);assert set(g['requires'])==desired|extra
+ g['examData']['reviewStatus']='draft';rc=g['extendedData']['routeCoverage'];rc['currentDirectRequiresObjectCount']=len(g['requires']);rc['currentDirectRequiresAtomicObjectCount']=len(g['requires']);rc['currentCourseTargetAdmissionCount']=len(desired);rc['remainingLegacyTerminalDuties']='HOLD for other local endpoint/whole-course duties; the bounded corrected HE global-admission closure is checked in this author successor actual full-stock receipt. Seven assessed IDs do not certify whole-course coverage.';g['extendedData']['targetedAdmissionAuthorSuccessor']={'status':'draft-pending-two-independent-content-reviews','role':'AUTHOR, not self review','baseCanonicalSha256':'sha256:d17b3219212d5157a3731cc54b8424cc07816835781984bcbeb3a98f4064268f','scope':f'HE SekII {cp}','oldAdmissionHistoryPreservedInWholeCAS':True,'sourceQualifiedTargets':len(desired),'priorSafetyGoalIds':list(extra),'directlyAssessedGoalIdsUnchanged':True,'complete44BEMaterialAndSolutionsUnchanged':True,'wholeRouteRelease':False,'HumanApproval':False,'HumanTrial':False};changes[gid]=g
+d8path=O/'author-amino-stereo-successor/ordinary-goal.author-draft.json'
+if d8path.exists():
+ g=read(d8path);changes[g['id']]=g
+for gid,g in changes.items():write(D/f'GOAL.{gid}.before.json',b.get(gid));write(D/f'GOAL.{gid}.after.author-draft.json',g)
+aug={**b,**changes};cache={}
+def desc(i,vis=None):
+ if i in cache:return cache[i]
+ seen=set() if vis is None else set(vis)
+ if i in seen:raise RuntimeError('cycle')
+ seen.add(i);s={i}
+ for j in aug[i].get('contains',[]):s|=desc(j,seen)
+ cache[i]=s;return s
+def prune(n,exclude,viewid):
+ n=copy.deepcopy(n)
+ if n['kind']=='structure':
+  n['children']=[y for x in n['children'] if (y:=prune(x,exclude,viewid)) is not None];return n if n['children'] else None
+ if n.get('goalId') in exclude:return None
+ if n['kind']!='canonicalSubtree' or not(desc(n['goalId'])&exclude):return n
+ g=aug[n['goalId']];assert not g.get('requires'),('Decomposition would drop inherited requires',g['id'],g['requires'])
+ children=[y for x in g.get('contains',[]) if (y:=prune({'kind':'canonicalSubtree','goalId':x,**({'projectionRole':n['projectionRole']} if 'projectionRole' in n else {})},exclude,viewid)) is not None]
+ return {'kind':'structure','id':viewid+'-source-qualified-'+g['id'],'label':n.get('displayLabel',g['title']),'children':children} if children else None
+vs=[]
+for p in sorted((H/'curricula/DE/Gymnasium/composition-views/chemie').glob('*.json')):
+ v=read(p)
+ if v['scope'].get('jurisdiction')!='DE-HE':
+  baseline=read(O/'ATTEMPT1.actual-full82-stock-and39views.intermediate-not-final.json');row=next(x for x in baseline['after']['views'] if x['file']==p.name)
+  if v['scope'].get('jurisdiction') and B in row['ordinaryTargetIds'] and Q not in row['ordinaryTargetIds']:
+   w=copy.deepcopy(v);w['rootNodes'][0]['children'].append({'kind':'structure','id':v['viewId']+'-faraday-qualitative-prior-learning','label':'Grundlage der quantitativen Faraday-Gesetze','children':[{'kind':'goalEntry','goalId':Q,'projectionRole':'target'},{'kind':'goalEntry','goalId':M,'projectionRole':'target'}]});write(D/f'VIEW.{p.name}.before.json',v);write(D/f'VIEW.{p.name}.after.author-draft.json',w);vs.append(p.name)
+  continue
+ cp=v['scope']['courseProfile'];exclude=set(four+[B,'1f2021c0-c633-5240-ae97-e58ecc9d48ca','1e519951-9850-5a07-ac82-d9f0075e3d05']+([polar,Q,M,'3eada74b-25b8-55dc-811a-acb473196f53','e3e8582a-976b-5f0f-b31b-3cf59a4fff24','37b4081a-244a-58d8-b448-88ed83344210','c98683ae-3309-581e-b02b-b10ad703d8a0','707998c1-872d-582d-a2d6-14e7d967cbdb','321d801d-28e4-54a2-bd31-8c07bda2f392','e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e','64d71d34-3c52-5428-9948-a62064e99ed0'] if cp=='GK' else []));w=copy.deepcopy(v);w['rootNodes']=[y for x in w['rootNodes'] if (y:=prune(x,exclude,v['viewId'])) is not None]
+ root=w['rootNodes'][0];root['children'].append({'kind':'structure','id':v['viewId']+'-required-foundation-learning','label':'Grundlagen für Untersuchungen, Quellen und chemische Erklärungen','children':[{'kind':'goalEntry','goalId':i,'projectionRole':'target'} for i in F]})
+ if cp=='GK' or v['scope']['stage']=='CrossStage':root['children'].append({'kind':'structure','id':v['viewId']+'-source-matched-atomic-recall','label':'Bereits erlernte Atombau- und Bindungsgrundlagen festigen','children':[{'kind':'goalEntry','goalId':'9321ef8b-e1d8-549e-83f4-1484e72d35f6','projectionRole':'target'}]+([{'kind':'goalEntry','goalId':'64d71d34-3c52-5428-9948-a62064e99ed0','projectionRole':'target'}] if cp=='LK' and v['scope']['stage']=='CrossStage' else [])})
+ narrow=['2dc50422-2be1-5ff5-bcd2-2688830e5ad0','ad68b3ca-a53f-5642-9d78-f4db10360fd1','076cb333-3b61-5025-8f32-32afc16f9987']+(['4bae8c8d-7653-5005-b965-d56edb71b2b3'] if cp=='GK' else ['d9bd6482-ef18-51d2-860b-facc6095793b','c8bf3178-383d-570f-825d-d2d7b9507e6e','be848fa1-8f52-5099-923f-79b776f07f2f']);root['children'].append({'kind':'structure','id':v['viewId']+'-course-matched-q3-recall','label':'Bereits erlernte Gleichgewichts- und Elektrochemiebegriffe festigen','children':[{'kind':'goalEntry','goalId':i,'projectionRole':'target'} for i in narrow]})
+ if v['scope']['stage']=='SekII':
+  cross=next(x for x in e['HECurrentScope'] if x['scope']['stage']=='CrossStage' and x['scope']['courseProfile']==cp);sekii=next(x for x in e['HECurrentScope'] if x['scope']['stage']=='SekII' and x['scope']['courseProfile']==cp);prior=[i for i in cross['ordinaryTargetIds'] if i not in sekii['ordinaryTargetIds']];root['children'].append({'kind':'structure','id':v['viewId']+'-actual-he-seki-prior-learning','label':'Bereits erlernte HE-Grundlagen aus der Sekundarstufe I','children':[{'kind':'goalEntry','goalId':i,'projectionRole':'prerequisiteOnly'} for i in prior]})
+ if cp=='GK':root['children'].append({'kind':'structure','id':v['viewId']+'-course-matched-organic-recall','label':'Bereits erlernte organische Stoffklassen und Nachweise festigen','children':[{'kind':'goalEntry','goalId':i,'projectionRole':'target'} for i in ['f6d7386c-dda4-501d-84da-0c881362e724','567b5b63-8cc5-562f-85d1-13e2bbda9b54']]})
+
+ write(D/f'VIEW.{p.name}.before.json',v);write(D/f'VIEW.{p.name}.after.author-draft.json',w);vs.append(p.name)
+write(O/'AUTHOR.initial-whole-goal-and-course-change-summary.json',{'role':'AUTHOR inactive candidates after frozen source plan, not independent review','wholeGoalChanges':list(changes),'newOrdinaryCount':436,'newMemoryCount':58,'newWholeGoalCount':636,'HEViews':vs,'HEOnlyTargetRemovals':{'GK':four+[B,polar],'LK':four+[B]},'genuineHEFoundationsAdded':F,'HELKQualitativeFaradayAdded':Q,'allOld435CanonicalIdsRetained':True,'wholeOldHistoryPreservedInBeforeFiles':True,'candidateBodiesAndViewsNotNormalWrites':True,'HumanApproval':False,'HumanTrial':False});print('operations',len(changes),'views',len(vs),'newrequires',[(k,len(changes[k]['requires'])) for k in ['14577339-9e0c-5b44-8e47-91e1a4947367','32705a3a-9b7f-5cc0-ba41-881d13d0c45b']])

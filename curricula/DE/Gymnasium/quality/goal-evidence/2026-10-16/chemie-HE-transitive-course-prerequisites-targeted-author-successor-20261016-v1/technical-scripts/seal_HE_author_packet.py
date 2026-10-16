@@ -1,0 +1,55 @@
+from pathlib import Path
+import json,hashlib,datetime,copy,importlib.util,jsonschema
+R=Path('.').resolve();O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-HE-transitive-course-prerequisites-targeted-author-successor-20261016-v1';H=R/'tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1';C=R/'tmp/chemie-m7-resumed-20261016/he-transitive-course-stock-capsule'
+def read(p):return json.loads(p.read_text())
+def sha(p):return 'sha256:'+hashlib.sha256(p.read_bytes()).hexdigest()
+def stable(x):return json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':'))
+def objsha(x):return 'sha256:'+hashlib.sha256(stable(x).encode()).hexdigest()
+def write(p,x):q=Path(str(p)+'.tmp');q.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');q.replace(p)
+cas=read(O/'CAS.whole-fourteen-goal-operations.author-inactive.json');stock=read(O/'VERIFY.actual-full82-stock-and39views.before-after.author.json');m=read(O/'CHECK.actual-58-SRS-and-runtime-filtered-M-scope.author.json');before=read(H/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json');after=read(C/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json');by={g['id']:g for g in before['goals']};ay={g['id']:g for g in after['goals']};assert len(cas['operations'])==14;assert sha(C/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json')=='sha256:8ee85c5a6e6cc9de4a65cea2583dcfba6764f25f2febdf68162a188d9083d974';assert stock['chemistryErrorCount']==0
+schema=read(R/'docs/landscape-runtime.schema.json');val=jsonschema.Draft202012Validator({'$ref':'#/$defs/goal',**{k:v for k,v in schema.items() if k in ['$schema','$id','$defs']}});checks=[]
+for op in cas['operations']:
+ assert op['beforeWhole']==by.get(op['goalId']);assert op['afterWhole']==ay[op['goalId']];errors=[{'path':list(e.path),'message':e.message} for e in val.iter_errors(op['afterWhole'])];checks.append({'goalId':op['goalId'],'dimensionTagsPresent':isinstance(op['afterWhole'].get('dimensionTags'),dict),'errors':errors});assert not errors
+write(O/'CHECK.final-fourteen-runtime-goal-schema-and-exact-CAS.json',{'role':'Actual final14 whole-goal runtime schema and wholeCAS/body comparison; technical author check only','schemaPath':'docs/landscape-runtime.schema.json#/$defs/goal','schemaSha256':sha(R/'docs/landscape-runtime.schema.json'),'candidateCanonicalSha256':sha(C/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'),'wholeGoalOperations':14,'errorCount':0,'rows':checks,'HumanApproval':False,'HumanTrial':False})
+# Four non-Chemistry M7 subject entries/canonical data are untouched; no green-state toggles or reruns inferred.
+regrel='curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json';rh=read(H/regrel);rc=read(C/regrel);floors=[]
+for s in rh['subjects']:
+ if s['subject']=='chemie':continue
+ t=next(x for x in rc['subjects'] if x['subject']==s['subject']);assert s==t
+ pins=[]
+ for key in ['landscapePath','semanticKindLedgerPath','memoryReviewConfigPath']:
+  if s.get(key):
+   rel=s[key];pins.append({'role':key,'path':rel,'H':sha(H/rel),'capsule':sha(C/rel),'normalR':sha(R/rel)});assert pins[-1]['H']==pins[-1]['capsule']==pins[-1]['normalR']
+ floors.append({'subject':s['subject'],'entireSubjectRegistryEntryExact':True,'entryStableSha256':objsha(s),'pins':pins})
+assert len(floors)==4;write(O/'CHECK.protected-four-M7-floor-inputs-unchanged.json',{'role':'Exact unchanged input proof for four protected non-chemistry M7 subject entries; no M7 status change or full gate rerun claimed','subjects':floors,'allExact':True,'normalChemistryHCanonicalUnchanged':sha(H/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'),'M7Promotion':False,'HumanApproval':False,'HumanTrial':False})
+# Goal graph invariants and exact exam material scope.
+def cycles(field):
+ seen=set();active=set()
+ def visit(i):
+  if i in active:raise AssertionError((field,i))
+  if i in seen:return
+  active.add(i)
+  for j in ay[i].get(field,[]):
+   if j in ay:visit(j)
+  active.remove(i);seen.add(i)
+ for i in ay:visit(i)
+cycles('requires');cycles('contains');exam=[]
+for gid in ['14577339-9e0c-5b44-8e47-91e1a4947367','32705a3a-9b7f-5cc0-ba41-881d13d0c45b']:
+ b=by[gid];a=ay[gid];eb=copy.deepcopy(b['examData']);ea=copy.deepcopy(a['examData']);eb.pop('reviewStatus',None);ea.pop('reviewStatus',None);assert eb==ea;exam.append({'goalId':gid,'allExamMaterialSolutionsScoringAndSevenAssessedIdsExact':True,'reviewStatusBefore':b['examData']['reviewStatus'],'reviewStatusAfter':a['examData']['reviewStatus'],'directRequiresBefore':len(b['requires']),'directRequiresAfter':len(a['requires']),'wholeTerminalCoverageValidatedStillFalse':a['extendedData']['routeCoverage']['wholeTerminalCoverageValidated'] is False})
+write(O/'CHECK.exact-exam-material-and-DAGs.author.json',{'role':'Actual graph and retained exam-body check, not independent content review','requiresAcyclic':True,'containsAcyclic':True,'goals':636,'exams':exam,'FruitWholeBodyExact':by['00139854-e5a7-5c12-ab50-2268c80bf776']==ay['00139854-e5a7-5c12-ab50-2268c80bf776'],'HumanApproval':False,'HumanTrial':False})
+# Exact ordinary-page/backlink impact list without claiming new description votes.
+imp=[]
+for op in cas['operations']:
+ b=op['beforeWhole'] or {};a=op['afterWhole'];br=b.get('requires',[]);ar=a.get('requires',[]);imp.append({'goalId':op['goalId'],'title':a['title'],'requiresAdded':[i for i in ar if i not in br],'requiresRemoved':[i for i in br if i not in ar],'DEDescriptionChanged':b.get('description')!=a.get('description'),'ENDescriptionChanged':b.get('descriptionEn')!=a.get('descriptionEn'),'resourceLinksChanged':b.get('resourceLinks')!=a.get('resourceLinks'),'containsAdded':[i for i in a.get('contains',[]) if i not in b.get('contains',[])]})
+write(O/'D-PAGES.exact-final-context-and-backlinks-checklist.author.json',{'role':'Exact technical D/page/link context impact; no invented D vote or unrendered page claim','native8CandidateCanonicalSha256':sha(C/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'),'native8HandledByRootFromExactPin':True,'impacts':imp,'requiredTechnicalChecks':['Actual native8 HTML/PDF pages with complete DE/EN/currentP context, actual image bytes and readable page layout','Direct/reverse requires link destinations for every listed added/removed ID; preserve unchanged description science and historical input hashes','HE source-qualified chapter paths and removal of six BY quantum/MO goals; five hybridisation goals only removed from HE-GK; no other-country old target loss','New ordinary0e3, new memory03 and retained56/57 whole memory bodies;567only courseProfile field expands for genuine HE-GK detection recall','Two fresh independent content/native8/V judgments before any new authoritative bindings or exam re-release'],'HumanApproval':False,'HumanTrial':False})
+write(O/'AUTHOR.final-bounded-change-summary.json',{'role':'Inactive final author successor; fourteen whole-goalCAS/thirteen viewCAS/seven source-fileCAS; no normal promotion','baseCanonicalSha256':sha(H/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'),'candidateCanonicalSha256':sha(C/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'),'goalsBefore':634,'goalsAfter':636,'ordinaryBefore':435,'ordinaryAfter':436,'old435IdsRetained':True,'oldOrdinaryWholeBodiesExact':428,'targetedChangedExistingOrdinaryIds':stock['changedExistingOrdinaryIds'],'memoryBefore':57,'memoryAfter':58,'oldMemoryWholeBodiesExact':56,'soleChangedExistingMemoryId':'567b5b63-8cc5-562f-85d1-13e2bbda9b54','sourceMappingFiles':7,'viewFiles':13,'actualStockMappingInputs':82,'actualMappedSourcePaths':35,'stockApplicabilityErrors':0,'stockCompositionViews39ErrorCount':sum(v['stockPreviewErrorCount'] for v in stock['after']['views']),'HEActualFilteredScopes':[{'file':v['file'],'scope':v['scope'],'ordinaryTargets':len(v['ordinaryTargetIds']),'explicitOrdinaryPriorSupport':len(v['explicitOrdinarySupportIds']),'globalAdmission':[{'goalId':x['goalId'],'missingOrdinaryPrerequisites':len(x['missingOrdinaryFromActualTargetOrExplicitSupport'])} for x in v['terminals'] if x['goalId'] in ['14577339-9e0c-5b44-8e47-91e1a4947367','32705a3a-9b7f-5cc0-ba41-881d13d0c45b']]} for v in stock['after']['views'] if v['scope'].get('jurisdiction')=='DE-HE'],'exactViewDeltas':stock['comparison'],'positiveV2AuthorProfiles':8,'oldWholeMaterialsFullyInspected':{'existingGoals':7,'wholeCases':15},'newCompleteDEENCases':{'qualitativeFaraday':2,'sourceQualifiedAminoStereo':2},'strictM436':{'ordinaryRecords':436,'memoryTraced':'58/58','cardRecords':79,'missingStaleObsoleteRecords':0,'rawVisibilityBlocking':18,'actualRuntimeFilteredBlocking':4,'actualHoldGoalIds':['ac1bcf34-169c-5339-92ba-efe8c3022560','e62c6c58-b688-59c3-8ac5-2cfc26ac22d7']},'allOtherCountryOldOrdinaryTargetsRetained':not any(x['ordinaryTargetsRemoved'] for x in stock['comparison'] if x['scope'].get('jurisdiction')!='DE-HE'),'primaryTerminals':28,'allExams':40,'wholeCourseM7Release':False,'twoFreshIndependentReviewsPending':True,'HumanApproval':False,'HumanTrial':False})
+# Unambiguous author kind proposals for the two actual additions, no classification vote fabricated.
+write(O/'AUTHOR.new-goal-semantic-kind-proposals.json',{'role':'AUTHOR classification proposals for two additions; no independent A approval','proposals':[{'goalId':'0e3f849b-133d-57da-882c-0d67c3eb05b8','semanticKind':'curricularAtomic','reason':'One coherent qualitative charge/electron/amount conversion competence with two laws and model-limit transfer; no numerical Faraday obligation in HE.'},{'goalId':'03b08b91-6809-576a-8cf1-4a131caab4e5','semanticKind':'memory','reason':'Two compact verbal recall cards after actual qualitative understanding; no acquisition by memorization.'}],'reviewAuthority':'ai_candidate','status':'needs_human_review','HumanApproval':False,'HumanTrial':False})
+# Run the repository portability function, recording only this author's owned-root errors.
+spec=importlib.util.spec_from_file_location('validate_schemas',R/'scripts/validate_schemas.py');mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);all_link_errors=mod.curriculum_symlink_errors(R);owned=[s for s in all_link_errors if str(O.relative_to(R)) in s];assert not owned;assert not any(p.is_symlink() for p in O.rglob('*'))
+for p in O.rglob('*.json'):json.loads(p.read_text())
+for p in O.rglob('*.jsonl'):
+ for line in p.read_text().splitlines():
+  if line.strip():json.loads(line)
+assert not list(O.rglob('*.tmp'));write(O/'CHECK.final-json-newlines-and-owned-portability.json',{'role':'Actual complete owned-root JSON/JSONL parse and repository symlink validator invocation','ownedRootSymlinks':0,'ownedCurriculumSymlinkErrors':owned,'repositoryOtherSymlinkErrorsCount':len(all_link_errors)-len(owned),'halfWrittenTemporaryJsonFiles':0,'HumanApproval':False,'HumanTrial':False})
+print('final author checks complete; write README and final manifest next')

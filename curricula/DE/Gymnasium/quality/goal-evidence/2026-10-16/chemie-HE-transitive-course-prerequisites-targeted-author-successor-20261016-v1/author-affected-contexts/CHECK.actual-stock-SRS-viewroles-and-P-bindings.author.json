@@ -1,0 +1,934 @@
+{
+  "role": "AUTHOR stock-selector and binding check; no content KEEP or acceptance",
+  "status": "draft",
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "requiredIndependentReviews": 2,
+  "completedIndependentReviews": 0,
+  "canonicalSha256": "d17b3219212d5157a3731cc54b8424cc07816835781984bcbeb3a98f4064268f",
+  "canonicalGoalCount": 634,
+  "actualCodePins": [
+    {
+      "actualPath": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/src/utils/srsTags.ts",
+      "sha256": "b56555b0a069ac25faa766003e4efe1e4f59128aeb8116036efec6186eec7ad0"
+    },
+    {
+      "actualPath": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/src/components/srs/FlashcardDrill.tsx",
+      "sha256": "f0f4c7e40e1cca9d50bdc979377a72e2c55f7455be705a94fc3c2542f3e03642"
+    },
+    {
+      "actualPath": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    },
+    {
+      "actualPath": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    },
+    {
+      "actualPath": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    },
+    {
+      "actualPath": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/semanticAtomicityReview.ts",
+      "sha256": "b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "actualPath": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/memoryCardReview.ts",
+      "sha256": "f7a7f2fdcb798fcd92a71fc7968232dea107b25f47214a9e8210eba7af53e0f9"
+    }
+  ],
+  "executedCardPredicate": "card.tags && card.tags.some(tag => filterTags.includes(tag))",
+  "actualRuntimeDeckSha256": "7762dc80a637c8ed8cf89676f9eb7fb9c540e12efa84fa84628f3b28a764e4a6",
+  "selections": [
+    {
+      "memoryGoalId": "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_001",
+        "chem_eq_q3_002",
+        "chem_eq_q3_003",
+        "chem_eq_q3_004",
+        "chem_eq_q3_005",
+        "chem_eq_q3_006",
+        "chem_eq_q3_007",
+        "chem_eq_q3_008",
+        "chem_eq_q3_009",
+        "chem_eq_q3_010",
+        "chem_eq_q3_011"
+      ],
+      "selectedWholeCards": [
+        {
+          "id": "chem_eq_q3_001",
+          "front": "Massenwirkungsgesetz: Grundform?",
+          "back": "Für $aA+bB \\rightleftharpoons cC+dD$ gilt näherungsweise:\n\n$K_c=\\frac{c(C)^c\\,c(D)^d}{c(A)^a\\,c(B)^b}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:20f92ba0-f7f4-5407-bb96-07e30da9002f",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_002",
+          "front": "Le-Chatelier-Prinzip?",
+          "back": "Ein Gleichgewicht reagiert auf äußeren Zwang so, dass die Störung teilweise abgeschwächt wird.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_003",
+          "front": "Ionenprodukt des Wassers?",
+          "back": "$K_w=[H_3O^+]\\,[OH^-]$\n\nBei $25^\\circ C$ gilt näherungsweise $K_w=10^{-14}\\,\\mathrm{mol^2/L^2}$.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_004",
+          "front": "pH und pOH?",
+          "back": "$pH=-\\log[H_3O^+]$\n\n$pOH=-\\log[OH^-]$\n\nBei $25^\\circ C$: $pH+pOH=14$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:f1ed86f0-534d-57d7-8952-a004a331cc54",
+            "goal:acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "goal:edcfc5f0-900d-5819-830f-3b14af2bc369",
+            "select:chemistry-bw-lk-equilibria_q3",
+            "select:chemistry-ph-poh-relations-only"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_005",
+          "front": "pKS und pKB: Merksatz?",
+          "back": "$pK_S=-\\log K_S$, $pK_B=-\\log K_B$\n\nJe kleiner der pKS-Wert, desto stärker die Säure.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_006",
+          "front": "Henderson-Hasselbalch-Gleichung?",
+          "back": "$pH=pK_S+\\log\\frac{c(A^-)}{c(HA)}$\n\nfür einen Puffer aus schwacher Säure und korrespondierender Base.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:a449e874-6fec-502b-9667-6f078adc4d64",
+            "select:chemistry-bw-lk-equilibria_q3",
+            "select:chemistry-henderson-hasselbalch-only"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_007",
+          "front": "Nernst-Gleichung für eine als Reduktion geschriebene Halbgleichung: Formel und Reaktionsquotient?",
+          "back": "$E=E^\\circ-\\frac{RT}{zF}\\ln Q$; bei $25^\\circ\\mathrm{C}$ näherungsweise $E=E^\\circ-\\frac{0{,}05916\\,\\mathrm{V}}{z}\\log_{10}Q$.\n\n$Q$ enthält die Aktivitäten der Produkte geteilt durch die der Edukte, jeweils mit den stöchiometrischen Koeffizienten als Potenzen; Elektronen werden nicht eingesetzt. Reine feste Stoffe und reine Flüssigkeiten haben in ihrem Standardzustand die Aktivität 1.\n\nFür $\\mathrm{Ox}+ze^-\\rightleftharpoons\\mathrm{Red}$ ist $Q=a(\\mathrm{Red})/a(\\mathrm{Ox})$. Für $\\mathrm{Cu}^{2+}+2e^-\\rightleftharpoons\\mathrm{Cu}(s)$ gilt daher $Q=1/a(\\mathrm{Cu}^{2+})$.\n\nDie dimensionslose Aktivität lässt sich nur im passenden verdünnten idealen Lösungsmodell durch $c/c^\\circ$ annähern; Konzentrations- und Aktivitätsform nicht unbesehen vermischen.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_008",
+          "front": "Faraday-Beziehung für Elektrolyse?",
+          "back": "$Q=I\\cdot t=z\\cdot F\\cdot n$\n\n$F\\approx 96485\\,\\mathrm{C/mol}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_009",
+          "front": "Elektrochemische Spannungsreihe: Vorzeichen-Deutung?",
+          "back": "Je positiver das Standardpotenzial, desto stärker wirkt die oxidierte Form als Oxidationsmittel.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:8be14f15-2258-58e6-ae4e-38953f5d0570",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_010",
+          "front": "Arrhenius-Beziehung?",
+          "back": "$k=A\\,e^{-E_A/(RT)}$\n\nIm $\\ln k$ gegen $1/T$-Diagramm ist die Steigung $-E_A/R$.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e62c6c58-b688-59c3-8ac5-2cfc26ac22d7"
+          ]
+        },
+        {
+          "id": "chem_eq_q3_011",
+          "front": "Löslichkeitsprodukt: Grundidee?",
+          "back": "Für ein Salzgleichgewicht ist $K_L$ das Produkt der Ionenkonzentrationen in der gesättigten Lösung, jeweils mit stöchiometrischem Exponenten.",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:ac1bcf34-169c-5339-92ba-efe8c3022560",
+            "select:chemistry-bw-lk-equilibria_q3"
+          ]
+        }
+      ],
+      "actualDeckId": "de_gymnasium_chemistry_equilibria_q3",
+      "actualDeckSha256": "7762dc80a637c8ed8cf89676f9eb7fb9c540e12efa84fa84628f3b28a764e4a6"
+    },
+    {
+      "memoryGoalId": "ddde45b7-a3de-585b-b41e-3ae841349c87",
+      "actualFilterTags": [
+        "goal:b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+      ],
+      "actualOrderedSelectedCardIds": [
+        "chem_eq_q3_008"
+      ],
+      "selectedWholeCards": [
+        {
+          "id": "chem_eq_q3_008",
+          "front": "Faraday-Beziehung für Elektrolyse?",
+          "back": "$Q=I\\cdot t=z\\cdot F\\cdot n$\n\n$F\\approx 96485\\,\\mathrm{C/mol}$",
+          "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+          ]
+        }
+      ],
+      "actualDeckId": "de_gymnasium_chemistry_equilibria_q3",
+      "actualDeckSha256": "7762dc80a637c8ed8cf89676f9eb7fb9c540e12efa84fa84628f3b28a764e4a6"
+    },
+    {
+      "memoryGoalId": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+      "actualFilterTags": [
+        "GK",
+        "LK"
+      ],
+      "actualOrderedSelectedCardIds": [
+        "chem_org_q1_001",
+        "chem_org_q1_002",
+        "chem_org_q1_003",
+        "chem_org_q1_004",
+        "chem_org_q1_005",
+        "chem_org_q1_006",
+        "chem_org_q1_007",
+        "chem_org_q1_008",
+        "chem_org_q1_009",
+        "chem_org_q1_010"
+      ],
+      "selectedWholeCards": [
+        {
+          "id": "chem_org_q1_001",
+          "front": "Alkane, Alkene, Alkine: Bindung und allgemeine Formel?",
+          "back": "Acyclische Kohlenwasserstoffe:\n\nAlkane: nur Einfachbindungen, $C_nH_{2n+2}$\n\nAlkene: genau eine Doppelbindung, sonst Einfachbindungen, $C_nH_{2n}$\n\nAlkine: genau eine Dreifachbindung, sonst Einfachbindungen, $C_nH_{2n-2}$\n\nDie Formeln gelten nicht für Ringe oder mehrere Mehrfachbindungen.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        },
+        {
+          "id": "chem_org_q1_002",
+          "front": "Wichtige funktionelle Gruppen?",
+          "back": "Alkohol: $-OH$\n\nAldehyd: $-CHO$\n\nKeton: $>C=O$\n\nCarbonsäure: $-COOH$\n\nEster: $-COOR$",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:7990387d-f254-5d3b-a589-a3e7ed9502a3",
+            "select:chemistry-bw-lk-organic_q1",
+            "select:chemistry-functional-groups-only",
+            "goal:cc5a626a-dc85-57e2-b422-259f92901545",
+            "goal:0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+            "goal:4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+            "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+          ]
+        },
+        {
+          "id": "chem_org_q1_003",
+          "front": "IUPAC-Endungen für sauerstoffhaltige Stoffklassen?",
+          "back": "Alkanol: -ol\n\nAldehyd: -al\n\nKeton: -on\n\nCarbonsäure: -säure",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:e14abd24-a0e5-5ab5-ade3-a8ae4f49e935",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        },
+        {
+          "id": "chem_org_q1_004",
+          "front": "Nachweise: C=C-Doppelbindung und Aldehydgruppe?",
+          "back": "C=C-Doppelbindung: Bromwasser wird entfärbt.\n\nAldehydgruppe: Fehling- oder Tollens-Probe positiv.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:3de28598-672f-5753-8a45-8f559c2f9dc2",
+            "select:chemistry-bw-lk-organic_q1"
+          ]
+        },
+        {
+          "id": "chem_org_q1_005",
+          "front": "Aldehyd vs. Keton: Fehling/Tollens?",
+          "back": "Aldehyde reagieren in der Regel positiv.\n\nKetone reagieren unter Schulbedingungen meist nicht positiv.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:973c12d9-d863-5292-8c68-9c80cdacf9e2"
+          ]
+        },
+        {
+          "id": "chem_org_q1_006",
+          "front": "Halogenidionen-Nachweis mit Silbernitrat?",
+          "back": "Mit $AgNO_3$ entstehen schwerlösliche Silberhalogenide:\n\n$AgCl$ weiß, $AgBr$ cremefarben, $AgI$ gelblich.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:41396457-d97b-55f3-9804-2af1bb188e79"
+          ]
+        },
+        {
+          "id": "chem_org_q1_007",
+          "front": "Konfiguration vs. Konformation?",
+          "back": "Konfiguration: nur durch Bindungsbruch änderbar, zum Beispiel R/S oder E/Z.\n\nKonformation: durch Drehung um Einfachbindungen änderbar.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:85342c52-9722-54b0-8fbb-513d9d648363",
+            "select:chemistry-configuration-conformation-only",
+            "goal:4955f745-b946-5d3d-82d6-5e52dc8549a3"
+          ]
+        },
+        {
+          "id": "chem_org_q1_008",
+          "front": "Enantiomer, Diastereomer, E/Z?",
+          "back": "Enantiomere: nicht deckungsgleiche Spiegelbilder\n\nDiastereomere: Stereoisomere, aber keine Spiegelbilder\n\nE/Z: Konfiguration an Doppelbindungen",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:9decc36b-a69a-5599-a9f0-fcebdf0203d8"
+          ]
+        },
+        {
+          "id": "chem_org_q1_009",
+          "front": "Stereozentrum am Kohlenstoff?",
+          "back": "Ein asymmetrisches Kohlenstoff-Atom ist an vier verschiedene Substituenten gebunden.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:b92bfa45-b500-5647-8fd2-a14b708aaf59"
+          ]
+        },
+        {
+          "id": "chem_org_q1_010",
+          "front": "IR und $^1H$-NMR: Wofür nutzt man sie?",
+          "back": "IR-Spektren zeigen charakteristische Schwingungen funktioneller Gruppen.\n\n$^1H$-NMR unterscheidet Wasserstoff-Umgebungen im Molekül.",
+          "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+          "tags": [
+            "GK",
+            "LK",
+            "goal:466bd2e9-39a5-5221-b620-945934adce00"
+          ]
+        }
+      ],
+      "actualDeckId": "de_gymnasium_chemistry_organic_q1",
+      "actualDeckSha256": "bdbd3ab4c7b98b2ea47c826d7462824003e8285d61efbd78304ab29bfc57ee03"
+    }
+  ],
+  "actualViewRoles": [
+    {
+      "label": "purpose0 de-bb-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-bb-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+      "actualViewSha256": "1bf8a3b9fe3fac4e1246b84fabf0fa8887b81480cafddf6e0bceffc44034f7f3",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose1 de-bb-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-bb-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+      "actualViewSha256": "3a2b0742d655003d868db3a9e82df6372a12ab63c0111e76549a6c128fc35bad",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose2 de-be-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-be-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+      "actualViewSha256": "e9e768b15a2c9a60aa0016a80828331543820838613baa3e6c3bcaa08a8fce1f",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose3 de-be-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-be-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+      "actualViewSha256": "d1dcb2c55a2a456408408b30f56b80c25a0609cafd9579ee65cf51def67020dc",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose4 de-bw-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-bw-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+      "actualViewSha256": "b721ab3f68c366ce2376cda532f30ca6135ede02cc6efea6a82cd393de5f0953",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose5 de-bw-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-bw-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+      "actualViewSha256": "a2e0046418264c365349c70caf94b1408c6dfbd78a61dc1f739d9f543363d0e7",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose6 de-de-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-de-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+      "actualViewSha256": "3c72053ddd225d03043a348d02a1587aeb0c47c99769586f9724e3a4fa528a9e",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose7 de-de-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-de-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+      "actualViewSha256": "e97e695632df8974fd255c5b0353a159a7f9903feb4237b9eacbb9aa7a608343",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose8 de-de-gym-seki-chemistry [current acquisition candidate; machine QA only]",
+      "viewId": "de-de-gym-seki-chemistry",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+      "actualViewSha256": "bd14e86c1ccc5382e4502dc9fbdeb091ecb38e13cf7e3fe07e09d85af0d0a372",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose9 de-de-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-de-gym-sekii-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+      "actualViewSha256": "b7dc846a456b4938ed749b4a2f9ebbf91d30d36f0f9751e012b3b2c323ed1a2a",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose10 de-de-gym-sekii-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-de-gym-sekii-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+      "actualViewSha256": "0a483426423a2b628f1dea76ebd69dc775ba9d6d9413c08c129fbf5e77f213e4",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose11 de-hb-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-hb-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json",
+      "actualViewSha256": "333873a16dea2daf7ffe54f82fbe52fd012c0a175f8fb27e0950846dbcb8e3e6",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "target",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose12 de-hb-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-hb-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+      "actualViewSha256": "43fe2d24b7abffc83fd3f288d2899aa172f4656c378c84751e1160a6b8a41ab1",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "target",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-he-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "actualViewSha256": "983582aecef2103d668ec973a65d2b774ef42a0b34ff991cc287f1e2f407153b",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose14 de-he-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-he-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+      "actualViewSha256": "334997b2d01232e73e15dceb6a15e44edeae9310e38ba39760f73664984d47a1",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-he-gym-sekii-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "actualViewSha256": "9c6f59313245e8c1259fb20349548e4e6513eb840032a8cb39337b363b3fa866",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose16 de-he-gym-sekii-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-he-gym-sekii-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json",
+      "actualViewSha256": "3ecd61900525a37ed7f23b7258d263faf872a76f3d5165e7b4aa99cdfb7c679f",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "target",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "target"
+      }
+    },
+    {
+      "label": "purpose17 de-hh-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-hh-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-gk.view.json",
+      "actualViewSha256": "66c01f93edb0bda3b8fcac80e04d3bfa8d66d7a1002eb690e614254f4d7f4f54",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose18 de-hh-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-hh-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-lk.view.json",
+      "actualViewSha256": "0c1a059bc5ca218b93b220b7fdd2709ff4f585cd25ad4fb3a66c37932251003d",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose19 de-mv-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-mv-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json",
+      "actualViewSha256": "881640fd4f75022bfe18670bfcdfa4f05f553a2db5dab590cefae78bb3a9a4e7",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose20 de-mv-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-mv-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json",
+      "actualViewSha256": "0e2017c42f025e4a7e28517e41cdf76bcdb75563a6f6ed07895ee4f7de2584a6",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose21 de-ni-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-ni-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json",
+      "actualViewSha256": "dbf69c4790ac8ab6bf1f35d25deaa9cfe44d104fab457e63c3aef96f6b6066a2",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "target",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose22 de-ni-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-ni-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json",
+      "actualViewSha256": "c3c8f1e9e9f87b05bd23f44536f41f0a249af03f91617510782d271f6eb704d9",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "target",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose23 de-nw-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-nw-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-gk.view.json",
+      "actualViewSha256": "b1ad0b9ede3a9598ba93bbd2b371e0a8a22168a4e55b691d977ed6107c18df19",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose24 de-nw-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-nw-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-lk.view.json",
+      "actualViewSha256": "7de2622e60e5ec77e2b9cc3df010100364acb460ab642e49f6a2ba0df6c08433",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose25 de-rp-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-rp-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json",
+      "actualViewSha256": "5244ed2c72de71a22cfc398703734c5174ab32a5d7d565b3f536b5eab26fa656",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose26 de-rp-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-rp-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json",
+      "actualViewSha256": "cdde690b336f5c1cf7afa60a488b5d2284be3f0cbf793d693239a0ac5791756d",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose27 de-sh-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-sh-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+      "actualViewSha256": "758c0fc586a40d46d05a5af89dfefef8d35cd5ab3cf1b1ff871ccce1eaed2fe9",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose28 de-sh-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-sh-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json",
+      "actualViewSha256": "650ed3cddb15112134f0b33d30fe85ba6a4a4a9adaeed245a62e94de1f887796",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose29 de-sl-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-sl-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-gk.view.json",
+      "actualViewSha256": "8cdb1f3c959709b7e63adcf95e1d19eea474f1b3ca930cab2a00b99aef9cc41c",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose30 de-sl-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-sl-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-lk.view.json",
+      "actualViewSha256": "6b642647413b8b65c59a692228cf580420289a2d5ad9014768bb11eb2a155124",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose31 de-sn-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-sn-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-gk.view.json",
+      "actualViewSha256": "02517a9f447420aab5fd47ae31779902932dd10e3fb0653157ea044a0de64875",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose32 de-sn-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-sn-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-lk.view.json",
+      "actualViewSha256": "e2bc9abdc0daeef5d5a7500ce880781ece9053289fe05df1b931a45d212f3636",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "target",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose33 de-st-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-st-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json",
+      "actualViewSha256": "fa2ada80217f21e42cba6198a24eb86140ed07335e692742eb5f8c1be915e6b9",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose34 de-st-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-st-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json",
+      "actualViewSha256": "3cb030fdfc6c075d1d60c0f2b5e63e7f1f1afd8fac06325821ae25479bf51dfb",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose35 de-th-gym-chemistry-gk [current acquisition candidate; machine QA only]",
+      "viewId": "de-th-gym-chemistry-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-th-gk.view.json",
+      "actualViewSha256": "f394d48b1168db63d64172a113359e6c7e87a4a02b9beb103dbc19c906191f24",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose36 de-th-gym-chemistry-lk [current acquisition candidate; machine QA only]",
+      "viewId": "de-th-gym-chemistry-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-th-lk.view.json",
+      "actualViewSha256": "14ac42e8c2ada625a5946861649bb2e3725e031130b311ea8d7045c25a4d6736",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose40 de-by-gym-chemistry-lk-explicit-source-union-author [current acquisition candidate; machine QA only]",
+      "viewId": "de-by-gym-chemistry-lk-explicit-source-union-author",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json",
+      "actualViewSha256": "7a634b1f87d3bf13e5ac29dc012ae2b123abae8d3d424c5aeaefb99b912bd374",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "target",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "target",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    },
+    {
+      "label": "purpose46 de-by-gym-chemistry-c10-ethanol-risk-unit-author [current acquisition candidate; machine QA only]",
+      "viewId": "de-by-gym-chemistry-c10-ethanol-risk-unit-author",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-by-c10-ethanol-risk-unit.current-pilot.view.json",
+      "actualViewSha256": "a1ad2b4e5beba4a81b6da47b5840cf7ad7d22a92ce8ee616e14243c945a5151d",
+      "roleByRelevantGoalId": {
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143": "absent",
+        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb": "absent",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca": "absent",
+        "ddde45b7-a3de-585b-b41e-3ae841349c87": "absent",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24": "absent"
+      }
+    }
+  ],
+  "predictedPBindings": [
+    {
+      "goalId": "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+      "baselineGoalFingerprint": "sha256:e30a13d11d8e0200d56c82188269b99a80a53195de88da1be2d64cc188d663b2",
+      "baselineReviewInputFingerprint": "sha256:01eac0fdd67a527aaad384c92dfdcff5bbda2a3faa6f4470b54a221096e9ffa9",
+      "profileFingerprint": "sha256:d0dc21aded8bc289fba6354468e1170b78509389dcc0fcd494bfb198feeae3c9",
+      "variants": [
+        {
+          "name": "root-planned-remove-only-Q1.3-cluster",
+          "requires": [
+            "70b34ae7-4481-590c-9a02-516464750832",
+            "197bc2c5-835e-59e7-9263-5684e89799cc",
+            "3681e688-7880-5bb4-9ab9-ef78289345c8"
+          ],
+          "predictedReviewInputFingerprint": "sha256:5eab318b6bf67249a7112d6e674f5197c652daa88c1821e2ff6d20e047f50d0d",
+          "goalSemanticFingerprintUnchanged": true,
+          "wholeProfileFingerprintUnchanged": true,
+          "newIndependentReviewOrApproval": false
+        },
+        {
+          "name": "author-optional-also-remove-unneeded-digestive-juices",
+          "requires": [
+            "70b34ae7-4481-590c-9a02-516464750832",
+            "197bc2c5-835e-59e7-9263-5684e89799cc"
+          ],
+          "predictedReviewInputFingerprint": "sha256:2f9828cf5f342aad9f9067bb71b509f0e9f0f74ba9b966d7799088fd78d901ae",
+          "goalSemanticFingerprintUnchanged": true,
+          "wholeProfileFingerprintUnchanged": true,
+          "newIndependentReviewOrApproval": false
+        }
+      ]
+    },
+    {
+      "goalId": "b8c8f70f-64cb-50b1-970c-e0c4295da3fb",
+      "baselineGoalFingerprint": "sha256:aa6a95f200788fde5754c1a530a2f37f2bad6c3fde2bde044ee0c666a8daf045",
+      "baselineReviewInputFingerprint": "sha256:98a0724735e6d5a02444731a6c4ba1e89247be028e8052532cb7cdd9a3a72fbd",
+      "profileFingerprint": "sha256:82a34cdd4a46dc98c63dcd6a590fd1c65f88375201cb6268386824f464e87803",
+      "variants": [
+        {
+          "name": "root-planned-qualitative-foundation",
+          "requires": [
+            "0e3f849b-133d-57da-882c-0d67c3eb05b8"
+          ],
+          "predictedReviewInputFingerprint": "sha256:416b6a42eae5427b63cb7e5cb170fa377dcf09c2f35cd2f6a57a78f8ed441869",
+          "goalSemanticFingerprintUnchanged": true,
+          "wholeProfileFingerprintUnchanged": true,
+          "newIndependentReviewOrApproval": false
+        }
+      ]
+    }
+  ],
+  "noNormalOrHMutation": true,
+  "noReviewLedgerMutation": true,
+  "noHumanApproval": true,
+  "noHumanTrial": true
+}

@@ -1,0 +1,5 @@
+# Kompakter Bildprompt für 3eb2a06c-d283-57aa-9eb4-088940c4801a
+
+Freundliche abstrakte comicartige Chemie-Lernillustration, PNG quer16:9 etwa1600×900, auch bei360px klar. Vier große übersichtliche verbundene Szenen: Forschung mit Probenvergleich; kleiner Laboransatz mit Schutzbrille; größerer geschlossener gerührter Behälter mit Kühlmantel und separater Produktabtrennung; neutrale Arzneimittelpackung, Informationsblatt und prüfende Person. Derselbe abstrakte Probenfarbton verbindet den Weg. Ein Rückpfeil vom Produktionsbefund zur Forschung zeigt Rückkopplung. Ruhige Farben, viel Freiraum. Keine Rezeptschritte, lesepflichtige Kleinschrift, echten Marken, Dosierung, Heilversprechen oder Zulassungs-Häkchen. Kein Fotorealismus, kein SVG. Das Bild zeigt verbundene Anforderungen und liefert keine Aufgabenlösung.
+
+Dies ist die kompakte Autorenabsicht. Der tatsächlich ausgeführte Generierungsaufruf und unveränderte Originalbytes sind im getrennten Root-Bildpaket `chemie-SH032-one-process-chain-PNG-image-author-20261016-v1` dokumentiert. Dieses Autorenpaket erzeugt kein weiteres Bild und behauptet keine unabhängige visuelle Freigabe.

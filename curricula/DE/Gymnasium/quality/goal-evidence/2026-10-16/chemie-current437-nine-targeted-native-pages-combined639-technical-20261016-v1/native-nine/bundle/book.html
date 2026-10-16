@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Chemie – neun gezielte aktuelle Lernzielseiten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Chemie – neun gezielte aktuelle Lernzielseiten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>9 atomare Lernziele</dt><dd>11 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:chemie-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-fd713faf6c8502b7e7241677" aria-label="Chemie – kanonische M7-Prüfsicht"><a href="#goal-37b4081a-244a-58d8-b448-88ed83344210"><span class="toc-entry-label">Chemie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:chemie-canonical-root-explicit-QS" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-b6ce90e62428e3dc7f6705ff" aria-label="Chemie"><a href="#goal-37b4081a-244a-58d8-b448-88ed83344210"><span class="toc-entry-label">Chemie</span></a></h3>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:a0893975-1677-5dae-bbfb-675789be4f17" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-7fac84a2fba476e613f59705" aria-label="Stoffgruppen"><a href="#goal-37b4081a-244a-58d8-b448-88ed83344210"><span class="toc-entry-label">Stoffgruppen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:2facec3b-ea18-5769-9396-0ffdcc4455c3" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-d1a21df1394e6fa9a580af57" aria-label="Q1.1 Chemische Bindung &amp; Strukturen"><a href="#goal-37b4081a-244a-58d8-b448-88ed83344210"><span class="toc-entry-label">Q1.1&#160;<wbr>Chemische&#160;<wbr>Bindung&#160;<wbr>&amp;&#160;<wbr>Strukturen</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:ae683d59-06a5-59be-87b5-b8648fd138c8" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-3ea8d41b3f1006d6c2229645" aria-label="Naturstoffe und Synthesechemie"><a href="#goal-d8eeed29-d1b7-5a48-94b5-343629f8e867"><span class="toc-entry-label">Naturstoffe&#160;<wbr>und&#160;<wbr>Synthesechemie</span></a></h4>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:24b47a95-c239-552a-9be7-324aa54a89dd" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-8abb9734bf1b10f3379ec2ca" aria-label="Q2.1 Naturstoffe"><a href="#goal-d8eeed29-d1b7-5a48-94b5-343629f8e867"><span class="toc-entry-label">Q2.1&#160;<wbr>Naturstoffe</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="goal:62149f36-87c0-5a2d-8a78-e7d4203f58c2" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-d34c6bd7587562c03070a0bb" aria-label="Aminosäuren charakterisieren"><a href="#goal-d8eeed29-d1b7-5a48-94b5-343629f8e867"><span class="toc-entry-label">Aminosäuren&#160;<wbr>charakterisieren</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:4a98bbee-41cb-5aef-91c6-f18d7bf2a214" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-862970232a71c01d3863713a" aria-label="Q2 Pharmazie"><a href="#goal-98ae3f8e-4800-5ff3-bd2c-89434c006143"><span class="toc-entry-label">Q2&#160;<wbr>Pharmazie</span></a></h5>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:633f4fd4-1c36-5377-8fe6-44d8eeac3c56" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-d8590b45dfe283b69bf955ba" aria-label="Chemisches Gleichgewicht"><a href="#goal-0e3f849b-133d-57da-882c-0d67c3eb05b8"><span class="toc-entry-label">Chemisches&#160;<wbr>Gleichgewicht</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:33766473-86a1-5f82-afc9-bdb8ed6a2ab6" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-fc2b8a194f8362b8bf487ef8" aria-label="Q3.3 Redoxgleichgewichte"><a href="#goal-0e3f849b-133d-57da-882c-0d67c3eb05b8"><span class="toc-entry-label">Q3.3&#160;<wbr>Redoxgleichgewichte</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:6b6bceca-e1d9-56f7-ae6c-d7f7c2fa9338" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d3468b88ba42518a62440ae" aria-label="Quellengebundene Chemie-Ergänzungen"><a href="#goal-3eb2a06c-d283-57aa-9eb4-088940c4801a"><span class="toc-entry-label">Quellengebundene&#160;<wbr>Chemie-Ergänzungen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-37b4081a-244a-58d8-b448-88ed83344210" data-goal-id="37b4081a-244a-58d8-b448-88ed83344210" data-page-number="1" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:a0893975-1677-5dae-bbfb-675789be4f17 goal:2facec3b-ea18-5769-9396-0ffdcc4455c3" aria-labelledby="goal-37b4081a-244a-58d8-b448-88ed83344210-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-37b4081a-244a-58d8-b448-88ed83344210-title"><a class="goal-self-link" href="#goal-37b4081a-244a-58d8-b448-88ed83344210">Hybridisierung zur Vorhersage organischer Bindungsverhältnisse nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>37b4081a-244a-58d8-b448-88ed83344210</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-7fac84a2fba476e613f59705">Stoffgruppen</a></li><li><a href="#chapter-d1a21df1394e6fa9a580af57">Q1.1 Chemische Bindung &amp; Strukturen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f84d228d16d6a96c1bc29602ebf174134def15ecabc6c48732a9d30c49b043ee" data-rendered-digest="sha256:6fad4fb3d0f9640230dbd5e89e7010dde8b9ebc98b097ab1922bb0c444ce9f6c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/37b4081a-244a-58d8-b448-88ed83344210/37b4081a-244a-58d8-b448-88ed83344210.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Hybridisierung zur Vorhersage organischer Bindungsverhältnisse nutzen&quot;. Die lernende Person kann Hybridisierung als Näherungsverfahren zur Linearkombination von Atomorbitalen am selben Atom beschreiben und Hybridorbitale zur modellhaften Vorhersage der Bindungsverhältnisse in einfachen organischen Molekülen nutzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-37b4081a-244a-58d8-b448-88ed83344210-description-heading">
+        <p class="section-heading" id="goal-37b4081a-244a-58d8-b448-88ed83344210-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Hybridisierung als Näherungsverfahren zur Linearkombination von Atomorbitalen am selben Atom beschreiben und Hybridorbitale zur modellhaften Vorhersage der Bindungsverhältnisse in einfachen organischen Molekülen nutzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-37b4081a-244a-58d8-b448-88ed83344210-requires-heading">
+          <p class="section-heading" id="goal-37b4081a-244a-58d8-b448-88ed83344210-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-37b4081a-244a-58d8-b448-88ed83344210-reverse-heading">
+          <p class="section-heading" id="goal-37b4081a-244a-58d8-b448-88ed83344210-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-37b4081a-244a-58d8-b448-88ed83344210-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37b4081a-244a-58d8-b448-88ed83344210-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-e74f5301-70d3-5869-bd3d-79a5763a1718" rel="noreferrer noopener"><span>Orbitalmodell und Valenzstrichschreibweise anwenden</span> <code>e74f5301-70d3-5869-bd3d-79a5763a1718</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-448815cc-4127-54b7-96bf-e54b3d2a38c5" rel="noreferrer noopener"><span>Bindungstypen sicher erläutern</span> <code>448815cc-4127-54b7-96bf-e54b3d2a38c5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-9b56d01e-c2d7-51d8-b78e-237592c1ed20" rel="noreferrer noopener"><span>Molekülgeometrien mit dem EPA-Modell erklären</span> <code>9b56d01e-c2d7-51d8-b78e-237592c1ed20</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-37b4081a-244a-58d8-b448-88ed83344210-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37b4081a-244a-58d8-b448-88ed83344210-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b" rel="noreferrer noopener"><span>HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>32705a3a-9b7f-5cc0-ba41-881d13d0c45b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-64d71d34-3c52-5428-9948-a62064e99ed0" rel="noreferrer noopener"><span>Bindungstypen und Hybridisierungszuordnungen abrufen</span> <code>64d71d34-3c52-5428-9948-a62064e99ed0</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-c98683ae-3309-581e-b02b-b10ad703d8a0" rel="noreferrer noopener"><span>Organische Moleküle mit dem Hybridisierungsmodell darstellen</span> <code>c98683ae-3309-581e-b02b-b10ad703d8a0</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-707998c1-872d-582d-a2d6-14e7d967cbdb" rel="noreferrer noopener"><span>Organische Moleküle mit Molecular Modelling darstellen</span> <code>707998c1-872d-582d-a2d6-14e7d967cbdb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e" rel="noreferrer noopener"><span>Bindungslängen und Molekülgeometrien modellgestützt begründen</span> <code>e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f3178e0ad69bc77f223fd200cc5f976af0f8088114774d65ccd8b2048579eef4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=37b4081a-244a-58d8-b448-88ed83344210&amp;goalFingerprint=sha256%3Af3178e0ad69bc77f223fd200cc5f976af0f8088114774d65ccd8b2048579eef4&amp;pageFingerprint=sha256%3A7e167f566e1aec63b690b3710ded7ef2df3c645de62c15647aa0a2f636ceb83d&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867" data-goal-id="d8eeed29-d1b7-5a48-94b5-343629f8e867" data-page-number="2" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:24b47a95-c239-552a-9be7-324aa54a89dd goal:62149f36-87c0-5a2d-8a78-e7d4203f58c2" aria-labelledby="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-title"><a class="goal-self-link" href="#goal-d8eeed29-d1b7-5a48-94b5-343629f8e867">Aminosäuren stereochemisch darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d8eeed29-d1b7-5a48-94b5-343629f8e867</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-8abb9734bf1b10f3379ec2ca">Q2.1 Naturstoffe</a></li><li><a href="#chapter-d34c6bd7587562c03070a0bb">Aminosäuren charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6d767a5d159c2eebef45f2eeccb4169d9cc59c0d8be84286051051c901cb2f38" data-rendered-digest="sha256:753e3b9a5cb3b4a7066cd48b8eedbab9af115d0548584611eab71df237dd2516" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/d8eeed29-d1b7-5a48-94b5-343629f8e867/d8eeed29-d1b7-5a48-94b5-343629f8e867.png" alt="Zwei Fischerprojektionen von L- und D-Alanin haben COOH oben und CH3 unten. Aminogruppe und Wasserstoff stehen spiegelbildlich links beziehungsweise rechts; ein Spiegel trennt die Projektionen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-description-heading">
+        <p class="section-heading" id="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an geeigneten Aminosäuren Chiralität und Enantiomerie erklären, eindeutig räumlich vorgegebene Strukturmodelle unter Beachtung der Projektionskonvention in Fischer-Projektionsformeln überführen und darin D-/L-Konfigurationen unterscheiden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-requires-heading">
+          <p class="section-heading" id="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-reverse-heading">
+          <p class="section-heading" id="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a9c22adc-b543-5b0c-a2d8-3189facdff08" rel="noreferrer noopener"><span>Warum Chemie? - Relevanz und Orientierung</span> <code>a9c22adc-b543-5b0c-a2d8-3189facdff08</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-92c99237-1c74-54fc-bf08-9191656afaa6" rel="noreferrer noopener"><span>Moleküldarstellungen situationsgerecht umwandeln</span> <code>92c99237-1c74-54fc-bf08-9191656afaa6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d8eeed29-d1b7-5a48-94b5-343629f8e867-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b" rel="noreferrer noopener"><span>HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>32705a3a-9b7f-5cc0-ba41-881d13d0c45b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:59c4ca1cb068998969b7b00efefee6a0f4580885ecb8e542a614b65acb21442e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=d8eeed29-d1b7-5a48-94b5-343629f8e867&amp;goalFingerprint=sha256%3A59c4ca1cb068998969b7b00efefee6a0f4580885ecb8e542a614b65acb21442e&amp;pageFingerprint=sha256%3Ad7770567958076c049519e3e1136b7a1f4ffcfe6b23c95f0e18d029daad57605&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143" data-goal-id="98ae3f8e-4800-5ff3-bd2c-89434c006143" data-page-number="3" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:4a98bbee-41cb-5aef-91c6-f18d7bf2a214" aria-labelledby="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-title"><a class="goal-self-link" href="#goal-98ae3f8e-4800-5ff3-bd2c-89434c006143">Carbonsäureester und Carbonsäureamide durch Kondensation bilden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>98ae3f8e-4800-5ff3-bd2c-89434c006143</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-862970232a71c01d3863713a">Q2 Pharmazie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a1f09267e6bf8df271b75c4a7b5f61618c352023bbf9308ea7d1eeb087552502" data-rendered-digest="sha256:f5662c7a135968fd4648f280f386cd273a1db6df0991b85ed5128a00186fadf3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/98ae3f8e-4800-5ff3-bd2c-89434c006143/98ae3f8e-4800-5ff3-bd2c-89434c006143.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Carbonsäureester und Carbonsäureamide durch Kondensation bilden&quot;. Die lernende Person kann den Mechanismus von Kondensationsreaktionen anwenden, um die Bildung von Carbonsäureestern und Carbonsäureamiden zu beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-description-heading">
+        <p class="section-heading" id="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Mechanismus von Kondensationsreaktionen anwenden, um die Bildung von Carbonsäureestern und Carbonsäureamiden zu beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-requires-heading">
+          <p class="section-heading" id="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-reverse-heading">
+          <p class="section-heading" id="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-70b34ae7-4481-590c-9a02-516464750832" rel="noreferrer noopener"><span>Esterbildung und Estereigenschaften erklären</span> <code>70b34ae7-4481-590c-9a02-516464750832</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-197bc2c5-835e-59e7-9263-5684e89799cc" rel="noreferrer noopener"><span>Peptidbindungen erklären</span> <code>197bc2c5-835e-59e7-9263-5684e89799cc</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-98ae3f8e-4800-5ff3-bd2c-89434c006143-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b" rel="noreferrer noopener"><span>HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>32705a3a-9b7f-5cc0-ba41-881d13d0c45b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-539476ee-f9cd-5b66-9b2e-ab42c4ea7cf4" rel="noreferrer noopener"><span>Wirkstoff-Moleküle retrosynthetisch erschließen</span> <code>539476ee-f9cd-5b66-9b2e-ab42c4ea7cf4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-96d3f50b-62f7-5db4-8426-43b4a0c26543" rel="noreferrer noopener"><span>Acetylsalicylsäure aus Schmerztabletten extrahieren und vergleichen</span> <code>96d3f50b-62f7-5db4-8426-43b4a0c26543</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e30a13d11d8e0200d56c82188269b99a80a53195de88da1be2d64cc188d663b2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=98ae3f8e-4800-5ff3-bd2c-89434c006143&amp;goalFingerprint=sha256%3Ae30a13d11d8e0200d56c82188269b99a80a53195de88da1be2d64cc188d663b2&amp;pageFingerprint=sha256%3A3a7100a158d15d4ed206a2d094748d54ef70507a888cc449ccb1471089ff1ac4&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8" data-goal-id="0e3f849b-133d-57da-882c-0d67c3eb05b8" data-page-number="4" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:633f4fd4-1c36-5377-8fe6-44d8eeac3c56 goal:33766473-86a1-5f82-afc9-bdb8ed6a2ab6" aria-labelledby="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-title"><a class="goal-self-link" href="#goal-0e3f849b-133d-57da-882c-0d67c3eb05b8">Faraday-Gesetze qualitativ erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0e3f849b-133d-57da-882c-0d67c3eb05b8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-d8590b45dfe283b69bf955ba">Chemisches Gleichgewicht</a></li><li><a href="#chapter-fc2b8a194f8362b8bf487ef8">Q3.3 Redoxgleichgewichte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3021201619f84a95ade04354a0a82abdb5e1e9cfcb1a97d9c176db37830bdbdf" data-rendered-digest="sha256:0bdc97132126b93d66da8c6e91329d36b66dd05972d45b4d9b9983fab2ac6d9f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/0e3f849b-133d-57da-882c-0d67c3eb05b8/0e3f849b-133d-57da-882c-0d67c3eb05b8.png" alt="Qualitatives Vergleichsmodell ohne Nebenreaktionen: Bei demselben Metallionentyp bewirkt mehr für die Metallabscheidung genutzte Ladung mehr abgeschiedenen Stoff. Bei gleicher Ladung unterscheiden sich Silber- und Kupferabscheidung durch die benötigte Elektronenzahl; für einen Massenvergleich zählt zusätzlich die molare Masse. Keine eingesetzten Strom-, Zeit-, Ladungs- oder Massenwerte.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-description-heading">
+        <p class="section-heading" id="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Faraday-Gesetze ohne Berechnungen erklären, indem sie bei vollständig für die betrachtete Elektrodenreaktion genutzter Ladung den proportionalen Zusammenhang zwischen Ladung und Stoff- beziehungsweise Massenumsatz für denselben Stoff begründet und bei verschiedenen Stoffen den Einfluss der Elektronenzahl pro gebildetem Teilchen und der molaren Masse auf den Umsatz unterscheidet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-requires-heading">
+          <p class="section-heading" id="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-reverse-heading">
+          <p class="section-heading" id="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb"><span>Faraday-Gesetze quantitativ nutzen</span><code>b8c8f70f-64cb-50b1-970c-e0c4295da3fb</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-8a2ad724-df5e-5986-8de9-560ba43caac2" rel="noreferrer noopener"><span>Molare Masse bestimmen und verwenden</span> <code>8a2ad724-df5e-5986-8de9-560ba43caac2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef" rel="noreferrer noopener"><span>Elektrolyse beschreiben</span> <code>fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0e3f849b-133d-57da-882c-0d67c3eb05b8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-03b08b91-6809-576a-8cf1-4a131caab4e5" rel="noreferrer noopener"><span>Qualitative Faraday-Zusammenhänge abrufen</span> <code>03b08b91-6809-576a-8cf1-4a131caab4e5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b" rel="noreferrer noopener"><span>HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>32705a3a-9b7f-5cc0-ba41-881d13d0c45b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8b679781e52dfeb893f1d2f22d0599e48908d0bbccea9305561c2db630804a54</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=0e3f849b-133d-57da-882c-0d67c3eb05b8&amp;goalFingerprint=sha256%3A8b679781e52dfeb893f1d2f22d0599e48908d0bbccea9305561c2db630804a54&amp;pageFingerprint=sha256%3A76acbb244f75f8604093db0a3096f2f8a77a1bdca2dcf050ce0c9154f63d5897&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb" data-goal-id="b8c8f70f-64cb-50b1-970c-e0c4295da3fb" data-page-number="5" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:633f4fd4-1c36-5377-8fe6-44d8eeac3c56 goal:33766473-86a1-5f82-afc9-bdb8ed6a2ab6" aria-labelledby="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-title"><a class="goal-self-link" href="#goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb">Faraday-Gesetze quantitativ nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b8c8f70f-64cb-50b1-970c-e0c4295da3fb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-d8590b45dfe283b69bf955ba">Chemisches Gleichgewicht</a></li><li><a href="#chapter-fc2b8a194f8362b8bf487ef8">Q3.3 Redoxgleichgewichte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:edd6204a6822d191500418d3ac1ecf3a6cea5bd99cbc15846377b043e0e47b7c" data-rendered-digest="sha256:b671e1aa1bafe415682b3871eaf942ce085b9dfe497b65d19ed4d97657740e38" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/b8c8f70f-64cb-50b1-970c-e0c4295da3fb/b8c8f70f-64cb-50b1-970c-e0c4295da3fb.png" alt="Silberelektrolyse mit Amperemeter in Reihe, positivem Anoden- und negativem Kathodenanschluss der Gleichstromquelle. Für 2 Ampere über 3600 Sekunden werden 7200 Coulomb übertragen; idealisiert scheiden sich etwa 0,0746 Mol beziehungsweise 8,05 Gramm Silber ab.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-description-heading">
+        <p class="section-heading" id="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Zusammenhang zwischen übertragener Ladung, Elektronenübertragung und Stoffumsatz bei Elektrolysen erklären und mit den Faraday-Gesetzen Ladungsmenge, Stromstärke, Zeit sowie abgeschiedene Stoffmenge berechnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-requires-heading">
+          <p class="section-heading" id="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0e3f849b-133d-57da-882c-0d67c3eb05b8"><span>Faraday-Gesetze qualitativ erklären</span><code>0e3f849b-133d-57da-882c-0d67c3eb05b8</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-reverse-heading">
+          <p class="section-heading" id="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b8c8f70f-64cb-50b1-970c-e0c4295da3fb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-ddde45b7-a3de-585b-b41e-3ae841349c87" rel="noreferrer noopener"><span>Faraday-Beziehungen abrufen</span> <code>ddde45b7-a3de-585b-b41e-3ae841349c87</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:aa6a95f200788fde5754c1a530a2f37f2bad6c3fde2bde044ee0c666a8daf045</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=b8c8f70f-64cb-50b1-970c-e0c4295da3fb&amp;goalFingerprint=sha256%3Aaa6a95f200788fde5754c1a530a2f37f2bad6c3fde2bde044ee0c666a8daf045&amp;pageFingerprint=sha256%3Add6e9b883088ef4bbaa2245b417c5be8bce5d6d0e1ec6fcfb31c39f3d3533cec&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00" data-goal-id="2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00" data-page-number="6" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:4a98bbee-41cb-5aef-91c6-f18d7bf2a214" aria-labelledby="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-title"><a class="goal-self-link" href="#goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00">Magensäurebildung und Protonenpumpen-Hemmer erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-862970232a71c01d3863713a">Q2 Pharmazie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9a961959a859b14e71ccfbff06347698864f6a516796085d7ea4f98f3efb4cba" data-rendered-digest="sha256:9ce234cd569372039c58870407f4fa8f1ff0d7f75597730bced43f43db446dbb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00/2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Magensäurebildung und Protonenpumpen-Hemmer erklären&quot;. Die lernende Person kann die Bildung von Magensäure chemisch beschreiben und daran die Wirkweise von Protonenpumpen-Hemmern erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-description-heading">
+        <p class="section-heading" id="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bildung von Magensäure chemisch beschreiben und daran die Wirkweise von Protonenpumpen-Hemmern erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-requires-heading">
+          <p class="section-heading" id="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-reverse-heading">
+          <p class="section-heading" id="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-3681e688-7880-5bb4-9ab9-ef78289345c8" rel="noreferrer noopener"><span>Verdauungssäfte chemisch erklären</span> <code>3681e688-7880-5bb4-9ab9-ef78289345c8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b" rel="noreferrer noopener"><span>HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>32705a3a-9b7f-5cc0-ba41-881d13d0c45b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-126c56ef-25ac-57b6-84df-111b79d01b8d" rel="noreferrer noopener"><span>Antazida und Sodbrennen chemisch bewerten</span> <code>126c56ef-25ac-57b6-84df-111b79d01b8d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a9a41564174167296a3dd03b5ea1fc8645cf3157f26a93dcf8cddb36ae8be640</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00&amp;goalFingerprint=sha256%3Aa9a41564174167296a3dd03b5ea1fc8645cf3157f26a93dcf8cddb36ae8be640&amp;pageFingerprint=sha256%3A7b2f7af2e1db654e71cf2365ee30f0c83484c3e11e1387297b280e0915bb4d50&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528" data-goal-id="f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528" data-page-number="7" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:4a98bbee-41cb-5aef-91c6-f18d7bf2a214" aria-labelledby="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-title"><a class="goal-self-link" href="#goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528">Schmerzmittelwirkstoffe chemisch einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-862970232a71c01d3863713a">Q2 Pharmazie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2c565c1adc9719acfe5aa46ea6a13e39853df67ef7f9d4b55ff066f351cf2abe" data-rendered-digest="sha256:99e2b842270f10a0d90e69eb63cb0df7bcc1ff1da926a0d2f3c43c381422b934" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528/f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528.png" alt="Als ein Beispiel steht links die Acetylsalicylsäure (ASS) mit einem Benzolring und zwei benachbarten Substituenten. Die direkt am Ring gebundene Carboxylgruppe ist als Carbonsäure markiert; die Gruppe Ring–O–C(=O)–CH₃ als Ester. Rechts stehen ein Quellenbuch mit Lupe und eine Waage mit den gleichwertigen Schalen Nutzen und Risiken. Recherche und chemische Einordnung unterstützen das Abwägen; Informationen sind kein eigener Waagengegenpol. Das Bild zeigt weder alle Schmerzmittel noch eine klinische Empfehlung; Wirkungen und Risiken lassen sich nicht allein aus einer einzelnen funktionellen Gruppe bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-description-heading">
+        <p class="section-heading" id="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zusammensetzung, Konsum und Anwendung rezeptfreier Schmerzmittel recherchieren, Wirkstoff-Moleküle wie Acetylsalicylsäure, Ibuprofen und Paracetamol anhand chemischer Strukturmerkmale einordnen und die Anwendung der Schmerzmittel anhand der recherchierten Informationen zur Chemie der Wirkstoffe bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-requires-heading">
+          <p class="section-heading" id="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-reverse-heading">
+          <p class="section-heading" id="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a9c22adc-b543-5b0c-a2d8-3189facdff08" rel="noreferrer noopener"><span>Warum Chemie? - Relevanz und Orientierung</span> <code>a9c22adc-b543-5b0c-a2d8-3189facdff08</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-7990387d-f254-5d3b-a589-a3e7ed9502a3" rel="noreferrer noopener"><span>Sauerstoffhaltige organische Stoffklassen einteilen</span> <code>7990387d-f254-5d3b-a589-a3e7ed9502a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-5b1bb5d9-07b1-5ba9-b320-cc97be917c60" rel="noreferrer noopener"><span>Chemische Informationen aus Quellen erschließen</span> <code>5b1bb5d9-07b1-5ba9-b320-cc97be917c60</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b" rel="noreferrer noopener"><span>HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>32705a3a-9b7f-5cc0-ba41-881d13d0c45b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-539476ee-f9cd-5b66-9b2e-ab42c4ea7cf4" rel="noreferrer noopener"><span>Wirkstoff-Moleküle retrosynthetisch erschließen</span> <code>539476ee-f9cd-5b66-9b2e-ab42c4ea7cf4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-96d3f50b-62f7-5db4-8426-43b4a0c26543" rel="noreferrer noopener"><span>Acetylsalicylsäure aus Schmerztabletten extrahieren und vergleichen</span> <code>96d3f50b-62f7-5db4-8426-43b4a0c26543</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1654b644-f03d-59db-9f31-d63998cb0439" rel="noreferrer noopener"><span>Schmerzentstehung und Cyclooxygenase-Hemmung erläutern</span> <code>1654b644-f03d-59db-9f31-d63998cb0439</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a853069e-2ebb-5a19-8edf-b767cdb41ed7" rel="noreferrer noopener"><span>Darreichungsformen von Arzneimitteln vergleichen</span> <code>a853069e-2ebb-5a19-8edf-b767cdb41ed7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d8a7baad30f3064f86cd7b055a5adc71a74732ee26248813d91b5023027be3fa</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528&amp;goalFingerprint=sha256%3Ad8a7baad30f3064f86cd7b055a5adc71a74732ee26248813d91b5023027be3fa&amp;pageFingerprint=sha256%3A17410aac8fc73776a8d1c6c825fbc4dfd34d3a8d66dc9811583a68d4df793c40&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873" data-goal-id="5f151e8c-a62e-5e8c-979d-dcf4eb025873" data-page-number="8" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:ae683d59-06a5-59be-87b5-b8648fd138c8 goal:4a98bbee-41cb-5aef-91c6-f18d7bf2a214" aria-labelledby="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-title"><a class="goal-self-link" href="#goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873">Verdauungshilfsmittel chemisch beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5f151e8c-a62e-5e8c-979d-dcf4eb025873</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-3ea8d41b3f1006d6c2229645">Naturstoffe und Synthesechemie</a></li><li><a href="#chapter-862970232a71c01d3863713a">Q2 Pharmazie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4c970c75bd7a6db8cda87184580421d95f32c74483923fd0f424c9f2936f9190" data-rendered-digest="sha256:46eb0f05799f49c6c29ef3b35786ad1ae5a473cb6a2868936b1860c2f08c3902" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/5f151e8c-a62e-5e8c-979d-dcf4eb025873/5f151e8c-a62e-5e8c-979d-dcf4eb025873.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Verdauungshilfsmittel chemisch beurteilen&quot;. Die lernende Person kann Wirkung und Einsatz von Verdauungshilfsmitteln wie Verdauungsenzymen, Entschäumern, Präbiotika und Probiotika recherchieren und chemisch begründet bewerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-description-heading">
+        <p class="section-heading" id="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wirkung und Einsatz von Verdauungshilfsmitteln wie Verdauungsenzymen, Entschäumern, Präbiotika und Probiotika recherchieren und chemisch begründet bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-requires-heading">
+          <p class="section-heading" id="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-reverse-heading">
+          <p class="section-heading" id="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-f7f35d71-927a-511c-a49e-65a66794a9bc" rel="noreferrer noopener"><span>Enzymreaktionen und Hemmung modellieren</span> <code>f7f35d71-927a-511c-a49e-65a66794a9bc</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-3681e688-7880-5bb4-9ab9-ef78289345c8" rel="noreferrer noopener"><span>Verdauungssäfte chemisch erklären</span> <code>3681e688-7880-5bb4-9ab9-ef78289345c8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-0b5342b9-512d-573f-90d5-7522aee35efa" rel="noreferrer noopener"><span>Individuelle Verdauungs- und Resorptionsunterschiede begründen</span> <code>0b5342b9-512d-573f-90d5-7522aee35efa</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1df17884-96ae-57d7-9da9-dbebd082596f" rel="noreferrer noopener"><span>Chemische Handlungsoptionen kriteriengeleitet bewerten</span> <code>1df17884-96ae-57d7-9da9-dbebd082596f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f151e8c-a62e-5e8c-979d-dcf4eb025873-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b" rel="noreferrer noopener"><span>HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten</span> <code>32705a3a-9b7f-5cc0-ba41-881d13d0c45b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:20aa074fbfb0330562e61102a24d212f76b6e4707fe8e294f90c38be467d3c49</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=5f151e8c-a62e-5e8c-979d-dcf4eb025873&amp;goalFingerprint=sha256%3A20aa074fbfb0330562e61102a24d212f76b6e4707fe8e294f90c38be467d3c49&amp;pageFingerprint=sha256%3A46749a84bfe5bcf66267bd003f9edc5c68cf9246809e78d2e41cd01b68c03e85&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a" data-goal-id="3eb2a06c-d283-57aa-9eb4-088940c4801a" data-page-number="9" data-chapter-ids="structure:chemie-m7-review-root structure:chemie-canonical-root-explicit-QS goal:6b6bceca-e1d9-56f7-ae6c-d7f7c2fa9338" aria-labelledby="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-title"><a class="goal-self-link" href="#goal-3eb2a06c-d283-57aa-9eb4-088940c4801a">Wirkstoffentwicklung, Produktion und Vermarktung verknüpfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3eb2a06c-d283-57aa-9eb4-088940c4801a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-b6ce90e62428e3dc7f6705ff">Chemie</a></li><li><a href="#chapter-2d3468b88ba42518a62440ae">Quellengebundene Chemie-Ergänzungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:cd665cb625e4768188b89295859a3104851112731c237c2b18884a8933dce79d" data-rendered-digest="sha256:effdb628b51adbf1d56fbfc2c9588d5b8ccce385ca8884de33212c56daa6f81a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/3eb2a06c-d283-57aa-9eb4-088940c4801a/3eb2a06c-d283-57aa-9eb4-088940c4801a.png" alt="Eine Forscherin vergleicht Proben, im Labor steht ein kleiner Reaktor, eine größere Anlage besitzt einen sichtbaren Kühlmantel und eine nachgeschaltete Abtrennung. Eine Person betrachtet eine neutrale Packung und Informationsblätter. Ein Rückpfeil führt von der Produktion zur Forschung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-description-heading">
+        <p class="section-heading" id="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem materialgestützten Beispiel einer Wirkstoffgruppe den Weg von Forschung und Entwicklung über die Herstellung im Labor und die großtechnische Produktion bis zur Vermarktung fachlich erschließen, indem sie Forschungsbefunde mit Entwicklungsentscheidungen verknüpft, chemische Umwandlung und Aufarbeitung sowie maßstabsbedingte Anforderungen unterscheidet und Vermarktungsentscheidungen mit den Produktdaten und deren Aussagegrenzen begründet einordnet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-requires-heading">
+          <p class="section-heading" id="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-reverse-heading">
+          <p class="section-heading" id="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-42a84bca-d27e-581f-a43a-eee424f0504d" rel="noreferrer noopener"><span>Elemente, Verbindungen und Gemische unterscheiden</span> <code>42a84bca-d27e-581f-a43a-eee424f0504d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566" rel="noreferrer noopener"><span>Chemische Reaktionen von physikalischen Vorgängen unterscheiden</span> <code>8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-5b1bb5d9-07b1-5ba9-b320-cc97be917c60" rel="noreferrer noopener"><span>Chemische Informationen aus Quellen erschließen</span> <code>5b1bb5d9-07b1-5ba9-b320-cc97be917c60</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3eb2a06c-d283-57aa-9eb4-088940c4801a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-69928892-ac71-553d-a35c-4f96f16b6d6e" rel="noreferrer noopener"><span>Prüfungsaufgabe: ein Salicylatprojekt durchgängig beurteilen</span> <code>69928892-ac71-553d-a35c-4f96f16b6d6e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 9</span>
+      <span>Buch-Digest <code>sha256:eee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b3e166a93f10b040137da02018368f874e0f545e38b22cf03fce6bd681eb6476</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=chemie-current437-nine-HE-and-SH-current-contexts-20261016-v1&amp;edition=curricular-atomic-v1&amp;goalId=3eb2a06c-d283-57aa-9eb4-088940c4801a&amp;goalFingerprint=sha256%3Ab3e166a93f10b040137da02018368f874e0f545e38b22cf03fce6bd681eb6476&amp;pageFingerprint=sha256%3Abcd44ee94847a6b5a96b810a1b41e401589afb1d5a0bc05e75745f136c0fe901&amp;bookDigest=sha256%3Aeee5414c17846c83fdbf86cf3be40e56bd9fd9ec0155eb4ff369d71aeea11455&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>
