@@ -1,0 +1,328 @@
+[
+  {
+    "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+    "sourceLocator": {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-case-profile-binding-author-20261013-v1/positive/whole74.exact-bilingual-cases.author.json",
+        "sha256": "sha256:0f4a2a01684ab687859d3b3e3558528fa9765a62472efdcf767b0dc9013be93c",
+        "bytes": 564952
+      },
+      "jsonPointer": "/cases/46",
+      "caseId": "f0ba30a8-case-1",
+      "basis": "Existing whole author material object matches current P goalId and caseId; no correctness judgment"
+    },
+    "changePolicy": "Scientific material/task/model/rubric/transfer values retained; only the current whole-goal context is replaced.",
+    "caseAfter": {
+      "caseId": "f0ba30a8-case-1",
+      "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+      "titleDe": "Verdünnen verschiebt kein Maximum",
+      "titleEn": "Dilution does not shift the maximum",
+      "dataOrigin": "Original invented idealized teaching data unless an explicitly attributed primary reference is named; no measured experiment or learner result",
+      "languageParity": "Complete DE/EN data, task, answer, rubric and demand spans",
+      "dataDe": "Erfundene Absorbanz bei 420/460/500/540/580 nm: Probe A 0,10/0,40/0,90/0,45/0,10; halb konzentriertes B 0,05/0,20/0,45/0,225/0,05. Gleiche 1-cm-Küvette, Lösungsmittel und temperaturstabiler Farbstoff ohne Aggregation.",
+      "dataEn": "Invented absorbance at 420/460/500/540/580 nm: sample A 0.10/0.40/0.90/0.45/0.10; half-concentration B 0.05/0.20/0.45/0.225/0.05. Same 1 cm cuvette and solvent, stable temperature and nonaggregating dye.",
+      "taskDe": "1. Bestimme für beide Proben das tabellierte Maximum und beschreibe Lage sowie Intensitätsänderung getrennt.\n2. Erkläre die Absorbanzänderung mit A=εcl und beurteile, ob die Tabelle eine Änderung der molekularen Übergangsenergie belegt.",
+      "taskEn": "1. Identify both tabulated maxima and describe position and intensity changes separately.\n2. Explain the absorbance change using A=εcl and assess whether the table proves a change of molecular transition energy.",
+      "modelAnswerDe": "1. Beide tabellierten Maxima liegen bei 500 nm. Amax sinkt von 0,90 auf 0,45; die Bandenlage bleibt im Raster gleich. Das exakte Maximum zwischen Stützstellen ist nicht bestimmt.\n2. Bei gleicher ε und l halbiert halbes c die Absorbanz. Eine Intensitätsänderung bei gleicher λmax belegt keine veränderte ΔE; die Daten passen zur Verdünnung desselben Farbstoffs.",
+      "modelAnswerEn": "1. Both tabulated maxima are at 500 nm. Amax decreases from 0.90 to 0.45; the band position stays the same on the grid. An exact maximum between data points is not determined.\n2. At equal ε and l, halving c halves absorbance. An intensity change with unchanged λmax does not establish a changed ΔE; the data fit dilution of the same dye.",
+      "expectationIds": [
+        "e1",
+        "e2"
+      ],
+      "visualizationRequired": false,
+      "practicalExecutionRequired": false,
+      "executionClaim": "No execution occurred. Supplied or synthetic observations cannot earn practical-execution credit.",
+      "rubric": [
+        {
+          "criterionId": "f0ba30a8-case-1-r1",
+          "expectationIds": [
+            "e1"
+          ],
+          "taskClauseDe": "Bestimme für beide Proben das tabellierte Maximum und beschreibe Lage sowie Intensitätsänderung getrennt.",
+          "taskClauseEn": "Identify both tabulated maxima and describe position and intensity changes separately.",
+          "criterionDe": "Beide tabellierten Maxima liegen bei 500 nm. Amax sinkt von 0,90 auf 0,45; die Bandenlage bleibt im Raster gleich.",
+          "criterionEn": "Both tabulated maxima are at 500 nm. Amax decreases from 0.90 to 0.45; the band position stays the same on the grid.",
+          "maximumPoints": 2,
+          "partialCreditDe": "1 Punkt für einen fachlich richtigen, ausdrücklich verlangten Teil; 2 für den vollständigen Nachweis; 0 für fehlenden oder falschen Nachweis. Ausführungspunkte setzen die benannte reale Beobachtung voraus.",
+          "partialCreditEn": "1 point for a correct explicitly requested part; 2 for complete evidence; 0 for missing or wrong evidence. Execution credit requires the stated real observation.",
+          "creditBasis": "written-explicit-task",
+          "taskSpanDe": {
+            "start": 3,
+            "end": 108
+          },
+          "taskSpanEn": {
+            "start": 3,
+            "end": 89
+          }
+        },
+        {
+          "criterionId": "f0ba30a8-case-1-r2",
+          "expectationIds": [
+            "e2"
+          ],
+          "taskClauseDe": "Erkläre die Absorbanzänderung mit A=εcl und beurteile, ob die Tabelle eine Änderung der molekularen Übergangsenergie belegt.",
+          "taskClauseEn": "Explain the absorbance change using A=εcl and assess whether the table proves a change of molecular transition energy.",
+          "criterionDe": "Bei gleicher ε und l halbiert halbes c die Absorbanz. Eine Intensitätsänderung bei gleicher λmax belegt keine veränderte ΔE; die Daten passen zur Verdünnung desselben Farbstoffs.",
+          "criterionEn": "At equal ε and l, halving c halves absorbance. An intensity change with unchanged λmax does not establish a changed ΔE; the data fit dilution of the same dye.",
+          "maximumPoints": 2,
+          "partialCreditDe": "1 Punkt für einen fachlich richtigen, ausdrücklich verlangten Teil; 2 für den vollständigen Nachweis; 0 für fehlenden oder falschen Nachweis. Ausführungspunkte setzen die benannte reale Beobachtung voraus.",
+          "partialCreditEn": "1 point for a correct explicitly requested part; 2 for complete evidence; 0 for missing or wrong evidence. Execution credit requires the stated real observation.",
+          "creditBasis": "written-explicit-task",
+          "taskSpanDe": {
+            "start": 112,
+            "end": 236
+          },
+          "taskSpanEn": {
+            "start": 93,
+            "end": 211
+          }
+        }
+      ],
+      "maximumPoints": 4,
+      "optionalModelRemarksDe": [
+        {
+          "text": "Das exakte Maximum zwischen Stützstellen ist nicht bestimmt.",
+          "graded": false,
+          "criterionId": "f0ba30a8-case-1-r1"
+        }
+      ],
+      "optionalModelRemarksEn": [
+        {
+          "text": "An exact maximum between data points is not determined.",
+          "graded": false,
+          "criterionId": "f0ba30a8-case-1-r1"
+        }
+      ],
+      "gradingBoundary": "Only explicitly demanded evidence earns credit. A case maps requested aspects, not automatic full profile completion. Observe practical actions separately; missing actual observation means those points remain unavailable.",
+      "wholeCurrentGoal": {
+        "id": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_absorption_spectra_evaluate",
+        "title": "Absorptionsspektren von Farbstoffen auswerten",
+        "titleEn": "Evaluate absorption spectra of dyes",
+        "description": "Die lernende Person kann aus Absorptionsspektren von Farbstoffen Wellenlängenbereiche, Absorptionsmaxima und Absorptionsstärke bestimmen und Unterschiede unter Berücksichtigung der Messbedingungen deuten.",
+        "descriptionEn": "The learner can identify wavelength regions, absorption maxima and absorption strength from dye absorption spectra and interpret differences while taking measurement conditions into account.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.ABSORPTION_SPECTRA_EVALUATE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "e9935be8-1829-5c78-a3d7-98cca371cdc7"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+            "title": "Visualisierung: Absorptionsspektren von Farbstoffen auswerten",
+            "url": "/assets/goal-visualizations/chemie/f0ba30a8-84b3-5915-bf85-6c3a176064d2/f0ba30a8-84b3-5915-bf85-6c3a176064d2.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Absorptionsspektren von Farbstoffen auswerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Absorptionsspektren von Farbstoffen auswerten\". Die lernende Person kann Absorptionsspektren von Farbstoffen auswerten, um Absorptionseigenschaften von Farbstoff-Molekülen zu beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+    "sourceLocator": {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-poly18-aro19-final-case-profile-binding-author-20261013-v1/positive/whole74.exact-bilingual-cases.author.json",
+        "sha256": "sha256:0f4a2a01684ab687859d3b3e3558528fa9765a62472efdcf767b0dc9013be93c",
+        "bytes": 564952
+      },
+      "jsonPointer": "/cases/47",
+      "caseId": "f0ba30a8-case-2",
+      "basis": "Existing whole author material object matches current P goalId and caseId; no correctness judgment"
+    },
+    "changePolicy": "Scientific material/task/model/rubric/transfer values retained; only the current whole-goal context is replaced.",
+    "caseAfter": {
+      "caseId": "f0ba30a8-case-2",
+      "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+      "titleDe": "Mischung aus zwei Referenzfarbstoffen",
+      "titleEn": "Mixture of two reference dyes",
+      "dataOrigin": "Original invented idealized teaching data unless an explicitly attributed primary reference is named; no measured experiment or learner result",
+      "languageParity": "Complete DE/EN data, task, answer, rubric and demand spans",
+      "dataDe": "Ideales additives Modell gleicher Küvetten: bei 450/550/650 nm hat Referenz X A=0,8/0,1/0,0, Y A=0,0/0,1/0,7. Mischung M A=0,8/0,2/0,7. Rauschen ±0,02; keine chemische Wechselwirkung.",
+      "dataEn": "Ideal additive model with identical cuvettes: at 450/550/650 nm reference X has A=0.8/0.1/0.0, Y has A=0.0/0.1/0.7. Mixture M has A=0.8/0.2/0.7. Noise is ±0.02; no chemical interaction.",
+      "taskDe": "1. Prüfe an allen drei Wellenlängen, ob M als Summe von X und Y erklärbar ist, und ordne die zwei starken Absorptionsbereiche zu.\n2. Wähle je eine geeignete Wellenlänge zum möglichst getrennten Nachweis von X und Y; begründe die Wahl und nenne eine Grenze der eindeutigen Stoffidentifikation aus drei Stützstellen.",
+      "taskEn": "1. Check at all three wavelengths whether M can be explained as the sum of X and Y and assign its two strong absorption regions.\n2. Choose one wavelength for each nearly separate detection of X and Y; justify both choices and state one limit to unambiguous identification from three data points.",
+      "modelAnswerDe": "1. 0,8+0,0=0,8; 0,1+0,1=0,2; 0,0+0,7=0,7. M entspricht der Summe. 450 nm wird X, 650 nm Y zugeordnet; die Mitte enthält Beiträge beider.\n2. 450 nm für X und 650 nm für Y, weil die jeweils andere Referenz dort im Modell nicht absorbiert. Drei Punkte schließen weitere Farbstoffe mit denselben Werten nicht aus; ein vollständigeres Spektrum oder weiterer Nachweis wäre nötig.",
+      "modelAnswerEn": "1. 0.8+0.0=0.8; 0.1+0.1=0.2; 0.0+0.7=0.7. M matches the sum. 450 nm is assigned to X and 650 nm to Y; the middle contains both contributions.\n2. 450 nm for X and 650 nm for Y because the other reference does not absorb there in this model. Three points cannot exclude other dyes with the same values; a fuller spectrum or another identification method is needed.",
+      "expectationIds": [
+        "e1",
+        "e2"
+      ],
+      "visualizationRequired": false,
+      "practicalExecutionRequired": false,
+      "executionClaim": "No execution occurred. Supplied or synthetic observations cannot earn practical-execution credit.",
+      "rubric": [
+        {
+          "criterionId": "f0ba30a8-case-2-r1",
+          "expectationIds": [
+            "e1"
+          ],
+          "taskClauseDe": "Prüfe an allen drei Wellenlängen, ob M als Summe von X und Y erklärbar ist, und ordne die zwei starken Absorptionsbereiche zu.",
+          "taskClauseEn": "Check at all three wavelengths whether M can be explained as the sum of X and Y and assign its two strong absorption regions.",
+          "criterionDe": "0,8+0,0=0,8; 0,1+0,1=0,2; 0,0+0,7=0,7. M entspricht der Summe. 450 nm wird X, 650 nm Y zugeordnet; die Mitte enthält Beiträge beider.",
+          "criterionEn": "0.8+0.0=0.8; 0.1+0.1=0.2; 0.0+0.7=0.7. M matches the sum. 450 nm is assigned to X and 650 nm to Y; the middle contains both contributions.",
+          "maximumPoints": 2,
+          "partialCreditDe": "1 Punkt für einen fachlich richtigen, ausdrücklich verlangten Teil; 2 für den vollständigen Nachweis; 0 für fehlenden oder falschen Nachweis. Ausführungspunkte setzen die benannte reale Beobachtung voraus.",
+          "partialCreditEn": "1 point for a correct explicitly requested part; 2 for complete evidence; 0 for missing or wrong evidence. Execution credit requires the stated real observation.",
+          "creditBasis": "written-explicit-task",
+          "taskSpanDe": {
+            "start": 3,
+            "end": 129
+          },
+          "taskSpanEn": {
+            "start": 3,
+            "end": 128
+          }
+        },
+        {
+          "criterionId": "f0ba30a8-case-2-r2",
+          "expectationIds": [
+            "e2"
+          ],
+          "taskClauseDe": "Wähle je eine geeignete Wellenlänge zum möglichst getrennten Nachweis von X und Y; begründe die Wahl und nenne eine Grenze der eindeutigen Stoffidentifikation aus drei Stützstellen.",
+          "taskClauseEn": "Choose one wavelength for each nearly separate detection of X and Y; justify both choices and state one limit to unambiguous identification from three data points.",
+          "criterionDe": "450 nm für X und 650 nm für Y, weil die jeweils andere Referenz dort im Modell nicht absorbiert. Drei Punkte schließen weitere Farbstoffe mit denselben Werten nicht aus; ein vollständigeres Spektrum oder weiterer Nachweis wäre nötig.",
+          "criterionEn": "450 nm for X and 650 nm for Y because the other reference does not absorb there in this model. Three points cannot exclude other dyes with the same values; a fuller spectrum or another identification method is needed.",
+          "maximumPoints": 2,
+          "partialCreditDe": "1 Punkt für einen fachlich richtigen, ausdrücklich verlangten Teil; 2 für den vollständigen Nachweis; 0 für fehlenden oder falschen Nachweis. Ausführungspunkte setzen die benannte reale Beobachtung voraus.",
+          "partialCreditEn": "1 point for a correct explicitly requested part; 2 for complete evidence; 0 for missing or wrong evidence. Execution credit requires the stated real observation.",
+          "creditBasis": "written-explicit-task",
+          "taskSpanDe": {
+            "start": 133,
+            "end": 314
+          },
+          "taskSpanEn": {
+            "start": 132,
+            "end": 295
+          }
+        }
+      ],
+      "maximumPoints": 4,
+      "optionalModelRemarksDe": [],
+      "optionalModelRemarksEn": [],
+      "gradingBoundary": "Only explicitly demanded evidence earns credit. A case maps requested aspects, not automatic full profile completion. Observe practical actions separately; missing actual observation means those points remain unavailable.",
+      "wholeCurrentGoal": {
+        "id": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_absorption_spectra_evaluate",
+        "title": "Absorptionsspektren von Farbstoffen auswerten",
+        "titleEn": "Evaluate absorption spectra of dyes",
+        "description": "Die lernende Person kann aus Absorptionsspektren von Farbstoffen Wellenlängenbereiche, Absorptionsmaxima und Absorptionsstärke bestimmen und Unterschiede unter Berücksichtigung der Messbedingungen deuten.",
+        "descriptionEn": "The learner can identify wavelength regions, absorption maxima and absorption strength from dye absorption spectra and interpret differences while taking measurement conditions into account.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.ABSORPTION_SPECTRA_EVALUATE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "e9935be8-1829-5c78-a3d7-98cca371cdc7"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+            "title": "Visualisierung: Absorptionsspektren von Farbstoffen auswerten",
+            "url": "/assets/goal-visualizations/chemie/f0ba30a8-84b3-5915-bf85-6c3a176064d2/f0ba30a8-84b3-5915-bf85-6c3a176064d2.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Absorptionsspektren von Farbstoffen auswerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Absorptionsspektren von Farbstoffen auswerten\". Die lernende Person kann Absorptionsspektren von Farbstoffen auswerten, um Absorptionseigenschaften von Farbstoff-Molekülen zu beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      }
+    }
+  }
+]

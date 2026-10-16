@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "chemie-d8-targeted-original-b-informed-positive-normal-binding-20261016-v1",
+  "reviewedAt": "2026-10-16T06:59:25.699851+00:00",
+  "reviewer": "Original independent reviewer B; targeted informed d8 follow-up frozen before technical binding",
+  "goals": [
+    {
+      "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+      "reason": "SUPPORTED nach vollständigem gezieltem informierten B-Follow-up: fiktiver Beobachtungsbericht, synthetisches HH-Modell und spätere echte Akquisition sind getrennt; Kontrollen, Bilanzen und neuer Paar-/Signaltransfer tragen eine begrenzte Modellinferenz. Sichtbare Modellhilfe ist keine unabhängige Lernendenleistung. Das Profil bleibt exakt der geprüfte Autorenpayload, E0/G0; keine tatsächliche Durchführung, Akquisitionspflicht, Humanfreigabe oder neuer FIRST-Vote.",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "dissent": [
+        "Exposed author and P metadata; informed targeted follow-up, no new independent D round.",
+        "The first model comparison is scaffolded; supplied values or caveats are not independently demonstrated learner performance.",
+        "No actual experiment, learner result, Human Approval or Human Trial is claimed."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "b004r-d8-observations",
+            "essentialUnderstandingDe": "Geeignete Hin- und Rückbeobachtungen an derselben Probe eines bekannten korrespondierenden Säure-Base-Paars können eine umkehrbare Protonenübertragung modellhaft stützen. Beobachtete Änderungen und daraus erschlossene Teilchenumsetzungen sind unterschiedliche Ebenen; ein pH- oder Farbwechsel allein identifiziert keine bestimmte Teilchenart.",
+            "essentialUnderstandingEn": "Suitable forward and reverse observations in the same sample of a known conjugate acid-base pair can support a model of reversible proton transfer. Observed changes and inferred particle conversions are different levels; a pH or color change alone does not identify a particular species.",
+            "observablePerformanceDe": "Die lernende Person wertet einen vollständig vorgelegten, ausdrücklich hypothetischen Beobachtungsbericht aus, ordnet die Gegenwechsel passenden Protonenreaktionen zu und begründet die Rolle bekannter Zusammensetzung, gleicher Probe und geeigneter Kontrollen, ohne berechnete Stoffanteile als Messung auszugeben.",
+            "observablePerformanceEn": "The learner evaluates a fully supplied, explicitly hypothetical observation report, relates opposing changes to appropriate proton-transfer reactions, and explains the role of known composition, the same sample, and suitable controls without presenting calculated fractions as measurements."
+          },
+          {
+            "id": "b004r-d8-model-limits",
+            "essentialUnderstandingDe": "Eine Modellprognose, ein angenommener Versuchsbericht und eine tatsächlich dokumentierte Untersuchung haben verschiedene Beweiskraft. Die Schlussfolgerung bleibt auf das benannte Paar und die gegebenen Bedingungen begrenzt.",
+            "essentialUnderstandingEn": "A model prediction, an assumed experimental report, and an actually documented investigation have different evidential strength. The conclusion remains limited to the named pair and supplied conditions.",
+            "observablePerformanceDe": "In einem neuen Indikatorpaar trennt die lernende Person vorgegebene Beobachtungen von Modellannahmen und nennt eine passende zusätzliche Prüfung bei verbleibenden Alternativen. Eigene Akquisition oder ein bestimmtes analytisches Verfahren wird nicht verlangt.",
+            "observablePerformanceEn": "For a fresh indicator pair, the learner separates supplied observations from model assumptions and identifies a suitable further check when alternatives remain. Performing acquisition or using a specified analytical method is not required."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004r-d8-observations",
+            "b004r-d8-model-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "pair",
+            "textDe": "Essigsäure/Acetat und ein neues schwaches Indikatorpaar werden verglichen.",
+            "textEn": "Acetic acid/acetate and a fresh weak indicator pair are compared."
+          },
+          {
+            "id": "observation",
+            "textDe": "Vorgegebene hypothetische pH-/Farb- oder Spektralbeobachtungen werden von berechneten Stoffanteilen und tatsächlicher Akquisition unterschieden.",
+            "textEn": "Supplied hypothetical pH/color or spectral observations are distinguished from calculated fractions and actual acquisition."
+          },
+          {
+            "id": "control",
+            "textDe": "Gleiche Probe mit Rückwechsel und stofffreie/dilutionsgeprüfte Kontrolle variieren.",
+            "textEn": "A repeated same-sample cycle and a no-pair/dilution control are varied."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "acetate-buffer-measured-cycle",
+            "taskDemandDe": "Vollmaterial zu diesem stabilen Fall im selben Paket: MATERIALS15.complete-whole-cases.author.json, cases/11/caseAfter. Fiktiver, nur zur Auswertung angenommener Bericht B, kein echter Versuch: Dieselbe verfolgte Probe A enthält anfangs je 0,50 mmol Essigsäure/Acetat in 100 mL bei etwa 25 °C. Zugaben: 0,30 mmol HCl/1 mL, 0,60 mmol NaOH/2 mL, 0,60 mmol HCl/2 mL. Angenommene Signale: zuerst orange; nach Säure rötlich/niedrigeres pH-Signal; nach Base gelborange/höheres Signal als zu Beginn; nach erneuter Säure wieder rötlich/niedrigeres Signal. Keine Stoffanteile wurden gemessen. Eine gleich behandelte Leerkontrolle ohne das Paar zeigt rot→blau→rot und stärkere pH-Ausschläge. Eine eigene gleiche Anfangsprobe mit nur Wasser auf 101/103/105 mL bleibt orange, ohne aufgelösten pH-Trend.\nGetrennter Modellteil M: Alle Stoffmengen/Anteile sind Stöchiometrieausgaben, alle pH-Zahlen HH-Prognosen, keine Beobachtungen. Schritt | definiertes Volumen mL | Modell-n(Essigsäure/Acetat) mmol | Modell-pH: Start | 100 | 0,50/0,50 | 4,760; Säure | 101 | 0,80/0,20 | 4,158; Base | 103 | 0,20/0,80 | 5,362; Säure | 105 | 0,80/0,20 | 4,158. Die Modellkontrollen und sämtliche Stoffanteile stehen vollständig im Vollmaterial.\n1. Leite aus B bedingt beide Protonenrichtungen ab und formuliere zwei ausgeglichene Reaktionen. 2. Erkläre bekannte Zusammensetzung, gleiche Probe, Kontrollen und Aussagegrenzen. 3. Vergleiche B mit M: keine Teilchenidentifikation aus Farbe allein, keine gleichen Konzentrationen aus gleichen Anteilen. Trenne Modellprognose, angenommene Beobachtung und mögliche spätere echte Prüfung. Nenne bei offener Alternative eine passende Zusatzprüfung. Keine eigene Akquisition, HH-Rechnung, Acetatbestimmung oder Kalibrierung.",
+            "taskDemandEn": "Complete material for this stable case in the same package: MATERIALS15.complete-whole-cases.author.json, cases/11/caseAfter. Fictional report B assumed for interpretation only, not an actual experiment: the same tracked sample A starts with 0.50 mmol each of acetic acid/acetate in 100 mL at about 25 °C. Additions: 0.30 mmol HCl/1 mL, 0.60 mmol NaOH/2 mL, 0.60 mmol HCl/2 mL. Assumed signals: initially orange; after acid reddish/lower pH signal; after base yellow-orange/signal higher than initially; after renewed acid reddish/lower signal again. No species fractions were measured. A similarly treated blank without the pair shows red→blue→red and larger pH excursions. A separate identical initial sample receiving only water to 101/103/105 mL stays orange with no resolved pH trend.\nSeparate model part M: all amounts/fractions are stoichiometric outputs and all pH values HH predictions, not observations. Step | defined volume mL | model n(acetic acid/acetate) mmol | model pH: start | 100 | 0.50/0.50 | 4.760; acid | 101 | 0.80/0.20 | 4.158; base | 103 | 0.20/0.80 | 5.362; acid | 105 | 0.80/0.20 | 4.158. Full model controls and all fractions are supplied in the complete material.\n1. Infer both proton-transfer directions conditionally from B and write two balanced reactions. 2. Explain known composition, the same sample, controls and limits. 3. Compare B with M: color alone does not identify species, equal fractions do not mean equal concentrations. Separate model prediction, assumed observation and a possible later actual check. Identify a suitable additional check for a remaining alternative. No learner acquisition, HH calculation, acetate assay or calibration.",
+            "expectedPerformanceDe": "Die angenommenen niedrigeren→höheren→niedrigeren pH-Signale und entsprechenden Farbrichtungen sind im bekannten Paar mit CH3COO− + H3O+ → CH3COOH + H2O sowie CH3COOH + OH− → CH3COO− + H2O vereinbar. Unter den gegebenen geänderten Bedingungen können beide Formen modellhaft ineinander überführt werden; weder spontane Rückkehr ohne Zugabe noch Universalität folgt. Die bekannte Zusammensetzung und dieselbe Probe begrenzen die Deutung. Die Leerkontrolle zeigt die fehlende Spezifität von Farbe/pH; die stärkeren Ausschläge sind mit fehlender Pufferwirkung vereinbar, aber keine Anteilsdaten. Die Verdünnungskontrolle begrenzt Wasserzugabe als alleinige Erklärung, nicht Konzentrationsänderungen.\nM prognostiziert 0,80/0,20→0,20/0,80→0,80/0,20 mmol Essigsäure/Acetat. Diese Modellanteile sind keine beobachteten Stoffanteile. Gleiche Anteile bei 101 und 105 mL bedeuten keine gleichen Konzentrationen. M ist eine Prognose, B ein erfundener Bericht; beides ist keine hier erfolgte Untersuchung. Eine spätere reale Aussage verlangt echte passende Aufzeichnungen, Kontrollen, bekannte Probe, Bedingungen, Sicherheit und Unsicherheiten. Bei zweifelhafter Zuordnung könnten Zusammensetzungsprüfung oder ein geeignetes charakteristisches Vergleichssignal helfen. Eine unabhängige Acetatbestimmung ist eine mögliche stärkere Untersuchung, keine allgemeine Zielpflicht oder M7-Voraussetzung. Keine reale Durchführung oder Lernendenleistung wird behauptet.",
+            "expectedPerformanceEn": "The assumed lower→higher→lower pH signals and corresponding color directions are consistent, for the known pair, with CH3COO− + H3O+ → CH3COOH + H2O and CH3COOH + OH− → CH3COO− + H2O. Under the supplied changed conditions the model permits interconversion; neither spontaneous return without addition nor universality follows. Known composition and the same sample constrain interpretation. The blank shows the lack of color/pH specificity; its larger excursions are consistent with absent buffering, not measured fractions. The dilution control constrains water addition as the sole explanation, not concentration changes.\nM predicts 0.80/0.20→0.20/0.80→0.80/0.20 mmol acetic acid/acetate. These model fractions are not observed species fractions. Equal fractions at 101 and 105 mL do not mean equal concentrations. M is a prediction, B an invented report; neither is an investigation performed here. A later actual claim requires genuine corresponding records, controls, known sample, conditions, safety and uncertainties. If assignment remained uncertain, checking composition or a suitable characteristic reference signal could help. Independent acetate determination is one possible stronger investigation, not a universal goal duty or M7 prerequisite. No actual execution or learner performance is claimed.",
+            "understandingFocusDe": "Aus vollständig angenommenen Hin-/Rückbeobachtungen eine begrenzte Brønsted-Modellinferenz ableiten; HH-Prognosen, hypothetische Befunde und tatsächlich dokumentierte Untersuchung getrennt halten. Keine neue Akquisitions- oder Analytikkompetenz.",
+            "understandingFocusEn": "Derive a limited Brønsted-model inference from fully supplied assumed forward/reverse observations; keep HH predictions, hypothetical findings and an actually documented investigation separate. No new acquisition or analytical competence."
+          },
+          {
+            "id": "fresh-indicator-spectral-cycle",
+            "taskDemandDe": "Fiktiver, eigens erfundener Untersuchungsbericht für diese Auswertung; kein realer Lehrer-Datensatz und keine hier erfolgte Akquisition. Die folgenden qualitativen Befunde werden ausschließlich hypothetisch angenommen: Ein anderes bekanntes schwaches Indikatorpaar HIn/In− liegt in derselben verfolgten Probe vor. Eine geeignete Vergleichszuordnung der beiden charakteristischen Signallagen zum bekannten Paar ist als Berichtsvoraussetzung gegeben, nicht als vom Lernenden zu entwickelndes Messverfahren. Nach Säurezugabe mehr HIn-Spektralsignal, nach Base mehr In− und nach erneuter Säure wieder mehr HIn. Eine nur verdünnte Kontrolle verändert das Verhältnis nicht. Eine Leerkontrolle ohne HIn/In− liefert trotz möglicher pH-/Farbänderung keine dieser beiden charakteristischen Signallagen. Erkläre die Reversibilität, formuliere die beiden passenden Protonenreaktionen und sage, warum reine Farbaufzeichnungen die Zuordnung zu einem bestimmten Paar nicht allein tragen. Trenne die angenommenen Berichtsbefunde von tatsächlicher Akquisition und nenne bei einer verbleibenden Alternative eine zusätzliche passende Prüfung. Keine eigene Spektrenaufnahme, Kalibrierung oder quantitative Anteilsbestimmung ist verlangt.",
+            "taskDemandEn": "A fictional investigation report invented for this interpretation task; not an actual teacher data set and no acquisition performed here. Only hypothetically assume the following qualitative findings: another known weak indicator pair HIn/In− is present in the same tracked sample. A suitable reference assignment of the two characteristic signal regions to the known pair is given as a report premise, not as a measurement method the learner must develop. After acid addition there is more HIn spectral signal, after base more In− and after renewed acid more HIn again. A dilution-only control leaves the ratio unchanged. A blank without HIn/In− produces neither characteristic signal region despite possible pH/color changes. Explain reversibility, write the two appropriate proton-transfer reactions and explain why color records alone do not identify a particular pair. Separate assumed report findings from actual acquisition and identify a suitable additional check for a remaining alternative. No learner spectra acquisition, calibration or quantitative fraction determination is requested.",
+            "expectedPerformanceDe": "Unter den ausdrücklich angenommenen Berichtsbefunden ordnet die lernende Person mehr HIn nach Säure, mehr In− nach Base und wieder mehr HIn nach erneuter Säure den Gegenrichtungen zu: In− + H3O+ → HIn + H2O und HIn + OH− → In− + H2O sind jeweils atom- und ladungserhaltend. Das zugehörige Wassermodell ist HIn + H2O ⇌ In− + H3O+. Die im Bericht vorausgesetzte Referenzzuordnung der Signale und die Leerkontrolle stützen bedingt das benannte Paar; Farbe allein identifiziert es nicht. Die Verdünnungskontrolle begrenzt Verdünnung als alleinige Erklärung. Die Modellinferenz bleibt auf dieses Paar und diese Bedingungen beschränkt. Alle Spektraländerungen sind hier fiktiv angenommene qualitative Befunde, keine tatsächlich gemessenen Stoffanteile. Bei einer fraglichen Signalzuordnung wäre etwa der Vergleich mit geeigneten Referenzproben zusätzlich sinnvoll; ein bestimmtes Verfahren oder eigene Akquisition ist nicht gefordert. Es wird keine reale Untersuchung oder Lernendenleistung behauptet.",
+            "expectedPerformanceEn": "Under the explicitly assumed report findings, the learner assigns more HIn after acid, more In− after base and more HIn again after renewed acid to opposing directions: In− + H3O+ → HIn + H2O and HIn + OH− → In− + H2O each conserve atoms and charge. The corresponding water model is HIn + H2O ⇌ In− + H3O+. The report's given reference assignment of signals and the blank conditionally support the named pair; color alone does not identify it. The dilution control constrains dilution as the sole explanation. Model inference remains limited to this pair and these conditions. All spectral changes here are fictional assumed qualitative findings, not actually measured species fractions. If signal assignment were uncertain, comparison with suitable reference samples would be one useful additional check; no specified method or learner acquisition is required. No actual investigation or learner performance is claimed.",
+            "understandingFocusDe": "Paarwechsel und neue Signal-/Kontrollvariation prüfen Transfer in einem vollständig fiktiven Bericht. Bedingte Deutung statt Behauptung einer realen Spektralmessung; keine neue Akquisitionspflicht.",
+            "understandingFocusEn": "A changed pair and fresh signal/control variation test transfer within a fully fictional report. Conditional interpretation rather than a claim of actual spectral measurements; no new acquisition duty."
+          }
+        ]
+      }
+    }
+  ]
+}

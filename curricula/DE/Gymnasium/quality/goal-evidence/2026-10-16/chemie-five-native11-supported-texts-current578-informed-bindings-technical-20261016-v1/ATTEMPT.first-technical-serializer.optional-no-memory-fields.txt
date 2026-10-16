@@ -1,0 +1,4 @@
+Actual first serializer attempt stopped before host installation.
+KeyError: memoryGoalIds at comparison of unchanged no_memory_needed record; this optional field is absent on that original row.
+No stock check, host mutation or new science occurred in that attempt.
+Technical correction: compare absent memoryGoalIds/deckIds as empty lists, preserving existing unmodified whole lines. Resume asserts exact existing prepared payloads rather than overwriting differing bytes.

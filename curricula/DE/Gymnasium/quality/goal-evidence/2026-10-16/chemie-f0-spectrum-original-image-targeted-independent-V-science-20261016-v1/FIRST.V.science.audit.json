@@ -1,0 +1,146 @@
+{
+  "role": "Targeted independent V subject-matter/visual science of the unchanged original asset; no normal V serialization",
+  "createdAtUtc": "2026-10-16T08:11:41.385443+00:00",
+  "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+  "decision": "HOLD",
+  "scope": "Only the static teaching illustration, at native 2752x1536, actual 680x380 and 360x201. No D15 rerun, no P re-review, no observed learning/experiment/host evidence.",
+  "basis": {
+    "wholeGoal709b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-spectrum-original-image-targeted-independent-V-science-20261016-v1/WHOLE.current-f0-goal709b.json",
+      "sha256": "sha256:0e40163d31d796d95124131524851682ae0f87a1d3a6d4d79a7beed5badeea3f",
+      "bytes": 2677
+    },
+    "originalSourceAsset": {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/f0ba30a8-84b3-5915-bf85-6c3a176064d2/f0ba30a8-84b3-5915-bf85-6c3a176064d2.jpg",
+      "sha256": "sha256:092ec671b9694ed89c9ab200468fb13caec519e09772f7e2652304524bce1eb1",
+      "bytes": 1872201
+    },
+    "viewedSizes": [
+      {
+        "width": 2752,
+        "height": 1536,
+        "detail": "original"
+      },
+      {
+        "width": 680,
+        "height": 380,
+        "detail": "original"
+      },
+      {
+        "width": 360,
+        "height": 201,
+        "detail": "original"
+      }
+    ],
+    "currentWholePRow": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-spectrum-original-image-targeted-independent-V-science-20261016-v1/P.current-f0.whole-row.context-only.jsonl",
+      "sha256": "sha256:7d44edb40d9ee94f26b7577cd0e228549a20d9894f23c0c94e7e787c3609e500",
+      "bytes": 8502
+    },
+    "twoWholeCases": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-spectrum-original-image-targeted-independent-V-science-20261016-v1/CASES.two-complete-current-f0.whole-objects.context-only.json",
+      "sha256": "sha256:2f7f3ef17567efc46419d057c5c94bd72efe11ca97a9f3d141a3182d5941b42a",
+      "bytes": 20045
+    }
+  },
+  "positiveRetentions": [
+    {
+      "id": "KEEP-PEAK",
+      "observation": "The large absorption-band apex is placed directly above the600-nm tick; the annotation lambda_max approximately600nm points to that apex. The actual graph does not have its main maximum at650 or700nm.",
+      "scope": "Valid qualitative peak-location example. The small violet-side shoulder near400nm is visible but lower; no false claim that no other absorption feature exists."
+    },
+    {
+      "id": "KEEP-AXES",
+      "observation": "Horizontal wavelength/nm with ordered400,500,600,700 ticks and vertical absorption(A) are visible. The curve is positive with a broad band.",
+      "scope": "Illustrative, uncalibrated intensity; no numeric absorbance can be read from absent y-ticks. This is acceptable for an orientation illustration, not a quantitative worksheet."
+    },
+    {
+      "id": "KEEP-STYLE-FORMAT",
+      "observation": "Original JPEG RGB2752x1536 has a clear white background, bold black labels, approachable schematic solution/molecule/eye and a prominent main curve.",
+      "scope": "No provider or file-format replacement is justified by provenance alone. The image may remainJPEG; the actual issues are scientific labels/coding and small-detail readability."
+    }
+  ],
+  "findings": [
+    {
+      "id": "V-F0-01",
+      "kind": "misleading-process-label",
+      "severity": "must-correct-before-clearance",
+      "regionNativePixels": [
+        2190,
+        850,
+        2510,
+        1100
+      ],
+      "actualVisibleFacts": "Two horizontal levels, left upward arrow from lower to upper level, right downward arrow from upper to lower level. The downward arrow is the one explicitly labelled e−. Both sit above the sole caption Elektronenanregung.",
+      "scientificAssessment": "An upward transition is compatible with absorption/excitation. A downward transition represents relaxation/de-excitation, not excitation. Both arrows can form a valid excitation/relaxation pair if separately identified; the common excitation caption and e− on the downward branch do not communicate that distinction. Therefore this is a concrete instructional ambiguity, not proof that the image contains only a wrong downward arrow.",
+      "minimumCorrection": "Either retain only an unmistakably upward labelled absorption/excitation transition, or label upward Absorption/Anregung and downward Relaxation/Abregung separately. Do not label the downward process excitation. No need to add an unrequested detailed emission model."
+    },
+    {
+      "id": "V-F0-02",
+      "kind": "inconsistent-spectral-colour-coding",
+      "severity": "must-correct-before-clearance",
+      "regionNativePixels": [
+        885,
+        630,
+        1755,
+        1230
+      ],
+      "actualVisibleFacts": "The fill runs from violet/blue at short wavelengths to yellow/orange/red at the600-nm apex, then returns through orange to yellow near700nm.",
+      "scientificAssessment": "On an increasing wavelength axis the visible spectral order proceeds toward red at the long-wave end. A red-to-yellow return toward700nm is not a physical wavelength-colour map. The fill has no legend marking it decorative, and the adjoining colour interpretation encourages treating the colours as wavelengths. This creates a misleading visual encoding even though the peak position itself is correct.",
+      "minimumCorrection": "Use a neutral single fill for the illustrative absorbance band, or a monotonic physically ordered wavelength colour strip/fill with appropriate approximate ranges. Keep the600-nm apex and axes if retained."
+    },
+    {
+      "id": "V-F0-03",
+      "kind": "overcompressed-colour-inference",
+      "severity": "must-clarify-before-clearance",
+      "regionNativePixels": [
+        1990,
+        470,
+        2650,
+        790
+      ],
+      "actualVisibleFacts": "The plot labels lambda_max approximately600nm; the card says absorption of red light and complementary colour blue, alongside a blue sample.",
+      "scientificAssessment": "Around600nm is conventionally orange; a broad band centred there can also absorb some red light and a blue-looking solution is qualitatively plausible. It would be wrong to claim red absorption is absent or that the blue sample alone is disproved. However the explicit red/blue pair as the explanation of the600-nm example is imprecise and suppresses the dependence on the whole absorption band and illumination.",
+      "minimumCorrection": "Align the illustrative caption with the actual band, for example predominantly orange light near600nm and approximately blue appearance under white illumination. State the schematic/approximate nature instead of implying exact colour from lambda_max alone."
+    }
+  ],
+  "readability": [
+    {
+      "width": 2752,
+      "height": 1536,
+      "finding": "Main title, peak annotation, axis units/ticks, red/blue labels, e− superscript and both arrowheads are actually readable. Molecular drawing is schematic, not a named chemical structure or measured spectrum assignment."
+    },
+    {
+      "width": 680,
+      "height": 380,
+      "finding": "Title, main graph,600-nm peak, ticks/axis labels and red/blue words remain readable. Both transition arrows remain discernible; the e− superscript and bottom lambda_max detail are very small and need focused inspection. The process-label ambiguity persists despite available pixels."
+    },
+    {
+      "width": 360,
+      "height": 201,
+      "finding": "Overview/title and the main band remain recognisable. Important small process labels, the e− superscript, arrowhead/level association and molecular bond details are not reliably self-contained at this size. Tick/peak text is tiny. A native-size enlargement would be needed for dependable reading of these details; actual client zoom behaviour was not tested."
+    }
+  ],
+  "wholeGoalAndPFit": {
+    "currentGoal": "The graphic gives a qualitative maximum/band orientation. It does not display comparative spectra, concentration/path-length control or a calibrated absorption-strength scale. The whole goal/P/cases require those distinctions elsewhere; a teaching illustration need not reproduce every P demand.",
+    "PContext": "Both full cases and current P row were re-read as context: concentration halves absorbance without a tabulated shift; additive reference spectra are checked at450/550/650nm. The illustration is not either case and is not mandatory for their solution. These contextual facts do not supply a new P vote.",
+    "learnerEvidence": false,
+    "actualPracticalExecution": false,
+    "HumanApproval": false,
+    "HumanTrial": false
+  },
+  "priorContextDisclosure": {
+    "earlierOwnD15AndInformedF0DiscussionKnown": true,
+    "parentSuppliedArrowObservationsKnown": true,
+    "blindToAllPriorOpinionsClaimed": false,
+    "assetOrCurrentGoalAuthoredByThisAgent": false,
+    "ownElectrophoresisAuthorSuccessorReviewedHere": false,
+    "D15FirstUnchanged": true
+  },
+  "recommendedNextStep": "Keep original bytes and historical QA row intact. Prepare only the named bounded corrections if separately authorised, then independently inspect the actual successor before normal-V binding. This FIRST itself grants no normal-V acceptance.",
+  "normalVRecord": false,
+  "assetMutation": false,
+  "QAOrCanonicalMutation": false,
+  "imageGeneration": false,
+  "strictM7Gain": 0
+}

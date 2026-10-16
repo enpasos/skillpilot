@@ -53,6 +53,9 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie nach dem 418er-Messstand: sechs geprüfte Kinderbilder, Quellen- und Memory-Integration (16.10.2026)](chemie-current418-next-package-progress-2026-10-16.md)
+- [Chemie 418/429: 15 weitere Abschlüsse, zwei korrigierte Bildseiten und elf offene Ziele (16.10.2026)](chemie-native15-current429-progress-2026-10-16.md)
+- [Chemie 403/429: sechs Beschreibungsabschlüsse, P-/A-Folger und offene Befunde vom 16. Oktober](chemie-native11-current429-progress-2026-10-16.md)
 - [Chemie: 399/429, 15 fachliche Erstabschlüsse und getrennte offene Bindungen (16.10.2026)](chemie-native19-current429-checkpoint-2026-10-16.md)
 - [Chemie: 392/426, sechs neue Abschlüsse und acht aktuelle Reviewpaare (16.10.2026)](chemie-native8-current426-checkpoint-2026-10-16.md)
 - [Chemie: 386/426, 15 neue Praktikumsabschlüsse und 40 offene Ziele (15.10.2026)](chemie-bcp-current426-checkpoint-2026-10-15.md)

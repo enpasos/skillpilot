@@ -5,6 +5,30 @@ Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
 Chemistry only; the achieved Mathematics, Physics and Biology M7 floors remain protected.
 
 Current Chemistry continuation:
+[Next package after the measured 418/429: six actual reviewed child images, source and memory composition](../../../../../docs/qa-ci/chemie-current418-next-package-progress-2026-10-16.md).
+No additional strict completion has yet been centrally measured for that package.
+
+Latest measured Chemistry continuation:
+[Chemistry 418/429: current independent descriptions, five corrected profiles and two current image pages, 16 October](../../../../../docs/qa-ci/chemie-native15-current429-progress-2026-10-16.md).
+The actual inactive candidate passes all six central checks, with D/P/A/M/V at
+418/422/422/429/429 and eleven current goals still open. Fifteen additional
+strict completions preserve every previous completion. Twenty technical
+profile/image bindings are reported separately without extra scientific gains.
+Source, course, memory visibility and Layer-A holds remain open. Active
+Chemistry and protected M7 subjects are unchanged. New work remains local;
+predecessor commit `edfe0016` passed its own complete GitHub CI.
+
+Previous Chemistry continuation:
+[Chemistry 403/429: Native11 findings and independently supported P/A successors, 16 October](../../../../../docs/qa-ci/chemie-native11-current429-progress-2026-10-16.md).
+The actual inactive candidate passes all six central checks, with D/P/A/M/V at
+405/420/422/429/429 and 26 current goals still open. One scientific first
+completion and three restored context bindings yield four additional strict
+completions. Two substantive P findings are explicitly unselected until their
+real correction; five description revisions remain open. Active Chemistry and
+the protected M7 subjects are unchanged. Commit `edfe0016` passed its own full
+GitHub CI; this new local work has no successor CI claim.
+
+Previous Chemistry continuation:
 [Chemistry 399/429: reviewed native-page and profile successors, 16 October](../../../../../docs/qa-ci/chemie-native19-current429-checkpoint-2026-10-16.md).
 The inactive candidate passes all six central checks, with D/P/A/M/V at
 399/418/417/429/429 and 30 current goals still open. Fifteen scientific first

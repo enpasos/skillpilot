@@ -1,0 +1,93 @@
+{
+  "role": "One exact unchanged historical profile rebound to actual independently supported current image; no new full P vote",
+  "config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.current-fec-mobile-image.normal.config.json",
+    "sha256": "sha256:d8f0565bc839e4bc51afb9dedcd99efffed338055ed9547501c50b03257e34e6",
+    "bytes": 1400
+  },
+  "records": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.current-fec-mobile-image.normal.review.jsonl",
+    "sha256": "sha256:fdc02bce074678356ba8b1d290b1c503846f58d4c592db092533d6fad1a77134",
+    "bytes": 9963
+  },
+  "wholeHistoricalOriginalP": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-microscopy-nucleus-pointer-targeted-PNG-author-successor-20261016-v1/P1.original-whole-current-no-resource-line.exact.jsonl",
+    "sha256": "sha256:ac81a7623033e181800343b8486db465660d686b6925918da62df51905f6b8d3",
+    "bytes": 10118
+  },
+  "candidateSet": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.exact-original-profile-supported-image-compatibility.candidates.json",
+    "sha256": "sha256:33ea2c34e900a8515215a967bc5cafee81116d8efa65dc777cdcca4b29b90984",
+    "bytes": 10320
+  },
+  "currentCanonical": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/CANONICAL.current578.same-five-texts-and-supported-fec-mobile-image.json",
+    "sha256": "sha256:8259d22dc9292c79d17fb9ea5392fedae3f39d7e100748c3878d300d4443576b",
+    "bytes": 1981488
+  },
+  "currentQA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/QA449.fec-supported-current-mobile-image.other448-records-exact.json",
+    "sha256": "sha256:6f66ef7165d9668180f9b565901ded67de9d1b5b9d9f503fbd624a6fb98e132c",
+    "bytes": 1274963
+  },
+  "scientificImageCompatibility": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-mobile-three-stations-original-independent-V-P-informed-followup-20261016-v1/OUTPUTS.finite-informed-targeted-V-P.selector.json",
+    "sha256": "sha256:3f71fada71b4dfe7a64a2c42c1109d380f1d3b53261ed57865f32ad07d96f38b",
+    "bytes": 3251
+  },
+  "actualProductionChecks": [
+    {
+      "argv": [
+        "tsx",
+        "scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.current-fec-mobile-image.normal.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.exact-original-profile-supported-image-compatibility.candidates.json",
+        "--write"
+      ],
+      "startedAtUTC": "2026-10-16T08:11:11.055322+00:00",
+      "elapsedSeconds": 0.5347493049921468,
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/01.stdout.actual.txt",
+        "sha256": "sha256:cbac42e78a287be6827642d971b43fa45b29e994fb6840b343f6ded2e7ef398b",
+        "bytes": 254
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/01.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.current-fec-mobile-image.normal.config.json",
+        "--mode=check"
+      ],
+      "startedAtUTC": "2026-10-16T08:11:11.590647+00:00",
+      "elapsedSeconds": 0.4839382130012382,
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/02.stdout.actual.txt",
+        "sha256": "sha256:fa16aea59295b3c29d38a3c132af816ac26c1180e25fbcd67a96efb49867d2d7",
+        "bytes": 391
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fec-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/02.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "wholeProfileExactlyUnchanged": true,
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "historicalE1G1Preserved": true,
+  "newFullPReviews": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "strictGainClaimed": false
+}

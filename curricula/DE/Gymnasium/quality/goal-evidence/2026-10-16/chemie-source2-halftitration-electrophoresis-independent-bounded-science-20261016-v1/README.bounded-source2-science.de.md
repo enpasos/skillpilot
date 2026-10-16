@@ -1,0 +1,11 @@
+# Source2: unabhängige begrenzte fachliche Nachprüfung
+
+**Gestützt im bezeichneten Umfang:**059 bleibt unverändert und datengestützt; die aktuelle NI-Route erfindet dafür keine zusätzliche Erwerbs-/Versuchspflicht. Die BY-GA-Auswertung und die zusätzliche BY-EA-Planung lassen sich in die stabile D124-Auswertung und einen echten schmalen Planungsatom trennen. Vier ganze bilinguale Fälle und zwei rohe P-Profile sind als E0/G0-Design fachlich gestützt. Ladung/pH, Polung, Ko-Migration, Kontrollen und reale Machbarkeitsgrenzen sind berücksichtigt. Der neue Atom bleibt bis allen Gates ungezählt.
+
+**Konkrete Revision:** Der HB056-Extrakt belegt keine wörtlich amtliche LK-only-Pflicht, Aminocarbonsäuren elektrophoretisch tatsächlich zu trennen. PDF27 nennt die Erläuterung elektrophoretischer/DC-Verfahren im gemeinsamen Abschnitt und daneben allgemeine Aminosäure-/Proteinversuche. Die Autorenbegründung ist zu präzisieren; das historische Extraktions-/Kurs-/Allokationsproblem bleibt ein eigener HOLD.
+
+**Quellenbegrenzungen:** BY-EA verlangt zusätzlich die Durchführung eines Farbstoff-Modellexperiments; diese fehlende Extraction-/Durchführungsallokation erfüllen weder synthetische Daten noch der Planungsatom. MV nennt Elektrophorese als mögliche Ergänzung; RP als Vertiefungsoption im WP-Bereich. Die SH-Stelle nennt Chromatografie/Rf. Der SN-Wahlbereich ist keine allgemeine Aminocarbonsäure-Auswertungspflicht. Keine neuen ganzen Quellenfreigaben werden daraus abgeleitet.
+
+Gelesen: beide ganzen Zielkörper vorher/nachher, neuer Atom und Parent/Requires, vier Fälle/P2, sieben ganze D124-Quellenkontexte, vier NI-Kontexte,31 Kontextziele, ganze BY-GA/EA-4.1-Primärkontexte und sieben gezielte amtliche PDF-Seiten. Die NI-Seiten22/23 wurden auch tatsächlich visuell angesehen.141 eingehende Kontexte sind Routingbestand, keine behauptete Vollprüfung.
+
+Die endliche Identitäts-/CAS-/DAG-/Retentionsprüfung ist PASS; sie ersetzt keine fachliche Prüfung. Der ganze709b-Autorenkandidat darf H mit den erhaltenen f0/fec-Ressourcen nicht überschreiben. Ausschließlich geprüfte Objektänderungen integrieren. Keine Raster-/Normal-/Hostwrites oder D-Votes. Neue strenge Abschlüsse0, Nettozuwachs0. Keine menschliche Freigabe/Erprobung, tatsächliche Versuchsausführung, M7- oder CI-Freigabe.

@@ -1,0 +1,214 @@
+{
+  "role": "Reviewer calculations on synthetic public models, not performed experiments or actual learners",
+  "MWG": {
+    "mainA": {
+      "expression": "aE*aW/(aS*aA), ai approximated by ci/c°",
+      "K": 4.0,
+      "QAfterAcidDoubled": 2.0,
+      "direction": "forward; K remains 4 at unchanged T"
+    },
+    "mainB": {
+      "equation": "9=x^2/(1-x)^2",
+      "physicalRootMolPerL": 0.75,
+      "reactantsEachMolPerL": 0.25,
+      "productsEachMolPerL": 0.75,
+      "substitutionK": 9.0,
+      "Q18Direction": "reverse at K=9"
+    },
+    "freshB": {
+      "equation": "4=x^2/(0.60-x)^2",
+      "physicalRootMolPerL": 0.4,
+      "reactantsEachMolPerL": 0.2,
+      "productsEachMolPerL": 0.4,
+      "substitutionK": 4.0
+    },
+    "freshAUnderdetermination": {
+      "givenConcentrationsMolPerL": {
+        "P": 0.1,
+        "Q": 0.1,
+        "R": 0.5,
+        "S": 0.5
+      },
+      "computedReactionQuotient": 25.0,
+      "computedReverseQuotient": 0.04000000000000001,
+      "admissibleSystemsSharingSameSuppliedState": [
+        {
+          "K": 1,
+          "Q": 25,
+          "netDirection": "reverse"
+        },
+        {
+          "K": 25,
+          "Q": 25,
+          "netDirection": "equilibrium"
+        },
+        {
+          "K": 100,
+          "Q": 25,
+          "netDirection": "forward"
+        }
+      ],
+      "conclusion": "K=25 and reverse K=0.04 require an equilibrium premise. The current fresh task never supplies it in either language. A correct Q-versus-K objection must not lose credit."
+    }
+  },
+  "hydrogen": {
+    "electrolysisEquationBalanced": "2 H2O -> 2 H2 + O2",
+    "firstPhysicalStoredKWh": 63.0,
+    "firstPhysicalReturnedKWh": 31.5,
+    "firstChemicalReturnedKWh": 28.0,
+    "secondChemicalReturnedKWh": 382.5,
+    "secondPhysicalReturnedKWh": 414.0,
+    "shortTermReturnedKWh": 900.0,
+    "freshPhysicalReturnedKWh": 360.0,
+    "boundary": "Stage products valid on the supplied common energy basis with auxiliary demand included; these fictional efficiencies are not source claims about actual plants. Input emissions cannot be inferred from energy efficiency."
+  },
+  "rates": {
+    "aMain": {
+      "curveReadOff": [
+        [
+          0,
+          0.8
+        ],
+        [
+          20,
+          0.6
+        ]
+      ],
+      "secantDcDtMolPerLs": -0.010000000000000004,
+      "tangentReadOff": [
+        [
+          0,
+          0.72
+        ],
+        [
+          30,
+          0.54
+        ]
+      ],
+      "tangentDcDtMolPerLs": -0.0059999999999999975,
+      "positiveADisappearanceAverage": 0.01,
+      "positiveADisappearanceInstant": 0.006,
+      "rAndBFormationAverage": 0.005,
+      "rAndBFormationInstant": 0.003,
+      "reason": "2A -> B; r=-0.5*dcA/dt=dcB/dt; at V=1L numeric amount-disappearance values coincide but units differ"
+    },
+    "aFresh": {
+      "tangentReadOff": [
+        [
+          0,
+          1.44
+        ],
+        [
+          30,
+          1.08
+        ]
+      ],
+      "dnDtMolPerS": -0.011999999999999995,
+      "positiveDisappearanceMolPerS": 0.012,
+      "positiveConcentrationDisappearanceAt2L": 0.006,
+      "absoluteErrorMolPerS": 0.0008,
+      "propagatedConcentrationError": 0.0004
+    },
+    "bMain": {
+      "curveReadOff": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          24
+        ],
+        [
+          120,
+          36
+        ]
+      ],
+      "secantsMlPerS": [
+        0.4,
+        0.2
+      ],
+      "tangentReadOff": [
+        [
+          0,
+          9
+        ],
+        [
+          120,
+          39
+        ]
+      ],
+      "tangentMlPerS": 0.25,
+      "amountRatesMolPerS": [
+        1.6666666666666667e-05,
+        8.333333333333334e-06,
+        1.0416666666666666e-05
+      ],
+      "solutionNormalizedMolPerLs": [
+        3.3333333333333335e-05,
+        1.6666666666666667e-05,
+        2.0833333333333333e-05
+      ],
+      "absoluteReadOffErrorMlPerS": 0.02,
+      "propagatedAmountError": 8.333333333333334e-07
+    },
+    "bFresh": {
+      "tangentReadOff": [
+        [
+          0,
+          2
+        ],
+        [
+          50,
+          26
+        ]
+      ],
+      "tangentMlPerS": 0.48,
+      "amountMolPerS": 1.9999999999999998e-05,
+      "at1LSolutionMolPerLs": 1.9999999999999998e-05,
+      "absoluteReadOffErrorMlPerS": 0.025
+    },
+    "graphAssessment": "All four actual PNGs inspected. Axes, curves and tangents support these points; no numerical slope printed. Main concentration major/minor ordinate steps 0.1/0.02; amount steps 0.2/0.04; broad tangent-point separations support supplied tolerances. Gas ordinate steps 6/3 and 4/2 mL support broad point selection. Formula derivatives independently agree: -0.014+0.0004*t at20; doubled fresh; (9*(t/60)^2-30*(t/60)+36)/60 at60; 0.64-0.0064*t at25."
+  },
+  "LeChatelier": {
+    "compressionScaling": {
+      "NH3ReactionDeltaNu": -2,
+      "volumeHalvedQFactor": 0.25,
+      "netDirection": "forward"
+    },
+    "NO2Compression": {
+      "deltaNu": 1,
+      "volumeHalvedQFactor": 2,
+      "netDirection": "reverse"
+    },
+    "actualConcentrationCounterexampleToOldTask": {
+      "model": "K=1 in dimensionless c/c° units; before x=[N2O4]=1,y=[NO2]=1. Halve V at unchanged T.",
+      "immediate": {
+        "x": 2,
+        "y": 2,
+        "Q": 2
+      },
+      "finalEquation": "y^2=x; 2x+y=6",
+      "final": {
+        "x": 2.25,
+        "y": 1.5,
+        "Q": 1
+      },
+      "conclusion": "Reverse shift from immediate compressed state coexists with an absolute NO2 increase from 1 to1.5 relative to the initial equilibrium. New task correctly asks equilibrium shift and the distinction, not a forced lower concentration."
+    },
+    "HICompressionDeltaNu": 0,
+    "HIQFactor": 1,
+    "productRemovalAtFixedTV": "For N2O4 <-> 2NO2 and removal factor f<1, Q immediately becomes f^2*K, hence forward net reaction; K fixed.",
+    "temperatureAndDissolution": "Heating favours endothermic NO2 formation and reverse NH3 decomposition. Supplied exothermic dissolution favours dissolved gas on cooling; relevant gas partial pressure matters. Neither equilibrium displacement nor K fixes equilibration time."
+  },
+  "collisionFactors": {
+    "surface": "For the same substance n=m/M; dividing a fixed mass changes accessible interface, not m or n.",
+    "concentration": "More reactants typically means more encounters in this model; doubling concentration does not imply a universal doubled rate. k*c^2 gives fourfold rate; zero order gives no change.",
+    "temperature": "Higher T changes energy distribution and fraction exceeding a fixed activation barrier. Structure loss invalidates the fixed-catalyst assumption; no unconditional rising rate follows.",
+    "substance": "Bond rearrangement, barrier and suitable orientation constrain successful encounters; encounter count alone is insufficient.",
+    "thirdSubstanceTransfer": "Unchanged reactant concentrations cannot establish a reactant-concentration cause. Catalysis or a changed mechanism remains a hypothesis requiring investigation."
+  },
+  "performedExperiment": false,
+  "actualLearnerPerformance": false,
+  "newLearnerWitness": false
+}

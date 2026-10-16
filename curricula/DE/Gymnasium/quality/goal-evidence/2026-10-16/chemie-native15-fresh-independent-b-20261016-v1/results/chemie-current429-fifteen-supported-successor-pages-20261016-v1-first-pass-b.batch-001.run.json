@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-native15-fresh-independent-b-20261016-v1",
+  "campaignId": "chemie-current429-fifteen-supported-successor-pages-20261016-v1-b",
+  "roundId": "chemie-current429-fifteen-supported-successor-pages-20261016-v1-first-pass-b",
+  "batchId": "chemie-current429-fifteen-supported-successor-pages-20261016-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:52594ed43c35dd9d8e05bb05cd57deb19b3a215929fca49690c56bcb89bd5671",
+  "bundleFingerprint": "sha256:6f249397af5887e277d9922d9d6cb40fdb6d5b0edc19428ac7f47052d66f6f6c",
+  "bookDigest": "sha256:e647ebc9793ecaf75715ae463db7b6205d76414c7262f0bf964c562081017e59",
+  "provider": "OpenAI / Codex",
+  "model": "Codex agent, GPT-6-based per instructions; exact routed model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:43cc5fd586af9859daf4375194fe76265a10d709a3eb45f0ae3f15f3f5a5b281",
+  "independenceGroupId": "chemie-current429-fifteen-supported-successor-pages-20261016-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+    "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+    "72236f2c-771e-4ab6-933a-e549ee49d15b",
+    "d8bdf486-7295-5393-b6f7-54f6e485c848",
+    "8ceb1749-fce0-584f-a2b8-0a309282329a",
+    "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+    "b8c8f70f-64cb-50b1-970c-e0c4295da3fb",
+    "93b914d4-747d-5b22-90ff-ac6320514b44",
+    "56bc6377-1291-58bc-b433-5b9f673888e9",
+    "c245d5fd-ce46-5b45-ab2e-e610547b5f7c",
+    "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+    "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+    "3ce81f96-4fbb-5022-88b7-337a000315ed",
+    "e62c6c58-b688-59c3-8ac5-2cfc26ac22d7",
+    "545a2e56-e981-5725-b0e4-a0c77f7f291e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:56ac6cee5fa23fc3a5e381107eb8a622b5d936ac3decd5f7d04412697d9ade85"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:52594ed43c35dd9d8e05bb05cd57deb19b3a215929fca49690c56bcb89bd5671"
+    }
+  ],
+  "startedAt": "2026-10-16T07:23:45.336650+00:00",
+  "completedAt": "2026-10-16T07:35:57.512497+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:a336faf66ad37b2724d278fb7601b45dfbb7ee2688618f40e62b939636aff0af",
+  "toolchainVersion": "native15-independent-b-serializer-v1"
+}

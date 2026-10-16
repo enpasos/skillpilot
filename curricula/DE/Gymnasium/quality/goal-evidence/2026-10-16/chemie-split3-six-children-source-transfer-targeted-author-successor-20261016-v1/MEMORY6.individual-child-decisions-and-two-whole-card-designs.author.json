@@ -1,0 +1,438 @@
+{
+  "role": "Individual scientific author recall decisions, not current normal M serialization or card/visibility acceptance.",
+  "existingWholeDeckPins": [
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+      "sha256": "sha256:80800812c4d08553392ed77b7ddf347b0d9febb3f2840b7fd2a84e937f3aefe3",
+      "bytes": 5293
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+      "sha256": "sha256:8ff43efc7a161f36e4f18089eda1f741f748a74803be73a0ab8df022556e4ac9",
+      "bytes": 3870
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+      "sha256": "sha256:333a5d67b24d08cc5f22302da5bb918d4b709f8f0dbc8c8d986519aad7e8eecf",
+      "bytes": 4388
+    }
+  ],
+  "existingNecessaryWholeCards": [
+    {
+      "id": "chem_basics_006",
+      "front": "Kation und Anion: Bildung?",
+      "back": "Kation: Elektronenabgabe, positiv geladen\n\nAnion: Elektronenaufnahme, negativ geladen",
+      "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca"
+      ]
+    },
+    {
+      "id": "chem_basics_007",
+      "front": "Warum leiten Salzlösungen Strom?",
+      "back": "In Lösung sind Ionen beweglich.\n\nBewegliche Kationen und Anionen transportieren Ladung.",
+      "category": "Chemie Sek I - Sicherheit, Symbole und Stoffmenge",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:4285d84a-2c9a-4d51-8250-8bed4daf2d2e"
+      ]
+    },
+    {
+      "id": "chem_org_q1_002",
+      "front": "Wichtige funktionelle Gruppen?",
+      "back": "Alkohol: $-OH$\n\nAldehyd: $-CHO$\n\nKeton: $>C=O$\n\nCarbonsäure: $-COOH$\n\nEster: $-COOR$",
+      "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:7990387d-f254-5d3b-a589-a3e7ed9502a3"
+      ]
+    },
+    {
+      "id": "chem_org_q1_007",
+      "front": "Konfiguration vs. Konformation?",
+      "back": "Konfiguration: nur durch Bindungsbruch änderbar, zum Beispiel R/S oder E/Z.\n\nKonformation: durch Drehung um Einfachbindungen änderbar.",
+      "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:85342c52-9722-54b0-8fbb-513d9d648363"
+      ]
+    },
+    {
+      "id": "chem_bond_007",
+      "front": "Wichtige zwischenmolekulare Kräfte?",
+      "back": "Van-der-Waals-Kräfte, Dipol-Dipol-Wechselwirkungen, Wasserstoffbrücken und Ionen-Dipol-Wechselwirkungen.",
+      "category": "Chemie - Atombau, Bindung und Struktur",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "decision": "memory_required_existing",
+      "necessaryExistingCardIds": [
+        "chem_basics_006",
+        "chem_basics_007"
+      ],
+      "rationaleDe": "Kation/Anion, bewegliche Ladungsträger und Ladungsbilanz müssen verfügbar sein. Die konkreten Gerüstladungen, Ca/Na-Ladungen und Kapazitäten stehen im Material; daraus werden Austauschkoeffizienten hergeleitet. Keine reale Grammkapazität auswendig lernen.",
+      "proposedExistingMemoryGoalId": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+      "bindingStatus": "HOLD: current six-child M lines, actual card-to-memory selection, origin validation and all applicable country/course visibility still require actual integration and independent checks. Existing card bytes and origin tags are unchanged."
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "decision": "memory_required_new_narrow_card",
+      "necessaryExistingCardIds": [
+        "chem_org_q1_002"
+      ],
+      "rationaleDe": "Funktionelle Gruppen bleiben reguläres Vorwissen. Primärabbau versus Mineralisierung ist zusätzlich unverzichtbarer kompakter Begriffsabruf, abgestimmt mit dem unveränderten e9ea-Kriterienpartner. C2-Regel und Stoffweg stehen im Fall; keine C12-Fünf-Zyklen-Merkkarte.",
+      "proposedExistingMemoryGoalId": "6122faf0-6718-52b3-b40d-b206a2e963ae",
+      "bindingStatus": "HOLD: current six-child M lines, actual card-to-memory selection, origin validation and all applicable country/course visibility still require actual integration and independent checks. Existing card bytes and origin tags are unchanged."
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "decision": "memory_required_existing",
+      "necessaryExistingCardIds": [
+        "chem_org_q1_002"
+      ],
+      "rationaleDe": "Estergruppe, Säure-/Alkoholreste und TG-Grundidee aus den unveränderten 2f3-/737-Fundamenten bleiben erforderlich. Fiktive Motorfreigaben und Herkunftsurteile sind aus Daten abzuleiten; kein neues Öl-Deck und kein pauschaler Raps/Palm-Merksatz.",
+      "proposedExistingMemoryGoalId": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+      "bindingStatus": "HOLD: current six-child M lines, actual card-to-memory selection, origin validation and all applicable country/course visibility still require actual integration and independent checks. Existing card bytes and origin tags are unchanged."
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "decision": "memory_required_existing",
+      "necessaryExistingCardIds": [
+        "chem_org_q1_002"
+      ],
+      "rationaleDe": "Ester, Alkohol und Carboxylat sowie die vorausgesetzte Ester-/Umesterungsarbeit müssen verfügbar sein. 1:3:3:1 folgt aus drei Esterstellen; Neutralisation/Verseifung werden erklärt, nicht als Herstellungsrezept auswendig gelernt.",
+      "proposedExistingMemoryGoalId": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+      "bindingStatus": "HOLD: current six-child M lines, actual card-to-memory selection, origin validation and all applicable country/course visibility still require actual integration and independent checks. Existing card bytes and origin tags are unchanged."
+    },
+    {
+      "goalId": "4955f745-b946-5d3d-82d6-5e52dc8549a3",
+      "decision": "memory_required_existing",
+      "necessaryExistingCardIds": [
+        "chem_org_q1_007"
+      ],
+      "rationaleDe": "Konformation versus Bindungsbruch und Polymer-/Monomerbegriffe müssen verfügbar sein; die bestehende konkrete Karte erhält eine eigene Notwendigkeitsbegründung. Butadien-/1,4-Identität und Tg stehen im Material. Keine falsche Mehr-Schwefel-ist-besser-Regel.",
+      "proposedExistingMemoryGoalId": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+      "bindingStatus": "HOLD: current six-child M lines, actual card-to-memory selection, origin validation and all applicable country/course visibility still require actual integration and independent checks. Existing card bytes and origin tags are unchanged."
+    },
+    {
+      "goalId": "f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7",
+      "decision": "memory_required_new_narrow_card",
+      "necessaryExistingCardIds": [
+        "chem_org_q1_002",
+        "chem_bond_007"
+      ],
+      "rationaleDe": "OH/Ester und H-Brücken bleiben Grundlagen. Zusätzlich muss Viskose als regenerierte Cellulose gegenüber einem dauerhaft modifizierten Derivat identifizierbar sein. Xanthat ist nur Zwischenstufe; keine Karte für 12/3 Prozent oder 3 minus DS.",
+      "proposedExistingMemoryGoalId": "31148286-b8db-57a7-8da2-2e0479240a2c",
+      "bindingStatus": "HOLD: current six-child M lines, actual card-to-memory selection, origin validation and all applicable country/course visibility still require actual integration and independent checks. Existing card bytes and origin tags are unchanged."
+    }
+  ],
+  "twoWholeNewCardCandidates": [
+    {
+      "id": "chem_split_tensid_primary_vs_mineralisation",
+      "front": "Primärabbau und Mineralisierung: Was ist der Unterschied?",
+      "back": "Primärabbau verändert den Ausgangsstoff; Zwischenprodukte können bleiben. Mineralisierung führt organischen Kohlenstoff in anorganische Endprodukte über, bei vollständigem aerobem Kohlenstoffabbau insbesondere CO2. Ausgangsstoffentfernung allein belegt keine vollständige Mineralisierung; Sorption ist nur Phasenverlagerung.",
+      "category": "Chemie - Tensidabbau",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:cc5a626a-dc85-57e2-b422-259f92901545",
+        "goal:e9ea1606-5018-5a36-9ac2-8359747a65d4"
+      ]
+    },
+    {
+      "id": "chem_split_viscose_regenerated_cellulose",
+      "front": "Viskose und Celluloseacetat: Welche Stoffidentität bleibt nach der Herstellung?",
+      "back": "Viskose ist nach vorübergehender Verarbeitung regenerierte Cellulose; das Xanthat ist kein dauerhaftes Endprodukt. Celluloseacetat ist ein dauerhaft chemisch modifiziertes Cellulosederivat mit Acetatestergruppen anstelle eines Teils der OH-Gruppen. Das Cellulose-Rückgrat bleibt in beiden Fällen erhalten.",
+      "category": "Chemie - Cellulosefasern",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+      ]
+    }
+  ],
+  "existingMemoryGoalsRetainedWhole": [
+    {
+      "id": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+      "title": "Lernkarten - Chemische Grundlagen",
+      "titleEn": "Flashcards - Chemistry Basics",
+      "description": "Die lernende Person kann zentrale Sicherheits-, Symbol- und Stoffmengenbegriffe der Chemie mithilfe von Lernkarten sicher abrufen.",
+      "descriptionEn": "The learner can reliably recall core chemistry safety, symbolic notation, and amount-of-substance concepts using flashcards.",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_chemistry_basics_seki",
+        "memorization"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json"
+      },
+      "contains": [],
+      "requires": [
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "1dc15fa2-fca4-56b0-b5c1-4d215613dde0"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Grundlagen"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    },
+    {
+      "id": "1e519951-9850-5a07-ac82-d9f0075e3d05",
+      "title": "Lernkarten - Atombau und Bindung",
+      "titleEn": "Flashcards - Atomic Structure and Bonding",
+      "description": "Die lernende Person kann zentrale Begriffe zu Atombau, Bindungsarten, Molekülgeometrie und Wechselwirkungen mithilfe von Lernkarten sicher abrufen.",
+      "descriptionEn": "The learner can reliably recall core concepts of atomic structure, bonding, molecular geometry, and intermolecular interactions using flashcards.",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_chemistry_bonding_structure",
+        "memorization"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json"
+      },
+      "contains": [],
+      "requires": [
+        "72236f2c-771e-4ab6-933a-e549ee49d15b",
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "67cd332f-9db7-50e1-87f6-172ef3714300"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    },
+    {
+      "id": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+      "title": "Lernkarten - Organische Stoffklassen",
+      "titleEn": "Flashcards - Organic Compound Classes",
+      "description": "Die lernende Person kann zentrale organische Stoffklassen, funktionelle Gruppen, Nachweise und Stereochemie-Begriffe mithilfe von Lernkarten sicher abrufen.",
+      "descriptionEn": "The learner can reliably recall core organic compound classes, functional groups, tests, and stereochemistry terms using flashcards.",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_chemistry_organic_q1",
+        "memorization"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_organic_q1.de.json"
+      },
+      "contains": [],
+      "requires": [
+        "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+        "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+        "85342c52-9722-54b0-8fbb-513d9d648363"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1",
+        "area": "Organische Chemie"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    },
+    {
+      "id": "31148286-b8db-57a7-8da2-2e0479240a2c",
+      "title": "Lernkarten - Naturstoffe",
+      "titleEn": "Flashcards - Biomolecules",
+      "description": "Die lernende Person kann zentrale Naturstoff-Begriffe und Nachweise mithilfe von Lernkarten sicher abrufen.",
+      "descriptionEn": "The learner can reliably recall core biomolecule terms and tests using flashcards.",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_chemistry_natural_q2",
+        "memorization"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_natural_q2.de.json"
+      },
+      "contains": [],
+      "requires": [
+        "62149f36-87c0-5a2d-8a78-e7d4203f58c2",
+        "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+        "96d33fb6-ed14-50ab-b5c7-5ce0559d518a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2",
+        "area": "Naturstoffe"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    },
+    {
+      "id": "6122faf0-6718-52b3-b40d-b206a2e963ae",
+      "title": "Lernkarten - Energie und Nachhaltigkeit",
+      "titleEn": "Flashcards - Energy and Sustainability",
+      "description": "Die lernende Person kann zentrale Energie-, Thermodynamik- und Green-Chemistry-Formeln mithilfe von Lernkarten sicher abrufen.",
+      "descriptionEn": "The learner can reliably recall core energy, thermodynamics, and green chemistry equations using flashcards.",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_chemistry_energy_q4",
+        "memorization"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json"
+      },
+      "contains": [],
+      "requires": [
+        "801790f9-be3a-51fe-9b0f-3452c1bba887",
+        "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+        "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4",
+        "area": "Energie und Nachhaltigkeit"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    }
+  ],
+  "memoryGoalScopeCaveat": "The current energy memory goal names formulas; use for a new mineralisation definition is a candidate routing hypothesis only. Independent review must choose a legitimate current wording/selection or a properly authored memory successor, rather than silently declaring this formula-only body sufficient. No old memory goal or deck is mutated.",
+  "visibilityStatus": "NOT EXECUTED. Retain the three existing DE-GK/DE-LK/DE-SekI scopes, actual country/course selected-memory routes and card origins; check the proposed two cards only where their child source is a target. A visible unrelated deck does not establish this binding.",
+  "newIndependentMApprovals": 0,
+  "newCardReviews": 0,
+  "HumanApproval": false,
+  "HumanTrial": false
+}
