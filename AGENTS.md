@@ -269,6 +269,15 @@ Interpretation rules:
   never relaxes goal quality, source fidelity, independent reviews, or strict
   Mathematics M7 gates; it does not assert that Bavaria offers Mathematics as
   a selectable Leistungsfach.
+- For the Chemistry rollout, the Product Owner decided on **16 October 2026**
+  to include all authored topics in the applicable target scope first and defer
+  the preceding topic-selection flow, following the Bavarian Mathematics
+  approach. This includes Schleswig-Holstein's optional medication theme in
+  the interim GK/LK Chemistry target. Preserve its official optional status:
+  inclusion in SkillPilot's broader target does not make it a universal official
+  curriculum requirement or prove that a learner selected it. No persisted
+  theme choice or new runtime selector is implied. Source fidelity, independent
+  reviews, full target progress and strict Chemistry M7 gates remain required.
 - current focus roots and the one active atomic goal are mutable Level 3 state;
   changing Level 2 revalidates them against the new learner-facing `target`
   projection without rewriting stable goal IDs or global Level 4 mastery

@@ -923,6 +923,64 @@ try {
   assert.equal(hiddenMemory.missingVisibleMemoryGoals, 1,
     'A prerequisite-only memory node does not discharge a real target recall obligation.')
   assert.equal(hiddenMemory.errors.length, 1)
+
+  // A broad authored subtree is still narrowed by the selected course. The
+  // absent LK recall unit must fail in LK, without becoming a GK obligation.
+  const scopedGoals = new Map([
+    goal('COURSE_ALL', ['GK_ORIGIN', 'LK_ORIGIN', 'GK_MEMORY']),
+    goal('GK_ORIGIN', [], ['GK']),
+    goal('LK_ORIGIN', [], ['LK']),
+    goal('GK_MEMORY', [], ['GK', 'memorization', 'srs-deck:fixture-deck']),
+    goal('LK_MEMORY', [], ['LK', 'memorization', 'srs-deck:fixture-deck']),
+  ].map((item) => [item.id, item]))
+  const scopedRecords = ['GK', 'LK'].map((course) => ({
+    ...requiredRecords[0], goalId: `${course}_ORIGIN`, memoryGoalIds: [`${course}_MEMORY`],
+  }))
+  const checkScopedMemory = (
+    scope: CompositionView['scope'],
+    nodes: CompositionViewNode[] = [{ kind: 'canonicalSubtree', goalId: 'COURSE_ALL' }],
+    records = scopedRecords,
+  ) => {
+    const viewPath = join(memoryVisibilityDirectory, 'scoped-view.json')
+    writeFileSync(viewPath, JSON.stringify({ rootNodes: nodes, scope }))
+    return collectMemoryVisibilityReport({
+      schemaVersion: 1, reviewId: 'memory-role-fixture', ruleVersion: 'memory-card-review-v1',
+      landscapeId: 'memory-role-fixture', landscapePath: 'unused', reviewPath: 'unused',
+      visibilityScopes: [{ label: 'Scoped Memory fixture', viewPath }],
+      scope: { label: 'Fixture', leafGoalIds: [...scopedGoals.keys()] },
+    }, scopedGoals, records)
+  }
+  const gkMemory = checkScopedMemory({ courseProfile: 'GK', stage: 'CrossStage' })
+  assert.equal(gkMemory.checkedMemoryRequiredGoals, 1,
+    'An LK-only content goal inside a broad subtree must not create a GK recall obligation.')
+  assert.equal(gkMemory.missingVisibleMemoryGoals, 0)
+  assert.deepEqual(gkMemory.errors, [])
+  const lkMemory = checkScopedMemory({ courseProfile: 'LK', stage: 'SekII' })
+  assert.equal(lkMemory.checkedMemoryRequiredGoals, 1)
+  assert.equal(lkMemory.missingVisibleMemoryGoals, 1,
+    'The missing LK recall unit must still block its actual LK content origin.')
+  assert.match(lkMemory.errors[0], /LK_ORIGIN.*none of its referenced memoryGoalIds is visible/)
+  const noCourseMemory = checkScopedMemory({ stage: 'SekII' })
+  assert.equal(noCourseMemory.checkedMemoryRequiredGoals, 2,
+    'Stage metadata is not a generic tag filter, and an unresolved course must retain both origins.')
+  assert.equal(noCourseMemory.missingVisibleMemoryGoals, 1)
+  const mismatchedSupport = checkScopedMemory({ courseProfile: 'GK' }, [
+    { kind: 'goalEntry', goalId: 'GK_ORIGIN' },
+    { kind: 'goalEntry', goalId: 'LK_MEMORY' },
+  ], [{ ...scopedRecords[0], memoryGoalIds: ['LK_MEMORY'] }])
+  assert.equal(mismatchedSupport.checkedMemoryRequiredGoals, 1)
+  assert.equal(mismatchedSupport.missingVisibleMemoryGoals, 1,
+    'An LK-only recall node must not discharge a real GK origin even if explicitly authored in the same view.')
+  for (const reverse of [false, true]) {
+    const nodes: CompositionViewNode[] = [
+      { kind: 'canonicalSubtree', goalId: 'COURSE_ALL', projectionRole: 'target' },
+      { kind: 'goalEntry', goalId: 'GK_ORIGIN', projectionRole: 'prerequisiteOnly' },
+    ]
+    const report = checkScopedMemory({ courseProfile: 'GK' }, reverse ? nodes.reverse() : nodes)
+    assert.equal(report.checkedMemoryRequiredGoals, 0,
+      'Course filtering must preserve a direct prerequisiteOnly override in either order.')
+    assert.deepEqual(report.errors, [])
+  }
 } finally {
   rmSync(memoryVisibilityDirectory, { recursive: true, force: true })
 }

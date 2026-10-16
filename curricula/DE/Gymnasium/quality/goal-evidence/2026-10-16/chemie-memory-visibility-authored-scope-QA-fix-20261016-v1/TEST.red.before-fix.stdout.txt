@@ -1,0 +1,26 @@
+
+> skillpilot@0.0.0 test:composition-projection-roles
+> tsx scripts/testCompositionProjectionRoles.ts
+
+Hessen Physics tree tests passed (GK/LK stage planning, projection, generator replay and BB/BE isolation).
+HE Q2.1 regression passed: 4 GK views, 10 shared goals, 3 local assessments; 84 other views exclude the new HE assessments; native requires-derived/child-union applicability, current caches, memory visibility and removed prerequisite coupling checked.
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: An LK-only content goal inside a broad subtree must not create a GK recall obligation.
+
+2 !== 1
+
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testCompositionProjectionRoles.ts:954:10)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 1,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

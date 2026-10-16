@@ -5,8 +5,9 @@ import { fileURLToPath } from 'node:url'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import {
   collectCompositionProjectionRoleGoalIds,
-  type CompositionViewNode,
+  type CompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
+import { goalMatchesFilters } from '../src/utils/goalFilters'
 
 type ReviewStatus = 'no_memory_needed' | 'memory_required' | 'needs_developer_review'
 type CardReviewStatus = 'kept' | 'remove' | 'needs_developer_review'
@@ -319,7 +320,7 @@ function collectCompositionViewVisibleGoalIds(
   }
 
   try {
-    const parsed = loadJson<{ rootNodes?: CompositionViewNode[] }>(absoluteViewPath)
+    const parsed = loadJson<Partial<Pick<CompositionView, 'rootNodes' | 'scope'>>>(absoluteViewPath)
     if (!Array.isArray(parsed.rootNodes)) {
       errors.push(`${viewPath}: rootNodes must be an array`)
       return { visibleGoalIds, errors }
@@ -328,9 +329,13 @@ function collectCompositionViewVisibleGoalIds(
     // the same specificity rules as the authored learner projection.
     parsed.rootNodes.forEach(visitNode)
     const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(parsed.rootNodes, goalById)
+    // Broad subtrees can contain both courses. Apply the existing learner course
+    // filter after resolving target roles. Stage is authored tree structure;
+    // raw jurisdiction metadata lacks compiled source/Memory-origin additions.
     visibleGoalIds.clear()
     targetGoalIds.forEach((goalId) => {
-      if (goalById.has(goalId)) visibleGoalIds.add(goalId)
+      const goal = goalById.get(goalId)
+      if (goal && goalMatchesFilters(goal, parsed.scope?.courseProfile)) visibleGoalIds.add(goalId)
     })
   } catch (error) {
     errors.push(`${viewPath}: cannot parse composition view (${(error as Error).message})`)

@@ -31,7 +31,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | cards removed from active decks | 0 |
 | memory goals traced | 5/5 |
 | composition visibility scopes | 1 |
-| memory-required goals checked in views | 56 |
+| memory-required goals checked in views | 52 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -39,7 +39,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Geschichte Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/geschichte/de-de-gym-history-crossstage.view.json` | 197 | 5 | 56 | 0 |
+| Geschichte Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/geschichte/de-de-gym-history-crossstage.view.json` | 124 | 5 | 52 | 0 |
 
 ## Memory-Required Goals
 

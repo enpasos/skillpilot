@@ -31,7 +31,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | cards removed from active decks | 0 |
 | memory goals traced | 5/5 |
 | composition visibility scopes | 18 |
-| memory-required goals checked in views | 96 |
+| memory-required goals checked in views | 94 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -39,7 +39,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Informatik Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json` | 251 | 5 | 8 | 0 |
+| Informatik Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json` | 182 | 4 | 6 | 0 |
 | Informatik Gymnasium LK (DE) | `curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-lk.view.json` | 270 | 5 | 9 | 0 |
 | Informatik Gymnasium DE-BB | `curricula/DE/Gymnasium/composition-views/informatik/de-bb-gym-informatics-crossstage.view.json` | 90 | 5 | 4 | 0 |
 | Informatik Gymnasium DE-BE | `curricula/DE/Gymnasium/composition-views/informatik/de-be-gym-informatics-crossstage.view.json` | 90 | 5 | 4 | 0 |
