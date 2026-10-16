@@ -74,8 +74,8 @@ superseded documentary history, and 2,547 have no selected/current/remaining-pri
 dependency. Some contain unique older opinions; no reconstruction claim or new
 scientific verdict follows from excluding them from this checkpoint.
 
-The [complete path/hash/reference disposition](../../curricula/quality/cross-subject-requires/2026-10-16/current-checkpoint-original-retention-v1/LOCAL-ARTIFACT-RECONCILIATION.actual.json)
-and [exact original locators](../../curricula/quality/cross-subject-requires/2026-10-16/current-checkpoint-original-retention-v1/ORIGINAL-LOCATORS.actual.json)
+The [complete path/hash/reference disposition](https://github.com/enpasos/skillpilot/blob/main/curricula/quality/cross-subject-requires/2026-10-16/current-checkpoint-original-retention-v1/LOCAL-ARTIFACT-RECONCILIATION.actual.json)
+and [exact original locators](https://github.com/enpasos/skillpilot/blob/main/curricula/quality/cross-subject-requires/2026-10-16/current-checkpoint-original-retention-v1/ORIGINAL-LOCATORS.actual.json)
 make the retained evidence reviewable in the PR. No stash substitutes for this
 review. Existing versioned evidence remains intact. This bounded reconciliation
 of uncommitted files does not complete the later consolidation of the whole
