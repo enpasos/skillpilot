@@ -1,0 +1,70 @@
+{
+  "role": "Actual stock production CLI checks, final-five independently supported normal H descriptions; no D5 approval",
+  "workingDirectory": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1",
+  "checks": [
+    {
+      "lane": "P5",
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-five-supported-description-normal-H-and-native5-technical-20261016-v1/config/P5.supported-normal-H.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.608,
+      "stdout": "# Positive Goal Evidence Review: chemie-five-description-compatibility-independent-b-20261016-v1\nScope: Exactly five current DE/EN description successors; independent bounded compatibility science, prospective AI material only\nConfigured goals: 5\nApproved: 0\nNeeds human review: 5\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "lane": "A5",
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-five-supported-description-normal-H-and-native5-technical-20261016-v1/config/A5.supported-normal-H.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.391,
+      "stdout": "# Semantic Atomicity Review: chemie-five-description-compatibility-independent-b-20261016-v1\nScope: Exactly five current DE/EN description successors; independent bounded compatibility science, prospective AI material only\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 5\nCurrent reviewed atomic: 5\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "stderr": ""
+    },
+    {
+      "lane": "M435",
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.482,
+      "stdout": " Wert für1mol stimmt mit BIPM überein. Die Rückseite enthält Referenzziffern; die Frage verlangt Grundidee/Einheit, keine Rezitation aller acht Dezimalstellen. Die Abgrenzung behebt die ursprüngliche Verwechslung ohne einen zusätzlichen Rechenkurs einzuführen. Alle bisherigen und ergänzten Memoryrefs bleiben unverändert; dieser eng begründete Abruf ersetzt die übrigen Erklärungs-, Experimentier- oder Anwendungsaspekte des gewöhnlichen Ziels nicht.\n- Synthetischen Kautschuk und Vulkanisation erklären [4955f745-b946-5d3d-82d6-5e52dc8549a3]: Die vorhandene Konfigurations-/Konformationskarte liefert eine notwendige knappe Unterscheidung: Kettenbeweglichkeit erfordert keine konstitutive Neuverknüpfung. Monomer, Polymerisation, Vernetzung und Elastizitätsänderung müssen erklärt werden; weder Rezeptur, Schwefelmenge noch Tg werden als neue feste Abrufliste verlangt.\n- Valenzstrichformeln und Mesomerie aufstellen [23533087-89ea-5f29-8ec1-9f2e01197bb6]: Der vollständige aktuelle Zieltext verlangt Valenzstrichformeln und Mesomerie aufstellen. Konkreter kompakter Abruf: Mesomerie: Merksatz?. Die zugehörige Auswahl enthält genau diese zugeordneten Karten; die bisherigen Memoryrefs bleiben erhalten. Dieser begrenzte Begriff-/Formelabruf unterstützt die Kompetenz; er ersetzt weder Erklärung noch Experimente, Berechnung oder Anwendung. Die ergänzte Memorybindung ist in diesem begrenzten Sinn fachlich sinnvoll.\n- Viskose und Cellulosederivate als Textilfasern erklären [f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7]: Gruppen und Wechselwirkungsnamen sind bereits erlernte Grundlagen. Viskose als regenerierte Cellulose gegenüber dauerhaft substituiertem Celluloseacetat ist zusätzliche kompakte Stoffidentität. Die neue Karte trennt Xanthat-Zwischenstufe vom Endprodukt korrekt. Erhaltenes Rückgrat bedeutet chemisches Grundmotiv, keine unveränderte Kettenlänge oder gleiche Eigenschaften. DS, Herstellungskonzept und Eigenschaftsfolgen bleiben Erklärung.\n- Volumenanteile berechnen und deuten [49d42c38-419c-5048-b7e9-860645dd122d]: Die kompakte Definition φ_i=V_i/ΣV_j für getrennte Ausgangsvolumina unter gleichen Bedingungen muss zuverlässig verfügbar sein. Der Nennerwechsel bei Kontraktion ist eine echte begriffliche Verwechslungsgefahr. Eine Abrufkarte unterstützt diese Definition; sie ersetzt nicht die unabhängige Interpretation.\n- Wirkungsgrade vergleichen [3ec31fe1-e01b-5edd-bd9a-936191d67639]: Memory-Anteil streng begrenzt auf kompakte Chemie-Begriffe, Symbol-/Formelregeln, Nachweise oder Gleichungen; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend.\n- Zeolith-Enthärter strukturell erklären [2d16528c-1424-5999-b3d2-af4593a147fc]: Kation/Anion und bewegliche Gegenionen sind knappe notwendige Begriffe für die Ladungsbilanz eines Zeoliths. Die zwei bestehenden Karten stützen genau diesen Abruf. Feste Gerüstladung, Austauschverhältnis und endliche Kapazität bleiben begründete Strukturleistung; aus den Karten folgt keine auswendig gelernte reale Austauschkapazität.\n",
+      "stderr": ""
+    },
+    {
+      "lane": "QA458",
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--check",
+        "--subject=chemie"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 2.931,
+      "stdout": "Goal visualization QA ledgers are up to date (1 subject file(s)).\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -10,6 +10,7 @@ import {
   writeVerifiedGoalDescriptionReviewCampaignGuidanceArtifacts,
 } from './createGoalDescriptionReviewCampaign'
 import {
+  buildGoalDescriptionCanonicalContext,
   buildGoalDescriptionReviewCampaign,
   buildGoalDescriptionReviewInput,
   fingerprintGoalBookReviewBundleManifest,
@@ -565,6 +566,52 @@ assert.deepEqual(
   (await validateGoalDescriptionReviewCampaign({ bundle, input: builtInput, campaign: v3Campaign })).errors,
   [],
 )
+
+const excludedFixtureContext = buildGoalDescriptionCanonicalContext({
+  ...builtInput.goals[0].canonicalContext,
+  applicability: {},
+  extendedData: {
+    applicabilityProjection: 'excluded',
+    applicabilityMappingInheritance: 'boundary',
+  },
+})
+assert.deepEqual(excludedFixtureContext.applicability, {})
+assert.equal(excludedFixtureContext.applicabilitySemantics.projection, 'excluded')
+assert.equal(excludedFixtureContext.applicabilitySemantics.mappingInheritance, 'boundary')
+
+for (const { label, applicability, projection, valid } of [
+  { label: 'empty excluded applicability', applicability: {}, projection: 'excluded', valid: true },
+  { label: 'empty unspecified applicability', applicability: {}, projection: null, valid: false },
+  { label: 'empty target applicability', applicability: {}, projection: 'target', valid: false },
+  { label: 'empty applicability with wrong exclusion case', applicability: {}, projection: 'Excluded', valid: false },
+  { label: 'array applicability despite exclusion', applicability: [], projection: 'excluded', valid: false },
+  { label: 'wrong-typed applicability despite exclusion', applicability: { jurisdiction: 4 }, projection: 'excluded', valid: false },
+  { label: 'null applicability retained', applicability: null, projection: null, valid: true },
+  { label: 'nonempty applicability retained', applicability: { jurisdiction: ['DE-HE'] }, projection: null, valid: true },
+]) {
+  const applicabilityInput = structuredClone(builtInput)
+  applicabilityInput.goals[0].canonicalContext = structuredClone(excludedFixtureContext)
+  const context = applicabilityInput.goals[0].canonicalContext as unknown as Record<string, unknown>
+  context.applicability = applicability
+  context.applicabilitySemantics = {
+    ...excludedFixtureContext.applicabilitySemantics,
+    projection,
+  }
+  applicabilityInput.reviewInputFingerprint = fingerprintGoalDescriptionReviewInput(applicabilityInput)
+  const applicabilityCampaign = buildGoalDescriptionReviewCampaign({
+    ...v3Campaign,
+    bundle,
+    input: applicabilityInput,
+    batchSize: 20,
+  })
+  const result = await validateGoalDescriptionReviewCampaign({
+    bundle,
+    input: applicabilityInput,
+    campaign: applicabilityCampaign,
+  })
+  if (valid) assert.deepEqual(result.errors, [], label)
+  else assert.match(result.errors.join('\n'), /applicability/u, label)
+}
 
 const staleCanonicalContextInput = structuredClone(builtInput)
 staleCanonicalContextInput.goals[0].canonicalContext!.weight = 2

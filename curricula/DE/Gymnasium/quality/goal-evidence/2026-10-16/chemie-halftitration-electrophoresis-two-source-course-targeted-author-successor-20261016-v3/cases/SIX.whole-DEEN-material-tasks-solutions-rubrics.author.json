@@ -1,0 +1,431 @@
+{
+  "role": "Whole authored case designs E0/G0 only; no observed learner or laboratory evidence",
+  "retainedEvaluationCases": "First two cases exactly retain earlier D124 material/task/solution/rubric objects.",
+  "supersededPlanningCases": "PLAN-1/PLAN-2 bodies remain in before; practical new caseIDs avoid claiming unchanged evidence.",
+  "cases": [
+    {
+      "caseId": "EVAL-1",
+      "goalId": "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+      "caseRole": "main-application",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "material": {
+        "dataOrigin": "Invented task values; no actual experiment or learner observation. Migration values are stipulated, not calculated from pI.",
+        "modelConditionsDe": "Wässriger Puffer, gleiche Trägermatrix, Elektroosmose im Modell vernachlässigt; pI-Werte gerundet. Positive Anode rechts, negative Kathode links, definierter Start bei 0 mm.",
+        "modelConditionsEn": "Aqueous buffer, matched support matrix, electroosmosis neglected in the model; rounded pI. Positive anode on the right, negative cathode on the left, defined origin at 0 mm.",
+        "aminoAcids": [
+          {
+            "nameDe": "Glycin",
+            "nameEn": "glycine",
+            "pI": 6.0,
+            "sideChain": "H"
+          },
+          {
+            "nameDe": "Lysin",
+            "nameEn": "lysine",
+            "pI": 9.7,
+            "sideChain": "(CH2)4NH2; basic protonatable side chain"
+          },
+          {
+            "nameDe": "Glutaminsäure/Glutamat",
+            "nameEn": "glutamic acid/glutamate",
+            "pI": 3.2,
+            "sideChain": "CH2CH2COOH; acidic protonatable side chain"
+          }
+        ],
+        "run": {
+          "pH": 7.0,
+          "timeMinutes": 10,
+          "migrationMm": {
+            "glycine": 1,
+            "lysine": -6,
+            "glutamate": 7,
+            "unknownU": [
+              1,
+              -6,
+              7
+            ]
+          }
+        }
+      },
+      "taskDe": "Werte die vorgegebenen Referenz- und U-Ergebnisse aus. Begründe Ladung und Wanderungsrichtung über pH/pI und den Einfluss unterschiedlicher Seitenketten. Beurteile, ob U damit eindeutig identifiziert ist und ob sich die Wanderstrecken aus pI berechnen lassen.",
+      "taskEn": "Evaluate the supplied reference and U results. Explain charge and migration direction using pH/pI and the role of different side chains. Assess whether U is uniquely identified and whether pI determines the migration distances.",
+      "workedSolutionDe": "Bei pH 7 liegen Glycin und Glutamat oberhalb ihres pI und sind im Mittel negativ, Lysin unterhalb seines pI und positiv. Deshalb ist die positive Anode für Glycin/Glutamat und die negative Kathode für Lysin die erwartete Richtung. Protonierbare basische bzw. saure Seitenketten verschieben den pI und die mittlere Ladung. Die drei U-Lagen sind mit den Referenzen vereinbar; andere Teilchen können ko-migrieren. pI bestimmt hier die Vorzeichenbeziehung, weder Ladungsbetrag noch konkrete Strecke. Diese sind vorgegebene Daten und hängen auch von Mobilität, Matrix, Feld und Zeit ab.",
+      "workedSolutionEn": "At pH 7, glycine and glutamate are above their pI and have negative mean charge; lysine is below its pI and positive. Glycine/glutamate therefore move toward the positive anode and lysine toward the negative cathode. Acidic/basic protonatable side chains shift pI and mean charge. U agrees with the three references, but other species may co-migrate. Here pI supplies the sign relation, not charge magnitude or distance; distances are supplied data and also depend on mobility, matrix, field and time.",
+      "rubric": [
+        {
+          "criterionDe": "Alle drei Vorzeichen und Richtungen schlüssig aus pH/pI begründet.",
+          "criterionEn": "Justifies all three charge signs and directions from pH/pI.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Seitenketten-Protonierbarkeit mit pI-/Ladungsunterschieden verbunden.",
+          "criterionEn": "Connects protonatable side chains to pI/charge differences.",
+          "points": 1
+        },
+        {
+          "criterionDe": "U nur als vereinbar eingeordnet; Ko-Migration als Grenze erkannt.",
+          "criterionEn": "Treats U as compatible, recognising the limit of co-migration.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Keine Strecke oder Ladungsgröße aus pI behauptet; Einfluss anderer Bedingungen erkannt.",
+          "criterionEn": "Does not derive distance or charge magnitude from pI; recognises other conditions.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4,
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false
+    },
+    {
+      "caseId": "EVAL-2-PH-TRANSFER",
+      "goalId": "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+      "caseRole": "fresh-independent-transfer",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "material": {
+        "dataOrigin": "Invented task values; no actual experiment or learner observation. Migration values are stipulated, not calculated from pI.",
+        "modelConditionsDe": "Wässriger Puffer, gleiche Trägermatrix, Elektroosmose im Modell vernachlässigt; pI-Werte gerundet. Positive Anode rechts, negative Kathode links, definierter Start bei 0 mm.",
+        "modelConditionsEn": "Aqueous buffer, matched support matrix, electroosmosis neglected in the model; rounded pI. Positive anode on the right, negative cathode on the left, defined origin at 0 mm.",
+        "aminoAcids": [
+          {
+            "nameDe": "Glycin",
+            "nameEn": "glycine",
+            "pI": 6.0,
+            "sideChain": "H"
+          },
+          {
+            "nameDe": "Lysin",
+            "nameEn": "lysine",
+            "pI": 9.7,
+            "sideChain": "(CH2)4NH2; basic protonatable side chain"
+          },
+          {
+            "nameDe": "Glutaminsäure/Glutamat",
+            "nameEn": "glutamic acid/glutamate",
+            "pI": 3.2,
+            "sideChain": "CH2CH2COOH; acidic protonatable side chain"
+          }
+        ],
+        "runs": [
+          {
+            "pH": 8.0,
+            "timeMinutes": 10,
+            "migrationMm": {
+              "lysine": -4,
+              "glutamate": 7,
+              "unknownV": -4
+            }
+          },
+          {
+            "pH": 11.0,
+            "timeMinutes": 10,
+            "migrationMm": {
+              "lysine": 3,
+              "glutamate": 8,
+              "unknownV": 3
+            }
+          }
+        ],
+        "instrumentSuitability": "Both supplied results assume suitable buffer and an instrument approved for these conditions; the learner does not operate it."
+      },
+      "taskDe": "Erkläre die veränderten Referenz- und V-Lagen beim pH-Wechsel. Prüfe die Behauptung, Lysin müsse als basische Aminocarbonsäure immer zur Kathode wandern. Begründe die Aussagekraft beider V-Vergleiche und die Grenzen der pI-Werte.",
+      "taskEn": "Explain the changed reference and V positions after changing pH. Assess the claim that lysine, as a basic amino acid, must always migrate toward the cathode. Explain the strength of the two V comparisons and the limits of pI.",
+      "workedSolutionDe": "Lysin liegt bei pH 8 unter pI 9,7: positive mittlere Ladung, Kathode. Bei pH 11 liegt es darüber: negative mittlere Ladung, Anode. Die Protonierungsanteile der funktionellen Gruppen einschließlich der basischen Seitenkette ändern sich mit pH; „basische Seitenkette“ bedeutet keine stets positive Gesamtladung. Glutamat liegt bei beiden pH-Werten oberhalb pI und wandert im Modell zur Anode. V passt in beiden Läufen zu Lysin; das ist stärkere Vereinbarkeit als ein einzelner Vergleich, aber kein eindeutiger Strukturbeweis. Aus den pI-Werten allein folgen weder die Strecken noch deren Unterschied.",
+      "workedSolutionEn": "At pH 8, lysine is below pI 9.7: positive mean charge and migration to the cathode. At pH 11 it is above pI: negative mean charge and migration to the anode. Protonation fractions of the functional groups, including the basic side chain, change with pH; a basic side chain does not imply an always positive total charge. Glutamate is above pI in both runs and migrates to the anode in the model. V matches lysine in both runs, providing greater compatibility than one comparison but no unique structural proof. pI alone gives neither distances nor the distance change.",
+      "rubric": [
+        {
+          "criterionDe": "Lysin-Richtungsumkehr und Glutamat-Richtung korrekt erklärt.",
+          "criterionEn": "Correctly explains lysine reversal and glutamate directions.",
+          "points": 1
+        },
+        {
+          "criterionDe": "pH-abhängige Protonierung statt unveränderlicher Stoffetiketten verwendet.",
+          "criterionEn": "Uses pH-dependent protonation rather than fixed substance labels.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Zweifache Ko-Migration als begrenzt aussagekräftig beurteilt.",
+          "criterionEn": "Assesses the bounded value of matching migration in two runs.",
+          "points": 1
+        },
+        {
+          "criterionDe": "pI nicht in Ladungsbetrag oder Strecke umgedeutet.",
+          "criterionEn": "Does not reinterpret pI as charge magnitude or distance.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4,
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false
+    },
+    {
+      "caseId": "PRACTICAL-1",
+      "goalId": "37374918-78c9-577f-9827-695d111ab22d",
+      "caseRole": "main-application",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "material": {
+        "dataOrigin": "Authored task conditions and empty collection template, not observed laboratory results. No dye migration distances are supplied or fabricated.",
+        "modelConditionsDe": "Wässriger Puffer, gleiche Trägermatrix, Elektroosmose im Modell vernachlässigt; pI-Werte gerundet. Positive Anode rechts, negative Kathode links, definierter Start bei 0 mm.",
+        "modelConditionsEn": "Aqueous buffer, matched support matrix, electroosmosis neglected in the model; rounded pI. Positive anode on the right, negative cathode on the left, defined origin at 0 mm.",
+        "aminoAcids": [
+          {
+            "nameDe": "Glycin",
+            "nameEn": "glycine",
+            "pI": 6.0,
+            "sideChain": "H"
+          },
+          {
+            "nameDe": "Lysin",
+            "nameEn": "lysine",
+            "pI": 9.7,
+            "sideChain": "(CH2)4NH2; basic protonatable side chain"
+          },
+          {
+            "nameDe": "Glutaminsäure/Glutamat",
+            "nameEn": "glutamic acid/glutamate",
+            "pI": 3.2,
+            "sideChain": "CH2CH2COOH; acidic protonatable side chain"
+          }
+        ],
+        "aminoAcidPlanningDe": "Planungsdaten: Glycin pI6,0, Lysin pI9,7, Glutamat pI3,2; pH6/7 zur Wahl. Für den Transfer sind pH8 und11 zu vergleichen; deren geräte-/pufferseitige Freigabe ist nicht belegt. Reale Aminocarbonsäure-Elektrophorese ist hier kein geforderter Durchführungsteil.",
+        "aminoAcidPlanningEn": "Planning data: glycine pI6.0, lysine pI9.7, glutamate pI3.2; choose pH6/7. For transfer compare pH8 and11; instrument/buffer clearance for these is not established. Actual amino-acid electrophoresis is not a required execution component here.",
+        "dyeModelDe": "Materialentwurf für die echte Arbeit: ein vor Ort für Schülerversuche freigegebenes Schul-Elektrophoresegerät mit geschlossenem Berührungsschutz, passende Trägermatrix und Puffer pH7, zwei geeignete getrennte Farbstoffstandards F1/F2, deren vor Ort geprüfte Stoffangaben für diese Bedingung negative mittlere Ladung angeben, ihre Mischung U sowie Pufferleerprobe; pH-Messung, Auftragshilfe, Maßstab, Uhr und Dokumentationsmittel. Die Trennbarkeit ist zu untersuchen, nicht vorab als Messbefund gegeben. Vor dem Versuch muss der reale Geräte-/Stoffbogen Gerät, Stoffidentitäten, Konzentrationen, zulässige Spannung/Feldstärke, Laufzeitgrenze, Temperatur-/Abbruchkriterien und Entsorgung konkret ausweisen und fachlich freigegeben sein. Dieser generische E0-Entwurf ersetzt den lokalen Bogen nicht.",
+        "dyeModelEn": "Design materials for actual work: a school electrophoresis instrument locally cleared for student experiments with closed contact protection, a compatible support matrix and pH7 buffer, two suitable separate dye references F1/F2 whose locally checked substance information states negative mean charge under these conditions, their mixture U and a buffer blank; pH measurement, applicator, ruler, clock and recording tools. Resolution is to be investigated, not supplied as a measured finding. Before work, the actual equipment/substance sheet must specify the instrument, substance identities, concentrations, permitted voltage/field strength, maximum running time, temperature/stop criteria and disposal, and receive qualified clearance. This generic E0 design does not replace that local sheet.",
+        "ownRawDataTemplate": {
+          "actualInstrumentAndLocalSheet": null,
+          "approvedSettingsAndSubstances": null,
+          "verifiedElectrodePositionsAndPH": null,
+          "originsAndSampleArrangement": null,
+          "actualTimeTemperatureDeviations": null,
+          "rawReferenceBlankAndMixturePositionsWithUnits": null,
+          "imageOrDrawingWithScaleAndFrontNotApplicable": null,
+          "observerAndDateOfActualWork": null
+        }
+      },
+      "taskDe": "Plane eine Trennung von Glycin, Lysin und Glutamat: begründe pH6 oder7, Polung, Referenzen, Leerprobe und kontrollierte Bedingungen sowie gerätespezifische Vorprüfungen. Plane anschließend mit F1/F2/U das Farbstoff-Modellexperiment, prüfe die lokalen Geräte-/Stoffbedingungen und führe den freigegebenen Plan selbst unter fachlicher Aufsicht durch. Dokumentiere eigene unbearbeitete Rohdaten mit Starts, Polung, Probenlagen, Zeit, pH, Bedingungen und Abweichungen; werte den Referenz-/U-Vergleich aus. Erkläre das Trennprinzip und die Grenzen des Transfers zu Aminocarbonsäuren. Ein reiner Plan oder bereitgestelltes Schaubild ersetzt die eigene Durchführung nicht. Fehlt die reale Freigabe oder Ausführung, benenne den offenen Durchführungsteil.",
+      "taskEn": "Plan a separation of glycine, lysine and glutamate: justify pH6 or7, polarity, references, blank, controls and instrument-specific prior checks. Then plan the dye model experiment with F1/F2/U, verify local equipment/substance conditions and conduct the cleared plan yourself under qualified supervision. Record your own unedited raw data with origins, polarity, sample positions, time, pH, conditions and deviations; interpret the reference/U comparison. Explain the separation principle and limits of transfer to amino acids. A plan or supplied illustration does not replace own execution. If actual clearance or execution is missing, identify the open execution component.",
+      "workedSolutionDe": "Ein Aminocarbonsäureplan kann pH7 mit Glycin/Glutamat im Mittel negativ und Lysin positiv wählen; pH6 mit Glycin nahe dem Start ist mit begründeter Auflösungsprüfung möglich. Protonierbare Seitenketten tragen zu unterschiedlichen pI bei. Referenzen, U, Leerprobe, definierte Starts und gleiche Matrix-/Volumen-/Puffer-/Feld-/Zeitbedingungen machen Vergleiche prüfbar; pI bestimmt keine Laufstrecken. Im Farbstoffmodell werden der konkrete freigegebene Geräte-/Stoffbogen, Polung und pH geprüft, bei ausgeschaltetem Aufbau vorbereitet und der zulässige Versuch tatsächlich ausgeführt. Reale Mess- und Beobachtungswerte werden mit Einheiten unverändert protokolliert. Für die hier negativ geladenen Standards wird Wanderung zur positiven Anode erwartet, unterschiedliche Mobilitäten können eine Trennung erlauben; deren Auflösung wird tatsächlich beobachtet. Ko-Migration oder fehlende Auflösung begrenzen die Aussage, sind kein Grund, Daten passend zu erfinden. Farbstoffreferenzgleichheit beweist keine Identität; das Modell zeigt feldabhängige Migration, belegt aber keine Aminocarbonsäure-pI-Werte oder deren reale Abstände. Es gibt keine ausformulierte numerische Muster-Messreihe: volle Durchführungspunkte erfordern echte eigene Rohdaten.",
+      "workedSolutionEn": "An amino-acid plan may choose pH7 with glycine/glutamate negative on average and lysine positive; pH6 with glycine near the origin is defensible with a justified resolution check. Protonatable side chains contribute to different pI values. References, U, blank, defined origins and matched matrix/volume/buffer/field/time make comparisons testable; pI determines no distances. For the dye model check the concrete cleared equipment/substance sheet, polarity and pH, prepare with power off and actually conduct the permitted experiment. Record real measurements/observations with units without alteration. For the specified negatively charged references migration to the positive anode is expected; differing mobilities may permit separation, whose resolution is actually observed. Co-migration or unresolved spots limit the inference, and never justify invented results. Matching a dye reference does not prove identity; the model shows field-dependent migration but establishes no amino-acid pI values or real distances. No numerical measured solution is supplied: full execution credit requires genuine own raw data.",
+      "rubric": [
+        {
+          "criterionDe": "Aminocarbonsäureplanung mit pH/Ladung/Polung, Kontrollen und begrenzten Prognosen begründet.",
+          "criterionEn": "Justifies amino-acid planning with pH/charge/polarity, controls and bounded predictions.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Eigenen Farbstoffplan mit geprüfter realer lokaler Geräte-/Stofffreigabe, Referenzen und kontrolliertem Vergleich erstellt.",
+          "criterionEn": "Creates own dye plan with checked actual local equipment/substance clearance, references and controlled comparison.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Den eigenen freigegebenen Modellversuch tatsächlich durchgeführt; beobachtbare Handlung oder authentisches Durchführungprotokoll liegt vor.",
+          "criterionEn": "Actually conducts the own cleared model experiment; observable action or an authentic execution record is present.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Eigene unveränderte Rohdaten, Bedingungen, Einheiten und Abweichungen dokumentiert; keine Musterwerte als eigene Messung ausgegeben.",
+          "criterionEn": "Documents own unaltered raw data, conditions, units and deviations; no model values presented as own measurements.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Tatsächliche Ergebnisse fachlich ausgewertet; Auflösungs-/Vergleichsgrenzen und Unterschied Farbstoffmodell/Aminocarbonsäuren begründet.",
+          "criterionEn": "Interprets actual results; justifies resolution/comparison limits and dye-model/amino-acid differences.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 5,
+      "actualPracticalExecutionRequired": true,
+      "learnerEvidenceObserved": false,
+      "completionGateDe": "Alle Essentials einschließlich tatsächlicher eigener Durchführung und Rohdaten müssen gezeigt sein. Eine Punktesumme allein oder ein nicht ausgeführter sicherer Plan belegt das ganze Ziel nicht.",
+      "completionGateEn": "All essentials including actual own execution and raw data must be demonstrated. A point total alone or an unexecuted safe plan does not evidence the whole goal."
+    },
+    {
+      "caseId": "PRACTICAL-2-TRANSFER",
+      "goalId": "37374918-78c9-577f-9827-695d111ab22d",
+      "caseRole": "fresh-independent-transfer",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "material": {
+        "dataOrigin": "Authored task conditions and empty collection template, not observed laboratory results. No dye migration distances are supplied or fabricated.",
+        "modelConditionsDe": "Wässriger Puffer, gleiche Trägermatrix, Elektroosmose im Modell vernachlässigt; pI-Werte gerundet. Positive Anode rechts, negative Kathode links, definierter Start bei 0 mm.",
+        "modelConditionsEn": "Aqueous buffer, matched support matrix, electroosmosis neglected in the model; rounded pI. Positive anode on the right, negative cathode on the left, defined origin at 0 mm.",
+        "aminoAcids": [
+          {
+            "nameDe": "Glycin",
+            "nameEn": "glycine",
+            "pI": 6.0,
+            "sideChain": "H"
+          },
+          {
+            "nameDe": "Lysin",
+            "nameEn": "lysine",
+            "pI": 9.7,
+            "sideChain": "(CH2)4NH2; basic protonatable side chain"
+          },
+          {
+            "nameDe": "Glutaminsäure/Glutamat",
+            "nameEn": "glutamic acid/glutamate",
+            "pI": 3.2,
+            "sideChain": "CH2CH2COOH; acidic protonatable side chain"
+          }
+        ],
+        "aminoAcidPlanningDe": "Planungsdaten: Glycin pI6,0, Lysin pI9,7, Glutamat pI3,2; pH6/7 zur Wahl. Für den Transfer sind pH8 und11 zu vergleichen; deren geräte-/pufferseitige Freigabe ist nicht belegt. Reale Aminocarbonsäure-Elektrophorese ist hier kein geforderter Durchführungsteil.",
+        "aminoAcidPlanningEn": "Planning data: glycine pI6.0, lysine pI9.7, glutamate pI3.2; choose pH6/7. For transfer compare pH8 and11; instrument/buffer clearance for these is not established. Actual amino-acid electrophoresis is not a required execution component here.",
+        "dyeModelDe": "Materialentwurf für die echte Arbeit: ein vor Ort für Schülerversuche freigegebenes Schul-Elektrophoresegerät mit geschlossenem Berührungsschutz, passende Trägermatrix und Puffer pH7, zwei geeignete getrennte Farbstoffstandards F1/F2, deren vor Ort geprüfte Stoffangaben für diese Bedingung negative mittlere Ladung angeben, ihre Mischung U sowie Pufferleerprobe; pH-Messung, Auftragshilfe, Maßstab, Uhr und Dokumentationsmittel. Die Trennbarkeit ist zu untersuchen, nicht vorab als Messbefund gegeben. Vor dem Versuch muss der reale Geräte-/Stoffbogen Gerät, Stoffidentitäten, Konzentrationen, zulässige Spannung/Feldstärke, Laufzeitgrenze, Temperatur-/Abbruchkriterien und Entsorgung konkret ausweisen und fachlich freigegeben sein. Dieser generische E0-Entwurf ersetzt den lokalen Bogen nicht.",
+        "dyeModelEn": "Design materials for actual work: a school electrophoresis instrument locally cleared for student experiments with closed contact protection, a compatible support matrix and pH7 buffer, two suitable separate dye references F1/F2 whose locally checked substance information states negative mean charge under these conditions, their mixture U and a buffer blank; pH measurement, applicator, ruler, clock and recording tools. Resolution is to be investigated, not supplied as a measured finding. Before work, the actual equipment/substance sheet must specify the instrument, substance identities, concentrations, permitted voltage/field strength, maximum running time, temperature/stop criteria and disposal, and receive qualified clearance. This generic E0 design does not replace that local sheet.",
+        "ownRawDataTemplate": {
+          "actualInstrumentAndLocalSheet": null,
+          "approvedSettingsAndSubstances": null,
+          "verifiedElectrodePositionsAndPH": null,
+          "originsAndSampleArrangement": null,
+          "actualTimeTemperatureDeviations": null,
+          "rawReferenceBlankAndMixturePositionsWithUnits": null,
+          "imageOrDrawingWithScaleAndFrontNotApplicable": null,
+          "observerAndDateOfActualWork": null
+        },
+        "freshVariationDe": "Neuer eigener Lauf mit frisch bereitgestellter Mischung V (Zusammensetzung nicht mitgeteilt) und gegenüber dem ersten eigenen Lauf umgekehrter tatsächlicher Polung; die Umkehr muss laut lokalem Gerätebogen zulässig sein. Gerätebezeichnungen nicht ungeprüft übernehmen. Referenzen/Leerprobe bleiben Vergleichspartner; alle übrigen zulässigen Bedingungen möglichst konstant halten. Es sind noch keine V-Lagen bekannt.",
+        "freshVariationEn": "A new own run with a freshly provided mixture V (composition undisclosed) and actual polarity reversed relative to the first own run; reversal must be permitted by the local instrument sheet. Do not trust electrode labels without checking. References/blank remain comparison controls; keep other permitted conditions as constant as possible. No V positions are known yet."
+      },
+      "taskDe": "Plane zuerst den Aminocarbonsäurevergleich bei pH8 und11 mit Ladungs-/Richtungsprognosen, Referenzen und Kontrollen; begründe die noch fehlende Freigabe. Plane dann den neuen Farbstoff-Modelllauf mit umgekehrter Polung und V und führe ihn nach realer lokaler Freigabe selbst unter fachlicher Aufsicht durch. Dokumentiere unveränderte Rohbeobachtungen einschließlich nicht aufgelöster Flecken, Polung, Startpositionen, Zeiten, pH, Bedingungen und Abweichungen. Erkläre die tatsächlichen Richtungen im Vergleich zum ersten eigenen Lauf, beurteile die Vergleichbarkeit und begrenze Aussagen über V sowie über Aminocarbonsäuren. Ohne reale Ausführung bleibt der Durchführungsteil offen; ergänze keine erfundenen Daten.",
+      "taskEn": "First plan the amino-acid comparison at pH8 and11 with charge/direction predictions, references and controls; explain the missing clearance. Then plan the new dye model run with reversed polarity and V and, after actual local clearance, conduct it yourself under qualified supervision. Preserve raw observations including unresolved spots, polarity, origins, times, pH, conditions and deviations. Explain the actual directions against your first own run, assess comparability and limit claims about V and amino acids. Without actual execution the execution component remains open; add no invented data.",
+      "workedSolutionDe": "Der Aminocarbonsäureplan erwartet für Lysin unter pI9,7 positive und oberhalb negative mittlere Ladung; Glutamat bleibt bei beiden pH-Werten negativ. pI gibt keine Strecken vor. Der pH11-Plan bleibt ohne bestätigte Geräteeignung gesperrt; das verhindert nicht einen separat freigegebenen pH7-Farbstofflauf. Vor dessen Ausführung werden tatsächliche Anschlüsse und die zulässige Polungsumkehr kontrolliert. Unter den angegebenen negativen Farbstoffladungen bleibt die positive Anode die erwartete Wanderungsseite; ihre räumliche Lage kehrt sich um. Vorhergesagte Richtung ist kein erfundener Messbefund: Der eigene Lauf muss tatsächlich dokumentiert werden. Abweichung, Hintergrund oder fehlende Auflösung wird als Ergebnis berichtet und mit dem eigenen Kontrolllauf abgeglichen. V-Lagen stützen nur Vergleichbarkeit unter diesen Bedingungen; Farbstoffbewegungen beweisen weder Aminocarbonsäureidentität noch deren pH11-Verhalten. Eine Erklärung ohne eigene Rohdaten erfüllt die Durchführung nicht.",
+      "workedSolutionEn": "The amino-acid plan predicts positive mean lysine charge below pI9.7 and negative charge above it; glutamate remains negative at both pH values. pI does not determine distances. The pH11 plan remains blocked without confirmed equipment suitability; this does not prevent a separately cleared pH7 dye run. Before execution verify actual connections and permission to reverse polarity. Given the negative dye charges, the positive anode remains the predicted migration side, but changes physical location. A prediction is no invented measurement: the own run must actually be documented. Report deviations, background or lack of resolution as outcomes and compare with the own control run. V positions only support compatibility under these conditions; dye movements prove neither amino-acid identity nor their pH11 behaviour. Explanation without own raw data does not meet execution.",
+      "rubric": [
+        {
+          "criterionDe": "Aminocarbonsäureplanung mit pH/Ladung/Polung, Kontrollen und begrenzten Prognosen begründet.",
+          "criterionEn": "Justifies amino-acid planning with pH/charge/polarity, controls and bounded predictions.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Eigenen Farbstoffplan mit geprüfter realer lokaler Geräte-/Stofffreigabe, Referenzen und kontrolliertem Vergleich erstellt.",
+          "criterionEn": "Creates own dye plan with checked actual local equipment/substance clearance, references and controlled comparison.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Den eigenen freigegebenen Modellversuch tatsächlich durchgeführt; beobachtbare Handlung oder authentisches Durchführungprotokoll liegt vor.",
+          "criterionEn": "Actually conducts the own cleared model experiment; observable action or an authentic execution record is present.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Eigene unveränderte Rohdaten, Bedingungen, Einheiten und Abweichungen dokumentiert; keine Musterwerte als eigene Messung ausgegeben.",
+          "criterionEn": "Documents own unaltered raw data, conditions, units and deviations; no model values presented as own measurements.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Tatsächliche Ergebnisse fachlich ausgewertet; Auflösungs-/Vergleichsgrenzen und Unterschied Farbstoffmodell/Aminocarbonsäuren begründet.",
+          "criterionEn": "Interprets actual results; justifies resolution/comparison limits and dye-model/amino-acid differences.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 5,
+      "actualPracticalExecutionRequired": true,
+      "learnerEvidenceObserved": false,
+      "completionGateDe": "Alle Essentials einschließlich tatsächlicher eigener Durchführung und Rohdaten müssen gezeigt sein. Eine Punktesumme allein oder ein nicht ausgeführter sicherer Plan belegt das ganze Ziel nicht.",
+      "completionGateEn": "All essentials including actual own execution and raw data must be demonstrated. A point total alone or an unexecuted safe plan does not evidence the whole goal."
+    },
+    {
+      "caseId": "TLC-THEORY-1",
+      "goalId": "5fdc4fb2-a23b-5949-8d6b-ad43009120dd",
+      "caseRole": "main-application",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false,
+      "material": {
+        "dataOrigin": "Authored supplied chromatogram data, not an executed experiment or learner observation.",
+        "conditionsDe": "Bereitgestelltes planares DC-Chromatogramm: feste Kieselgelschicht als stationäre Phase, aufsteigendes flüssiges Laufmittel als mobile Phase. Startlinie bei0; alle Strecken längs der Laufrichtung ab derselben Startlinie bis Fleckmitte bzw. Laufmittelfront. R1/R2/U laufen auf derselben Platte unter gleichen Bedingungen. Rf = Stofflaufstrecke / Laufmittelfrontstrecke. Stärkerer Aufenthalt in der stationären Phase relativ zur mobilen Phase bedeutet unter sonst gleichen Bedingungen geringere relative Wanderung.",
+        "conditionsEn": "Supplied planar TLC chromatogram: solid silica stationary phase and an ascending liquid mobile phase. Origin at0; all distances measured along development from the same origin to spot centre or solvent front. R1/R2/U run on the same plate under matched conditions. Rf = solute distance / solvent-front distance. More time in the stationary phase relative to the mobile phase means less relative migration under otherwise matched conditions.",
+        "solventFrontCm": 8.0,
+        "spotCentresCm": {
+          "R1": 2.0,
+          "R2": 5.6,
+          "U": [
+            5.6
+          ]
+        }
+      },
+      "taskDe": "Erläutere, warum Stoffe mit unterschiedlichen relativen Wechselwirkungen mit beiden Phasen unterschiedlich weit wandern können. Berechne Rf für R1, R2 und U, vergleiche die relative Retention und beurteile die Behauptung „U ist sicher reines R2; zwei Flecken beweisen immer genau zwei Stoffe“. Benenne die nötigen Vergleichsbedingungen. Verwende ausschließlich die bereitgestellten Daten; keine eigene Durchführung wird verlangt.",
+      "taskEn": "Explain why substances with different relative interactions with the two phases may migrate different distances. Calculate Rf for R1, R2 and U, compare relative retention and assess “U is certainly pure R2; two spots always prove exactly two substances”. State the necessary comparison conditions. Use only supplied data; no own execution is required.",
+      "workedSolutionDe": "Die mobile Phase transportiert Stoffe; unterschiedlich starke bzw. unterschiedlich lange Wechselwirkungen mit der stationären Phase halten sie relativ dazu zurück. R1:2,0/8,0=0,25; R2:5,6/8,0=0,70; U:5,6/8,0=0,70, jeweils dimensionslos. R1 wird relativ zum Laufmittel stärker zurückgehalten. Ein passender Rf von U und R2 auf derselben Platte stützt Vereinbarkeit, keine eindeutige Identität oder Reinheit: andere Stoffe können ko-migrieren oder unter der Nachweisgrenze liegen. Auch zwei Flecken belegen nicht exakt zwei Komponenten. Vergleich setzt passende stationäre Phase, Laufmittel und Versuchsbedingungen voraus; Rf ist keine allgemeine Stoffkonstante. Keine elektrische Feldwanderung oder pauschale Molekülmassenregel wird als DC-Prinzip behauptet.",
+      "workedSolutionEn": "The mobile phase transports solutes; differing strength or duration of interactions with the stationary phase retains them relative to it. R1:2.0/8.0=0.25; R2:5.6/8.0=0.70; U:5.6/8.0=0.70, all dimensionless. R1 is retained more strongly relative to the solvent front. A matching U/R2 Rf on the same plate supports compatibility, no unique identity or purity: other substances may co-migrate or remain below detection. Two spots likewise do not prove exactly two components. Comparison requires matched stationary phase, solvent and conditions; Rf is not a general substance constant. Neither electric field migration nor a blanket molecular-mass rule is asserted as the TLC principle.",
+      "rubric": [
+        {
+          "criterionDe": "Stationäre/mobile Phase und stoffabhängige relative Retention erklärt, kein Elektrophorese- oder Massenautomatismus.",
+          "criterionEn": "Explains stationary/mobile phases and substance-dependent relative retention, without electrophoresis or automatic mass ranking.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Alle passenden Rf-Quotienten mit gemeinsamer Startlinie und Front desselben Laufs dimensionslos bestimmt.",
+          "criterionEn": "Determines all appropriate dimensionless Rf ratios using the shared origin and front of the same run.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Vergleich nur unter passenden Bedingungen und keine universellen Rf-Konstanten behauptet.",
+          "criterionEn": "Restricts comparison to matched conditions and rejects universal Rf constants.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Ko-Migration, Nachweis-/Auflösungsgrenzen und begrenzte Identitäts-/Reinheitsaussage begründet.",
+          "criterionEn": "Justifies co-migration, detection/resolution limits and bounded identity/purity inference.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4
+    },
+    {
+      "caseId": "TLC-THEORY-2-TRANSFER",
+      "goalId": "5fdc4fb2-a23b-5949-8d6b-ad43009120dd",
+      "caseRole": "fresh-independent-transfer",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false,
+      "material": {
+        "dataOrigin": "Authored supplied chromatogram data, not an executed experiment or learner observation.",
+        "conditionsDe": "Bereitgestelltes planares DC-Chromatogramm: feste Kieselgelschicht als stationäre Phase, aufsteigendes flüssiges Laufmittel als mobile Phase. Startlinie bei0; alle Strecken längs der Laufrichtung ab derselben Startlinie bis Fleckmitte bzw. Laufmittelfront. R1/R2/U laufen auf derselben Platte unter gleichen Bedingungen. Rf = Stofflaufstrecke / Laufmittelfrontstrecke. Stärkerer Aufenthalt in der stationären Phase relativ zur mobilen Phase bedeutet unter sonst gleichen Bedingungen geringere relative Wanderung.",
+        "conditionsEn": "Supplied planar TLC chromatogram: solid silica stationary phase and an ascending liquid mobile phase. Origin at0; all distances measured along development from the same origin to spot centre or solvent front. R1/R2/U run on the same plate under matched conditions. Rf = solute distance / solvent-front distance. More time in the stationary phase relative to the mobile phase means less relative migration under otherwise matched conditions.",
+        "solventFrontCm": 10.0,
+        "spotCentresCm": {
+          "R1": 3.0,
+          "R2": 7.0,
+          "U": [
+            3.0,
+            7.0
+          ]
+        },
+        "freshContextDe": "Dies ist ein neuer Datensatz mit geändertem Laufmittel. Ein älterer anderer Lauf mit Front8,0cm ergab für R1 Rf0,25 und für R2 Rf0,70. Im neuen Lauf sind die beiden U-Flecken verbreitert; ein schmaler zusätzlicher Stoff könnte verdeckt sein. Ein Mitschüler verwendet für R1 im neuen Lauf fälschlich die8,0cm-Front aus dem alten Lauf und behauptet Rf sei eine universelle Stoffkonstante.",
+        "freshContextEn": "This is a new dataset with changed solvent. An older different run with an8.0cm front gave R1 Rf0.25 and R2 Rf0.70. In the new run the two U spots are broadened and could hide another component. A classmate wrongly uses the old8.0cm front for new R1 and claims Rf is a universal substance constant."
+      },
+      "taskDe": "Erkläre die Trennung mit stationärer und mobiler Phase. Bestimme die neuen Rf-Werte aller Flecken mit der passenden Front und korrigiere Rechnung und Konstantenbehauptung des Mitschülers. Begründe, was sich unter den neuen Bedingungen über U sagen lässt und warum genau zwei Stoffe nicht bewiesen sind. Eine eigene Durchführung wird nicht verlangt.",
+      "taskEn": "Explain separation using the stationary and mobile phases. Determine the new Rf values of all spots using the matching front and correct the classmate’s calculation and constant claim. Justify what the new conditions support about U and why exactly two substances are not proven. No own execution is required.",
+      "workedSolutionDe": "R1:3,0/10,0=0,30; R2:7,0/10,0=0,70; U:0,30 und0,70.3,0/8,0=0,375 verwendet eine fremde Front und ist für diese Platte ungültig. R1 hat jetzt einen anderen Rf als im alten Lauf: Laufmittel und Wechselwirkungen ändern die Verteilung zwischen mobiler und stationärer Phase; Rf ist keine universelle Stoffkonstante. R2 liegt in beiden Läufen zufällig gleich, was die Behauptung nicht rettet. Die zwei U-Lagen sind unter den neuen gemeinsamen Bedingungen mit R1/R2 vereinbar. Ko-Migration, Breite und Nachweisgrenzen erlauben weder eindeutige Identität noch genau zwei Komponenten. Mobilität ist hier weder reine Löslichkeit noch direkt Molekülmasse; der elektrophoretische Feldmechanismus ist nicht das DC-Trennprinzip.",
+      "workedSolutionEn": "R1:3.0/10.0=0.30; R2:7.0/10.0=0.70; U:0.30 and0.70.3.0/8.0=0.375 uses another run’s front and is invalid for this plate. R1 now has a different Rf: solvent and interactions change distribution between the mobile and stationary phases; Rf is no universal substance constant. R2 happening to agree in both runs does not rescue that claim. The two U positions are compatible with R1/R2 under the new matched conditions. Co-migration, spot width and detection limits prove neither unique identity nor exactly two components. Mobility here is neither solubility alone nor directly molecular mass; electrophoretic field migration is not the TLC separation mechanism.",
+      "rubric": [
+        {
+          "criterionDe": "Stationäre/mobile Phase und stoffabhängige relative Retention erklärt, kein Elektrophorese- oder Massenautomatismus.",
+          "criterionEn": "Explains stationary/mobile phases and substance-dependent relative retention, without electrophoresis or automatic mass ranking.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Alle passenden Rf-Quotienten mit gemeinsamer Startlinie und Front desselben Laufs dimensionslos bestimmt.",
+          "criterionEn": "Determines all appropriate dimensionless Rf ratios using the shared origin and front of the same run.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Vergleich nur unter passenden Bedingungen und keine universellen Rf-Konstanten behauptet.",
+          "criterionEn": "Restricts comparison to matched conditions and rejects universal Rf constants.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Ko-Migration, Nachweis-/Auflösungsgrenzen und begrenzte Identitäts-/Reinheitsaussage begründet.",
+          "criterionEn": "Justifies co-migration, detection/resolution limits and bounded identity/purity inference.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4
+    }
+  ]
+}

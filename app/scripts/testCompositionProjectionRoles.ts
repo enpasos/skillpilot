@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 
 import type { UiGoal } from '../src/goalTypes'
 import { normalizeLandscape, type LandscapeEntry } from '../src/hooks/useLandscapes'
-import type { SkillLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
+import { collectMemoryVisibilityReport } from './memoryCardReview'
 import {
   compileCompositionView,
   getCompositionProjectionRole,
@@ -850,4 +853,78 @@ assert.equal(
   'An explicit upper-secondary scope must not expose a Sekundarstufe-I sibling.',
 )
 
-console.log('Composition projection role tests passed.')
+
+// The machine Memory gate must use the same authored role specificity as the
+// learner projection: a broad target subtree cannot undo an explicit support role.
+const memoryVisibilityDirectory = mkdtempSync(join(tmpdir(), 'skillpilot-memory-role-visibility-'))
+try {
+  const goal = (id: string, contains: string[] = [], tags: string[] = []): LearningGoal => ({
+    id, title: id, description: id, weight: 1, contains, requires: [], tags,
+  })
+  const memoryGoals = new Map([
+    goal('ALL', ['A', 'B', 'MA', 'MB']),
+    goal('A'), goal('B'),
+    goal('MA', [], ['memorization', 'srs-deck:fixture-deck']),
+    goal('MB', [], ['memorization', 'srs-deck:fixture-deck']),
+  ].map((item) => [item.id, item]))
+  const requiredRecords = ['A', 'B'].map((goalId) => ({
+    schemaVersion: 1 as const,
+    reviewId: 'memory-role-fixture', ruleVersion: 'memory-card-review-v1',
+    landscapeId: 'memory-role-fixture', goalId, fingerprint: 'unused-by-visibility-only',
+    status: 'memory_required' as const, memoryUseful: true,
+    memoryGoalIds: [`M${goalId}`], deckIds: ['fixture-deck'],
+    reviewedAt: '2026-10-16T00:00:00.000Z', reviewer: 'fixture', reason: 'Required recall.',
+  }))
+  const checkMemoryRoles = (nodes: CompositionViewNode[]) => {
+    const viewPath = join(memoryVisibilityDirectory, 'view.json')
+    writeFileSync(viewPath, JSON.stringify({ rootNodes: nodes }))
+    return collectMemoryVisibilityReport({
+      schemaVersion: 1, reviewId: 'memory-role-fixture', ruleVersion: 'memory-card-review-v1',
+      landscapeId: 'memory-role-fixture', landscapePath: 'unused', reviewPath: 'unused',
+      visibilityScopes: [{ label: 'Memory role fixture', viewPath }],
+      scope: { label: 'Fixture', leafGoalIds: ['A', 'B', 'MA', 'MB'] },
+    }, memoryGoals, requiredRecords)
+  }
+  for (const reverse of [false, true]) {
+    const nodes: CompositionViewNode[] = [
+      { kind: 'canonicalSubtree', goalId: 'ALL', projectionRole: 'target' },
+      { kind: 'goalEntry', goalId: 'A', projectionRole: 'prerequisiteOnly' },
+    ]
+    const report = checkMemoryRoles(reverse ? nodes.reverse() : nodes)
+    assert.equal(report.checkedMemoryRequiredGoals, 1,
+      'Memory QS must exclude a direct prerequisiteOnly override inside a broad target subtree, in either order.')
+    assert.equal(report.missingVisibleMemoryGoals, 0)
+    assert.deepEqual(report.errors, [])
+  }
+  const targetOverride: CompositionViewNode[] = [
+    { kind: 'canonicalSubtree', goalId: 'ALL', projectionRole: 'prerequisiteOnly' },
+    { kind: 'goalEntry', goalId: 'A', projectionRole: 'target' },
+  ]
+  for (const reverse of [false, true]) {
+    const report = checkMemoryRoles(reverse ? [...targetOverride].reverse() : targetOverride)
+    assert.equal(report.checkedMemoryRequiredGoals, 1)
+    assert.equal(report.missingVisibleMemoryGoals, 1,
+      'A real target override still requires its own visible memory support.')
+    assert.equal(report.errors.length, 1)
+    assert.match(report.errors[0], /A.*none of its referenced memoryGoalIds is visible/)
+  }
+  const supported = checkMemoryRoles([
+    ...targetOverride,
+    { kind: 'goalEntry', goalId: 'MA', projectionRole: 'target' },
+  ])
+  assert.equal(supported.checkedMemoryRequiredGoals, 1)
+  assert.equal(supported.missingVisibleMemoryGoals, 0)
+  assert.deepEqual(supported.errors, [])
+  const hiddenMemory = checkMemoryRoles([
+    { kind: 'canonicalSubtree', goalId: 'ALL', projectionRole: 'target' },
+    { kind: 'goalEntry', goalId: 'MA', projectionRole: 'prerequisiteOnly' },
+  ])
+  assert.equal(hiddenMemory.checkedMemoryRequiredGoals, 2)
+  assert.equal(hiddenMemory.missingVisibleMemoryGoals, 1,
+    'A prerequisite-only memory node does not discharge a real target recall obligation.')
+  assert.equal(hiddenMemory.errors.length, 1)
+} finally {
+  rmSync(memoryVisibilityDirectory, { recursive: true, force: true })
+}
+
+console.log('Composition projection role and Memory visibility tests passed.')

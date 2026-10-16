@@ -1,0 +1,28 @@
+{
+  "createdAtUtc": "2026-10-16T11:36:43.612687+00:00",
+  "commands": [
+    {
+      "command": "node --preserve-symlinks --preserve-symlinks-main app/node_modules/tsx/dist/cli.mjs curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current629-memory-part1-part2-isolated-normal-H-integration-technical-20261016-v1/prepare-stock-kinds629-and-normal-H-M-config.ts",
+      "toolStartChunk": "ab51b4",
+      "toolEndChunk": "469f0c",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current629-memory-part1-part2-isolated-normal-H-integration-technical-20261016-v1/materialize-contained-normal-H-memory629.py --ready-h-native17-finished",
+      "toolChunk": "604b9f",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current629-memory-part1-part2-isolated-normal-H-integration-technical-20261016-v1/run-once-actual-normal-H-memory-check.py",
+      "toolChunk": "ded9c1",
+      "exitCode": 0,
+      "actualNormalCLIReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current629-memory-part1-part2-isolated-normal-H-integration-technical-20261016-v1/EXECUTION.actual-normal-H-M435-cards77-acquisition39-check.json",
+        "sha256": "sha256:496b574b5c12c48ecf9b9f6ebfc6c42d9879f2d12eba1703595ace7ca420c5d9",
+        "bytes": 2334
+      }
+    }
+  ],
+  "parentREADYObservedBeforeHCanonicalWrite": true,
+  "noCentralCQRFullbuildRun": true
+}

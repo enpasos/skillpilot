@@ -1,0 +1,45 @@
+{
+  "startedAtUtc": "2026-10-16T11:35:12.412690+00:00",
+  "finishedAtUtc": "2026-10-16T11:35:12.871363+00:00",
+  "command": [
+    "node",
+    "--preserve-symlinks",
+    "--preserve-symlinks-main",
+    "app/node_modules/tsx/dist/cli.mjs",
+    "app/scripts/memoryCardReview.ts",
+    "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json",
+    "--mode=check",
+    "--write-report"
+  ],
+  "cwd": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1",
+  "exitCode": 0,
+  "elapsedSeconds": 0.45829656097339466,
+  "actualScript": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/memoryCardReview.ts",
+    "sha256": "sha256:f7a7f2fdcb798fcd92a71fc7968232dea107b25f47214a9e8210eba7af53e0f9",
+    "bytes": 48982
+  },
+  "actualConfig": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json",
+    "sha256": "sha256:a53190521e8787b42f8b0aba7ff1f6fddcb91c22a68d02dae4c2d7476e874da0",
+    "bytes": 31606
+  },
+  "actualHCanonical": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "sha256:2974f50212c692811f432fc9ba026c28115507cb384fe4e5e44c451481156bb7",
+    "bytes": 2203990
+  },
+  "log": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current629-memory-part1-part2-isolated-normal-H-integration-technical-20261016-v1/LOG.actual-normal-H-M435-cards77-acquisition39-check.txt",
+    "sha256": "sha256:d901d1b6be5360a593e60e282e32d922713bd3e4e424890a96ee15842583b40d",
+    "bytes": 39427
+  },
+  "actualNormalReport": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current629-memory-part1-part2-isolated-normal-H-integration-technical-20261016-v1/REPORT.actual-isolated-normal-H-M435-cards77-acquisition39.md",
+    "sha256": "sha256:7cb612bc16f42da3758c17eff556f681779a5ba126c0e54c94b1d46109fb1cb0",
+    "bytes": 475129
+  },
+  "mode": "actual normal memory-card-review stock CLI check, no fingerprints rewriting",
+  "exactlyOneCLIInvocation": true,
+  "noCentralCQRFullbuildOrHumanClaim": true
+}

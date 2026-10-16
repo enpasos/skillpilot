@@ -1,0 +1,32 @@
+{
+  "role": "Technical record-reason maxLength correction only; unchanged scientific profile/case/context/authority",
+  "finding": "Only978 wrapper.reason exceeded normal-v2 schema maxLength2000 because multiple whole authority paths were repeated. Stock wrote the five-row output then rejected its closed-schema parse; it is not selected as a normal owner.",
+  "wholeCandidateBefore": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fourteen-current-positive-eight-intrinsic-supported-normal-bindings-technical-20261016-v1/P14.methods5.whole-supported-candidates.exact.json",
+    "sha256": "sha256:8f411c5c79fee077dedbde917e1da870042eb68fabdc54ee892c30a3a8afd71c",
+    "bytes": 88893
+  },
+  "wholeCandidateAfter": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fourteen-current-positive-eight-intrinsic-supported-normal-bindings-technical-20261016-v1/P14.methods5.reason-metadata-bounded-v2.candidates.json",
+    "sha256": "sha256:9776ceb5178ea693589992b8d0b314dc0d2075f1eecc5ef314167bc00de2594d",
+    "bytes": 88140
+  },
+  "onlyChangedJSONField": "/goals/2/reason",
+  "oldReasonLength": 2053,
+  "newReasonLength": 1300,
+  "all5ProfilesExact": true,
+  "all14ActualScientificInputsAndFIRSTsUnchanged": true,
+  "failedActualStockExecution": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fourteen-current-positive-eight-intrinsic-supported-normal-bindings-technical-20261016-v1/CHECK.P14.materialize-methods5.execution.json",
+    "sha256": "sha256:087c93e3723a6304e84f38ed6e81ef8218c8fa3f5f6fa08226790e311de31171",
+    "bytes": 1865
+  },
+  "failed5RecordsExactArchive": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-fourteen-current-positive-eight-intrinsic-supported-normal-bindings-technical-20261016-v1/ATTEMPT-01.methods5.reason-over-schema-limit.failed.records.exact.jsonl",
+    "sha256": "sha256:9e676e72f53f0c7dcf3178e43c867939289a351d11998c7bf6f2a37affaa7306",
+    "bytes": 89186
+  },
+  "other3GroupMaterializersAlreadyPassedAndNotRepeated": true,
+  "initialPrivateParentGuardFailure": "Before the first H mkdir, a private parent-check passed a nonexistent own leaf to an existing-directory assertion. It stopped before any H write. Only the private guard invocation was corrected.",
+  "noNormalAliasOrOldOwnerChanges": true
+}
