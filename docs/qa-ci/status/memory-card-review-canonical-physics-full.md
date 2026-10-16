@@ -31,7 +31,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | cards removed from active decks | 17 |
 | memory goals traced | 5/5 |
 | composition visibility scopes | 2 |
-| memory-required goals checked in views | 258 |
+| memory-required goals checked in views | 251 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -39,7 +39,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 567 | 5 | 129 | 0 |
+| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 551 | 5 | 122 | 0 |
 | Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 570 | 5 | 129 | 0 |
 
 ## Memory-Required Goals
