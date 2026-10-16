@@ -14,8 +14,13 @@ import { reviewPositiveGoalEvidenceConfig, type PositiveGoalEvidenceReviewConfig
 import { evaluateDeepUnderstandingQa, generateQualityNativeReport } from './generateCurriculumQualityStatus'
 import { stableGoalEvidenceJson } from './goalEvidenceProfileModel'
 import { collectRequiredTaskMaterialDigests } from './goalEvidenceTaskMaterials'
-import { validateGoalDescriptionDualRoundResolution } from './validateGoalDescriptionDualRoundResolution'
+import { validateGoalDescriptionDualRoundResolution, type GoalDescriptionDualRoundResolution } from './validateGoalDescriptionDualRoundResolution'
 import { loadGoalDescriptionReviewCampaignResultDirectories } from './validateGoalDescriptionReviewCampaignResults'
+import type { SkillLandscape } from '../src/landscapeTypes'
+import type { GoalDescriptionReviewCampaign, GoalDescriptionReviewInput } from './validateGoalDescriptionReviewCampaign'
+import type { GoalBookReviewBundleManifest } from './exportGoalBookReviewBundle'
+import type { GoalDescriptionDualRoundSummary } from './validateGoalDescriptionReviewDualRound'
+import type { StandaloneBatchResolutionIndex } from './materializeGoalDescriptionRolloutBatch'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const fixture = resolve(root, 'app/scripts/fixtures/current-positive-evidence-freshness')
@@ -74,20 +79,20 @@ if (!process.env.SKILLPILOT_FRESHNESS_WORKER) {
   process.exit(process.exitCode ?? 0)
 }
 const temp = mkdtempSync(resolve(root, 'tmp/current-positive-evidence-freshness-'))
-const json = <T = any>(p: string): T => JSON.parse(readFileSync(p, 'utf8'))
+const json = <T>(p: string): T => JSON.parse(readFileSync(p, 'utf8'))
 const save = (p: string, value: unknown) => writeFileSync(p, `${JSON.stringify(value, null, 2)}\n`)
 const hash = (bytes: Buffer | string) => `sha256:${createHash('sha256').update(bytes).digest('hex')}`
 const id = '106417ed-80db-5490-a1ee-bb4160d3f2b4'
 const other = '9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8'
 const registered = loadDeepUnderstandingRolloutConfig()
 const source = registered.subjects.find((subject) => subject.subject === 'physik')!
-const landscape = json(resolve(root, source.landscapePath))
+const landscape = json<SkillLandscape>(resolve(root, source.landscapePath))
 const landscapeId = landscape.landscapeId
-const bound = json(resolve(fixture, 'round-a/description-review-input.json'))
-const boundGoal = bound.goals.find((goal: any) => goal.goalId === id)
-const oldP: PositiveGoalEvidenceReviewRecord = boundGoal.reviewContext.evidenceProfile
+const bound = json<GoalDescriptionReviewInput>(resolve(fixture, 'round-a/description-review-input.json'))
+const boundGoal = bound.goals.find((goal) => goal.goalId === id)!
+const oldP = boundGoal.reviewContext.evidenceProfile as PositiveGoalEvidenceReviewRecord
 const currentP = json<PositiveGoalEvidenceReviewRecord>(resolve(fixture, 'actual-current-1064-P.json'))
-const goal = landscape.goals.find((g: any) => g.id === id)
+const goal = landscape.goals.find((g) => g.id === id)!
 const baseConfig: PositiveGoalEvidenceReviewConfig = {
   $schema: 'https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-review-config.schema.json',
   schemaVersion: 2, reviewId: oldP.reviewId, goalFingerprintRuleVersion: 'goal-evidence-v1',
@@ -111,7 +116,7 @@ const makeOwner = (record: PositiveGoalEvidenceReviewRecord, changes: Partial<Po
     scope: { ...baseConfig.scope, goalIds: [record.goalId] }, ...changes })
   return configPath
 }
-const fixedOwner = makeOwner(bound.goals.find((g: any) => g.goalId === other).reviewContext.evidenceProfile)
+const fixedOwner = makeOwner(bound.goals.find((g) => g.goalId === other)!.reviewContext.evidenceProfile as PositiveGoalEvidenceReviewRecord)
 const indexPath = relative(root, join(temp, 'native/resolution-index.json'))
 cpSync(fixture, join(temp, 'native'), { recursive: true })
 const config = (p: string[], indexes = [indexPath]) => ({ ...source,
@@ -223,8 +228,8 @@ try {
   const foreignLandscape = makeOwner(oldP, { landscapeId: 'foreign-landscape' })
   seen.length = 0
   assert.ok(!ownerCatalog([originalConfig, foreignLandscape]).owners.has(id)); assert.deepEqual(seen, [])
-  const kindPath = join(temp, 'foreign-kind.json'); const kind = json(resolve(root, source.semanticKindLedgerPath))
-  kind.decisions.find((d: any) => d.goalId === id).semanticKind = 'memory'; save(kindPath, kind)
+  const kindPath = join(temp, 'foreign-kind.json'); const kind = json<{ decisions: Array<{ goalId: string; semanticKind: string }> }>(resolve(root, source.semanticKindLedgerPath))
+  kind.decisions.find((d) => d.goalId === id)!.semanticKind = 'memory'; save(kindPath, kind)
   const foreignKind = makeOwner(oldP, { semanticKindLedgerPath: relative(root, kindPath) })
   seen.length = 0; assert.ok(!ownerCatalog([originalConfig, foreignKind]).owners.has(id)); assert.deepEqual(seen, [])
 
@@ -240,21 +245,21 @@ try {
 
   // The low resolver still proves precisely the explicit old input supplied to it.
   const round = async (name: string) => {
-    const dir = resolve(fixture, name); const campaign = json(resolve(dir, 'description-review-campaign.json'))
+    const dir = resolve(fixture, name); const campaign = json<GoalDescriptionReviewCampaign>(resolve(dir, 'description-review-campaign.json'))
     const loaded = await loadGoalDescriptionReviewCampaignResultDirectories({ campaign, batchesDirectory: resolve(dir, 'batches'), resultsDirectory: resolve(dir, 'results') })
     assert.deepEqual(loaded.errors, [])
-    return { campaign, bundle: json(resolve(dir, 'review-bundle-manifest.json')), input: json(resolve(dir, 'description-review-input.json')), resultPairs: loaded.resultPairs }
+    return { campaign, bundle: json<GoalBookReviewBundleManifest>(resolve(dir, 'review-bundle-manifest.json')), input: json<GoalDescriptionReviewInput>(resolve(dir, 'description-review-input.json')), resultPairs: loaded.resultPairs }
   }
   const first = await round('round-a'); const second = await round('round-b')
   const synthesisBytes = readFileSync(resolve(fixture, 'synthesis-decisions.json'))
   const explicit = {
-    resolution: json(resolve(fixture, `resolutions/${id}.resolution.json`)), dualSummary: json(resolve(fixture, 'dual-summary.json')),
+    resolution: json<GoalDescriptionDualRoundResolution>(resolve(fixture, `resolutions/${id}.resolution.json`)), dualSummary: json<GoalDescriptionDualRoundSummary>(resolve(fixture, 'dual-summary.json')),
     dualSummaryBytes: readFileSync(resolve(fixture, 'dual-summary.json')), currentInput: first.input, landscape,
     first, second, synthesisDecisionManifestArtifact: { manifest: JSON.parse(synthesisBytes.toString()), manifestBytes: synthesisBytes, manifestPath: 'synthesis-decisions.json' },
   }
   assert.equal((await validateGoalDescriptionDualRoundResolution(explicit)).strictDescriptionComplete, true)
   const removedP = structuredClone(first.input)
-  removedP.goals.find((g: any) => g.goalId === id).reviewContext.evidenceProfile = null
+  removedP.goals.find((g) => g.goalId === id)!.reviewContext.evidenceProfile = null
   assert.ok((await validateGoalDescriptionDualRoundResolution({ ...explicit, currentInput: removedP })).errors.length > 0,
     'Removing embedded P cannot turn an existing bound D chain into independent evidence')
 
@@ -266,7 +271,7 @@ try {
   assert.ok((await loadCurrentDescriptionEvidenceGates(withHistory)).descriptionReady.has(id))
   const missingReplacement = { ...withHistory, positiveEvidenceConfigPaths: [genuineCurrent, fixedOwner] }
   assert.ok(!(await loadCurrentDescriptionEvidenceGates(missingReplacement)).descriptionReady.has(id))
-  const broken = json(resolve(root, historicalIndex)); broken.resolutions[0].resolutionDigest = hash('broken old digest'); save(resolve(root, historicalIndex), broken)
+  const broken = json<StandaloneBatchResolutionIndex>(resolve(root, historicalIndex)); broken.resolutions[0].resolutionDigest = hash('broken old digest'); save(resolve(root, historicalIndex), broken)
   assert.ok(!(await loadCurrentDescriptionEvidenceGates(withHistory)).descriptionReady.has(id))
 
   const mathState = await loadCurrentDescriptionEvidenceGates({ ...registered.subjects.find((s) => s.subject === 'mathematik')!,
