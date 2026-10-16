@@ -1,0 +1,72 @@
+{
+  "role": "Independent symbolic/numerical scientific derivations; illustrative models are not experimental observations",
+  "weakAcidBase": {
+    "K": 1.8e-05,
+    "formalConcentrationM": 0.1,
+    "equation": "x^2/(c0-x)=K",
+    "quadraticRootM": 0.001332670973077975,
+    "sqrtApproximationM": 0.001341640786499874,
+    "sqrtDissociationPercent": 1.3416407864998738,
+    "exactDissociationPercent": 1.3326709730779747,
+    "pHAcidApprox": 2.8723637474483468,
+    "pHBaseApprox": 11.127636252551653,
+    "pHAcidExact": 2.8752770615501357,
+    "pHBaseExact": 11.124722938449864
+  },
+  "per10000FormalUnitsApprox": {
+    "acidOrB1_ionPairs": 134.1640786499874,
+    "B2_ionPairs": 1.3416407864998738,
+    "remainingHAorB": "10000 - generated ion-pair number; water excluded, not actual particle counting"
+  },
+  "waterAt25C": [
+    {
+      "pH": 4,
+      "hydroniumM": 0.0001,
+      "hydroxideM": 9.999999999999999e-11
+    },
+    {
+      "pH": 9,
+      "hydroniumM": 1e-09,
+      "hydroxideM": 9.999999999999999e-06
+    },
+    {
+      "pH": 7,
+      "hydroniumM": 1e-07,
+      "hydroxideM": 1.0000000000000001e-07
+    }
+  ],
+  "photonEnergyEV": {
+    "360": 3.444005511111111,
+    "430": 2.8833534511627903,
+    "630": 1.968003149206349
+  },
+  "spectralShiftNm": 70,
+  "chloraceticVsAceticKaRatio": 79.43282347242814,
+  "H2SO4": {
+    "first": "H2SO4 + H2O -> H3O+ + HSO4-",
+    "second": "HSO4- + H2O <=> H3O+ + SO4^2-",
+    "sumUnderExplicitSchoolCompleteModel": "H2SO4 + 2H2O -> 2H3O+ + SO4^2-",
+    "physicalLimit": "Second step is an equilibrium dependent on concentration; no exact pH follows without additional conditions."
+  },
+  "nitroanilineQuinoidCharge": {
+    "donorN": 1,
+    "nitroN": 1,
+    "oxygenCharges": [
+      -1,
+      -1
+    ],
+    "total": 0,
+    "nitroNTotalBondOrder": 4,
+    "noNitrogenOctetExpansion": true
+  },
+  "nitrate": {
+    "valenceElectronTotal": 24,
+    "structures": 3,
+    "eachNFormalCharge": 1,
+    "eachSinglyBondedOFormalCharge": -1,
+    "doubleBondedOFormalCharge": 0,
+    "fixedAtomLabelsAndUnchangedConnectivity": true
+  },
+  "titration": "c(sample)=c(NaOH)*V(eq)/10.00mL; design estimate 10mL is not a measured equivalence volume",
+  "snPracticalNoObservedData": true
+}

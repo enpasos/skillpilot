@@ -1,0 +1,144 @@
+{
+  "role": "Explicit local bounded compatibility schemas, not an official source publication schema or scientific acceptance",
+  "sourceExtraction": {
+    "type": "object",
+    "required": [
+      "schemaVersion",
+      "extractionId",
+      "sourceLandscapeId",
+      "jurisdiction",
+      "subject",
+      "stage",
+      "sourceDocument",
+      "passages",
+      "sourceGoals"
+    ],
+    "properties": {
+      "sourceGoals": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "id",
+            "passageId",
+            "title",
+            "description",
+            "sourceText",
+            "sourceRef",
+            "courseLevel",
+            "tags"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "passageId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sourceText": {
+              "type": "string",
+              "minLength": 1
+            },
+            "courseLevel": {
+              "type": "string"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "passages": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "id",
+            "topicCode",
+            "title",
+            "sourceGoalIds"
+          ]
+        }
+      },
+      "sourceDocument": {
+        "type": "object",
+        "required": [
+          "key",
+          "path",
+          "official"
+        ]
+      }
+    }
+  },
+  "mapping": {
+    "type": "object",
+    "required": [
+      "version",
+      "reviewId",
+      "sourceLandscapeId",
+      "targetLandscapeId",
+      "sourceExtractionPath",
+      "status",
+      "mappings",
+      "decisions"
+    ],
+    "properties": {
+      "mappings": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "legacyGoalId",
+            "canonicalGoalId",
+            "matchType",
+            "reviewDecisionId"
+          ],
+          "properties": {
+            "matchType": {
+              "enum": [
+                "exact",
+                "partial"
+              ]
+            }
+          }
+        }
+      },
+      "decisions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "sourceGoalId",
+            "decision",
+            "canonicalGoalIds",
+            "rationale",
+            "reviewedAt",
+            "reviewer"
+          ],
+          "properties": {
+            "canonicalGoalIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

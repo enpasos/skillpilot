@@ -1,0 +1,108 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import { createHash } from 'node:crypto'
+import { createRequire } from 'node:module'
+import { compileCompositionView, collectCompositionProjectionRoleGoalIds } from '../../app/src/utils/authoring/compositionViewAuthoring.ts'
+import { getSrsFilterTags } from '../../app/src/utils/srsTags.ts'
+
+const repo = process.cwd()
+const base = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/'
+const author = base+'chemie-four-existing-memory-support-whole-view-placements-author-20261016-v2/'
+const normal = base+'chemie-current429-fifteen-memory-full-normal-bindings-informed-technical-20261016-v1/'
+const out = base+'chemie-four-existing-memory-support-independent-scope-followup-20261016-v1/'
+if (fs.existsSync(out+'SEAL.finite-independent-scope-review.json')) throw new Error('Refuse to overwrite sealed independent root')
+fs.mkdirSync(out,{recursive:true})
+const pins = new Map<string,any>()
+function sha(b:any) { return 'sha256:'+createHash('sha256').update(b).digest('hex') }
+function read(p:string,mode='complete parsed bytes') { const b=fs.readFileSync(p);pins.set(p,{path:p,sha256:sha(b),bytes:b.length,readMode:mode});return b.toString('utf8') }
+function obj(p:string) { return JSON.parse(read(p)) }
+function jsonl(p:string) { return read(p).split(/\r?\n/).filter(Boolean).map(x=>JSON.parse(x)) }
+function write(name:string,d:any) { fs.writeFileSync(out+name,JSON.stringify(d,null,2)+'\n') }
+function eq(a:any,b:any){return JSON.stringify(a)===JSON.stringify(b)}
+const selector=obj(author+'OUTPUTS.four-existing-memory-support-whole-view-author.final-selector.json')
+const ops=obj(selector.exactOperations.path)
+obj(selector.fourthConcreteRationale.path)
+obj(selector.actualSchemasCompositionAndBookFilter.path)
+obj(selector.finiteInputs.path)
+obj(base+'chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/NEUTRAL.two-memory-delta-whole-decks-and47-view-selection.author.json')
+const normalSelector=obj(normal+'OUTPUTS.full429-normal-M-four-memory-support-successors.final-selector.json')
+const canonical=obj(normalSelector.currentCanonical.path)
+const semantic=obj(normalSelector.currentSemanticContext.path)
+const gb = new Map(canonical.goals.map((g:any)=>[g.id,g])) as Map<string,any>
+const kinds=new Map(semantic.decisions.map((g:any)=>[g.goalId,g.semanticKind]))
+const science=obj(normalSelector.genuineWholeScience.path)
+const config=obj(normalSelector.operativeFullConfig.path)
+const oldConfigPath='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-five-genuine-informed-PA-bindings-technical-20261015-v1/config/M426.only-two-text-FP-bindings.integration-only.config.json'
+const oldConfig=obj(oldConfigPath)
+const records=jsonl(normalSelector.wholeGoalRecords.path)
+const cardsRecords=jsonl(normalSelector.wholeCardRecords.path)
+const byRecord = new Map(records.map((r:any)=>[r.goalId,r]))
+const sourceCodePaths=['AGENTS.md','app/src/utils/authoring/compositionViewAuthoring.ts','app/src/utils/authoring/canonicalAuthoring.ts','app/src/utils/goalBookChapterProjection.ts','app/scripts/goalBookModel.ts','app/scripts/goalBookRenderer.ts','app/src/utils/srsTags.ts','app/src/components/srs/FlashcardDrill.tsx','app/scripts/memoryCardReview.ts','contracts/curriculum-package/v1/composition-view.schema.json']
+for(const p of sourceCodePaths) read(p,'complete bytes loaded; relevant review spans reported in METHOD')
+const require=createRequire(path.join(repo,'app/package.json'))
+const Ajv=require('ajv/dist/2020')
+const schema=obj('contracts/curriculum-package/v1/composition-view.schema.json')
+const validate=new Ajv({allErrors:true,strict:false}).compile(schema)
+const deckPaths=[
+ ...['basics_seki','bonding_structure','organic_q1','natural_q2','energy_q4'].map(n=>'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bw-lk-six-card-defects-scientific-remediation-author-root-20261015-v1/memory-decks/de_gymnasium_chemistry_flashcards_'+n+'.de.json'),
+ base+'chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/memory/runtime-data-vocabulary.whole-equilibria-q3.two-selection-tags.author.json',
+ 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-independent-a-v1/de_gymnasium_chemistry_arrhenius_names_formulas.de.reviewed.inactive.candidate.json'
+]
+const decks=new Map(deckPaths.map(p=>{const d=obj(p);return [d.deckId,{...d,path:p}]})) as Map<string,any>
+const stagedCanonicalEquilibria=obj(base+'chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/memory/canonical.whole-equilibria-q3.two-selection-tags.author.json')
+const memory=canonical.goals.filter((g:any)=>g.nodeKind==='memory'||g.tags?.includes('memorization')||g.tags?.some((t:string)=>t.startsWith('srs-deck:')))
+const allCards=Array.from(decks.values()).flatMap(d=>d.cards.map((c:any)=>({...c,deckId:d.deckId})))
+const parents=new Map<string,string[]>()
+for(const g of canonical.goals)for(const c of g.contains??[])parents.set(c,[...(parents.get(c)??[]),g.id])
+function closure(ids:string[],relation:(id:string)=>string[]) { const seen=new Set<string>();const visit=(id:string)=>{if(seen.has(id))return;seen.add(id);for(const c of relation(id))visit(c)};ids.forEach(visit);return [...seen] }
+function requiresClosure(ids:string[]) { return closure(ids,id=>gb.get(id)?.requires??[]) }
+function effectiveRequires(id:string) { const ancestors=closure([id],x=>parents.get(x)??[]);return [...new Set(ancestors.flatMap(x=>gb.get(x)?.requires??[]))].filter(x=>x!==id) }
+function effRequiresClosure(ids:string[]) { return closure(ids,effectiveRequires) }
+const selected15=memory.map((g:any)=>{
+ const deckIds=g.tags.filter((t:string)=>t.startsWith('srs-deck:')).map((t:string)=>t.slice(9)); const filter=getSrsFilterTags(g.tags)
+ const cards=deckIds.flatMap((id:string)=>decks.get(id).cards.filter((c:any)=>!filter.length||c.tags?.some((t:string)=>filter.includes(t))).map((c:any)=>({...c,deckId:id})))
+ const planned=science.all15WholeMemoryObjectsAndSelectedCardOriginRoutes.find((m:any)=>m.memoryGoalId===g.id)
+ return {goalId:g.id,wholeCurrentGoal:g,deckIds,actualFilterTags:filter,selectedCardIds:cards.map((c:any)=>c.id),wholeSelectedCards:cards,selectionMatchesPinnedScience:eq([...cards.map((c:any)=>c.id)].sort(),[...planned.selectedCardIds].sort()),explicitSelectedCardIdsMatch:g.extendedData?.memorySupportSelection?.selectedCardIds?eq([...cards.map((c:any)=>c.id)].sort(),[...g.extendedData.memorySupportSelection.selectedCardIds].sort()):null}
+})
+function viewData(view:any) {
+ const roles=collectCompositionProjectionRoleGoalIds(view.rootNodes,gb)
+ const compiled=compileCompositionView(view,canonical)
+ const ids:string[]=[];const visit=(n:any)=>{if(n.sourceGoalId&&(gb.get(n.sourceGoalId)?.contains??[]).length===0)ids.push(n.sourceGoalId);n.children.forEach(visit)}
+ compiled.compiledRootNodes.forEach(visit)
+ const targets=ids.filter(id=>roles.targetGoalIds.has(id))
+ return {roles,compiled,ids,targets,ordinary:targets.filter(id=>kinds.get(id)==='curricularAtomic')}
+}
+const rows=ops.operations.map((op:any)=>{
+ const before=obj(op.wholeBefore.path),after=obj(op.wholeAfter.path)
+ const removed=structuredClone(after);const points=op.jsonPointer.split('/').slice(1);let parent=removed;for(const p of points.slice(0,-1))parent=parent[p];const pos=Number(points.at(-1));const removedNode=parent.splice(pos,1)[0]
+ const bd=viewData(before),ad=viewData(after);const g=gb.get(op.exactAppend.goalId)
+ const direct=requiresClosure([g.id]).filter(id=>id!==g.id)
+ const origins=records.filter((r:any)=>r.status==='memory_required'&&r.memoryGoalIds?.includes(g.id)).map((r:any)=>r.goalId)
+ const originAcquisition=requiresClosure(origins)
+ const visibleOrigins=origins.filter(id=>bd.roles.targetGoalIds.has(id))
+ const claimedAcquisition=requiresClosure(visibleOrigins)
+ const genuineMissing=claimedAcquisition.filter(id=>!ad.roles.targetGoalIds.has(id)&&!ad.roles.prerequisiteOnlyGoalIds.has(id)&&kinds.get(id)!=='orientation')
+ const available=(id:string)=>ad.roles.targetGoalIds.has(id)||ad.roles.prerequisiteOnlyGoalIds.has(id)
+ const selected=selected15.find((m:any)=>m.goalId===g.id)
+ return {viewId:after.viewId,scope:after.scope,wholeBeforePin:pins.get(op.wholeBefore.path),wholeAfterPin:pins.get(op.wholeAfter.path),beforeSchemaValid:validate(before),afterSchemaValid:validate(after),exactOnlyAppend:eq(removed,before)&&eq(removedNode,op.exactAppend),allOtherFieldsNodesRolesOrderPreserved:eq(removed,before),beforeErrors:bd.compiled.findings.filter((f:any)=>f.severity==='error'),afterErrors:ad.compiled.findings.filter((f:any)=>f.severity==='error'),beforeWarnings:bd.compiled.findings.filter((f:any)=>f.severity!=='error'),afterWarnings:ad.compiled.findings.filter((f:any)=>f.severity!=='error'),beforeTargetIds:[...bd.roles.targetGoalIds],afterTargetIds:[...ad.roles.targetGoalIds],targetAdded:[...ad.roles.targetGoalIds].filter(id=>!bd.roles.targetGoalIds.has(id)),targetRemoved:[...bd.roles.targetGoalIds].filter(id=>!ad.roles.targetGoalIds.has(id)),prerequisiteOnlySetsPreserved:eq([...bd.roles.prerequisiteOnlyGoalIds].sort(),[...ad.roles.prerequisiteOnlyGoalIds].sort()),beforeOrdinaryTargetInTreeOrder:bd.ordinary,afterOrdinaryTargetInTreeOrder:ad.ordinary,ordinaryOrderAndMembershipUnchanged:eq(bd.ordinary,ad.ordinary),noDuplicateTargetLeaf:ad.targets.length===new Set(ad.targets).size,memorySemanticKind:kinds.get(g.id),memoryExcludedByActualBookPredicate:kinds.get(g.id)!=='curricularAtomic',selectedCardIds:selected?.selectedCardIds,directRequiresClosure:direct,directRequiresMissing:direct.filter(id=>!available(id)),genuineCurrentRequiredOrigins:origins,originsTargetBefore:visibleOrigins,visibleOriginAcquisitionClosure:claimedAcquisition,genuineNonOrientationVisibleOriginPrerequisitesMissing:genuineMissing,orientationPrerequisitesMissing:claimedAcquisition.filter(id=>!available(id)&&kinds.get(id)==='orientation'),otherOriginsOutsideThisViewNotNewDuties:origins.filter(id=>!bd.roles.targetGoalIds.has(id)),allOriginsGlobalAcquisitionClosure:originAcquisition,allOriginsGlobalAcquisitionMissing:originAcquisition.filter(id=>!available(id)),effectiveMemoryRequiresClosure:effRequiresClosure([g.id]).filter(id=>id!==g.id),effectiveMemoryRequiresMissing:effRequiresClosure([g.id]).filter(id=>id!==g.id&&!available(id)),existingMemoryTargetsBefore:bd.targets.filter(id=>kinds.get(id)==='memory'),sourceCoverageAndRuntimeAcceptanceClaimed:false}
+})
+const scopeIds=closure(config.scope.rootGoalIds,id=>gb.get(id)?.contains??[])
+const oldRootIds=closure(oldConfig.scope.rootGoalIds,id=>gb.get(id)?.contains??[])
+const ordinary=(g:any)=>(g.contains??[]).length===0&&!memory.some((m:any)=>m.id===g.id)&&!['Practice','Assessment','Motivation','Orientation'].some(t=>g.tags?.includes(t))&&!g.examData
+const scopeOrdinary=scopeIds.filter(id=>ordinary(gb.get(id)))
+function norm(x:any){return String(x??'').normalize('NFKC').replace(/\s+/g,' ').trim()}
+function stable(x:any):string{if(Array.isArray(x))return '['+x.map(stable).join(',')+']';if(x&&typeof x==='object')return '{'+Object.entries(x).sort(([a],[b])=>a.localeCompare(b)).map(([k,v])=>JSON.stringify(k)+':'+stable(v)).join(',')+'}';return JSON.stringify(x)}
+function goalFp(g:any){return sha(stable({ruleVersion:config.ruleVersion,goalId:g.id,shortKey:g.shortKey??'',title:norm(g.title),titleEn:norm(g.titleEn),description:norm(g.description),descriptionEn:norm(g.descriptionEn),phase:norm(g.dimensionTags?.phase),area:norm(g.dimensionTags?.area),topicCode:norm(g.dimensionTags?.topicCode),nodeKind:norm(g.nodeKind)}))}
+const cardTraces=allCards.map(c=>{const r=cardsRecords.find((r:any)=>r.deckId===c.deckId&&r.cardId===c.id);const fp=sha(stable({ruleVersion:config.ruleVersion,deckId:c.deckId,cardId:c.id,front:norm(c.front),back:norm(c.back),category:norm(c.category),tags:(c.tags??[]).map(norm).filter(Boolean)}));return {deckId:c.deckId,cardId:c.id,currentReviewPresent:!!r,keptNecessary:r?.status==='kept'&&r?.necessary===true,originGoalIds:r?.originGoalIds??[],originsCurrentOrdinaryRequiredAndDeckMatched:(r?.originGoalIds??[]).length>0&&(r?.originGoalIds??[]).every((id:string)=>scopeOrdinary.includes(id)&&byRecord.get(id)?.status==='memory_required'&&byRecord.get(id)?.deckIds?.includes(c.deckId)),actualFingerprint:fp,recordFingerprint:r?.fingerprint,fingerprintMatches:r?.fingerprint===fp}})
+const purposeRows=config.visibilityScopes.map((s:any,i:number)=>{const old=oldConfig.visibilityScopes[i];const v=obj(s.viewPath);const oldView=obj(old.viewPath);const vd=viewData(v);const missing=records.filter((r:any)=>r.status==='memory_required'&&vd.roles.targetGoalIds.has(r.goalId)&&!r.memoryGoalIds.some((id:string)=>vd.roles.targetGoalIds.has(id)));return {label:s.label,previousLabel:old.label,labelPreserved:s.label===old.label,viewId:v.viewId,scope:v.scope,originalViewId:oldView.viewId,originalScope:oldView.scope,viewIdAndScopePreserved:v.viewId===oldView.viewId&&eq(v.scope,oldView.scope),viewPath:s.viewPath,previousViewPath:old.viewPath,checkedRequired:records.filter((r:any)=>r.status==='memory_required'&&vd.roles.targetGoalIds.has(r.goalId)).length,missingRoleResolvedPairs:missing.map((r:any)=>r.goalId)}})
+const before47=obj(ops.beforeAll47Selection.path),after47=obj(selector.current47Selection.path)
+const changes47=after47.views.filter((v:any)=>!eq(v.wholeSelectedAuthorView,before47.views.find((b:any)=>b.viewId===v.viewId)?.wholeSelectedAuthorView)).map((v:any)=>v.viewId)
+const holds=obj(normalSelector.current47PurposeAwareRouteHolds.path)
+const receipt=obj(normalSelector.actualSuccessReceipt.path)
+const report=read(normalSelector.actualSuccessGeneratedReport.path)
+const canonicalWholeContextIds=[...new Set(rows.flatMap((r:any)=>[...r.directRequiresClosure,...r.allOriginsGlobalAcquisitionClosure,...r.genuineCurrentRequiredOrigins,...r.targetAdded]))]
+write('CHECKS.four-whole-view-independent-actual-compilation-and-card-selection.json',{role:'Independent informed scope follow-up; exact four additions only; current stock functions invoked',rows,actualBookFilter:{implementationPath:'app/scripts/goalBookModel.ts',lines:'1944-1947 and 1971-1982',expression:"semanticKindByGoalId.get(goalId) === 'curricularAtomic'",stockBookBuildOrRendererExecuted:false,rendererHasMemoryBackmatterImplementation:read('app/scripts/goalBookRenderer.ts').toLowerCase().includes('backmatter'),conclusion:'Memory target visibility is separate from ordinary printed pages; no automatic memory backmatter or SRS subject-page duty follows.'},current47SelectionComparison:{changedViewIds:changes47,changedCount:changes47.length,other43SelectedBodiesRetained:changes47.length===4},scopePreservationAndGenuineSubjectAcquisitionCheckPass:rows.every((r:any)=>r.exactOnlyAppend&&r.beforeSchemaValid&&r.afterSchemaValid&&r.beforeErrors.length===0&&r.afterErrors.length===0&&r.ordinaryOrderAndMembershipUnchanged&&r.prerequisiteOnlySetsPreserved&&r.targetRemoved.length===0&&r.targetAdded.length===1&&r.noDuplicateTargetLeaf&&r.memoryExcludedByActualBookPredicate&&r.genuineNonOrientationVisibleOriginPrerequisitesMissing.length===0),wholeRuntimeOrCourseAcquisitionAccepted:false,orientationMissingInSourceCarrierExplicitlyRetained:rows.find((r:any)=>r.viewId==='de-gym-chemie-bundesweit-source-de-he-seki').orientationPrerequisitesMissing})
+write('CONTEXT.current15-memory-and-whole-genuine-acquisition-bodies.json',{role:'Actual complete current memory objects and exact selected current deck cards; no new content review of unchanged science',canonicalGoalCount:canonical.goals.length,selected15,wholeAcquisitionGoals:canonicalWholeContextIds.map(id=>gb.get(id))})
+write('CHECKS.full-normal-M-scope-and-ten-purposes-retained.json',{role:'Independent current-data preservation check, not a new bulk scientific vote',currentCanonicalGoalCount:canonical.goals.length,ordinaryScopeCount:scopeOrdinary.length,ordinaryRecordCount:records.length,ordinaryRecordIdsMatchScope:eq([...scopeOrdinary].sort(),records.map((r:any)=>r.goalId).sort()),staleOrdinaryIds:records.filter((r:any)=>r.fingerprint!==goalFp(gb.get(r.goalId))).map((r:any)=>r.goalId),required:records.filter((r:any)=>r.status==='memory_required').length,noMemory:records.filter((r:any)=>r.status==='no_memory_needed').length,memoryScopeCount:scopeIds.filter(id=>memory.some((m:any)=>m.id===id)).length,memoryScopeIds:scopeIds.filter(id=>memory.some((m:any)=>m.id===id)),allCanonicalMemoryCovered:memory.every((g:any)=>scopeIds.includes(g.id)),oldScopeDescendantsRetained:oldRootIds.every(id=>scopeIds.includes(id)),newScopeAddedOverOldRoot:scopeIds.filter(id=>!oldRootIds.includes(id)),optionalGrignardRetained:scopeOrdinary.includes('8edee6b6-9ead-515e-93f5-feada64522b2'),deckCount:decks.size,activePrimaryCardCount:allCards.length,cardRecordCount:cardsRecords.length,cardTraces,all75CardsRetainedAndGenuinelyTraced:cardTraces.every(r=>r.currentReviewPresent&&r.keptNecessary&&r.originsCurrentOrdinaryRequiredAndDeckMatched),all15SelectionsMatchActualDecks:selected15.every(m=>m.selectionMatchesPinnedScience&&(m.explicitSelectedCardIdsMatch!==false)),originalTenPurposeCount:oldConfig.visibilityScopes.length,currentTenPurposeCount:config.visibilityScopes.length,purposeRows,allOriginalTenLabelsPreserved:purposeRows.every((r:any)=>r.labelPreserved),actualConfiguredRoleResolvedMissingPairs:purposeRows.reduce((n:number,r:any)=>n+r.missingRoleResolvedPairs.length,0),stockReceiptObserved:{exitCode:receipt.exitCode,stockScriptSha256:receipt.stockScriptSha256,reportLoadedBytes:Buffer.byteLength(report)},stockPassLimit:'Only the configured ten purposes and current record/card trace checks. Does not prove acquisition, necessary narrowness, full NI/all47 routes, ordinary Book pages, renderer backmatter, human approval or host acceptance.',remainingRouteHolds:{before:holds.beforeFourMemorySupportAppends,after:holds.afterExactFourAppends,wholeNILKUnchangedMissingCount:holds.wholeNI_LKUnchanged36Pairs.missingCount},HumanApproval:false,HumanTrial:false,Native:false,Central:false,Git:false})
+write('INPUTS.finite-actually-read-independent-scope.json',{role:'Finite read set: complete byte loading and JSON/JSONL parsing where applicable; whole view files fully parsed and compiled; exact review limits in METHOD',inputCount:pins.size,inputs:[...pins.values()]})
+console.log(JSON.stringify({root:out,four:rows.map((r:any)=>({view:r.viewId,ordinaryBefore:r.beforeOrdinaryTargetInTreeOrder.length,ordinaryAfter:r.afterOrdinaryTargetInTreeOrder.length,originTargets:r.originsTargetBefore,genuineSubjectMissing:r.genuineNonOrientationVisibleOriginPrerequisitesMissing,orientationMissing:r.orientationPrerequisitesMissing,effectiveMissing:r.effectiveMemoryRequiresMissing,errors:r.afterErrors.length})),scopeOrdinary:scopeOrdinary.length,memory:memory.length,cards:allCards.length,cardFingerprintsMatch:cardTraces.filter(c=>c.fingerprintMatches).length,tenMissing:purposeRows.reduce((n:number,r:any)=>n+r.missingRoleResolvedPairs.length,0),inputs:pins.size},null,2))

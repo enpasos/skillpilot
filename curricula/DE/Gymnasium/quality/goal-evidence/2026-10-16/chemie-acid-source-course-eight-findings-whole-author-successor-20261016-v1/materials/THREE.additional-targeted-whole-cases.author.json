@@ -1,0 +1,346 @@
+{
+  "cases": [
+    {
+      "caseId": "HALFTITRATION-UNKNOWN-C1",
+      "goalIds": [
+        "059acb11-29b3-5645-ac4c-b4214dc41a2d"
+      ],
+      "titleDe": "Unbekannte Säure und unbekannte Base aus Halbtitrationsdaten charakterisieren",
+      "role": "Synthetic authored task and complete worked model; not an experiment or learner evidence",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Ausdrücklich synthetische, auf 0,01 pH gerundete Lehrdaten bei 25 °C und pKW=14,00; keine durchgeführten Messungen. Je 25,00 mL einer unbekannten einprotonigen schwachen Säure U und einer unbekannten einprotonigen schwachen Base V werden mit 0,1000 mol/L NaOH bzw. HCl modelliert. Zugabe/mL: 6,25;12,50;18,75;24,90;25,00;25,10. U-pH:4,28;4,76;5,24;7,16;8,73;10,30. V-pH:9,73;9,25;8,77;6,85;5,28;3,70. Ein ergänzender eng aufgelöster Modellverlauf legt für beide Veq=25,00±0,05 mL nahe; seine Herkunft als Modell bleibt benannt. Unsicherheit der pH-Ablesung ±0,02. Für den Halbpunkt stehen korrespondierende Partner in nennenswerten Mengen zur Verfügung; Aktivitäten werden durch Konzentrationen angenähert. Die Molekülnamen werden nicht verraten. Eine weitere hypothetische Temperaturvariation hat pKW=13,20 und Halbpunkt-pH(V)=8,70; deren eigener Halbpunkt ist gegeben und darf nicht mit den 25-°C-Konstanten vermischt werden.",
+      "taskDemandDe": [
+        "Leite das Halbvolumen aus dem Äquivalenzvolumen ab, ordne für U und V die korrespondierenden Partner zu und erläutere die näherungsweise Partnergleichheit. Bestimme pKS(U) sowie pKS(VH+) und daraus pKB(V).",
+        "Beurteile die Unsicherheit und die Voraussetzungen der Halbtitrationsmethode. Begründe, weshalb weder die unbekannte Molekülidentität noch ein pK aus dem Halbpunkt einer starken Lösung folgt. Berechne für die getrennte Temperaturvariation pKB(V).",
+        "Beschreibe, welche eigenen Volumen/pH-Daten und welche Aufsichtsbeobachtung zusätzlich nötig wären, um den Halbpunkt experimentell statt aus Modelldaten zu bestimmen."
+      ],
+      "workedModelDe": [
+        "Vhalf=12,50±0,025 mL, zusätzlich mit der Auflösung und Ableseunsicherheit zu kombinieren. U: HA/A−, pKS≈4,76. V: B/BH+, pKS(BH+)≈9,25, pKB≈14,00−9,25=4,75. Die formalen Restmengen sind bei der 1:1-Titration am Halbvolumen gleich; die reale Speziesgleichheit und damit die pK-Ablesung bleiben begründete Näherungen.",
+        "Für V gilt am Halbpunkt pOH=pKB, alternativ pKS(BH+)+pKB(B)=pKW. In der separaten Temperaturvariation pKB=13,20−8,70=4,50. pH- und Volumenunsicherheit sind auszuweisen; ±0,02 ist nur der pH-Beitrag, keine universelle Gesamtunsicherheit. Aktivitätsabweichung, starke Verdünnung, überlagerte Protolyse oder schlecht bestimmtes Veq begrenzen die Methode. pK bestimmt keine eindeutige Molekülstruktur.",
+        "Modelldaten belegen keine experimentelle Leistung. Nötig sind persönlich erhobene Daten mit Kalibrierung/Temperatur und hinreichender Auflösung um Veq und Veq/2, echte Rohprotokolle und beobachtete persönliche Durchführung. Das separate PRACTICAL-PH-Blatt trägt den tatsächlichen Säure-Halbpunkt; die vorliegende Baseauswertung ersetzt keine Basenmessung."
+      ],
+      "rubric": [
+        {
+          "criterionId": "HALFTITRATION-UNKNOWN-C1-r1",
+          "fullCreditDe": "Unbekannte Säure: Halbvolumen, HA/A− und pKS≈4,76 sind aus Daten und Gleichgewicht begründet.",
+          "fullCreditEn": "Unknown acid: justify half volume, HA/A− and pKa≈4.76 from data and equilibrium.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        },
+        {
+          "criterionId": "HALFTITRATION-UNKNOWN-C1-r2",
+          "fullCreditDe": "Unbekannte Base: B/BH+, pKS(BH+)≈9,25 und pKB≈4,75; Temperaturvariation pKB=4,50 nachvollziehbar.",
+          "fullCreditEn": "Unknown base: justify B/BH+, conjugate pKa≈9.25 and pKb≈4.75; temperature variant pKb=4.50.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        },
+        {
+          "criterionId": "HALFTITRATION-UNKNOWN-C1-r3",
+          "fullCreditDe": "Unsicherheit, Näherungen, starke Halbpunktgrenze und fehlende Identifikation werden erklärt; keine Laborleistung erfunden.",
+          "fullCreditEn": "Explain uncertainty, approximations, strong-solution and identity limits without inventing laboratory performance.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        }
+      ],
+      "maximumDesignPoints": 6,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "practicalExecutionRequired": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "titleEn": "Characterise an unknown acid and base using half-titration data",
+      "materialEn": "Explicitly synthetic teaching data rounded to0.01pH at25°C,pKw14.00; no actual measurements. Separate25.00mL unknown weak monoprotic acid U and weak monoprotic base V are modelled with0.1000M NaOH orHCl. AddedmL6.25,12.50,18.75,24.90,25.00,25.10 give U-pH4.28,4.76,5.24,7.16,8.73,10.30 and V-pH9.73,9.25,8.77,6.85,5.28,3.70. A supplied refined model locates both equivalence volumes at25.00±0.05mL; it remains a model. pH reading uncertainty±0.02. Both conjugate partners are appreciably present at half-equivalence; concentrations approximate activities. Molecular identities are withheld. A separate hypothetical temperature variant haspKw13.20 and given base halfpointpH8.70; its constants must not be mixed with25°C.",
+      "taskDemandEn": [
+        "Derive half volume, identify both conjugate pairs and justify approximate partner equality. Determine pKa(U),pKa(VH+)andpKb(V).",
+        "Discuss uncertainty and validity limits, including strong-solution halfpoints and molecular identity. CalculatepKb for the separate temperature variant.",
+        "Specify the personal volume/pH readings and supervision evidence needed to turn model-based halfpoint determination into an experiment."
+      ],
+      "workedModelEn": [
+        "Half volume12.50±0.025mL, to be combined with resolution and reading uncertainty. U:HA/A−,pKa≈4.76. V:B/BH+,conjugatepKa≈9.25,pKb≈14.00−9.25=4.75. Equal formal amounts at half volume do not guarantee exactly equal equilibrium species.",
+        "At base halfpointpOH≈pKb; equivalently pKa(BH+)+pKb(B)=pKw. Separate temperature variantpKb=13.20−8.70=4.50.±0.02is only thepH contribution,not universal total uncertainty. Activities,extreme dilution,overlapping equilibria and uncertain equivalence constrain the method. pK does not uniquely identify a molecule.",
+        "Require personally acquired calibrated readings with temperature and adequate resolution around equivalence and half volume,raw notes and observed personal execution. The separatePRACTICAL-PH sheet assesses the actual acid halfpoint. This base-data exercise does not represent a base experiment."
+      ]
+    },
+    {
+      "caseId": "BUFFER-CONTEXT-FUNCTION-C1",
+      "goalIds": [
+        "25729c34-33d5-553a-a723-046113a7da47"
+      ],
+      "titleDe": "Puffer für konkrete technische, biologische und ökologische Funktionen beurteilen",
+      "role": "Synthetic authored task and complete worked model; not an experiment or learner evidence",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Alle Kontexte sind ausdrücklich didaktische Modelle, keine klinischen Studien oder Freigaben. T: Ein geschlossenes technisches Farbstoff-Prüfbad benötigt pH4,6–5,0 für reproduzierbare Farbmessung. Es enthält HA/A− mit pKS4,80; kleine saure/basische Verunreinigungen aus dem Werkstück sind die Störung. Vorhandene Materialtests erlauben in diesem Modell das Acetatpaar; Phosphat pKS7,21 liegt außerhalb des Zielbereichs. Angaben über zulässige Langzeitlast und Korrosion fehlen. B: In einem vereinfachten wässrigen Zellkompartiment ermöglicht pH7,0–7,4 eine pH-abhängige Enzymfunktion; Stoffwechsel erzeugt begrenzte H+-Last. H2PO4−/HPO4²− sind in nennenswerten Mengen vorhanden. Das Modell nimmt keine zusätzliche Bindung/Inhibition durch Phosphat an; reale Zellen haben weitere Regelungen. M: Im getrennten Blutmodell CO2/H2CO3/HCO3− koppelt Protonenaufnahme an CO2-Abtransport; Transportausfall verändert die Bilanz und gefährdet die pH-abhängige Funktion. Es folgt keine Behandlungsanweisung. U: Für ein Gewässer mit wiederkehrendem saurem Eintrag wird eine Phosphatzugabe beworben. Eintrag, bestehende natürliche Puffer, Stoffaustausch und Nährstofffolgen sind nicht untersucht. Fiktive Herstellerkarte wirbt mit universeller Sicherheit; ein datiertes Modellblatt nennt nur Zusammensetzung, Temperatur und begrenzte Testdosen, ohne Ökosystem-/Patientendaten. Die vorhandenen SOURCE-CRITIQUE-M1–M3, PHOSPHATE und OPEN-BUFFER bleiben vollständige ergänzende Materialien.",
+      "taskDemandDe": [
+        "Erkläre T und B jeweils mit konkreten Komponenten, Störung, korrespondierenden Abfangreaktionen und Funktionsfolge. Begründe, warum endliche Reserve die Funktion nur unter passenden Belastungen stabilisiert.",
+        "Triff für T eine kriterienbezogene Paarwahl und für B eine begrenzte Funktionsbeurteilung. Vergleiche den geschlossenen biologischen Modellraum mit dem offenen Blutmodell M: Welche Stoffströme müssen funktionieren?",
+        "Bewerte die behauptete Eignung für T, M und U anhand pH-Bereich, Lastreserve, Stoffverträglichkeit, Systemgrenze und Belegreichweite. Formuliere ein begründetes Urteil und die jeweils entscheidende offene Information statt einer pauschalen Medizin-/Umwelt-/Technikfreigabe."
+      ],
+      "workedModelDe": [
+        "T: A−+H3O+→HA+H2O und HA+OH−→A−+H2O fangen begrenzte Störungen ab. Beide Komponenten und passender pKS-Bereich halten die farbabhängige Messfunktion vergleichbarer; nach Partnerverbrauch driftet pH, und Signaländerung kann Materialfehler vortäuschen. B: HPO4²−+H3O+→H2PO4−+H2O; H2PO4−+OH−→HPO4²−+H2O. Die Säurelast verbraucht basischen Partner; geringere pH-Änderung kann die Enzymfunktion im angegebenen Bereich stabilisieren, ohne unveränderte Aktivität oder Gesamtzellregulation zu garantieren.",
+        "Für T passt Acetat pKS4,80 qualitativ besser als Phosphat7,21; Lastreserve und Materialien bleiben eigenständige Kriterien. B ist ein begrenztes biologisches Modell, kein Blutmodell. M: HCO3−+H3O+→H2CO3+H2O; H2CO3⇌CO2(aq)+H2O und CO2-Abtransport koppeln an offene Stoffbilanz. Bei CO2-Rückhalt steigt der Säureanteil unter sonst passenden Bedingungen; der alte Quotient kann nicht unverändert weiterbenutzt werden. Auch offener Transport ist nicht unbegrenzt.",
+        "T: begründet geeigneter Modellkandidat, bis Last-/Korrosionsdaten vorliegen keine Fertigungsfreigabe. M: physiologischer Mechanismus plausibel, keine Dosierungs-/Therapieempfehlung ohne Transport-, Verträglichkeits- und klinische Evidenz. U: pH-Abfangwirkung rechtfertigt keinen Phosphateintrag; mögliche Nährstoff-/Ökosystemfolgen und Eintragsbilanz fehlen. Herstellerinteresse und anonyme Universalbehauptung sind schwächer als offengelegte Methoden; das Modellblatt belegt trotzdem nur Modellbedingungen, keine reale Wirksamkeit. Entscheidung nennt funktionalen Nutzen und konkrete Abbruch-/Unsicherheitsgrenze."
+      ],
+      "rubric": [
+        {
+          "criterionId": "BUFFER-CONTEXT-FUNCTION-C1-r1",
+          "fullCreditDe": "Technisches System: Komponenten, beide Abfangreaktionen, Störung, begrenzte Signalstabilisierung und Erschöpfungsfolge sind konkret verknüpft.",
+          "fullCreditEn": "Technical system: connect components, both interception reactions, disturbance, bounded signal stability and exhaustion.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        },
+        {
+          "criterionId": "BUFFER-CONTEXT-FUNCTION-C1-r2",
+          "fullCreditDe": "Biologisches System: beide Phosphatreaktionen, Säurelast und begrenzte Enzymfunktionsfolge; offener CO2-Transport korrekt verglichen.",
+          "fullCreditEn": "Biological system: both phosphate reactions, acid load and bounded enzyme function; correctly compare open CO2 transport.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        },
+        {
+          "criterionId": "BUFFER-CONTEXT-FUNCTION-C1-r3",
+          "fullCreditDe": "Paarwahl und Urteil berücksichtigen Ziel-pH, Last, Stoffverträglichkeit und Systemgrenze, mit konkreten offenen Informationen.",
+          "fullCreditEn": "Selection and judgment use target pH, load, compatibility and system boundary with concrete missing information.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        },
+        {
+          "criterionId": "BUFFER-CONTEXT-FUNCTION-C1-r4",
+          "fullCreditDe": "Medizin-, Umwelt- und Technikurteile trennen chemischen Mechanismus von realer Belegreichweite und begründen die Quellenkritik.",
+          "fullCreditEn": "Medical, environmental and technical judgments distinguish mechanism from actual evidence and justify source criticism.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "practicalExecutionRequired": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "titleEn": "Judge buffers for concrete technical, biological and environmental functions",
+      "materialEn": "All contexts are explicit teaching models,not clinical studies or approvals. T:a closed technical dye-testing bath needspH4.6–5.0for reproducible colour measurement,containsHA/A−withpKa4.80,and receives limited acidic or basic contamination from specimens. Given model compatibility tests permit acetate;phosphatepKa7.21is outside the target range. Long-term load and corrosion data are missing. B:a simplified aqueous cell compartment needs pH7.0–7.4for a pH-dependent enzyme;metabolism supplies limited proton load. BothH2PO4−andHPO4²−are present;the model assumes no additional phosphate binding or inhibition.Real cells have other regulation. M:a separate blood model couplesCO2/H2CO3/HCO3−proton interception toCO2transport;transport failure changes balances and function.No treatment advice follows. U:phosphate addition is advertised for acid input into a water body,without studied inputs,natural buffers,exchange or nutrient consequences.A fictitious manufacturer claims universal safety;a dated model sheet gives composition,temperature and limited doses,without ecosystem or patient evidence.The existing fullSOURCE-CRITIQUE,PHOSPHATEandOPEN-BUFFERmaterials are supplied as additional sources.",
+      "taskDemandEn": [
+        "ExplainTandBusing components,disturbance,both conjugate interception reactions and functional consequence.Explain finite reserve.",
+        "Select a pair forTusing explicit criteria,and judge the bounded biological function inB.Compare the closed biological model with openCO2transport inM.",
+        "Judge suitability inT,MandUusingpH range,load reserve,compatibility,system boundary and evidence quality.State each decisive missing fact rather than claiming approval."
+      ],
+      "workedModelEn": [
+        "T:A−+H3O+→HA+H2OandHA+OH−→A−+H2Ointercept limited inputs;boundedpHstability supports reproducible colour readings.Exhaustion produces drift that can mimic a specimen defect.B:HPO4²−+H3O+→H2PO4−+H2OandH2PO4−+OH−→HPO4²−+H2Ointercept both signs.Acid load consumes the base partner;smallerpHchange can support the stated enzyme range without guaranteeing constant activity or whole-cell regulation.",
+        "AcetatepKa4.80fitsTbetter thanphosphate7.21;reserve and compatibility remain separate criteria.Bis not a blood model.InM:HCO3−+H3O+→H2CO3+H2O;H2CO3⇌CO2(aq)+H2OandCO2removal connect to an open balance.CO2retention favours acidification under otherwise suitable conditions;old ratios cannot be reused unchanged.Open transport is finite too.",
+        "Tis a justified model candidate,with no production clearance before load/corrosion evidence.Mhas a plausible physiological mechanism,with no dosing or treatment conclusion without transport,compatibility and clinical evidence.Udoes not justify phosphate addition:nutrient and ecosystem effects and input balances are missing.Manufacturer interest and anonymous universal claims are weaker than transparent methods,but a model sheet still proves only its model conditions."
+      ]
+    },
+    {
+      "caseId": "POLY-QUALITATIVE-C1",
+      "goalIds": [
+        "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+      ],
+      "titleDe": "Ein- und zweiprotonige Kurven ausschließlich datengestützt vergleichen",
+      "role": "Synthetic authored task and complete worked model; not an experiment or learner evidence",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Explizit synthetisches ideales 25-°C-Modell: 25,00 mL enthalten formal 2,500 mmol vollständig bilanziertes Glycin und 2,500 mmol Cl⁻; Startform wird als H₂G⁺ bezeichnet, die Gleichgewichtsverteilung wird zugelassen. H₂G⁺⇌HG±+H⁺ mit pKₛ₁=2,34; HG±⇌G⁻+H⁺ mit pKₛ₂=9,60. 0,1000 mol/L NaOH, additive Volumina, Kᵥ=10⁻¹⁴, γ=1. HG± ist das Zwitterion H₃N⁺–CH₂–COO⁻; H₂G⁺: H₃N⁺–CH₂–COOH; G⁻: H₂N–CH₂–COO⁻. Die beigefügte Tabelle stammt aus Stoff- und Ladungsbilanz, nicht aus einer Messung. Vergleich: monoprotische HA mit gleichem formalem Stoffmengengehalt und pKₛ=4,76 verbraucht nur eine OH⁻-Äquivalentmenge. Die vollständige beigefügte Glycintabelle und die T05-C2-Monoprotentabelle sind bereitgestellte Modelldaten. In diesem Auftrag sind keine pH-Werte oder Differentialkapazitäten zu berechnen.",
+      "taskDemandDe": [
+        "Zeichne oder lies die bereitgestellten Modellkurven, markiere die zwei sichtbaren steilen Bereiche der Glycinkurve gegenüber einem bei HA und ordne H2G+/HG± sowie HG±/G− zu.",
+        "Vergleiche Pufferregionen, unterschiedliche Neutralisationsmengen und Grenzen der Identifikation aus den bereitgestellten Daten. Erkläre qualitativ, warum das Gebiet um pH6 nicht der ausgeprägte Glycin-Pufferbereich ist."
+      ],
+      "workedModelDe": [
+        "Die Glycintabelle zeigt zwei Stufen um25 und50 mL, mit jeweils anderen korrespondierenden Partnern; die bereitgestellte monoprotische Kurve zeigt eine Stufe um25 mL. Die erste Glycinstufe enthält den Ampholyten, keine zweite unabhängige Stoffprobe.",
+        "Flachere Abschnitte liegen um die zwei angegebenen pK-Bereiche, während pH6 zwischen ihnen liegt. Glycin beansprucht hier zwei formale Äquivalentmengen statt einer. Die Daten gestatten einen Klassen-/Speziesvergleich, keine eindeutige Molekülidentifikation und keine Aussage, dass jede mehrprotonige Säure zwei getrennte Stufen zeigen muss."
+      ],
+      "rubric": [
+        {
+          "criterionId": "POLY-QUALITATIVE-C1-r1",
+          "fullCreditDe": "Beide vollständigen Kurven werden an tatsächlichen Daten mit Stufen, Achsen und Spezies qualitativ verglichen.",
+          "fullCreditEn": "Compare both complete curves using actual data, stages, axes and species.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        },
+        {
+          "criterionId": "POLY-QUALITATIVE-C1-r2",
+          "fullCreditDe": "Pufferregionen, Äquivalentmengen und Identifikationsgrenzen werden qualitativ erklärt; keine pH-Rechnung verlangt.",
+          "fullCreditEn": "Qualitatively explain buffer regions, equivalent amounts and identification limits without requiring pH calculation.",
+          "points": 2,
+          "assessmentBoundary": "design only; no learner points or practical execution"
+        }
+      ],
+      "maximumDesignPoints": 4,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "practicalExecutionRequired": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "idealModelTable": [
+        {
+          "addedNaOH_mL": 0,
+          "idealModelPH": 1.716337
+        },
+        {
+          "addedNaOH_mL": 6.25,
+          "idealModelPH": 2.079117
+        },
+        {
+          "addedNaOH_mL": 12.5,
+          "idealModelPH": 2.435896
+        },
+        {
+          "addedNaOH_mL": 18.75,
+          "idealModelPH": 2.873224
+        },
+        {
+          "addedNaOH_mL": 24,
+          "idealModelPH": 3.760349
+        },
+        {
+          "addedNaOH_mL": 25,
+          "idealModelPH": 5.988831
+        },
+        {
+          "addedNaOH_mL": 26,
+          "idealModelPH": 8.219423
+        },
+        {
+          "addedNaOH_mL": 31.25,
+          "idealModelPH": 9.122188
+        },
+        {
+          "addedNaOH_mL": 37.5,
+          "idealModelPH": 9.598278
+        },
+        {
+          "addedNaOH_mL": 43.75,
+          "idealModelPH": 10.069675
+        },
+        {
+          "addedNaOH_mL": 49,
+          "idealModelPH": 10.80394
+        },
+        {
+          "addedNaOH_mL": 50,
+          "idealModelPH": 11.053935
+        },
+        {
+          "addedNaOH_mL": 55,
+          "idealModelPH": 11.809016
+        }
+      ],
+      "monoproticWholeCase": {
+        "id": "T05-C2",
+        "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+        "titleDe": "Unbekannte Säurekurve Y: Daten zuerst deuten",
+        "materialDe": "Vollständig synthetische Lehrdaten bei 25 °C, keine Labor- oder Lernendenmessung. Das Modell setzt γ=1, Kᵥ=10⁻¹⁴ und additive Volumina voraus. 25.00 mL einer formal einprotonigen Säure mit c=0.100 mol/L werden mit NaOH, c=0.100 mol/L, titriert. Probenkennung Y; Säurestärke und Molekülidentität werden nicht mitgeteilt. Unter den erlaubten Modellalternativen stehen eine starke oder eine schwache einprotonige Säure zur Wahl; Gemische und weitere Protolyse-Stufen sind ausgeschlossen. Vorgelegte Kurvendaten (pH auf drei Nachkommastellen gerundet):\n\n| V(NaOH) / mL | pH |\n| --- | --- |\n| 0.00 | 2.883 |\n| 6.25 | 4.284 |\n| 12.50 | 4.760 |\n| 18.75 | 5.237 |\n| 24.50 | 6.450 |\n| 24.90 | 7.156 |\n| 24.98 | 7.849 |\n| 25.00 | 8.730 |\n| 25.02 | 9.609 |\n| 25.10 | 10.300 |\n| 25.50 | 10.996 |\n| 30.00 | 11.959 |\n\nIndikatoren: BTB 6.0–7.6, Phenolphthalein 8.2–10.0; kein spezifisches Farbkriterium oder exakter Volumenfehler vorgegeben. Nach der Dateninterpretation darf der aus dem Halbpunkt selbst ermittelte pKₐ für die weitere Rechnung verwendet werden. Anfangsnäherung [H₃O⁺]≈√(Kₐc), am Äquivalenzpunkt [OH⁻]≈√(Kᵦc(Salz)), Kᵦ=Kᵥ/Kₐ. Berechne 0, 12.50, 25.00 und 30.00 mL. Diese Näherungen müssen nicht die dritte Dezimalstelle der vollständig gelösten Modelltabellen reproduzieren; begründe die Näherung und prüfe eine Abweichung bis 0.01 pH-Einheiten.",
+        "materialEn": "Entirely synthetic teaching data at 25 °C, not laboratory or learner measurements. The model assumes γ=1, Kᵥ=10⁻¹⁴ and additive volumes. Titrate 25.00 mL of a formally monoprotic acid, c=0.100 mol/L, with 0.100 mol/L NaOH. Sample label Y; acid strength and molecular identity are not supplied. The allowed alternatives are a strong or a weak monoprotic acid; mixtures and further dissociation stages are excluded. Supplied curve data (pH rounded to three decimal places):\n\n| V(NaOH) / mL | pH |\n| --- | --- |\n| 0.00 | 2.883 |\n| 6.25 | 4.284 |\n| 12.50 | 4.760 |\n| 18.75 | 5.237 |\n| 24.50 | 6.450 |\n| 24.90 | 7.156 |\n| 24.98 | 7.849 |\n| 25.00 | 8.730 |\n| 25.02 | 9.609 |\n| 25.10 | 10.300 |\n| 25.50 | 10.996 |\n| 30.00 | 11.959 |\n\nIndicators: BTB 6.0–7.6, phenolphthalein 8.2–10.0; no specific colour criterion or exact volume error supplied. After interpreting the data, use the pKₐ independently inferred from the halfpoint for subsequent calculation. Initial approximation [H₃O⁺]≈√(Kₐc); at equivalence [OH⁻]≈√(Kᵦc(salt)), Kᵦ=Kᵥ/Kₐ. Calculate 0, 12.50, 25.00 and 30.00 mL. These approximations need not reproduce the third decimal of the fully solved model table; justify them and check a difference up to 0.01 pH units.",
+        "taskDemandDe": "1. Deute zuerst die vorgelegte Kurve Y: Ordne stark oder schwach zu, belege den Pufferbereich und den basischen Sprung mit mindestens drei konkreten Tabellenwerten. Lies den Äquivalenzbereich und den Halbpunkt ab und ermittle den näherungsweisen pKₐ; prüfe Vₑq mit der Stoffmenge.\n2. Berechne die vier verlangten pH-Werte und begründe Anfangs- und Salz-Näherung. Vergleiche Rechnungen und Tabelle mit der genannten Näherungstoleranz.\n3. Erkläre die Information des Halbpunktes und wähle einen geeigneten Indikatorkandidaten anhand des vorgelegten Sprungs. Begrenze Endpunkt- und Stoffidentitätsaussagen.\n4. Vergleiche mit einer gleich konzentrierten starken einprotonigen Säure: Welche Punkte bleiben gleich, welche ändern sich infolge des schwachen Säuregleichgewichts?",
+        "taskDemandEn": "1. First interpret supplied curve Y: classify strong or weak and support its buffer region and basic jump using at least three actual table values. Read equivalence and half-equivalence, infer approximate pKₐ, and check Vₑq using the amount.\n2. Calculate the four requested pH values and justify initial and salt approximations. Compare calculations with the table using the stated approximation tolerance.\n3. Explain the halfpoint information and select an indicator candidate using the supplied jump. Limit endpoint and substance-identity claims.\n4. Compare an equally concentrated strong monoprotic acid: which points remain equal and which change because of the weak-acid equilibrium?",
+        "modelAnswerDe": "1. Y ist im vorgegebenen Modell schwach: Anfang pH 2.883 statt etwa 1, vor Äquivalenz ein flacherer HA/A⁻-Bereich (6.25 mL: 4.284; 12.50 mL: 4.760; 18.75 mL: 5.237), bei 25.00 mL laut Tabelle basisch 8.730. Der starke Anstieg liegt bei 25.00 mL. 2.500 mmol Säure bestätigen dieses Äquivalenzvolumen; der Halbpunkt liegt bei 12.50 mL und liefert näherungsweise pKₐ=4.76. 2. Kₐ=1.738·10⁻⁵ ergibt näherungsweise Anfangs-pH 2.880 mit 1.32 % Umsetzung; vollständig gelöst ist es 2.883, eine Abweichung von etwa 0.003. Am Halbpunkt ist pH≈4.760. Bei Äquivalenz gilt c(Salz)=0.0500 mol/L, Kᵦ=5.754·10⁻¹⁰, [OH⁻]≈5.363·10⁻⁶ mol/L, pH≈8.729 und nur etwa 0.011 % Hydrolyse. Bei 30.00 mL bestimmt der starke Baseüberschuss pH 11.959. Die Abweichungen bleiben unter 0.01. 3. Phenolphthalein passt zum basischen Äquivalenzbereich. BTB verändert die Farbe früher; das belegt allein keinen exakt berechneten Volumenfehler. Farbumschlag und chemische Äquivalenz bleiben verschieden, und pKₐ 4.76 identifiziert keine bestimmte Molekülstruktur. 4. Äquivalenzvolumen und pH bei gleichem starkem Baseüberschuss bleiben gleich; Anfangs-pH, Voräquivalenz-Pufferung und Äquivalenz-pH ändern sich.",
+        "modelAnswerEn": "1. Y is weak within the supplied model: initial pH 2.883 rather than about 1, a flatter HA/A⁻ region before equivalence (6.25 mL: 4.284; 12.50 mL: 4.760; 18.75 mL: 5.237), and table pH 8.730 at 25.00 mL. The steep rise lies around 25.00 mL. The 2.500 mmol acid amount confirms this equivalence volume. Half-equivalence is 12.50 mL, yielding approximate pKₐ=4.76. 2. Kₐ=1.738·10⁻⁵ gives approximate initial pH 2.880 and 1.32% conversion; the complete solution gives 2.883, differing by about 0.003. At half-equivalence pH≈4.760. At equivalence c(salt)=0.0500 mol/L, Kᵦ=5.754·10⁻¹⁰, [OH⁻]≈5.363·10⁻⁶ mol/L, pH≈8.729 and about 0.011% hydrolysis. At 30.00 mL strong base excess gives pH 11.959. Differences are below 0.01. 3. Phenolphthalein fits basic equivalence. BTB changes earlier, which alone supplies no exact calculated volume error. Colour endpoint and chemical equivalence remain distinct; pKₐ 4.76 identifies no unique molecular structure. 4. Equivalence volume and pH at the same strong-base excess remain equal; initial pH, pre-equivalence buffering and equivalence pH change.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 3,
+            "fullCreditDe": "Ordnet Y aufgrund konkreter Kurvendaten schwach zu; erläutert HA/A⁻-Bereich, pH≈4.760 am Halbpunkt und basischen Tabellen-Äquivalenz-pH 8.730, statt die nicht genannte Stärke zu wiederholen. Verknüpft 25.00 mL mit 2.500 mmol und den relevanten Spezies.",
+            "fullCreditEn": "Classifies Y as weak from actual curve data; explains HA/A⁻ buffering, halfpoint pH≈4.760 and basic table equivalence pH 8.730 rather than repeating an assigned strength. Relates 25.00 mL to 2.500 mmol and relevant species.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 3,
+            "fullCreditDe": "Berechnet näherungsweise pH 2.880, 4.760, 8.729, 11.959, begründet kleine Umsetzungs-/Hydrolyseanteile und erklärt die Anfangsabweichung 0.003 gegenüber Tabelle 2.883 als Näherung, nicht Messfehler.",
+            "fullCreditEn": "Calculates approximate pH 2.880, 4.760, 8.729, 11.959, justifies small conversion/hydrolysis fractions and explains the 0.003 initial difference from table 2.883 as approximation rather than measurement error.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 3,
+            "fullCreditDe": "Liest näherungsweise pKₐ=4.76 aus dem tatsächlichen Halbpunkt; begründet Phenolphthalein am basischen Sprung, trennt Farbe/Äquivalenz und behauptet weder exakten Endpunktfehler noch eindeutige Molekülidentität.",
+            "fullCreditEn": "Reads approximate pKₐ=4.76 from the actual halfpoint; justifies phenolphthalein at the basic jump and distinguishes colour/equivalence without claiming exact endpoint error or unique identity.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e4",
+            "maximumPoints": 3,
+            "fullCreditDe": "Äquivalenzvolumen und pH bei gleichem starkem Baseüberschuss bleiben gleich. Anfangs-pH, Voräquivalenz-Pufferbereich und Äquivalenz-pH unterscheiden sich; ein Halbpunkt liefert bei der starken Säure keinen pKa.",
+            "fullCreditEn": "Equivalence volume and pH at the same strong-base excess remain equal. Initial pH, pre-equivalence buffer region and equivalence pH differ; a strong-acid halfpoint does not give a pKa.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-design",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 12,
+        "fullCreditRequiresAllFourExpectations": true,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "authorOnly": true,
+        "executed": false,
+        "learnerWorkPresent": false,
+        "practicalExecutionRequired": false,
+        "actualObservationRecords": [],
+        "actualPointsAwarded": null,
+        "wholeGoalScope": {
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        },
+        "sourceAuthorCase": {
+          "caseId": "28c90c6a-case-2",
+          "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+          "wholeOldCaseObjectSha256": "sha256:b38fa611e3a895361c7d97df0848c54e3505006c3d0a300048ce2402d194b1f5"
+        },
+        "newIndependentReviewStatus": "pending; author material only",
+        "authorRemediation": {
+          "inputWholeCaseSha256": "sha256:3cfa18db2dfefcc5574e0d78470a4284115d25a38ac59db7ccc1103dcd66075c",
+          "findingId": "A-P-T05-OBSERVABLE",
+          "independentRecheck": "pending",
+          "dataAreActualMeasurements": false
+        }
+      },
+      "titleEn": "Compare monoprotic and diprotic curves using supplied data only",
+      "materialEn": "Explicitly synthetic ideal 25 °C model: 25.00 mL contains 2.500 mmol total glycine and 2.500 mmol Cl⁻. The starting form is denoted H₂G⁺ but equilibrium redistribution is allowed. pKa1=2.34 for H₂G⁺/HG±, pKa2=9.60 for HG±/G⁻. Titrate with 0.1000 mol/L NaOH; additive volumes, Kw=10⁻¹⁴, γ=1. HG± is H₃N⁺–CH₂–COO⁻, H₂G⁺ is H₃N⁺–CH₂–COOH and G⁻ is H₂N–CH₂–COO⁻. The attached table is generated from mass/charge balance, not measured. Compare a monoprotic HA with equal formal amount and pKa=4.76, requiring only one OH⁻ equivalent. The complete glycine table and fullT05-C2monoprotic table are supplied model data.This task requires no pH or differential-capacity calculation.",
+      "taskDemandEn": [
+        "Plot or read the supplied model curves,mark the two visible glycine stages compared with one forHA,and assignH2G+/HG±andHG±/G−.",
+        "Qualitatively compare buffer regions,total neutralisation and identification limits.Explain whypH6is not the prominent glycine buffer region."
+      ],
+      "workedModelEn": [
+        "Glycine shows stages near25and50mLwith different conjugate pairs;the supplied monoprotic curve has one near25mL.The first glycine equivalence contains the ampholyte,not a second independent sample.",
+        "Flatter regions lie near the suppliedpKvalues,withpH6between them.Glycine consumes two formal equivalents rather than one.Curves support class/species comparison,not unique molecular identification or a claim that every polyprotic acid displays two separated stages."
+      ]
+    }
+  ],
+  "original18CasesUnchanged": true,
+  "actualLearnerExecutions": 0
+}

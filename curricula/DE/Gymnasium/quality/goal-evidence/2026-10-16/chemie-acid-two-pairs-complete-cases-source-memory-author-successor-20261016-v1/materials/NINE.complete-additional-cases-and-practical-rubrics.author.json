@@ -1,0 +1,753 @@
+{
+  "role": "Complete additive informed AUTHOR cases, all remain E0/G0; actual practical performance absent",
+  "cases": [
+    {
+      "caseId": "WEAK-MODEL-C1",
+      "goalIds": [
+        "33034876-8da5-5619-ad86-e1272e0304b0"
+      ],
+      "titleDe": "Näherung begründen, statt Stärke mit Menge zu verwechseln",
+      "titleEn": "Justify an approximation and distinguish strength from amount",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Idealisiertes Wasser bei 25 °C, Kᵥ=10⁻¹⁴. Lösung A: 0,0100 mol/L HA, pKₛ=4,76. Lösung B: 0,0100 mol/L Base B, pKᵦ=4,75. Volumina und Konzentrationen sind formale Ausgangswerte. Modell: jeweils ein Protolyseschritt, Aktivitäten≈Konzentrationen. Für eine letzte Variation wird A auf die formale Konzentration 10⁻⁸ mol/L verdünnt. Keine Messwerte.",
+      "materialEn": "Ideal water at 25 °C, Kw=10⁻¹⁴. A: 0.0100 mol/L HA, pKa=4.76. B: 0.0100 mol/L base B, pKb=4.75. Values are formal initial concentrations; one protolysis step, activities approximated by concentrations. Finally dilute A to a formal concentration of 10⁻⁸ mol/L. No measured data.",
+      "taskDemandDe": [
+        "Stelle die Protolysereaktionen und das jeweilige MWG auf. Leite x²/(c₀−x)=K sowie die positive quadratische Lösung her; nenne die Vernachlässigung des Wasserbeitrags.",
+        "Berechne Anfangs-pH von A und B zunächst mit x≈√(Kc₀), dann mit der quadratischen Lösung. Prüfe x/c₀ und bewerte die Größe des Näherungsfehlers.",
+        "Beurteile die stark verdünnte Variation: Ist die fortgesetzte Wurzelformel plausibel? Erkläre, warum eine schwache Säure nicht allein durch Verdünnen in reinem Wasser alkalisch wird und jetzt Ladungsbilanz und Wasser nötig sind."
+      ],
+      "taskDemandEn": [
+        "Write protolysis and mass action, derive x²/(c₀−x)=K and its positive quadratic solution, and state that the water contribution has been neglected.",
+        "Calculate pH for A and B with the square-root approximation and then the quadratic solution. Check x/c₀ and the approximation error.",
+        "Assess the very dilute variation: is continuing the square-root approximation plausible? Explain why dilution of an acid in pure water does not by itself make it alkaline, and why charge balance and water now matter."
+      ],
+      "workedModelDe": [
+        "HA+H₂O⇌H₃O⁺+A⁻; B+H₂O⇌BH⁺+OH⁻. x=(−K+√(K²+4Kc₀))/2. In der ersten Rechnung wird Wasser gegenüber dem Protolysat vernachlässigt.",
+        "A: Wurzel x=4,1687·10⁻⁴ M, pH≈3,380; quadratisch x≈4,0827·10⁻⁴ M, pH≈3,389, Umsetzung≈4,08 %. B: Wurzel [OH⁻]=4,2170·10⁻⁴ M, pH≈10,625; quadratisch≈4,1290·10⁻⁴ M, pH≈10,616, Umsetzung≈4,13 %. Rundung auf 0,01 pH ist angemessen; die Fehlergröße wird begründet, nicht eine universelle Prozentregel behauptet.",
+        "Für c₀=10⁻⁸ würde √(Kₛc₀)≈4,17·10⁻⁷ M sogar mehr H₃O⁺ als formale Säure erzeugen und x≪c₀ verletzen. Auch eine quadratische Säurerechnung ohne Wasser wäre jetzt unzulässig. Vollständiges MWG, Stoffbilanz, [H₃O⁺]=[A⁻]+[OH⁻] und Kᵥ ergeben nahe neutralen, leicht sauren pH; kein pH>7 durch bloßes Verdünnen."
+      ],
+      "workedModelEn": [
+        "HA+H₂O⇌H₃O⁺+A⁻; B+H₂O⇌BH⁺+OH⁻. x=(−K+√(K²+4Kc₀))/2. The initial calculation neglects water relative to protolysis ions.",
+        "A: square root x=4.1687·10⁻⁴ M, pH≈3.380; quadratic x≈4.0827·10⁻⁴ M, pH≈3.389, about 4.08% conversion. B: square root [OH⁻]=4.2170·10⁻⁴ M, pH≈10.625; quadratic≈4.1290·10⁻⁴ M, pH≈10.616, about 4.13% conversion. Rounding to 0.01 pH is reasonable; justify the error rather than assert a universal percentage rule.",
+        "At c₀=10⁻⁸ the square root gives about 4.17·10⁻⁷ M, exceeding the available formal acid and violating x≪c₀. Even the acid quadratic without water is invalid now. Mass action, mass balance, [H₃O⁺]=[A⁻]+[OH⁻] and Kw give near-neutral slightly acidic pH; dilution alone cannot give pH>7."
+      ],
+      "rubric": [
+        {
+          "criterionId": "WEAK-MODEL-C1-r1",
+          "fullCreditDe": "Reaktionen, MWG und Bilanzvariable werden begründet; die positive Lösung folgt nachvollziehbar.",
+          "fullCreditEn": "Justify reactions, mass action and the balance variable, deriving the positive solution.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "WEAK-MODEL-C1-r2",
+          "fullCreditDe": "Beide Lösungen werden gerechnet, die Umsetzung und Abweichung geprüft und die unterschiedlichen pH/pOH-Bezüge korrekt verwendet.",
+          "fullCreditEn": "Calculate both solutions, check conversion/error and use pH/pOH correctly.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "WEAK-MODEL-C1-r3",
+          "fullCreditDe": "Die extreme Verdünnung wird mit Bilanz- und Wasserargument verworfen; keine erfundene alkalische Säurelösung.",
+          "fullCreditEn": "Reject the extreme-dilution shortcut using mass balance and water, without inventing an alkaline acid solution.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 6,
+      "practicalExecutionRequired": false,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false
+    },
+    {
+      "caseId": "PHOSPHATE-GK-C1",
+      "goalIds": [
+        "9fef5c29-62bc-5ada-b96b-6885bcb049cb"
+      ],
+      "titleDe": "Geschlossener Phosphatpuffer: Teilchen und Verschiebung",
+      "titleEn": "Closed phosphate buffer: particles and equilibrium shifts",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Didaktisches qualitatives Modell eines geschlossenen wässrigen Puffers mit H₂PO₄⁻ und HPO₄²⁻ in nennenswerten Mengen. Drei gleiche Portionen; eine bleibt unverändert, einer wird wenig starke Säure, einer wenig starke Base zugegeben. Die Zugaben sind jeweils kleiner als der passende verfügbare Puffervorrat. Ausgenommen die ausdrücklich dosierten Zugaben findet kein Stoffaustausch mit der Umgebung statt; nach dem Dosieren ist jeder Ansatz gegenüber weiterem Stoffaustausch geschlossen. Ein biologischer Vergleich nennt konstante Arbeitsbedingungen gelöster Enzyme; das Modell ist keine Beschreibung des gesamten Bluts und keine Behandlungsempfehlung. Keine HH-Gleichung, pK-Rechnung oder Titrationskurve wird vorausgesetzt.",
+      "materialEn": "Qualitative teaching model of a closed aqueous buffer containing appreciable H₂PO₄⁻ and HPO₄²⁻. Split into three equal portions: control, small strong-acid dose and small strong-base dose. Doses are below the corresponding buffer reserves; there is no matter exchange apart from the explicitly dosed additions; each portion is closed to further exchange after dosing. A biological comparison concerns stable conditions for dissolved enzymes; this does not model the whole blood system or give treatment advice. No HH equation, pK calculation or titration curve is prerequisite.",
+      "taskDemandDe": [
+        "Beschreibe beide Partner und stelle das gemeinsame Gleichgewicht sowie die Reaktionen auf Säure- und Basenzugabe auf.",
+        "Begründe mit Le Chatelier, wie die jeweiligen Partneranteile und der pH im Vergleich zu reinem Wasser reagieren. Zeichne dazu ein qualitatives Teilchenschema vor und nach der Zugabe.",
+        "Beurteile: „Geschlossen bedeutet, dass der pH bei beliebig großer Zugabe immer gleich bleibt.“ Erkläre eine biologische Bedeutung und eine Grenze des einfachen Modells."
+      ],
+      "taskDemandEn": [
+        "Describe both partners and write the shared equilibrium and reactions to acid/base addition.",
+        "Use Le Chatelier to explain changes in partner amounts and pH relative to pure water. Draw qualitative particle schemes before and after addition.",
+        "Assess “closed means pH stays identical under arbitrarily large additions.” Explain one biological role and one limit of the simple model."
+      ],
+      "workedModelDe": [
+        "H₂PO₄⁻+H₂O⇌HPO₄²⁻+H₃O⁺. Zugabe H₃O⁺: HPO₄²⁻+H₃O⁺→H₂PO₄⁻+H₂O; Zugabe OH⁻: H₂PO₄⁻+OH⁻→HPO₄²⁻+H₂O. Beide sind korrespondierende Partner, Unterschied ein Proton.",
+        "Säure verschiebt das System zum protonierten Partner, Base zum deprotonierten. Dadurch fällt/steigt der pH bei begrenzter Zugabe weniger als im ungepufferten Vergleich, bleibt aber nicht exakt konstant. Das Teilchenschema erhält Phosphatteilchenzahl und Ladungs-/Protonenbezug.",
+        "Geschlossen beschreibt fehlenden Stoffaustausch, keine unendliche Reserve. Nach weitgehendem Verbrauch eines Partners nimmt die Pufferwirkung stark ab. Relativ stabile pH-Bedingungen können Enzymfunktion unterstützen; echte Zellen/Blut besitzen weitere Systeme und Stoffströme. Keine quantitative Blut- oder Medizinbehauptung folgt."
+      ],
+      "workedModelEn": [
+        "H₂PO₄⁻+H₂O⇌HPO₄²⁻+H₃O⁺. Added acid consumes HPO₄²⁻; added OH⁻ consumes H₂PO₄⁻, each producing its conjugate partner and water. Partners differ by one proton.",
+        "Acid shifts towards the protonated partner, base towards the deprotonated partner. For limited doses, pH falls/rises less than in the unbuffered comparison, but is not exactly constant. Particle schemes conserve phosphate units and show proton/charge relations.",
+        "Closed means no matter exchange, not infinite reserves. Buffering declines strongly when one partner is largely depleted. Relatively stable pH can support enzyme function; real cells/blood have additional systems and flows. No quantitative blood or treatment conclusion follows."
+      ],
+      "rubric": [
+        {
+          "criterionId": "PHOSPHATE-GK-C1-r1",
+          "fullCreditDe": "Partner, Gleichgewicht und beide Abfangreaktionen sind richtig und erklärt.",
+          "fullCreditEn": "Correctly explain partners, equilibrium and both buffering reactions.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PHOSPHATE-GK-C1-r2",
+          "fullCreditDe": "Le Chatelier und Teilchenschema zeigen die korrekten Änderungen; kleiner pH-Effekt wird von unverändertem pH unterschieden.",
+          "fullCreditEn": "Le Chatelier and particle schemes show the correct changes, distinguishing a small pH change from no change.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PHOSPHATE-GK-C1-r3",
+          "fullCreditDe": "Endliche Vorräte, Geschlossenheit und eine konkret begrenzte biologische Bedeutung werden getrennt beurteilt.",
+          "fullCreditEn": "Distinguish finite reserves, closed conditions and one bounded biological role.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 6,
+      "practicalExecutionRequired": false,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false
+    },
+    {
+      "caseId": "POLY-AMINO-C1",
+      "goalIds": [
+        "dc0470f1-0676-5949-a5cc-02783d478406",
+        "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+      ],
+      "titleDe": "Glycintitration mit zwei Stufen und Grenzen der Halbpunktregel",
+      "titleEn": "Two-stage glycine titration and limits of the halfpoint rule",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Explizit synthetisches ideales 25-°C-Modell: 25,00 mL enthalten formal 2,500 mmol vollständig bilanziertes Glycin und 2,500 mmol Cl⁻; Startform wird als H₂G⁺ bezeichnet, die Gleichgewichtsverteilung wird zugelassen. H₂G⁺⇌HG±+H⁺ mit pKₛ₁=2,34; HG±⇌G⁻+H⁺ mit pKₛ₂=9,60. 0,1000 mol/L NaOH, additive Volumina, Kᵥ=10⁻¹⁴, γ=1. HG± ist das Zwitterion H₃N⁺–CH₂–COO⁻; H₂G⁺: H₃N⁺–CH₂–COOH; G⁻: H₂N–CH₂–COO⁻. Die beigefügte Tabelle stammt aus Stoff- und Ladungsbilanz, nicht aus einer Messung. Vergleich: monoprotische HA mit gleichem formalem Stoffmengengehalt und pKₛ=4,76 verbraucht nur eine OH⁻-Äquivalentmenge.",
+      "materialEn": "Explicitly synthetic ideal 25 °C model: 25.00 mL contains 2.500 mmol total glycine and 2.500 mmol Cl⁻. The starting form is denoted H₂G⁺ but equilibrium redistribution is allowed. pKa1=2.34 for H₂G⁺/HG±, pKa2=9.60 for HG±/G⁻. Titrate with 0.1000 mol/L NaOH; additive volumes, Kw=10⁻¹⁴, γ=1. HG± is H₃N⁺–CH₂–COO⁻, H₂G⁺ is H₃N⁺–CH₂–COOH and G⁻ is H₂N–CH₂–COO⁻. The attached table is generated from mass/charge balance, not measured. Compare a monoprotic HA with equal formal amount and pKa=4.76, requiring only one OH⁻ equivalent.",
+      "taskDemandDe": [
+        "Leite die beiden stöchiometrischen Äquivalenzvolumina ab und zeichne die tabellierten Modellwerte mit zwei beschrifteten Stufen. Ordne in den Kurvenbereichen die Glycinformen und konjugierten Paare zu.",
+        "Berechne den Anfangswert mit der quadratischen ersten Protolyse, den ersten Äquivalenz-pH mit der Ampholytnäherung und den zweiten Halbpunkt-pH mit einem begründeten Paarverhältnis; vergleiche jeweils mit der Tabelle.",
+        "Prüfe die Behauptung „Bei 12,50 mL muss exakt pH=2,34 gelten“. Erkläre die sichtbare Abweichung mit nicht vernachlässigbarem freien H⁺ und den Gleichgewichtsanteilen; unterscheide formales Halbvolumen von exakt gleichen Speziesmengen.",
+        "Vergleiche die beiden Pufferbereiche und die gesamte Neutralisationsmenge mit dem monoprotischen Vergleich. Beurteile, ob pH≈6,0 ein guter Glycin-Pufferbereich ist und ob zwei Stufen jede beliebige polyprotische Säure identifizieren."
+      ],
+      "taskDemandEn": [
+        "Derive both stoichiometric equivalence volumes, plot and label both stages, and assign glycine forms/conjugate pairs to regions.",
+        "Calculate initial pH using the first-protolysis quadratic, first-equivalence pH using the ampholyte approximation, and the second halfpoint pH using a justified ratio; compare each with the table.",
+        "Assess “at 12.50 mL pH must equal exactly 2.34.” Explain the deviation using appreciable free H⁺ and equilibrium fractions; distinguish formal half-volume from exactly equal species amounts.",
+        "Compare both buffer regions and total neutralisation with the monoprotic reference. Assess pH≈6.0 as a glycine buffer region and whether two stages uniquely identify a polyprotic acid."
+      ],
+      "workedModelDe": [
+        "Protonenbilanzen ergeben 25,00 und 50,00 mL; kein zweites unabhängiges Molekül. Vor/um die erste Stufe H₂G⁺/HG±, danach HG±/G⁻; am ersten Äquivalenzbereich dominiert der Ampholyt. Graphachsen V(NaOH)/mL und pH mit Tabellenpunkten, keine Messkennzeichnung.",
+        "Anfang: x=(-K₁+√(K₁²+4K₁·0,1000))/2≈0,01922 M, pH≈1,716. Die reine Wurzelregel wäre wegen rund 19 % Umsetzung ungeeignet. Erster Äquivalenzpunkt: (2,34+9,60)/2=5,97, Tabelle 5,9888; die Abweichung≈0,019 folgt u.a. aus endlicher Gesamtkonzentration. Zweiter Halbpunkt 37,50 mL: pH≈9,60, Tabelle 9,5983; beide Partner bleiben deutlich vorhanden.",
+        "Am ersten formalen Halbvolumen liefert die vollständige Bilanz pH≈2,4359. Freies H⁺ ist gegenüber dem formalen Restbestand nicht vernachlässigbar; die Gleichgewichtsdeprotonierung verändert das einfache 1:1-Mengenbild. Die HH-Aktivitätsidentität bleibt gültig, aber das unberichtigte formale Mengenverhältnis ist keine exakte Gleichgewichtsverteilung.",
+        "Zwei weit getrennte pK-Werte erlauben zwei Pufferbereiche nahe 2,34 und 9,60; beim Ampholyt-pH um 6 liegen nur kleine korrespondierende Nachbaranteile vor, daher geringe Pufferreserve gegen kleine Änderungen verglichen mit einem Halbpunkt. Insgesamt zwei statt einem Äquivalent OH⁻. Überlappende pK-Werte können Stufen verschleifen; die Kurve allein identifiziert kein Molekül."
+      ],
+      "workedModelEn": [
+        "Proton balances give 25.00 and 50.00 mL. H₂G⁺/HG± controls the first region and HG±/G⁻ the second, with ampholyte dominant near first equivalence. Label V(NaOH)/mL and pH, marking synthetic model points.",
+        "Initial quadratic gives about 0.01922 M, pH≈1.716; square root is inadequate at about 19% conversion. First-equivalence ampholyte approximation gives 5.97 versus full table 5.9888, a finite-concentration deviation of about 0.019. At 37.50 mL the pair-ratio approximation gives 9.60 versus 9.5983, with both partners present.",
+        "At first formal half-volume the full balance gives 2.4359. Free H⁺ is appreciable, and equilibrium deprotonation alters the simple formal 1:1 inventory. The HH activity identity remains valid; uncorrected formal amounts do not exactly equal equilibrium species amounts.",
+        "Widely separated pKa values yield two buffer regions near 2.34 and 9.60. Near ampholyte pH≈6, small neighbouring conjugate fractions give less local buffering than a halfpoint. Total consumption is two rather than one OH⁻ equivalent. Overlapping pKa values can blur steps; curves do not uniquely identify molecules."
+      ],
+      "rubric": [
+        {
+          "criterionId": "POLY-AMINO-C1-r1",
+          "fullCreditDe": "Zwei Äquivalenzen, Spezies und eine vollständige beschriftete Modellkurve werden mit Stoffmengen begründet.",
+          "fullCreditEn": "Justify two equivalences, species and a fully labelled model plot using amounts.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "POLY-AMINO-C1-r2",
+          "fullCreditDe": "Drei berechnete pH-Bereiche und ihre Näherungen werden zahlenmäßig mit der vollständigen Tabelle verglichen.",
+          "fullCreditEn": "Numerically compare three calculated pH regions and their approximations with the full table.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "POLY-AMINO-C1-r3",
+          "fullCreditDe": "Die erste Halbpunktabweichung wird durch echte Bilanzanteile und nicht durch eine falsche neue pK-Konstante erklärt.",
+          "fullCreditEn": "Explain the first-halfpoint deviation with balance contributions, not a false new pKa.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "POLY-AMINO-C1-r4",
+          "fullCreditDe": "Pufferbereiche, Zweiäquivalentverbrauch und begrenzte Identifizierbarkeit werden fachlich bewertet.",
+          "fullCreditEn": "Evaluate buffer regions, two-equivalent consumption and limited identification.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "practicalExecutionRequired": false,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "idealModelTable": [
+        {
+          "addedNaOH_mL": 0,
+          "idealModelPH": 1.716337
+        },
+        {
+          "addedNaOH_mL": 6.25,
+          "idealModelPH": 2.079117
+        },
+        {
+          "addedNaOH_mL": 12.5,
+          "idealModelPH": 2.435896
+        },
+        {
+          "addedNaOH_mL": 18.75,
+          "idealModelPH": 2.873224
+        },
+        {
+          "addedNaOH_mL": 24,
+          "idealModelPH": 3.760349
+        },
+        {
+          "addedNaOH_mL": 25,
+          "idealModelPH": 5.988831
+        },
+        {
+          "addedNaOH_mL": 26,
+          "idealModelPH": 8.219423
+        },
+        {
+          "addedNaOH_mL": 31.25,
+          "idealModelPH": 9.122188
+        },
+        {
+          "addedNaOH_mL": 37.5,
+          "idealModelPH": 9.598278
+        },
+        {
+          "addedNaOH_mL": 43.75,
+          "idealModelPH": 10.069675
+        },
+        {
+          "addedNaOH_mL": 49,
+          "idealModelPH": 10.80394
+        },
+        {
+          "addedNaOH_mL": 50,
+          "idealModelPH": 11.053935
+        },
+        {
+          "addedNaOH_mL": 55,
+          "idealModelPH": 11.809016
+        }
+      ],
+      "reproducibleModel": {
+        "equations": [
+          "Ct=[H2G+]+[HG±]+[G−]",
+          "D=h²+K1 h+K1 K2",
+          "[H2G+]=Ct h²/D",
+          "[G−]=Ct K1 K2/D",
+          "h+[Na+]+[H2G+]=Kw/h+[Cl−]+[G−]"
+        ],
+        "rootVariable": "pH in [0,14], bisection100",
+        "constants": {
+          "K1": 0.004570881896148752,
+          "K2": 2.511886431509582e-10,
+          "Kw": 1e-14
+        },
+        "counterions": "Na+ from titrant, Cl− from the specified initial glycine hydrochloride balance",
+        "notIndependentValidation": true
+      }
+    },
+    {
+      "caseId": "BUFFER-DESIGN-C1",
+      "goalIds": [
+        "13877340-1370-5278-bb80-31cf382dd6f5",
+        "a449e874-6fec-502b-9667-6f078adc4d64"
+      ],
+      "titleDe": "Pufferbereich und Kapazität gemeinsam entwerfen",
+      "titleEn": "Design a pH range and buffer capacity together",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Ideales Phosphatpaar, ausgenommen die ausdrücklich dosierten Belastungen gegenüber weiterem Stoffaustausch geschlossen, H₂PO₄⁻/HPO₄²⁻ bei 25 °C, pKₛ=7,21. Gesucht sind 100,0 mL Puffer bei pH 7,40 mit formaler Gesamtkonzentration 0,1000 mol/L. Verfügbar sind je 0,2000-molare, von der Lehrkraft standardisierte Lösungen beider Partner. Volumina additiv; Arbeitsmodell γ=1, andere Phosphatstufen und Wasserbeiträge im pH-Bereich 7,2–7,6 vernachlässigbar. Anforderungen: Nach getrennten Belastungen von jeweils 1,000 mmol HCl bzw. NaOH soll 7,20≤pH≤7,60 gelten; Zusatzvolumen im Rechenmodell vernachlässigbar. β=(1/V)dn(starke Base)/d(pH), positive lokale differentielle Kapazität; von endlicher Lasttoleranz zu unterscheiden.",
+      "materialEn": "Ideal phosphate pair, closed to further exchange apart from the explicitly dosed loads, at 25 °C, pKa=7.21. Design 100.0 mL at pH 7.40 and total formal concentration 0.1000 mol/L using standardised 0.2000 M stocks of both partners. Additive volumes, γ=1; other phosphate stages/water negligible over pH 7.2–7.6. Separate 1.000 mmol HCl/NaOH loads should keep pH in 7.20–7.60; dose volume negligible in this model. Define β=(1/V)dn(strong base)/d(pH), positive local differential capacity, distinct from finite load tolerance.",
+      "taskDemandDe": [
+        "Bestimme das nötige Partnerverhältnis, die beiden Stoffmengen und ein vollständiges Rezept einschließlich Auffüllen auf Endvolumen.",
+        "Rechne beide Belastungsalternativen mit vorgeschalteter Bilanz und entscheide über den Bereich. Bestimme außerdem die größtmöglichen modellierten Säure- und Basenlasten bis zu den beiden Grenz-pH-Werten.",
+        "Leite β aus nB/(nA+nB)=r/(1+r), r=10^(pH−pKₛ), ab und berechne lokale Kapazität je Liter und für den gesamten Ansatz. Erkläre den Unterschied zur endlichen Bereichstoleranz.",
+        "Beurteile eine zehnfache Verdünnung und eine Verdopplung beider Stoffmengen bei gleichem Endvolumen. Nenne Voraussetzungen, die vor echter Herstellung/Messung noch geprüft werden müssen."
+      ],
+      "taskDemandEn": [
+        "Find partner ratio, amounts and a complete stock-mixing/final-volume recipe.",
+        "Balance both independent loads and decide compliance; also find maximum modelled acid/base loads to the pH limits.",
+        "Derive β from nB/(nA+nB)=r/(1+r), r=10^(pH−pKa), and calculate per-litre and whole-preparation differential capacity; distinguish finite interval tolerance.",
+        "Assess tenfold dilution and doubled partner amounts at constant final volume, stating checks required before real preparation/measurement."
+      ],
+      "workedModelDe": [
+        "r=10^0,19=1,54882; insgesamt10,000 mmol: nA=3,92339 mmol, nB=6,07661 mmol. Aus 0,2000 M folgen19,6169 mL Säurestock und30,3831 mL Basenstock; anschließend auf100,0 mL auffüllen, nicht nochmals100mL Wasser hinzugeben.",
+        "HCl: A=4,92339/B=5,07661 mmol, pH7,22331. NaOH: A=2,92339/B=7,07661 mmol, pH7,59394; beide erfüllen den idealen Bereich knapp. Untergrenze erreicht bei1,13417 mmol Säure, Obergrenze bei1,02879 mmol Base. Diese Grenzen liegen deutlich vor völligem Partnerverbrauch.",
+        "β=ln(10)·Ct·r/(1+r)²≈0,0548957 mol/(L·pH). Für0,1000L sind das0,00548957 mol/pH. Differentialwert ist die lokale Tangentensteigung; für eine endliche Last muss die nichtlineare HH-Bilanz neu berechnet werden.",
+        "Gleicher Quotient hält im Idealmodell den pH, aber Verdünnung senkt β je Liter; beim gesamten auf1L verdünnten Ansatz bleiben die Gesamtstoffmengen erhalten. Doppelte Partnerkonzentration verdoppelt lokale Kapazität und endliche Mengenreserven bei gleichem V, nicht den pH. Reale Aktivitäten, Temperatur, Standardisierung, Messunsicherheit und Materialverträglichkeit müssen vor dem praktischen Rezept beurteilt werden; keine biologische Eignung allein aus Zahlen."
+      ],
+      "workedModelEn": [
+        "r=1.54882; 10.000 mmol total gives acid3.92339 and base6.07661 mmol. Use19.6169mL acid stock and30.3831mL base stock and make up to100.0mL, not add another100mL water.",
+        "HCl leaves acid4.92339/base5.07661mmol, pH7.22331. NaOH leaves acid2.92339/base7.07661mmol, pH7.59394; both narrowly comply in the ideal model. Limits occur at1.13417mmol acid and1.02879mmol base, before total partner exhaustion.",
+        "β=ln(10)Ct r/(1+r)²≈0.0548957mol/(L·pH), or0.00548957mol/pH for100.0mL. This is a local tangent; finite loads require the nonlinear balance.",
+        "Equal ratio preserves ideal pH while dilution lowers β per litre; diluting the complete sample to1L preserves total partner amounts. Doubling concentration at fixed V doubles local capacity and finite reserves, not pH. Check activities, temperature, standardisation, measurement uncertainty and compatibility before practice; these numbers alone prove no biological suitability."
+      ],
+      "rubric": [
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r1",
+          "fullCreditDe": "Quotient, Stoffmengen, Stockvolumina und Endvolumen bilden ein konsistentes Rezept.",
+          "fullCreditEn": "Ratio, amounts, stock volumes and final volume form a consistent recipe.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r2",
+          "fullCreditDe": "Beide Einzelbelastungen und die beiden endlichen Lastgrenzen werden aus positiven Restmengen berechnet.",
+          "fullCreditEn": "Calculate both separate loads and finite limits from positive remaining amounts.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r3",
+          "fullCreditDe": "Differentialkapazität wird hergeleitet und mit richtiger Dimension vom endlichen Bereich unterschieden.",
+          "fullCreditEn": "Derive differential capacity, use correct units and distinguish the finite interval.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r4",
+          "fullCreditDe": "Verdünnung/Konzentration und reale Prüfgrenzen werden nachvollziehbar bewertet.",
+          "fullCreditEn": "Evaluate dilution/concentration changes and practical limits.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "practicalExecutionRequired": false,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false
+    },
+    {
+      "caseId": "OPEN-BUFFER-C1",
+      "goalIds": [
+        "5a58126e-0c51-5808-be9e-8faa9dae0c32"
+      ],
+      "titleDe": "Stoffaustausch verändert offene Puffer",
+      "titleEn": "Matter exchange changes open buffers",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Qualitativer Vergleich bei fester Temperatur: geschlossenes H₂PO₄⁻/HPO₄²⁻-Gefäß; offenes CO₂(aq)/H₂CO₃/HCO₃⁻-System mit CO₂-Austausch zur Gasphase; NH₄⁺/NH₃-Lösung, aus der NH₃ entweichen kann. Keine Austauschrate, Reststoffmenge oder Gaspartialdruckzahl ist vorgegeben. Die Atem-/Blutanalogie benennt nur geregelten CO₂-Transport; sie ist keine medizinische Handlungsanweisung.",
+      "materialEn": "Qualitative fixed-temperature comparison: closed phosphate vessel; open CO₂(aq)/H₂CO₃/HCO₃⁻ system exchanging CO₂ with gas; NH₄⁺/NH₃ solution that can lose NH₃. No exchange rate, remaining amount or gas partial-pressure number is supplied. Breathing/blood is only an analogy for regulated CO₂ transport, not medical advice.",
+      "taskDemandDe": [
+        "Stelle für das Carbonatsystem Gaslösung, Hydratation und Protolyse als gekoppelte Gleichgewichte dar und erkläre qualitativ eine erhöhte CO₂-Zufuhr bzw. CO₂-Entfernung.",
+        "Erläutere NH₃-Verlust gegenüber dem geschlossenen Vergleich. Beurteile, ob das ursprüngliche HH-Stoffmengenverhältnis für einen neuen pH unverändert eingesetzt werden darf.",
+        "Erkläre, warum physiologische Regulation und ein einfaches geschlossenes Becherglas verschiedene Systemgrenzen besitzen. Nenne die konkret fehlenden Daten für eine quantitative Prognose."
+      ],
+      "taskDemandEn": [
+        "Write gas dissolution, hydration and protolysis as coupled equilibria and explain increased CO₂ supply/removal qualitatively.",
+        "Explain NH₃ loss relative to a closed vessel and decide whether the original HH amount ratio remains usable.",
+        "Explain distinct system boundaries for physiological regulation and a closed beaker, identifying data needed for quantitative prediction."
+      ],
+      "workedModelDe": [
+        "CO₂(g)⇌CO₂(aq); CO₂(aq)+H₂O⇌H₂CO₃; H₂CO₃+H₂O⇌HCO₃⁻+H₃O⁺. Mehr CO₂ verschiebt gekoppelt Richtung Säurebildung/pH-Abnahme, CO₂-Abfuhr entgegengesetzt unter sonst passenden Bedingungen; keine frei erfundene Änderung um einen bestimmten pH-Wert.",
+        "NH₃-Ausgasung entfernt eine Pufferkomponente und verändert Gesamtbilanz und Verhältnis; tendenziell sinkt der pH bei sonst gleichen Bedingungen. Das alte Verhältnis ist keine gültige neue Mengenbilanz. Die Aktivitätsbeziehung kann mit tatsächlich neuen Gleichgewichtsanteilen gelten; dafür fehlen Daten.",
+        "Ein offenes biologisches System kann durch gekoppelte Stoffströme stabilisiert werden, besitzt aber keine unbegrenzte Reserve. Erforderlich wären u.a. neue Restmengen, Volumen, Temperatur und Austausch-/Gasgleichgewichtsbedingungen. Allein eine Ausgangskonzentration reicht nicht."
+      ],
+      "workedModelEn": [
+        "CO₂(g)⇌CO₂(aq); CO₂(aq)+H₂O⇌H₂CO₃; H₂CO₃+H₂O⇌HCO₃⁻+H₃O⁺. Increased CO₂ tends towards acid production/lower pH, removal the reverse under otherwise suitable conditions; no invented numerical shift.",
+        "NH₃ loss removes a component, altering total balance and ratio, tending to lower pH under otherwise equal conditions. The old ratio is invalid as the new balance. The activity relation can hold with actual new equilibrium species, which require further data.",
+        "Biological open systems may stabilise through coupled flows but have finite capacity. New remaining amounts, volume, temperature and exchange/gas-equilibrium conditions are needed; an initial concentration alone is insufficient."
+      ],
+      "rubric": [
+        {
+          "criterionId": "OPEN-BUFFER-C1-r1",
+          "fullCreditDe": "Die gekoppelte CO₂-Gleichgewichtsfolge und beide qualitative Änderungen sind korrekt.",
+          "fullCreditEn": "Correct coupled CO₂ equilibria and both qualitative directions.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "OPEN-BUFFER-C1-r2",
+          "fullCreditDe": "NH₃-Verlust wird als Bilanzänderung und Grenze einer unveränderten HH-Eingabe erklärt.",
+          "fullCreditEn": "Explain NH₃ loss as a balance change invalidating unchanged HH inputs.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "OPEN-BUFFER-C1-r3",
+          "fullCreditDe": "Systemgrenzen und fehlende quantitative Daten werden präzise benannt.",
+          "fullCreditEn": "Specify system boundaries and missing quantitative data.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 6,
+      "practicalExecutionRequired": false,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false
+    },
+    {
+      "caseId": "SOURCE-CRITIQUE-C1",
+      "goalIds": [
+        "25729c34-33d5-553a-a723-046113a7da47"
+      ],
+      "titleDe": "Pufferwahl und belastbare Aussagen in drei Kontexten",
+      "titleEn": "Buffer selection and justified claims in three contexts",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Alle Materialkarten sind ausdrücklich erfundene didaktische Texte, keine echten Institutionen oder Originalstudien. M1: undatierte anonyme Werbekarte „Puffer hält jeden pH für immer und ist für Medizin, Umwelt und Technik gleich gut“, ohne Konzentration/Methode. M2: internes Modell-Laborblatt, fiktive Autorrolle „Schulchemie-Modelllabor“, fiktives Datum 16.10.2026, mit Methode: T=25 °C, gleiche Gesamtpuffermenge; ein HA/A⁻-Paar mit pKₛ=4,80 besitzt gute Wirkung im Bereich um pH4,8, ein Phosphatpaar pKₛ=7,21 im Bereich um7,2; ein CO₂/HCO₃⁻-System erfordert zusätzlich Gas-/Stoffaustauschbedingungen. Das Blatt enthält keine Wirksamkeitsstudie. M3: redaktioneller Modelltext mit offengelegter Unsicherheit: Medizin braucht Verträglichkeit und regulierte Stoffströme; Umwelt braucht Eintrags-/Ökosystemprüfung; technische pH-Messung braucht Kalibrierung, Temperatur und Materialverträglichkeit. Kein Text liefert klinische, ökologische oder Fertigungsfreigabe. Auswahlauftrag: eine wässrige technische Modelllösung nahepH4,80 einstellen; Alternativen HA/A⁻pKₛ4,80 und PhosphatpKₛ7,21. Keine quantitative HH-Rechnung ist erforderlich.",
+      "materialEn": "All cards are invented teaching texts, not actual institutions or original studies. M1: undated anonymous advert claiming indefinite universal buffering for medicine, environment and technology, with no concentration/method. M2: internal model-lab sheet, fictional author role “School chemistry model lab”, fictional date 16 October 2026, documenting25°C, equal total buffer amounts, suitable ranges nearpKa4.80 for HA/A⁻ and7.21 for phosphate, plus gas/exchange conditions needed forCO₂/HCO₃⁻; no effectiveness study. M3: editorial model text disclosing uncertainty: medicine needs compatibility and regulated flows; environment needs input/ecosystem assessment; technical pH measurements need calibration, temperature and compatibility. None grants clinical/ecological/production approval. Select a buffer for an aqueous technical model nearpH4.80 from HA/A⁻pKa4.80 and phosphatepKa7.21; no HH calculation required.",
+      "taskDemandDe": [
+        "Erkläre mit korrespondierenden Partnern die Abfangwirkung und wähle für den technischen Modellauftrag ein Paar. Begründe die Wahl und ihre Grenzen.",
+        "Vergleiche die drei Materialkarten hinsichtlich Urhebertransparenz, Datum, Methode, Belegart, Interesse und Reichweite. Welche Aussagen lassen sich aus ihnen tatsächlich vertreten?",
+        "Formuliere für Medizin, Umwelt und Technik je eine begründete, bedingte Einsatzmöglichkeit und eine zusätzliche Prüffrage. Entwirf eine verbesserte öffentliche Aussage, die pH, Vorrat und Systemgrenzen nicht verwechselt."
+      ],
+      "taskDemandEn": [
+        "Explain buffering with conjugate partners and select a pair for the technical model, stating reasons and limits.",
+        "Compare authorship, date, method, evidence type, interest and scope of all cards, deciding which claims are justified.",
+        "For medicine, environment and technology give one reasoned conditional application and one further evidence question, then improve the public statement without confusing pH, reserve or boundaries."
+      ],
+      "workedModelDe": [
+        "HA/A⁻mitpKₛ4,80 passt im Modell besser zu4,80; nahe dem Paarbereich bleiben beide Reaktionspartner verfügbar. Säure wird von der Base, Base von der Säure aufgenommen. Wahl allein bestimmt weder endliche Lastreserve noch Verträglichkeit.",
+        "M1 ist unbelegte interessengeleitete Universalwerbung. M2 dokumentiert Methode und Modellgrenze, daher für den Modellvergleich brauchbar, nicht als klinischer/ökologischer Erfolgsbeleg. M3 benennt wichtige Kriterien, liefert aber keine Primärmessung; Aussagen müssen geprüft werden. Auch Datum allein erzeugt keine Richtigkeit.",
+        "Medizin: pH-Stabilisierung kann biologisch wichtig sein, Verträglichkeit/Transport müssen belegt werden. Umwelt: Pufferung kann pH-Änderungen dämpfen, Material-/Nährstoffeintrag und Ökosystemfolgen brauchen Prüfung. Technik: ein passendes Paar kann eine Modelllösung stabilisieren, aber Kalibrierung/Temperatur/Materialverträglichkeit bleiben erforderlich. Öffentliche Aussage nennt begrenzten pH-Bereich, endliche Reserve und belegte Bedingungen."
+      ],
+      "workedModelEn": [
+        "HA/A⁻pKa4.80 better suits the4.80 model target, with both partners available. Base consumes acid and acid consumes base. Selection alone proves neither finite load tolerance nor compatibility.",
+        "M1 is unsupported interested universal advertising. M2 documents method/model boundaries and supports the model comparison, not clinical/ecological effectiveness. M3 lists relevant criteria but supplies no primary measurement. Date alone establishes no truth.",
+        "Medicine: pH stability may matter, with compatibility/transport evidence needed. Environment: buffering may damp pH change, but inputs/ecosystem effects require study. Technology: a suitable pair may stabilise a model solution, with calibration/temperature/compatibility checks. Improved wording states range, finite reserves and supported conditions."
+      ],
+      "rubric": [
+        {
+          "criterionId": "SOURCE-CRITIQUE-C1-r1",
+          "fullCreditDe": "Abfangmechanismus und konkrete Paarwahl folgen aus dem bereitgestellten Material.",
+          "fullCreditEn": "Use supplied material to justify buffering mechanism and pair selection.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "SOURCE-CRITIQUE-C1-r2",
+          "fullCreditDe": "Quellenkritik unterscheidet Methode, Interesse und Belegreichweite bei allen drei Texten.",
+          "fullCreditEn": "Critically distinguish method, interest and evidence scope for all three texts.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "SOURCE-CRITIQUE-C1-r3",
+          "fullCreditDe": "Alle drei Anwendungskontexte erhalten begründete Möglichkeiten und konkrete offene Prüfungen; keine Freigabe wird erfunden.",
+          "fullCreditEn": "Give justified conditional uses and further checks for all three contexts, without inventing approval.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 6,
+      "practicalExecutionRequired": false,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false
+    },
+    {
+      "caseId": "PRACTICAL-PH-CURVES-P1",
+      "goalIds": [
+        "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+        "059acb11-29b3-5645-ac4c-b4214dc41a2d",
+        "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+      ],
+      "titleDe": "Eigene starke/schwache Säurekurven aufnehmen und den Halbpunkt ermitteln",
+      "titleEn": "Acquire personal strong/weak acid curves and determine the halfpoint",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Betreutes Schulpraktikum. Die Lehrkraft stellt 25,00-mL-Proben von Salzsäure und Essigsäure im ungefähren Bereich 0,050 mol/L sowie standardisierte 0,0500-molare NaOH bereit und verwahrt die tatsächlichen Probenkonzentrationen zur Plausibilitätsprüfung. Ausstattung: Schutzbrille und Schutzkleidung nach schulischer Gefährdungsbeurteilung, 25-mL-Vollpipette mit Pipettierhilfe, 50-mL-Bürette mit Stativ (auf 0,05 mL ablesbar), 100- bis 150-mL-Bechergläser, Magnetrührer, pH-Meter mit geeigneter Elektrode, Kalibrierpuffer pH 4/7/10 mit Temperaturangaben, Spülwasser, Abfallgefäß und Thermometer. Das Auswerteblatt ist leer. Kalibrierung nach Geräteanleitung prüfen; Unsicherheit und Stabilitätskriterium dokumentieren. Zugabeschritte weit vom Sprung höchstens 2 mL, im erwarteten Bereich 20–27 mL höchstens 0,2 mL und um den tatsächlich eingegrenzten Sprung höchstens 0,05 mL. Bis in einen eindeutigen Nachäquivalenzbereich arbeiten, beispielsweise bis 30 mL. Messplan an reale Beobachtungen anpassen.",
+      "materialEn": "Supervised school practical. The teacher supplies 25.00 mL HCl and acetic-acid samples near 0.050 mol/L and standardised 0.0500 M NaOH, retaining actual sample concentrations for plausibility checks. Equipment: eye protection and clothing required by the school risk assessment, 25 mL volumetric pipette with filler, 50 mL burette and stand readable to 0.05 mL, 100–150 mL beakers, magnetic stirrer, suitable pH electrode/meter, pH 4/7/10 calibration buffers with temperature data, rinse water, waste vessel and thermometer. The worksheet is blank. Follow calibration instructions and record uncertainty and a stability criterion. Add at most 2 mL away from the jump, 0.2 mL in the expected 20–27 mL region and 0.05 mL around the located jump. Continue into clear excess, for example to 30 mL, adapting the plan to actual observations.",
+      "taskDemandDe": [
+        "Begründe Messfrage, Hypothese und Messplan. Prüfe den Aufbau mit der Lehrkraft und dokumentiere Kalibrierung, Temperatur, Maßlösung, Probenvolumen und Geräteunsicherheiten. Nimm unter Aufsicht für beide Säureklassen eigene Volumen/pH-Paare auf; ersetze Rohwerte niemals durch Erwartungswerte.",
+        "Zeichne die eigenen Messreihen mit beschrifteten Achsen, Einheiten, passender Skala und Interpolationskennzeichnung. Bestimme den Äquivalenzbereich aus den Messdaten, beispielsweise mit ΔpH/ΔV, und begründe eine Volumenunsicherheit.",
+        "Ermittle für die schwache Säure V½=Veq/2 aus dem beobachteten Äquivalenzvolumen. Nutze einen eigenen Messwert oder eng benachbarte eigene Punkte; miss bei Bedarf an einer frischen identischen Teilprobe nach. Bestimme näherungsweise pKₛ und begründe die Partnergleichheit und die Grenzen dieser Näherung. Der starke Säurehalbpunkt liefert keinen schwachen Puffer-pK-Wert.",
+        "Vergleiche die Beobachtungen mit Hypothese und Modellen. Erkläre Pufferbereich, Salzprotolyse und mögliche Geräte- oder Verfahrensfehler. Berechne die tatsächliche Probenkonzentration aus Veq und Stöchiometrie. Lege Rohprotokoll, Graphen und Aufsichtsbeobachtung gemeinsam vor."
+      ],
+      "taskDemandEn": [
+        "Justify question, hypothesis and plan. Check the setup with the teacher and document calibration, temperature, titrant, sample volume and instrument uncertainty. Under supervision acquire personal volume/pH readings for both acid classes; never substitute expected values.",
+        "Plot personal readings with labelled axes, units, scale and interpolation markings. Determine the equivalence region from the readings, for example using ΔpH/ΔV, and justify a volume uncertainty.",
+        "For the weak acid use the observed equivalence volume to determine Vhalf=Veq/2. Use a personal reading or nearby personal points; if necessary remeasure a fresh identical aliquot. Estimate pKa and justify equal-partner approximation and its limits. A strong-acid halfpoint provides no weak-buffer pKa.",
+        "Compare observations with hypothesis and models, explaining buffering, salt protolysis and instrument or procedural errors. Calculate actual sample concentration from Veq and stoichiometry. Submit raw notes, plots and supervisor observation together."
+      ],
+      "workedModelDe": [
+        "Erwartet werden tatsächlich ausgefüllte Arbeitsunterlagen und die beobachtete sichere Handhabung: Kalibrierung, Zeit-/Temperaturbezug, abgelesene Volumen/pH-Werte und persönliche Arbeitsschritte. Ohne diese bleibt die Durchführung offen; es wird keine Musterwerttabelle geliefert.",
+        "Die Graphen enthalten eigene Messpunkte. Erwartungsmodelle sind ansteigende Kurven mit scharfem Sprung für die starke Säure sowie Pufferbereich und basischer Äquivalenz für die schwache Säure. Abweichungen werden diskutiert und nicht wegkorrigiert. Grobe Abstände liefern kein exaktes Äquivalenzvolumen.",
+        "V½ folgt aus dem tatsächlichen Veq. Unter geeigneten schwachen Säurebedingungen gilt näherungsweise pH(V½)=pKₛ. Der Wert stammt aus eigenen Daten; Interpolation und Unsicherheit werden genannt. Ein geplantes Halbvolumen allein ist kein experimenteller Befund.",
+        "Für die einprotonige 1:1-Reaktion gilt cProbe=cNaOH·Veq/VProbe. Einheiten und Unsicherheit beruhen auf eigenen Daten. CO₂, Drift, Verzögerung, Rühren und Volumen-/Konzentrationsfehler können relevant sein. Ein misslungener Versuch darf ehrlich dokumentiert werden, belegt aber keine erfolgreiche Durchführung."
+      ],
+      "workedModelEn": [
+        "Require genuine completed notes and observed safe handling: calibration, time/temperature, read volume/pH pairs and personal actions. Without them practical performance remains open; no target reading table is supplied.",
+        "Plots contain personal points. Expected models are rising curves with a sharp strong-acid jump and a weak-acid buffer region/basic equivalence. Discuss deviations without correcting them away. Coarse intervals cannot establish exact equivalence.",
+        "Use actual Veq to obtain Vhalf. Under valid weak-acid conditions pH(Vhalf) approximately equals pKa, estimated from personal data with interpolation/uncertainty stated. A planned half-volume alone is not experimental evidence.",
+        "For the monoprotic 1:1 reaction cSample=cNaOH·Veq/VSample. Units and uncertainty use personal data. Discuss CO₂, drift, lag, stirring and volume/concentration errors. Honest records of unsuccessful work do not establish successful performance."
+      ],
+      "rubric": [
+        {
+          "criterionId": "PRACTICAL-PH-CURVES-P1-r1",
+          "fullCreditDe": "Aufsicht bestätigt tatsächliche fachgerechte Durchführung und eigene Messhandlungen; Kalibrierung, Bedingungen und Rohdaten liegen vor.",
+          "fullCreditEn": "Supervisor confirms actual correct performance and personal measurements, with calibration, conditions and raw data.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-PH-CURVES-P1-r2",
+          "fullCreditDe": "Eigene Daten werden beschriftet gezeichnet; Äquivalenz und Unsicherheit folgen aus Auflösung und Kurvenverlauf.",
+          "fullCreditEn": "Plot personal data with labels; derive equivalence and uncertainty from resolution and shape.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-PH-CURVES-P1-r3",
+          "fullCreditDe": "Experimenteller Halbpunkt und pK-Schätzung beruhen auf eigenen Daten mit begründeter Näherung.",
+          "fullCreditEn": "Experimental halfpoint and pKa estimate use personal data and a justified approximation.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-PH-CURVES-P1-r4",
+          "fullCreditDe": "Interpretation, Konzentrationsrechnung und konkrete Fehlerdiskussion stimmen mit dem echten Protokoll überein.",
+          "fullCreditEn": "Interpretation, concentration and specific error discussion match the actual record.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "practicalExecutionRequired": true,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "practicalBoundaryDe": "Nur nach schulischer Gefährdungsbeurteilung, geeigneter Ausstattung und Aufsicht durch eine fachkundige Lehrkraft. Eigene Messwerte und ein datiertes, pseudonymes Beobachtungsprotokoll der Aufsicht sind erforderlich. Bei fehlender Ausstattung wird die praktische Aufgabe ausgesetzt; Plan, Simulation oder fremde/synthetische Daten erfüllen die Durchführung nicht.",
+      "practicalBoundaryEn": "Requires the school’s risk assessment, suitable equipment and supervision by a qualified chemistry teacher. Personally acquired readings and a dated pseudonymous supervisor observation are required. If equipment is unavailable, postpone the practical task; a plan, simulation or supplied/synthetic data do not satisfy performance.",
+      "blankObservationTemplate": {
+        "pseudonymousWorkId": null,
+        "supervisorRole": null,
+        "date": null,
+        "apparatusAndCalibration": null,
+        "temperature_C": null,
+        "rawReadings": [],
+        "observedLearnerActions": [],
+        "deviationsAndUncertainty": null,
+        "supervisorAttestation": null
+      },
+      "emptyRawDataFields": [
+        "sampleId",
+        "addedVolume_mL",
+        "temperature_C",
+        "measuredPH",
+        "readingStable",
+        "time",
+        "notes"
+      ],
+      "modelValuesSubstitutedForReadings": false
+    },
+    {
+      "caseId": "PRACTICAL-INDICATOR-GK-P1",
+      "goalIds": [
+        "02634fdd-c8ba-591a-b240-77129b1bebb8"
+      ],
+      "titleDe": "Indikatortitration zur Konzentrationsbestimmung tatsächlich durchführen",
+      "titleEn": "Actually perform indicator titration for concentration determination",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Betreutes Schulpraktikum unter denselben schulischen Schutz- und Aufsichtsbedingungen. Die Lehrkraft stellt eine unbekannte Salzsäureprobe nahe 0,050 mol/L und standardisierte 0,0500-molare NaOH bereit. Probenvolumen: 25,00 mL. Ausstattung: Bürette mit Stativ, Pipette mit Hilfe, Erlenmeyerkolben, Spülwasser, Abfallgefäß und Indikatoren. Vorgegebene Umschlagsbereiche: BTB pH 6,0–7,6; Methylorange pH 3,1–4,4; Phenolphthalein pH 8,2–10,0. Ein idealer HCl/NaOH-Kurvenverlauf dient der Orientierung und ist kein Messprotokoll. Das Endpunktkriterium wird vorab mit der Lehrkraft festgelegt, beispielsweise der erste über 30 Sekunden bleibende passende BTB-Farbton. Verbrauchsvolumina sind nicht vorgegeben.",
+      "materialEn": "Supervised school practical with the same school precautions and supervision. The teacher supplies unknown HCl near 0.050 mol/L and standardised 0.0500 M NaOH. Sample volume: 25.00 mL. Equipment: burette and stand, pipette/filler, flask, rinse water, waste vessel and indicators. Transition ranges: BTB pH 6.0–7.6, methyl orange 3.1–4.4 and phenolphthalein 8.2–10.0. An ideal HCl/NaOH curve provides orientation and is not a measured record. Agree the endpoint criterion with the teacher before starting, for example the first suitable BTB colour persisting for 30 seconds. No consumed volumes are supplied.",
+      "taskDemandDe": [
+        "Plane die Titration und begründe Maßlösung, 1:1-Stöchiometrie, Probenvolumen und Indikator anhand von Neutralbereich, Sprung und Endpunktkriterium.",
+        "Führe selbst unter Aufsicht durch. Protokolliere Anfangs- und Endstand der Bürette, Farbe, Temperatur, Indikatormenge und Handhabung; dosiere nahe dem Endpunkt tropfenweise. Wiederhole nur zur Klärung konkreter Unsicherheit oder bei Geräteanforderung, ohne feste Aufgabenquote.",
+        "Berechne aus dem tatsächlichen Verbrauch die Probenkonzentration mit Einheit und begründeter Unsicherheit. Diskutiere Endpunktversatz und weitere konkrete Fehler."
+      ],
+      "taskDemandEn": [
+        "Plan the titration, justifying titrant, 1:1 stoichiometry, sample volume and indicator using the neutral region, jump and endpoint criterion.",
+        "Personally perform under supervision. Record initial/final burette readings, colour, temperature, indicator amount and handling; add drops near the endpoint. Repeat only to resolve concrete uncertainty or instrument requirements, without a task quota.",
+        "Calculate sample concentration from actual consumption with units and justified uncertainty. Discuss endpoint bias and other specific errors."
+      ],
+      "workedModelDe": [
+        "BTB passt zum neutralen Äquivalenzbereich. Andere Indikatoren können bei steilem Sprung je nach begründeter Fehlertoleranz zulässig sein. Farbe kennzeichnet den beobachteten Endpunkt; Äquivalenz ist stöchiometrisch definiert.",
+        "Erwartet werden echte Rohdaten und Aufsichtsbeobachtung. Keine Musterzahl wird als Durchführung ausgegeben.",
+        "cHCl=cNaOH·(Vend−Vstart)/25,00 mL. Der Zahlenwert folgt ausschließlich aus tatsächlichen Daten. Ablesung, Pipettieren, Maßlösung und Endpunkt tragen zur Unsicherheit bei."
+      ],
+      "workedModelEn": [
+        "BTB suits the neutral equivalence region. Other indicators may be acceptable in a steep jump depending on a justified error tolerance. Colour marks the observed endpoint; equivalence is stoichiometric.",
+        "Require genuine raw data and supervisor observation. No model number represents performed work.",
+        "cHCl=cNaOH·(Vfinal−Vinitial)/25.00 mL, using actual data only. Burette reading, pipetting, titrant and endpoint contribute uncertainty."
+      ],
+      "rubric": [
+        {
+          "criterionId": "PRACTICAL-INDICATOR-GK-P1-r1",
+          "fullCreditDe": "Plan, Reaktion und begründeter Indikator sind vor Beginn nachvollziehbar.",
+          "fullCreditEn": "Establish the plan, reaction and justified indicator before starting.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-INDICATOR-GK-P1-r2",
+          "fullCreditDe": "Eigene Durchführung, Endpunkt und Bürettenwerte sind im Rohprotokoll und durch die Aufsicht beobachtbar.",
+          "fullCreditEn": "Personal performance, endpoint and burette readings are observable in raw notes and supervision.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-INDICATOR-GK-P1-r3",
+          "fullCreditDe": "Konzentration und Fehlerurteil beruhen auf echten Messwerten.",
+          "fullCreditEn": "Concentration and error judgment use genuine readings.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 6,
+      "practicalExecutionRequired": true,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "practicalBoundaryDe": "Nur nach schulischer Gefährdungsbeurteilung, geeigneter Ausstattung und Aufsicht durch eine fachkundige Lehrkraft. Eigene Messwerte und ein datiertes, pseudonymes Beobachtungsprotokoll der Aufsicht sind erforderlich. Bei fehlender Ausstattung wird die praktische Aufgabe ausgesetzt; Plan, Simulation oder fremde/synthetische Daten erfüllen die Durchführung nicht.",
+      "practicalBoundaryEn": "Requires the school’s risk assessment, suitable equipment and supervision by a qualified chemistry teacher. Personally acquired readings and a dated pseudonymous supervisor observation are required. If equipment is unavailable, postpone the practical task; a plan, simulation or supplied/synthetic data do not satisfy performance.",
+      "blankObservationTemplate": {
+        "pseudonymousWorkId": null,
+        "supervisorRole": null,
+        "date": null,
+        "apparatusAndCalibration": null,
+        "temperature_C": null,
+        "rawReadings": [],
+        "observedLearnerActions": [],
+        "deviationsAndUncertainty": null,
+        "supervisorAttestation": null
+      }
+    },
+    {
+      "caseId": "PRACTICAL-BUFFER-P1",
+      "goalIds": [
+        "c61b2a7a-fb0f-5a76-92e9-771c789fa816",
+        "25729c34-33d5-553a-a723-046113a7da47"
+      ],
+      "titleDe": "Pufferwirkung mit eigener Messreihe untersuchen",
+      "titleEn": "Investigate buffering using personal measurements",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Betreutes Schulpraktikum nach Gefährdungsbeurteilung und Freigabe der Lehrkraft. Verfügbar: 0,100-molare Essigsäure und Natriumacetat, je 0,0500-molare HCl und NaOH, pH-Meter und Kalibrierpuffer, 100-mL-Messkolben, Pipetten mit Hilfe, Bürette oder geeignete Dosierpipette, Bechergläser, Rührer, Thermometer, Spülwasser, Abfallgefäß und Schutzbrille. Je 25,00 mL Säure- und Acetatstock im Messkolben auf 100,0 mL auffüllen; damit liegen beide Partner formal je 0,0250 mol/L vor. Vier getrennte 20,00-mL-Ansätze: Puffer mit HCl, Puffer mit NaOH, Wasser mit HCl und Wasser mit NaOH. Je insgesamt 0; 0,50; 1,00; 2,00 mL Titrant zugeben und bei jedem Schritt stabilen pH und Temperatur notieren. Dies sind Dosiervorgaben und keine pH-Messwerte. Zusätzliche Lasten nur nach Prüfung der Lehrkraft; vollständige Erschöpfung ist nicht nötig.",
+      "materialEn": "Supervised school practical after risk assessment and teacher release. Materials: 0.100 M acetic acid and sodium acetate, 0.0500 M HCl and NaOH, pH meter/calibration buffers, 100 mL volumetric flask, pipettes/filler, burette or suitable dosing pipette, beakers, stirrer, thermometer, rinse water, waste vessel and eye protection. Mix 25.00 mL of each buffer stock and make up to 100.0 mL, giving 0.0250 mol/L of each partner. Prepare four separate 20.00 mL portions: buffer with acid, buffer with base, water with acid and water with base. Add total volumes of 0, 0.50, 1.00 and 2.00 mL titrant, recording stable pH and temperature at each step. Volumes are instructions and are not pH readings. Further loading needs a teacher check; full exhaustion is unnecessary.",
+      "taskDemandDe": [
+        "Formuliere Hypothese, Vergleichsvariable und faire Kontrollbedingungen. Erläutere, warum Säure- und Basenzugabe sowie ungepufferte Kontrollen erforderlich sind.",
+        "Stelle den Puffer auf das Endvolumen her und führe die getrennten Messreihen persönlich unter Aufsicht durch. Protokolliere Rohdaten, Kalibrierung, Dosen, Stabilität, Temperatur und Abweichungen.",
+        "Zeichne ΔpH gegen zugegebene Stoffmenge. Vergleiche Puffer und Kontrollen und erkläre die tatsächlich beobachteten Richtungen mit beiden Abfangreaktionen und endlichen Reserven.",
+        "Beurteile die Reichweite der eigenen Daten und offene Punkte. Ersetze fehlende oder abweichende Messungen nicht durch Modellwerte. Unterscheide beobachtete Pufferwirkung vom vollständigen quantitativen Kapazitätsdesign."
+      ],
+      "taskDemandEn": [
+        "State hypothesis, comparison variable and fair controls. Explain why acid/base additions and unbuffered controls are necessary.",
+        "Prepare the buffer to final volume and personally perform separate series under supervision. Record raw readings, calibration, doses, stability, temperature and deviations.",
+        "Plot ΔpH against added amount. Compare buffer and controls and explain actual observed directions with both buffering reactions and finite reserves.",
+        "Assess what personal data support and what remains open. Never replace missing or deviating readings with model values. Distinguish observed buffering from full quantitative capacity design."
+      ],
+      "workedModelDe": [
+        "Startvolumina, Titrantstärken, Dosen, Temperatur und Methode kontrollieren; das Puffersystem ist die Vergleichsvariable. Beide Lastarten prüfen die beiden Partner.",
+        "Tatsächliches Messprotokoll und Aufsichtsbeobachtung sind nötig. Das Endvolumen sichert die definierte formale Konzentration. Rohdaten werden nicht an Sollwerte angepasst.",
+        "Acetat bindet H₃O⁺ und bildet Essigsäure; Essigsäure bindet OH⁻ und bildet Acetat und Wasser. Im gewählten Bereich sind kleinere Änderungen als in Wasser zu erwarten, die eigenen Daten entscheiden jedoch. Jede 20-mL-Pufferportion enthält formal je 0,500 mmol Partner; die maximale vorgegebene Dosis beträgt 0,100 mmol.",
+        "Die Beobachtung gilt für bestimmte Dosen und Bedingungen und belegt keine unbegrenzte Reserve. Temperatur, Aktivitäten, CO₂, Elektrode und Kontamination können relevant sein. Differentialkapazität und maximal zulässige Lasten sind ein eigener Rechenauftrag in BUFFER-DESIGN-C1."
+      ],
+      "workedModelEn": [
+        "Control initial volumes, titrant strengths, doses, temperature and method; buffer presence is the comparison variable. Both load types test both partners.",
+        "Require genuine notes and supervisor observation. Final volume establishes the defined formal concentration. Never adjust readings to targets.",
+        "Acetate consumes H₃O⁺, producing acetic acid; acetic acid consumes OH⁻, producing acetate and water. Smaller buffer changes than in water are expected in this regime, but personal data decide. Each 20 mL buffer portion contains 0.500 mmol of each partner; the largest stated dose is 0.100 mmol.",
+        "Observations apply to specified doses and conditions, not infinite reserves. Consider temperature, activities, CO₂, electrode and contamination. Differential capacity and maximum allowed loads are separately calculated in BUFFER-DESIGN-C1."
+      ],
+      "rubric": [
+        {
+          "criterionId": "PRACTICAL-BUFFER-P1-r1",
+          "fullCreditDe": "Vergleichsfrage, Kontrollbedingungen und Herstellung sind fachlich begründet.",
+          "fullCreditEn": "Justify the question, controls and preparation.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-BUFFER-P1-r2",
+          "fullCreditDe": "Eigene Messreihen und Handlungen liegen als Rohprotokoll mit Aufsichtsbeobachtung vor.",
+          "fullCreditEn": "Provide personal raw series and supervisor observation of actions.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-BUFFER-P1-r3",
+          "fullCreditDe": "Graphischer Vergleich und beide Reaktionen erklären echte Daten ohne Sollwertersatz.",
+          "fullCreditEn": "Plots and both reactions explain actual data without target substitution.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-BUFFER-P1-r4",
+          "fullCreditDe": "Schlussfolgerungen bleiben auf endliche Dosen begrenzt und trennen Beobachtung von Kapazitätsdesign.",
+          "fullCreditEn": "Limit conclusions to finite doses and distinguish observations from capacity design.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "practicalExecutionRequired": true,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "practicalBoundaryDe": "Nur nach schulischer Gefährdungsbeurteilung, geeigneter Ausstattung und Aufsicht durch eine fachkundige Lehrkraft. Eigene Messwerte und ein datiertes, pseudonymes Beobachtungsprotokoll der Aufsicht sind erforderlich. Bei fehlender Ausstattung wird die praktische Aufgabe ausgesetzt; Plan, Simulation oder fremde/synthetische Daten erfüllen die Durchführung nicht.",
+      "practicalBoundaryEn": "Requires the school’s risk assessment, suitable equipment and supervision by a qualified chemistry teacher. Personally acquired readings and a dated pseudonymous supervisor observation are required. If equipment is unavailable, postpone the practical task; a plan, simulation or supplied/synthetic data do not satisfy performance.",
+      "blankObservationTemplate": {
+        "pseudonymousWorkId": null,
+        "supervisorRole": null,
+        "date": null,
+        "apparatusAndCalibration": null,
+        "temperature_C": null,
+        "rawReadings": [],
+        "observedLearnerActions": [],
+        "deviationsAndUncertainty": null,
+        "supervisorAttestation": null
+      }
+    }
+  ],
+  "caseCount": 9,
+  "obligatoryCaseQuota": null,
+  "note": "Rich multi-step work may show several required aspects. Additional cases are chosen only for still unshown aspects, never by a fixed task-count rule."
+}

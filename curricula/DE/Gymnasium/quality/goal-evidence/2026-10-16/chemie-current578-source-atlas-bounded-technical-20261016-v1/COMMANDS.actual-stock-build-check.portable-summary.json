@@ -1,0 +1,59 @@
+{
+  "role": "Actual bounded build/check chronology; full command stdout/stderr remain private in tmp",
+  "chronologicalPrivateReceipt": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-source-atlas-bounded-technical/COMMANDS.actual-stock-source-atlas.chronological.json",
+    "sha256": "sha256:af2711d69596d448ea58944fabd29f28205b3cde14a148ff49fdc3e8eac5b504",
+    "bytes": 3080
+  },
+  "entries": [
+    {
+      "kind": "build",
+      "startedAtUTC": "2026-10-16T02:06:41.464447+00:00",
+      "endedAtUTC": "2026-10-16T02:06:44.329567+00:00",
+      "elapsedSeconds": 2.8648259370093,
+      "exitCode": 0,
+      "privateStdout": {
+        "path": "tmp/chemie-m7-resumed-20261016/current578-source-atlas-bounded-technical/build.actual.stdout.txt",
+        "sha256": "sha256:c138347c44484a261f4ddc4b38d9d452120fb7604dcfd6fb5c21bfd7a9ff5e45",
+        "bytes": 179
+      },
+      "privateStderr": {
+        "path": "tmp/chemie-m7-resumed-20261016/current578-source-atlas-bounded-technical/build.actual.stderr.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdoutSummary": "Generated source atlas inputs: {\"canonicalCurricularAtomicGoals\":429,\"publishedCurricularAtomicGoals\":380,\"sourceViews\":48,\"unresolvedSourceScopeDecisions\":487,\"omittedGoals\":49}"
+    },
+    {
+      "kind": "check",
+      "startedAtUTC": "2026-10-16T02:06:44.330229+00:00",
+      "endedAtUTC": "2026-10-16T02:06:46.365637+00:00",
+      "elapsedSeconds": 2.0351466400024947,
+      "exitCode": 0,
+      "privateStdout": {
+        "path": "tmp/chemie-m7-resumed-20261016/current578-source-atlas-bounded-technical/check.actual.stdout.txt",
+        "sha256": "sha256:fe7c92e1ff5564b66c85653d22a906be9f450efde3fad6e0a7abbd8d4d3bc27d",
+        "bytes": 174
+      },
+      "privateStderr": {
+        "path": "tmp/chemie-m7-resumed-20261016/current578-source-atlas-bounded-technical/check.actual.stderr.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stdoutSummary": "PASS source atlas inputs: {\"canonicalCurricularAtomicGoals\":429,\"publishedCurricularAtomicGoals\":380,\"sourceViews\":48,\"unresolvedSourceScopeDecisions\":487,\"omittedGoals\":49}"
+    }
+  ],
+  "stockConfig": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/config/goal-books/inactive/chemie-current578-source-normal-bounded-20261016-v1/inputs.json",
+    "sha256": "sha256:c84a68208454aea4fb370424f0cd1f04873bff325c62ef39dea38894c12a9521",
+    "bytes": 16616
+  },
+  "actualBuildCalls": 1,
+  "actualCheckCalls": 1,
+  "allExitedZero": true,
+  "Native": false,
+  "Central": false,
+  "NormalPAMV": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

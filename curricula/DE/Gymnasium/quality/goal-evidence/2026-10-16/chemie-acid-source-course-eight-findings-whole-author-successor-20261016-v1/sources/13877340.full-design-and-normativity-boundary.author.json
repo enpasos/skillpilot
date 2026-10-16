@@ -1,0 +1,149 @@
+{
+  "wholeGoal": {
+    "id": "13877340-1370-5278-bb80-31cf382dd6f5",
+    "title": "Puffer gezielt designen",
+    "titleEn": "Design buffers specifically",
+    "description": "Die lernende Person kann für einen festgelegten pH-Bereich ein konsistentes Pufferrezept bestimmen und die zulässigen endlichen Säure- und Basenbelastungen aus positiven Reststoffmengen und dem zulässigen Komponentenverhältnis berechnen.",
+    "descriptionEn": "The learner can determine a consistent buffer recipe for a specified pH range and calculate admissible finite acid and base loads from positive remaining amounts and the permitted component ratio.",
+    "weight": 1.1,
+    "tags": [
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "a449e874-6fec-502b-9667-6f078adc4d64"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_REAKTION"
+      ],
+      "phase": "Q3"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HB",
+        "DE-HE"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "2871c17d-970f-4500-a16f-c2ea1c5b2a46"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "13877340-1370-5278-bb80-31cf382dd6f5",
+        "title": "Visualisierung: Puffer gezielt designen",
+        "url": "/assets/goal-visualizations/chemie/13877340-1370-5278-bb80-31cf382dd6f5/13877340-1370-5278-bb80-31cf382dd6f5.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Puffer gezielt designen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Puffer gezielt designen\". Die lernende Person kann Puffer für definierte pH-Bereiche konstruieren und Kapazität berechnen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "wholeCase": {
+    "file": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/NINE.complete-additional-cases-and-practical-rubrics.author.json",
+      "sha256": "sha256:86069f0847c0c8f8658e7a9e80bd362fb722fb1ef24b1e587da2ef8e3e9128e2",
+      "bytes": 68298
+    },
+    "jsonPointer": "/cases/3",
+    "wholeMaterial": {
+      "caseId": "BUFFER-DESIGN-C1",
+      "goalIds": [
+        "13877340-1370-5278-bb80-31cf382dd6f5",
+        "a449e874-6fec-502b-9667-6f078adc4d64"
+      ],
+      "titleDe": "Pufferbereich und Kapazität gemeinsam entwerfen",
+      "titleEn": "Design a pH range and buffer capacity together",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Ideales Phosphatpaar, ausgenommen die ausdrücklich dosierten Belastungen gegenüber weiterem Stoffaustausch geschlossen, H₂PO₄⁻/HPO₄²⁻ bei 25 °C, pKₛ=7,21. Gesucht sind 100,0 mL Puffer bei pH 7,40 mit formaler Gesamtkonzentration 0,1000 mol/L. Verfügbar sind je 0,2000-molare, von der Lehrkraft standardisierte Lösungen beider Partner. Volumina additiv; Arbeitsmodell γ=1, andere Phosphatstufen und Wasserbeiträge im pH-Bereich 7,2–7,6 vernachlässigbar. Anforderungen: Nach getrennten Belastungen von jeweils 1,000 mmol HCl bzw. NaOH soll 7,20≤pH≤7,60 gelten; Zusatzvolumen im Rechenmodell vernachlässigbar. β=(1/V)dn(starke Base)/d(pH), positive lokale differentielle Kapazität; von endlicher Lasttoleranz zu unterscheiden.",
+      "materialEn": "Ideal phosphate pair, closed to further exchange apart from the explicitly dosed loads, at 25 °C, pKa=7.21. Design 100.0 mL at pH 7.40 and total formal concentration 0.1000 mol/L using standardised 0.2000 M stocks of both partners. Additive volumes, γ=1; other phosphate stages/water negligible over pH 7.2–7.6. Separate 1.000 mmol HCl/NaOH loads should keep pH in 7.20–7.60; dose volume negligible in this model. Define β=(1/V)dn(strong base)/d(pH), positive local differential capacity, distinct from finite load tolerance.",
+      "taskDemandDe": [
+        "Bestimme das nötige Partnerverhältnis, die beiden Stoffmengen und ein vollständiges Rezept einschließlich Auffüllen auf Endvolumen.",
+        "Rechne beide Belastungsalternativen mit vorgeschalteter Bilanz und entscheide über den Bereich. Bestimme außerdem die größtmöglichen modellierten Säure- und Basenlasten bis zu den beiden Grenz-pH-Werten.",
+        "Leite β aus nB/(nA+nB)=r/(1+r), r=10^(pH−pKₛ), ab und berechne lokale Kapazität je Liter und für den gesamten Ansatz. Erkläre den Unterschied zur endlichen Bereichstoleranz.",
+        "Beurteile eine zehnfache Verdünnung und eine Verdopplung beider Stoffmengen bei gleichem Endvolumen. Nenne Voraussetzungen, die vor echter Herstellung/Messung noch geprüft werden müssen."
+      ],
+      "taskDemandEn": [
+        "Find partner ratio, amounts and a complete stock-mixing/final-volume recipe.",
+        "Balance both independent loads and decide compliance; also find maximum modelled acid/base loads to the pH limits.",
+        "Derive β from nB/(nA+nB)=r/(1+r), r=10^(pH−pKa), and calculate per-litre and whole-preparation differential capacity; distinguish finite interval tolerance.",
+        "Assess tenfold dilution and doubled partner amounts at constant final volume, stating checks required before real preparation/measurement."
+      ],
+      "workedModelDe": [
+        "r=10^0,19=1,54882; insgesamt10,000 mmol: nA=3,92339 mmol, nB=6,07661 mmol. Aus 0,2000 M folgen19,6169 mL Säurestock und30,3831 mL Basenstock; anschließend auf100,0 mL auffüllen, nicht nochmals100mL Wasser hinzugeben.",
+        "HCl: A=4,92339/B=5,07661 mmol, pH7,22331. NaOH: A=2,92339/B=7,07661 mmol, pH7,59394; beide erfüllen den idealen Bereich knapp. Untergrenze erreicht bei1,13417 mmol Säure, Obergrenze bei1,02879 mmol Base. Diese Grenzen liegen deutlich vor völligem Partnerverbrauch.",
+        "β=ln(10)·Ct·r/(1+r)²≈0,0548957 mol/(L·pH). Für0,1000L sind das0,00548957 mol/pH. Differentialwert ist die lokale Tangentensteigung; für eine endliche Last muss die nichtlineare HH-Bilanz neu berechnet werden.",
+        "Gleicher Quotient hält im Idealmodell den pH, aber Verdünnung senkt β je Liter; beim gesamten auf1L verdünnten Ansatz bleiben die Gesamtstoffmengen erhalten. Doppelte Partnerkonzentration verdoppelt lokale Kapazität und endliche Mengenreserven bei gleichem V, nicht den pH. Reale Aktivitäten, Temperatur, Standardisierung, Messunsicherheit und Materialverträglichkeit müssen vor dem praktischen Rezept beurteilt werden; keine biologische Eignung allein aus Zahlen."
+      ],
+      "workedModelEn": [
+        "r=1.54882; 10.000 mmol total gives acid3.92339 and base6.07661 mmol. Use19.6169mL acid stock and30.3831mL base stock and make up to100.0mL, not add another100mL water.",
+        "HCl leaves acid4.92339/base5.07661mmol, pH7.22331. NaOH leaves acid2.92339/base7.07661mmol, pH7.59394; both narrowly comply in the ideal model. Limits occur at1.13417mmol acid and1.02879mmol base, before total partner exhaustion.",
+        "β=ln(10)Ct r/(1+r)²≈0.0548957mol/(L·pH), or0.00548957mol/pH for100.0mL. This is a local tangent; finite loads require the nonlinear balance.",
+        "Equal ratio preserves ideal pH while dilution lowers β per litre; diluting the complete sample to1L preserves total partner amounts. Doubling concentration at fixed V doubles local capacity and finite reserves, not pH. Check activities, temperature, standardisation, measurement uncertainty and compatibility before practice; these numbers alone prove no biological suitability."
+      ],
+      "rubric": [
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r1",
+          "fullCreditDe": "Quotient, Stoffmengen, Stockvolumina und Endvolumen bilden ein konsistentes Rezept.",
+          "fullCreditEn": "Ratio, amounts, stock volumes and final volume form a consistent recipe.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r2",
+          "fullCreditDe": "Beide Einzelbelastungen und die beiden endlichen Lastgrenzen werden aus positiven Restmengen berechnet.",
+          "fullCreditEn": "Calculate both separate loads and finite limits from positive remaining amounts.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r3",
+          "fullCreditDe": "Differentialkapazität wird hergeleitet und mit richtiger Dimension vom endlichen Bereich unterschieden.",
+          "fullCreditEn": "Derive differential capacity, use correct units and distinguish the finite interval.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r4",
+          "fullCreditDe": "Verdünnung/Konzentration und reale Prüfgrenzen werden nachvollziehbar bewertet.",
+          "fullCreditEn": "Evaluate dilution/concentration changes and practical limits.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "practicalExecutionRequired": false,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false
+    }
+  },
+  "sourceFinding": "HB23 lists preparation/investigation of a buffer under experimental examples; it is not a mandatory differential-capacity calculation. No other direct source obligation for13877340 is selected in this finite package.",
+  "finiteLoadDesignEvaluation": "The whole preserved case already supplies an actual recipe and finite acid/base limits to stay within the defined pH range. That is a coherent buffer-design product, but HB example wording alone does not establish its normative obligatory status either.",
+  "differentialCapacityRole": "Retained demanding optional extension inside the unchanged whole case; not a mandatory source duty and not counted as curricular completion.",
+  "sourceNormativityDecision": "OPEN; no invented primary-source coverage, no blanket M7 approval",
+  "mandatoryTargetTreatment": "Removed from the source-backed course views in this finite candidate; canonical body and complete numerical case remain available, navigation is not learner scope.",
+  "HumanApproval": false,
+  "HumanTrial": false
+}

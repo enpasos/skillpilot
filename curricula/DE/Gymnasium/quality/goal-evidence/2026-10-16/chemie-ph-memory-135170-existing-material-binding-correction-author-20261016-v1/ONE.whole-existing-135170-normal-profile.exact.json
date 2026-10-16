@@ -1,0 +1,78 @@
+{
+  "originalWholeReviewFile": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-targeted-scoring-source-binding-author-successor-20261011-v7/review-inputs/six-P.author-targeted-v7.jsonl",
+    "sha256": "sha256:288f56699699f191568037f35ba7eac4a5aae790c5e8d3017335e150833eb5d4",
+    "bytes": 40640
+  },
+  "wholeRecord": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+    "goalFingerprint": "sha256:75bfaba547c9270be76a5d8a2e73ade591fc020850b85f831966658b5cc293bb",
+    "reviewInputFingerprint": "sha256:fd3dd406cf85a3fde9595a39408abf46184d8c383afc9e71b6b12856628239e8",
+    "profileFingerprint": "sha256:62942d5f1df3669c8b0fa7c043af3a1b2e7f22c7d14f1192f9af96c9efab7f40",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-11T01:29:41.501680+00:00",
+    "reviewer": "Codex AUTHOR v7 source/scoring correction; new independent reviewers pending",
+    "reason": "All six scientific profile bodies are exactly retained from frozen v6; one external whole-case criterion identity is corrected. This is an author candidate, with current independent v7 review pending.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "experiment",
+      "expectations": [
+        {
+          "id": "understanding",
+          "essentialUnderstandingDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+          "essentialUnderstandingEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction.",
+          "observablePerformanceDe": "Ein vollständiger betreuter Aktionslog zeigt getrenntes Tarieren und Abwiegen, vollständiges Übertragen, Rühren, bestätigte Endbeobachtung und Beschriftung nach der bereitgestellten Arbeitsanweisung. Die lernende Person dokumentiert beim alternativen Modul dessen freigegebenes Lösungsmittel und die jeweiligen Schritte; ein Plan ohne durchgeführten Log wird nicht als Ausführung ausgegeben.",
+          "observablePerformanceEn": "A complete supervised action log shows separate taring and weighing, complete transfer, stirring, a confirmed final observation and labelling under the supplied instruction. For the alternative module the learner records its permitted solvent and each specified step; a plan without an executed log is not represented as performance."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "changed-conditions",
+          "textDe": "In S wählst du versehentlich Wasser statt des freigegebenen ethanolischen Lösungsmittels. Darfst du den erfolgreichen S-Endbefund aus der Vorlage übernehmen?",
+          "textEn": "In S you accidentally choose water instead of its permitted ethanolic solvent. May you copy the successful S endpoint from the example?"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "preparation-salt-water-performed-log",
+          "taskDemandDe": "Führe P-1 unter Aufsicht aus oder führe die Simulatoraktionen tatsächlich in der angegebenen Reihenfolge aus. Gib das ausgefüllte Ausführungsprotokoll ab. Eine geplante Schrittfolge oder die Aussage „Salz löst sich“ reicht ohne Durchführung beziehungsweise Simulatorlog nicht aus.",
+          "taskDemandEn": "Execute P-1 under supervision or actually issue the simulator actions in sequence. Submit the completed execution log. A planned sequence or “salt dissolves” without execution or a simulator log is insufficient.",
+          "expectedPerformanceDe": "Erwartetes erfolgreiches Protokoll: Freigabe geprüft; trockenes Gefäß tariert; 48,0 g Wasser angezeigt; Wasser-Becherglas sicher abgestellt; leere Wägeschale tariert; darin mit sauberem Spatel separat 2,0 g Salz abgewogen und aus der Wägeschale vollständig ins Wasser übertragen; gerührt; Rückmeldung/Beobachtung: keine sichtbaren Kristalle, einheitliche Flüssigkeit ohne getrennte Phase; mit Kochsalzlösung und Datum beschriftet; keine Abweichung. Das ist eine hergestellte Lösung im begrenzten Fall, keine allgemeine Behauptung über beliebige Salz-/Lösungsmittelkombinationen.",
+          "expectedPerformanceEn": "Expected successful log: permission checked; dry vessel tared; 48.0 g water displayed; water beaker placed securely; empty weighing dish tared; 2.0 g salt weighed separately in that dish with the clean spatula and transferred completely from the dish into the water; stirred; feedback/observation: no visible crystals, uniform liquid without a separate phase; labelled salt solution and date; no deviation. This documents preparation in the bounded case, not a claim about arbitrary salt/solvent combinations.",
+          "understandingFocusDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+          "understandingFocusEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction."
+        },
+        {
+          "id": "preparation-bound-phase-solvent-transfer",
+          "taskDemandDe": "Führe die angegebenen Aktionen für L, S und G im moderierten Simulator aus und gib für jedes Modul den vollständigen Aktions-/Rückmeldungslog mit Endbeobachtung und Beschriftung ab. Benenne die jeweils andere Ausgangsphase und das vorgegebene Lösungsmittel. Ersetze keinen Log durch die bloße Behauptung „das ist löslich“.",
+          "taskDemandEn": "Execute the specified L, S and G actions in the facilitator-mediated simulator and submit each complete action/feedback log, final observation and label. Identify each changed starting phase and specified solvent. Do not replace a log with the assertion “it is soluble.”",
+          "expectedPerformanceDe": "Erwartet werden drei getrennte Logs mit jeweils geprüftem Modul/Freigabe, dem modulspezifischen Lösungsmittel und der vorgeschriebenen Zugabe. L dokumentiert flüssigen Ausgangsstoff in Wasser, danach keine Schlieren; S festen Ausgangsstoff im ethanolischen Lösungsmittel, danach keine Partikel; G gasförmigen Ausgangsstoff in Wasser unter festgehaltenen Modellbedingungen, Kontakt/Mischen/Warten und bestätigte Aufnahme. Alle enden mit inspect und richtiger Beschriftung. Die L-Mengen und Mischhandlung dürfen nicht ungeprüft auf S oder G übertragen werden.",
+          "expectedPerformanceEn": "Three separate logs are expected, each with module/permission checked, its specific solvent and prescribed addition. L records a liquid starting substance in water followed by no streaks; S a solid in ethanolic solvent followed by no particles; G a gas in water under fixed model conditions, contact/mixing/waiting and confirmed absorption. Each ends with inspect and its correct label. L’s quantities and mixing action cannot be copied to S or G without using that module’s instruction.",
+          "understandingFocusDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+          "understandingFocusEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction."
+        }
+      ]
+    }
+  },
+  "scientificProfileChanged": false
+}

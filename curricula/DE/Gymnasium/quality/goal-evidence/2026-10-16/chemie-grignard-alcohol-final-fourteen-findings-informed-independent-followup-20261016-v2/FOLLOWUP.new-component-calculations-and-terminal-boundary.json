@@ -1,0 +1,109 @@
+{
+  "role": "Own new NI derivation and actual HE task binding, not a repeat of unchanged Grignard formulas",
+  "NI": {
+    "balancedNet": "C2H6O + O2 -> C2H4O2 + H2O",
+    "leftAtoms": {
+      "C": 2,
+      "H": 6,
+      "O": 3
+    },
+    "rightAtoms": {
+      "C": 2,
+      "H": 6,
+      "O": 3
+    },
+    "functionalCarbonOxidationStates": [
+      -1,
+      1,
+      3
+    ],
+    "netElectronsReleasedPerEthanol": 4,
+    "initialEthanolMmol": 20,
+    "mainAvailableOxygenMmol": 12,
+    "mainMaximumAcidMmol": 12,
+    "mainRemainingEthanolMmol": 8,
+    "freshAvailableOxygenMmol": 6,
+    "freshMaximumAcidMmol": 6,
+    "freshRemainingEthanolMmol": 14,
+    "observedRealProduction": false
+  },
+  "HE145": {
+    "requiresLength": 274,
+    "coveredLength": 272,
+    "a25RequiresCount": 1,
+    "a25CoveredCount": 1,
+    "cd9InRequiresOrCovered": false,
+    "GrignardInRequiresOrCovered": false,
+    "requiresAdded": [
+      "a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+    ],
+    "requiresRemoved": [
+      "8edee6b6-9ead-515e-93f5-feada64522b2",
+      "cd9ec99b-b694-5673-863c-55528e31250a"
+    ],
+    "coveredAdded": [
+      "a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+    ],
+    "coveredRemoved": [
+      "8edee6b6-9ead-515e-93f5-feada64522b2",
+      "cd9ec99b-b694-5673-863c-55528e31250a"
+    ],
+    "scoring": {
+      "maxPoints": 44,
+      "passingPoints": 27,
+      "steps": [
+        {
+          "id": "s1",
+          "points": 8,
+          "description": "Stoff- und Teilchenstrukturen fachlich zutreffend analysiert"
+        },
+        {
+          "id": "s2",
+          "points": 10,
+          "description": "Reaktionen, Gleichgewichte oder energetische Zusammenhänge modellgestützt erklärt"
+        },
+        {
+          "id": "s3",
+          "points": 8,
+          "description": "quantitative Daten nachvollziehbar und einheitenbezogen ausgewertet"
+        },
+        {
+          "id": "s4",
+          "points": 10,
+          "description": "Handlungsoption kriteriengeleitet und fachlich begründet bewertet"
+        },
+        {
+          "id": "s5-he-ethanol-physiology",
+          "points": 8,
+          "description": "HE E.3: konkrete akute und längerfristige Körperwirkung, gelieferter oxidativer Abbau, begrenzter äußerer Nutzen und eigenständig begründete Alltagsentscheidung",
+          "coveredGoalIds": [
+            "a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+          ]
+        }
+      ]
+    },
+    "historicalCounter": {
+      "profileId": "canonical-chemistry-sek2",
+      "role": "terminal-autonomy-goal",
+      "historicalSelectedAtomicGoals": 277,
+      "currentDirectRequiresObjectCount": 274,
+      "currentCoveredGoalIdObjectCount": 272,
+      "currentDirectRequiresAtomicObjectCount": 263,
+      "currentDirectRequiresClusterObjectCount": 11,
+      "counterMeaning": "Technical lengths of the explicitly retained current lists; not measured curricularAtomic or central-denominator values.",
+      "newMaterialAssessedGoalIds": [
+        "a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+      ],
+      "wholeTerminalCoverageValidated": false,
+      "remainingLegacyTerminalDuties": "HOLD: all retained other terminal duties, blanket covered-goal claims and source/course/acquisition routes require separate independent review."
+    },
+    "wholeLegacyTerminalApproved": false,
+    "taskContentOldCompletePrefixRetained": true,
+    "taskContentActualAddedSuffixExactlyNewWholeMaterial": true,
+    "solutionContentOldCompletePrefixRetained": true,
+    "solutionContentActualAddedSuffixExactlyNewWholeMaterial": true
+  },
+  "practicalExecutionObserved": false,
+  "whole5851PApproved": false,
+  "wholeTerminal145Approved": false
+}

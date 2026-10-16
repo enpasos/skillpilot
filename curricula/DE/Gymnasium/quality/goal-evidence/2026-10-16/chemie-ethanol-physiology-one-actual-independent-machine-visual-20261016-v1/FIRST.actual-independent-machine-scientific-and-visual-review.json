@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-10-16T00:25:07.542955+00:00",
+  "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ethanol-physiology-one-necessary-PNG-author-20261016-v1/assets/a25a19ed-aec3-59cc-ae28-31d98746cb9d/a25a19ed-aec3-59cc-ae28-31d98746cb9d.png",
+    "sha256": "sha256:5420b10cb0b65142661da9183d8d8019c856ba1b02db85e6d1b1c6c6b52f5e72",
+    "bytes": 1622213
+  },
+  "verdict": "SUPPORTED_VISUAL_WITH_OPEN_PHYSIOLOGY_BINDING_CONDITION",
+  "layoutAndLegibilitySupported": true,
+  "machineVisualApproval": false,
+  "normalV": "NOT_RUN_NOT_AUTHORIZED",
+  "D": "NO_VOTE",
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "observations": [
+    {
+      "check": "C2 formulas and oxidation series",
+      "result": "SUPPORTED_AS_SIMPLIFIED_ACID_FORM_SERIES",
+      "observationDe": "Ethanol CH3–CH2–OH, Ethanal CH3–CHO und Ethansäure CH3–COOH sind korrekt benannt und gezeichnet. Beide Kohlenstoffatome bleiben erhalten. Das ist eine sinnvolle vereinfachte Darstellung aufeinanderfolgender Oxidationsstufen; Protonen-/Cofaktorbilanz und Enzyme werden nicht behauptet."
+    },
+    {
+      "check": "Partial chain",
+      "result": "SUPPORTED",
+      "observationDe": "Nach der dritten Karte weisen ein weiterer Pfeil und drei Punkte sichtbar auf eine Fortsetzung hin. Es wird keine vollständige Endentgiftung, kein sicherer Zeitpunkt und keine Sofortwirkung behauptet."
+    },
+    {
+      "check": "Body and everyday context",
+      "result": "SUPPORTED",
+      "observationDe": "Gehirn mit Störungssymbol, Leber sowie Lenkrad/Schlüssel mit Warnzeichen stellen Körperwirkung, Abbauorgan und Verkehrssicherheit verständlich in Beziehung. Das Wellenmotiv ist ein abstraktes Störungssymbol, keine beschriftete Behauptung eines konkreten elektrischen Messsignals. Keine Person oder scheinbar individuelle Diagnose ist dargestellt."
+    },
+    {
+      "check": "Actual360display",
+      "result": "SUPPORTED",
+      "observationDe": "Bei der tatsächlich angesehenen 360×203-Pixel-Vorschau sind die drei Stoffnamen und Formeln, Oxidationspfeile, Fortsetzungspunkte, Gehirn, Leber und Verkehrswarnung erkennbar. Es gibt keine lesepflichtige Kleinschrift."
+    },
+    {
+      "check": "Actual680display",
+      "result": "SUPPORTED",
+      "observationDe": "Bei der tatsächlich angesehenen 680×383-Pixel-Vorschau bleiben alle Hauptmotive und Formeln deutlich lesbar; die Komposition ist übersichtlich."
+    },
+    {
+      "check": "Style and orientation",
+      "result": "SUPPORTED",
+      "observationDe": "Freundlicher abstrakter Comicstil, klare Konturen und ruhige Farben. Querformat etwa16:9 ist für drei chemische Stufen und die getrennten Körper-/Risikomotive geeignet. Keine problematische Personenperspektive."
+    },
+    {
+      "check": "Extent of coverage",
+      "result": "SUPPORTED_AS_OVERVIEW_NOT_WHOLE_ASSESSMENT",
+      "observationDe": "Das Bild muss weder jede Desinfektionsmittel-/Werbekarte noch alle Kriterien des Materials abbilden. Es ersetzt weder die bereitgestellten Informationen noch eine eigenständige Leistung und behauptet keine tatsächlich durchgeführte Einnahme, Messung oder Erprobung."
+    }
+  ],
+  "findings": [
+    {
+      "id": "ETHANOL-V1-CONTEXT",
+      "severity": "required-binding-clarification",
+      "status": "OPEN",
+      "findingDe": "Die vollständig gelesenen Fälle und das a25-Profil verwenden für den körperlichen Abbau ausdrücklich CH3COO− (Acetat). Die Bildkarte zeigt dagegen CH3COOH (Ethansäure). Die chemischen Oxidationsstufen sind korrekt; die Säureform darf jedoch nicht stillschweigend als identische physiologische Spezies des Materials ausgegeben werden. Das offizielle NIAAA-Schema nennt ebenfalls Acetat. Ohne Klärung besteht eine echte Bild-/Materialbindungslücke.",
+      "requiredResolutionDe": "Vor Normal-V-Bindung entweder die dritte Bildkarte auf Acetat/CH3COO− ändern oder eine sichtbare knappe Bildbeschreibung verbindlich mitführen: vereinfachte Oxidationsstufen; im Körper liegt die dritte Stufe überwiegend als Acetat vor, der Abbau geht weiter. Eine reine interne Provenienznotiz genügt für die sichtbare Lernendenzuordnung nicht. Die gute Gestaltung muss deswegen nicht neu entworfen werden.",
+      "exampleVisibleCaptionDe": "Vereinfachte Oxidationsstufen: Ethanol → Ethanal → Ethansäure. Im Körper liegt die dritte Stufe überwiegend als Acetat vor; der Abbau geht weiter.",
+      "scopeDe": "Keine neue Forderung nach sämtlichen biochemischen Details; nur die Unterscheidung der tatsächlich gezeichneten Säureform vom ausdrücklich verwendeten Acetat-Schema."
+    }
+  ],
+  "openFindingCount": 1,
+  "protectedExistingCd9ImageTouched": false,
+  "strictCentralCountChanged": false,
+  "scientificExternalReference": {
+    "title": "NIAAA: Alcohol Metabolism",
+    "url": "https://www.niaaa.nih.gov/publications/alcohol-metabolism",
+    "use": "Official pathway independently confirms acetate as the named bodily metabolite; no individual health advice is inferred."
+  }
+}

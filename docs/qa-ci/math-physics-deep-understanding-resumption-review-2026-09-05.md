@@ -1,6 +1,22 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-## Aktuelle Chemie-Fortsetzung: 386/426 – 15. Oktober 2026
+## Aktuelle Chemie-Fortsetzung: 399/429 – 16. Oktober 2026
+
+Der [aktuelle geprüfte Zwischenstand](chemie-native19-current429-checkpoint-2026-10-16.md)
+erreicht im inaktiven zentralen Bericht **399/429 (93,0 %)**, sechs
+Pflichtprüfungen PASS und **30 offene Ziele**. Gegenüber 392/426 sind 15
+fachliche Erstabschlüsse und vier erneuerte Bestandsbindungen nachgewiesen.
+Drei geprüfte nichtatomare Kontexte verlassen die atomare Abschlusszahl;
+fünf veraltete Geltungsbindungen bleiben offen. Netto kommen sieben strenge
+Abschlüsse hinzu. D/P/A/M/V stehen bei **399/418/417/429/429**.
+Der abschließende reale Zentralbericht lief in 66,422 Sekunden ohne Befunde.
+Quellen-/Kurs- und weitere Routenprüfungen bleiben offen; M7 wird nicht behauptet.
+Aktiv bleiben Chemie **231/402, M6** und die drei geschützten M7-Fächer
+unverändert. Der Vorgänger `122d4eaf` hat GitHub-CI bestanden; der neue
+Zwischenstand erhält vor neuer fachlicher Arbeit seinen eigenen Commit und Lauf.
+Die nachstehenden Zahlen sind historische Zwischenstände.
+
+## Vorherige Chemie-Fortsetzung: 386/426 – 15. Oktober 2026
 
 Der [Praktikums-Folgecheckpoint](chemie-bcp-current426-checkpoint-2026-10-15.md)
 erreicht im inaktiven zentralen Bericht **386/426 (90,6 %)**:

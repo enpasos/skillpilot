@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "role": "Explicitly root-authorized additive technical QS view; old view and canonical unchanged",
+  "beforeView": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-bcp-full426-single-placement-qs-view-pure-context-author-20261015-v1/candidate/full426.single-visible-placement.inactive-QS.author.view.json",
+    "sha256": "sha256:f3f8c8250d7f3a8537f62643c48dd9ae03f4e316fc4149982c1816d9eede1574",
+    "bytes": 8972
+  },
+  "candidateView": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current578-full429-canonical-QS-view-single-enrichment-entry-author-technical-20261016-v1/VIEW.full429.single-explicit-enrichment-entry.reine-QS.author.json",
+    "sha256": "sha256:4356870676d4dcfd7b2a19f1a059cb4b4e3db1eea1e5f0a209f438fe80cb4d13",
+    "bytes": 9640
+  },
+  "normalFullQSAlias": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-views/chemie-m7-full-canonical.view.json",
+  "exactAddedStructure": {
+    "kind": "structure",
+    "id": "chemie-voluntary-enrichment-explicit-QS",
+    "label": "Freiwillige Erweiterung – reine M7-Prüfsicht",
+    "children": [
+      {
+        "kind": "goalEntry",
+        "goalId": "8edee6b6-9ead-515e-93f5-feada64522b2",
+        "projectionRole": "target"
+      }
+    ]
+  },
+  "operations": [
+    {
+      "op": "replace",
+      "path": "/viewId",
+      "before": "chemie-m7-full426-single-shared-process-placement-inactive-qs-author-20261015",
+      "after": "chemie-m7-full429-canonical-QS-single-enrichment-entry-20261016-v1"
+    },
+    {
+      "op": "add",
+      "path": "/rootNodes/0/children/-",
+      "value": {
+        "kind": "structure",
+        "id": "chemie-voluntary-enrichment-explicit-QS",
+        "label": "Freiwillige Erweiterung – reine M7-Prüfsicht",
+        "children": [
+          {
+            "kind": "goalEntry",
+            "goalId": "8edee6b6-9ead-515e-93f5-feada64522b2",
+            "projectionRole": "target"
+          }
+        ]
+      }
+    },
+    {
+      "op": "append",
+      "path": "/sourceDutyNote",
+      "value": " Reine QS-Vervollständigung: Das weiterhin ordentliche Ziel8ed wird explizit als freiwillige Erweiterung geprüft. Dies begründet keine Lehrplangeltung, Quellenabdeckung oder Aufnahme in eine Lernenden-/Kursansicht; die kanonischen applicability- und Ausschlussmetadaten bleiben unverändert."
+    }
+  ],
+  "beforeRootChildrenByteSemanticUnchanged": true,
+  "goalEntryCountAdded": 1,
+  "canonicalMutation": false,
+  "sourceOrCourseViewMutation": false,
+  "runtimeMutation": false,
+  "HostAliasUpdatedYet": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

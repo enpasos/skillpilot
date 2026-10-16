@@ -1,0 +1,124 @@
+{
+  "role": "Preview wholeGoal identity snapshot metadata only; no positive P record or criteria rewrite",
+  "wholeImmutableProfileInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-edta-conductometry-whole-source-author-successor-20261016-v1/profiles/ONE.whole-conductometric-method.raw-E0G0.author.json",
+    "sha256": "sha256:328707e873cf10517e644aa484c2f57f270ff765b35f7277c5657a5e151643aa",
+    "bytes": 2882
+  },
+  "wholeProfileBodyWithCurrentIdentitySnapshots": {
+    "goalId": "7c0b944d-3f1f-5d26-84b0-2a359f689cf0",
+    "archetype": "experiment",
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "status": "unreviewed-author-design",
+    "expectations": [
+      {
+        "id": "e1",
+        "essentialUnderstandingDe": "Gelöste Ionen tragen verschieden zur Leitfähigkeit bei; bei der Fällung ändern sich Art und Menge der gelösten Ladungsträger.",
+        "essentialUnderstandingEn": "Dissolved ions contribute differently to conductivity; precipitation changes the species and amounts of dissolved charge carriers.",
+        "observablePerformanceDe": "Erklärt Anfangsabfall und nachfolgenden Anstieg aus allen beteiligten Ionen statt die Farbe als EDTA-Endpunkt umzudeuten.",
+        "observablePerformanceEn": "Explains initial decline and subsequent rise from all involved ions rather than treating colour as an EDTA endpoint."
+      },
+      {
+        "id": "e2",
+        "essentialUnderstandingDe": "Ein experimenteller Leitfähigkeitsverlauf verlangt kontrollierte eigene Messungen; konstruierte Tabellen sind nur Auswertungsmaterial.",
+        "essentialUnderstandingEn": "An experimental conductivity curve requires controlled own measurements; constructed tables provide analysis material only.",
+        "observablePerformanceDe": "Führt den lokal freigegebenen Versuch tatsächlich durch und dokumentiert beobachtete Bedienung, rohe Daten und Kontrollen.",
+        "observablePerformanceEn": "Actually performs the locally authorized experiment and records observed handling, raw data and controls."
+      },
+      {
+        "id": "e3",
+        "essentialUnderstandingDe": "Äquivalenzpunkt, Reaktionsstöchiometrie und tatsächliche Probenannahmen bestimmen die berechenbare Konzentration.",
+        "essentialUnderstandingEn": "Equivalence, reaction stoichiometry and actual sample assumptions determine which concentration can be calculated.",
+        "observablePerformanceDe": "Berechnet den Chloridgehalt und begründet den veränderten CaCl2-Faktor sowie die Grenzen bei unbekannter Matrix.",
+        "observablePerformanceEn": "Calculates chloride and explains the changed CaCl2 factor and limits in an unknown matrix."
+      }
+    ],
+    "material": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-edta-conductometry-whole-source-author-successor-20261016-v1/materials/ONE.complete-bilingual-conductometric-method-and-changed-transfer.author.json",
+      "sha256": "sha256:69aa360aeb1504c8dafefedc512615e9d1576ccfc52a74b28fd3a13e2c046b77",
+      "bytes": 12286
+    },
+    "requiredExpectationIds": [
+      "e1",
+      "e2",
+      "e3"
+    ],
+    "independentTransferRequired": true,
+    "minimumIndependentDemonstrations": 2,
+    "demonstrationMeaning": "Observed execution and independent changed-data/stoichiometric interpretation, possibly within one integrated performance; no two-task quota.",
+    "humanApproval": false,
+    "humanTrial": false,
+    "wholeGoal": {
+      "id": "7c0b944d-3f1f-5d26-84b0-2a359f689cf0",
+      "shortKey": "canonical_chemistry_conductometric_precipitation_titration",
+      "title": "Konduktometrische Fällungstitrationen durchführen und auswerten",
+      "titleEn": "Perform and evaluate conductometric precipitation titrations",
+      "description": "Die lernende Person kann eine konduktometrische Fällungstitration unter kontrollierten Messbedingungen durchführen, den Leitfähigkeitsverlauf mit den gelösten Ionen und ihrer Fällung erklären, den Äquivalenzpunkt aus den Messdaten bestimmen und daraus die Konzentration des bestimmten Ions stöchiometrisch berechnen.",
+      "descriptionEn": "The learner can perform a conductometric precipitation titration under controlled measurement conditions, explain the conductivity curve using the dissolved ions and their precipitation, determine the equivalence point from the measured data and use stoichiometry to calculate the concentration of the determined ion.",
+      "requires": [
+        "f1ed86f0-534d-57d7-8952-a004a331cc54",
+        "4aa3a130-b517-5ac5-87b2-147fe432cadd"
+      ],
+      "contains": [],
+      "weight": 1,
+      "type": "atomic",
+      "tags": [
+        "LK",
+        "canonical",
+        "SekII"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE"
+        ]
+      },
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "Q3",
+        "area": "Analytik",
+        "topicCode": "CANONICAL.CHEMISTRY.CONDUCTOMETRIC_PRECIPITATION_TITRATION"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "provenance": {
+          "authorCandidatePackage": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-edta-conductometry-whole-source-author-successor-20261016-v1",
+          "primarySource": "BB/BE official RLP2022 physical pages41–42, LK column; integrated method operationalisation, not a literal competency quotation"
+        }
+      },
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "7c0b944d-3f1f-5d26-84b0-2a359f689cf0",
+          "title": "Visualisierung: Konduktometrische Fällungstitrationen durchführen und auswerten",
+          "url": "/assets/goal-visualizations/chemie/7c0b944d-3f1f-5d26-84b0-2a359f689cf0/7c0b944d-3f1f-5d26-84b0-2a359f689cf0.png",
+          "provider": "OpenAI / ChatGPT-Codex built-in image generation",
+          "description": "Schulischer Aufbau einer konduktometrischen Fällungstitration und ihr volumenbereinigter Leitfähigkeitsverlauf: nur geringer Abfall vor dem Knick, deutlicher Anstieg danach.",
+          "altText": "Eine Bürette tropft über einem gerührten Becherglas mit Leitfähigkeitssonde und weißem Niederschlag. Daneben liegt ein fast waagrecht leicht fallender Leitfähigkeitsast deutlich über null; am markierten Knick geht er in einen steil steigenden Ast über. Die Grafik zeigt keine Farbindikation und behauptet keine ausgeführte Messung.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "draft"
+        }
+      ]
+    }
+  },
+  "currentWholePartnerMap": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/sources/CURRENT576.whole-canonical-partner-map.preview.json",
+    "sha256": "sha256:382517ff486a10880e9616814c1cf106891765b8f1a5ecc853b502d7c14b0051",
+    "bytes": 1997203
+  },
+  "allScientificCriteriaAndCaseBindingsEquivalent": true,
+  "normalPositivePClaimed": false
+}

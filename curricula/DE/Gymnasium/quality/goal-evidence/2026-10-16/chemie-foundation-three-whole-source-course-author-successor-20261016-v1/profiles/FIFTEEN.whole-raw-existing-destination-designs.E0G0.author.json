@@ -1,0 +1,2738 @@
+{
+  "role": "Whole raw E0/G0 design; source/partner acceptance pending; exact qualitative B477 raw profile is separately retained",
+  "profiles": [
+    {
+      "goalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+      "wholeGoal": {
+        "id": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+        "title": "Oxidationszahlen bestimmen und bilanzieren",
+        "titleEn": "Determine and balance oxidation numbers",
+        "description": "Die lernende Person kann Oxidationszahlen für Atome in anorganischen und organischen Teilchen herleiten, Redoxreaktionen identifizieren und Redoxgleichungen mithilfe von Oxidationszahlen ausgleichen.",
+        "descriptionEn": "The learner can derive oxidation numbers for atoms in inorganic and organic particles, identify redox reactions, and balance redox equations using oxidation numbers.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+          "d2ccd1d5-56f7-583f-9724-e97441367f91"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "bb5a6336-d996-4d6c-a993-973faf47401b"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+            "title": "Visualisierung: Oxidationszahlen bestimmen und bilanzieren",
+            "url": "/assets/goal-visualizations/chemie/4961130b-1ee8-58f2-a319-dff0a864db6a/4961130b-1ee8-58f2-a319-dff0a864db6a.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Oxidationszahlen bestimmen und bilanzieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Oxidationszahlen bestimmen und bilanzieren\". Die lernende Person kann Oxidationszahlen für Atome in anorganischen und organischen Teilchen herleiten, Redoxreaktionen identifizieren und Redoxgleichungen mithilfe von Oxidationszahlen ausgleichen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "r-charge",
+            "essentialUnderstandingDe": "Atomare Oxidationszahlen ergeben zusammen die Teilchenladung und folgen der formalen Bindungselektronenzuordnung.",
+            "essentialUnderstandingEn": "Atomic oxidation numbers sum to particle charge and follow formal assignment of bonding electrons.",
+            "observablePerformanceDe": "Leitet Werte für MnO4− und lokale C-Atome aus Ladung/Bondstruktur her, statt Ionenladung oder Mittelwert zu übernehmen.",
+            "observablePerformanceEn": "Derives values for MnO4− and local carbon atoms from charge/bond structure instead of copying ionic charge or an average."
+          },
+          {
+            "id": "r-transfer",
+            "essentialUnderstandingDe": "Oxidationszahländerungen unterscheiden Redox von Protonenübertragung und bestimmen den Elektronenausgleich.",
+            "essentialUnderstandingEn": "Oxidation-number changes distinguish redox from proton transfer and determine electron balance.",
+            "observablePerformanceDe": "Identifiziert Oxidation/Reduktion und Elektronenzahlen in anorganischer und organischer Reaktion; begründet Neutralisation als Gegenbeispiel.",
+            "observablePerformanceEn": "Identifies oxidation/reduction and electron counts in inorganic and organic reactions; justifies neutralization as a counterexample."
+          },
+          {
+            "id": "r-balance",
+            "essentialUnderstandingDe": "Eine Redoxgleichung erhält Atome und Gesamtladung; die formale Bilanz ist keine Mechanismusbeobachtung.",
+            "essentialUnderstandingEn": "A redox equation conserves atoms and total charge; formal balance is not observation of a mechanism.",
+            "observablePerformanceDe": "Entwickelt Teil-/Gesamtgleichungen der sauren Reaktion und eine Struktur-basierte organische Gesamtgleichung; prüft Bilanz und benennt die Modellgrenze.",
+            "observablePerformanceEn": "Constructs half/overall equations for the acidic reaction and a structure-based organic overall equation; checks balance and states the model limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "r-charge",
+            "r-transfer",
+            "r-balance"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "inorganic-organic",
+            "textDe": "Anorganische Ionen gegenüber lokalen C-Atomen in Molekülen.",
+            "textEn": "Inorganic ions versus local carbon atoms in molecules."
+          },
+          {
+            "id": "redox-not-redox",
+            "textDe": "Elektronenbilanz gegenüber reiner Protonenübertragung.",
+            "textEn": "Electron balance versus pure proton transfer."
+          },
+          {
+            "id": "medium",
+            "textDe": "Saure Ionenbilanz gegenüber gegebener neutraler organischer Umsetzung.",
+            "textEn": "Acidic ionic balance versus a stated neutral organic transformation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "redox-1",
+            "taskDemandDe": "In saurer wässriger Lösung reagieren MnO4− und Fe2+ zu Mn2+ und Fe3+; H+(aq), H2O und e− sind Bilanzhilfen, O ist −II. Leite atomare Oxidationszahlen und den Unterschied zur Ionenladung her, identifiziere Elektronenabgabe/-aufnahme, entwickle Teil- und Gesamtgleichung und prüfe alle Atome/Ladungen. Prüfe als Gegenbeispiel die HCl/NaOH-Neutralisation mit H3O+ anhand unveränderter Oxidationszahlen. Keine Labordurchführung.",
+            "taskDemandEn": "In aqueous acidic solution MnO4− and Fe2+ form Mn2+ and Fe3+; H+(aq), H2O, and e− are balancing aids and O is −II. Derive atomic oxidation numbers and their distinction from ionic charge, identify electron loss/gain, construct half/overall equations, and check atoms/charges. Test HCl/NaOH neutralization with H3O+ as a counterexample using unchanged oxidation numbers. No laboratory execution.",
+            "expectedPerformanceDe": "Mn(+VII)→+II nimmt 5 e− auf, Fe(+II)→+III gibt 1 e− ab. Entwickelt MnO4−+8H++5e−→Mn2++4H2O und Fe2+→Fe3++e−; kombiniert mit Faktor 5. Gesamtladung +17/+17 und alle Atome stimmen. Summenregel unterscheidet Mn(+VII) von Ionenladung −1. H3O++OH−→2H2O ist mit unverändert H(+I)/O(−II) keine Redoxreaktion.",
+            "expectedPerformanceEn": "Mn(+VII)→+II gains 5 e−; Fe(+II)→+III loses 1. Constructs MnO4−+8H++5e−→Mn2++4H2O and Fe2+→Fe3++e−; combines using factor 5. Total charge +17/+17 and all atoms balance. Charge-sum rule distinguishes Mn(+VII) from ionic charge −1. H3O++OH−→2H2O has unchanged H(+I)/O(−II) and is not redox.",
+            "understandingFocusDe": "Unabhängige formale Elektronenbilanz auf anorganische und organische Teilchen übertragen; Gegenbeispiel und Grenzen der Bilanz begründen.",
+            "understandingFocusEn": "Transfer independent formal electron balancing to inorganic and organic particles; justify a counterexample and limits of bookkeeping."
+          },
+          {
+            "id": "redox-2",
+            "taskDemandDe": "Gegeben sind CH3–CH2–OH, CH3–C(=O)–H und die Umsetzung Ethanol+CuO→Ethanal+Cu+H2O unter festgelegten Bedingungen. O>C>H, C–C zählt 0. Bestimme beide lokalen C-Oxidationszahlen und ihre Mittelwerte; begründe Elektronenbilanz und kleinste Koeffizienten und prüfe alle Atome. Prüfe die Behauptung einer O-Aufnahme am organischen Molekül und erläutere die Grenze zwischen formaler Bilanz und Mechanismus. Kein Erhitzen verlangt.",
+            "taskDemandEn": "Given CH3–CH2–OH, CH3–C(=O)–H and the stipulated transformation ethanol+CuO→ethanal+Cu+H2O. O>C>H and C–C contributes 0. Determine both local carbon oxidation numbers and averages; justify electron balance and smallest coefficients and check all atoms. Assess a claim that the organic molecule gains oxygen and distinguish formal balance from mechanism. No heating required.",
+            "expectedPerformanceDe": "Leitet CH3-C=−III in beiden Strukturen, CH2OH-C=−I und CHO-C=+I her; Mittelwerte −II/−I lokalisieren die Änderung nicht. C gibt formal 2 e− ab, Cu(+II) nimmt 2 auf. Koeffizienten 1:1:1:1:1 mit C2/H6/O2/Cu1. Gleiche O-Zahl widerlegt pauschale O-Aufnahme; H-Entzug und lokale Oxidationszahländerung erklären die Oxidation. Formale Elektronenbuchhaltung beweist keinen Mechanismus.",
+            "expectedPerformanceEn": "Derives CH3 carbon=−III in both structures, CH2OH carbon=−I, and CHO carbon=+I; averages −II/−I do not locate the change. Carbon formally loses 2 e− and Cu(+II) gains 2. Coefficients 1:1:1:1:1 balance C2/H6/O2/Cu1. Equal oxygen counts refute simple oxygen uptake; hydrogen removal/local oxidation-number change explain oxidation. Formal electron bookkeeping does not prove a mechanism.",
+            "understandingFocusDe": "Unabhängige formale Elektronenbilanz auf anorganische und organische Teilchen übertragen; Gegenbeispiel und Grenzen der Bilanz begründen.",
+            "understandingFocusEn": "Transfer independent formal electron balancing to inorganic and organic particles; justify a counterexample and limits of bookkeeping."
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "reason": "Unchanged entire earlier case/profile design retained; original historical E1/G1 is not carried as a new decision",
+      "sourceWholeAcceptance": "HOLD"
+    },
+    {
+      "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+      "wholeGoal": {
+        "id": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+        "title": "Lösungen berechnen und pH bestimmen",
+        "titleEn": "Calculate solutions and determine pH",
+        "description": "Die lernende Person kann Stoffmengen, Konzentrationen und pH-Werte starker Säuren und Basen berechnen, saure oder basische Lösungen definierter Stoffmengenkonzentration herstellen und Messergebnisse plausibilisieren.",
+        "descriptionEn": "The learner can calculate amounts of substance, molar concentrations, and pH values for strong acids and bases, prepare acidic or alkaline solutions of a specified molar concentration, and check measurements for plausibility.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "28bb9d15-f865-5843-a035-6066580fea64",
+          "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+          "d2ccd1d5-56f7-583f-9724-e97441367f91"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "14590470-b074-4fe0-b661-ea19e0e5a80b"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+            "title": "Visualisierung: Lösungen berechnen und pH bestimmen",
+            "url": "/assets/goal-visualizations/chemie/f1ed86f0-534d-57d7-8952-a004a331cc54/f1ed86f0-534d-57d7-8952-a004a331cc54.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Lösungen berechnen und pH bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Lösungen berechnen und pH bestimmen\". Die lernende Person kann Stoffmengen, Konzentrationen und pH-Werte starker Säuren und Basen berechnen, saure oder basische Lösungen definierter Stoffmengenkonzentration herstellen und Messergebnisse plausibilisieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "s-conservation",
+            "essentialUnderstandingDe": "Stoffmenge bleibt bei Verdünnung erhalten; Endvolumen und Dissoziationsstöchiometrie bestimmen Ionenkonzentrationen.",
+            "essentialUnderstandingEn": "Dilution conserves amount; final volume and dissociation stoichiometry determine ion concentrations.",
+            "observablePerformanceDe": "Berechnet n, c und benötigtes Stammlösungsvolumen; unterscheidet formale Ca(OH)2-Konzentration von [OH−] und erklärt den Faktor 2.",
+            "observablePerformanceEn": "Calculates n, c, and required stock volume; distinguishes formal Ca(OH)2 concentration from [OH−] and explains factor 2."
+          },
+          {
+            "id": "s-ph",
+            "essentialUnderstandingDe": "pH ist aktivitätsbezogen; starke vollständige Protolyse, Temperatur und vernachlässigbare Autoprotolyse sind Bedingungen der einfachen Konzentrationsrechnung.",
+            "essentialUnderstandingEn": "pH depends on activity; strong complete protolysis, temperature, and negligible autoprotolysis are conditions of the simple concentration calculation.",
+            "observablePerformanceDe": "Berechnet pH für starke Säure und Base; begründet Grenzen für NH3 und konzentrierte Lauge und beurteilt die ideale Extremverdünnung mit gegebener h-Bilanz/Lösung.",
+            "observablePerformanceEn": "Calculates pH for a strong acid and base; justifies limits for NH3 and concentrated alkali and assesses ideal extreme dilution using the supplied h balance/solution."
+          },
+          {
+            "id": "s-preparation",
+            "essentialUnderstandingDe": "Herstellen ist eine beobachtbare praktische Leistung mit Volumenführung, Temperaturausgleich, Homogenisierung und verantwortlicher Handhabung.",
+            "essentialUnderstandingEn": "Preparation is an observable practical performance involving volume control, temperature equilibration, homogenization, and responsible handling.",
+            "observablePerformanceDe": "Stellt nach Laborfreigabe beide Lösungen sachgerecht her und dokumentiert eigene Volumina/Beobachtungen; eine Rechnung oder Planung belegt keine Durchführung.",
+            "observablePerformanceEn": "After laboratory authorization, competently prepares both solutions and records actual volumes/observations; calculation or planning does not demonstrate execution."
+          },
+          {
+            "id": "s-measurement",
+            "essentialUnderstandingDe": "Messwerte werden unter Modellannahmen und Unsicherheit beurteilt; eine Abweichung benennt zuerst eine prüfbare Hypothese.",
+            "essentialUnderstandingEn": "Readings are assessed using model assumptions and uncertainty; a discrepancy first motivates a testable hypothesis.",
+            "observablePerformanceDe": "Misst nach Kalibrierung und dokumentiert Temperatur/eigene Messung; prüft plausible/unplausible Daten, CO2-/Verdünnungs-/Gerätehypothesen und konkrete Kontrollen.",
+            "observablePerformanceEn": "Measures after calibration and records temperature/actual readings; assesses plausible/implausible data, CO2/dilution/instrument hypotheses, and specific checks."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "s-conservation",
+            "s-ph",
+            "s-preparation",
+            "s-measurement"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "acid-base-stoichiometry",
+            "textDe": "Starke einprotonige Säure gegenüber zweiwertigem Hydroxid und NaOH-Vergleich.",
+            "textEn": "Strong monoprotic acid versus divalent hydroxide and NaOH comparison."
+          },
+          {
+            "id": "concentration-regime",
+            "textDe": "Normale Verdünnung gegenüber idealer Extremverdünnung mit Autoprotolyse.",
+            "textEn": "Ordinary dilution versus ideal extreme dilution including autoprotolysis."
+          },
+          {
+            "id": "actual-data",
+            "textDe": "Beobachtete Herstellung/Messung gegenüber vorgegebenen Daten und Fehlersuche.",
+            "textEn": "Observed preparation/measurement versus supplied data and troubleshooting."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "solution-1",
+            "taskDemandDe": "Bei 25 °C sollen 250,0 mL HCl mit c=0,0100 mol/L aus cstock=0,100 mol/L entstehen; Vollpipette 25,00 mL und Messkolben 250,0 mL, kalibriertes pH-Meter und beaufsichtigtes freigegebenes Labor sind verfügbar. Vollständige Protolyse, Aktivitäten≈c/(1 mol/L), pKw=14,00. Berechne n, Vstock und pH; begründe Geräte, Säure zum Wasser und Endvolumen. Führe Herstellung/Messung tatsächlich sachgerecht durch und protokolliere eigene Beobachtungen, Volumina, Temperatur/Kalibrierung und pH; schriftliche Planung ersetzt keine Durchführung. Beurteile konstruierte Werte 2,04/3,02 (je ±0,05 pH) mit Fehlerhypothese/Kontrolle. Prüfe theoretisch CO2-freie HCl c=10−8 mol/L mit gegebener h=(c+√(c²+4Kw))/2 statt unzulässigem pH=8; erkläre Wasserbeitrag und Modellgrenze.",
+            "taskDemandEn": "At 25 °C prepare 250.0 mL HCl at c=0.0100 mol/L from cstock=0.100 mol/L; a 25.00 mL volumetric pipette, 250.0 mL flask, calibrated pH meter, and authorized supervised laboratory are available. Complete protolysis, activities≈c/(1 mol/L), pKw=14.00. Calculate n, stock volume, and pH; justify apparatus, acid into water, and final volume. Actually prepare and measure competently, recording your own observations, volumes, temperature/calibration, and pH; written planning does not replace execution. Assess constructed readings 2.04/3.02 (each ±0.05 pH) with an error hypothesis/check. Assess theoretical CO2-free HCl at c=10−8 mol/L using supplied h=(c+√(c²+4Kw))/2 instead of invalid pH=8; explain water contribution/model limits.",
+            "expectedPerformanceDe": "n=2,50 mmol, Vstock=25,00 mL, idealer pH≈2,000; Verdünnung erhält n. Begründet Wasser vorlegen, Säure zum Wasser, genaues Endvolumen, Temperaturausgleich, Homogenisierung und kalibrierte Messung. Durchführung nur durch beobachtete eigene Handhabung plus Volumen-/Temperatur-/Kalibrierungs-/Messprotokoll belegen. 2,04 passt, 3,02 nicht; prüfbare Verdünnungs-/Gerätehypothese statt erfundener Ursache. Gegebene Extremverdünnungsbilanz ergibt h=1,05125·10−7 mol/L, pH≈6,9783, leicht sauer; erklärt Wasserbeitrag sowie CO2-/Reinheitsgrenzen.",
+            "expectedPerformanceEn": "n=2.50 mmol, stock volume=25.00 mL, ideal pH≈2.000; dilution conserves n. Justifies water first, acid into water, exact final volume, temperature equilibration, homogenization, and calibrated measurement. Establishes execution only through observed independent handling plus volume/temperature/calibration/measurement records. 2.04 agrees, 3.02 does not; uses a testable dilution/instrument hypothesis without inventing a cause. Supplied extreme-dilution balance gives h=1.05125·10−7 mol/L, pH≈6.9783, slightly acidic; explains water contribution and CO2/purity limits.",
+            "understandingFocusDe": "Unabhängige Herleitung mit begründeten Modellgrenzen; die fallspezifischen Leistungsanforderungen und Punkte stehen in whole3.CASES.DEEN.author.json. Durchführungspunkte setzen beobachtete eigene Leistung voraus.",
+            "understandingFocusEn": "Independent derivation with justified model limits; case-specific demands and credit criteria are in whole3.CASES.DEEN.author.json. Execution credit requires observed independent performance."
+          },
+          {
+            "id": "solution-2",
+            "taskDemandDe": "Bei 25 °C werden 25,00 mL klare Ca(OH)2-Stammlösung c=0,00250 mol/L auf 250,0 mL verdünnt. Vollständige Dissoziation, Aktivitäten≈c/(1 mol/L), pKw=14,00, M=74,09 g/mol; unterhalb Löslichkeitsgrenze. Berechne n, gelöste Masse, cfinal, Ionenkonzentration, pOH/pH mit Atom-/Ladungsbilanz. Vergleiche NaOH derselben formalen Konzentration und begrenze die Formel für NH3 und konzentrierte Laugen. Begründe Endvolumen/Homogenisierung/CO2-Einfluss; führe Herstellung und Messung im freigegebenen beaufsichtigten Labor tatsächlich aus und protokolliere eigene Leistung. Beurteile konstruierte Werte 10,65/9,65 (je ±0,05 pH) und begründe eine Kontrolle; gelieferte Daten sind keine Durchführung.",
+            "taskDemandEn": "At 25 °C dilute 25.00 mL clear Ca(OH)2 stock at c=0.00250 mol/L to 250.0 mL. Complete dissociation, activities≈c/(1 mol/L), pKw=14.00, M=74.09 g/mol; below solubility limit. Calculate amount, dissolved mass, final formal concentration, ion concentration, pOH/pH with atom/charge balance. Compare NaOH at the same formal concentration and bound the formula for NH3 and concentrated alkali. Justify final volume/homogenization/CO2 effects; actually prepare and measure in an authorized supervised laboratory and document independent performance. Assess constructed readings 10.65/9.65 (each ±0.05 pH) and justify a check; supplied data are not execution.",
+            "expectedPerformanceDe": "n=6,250·10−5 mol, gelöste Masse≈4,631 mg, cfinal=2,500·10−4 mol/L. Ca(OH)2→Ca2++2OH− begründet [OH−]=5,000·10−4, pOH≈3,301, pH≈10,699. NaOH derselben formalen c: pH≈10,398; Unterschied log 2≈0,301. NH3 benötigt Gleichgewicht, konzentrierte Lauge Aktivitäten. Begründet/führt kontrollierte Verdünnung und kalibrierte Messung mit CO2-Begrenzung tatsächlich aus; beobachtete eigene Leistung dokumentieren. 10,65 passt ungefähr, 9,65 nicht; begründet frische Referenz-/Proben- und Volumenkontrolle statt unbelegter Fehlerbehauptung.",
+            "expectedPerformanceEn": "n=6.250·10−5 mol, dissolved mass≈4.631 mg, final c=2.500·10−4 mol/L. Ca(OH)2→Ca2++2OH− justifies [OH−]=5.000·10−4, pOH≈3.301, pH≈10.699. NaOH at equal formal c gives pH≈10.398; difference log 2≈0.301. NH3 needs equilibrium, concentrated alkali activities. Justifies/actually performs controlled dilution and calibrated measurement while limiting CO2; documents observed independent work. 10.65 approximately agrees, 9.65 does not; justifies fresh reference/sample and volume checks instead of claiming an unproven error.",
+            "understandingFocusDe": "Unabhängige Herleitung mit begründeten Modellgrenzen; die fallspezifischen Leistungsanforderungen und Punkte stehen in whole3.CASES.DEEN.author.json. Durchführungspunkte setzen beobachtete eigene Leistung voraus.",
+            "understandingFocusEn": "Independent derivation with justified model limits; case-specific demands and credit criteria are in whole3.CASES.DEEN.author.json. Execution credit requires observed independent performance."
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "reason": "Unchanged entire earlier case/profile design retained; original historical E1/G1 is not carried as a new decision",
+      "sourceWholeAcceptance": "HOLD"
+    },
+    {
+      "goalId": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+      "wholeGoal": {
+        "id": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+        "title": "Brønsted-Konzept anwenden",
+        "titleEn": "Apply Brønsted concept",
+        "description": "Die lernende Person kann Protonenübertragungen mit dem Brønsted-Konzept beschreiben, Protolysegleichungen formulieren, korrespondierende Säure-Base-Paare einschließlich der Rolle von Wasser als Ampholyt identifizieren und Säuren und Basen als Teilchen von sauren und basischen Lösungen als Stoffgemischen unterscheiden.",
+        "descriptionEn": "The learner can describe proton transfers using the Brønsted concept, formulate protolysis equations, identify conjugate acid-base pairs including the role of water as an ampholyte and distinguish acids and bases as species from acidic and basic solutions as mixtures.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "28bb9d15-f865-5843-a035-6066580fea64",
+          "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024 Source-Extraction)",
+            "sourceGoalId": "he-chem-sekii-e-2-b05-a01-0713a913",
+            "sourceRef": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024, E.2 Protolysereaktionen",
+            "sourceSpan": "E.2#B05A01"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+            "title": "Visualisierung: Brønsted-Konzept anwenden",
+            "url": "/assets/goal-visualizations/chemie/1c1420c2-a8e2-520f-8015-6df637a973bd/1c1420c2-a8e2-520f-8015-6df637a973bd.png",
+            "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+            "description": "Protonenübertragung von einer Säure auf eine Base, am Beispiel HCl und Wasser mit den konjugierten Paaren HCl/Cl− und H₂O/H₃O⁺. Wasser wird mit zwei, Hydronium mit drei Wasserstoffatomen dargestellt. Zwei schematische Lösungsbilder zeigen ausdrücklich beschriftete Teilchenarten statt ungenauer Atommodelle: H₃O⁺, Cl− und H₂O sowie OH−, Na⁺ und H₂O.",
+            "altText": "Protonenübertragung von einer Säure auf eine Base, am Beispiel HCl und Wasser mit den konjugierten Paaren HCl/Cl− und H₂O/H₃O⁺. Wasser wird mit zwei, Hydronium mit drei Wasserstoffatomen dargestellt. Zwei schematische Lösungsbilder zeigen ausdrücklich beschriftete Teilchenarten statt ungenauer Atommodelle: H₃O⁺, Cl− und H₂O sowie OH−, Na⁺ und H₂O.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-reversible-protolysis",
+            "essentialUnderstandingDe": "Hin- und Rückreaktion desselben Protonentransfers",
+            "essentialUnderstandingEn": "Forward and reverse transfer of the same proton",
+            "observablePerformanceDe": "Formuliere die reversible Gesamtgleichung und erläutere für Hin- und Rückrichtung jeweils Protonenabgabe und -aufnahme. Begründe beide korrespondierenden Paare, prüfe Atome und Ladung und erkläre, warum der Doppelpfeil weder gleichen Mengen noch vollständiger Umsetzung entspricht. Übertrage die Rollenbeschreibung auf NH3+H2O und auf HCl+H2O; unterscheide das Teilchen Säure/Base von der Lösung.",
+            "observablePerformanceEn": "Construct the reversible overall equation and explain proton donation and acceptance in each direction. Justify both conjugate pairs, check atoms and charge, and explain why the double arrow means neither equal amounts nor complete conversion. Transfer the role analysis to NH3+H2O and HCl+H2O, distinguishing an acid/base species from its solution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-reversible-protolysis"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-reversible-protolysis",
+            "wholeCase": {
+              "id": "source-reversible-protolysis",
+              "targetGoalIds": [
+                "1c1420c2-a8e2-520f-8015-6df637a973bd",
+                "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e"
+              ],
+              "title": {
+                "de": "Hin- und Rückreaktion desselben Protonentransfers",
+                "en": "Forward and reverse transfer of the same proton"
+              },
+              "givenMaterials": {
+                "de": "Material: CH3COOH, NH3, CH3COO− und NH4+ in einem geschlossenen wässrigen Modellsystem. Relative Stärken werden für diesen Auftrag nicht benötigt. Es sind symbolische Teilchen- und Reaktionsmodelle, keine tatsächlichen Laborbefunde.",
+                "en": "Materials: CH3COOH, NH3, CH3COO− and NH4+ in a closed aqueous model system. No relative-strength data are needed. These are symbolic species and reaction models, not actual laboratory observations."
+              },
+              "demands": [
+                {
+                  "id": "source-reversible-protolysis-whole",
+                  "de": "Formuliere die reversible Gesamtgleichung und erläutere für Hin- und Rückrichtung jeweils Protonenabgabe und -aufnahme. Begründe beide korrespondierenden Paare, prüfe Atome und Ladung und erkläre, warum der Doppelpfeil weder gleichen Mengen noch vollständiger Umsetzung entspricht. Übertrage die Rollenbeschreibung auf NH3+H2O und auf HCl+H2O; unterscheide das Teilchen Säure/Base von der Lösung.",
+                  "en": "Construct the reversible overall equation and explain proton donation and acceptance in each direction. Justify both conjugate pairs, check atoms and charge, and explain why the double arrow means neither equal amounts nor complete conversion. Transfer the role analysis to NH3+H2O and HCl+H2O, distinguishing an acid/base species from its solution."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "CH3COOH+NH3⇌CH3COO−+NH4+. Vorwärts gibt CH3COOH ein Proton an NH3, rückwärts NH4+ an CH3COO−. Paare CH3COOH/CH3COO− und NH4+/NH3, jeweils Unterschied H+. Beide Seiten C2,H7,N1,O2 und Ladung0. NH3+H2O⇌NH4++OH−: Wasser gibt H+ ab; HCl+H2O→H3O++Cl−: Wasser nimmt H+ auf. Die symbolische vollständige HCl-Protolyse ist das vorgegebene starke-Säure-Modell, keine allgemeine Aussage über alle Säuren. Umkehrbarkeit ist von Mengenverhältnis und Geschwindigkeit getrennt; die benannten Teilchen sind keine Stoffgemische.",
+                "en": "CH3COOH+NH3⇌CH3COO−+NH4+. Forward, CH3COOH donates a proton to NH3; backward, NH4+ donates to CH3COO−. Pairs CH3COOH/CH3COO− and NH4+/NH3 differ by H+. Both sides contain C2,H7,N1,O2 and charge0. NH3+H2O⇌NH4++OH−: water donates H+; HCl+H2O→H3O++Cl−: water accepts H+. The complete HCl transfer is the stated strong-acid model, not a claim about every acid. Reversibility is distinct from amounts and rates; named species are not mixtures."
+              },
+              "rubric": [
+                {
+                  "id": "source-reversible-protolysis-r1",
+                  "askedDemandIds": [
+                    "source-reversible-protolysis-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Beide Richtungen, korrekte Paare, Atome und Ladungen begründen.",
+                  "creditEn": "Justify both directions, correct pairs, atoms and charge."
+                },
+                {
+                  "id": "source-reversible-protolysis-r2",
+                  "askedDemandIds": [
+                    "source-reversible-protolysis-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Wasserrollen, Stoff-/Teilchenunterschied und Grenze des Doppelpfeils erklären.",
+                  "creditEn": "Explain water roles, species/mixture distinction and limits of the double arrow."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 6,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment."
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+      "wholeGoal": {
+        "id": "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+        "title": "Brønsted-Konzept vertiefen",
+        "titleEn": "Deepen Brønsted concept",
+        "description": "Die lernende Person kann Protolysegleichungen als Protonenübertragungen aufstellen und korrespondierende Säure-Base-Paare anhand ihres Unterschieds um ein Proton begründen.",
+        "descriptionEn": "The learner can construct protolysis equations as proton transfers and justify conjugate acid–base pairs by their difference of one proton.",
+        "weight": 1.1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "b4777001-f4ed-5fe9-9d98-02319abdea09",
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "183efcd1-8b70-4b95-8fbd-2c7d35616af9"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+            "title": "Visualisierung: Brønsted-Konzept vertiefen",
+            "url": "/assets/goal-visualizations/chemie/2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e/2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Brønsted-Konzept vertiefen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Brønsted-Konzept vertiefen\". Die lernende Person kann Protolysegleichungen als Protonenübertragungen aufstellen und korrespondierende Säure-Base-Paare anhand ihres Unterschieds um ein Proton begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-reversible-protolysis",
+            "essentialUnderstandingDe": "Hin- und Rückreaktion desselben Protonentransfers",
+            "essentialUnderstandingEn": "Forward and reverse transfer of the same proton",
+            "observablePerformanceDe": "Formuliere die reversible Gesamtgleichung und erläutere für Hin- und Rückrichtung jeweils Protonenabgabe und -aufnahme. Begründe beide korrespondierenden Paare, prüfe Atome und Ladung und erkläre, warum der Doppelpfeil weder gleichen Mengen noch vollständiger Umsetzung entspricht. Übertrage die Rollenbeschreibung auf NH3+H2O und auf HCl+H2O; unterscheide das Teilchen Säure/Base von der Lösung.",
+            "observablePerformanceEn": "Construct the reversible overall equation and explain proton donation and acceptance in each direction. Justify both conjugate pairs, check atoms and charge, and explain why the double arrow means neither equal amounts nor complete conversion. Transfer the role analysis to NH3+H2O and HCl+H2O, distinguishing an acid/base species from its solution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-reversible-protolysis"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-reversible-protolysis",
+            "wholeCase": {
+              "id": "source-reversible-protolysis",
+              "targetGoalIds": [
+                "1c1420c2-a8e2-520f-8015-6df637a973bd",
+                "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e"
+              ],
+              "title": {
+                "de": "Hin- und Rückreaktion desselben Protonentransfers",
+                "en": "Forward and reverse transfer of the same proton"
+              },
+              "givenMaterials": {
+                "de": "Material: CH3COOH, NH3, CH3COO− und NH4+ in einem geschlossenen wässrigen Modellsystem. Relative Stärken werden für diesen Auftrag nicht benötigt. Es sind symbolische Teilchen- und Reaktionsmodelle, keine tatsächlichen Laborbefunde.",
+                "en": "Materials: CH3COOH, NH3, CH3COO− and NH4+ in a closed aqueous model system. No relative-strength data are needed. These are symbolic species and reaction models, not actual laboratory observations."
+              },
+              "demands": [
+                {
+                  "id": "source-reversible-protolysis-whole",
+                  "de": "Formuliere die reversible Gesamtgleichung und erläutere für Hin- und Rückrichtung jeweils Protonenabgabe und -aufnahme. Begründe beide korrespondierenden Paare, prüfe Atome und Ladung und erkläre, warum der Doppelpfeil weder gleichen Mengen noch vollständiger Umsetzung entspricht. Übertrage die Rollenbeschreibung auf NH3+H2O und auf HCl+H2O; unterscheide das Teilchen Säure/Base von der Lösung.",
+                  "en": "Construct the reversible overall equation and explain proton donation and acceptance in each direction. Justify both conjugate pairs, check atoms and charge, and explain why the double arrow means neither equal amounts nor complete conversion. Transfer the role analysis to NH3+H2O and HCl+H2O, distinguishing an acid/base species from its solution."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "CH3COOH+NH3⇌CH3COO−+NH4+. Vorwärts gibt CH3COOH ein Proton an NH3, rückwärts NH4+ an CH3COO−. Paare CH3COOH/CH3COO− und NH4+/NH3, jeweils Unterschied H+. Beide Seiten C2,H7,N1,O2 und Ladung0. NH3+H2O⇌NH4++OH−: Wasser gibt H+ ab; HCl+H2O→H3O++Cl−: Wasser nimmt H+ auf. Die symbolische vollständige HCl-Protolyse ist das vorgegebene starke-Säure-Modell, keine allgemeine Aussage über alle Säuren. Umkehrbarkeit ist von Mengenverhältnis und Geschwindigkeit getrennt; die benannten Teilchen sind keine Stoffgemische.",
+                "en": "CH3COOH+NH3⇌CH3COO−+NH4+. Forward, CH3COOH donates a proton to NH3; backward, NH4+ donates to CH3COO−. Pairs CH3COOH/CH3COO− and NH4+/NH3 differ by H+. Both sides contain C2,H7,N1,O2 and charge0. NH3+H2O⇌NH4++OH−: water donates H+; HCl+H2O→H3O++Cl−: water accepts H+. The complete HCl transfer is the stated strong-acid model, not a claim about every acid. Reversibility is distinct from amounts and rates; named species are not mixtures."
+              },
+              "rubric": [
+                {
+                  "id": "source-reversible-protolysis-r1",
+                  "askedDemandIds": [
+                    "source-reversible-protolysis-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Beide Richtungen, korrekte Paare, Atome und Ladungen begründen.",
+                  "creditEn": "Justify both directions, correct pairs, atoms and charge."
+                },
+                {
+                  "id": "source-reversible-protolysis-r2",
+                  "askedDemandIds": [
+                    "source-reversible-protolysis-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Wasserrollen, Stoff-/Teilchenunterschied und Grenze des Doppelpfeils erklären.",
+                  "creditEn": "Explain water roles, species/mixture distinction and limits of the double arrow."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 6,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment."
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "wholeGoal": {
+        "id": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+        "title": "pK-Werte nutzen",
+        "titleEn": "Use pK values",
+        "description": "Die lernende Person kann das Donator-Akzeptor- und Gleichgewichtskonzept auf Protolysereaktionen anwenden, Säure- und Basenstärken über das Massenwirkungsgesetz sowie pKS- und pKB-Werte vergleichen.",
+        "descriptionEn": "The learner can apply the donor-acceptor and equilibrium concepts to protolysis reactions and compare acid and base strengths using the law of mass action as well as pKa and pKb values.",
+        "weight": 1.1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "b52a6cbc-3260-4ff2-bd24-7835da1e7dad"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+            "title": "Visualisierung: pK-Werte nutzen",
+            "url": "/assets/goal-visualizations/chemie/48115ff7-7aca-5d0b-a9e7-7fc6c78434ef/48115ff7-7aca-5d0b-a9e7-7fc6c78434ef.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Ausgeglichene Säure- und Base-Protolyse mit Massenwirkungsausdrücken und pK-Beziehung; keine Reaktion zwischen Vergleichsproben.",
+            "altText": "Zwei getrennte Protolysegleichgewichte: HA und Wasser ergeben korrespondierende Base und Oxonium, B und Wasser ergeben korrespondierende Säure und Hydroxid. Die jeweiligen Massenwirkungsausdrücke und negativen Zehnerlogarithmen verbinden K mit pK; kleinere pK-Werte bedeuten innerhalb des jeweiligen Säure- oder Basenvergleichs größere Stärke.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-strength-mwg-particles",
+            "essentialUnderstandingDe": "Stärke auf Teilchenebene und Gleichgewichtsgesetz",
+            "essentialUnderstandingEn": "Particle-level strength and mass action",
+            "observablePerformanceDe": "Erkläre die unterschiedliche Stärke anhand der Protonenübertragung, der Teilchenverteilung und des MWG. Definiere Ka/Kb einschließlich Wasser-Konvention und verwende pKa/pKb für den Vergleich. Begründe, warum stärker nicht konzentrierter bedeutet. Erkläre am strukturellen Transfer die Stabilisierung des Acetations gegenüber dem Alkoxid mit Mesomerie und polaren Bindungen. Bearbeite anschließend aus den unveränderten alten Paarfällen die K-Herleitungen samt Systemgrenzen; diese Vertiefung ist kein Abschlusskriterium des qualitativen B477.",
+            "observablePerformanceEn": "Explain different strengths through proton transfer, species distributions and mass action. Define Ka/Kb including the water convention and use pKa/pKb for comparison. Justify why stronger does not mean more concentrated. In the structural transfer explain acetate stabilisation relative to an alkoxide using resonance and polar bonds. Then work the K derivations and system limits from the unchanged original pair cases; this extension is not a closure requirement for qualitative B477."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-strength-mwg-particles"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-strength-mwg-particles",
+            "wholeCase": {
+              "id": "source-strength-mwg-particles",
+              "targetGoalIds": [
+                "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+                "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+                "ca216bc6-5205-5b46-abbd-fd5628e4ca5b"
+              ],
+              "title": {
+                "de": "Stärke auf Teilchenebene und Gleichgewichtsgesetz",
+                "en": "Particle-level strength and mass action"
+              },
+              "givenMaterials": {
+                "de": "25°C, verdünntes ideales Modell. Vergleiche HCl und CH3COOH bei derselben formalen Konzentration0,100mol/L; HCl protolysiert im Modell vollständig, Ka(CH3COOH)=1,8·10−5. Für zwei Basen B1/B2 bei gleicher formaler Konzentration gelten Kb1=1,8·10−5 und Kb2=1,8·10−9. Für den strukturellen Transfer sind Ethanol und Essigsäure mit ihren Lewisformeln gegeben. Im anschließenden quantitativen Paartransfer bleiben die ganzen alten pair-1/pair-2-Materialien mit allen Konstanten unverändert verfügbar.",
+                "en": "25°C, dilute ideal model. Compare HCl and CH3COOH at equal formal concentration0.100mol/L; HCl transfers completely in the model, Ka(CH3COOH)=1.8·10−5. Two bases B1/B2 at equal formal concentration have Kb1=1.8·10−5 and Kb2=1.8·10−9. Ethanol and acetic acid Lewis structures are supplied for structural transfer. The subsequent quantitative pair transfer retains the entire original pair-1/pair-2 materials and constants unchanged."
+              },
+              "demands": [
+                {
+                  "id": "source-strength-mwg-particles-whole",
+                  "de": "Erkläre die unterschiedliche Stärke anhand der Protonenübertragung, der Teilchenverteilung und des MWG. Definiere Ka/Kb einschließlich Wasser-Konvention und verwende pKa/pKb für den Vergleich. Begründe, warum stärker nicht konzentrierter bedeutet. Erkläre am strukturellen Transfer die Stabilisierung des Acetations gegenüber dem Alkoxid mit Mesomerie und polaren Bindungen. Bearbeite anschließend aus den unveränderten alten Paarfällen die K-Herleitungen samt Systemgrenzen; diese Vertiefung ist kein Abschlusskriterium des qualitativen B477.",
+                  "en": "Explain different strengths through proton transfer, species distributions and mass action. Define Ka/Kb including the water convention and use pKa/pKb for comparison. Justify why stronger does not mean more concentrated. In the structural transfer explain acetate stabilisation relative to an alkoxide using resonance and polar bonds. Then work the K derivations and system limits from the unchanged original pair cases; this extension is not a closure requirement for qualitative B477."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Bei gleicher formaler Konzentration liefert die starke Säure im Modell weit mehr H3O+; die schwache verbleibt überwiegend als HA. Ka=a(H3O+)a(A−)/a(HA); die Wasseraktivität ist in Ka enthalten. Für B+H2O⇌BH++OH− gilt Kb=a(BH+)a(OH−)/a(B); kleineres pK bedeutet größeres K und stärkere Protonenabgabe/-aufnahme im jeweiligen Vergleich. B1 bildet bei gleichen Modellbedingungen mehr BH+/OH− als B2. Formaler Stoffgehalt und intrinsische Stärke sind verschiedene Größen. Acetat verteilt die negative Ladung auf zwei O-Atome; Alkoxid besitzt diese Carboxylatmesomerie nicht. Die vollständigen alten Modellantworten/Rubriken bleiben für K=10^(9,25−4,76)≈3,09·10^4 und K=Ka2/Kw≈4,68·10^3 zuständig; beide sind endlich, keine Geschwindigkeits-/Identitätsgarantie und keine neue Konstante nach CO2-Verlust.",
+                "en": "At equal formal concentration the strong acid produces much more H3O+ in the model; weak HA largely remains untransferred. Ka=a(H3O+)a(A−)/a(HA), with water activity included in Ka. For B+H2O⇌BH++OH−, Kb=a(BH+)a(OH−)/a(B); smaller pK means larger K and stronger proton donation/acceptance in the respective comparison. B1 forms more BH+/OH− than B2 under equal model conditions. Formal amount and intrinsic strength are distinct quantities. Acetate distributes negative charge over two O atoms; an alkoxide lacks this carboxylate resonance. The entire unchanged old answers/rubrics retain K=10^(9.25−4.76)≈3.09·10^4 and K=Ka2/Kw≈4.68·10^3, finite constants with no rate/identity guarantee or new constant after CO2 loss."
+              },
+              "rubric": [
+                {
+                  "id": "source-strength-mwg-particles-r1",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Teilchenverteilung, beide MWG-Ausdrücke und Stärke/Konzentration unterscheiden.",
+                  "creditEn": "Distinguish species distribution, both mass-action expressions and strength/concentration."
+                },
+                {
+                  "id": "source-strength-mwg-particles-r2",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "pK-Vergleich und tatsächliche strukturelle Stabilisierung fachlich begründen.",
+                  "creditEn": "Justify pK comparison and actual structural stabilisation."
+                },
+                {
+                  "id": "source-strength-mwg-particles-r3",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 0,
+                  "creditDe": "Die alten quantitativen Rubriken bleiben vollständig separat; keine Übertragung alter Punktsummen.",
+                  "creditEn": "The old quantitative rubrics remain complete and separate; no point totals are transferred."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 6,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment."
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+      "wholeGoal": {
+        "id": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "title": "Massenwirkungsgesetz anwenden",
+        "titleEn": "Apply Law of Mass Action",
+        "description": "Die lernende Person kann das Massenwirkungsgesetz auf homogene Gleichgewichte anwenden, Gleichgewichtskonstanten vereinfachter Systeme berechnen und den Zahlenwert zur Aussage über die Lage des Gleichgewichts interpretieren.",
+        "descriptionEn": "The learner can apply the law of mass action to homogeneous equilibria, calculate equilibrium constants for simplified systems, and interpret the numerical value to infer the position of equilibrium.",
+        "weight": 1.1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "81373fb7-2a4a-5b2c-acd0-b4e775acaa65"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "6ee8f696-95e4-4bd7-b923-6222e70a8449"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+            "title": "Visualisierung: Massenwirkungsgesetz anwenden",
+            "url": "/assets/goal-visualizations/chemie/20f92ba0-f7f4-5407-bb96-07e30da9002f/20f92ba0-f7f4-5407-bb96-07e30da9002f.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Massenwirkungsgesetz anwenden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Massenwirkungsgesetz anwenden\". Die lernende Person kann das Massenwirkungsgesetz auf homogene Gleichgewichte anwenden, Gleichgewichtskonstanten vereinfachter Systeme berechnen und den Zahlenwert zur Aussage über die Lage des Gleichgewichts interpretieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-strength-mwg-particles",
+            "essentialUnderstandingDe": "Stärke auf Teilchenebene und Gleichgewichtsgesetz",
+            "essentialUnderstandingEn": "Particle-level strength and mass action",
+            "observablePerformanceDe": "Erkläre die unterschiedliche Stärke anhand der Protonenübertragung, der Teilchenverteilung und des MWG. Definiere Ka/Kb einschließlich Wasser-Konvention und verwende pKa/pKb für den Vergleich. Begründe, warum stärker nicht konzentrierter bedeutet. Erkläre am strukturellen Transfer die Stabilisierung des Acetations gegenüber dem Alkoxid mit Mesomerie und polaren Bindungen. Bearbeite anschließend aus den unveränderten alten Paarfällen die K-Herleitungen samt Systemgrenzen; diese Vertiefung ist kein Abschlusskriterium des qualitativen B477.",
+            "observablePerformanceEn": "Explain different strengths through proton transfer, species distributions and mass action. Define Ka/Kb including the water convention and use pKa/pKb for comparison. Justify why stronger does not mean more concentrated. In the structural transfer explain acetate stabilisation relative to an alkoxide using resonance and polar bonds. Then work the K derivations and system limits from the unchanged original pair cases; this extension is not a closure requirement for qualitative B477."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-strength-mwg-particles"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-strength-mwg-particles",
+            "wholeCase": {
+              "id": "source-strength-mwg-particles",
+              "targetGoalIds": [
+                "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+                "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+                "ca216bc6-5205-5b46-abbd-fd5628e4ca5b"
+              ],
+              "title": {
+                "de": "Stärke auf Teilchenebene und Gleichgewichtsgesetz",
+                "en": "Particle-level strength and mass action"
+              },
+              "givenMaterials": {
+                "de": "25°C, verdünntes ideales Modell. Vergleiche HCl und CH3COOH bei derselben formalen Konzentration0,100mol/L; HCl protolysiert im Modell vollständig, Ka(CH3COOH)=1,8·10−5. Für zwei Basen B1/B2 bei gleicher formaler Konzentration gelten Kb1=1,8·10−5 und Kb2=1,8·10−9. Für den strukturellen Transfer sind Ethanol und Essigsäure mit ihren Lewisformeln gegeben. Im anschließenden quantitativen Paartransfer bleiben die ganzen alten pair-1/pair-2-Materialien mit allen Konstanten unverändert verfügbar.",
+                "en": "25°C, dilute ideal model. Compare HCl and CH3COOH at equal formal concentration0.100mol/L; HCl transfers completely in the model, Ka(CH3COOH)=1.8·10−5. Two bases B1/B2 at equal formal concentration have Kb1=1.8·10−5 and Kb2=1.8·10−9. Ethanol and acetic acid Lewis structures are supplied for structural transfer. The subsequent quantitative pair transfer retains the entire original pair-1/pair-2 materials and constants unchanged."
+              },
+              "demands": [
+                {
+                  "id": "source-strength-mwg-particles-whole",
+                  "de": "Erkläre die unterschiedliche Stärke anhand der Protonenübertragung, der Teilchenverteilung und des MWG. Definiere Ka/Kb einschließlich Wasser-Konvention und verwende pKa/pKb für den Vergleich. Begründe, warum stärker nicht konzentrierter bedeutet. Erkläre am strukturellen Transfer die Stabilisierung des Acetations gegenüber dem Alkoxid mit Mesomerie und polaren Bindungen. Bearbeite anschließend aus den unveränderten alten Paarfällen die K-Herleitungen samt Systemgrenzen; diese Vertiefung ist kein Abschlusskriterium des qualitativen B477.",
+                  "en": "Explain different strengths through proton transfer, species distributions and mass action. Define Ka/Kb including the water convention and use pKa/pKb for comparison. Justify why stronger does not mean more concentrated. In the structural transfer explain acetate stabilisation relative to an alkoxide using resonance and polar bonds. Then work the K derivations and system limits from the unchanged original pair cases; this extension is not a closure requirement for qualitative B477."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Bei gleicher formaler Konzentration liefert die starke Säure im Modell weit mehr H3O+; die schwache verbleibt überwiegend als HA. Ka=a(H3O+)a(A−)/a(HA); die Wasseraktivität ist in Ka enthalten. Für B+H2O⇌BH++OH− gilt Kb=a(BH+)a(OH−)/a(B); kleineres pK bedeutet größeres K und stärkere Protonenabgabe/-aufnahme im jeweiligen Vergleich. B1 bildet bei gleichen Modellbedingungen mehr BH+/OH− als B2. Formaler Stoffgehalt und intrinsische Stärke sind verschiedene Größen. Acetat verteilt die negative Ladung auf zwei O-Atome; Alkoxid besitzt diese Carboxylatmesomerie nicht. Die vollständigen alten Modellantworten/Rubriken bleiben für K=10^(9,25−4,76)≈3,09·10^4 und K=Ka2/Kw≈4,68·10^3 zuständig; beide sind endlich, keine Geschwindigkeits-/Identitätsgarantie und keine neue Konstante nach CO2-Verlust.",
+                "en": "At equal formal concentration the strong acid produces much more H3O+ in the model; weak HA largely remains untransferred. Ka=a(H3O+)a(A−)/a(HA), with water activity included in Ka. For B+H2O⇌BH++OH−, Kb=a(BH+)a(OH−)/a(B); smaller pK means larger K and stronger proton donation/acceptance in the respective comparison. B1 forms more BH+/OH− than B2 under equal model conditions. Formal amount and intrinsic strength are distinct quantities. Acetate distributes negative charge over two O atoms; an alkoxide lacks this carboxylate resonance. The entire unchanged old answers/rubrics retain K=10^(9.25−4.76)≈3.09·10^4 and K=Ka2/Kw≈4.68·10^3, finite constants with no rate/identity guarantee or new constant after CO2 loss."
+              },
+              "rubric": [
+                {
+                  "id": "source-strength-mwg-particles-r1",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Teilchenverteilung, beide MWG-Ausdrücke und Stärke/Konzentration unterscheiden.",
+                  "creditEn": "Distinguish species distribution, both mass-action expressions and strength/concentration."
+                },
+                {
+                  "id": "source-strength-mwg-particles-r2",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "pK-Vergleich und tatsächliche strukturelle Stabilisierung fachlich begründen.",
+                  "creditEn": "Justify pK comparison and actual structural stabilisation."
+                },
+                {
+                  "id": "source-strength-mwg-particles-r3",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 0,
+                  "creditDe": "Die alten quantitativen Rubriken bleiben vollständig separat; keine Übertragung alter Punktsummen.",
+                  "creditEn": "The old quantitative rubrics remain complete and separate; no point totals are transferred."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 6,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment."
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+      "wholeGoal": {
+        "id": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+        "title": "Acidität begründen",
+        "titleEn": "Justify acidity",
+        "description": "Die lernende Person kann die Acidität von Alkohol-Molekülen und Carbonsäure-Molekülen vergleichen und den Einfluss polarer Bindungen, induktiver Effekte und Mesomerie auf die Säurestärke von Carbonsäuren erklären.",
+        "descriptionEn": "The learner can compare the acidity of alcohol molecules and carboxylic acid molecules and explain the influence of polar bonds, inductive effects, and resonance on the acid strength of carboxylic acids.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "a3788e40-b540-5bed-be37-b33053528422"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024 Source-Extraction)",
+            "sourceGoalId": "he-chem-sekii-q1-3-b02-a01-16db9321",
+            "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024.source-extraction.json",
+            "sourceExtractionSHA256": "sha256:76febb58cfa0042e2a742ce3e2b33b4dc31f8b646c5eb113cfd6afa23869c756",
+            "sourceSpan": "Q1.3#B02A01",
+            "sourceDocumentEdition": "Ausgabe 2024; current official Stand 21.04.2026 independently fetched 2026-10-05",
+            "sourceBindingStatus": "ai_candidate_current_source_scope",
+            "sourceBindingRole": "own_competence_component_of_complete_source_group",
+            "sourceBindingReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/fourteen-current-source-provenance-and-complete-group-deltas.candidate.json"
+          },
+          "historicalProvenanceBefore20261005Q1Candidate": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "0d979a44-004b-4986-b947-b4033987218a"
+          },
+          "currentSourceComponentBindings": [
+            {
+              "sourceGoalId": "he-chem-sekii-q1-3-b02-a01-16db9321",
+              "sourceSpan": "Q1.3#B02A01",
+              "courseLevel": "GK_LK",
+              "sourceText": "Acidität im Zusammenhang mit polaren Bindungen und induktiven Effekten, Mesomeriemodell am Beispiel des Carboxylations",
+              "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024.source-extraction.json",
+              "bindingRole": "own_component_not_whole_group_approval"
+            }
+          ]
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+            "title": "Visualisierung: Acidität begründen",
+            "url": "/assets/goal-visualizations/chemie/ca216bc6-5205-5b46-abbd-fd5628e4ca5b/ca216bc6-5205-5b46-abbd-fd5628e4ca5b.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Comic-PNG-Kandidat als qualitative Lernhilfe; Erzeugung ist keine fachliche oder menschliche Freigabe und kein Nachweis einer praktischen Durchführung.",
+            "altText": "Comiczeichnung zum Aciditätsvergleich: Ethanol und Ethansäure geben jeweils ein Proton ab. Beim Ethanolat liegt die negative Ladung an einem Sauerstoff; beim einzelnen Acetat-Ion ist sie über zwei Sauerstoffatome verteilt, mit gleich dargestellten C–O-Bindungen und einer gemeinsamen negativen Gesamtladung. Die stabilere konjugierte Base wird mit stärkerer Säure verknüpft.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-strength-mwg-particles",
+            "essentialUnderstandingDe": "Stärke auf Teilchenebene und Gleichgewichtsgesetz",
+            "essentialUnderstandingEn": "Particle-level strength and mass action",
+            "observablePerformanceDe": "Erkläre die unterschiedliche Stärke anhand der Protonenübertragung, der Teilchenverteilung und des MWG. Definiere Ka/Kb einschließlich Wasser-Konvention und verwende pKa/pKb für den Vergleich. Begründe, warum stärker nicht konzentrierter bedeutet. Erkläre am strukturellen Transfer die Stabilisierung des Acetations gegenüber dem Alkoxid mit Mesomerie und polaren Bindungen. Bearbeite anschließend aus den unveränderten alten Paarfällen die K-Herleitungen samt Systemgrenzen; diese Vertiefung ist kein Abschlusskriterium des qualitativen B477.",
+            "observablePerformanceEn": "Explain different strengths through proton transfer, species distributions and mass action. Define Ka/Kb including the water convention and use pKa/pKb for comparison. Justify why stronger does not mean more concentrated. In the structural transfer explain acetate stabilisation relative to an alkoxide using resonance and polar bonds. Then work the K derivations and system limits from the unchanged original pair cases; this extension is not a closure requirement for qualitative B477."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-strength-mwg-particles"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-strength-mwg-particles",
+            "wholeCase": {
+              "id": "source-strength-mwg-particles",
+              "targetGoalIds": [
+                "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+                "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+                "ca216bc6-5205-5b46-abbd-fd5628e4ca5b"
+              ],
+              "title": {
+                "de": "Stärke auf Teilchenebene und Gleichgewichtsgesetz",
+                "en": "Particle-level strength and mass action"
+              },
+              "givenMaterials": {
+                "de": "25°C, verdünntes ideales Modell. Vergleiche HCl und CH3COOH bei derselben formalen Konzentration0,100mol/L; HCl protolysiert im Modell vollständig, Ka(CH3COOH)=1,8·10−5. Für zwei Basen B1/B2 bei gleicher formaler Konzentration gelten Kb1=1,8·10−5 und Kb2=1,8·10−9. Für den strukturellen Transfer sind Ethanol und Essigsäure mit ihren Lewisformeln gegeben. Im anschließenden quantitativen Paartransfer bleiben die ganzen alten pair-1/pair-2-Materialien mit allen Konstanten unverändert verfügbar.",
+                "en": "25°C, dilute ideal model. Compare HCl and CH3COOH at equal formal concentration0.100mol/L; HCl transfers completely in the model, Ka(CH3COOH)=1.8·10−5. Two bases B1/B2 at equal formal concentration have Kb1=1.8·10−5 and Kb2=1.8·10−9. Ethanol and acetic acid Lewis structures are supplied for structural transfer. The subsequent quantitative pair transfer retains the entire original pair-1/pair-2 materials and constants unchanged."
+              },
+              "demands": [
+                {
+                  "id": "source-strength-mwg-particles-whole",
+                  "de": "Erkläre die unterschiedliche Stärke anhand der Protonenübertragung, der Teilchenverteilung und des MWG. Definiere Ka/Kb einschließlich Wasser-Konvention und verwende pKa/pKb für den Vergleich. Begründe, warum stärker nicht konzentrierter bedeutet. Erkläre am strukturellen Transfer die Stabilisierung des Acetations gegenüber dem Alkoxid mit Mesomerie und polaren Bindungen. Bearbeite anschließend aus den unveränderten alten Paarfällen die K-Herleitungen samt Systemgrenzen; diese Vertiefung ist kein Abschlusskriterium des qualitativen B477.",
+                  "en": "Explain different strengths through proton transfer, species distributions and mass action. Define Ka/Kb including the water convention and use pKa/pKb for comparison. Justify why stronger does not mean more concentrated. In the structural transfer explain acetate stabilisation relative to an alkoxide using resonance and polar bonds. Then work the K derivations and system limits from the unchanged original pair cases; this extension is not a closure requirement for qualitative B477."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Bei gleicher formaler Konzentration liefert die starke Säure im Modell weit mehr H3O+; die schwache verbleibt überwiegend als HA. Ka=a(H3O+)a(A−)/a(HA); die Wasseraktivität ist in Ka enthalten. Für B+H2O⇌BH++OH− gilt Kb=a(BH+)a(OH−)/a(B); kleineres pK bedeutet größeres K und stärkere Protonenabgabe/-aufnahme im jeweiligen Vergleich. B1 bildet bei gleichen Modellbedingungen mehr BH+/OH− als B2. Formaler Stoffgehalt und intrinsische Stärke sind verschiedene Größen. Acetat verteilt die negative Ladung auf zwei O-Atome; Alkoxid besitzt diese Carboxylatmesomerie nicht. Die vollständigen alten Modellantworten/Rubriken bleiben für K=10^(9,25−4,76)≈3,09·10^4 und K=Ka2/Kw≈4,68·10^3 zuständig; beide sind endlich, keine Geschwindigkeits-/Identitätsgarantie und keine neue Konstante nach CO2-Verlust.",
+                "en": "At equal formal concentration the strong acid produces much more H3O+ in the model; weak HA largely remains untransferred. Ka=a(H3O+)a(A−)/a(HA), with water activity included in Ka. For B+H2O⇌BH++OH−, Kb=a(BH+)a(OH−)/a(B); smaller pK means larger K and stronger proton donation/acceptance in the respective comparison. B1 forms more BH+/OH− than B2 under equal model conditions. Formal amount and intrinsic strength are distinct quantities. Acetate distributes negative charge over two O atoms; an alkoxide lacks this carboxylate resonance. The entire unchanged old answers/rubrics retain K=10^(9.25−4.76)≈3.09·10^4 and K=Ka2/Kw≈4.68·10^3, finite constants with no rate/identity guarantee or new constant after CO2 loss."
+              },
+              "rubric": [
+                {
+                  "id": "source-strength-mwg-particles-r1",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Teilchenverteilung, beide MWG-Ausdrücke und Stärke/Konzentration unterscheiden.",
+                  "creditEn": "Distinguish species distribution, both mass-action expressions and strength/concentration."
+                },
+                {
+                  "id": "source-strength-mwg-particles-r2",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "pK-Vergleich und tatsächliche strukturelle Stabilisierung fachlich begründen.",
+                  "creditEn": "Justify pK comparison and actual structural stabilisation."
+                },
+                {
+                  "id": "source-strength-mwg-particles-r3",
+                  "askedDemandIds": [
+                    "source-strength-mwg-particles-whole"
+                  ],
+                  "points": 0,
+                  "creditDe": "Die alten quantitativen Rubriken bleiben vollständig separat; keine Übertragung alter Punktsummen.",
+                  "creditEn": "The old quantitative rubrics remain complete and separate; no point totals are transferred."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 6,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment."
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+      "wholeGoal": {
+        "id": "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+        "shortKey": "canonical_chemistry_upper_acid_base_water_autoprotolysis_ion_product",
+        "title": "Autoprotolyse und Ionenprodukt des Wassers erklären",
+        "titleEn": "Explain water autoprotolysis and ionic product",
+        "description": "Die lernende Person kann den amphoteren Charakter des Wasser-Moleküls mithilfe der Autoprotolysereaktion beschreiben und daraus das Ionenprodukt des Wassers erklären.",
+        "descriptionEn": "The learner can describe the amphoteric character of the water molecule using the autoprotolysis reaction and explain the ionic product of water from it.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3",
+          "area": "Protolysegleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.ACID_BASE.WATER_AUTOPROTOLYSIS_ION_PRODUCT"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "46b0e6cd-5fdf-552e-877d-1c15e193640d"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+            "title": "Visualisierung: Autoprotolyse und Ionenprodukt des Wassers erklären",
+            "url": "/assets/goal-visualizations/chemie/07879ea2-b6a1-5eb3-b548-15d45bbcb227/07879ea2-b6a1-5eb3-b548-15d45bbcb227.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Autoprotolyse und Ionenprodukt des Wassers erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Autoprotolyse und Ionenprodukt des Wassers erklären\". Die lernende Person kann den amphoteren Charakter des Wasser-Moleküls mithilfe der Autoprotolysereaktion beschreiben und daraus das Ionenprodukt des Wassers erklären.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-water-both-ion-transfer",
+            "essentialUnderstandingDe": "Beide Ionensorten trotz saurer oder basischer Reaktion",
+            "essentialUnderstandingEn": "Both ionic species in acidic or alkaline solutions",
+            "observablePerformanceDe": "Begründe mit2H2O⇌H3O++OH− die Anwesenheit beider Ionensorten. Leite aus pH und Kw alle sechs Konzentrationen mit Einheiten her, ordne Überschuss/Neutralität zu und erkläre, warum Indikatorfarben weder genaue Konzentrationen noch Stoffidentität liefern. Erkläre, was sich bei anderer Temperatur an der Neutralitätsbedingung ändert.",
+            "observablePerformanceEn": "Use2H2O⇌H3O++OH− to justify the presence of both ionic species. Derive all six concentrations from pH and Kw with units, identify excess/neutrality, and explain why indicator colours yield neither exact concentrations nor substance identity. Explain how a different temperature affects the neutrality condition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-water-both-ion-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-water-both-ion-transfer",
+            "wholeCase": {
+              "id": "source-water-both-ion-transfer",
+              "targetGoalIds": [
+                "07879ea2-b6a1-5eb3-b548-15d45bbcb227"
+              ],
+              "title": {
+                "de": "Beide Ionensorten trotz saurer oder basischer Reaktion",
+                "en": "Both ionic species in acidic or alkaline solutions"
+              },
+              "givenMaterials": {
+                "de": "Die unveränderten ganzen alten pair-1/pair-2-Aufträge, Daten und Antworten sind gebunden. Für den quantitativen Teil gelten25°C, ideale verdünnte Lösung, Kw=1,00·10−14 und drei vorgegebene pH-Daten4,9,7. Diese Daten sind konstruiert und keine Messleistung.",
+                "en": "The unchanged original pair-1/pair-2 demands, data and answers are bound. The quantitative part assumes25°C, a dilute ideal solution, Kw=1.00·10−14 and supplied pH readings4,9,7. These are constructed data, not measurement performance."
+              },
+              "demands": [
+                {
+                  "id": "source-water-both-ion-transfer-whole",
+                  "de": "Begründe mit2H2O⇌H3O++OH− die Anwesenheit beider Ionensorten. Leite aus pH und Kw alle sechs Konzentrationen mit Einheiten her, ordne Überschuss/Neutralität zu und erkläre, warum Indikatorfarben weder genaue Konzentrationen noch Stoffidentität liefern. Erkläre, was sich bei anderer Temperatur an der Neutralitätsbedingung ändert.",
+                  "en": "Use2H2O⇌H3O++OH− to justify the presence of both ionic species. Derive all six concentrations from pH and Kw with units, identify excess/neutrality, and explain why indicator colours yield neither exact concentrations nor substance identity. Explain how a different temperature affects the neutrality condition."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Autoprotolyse ist Protonenübertragung zwischen zwei Wasserteilchen; bei endlichem Kw ist keine der beiden Konzentrationen null. Bei pH4: [H3O+]=10−4,[OH−]=10−10; bei9:10−9,10−5; bei7:10−7,10−7mol/L. Saure/basische Reaktion bedeutet Überschuss, nicht alleinige Anwesenheit. Neutralität ist Gleichheit der beiden Konzentrationen; pH7 gilt dafür nur im vorgegebenen25°C-Modell. Farben sind grobe, indikatorabhängige Bereiche ohne Identitätsermittlung.",
+                "en": "Autoprotolysis transfers a proton between two water species; finite Kw means neither concentration is zero. At pH4: [H3O+]=10−4,[OH−]=10−10; at9:10−9,10−5; at7:10−7,10−7mol/L. Acidic/alkaline behaviour means excess, not sole presence. Neutrality means equal concentrations; neutral pH7 applies only in the stated25°C model. Colours give broad indicator-dependent ranges without identifying solutes."
+              },
+              "rubric": [
+                {
+                  "id": "source-water-both-ion-transfer-r1",
+                  "askedDemandIds": [
+                    "source-water-both-ion-transfer-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Autoprotolyse und Ionenprodukt erklären; beide Ionen vorhanden.",
+                  "creditEn": "Explain autoprotolysis and ionic product; both ions remain present."
+                },
+                {
+                  "id": "source-water-both-ion-transfer-r2",
+                  "askedDemandIds": [
+                    "source-water-both-ion-transfer-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Alle sechs Konzentrationen, Einheit und temperaturgebundene Neutralität begründen.",
+                  "creditEn": "Justify all six concentrations, units and temperature-bound neutrality."
+                },
+                {
+                  "id": "source-water-both-ion-transfer-r3",
+                  "askedDemandIds": [
+                    "source-water-both-ion-transfer-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Farb-/Identitätsgrenzen statt eines exakten Indikatorwerts benennen.",
+                  "creditEn": "State colour/identity limits instead of an exact indicator value."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 8,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment."
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "33034876-8da5-5619-ad86-e1272e0304b0",
+      "wholeGoal": {
+        "id": "33034876-8da5-5619-ad86-e1272e0304b0",
+        "shortKey": "canonical_chemistry_upper_acid_base_strong_weak_monoprotic_ph_approximations",
+        "title": "pH-Werte starker und schwacher einprotoniger Säuren und Basen berechnen",
+        "titleEn": "Calculate pH values of strong and weak monoprotic acids and bases",
+        "description": "Die lernende Person kann Zusammenhänge zwischen Säure- bzw. Basenstärke und Oxonium- bzw. Hydroxidionenkonzentration wässriger Lösungen vergleichen und pH-Werte starker sowie schwacher einprotoniger Säuren und Basen mithilfe begründeter Näherungsformeln berechnen.",
+        "descriptionEn": "The learner can compare relationships between acid or base strength and hydronium or hydroxide ion concentration in aqueous solutions and calculate pH values of strong and weak monoprotic acids and bases using justified approximation formulas.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3",
+          "area": "Protolysegleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.ACID_BASE.STRONG_WEAK_MONOPROTIC_PH_APPROXIMATIONS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "0416b03c-e2e4-5f63-8de8-318d43fe4cc3"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "33034876-8da5-5619-ad86-e1272e0304b0",
+            "title": "Visualisierung: pH-Werte starker und schwacher einprotoniger Säuren und Basen berechnen",
+            "url": "/assets/goal-visualizations/chemie/33034876-8da5-5619-ad86-e1272e0304b0/33034876-8da5-5619-ad86-e1272e0304b0.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: pH-Werte starker und schwacher einprotoniger Säuren und Basen berechnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"pH-Werte starker und schwacher einprotoniger Säuren und Basen berechnen\". Die lernende Person kann Zusammenhänge zwischen Säure- bzw. Basenstärke und Oxonium- bzw. Hydroxidionenkonzentration wässriger Lösungen vergleichen und pH-Werte starker sowie schwacher einprotoniger Säuren und Basen mithilfe begründeter Näherungsformeln berechnen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "source-weak-pH-LK",
+            "essentialUnderstandingDe": "Unvollständige Protolyse mit begründeter Näherung",
+            "essentialUnderstandingEn": "Incomplete proton transfer with a justified approximation",
+            "observablePerformanceDe": "Stelle beide Protolysegleichgewichte und Stoff-/Ladungsbeziehungen auf. Begründe x≪c0, prüfe die Näherung nach der Rechnung und berechne beide pH-Werte. Vergleiche mit einer vollständig protolysierten starken Säure/Base derselben formalen Konzentration und benenne die Modellgrenzen.",
+            "observablePerformanceEn": "Construct both proton-transfer equilibria and amount/charge relations. Justify x≪c0, check the approximation after calculation, and calculate both pH values. Compare with complete transfer by a strong acid/base of equal formal concentration and state the model limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-weak-pH-LK"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-weak-pH-LK",
+            "wholeCase": {
+              "id": "source-weak-pH-LK",
+              "targetGoalIds": [
+                "33034876-8da5-5619-ad86-e1272e0304b0"
+              ],
+              "title": {
+                "de": "Unvollständige Protolyse mit begründeter Näherung",
+                "en": "Incomplete proton transfer with a justified approximation"
+              },
+              "givenMaterials": {
+                "de": "25°C, ideale verdünnte Lösung:0,100mol/L Essigsäure mit Ka=1,8·10−5 und separat0,100mol/L NH3 mit Kb=1,8·10−5; Kw=1,0·10−14. Die näherungsweise Formel x≈sqrt(K·c0) darf nach Begründung verwendet werden. Kein Herstellungs-/Messauftrag ist in diesen Daten enthalten.",
+                "en": "25°C, dilute ideal solutions:0.100mol/L acetic acid with Ka=1.8·10−5 and separately0.100mol/L NH3 with Kb=1.8·10−5; Kw=1.0·10−14. Approximation x≈sqrt(K·c0) may be used after justification. These data contain no preparation or measurement performance."
+              },
+              "demands": [
+                {
+                  "id": "source-weak-pH-LK-whole",
+                  "de": "Stelle beide Protolysegleichgewichte und Stoff-/Ladungsbeziehungen auf. Begründe x≪c0, prüfe die Näherung nach der Rechnung und berechne beide pH-Werte. Vergleiche mit einer vollständig protolysierten starken Säure/Base derselben formalen Konzentration und benenne die Modellgrenzen.",
+                  "en": "Construct both proton-transfer equilibria and amount/charge relations. Justify x≪c0, check the approximation after calculation, and calculate both pH values. Compare with complete transfer by a strong acid/base of equal formal concentration and state the model limits."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "CH3COOH+H2O⇌CH3COO−+H3O+ und NH3+H2O⇌NH4++OH−. Unter Vernachlässigung der Wasserautoprotolyse ist [A−]=h=x bzw.[NH4+]=[OH−]=x und unveränderte Hauptkomponente c0−x. K=x²/(c0−x). x≈sqrt(1,8·10−6)=1,3416·10−3mol/L; x/c0≈1,34%, die gewählte Näherung ist im erklärten Rahmen plausibel. pH(Säure)≈2,8724, pOH(Base)≈2,8724, pH(Base)≈11,1276. Vollständige starke Vergleichslösungen ergeben im Modell1 bzw.13. Das sind Modellwerte, keine gemessenen Ergebnisse; bei großer Verdünnung oder großen Dissoziationsanteilen sind Vernachlässigungen neu zu prüfen.",
+                "en": "CH3COOH+H2O⇌CH3COO−+H3O+ and NH3+H2O⇌NH4++OH−. Neglecting water autoprotolysis gives [A−]=h=x or[NH4+]=[OH−]=x and major species c0−x. K=x²/(c0−x). x≈sqrt(1.8·10−6)=1.3416·10−3mol/L; x/c0≈1.34%, consistent with the stated approximation. Acid pH≈2.8724, base pOH≈2.8724, base pH≈11.1276. Completely transferred strong comparators give1 and13 in the model. These are model values, not measurements; dilution or larger dissociation fractions require reassessing the approximations."
+              },
+              "rubric": [
+                {
+                  "id": "source-weak-pH-LK-r1",
+                  "askedDemandIds": [
+                    "source-weak-pH-LK-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Beide Gleichgewichte und Massenwirkung/Stoffbeziehungen begründen.",
+                  "creditEn": "Justify both equilibria and mass-action/amount relations."
+                },
+                {
+                  "id": "source-weak-pH-LK-r2",
+                  "askedDemandIds": [
+                    "source-weak-pH-LK-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Näherung und beide logarithmischen Ergebnisse mit Grenzen überprüfen.",
+                  "creditEn": "Check approximation and both logarithmic results with limits."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 6,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment."
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "wholeGoal": {
+        "id": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+        "title": "Säure-Base-Titrationen planen",
+        "titleEn": "Plan acid-base titrations",
+        "description": "Die lernende Person kann eine Säure-Base-Titration mit geeigneter Maßlösung und begründetem Indikator fachgerecht planen und durchführen und aus dokumentierten Volumina unter Berücksichtigung der Reaktionsstöchiometrie die Konzentration der Probe bestimmen.",
+        "descriptionEn": "The learner can correctly plan and carry out an acid-base titration using a suitable standard solution and a justified indicator and determine the sample concentration from recorded volumes while accounting for reaction stoichiometry.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "f1ed86f0-534d-57d7-8952-a004a331cc54"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024 Source-Extraction)",
+            "sourceGoalId": "he-chem-sekii-e-2-b04-a01-803d5801",
+            "sourceRef": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024, E.2 Protolysereaktionen",
+            "sourceSpan": "E.2#B04A01"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+            "title": "Visualisierung: Säure-Base-Titrationen planen",
+            "url": "/assets/goal-visualizations/chemie/02634fdd-c8ba-591a-b240-77129b1bebb8/02634fdd-c8ba-591a-b240-77129b1bebb8.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Gezielt korrigierter, unabhängig fachlich und visuell geprüfter Comic-PNG-Kandidat; qualitative Orientierung, keine praktische Leistung und keine menschliche Freigabe.",
+            "altText": "Comicartige Titrationsanordnung: Eine senkrechte, am Stativ geklemmte Bürette mit farbloser NaOH-Maßlösung und nach unten zunehmender Skala tropft in einen Erlenmeyerkolben mit HCl-Probe. Ein Pfeil deutet Schwenken an; die Flüssigkeit zeigt am dargestellten Endpunkt einen sehr zarten rosa Schimmer. Daneben stehen eine farblose Indikatorlösung und ein zur Arbeitsseite hin offenes Protokollheft.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "source-pH-titration-actual",
+            "essentialUnderstandingDe": "Tatsächliche pH-Titration mit eigener Kurve",
+            "essentialUnderstandingEn": "Actual pH titration with an independently recorded curve",
+            "observablePerformanceDe": "Plane den Bereich und kleine Volumenschritte um den erwarteten Umschlag; begründe geeignete Kalibrierung, Indikator und Fehlerkontrolle. Führe die freigegebene pH-Titration tatsächlich durch, notiere eigene Bürettenstände und pH-Daten, erstelle auch mit einem digitalen Werkzeug die eigene Kurve und bestimme begründet den Äquivalenzbereich. Leite aus der1:1-Ionengleichung die Probenkonzentration samt Unsicherheit ab. Unterscheide Äquivalenzpunkt und Indikatorendpunkt; diskutiere eine Frage oder Abweichung anhand der eigenen Daten.",
+            "observablePerformanceEn": "Plan the range and small increments near the estimated endpoint; justify calibration, indicator and error control. Actually perform the authorised pH titration, record independent burette readings and pH values, use a digital tool to plot the independent curve and identify an evidence-based equivalence interval. Derive sample concentration and uncertainty from the1:1 ionic equation. Distinguish equivalence from indicator endpoint and discuss a question or deviation using the independent data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-pH-titration-actual"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-pH-titration-actual",
+            "wholeCase": {
+              "id": "source-pH-titration-actual",
+              "targetGoalIds": [
+                "02634fdd-c8ba-591a-b240-77129b1bebb8",
+                "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+              ],
+              "title": {
+                "de": "Tatsächliche pH-Titration mit eigener Kurve",
+                "en": "Actual pH titration with an independently recorded curve"
+              },
+              "givenMaterials": {
+                "de": "Beaufsichtigter Schulversuch nach örtlicher Gefährdungsbeurteilung: Lehrkraft stellt eine verdünnte HCl-Probe unbekannter Konzentration,10,00mL-Probenpipette,0,01000mol/L NaOH-Maßlösung, Bürette, kalibriertes pH-Meter, Rührer und Schutzmittel bereit. Ein freigegebener Plan erwartet den Äquivalenzbereich grob um10mL; das ist ein konstruktiver Planwert und kein gemessener Äquivalenzpunkt. Jede tatsächliche Beobachtung und jedes Volumen bleibt zunächst leer.",
+                "en": "Supervised school experiment under local risk assessment: the teacher supplies dilute HCl of unknown concentration, a10.00mL sample pipette,0.01000mol/L NaOH standard, burette, calibrated pH meter, stirrer and protection. An authorised plan expects equivalence roughly near10mL; that is a design estimate, not a measured endpoint. All actual observations and volumes initially remain blank."
+              },
+              "demands": [
+                {
+                  "id": "source-pH-titration-actual-whole",
+                  "de": "Plane den Bereich und kleine Volumenschritte um den erwarteten Umschlag; begründe geeignete Kalibrierung, Indikator und Fehlerkontrolle. Führe die freigegebene pH-Titration tatsächlich durch, notiere eigene Bürettenstände und pH-Daten, erstelle auch mit einem digitalen Werkzeug die eigene Kurve und bestimme begründet den Äquivalenzbereich. Leite aus der1:1-Ionengleichung die Probenkonzentration samt Unsicherheit ab. Unterscheide Äquivalenzpunkt und Indikatorendpunkt; diskutiere eine Frage oder Abweichung anhand der eigenen Daten.",
+                  "en": "Plan the range and small increments near the estimated endpoint; justify calibration, indicator and error control. Actually perform the authorised pH titration, record independent burette readings and pH values, use a digital tool to plot the independent curve and identify an evidence-based equivalence interval. Derive sample concentration and uncertainty from the1:1 ionic equation. Distinguish equivalence from indicator endpoint and discuss a question or deviation using the independent data."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Vor Durchführung sind nur Plan, Reaktionsbeziehung H3O++OH−→2H2O und Auswerteformel cProbe=cNaOH·Veq/10,00mL beschreibbar. Wenn eigene Daten Veq≈10,00mL tragen würden, ergäbe sich cProbe≈0,01000mol/L; diese bedingte Rechnung beweist keinen tatsächlichen Wert. Gültige Durchführung braucht beobachtete sachgerechte Handhabung, nachvollziehbare eigene Kalibrierungs-/Volumen-/pH-Aufzeichnungen und eine dazu passende Kurve. Der stärkste Anstieg begrenzt den Äquivalenzbereich; ein Indikator hat einen endlichen Umschlagbereich. Geräte-/Volumen-/Ablese-/CO2-Einflüsse werden anhand wirklicher Daten geprüft, keine Fehlerursache erfunden.",
+                "en": "Before conduct only the plan, equation H3O++OH−→2H2O and evaluation cSample=cNaOH·Veq/10.00mL can be stated. If independent data supported Veq≈10.00mL, cSample≈0.01000mol/L would follow; this conditional calculation proves no actual value. Execution requires observed competent handling, traceable independent calibration/volume/pH records and a matching curve. The steepest rise constrains the equivalence interval; an indicator has a finite transition range. Equipment/volume/reading/CO2 effects are checked against real data without inventing a cause."
+              },
+              "rubric": [
+                {
+                  "id": "source-pH-titration-actual-r1",
+                  "askedDemandIds": [
+                    "source-pH-titration-actual-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Begründeter Plan, Kalibrierung und Fehlerkontrolle.",
+                  "creditEn": "Justified plan, calibration and error control."
+                },
+                {
+                  "id": "source-pH-titration-actual-r2",
+                  "askedDemandIds": [
+                    "source-pH-titration-actual-whole"
+                  ],
+                  "points": 4,
+                  "creditDe": "Nur tatsächlich beobachtete sachgerechte Durchführung und eigene vollständige Daten erhalten Durchführungspunkte.",
+                  "creditEn": "Execution points require actually observed competent conduct and complete independent data."
+                },
+                {
+                  "id": "source-pH-titration-actual-r3",
+                  "askedDemandIds": [
+                    "source-pH-titration-actual-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Eigene Kurve, Äquivalenzbereich, stöchiometrische Auswertung und Unsicherheit.",
+                  "creditEn": "Independent curve, equivalence interval, stoichiometric evaluation and uncertainty."
+                },
+                {
+                  "id": "source-pH-titration-actual-r4",
+                  "askedDemandIds": [
+                    "source-pH-titration-actual-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Indikator-/Äquivalenzgrenze und reale Abweichung fachlich beurteilen.",
+                  "creditEn": "Assess endpoint/equivalence limits and an actual deviation scientifically."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 11,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment."
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+      "wholeGoal": {
+        "id": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_emission_absorption_color",
+        "title": "Emission und Absorption zur Farbigkeit unterscheiden",
+        "titleEn": "Distinguish emission and absorption for color",
+        "description": "Die lernende Person kann zwischen Emission und Absorption verschiedener Lichtwellenlängen unterscheiden und damit Ursachen von Farbigkeit beschreiben.",
+        "descriptionEn": "The learner can distinguish between emission and absorption of different wavelengths of light and use this to describe causes of color.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.EMISSION_ABSORPTION_COLOR"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "a019534e-c548-5952-a166-8e9ad3153653"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+            "title": "Visualisierung: Emission und Absorption zur Farbigkeit unterscheiden",
+            "url": "/assets/goal-visualizations/chemie/54bc6ca0-b770-5f10-ac54-bcc1d04298f5/54bc6ca0-b770-5f10-ac54-bcc1d04298f5.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Emission und Absorption zur Farbigkeit unterscheiden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Emission und Absorption zur Farbigkeit unterscheiden\". Die lernende Person kann zwischen Emission und Absorption verschiedener Lichtwellenlängen unterscheiden und damit Ursachen von Farbigkeit beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "essentialUnderstandingDe": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+            "essentialUnderstandingEn": "Colour, resonance and separate spectrum interpretation",
+            "observablePerformanceDe": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+            "observablePerformanceEn": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-NW-LK-whole-colour"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "wholeCase": {
+              "id": "source-NW-LK-whole-colour",
+              "targetGoalIds": [
+                "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+                "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+                "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+                "64b03eff-a967-54a1-ace3-89cb7650a65c",
+                "f0ba30a8-84b3-5915-bf85-6c3a176064d2"
+              ],
+              "title": {
+                "de": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+                "en": "Colour, resonance and separate spectrum interpretation"
+              },
+              "givenMaterials": {
+                "de": "Vollständiges Strukturmaterial: neutrales4-Nitroanilin mit Bindungs-/Ladungsschreibweise Nc1ccc([N+](=O)[O-])cc1 (N am Ring ist NH2 mit einem freien Elektronenpaar; Nitro-N+ ohne freies Paar, doppelt gebundenes O mit zwei und einfach gebundenes O− mit drei freien Paaren). Protonierte Form: [NH3+]c1ccc([N+](=O)[O-])cc1; am NH3+-Stickstoff ist kein freies Paar vorhanden. Die unten vollständig tabellierten Absorptionsspektren A/B sind konstruierte Daten bei gleicher Konzentration/Schichtdicke, keine eigene Messleistung. Das Modell ordnet die neutrale Form A und die protonierte Form B zu. Im gegebenen Modell beteiligt sich das freie Amino-Elektronenpaar am Donator-Akzeptor-π-System. E/eV≈1240/(λ/nm) ist Material. Aus einem einzelnen Maximum folgt keine genaue wahrgenommene Farbe.",
+                "en": "Complete structural material: neutral4-nitroaniline, bond/charge notation Nc1ccc([N+](=O)[O-])cc1 (ring-attached N is NH2 with one lone pair; nitro N+ has no lone pair, double-bonded O has two and single-bonded O− three). Protonated form: [NH3+]c1ccc([N+](=O)[O-])cc1; NH3+ nitrogen has no lone pair. Fully tabulated absorption spectra A/B below are constructed data at equal concentration/path length, not independent measurements. The model assigns neutral A and protonated B. The given model lets the amino lone pair join the donor-acceptor π system. E/eV≈1240/(λ/nm) is supplied. One maximum does not determine an exact perceived colour."
+              },
+              "demands": [
+                {
+                  "id": "source-NW-LK-whole-colour-whole",
+                  "de": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+                  "en": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Absorption entzieht dem durchgelassenen Licht bestimmte Wellenlängen und regt Elektronen an; Emission gibt Licht ab. Die sichtbare Farbe ist nicht einfach die absorbierte Farbe. Im neutralen Modell kann das freie Elektronenpaar der Aminogruppe in das konjugierte System einbezogen werden; ladungsgetrennte Grenzstrukturen erhalten Atome und Gesamtladung und zeigen positive Donator-/negative Akzeptorbereiche ohne Atombewegung. Der Nitrorest wirkt im gegebenen π-System elektronenziehend. Protoniertes Amin hat kein verfügbares freies N-Elektronenpaar für denselben Donatorbeitrag. A430nm entspricht≈2,884eV, B360nm≈3,444eV; das vorgegebene B-Modell absorbiert bei kürzerer Wellenlänge und größerer Energiedifferenz. Beide Spektren sind die konkrete Datenbasis; daraus folgt keine universelle Verschiebungsregel für alle Farbstoffe und keine exakte Mischfarbe oder Stoffidentität. Die Spektrenauswertung bleibt eine eigene verlangte Leistung neben den Grenzstrukturen.",
+                "en": "Absorption removes selected wavelengths from transmitted light and excites electrons; emission releases light. Perceived colour is not simply the absorbed colour. In the neutral model the amino lone pair can join the conjugated system; charge-separated resonance forms preserve atoms and total charge and show positive donor/negative acceptor regions without atom movement. The nitro group withdraws electron density in the stated π system. The protonated amino group lacks an available lone pair for the same donor contribution. A430nm corresponds to≈2.884eV, B360nm to≈3.444eV; supplied model B absorbs shorter wavelengths with a larger energy difference. Those spectra are the specific evidence, not a universal dye-shift rule or an exact mixed colour/solute identity. Spectrum interpretation remains an independent asked performance alongside resonance structures."
+              },
+              "rubric": [
+                {
+                  "id": "source-NW-LK-whole-colour-r1",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Absorption/Emission und wahrgenommene Farbigkeit unterscheiden.",
+                  "creditEn": "Distinguish absorption/emission and perceived colour."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r2",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Fachlich richtige Grenzstrukturen und tatsächlichen Substituenteneinfluss begründen; Begriffe allein reichen nicht.",
+                  "creditEn": "Justify correct resonance forms and actual substituent effect; labels alone do not suffice."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r3",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Beide Spektren, Energiedifferenzen und Protonierungsvergleich anhand der Daten erklären.",
+                  "creditEn": "Explain both spectra, energy differences and protonation comparison using the data."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r4",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Reichweite und Grenzen der konkreten Modellvorhersage benennen.",
+                  "creditEn": "State the scope and limits of this particular model prediction."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 10,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment.",
+              "tabulatedAbsorptionSpectra": {
+                "wavelengthNm": [
+                  300,
+                  330,
+                  360,
+                  390,
+                  430,
+                  460,
+                  490,
+                  520,
+                  560,
+                  600
+                ],
+                "absorbanceA": [
+                  0.02,
+                  0.06,
+                  0.15,
+                  0.4,
+                  1.0,
+                  0.4,
+                  0.1,
+                  0.03,
+                  0.01,
+                  0.0
+                ],
+                "absorbanceB": [
+                  0.15,
+                  0.55,
+                  1.0,
+                  0.25,
+                  0.05,
+                  0.01,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dataType": "constructed instructional model, not measured",
+                "sameConcentrationAndPathLength": true
+              }
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "wholeGoal": {
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU"
+          ],
+          "phase": "GLOBAL",
+          "area": "Atombau und Bindung",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.VALENCE_LINE_MESOMERIC_FORMULAS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "id": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+        "shortKey": "canonical_chemistry_sek1_valence_line_mesomeric_formulas",
+        "title": "Valenzstrichformeln und Mesomerie aufstellen",
+        "titleEn": "Construct valence-line and mesomeric formulas",
+        "description": "Die lernende Person kann mithilfe der Edelgasregel die Bindigkeit von Nichtmetall-Atomen vorhersagen und Valenzstrichformeln von Molekülen sowie ausgewählten Molekül-Ionen unter Einbezug mesomerer Grenzstrukturen aufstellen.",
+        "descriptionEn": "The learner can predict the valency of nonmetal atoms using the noble-gas rule and construct valence-line formulas of molecules and selected molecular ions including mesomeric resonance structures.",
+        "requires": [
+          "e74f5301-70d3-5869-bd3d-79a5763a1718",
+          "bbe038e9-86ed-5ec6-ab33-316758ddb16d"
+        ],
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "11b3b972-09b7-51f0-abaa-59efc3620f39"
+          }
+        },
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+            "title": "Visualisierung: Valenzstrichformeln und Mesomerie aufstellen",
+            "url": "/assets/goal-visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Valenzstrichformeln und Mesomerie aufstellen.",
+            "altText": "Zwei mesomere Grenzstrukturen des Nitritions NO₂⁻ haben gleiche Atompositionen, aber vertauschte Einfach- und Doppelbindungen. Je Form sind 18 Valenzelektronen und vollständige Oktette dargestellt; die Gesamtladung ist −1.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "essentialUnderstandingDe": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+            "essentialUnderstandingEn": "Colour, resonance and separate spectrum interpretation",
+            "observablePerformanceDe": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+            "observablePerformanceEn": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-NW-LK-whole-colour"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "wholeCase": {
+              "id": "source-NW-LK-whole-colour",
+              "targetGoalIds": [
+                "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+                "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+                "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+                "64b03eff-a967-54a1-ace3-89cb7650a65c",
+                "f0ba30a8-84b3-5915-bf85-6c3a176064d2"
+              ],
+              "title": {
+                "de": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+                "en": "Colour, resonance and separate spectrum interpretation"
+              },
+              "givenMaterials": {
+                "de": "Vollständiges Strukturmaterial: neutrales4-Nitroanilin mit Bindungs-/Ladungsschreibweise Nc1ccc([N+](=O)[O-])cc1 (N am Ring ist NH2 mit einem freien Elektronenpaar; Nitro-N+ ohne freies Paar, doppelt gebundenes O mit zwei und einfach gebundenes O− mit drei freien Paaren). Protonierte Form: [NH3+]c1ccc([N+](=O)[O-])cc1; am NH3+-Stickstoff ist kein freies Paar vorhanden. Die unten vollständig tabellierten Absorptionsspektren A/B sind konstruierte Daten bei gleicher Konzentration/Schichtdicke, keine eigene Messleistung. Das Modell ordnet die neutrale Form A und die protonierte Form B zu. Im gegebenen Modell beteiligt sich das freie Amino-Elektronenpaar am Donator-Akzeptor-π-System. E/eV≈1240/(λ/nm) ist Material. Aus einem einzelnen Maximum folgt keine genaue wahrgenommene Farbe.",
+                "en": "Complete structural material: neutral4-nitroaniline, bond/charge notation Nc1ccc([N+](=O)[O-])cc1 (ring-attached N is NH2 with one lone pair; nitro N+ has no lone pair, double-bonded O has two and single-bonded O− three). Protonated form: [NH3+]c1ccc([N+](=O)[O-])cc1; NH3+ nitrogen has no lone pair. Fully tabulated absorption spectra A/B below are constructed data at equal concentration/path length, not independent measurements. The model assigns neutral A and protonated B. The given model lets the amino lone pair join the donor-acceptor π system. E/eV≈1240/(λ/nm) is supplied. One maximum does not determine an exact perceived colour."
+              },
+              "demands": [
+                {
+                  "id": "source-NW-LK-whole-colour-whole",
+                  "de": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+                  "en": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Absorption entzieht dem durchgelassenen Licht bestimmte Wellenlängen und regt Elektronen an; Emission gibt Licht ab. Die sichtbare Farbe ist nicht einfach die absorbierte Farbe. Im neutralen Modell kann das freie Elektronenpaar der Aminogruppe in das konjugierte System einbezogen werden; ladungsgetrennte Grenzstrukturen erhalten Atome und Gesamtladung und zeigen positive Donator-/negative Akzeptorbereiche ohne Atombewegung. Der Nitrorest wirkt im gegebenen π-System elektronenziehend. Protoniertes Amin hat kein verfügbares freies N-Elektronenpaar für denselben Donatorbeitrag. A430nm entspricht≈2,884eV, B360nm≈3,444eV; das vorgegebene B-Modell absorbiert bei kürzerer Wellenlänge und größerer Energiedifferenz. Beide Spektren sind die konkrete Datenbasis; daraus folgt keine universelle Verschiebungsregel für alle Farbstoffe und keine exakte Mischfarbe oder Stoffidentität. Die Spektrenauswertung bleibt eine eigene verlangte Leistung neben den Grenzstrukturen.",
+                "en": "Absorption removes selected wavelengths from transmitted light and excites electrons; emission releases light. Perceived colour is not simply the absorbed colour. In the neutral model the amino lone pair can join the conjugated system; charge-separated resonance forms preserve atoms and total charge and show positive donor/negative acceptor regions without atom movement. The nitro group withdraws electron density in the stated π system. The protonated amino group lacks an available lone pair for the same donor contribution. A430nm corresponds to≈2.884eV, B360nm to≈3.444eV; supplied model B absorbs shorter wavelengths with a larger energy difference. Those spectra are the specific evidence, not a universal dye-shift rule or an exact mixed colour/solute identity. Spectrum interpretation remains an independent asked performance alongside resonance structures."
+              },
+              "rubric": [
+                {
+                  "id": "source-NW-LK-whole-colour-r1",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Absorption/Emission und wahrgenommene Farbigkeit unterscheiden.",
+                  "creditEn": "Distinguish absorption/emission and perceived colour."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r2",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Fachlich richtige Grenzstrukturen und tatsächlichen Substituenteneinfluss begründen; Begriffe allein reichen nicht.",
+                  "creditEn": "Justify correct resonance forms and actual substituent effect; labels alone do not suffice."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r3",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Beide Spektren, Energiedifferenzen und Protonierungsvergleich anhand der Daten erklären.",
+                  "creditEn": "Explain both spectra, energy differences and protonation comparison using the data."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r4",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Reichweite und Grenzen der konkreten Modellvorhersage benennen.",
+                  "creditEn": "State the scope and limits of this particular model prediction."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 10,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment.",
+              "tabulatedAbsorptionSpectra": {
+                "wavelengthNm": [
+                  300,
+                  330,
+                  360,
+                  390,
+                  430,
+                  460,
+                  490,
+                  520,
+                  560,
+                  600
+                ],
+                "absorbanceA": [
+                  0.02,
+                  0.06,
+                  0.15,
+                  0.4,
+                  1.0,
+                  0.4,
+                  0.1,
+                  0.03,
+                  0.01,
+                  0.0
+                ],
+                "absorbanceB": [
+                  0.15,
+                  0.55,
+                  1.0,
+                  0.25,
+                  0.05,
+                  0.01,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dataType": "constructed instructional model, not measured",
+                "sameConcentrationAndPathLength": true
+              }
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "wholeGoal": {
+        "id": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_delocalized_electrons_energy_levels",
+        "title": "Farbigkeit durch delokalisierte Elektronen erklären",
+        "titleEn": "Explain color through delocalized electrons",
+        "description": "Die lernende Person kann die Absorption bestimmter Lichtwellenlängen als Anregung delokalisierter Elektronen erklären und Farbigkeit mithilfe eines Energiestufenschemas begründen.",
+        "descriptionEn": "The learner can explain absorption of specific wavelengths as excitation of delocalized electrons and justify color using an energy-level scheme.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "54bc6ca0-b770-5f10-ac54-bcc1d04298f5"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.DELOCALIZED_ELECTRONS_ENERGY_LEVELS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "84a0167c-f57f-5720-9ac1-6b1423cd64fb"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+            "title": "Visualisierung: Farbigkeit durch delokalisierte Elektronen erklären",
+            "url": "/assets/goal-visualizations/chemie/87d8cc68-fe82-5273-9e43-c18b566ecb6c/87d8cc68-fe82-5273-9e43-c18b566ecb6c.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Farbigkeit durch delokalisierte Elektronen erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Farbigkeit durch delokalisierte Elektronen erklären\". Die lernende Person kann die Absorption bestimmter Lichtwellenlängen als Anregung delokalisierter Elektronen erklären und Farbigkeit mithilfe eines Energiestufenschemas begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "essentialUnderstandingDe": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+            "essentialUnderstandingEn": "Colour, resonance and separate spectrum interpretation",
+            "observablePerformanceDe": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+            "observablePerformanceEn": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-NW-LK-whole-colour"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "wholeCase": {
+              "id": "source-NW-LK-whole-colour",
+              "targetGoalIds": [
+                "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+                "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+                "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+                "64b03eff-a967-54a1-ace3-89cb7650a65c",
+                "f0ba30a8-84b3-5915-bf85-6c3a176064d2"
+              ],
+              "title": {
+                "de": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+                "en": "Colour, resonance and separate spectrum interpretation"
+              },
+              "givenMaterials": {
+                "de": "Vollständiges Strukturmaterial: neutrales4-Nitroanilin mit Bindungs-/Ladungsschreibweise Nc1ccc([N+](=O)[O-])cc1 (N am Ring ist NH2 mit einem freien Elektronenpaar; Nitro-N+ ohne freies Paar, doppelt gebundenes O mit zwei und einfach gebundenes O− mit drei freien Paaren). Protonierte Form: [NH3+]c1ccc([N+](=O)[O-])cc1; am NH3+-Stickstoff ist kein freies Paar vorhanden. Die unten vollständig tabellierten Absorptionsspektren A/B sind konstruierte Daten bei gleicher Konzentration/Schichtdicke, keine eigene Messleistung. Das Modell ordnet die neutrale Form A und die protonierte Form B zu. Im gegebenen Modell beteiligt sich das freie Amino-Elektronenpaar am Donator-Akzeptor-π-System. E/eV≈1240/(λ/nm) ist Material. Aus einem einzelnen Maximum folgt keine genaue wahrgenommene Farbe.",
+                "en": "Complete structural material: neutral4-nitroaniline, bond/charge notation Nc1ccc([N+](=O)[O-])cc1 (ring-attached N is NH2 with one lone pair; nitro N+ has no lone pair, double-bonded O has two and single-bonded O− three). Protonated form: [NH3+]c1ccc([N+](=O)[O-])cc1; NH3+ nitrogen has no lone pair. Fully tabulated absorption spectra A/B below are constructed data at equal concentration/path length, not independent measurements. The model assigns neutral A and protonated B. The given model lets the amino lone pair join the donor-acceptor π system. E/eV≈1240/(λ/nm) is supplied. One maximum does not determine an exact perceived colour."
+              },
+              "demands": [
+                {
+                  "id": "source-NW-LK-whole-colour-whole",
+                  "de": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+                  "en": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Absorption entzieht dem durchgelassenen Licht bestimmte Wellenlängen und regt Elektronen an; Emission gibt Licht ab. Die sichtbare Farbe ist nicht einfach die absorbierte Farbe. Im neutralen Modell kann das freie Elektronenpaar der Aminogruppe in das konjugierte System einbezogen werden; ladungsgetrennte Grenzstrukturen erhalten Atome und Gesamtladung und zeigen positive Donator-/negative Akzeptorbereiche ohne Atombewegung. Der Nitrorest wirkt im gegebenen π-System elektronenziehend. Protoniertes Amin hat kein verfügbares freies N-Elektronenpaar für denselben Donatorbeitrag. A430nm entspricht≈2,884eV, B360nm≈3,444eV; das vorgegebene B-Modell absorbiert bei kürzerer Wellenlänge und größerer Energiedifferenz. Beide Spektren sind die konkrete Datenbasis; daraus folgt keine universelle Verschiebungsregel für alle Farbstoffe und keine exakte Mischfarbe oder Stoffidentität. Die Spektrenauswertung bleibt eine eigene verlangte Leistung neben den Grenzstrukturen.",
+                "en": "Absorption removes selected wavelengths from transmitted light and excites electrons; emission releases light. Perceived colour is not simply the absorbed colour. In the neutral model the amino lone pair can join the conjugated system; charge-separated resonance forms preserve atoms and total charge and show positive donor/negative acceptor regions without atom movement. The nitro group withdraws electron density in the stated π system. The protonated amino group lacks an available lone pair for the same donor contribution. A430nm corresponds to≈2.884eV, B360nm to≈3.444eV; supplied model B absorbs shorter wavelengths with a larger energy difference. Those spectra are the specific evidence, not a universal dye-shift rule or an exact mixed colour/solute identity. Spectrum interpretation remains an independent asked performance alongside resonance structures."
+              },
+              "rubric": [
+                {
+                  "id": "source-NW-LK-whole-colour-r1",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Absorption/Emission und wahrgenommene Farbigkeit unterscheiden.",
+                  "creditEn": "Distinguish absorption/emission and perceived colour."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r2",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Fachlich richtige Grenzstrukturen und tatsächlichen Substituenteneinfluss begründen; Begriffe allein reichen nicht.",
+                  "creditEn": "Justify correct resonance forms and actual substituent effect; labels alone do not suffice."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r3",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Beide Spektren, Energiedifferenzen und Protonierungsvergleich anhand der Daten erklären.",
+                  "creditEn": "Explain both spectra, energy differences and protonation comparison using the data."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r4",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Reichweite und Grenzen der konkreten Modellvorhersage benennen.",
+                  "creditEn": "State the scope and limits of this particular model prediction."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 10,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment.",
+              "tabulatedAbsorptionSpectra": {
+                "wavelengthNm": [
+                  300,
+                  330,
+                  360,
+                  390,
+                  430,
+                  460,
+                  490,
+                  520,
+                  560,
+                  600
+                ],
+                "absorbanceA": [
+                  0.02,
+                  0.06,
+                  0.15,
+                  0.4,
+                  1.0,
+                  0.4,
+                  0.1,
+                  0.03,
+                  0.01,
+                  0.0
+                ],
+                "absorbanceB": [
+                  0.15,
+                  0.55,
+                  1.0,
+                  0.25,
+                  0.05,
+                  0.01,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dataType": "constructed instructional model, not measured",
+                "sameConcentrationAndPathLength": true
+              }
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "wholeGoal": {
+        "id": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_donor_acceptor_substituent_effects",
+        "title": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+        "titleEn": "Explain substituent effects in dye molecules",
+        "description": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+        "descriptionEn": "The learner can apply the donor-acceptor concept to dye molecules and explain how functional groups influence the color of the corresponding substances.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.DONOR_ACCEPTOR_SUBSTITUENT_EFFECTS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NW",
+            "DE-SH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "b9f8c8a1-a45f-5a2f-ac56-11682856b27a"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+            "title": "Visualisierung: Substituenteneffekte in Farbstoff-Molekülen erklären",
+            "url": "/assets/goal-visualizations/chemie/64b03eff-a967-54a1-ace3-89cb7650a65c/64b03eff-a967-54a1-ace3-89cb7650a65c.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Substituenteneffekte in Farbstoff-Molekülen erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Substituenteneffekte in Farbstoff-Molekülen erklären\". Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "essentialUnderstandingDe": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+            "essentialUnderstandingEn": "Colour, resonance and separate spectrum interpretation",
+            "observablePerformanceDe": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+            "observablePerformanceEn": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-NW-LK-whole-colour"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "wholeCase": {
+              "id": "source-NW-LK-whole-colour",
+              "targetGoalIds": [
+                "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+                "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+                "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+                "64b03eff-a967-54a1-ace3-89cb7650a65c",
+                "f0ba30a8-84b3-5915-bf85-6c3a176064d2"
+              ],
+              "title": {
+                "de": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+                "en": "Colour, resonance and separate spectrum interpretation"
+              },
+              "givenMaterials": {
+                "de": "Vollständiges Strukturmaterial: neutrales4-Nitroanilin mit Bindungs-/Ladungsschreibweise Nc1ccc([N+](=O)[O-])cc1 (N am Ring ist NH2 mit einem freien Elektronenpaar; Nitro-N+ ohne freies Paar, doppelt gebundenes O mit zwei und einfach gebundenes O− mit drei freien Paaren). Protonierte Form: [NH3+]c1ccc([N+](=O)[O-])cc1; am NH3+-Stickstoff ist kein freies Paar vorhanden. Die unten vollständig tabellierten Absorptionsspektren A/B sind konstruierte Daten bei gleicher Konzentration/Schichtdicke, keine eigene Messleistung. Das Modell ordnet die neutrale Form A und die protonierte Form B zu. Im gegebenen Modell beteiligt sich das freie Amino-Elektronenpaar am Donator-Akzeptor-π-System. E/eV≈1240/(λ/nm) ist Material. Aus einem einzelnen Maximum folgt keine genaue wahrgenommene Farbe.",
+                "en": "Complete structural material: neutral4-nitroaniline, bond/charge notation Nc1ccc([N+](=O)[O-])cc1 (ring-attached N is NH2 with one lone pair; nitro N+ has no lone pair, double-bonded O has two and single-bonded O− three). Protonated form: [NH3+]c1ccc([N+](=O)[O-])cc1; NH3+ nitrogen has no lone pair. Fully tabulated absorption spectra A/B below are constructed data at equal concentration/path length, not independent measurements. The model assigns neutral A and protonated B. The given model lets the amino lone pair join the donor-acceptor π system. E/eV≈1240/(λ/nm) is supplied. One maximum does not determine an exact perceived colour."
+              },
+              "demands": [
+                {
+                  "id": "source-NW-LK-whole-colour-whole",
+                  "de": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+                  "en": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Absorption entzieht dem durchgelassenen Licht bestimmte Wellenlängen und regt Elektronen an; Emission gibt Licht ab. Die sichtbare Farbe ist nicht einfach die absorbierte Farbe. Im neutralen Modell kann das freie Elektronenpaar der Aminogruppe in das konjugierte System einbezogen werden; ladungsgetrennte Grenzstrukturen erhalten Atome und Gesamtladung und zeigen positive Donator-/negative Akzeptorbereiche ohne Atombewegung. Der Nitrorest wirkt im gegebenen π-System elektronenziehend. Protoniertes Amin hat kein verfügbares freies N-Elektronenpaar für denselben Donatorbeitrag. A430nm entspricht≈2,884eV, B360nm≈3,444eV; das vorgegebene B-Modell absorbiert bei kürzerer Wellenlänge und größerer Energiedifferenz. Beide Spektren sind die konkrete Datenbasis; daraus folgt keine universelle Verschiebungsregel für alle Farbstoffe und keine exakte Mischfarbe oder Stoffidentität. Die Spektrenauswertung bleibt eine eigene verlangte Leistung neben den Grenzstrukturen.",
+                "en": "Absorption removes selected wavelengths from transmitted light and excites electrons; emission releases light. Perceived colour is not simply the absorbed colour. In the neutral model the amino lone pair can join the conjugated system; charge-separated resonance forms preserve atoms and total charge and show positive donor/negative acceptor regions without atom movement. The nitro group withdraws electron density in the stated π system. The protonated amino group lacks an available lone pair for the same donor contribution. A430nm corresponds to≈2.884eV, B360nm to≈3.444eV; supplied model B absorbs shorter wavelengths with a larger energy difference. Those spectra are the specific evidence, not a universal dye-shift rule or an exact mixed colour/solute identity. Spectrum interpretation remains an independent asked performance alongside resonance structures."
+              },
+              "rubric": [
+                {
+                  "id": "source-NW-LK-whole-colour-r1",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Absorption/Emission und wahrgenommene Farbigkeit unterscheiden.",
+                  "creditEn": "Distinguish absorption/emission and perceived colour."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r2",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Fachlich richtige Grenzstrukturen und tatsächlichen Substituenteneinfluss begründen; Begriffe allein reichen nicht.",
+                  "creditEn": "Justify correct resonance forms and actual substituent effect; labels alone do not suffice."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r3",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Beide Spektren, Energiedifferenzen und Protonierungsvergleich anhand der Daten erklären.",
+                  "creditEn": "Explain both spectra, energy differences and protonation comparison using the data."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r4",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Reichweite und Grenzen der konkreten Modellvorhersage benennen.",
+                  "creditEn": "State the scope and limits of this particular model prediction."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 10,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment.",
+              "tabulatedAbsorptionSpectra": {
+                "wavelengthNm": [
+                  300,
+                  330,
+                  360,
+                  390,
+                  430,
+                  460,
+                  490,
+                  520,
+                  560,
+                  600
+                ],
+                "absorbanceA": [
+                  0.02,
+                  0.06,
+                  0.15,
+                  0.4,
+                  1.0,
+                  0.4,
+                  0.1,
+                  0.03,
+                  0.01,
+                  0.0
+                ],
+                "absorbanceB": [
+                  0.15,
+                  0.55,
+                  1.0,
+                  0.25,
+                  0.05,
+                  0.01,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dataType": "constructed instructional model, not measured",
+                "sameConcentrationAndPathLength": true
+              }
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    },
+    {
+      "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+      "wholeGoal": {
+        "id": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_absorption_spectra_evaluate",
+        "title": "Absorptionsspektren von Farbstoffen auswerten",
+        "titleEn": "Evaluate absorption spectra of dyes",
+        "description": "Die lernende Person kann Absorptionsspektren von Farbstoffen auswerten, um Absorptionseigenschaften von Farbstoff-Molekülen zu beschreiben.",
+        "descriptionEn": "The learner can evaluate absorption spectra of dyes to describe absorption properties of dye molecules.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.ABSORPTION_SPECTRA_EVALUATE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "e9935be8-1829-5c78-a3d7-98cca371cdc7"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+            "title": "Visualisierung: Absorptionsspektren von Farbstoffen auswerten",
+            "url": "/assets/goal-visualizations/chemie/f0ba30a8-84b3-5915-bf85-6c3a176064d2/f0ba30a8-84b3-5915-bf85-6c3a176064d2.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Absorptionsspektren von Farbstoffen auswerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Absorptionsspektren von Farbstoffen auswerten\". Die lernende Person kann Absorptionsspektren von Farbstoffen auswerten, um Absorptionseigenschaften von Farbstoff-Molekülen zu beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorStatus": "authoredDesign; whole partner needs independent P/A and source-course examination",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "essentialUnderstandingDe": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+            "essentialUnderstandingEn": "Colour, resonance and separate spectrum interpretation",
+            "observablePerformanceDe": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+            "observablePerformanceEn": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-NW-LK-whole-colour"
+          ],
+          "alternativeExpectationGroups": [],
+          "masteryDecisionBoundary": "Every indispensable goal aspect requires actual independent evidence; no fixed task quota or transfer of scores. Practical evidence requires observed conduct and independent records."
+        },
+        "applicationCaseBriefs": [
+          {
+            "id": "source-NW-LK-whole-colour",
+            "wholeCase": {
+              "id": "source-NW-LK-whole-colour",
+              "targetGoalIds": [
+                "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+                "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+                "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+                "64b03eff-a967-54a1-ace3-89cb7650a65c",
+                "f0ba30a8-84b3-5915-bf85-6c3a176064d2"
+              ],
+              "title": {
+                "de": "Farbigkeit, Mesomerie und getrennte Spektrenauswertung",
+                "en": "Colour, resonance and separate spectrum interpretation"
+              },
+              "givenMaterials": {
+                "de": "Vollständiges Strukturmaterial: neutrales4-Nitroanilin mit Bindungs-/Ladungsschreibweise Nc1ccc([N+](=O)[O-])cc1 (N am Ring ist NH2 mit einem freien Elektronenpaar; Nitro-N+ ohne freies Paar, doppelt gebundenes O mit zwei und einfach gebundenes O− mit drei freien Paaren). Protonierte Form: [NH3+]c1ccc([N+](=O)[O-])cc1; am NH3+-Stickstoff ist kein freies Paar vorhanden. Die unten vollständig tabellierten Absorptionsspektren A/B sind konstruierte Daten bei gleicher Konzentration/Schichtdicke, keine eigene Messleistung. Das Modell ordnet die neutrale Form A und die protonierte Form B zu. Im gegebenen Modell beteiligt sich das freie Amino-Elektronenpaar am Donator-Akzeptor-π-System. E/eV≈1240/(λ/nm) ist Material. Aus einem einzelnen Maximum folgt keine genaue wahrgenommene Farbe.",
+                "en": "Complete structural material: neutral4-nitroaniline, bond/charge notation Nc1ccc([N+](=O)[O-])cc1 (ring-attached N is NH2 with one lone pair; nitro N+ has no lone pair, double-bonded O has two and single-bonded O− three). Protonated form: [NH3+]c1ccc([N+](=O)[O-])cc1; NH3+ nitrogen has no lone pair. Fully tabulated absorption spectra A/B below are constructed data at equal concentration/path length, not independent measurements. The model assigns neutral A and protonated B. The given model lets the amino lone pair join the donor-acceptor π system. E/eV≈1240/(λ/nm) is supplied. One maximum does not determine an exact perceived colour."
+              },
+              "demands": [
+                {
+                  "id": "source-NW-LK-whole-colour-whole",
+                  "de": "Unterscheide Absorption und Emission und erkläre das Entstehen von Farbigkeit aus dem durchgelassenen/reflektierten Lichtspektrum. Stelle ladungs- und valenzrichtige mesomere Grenzstrukturen des vorgegebenen neutralen Farbstoffmodells auf und begründe den Donator-/Akzeptoreinfluss. Erläutere die Veränderung durch Protonierung anhand des gegebenen Modells. Lies beide Spektren tatsächlich vergleichend aus und verbinde die Maxima mit einem Energieniveauschema. Erkläre, welche Schlussfolgerung durch die vorgegebenen Spektren begründet ist und welche allgemeine oder exakte Farbaussage nicht.",
+                  "en": "Distinguish absorption from emission and explain colour through the transmitted/reflected light spectrum. Construct charge- and valence-correct resonance forms of the supplied neutral dye model and justify donor/acceptor effects. Explain protonation effects within the given model. Actually compare the two supplied spectra and connect the maxima to an energy-level scheme. State which conclusion is supported by the spectra and which general or exact colour claim is not."
+                }
+              ],
+              "fullModelAnswer": {
+                "de": "Absorption entzieht dem durchgelassenen Licht bestimmte Wellenlängen und regt Elektronen an; Emission gibt Licht ab. Die sichtbare Farbe ist nicht einfach die absorbierte Farbe. Im neutralen Modell kann das freie Elektronenpaar der Aminogruppe in das konjugierte System einbezogen werden; ladungsgetrennte Grenzstrukturen erhalten Atome und Gesamtladung und zeigen positive Donator-/negative Akzeptorbereiche ohne Atombewegung. Der Nitrorest wirkt im gegebenen π-System elektronenziehend. Protoniertes Amin hat kein verfügbares freies N-Elektronenpaar für denselben Donatorbeitrag. A430nm entspricht≈2,884eV, B360nm≈3,444eV; das vorgegebene B-Modell absorbiert bei kürzerer Wellenlänge und größerer Energiedifferenz. Beide Spektren sind die konkrete Datenbasis; daraus folgt keine universelle Verschiebungsregel für alle Farbstoffe und keine exakte Mischfarbe oder Stoffidentität. Die Spektrenauswertung bleibt eine eigene verlangte Leistung neben den Grenzstrukturen.",
+                "en": "Absorption removes selected wavelengths from transmitted light and excites electrons; emission releases light. Perceived colour is not simply the absorbed colour. In the neutral model the amino lone pair can join the conjugated system; charge-separated resonance forms preserve atoms and total charge and show positive donor/negative acceptor regions without atom movement. The nitro group withdraws electron density in the stated π system. The protonated amino group lacks an available lone pair for the same donor contribution. A430nm corresponds to≈2.884eV, B360nm to≈3.444eV; supplied model B absorbs shorter wavelengths with a larger energy difference. Those spectra are the specific evidence, not a universal dye-shift rule or an exact mixed colour/solute identity. Spectrum interpretation remains an independent asked performance alongside resonance structures."
+              },
+              "rubric": [
+                {
+                  "id": "source-NW-LK-whole-colour-r1",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Absorption/Emission und wahrgenommene Farbigkeit unterscheiden.",
+                  "creditEn": "Distinguish absorption/emission and perceived colour."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r2",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Fachlich richtige Grenzstrukturen und tatsächlichen Substituenteneinfluss begründen; Begriffe allein reichen nicht.",
+                  "creditEn": "Justify correct resonance forms and actual substituent effect; labels alone do not suffice."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r3",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 3,
+                  "creditDe": "Beide Spektren, Energiedifferenzen und Protonierungsvergleich anhand der Daten erklären.",
+                  "creditEn": "Explain both spectra, energy differences and protonation comparison using the data."
+                },
+                {
+                  "id": "source-NW-LK-whole-colour-r4",
+                  "askedDemandIds": [
+                    "source-NW-LK-whole-colour-whole"
+                  ],
+                  "points": 2,
+                  "creditDe": "Reichweite und Grenzen der konkreten Modellvorhersage benennen.",
+                  "creditEn": "State the scope and limits of this particular model prediction."
+                }
+              ],
+              "authorStatus": "authoredDesign E0/G0",
+              "actualLearnerOrExperimentalEvidence": false,
+              "totalPossiblePoints": 10,
+              "masteryBoundary": "All required aspects need sufficient independent evidence; no case quota, no compensation of an unshown indispensable performance, and no credit for an unperformed experiment.",
+              "tabulatedAbsorptionSpectra": {
+                "wavelengthNm": [
+                  300,
+                  330,
+                  360,
+                  390,
+                  430,
+                  460,
+                  490,
+                  520,
+                  560,
+                  600
+                ],
+                "absorbanceA": [
+                  0.02,
+                  0.06,
+                  0.15,
+                  0.4,
+                  1.0,
+                  0.4,
+                  0.1,
+                  0.03,
+                  0.01,
+                  0.0
+                ],
+                "absorbanceB": [
+                  0.15,
+                  0.55,
+                  1.0,
+                  0.25,
+                  0.05,
+                  0.01,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dataType": "constructed instructional model, not measured",
+                "sameConcentrationAndPathLength": true
+              }
+            },
+            "scope": "Contribution to this whole destination; a multi-goal case never grants all targets from aggregate points"
+          }
+        ]
+      },
+      "normalRecord": false,
+      "independentPositiveVote": false
+    }
+  ],
+  "normalRecords": 0
+}

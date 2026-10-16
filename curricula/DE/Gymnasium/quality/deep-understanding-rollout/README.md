@@ -5,6 +5,16 @@ Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
 Chemistry only; the achieved Mathematics, Physics and Biology M7 floors remain protected.
 
 Current Chemistry continuation:
+[Chemistry 399/429: reviewed native-page and profile successors, 16 October](../../../../../docs/qa-ci/chemie-native19-current429-checkpoint-2026-10-16.md).
+The inactive candidate passes all six central checks, with D/P/A/M/V at
+399/418/417/429/429 and 30 current goals still open. Fifteen scientific first
+completions and four restored bindings are recorded separately; three retired
+atomic identities and five explicitly open context bindings make the net gain
+seven completions over 392/426. Active Chemistry remains 231/402 and M6.
+Protected Mathematics, Physics and Biology remain unchanged. The predecessor
+`122d4eaf` passed GitHub CI; this successor requires its own successful run.
+
+Previous Chemistry continuation:
 [Chemistry 231/402: image and source successors preserved as an inactive checkpoint, 13 October](../../../../../docs/qa-ci/chemie231-image-source-successors-checkpoint-2026-10-13.md).
 It preserves actual image candidates, independent bounded reviews and unresolved
 source duties without changing active completion. Its predecessor
@@ -65,6 +75,29 @@ A curricular-atomic goal counts only when all five gates are current at once:
 The denominator is never configured manually. It is recomputed from the
 authoritative semantic-kind ledger after checking complete canonical coverage,
 declared counts, and every `semantic-kind-source-fingerprint-v1` binding.
+
+### Historical atomic reviews after a reviewed semantic split
+
+An old atomic review may refer to an ID now retained as a real nonleaf
+`curricularArea` context. Preserve the original index, resolutions and review
+rounds. Do not trim the old batch, downgrade its V2 schema, remove its
+supersession chain or add the context to the current atomic denominator.
+
+The optional subject field `resolutionSemanticRetirements` records such history
+explicitly. Each entry must bind the current authoritative semantic source
+fingerprint and every registered historical resolution by index path and exact
+resolution byte digest. The validator requires a complete current semantic
+ledger and an existing `cluster` with real children. Missing, stale, leaf or
+unclassified goals cannot receive this exception. A retired chain retains all
+historical claims and integrity checks, with no current claim or readiness at
+any node, including its terminal. Ordinary atomic chains still require a
+current ready terminal; existing withdrawals remain a separate mechanism.
+
+This is historical evidence retention, not a new scientific review or a
+completion. The current D/P/A/M/V intersection and the no-human-attestation
+rules stay unchanged. Focused regression cases run through
+`testDeepUnderstandingSemanticRetirements.ts`, imported by the existing
+rollout self-test.
 
 Multiple resolution indexes and positive-evidence configs may be appended to a
 subject. Repeated paths, repeated goal IDs, overlaps, or conflicting bindings

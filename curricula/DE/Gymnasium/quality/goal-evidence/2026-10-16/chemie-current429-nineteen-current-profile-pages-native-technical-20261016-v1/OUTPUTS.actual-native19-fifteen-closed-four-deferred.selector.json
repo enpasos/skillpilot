@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual independent first passes plus informed root synthesis, stock materialization; four findings stay explicitly open",
+  "independentResultInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native19-fresh-description-independent-a-20261016-v1/results/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:85acd4305c9656472364804fb27a2fb51704ec8289ba2bd6f064fd7b3772b3dc",
+      "bytes": 3764
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native19-fresh-description-independent-a-20261016-v1/results/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:ff27a775ca7e8773c3c699d345df1104c2404a832acd1789467c4c250157aecc",
+      "bytes": 72382
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native19-fresh-description-independent-b-20261016-v1/results/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:4ad8db2247dc2e0becb5a55639f4b577d0f6ba8f38153177294c622f758fe6ac",
+      "bytes": 78123
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native19-fresh-description-independent-b-20261016-v1/results/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:31514f452a36bfb8f7e5cfc80f6fa18dbc0f34445bab96c4fe3e37b28965a7f4",
+      "bytes": 3648
+    }
+  ],
+  "actualExecutions": [
+    {
+      "argv": [
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen.prerequisite-ordered.stock.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/synthesis-decisions.json",
+        "--write"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app",
+      "startedAt": "2026-10-16T03:43:11.746215+00:00",
+      "elapsedSeconds": 2.2234312490036245,
+      "exitCode": 0,
+      "stdout": "Standalone manifest-bound resolutions materialized: chemie-current429-nineteen-current-profile-pages-20261016-v1; strict=15/19; deferred=4; manifest=sha256:a2ccfc9a6dc6a64e639728981e929d5ed1cd11f28a2d35d68250713d9b99e52d\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen.prerequisite-ordered.stock.config.json",
+        "--write"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app",
+      "startedAt": "2026-10-16T03:43:13.969887+00:00",
+      "elapsedSeconds": 2.2075110050063813,
+      "exitCode": 0,
+      "stdout": "Standalone resolution index materialized: chemie-current429-nineteen-current-profile-pages-20261016-v1; strict=15/19; live denominator owned by central report\n",
+      "stderr": ""
+    }
+  ],
+  "resolvedGoalCount": 15,
+  "deferredGoalCount": 4,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "nativeArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/batch-manifest.json",
+      "sha256": "sha256:92379b290aa85e2e60cbda6f046e21ff9679703795f29439947e03122c083054",
+      "bytes": 3997
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/book-model.json",
+      "sha256": "sha256:744a2450fbe2799446dd7cffb9232e38d22a932507030fecb0e6c197d2828daa",
+      "bytes": 310951
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/book.html",
+      "sha256": "sha256:94b5f50de9283d7a38b99f74dd7caba01719b057c9b4036b99d6c9509d57a2a7",
+      "bytes": 125038
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/book.html.render-manifest.json",
+      "sha256": "sha256:bf2733201aaba2cf4350f09d9f5855ad451d426b08815bae03cdb158e19ac12b",
+      "bytes": 30965
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/book.pdf",
+      "sha256": "sha256:a634fb3b3b52aab9d1345c1909307b16631f65c074d6fcdb797db94246949e37",
+      "bytes": 2018060
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/book.pdf.render-manifest.json",
+      "sha256": "sha256:cd6eeb98ca7d777d10df637555efaeaed35710c6b11371e1f52f6af5cfd6bfd4",
+      "bytes": 30964
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/contracts/goal-evidence-ai-run-manifest.schema.json",
+      "sha256": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/contracts/goal-evidence-finding.schema.json",
+      "sha256": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/criteria.md",
+      "sha256": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+      "bytes": 2948
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/manifest.json",
+      "sha256": "sha256:fc0258228fcff5e58f4ba9c997fe0804fb00f3bd39d63f6729405587772079ab",
+      "bytes": 17334
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/review-input.json",
+      "sha256": "sha256:980ec56330168cdcfe14c75ecf017ed215538c39c62edb95f64207946c6e39fc",
+      "bytes": 238122
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/review-input.jsonl",
+      "sha256": "sha256:55bf58f0617b33583f56767bfa7706f4be0aed54174329fd8817e7f3531b19d0",
+      "bytes": 202140
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/bundle/review.md",
+      "sha256": "sha256:ef0d4b4b84f40c7c11f39e9e337c58416b3d55c2d720845f8920d5b1b648bb25",
+      "bytes": 145660
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/dual-summary.json",
+      "sha256": "sha256:56456dd72bb3eb8e1d3088092eeda42812d1ce1283a86cb3927f59f87ec85227",
+      "bytes": 14044
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolution-index.json",
+      "sha256": "sha256:6cf4b16e1ffa959bb4040b8224651328fea4b69acdbe52c0c1ff455619944158",
+      "bytes": 10691
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/07879ea2-b6a1-5eb3-b548-15d45bbcb227.resolution.json",
+      "sha256": "sha256:b9b2bbad49b152d031caadd447eb05f9c3e7b38b5d2892e454066b43e6d3fc72",
+      "bytes": 7184
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/13877340-1370-5278-bb80-31cf382dd6f5.resolution.json",
+      "sha256": "sha256:bbd9fec4d7f9e5c7ecfbd455de4a5b9957e78fcc1813b6a3034dbad957432b58",
+      "bytes": 7293
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/28c90c6a-3020-5c51-ac40-d802f3f12d2d.resolution.json",
+      "sha256": "sha256:b9c6903e9971843ba1b47129658aff45d0d3e4142ed4733da64e4dee3c1e50b3",
+      "bytes": 7402
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/29742d91-732f-5da5-bc46-e963885f9a4a.resolution.json",
+      "sha256": "sha256:d6428ceb0d12cd7e40bcd69c7d520ece53a4782dcc5fc626b5246971989be4ad",
+      "bytes": 7423
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/48115ff7-7aca-5d0b-a9e7-7fc6c78434ef.resolution.json",
+      "sha256": "sha256:7d61decc685f89f9375fcf2245905ff432429d2066d35cecd5b31de2f3f8522d",
+      "bytes": 7212
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/4961130b-1ee8-58f2-a319-dff0a864db6a.resolution.json",
+      "sha256": "sha256:14c3039dca5605582db9e7420f19b282d89870744f65c83bdd343dcd7c356985",
+      "bytes": 7173
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/7c0b944d-3f1f-5d26-84b0-2a359f689cf0.resolution.json",
+      "sha256": "sha256:9285c5a41c4ae434b7c87369b1abb4334cb52cff2e3c519470a67066dccd0404",
+      "bytes": 7773
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/9fef5c29-62bc-5ada-b96b-6885bcb049cb.resolution.json",
+      "sha256": "sha256:86a67783544101afdab29cdc3d4bc27a7a25e110b32686d7e3ef7a0b9d724350",
+      "bytes": 7055
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/a25a19ed-aec3-59cc-ae28-31d98746cb9d.resolution.json",
+      "sha256": "sha256:3b79d40c431353bc391e10838c8675a4296f03ecc36faae73abc90de1f3ebba1",
+      "bytes": 7578
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/a449e874-6fec-502b-9667-6f078adc4d64.resolution.json",
+      "sha256": "sha256:786e172c858923d425ebb6b4442c0cac17931845aee57ba1c09c0d0fb4db1904",
+      "bytes": 7701
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/acdfc7d7-6d6b-5a1f-837c-79449c29a305.resolution.json",
+      "sha256": "sha256:d3e488d35c6a5565c29d16b93edfbd815f4647d35595bd275381b001d51fa323",
+      "bytes": 7711
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/c61b2a7a-fb0f-5a76-92e9-771c789fa816.resolution.json",
+      "sha256": "sha256:d01196c79ae79daa93b93ded16f0f90e5bac157f4fa5eaa470a3f7635492efe0",
+      "bytes": 7637
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/cd9ec99b-b694-5673-863c-55528e31250a.resolution.json",
+      "sha256": "sha256:faf93bb584b086d6ee2cd09699fabb1abbe5a9dd793478de0805e1df3a170fc9",
+      "bytes": 7274
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/e0944fbb-0761-5f9c-afaa-3d4713ed1bed.resolution.json",
+      "sha256": "sha256:5edba4657af2ce484cbc4cb59fcfeb36bb59ff7502bd98949f344248739518b0",
+      "bytes": 7858
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/resolutions/f1ed86f0-534d-57d7-8952-a004a331cc54.resolution.json",
+      "sha256": "sha256:9bab26c0a99fdd2ac936a62d77ed43b5dafed88b3248de9f3b18dc2da3d84127",
+      "bytes": 7352
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/batches/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-a.batch-001.input.jsonl",
+      "sha256": "sha256:1980c15ff937b044ffbbdbb9376d7df6d936c8a5815432dbaa44f5fb413f5edc",
+      "bytes": 254482
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/contracts/goal-description-review-record.schema.json",
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "bytes": 5872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/criteria.md",
+      "sha256": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+      "bytes": 2948
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/description-review-campaign.json",
+      "sha256": "sha256:8f73b223370c14bfdf4acafd2e3b5cf16582759a2dacfd25197cb5a8153d50d4",
+      "bytes": 2551
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/description-review-input.json",
+      "sha256": "sha256:e079f6d938df720254d973f81aedbc9c7475cccebeb005470a0c738240fbec6b",
+      "bytes": 287272
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/results/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:ff27a775ca7e8773c3c699d345df1104c2404a832acd1789467c4c250157aecc",
+      "bytes": 72382
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/results/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:85acd4305c9656472364804fb27a2fb51704ec8289ba2bd6f064fd7b3772b3dc",
+      "bytes": 3764
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-a/review-bundle-manifest.json",
+      "sha256": "sha256:fc0258228fcff5e58f4ba9c997fe0804fb00f3bd39d63f6729405587772079ab",
+      "bytes": 17334
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/batches/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-b.batch-001.input.jsonl",
+      "sha256": "sha256:8777fcf80cfe2c2ee5bbf58939ea7d6e5b87bb2784e764f1f0e02dd88c06da29",
+      "bytes": 254482
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/contracts/goal-description-review-record.schema.json",
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "bytes": 5872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/criteria.md",
+      "sha256": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+      "bytes": 2948
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/description-review-campaign.json",
+      "sha256": "sha256:bad2d0861a3738144178b64fead593ad5ad0a480e419cd09677958931b365707",
+      "bytes": 2551
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/description-review-input.json",
+      "sha256": "sha256:e079f6d938df720254d973f81aedbc9c7475cccebeb005470a0c738240fbec6b",
+      "bytes": 287272
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/results/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:4ad8db2247dc2e0becb5a55639f4b577d0f6ba8f38153177294c622f758fe6ac",
+      "bytes": 78123
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/results/chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:31514f452a36bfb8f7e5cfc80f6fa18dbc0f34445bab96c4fe3e37b28965a7f4",
+      "bytes": 3648
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/round-b/review-bundle-manifest.json",
+      "sha256": "sha256:fc0258228fcff5e58f4ba9c997fe0804fb00f3bd39d63f6729405587772079ab",
+      "bytes": 17334
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/synthesis-authoring.fifteen-current-keeps-four-explicit-deferrals.json",
+      "sha256": "sha256:8bb58e63dd2d4e9b69493de8e36d80cc4bd075920ef6dbec196ff19b60c2530d",
+      "bytes": 10071
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen/synthesis-decisions.json",
+      "sha256": "sha256:219c06b9fc6d07e98ed41510f56a4f5aa15c0340ad5197e8acce2a9f10c2a3c6",
+      "bytes": 38249
+    }
+  ]
+}

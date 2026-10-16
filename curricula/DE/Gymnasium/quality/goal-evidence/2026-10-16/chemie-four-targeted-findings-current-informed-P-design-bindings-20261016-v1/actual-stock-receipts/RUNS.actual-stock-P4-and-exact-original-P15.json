@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "currentHostInputs": {
+    "canonical": {
+      "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:b60881489f399dacd38bf6c48a14d6284e4f672c781855eb61ace34bc4590b20",
+      "bytes": 1980676
+    },
+    "semantic": {
+      "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "sha256:856c8a4c1cae99a5c7ab20cf6b8a1dd676186b9dfb3f35e1426f06ab0aab74c6",
+      "bytes": 185976
+    }
+  },
+  "receipts": [
+    {
+      "name": "P4-write",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-targeted-findings-current-informed-P-design-bindings-20261016-v1/P4.final-two-PNGs.current.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-targeted-findings-current-informed-P-design-bindings-20261016-v1/P4.final-two-PNGs.genuine-own-informed-closed-candidates.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-16T03:53:04.957940+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.6584078919986496,
+      "stdout": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-four-targeted-P-own-informed/actual-stock-attempt-v1/P4-write.stdout.actual.txt",
+        "sha256": "sha256:cfacb75d2d7dc6fbee40ad681bcc7d5675d933b5071dbaf100b033739e46d0c7",
+        "bytes": 214
+      },
+      "stderr": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-four-targeted-P-own-informed/actual-stock-attempt-v1/P4-write.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "P4-check",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-targeted-findings-current-informed-P-design-bindings-20261016-v1/P4.final-two-PNGs.current.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-16T03:53:05.617637+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.5205969399976311,
+      "stdout": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-four-targeted-P-own-informed/actual-stock-attempt-v1/P4-check.stdout.actual.txt",
+        "sha256": "sha256:5a1c8cf7a34a927951b3a935f6849d4bf5072e36914c4976d634b4636866619d",
+        "bytes": 296
+      },
+      "stderr": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-four-targeted-P-own-informed/actual-stock-attempt-v1/P4-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "P15-retention-check",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-targeted-findings-current-informed-P-design-bindings-20261016-v1/P15.original-identity.exact-retention.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-16T03:53:06.138852+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.6789294759946642,
+      "stdout": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-four-targeted-P-own-informed/actual-stock-attempt-v1/P15-retention-check.stdout.actual.txt",
+        "sha256": "sha256:c1952b1675f6662ad64b4d6daadd66146b933c89f6bc7c19d9b44b5e2cda7df8",
+        "bytes": 314
+      },
+      "stderr": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-four-targeted-P-own-informed/actual-stock-attempt-v1/P15-retention-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "allScheduledCommandsCompleted": true,
+  "allPassed": true,
+  "newScientificVotesByStockCommands": 0,
+  "actualCaseExecutions": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "Native": 0,
+  "Central": 0
+}

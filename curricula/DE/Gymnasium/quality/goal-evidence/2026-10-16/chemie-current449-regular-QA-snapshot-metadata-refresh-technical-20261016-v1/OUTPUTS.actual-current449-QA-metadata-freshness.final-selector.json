@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual regular stock QA snapshot regeneration; current metadata/order and whitespace canonicalization, zero new scientific reviews",
+  "inputGenuineReviewedQA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-mobile-PNG-actual-independent-V-20261016-v1/QA449.current-two-new-mobile-PNGs.genuine-machine-bindings.json",
+    "sha256": "sha256:7fc36260d7f533d6a1bd1219e5733f695d5dafc084aaf9aae27ac15aa63dfa45",
+    "bytes": 1273403
+  },
+  "currentQA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current449-regular-QA-snapshot-metadata-refresh-technical-20261016-v1/QA449.current-regular-stock-metadata-snapshot.same-genuine-reviews.json",
+    "sha256": "sha256:ddffb6fe1730e4f23c5ca40d3f8e1d1d7826f02133a0a1406dd6e48013298673",
+    "bytes": 1274480
+  },
+  "actualCommands": [
+    {
+      "argv": [
+        "tsx",
+        "scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=chemie"
+      ],
+      "startedAt": "2026-10-16T04:19:54.174901+00:00",
+      "elapsedSeconds": 3.2118997310026316,
+      "exitCode": 0,
+      "stdout": "Wrote curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json (449 records)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tsx",
+        "scripts/generateGoalVisualizationQaLedgers.ts",
+        "--check",
+        "--subject=chemie"
+      ],
+      "startedAt": "2026-10-16T04:19:57.386906+00:00",
+      "elapsedSeconds": 2.758074430996203,
+      "exitCode": 0,
+      "stdout": "Goal visualization QA ledgers are up to date (1 subject file(s)).\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tsx",
+        "scripts/checkGoalVisualizationQaApprovalCoverage.ts",
+        "chemie"
+      ],
+      "startedAt": "2026-10-16T04:20:00.145067+00:00",
+      "elapsedSeconds": 0.30464174500957597,
+      "exitCode": 0,
+      "stdout": "chemie: approval coverage passed (449 approved active visualization(s), 0 exact-hash owner-directed pilot display exception(s); exceptions do not satisfy M7 gate V).\n",
+      "stderr": ""
+    }
+  ],
+  "sameGoalIdSet": 449,
+  "same449ActualImageDigests": true,
+  "sameScientificAndHumanReviewFieldsAfterExistingWhitespaceNormalization": true,
+  "changedRowMetadata": [
+    {
+      "goalId": "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+      "changedFields": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "goalId": "d7461c15-6992-5342-b899-6c490ee0cbb7",
+      "changedFields": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "goalId": "33034876-8da5-5619-ad86-e1272e0304b0",
+      "changedFields": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "goalId": "13877340-1370-5278-bb80-31cf382dd6f5",
+      "changedFields": [
+        "description"
+      ]
+    },
+    {
+      "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+      "changedFields": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+      "changedFields": [
+        "description"
+      ]
+    },
+    {
+      "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+      "changedFields": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a",
+      "changedFields": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+      "changedFields": [
+        "description"
+      ]
+    }
+  ],
+  "changedRowCount": 9,
+  "newScientificVotes": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "firstCentralFailurePreserved": true
+}

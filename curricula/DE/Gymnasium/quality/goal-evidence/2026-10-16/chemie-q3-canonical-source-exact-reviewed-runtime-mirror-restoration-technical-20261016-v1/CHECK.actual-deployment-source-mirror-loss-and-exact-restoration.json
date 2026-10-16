@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "role": "Exact restoration of already reviewed actual runtime deck bytes into the candidate canonical source mirror; no new card science",
+  "canonicalBefore": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/memory/canonical.whole-equilibria-q3.two-selection-tags.author.json",
+    "sha256": "sha256:a50d4676e4df19629028e1c3bbcd48490e819242858e6484cf67bdcc850991d6",
+    "bytes": 4820
+  },
+  "alreadyReviewedRuntimeWholeSource": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/memory/runtime-data-vocabulary.whole-equilibria-q3.two-selection-tags.author.json",
+    "sha256": "sha256:7762dc80a637c8ed8cf89676f9eb7fb9c540e12efa84fa84628f3b28a764e4a6",
+    "bytes": 5841
+  },
+  "canonicalAfter": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-q3-canonical-source-exact-reviewed-runtime-mirror-restoration-technical-20261016-v1/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+    "sha256": "sha256:7762dc80a637c8ed8cf89676f9eb7fb9c540e12efa84fa84628f3b28a764e4a6",
+    "bytes": 5841
+  },
+  "oldHCanonical": {
+    "path": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+    "sha256": "sha256:a50d4676e4df19629028e1c3bbcd48490e819242858e6484cf67bdcc850991d6",
+    "bytes": 4820
+  },
+  "exactFullCardObjectDifferencesBefore": [
+    {
+      "cardId": "chem_eq_q3_001",
+      "changedFields": [
+        "tags"
+      ]
+    },
+    {
+      "cardId": "chem_eq_q3_002",
+      "changedFields": [
+        "tags"
+      ]
+    },
+    {
+      "cardId": "chem_eq_q3_003",
+      "changedFields": [
+        "tags"
+      ]
+    },
+    {
+      "cardId": "chem_eq_q3_005",
+      "changedFields": [
+        "tags"
+      ]
+    },
+    {
+      "cardId": "chem_eq_q3_007",
+      "changedFields": [
+        "back",
+        "front",
+        "tags"
+      ]
+    },
+    {
+      "cardId": "chem_eq_q3_009",
+      "changedFields": [
+        "tags"
+      ]
+    },
+    {
+      "cardId": "chem_eq_q3_011",
+      "changedFields": [
+        "tags"
+      ]
+    }
+  ],
+  "reason": "deploy_curriculum_decks.ts copies canonical memory-decks to public and backend. The stale candidate canonical mirror would undo seven BW selection tags and the already reviewed Nernst front/back. Preserve exactly the actual runtime11cards bound by the current75card ledger.",
+  "normalCanonicalDeckAlias": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+  "actualHCanonicalRuntimeBytesEqual": true,
+  "cardContentAuthoredInThisOperation": false,
+  "newScientificClosures": 0,
+  "sourceActiveRuntimeOrBackendWrites": false,
+  "privateCandidateHostOnly": true,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

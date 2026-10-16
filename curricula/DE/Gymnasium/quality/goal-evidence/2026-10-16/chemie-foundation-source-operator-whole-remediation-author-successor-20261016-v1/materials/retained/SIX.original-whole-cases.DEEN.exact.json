@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 1,
+  "role": "Original inactive bilingual scientific assessment specifications; no independent approval or actual learner/laboratory results",
+  "licenseExpression": "CC-BY-4.0",
+  "goalIds": [
+    "4961130b-1ee8-58f2-a319-dff0a864db6a",
+    "f1ed86f0-534d-57d7-8952-a004a331cc54",
+    "b4777001-f4ed-5fe9-9d98-02319abdea09"
+  ],
+  "goals": [
+    {
+      "goalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+      "cases": [
+        {
+          "id": "redox-1",
+          "title": {
+            "de": "Elektronenbilanz in saurer Lösung und ein Gegenbeispiel",
+            "en": "Electron balance in acidic solution and a counterexample"
+          },
+          "givenMaterials": {
+            "de": "In einer wässrigen sauren Lösung werden MnO4− und Fe2+ zu Mn2+ und Fe3+ umgesetzt. Als Bilanzhilfen sind H+(aq), H2O(l) und e− erlaubt. Eine zweite Mischung enthält HCl(aq) und NaOH(aq). Elektronegativität: O > C > H; O hat hier −II, H +I. Es sind symbolische Aufgaben; keine Durchführung mit Permanganat ist verlangt.",
+            "en": "In an aqueous acidic solution, MnO4− and Fe2+ form Mn2+ and Fe3+. H+(aq), H2O(l), and e− may be used for balancing. A second mixture contains HCl(aq) and NaOH(aq). Electronegativity: O > C > H; O has −II and H +I here. These are symbolic tasks; no permanganate experiment is required."
+          },
+          "demands": [
+            {
+              "id": "r1-a",
+              "de": "Leite die Oxidationszahlen von Mn in MnO4− und Mn2+ sowie Fe in Fe2+/Fe3+ her. Erkläre, warum Mn in MnO4− nicht die Oxidationszahl −I besitzt.",
+              "en": "Derive the oxidation numbers of Mn in MnO4− and Mn2+, and of Fe in Fe2+/Fe3+. Explain why Mn in MnO4− does not have oxidation number −I."
+            },
+            {
+              "id": "r1-b",
+              "de": "Bestimme Oxidation, Reduktion und beide Elektronenzahlen. Entwickle die beiden Teilgleichungen und daraus die Gesamt-Ionengleichung in saurer Lösung; prüfe alle Atome und die Gesamtladung.",
+              "en": "Identify oxidation, reduction, and both electron counts. Construct the half-equations and the overall ionic equation in acidic solution; check every element and the total charge."
+            },
+            {
+              "id": "r1-c",
+              "de": "Stelle die Netto-Ionengleichung für HCl/NaOH mit Oxoniumionen auf. Prüfe anhand der Oxidationszahlen, ob diese Neutralisation ebenfalls eine Redoxreaktion ist.",
+              "en": "Write the net ionic equation for HCl/NaOH using hydronium ions. Use oxidation numbers to determine whether this neutralization is also a redox reaction."
+            }
+          ],
+          "fullModelAnswer": {
+            "de": "Mn in MnO4−: x + 4·(−2) = −1, also x = +VII; die Ionenladung −1 ist die Summe aller atomaren Oxidationszahlen. Mn2+ hat +II; Fe2+ +II und Fe3+ +III. Fe wird oxidiert und gibt je Ion ein Elektron ab, Mn wird reduziert und nimmt fünf Elektronen auf. Teilgleichungen: Fe2+(aq) → Fe3+(aq) + e−; MnO4−(aq) + 8 H+(aq) + 5 e− → Mn2+(aq) + 4 H2O(l). Die Fe-Teilgleichung wird mit fünf multipliziert. Gesamt: MnO4−(aq) + 8 H+(aq) + 5 Fe2+(aq) → Mn2+(aq) + 4 H2O(l) + 5 Fe3+(aq). Mn: 1/1, Fe: 5/5, O: 4/4, H: 8/8; Ladung links −1+8+10=+17, rechts +2+15=+17. Neutralisation: H3O+(aq) + OH−(aq) → 2 H2O(l). H bleibt +I, O −II; Na+ und Cl− sind unveränderte Zuschauerionen. Keine Oxidationszahl ändert sich: diese Reaktion ist keine Redoxreaktion. H+(aq) in der ersten Bilanz ist die übliche formale Schreibweise für solvatisierte Protonen.",
+            "en": "For Mn in MnO4−, x + 4·(−2) = −1, giving +VII; the ionic charge −1 is the sum of all atomic oxidation numbers. Mn2+ has +II; Fe2+ has +II and Fe3+ +III. Fe is oxidized, losing one electron per ion; Mn is reduced, gaining five. Half-equations: Fe2+(aq) → Fe3+(aq) + e−; MnO4−(aq) + 8 H+(aq) + 5 e− → Mn2+(aq) + 4 H2O(l). Multiply the Fe half-equation by five. Overall: MnO4−(aq) + 8 H+(aq) + 5 Fe2+(aq) → Mn2+(aq) + 4 H2O(l) + 5 Fe3+(aq). Mn: 1/1, Fe: 5/5, O: 4/4, H: 8/8; charge on the left is −1+8+10=+17, on the right +2+15=+17. Neutralization: H3O+(aq) + OH−(aq) → 2 H2O(l). H remains +I, O −II; Na+ and Cl− remain spectator ions. No oxidation number changes, so this reaction is not redox. H+(aq) in the first balance is the conventional formal notation for solvated protons."
+          },
+          "caseSpecificCreditRubric": [
+            {
+              "id": "r1-1",
+              "points": 3,
+              "askedDemandIds": [
+                "r1-a"
+              ],
+              "creditDe": "Summenregel mit der Teilchenladung begründen und vier Oxidationszahlen korrekt angeben; Mn(+VII) von der Ladung des gesamten Ions unterscheiden.",
+              "creditEn": "Justify the charge-sum rule and give all four oxidation numbers; distinguish Mn(+VII) from the charge of the entire ion."
+            },
+            {
+              "id": "r1-2",
+              "points": 4,
+              "askedDemandIds": [
+                "r1-b"
+              ],
+              "creditDe": "Elektronenänderungen 1 und 5 aus Oxidationszahländerungen ableiten; korrekte Teil- und Gesamtgleichung mit Faktor 5 entwickeln.",
+              "creditEn": "Derive electron changes of 1 and 5 from oxidation-number changes; construct correct half-equations and the overall equation using factor 5."
+            },
+            {
+              "id": "r1-3",
+              "points": 2,
+              "askedDemandIds": [
+                "r1-b"
+              ],
+              "creditDe": "Atomzahlen und Ladung +17/+17 selbst prüfen; eine Ladungsbilanz allein ersetzt nicht die Atombilanz.",
+              "creditEn": "Check all atom counts and charge +17/+17 independently; charge balance alone does not replace atom balance."
+            },
+            {
+              "id": "r1-4",
+              "points": 3,
+              "askedDemandIds": [
+                "r1-c"
+              ],
+              "creditDe": "Neutralisationsgleichung korrekt; unveränderte H-/O-Oxidationszahlen begründen den Nicht-Redox-Befund.",
+              "creditEn": "Correct neutralization equation; unchanged H/O oxidation numbers justify the non-redox conclusion."
+            }
+          ],
+          "maximumPoints": 12,
+          "assessmentChannels": [
+            "independent symbolic derivation and classification"
+          ],
+          "actualLearnerOrLabEvidenceClaimed": false,
+          "visualizationNeeded": false,
+          "provenance": "Original SkillPilot-authored assessment specification; supplied measurements are constructed task data."
+        },
+        {
+          "id": "redox-2",
+          "title": {
+            "de": "Lokale Kohlenstoff-Oxidationszahlen beim Alkanol",
+            "en": "Local carbon oxidation numbers in an alkanol"
+          },
+          "givenMaterials": {
+            "de": "Gegebene Strukturformeln: Ethanol CH3–CH2–OH und Ethanal CH3–C(=O)–H. Unter den vorgegebenen Reaktionsbedingungen setzt Ethanol mit CuO(s) zu Ethanal, Cu(s) und H2O um. Ordne Bindungselektronen formal dem elektronegativeren Atom zu (O > C > H); C–C-Bindungen tragen 0 bei. Dies ist eine symbolische Bilanz einer gegebenen Umsetzung, keine Aufforderung zum Erhitzen.",
+            "en": "Given structural formulas: ethanol CH3–CH2–OH and ethanal CH3–C(=O)–H. Under the specified conditions, ethanol reacts with CuO(s) to form ethanal, Cu(s), and H2O. Formally assign bonding electrons to the more electronegative atom (O > C > H); C–C bonds contribute 0. This is a symbolic balance of a stated transformation, not an instruction to heat chemicals."
+          },
+          "demands": [
+            {
+              "id": "r2-a",
+              "de": "Bestimme und begründe für jedes der beiden C-Atome seine Oxidationszahl in Ethanol und Ethanal. Zeige, warum eine gemittelte C-Oxidationszahl die Reaktionsstelle nicht bestimmt.",
+              "en": "Determine and justify the oxidation number of each carbon atom in ethanol and ethanal. Show why an average carbon oxidation number does not identify the reaction site."
+            },
+            {
+              "id": "r2-b",
+              "de": "Bestimme die Oxidationszahländerung von Cu und dem reagierenden C-Atom sowie den Elektronenausgleich. Leite daraus die kleinsten ganzzahligen Koeffizienten der gegebenen Reaktion ab und prüfe alle Atome.",
+              "en": "Determine the oxidation-number changes of Cu and the reacting carbon, and the electron balance. Use these to derive the smallest integer coefficients of the stated reaction and check every element."
+            },
+            {
+              "id": "r2-c",
+              "de": "Ein Mitschüler meint: „Ethanol wird zu Ethanal oxidiert, weil es Sauerstoff aufnimmt.“ Beurteile dies anhand der Strukturformeln und erläutere, was die Oxidationszahlen zeigen und was sie nicht über den tatsächlichen Mechanismus aussagen.",
+              "en": "A peer says: “Ethanol is oxidized to ethanal because it gains oxygen.” Assess this using the structural formulas and explain what oxidation numbers show and what they do not show about the actual mechanism."
+            }
+          ],
+          "fullModelAnswer": {
+            "de": "Das CH3-C besitzt in beiden Molekülen −III: drei C–H-Bindungen tragen je −1 bei, C–C 0. Das CH2OH-C besitzt −I: zwei C–H ergeben −2, eine C–O +1. Das CHO-C besitzt +I: C=O trägt +2, C–H −1. Der Mittelwert ist in Ethanol −II und in Ethanal −I, verschleiert aber, welches C sich verändert. Am reagierenden C erfolgt −I → +I, also formal Abgabe von 2 e−; Cu in CuO ist +II und wird zu Cu(0) reduziert, formal Aufnahme von 2 e−. Deshalb genügt ein CuO je Ethanol: CH3CH2OH + CuO → CH3CHO + Cu + H2O (unter den angegebenen Bedingungen). Beide Seiten: C2, H6, O2, Cu1; alle dargestellten Stoffe sind elektrisch neutral. Ethanol und Ethanal enthalten je ein O-Atom; es wird nicht einfach ein O-Atom an das organische Molekül angefügt. Die Oxidation entspricht hier dem Entzug von zwei H-Atomen und der Zunahme der lokalen C-Oxidationszahl. Oxidationszahlen sind formale Elektronenbuchhaltung; sie beweisen weder freie Elektronen im Reaktionsgemisch noch einen bestimmten Elementarschritt. Die Stöchiometrie beschreibt die vorgegebene Reaktion, nicht jede mögliche Produktbildung bei beliebigen Heizbedingungen.",
+            "en": "The CH3 carbon is −III in both molecules: three C–H bonds contribute −1 each and C–C contributes 0. The CH2OH carbon is −I: two C–H bonds give −2 and one C–O gives +1. The CHO carbon is +I: C=O gives +2 and C–H gives −1. The average is −II in ethanol and −I in ethanal, but hides which carbon changes. The reacting carbon changes from −I to +I, formally losing 2 e−; Cu in CuO is +II and becomes Cu(0), formally gaining 2 e−. One CuO per ethanol therefore suffices: CH3CH2OH + CuO → CH3CHO + Cu + H2O (under the stated conditions). Both sides contain C2, H6, O2, and Cu1; all represented substances are electrically neutral. Ethanol and ethanal each contain one oxygen atom, so oxidation does not simply add an oxygen atom to the organic molecule here. It removes two hydrogen atoms and increases the local carbon oxidation number. Oxidation numbers are formal electron bookkeeping; they prove neither free electrons in the mixture nor a particular elementary step. The stoichiometry describes the stipulated reaction, not every possible product under arbitrary heating conditions."
+          },
+          "caseSpecificCreditRubric": [
+            {
+              "id": "r2-1",
+              "points": 4,
+              "askedDemandIds": [
+                "r2-a"
+              ],
+              "creditDe": "Alle vier lokalen C-Werte aus einzelnen Bindungen herleiten; Mittelwerte −II/−I als nicht ortsauflösend erklären.",
+              "creditEn": "Derive all four local carbon values from individual bonds; explain that averages −II/−I do not locate the change."
+            },
+            {
+              "id": "r2-2",
+              "points": 4,
+              "askedDemandIds": [
+                "r2-b"
+              ],
+              "creditDe": "2-e−-Abgabe am C und 2-e−-Aufnahme am Cu begründen; korrekte Koeffizienten 1:1:1:1:1 und vollständige Atombilanz.",
+              "creditEn": "Justify two-electron loss at carbon and gain at copper; give coefficients 1:1:1:1:1 and a complete atom balance."
+            },
+            {
+              "id": "r2-3",
+              "points": 4,
+              "askedDemandIds": [
+                "r2-c"
+              ],
+              "creditDe": "Gleiche O-Zahl, H-Entzug und lokale Oxidationszahländerung verwenden; formale Bilanz nicht als Mechanismusnachweis ausgeben.",
+              "creditEn": "Use the unchanged oxygen count, hydrogen removal, and local oxidation-number change; do not treat formal bookkeeping as mechanistic proof."
+            }
+          ],
+          "maximumPoints": 12,
+          "assessmentChannels": [
+            "independent structure-based transfer, not visual recognition"
+          ],
+          "actualLearnerOrLabEvidenceClaimed": false,
+          "visualizationNeeded": false,
+          "provenance": "Original SkillPilot-authored assessment specification; supplied measurements are constructed task data."
+        }
+      ]
+    },
+    {
+      "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+      "cases": [
+        {
+          "id": "solution-1",
+          "title": {
+            "de": "Salzsäure verdünnen, messen und eine Modellgrenze erkennen",
+            "en": "Dilute hydrochloric acid, measure, and identify a model limit"
+          },
+          "givenMaterials": {
+            "de": "Bei 25 °C sollen 250,0 mL einer HCl-Lösung mit c=0,0100 mol/L aus einer geprüften HCl-Stammlösung c=0,100 mol/L hergestellt werden. Bereit stehen eine 25,00-mL-Vollpipette mit Pipettierhilfe, ein 250,0-mL-Messkolben, deionisiertes Wasser, Schutzbrille und ein bei 25 °C kalibriertes pH-Meter. Vollständige Protolyse und für die Rechnung Aktivitäten≈c/(1 mol/L) sind vorgegeben; pKw=14,00. Die fachliche Durchführung erfolgt ausschließlich im beaufsichtigten Schullabor nach dessen Gefährdungsbeurteilung. Konstruierte Vergleichsdaten: Messwerte 2,04 oder 3,02, jeweils ±0,05 pH. Eine getrennte theoretische, CO2-freie HCl-Probe hat c=1,00·10−8 mol/L; hierfür darf die Autoprotolyse nicht vernachlässigt werden.",
+            "en": "At 25 °C, prepare 250.0 mL of HCl solution with c=0.0100 mol/L from a verified 0.100 mol/L HCl stock. Available: a 25.00 mL volumetric pipette with filler, a 250.0 mL volumetric flask, deionized water, protective goggles, and a pH meter calibrated at 25 °C. Complete protolysis and activities≈c/(1 mol/L) are stipulated for calculation; pKw=14.00. Actual work is confined to a supervised school laboratory under its risk assessment. Constructed comparison data: readings 2.04 or 3.02, each ±0.05 pH. A separate theoretical CO2-free HCl sample has c=1.00·10−8 mol/L; water autoprotolysis must be included for this sample."
+          },
+          "demands": [
+            {
+              "id": "s1-a",
+              "de": "Berechne die nötige HCl-Stoffmenge und das Volumen der Stammlösung; leite den Zusammenhang aus der Stoffmengenerhaltung her. Berechne den erwarteten pH und erkläre die Zehner-Verdünnung auf Teilchenebene.",
+              "en": "Calculate the required amount of HCl and stock volume; derive the relation from conservation of amount. Calculate the expected pH and explain the tenfold dilution at particle level."
+            },
+            {
+              "id": "s1-b",
+              "de": "Begründe die Reihenfolge und Auswahl der Geräte. Führe nach Freigabe der Aufsicht diese Verdünnung und pH-Messung tatsächlich durch und protokolliere verwendete Volumina, Temperatur, Kalibrierung, eigene Beobachtungen und Messwert. Reine Beschreibung oder vorgegebene Daten belegen diesen Durchführungsteil nicht.",
+              "en": "Justify the order of operations and apparatus. After the supervisor authorizes the work, actually perform the dilution and pH measurement and record volumes used, temperature, calibration, your observations, and reading. A description or supplied data does not demonstrate this execution component."
+            },
+            {
+              "id": "s1-c",
+              "de": "Prüfe die beiden vorgegebenen Vergleichswerte auf Plausibilität. Begründe einen möglichen Fehler für den unplausiblen Wert und wie du ihn prüfen würdest; behaupte keinen durch die Daten nicht belegten Fehler.",
+              "en": "Assess both supplied comparison readings for plausibility. Justify one possible error explaining the implausible reading and how you would check it; do not claim an error that the data do not establish."
+            },
+            {
+              "id": "s1-d",
+              "de": "Die Formel pH=−log c ergäbe für die theoretische 10−8-molare HCl-Probe pH 8. Prüfe diesen Schluss mit der gegebenen Lösung h=(c+√(c²+4Kw))/2 der Bilanz h−Kw/h=c. Berechne und interpretiere h und pH und erkläre den Beitrag des Wassers; ein selbstständiges quadratisches Lösungsverfahren ist nicht verlangt. Verwechsle diese Rechenprobe nicht mit einer zuverlässig hergestellten oder gemessenen realen Probe.",
+              "en": "The formula pH=−log c would give pH 8 for the theoretical 10−8 molar HCl sample. Assess this using the supplied solution h=(c+√(c²+4Kw))/2 of the balance h−Kw/h=c. Calculate and interpret h and pH and explain the water contribution; independently solving a quadratic is not required. Do not confuse the calculation with a reliably prepared or measured real sample."
+            }
+          ],
+          "fullModelAnswer": {
+            "de": "n=c·V=0,0100 mol/L·0,2500 L=2,50·10−3 mol. Vstock=n/cstock=0,0250 L=25,00 mL; n bleibt bei der Verdünnung erhalten, das Endvolumen wächst um den Faktor 10. Für die übliche Probe ist [H3O+]≈0,0100 mol/L und pH≈2,000; die Konzentration sinkt zehnfach und pH steigt um 1 gegenüber der Stammlösung. Im beaufsichtigten Versuch etwas Wasser in den Messkolben vorlegen, 25,00 mL der verdünnten Stammsäure mit Pipettierhilfe zum Wasser geben, mischen, Temperaturausgleich abwarten, auf 250,0 mL Endvolumen auffüllen und homogenisieren. Nicht 250 mL Wasser zusätzlich zu 25 mL Säure dosieren. Meniskus auf Augenhöhe; eine getrennte Probe messen, Elektrode nach Laborvorschrift spülen, Temperatur und stabilen pH notieren. Schutzbrille; keine Mundpipettierung. Dies ist die Solloperation, keine Behauptung einer erfolgten Durchführung. Eigene Volumina/Beobachtungen/Messwerte müssen unabhängig aufgezeichnet und von der Aufsicht auf sachgerechte Handhabung beobachtet werden; genaue reale Messwerte sind nicht vorgegeben. 2,04±0,05 passt im idealen Modell zu 2,00; 3,02±0,05 liegt ungefähr eine pH-Einheit höher und ist so nicht plausibel. Eine weitere zehnfache Verdünnung oder etwa zehnfach zu kleine Stoffmenge wäre eine Hypothese; Volumenprotokoll und Stammlösung kontrollieren sowie Elektrode mit Referenzen prüfen. Für c=10−8: Ladungsbilanz h=c+[OH−], Kw=h[OH−], also h²−ch−Kw=0 und h=(c+√(c²+4Kw))/2=1,05125·10−7 mol/L. pH≈6,9783, leicht sauer; die einfache Säureformel versagt bei c≪10−7 mol/L. Luft-CO2, Verunreinigungen und Aktivitäten erschweren eine reale Extremverdünnungsprobe; die Aufgabe ist nur eine ausdrücklich ideale Rechenprobe.",
+            "en": "n=c·V=0.0100 mol/L·0.2500 L=2.50·10−3 mol. Vstock=n/cstock=0.0250 L=25.00 mL; dilution conserves n while final volume increases tenfold. For the ordinary sample, [H3O+]≈0.0100 mol/L and pH≈2.000; concentration decreases tenfold and pH increases by 1 relative to the stock. In the supervised experiment, place some water in the flask, add 25.00 mL of the dilute acid stock to the water using the pipette filler, mix, allow temperature equilibration, make up to the final volume of 250.0 mL, and homogenize. Do not add 250 mL of water to 25 mL acid. Read the meniscus at eye level; measure a separate sample, rinse the electrode according to laboratory procedure, and record temperature and stable pH. Wear goggles; no mouth pipetting. These are intended operations, not a claim that they occurred. Actual volumes, observations, and measurements must be independently recorded, and the supervisor must observe proper handling; exact real readings are not predetermined. 2.04±0.05 agrees with 2.00 in the ideal model; 3.02±0.05 is about one pH unit higher and is implausible under these assumptions. Another tenfold dilution or about tenfold too little acid would be hypotheses; inspect volume records and stock, and check the electrode with references. For c=10−8: charge balance h=c+[OH−] and Kw=h[OH−] give h²−ch−Kw=0, hence h=(c+√(c²+4Kw))/2=1.05125·10−7 mol/L. pH≈6.9783, slightly acidic; the simple acid formula fails when c≪10−7 mol/L. Atmospheric CO2, contamination, and activities complicate a real extreme-dilution sample; this task is explicitly an ideal calculation only."
+          },
+          "caseSpecificCreditRubric": [
+            {
+              "id": "s1-1",
+              "points": 3,
+              "askedDemandIds": [
+                "s1-a"
+              ],
+              "creditDe": "Stoffmengenerhaltung, n=2,50 mmol und Vstock=25,00 mL mit Einheiten; pH 2,000 mit Konzentrationsannahme.",
+              "creditEn": "Conservation of amount, n=2.50 mmol, Vstock=25.00 mL with units; pH 2.000 with concentration assumption."
+            },
+            {
+              "id": "s1-2",
+              "points": 3,
+              "askedDemandIds": [
+                "s1-b"
+              ],
+              "creditDe": "Pipette/Messkolben, Säure zum Wasser, Endvolumen, Temperaturausgleich und Homogenisierung fachlich begründen.",
+              "creditEn": "Justify pipette/flask, acid into water, final volume, temperature equilibration, and homogenization."
+            },
+            {
+              "id": "s1-3",
+              "points": 3,
+              "askedDemandIds": [
+                "s1-b"
+              ],
+              "creditDe": "Nur bei beobachteter sachgerechter Durchführung und eigener nachvollziehbarer Volumen-/Kalibrierungs-/Messdokumentation. Schriftliche Planung oder Sollwerte erhalten hier 0 Punkte. Kein erfundener Laborbericht.",
+              "creditEn": "Award only for observed competent execution and independently traceable volume, calibration, and measurement records. Written planning or expected values receive 0 here. No invented laboratory record."
+            },
+            {
+              "id": "s1-4",
+              "points": 3,
+              "askedDemandIds": [
+                "s1-c"
+              ],
+              "creditDe": "Vergleichswerte korrekt bewerten; Hypothese von festgestelltem Fehler unterscheiden und eine geeignete Kontrollprüfung begründen.",
+              "creditEn": "Assess both readings correctly; distinguish a hypothesis from an established error and justify a suitable check."
+            },
+            {
+              "id": "s1-5",
+              "points": 4,
+              "askedDemandIds": [
+                "s1-d"
+              ],
+              "creditDe": "Gegebene positive Lösung und Ladungs-/Gleichgewichtsbilanz fachlich verwenden; pH≈6,9783, leicht sauer, Wasserbeitrag und Grenzen realer Extremverdünnung erklären. Keine Punktepflicht für ein selbst hergeleitetes quadratisches Lösungsverfahren.",
+              "creditEn": "Use the supplied positive solution and charge/equilibrium balance chemically; explain pH≈6.9783, slight acidity, water contribution, and limits of real extreme dilution. No requirement to derive a quadratic solution method."
+            }
+          ],
+          "maximumPoints": 16,
+          "assessmentChannels": [
+            "independent quantitative reasoning",
+            "supervised observed preparation and measurement required for execution criterion",
+            "constructed-data evaluation alone is not laboratory execution"
+          ],
+          "actualLearnerOrLabEvidenceClaimed": false,
+          "visualizationNeeded": false,
+          "provenance": "Original SkillPilot-authored assessment specification; supplied measurements are constructed task data."
+        },
+        {
+          "id": "solution-2",
+          "title": {
+            "de": "Zweiwertige Base und gleiche formale Konzentration",
+            "en": "Divalent base and equal formal concentration"
+          },
+          "givenMaterials": {
+            "de": "Bei 25 °C ist eine klare, geprüfte Ca(OH)2-Stammlösung c=0,00250 mol/L vorhanden. 25,00 mL werden auf 250,0 mL Endvolumen verdünnt. Für die Rechenaufgabe gilt vollständige Dissoziation, Aktivitäten≈c/(1 mol/L), pKw=14,00 und M(Ca(OH)2)=74,09 g/mol. Die Konzentration liegt unter der Löslichkeitsgrenze. Eine Vergleichsprobe enthält NaOH mit derselben formalen Konzentration wie die verdünnte Ca(OH)2-Probe. Geräte, Schutzbrille, beaufsichtigtes Labor und pH-Meter wie in Fall 1; Proben werden möglichst kurz Luft-CO2 ausgesetzt. Konstruierte Ca(OH)2-Messwerte sind 10,65 oder 9,65, jeweils ±0,05 pH.",
+            "en": "At 25 °C a clear, verified Ca(OH)2 stock has c=0.00250 mol/L. Dilute 25.00 mL to a final volume of 250.0 mL. For the calculation assume complete dissociation, activities≈c/(1 mol/L), pKw=14.00, and M(Ca(OH)2)=74.09 g/mol. The concentration is below the solubility limit. A comparison sample contains NaOH at the same formal concentration as the diluted Ca(OH)2 sample. Apparatus, goggles, supervised laboratory, and pH meter are as in case 1; minimize exposure to atmospheric CO2. Constructed Ca(OH)2 readings are 10.65 or 9.65, each ±0.05 pH."
+          },
+          "demands": [
+            {
+              "id": "s2-a",
+              "de": "Berechne Stoffmenge, enthaltene Ca(OH)2-Masse und formale Endkonzentration. Entwickle die Dissoziationsgleichung und leite [OH−], pOH und pH ab; prüfe Atom- und Ladungsbilanz.",
+              "en": "Calculate amount, dissolved Ca(OH)2 mass, and final formal concentration. Construct the dissociation equation and derive [OH−], pOH, and pH; check atom and charge balance."
+            },
+            {
+              "id": "s2-b",
+              "de": "Vergleiche den pH der NaOH-Probe mit dem der Ca(OH)2-Probe und begründe den Unterschied auf Teilchenebene. Erläutere, warum du diese Formel nicht ungeprüft für NH3(aq) oder eine sehr konzentrierte Lauge verwenden darfst.",
+              "en": "Compare the pH of the NaOH sample with that of the Ca(OH)2 sample and explain the difference at particle level. Explain why this formula cannot be used without checking for NH3(aq) or a highly concentrated alkaline solution."
+            },
+            {
+              "id": "s2-c",
+              "de": "Begründe das Vorgehen beim Verdünnen und beim Umgang mit CO2. Stelle nach Freigabe der Aufsicht die Lösung tatsächlich her, messe den pH und dokumentiere eigene Handhabung, Volumina, Temperatur, Kalibrierung und Messung. Prüfe außerdem die beiden gegebenen Vergleichswerte und nenne eine begründete Kontrollmaßnahme für eine Abweichung.",
+              "en": "Justify the dilution procedure and handling of CO2 exposure. After supervisor authorization, actually prepare the solution, measure pH, and document your handling, volumes, temperature, calibration, and reading. Also assess both supplied comparison readings and give one justified check for a discrepancy."
+            }
+          ],
+          "fullModelAnswer": {
+            "de": "n=0,00250·0,02500=6,250·10−5 mol, m=nM=0,0046306 g≈4,631 mg (die im Aliquot gelöste Masse, keine Aufforderung zum Abwiegen dieser kleinen Masse). cfinal=n/0,2500=2,500·10−4 mol/L. Ca(OH)2(aq) → Ca2+(aq)+2 OH−(aq); Ca1, O2, H2 und Gesamtladung 0=+2−2. [OH−]=2cfinal=5,000·10−4 mol/L, pOH=3,3010, pH=10,6990. Der Beitrag der Autoprotolyse ist hier vernachlässigbar, weil [OH−]≫10−7 mol/L. Bei gleich konzentrierter NaOH ist [OH−]=2,500·10−4 mol/L, pOH=3,6021 und pH=10,3979. Unterschied log10(2)=0,3010, da Ca(OH)2 je Formeleinheit zwei OH−, NaOH eines liefert. NH3 ist eine schwache Brønsted-Base und bildet OH− über NH3+H2O⇌NH4++OH−; eine Gleichgewichtsrechnung wäre nötig. Hohe Konzentrationen erfordern Aktivitäten; die idealen pH-Werte sind Näherungen. Im beaufsichtigten Versuch 25,00 mL klare Stammlösung mit Vollpipette entnehmen, in den Messkolben mit etwas Wasser geben, auf 250,0 mL Endvolumen bringen, homogenisieren und eine separate Probe mit kalibriertem pH-Meter messen. CO2-Aufnahme kann OH− verbrauchen und Carbonat bilden; zügiges Arbeiten und verschlossene Aufbewahrung begrenzen sie. Dies beschreibt Sollhandlungen: tatsächliche Durchführung und eigene Messdokumentation sind separat zu beobachten. 10,65±0,05 passt näherungsweise zu 10,699; 9,65±0,05 nicht. CO2-Aufnahme, falsche Verdünnung oder Messfehler sind Möglichkeiten, keine bewiesenen Ursachen. Als Kontrolle frische verschlossene Probe und Referenzlösungen prüfen und die Volumenaufzeichnungen kontrollieren.",
+            "en": "n=0.00250·0.02500=6.250·10−5 mol, m=nM=0.0046306 g≈4.631 mg (the mass dissolved in the aliquot, not an instruction to weigh this small mass). cfinal=n/0.2500=2.500·10−4 mol/L. Ca(OH)2(aq) → Ca2+(aq)+2 OH−(aq); Ca1, O2, H2, and total charge 0=+2−2. [OH−]=2cfinal=5.000·10−4 mol/L, pOH=3.3010, pH=10.6990. Water autoprotolysis is negligible here because [OH−]≫10−7 mol/L. At the same formal NaOH concentration, [OH−]=2.500·10−4 mol/L, pOH=3.6021, and pH=10.3979. The difference is log10(2)=0.3010 because each formula unit of Ca(OH)2 supplies two hydroxide ions whereas NaOH supplies one. NH3 is a weak Brønsted base and produces OH− through NH3+H2O⇌NH4++OH−; an equilibrium calculation would be needed. High concentrations require activities; the ideal pH values are approximations. In the supervised experiment, take 25.00 mL of clear stock with the volumetric pipette, transfer into the flask containing some water, make up to a final 250.0 mL, homogenize, and measure a separate sample with a calibrated pH meter. CO2 uptake can consume OH− and form carbonate; prompt work and closed storage limit this. These are intended actions: execution and independent measurement records must be observed separately. 10.65±0.05 approximately agrees with 10.699; 9.65±0.05 does not. CO2 uptake, incorrect dilution, or measurement error are possibilities, not proven causes. Check a fresh closed sample and reference solutions, and inspect volume records."
+          },
+          "caseSpecificCreditRubric": [
+            {
+              "id": "s2-1",
+              "points": 3,
+              "askedDemandIds": [
+                "s2-a"
+              ],
+              "creditDe": "n=6,250·10−5 mol, m≈4,631 mg gelöst und c=2,500·10−4 mol/L korrekt mit Einheiten und Volumenbezug.",
+              "creditEn": "Correct n=6.250·10−5 mol, dissolved m≈4.631 mg, and c=2.500·10−4 mol/L with units and volume basis."
+            },
+            {
+              "id": "s2-2",
+              "points": 3,
+              "askedDemandIds": [
+                "s2-a"
+              ],
+              "creditDe": "Faktor 2 aus der ausgeglichenen Dissoziation ableiten; [OH−], pOH und pH 10,699 korrekt, Autoprotolyse hier klein.",
+              "creditEn": "Derive factor 2 from balanced dissociation; correct [OH−], pOH, and pH 10.699, with negligible autoprotolysis here."
+            },
+            {
+              "id": "s2-3",
+              "points": 3,
+              "askedDemandIds": [
+                "s2-b"
+              ],
+              "creditDe": "NaOH-pH 10,398 und Differenz 0,301 begründen; schwache Base und Aktivitäten als zwei unterschiedliche Modellgrenzen erklären.",
+              "creditEn": "Justify NaOH pH 10.398 and difference 0.301; explain weak-base equilibrium and activities as two distinct model limits."
+            },
+            {
+              "id": "s2-4",
+              "points": 2,
+              "askedDemandIds": [
+                "s2-c"
+              ],
+              "creditDe": "Endvolumen/Homogenisierung und CO2-Einfluss begründen; Vergleichsmessungen mit geeigneter Kontrolle beurteilen.",
+              "creditEn": "Justify final volume, homogenization, and CO2 effects; assess comparison readings using a suitable check."
+            },
+            {
+              "id": "s2-5",
+              "points": 3,
+              "askedDemandIds": [
+                "s2-c"
+              ],
+              "creditDe": "Nur beobachtete sachgerechte Herstellung und eigene belastbare Messdokumentation erhalten Durchführungspunkte. Vorgegebene Messdaten, eine Skizze oder ein berechneter Sollwert genügen nicht.",
+              "creditEn": "Execution credit requires observed competent preparation and independent reliable measurement records. Supplied readings, a sketch, or a calculated expected value are insufficient."
+            }
+          ],
+          "maximumPoints": 14,
+          "assessmentChannels": [
+            "independent quantitative transfer to different hydroxide stoichiometry",
+            "supervised observed preparation and measurement required for execution criterion"
+          ],
+          "actualLearnerOrLabEvidenceClaimed": false,
+          "visualizationNeeded": false,
+          "provenance": "Original SkillPilot-authored assessment specification; supplied measurements are constructed task data."
+        }
+      ]
+    },
+    {
+      "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+      "cases": [
+        {
+          "id": "pair-1",
+          "title": {
+            "de": "Essigsäure, Ammoniak und die Grenzen eines Indikatorbefunds",
+            "en": "Acetic acid, ammonia, and limitations of indicator evidence"
+          },
+          "givenMaterials": {
+            "de": "In Wasser bei 25 °C werden CH3COOH und NH3 ohne Gasverlust gemischt. Gegeben: pKa(CH3COOH)=4,76, pKa(NH4+)=9,25; verdünnte ideale Lösungen, Aktivitäten≈c/(1 mol/L). Drei getrennte unbekannte, farblose Proben X/Y/Z liefern mit Universalindikatorpapier die konstruierten Befunde orange/blau/grün. Die zugehörige Hersteller-Farbskala weist diesen Farben pH≈3/10/7 zu (nur grobe Bereiche). Für einen tatsächlichen Nachweis stehen im beaufsichtigten Labor getrennte, von der Lehrkraft vorbereitete verdünnte Proben sowie saure, basische und neutrale Referenzlösungen, saubere Tropfpipetten, Papier und Schutzbrille bereit. Die unbekannten Proben dürfen nicht als die obige Reaktionsmischung identifiziert werden.",
+            "en": "In water at 25 °C, mix CH3COOH and NH3 without gas loss. Given: pKa(CH3COOH)=4.76 and pKa(NH4+)=9.25; dilute ideal solutions, activities≈c/(1 mol/L). Three separate unknown colorless samples X/Y/Z give constructed universal-indicator-paper colors orange/blue/green. The manufacturer scale assigns approximate pH 3/10/7 to these colors (broad ranges only). For actual detection, a supervised laboratory supplies separate dilute teacher-prepared samples, acidic, alkaline, and neutral reference solutions, clean dropping pipettes, paper, and goggles. Do not identify the unknown samples as the above reaction mixture."
+          },
+          "demands": [
+            {
+              "id": "a1-a",
+              "de": "Stelle die reversible Protonenübertragungsreaktion auf; kennzeichne Donator, Akzeptor und beide korrespondierenden Paare und prüfe Atome/Ladung. Vergleiche die Säure- und Basenstärken anhand der pKa-Werte; leite K≈10^[pKa(Produkt-Säure)−pKa(Edukt-Säure)] her und schätze die bevorzugte Gleichgewichtsseite ab.",
+              "en": "Write the reversible proton-transfer reaction; identify donor, acceptor, and both conjugate pairs, and check atoms/charge. Compare acid and base strengths using the pKa values; derive K≈10^[pKa(product acid)−pKa(reactant acid)] and estimate the favored equilibrium side."
+            },
+            {
+              "id": "a1-b",
+              "de": "Deute X/Y/Z im Brønsted-Modell. Entscheide, was die Farben über einen Überschuss an H3O+ bzw. OH−, über die Anwesenheit der jeweils anderen Ionensorte und über die Identität der gelösten Säure aussagen. Erkläre, warum das Brønsted-Modell allein keine Zahlen für die Gleichgewichtslage liefert.",
+              "en": "Interpret X/Y/Z in the Brønsted model. Decide what the colors say about excess H3O+ or OH−, the presence of the other ion, and the identity of the dissolved acid. Explain why the Brønsted model alone does not provide numerical equilibrium positions."
+            },
+            {
+              "id": "a1-c",
+              "de": "Plane den Indikatornachweis mit getrennten Referenzen, identischem Papier und Vermeidung von Verschleppung. Führe ihn nach Freigabe der Aufsicht tatsächlich durch, protokolliere deine eigenen Probenfarben und Vergleichsbefunde und leite daraus die saure/basische Reaktion ab. Benenne die begrenzte Aussagekraft; ein vorgelesener Farbwert oder eine Planung ersetzt diese Durchführung nicht.",
+              "en": "Plan indicator detection with separate references, identical paper, and prevention of cross-contamination. After supervisor authorization, actually perform it, record your own sample colors and reference findings, and infer acidic or alkaline behavior. State the limited conclusion; reading out a supplied color or writing a plan does not demonstrate execution."
+            }
+          ],
+          "fullModelAnswer": {
+            "de": "CH3COOH(aq)+NH3(aq)⇌CH3COO−(aq)+NH4+(aq). Essigsäure gibt ein Proton ab, NH3 nimmt es auf. Paare: CH3COOH/CH3COO− und NH4+/NH3, jeweils Unterschied H+; Ladung 0 links und −1+1=0 rechts, Atome erhalten. Essigsäure ist die stärkere der beiden Säuren (kleinerer pKa); NH3 ist die stärkere der beiden Basen als CH3COO−. Aus Ka(CH3COOH)/Ka(NH4+) folgt K≈10^(9,25−4,76)=10^4,49≈3,09·10^4; die Produkte mit der schwächeren Säure und Base werden bevorzugt. K ist endlich, also keine ausnahmslos vollständige oder irreversible Umsetzung; Mengen und Aktivitäten bestimmen den konkreten Zustand. X (pH≈3) zeigt im verdünnten wässrigen Modell mehr H3O+ als OH−, Y (≈10) mehr OH− als H3O+, Z (≈7) bei 25 °C ungefähr gleiche Konzentrationen. Beide Ionensorten kommen durch die Autoprotolyse in allen drei Proben vor. Ein orangefarbener Befund beweist weder HCl noch CH3COOH als Stoffidentität; Indikatorfarbe zeigt einen pH-Bereich, keinen ionenspezifischen Molekülnachweis und keine exakte Konzentration. Das Brønsted-Modell beschreibt Protonenübertragung; Stärke/K, Temperatur und Aktivitäten müssen zusätzlich bekannt sein. Im beaufsichtigten Nachweis zuerst getrennte Referenzen und Proben mit frischen Papierstücken unter gleichen Bedingungen prüfen, je Probe saubere Pipette benutzen und keine Restprobe zurückgeben; Farben zeitnah mit derselben Skala vergleichen. Eigene Beobachtungen und Referenzen unabhängig notieren; die konkrete Durchführung muss beobachtet werden. Die vorgegebenen Farbdaten begründen nur die schriftliche Deutung, keinen ausgeführten Nachweis.",
+            "en": "CH3COOH(aq)+NH3(aq)⇌CH3COO−(aq)+NH4+(aq). Acetic acid donates a proton and NH3 accepts it. Pairs: CH3COOH/CH3COO− and NH4+/NH3, differing by H+; charge is 0 on the left and −1+1=0 on the right, with atoms conserved. Acetic acid is the stronger acid (lower pKa); NH3 is the stronger base compared with CH3COO−. Ka(CH3COOH)/Ka(NH4+) gives K≈10^(9.25−4.76)=10^4.49≈3.09·10^4; products containing the weaker acid and base are favored. K is finite, so reaction is neither invariably complete nor irreversible; amounts and activities determine the actual state. X (pH≈3) has more H3O+ than OH− in the dilute aqueous model; Y (≈10) has more OH− than H3O+; Z (≈7) has approximately equal concentrations at 25 °C. Water autoprotolysis produces both ions in all three samples. Orange does not identify HCl or CH3COOH as the dissolved substance; indicator color gives a pH range, not an ion-specific molecular test or exact concentration. The Brønsted model describes proton transfer; strength/K, temperature, and activities are additional information. In supervised detection, test separate references and samples with fresh paper under identical conditions, use a clean pipette for each sample, and return no used sample to its source; promptly compare colors with the same scale. Independently record actual observations and references; execution must be observed. The supplied color data support written interpretation only, not a performed test."
+          },
+          "caseSpecificCreditRubric": [
+            {
+              "id": "a1-1",
+              "points": 3,
+              "askedDemandIds": [
+                "a1-a"
+              ],
+              "creditDe": "Reversible Gleichung, beide korrespondierenden Paare, Donator/Akzeptor und atom-/ladungserhaltende Protonenübertragung.",
+              "creditEn": "Reversible equation, both conjugate pairs, donor/acceptor, and atom/charge conservation in proton transfer."
+            },
+            {
+              "id": "a1-2",
+              "points": 3,
+              "askedDemandIds": [
+                "a1-a"
+              ],
+              "creditDe": "Säure-/Basenvergleich, K aus zwei Ka und Produktschwerpunkt begründen; Endlichkeit und Zustandsabhängigkeit beachten.",
+              "creditEn": "Justify acid/base comparison, K from two Ka values, and product preference; retain finite K and dependence on state."
+            },
+            {
+              "id": "a1-3",
+              "points": 3,
+              "askedDemandIds": [
+                "a1-b"
+              ],
+              "creditDe": "X/Y/Z korrekt deuten, beide Ionen überall und fehlende Stoffidentität/exakte Konzentration erklären; Zusatzdaten für quantitative Modellvorhersage nennen.",
+              "creditEn": "Interpret X/Y/Z, explain both ions in every sample and lack of substance identity/exact concentration; identify extra data required for quantitative model prediction."
+            },
+            {
+              "id": "a1-4",
+              "points": 2,
+              "askedDemandIds": [
+                "a1-c"
+              ],
+              "creditDe": "Getrennte Referenzen, gleiche Vergleichsbedingungen und Verschleppungsschutz fachlich begründen.",
+              "creditEn": "Justify separate references, equal comparison conditions, and prevention of contamination."
+            },
+            {
+              "id": "a1-5",
+              "points": 3,
+              "askedDemandIds": [
+                "a1-c"
+              ],
+              "creditDe": "Durchführungspunkte nur bei beobachtetem sachgerechtem Test und eigenen nachvollziehbaren Farb-/Referenzaufzeichnungen; gelieferte Daten bekommen hierfür keine Punkte.",
+              "creditEn": "Execution credit requires an observed competent test and independent traceable color/reference records; supplied data receive no execution credit."
+            }
+          ],
+          "maximumPoints": 14,
+          "assessmentChannels": [
+            "independent equilibrium comparison",
+            "constructed-data interpretation",
+            "supervised observed operational indicator test required for detection execution"
+          ],
+          "actualLearnerOrLabEvidenceClaimed": false,
+          "visualizationNeeded": false,
+          "provenance": "Original SkillPilot-authored assessment specification; supplied measurements are constructed task data."
+        },
+        {
+          "id": "pair-2",
+          "title": {
+            "de": "Hydrogencarbonat als Donator und Akzeptor",
+            "en": "Hydrogen carbonate as donor and acceptor"
+          },
+          "givenMaterials": {
+            "de": "Geschlossenes, CO2-haltiges wässriges System bei 25 °C: H2CO3* steht für CO2(aq)+H2CO3 als formalen gemeinsamen Säurebestand; pKa1*=6,35 (H2CO3*/HCO3−), pKa2=10,33 (HCO3−/CO3^2−), pKw=14,00. Für die symbolischen Protonenübertragungen darf molekulares H2CO3 verwendet werden; pKa1* ist ausdrücklich die apparente Konstante des gemeinsamen Bestands, nicht die intrinsische Konstante reiner H2CO3. Aktivitäten≈c/(1 mol/L), Wasseraktivität≈1. Drei getrennte Datenproben haben mit einem bei 25 °C kalibrierten pH-Meter die konstruierten pH-Werte 4,0, 9,0 und 7,0. Im beaufsichtigten Nachweisteil stehen separate, von der Lehrkraft vorbereitete verdünnte saure/basische/neutrale Proben und Referenzen bereit; ihr Inhalt wird nicht aus einem pH-Wert identifiziert.",
+            "en": "Closed CO2-containing aqueous system at 25 °C: H2CO3* denotes CO2(aq)+H2CO3 as a formal common acid pool; apparent pKa1*=6.35 (H2CO3*/HCO3−), pKa2=10.33 (HCO3−/CO3^2−), and pKw=14.00. Molecular H2CO3 may be used for symbolic proton transfers; pKa1* is explicitly the apparent constant of the combined pool, not the intrinsic constant of pure H2CO3. Activities≈c/(1 mol/L), water activity≈1. Three separate data samples have constructed pH-meter readings 4.0, 9.0, and 7.0 from a meter calibrated at 25 °C. For supervised detection, separate dilute acidic/alkaline/neutral teacher-prepared samples and references are available; their substance identity cannot be inferred from pH."
+          },
+          "demands": [
+            {
+              "id": "a2-a",
+              "de": "Formuliere mit HCO3− je eine ladungs- und atomerhaltende Reaktion mit H3O+ und mit OH−. Benenne seine Rolle und alle korrespondierenden Paare. Vergleiche seine Protonendonator- und Protonenakzeptor-Funktion, ohne die Rollen als feste Stoffetiketten zu behandeln.",
+              "en": "Write atom- and charge-balanced reactions of HCO3− with H3O+ and with OH−. Name its role and all conjugate pairs. Compare its proton-donor and proton-acceptor functions without treating the roles as fixed substance labels."
+            },
+            {
+              "id": "a2-b",
+              "de": "Nutze die angegebenen Konstanten, um die bevorzugte Seite der Reaktion HCO3−+OH−⇌CO3^2−+H2O zu begründen. Leite K aus Ka2 und Kw ab. Erkläre, warum diese Aussage keine Stoffidentifizierung, Reaktionsgeschwindigkeit oder Garantie vollständiger Umsetzung ergibt und warum Öffnen und CO2-Verlust die Modellgrenze ändert. Erläutere den Stern in H2CO3* und warum pKa1* keine intrinsische Konstante reiner H2CO3 ist.",
+              "en": "Use the given constants to justify the favored side of HCO3−+OH−⇌CO3^2−+H2O. Derive K from Ka2 and Kw. Explain why this gives neither substance identification, reaction rate, nor guaranteed complete conversion, and why opening the vessel and losing CO2 changes the model boundary. Explain the asterisk in H2CO3* and why pKa1* is not the intrinsic constant of pure H2CO3."
+            },
+            {
+              "id": "a2-c",
+              "de": "Deute die drei pH-Daten hinsichtlich des Überschusses von H3O+ bzw. OH−; berechne beide Ionenkonzentrationen im idealen Modell. Führe nach Freigabe der Aufsicht an den getrennten Laborproben einen kontrollierten Indikatornachweis mit eigenen Farb-/Referenzaufzeichnungen durch und erläutere, was er gegenüber einer pH-Messung zusätzlich oder nicht zusätzlich aussagt. Planung und gelieferte Zahlen sind keine ausgeführte Nachweisleistung.",
+              "en": "Interpret all three pH readings regarding excess H3O+ or OH−; calculate both ion concentrations in the ideal model. After supervisor authorization, perform controlled indicator detection on the separate laboratory samples with your own color/reference records and explain what it adds, or does not add, to a pH measurement. Planning and supplied numbers are not performed detection."
+            }
+          ],
+          "fullModelAnswer": {
+            "de": "Mit Oxonium: HCO3−(aq)+H3O+(aq)⇌H2CO3(aq)+H2O(l); HCO3− ist Protonenakzeptor, Paare H2CO3/HCO3− und H3O+/H2O. Beide Seiten C1, H4, O4, Ladung 0. Mit Hydroxid: HCO3−(aq)+OH−(aq)⇌CO3^2−(aq)+H2O(l); HCO3− ist Donator, Paare HCO3−/CO3^2− und H2O/OH−. Beide Seiten C1, H2, O4, Ladung −2. HCO3− ist amphiprotisch; seine Rolle hängt vom Partner ab. Die kleineren/größeren pKa-Werte unterscheiden den apparenten Säurebestand H2CO3* von der deutlich schwächeren Säure HCO3−; der Stern darf nicht unterschlagen werden. Für HCO3−+OH− ist K=Ka2/Kw=10^(14,00−10,33)=10^3,67≈4,68·10^3 (Wasseraktivität≈1), Produkte bevorzugt. Diese Ableitung benutzt das Ionenprodukt mit lösungsmittelbezogenem Wasserstandard und nicht unvereinbar pKa(H2O)=15,7. Die Zahlen beschreiben Gleichgewichte, keine Geschwindigkeit oder vollständige Umsetzung für alle Mengen. CO2-Verlust in einem offenen System entfernt einen Teil des Säurebestands; das geschlossene Stoffmengenmodell gilt dann nicht weiter. Bei pH 4: [H3O+]≈10−4, [OH−]≈10−10 mol/L; bei pH 9: 10−9 und 10−5; bei pH 7: beide 10−7 mol/L. Somit sauer/basisch/neutral bei 25 °C; keine der beiden Ionensorten ist vollständig abwesend. Ein kontrollierter Indikatortest an den getrennten realen Proben nutzt Referenzen, getrennte saubere Pipetten und frisches Papier; eigene Farb- und Kontrollbefunde sind zu protokollieren und die Durchführung zu beobachten. Der Test stützt einen groben pH-Bereich und den Säure-/Basenbefund, liefert aber keine spezifische Identifizierung von Carbonat oder einer Säure und keine genauere Zahl als das pH-Meter. Die gegebenen pH-Daten belegen nur die Dateninterpretation.",
+            "en": "With hydronium: HCO3−(aq)+H3O+(aq)⇌H2CO3(aq)+H2O(l); HCO3− accepts a proton, with pairs H2CO3/HCO3− and H3O+/H2O. Both sides have C1, H4, O4, and charge 0. With hydroxide: HCO3−(aq)+OH−(aq)⇌CO3^2−(aq)+H2O(l); HCO3− donates a proton, with pairs HCO3−/CO3^2− and H2O/OH−. Both sides have C1, H2, O4, and charge −2. HCO3− is amphiprotic; its role depends on its partner. The pKa values distinguish the apparent H2CO3* acid pool from the substantially weaker acid HCO3−; the asterisk must be retained. For HCO3−+OH−, K=Ka2/Kw=10^(14.00−10.33)=10^3.67≈4.68·10^3 (water activity≈1), so products are favored. This derivation uses the ion product with the solvent water standard, not an incompatible pKa(H2O)=15.7. These numbers describe equilibrium, not speed or complete conversion for arbitrary amounts. CO2 loss in an open system removes some of the acid pool, so the closed amount model no longer applies. At pH 4: [H3O+]≈10−4 and [OH−]≈10−10 mol/L; at pH 9: 10−9 and 10−5; at pH 7: both 10−7 mol/L. Hence acidic/alkaline/neutral at 25 °C; neither ion is entirely absent. A controlled indicator test on the separate actual samples uses references, separate clean pipettes, and fresh paper; record your own color/control findings and have execution observed. It supports a broad pH range and acid/base behavior, but does not specifically identify carbonate or a particular acid and provides no more precise number than the pH meter. The supplied pH data demonstrate data interpretation only."
+          },
+          "caseSpecificCreditRubric": [
+            {
+              "id": "a2-1",
+              "points": 4,
+              "askedDemandIds": [
+                "a2-a"
+              ],
+              "creditDe": "Beide ausgeglichenen Reaktionen, wechselnde Rolle und vier Paare korrekt mit H+/Ladungsunterschied erläutern.",
+              "creditEn": "Explain both balanced reactions, changing role, and four pairs correctly, with H+/charge differences."
+            },
+            {
+              "id": "a2-2",
+              "points": 4,
+              "askedDemandIds": [
+                "a2-b"
+              ],
+              "creditDe": "K=Ka2/Kw≈4,68·10^3, Produktschwerpunkt und Grenzen Geschwindigkeit/Stoffidentität/CO2-Öffnung begründen; apparenten H2CO3*-Wert nicht als intrinsischen ausgeben.",
+              "creditEn": "Justify K=Ka2/Kw≈4.68·10^3, product preference, and limits concerning rate, substance identity, and opening to CO2 loss; do not present apparent H2CO3* pKa as intrinsic."
+            },
+            {
+              "id": "a2-3",
+              "points": 3,
+              "askedDemandIds": [
+                "a2-c"
+              ],
+              "creditDe": "Alle sechs Ionenkonzentrationen mit Einheiten korrekt; beide Ionen stets vorhanden, Neutralität bei 25 °C.",
+              "creditEn": "All six ion concentrations with units; both ions always present and neutrality at 25 °C."
+            },
+            {
+              "id": "a2-4",
+              "points": 3,
+              "askedDemandIds": [
+                "a2-c"
+              ],
+              "creditDe": "Durchführungspunkte nur für beobachteten sachgerechten Test mit eigenen Farb-/Referenzaufzeichnungen; Mess- und Indikatorgrenzen erläutern. Vorgegebene pH-Daten oder eine Planung beweisen keine Durchführung.",
+              "creditEn": "Execution credit requires an observed competent test and independent color/reference records; explain meter/indicator limitations. Supplied pH data or planning do not prove execution."
+            }
+          ],
+          "maximumPoints": 14,
+          "assessmentChannels": [
+            "independent transfer to an amphiprotic particle",
+            "constructed-data interpretation",
+            "supervised observed operational indicator test required for detection execution"
+          ],
+          "actualLearnerOrLabEvidenceClaimed": false,
+          "visualizationNeeded": false,
+          "provenance": "Original SkillPilot-authored assessment specification; supplied measurements are constructed task data."
+        }
+      ]
+    }
+  ],
+  "machineStrictGain": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}
