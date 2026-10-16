@@ -1351,7 +1351,7 @@ public class LearnerControllerIntegrationTest {
         String[][] scopes = {
                 { "DE-BB", "243", "243" },
                 { "DE-BE", "239", "239" },
-                { "DE-BW", "284", "284" },
+                { "DE-BW", "285", "285" },
                 { "DE-BY", "229", "229" },
                 { "DE-HB", "217", "217" },
                 { "DE-HE", "327", "354" },
@@ -1398,6 +1398,7 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
                 if ("DE-BW".equals(jurisdiction)) {
                     assertThat(g9Targets).contains(
+                            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb", // BW classes5/6 volume-unit target
                             "ad66009f-55fb-563f-ace0-dbfeae7c76c3", // BW Sek-I derivative target
                             "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a", // BW J9 assessment
                             "ea664a30-98be-508e-90ac-5304679814ee"); // BW J10 assessment

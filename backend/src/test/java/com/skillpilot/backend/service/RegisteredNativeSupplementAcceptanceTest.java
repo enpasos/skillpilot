@@ -57,7 +57,7 @@ class RegisteredNativeSupplementAcceptanceTest {
         } finally { Files.write(profile,original); }
     }
     private Path isolatedRepository(Path source)throws Exception {
-        // Temporary executable source only; no resource/dependency/cache copy and
+        // Temporary executable source with confined task-material; no cache copy and
         // no possibility of mutating an adopted/Main curriculum during P drift.
         try(var entries=Files.list(source)){for(Path entry:entries.toList())if(!entry.getFileName().toString().equals("app"))
             Files.createSymbolicLink(isolated.resolve(entry.getFileName()),entry);}
@@ -69,6 +69,17 @@ class RegisteredNativeSupplementAcceptanceTest {
             Path target=app.resolve("scripts").resolve(scriptRoot.relativize(entry));
             if(Files.isDirectory(entry))Files.createDirectories(target);else Files.copy(entry,target);
         }}
+        // Required task-material must be real files inside this fixture, just as
+        // in a checkout. Keep the production real-path escape checks intact.
+        for(String materialRoot:List.of("app/public/assets/task-material","curricula/DE/Gymnasium/task-material")) {
+            try(var files=Files.walk(source.resolve(materialRoot))){for(Path file:files.filter(Files::isRegularFile).toList()) {
+                Path target=isolated.resolve(source.relativize(file));
+                detachFile(isolated,target);
+                assertThat(target.toRealPath()).startsWith(isolated.toRealPath());
+                assertThat(Files.isSymbolicLink(target)).isFalse();
+                assertThat(Files.readAllBytes(target)).isEqualTo(Files.readAllBytes(file));
+            }}
+        }
         return isolated;
     }
     private LearningGoal goal(Path repository,String subject,String id)throws Exception {

@@ -113,7 +113,7 @@ class CompositionSupplementNativeExecutableCorrectionTest {
         assertThat(optionalHostileOverride("/TEST_ONLY/explicit-hostile-wrapper")).isEqualTo(Path.of("/TEST_ONLY/explicit-hostile-wrapper"));
     }
     private Path isolatedRepository(Path source)throws Exception {
-        // Temporary executable source only; no resource/dependency/cache copy and
+        // Temporary executable source with confined task-material; no cache copy and
         // no possibility of mutating an adopted/Main curriculum during P drift.
         try(var entries=Files.list(source)){for(Path entry:entries.toList())if(!entry.getFileName().toString().equals("app"))
             Files.createSymbolicLink(isolated.resolve(entry.getFileName()),entry);}
@@ -132,6 +132,17 @@ class CompositionSupplementNativeExecutableCorrectionTest {
         Path scope=modules.resolve("@esbuild"),scopeReal=scope.toRealPath();Files.delete(scope);Files.createDirectory(scope);
         try(var children=Files.list(scopeReal)){for(Path child:children.toList())Files.createSymbolicLink(scope.resolve(child.getFileName()),child);}
         copyPackage(scope.resolve("linux-x64"));
+        // Required task-material must be real files inside this fixture, just as
+        // in a checkout. Keep the production real-path escape checks intact.
+        for(String materialRoot:List.of("app/public/assets/task-material","curricula/DE/Gymnasium/task-material")) {
+            try(var files=Files.walk(source.resolve(materialRoot))){for(Path file:files.filter(Files::isRegularFile).toList()) {
+                Path target=isolated.resolve(source.relativize(file));
+                detachFile(isolated,target);
+                assertThat(target.toRealPath()).startsWith(isolated.toRealPath());
+                assertThat(Files.isSymbolicLink(target)).isFalse();
+                assertThat(Files.readAllBytes(target)).isEqualTo(Files.readAllBytes(file));
+            }}
+        }
         return isolated;
     }
     private void copyPackage(Path target)throws Exception {
